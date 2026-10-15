@@ -7,6 +7,7 @@ on:
     paths:
       - 'runtime/tools/bi01_run_gate.py'
       - 'runtime/tests/test_bi01_run_gate.py'
+      - 'runtime/tests/test_bi01_workmap_consistency.py'
       - 'runtime/overlay/tools/question_work.schema.json'
       - 'runtime/config/COORDINATOR_DISPATCH.json'
       - '.github/workflows/bi01-mechanical-gates.yml'
@@ -37,4 +38,4 @@ jobs:
           assert {'OBSERVATION_'+x for x in names}<=set(modes)
           PY
       - name: Run isolated synthetic Git round tests
-        run: python3 -m unittest discover -s runtime/tests -p 'test_bi01_run_gate.py' -v
+        run: python3 -m unittest discover -s runtime/tests -p 'test_bi01_*.py' -v
