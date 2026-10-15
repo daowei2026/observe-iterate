@@ -1,0 +1,52 @@
+
+{
+  "schema": "longrun-return/v1",
+  "work_id": "BI-01",
+  "invocation_id": "BI01-RESTART-01-R0001-42ceb84c3fdf413bae35cbed17fb7078",
+  "assignment_token": "c4bfebec3b7748c9993ff60a187b3096",
+  "work_status": "SUBMITTED",
+  "completed_scope_ref": "#m-start-complete",
+  "remaining_scope_ref": null,
+  "artifact_refs": [
+    {
+      "answer_ref": "#management-decision"
+    },
+    {
+      "answer_ref": "#workmap"
+    },
+    {
+      "answer_ref": "#issued-task"
+    },
+    {
+      "answer_ref": "#question-work-binding"
+    }
+  ],
+  "delivery": {
+    "status": "READY",
+    "missing_refs": []
+  },
+  "materials": {
+    "use_record_ref": "#material-use",
+    "unread_required": [],
+    "unavailable_required": [
+      "github:daowei2026/observe-iterate@75d42776a78cd4cbdf3b61bbf86ec93701d06b84:professional/CURRENT_EXECUTION.md::完整独立专业审查方法MISSING"
+    ]
+  },
+  "handoff": {
+    "kind": "SUBMIT",
+    "route_key": "bi01_management_result_to_coordinator",
+    "instructions_ref": "#management-handoff"
+  },
+  "role_outputs": {
+    "management": {
+      "decision_ref": "#management-decision",
+      "plan_ref": "#workmap",
+      "issued_work_refs": [
+        "#issued-task",
+        "#question-work-binding"
+      ],
+      "delivery_scope_ref": "#management-delivery-scope"
+    }
+  }
+}
+
