@@ -36,3 +36,24 @@ DR01–05、07–11及管理Harness其他专业段落；Overlay00–07、09–11
 保留通用运行段落全文；只在真正的CYF专业段落换成BI-01准确专业引用，缺原文不得补造；每批复核Git diff和身份/授权/Return边界。已复制的`runtime/release/`继续视为CYF旧发布候选，不能成为本次正式Release。
 
 本批仅静态文件变更，**没有运行手机、Pro任务或长程试跑**。
+
+
+## 试跑门槛核查与补缺（2026-10-15）
+
+结论：**OFFLINE_SYNTHETIC_DISPATCH_PASS；REAL_LONGRUN_PILOT_NOT_READY；DO_NOT_DISPATCH 仍有效。** 这是试跑准备检查，不是 BI-01 Release、实际管理采用或业务 Gate。
+
+已补的确定性缺口：
+
+- cgpterm 用户分支 fy/observation-iteration-agent-longrun-20261015 的观察迭代 controller Skill / README 已改为本仓真实的 Overlay08、Overlay12 路径；见其提交 874d3c07ea6e4e2b764d0720607c6d03a325801b。该分支未因此被认定为通用 main 已发布版本。
+- 增加 runtime/overlay/tests/test_bi01_pilot_smoke.py 和分支专属轻量 Actions 检查，合成 Git 记录下验证 BI-01 首次 M-START BOOTSTRAP、I4 专业派发、只读审查路由、准确来源以及消息/发送状态的拒绝条件。GitHub Actions run [38740292499](https://github.com/daowei2026/observe-iterate/actions/runs/38740292499) 为 success。这是脱机机械测试，无真实模型、手机、授权或回交验证。
+- DR14 修正搬迁后的两处测试/工具相对引用及残留的 C 专属正常消息描述；更新后 run [38740855167](https://github.com/daowei2026/observe-iterate/actions/runs/38740855167) 为 success。
+
+真实受控试跑前的阻断项（不得以离线 PASS 越过）：
+
+1. **有效入口中的 CYF 业务语义尚未清干净**：runtime/overlay/08_自然语言运行提示_v0.3.md 的共同 MANAGEMENT_DUTY / TASK_DUTY 仍有“特征实际落地”、工程施工、完整 Feature 地图等 CYF 语义；overlay/00、overlay/CURRENT_EXECUTION、overlay/09/10 等仍有 A/B/C 的当前式表述。需按原文逐段辨识，保留通用长程机制，移除实际消息中的 CYF 专业强制要求，不能仅加免责注释或替换标签。
+2. **尚未真实采用工作与接收者**：runtime/config/WORKMAP_BINDING.json 为 NOT_CONFIGURED；尚无依据真实 Owner 输入形成并签发的 BI-01 BOOTSTRAP/BINDING、chat recipient、采用任务全文、既有在途对账及发送状态。不得用合成测试记录填入 runs/，也不得把旧 CYF/U2/U3 在途作为当前事实。
+3. **多轮回交接续未获得实测证据**：ROLE_RETURN、QUESTION_WORK_RETURN 的真实收取、原始回答归档、去重、续作/管理 Gate 转交和中断恢复尚未通过 BI-01 角色实测；receive_return / decide_next_action / apply_transition 尚无完整已测试自动实现。首轮可明确由主控按 Overlay13 协议人工监督处理，但不能称自动闭环或无人值守。
+4. **专业与发布边界**：professional/TASK_ROUTER.md 为 MISSING、独立审查 Harness 为 PARTIAL；真实 I4 需要可消费的 G3 结果与准确 Case/Source/Method/As-Of，不存在时管理 M-START 应先判定缺口而非虚报 G3。runtime/release/ 仍为 CYF 锁定发行副本，不得作为 BI-01 正式版本使用。
+5. **手机现场**：本次未获得 cgpterm MCP、设备控制权、目标聊天身份、实际 payload 送达及可恢复性证据；只读远端 GitHub 无法确认 Codex 本地未提交工作。
+
+最小后继：先对实际进入消息的 Overlay08 管理/专业正文及相邻入口完成 BI-01 语义去绑定并加入针对性回归；然后由有权管理/Owner 提供真实 BOOTSTRAP、接收者、权限和既有在途核对，按 exact commit 做 dry-run prepare/verify。通过后才进入一条真实管理→专业执行→真实回交→管理接收的**人工监督**试跑；任一身份/授权/证据不可核即 NO_SEND，独立审查和手机自动化不可冒充已通过。暂不合并 PR、推广 Release 或改写历史运行状态。
