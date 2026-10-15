@@ -112,7 +112,7 @@ focus_results每项有question_id、completed_ref、remaining_ref、affected_ref
 
 ### 1.5 可直接试跑的完整输入
 
-完整三组数据、原始合成回答、绑定、消息、前序记录、变体和预期在原Overlay的 [question_work_trial_inputs.json](../overlay/tests/question_work_trial_inputs.json)，执行说明见同目录 [question_work_trial_walkthrough.md](../runtime_overlay_candidates/agent_owned_long_horizon_overlay_v0_3/tests/question_work_trial_walkthrough.md)。无未来SHA和待补业务占位。所有CYF原有市场例子均为历史测试输入，不具有生产/Owner用例权力。
+完整三组数据、原始合成回答、绑定、消息、前序记录、变体和预期在原Overlay的 [question_work_trial_inputs.json](../overlay/tests/question_work_trial_inputs.json)，执行说明见同目录 [question_work_trial_walkthrough.md](../overlay/tests/question_work_trial_walkthrough.md)。无未来SHA和待补业务占位。所有CYF原有市场例子均为历史测试输入，不具有生产/Owner用例权力。
 
 ## 2. 主控的确定处理顺序
 
@@ -130,7 +130,7 @@ focus_results每项有question_id、completed_ref、remaining_ref、affected_ref
 9. 管理返回核总体判断、后继、地图/预算/Owner事项及未完。只有决定实际进入有效任务/下一输入后才CONSUMED；管理部分完成续同事项，不受影响专业工作仍可继续。
 10. 原mode的实质接收和本段条件决定关闭；全目标另核全部义务。拆并/改派交身份承接、未完finding和触发迁移，历史投入不清零。
 
-C正常消息额外原样带选定当前工作说明，按Overlay08取源；当前任务已被新采用时不再用旧续作。主控不改说明，原完整任务／范围／两份回交及管理触发仍保留。
+BI-01正常消息按Overlay08取已采用的当前任务与完整专业方法，合法同工作续作带最新continuation；当前任务被新采用替代时不再使用旧续作。主控不改说明，原完整任务／范围／两份回交及管理触发仍保留。
 
 ## 3. 主动作与管理责任并存
 
@@ -154,7 +154,7 @@ C正常消息额外原样带选定当前工作说明，按Overlay08取源；当�
 
 ## 5. Harness、离线检查与真实试跑
 
-[question_work.schema.json](../overlay/tools/question_work.schema.json)区分v1/v2及BOOTSTRAP/BINDING/RETURN。[question_work_check.py](../runtime_overlay_candidates/agent_owned_long_horizon_overlay_v0_3/tools/question_work_check.py)只核可观察关联和返回待处理责任，不发消息、不写运行状态、不判断专业语义/授权。引用存在与实际阅读另核。
+[question_work.schema.json](../overlay/tools/question_work.schema.json)区分v1/v2及BOOTSTRAP/BINDING/RETURN。[question_work_check.py](../overlay/tools/question_work_check.py)只核可观察关联和返回待处理责任，不发消息、不写运行状态、不判断专业语义/授权。引用存在与实际阅读另核。
 
 语义检查仍用当前BI-01实际授权的专业审查依据及管理Harness，核题目与输入是否适当、原义务是否实做、重要反馈是否被消费。向后追Owner与完整方法，向前核接收者无需猜。schema通过不等于读懂、选题正确、独立审查或部署。
 
