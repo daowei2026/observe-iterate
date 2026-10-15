@@ -1,4 +1,4 @@
-name: Port CYF runtime on migration PR
+name: Port locked CYF runtime exact copy
 
 on:
   pull_request:
@@ -6,7 +6,7 @@ on:
       - main
     paths:
       - scripts/import_cyf_runtime.py
-      - .github/workflows/port-cyf-runtime.yml
+      - .github/workflows/port-cyf-runtime-pr.yml
 
 permissions:
   contents: write
@@ -16,7 +16,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  port:
+  exact-copy:
     if: github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     steps:
@@ -36,15 +36,11 @@ jobs:
           path: source
           fetch-depth: 1
 
-      - name: Build exact upstream copy and adapted canonical runtime
+      - name: Materialize byte-identical upstream runtime
         run: python target/scripts/import_cyf_runtime.py --source source --target target
 
-      - name: Run port integrity and existing generic tests
-        working-directory: target
-        run: |
-          python -m unittest runtime.overlay.tests.test_runtime_port_integrity -v
-          python -m unittest runtime.overlay.tests.test_management_prompt -v
-          python -m unittest runtime.overlay.tests.test_execution_handoff -v
+      - name: Verify exact source/target hashes
+        run: python target/scripts/import_cyf_runtime.py --source source --target target --verify-only
 
       - name: Commit generated runtime to PR branch
         working-directory: target
@@ -56,5 +52,5 @@ jobs:
           git config user.name "observe-iterate-runtime-port"
           git config user.email "observe-iterate-runtime-port@users.noreply.github.com"
           git add runtime migration
-          git commit -m "refactor: port full CYF runtime with professional references"
+          git commit -m "refactor: restore full locked CYF runtime source"
           git push origin HEAD:${{ github.head_ref }}
