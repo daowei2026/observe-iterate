@@ -246,6 +246,7 @@ def after_return(view: Git, round_id: str) -> dict:
         body = view.text(p + "/FULL_RESPONSE.md")
         if not body.strip():
             errors.append("FULL_RESPONSE_EMPTY")
+    role = {}
     try:
         role = view.obj(p + "/ROLE_RETURN.json")
         for field in ("work_id", "invocation_id", "assignment_token"):
