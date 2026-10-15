@@ -134,6 +134,7 @@ def invocation(view: Git, round_id: str) -> tuple[dict, list[str]]:
         (HEX40.fullmatch(str(record.get("policy_commit", ""))) is not None, "POLICY_COMMIT_REQUIRED"),
         (HEX64.fullmatch(str(record.get("prompt_sha256", ""))) is not None, "PROMPT_DIGEST_INVALID"),
         (hashlib.sha256(prompt).hexdigest() == record.get("prompt_sha256"), "PROMPT_BYTES_CHANGED"),
+        (record.get("question_work_required") is True, "QUESTION_WORK_V2_REQUIRED"),
     ])
     for name in ("work_id", "invocation_id", "assignment_token", "round_marker", "recipient_ref"):
         if not isinstance(record.get(name), str) or not record[name].strip():
@@ -254,7 +255,24 @@ def after_return(view: Git, round_id: str) -> dict:
             errors.append("ROLE_RETURN_SCHEMA")
     except (ValueError, json.JSONDecodeError):
         errors.append("ROLE_RETURN_MISSING")
-    if rec.get("question_work_required", False) and not view.exists(p + "/QUESTION_WORK_RETURN.json"):
+    try:
+        qret = view.obj(p + "/QUESTION_WORK_RETURN.json")
+        if qret.get("schema") != "question-work/v2" or qret.get("kind") != "RETURN":
+            errors.append("QUESTION_WORK_RETURN_VERSION")
+        for key in ("work_id", "invocation_id"):
+            if qret.get(key) != rec.get(key):
+                errors.append("QUESTION_WORK_RETURN_MISMATCH:" + key)
+        if qret.get("binding_ref") != rec.get("binding_ref"):
+            errors.append("QUESTION_WORK_RETURN_BINDING_MISMATCH")
+        if not isinstance(qret.get("focus_results"), list) or not qret["focus_results"]:
+            errors.append("QUESTION_WORK_FOCUS_RESULTS_MISSING")
+        if not isinstance(qret.get("trigger_observations"), list):
+            errors.append("QUESTION_WORK_TRIGGER_RESULTS_MISSING")
+        if not isinstance(qret.get("continuation_ref"), dict):
+            errors.append("QUESTION_WORK_CONTINUATION_MISSING")
+        if role.get("question_work_ref") in (None, ""):
+            errors.append("ROLE_RETURN_QUESTION_WORK_REF_MISSING")
+    except (ValueError, json.JSONDecodeError):
         errors.append("QUESTION_WORK_RETURN_MISSING")
     return {
         "check": "after-return", "round_id": round_id, "ok": not errors,
