@@ -19,6 +19,14 @@
 - 固定Dispatch配置：将旧候选占位结构与现有脚本合同`coordinator-dispatch/v3`对齐，提供`BI-01`技术工作标识和`BI01`模板stage及候选mode；目标/数据来源来自`professional/`，但没有实际BOOTSTRAP/BINDING、接收者和合法任务前不得发送。采用边界见`runtime/config/ADOPTION_STATUS.md`。
 - 第二批文件只在本PR工作分支提交，不动`main`和第一阶段保真提交；不做手机/Pro/业务试跑。
 
+## 本次中断恢复与静态检查（2026-10-15）
+
+- 恢复前最后有效提交：`d593d0a93b74c68be957699bb3a7c956728d860f`，不重复修改其中6份已完成DR/Overlay规则。
+- 第二批恢复提交：`417141e3b9578761fc383e9503d6121a49147dbb`。文件范围仅Overlay08、Overlay12、`management_prompt.py`、Dispatch候选配置、采用状态与本页说明。
+- 一次性静态检查：[Actions run 38736886419](https://github.com/daowei2026/observe-iterate/actions/runs/38736886419)；Python `ast.parse`、JSON配置结构、阶段/role模板标记、已有链接、工具与命令路径、`DO_NOT_DISPATCH`均PASS。
+- 本轮没有调用`prepare_dispatch`派发业务任务，没有调用手机/模型，也没有运行依赖CYF A/B/C情形的旧端到端测试。一次性静态验证工作流完成后从分支删除，不作为常驻运行服务。
+- 远端Git没有其他并发提交，且本分支Actions均已完成；但外部Codex本地工作树及未提交修改不能由GitHub远端证明，未冒称已检查。
+
 ## 尚待适配
 
 DR01–05、07–11及管理Harness其他专业段落；Overlay00–07、09–11中CYF专属部分；其余程序／Schema／测试的BI-01场景覆盖、Release和生成视图、全库跨目录链接、cgpterm侧入口。配置虽已对齐消息组装工具的静态合同，但真实管理/专业Binding和路由尚未采用，不能声称端到端可运行。不得将当前文档已通用化等同整套系统已通用化。
