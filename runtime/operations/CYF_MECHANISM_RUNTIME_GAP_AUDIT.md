@@ -17,3 +17,5 @@
 | 操作主控自动引擎 | prepare/snapshot/check 只计算不写状态，不会主动 choose/send/recover | 新运行合同 + 机械 gate + cgpterm controller 将动作逐一接起来 | 只可称主控**按协议调度**；不能称已实现程序级 receive/decide/apply |
 
 通用 CYF 运行 Skills 已包含手机 episode 隔离、唯一新标题、发送去重、等待/恢复和本地长任务状态，**不应重复实现这些状态机**。旧 I4 试跑停止不意味着通用技能要丢失。真正剩余的是未来真实运行中的现场落地、专业 Router/审查方法完备性与自动处理器尚未实现，不得虚报本轮已解决。
+
+**继续审查后发现的四项实际硬阻断：** (1) cgpterm 调度器的方括号 first-line round marker 和 v3 组装器的 `[invocation_id]` 如果不是同一字符串，会在实际发送前冲突；现令 R 的 `round_marker=[invocation_id]`，gate 检查真正的 PROMPT 首行。(2) 把 `provenance/turns` 放进 Workmap `watch_roots` 会使每次新轮准备时 self-stale，已从模板移除，保留业务 artifacts/独立证据的管理消费义务。(3) `work_id=BI-01` 是现有 Dispatch 固定工作身份，不能简单改成新 run_id；采用全新 run_id、invocations、账本隔离旧试跑。(4) 配置只含 I4/M-START 将阻断 I1— I3 定向补证及 I5/I6 和管理 M-REASSESS/M-CLOSE；现补合法 mode 名称，但不授新专业方法或 Gate 权限。

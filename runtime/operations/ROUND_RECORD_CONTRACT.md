@@ -1,6 +1,6 @@
 # BI-01 GitHub 轮次：Pro Rnnnn 与手机 Episode 分开
 
-这是下一次真实运行的记录合同，并非本次已运行的轮次。每个 ChatGPT Pro 管理/执行/审查的**实际调用**记作 R0001、R0002……；失败但已证实零发送副作用可沿原 R 重试，未知发送不重试。每个 R 有独立 invocation_id、assignment_token、round_marker；同一持久 work_id 可跨多 R。手机 Episode、Codex step、Commit 不算 R。旧 I4 第一至四段不能改成新 run 的 R0001—R0004。
+这是下一次真实运行的记录合同，并非本次已运行的轮次。每个 ChatGPT Pro 管理/执行/审查的**实际调用**记作 R0001、R0002……；失败但已证实零发送副作用可沿原 R 重试，未知发送不重试。每个 R 有独立 invocation_id、assignment_token、round_marker；当前机械配置固定 `work_id=BI-01` 表示同一业务意图，和本次全新 `run_id=BI-01-RESTART-01` 必须分开。不同 run 绝不能混用旧 invocations/tokens/chats/ledger。手机 Episode、Codex step、Commit 不算 R。旧 I4 第一至四段不能改成新 run 的 R0001—R0004。
 
 路径：`runs/BI-01-RESTART-01/provenance/turns/Rnnnn/`。
 
@@ -25,3 +25,9 @@ INVOCATION.json 最小结构：schema=bi01-invocation/v1；run_id=BI-01-RESTART-
 - 管理 Pro 根据实质结果更新地图和任务，主控只录发送/收取/在途、投影 Owner PROGRESS，不把地图做成机器状态表。
 
 机械检查器：`runtime/tools/bi01_run_gate.py` 的 pre-dispatch / after-return；它不发送消息、不批准专业 Gate，也不自动新建/升级 workmap。读到旧 Repo 的 R 文档不等于本次产生真实新轮。
+
+### cgpterm 手机标记与实际 v3 payload 的唯一映射
+
+`management_prompt.py` 在第一行输出 `[invocation_id]`，而通用手机 scheduler 的 `set-send-ready --round-marker` 要求完全相同的首行方括号标记。因此**只设一个**：把本轮真实 `invocation_id` 编成 `BI01-RESTART-01-Rnnnn-<独立唯一ID>`（此处尖括号是说明，不能原样使用；全字段无空格），令 `round_marker` 严格等于 `[` + `invocation_id` + `]`。Rnnnn 是本次实际角色调用序号；一次发送失败且未产生副作用沿原 marker 恢复，新的真实调用才增加序号。
+
+顺序：管理/专业事件先经 Overlay12 prepare 得到原样 `message` → 保存这个完整原样字节到 Rnnnn/PROMPT.md → 保存其 SHA 与 `INVOCATION.json` → Git 提交并 remote readback → 使用该提交作手机 `github_or_zip_1h` 的远端比较 **base** → 运行 `bi01_run_gate.py pre-dispatch` 和 Overlay12 verify → 真实手机发送。不得在已核验原文前再加一个独立 round marker，否则 digest 不一致；remote turn complete 也须与此唯一标记相关联。

@@ -9,3 +9,5 @@
 5. **独立性**：新的重要地图/阶段若按已有 v2 规则需要独立 reader_check，必须有实际新上下文和明确对象、读图记录，不能仅将 reader_check 写为 RECORDED。该阅读只检可理解性，不自动成为 BI-01 独立专业审查 PASS；后者目前专业 Harness 仍 PARTIAL。真实例外由有权管理判断、具名用途，不能由操作端偷偷把首轮当 ROUTINE_RESULT 免门。
 6. **首轮专业发送**：完成已采用的 current task、绑定、真实接收者、新 round INVOCATION/PROMPT 后，由 `runtime/tools/bi01_run_gate.py pre-dispatch` 与适用 workmap_gate 和 `Overlay12` 验证，再检查手机端身份/未发送事实。检查器不会发送或自动生成 Binding/receipts；出现无法取得 source、reader、live MCP 或 Gate 则给确切恢复点，不借用旧业务仓/旧管理聊天绕过。
 7. **后续**：同工作短续作不必每轮管理重签，但 Rnnnn 始终更新。重要新增证据/结果与 Gate/预算复看按 DR13/14 找管理，更新地图/当前任务/正式 intake；不能仅更新 PROGRESS。当前权限和提交来源不同于 Git 包字节源时要分别标记，不把 map 变新 SHA 误认为管理已重新判断。
+
+**关于每轮回交导致地图过期的处理：** `provenance/turns` 记录真实 Pro 轮次的发送/收取，不能列入 `workmap_gate.py` 的 `watch_roots`，否则仅提交一条准备发送的 `PROMPT.md`，就会让现行管理 Intake 在手机调用前无谓失效。正式 Binding 模板只 watch 实质 `artifacts/` 及必要独立审查材料；轮次身份、Return、去重和管理 RESULT/CHANGE/EFFORT 则走其原有协议处理。实际业务 artifact 变化仍可能使 Intake stale，此时定向管理接收，不允许为了连续发消息而假造通过。

@@ -11,7 +11,7 @@
 
 ## 1. 首轮 M-START：可以先管理，不可以先造地图
 
-1. 等 Owner 下一次明确授权开始；从旧本地 long-task 分配**全新 task/root 身份**，不 resume bi01-i4-rerun-20261013-01。项目里创建新的管理 Pro 角色聊天（此次 Owner 放弃旧聊天续跑），新建/命名及身份恢复按 cgpterm 通用 Skill。记录项目、唯一物理聊天身份、唯一标题、首轮 marker；无可靠 chat 定位不得发送，不能仅凭相似标题/预览定位。
+1. 等 Owner 下一次明确授权开始；本仓协调器保持固定 `work_id=BI-01`，但必须为 `run_id=BI-01-RESTART-01` 另建**全新 task/root、invocation/token/marker/聊天身份及本地账本**，不 resume 旧 `bi01-i4-rerun-20261013-01`，也不继承其历史投入与已完成状态。项目里创建新的管理 Pro 角色聊天（此次 Owner 放弃旧聊天续跑），新建/命名及身份恢复按 cgpterm 通用 Skill。记录项目、唯一物理聊天身份、唯一标题、首轮 marker；无可靠 chat 定位不得发送，不能仅凭相似标题/预览定位。
 2. 将下一次 Owner 的**真实启动原文**先作为本 run 的 OWNER_START.md 保存入 Git，记录真实消息来源与授权（本次准备消息不算开工）；首次管理 BOOTSTRAP 的 current_task_ref 和 task_adoption_ref 可以都指向这个真实 Owner 启动原文，而不是不存在的管理地图。随后从最新实际 Source 和 Owner 启动消息编制有据 `question-work/v2 BOOTSTRAP`，用 `Overlay08/12` 的 M-START 准备和核验**整条精确载荷**，传输状态为未发送才可投递。首次管理**不要求预先存在**地图/正式专业 Binding；也不得为了过 gate 由操作端捏造已批准地图。
 3. 管理 Pro 先核 I1–I3 实际可用材料/参考与正式差异及 G3 范围，再判断本轮 I4 合法工作，形成真管理决策、完整目标/未完、条件性预算、复看和完整首份专业任务。**由管理 Pro**在新 run 写并签发 `00_长程推进地图.md`、`01_当前任务.md`、`reviews/management-Rnnnn/` 与 `QUESTION_WORK_BINDING`；有缺项时继续原管理责任，不自行填业务结论。
 4. 只有上述事实提交到实际有权 Git 分支、完整 Return 已收到并验证、远端回读成立后，才能将 `runtime/config/WORKMAP_BINDING.json` 从 NOT_CONFIGURED 采用为此 run 的实际 map/task/管理接收正本，并用已有 `workmap_gate.py` 建立真实 intake 与检查。候选状态字段本身不给合法授权；无正式接收不得派首轮专业执行。
@@ -21,7 +21,7 @@
 
 真实管理／执行／审查 Pro 调用依次记 `R0001/R0002/...`，不是手机 Episode、local long-task step、git commit 或专业阶段 I1–I6。旧四段不能倒灌为新轮。具体字段按 [轮次交付合同](ROUND_RECORD_CONTRACT.md)。
 
-每轮：发送前提交 `provenance/turns/Rnnnn/INVOCATION.json` 与实际 `PROMPT.md`，以 `runtime/tools/bi01_run_gate.py pre-dispatch` 检查真实身份、精确哈希、合法 role/Binding 和首段地图要求；再由 `Overlay12` prepare/verify 保证实际载荷与真实 recipient 一致。发送结果、完整回复、真实 Return、附件实际收取、GitHub 结果分别记录，不合并成一个“已完成”。未拿到真实 Return 不得猜下一段；未知 Send 效果绝不能重发。
+每轮：先由 Overlay12 `prepare` 生成真实最终载荷，它的**第一行就是 `[invocation_id]`**，也是 cgpterm 通用调度器唯一 `--round-marker`。把这份未经改写的 UTF-8 字节作为 `provenance/turns/Rnnnn/PROMPT.md`，保存对应 `INVOCATION.json`，先提交 Git 并从远端回读；**该预发送提交**应作为 scheduler 本轮 GitHub 远端完成检查的 `base SHA`。然后在这个已提交版本上运行 `runtime/tools/bi01_run_gate.py pre-dispatch` 和 Overlay12 `verify`，核完整载荷、首行、recipient、合法 role/Binding 与真实未发送状态；通过才允许手机发送。PASS 和提交均不等于已发送。发送结果、完整回复、真实 Return、附件实际收取、GitHub 结果分别记录，不合并成一个“已完成”。未拿到真实 Return 不得猜下一段；未知 Send 效果绝不能重发。
 
 专业 Pro 只交实际业务结果、自查和最新合法同工作 continuation，不修改共享图或签 G4；管理 Pro 在已触发的管理轮接收实物、更新地图和 `01_当前任务`、预算/触发、合法下一阶段及 Gate。`PROGRESS.md` 仅是操作端对 Owner 的阅读投影，**不得替代**管理地图/任务/接收。没有新业务事实的心跳不生成“业务轮”，但重要阻断须有实际操作回执。
 
@@ -43,3 +43,5 @@
 ## 5. 下次实跑的可验收目标
 
 应在 GitHub 直接读到：真实管理形成的 00 地图、01 当前任务、每次真实 Rnnnn 的原提示/完整答复/Return/发送依据、管理 review/资格/复看、实际 Workmap Binding 和 Owner PROGRESS。**本次提交只是为这些成果接线；没有启动业务、没有填成果、没有让自动接续引擎变成已部署。**
+
+**模式覆盖说明**：固定 Dispatch 的 `work_id=BI-01` 支持 M-START/M-REASSESS/M-CLOSE 及 I1—I6 对应模式，允许实际管理 Pro 为前段补证、I4、I5/I6 签出可装配任务；这些只是配置中的合法显示名称，`professional_mode`、专业原文、角色写权和 Gate 仍完全来自本次真实管理任务与 Binding。工具可组装，不自动形成专业 Router 或正式独立审查方法。
