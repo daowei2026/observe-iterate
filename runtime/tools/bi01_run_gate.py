@@ -138,8 +138,21 @@ def invocation(view: Git, round_id: str) -> tuple[dict, list[str]]:
     for name in ("work_id", "invocation_id", "assignment_token", "round_marker", "recipient_ref"):
         if not isinstance(record.get(name), str) or not record[name].strip():
             errors.append("MISSING_IDENTITY:" + name)
-    if not isinstance(record.get("round_marker"), str) or not record["round_marker"].startswith("BI01-RESTART-01/"):
-        errors.append("ROUND_MARKER_WRONG_RUN")
+    # Existing coordinator-dispatch/v3 emits [invocation_id] as its first line.
+    # That EXACT line is also the common phone scheduler's bracketed round marker.
+    prefix = "BI01-RESTART-01-" + round_id + "-"
+    invocation_id = record.get("invocation_id")
+    marker = record.get("round_marker")
+    if (not isinstance(invocation_id, str)
+            or not invocation_id.startswith(prefix)
+            or len(invocation_id) < len(prefix) + 3
+            or not re.fullmatch(r"[^\[\]\s]{3,180}", invocation_id)
+            or marker != "[" + invocation_id + "]"):
+        errors.append("ROUND_MARKER_OR_INVOCATION_MISMATCH")
+    if prompt.split(b"\n", 1)[0] != str(marker).encode("utf-8"):
+        errors.append("PROMPT_FIRST_LINE_NOT_SCHEDULER_MARKER")
+    if record.get("work_id") != "BI-01":
+        errors.append("COORDINATOR_FIXED_WORK_ID_REQUIRED")
     if record.get("policy_commit") != view.ref:
         # Policy may be an earlier exact commit, but it must be available locally.
         try:
