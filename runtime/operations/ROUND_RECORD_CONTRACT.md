@@ -14,7 +14,7 @@
 | QUESTION_WORK_RETURN.json | 确实采用 DR14 时 | 真实 work/trigger/focus/remaining；旧调用不用追造 |
 | GATE_CHECK.json | 已真实运行检查器后 | 结构检查器输出，不能称业务 Gate 或已实跑业务 |
 
-INVOCATION.json 最小结构：schema=bi01-invocation/v1；run_id=BI-01-RESTART-01；round_id=R0001 等；work_id、invocation_id、assignment_token、round_marker、role（management / professional / review / receiver）、recipient_ref、policy_commit（40位）、prompt_sha256（64位）、binding_ref / task_ref（正式轮）；首次 M-START 可以用实际 bootstrap_ref 代替尚不存在的 Binding 和 task。其它轮引用真实已采用来源；不在 metadata 内填伪造的发出时间或 Gate。
+INVOCATION.json 最小结构：schema=bi01-invocation/v1；run_id=BI-01-RESTART-01；round_id=R0001 等；work_id、invocation_id、assignment_token、round_marker、role（management / professional / review / receiver）、recipient_ref、policy_commit（40位）、prompt_sha256（64位）、binding_ref、current_task_ref、task_adoption_ref 均为 coordinator-dispatch/v3 所需的完整 Git locator 对象（repo/40位commit/path/selector），不是纯字符串路径。首次 M-START 的 binding_ref 和 bootstrap_ref 同指真实 BOOTSTRAP；current_task_ref/task_adoption_ref 可都指向新 Owner 的真实 OWNER_START.md，不预造管理地图。其它轮引用真实已采用来源；不在 metadata 内填伪造的发出时间或 Gate。
 
 **准入条件：**
 

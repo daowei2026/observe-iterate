@@ -12,7 +12,7 @@
 ## 1. 首轮 M-START：可以先管理，不可以先造地图
 
 1. 等 Owner 下一次明确授权开始；从旧本地 long-task 分配**全新 task/root 身份**，不 resume bi01-i4-rerun-20261013-01。项目里创建新的管理 Pro 角色聊天（此次 Owner 放弃旧聊天续跑），新建/命名及身份恢复按 cgpterm 通用 Skill。记录项目、唯一物理聊天身份、唯一标题、首轮 marker；无可靠 chat 定位不得发送，不能仅凭相似标题/预览定位。
-2. 从最新实际 Source 和 Owner 启动消息编制有据 `question-work/v2 BOOTSTRAP`，用 `Overlay08/12` 的 M-START 准备和核验**整条精确载荷**，传输状态为未发送才可投递。首次管理**不要求预先存在**地图/正式专业 Binding；也不得为了过 gate 由操作端捏造已批准地图。
+2. 将下一次 Owner 的**真实启动原文**先作为本 run 的 OWNER_START.md 保存入 Git，记录真实消息来源与授权（本次准备消息不算开工）；首次管理 BOOTSTRAP 的 current_task_ref 和 task_adoption_ref 可以都指向这个真实 Owner 启动原文，而不是不存在的管理地图。随后从最新实际 Source 和 Owner 启动消息编制有据 `question-work/v2 BOOTSTRAP`，用 `Overlay08/12` 的 M-START 准备和核验**整条精确载荷**，传输状态为未发送才可投递。首次管理**不要求预先存在**地图/正式专业 Binding；也不得为了过 gate 由操作端捏造已批准地图。
 3. 管理 Pro 先核 I1–I3 实际可用材料/参考与正式差异及 G3 范围，再判断本轮 I4 合法工作，形成真管理决策、完整目标/未完、条件性预算、复看和完整首份专业任务。**由管理 Pro**在新 run 写并签发 `00_长程推进地图.md`、`01_当前任务.md`、`reviews/management-Rnnnn/` 与 `QUESTION_WORK_BINDING`；有缺项时继续原管理责任，不自行填业务结论。
 4. 只有上述事实提交到实际有权 Git 分支、完整 Return 已收到并验证、远端回读成立后，才能将 `runtime/config/WORKMAP_BINDING.json` 从 NOT_CONFIGURED 采用为此 run 的实际 map/task/管理接收正本，并用已有 `workmap_gate.py` 建立真实 intake 与检查。候选状态字段本身不给合法授权；无正式接收不得派首轮专业执行。
 5. Worker 只有执行 Pro 实际签发有权技术工单后才激活，绝不从 CYF A/B/C 预建工程角色或继承其 Release。

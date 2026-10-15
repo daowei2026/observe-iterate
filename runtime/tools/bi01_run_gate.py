@@ -267,8 +267,9 @@ def main() -> int:
             result = {
                 "check": "status", "ok": not problems, "errors": problems,
                 "workmap_problems": active_binding(view),
-                "preparation_only": True,
-                "sent": False, "run_started": False, "business_gate": False,
+                "adoption_mechanically_present": not active_binding(view),
+                "preparation_only": bool(active_binding(view)),
+                "sent": False, "run_started": None, "business_gate": False,
             }
         else:
             if not args.round:
