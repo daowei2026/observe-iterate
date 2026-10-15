@@ -12,7 +12,7 @@ import sys
 from pathlib import Path, PurePosixPath
 from typing import Any, Callable
 
-POLICY_PATH = "agent_evolution/agent_candidates/runtime_overlay_candidates/agent_owned_long_horizon_overlay_v0_3/08_自然语言运行提示_v0.3.md"
+POLICY_PATH = "runtime/overlay/08_自然语言运行提示_v0.3.md"
 SHA = re.compile(r"[0-9a-f]{40}\Z")
 ROLES = {"management", "professional", "review", "receiver", "maintenance", "owner"}
 DISPATCH_KINDS = {"NORMAL", "DELIVERY_REPAIR"}
@@ -204,22 +204,21 @@ def mode_definition(work: dict, mode: Any) -> dict:
 
 
 def role_body(policy: str, role: str, stage: str) -> str:
-    common = []
-    if stage == "C" and role in {"management", "professional", "receiver", "review"}:
-        if "<!-- C_WORKFLOW_COMMON_BEGIN -->" in policy or "<!-- C_WORKFLOW_COMMON_END -->" in policy:
-            common = [marked(policy, "C_WORKFLOW_COMMON")]
+    """Choose exact pre-authored role text. Stage is only a configured marker key.
+
+    Specialized professional obligations live in BI-01 professional sources and
+    the actual binding. The coordinator never reconstructs them from CYF A/B/C.
+    """
+    suffix = text(stage)
+    if not re.fullmatch(r"[A-Z][A-Z0-9_-]{1,40}", suffix):
+        fail("INVALID_STAGE_ID")
     if role == "management":
-        return "\n\n".join([marked(policy, "MANAGEMENT_DUTY"), *common, marked(policy, "MANAGEMENT_STAGE_" + stage)])
+        return "\n\n".join([marked(policy, "MANAGEMENT_DUTY"),
+                           marked(policy, "MANAGEMENT_STAGE_" + suffix)])
     if role in {"receiver", "review"}:
-        return "\n\n".join([*common, marked(policy, "READONLY_RECEPTION_" + stage)])
-    return "\n\n".join([marked(policy, "TASK_DUTY"), *common, marked(policy, "STAGE_" + stage)])
-
-
-def current_c_work(body: str, allow_unmarked: bool = False) -> str | None:
-    name = "CURRENT_C_WORK"
-    if "<!-- " + name + "_BEGIN -->" in body or "<!-- " + name + "_END -->" in body:
-        return marked(body, name)
-    return text(body) if allow_unmarked else None
+        return marked(policy, "READONLY_RECEPTION_" + suffix)
+    return "\n\n".join([marked(policy, "TASK_DUTY"),
+                       marked(policy, "STAGE_" + suffix)])
 
 
 def current_sources_at_return(repo: Path, response_meta: dict, task_meta: dict,
@@ -299,8 +298,8 @@ def prepare_bootstrap(repo: Path, policy_ref: str, config_path: str, event: dict
     for loc in evidence:
         _, meta = source(repo, loc, repository); refs.append(("本次实际证据", meta))
     identity = "\n".join(k + ": " + str(event[k]) for k in ("work_id", "invocation_id", "assignment_token"))
-    identity += "\nrole: management\nrecipient: " + target + "\n当前阶段：Mission " + work["stage"]
-    identity += "\n当前职责：Mission " + work["stage"] + " 首次实质管理"
+    identity += "\nrole: management\nrecipient: " + target + "\n当前阶段：专业任务 " + work["stage"]
+    identity += "\n当前职责：专业任务 " + work["stage"] + " 首次实质管理"
     locations = "\n".join(label + "：`" + cite(meta) + "`" for label, meta in refs)
     message = "[" + event["invocation_id"] + "]\n" + identity + "\n\n" + role_body(policy, "management", work["stage"])
     message += "\n\n## Owner完整目的\n\n" + goal + "\n来源：" + cite(goal_meta)
@@ -335,7 +334,7 @@ def prepare_dispatch(repo: str | Path, policy_ref: str, config_path: str, event:
     repository = text(cfg["repository"])
     if not isinstance(cfg["works"], dict) or event["work_id"] not in cfg["works"]: fail("UNKNOWN_WORK")
     w = obj(cfg["works"][event["work_id"]], {"stage", "modes", "goal_ref"})
-    if w["stage"] not in {"A", "B", "C"}: fail("STAGE")
+    if not isinstance(w["stage"], str) or not re.fullmatch(r"[A-Z][A-Z0-9_-]{1,40}", w["stage"]): fail("STAGE")
     bound_raw, bound_meta = source(repo, event["binding_ref"], repository)
     b = loads(bound_raw)
     if isinstance(b, dict) and b.get("kind") == "BOOTSTRAP":
@@ -430,16 +429,16 @@ def prepare_dispatch(repo: str | Path, policy_ref: str, config_path: str, event:
         if route_key == "same_work":
             cont_body, cont = source(repo, resolve(r["continuation_ref"], return_meta), repository)
             label = "原任务内最新接续"
-            if not repair and w["stage"] == "C":
-                if current_sources_at_return(repo, response_meta, task_meta, adoption_meta):
-                    current_work_body = current_c_work(cont_body, allow_unmarked=True)
-                    current_work_meta = cont
-                else:
-                    label = "已被当前任务替代的旧续作（仅历史）"
+            if not repair and current_sources_at_return(repo, response_meta, task_meta, adoption_meta):
+                # Authorized latest continuation is not tied to any CYF Mission.
+                current_work_body = text(cont_body)
+                current_work_meta = cont
+            else:
+                label = "被当前任务替代的旧续作（仅历史）" if not repair else label
             refs.append((label, cont))
-    if not repair and w["stage"] == "C" and current_work_body is None:
-        # 正常派发已要求 current_task_ref 使用全文；新任务保留完整正文。
-        # 引文中的 CURRENT_C_WORK 标记不得截掉任务外层的角色与施工要求。
+    if not repair and current_work_body is None:
+        # New adopted tasks must use their full authorized text; do not infer
+        # the current work from a special C_WORKFLOW/CURRENT_C_WORK marker.
         current_work_body = text(task_body)
         current_work_meta = task_meta
     ev = event.get("evidence_refs", [])
@@ -463,11 +462,11 @@ def prepare_dispatch(repo: str | Path, policy_ref: str, config_path: str, event:
             if isinstance(n, bool) or not isinstance(n, (int, float)) or not math.isfinite(n) or n < 0: fail("INVALID_EFFORT")
             facts.append(label + "：" + str(n))
     identity = "\n".join(k + ": " + str(event[k]) for k in ("work_id", "invocation_id", "assignment_token"))
-    identity += "\nrole: " + role + "\nrecipient: " + target + "\n当前阶段：Mission " + w["stage"]
+    identity += "\nrole: " + role + "\nrecipient: " + target + "\n当前阶段：专业任务 " + w["stage"]
     if role == "management":
-        duty = "Mission " + w["stage"] + " 实质管理与阶段接收"
+        duty = "专业任务 " + w["stage"] + " 实质管理与阶段接收"
     elif role in {"review", "receiver"}:
-        duty = "Mission " + w["stage"] + " 独立只读审查"
+        duty = "专业任务 " + w["stage"] + " 独立只读审查"
     else:
         duty = mode_def["display_name"]
     identity += "\n当前职责：" + duty

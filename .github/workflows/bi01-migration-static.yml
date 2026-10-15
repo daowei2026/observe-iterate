@@ -1,0 +1,68 @@
+name: Temporary BI-01 migration static verification
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'runtime/overlay/**'
+      - 'runtime/config/**'
+      - '.github/workflows/bi01-migration-static.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  static-only:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Python, JSON, marker and path static checks (no runtime invocation)
+        shell: bash
+        run: |
+          python - <<'PY'
+          import ast
+          import json
+          import pathlib
+          import re
+          root=pathlib.Path('.')
+          policy_path=pathlib.Path('runtime/overlay/08_自然语言运行提示_v0.3.md')
+          cfg_path=pathlib.Path('runtime/config/COORDINATOR_DISPATCH.json')
+          tool_path=pathlib.Path('runtime/overlay/tools/management_prompt.py')
+          overlay12_path=pathlib.Path('runtime/overlay/12_管理接收与地图校验.md')
+          policy=policy_path.read_text(encoding='utf-8')
+          script=tool_path.read_text(encoding='utf-8')
+          ast.parse(script,filename=str(tool_path))
+          cfg=json.loads(cfg_path.read_text(encoding='utf-8'))
+          assert cfg['schema']=='coordinator-dispatch/v3'
+          assert cfg['repository']=='daowei2026/observe-iterate'
+          work=cfg['works']['BI-01']
+          assert work['stage']=='BI01'
+          assert work['modes']['M-START']['purpose']=='professional_work'
+          assert work['modes']['OBSERVATION_I4']['purpose']=='professional_work'
+          assert work['modes']['INDEPENDENT_REVIEW']['purpose']=='read_only_reception'
+          assert (root/work['goal_ref']['path']).is_file()
+          assert 'POLICY_PATH = "runtime/overlay/08_自然语言运行提示_v0.3.md"' in script
+          assert 'w["stage"] not in {"A", "B", "C"}' not in script
+          assert 'def current_c_work(' not in script
+          for suffix in ('MANAGEMENT_DUTY','MANAGEMENT_STAGE_BI01','TASK_DUTY','STAGE_BI01','READONLY_RECEPTION_BI01','RETURN_REPAIR','REFERENCE_USE','RETURN_TAIL','RETURN_REPAIR_TAIL'):
+              for part in ('BEGIN','END'):
+                  assert policy.count(f'<!-- {suffix}_{part} -->')==1, (suffix,part)
+          assert '<!-- C_WORKFLOW_COMMON_BEGIN -->' not in policy
+          assert '<!-- STAGE_A_BEGIN -->' not in policy
+          o12=overlay12_path.read_text(encoding='utf-8')
+          assert 'O=runtime/overlay' in o12
+          assert 'CONFIG=runtime/config/COORDINATOR_DISPATCH.json' in o12
+          assert '"$O/tools/execution_handoff.py" dispatch prepare' in o12
+          assert '"$O/tools/execution_handoff.py" dispatch verify' in o12
+          assert 'if len(sys.argv)>1 and sys.argv[1]=="dispatch":' in (root/'runtime/overlay/tools/execution_handoff.py').read_text(encoding='utf-8')
+          for md in (policy_path,overlay12_path):
+              text=md.read_text(encoding='utf-8')
+              for link in re.findall(r'\]\(([^)\s]+)',text):
+                  if re.match(r'^[a-z]+:',link,re.I) or link.startswith('#'):continue
+                  local=link.split('#')[0]
+                  if local: assert (md.parent/local).is_file(), (md,local)
+          flag=(root/'runtime/config/ADOPTION_STATUS.md').read_text(encoding='utf-8')
+          assert 'DO_NOT_DISPATCH' in flag
+          print('STATIC_OK: Python AST, JSON schema shape, BI01 role markers, config and relative links')
+          print('NO_PHONE_NO_MODEL_NO_LONGRUN_EXECUTION')
+          PY

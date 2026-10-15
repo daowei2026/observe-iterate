@@ -1,23 +1,27 @@
 {
-  "schema": "observation-iteration-coordinator-dispatch/v1",
+  "schema": "coordinator-dispatch/v3",
   "repository": "daowei2026/observe-iterate",
-  "policy_path": "runtime/overlay/08_协调者运行入口.md",
-  "professional_entry": "professional/CURRENT_EXECUTION.md",
-  "professional_source_index": "professional/source/INDEX.md",
-  "roles": {
-    "management": "管理 Pro",
-    "professional": "观察迭代执行 Pro",
-    "review": "独立审查 Pro",
-    "worker": "Worker Codex",
-    "operator": "操作端",
-    "owner": "Owner"
-  },
-  "modes": {
-    "management": {"purpose": "management"},
-    "professional_observation": {"purpose": "professional_work"},
-    "independent_review": {"purpose": "read_only_reception"},
-    "worker_execution": {"purpose": "delegated_execution"}
-  },
-  "status": "candidate_not_adopted",
-  "note": "当前具体 work、task、route、recipient、Owner goal 与运行状态只能由真实有权任务提供，不在本固定配置中预填。"
+  "works": {
+    "BI-01": {
+      "stage": "BI01",
+      "goal_ref": {
+        "path": "professional/source/00_AGENT_CHARTER_AND_STAGE_CONTRACT.md",
+        "selector": "full"
+      },
+      "modes": {
+        "M-START": {
+          "display_name": "观察迭代首次实质管理（需真实Owner输入与BOOTSTRAP）",
+          "purpose": "professional_work"
+        },
+        "OBSERVATION_I4": {
+          "display_name": "I4 真实结果观察与反证挑战",
+          "purpose": "professional_work"
+        },
+        "INDEPENDENT_REVIEW": {
+          "display_name": "具名独立只读审查（专业方法未齐，不自动通过）",
+          "purpose": "read_only_reception"
+        }
+      }
+    }
+  }
 }

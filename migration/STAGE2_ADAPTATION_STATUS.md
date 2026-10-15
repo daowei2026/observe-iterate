@@ -11,9 +11,17 @@
 - DR14：保留BOOTSTRAP、BINDING、RETURN、routes、triggers、持续复看和主控顺序；替换固定Feature地图及C_WORK专属要求。
 - Overlay13：保留原有角色回交、去重、权限和持续责任；将A/B/C具体交付义务改为BI-01专业来源引用。
 
+## 连接中断后已恢复的第二批（2026-10-15）
+
+- Overlay08：消息固定正文改为BI-01已存在的专业引用和BI01角色标记；原通用运输、Owner目标、工作身份、准确来源、回交和材料使用规则保留。对CYF专属正文的删除不等于BI-01专业能力已齐。
+- `runtime/overlay/tools/management_prompt.py`：策略文件位置改为本仓实际路径；通用stage不再只允许A/B/C；同工作继续和新有权任务不再依赖CURRENT_C_WORK特殊标记；机械验签、指令来源和recipient核验保持。
+- Overlay12：原有`workmap`、`prepare/verify`、去重及路由说明保留；命令入口改成`O=runtime/overlay`、`CONFIG=runtime/config/COORDINATOR_DISPATCH.json`；旧U2/U3配置和状态不作为BI-01授权。
+- 固定Dispatch配置：将旧候选占位结构与现有脚本合同`coordinator-dispatch/v3`对齐，提供`BI-01`技术工作标识和`BI01`模板stage及候选mode；目标/数据来源来自`professional/`，但没有实际BOOTSTRAP/BINDING、接收者和合法任务前不得发送。采用边界见`runtime/config/ADOPTION_STATUS.md`。
+- 第二批文件只在本PR工作分支提交，不动`main`和第一阶段保真提交；不做手机/Pro/业务试跑。
+
 ## 尚待适配
 
-DR01–05、07–11及管理Harness的其他专业段落；Overlay00–12；`management_prompt.py`的A/B/C代码分支与配置v3接线、Schema/测试、Release及生成视图、全部跨目录链接、cgpterm侧入口。不得将当前文档已通用化等同整套系统已通用化。
+DR01–05、07–11及管理Harness其他专业段落；Overlay00–07、09–11中CYF专属部分；其余程序／Schema／测试的BI-01场景覆盖、Release和生成视图、全库跨目录链接、cgpterm侧入口。配置虽已对齐消息组装工具的静态合同，但真实管理/专业Binding和路由尚未采用，不能声称端到端可运行。不得将当前文档已通用化等同整套系统已通用化。
 
 ## 方法
 
