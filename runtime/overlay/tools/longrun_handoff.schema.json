@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:observation-iteration:longrun-return:v1",
+  "title": "ROLE_RETURN v1 — structure only",
+  "type": "object",
+  "required": [
+    "schema",
+    "work_id",
+    "invocation_id",
+    "assignment_token",
+    "work_status",
+    "completed_scope_ref",
+    "remaining_scope_ref",
+    "artifact_refs",
+    "delivery",
+    "materials",
+    "handoff",
+    "role_outputs"
+  ],
+  "properties": {
+    "schema": {
+      "const": "longrun-return/v1"
+    },
+    "work_id": {
+      "type": "string"
+    },
+    "invocation_id": {
+      "type": "string"
+    },
+    "assignment_token": {
+      "type": "string"
+    },
+    "work_status": {
+      "enum": [
+        "IN_PROGRESS",
+        "SUBMITTED",
+        "NEEDS_DECISION",
+        "WAITING_INPUT"
+      ]
+    },
+    "completed_scope_ref": {},
+    "remaining_scope_ref": {},
+    "artifact_refs": {
+      "type": "array"
+    },
+    "delivery": {
+      "type": "object"
+    },
+    "materials": {
+      "type": "object"
+    },
+    "handoff": {
+      "type": "object"
+    },
+    "role_outputs": {
+      "type": "object"
+    }
+  }
+}
