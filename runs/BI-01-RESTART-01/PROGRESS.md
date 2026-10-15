@@ -6,7 +6,7 @@
 
 - run：`BI-01-RESTART-01`
 - 稳定业务路由键：`BI-01`
-- 当前阶段：全新运行已启动，正在准备首轮管理 Pro `M-START`（R0001）
+- 当前阶段：首轮管理 Pro `M-START`（R0001）已生成，正在完成预派发发布与门禁
 - 当前业务地图：尚未形成；必须由 R0001 管理 Pro 真实形成
 - 当前专业任务：尚未签发；不得先派专业执行
 - Workmap Binding：`NOT_CONFIGURED`
@@ -23,14 +23,13 @@
 
 ## 当前任务与下一动作
 
-1. 发布并远端回读真实 `question-work/v2 BOOTSTRAP`。
-2. 生成 R0001 唯一 invocation/token/marker，由 Overlay12 输出原样 `PROMPT.md`。
-3. 发布 `INVOCATION.json` 与 `PROMPT.md`，以预发送提交为远端完成基线。
-4. 对 exact commit 运行 Overlay12 verify 与 `bi01_run_gate.py pre-dispatch`。
-5. 仅在全部 Gate 与新聊天身份成立后，通过新的零继承手机 episode 单次发送。
+1. 发布并远端回读 R0001 的 `INVOCATION.json` 与 Overlay12 原样 `PROMPT.md`。
+2. 对 exact commit 运行 Overlay12 verify 与 `bi01_run_gate.py pre-dispatch`。
+3. 将门禁结果写入本轮 `GATE_CHECK.json`，再以最终预发送提交作为远端完成基线。
+4. 仅在全部 Gate 与新聊天身份成立后，通过新的零继承手机 episode 单次发送。
 
 ## 阻断与恢复点
 
 - 当前无全局阻断。
-- R0001 仍是 `NOT_SENT`；任何未知发送效果都禁止重发。
+- R0001 仍是 `NOT_SENT`，提示 SHA-256 为 `ebb3b58993b4fe150056c990b79fbe0295f09d6d9bda13a14be3f5d67be03308`；任何未知发送效果都禁止重发。
 - 地图、当前任务、管理接收与后继记录只能从真实管理回交形成，操作端不预填。
