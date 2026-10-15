@@ -29,7 +29,7 @@
 
 ## 尚待适配
 
-DR01–05、07–11及管理Harness其他专业段落；Overlay00–07、09–11中CYF专属部分；其余程序／Schema／测试的BI-01场景覆盖、Release和生成视图、全库跨目录链接、cgpterm侧入口。配置虽已对齐消息组装工具的静态合同，但真实管理/专业Binding和路由尚未采用，不能声称端到端可运行。不得将当前文档已通用化等同整套系统已通用化。
+DR01–05、07–11及管理Harness其他专业段落；Overlay01–07、11及未逐项核查部分可能保留的CYF专业绑定；其余程序／Schema／旧测试的BI-01完整场景覆盖、Release和生成视图、全库跨目录引用。已定点调整Overlay00、08、09、10、13和CURRENT_EXECUTION及cgpterm个人入口，不代表全仓适配完成。配置虽已对齐消息组装工具的静态合同，但真实管理/专业Binding和路由尚未采用，不能声称端到端可运行。不得将当前文档已通用化等同整套系统已通用化。
 
 ## 方法
 
@@ -50,10 +50,16 @@ DR01–05、07–11及管理Harness其他专业段落；Overlay00–07、09–11
 
 真实受控试跑前的阻断项（不得以离线 PASS 越过）：
 
-1. **有效入口中的 CYF 业务语义尚未清干净**：runtime/overlay/08_自然语言运行提示_v0.3.md 的共同 MANAGEMENT_DUTY / TASK_DUTY 仍有“特征实际落地”、工程施工、完整 Feature 地图等 CYF 语义；overlay/00、overlay/CURRENT_EXECUTION、overlay/09/10 等仍有 A/B/C 的当前式表述。需按原文逐段辨识，保留通用长程机制，移除实际消息中的 CYF 专业强制要求，不能仅加免责注释或替换标签。
+1. **已明确发现的活动入口旧业务要求已定点清理，但未全量验收**：本轮更新 Overlay08 的共同 MANAGEMENT_DUTY/TASK_DUTY 及 Overlay00、CURRENT_EXECUTION、09、10、13 中已点名的 A/B/C、C 五段、Feature/Reflex/CEPS 专业默认要求；保留通用管理、回交与权限。其它 DR/Overlay 和旧测试未系统改造；本轮未回归、未运行，不能据此宣称所有消息都已适配或整套运行可用。
 2. **尚未真实采用工作与接收者**：runtime/config/WORKMAP_BINDING.json 为 NOT_CONFIGURED；尚无依据真实 Owner 输入形成并签发的 BI-01 BOOTSTRAP/BINDING、chat recipient、采用任务全文、既有在途对账及发送状态。不得用合成测试记录填入 runs/，也不得把旧 CYF/U2/U3 在途作为当前事实。
 3. **多轮回交接续未获得实测证据**：ROLE_RETURN、QUESTION_WORK_RETURN 的真实收取、原始回答归档、去重、续作/管理 Gate 转交和中断恢复尚未通过 BI-01 角色实测；receive_return / decide_next_action / apply_transition 尚无完整已测试自动实现。首轮可明确由主控按 Overlay13 协议人工监督处理，但不能称自动闭环或无人值守。
 4. **专业与发布边界**：professional/TASK_ROUTER.md 为 MISSING、独立审查 Harness 为 PARTIAL；真实 I4 需要可消费的 G3 结果与准确 Case/Source/Method/As-Of，不存在时管理 M-START 应先判定缺口而非虚报 G3。runtime/release/ 仍为 CYF 锁定发行副本，不得作为 BI-01 正式版本使用。
 5. **手机现场**：本次未获得 cgpterm MCP、设备控制权、目标聊天身份、实际 payload 送达及可恢复性证据；只读远端 GitHub 无法确认 Codex 本地未提交工作。
 
-最小后继：先对实际进入消息的 Overlay08 管理/专业正文及相邻入口完成 BI-01 语义去绑定并加入针对性回归；然后由有权管理/Owner 提供真实 BOOTSTRAP、接收者、权限和既有在途核对，按 exact commit 做 dry-run prepare/verify。通过后才进入一条真实管理→专业执行→真实回交→管理接收的**人工监督**试跑；任一身份/授权/证据不可核即 NO_SEND，独立审查和手机自动化不可冒充已通过。暂不合并 PR、推广 Release 或改写历史运行状态。
+最小后继：由操作端在真实启动时先核旧 BI-01-IT-01 的管理决定、实际 I4 回交、最新在途和聊天身份；不要默认从零 BOOTSTRAP，也不把旧运行态自动移入新仓。锁定本仓 exact commit 后，只有取得实际授权、已采用任务、可取得接收者及未发送证据时才用真实 prepare/verify 并发送；身份/权限/证据不可核即 NO_SEND。首个真实回交继续按 Overlay13 由主控按协议处理，不冒称自动引擎已部署；不合并 PR、不推广 Release、不改写历史。
+
+## 2026-10-15 定点修正及现实接续来源
+
+本轮只修改可确认的旧业务正文/入口、保留完整通用机制；**没有运行测试、回归、手机、专业 Pro 或长程试跑**。此前离线成功记录属于前序提交，不能当本次修改的测试结果。为遵守本轮不运行要求，已将临时 `bi01-offline-smoke.yml` 从 push 自动触发改为手动触发。
+
+另确认旧业务仓 `daowei2026/complex-systems-vocabulary` 的 `docs/network-dynamic-ceps-factory/capital-management-purpose/observation-iteration-runs/BI-01-IT-01/` 保留真实 `CURRENT.md`、`PROGRESS.md`、`ROUTES.md`、tasks 与 returns；在所读分支中截至 2026-10-13，I4 rerun 已有第三段完整回交，原路线为 CONTINUE、下一消息待发，G4 未获管理接收。这些是**旧仓历史快照**，不是本仓已采用的在途或今日手机事实；实际操作前须 fresh 对账，不能创建第二个管理/执行任务或盲目重发。
