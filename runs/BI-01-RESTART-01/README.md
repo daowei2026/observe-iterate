@@ -5,7 +5,7 @@
 <a id="common"></a>
 ## 运行身份与历史隔离
 
-- 唯一新运行空间为本目录；下一次实际 work_id、管理 chat/thread 与 local long-task task_id 在 Owner 重新启动后**全新建立**。
+- 唯一新运行空间为本目录；业务协调器固定 `work_id=BI-01`，但 `run_id=BI-01-RESTART-01`、所有新 invocation/token/marker、管理/执行 chat/thread 和 local long-task 身份必须重新建立且不继承旧账本。相同业务 work_id 不意味着旧试跑仍然活动。
 - 旧业务仓 `complex-systems-vocabulary/.../observation-iteration-runs/BI-01-IT-01/` 是**已停止试跑的历史**，包括 10 月 13 日前三段、10 月 15 日第四段等 I4 结果/旧 G3 限定决定、旧轮次/聊天，全部**不继承**为新 run 的业务成果、当前任务、有效 Gate 或后继。Git 历史保留不等于接续。
 - 可以从 `professional/source/00—07` 和实际设计/数据原件重新理解 I1–I3；是否从 I4 开始以及 G3 可消费范围由下一次管理 Pro 实际判断，不能预填已通过。
 - 本次提交不是发消息授权，任何模型/手机业务行动需要之后的 Owner 明确开工和真实身份/来源/权限证据。

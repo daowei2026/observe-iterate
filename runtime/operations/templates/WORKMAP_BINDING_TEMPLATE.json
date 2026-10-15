@@ -45,11 +45,10 @@
         "bi01"
       ],
       "watch_roots": [
-        "runs/BI-01-RESTART-01/provenance/turns",
         "runs/BI-01-RESTART-01/artifacts",
         "runs/BI-01-RESTART-01/reviews/independent"
       ]
     }
   },
-  "note": "TEMPLATE ONLY. Do not make ADOPTED until actual M-START map/current task/manager decision and receiver exist, workmap snapshot from real exact commit and intake checked. For new run BOOTSTRAP happens before binding."
+  "note": "TEMPLATE ONLY. Do not make ADOPTED until actual M-START map/current task/manager decision and receiver exist, workmap snapshot from real exact commit and intake checked. For new run BOOTSTRAP happens before binding. Round transport (provenance/turns) is deliberately excluded from workmap watch_roots to avoid making a pre-send round's own intake stale; substantive artifacts and independent results remain watched."
 }
