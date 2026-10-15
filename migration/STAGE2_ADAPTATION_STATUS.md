@@ -63,3 +63,17 @@ DR01–05、07–11及管理Harness其他专业段落；Overlay01–07、11及�
 本轮只修改可确认的旧业务正文/入口、保留完整通用机制；**没有运行测试、回归、手机、专业 Pro 或长程试跑**。此前离线成功记录属于前序提交，不能当本次修改的测试结果。为遵守本轮不运行要求，已将临时 `bi01-offline-smoke.yml` 从 push 自动触发改为手动触发。
 
 另确认旧业务仓 `daowei2026/complex-systems-vocabulary` 的 `docs/network-dynamic-ceps-factory/capital-management-purpose/observation-iteration-runs/BI-01-IT-01/` 保留真实 `CURRENT.md`、`PROGRESS.md`、`ROUTES.md`、tasks 与 returns；在所读分支中截至 2026-10-13，I4 rerun 已有第三段完整回交，原路线为 CONTINUE、下一消息待发，G4 未获管理接收。这些是**旧仓历史快照**，不是本仓已采用的在途或今日手机事实；实际操作前须 fresh 对账，不能创建第二个管理/执行任务或盲目重发。
+
+
+## 旧试跑停止后的下一次清洁运行准备（2026-10-15）
+
+Owner 已明确停止此前 BI-01/I4 试跑，希望运行机制符合预期后从实际任务重新运行。此前所读历史和第四段完整回交仍存在于旧业务 Git 历史中，但不迁移为新 run 的业务成果、Gate、聊天、在途、预算或运行状态；不删除远端 Git 历史，也不凭过去有成果断言新运行已启动。
+
+- 新预备工作面：runs/BI-01-RESTART-01/README.md（PREPARED_NOT_STARTED）；00 管理地图、01 当前任务、真实 R0001、管理审查/绑定尚未产生，不能预造。
+- 运行合同：runtime/operations/BI01_REAL_RUN_V1.md、ROUND_RECORD_CONTRACT.md、ADOPTION_HANDOFF_CHECKLIST.md。独立的新 run_id 和 chat/root/invocation/token；固定配置 work_id 为 BI-01，不能擅自把 run ID 当工作路由 ID。
+- CYF 预期机制的落地差异：CYF_MECHANISM_RUNTIME_GAP_AUDIT.md。已给出实际角色 Pro Rnnnn、管理者 00 地图与 01 任务、真实 review、v2 Workmap A/B 提交、Owner PROGRESS、输入/消费版本与本地调度状态的边界。默认日常生效规则已对齐 Overlay/DR 管理及 cgpterm 观察迭代控制 Skill；源 CYF Release 和未适配专业段不得自动装入本次任务。
+- 执行硬门修复：v3 消息首行 [invocation_id] 与 cgpterm scheduler 的 bracket round marker 精确绑定；v2 Schema 增加 I1— I6 正式问题 ID，保留旧 v1 原样兼容；派发配置补管理 M-REASSESS/M-CLOSE、I1— I6 modes（不是自动 Router）；BI-01 gate 检查首行、准确 SHA、源身份、未采用地图保护、真实双 Return；Workmap 模板不将每轮 pre-send provenance/turns 放入 watched business result trees，防止自过期，实质 artifacts 和独立复核仍能触发接收。
+- cgpterm 个人观察迭代控制 Skill 已同步新运行入口、首次管理前的真实 Owner START/BOOTSTRAP、准确 round marker、GitHub 预发送基线、Workmap/两份回交、角色分工与现场错误隔离；通用手机/调度器代码未重写。
+- 离线 CI 证据：[BI-01 mechanical-gates run 38763497170](https://github.com/daowei2026/observe-iterate/actions/runs/38763497170) 与 [Workmap 自过期场景 run 38764028763](https://github.com/daowei2026/observe-iterate/actions/runs/38764028763) 均为 success。测试只使用合成 Git/静态规范，无业务 ZIP、Pro、真实手机或新长期任务，因此**不能标记真实运行闭环通过**。
+
+仍须真实环境才能证实或形成的义务：下一次 Owner 明确 GO、首次管理业务地图/任务真实交付与管理接收、Workmap 的实际授权采用/reader、专业题 Router 缺失的可用范围、真正专业独立审查 Harness（仍 PARTIAL）、实际唯一手机聊天与消息发送收取、每 R 回交和动态管理触发、外部 timer/继续唤醒能力，以及没有程序级强制实现的 receive_return/decide_next_action/apply_transition。上述缺口不得用文档或合成 PASS 代替；暂不运行手机、不发 Pro、不合并 PR、不升级 Release。历史的试跑已发生，不可将之前“从未试跑”的旧段理解为现在的全局状态。
