@@ -1,0 +1,9 @@
+# Project Upload Views
+
+`project_upload_core/`：固定前门、各Mission正向骨架、当前DR00—DR11和MANAGEMENT_METHOD_HARNESS，以及共享平台参考P00 router／P01 manifest。采用本次修订时更新实际入口与受影响成员，不能只上传新增文件、保留矛盾旧指令继续生效。
+
+`project_upload_optional/`：按mode／触发加载的深材料；P_01～P_08是共享平台工程正文，P_09是来源追溯。可作为Project Sources保存，但运行时按R_CURRENT_EXECUTION、P00和R01_RUNTIME_SOURCE_LOADING_PLAN读取命中正文，不在提示中一次性全灌入。
+
+四个Mission／Overlay runtime目录和platform_engineering_reference_v0_1是相应运行投影；flat目录只是上传视图，不是第二套业务真源。DR及管理Harness始终从dual_route_execution规范源生成同blob。平台参考映射仍按PLATFORM_ENGINEERING_PROJECTION_MAP.yaml。
+
+实际Pro既要得到本批用例输入，也要得到相应完整专业方法。旧上传／旧聊天不会自动继承GitHub的新修订。纯文档不能运行Overlay工具；prepare/notice/check/dispatch在现有执行端调用，返回结果不能假称已经投递或部署。具体采用见Overlay12及DR08，不需要另建上传管理Agent。

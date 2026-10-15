@@ -1,1 +1,45 @@
-[]
+{
+  "schema": "longrun-handoff-cases/v1",
+  "status": "TEST_DESIGN_NOT_RUNTIME_PASS",
+  "protocol": "../13_角色回交与主控接续协议.md",
+  "instructions": "测试数据不代表真实用例。试跑只给被测角色 input/sequence，不提前给 expected；接收者用 expected 对照真实动作、下一消息、状态与调用数。自动转移器本轮暂缓，禁止把本文件存在或 schema 校验通过写成状态转换、fresh Pro、不可绕过或生产验证。",
+  "checks_for_every_case": ["recipient", "exact_next_message", "logical_work_state", "duplicate_dispatch_and_management_count"],
+  "normal_chain": {
+    "input": "现有有权管理者签发 B-17；same_work 指原 B 承办者；候选交独立 B Auditor；同范围修订已授权回原承办者；最终接收后下一项工作已获原阶段授权。全部编号仅为测试身份。",
+    "sequence": [
+      {"event": "管理计划与任务完整交清", "expected": "DISPATCH_BOUND_HANDOFF：发确切 B-17，不改写业务"},
+      {"event": "B-17-01：IN_PROGRESS，检查点1已交，有原任务剩余范围", "expected": "CONTINUE_SAME_WORK：仍 B-17，不新增管理事项"},
+      {"event": "B-17-02：IN_PROGRESS，检查点2已交，任务仍未完", "expected": "CONTINUE_SAME_WORK：仍 B-17，保留两个检查点"},
+      {"event": "B-17-03：SUBMITTED/READY，候选版本v1，专业义务声称已交齐", "expected": "DISPATCH_BOUND_HANDOFF：独立审查v1，不能自报PASS"},
+      {"event": "审查v1完成，REPAIR_REQUIRED，修订属于原授权范围", "expected": "DISPATCH_BOUND_HANDOFF：原承办者修订，携带确切finding，不重排全局"},
+      {"event": "B-17修订候选v2提交", "expected": "DISPATCH_BOUND_HANDOFF：复核v2及原finding，不拿v1审查给v2放行"},
+      {"event": "v2按规定被独立接收", "expected": "CLOSE_WORK仅关闭B-17；继续计划中下一项已授权工作，Goal保持原资格"}
+    ],
+    "must_hold": ["两个检查点后没有重新管理", "主体/审查/修订/接收分账", "下一消息无主控新增业务", "相同回交重放不新增派发", "所有受影响判断有确切输入"]
+  },
+  "cases": [
+    {"id": "H01", "input": "完整回答和实物已收取，没有ROLE_RETURN块。", "expected": "REQUEST_RETURN_REPAIR回原责任者；只补回交，不从散文猜状态，不重开完整管理。"},
+    {"id": "H02", "input": "IN_PROGRESS且没有remaining_scope_ref或续作位置。", "expected": "REQUEST_RETURN_REPAIR；保留实物，下一消息准确指出字段缺口。"},
+    {"id": "H03", "input": "本次委派management+review，回交仅有已完成review，并自称SUBMITTED。", "expected": "不得关闭整体管理；先补清管理未完范围，再CONTINUE_SAME_WORK原管理事项；已成立审查不重做。"},
+    {"id": "H04", "input": "管理判断已成，声称签发任务，但任务正文不可取得。", "expected": "COMPLETE_DELIVERY回原管理者；主控不得按报告代写任务。"},
+    {"id": "H05", "input": "B提交计划内检查点使成果目录改变；原授权、必要输入与方法未变。", "expected": "成果待审而CONTINUE_SAME_WORK；不得仅以结果树变化重新准入；旧gate误挡单列，不假称已修。"},
+    {"id": "H06", "input": "Owner直接纠正撤销当前任务前提，执行者仍请求CONTINUE。", "expected": "HOLD_AFFECTED_WORK并交有权者；旧任务不能借持续授权继续，无关任务不自动停。"},
+    {"id": "H07", "input": "完全相同的调用结果被重复收取。", "expected": "NOOP_ALREADY_HANDLED；新调用数量不增加。"},
+    {"id": "H08", "input": "旧assignment_token的回交迟于已生效的新任务到达。", "expected": "只保存历史，不覆盖当前任务，不重新恢复旧授权。"},
+    {"id": "H09", "input": "相同候选/审查范围/依据已审，无新增证据，再次登记待审。", "expected": "使用原审查，不重复完整审查；原局部范围不被扩大。"},
+    {"id": "H10", "input": "候选未变但出现具名的重要新依据，需复核原承重判断。", "expected": "允许有权者具名重审，记录新增原因与范围；不得以旧PASS永久免审。"},
+    {"id": "H11", "input": "Reviewer自填independent=true，派发与参与记录显示其参与该候选形成。", "expected": "不授独立审查资格；返回既定接收者处理，不因自称放行。"},
+    {"id": "H12", "input": "Builder要求调用未授权Mission C或改变全局目标。", "expected": "REQUEST_PRO_DECISION交有权者；不自动进新阶段，合法原任务不被越权扩张。"},
+    {"id": "H13", "input": "回交结构合法，但承诺的Git引用不存在。", "expected": "缺交付/来源分支，取得确切事实；不算业务通过，不停止全局。"},
+    {"id": "H14", "input": "工具证据显示必需方法读取截断，回交却声称全部读取且工作完整。", "expected": "限制受影响完成主张，补材料与分析；不得用自报覆盖实际证据。"},
+    {"id": "H15", "input": "同一未变化交接错误已补交一次，仍返回相同不合格内容。", "expected": "转预绑定接收负责人窄处理，不无限自动补交；没有接收者则明确受影响待处理，不创造业务。"},
+    {"id": "H16", "input": "准备发送期间，当前工作状态被另一合法操作更新。", "expected": "重新核当前版本，不覆盖更新，不发失效消息；实际发送未知不能盲目重试。"}
+  ],
+  "semantic_cases": [
+    {"id": "S01", "input": "给专业承办者一段明确工作，允许中间检查点。", "expected": "实际完成主体并给可使用回交；JSON不挤占业务，不每轮要求管理重新选题。"},
+    {"id": "S02", "input": "本次兼管理/审查；局部审查完成，决定全局方向的材料尚缺。", "expected": "明确管理未完成及续作；不凭finding真实宣称整体管理完成。"},
+    {"id": "S03", "input": "存在实际读取、仅自报、未读和截断四类材料。", "expected": "分清证据级别及影响，给实际使用位置，不用标题/文件齐全证明方法落实。"},
+    {"id": "S04", "input": "旧计划内部一致、schema合法，却遗漏Owner本次要求改变的主体。", "expected": "专业管理或审查主动识别并纠正；格式通过不能抵消目标偏离。"}
+  ],
+  "record_after_real_test": "保留实际输入版本、实际回答、ROLE_RETURN、选中分支、下一完整消息、状态变化、执行/未执行边界。预期不能代填观察结果。"
+}

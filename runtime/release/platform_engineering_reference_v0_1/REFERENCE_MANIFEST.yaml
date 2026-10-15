@@ -1,0 +1,85 @@
+schema_version: feature-platform-engineering-reference-pack/v0.1
+package_id: feature-platform-engineering-reference-pack-candidate-v0.1.0
+material_class: FIXED_COLD_PLATFORM_ENGINEERING_REFERENCE
+integration_status: source_snapshot_integrated_candidate
+imported_on: '2026-09-14'
+target_repository: daowei2026/feature-refinement-implementation-agent-evolution
+target_parent_commit: 20254fb8bd36a769a00be02a73bf98ad36732494
+authority:
+  business_should_be: current Owner correction and accepted Taskpack
+  platform_engineering_constraints: imported upstream engineering documents within their stated scope
+  current_code_and_runtime: per-task exact live RepoFact and runtime evidence
+runtime_policy:
+  default_hot_load: false
+  router_hot_load_when_engineering_or_implementation_selected: true
+  allow_latest_fallback: false
+  allow_consumer_owned_text_copy: false
+  requires_live_resolution_for_current_api_and_caller: true
+references:
+- reference_id: FP-PY-OUTPUT-ENCODING
+  path: python_numba/03A_output_contract_and_encoding_checks.md
+  bytes: 1973
+  sha256: a4686ed9bb8044cbd3c5226e12d66259a4a2893fe906cdcf9b9de174b8a87efc
+  upstream_path: mquant/docs/agent-workflow/pre-L0/03A_output_contract_and_encoding_checks.md
+  upstream_identity: mquant/docs@f2972195eec5f51b0b2425856a8917b094333a7e
+  import_state: tracked_clean
+- reference_id: FP-PY-ARTIFACT-BOUNDARY
+  path: python_numba/03B_scope_and_artifact_boundary_checks.md
+  bytes: 1791
+  sha256: 72c588c4c59b7821039968da8a8ba3064ceabbb1424e2c8bdd89518a36adbb6d
+  upstream_path: mquant/docs/agent-workflow/pre-L0/03B_scope_and_artifact_boundary_checks.md
+  upstream_identity: mquant/docs@f2972195eec5f51b0b2425856a8917b094333a7e
+  import_state: tracked_clean
+- reference_id: FP-RUNTIME-HOTPATH
+  path: python_numba/03C_runtime_shape_and_hotpath_checks.md
+  bytes: 3316
+  sha256: d36130bf9cb79cb6019db61387de7c65b5bc9b2448be293bf6f8b403c6da40f3
+  upstream_path: mquant/docs/agent-workflow/pre-L0/03C_runtime_shape_and_hotpath_checks.md
+  upstream_identity: working_tree_snapshot_over_mquant_docs@f2972195eec5f51b0b2425856a8917b094333a7e
+  import_state: tracked_modified
+- reference_id: FP-CROSS-LANGUAGE-HANDOFF
+  path: cross_language/07_cross_language_product_handoff.md
+  bytes: 6468
+  sha256: e604a7ae59f03f3506281c3318e1ef6a1bbeceaa0557df15def680ab63810e3a
+  upstream_path: mquant/docs/agent-workflow/pre-L0/07_cross_language_product_handoff.md
+  upstream_identity: working_tree_snapshot_without_upstream_commit
+  import_state: untracked
+- reference_id: FP-FRP-BUSINESS-CODE
+  path: haskell_frp/frp_business_style_code_requirements.md
+  bytes: 24053
+  sha256: a62c1ba45f038085dd95c1544aeec9f78c3dcd8cad4a8b318ec4e29044042bfe
+  upstream_path: edh-universe/docs/ssot/frp/frp_business_style_code_requirements.md
+  upstream_identity: filesystem_snapshot_without_discoverable_git_root
+  import_state: filesystem_snapshot
+- reference_id: FP-FRP-STATE-IDENTITY
+  path: haskell_frp/frp_business_object_state_identity_and_correction.md
+  bytes: 8284
+  sha256: 16e38b5b5078144ccbaec07eea39936221e0b5ddcad62e58ef0006885094551b
+  upstream_path: edh-universe/docs/ssot/frp/frp_business_object_state_identity_and_correction.md
+  upstream_identity: filesystem_snapshot_without_discoverable_git_root
+  import_state: filesystem_snapshot
+- reference_id: FP-FRP-ACTION-CONTEXT
+  path: haskell_frp/frp_action_context_state_and_parameters.md
+  bytes: 8737
+  sha256: 314e765f0022946002fc093f02b0654b816949dde9952e72eb7c5410a0157130
+  upstream_path: edh-universe/docs/ssot/frp/frp_action_context_state_and_parameters.md
+  upstream_identity: filesystem_snapshot_without_discoverable_git_root
+  import_state: filesystem_snapshot
+- reference_id: FP-FRP-RULEPACK
+  path: haskell_frp/frp_rulepack_and_fuzzy_integration.md
+  bytes: 7260
+  sha256: dfc332406818bf9bdc5b1d03780f5c52d53bc548b785ce6aa3f4169be5dae11f
+  upstream_path: edh-universe/docs/ssot/frp/frp_rulepack_and_fuzzy_integration.md
+  upstream_identity: filesystem_snapshot_without_discoverable_git_root
+  import_state: filesystem_snapshot
+consumers:
+- mission_b_repo_fact_and_engineering_compiler
+- mission_c_host_implementation_system
+- formally_selected_feature_implementation_route
+- composed_runtime_release
+nonclaims:
+- not_current_code_truth
+- not_business_scope_authority
+- not_platform_change_authorization
+- not_runtime_validation
+- not_owner_acceptance

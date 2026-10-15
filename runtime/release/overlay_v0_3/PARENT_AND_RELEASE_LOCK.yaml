@@ -1,0 +1,22 @@
+schema_version: agent-owned-overlay-v0.3-lock/v0.1
+parent:
+  candidate_id: agent_owned_long_horizon_overlay_v0_2
+  source_delivery: 三个Mission长程覆层与U2_U3绑定_v0.2_完整替换总包_20260901.zip
+  source_sha256: 771ac872e26ba61e7324acfe35a00e5212c3de085ed9540956a37ae2fd1eb758
+  repo_commit: 07fdfff0f23af9ccc3022500d1d8d5e60b8bdfa5
+  subtree_tree_sha: c5692a76ebf68f4b1aba2209d99ec1800f64e8f1
+  members: 11
+current:
+  candidate_id: agent_owned_long_horizon_overlay_v0_3
+  runtime_maturity: human_led_candidate
+  validated_runnable: false
+  owner_acceptance: pending
+  compatible_candidate_sources:
+    mission_a: candidate-v0.2.0 materialized source + corresponding runtime projection
+    mission_b: candidate-v0.2.0 materialized source + corresponding runtime projection
+    mission_c: candidate-v0.2.0 materialized source + corresponding runtime projection
+  execution_contract_revision: '2026-09-08'
+  previous_exact_commit: a5811c31c2d673ffab13cefb57fa73fd7472b914
+  write_authorization: 'Owner 2026-09-08 request: modify agent_candidates on main;
+    future runs require their own target authorization'
+  publication_mode: pro_current_turn_self_record_and_material_catchup
