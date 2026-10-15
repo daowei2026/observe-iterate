@@ -138,7 +138,7 @@ def invocation(view: Git, round_id: str) -> tuple[dict, list[str]]:
     for name in ("work_id", "invocation_id", "assignment_token", "round_marker", "recipient_ref"):
         if not isinstance(record.get(name), str) or not record[name].strip():
             errors.append("MISSING_IDENTITY:" + name)
-    if not record.get("round_marker", "").startswith("BI01-RESTART-01/"):
+    if not isinstance(record.get("round_marker"), str) or not record["round_marker"].startswith("BI01-RESTART-01/"):
         errors.append("ROUND_MARKER_WRONG_RUN")
     if record.get("policy_commit") != view.ref:
         # Policy may be an earlier exact commit, but it must be available locally.
@@ -148,6 +148,29 @@ def invocation(view: Git, round_id: str) -> tuple[dict, list[str]]:
         except ValueError:
             errors.append("POLICY_COMMIT_UNAVAILABLE")
     return record, errors
+
+
+def locator(view: Git, value: object, label: str, run_scoped: bool = True) -> list[str]:
+    """Use coordinator-dispatch/v3 Git locators, never guess a plain path."""
+    if not isinstance(value, dict):
+        return ["INVALID_GIT_LOCATOR:" + label]
+    if value.get("repo") != "daowei2026/observe-iterate":
+        return ["OTHER_REPOSITORY_NOT_CURRENT:" + label]
+    ref, path, selector = value.get("commit"), value.get("path"), value.get("selector")
+    if not isinstance(ref, str) or not HEX40.fullmatch(ref):
+        return ["LOCATOR_COMMIT_REQUIRED:" + label]
+    if not isinstance(path, str) or (run_scoped and not path.startswith(RUN + "/")):
+        return ["LOCATOR_PATH_OUTSIDE_NEW_RUN:" + label]
+    if not isinstance(selector, str) or not selector:
+        return ["LOCATOR_SELECTOR_REQUIRED:" + label]
+    try:
+        p = view.path(path)
+        oid = view.run("rev-parse", "--verify", ref + ":" + p).decode().strip()
+        if view.run("cat-file", "-t", oid).strip() != b"blob":
+            return ["LOCATOR_NOT_BLOB:" + label]
+    except ValueError:
+        return ["LOCATOR_SOURCE_UNAVAILABLE:" + label]
+    return []
 
 
 def send_state(view: Git, round_id: str) -> tuple[str, list[str]]:
@@ -169,20 +192,20 @@ def pre_dispatch(view: Git, round_id: str) -> dict:
     if state not in {"NOT_RECORDED", "NOT_SENT", "CONFIRMED_SEND_FAILED"}:
         errors.append("SEND_NOT_SAFE:" + state)
     if rec.get("role") == "management" and rec.get("bootstrap_ref"):
-        if rec.get("binding_ref") is not None or rec.get("task_ref") is not None:
-            errors.append("BOOTSTRAP_CANNOT_CLAIM_SIGNED_TASK")
-        if not view.exists(str(rec["bootstrap_ref"])):
-            errors.append("BOOTSTRAP_SOURCE_MISSING")
+        # The v3 dispatcher requires real current_task_ref and task_adoption_ref
+        # even for BOOTSTRAP. Both may cite the next Owner's actual START record;
+        # neither is a fictitious management map/task.
+        errors.extend(locator(view, rec.get("bootstrap_ref"), "bootstrap_ref"))
+        if rec.get("binding_ref") != rec.get("bootstrap_ref"):
+            errors.append("BOOTSTRAP_BINDING_REF_MISMATCH")
+        errors.extend(locator(view, rec.get("current_task_ref"), "current_task_ref"))
+        errors.extend(locator(view, rec.get("task_adoption_ref"), "task_adoption_ref"))
     else:
-        if not rec.get("binding_ref") or not rec.get("task_ref"):
-            errors.append("ADOPTED_ROLE_SOURCES_REQUIRED")
         errors.extend(active_binding(view))
-        for name in ("binding_ref", "task_ref"):
-            path = rec.get(name)
-            if not isinstance(path, str) or not path.startswith(RUN + "/"):
-                errors.append("ROLE_SOURCE_NOT_CURRENT_RUN:" + name)
-            elif not view.exists(path):
-                errors.append("ROLE_SOURCE_MISSING:" + name)
+        for name in ("binding_ref", "current_task_ref", "task_adoption_ref"):
+            errors.extend(locator(view, rec.get(name), name))
+        if isinstance(rec.get("current_task_ref"), dict) and rec["current_task_ref"].get("selector") not in ("full", "全文"):
+            errors.append("CURRENT_TASK_FULL_TEXT_REQUIRED")
     return {
         "check": "pre-dispatch", "round_id": round_id, "ok": not errors,
         "errors": sorted(set(errors)), "recorded_send_state": state,
