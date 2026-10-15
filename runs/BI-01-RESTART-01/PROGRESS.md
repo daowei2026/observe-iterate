@@ -6,7 +6,7 @@
 
 - run：`BI-01-RESTART-01`
 - 稳定业务路由键：`BI-01`
-- 当前阶段：首轮管理 Pro `M-START`（R0001）已生成，正在完成预派发发布与门禁
+- 当前阶段：首轮管理 Pro `M-START`（R0001）已单次发送并确认提交，管理 Pro 正在生成
 - 当前业务地图：尚未形成；必须由 R0001 管理 Pro 真实形成
 - 当前专业任务：尚未签发；不得先派专业执行
 - Workmap Binding：`NOT_CONFIGURED`
@@ -19,17 +19,17 @@
 - Owner START：`caccf69993b6f0c184fc89194476bcd542acb1e0:runs/BI-01-RESTART-01/OWNER_START.md`
 - 正式生产预检：Terminal `2.11.26`、Terminal IME `1.3.10`、RP2040 `2.6.1`；精确 Wi-Fi `dw-usa-vps4`；共享两列表探测通过
 - 目标 Project：沿 Owner 既有明确容器身份使用 `细节叙事生成_金标`；本 run 只新建独立管理聊天，不进入或复用旧 BI-01/I4 聊天
-- 手机业务消息：0
+- 手机业务消息：1（R0001，`COMMITTED`；生成中，尚未形成管理回交）
 
 ## 当前任务与下一动作
 
-1. 发布并远端回读 R0001 的 `INVOCATION.json` 与 Overlay12 原样 `PROMPT.md`。
-2. 对 exact commit 运行 Overlay12 verify 与 `bi01_run_gate.py pre-dispatch`。
-3. 将门禁结果写入本轮 `GATE_CHECK.json`，再以最终预发送提交作为远端完成基线。
-4. 仅在全部 Gate 与新聊天身份成立后，通过新的零继承手机 episode 单次发送。
+1. 监测 `97b1b8007861698933327483e6bb2d7eca6483ac` 之后与唯一 round marker 相关的远端 `turn complete` 提交。
+2. 按调度器到期点使用新的零继承 phone episode 观察同一聊天；不在生成中重命名或发送。
+3. 完整回复后收取并核验地图、当前任务、管理接收、Binding 与双 Return。
+4. 只有管理签发并通过采用检查后，才准备首个专业后继轮次。
 
 ## 阻断与恢复点
 
 - 当前无全局阻断。
-- R0001 仍是 `NOT_SENT`，提示 SHA-256 为 `ebb3b58993b4fe150056c990b79fbe0295f09d6d9bda13a14be3f5d67be03308`；任何未知发送效果都禁止重发。
+- R0001 已于 `2026-10-16T00:24:06.362+08:00` 取得 `COMMITTED` 证据；提示 SHA-256 为 `ebb3b58993b4fe150056c990b79fbe0295f09d6d9bda13a14be3f5d67be03308`，禁止重发。
 - 地图、当前任务、管理接收与后继记录只能从真实管理回交形成，操作端不预填。
