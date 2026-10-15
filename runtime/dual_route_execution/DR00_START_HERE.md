@@ -1,23 +1,23 @@
-# 当前组合执行入口：业务表达、实施分工与管理接收
+# 观察迭代长程执行入口：角色分工、专业来源与管理接收
 
-执行修订：`2026-09-22-coordinator-dispatch-v3`。A/B/C v0.2与覆层v0.3原位演进；当前是候选材料，文档/结构测试不证明现场或生产。
+执行修订：`2026-09-22-coordinator-dispatch-v3`。沿用 CYF DR/Overlay 通用运行语义并按 BI-01 实际任务适配；当前是候选材料，文档/结构测试不证明现场或生产。
 
-**协调者只走[Overlay08](../runtime_overlay_candidates/agent_owned_long_horizon_overlay_v0_3/08_自然语言运行提示_v0.3.md)。**普通专业者走下面相应角色方法；两者不合并为一套必读负担。固定运行规则、模板与选源由repo维护，协调者不判业务，业务聊天不重编控制面。
+**协调者只走[Overlay08](../overlay/08_自然语言运行提示_v0.3.md)。**普通专业者走下面相应角色方法；两者不合并为一套必读负担。固定运行规则、模板与选源由repo维护，协调者不判业务，业务聊天不重编控制面。
 
 |角色|共同入口|完整方法|
 |---|---|---|
-|A|DR01/DR02、DR12 A题、DR13 §3|A CURRENT_EXECUTION/TASK_ROUTER选定profile及全部适用reference|
-|B|DR02–05、DR07接收、DR12 B题、DR13 §4|B CURRENT_EXECUTION、仓库事实核对／工程细化与任务包编制／实际实现及命中平台原文；历史机器mode仅在字段处保留|
-|C/实施|DR05/DR10，Codex加DR11，需要时DR02/03/07|C mode或实际接收者方法，DR12 C题、DR13 §5|
-|管理/审查|DR06/DR08、DR13 §7、管理Harness|完整目标/各工作真实位置及本次相关专业方法/实物|
+|专业执行Pro|DR12、DR13及当前 Binding|[专业目标和六阶段合同](../../professional/source/00_AGENT_CHARTER_AND_STAGE_CONTRACT.md)、[I4观察方法](../../professional/source/02_I4_OBSERVATION_AND_CHALLENGE.md)与本轮实际`source_reads`|
+|Worker Codex|DR03/DR10/DR11适用委派规则|[Pro→Worker工单和交付](../../professional/source/04_PRO_WORKER_CODEX_HANDOFF.md)，未签任务不自动授权|
+|管理Pro|DR06/DR08、DR13 §7、管理Harness|[完整目标/Gate](../../professional/source/00_AGENT_CHARTER_AND_STAGE_CONTRACT.md)、[角色与接收权限](../../professional/source/05_ROLE_GATE_AND_HANDOFF_CONTRACT.md)以及本轮成果|
+|独立审查Pro|Overlay10/13、DR13 §7、原有Harness适用部分|本轮具名被审对象、证据、[完成和审查接口](../../professional/interfaces/COMPLETION_AND_REVIEW.md)；未形成的专业审查方法不得自行补造
 
-DR12为九道题与完整源索引，DR13为工作联动/读取/管理题，DR14为绑定/回交/触发。题号不授mode或写权，不要求九题九轮。首次/新上下文/失效取必要全文，已读未变且仍可用则复用，题面不替方法。
+DR12引用 BI-01 已有专业题及方法原文，DR13负责工作联动/读取/管理题，DR14负责绑定/回交/触发。题号不授mode或写权，不要求题数等于轮数。首次/新上下文/失效取必要全文，已读未变且仍可用则复用，题面不替方法。
 
 A完成市场过程需求、形成方法、时间状态、产品/消费者及业务图，并说明普通Reflex或必要复杂表达理由。B核真实repo/接收能力形成工程、两路任务和父组合。普通Reflex可有状态事件采样，不能按名词分流；不把全部重要方法预分给我方core。工程/业务欠账由正确阶段处理，实际限制具名，不用来源blocker藏自身未完。
 
 管理以最快有效完成完整目标为责，旧计划/候选/自己旧结论都需核适用；局部进展不证明投入合理。及时采用合理首版、停止无当前价值深化，保留必需主体/真实验证，更新同一终点的预测、地图和实际后继。具体方式不强制问卷、评分、方案数或逐项轮数。
 
-普通承办者交完整分析/产物/证据和原任务内接续，不维护公共图和全局预算；A业务图仍属A。提示已归档只引用。管理与审查兼任分别完成，参与形成不能自称fresh。独立审查/Owner实际权限/跨仓保护保持。
+普通承办者交完整分析/产物/证据和原任务内接续，不维护公共图和全局预算；专业分析成果仍属原执行Pro。提示已归档只引用。管理与审查兼任分别完成，参与形成不能自称fresh。独立审查/Owner实际权限/跨仓保护保持。
 
 主续作、已签独立接收与到期非阻塞管理分别保留；一项继续不能覆盖另一项。管理条件预先明确，采用`WHILE_WORK_ACTIVE`的既定投入间隔在工作ACTIVE时持续有效，运行端核真实事实、按段去重和派发，不临场判业务重要性或重选预算。UNKNOWN不能当未触发，回交报告存在不等于决定已消费；暂停、合法交接或完整接收后停止循环，既有未受影响工作继续。
 
