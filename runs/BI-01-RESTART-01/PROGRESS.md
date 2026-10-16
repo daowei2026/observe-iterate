@@ -5,14 +5,14 @@
 ## 当前状态
 
 - run：`BI-01-RESTART-01`
-- 当前专业阶段：I4 已由管理签发，专业执行尚未派发，G4 尚未接收
+- 当前专业阶段：R0003 已提交完整 I3 定向核查与 I4 专业结果；G4 候选和局部 I3 消费冲突等待原管理角色接收/裁定
 - 管理轮次：R0001 为原 M-START；R0002 为 `OWNER_AUTHORIZED_MANUAL_REPAIR` 管理修复轮，不是专业轮
 - Workmap：正式 `runtime/config/WORKMAP_BINDING.json` 已为 `ADOPTED`
-- 运行状态：首个专业轮 R0003 已通过全部发送前 Gate 并真实 committed；执行 Pro 正在生成首轮 I3 定向核查与 I4 专业结果
+- 运行状态：R0003 已 `answer_complete`、远端完整包已收取、Return/引用/after-return 均通过；下一合法角色调用是原管理会话中的新管理接收轮
 - 恢复结果：正式 Workmap dispatch 对 exact input `c16e8ad6047bce7f92a1d4501a04013fcf932221` 为 `ok=true / errors=[]`
-- 专业聊天／专业 Send：首个独立专业物理聊天已合法创建；R0003 原文只输入一次、Send 只点击一次，exact marker 与 STOP 共同证明 committed；首次完整回复后仍须单独完成 canonical rename、回交收取与业务接收
+- 专业聊天／专业 Send：R0003 原文只输入一次、Send 只点击一次；物理聊天已在首次完整回复后独立改名为唯一 `BI01-RESTART-01-I4-EXECUTION`；回交已收取，尚未发生管理业务接收
 
-## 首个专业轮 R0003（已 committed，回复生成中）
+## 首个专业轮 R0003（完整回交已收取）
 
 - round：`R0003`；这是首个专业轮，R0002 仍是管理修复轮
 - invocation：`BI01-RESTART-01-R0003-9dda7755b8d94803ba5b03f53721d18c`
@@ -30,8 +30,12 @@
 - scheduler：revision 32 `send_ready`，revision 33 记录 phone action start，revision 34 记录 `committed`
 - R0003 Send：payload `exact_verified`，UTF-8/UTF-16/SHA 全匹配；IME input 1 次；Send 1 次；ACK `2832083732` 为 `executed / duplicate=false`
 - commitment：terminal frame `1792132899805` 中 exact marker 唯一、`正在思考` 与 STOP 同时可见，无 `正在发送`／`等待发送`／offline／retry／error
-- 当前回复状态：`model_thinking`；下一次 scheduler thread check 为 `2026-10-16T06:53:29.694439Z`
-- 证据：`provenance/turns/R0003/SEND_RECEIPT.json`、`reviews/PROFESSIONAL_DELIVERY_OBSERVATION_R0003.json`、`reviews/WORKMAP_GATE_R0003.json`
+- Git turn-complete：`ece9dbac6eb3cf29e32e28ef5a5d3b891cb19efe`；完整报告 SHA-256 `b91138386bd552b6dbf486d66db2ed13c8467f9687f7ee72bebee6ca7c572990`
+- 手机完成态：唯一标题+marker 同行回入，完整 assistant tail/action row 可见，无 thinking/STOP/error
+- canonical rename：`专业观察与反证 challenger` → `BI01-RESTART-01-I4-EXECUTION`；新标题 1、旧标题 0、`send_calls=0`
+- Return intake：两份 schema PASS；`association_errors=[]`；内部 exact Git locators 均存在；after-return `ok=true / errors=[]`
+- 管理触发：I4 G4 candidate 与 I3 局部消费冲突均已满足；后一义务 blocking；两者都回原管理会话 `BI01-R01-管理`
+- 证据：`provenance/turns/R0003/`、`artifacts/I4_R0003/`、`reviews/PROFESSIONAL_DELIVERY_OBSERVATION_R0003.json`、`reviews/PROFESSIONAL_RETURN_INTAKE_R0003.md`
 
 ## Owner 当前恢复介入
 
