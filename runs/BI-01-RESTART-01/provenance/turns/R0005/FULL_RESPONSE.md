@@ -20,3 +20,116 @@
 
 本载体只证明完整回复可定位、原始 Return 已逐字节落库并与本轮关联；它不签管理 G3/G4/G5，不替代独立审查，也不证明手机回答在远端交付瞬间已完成渲染。
 
+## QUESTION_WORK_RETURN 原样 carrier
+
+下列 JSON 与本目录 `QUESTION_WORK_RETURN.json` 及原角色远端文件逐字节同义，不增删业务字段；只让现行协调器能够从同一完整回答 carrier 解析 Return。
+
+```json
+{
+  "schema": "question-work/v2",
+  "kind": "RETURN",
+  "work_id": "BI-01",
+  "invocation_id": "BI01-RESTART-01-R0005-427e020c096844a98f9f46148fce405c",
+  "binding_ref": {
+    "repo": "daowei2026/observe-iterate",
+    "commit": "ae2ac32857628e6a8f03e6bc361a14be2d175df1",
+    "path": "runs/BI-01-RESTART-01/bindings/QUESTION_WORK_BINDING_I4.json",
+    "selector": "full"
+  },
+  "focus_results": [
+    {
+      "question_id": "I3",
+      "completed_ref": {
+        "repo": "daowei2026/observe-iterate",
+        "commit": "ff0c157baf037f502f0158b35f92c26bec4218a4",
+        "path": "runs/BI-01-RESTART-01/artifacts/I4_R0005/REPORT.md",
+        "selector": "#identity"
+      },
+      "remaining_ref": {
+        "repo": "daowei2026/observe-iterate",
+        "commit": "ff0c157baf037f502f0158b35f92c26bec4218a4",
+        "path": "runs/BI-01-RESTART-01/artifacts/I4_R0005/REPORT.md",
+        "selector": "#remaining"
+      },
+      "affected_refs": []
+    },
+    {
+      "question_id": "I4",
+      "completed_ref": {
+        "repo": "daowei2026/observe-iterate",
+        "commit": "ff0c157baf037f502f0158b35f92c26bec4218a4",
+        "path": "runs/BI-01-RESTART-01/artifacts/I4_R0005/REPORT.md",
+        "selector": "#completed"
+      },
+      "remaining_ref": {
+        "repo": "daowei2026/observe-iterate",
+        "commit": "ff0c157baf037f502f0158b35f92c26bec4218a4",
+        "path": "runs/BI-01-RESTART-01/artifacts/I4_R0005/REPORT.md",
+        "selector": "#remaining"
+      },
+      "affected_refs": []
+    }
+  ],
+  "material_use_ref": {
+    "repo": "daowei2026/observe-iterate",
+    "commit": "ff0c157baf037f502f0158b35f92c26bec4218a4",
+    "path": "runs/BI-01-RESTART-01/artifacts/I4_R0005/REPORT.md",
+    "selector": "#material-use"
+  },
+  "trigger_observations": [
+    {
+      "trigger_id": "BI01-I4-SELECTION-VALUE-RESULT",
+      "state": "SATISFIED",
+      "evidence_ref": {
+        "repo": "daowei2026/observe-iterate",
+        "commit": "ff0c157baf037f502f0158b35f92c26bec4218a4",
+        "path": "runs/BI-01-RESTART-01/artifacts/I4_R0005/REPORT.md",
+        "selector": "#trigger-result"
+      }
+    },
+    {
+      "trigger_id": "BI01-I4-SELECTION-EFFORT-REVIEW",
+      "state": "SATISFIED",
+      "evidence_ref": {
+        "repo": "daowei2026/observe-iterate",
+        "commit": "ff0c157baf037f502f0158b35f92c26bec4218a4",
+        "path": "runs/BI-01-RESTART-01/artifacts/I4_R0005/REPORT.md",
+        "selector": "#trigger-effort"
+      }
+    },
+    {
+      "trigger_id": "BI01-I3-CASE02-CONSUMPTION-CONFLICT",
+      "state": "NOT_YET",
+      "evidence_ref": {
+        "repo": "daowei2026/observe-iterate",
+        "commit": "ff0c157baf037f502f0158b35f92c26bec4218a4",
+        "path": "runs/BI-01-RESTART-01/artifacts/I4_R0005/REPORT.md",
+        "selector": "#trigger-conflict"
+      }
+    },
+    {
+      "trigger_id": "BI01-OWNER-METHOD-CHANGE-R0004",
+      "state": "NOT_YET",
+      "evidence_ref": {
+        "repo": "daowei2026/observe-iterate",
+        "commit": "ff0c157baf037f502f0158b35f92c26bec4218a4",
+        "path": "runs/BI-01-RESTART-01/artifacts/I4_R0005/REPORT.md",
+        "selector": "#trigger-change"
+      }
+    }
+  ],
+  "continuation_ref": {
+    "repo": "daowei2026/observe-iterate",
+    "commit": "ff0c157baf037f502f0158b35f92c26bec4218a4",
+    "path": "runs/BI-01-RESTART-01/artifacts/I4_R0005/REPORT.md",
+    "selector": "#continuation"
+  },
+  "batch_remaining_ref": {
+    "repo": "daowei2026/observe-iterate",
+    "commit": "ff0c157baf037f502f0158b35f92c26bec4218a4",
+    "path": "runs/BI-01-RESTART-01/artifacts/I4_R0005/REPORT.md",
+    "selector": "#remaining"
+  }
+}
+```
+
