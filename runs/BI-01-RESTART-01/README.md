@@ -1,6 +1,6 @@
-# BI-01 / RESTART-01 — 首次管理已完成，当前处于窄修复与专业派发门禁
+# BI-01 / RESTART-01 — 管理窄修复已落库，Workmap 已采用、专业仍未派发
 
-**MANAGEMENT_R0001_RECEIVED / R0002_MANUAL_REPAIR / PROFESSIONAL_NOT_SENT / WORKMAP_NOT_ADOPTED**。
+**MANAGEMENT_R0001_RECEIVED / R0002_MANUAL_REPAIR_COMPLETE / WORKMAP_ADOPTED / PROFESSIONAL_NOT_SENT / FORMAL_DISPATCH_RECHECK_PENDING**。
 
 R0001 已完成首次实质管理并形成地图、当前任务和 Question Work Binding；其原始回答、Return、提示、receipt 与管理包继续由 exact commit `46119a8e0030b4c3597634735cbe5d22ad3a0ac7` 保留。R0002 只修复 Owner 授权的机器接线缺项，不重新执行 M-START，不产生专业结果，不签 G4，也不表示 Overlay12 prepare/verify 已通过。
 
@@ -25,13 +25,13 @@ R0001 已完成首次实质管理并形成地图、当前任务和 Question Work
 - `provenance/turns/R0001/`：原始 R0001 历史与明确修复旁路件。
 - `provenance/turns/R0002/`：本次管理修复回交；不是专业轮次。
 
-后续顺序：
+实际恢复位置与后续顺序：
 
-1. 操作端下载并验证 R0002 修复包，按原路径落库；
-2. 提交、推送并远端读回；
-3. 对修正版 task/binding/map/README 重新生成 snapshot，完成 reader 与 intake；
-4. intake 的 `dispatch.task_id` 必须严格等于 `BI01-RESTART-01-I4-EXECUTION-01`；
-5. 只有 Candidate intake、reader、binding、dispatch 与发送现场检查全部真实通过后，才可形成 `ADOPTED` 的 Workmap Binding；
-6. 之后才能创建首个专业轮次并发送到未来的新专业聊天。当前仍禁止派发。
+1. R0002 修复包下载、验哈、按路径落库、提交、推送和远端读回已完成；
+2. 修正版 task/binding/map/README 的 snapshot、fresh reader 与 intake 已完成，`dispatch.task_id` 严格等于 `BI01-RESTART-01-I4-EXECUTION-01`；
+3. Candidate intake、reader、binding、dispatch 与真实发送现场 `NOT_SENT` 检查已在 exact input commit `e4ece3a9b31152a04c4fbf901be0d6e74ecb42b8` 全部通过；
+4. Candidate 已按原管理角色给出的条件原样物化为 `ADOPTED` 的正式 `runtime/config/WORKMAP_BINDING.json`；
+5. 当前还须对正式 Binding 完成 fresh reader/intake/dispatch 复核和 exact-commit 发送现场核对；这些真正通过前不派发专业任务；
+6. 正式复核通过后，才具备创建首个专业轮次并发送到未来独立专业聊天的条件。当前仍未派发。
 
 准确流程：[BI-01 真实运行合同](../../runtime/operations/BI01_REAL_RUN_V1.md)；[轮次合同](../../runtime/operations/ROUND_RECORD_CONTRACT.md)。
