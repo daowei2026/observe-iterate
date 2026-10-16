@@ -1,0 +1,88 @@
+{
+  "schema": "bi01-phone-answer-observation/v1",
+  "run_id": "BI-01-RESTART-01",
+  "round_id": "R0007",
+  "invocation_id": "BI01-RESTART-01-R0007-621369295e944443984a81cb6a878f32",
+  "remote_turn_complete_commit": "340dd36938ccbe065c6d525aced992b3fb0ef956",
+  "remote_turn_complete_observed_at": "2026-10-16T15:24:39Z",
+  "phone_answer_grace_until": "2026-10-16T15:34:39Z",
+  "observed_complete_at": "2026-10-16T15:30:19.683Z",
+  "within_grace": true,
+  "phone_answer_state": "visible",
+  "generation_state": "answer_complete",
+  "identity": {
+    "project": "细节叙事生成_金标",
+    "round_marker": "[BI01-RESTART-01-R0007-621369295e944443984a81cb6a878f32]",
+    "same_thread_continuity": true,
+    "auto_title": "UNKNOWN"
+  },
+  "completion_evidence": {
+    "initial_fresh_ui": [
+      "exact Project",
+      "exact R0007 marker user bubble",
+      "已停止思考",
+      "current answer title"
+    ],
+    "final_fresh_ui": [
+      "turn-complete marker",
+      "two Owner questions",
+      "three delivery cards",
+      "complete assistant action row: copy/read-aloud/share/more"
+    ],
+    "stop_visible": false,
+    "genuine_final_tail_visible": true,
+    "completion_action_row_visible": true
+  },
+  "frames": [
+    1792164526873,
+    1792164546703,
+    1792164547910,
+    1792164562643,
+    1792164563846,
+    1792164575754,
+    1792164576969,
+    1792164592912,
+    1792164594127,
+    1792164604931,
+    1792164606142,
+    1792164616264
+  ],
+  "read_only_scroll": {
+    "fling_count": 5,
+    "anchor": "fresh right-side blank gutter before each fling",
+    "ack_seq": [2832083823, 2832083824, 2832083825, 2832083826, 2832083827],
+    "all_executed": true,
+    "all_duplicate_false": true,
+    "hid_reports_each": 49
+  },
+  "calls": {
+    "formal_product_total": 7,
+    "observe_current_ui": 2,
+    "fling_screen_and_observe": 5,
+    "send": 0,
+    "input": 0,
+    "copy": 0,
+    "rename": 0,
+    "retry": 0,
+    "stop": 0,
+    "navigation": 0,
+    "network_or_vpn": 0,
+    "descendants": 0,
+    "screenshot_frames": 12,
+    "lossless_tiles_inspected": 36
+  },
+  "final_ui": {
+    "surface": "same_r0007_answer_tail",
+    "composer_empty": true,
+    "composer_focused": false,
+    "keyboard_visible": false,
+    "marks_visible": false,
+    "rename_eligible": true
+  },
+  "control": {
+    "released_at": "2026-10-16T15:30:29.829Z",
+    "handoff": "/root"
+  },
+  "protocol_deviation": "Before skill loading, one broad registry filter read only the observe/mark tool declarations; it did not invoke a phone tool or change UI. All subsequent lookups were exact-name and the phone episode otherwise remained within the bounded read-only scope.",
+  "limits": "This observation proves the R0007 assistant reply reached a visible final tail on the phone and is eligible for a separate rename episode. It does not sign G5, prove Owner approval, start I6, or substitute for the correlated GitHub business carrier."
+}
