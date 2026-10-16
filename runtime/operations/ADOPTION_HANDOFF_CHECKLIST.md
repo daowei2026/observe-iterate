@@ -11,5 +11,3 @@
 7. **后续**：同工作短续作不必每轮管理重签，但 Rnnnn 始终更新。重要新增证据/结果与 Gate/预算复看按 DR13/14 找管理，更新地图/当前任务/正式 intake；不能仅更新 PROGRESS。当前权限和提交来源不同于 Git 包字节源时要分别标记，不把 map 变新 SHA 误认为管理已重新判断。
 
 **关于每轮回交导致地图过期的处理：** `provenance/turns` 记录真实 Pro 轮次的发送/收取，不能列入 `workmap_gate.py` 的 `watch_roots`，否则仅提交一条准备发送的 `PROMPT.md`，就会让现行管理 Intake 在手机调用前无谓失效。正式 Binding 模板只 watch 实质 `artifacts/` 及必要独立审查材料；轮次身份、Return、去重和管理 RESULT/CHANGE/EFFORT 则走其原有协议处理。实际业务 artifact 变化仍可能使 Intake stale，此时定向管理接收，不允许为了连续发消息而假造通过。
-
-**R0001 的实际恢复：** 本 run 的管理 M-START 已完成，禁止重发。完整 FULL_RESPONSE 中存在 `#management-decision`、`#workmap`、`#issued-task` 等源；可直接机械归档其**原文可保真且完整**的部分，不能让操作 Codex 补写业务含义/锚点所代表的结论。现有 `#question-work-binding` 是摘要，不等于可采用的完整 JSON；需按原管理同角色 DELIVERY_REPAIR 定向取得确切缺件，含 `ROLE_RETURN.question_work_ref` 和实际派发 mode 的确认。之后 Stage 1 提交真实地图/任务/管理原文/Binding，Stage 2 再做正式 Intake。ZIP 必要时仍可沿正式路径收取，但不必为等待 ZIP 而扣住已经可保真取得的管理内容。详情见 [R0001 接续入口](BI01_R0001_RECOVERY.md)。
