@@ -8,9 +8,16 @@
 - 当前专业阶段：I4 已由管理签发，专业执行尚未派发，G4 尚未接收
 - 管理轮次：R0001 为原 M-START；R0002 为 `OWNER_AUTHORIZED_MANUAL_REPAIR` 管理修复轮，不是专业轮
 - Workmap：正式 `runtime/config/WORKMAP_BINDING.json` 已为 `ADOPTED`
-- 运行状态：`needs_human / paused`
-- 唯一当前阻断：正式 Binding 的 exact-commit 发送现场状态为 `UNKNOWN`，dispatch Gate 为 `DELIVERY_NOT_SENDABLE:UNKNOWN`
+- 运行状态：Owner 已把手机定位到目标 Project；正在恢复 fresh reader／intake／`NOT_SENT`／dispatch 核验，专业发送仍关闭
+- 恢复起点：正式 Binding 的上一次 exact-commit 发送现场状态为 `UNKNOWN`，dispatch Gate 为 `DELIVERY_NOT_SENDABLE:UNKNOWN`
 - 专业聊天／专业 Send：均未形成；不得创建 R0003 或派发 I4
+
+## Owner 当前恢复介入
+
+- Owner 原文：`我已经在手机界面打开  \`细节叙事生成_金标\`  Project了，你看看能不能继续？`
+- 记录：`reviews/PROFESSIONAL_DELIVERY_RESUME_R0002.json`
+- 作用：只恢复此前阻断的正式发送现场观察及其 exact-commit reader/intake/dispatch Gates
+- 边界：这不是新的管理或专业轮次，不改变 R0001/R0002，不授权在 Gate 通过前创建 R0003 或发送专业任务
 
 ## Owner 授权与 R0002 调用
 
