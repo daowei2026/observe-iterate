@@ -243,9 +243,11 @@ def prepare_bootstrap(repo: Path, policy_ref: str, config_path: str, event: dict
                        "return_to_ref", "question_ref", "instructions_ref"})
     if b["schema"] != "question-work/v2": fail("BOOTSTRAP_VERSION")
     if b["work_id"] != event["work_id"]: fail("BINDING_WORK_MISMATCH")
-    if event["dispatch_kind"] != "NORMAL" or event["route"] != "same_work":
+    if event["route"] != "same_work":
         fail("BOOTSTRAP_MANAGEMENT_ROUTE_REQUIRED")
-    if "repair_context" in event: fail("REPAIR_CONTEXT_ONLY_FOR_DELIVERY_REPAIR")
+    repair = event["dispatch_kind"] == "DELIVERY_REPAIR"
+    if not repair and "repair_context" in event:
+        fail("REPAIR_CONTEXT_ONLY_FOR_DELIVERY_REPAIR")
     for key in ("current_task_ref", "task_adoption_ref"):
         if key not in event: fail("CURRENT_TASK_AND_ADOPTION_REQUIRED")
     if event["current_task_ref"].get("selector") not in {"full", "全文"}:
@@ -280,6 +282,27 @@ def prepare_bootstrap(repo: Path, policy_ref: str, config_path: str, event: dict
             _, meta = source(repo, loc, repository); refs.append((label, meta))
     for key, label in (("current_task_ref", "当前生效任务"), ("task_adoption_ref", "当前任务采用依据")):
         _, meta = source(repo, event[key], repository); refs.append((label, meta))
+    if repair:
+        if event.get("latest_return_ref") or event.get("latest_response_ref"):
+            fail("BOOTSTRAP_REPAIR_USES_ORIGINAL_AND_ISSUE_REFS")
+        repair_context = obj(event.get("repair_context"),
+                             {"original_dispatch_ref", "issue_ref", "missing_output_refs"})
+        original, original_meta = source(repo, repair_context["original_dispatch_ref"], repository)
+        original_id = dispatch_identity(original)
+        if (original_id["work_id"] != event["work_id"]
+                or original_id["role"] != "management"
+                or original_id["recipient"] != target
+                or original_id["invocation_id"] == event["invocation_id"]):
+            fail("BOOTSTRAP_REPAIR_ORIGINAL_CALL_MISMATCH")
+        _, issue_meta = source(repo, repair_context["issue_ref"], repository)
+        missing = repair_context["missing_output_refs"]
+        if not isinstance(missing, list) or not missing:
+            fail("BOOTSTRAP_REPAIR_MISSING_OUTPUT_REFS_REQUIRED")
+        refs.extend([("本次有限补交的原管理调用", original_meta),
+                     ("已记录的具体交付缺件", issue_meta)])
+        for loc in missing:
+            _, meta = source(repo, loc, repository)
+            refs.append(("需要补齐的原管理交付位置", meta))
     latest_return, latest_response = event.get("latest_return_ref"), event.get("latest_response_ref")
     if bool(latest_return) != bool(latest_response): fail("LATEST_RETURN_AND_RESPONSE_REQUIRED_TOGETHER")
     if latest_return:
@@ -299,23 +322,35 @@ def prepare_bootstrap(repo: Path, policy_ref: str, config_path: str, event: dict
         _, meta = source(repo, loc, repository); refs.append(("本次实际证据", meta))
     identity = "\n".join(k + ": " + str(event[k]) for k in ("work_id", "invocation_id", "assignment_token"))
     identity += "\nrole: management\nrecipient: " + target + "\n当前阶段：专业任务 " + work["stage"]
-    identity += "\n当前职责：专业任务 " + work["stage"] + " 首次实质管理"
+    identity += ("\n当前职责：专业任务 " + work["stage"]
+                 + (" 原管理交付缺件定向补交" if repair else " 首次实质管理"))
     locations = "\n".join(label + "：`" + cite(meta) + "`" for label, meta in refs)
-    message = "[" + event["invocation_id"] + "]\n" + identity + "\n\n" + role_body(policy, "management", work["stage"])
-    message += "\n\n## Owner完整目的\n\n" + goal + "\n来源：" + cite(goal_meta)
-    message += "\n\n## 本轮原文与位置\n\n" + locations
-    message += "\n\n" + marked(policy, "REFERENCE_USE") + "\n\n" + marked(policy, "RETURN_TAIL") + "\n"
+    message = "[" + event["invocation_id"] + "]\n" + identity
+    if repair:
+        message += "\n\n" + marked(policy, "RETURN_REPAIR")
+        message += "\n\n## 原调用与具体缺件的准确来源\n\n" + locations
+        message += ("\n\n仅在原调用所对应的同一物理管理聊天里补齐具体交付；"
+                    "不得重做 M-START、改变既有管理决定、创建新的专业任务或以此文本自称已发送。")
+        message += "\n\n" + marked(policy, "RETURN_REPAIR_TAIL") + "\n"
+    else:
+        message += "\n\n" + role_body(policy, "management", work["stage"])
+        message += "\n\n## Owner完整目的\n\n" + goal + "\n来源：" + cite(goal_meta)
+        message += "\n\n## 本轮原文与位置\n\n" + locations
+        message += "\n\n" + marked(policy, "REFERENCE_USE") + "\n\n" + marked(policy, "RETURN_TAIL") + "\n"
     sources = list({tuple(meta[k] for k in ("repo", "commit", "path", "selector", "blob")): meta
                     for _, meta in refs}.values())
     return {"schema": "coordinator-message/v3", "policy_commit": policy_ref, "policy_blob": policy_oid,
             "config_path": config_path, "config_blob": cfg_oid, "work_id": b["work_id"],
             "invocation_id": event["invocation_id"], "recipient": target, "role": "management",
             "stage": work["stage"], "mode": mode, "mode_display_name": definition["display_name"],
-            "dispatch_kind": "NORMAL", "route": "same_work", "sources": sources, "message": message,
+            "dispatch_kind": event["dispatch_kind"], "route": "same_work", "sources": sources, "message": message,
             "message_sha256": digest(message.encode("utf-8")),
             "delivery_key_sha256": digest((target + "\0" + message).encode("utf-8")),
             "sent": False, "semantic_review_passed": False,
-            "limits": "仅核首次管理输入的机械关系，不编计划或预算，不证明权限、专业判断或实际发送。"}
+            "limits": ("BOOTSTRAP 缺件补交仅使用原管理工作身份及实际缺件证据，"
+                       "不重做管理业务、不授权新建聊天、不证明真实发送或实际接收。"
+                       if repair else
+                       "仅核首次管理输入的机械关系，不编计划或预算，不证明权限、专业判断或实际发送。")}
 
 
 def prepare_dispatch(repo: str | Path, policy_ref: str, config_path: str, event: dict) -> dict:
