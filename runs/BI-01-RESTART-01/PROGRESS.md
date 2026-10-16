@@ -1,93 +1,84 @@
 # BI-01-RESTART-01 Owner 进展投影
 
-> 本页投影已经发生的运行和管理事实，不代替管理地图、当前任务、Gate 正文或独立审查。
+> 本页投影已经发生的运行和管理事实，不代替管理地图、当前任务、Gate 正文、Owner 回答或独立审查。
 
 ## 当前状态
 
 - run：`BI-01-RESTART-01`
-- 当前阶段：I5
+- 当前业务位置：G5 Pass 后等待 Owner
 - G1：Pass
 - G2：ScopedPass
-- G3：Case-01/02 ScopedPass；`completed_recovery_events` 触及语义 Withheld
+- G3：Case-01/02 ScopedPass；recovery 触及语义 Withheld
 - G4：Pass（限定当前 Reference/Shadow 范围）
-- G5：Pending
-- Owner：尚未收到 Pack 或选择题
+- G5：Pass
+- I5：完成
+- Owner：尚未批准 A/B
+- I6：未启动
 - 独立审查：未覆盖
-- Workmap：I5 配置落库后仍需 fresh intake 才可发送专业任务
+- 生产资格：未形成
 
-## I4 已形成的真实认识
+## R0007 Owner Pack
 
-1. 时间、knowledge、Working/Completed 和观察范围是承重业务信息；混用会制造伪排序。
-2. U2 对同轮身份、来源、资格和可追溯性有真实组织价值。
-3. exact-same-actual 名单未证明稳定机会边界或经济过程边界。
-4. Case-01 当前 U3 未证明独立 Quality 增量；Case-02 没有对应 U3 输出。
-5. 当前无增量结论只限具名 Reference/Shadow 结果，不等于完整 U2/U3 无用。
-6. Case-01 single-scale C1 未 join N；Case-02 baseline C1 有一个可核历史效率差，必须按 carrier 分账。
-
-## R0005 专业成果
-
-- invocation：`BI01-RESTART-01-R0005-427e020c096844a98f9f46148fce405c`
-- turn-complete：`7eb4c54a8fe3e7b3372dc3806f39cc09dcf14622`
-- 完整报告：`artifacts/I4_R0005/REPORT.md`
-- 核查摘要：
-  - 13 个 As-Of；
-  - 39 条当前路径；
-  - 39 条旧 Episode 视图；
-  - 三条 canonical path；
-  - 两条 C1 member path；
-  - 三条 N summary、15 个统计量；
-  - 13 条 source turn；
-  - 承重 OHLC 空值 0；
-  - Case-02 U3 R02 行数 0。
+- invocation：`BI01-RESTART-01-R0007-621369295e944443984a81cb6a878f32`
+- turn-complete：`340dd36938ccbe065c6d525aced992b3fb0ef956`
+- Pack：`artifacts/I5_OWNER_PACK/OWNER_PACK.md`
+- Pack SHA-256：`3494a57f7299d5b073d17be68191c95b2bcd079bd64b25205a172a9076eee979`
 - after-return：`ok=true / errors=[]`
-- 结构检查和远端收取不是业务 Gate，也不是独立审查。
+- 机械收取只证明完整、可定位、可解析，不证明业务 Gate。
 
-## R0006 管理决定
+## R0008 管理决定
 
-- invocation：`BI01-RESTART-01-R0006-d47ef1963ae34986a44d18da92fd1483`
-- 管理目的：`M-REASSESS`
-- Case-02：G3 ScopedPass
-- I4/G4：Pass（限定范围）
-- I4：结束
-- I5：启动
-- I2/I3 补证：当前不需要
-- 第三个 Case：未授权
+- invocation：`BI01-RESTART-01-R0008-a2c40e1e2fae32a95b0ce3b2add4df4a`
+- 目的：`M-REASSESS`
+- Owner Pack：Pass
+- I5/G5：Pass
+- I5 专业任务：结束
+- 专业返修：无
+- 当前状态：WaitingOwner
+- I6：未启动
+- I2/I3/I4：不返回
 - Worker：无
-- 当前建议：选项 A——保留组织/可追溯价值，暂停选择/Quality 投入，结束当前 reference 观察；Owner Pack 完成后再正式提请 Owner。
 
-## 当前 I5 输出
+## 管理接收的 Owner 判断前提
+
+1. actual、knowledge、Working/Completed 和比较范围是承重信息。
+2. U2 的身份、同轮组织和可追溯性价值成立。
+3. exact 成员选择价值当前未证明。
+4. 当前 U3 独立 Quality 增量当前未证明。
+5. formal Formation/Separation/C2/H1/U3 未实际验证，不能判为已失败或已成功。
+6. 两个 Case 相邻同源，不是独立统计重复。
+7. 当前没有收益、资金动作、因果、跨市场规律、独立审查或生产资格。
+
+## Owner 决策
+
+管理推荐 A：
 
 ```text
-OWNER_PACK.md
-  Executive Summary
-  Case-01/02 市场过程面板
-  单品种→静态集合→U2→U3 价值边界
-  Accepted / Scoped / Withheld / Hypothesis
-  反证、争议与证据依赖
-  选项 A/B/C
-  管理建议
-  两项 Owner 问题
-  exact 来源与非主张
+保留 C0/N 和 U2 的身份、时间、生命周期、可追溯性；
+暂停把 exact 组、当前 Reference assessment、当前 U3 当作已成立投资能力；
+结束本次 reference 观察。
 ```
+
+Owner 只需回答：
+
+1. 是否批准 A？
+2. 若不批准，是否选择 B，并给出 consumer、要改变的判断和投入边界？
 
 ## 当前后继
 
-1. 提交 R0006 管理决定、地图和 I5 当前任务；
-2. 建立 I5 Binding 并更新 Workmap；
-3. fresh remote readback；
-4. snapshot / reader / intake / pre-dispatch；
-5. 核新 I5 聊天 NOT_SENT；
-6. 发送 I5 专业任务；
-7. Pack 完成后回管理；
-8. 管理决定 G5、补 Pack 或 WaitingOwner；
-9. Owner 实际回答后才进入 I6。
+- 当前不发送任何专业任务；
+- Owner 回复回原管理会话；
+- A：管理建立 I6 落实任务；
+- B：根据具名 consumer 和投入边界建立 I6 formal 验证任务；
+- B 缺输入：只等待具名缺项；
+- 未回复：合法等待，不自动默认 A。
 
 ## 边界
 
 - 不重开 I4；
-- 不增加第三 Case；
+- 不新增第三 Case；
 - 不修 MF-01；
 - 不发 Worker；
-- 不补造 formal U2/U3；
-- 不声称 I5 已发送；
-- 不声称 G5、Owner 接受、独立审查或生产资格。
+- 不补 formal U2/U3；
+- 不改生产入口；
+- 不声称 Owner 已批准或 I6 已启动。
