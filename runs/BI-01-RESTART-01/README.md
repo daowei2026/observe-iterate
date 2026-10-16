@@ -1,27 +1,37 @@
-# BI-01 / RESTART-01 — 下一次全新运行的准备入口
+# BI-01 / RESTART-01 — 首次管理已完成，当前处于窄修复与专业派发门禁
 
-**PREPARED_NOT_STARTED / NO_SEND**。Owner 已停止旧试跑，准备在长程运行机制符合预期后从真实任务重新开始；本目录目前没有专业结果、地图、签发任务、有效 Binding 或真实 R 轮。此空缺不可由主控填造业务内容。
+**MANAGEMENT_R0001_RECEIVED / R0002_MANUAL_REPAIR / PROFESSIONAL_NOT_SENT / WORKMAP_NOT_ADOPTED**。
+
+R0001 已完成首次实质管理并形成地图、当前任务和 Question Work Binding；其原始回答、Return、提示、receipt 与管理包继续由 exact commit `46119a8e0030b4c3597634735cbe5d22ad3a0ac7` 保留。R0002 只修复 Owner 授权的机器接线缺项，不重新执行 M-START，不产生专业结果，不签 G4，也不表示 Overlay12 prepare/verify 已通过。
 
 <a id="common"></a>
 ## 运行身份与历史隔离
 
-- 唯一新运行空间为本目录；业务协调器固定 `work_id=BI-01`，但 `run_id=BI-01-RESTART-01`、所有新 invocation/token/marker、管理/执行 chat/thread 和 local long-task 身份必须重新建立且不继承旧账本。相同业务 work_id 不意味着旧试跑仍然活动。
-- 旧业务仓 `complex-systems-vocabulary/.../observation-iteration-runs/BI-01-IT-01/` 是**已停止试跑的历史**，包括 10 月 13 日前三段、10 月 15 日第四段等 I4 结果/旧 G3 限定决定、旧轮次/聊天，全部**不继承**为新 run 的业务成果、当前任务、有效 Gate 或后继。Git 历史保留不等于接续。
-- 可以从 `professional/source/00—07` 和实际设计/数据原件重新理解 I1–I3；是否从 I4 开始以及 G3 可消费范围由下一次管理 Pro 实际判断，不能预填已通过。
-- 本次提交不是发消息授权，任何模型/手机业务行动需要之后的 Owner 明确开工和真实身份/来源/权限证据。
+- 唯一新运行空间为本目录；业务协调器固定 `work_id=BI-01`，但 `run_id=BI-01-RESTART-01`、新 invocation/token/marker、管理/执行 chat/thread 和 local long-task 身份均与旧试跑隔离。
+- 旧业务仓 `complex-systems-vocabulary/.../observation-iteration-runs/BI-01-IT-01/` 仍是已停止试跑的历史，不继承为本 run 的业务成果、当前任务、Gate 或在途。
+- R0001 原管理业务判断继续有效；R0002 只修接线。原物理管理会话是 `BI01-R01-管理`。
+- 当前没有任何专业执行消息发送证据；不得从地图、任务、Binding、commit 或 intake 准备状态推出专业任务已发送。
 
 <a id="bi01"></a>
-## 由真实管理与运行形成的文件，而不是准备阶段提前造的结论
+## 当前生效管理面与实际恢复顺序
 
-第一次 M-START 实际收到有效管理成果后：
+已形成并保留：
 
-- `00_长程推进地图.md`：由管理 Pro 对完整 I1–I6、Source/Method/Case/As-Of、已成/未成、Gate、反证和下一责任作真实业务关系解释。
-- `01_当前任务.md`：由管理 Pro 签发本次当前专业任务、完整 scope、合法输入和 Gate/后继。
-- `reviews/management-Rnnnn/`：管理 Pro 决定、真实接收/复看与签发证据；独立审查另列。
-- `provenance/turns/Rnnnn/`：真实 Pro invocation 的 PROMPT、FULL_RESPONSE、身份、Return 和确证发送，R ≠ 手机 Episode。
-- `artifacts/`：真实业务实物（有授权才包括 Worker 技术成果）。
-- `PROGRESS.md`：操作端的 Owner 阅读投影；不能代替管理地图或 Gate。
+- `00_长程推进地图.md`：R0001 的完整业务关系、阶段与后继；R0002 仅同步当前操作位置。
+- `01_当前任务.md`：I4 真实业务观察（含定向 I3 核查）；当前 `task_id` 为 `BI01-RESTART-01-I4-EXECUTION-01`。
+- `bindings/QUESTION_WORK_BINDING_I4.json`：模式采用 `OBSERVATION_I4`；全部业务引用为 exact Git locator；管理路线回到 `BI01-R01-管理`。
+- `reviews/MANAGEMENT_START_R0001.md`：原管理业务决定，不改写。
+- `reviews/MANAGEMENT_DELIVERY_REPAIR_R0002.md`：本次窄修复决定和原件／修复件关系。
+- `provenance/turns/R0001/`：原始 R0001 历史与明确修复旁路件。
+- `provenance/turns/R0002/`：本次管理修复回交；不是专业轮次。
+
+后续顺序：
+
+1. 操作端下载并验证 R0002 修复包，按原路径落库；
+2. 提交、推送并远端读回；
+3. 对修正版 task/binding/map/README 重新生成 snapshot，完成 reader 与 intake；
+4. intake 的 `dispatch.task_id` 必须严格等于 `BI01-RESTART-01-I4-EXECUTION-01`；
+5. 只有 Candidate intake、reader、binding、dispatch 与发送现场检查全部真实通过后，才可形成 `ADOPTED` 的 Workmap Binding；
+6. 之后才能创建首个专业轮次并发送到未来的新专业聊天。当前仍禁止派发。
 
 准确流程：[BI-01 真实运行合同](../../runtime/operations/BI01_REAL_RUN_V1.md)；[轮次合同](../../runtime/operations/ROUND_RECORD_CONTRACT.md)。
-
-唯一活动正本原则：开始后当前 map/task/管理回交/新 R 只在本工作面维护；旧业务仓内历史仍可读，但不再提供两个互相冲突的 CURRENT。

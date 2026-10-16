@@ -9,22 +9,34 @@
     "selector": "full"
   },
   "plan_ref": {
-    "answer_ref": "#workmap"
+    "repo": "daowei2026/observe-iterate",
+    "commit": "46119a8e0030b4c3597634735cbe5d22ad3a0ac7",
+    "path": "runs/BI-01-RESTART-01/00_长程推进地图.md",
+    "selector": "full"
   },
   "full_scope_ref": {
-    "answer_ref": "#issued-task-full-scope"
+    "repo": "daowei2026/observe-iterate",
+    "commit": "46119a8e0030b4c3597634735cbe5d22ad3a0ac7",
+    "path": "runs/BI-01-RESTART-01/01_当前任务.md",
+    "selector": "#issued-task-full-scope"
   },
   "batch_result": "先完成Case-01承重G3核查、五切面时间线和四层增量首轮结果；未触发管理条件时连续推进其余I4，不以Case A为停点。",
   "question_ids": [
     "I3",
     "I4"
   ],
-  "professional_mode": "BI01_EXECUTION_PRO_I4_WITH_TARGETED_I3",
+  "professional_mode": "OBSERVATION_I4",
   "focus_ref": {
-    "answer_ref": "#issued-task-current-focus"
+    "repo": "daowei2026/observe-iterate",
+    "commit": "46119a8e0030b4c3597634735cbe5d22ad3a0ac7",
+    "path": "runs/BI-01-RESTART-01/01_当前任务.md",
+    "selector": "#issued-task-current-focus"
   },
   "coverage_ref": {
-    "answer_ref": "#workmap-coverage"
+    "repo": "daowei2026/observe-iterate",
+    "commit": "46119a8e0030b4c3597634735cbe5d22ad3a0ac7",
+    "path": "runs/BI-01-RESTART-01/00_长程推进地图.md",
+    "selector": "full"
   },
   "source_reads": [
     {
@@ -185,41 +197,62 @@
     }
   ],
   "deliverables_ref": {
-    "answer_ref": "#issued-task-deliverables"
+    "repo": "daowei2026/observe-iterate",
+    "commit": "46119a8e0030b4c3597634735cbe5d22ad3a0ac7",
+    "path": "runs/BI-01-RESTART-01/01_当前任务.md",
+    "selector": "#issued-task-deliverables"
   },
   "completion_ref": {
-    "answer_ref": "#issued-task-completion"
+    "repo": "daowei2026/observe-iterate",
+    "commit": "46119a8e0030b4c3597634735cbe5d22ad3a0ac7",
+    "path": "runs/BI-01-RESTART-01/01_当前任务.md",
+    "selector": "#issued-task-completion"
   },
   "budget_ref": {
-    "answer_ref": "#budget-and-review"
+    "repo": "daowei2026/observe-iterate",
+    "commit": "46119a8e0030b4c3597634735cbe5d22ad3a0ac7",
+    "path": "runs/BI-01-RESTART-01/01_当前任务.md",
+    "selector": "#budget-and-review"
   },
   "routes": {
     "same_work": {
       "recipient_role": "professional",
       "recipient_ref": "chatgpt-project:细节叙事生成_金标/chat:new:BI01-RESTART-01-I4-EXECUTION",
       "instructions_ref": {
-        "answer_ref": "#route-same-work"
+        "repo": "daowei2026/observe-iterate",
+        "commit": "46119a8e0030b4c3597634735cbe5d22ad3a0ac7",
+        "path": "runs/BI-01-RESTART-01/01_当前任务.md",
+        "selector": "#route-same-work"
       }
     },
     "accept": {
       "recipient_role": "management",
-      "recipient_ref": "chatgpt-project:细节叙事生成_金标/chat:new:BI01-RESTART-01-M-START",
+      "recipient_ref": "chatgpt-project:细节叙事生成_金标/chat:BI01-R01-管理",
       "instructions_ref": {
-        "answer_ref": "#route-accept"
+        "repo": "daowei2026/observe-iterate",
+        "commit": "46119a8e0030b4c3597634735cbe5d22ad3a0ac7",
+        "path": "runs/BI-01-RESTART-01/01_当前任务.md",
+        "selector": "#route-accept"
       }
     },
     "decide": {
       "recipient_role": "management",
-      "recipient_ref": "chatgpt-project:细节叙事生成_金标/chat:new:BI01-RESTART-01-M-START",
+      "recipient_ref": "chatgpt-project:细节叙事生成_金标/chat:BI01-R01-管理",
       "instructions_ref": {
-        "answer_ref": "#route-decide"
+        "repo": "daowei2026/observe-iterate",
+        "commit": "46119a8e0030b4c3597634735cbe5d22ad3a0ac7",
+        "path": "runs/BI-01-RESTART-01/01_当前任务.md",
+        "selector": "#route-decide"
       }
     },
     "return_repair": {
       "recipient_role": "professional",
       "recipient_ref": "chatgpt-project:细节叙事生成_金标/chat:new:BI01-RESTART-01-I4-EXECUTION",
       "instructions_ref": {
-        "answer_ref": "#route-return-repair"
+        "repo": "daowei2026/observe-iterate",
+        "commit": "46119a8e0030b4c3597634735cbe5d22ad3a0ac7",
+        "path": "runs/BI-01-RESTART-01/01_当前任务.md",
+        "selector": "#route-return-repair"
       }
     }
   },
@@ -228,14 +261,20 @@
       "trigger_id": "BI01-I4-G4-CANDIDATE",
       "kind": "RESULT",
       "condition_ref": {
-        "answer_ref": "#trigger-g4"
+        "repo": "daowei2026/observe-iterate",
+        "commit": "46119a8e0030b4c3597634735cbe5d22ad3a0ac7",
+        "path": "runs/BI-01-RESTART-01/provenance/turns/R0001/FULL_RESPONSE.md",
+        "selector": "#trigger-g4"
       },
       "signal_key": "bi01.i4.g4_candidate",
       "route": {
         "recipient_role": "management",
-        "recipient_ref": "chatgpt-project:细节叙事生成_金标/chat:new:BI01-RESTART-01-M-START",
+        "recipient_ref": "chatgpt-project:细节叙事生成_金标/chat:BI01-R01-管理",
         "instructions_ref": {
-          "answer_ref": "#route-accept"
+          "repo": "daowei2026/observe-iterate",
+          "commit": "46119a8e0030b4c3597634735cbe5d22ad3a0ac7",
+          "path": "runs/BI-01-RESTART-01/01_当前任务.md",
+          "selector": "#route-accept"
         }
       },
       "blocking": false,
@@ -249,14 +288,20 @@
       "trigger_id": "BI01-I3-CONSUMPTION-CONFLICT",
       "kind": "RESULT",
       "condition_ref": {
-        "answer_ref": "#trigger-g3-conflict"
+        "repo": "daowei2026/observe-iterate",
+        "commit": "46119a8e0030b4c3597634735cbe5d22ad3a0ac7",
+        "path": "runs/BI-01-RESTART-01/provenance/turns/R0001/FULL_RESPONSE.md",
+        "selector": "#trigger-g3-conflict"
       },
       "signal_key": "bi01.i3.consumption_conflict",
       "route": {
         "recipient_role": "management",
-        "recipient_ref": "chatgpt-project:细节叙事生成_金标/chat:new:BI01-RESTART-01-M-START",
+        "recipient_ref": "chatgpt-project:细节叙事生成_金标/chat:BI01-R01-管理",
         "instructions_ref": {
-          "answer_ref": "#route-decide"
+          "repo": "daowei2026/observe-iterate",
+          "commit": "46119a8e0030b4c3597634735cbe5d22ad3a0ac7",
+          "path": "runs/BI-01-RESTART-01/01_当前任务.md",
+          "selector": "#route-decide"
         }
       },
       "blocking": true,
@@ -270,14 +315,20 @@
       "trigger_id": "BI01-OWNER-METHOD-CHANGE",
       "kind": "CHANGE",
       "condition_ref": {
-        "answer_ref": "#trigger-change"
+        "repo": "daowei2026/observe-iterate",
+        "commit": "46119a8e0030b4c3597634735cbe5d22ad3a0ac7",
+        "path": "runs/BI-01-RESTART-01/provenance/turns/R0001/FULL_RESPONSE.md",
+        "selector": "#trigger-change"
       },
       "signal_key": "bi01.owner_method_change",
       "route": {
         "recipient_role": "management",
-        "recipient_ref": "chatgpt-project:细节叙事生成_金标/chat:new:BI01-RESTART-01-M-START",
+        "recipient_ref": "chatgpt-project:细节叙事生成_金标/chat:BI01-R01-管理",
         "instructions_ref": {
-          "answer_ref": "#route-decide"
+          "repo": "daowei2026/observe-iterate",
+          "commit": "46119a8e0030b4c3597634735cbe5d22ad3a0ac7",
+          "path": "runs/BI-01-RESTART-01/01_当前任务.md",
+          "selector": "#route-decide"
         }
       },
       "blocking": true,
@@ -291,14 +342,20 @@
       "trigger_id": "BI01-I4-STAGNATION-REVIEW",
       "kind": "EFFORT",
       "condition_ref": {
-        "answer_ref": "#trigger-effort"
+        "repo": "daowei2026/observe-iterate",
+        "commit": "46119a8e0030b4c3597634735cbe5d22ad3a0ac7",
+        "path": "runs/BI-01-RESTART-01/provenance/turns/R0001/FULL_RESPONSE.md",
+        "selector": "#trigger-effort"
       },
       "signal_key": "bi01.i4.stagnation_review",
       "route": {
         "recipient_role": "management",
-        "recipient_ref": "chatgpt-project:细节叙事生成_金标/chat:new:BI01-RESTART-01-M-START",
+        "recipient_ref": "chatgpt-project:细节叙事生成_金标/chat:BI01-R01-管理",
         "instructions_ref": {
-          "answer_ref": "#route-decide"
+          "repo": "daowei2026/observe-iterate",
+          "commit": "46119a8e0030b4c3597634735cbe5d22ad3a0ac7",
+          "path": "runs/BI-01-RESTART-01/01_当前任务.md",
+          "selector": "#route-decide"
         }
       },
       "blocking": false,
@@ -306,7 +363,10 @@
         "unit": "EFFECTIVE_CALLS",
         "limit": 2,
         "count_from_ref": {
-          "answer_ref": "#budget-and-review"
+          "repo": "daowei2026/observe-iterate",
+          "commit": "46119a8e0030b4c3597634735cbe5d22ad3a0ac7",
+          "path": "runs/BI-01-RESTART-01/01_当前任务.md",
+          "selector": "#budget-and-review"
         }
       },
       "obligation_id": "BI01-I4-MANAGEMENT-OVERSIGHT",
@@ -320,7 +380,10 @@
     "status": "NOT_APPLICABLE_NEW_CASE",
     "ref": null,
     "reason_ref": {
-      "answer_ref": "#parent-decision"
+      "repo": "daowei2026/observe-iterate",
+      "commit": "46119a8e0030b4c3597634735cbe5d22ad3a0ac7",
+      "path": "runs/BI-01-RESTART-01/provenance/turns/R0001/FULL_RESPONSE.md",
+      "selector": "#parent-decision"
     }
   },
   "question_definitions": []
