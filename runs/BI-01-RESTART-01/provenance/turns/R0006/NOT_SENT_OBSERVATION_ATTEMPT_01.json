@@ -1,0 +1,18 @@
+{
+  "schema": "exact-task-delivery-observation-attempt/v1",
+  "run_id": "BI-01-RESTART-01",
+  "round_id": "R0006",
+  "invocation_id": "BI01-RESTART-01-R0006-d47ef1963ae34986a44d18da92fd1483",
+  "observed_commit": "e135142f4b1902d52b740d5b109a0df18eacd8b9",
+  "recipient": "chatgpt-project:细节叙事生成_金标/chat:BI01-R01-管理",
+  "state": "UNKNOWN",
+  "observed_at": null,
+  "finished_at": "2026-10-16T13:44:03.372Z",
+  "phone_control_acquired": false,
+  "product_calls": 0,
+  "phone_side_effects": 0,
+  "result": "NO_ENDPOINT_PROOF",
+  "protocol_deviation": "PRE_PHONE_NONEXACT_DECLARATION_DISCOVERY",
+  "detail": "执行器在任何手机控制权申请或产品 MCP 调用之前，错误地用 ALL_TOOLS.filter/includes 做了一次工具声明发现。它随即失败关闭并退出；没有形成 NOT_SENT 端点证据，也没有改变手机、会话或草稿状态。该尝试不得用于放行派发。",
+  "recovery": "必须使用全新的短生命周期执行器，从头按每个精确工具名分别执行 ALL_TOOLS.find(t => t.name === exactName)，重新观察同一个原管理会话。"
+}
