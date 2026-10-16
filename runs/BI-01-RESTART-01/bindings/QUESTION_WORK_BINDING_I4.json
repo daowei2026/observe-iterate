@@ -1,0 +1,327 @@
+{
+  "schema": "question-work/v2",
+  "kind": "BINDING",
+  "work_id": "BI-01",
+  "goal_ref": {
+    "repo": "daowei2026/observe-iterate",
+    "commit": "75d42776a78cd4cbdf3b61bbf86ec93701d06b84",
+    "path": "professional/source/00_AGENT_CHARTER_AND_STAGE_CONTRACT.md",
+    "selector": "full"
+  },
+  "plan_ref": {
+    "answer_ref": "#workmap"
+  },
+  "full_scope_ref": {
+    "answer_ref": "#issued-task-full-scope"
+  },
+  "batch_result": "先完成Case-01承重G3核查、五切面时间线和四层增量首轮结果；未触发管理条件时连续推进其余I4，不以Case A为停点。",
+  "question_ids": [
+    "I3",
+    "I4"
+  ],
+  "professional_mode": "BI01_EXECUTION_PRO_I4_WITH_TARGETED_I3",
+  "focus_ref": {
+    "answer_ref": "#issued-task-current-focus"
+  },
+  "coverage_ref": {
+    "answer_ref": "#workmap-coverage"
+  },
+  "source_reads": [
+    {
+      "source": {
+        "repo": "daowei2026/observe-iterate",
+        "commit": "caccf69993b6f0c184fc89194476bcd542acb1e0",
+        "path": "runs/BI-01-RESTART-01/OWNER_START.md",
+        "selector": "full"
+      },
+      "requirement": "MODE_FULL",
+      "purpose": "本次新run授权、旧I4不继承、连续真实业务推进要求",
+      "reuse_evidence": null
+    },
+    {
+      "source": {
+        "repo": "daowei2026/observe-iterate",
+        "commit": "75d42776a78cd4cbdf3b61bbf86ec93701d06b84",
+        "path": "professional/source/00_AGENT_CHARTER_AND_STAGE_CONTRACT.md",
+        "selector": "full"
+      },
+      "requirement": "MODE_FULL",
+      "purpose": "完整总意图、I1-I6 Input/Output/Gate、角色权限",
+      "reuse_evidence": null
+    },
+    {
+      "source": {
+        "repo": "daowei2026/observe-iterate",
+        "commit": "75d42776a78cd4cbdf3b61bbf86ec93701d06b84",
+        "path": "professional/source/01_I1_I3_PROFESSIONAL_CONTRACT.md",
+        "selector": "full"
+      },
+      "requirement": "BOUNDARY",
+      "purpose": "定向G3核查、局部返I2/I3和不冻结无关I4的边界",
+      "reuse_evidence": null
+    },
+    {
+      "source": {
+        "repo": "daowei2026/observe-iterate",
+        "commit": "75d42776a78cd4cbdf3b61bbf86ec93701d06b84",
+        "path": "professional/source/02_I4_OBSERVATION_AND_CHALLENGE.md",
+        "selector": "full"
+      },
+      "requirement": "FOCUS_FULL",
+      "purpose": "I4事实、增量/无增量、挑战、G4要求",
+      "reuse_evidence": null
+    },
+    {
+      "source": {
+        "repo": "daowei2026/observe-iterate",
+        "commit": "75d42776a78cd4cbdf3b61bbf86ec93701d06b84",
+        "path": "professional/source/03_STAGE_HANDOFF_AND_READINESS.md",
+        "selector": "full"
+      },
+      "requirement": "BOUNDARY",
+      "purpose": "G4到I5、定向补修和后继边界",
+      "reuse_evidence": null
+    },
+    {
+      "source": {
+        "repo": "daowei2026/observe-iterate",
+        "commit": "75d42776a78cd4cbdf3b61bbf86ec93701d06b84",
+        "path": "professional/source/04_PRO_WORKER_CODEX_HANDOFF.md",
+        "selector": "full"
+      },
+      "requirement": "BOUNDARY",
+      "purpose": "必要复算/制图工单与Worker回交边界",
+      "reuse_evidence": null
+    },
+    {
+      "source": {
+        "repo": "daowei2026/observe-iterate",
+        "commit": "75d42776a78cd4cbdf3b61bbf86ec93701d06b84",
+        "path": "professional/source/05_ROLE_GATE_AND_HANDOFF_CONTRACT.md",
+        "selector": "full"
+      },
+      "requirement": "BOUNDARY",
+      "purpose": "执行Pro自查、管理Gate、Owner权限",
+      "reuse_evidence": null
+    },
+    {
+      "source": {
+        "repo": "daowei2026/complex-systems-vocabulary",
+        "commit": "fe9656349c8f0aefeeef41c323bec81a688a2d70",
+        "path": "docs/network-dynamic-ceps-factory/capital-management-purpose/discuss-materials/U2U3首轮业务观察实例上下文_20261010/01_首轮实例及子意图1至3上下文.md",
+        "selector": "full"
+      },
+      "requirement": "FOCUS_FULL",
+      "purpose": "Q-01、Case身份、U2/U3计算链、方法与As-Of历史来源；不采用旧执行结论",
+      "reuse_evidence": null
+    },
+    {
+      "source": {
+        "repo": "daowei2026/complex-systems-vocabulary",
+        "commit": "fe9656349c8f0aefeeef41c323bec81a688a2d70",
+        "path": "docs/network-dynamic-ceps-factory/capital-management-purpose/discuss-materials/U2U3首轮业务观察实例上下文_20261010/02_子意图4三类观察情形与挑战.md",
+        "selector": "full"
+      },
+      "requirement": "FOCUS_FULL",
+      "purpose": "四层增量、A/B/C关系、主动挑战和最低结果合同",
+      "reuse_evidence": null
+    },
+    {
+      "source": {
+        "repo": "daowei2026/feature-refinement-implementation-agent-evolution",
+        "commit": "ed62cd716cd603f0bcc566368c62caec7cdba554",
+        "path": "agent_evolution/pilot_cases/network-dynamic-ceps-factory-u2-u3/runs/u2-retrofit-20260907/artifacts/material_catchup/current_inputs/source_to_behavior/U2_SOURCE_OCCURRENCE_EPISODE_NODE_BEHAVIOR_LOCAL_CONTRACT_RETROFIT_0.1.0-candidate.1.md",
+        "selector": "full"
+      },
+      "requirement": "PROVENANCE_TRIGGER",
+      "purpose": "C0/N actual-confirm、Episode和NodeBehavior方法边界",
+      "reuse_evidence": null
+    },
+    {
+      "source": {
+        "repo": "daowei2026/feature-refinement-implementation-agent-evolution",
+        "commit": "ed62cd716cd603f0bcc566368c62caec7cdba554",
+        "path": "agent_evolution/pilot_cases/network-dynamic-ceps-factory-u2-u3/runs/u2-retrofit-20260907/artifacts/material_catchup/current_inputs/relation_to_cluster/U2_RELATION_FORMATION_QUALIFICATION_PHYSICALIZATION_LOCAL_CONTRACT_RETROFIT_0.1.0-candidate.1.md",
+        "selector": "full"
+      },
+      "requirement": "PROVENANCE_TRIGGER",
+      "purpose": "Formation、Qualification、Validity、ExternalSeparation、Commit分责",
+      "reuse_evidence": null
+    },
+    {
+      "source": {
+        "repo": "daowei2026/feature-refinement-implementation-agent-evolution",
+        "commit": "ed62cd716cd603f0bcc566368c62caec7cdba554",
+        "path": "agent_evolution/pilot_cases/network-dynamic-ceps-factory-u2-u3/runs/u3-retrofit-20260907/artifacts/material_catchup/effective_mission_a/04_movement_current/02_U3_MA_LOCAL_CONTRACT_MOVEMENT_01.md",
+        "selector": "full"
+      },
+      "requirement": "PROVENANCE_TRIGGER",
+      "purpose": "U3 Movement objective facts、Working/Completed、质量非主张",
+      "reuse_evidence": null
+    },
+    {
+      "source": {
+        "source_kind": "ATTACHMENT",
+        "attachment_id": "file_0000000035c481fdbbfb82af5e57a96c",
+        "filename": "steel_U2_U3_执行结果_20261010.zip",
+        "selector": "full archive; primary members listed in current task",
+        "sha256": "7bebbee3fd7d425eb85116f33c5d0e01ae2163e6849818515fe3824a82b9a46c"
+      },
+      "requirement": "FOCUS_FULL",
+      "purpose": "当前Reference/Shadow结果、状态边界和五个As-Of切面",
+      "reuse_evidence": null
+    },
+    {
+      "source": {
+        "source_kind": "ATTACHMENT",
+        "attachment_id": "file_000000008c7481fd8604a79973ec5951",
+        "filename": "rb_hc_i_mid贴近转折_zig_small_K线_20210101_20240229.zip",
+        "selector": "full archive; bind to actual current hash, not historical expected hash",
+        "sha256": "4fd1af4e7b34af6fc099e6289ffdd5d83125412fc16d2a9902af4fd9741b3987"
+      },
+      "requirement": "FOCUS_FULL",
+      "purpose": "当前重启的候选DataBinding、Case anchor与路径核查",
+      "reuse_evidence": null
+    }
+  ],
+  "deliverables_ref": {
+    "answer_ref": "#issued-task-deliverables"
+  },
+  "completion_ref": {
+    "answer_ref": "#issued-task-completion"
+  },
+  "budget_ref": {
+    "answer_ref": "#budget-and-review"
+  },
+  "routes": {
+    "same_work": {
+      "recipient_role": "professional",
+      "recipient_ref": "chatgpt-project:细节叙事生成_金标/chat:new:BI01-RESTART-01-I4-EXECUTION",
+      "instructions_ref": {
+        "answer_ref": "#route-same-work"
+      }
+    },
+    "accept": {
+      "recipient_role": "management",
+      "recipient_ref": "chatgpt-project:细节叙事生成_金标/chat:new:BI01-RESTART-01-M-START",
+      "instructions_ref": {
+        "answer_ref": "#route-accept"
+      }
+    },
+    "decide": {
+      "recipient_role": "management",
+      "recipient_ref": "chatgpt-project:细节叙事生成_金标/chat:new:BI01-RESTART-01-M-START",
+      "instructions_ref": {
+        "answer_ref": "#route-decide"
+      }
+    },
+    "return_repair": {
+      "recipient_role": "professional",
+      "recipient_ref": "chatgpt-project:细节叙事生成_金标/chat:new:BI01-RESTART-01-I4-EXECUTION",
+      "instructions_ref": {
+        "answer_ref": "#route-return-repair"
+      }
+    }
+  },
+  "triggers": [
+    {
+      "trigger_id": "BI01-I4-G4-CANDIDATE",
+      "kind": "RESULT",
+      "condition_ref": {
+        "answer_ref": "#trigger-g4"
+      },
+      "signal_key": "bi01.i4.g4_candidate",
+      "route": {
+        "recipient_role": "management",
+        "recipient_ref": "chatgpt-project:细节叙事生成_金标/chat:new:BI01-RESTART-01-M-START",
+        "instructions_ref": {
+          "answer_ref": "#route-accept"
+        }
+      },
+      "blocking": false,
+      "effort_limit": null,
+      "obligation_id": "BI01-I4-GATE-REVIEW",
+      "cycle_id": "BI01-RESTART-01-I4-GATE-01",
+      "rearm_ref": null,
+      "repeat": "ONCE"
+    },
+    {
+      "trigger_id": "BI01-I3-CONSUMPTION-CONFLICT",
+      "kind": "RESULT",
+      "condition_ref": {
+        "answer_ref": "#trigger-g3-conflict"
+      },
+      "signal_key": "bi01.i3.consumption_conflict",
+      "route": {
+        "recipient_role": "management",
+        "recipient_ref": "chatgpt-project:细节叙事生成_金标/chat:new:BI01-RESTART-01-M-START",
+        "instructions_ref": {
+          "answer_ref": "#route-decide"
+        }
+      },
+      "blocking": true,
+      "effort_limit": null,
+      "obligation_id": "BI01-I3-QUALIFICATION-REVIEW",
+      "cycle_id": "BI01-RESTART-01-I3-QUAL-01",
+      "rearm_ref": null,
+      "repeat": "ONCE"
+    },
+    {
+      "trigger_id": "BI01-OWNER-METHOD-CHANGE",
+      "kind": "CHANGE",
+      "condition_ref": {
+        "answer_ref": "#trigger-change"
+      },
+      "signal_key": "bi01.owner_method_change",
+      "route": {
+        "recipient_role": "management",
+        "recipient_ref": "chatgpt-project:细节叙事生成_金标/chat:new:BI01-RESTART-01-M-START",
+        "instructions_ref": {
+          "answer_ref": "#route-decide"
+        }
+      },
+      "blocking": true,
+      "effort_limit": null,
+      "obligation_id": "BI01-CURRENT-ASSUMPTION-REVIEW",
+      "cycle_id": "BI01-RESTART-01-ASSUMPTION-01",
+      "rearm_ref": null,
+      "repeat": "ONCE"
+    },
+    {
+      "trigger_id": "BI01-I4-STAGNATION-REVIEW",
+      "kind": "EFFORT",
+      "condition_ref": {
+        "answer_ref": "#trigger-effort"
+      },
+      "signal_key": "bi01.i4.stagnation_review",
+      "route": {
+        "recipient_role": "management",
+        "recipient_ref": "chatgpt-project:细节叙事生成_金标/chat:new:BI01-RESTART-01-M-START",
+        "instructions_ref": {
+          "answer_ref": "#route-decide"
+        }
+      },
+      "blocking": false,
+      "effort_limit": {
+        "unit": "EFFECTIVE_CALLS",
+        "limit": 2,
+        "count_from_ref": {
+          "answer_ref": "#budget-and-review"
+        }
+      },
+      "obligation_id": "BI01-I4-MANAGEMENT-OVERSIGHT",
+      "cycle_id": "BI01-RESTART-01-I4-OVERSIGHT-01",
+      "rearm_ref": null,
+      "repeat": "WHILE_WORK_ACTIVE"
+    }
+  ],
+  "explicit_no_trigger_reason_ref": null,
+  "parent": {
+    "status": "NOT_APPLICABLE_NEW_CASE",
+    "ref": null,
+    "reason_ref": {
+      "answer_ref": "#parent-decision"
+    }
+  },
+  "question_definitions": []
+}
