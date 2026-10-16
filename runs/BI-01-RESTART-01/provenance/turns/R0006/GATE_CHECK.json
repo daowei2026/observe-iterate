@@ -1,0 +1,58 @@
+{
+  "schema": "bi01-gate-check/v1",
+  "run_id": "BI-01-RESTART-01",
+  "round_id": "R0006",
+  "invocation_id": "BI01-RESTART-01-R0006-d47ef1963ae34986a44d18da92fd1483",
+  "remote_turn_complete": {
+    "commit": "b974d70aba6e0596a6251178caaf7f9f305def95",
+    "message": "turn complete BI01-RESTART-01-R0006-d47ef1963ae34986a44d18da92fd1483",
+    "observed_at": "2026-10-16T14:17:52.486605Z",
+    "scheduler_revision": 75
+  },
+  "after_return": {
+    "checked_ref": "b974d70aba6e0596a6251178caaf7f9f305def95",
+    "ok": true,
+    "errors": []
+  },
+  "return_locator_validation": {
+    "full_response_sha256": "f7a8bb1b4d95595c24286767554d3cf105c7fe0a4817b451e2f768182bbaa369",
+    "question_work_return_sha256": "8b666db20f909962e8a8e79df3b77b51d4102cfb1a2640fa924d853c84e54dad",
+    "role_return_sha256": "a04042fc67bffcda2d0bf4f629f4806d86e3ac2df852fbf34ebd12df2067b0d0",
+    "embedded_question_work_return_semantic_exact": true,
+    "embedded_role_return_semantic_exact": true,
+    "all_internal_git_objects_resolve": true,
+    "required_anchors_resolve": true,
+    "unique_internal_locator_count": 17
+  },
+  "management_delivery": {
+    "decision_commit": "db61798c8d56a811a9db98d4b766ac584203f524",
+    "decision_ref": "runs/BI-01-RESTART-01/reviews/MANAGEMENT_GATE_DECISION_R0006.md",
+    "workmap_and_task_updated": true,
+    "new_task_id": "BI01-RESTART-01-I5-OWNER-PACK-01",
+    "new_professional_mode": "OBSERVATION_I5",
+    "new_binding_commit": "6fb03212ca3b0dcebe3dba0c0a1d0328e2f571d4",
+    "new_binding_ref": "runs/BI-01-RESTART-01/bindings/QUESTION_WORK_BINDING_I5.json",
+    "decision": "CASE02_G3_SCOPED_PASS__I4_G4_PASS__I5_START",
+    "owner_asked_or_approved": false,
+    "g5_passed": false,
+    "i6_started": false
+  },
+  "workmap_reader": {
+    "input_commit": "b974d70aba6e0596a6251178caaf7f9f305def95",
+    "binding_blob": "77270a95249ad628c1a556b81edd19058cc9614d",
+    "snapshot_fingerprint": "2c8167c38bf6fe1bb96cd13ccda13e4418f9980ff498b71637078d6c291aef7c",
+    "reader_fingerprint": "672b1f5aebcdcc0404381a3e86629801a97db2e4e4e79d5a31f7011e20cec922",
+    "task_payload_sha256": "0909b7d4817bdc63d13120db77356083a9b8af6564b9ce5405d3b55f3aa2c672",
+    "result": "READABLE",
+    "report": "runs/BI-01-RESTART-01/reviews/WORKMAP_READER_R0006.md"
+  },
+  "workmap_intake": {
+    "state": "PENDING_PROJECTION",
+    "reason": "fresh reader result has been obtained; intake must next bind this exact snapshot, manager decision, task blob and report blob before dispatch checks"
+  },
+  "phone_answer_state": "remote_complete_phone_grace",
+  "collection_state": "remote_verified_pending_intake",
+  "management_delivery_accepted": false,
+  "professional_continuation_sent": false,
+  "limits": "这些检查证明 R0006 远端管理回交、双 Return 和 fresh Workmap 可读性；在 Workmap intake、Candidate/pre-dispatch、新专业聊天 NOT_SENT、scheduler send-ready 真正通过之前，不接受为可派发，也不证明 G5、Owner 接受、I6、独立审查或生产资格。"
+}
