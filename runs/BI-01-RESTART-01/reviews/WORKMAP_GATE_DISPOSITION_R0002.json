@@ -41,6 +41,19 @@
   "selected_action": "MATERIALIZE_EXACT_ADOPTED_BINDING",
   "adoption_materialization_commit": "a2dada025a39647c78d599500b27bd6ab23952a8",
   "active_binding_blob": "6cb309dfc2ac565df621f92c34a503faba5fdc63",
+  "formal_binding_reader_attempt": {
+    "exact_input_commit": "a2dada025a39647c78d599500b27bd6ab23952a8",
+    "result": "BLOCKED",
+    "blockers": [
+      "ADOPTED_AND_NOT_ADOPTED_STATUS_CONFLICT",
+      "EXACT_NEXT_ACTION_AMBIGUOUS"
+    ],
+    "report": {
+      "path": "runs/BI-01-RESTART-01/reviews/WORKMAP_READER_ADOPTED_ATTEMPT_R0002.md",
+      "blob": "b39e7f0c61bbdfbd3dd45f7db2d203db791d4fa8"
+    },
+    "disposition": "Preserve the failed attempt, synchronize only the already-satisfied operational adoption conditions from the manager-issued sequence, and run a new fresh reader on a new exact commit."
+  },
   "formal_binding_recheck": "PENDING",
   "adoption_eligible": true,
   "professional_dispatch_eligible": false,
