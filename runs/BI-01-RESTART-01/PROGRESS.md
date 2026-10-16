@@ -1,51 +1,68 @@
 # BI-01-RESTART-01 Owner 进展投影
 
-> 本页只投影已经提交并核验的运行事实，不代替管理 Pro 的 `00_长程推进地图.md`、`01_当前任务.md`、管理接收或专业 Gate。
+> 本页只投影已经提交或本恢复提交即将发布的运行事实，不代替管理 Pro 的地图、当前任务、管理接收或专业 Gate。
 
 ## 当前状态
 
 - run：`BI-01-RESTART-01`
-- 稳定业务路由键：`BI-01`
-- 当前阶段：首轮管理 Pro `M-START`（R0001）已完成；管理落地包已通过正式 MCP 拉取、核验、物化、提交和远端读回，正在做 Workmap intake 与定向交付修复
-- 当前业务地图：`00_长程推进地图.md` 已从哈希匹配的管理包原样物化；materialization commit 为 `e1838ebb2753a7f2e5b1efa94e9a7b62c754561a`，远端读回一致
-- 当前专业任务：`01_当前任务.md` 与 `QUESTION_WORK_BINDING_I4.json` 已从管理包原样物化，状态仍为 `SIGNED_BY_MANAGEMENT / NOT_YET_DISPATCHED`
-- Workmap Binding：候选为 `PENDING_MATERIALIZATION_AND_INTAKE`；snapshot 已形成，独立 reader 判定 `READABLE_WITH_BLOCKERS`，尚未 `ADOPTED`
-- 旧 I4 试跑：仅作 Git 历史，不计入本 run 成果、Gate、聊天或在途
+- 当前专业阶段：I4 已由管理签发，专业执行尚未派发，G4 尚未接收
+- 管理轮次：R0001 为原 M-START；R0002 为 `OWNER_AUTHORIZED_MANUAL_REPAIR` 管理修复轮，不是专业轮
+- Workmap：正式 `runtime/config/WORKMAP_BINDING.json` 已为 `ADOPTED`
+- 运行状态：`needs_human / paused`
+- 唯一当前阻断：正式 Binding 的 exact-commit 发送现场状态为 `UNKNOWN`，dispatch Gate 为 `DELIVERY_NOT_SENDABLE:UNKNOWN`
+- 专业聊天／专业 Send：均未形成；不得创建 R0003 或派发 I4
 
-## 已核验事实
+## Owner 授权与 R0002 调用
 
-- cgpterm controller 锁定：`1fb2f09f76df1fd25f55b6a249973ac00cef7480`
-- observe-iterate 运行政策锁定：`75d42776a78cd4cbdf3b61bbf86ec93701d06b84`
-- Owner START：`caccf69993b6f0c184fc89194476bcd542acb1e0:runs/BI-01-RESTART-01/OWNER_START.md`
-- 正式生产预检：Terminal `2.11.26`、Terminal IME `1.3.10`、RP2040 `2.6.1`；精确 Wi-Fi `dw-usa-vps4`；共享两列表探测通过
-- 目标 Project：沿 Owner 既有明确容器身份使用 `细节叙事生成_金标`；本 run 只新建独立管理聊天，不进入或复用旧 BI-01/I4 聊天
-- 管理聊天：`BI01-R01-管理`（完成首个完整回复后独立重命名并核验唯一）
-- 手机业务消息：1（R0001，`COMMITTED`；管理答复完整，未重发）
-- R0001 完整答复 SHA-256：`1e3f425d2da67a3f597fe6f913c9d303fda3f3d0b988fecd53307aef545b37e2`
-- 回交后 Gate：`ROLE_RETURN_QUESTION_WORK_REF_MISSING`；原答复中的 `ROLE_RETURN` 未用 `question_work_ref` 定位同答复内的 `QUESTION_WORK_RETURN`
-- 管理结论：G1 Pass；G2 限定范围 Pass；G3 分区接收并要求承重事实定向核查；I4 Active / G4 Not Passed
-- 管理落地包：`20156` 字节，实际 SHA-256 `3c5a921c3ff321be804e1a027894bb1c4fc8679ce8527f490ad0c441c1fd6f54`，与管理声明一致；包内 8 项清单哈希全部一致
-- 管理包物化与远端读回：`e1838ebb2753a7f2e5b1efa94e9a7b62c754561a`；地图、任务、管理决定、Binding Candidate 的 blob／SHA 与包清单一致
-- Workmap snapshot：`5ac344eaa7dc4e6a68455d5aed2de4cc0b893e5df6366ab848a34f4c7399e348`；reader fingerprint：`34a8fb16006c812818a4e098dbac4c9cbbdd9412b70ca2f9521dcd6c17f7bab2`
-- 独立读图：`READABLE_WITH_BLOCKERS`；地图目标、阶段、证据边界、剩余、管理条件和下一动作可理解，但任务缺 `task_id:`、Candidate 尚未采用，README／地图下一步存在旧状态残留
-- Workmap intake commit：`f6af31ea029bcbc0ea02633573ddc0b95e42c525`；对 Candidate 的 `check` 为 `ok=true`、reader=`RECORDED`，但 `dispatch` 为 `ok=false`，错误为 `TASK_NOT_BOUND_TO_INTAKE` 与尚无真实发送端观察的 `DELIVERY_OBSERVATION_REQUIRED`
+- Owner 授权记录：`OWNER_AUTHORIZED_MANUAL_REPAIR_R0002.md`
+- 授权提交：`b6b837e4f8368f07afb4f1eaf6f6648080a6933e`
+- invocation：`BI01-RESTART-01-R0002-c19efdc130c1995d4660ca4907747429`
+- assignment token：`dc5df7008bbcb41665e37aea084c100e`
+- 实际接收方：原物理管理会话 `BI01-R01-管理`
+- 提示 SHA-256：`ba2632b97af94a0dc140c83f9d553269db945cafe6b29ce41e4d24b28280d372`
+- invocation 提交：`4e6035b86717e18d440057d2132affa36bb93545`
+- pre-send 真实失败保留：`0fe5e34e00aad4a5bb759067a6bb4c42269a2375`；`WORKMAP_NOT_ADOPTED` 未改写成 PASS
+- Send receipt 提交：`ec5f69e04f6aa2178ec57be9124b03bd540dd756`
+- R0002 实际标记：`OWNER_AUTHORIZED_MANUAL_REPAIR`；Overlay12 始终为 `NOT_RUN_NOT_PASS`
 
-## 当前任务与下一动作
+## 原管理角色修正版交付
 
-1. 保存独立 reader 报告和基于 exact snapshot 的 Workmap intake；dispatch 状态保持未获准。
-2. 对确切 Return、`task_id`、mode、Binding carrier 和真实管理聊天路由缺项，只向原管理角色请求窄补交；不改写已成业务判断或重做 M-START。
-3. 有权补交物化并远端读回后，重新运行 R0001 `after-return`、Workmap snapshot/check/dispatch 与 Overlay12 prepare/verify。
-4. 只有真实 Binding、intake、reader 和现场发送观察全部通过，才把 `WORKMAP_BINDING` 改为 `ADOPTED` 并建立首个专业后继轮次。
-5. 只有预发送 R 轮已在 GitHub 可核验且所有 Gate 通过，才向新的专业聊天派发；当前没有 R0002，也没有专业发送。
+- 原管理会话完整回复和双 Return 已保存于 `provenance/turns/R0002/`
+- 修复包 SHA-256：`728e987bc21bf193419a716e590b8060b304df37fafc7da28f6c2c08d5707ae7`
+- 物化提交：`465330476ae6091ba9ecacbbadbaf8a4de745dfc`
+- 管理选择：
+  - `task_id: BI01-RESTART-01-I4-EXECUTION-01`
+  - `professional_mode: OBSERVATION_I4`
+  - R0001 `question_work_ref` 指向原 R0001 `QUESTION_WORK_RETURN.json`
+  - Binding 使用 exact Git locator，不再使用无 carrier 的 `answer_ref`
+  - 所有 management route 回到 `BI01-R01-管理`
+- R0001 exact commit `46119a8e0030b4c3597634735cbe5d22ad3a0ac7` 的原始历史未被覆盖；R0001 原 Gate 失败保留，新修复重跑另存 sidecar
 
-## 阻断与恢复点
+## Gate 真实结果
 
-- 此前的跨机共享目录阻断已由 Owner 提供并验证的映射解除；管理包收集已闭合，不再是阻断。
-- R0001 已于 `2026-10-16T00:24:06.362+08:00` 取得 `COMMITTED` 证据；提示 SHA-256 为 `ebb3b58993b4fe150056c990b79fbe0295f09d6d9bda13a14be3f5d67be03308`，禁止重发。
-- 管理答复声明提供 SHA-256 为 `3c5a921c3ff321be804e1a027894bb1c4fc8679ce8527f490ad0c441c1fd6f54` 的落地包；手机端唯一附件已通过正式 MCP 拉取并核验，手机源文件保持不变。
-- Owner 已确认 MCP server `K:\workspace\observe-iterate-share` ↔ Codex `/m3varK/workspace/observe-iterate-share`；一次正式拉取成功，未重试，手机源文件保留不变。
-- `after-return` Gate 已在发布提交 `aa010794ed6a6780ca7fdbed19dd53dd1bd552c7` 上真实运行并失败；该结构缺项与附件交付债务合并为同一次定向管理补交，不从散文猜写字段。
-- 管理包中的 `ROLE_RETURN` 仍缺 `question_work_ref`，证明该问题属于原管理交付而非剪贴板捕获失真；不得由操作端静默补写。
-- 当前任务还缺 `task_id:`；Binding 的 mode 不在锁定配置中，且 `answer_ref` 不能从独立 JSON carrier 解析。当前机制也拒绝以 BOOTSTRAP 发管理 `DELIVERY_REPAIR`，因此没有合法补交载荷可发送。
-- `WORKMAP_BINDING.json` 仍是 `NOT_CONFIGURED`；本轮通过的是 Candidate 上的机械 intake，不是 adoption 或 dispatch，不得只改 status。
-- 恢复点：`e1838ebb2753a7f2e5b1efa94e9a7b62c754561a` 的管理包原件、远端读回、snapshot 和 reader 已完成；从 `reviews/MANAGEMENT_DELIVERY_REPAIR_REQUIRED_R0001.md` 的窄修复条件恢复。不得重发 M-START、手写修复消息、冒称 ADOPTED 或先派专业执行。
+- R0001 after-return 修复重跑：PASS，`errors=[]`
+- R0002 after-return：PASS，`errors=[]`
+- Candidate fresh reader：READABLE
+- Candidate mechanical intake：PASS，`errors=[]`
+- Candidate dispatch preflight：PASS，`errors=[]`；exact input `e4ece3a9b31152a04c4fbf901be0d6e74ecb42b8`
+- Candidate 真实发送现场：protocol-clean `NOT_SENT`；没有专业聊天或 Send
+- `ADOPTED` 物化提交：`a2dada025a39647c78d599500b27bd6ab23952a8`
+- 正式 Binding 第一次 reader：BLOCKED；准确保留 adoption 状态不同步问题
+- 同步后正式 reader：READABLE，exact input `6d955772d27a029224b4fd991fbdf121907f8533`
+- 正式 mechanical intake：PASS，`errors=[]`；exact input `526e9fe6274364de197556c6d558ffc8a057f32d`
+- 正式 dispatch preflight：BLOCKED，唯一错误 `DELIVERY_NOT_SENDABLE:UNKNOWN`
+
+## 发送现场阻断与恢复点
+
+针对正式 exact commit 进行了四个新的零继承、绝对 `NO_SEND` 的有界观察 episode；它们分别因工具发现偏差、空白新聊天 UI 进入、Project 行自动呈现空 composer、内部搜索点击异常退出桌面而作废。所有 episode 均没有输入专业消息或点击 Send，且生产控制权均已释放。
+
+Candidate 的有效 `NOT_SENT` 证据不会被伪装成后续正式 commit 的观察。正式状态因此保持 `UNKNOWN`，不满足 dispatch。
+
+恢复时：
+
+1. 人类先恢复或确认安全稳定的 ChatGPT Project／内部历史搜索观察路径；
+2. 以新的 exact Git commit 重做 snapshot 与 fresh reader/intake；
+3. 取得该 exact commit 的 protocol-clean `NOT_SENT` 现场证据；
+4. 正式 dispatch 必须 `ok=true / errors=[]` 后才能创建首个专业轮次。
+
+不得重跑 R0001、不得把修复轮伪装成专业轮、不得在恢复前创建 R0003 或发送专业任务。

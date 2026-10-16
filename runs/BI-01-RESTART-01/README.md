@@ -1,6 +1,6 @@
-# BI-01 / RESTART-01 — 管理窄修复已落库，Workmap 已采用、专业仍未派发
+# BI-01 / RESTART-01 — 管理窄修复已落库，正式派发现场核对暂停
 
-**MANAGEMENT_R0001_RECEIVED / R0002_MANUAL_REPAIR_COMPLETE / WORKMAP_ADOPTED / PROFESSIONAL_NOT_SENT / FORMAL_DISPATCH_RECHECK_PENDING**。
+**MANAGEMENT_R0001_RECEIVED / R0002_MANUAL_REPAIR_COMPLETE / WORKMAP_ADOPTED / PROFESSIONAL_NOT_SENT / NEEDS_HUMAN_PAUSED**。
 
 R0001 已完成首次实质管理并形成地图、当前任务和 Question Work Binding；其原始回答、Return、提示、receipt 与管理包继续由 exact commit `46119a8e0030b4c3597634735cbe5d22ad3a0ac7` 保留。R0002 只修复 Owner 授权的机器接线缺项，不重新执行 M-START，不产生专业结果，不签 G4，也不表示 Overlay12 prepare/verify 已通过。
 
@@ -31,7 +31,7 @@ R0001 已完成首次实质管理并形成地图、当前任务和 Question Work
 2. 修正版 task/binding/map/README 的 snapshot、fresh reader 与 intake 已完成，`dispatch.task_id` 严格等于 `BI01-RESTART-01-I4-EXECUTION-01`；
 3. Candidate intake、reader、binding、dispatch 与真实发送现场 `NOT_SENT` 检查已在 exact input commit `e4ece3a9b31152a04c4fbf901be0d6e74ecb42b8` 全部通过；
 4. Candidate 已按原管理角色给出的条件原样物化为 `ADOPTED` 的正式 `runtime/config/WORKMAP_BINDING.json`；
-5. 当前还须对正式 Binding 完成 fresh reader/intake/dispatch 复核和 exact-commit 发送现场核对；这些真正通过前不派发专业任务；
-6. 正式复核通过后，才具备创建首个专业轮次并发送到未来独立专业聊天的条件。当前仍未派发。
+5. 正式 Binding 的 fresh reader 为 `READABLE`、mechanical intake 为 `PASS`；但 exact-commit 发送现场状态只能保持 `UNKNOWN`，正式 dispatch Gate 真实失败为 `DELIVERY_NOT_SENDABLE:UNKNOWN`；
+6. 当前停在 `needs_human / paused`。恢复条件是先让 ChatGPT 的 Project/内部搜索路径回到可安全重复观察的状态，再对新的 exact commit 重做 snapshot、fresh reader/intake 和 protocol-clean `NOT_SENT` 核对；此前不得创建专业轮次或发送专业消息。
 
 准确流程：[BI-01 真实运行合同](../../runtime/operations/BI01_REAL_RUN_V1.md)；[轮次合同](../../runtime/operations/ROUND_RECORD_CONTRACT.md)。

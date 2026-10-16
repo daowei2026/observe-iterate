@@ -1,0 +1,50 @@
+{
+  "schema": "exact-task-delivery-observation/v1",
+  "run_id": "BI-01-RESTART-01",
+  "round_id": "R0002",
+  "authority": "OWNER_AUTHORIZED_MANUAL_REPAIR",
+  "observed_commit": "526e9fe6274364de197556c6d558ffc8a057f32d",
+  "binding_blob": "bcd2f32db58c58742495d6bd45205181ccb86e39",
+  "task_id": "BI01-RESTART-01-I4-EXECUTION-01",
+  "task_blob": "140a01fa9849a947ca0ccfa05613473b35b76ee0",
+  "task_payload_sha256": "80531462373bcb0137d84473eb8ac2be5248e666201a7a0c6528ca917aaa5730",
+  "state": "UNKNOWN",
+  "no_send_calls": true,
+  "professional_chat_committed": false,
+  "reason": "No protocol-clean actual sending-endpoint NOT_SENT observation completed for the exact formal-binding commit. Each bounded fresh executor stopped on a declared protocol or UI-safety invalidation; none sent a message.",
+  "attempts": [
+    {
+      "event_id": "BI01-RESTART-01-R0002-adopted-not-sent-phase1",
+      "window_utc": "2026-10-16T05:09:31Z/2026-10-16T05:15:01Z",
+      "result": "INVALID_PROTOCOL",
+      "detail": "Product counts were zero, but one prohibited broad helper-name/description filter occurred before phone action."
+    },
+    {
+      "event_id": "BI01-RESTART-01-R0002-adopted-not-sent-phase1-clean",
+      "window_utc": "2026-10-16T05:16:59Z/2026-10-16T05:22:24Z",
+      "result": "INVALID_UI_ENTRY",
+      "detail": "An extra bottom Chat tap presented and focused an empty new-chat composer; no input or Send occurred."
+    },
+    {
+      "event_id": "BI01-RESTART-01-R0002-adopted-not-sent-phase1-final",
+      "window_utc": "2026-10-16T05:24:06Z/2026-10-16T05:25:40Z",
+      "result": "INVALID_UI_ENTRY",
+      "detail": "The fresh target Project row presented and focused an empty Project new-chat composer; the executor backed out immediately; no input or Send occurred."
+    },
+    {
+      "event_id": "BI01-RESTART-01-R0002-adopted-not-sent-global-search",
+      "window_utc": "2026-10-16T05:27:08Z/2026-10-16T05:29:24Z",
+      "result": "INVALID_APP_NAVIGATION",
+      "detail": "The fresh unique ChatGPT internal-search control unexpectedly navigated to Android desktop; the executor stopped without retry or input."
+    }
+  ],
+  "candidate_observation": {
+    "exact_input_commit": "e4ece3a9b31152a04c4fbf901be0d6e74ecb42b8",
+    "state": "NOT_SENT",
+    "record": "runs/BI-01-RESTART-01/reviews/PROFESSIONAL_NOT_SENT_OBSERVATION_R0002.json",
+    "qualification": "Valid for Candidate dispatch only; not relabeled as the later formal-binding commit."
+  },
+  "gate_result": "DELIVERY_NOT_SENDABLE:UNKNOWN",
+  "production_control_released": true,
+  "resume_condition": "Restore or confirm a safe stable ChatGPT observation path, then repeat snapshot/reader/intake and obtain a protocol-clean NOT_SENT observation for a new exact commit before dispatch."
+}

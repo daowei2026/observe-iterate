@@ -38,9 +38,10 @@
     "errors": [],
     "record": "runs/BI-01-RESTART-01/provenance/turns/R0002/GATE_CHECK.json"
   },
-  "selected_action": "MATERIALIZE_EXACT_ADOPTED_BINDING",
+  "selected_action": "PAUSE_NEEDS_HUMAN",
   "adoption_materialization_commit": "a2dada025a39647c78d599500b27bd6ab23952a8",
-  "active_binding_blob": "6cb309dfc2ac565df621f92c34a503faba5fdc63",
+  "adoption_materialization_blob": "6cb309dfc2ac565df621f92c34a503faba5fdc63",
+  "active_binding_blob": "bcd2f32db58c58742495d6bd45205181ccb86e39",
   "formal_binding_reader_attempt": {
     "exact_input_commit": "a2dada025a39647c78d599500b27bd6ab23952a8",
     "result": "BLOCKED",
@@ -65,8 +66,38 @@
       "blob": "528136a2e82e8b281a6a069af7223a046d3a1c4b"
     }
   },
-  "formal_binding_recheck": "PENDING",
+  "formal_binding_mechanical_intake": {
+    "exact_input_commit": "526e9fe6274364de197556c6d558ffc8a057f32d",
+    "base_commit": "a2dada025a39647c78d599500b27bd6ab23952a8",
+    "ok": true,
+    "errors": [],
+    "reader_qualification": "RECORDED",
+    "raw_output_sha256": "9cf562e923deddb64105d0f9c3ba5f5bdc3b889da2d13f2e27b330da044ebfa4"
+  },
+  "formal_delivery_observation": {
+    "state": "UNKNOWN",
+    "record": "runs/BI-01-RESTART-01/reviews/PROFESSIONAL_DELIVERY_OBSERVATION_FORMAL_R0002.json",
+    "raw_delivery_sha256": "1ad6591ec19ef3b33b9ff354e6a0c2e6a0ffe067dae8ba5476d76f32e5c12db3",
+    "no_send_calls": true
+  },
+  "formal_binding_dispatch_preflight": {
+    "exact_input_commit": "526e9fe6274364de197556c6d558ffc8a057f32d",
+    "base_commit": "a2dada025a39647c78d599500b27bd6ab23952a8",
+    "ok": false,
+    "errors": [
+      "DELIVERY_NOT_SENDABLE:UNKNOWN"
+    ],
+    "reader_qualification": "RECORDED",
+    "raw_output_sha256": "5372644ff06c5d8d41ec9f624168d05e02f13f3c0f78038f30cd768f65f6a97d"
+  },
+  "formal_binding_recheck": "BLOCKED_DELIVERY_UNKNOWN",
   "adoption_eligible": true,
   "professional_dispatch_eligible": false,
-  "limits": "Candidate PASS permits exact ADOPTED binding materialization under the manager-issued sequence. Formal binding reader/intake/dispatch rechecks still must pass before professional dispatch eligibility. No professional Send occurred."
+  "resume_conditions": [
+    "Human restores or confirms a safe stable ChatGPT Project/internal-history-search observation path.",
+    "Create a new exact Git recovery input and run a new fresh independent reader/intake because README/map status changed.",
+    "Obtain a protocol-clean actual sending-endpoint NOT_SENT observation for that exact commit.",
+    "Re-run formal binding dispatch with zero errors before any professional round or Send."
+  ],
+  "limits": "Candidate PASS permitted ADOPTED materialization and formal reader/mechanical intake passed. Formal dispatch remains blocked only by an exact-commit delivery state of UNKNOWN after bounded invalid observations. No professional chat was committed and no professional Send occurred. R0001/R0002 business work must not be rerun."
 }

@@ -45,10 +45,12 @@
           "professional/source/04_PRO_WORKER_CODEX_HANDOFF.md",
           "professional/source/05_ROLE_GATE_AND_HANDOFF_CONTRACT.md"
         ],
-        "qualification": "READY_FOR_FORMAL_BINDING_PREFLIGHT",
-        "blockers": [],
+        "qualification": "PAUSED_NEEDS_HUMAN",
+        "blockers": [
+          "DELIVERY_NOT_SENDABLE:UNKNOWN"
+        ],
         "pending_gates": [
-          "ACTUAL_SENDING_ENDPOINT_NOT_SENT_OBSERVATION",
+          "PROTOCOL_CLEAN_ACTUAL_SENDING_ENDPOINT_NOT_SENT_OBSERVATION",
           "FORMAL_BINDING_CHECK_AND_DISPATCH"
         ]
       },
@@ -65,7 +67,9 @@
         "r0002_after_return": "PASS",
         "candidate_mechanical_intake": "PASS",
         "candidate_dispatch_preflight": "PASS",
-        "official_binding_status": "ADOPTED"
+        "official_binding_status": "ADOPTED",
+        "official_binding_mechanical_intake": "PASS",
+        "official_binding_dispatch_preflight": "BLOCKED_DELIVERY_UNKNOWN"
       },
       "validation_claims": []
     }
