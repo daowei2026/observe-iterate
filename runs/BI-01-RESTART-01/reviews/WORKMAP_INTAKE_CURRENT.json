@@ -2,40 +2,40 @@
   "schema": "workmap-intake/v1",
   "intakes": {
     "bi01": {
-      "snapshot": "2c8167c38bf6fe1bb96cd13ccda13e4418f9980ff498b71637078d6c291aef7c",
-      "observed_commit": "b974d70aba6e0596a6251178caaf7f9f305def95",
+      "snapshot": "79d6a3cd036817c50b371c3c109a1be0c6087892c8c233a735008b6d0856391c",
+      "observed_commit": "f604cd005ad21d61c581ee0a4d8b6fb4c0901bd1",
       "manager": {
         "role": "management",
-        "context": "同一原物理管理会话 BI01-R01-管理：R0006 M-REASSESS 接收 R0005，给出 Case-02 G3 ScopedPass、当前 Reference/Shadow 范围的 I4/G4 Pass，结束 I4，不追加第三 Case，并签发 task_id BI01-RESTART-01-I5-OWNER-PACK-01、professional_mode OBSERVATION_I5 与新的 I5 专业会话；G5、Owner 选择和 I6 均未开始。"
+        "context": "同一原物理管理会话 BI01-R01-管理：R0008 M-REASSESS 接收 R0007 Owner Pack，在 R0006 已接收范围内签署 I5/G5 Pass、结束 I5，并形成 task_id BI01-RESTART-01-OWNER-DECISION-01 的 Owner A/B 决策请求。当前 WaitingOwner；没有专业 mode、专业 dispatch 或 Worker，I6 尚未启动。"
       },
       "decision_report": {
-        "path": "runs/BI-01-RESTART-01/reviews/MANAGEMENT_GATE_DECISION_R0006.md",
-        "blob": "2261b433dc874154a0ad047d6150d15fbc1627a5"
+        "path": "runs/BI-01-RESTART-01/reviews/MANAGEMENT_GATE_DECISION_R0008.md",
+        "blob": "185f2a7076ebd8204839fa9ca6297536843749e0"
       },
       "effort": {
-        "known_pro_turns": 6,
-        "coverage": "一次真实管理 Pro M-START、一次 Owner 授权的同会话管理修复 invocation、两次已完整回交的专业执行 Pro invocation，以及两次已完整回交的管理 M-REASSESS invocation。",
-        "source_note": "R0001 至 R0006 的实际调用均有轮次账本；R0003/R0005 专业结果和 R0004/R0006 管理结果均有精确关联的远端 turn-complete、双 Return 与 after-return 记录。手机 operation episode、Git 提交和独立 Codex reader 不计 Pro 轮次。"
+        "known_pro_turns": 8,
+        "coverage": "一次真实管理 Pro M-START、一次 Owner 授权的同会话管理修复 invocation、三次已完整回交的专业执行 Pro invocation，以及三次已完整回交的管理 M-REASSESS invocation。",
+        "source_note": "R0001 至 R0008 的实际角色调用均有轮次账本；R0003/R0005/R0007 专业结果和 R0004/R0006/R0008 管理结果均有精确关联的远端 turn-complete、双 Return 与 after-return 记录。手机 operation episode、Git 提交和独立 Codex reader 不计 Pro 轮次。"
       },
       "reader_check": {
         "status": "RECORDED",
-        "context": "/root/bi01_r0006_fresh_reader 新的零继承、xhigh、独立只读上下文；只读 b974d70 exact Git 输入，不读取旧 reader/intake、管理决定、Return、reviews、artifacts、PROGRESS 或手机证据",
+        "context": "/root/bi01_r0008_fresh_reader 新的零继承、xhigh、独立只读上下文；只读 f604cd0 exact Git 输入，不读取旧 reader/intake、管理决定、Owner 决策请求、Return、其他 reviews、artifacts、PROGRESS 或手机证据",
         "independent_of_map_builder": true,
-        "input_commit": "b974d70aba6e0596a6251178caaf7f9f305def95",
-        "input_snapshot": "672b1f5aebcdcc0404381a3e86629801a97db2e4e4e79d5a31f7011e20cec922",
+        "input_commit": "f604cd005ad21d61c581ee0a4d8b6fb4c0901bd1",
+        "input_snapshot": "5bd6ae7b50b2220fb0ec995b1300c1ecc603f419b8a19f0a1482229397882c57",
         "report": {
-          "path": "runs/BI-01-RESTART-01/reviews/WORKMAP_READER_R0006.md",
-          "blob": "922345cdfd261ad8e6666407b95ae452f19132f4"
+          "path": "runs/BI-01-RESTART-01/reviews/WORKMAP_READER_R0008.md",
+          "blob": "4e137c8a697feeb8e31ae50f155de742aae504ff"
         },
         "result": "READABLE",
-        "qualification": "仅证明 fresh 接收者能理解 R0006 后的 I5 Owner Pack task_id、OBSERVATION_I5、新专业会话、证据与 Owner 权限边界、G5 管理复看和安全下一步；不证明业务正确、dispatch Gate 已通过、I5 已发送、G5/Owner/I6 或生产资格。"
+        "qualification": "仅证明 fresh 接收者能理解 R0008 后的 Owner 决策 task_id、WaitingOwner、I5 历史 Binding 禁止重发、无专业派发、Owner 回复回原管理会话及安全下一步；不复核业务正确，不签 G5、Owner 批准、I6、独立专业审查或生产资格。"
       },
       "dispatch": {
-        "decision": "ISSUED",
-        "task_id": "BI01-RESTART-01-I5-OWNER-PACK-01",
+        "decision": "WAITING_OWNER",
+        "task_id": "BI01-RESTART-01-OWNER-DECISION-01",
         "task_path": "runs/BI-01-RESTART-01/01_当前任务.md",
-        "task_blob": "ae969fd32410613c5ecd0f59259fd29e59156b5f",
-        "kind": "STAGE_TRANSITION",
+        "task_blob": "edf8227024ff36ce54cdf81a9bf39a01e55f60ce",
+        "kind": "OWNER_DECISION",
         "requires_reader_check": true,
         "method_paths": [
           "professional/source/00_AGENT_CHARTER_AND_STAGE_CONTRACT.md",
@@ -43,15 +43,13 @@
           "professional/source/04_PRO_WORKER_CODEX_HANDOFF.md",
           "professional/source/05_ROLE_GATE_AND_HANDOFF_CONTRACT.md"
         ],
-        "qualification": "R0006_I5_NEW_CHAT_PENDING_PREFLIGHT",
-        "blockers": [],
-        "pending_gates": [
-          "WORKMAP_CHECK",
-          "BI01_PRE_DISPATCH",
-          "OVERLAY12_PREPARE_VERIFY",
-          "NEW_PROFESSIONAL_CHAT_NOT_SENT",
-          "WORKMAP_DISPATCH"
-        ]
+        "qualification": "R0008_G5_PASS_WAITING_OWNER_NO_PROFESSIONAL_DISPATCH",
+        "blockers": [
+          "OWNER_DIRECTION_DECISION_PENDING"
+        ],
+        "pending_gates": [],
+        "professional_dispatch_eligible": false,
+        "dispatch_gate_disposition": "NOT_APPLICABLE_OWNER_DECISION"
       },
       "issue_resolution": {
         "original_issue": {
@@ -76,21 +74,21 @@
         "resume_formal_dispatch": "PASS"
       },
       "latest_result_intake": {
-        "round_id": "R0005",
-        "turn_complete_commit": "7eb4c54a8fe3e7b3372dc3806f39cc09dcf14622",
-        "round_ledger_commit": "4dfb33788681fcc45b69e024b17ad6215cd672ac",
+        "round_id": "R0007",
+        "turn_complete_commit": "340dd36938ccbe065c6d525aced992b3fb0ef956",
+        "round_ledger_commit": "8894a0589fb93f16b244db4beee412e1bc83cf0f",
         "after_return": "PASS",
-        "management_trigger_notice": "runs/BI-01-RESTART-01/reviews/MANAGEMENT_TRIGGER_NOTICE_R0005.json",
-        "limits": "仅记录真实结果已收取及管理触发；不签 G3/G4，不替管理修改地图或当前任务。"
+        "management_trigger_notice": "runs/BI-01-RESTART-01/reviews/MANAGEMENT_TRIGGER_NOTICE_R0007.json",
+        "limits": "仅记录 R0007 Owner Pack、双 Return 和管理触发已收取；不由操作端签 G5，不替 Owner 选择 A/B，不启动 I6。"
       },
       "latest_management_intake": {
-        "round_id": "R0006",
-        "turn_complete_commit": "b974d70aba6e0596a6251178caaf7f9f305def95",
-        "intake_projection_commit": "b8f5d169251021fe3469f123d3a1a9c21785cb40",
+        "round_id": "R0008",
+        "turn_complete_commit": "f604cd005ad21d61c581ee0a4d8b6fb4c0901bd1",
+        "intake_projection_commit": "da7d1421a6a53298906354735dd03397fb1f2e19",
         "after_return": "PASS",
-        "decision": "CASE02_G3_SCOPED_PASS__I4_G4_PASS__I5_START",
-        "next_route": "chatgpt-project:细节叙事生成_金标/chat:new:BI01-RESTART-01-I5-OWNER-PACK",
-        "limits": "管理决定已形成 I5 当前任务和 Binding，但新专业会话仍须通过 fresh intake、pre-dispatch、chat absence/NOT_SENT 与 scheduler send-ready；不等于已创建或发送，不签 G5，不询问或批准 Owner，不启动 I6。"
+        "decision": "I5_G5_PASS__WAITING_OWNER__I6_NOT_STARTED",
+        "next_route": "chatgpt-project:细节叙事生成_金标/chat:BI01-R01-管理",
+        "limits": "管理已通过 G5、结束 I5 并形成 Owner 决策请求；当前 route 只用于 Owner 原始回复后的管理接收，不是专业 dispatch。Owner 未答前不得默认 A、启动 I6、创建专业轮或 Worker；不声称独立审查或生产资格。"
       },
       "validation_claims": []
     }
