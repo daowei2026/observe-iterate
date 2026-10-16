@@ -1,0 +1,73 @@
+{
+  "schema": "bi01-phone-answer-grace/v1",
+  "run_id": "BI-01-RESTART-01",
+  "round_id": "R0005",
+  "invocation_id": "BI01-RESTART-01-R0005-427e020c096844a98f9f46148fce405c",
+  "grace_deadline": "2026-10-16T13:34:05.740Z",
+  "observed_at": "2026-10-16T13:37:10.734Z",
+  "finished_at": "2026-10-16T13:37:14.026Z",
+  "classification": "unknown_completion_unproven",
+  "scheduler_phone_answer_state": "unavailable_after_grace",
+  "remote_completion_source": {
+    "commit": "7eb4c54a8fe3e7b3372dc3806f39cc09dcf14622",
+    "message": "BI-01 I4 professional return — turn complete BI01-RESTART-01-R0005-427e020c096844a98f9f46148fce405c",
+    "full_response_path": "runs/BI-01-RESTART-01/artifacts/I4_R0005/REPORT.md",
+    "full_response_sha256": "caa4d2ee392e63e8bc6a48f819f86ca82910ee4f92c3e19dd176b1698f8b917d"
+  },
+  "phone_observation": {
+    "frame": 1792157830734,
+    "screenshot_id": null,
+    "lossless_tiles_checked": 3,
+    "source_width": 1080,
+    "source_height": 2340,
+    "project_visible": "细节叙事生成_金标",
+    "exact_round_marker_count": 1,
+    "physical_chat_expected": "BI01-RESTART-01-I4-EXECUTION",
+    "chat_title_visible": false,
+    "reply_body_started": true,
+    "reply_title_visible": "BI-01 R0005｜Case-02 成员选择增量检验回交",
+    "complete_answer_visible": false,
+    "complete_operation_line_visible": false,
+    "stopped_thinking_visible": true,
+    "thinking_visible": false,
+    "stop_visible": false,
+    "error_offline_retry_sending_pending_visible": false,
+    "composer_empty": true,
+    "focused_count": 0,
+    "keyboard_visible": false
+  },
+  "calls": {
+    "product_total": 1,
+    "observe_current_ui": 1,
+    "send": 0,
+    "touch": 0,
+    "mark": 0,
+    "navigation": 0,
+    "scroll": 0,
+    "input": 0,
+    "copy": 0,
+    "wait": 0,
+    "launch": 0,
+    "network": 0,
+    "vpn": 0,
+    "descendants": 0
+  },
+  "network_lease": {
+    "reused": true,
+    "valid_until": "2026-10-16T13:48:53.990Z",
+    "contrary_fresh_evidence": false
+  },
+  "control": {
+    "acquired_at": "2026-10-16T13:36:45Z",
+    "released_at": "2026-10-16T13:38:15Z",
+    "released_to": "/root"
+  },
+  "scheduler_revision_after_grace": 67,
+  "scheduler_revision_after_collection_acceptance_and_handling": 70,
+  "collection_state": "remote_verified",
+  "protocol_deviation": {
+    "code": "EXTRA_EXACT_NONALLOWLIST_LOOKUP",
+    "detail": "The executor performed one exact declaration lookup for the non-allowlisted admin read_file name. The declaration was unavailable and was not invoked. No broad scan or extra phone action occurred."
+  },
+  "limits": "The phone observation did not prove the complete reply body. R0005 completion and collection rely on the correlated GitHub turn-complete carrier and exact Return validation; no reply text was copied from the phone."
+}
