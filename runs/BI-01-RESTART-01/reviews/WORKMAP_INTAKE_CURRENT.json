@@ -2,8 +2,8 @@
   "schema": "workmap-intake/v1",
   "intakes": {
     "bi01": {
-      "snapshot": "9aefbd3506bba150250c08f0772dc31a2cc1f6a57742b67fa114b887d638f4d6",
-      "observed_commit": "3a8b8da2ce61c65fc04c0eb938ac9385c31b304e",
+      "snapshot": "d5a439a2eb5558c510275b22678e0601479dbaacdd79cc7bf6edbbebf27f6deb",
+      "observed_commit": "09a2866b2293ce64f8b7e10a80516997e7abd1a6",
       "manager": {
         "role": "management",
         "context": "同一原物理管理会话 BI01-R01-管理：R0001 M-START 业务判断保持，R0002 OWNER_AUTHORIZED_MANUAL_REPAIR 只修 task_id、question_work_ref、professional_mode、carrier 与管理 route。"
@@ -13,9 +13,9 @@
         "blob": "b6d89c3a77199b13dc59441abfce3e5085359097"
       },
       "effort": {
-        "known_pro_turns": 2,
-        "coverage": "一次真实管理 Pro M-START 与一次 Owner 授权的同会话管理修复 invocation；尚无专业执行 Pro 调用。",
-        "source_note": "R0001 与 R0002 的完整答复、双 Return、发送 evidence 和管理包收取记录均已发布；手机 operation episode、Git 提交和独立 Codex reader 不计 Pro 轮次。"
+        "known_pro_turns": 3,
+        "coverage": "一次真实管理 Pro M-START、一次 Owner 授权的同会话管理修复 invocation，以及一次已完整回交的专业执行 Pro invocation。",
+        "source_note": "R0001、R0002 与 R0003 的实际调用均有轮次账本；R0003 的完整远端报告、双 Return、手机完成证据和 after-return 已发布。手机 operation episode、Git 提交和独立 Codex reader 不计 Pro 轮次。"
       },
       "reader_check": {
         "status": "RECORDED",
@@ -70,6 +70,14 @@
         "resume_delivery_observation": "NOT_SENT",
         "resume_mechanical_intake": "PASS",
         "resume_formal_dispatch": "PASS"
+      },
+      "latest_result_intake": {
+        "round_id": "R0003",
+        "turn_complete_commit": "ece9dbac6eb3cf29e32e28ef5a5d3b891cb19efe",
+        "round_ledger_commit": "bc642a38b1ed565ee423c126f8d00c9296944e74",
+        "after_return": "PASS",
+        "management_trigger_notice": "runs/BI-01-RESTART-01/reviews/MANAGEMENT_TRIGGER_NOTICE_R0003.json",
+        "limits": "仅记录真实结果已收取及管理触发；不签 G3/G4，不替管理修改地图或当前任务。"
       },
       "validation_claims": []
     }
