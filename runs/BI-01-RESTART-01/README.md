@@ -1,6 +1,6 @@
-# BI-01 / RESTART-01 — 下一次全新运行的准备入口
+# BI-01 / RESTART-01 — 实际运行工作面
 
-**PREPARED_NOT_STARTED / NO_SEND**。Owner 已停止旧试跑，准备在长程运行机制符合预期后从真实任务重新开始；本目录目前没有专业结果、地图、签发任务、有效 Binding 或真实 R 轮。此空缺不可由主控填造业务内容。
+**R0001_M_START_RETURNED / MANAGEMENT_PUBLICATION_PENDING / WORKMAP_NOT_ADOPTED**。此运行已产生新 R0001 管理消息、唯一发送回执、完整原文及双 Return，不能再次执行首次 M-START。正式业务地图/当前任务、完整新专业 Binding 与管理 Intake 仍待真实物化和采用，尚未派发执行 Pro。最新已提交事实见 [PROGRESS.md](PROGRESS.md)，下一步沿 [R0001 恢复入口](../../runtime/operations/BI01_R0001_RECOVERY.md)；勿用本 README 的历史启动条款重置运行状态。
 
 <a id="common"></a>
 ## 运行身份与历史隔离
@@ -11,9 +11,9 @@
 - 本次提交不是发消息授权，任何模型/手机业务行动需要之后的 Owner 明确开工和真实身份/来源/权限证据。
 
 <a id="bi01"></a>
-## 由真实管理与运行形成的文件，而不是准备阶段提前造的结论
+## 正式采用仍缺的文件
 
-第一次 M-START 实际收到有效管理成果后：
+R0001 已收到完整管理原文，但以下文件应从原管理完整结果**保真物化并正式采用**，而不是照旧提交空模板或开始第二次 M-START：
 
 - `00_长程推进地图.md`：由管理 Pro 对完整 I1–I6、Source/Method/Case/As-Of、已成/未成、Gate、反证和下一责任作真实业务关系解释。
 - `01_当前任务.md`：由管理 Pro 签发本次当前专业任务、完整 scope、合法输入和 Gate/后继。

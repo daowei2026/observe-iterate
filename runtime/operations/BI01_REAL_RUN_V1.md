@@ -1,6 +1,6 @@
 # BI-01 下一次真实长程：启动、轮次、地图、管理接收和恢复
 
-**状态：PREPARED_NOT_STARTED / NO_SEND。** Owner 2026-10-15 已停止旧试跑，明确新任务要在运行机制验证符合预期后**重新真实开始**。本次工程提交不是开始授权。旧 I4 所有回交（含刚才试跑第四段）、G3 认定、旧管理聊天和 local long-task 状态均不继承；Git 保留其历史是审计，不是活动业务成果。
+**本文件是原新 run 首次启动合同，不是运行中的实时状态。** `BI-01-RESTART-01` 已实际发生 R0001 M-START 并完整收取；当前恢复位置与本次已知问题见 [R0001 运行恢复入口](BI01_R0001_RECOVERY.md) 和 [GitHub PROGRESS](../../runs/BI-01-RESTART-01/PROGRESS.md)。Owner 停止的是更早的旧 I4 试跑，其四段/Gate/聊天不继承；不能把“首次启动”条款用于再次发送现在已 committed 的 R0001。Git 保留历史供审计。
 
 ## 0. 唯一运行根、正本与职责
 
@@ -45,3 +45,5 @@
 应在 GitHub 直接读到：真实管理形成的 00 地图、01 当前任务、每次真实 Rnnnn 的原提示/完整答复/Return/发送依据、管理 review/资格/复看、实际 Workmap Binding 和 Owner PROGRESS。**本次提交只是为这些成果接线；没有启动业务、没有填成果、没有让自动接续引擎变成已部署。**
 
 **模式覆盖说明**：固定 Dispatch 的 `work_id=BI-01` 支持 M-START/M-REASSESS/M-CLOSE 及 I1—I6 对应模式，允许实际管理 Pro 为前段补证、I4、I5/I6 签出可装配任务；这些只是配置中的合法显示名称，`professional_mode`、专业原文、角色写权和 Gate 仍完全来自本次真实管理任务与 Binding。工具可组装，不自动形成专业 Router 或正式独立审查方法。
+
+**恢复已有 R0001 而非重新启动：** 后续运行应复用此 run 的唯一 GitHub 工作面、冻结的首次管理结论和已提交轮次，先处理缺少的正式文件/Binding/Return 及实际路径，随后管理 Workmap Stage 1/2，再依法派出新的专业 invocation；本文件里的新管理聊天/M-START 仅描述首次尚未运行时的步骤。具体只读事实和合法接续顺序见 `BI01_R0001_RECOVERY.md`。
