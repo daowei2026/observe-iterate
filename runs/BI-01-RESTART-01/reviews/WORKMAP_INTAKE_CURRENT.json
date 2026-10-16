@@ -2,8 +2,8 @@
   "schema": "workmap-intake/v1",
   "intakes": {
     "bi01": {
-      "snapshot": "1382adf38af3865127bc6257172ae4c9469326ebce770ddc163e8204de9ad65d",
-      "observed_commit": "6d955772d27a029224b4fd991fbdf121907f8533",
+      "snapshot": "9aefbd3506bba150250c08f0772dc31a2cc1f6a57742b67fa114b887d638f4d6",
+      "observed_commit": "3a8b8da2ce61c65fc04c0eb938ac9385c31b304e",
       "manager": {
         "role": "management",
         "context": "同一原物理管理会话 BI01-R01-管理：R0001 M-START 业务判断保持，R0002 OWNER_AUTHORIZED_MANUAL_REPAIR 只修 task_id、question_work_ref、professional_mode、carrier 与管理 route。"
@@ -19,13 +19,13 @@
       },
       "reader_check": {
         "status": "RECORDED",
-        "context": "/root/bi01_workmap_reader_adopted_rerun 零继承独立只读上下文；只读正式 ADOPTED binding 指定输入",
+        "context": "/root/bi01_resume_reader_r0002 新的零继承独立只读上下文；只读 Owner UI 介入后的新 exact recovery input",
         "independent_of_map_builder": true,
-        "input_commit": "6d955772d27a029224b4fd991fbdf121907f8533",
-        "input_snapshot": "19355c5331bf33cbf20d755878b8363d74b87d7cb3a01f63367b3b2caed5e0b2",
+        "input_commit": "3a8b8da2ce61c65fc04c0eb938ac9385c31b304e",
+        "input_snapshot": "ae28e9e565cb5d809fbba61e0d53c8c35746c3f6e49fba06edfd1d3b174cf67d",
         "report": {
-          "path": "runs/BI-01-RESTART-01/reviews/WORKMAP_READER_ADOPTED_R0002.md",
-          "blob": "528136a2e82e8b281a6a069af7223a046d3a1c4b"
+          "path": "runs/BI-01-RESTART-01/reviews/WORKMAP_READER_RESUME_R0002.md",
+          "blob": "879dc0397ed0d345ed473fa8a9b1ca0b9292669f"
         },
         "result": "READABLE",
         "qualification": "仅证明 fresh 接收者能理解正式 ADOPTED binding 的 exact map/task、task_id、证据边界、完整剩余、管理复看与安全下一步；不证明业务正确、G3/G4 通过、dispatch Gate 已通过或专业消息可发送。"
@@ -45,9 +45,9 @@
           "professional/source/04_PRO_WORKER_CODEX_HANDOFF.md",
           "professional/source/05_ROLE_GATE_AND_HANDOFF_CONTRACT.md"
         ],
-        "qualification": "PAUSED_NEEDS_HUMAN",
+        "qualification": "PENDING_FORMAL_RECHECK",
         "blockers": [
-          "DELIVERY_NOT_SENDABLE:UNKNOWN"
+          "DELIVERY_OBSERVATION_PENDING_FOR_EXACT_COMMIT"
         ],
         "pending_gates": [
           "PROTOCOL_CLEAN_ACTUAL_SENDING_ENDPOINT_NOT_SENT_OBSERVATION",
@@ -69,7 +69,10 @@
         "candidate_dispatch_preflight": "PASS",
         "official_binding_status": "ADOPTED",
         "official_binding_mechanical_intake": "PASS",
-        "official_binding_dispatch_preflight": "BLOCKED_DELIVERY_UNKNOWN"
+        "official_binding_dispatch_preflight": "BLOCKED_DELIVERY_UNKNOWN",
+        "resume_exact_input_commit": "3a8b8da2ce61c65fc04c0eb938ac9385c31b304e",
+        "resume_reader": "READABLE",
+        "resume_delivery_observation": "PENDING"
       },
       "validation_claims": []
     }

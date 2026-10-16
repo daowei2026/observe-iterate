@@ -1,0 +1,30 @@
+{
+  "schema": "exact-task-delivery-resume-observation/v1",
+  "run_id": "BI-01-RESTART-01",
+  "round_id": "R0002",
+  "authority": "OWNER_CURRENT_UI_INTERVENTION",
+  "task_id": "BI01-RESTART-01-I4-EXECUTION-01",
+  "future_professional_title": "BI01-RESTART-01-I4-EXECUTION",
+  "state": "PENDING",
+  "attempts": [
+    {
+      "event_id": "BI01-RESTART-01-R0002-resume-not-sent",
+      "observed_commit": "3a8b8da2ce61c65fc04c0eb938ac9385c31b304e",
+      "window_utc": "2026-10-16T06:10:55Z/2026-10-16T06:11:30Z",
+      "result": "INVALID_UI_ENTRY",
+      "frame": "1792131075754",
+      "detail": "The Owner-positioned exact Project was visible, with BI01-R01-管理 visible once, but the initial Project view exposed a blank 新聊天 composer with Terminal IME and one focused empty EditText. The executor stopped immediately without BACK, search, input, or alternate navigation.",
+      "network_probe": "NOT_OBSERVED",
+      "future_title_count": "NOT_OBSERVED",
+      "search_result_title_count": "NOT_OBSERVED",
+      "similar_inflight_count": "NOT_OBSERVED",
+      "send_calls": 0,
+      "protocol_deviation": "NONE",
+      "production_control_released": true
+    }
+  ],
+  "valid_observation": null,
+  "send_calls": 0,
+  "professional_chat_committed": false,
+  "limits": "The first resume attempt is preserved as invalid and is not relabeled as NOT_SENT. A new fresh executor and an exact-commit valid observation are still required before formal dispatch."
+}
