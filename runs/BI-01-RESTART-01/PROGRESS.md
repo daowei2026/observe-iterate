@@ -8,9 +8,22 @@
 - 当前专业阶段：I4 已由管理签发，专业执行尚未派发，G4 尚未接收
 - 管理轮次：R0001 为原 M-START；R0002 为 `OWNER_AUTHORIZED_MANUAL_REPAIR` 管理修复轮，不是专业轮
 - Workmap：正式 `runtime/config/WORKMAP_BINDING.json` 已为 `ADOPTED`
-- 运行状态：Owner UI 介入后的 fresh reader、intake、protocol-clean `NOT_SENT` 与 formal dispatch 已通过；正在准备首个专业轮的轮次级 Gate
+- 运行状态：Owner UI 介入后的 fresh reader、intake、protocol-clean `NOT_SENT` 与 formal dispatch 已通过；首个专业轮 R0003 已生成待发原文并通过 Overlay12 prepare/verify 的机械核验，尚未发送
 - 恢复结果：正式 Workmap dispatch 对 exact input `c16e8ad6047bce7f92a1d4501a04013fcf932221` 为 `ok=true / errors=[]`
-- 专业聊天／专业 Send：均未形成；只有 R0003 的 invocation/prompt、BI-01／Overlay12／scheduler／recipient Gates 全部通过后才可发送
+- 专业聊天／专业 Send：均未形成；R0003 的 invocation/prompt 将先以当前原字节推送和远端回读，之后仍须通过 exact-commit BI-01、Workmap、scheduler、recipient 与最终 `NOT_SENT` Gates 才可发送
+
+## 首个专业轮 R0003（准备中，未发送）
+
+- round：`R0003`；这是首个专业轮，R0002 仍是管理修复轮
+- invocation：`BI01-RESTART-01-R0003-9dda7755b8d94803ba5b03f53721d18c`
+- assignment token：`eab45254f4464b148d9ee7fd0833730a`
+- role / mode：`professional / OBSERVATION_I4`
+- recipient：`chatgpt-project:细节叙事生成_金标/chat:new:BI01-RESTART-01-I4-EXECUTION`
+- prompt SHA-256：`23de81b49a90c46b838ad3b543a1ddc2b37b10225eea858953a927c492d2ef83`
+- prompt size：`32367` UTF-8 bytes；`18292` UTF-16 code units
+- prompt 来源：由现行 `coordinator-dispatch/v3` 从已采用 Binding、修正版当前任务、管理采用依据和真实 Gate 证据机械生成，未手写改写业务字段
+- Overlay12 prepare：PASS；verify：PASS；`ok=true`
+- 当前事实：`NOT_SENT`；不存在 `SEND_RECEIPT.json`，不表示已派发或已创建专业会话
 
 ## Owner 当前恢复介入
 
