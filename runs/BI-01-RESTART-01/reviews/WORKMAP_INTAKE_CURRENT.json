@@ -2,40 +2,40 @@
   "schema": "workmap-intake/v1",
   "intakes": {
     "bi01": {
-      "snapshot": "d5a439a2eb5558c510275b22678e0601479dbaacdd79cc7bf6edbbebf27f6deb",
-      "observed_commit": "09a2866b2293ce64f8b7e10a80516997e7abd1a6",
+      "snapshot": "be2dbf5e8901abe8c8f73d994c7b2f8b73b7b5102d8990c9553fac031b50ac95",
+      "observed_commit": "c9f41334a7d1c5422d45acb76b9d9df752cf7a71",
       "manager": {
         "role": "management",
-        "context": "同一原物理管理会话 BI01-R01-管理：R0001 M-START 业务判断保持，R0002 OWNER_AUTHORIZED_MANUAL_REPAIR 只修 task_id、question_work_ref、professional_mode、carrier 与管理 route。"
+        "context": "同一原物理管理会话 BI01-R01-管理：R0004 M-REASSESS 接收 R0003，给出 G3 ScopedPass、Case-01 G4 ScopedPass，并签发同一 task_id、同一专业会话的 Case-02 I4 continuation；没有启动 I5。"
       },
       "decision_report": {
-        "path": "runs/BI-01-RESTART-01/reviews/MANAGEMENT_DELIVERY_REPAIR_R0002.md",
-        "blob": "b6d89c3a77199b13dc59441abfce3e5085359097"
+        "path": "runs/BI-01-RESTART-01/reviews/MANAGEMENT_GATE_DECISION_R0004.md",
+        "blob": "06db612ce3e04bcbd57fd2f04fc01b7fa042ef1f"
       },
       "effort": {
-        "known_pro_turns": 3,
-        "coverage": "一次真实管理 Pro M-START、一次 Owner 授权的同会话管理修复 invocation，以及一次已完整回交的专业执行 Pro invocation。",
-        "source_note": "R0001、R0002 与 R0003 的实际调用均有轮次账本；R0003 的完整远端报告、双 Return、手机完成证据和 after-return 已发布。手机 operation episode、Git 提交和独立 Codex reader 不计 Pro 轮次。"
+        "known_pro_turns": 4,
+        "coverage": "一次真实管理 Pro M-START、一次 Owner 授权的同会话管理修复 invocation、一次已完整回交的专业执行 Pro invocation，以及一次已完整回交的管理 M-REASSESS invocation。",
+        "source_note": "R0001 至 R0004 的实际调用均有轮次账本；R0003 专业结果和 R0004 管理结果均有精确 turn-complete、双 Return 与 after-return 记录。手机 operation episode、Git 提交和独立 Codex reader 不计 Pro 轮次。"
       },
       "reader_check": {
         "status": "RECORDED",
-        "context": "/root/bi01_resume_reader_r0002 新的零继承独立只读上下文；只读 Owner UI 介入后的新 exact recovery input",
+        "context": "/root/bi01_r0004_fresh_reader 新的零继承、xhigh、独立只读上下文；只读 c9f4133 exact Git 输入，不读取旧 reader/intake、管理决定、Return、reviews、artifacts、PROGRESS 或手机证据",
         "independent_of_map_builder": true,
-        "input_commit": "3a8b8da2ce61c65fc04c0eb938ac9385c31b304e",
-        "input_snapshot": "ae28e9e565cb5d809fbba61e0d53c8c35746c3f6e49fba06edfd1d3b174cf67d",
+        "input_commit": "c9f41334a7d1c5422d45acb76b9d9df752cf7a71",
+        "input_snapshot": "6898bb56abe65b77b1d4edc1f9ba67570558102818e4399b574ef8085a6fda3d",
         "report": {
-          "path": "runs/BI-01-RESTART-01/reviews/WORKMAP_READER_RESUME_R0002.md",
-          "blob": "879dc0397ed0d345ed473fa8a9b1ca0b9292669f"
+          "path": "runs/BI-01-RESTART-01/reviews/WORKMAP_READER_R0004.md",
+          "blob": "20c53a2569f3a07f080bd76fc2a0628e162966f8"
         },
         "result": "READABLE",
-        "qualification": "仅证明 fresh 接收者能理解正式 ADOPTED binding 的 exact map/task、task_id、证据边界、完整剩余、管理复看与安全下一步；不证明业务正确、G3/G4 通过、dispatch Gate 已通过或专业消息可发送。"
+        "qualification": "仅证明 fresh 接收者能理解 R0004 后的正式 ADOPTED binding、Case-02 continuation、task_id、证据边界、管理复看与安全下一步；不证明业务正确、dispatch Gate 已通过、专业续作已发送、I5 已启动或生产资格。"
       },
       "dispatch": {
         "decision": "ISSUED",
         "task_id": "BI01-RESTART-01-I4-EXECUTION-01",
         "task_path": "runs/BI-01-RESTART-01/01_当前任务.md",
-        "task_blob": "140a01fa9849a947ca0ccfa05613473b35b76ee0",
-        "kind": "NEW_STAGE",
+        "task_blob": "4f3f870a9dce2af2c3cc52e329d0f15f339a2392",
+        "kind": "ROUTINE_RESULT",
         "requires_reader_check": true,
         "method_paths": [
           "professional/source/00_AGENT_CHARTER_AND_STAGE_CONTRACT.md",
@@ -45,9 +45,15 @@
           "professional/source/04_PRO_WORKER_CODEX_HANDOFF.md",
           "professional/source/05_ROLE_GATE_AND_HANDOFF_CONTRACT.md"
         ],
-        "qualification": "FORMAL_DISPATCH_PASS",
+        "qualification": "R0004_CONTINUATION_PENDING_PREFLIGHT",
         "blockers": [],
-        "pending_gates": []
+        "pending_gates": [
+          "WORKMAP_CHECK",
+          "BI01_PRE_DISPATCH",
+          "OVERLAY12_PREPARE_VERIFY",
+          "PROFESSIONAL_ENDPOINT_NOT_SENT",
+          "WORKMAP_DISPATCH"
+        ]
       },
       "issue_resolution": {
         "original_issue": {
@@ -78,6 +84,15 @@
         "after_return": "PASS",
         "management_trigger_notice": "runs/BI-01-RESTART-01/reviews/MANAGEMENT_TRIGGER_NOTICE_R0003.json",
         "limits": "仅记录真实结果已收取及管理触发；不签 G3/G4，不替管理修改地图或当前任务。"
+      },
+      "latest_management_intake": {
+        "round_id": "R0004",
+        "turn_complete_commit": "c3fbaf2e5d200f79b49aa85d9a27f0b6bf36e0d5",
+        "intake_projection_commit": "c9f41334a7d1c5422d45acb76b9d9df752cf7a71",
+        "after_return": "PASS",
+        "decision": "G3_SCOPED_PASS__CASE01_G4_SCOPED_PASS__I4_CONTINUE_CASE02",
+        "next_route": "chatgpt-project:细节叙事生成_金标/chat:BI01-RESTART-01-I4-EXECUTION",
+        "limits": "管理决定已形成当前任务，但专业续作仍须通过 fresh intake、pre-dispatch、原会话 NOT_SENT 与 scheduler send-ready；不等于已发送，不启动 I5。"
       },
       "validation_claims": []
     }
