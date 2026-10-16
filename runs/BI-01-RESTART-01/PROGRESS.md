@@ -6,11 +6,11 @@
 
 - run：`BI-01-RESTART-01`
 - 当前专业阶段：R0003 已提交完整 I3 定向核查与 I4 专业结果；G4 候选和局部 I3 消费冲突等待原管理角色接收/裁定
-- 管理轮次：R0001 为原 M-START；R0002 为 `OWNER_AUTHORIZED_MANUAL_REPAIR` 管理修复轮，不是专业轮
+- 管理轮次：R0001 为原 M-START；R0002 为 `OWNER_AUTHORIZED_MANUAL_REPAIR` 管理修复轮；R0004 是接收 R0003 结果的新管理复核轮；R0002/R0004 都不是专业轮
 - Workmap：正式 `runtime/config/WORKMAP_BINDING.json` 已为 `ADOPTED`
-- 运行状态：R0003 已 `answer_complete`、远端完整包已收取、Return/引用/after-return 均通过；下一合法角色调用是原管理会话中的新管理接收轮
+- 运行状态：R0003 已 `answer_complete`、远端完整包已收取、Return/引用/after-return 均通过；R0004 管理复核提示已冻结，实际原管理会话的 `NOT_SENT` 证据已取得，尚未发送
 - 恢复结果：正式 Workmap dispatch 对 exact input `c16e8ad6047bce7f92a1d4501a04013fcf932221` 为 `ok=true / errors=[]`
-- 专业聊天／专业 Send：R0003 原文只输入一次、Send 只点击一次；物理聊天已在首次完整回复后独立改名为唯一 `BI01-RESTART-01-I4-EXECUTION`；回交已收取，尚未发生管理业务接收
+- 专业聊天／专业 Send：R0003 原文只输入一次、Send 只点击一次；物理聊天已在首次完整回复后独立改名为唯一 `BI01-RESTART-01-I4-EXECUTION`；回交已收取，R0004 仍处于管理发送前
 
 ## 首个专业轮 R0003（完整回交已收取）
 
@@ -36,6 +36,23 @@
 - Return intake：两份 schema PASS；`association_errors=[]`；内部 exact Git locators 均存在；after-return `ok=true / errors=[]`
 - 管理触发：I4 G4 candidate 与 I3 局部消费冲突均已满足；后一义务 blocking；两者都回原管理会话 `BI01-R01-管理`
 - 证据：`provenance/turns/R0003/`、`artifacts/I4_R0003/`、`reviews/PROFESSIONAL_DELIVERY_OBSERVATION_R0003.json`、`reviews/PROFESSIONAL_RETURN_INTAKE_R0003.md`
+
+## 管理接收轮 R0004（发送前）
+
+- round：`R0004`；管理复核轮，不是专业轮
+- invocation：`BI01-RESTART-01-R0004-3d4c621d7c744363b39d3cbbe336ebcd`
+- assignment token：`bb85aedb48aa4fd29f8b493670c49ee7`
+- recipient：原物理管理会话 `chatgpt-project:细节叙事生成_金标/chat:BI01-R01-管理`
+- management purpose / bound mode：`M-REASSESS / OBSERVATION_I4`
+- prompt SHA-256：`a19e7a7a741369900188986576c51bc3ca13780e302ad5c71f98f58dc79bacb5`
+- prompt size：`34556` UTF-8 bytes；`19429` UTF-16 code units
+- 合并管理事件：`BI01-R0003-I4-G4-CANDIDATE`、`BI01-R0003-I3-CONSUMPTION-CONFLICT`
+- Overlay12 verify：`ok=true / sent=false`；BI-01 pre-dispatch：`ok=true / errors=[]`
+- Workmap mechanical intake：`ok=true / errors=[] / reader_qualification=RECORDED`
+- 实际发送现场：`NOT_SENT`；Project 与原管理会话均唯一，R0004 marker count=0，最新管理 marker 仍为 R0002，composer 空且 unfocused，`send_calls=0`
+- 网络/双列表：exact SSID `dw-usa-vps4`，`CONNECTED/CONNECTED`，`INTERNET + VALIDATED`；现场门完成于 `2026-10-16T11:46:38.321Z`
+- 证据：`provenance/turns/R0004/`、`reviews/MANAGEMENT_NOT_SENT_OBSERVATION_R0004.json`
+- 下一动作：提交并远端回读本发送前证据，以该 commit 作为 R0004 scheduler remote base；之后才允许向同一原管理会话执行一次 exact Send
 
 ## Owner 当前恢复介入
 
