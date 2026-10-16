@@ -1,0 +1,80 @@
+{
+  "schema": "bi01-pre-send-gates/v1",
+  "run_id": "BI-01-RESTART-01",
+  "round_id": "R0008",
+  "invocation_id": "BI01-RESTART-01-R0008-a2c40e1e2fae32a95b0ce3b2add4df4a",
+  "assignment_token": "aff545be3fc92169d03079f40cb1479f",
+  "recipient_ref": "chatgpt-project:细节叙事生成_金标/chat:BI01-R01-管理",
+  "exact_git_input": "1b8dd8d42be7a621583ef3cd07895d336e542ab4",
+  "payload": {
+    "path": "runs/BI-01-RESTART-01/provenance/turns/R0008/PROMPT.md",
+    "sha256": "da42bd5502d8fe6177680028055dbd238fa8fd4172d1937faf282497d8413244",
+    "utf8_bytes": 31268,
+    "utf16_units": 16538,
+    "lines": 506,
+    "first_line": "[BI01-RESTART-01-R0008-a2c40e1e2fae32a95b0ce3b2add4df4a]"
+  },
+  "checks": {
+    "r0007_professional_return_intake": {
+      "result": "PASS",
+      "after_return_checked_ref": "8894a0589fb93f16b244db4beee412e1bc83cf0f",
+      "intake_ref": "runs/BI-01-RESTART-01/reviews/PROFESSIONAL_RETURN_INTAKE_R0007.md",
+      "trigger_ref": "runs/BI-01-RESTART-01/reviews/MANAGEMENT_TRIGGER_NOTICE_R0007.json",
+      "manager_decision_pending": true,
+      "g5_passed": false,
+      "owner_asked_or_approved": false,
+      "i6_started": false
+    },
+    "coordinator_dispatch_prepare": {
+      "result": "PASS",
+      "policy_commit": "75d42776a78cd4cbdf3b61bbf86ec93701d06b84",
+      "recipient_exact": true,
+      "payload_sha256_exact": true,
+      "prepared_ref": "runs/BI-01-RESTART-01/provenance/turns/R0008/PREPARE.json"
+    },
+    "coordinator_dispatch_verify": {
+      "result": "PASS",
+      "policy_commit": "75d42776a78cd4cbdf3b61bbf86ec93701d06b84",
+      "payload_exact": true,
+      "recipient_exact": true,
+      "message_sha256": "da42bd5502d8fe6177680028055dbd238fa8fd4172d1937faf282497d8413244"
+    },
+    "bi01_pre_dispatch": {
+      "result": "PASS",
+      "checked_ref": "1b8dd8d42be7a621583ef3cd07895d336e542ab4",
+      "recorded_send_state": "NOT_RECORDED",
+      "errors": []
+    },
+    "management_endpoint": {
+      "result": "NOT_SENT",
+      "checked_ref": "e6ec6b9629967363173206f4c3bea30e1137b96d",
+      "observed_at": "2026-10-16T15:44:19.183Z",
+      "current_in_flight": false,
+      "evidence_ref": "runs/BI-01-RESTART-01/provenance/turns/R0008/DELIVERY_OBSERVATION.json"
+    },
+    "workmap_dispatch": {
+      "result": "NOT_APPLICABLE_MANAGEMENT_REASSESS",
+      "reason": "R0008 接收已完成的 R0007 I5 Owner Pack，并要求原管理角色判断 G5、定向返修或 WaitingOwner；现行 Workmap dispatch Gate 检查已签发的专业任务，不能在管理接收与重签之前循环要求一个尚待管理更新的专业 dispatch。"
+    },
+    "network": {
+      "result": "PASS",
+      "ssid": "dw-usa-vps4",
+      "two_list_probe": "PASS",
+      "completed_at": "2026-10-16T14:51:54.679Z",
+      "valid_until": "2026-10-16T15:51:54.679Z",
+      "vpn_checked_or_operated": false,
+      "evidence_ref": "runs/BI-01-RESTART-01/provenance/turns/R0007/NETWORK_PROBE.json"
+    },
+    "scheduler_send_ready": {
+      "result": "PENDING_REMOTE_BASE_PUBLICATION",
+      "current_revision": 90,
+      "send_attempt_started": false
+    }
+  },
+  "all_non_scheduler_gates_pass": true,
+  "send_state": "NOT_SENT",
+  "sent": false,
+  "result": "PASS_PRE_SEND_PREREQUISITES_NOT_YET_SEND_READY",
+  "next_action": "提交并远端回读本记录；以该预发送提交为 R0008 remote_base_sha，经调度器 set-send-ready 与 record-send-attempt-start 后，由新的零继承 exact-send 执行器向同一 BI01-R01-管理会话执行一次发送。",
+  "limits": "该记录不证明实际发送、回复完成、管理 G5 判断、Owner 接受、I6、独立审查或生产资格；这些必须由后续真实管理回交和相应 Gates 证明。"
+}
