@@ -8,9 +8,9 @@
 - 当前专业阶段：I4 已由管理签发，专业执行尚未派发，G4 尚未接收
 - 管理轮次：R0001 为原 M-START；R0002 为 `OWNER_AUTHORIZED_MANUAL_REPAIR` 管理修复轮，不是专业轮
 - Workmap：正式 `runtime/config/WORKMAP_BINDING.json` 已为 `ADOPTED`
-- 运行状态：Owner 已把手机定位到目标 Project；正在恢复 fresh reader／intake／`NOT_SENT`／dispatch 核验，专业发送仍关闭
-- 恢复起点：正式 Binding 的上一次 exact-commit 发送现场状态为 `UNKNOWN`，dispatch Gate 为 `DELIVERY_NOT_SENDABLE:UNKNOWN`
-- 专业聊天／专业 Send：均未形成；不得创建 R0003 或派发 I4
+- 运行状态：Owner UI 介入后的 fresh reader、intake、protocol-clean `NOT_SENT` 与 formal dispatch 已通过；正在准备首个专业轮的轮次级 Gate
+- 恢复结果：正式 Workmap dispatch 对 exact input `c16e8ad6047bce7f92a1d4501a04013fcf932221` 为 `ok=true / errors=[]`
+- 专业聊天／专业 Send：均未形成；只有 R0003 的 invocation/prompt、BI-01／Overlay12／scheduler／recipient Gates 全部通过后才可发送
 
 ## Owner 当前恢复介入
 
@@ -18,6 +18,11 @@
 - 记录：`reviews/PROFESSIONAL_DELIVERY_RESUME_R0002.json`
 - 作用：只恢复此前阻断的正式发送现场观察及其 exact-commit reader/intake/dispatch Gates
 - 边界：这不是新的管理或专业轮次，不改变 R0001/R0002，不授权在 Gate 通过前创建 R0003 或发送专业任务
+- fresh reader：`READABLE`，记录 `reviews/WORKMAP_READER_RESUME_R0002.md`
+- 第一次手机观察：因空白 `新聊天` composer 聚焦而 `INVALID`，零输入、零 Send，原样保留
+- focus recovery：一次安全 BACK 后 focused count 归零，精确网络 `dw-usa-vps4` 健康
+- 最终发送现场：`NOT_SENT`；Project 标题计数、内部搜索结果计数、相似在途专业聊天计数均为 0；查询全文回读精确；`protocol_deviation=NONE`；`send_calls=0`
+- 恢复 Gate：mechanical intake PASS；formal dispatch PASS；记录 `reviews/WORKMAP_GATE_RESUME_R0002.json`
 
 ## Owner 授权与 R0002 调用
 
