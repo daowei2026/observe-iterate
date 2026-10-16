@@ -8,11 +8,11 @@
 - 当前专业阶段：I4 已由管理签发，专业执行尚未派发，G4 尚未接收
 - 管理轮次：R0001 为原 M-START；R0002 为 `OWNER_AUTHORIZED_MANUAL_REPAIR` 管理修复轮，不是专业轮
 - Workmap：正式 `runtime/config/WORKMAP_BINDING.json` 已为 `ADOPTED`
-- 运行状态：Owner UI 介入后的 fresh reader、intake、protocol-clean `NOT_SENT` 与 formal dispatch 已通过；首个专业轮 R0003 已生成待发原文并通过 Overlay12 prepare/verify 的机械核验，尚未发送
+- 运行状态：首个专业轮 R0003 已通过全部发送前 Gate 并真实 committed；执行 Pro 正在生成首轮 I3 定向核查与 I4 专业结果
 - 恢复结果：正式 Workmap dispatch 对 exact input `c16e8ad6047bce7f92a1d4501a04013fcf932221` 为 `ok=true / errors=[]`
-- 专业聊天／专业 Send：均未形成；R0003 的 invocation/prompt 将先以当前原字节推送和远端回读，之后仍须通过 exact-commit BI-01、Workmap、scheduler、recipient 与最终 `NOT_SENT` Gates 才可发送
+- 专业聊天／专业 Send：首个独立专业物理聊天已合法创建；R0003 原文只输入一次、Send 只点击一次，exact marker 与 STOP 共同证明 committed；首次完整回复后仍须单独完成 canonical rename、回交收取与业务接收
 
-## 首个专业轮 R0003（准备中，未发送）
+## 首个专业轮 R0003（已 committed，回复生成中）
 
 - round：`R0003`；这是首个专业轮，R0002 仍是管理修复轮
 - invocation：`BI01-RESTART-01-R0003-9dda7755b8d94803ba5b03f53721d18c`
@@ -22,8 +22,16 @@
 - prompt SHA-256：`23de81b49a90c46b838ad3b543a1ddc2b37b10225eea858953a927c492d2ef83`
 - prompt size：`32367` UTF-8 bytes；`18292` UTF-16 code units
 - prompt 来源：由现行 `coordinator-dispatch/v3` 从已采用 Binding、修正版当前任务、管理采用依据和真实 Gate 证据机械生成，未手写改写业务字段
+- exact input / remote readback：`bcc27ccfa8052bbec82349b36051e9f64337b82d`，prompt 远端 SHA-256 匹配
+- BI-01 pre-dispatch：PASS，`errors=[]`
 - Overlay12 prepare：PASS；verify：PASS；`ok=true`
-- 当前事实：`NOT_SENT`；不存在 `SEND_RECEIPT.json`，不表示已派发或已创建专业会话
+- Workmap mechanical intake / formal dispatch：均 PASS，`errors=[]`
+- 最终 `NOT_SENT`：PASS；内部 Chat 搜索目标标题 0、相似在途 0、管理标题 1、`send_calls=0`
+- scheduler：revision 32 `send_ready`，revision 33 记录 phone action start，revision 34 记录 `committed`
+- R0003 Send：payload `exact_verified`，UTF-8/UTF-16/SHA 全匹配；IME input 1 次；Send 1 次；ACK `2832083732` 为 `executed / duplicate=false`
+- commitment：terminal frame `1792132899805` 中 exact marker 唯一、`正在思考` 与 STOP 同时可见，无 `正在发送`／`等待发送`／offline／retry／error
+- 当前回复状态：`model_thinking`；下一次 scheduler thread check 为 `2026-10-16T06:53:29.694439Z`
+- 证据：`provenance/turns/R0003/SEND_RECEIPT.json`、`reviews/PROFESSIONAL_DELIVERY_OBSERVATION_R0003.json`、`reviews/WORKMAP_GATE_R0003.json`
 
 ## Owner 当前恢复介入
 

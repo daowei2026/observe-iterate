@@ -1,0 +1,68 @@
+{
+  "schema": "bi01-workmap-gate-professional-dispatch/v1",
+  "run_id": "BI-01-RESTART-01",
+  "round_id": "R0003",
+  "exact_input_commit": "bcc27ccfa8052bbec82349b36051e9f64337b82d",
+  "remote_readback": {
+    "branch_head": "bcc27ccfa8052bbec82349b36051e9f64337b82d",
+    "prompt_sha256": "23de81b49a90c46b838ad3b543a1ddc2b37b10225eea858953a927c492d2ef83",
+    "match": true
+  },
+  "snapshot": {
+    "binding_blob": "bcd2f32db58c58742495d6bd45205181ccb86e39",
+    "fingerprint": "9aefbd3506bba150250c08f0772dc31a2cc1f6a57742b67fa114b887d638f4d6",
+    "reader_fingerprint": "ae28e9e565cb5d809fbba61e0d53c8c35746c3f6e49fba06edfd1d3b174cf67d",
+    "task_blob": "140a01fa9849a947ca0ccfa05613473b35b76ee0",
+    "task_payload_sha256": "80531462373bcb0137d84473eb8ac2be5248e666201a7a0c6528ca917aaa5730",
+    "unchanged_from_recorded_reader": true
+  },
+  "bi01_pre_dispatch": {
+    "ok": true,
+    "errors": [],
+    "recorded_send_state": "NOT_RECORDED",
+    "sent": false
+  },
+  "overlay12": {
+    "prepare": "PASS",
+    "verify": "PASS",
+    "verify_ok": true,
+    "recipient": "chatgpt-project:细节叙事生成_金标/chat:new:BI01-RESTART-01-I4-EXECUTION",
+    "role": "professional",
+    "mode": "OBSERVATION_I4",
+    "message_sha256": "23de81b49a90c46b838ad3b543a1ddc2b37b10225eea858953a927c492d2ef83",
+    "delivery_key_sha256": "5be2b78749c1c60102df1cb73149412454fe5fe66b83e93ddb1c85cb6b2da8fa"
+  },
+  "mechanical_intake": {
+    "actor": "management_review",
+    "ok": true,
+    "errors": [],
+    "reader_qualification": "RECORDED"
+  },
+  "delivery_observation": {
+    "state": "NOT_SENT",
+    "observed_commit": "bcc27ccfa8052bbec82349b36051e9f64337b82d",
+    "record": "runs/BI-01-RESTART-01/reviews/PROFESSIONAL_DELIVERY_OBSERVATION_R0003.json",
+    "local_delivery_sha256": "0e1c1b1c2131ae1da4c3678d51fee7c5a79d0f6b221631a4dd889c5a1d7290bb",
+    "protocol_deviation": "NONE",
+    "send_calls": 0
+  },
+  "formal_dispatch": {
+    "actor": "management_review",
+    "ok": true,
+    "errors": [],
+    "reader_qualification": "RECORDED",
+    "raw_output_sha256": "20c934a51a327c6e3ae766dc59e22eaf209b51d13ea45b8a6be577ff99974f29"
+  },
+  "scheduler": {
+    "send_ready_revision": 32,
+    "send_attempt_revision": 33,
+    "committed_revision": 34,
+    "payload_sha256": "23de81b49a90c46b838ad3b543a1ddc2b37b10225eea858953a927c492d2ef83",
+    "message_identity": "[BI01-RESTART-01-R0003-9dda7755b8d94803ba5b03f53721d18c]",
+    "send_commit_state": "committed"
+  },
+  "professional_dispatch_eligible_before_send": true,
+  "professional_send_committed": true,
+  "next_legal_action": "Monitor the exact R0003 professional thread on the scheduler deadline; after the first complete reply, rename the physical chat to BI01-RESTART-01-I4-EXECUTION in a separate no-send episode, then capture and admit the professional return.",
+  "limits": "Mechanical and transport Gates do not certify I3/G3 facts, I4 business quality, G4, reply completion, collection, or management acceptance."
+}
