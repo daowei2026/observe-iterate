@@ -1,0 +1,46 @@
+{
+  "schema": "bi01-adoption-gate-disposition/v1",
+  "run_id": "BI-01-RESTART-01",
+  "round_id": "R0002",
+  "authority": "OWNER_AUTHORIZED_MANUAL_REPAIR",
+  "overlay12": "NOT_RUN_NOT_PASS",
+  "candidate_exact_input_commit": "e4ece3a9b31152a04c4fbf901be0d6e74ecb42b8",
+  "candidate_binding": {
+    "path": "runtime/config/WORKMAP_BINDING_CANDIDATE.json",
+    "blob": "a57df8faa9a51e9e24681d8d05323f229658a9ca",
+    "status": "PENDING_MATERIALIZATION_AND_INTAKE"
+  },
+  "snapshot": {
+    "fingerprint": "eb03f42941b8e40296531f293f571fbf398282569dc0ca5cdeea538b6f7796e7",
+    "reader_fingerprint": "67c081deb19465b5a857aa6ba1ab76704c4d67b5068f65aaa3c9fa080faab33a",
+    "task_payload_sha256": "80531462373bcb0137d84473eb8ac2be5248e666201a7a0c6528ca917aaa5730"
+  },
+  "candidate_mechanical_intake": {
+    "ok": true,
+    "errors": [],
+    "reader_qualification": "RECORDED",
+    "raw_output_sha256": "aaf4dd67b1a503624c67659849d6518d55d5888b1d3413164977c2e24d84f33d"
+  },
+  "candidate_dispatch_preflight": {
+    "ok": true,
+    "errors": [],
+    "reader_qualification": "RECORDED",
+    "delivery_observation": "runs/BI-01-RESTART-01/reviews/PROFESSIONAL_NOT_SENT_OBSERVATION_R0002.json",
+    "raw_output_sha256": "fd5a64e48c4d29172135592225ae7f0370b1dd46eaef0474a7bd957e773f044a"
+  },
+  "r0001_after_return": {
+    "ok": true,
+    "errors": [],
+    "record": "runs/BI-01-RESTART-01/provenance/turns/R0001/GATE_CHECK_RERUN_R0002.json"
+  },
+  "r0002_after_return": {
+    "ok": true,
+    "errors": [],
+    "record": "runs/BI-01-RESTART-01/provenance/turns/R0002/GATE_CHECK.json"
+  },
+  "selected_action": "MATERIALIZE_EXACT_ADOPTED_BINDING",
+  "formal_binding_recheck": "PENDING",
+  "adoption_eligible": true,
+  "professional_dispatch_eligible": false,
+  "limits": "Candidate PASS permits exact ADOPTED binding materialization under the manager-issued sequence. Formal binding reader/intake/dispatch rechecks still must pass before professional dispatch eligibility. No professional Send occurred."
+}
