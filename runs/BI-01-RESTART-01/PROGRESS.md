@@ -28,6 +28,7 @@
 - 管理包物化与远端读回：`e1838ebb2753a7f2e5b1efa94e9a7b62c754561a`；地图、任务、管理决定、Binding Candidate 的 blob／SHA 与包清单一致
 - Workmap snapshot：`5ac344eaa7dc4e6a68455d5aed2de4cc0b893e5df6366ab848a34f4c7399e348`；reader fingerprint：`34a8fb16006c812818a4e098dbac4c9cbbdd9412b70ca2f9521dcd6c17f7bab2`
 - 独立读图：`READABLE_WITH_BLOCKERS`；地图目标、阶段、证据边界、剩余、管理条件和下一动作可理解，但任务缺 `task_id:`、Candidate 尚未采用，README／地图下一步存在旧状态残留
+- Workmap intake commit：`f6af31ea029bcbc0ea02633573ddc0b95e42c525`；对 Candidate 的 `check` 为 `ok=true`、reader=`RECORDED`，但 `dispatch` 为 `ok=false`，错误为 `TASK_NOT_BOUND_TO_INTAKE` 与尚无真实发送端观察的 `DELIVERY_OBSERVATION_REQUIRED`
 
 ## 当前任务与下一动作
 
@@ -46,4 +47,5 @@
 - `after-return` Gate 已在发布提交 `aa010794ed6a6780ca7fdbed19dd53dd1bd552c7` 上真实运行并失败；该结构缺项与附件交付债务合并为同一次定向管理补交，不从散文猜写字段。
 - 管理包中的 `ROLE_RETURN` 仍缺 `question_work_ref`，证明该问题属于原管理交付而非剪贴板捕获失真；不得由操作端静默补写。
 - 当前任务还缺 `task_id:`；Binding 的 mode 不在锁定配置中，且 `answer_ref` 不能从独立 JSON carrier 解析。当前机制也拒绝以 BOOTSTRAP 发管理 `DELIVERY_REPAIR`，因此没有合法补交载荷可发送。
+- `WORKMAP_BINDING.json` 仍是 `NOT_CONFIGURED`；本轮通过的是 Candidate 上的机械 intake，不是 adoption 或 dispatch，不得只改 status。
 - 恢复点：`e1838ebb2753a7f2e5b1efa94e9a7b62c754561a` 的管理包原件、远端读回、snapshot 和 reader 已完成；从 `reviews/MANAGEMENT_DELIVERY_REPAIR_REQUIRED_R0001.md` 的窄修复条件恢复。不得重发 M-START、手写修复消息、冒称 ADOPTED 或先派专业执行。
