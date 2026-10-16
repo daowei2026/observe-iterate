@@ -5,77 +5,89 @@
 ## 当前状态
 
 - run：`BI-01-RESTART-01`
-- 当前阶段：I4
-- G3：Case-01 `ScopedPass`；`completed_recovery_events` 触及语义 Withheld
-- G4：Case-01 `ScopedPass`；I4 继续
-- I5/G5：未开始
-- Owner：当前无需介入
-- Workmap：配置仍采用同一 BI-01 stream；R0004 更新后须 fresh intake 才能发送续作
-- 专业会话：`BI01-RESTART-01-I4-EXECUTION`
-- 管理会话：`BI01-R01-管理`
+- 当前阶段：I5
+- G1：Pass
+- G2：ScopedPass
+- G3：Case-01/02 ScopedPass；`completed_recovery_events` 触及语义 Withheld
+- G4：Pass（限定当前 Reference/Shadow 范围）
+- G5：Pending
+- Owner：尚未收到 Pack 或选择题
+- 独立审查：未覆盖
+- Workmap：I5 配置落库后仍需 fresh intake 才可发送专业任务
 
-## R0003 专业成果
+## I4 已形成的真实认识
 
-- invocation：`BI01-RESTART-01-R0003-9dda7755b8d94803ba5b03f53721d18c`
-- turn-complete：`ece9dbac6eb3cf29e32e28ef5a5d3b891cb19efe`
-- 完整报告：`artifacts/I4_R0003/REPORT.md`
+1. 时间、knowledge、Working/Completed 和观察范围是承重业务信息；混用会制造伪排序。
+2. U2 对同轮身份、来源、资格和可追溯性有真实组织价值。
+3. exact-same-actual 名单未证明稳定机会边界或经济过程边界。
+4. Case-01 当前 U3 未证明独立 Quality 增量；Case-02 没有对应 U3 输出。
+5. 当前无增量结论只限具名 Reference/Shadow 结果，不等于完整 U2/U3 无用。
+6. Case-01 single-scale C1 未 join N；Case-02 baseline C1 有一个可核历史效率差，必须按 carrier 分账。
+
+## R0005 专业成果
+
+- invocation：`BI01-RESTART-01-R0005-427e020c096844a98f9f46148fce405c`
+- turn-complete：`7eb4c54a8fe3e7b3372dc3806f39cc09dcf14622`
+- 完整报告：`artifacts/I4_R0005/REPORT.md`
 - 核查摘要：
-  - 15 条 R02 路径；
-  - 90 行 N metric；
-  - 15 行 baseline；
-  - 1 个 recovery touch mismatch。
+  - 13 个 As-Of；
+  - 39 条当前路径；
+  - 39 条旧 Episode 视图；
+  - 三条 canonical path；
+  - 两条 C1 member path；
+  - 三条 N summary、15 个统计量；
+  - 13 条 source turn；
+  - 承重 OHLC 空值 0；
+  - Case-02 U3 R02 行数 0。
 - after-return：`ok=true / errors=[]`
-- intake 已确认两份 Return、exact locators 和完整远端包；这不是业务 Gate。
+- 结构检查和远端收取不是业务 Gate，也不是独立审查。
 
-## R0004 管理决定
+## R0006 管理决定
 
-- invocation：`BI01-RESTART-01-R0004-3d4c621d7c744363b39d3cbbe336ebcd`
+- invocation：`BI01-RESTART-01-R0006-d47ef1963ae34986a44d18da92fd1483`
 - 管理目的：`M-REASSESS`
-- 接收：
-  - CF-01：混合生命周期导致 HC/RB 伪排序；
-  - CF-02：I 的 h1 满效率不能代表多日路径；
-  - NI-01：当前 U3 未证明独立 Quality 增量；
-  - U2 同轮身份与可追溯性增量；
-  - MF-01：触及/严格突破恢复语义不一致；
-  - MF-02：旧 Episode 与当前状态必须分域。
-- 不接收：
-  - 正式 OpportunityCluster/H1/Quality；
-  - recovery count 的触及语义；
-  - 跨 Case 普遍规律；
-  - 独立审查 PASS。
-- 阶段：Case-01 G4 ScopedPass，I4 继续，I5 未启动。
+- Case-02：G3 ScopedPass
+- I4/G4：Pass（限定范围）
+- I4：结束
+- I5：启动
+- I2/I3 补证：当前不需要
+- 第三个 Case：未授权
+- Worker：无
+- 当前建议：选项 A——保留组织/可追溯价值，暂停选择/Quality 投入，结束当前 reference 观察；Owner Pack 完成后再正式提请 Owner。
 
-## 当前下一 Case
+## 当前 I5 输出
 
-```yaml
-case_ref: refonly-671359b4c10f73db5c
-actual_ts: 2021-05-10 21:30:00
-common_visible_asof: 2021-05-11 10:30:00
-members: hc|rb
-turn_type: Peak
-direction: Down
-identity: same-actual diagnostic, not formal Formation
+```text
+OWNER_PACK.md
+  Executive Summary
+  Case-01/02 市场过程面板
+  单品种→静态集合→U2→U3 价值边界
+  Accepted / Scoped / Withheld / Hypothesis
+  反证、争议与证据依赖
+  选项 A/B/C
+  管理建议
+  两项 Owner 问题
+  exact 来源与非主张
 ```
-
-第三成员 I 有自己的 Peak/Down，实际起点早 5 个共同 30m bar，并非 DataUnavailable。下一段检验 HC/RB 成员选择相对静态 HC/RB/I 是否增加业务认识。
 
 ## 当前后继
 
-1. 提交 R0004 管理决定、地图和当前任务；
-2. 更新 Question Work Binding；
+1. 提交 R0006 管理决定、地图和 I5 当前任务；
+2. 建立 I5 Binding 并更新 Workmap；
 3. fresh remote readback；
-4. workmap snapshot / reader / intake / pre-dispatch；
-5. 核专业会话无在途和重复发送；
-6. 发送同工作续作；
-7. 一次有效专业调用后回管理；
-8. 管理决定 I5、定向补证或停止/修订。
+4. snapshot / reader / intake / pre-dispatch；
+5. 核新 I5 聊天 NOT_SENT；
+6. 发送 I5 专业任务；
+7. Pack 完成后回管理；
+8. 管理决定 G5、补 Pack 或 WaitingOwner；
+9. Owner 实际回答后才进入 I6。
 
 ## 边界
 
+- 不重开 I4；
+- 不增加第三 Case；
 - 不修 MF-01；
 - 不发 Worker；
-- 不扩 Universe；
-- 不校准 Quality；
-- 不自动追加第三 Case；
-- 不声称续作已发送；
-- 不声称独立审查或 Owner 接受。
+- 不补造 formal U2/U3；
+- 不声称 I5 已发送；
+- 不声称 G5、Owner 接受、独立审查或生产资格。
