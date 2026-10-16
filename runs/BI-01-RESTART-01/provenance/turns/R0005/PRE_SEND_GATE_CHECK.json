@@ -68,11 +68,15 @@
       "evidence_ref": "runs/BI-01-RESTART-01/provenance/turns/R0005/NETWORK_PROBE.json"
     },
     "scheduler_send_ready": {
-      "result": "PENDING_AFTER_REMOTE_PUBLICATION"
+      "result": "PASS",
+      "ready_at": "2026-10-16T12:50:28.359Z",
+      "recorded_revision": 62,
+      "attempt_started_at": "2026-10-16T12:50:34.729Z",
+      "attempt_recorded_revision": 63
     }
   },
   "all_non_scheduler_gates_pass": true,
   "send_state": "NOT_SENT",
   "sent": false,
-  "limits": "This record authorizes only scheduler send-ready materialization followed by one exact send to the existing professional chat. It does not prove actual send, reply completion, business correctness, G4/G5, Owner acceptance, independent review, or production qualification."
+  "limits": "This record proves that every pre-send gate, including scheduler send-ready materialization, passed before the one exact phone send. Actual commitment is recorded separately in SEND_RECEIPT.json; this record does not prove reply completion, business correctness, G4/G5, Owner acceptance, independent review, or production qualification."
 }
