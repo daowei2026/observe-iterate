@@ -6,10 +6,10 @@
 
 - run：`BI-01-RESTART-01`
 - 稳定业务路由键：`BI-01`
-- 当前阶段：首轮管理 Pro `M-START`（R0001）已完成；管理落地包已通过正式 MCP 拉取并核验，原件正在按两提交合同物化与 intake
-- 当前业务地图：`00_长程推进地图.md` 已从哈希匹配的管理包原样物化；尚未 remote readback 和 intake
+- 当前阶段：首轮管理 Pro `M-START`（R0001）已完成；管理落地包已通过正式 MCP 拉取、核验、物化、提交和远端读回，正在做 Workmap intake 与定向交付修复
+- 当前业务地图：`00_长程推进地图.md` 已从哈希匹配的管理包原样物化；materialization commit 为 `e1838ebb2753a7f2e5b1efa94e9a7b62c754561a`，远端读回一致
 - 当前专业任务：`01_当前任务.md` 与 `QUESTION_WORK_BINDING_I4.json` 已从管理包原样物化，状态仍为 `SIGNED_BY_MANAGEMENT / NOT_YET_DISPATCHED`
-- Workmap Binding：候选为 `PENDING_MATERIALIZATION_AND_INTAKE`；尚未 `ADOPTED`
+- Workmap Binding：候选为 `PENDING_MATERIALIZATION_AND_INTAKE`；snapshot 已形成，独立 reader 判定 `READABLE_WITH_BLOCKERS`，尚未 `ADOPTED`
 - 旧 I4 试跑：仅作 Git 历史，不计入本 run 成果、Gate、聊天或在途
 
 ## 已核验事实
@@ -25,21 +25,25 @@
 - 回交后 Gate：`ROLE_RETURN_QUESTION_WORK_REF_MISSING`；原答复中的 `ROLE_RETURN` 未用 `question_work_ref` 定位同答复内的 `QUESTION_WORK_RETURN`
 - 管理结论：G1 Pass；G2 限定范围 Pass；G3 分区接收并要求承重事实定向核查；I4 Active / G4 Not Passed
 - 管理落地包：`20156` 字节，实际 SHA-256 `3c5a921c3ff321be804e1a027894bb1c4fc8679ce8527f490ad0c441c1fd6f54`，与管理声明一致；包内 8 项清单哈希全部一致
+- 管理包物化与远端读回：`e1838ebb2753a7f2e5b1efa94e9a7b62c754561a`；地图、任务、管理决定、Binding Candidate 的 blob／SHA 与包清单一致
+- Workmap snapshot：`5ac344eaa7dc4e6a68455d5aed2de4cc0b893e5df6366ab848a34f4c7399e348`；reader fingerprint：`34a8fb16006c812818a4e098dbac4c9cbbdd9412b70ca2f9521dcd6c17f7bab2`
+- 独立读图：`READABLE_WITH_BLOCKERS`；地图目标、阶段、证据边界、剩余、管理条件和下一动作可理解，但任务缺 `task_id:`、Candidate 尚未采用，README／地图下一步存在旧状态残留
 
 ## 当前任务与下一动作
 
-1. 提交管理包原件，执行远端回读并核包内清单哈希。
-2. 对 exact materialization commit 运行 R0001 `after-return`、Workmap snapshot/check 与 Question Work 机械检查，保留全部真实错误。
-3. 对确切 Return/Binding/路由缺项只走现行有限修复，不改写已成业务判断或重做 M-START。
-4. 通过 intake 后，以真实 commit 与 receipt 把 `WORKMAP_BINDING` 改为 `ADOPTED`。
-5. 只有采用检查通过，才向 `BI01-RESTART-01-I4-EXECUTION` 派发首个专业后继轮次。
+1. 保存独立 reader 报告和基于 exact snapshot 的 Workmap intake；dispatch 状态保持未获准。
+2. 对确切 Return、`task_id`、mode、Binding carrier 和真实管理聊天路由缺项，只向原管理角色请求窄补交；不改写已成业务判断或重做 M-START。
+3. 有权补交物化并远端读回后，重新运行 R0001 `after-return`、Workmap snapshot/check/dispatch 与 Overlay12 prepare/verify。
+4. 只有真实 Binding、intake、reader 和现场发送观察全部通过，才把 `WORKMAP_BINDING` 改为 `ADOPTED` 并建立首个专业后继轮次。
+5. 只有预发送 R 轮已在 GitHub 可核验且所有 Gate 通过，才向新的专业聊天派发；当前没有 R0002，也没有专业发送。
 
 ## 阻断与恢复点
 
-- 当前无全局阻断；此前的跨机共享目录阻断已由 Owner 提供并验证的映射解除。
+- 此前的跨机共享目录阻断已由 Owner 提供并验证的映射解除；管理包收集已闭合，不再是阻断。
 - R0001 已于 `2026-10-16T00:24:06.362+08:00` 取得 `COMMITTED` 证据；提示 SHA-256 为 `ebb3b58993b4fe150056c990b79fbe0295f09d6d9bda13a14be3f5d67be03308`，禁止重发。
-- 管理答复声明提供 SHA-256 为 `3c5a921c3ff321be804e1a027894bb1c4fc8679ce8527f490ad0c441c1fd6f54` 的落地包；手机端唯一附件已下载到 `/sdcard/Download/BI01_RESTART_01_M_START_R0001_package.zip`。
+- 管理答复声明提供 SHA-256 为 `3c5a921c3ff321be804e1a027894bb1c4fc8679ce8527f490ad0c441c1fd6f54` 的落地包；手机端唯一附件已通过正式 MCP 拉取并核验，手机源文件保持不变。
 - Owner 已确认 MCP server `K:\workspace\observe-iterate-share` ↔ Codex `/m3varK/workspace/observe-iterate-share`；一次正式拉取成功，未重试，手机源文件保留不变。
 - `after-return` Gate 已在发布提交 `aa010794ed6a6780ca7fdbed19dd53dd1bd552c7` 上真实运行并失败；该结构缺项与附件交付债务合并为同一次定向管理补交，不从散文猜写字段。
 - 管理包中的 `ROLE_RETURN` 仍缺 `question_work_ref`，证明该问题属于原管理交付而非剪贴板捕获失真；不得由操作端静默补写。
-- 恢复点：管理包及其清单已独立核验，地图/任务/决定/Binding 已原样物化；下一步从该 exact commit 做 remote readback 和机械 Gate。不得重发 M-START，也不得先派专业执行。
+- 当前任务还缺 `task_id:`；Binding 的 mode 不在锁定配置中，且 `answer_ref` 不能从独立 JSON carrier 解析。当前机制也拒绝以 BOOTSTRAP 发管理 `DELIVERY_REPAIR`，因此没有合法补交载荷可发送。
+- 恢复点：`e1838ebb2753a7f2e5b1efa94e9a7b62c754561a` 的管理包原件、远端读回、snapshot 和 reader 已完成；从 `reviews/MANAGEMENT_DELIVERY_REPAIR_REQUIRED_R0001.md` 的窄修复条件恢复。不得重发 M-START、手写修复消息、冒称 ADOPTED 或先派专业执行。

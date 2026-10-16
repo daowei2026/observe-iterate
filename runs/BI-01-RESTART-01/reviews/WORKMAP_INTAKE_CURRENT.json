@@ -1,0 +1,64 @@
+{
+  "schema": "workmap-intake/v1",
+  "intakes": {
+    "bi01": {
+      "snapshot": "5ac344eaa7dc4e6a68455d5aed2de4cc0b893e5df6366ab848a34f4c7399e348",
+      "observed_commit": "e1838ebb2753a7f2e5b1efa94e9a7b62c754561a",
+      "manager": {
+        "role": "management",
+        "context": "BI-01-RESTART-01 R0001 M-START 管理 Pro；管理聊天 BI01-R01-管理；管理原文、地图、任务与决定由哈希匹配落地包物化。"
+      },
+      "decision_report": {
+        "path": "runs/BI-01-RESTART-01/reviews/MANAGEMENT_START_R0001.md",
+        "blob": "3a10810799d2f55cb62c7c29fae19835d024a428"
+      },
+      "effort": {
+        "known_pro_turns": 1,
+        "coverage": "一次真实管理 Pro M-START；尚无专业执行 Pro 调用。",
+        "source_note": "R0001 完整回答、发送证据和管理包收取记录已发布；手机操作 episode、提交和独立 Codex 读图不计 Pro 轮次。"
+      },
+      "reader_check": {
+        "status": "RECORDED",
+        "context": "/root/bi01_workmap_reader_r0001 零继承独立只读上下文",
+        "independent_of_map_builder": true,
+        "input_commit": "e1838ebb2753a7f2e5b1efa94e9a7b62c754561a",
+        "input_snapshot": "34a8fb16006c812818a4e098dbac4c9cbbdd9412b70ca2f9521dcd6c17f7bab2",
+        "report": {
+          "path": "runs/BI-01-RESTART-01/reviews/WORKMAP_READER_R0001.md",
+          "blob": "75ffaab1295b00fbf8c19bb705433492a4729a90"
+        },
+        "result": "READABLE_WITH_BLOCKERS",
+        "qualification": "仅证明新接收者能够理解 exact map/task；不证明业务正确、G3/G4 通过、Binding 已采用或任务可派发。"
+      },
+      "dispatch": {
+        "decision": "ISSUED",
+        "task_id": null,
+        "task_path": "runs/BI-01-RESTART-01/01_当前任务.md",
+        "task_blob": "076a51da41e5640687a60cbed2986cc73da02819",
+        "kind": "NEW_STAGE",
+        "requires_reader_check": true,
+        "method_paths": [
+          "professional/source/00_AGENT_CHARTER_AND_STAGE_CONTRACT.md",
+          "professional/source/01_I1_I3_PROFESSIONAL_CONTRACT.md",
+          "professional/source/02_I4_OBSERVATION_AND_CHALLENGE.md",
+          "professional/source/03_STAGE_HANDOFF_AND_READINESS.md",
+          "professional/source/04_PRO_WORKER_CODEX_HANDOFF.md",
+          "professional/source/05_ROLE_GATE_AND_HANDOFF_CONTRACT.md"
+        ],
+        "qualification": "WITHHELD_PENDING_MACHINE_REPAIR",
+        "blockers": [
+          "ROLE_RETURN_QUESTION_WORK_REF_MISSING",
+          "TASK_ID_LINE_MISSING",
+          "BINDING_STAGE_OR_MODE_MISMATCH",
+          "BINDING_ANSWER_REF_CARRIER_UNRESOLVABLE",
+          "MANAGEMENT_REPAIR_ROUTE_NOT_PREPARABLE"
+        ],
+        "issue_report": {
+          "path": "runs/BI-01-RESTART-01/reviews/MANAGEMENT_DELIVERY_REPAIR_REQUIRED_R0001.md",
+          "blob": "79bdf046e46d2d02a8f991ce1230039725e12a1a"
+        }
+      },
+      "validation_claims": []
+    }
+  }
+}
