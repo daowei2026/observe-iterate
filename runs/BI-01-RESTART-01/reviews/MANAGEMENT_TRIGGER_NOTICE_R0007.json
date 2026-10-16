@@ -1,0 +1,36 @@
+{
+  "schema": "management-notice/v1",
+  "management_required": true,
+  "events": [
+    {
+      "id": "BI01-R0007-I5-OWNER-PACK-RESULT",
+      "kind": "REVIEW_RESULT",
+      "trigger_id": "BI01-I5-OWNER-PACK-RESULT",
+      "obligation_id": "BI01-I5-GATE-REVIEW",
+      "cycle_id": "BI01-RESTART-01-I5-GATE-01",
+      "evidence": "github:daowei2026/observe-iterate@8d443347d7a097eec4eee00391bdac0f90363372:runs/BI-01-RESTART-01/artifacts/I5_OWNER_PACK/OWNER_PACK.md::#trigger-result"
+    },
+    {
+      "id": "BI01-R0007-I5-EFFORT-REVIEW",
+      "kind": "EFFORT_REVIEW",
+      "trigger_id": "BI01-I5-EFFORT-REVIEW",
+      "obligation_id": "BI01-I5-GATE-REVIEW",
+      "cycle_id": "BI01-RESTART-01-I5-GATE-01",
+      "evidence": "github:daowei2026/observe-iterate@8d443347d7a097eec4eee00391bdac0f90363372:runs/BI-01-RESTART-01/artifacts/I5_OWNER_PACK/OWNER_PACK.md::#trigger-result"
+    }
+  ],
+  "deduplication": {
+    "same_obligation": true,
+    "same_cycle": true,
+    "management_invocations_required": 1
+  },
+  "not_triggered": [
+    "BI01-I5-EVIDENCE-CONFLICT",
+    "BI01-OWNER-METHOD-CHANGE-R0006"
+  ],
+  "recipient": "chatgpt-project:细节叙事生成_金标/chat:BI01-R01-管理",
+  "dispatched": false,
+  "stop_unaffected_work": false,
+  "instruction": "沿已绑定管理路线和现行 Overlay08/12 组装一个新的 M-REASSESS 管理调用；由原管理角色接收 Owner Pack 并作 G5 实质判断，必要时定向返修，G5 可接收时明确 Owner 两项问题的实际交付和后续 I6 等待边界。",
+  "limits": "信号性质来自原角色 Return 和已签 I5 Binding；本 notice 不评价业务、不签 G5、不替 Owner 决定、不改地图、不代表实际发送。"
+}
