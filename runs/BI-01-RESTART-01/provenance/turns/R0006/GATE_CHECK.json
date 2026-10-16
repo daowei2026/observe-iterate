@@ -47,12 +47,23 @@
     "report": "runs/BI-01-RESTART-01/reviews/WORKMAP_READER_R0006.md"
   },
   "workmap_intake": {
-    "state": "PENDING_PROJECTION",
-    "reason": "fresh reader result has been obtained; intake must next bind this exact snapshot, manager decision, task blob and report blob before dispatch checks"
+    "state": "COMPLETE",
+    "checked_ref": "1c7e04abfd44bbc3f2d96a17455a9f96fc0a3299",
+    "base_ref": "c9f41334a7d1c5422d45acb76b9d9df752cf7a71",
+    "ok": true,
+    "errors": [],
+    "reader_qualification": "RECORDED",
+    "snapshot_fingerprint": "2c8167c38bf6fe1bb96cd13ccda13e4418f9980ff498b71637078d6c291aef7c"
   },
-  "phone_answer_state": "remote_complete_phone_grace",
-  "collection_state": "remote_verified_pending_intake",
-  "management_delivery_accepted": false,
+  "phone_answer": {
+    "state": "unavailable_after_grace",
+    "initial_observation_ref": "runs/BI-01-RESTART-01/provenance/turns/R0006/PHONE_ANSWER_OBSERVATION_01.json",
+    "final_observation_ref": "runs/BI-01-RESTART-01/provenance/turns/R0006/PHONE_ANSWER_GRACE_FINAL.json",
+    "remote_carrier_complete": true
+  },
+  "phone_answer_state": "unavailable_after_grace",
+  "collection_state": "remote_verified",
+  "management_delivery_accepted": true,
   "professional_continuation_sent": false,
-  "limits": "这些检查证明 R0006 远端管理回交、双 Return 和 fresh Workmap 可读性；在 Workmap intake、Candidate/pre-dispatch、新专业聊天 NOT_SENT、scheduler send-ready 真正通过之前，不接受为可派发，也不证明 G5、Owner 接受、I6、独立审查或生产资格。"
+  "limits": "这些检查接受 R0006 远端管理交付和当前 Workmap 的机械完整性；它们不证明 I5 专业派发已完成、G5、Owner 接受、I6、独立审查或生产资格。R0007 仍须独立通过 Candidate/pre-dispatch、新聊天 NOT_SENT、Workmap dispatch 和 scheduler send-ready。"
 }
