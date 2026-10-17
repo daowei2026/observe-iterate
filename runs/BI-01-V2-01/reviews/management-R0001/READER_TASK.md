@@ -7,7 +7,7 @@ professional_mode: INDEPENDENT_REVIEW
 recipient_role: review
 recipient_ref: chatgpt-project:细节叙事生成_金标/chat:new:BI01-V2-地图只读接收-01
 
-此为 R0001 管理在既有 review 职责中的一次性、只读工作安排；新上下文尚未创建、未发送、未返回。不新增常驻角色或审查系统，不授 U2/U3 全业务独立审查 PASS。真正曾参与这份候选形成的承办者不得作为独立读者，即使换聊天也不独立。
+此为 R0001 管理在既有 review 职责中签发的同一一次性、只读工作；R0002 保留其完整正确范围，更新实际被审输入、前置适用性和接收依据。新上下文尚未创建、未发送、未返回。不新增常驻角色或审查系统，不授 U2/U3 全业务独立审查 PASS。真正曾参与这份候选形成的承办者不得作为独立读者，即使换聊天也不独立。
 
 <a id="scope"></a>
 ## 1. 完整受托范围
@@ -21,17 +21,20 @@ recipient_ref: chatgpt-project:细节叙事生成_金标/chat:new:BI01-V2-地图
 <a id="target"></a>
 ## 2. 已冻结的实际输入
 
-工作输入锁 `daowei2026/observe-iterate@ff84e7e9d22d4c6d6e2633c9701404afcca1b827`：
+工作输入锁 `daowei2026/observe-iterate@f87a9a64f4f0fa3ead13b9ee7c108f87847a581a`：
 
 - `runs/BI-01-V2-01/README.md::full`；
 - `runs/BI-01-V2-01/00_长程推进地图.md::full`，七个业务锚点 goal/stage/evidence/progress/remaining/management/next；
 - `runs/BI-01-V2-01/01_当前任务.md::full`，包含 `#question-work-binding`，task_id `BI01-V2-S123-OBSERVATION-01`，task blob `442c47cc30226796a16b6f7420af9748d0d1e00e`；
-- `runs/BI-01-V2-01/reviews/management-R0001/DECISION.md::full`；
+- `runs/BI-01-V2-01/reviews/management-R0001/DECISION.md::full`，保留正确业务判断，不把其旧运行状态当当前事实；
+- `runs/BI-01-V2-01/reviews/management-R0002/DECISION.md::full`，当前前置裁定、实际后继和接收依据；
 - `runtime/config/WORKMAP_BINDING.json::full`。
 
-Owner 原文锁 `11626f64bc64ae21e52108b2e47fafbbc1023615:professional/v2/00_PURPOSE_AND_THREE_STEP_FLOW.md::full`，真实启动 `e07034fbab080df85af57da4362d5a24119a8bbe:runs/BI-01-V2-01/OWNER_START.md::full`。同一 policy lock 的 V2 04/05/06/01/02/03、ADOPTION_HANDOFF_CHECKLIST、DR14、Overlay13 和原 Workmap 工具是适用方法。读者不需要为地图可读性重做 EAW 全公式审计，也不能仅凭管理概述认为算法已被独立验过。
+Owner 原文锁 `11626f64bc64ae21e52108b2e47fafbbc1023615:professional/v2/00_PURPOSE_AND_THREE_STEP_FLOW.md::full`，真实启动 `e07034fbab080df85af57da4362d5a24119a8bbe:runs/BI-01-V2-01/OWNER_START.md::full`。同一 policy lock 的 V2 04/05/06/01/02/03、ADOPTION_HANDOFF_CHECKLIST、DR14、Overlay13 和原 Workmap 工具是适用方法；首次只读派发采用本次 R0002 的具名用途修正。读者不需要为地图可读性重做 EAW 全公式审计，也不能仅凭管理概述认为算法已被独立验过。
 
-上述输入后的 R0001 回交、读取任务及 provenance 提交不是重新定义业务。操作端在发送前确认 reader-input 仍一致；若 map/task/Owner/rules 发生实质变化，用实际有权的新 input 重新绑定，不能把旧 reader 报告冒充新输入报告。
+原 `ff84e7e9d22d4c6d6e2633c9701404afcca1b827` 输入及 `69d96209b16115ac1ce9ac9d65402be11f11c358ced9dd6d223b5b287343a8d7` 指纹仅保留为实际历史 snapshot。此前并无独立报告。本次地图更新运行事实和后继，须对上列新 commit 重新用既有工具取得 reader_fingerprint；不能复制旧指纹或说已读过本次新输入。
+
+上述输入后的回交、读取任务及 provenance 提交不是重新定义业务。操作端在发送前确认 reader-input 仍一致；若 map/task/Owner/rules 发生实质变化，用实际有权的新 input 重新绑定，不能把旧 reader 报告冒充新输入报告。
 
 <a id="focus"></a>
 ## 3. 需要实际恢复出来的业务关系
@@ -42,13 +45,15 @@ Owner 原文锁 `11626f64bc64ae21e52108b2e47fafbbc1023615:professional/v2/00_PUR
 
 同时恢复明确的排除项：不重算/替换固定数据，不等待正式 H1，不做 AI 像素看图，不重测已确认基础环境，不在观察仓建第二套图工具；必要 aidata 通用修改只在独立新分支。核是否存在“管理说排除、实际当前任务又要求”的相反正文。对正确业务字段、状态、时间、方法和消费者不能用删除来消歧。
 
+新增的前置处置只限：本受托 reader 在尚未 adopted 时产生采用所需的阅读证据；它不取得 S1—S3 业务执行权。原 Codex 线程受派 Worker 修 gate 不等于编制或独立接收了本地图；你无需把本次阅读扩成该代码的独立验收。
+
 <a id="coverage"></a>
 ## 4. 输出、完成与资格
 
-交完整只读报告到 `runs/BI-01-V2-01/reviews/independent/WORKMAP_READER_R0001_INPUT.md`，标明实际调用身份、实际输入 commit、task blob、真实阅读范围、是否真正未参与候选形成、恢复出的完整业务关系、确切歧义及其影响。没有实质歧义才可将本次狭义地图阅读 verdict 写 PASS；有歧义写 REPAIR_REQUIRED，资料或独立性不足写 INSUFFICIENT_EVIDENCE。PASS 只覆盖此次地图可理解性，不覆盖固定计算正确性、S3 完成、正式质量或 Owner 接收。
+交完整只读报告到 `runs/BI-01-V2-01/reviews/independent/WORKMAP_READER_INITIAL.md`，标明实际调用身份、实际输入 commit、task blob、真实阅读范围、是否真正未参与候选形成、恢复出的完整业务关系、确切歧义及其影响。没有实质歧义才可将本次狭义地图阅读 verdict 写 PASS；有歧义写 REPAIR_REQUIRED，资料或独立性不足写 INSUFFICIENT_EVIDENCE。PASS 只覆盖此次地图可理解性，不覆盖固定计算正确性、S3 完成、正式质量或 Owner 接收。
 
 <a id="completion"></a>
-完成指上述范围已真实阅读并报告结论，必要原文不足及未审部分如实披露，附原 ROLE_RETURN 的 review 输出和 QUESTION_WORK_RETURN；不能因 report 文件存在就称独立接收发生。不得修改候选；受本次委托可提交自己的独立报告及本轮回交。操作端按真实新 R 记录，不把这次待派任务预记为已发生 R0002。
+完成指上述范围已真实阅读并报告结论，必要原文不足及未审部分如实披露，附原 ROLE_RETURN 的 review 输出和 QUESTION_WORK_RETURN；不能因 report 文件存在就称独立接收发生。不得修改候选；受本次委托可提交自己的独立报告及本轮回交。操作端按真实新 R 记录；R0002 是已发生的管理接续，不是读者，后续待派 R 尚不预记为已发生。
 
 <a id="budget"></a>
 ## 5. 预算与不中断完整业务责任
@@ -66,13 +71,15 @@ Owner 原文锁 `11626f64bc64ae21e52108b2e47fafbbc1023615:professional/v2/00_PUR
 <a id="accept"></a>
 ## 7. 实际收取与已签采用路径
 
-完整回交运输回原操作端 `codex-thread:01a14a59-7f26-7921-b549-3e7cd9be5119`。该接收者是既有操作 Codex，不是新业务裁定角色。其合法业务依据为 R0001 管理 `DECISION.md#authority`：独立读者能完整恢复任务且无实质歧义时，允许对同一 reader-input 按既有工具机械发布 Workmap Intake 与采用，无需 Owner 再批启动；实质歧义必须走下节管理决定，不由操作端看 finding 自行判业务通过。
+完整回交运输回原操作端 `codex-thread:01a14a59-7f26-7921-b549-3e7cd9be5119`。该接收者在收取/投递时是既有操作 Codex，不是新业务裁定角色；其受派修 gate 的 Worker 容量限于 R0002 明确工单。当前合法业务依据为 `f87a9a64f4f0fa3ead13b9ee7c108f87847a581a:runs/BI-01-V2-01/reviews/management-R0002/DECISION.md#adoption`：独立读者能完整恢复任务且无实质歧义时，允许对同一 reader-input 按既有工具机械发布 Workmap Intake 与采用，无需 Owner 再批启动；实质歧义必须走下节管理决定，不由操作端看 finding 自行判业务通过。
 
-操作端需要从真实 local Git 执行原 `runtime/overlay/tools/workmap_gate.py snapshot`，记录观察输入及 fingerprint。提交真实 reader 报告后，以实际最新 Git 中相同 map/task/Owner/rules 的输入核 `reader_fingerprint`；reader-input 未变可复用该真实报告，不因它自己的报告加入 result tree 而重复开读者。Intake 的 manager decision_report 绑定实际 R0001 决定 blob，reader 绑定真实 report/input_commit/input_snapshot；不得填假 reader、snapshot 或 validation_claim。
+本任务派发前由 R0002 已受派 Worker 修通采用前只读 gate，保留原样载荷、来源、角色和实际非重复发送检查，不提前填 ADOPTED/Intake/reader PASS，不使用采用后专业 Workmap dispatch 反向检查首次 reader。具体工程在 R0002 工单，读者不施工、不自签该代码正确。
 
-Intake 写在原配置的 `runs/BI-01-V2-01/reviews/WORKMAP_INTAKE_CURRENT.json`，新任务按首次签发而非 ROUTINE_RESULT 处理；原始 Owner GO、policy、专业 Binding 与完整 task_payload 原样保留。实物/前置校验满足后，再机械将 config 标 ADOPTED，并使用原 check/dispatch、真实发送端 NOT_SENT 和任务载荷身份核验。`provenance/turns` 不纳入业务 watch 根。这个过程不启动 U2/U3 重算，也不改变专业完整任务。
+操作端需要从真实 local Git 执行原 `runtime/overlay/tools/workmap_gate.py snapshot`，记录上列观察输入及新 fingerprint。提交真实 reader 报告后，以实际最新 Git 中相同 map/task/Owner/rules 的输入核 `reader_fingerprint`；reader-input 未变可复用该真实报告，不因它自己的报告加入 result tree 而重复开读者。Intake 的 manager decision_report 绑定实际 R0002 决定及 blob，reader 绑定真实 report/input_commit/input_snapshot；不得填假 reader、snapshot 或 validation_claim。
 
-采用时的 base 为首次真实管理开始前的 `2e817e2e8408b714185be55aa8f443e389b92ddf`：当时已有模板 config，但 map/task/intake 尚不存在。原工具若不能把这个真实首建状态作为合法比较基础，准确报告机械缺口回管理，不随意拿 current 充当旧已接收 base，也不自己改工具或关闭 gate。读取、记录、发布和 actual send 分别报告。
+Intake 写在原配置的 `runs/BI-01-V2-01/reviews/WORKMAP_INTAKE_CURRENT.json`，专业新任务按首次签发而非 ROUTINE_RESULT 处理；原始 Owner GO、policy、专业 Binding 与完整 task_payload 原样保留。实物/前置校验满足后，再机械将 config 标 ADOPTED，并使用原 check/dispatch、真实发送端 NOT_SENT 和任务载荷身份核验。`provenance/turns` 不纳入业务 watch 根。这个过程不启动 U2/U3 重算，也不改变专业完整任务。
+
+采用时的 base 为首次真实管理开始前的 `2e817e2e8408b714185be55aa8f443e389b92ddf`：当时已有模板 config，但 map/task/intake 尚不存在。读者不改工具；已受派 Worker 按 R0002 工单核查、修通同一首建合同的必要直接消费者，不再逐错误申请；实质新权限/业务冲突仍回管理。不随意拿 current 充当旧已接收 base，不关闭普通专业 gate。读取、记录、发布和 actual send 分别报告。
 
 <a id="decide"></a>
 ## 8. 歧义、前提冲突或权限问题
@@ -80,56 +87,4 @@ Intake 写在原配置的 `runs/BI-01-V2-01/reviews/WORKMAP_INTAKE_CURRENT.json`
 交 `chatgpt-project:细节叙事生成_金标/chat:BI01-V2-管理`，M-REASSESS。带 exact input、具体歧义、对哪个工作/消费者的实际影响、你的真实阅读结论及未完。管理负责修 map/task/Binding 和重新采用，不让读者代写候选；不把局部问题升级成全部业务或全历史审计。没有实质问题就不发明新限制。
 
 <a id="parent"></a>
-本次是新 run 首张地图的首次独立只读接收，没有旧 run 可复用的 reader 资格。parent 为 NOT_APPLICABLE_NEW_CASE；这是受托事项关系，不取消 BI-01 完整管理和专业责任。
-
-<a id="question-work-binding"></a>
-## 9. QUESTION_WORK_BINDING
-
-本绑定引用 `7fa3cf022025249490d4d7ebba0bdc975ff87cee` 的受托正文；被审 map/task 输入仍为 `ff84e7e9d22d4c6d6e2633c9701404afcca1b827`。没有声称已发生独立阅读。
-
-```json
-{
-  "schema":"question-work/v2",
-  "kind":"BINDING",
-  "work_id":"BI-01",
-  "goal_ref":{"repo":"daowei2026/observe-iterate","commit":"11626f64bc64ae21e52108b2e47fafbbc1023615","path":"professional/v2/00_PURPOSE_AND_THREE_STEP_FLOW.md","selector":"full"},
-  "plan_ref":{"repo":"daowei2026/observe-iterate","commit":"444179c49ae2f926c287d3bf75b43e1eea44fcfc","path":"runs/BI-01-V2-01/reviews/management-R0001/DECISION.md","selector":"#authority"},
-  "full_scope_ref":{"repo":"daowei2026/observe-iterate","commit":"7fa3cf022025249490d4d7ebba0bdc975ff87cee","path":"runs/BI-01-V2-01/reviews/management-R0001/READER_TASK.md","selector":"full"},
-  "batch_result":"完成 exact-input 首次管理地图和完整任务的独立只读可理解性接收，交真实阅读报告和明确狭义资格；不编修候选、不审行情像素、不自签 U2/U3 全业务通过。",
-  "question_ids":["AUDIT"],
-  "question_definitions":[],
-  "professional_mode":"INDEPENDENT_REVIEW",
-  "focus_ref":{"repo":"daowei2026/observe-iterate","commit":"7fa3cf022025249490d4d7ebba0bdc975ff87cee","path":"runs/BI-01-V2-01/reviews/management-R0001/READER_TASK.md","selector":"#focus"},
-  "coverage_ref":{"repo":"daowei2026/observe-iterate","commit":"7fa3cf022025249490d4d7ebba0bdc975ff87cee","path":"runs/BI-01-V2-01/reviews/management-R0001/READER_TASK.md","selector":"#coverage"},
-  "source_reads":[
-    {"source":{"repo":"daowei2026/observe-iterate","commit":"11626f64bc64ae21e52108b2e47fafbbc1023615","path":"professional/v2/00_PURPOSE_AND_THREE_STEP_FLOW.md","selector":"full"},"requirement":"MODE_FULL","purpose":"从 Owner 原完整目标校验，而不是仅核作者概述自洽","reuse_evidence":null},
-    {"source":{"repo":"daowei2026/observe-iterate","commit":"e07034fbab080df85af57da4362d5a24119a8bbe","path":"runs/BI-01-V2-01/OWNER_START.md","selector":"full"},"requirement":"BOUNDARY","purpose":"真实新 run GO 和原权限，不继承旧 run","reuse_evidence":null},
-    {"source":{"repo":"daowei2026/observe-iterate","commit":"ff84e7e9d22d4c6d6e2633c9701404afcca1b827","path":"runs/BI-01-V2-01/README.md","selector":"full"},"requirement":"FOCUS_FULL","purpose":"总体入口、当前状态与实际采用关系","reuse_evidence":null},
-    {"source":{"repo":"daowei2026/observe-iterate","commit":"ff84e7e9d22d4c6d6e2633c9701404afcca1b827","path":"runs/BI-01-V2-01/00_长程推进地图.md","selector":"full"},"requirement":"FOCUS_FULL","purpose":"被审完整地图、重要未完和消费者","reuse_evidence":null},
-    {"source":{"repo":"daowei2026/observe-iterate","commit":"ff84e7e9d22d4c6d6e2633c9701404afcca1b827","path":"runs/BI-01-V2-01/01_当前任务.md","selector":"full"},"requirement":"FOCUS_FULL","purpose":"被审完整 S1-S3 任务及已附 Binding 的实际一致性","reuse_evidence":null},
-    {"source":{"repo":"daowei2026/observe-iterate","commit":"ff84e7e9d22d4c6d6e2633c9701404afcca1b827","path":"runs/BI-01-V2-01/reviews/management-R0001/DECISION.md","selector":"full"},"requirement":"FOCUS_FULL","purpose":"采用/撤销、两证据层、四束、资格、写面、预算和条件性采用的既有决定","reuse_evidence":null},
-    {"source":{"repo":"daowei2026/observe-iterate","commit":"ff84e7e9d22d4c6d6e2633c9701404afcca1b827","path":"runtime/config/WORKMAP_BINDING.json","selector":"full"},"requirement":"FOCUS_FULL","purpose":"真实路径/锚点/输入与尚未 ADOPTED 的事实","reuse_evidence":null},
-    {"source":{"repo":"daowei2026/observe-iterate","commit":"11626f64bc64ae21e52108b2e47fafbbc1023615","path":"professional/v2/04_BI01_BUSINESS_BASELINE.md","selector":"full"},"requirement":"BOUNDARY","purpose":"旧业务知识与旧运行状态不能混同","reuse_evidence":null},
-    {"source":{"repo":"daowei2026/observe-iterate","commit":"11626f64bc64ae21e52108b2e47fafbbc1023615","path":"professional/v2/05_BI01_FIXED_INPUT_DATA.md","selector":"full"},"requirement":"BOUNDARY","purpose":"固定输入/身份差异/范围，不重复审算法","reuse_evidence":null},
-    {"source":{"repo":"daowei2026/observe-iterate","commit":"11626f64bc64ae21e52108b2e47fafbbc1023615","path":"professional/v2/06_U2_U3_DESIGN_SOURCE_MAP.md","selector":"full"},"requirement":"BOUNDARY","purpose":"业务原文与方法入口是否明确到可取正文","reuse_evidence":null},
-    {"source":{"repo":"daowei2026/observe-iterate","commit":"11626f64bc64ae21e52108b2e47fafbbc1023615","path":"professional/v2/01_AIDATA_CHART_AND_DATA.md","selector":"full"},"requirement":"BOUNDARY","purpose":"图数同源、AI不看像素和必要工具修改新分支","reuse_evidence":null},
-    {"source":{"repo":"daowei2026/observe-iterate","commit":"11626f64bc64ae21e52108b2e47fafbbc1023615","path":"professional/v2/02_OBSERVATION_IDEAS_AND_VALIDATION.md","selector":"full"},"requirement":"BOUNDARY","purpose":"S3 真实业务认识的完整终点而非首图停点","reuse_evidence":null},
-    {"source":{"repo":"daowei2026/observe-iterate","commit":"11626f64bc64ae21e52108b2e47fafbbc1023615","path":"professional/v2/03_EXECUTION_HANDOFF.md","selector":"full"},"requirement":"BOUNDARY","purpose":"专业、Worker、管理和操作的正确分界","reuse_evidence":null},
-    {"source":{"repo":"daowei2026/observe-iterate","commit":"11626f64bc64ae21e52108b2e47fafbbc1023615","path":"runtime/operations/ADOPTION_HANDOFF_CHECKLIST.md","selector":"full"},"requirement":"MODE_FULL","purpose":"首次独立地图读取与实际 Workmap 采用，禁止自签或由 status 替代","reuse_evidence":null},
-    {"source":{"repo":"daowei2026/observe-iterate","commit":"11626f64bc64ae21e52108b2e47fafbbc1023615","path":"runtime/dual_route_execution/DR14_QUESTION_WORK_CONTRACT.md","selector":"full"},"requirement":"BOUNDARY","purpose":"当前受托原文、Return 和合法续作","reuse_evidence":null},
-    {"source":{"repo":"daowei2026/observe-iterate","commit":"11626f64bc64ae21e52108b2e47fafbbc1023615","path":"runtime/overlay/13_角色回交与主控接续协议.md","selector":"full"},"requirement":"BOUNDARY","purpose":"真实独立身份、狭义 review 输出与回交","reuse_evidence":null}
-  ],
-  "deliverables_ref":{"repo":"daowei2026/observe-iterate","commit":"7fa3cf022025249490d4d7ebba0bdc975ff87cee","path":"runs/BI-01-V2-01/reviews/management-R0001/READER_TASK.md","selector":"#coverage"},
-  "completion_ref":{"repo":"daowei2026/observe-iterate","commit":"7fa3cf022025249490d4d7ebba0bdc975ff87cee","path":"runs/BI-01-V2-01/reviews/management-R0001/READER_TASK.md","selector":"#completion"},
-  "budget_ref":{"repo":"daowei2026/observe-iterate","commit":"7fa3cf022025249490d4d7ebba0bdc975ff87cee","path":"runs/BI-01-V2-01/reviews/management-R0001/READER_TASK.md","selector":"#budget"},
-  "parent":{"status":"NOT_APPLICABLE_NEW_CASE","ref":null,"reason_ref":{"repo":"daowei2026/observe-iterate","commit":"7fa3cf022025249490d4d7ebba0bdc975ff87cee","path":"runs/BI-01-V2-01/reviews/management-R0001/READER_TASK.md","selector":"#parent"}},
-  "routes":{
-    "same_work":{"recipient_role":"review","recipient_ref":"chatgpt-project:细节叙事生成_金标/chat:new:BI01-V2-地图只读接收-01","instructions_ref":{"repo":"daowei2026/observe-iterate","commit":"7fa3cf022025249490d4d7ebba0bdc975ff87cee","path":"runs/BI-01-V2-01/reviews/management-R0001/READER_TASK.md","selector":"#same-work"}},
-    "accept":{"recipient_role":"receiver","recipient_ref":"codex-thread:01a14a59-7f26-7921-b549-3e7cd9be5119","instructions_ref":{"repo":"daowei2026/observe-iterate","commit":"7fa3cf022025249490d4d7ebba0bdc975ff87cee","path":"runs/BI-01-V2-01/reviews/management-R0001/READER_TASK.md","selector":"#accept"}},
-    "decide":{"recipient_role":"management","recipient_ref":"chatgpt-project:细节叙事生成_金标/chat:BI01-V2-管理","instructions_ref":{"repo":"daowei2026/observe-iterate","commit":"7fa3cf022025249490d4d7ebba0bdc975ff87cee","path":"runs/BI-01-V2-01/reviews/management-R0001/READER_TASK.md","selector":"#decide"}},
-    "return_repair":{"recipient_role":"review","recipient_ref":"chatgpt-project:细节叙事生成_金标/chat:new:BI01-V2-地图只读接收-01","instructions_ref":{"repo":"daowei2026/observe-iterate","commit":"7fa3cf022025249490d4d7ebba0bdc975ff87cee","path":"runs/BI-01-V2-01/reviews/management-R0001/READER_TASK.md","selector":"#same-work"}}
-  },
-  "triggers":[],
-  "explicit_no_trigger_reason_ref":{"repo":"daowei2026/observe-iterate","commit":"7fa3cf022025249490d4d7ebba0bdc975ff87cee","path":"runs/BI-01-V2-01/reviews/management-R0001/READER_TASK.md","selector":"#no-extra-trigger"}
-}
-```
+本次是新 run 首张地图的首次独立只读接收，没有旧 run 可复用的 reader 资格；R0002 没有取代或完成读者。parent 为 NOT_APPLICABLE_NEW_CASE；这是受托事项关系，不取消 BI-01 完整管理和专业责任。
