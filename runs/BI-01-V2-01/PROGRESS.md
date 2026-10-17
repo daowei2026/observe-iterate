@@ -208,3 +208,10 @@
 - frame20:23:26.136Z、观察完成20:23:29.271Z，准确原Project、本轮invocation/token/role匹配，仍正在思考/STOP，无正文/完成尾部/错误/大加载圈。只读一次，其他动作0；原思考时钟保持，下一检查20:33:29.271Z（北京时间04:33:29），须先续20:31:58Z到期的共享准入。
 - 管理已签决定/定位工单已执行真实机械修补，但完整R5原答及两Return尚待，不能猜后继Return或提前记R5有效完成。实际Intake尚未登记。
 - 修正首图8dd882...原ZIP149成员（146CSV及VIEW/SOURCE_BINDING/导出manifest）已逐字节展开在artifacts/worker-R0004/readable_views/MAIN_ASOF_1__8dd8824509375c57，供原执行Pro实际读取，ZIP及逐文件hash保留，没有重算/编码变换。当前图数技术输入已备，等真实管理回交/Intake后直接专业续发，未等320视图全部完成。
+
+## 原 aidata Worker 本单技术完成，完整图数已收齐待专业消费
+
+- 原既有Codex Worker有限turn已真实完成并空闲（未接旧Goal/未启动守护/未操作手机）；本单技术回交报告320视图、33,944 CSV、全部320包及51请求真实Bokeh会话通过，43回归通过，技术未完0。其余269视图为实际本地consumer结构化核验+HTTP，不冒称320均单独Bokeh会话或AI看图像素。
+- root已从原PUBLICATION_FILE_MANIFEST逐项核683文件/85,312,617字节及SHA256，核全部323 ZIP CRC与路径安全；原始完整回交发布在artifacts/worker-R0004/final/，README式入口是final/READING_GUIDE.md。历史根目录144/146包与原始首交不覆盖；最终资料按独立目录保留原字节。
+- aidata代码e59fd90在本机独立branch、tracked干净，main仍9ff7ce4，未推该源码分支远端；原两份patch和模块hash随实物可核，不能称远端aidata commit已可读取。未重算固定两包，B外层差异/成员一致资格和N/02单位限制继续分账。
+- 本次是已签原工单的技术图数输入，不代签S3/管理/Owner验收。实际R5完整回交ba4378c已原样收齐、schema/原派发关联/锚点/after-return均核通过，有效结果累计5；按其原same_work计划办理真实Intake，再把实际新到图数交原执行Pro连续分析，不以320技术节点或当前管理轮收工。

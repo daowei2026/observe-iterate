@@ -15,6 +15,12 @@
 - [首次144 CSV包](chart_data_packets/MAIN_ASOF_1.zip)，hash 26bc0ef801e4c7da673b9fdc4805f06c632c173007c583a030b0ed8a01f38e61，首次发布b7c8780；FIRST_DELIVERY.md为当时原始回交。
 - [新增原方向层的146 CSV中间包](current_versions/MAIN_ASOF_1__ce68bae86a128a04.zip)，hash ce68bae86a128a046aa9e33b7b1cb87954792f0ade5fad3c8ea160c36ac660f5，发布91b0083。
 
-## 未完与后继
+## 全工单技术回交已到（20:31Z）
+
+原Worker已完成实际有限turn；完整原件见 [final/WORKER_RETURN.md](final/WORKER_RETURN.md)、[读取指引](final/READING_GUIDE.md)、[全部当前视图索引](final/CURRENT_VIEW_VERSION_INDEX.csv)、[逐图技术汇总](final/TECHNICAL_VALIDATION_SUMMARY.json)。683个Worker清单原文件及全部同图包原字节保留在final/，根目录的144/146历史快照继续保留。root已逐文件核hash/bytes并核所有323个ZIP的CRC与路径安全；没有替Worker重复图形或业务核验。
+
+Worker实际报告320视图、33,944 CSV、51请求真实Bokeh会话和43回归通过，技术未完0；本机aidata e59fd90及原patch/模块hash已交，未推该源码分支远端。已打开的旧会话应重新打开，以匹配当前代码及逐图验证时间。S3、来源资格和管理采用仍由原Pro完成。
+
+## 分批交付时未完记录（历史）
 
 本页是当前首图分批技术交付。Worker报告43项回归通过、原main仍9ff7ce4；全320视图和51请求真实会话正在以validation revision2重新核验，旧通过计数不沿用。图URL在施工期间可能继续接入修正，消费时须核当时当前版本索引与同图包。全工单最终技术回交、执行Pro的图数消费和S3业务认识仍待实际完成，完整U2/U3目标继续。

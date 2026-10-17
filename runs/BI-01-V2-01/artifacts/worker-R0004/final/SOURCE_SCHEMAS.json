@@ -1,0 +1,1354 @@
+{
+  "A:baseline_U2_C0_N_C1/C0/01_source_confirmation_groups.csv": {
+    "columns": [
+      "symbol",
+      "ref_group_id",
+      "source_event_ts",
+      "source_firing_uti",
+      "source_confirmation_uti",
+      "source_confirmation_price",
+      "child_count",
+      "value1_count",
+      "value2_count",
+      "child_turn_ids",
+      "declared_complete_source_group",
+      "source_group_identity_status",
+      "method"
+    ],
+    "first_rows": [
+      {
+        "symbol": "rb",
+        "ref_group_id": "refonly-49749fda083487cd88",
+        "source_event_ts": "2021-01-04 15:00:00",
+        "source_firing_uti": "72030599",
+        "source_confirmation_uti": "72026999",
+        "source_confirmation_price": "4378.0",
+        "child_count": "1",
+        "value1_count": "1",
+        "value2_count": "0",
+        "child_turn_ids": "refonly-4731452ce1bc49370a",
+        "declared_complete_source_group": "FROM_ORIGINAL_EXPORTED_EVENT_PAIR",
+        "source_group_identity_status": "REFONLY_NOT_FORMAL",
+        "method": "C0_source_confirmation_from_ScaleTurnAndZig"
+      }
+    ]
+  },
+  "A:baseline_U2_C0_N_C1/C0/02_turn_occurrences.csv": {
+    "columns": [
+      "symbol",
+      "ref_turn_id",
+      "ref_group_id",
+      "source_file",
+      "source_csv_row",
+      "source_event_ts",
+      "stage",
+      "source_channel",
+      "actual_uti",
+      "actual_ts",
+      "actual_price",
+      "confirm_uti",
+      "confirm_point_ts",
+      "confirm_price",
+      "zig_confirmed_csv_row",
+      "zig_confirm_event_ts",
+      "zig_confirm_firing_uti",
+      "zig_swing_status",
+      "zig_last_direction",
+      "turn_type",
+      "expected_direction",
+      "source_type_token",
+      "source_direction_token",
+      "direction_knownness",
+      "gain_knownness",
+      "degree_knownness",
+      "process_info_knownness",
+      "source_identity_status",
+      "knowledge_status",
+      "method"
+    ],
+    "first_rows": [
+      {
+        "symbol": "rb",
+        "ref_turn_id": "refonly-4731452ce1bc49370a",
+        "ref_group_id": "refonly-49749fda083487cd88",
+        "source_file": "rb_mid_scaleturn_value1_value2.csv",
+        "source_csv_row": "1",
+        "source_event_ts": "2021-01-04 15:00:00",
+        "stage": "first-round",
+        "source_channel": "value1",
+        "actual_uti": "72007199",
+        "actual_ts": "2021-01-04 09:30:00",
+        "actual_price": "4299.0",
+        "confirm_uti": "72026999",
+        "confirm_point_ts": "2021-01-04 14:30:00",
+        "confirm_price": "4378.0",
+        "zig_confirmed_csv_row": "1",
+        "zig_confirm_event_ts": "2021-01-04 15:00:00",
+        "zig_confirm_firing_uti": "72030599",
+        "zig_swing_status": "1.0",
+        "zig_last_direction": "0",
+        "turn_type": "InitialUndirected",
+        "expected_direction": "",
+        "source_type_token": "native.initial-undirected",
+        "source_direction_token": "native.zero",
+        "direction_knownness": "UnsupportedInitialization",
+        "gain_knownness": "UnsupportedByExport",
+        "degree_knownness": "UnsupportedByExport",
+        "process_info_knownness": "UnsupportedByExport",
+        "source_identity_status": "REFONLY_NOT_FORMAL_BOOK",
+        "knowledge_status": "EVENT_TS_ASOF_PROXY_NOT_HISTORICAL_PROVIDER_PROOF",
+        "method": "C0_source_mapping_from_NativeSource_SourceProducer"
+      }
+    ]
+  },
+  "A:baseline_U2_C0_N_C1/C0/04_segment_episodes.csv": {
+    "columns": [
+      "symbol",
+      "ref_episode_id",
+      "lifecycle",
+      "start_turn_id",
+      "end_turn_id",
+      "actual_start_uti",
+      "actual_start_ts",
+      "start_price",
+      "actual_end_uti",
+      "actual_end_ts",
+      "end_price",
+      "start_turn_known_from_proxy",
+      "completed_visible_from_proxy",
+      "source_expected_direction",
+      "end_source_group_id",
+      "business_identity_status",
+      "method"
+    ],
+    "first_rows": [
+      {
+        "symbol": "rb",
+        "ref_episode_id": "refonly-9420d385d94b618663",
+        "lifecycle": "Completed",
+        "start_turn_id": "refonly-4731452ce1bc49370a",
+        "end_turn_id": "refonly-d23075139a20dda1a0",
+        "actual_start_uti": "72007199",
+        "actual_start_ts": "2021-01-04 09:30:00",
+        "start_price": "4299.0",
+        "actual_end_uti": "72075599",
+        "actual_end_ts": "2021-01-05 21:30:00",
+        "end_price": "4412.0",
+        "start_turn_known_from_proxy": "2021-01-04 15:00:00",
+        "completed_visible_from_proxy": "2021-01-06 11:30:00",
+        "source_expected_direction": "",
+        "end_source_group_id": "refonly-1b0471c436cb8bf7e7",
+        "business_identity_status": "REFONLY_NOT_FORMAL",
+        "method": "U2M_EP_ADJACENCY_provisional"
+      }
+    ]
+  },
+  "A:baseline_U2_C0_N_C1/C0/05_completed_episode_metrics.csv": {
+    "columns": [
+      "symbol",
+      "ref_episode_id",
+      "lifecycle",
+      "observed_asof",
+      "raw_amplitude",
+      "raw_progress",
+      "path_length",
+      "path_efficiency",
+      "raw_counter_move",
+      "extreme_update_count",
+      "path_coverage_state",
+      "missing_close_bar_count",
+      "path_kline_bar_count",
+      "path_efficiency_applicability",
+      "raw_progress_knownness",
+      "counter_move_knownness",
+      "actual_start_uti",
+      "actual_end_uti",
+      "reference_completeness",
+      "business_duration_knownness",
+      "normalized_amplitude_knownness",
+      "method"
+    ],
+    "first_rows": [
+      {
+        "symbol": "rb",
+        "ref_episode_id": "refonly-9420d385d94b618663",
+        "lifecycle": "Completed",
+        "observed_asof": "2021-01-06 11:30:00",
+        "raw_amplitude": "113.0",
+        "raw_progress": "",
+        "path_length": "267.0",
+        "path_efficiency": "0.4232209737827715",
+        "raw_counter_move": "",
+        "extreme_update_count": "",
+        "path_coverage_state": "AvailableReference",
+        "missing_close_bar_count": "0",
+        "path_kline_bar_count": "21",
+        "path_efficiency_applicability": "Applicable",
+        "raw_progress_knownness": "UnsupportedDirectionOrEndpoint",
+        "counter_move_knownness": "UnsupportedDirectionOrPath",
+        "actual_start_uti": "72007199",
+        "actual_end_uti": "72075599",
+        "reference_completeness": "FULL_EPISODE_IN_FROZEN_30M_INPUT",
+        "business_duration_knownness": "WITHHELD_CALENDAR_OUT_OF_SCOPE",
+        "normalized_amplitude_knownness": "WITHHELD_NORMALIZATION_PROFILE_NOT_DECLARED",
+        "method": "U2_BC41_7.6_RAW_EXACT_PATH"
+      }
+    ]
+  },
+  "A:baseline_U2_C0_N_C1/C0/06_episode_and_working_cuts_30m.csv": {
+    "columns": [
+      "symbol",
+      "asof_event_ts_proxy",
+      "asof_close_uti",
+      "latest_known_turn_ref",
+      "known_turn_count",
+      "completed_episode_count",
+      "latest_completed_episode_ref",
+      "working_episode_ref",
+      "working_start_turn_ref",
+      "working_actual_start_uti",
+      "working_path_end_uti",
+      "source_turns_new_this_bar",
+      "working_raw_progress",
+      "working_path_efficiency",
+      "working_raw_counter_move",
+      "working_extreme_update_count",
+      "working_raw_amplitude",
+      "working_path_status",
+      "evaluation_trigger",
+      "cut_status",
+      "method"
+    ],
+    "first_rows": [
+      {
+        "symbol": "rb",
+        "asof_event_ts_proxy": "2021-01-04 09:30:00",
+        "asof_close_uti": "72007199",
+        "latest_known_turn_ref": "",
+        "known_turn_count": "0",
+        "completed_episode_count": "0",
+        "latest_completed_episode_ref": "",
+        "working_episode_ref": "",
+        "working_start_turn_ref": "",
+        "working_actual_start_uti": "",
+        "working_path_end_uti": "",
+        "source_turns_new_this_bar": "0",
+        "working_raw_progress": "",
+        "working_path_efficiency": "",
+        "working_raw_counter_move": "",
+        "working_extreme_update_count": "",
+        "working_raw_amplitude": "",
+        "working_path_status": "PendingFirstTurn",
+        "evaluation_trigger": "PathBarObserved",
+        "cut_status": "InsufficientHistory_NoTurn",
+        "method": "C0_CUT_PER_30M_BAR"
+      }
+    ]
+  },
+  "A:baseline_U2_C0_N_C1/C1/01_equal_actual_uti_candidate_facts.csv": {
+    "columns": [
+      "ref_reference_candidate",
+      "actual_uti",
+      "actual_bar_ts",
+      "common_visible_asof",
+      "member_count",
+      "member_symbols",
+      "source_turn_types",
+      "source_expected_directions",
+      "raw_complete_link_zero_lag",
+      "raw_positive_progress_count",
+      "raw_negative_progress_count",
+      "raw_zero_or_unavailable_count",
+      "formal_formation_candidate_status",
+      "formal_assessment_status",
+      "method"
+    ],
+    "first_rows": [
+      {
+        "ref_reference_candidate": "refonly-dde09a8a8ae71eaa17",
+        "actual_uti": "72007199",
+        "actual_bar_ts": "2021-01-04 09:30:00",
+        "common_visible_asof": "2021-01-04 23:00:00",
+        "member_count": "3",
+        "member_symbols": "hc|i|rb",
+        "source_turn_types": "InitialUndirected",
+        "source_expected_directions": "",
+        "raw_complete_link_zero_lag": "1",
+        "raw_positive_progress_count": "0",
+        "raw_negative_progress_count": "0",
+        "raw_zero_or_unavailable_count": "3",
+        "formal_formation_candidate_status": "NOT_ISSUED_SCOPE_MATRIX_DELTA_AND_EPOCH_NOT_EVALUATED",
+        "formal_assessment_status": "NOT_EVALUATED_F29_BC30_BC31",
+        "method": "C1_SAME_ACTUAL_UTI_SCOPE_DIAGNOSTIC_NO_FORMAL_CANDIDATE"
+      }
+    ]
+  },
+  "A:baseline_U2_C0_N_C1/C1/02_pair_input_facts.csv": {
+    "columns": [
+      "ref_reference_candidate",
+      "ref_pair_input",
+      "actual_uti",
+      "common_visible_asof",
+      "left_symbol",
+      "right_symbol",
+      "left_turn_id",
+      "right_turn_id",
+      "left_turn_type",
+      "right_turn_type",
+      "left_expected_direction",
+      "right_expected_direction",
+      "actual_lag_uti",
+      "same_type_raw",
+      "same_expected_direction_raw",
+      "left_raw_progress",
+      "right_raw_progress",
+      "left_progress_sign",
+      "right_progress_sign",
+      "formal_pair_decision",
+      "method"
+    ],
+    "first_rows": [
+      {
+        "ref_reference_candidate": "refonly-dde09a8a8ae71eaa17",
+        "ref_pair_input": "refonly-33f1a26364b387b126",
+        "actual_uti": "72007199",
+        "common_visible_asof": "2021-01-04 23:00:00",
+        "left_symbol": "hc",
+        "right_symbol": "i",
+        "left_turn_id": "refonly-82811ad8ecdc070972",
+        "right_turn_id": "refonly-853b3f5a489fbdcee6",
+        "left_turn_type": "InitialUndirected",
+        "right_turn_type": "InitialUndirected",
+        "left_expected_direction": "",
+        "right_expected_direction": "",
+        "actual_lag_uti": "0",
+        "same_type_raw": "1",
+        "same_expected_direction_raw": "1",
+        "left_raw_progress": "",
+        "right_raw_progress": "",
+        "left_progress_sign": "Unavailable",
+        "right_progress_sign": "Unavailable",
+        "formal_pair_decision": "WITHHELD_DIRECTION_TYPE_GEOMETRY_MATRIX_DELTA",
+        "method": "C1_RAW_EXACT_ZERO_LAG_FACTS"
+      }
+    ]
+  },
+  "A:baseline_U2_C0_N_C1/C1/03_eight_relation_raw_observations.csv": {
+    "columns": [
+      "ref_pair_input",
+      "ref_reference_candidate",
+      "common_visible_asof",
+      "left_symbol",
+      "right_symbol",
+      "relation_kind",
+      "raw_observation",
+      "raw_measure_detail",
+      "field_knownness",
+      "formal_relation_decision",
+      "method"
+    ],
+    "first_rows": [
+      {
+        "ref_pair_input": "refonly-33f1a26364b387b126",
+        "ref_reference_candidate": "refonly-dde09a8a8ae71eaa17",
+        "common_visible_asof": "2021-01-04 23:00:00",
+        "left_symbol": "hc",
+        "right_symbol": "i",
+        "relation_kind": "ActualTurnTemporalProximity",
+        "raw_observation": "0",
+        "raw_measure_detail": "actual_UTI_lag=0 satisfies any positive neighborhood in the same UTI coordinate",
+        "field_knownness": "AvailableRawLag_DeltaUnitUnbound",
+        "formal_relation_decision": "WITHHELD_FORMAL_DECISION",
+        "method": "U2_B_01_SECTION_6_2_PARTIAL_TYPED_REFERENCE"
+      }
+    ]
+  },
+  "A:baseline_U2_C0_N_C1/C1/04_member_post_turn_at_common_cut.csv": {
+    "columns": [
+      "ref_reference_candidate",
+      "actual_uti",
+      "shared_source_visibility_cut",
+      "symbol",
+      "ref_turn_id",
+      "turn_type",
+      "expected_direction",
+      "episode_state",
+      "start_turn_ref",
+      "endpoint_uti",
+      "endpoint_ts",
+      "raw_progress",
+      "raw_amplitude",
+      "path_efficiency",
+      "raw_counter_move",
+      "extreme_update_count",
+      "path_coverage_state",
+      "source_turn_type",
+      "quantity_status"
+    ],
+    "first_rows": [
+      {
+        "ref_reference_candidate": "refonly-dde09a8a8ae71eaa17",
+        "actual_uti": "72007199",
+        "shared_source_visibility_cut": "2021-01-04 23:00:00",
+        "symbol": "hc",
+        "ref_turn_id": "refonly-82811ad8ecdc070972",
+        "turn_type": "InitialUndirected",
+        "expected_direction": "",
+        "episode_state": "WorkingAtCommonCut",
+        "start_turn_ref": "refonly-82811ad8ecdc070972",
+        "endpoint_uti": "72044999",
+        "endpoint_ts": "2021-01-04 23:00:00",
+        "raw_progress": "",
+        "raw_amplitude": "84.0",
+        "path_efficiency": "0.42857142857142855",
+        "raw_counter_move": "",
+        "extreme_update_count": "",
+        "path_coverage_state": "AvailableReference",
+        "source_turn_type": "InitialUndirected",
+        "quantity_status": "RAW_FACT_WITHOUT_FORMAL_QUALIFICATION"
+      }
+    ]
+  },
+  "A:baseline_U2_C0_N_C1/N/01_node_behavior_cuts.csv": {
+    "columns": [
+      "symbol",
+      "asof_event_ts_proxy",
+      "asof_close_uti",
+      "ref_behavior_cut",
+      "completed_available_count",
+      "sample_adequacy",
+      "recent_window_ref",
+      "previous_window_ref",
+      "recent_members_csv_ref",
+      "previous_members_csv_ref",
+      "recent_exact_6_ids",
+      "previous_exact_6_ids",
+      "working_episode_ref",
+      "working_stage",
+      "working_prefix_progress",
+      "working_prefix_efficiency",
+      "working_prefix_counter",
+      "working_prefix_extreme_updates",
+      "working_path_knownness",
+      "cut_was_source_confirmation",
+      "reference_only_status",
+      "method"
+    ],
+    "first_rows": [
+      {
+        "symbol": "rb",
+        "asof_event_ts_proxy": "2021-01-04 09:30:00",
+        "asof_close_uti": "72007199",
+        "ref_behavior_cut": "refonly-f5ff9d6369d1cd7bc0",
+        "completed_available_count": "0",
+        "sample_adequacy": "InsufficientHistory",
+        "recent_window_ref": "",
+        "previous_window_ref": "",
+        "recent_members_csv_ref": "N/03_window_membership_changes.csv",
+        "previous_members_csv_ref": "N/03_window_membership_changes.csv",
+        "recent_exact_6_ids": "",
+        "previous_exact_6_ids": "",
+        "working_episode_ref": "",
+        "working_stage": "NoTurnYet",
+        "working_prefix_progress": "",
+        "working_prefix_efficiency": "",
+        "working_prefix_counter": "",
+        "working_prefix_extreme_updates": "",
+        "working_path_knownness": "PendingFirstTurn",
+        "cut_was_source_confirmation": "False",
+        "reference_only_status": "NOT_FORMAL_BEHAVIOR_BOOK",
+        "method": "MedianTwoWindowV1_RawAndWorking_30m_CUT"
+      }
+    ]
+  },
+  "A:baseline_U2_C0_N_C1/N/02_node_behavior_metrics.csv": {
+    "columns": [
+      "symbol",
+      "asof_event_ts_proxy",
+      "ref_behavior_cut",
+      "metric",
+      "unit_semantics",
+      "sample_adequacy",
+      "current_level_median",
+      "previous_level_median",
+      "recent_change",
+      "recent_dispersion_MAD",
+      "LOO_max_shift",
+      "LOO_causing_episode_ids",
+      "metric_knownness",
+      "metric_applicability",
+      "supporting_window_refs",
+      "method"
+    ],
+    "first_rows": [
+      {
+        "symbol": "rb",
+        "asof_event_ts_proxy": "2021-01-04 09:30:00",
+        "ref_behavior_cut": "refonly-f5ff9d6369d1cd7bc0",
+        "metric": "raw_amplitude",
+        "unit_semantics": "per_symbol_raw_quote",
+        "sample_adequacy": "InsufficientHistory",
+        "current_level_median": "",
+        "previous_level_median": "",
+        "recent_change": "",
+        "recent_dispersion_MAD": "",
+        "LOO_max_shift": "",
+        "LOO_causing_episode_ids": "",
+        "metric_knownness": "InsufficientHistory",
+        "metric_applicability": "UnavailableOrWithheld",
+        "supporting_window_refs": "",
+        "method": "MedianTwoWindowV1_N6_MAD_LOO_EXACT"
+      }
+    ]
+  },
+  "A:baseline_U2_C0_N_C1/N/03_window_membership_changes.csv": {
+    "columns": [
+      "symbol",
+      "evaluation_at",
+      "ref_behavior_cut",
+      "recent_window_ref",
+      "previous_window_ref",
+      "completed_available",
+      "membership_status",
+      "recent_six_ids",
+      "previous_six_ids",
+      "method"
+    ],
+    "first_rows": [
+      {
+        "symbol": "rb",
+        "evaluation_at": "2021-01-04 09:30:00",
+        "ref_behavior_cut": "refonly-f5ff9d6369d1cd7bc0",
+        "recent_window_ref": "",
+        "previous_window_ref": "",
+        "completed_available": "0",
+        "membership_status": "INSUFFICIENT_12",
+        "recent_six_ids": "",
+        "previous_six_ids": "",
+        "method": "N_SELECT_EXACT_6_6"
+      }
+    ]
+  },
+  "A:baseline_U2_C0_N_C1/N/04_metric_details_at_window_changes.csv": {
+    "columns": [
+      "symbol",
+      "asof_event_ts_proxy",
+      "ref_behavior_cut",
+      "metric",
+      "recent_ids",
+      "previous_ids",
+      "LOO_all_shifts_by_episode",
+      "missing_member_reasons",
+      "metric_knownness",
+      "metric_applicability",
+      "current_level_median",
+      "previous_level_median",
+      "recent_dispersion_MAD",
+      "LOO_max_shift",
+      "LOO_causing_episode_ids"
+    ],
+    "first_rows": [
+      {
+        "symbol": "rb",
+        "asof_event_ts_proxy": "2021-01-04 09:30:00",
+        "ref_behavior_cut": "refonly-f5ff9d6369d1cd7bc0",
+        "metric": "raw_amplitude",
+        "recent_ids": "",
+        "previous_ids": "",
+        "LOO_all_shifts_by_episode": "",
+        "missing_member_reasons": "",
+        "metric_knownness": "InsufficientHistory",
+        "metric_applicability": "UnavailableOrWithheld",
+        "current_level_median": "",
+        "previous_level_median": "",
+        "recent_dispersion_MAD": "",
+        "LOO_max_shift": "",
+        "LOO_causing_episode_ids": ""
+      }
+    ]
+  },
+  "A:baseline_U2_C0_N_C1/S_C2_status/C2_gate_only_NOT_CLUSTER.csv": {
+    "columns": [
+      "ref_reference_candidate",
+      "FormationBasis",
+      "Qualification",
+      "OrganizationValidity",
+      "ExternalSeparation",
+      "BC20_identity_decision",
+      "BC33_cluster_physicalization",
+      "why"
+    ],
+    "first_rows": [
+      {
+        "ref_reference_candidate": "refonly-dde09a8a8ae71eaa17",
+        "FormationBasis": "NOT_EVALUATED",
+        "Qualification": "NOT_EVALUATED",
+        "OrganizationValidity": "NOT_EVALUATED",
+        "ExternalSeparation": "NOT_EVALUATED",
+        "BC20_identity_decision": "NOT_EVALUATED",
+        "BC33_cluster_physicalization": "NOT_ISSUED",
+        "why": "REQUIRED FOUR ASSESSMENTS NOT PRODUCED; NO LIVE PUBLISHER; NO DELTA/MATRICES"
+      }
+    ]
+  },
+  "A:baseline_U2_C0_N_C1/S_C2_status/S_outside_domain_only_NOT_ASSESSMENT.csv": {
+    "columns": [
+      "ref_reference_candidate",
+      "symbol_universe_reference",
+      "candidate_members",
+      "outside_members",
+      "outside_member_count",
+      "outside_x_confirmed_comparisons_expected",
+      "scope_provenance",
+      "separation_current",
+      "persistence_K3_D4DELTA",
+      "formal_s_assessment"
+    ],
+    "first_rows": [
+      {
+        "ref_reference_candidate": "refonly-dde09a8a8ae71eaa17",
+        "symbol_universe_reference": "rb|hc|i",
+        "candidate_members": "hc|i|rb",
+        "outside_members": "",
+        "outside_member_count": "0",
+        "outside_x_confirmed_comparisons_expected": "0",
+        "scope_provenance": "USER_DATA_RESEARCH_DOMAIN_ONLY_NOT_CONFIRMED_COMPLETE_STEEL_SECTOR",
+        "separation_current": "NOT_EVALUATED",
+        "persistence_K3_D4DELTA": "NOT_EVALUATED",
+        "formal_s_assessment": "NOT_COMMITTED"
+      }
+    ]
+  },
+  "A:single_scale_U2_C1_S_C2_U3/C1/01_compatibility_method_matrix.csv": {
+    "columns": [
+      "question",
+      "left",
+      "right",
+      "decision",
+      "source_of_decision",
+      "rule"
+    ],
+    "first_rows": [
+      {
+        "question": "direction",
+        "left": "Up",
+        "right": "Up",
+        "decision": "Compatible",
+        "source_of_decision": "NEW_REFERENCE_MATRIX_NOT_MISSION_C_APPROVED",
+        "rule": "STEEL_U2_C1_SINGLE_SCALE_REFERENCE_METHOD_V0.1.0"
+      }
+    ]
+  },
+  "A:single_scale_U2_C1_S_C2_U3/C1/02_case_eight_relations.csv": {
+    "columns": [
+      "case_ref",
+      "asof",
+      "left_symbol",
+      "right_symbol",
+      "relation_kind",
+      "reference_result",
+      "evidence_role",
+      "raw_input_summary",
+      "metric_profile",
+      "formal_relation_published",
+      "reference_context"
+    ],
+    "first_rows": [
+      {
+        "case_ref": "refonly-ad8824a52552d7bffa91",
+        "asof": "2021-05-06 10:00:00",
+        "left_symbol": "hc",
+        "right_symbol": "i",
+        "relation_kind": "ActualTurnTemporalProximity",
+        "reference_result": "Supports",
+        "evidence_role": "Required",
+        "raw_input_summary": "actual_bar_gap=0;bound=2*2",
+        "metric_profile": "STEEL_U2_C1_SINGLE_SCALE_REFERENCE_METHOD_V0.1.0",
+        "formal_relation_published": "NO",
+        "reference_context": "SINGLE_SCALE_STEEL_CLOSED_RESEARCH_UNIVERSE"
+      }
+    ]
+  },
+  "A:single_scale_U2_C1_S_C2_U3/C1/03_case_formation_and_three_assessments.csv": {
+    "columns": [
+      "case_ref",
+      "asof",
+      "actual_uti",
+      "actual_ts",
+      "member_ids",
+      "members",
+      "delta_ref_bars",
+      "formation_neighborhood_bars",
+      "epoch_horizon_bars",
+      "epoch_processed_bars",
+      "epoch_close_reference",
+      "required_pair_support_count",
+      "overlap_checked",
+      "tentative_formation_basis",
+      "formation_reason",
+      "tentative_qualification",
+      "qualification_reason",
+      "tentative_validity",
+      "formal_assessments_committed",
+      "blockers"
+    ],
+    "first_rows": [
+      {
+        "case_ref": "refonly-ad8824a52552d7bffa91",
+        "asof": "2021-05-06 10:00:00",
+        "actual_uti": "75230999",
+        "actual_ts": "2021-04-30 15:00:00",
+        "member_ids": "refonly-676f80eb6fcd938ea8|refonly-52bd09357229361305|refonly-040e0263e26abbb974",
+        "members": "hc|i|rb",
+        "delta_ref_bars": "2",
+        "formation_neighborhood_bars": "4",
+        "epoch_horizon_bars": "12",
+        "epoch_processed_bars": "2",
+        "epoch_close_reference": "False",
+        "required_pair_support_count": "3",
+        "overlap_checked": "ONLY_LOCAL_THREE_MEMBER_CASE_NOT_FULL_HISTORY",
+        "tentative_formation_basis": "FormationWorking",
+        "formation_reason": "epoch_or_formation_not_yet_closed",
+        "tentative_qualification": "QualificationPending",
+        "qualification_reason": "working_maturity_or_path",
+        "tentative_validity": "ValidityPending",
+        "formal_assessments_committed": "NO",
+        "blockers": "NO_NATIVE_CALENDAR;GEOMETRY_REFERENCE_POLICY;NONTRANSITIVE_OUTSIDE_EPOCH_CATALOG_NOT_RECONSTRUCTED"
+      }
+    ]
+  },
+  "A:single_scale_U2_C1_S_C2_U3/C2/01_case_opportunity_cluster_gates_v0.csv": {
+    "columns": [
+      "case_ref",
+      "asof",
+      "three_assessment_reference",
+      "external_reference",
+      "four_gate_reference_pass",
+      "prior_cluster_domain",
+      "C2_reference_verdict",
+      "official_cluster_committed",
+      "official_h1_emitted",
+      "method"
+    ],
+    "first_rows": [
+      {
+        "case_ref": "refonly-ad8824a52552d7bffa91",
+        "asof": "2021-05-06 10:00:00",
+        "three_assessment_reference": "FormationWorking|QualificationPending|ValidityPending",
+        "external_reference": "PendingPersistence",
+        "four_gate_reference_pass": "False",
+        "prior_cluster_domain": "NOT_EVALUATED_ALL_HISTORICAL_EPOCHS",
+        "C2_reference_verdict": "SHADOW_HOLD_FOUR_GATES_NOT_SATISFIED",
+        "official_cluster_committed": "NO",
+        "official_h1_emitted": "NO",
+        "method": "STEEL_U2_C1_SINGLE_SCALE_REFERENCE_METHOD_V0.1.0"
+      }
+    ]
+  },
+  "A:single_scale_U2_C1_S_C2_U3/S/01_case_external_separation_v0.csv": {
+    "columns": [
+      "case_ref",
+      "asof",
+      "universe",
+      "universe_claim",
+      "outside_count",
+      "current_cut",
+      "evidence_count_reference",
+      "elapsed_reference_bar_positions",
+      "required_k",
+      "required_elapsed_bars",
+      "persistence_reference",
+      "observation_proof",
+      "formal_assessment_published",
+      "method"
+    ],
+    "first_rows": [
+      {
+        "case_ref": "refonly-ad8824a52552d7bffa91",
+        "asof": "2021-05-06 10:00:00",
+        "universe": "hc|i|rb",
+        "universe_claim": "EXPLICIT_RESEARCH_UNIVERSE_ONLY",
+        "outside_count": "0",
+        "current_cut": "ValidEmptyAlternatives",
+        "evidence_count_reference": "1",
+        "elapsed_reference_bar_positions": "0",
+        "required_k": "3",
+        "required_elapsed_bars": "8",
+        "persistence_reference": "PendingPersistence",
+        "observation_proof": "30M_CANONICAL_BAR_FRONTIER_ASSUMED_ELIGIBLE_PER_BAR_REFERENCE",
+        "formal_assessment_published": "NO",
+        "method": "STEEL_U2_C1_SINGLE_SCALE_REFERENCE_METHOD_V0.1.0"
+      }
+    ]
+  },
+  "A:single_scale_U2_C1_S_C2_U3/U3/01_single_scale_shadow_bridge.csv": {
+    "columns": [
+      "case_ref",
+      "asof",
+      "shadow_subject_kind",
+      "hypothetical_future_h1_kind",
+      "scope",
+      "reference_scale",
+      "expected_direction",
+      "member_episodes",
+      "source_classification",
+      "h1_source_authority",
+      "c2_reference_verdict"
+    ],
+    "first_rows": [
+      {
+        "case_ref": "refonly-ad8824a52552d7bffa91",
+        "asof": "2021-05-06 10:00:00",
+        "shadow_subject_kind": "ShadowOpportunityClusterNotCanonical",
+        "hypothetical_future_h1_kind": "SubjectOpportunityCluster",
+        "scope": "hc|i|rb",
+        "reference_scale": "ScaleTurnCalendar:mid_30m",
+        "expected_direction": "Up",
+        "member_episodes": "refonly-18ddb757325fb8241e|refonly-22321a4b963e925b7c|refonly-9f55eb74da9a4089a7",
+        "source_classification": "PRE_CLUSTER_OBJECTIVE_FACT_PREVIEW",
+        "h1_source_authority": "NOT_AUTHORIZED_NO_U2_SNAPSHOT_H1",
+        "c2_reference_verdict": "SHADOW_HOLD_FOUR_GATES_NOT_SATISFIED"
+      }
+    ]
+  },
+  "A:single_scale_U2_C1_S_C2_U3/U3/02_movement_r02_objective_facts.csv": {
+    "columns": [
+      "case_ref",
+      "asof",
+      "symbol",
+      "anchor_turn_id",
+      "anchor_actual_uti",
+      "anchor_actual_ts",
+      "anchor_knowledge_proxy",
+      "turn_type",
+      "expected_direction",
+      "source_compatible_geometry_ref",
+      "ref_episode_id",
+      "episode_stage_at_cut",
+      "episode_completed_visibility_proxy",
+      "observed_end_uti",
+      "observed_end_ts",
+      "observed_bar_elapsed",
+      "source_at_cut_bar_index",
+      "anchor_bar_index",
+      "start_price",
+      "observed_end_price",
+      "source_h1_status",
+      "time_method",
+      "market_quality_judgement",
+      "method",
+      "path_status",
+      "missing_count",
+      "raw_progress",
+      "raw_amplitude",
+      "path_length",
+      "path_efficiency",
+      "path_efficiency_applicability",
+      "max_counter_move",
+      "achieved_peak",
+      "retained_fraction",
+      "return_to_origin_progress",
+      "extreme_count",
+      "advance_runs",
+      "counter_runs",
+      "flat_runs",
+      "sign_change_count",
+      "completed_recovery_events"
+    ],
+    "first_rows": [
+      {
+        "case_ref": "refonly-ad8824a52552d7bffa91",
+        "asof": "2021-05-06 10:00:00",
+        "symbol": "hc",
+        "anchor_turn_id": "refonly-52bd09357229361305",
+        "anchor_actual_uti": "75230999",
+        "anchor_actual_ts": "2021-04-30 15:00:00",
+        "anchor_knowledge_proxy": "2021-05-06 10:00:00",
+        "turn_type": "Trough",
+        "expected_direction": "Up",
+        "source_compatible_geometry_ref": "ZigConfirmedTrough",
+        "ref_episode_id": "refonly-18ddb757325fb8241e",
+        "episode_stage_at_cut": "WorkingSoFar",
+        "episode_completed_visibility_proxy": "2021-05-11 10:30:00",
+        "observed_end_uti": "75238199",
+        "observed_end_ts": "2021-05-06 10:00:00",
+        "observed_bar_elapsed": "2",
+        "source_at_cut_bar_index": "937",
+        "anchor_bar_index": "935",
+        "start_price": "5684.0",
+        "observed_end_price": "5885.0",
+        "source_h1_status": "NO_CANONICAL_H1_PRECLUSTER_SHADOW",
+        "time_method": "REFERENCE_OBSERVED_30M_BAR_INDEX_NOT_CALENDAR",
+        "market_quality_judgement": "WITHHELD_NO_H1_AND_AXIS_CALIBRATION",
+        "method": "STEEL_U2_C1_SINGLE_SCALE_REFERENCE_METHOD_V0.1.0",
+        "path_status": "AvailableReference",
+        "missing_count": "0",
+        "raw_progress": "201.0",
+        "raw_amplitude": "201.0",
+        "path_length": "213.0",
+        "path_efficiency": "0.9436619718309859",
+        "path_efficiency_applicability": "Applicable",
+        "max_counter_move": "6.0",
+        "achieved_peak": "207.0",
+        "retained_fraction": "0.9710144927536232",
+        "return_to_origin_progress": "201.0",
+        "extreme_count": "1",
+        "advance_runs": "1",
+        "counter_runs": "1",
+        "flat_runs": "0",
+        "sign_change_count": "1",
+        "completed_recovery_events": "0"
+      }
+    ]
+  },
+  "A:single_scale_U2_C1_S_C2_U3/U3/03_r03_quality_withholding.csv": {
+    "columns": [
+      "case_ref",
+      "asof",
+      "symbol",
+      "preview_source_kind",
+      "progress_axis",
+      "friction_axis",
+      "retention_axis",
+      "quality_judgement",
+      "quality_reason",
+      "capital_use",
+      "method"
+    ],
+    "first_rows": [
+      {
+        "case_ref": "refonly-ad8824a52552d7bffa91",
+        "asof": "2021-05-06 10:00:00",
+        "symbol": "hc",
+        "preview_source_kind": "ShadowOpportunityClusterMemberEpisode",
+        "progress_axis": "CalibrationPending",
+        "friction_axis": "CalibrationPending",
+        "retention_axis": "CalibrationPending",
+        "quality_judgement": "WITHHELD",
+        "quality_reason": "NO_FORMAL_H1;AXIS_THRESHOLD_PROFILE_CALIBRATION_PENDING",
+        "capital_use": "WITHHELD_LCC_NOT_PROVIDED",
+        "method": "STEEL_U2_C1_SINGLE_SCALE_REFERENCE_METHOD_V0.1.0"
+      }
+    ]
+  },
+  "B:rb_hc_i_mid贴近转折_zig_small_K线_20210101_20240229/hc_kline_30m.csv": {
+    "columns": [
+      "bar_ts",
+      "open",
+      "high",
+      "low",
+      "close",
+      "openInt",
+      "volume",
+      "openUti",
+      "closeUti",
+      "openTs",
+      "closeTs"
+    ],
+    "first_rows": [
+      {
+        "bar_ts": "2021-01-04 09:30:00",
+        "open": "4509.0",
+        "high": "4509.0",
+        "low": "4420.0",
+        "close": "4432.0",
+        "openInt": "655728.0",
+        "volume": "239573.0",
+        "openUti": "72003600",
+        "closeUti": "72007199",
+        "openTs": "2021-01-04 09:00:00.500",
+        "closeTs": "2021-01-04 09:30:00"
+      }
+    ]
+  },
+  "B:rb_hc_i_mid贴近转折_zig_small_K线_20210101_20240229/hc_mid_input_zig_small_all_bars.csv": {
+    "columns": [
+      "bar_ts",
+      "swingStatus",
+      "swingPrice",
+      "swingPoivt",
+      "swingPosUTI",
+      "lastPrice",
+      "lastPosUTI",
+      "lastDirection",
+      "uti",
+      "zigUTI",
+      "zigPrice",
+      "lastUptUTI",
+      "lastUptPrice"
+    ],
+    "first_rows": [
+      {
+        "bar_ts": "2021-01-04 09:30:00",
+        "swingStatus": "0.0",
+        "swingPrice": "4432.0",
+        "swingPoivt": "4432.0",
+        "swingPosUTI": "72007199",
+        "lastPrice": "",
+        "lastPosUTI": "",
+        "lastDirection": "0.0",
+        "uti": "72007199",
+        "zigUTI": "",
+        "zigPrice": "",
+        "lastUptUTI": "",
+        "lastUptPrice": ""
+      }
+    ]
+  },
+  "B:rb_hc_i_mid贴近转折_zig_small_K线_20210101_20240229/hc_mid_input_zig_small_confirmed.csv": {
+    "columns": [
+      "confirm_event_ts",
+      "swingStatus",
+      "swingPrice",
+      "swingPoivt",
+      "swingPosUTI",
+      "lastPrice",
+      "lastPosUTI",
+      "lastDirection",
+      "uti",
+      "zigUTI",
+      "zigPrice",
+      "lastUptUTI",
+      "lastUptPrice"
+    ],
+    "first_rows": [
+      {
+        "confirm_event_ts": "2021-01-04 15:00:00",
+        "swingStatus": "1.0",
+        "swingPrice": "4514.0",
+        "swingPoivt": "4514.0",
+        "swingPosUTI": "72026999",
+        "lastPrice": "4432.0",
+        "lastPosUTI": "72007199.0",
+        "lastDirection": "0.0",
+        "uti": "72030599",
+        "zigUTI": "72007199.0",
+        "zigPrice": "4432.0",
+        "lastUptUTI": "",
+        "lastUptPrice": ""
+      }
+    ]
+  },
+  "B:rb_hc_i_mid贴近转折_zig_small_K线_20210101_20240229/hc_mid_input_zig_small_status.csv": {
+    "columns": [
+      "status_ts",
+      "price0",
+      "pivot0",
+      "posUTI0",
+      "price1",
+      "pivot1",
+      "posUTI1"
+    ],
+    "first_rows": [
+      {
+        "status_ts": "2021-01-04 15:00:00",
+        "price0": "4514.0",
+        "pivot0": "4514.0",
+        "posUTI0": "72026999.0",
+        "price1": "4432.0",
+        "pivot1": "0.0",
+        "posUTI1": "72007199.0"
+      }
+    ]
+  },
+  "B:rb_hc_i_mid贴近转折_zig_small_K线_20210101_20240229/hc_mid_scaleturn_value1_value2.csv": {
+    "columns": [
+      "occurrence_ts",
+      "round",
+      "actual_uti",
+      "actual_value",
+      "confirm_uti",
+      "confirm_value"
+    ],
+    "first_rows": [
+      {
+        "occurrence_ts": "2021-01-04 15:00:00",
+        "round": "value1",
+        "actual_uti": "72007199",
+        "actual_value": "4432.0",
+        "confirm_uti": "72026999",
+        "confirm_value": "4514.0"
+      }
+    ]
+  },
+  "B:rb_hc_i_mid贴近转折_zig_small_K线_20210101_20240229/i_kline_30m.csv": {
+    "columns": [
+      "bar_ts",
+      "open",
+      "high",
+      "low",
+      "close",
+      "openInt",
+      "volume",
+      "openUti",
+      "closeUti",
+      "openTs",
+      "closeTs"
+    ],
+    "first_rows": [
+      {
+        "bar_ts": "2021-01-04 09:30:00",
+        "open": "989.5",
+        "high": "1006.5",
+        "low": "978.5",
+        "close": "985.5",
+        "openInt": "599182.0",
+        "volume": "94205.0",
+        "openUti": "72003600",
+        "closeUti": "72007199",
+        "openTs": "2021-01-04 09:00:00.500",
+        "closeTs": "2021-01-04 09:30:00"
+      }
+    ]
+  },
+  "B:rb_hc_i_mid贴近转折_zig_small_K线_20210101_20240229/i_mid_input_zig_small_all_bars.csv": {
+    "columns": [
+      "bar_ts",
+      "swingStatus",
+      "swingPrice",
+      "swingPoivt",
+      "swingPosUTI",
+      "lastPrice",
+      "lastPosUTI",
+      "lastDirection",
+      "uti",
+      "zigUTI",
+      "zigPrice",
+      "lastUptUTI",
+      "lastUptPrice"
+    ],
+    "first_rows": [
+      {
+        "bar_ts": "2021-01-04 09:30:00",
+        "swingStatus": "0.0",
+        "swingPrice": "985.5",
+        "swingPoivt": "985.5",
+        "swingPosUTI": "72007199",
+        "lastPrice": "",
+        "lastPosUTI": "",
+        "lastDirection": "0.0",
+        "uti": "72007199",
+        "zigUTI": "",
+        "zigPrice": "",
+        "lastUptUTI": "",
+        "lastUptPrice": ""
+      }
+    ]
+  },
+  "B:rb_hc_i_mid贴近转折_zig_small_K线_20210101_20240229/i_mid_input_zig_small_confirmed.csv": {
+    "columns": [
+      "confirm_event_ts",
+      "swingStatus",
+      "swingPrice",
+      "swingPoivt",
+      "swingPosUTI",
+      "lastPrice",
+      "lastPosUTI",
+      "lastDirection",
+      "uti",
+      "zigUTI",
+      "zigPrice",
+      "lastUptUTI",
+      "lastUptPrice"
+    ],
+    "first_rows": [
+      {
+        "confirm_event_ts": "2021-01-04 23:00:00",
+        "swingStatus": "1.0",
+        "swingPrice": "1034.0",
+        "swingPoivt": "1034.0",
+        "swingPosUTI": "72041399",
+        "lastPrice": "985.5",
+        "lastPosUTI": "72007199.0",
+        "lastDirection": "0.0",
+        "uti": "72044999",
+        "zigUTI": "72007199.0",
+        "zigPrice": "985.5",
+        "lastUptUTI": "",
+        "lastUptPrice": ""
+      }
+    ]
+  },
+  "B:rb_hc_i_mid贴近转折_zig_small_K线_20210101_20240229/i_mid_input_zig_small_status.csv": {
+    "columns": [
+      "status_ts",
+      "price0",
+      "pivot0",
+      "posUTI0",
+      "price1",
+      "pivot1",
+      "posUTI1"
+    ],
+    "first_rows": [
+      {
+        "status_ts": "2021-01-04 23:00:00",
+        "price0": "1034.0",
+        "pivot0": "1034.0",
+        "posUTI0": "72041399.0",
+        "price1": "985.5",
+        "pivot1": "0.0",
+        "posUTI1": "72007199.0"
+      }
+    ]
+  },
+  "B:rb_hc_i_mid贴近转折_zig_small_K线_20210101_20240229/i_mid_scaleturn_value1_value2.csv": {
+    "columns": [
+      "occurrence_ts",
+      "round",
+      "actual_uti",
+      "actual_value",
+      "confirm_uti",
+      "confirm_value"
+    ],
+    "first_rows": [
+      {
+        "occurrence_ts": "2021-01-04 23:00:00",
+        "round": "value1",
+        "actual_uti": "72007199",
+        "actual_value": "985.5",
+        "confirm_uti": "72041399",
+        "confirm_value": "1034.0"
+      }
+    ]
+  },
+  "B:rb_hc_i_mid贴近转折_zig_small_K线_20210101_20240229/rb_kline_30m.csv": {
+    "columns": [
+      "bar_ts",
+      "open",
+      "high",
+      "low",
+      "close",
+      "openInt",
+      "volume",
+      "openUti",
+      "closeUti",
+      "openTs",
+      "closeTs"
+    ],
+    "first_rows": [
+      {
+        "bar_ts": "2021-01-04 09:30:00",
+        "open": "4340.0",
+        "high": "4348.0",
+        "low": "4289.0",
+        "close": "4299.0",
+        "openInt": "1553407.0",
+        "volume": "534295.0",
+        "openUti": "72003600",
+        "closeUti": "72007199",
+        "openTs": "2021-01-04 09:00:00.500",
+        "closeTs": "2021-01-04 09:30:00"
+      }
+    ]
+  },
+  "B:rb_hc_i_mid贴近转折_zig_small_K线_20210101_20240229/rb_mid_input_zig_small_all_bars.csv": {
+    "columns": [
+      "bar_ts",
+      "swingStatus",
+      "swingPrice",
+      "swingPoivt",
+      "swingPosUTI",
+      "lastPrice",
+      "lastPosUTI",
+      "lastDirection",
+      "uti",
+      "zigUTI",
+      "zigPrice",
+      "lastUptUTI",
+      "lastUptPrice"
+    ],
+    "first_rows": [
+      {
+        "bar_ts": "2021-01-04 09:30:00",
+        "swingStatus": "0.0",
+        "swingPrice": "4299.0",
+        "swingPoivt": "4299.0",
+        "swingPosUTI": "72007199",
+        "lastPrice": "",
+        "lastPosUTI": "",
+        "lastDirection": "0.0",
+        "uti": "72007199",
+        "zigUTI": "",
+        "zigPrice": "",
+        "lastUptUTI": "",
+        "lastUptPrice": ""
+      }
+    ]
+  },
+  "B:rb_hc_i_mid贴近转折_zig_small_K线_20210101_20240229/rb_mid_input_zig_small_confirmed.csv": {
+    "columns": [
+      "confirm_event_ts",
+      "swingStatus",
+      "swingPrice",
+      "swingPoivt",
+      "swingPosUTI",
+      "lastPrice",
+      "lastPosUTI",
+      "lastDirection",
+      "uti",
+      "zigUTI",
+      "zigPrice",
+      "lastUptUTI",
+      "lastUptPrice"
+    ],
+    "first_rows": [
+      {
+        "confirm_event_ts": "2021-01-04 15:00:00",
+        "swingStatus": "1.0",
+        "swingPrice": "4378.0",
+        "swingPoivt": "4378.0",
+        "swingPosUTI": "72026999",
+        "lastPrice": "4299.0",
+        "lastPosUTI": "72007199.0",
+        "lastDirection": "0.0",
+        "uti": "72030599",
+        "zigUTI": "72007199.0",
+        "zigPrice": "4299.0",
+        "lastUptUTI": "",
+        "lastUptPrice": ""
+      }
+    ]
+  },
+  "B:rb_hc_i_mid贴近转折_zig_small_K线_20210101_20240229/rb_mid_input_zig_small_status.csv": {
+    "columns": [
+      "status_ts",
+      "price0",
+      "pivot0",
+      "posUTI0",
+      "price1",
+      "pivot1",
+      "posUTI1"
+    ],
+    "first_rows": [
+      {
+        "status_ts": "2021-01-04 15:00:00",
+        "price0": "4378.0",
+        "pivot0": "4378.0",
+        "posUTI0": "72026999.0",
+        "price1": "4299.0",
+        "pivot1": "0.0",
+        "posUTI1": "72007199.0"
+      }
+    ]
+  },
+  "B:rb_hc_i_mid贴近转折_zig_small_K线_20210101_20240229/rb_mid_scaleturn_value1_value2.csv": {
+    "columns": [
+      "occurrence_ts",
+      "round",
+      "actual_uti",
+      "actual_value",
+      "confirm_uti",
+      "confirm_value"
+    ],
+    "first_rows": [
+      {
+        "occurrence_ts": "2021-01-04 15:00:00",
+        "round": "value1",
+        "actual_uti": "72007199",
+        "actual_value": "4299.0",
+        "confirm_uti": "72026999",
+        "confirm_value": "4378.0"
+      }
+    ]
+  }
+}

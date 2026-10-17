@@ -1,0 +1,580 @@
+From 428c70fa3ef85a3bfff89be3f5cd3d93bed523ea Mon Sep 17 00:00:00 2001
+From: AI Bot <ai-bot@dw.com>
+Date: Sun, 18 Oct 2026 03:46:26 +0800
+Subject: [PATCH] feat(aidata): render fixed CSV windows with raw quotes and
+ source exports
+
+---
+ README.md                        |   2 +
+ big_world_chart.py               |   7 +
+ boardrun.py                      |   5 +
+ docs/FIXED_INPUT.md              |  26 +++
+ docs/RUN_BRIEF_INPUT_CONTRACT.md |   2 +
+ fixed_input.py                   | 307 +++++++++++++++++++++++++++++++
+ plot_view_export.py              |  14 +-
+ render_bridge.py                 |  14 ++
+ tests/test_fixed_input.py        |  62 +++++++
+ 9 files changed, 437 insertions(+), 2 deletions(-)
+ create mode 100644 docs/FIXED_INPUT.md
+ create mode 100644 fixed_input.py
+ create mode 100644 tests/test_fixed_input.py
+
+diff --git a/README.md b/README.md
+index c14a4d2..5415b05 100644
+--- a/README.md
++++ b/README.md
+@@ -60,6 +60,8 @@
+ 
+ ## 示例、测试与进一步细节
+ 
++已经冻结的 ZIP/CSV 可通过显式 `fixed_input` 模式只读接入，按人工窗口展示原报价与原结果，不运行 Feature；人的图与 AI 的 CSV 由同一真实图层生成。配置和边界见 [固定输入接入](docs/FIXED_INPUT.md)。
++
+ 库内提供 `examples/` 看图示例和 `tests/real_data/` 真实数据验收；配置与断言都在 aidata 内维护，默认产物保存在不提交的 `aidata/test_runs/`。
+ 
+ - [运行测试与示例](tests/README.md)：快测、四层渲染与切片、板块特征验收。
+diff --git a/big_world_chart.py b/big_world_chart.py
+index cb9d6ff..1984f17 100644
+--- a/big_world_chart.py
++++ b/big_world_chart.py
+@@ -121,6 +121,7 @@ class AidataBigWorldReviewCAE(_base_cae_fao()):
+         "run_dir": "",
+         "run_id": "",
+         "big_node_id": "",
++        "fixed_input_manifest": "",
+         "context": None,
+         "calendar_name": "",
+         "blk": "",
+@@ -142,6 +143,9 @@ class AidataBigWorldReviewCAE(_base_cae_fao()):
+     @evidence_page_cached
+     def layout(self, *args: Any, **kwargs: Any):
+         """构造一个 big local world 页面。"""
++        if self.P.fixed_input_manifest:
++            from .fixed_input import render_fixed_view
++            return render_fixed_view(self.P.run_dir, self.P.big_node_id)
+         _ensure_plot_runtime()
+         from bokeh.models import Button
+         import bokeh.layouts as bkh
+@@ -367,6 +371,9 @@ def build_big_world_chart_pages(
+     默认只返回 notebook 里可直接展示的轻量表：`big_node_id/start_ts/end_ts/report_url`。
+     如果 `save=True`，才把同一张表写入 `review/big_world_chart_pages.csv/.md`。
+     """
++    if (run.run_dir / 'manifest/fixed_input.json').is_file():
++        from .fixed_input import build_fixed_chart_pages
++        return build_fixed_chart_pages(run)
+     rbi = run_brief_input or get_runtime_run_brief(run.run_id)
+     if rbi is None:
+         raise RuntimeError(
+diff --git a/boardrun.py b/boardrun.py
+index ee87a94..64cbdb6 100644
+--- a/boardrun.py
++++ b/boardrun.py
+@@ -148,6 +148,11 @@ def build_chart_run(
+     `manifest/chart_manifest.csv`。它不切 feature slices，不导出 delivery，
+     也不物化 deep tick CSV。
+     """
++    if isinstance(run_brief_input, dict) and run_brief_input.get('fixed_input') is not None:
++        if dry_run or reuse_core:
++            raise ValueError('固定输入 run 使用独立身份；不接受 dry_run/reuse_core 隐式替换')
++        from .fixed_input import build_fixed_chart_run
++        return build_fixed_chart_run(run_brief_input)
+     core = _build_chart_core_run(
+         run_brief_input,
+         calendar_resolver=calendar_resolver,
+diff --git a/docs/FIXED_INPUT.md b/docs/FIXED_INPUT.md
+new file mode 100644
+index 0000000..bec7322
+--- /dev/null
++++ b/docs/FIXED_INPUT.md
+@@ -0,0 +1,26 @@
++# 只读固定 CSV 看图
++
++`build_chart_run` 增加显式的 `fixed_input` 模式，用于已经冻结的 CSV，避免为看图运行正式 Feature。现有 Feature 模式保持原调用方式。
++
++```python
++run = build_chart_run({
++    'output_root': '/server-visible/aidata_runs',
++    'run_id': 'fixed_review_001',
++    'run_note': '固定原件人工窗口',
++    'fixed_input': spec,  # JSON-safe dict 或 JSON 文件路径
++})
++pages = build_big_world_chart_pages(run, save=True)
++rendered = render_review_nodes(run, node_ids=['window_001'], export_plot_view_data=True)
++```
++
++`spec.schema_version=1`，包含 `sources` 与 `views`：
++
++- `sources` 每项为 `id/path/sha256`，可加 ZIP 内 `member`。SHA 是实际 CSV 成员的 SHA-256。路径必须由运行端可信调用方提供；不作为未经鉴权的 Web 文件读取接口。每次读取验证成员身份，原字段按字符串保存；新增 `_aidata_source_row` 是包括表头的一基物理行。
++- `views` 每项为 `node_id/label/start/end/asof/symbols/layers`，可加 `notes`。窗口与 As-Of 必须由调用方声明，不运行默认尺度搜索；图中三品种等成员的 X 轴共享，同一品种的 Y 轴保持原报价单位。
++- `layers` 每项声明 `id/source/kind`，可用 `rows` 指定物理行、用 `filters` 指定 `eq/in/not_empty` 谓词。`window_field` 限制显示上下文，`known_at` 是调用方声明的原可知时钟；known 视图只选择该字段不晚于 As-Of 的原行，空时钟不会补成已知。
++- 图层 `kind` 支持 `ohlc/line/point/segment/table`。图形须声明 `symbol`，通过 `x/y`、`x0/y0/x1/y1` 或 `x/open/high/low/close` 绑定原字段。X 为原自然时间。UTI 显示连接可声明 `{'field': 'actual_uti', 'lookup': {'source': 'kline', 'key': 'closeUti', 'value': 'bar_ts'}}`；仅作精确连接，不猜测、不插值。
++- `scopes` 可限制为 `known` 或 `retrospective`，默认均展示。后者独立在“事后完整上下文”标签页，不作为当时已知。包含未来完成时间的原行可保存在原字段表中；调用方必须提供正确 `known_at` 和层说明，不能由工具补业务可知边界。
++
++本模式不计算指标、不改变业务状态、不解释源单位、不填充空 OHLC。原数值和状态与真实 Bokeh ColumnDataSource 一起导出到每个节点独立的 `plot_view_data/render_<node_id>/`。新增绘图列统一使用 `_aidata_plot_` 前缀，只含数值/时间转换和显式精确连接。共享视图继续标记 `not_primary_evidence`；源成员身份及物理行可用于回查原件。
++
++图链接复用既有 `AidataBigWorldReviewCAE` 和 Trier/Bokeh 平台。升级消费者参数后需按当前平台部署方式重启常驻进程。仅创建 URL 不证明图可打开，使用方仍须核对实际会话中的报价轴、窗口、As-Of、源行与图层。
+diff --git a/docs/RUN_BRIEF_INPUT_CONTRACT.md b/docs/RUN_BRIEF_INPUT_CONTRACT.md
+index 5f9b214..e0ae666 100644
+--- a/docs/RUN_BRIEF_INPUT_CONTRACT.md
++++ b/docs/RUN_BRIEF_INPUT_CONTRACT.md
+@@ -10,6 +10,8 @@ notebook 只是临时示例，不能作为字段含义的事实来源。
+ 
+ ## 字段表
+ 
++冻结 CSV 的独立输入模式见 [FIXED_INPUT.md](FIXED_INPUT.md)：`build_chart_run` 接受 `output_root/run_id/fixed_input`，此模式不要求 Feature context，不运行下表的默认尺度提取。其余字段表继续描述既有 Feature 模式。
++
+ | 字段 | 要求 | 类型 | 说明 |
+ | --- | --- | --- | --- |
+ | `output_root` | 必填 | `str | Path` | BoardRun 输出根目录。每次运行会在其下创建 run_id 子目录。 |
+diff --git a/fixed_input.py b/fixed_input.py
+new file mode 100644
+index 0000000..9f9879a
+--- /dev/null
++++ b/fixed_input.py
+@@ -0,0 +1,307 @@
++"""只读固定 CSV 的显式窗口、原报价图及同源图层。
++
++本模块不调用 Feature、不推导业务指标或事件。业务调用方声明来源、窗口、
++行选择、字段绑定及可知时钟；原字段以字符串保留，数值/时间转换只供绘图。
++"""
++from __future__ import annotations
++
++import hashlib
++import io
++import json
++import re
++import zipfile
++from functools import lru_cache
++from html import escape
++from pathlib import Path
++from typing import Any
++
++import pandas as pd
++
++from .contracts import (
++    build_run_handle, ensure_chart_core_layout, register_runtime_run_brief,
++    safe_path_token, write_csv, write_json,
++)
++
++
++@lru_cache(maxsize=48)
++def _read_source_cached(encoded: str, mtime_ns: int, size: int) -> pd.DataFrame:
++    source = json.loads(encoded)
++    path = Path(source['path'])
++    if source.get('member'):
++        with zipfile.ZipFile(path) as archive:
++            payload = archive.read(source['member'])
++    else:
++        payload = path.read_bytes()
++    digest = hashlib.sha256(payload).hexdigest()
++    if digest != source['sha256']:
++        raise ValueError(f"固定成员身份改变: {source['id']}")
++    frame = pd.read_csv(io.BytesIO(payload), dtype=str, keep_default_na=False, encoding='utf-8-sig')
++    if any(str(c).startswith('_aidata_') for c in frame.columns):
++        raise ValueError('固定输入使用了保留的 _aidata_ 列名前缀')
++    frame['_aidata_source_row'] = range(2, len(frame) + 2)
++    frame['_aidata_source_id'] = source['id']
++    frame['_aidata_source_member'] = source.get('member', path.name)
++    frame['_aidata_source_sha256'] = digest
++    return frame
++
++
++def read_fixed_source(source: dict[str, Any]) -> pd.DataFrame:
++    """按确切成员 SHA 读取原件，物理行号包括表头；不修改原件。"""
++    path = Path(source['path'])
++    stat = path.stat()
++    return _read_source_cached(json.dumps(source, sort_keys=True), stat.st_mtime_ns, stat.st_size)
++
++
++def load_fixed_spec(run_or_dir) -> dict[str, Any]:
++    run_dir = Path(getattr(run_or_dir, 'run_dir', run_or_dir))
++    return json.loads((run_dir / 'manifest/fixed_input.json').read_text())
++
++
++def build_fixed_chart_run(brief: dict[str, Any]):
++    """接入声明的固定来源及人工窗口；绝不运行默认节点定位。"""
++    spec = brief['fixed_input']
++    if isinstance(spec, (str, Path)):
++        spec = json.loads(Path(spec).read_text())
++    if spec.get('schema_version') != 1:
++        raise ValueError('fixed_input.schema_version 必须是 1')
++    source_ids = [s['id'] for s in spec['sources']]
++    view_ids = [v['node_id'] for v in spec['views']]
++    if len(set(source_ids)) != len(source_ids) or len(set(view_ids)) != len(view_ids):
++        raise ValueError('source id / node_id 必须唯一')
++    for source in spec['sources']:
++        read_fixed_source(source)
++    for view in spec['views']:
++        if not view.get('asof') or pd.Timestamp(view['start']) > pd.Timestamp(view['end']):
++            raise ValueError(f"窗口/AsOf 无效: {view['node_id']}")
++        for layer in view['layers']:
++            if layer['source'] not in source_ids:
++                raise ValueError(f"未知固定来源: {layer['source']}")
++    run_id = brief['run_id']
++    if safe_path_token(run_id) != run_id:
++        raise ValueError('run_id 必须是单个路径安全标识')
++    run_dir = Path(brief['output_root']) / run_id
++    if (run_dir / 'manifest/fixed_input.json').exists():
++        raise FileExistsError(f'不覆盖已有固定 run: {run_id}')
++    ensure_chart_core_layout(run_dir)
++    run = build_run_handle(run_dir)
++    write_json(spec, run_dir / 'manifest/fixed_input.json')
++    resolved = {k: v for k, v in brief.items() if k != 'fixed_input'}
++    resolved.update(data_mode='fixed_input', fixed_input_manifest='manifest/fixed_input.json')
++    write_json(resolved, run.run_brief_path)
++    run.run_brief_md_path.write_text('# 固定输入图运行\n\n' + str(brief.get('run_note', '')) + '\n')
++    rows = [{
++        'node_id': v['node_id'], 'level': 'big', 'parent_node_id': '',
++        'start_uti': '', 'end_uti': '', 'start_ts': v['start'], 'end_ts': v['end'],
++        'label': v['label'], 'asof': v['asof'],
++        'member_symbols': json.dumps(v['symbols'], ensure_ascii=False),
++        'window_origin': 'explicit_fixed_input_request',
++    } for v in spec['views']]
++    write_csv(pd.DataFrame(rows), run.timespan_index_path)
++    write_csv(pd.DataFrame([{
++        **row, 'chart_family': 'fixed_input_raw_quote_v1',
++        'uses_explicit_timespan': True, 'reruns_extract_timespans': False,
++    } for row in rows]), run.chart_manifest_path)
++    write_json({'run_id': run_id, 'run_kind': 'chart_core', 'data_mode': 'fixed_input',
++                'view_count': len(rows), 'feature_executions': 0,
++                'completed_stages': ['chart_core'], 'source_count': len(source_ids)},
++               run_dir / 'manifest/run_summary.json')
++    register_runtime_run_brief(run_id, {**brief, 'fixed_input': spec})
++    return run
++
++
++def select_fixed_rows(spec: dict, view: dict, layer: dict, scope: str) -> pd.DataFrame:
++    """只应用调用方声明的谓词、显示窗口和可知时钟，保留原字符串值。"""
++    sources = {s['id']: s for s in spec['sources']}
++    frame = read_fixed_source(sources[layer['source']])
++    if layer.get('rows') is not None:
++        frame = frame[frame['_aidata_source_row'].isin(layer['rows'])]
++    for predicate in layer.get('filters', []):
++        values = frame[predicate['field']]
++        op, value = predicate.get('op', 'eq'), predicate['value']
++        if op == 'eq':
++            frame = frame[values == str(value)]
++        elif op == 'in':
++            frame = frame[values.isin([str(v) for v in value])]
++        elif op == 'not_empty':
++            frame = frame[values != '']
++        else:
++            raise ValueError(f'不支持的固定选择谓词: {op}')
++    # 时间字段必须显式配置；表格可保留整个被选原行，不隐式猜业务时间。
++    window_field = layer.get('window_field')
++    if window_field:
++        times = pd.to_datetime(frame[window_field], errors='coerce')
++        frame = frame[times.between(pd.Timestamp(view['start']), pd.Timestamp(view['end']))]
++    known_field = layer.get('known_at')
++    if scope == 'known' and known_field:
++        times = pd.to_datetime(frame[known_field], errors='coerce')
++        frame = frame[times <= pd.Timestamp(view['asof'])]
++    return frame.copy()
++
++
++def _bound(frame: pd.DataFrame, binding, sources: dict, *, time: bool = False):
++    if isinstance(binding, str):
++        values = frame[binding]
++    else:
++        values = frame[binding['field']]
++        lookup = binding.get('lookup')
++        if lookup:
++            table = read_fixed_source(sources[lookup['source']])
++            pairs = table.loc[table[lookup['key']] != '', [lookup['key'], lookup['value']]].drop_duplicates()
++            if pairs[lookup['key']].duplicated().any():
++                raise ValueError('显示连接键不唯一；禁止猜测或插值')
++            values = values.map(pairs.set_index(lookup['key'])[lookup['value']])
++    return pd.to_datetime(values, errors='coerce') if time else pd.to_numeric(values, errors='coerce')
++
++
++def fixed_view_layers(spec: dict, node_id: str, scope: str):
++    """返回实际渲染/导出共用的图层列，空层仍具名保留。"""
++    view = next(v for v in spec['views'] if v['node_id'] == node_id)
++    sources = {s['id']: s for s in spec['sources']}
++    for layer in view['layers']:
++        if scope not in layer.get('scopes', ['known', 'retrospective']):
++            continue
++        frame = select_fixed_rows(spec, view, layer, scope)
++        # 先保留全部原字段，新增列全部使用保留前缀。
++        for field in ('x', 'x0', 'x1'):
++            if field in layer:
++                frame['_aidata_plot_' + field] = _bound(frame, layer[field], sources, time=True)
++        for field in ('y', 'y0', 'y1', 'open', 'high', 'low', 'close'):
++            if field in layer:
++                frame['_aidata_plot_' + field] = _bound(frame, layer[field], sources)
++        frame['_aidata_view_id'] = node_id
++        frame['_aidata_asof'] = view['asof']
++        frame['_aidata_visibility'] = scope
++        yield view, layer, frame
++
++
++def render_fixed_view(run_or_dir, node_id: str):
++    """通过 aidata 的实际 Bokeh consumer 绘制固定图；每品种独立报价轴。"""
++    from bokeh.layouts import column
++    from bokeh.models import (
++        ColumnDataSource, CustomJS, DataTable, Div, HoverTool, Range1d, Select, Span, TableColumn, Tabs,
++    )
++    try:
++        from bokeh.models import TabPanel as Panel
++    except ImportError:
++        from bokeh.models import Panel
++    from bokeh.plotting import figure
++
++    run_dir = Path(getattr(run_or_dir, 'run_dir', run_or_dir))
++    spec = load_fixed_spec(run_dir)
++    view = next(v for v in spec['views'] if v['node_id'] == node_id)
++    panels = []
++    column_cache = {}
++    for scope, title in (('known', '当时已知／原结果快照'), ('retrospective', '事后完整上下文（含未来，禁止当作当时已知）')):
++        right = min(pd.Timestamp(view['end']), pd.Timestamp(view['asof'])) if scope == 'known' else pd.Timestamp(view['end'])
++        xr = Range1d(pd.Timestamp(view['start']), right)
++        figures = {}
++        for symbol in view['symbols']:
++            fig = figure(x_axis_type='datetime', x_range=xr, width=1450, height=330,
++                         title=f'{symbol} — 原始报价单位 — {title}', tools='pan,wheel_zoom,box_zoom,reset,save')
++            fig.name = f'fixed-price/{node_id}/{scope}/{symbol}'
++            fig.yaxis.axis_label = f'{symbol} 原报价（未归一化）'
++            fig.xaxis.axis_label = '原 bar_ts / 原事件自然时间；未重解释交易日历'
++            fig.tags = ['aidata_fixed_price', {'node_id': node_id, 'symbol': symbol, 'scope': scope, 'price_transform': 'identity'}]
++            fig.add_layout(Span(location=pd.Timestamp(view['asof']).value / 1e6,
++                                dimension='height', line_color='black', line_dash='dashed'))
++            figures[symbol] = fig
++        table_sources, table_columns, table_options, table_notes = {}, {}, [], {}
++        for _, layer, frame in fixed_view_layers(spec, node_id, scope):
++            # Bokeh wire 协议不能把 Python list 中的 NaN 当普通 JSON float。
++            # 绘图列以数值/时间 ndarray 传输，保留缺失位，不填0或插值。
++            data = {str(c): (frame[c].to_numpy() if str(c).startswith('_aidata_plot_') else frame[c].tolist())
++                    for c in frame.columns}
++            cds = ColumnDataSource(data, name=f"fixed/{node_id}/{scope}/{layer['id']}")
++            cds.tags = ['aidata_fixed_input', {
++                'view_id': node_id, 'layer_id': layer['id'], 'scope': scope,
++                'kind': layer['kind'], 'source': layer['source'],
++                'known_at': layer.get('known_at', ''), 'rows': len(frame),
++                'symbol': layer.get('symbol', ''),
++                'display_transform': 'raw_columns_preserved; numeric/time_cast; explicit_exact_lookup_only',
++            }]
++            kind = layer['kind']
++            symbol = layer.get('symbol')
++            label = layer.get('label', layer['id'])
++            color = layer.get('color', '#4c78a8')
++            if kind != 'table':
++                fig = figures[symbol]
++                common = dict(source=cds, legend_label=label, tags=['aidata_fixed_glyph', layer['id'], scope])
++                if kind == 'ohlc':
++                    fig.segment('_aidata_plot_x', '_aidata_plot_low', '_aidata_plot_x', '_aidata_plot_high', color=color, **common)
++                    fig.vbar('_aidata_plot_x', width=20 * 60 * 1000, top='_aidata_plot_open', bottom='_aidata_plot_close',
++                             fill_alpha=0.3, line_color=color, fill_color=color, **common)
++                    fig.line('_aidata_plot_x', '_aidata_plot_close', color=color, **common)
++                elif kind == 'line':
++                    fig.line('_aidata_plot_x', '_aidata_plot_y', line_color=color, line_width=1.5, **common)
++                elif kind == 'point':
++                    fig.scatter('_aidata_plot_x', '_aidata_plot_y', marker=layer.get('marker', 'circle'), size=9, color=color, **common)
++                elif kind == 'segment':
++                    fig.segment('_aidata_plot_x0', '_aidata_plot_y0', '_aidata_plot_x1', '_aidata_plot_y1', color=color,
++                                line_width=3, line_dash=layer.get('line_dash', 'solid'), **common)
++                else:
++                    raise ValueError(f'不支持的固定图层: {kind}')
++                tooltip_fields = [c for c in frame.columns if not c.startswith('_aidata_')][:18]
++                fig.add_tools(HoverTool(tooltips=[('物理行', '@_aidata_source_row')] + [(c, '@{' + c + '}') for c in tooltip_fields]))
++            # 同一 CDS 同时供真实图形和原字段表使用，不从另一个范围再造“对应数据”。
++            columns = []
++            for field in (str(c) for c in frame.columns if '_aidata_plot_' not in str(c)):
++                if field not in column_cache:
++                    column_cache[field] = TableColumn(field=field, title=field)
++                columns.append(column_cache[field])
++            table_sources[layer['id']] = cds
++            table_columns[layer['id']] = columns
++            table_options.append((layer['id'], f'{label} [{len(frame)}]'))
++            table_notes[layer['id']] = escape(layer.get('note', '原字段保留；原件内事后时间字段不自动成为当时可知事实。'))
++        for fig in figures.values():
++            if fig.legend:
++                fig.legend.click_policy = 'hide'
++                fig.legend.label_text_font_size = '8pt'
++        notes = '<br>'.join(escape(str(x)) for x in view.get('notes', []))
++        default_layer = view.get('default_table') or next((l['id'] for l in view['layers'] if l['kind'] == 'table'), table_options[0][0])
++        table = DataTable(source=table_sources[default_layer], columns=table_columns[default_layer], width=1450, height=300, index_position=None)
++        layer_selector = Select(title='图层原字段（与图形共用真实数据源）', options=table_options, value=default_layer, width=1100)
++        layer_selector.tags = ['aidata_fixed_layer_selector', {'scope': scope}]
++        table_note = Div(text=table_notes[default_layer])
++        layer_selector.js_on_change('value', CustomJS(
++            args={'table': table, 'sources': table_sources, 'columns': table_columns, 'note': table_note, 'notes': table_notes},
++            code='table.source = sources[cb_obj.value]; table.columns = columns[cb_obj.value]; note.text = notes[cb_obj.value]; table.change.emit();',
++        ))
++        body = column(Div(text=f'<h3>{escape(view["label"])}｜As-Of {escape(view["asof"])}</h3><p>{notes}</p>', width=1450),
++                      *figures.values(), layer_selector, table_note, table)
++        panels.append(Panel(child=body, title=title))
++    navigation = []
++    pages_path = run_dir / 'review/fixed_chart_pages.csv'
++    if pages_path.exists():
++        pages = pd.read_csv(pages_path, dtype=str, keep_default_na=False)
++        links = dict(zip(pages['node_id'], pages['report_url']))
++        selector = Select(title='全部固定窗口入口（保留每项身份）', value=node_id,
++                          options=[(v['node_id'], v['label']) for v in spec['views'] if v['node_id'] in links], width=1000)
++        selector.js_on_change('value', CustomJS(args={'links': links}, code='window.location.href = links[cb_obj.value];'))
++        navigation.append(selector)
++    output = column(Div(text=f'<b>run: {escape(run_dir.name)} / node: {escape(node_id)}</b>'), *navigation, Tabs(tabs=panels))
++    output.name = f'fixed-view/{node_id}'
++    output.tags = ['aidata_fixed_view', {'node_id': node_id, 'asof': view['asof'], 'symbols': view['symbols'],
++                                       'start': view['start'], 'end': view['end'], 'feature_executions': 0}]
++    return output
++
++
++def build_fixed_chart_pages(run):
++    """复用既有 CAE 图节点平台；新消费者仍由 aidata 管理。"""
++    from .big_world_chart import AidataBigWorldReviewCAE, _ensure_platform_runtime, _refresh_created_node_params
++    _ensure_platform_runtime()
++    from mquant.quant.models.graph import CaeNodeDao
++
++    spec = load_fixed_spec(run)
++    rows = []
++    for view in spec['views']:
++        graph = AidataBigWorldReviewCAE({
++            'run_dir': str(run.run_dir), 'run_id': run.run_id,
++            'big_node_id': view['node_id'], 'fixed_input_manifest': 'manifest/fixed_input.json',
++        })
++        created = CaeNodeDao.createUniqueWithFao(tar=graph)
++        _refresh_created_node_params(CaeNodeDao, created, graph)
++        rows.append({'node_id': view['node_id'], 'big_node_id': view['node_id'], 'start_ts': view['start'],
++                     'end_ts': view['end'], 'asof': view['asof'], 'report_url': created['report_url']})
++    out = pd.DataFrame(rows)
++    write_csv(out, run.run_dir / 'review/fixed_chart_pages.csv')
++    return out
+diff --git a/plot_view_export.py b/plot_view_export.py
+index 6bfbc5e..197b571 100644
+--- a/plot_view_export.py
++++ b/plot_view_export.py
+@@ -26,7 +26,7 @@ def export_plot_view_data(run: RunHandle, request_id: str, plot_roots: Any = Non
+         df = pd.DataFrame(spec["columns"])
+         rel = f"{safe_path_token(plot_node_path)}.csv"
+         write_csv(df, out_dir / rel)
+-        entries.append({"plot_node_path": plot_node_path, "file": rel, "columns": list(df.columns)})
++        entries.append({"plot_node_path": plot_node_path, "file": rel, "columns": list(df.columns), "rows": len(df)})
+         transforms.update(spec.get("known_transforms", []))
+ 
+     manifest = {
+@@ -43,6 +43,9 @@ def export_plot_view_data(run: RunHandle, request_id: str, plot_roots: Any = Non
+         "known_transforms": sorted(transforms),
+         "exports": entries,
+     }
++    if (run.run_dir / 'manifest/fixed_input.json').is_file():
++        manifest['fixed_input_manifest_ref'] = 'manifest/fixed_input.json'
++        manifest['known_transforms'].extend(['raw_source_columns_preserved', 'numeric_or_time_cast', 'explicit_exact_lookup_only'])
+     write_json(manifest, out_dir / "plot_view_data_manifest.json")
+     return manifest
+ 
+@@ -50,12 +53,19 @@ def export_plot_view_data(run: RunHandle, request_id: str, plot_roots: Any = Non
+ def _plot_roots_from_render_result(render_result: Any) -> Any:
+     if render_result is None:
+         return {}
++    if hasattr(render_result, 'references'):
++        return render_result
+     return getattr(render_result, "plot_roots", render_result.get("plot_roots", {}) if isinstance(render_result, dict) else {})
+ 
+ 
+ def _iter_plot_roots(roots: Any):
+-    if not roots:
++    if roots is None:
+         return []
++    if hasattr(roots, 'references'):
++        from bokeh.models import ColumnDataSource
++        sources = sorted((m for m in roots.references() if isinstance(m, ColumnDataSource)), key=lambda x: (x.name or '', x.id))
++        return [(source.name or f'cds_{index:03d}', {'columns': dict(source.data),
++                  'known_transforms': ['bokeh_column_data_source']}) for index, source in enumerate(sources)]
+     if isinstance(roots, dict):
+         out = []
+         for path, value in roots.items():
+diff --git a/render_bridge.py b/render_bridge.py
+index 5f9a238..10e5009 100644
+--- a/render_bridge.py
++++ b/render_bridge.py
+@@ -53,6 +53,20 @@ def render_review_nodes(
+     if not selected_node_ids:
+         raise ValueError("必须提供 node_ids 或 request_ids")
+ 
++    if (run.run_dir / 'manifest/fixed_input.json').is_file():
++        from .fixed_input import load_fixed_spec, render_fixed_view
++        spec = load_fixed_spec(run)
++        views = {v['node_id']: v for v in spec['views']}
++        plans = [{'node_id': n, 'level': 'big', 'explicit_timespan': (views[n]['start'], views[n]['end']),
++                  'asof': views[n]['asof'], 'uses_explicit_timespan': True,
++                  'reruns_extract_timespans': False, 'data_mode': 'fixed_input'} for n in selected_node_ids]
++        rendered = [] if dry_run else [render_fixed_view(run, n) for n in selected_node_ids]
++        if export_plot_view_data and not dry_run:
++            from .plot_view_export import export_plot_view_data as export_shared_view
++            for node_id, layout in zip(selected_node_ids, rendered):
++                export_shared_view(run, f'render_{node_id}', plot_roots=layout)
++        return RenderResult(run=run, render_plans=plans, rendered_objects=rendered)
++
+     plans = make_explicit_render_plan(run, selected_node_ids)
+     if dry_run:
+         return RenderResult(run=run, render_plans=plans, rendered_objects=[])
+diff --git a/tests/test_fixed_input.py b/tests/test_fixed_input.py
+new file mode 100644
+index 0000000..624f273
+--- /dev/null
++++ b/tests/test_fixed_input.py
+@@ -0,0 +1,62 @@
++"""固定原件边界：身份、未来隔离、原价及真实 CDS 导出。"""
++import hashlib
++import json
++
++import pandas as pd
++import pytest
++from bokeh.models import ColumnDataSource
++from bokeh.document import Document
++from bokeh.core.json_encoder import serialize_json
++
++from mquant.aidata.fixed_input import build_fixed_chart_run, fixed_view_layers, render_fixed_view
++from mquant.aidata.plot_view_export import export_plot_view_data
++
++
++def fixture_spec(tmp_path):
++    path = tmp_path / 'source.csv'
++    path.write_text('ts,open,high,low,close,known,state\n2021-05-06 09:30:00,100,110,90,105,2021-05-06 10:00:00,Working\n2021-05-07 09:30:00,,,,,2021-05-07 10:00:00,WITHHELD\n')
++    source = {'id': 'frozen', 'path': str(path), 'sha256': hashlib.sha256(path.read_bytes()).hexdigest()}
++    layer = {'id': 'price', 'source': 'frozen', 'symbol': 'rb', 'kind': 'ohlc', 'x': 'ts',
++             'open': 'open', 'high': 'high', 'low': 'low', 'close': 'close',
++             'known_at': 'known', 'window_field': 'ts'}
++    view = {'node_id': 'v1', 'label': '固定原件', 'start': '2021-05-06 09:00:00',
++            'end': '2021-05-08 15:00:00', 'asof': '2021-05-06 10:00:00', 'symbols': ['rb'], 'layers': [layer]}
++    return {'schema_version': 1, 'sources': [source], 'views': [view]}
++
++
++def test_identity_and_future_information_are_not_silently_replaced(tmp_path):
++    spec = fixture_spec(tmp_path)
++    known = list(fixed_view_layers(spec, 'v1', 'known'))[0][2]
++    future = list(fixed_view_layers(spec, 'v1', 'retrospective'))[0][2]
++    assert known['_aidata_source_row'].tolist() == [2]
++    assert future['_aidata_source_row'].tolist() == [2, 3]
++    assert future['close'].tolist() == ['105', '']
++    assert pd.isna(future['_aidata_plot_close'].iloc[1])
++    spec['sources'][0]['sha256'] = '0' * 64
++    with pytest.raises(ValueError, match='身份改变'):
++        list(fixed_view_layers(spec, 'v1', 'known'))
++
++
++def test_raw_quote_and_actual_rendered_source_are_exported_together(tmp_path):
++    spec = fixture_spec(tmp_path)
++    run = build_fixed_chart_run({'run_id': 'test_fixed', 'output_root': str(tmp_path / 'runs'), 'fixed_input': spec})
++    layout = render_fixed_view(run, 'v1')
++    doc = Document()
++    doc.add_root(layout)
++    # 包含空OHLC的事后视图也必须通过真实Bokeh JSON传输，不只构造Python对象。
++    json.loads(serialize_json(doc.to_json()))
++    sources = [s for s in layout.references() if isinstance(s, ColumnDataSource)]
++    assert len(sources) == 2
++    known = next(s for s in sources if '/known/' in s.name)
++    assert known.data['close'] == ['105']
++    assert known.data['_aidata_plot_close'] == [105]
++    manifest = export_plot_view_data(run, 'v1', plot_roots=layout)
++    assert len(manifest['exports']) == 2
++    assert sorted(x['rows'] for x in manifest['exports']) == [1, 2]
++    assert manifest['not_primary_evidence']
++    exported = next(x for x in manifest['exports'] if '/known/' in x['plot_node_path'])
++    csv = pd.read_csv(run.run_dir / 'plot_view_data/v1' / exported['file'], dtype=str, keep_default_na=False)
++    assert csv['close'].tolist() == ['105']
++    assert json.loads((run.run_dir / 'manifest/run_summary.json').read_text())['feature_executions'] == 0
++    with pytest.raises(FileExistsError):
++        build_fixed_chart_run({'run_id': 'test_fixed', 'output_root': str(tmp_path / 'runs'), 'fixed_input': spec})
+-- 
+2.43.0
+
