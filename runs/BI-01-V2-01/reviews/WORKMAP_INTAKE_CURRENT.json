@@ -6,12 +6,12 @@
         "role": "management",
         "context": "chatgpt-project:细节叙事生成_金标/chat:BI01-V2-管理"
       },
-      "snapshot": "040b3d34c95ed2ded568cfccff519515ca1cf38c44adce324f04d204396afdde",
-      "observed_commit": "fd01f223039f0e1c4580dec10375eb64fc3728b0",
-      "base_ref": "2e817e2e8408b714185be55aa8f443e389b92ddf",
+      "snapshot": "c3c84477ab6f99eeaa7026113a0834d1a25f55676f01e87db1aed4fda6b292ab",
+      "observed_commit": "1917f868d61f8de7110b7165ee9125e5b156c4d2",
+      "base_ref": "81533abbced55b3af14a428dec9cbf8353fc8286",
       "decision_report": {
-        "path": "runs/BI-01-V2-01/reviews/management-R0002/DECISION.md",
-        "blob": "ebb4b0f12d7b57e6565d5ecbbb3eca3f82f2110a"
+        "path": "runs/BI-01-V2-01/provenance/turns/R0005/FULL_RESPONSE.md",
+        "blob": "b72561ad1a3225f7185303324bedbd6d8f9aab48"
       },
       "reader_check": {
         "status": "RECORDED",
@@ -26,17 +26,17 @@
         "qualification": "仅地图、完整任务与采用关系的可理解性和一致性；不代表专业业务/代码/质量审查PASS"
       },
       "effort": {
-        "known_pro_turns": 3,
-        "coverage": "R0001—R0003真实有效完整回交",
-        "source_note": "自R0001累计，管理及必要reader计入；本地工程/Git/UI不计；每累计4、8、12…有效结果管理复看，不清零。"
+        "known_pro_turns": 5,
+        "coverage": "R0001—R0005原完整回交实际取得且机械核验通过；R4旧失败和7378966新代码实际回用分别保留。",
+        "source_note": "自R1累计；M5已执行累计4的首次管理复看，下一持续阈值累计8，不重置。Worker/Git/UI不计新R。"
       },
       "dispatch": {
         "task_path": "runs/BI-01-V2-01/01_当前任务.md",
         "task_id": "BI01-V2-S123-OBSERVATION-01",
         "task_blob": "442c47cc30226796a16b6f7420af9748d0d1e00e",
         "decision": "ISSUED",
-        "kind": "NEW_TASK",
-        "requires_reader_check": true,
+        "kind": "ROUTINE_RESULT",
+        "requires_reader_check": false,
         "method_paths": [
           "professional/v2/00_PURPOSE_AND_THREE_STEP_FLOW.md",
           "professional/v2/01_AIDATA_CHART_AND_DATA.md",
@@ -47,18 +47,27 @@
           "professional/v2/04_BI01_BUSINESS_BASELINE.md",
           "professional/v2/05_BI01_FIXED_INPUT_DATA.md",
           "professional/v2/06_U2_U3_DESIGN_SOURCE_MAP.md"
-        ]
+        ],
+        "reader_reason": "R0005完整管理回交#adoption明确裁定：同一完整S1—S3任务、方法、角色及证据等级未变，接收S1、已到图数技术输入、局部元数据/定位处置及消费顺序；按原same_work继续。旧R3报告及原输入身份保留，不能称读过新版。重大阶段/方法/权限变化仍须原门槛。"
       },
       "validation_claims": [],
       "scope_dispositions": {},
       "adopted_under": {
-        "decision_commit": "f87a9a64f4f0fa3ead13b9ee7c108f87847a581a",
+        "decision_commit": "ba4378ca9fd7533aa671f54be5ae5088809b19a9",
         "decision_anchor": "#adoption",
+        "management_return_ref": "runs/BI-01-V2-01/provenance/turns/R0005/FULL_RESPONSE.md#continuation",
+        "previous_adopted_commit": "81533abbced55b3af14a428dec9cbf8353fc8286",
         "reader_round_complete_commit": "fd01f223039f0e1c4580dec10375eb64fc3728b0",
         "policy_commit": "11626f64bc64ae21e52108b2e47fafbbc1023615",
-        "gate_code_commit": "2942ddd8f5210e68d394f6142f9087d4476101fc"
+        "gate_code_commit": "73789662405ec2bfb5c516f849de3450d1160593",
+        "actual_manager_accepted_input_scope": "R4 S1与a9ed160当前首图8dd882...技术资料；f614b8a定位修补/真实R4回用，来自原R5完整原文，不扩成S2或S3完整验收。",
+        "later_same_work_technical_inputs": {
+          "published_commit": "1917f868d61f8de7110b7165ee9125e5b156c4d2",
+          "path": "runs/BI-01-V2-01/artifacts/worker-R0004/final/WORKER_RETURN.md",
+          "qualification": "原已签工单的完整技术实物，root已核原字节/hash/ZIP及fresh远端身份；依原R5#continuation的实际新到图数/其他包到达后连接比较直接交原执行Pro。未声称管理已读全部683文件、技术独立PASS、专业已消费或S3已成；没有新增目标/方法/角色/数据。"
+        }
       },
-      "recorded_at": "2026-10-17T17:58:08.919181+00:00"
+      "recorded_at": "2026-10-17T20:41:07.131235+00:00"
     }
   }
 }
