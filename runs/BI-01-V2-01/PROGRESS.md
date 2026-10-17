@@ -87,3 +87,11 @@
 - 本轮正文以remote_verified收取；有效Pro结果累计2，未把本地工程或Git提交计新R。手机第二次到期观察 `17:01:31.811Z` 仍思考；远端完成后的手机宽限单独保留至 `17:12:19.140892Z`，不重发。
 - 管理直接授权本原Codex线程按 `reviews/management-R0002/WORKER_TASK.md` 承担本单Worker技术职责：定向修首次reader适用性、回归、源码发布回读及真正prepared reader回用，然后接回操作职责，连续送真实reader/Intake/完整专业工作。无新的Owner权限缺口。
 - policy仍锁11626；代码修补版本另记。当前尚未改码或跑新测试、reader未发、Intake未采用、S1—S3专业未发、业务图尚未产生，均不提前记成通过。
+
+## 首次 reader 的定向工程已回用，R0003 已准备
+
+- 受派源码 `2942ddd8f5210e68d394f6142f9087d4476101fc` 已提交推送并逐文件远端读回；BI01 24项、Workmap 30项回归通过，首建base已有模板但无旧map/task/intake的情形有合成技术验证。直接说明更新后9项来源边界检查通过。详见 `reviews/management-R0002/WORKER_RETURN.md`，不将技术自检当独立业务PASS。
+- 管理指定新输入f87a9a6的真实snapshot已生成，reader_fingerprint为bc415dab…，与当前受保护输入一致；原专业任务与policy不变。
+- 真实R0003 `BI01-V2-01-R0003-104e88d2b67a7431818598f2` 的完整四文件发布在93d5dd9；原样prepare/verify与远端读回通过，从新代码对该真实R执行pre-dispatch通过，此时NOT_CONFIGURED且无Intake，sent=false。
+- R0003尚未建chat或Send。接回操作职责，在到期共享网络准入后送真正独立新Pro读者；其报告满足已签条件后继续Intake/ADOPTED及完整专业首发。
+- R0002最终phone grace于17:12:51.849Z看到完整最终尾部及准确远端commit；STOP残留按完整回复终态处理，未再copy或重发。两轮管理回交已真实收取，不作为全任务终点。
