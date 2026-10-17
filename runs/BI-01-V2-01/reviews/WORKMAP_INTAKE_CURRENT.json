@@ -6,12 +6,12 @@
         "role": "management",
         "context": "chatgpt-project:细节叙事生成_金标/chat:BI01-V2-管理"
       },
-      "snapshot": "c3c84477ab6f99eeaa7026113a0834d1a25f55676f01e87db1aed4fda6b292ab",
-      "observed_commit": "1917f868d61f8de7110b7165ee9125e5b156c4d2",
-      "base_ref": "81533abbced55b3af14a428dec9cbf8353fc8286",
+      "snapshot": "62b16eafb8b792696f71b3ebf7e2ac1105ac1f4c0d171a9caea76c571382d1f2",
+      "observed_commit": "688487d5a336497d25bc6021fd2d4ba5f704e3e3",
+      "base_ref": "b60b8366372e29740fbfce1a19fc216fd01f694a",
       "decision_report": {
-        "path": "runs/BI-01-V2-01/provenance/turns/R0005/FULL_RESPONSE.md",
-        "blob": "b72561ad1a3225f7185303324bedbd6d8f9aab48"
+        "path": "runs/BI-01-V2-01/provenance/turns/R0007/FULL_RESPONSE.md",
+        "blob": "95e542e23aa6703aedf27e94ceb8887a3aab228b"
       },
       "reader_check": {
         "status": "RECORDED",
@@ -26,9 +26,9 @@
         "qualification": "仅地图、完整任务与采用关系的可理解性和一致性；不代表专业业务/代码/质量审查PASS"
       },
       "effort": {
-        "known_pro_turns": 5,
-        "coverage": "R0001—R0005原完整回交实际取得且机械核验通过；R4旧失败和7378966新代码实际回用分别保留。",
-        "source_note": "自R1累计；M5已执行累计4的首次管理复看，下一持续阈值累计8，不重置。Worker/Git/UI不计新R。"
+        "known_pro_turns": 7,
+        "coverage": "R0001—R0007完整原答与所需两Return已真实取得，schema/原任务关联/原文实物与实际after-return通过；R7原发送回执缺state的operator错误/补正分别保留，Pro原件未改。",
+        "source_note": "起点R1不变；M7首次RESULT实质复看后实际Intake/冻结后继再消费；下一EFFORT仍累计8。phone/UI/Git/Worker不计新R。"
       },
       "dispatch": {
         "task_path": "runs/BI-01-V2-01/01_当前任务.md",
@@ -48,26 +48,27 @@
           "professional/v2/05_BI01_FIXED_INPUT_DATA.md",
           "professional/v2/06_U2_U3_DESIGN_SOURCE_MAP.md"
         ],
-        "reader_reason": "R0005完整管理回交#adoption明确裁定：同一完整S1—S3任务、方法、角色及证据等级未变，接收S1、已到图数技术输入、局部元数据/定位处置及消费顺序；按原same_work继续。旧R3报告及原输入身份保留，不能称读过新版。重大阶段/方法/权限变化仍须原门槛。"
+        "reader_reason": "R0007完整原管理决定#adoption明示：完整Goal、原Task/Binding/mode、方法和权限未变；接收R6第一批有限观察及既有时间用途限制，原图数/原CSV输入真实可用，继续完整S1—S3。不是新阶段/算法。旧R3原报告/input/fingerprint保留，不能冒称读过R7；专业独立审查仍不因此PASS。"
       },
       "validation_claims": [],
       "scope_dispositions": {},
       "adopted_under": {
-        "decision_commit": "ba4378ca9fd7533aa671f54be5ae5088809b19a9",
+        "decision_commit": "b3ef5f67f48525086950ddf0123a6d779be14d61",
         "decision_anchor": "#adoption",
-        "management_return_ref": "runs/BI-01-V2-01/provenance/turns/R0005/FULL_RESPONSE.md#continuation",
-        "previous_adopted_commit": "81533abbced55b3af14a428dec9cbf8353fc8286",
+        "management_return_ref": "runs/BI-01-V2-01/provenance/turns/R0007/FULL_RESPONSE.md#continuation",
+        "previous_adopted_commit": "b60b8366372e29740fbfce1a19fc216fd01f694a",
         "reader_round_complete_commit": "fd01f223039f0e1c4580dec10375eb64fc3728b0",
         "policy_commit": "11626f64bc64ae21e52108b2e47fafbbc1023615",
         "gate_code_commit": "73789662405ec2bfb5c516f849de3450d1160593",
-        "actual_manager_accepted_input_scope": "R4 S1与a9ed160当前首图8dd882...技术资料；f614b8a定位修补/真实R4回用，来自原R5完整原文，不扩成S2或S3完整验收。",
-        "later_same_work_technical_inputs": {
-          "published_commit": "1917f868d61f8de7110b7165ee9125e5b156c4d2",
-          "path": "runs/BI-01-V2-01/artifacts/worker-R0004/final/WORKER_RETURN.md",
-          "qualification": "原已签工单的完整技术实物，root已核原字节/hash/ZIP及fresh远端身份；依原R5#continuation的实际新到图数/其他包到达后连接比较直接交原执行Pro。未声称管理已读全部683文件、技术独立PASS、专业已消费或S3已成；没有新增目标/方法/角色/数据。"
+        "actual_manager_accepted_input_scope": "M7原文接收R6 F01—F07有限认识、原1917工单最终技术实物、b9ec同版本51包文本及a96运输证据，落实既有逐字段AsOf消费边界；不自称全51/5430CSV已读、全Network增量Gate/独立审查/完整S3通过。",
+        "actual_input_commits": {
+          "professional_R6": "750adeb4007c2fe0f7d44abeb9ab14a9bbe867e7",
+          "worker_final": "1917f868d61f8de7110b7165ee9125e5b156c4d2",
+          "original_readable_51": "b9ecbfa4b27f40365ed72f35448116420fb085a6",
+          "input_transport_receipt": "a96b7a2ed3b4074bf44bb2de6ce30ebb696329ca"
         }
       },
-      "recorded_at": "2026-10-17T20:41:07.131235+00:00"
+      "recorded_at": "2026-10-17T23:20:44.714955+00:00"
     }
   }
 }
