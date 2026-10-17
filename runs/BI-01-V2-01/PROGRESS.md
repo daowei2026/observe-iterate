@@ -267,3 +267,9 @@
 - 精确所需SSID、实际global Recent聊天行及Projects/全部三项通过；probe开始21:30:23.968Z、完成21:36:50.460Z，真实lease至22:36:50.460Z。22次正式调用、重启/业务输入/Send均0，控制21:37:12.059253Z释放并readback，无pending/UNKNOWN，executor永久退役。
 - 一次本地原观察保存遇参数过长，保留原内存结果后分块落盘，未重放手机，其首caller准确时间未知；一次误入搜索/最近文件未计Recent通过，退出后实际聊天列表已核。完整实证保留于gitignored现场证据，公开回执不包含无关聊天标题。
 - 末态Projects/全部，原R6未由本episode额外观察。实际healthy已登记，第四观察已由全新零继承executor导航回原执行chat；21:37:16.480Z到期与120秒首动作SLO按实际caller另记，不把network完成当作原R6检查完成。整个run继续。
+
+## R0006第四次到期检查：仍思考，首动作SLO延迟保留
+
+- 网络续期后的正确Project唯一原执行chat已由fresh executor重新进入，最终frame21:40:56.176Z、实际观察完成21:40:56.642Z，准确原角色/当前R6 token与正在思考/STOP匹配，无回复正文/完成尾部/加载圈/错误。
+- 首phone caller21:40:07.383Z，超过到期+120秒边界50.903秒，真实SLO失败保留；网络结果回交和新executor准备/控制取得成本计入，没有跳gate或把延迟当模型故障。共6调用（observe1、mark2、tap2、原地2秒wait1）；最后tap即时截图仍旧列表，等导航结算后取得原chat，未重复tap。输入/Send/STOP/恢复0，无pending/UNKNOWN；21:41:08.588605Z释放并readback，executor退役。
+- 原思考起点20:55:32.938Z保持；下次检查21:50:56.642Z（北京时间05:50:56）。有效完整结果仍5，专业S3完整回交仍待，原R6继续，不以运输或本次观察收工。
