@@ -108,6 +108,39 @@ def source(repo: Path, loc: dict, repository: str, default_ref: str | None = Non
     return part, meta
 
 
+def binding_target(repo: Path, loc: dict, repository: str) -> dict:
+    """Resolve one complete Binding and its original blob/span, without aliases.
+
+    Reuse the dispatcher's Git/selector/duplicate-key parsing. Equal JSON at a
+    different position is not the same target; broad or incomplete selections
+    never fall back to searching for a plausible Binding elsewhere.
+    """
+    part, meta = source(repo, loc, repository)
+    body, oid = read_git(repo, meta["commit"], meta["path"])
+    if body.count(part) != 1:
+        fail("BINDING_SELECTION_AMBIGUOUS")
+    raw = part
+    offset = 0
+    try:
+        value = loads(raw)
+    except ValueError:
+        blocks = list(re.finditer(
+            r"^```(?:json)?[ \t]*\r?\n(.*?)^```[ \t]*\r?$", part, re.M | re.S))
+        if len(blocks) != 1:
+            fail("ONE_COMPLETE_BINDING_REQUIRED")
+        raw = blocks[0].group(1)
+        offset = blocks[0].start(1)
+        value = loads(raw)
+    if (not isinstance(value, dict)
+            or not str(value.get("schema", "")).startswith("question-work/")
+            or value.get("kind") not in {"BINDING", "BOOTSTRAP"}):
+        fail("QUESTION_WORK_BINDING_REQUIRED")
+    encoded = raw.strip()
+    start = body.index(part) + offset + raw.index(encoded)
+    return {"binding": value, "blob": oid, "start": start,
+            "end": start + len(encoded)}
+
+
 def cite(meta: dict) -> str:
     return meta["repo"] + "@" + meta["commit"] + ":" + meta["path"] + "::" + meta["selector"]
 

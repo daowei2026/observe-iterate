@@ -393,7 +393,18 @@ def after_return(view: Git, round_id: str) -> dict:
         for key in ("work_id", "invocation_id"):
             if qret.get(key) != rec.get(key):
                 errors.append("QUESTION_WORK_RETURN_MISMATCH:" + key)
-        if qret.get("binding_ref") != rec.get("binding_ref"):
+        tools = Path(__file__).resolve().parents[1] / "overlay" / "tools"
+        modules = []
+        for name in ("management_prompt", "question_work_check"):
+            spec = importlib.util.spec_from_file_location(name, tools / (name + ".py"))
+            module = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(module)
+            modules.append(module)
+        coordinator, question_work = modules
+        if not question_work.binding_refs_equal(
+                rec.get("binding_ref"), qret.get("binding_ref"),
+                resolver=lambda loc: coordinator.binding_target(
+                    view.root, loc, "daowei2026/observe-iterate")):
             errors.append("QUESTION_WORK_RETURN_BINDING_MISMATCH")
         if not isinstance(qret.get("focus_results"), list) or not qret["focus_results"]:
             errors.append("QUESTION_WORK_FOCUS_RESULTS_MISSING")

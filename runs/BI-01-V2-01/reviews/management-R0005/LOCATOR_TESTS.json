@@ -1,0 +1,45 @@
+{
+  "worker_order_id": "BI01V2-R0005-RETURN-LOCATOR-FIX-01",
+  "recorded_at": "2026-10-17T20:21:35.353850+00:00",
+  "executed_by": "codex-thread:01a14a59-7f26-7921-b549-3e7cd9be5119",
+  "capacity": "本单具名Worker技术职责",
+  "checks": [
+    {
+      "command": "python3 -m unittest discover -s runtime/tests -p test_bi01_run_gate.py",
+      "tests": 16,
+      "status": "PASS",
+      "scope": "13原有+3新增，含实际Git唯一原对象与两消费者正/负路径；纯合成，不冒称真实Owner/Pro"
+    },
+    {
+      "command": "python3 -m unittest discover -s runtime/overlay/tests -p 'test_question_work*.py'",
+      "tests": 35,
+      "passed": 34,
+      "errors": 1,
+      "status": "PREEXISTING_FIXTURE_UNAVAILABLE",
+      "baseline_replay": "原d8430e6 question_work_check复跑同35项仍0失败/1错误；路径错误指向/dwdhome/agent_evolution旧试跑文件。未改路径/旧业务。"
+    },
+    {
+      "command": "python3 -m unittest discover -s runtime/overlay/tests -p test_management_prompt.py",
+      "tests": 41,
+      "failures": 10,
+      "errors": 31,
+      "status": "PREEXISTING_LEGACY_STAGE_FAILURES",
+      "baseline_replay": "用原d8430e6 management_prompt源码和相同fixtures实际复跑：同41项、10失败、31错误；旧单字符A/B/C和旧路径不适用于现V2合同，不在本单改业务stage。"
+    },
+    {
+      "command": "python3 -m unittest discover -s runtime/tests -p test_bi01_workmap_consistency.py",
+      "tests": 2,
+      "status": "PASS"
+    },
+    {
+      "command": "python3 -m unittest discover -s runtime/tests -p test_bi01_v2_source_boundary.py",
+      "tests": 9,
+      "passed": 8,
+      "failures": 1,
+      "status": "STARTUP_ONLY_EXPECTATION_AFTER_REAL_ADOPTION",
+      "fact": "未修改该测试或WORKMAP_BINDING；唯一失败仍要求NOT_CONFIGURED，而真实本run已于81533采用为ADOPTED。不撤销真实采用以满足启动基线断言。"
+    }
+  ],
+  "current_limits": "不称所有仓库测试绿色；当前16项直接回归与Workmap两项通过。原真实R4本地试回用已过，发布代码的fresh回读及正式真实回用另记。",
+  "business_gate": false
+}

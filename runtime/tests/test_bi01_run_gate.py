@@ -17,6 +17,10 @@ spec = importlib.util.spec_from_file_location(
     "bi01_test_coordinator", PROJECT / "runtime" / "overlay" / "tools" / "management_prompt.py")
 coordinator = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(coordinator)
+spec = importlib.util.spec_from_file_location(
+    "bi01_test_question_work", PROJECT / "runtime" / "overlay" / "tools" / "question_work_check.py")
+question_work = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(question_work)
 
 RUN = "runs/BI-01-V2-01"
 ROLE = "management"
@@ -321,6 +325,113 @@ class RoundGateOffline(unittest.TestCase):
         self.current = self.commit("synthetic wrong binding")
         result = gate.after_return(self.view(), RID)
         self.assertIn("QUESTION_WORK_RETURN_BINDING_MISMATCH", result["errors"])
+
+    def prepare_binding_returns(self):
+        self.prepare_reader()
+        path = self.repo / gate.READER_TASK
+        original = path.read_text()
+        changed = copy.deepcopy(self.reader_binding)
+        changed["question_ids"] = ["OTHER"]
+        extra = (
+            '<a id="other-binding"></a>\n```json\n' + json.dumps(changed) + '\n```\n'
+            '<a id="same-content-other-position"></a>\n```json\n'
+            + json.dumps(self.reader_binding) + '\n```\n'
+            '<a id="multiple-json"></a>\n```json\n'
+            + json.dumps(self.reader_binding) + '\n```\n```json\n{}\n```\n'
+            '<a id="duplicate-key"></a>\n```json\n'
+            '{"schema":"question-work/v2","kind":"BINDING","kind":"BINDING"}\n```\n'
+            '<a id="duplicate-anchor"></a>\nfirst\n'
+            '<a id="duplicate-anchor"></a>\nsecond\n')
+        self.write(gate.READER_TASK, original + extra)
+        self.binding_source_commit = self.commit('synthetic multiple targets, never real authority')
+        self.record['binding_ref']['commit'] = self.binding_source_commit
+        self.reader_event['binding_ref'] = copy.deepcopy(self.record['binding_ref'])
+        self.returned = {
+            'schema': 'question-work/v2', 'kind': 'RETURN', 'work_id': 'BI-01',
+            'invocation_id': self.record['invocation_id'],
+            'binding_ref': self.record['binding_ref'] | {'selector': '#question-work-binding'},
+            'focus_results': [{'question_id': 'AUDIT'}], 'trigger_observations': [],
+            'continuation_ref': {'answer_ref': '#same-work'}, 'batch_remaining_ref': None,
+        }
+        self.returned_role = {
+            'schema': 'longrun-return/v1', 'work_id': 'BI-01',
+            'invocation_id': self.record['invocation_id'],
+            'assignment_token': self.record['assignment_token'],
+            'question_work_ref': '#question-work-return',
+            'handoff': {'kind': 'CONTINUE', 'instructions_ref': '#same-work'},
+            'remaining_scope_ref': None,
+        }
+        p = RUN + '/provenance/turns/' + self.reader_round + '/'
+        self.write(p + 'SEND_RECEIPT.json', json.dumps({'state': 'COMMITTED'}))
+        self.write(p + 'FULL_RESPONSE.md', 'Synthetic complete response, no real Pro.\n')
+        self.save_binding_returns()
+
+    def save_binding_returns(self):
+        p = RUN + '/provenance/turns/' + self.reader_round + '/'
+        self.write(p + 'QUESTION_WORK_RETURN.json', json.dumps(self.returned))
+        self.write(p + 'ROLE_RETURN.json', json.dumps(self.returned_role))
+        self.save_reader('synthetic saved original dispatch and returns')
+
+    def binding_associations(self, binding=None):
+        return question_work.association_errors(
+            self.reader_binding if binding is None else binding,
+            self.returned, self.returned_role, self.record['binding_ref'],
+            '#question-work-return', self.record['invocation_id'],
+            self.record['assignment_token'], binding_resolver=lambda loc:
+            coordinator.binding_target(self.repo, loc, 'daowei2026/observe-iterate'))
+
+    def test_binding_anchor_and_lines_reach_same_original_object_in_both_consumers(self):
+        self.prepare_binding_returns()
+        for ref in (self.returned['binding_ref'], self.record['binding_ref']):
+            with self.subTest(ref=ref):
+                changed_ref = self.returned['binding_ref'] != ref
+                self.returned['binding_ref'] = copy.deepcopy(ref)
+                if changed_ref:
+                    self.save_binding_returns()
+                self.assertEqual(self.binding_associations(), [])
+                result = gate.after_return(self.view(), self.reader_round)
+                self.assertTrue(result['ok'], result)
+        changed = copy.deepcopy(self.reader_binding)
+        changed['routes']['same_work']['recipient_ref'] = 'different-authority'
+        self.assertIn('BINDING_MISMATCH', self.binding_associations(changed))
+
+    def test_binding_equivalence_rejects_wrong_missing_ambiguous_and_partial_targets(self):
+        self.prepare_binding_returns()
+        expected = copy.deepcopy(self.record['binding_ref'])
+        cases = [
+            {'repo': 'other/repository'}, {'commit': self.input_commit},
+            {'commit': 'f' * 40}, {'path': 'missing.md'}, {'selector': '#missing'},
+            {'selector': '#other-binding'}, {'selector': '#same-content-other-position'},
+            {'selector': '#multiple-json'}, {'selector': '#duplicate-key'},
+            {'selector': '#duplicate-anchor'}, {'selector': 'full'},
+            {'selector': ''},
+            {'selector': 'L1-L2'}, {'selector': 'L999999-L999999'},
+            {'selector': expected['selector'].replace('L', '', 1)},
+        ]
+        for change in cases:
+            with self.subTest(change=change):
+                self.returned['binding_ref'] = expected | change
+                self.save_binding_returns()
+                self.assertIn('BINDING_MISMATCH', self.binding_associations())
+                errors = gate.after_return(self.view(), self.reader_round)['errors']
+                self.assertIn('QUESTION_WORK_RETURN_BINDING_MISMATCH', errors)
+        missing = expected | {'commit': 'f' * 40}
+        self.assertFalse(question_work.binding_refs_equal(
+            missing, missing, resolver=lambda loc: coordinator.binding_target(
+                self.repo, loc, 'daowei2026/observe-iterate')))
+
+    def test_binding_resolution_does_not_override_other_original_associations(self):
+        self.prepare_binding_returns()
+        self.returned['invocation_id'] = 'wrong-invocation'
+        self.returned_role['assignment_token'] = 'wrong-token'
+        self.returned_role['question_work_ref'] = '#another-answer'
+        self.save_binding_returns()
+        errors = self.binding_associations()
+        for expected in ('INVOCATION_MISMATCH', 'TOKEN_MISMATCH', 'RETURN_REFERENCE_MISMATCH'):
+            self.assertIn(expected, errors)
+        errors = gate.after_return(self.view(), self.reader_round)['errors']
+        self.assertIn('QUESTION_WORK_RETURN_MISMATCH:invocation_id', errors)
+        self.assertIn('ROLE_RETURN_MISMATCH:assignment_token', errors)
 
 
 if __name__ == "__main__":

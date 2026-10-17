@@ -6,7 +6,7 @@ not proof that a role was invoked. See DR14 for authority and live-loop rules.
 from __future__ import annotations
 import math
 import re
-from typing import Any
+from typing import Any, Callable
 
 ACTIVE_WORK = 'ACTIVE'
 REPEAT_ONCE = 'ONCE'
@@ -24,9 +24,40 @@ def text_ref(value: Any) -> str | None:
     raise ValueError('Resolve message/attachment reference to its actual carrier first')
 
 
+def binding_refs_equal(expected: dict, returned: dict, *,
+                       resolver: Callable[[dict], dict] | None = None,
+                       binding: dict | None = None) -> bool:
+    """Compare original Git targets, retaining legacy already-resolved equality.
+
+    A resolver must return the complete Binding plus its original blob/span
+    (management_prompt.binding_target). Different source identities never alias.
+    Without a resolver only the previous literal-equality path is available.
+    """
+    if expected == returned and resolver is None:
+        return True
+    keys = {"repo", "commit", "path", "selector"}
+    if not all(isinstance(loc, dict) and set(loc) == keys
+               and all(isinstance(loc[k], str) and loc[k] for k in keys)
+               and re.fullmatch(r"[0-9a-f]{40}", loc["commit"])
+               for loc in (expected, returned)):
+        return False
+    if any(expected[k] != returned[k] for k in ("repo", "commit", "path")):
+        return False
+    if resolver is None:
+        return False
+    try:
+        left, right = resolver(expected), resolver(returned)
+        return (left == right and isinstance(left, dict)
+                and set(left) == {"binding", "blob", "start", "end"}
+                and (binding is None or left["binding"] == binding))
+    except (ValueError, TypeError, KeyError, UnicodeError, OSError):
+        return False
+
+
 def association_errors(binding: dict, returned: dict, role: dict,
                        binding_ref: dict, return_ref: str,
-                       invocation_id: str, assignment_token: str) -> list[str]:
+                       invocation_id: str, assignment_token: str, *,
+                       binding_resolver: Callable[[dict], dict] | None = None) -> list[str]:
     """Check joins against the ACTUAL dispatch, not the newest repository plan.
     References passed here must be scoped to the same saved original answer.
     This function cannot decide that source text exists or was read/understood.
@@ -38,7 +69,8 @@ def association_errors(binding: dict, returned: dict, role: dict,
         errors.append('INVOCATION_MISMATCH')
     if role['assignment_token'] != assignment_token:
         errors.append('TOKEN_MISMATCH')
-    if returned['binding_ref'] != binding_ref:
+    if not binding_refs_equal(binding_ref, returned['binding_ref'],
+                              resolver=binding_resolver, binding=binding):
         errors.append('BINDING_MISMATCH')
     if role.get('question_work_ref') != return_ref:
         errors.append('RETURN_REFERENCE_MISMATCH')
