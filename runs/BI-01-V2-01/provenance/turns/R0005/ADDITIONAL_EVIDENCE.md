@@ -17,3 +17,7 @@ B包外层身份差异、成员匹配与MD-01限制保持原事实，原固定�
 本次新业务结果树已真实变化；Intake需要按管理实际判断/版本和当前snapshot处理，不沿用过期全树指纹冒称通过。
 
 主控实际只读核对aidata版本：独立分支 `codex/bi01v2-r0004-fixed-input`，已提交修补 `428c70fa3ef85a3bfff89be3f5cd3d93bed523ea`；保护main仍为`9ff7ce4929b36945f63b1c9875e59f68141f997a`。此为真实代码身份，不是对后续未提交改动或全部业务结果的验收。
+
+## 在途技术证据追加（20:00Z）
+
+新版146 CSV历史快照已发布在91b0083214065d43d9e80a4da194dd22119faf6e，其后同一Worker实际发现small Zig UTI数字文本格式导致status/confirmed时间坐标未连接。Worker正在原工单中修复并重验，不改固定输入；旧144/146包保留并具名该缺口。当前未有修复后正式回交，详见artifacts/worker-R0004/CURRENT_DELIVERY.md。本追加内容没有额外Pro发送，不声称在途管理已经读取。
