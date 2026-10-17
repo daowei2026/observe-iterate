@@ -140,7 +140,7 @@ class V2Boundary(unittest.TestCase):
         self.assertIn("先核是否真未提交", rounds)
         self.assertIn("不要再应用同轮 ZIP", rounds)
         self.assertIn("非 force 提交并远端回读", rounds)
-        self.assertIn("不能因为", rounds)
+        self.assertIn("不因不能提交", rounds)
         self.assertIn("不规定一个不存在的专用 MCP API", rounds)
 
     def test_new_run_not_adopted_or_sent(self):
