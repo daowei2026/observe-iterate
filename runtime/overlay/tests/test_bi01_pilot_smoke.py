@@ -113,9 +113,10 @@ class BI01Smoke(unittest.TestCase):
         prepared = dispatch.prepare_dispatch(self.repo, self.policy, CONFIG, event)
         self.assertEqual((prepared["role"], prepared["mode"], prepared["stage"]),
                          ("management", "M-START", "BI01"))
-        self.assertIn("U2 共同机会簇位置/成员是否合理", prepared["message"])
-        self.assertIn("提前验算且固定", prepared["message"])
+        self.assertIn("U2 OpportunityCluster 位置/边界是否合理", prepared["message"])
+        self.assertIn("U3 四方面能否真的区分品种好不好做", prepared["message"])
         self.assertIn("04_BI01_BUSINESS_BASELINE.md", prepared["message"])
+        self.assertIn("06_U2_U3_DESIGN_SOURCE_MAP.md", prepared["message"])
         self.assertFalse(prepared["sent"])
         self.assertFalse(prepared["semantic_review_passed"])
         dispatch.verify(prepared, prepared["message"].encode("utf-8"))
