@@ -261,3 +261,9 @@
 - 实际提交b9ecbfa4b27f40365ed72f35448116420fb085a6已推送成功；51 As-Of的5583原成员、5430 CSV、32,113,835字节原文在readable_views/REQUESTED_51_CURRENT/，有完整原VIEW/SOURCE_BINDING/导出manifest。原包内容与CSV列/行没有改变，原320节点和ZIP保留。
 - 每个原ZIP成员计算的Git blob身份，与本地实际commit及fresh GitHub子树的5585文件（含运输说明和逐成员回执）全部一致；四份入口/进度/检查另fresh原字节回读。具体方法见本R INPUT_TRANSPORT_RECEIPT.json，未称逐个远端raw下载全部32MB。
 - 已解决R6指出的这些现成包无法批量取用的输入运输需要；是否已实际消费新增文本、对应S3判断、完整Return与管理采用仍待真实专业回交。原R6不追加Send；后继将带入此确切提交继续原完整任务。共享准入续期仍在独立episode执行，run ACTIVE。
+
+## R0006共享准入真实续期，第四次线程检查接续
+
+- 精确所需SSID、实际global Recent聊天行及Projects/全部三项通过；probe开始21:30:23.968Z、完成21:36:50.460Z，真实lease至22:36:50.460Z。22次正式调用、重启/业务输入/Send均0，控制21:37:12.059253Z释放并readback，无pending/UNKNOWN，executor永久退役。
+- 一次本地原观察保存遇参数过长，保留原内存结果后分块落盘，未重放手机，其首caller准确时间未知；一次误入搜索/最近文件未计Recent通过，退出后实际聊天列表已核。完整实证保留于gitignored现场证据，公开回执不包含无关聊天标题。
+- 末态Projects/全部，原R6未由本episode额外观察。实际healthy已登记，第四观察已由全新零继承executor导航回原执行chat；21:37:16.480Z到期与120秒首动作SLO按实际caller另记，不把network完成当作原R6检查完成。整个run继续。
