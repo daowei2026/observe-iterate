@@ -165,13 +165,17 @@ class V2Boundary(unittest.TestCase):
         self.assertIn("15 条", fixed)
         self.assertIn("同一个 hc/i/rb Case 的 5 个 As-Of", (ROOT / V2_SOURCES[0]).read_text(encoding="utf-8"))
 
-    def test_new_run_not_adopted_or_sent(self):
-        binding = json.loads((ROOT / "runtime/config/WORKMAP_BINDING.json").read_text(encoding="utf-8"))
+    def test_new_run_template_does_not_claim_adoption_or_owner_start(self):
+        # The live run legitimately gains GO/BOOTSTRAP and adoption. The reusable
+        # startup template must remain unexecuted and must never supply a GO.
+        template = ROOT / "runtime/operations/v2/templates"
+        binding = json.loads((template / "WORKMAP_BINDING_TEMPLATE.json").read_text(encoding="utf-8"))
         self.assertEqual(binding["status"], "NOT_CONFIGURED")
         self.assertEqual(binding["streams"]["bi01"]["map"]["path"], "runs/BI-01-V2-01/00_长程推进地图.md")
         self.assertEqual(binding["streams"]["bi01"]["task"], "runs/BI-01-V2-01/01_当前任务.md")
-        for path in ("runs/BI-01-V2-01/OWNER_START.md", "runs/BI-01-V2-01/BOOTSTRAP.json"):
-            self.assertFalse((ROOT / path).exists())
+        for name in ("OWNER_START.md", "BOOTSTRAP.json"):
+            self.assertFalse((template / name).exists())
+        self.assertIn("TEMPLATE ONLY", binding["note"])
         gate = (ROOT / "runtime/tools/bi01_run_gate.py").read_text(encoding="utf-8")
         self.assertIn('RUN = "runs/BI-01-V2-01"', gate)
 

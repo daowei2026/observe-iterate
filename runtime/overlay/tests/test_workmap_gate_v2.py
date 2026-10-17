@@ -49,6 +49,28 @@ class V2RegressionTests(unittest.TestCase):
         d['task_payload_sha256']=hashlib.sha256((self.repo/'one/task.md').read_bytes()).hexdigest()
         return d
 
+    def test_first_adoption_base_has_template_but_no_prior_map_task_or_intake(self):
+        self.enable_v2()
+        complete = self.git('rev-parse', 'HEAD')
+        paths = ['one/map.md', 'one/task.md', 'intake.json']
+        self.git('rm', '--', *paths)
+        first_base = self.commit()
+        for path in paths:
+            self.assertFalse(self.mod.GitView(self.repo, first_base).exists(path))
+        self.assertTrue(self.mod.GitView(self.repo, first_base).exists('binding.json'))
+        self.git('checkout', complete, '--', *paths)
+        self.commit()
+        self.seal_v2()
+        # These are synthetic reports in a temporary repository, never actual
+        # independent-reader evidence for BI-01 or a production intake.
+        self.receipts['intakes']['one']['dispatch'].update(
+            kind='NEW_STAGE', requires_reader_check=True)
+        self.put_json('intake.json', self.receipts)
+        self.commit()
+        result = self.check(base_ref=first_base, dispatch=True, delivery=self.delivery_v2())
+        self.assertTrue(result['ok'], result)
+        self.assertEqual(result['reader_qualification'], 'RECORDED')
+
     def test_v2_reader_report_does_not_invalidate_its_inputs(self):
         self.enable_v2(); self.seal_v2()
         before=self.mod.snapshot(self.repo,self.git('rev-parse','HEAD'),'binding.json','one')

@@ -50,4 +50,5 @@
 - 通用 `ROLE_RETURN`、`QUESTION_WORK_RETURN`、Workmap/管理 Gate、手机 Skills 和 GitHub 记录机制保持原样，不建立第二套手机消息调度器。
 - `runtime/config/WORKMAP_BINDING.json` 准备时必须是 `NOT_CONFIGURED`，实际管理签发、读回、intake 通过后才有权转为 ADOPTED。
 - `runtime/tools/bi01_run_gate.py` 只能核身份、原样载荷、实物和 Return 关联，不证明业务正确、实际发送或专业结果完成。
+- 本 run 的首次地图只读接收，按 [R0002 具名管理决定](../../runs/BI-01-V2-01/reviews/management-R0002/DECISION.md#reader-pre-adoption)先产生采用证据：仅当前已签 `BI01-V2-WORKMAP-READER-01` 的 review／INDEPENDENT_REVIEW，可在 `NOT_CONFIGURED` 下以完整任务、Binding、管理采用来源及冻结输入运行同一 BI01 pre-dispatch。该路径复用原 Overlay12 和 Workmap snapshot，不反向调用要求采用已完成的专业 Workmap dispatch；仍核来源、接收者、原样载荷与非重复发送。其他 review／receiver 和普通专业任务不取得此用途权限；真实读者报告取得并按已签条件完成 Intake／ADOPTED 后，专业首发仍走原 Workmap check／dispatch。
 - 没有真实图、实际取得的同源数据或 Owner 可审阅分析时，如实记录阻断/未完，不能声称已经完成 S2/S3。

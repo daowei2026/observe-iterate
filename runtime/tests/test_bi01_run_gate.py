@@ -2,6 +2,7 @@
 import hashlib
 import importlib.util
 import json
+import copy
 import subprocess
 import tempfile
 import unittest
@@ -12,6 +13,10 @@ MODULE_PATH = PROJECT / "runtime" / "tools" / "bi01_run_gate.py"
 spec = importlib.util.spec_from_file_location("bi01_gate_under_test", MODULE_PATH)
 gate = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(gate)
+spec = importlib.util.spec_from_file_location(
+    "bi01_test_coordinator", PROJECT / "runtime" / "overlay" / "tools" / "management_prompt.py")
+coordinator = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(coordinator)
 
 RUN = "runs/BI-01-V2-01"
 ROLE = "management"
@@ -30,7 +35,9 @@ class RoundGateOffline(unittest.TestCase):
         self.git("config", "user.email", "synthetic@example.invalid")
         self.write(RUN + "/README.md", "# Synthetic pending run\n")
         self.write(RUN + "/OWNER_START.md", "Synthetic Owner GO; not a real authority.\n")
-        self.write(RUN + "/BOOTSTRAP.json", json.dumps({"schema": "question-work/v2", "kind": "BOOTSTRAP", "work_id": "BI-01"}))
+        self.write(RUN + "/BOOTSTRAP.json", json.dumps({
+            "schema": "question-work/v2", "kind": "BOOTSTRAP", "work_id": "BI-01",
+            "recipient_ref": "synthetic-management-chat"}))
         self.write("runtime/config/WORKMAP_BINDING.json", '{"schema":"workmap-binding/v2","status":"NOT_CONFIGURED"}')
         self.policy = self.commit("synthetic source baseline")
         self.owner = self.loc(RUN + "/OWNER_START.md")
@@ -83,6 +90,173 @@ class RoundGateOffline(unittest.TestCase):
 
     def view(self):
         return gate.Git(self.repo, self.current)
+
+    def prepare_reader(self):
+        """Entirely synthetic Git history; it is never a real GO/reader/intake."""
+        reader = gate.READER_TASK
+        self.write(RUN + "/README.md", '<a id="common"></a>\nSynthetic common\n<a id="bi01"></a>\nSynthetic run\n')
+        self.write(RUN + "/00_长程推进地图.md", '<a id="goal"></a>\nSynthetic map\n')
+        self.write(RUN + "/01_当前任务.md", 'Synthetic complete S1/S2/S3 task; no business result.\n')
+        goal = "professional/v2/00_PURPOSE_AND_THREE_STEP_FLOW.md"
+        self.write(goal, 'Synthetic goal; not actual business input.\n')
+        policy_path = 'runtime/overlay/08_自然语言运行提示_v0.3.md'
+        self.write(policy_path, (PROJECT / policy_path).read_text())
+        config_path = 'runtime/config/COORDINATOR_DISPATCH.json'
+        self.write(config_path, (PROJECT / config_path).read_text())
+        self.map_binding = {
+            'schema': 'workmap-binding/v2', 'status': 'NOT_CONFIGURED', 'manager_role': 'management',
+            'overview': {'path': RUN + '/README.md', 'anchors': ['common', 'bi01']},
+            'shared_overview_anchors': ['common'], 'owner_sources': [RUN + '/OWNER_START.md'],
+            'rule_paths': [goal], 'receipt_path': RUN + '/reviews/WORKMAP_INTAKE_CURRENT.json',
+            'streams': {'bi01': {'map': {'path': RUN + '/00_长程推进地图.md', 'anchors': ['goal']},
+                               'task': RUN + '/01_当前任务.md', 'overview_anchors': ['bi01'],
+                               'watch_roots': [RUN + '/artifacts']}},
+        }
+        self.write(gate.BINDING, json.dumps(self.map_binding))
+        authority_path = RUN + '/reviews/management-R0001/DECISION.md'
+        self.write(authority_path, '\n'.join([
+            'work_id: BI-01', 'run_id: BI-01-V2-01', 'role: management',
+            'invocation_id: ' + INV, 'assignment_token: ' + self.record['assignment_token'],
+            '<a id="reader-pre-adoption"></a>', 'Synthetic technical authority only.',
+            '<a id="adoption"></a>', 'Synthetic conditional intake.', '',
+        ]))
+        self.input_commit = self.commit('synthetic frozen input and issued authority')
+        self.policy = self.input_commit
+        authority = self.loc(authority_path)
+        self.write(RUN + '/provenance/turns/R0001/SEND_RECEIPT.json', json.dumps({'state': 'COMMITTED'}))
+        self.write(RUN + '/provenance/turns/R0001/ROLE_RETURN.json', json.dumps({
+            'schema': 'longrun-return/v1', 'work_id': 'BI-01',
+            'invocation_id': INV, 'assignment_token': self.record['assignment_token'],
+            'role_outputs': {'management': {'decision_ref': '#reader-pre-adoption'}},
+            'artifact_refs': [{k: authority[k] for k in ('repo', 'commit', 'path')}],
+        }))
+        prefix = ('task_id: BI01-V2-WORKMAP-READER-01\n'
+                  'Synthetic read-only task, never a real independent report.\n'
+                  '<a id="scope"></a>\nSynthetic full reading scope.\n'
+                  '<a id="same-work"></a>\nContinue this synthetic reading.\n')
+        self.write(reader, prefix)
+        body_commit = self.commit('synthetic complete reader body')
+        body_ref = self.loc(reader) | {'commit': body_commit}
+        self.reader_binding = {
+            'schema': 'question-work/v2', 'kind': 'BINDING', 'work_id': 'BI-01',
+            'professional_mode': 'INDEPENDENT_REVIEW',
+            'plan_ref': authority | {'selector': '#reader-pre-adoption'},
+            'full_scope_ref': body_ref, 'focus_ref': body_ref,
+            'deliverables_ref': body_ref, 'completion_ref': body_ref,
+            'source_reads': [{'source': self.loc(p), 'requirement': 'FOCUS_FULL',
+                              'purpose': 'Synthetic direct input', 'reuse_evidence': None}
+                             for p in [RUN + '/README.md', RUN + '/00_长程推进地图.md',
+                                       RUN + '/01_当前任务.md', gate.BINDING, RUN + '/OWNER_START.md']],
+            'routes': {'same_work': {'recipient_role': 'review', 'recipient_ref': 'synthetic-reader-chat',
+                                     'instructions_ref': body_ref | {'selector': '#same-work'}}},
+            'question_ids': ['AUDIT'], 'triggers': [],
+        }
+        encoded = json.dumps(self.reader_binding, ensure_ascii=False, indent=2)
+        self.write(reader, prefix + '<a id="question-work-binding"></a>\n```json\n' + encoded + '\n```\n')
+        bound_commit = self.commit('synthetic exact reader binding')
+        lines = (self.repo / reader).read_text().splitlines()
+        start = lines.index('```json') + 2
+        end = len(lines) - 1
+        bound_ref = self.loc(reader) | {'commit': bound_commit, 'selector': f'L{start}-L{end}'}
+        self.reader_round = 'R0003'
+        self.record = {
+            'schema': 'bi01-invocation/v1', 'run_id': 'BI-01-V2-01', 'round_id': self.reader_round,
+            'work_id': 'BI-01', 'invocation_id': 'BI01-V2-01-R0003-synthetic-reader-a',
+            'assignment_token': 'synthetic-reader-token', 'role': 'review',
+            'recipient_ref': 'synthetic-reader-chat', 'policy_commit': self.policy,
+            'binding_ref': bound_ref, 'current_task_ref': body_ref | {'commit': bound_commit},
+            'task_adoption_ref': authority | {'selector': '#adoption'}, 'question_work_required': True,
+        }
+        self.record['round_marker'] = '[' + self.record['invocation_id'] + ']'
+        self.reader_event = {k: self.record[k] for k in
+                             ('work_id', 'invocation_id', 'assignment_token', 'binding_ref',
+                              'current_task_ref', 'task_adoption_ref')}
+        self.reader_event.update(route='same_work', send_state='NOT_SENT', dispatch_kind='NORMAL')
+        prepared = coordinator.prepare_dispatch(self.repo, self.policy, config_path, self.reader_event)
+        self.prompt = prepared['message']
+        self.record['prompt_sha256'] = hashlib.sha256(self.prompt.encode()).hexdigest()
+        self.save_reader('synthetic prepared reader; NO PHONE')
+
+    def save_reader(self, message):
+        p = RUN + '/provenance/turns/' + self.reader_round + '/'
+        self.write(p + 'INVOCATION.json', json.dumps(self.record, ensure_ascii=False))
+        self.write(p + 'PROMPT.md', self.prompt)
+        self.write(p + 'DISPATCH.json', json.dumps(self.reader_event, ensure_ascii=False))
+        self.current = self.commit(message)
+
+    def test_first_issued_reader_prepares_without_adoption_or_intake(self):
+        self.prepare_reader()
+        result = gate.pre_dispatch(self.view(), self.reader_round)
+        self.assertTrue(result['ok'], result)
+        self.assertFalse(result['sent'])
+        self.assertFalse(result['business_gate'])
+        self.assertFalse(self.view().exists(self.map_binding['receipt_path']))
+
+    def test_other_roles_sources_and_recipients_cannot_borrow_reader_authority(self):
+        self.prepare_reader()
+        original = copy.deepcopy(self.record)
+        changes = [({'role': role}, 'WORKMAP_NOT_ADOPTED') for role in ('professional', 'receiver')]
+        changes += [({'recipient_ref': 'synthetic-wrong-chat'}, 'RECIPIENT_CHANGED'),
+                    ({'bootstrap_ref': self.bootstrap, 'binding_ref': self.bootstrap}, 'WORKMAP_NOT_ADOPTED'),
+                    ({'binding_ref': self.bootstrap}, 'READER_TASK_BINDING_SOURCE_MISMATCH'),
+                    ({'current_task_ref': self.loc(RUN + '/01_当前任务.md')}, 'WORKMAP_NOT_ADOPTED'),
+                    ({'task_adoption_ref': self.loc(RUN + '/OWNER_START.md')}, 'DISPATCH_SOURCE_MISMATCH')]
+        for change, expected in changes:
+            with self.subTest(change=change):
+                self.record = copy.deepcopy(original)
+                self.record.update(change)
+                self.save_reader('synthetic invalid reader caller')
+                result = gate.pre_dispatch(self.view(), self.reader_round)
+                self.assertFalse(result['ok'], result)
+                self.assertTrue(any(expected in e for e in result['errors']), result)
+
+    def test_reader_cannot_impersonate_management_with_a_binding_as_bootstrap(self):
+        self.prepare_reader()
+        self.record.update(role='management', bootstrap_ref=self.record['binding_ref'])
+        self.save_reader('synthetic reader disguised as bootstrap management')
+        result = gate.pre_dispatch(self.view(), self.reader_round)
+        self.assertFalse(result['ok'], result)
+        self.assertIn('BOOTSTRAP_UNREADABLE', result['errors'])
+
+    def test_reader_frozen_input_cannot_be_silently_replaced(self):
+        self.prepare_reader()
+        self.write(RUN + '/00_长程推进地图.md', '<a id="goal"></a>\nChanged synthetic map.\n')
+        self.current = self.commit('synthetic protected input drift')
+        result = gate.pre_dispatch(self.view(), self.reader_round)
+        self.assertFalse(result['ok'], result)
+        self.assertTrue(any('FIRST_READER_INPUT_CHANGED' in e for e in result['errors']), result)
+
+    def test_reader_requires_the_current_issued_task(self):
+        self.prepare_reader()
+        self.write(gate.READER_TASK, (self.repo / gate.READER_TASK).read_text() + '\nChanged synthetic task.\n')
+        self.current = self.commit('synthetic current task changed')
+        result = gate.pre_dispatch(self.view(), self.reader_round)
+        self.assertTrue(any('READER_TASK_NOT_CURRENT' in e for e in result['errors']), result)
+
+    def test_reader_exact_renderer_and_send_safety_are_preserved(self):
+        self.prepare_reader()
+        p = RUN + '/provenance/turns/' + self.reader_round + '/SEND_RECEIPT.json'
+        for state in ('UNKNOWN', 'COMMITTED', 'BLOCKED'):
+            with self.subTest(state=state):
+                self.write(p, json.dumps({'state': state}))
+                self.current = self.commit('synthetic unsafe reader send state')
+                self.assertIn('SEND_NOT_SAFE:' + state, gate.pre_dispatch(self.view(), self.reader_round)['errors'])
+        self.write(p, json.dumps({'state': 'NOT_SENT'}))
+        self.prompt += 'Synthetic unauthorized payload addition.\n'
+        self.record['prompt_sha256'] = hashlib.sha256(self.prompt.encode()).hexdigest()
+        self.save_reader('synthetic rehashed but unapproved payload')
+        errors = gate.pre_dispatch(self.view(), self.reader_round)['errors']
+        self.assertTrue(any('MESSAGE_CHANGED' in e for e in errors), errors)
+
+    def test_adopted_professional_path_remains_required_and_available(self):
+        self.prepare_reader()
+        self.record['role'] = 'professional'
+        self.record['current_task_ref'] = self.loc(RUN + '/01_当前任务.md')
+        self.map_binding['status'] = 'ADOPTED'
+        self.write(gate.BINDING, json.dumps(self.map_binding))
+        self.write(self.map_binding['receipt_path'], json.dumps({'schema': 'workmap-intake/v1', 'intakes': {'bi01': {}}}))
+        self.save_reader('synthetic adopted structural path; not a business PASS')
+        self.assertTrue(gate.pre_dispatch(self.view(), self.reader_round)['ok'])
 
     def test_first_management_bootstrap_is_preparable_without_map(self):
         result = gate.pre_dispatch(self.view(), RID)

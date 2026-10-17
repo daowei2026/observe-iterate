@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import importlib.util
 import json
 import re
 import subprocess
@@ -20,6 +21,7 @@ HEX40 = re.compile(r"^[0-9a-f]{40}$")
 HEX64 = re.compile(r"^[0-9a-f]{64}$")
 ROUND = re.compile(r"^R[0-9]{4}$")
 ROLES = {"management", "professional", "review", "receiver"}
+READER_TASK = RUN + "/reviews/management-R0001/READER_TASK.md"
 REQUIRED = (
     "schema", "run_id", "round_id", "work_id", "invocation_id",
     "assignment_token", "round_marker", "role", "recipient_ref",
@@ -199,6 +201,113 @@ def send_state(view: Git, round_id: str) -> tuple[str, list[str]]:
     return state, []
 
 
+def first_reader(view: Git, round_id: str, rec: dict) -> list[str]:
+    """Check the manager-issued producer of initial intake evidence.
+
+    This uses the existing dispatcher and Workmap snapshot, never an adopted
+    professional dispatch or a caller-supplied exemption flag. Authority still
+    requires the external Owner/role checks listed in the result.
+    """
+    try:
+        tools = Path(__file__).resolve().parents[1] / "overlay" / "tools"
+        modules = []
+        for name in ("management_prompt", "workmap_gate"):
+            spec = importlib.util.spec_from_file_location(name, tools / (name + ".py"))
+            module = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(module)
+            modules.append(module)
+        coordinator, workmap = modules
+        repository = "daowei2026/observe-iterate"
+        task_ref, bound_ref, adoption = (rec[k] for k in
+                                         ("current_task_ref", "binding_ref", "task_adoption_ref"))
+        if (task_ref["path"] != READER_TASK or bound_ref["path"] != READER_TASK
+                or bound_ref["commit"] != task_ref["commit"]):
+            raise ValueError("READER_TASK_BINDING_SOURCE_MISMATCH")
+        task, _ = coordinator.source(view.root, task_ref, repository)
+        if task.encode("utf-8") != view.raw(READER_TASK):
+            raise ValueError("READER_TASK_NOT_CURRENT")
+        if not re.search(r"^task_id: BI01-V2-WORKMAP-READER-01$", task, re.M):
+            raise ValueError("READER_TASK_ID_MISMATCH")
+        bound, _ = coordinator.source(view.root, bound_ref, repository)
+        binding = coordinator.loads(bound)
+        section = coordinator.selected(task, "#question-work-binding")
+        blocks = re.findall(r"^```json\s*\n(.*?)^```\s*$", section, re.M | re.S)
+        if len(blocks) != 1 or binding != coordinator.loads(blocks[0]):
+            raise ValueError("READER_BINDING_NOT_CURRENT")
+
+        event = view.obj(RUN + "/provenance/turns/" + round_id + "/DISPATCH.json")
+        for key in ("work_id", "invocation_id", "assignment_token", "binding_ref"):
+            if event.get(key) != rec.get(key):
+                raise ValueError("DISPATCH_IDENTITY_MISMATCH:" + key)
+        if event.get("dispatch_kind") == "NORMAL":
+            for key in ("current_task_ref", "task_adoption_ref"):
+                if event.get(key) != rec.get(key):
+                    raise ValueError("DISPATCH_SOURCE_MISMATCH:" + key)
+        prepared = coordinator.prepare_dispatch(
+            view.root, rec["policy_commit"], "runtime/config/COORDINATOR_DISPATCH.json", event)
+        coordinator.verify(prepared, view.raw(RUN + "/provenance/turns/" + round_id + "/PROMPT.md"))
+        coordinator.verify_recipient(prepared, rec["recipient_ref"])
+        if prepared["role"] != "review" or prepared["mode"] != "INDEPENDENT_REVIEW":
+            raise ValueError("FIRST_READER_READ_ONLY_ROLE_REQUIRED")
+
+        plan = binding["plan_ref"]
+        manager_path = re.fullmatch(re.escape(RUN) + r"/reviews/management-(R[0-9]{4})/DECISION.md",
+                                    adoption["path"])
+        if (not manager_path or adoption["selector"] != "#adoption"
+                or plan["path"] != adoption["path"] or plan["commit"] != adoption["commit"]
+                or plan["selector"] != "#reader-pre-adoption"):
+            raise ValueError("FIRST_READER_MANAGEMENT_ADOPTION_REQUIRED")
+        coordinator.source(view.root, adoption, repository)
+        authority = Git(str(view.root), adoption["commit"])
+        decision = authority.text(adoption["path"])
+        if decision.encode("utf-8") != view.raw(adoption["path"]):
+            raise ValueError("FIRST_READER_MANAGEMENT_DECISION_NOT_CURRENT")
+        manager_round = manager_path[1]
+        manager, problems = invocation(authority, manager_round)
+        if problems or manager["role"] != "management":
+            raise ValueError("FIRST_READER_MANAGEMENT_INVOCATION_REQUIRED")
+        for key, expected in (("work_id", "BI-01"), ("run_id", "BI-01-V2-01"),
+                              ("role", "management"), ("invocation_id", manager["invocation_id"]),
+                              ("assignment_token", manager["assignment_token"])):
+            if not re.search(r"^" + key + ": " + re.escape(expected) + r"$", decision, re.M):
+                raise ValueError("FIRST_READER_MANAGEMENT_IDENTITY:" + key)
+        returned = view.obj(RUN + "/provenance/turns/" + manager_round + "/ROLE_RETURN.json")
+        artifact = {k: adoption[k] for k in ("repo", "commit", "path")}
+        if (send_state(view, manager_round)[0] != "COMMITTED"
+                or returned.get("schema") != "longrun-return/v1"
+                or returned.get("work_id") != "BI-01"
+                or returned.get("invocation_id") != manager["invocation_id"]
+                or returned.get("assignment_token") != manager["assignment_token"]
+                or not returned.get("role_outputs", {}).get("management")
+                or artifact not in returned.get("artifact_refs", [])):
+            raise ValueError("FIRST_READER_ISSUED_MANAGEMENT_DECISION_REQUIRED")
+
+        sources = [entry["source"] for entry in binding["source_reads"]]
+        input_paths = [RUN + "/README.md", RUN + "/00_长程推进地图.md",
+                       RUN + "/01_当前任务.md", BINDING]
+        inputs = []
+        for path in input_paths + [RUN + "/OWNER_START.md"]:
+            refs = [s for s in sources if s.get("path") == path]
+            if len(refs) != 1 or refs[0].get("selector") not in ("full", "全文"):
+                raise ValueError("FIRST_READER_FULL_INPUT_REQUIRED:" + path)
+            source_body, _ = coordinator.source(view.root, refs[0], repository)
+            if path.endswith("/OWNER_START.md"):
+                if source_body.encode("utf-8") != view.raw(path):
+                    raise ValueError("FIRST_READER_OWNER_SOURCE_CHANGED")
+            else:
+                inputs.append(refs[0]["commit"])
+        if len(set(inputs)) != 1:
+            raise ValueError("FIRST_READER_INPUT_COMMIT_MISMATCH")
+        frozen = workmap.snapshot(view.root, inputs[0], BINDING, "bi01")
+        current = workmap.snapshot(view.root, view.ref, BINDING, "bi01")
+        if ("reader_fingerprint" not in frozen
+                or frozen["reader_fingerprint"] != current.get("reader_fingerprint")):
+            raise ValueError("FIRST_READER_INPUT_CHANGED")
+        return []
+    except (ValueError, KeyError, TypeError, UnicodeError) as ex:
+        return ["FIRST_READER_PRE_ADOPTION_INVALID:" + str(ex)]
+
+
 def pre_dispatch(view: Git, round_id: str) -> dict:
     rec, errors = invocation(view, round_id)
     state, state_errors = send_state(view, round_id)
@@ -212,14 +321,35 @@ def pre_dispatch(view: Git, round_id: str) -> dict:
         errors.extend(locator(view, rec.get("bootstrap_ref"), "bootstrap_ref"))
         if rec.get("binding_ref") != rec.get("bootstrap_ref"):
             errors.append("BOOTSTRAP_BINDING_REF_MISMATCH")
+        try:
+            ref = rec["bootstrap_ref"]
+            bootstrap = Git(str(view.root), ref["commit"]).obj(ref["path"])
+            if (ref.get("selector") not in ("full", "全文")
+                    or bootstrap.get("schema") != "question-work/v2"
+                    or bootstrap.get("kind") != "BOOTSTRAP"
+                    or bootstrap.get("work_id") != rec.get("work_id")
+                    or bootstrap.get("recipient_ref") != rec.get("recipient_ref")):
+                errors.append("BOOTSTRAP_IDENTITY_MISMATCH")
+        except (ValueError, KeyError, TypeError):
+            errors.append("BOOTSTRAP_UNREADABLE")
         errors.extend(locator(view, rec.get("current_task_ref"), "current_task_ref"))
         errors.extend(locator(view, rec.get("task_adoption_ref"), "task_adoption_ref"))
     else:
-        errors.extend(active_binding(view))
         for name in ("binding_ref", "current_task_ref", "task_adoption_ref"):
             errors.extend(locator(view, rec.get(name), name))
         if isinstance(rec.get("current_task_ref"), dict) and rec["current_task_ref"].get("selector") not in ("full", "全文"):
             errors.append("CURRENT_TASK_FULL_TEXT_REQUIRED")
+        try:
+            unconfigured = view.obj(BINDING).get("status") == "NOT_CONFIGURED"
+        except (ValueError, TypeError):
+            unconfigured = False
+        if (rec.get("role") == "review" and not rec.get("bootstrap_ref")
+                and isinstance(rec.get("current_task_ref"), dict)
+                and rec["current_task_ref"].get("path") == READER_TASK
+                and unconfigured):
+            errors.extend(first_reader(view, round_id, rec))
+        else:
+            errors.extend(active_binding(view))
     return {
         "check": "pre-dispatch", "round_id": round_id, "ok": not errors,
         "errors": sorted(set(errors)), "recorded_send_state": state,

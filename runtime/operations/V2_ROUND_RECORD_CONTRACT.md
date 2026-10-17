@@ -11,6 +11,8 @@
 
 每轮依原流程写 `INVOCATION.json`、精确 `PROMPT.md`、真实 `SEND_RECEIPT.json`、完整 `FULL_RESPONSE.md`、有效 `ROLE_RETURN.json` 和必要的 `QUESTION_WORK_RETURN.json` 与 Gate 检查；发送前 commit+remote readback+pre-dispatch+NOT_SENT，收到后按真实完整回答与角色 Return 核验证据。首次 BOOTSTRAP 的 binding/current task 可引用实际新 Owner 启动，不可引用旧 run；后续必须用新管理签发的 map/task/Binding/intake。
 
+首次采用的具名地图 reader 是 Intake 阅读证据的生产者，其采用前派发按 [R0002 已签用途修正](../../runs/BI-01-V2-01/reviews/management-R0002/DECISION.md#reader-pre-adoption)核当前完整受托任务、Binding、管理依据和冻结输入，不先要求尚待该读者产出的 Intake／ADOPTED。它仍是独立真实 Pro 新 R，照常保存原样载荷、NOT_SENT 与实际回交；不预填 PASS，不把整个 review 角色免检。普通专业任务仍在真实采用后派发。
+
 不可把历史 V1 的 R、token、Owner 决定、G1–G6 或 I4/I5/I6 回交翻译为 V2 的当前任务事实。专业文件不负责发送，机械操作端不自行签业务结果。
 
 
