@@ -14,8 +14,8 @@ spec = importlib.util.spec_from_file_location("bi01_dispatch_under_test", MODULE
 dispatch = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(dispatch)
 
-GOAL = "professional/source/00_AGENT_CHARTER_AND_STAGE_CONTRACT.md"
-I4 = "professional/source/02_I4_OBSERVATION_AND_CHALLENGE.md"
+GOAL = "professional/v2/00_PURPOSE_AND_THREE_STEP_FLOW.md"
+S2 = "professional/v2/01_AIDATA_CHART_AND_DATA.md"
 CONFIG = "runtime/config/COORDINATOR_DISPATCH.json"
 
 
@@ -31,14 +31,14 @@ class BI01Smoke(unittest.TestCase):
         self.write(dispatch.POLICY_PATH,
                    (OVERLAY / "08_自然语言运行提示_v0.3.md").read_text(encoding="utf-8"))
         self.write(GOAL, (ROOT / GOAL).read_text(encoding="utf-8"))
-        self.write(I4, (ROOT / I4).read_text(encoding="utf-8"))
+        self.write(S2, (ROOT / S2).read_text(encoding="utf-8"))
         cfg = json.loads((ROOT / CONFIG).read_text(encoding="utf-8"))
         self.assertEqual(cfg["works"]["BI-01"]["stage"], "BI01")
         cfg["repository"] = "test/repo"  # Synthetic repository identity only.
         self.write(CONFIG, json.dumps(cfg, ensure_ascii=False))
-        self.write("task.md", "合成I4任务：分析可信结果，提出反证，不冒称G4通过。")
+        self.write("task.md", "合成S2任务：分析可信结果，提出反证，不冒称管理审核。")
         self.write("authority.md", "合成试验授权（仅脱机fixture）；禁止真实发送。")
-        self.write("plan.md", "合成管理计划：I4当前阶段；预算不授权派发。")
+        self.write("plan.md", "合成管理计划：S2当前阶段；预算不授权派发。")
         self.write("questions.md", '<a id="m-start"></a>以完整Goal作首次管理；本示例不代替Owner授权。')
         self.policy = self.commit("synthetic immutable policy and business source")
 
@@ -72,7 +72,7 @@ class BI01Smoke(unittest.TestCase):
             "task_adoption_ref": self.loc("authority.md"),
         }
 
-    def make_binding(self, mode="OBSERVATION_I4", role="professional"):
+    def make_binding(self, mode="OBSERVATION_CHART", role="professional"):
         binding = {
             "schema": "question-work/v2", "kind": "BINDING", "work_id": "BI-01",
             "professional_mode": mode, "goal_ref": self.loc(GOAL),
@@ -87,12 +87,12 @@ class BI01Smoke(unittest.TestCase):
             }},
             "triggers": [],
             "source_reads": [{
-                "source": self.loc(I4), "requirement": "FOCUS_FULL",
-                "purpose": "合成I4观察与反证来源；需要真实接收者按原文读取",
+                "source": self.loc(S2), "requirement": "FOCUS_FULL",
+                "purpose": "合成S2观察与反证来源；需要真实接收者按原文读取",
             }],
         }
         self.write("binding.json", json.dumps(binding, ensure_ascii=False))
-        return self.commit("synthetic I4 binding")
+        return self.commit("synthetic S2 binding")
 
     def test_bootstrap_first_management(self):
         boot = {
@@ -113,7 +113,7 @@ class BI01Smoke(unittest.TestCase):
         prepared = dispatch.prepare_dispatch(self.repo, self.policy, CONFIG, event)
         self.assertEqual((prepared["role"], prepared["mode"], prepared["stage"]),
                          ("management", "M-START", "BI01"))
-        self.assertIn("BI-01六子意图和Gate", prepared["message"])
+        self.assertIn("V2 三步完整业务目标", prepared["message"])
         self.assertFalse(prepared["sent"])
         self.assertFalse(prepared["semantic_review_passed"])
         dispatch.verify(prepared, prepared["message"].encode("utf-8"))
@@ -125,10 +125,10 @@ class BI01Smoke(unittest.TestCase):
         event = self.event("binding.json", bound_commit)
         prepared = dispatch.prepare_dispatch(self.repo, self.policy, CONFIG, event)
         self.assertEqual((prepared["role"], prepared["mode"], prepared["stage"]),
-                         ("professional", "OBSERVATION_I4", "BI01"))
+                         ("professional", "OBSERVATION_CHART", "BI01"))
         self.assertEqual(prepared["recipient"], "professional-synthetic")
         self.assertIn("专业任务 BI01", prepared["message"])
-        self.assertIn(I4, prepared["message"])
+        self.assertIn(S2, prepared["message"])
         self.assertIn("本checkout已核位置", prepared["message"])
         self.assertFalse(prepared["sent"])
         dispatch.verify(prepared, prepared["message"].encode("utf-8"))
