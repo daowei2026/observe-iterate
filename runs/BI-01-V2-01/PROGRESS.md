@@ -286,3 +286,9 @@
 - 首个文件收取executor在任何phone前把唯一空历史Released标题误判成占用，按硬gate exit2零phone回交并退役；从未取得控制，ledger未改，无UNKNOWN Send/文件副作用。未把它当真实占用或Pro故障，未等待一小时或重发业务。
 - root对真实账本140段完成只读审计，确认全terminal；对该精确空标题与真实ACQUIRED/UNKNOWN拒绝做定向核验，固定现有规则的只读校验utility存gitignored artifacts，不改操作/业务合同版本。
 - 新零继承collection2已按原文件目标启动，必须先真实audit→自己登记取得→held阳性readback再任何phone；继续核当前尾部和收实际MD/ZIP。此前业务原文和输入均不变，当前仍不声称已收包/完整Return/管理采用。
+
+## R0006手机完整尾部已实证，原文件仍在收取
+
+- 实际22:07:08.729Z观察到当前R6最终ROLE_RETURN闭合、准确invocation/token及完成操作栏，后面没有续写正文，STOP absent；phone answer_complete已登记，scheduler rev78。该时间是首次完整终态观察时刻，不冒称模型实际生成结束时刻；先前21:51:22Z已见停止思考/正文。
+- 原专业任务仍为IN_PROGRESS，不关闭完整Goal。当前MD/ZIP与其他生成文件的有限清单仍由同一collector2连续收取，对截断文件名未推断相同或不同；只有原包manifest和实际bytes/hash核实后才关闭文件范围。
+- 手机完成、完整原文/两Return取得、schema/关联/实物核验、GitHub发布、专业认识及管理接收分别记录；有效完整结果仍5，没有把看到尾部预计为第6份合法回交。没有执行或虚记原轮70min恢复/STOP/重发。下一步继续真实文件收取并回到原管理/专业续作。
