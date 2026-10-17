@@ -113,14 +113,16 @@ class BI01Smoke(unittest.TestCase):
         prepared = dispatch.prepare_dispatch(self.repo, self.policy, CONFIG, event)
         self.assertEqual((prepared["role"], prepared["mode"], prepared["stage"]),
                          ("management", "M-START", "BI01"))
-        self.assertIn("V2 三步完整业务目标", prepared["message"])
+        self.assertIn("U2 共同机会簇位置/成员是否合理", prepared["message"])
+        self.assertIn("已提前验算且固定", prepared["message"])
+        self.assertIn("04_BI01_BUSINESS_BASELINE.md", prepared["message"])
         self.assertFalse(prepared["sent"])
         self.assertFalse(prepared["semantic_review_passed"])
         dispatch.verify(prepared, prepared["message"].encode("utf-8"))
         with self.assertRaisesRegex(ValueError, "MESSAGE_CHANGED"):
             dispatch.verify(prepared, prepared["message"].encode("utf-8") + b" ")
 
-    def test_i4_professional_with_exact_source_and_recipient(self):
+    def test_s2_professional_with_exact_source_and_recipient(self):
         bound_commit = self.make_binding()
         event = self.event("binding.json", bound_commit)
         prepared = dispatch.prepare_dispatch(self.repo, self.policy, CONFIG, event)
