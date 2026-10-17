@@ -331,3 +331,11 @@
 - caller23:03:05.554Z、frame23:03:04.332Z、实际server完成23:03:04.800Z分列；首caller距due34.817秒，满足120秒。准确R7 invocation/token/management、正在思考/STOP可见，尚无助手正文/完成尾部/错误/大加载圈，全部三无损tiles实查。
 - 正式observe仅1次（no_hierarchy=true，保留新鲜截图主证据，避免可选UiAutomator依赖）；其他手机动作0。首次release回读因重复本人heading exit2，executor仅合并自己相邻release块后23:04:17.333418Z实际释放阳性，零额外phone，无pending/UNKNOWN，永久退役；原错误及修正证据留存。
 - native89以真实server完成登记；下一检查23:13:04.800Z（北京时间07:13:04），原思考起点22:52:30.737Z保持，准入至23:33:24.262Z。目标远端23:02:02Z核尚无M7新提交，完整有效结果仍6，实际调用7；管理复看仍在途，完整目标继续。
+
+## R0007实际GitHub管理回交已到，手机终态另等既有宽限
+
+- 管理真实提交b3ef5f67f48525086950ddf0123a6d779be14d61（parent0ce6190）已完整取得；仅更新实际地图/README及本轮原答/两Return五文件，原Task/Binding/runtime和操作记录未改。完整原答32,050bytes、SHA68bc1f7e…，五文件fresh原字节回读；两原JSON/schema/原任务关联/锚点/引用核验通过，完整applicable after-return待纠正操作端回执字段后复核。
+- 管理接受R6 F01—F07为有限认识，首次RESULT实质复看已完成；新增逐字段known用途限制来自既有AsOf合同，不重算/重画/新建指标。完整Task/Binding和S1—S3不变，明确ROUTINE_RESULT/no new reader、上一真实base b60，直接继续广域、主Case剩余层、正反例及四束增量分账，无新Owner前置或Worker工单。
+- 第二次手机caller23:13:16.172Z、frame23:13:14.944Z、server完成23:13:15.515Z，准确原R7仍思考/STOP，无正文/尾部/error/spinner。observe1其余0，23:14:01.727080Z原section释放阳性，无pending/UNKNOWN，executor退役。
+- root初次after-return在真实原提交上报NO_CONFIRMED_SEND_FOR_RETURN/SEND_STATE_INVALID，原因是root发送回执漏了现有gate必读state键；实际Send/native88早已COMMITTED，已据原证据补state，不改Pro原件、不重发/不要求Pro修元数据。旧回执及失败原样保留。
+- 原远端turn-complete首次实际发现23:12:34.475733Z已登记native90；后续真实手机check2记absent到native91，按原10min宽限至23:22:34.475733Z，而非由root校验时刻后移。不以GitHub提交声称手机结束，准备真实Intake与专业后继可继续，完整Goal不关闭。

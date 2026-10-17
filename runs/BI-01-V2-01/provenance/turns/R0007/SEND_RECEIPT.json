@@ -5,7 +5,7 @@
   "assignment_token": "3b195fdc03bd6d30fe51362b9868f0",
   "role": "management",
   "recipient_ref": "chatgpt-project:细节叙事生成_金标/chat:BI01-V2-管理",
-  "send_commit_state": "COMMITTED",
+  "send_commit_state": "committed",
   "generation_state": "model_thinking",
   "payload": {
     "exact_verified": true,
@@ -94,5 +94,20 @@
   },
   "source_result_sha256": "452eda98fd392df5f235f895a90aad3d52856c5be8664f8b28316c2aa077ba77",
   "recorded_at": "2026-10-17T22:55:14.224999+00:00",
-  "business_gate": false
+  "business_gate": false,
+  "state": "COMMITTED",
+  "outcome": "COMMITTED",
+  "controller_record_correction": {
+    "at": "2026-10-17T23:18:04.502810+00:00",
+    "prior_commit": "3872047317afb94073278e784e1d124de05fea44",
+    "issue": "root omitted existing gate-required state field; real Send already COMMITTED in source evidence/native88",
+    "initial_after_return_at_original_commit": {
+      "ok": false,
+      "errors": [
+        "NO_CONFIRMED_SEND_FOR_RETURN",
+        "SEND_STATE_INVALID"
+      ]
+    },
+    "action": "add actual state COMMITTED and normalize informational send_commit_state; no change to Pro originals or send actions"
+  }
 }
