@@ -1,8 +1,42 @@
 {
-  "state": "NOT_SENT",
+  "state": "COMMITTED",
+  "work_id": "BI-01",
+  "run_id": "BI-01-V2-01",
+  "round_id": "R0001",
   "invocation_id": "BI01-V2-01-R0001-219bf65840a1fcbb0aec68f2",
+  "round_marker": "[BI01-V2-01-R0001-219bf65840a1fcbb0aec68f2]",
   "recipient_ref": "chatgpt-project:细节叙事生成_金标/chat:BI01-V2-管理",
   "prompt_sha256": "fceef3d0fda913caa4e2de41612cbf4b75e37d335ef00b4bd9a01c584cb2c729",
-  "actual_send_attempts": 0,
-  "evidence": "本次全新调用，未交手机Send executor；初始NOT_SENT不代表后续发送成功。"
+  "actual_send_attempts": 1,
+  "new_physical_chats": 1,
+  "ime_calls": 1,
+  "first_phone_action_at": "2026-10-17T15:07:08.675Z",
+  "send_action_at": "2026-10-17T15:11:33.323Z",
+  "committed_evidence_at": "2026-10-17T15:11:37.276Z",
+  "observation_finished_at": "2026-10-17T15:11:37.747Z",
+  "commit_evidence": "stop_visible",
+  "exact_readback": {
+    "at": "2026-10-17T15:11:16.603Z",
+    "verdict": "exact_verified",
+    "text_coverage": "full",
+    "utf8_bytes": 21314,
+    "utf16_units": 11092,
+    "sha256": "fceef3d0fda913caa4e2de41612cbf4b75e37d335ef00b4bd9a01c584cb2c729",
+    "raw_transfer_bytes_identical": true,
+    "terminal_newline_preserved": true,
+    "raw": "015-exact-readback.json"
+  },
+  "pro_reasoning_highest_verified_before_ime": true,
+  "generation_state": "model_thinking",
+  "reply_complete": false,
+  "body_captured": false,
+  "artifacts_received": false,
+  "next_thread_check_at": "2026-10-17T15:21:37.747Z",
+  "evidence": {
+    "original_receipt_sha256": "6a3e5d0301e19101317b32cd622df994f850d23dd4d5936f91628700288dc91c",
+    "original_receipt_visibility": "gitignored operator runtime; contains device/control/screenshot context",
+    "summary": "完整本轮marker泡、正在思考、STOP同时可见；无发送中/等待/离线/重试/错误；准确Project中新建且未用旧聊天。"
+  },
+  "control_released": true,
+  "pending_operations": []
 }
