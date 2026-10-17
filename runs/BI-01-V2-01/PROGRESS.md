@@ -352,3 +352,10 @@
 - R8唯一调用BI01-V2-01-R0008-2f89478c8810068f99b16f76，NORMAL/same_work，原执行chat；四文件2b0e4a7已推送/fresh原字节核同。原稿29,285 UTF8 bytes/16,362 UTF16 units、SHA564f33aa...，BI01及以当前真实Intake128586为base的普通专业Workmap dispatch均PASS；实际仍未输入/未Send。
 - 原手机宽限未重置：23:28:11.179568Z caller、frame23:28:10.064Z/server完成23:28:10.845Z，原管理回复已停止思考无STOP，但仅见开头/未见闭合尾部，分类reply_partial、phone unavailable_after_grace。当前完整原文由原GitHub已核验，未copy手机正文。此前fresh actor额外大小写断言零phone误停已释放，新actor单次observe、无其他动作、释放阳性退役；实际迟到336.704秒不隐去。
 - 共享60min准入按原机制续验后立即发送R8。工作继续使用既有固定51包图数和原样CSV，进一步检验支持/反例、逐字段时点资格及四束业务增量；完整Goal仍ACTIVE，未把首批结果或管理接收当终局。
+
+## R0008普通专业续作已真实COMMITTED
+
+- 正确Project唯一原执行chat、fresh Pro最高5/5（23:39:30.170Z）、输入前full空及输入后全向量精确匹配均有证据；原稿29,285bytes/16,362UTF16/SHA564f33aa...，IME1、首次Send1，正式phone18，新chat/重发/clear/append0。一次composer mark因布局偏移未触控，按新鲜位置重新标记，无错误落点触控。
+- 实际Send caller23:41:33.417Z，承诺frame23:41:37.445Z/最后server观察23:41:38.132Z，本轮准确invocation/token/role bubble与STOP/正在思考同帧，无发送中/错误。23:42:16.201774Z原section释放阳性，首phone在实际取得后且ready延迟50.188s，全部pending/UNKNOWN为空，executor退役。
+- native98以实际server观察登记；下次23:51:38.132Z（北京时间07:51:38）。原executor用frame建议23:51:37.445Z，0.687s差异原样保留后按原规则纠正，未虚构额外观察。共享准入至00:34:20.650Z有效。
+- 实际Pro调用8、完整有效结果仍7，R8原专业续作在途；完整任务ACTIVE，首RESULT已消费，下一累计有效回交8触发原EFFORT复看。继续按完整U2/U3目标取得真实原答/成果与下一合法安排，不以本轮Send为结束。
