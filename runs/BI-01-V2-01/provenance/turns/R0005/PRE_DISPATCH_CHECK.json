@@ -1,0 +1,39 @@
+{
+  "checked_at": "2026-10-17T19:35:57.432657+00:00",
+  "policy_commit": "11626f64bc64ae21e52108b2e47fafbbc1023615",
+  "actual_gate_code_commit": "2942ddd8f5210e68d394f6142f9087d4476101fc",
+  "prepared_commit": "4e568f768f01b36ef64a73757436dffc00e3f636",
+  "four_prepared_files_remote_exact": true,
+  "coordinator_prepare_verify": "PASS",
+  "bi01_pre_dispatch": {
+    "business_gate": false,
+    "check": "pre-dispatch",
+    "errors": [],
+    "next_external_checks": [
+      "OWNER_START_AND_ROLE_AUTHORIZATION",
+      "ACTUAL_MCP_PHONE_CONTROL_AND_UNIQUE_RECIPIENT",
+      "LOCAL_SCHEDULER_SEND_DEDUP",
+      "OVERLAY12_EXACT_PAYLOAD_AND_RECIPIENT_VERIFY"
+    ],
+    "ok": true,
+    "recorded_send_state": "NOT_RECORDED",
+    "round_id": "R0005",
+    "sent": false
+  },
+  "send_controller_observation": {
+    "round": "R0005",
+    "invocation_id": "BI01-V2-01-R0005-e843decd6d255833e9d12e4a",
+    "send_state": "NOT_SENT",
+    "ime_calls": 0,
+    "send_calls": 0,
+    "phone_executor_created": false,
+    "unknown_send": false
+  },
+  "workmap": {
+    "ordinary_professional_consumer_check": "INTAKE_STALE",
+    "reader_input_unchanged": true,
+    "action": "按ADOPTION_HANDOFF_CHECKLIST末段及原Binding decide发送管理M-REASSESS，产生真实接收/Intake；不是普通专业消费者通过声明。",
+    "new_intake_not_fabricated": true
+  },
+  "limits": "准备和运输预检，不是实际发送、管理接收或业务PASS。"
+}
