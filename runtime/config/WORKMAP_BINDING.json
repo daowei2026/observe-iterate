@@ -2,20 +2,9 @@
   "schema": "workmap-binding/v2",
   "status": "NOT_CONFIGURED",
   "manager_role": "management",
-  "overview": {
-    "path": "runs/BI-01-V2-01/README.md",
-    "anchors": [
-      "common",
-      "bi01"
-    ]
-  },
-  "shared_overview_anchors": [
-    "common"
-  ],
-  "owner_sources": [
-    "runs/BI-01-V2-01/OWNER_START.md",
-    "professional/v2/00_PURPOSE_AND_THREE_STEP_FLOW.md"
-  ],
+  "overview": {"path": "runs/BI-01-V2-01/README.md", "anchors": ["common", "bi01"]},
+  "shared_overview_anchors": ["common"],
+  "owner_sources": ["runs/BI-01-V2-01/OWNER_START.md", "professional/v2/00_PURPOSE_AND_THREE_STEP_FLOW.md"],
   "rule_paths": [
     "professional/v2/00_PURPOSE_AND_THREE_STEP_FLOW.md",
     "professional/v2/01_AIDATA_CHART_AND_DATA.md",
@@ -28,29 +17,11 @@
     "professional/v2/06_U2_U3_DESIGN_SOURCE_MAP.md"
   ],
   "receipt_path": "runs/BI-01-V2-01/reviews/WORKMAP_INTAKE_CURRENT.json",
-  "streams": {
-    "bi01": {
-      "map": {
-        "path": "runs/BI-01-V2-01/00_长程推进地图.md",
-        "anchors": [
-          "goal",
-          "stage",
-          "evidence",
-          "progress",
-          "remaining",
-          "management",
-          "next"
-        ]
-      },
-      "task": "runs/BI-01-V2-01/01_当前任务.md",
-      "overview_anchors": [
-        "bi01"
-      ],
-      "watch_roots": [
-        "runs/BI-01-V2-01/artifacts",
-        "runs/BI-01-V2-01/reviews/independent"
-      ]
-    }
-  },
-  "note": "TEMPLATE ONLY: Owner GO then genuine M-START, manager map/task/intake; do not mark ADOPTED or send from template. Old BI-01-RESTART-01 is historical."
+  "streams": {"bi01": {
+    "map": {"path": "runs/BI-01-V2-01/00_长程推进地图.md", "anchors": ["goal", "stage", "evidence", "progress", "remaining", "management", "next"]},
+    "task": "runs/BI-01-V2-01/01_当前任务.md",
+    "overview_anchors": ["bi01"],
+    "watch_roots": ["runs/BI-01-V2-01/artifacts", "runs/BI-01-V2-01/reviews/independent"]
+  }},
+  "note": "R0001 管理已实际签发 map/task/decision；首次独立地图读者、真实 local Git snapshot/intake 与 dispatch 尚未发生，保持 NOT_CONFIGURED。符合已签管理接收条件并完成原工具校验后由操作端机械发布 ADOPTED，不以改 status 代替采用。provenance/turns 不纳入 watch_roots；旧 run 不继承。"
 }
