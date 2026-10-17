@@ -13,7 +13,7 @@ SPEC = importlib.util.spec_from_file_location(
 gate = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(gate)
 BINDING = "runtime/config/WORKMAP_BINDING.json"
-RUN = "runs/BI-01-RESTART-01"
+RUN = "runs/BI-01-V2-01"
 
 
 class WorkmapSnapshotOffline(unittest.TestCase):
@@ -24,15 +24,15 @@ class WorkmapSnapshotOffline(unittest.TestCase):
         self.git("init", "-q")
         self.git("config", "user.name", "Synthetic Tester")
         self.git("config", "user.email", "synthetic@example.invalid")
-        b = json.loads((PROJECT / "runtime/operations/templates/WORKMAP_BINDING_TEMPLATE.json").read_text())
+        b = json.loads((PROJECT / "runtime/operations/v2/templates/WORKMAP_BINDING_TEMPLATE.json").read_text())
         b["status"] = "ADOPTED"  # synthetic only, never commit this into real repo.
         self.write(BINDING, json.dumps(b, ensure_ascii=False))
         self.write(RUN + "/README.md", (PROJECT / RUN / "README.md").read_text())
         for path in b["owner_sources"] + b["rule_paths"]:
             if not (self.repo / path).exists():
                 self.write(path, "Synthetic document: " + path + "\n")
-        for target in ("runtime/operations/BI01_REAL_RUN_V1.md",
-                       "runtime/operations/ROUND_RECORD_CONTRACT.md"):
+        for target in ("runtime/operations/BI01_V2_RUN_GUIDE.md",
+                       "runtime/operations/V2_ROUND_RECORD_CONTRACT.md"):
             self.write(target, "Synthetic linked target.\n")
         self.write(
             RUN + "/00_长程推进地图.md",

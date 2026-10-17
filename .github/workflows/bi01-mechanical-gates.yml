@@ -3,13 +3,16 @@ name: BI-01 offline mechanical gates
 on:
   push:
     branches:
-      - fix/full-cyf-runtime-copy-20261015
+      - fy/observation-iteration-v2-20261017
     paths:
       - 'runtime/tools/bi01_run_gate.py'
       - 'runtime/tests/test_bi01_run_gate.py'
       - 'runtime/tests/test_bi01_workmap_consistency.py'
       - 'runtime/overlay/tools/question_work.schema.json'
       - 'runtime/config/COORDINATOR_DISPATCH.json'
+      - 'runtime/overlay/08_自然语言运行提示_v0.3.md'
+      - 'runtime/overlay/tests/test_bi01_pilot_smoke.py'
+      - 'professional/v2/**'
       - '.github/workflows/bi01-mechanical-gates.yml'
   workflow_dispatch:
 
@@ -23,19 +26,23 @@ jobs:
       - uses: actions/checkout@v4
       - name: Compile mechanical scripts
         run: python3 -m py_compile runtime/tools/bi01_run_gate.py runtime/overlay/tools/management_prompt.py runtime/overlay/tools/workmap_gate.py
-      - name: Check BI-01 v2 question identifiers
+      - name: Check BI-01 V2 three-step identifiers
         run: |
           python3 - <<'PY'
           import json
           from pathlib import Path
           schema=json.loads(Path('runtime/overlay/tools/question_work.schema.json').read_text())
-          names={'I1','I2','I3','I4','I5','I6'}
+          names={'S1','S2','S3'}
           d=schema['$defs']
           assert names<=set(d['bindingV2']['properties']['question_ids']['items']['anyOf'][0]['enum'])
           assert names<=set(d['returnV2']['properties']['focus_results']['items']['properties']['question_id']['anyOf'][0]['enum'])
           modes=json.loads(Path('runtime/config/COORDINATOR_DISPATCH.json').read_text())['works']['BI-01']['modes']
           assert {'M-START','M-REASSESS','M-CLOSE','INDEPENDENT_REVIEW'}<=set(modes)
-          assert {'OBSERVATION_'+x for x in names}<=set(modes)
+          assert {'OBSERVATION_SCOPE','OBSERVATION_CHART','OBSERVATION_IDEAS'}<=set(modes)
+          assert not any(k.startswith('OBSERVATION_I') for k in modes)
+          assert json.loads(Path('runtime/config/WORKMAP_BINDING.json').read_text())['status']=='NOT_CONFIGURED'
           PY
       - name: Run isolated synthetic Git round tests
         run: python3 -m unittest discover -s runtime/tests -p 'test_bi01_*.py' -v
+      - name: Test V2 professional dispatch in synthetic Git repo
+        run: python3 -m unittest discover -s runtime/overlay/tests -p 'test_bi01_pilot_smoke.py' -v

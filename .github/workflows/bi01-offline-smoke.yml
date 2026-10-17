@@ -1,6 +1,13 @@
 name: BI-01 offline dispatch smoke
 
 on:
+  push:
+    branches:
+      - fy/observation-iteration-v2-20261017
+    paths:
+      - 'runtime/overlay/**'
+      - 'runtime/config/COORDINATOR_DISPATCH.json'
+      - 'professional/v2/**'
   workflow_dispatch:
 
 permissions:

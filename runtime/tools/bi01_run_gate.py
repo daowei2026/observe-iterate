@@ -2,7 +2,7 @@
 """BI-01 new-run Git evidence gate. Read-only, no phone, no business decisions.
 
 Exit 0 means mechanical prerequisites are present at an exact local Git commit.
-It never authorizes a message or certifies actual send, management quality or G1-G6.
+It never authorizes a message or certifies actual send, management quality or V2 business acceptance.
 """
 from __future__ import annotations
 
@@ -14,7 +14,7 @@ import subprocess
 import sys
 from pathlib import Path, PurePosixPath
 
-RUN = "runs/BI-01-RESTART-01"
+RUN = "runs/BI-01-V2-01"
 BINDING = "runtime/config/WORKMAP_BINDING.json"
 HEX40 = re.compile(r"^[0-9a-f]{40}$")
 HEX64 = re.compile(r"^[0-9a-f]{64}$")
@@ -128,7 +128,7 @@ def invocation(view: Git, round_id: str) -> tuple[dict, list[str]]:
     errors = require([
         (all(key in record for key in REQUIRED), "INVOCATION_FIELDS_MISSING"),
         (record.get("schema") == "bi01-invocation/v1", "INVOCATION_SCHEMA"),
-        (record.get("run_id") == "BI-01-RESTART-01", "RUN_ID_MISMATCH"),
+        (record.get("run_id") == "BI-01-V2-01", "RUN_ID_MISMATCH"),
         (record.get("round_id") == round_id, "ROUND_ID_MISMATCH"),
         (record.get("role") in ROLES, "ROLE_INVALID"),
         (HEX40.fullmatch(str(record.get("policy_commit", ""))) is not None, "POLICY_COMMIT_REQUIRED"),
@@ -141,7 +141,7 @@ def invocation(view: Git, round_id: str) -> tuple[dict, list[str]]:
             errors.append("MISSING_IDENTITY:" + name)
     # Existing coordinator-dispatch/v3 emits [invocation_id] as its first line.
     # That EXACT line is also the common phone scheduler's bracketed round marker.
-    prefix = "BI01-RESTART-01-" + round_id + "-"
+    prefix = "BI01-V2-01-" + round_id + "-"
     invocation_id = record.get("invocation_id")
     marker = record.get("round_marker")
     if (not isinstance(invocation_id, str)

@@ -13,10 +13,10 @@ spec = importlib.util.spec_from_file_location("bi01_gate_under_test", MODULE_PAT
 gate = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(gate)
 
-RUN = "runs/BI-01-RESTART-01"
+RUN = "runs/BI-01-V2-01"
 ROLE = "management"
 RID = "R0001"
-INV = "BI01-RESTART-01-R0001-synthetic-unique-a"
+INV = "BI01-V2-01-R0001-synthetic-unique-a"
 MARKER = "[" + INV + "]"
 
 
@@ -38,7 +38,7 @@ class RoundGateOffline(unittest.TestCase):
         self.prompt = MARKER + "\nSynthetic message; NO PHONE.\n"
         self.record = {
             "schema": "bi01-invocation/v1",
-            "run_id": "BI-01-RESTART-01",
+            "run_id": "BI-01-V2-01",
             "round_id": RID,
             "work_id": "BI-01",
             "invocation_id": INV,
