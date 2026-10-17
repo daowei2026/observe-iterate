@@ -1,4 +1,4 @@
-Owner 已停止旧 BI-01 I4 试跑：新 run 的首轮不存在旧工作 continuation。M-START 从新实际源开始，管理地图和任务随后形成；之后的合法同 run 续作按本合同保真。见 [BI-01 运行合同](../operations/BI01_REAL_RUN_V1.md)。
+V2 全新运行 `BI-01-V2-01` 没有可继承的旧 continuation。未来的实际 Owner GO 才启动 M-START，新 run 内之后的合法连续工作按本合同保真。见 [V2 运行指南](../operations/BI01_V2_RUN_GUIDE.md)。
 
 # Continuation、Branch 与上下文控制
 

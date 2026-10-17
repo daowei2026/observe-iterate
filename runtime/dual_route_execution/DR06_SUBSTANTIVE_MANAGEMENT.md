@@ -1,6 +1,6 @@
 # 长程管理者：完整目标、独立判断与 Owner 预期
 
-执行修订：`2026-10-13-normal-feature-positive-methods`。本文件规定观察迭代长程管理的完整职责。具体完整目标、I1–I6阶段/Input/Output/Gate只从[BI-01专业合同](../../professional/source/00_AGENT_CHARTER_AND_STAGE_CONTRACT.md)及当前有权任务取得，G1–G6接收和Owner权限见[角色合同](../../professional/source/05_ROLE_GATE_AND_HANDOFF_CONTRACT.md)；管理必须作实质判断，不得以引用代替。实际管理题、专业结果引用和工作组合见本目录 `DR13_WORK_ARRANGEMENT_AND_CONTEXT.md` §7；题面原文索引见同目录DR12，任务/回交结构和触发见DR14。固定的是跨用例专业义务与正常接续，具体业务答案、对象、优先级及有依据的调整由Pro负责，不预装用例拆分或轮数。
+本文件规定观察迭代长程管理的完整责任。V2 的专业目标、S1–S3 方法和业务交付，均从[当前 V2 专业合同](../../professional/v2/00_PURPOSE_AND_THREE_STEP_FLOW.md)、[工作交接](../../professional/v2/03_EXECUTION_HANDOFF.md)与真实有权任务取得；跨用例管理责任、回交与管理触发仍由 DR13/DR14 规定。管理须做实质性判断，不得以单纯引用、文件数量、脚本通过或旧运行结果代替。
 
 **回交与试跑入口：**主控和全部长程角色共同使用 `../overlay/13_角色回交与主控接续协议.md`。采用新题组时另交DR14绑定/RETURN，并通过ROLE_RETURN.question_work_ref定位；旧回交不追造。本次没有自动状态转换/派发部署，结构与协议不证明业务正确或实际采用。
 

@@ -18,7 +18,7 @@
 
 动态专业任务按DR14写既有BINDING：完整范围、当前结果/重点、题mode、必要原文、完成/预算和实际路线，字段引用必须有实质正文。直接用既有正文，不造缩水摘要；普通题外必要内容可有据处理，不凑方案/问卷。
 
-BI-01 的执行 Pro 按当前实际授权的 I1–I6 专业内容交真实成果、证据、反证和未完；只有明确 Worker 工单才用工程委派。原任务内最新 continuation 由承办者交，不每轮管理重签；完整 scope/mode/Gate/预算和 RESULT/CHANGE/EFFORT 仍沿正式 Binding。
+BI-01 V2 的执行 Pro 按当前实际授权的 S1/S2/S3 专业内容交真实图、同源数据、业务发现、反证和未完；只有明确 Worker 工单才用工程委派。原任务内最新 continuation 由承办者交，不每轮管理重签；完整 scope/mode/Gate/预算和 RESULT/CHANGE/EFFORT 仍沿正式 Binding。
 
 ## 4. 审查与回修
 

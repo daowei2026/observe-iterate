@@ -1,4 +1,4 @@
-新一轮真实运行以 [BI-01 启动/轮次/地图合同](../operations/BI01_REAL_RUN_V1.md) 为共同入口。旧 I4 试跑已终止、下次重跑不继承旧结果/旧聊天/旧任务身份；M-START 无地图时先启动管理，随后写活动地图/当前任务，R 轮由真实 Pro 调用形成。
+新一轮 V2 运行以 [V2 启动、轮次和地图合同](../operations/BI01_V2_RUN_GUIDE.md) 为共同入口；只有后续 Owner 的真实 GO 才能进入首次管理。当前还没有 V2 业务结果或在途工作。
 
 # 观察迭代长程执行入口：角色分工、专业来源与管理接收
 
@@ -8,14 +8,14 @@
 
 |角色|共同入口|完整方法|
 |---|---|---|
-|专业执行Pro|DR12、DR13及当前 Binding|[专业目标和六阶段合同](../../professional/source/00_AGENT_CHARTER_AND_STAGE_CONTRACT.md)、[I4观察方法](../../professional/source/02_I4_OBSERVATION_AND_CHALLENGE.md)与本轮实际`source_reads`|
-|Worker Codex|DR03/DR10/DR11适用委派规则|[Pro→Worker工单和交付](../../professional/source/04_PRO_WORKER_CODEX_HANDOFF.md)，未签任务不自动授权|
-|管理Pro|DR06/DR08、DR13 §7、管理Harness|[完整目标/Gate](../../professional/source/00_AGENT_CHARTER_AND_STAGE_CONTRACT.md)、[角色与接收权限](../../professional/source/05_ROLE_GATE_AND_HANDOFF_CONTRACT.md)以及本轮成果|
-|独立审查Pro|Overlay10/13、DR13 §7、原有Harness适用部分|本轮具名被审对象、证据、[完成和审查接口](../../professional/interfaces/COMPLETION_AND_REVIEW.md)；未形成的专业审查方法不得自行补造
+|专业执行Pro|DR12、DR13 和当前 Binding|[V2 专业完整方法](../../professional/v2/README.md)与本次 source_reads、真实业务 Source/Method|
+|Worker Codex|DR03/DR10/DR11的适用委派规则|[V2 aidata 技术交接](../../professional/v2/03_EXECUTION_HANDOFF.md)；无专业工单不自动授权|
+|管理Pro|DR06/DR08、DR13 管理题、管理 Harness|[V2 完整目标](../../professional/v2/00_PURPOSE_AND_THREE_STEP_FLOW.md)及本次真实进展与未完|
+|独立审查Pro|Overlay10/13、实际审查委派|具名被审对象与有资格的专业方法；方法未形成时不得宣称独立 PASS|
 
 DR12引用 BI-01 已有专业题及方法原文，DR13负责工作联动/读取/管理题，DR14负责绑定/回交/触发。题号不授mode或写权，不要求题数等于轮数。首次/新上下文/失效取必要全文，已读未变且仍可用则复用，题面不替方法。
 
-BI-01 当前应完成实际 I1— I6 的问题选择、合法输入、可信结果、可挑战业务认识、Owner 可判断材料和有证据后继。执行 Pro 完成专业问题和有权 Worker 工单，管理 Pro 签发/接收 Gate。CYF A/B/C 的工程、Host 五段、Reflex 两路不构成 BI-01 固定义务。
+BI-01 V2 的实质业务流程是 S1 确定观察对象、S2 通过 aidata 获取真实图与对应数据、S3 提出有证据和反证的业务观察想法；可根据新疑问返回 S2。执行 Pro 完成真实专业工作和有权 Worker 工单，管理 Pro 根据已签目标接收并安排后继。CYF A/B/C 的工程、Host 五段、Reflex 两路不构成 BI-01 固定义务。
 
 管理以最快有效完成完整目标为责，旧计划/候选/自己旧结论都需核适用；局部进展不证明投入合理。及时采用合理首版、停止无当前价值深化，保留必需主体/真实验证，更新同一终点的预测、地图和实际后继。具体方式不强制问卷、评分、方案数或逐项轮数。
 
