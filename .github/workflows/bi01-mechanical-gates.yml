@@ -39,7 +39,7 @@ jobs:
           modes=json.loads(Path('runtime/config/COORDINATOR_DISPATCH.json').read_text())['works']['BI-01']['modes']
           assert {'M-START','M-REASSESS','M-CLOSE','INDEPENDENT_REVIEW'}<=set(modes)
           assert {'OBSERVATION_SCOPE','OBSERVATION_CHART','OBSERVATION_IDEAS'}<=set(modes)
-          assert not any(k.startswith('OBSERVATION_I') for k in modes)
+          assert not any(k in {'OBSERVATION_I1','OBSERVATION_I2','OBSERVATION_I3','OBSERVATION_I4','OBSERVATION_I5','OBSERVATION_I6'} for k in modes)
           assert json.loads(Path('runtime/config/WORKMAP_BINDING.json').read_text())['status']=='NOT_CONFIGURED'
           PY
       - name: Run isolated synthetic Git round tests
