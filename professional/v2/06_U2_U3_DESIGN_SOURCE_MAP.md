@@ -64,8 +64,8 @@ U3 设计里同时存在 **两套不同的“四”**：
 就本轮实际提供的 ZIP 结构而言：
 
 - **全观察范围参考事实**：C0 TurnOccurrence 1,457 行、N 的逐时切片与 metrics、C1 raw 同实际时间候选/Pair/八类关系。全范围的 `S_C2_status` 带 `NOT_CLUSTER`/`NOT_ASSESSMENT` 限定，不能据此说有全范围正式簇。
-- **单尺度有界演示**：`single_scale_U2_C1_S_C2_U3/C1/` 的 Formation/three assessments 5 行、`C2/` 5 行 Gate、`S/` 5 行参考 Separation；这**不是**把 2021–2024 全范围每个候选位置都算出了正式 U2 OpportunityCluster。
-- **U3 的真实可用部分**：`U3/02_movement_r02_objective_facts.csv` 是 15 行（5 个 As-Of × 3 成员）的 Movement 路径事实，含 `raw_progress`、`path_efficiency`、`max_counter_move`、`retained_fraction`、`completed_recovery_events`、`path_status` 等；它不是完整四个 Bundle 的已校准 Current。其 `market_quality_judgement` 表明 Withheld/无正式 H1/校准。
+- **单尺度有界演示：5 行 = 同一个 Case 在 5 个 As-Of，而不是 5 个机会簇。** `single_scale_U2_C1_S_C2_U3/C1/03_case_formation_and_three_assessments.csv` 的 5 行都是 `case_ref=refonly-ad8824a52552d7bffa91`，成员均为 `hc|i|rb`，同一实际转折时间 `2021-04-30 15:00:00`；`C2/` Gate 与 `S/` 参考 Separation 对应相同范围。5 个 As-Of 在 2021-05-06、05-07、05-11、05-14、05-18（均为 10:00）。不能把它当成 2021–2024 全范围五个正式 U2 OpportunityCluster。
+- **U3 的真实可用部分**：`U3/02_movement_r02_objective_facts.csv` 是 15 行（**同一个参考 Case** × 5 个 As-Of × 3 成员）的 Movement 路径事实，含 `raw_progress`、`path_efficiency`、`max_counter_move`、`retained_fraction`、`completed_recovery_events`、`path_status` 等；它不是完整四个 Bundle 的已校准 Current。其 `market_quality_judgement` 表明 Withheld/无正式 H1/校准。
 - **未形成的质量结论**：`U3/03_r03_quality_withholding.csv` 15 行，`progress_axis/friction_axis/retention_axis=CalibrationPending`，`quality_judgement=WITHHELD`，不能当成正式“哪个品种好做”。`C2/01_case_opportunity_cluster_gates_v0.csv` 5 行中 `official_cluster_committed=NO`。
 - 当前 ZIP 中没有证明 U3-B Activity Conversion、四类 Allocation Evidence 或更广泛 U3 Relation/Group 已按正式合同算出。**缺失要如实作为本次设计价值观察的边界**，不为补齐业务叙事而改动预计算结果。
 

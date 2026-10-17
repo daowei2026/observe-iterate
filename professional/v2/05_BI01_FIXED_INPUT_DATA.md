@@ -37,6 +37,17 @@
 - 请求范围：2021-01-01 至 2024-02-29；实际 KLine 索引覆盖 2021-01-04 09:30 至 2024-02-29 15:00。各 9,080 根 30m KLine，**每品种 12 行空 OHLC 原始占位，不应插值**；mid 转折 rb 363、hc 342、i 752，共 1,457。
 - 第一轮 `value1` / 第二轮 `value2`、actual/confirm/known、源 Zig 状态不可随便合并或替代。图上可显示上下文，但不能把未来实际点当作当时可知的信号。
 
+## 1.1 固定 CSV 的业务观察覆盖并非四方面全量完成
+
+经本次项目提供的实际 ZIP 成员核查：
+- `single_scale_U2_C1_S_C2_U3/C1/03_case_formation_and_three_assessments.csv` 是 **5 行、同一个 `case_ref=refonly-ad8824a52552d7bffa91`、同一组 hc/i/rb**，并非五个相互独立的机会簇。转折 actual 时间为 `2021-04-30 15:00:00`；5 个 As-Of 为 2021-05-06、05-07、05-11、05-14、05-18 的 10:00。各行 `formal_assessments_committed=NO`。
+- 相应 `C2/01_case_opportunity_cluster_gates_v0.csv` 也是**这个 Case 的 5 个 As-Of**，全部 `official_cluster_committed=NO`、`official_h1_emitted=NO`；这不是已识别五个正式 OpportunityCluster。
+- 对应 `U3/02_movement_r02_objective_facts.csv` 是 **1 个 Case × 5 个 As-Of × 3 个成员 = 15 条**客观路径事实；`U3/03_r03_quality_withholding.csv` 的 15 行 `quality_judgement=WITHHELD`，三个已列质量轴均为 `CalibrationPending`。因此不是全范围 U3 四方面都已经形成可用于品种优劣的正式结果。
+- **与之相对，C0/N 和 C1 raw 部分的实际覆盖更广。** 允许在 rb/i/hc 固定数据范围内观察真实转折、单品种行为和共同转折候选，但不能直接把这些候选当成具有完整 C2/S/U3 链条的全部 OpportunityCluster。
+- 这不是要求重新计算：在 S1/S2/S3 里把**当前实际具备的数据、可以观察的关系、没有输出的设计环节**清楚分账；若完整 U2/U3 设计的某些问题在这批数据中不能判断，应给 Owner 有据的限制和后续建议，禁止为了满足任务表面文字而补造缺失结果。
+
+以上数量和状态来自本次项目附件的 CSV 成员读取；`/dwdhome/fy/资金管理` 由 Owner 指定为实际 Worker 路径，未来 Worker 消费时仍须使用该目录真实文件，不能仅凭本文断言其成员与附件一定字节相同。
+
 ## 2. 数据在哪：按使用者区分（不把一个环境冒充另一个）
 
 | 入口 | 本次已知位置 | 可以说什么 / 还须确认什么 |

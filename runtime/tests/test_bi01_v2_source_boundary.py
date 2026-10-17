@@ -159,6 +159,11 @@ class V2Boundary(unittest.TestCase):
         self.assertIn("ProgressBundle", source_map)
         self.assertIn("WITHHELD", source_map)
         self.assertIn("current_application=NOT_APPLIED", source_map)
+        self.assertIn("5 行 = 同一个 Case", source_map)
+        self.assertIn("refonly-ad8824a52552d7bffa91", fixed)
+        self.assertIn("formal_assessments_committed=NO", fixed)
+        self.assertIn("15 条", fixed)
+        self.assertIn("同一个 hc/i/rb Case 的 5 个 As-Of", (ROOT / V2_SOURCES[0]).read_text(encoding="utf-8"))
 
     def test_new_run_not_adopted_or_sent(self):
         binding = json.loads((ROOT / "runtime/config/WORKMAP_BINDING.json").read_text(encoding="utf-8"))
