@@ -4,7 +4,7 @@
 ## 运行身份
 - work_id：`BI-01`（业务路由键）
 - run_id：`BI-01-V2-01`
-- status：**S1_MANAGEMENT_ACCEPTED / S2_FIRST_DELIVERY_AND_CONTINUING / S3_CONSUMPTION_PENDING**
+- status：**S1_ACCEPTED / S2_TECHNICAL_DELIVERY_COMPLETE / S3_FIRST_GROUNDED_FINDINGS_ACCEPTED_FULL_SCOPE_ACTIVE**
 - 业务总目标：[V2 00](../../professional/v2/00_PURPOSE_AND_THREE_STEP_FLOW.md)
 - 重要既有业务底稿：[V2 04](../../professional/v2/04_BI01_BUSINESS_BASELINE.md)（复用 I1/I2/I3 的业务事实，不复用旧 run 状态）
 - 固定数据与位置：[V2 05](../../professional/v2/05_BI01_FIXED_INPUT_DATA.md)
@@ -23,9 +23,9 @@ aidata 任何必要的通用修改都须在其新建的工作分支施工，不�
 
 ## 运行资格
 
-本次Owner已明确GO，原文见[OWNER_START.md](OWNER_START.md)。[完整地图](00_长程推进地图.md)和[原S1—S3任务](01_当前任务.md)继续有效，原专业任务/Binding未改。R3独立地图阅读、首次Intake和R4专业首发已经实际完成。R5现已接收S1及具名原数据发现，处理MD-01/回交定位与增量采用；详见[R5管理决定](reviews/management-R0005/DECISION.md)。原失败记录不倒改，Intake当前结果树须按新管理决定真实登记，不能用状态标题冒充机械通过。
+本次Owner已明确GO，原文见[OWNER_START.md](OWNER_START.md)。[完整地图](00_长程推进地图.md)和[原S1—S3任务](01_当前任务.md)继续有效，原专业任务/Binding未改。R3独立地图、首次Intake、R4专业S1、R5接收/定位适配及b60增量采用已实际完成；R6已消费部分同图数据，R7接受首次有据业务认识，详见[R7完整管理决定](provenance/turns/R0007/FULL_RESPONSE.md)。R6原IN_PROGRESS/INCOMPLETE及失败/运输记录不倒改；新Intake仍按真实Git登记，不用状态标题冒充机械通过或完整业务完成。
 
-[首图及当前同图数据](artifacts/worker-R0004/CURRENT_DELIVERY.md)已有具名交付；当前146CSV坐标修正版与旧144版/146中间版分别保留，访问需部署工作站网络。该交付不代表执行Pro已消费或S2/S3完整完成。原aidata工单继续，合格首批即可交原执行Pro开始图数对应观察，不以首图或所有图数量作为终点。旧run的Gate、聊天和成果绝不继承。
+[原图数最终回交](artifacts/worker-R0004/final/WORKER_RETURN.md)已技术完成，320节点/包保留；原47请求的51个AsOf有[可直接读取的原CSV文本](artifacts/worker-R0004/readable_views/REQUESTED_51_CURRENT/READING_GUIDE.md)。原Worker不重跑，R6运输停止条件已退出当前前置。专业者继续未完整覆盖的广域/未覆盖turn及主Case剩余层，完成四束、反证与增量分账，不以首批发现或图数结案。known行可能携带事后辅助字段，严格用途见[R7时间边界](provenance/turns/R0007/FULL_RESPONSE.md#time-boundary)。当前146CSV坐标修正版与旧144/146中间版各保留，内网页面与相应包版本配套。
 
 ## 轮次和已检查的运行前提
 
@@ -37,4 +37,4 @@ aidata 任何必要的通用修改都须在其新建的工作分支施工，不�
 - observe-iterate 启动基线：`11626f64bc64ae21e52108b2e47fafbbc1023615`。
 - cgpterm 操作基线：`a65739e8adecfa1e6c09d97a11a1b020bf765126`。
 - 两仓远端 `fy/observation-iteration-v2-20261017` 启动时均与 Owner 指定一致；后续运行增量不静默替换固定方法。
-- [真实进度](PROGRESS.md)；[各R轮次](provenance/turns/)；[当前管理接收](reviews/management-R0005/DECISION.md)。原起点R1累计；实质原文取得、机械关联检查通过、管理接收与实际投递分别记录，不以文档存在代替发生。
+- [真实进度](PROGRESS.md)；[各R轮次](provenance/turns/)；[当前管理接收](provenance/turns/R0007/FULL_RESPONSE.md)。输入有效6份，R7真实收到后才计7；下一EFFORT仍累计8、起点R1。技术完成、实际读取、管理采用、独立资格和真实投递分别记录，不以文档存在代替发生。旧run的Gate、聊天和成果不继承。
