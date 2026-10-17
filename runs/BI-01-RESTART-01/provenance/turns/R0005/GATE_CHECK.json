@@ -1,0 +1,56 @@
+{
+  "schema": "bi01-gate-check/v1",
+  "run_id": "BI-01-RESTART-01",
+  "round_id": "R0005",
+  "invocation_id": "BI01-RESTART-01-R0005-427e020c096844a98f9f46148fce405c",
+  "turn_complete": {
+    "commit": "7eb4c54a8fe3e7b3372dc3806f39cc09dcf14622",
+    "message": "BI-01 I4 professional return — turn complete BI01-RESTART-01-R0005-427e020c096844a98f9f46148fce405c",
+    "observed_at": "2026-10-16T13:24:05.740Z",
+    "correlated": true
+  },
+  "after_return": {
+    "checked_ref": "eeef4dce63df031871b66aa260313deadf0a46c7",
+    "ok": true,
+    "errors": []
+  },
+  "return_copies": {
+    "role_return_byte_identical": true,
+    "question_work_return_byte_identical": true,
+    "role_return_sha256": "5b0ab4fbfa064ef48fbef5d361eae4782a0b3bedb933fb477cc56ba40076f983",
+    "question_work_return_sha256": "5d75f8b7b5534313695337baf979a17a62b9b11fd505051270cb6ca85d6ac8a7"
+  },
+  "return_locator_validation": {
+    "question_work_ref_exact_match": true,
+    "binding_ref_exact_match": true,
+    "all_internal_git_objects_resolve": true,
+    "required_anchors_resolve_uniquely": true,
+    "required_anchors": [
+      "identity",
+      "completed",
+      "remaining",
+      "continuation",
+      "trigger-result",
+      "trigger-effort",
+      "trigger-conflict",
+      "trigger-change",
+      "material-use"
+    ]
+  },
+  "professional_artifacts": {
+    "report_ref": "github:daowei2026/observe-iterate@ff0c157baf037f502f0158b35f92c26bec4218a4:runs/BI-01-RESTART-01/artifacts/I4_R0005/REPORT.md::full",
+    "report_sha256": "caa4d2ee392e63e8bc6a48f819f86ca82910ee4f92c3e19dd176b1698f8b917d",
+    "check_summary_ref": "github:daowei2026/observe-iterate@ff0c157baf037f502f0158b35f92c26bec4218a4:runs/BI-01-RESTART-01/artifacts/I4_R0005/evidence/CHECK_SUMMARY.json::full",
+    "execution_self_check_ref": "github:daowei2026/observe-iterate@ff0c157baf037f502f0158b35f92c26bec4218a4:runs/BI-01-RESTART-01/artifacts/I4_R0005/evidence/EXECUTION_SELF_CHECK.json::full",
+    "verifier_syntax_compile": "PASS",
+    "verifier_local_execution": "NOT_RUN_DEPENDENCY_MISSING",
+    "verifier_local_execution_detail": "The current controller Python environment has no numpy. This is not recorded as a verifier PASS or as an artifact defect; the role-provided execution evidence remains explicitly non-independent."
+  },
+  "professional_return_mechanical_acceptance": true,
+  "phone_answer_state": "pending_grace",
+  "phone_answer_grace_until": "2026-10-16T13:34:05.740Z",
+  "collection_state": "not_started",
+  "management_reassessment_required": true,
+  "management_reassessment_sent": false,
+  "limits": "These checks mechanically accept the R0005 professional return and its locators. They do not prove an independent audit, management G4/G5/I5 decision, Owner acceptance, the R0006 management dispatch, or production qualification."
+}

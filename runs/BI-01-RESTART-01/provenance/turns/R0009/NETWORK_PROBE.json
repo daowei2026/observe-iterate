@@ -1,0 +1,40 @@
+{
+  "schema": "bi01-network-probe/v1",
+  "run_id": "BI-01-RESTART-01",
+  "round_id": "R0009",
+  "result": "PASS",
+  "probe_completed_at": "2026-10-17T02:23:31.369Z",
+  "valid_until": "2026-10-17T03:23:31.369Z",
+  "network": {
+    "active_transports": [
+      "WIFI"
+    ],
+    "ssid": "dw-usa-vps4",
+    "internet": true,
+    "validated": true,
+    "vpn_checked_or_operated": false
+  },
+  "projects_list": {
+    "result": "PASS",
+    "observed_at": "2026-10-17T02:22:28.049Z",
+    "selector": "业务语言：应力叙事集",
+    "loading_or_error": false
+  },
+  "global_recent_list": {
+    "result": "PASS",
+    "observed_at": "2026-10-17T02:23:31.369Z",
+    "selector": "问题处理方法",
+    "loading_or_error": false
+  },
+  "calls": {
+    "get_android_network_status": 1,
+    "list_probes": 2,
+    "vpn": 0,
+    "send": 0,
+    "input": 0,
+    "descendants": 0
+  },
+  "transient_condition": "首次返回 Project chats 时出现一次 Too many requests snackbar；仅在原列表有界等待 10 秒，提示消失且列表恢复，随后两个列表探针均 PASS。",
+  "protocol_deviation": "探查 global recent 时误点 sidebar 底部蓝色聊天入口，打开未发送的空 new-chat composer；立即 BACK，输入 0、Send 0，未形成已提交聊天。随后按 fresh UI 锚点完成 global recent 探针。",
+  "limits": "PASS 仅证明当次 exact SSID、WIFI/VALIDATED 与两个 fresh list selector 均满足准入要求；未操作 VPN、网络、账号或更新。"
+}

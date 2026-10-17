@@ -1,0 +1,49 @@
+{
+  "schema": "longrun-return/v1",
+  "work_id": "BI-01",
+  "invocation_id": "BI01-RESTART-01-R0002-c19efdc130c1995d4660ca4907747429",
+  "assignment_token": "dc5df7008bbcb41665e37aea084c100e",
+  "question_work_ref": "#r0002-question-work-return",
+  "work_status": "SUBMITTED",
+  "completed_scope_ref": "#r0002-repair-completed",
+  "remaining_scope_ref": null,
+  "artifact_refs": [
+    {
+      "answer_ref": "#r0002-current-task"
+    },
+    {
+      "answer_ref": "#r0002-binding"
+    },
+    {
+      "answer_ref": "#r0001-role-return-repair"
+    },
+    {
+      "answer_ref": "#r0002-sync-files"
+    }
+  ],
+  "delivery": {
+    "status": "READY",
+    "missing_refs": []
+  },
+  "materials": {
+    "use_record_ref": "#r0002-material-use",
+    "unread_required": [],
+    "unavailable_required": []
+  },
+  "handoff": {
+    "kind": "SUBMIT",
+    "route_key": "bi01_management_manual_repair_to_coordinator",
+    "instructions_ref": "#r0002-handoff"
+  },
+  "role_outputs": {
+    "management": {
+      "decision_ref": "#r0002-decisions",
+      "plan_ref": "#r0002-adoption",
+      "issued_work_refs": [
+        "#r0002-current-task",
+        "#r0002-binding"
+      ],
+      "delivery_scope_ref": "#r0002-delivery-scope"
+    }
+  }
+}

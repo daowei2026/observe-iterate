@@ -1,0 +1,82 @@
+{
+  "schema": "bi01-pre-send-gates/v1",
+  "run_id": "BI-01-RESTART-01",
+  "round_id": "R0005",
+  "invocation_id": "BI01-RESTART-01-R0005-427e020c096844a98f9f46148fce405c",
+  "assignment_token": "8f4678dd01714eb8bc3a9d7f7cfcfe69",
+  "recipient_ref": "chatgpt-project:细节叙事生成_金标/chat:BI01-RESTART-01-I4-EXECUTION",
+  "payload": {
+    "path": "runs/BI-01-RESTART-01/provenance/turns/R0005/PROMPT.md",
+    "sha256": "816f82be70291952adc877b998cd3b71e2903696177cbbb93319a51e90235228",
+    "utf8_bytes": 35497,
+    "utf16_units": 21203,
+    "lines": 500,
+    "first_line": "[BI01-RESTART-01-R0005-427e020c096844a98f9f46148fce405c]"
+  },
+  "checks": {
+    "r0004_management_delivery": {
+      "result": "PASS",
+      "evidence_ref": "runs/BI-01-RESTART-01/provenance/turns/R0004/GATE_CHECK.json"
+    },
+    "workmap_reader": {
+      "result": "READABLE",
+      "fingerprint": "6898bb56abe65b77b1d4edc1f9ba67570558102818e4399b574ef8085a6fda3d"
+    },
+    "workmap_intake": {
+      "result": "PASS",
+      "checked_ref": "9a935ab3d37497039dd9c02bad7526f28cfb26d3",
+      "errors": [],
+      "reader_qualification": "RECORDED"
+    },
+    "coordinator_dispatch_prepare": {
+      "result": "PASS",
+      "policy_commit": "75d42776a78cd4cbdf3b61bbf86ec93701d06b84",
+      "recipient_exact": true,
+      "payload_sha256_exact": true
+    },
+    "coordinator_dispatch_verify": {
+      "result": "PASS",
+      "payload_exact": true,
+      "recipient_exact": true
+    },
+    "bi01_pre_dispatch": {
+      "result": "PASS",
+      "checked_ref": "9a935ab3d37497039dd9c02bad7526f28cfb26d3",
+      "recorded_send_state": "NOT_RECORDED",
+      "errors": []
+    },
+    "professional_endpoint": {
+      "result": "NOT_SENT",
+      "checked_ref": "9a935ab3d37497039dd9c02bad7526f28cfb26d3",
+      "observed_at": "2026-10-16T12:44:01.910Z",
+      "current_in_flight": false,
+      "evidence_ref": "runs/BI-01-RESTART-01/provenance/turns/R0005/DELIVERY_OBSERVATION.json"
+    },
+    "workmap_dispatch": {
+      "result": "PASS",
+      "checked_ref": "9a935ab3d37497039dd9c02bad7526f28cfb26d3",
+      "errors": [],
+      "reader_qualification": "RECORDED"
+    },
+    "network": {
+      "result": "PASS",
+      "ssid": "dw-usa-vps4",
+      "two_list_probe": "PASS",
+      "completed_at": "2026-10-16T12:48:53.990Z",
+      "valid_until": "2026-10-16T13:48:53.990Z",
+      "vpn_checked_or_operated": false,
+      "evidence_ref": "runs/BI-01-RESTART-01/provenance/turns/R0005/NETWORK_PROBE.json"
+    },
+    "scheduler_send_ready": {
+      "result": "PASS",
+      "ready_at": "2026-10-16T12:50:28.359Z",
+      "recorded_revision": 62,
+      "attempt_started_at": "2026-10-16T12:50:34.729Z",
+      "attempt_recorded_revision": 63
+    }
+  },
+  "all_non_scheduler_gates_pass": true,
+  "send_state": "NOT_SENT",
+  "sent": false,
+  "limits": "This record proves that every pre-send gate, including scheduler send-ready materialization, passed before the one exact phone send. Actual commitment is recorded separately in SEND_RECEIPT.json; this record does not prove reply completion, business correctness, G4/G5, Owner acceptance, independent review, or production qualification."
+}

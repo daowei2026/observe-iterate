@@ -1,0 +1,48 @@
+schema_version: agent-refinement-runtime-release-set/v0.3
+release_set_id: agent-refinement-runtime-release-candidate-v0.3-integrated-20260904
+integration_baseline:
+  repo: daowei2026/feature-refinement-implementation-agent-evolution
+  commit: 07fdfff0f23af9ccc3022500d1d8d5e60b8bdfa5
+  root_tree_sha: dc3e074993c70ad941bdbc77b11b0e3d2a5ab592
+  purpose: 输入基线追溯；不是旧版运行依赖
+components:
+  mission_a:
+    candidate: v0.2.0
+    canonical_form: materialized exact-parent successor
+    canonical_path: ../../market_process_modeling_contract_pro_candidate_v0_2
+    built_zip_sha256: cb8caf98c4e0b14fb55a36d4c7f5dd36015df4ac07fd883333a37a63a9054457
+    self_contained_from_parent: true
+    legacy_runtime_dependency: false
+    runtime: included
+  mission_b:
+    candidate: v0.2.0
+    canonical_form: materialized exact-parent successor
+    canonical_path: ../../repo-aware-engineering-agent-candidate-v0.2
+    built_zip_sha256: 18af3e0bc2920d4a5c670d5449c8be884e213623210173a999469440978990aa
+    self_contained_from_parent: true
+    legacy_runtime_dependency: false
+    runtime: included
+  mission_c:
+    candidate: v0.2.0
+    canonical_form: materialized exact-parent successor
+    canonical_path: ../../mission-c-host-implementation-system-candidate-v0.2
+    built_zip_sha256: 3a88018fd2740ed9ca7e77e0a60f09fc9cfd6da00f0bcafb34ca74b7af73cbf6
+    self_contained_from_parent: true
+    legacy_runtime_dependency: false
+    runtime: included
+  overlay:
+    candidate: v0.3
+    form: complete replacement
+    canonical_path: ../../runtime_overlay_candidates/agent_owned_long_horizon_overlay_v0_3
+    legacy_runtime_dependency: false
+    runtime: included
+    execution_contract_revision: 2026-09-30-continuous-implementation
+maturity:
+  runtime_maturity: human_led_candidate
+  validated_runnable: false
+  owner_acceptance: pending
+  fresh_agent_pilot: NOT_EXECUTED
+  existing_artifact_retrofit: NOT_EXECUTED
+execution_contract_revision: 2026-09-30-continuous-implementation
+workspace_revision_baseline: b85af4a6578cf455a3da8884a999d98bd5fb1050
+source_resolution: canonical paths resolve in the same commit as this release; previous baseline is provenance

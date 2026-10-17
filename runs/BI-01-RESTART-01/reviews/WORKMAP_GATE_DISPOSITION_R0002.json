@@ -1,0 +1,103 @@
+{
+  "schema": "bi01-adoption-gate-disposition/v1",
+  "run_id": "BI-01-RESTART-01",
+  "round_id": "R0002",
+  "authority": "OWNER_AUTHORIZED_MANUAL_REPAIR",
+  "overlay12": "NOT_RUN_NOT_PASS",
+  "candidate_exact_input_commit": "e4ece3a9b31152a04c4fbf901be0d6e74ecb42b8",
+  "candidate_binding": {
+    "path": "runtime/config/WORKMAP_BINDING_CANDIDATE.json",
+    "blob": "a57df8faa9a51e9e24681d8d05323f229658a9ca",
+    "status": "PENDING_MATERIALIZATION_AND_INTAKE"
+  },
+  "snapshot": {
+    "fingerprint": "eb03f42941b8e40296531f293f571fbf398282569dc0ca5cdeea538b6f7796e7",
+    "reader_fingerprint": "67c081deb19465b5a857aa6ba1ab76704c4d67b5068f65aaa3c9fa080faab33a",
+    "task_payload_sha256": "80531462373bcb0137d84473eb8ac2be5248e666201a7a0c6528ca917aaa5730"
+  },
+  "candidate_mechanical_intake": {
+    "ok": true,
+    "errors": [],
+    "reader_qualification": "RECORDED",
+    "raw_output_sha256": "aaf4dd67b1a503624c67659849d6518d55d5888b1d3413164977c2e24d84f33d"
+  },
+  "candidate_dispatch_preflight": {
+    "ok": true,
+    "errors": [],
+    "reader_qualification": "RECORDED",
+    "delivery_observation": "runs/BI-01-RESTART-01/reviews/PROFESSIONAL_NOT_SENT_OBSERVATION_R0002.json",
+    "raw_output_sha256": "fd5a64e48c4d29172135592225ae7f0370b1dd46eaef0474a7bd957e773f044a"
+  },
+  "r0001_after_return": {
+    "ok": true,
+    "errors": [],
+    "record": "runs/BI-01-RESTART-01/provenance/turns/R0001/GATE_CHECK_RERUN_R0002.json"
+  },
+  "r0002_after_return": {
+    "ok": true,
+    "errors": [],
+    "record": "runs/BI-01-RESTART-01/provenance/turns/R0002/GATE_CHECK.json"
+  },
+  "selected_action": "PAUSE_NEEDS_HUMAN",
+  "adoption_materialization_commit": "a2dada025a39647c78d599500b27bd6ab23952a8",
+  "adoption_materialization_blob": "6cb309dfc2ac565df621f92c34a503faba5fdc63",
+  "active_binding_blob": "bcd2f32db58c58742495d6bd45205181ccb86e39",
+  "formal_binding_reader_attempt": {
+    "exact_input_commit": "a2dada025a39647c78d599500b27bd6ab23952a8",
+    "result": "BLOCKED",
+    "blockers": [
+      "ADOPTED_AND_NOT_ADOPTED_STATUS_CONFLICT",
+      "EXACT_NEXT_ACTION_AMBIGUOUS"
+    ],
+    "report": {
+      "path": "runs/BI-01-RESTART-01/reviews/WORKMAP_READER_ADOPTED_ATTEMPT_R0002.md",
+      "blob": "b39e7f0c61bbdfbd3dd45f7db2d203db791d4fa8"
+    },
+    "disposition": "Preserve the failed attempt, synchronize only the already-satisfied operational adoption conditions from the manager-issued sequence, and run a new fresh reader on a new exact commit."
+  },
+  "formal_binding_reader": {
+    "exact_input_commit": "6d955772d27a029224b4fd991fbdf121907f8533",
+    "snapshot_fingerprint": "1382adf38af3865127bc6257172ae4c9469326ebce770ddc163e8204de9ad65d",
+    "reader_fingerprint": "19355c5331bf33cbf20d755878b8363d74b87d7cb3a01f63367b3b2caed5e0b2",
+    "result": "READABLE",
+    "blockers": [],
+    "report": {
+      "path": "runs/BI-01-RESTART-01/reviews/WORKMAP_READER_ADOPTED_R0002.md",
+      "blob": "528136a2e82e8b281a6a069af7223a046d3a1c4b"
+    }
+  },
+  "formal_binding_mechanical_intake": {
+    "exact_input_commit": "526e9fe6274364de197556c6d558ffc8a057f32d",
+    "base_commit": "a2dada025a39647c78d599500b27bd6ab23952a8",
+    "ok": true,
+    "errors": [],
+    "reader_qualification": "RECORDED",
+    "raw_output_sha256": "9cf562e923deddb64105d0f9c3ba5f5bdc3b889da2d13f2e27b330da044ebfa4"
+  },
+  "formal_delivery_observation": {
+    "state": "UNKNOWN",
+    "record": "runs/BI-01-RESTART-01/reviews/PROFESSIONAL_DELIVERY_OBSERVATION_FORMAL_R0002.json",
+    "raw_delivery_sha256": "1ad6591ec19ef3b33b9ff354e6a0c2e6a0ffe067dae8ba5476d76f32e5c12db3",
+    "no_send_calls": true
+  },
+  "formal_binding_dispatch_preflight": {
+    "exact_input_commit": "526e9fe6274364de197556c6d558ffc8a057f32d",
+    "base_commit": "a2dada025a39647c78d599500b27bd6ab23952a8",
+    "ok": false,
+    "errors": [
+      "DELIVERY_NOT_SENDABLE:UNKNOWN"
+    ],
+    "reader_qualification": "RECORDED",
+    "raw_output_sha256": "5372644ff06c5d8d41ec9f624168d05e02f13f3c0f78038f30cd768f65f6a97d"
+  },
+  "formal_binding_recheck": "BLOCKED_DELIVERY_UNKNOWN",
+  "adoption_eligible": true,
+  "professional_dispatch_eligible": false,
+  "resume_conditions": [
+    "Human restores or confirms a safe stable ChatGPT Project/internal-history-search observation path.",
+    "Create a new exact Git recovery input and run a new fresh independent reader/intake because README/map status changed.",
+    "Obtain a protocol-clean actual sending-endpoint NOT_SENT observation for that exact commit.",
+    "Re-run formal binding dispatch with zero errors before any professional round or Send."
+  ],
+  "limits": "Candidate PASS permitted ADOPTED materialization and formal reader/mechanical intake passed. Formal dispatch remains blocked only by an exact-commit delivery state of UNKNOWN after bounded invalid observations. No professional chat was committed and no professional Send occurred. R0001/R0002 business work must not be rerun."
+}

@@ -1,6 +1,1415 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "urn:observation-iteration:question-work:v1",
-  "title": "QUESTION_WORK structure",
-  "type": "object"
+  "$id": "urn:market-process:question-work:v2-compatible",
+  "title": "问题工作 v2：启动输入、持续绑定与回交；保留 v1 结构读取",
+  "$comment": "Structure only. BOOTSTRAP is not a business plan. No authority/read/completion/dispatch claim. Legacy v1 and v2 without repeat remain one-shot; WHILE_WORK_ACTIVE requires explicit adoption. See DR14. BI-01 v2-only adds I1–I6 to question_ids, focus_results and optional CASE parent links. Legacy v1 and CYF A/B/C values are not rewritten or re-adopted.",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/binding"
+    },
+    {
+      "$ref": "#/$defs/return"
+    },
+    {
+      "$ref": "#/$defs/bootstrap"
+    },
+    {
+      "$ref": "#/$defs/bindingV2"
+    },
+    {
+      "$ref": "#/$defs/returnV2"
+    }
+  ],
+  "$defs": {
+    "repoRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repo",
+        "commit",
+        "path",
+        "selector"
+      ],
+      "properties": {
+        "repo": {
+          "type": "string",
+          "pattern": "^[^/\\s]+/[^/\\s]+$"
+        },
+        "commit": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "selector": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        }
+      }
+    },
+    "ref": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/repoRef"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "answer_ref"
+          ],
+          "properties": {
+            "answer_ref": {
+              "type": "string",
+              "pattern": "^#[^\\s]+$"
+            }
+          }
+        }
+      ]
+    },
+    "route": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "recipient_role",
+        "recipient_ref",
+        "instructions_ref"
+      ],
+      "properties": {
+        "recipient_role": {
+          "enum": [
+            "management",
+            "professional",
+            "review",
+            "receiver",
+            "maintenance",
+            "owner"
+          ]
+        },
+        "recipient_ref": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "instructions_ref": {
+          "$ref": "#/$defs/ref"
+        }
+      }
+    },
+    "effort": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "unit",
+        "limit",
+        "count_from_ref"
+      ],
+      "properties": {
+        "unit": {
+          "enum": [
+            "EFFECTIVE_CALLS",
+            "ELAPSED_HOURS"
+          ]
+        },
+        "limit": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "count_from_ref": {
+          "$ref": "#/$defs/ref"
+        }
+      }
+    },
+    "trigger": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "trigger_id",
+        "kind",
+        "condition_ref",
+        "signal_key",
+        "route",
+        "blocking",
+        "effort_limit"
+      ],
+      "properties": {
+        "trigger_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "kind": {
+          "enum": [
+            "RESULT",
+            "EFFORT",
+            "CHANGE"
+          ]
+        },
+        "condition_ref": {
+          "$ref": "#/$defs/ref"
+        },
+        "signal_key": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "route": {
+          "$ref": "#/$defs/route"
+        },
+        "blocking": {
+          "type": "boolean"
+        },
+        "effort_limit": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/effort"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "EFFORT"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "effort_limit": {
+                "$ref": "#/$defs/effort"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "effort_limit": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "observation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "trigger_id",
+        "state",
+        "evidence_ref"
+      ],
+      "properties": {
+        "trigger_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "state": {
+          "enum": [
+            "SATISFIED",
+            "NOT_YET",
+            "UNKNOWN"
+          ]
+        },
+        "evidence_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ref"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "state": {
+                "enum": [
+                  "SATISFIED",
+                  "UNKNOWN"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "evidence_ref": {
+                "$ref": "#/$defs/ref"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "kind",
+        "work_id",
+        "goal_ref",
+        "plan_ref",
+        "full_scope_ref",
+        "batch_result",
+        "question_ids",
+        "professional_mode",
+        "focus_ref",
+        "coverage_ref",
+        "source_reads",
+        "deliverables_ref",
+        "completion_ref",
+        "budget_ref",
+        "routes",
+        "triggers",
+        "explicit_no_trigger_reason_ref"
+      ],
+      "properties": {
+        "schema": {
+          "const": "question-work/v1"
+        },
+        "kind": {
+          "const": "BINDING"
+        },
+        "work_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "goal_ref": {
+          "$ref": "#/$defs/ref"
+        },
+        "plan_ref": {
+          "$ref": "#/$defs/ref"
+        },
+        "full_scope_ref": {
+          "$ref": "#/$defs/ref"
+        },
+        "batch_result": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "question_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "enum": [
+              "A-1",
+              "A-2",
+              "A-3",
+              "A-4",
+              "B-1",
+              "B-2",
+              "B-3",
+              "C-1",
+              "C-2",
+              "M-START",
+              "M-REASSESS",
+              "M-CLOSE",
+              "AUDIT"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "professional_mode": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "focus_ref": {
+          "$ref": "#/$defs/ref"
+        },
+        "coverage_ref": {
+          "$ref": "#/$defs/ref"
+        },
+        "source_reads": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "source",
+              "requirement",
+              "purpose",
+              "reuse_evidence"
+            ],
+            "properties": {
+              "source": {
+                "$ref": "#/$defs/repoRef"
+              },
+              "requirement": {
+                "enum": [
+                  "MODE_FULL",
+                  "FOCUS_FULL",
+                  "BOUNDARY",
+                  "PROVENANCE_TRIGGER"
+                ]
+              },
+              "purpose": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "reuse_evidence": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/ref"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "deliverables_ref": {
+          "$ref": "#/$defs/ref"
+        },
+        "completion_ref": {
+          "$ref": "#/$defs/ref"
+        },
+        "budget_ref": {
+          "$ref": "#/$defs/ref"
+        },
+        "routes": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "same_work",
+            "accept",
+            "decide",
+            "return_repair"
+          ],
+          "properties": {
+            "same_work": {
+              "$ref": "#/$defs/route"
+            },
+            "accept": {
+              "$ref": "#/$defs/route"
+            },
+            "decide": {
+              "$ref": "#/$defs/route"
+            },
+            "return_repair": {
+              "$ref": "#/$defs/route"
+            }
+          }
+        },
+        "triggers": {
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "$ref": "#/$defs/trigger"
+          }
+        },
+        "explicit_no_trigger_reason_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ref"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "triggers": {
+                "maxItems": 0
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "explicit_no_trigger_reason_ref": {
+                "$ref": "#/$defs/ref"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "explicit_no_trigger_reason_ref": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "return": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "kind",
+        "work_id",
+        "invocation_id",
+        "binding_ref",
+        "focus_results",
+        "material_use_ref",
+        "trigger_observations",
+        "continuation_ref"
+      ],
+      "properties": {
+        "schema": {
+          "const": "question-work/v1"
+        },
+        "kind": {
+          "const": "RETURN"
+        },
+        "work_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "invocation_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "binding_ref": {
+          "$ref": "#/$defs/ref"
+        },
+        "focus_results": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "question_id",
+              "completed_ref",
+              "remaining_ref",
+              "affected_refs"
+            ],
+            "properties": {
+              "question_id": {
+                "enum": [
+                  "A-1",
+                  "A-2",
+                  "A-3",
+                  "A-4",
+                  "B-1",
+                  "B-2",
+                  "B-3",
+                  "C-1",
+                  "C-2",
+                  "M-START",
+                  "M-REASSESS",
+                  "M-CLOSE",
+                  "AUDIT"
+                ]
+              },
+              "completed_ref": {
+                "$ref": "#/$defs/ref"
+              },
+              "remaining_ref": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/ref"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "affected_refs": {
+                "type": "array",
+                "minItems": 0,
+                "items": {
+                  "$ref": "#/$defs/ref"
+                }
+              }
+            }
+          }
+        },
+        "material_use_ref": {
+          "$ref": "#/$defs/ref"
+        },
+        "trigger_observations": {
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "$ref": "#/$defs/observation"
+          }
+        },
+        "continuation_ref": {
+          "$ref": "#/$defs/ref"
+        }
+      }
+    },
+    "sourceRefV2": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/repoRef"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "source_kind",
+            "conversation_id",
+            "message_id",
+            "selector",
+            "snapshot_ref"
+          ],
+          "properties": {
+            "source_kind": {
+              "const": "OWNER_MESSAGE"
+            },
+            "conversation_id": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "message_id": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "selector": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "snapshot_ref": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/repoRef"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "source_kind",
+            "attachment_id",
+            "filename",
+            "selector",
+            "sha256"
+          ],
+          "properties": {
+            "source_kind": {
+              "const": "ATTACHMENT"
+            },
+            "attachment_id": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "filename": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "selector": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "sha256": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "refV2": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/sourceRefV2"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "answer_ref"
+          ],
+          "properties": {
+            "answer_ref": {
+              "type": "string",
+              "pattern": "^#[^\\s]+$"
+            }
+          }
+        }
+      ]
+    },
+    "routeV2": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "recipient_role",
+        "recipient_ref",
+        "instructions_ref"
+      ],
+      "properties": {
+        "recipient_role": {
+          "enum": [
+            "management",
+            "professional",
+            "review",
+            "receiver",
+            "maintenance",
+            "owner"
+          ]
+        },
+        "recipient_ref": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "instructions_ref": {
+          "$ref": "#/$defs/refV2"
+        }
+      }
+    },
+    "effortV2": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "unit",
+        "limit",
+        "count_from_ref"
+      ],
+      "properties": {
+        "unit": {
+          "enum": [
+            "EFFECTIVE_CALLS",
+            "ELAPSED_HOURS"
+          ]
+        },
+        "limit": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "count_from_ref": {
+          "$ref": "#/$defs/refV2"
+        }
+      }
+    },
+    "triggerV2": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "trigger_id",
+        "kind",
+        "condition_ref",
+        "signal_key",
+        "route",
+        "blocking",
+        "effort_limit",
+        "obligation_id",
+        "cycle_id",
+        "rearm_ref"
+      ],
+      "properties": {
+        "trigger_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "kind": {
+          "enum": [
+            "RESULT",
+            "EFFORT",
+            "CHANGE"
+          ]
+        },
+        "condition_ref": {
+          "$ref": "#/$defs/refV2"
+        },
+        "signal_key": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "route": {
+          "$ref": "#/$defs/routeV2"
+        },
+        "blocking": {
+          "type": "boolean"
+        },
+        "effort_limit": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/effortV2"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "obligation_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "cycle_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "rearm_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/refV2"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "repeat": {
+          "enum": [
+            "ONCE",
+            "WHILE_WORK_ACTIVE"
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "EFFORT"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "effort_limit": {
+                "$ref": "#/$defs/effortV2"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "effort_limit": {
+                "type": "null"
+              },
+              "repeat": {
+                "const": "ONCE"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "observationV2": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "trigger_id",
+        "state",
+        "evidence_ref"
+      ],
+      "properties": {
+        "trigger_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "state": {
+          "enum": [
+            "SATISFIED",
+            "NOT_YET",
+            "UNKNOWN"
+          ]
+        },
+        "evidence_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/refV2"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "state": {
+                "enum": [
+                  "SATISFIED",
+                  "UNKNOWN"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "evidence_ref": {
+                "$ref": "#/$defs/refV2"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "parentV2": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "ref",
+        "reason_ref"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "NOT_APPLICABLE_NEW_CASE",
+            "PRESENT",
+            "REQUIRED_MISSING"
+          ]
+        },
+        "ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/sourceRefV2"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "reason_ref": {
+          "$ref": "#/$defs/refV2"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "PRESENT"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "ref": {
+                "$ref": "#/$defs/sourceRefV2"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "ref": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "bootstrap": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "kind",
+        "work_id",
+        "goal_ref",
+        "authority_ref",
+        "entry_sources",
+        "existing_work_refs",
+        "parent",
+        "recipient_ref",
+        "return_to_ref",
+        "question_ref",
+        "instructions_ref"
+      ],
+      "properties": {
+        "schema": {
+          "const": "question-work/v2"
+        },
+        "kind": {
+          "const": "BOOTSTRAP"
+        },
+        "work_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "goal_ref": {
+          "$ref": "#/$defs/sourceRefV2"
+        },
+        "authority_ref": {
+          "$ref": "#/$defs/sourceRefV2"
+        },
+        "entry_sources": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/sourceRefV2"
+          }
+        },
+        "existing_work_refs": {
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "$ref": "#/$defs/refV2"
+          }
+        },
+        "parent": {
+          "$ref": "#/$defs/parentV2"
+        },
+        "recipient_ref": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "return_to_ref": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "question_ref": {
+          "$ref": "#/$defs/repoRef"
+        },
+        "instructions_ref": {
+          "$ref": "#/$defs/refV2"
+        }
+      }
+    },
+    "bindingV2": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "kind",
+        "work_id",
+        "goal_ref",
+        "plan_ref",
+        "full_scope_ref",
+        "batch_result",
+        "question_ids",
+        "professional_mode",
+        "focus_ref",
+        "coverage_ref",
+        "source_reads",
+        "deliverables_ref",
+        "completion_ref",
+        "budget_ref",
+        "routes",
+        "triggers",
+        "explicit_no_trigger_reason_ref",
+        "parent",
+        "question_definitions"
+      ],
+      "properties": {
+        "schema": {
+          "const": "question-work/v2"
+        },
+        "kind": {
+          "const": "BINDING"
+        },
+        "work_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "goal_ref": {
+          "$ref": "#/$defs/refV2"
+        },
+        "plan_ref": {
+          "$ref": "#/$defs/refV2"
+        },
+        "full_scope_ref": {
+          "$ref": "#/$defs/refV2"
+        },
+        "batch_result": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "question_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "anyOf": [
+              {
+                "enum": [
+                  "A-1",
+                  "A-2",
+                  "A-3",
+                  "A-4",
+                  "B-1",
+                  "B-2",
+                  "B-3",
+                  "C-1",
+                  "C-2",
+                  "M-START",
+                  "M-REASSESS",
+                  "M-CLOSE",
+                  "AUDIT",
+                  "I1",
+                  "I2",
+                  "I3",
+                  "I4",
+                  "I5",
+                  "I6"
+                ]
+              },
+              {
+                "type": "string",
+                "pattern": "^CASE-[A-Za-z0-9][A-Za-z0-9._-]*$"
+              }
+            ]
+          },
+          "uniqueItems": true
+        },
+        "professional_mode": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "focus_ref": {
+          "$ref": "#/$defs/refV2"
+        },
+        "coverage_ref": {
+          "$ref": "#/$defs/refV2"
+        },
+        "source_reads": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "source",
+              "requirement",
+              "purpose",
+              "reuse_evidence"
+            ],
+            "properties": {
+              "source": {
+                "$ref": "#/$defs/sourceRefV2"
+              },
+              "requirement": {
+                "enum": [
+                  "MODE_FULL",
+                  "FOCUS_FULL",
+                  "BOUNDARY",
+                  "PROVENANCE_TRIGGER"
+                ]
+              },
+              "purpose": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "reuse_evidence": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/refV2"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "deliverables_ref": {
+          "$ref": "#/$defs/refV2"
+        },
+        "completion_ref": {
+          "$ref": "#/$defs/refV2"
+        },
+        "budget_ref": {
+          "$ref": "#/$defs/refV2"
+        },
+        "routes": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "same_work",
+            "accept",
+            "decide",
+            "return_repair"
+          ],
+          "properties": {
+            "same_work": {
+              "$ref": "#/$defs/routeV2"
+            },
+            "accept": {
+              "$ref": "#/$defs/routeV2"
+            },
+            "decide": {
+              "$ref": "#/$defs/routeV2"
+            },
+            "return_repair": {
+              "$ref": "#/$defs/routeV2"
+            }
+          }
+        },
+        "triggers": {
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "$ref": "#/$defs/triggerV2"
+          }
+        },
+        "explicit_no_trigger_reason_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/refV2"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "parent": {
+          "$ref": "#/$defs/parentV2"
+        },
+        "question_definitions": {
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "question_id",
+              "definition_ref",
+              "authority_ref",
+              "parent_question_id"
+            ],
+            "properties": {
+              "question_id": {
+                "type": "string",
+                "pattern": "^CASE-[A-Za-z0-9][A-Za-z0-9._-]*$"
+              },
+              "definition_ref": {
+                "$ref": "#/$defs/refV2"
+              },
+              "authority_ref": {
+                "$ref": "#/$defs/sourceRefV2"
+              },
+              "parent_question_id": {
+                "anyOf": [
+                  {
+                    "enum": [
+                      "A-1",
+                      "A-2",
+                      "A-3",
+                      "A-4",
+                      "B-1",
+                      "B-2",
+                      "B-3",
+                      "C-1",
+                      "C-2",
+                      "M-START",
+                      "M-REASSESS",
+                      "M-CLOSE",
+                      "AUDIT",
+                      "I1",
+                      "I2",
+                      "I3",
+                      "I4",
+                      "I5",
+                      "I6"
+                    ]
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "triggers": {
+                "maxItems": 0
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "explicit_no_trigger_reason_ref": {
+                "$ref": "#/$defs/refV2"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "explicit_no_trigger_reason_ref": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "returnV2": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "kind",
+        "work_id",
+        "invocation_id",
+        "binding_ref",
+        "focus_results",
+        "material_use_ref",
+        "trigger_observations",
+        "continuation_ref",
+        "batch_remaining_ref"
+      ],
+      "properties": {
+        "schema": {
+          "const": "question-work/v2"
+        },
+        "kind": {
+          "const": "RETURN"
+        },
+        "work_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "invocation_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "binding_ref": {
+          "$ref": "#/$defs/refV2"
+        },
+        "focus_results": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "question_id",
+              "completed_ref",
+              "remaining_ref",
+              "affected_refs"
+            ],
+            "properties": {
+              "question_id": {
+                "anyOf": [
+                  {
+                    "enum": [
+                      "A-1",
+                      "A-2",
+                      "A-3",
+                      "A-4",
+                      "B-1",
+                      "B-2",
+                      "B-3",
+                      "C-1",
+                      "C-2",
+                      "M-START",
+                      "M-REASSESS",
+                      "M-CLOSE",
+                      "AUDIT",
+                      "I1",
+                      "I2",
+                      "I3",
+                      "I4",
+                      "I5",
+                      "I6"
+                    ]
+                  },
+                  {
+                    "type": "string",
+                    "pattern": "^CASE-[A-Za-z0-9][A-Za-z0-9._-]*$"
+                  }
+                ]
+              },
+              "completed_ref": {
+                "$ref": "#/$defs/refV2"
+              },
+              "remaining_ref": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/refV2"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "affected_refs": {
+                "type": "array",
+                "minItems": 0,
+                "items": {
+                  "$ref": "#/$defs/refV2"
+                }
+              }
+            }
+          }
+        },
+        "material_use_ref": {
+          "$ref": "#/$defs/refV2"
+        },
+        "trigger_observations": {
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "$ref": "#/$defs/observationV2"
+          }
+        },
+        "continuation_ref": {
+          "$ref": "#/$defs/refV2"
+        },
+        "batch_remaining_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/refV2"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    }
+  }
 }

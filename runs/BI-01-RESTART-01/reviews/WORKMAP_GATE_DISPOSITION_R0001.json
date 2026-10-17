@@ -1,0 +1,48 @@
+{
+  "schema": "bi01-adoption-gate-disposition/v1",
+  "run_id": "BI-01-RESTART-01",
+  "round_id": "R0001",
+  "exact_input_commit": "f6af31ea029bcbc0ea02633573ddc0b95e42c525",
+  "binding_checked": {
+    "path": "runtime/config/WORKMAP_BINDING_CANDIDATE.json",
+    "blob": "6fd301ccc1f296ff998f821ee7c5b4d634bacb63",
+    "status": "PENDING_MATERIALIZATION_AND_INTAKE",
+    "active_binding_unchanged": true
+  },
+  "snapshot": {
+    "fingerprint": "5ac344eaa7dc4e6a68455d5aed2de4cc0b893e5df6366ab848a34f4c7399e348",
+    "reader_fingerprint": "34a8fb16006c812818a4e098dbac4c9cbbdd9412b70ca2f9521dcd6c17f7bab2",
+    "task_payload_sha256": "792fc9f5ef11820c9ceb366b4ddd40f0cf7c014368e427e9535cf748ea029e2c"
+  },
+  "mechanical_intake": {
+    "ok": true,
+    "errors": [],
+    "reader_qualification": "RECORDED"
+  },
+  "dispatch_preflight": {
+    "ok": false,
+    "errors": [
+      "DELIVERY_OBSERVATION_REQUIRED",
+      "TASK_NOT_BOUND_TO_INTAKE"
+    ],
+    "delivery_observation_note": "当前没有专业 R0002、专业聊天或发送端观察；该错误保持真实，不创建虚假 NOT_SENT delivery。",
+    "task_binding_note": "管理任务缺少 task_id: 行，intake 的 task_id 保持 null，禁止操作端代填。"
+  },
+  "r0001_after_return": {
+    "ok": false,
+    "errors": [
+      "ROLE_RETURN_QUESTION_WORK_REF_MISSING"
+    ]
+  },
+  "overlay12_diagnostics": {
+    "bootstrap_delivery_repair": "BOOTSTRAP_MANAGEMENT_ROUTE_REQUIRED",
+    "signed_binding_normal_dispatch": "BINDING_STAGE_OR_MODE_MISMATCH",
+    "binding_answer_ref_resolution": "ANCHOR_MISSING_OR_DUPLICATE:#route-same-work"
+  },
+  "adoption_eligible": false,
+  "professional_dispatch_eligible": false,
+  "selected_action": "REQUEST_RETURN_REPAIR",
+  "selected_action_state": "NOT_PREPARABLE_WITH_LOCKED_OVERLAY12",
+  "issue_report": "runs/BI-01-RESTART-01/reviews/MANAGEMENT_DELIVERY_REPAIR_REQUIRED_R0001.md",
+  "limits": "机械 intake 通过只证明 receipt、snapshot 与 reader 记录一致；不证明业务正确、Candidate 已采用、管理补交可发送或专业任务可派发。"
+}
