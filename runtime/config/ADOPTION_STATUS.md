@@ -1,11 +1,10 @@
-# BI-01 下一次长程运行采用状态
+# 观察迭代 V2 运行准备状态
 
-**PREPARED_NOT_STARTED / NO_NEW_ACTIVE_WORK / DO_NOT_SEND**。
+**PREPARED_NOT_STARTED / NO_NEW_ACTIVE_WORK / DO_NOT_SEND**
 
-Owner 2026-10-15 已停止此前试跑。旧 complex-systems-vocabulary/BI-01-IT-01 中包括当晚第四段在内的旧 I4 结果、旧 G3/G4 候选、旧聊天/持续任务/在途不进入新活动工作面；保留旧 Git 仅为历史审计。下一次需要 Owner 再明确 GO。
-
-本次预备入口为 runs/BI-01-RESTART-01/；目前没有实际管理 00 地图/01 当前任务/管理接收/轮次/正式 Binding。coordinator-dispatch/v3 与 BI-01 模式只提供机械消息组装，不构成新任务和手机授权。首次 M-START BOOTSTRAP 须引用下一次 Owner 真实启动原文、准确 current_task_ref 和 task_adoption_ref，不得以旧 CURRENT 或模板替代。
-
-管理 Pro 根据本次实际数据/设计先判 I1–I3 的使用资格及 I4 入口，提交真地图/签发任务/管理报告/Return；真实接收通过后才把 Workmap Binding 采用并发布轮次。专业 Router 仍 MISSING，正式独立审查方法仍 PARTIAL，CYF 旧 Release/专业 A/B/C 不作为新 BI-01 的完成或发布资格。
-
-各机械工具、工作面和操作端真正接到现场才算执行；本分支依旧 Draft，不合并 main、不在本轮操作手机。
+- V2 分支使用 `professional/v2/` 的三步专业主线（S1 观察对象、S2 图与数据、S3 观察想法）。
+- 新 `run_id=BI-01-V2-01`，本分支只有占位导航，无实际 Owner GO、BOOTSTRAP、管理地图/任务/Binding 采用、Pro 消息或 Gate。
+- `runtime/config/WORKMAP_BINDING.json` 不得继承 V1 的 ADOPTED；需真实首次管理完成后再采用。
+- 旧 `runs/BI-01-RESTART-01/` 是 V1 历史，不进入 V2 的任务、成果资格、预算、聊天或在途。
+- `aidata` 是唯一图与数据工具。冻结 CSV/ZIP 的提供路径及能否经正式 Feature 适配，要在 V2 真实 S2 中按事实处理；本次不预先制图。
+- 新 V2 实际启动请按 `runtime/operations/BI01_V2_RUN_GUIDE.md`；测试通过只表示机械条件，不授权手机发送。
