@@ -1,0 +1,64 @@
+{
+  "schema": "workmap-intake/v1",
+  "intakes": {
+    "bi01": {
+      "manager": {
+        "role": "management",
+        "context": "chatgpt-project:细节叙事生成_金标/chat:BI01-V2-管理"
+      },
+      "snapshot": "040b3d34c95ed2ded568cfccff519515ca1cf38c44adce324f04d204396afdde",
+      "observed_commit": "fd01f223039f0e1c4580dec10375eb64fc3728b0",
+      "base_ref": "2e817e2e8408b714185be55aa8f443e389b92ddf",
+      "decision_report": {
+        "path": "runs/BI-01-V2-01/reviews/management-R0002/DECISION.md",
+        "blob": "ebb4b0f12d7b57e6565d5ecbbb3eca3f82f2110a"
+      },
+      "reader_check": {
+        "status": "RECORDED",
+        "context": "chatgpt-project:细节叙事生成_金标/chat:new:BI01-V2-地图只读接收-01",
+        "independent_of_map_builder": true,
+        "input_commit": "f87a9a64f4f0fa3ead13b9ee7c108f87847a581a",
+        "input_snapshot": "bc415dab26f34c1267141292218482e05d71dacec57553782aaa369569de5478",
+        "report": {
+          "path": "runs/BI-01-V2-01/reviews/independent/WORKMAP_READER_INITIAL.md",
+          "blob": "04f2bc6636926b343235d67e18eb9dce9780863b"
+        },
+        "qualification": "仅地图、完整任务与采用关系的可理解性和一致性；不代表专业业务/代码/质量审查PASS"
+      },
+      "effort": {
+        "known_pro_turns": 3,
+        "coverage": "R0001—R0003真实有效完整回交",
+        "source_note": "自R0001累计，管理及必要reader计入；本地工程/Git/UI不计；每累计4、8、12…有效结果管理复看，不清零。"
+      },
+      "dispatch": {
+        "task_path": "runs/BI-01-V2-01/01_当前任务.md",
+        "task_id": "BI01-V2-S123-OBSERVATION-01",
+        "task_blob": "442c47cc30226796a16b6f7420af9748d0d1e00e",
+        "decision": "ISSUED",
+        "kind": "NEW_TASK",
+        "requires_reader_check": true,
+        "method_paths": [
+          "professional/v2/00_PURPOSE_AND_THREE_STEP_FLOW.md",
+          "professional/v2/01_AIDATA_CHART_AND_DATA.md",
+          "professional/v2/02_OBSERVATION_IDEAS_AND_VALIDATION.md",
+          "professional/v2/03_EXECUTION_HANDOFF.md",
+          "runtime/dual_route_execution/DR14_QUESTION_WORK_CONTRACT.md",
+          "runtime/overlay/08_自然语言运行提示_v0.3.md",
+          "professional/v2/04_BI01_BUSINESS_BASELINE.md",
+          "professional/v2/05_BI01_FIXED_INPUT_DATA.md",
+          "professional/v2/06_U2_U3_DESIGN_SOURCE_MAP.md"
+        ]
+      },
+      "validation_claims": [],
+      "scope_dispositions": {},
+      "adopted_under": {
+        "decision_commit": "f87a9a64f4f0fa3ead13b9ee7c108f87847a581a",
+        "decision_anchor": "#adoption",
+        "reader_round_complete_commit": "fd01f223039f0e1c4580dec10375eb64fc3728b0",
+        "policy_commit": "11626f64bc64ae21e52108b2e47fafbbc1023615",
+        "gate_code_commit": "2942ddd8f5210e68d394f6142f9087d4476101fc"
+      },
+      "recorded_at": "2026-10-17T17:58:08.919181+00:00"
+    }
+  }
+}
