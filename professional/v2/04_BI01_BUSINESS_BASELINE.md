@@ -56,7 +56,7 @@ U3 R03：Quality / Allocation 的可用或 Withheld 状态
 - [U2 Use Case](https://github.com/daowei2026/complex-systems-vocabulary/blob/48f55f53e25d04e5b4b59fae1e652dd4b679c9d3/docs/network-dynamic-ceps-factory/U2_OPPORTUNITY_CLUSTER_SCALE_TURN_USE_CASE_CARD_V0.4.0.md)
 - [U3 Use Case](https://github.com/daowei2026/complex-systems-vocabulary/blob/48f55f53e25d04e5b4b59fae1e652dd4b679c9d3/docs/network-dynamic-ceps-factory/U3_MOVEMENT_QUALITY_ACTIVITY_CONVERSION_ALLOCATION_USE_CASE_CARD_V0.4.0.md)
 - [U3 Narrative](https://github.com/daowei2026/complex-systems-vocabulary/blob/48f55f53e25d04e5b4b59fae1e652dd4b679c9d3/docs/network-dynamic-ceps-factory/U3_MOVEMENT_QUALITY_ACTIVITY_CONVERSION_ALLOCATION_NARRATIVE_SPEC_V0.3.0.md)
-- 原 I1–I3 文件 §3.3 另有 C0/N、C1/S/C2、U3 细节 Source 的精确仓库 commit/路径表；专业 Agent 应按本轮实际需要定向读取，而不是本文件凭空补出新算法。
+- **直接的 [06 U2/U3 叙事与具体设计 Source 导航](06_U2_U3_DESIGN_SOURCE_MAP.md)** 汇总了 U2/U3 人读 Narrative、用例详细设计、Source/Metric/Step Witness，以及 C0/N、C1/S/C2、U3 Movement Local Contract 的已核精确来源。S1 判断业务预期时须从其入口进入原文；06 不能替代算法原文，也不能把历史候选当生产结果。
 
 ## 3. 原 I3：已经形成的实际业务事实和能/不能使用的范围
 

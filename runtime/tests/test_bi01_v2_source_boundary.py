@@ -12,6 +12,7 @@ V2_SOURCES = [
     "professional/v2/03_EXECUTION_HANDOFF.md",
     "professional/v2/04_BI01_BUSINESS_BASELINE.md",
     "professional/v2/05_BI01_FIXED_INPUT_DATA.md",
+    "professional/v2/06_U2_U3_DESIGN_SOURCE_MAP.md",
 ]
 ACTIVE_DOCS = [
     *sorted((ROOT / "runtime/dual_route_execution").glob("DR*.md")),
@@ -142,6 +143,22 @@ class V2Boundary(unittest.TestCase):
         self.assertIn("非 force 提交并远端回读", rounds)
         self.assertIn("不因不能提交", rounds)
         self.assertIn("不规定一个不存在的专用 MCP API", rounds)
+
+    def test_fixed_zip_current_codex_location_and_method_map(self):
+        fixed = (ROOT / "professional/v2/05_BI01_FIXED_INPUT_DATA.md").read_text(encoding="utf-8")
+        source_map = (ROOT / "professional/v2/06_U2_U3_DESIGN_SOURCE_MAP.md").read_text(encoding="utf-8")
+        chart = (ROOT / "professional/v2/01_AIDATA_CHART_AND_DATA.md").read_text(encoding="utf-8")
+        for doc in (fixed, chart):
+            self.assertIn("/dwdhome/fy/资金管理", doc)
+        self.assertIn("Owner", fixed)
+        self.assertIn("U2_OPPORTUNITY_CLUSTER_SCALE_TURN_NARRATIVE_SPEC", source_map)
+        self.assertIn("U3_MOVEMENT_QUALITY_ACTIVITY_CONVERSION_ALLOCATION_NARRATIVE_SPEC", source_map)
+        self.assertIn("U2_SOURCE_OCCURRENCE_EPISODE_NODE_BEHAVIOR_LOCAL_CONTRACT", source_map)
+        self.assertIn("U3_MA_LOCAL_CONTRACT_MOVEMENT_01", source_map)
+        self.assertIn("OpportunityGroupBudgetEvidence", source_map)
+        self.assertIn("ProgressBundle", source_map)
+        self.assertIn("WITHHELD", source_map)
+        self.assertIn("current_application=NOT_APPLIED", source_map)
 
     def test_new_run_not_adopted_or_sent(self):
         binding = json.loads((ROOT / "runtime/config/WORKMAP_BINDING.json").read_text(encoding="utf-8"))
