@@ -325,3 +325,9 @@
 - 本R累计IME1、Send1、业务phone22（17首episode+1纯read+4首次Send），新chat/重试/重打/清空0，所有executor均释放退役，无pending/UNKNOWN。原ready到实际Send caller929.274秒，准备、失败与恢复全计入，不虚报新SLO；源report及原失败保留。
 - 原executor建议下次23:02:57.745Z误以caller分类时刻起算；主控据真实最后server观察22:52:30.737Z登记native88，实际下次23:02:30.737Z（北京时间07:02:30）。没有额外观察57.745Z或重置推理起点。共享lease23:33:24.262Z有效。
 - 实际Pro调用7、完整有效结果仍6；首RESULT管理责任IN_FLIGHT，未消费/未签接收。等R7完整管理回交后依法Intake和普通专业续作，完整U2/U3工作持续，不以本管理轮收工。
+
+## R0007首次到期只读检查：管理仍在思考
+
+- caller23:03:05.554Z、frame23:03:04.332Z、实际server完成23:03:04.800Z分列；首caller距due34.817秒，满足120秒。准确R7 invocation/token/management、正在思考/STOP可见，尚无助手正文/完成尾部/错误/大加载圈，全部三无损tiles实查。
+- 正式observe仅1次（no_hierarchy=true，保留新鲜截图主证据，避免可选UiAutomator依赖）；其他手机动作0。首次release回读因重复本人heading exit2，executor仅合并自己相邻release块后23:04:17.333418Z实际释放阳性，零额外phone，无pending/UNKNOWN，永久退役；原错误及修正证据留存。
+- native89以真实server完成登记；下一检查23:13:04.800Z（北京时间07:13:04），原思考起点22:52:30.737Z保持，准入至23:33:24.262Z。目标远端23:02:02Z核尚无M7新提交，完整有效结果仍6，实际调用7；管理复看仍在途，完整目标继续。
