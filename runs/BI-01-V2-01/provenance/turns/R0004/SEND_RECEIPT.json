@@ -1,9 +1,68 @@
 {
-  "state": "NOT_SENT",
+  "state": "COMMITTED",
   "invocation_id": "BI01-V2-01-R0004-23dee3405bd9e50d20b28f00",
   "recipient_ref": "chatgpt-project:细节叙事生成_金标/chat:BI01-V2-执行",
   "prompt_sha256": "4a4b7eed80f44846fbe324fe41dd39ed38cf642dae590e0eb86815889afbd9bd",
-  "actual_send_attempts": 0,
-  "new_chat_count": 0,
-  "evidence": "原发送控制者尚未派任何R0004手机executor，未建专业角色chat、未发生IME或Send。准备不算实际Pro调用。"
+  "actual_send_attempts": 1,
+  "new_chat_count": 1,
+  "evidence": "指定已有Project内本run首个专业物理chat，最高Pro第5档和原样完整readback已核，唯一Send已实际COMMITTED。无sending/wait/offline/retry/error且本轮标识/token/role及STOP可见。原始现场证据留在gitignored artifacts；未收回答、未声称S1/S2/S3已完成。",
+  "assignment_token": "41acd7cfe4480f624bb09a27e9365f58",
+  "round_marker": "[BI01-V2-01-R0004-23dee3405bd9e50d20b28f00]",
+  "actual_ime_calls": 1,
+  "retry_count": 0,
+  "unknown_send": false,
+  "first_phone_action": {
+    "tool": "observe_current_ui",
+    "caller_started_at": "2026-10-17T18:30:26.075Z",
+    "frame_captured_at_ms": 1792261825281,
+    "frame_captured_at": "2026-10-17T18:30:25.281Z",
+    "proof": "01-observe.json"
+  },
+  "highest_pro": {
+    "call": "08-open-pro-gauge",
+    "selected_position": 5,
+    "total_positions": 5,
+    "label": "Pro推理强度",
+    "visually_confirmed": true,
+    "frame_captured_at_ms": 1792261947488
+  },
+  "readback": {
+    "exact_verified": true,
+    "text_coverage": "full",
+    "normalization": "none",
+    "sha256": "4a4b7eed80f44846fbe324fe41dd39ed38cf642dae590e0eb86815889afbd9bd",
+    "utf8_bytes": 53475,
+    "utf16_units": 33570,
+    "proof": "14-full-readback.json"
+  },
+  "send": {
+    "actual_calls": 1,
+    "retries": 0,
+    "caller_started_at": "2026-10-17T18:36:21.430Z",
+    "mark_id": "37iV5D",
+    "point_before_screenshot_id": "b59299d4-9a44-45aa-9790-fbfa8aa5a056",
+    "point_before_captured_at_ms": 1792262160208,
+    "mark_full_radius_visually_confirmed": true,
+    "ack_status": "executed",
+    "ack_seq": 3076370773,
+    "duplicate": false,
+    "proof": "16-send-once.json"
+  },
+  "critical_times": {
+    "highest_pro_frame": "2026-10-17T18:32:27.488Z",
+    "ime_action_started": "2026-10-17T18:34:28.183Z",
+    "ime_action_finished": "2026-10-17T18:35:09.982Z",
+    "readback_captured": "2026-10-17T18:35:51.112Z",
+    "send_action_started": "2026-10-17T18:36:20.392Z",
+    "send_action_finished": "2026-10-17T18:36:24.079Z",
+    "commitment_frame": "2026-10-17T18:36:25.590Z",
+    "observation_finished_at": "2026-10-17T18:36:26.043Z",
+    "next_due": "2026-10-17T18:46:26.043Z"
+  },
+  "generation_state": "model_thinking",
+  "reply_completion": "not_complete",
+  "reply_collection_state": "not_started",
+  "next_due_observation_at": "2026-10-17T18:46:26.043Z",
+  "network_lease_expires_at": "2026-10-17T19:27:42.186Z",
+  "rename_performed": false
 }

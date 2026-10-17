@@ -122,3 +122,11 @@
 - R0003最终grace18:08:53.321Z只见已停止思考的开头，按合同关闭手机等待；完整原文仍以实际GitHub收取为准。其后首次角色命名episode于18:13:30.134Z真实看见最终闭合Return、报告附件和完整回复操作行，phone answer更新visible，没有copy全文。
 - 正确Project唯一准确角色名称于18:19:12.506Z实际保存和复验，原chat保留；没有业务Send/新chat或额外Pro调用。本轮接收与后继转移已关闭。
 - R0004完整专业载荷、原样远端读回、Workmap check/dispatch和BI01 pre-dispatch均已通过，仍为NOT_SENT。因共享准入18:24即满一小时、剩余时间不足覆盖完整下一发送episode，当前按现有机制续准入；完成后直接派发R0004，不重开专业规划轮。
+
+## R0004 首次完整专业任务已真实发送
+
+- 续共享准入遇真实Too many requests，安全完整重启ChatGPT一次后，Recent及Projects/全部实际列表均恢复；最后真实完成18:27:42.186Z，新lease至19:27:42.186Z，无业务重发。
+- R0004 `BI01-V2-01-R0004-23dee3405bd9e50d20b28f00` 在指定Project内创建本run首次专业物理chat，最高Pro第5档已现场证实。完整payload UTF-8 53,475字节、UTF-16 33,570 units，readback full/exact且SHA-256 `4a4b7eed80f44846fbe324fe41dd39ed38cf642dae590e0eb86815889afbd9bd` 一致。
+- 实际IME1、Send1、重试0；18:36:25.590Z帧证明COMMITTED，18:36:26.043Z观察完成，当前model_thinking，无pending/UNKNOWN。首phone caller18:30:26.075Z，满足send-ready后的120秒边界。
+- 下次原线程检查18:46:26.043Z（北京时间02:46:26）。本轮回答/两Return/观察窗口/Worker图数工单/S3认识仍待真实产出，不将成功派发当完成。
+- 本run实际Pro调用已4次，已收完整有效结果3次；R4有效结果真正收齐后触发累计4管理复看，且继续原完整业务和不受影响的合法Worker工作。
