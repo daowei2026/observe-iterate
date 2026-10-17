@@ -317,3 +317,11 @@
 - 正确Project唯一管理chat、fresh Pro最高5/5、输入前full空均有真实证据；首phone22:38:22.587816Z在真实ACQUIRED之后，距ready86.128s，SLO通过。17次正式phone中IME1/Send0，literal传输向量等于原载荷，但输入后ExtractedText=null，不能证明手机全文。
 - 随后22:44:06.419Z同线程observe调用报UiTestAutomationBridge null root node/window.xml缺失，22:44:09.500Z返回；没有把工具错误变成允许Send。原草稿保留，输入完整性UNKNOWN（不是空），没有未知Send/在途工具。22:44:26.971272Z实际释放/固定utility阳性，executor退役；原失败回执保留。
 - 实际Pro调用与完整有效结果仍6，R7原轮未提交，不新建R号/不缩改正文。新零继承executor已仅获现有草稿只读核对/安全重新聚焦授权，IME0/Send0；取得full实际向量后才按原native resume机制恢复后继发送。不因输入未知重打/清空，也不请求Owner逐步操作。完整任务继续。
+
+## R0007 原稿恢复核对后首次实际Send已COMMITTED
+
+- 原草稿无重打、清空或追加：reconciler一次纯读即full exact，56,060 UTF-8/35,183 UTF-16/SHA47b54c...均匹配，Send0后释放。native原resume机制真实重启同一未发送草稿，保留原marker/payload/remote base/ready/首次attempt，不新建R。
+- 后继fresh sender同原composer再次full exact，复用仍未失效的原最高Pro5/5；新鲜截图/strictmark/完整radius视觉后22:52:25.734Z首次Send，frame22:52:30.161Z及server完成22:52:30.737Z证明准确本轮inv/token/management bubble，无发送异常且STOP/正在思考。
+- 本R累计IME1、Send1、业务phone22（17首episode+1纯read+4首次Send），新chat/重试/重打/清空0，所有executor均释放退役，无pending/UNKNOWN。原ready到实际Send caller929.274秒，准备、失败与恢复全计入，不虚报新SLO；源report及原失败保留。
+- 原executor建议下次23:02:57.745Z误以caller分类时刻起算；主控据真实最后server观察22:52:30.737Z登记native88，实际下次23:02:30.737Z（北京时间07:02:30）。没有额外观察57.745Z或重置推理起点。共享lease23:33:24.262Z有效。
+- 实际Pro调用7、完整有效结果仍6；首RESULT管理责任IN_FLIGHT，未消费/未签接收。等R7完整管理回交后依法Intake和普通专业续作，完整U2/U3工作持续，不以本管理轮收工。
