@@ -9,7 +9,7 @@ professional_mode: <OBSERVATION_SCOPE | OBSERVATION_CHART | OBSERVATION_IDEAS>
 
 ## 完整业务目标、当前重点与必须阅读的前序业务底稿
 - 目标为 U2 共同机会簇位置是否合理、U3 四方面能否辨别品种是否好做；必须给出不合理及原因、增量与反证。
-- 固定 rb/i/hc、两份预验算 ZIP；专业源 `professional/v2/00`、`04_BI01_BUSINESS_BASELINE.md`、`05_BI01_FIXED_INPUT_DATA.md` 和当前 S2/S3 方法必须准确进入 source_reads。
+- 固定 rb/i/hc、两份预验算 ZIP：Codex 数据目录 `/dwdhome/fy/资金管理`，aidata 工作区 `/dwdhome/fy/BASE_E6_2`。`professional/v2/00_PURPOSE_AND_THREE_STEP_FLOW.md`、`04_BI01_BUSINESS_BASELINE.md`、`05_BI01_FIXED_INPUT_DATA.md`、`06_U2_U3_DESIGN_SOURCE_MAP.md` 和当前 S2/S3 方法必须准确进入 source_reads，且承重的 U2/U3 Narrative/用例卡/Method 原文要真正读取。
 - 旧 I1–I3 是**业务知识来源**，旧 run 结果/Gate 不继承。
 
 ## 实际源和本轮资格

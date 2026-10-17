@@ -5,9 +5,9 @@
 完整业务意图：[00 总目标](../../professional/v2/00_PURPOSE_AND_THREE_STEP_FLOW.md)。**不是“让 AI 多做几轮”，而是看既有 U2 机会簇位置是否合理、U3 四方面是否真的能辨别成员好不好做，并拿到具体不合理处、原因、反证及业务增量判断。**
 
 本轮观察范围与数据不可任意重选：
-- rb、i、hc；已提前验算的 `steel_U2_U3_执行结果_20261010.zip`；
+- rb、i、hc；已提前验算的 `steel_U2_U3_执行结果_20261010.zip`（数据目录 `/dwdhome/fy/资金管理`）；
 - 上游 `rb_hc_i_mid贴近转折_zig_small_K线_20210101_20240229.zip`。
-- 必须先消费[04：原 I1–I3 业务起点](../../professional/v2/04_BI01_BUSINESS_BASELINE.md)与[05：固定数据位置和完整清单](../../professional/v2/05_BI01_FIXED_INPUT_DATA.md)，而不是重新执行 I1–I3 或把它们的业务内容丢掉。
+- 必须先消费 [04：原 I1–I3 业务起点](../../professional/v2/04_BI01_BUSINESS_BASELINE.md)、[05：固定数据位置与清单](../../professional/v2/05_BI01_FIXED_INPUT_DATA.md)、[06：U2/U3 人读叙事、具体设计与参考方法导航](../../professional/v2/06_U2_U3_DESIGN_SOURCE_MAP.md)，并按需进入其所引业务原文；不重新执行 I1–I3，也不把历史方法候选冒充已执行结果。
 - **预先验算结果固定**：不派“先重新算一版 U2/U3”或“找到正式 Feature 就替换这批数据”的工作；实际发现字段、算法或哈希异常时准确说明影响、反馈并做必要的有界核对。
 - U3 的“四方面”须按原业务定义和固定 CSV 已有输出对应；C2/H1 的 Shadow/未提交与 R03 Withheld 不能变成正式 Quality。
 
@@ -25,21 +25,25 @@
 2. 使用 Overlay08/12 准备未经改写的完整载荷，首行唯一 `[BI01-V2-01-R0001-<unique>]`；按 `V2_ROUND_RECORD_CONTRACT.md` 保存、Git 远端读回、pre-dispatch 和实际 NOT_SENT 检查后才允许发送。
 3. 管理 Pro 按完整目标、原 I1–I3 背景和固定数据签出实际 `00_长程推进地图.md`、`01_当前任务.md`、专业 Binding、管理接收和 Workmap Intake；有权生效前不得派专业工作。
 4. 正式专业任务以 S1 整理观察问题、S2 对固定数据用 aidata 设计并实际画图、S3 以**同图数据**形成业务想法；必要时在不替换预计算数据的前提下返回 S2 补图。不可把单 Case 或制图完成视为整体完成。
-5. Worker 在实际技术工单下以**只读固定数据、尽量不修改 aidata**为优先。先查 aidata 的 `OWNER_INTENT_AND_RATIONALE.md`、`README.md`、`TODO.md` 及现有 API。实在需修改 aidata，必须**新建 aidata 独立分支**；不能修改主分支/既有分支，也不在 observe-iterate 另造制图/取数系统。
+5. Worker 在实际技术工单下从 `/dwdhome/fy/BASE_E6_2` 执行 aidata，并从 `/dwdhome/fy/资金管理` 读取两份预先验算的固定 ZIP；以只读原件、尽量不修改 aidata 为优先。先查 aidata 的 `OWNER_INTENT_AND_RATIONALE.md`、`README.md`、`TODO.md` 和现有 API。确实需要修改 aidata 必须新建独立分支，不改原分支或在观察仓造第二套工具。
 6. 本轮不要求 AI 看图片像素；Owner 看实际图，AI 读图的对应原始/图层结构化数据。无法取得同源数据应如实反馈，但不能因无视觉模型而停工或新增视觉建设。
 
 ## 3. 当前执行工作区和 Pro 无法提交 GitHub 时的备用成果通道
 
 这部分属于**运行环境与成果运输**，不是新增的业务步骤，也不更改 S1/S2/S3 的专业任务和数据范围。
 
-- **aidata 执行 Codex 工作区**：`/dwdhome/fy/BASE_E6_2`。S2 在此工作区使用现有 aidata；真正执行前由 Codex 核对路径是否可访问、仓库/依赖是否具备、本轮固定 ZIP 实际从哪里读取。工作区路径不等于预计算数据位置。
+- **aidata 执行工作区**：`/dwdhome/fy/BASE_E6_2`；**固定两份 ZIP 数据目录**：`/dwdhome/fy/资金管理`。Owner 已确认 aidata 基础运行检查完成；这两条路径已明确且用途不同，不再以重复验证环境/重新定位数据为开工前置任务。真实使用仍记录实际代码版本、文件身份和图数据产物。
 - **Pro 无法提交 GitHub 时的 ZIP 备用通道**：
   - MCP server 一侧可写：`H:\fy\observe-iterate-share`
   - 操作 Codex 一侧可读：`/dwdhome/fy/observe-iterate-share`
-  - 两端被指定为**同一共享目录的两个路径**；现场仍须核实实际挂载、读写权限以及按文件名可互见，不能因路径写在本指南里就声称已测通。
+  - Owner 已反馈这对路径的共享挂载、读写与文件互见检查完成，这是**Owner 提供的已检查结果**，不是本仓 GitHub 测试重新验证；无需重测同一基础链路。对每一轮新的 ZIP 仍需核包内容、成员、来源关联及发布成功。
 - **正常交付仍是 GitHub**。只有该轮 Pro 确实无法把成果提交 GitHub，且复核同轮远端并无匹配的新提交后，才采用共享 ZIP；由 Pro/MCP server 侧产生并写入 ZIP，操作 Codex 在其对应路径读出、校验内容后按既有授权非强推方式提交 GitHub、远端回读，再进入正常 Return/管理接收。
 - 具体包内的真实文件、`work_id/run_id/invocation_id` 关联、同轮远端优先、路径安全与不可假称提交成功，见 [V2 轮次备用 ZIP 合同](V2_ROUND_RECORD_CONTRACT.md)。不在该通道另建常驻轮询、第二状态机、业务图/数据来源或自动签发。
 - 无法确认两端共享或文件实际可读时，应停在**具体的交付缺件**，说明 ZIP 生成/写入/读取/发布分别到哪一步；其他已有授权且不依赖此交付的工作可以继续。
+
+## 3.1 长程运行的 R 轮次保持不变
+
+**S1/S2/S3 是业务步骤，不是三轮 Pro 消息。** 本次继续按 `R0001/R0002/…` 记录每一次真实管理或专业 Pro 调用，唯一 invocation 形如 `BI01-V2-01-Rnnnn-<unique>`；完整提示、回答、ROLE_RETURN、必要的 QUESTION_WORK_RETURN、发布和后继仍使用 [V2_ROUND_RECORD_CONTRACT.md](V2_ROUND_RECORD_CONTRACT.md) 及现有手机/Workmap 机制。可以在多个 R 中连续完成 S2/S3，并按业务问题返回 S2，不以第一个 Case 或单张图作为全目标停点。
 
 ## 4. 机械与业务边界
 

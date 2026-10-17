@@ -10,7 +10,7 @@
 
 <a id="evidence"></a>
 ## 3. 固定数据源、先前 I1–I3 业务依据与可消费范围
-读取 `professional/v2/04_BI01_BUSINESS_BASELINE.md` 和 `05_BI01_FIXED_INPUT_DATA.md`；本轮输入两份 ZIP 已提前验算、不得默默换为新计算。说明实际来源、日期/As-Of、参考方法、A/B ZIP 外层 SHA 差异的影响与数据对图的映射。
+读取 `professional/v2/04_BI01_BUSINESS_BASELINE.md`、`05_BI01_FIXED_INPUT_DATA.md`、`06_U2_U3_DESIGN_SOURCE_MAP.md` 及其中本轮承重的真实 U2/U3 人读叙事、设计和参考方法。两份固定 ZIP 位于 `/dwdhome/fy/资金管理`，预先验算不得默默重做；说明实际来源、As-Of、参考/正式/Withheld 边界、B ZIP 外层 SHA 差异及数据对图的映射。
 
 <a id="progress"></a>
 ## 4. 图中市场事实、业务设计的合理/不合理及原因、反证与增量

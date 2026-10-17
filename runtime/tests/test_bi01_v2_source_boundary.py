@@ -137,7 +137,7 @@ class V2Boundary(unittest.TestCase):
         for content in (handoff, operations, rounds):
             self.assertIn(mcp_share, content)
             self.assertIn(codex_share, content)
-        self.assertIn("不是两份固定 ZIP", data)
+        self.assertIn("不是上述固定 ZIP 数据目录", data)
         self.assertIn("先核是否真未提交", rounds)
         self.assertIn("不要再应用同轮 ZIP", rounds)
         self.assertIn("非 force 提交并远端回读", rounds)
