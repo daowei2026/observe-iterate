@@ -1,0 +1,92 @@
+{
+  "schema": "question-work/v2",
+  "kind": "RETURN",
+  "work_id": "BI-01",
+  "invocation_id": "BI01-V2-01-R0004-23dee3405bd9e50d20b28f00",
+  "binding_ref": {
+    "repo": "daowei2026/observe-iterate",
+    "commit": "81533abbced55b3af14a428dec9cbf8353fc8286",
+    "path": "runs/BI-01-V2-01/01_当前任务.md",
+    "selector": "#question-work-binding"
+  },
+  "focus_results": [
+    {
+      "question_id": "S1",
+      "completed_ref": {
+        "answer_ref": "#s1"
+      },
+      "remaining_ref": null,
+      "affected_refs": [
+        {
+          "answer_ref": "#source-facts"
+        },
+        {
+          "answer_ref": "#data-question"
+        }
+      ]
+    },
+    {
+      "question_id": "S2",
+      "completed_ref": {
+        "answer_ref": "#s2"
+      },
+      "remaining_ref": {
+        "answer_ref": "#s2-missing-input"
+      },
+      "affected_refs": [
+        {
+          "repo": "daowei2026/observe-iterate",
+          "commit": "5620595ef81ca93f7c708cbfcca0e4dae40410bc",
+          "path": "runs/BI-01-V2-01/artifacts/professional-R0004/WORKER_AIDATA_CHART_ORDER.md",
+          "selector": "full"
+        }
+      ]
+    },
+    {
+      "question_id": "S3",
+      "completed_ref": {
+        "answer_ref": "#s3"
+      },
+      "remaining_ref": {
+        "answer_ref": "#remaining"
+      },
+      "affected_refs": [
+        {
+          "answer_ref": "#source-facts"
+        }
+      ]
+    }
+  ],
+  "material_use_ref": {
+    "answer_ref": "#materials"
+  },
+  "trigger_observations": [
+    {
+      "trigger_id": "BI01V2-FIRST-GROUNDED-OBSERVATION",
+      "state": "NOT_YET",
+      "evidence_ref": {
+        "answer_ref": "#triggers"
+      }
+    },
+    {
+      "trigger_id": "BI01V2-SUBSTANTIVE-CHANGE",
+      "state": "SATISFIED",
+      "evidence_ref": {
+        "answer_ref": "#data-question"
+      }
+    },
+    {
+      "trigger_id": "BI01V2-EFFORT-4",
+      "state": "UNKNOWN",
+      "evidence_ref": {
+        "answer_ref": "#triggers"
+      }
+    }
+  ],
+  "continuation_ref": {
+    "answer_ref": "#continuation"
+  },
+  "batch_remaining_ref": {
+    "answer_ref": "#remaining"
+  }
+}
