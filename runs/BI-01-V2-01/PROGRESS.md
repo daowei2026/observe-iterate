@@ -359,3 +359,9 @@
 - 实际Send caller23:41:33.417Z，承诺frame23:41:37.445Z/最后server观察23:41:38.132Z，本轮准确invocation/token/role bubble与STOP/正在思考同帧，无发送中/错误。23:42:16.201774Z原section释放阳性，首phone在实际取得后且ready延迟50.188s，全部pending/UNKNOWN为空，executor退役。
 - native98以实际server观察登记；下次23:51:38.132Z（北京时间07:51:38）。原executor用frame建议23:51:37.445Z，0.687s差异原样保留后按原规则纠正，未虚构额外观察。共享准入至00:34:20.650Z有效。
 - 实际Pro调用8、完整有效结果仍7，R8原专业续作在途；完整任务ACTIVE，首RESULT已消费，下一累计有效回交8触发原EFFORT复看。继续按完整U2/U3目标取得真实原答/成果与下一合法安排，不以本轮Send为结束。
+
+## R0008首次只读观察：专业仍思考
+
+- 首caller23:51:56.684Z，距原due18.552秒满足120秒；frame23:51:55.441Z、实际server完成23:51:56.020Z分列。准确本轮invocation/token/professional、正在思考/STOP，三无损tiles实查，无助手正文/尾部/error/大加载圈。
+- observe1、其他动作0，23:52:33.860333Z原section释放及固定utility阳性，全部pending/UNKNOWN为空，executor退役。native99保留原思考起点23:41:38.132Z；下一00:01:56.020Z（北京时间08:01:56），共享准入至00:34:20.650Z。
+- 实际调用8、完整有效结果仍7；远端截至23:51窗口尚无新的专业提交。继续原任务等待与回交验收，未进入恢复/新调用，完整Goal不结束。
