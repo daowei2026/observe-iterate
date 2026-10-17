@@ -1,0 +1,1535 @@
+{
+  "actual": "2021-03-25 22:00:00",
+  "asof": "2021-03-29 09:30:00",
+  "end": "2021-03-31 09:30:00",
+  "label": "BROAD-09 / C1物理28 / 2021-03-25 22:00:00 / hc|i",
+  "layers": [
+    {
+      "close": "close",
+      "color": "#4c78a8",
+      "high": "high",
+      "id": "rb-ohlc",
+      "kind": "ohlc",
+      "known_at": "bar_ts",
+      "label": "rb 原始30m OHLC/close",
+      "low": "low",
+      "open": "open",
+      "rows": [
+        631,
+        632,
+        633,
+        634,
+        635,
+        636,
+        637,
+        638,
+        639,
+        640,
+        641,
+        642,
+        643,
+        644,
+        645,
+        646,
+        647,
+        648,
+        649,
+        650,
+        651,
+        652,
+        653,
+        654,
+        655,
+        656,
+        657,
+        658,
+        659,
+        660,
+        661,
+        662,
+        663,
+        664,
+        665,
+        666,
+        667,
+        668,
+        669,
+        670,
+        671,
+        672,
+        673,
+        674,
+        675,
+        676,
+        677,
+        678,
+        679,
+        680,
+        681,
+        682
+      ],
+      "source": "rb_K",
+      "symbol": "rb",
+      "x": "bar_ts"
+    },
+    {
+      "color": "#8c8c8c",
+      "id": "rb-zig-all-bars",
+      "kind": "line",
+      "known_at": "bar_ts",
+      "label": "原small Zig all_bars.swingPrice",
+      "rows": [
+        631,
+        632,
+        633,
+        634,
+        635,
+        636,
+        637,
+        638,
+        639,
+        640,
+        641,
+        642,
+        643,
+        644,
+        645,
+        646,
+        647,
+        648,
+        649,
+        650,
+        651,
+        652,
+        653,
+        654,
+        655,
+        656,
+        657,
+        658,
+        659,
+        660,
+        661,
+        662,
+        663,
+        664,
+        665,
+        666,
+        667,
+        668,
+        669,
+        670,
+        671,
+        672,
+        673,
+        674,
+        675,
+        676,
+        677,
+        678,
+        679,
+        680,
+        681,
+        682
+      ],
+      "source": "rb_ZA",
+      "symbol": "rb",
+      "x": "bar_ts",
+      "y": "swingPrice"
+    },
+    {
+      "color": "#666666",
+      "id": "rb-zig-confirmed",
+      "kind": "point",
+      "known_at": "confirm_event_ts",
+      "label": "原small Zig confirmed（实际点；confirm_event为可见代理）",
+      "marker": "triangle",
+      "rows": [
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105
+      ],
+      "source": "rb_ZC",
+      "symbol": "rb",
+      "x": {
+        "field": "zigUTI",
+        "lookup": {
+          "key": "closeUti",
+          "source": "rb_K",
+          "value": "bar_ts",
+          "key_type": "integer"
+        }
+      },
+      "y": "zigPrice"
+    },
+    {
+      "color": "#b0b0b0",
+      "id": "rb-zig-status",
+      "kind": "segment",
+      "known_at": "status_ts",
+      "label": "原small Zig status两点",
+      "rows": [
+        173,
+        174,
+        175,
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184,
+        185,
+        186,
+        187
+      ],
+      "source": "rb_ZS",
+      "symbol": "rb",
+      "x0": {
+        "field": "posUTI0",
+        "lookup": {
+          "key": "closeUti",
+          "source": "rb_K",
+          "value": "bar_ts",
+          "key_type": "integer"
+        }
+      },
+      "x1": {
+        "field": "posUTI1",
+        "lookup": {
+          "key": "closeUti",
+          "source": "rb_K",
+          "value": "bar_ts",
+          "key_type": "integer"
+        }
+      },
+      "y0": "price0",
+      "y1": "price1"
+    },
+    {
+      "color": "#d95f02",
+      "id": "rb-mid-value1-actual",
+      "kind": "point",
+      "known_at": "occurrence_ts",
+      "label": "原mid value1 actual（occurrence后可见）",
+      "marker": "diamond",
+      "rows": [
+        33
+      ],
+      "source": "rb_MID",
+      "symbol": "rb",
+      "x": {
+        "field": "actual_uti",
+        "lookup": {
+          "key": "closeUti",
+          "source": "rb_K",
+          "value": "bar_ts",
+          "key_type": "integer"
+        }
+      },
+      "y": "actual_value"
+    },
+    {
+      "color": "#d95f02",
+      "id": "rb-mid-value1-confirm",
+      "kind": "point",
+      "known_at": "occurrence_ts",
+      "label": "原mid value1 confirm point",
+      "marker": "cross",
+      "rows": [
+        33
+      ],
+      "source": "rb_MID",
+      "symbol": "rb",
+      "x": {
+        "field": "confirm_uti",
+        "lookup": {
+          "key": "closeUti",
+          "source": "rb_K",
+          "value": "bar_ts",
+          "key_type": "integer"
+        }
+      },
+      "y": "confirm_value"
+    },
+    {
+      "color": "#7570b3",
+      "id": "rb-mid-value2-actual",
+      "kind": "point",
+      "known_at": "occurrence_ts",
+      "label": "原mid value2 actual（occurrence后可见）",
+      "marker": "diamond",
+      "rows": [],
+      "source": "rb_MID",
+      "symbol": "rb",
+      "x": {
+        "field": "actual_uti",
+        "lookup": {
+          "key": "closeUti",
+          "source": "rb_K",
+          "value": "bar_ts",
+          "key_type": "integer"
+        }
+      },
+      "y": "actual_value"
+    },
+    {
+      "color": "#7570b3",
+      "id": "rb-mid-value2-confirm",
+      "kind": "point",
+      "known_at": "occurrence_ts",
+      "label": "原mid value2 confirm point",
+      "marker": "cross",
+      "rows": [],
+      "source": "rb_MID",
+      "symbol": "rb",
+      "x": {
+        "field": "confirm_uti",
+        "lookup": {
+          "key": "closeUti",
+          "source": "rb_K",
+          "value": "bar_ts",
+          "key_type": "integer"
+        }
+      },
+      "y": "confirm_value"
+    },
+    {
+      "color": "#111111",
+      "id": "rb-c0-actual",
+      "kind": "point",
+      "known_at": "source_event_ts",
+      "label": "C0 actual（原source_event可知代理）",
+      "marker": "circle",
+      "rows": [
+        33
+      ],
+      "source": "C0T",
+      "symbol": "rb",
+      "x": "actual_ts",
+      "y": "actual_price"
+    },
+    {
+      "color": "#1b9e77",
+      "id": "rb-c0-confirm",
+      "kind": "point",
+      "known_at": "source_event_ts",
+      "label": "C0 confirm point（非occurrence）",
+      "marker": "square",
+      "rows": [
+        33
+      ],
+      "source": "C0T",
+      "symbol": "rb",
+      "x": "confirm_point_ts",
+      "y": "confirm_price"
+    },
+    {
+      "color": "#e7298a",
+      "id": "rb-c0-knowledge",
+      "kind": "point",
+      "known_at": "source_event_ts",
+      "label": "C0 occurrence/knowledge proxy（Y=原确认价，非此刻报价）",
+      "marker": "x",
+      "rows": [
+        33
+      ],
+      "source": "C0T",
+      "symbol": "rb",
+      "x": "source_event_ts",
+      "y": "confirm_price"
+    },
+    {
+      "color": "#59a14f",
+      "id": "rb-completed-episodes",
+      "kind": "segment",
+      "known_at": "completed_visible_from_proxy",
+      "label": "C0 完整Episode（完成可知后才在当时图显示）",
+      "rows": [
+        32,
+        33
+      ],
+      "source": "C0E",
+      "symbol": "rb",
+      "x0": "actual_start_ts",
+      "x1": "actual_end_ts",
+      "y0": "start_price",
+      "y1": "end_price"
+    },
+    {
+      "color": "#f28e2b",
+      "id": "rb-working-prefix",
+      "kind": "segment",
+      "known_at": "asof_event_ts_proxy",
+      "label": "C0 原cut中的Working前缀（显示连接KLine原价）",
+      "line_dash": "dashed",
+      "rows": [
+        658
+      ],
+      "source": "C0CUT",
+      "symbol": "rb",
+      "x0": {
+        "field": "working_actual_start_uti",
+        "lookup": {
+          "key": "closeUti",
+          "source": "rb_K",
+          "value": "bar_ts",
+          "key_type": "integer"
+        }
+      },
+      "x1": {
+        "field": "working_path_end_uti",
+        "lookup": {
+          "key": "closeUti",
+          "source": "rb_K",
+          "value": "bar_ts",
+          "key_type": "integer"
+        }
+      },
+      "y0": {
+        "field": "working_actual_start_uti",
+        "lookup": {
+          "key": "closeUti",
+          "source": "rb_K",
+          "value": "close",
+          "key_type": "integer"
+        }
+      },
+      "y1": {
+        "field": "working_path_end_uti",
+        "lookup": {
+          "key": "closeUti",
+          "source": "rb_K",
+          "value": "close",
+          "key_type": "integer"
+        }
+      }
+    },
+    {
+      "close": "close",
+      "color": "#e45756",
+      "high": "high",
+      "id": "hc-ohlc",
+      "kind": "ohlc",
+      "known_at": "bar_ts",
+      "label": "hc 原始30m OHLC/close",
+      "low": "low",
+      "open": "open",
+      "rows": [
+        631,
+        632,
+        633,
+        634,
+        635,
+        636,
+        637,
+        638,
+        639,
+        640,
+        641,
+        642,
+        643,
+        644,
+        645,
+        646,
+        647,
+        648,
+        649,
+        650,
+        651,
+        652,
+        653,
+        654,
+        655,
+        656,
+        657,
+        658,
+        659,
+        660,
+        661,
+        662,
+        663,
+        664,
+        665,
+        666,
+        667,
+        668,
+        669,
+        670,
+        671,
+        672,
+        673,
+        674,
+        675,
+        676,
+        677,
+        678,
+        679,
+        680,
+        681,
+        682
+      ],
+      "source": "hc_K",
+      "symbol": "hc",
+      "x": "bar_ts"
+    },
+    {
+      "color": "#8c8c8c",
+      "id": "hc-zig-all-bars",
+      "kind": "line",
+      "known_at": "bar_ts",
+      "label": "原small Zig all_bars.swingPrice",
+      "rows": [
+        631,
+        632,
+        633,
+        634,
+        635,
+        636,
+        637,
+        638,
+        639,
+        640,
+        641,
+        642,
+        643,
+        644,
+        645,
+        646,
+        647,
+        648,
+        649,
+        650,
+        651,
+        652,
+        653,
+        654,
+        655,
+        656,
+        657,
+        658,
+        659,
+        660,
+        661,
+        662,
+        663,
+        664,
+        665,
+        666,
+        667,
+        668,
+        669,
+        670,
+        671,
+        672,
+        673,
+        674,
+        675,
+        676,
+        677,
+        678,
+        679,
+        680,
+        681,
+        682
+      ],
+      "source": "hc_ZA",
+      "symbol": "hc",
+      "x": "bar_ts",
+      "y": "swingPrice"
+    },
+    {
+      "color": "#666666",
+      "id": "hc-zig-confirmed",
+      "kind": "point",
+      "known_at": "confirm_event_ts",
+      "label": "原small Zig confirmed（实际点；confirm_event为可见代理）",
+      "marker": "triangle",
+      "rows": [
+        112,
+        113,
+        114,
+        115,
+        116
+      ],
+      "source": "hc_ZC",
+      "symbol": "hc",
+      "x": {
+        "field": "zigUTI",
+        "lookup": {
+          "key": "closeUti",
+          "source": "hc_K",
+          "value": "bar_ts",
+          "key_type": "integer"
+        }
+      },
+      "y": "zigPrice"
+    },
+    {
+      "color": "#b0b0b0",
+      "id": "hc-zig-status",
+      "kind": "segment",
+      "known_at": "status_ts",
+      "label": "原small Zig status两点",
+      "rows": [
+        191,
+        192,
+        193,
+        194,
+        195,
+        196,
+        197,
+        198,
+        199,
+        200,
+        201,
+        202,
+        203
+      ],
+      "source": "hc_ZS",
+      "symbol": "hc",
+      "x0": {
+        "field": "posUTI0",
+        "lookup": {
+          "key": "closeUti",
+          "source": "hc_K",
+          "value": "bar_ts",
+          "key_type": "integer"
+        }
+      },
+      "x1": {
+        "field": "posUTI1",
+        "lookup": {
+          "key": "closeUti",
+          "source": "hc_K",
+          "value": "bar_ts",
+          "key_type": "integer"
+        }
+      },
+      "y0": "price0",
+      "y1": "price1"
+    },
+    {
+      "color": "#d95f02",
+      "id": "hc-mid-value1-actual",
+      "kind": "point",
+      "known_at": "occurrence_ts",
+      "label": "原mid value1 actual（occurrence后可见）",
+      "marker": "diamond",
+      "rows": [
+        34
+      ],
+      "source": "hc_MID",
+      "symbol": "hc",
+      "x": {
+        "field": "actual_uti",
+        "lookup": {
+          "key": "closeUti",
+          "source": "hc_K",
+          "value": "bar_ts",
+          "key_type": "integer"
+        }
+      },
+      "y": "actual_value"
+    },
+    {
+      "color": "#d95f02",
+      "id": "hc-mid-value1-confirm",
+      "kind": "point",
+      "known_at": "occurrence_ts",
+      "label": "原mid value1 confirm point",
+      "marker": "cross",
+      "rows": [
+        34
+      ],
+      "source": "hc_MID",
+      "symbol": "hc",
+      "x": {
+        "field": "confirm_uti",
+        "lookup": {
+          "key": "closeUti",
+          "source": "hc_K",
+          "value": "bar_ts",
+          "key_type": "integer"
+        }
+      },
+      "y": "confirm_value"
+    },
+    {
+      "color": "#7570b3",
+      "id": "hc-mid-value2-actual",
+      "kind": "point",
+      "known_at": "occurrence_ts",
+      "label": "原mid value2 actual（occurrence后可见）",
+      "marker": "diamond",
+      "rows": [
+        33
+      ],
+      "source": "hc_MID",
+      "symbol": "hc",
+      "x": {
+        "field": "actual_uti",
+        "lookup": {
+          "key": "closeUti",
+          "source": "hc_K",
+          "value": "bar_ts",
+          "key_type": "integer"
+        }
+      },
+      "y": "actual_value"
+    },
+    {
+      "color": "#7570b3",
+      "id": "hc-mid-value2-confirm",
+      "kind": "point",
+      "known_at": "occurrence_ts",
+      "label": "原mid value2 confirm point",
+      "marker": "cross",
+      "rows": [
+        33
+      ],
+      "source": "hc_MID",
+      "symbol": "hc",
+      "x": {
+        "field": "confirm_uti",
+        "lookup": {
+          "key": "closeUti",
+          "source": "hc_K",
+          "value": "bar_ts",
+          "key_type": "integer"
+        }
+      },
+      "y": "confirm_value"
+    },
+    {
+      "color": "#111111",
+      "id": "hc-c0-actual",
+      "kind": "point",
+      "known_at": "source_event_ts",
+      "label": "C0 actual（原source_event可知代理）",
+      "marker": "circle",
+      "rows": [
+        396,
+        397
+      ],
+      "source": "C0T",
+      "symbol": "hc",
+      "x": "actual_ts",
+      "y": "actual_price"
+    },
+    {
+      "color": "#1b9e77",
+      "id": "hc-c0-confirm",
+      "kind": "point",
+      "known_at": "source_event_ts",
+      "label": "C0 confirm point（非occurrence）",
+      "marker": "square",
+      "rows": [
+        396,
+        397
+      ],
+      "source": "C0T",
+      "symbol": "hc",
+      "x": "confirm_point_ts",
+      "y": "confirm_price"
+    },
+    {
+      "color": "#e7298a",
+      "id": "hc-c0-knowledge",
+      "kind": "point",
+      "known_at": "source_event_ts",
+      "label": "C0 occurrence/knowledge proxy（Y=原确认价，非此刻报价）",
+      "marker": "x",
+      "rows": [
+        396,
+        397
+      ],
+      "source": "C0T",
+      "symbol": "hc",
+      "x": "source_event_ts",
+      "y": "confirm_price"
+    },
+    {
+      "color": "#59a14f",
+      "id": "hc-completed-episodes",
+      "kind": "segment",
+      "known_at": "completed_visible_from_proxy",
+      "label": "C0 完整Episode（完成可知后才在当时图显示）",
+      "rows": [
+        395,
+        396,
+        397
+      ],
+      "source": "C0E",
+      "symbol": "hc",
+      "x0": "actual_start_ts",
+      "x1": "actual_end_ts",
+      "y0": "start_price",
+      "y1": "end_price"
+    },
+    {
+      "color": "#f28e2b",
+      "id": "hc-working-prefix",
+      "kind": "segment",
+      "known_at": "asof_event_ts_proxy",
+      "label": "C0 原cut中的Working前缀（显示连接KLine原价）",
+      "line_dash": "dashed",
+      "rows": [
+        9738
+      ],
+      "source": "C0CUT",
+      "symbol": "hc",
+      "x0": {
+        "field": "working_actual_start_uti",
+        "lookup": {
+          "key": "closeUti",
+          "source": "hc_K",
+          "value": "bar_ts",
+          "key_type": "integer"
+        }
+      },
+      "x1": {
+        "field": "working_path_end_uti",
+        "lookup": {
+          "key": "closeUti",
+          "source": "hc_K",
+          "value": "bar_ts",
+          "key_type": "integer"
+        }
+      },
+      "y0": {
+        "field": "working_actual_start_uti",
+        "lookup": {
+          "key": "closeUti",
+          "source": "hc_K",
+          "value": "close",
+          "key_type": "integer"
+        }
+      },
+      "y1": {
+        "field": "working_path_end_uti",
+        "lookup": {
+          "key": "closeUti",
+          "source": "hc_K",
+          "value": "close",
+          "key_type": "integer"
+        }
+      }
+    },
+    {
+      "close": "close",
+      "color": "#2a9d8f",
+      "high": "high",
+      "id": "i-ohlc",
+      "kind": "ohlc",
+      "known_at": "bar_ts",
+      "label": "i 原始30m OHLC/close",
+      "low": "low",
+      "open": "open",
+      "rows": [
+        631,
+        632,
+        633,
+        634,
+        635,
+        636,
+        637,
+        638,
+        639,
+        640,
+        641,
+        642,
+        643,
+        644,
+        645,
+        646,
+        647,
+        648,
+        649,
+        650,
+        651,
+        652,
+        653,
+        654,
+        655,
+        656,
+        657,
+        658,
+        659,
+        660,
+        661,
+        662,
+        663,
+        664,
+        665,
+        666,
+        667,
+        668,
+        669,
+        670,
+        671,
+        672,
+        673,
+        674,
+        675,
+        676,
+        677,
+        678,
+        679,
+        680,
+        681,
+        682
+      ],
+      "source": "i_K",
+      "symbol": "i",
+      "x": "bar_ts"
+    },
+    {
+      "color": "#8c8c8c",
+      "id": "i-zig-all-bars",
+      "kind": "line",
+      "known_at": "bar_ts",
+      "label": "原small Zig all_bars.swingPrice",
+      "rows": [
+        631,
+        632,
+        633,
+        634,
+        635,
+        636,
+        637,
+        638,
+        639,
+        640,
+        641,
+        642,
+        643,
+        644,
+        645,
+        646,
+        647,
+        648,
+        649,
+        650,
+        651,
+        652,
+        653,
+        654,
+        655,
+        656,
+        657,
+        658,
+        659,
+        660,
+        661,
+        662,
+        663,
+        664,
+        665,
+        666,
+        667,
+        668,
+        669,
+        670,
+        671,
+        672,
+        673,
+        674,
+        675,
+        676,
+        677,
+        678,
+        679,
+        680,
+        681,
+        682
+      ],
+      "source": "i_ZA",
+      "symbol": "i",
+      "x": "bar_ts",
+      "y": "swingPrice"
+    },
+    {
+      "color": "#666666",
+      "id": "i-zig-confirmed",
+      "kind": "point",
+      "known_at": "confirm_event_ts",
+      "label": "原small Zig confirmed（实际点；confirm_event为可见代理）",
+      "marker": "triangle",
+      "rows": [
+        153,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159,
+        160
+      ],
+      "source": "i_ZC",
+      "symbol": "i",
+      "x": {
+        "field": "zigUTI",
+        "lookup": {
+          "key": "closeUti",
+          "source": "i_K",
+          "value": "bar_ts",
+          "key_type": "integer"
+        }
+      },
+      "y": "zigPrice"
+    },
+    {
+      "color": "#b0b0b0",
+      "id": "i-zig-status",
+      "kind": "segment",
+      "known_at": "status_ts",
+      "label": "原small Zig status两点",
+      "rows": [
+        225,
+        226,
+        227,
+        228,
+        229,
+        230,
+        231,
+        232,
+        233,
+        234,
+        235,
+        236,
+        237,
+        238,
+        239,
+        240,
+        241
+      ],
+      "source": "i_ZS",
+      "symbol": "i",
+      "x0": {
+        "field": "posUTI0",
+        "lookup": {
+          "key": "closeUti",
+          "source": "i_K",
+          "value": "bar_ts",
+          "key_type": "integer"
+        }
+      },
+      "x1": {
+        "field": "posUTI1",
+        "lookup": {
+          "key": "closeUti",
+          "source": "i_K",
+          "value": "bar_ts",
+          "key_type": "integer"
+        }
+      },
+      "y0": "price0",
+      "y1": "price1"
+    },
+    {
+      "color": "#d95f02",
+      "id": "i-mid-value1-actual",
+      "kind": "point",
+      "known_at": "occurrence_ts",
+      "label": "原mid value1 actual（occurrence后可见）",
+      "marker": "diamond",
+      "rows": [
+        59,
+        60,
+        61,
+        62,
+        63
+      ],
+      "source": "i_MID",
+      "symbol": "i",
+      "x": {
+        "field": "actual_uti",
+        "lookup": {
+          "key": "closeUti",
+          "source": "i_K",
+          "value": "bar_ts",
+          "key_type": "integer"
+        }
+      },
+      "y": "actual_value"
+    },
+    {
+      "color": "#d95f02",
+      "id": "i-mid-value1-confirm",
+      "kind": "point",
+      "known_at": "occurrence_ts",
+      "label": "原mid value1 confirm point",
+      "marker": "cross",
+      "rows": [
+        59,
+        60,
+        61,
+        62,
+        63
+      ],
+      "source": "i_MID",
+      "symbol": "i",
+      "x": {
+        "field": "confirm_uti",
+        "lookup": {
+          "key": "closeUti",
+          "source": "i_K",
+          "value": "bar_ts",
+          "key_type": "integer"
+        }
+      },
+      "y": "confirm_value"
+    },
+    {
+      "color": "#7570b3",
+      "id": "i-mid-value2-actual",
+      "kind": "point",
+      "known_at": "occurrence_ts",
+      "label": "原mid value2 actual（occurrence后可见）",
+      "marker": "diamond",
+      "rows": [],
+      "source": "i_MID",
+      "symbol": "i",
+      "x": {
+        "field": "actual_uti",
+        "lookup": {
+          "key": "closeUti",
+          "source": "i_K",
+          "value": "bar_ts",
+          "key_type": "integer"
+        }
+      },
+      "y": "actual_value"
+    },
+    {
+      "color": "#7570b3",
+      "id": "i-mid-value2-confirm",
+      "kind": "point",
+      "known_at": "occurrence_ts",
+      "label": "原mid value2 confirm point",
+      "marker": "cross",
+      "rows": [],
+      "source": "i_MID",
+      "symbol": "i",
+      "x": {
+        "field": "confirm_uti",
+        "lookup": {
+          "key": "closeUti",
+          "source": "i_K",
+          "value": "bar_ts",
+          "key_type": "integer"
+        }
+      },
+      "y": "confirm_value"
+    },
+    {
+      "color": "#111111",
+      "id": "i-c0-actual",
+      "kind": "point",
+      "known_at": "source_event_ts",
+      "label": "C0 actual（原source_event可知代理）",
+      "marker": "circle",
+      "rows": [
+        764,
+        765,
+        766,
+        767,
+        768
+      ],
+      "source": "C0T",
+      "symbol": "i",
+      "x": "actual_ts",
+      "y": "actual_price"
+    },
+    {
+      "color": "#1b9e77",
+      "id": "i-c0-confirm",
+      "kind": "point",
+      "known_at": "source_event_ts",
+      "label": "C0 confirm point（非occurrence）",
+      "marker": "square",
+      "rows": [
+        764,
+        765,
+        766,
+        767,
+        768
+      ],
+      "source": "C0T",
+      "symbol": "i",
+      "x": "confirm_point_ts",
+      "y": "confirm_price"
+    },
+    {
+      "color": "#e7298a",
+      "id": "i-c0-knowledge",
+      "kind": "point",
+      "known_at": "source_event_ts",
+      "label": "C0 occurrence/knowledge proxy（Y=原确认价，非此刻报价）",
+      "marker": "x",
+      "rows": [
+        764,
+        765,
+        766,
+        767,
+        768
+      ],
+      "source": "C0T",
+      "symbol": "i",
+      "x": "source_event_ts",
+      "y": "confirm_price"
+    },
+    {
+      "color": "#59a14f",
+      "id": "i-completed-episodes",
+      "kind": "segment",
+      "known_at": "completed_visible_from_proxy",
+      "label": "C0 完整Episode（完成可知后才在当时图显示）",
+      "rows": [
+        763,
+        764,
+        765,
+        766,
+        767,
+        768
+      ],
+      "source": "C0E",
+      "symbol": "i",
+      "x0": "actual_start_ts",
+      "x1": "actual_end_ts",
+      "y0": "start_price",
+      "y1": "end_price"
+    },
+    {
+      "color": "#f28e2b",
+      "id": "i-working-prefix",
+      "kind": "segment",
+      "known_at": "asof_event_ts_proxy",
+      "label": "C0 原cut中的Working前缀（显示连接KLine原价）",
+      "line_dash": "dashed",
+      "rows": [
+        18818
+      ],
+      "source": "C0CUT",
+      "symbol": "i",
+      "x0": {
+        "field": "working_actual_start_uti",
+        "lookup": {
+          "key": "closeUti",
+          "source": "i_K",
+          "value": "bar_ts",
+          "key_type": "integer"
+        }
+      },
+      "x1": {
+        "field": "working_path_end_uti",
+        "lookup": {
+          "key": "closeUti",
+          "source": "i_K",
+          "value": "bar_ts",
+          "key_type": "integer"
+        }
+      },
+      "y0": {
+        "field": "working_actual_start_uti",
+        "lookup": {
+          "key": "closeUti",
+          "source": "i_K",
+          "value": "close",
+          "key_type": "integer"
+        }
+      },
+      "y1": {
+        "field": "working_path_end_uti",
+        "lookup": {
+          "key": "closeUti",
+          "source": "i_K",
+          "value": "close",
+          "key_type": "integer"
+        }
+      }
+    },
+    {
+      "id": "N1",
+      "kind": "table",
+      "known_at": "asof_event_ts_proxy",
+      "label": "N/01 同品种同AsOf：exact6与另一个Working Episode",
+      "note": "business_duration/normalized_amplitude 空值保留；raw单位标签不授予时长价格单位，不填值。",
+      "rows": [
+        658,
+        9738,
+        18818
+      ],
+      "source": "N1"
+    },
+    {
+      "id": "N2",
+      "kind": "table",
+      "known_at": "asof_event_ts_proxy",
+      "label": "N/02 同品种同AsOf 原度量／原单位标签",
+      "note": "business_duration/normalized_amplitude 空值保留；raw单位标签不授予时长价格单位，不填值。",
+      "rows": [
+        5250,
+        5251,
+        5252,
+        5253,
+        5254,
+        5255,
+        5256,
+        5257,
+        77890,
+        77891,
+        77892,
+        77893,
+        77894,
+        77895,
+        77896,
+        77897,
+        150530,
+        150531,
+        150532,
+        150533,
+        150534,
+        150535,
+        150536,
+        150537
+      ],
+      "source": "N2"
+    },
+    {
+      "id": "N4",
+      "kind": "table",
+      "known_at": "asof_event_ts_proxy",
+      "label": "N/04 exact-AsOf窗口变化明细（未发生则合法空）",
+      "note": "business_duration/normalized_amplitude 空值保留；raw单位标签不授予时长价格单位，不填值。",
+      "rows": [
+        2498,
+        2499,
+        2500,
+        2501,
+        2502,
+        2503,
+        2504,
+        2505,
+        4914,
+        4915,
+        4916,
+        4917,
+        4918,
+        4919,
+        4920,
+        4921
+      ],
+      "source": "N4"
+    },
+    {
+      "id": "N3",
+      "kind": "table",
+      "known_at": "evaluation_at",
+      "label": "N/03 原窗口refs对应成员变化（原时间保留）",
+      "rows": [
+        19,
+        314,
+        616
+      ],
+      "source": "N3"
+    },
+    {
+      "id": "C1",
+      "kind": "table",
+      "label": "C1 raw候选原行（不是正式簇）",
+      "rows": [
+        28
+      ],
+      "source": "C1"
+    },
+    {
+      "id": "PAIR",
+      "kind": "table",
+      "label": "C1 原pair与turn refs",
+      "rows": [
+        54
+      ],
+      "source": "PAIR"
+    },
+    {
+      "id": "REL",
+      "kind": "table",
+      "label": "C1 八类原始关系",
+      "rows": [
+        418,
+        419,
+        420,
+        421,
+        422,
+        423,
+        424,
+        425
+      ],
+      "source": "REL"
+    },
+    {
+      "id": "MEM",
+      "kind": "table",
+      "label": "C1 成员在common-visible原cut的端点/原状态",
+      "rows": [
+        67,
+        68
+      ],
+      "source": "MEM"
+    },
+    {
+      "id": "GATE",
+      "kind": "table",
+      "label": "广域原Formation/Qualification/Validity/Separation gates",
+      "rows": [
+        28
+      ],
+      "source": "GATE"
+    },
+    {
+      "id": "OUTSIDE",
+      "kind": "table",
+      "label": "固定Universe原组外成员（不自动可比或负例）",
+      "rows": [
+        28
+      ],
+      "source": "OUTSIDE"
+    },
+    {
+      "color": "#b279a2",
+      "id": "rb-candidate-member-endpoint",
+      "kind": "point",
+      "known_at": "shared_source_visibility_cut",
+      "label": "C1 原common-visible成员端点（Working/Completed见原表）",
+      "marker": "star",
+      "rows": [],
+      "source": "MEM",
+      "symbol": "rb",
+      "x": "endpoint_ts",
+      "y": {
+        "field": "endpoint_uti",
+        "lookup": {
+          "key": "closeUti",
+          "source": "rb_K",
+          "value": "close",
+          "key_type": "integer"
+        }
+      }
+    },
+    {
+      "color": "#b279a2",
+      "id": "hc-candidate-member-endpoint",
+      "kind": "point",
+      "known_at": "shared_source_visibility_cut",
+      "label": "C1 原common-visible成员端点（Working/Completed见原表）",
+      "marker": "star",
+      "rows": [
+        67
+      ],
+      "source": "MEM",
+      "symbol": "hc",
+      "x": "endpoint_ts",
+      "y": {
+        "field": "endpoint_uti",
+        "lookup": {
+          "key": "closeUti",
+          "source": "hc_K",
+          "value": "close",
+          "key_type": "integer"
+        }
+      }
+    },
+    {
+      "color": "#b279a2",
+      "id": "i-candidate-member-endpoint",
+      "kind": "point",
+      "known_at": "shared_source_visibility_cut",
+      "label": "C1 原common-visible成员端点（Working/Completed见原表）",
+      "marker": "star",
+      "rows": [
+        68
+      ],
+      "source": "MEM",
+      "symbol": "i",
+      "x": "endpoint_ts",
+      "y": {
+        "field": "endpoint_uti",
+        "lookup": {
+          "key": "closeUti",
+          "source": "i_K",
+          "value": "close",
+          "key_type": "integer"
+        }
+      }
+    },
+    {
+      "id": "N_WORKING_ORIGIN",
+      "source": "C0T",
+      "kind": "table",
+      "rows": [
+        32,
+        396,
+        764
+      ],
+      "known_at": "source_event_ts",
+      "label": "N当前Working起点turn原方向（显式原引用连接，不是主Case旧Episode）"
+    }
+  ],
+  "node_id": "C1_ROW_0028",
+  "notes": [
+    "显示窗口 2021-03-24 22:00:00 — 2021-03-31 09:30:00；实际锚点 2021-03-25 22:00:00；As-Of 2021-03-29 09:30:00。显示上下文不是新算法窗口或Outcome Horizon。",
+    "原始CSV只读；三品种原报价单位；未插值空KLine；实际/确认/occurrence时钟分别保留。",
+    "Source原行可含事后完成可知时间；当时图仅绘制声明可知时钟不晚于As-Of的对象，不把源字段本身当作已知证据。",
+    "Reference/Shadow；无正式H1；R03 CalibrationPending/quality WITHHELD；LCC未提供。未输出turn density、dwell/recovery时间、跨尺度、U3 recentChange、流动性/容量/成本，不补算。",
+    "R02 raw_progress/path_length/max_counter_move为原品种价格单位；efficiency/retained_fraction无量纲；bar_elapsed是本包bar间隔数量；count/runs为数量；return_to_origin_progress不改名为归一化程度。",
+    "固定Universe=rb|hc|i；候选组外=rb；组外不自动具有正式可比资格、负例或分离结论。",
+    "广域/C0视图没有完整主Case U3链；不以主Case R02补造本视图的U3。",
+    "N原来源连接：rb working_episode_ref=refonly-3c37f7736bcea2b005 → C0E物理32 start_turn_id=refonly-dffd37c55406848e49 → C0T物理32 expected_direction=Up",
+    "N原来源连接：hc working_episode_ref=refonly-135b2ccbea3049a23b → C0E物理396 start_turn_id=refonly-7fb436d6e8c77989ce → C0T物理396 expected_direction=Up",
+    "N原来源连接：i working_episode_ref=refonly-225d5cf53c6273786f → C0E物理764 start_turn_id=refonly-b6aacea4b2b8a6fc4e → C0T物理764 expected_direction=Up"
+  ],
+  "outside_members": "rb",
+  "start": "2021-03-24 22:00:00",
+  "symbols": [
+    "rb",
+    "hc",
+    "i"
+  ],
+  "default_table": "C1",
+  "N_working_origin_links": [
+    {
+      "symbol": "rb",
+      "N_working_episode_ref": "refonly-3c37f7736bcea2b005",
+      "C0_episode_physical_row": 32,
+      "start_turn_id": "refonly-dffd37c55406848e49",
+      "C0_turn_physical_row": 32,
+      "original_expected_direction": "Up"
+    },
+    {
+      "symbol": "hc",
+      "N_working_episode_ref": "refonly-135b2ccbea3049a23b",
+      "C0_episode_physical_row": 396,
+      "start_turn_id": "refonly-7fb436d6e8c77989ce",
+      "C0_turn_physical_row": 396,
+      "original_expected_direction": "Up"
+    },
+    {
+      "symbol": "i",
+      "N_working_episode_ref": "refonly-225d5cf53c6273786f",
+      "C0_episode_physical_row": 764,
+      "start_turn_id": "refonly-b6aacea4b2b8a6fc4e",
+      "C0_turn_physical_row": 764,
+      "original_expected_direction": "Up"
+    }
+  ]
+}

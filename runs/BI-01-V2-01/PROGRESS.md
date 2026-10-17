@@ -243,3 +243,15 @@
 - caller21:16:25.487Z，距到期34.087秒；frame21:16:24.535Z、实际observation finished21:16:27.736Z。准确原Project和R6 invocation/token/role、正在思考及STOP可见，无完整回复/错误/大加载圈，三张无损tiles全部实际检查。
 - 唯一observe1次，其余业务/导航/输入/Send/恢复均0，先取得后调用，21:17:10.623937Z实际释放并readback，无pending/UNKNOWN，执行者永久退役。
 - 原思考起点20:55:32.938Z保持；下一检查21:26:27.736Z（北京时间05:26:27）。最新远端未发现R6新成果，完整有效结果仍5，S3待真实专业消费回交。整个run继续。
+
+## R0006实际部分回交：同版本CSV运输已完成本地准备
+
+- 实际5afa678同轮专业实物SAME_VERSION_DATA_ACCESS.md确认已读五个主Case平铺CSV、main1原包层及C1_ROW_0033四个原成员，S3继续；同时具体记录GitHub二进制未挂载、44MB范围索引工具返回content空的取用限制。它们不是市场合法空或原输入缺失，未把部分实物计完整回交。
+- 按R5已签运输授权，root把原1917f86 final中的47请求/51 As-Of包完整展开成可读文本：5583原成员、5430 CSV、32,113,835原字节，目录artifacts/worker-R0004/readable_views/REQUESTED_51_CURRENT/。原CSV全部字段/行/_aidata、VIEW、SOURCE_BINDING和manifest不变，原ZIP保留，逐成员hash/长度/源包关联可核。
+- 本地运输准备完成，发布和fresh远端同一性核验继续；不重算、不重画、不重派已完成Worker、不建第二切片系统。本项不计新R或S3完成；原R6仍等完整回交，21:26:27.736Z第三次手机检查已经fresh executor派发。
+
+## R0006第三次到期只读检查
+
+- caller21:27:14.408Z、frame21:27:13.233Z、实际observation finished21:27:16.480Z；到期后46.672秒首调用，满足SLO。原Project和R6精确标识仍在，正在思考/STOP，无完整回答/错误/大加载圈；全部三tiles实查。
+- observe1次、其他动作0，21:27:51.871114Z实际释放并正向读回，无pending/UNKNOWN，executor退役。原思考起点保持；下次检查21:37:16.480Z（北京时间05:37:16），须先续21:36:15.186Z共享准入。
+- 原R6图数业务分析继续，不把部分运输需要或本地展开当作完整Pro回交、S3验收或管理采用。
