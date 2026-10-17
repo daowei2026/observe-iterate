@@ -108,3 +108,11 @@
 
 - `2026-10-17T17:43:22.537Z` 新鲜画面、17:43:25.737Z 完成的观察确认原R0003标识/token及正在思考/STOP；无完整回答、错误或大加载圈。仅只读1次，输入/Send/导航0次。
 - 原思考起点17:33:05.324Z及去重状态保持，下次检查17:53:25.737Z（北京时间01:53:25）。独立报告、采用和专业首发仍待实际交付；整个run继续。
+
+## R0003 完整独立回交、真实采用与专业首发准备
+
+- 第二次现场观察17:53:52.947Z仍思考；其后实际发现独立报告ccc3f74、两Return及最终 `fd01f223039f0e1c4580dec10375eb64fc3728b0` turn complete。完整原文字节、schema、关联、锚点、实物及after-return已全部核验；有效已完成Pro结果累计3。
+- 报告狭义可理解性PASS、无实质歧义，独立性及范围有具名记录；不称专业业务/固定数据/代码审查PASS。真实报告见 `reviews/independent/WORKMAP_READER_INITIAL.md`。
+- 按R0002已签条件完成真实Intake/ADOPTED `81533abbced55b3af14a428dec9cbf8353fc8286`，发布后结果树snapshot已重取、reader输入仍一致；对确切提交及原首建base的Workmap check通过，证据在本R的WORKMAP_ADOPTION_CHECK.json。
+- 手机首次remote grace17:58:38.860Z仍思考，最终截止18:06:47.739517Z；该状态与GitHub完整收取分别记录。
+- R0004 `BI01-V2-01-R0004-23dee3405bd9e50d20b28f00` 完整专业载荷已原样prepare/verify，包含原S1—S3 task与Binding、真实采用/报告定位，尚未建执行chat或Send；继续原工具dispatch/BI01检查与实际首发。首轮专业者选择具体窗口、签Worker工单，操作端不代选图、不把准备计有效调用。
