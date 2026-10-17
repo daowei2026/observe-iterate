@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "urn:market-process:question-work:v2-compatible",
   "title": "问题工作 v2：启动输入、持续绑定与回交；保留 v1 结构读取",
-  "$comment": "Structure only. BOOTSTRAP is not a business plan. No authority/read/completion/dispatch claim. Legacy v1 and v2 without repeat remain one-shot; WHILE_WORK_ACTIVE requires explicit adoption. See DR14. BI-01 V2 adds S1/S2/S3. I1-I6 remain only as historical parse compatibility; not a current workflow. Legacy v1 and CYF A/B/C values are not rewritten or re-adopted.",
+  "$comment": "Structure only. Current BI-01 V2 business IDs are S1/S2/S3; shared legacy A/B/C schema values stay for transport compatibility but are not active BI-01 professional obligations. Real authorization and read/dispatch/complete remain external.",
   "oneOf": [
     {
       "$ref": "#/$defs/binding"
@@ -1079,12 +1079,6 @@
                   "M-REASSESS",
                   "M-CLOSE",
                   "AUDIT",
-                  "I1",
-                  "I2",
-                  "I3",
-                  "I4",
-                  "I5",
-                  "I6",
                   "S1",
                   "S2",
                   "S3"
@@ -1244,12 +1238,6 @@
                       "M-REASSESS",
                       "M-CLOSE",
                       "AUDIT",
-                      "I1",
-                      "I2",
-                      "I3",
-                      "I4",
-                      "I5",
-                      "I6",
                       "S1",
                       "S2",
                       "S3"
@@ -1355,12 +1343,6 @@
                       "M-REASSESS",
                       "M-CLOSE",
                       "AUDIT",
-                      "I1",
-                      "I2",
-                      "I3",
-                      "I4",
-                      "I5",
-                      "I6",
                       "S1",
                       "S2",
                       "S3"
