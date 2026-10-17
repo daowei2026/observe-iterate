@@ -255,3 +255,9 @@
 - caller21:27:14.408Z、frame21:27:13.233Z、实际observation finished21:27:16.480Z；到期后46.672秒首调用，满足SLO。原Project和R6精确标识仍在，正在思考/STOP，无完整回答/错误/大加载圈；全部三tiles实查。
 - observe1次、其他动作0，21:27:51.871114Z实际释放并正向读回，无pending/UNKNOWN，executor退役。原思考起点保持；下次检查21:37:16.480Z（北京时间05:37:16），须先续21:36:15.186Z共享准入。
 - 原R6图数业务分析继续，不把部分运输需要或本地展开当作完整Pro回交、S3验收或管理采用。
+
+## R0006同版本原图层文本已发布并全部核同一性
+
+- 实际提交b9ecbfa4b27f40365ed72f35448116420fb085a6已推送成功；51 As-Of的5583原成员、5430 CSV、32,113,835字节原文在readable_views/REQUESTED_51_CURRENT/，有完整原VIEW/SOURCE_BINDING/导出manifest。原包内容与CSV列/行没有改变，原320节点和ZIP保留。
+- 每个原ZIP成员计算的Git blob身份，与本地实际commit及fresh GitHub子树的5585文件（含运输说明和逐成员回执）全部一致；四份入口/进度/检查另fresh原字节回读。具体方法见本R INPUT_TRANSPORT_RECEIPT.json，未称逐个远端raw下载全部32MB。
+- 已解决R6指出的这些现成包无法批量取用的输入运输需要；是否已实际消费新增文本、对应S3判断、完整Return与管理采用仍待真实专业回交。原R6不追加Send；后继将带入此确切提交继续原完整任务。共享准入续期仍在独立episode执行，run ACTIVE。
