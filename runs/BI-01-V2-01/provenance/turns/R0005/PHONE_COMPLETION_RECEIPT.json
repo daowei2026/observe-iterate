@@ -1,0 +1,41 @@
+{
+  "run_id": "BI-01-V2-01",
+  "round": "R0005",
+  "phone_answer_state": "visible_complete_tail",
+  "decisive_frame": "2026-10-17T20:40:49.249Z",
+  "decisive_finished": "2026-10-17T20:40:52.611Z",
+  "exact_publish_commit_visible": "ba4378ca9fd7533aa671f54be5ae5088809b19a9",
+  "complete_return_and_action_row": true,
+  "phone_full_body_captured": false,
+  "body_collection": "previous exact GitHub full original, remote_verified",
+  "counts": {
+    "phone_calls": 6,
+    "observe_current_ui": 2,
+    "mark_coordinates_and_observe": 2,
+    "tap_marked_coordinate_and_observe": 2,
+    "fling_screen_and_observe": 0,
+    "wait_and_observe": 0,
+    "press_key_and_observe": 0,
+    "ime": 0,
+    "send": 0,
+    "stop": 0,
+    "retry": 0,
+    "newchat": 0,
+    "rename": 0,
+    "restart": 0,
+    "network_probe": 0,
+    "copy": 0,
+    "attachments": 0
+  },
+  "production_control_released": true,
+  "released_at": "2026-10-17T20:42:01.026465+00:00",
+  "deviation": {
+    "code": "first_readonly_observe_before_acquire_append",
+    "first_readonly_caller": "2026-10-17T20:39:45.287Z",
+    "acquired_at": "2026-10-17T20:40:08.954819+00:00",
+    "corrected_prior_audit_all_released": true,
+    "phone_mutation_before_acquire": false,
+    "explanation": "本地审计误判历史released后缀，未正确处理local命令非零退出；一次只读observe在取得登记前发生。之后复核132节均已released，任何mark/tap前已登记取得。原时间序列和偏差保留，不标全episode合规。",
+    "next_executor_gate": "本地审计/取得登记必须顺序执行并核exit_code==0及明确acquired回执，未通过立即硬返回，禁止local gate与任何phone tool并行/未检查继续。"
+  }
+}

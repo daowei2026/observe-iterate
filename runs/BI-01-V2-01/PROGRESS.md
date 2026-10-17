@@ -215,3 +215,11 @@
 - root已从原PUBLICATION_FILE_MANIFEST逐项核683文件/85,312,617字节及SHA256，核全部323 ZIP CRC与路径安全；原始完整回交发布在artifacts/worker-R0004/final/，README式入口是final/READING_GUIDE.md。历史根目录144/146包与原始首交不覆盖；最终资料按独立目录保留原字节。
 - aidata代码e59fd90在本机独立branch、tracked干净，main仍9ff7ce4，未推该源码分支远端；原两份patch和模块hash随实物可核，不能称远端aidata commit已可读取。未重算固定两包，B外层差异/成员一致资格和N/02单位限制继续分账。
 - 本次是已签原工单的技术图数输入，不代签S3/管理/Owner验收。实际R5完整回交ba4378c已原样收齐、schema/原派发关联/锚点/after-return均核通过，有效结果累计5；按其原same_work计划办理真实Intake，再把实际新到图数交原执行Pro连续分析，不以320技术节点或当前管理轮收工。
+
+## R0005真实采用和R0006专业图数消费准备完成
+
+- R5最终ba4378c原文27,845字节、SHA ca702da...及两原JSON、schema、原派发关联、26引用和7378966 after-return均已核通过，远端原字节回读；完整有效结果累计5。手机20:40:52.611Z真实看到闭合Return、准确ba4378c发布回执及完成操作行，STOP/错误/加载均无；未copy全文。
+- 手机收尾有一次只读observe早于控制取得登记的偏差，时间序列如实保留在PHONE_COMPLETION_RECEIPT.json；任何mark/tap前已纠正审计并取得，零发送及UNKNOWN。后续executor必须显式核本地exit_code与acquired证据后才准任何手机调用。
+- 原管理明确同任务ROUTINE_RESULT且无需新reader，真实snapshot A=1917f86→Intake B=b60b836；机械check通过，旧reader保持RECORDED_OLD_INPUT，没有改原输入/指纹。受信前次采用base仍81533，完整Task/Binding/methods未变；仅接收S1及技术输入/已定定位与单位处置，S3未成。R5已消费原CHANGE和累计4 EFFORT，下一累计8，不重置R1。
+- 共享准入实际20:36:15.186Z通过，lease至21:36:15.186Z，24次正式操作、零重启/输入/发送。
+- R6 BI01-V2-01-R0006-fe69b0114945aca3db55f8f2 原样prepare/verify、四文件远端回读、BI01 pre-dispatch与Workmap dispatch均通过；完整目标/原task/Binding、M5原续作与已到Worker图数定位已带入，尚未IME/Send。下一步直接发原BI01-V2-执行，用当前同图数据形成S3，整个run继续。
