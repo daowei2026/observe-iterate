@@ -42,3 +42,8 @@
 - schema、原派发/token、BOOTSTRAP、锚点与关联检查通过；本轮正文按 remote_verified 取得，不重复copy或ZIP。手机首次远端完成宽限检查 `15:57:53.639Z` 仍无回答；最终宽限截止 `16:05:55.141980Z`，此手机状态与GitHub交付分别保留。
 - reader-input的真实local snapshot已生成。独立读者载荷通过Overlay12 prepare/verify，但实际BI01 gate依赖复现首次reader须先ADOPTED的机械循环；详细证据见 `provenance/controller/WORKMAP_FIRST_READER_GATE_ISSUE.md`。未改工具/状态、未假造reader/Intake，未发生R0002。
 - 按管理已经签署的窄回交路线处理机械缺口，然后继续真实独立reader、Intake与完整S1—S3专业首发；没有新的Owner授权缺口，整个运行继续。
+
+## R0002 准备（尚未实际调用）
+
+- 原管理委派的定向接续载荷已通过prepare/verify，处理首次reader的ADOPTED前置机械循环；保留R0001已签全部业务内容。
+- 尚未实际Send；须先完成原聊天最终宽限和物理结束/重命名、到期network及原样载荷/NOT_SENT核验。未把独立reader、Intake或专业首发预记为发生。
