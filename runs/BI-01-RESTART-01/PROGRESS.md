@@ -1,84 +1,110 @@
 # BI-01-RESTART-01 Owner 进展投影
 
-> 本页投影已经发生的运行和管理事实，不代替管理地图、当前任务、Gate 正文、Owner 回答或独立审查。
+> 本页投影已经发生的运行和管理事实，不代替管理地图、当前任务、Gate 正文、Owner 原文或独立审查。
 
 ## 当前状态
 
 - run：`BI-01-RESTART-01`
-- 当前业务位置：G5 Pass 后等待 Owner
+- 当前阶段：I6
 - G1：Pass
 - G2：ScopedPass
 - G3：Case-01/02 ScopedPass；recovery 触及语义 Withheld
 - G4：Pass（限定当前 Reference/Shadow 范围）
 - G5：Pass
-- I5：完成
-- Owner：尚未批准 A/B
-- I6：未启动
+- Owner：A 已批准
+- I6：已启动
+- G6：Pending
 - 独立审查：未覆盖
 - 生产资格：未形成
 
-## R0007 Owner Pack
+## Owner 正式回复
 
-- invocation：`BI01-RESTART-01-R0007-621369295e944443984a81cb6a878f32`
-- turn-complete：`340dd36938ccbe065c6d525aced992b3fb0ef956`
-- Pack：`artifacts/I5_OWNER_PACK/OWNER_PACK.md`
-- Pack SHA-256：`3494a57f7299d5b073d17be68191c95b2bcd079bd64b25205a172a9076eee979`
-- after-return：`ok=true / errors=[]`
-- 机械收取只证明完整、可定位、可解析，不证明业务 Gate。
+- 文件：`OWNER_DECISION_RESPONSE_R0008.md`
+- exact commit：`ed2868f7122b9bae5c73724a2930dcecf0835974`
+- 原文：`选A，继续往后运行`
+- 含义：采用 R0008 选项 A，并授权进入 I6；不表示 formal U2/U3、资金动作或生产资格获批。
 
-## R0008 管理决定
+## R0009 管理决定
 
-- invocation：`BI01-RESTART-01-R0008-a2c40e1e2fae32a95b0ce3b2add4df4a`
+- invocation：`BI01-RESTART-01-R0009-8a1bf0c117c9285bfec5f77b7a077a58`
 - 目的：`M-REASSESS`
-- Owner Pack：Pass
-- I5/G5：Pass
-- I5 专业任务：结束
-- 专业返修：无
-- 当前状态：WaitingOwner
-- I6：未启动
+- Owner A：Accepted / Authoritative
+- I5/G5：保持 Pass
+- I6：Start
+- G6：Pending
 - I2/I3/I4：不返回
 - Worker：无
+- 新专业 task：`BI01-RESTART-01-I6-ACTION-CLOSE-01`
+- mode：`OBSERVATION_I6`
 
-## 管理接收的 Owner 判断前提
+## 当前采用边界
 
-1. actual、knowledge、Working/Completed 和比较范围是承重信息。
-2. U2 的身份、同轮组织和可追溯性价值成立。
-3. exact 成员选择价值当前未证明。
-4. 当前 U3 独立 Quality 增量当前未证明。
-5. formal Formation/Separation/C2/H1/U3 未实际验证，不能判为已失败或已成功。
-6. 两个 Case 相邻同源，不是独立统计重复。
-7. 当前没有收益、资金动作、因果、跨市场规律、独立审查或生产资格。
+### 保留
 
-## Owner 决策
+1. C0/N 的真实结果，仅限已批准范围；
+2. actual / knowledge / lifecycle；
+3. Working / Completed；
+4. U2 的身份、同轮组织、资格和可追溯性；
+5. R0003/R0005 的事实、反证、限制；
+6. R0007 Pack 和 exact 来源。
 
-管理推荐 A：
+### 从 active 要求、验收和后继撤出
+
+1. exact 组 = 机会边界；
+2. 当前 Reference assessment = 正式 Quality；
+3. 当前 U3 = 独立投资增量；
+4. 第三个 Case；
+5. MF-01 当前修复；
+6. formal Formation/Separation/C2/H1/Case-02 U3；
+7. Runner、Quality 校准、扩 Universe；
+8. 生产入口和资金动作。
+
+这些内容不列 deferred required。历史产物全部保留，不倒改。
+
+## 当前 I6 工作
+
+执行 Pro 要形成：
 
 ```text
-保留 C0/N 和 U2 的身份、时间、生命周期、可追溯性；
-暂停把 exact 组、当前 Reference assessment、当前 U3 当作已成立投资能力；
-结束本次 reference 观察。
+I6_ACTION_AND_CLOSURE.md
+  Owner A 采用链
+  Retain / Withdraw / Withheld / Historical
+  active surface 核查
+  现行 consumer / contract 冲突结论
+  结案合同
+  未来重开合同
+  G6 自查
 ```
 
-Owner 只需回答：
+当前不重读原 ZIP、不增加 Case、不制图、不发 Worker、不改 Canonical Source 或生产代码。
 
-1. 是否批准 A？
-2. 若不批准，是否选择 B，并给出 consumer、要改变的判断和投入边界？
+## 未来重开条件
+
+只有新增输入同时具备：
+
+```text
+consumer
+decision
+investment_boundary
+```
+
+并固定 formal Source/Method/Scope/Δ/Epoch、强基线增量 Gate、不同源 Case、责任和停止条件，才可另开正式验证。
 
 ## 当前后继
 
-- 当前不发送任何专业任务；
-- Owner 回复回原管理会话；
-- A：管理建立 I6 落实任务；
-- B：根据具名 consumer 和投入边界建立 I6 formal 验证任务；
-- B 缺输入：只等待具名缺项；
-- 未回复：合法等待，不自动默认 A。
+1. 落库 R0009 管理决定、地图、I6 任务和 Binding；
+2. fresh snapshot / reader / intake / pre-dispatch；
+3. 核 I6 新聊天 NOT_SENT；
+4. 发送 I6 专业任务；
+5. Artifact 回管理；
+6. 管理判断 G6；
+7. G6 Pass 后合法结束本 run。
 
 ## 边界
 
-- 不重开 I4；
-- 不新增第三 Case；
-- 不修 MF-01；
-- 不发 Worker；
-- 不补 formal U2/U3；
-- 不改生产入口；
-- 不声称 Owner 已批准或 I6 已启动。
+- 不声称 I6 已发送；
+- 不声称 G6 已通过；
+- 不声称本 run 已结案；
+- 不重开 I4/I5；
+- 不增加 Owner 问题；
+- 不声称独立审查或生产资格。
