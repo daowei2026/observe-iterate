@@ -1,28 +1,36 @@
-# BI-01 V2 全新真实长程运行入口（未启动）
+# BI-01 V2 全新长程运行指南（准备，不是发送授权）
 
-## 状态与授权
-`PREPARED_NOT_STARTED / NO_SEND`。本文件为 V2 接线说明，不是 Owner 的实际开工指令。只有未来真实 Owner GO 才能建立 `runs/BI-01-V2-01/OWNER_START.md`、BOOTSTRAP 和角色调用。不得拿本次“改版”指令代替开工授权。
+## 0. 业务目标及本轮固定输入
 
-版本：当前 V2 精确 Git commit（实际开工时再锁）；`work_id=BI-01`，`run_id=BI-01-V2-01`。新管理聊天、新专业聊天、新本地长任务 root、新 round/token/marker。旧 `BI-01-RESTART-01` 的聊天、Gate、在途、Return、成果均不继续、不重放、不转为新 run 任务完成。
+完整业务意图：[00 总目标](../../professional/v2/00_PURPOSE_AND_THREE_STEP_FLOW.md)。**不是“让 AI 多做几轮”，而是看既有 U2 机会簇位置是否合理、U3 四方面是否真的能辨别成员好不好做，并拿到具体不合理处、原因、反证及业务增量判断。**
 
-## 工作来源
-- 当前专业目的：`professional/v2/00_PURPOSE_AND_THREE_STEP_FLOW.md`
-- aidata S2：`professional/v2/01_AIDATA_CHART_AND_DATA.md`
-- 观察想法 S3：`professional/v2/02_OBSERVATION_IDEAS_AND_VALIDATION.md`
-- 工程/角色交接：`professional/v2/03_EXECUTION_HANDOFF.md`
-- 任务按真实业务优先选择 S1/S2/S3（无 I1–I6 的活动业务枚举）。
-- 无权自动改变 U2/U3 正式业务定义，四方面的确切内容须由实际可靠业务 Source 取得。
+本轮观察范围与数据不可任意重选：
+- rb、i、hc；已提前验算的 `steel_U2_U3_执行结果_20261010.zip`；
+- 上游 `rb_hc_i_mid贴近转折_zig_small_K线_20210101_20240229.zip`。
+- 必须先消费[04：原 I1–I3 业务起点](../../professional/v2/04_BI01_BUSINESS_BASELINE.md)与[05：固定数据位置和完整清单](../../professional/v2/05_BI01_FIXED_INPUT_DATA.md)，而不是重新执行 I1–I3 或把它们的业务内容丢掉。
+- **预先验算结果固定**：不派“先重新算一版 U2/U3”或“找到正式 Feature 就替换这批数据”的工作；实际发现字段、算法或哈希异常时准确说明影响、反馈并做必要的有界核对。
+- U3 的“四方面”须按原业务定义和固定 CSV 已有输出对应；C2/H1 的 Shadow/未提交与 R03 Withheld 不能变成正式 Quality。
 
-## 首次真实开工
-1. 锁定仓库 V2 精确 commit 和 cgpterm V2 控制器，核对现场真实可用的通用手机/定时/运输技能；不从 moving main 猜版本。
-2. 实际保存未来 Owner GO 原文和准确来源到本 run OWNER_START.md；再创建实际 `question-work/v2 BOOTSTRAP`。管理首次 BOOTSTRAP 可引用真实 Owner START 作 current task/task adoption，不能预造管理地图。
-3. 通过现有 Overlay08/12 生成精确 payload，唯一首行标记 `[BI01-V2-01-R0001-<unique>]`；按 `runtime/operations/V2_ROUND_RECORD_CONTRACT.md` 持久化，远端读回并检查实时 NOT_SENT 后发送。
-4. 管理 Pro 首次有权工作建立真实 `00_长程推进地图.md`、`01_当前任务.md`、专业 Binding、管理接收及 Workmap Intake。发布和远端读取成立之前，不得发第一条专业任务。
-5. 第一次专业任务按 S1 总目标和必要 S2 入口授权。业务上可连续推进 S2、S3 并返回 S2 补图，不要求每次为小修复重新签管理任务。重大证据缺口、Owner 取舍、实质里程碑才触发管理复看。
-6. Worker 仅在专业 Pro 的实际授权工单下运行 aidata。环境/数据缺项时记录具体阻断；通用工具新增只能改 aidata。S2 要交真实可打开的图和同源数据；S3 要交可以让 Owner 按图核验的业务认识。
+## 1. 当前身份和真实开工
 
-## 机械边界
-- 使用旧项目已测试的工作流、workmap、question-work/v2、longrun-return/v1 和通用 phone Skills；不复制新手机轮询/网络状态机。
-- `runtime/config/WORKMAP_BINDING.json` 在准备版保持 `NOT_CONFIGURED`，不得凭预备模板将其设为 ADOPTED；新 run 首次管理签发并校验 intake 才能采用。
-- `runtime/tools/bi01_run_gate.py` 只核新 run 的原样发送/结果关联，不批准业务、发送或 GATE。
-- 当前 V2 分支只以本启动指南、V2 轮次合同和经真实管理签发的任务为运行依据。
+`PREPARED_NOT_STARTED / NO_SEND`。本文件不授权手机或 Pro 发消息。只有 Owner **以后明确 GO**，才可建立 `runs/BI-01-V2-01/OWNER_START.md`、BOOTSTRAP 和角色调用。不能把本轮仓库修改当开工授权。
+
+- `work_id=BI-01`（固定业务路由），`run_id=BI-01-V2-01`（全新身份）；新的管理/专业聊天、调度 root、invocation/token/marker/ledger。
+- 开工时锁定 observe-iterate V2 和 cgpterm V2 各自的精确提交，核准本次机器工具；不用 moving main 代替已采用版本。
+- 旧 run 的聊天、Gate、在途、Owner 回答、业务诊断不进入本轮；原 I1–I3 的业务信息通过 04/05 与来源文件消费，不算旧运行继承。
+
+## 2. 首次真实开工步骤
+
+1. 新 Owner GO 原文进入 `OWNER_START.md`，以此形成真实 `question-work/v2 BOOTSTRAP`；首次管理阶段可引用该次 Owner START 作 current_task_ref 与 task_adoption_ref，不伪造已存在的管理地图。
+2. 使用 Overlay08/12 准备未经改写的完整载荷，首行唯一 `[BI01-V2-01-R0001-<unique>]`；按 `V2_ROUND_RECORD_CONTRACT.md` 保存、Git 远端读回、pre-dispatch 和实际 NOT_SENT 检查后才允许发送。
+3. 管理 Pro 按完整目标、原 I1–I3 背景和固定数据签出实际 `00_长程推进地图.md`、`01_当前任务.md`、专业 Binding、管理接收和 Workmap Intake；有权生效前不得派专业工作。
+4. 正式专业任务以 S1 整理观察问题、S2 对固定数据用 aidata 设计并实际画图、S3 以**同图数据**形成业务想法；必要时在不替换预计算数据的前提下返回 S2 补图。不可把单 Case 或制图完成视为整体完成。
+5. Worker 在实际技术工单下以**只读固定数据、尽量不修改 aidata**为优先。先查 aidata 的 `OWNER_INTENT_AND_RATIONALE.md`、`README.md`、`TODO.md` 及现有 API。实在需修改 aidata，必须**新建 aidata 独立分支**；不能修改主分支/既有分支，也不在 observe-iterate 另造制图/取数系统。
+6. 本轮不要求 AI 看图片像素；Owner 看实际图，AI 读图的对应原始/图层结构化数据。无法取得同源数据应如实反馈，但不能因无视觉模型而停工或新增视觉建设。
+
+## 3. 机械与业务边界
+
+- 通用 `ROLE_RETURN`、`QUESTION_WORK_RETURN`、Workmap/管理 Gate、手机 Skills 和 GitHub 记录机制保持原样，不建立第二套手机消息调度器。
+- `runtime/config/WORKMAP_BINDING.json` 准备时必须是 `NOT_CONFIGURED`，实际管理签发、读回、intake 通过后才有权转为 ADOPTED。
+- `runtime/tools/bi01_run_gate.py` 只能核身份、原样载荷、实物和 Return 关联，不证明业务正确、实际发送或专业结果完成。
+- 没有真实图、实际取得的同源数据或 Owner 可审阅分析时，如实记录阻断/未完，不能声称已经完成 S2/S3。

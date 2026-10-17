@@ -1,17 +1,25 @@
-# BI-01 V2 新运行预备区
+# BI-01 V2：全新运行预备区
 
 <a id="common"></a>
 ## 运行身份
-- work_id：BI-01（业务工作身份，不是已执行证明）
-- run_id：BI-01-V2-01（预留新 run，不继承任何 V1 轮次）
-- 状态：**PREPARED_NOT_STARTED / NO_OWNER_GO / NO_PRO_DISPATCH**
-- 生效专业方法：`professional/v2/`；原 I1–I6 专业阶段被新 S1–S3 流程替代
-- 下一步只能在真实 Owner 明确 GO 后由管理 Pro 创建本 run 的任务地图、当前任务和有权 Binding
+- work_id：`BI-01`（业务路由键）
+- run_id：`BI-01-V2-01`
+- status：**PREPARED_NOT_STARTED / NO_OWNER_GO / NO_PRO_DISPATCH**
+- 业务总目标：[V2 00](../../professional/v2/00_PURPOSE_AND_THREE_STEP_FLOW.md)
+- 重要既有业务底稿：[V2 04](../../professional/v2/04_BI01_BUSINESS_BASELINE.md)（复用 I1/I2/I3 的业务事实，不复用旧 run 状态）
+- 固定数据与位置：[V2 05](../../professional/v2/05_BI01_FIXED_INPUT_DATA.md)
 
 <a id="bi01"></a>
-## 当前任务状态
-尚无活动 S1/S2/S3 工作、实际管理决定、成果、图、数据、Pro 回交、Gate 或 Owner 审阅。没有任何已授权的新发送。
+## 本轮不再选择数据或重新验算
 
-V2 观察意图：RB/I/HC，先核 U2 共同机会簇位置，再观察这些位置的 U3 四方面能否辨别品种好不好做。图与数据统一使用 aidata；小范围验算只在正式实现不可用时作为受限例外。
+固定对象 `rb/i/hc`，输入为已提前验算的两份 ZIP：
+- `steel_U2_U3_执行结果_20261010.zip`；
+- `rb_hc_i_mid贴近转折_zig_small_K线_20210101_20240229.zip`。
 
-旧 run 已从 V2 工作树清理，原分支可追溯其历史；任何旧执行记录都不是本次 run 的成果或活动续作。
+先检查 U2 共同机会簇的实际位置/边界，再检验这些位置 U3 四方面对品种好不好做的辨别效果。S2 **优先用现有 aidata** 对固定数据画图并取得对应数据，S3 专业 Pro 读同源数据形成业务认识；图交 Owner。**现阶段不让 AI 视觉看图，不因缺少视觉工具要求改造 aidata。** 发现数据具名疑问时核查/反馈，不暗中重新生产或替换。
+
+aidata 任何必要的通用修改都须在其新建的工作分支施工，不修改当前分支，不在本仓建第二套画图工具。
+
+## 运行资格
+
+没有活动的 S1/S2/S3 专业任务，没有 Owner GO、管理地图、Binding、回交、图或已完成业务认识。下一次真实开始后才由管理 Pro 签发任务；旧 run 的 Gate、聊天和成果绝不继承。
