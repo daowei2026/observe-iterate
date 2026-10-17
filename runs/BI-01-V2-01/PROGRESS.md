@@ -292,3 +292,10 @@
 - 实际22:07:08.729Z观察到当前R6最终ROLE_RETURN闭合、准确invocation/token及完成操作栏，后面没有续写正文，STOP absent；phone answer_complete已登记，scheduler rev78。该时间是首次完整终态观察时刻，不冒称模型实际生成结束时刻；先前21:51:22Z已见停止思考/正文。
 - 原专业任务仍为IN_PROGRESS，不关闭完整Goal。当前MD/ZIP与其他生成文件的有限清单仍由同一collector2连续收取，对截断文件名未推断相同或不同；只有原包manifest和实际bytes/hash核实后才关闭文件范围。
 - 手机完成、完整原文/两Return取得、schema/关联/实物核验、GitHub发布、专业认识及管理接收分别记录；有效完整结果仍5，没有把看到尾部预计为第6份合法回交。没有执行或虚记原轮70min恢复/STOP/重发。下一步继续真实文件收取并回到原管理/专业续作。
+
+## R0006 完整原件已发布，首批有据观察进入管理复看
+
+- 原 MD 46,749 bytes（SHA 7524784e...）与 ZIP内 FULL_RETURN 完全相同；原 ZIP 31,982 bytes（SHA 2a55a62a...）12成员安全/CRC/manifest通过，完整原答、两Return及真实成果已在750adeb发布。16文件 fresh GitHub 原字节回读、schema/原派发关联/28锚点/23Git文件引用及实际after-return通过，原文没有改写，business_gate=false。
+- 当前回复五个独立附件均闭合：MD/ZIP各取一次，另三个截断CSV卡各download/pull一次，真实文件bytes/hash均等于原ZIP相应成员。共享映射异步可见后实测，没有重复pull、输入或发送；最后executor22:21:55.926256Z释放阳性复验并退役，无pending/UNKNOWN。
+- 实际调用6、完整有效回交6。专业原判FIRST-GROUNDED-OBSERVATION已满足，#findings形成首批同图数据观察；具体发现、支持/反证/资格及全部剩余请看本轮完整原答。IN_PROGRESS、原delivery.INCOMPLETE与未读范围完整保留，不签全目标或独立审查通过。
+- 51包原CSV文本取用已由b9ecbfa运输解决、Worker无待重算。按原Binding首RESULT责任派原管理Pro M-REASSESS，带完整Goal/Task、R6原文、M5决定及最新真实输入/Intake。累计起点R1保持，下一EFFORT8，旧MD-01不重派；管理真实接收后继续完整专业任务，不在第一Case/首批发现处关闭run。

@@ -1,0 +1,78 @@
+{
+  "recorded_at": "2026-10-17T22:24:58.656674+00:00",
+  "effective_complete_results": 6,
+  "effort_origin": "R0001 unchanged",
+  "next_effort_threshold": 8,
+  "prior_duties": [
+    {
+      "key": [
+        "BI-01",
+        "BI01V2_CHANGE_REASSESSMENT",
+        "initial"
+      ],
+      "state": "CONSUMED"
+    },
+    {
+      "key": [
+        "BI-01",
+        "BI01V2_CONTINUOUS_EFFORT_REVIEW",
+        "initial"
+      ],
+      "state": "CONSUMED"
+    }
+  ],
+  "actual_result_observations": [
+    {
+      "trigger_id": "BI01V2-FIRST-GROUNDED-OBSERVATION",
+      "state": "SATISFIED",
+      "evidence_ref": {
+        "answer_ref": "#findings"
+      }
+    },
+    {
+      "trigger_id": "BI01V2-SUBSTANTIVE-CHANGE",
+      "state": "NOT_YET",
+      "evidence_ref": {
+        "answer_ref": "#triggers"
+      }
+    },
+    {
+      "trigger_id": "BI01V2-EFFORT-4",
+      "state": "NOT_YET",
+      "evidence_ref": {
+        "answer_ref": "#triggers"
+      }
+    }
+  ],
+  "pending_reviews": {
+    "due": [
+      {
+        "key": [
+          "BI-01",
+          "BI01V2_FIRST_RESULT_REASSESSMENT",
+          "initial"
+        ],
+        "route": {
+          "recipient_role": "management",
+          "recipient_ref": "chatgpt-project:细节叙事生成_金标/chat:BI01-V2-管理",
+          "instructions_ref": {
+            "repo": "daowei2026/observe-iterate",
+            "commit": "444179c49ae2f926c287d3bf75b43e1eea44fcfc",
+            "path": "runs/BI-01-V2-01/01_当前任务.md",
+            "selector": "#decide"
+          }
+        },
+        "blocking": false,
+        "trigger_ids": [
+          "BI01V2-FIRST-GROUNDED-OBSERVATION"
+        ],
+        "repeat_interval_index": 1
+      }
+    ],
+    "unknown": [],
+    "errors": [],
+    "continuity_errors": []
+  },
+  "state": "PENDING_NOT_SENT",
+  "business_gate": false
+}
