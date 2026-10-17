@@ -25,4 +25,4 @@
 - 使用旧项目已测试的工作流、workmap、question-work/v2、longrun-return/v1 和通用 phone Skills；不复制新手机轮询/网络状态机。
 - `runtime/config/WORKMAP_BINDING.json` 在准备版保持 `NOT_CONFIGURED`，不得凭预备模板将其设为 ADOPTED；新 run 首次管理签发并校验 intake 才能采用。
 - `runtime/tools/bi01_run_gate.py` 只核新 run 的原样发送/结果关联，不批准业务、发送或 GATE。
-- 当前版本旧 `runtime/operations/BI01_REAL_RUN_V1.md` 仅作 V1 历史，V2 不能当成现行入口。
+- 当前 V2 分支只以本启动指南、V2 轮次合同和经真实管理签发的任务为运行依据。
