@@ -4,6 +4,8 @@
 
 当前已发布数据是 [修正146 CSV原包](current_versions/MAIN_ASOF_1__8dd8824509375c57.zip)，SHA-256为 `8dd8824509375c57a1f47756d30403bc0fca92a0d6ab38c1ce839b174467f86c`。元数据、图指纹、代码树hash及验证时间见 [CURRENT_MAIN_ASOF_1_VERSION.json](CURRENT_MAIN_ASOF_1_VERSION.json)。Worker版本为 integer_lookup_and_full_coordinate_validation_v3，代码e59fd90de5237b8a6756de00e54bdf841832fad4，首图每一实际绘图坐标已对照原字段或声明连接核验。root只核原字节、hash、ZIP及文件数量，没有代签专业看图认识。
 
+可直接读取同一包的 [VIEW](readable_views/MAIN_ASOF_1__8dd8824509375c57/VIEW.json)、[SOURCE_BINDING](readable_views/MAIN_ASOF_1__8dd8824509375c57/SOURCE_BINDING.json)、[CSV与导出manifest](readable_views/MAIN_ASOF_1__8dd8824509375c57/plot_view_data/)；原样解压的149成员hash与字节数见该目录EXTRACTION_RECEIPT.json。ZIP仍保留，无内容变换。
+
 ## 修复与历史快照
 
 新增的 N_WORKING_ORIGIN 层在 known/retrospective 两scope保留原方向来源。随后发现small Zig原UTI文本75045599.0与KLine整数键75045599连接失败，旧检查遗漏了status/confirmed的实际时间坐标。当前版以Decimal精确连接整数键，保留原字段；非整数不取整，缺失不插值、不填零，固定输入/数值/窗口/AsOf不重算。

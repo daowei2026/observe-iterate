@@ -202,3 +202,9 @@
 - 原管理具名窄工单的代码7378966已发布，六文件fresh远端原字节回读通过；原policy和操作版本不变。16直接BI01回归及2项Workmap一致性通过，旧A/B/C/旧fixture/启动NOT_CONFIGURED断言的问题与原基线复现分别记录，不称全仓测试绿色。
 - 从实际发布源码对真实R4原件回用，两条关联路径和BI01 after-return已通过；原文/两Return与378d476完全相同，旧字面比较BINDING_MISMATCH仍留历史。完整有效结果现累计4份，实际Pro调用仍5次；没有重发R4或新增本地工程R。
 - 技术回交见reviews/management-R0005/WORKER_RETURN_LOCATOR.md及LOCATOR_R4_REPLAY.json。下一步收齐本R5原答、两Return，依法真实Intake/check/dispatch后把当前首图包交原执行Pro；aidata Worker其余图数持续，S3及全目标尚未完成。
+
+## R0005 第三次到期观察及专业可读图数运输
+
+- frame20:23:26.136Z、观察完成20:23:29.271Z，准确原Project、本轮invocation/token/role匹配，仍正在思考/STOP，无正文/完成尾部/错误/大加载圈。只读一次，其他动作0；原思考时钟保持，下一检查20:33:29.271Z（北京时间04:33:29），须先续20:31:58Z到期的共享准入。
+- 管理已签决定/定位工单已执行真实机械修补，但完整R5原答及两Return尚待，不能猜后继Return或提前记R5有效完成。实际Intake尚未登记。
+- 修正首图8dd882...原ZIP149成员（146CSV及VIEW/SOURCE_BINDING/导出manifest）已逐字节展开在artifacts/worker-R0004/readable_views/MAIN_ASOF_1__8dd8824509375c57，供原执行Pro实际读取，ZIP及逐文件hash保留，没有重算/编码变换。当前图数技术输入已备，等真实管理回交/Intake后直接专业续发，未等320视图全部完成。
