@@ -28,7 +28,20 @@
 5. Worker 在实际技术工单下以**只读固定数据、尽量不修改 aidata**为优先。先查 aidata 的 `OWNER_INTENT_AND_RATIONALE.md`、`README.md`、`TODO.md` 及现有 API。实在需修改 aidata，必须**新建 aidata 独立分支**；不能修改主分支/既有分支，也不在 observe-iterate 另造制图/取数系统。
 6. 本轮不要求 AI 看图片像素；Owner 看实际图，AI 读图的对应原始/图层结构化数据。无法取得同源数据应如实反馈，但不能因无视觉模型而停工或新增视觉建设。
 
-## 3. 机械与业务边界
+## 3. 当前执行工作区和 Pro 无法提交 GitHub 时的备用成果通道
+
+这部分属于**运行环境与成果运输**，不是新增的业务步骤，也不更改 S1/S2/S3 的专业任务和数据范围。
+
+- **aidata 执行 Codex 工作区**：`/dwdhome/fy/BASE_E6_2`。S2 在此工作区使用现有 aidata；真正执行前由 Codex 核对路径是否可访问、仓库/依赖是否具备、本轮固定 ZIP 实际从哪里读取。工作区路径不等于预计算数据位置。
+- **Pro 无法提交 GitHub 时的 ZIP 备用通道**：
+  - MCP server 一侧可写：`H:\fy\observe-iterate-share`
+  - 操作 Codex 一侧可读：`/dwdhome/fy/observe-iterate-share`
+  - 两端被指定为**同一共享目录的两个路径**；现场仍须核实实际挂载、读写权限以及按文件名可互见，不能因路径写在本指南里就声称已测通。
+- **正常交付仍是 GitHub**。只有该轮 Pro 确实无法把成果提交 GitHub，且复核同轮远端并无匹配的新提交后，才采用共享 ZIP；由 Pro/MCP server 侧产生并写入 ZIP，操作 Codex 在其对应路径读出、校验内容后按既有授权非强推方式提交 GitHub、远端回读，再进入正常 Return/管理接收。
+- 具体包内的真实文件、`work_id/run_id/invocation_id` 关联、同轮远端优先、路径安全与不可假称提交成功，见 [V2 轮次备用 ZIP 合同](V2_ROUND_RECORD_CONTRACT.md)。不在该通道另建常驻轮询、第二状态机、业务图/数据来源或自动签发。
+- 无法确认两端共享或文件实际可读时，应停在**具体的交付缺件**，说明 ZIP 生成/写入/读取/发布分别到哪一步；其他已有授权且不依赖此交付的工作可以继续。
+
+## 4. 机械与业务边界
 
 - 通用 `ROLE_RETURN`、`QUESTION_WORK_RETURN`、Workmap/管理 Gate、手机 Skills 和 GitHub 记录机制保持原样，不建立第二套手机消息调度器。
 - `runtime/config/WORKMAP_BINDING.json` 准备时必须是 `NOT_CONFIGURED`，实际管理签发、读回、intake 通过后才有权转为 ADOPTED。

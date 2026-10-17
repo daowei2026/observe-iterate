@@ -122,6 +122,27 @@ class V2Boundary(unittest.TestCase):
         self.assertIn("U2", first_section)
         self.assertIn("U3", first_section)
 
+    def test_codex_workspace_and_pro_zip_fallback_are_separate(self):
+        chart = (ROOT / "professional/v2/01_AIDATA_CHART_AND_DATA.md").read_text(encoding="utf-8")
+        handoff = (ROOT / "professional/v2/03_EXECUTION_HANDOFF.md").read_text(encoding="utf-8")
+        data = (ROOT / "professional/v2/05_BI01_FIXED_INPUT_DATA.md").read_text(encoding="utf-8")
+        operations = (ROOT / "runtime/operations/BI01_V2_RUN_GUIDE.md").read_text(encoding="utf-8")
+        rounds = (ROOT / "runtime/operations/V2_ROUND_RECORD_CONTRACT.md").read_text(encoding="utf-8")
+        workspace = "/dwdhome/fy/BASE_E6_2"
+        mcp_share = r"H:\fy\observe-iterate-share"
+        codex_share = "/dwdhome/fy/observe-iterate-share"
+        for content in (chart, handoff, data, operations):
+            self.assertIn(workspace, content)
+        for content in (handoff, operations, rounds):
+            self.assertIn(mcp_share, content)
+            self.assertIn(codex_share, content)
+        self.assertIn("不是两份固定 ZIP", data)
+        self.assertIn("先核是否真未提交", rounds)
+        self.assertIn("不要再应用同轮 ZIP", rounds)
+        self.assertIn("非 force 提交并远端回读", rounds)
+        self.assertIn("不能因为", rounds)
+        self.assertIn("不规定一个不存在的专用 MCP API", rounds)
+
     def test_new_run_not_adopted_or_sent(self):
         binding = json.loads((ROOT / "runtime/config/WORKMAP_BINDING.json").read_text(encoding="utf-8"))
         self.assertEqual(binding["status"], "NOT_CONFIGURED")
