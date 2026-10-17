@@ -280,3 +280,9 @@
 - 正式observe仅1次，全部三tiles实查，其他动作0；21:52:26.526927Z实际释放并阳性readback，无pending/UNKNOWN，executor永久退役。
 - fresh核目标远端至e1e181d：没有本R6匹配turn complete/完整原答/两Return；共享目录无新包。依现有附件/ZIP机制已派全新零继承executor核当前回复真尾部，并只收该回复生成的MD和唯一ZIP到既有共享目录。文件存在、bytes/hash、ZIP安全/身份、完整原文与Return/发布/管理采用分别核验；现在尚未宣称已取得包。
 - 专业者在可见原文自述已消费当前图数进入S3，并明确全任务IN_PROGRESS、不申请关闭；具体原文和主张须取得完整实物后验收，不从当前一屏补造字段/完成。原完整U2/U3目标与后继继续。
+
+## 原文件收取的本地审计误判已定向处理
+
+- 首个文件收取executor在任何phone前把唯一空历史Released标题误判成占用，按硬gate exit2零phone回交并退役；从未取得控制，ledger未改，无UNKNOWN Send/文件副作用。未把它当真实占用或Pro故障，未等待一小时或重发业务。
+- root对真实账本140段完成只读审计，确认全terminal；对该精确空标题与真实ACQUIRED/UNKNOWN拒绝做定向核验，固定现有规则的只读校验utility存gitignored artifacts，不改操作/业务合同版本。
+- 新零继承collection2已按原文件目标启动，必须先真实audit→自己登记取得→held阳性readback再任何phone；继续核当前尾部和收实际MD/ZIP。此前业务原文和输入均不变，当前仍不声称已收包/完整Return/管理采用。
