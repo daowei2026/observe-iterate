@@ -116,3 +116,9 @@
 - 按R0002已签条件完成真实Intake/ADOPTED `81533abbced55b3af14a428dec9cbf8353fc8286`，发布后结果树snapshot已重取、reader输入仍一致；对确切提交及原首建base的Workmap check通过，证据在本R的WORKMAP_ADOPTION_CHECK.json。
 - 手机首次remote grace17:58:38.860Z仍思考，最终截止18:06:47.739517Z；该状态与GitHub完整收取分别记录。
 - R0004 `BI01-V2-01-R0004-23dee3405bd9e50d20b28f00` 完整专业载荷已原样prepare/verify，包含原S1—S3 task与Binding、真实采用/报告定位，尚未建执行chat或Send；继续原工具dispatch/BI01检查与实际首发。首轮专业者选择具体窗口、签Worker工单，操作端不代选图、不把准备计有效调用。
+
+## 独立reader手机角色收尾完成，进入专业首发
+
+- R0003最终grace18:08:53.321Z只见已停止思考的开头，按合同关闭手机等待；完整原文仍以实际GitHub收取为准。其后首次角色命名episode于18:13:30.134Z真实看见最终闭合Return、报告附件和完整回复操作行，phone answer更新visible，没有copy全文。
+- 正确Project唯一准确角色名称于18:19:12.506Z实际保存和复验，原chat保留；没有业务Send/新chat或额外Pro调用。本轮接收与后继转移已关闭。
+- R0004完整专业载荷、原样远端读回、Workmap check/dispatch和BI01 pre-dispatch均已通过，仍为NOT_SENT。因共享准入18:24即满一小时、剩余时间不足覆盖完整下一发送episode，当前按现有机制续准入；完成后直接派发R0004，不重开专业规划轮。
