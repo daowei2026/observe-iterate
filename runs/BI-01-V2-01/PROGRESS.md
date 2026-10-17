@@ -311,3 +311,9 @@
 - 本次正式probe开始22:26:50.785Z、最后Projects观察caller完成22:33:24.262Z；精确所需SSID、实际全局最近聊天行和Projects/全部均已有原始证据。25调用、业务输入/Send/重启0，22:34:31.158843Z释放阳性复验，无pending/UNKNOWN，executor退役。
 - 原executor因父packet误加“侧栏不算”而报RECENT_LIST_ROUTE_UNPROVEN，其原报告原样留存。root实际看了18-recent-list的全部三无损tiles：最近分组及真实聊天行已加载，与上次通过的同类UI一致；现行Skill不要求另找非侧栏页。root复核Projects全部三tiles与实际网络事实后另记录healthy，不篡改原executor结论、不宣称它原报healthy，也无额外phone操作。搜索的最近文件混合页仍不计通过。
 - 实际三项完成时间为22:33:24.262Z，60min lease至23:33:24.262Z；不是按主控复核时刻后移。误加限制已在后续packet移除，不改运行合同，不启动一小时故障循环或重复探测。R7原样发送即接续。
+
+## R0007首次发送episode在全文核对处停止，实际未Send
+
+- 正确Project唯一管理chat、fresh Pro最高5/5、输入前full空均有真实证据；首phone22:38:22.587816Z在真实ACQUIRED之后，距ready86.128s，SLO通过。17次正式phone中IME1/Send0，literal传输向量等于原载荷，但输入后ExtractedText=null，不能证明手机全文。
+- 随后22:44:06.419Z同线程observe调用报UiTestAutomationBridge null root node/window.xml缺失，22:44:09.500Z返回；没有把工具错误变成允许Send。原草稿保留，输入完整性UNKNOWN（不是空），没有未知Send/在途工具。22:44:26.971272Z实际释放/固定utility阳性，executor退役；原失败回执保留。
+- 实际Pro调用与完整有效结果仍6，R7原轮未提交，不新建R号/不缩改正文。新零继承executor已仅获现有草稿只读核对/安全重新聚焦授权，IME0/Send0；取得full实际向量后才按原native resume机制恢复后继发送。不因输入未知重打/清空，也不请求Owner逐步操作。完整任务继续。
