@@ -44,9 +44,9 @@ Git方法、旧实物和任务用 `repo`、40位 `commit`、仓库根 `path`、`
 |---|---|
 |work_id|持续工作身份，普通续作不换|
 |goal_ref / plan_ref / full_scope_ref|Owner完整现行目标、由有权管理区分当前安排或历史复核的计划、本段全部范围；不能以最近 remaining 代替完整目标，也不能让已替代旧计划继续发相反行动指令|
-|batch_result|本段应形成的可检查观察/证据/图或后续行动，不能只写“推进I4”|
+|batch_result|本段应形成的可检查观察/证据/图或后续行动，不能只写“推进 S2”|
 |parent|与§1.0同义；由实际来源判断，不强求新用例虚造父合同|
-|question_ids|DR12 I1–I6题号、M-START/M-REASSESS/M-CLOSE/AUDIT或下面受控CASE问题|
+|question_ids|DR12 的 V2 S1/S2/S3、M-START/M-REASSESS/M-CLOSE/AUDIT 或受控 CASE 问题|
 |question_definitions|无CASE时空数组；有CASE时逐项给定义、依据和授权|
 |professional_mode|当前 BI-01 有权专业 Router／实际任务规定的mode；Router 缺失不得从题号推断写权；兼任职责由真实委派确定|
 |focus_ref|首次签发时的集中重点；本段内最新接续按§1.4确定|
@@ -60,7 +60,7 @@ Git方法、旧实物和任务用 `repo`、40位 `commit`、仓库根 `path`、`
 
 **上述字段的完整目标解释：每次实质业务推进必须朝完整做完所属用例当前阶段全部约定工作进行。禁止把单个Case、一组局部观察、一个入口/文件或最近修复清单设为本轮目标和停点。**full_scope_ref保留全部责任；batch_result记录实际交回增量，focus_ref只决定顺序，completion_ref不得用局部交付结算全目标。真实容量或依赖限制如实说明，其他已明确工作继续；不得为每个地图节点创建一轮任务。
 
-BI-01 管理／专业／审查任务的source_reads必须包含当前阶段完整专业目标、Input/Output/Gate、实际已采用成果、Case/Method/As-Of、证据限制及必要完整方法，按[阶段合同](../../professional/source/00_AGENT_CHARTER_AND_STAGE_CONTRACT.md)和[专业材料索引](../../professional/source/INDEX.md)选取。I4须能读取实际观察、挑战和无增量方法，I5制图须保留Pro的业务问题与真实证据，I6后继须保留Owner与Gate权限。当前不存在 CYF 固定 Feature依赖地图的一律必读义务；有证据需要Worker任务时，完整的输入及输出依赖通过[Pro→Worker合同](../../professional/source/04_PRO_WORKER_CODEX_HANDOFF.md)定义。任务索引不得压缩、删除或替代正确专业正文。
+BI-01 V2 的 source_reads 必须包含本轮真实工作步骤对应的完整专业方法、准确的业务 Source/Method/Data/As-Of、适用的图和数据、证据限制及本轮实际已经采用的成果（如确实存在）。从[专业 V2](../../professional/v2/README.md)选取：S1 读取完整目的，S2 读取 aidata 制图与取数要求，S3 读取观察与反证；有 Worker 工单时加读[V2 交接合同](../../professional/v2/03_EXECUTION_HANDOFF.md)。不得将原 V1 结果、Source 或 Gate 冒充本次活动依据。任务索引不得压缩、删除或替代正确专业正文。
 
 普通题内具名子问题优先引用原题，不发新编号。真实必要问题确超出题库时，管理/有权Pro可使用本工作内 `CASE-...`：definition_ref给出业务问题、当前输入、交付、结束/返回和与原义务关系；authority_ref给实际授权；parent_question_id可指相关固定题，确无则null。每个CASE均须定义，未使用的定义不塞入绑定。CASE不自动进入通用core，不扩权限、不豁免其他义务。
 
@@ -68,7 +68,7 @@ BI-01 管理／专业／审查任务的source_reads必须包含当前阶段完�
 
 `FOCUS_FULL` 要求所选正文完整读取，不表示脚本把该来源正文嵌入消息。Owner 要求原文出现在实际消息时，当前任务正文须实际包含全文。已撤完整任务不能继续标为当前执行 `FOCUS_FULL`；追溯使用现有 `PROVENANCE_TRIGGER` 并说明用途。历史正文保留，旧行动不重新取得当前权力。管理已裁定事项由推进者采用，新冲突按原责任处理。
 
-默认专业来源由DR12 的 P00–P07和当前被采用的专业Router/任务Binding共同决定；不能把上游CYF S01–S25当作BI-01必读，也不能让每轮管理者重新发明清单。首次必读负担仍需实际观察，题面不替全文。Owner校准与分支读取 [Overlay02](../overlay/02_Source版本任务授权与人类参与_v0.3.md) §§3–6。
+默认专业来源由 DR12 的 V2 S1/S2/S3 和本次真实管理任务、Binding 共同决定；不能把上游CYF S01–S25当作BI-01必读，也不能让每轮管理者重新发明清单。首次必读负担仍需实际观察，题面不替全文。Owner校准与分支读取 [Overlay02](../overlay/02_Source版本任务授权与人类参与_v0.3.md) §§3–6。
 
 routes每项含recipient_role、recipient_ref、instructions_ref。模板可复用，但占位必须以已有决定/事实填实；新范围或新阶段仍需原授权。技术工单存在不自动指派Worker，也不自动放行专业Gate。
 
@@ -108,7 +108,7 @@ focus_results每项有question_id、completed_ref、remaining_ref、affected_ref
 
 ### 当前专业工作说明：不特设 CYF C 工作段
 
-当前任务及最新合法continuation的权责，继续完全沿用上面的§1.4。BI-01 专业执行的当前阶段、Scope、Output/Gate和必读材料，分别由[六阶段合同](../../professional/source/00_AGENT_CHARTER_AND_STAGE_CONTRACT.md)、[阶段接续](../../professional/source/03_STAGE_HANDOFF_AND_READINESS.md)以及实际Binding提供。不得将CYF的五段Host工作或`CURRENT_C_WORK`当作新的BI-01机器阶段、必填标记或模板。新签工作或旧任务被替代时取有权`current_task_ref`完整正文；同工作合法续作时取最新`continuation_ref`，不得缩小完整范围。原`ROLE_RETURN`和`QUESTION_WORK_RETURN`字段不变。
+当前任务及最新合法 continuation 的权责，继续完全沿用上面的 §1.4。BI-01 V2 专业步骤、Scope、同源图与数据、观察想法及实际专业完成标准来自[当前 V2 合同](../../professional/v2/README.md)和本轮真实 Binding；不以运行协议另造业务阶段。不得将 CYF 五段 Host 工作或 `CURRENT_C_WORK` 当成新的 BI-01 机器步骤、必填标记或模板。新签工作或旧任务被替代时取有权`current_task_ref`完整正文；同工作合法续作时取最新`continuation_ref`，不得缩小完整范围。原`ROLE_RETURN`和`QUESTION_WORK_RETURN`字段不变。
 
 ### 1.5 可直接试跑的完整输入
 
