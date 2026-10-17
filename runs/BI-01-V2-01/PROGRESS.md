@@ -223,3 +223,11 @@
 - 原管理明确同任务ROUTINE_RESULT且无需新reader，真实snapshot A=1917f86→Intake B=b60b836；机械check通过，旧reader保持RECORDED_OLD_INPUT，没有改原输入/指纹。受信前次采用base仍81533，完整Task/Binding/methods未变；仅接收S1及技术输入/已定定位与单位处置，S3未成。R5已消费原CHANGE和累计4 EFFORT，下一累计8，不重置R1。
 - 共享准入实际20:36:15.186Z通过，lease至21:36:15.186Z，24次正式操作、零重启/输入/发送。
 - R6 BI01-V2-01-R0006-fe69b0114945aca3db55f8f2 原样prepare/verify、四文件远端回读、BI01 pre-dispatch与Workmap dispatch均通过；完整目标/原task/Binding、M5原续作与已到Worker图数定位已带入，尚未IME/Send。下一步直接发原BI01-V2-执行，用当前同图数据形成S3，整个run继续。
+
+## R0006 原执行Pro同图数据分析已真实发送
+
+- R0006 `BI01-V2-01-R0006-fe69b0114945aca3db55f8f2` 已发至原 Project 的唯一 `BI01-V2-执行` 聊天；20:55:32.445Z帧证明COMMITTED，20:55:32.938Z观察完成（北京时间04:55:32）。原管理same_work完整S1—S3任务继续，未重开S1。
+- 最高Pro第5档现场确认；全文full/exact读回31,297 UTF-8字节、18,236 UTF-16 units，SHA-256 e501130804373a6dee227e1e31d5f3c47e04292d731c37ca6cf43407d022804f 与原PROMPT一致。IME1、Send1、新chat0、重试0，无pending/UNKNOWN。
+- 控制先登记取得并正向复验，首手机caller20:49:05.750706Z在send-ready后55.26秒，18次调用均在取得后；20:56:31.447645Z实际释放并永久退役。原生图片视觉与额外view_image的程序差异如实保留在SEND_RECEIPT，未改图片字节。
+- 当前正在推理；实际Pro调用累计6，完整且全部Return验证通过结果仍5。下一原线程观察21:05:32.938Z（北京时间05:05:32），共享准入有效至21:36:15.186Z；不重复发送。
+- 本轮已带入管理原续作、真实Intake及完整技术图数，待专业者实际读取并形成对应S3认识。后续按原角色回交和管理复看继续，完整U2/U3任务未完成。
