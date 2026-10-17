@@ -1,15 +1,16 @@
-# 观察迭代专业 Agent V2 — 当前唯一专业入口
+# 专业 Agent V2：当前业务起点和方法索引
 
-状态：**V2 已发布为候选专业方法，未发生 V2 真实 Owner GO / Pro 派发。**
+**当前范围固定：rb / i / hc + 已经提前验算的两份真实数据包。** 本轮不重算一版结果；发现具体数据问题可以核查和反馈。管理/执行/Worker/Owner 角色依原长程机制分工。
 
-阅读顺序：
-1. [00 目标和三步业务流程](00_PURPOSE_AND_THREE_STEP_FLOW.md)
-2. [01 使用 aidata 形成图和数据](01_AIDATA_CHART_AND_DATA.md)
-3. [02 观察想法、反证和反馈](02_OBSERVATION_IDEAS_AND_VALIDATION.md)
-4. [03 工作交接和异常处置](03_EXECUTION_HANDOFF.md)
+阅读顺序（真实专业任务不得只看目录）：
 
-本目录取代旧 `professional/source/00—07` 的 I1–I6 专业工作组织。旧 source 文件已从 V2 工作树删除；原分支保留历史，但不提供 V2 授权、任务完成条件或当前路由来源。其他业务/方法 Source 需按真实业务工作指定、核实，不在本改版凭空确定 U3 四方面的算法定义。
+1. [00：业务上要拿到什么，以及 S1/S2/S3](00_PURPOSE_AND_THREE_STEP_FLOW.md)
+2. [04：原 I1/I2/I3 已有的业务认识与设计/方法来源](04_BI01_BUSINESS_BASELINE.md)
+3. [05：本轮固定的两份 ZIP、全部数据文件、所在位置、可用性与差异](05_BI01_FIXED_INPUT_DATA.md)
+4. [01：只使用 aidata 画图、给 AI 图对应数据，不要求 AI 视觉看图](01_AIDATA_CHART_AND_DATA.md)
+5. [02：观察想法、反证与可供 Owner 按图核验的结果](02_OBSERVATION_IDEAS_AND_VALIDATION.md)
+6. [03：正常角色与工具问题的处理边界](03_EXECUTION_HANDOFF.md)
 
-V2 第一轮：`work_id=BI-01`，预备 `run_id=BI-01-V2-01`，观察品种暂限 `rb / i / hc`。全新 run 不接收旧 run 的 Gate、执行结果、任务、tokens、聊天或在途状态。旧数据文件**可以作为独立取得并校验身份后的输入原件**，但这不等于采纳旧专业结论。
+旧业务 Agent 的 I1–I6 阶段合同和旧实际运行记录已从 V2 工作树清理；业务知识与输入源在 04/05 以准确来源恢复，而旧 Pro 结果、Gate、聊天、in-flight 不继承。
 
-本版本改的是**业务应该做什么**；谁做仍沿用现有管理 Pro、专业 Pro、Worker、机械主控、Owner 的原权限，不在这里另发明角色系统。实际阶段派发和 Gate 仍必须以本次真实管理任务和有权回交为准。
+状态：`V2_PREPARED_NOT_STARTED`。本次方法与输入固定不等于实际已派发新 Pro 任务或取得正式业务判断。可在新的 Owner 真实 GO 后按 V2 运行指南启动。
