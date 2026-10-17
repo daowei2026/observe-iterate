@@ -1,24 +1,10 @@
-# 观察迭代专业 Agent 当前执行入口
+# 专业 Agent V2 当前入口
 
-status: `PARTIAL_SOURCE_BINDING`
+status: `V2_PREPARED_NOT_STARTED`
 
-## 已有专业来源
+- [V2 00：完整观察目的、S1/S2/S3](v2/00_PURPOSE_AND_THREE_STEP_FLOW.md)
+- [V2 01：aidata 画图与同源数据](v2/01_AIDATA_CHART_AND_DATA.md)
+- [V2 02：观察想法、反证及回看](v2/02_OBSERVATION_IDEAS_AND_VALIDATION.md)
+- [V2 03：与已有角色/Worker 的交接](v2/03_EXECUTION_HANDOFF.md)
 
-按任务实际需要读取：
-
-- `source/00_AGENT_CHARTER_AND_STAGE_CONTRACT.md`
-- `source/01_I1_I3_PROFESSIONAL_CONTRACT.md`
-- `source/02_I4_OBSERVATION_AND_CHALLENGE.md`
-- `source/03_STAGE_HANDOFF_AND_READINESS.md`
-- `source/04_PRO_WORKER_CODEX_HANDOFF.md`
-- `source/05_ROLE_GATE_AND_HANDOFF_CONTRACT.md`
-- `source/06_MANAGEMENT_AND_DISPATCH_REQUIREMENTS.md`
-- `source/07_PROFESSIONAL_OPERATION_BOUNDARY.md`
-
-准确来源及提取边界见 `source/INDEX.md`。
-
-## 当前限制
-
-- 00—08 已提供阶段、角色、Gate、观察、Worker 工单和回交要求。
-- 统一 `TASK_ROUTER`、跨实例稳定专业方法、表达复杂度、完整独立审查 Harness 等尚未形成，保持 `MISSING`。
-- 当前任务、实际成果和续作必须由真实管理决定与 Return 动态提供，不从专业入口静态编造。
+新的 run 身份为 `BI-01-V2-01`（仅准备）。尚无真正的 Owner GO、管理签发、已采用 Binding 或专业结果。V1 `professional/source/00—07` 仅历史，不可作为新 run 当前阶段依据。

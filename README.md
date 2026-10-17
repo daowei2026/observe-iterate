@@ -1,25 +1,14 @@
-# 观察迭代 Agent
+# 观察迭代 Agent — 专业 V2 候选（尚未正式运行）
 
-这是观察迭代专业 Agent 的长程运行仓库候选。第一轮以 CYF 的“专业 Agent 长程运行”体系为母版：保留通用运行机制，将仅声明性使用 Mission A/B/C 的地方改成角色化表达；真正需要专业内容的地方改为读取 `professional/` 和当前有权任务。
+V2 业务流程：**S1 确定观察对象 → S2 使用 aidata 形成真实图及对应数据 → S3 基于图和数据提出观察想法**。S3 的新疑问可返回 S2 继续观察。这与旧 I1–I6 是替代关系，而非再加一套阶段。
 
-```yaml
-status: candidate_scaffold
-validated_runnable: false
-owner_acceptance: pending
-real_phone_pilot: PRIOR_EXPERIMENT_STOPPED_NEW_RUN_NOT_STARTED
-professional_interface_completeness: PARTIAL
-```
+## 当前 V2 入口
+- [专业方法及完整业务目标](professional/v2/README.md)
+- [新运行预备区 BI-01-V2-01](runs/BI-01-V2-01/README.md)：`PREPARED_NOT_STARTED / NO_SEND`
+- [全新运行启动方法](runtime/operations/BI01_V2_RUN_GUIDE.md)
+- `runtime/`：继续使用已有的 GitHub 轮次、角色回交、Workmap、派发和手机运输协议。
+- 统一图与数据工具：[aidata](https://github.com/daowei2026/aidata)；不在本仓复制另一套制图或切片系统。
 
-## 当前内容
+首轮品种暂限 rb、i、hc；先看 U2 共同机会簇位置是否合理，再核这些位置上 U3 四个方面能否辨别品种好不好做。业务字段/方法必须引用本次有效 Source，不因名称猜方法。
 
-- `runtime/`：长程运行规则、协议、工具、配置和发布候选。
-- `professional/source/`：只提取原 00—08 中与观察迭代专业 Agent 直接相关的内容；不复制其它业务资料。
-- `professional/interfaces/`：运行系统消费的专业接口；没有来源支持的部分保持 `MISSING`。
-- `runs/BI-01-RESTART-01/`：下一次独立新运行的预备工作面；不继承旧 I4/Gate/聊天。下一次真正管理才形成地图、当前任务及 R 轮。运行入口见 `runtime/operations/BI01_REAL_RUN_V1.md`。
-- `migration/`：CYF 基线、角色—文件—依赖分析和迁移状态。
-
-## 边界
-
-主控只处理身份、来源、派发、回交和合法接续，不生成专业判断。管理 Pro 负责完整目标、任务签发、Gate 接收和后继。执行 Pro 负责观察、挑战、证据、结果及原任务内续作。Worker Codex 只承担有权计算、制图或工程工作。
-
-当前 repository 不是已部署系统。测试通过只证明相应结构与代码路径，不证明专业判断、手机发送、真实采用或端到端运行。
+`professional/source/` 与 `runs/BI-01-RESTART-01/` 是 V1 历史，仅保留可追溯性，不是 V2 的活动专业源或已完成成果。新 run 的 Owner GO、管理任务、聊天、tokens、轮次及验收需要真实另行建立。**本次提交仅准备可开跑的版本，不授权发送真实 Pro 任务。**

@@ -1,3 +1,5 @@
+> **V1 历史合同，不再用来派发 V2**。当前 V2 轮次身份请使用 [V2_ROUND_RECORD_CONTRACT.md](V2_ROUND_RECORD_CONTRACT.md)。
+
 # BI-01 GitHub 轮次：Pro Rnnnn 与手机 Episode 分开
 
 这是下一次真实运行的记录合同，并非本次已运行的轮次。每个 ChatGPT Pro 管理/执行/审查的**实际调用**记作 R0001、R0002……；失败但已证实零发送副作用可沿原 R 重试，未知发送不重试。每个 R 有独立 invocation_id、assignment_token、round_marker；当前机械配置固定 `work_id=BI-01` 表示同一业务意图，和本次全新 `run_id=BI-01-RESTART-01` 必须分开。不同 run 绝不能混用旧 invocations/tokens/chats/ledger。手机 Episode、Codex step、Commit 不算 R。旧 I4 第一至四段不能改成新 run 的 R0001—R0004。

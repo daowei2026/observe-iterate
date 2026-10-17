@@ -1,5 +1,5 @@
-# Runtime workspaces
+# Run 工作面
 
-本仓库初次落地不复制旧 `BI-01-IT-01` 的 CURRENT、PROGRESS、ROUTES、ops、returns 或 tasks。
+当前 V2 唯一新运行预备区：[BI-01-V2-01](BI-01-V2-01/README.md)。其实际 Owner GO、管理地图/任务、Rnnnn、Workmap 采用都尚未发生。启动入口：[V2 run guide](../runtime/operations/BI01_V2_RUN_GUIDE.md)。
 
-下一次唯一预备工作面见 [BI-01-RESTART-01](BI-01-RESTART-01/README.md)。真正的 00 地图、01 任务、R 轮、管理接收和 Workmap Binding 均待下一次 Owner GO 及真实管理 Pro 回交后形成，禁止提前造业务结果。入口见 [启动/轮次/地图合同](../runtime/operations/BI01_REAL_RUN_V1.md)。
+旧 `BI-01-RESTART-01/` 仅历史审计，不继承其已完成业务、旧 Gate、聊天、预算、任务或在途。
