@@ -151,3 +151,13 @@
 - frame19:18:11.181Z、观察完成19:18:14.323Z，准确原Project、本轮invocation/token/role仍正在思考/STOP，无完整回复、错误或加载圈。只读1次、业务变更0、未重发；下次线程检查19:28:14.323Z，原思考起点18:36:26.043Z保持。共享网络lease19:27:42.186Z到期，按原共享机制续准入。
 - 已真实取得专业部分提交：c1599ffa的FIXED_INPUT_MEMBERS.csv、46caec2的S1_WINDOW_SELECTION.csv、5620595的WORKER_AIDATA_CHART_ORDER.md，均在本run artifacts/professional-R0004/。专业者明确47个请求窗口与全部304候选入口，工单BI01V2-R0004-AIDATA-FIXED-01，供aidata图与同图数据施工；未据此提前签完整回交或业务通过。
 - 实际有限Worker工单已向本机既有Codex目标入队，message 01a14b4c-a508-7693-95a6-48f9c5e49446；当前仍待实际启动/采用核验，不能以队列接受冒充执行。保留旧任务隔离，不重复环境测试、不重算固定结果。完整有效Pro结果仍3，R4完整结果到达后继续累计4复看与真实业务施工。
+
+## R0004 原文收齐、Worker真实施工与管理R0005准备
+
+- 原专业完整回交6da4228已实际收取并原样归档到本R的FULL_RESPONSE.md与两份Return；S1选择/设计字段映射/原数据发现及具名工单已成，图数与图数对应S3尚未取得。原文37,049字节，SHA-256 0c95743ca09496d95790a8a826ef763159ff873868f7e2b4216b909df412d7ad。
+- 原派发Binding selector为L124-L177，原Return使用同commit/path的#question-work-binding。解析内容相等，但实际association/after-return因字面差异失败，原件保留、不冒称通过。详见RETURN_LOCATOR_ISSUE.md、COLLECTION_RECEIPT.json及CONTROLLER_DECISION.json。
+- 原Workmap check因专业artifacts结果树变化实际报INTAKE_STALE，reader输入仍bc415dab…且资格RECORDED。按正式接线合同定向管理接收，不伪造刷新Intake。最初R5窄补交草稿从未IME/Send，已完整归档到provenance/drafts/R0005_RETURN_REPAIR_NOT_SENT/；实际下一R5使用全新identity走原decide/M-REASSESS管理路线。
+- 实际R0005为BI01-V2-01-R0005-e843decd6d255833e9d12e4a，完整Owner目标/原任务/新原答/具名问题及在途事实已prepare/verify、四文件发布回读4e568f7，BI01 pre-dispatch通过；目前尚未IME/Send，手机角色身份收尾后直接派发。实际Pro调用4次，完整原文4份，其中全部Return检查通过3份，R4窄定位差异待有权处置；原R1投入起点不清零。
+- Worker工单BI01V2-R0004-AIDATA-FIXED-01已19:28:10.266094Z真正启动并采用，实际权限与xhigh确认，有连续工程动作。已核40个固定输入成员；本机B外层历史hash与Pro本次外层不同、成员匹配的具体证据保留并将随正式技术回交给Pro，不换源、不重算。
+- Worker已按原工单在aidata新独立codex/bi01v2-r0004-fixed-input分支补必要固定输入接入、原报价轴和同图导出，开始回归及真实节点生成；保护原分支。当前反馈320个视图配置和47项请求映射，2个新增边界测试及24个原展示合同测试通过；配置数量不是图数验收。主Case本地6价格面板/144数据源/2,240源行引用结构检查已过，但Bokeh实际会话连接丢失尚在修复，未报合格图交付。
+- 共享准入已按真实故障恢复续期，原phone remote grace19:31:48Z到期；完整原文收取和手机尾部/角色命名分别处理。全run ACTIVE，持续推进Worker、管理接收及后续专业图数消费，不以S1或本次管理回复作为终点。
