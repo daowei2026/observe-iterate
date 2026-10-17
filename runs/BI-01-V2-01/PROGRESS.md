@@ -35,3 +35,10 @@
 - `2026-10-17T15:35:00.696Z`（北京时间23:35:00）现场仍为正在思考/STOP，无完整回答或大加载圈；单次只读观察在SLO内完成。
 - 本轮COMMITTED、原思考起点和去重状态保持；无重发、输入或导航。管理地图/专业Binding/Intake尚无实际产出。
 - 下次线程检查 `2026-10-17T15:45:00.696Z`。本run继续，不将等待或首轮局部状态误记为终止。
+
+## R0001 完整回交与采用接续
+
+- 第三次手机观察 `2026-10-17T15:46:21.648Z` 仍思考。其后发现最终远端 `10559cdb8a01b003d3d5e56a06a191fdcc55d256` 的同轮 turn complete，完整回答、两份Return、管理实物和双Binding实际齐备。
+- schema、原派发/token、BOOTSTRAP、锚点与关联检查通过；本轮正文按 remote_verified 取得，不重复copy或ZIP。手机首次远端完成宽限检查 `15:57:53.639Z` 仍无回答；最终宽限截止 `16:05:55.141980Z`，此手机状态与GitHub交付分别保留。
+- reader-input的真实local snapshot已生成。独立读者载荷通过Overlay12 prepare/verify，但实际BI01 gate依赖复现首次reader须先ADOPTED的机械循环；详细证据见 `provenance/controller/WORKMAP_FIRST_READER_GATE_ISSUE.md`。未改工具/状态、未假造reader/Intake，未发生R0002。
+- 按管理已经签署的窄回交路线处理机械缺口，然后继续真实独立reader、Intake与完整S1—S3专业首发；没有新的Owner授权缺口，整个运行继续。
