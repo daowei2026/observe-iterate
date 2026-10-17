@@ -14,4 +14,4 @@
 
 预备 run：[BI-01-V2-01](../../runs/BI-01-V2-01/README.md)，目前无 Owner GO、管理任务、Binding、聊天或 Pro 轮次。运行入口：[V2 启动指南](../operations/BI01_V2_RUN_GUIDE.md)。先由真正 M-START BOOTSTRAP 开始，管理实际签发地图、任务、Binding 和 Workmap Intake 后才进入专业派发。
 
-图与数据一律使用 aidata；临时小范围验算仅是缺少正式结果的有条件例外。通用手机、网络、定时和 GitHub 运输继续使用 cgpterm Skills。
+本轮固定已有 [rb/i/hc 两份预计算 ZIP](../../professional/v2/05_BI01_FIXED_INPUT_DATA.md)，原 [I1–I3 业务积累](../../professional/v2/04_BI01_BUSINESS_BASELINE.md)必须作为新 run 业务 Source 读取，不把旧 Gate 当结果继承。Owner 看 aidata 图，AI 只读同图真实结构化数据，暂不启用视觉看图；不再重新验算输入。aidata 优先不改，实需修改时仅在 aidata 新建分支实施。通用手机、网络、定时和 GitHub 运输使用 cgpterm Skills。
