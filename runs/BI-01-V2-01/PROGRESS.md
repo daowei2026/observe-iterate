@@ -196,3 +196,9 @@
 - 实际5e05e1ed2f6aff18f243f8c901ead5165591024b签发DECISION及WORKER_RETURN_LOCATOR_ORDER，接收S1与a9ed160修正首图输入，要求先消费已到图数并与剩余施工交错；完整R5原答和Return尚未交齐，不提前计完整结果。
 - 管理具名授权原操作Codex以本单Worker容量修现有两个Binding引用比较消费者，严格同repo/commit/path、真实selector解析唯一完整同Binding才可等价；原R4原件与旧错误保留，不再派Pro仅重写selector。root实际开始该窄代码任务，不计新R；aidata原Worker唯一在途施工继续。
 - 管理明确ROUTINE_RESULT且无需新独立reader，仍须以81533...为上一采用基准、真实两提交snapshot/Intake/check/dispatch后才能普通专业续发。旧reader输入原件不改，本决定未被伪记为已采用。
+
+## 定位修补已发布并真实回用R4，继续采用和专业消费
+
+- 原管理具名窄工单的代码7378966已发布，六文件fresh远端原字节回读通过；原policy和操作版本不变。16直接BI01回归及2项Workmap一致性通过，旧A/B/C/旧fixture/启动NOT_CONFIGURED断言的问题与原基线复现分别记录，不称全仓测试绿色。
+- 从实际发布源码对真实R4原件回用，两条关联路径和BI01 after-return已通过；原文/两Return与378d476完全相同，旧字面比较BINDING_MISMATCH仍留历史。完整有效结果现累计4份，实际Pro调用仍5次；没有重发R4或新增本地工程R。
+- 技术回交见reviews/management-R0005/WORKER_RETURN_LOCATOR.md及LOCATOR_R4_REPLAY.json。下一步收齐本R5原答、两Return，依法真实Intake/check/dispatch后把当前首图包交原执行Pro；aidata Worker其余图数持续，S3及全目标尚未完成。
