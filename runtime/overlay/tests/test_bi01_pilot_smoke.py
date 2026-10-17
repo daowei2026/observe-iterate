@@ -114,7 +114,7 @@ class BI01Smoke(unittest.TestCase):
         self.assertEqual((prepared["role"], prepared["mode"], prepared["stage"]),
                          ("management", "M-START", "BI01"))
         self.assertIn("U2 共同机会簇位置/成员是否合理", prepared["message"])
-        self.assertIn("已提前验算且固定", prepared["message"])
+        self.assertIn("提前验算且固定", prepared["message"])
         self.assertIn("04_BI01_BUSINESS_BASELINE.md", prepared["message"])
         self.assertFalse(prepared["sent"])
         self.assertFalse(prepared["semantic_review_passed"])
