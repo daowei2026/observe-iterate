@@ -345,3 +345,10 @@
 - root回执state补正提交688487d后，实际7378966 after-return通过，原Pro32,050 bytes/两Return全未改；完整有效结果累计7（实际调用7）。原字段缺失失败及operator本地验证参数误用均保留，不归咎Pro、不补发业务。
 - 原管理已明示ROUTINE_RESULT/no new reader，实际snapshot A=688487d，fingerprint62b16eaf...，reader fingerprint bf5deb0f...；旧R3报告/input/fingerprint保持历史原件，不冒称读过R7。最近真实采用base用b60，原完整Task/Binding/blob442c47...和methods不变。
 - 当前写入的真实Intake绑定M7 actual decision_report blob95e542...、实际source A、Task及方法，完整接收只限M7原资格。须实际check/dispatch和远端回读通过才宣称采用；第一RESULT责任仍未消费，等原后继冻结落实。phone grace终点23:22:34.475733Z另记，全文来源GitHub不是手机copy。
+
+## R0007真实采用完成，R0008普通专业续作已冻结
+
+- 实际Intake B=128586e（A=688487d、前base=b60b836）机械check及五文件远端原字节回读通过；M7原#plan/#continuation/#time-boundary全部作为下一轮准确输入，Task/Binding不变。首RESULT责任现在由真实M7+Intake+冻结R8消费；旧MD-01/effort4不重派，累计起点R1、下一EFFORT8保持。
+- R8唯一调用BI01-V2-01-R0008-2f89478c8810068f99b16f76，NORMAL/same_work，原执行chat；四文件2b0e4a7已推送/fresh原字节核同。原稿29,285 UTF8 bytes/16,362 UTF16 units、SHA564f33aa...，BI01及以当前真实Intake128586为base的普通专业Workmap dispatch均PASS；实际仍未输入/未Send。
+- 原手机宽限未重置：23:28:11.179568Z caller、frame23:28:10.064Z/server完成23:28:10.845Z，原管理回复已停止思考无STOP，但仅见开头/未见闭合尾部，分类reply_partial、phone unavailable_after_grace。当前完整原文由原GitHub已核验，未copy手机正文。此前fresh actor额外大小写断言零phone误停已释放，新actor单次observe、无其他动作、释放阳性退役；实际迟到336.704秒不隐去。
+- 共享60min准入按原机制续验后立即发送R8。工作继续使用既有固定51包图数和原样CSV，进一步检验支持/反例、逐字段时点资格及四束业务增量；完整Goal仍ACTIVE，未把首批结果或管理接收当终局。

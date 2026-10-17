@@ -1,0 +1,107 @@
+{
+  "checked_at": "2026-10-17T23:30:18.582718+00:00",
+  "policy_commit": "11626f64bc64ae21e52108b2e47fafbbc1023615",
+  "actual_gate_code_commit": "73789662405ec2bfb5c516f849de3450d1160593",
+  "prepared_commit": "2b0e4a74f35c3244fb192970974b0108b35849a6",
+  "four_prepared_files_remote_exact": true,
+  "coordinator_prepare_verify": "PASS",
+  "bi01_pre_dispatch": {
+    "business_gate": false,
+    "check": "pre-dispatch",
+    "errors": [],
+    "next_external_checks": [
+      "OWNER_START_AND_ROLE_AUTHORIZATION",
+      "ACTUAL_MCP_PHONE_CONTROL_AND_UNIQUE_RECIPIENT",
+      "LOCAL_SCHEDULER_SEND_DEDUP",
+      "OVERLAY12_EXACT_PAYLOAD_AND_RECIPIENT_VERIFY"
+    ],
+    "ok": true,
+    "recorded_send_state": "NOT_RECORDED",
+    "round_id": "R0008",
+    "sent": false
+  },
+  "workmap": {
+    "schema": "workmap-check/v2",
+    "scope": "bi01",
+    "exact_input_commit": "2b0e4a74f35c3244fb192970974b0108b35849a6",
+    "ok": true,
+    "check_kind": "DISPATCH_PREFLIGHT",
+    "errors": [],
+    "reader_qualification": "RECORDED_OLD_INPUT",
+    "external_links_require_connector_or_checkout_readback": [
+      "http://192.168.11.40:6244/graph/cae/5781/report",
+      "http://192.168.11.40:6244/graph/cae/5785/report",
+      "http://192.168.11.40:6244/graph/cae/5817/report"
+    ],
+    "snapshot": {
+      "observed_commit": "2b0e4a74f35c3244fb192970974b0108b35849a6",
+      "observed_binding_blob": "4ccccde14732478070462b565d8844c8f6cbac2f",
+      "scope": "bi01",
+      "material": {
+        "schema": "workmap-snapshot/v2",
+        "scope": "bi01",
+        "binding": "310c3c5065c46cbfcbc9ee437ccd25dafb16868f184d963e8d2d56d108bf9691",
+        "reader_input": {
+          "schema": "workmap-reader-input/v2",
+          "scope": "bi01",
+          "overview": {
+            "runs/BI-01-V2-01/README.md": {
+              "__preamble__": "0a2750624c5320d3d1c78f8c0cbb44c4fbee8f1fb12565eec2fafa1ae72933ef",
+              "common": "3662f1fd90e081cbe80fbc3e84adc04fe5f87e30a4294374d0b948e3ff95241d",
+              "bi01": "c725718e2afd1cd126e016ff99c136b0ea0ee2d774105f31142078962c25361e"
+            }
+          },
+          "map": {
+            "runs/BI-01-V2-01/00_长程推进地图.md": "87f922e41db60aa84205f0bb9485702d84ff4928"
+          },
+          "task": {
+            "runs/BI-01-V2-01/01_当前任务.md": "442c47cc30226796a16b6f7420af9748d0d1e00e"
+          },
+          "owner_sources": {
+            "runs/BI-01-V2-01/OWNER_START.md": "39c61757a5cdb2ea483055baeaf91ded819138e4",
+            "professional/v2/00_PURPOSE_AND_THREE_STEP_FLOW.md": "e6c8d92022a3943b68e89a05fdd74e12039e68cc"
+          },
+          "rules": {
+            "professional/v2/00_PURPOSE_AND_THREE_STEP_FLOW.md": "e6c8d92022a3943b68e89a05fdd74e12039e68cc",
+            "professional/v2/01_AIDATA_CHART_AND_DATA.md": "65186438104243089a2020ddebc5088b495f2fbf",
+            "professional/v2/02_OBSERVATION_IDEAS_AND_VALIDATION.md": "dd3503dae81f6a5d79cbbda7ef722320935192c1",
+            "professional/v2/03_EXECUTION_HANDOFF.md": "da8c20a574a90e0c4b543b92430c33bc0a87fda0",
+            "runtime/dual_route_execution/DR14_QUESTION_WORK_CONTRACT.md": "9743365d20054014efa3a120c568c2512ead284f",
+            "runtime/overlay/08_自然语言运行提示_v0.3.md": "ea47ff1901642e28f3a6f14bdabf0b08845020a3",
+            "professional/v2/04_BI01_BUSINESS_BASELINE.md": "2447f6f96fe4e57acf1ec5e8ad330c7744e401fa",
+            "professional/v2/05_BI01_FIXED_INPUT_DATA.md": "0c0fbad750fc71f41a2a0172a4ec80397e6c0502",
+            "professional/v2/06_U2_U3_DESIGN_SOURCE_MAP.md": "1dd1ce81e0801791667ff5dfda9d61935eaae1a5"
+          }
+        },
+        "result_trees": {
+          "runs/BI-01-V2-01/artifacts": "858cc193d5cc37dba5e1bbcba5bdbb5bde037038355cc44112974e99d3bf700c",
+          "runs/BI-01-V2-01/reviews/independent": "38ada502cd92c623f5f0808714e4770dc5ab0d0145fe58b1ebb137ec6290c8ea"
+        }
+      },
+      "fingerprint": "62b16eafb8b792696f71b3ebf7e2ac1105ac1f4c0d171a9caea76c571382d1f2",
+      "reader_fingerprint": "bf5deb0f1a5fcfec1c84ea9c2fe0d734a57bf536cae1a58ccbaf176ccea3a055",
+      "task_payload_sha256": "9c52e0f654db2cb9362cd6bc1a2000d94e56bfd37058e658f7b1469a0b4422dd"
+    },
+    "next_action": null,
+    "limits": "不证明业务正确、审查实际独立、远端已同步或本地调度已部署；输入记录真实性由执行者与审查承担。"
+  },
+  "actual_live_not_sent_observation": {
+    "observed_commit": "2b0e4a74f35c3244fb192970974b0108b35849a6",
+    "task_id": "BI01-V2-S123-OBSERVATION-01",
+    "task_blob": "442c47cc30226796a16b6f7420af9748d0d1e00e",
+    "task_payload_sha256": "9c52e0f654db2cb9362cd6bc1a2000d94e56bfd37058e658f7b1469a0b4422dd",
+    "state": "NOT_SENT",
+    "evidence": {
+      "observed_at": "2026-10-17T23:28:20.380444+00:00",
+      "actual_sending_endpoint": "configured production MCP via mandatory isolated executor; R0008 executor not created or authorized yet",
+      "invocation_id": "BI01-V2-01-R0008-2f89478c8810068f99b16f76",
+      "ime_calls": 0,
+      "send_calls": 0,
+      "unknown_send": false,
+      "native_scheduler_revision": 92,
+      "source": "actual root dispatch ledger and scheduler; sole current actor grace2 read-only/no-send"
+    }
+  },
+  "whole_goal": "ACTIVE_NOT_COMPLETE",
+  "business_gate": false
+}
