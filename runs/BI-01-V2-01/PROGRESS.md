@@ -184,3 +184,15 @@
 
 - Worker代码e59fd90严格接通small Zig浮点字面整数UTI与KLine整数键，原字段/固定结果保留，43项回归通过；原main未改。首图已有validation revision2逐坐标核验与新146 CSV包8dd882...，已在artifacts/worker-R0004发布；旧144及ce68...146包保留有缺口的历史版本。
 - 全320视图及51请求真实会话正在按新版本重验，旧计数不沿用，尚无最终Worker回交或专业S3接收。本次管理R5仍等待真实回答，整个run继续。
+
+## R0005 第二次到期检查，修正版继续逐视图验收
+
+- frame20:12:42.784Z、观察完成20:12:46.678Z，准确原Project、本轮invocation/token/role匹配，仍正在思考/STOP，无完整回复、错误或大加载圈。正式只读1次，其他动作0，无pending/UNKNOWN，executor已释放及退役。
+- 原思考起点19:52:19.530Z保持；下次线程检查20:22:46.678Z（北京时间04:22:46）。观察当时尚无本轮完整管理回交，未另发或重发；其后实际发现管理部分提交5e05e1e，完整原答/Return/turn complete尚待。
+- Worker修正版本重新累计119/320视图的坐标/来源核验，17/51请求真实会话通过，其中三项后验挑战保留原标识；五个主Case R02/N/01/N/02/R03同图原值及关键端点/当前N引用已复核，逐层范围/可见性/合法空原因正在入索引。旧代码通过计数不计作当前结果。全工单及S3仍未完，run继续。
+
+## R0005 管理部分实物已到，root按具名工单修定位消费者
+
+- 实际5e05e1ed2f6aff18f243f8c901ead5165591024b签发DECISION及WORKER_RETURN_LOCATOR_ORDER，接收S1与a9ed160修正首图输入，要求先消费已到图数并与剩余施工交错；完整R5原答和Return尚未交齐，不提前计完整结果。
+- 管理具名授权原操作Codex以本单Worker容量修现有两个Binding引用比较消费者，严格同repo/commit/path、真实selector解析唯一完整同Binding才可等价；原R4原件与旧错误保留，不再派Pro仅重写selector。root实际开始该窄代码任务，不计新R；aidata原Worker唯一在途施工继续。
+- 管理明确ROUTINE_RESULT且无需新独立reader，仍须以81533...为上一采用基准、真实两提交snapshot/Intake/check/dispatch后才能普通专业续发。旧reader输入原件不改，本决定未被伪记为已采用。
