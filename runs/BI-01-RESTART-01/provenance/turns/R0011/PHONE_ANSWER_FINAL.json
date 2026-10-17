@@ -1,0 +1,42 @@
+{
+  "schema": "bi01-phone-answer-final/v1",
+  "run_id": "BI-01-RESTART-01",
+  "round_id": "R0011",
+  "invocation_id": "BI01-RESTART-01-R0011-afd3d0d18eeb71e22dd435b021194733",
+  "marker": "[BI01-RESTART-01-R0011-afd3d0d18eeb71e22dd435b021194733]",
+  "project": "细节叙事生成_金标",
+  "physical_chat": "BI01-RESTART-01-I6-ACTION-CLOSE",
+  "scheduler_classification": "answer_complete",
+  "completion_source": "github_turn_complete",
+  "phone_answer_state": "unavailable_after_grace",
+  "grace_until": "2026-10-17T04:17:55Z",
+  "final_grace_observation_at": "2026-10-17T04:19:29.885Z",
+  "fresh_frame": 1792210766556,
+  "phone_observation": {
+    "exact_marker_count": 2,
+    "assistant_body_visible": true,
+    "thinking_state_text": "已停止思考",
+    "stop_visible": false,
+    "composer_empty": true,
+    "completion_action_row_visible": false,
+    "closing_tail_visible": false,
+    "error_visible": false,
+    "visible_last_paragraph": "因此触发 CONTINUATION_MISMATCH；原 I6 专业成果本身、通用 after-return 检查和三个原始专业 commit 均未被否定。"
+  },
+  "remote_turn_complete": {
+    "commit": "10d9ef61eab458257c2c45b44040aaecfde46b45",
+    "message": "turn complete BI01-RESTART-01-R0011-afd3d0d18eeb71e22dd435b021194733",
+    "observed_at": "2026-10-17T04:07:55Z"
+  },
+  "reply_body_capture": {
+    "state": "blocked",
+    "first_attempt_at": "2026-10-17T04:22:49.517Z",
+    "blocker": "target_app_not_foreground_then_uninspectable_system_keyguard",
+    "capture_stage": "before-capture-arm",
+    "capture_id": null,
+    "copy_calls": 0,
+    "take_calls": 0,
+    "full_response_path": null
+  },
+  "limits": "远端完成使调度器结束 phone-answer 等待，但完整原答尚未捕获，FULL_RESPONSE.md 不存在；after-return 与后继派发仍受阻。"
+}
