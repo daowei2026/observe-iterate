@@ -9,6 +9,7 @@
   "shared_overview_anchors": ["common"],
   "owner_sources": [
     "runs/BI-01-RESTART-01/OWNER_START.md",
+    "runs/BI-01-RESTART-01/OWNER_DECISION_RESPONSE_R0008.md",
     "professional/source/00_AGENT_CHARTER_AND_STAGE_CONTRACT.md"
   ],
   "rule_paths": [
@@ -37,9 +38,10 @@
       ]
     }
   },
-  "management_decision": "runs/BI-01-RESTART-01/reviews/MANAGEMENT_GATE_DECISION_R0008.md",
+  "management_decision": "runs/BI-01-RESTART-01/reviews/MANAGEMENT_OWNER_DECISION_AND_I6_START_R0009.md",
   "owner_decision_request": "runs/BI-01-RESTART-01/reviews/OWNER_DECISION_REQUEST_R0008.md",
-  "question_work_binding": "runs/BI-01-RESTART-01/bindings/QUESTION_WORK_BINDING_I5.json",
-  "question_work_binding_status": "COMPLETED_HISTORICAL_NOT_FOR_DISPATCH",
-  "note": "R0008 passes G5, closes I5 and directly presents the A/B decision to Owner. The current task is an Owner decision request, not a professional dispatch. The I5 Question Work Binding remains only as immutable history and must not be sent again. No I6, professional task, Worker, Owner approval, independent review or production qualification is claimed. After the Owner replies, management must create the actual I6 task and binding before any further professional dispatch."
+  "owner_decision_response": "runs/BI-01-RESTART-01/OWNER_DECISION_RESPONSE_R0008.md",
+  "question_work_binding": "runs/BI-01-RESTART-01/bindings/QUESTION_WORK_BINDING_I6.json",
+  "question_work_binding_status": "ACTIVE_PENDING_DISPATCH",
+  "note": "R0009 accepts the Owner's explicit A decision and starts I6 action/closure work. The active task is BI01-RESTART-01-I6-ACTION-CLOSE-01 in OBSERVATION_I6. The I5 binding and Owner-decision task remain historical and must not be sent again. A fresh snapshot, reader, intake, pre-dispatch and new I6 chat NOT_SENT/duplicate-send check are required before dispatch. No I6 send, G6 pass, run closure, independent review or production qualification is claimed."
 }
