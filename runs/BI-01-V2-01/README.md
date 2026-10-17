@@ -4,7 +4,7 @@
 ## 运行身份
 - work_id：`BI-01`（业务路由键）
 - run_id：`BI-01-V2-01`
-- status：**OWNER_GO_RECORDED / M_START_PREPARING / NO_PRO_DISPATCH**
+- status：**OWNER_GO_RECORDED / R0001_SEND_EPISODE_IN_PROGRESS**
 - 业务总目标：[V2 00](../../professional/v2/00_PURPOSE_AND_THREE_STEP_FLOW.md)
 - 重要既有业务底稿：[V2 04](../../professional/v2/04_BI01_BUSINESS_BASELINE.md)（复用 I1/I2/I3 的业务事实，不复用旧 run 状态）
 - 固定数据与位置：[V2 05](../../professional/v2/05_BI01_FIXED_INPUT_DATA.md)
