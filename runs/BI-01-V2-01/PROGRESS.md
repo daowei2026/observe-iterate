@@ -305,3 +305,9 @@
 - 唯一R7调用 BI01-V2-01-R0007-3bdb415f96a3601e4bec2f8f，原管理chat，NORMAL/decide。原样载荷56,060 UTF-8 bytes、35,183 UTF-16 units、SHA-256 47b54c474e7d479cc7a7554d44c004b0d4ca30a395ff7703e6c0021783349fe8，四文件695585c发布并fresh原字节回读；实际BI01 pre-dispatch通过。
 - 最新真实Intake仍b60b836，新增R6 artifact让普通专业消费check INTAKE_STALE；本轮按已签管理生产者路线取得真实接收，没有伪造新Intake/reader。首RESULT责任PENDING，IME/Send均0。首次本地预检误写展开SHA而失败，已留痕并从实际git rev-parse取得40位版本复核通过，无手机副作用。
 - 共享网络lease22:36:50Z将临近，已由新零继承executor按既有60min机制续准入，非aidata/共享挂载重复测试；结束Projects后直接原管理最高Pro发送。完整目标持续，不以本轮管理回复结束。
+
+## R0007准入证据复核纠正，实际三项均通过
+
+- 本次正式probe开始22:26:50.785Z、最后Projects观察caller完成22:33:24.262Z；精确所需SSID、实际全局最近聊天行和Projects/全部均已有原始证据。25调用、业务输入/Send/重启0，22:34:31.158843Z释放阳性复验，无pending/UNKNOWN，executor退役。
+- 原executor因父packet误加“侧栏不算”而报RECENT_LIST_ROUTE_UNPROVEN，其原报告原样留存。root实际看了18-recent-list的全部三无损tiles：最近分组及真实聊天行已加载，与上次通过的同类UI一致；现行Skill不要求另找非侧栏页。root复核Projects全部三tiles与实际网络事实后另记录healthy，不篡改原executor结论、不宣称它原报healthy，也无额外phone操作。搜索的最近文件混合页仍不计通过。
+- 实际三项完成时间为22:33:24.262Z，60min lease至23:33:24.262Z；不是按主控复核时刻后移。误加限制已在后续packet移除，不改运行合同，不启动一小时故障循环或重复探测。R7原样发送即接续。
