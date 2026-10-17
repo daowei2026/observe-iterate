@@ -81,3 +81,55 @@ Intake 写在原配置的 `runs/BI-01-V2-01/reviews/WORKMAP_INTAKE_CURRENT.json`
 
 <a id="parent"></a>
 本次是新 run 首张地图的首次独立只读接收，没有旧 run 可复用的 reader 资格。parent 为 NOT_APPLICABLE_NEW_CASE；这是受托事项关系，不取消 BI-01 完整管理和专业责任。
+
+<a id="question-work-binding"></a>
+## 9. QUESTION_WORK_BINDING
+
+本绑定引用 `7fa3cf022025249490d4d7ebba0bdc975ff87cee` 的受托正文；被审 map/task 输入仍为 `ff84e7e9d22d4c6d6e2633c9701404afcca1b827`。没有声称已发生独立阅读。
+
+```json
+{
+  "schema":"question-work/v2",
+  "kind":"BINDING",
+  "work_id":"BI-01",
+  "goal_ref":{"repo":"daowei2026/observe-iterate","commit":"11626f64bc64ae21e52108b2e47fafbbc1023615","path":"professional/v2/00_PURPOSE_AND_THREE_STEP_FLOW.md","selector":"full"},
+  "plan_ref":{"repo":"daowei2026/observe-iterate","commit":"444179c49ae2f926c287d3bf75b43e1eea44fcfc","path":"runs/BI-01-V2-01/reviews/management-R0001/DECISION.md","selector":"#authority"},
+  "full_scope_ref":{"repo":"daowei2026/observe-iterate","commit":"7fa3cf022025249490d4d7ebba0bdc975ff87cee","path":"runs/BI-01-V2-01/reviews/management-R0001/READER_TASK.md","selector":"full"},
+  "batch_result":"完成 exact-input 首次管理地图和完整任务的独立只读可理解性接收，交真实阅读报告和明确狭义资格；不编修候选、不审行情像素、不自签 U2/U3 全业务通过。",
+  "question_ids":["AUDIT"],
+  "question_definitions":[],
+  "professional_mode":"INDEPENDENT_REVIEW",
+  "focus_ref":{"repo":"daowei2026/observe-iterate","commit":"7fa3cf022025249490d4d7ebba0bdc975ff87cee","path":"runs/BI-01-V2-01/reviews/management-R0001/READER_TASK.md","selector":"#focus"},
+  "coverage_ref":{"repo":"daowei2026/observe-iterate","commit":"7fa3cf022025249490d4d7ebba0bdc975ff87cee","path":"runs/BI-01-V2-01/reviews/management-R0001/READER_TASK.md","selector":"#coverage"},
+  "source_reads":[
+    {"source":{"repo":"daowei2026/observe-iterate","commit":"11626f64bc64ae21e52108b2e47fafbbc1023615","path":"professional/v2/00_PURPOSE_AND_THREE_STEP_FLOW.md","selector":"full"},"requirement":"MODE_FULL","purpose":"从 Owner 原完整目标校验，而不是仅核作者概述自洽","reuse_evidence":null},
+    {"source":{"repo":"daowei2026/observe-iterate","commit":"e07034fbab080df85af57da4362d5a24119a8bbe","path":"runs/BI-01-V2-01/OWNER_START.md","selector":"full"},"requirement":"BOUNDARY","purpose":"真实新 run GO 和原权限，不继承旧 run","reuse_evidence":null},
+    {"source":{"repo":"daowei2026/observe-iterate","commit":"ff84e7e9d22d4c6d6e2633c9701404afcca1b827","path":"runs/BI-01-V2-01/README.md","selector":"full"},"requirement":"FOCUS_FULL","purpose":"总体入口、当前状态与实际采用关系","reuse_evidence":null},
+    {"source":{"repo":"daowei2026/observe-iterate","commit":"ff84e7e9d22d4c6d6e2633c9701404afcca1b827","path":"runs/BI-01-V2-01/00_长程推进地图.md","selector":"full"},"requirement":"FOCUS_FULL","purpose":"被审完整地图、重要未完和消费者","reuse_evidence":null},
+    {"source":{"repo":"daowei2026/observe-iterate","commit":"ff84e7e9d22d4c6d6e2633c9701404afcca1b827","path":"runs/BI-01-V2-01/01_当前任务.md","selector":"full"},"requirement":"FOCUS_FULL","purpose":"被审完整 S1-S3 任务及已附 Binding 的实际一致性","reuse_evidence":null},
+    {"source":{"repo":"daowei2026/observe-iterate","commit":"ff84e7e9d22d4c6d6e2633c9701404afcca1b827","path":"runs/BI-01-V2-01/reviews/management-R0001/DECISION.md","selector":"full"},"requirement":"FOCUS_FULL","purpose":"采用/撤销、两证据层、四束、资格、写面、预算和条件性采用的既有决定","reuse_evidence":null},
+    {"source":{"repo":"daowei2026/observe-iterate","commit":"ff84e7e9d22d4c6d6e2633c9701404afcca1b827","path":"runtime/config/WORKMAP_BINDING.json","selector":"full"},"requirement":"FOCUS_FULL","purpose":"真实路径/锚点/输入与尚未 ADOPTED 的事实","reuse_evidence":null},
+    {"source":{"repo":"daowei2026/observe-iterate","commit":"11626f64bc64ae21e52108b2e47fafbbc1023615","path":"professional/v2/04_BI01_BUSINESS_BASELINE.md","selector":"full"},"requirement":"BOUNDARY","purpose":"旧业务知识与旧运行状态不能混同","reuse_evidence":null},
+    {"source":{"repo":"daowei2026/observe-iterate","commit":"11626f64bc64ae21e52108b2e47fafbbc1023615","path":"professional/v2/05_BI01_FIXED_INPUT_DATA.md","selector":"full"},"requirement":"BOUNDARY","purpose":"固定输入/身份差异/范围，不重复审算法","reuse_evidence":null},
+    {"source":{"repo":"daowei2026/observe-iterate","commit":"11626f64bc64ae21e52108b2e47fafbbc1023615","path":"professional/v2/06_U2_U3_DESIGN_SOURCE_MAP.md","selector":"full"},"requirement":"BOUNDARY","purpose":"业务原文与方法入口是否明确到可取正文","reuse_evidence":null},
+    {"source":{"repo":"daowei2026/observe-iterate","commit":"11626f64bc64ae21e52108b2e47fafbbc1023615","path":"professional/v2/01_AIDATA_CHART_AND_DATA.md","selector":"full"},"requirement":"BOUNDARY","purpose":"图数同源、AI不看像素和必要工具修改新分支","reuse_evidence":null},
+    {"source":{"repo":"daowei2026/observe-iterate","commit":"11626f64bc64ae21e52108b2e47fafbbc1023615","path":"professional/v2/02_OBSERVATION_IDEAS_AND_VALIDATION.md","selector":"full"},"requirement":"BOUNDARY","purpose":"S3 真实业务认识的完整终点而非首图停点","reuse_evidence":null},
+    {"source":{"repo":"daowei2026/observe-iterate","commit":"11626f64bc64ae21e52108b2e47fafbbc1023615","path":"professional/v2/03_EXECUTION_HANDOFF.md","selector":"full"},"requirement":"BOUNDARY","purpose":"专业、Worker、管理和操作的正确分界","reuse_evidence":null},
+    {"source":{"repo":"daowei2026/observe-iterate","commit":"11626f64bc64ae21e52108b2e47fafbbc1023615","path":"runtime/operations/ADOPTION_HANDOFF_CHECKLIST.md","selector":"full"},"requirement":"MODE_FULL","purpose":"首次独立地图读取与实际 Workmap 采用，禁止自签或由 status 替代","reuse_evidence":null},
+    {"source":{"repo":"daowei2026/observe-iterate","commit":"11626f64bc64ae21e52108b2e47fafbbc1023615","path":"runtime/dual_route_execution/DR14_QUESTION_WORK_CONTRACT.md","selector":"full"},"requirement":"BOUNDARY","purpose":"当前受托原文、Return 和合法续作","reuse_evidence":null},
+    {"source":{"repo":"daowei2026/observe-iterate","commit":"11626f64bc64ae21e52108b2e47fafbbc1023615","path":"runtime/overlay/13_角色回交与主控接续协议.md","selector":"full"},"requirement":"BOUNDARY","purpose":"真实独立身份、狭义 review 输出与回交","reuse_evidence":null}
+  ],
+  "deliverables_ref":{"repo":"daowei2026/observe-iterate","commit":"7fa3cf022025249490d4d7ebba0bdc975ff87cee","path":"runs/BI-01-V2-01/reviews/management-R0001/READER_TASK.md","selector":"#coverage"},
+  "completion_ref":{"repo":"daowei2026/observe-iterate","commit":"7fa3cf022025249490d4d7ebba0bdc975ff87cee","path":"runs/BI-01-V2-01/reviews/management-R0001/READER_TASK.md","selector":"#completion"},
+  "budget_ref":{"repo":"daowei2026/observe-iterate","commit":"7fa3cf022025249490d4d7ebba0bdc975ff87cee","path":"runs/BI-01-V2-01/reviews/management-R0001/READER_TASK.md","selector":"#budget"},
+  "parent":{"status":"NOT_APPLICABLE_NEW_CASE","ref":null,"reason_ref":{"repo":"daowei2026/observe-iterate","commit":"7fa3cf022025249490d4d7ebba0bdc975ff87cee","path":"runs/BI-01-V2-01/reviews/management-R0001/READER_TASK.md","selector":"#parent"}},
+  "routes":{
+    "same_work":{"recipient_role":"review","recipient_ref":"chatgpt-project:细节叙事生成_金标/chat:new:BI01-V2-地图只读接收-01","instructions_ref":{"repo":"daowei2026/observe-iterate","commit":"7fa3cf022025249490d4d7ebba0bdc975ff87cee","path":"runs/BI-01-V2-01/reviews/management-R0001/READER_TASK.md","selector":"#same-work"}},
+    "accept":{"recipient_role":"receiver","recipient_ref":"codex-thread:01a14a59-7f26-7921-b549-3e7cd9be5119","instructions_ref":{"repo":"daowei2026/observe-iterate","commit":"7fa3cf022025249490d4d7ebba0bdc975ff87cee","path":"runs/BI-01-V2-01/reviews/management-R0001/READER_TASK.md","selector":"#accept"}},
+    "decide":{"recipient_role":"management","recipient_ref":"chatgpt-project:细节叙事生成_金标/chat:BI01-V2-管理","instructions_ref":{"repo":"daowei2026/observe-iterate","commit":"7fa3cf022025249490d4d7ebba0bdc975ff87cee","path":"runs/BI-01-V2-01/reviews/management-R0001/READER_TASK.md","selector":"#decide"}},
+    "return_repair":{"recipient_role":"review","recipient_ref":"chatgpt-project:细节叙事生成_金标/chat:new:BI01-V2-地图只读接收-01","instructions_ref":{"repo":"daowei2026/observe-iterate","commit":"7fa3cf022025249490d4d7ebba0bdc975ff87cee","path":"runs/BI-01-V2-01/reviews/management-R0001/READER_TASK.md","selector":"#same-work"}}
+  },
+  "triggers":[],
+  "explicit_no_trigger_reason_ref":{"repo":"daowei2026/observe-iterate","commit":"7fa3cf022025249490d4d7ebba0bdc975ff87cee","path":"runs/BI-01-V2-01/reviews/management-R0001/READER_TASK.md","selector":"#no-extra-trigger"}
+}
+```
