@@ -21,3 +21,7 @@ B包外层身份差异、成员匹配与MD-01限制保持原事实，原固定�
 ## 在途技术证据追加（20:00Z）
 
 新版146 CSV历史快照已发布在91b0083214065d43d9e80a4da194dd22119faf6e，其后同一Worker实际发现small Zig UTI数字文本格式导致status/confirmed时间坐标未连接。Worker正在原工单中修复并重验，不改固定输入；旧144/146包保留并具名该缺口。当前未有修复后正式回交，详见artifacts/worker-R0004/CURRENT_DELIVERY.md。本追加内容没有额外Pro发送，不声称在途管理已经读取。
+
+## 修正首图分批交付（20:08Z）
+
+同一Worker已给出代码e59fd90、首图逐实际绘图坐标核验与新146 CSV包8dd882...；原输入/数值/窗口/AsOf不改，全320视图和51请求会话仍在重验，旧通过计数不复用。当前/历史版本与边界详见artifacts/worker-R0004/CURRENT_DELIVERY.md和CURRENT_MAIN_ASOF_1_VERSION.json。仍不声称本管理Pro已经读取在途追加证据，未新增手机Send。
