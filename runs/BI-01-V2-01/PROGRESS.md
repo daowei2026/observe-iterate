@@ -518,3 +518,12 @@
 - 本轮新增F08—F14专业观察与全部未完由原文承担；两schema、唯一JSON键、实际R8派发关联、29答内锚点和具名8节点VIEW/SOURCE_BINDING Git对象存在性已通过。完整原稿提交后才运行真实after-return，尚不提前计第9份有效结果。原IN_PROGRESS/INCOMPLETE、未读范围和Pro明确未创建GitHub/ZIP/共享实物的事实保持，不代完整业务Gate。
 - 原1:25:22.747Z UI无STOP/无正文、两COMMITTED及已耗用恢复额度均为真实历史，保留RETURN_VALIDATION_BEFORE_LATE_RETURN.json的未运行原证据。当前晚到不能倒推当时后台取消/未执行，后台完成时刻仍未知；不重开R8恢复时钟。
 - R9#late-return已授权原件迟到处置，迟到原文不自动替换M9的新实证保存安排。R10仍IME0/Send0，原ready02:31:17.353753Z保持；后继将据真实晚答资格、原管理安排及机械合法性处理，不让未证实进展冒充完成。
+
+
+### 2026-10-18 02:44Z｜R8迟到完整回交通过真实after-return，累计有效结果9，保留M9安排
+
+- 原件导入8658633e24c8cd9f98c30d941abb8fd9367142d8八文件fresh byte回读通过，真实R8 after-return PASS；schema/实际Binding关联/29答内锚点已通过。原文IN_PROGRESS/INCOMPLETE和所有重要未完不改，不冒称管理接收F08—F14或完整S3通过。
+- 原schema/身份和双Return可机械核验，手机rendered缺开头marker/围栏的源形态不补改。原FullResponse与phone txt字节相同。原NoReply与未执行after-return是此前真实时点，原样保留；迟到本文现在才计为第9份有效结果，同marker两次Send仍只计一份。
+- 原管理R9#late-return准许按真实资格减少重做、不自动覆盖其新成果保存安排；R8自报CHANGE NOT_YET、继续同原任务。主控只依据实际原件/既有管理权力装配后继，不裁新业务优先级/发现，不请求新Owner授权。
+- 原持续责任helper以实际9和既有消费键复核无due/unknown/errors；EFFORT8在晚答出现前已合法落实，不因新证据SHA重开；下一累计12保持。
+- R10未输入/未发送，旧032e5946…载荷与b1d9de7冻结版本保留。接着按原prepare/verify在同一尚未调用的R10加入已核晚答真实来源和实际计数9；原M9作为最新采用/当前工作不变，原ready02:31:17.353753Z保留，不把准备/capture耗时清零。
