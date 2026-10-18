@@ -11,3 +11,6 @@
 - Reader 返回 `PASS` 也只取得狭义 Workmap 可理解性资格；exact 输入未变且既有 snapshot/check/dispatch 通过后，方可形成 Intake、转为 ADOPTED 并向 `chatgpt:细节叙事生成_金标:BI01-V202-执行` 发送完整 S1/S2/S3 专业任务。
 - 旧 `BI-01-V2-01` 保持 Owner 暂停，其 GO、任务、采用、Gate、在途、调度和专业结论均不继承。
 - 本页只投影真实证据，不替管理地图、任务、接收或专业判断。
+
+- `R0001` 真实完整答复与两份角色回交已经收齐、通过 schema 及 after-return 核验。现有首次 Reader Gate 发现机器 Binding 和管理前置签发定位尚缺，已记录于 [MSTART_CONTINUATION_REQUIRED.md](provenance/turns/R0001/MSTART_CONTINUATION_REQUIRED.md)，由原管理续完；尚未替管理签发或跳过 Gate。
+- `R0002 / 原 M-START 连续事项` 已于 2026-10-18 21:48:55（北京时间）确认发送一次，Pro 最高档、23495 UTF-8 字节/11893 UTF-16 单位全文指纹匹配，正在思考。见 [SEND_RECEIPT.json](provenance/turns/R0002/SEND_RECEIPT.json)。下一回复监督为北京时间 21:58:55；补齐真实签发后继续 Reader、Intake 与专业派发，不需要逐轮 Owner GO。
