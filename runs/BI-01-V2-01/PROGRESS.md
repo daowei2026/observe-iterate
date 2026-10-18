@@ -389,3 +389,9 @@
 - 实际probe开始00:29:18Z，精确所需网络事实、实际Recent聊天行00:31:17.192Z和Projects/全部实际项目行00:31:50.672Z全部通过；完成时间按实际server记，60min lease至01:31:50.672Z，不按root接收时刻后移。12次正式phone、Send/STOP/正文/文件/重启/模型或网络修改0。
 - 00:32:27.462828Z原section释放固定utility阳性，全部pending/UNKNOWN为空，executor退役；末态Projects/全部，未额外进入业务chat。初始UI/首mark缺双caller边界、网络响应无server时间均如实限定，不补造。native103只更新共享准入，R8原thinking及due00:35:28.841Z保持。
 - 下一fresh零继承check5已按原due准备回正确Project唯一原执行chat再观察；不把Projects画面当R8终态，不输入或重发。本run仍实际调用8/完整有效回交7，完整目标继续。
+
+## R0008第五次观察：回正确原chat后仍思考
+
+- 首phone caller00:35:52.554Z距原due23.713s，满足120秒；预调用意图/控制证明先落盘。经fresh Projects/正确Project唯一原BI01-V2-执行行回返，未扫描旧bubble。进入瞬间第5帧尚在渲染旧文件卡，不作当前状态；独立第6次新鲜observe见准确R8 token/professional+正在思考/STOP，尚无助手正文或完整尾部。
+- 最后当前chat frame00:37:18.492Z、server完成00:37:19.147Z分列；6次正式phone（4导航动作+Projects初看+原chat最终observe），输入/Send/STOP/复制/文件/重启0。00:38:05.799412Z原section释放固定utility阳性，无pending/UNKNOWN，executor退役，六raw hash核同。
+- native104保持原thinking起点23:41:38.132Z；下一00:47:19.147Z（北京时间08:47:19），共享准入至01:31:50.672Z。实际调用8/完整有效回交7，原专业任务持续，尚无新回交，不重发或先触发EFFORT。
