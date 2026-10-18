@@ -474,3 +474,10 @@
 - R9输入task_adoption_ref旧路径问题由管理明确核对，历史Invocation原样保留；后继采用真实R9#adoption，不再携带旧R5定位。真实增量Intake尚待办理，EFFORT8须落实本次安排和后继后才消费，累计12不预关。
 - 已在Native记录相关远端完成（revision120），手机grace独立至02:24:51.057229Z；仍等待新鲜手机分类，不以Git提交冒充手机已显示。R8无原答/无Return/after-return未运行的事实保留。
 - 完整U2/U3目标继续ACTIVE；后续按本管理原文办理Intake并真实派发正常专业续作。
+
+
+### 2026-10-18 02:17Z｜按R9原管理授权登记真实增量Intake
+
+- 从实际提交6042fe15411ae696be80fdc583c7469cfd54e260生成snapshot A，fingerprint d6413d6fe2094e441cb92cd8d7a2e2321f1ebc13f6d051ea332b7053da523431；最新真实采用base为128586，当前decision_report锁R9 c67bbfa原blob。原task blob与完整方法锁不变，watch根未删。
+- 原管理明示ROUTINE_RESULT/无需新reader；旧R3记录/input保留，只记RECORDED_OLD_INPUT，不冒称读过R9。现已真实取得第8份完整回交，R8仍不计结果；EFFORT8须在本采用及后继落实后消费，累计12保留。
+- 本提交登记完成后对精确B提交运行原workmap机械检查，结果另外保留；不以文件写入/ADOPTED标题宣称通过。

@@ -6,12 +6,12 @@
         "role": "management",
         "context": "chatgpt-project:细节叙事生成_金标/chat:BI01-V2-管理"
       },
-      "snapshot": "62b16eafb8b792696f71b3ebf7e2ac1105ac1f4c0d171a9caea76c571382d1f2",
-      "observed_commit": "688487d5a336497d25bc6021fd2d4ba5f704e3e3",
-      "base_ref": "b60b8366372e29740fbfce1a19fc216fd01f694a",
+      "snapshot": "d6413d6fe2094e441cb92cd8d7a2e2321f1ebc13f6d051ea332b7053da523431",
+      "observed_commit": "6042fe15411ae696be80fdc583c7469cfd54e260",
+      "base_ref": "128586e94c810538b3d64c73daac3354b5555b0d",
       "decision_report": {
-        "path": "runs/BI-01-V2-01/provenance/turns/R0007/FULL_RESPONSE.md",
-        "blob": "95e542e23aa6703aedf27e94ceb8887a3aab228b"
+        "path": "runs/BI-01-V2-01/provenance/turns/R0009/FULL_RESPONSE.md",
+        "blob": "2276f776f68236a19d8992e26aa2aacf5a2a67aa"
       },
       "reader_check": {
         "status": "RECORDED",
@@ -26,9 +26,9 @@
         "qualification": "仅地图、完整任务与采用关系的可理解性和一致性；不代表专业业务/代码/质量审查PASS"
       },
       "effort": {
-        "known_pro_turns": 7,
-        "coverage": "R0001—R0007完整原答与所需两Return已真实取得，schema/原任务关联/原文实物与实际after-return通过；R7原发送回执缺state的operator错误/补正分别保留，Pro原件未改。",
-        "source_note": "起点R1不变；M7首次RESULT实质复看后实际Intake/冻结后继再消费；下一EFFORT仍累计8。phone/UI/Git/Worker不计新R。"
+        "known_pro_turns": 8,
+        "coverage": "R1/R2/R5/R7/R9五份管理、R3必要独立阅读、R4/R6两份专业完整原答及必需Returns均已真实取得并核验；R8原发送/恢复两COMMITTED但无Return、不计有效结果；原无答与投入记录保留。",
+        "source_note": "起点R1、间隔4保持；R9#adoption/#effort已实际复看完整目标/剩余/成本/安排，本Intake落实其采用，EFFORT8须在准确后继冻结消费后记录；累计12未提前关闭。"
       },
       "dispatch": {
         "task_path": "runs/BI-01-V2-01/01_当前任务.md",
@@ -48,27 +48,31 @@
           "professional/v2/05_BI01_FIXED_INPUT_DATA.md",
           "professional/v2/06_U2_U3_DESIGN_SOURCE_MAP.md"
         ],
-        "reader_reason": "R0007完整原管理决定#adoption明示：完整Goal、原Task/Binding/mode、方法和权限未变；接收R6第一批有限观察及既有时间用途限制，原图数/原CSV输入真实可用，继续完整S1—S3。不是新阶段/算法。旧R3原报告/input/fingerprint保留，不能冒称读过R7；专业独立审查仍不因此PASS。"
+        "reader_reason": "R0009原完整管理决定#adoption明示ROUTINE_RESULT/requires_reader_check=false：完整Goal、原Task/Binding/mode、方法、角色/接收者和完成标准不变；变更为真实R8 UI无答后的实证形成/保存顺序及正常接续安排。旧R3原报告/input/fingerprint保留RECORDED_OLD_INPUT，不冒称读过R9；无专业独立审查PASS。"
       },
       "validation_claims": [],
       "scope_dispositions": {},
       "adopted_under": {
-        "decision_commit": "b3ef5f67f48525086950ddf0123a6d779be14d61",
+        "decision_commit": "c67bbfa80cac9bfcb55cce20e44697333a292030",
         "decision_anchor": "#adoption",
-        "management_return_ref": "runs/BI-01-V2-01/provenance/turns/R0007/FULL_RESPONSE.md#continuation",
-        "previous_adopted_commit": "b60b8366372e29740fbfce1a19fc216fd01f694a",
+        "management_return_ref": "runs/BI-01-V2-01/provenance/turns/R0009/FULL_RESPONSE.md#continuation",
+        "previous_adopted_commit": "128586e94c810538b3d64c73daac3354b5555b0d",
         "reader_round_complete_commit": "fd01f223039f0e1c4580dec10375eb64fc3728b0",
         "policy_commit": "11626f64bc64ae21e52108b2e47fafbbc1023615",
         "gate_code_commit": "73789662405ec2bfb5c516f849de3450d1160593",
-        "actual_manager_accepted_input_scope": "M7原文接收R6 F01—F07有限认识、原1917工单最终技术实物、b9ec同版本51包文本及a96运输证据，落实既有逐字段AsOf消费边界；不自称全51/5430CSV已读、全Network增量Gate/独立审查/完整S3通过。",
+        "actual_manager_accepted_input_scope": "M9接收R8两COMMITTED后仍无可取得正文/Return的真实运输事实；不接收其未证实业务进展。原R6/R7有限认识与时间/字段用途限制保留，固定原图数/51文本继续消费，原task不变；改为按业务问题及时保存实证并持续补全重要剩余。无新Worker工单、无新专业Gate/完整Goal通过。",
         "actual_input_commits": {
           "professional_R6": "750adeb4007c2fe0f7d44abeb9ab14a9bbe867e7",
           "worker_final": "1917f868d61f8de7110b7165ee9125e5b156c4d2",
           "original_readable_51": "b9ecbfa4b27f40365ed72f35448116420fb085a6",
-          "input_transport_receipt": "a96b7a2ed3b4074bf44bb2de6ce30ebb696329ca"
-        }
+          "input_transport_receipt": "a96b7a2ed3b4074bf44bb2de6ce30ebb696329ca",
+          "prior_management_R7": "b3ef5f67f48525086950ddf0123a6d779be14d61",
+          "prior_actual_intake": "128586e94c810538b3d64c73daac3354b5555b0d",
+          "R8_no_reply_management_request": "948852fa51bc1725af613c5798f7e1cfd1c3aae2"
+        },
+        "old_R9_task_adoption_locator_disposition": "R9原Invocation旧R5路径原样保留；原管理明确采用真实R7/128586，本次及后继采用真实M9 c67bbfa#adoption。"
       },
-      "recorded_at": "2026-10-17T23:20:44.714955+00:00"
+      "recorded_at": "2026-10-18T02:17:43.554214+00:00"
     }
   }
 }
