@@ -407,3 +407,10 @@
 - 原due00:51:38.132Z已到，00:52:05.068812Z新鲜核目标远端仍8553041（仅root观察记录）、有限共享run/inv范围无R8 ZIP候选；原known Send COMMITTED、Native一次恢复计数0。完整有效回交仍7，没有把长等待当新业务结果。
 - 按既有wait-generation marked-turn-complete-zip-fallback-v1派fresh零继承NoSend恢复重分类阶段：先新鲜看是否已有正文/完整答复；仅准确active R8 STOP且无正文时最多一次ChatGPT专属重启回原chat重看；若有正文即回交收取，仍准确active无正文才可STOP一次。所有实际副作用以回执验收，不在授权记录预填已执行。
 - 本episode禁止任何IME/Send，重分类后必须硬回交释放。root再次核远端/ZIP并过既有Native一次性门后，才可能另派fresh原稿/原marker的一次恢复发送；不扩业务、不新chat、不改原文、不取得第二70min窗口，原90min计时保持。完整Goal继续，不在工具边界结束。
+
+## R0008一次恢复重分类真实结束：STOP消失，无回复，未Send
+
+- 首caller00:53:14.851Z距原70min due96.719s，满足120秒；一次ChatGPT专属完整重启，仅水平关闭目标卡，其他App保留，Recent实际聊天行与Projects全部列表正常；fresh正确Project唯一原BI01-V2-执行重新关联当前R8。
+- 重开后STOP消失且无助手正文，原屏30秒复验仍无正文/完整尾部，残留正在思考标签原样保留。最终frame00:59:10.790Z/server完成00:59:11.317Z，按既有UI合同分类generation_ended_without_reply，不推断后端完成。root查看全部最终3张本地图，确认蓝色voice波形、无STOP/正文/大加载圈/错误。
+- 正式phone23、完整App重启1、STOP0/Send0/IME0/正文或文件捕获0；00:59:43.240956Z原section释放固定utility阳性，无pending/UNKNOWN，executor永久退役。原R8首次Send COMMITTED原证据保留，当前完整有效回交仍7。
+- Native仍105，一次恢复重发计数仍0；没有提前把无回复写成Pro完成或清除原90min起点。下一步必须fresh核远端及同轮ZIP，再用既有once-only Native gate，才可另派fresh原稿/原marker恢复Send；当前尚无补发。
