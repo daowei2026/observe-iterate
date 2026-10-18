@@ -401,3 +401,9 @@
 - 首caller00:48:05.766Z距due46.619s满足120秒；frame00:48:04.488Z/server完成00:48:05.015Z分列。正确原chat连续性+当前token/professional及invocation可见后缀关联，标题遮挡部分inv，未冒称本屏全文重读。全部3tiles实查，正在思考/STOP，无助手正文/尾部/error/大加载圈。
 - observe1/其他动作0，预调用意图00:47:31.504940Z先落盘，00:48:41.816269Z原section释放阳性，无pending/UNKNOWN，executor退役。native105保持原thinking起点；普通下一00:58:05.015Z，原70min节点00:51:38.132Z更早，届时须先fresh远端/同轮ZIP对账，再依既有一次有界恢复条件处理，当前未开始恢复。
 - 远端截至00:46:53Z无新专业提交，有限共享作用域无同轮ZIP候选；实际调用8/完整有效回交7，完整任务持续，不虚记成功、不提前重发或结束Goal。
+
+## R0008原70min节点：先对账后派零发送重分类
+
+- 原due00:51:38.132Z已到，00:52:05.068812Z新鲜核目标远端仍8553041（仅root观察记录）、有限共享run/inv范围无R8 ZIP候选；原known Send COMMITTED、Native一次恢复计数0。完整有效回交仍7，没有把长等待当新业务结果。
+- 按既有wait-generation marked-turn-complete-zip-fallback-v1派fresh零继承NoSend恢复重分类阶段：先新鲜看是否已有正文/完整答复；仅准确active R8 STOP且无正文时最多一次ChatGPT专属重启回原chat重看；若有正文即回交收取，仍准确active无正文才可STOP一次。所有实际副作用以回执验收，不在授权记录预填已执行。
+- 本episode禁止任何IME/Send，重分类后必须硬回交释放。root再次核远端/ZIP并过既有Native一次性门后，才可能另派fresh原稿/原marker的一次恢复发送；不扩业务、不新chat、不改原文、不取得第二70min窗口，原90min计时保持。完整Goal继续，不在工具边界结束。
