@@ -1,0 +1,42 @@
+{
+  "schema": "bi01-return-transport/v1",
+  "run_id": "BI-01-V2-02",
+  "round_id": "R0003",
+  "invocation_id": "BI01-V2-02-R0003-20261018T135502Z-2de24e8b",
+  "source": "正式MCP对已完成当前R0003 assistant消息关联复制与take，原回答和两个JSON子串逐字节保存",
+  "full_response_sha256": "691f0dacbe16bf968a63c54d776d104b18089bf73d6d67403d853c3b6d84faad",
+  "utf8_bytes": 10586,
+  "utf16_units": 7207,
+  "terminal_newline_present": false,
+  "normalization": "none",
+  "extracted_returns": {
+    "ROLE_RETURN.json": {
+      "sha256": "22d363a8f3c6e142354df7b3d664e7df1019be4fabc20f79d5a552ce4b0ea424",
+      "source_utf8_start": 7267,
+      "source_utf8_end": 8371,
+      "schema_validation": {
+        "ok": true
+      }
+    },
+    "QUESTION_WORK_RETURN.json": {
+      "sha256": "d1d36d760605874f4e613287c579b006dbb3371aac3be46c3a3d735e4187eeb2",
+      "source_utf8_start": 8430,
+      "source_utf8_end": 10586,
+      "schema_validation": {
+        "ok": false,
+        "path": "$.focus_results[0].question_id",
+        "message": "'WORKMAP-READABILITY' does not match '^CASE-[A-Za-z0-9][A-Za-z0-9._-]*$'"
+      }
+    }
+  },
+  "issued_binding_schema_validation": {
+    "ok": false,
+    "path": "$.question_ids[0]",
+    "message": "'WORKMAP-READABILITY' does not match '^CASE-[A-Za-z0-9][A-Za-z0-9._-]*$'"
+  },
+  "code_block_restoration": "incomplete;原复制无fence，不补写正文",
+  "local_receipt_sha256": "09309c3b62f10196ea3b52a400766c82bb6f033cb194313eaa64cefd11db76c8",
+  "capture_workflow_compliance": "DEVIATION_RECORDED: arm先于ACQUIRED登记；之后确认无人占用并登记，其他动作在登记后；未宣称流程无偏差通过。",
+  "acceptance_state": "NOT_ACCEPTED_FOR_INTAKE_PENDING_ORIGINAL_AUTHORITY_BINDING_CORRECTION",
+  "limits": "真实运输完成与读者实质判断保留；Question Work schema未通过，不改作者题号或伪称采用。"
+}
