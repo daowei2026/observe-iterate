@@ -14,6 +14,6 @@
 - 下一责任：Worker完成获授权图数施工；执行 Pro取得后按原same_work接续消费、挑战和完成S3。操作端持续收取成果，保留原起点核RESULT/CHANGE/EFFORT；累计投入资格由原管理有据裁定，专业工单继续。新执行物理chat已在首完整回复后真实规范为唯一 `BI01-V202-执行`，完整名称读回和正确Project唯一行已核，见[身份记录](provenance/turns/R0006/CHAT_IDENTITY_RECEIPT.json)。
 - 当前六场景的真实可打开图/aidata同源数据尚未交付，S2/S3未完成，尚未形成完整闭环或管理接收。首图、单Case、局部修通、格式修复或Workmap采用都不是完整任务停点。
 
-- R0007 原管理投入复看已按原Binding触发路线准备，尚未发送；[真实投入清单与差异](reviews/management-R0007/INPUT.md)保留R1起点、必要管理/接收及R6首专业结果，原管理将核定累计资格与消费责任。六场景Worker继续，不因该复看自动暂停。
+- R0007 原管理投入复看与现有Workmap具名接收补齐已按原Binding触发路线准备，尚未发送；[真实投入清单与差异](reviews/management-R0007/INPUT.md)保留R1起点、必要管理/接收及R6首专业结果，原管理将核定累计资格与消费责任。当前Workmap仅因新增R6结果出现INTAKE_STALE，map/task/Binding及Reader指纹未变；原始检查和具名回管理路线已保存，未改Intake或工具，待原管理实际处置后再核下一专业派发。六场景Worker继续，不因该复看自动暂停。
 
 本页只投影真实证据；专业判断由专业/管理 Pro承担，Owner可继续从地图、当前任务、各轮Return与成果入口追踪。
