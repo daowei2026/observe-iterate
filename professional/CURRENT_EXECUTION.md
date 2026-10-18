@@ -1,17 +1,7 @@
-# 专业 Agent V2 当前入口
+# BI-01 V2-02 专业入口
 
-status: `V2_PREPARED_NOT_STARTED`
+**PREPARED_NOT_STARTED / NO_SEND**。本分支为下一轮 `BI-01-V2-02` 修改专业方法，不是 Owner 启动授权；旧 `BI-01-V2-01` 已暂停且不可自动继续或接受其 R10。
 
-**完整业务目的：**检查 rb/i/hc 已验算数据上 U2 共同机会簇的真实位置与合理性，以及 U3 四方面能否区分品种是否好做，解释不合理之处与原因；不是讨论 AI 或 Owner 谁做。
+专业的第一任务是结合 [U2/U3 原文导航](v2/06_U2_U3_DESIGN_SOURCE_MAP.md)理解 `DirectionalReleaseIntent` 中的共同机会与品种强弱场景，再按 [07](v2/07_BUSINESS_SCENE_OBSERVATION_METHOD.md) 先由基础 K 线/贴近转折找真实值得观察的位置，验证 U2 边界和 U3 四方面是否能提前辨别后续成员质量。场景种类与具体研究位置由实际执行形成，**本预备材料不先划分类别**。
 
-正式专业入口及首轮必读：
-1. [00：业务总意图及 S1/S2/S3](v2/00_PURPOSE_AND_THREE_STEP_FLOW.md)
-2. [04：原 I1–I3 的业务背景、OP-01/Q-01、方法与使用限制](v2/04_BI01_BUSINESS_BASELINE.md)
-3. [05：固定已验算两份 ZIP、数据路径、哈希和 CSV 清单](v2/05_BI01_FIXED_INPUT_DATA.md)
-4. [01：使用 aidata 画图与同源数据；不让 AI 视觉看图](v2/01_AIDATA_CHART_AND_DATA.md)
-5. [02：业务观察、反证与 Owner 看图核验](v2/02_OBSERVATION_IDEAS_AND_VALIDATION.md)
-6. [03：既有角色交接/工具边界](v2/03_EXECUTION_HANDOFF.md)
-
-本轮固定数据，不自动重算，不改变 aidata 既有分支。若必须扩展 aidata，先建独立新分支。
-
-新 run `BI-01-V2-01` 仅准备，尚无真实 Owner GO、管理签发或新 Pro 执行。V1 专业源和运行工作面已从本分支清理，旧 Gate/聊天/结果不继承。
+完整方法 [00](v2/00_PURPOSE_AND_THREE_STEP_FLOW.md)、[07](v2/07_BUSINESS_SCENE_OBSERVATION_METHOD.md)、原 [04](v2/04_BI01_BUSINESS_BASELINE.md)、[05](v2/05_BI01_FIXED_INPUT_DATA.md)、[01](v2/01_AIDATA_CHART_AND_DATA.md)、[02](v2/02_OBSERVATION_IDEAS_AND_VALIDATION.md)、[03](v2/03_EXECUTION_HANDOFF.md)。使用已算好固定两份 ZIP，不默默补 U3 结果、不改 aidata 原分支；旧图与同源 CSV 经版本与浏览器实际可看核实后可复用，不继承旧选样/Gate/在途。

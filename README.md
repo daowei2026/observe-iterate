@@ -1,19 +1,13 @@
-# 观察迭代 Agent — 专业 V2（未正式开跑）
+# BI-01 观察迭代专业 Agent · V2-02 准备分支
 
-**业务目标：**使用已提前验算的 rb/i/hc 真实数据，判断 U2 共同机会簇识别的位置与边界是否合理，以及在这些位置上 U3 四方面能否辨别品种好不好做；指出具体不合理处、原因、反证与有无业务增量，形成可供 Owner 看图核验的观察和后续修订方向。
+**业务目标：**理解 U2/U3 叙事要解决的共同单边方向机会及成员强弱辨别问题，从基础 K 线、Zig、贴近转折行情寻找真实有研究意义的位置，然后核 U2 找的位置/成员合理不合理，U3 四个 Movement Bundle 能否在合法 As-Of 帮助区别成员后续运动质量，以及对 C0/N 与简单共同事件关联有什么独立增量。
 
-工作步骤：**S1 确定观察对象与问题 → S2 用 aidata 为既定数据画图并提供同源数据 → S3 根据同源数据给出业务想法**，需要时 S3 再返回 S2。AI **本轮不视觉看图**：图给 Owner，AI 读图对应的结构化数据。
+不预设场景类别或赢家，不由某几个字段缺项成为观察主线。专业方法：[00 总意图](professional/v2/00_PURPOSE_AND_THREE_STEP_FLOW.md) · [07 场景先行方法](professional/v2/07_BUSINESS_SCENE_OBSERVATION_METHOD.md) · [06 U2/U3 业务设计 Source](professional/v2/06_U2_U3_DESIGN_SOURCE_MAP.md) · [05 两份固定数据](professional/v2/05_BI01_FIXED_INPUT_DATA.md)。
 
-## 当前入口
+仍按 **S1 → S2 → S3** 和真实必要的 S2/S3 循环；Owner 看 aidata 图，AI 读取同图真实结构化数据而不看图像像素。两份预计算 ZIP 位于 `/dwdhome/fy/资金管理`，不重算 U2/U3，参考/Withheld 不能升格为正式结果；尽量复用旧 Worker 合格图数而不重复施工，实际浏览器图页应验可看。
 
-- [专业 V2 总入口](professional/v2/README.md)和[业务总目标](professional/v2/00_PURPOSE_AND_THREE_STEP_FLOW.md)
-- [已积累的原 I1/I2/I3 业务背景与有权 Source](professional/v2/04_BI01_BUSINESS_BASELINE.md)
-- [固定两份 ZIP 的位置、清单、数据身份与差异](professional/v2/05_BI01_FIXED_INPUT_DATA.md)
-- [aidata 只读优先/确需修改另建分支的规则](professional/v2/01_AIDATA_CHART_AND_DATA.md)
-- [全新预备运行 BI-01-V2-01](runs/BI-01-V2-01/README.md)及[运行指南](runtime/operations/BI01_V2_RUN_GUIDE.md)
+- **本分支新运行准备入口：**[BI-01-V2-02](runs/BI-01-V2-02/README.md) · [运行指南](runtime/operations/BI01_V2_RUN_GUIDE.md)
+- 历史暂停运行：[`BI-01-V2-01` 原始证据](runs/BI-01-V2-01/README.md)，旧成果可作只读来源，不沿用旧 Owner GO、任务、Binding、R、管理接受或在途。
+- 正常长程角色、Workmap、回交、GitHub/ZIP 备用运输仍使用 `runtime/` 和 cgpterm 对应新分支；无需建设新管理框架。
 
-本轮原件为 `steel_U2_U3_执行结果_20261010.zip` 和 `rb_hc_i_mid贴近转折_zig_small_K线_20210101_20240229.zip`。不重新验算一版或替换源；对已验算数据发现具名疑问可以核查与反馈。上游 ZIP 的本次外层哈希与旧讨论记录存在差异，详情见固定数据文档，不能静默解释为同一字节，也不凭此断言业务数据必错。
-
-长程管理/角色/回交机制仍在 `runtime/`；图和数据工具统一使用 [aidata](https://github.com/daowei2026/aidata)，尽量不修改。确需修改/新增时必须在 aidata **新分支**实施，不改现有分支。旧业务合同和旧 run 已从 V2 工作树删除，**原 I1–I3 的业务知识以来源和 V2 专题文档复用**，不继承旧运行聊天、Gate 或任务状态。
-
-状态：`PREPARED_NOT_STARTED / NO_SEND`；本次只是修改运行材料，没有实际发起新 Pro、Worker 或手机任务。
+**状态：PREPARED_NOT_STARTED / NO_SEND。** 这是准备与离线验证，不是 Owner 的新 GO；未经明确新授权绝不恢复旧任务或发送新消息。
