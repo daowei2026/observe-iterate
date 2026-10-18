@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-18T02:21:41.162783+00:00",
+  "checked_at": "2026-10-18T02:30:44.839242+00:00",
   "policy_commit": "11626f64bc64ae21e52108b2e47fafbbc1023615",
   "actual_gate_code_commit": "73789662405ec2bfb5c516f849de3450d1160593",
   "prepared_commit": "b1d9de7261976d37786ef6b6dc4b8616da3a5451",
@@ -23,7 +23,7 @@
   "workmap": {
     "schema": "workmap-check/v2",
     "scope": "bi01",
-    "exact_input_commit": "b1d9de7261976d37786ef6b6dc4b8616da3a5451",
+    "exact_input_commit": "b3e70544a5dda528cda1c27dbe27fe37e807fa29",
     "ok": true,
     "check_kind": "DISPATCH_PREFLIGHT",
     "errors": [],
@@ -34,7 +34,7 @@
       "http://192.168.11.40:6244/graph/cae/5817/report"
     ],
     "snapshot": {
-      "observed_commit": "b1d9de7261976d37786ef6b6dc4b8616da3a5451",
+      "observed_commit": "b3e70544a5dda528cda1c27dbe27fe37e807fa29",
       "observed_binding_blob": "4ccccde14732478070462b565d8844c8f6cbac2f",
       "scope": "bi01",
       "material": {
@@ -86,23 +86,31 @@
     "limits": "不证明业务正确、审查实际独立、远端已同步或本地调度已部署；输入记录真实性由执行者与审查承担。"
   },
   "actual_live_not_sent_observation": {
-    "observed_commit": "b1d9de7261976d37786ef6b6dc4b8616da3a5451",
+    "observed_commit": "b3e70544a5dda528cda1c27dbe27fe37e807fa29",
     "task_id": "BI01-V2-S123-OBSERVATION-01",
     "task_blob": "442c47cc30226796a16b6f7420af9748d0d1e00e",
     "task_payload_sha256": "9c52e0f654db2cb9362cd6bc1a2000d94e56bfd37058e658f7b1469a0b4422dd",
     "state": "NOT_SENT",
     "evidence": {
-      "observed_at": "2026-10-18T02:21:38.705784+00:00",
+      "observed_at": "2026-10-18T02:30:44.839242+00:00",
       "actual_sending_endpoint": "configured production MCP via mandatory isolated executor; no R0010 sender created/authorized",
       "invocation_id": "BI01-V2-01-R0010-9c54d7a73e2bd619ee5d9f47",
       "ime_calls": 0,
       "send_calls": 0,
       "unknown_send": false,
-      "native_scheduler_revision": 122,
-      "source": "actual root frozen prepared record + all Native thread markers; sole current actor is explicit no-send network/finalgrace"
+      "native_scheduler_revision": 125,
+      "source": "actual root prepared/scheduler, no R10 marker/IME/Send; prior read-only actor positive released/retired; M9 handled and old R8 noReturn/knownNoReply preserved, fresh remote plus bounded shared R8/R10 inventory no new artifacts"
     }
   },
   "whole_goal": "ACTIVE_NOT_COMPLETE",
   "business_gate": false,
-  "phone_gate_still_pending": "R9 original finalgrace closure + real due shared network probe; no R10 sendready/phone yet"
+  "phone_gate_still_pending": "exact canonical recipient + fresh Pro5/5 + empty/full exact composer + Send commitment; no Send yet",
+  "actual_latest_gate_input_commit": "b3e70544a5dda528cda1c27dbe27fe37e807fa29",
+  "real_phone_admission": {
+    "network_valid_until": "2026-10-18T03:24:46.717000Z",
+    "M9_phone_complete": true,
+    "M9_answer_handled": true,
+    "prior_actor_positive_release": true,
+    "R8_R10_shared_new_candidates": []
+  }
 }
