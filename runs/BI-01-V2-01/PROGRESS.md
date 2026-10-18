@@ -509,3 +509,12 @@
 - Native128记已知未承诺/无remote anchor，本R10原ready/marker/payload/remote-base原样保留；不是UNKNOWN Send，不授权复制R8旧稿再次恢复。
 - root核验六原raw SHA/JSON并保留原件，后补<=12KB精确分块；原executor整raw保存偏差与第二mark无独立caller证据均保留，不当作App故障/安全恢复失败。root已查看最终三原lossless tiles。
 - 唯一后继是新的zero继承capture-only actor，正式相关clipboard复制当前可见助手原文一次，仅核确切inv/token/与可见尾的一致性。当前identity未知，尚无能和它对应的远端原件，明确需要此phone原件；不泛化重收R6/R8实物。若旧已收答则去重，若真实迟到答则按R9#late-return保存/消费实际资格；不在未知前计新成果。完整目标保持ACTIVE，原Worker空闲。
+
+
+### 2026-10-18 02:43Z｜实际收取R8迟到专业原答；历史无答复验不倒改
+
+- R10发送前遇到的完整助手实物，经fresh zero继承executor正式关联clipboard Copy一次/await captured/take一次和真实落盘，确定为原R8：两份Return自身invocation及原token准确，不是旧R4/R6，也不是未发R10。7正式phone调用、111原始小分块/整体SHA和JSON由root复核；既有8个无关队列项未消费，不冒称全局队列清空，无本capture未决/新增UNKNOWN，阳性释放且永久退役。
+- 原样rendered正文17,617 UTF8 bytes/9,521 UTF16，SHA256 1d89d7e8b8159e5852a98b7aec282041e55963184baaef2800d9f10b46e021fb；PHONE_RENDERED_RESPONSE.txt与FULL_RESPONSE.md字节相同，原两JSON从实际文本精确substring保存。复制文本无首行marker/Markdown fences，原样保留，不让root补成Pro原文。
+- 本轮新增F08—F14专业观察与全部未完由原文承担；两schema、唯一JSON键、实际R8派发关联、29答内锚点和具名8节点VIEW/SOURCE_BINDING Git对象存在性已通过。完整原稿提交后才运行真实after-return，尚不提前计第9份有效结果。原IN_PROGRESS/INCOMPLETE、未读范围和Pro明确未创建GitHub/ZIP/共享实物的事实保持，不代完整业务Gate。
+- 原1:25:22.747Z UI无STOP/无正文、两COMMITTED及已耗用恢复额度均为真实历史，保留RETURN_VALIDATION_BEFORE_LATE_RETURN.json的未运行原证据。当前晚到不能倒推当时后台取消/未执行，后台完成时刻仍未知；不重开R8恢复时钟。
+- R9#late-return已授权原件迟到处置，迟到原文不自动替换M9的新实证保存安排。R10仍IME0/Send0，原ready02:31:17.353753Z保持；后继将据真实晚答资格、原管理安排及机械合法性处理，不让未证实进展冒充完成。
