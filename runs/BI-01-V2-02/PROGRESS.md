@@ -1,6 +1,8 @@
 # BI-01-V2-02 真实运行进展
 
-当前：**R0008 已完成 Worker S2 技术交付接收、R0007 QWR 题号关联修复和新 Workmap Intake 接入。17 个新节点、1,928 个同图 CSV 已取得执行 Pro 可消费资格；S2 业务解释、六场景 S3、首个 grounded cycle 和完整管理/Owner 接收仍未完成。**
+当前：**R0010 六场景 S1/S2/S3 专业主体已真实提交；R0011 一次有限交付补齐已完成，回交完整性及手机终态均已核验。完整成果尚待原管理接收，R0012 原管理接收消息已准确冻结、发布核回并进入首次发送 episode；当前尚未取得其 COMMITTED 证据或管理决定。**
+
+以下保留各前序轮次当时的事实与限制；最新接续见本页后续记录。
 
 - 运行 `BI-01-V2-02`，业务 `BI-01`；真实 Owner GO 与两个指定版本见 [OWNER_START.md](OWNER_START.md)。旧 V2-01 仍暂停，其采用、Gate、在途及调度不继承。
 - 已有[管理地图](00_长程推进地图.md)和完整[当前任务](01_当前任务.md)，专业范围为连续 S1/S2/S3。管理 Pro 未预选场景、阈值、赢家、配额或单 Case 停点；操作端也未代选。
@@ -34,3 +36,14 @@ R0010 已提交六场景 S1/S2/S3 完整专业分析及10项物理实物，原�
 现有两Return的触发枚举/剩余引用、原local合并S3hash与四段重组字节的差异已具名保留，沿原专业return_repair一次有限补交。R0011已真实COMMITTED、最高Pro、准确2900B、IME1/Send1，当前model_thinking；它不重做六场景分析或另计有效结果。新watched结果的实际Workmap check为INTAKE_STALE，后继仍需原管理实际接收并更新Intake；整体任务持续。
 
 FIRST-GROUNDED-CYCLE 为原R0010同一结果的一次RESULT责任，待与原accept后继在固定管理聊天归并服务；原initialEFFORT已实际消费，R1累计起点保持，R10原作者报告7/下一8待管理确认。
+
+
+## 操作接续：R0011 补齐核验，R0012 原管理完整接收首发执行中（2026-10-18 19:11 UTC）
+
+R0011 原作者真实回交提交为 `e4e01f1e99d897a9e1b5c23bf604c600628d376a`。原 R0010 两 Return 的触发枚举、remaining 引用已修正；两轮完整 schema、实际原 Binding 同 blob/span、Return 关联、全部同答锚点和精确 Git 实物引用通过。原四段六场景业务正文与五份 CSV 保持逐字节一致。原作者已明确：历史 715 行/e00fa319 本地合并原件当前不可取得、不能复验；当前四段 raw concat 仅证明 28400 bytes/714 splitlines/fa67d5d0，不倒签与历史原件等价。完整来源边界见 [S3 重组合同](artifacts/professional-R0010/S3_REASSEMBLY_CONTRACT.json)和[补交原文](artifacts/professional-R0011/DELIVERY_REPAIR.md)。
+
+R0010/R0011 canonical round 正文和两 Return 均只逐字节镜像真实作者 Git 原件，源 commit/path/hash 可追溯；after-return PASS 仅证明回交运输完整性。[主控核验](reviews/professional-R0011/CONTROLLER_RETURN_VERIFICATION.json)不代签专业或管理业务接收。R0011 手机完整收尾和动作行于 19:09:20.927Z 真实取得，独立于 Git 交付确认。
+
+R0012 按原专业 `SUBMIT/accept` 后继交原 `BI01-V202-管理`，并合并一次非阻塞首次 RESULT 责任 `[BI-01, BI01V202_FIRST_RESULT_REASSESSMENT, initial]`，当前 PENDING 而非消费。原 initial EFFORT 已消费，原 R1 计数起点保持；R8 管理确认6/下次8，R10专业报告7，R11纯交付修复不增加有效结果，待原管理核定当前计数及后继。完整六场景正文、所有数据/图索引、资格限制与真实检查随[管理输入](reviews/management-R0012/INPUT.md)提供。
+
+当前 exact Workmap check 唯一错误仍为 INTAKE_STALE，新专业成果需要原管理实际 Intake 接收；未用旧 snapshot、机械 prepare 或原图技术验收代替本次业务接收。R0012 仅为首次发送 episode 运行中，未先宣称送达或决定。后续按真实管理回交持续推进完整目标，不以本批图、单个 Case 或补交完成为停点。
