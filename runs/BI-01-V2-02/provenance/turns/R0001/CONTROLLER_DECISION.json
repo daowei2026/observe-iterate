@@ -1,0 +1,33 @@
+{
+  "work_id": "BI-01",
+  "run_id": "BI-01-V2-02",
+  "invocation_id": "BI01-V2-02-R0001-20261018T130131Z-7f26abeb",
+  "assignment_token": "BI01-V2-02-M-START-a6b833b62eac4a0fa8c23b037a4bac05",
+  "processing_method": "主控按Overlay13处理；非自动语义裁定",
+  "source_commit": "177e81a32203665cb86ea04e8155dd030782c697",
+  "source_full_response": "runs/BI-01-V2-02/provenance/turns/R0001/FULL_RESPONSE.md",
+  "full_response_sha256": "7f007cece07d4c89f45c59ab4b586a6eb504d311872c73fd985a45b7e31ff986",
+  "role_return_schema": "PASS",
+  "question_work_return_schema": "PASS",
+  "after_return_gate": "PASS",
+  "manager_business_outputs": "真实管理地图、完整专业任务、专业Binding、管理决定、人读Reader任务均已发布；不由主控替代其业务判断",
+  "reader_input_unchanged": true,
+  "reader_fingerprint": "a29852320c44b64cf05e4a9250d86104f878718b10dc14a00fe58d18e036b9f8",
+  "selected_action": "CONTINUE_SAME_WORK",
+  "reason": "原M-START尚缺实际Reader Binding及本次管理采用/前置使用签发，不能执行已签后继；详见MSTART_CONTINUATION_REQUIRED.md",
+  "next_invocation_id": "BI01-V2-02-R0002-20261018T133550Z-3e483710",
+  "next_exact_prompt_path": "runs/BI-01-V2-02/provenance/turns/R0002/PROMPT.md",
+  "next_prompt_sha256": "7123aadd0ff4504a5e57e55158e16fe8eb481c62796f18426da6c520ea4049b7",
+  "next_send_prerequisites": [
+    "R0001首回复完整性确认",
+    "首次规范chat名称唯一校验",
+    "原R0001回交运输闭合",
+    "R0002远端读回、机械Gate及实际NOT_SENT"
+  ],
+  "not_claimed": [
+    "Reader调用或PASS",
+    "Workmap Intake或ADOPTED",
+    "专业任务已发送",
+    "S1/S2/S3完成或管理业务验收"
+  ]
+}
