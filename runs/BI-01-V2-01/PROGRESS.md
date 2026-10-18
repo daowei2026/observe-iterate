@@ -414,3 +414,9 @@
 - 重开后STOP消失且无助手正文，原屏30秒复验仍无正文/完整尾部，残留正在思考标签原样保留。最终frame00:59:10.790Z/server完成00:59:11.317Z，按既有UI合同分类generation_ended_without_reply，不推断后端完成。root查看全部最终3张本地图，确认蓝色voice波形、无STOP/正文/大加载圈/错误。
 - 正式phone23、完整App重启1、STOP0/Send0/IME0/正文或文件捕获0；00:59:43.240956Z原section释放固定utility阳性，无pending/UNKNOWN，executor永久退役。原R8首次Send COMMITTED原证据保留，当前完整有效回交仍7。
 - Native仍105，一次恢复重发计数仍0；没有提前把无回复写成Pro完成或清除原90min起点。下一步必须fresh核远端及同轮ZIP，再用既有once-only Native gate，才可另派fresh原稿/原marker恢复Send；当前尚无补发。
+
+## R0008同原稿一次恢复门已通过，真实执行中
+
+- fresh核75733f0远端及有限共享run/inv范围无R8回交后，Native105→106仅一次恢复准入；原payload/marker/任务/Binding不变，原23:41:38.132Z起点和01:11:38.132Z累计90min保持，没有第二70min窗口。
+- fresh零继承恢复执行器已实际派出并正向取得控制，首phone caller01:06:45.856366Z，距原ready01:02:47.958985Z为237.897381s，120秒SLO失败，如实保留。首次本地helper作用域错误发生在phone前，修正后没有重放phone；分项成本缺可靠边界记未知。Native107记录真实首call，未把准备当已Send。
+- 恢复Send承诺尚待真实回执；原首次COMMITTED记录保持，唯一业务R轮仍8，实际已承诺模型消息仍8/完整有效回交7。继续同一专业任务与交付对账，不创建新R或结束完整Goal。
