@@ -1,5 +1,12 @@
 # BI-01-V2-01 真实运行进度
 
+## 当前状态（2026-10-18 04:02 UTC）
+
+- R0010原70分钟边界04:01:47.213Z已到。04:01:55.494883Z实际远端读回，随后核派发base之后11条提交，均无对应最终turn complete；本轮共享ZIP候选空，174控制section均已结束。04:02:03.703429Z仅准入一次无发送的原聊天恢复/重分类，详见 [PHASE_A_ADMISSION](provenance/turns/R0010/DEADLINE_RECOVERY_PHASE_A_ADMISSION.json)。
+- 新零继承executor已准备执行该有限episode：优先保存任何完整或有意义正文；确实原轮仍无正文才最多一次ChatGPT专属重启重分类，必要且准确当前STOP时才可停止一次。当前尚未收其实际结果，不从准入推断重启/STOP已发生。该episode无IME/Send权；任何一次原稿补发仍须主控重新核远端/共享、原载荷及Native单次门，另派fresh executor。
+- 已保存的11未覆盖转折、主Case与F05实证保持原样；恢复不重做数据/图数、不开新chat/新业务R。原90分钟边界04:21:47.213Z和网络期限04:29:02.044Z不变，整体任务继续ACTIVE，完整有效结果仍9。
+
+
 ## 当前状态（2026-10-18 03:29 UTC）
 
 - R0010实际新增提交dc61889；[主Case五截面与F05正反例](artifacts/professional-R0010/MAIN_CASE_CONTINUOUS_OBSERVATION.md)保存原价格序列、Completed历史端点与当前运动差异，以及迟知短段/已知后仍有运动的双向约束。已远端原字节核同，关联本轮准确invocation/token。连同此前[11个未覆盖转折实证](artifacts/professional-R0010/OBSERVATION.md)，均为Pro真实阶段业务原件；尚无最终turn complete或两Return，不冒称管理接收，不增加完整结果计数。
