@@ -21,3 +21,8 @@
 请在原获准分支，保持 R0010 原 invocation/token 身份修复其确切缺件，另用本次 R0011 准确 invocation/token 形成简短补交说明及合法两Return，明确完整实质接续仍是管理accept + 首个grounded RESULT，不能自签管理或Owner接收。R0011自己的QWR也必须用原合法S1/S2/S3 focus、合同枚举、一致remaining引用；“专业无主体剩余”用原锚点准确表达即可。
 
 按既有约束，同一机械缺件原作者仅此一次有限补交；如仍未解决，交原Binding decide具名窄处理，不无限修格式或扩大成全局管理。普通专业新方向的Workmap接收不在本轮代签，R0010新增watched成果仍待原管理实际接收。
+
+
+## 原作者追加提交的准确保全
+
+远端 da9b14377fd46e619a46db02273d5fef4c7b7e11（同一原R0010 turn complete）仅把 ROLE_RETURN.completed_scope_ref 从 #completed-s1 改为 #result。此补正已真实取得并保留，不能在本次有限补交时回退。上列两枚举、remaining mismatch 和S3原hash/行数问题在该最新提交上仍未解决；本次应以 da9b14377fd46e619a46db02273d5fef4c7b7e11 的最新ROLE为修复起点，其他原实物字节未变。此前R11准备载荷未ready、IME0/Send0，因真实远端追加而更新引用，不构成重复派发。
