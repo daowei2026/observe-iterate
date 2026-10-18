@@ -1,6 +1,6 @@
 # BI-01-V2-02 真实运行进展
 
-当前：**R0007 管理已实际交回 S1 初始接收、EFFORT 复看与同工作安排；其 QWR 题号关联需原管理窄补。Worker 六场景 17 新节点/1,928 同源 CSV 已全交并 Git 远端核回；新增 Worker 成果使 Intake 快照需定向接收。S2/S3 业务消费及完整管理接收仍未完成，操作端连续按原机制接续。**
+当前：**R0008 已向原管理聊天真实 COMMITTED，管理正接收 Worker 全量图数并处理原 R0007 题号关联与新 Intake 快照。Worker 17新节点/1,928同源CSV已全交、远端核回；初始 S1 已接收，S2/S3 专业消费和完整管理接收仍未完成。**
 
 - 运行 `BI-01-V2-02`，业务 `BI-01`；真实 Owner GO 与两个指定版本见 [OWNER_START.md](OWNER_START.md)。旧 V2-01 仍暂停，其采用、Gate、在途及调度不继承。
 - 已有[管理地图](00_长程推进地图.md)和完整[当前任务](01_当前任务.md)，专业范围为连续 S1/S2/S3。管理 Pro 未预选场景、阈值、赢家、配额或单 Case 停点；操作端也未代选。
@@ -24,3 +24,5 @@
 - R0007 原两schema、身份、Binding、九锚点和六实物均真核；`association_errors`唯一QUESTION_NOT_ASSIGNED（focus M-REASSESS相对原S1/S2/S3），详见[原核验](provenance/turns/R0007/RETURN_VALIDATION.json)。原失败保留，不改写原管理决定，不通过改Binding或控制器消除错误。
 
 - R0007 手机也已真实完整结束，见[完成回执](provenance/turns/R0007/PHONE_COMPLETION_RECEIPT.json)：17:21:26.883Z完整JSON尾/操作栏、无STOP，17:21:57.559Z分类；没有重发或复制全手机正文。R0008准确载荷已准备、verify/pre-dispatch/远端读回通过，但仍未发送，待当前例行网络租约复核后按原管理具名路线首次提交。原R7题号缺项与新Worker Intake仍由原管理负责，S2/S3完整目标继续。
+
+- R0008 原管理 `decide` 消息已真实 COMMITTED，见[发送回执](provenance/turns/R0008/SEND_RECEIPT.json)。当前最高 Pro/空稿和 FULL 59,663B/37,254U16/SHA 全同均实证通过，累计IME1/Send1；null后仅同草稿安全聚焦，没有重输。17:37:28.682Z准确本轮气泡及STOP、无pending/error，17:38:05.120Z完成分类；R7原消息和初始EFFORT未重发。普通专业派发Gate的INTAKE_STALE仍保留，等待本轮原管理实质接收、原QWR一次窄补和真实Gate再核。
