@@ -143,6 +143,9 @@ AI 当前只读取图所对应的**真实数据、必要图层导出与时间/�
 本次实际证据：`daowei2026/observe-iterate@750adeb4007c2fe0f7d44abeb9ab14a9bbe867e7:runs/BI-01-V2-01/provenance/turns/R0006/FULL_RESPONSE.md::#findings`
 本次实际证据：`daowei2026/observe-iterate@b9ecbfa4b27f40365ed72f35448116420fb085a6:runs/BI-01-V2-01/artifacts/worker-R0004/readable_views/REQUESTED_51_CURRENT/READING_GUIDE.md::full`
 本次实际证据：`daowei2026/observe-iterate@1917f868d61f8de7110b7165ee9125e5b156c4d2:runs/BI-01-V2-01/artifacts/worker-R0004/final/READING_GUIDE.md::full`
+本次实际证据：`daowei2026/observe-iterate@edbd2d7447feade55e523067b6d86aac27cf7d0c:runs/BI-01-V2-01/provenance/turns/R0008/FULL_RESPONSE.md::full`
+本次实际证据：`daowei2026/observe-iterate@edbd2d7447feade55e523067b6d86aac27cf7d0c:runs/BI-01-V2-01/provenance/turns/R0008/RETURN_VALIDATION.json::full`
+本次实际证据：`daowei2026/observe-iterate@edbd2d7447feade55e523067b6d86aac27cf7d0c:runs/BI-01-V2-01/provenance/turns/R0008/LATE_RETURN_DISPOSITION.json::full`
 
 ## 本次直接读取的上下文
 
@@ -245,8 +248,8 @@ AI 当前只读取图所对应的**真实数据、必要图层导出与时间/�
 方法版本、业务合同版本、源码版本和运行数据分别保持准确，不随一次方法更新全部追 latest。
 
 运行事实（来自现有记录）：
-观察时间：2026-10-18T02:19:05.698385+00:00
-有效回交数：8
+观察时间：2026-10-18T02:44:59.774531+00:00
+有效回交数：9
 
 按既有协议交完整实质回答及ROLE_RETURN/QUESTION_WORK_RETURN，来源、未执行和资格如实保留，不新增控制表，不重抄协调者已存提示。完整任务未完成就保留完整责任及连续后继，局部交付不自设停点。要求GitHub提交时普通快进并fresh回读，最后commit message带turn complete及本轮invocation_id，无invocation时简要标明执行身份；不造空提交。
 
