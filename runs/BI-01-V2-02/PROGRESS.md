@@ -1,6 +1,6 @@
 # BI-01-V2-02 真实运行进展
 
-当前：**R0010 六场景 S1/S2/S3 主体及 R0011 有限补交已真实收齐并校验，尚待原管理接收。R0012 唯一一次输入后 FULL 读回不可用，Send0／NOT_SENT；原草稿保留，新的受控 episode 正在只读核对同一草稿，通过精确校验后才恢复原首次发送。完整长程任务继续运行。**
+当前：**R0010 六场景 S1/S2/S3 主体与 R0011 有限补交已实际收齐并校验；R0012 已向原管理真实 COMMITTED，当前 model_thinking。保留草稿恢复后完整 SHA/UTF8/UTF16 精确，累计输入1次、发送1次。完整业务接收、首次成果复看及下一有权安排仍待真实管理回交；长程任务持续运行。**
 
 以下保留各前序轮次当时的事实与限制；最新接续见本页后续记录。
 
@@ -50,3 +50,10 @@ R0012 按原专业 `SUBMIT/accept` 后继交原 `BI01-V202-管理`，并合并�
 
 
 R0012 首次发送尝试实际停在正文精确读回门：输入1次、Send0，未清空、重输或追加；见 [真实未发送记录](provenance/turns/R0012/SEND_ATTEMPT_01_NOT_SENT.json)。保留原 invocation/token/payload/草稿，通过现有草稿恢复机制接续，不将输入完成当作送达，也不重复派发。首次 RESULT 责任仍 PENDING，管理尚无本轮决定。
+
+
+## 操作接续：R0012 已真实交原管理思考（2026-10-18 19:23 UTC）
+
+原保留草稿于19:20:49.197Z取得 FULL exact，root 依据真实 Send0 与精确原稿证据恢复原首次发送，原 invocation/token/hash 不变。新 executor 发送前再次 FULL 精确，通过后仅一次 Send，实际19:23:20.410–19:23:24.025Z；强证据帧19:23:31.211Z显示当前准确 invocation/token 无待发送或错误并有正在思考/STOP。累计 IME1/Send1/clear0/retype0，无重复派发，准备与恢复成本均保留。见 [发送收据](provenance/turns/R0012/SEND_RECEIPT.json)。
+
+原 `SUBMIT/accept` 与首次非阻塞 RESULT 在同一原管理调用合并服务；稳定责任键当前 IN_FLIGHT，尚未收到或消费决定。root 继续收取真实 GitHub/ZIP 回交和手机状态，按其实际接收、地图/任务/Gate及后继安排持续推进全目标。
