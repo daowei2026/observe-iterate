@@ -377,3 +377,9 @@
 - caller00:15:07.680Z距due16.291s，120秒SLO通过；frame00:15:06.419Z/实际server完成00:15:06.904Z分列。准确R8 inv/token/professional+正在思考/STOP，三无损tiles实查，无助手正文/尾部/error/大加载圈。
 - 正式observe1/其他phone动作0；00:13:56.657033Z取得和held阳性先于phone，00:16:08.764945Z原section释放阳性。first-call最终文件事后落盘，root在00:15:34Z曾读其不存在，不能宣称已证明首phone前文件落盘；准确caller采样及raw/server时间保留，日志时序偏差单独限定，不虚构手机调用或门通过。
 - native101保留原思考起点；下一00:25:06.904Z（北京时间08:25:06），共享准入至00:34:20.650Z。全部pending/UNKNOWN为空，executor退役；实际调用8/完整有效结果7，继续原专业任务等待真实回交。
+
+## R0008第四次只读观察：仍思考，后继跨共享准入节点
+
+- 原due00:25:06.904Z；实际caller00:25:29.583Z迟22.679s满足120秒。预调用意图00:25:17.167434Z文件由executor真实exec exit0先落盘，再独立采样实际caller；frame00:25:28.316Z/server完成00:25:28.841Z分列。准确本轮inv/token/professional、正在思考/STOP，全部三tiles实查，无正文/尾部/错误/大加载圈。
+- observe1/其他phone动作0；00:26:29.627370Z原section释放阳性，无pending/UNKNOWN，executor退役。root曾误用最终已追加字段文件的mtime推断初次创建而本地assert失败，零phone/native副作用；已按实际pre-write/caller证据纠正，不改Pro或executor原件。
+- native102原thinking起点保持；下一00:35:28.841Z（北京时间08:35:28）将跨现有共享准入00:34:20.650Z，按原60min机制有限续验，不重算/重画/重跑前测。实际调用8/完整有效回交7，完整Goal持续。
