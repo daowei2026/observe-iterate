@@ -7,6 +7,8 @@ mode: `OBSERVATION_SCOPE`
 work_status: **SUBMITTED**  
 delivery: **READY FOR MANAGEMENT REVIEW — NOT ACCEPTED**
 
+> **R0011 有限交付订正，不改变本文件的业务分析、资格或接收状态。** 历史提交曾声称存在一个 715 行、SHA256 为 `e00fa31976d68c8151b3594f2cd860ee6ed09c6dbf7684d6e2fd88d901758e59` 的本地合并原件；该原始字节流当前不可取得，故不能复验，也不以新拼接串倒签。四个已交付正文分段保持原字节不变；按 `PART_00 → PART_01 → PART_02 → PART_03` 无分隔 raw concat 的可复验结果为 `28400 bytes / 714 splitlines / SHA256 fa67d5d09dc17098291e8ce545ebc0c19424c7f287a6ab3caec16f8f553c8498`。详见 `S3_REASSEMBLY_CONTRACT.json` 和已订正的 `S3_BUSINESS_OBSERVATION.md`。旧声称仍可在历史提交 `b3284c7737b04ebb3ae5b58192d117fa459e33d3` 追溯。
+
 <a id="result"></a>
 ## 1. 实质结果
 
@@ -200,16 +202,19 @@ NOT_YET — this effective result makes 7 / next threshold 8
 <a id="artifacts"></a>
 ## 8. 本轮实物
 
-| 文件 | 作用 | SHA256 |
+| 文件／对象 | 作用 | 可复验身份 |
 |---|---|---|
-| `S3_BUSINESS_OBSERVATION.md` | 六场景完整业务正文 | `e00fa31976d68c8151b3594f2cd860ee6ed09c6dbf7684d6e2fd88d901758e59` |
+| `S3_BUSINESS_OBSERVATION.md` | S3 正文索引及 R0011 交付元数据订正 | 当前 Git 文件；不再把历史不可复验的 merged SHA 当作本索引 SHA |
+| `S3_BUSINESS_OBSERVATION_PART_00.md`—`PART_03.md` raw concat | 六场景完整业务正文的已交付四段，正文在 R0011 零字节修改 | `28400 bytes / 714 splitlines / SHA256 fa67d5d09dc17098291e8ce545ebc0c19424c7f287a6ab3caec16f8f553c8498` |
+| 历史本地合并原件 | R0010 当时声称的本地 merged source | 当前不可取得；历史声称 `715 lines / SHA256 e00fa31976d68c8151b3594f2cd860ee6ed09c6dbf7684d6e2fd88d901758e59` 未复验，不倒签 |
+| `S3_REASSEMBLY_CONTRACT.json` | 分段 blob、顺序、无分隔拼接、行数方法及复验命令 | 本次有限交付补齐 |
 | `S2_CHART_AND_DATA_INDEX.csv` | 17 图／数据节点索引 | `b63a4faa13475376522d5b79fb02bab9fe9753b42ab6eca0d25d96dc31558d59` |
 | `B_MEMBER_PAYLOAD_EQUIVALENCE.csv` | B 包 17 member 等价核对 | `ecc5b46677d71bfe43439f1843be2cfe8158b92cd9b366bf91cde70d5f11588e` |
 | `COMMON_CUT_AND_BASELINE_FACTS.csv` | common-cut 与 N baseline | `784177719abb08e7c92bd3b3851022a3077106ac2571e35ade177352f40e554b` |
 | `SCN01_R02_N_ASOF_COMPARISON.csv` | SCN-01 五 As-Of identity/lifecycle | `017051158e7596224755de496fe87da83b2e70a5eabf5b6a770125a0a38ad425` |
 | `SCENE_OUTCOME_PATH_FACTS.csv` | 后验 fixed-horizon 路径及资格 | `449a9c92bb023665aef6accd39f9752353a6e62c525e1edc378fcd054fb3fdbc` |
-| `QUESTION_WORK_RETURN.json` | question-work/v2 回交 | 提交后 fresh read |
-| `ROLE_RETURN.json` | longrun-return/v1 回交 | 最终 turn-complete 提交 |
+| `QUESTION_WORK_RETURN.json` | question-work/v2 回交 | R0011 已把 trigger state 订正为合同枚举 |
+| `ROLE_RETURN.json` | longrun-return/v1 回交 | R0011 已把 remaining scope 对齐为 `#no-professional-remaining` |
 
 <a id="no-professional-remaining"></a>
 ## 9. 本轮专业剩余
@@ -237,9 +242,9 @@ recipient = chatgpt:细节叙事生成_金标:BI01-V202-管理
 <a id="question-work-return"></a>
 ## 11. QUESTION_WORK_RETURN
 
-见 `QUESTION_WORK_RETURN.json`。S1、S2、S3 均指向本轮 exact 完成位置；batch remaining 指向 `#no-professional-remaining`。
+见 `QUESTION_WORK_RETURN.json`。S1、S2、S3 均指向本轮 exact 完成位置；batch remaining 指向 `#no-professional-remaining`。R0011 有限补交仅把触发状态改成 schema 合法枚举，没有改变原触发事实。
 
 <a id="role-return"></a>
 ## 12. ROLE_RETURN
 
-见 `ROLE_RETURN.json`。状态为 `SUBMITTED`、delivery `READY`、handoff `SUBMIT/accept`。
+见 `ROLE_RETURN.json`。状态为 `SUBMITTED`、delivery `READY`、handoff `SUBMIT/accept`；`remaining_scope_ref` 与 QWR 一致指向 `#no-professional-remaining`。
