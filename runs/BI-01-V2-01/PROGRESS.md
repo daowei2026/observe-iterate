@@ -1,5 +1,12 @@
 # BI-01-V2-01 真实运行进度
 
+## 当前状态（2026-10-18 04:12 UTC）
+
+- R0010一次无发送重启/重分类真实完成：首调用04:02:44.247Z，距原due晚57.034秒，120秒SLO通过。24次手机调用、ChatGPT专属重启1次；IME/Send/STOP/copy均0。准确原Project/唯一原专业聊天与R10标记、token关联已新鲜确认；04:12:11.987Z最终观察经30秒同屏复验，仍无STOP/无助手正文，残留“正在思考”不构成model_thinking或后台取消证据。04:12:25.450987Z阳性释放退役，无pending/UNKNOWN。详见 [PHASE_A_RESULT](provenance/turns/R0010/DEADLINE_RECOVERY_PHASE_A_RESULT.json)。
+- 恢复期间真实新增1e0923的[35个C1广域逐项实证](artifacts/professional-R0010/BROAD_SCOPE_OBSERVATION.md)，27458字节、远端原字节核同。保存全部原选择的成员/组外/时钟及后续路径处置、F05反例与缺失正向能力；当前为Pro原件、非最终Return或管理接收。此前未覆盖转折、主Case实证同样保留。
+- root现重新对账远端/共享；若仍无最终Return，只按原Native一次门办理同chat/同marker/同原载荷的恢复，不另造业务轮次或扩权限。当前恢复Send尚未执行；原90分钟04:21:47.213Z保持，完整有效结果仍9，完整任务继续ACTIVE。
+
+
 ## 当前状态（2026-10-18 04:02 UTC）
 
 - R0010原70分钟边界04:01:47.213Z已到。04:01:55.494883Z实际远端读回，随后核派发base之后11条提交，均无对应最终turn complete；本轮共享ZIP候选空，174控制section均已结束。04:02:03.703429Z仅准入一次无发送的原聊天恢复/重分类，详见 [PHASE_A_ADMISSION](provenance/turns/R0010/DEADLINE_RECOVERY_PHASE_A_ADMISSION.json)。
