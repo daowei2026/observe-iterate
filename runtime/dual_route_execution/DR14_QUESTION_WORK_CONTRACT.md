@@ -60,7 +60,7 @@ Git方法、旧实物和任务用 `repo`、40位 `commit`、仓库根 `path`、`
 
 **上述字段的完整目标解释：每次实质业务推进必须朝完整做完所属用例当前阶段全部约定工作进行。禁止把单个Case、一组局部观察、一个入口/文件或最近修复清单设为本轮目标和停点。**full_scope_ref保留全部责任；batch_result记录实际交回增量，focus_ref只决定顺序，completion_ref不得用局部交付结算全目标。真实容量或依赖限制如实说明，其他已明确工作继续；不得为每个地图节点创建一轮任务。
 
-BI-01 V2 首次管理和专业任务必须在真实 source_reads 中纳入 [00 目标](../../professional/v2/00_PURPOSE_AND_THREE_STEP_FLOW.md)、[04 原 I1–I3 业务起点](../../professional/v2/04_BI01_BUSINESS_BASELINE.md)、[05 固定数据及路径](../../professional/v2/05_BI01_FIXED_INPUT_DATA.md)、[06 U2/U3 人读叙事、用例卡、具体 Local Contract/Method 来源](../../professional/v2/06_U2_U3_DESIGN_SOURCE_MAP.md)，按当前步骤加读 S2/S3 对应的 01/02/03 和真实承重设计正文。两份固定 ZIP 当前 Codex 目录 `/dwdhome/fy/资金管理`；不重算、AI 不视觉看图、aidata 优先不改且需改只能新建独立分支。旧 I1–I3 的业务背景可复用但旧 Gate/Pro 结论不继承；ZIP 必须实际可消费，不能用 Git 索引或候选方法标题当完整 Source。
+BI-01 V2-02 首次管理和专业任务须在真实 source_reads 中纳入 [00 业务目的](../../professional/v2/00_PURPOSE_AND_THREE_STEP_FLOW.md)、[07 叙事到基础行情再到 U3 后续质量检验](../../professional/v2/07_BUSINESS_SCENE_OBSERVATION_METHOD.md)、[06 U2/U3 业务 Source](../../professional/v2/06_U2_U3_DESIGN_SOURCE_MAP.md)及承重 Owner Decision/Narrative/Use Case 正文、[04 原 I1–I3](../../professional/v2/04_BI01_BUSINESS_BASELINE.md)、[05 固定 ZIP](../../professional/v2/05_BI01_FIXED_INPUT_DATA.md)，再按实际阶段真实读 01/02/03。场景的类别、阈值和样本必须由专业执行按真实市场需要提出，不能预设；管理接收必须检验 U2 位置成员和 U3 **当时对后续成员运动质量的辨别与反证**，不能以字段表、图数或原 35/11 Case 完成为业务 PASS。两个 ZIP 在 `/dwdhome/fy/资金管理`、不重算、AI 不视觉看图；旧 `BI-01-V2-01` 暂停，原 Gate/任务/业务接收不继承，图经实际身份/浏览器渲染核验后才可有限复用。
 
 普通题内具名子问题优先引用原题，不发新编号。真实必要问题确超出题库时，管理/有权Pro可使用本工作内 `CASE-...`：definition_ref给出业务问题、当前输入、交付、结束/返回和与原义务关系；authority_ref给实际授权；parent_question_id可指相关固定题，确无则null。每个CASE均须定义，未使用的定义不塞入绑定。CASE不自动进入通用core，不扩权限、不豁免其他义务。
 

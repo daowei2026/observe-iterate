@@ -26,19 +26,19 @@ Owner只需完整目标、当前来源、实际权限及未入库的新纠正，
 
 ## 3. BI-01 V2 专业工作组合：S1 → S2 → S3
 
-本段规定的是本轮要获得的**真实业务认识**，不重新定义 AI 角色或消息运输。完整依据是 [V2 业务目标](../../professional/v2/00_PURPOSE_AND_THREE_STEP_FLOW.md)、[原 I1–I3 业务依据](../../professional/v2/04_BI01_BUSINESS_BASELINE.md)、[固定的两份预计算 ZIP 与数据位置](../../professional/v2/05_BI01_FIXED_INPUT_DATA.md)、[aidata 制图与数据](../../professional/v2/01_AIDATA_CHART_AND_DATA.md)和 [S3 观察](../../professional/v2/02_OBSERVATION_IDEAS_AND_VALIDATION.md)。本轮小范围预验算**已经完成**，不是要在长程运行中重新开展的普通阶段。
+本段规定的是**真实业务认识**，不重新定义角色或手机运输。业务按 [00 完整目标](../../professional/v2/00_PURPOSE_AND_THREE_STEP_FLOW.md)与 [07 从叙事到市场场景和质量辨别](../../professional/v2/07_BUSINESS_SCENE_OBSERVATION_METHOD.md)进行；原 [04 I1–I3](../../professional/v2/04_BI01_BUSINESS_BASELINE.md)、[05 固定数据](../../professional/v2/05_BI01_FIXED_INPUT_DATA.md)、[06 U2/U3 叙事和具体设计](../../professional/v2/06_U2_U3_DESIGN_SOURCE_MAP.md)、[01 画图](../../professional/v2/01_AIDATA_CHART_AND_DATA.md)、[02 分析](../../professional/v2/02_OBSERVATION_IDEAS_AND_VALIDATION.md)均须按实际任务消费。**从基础行情真实选场景，不预设类别**；固定原件已提前验算，当前不重算。
 
-### 3.1 S1：确定观察对象
+### 3.1 S1：理解原业务叙事，从基础行情发现真正值得研究的位置
 
-针对固定 rb/i/hc，先看 U2 的共同机会簇形成位置和成员是否合理，再看这些位置 U3 四个方面能否真正辨别品种好不好做。原 OP-01/Q-01 和 I1–I3 的设计/方法/数据认识必须用作业务起点；四方面应与真实 U3 合同和固定 CSV 一一对应，不能凭名字猜算法。
+先阅读 U2/U3 Narrative/Use Case 的真实业务场景与质量辨别问题，查看固定 rb/i/hc 基础 K线、Zig/贴近转折图及同源数据，再由实际市场决定重要共同方向机会和成员强弱研究位置。**不预先划分场景类别、成员质量排名或用例配额**；回顾性选出的行情不能作为“当时预测成功”的证明。原 OP-01/Q-01、I1–I3 设计背景及 [07](../../professional/v2/07_BUSINESS_SCENE_OBSERVATION_METHOD.md) 是真实观察依据，不是 raw 候选字段审计的指令。
 
-### 3.2 S2：确定观察图并真实制图
+### 3.2 S2：先基础行情图，再有目的叠加 U2/U3
 
-专业者基于原业务目标确定图层、窗口和对照，由有权 Worker **直接使用固定两份 ZIP** 通过 **aidata** 取得可查看的真实图和相同窗口数据。不得重算 U2/U3 或因为存在正式 Feature 而换掉这批数据。aidata 尽量只使用不修改；如现有接口确实缺少所需的通用能力，先查 README、OWNER_INTENT_AND_RATIONALE、TODO 和源码，确需改动**仅在 aidata 新建分支**进行，不能改其现有分支或在本仓另造一套。已有数据问题只做有界核对并反馈。
+专业者依据真实场景签 Worker 工单，先使用 aidata 对固定两包中的 K 线、Zig、贴近转折形成 Owner 可查看图及同窗口结构化数据；有意义场景形成后才按需要叠加 U2 位置/成员及 U3 四束和既有 N 事实。旧图/数据经版本和浏览器真实可看核对可复用，不能因为旧 320 图存在就自动复用其选样决定或一口气重画。**不重算 U2/U3**、不换数据；必要通用 aidata 修复仅在其全新独立分支，避免重复造工具。真实字段问题有界核对和反馈，不抢占场景分析主线。
 
-### 3.3 S3：基于图及其数据提出观察想法
+### 3.3 S3：四方面当时的成员区分，后续质量是否支持
 
-专业 Pro **本轮不视觉看图**，只读取 Owner 所看 aidata 图的对应结构化数据与时间/标记信息，检查 U2 簇位置与真实行情是否吻合、U3 四方面是否具备区分价值，指出不合理、原因、支持/反证与未知，并把结论定位到 Owner 可查看的同范围图。需要时回 S2 基于固定原件补图，不因缺少视觉模型建立新工作。
+专业 Pro 读与 Owner 图同源的数据，先说明所选场景与原业务目的的关系、U2 位置成员边界的合理性，再用合法 As-Of 的 Progress/Friction/Retention/ObservabilityAndConstraint 证据说明**为什么可能分辨较强或较弱的成员，或者为什么不能合理分辨**。用有资格的 Outcome/End（或明确标为探索性的后续行情）检查支持/反证，做已有 C0/N 和简单事件关联的比较；不能把历史完成结果泄漏进当时 Current、由回顾性找赢家宣称预测成功，不能以四束字段存在性替代“够不够用”的业务结论。图/数据/结论直接关联供 Owner 点击核查。
 
 ### 3.4 完整责任、技术任务与反馈
 
@@ -139,7 +139,7 @@ BI-01 V2 按 S1–S3 的完整目标及真实图、同源数据、具体不合�
 
 新 run：本轮真实 Owner GO → M-START 管理形成完整 S1–S3 任务和可派发 Binding → 执行 Pro 确定观察对象和图 → 有权 Worker 使用 aidata 形成真实图/数据 → 执行 Pro 分析和反证 → 必要时 S2/S3 循环 → 管理接收/Owner 审核重要取舍。上述是业务关系，不是固定消息轮数或由机器自动颁发的完成资格。
 
-V2 `BI-01-V2-01` 的执行状态从零开始，旧 run 的 Pro 结论、聊天、预算和 Gate 不继承；**但固定两份预计算 ZIP 是当前 Owner 明确给定的业务输入，并非待选择的历史候选**，数据身份/位置/哈希差异见 [05](../../professional/v2/05_BI01_FIXED_INPUT_DATA.md)。原 I1–I3 的业务依据也必须读取，不能因为删旧 run 就丢弃；新的业务发现仍在本次运行中形成。
+新 `BI-01-V2-02` 的业务身份与前一 `BI-01-V2-01` **Owner 暂停**的历史运行隔离：旧 R/GO、Workmap/管理 Gate、专业选样和在途不能取得新授权，旧图数与原数据可核版本引用但不继承专业已完成资格。新 run 仍使用固定两份预计算 ZIP（不是待挑选的历史输入），身份见 [05](../../professional/v2/05_BI01_FIXED_INPUT_DATA.md)，原 I1–I3 业务 Source 保留。新场景由叙事和基础行情决定，不预设分类/配额。只有真实新 Owner GO 才能启动新 M-START 和采用流程。
 
 
 ### 已发现错误设计、结果或工具时的定向修订
