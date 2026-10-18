@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/dwdhome/fy/observe-iterate-bi01-v2-02/runtime/overlay/tools/workmap_gate.py", line 383, in <module>
+    if __name__=='__main__': raise SystemExit(main())
+                                              ^^^^^^
+  File "/dwdhome/fy/observe-iterate-bi01-v2-02/runtime/overlay/tools/workmap_gate.py", line 372, in main
+    result=check(args.repo,args.ref,args.binding,args.scope,base_ref=args.base_ref,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/dwdhome/fy/observe-iterate-bi01-v2-02/runtime/overlay/tools/workmap_gate.py", line 269, in check
+    if not valid_report(v,claim.get('evidence')): errors.append('VALIDATION_EVIDENCE_UNBOUND')
+                          ^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
