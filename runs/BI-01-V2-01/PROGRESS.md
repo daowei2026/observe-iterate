@@ -440,3 +440,9 @@
 - invocation BI01-V2-01-R0009-26e36d93fb3fd38bb60931e4，原管理聊天/原Binding decide → M-REASSESS；请求原管理根据R8实际NoReply与完整现行责任签发合法后继，不重复已消费CHANGE/RESULT，不虚记EFFORT8。完整当前Task81533与M7#adoption/完整原答、最新实际Intake128586及真实R8运行证据按exact引用进入。
 - policy11626、实际gatecode7378966保持；dispatch prepare/verify通过，56049 UTF8/35172 UTF16，SHA 204e20cd01882cf9db45dc37b721e03542570f76594eac4f0f754382fd3a40b7，四原件已推44c3e1e并fresh远端原字节一致。实际BI01 pre-dispatch、Workmap dispatch在44c3e1e/actor management_review/base128586通过，当前真实Native111与唯一新invocation确认NOT_SENT，R9尚无phone/IME/Send/UNKNOWN。
 - 完整有效结果仍7、实际模型承诺消息9；fresh sender包已准备，待本检查发布/远端核验后Native记录真实ready并派fresh零继承执行器。未把准备当发送或管理接收。完整Goal持续。
+
+## R0009实际未发送：原管理chat出现Too many requests，安全恢复中
+
+- fresh正确Project唯一原BI01-V2-管理进入后明确Too many requests，旧R0005正文占位；frame01:34:52.225Z/server完成01:34:52.723Z。最高Pro档位/full空/输入exact尚未开始，不能声称这些门通过。IME0/Send0/STOP0/重启0/重试0，phone6；01:35:27.607220Z阳性释放，163sections全terminal，无pending/UNKNOWN，executor永久退役。root核6raw各chunk SHA并重组合法原JSON，原result保持。
+- 首caller独立时钟仅秒精度01:33:43UTC，距原ready01:32:42.516957Z为60.483043–61.483043s，120秒SLO通过；server action_started01:33:43.481Z另列。executor60.964043s值实际是ready到server动作之差，不冒称更高精度caller。Native113保存原采样秒，114记实际未发送终态，原ready/原inv/原稿均保持。
+- 已派fresh零继承safe非发送恢复，最多3次真实只读/导航尝试和每次fresh证据，恢复即停；仅snackbar消失且仍旧占位不足成功。本episode零IME/Send/STOP/App重启/网络改动，三次真实失败才按第三败+1h记录后续安全恢复。当前尚无恢复成功或三败结论，不计新Pro调用或有效结果；完整Goal继续。
