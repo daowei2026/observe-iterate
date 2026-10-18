@@ -427,3 +427,10 @@
 - 正式phone26/IME1/Send1，STOP/重启/新chat/重试0，01:14:29.779965Z原section释放固定utility阳性，161sections全terminal，无pending/UNKNOWN，executor退役；root核全部26raw SHA一致。原R8 SEND_RECEIPT保持，本次另存RECOVERY_SEND_RECEIPT；唯一业务轮8、实际模型已承诺消息9、有效完整回交仍7。
 - 首call实际独立caller01:06:45.911Z，ready后237.952015s，120秒episode SLO失败；前件及Native107曾误用提前54.634ms的落盘意图01:06:45.856366Z，保留原记录并在本回执纠正，不虚称实际时间。推理菜单一次off/on迂回均在IME前，最终fresh5/5已证明。普通next按server+600为01:24:02.859Z，不采用frame+600的早0.522s建议。
 - Native108沿用原23:41:38.132Z起点、01:11:38.132Z累计90min，恢复计数1、无第二70min窗口。fresh远端746f04b及有限共享作用域无同轮交付；已派新的零继承timeout executor，先fresh看有无答复，仅准确STOP无正文时一次App-only重启和真实网络/Recent/Projects postcheck，返回原chat分类。该episode零STOP/IME/Send，结果尚待真实验收，不再重发。完整Goal继续。
+
+## R0008累计90min重启真实结束：再次UI无回复，转原管理决定
+
+- 初始新鲜frame01:17:07.654Z/server01:17:08.159Z准确当前R8恢复bubble有STOP、无正文；首caller距原90due329.517s，120秒SLO失败，原时钟未重设。01:17:15.932Z开始一次ChatGPT专属重启，仅目标卡水平关闭、其他App保留，正式launch完成01:18:35.789Z。
+- 实际SSID读取区间01:18:47.577–47.813Z通过（工具无server采样时间如实限定），Recent实际聊天行完成01:19:52.576Z/Projects全部实际项目行完成01:22:30.340Z通过，新的共享lease至02:22:30.340Z。回正确Project唯一原执行chat，STOP absent/无正文；45秒原屏复验最终frame01:25:22.217Z/server01:25:22.747Z仍无回复，残留思考标签保留，按UI合同NoReply，不推断后端状态。root看全部最终三tiles并核26raw SHA一致。
+- phone26、完整App重启1、STOP/IME/Send0，01:25:44.915661Z原section释放阳性，162sections全terminal，无pending/UNKNOWN，executor退役。一次操作前metadata查找误用regex多暴露一个只读声明但未调用，偏差保留。Native109/110/111依实际时点顺序记重启/真实probe/NoReply，不造十分钟思考或再次恢复窗口。
+- 本轮无原答及两Return，RETURN_VALIDATION明确NOT_RUN，不造FULL_RESPONSE/turn-complete；完整有效结果仍7，实际模型承诺消息9/唯一业务轮8。原Task/Binding及M7管理接收/完整剩余有效。按已签decide路线和共同协议5.5请求原管理Pro作新决定，准备R0009 M-REASSESS；不宣称EFFORT8触发或复用旧消费，不把换marker当第二次原稿恢复。完整Goal继续。
