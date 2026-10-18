@@ -395,3 +395,9 @@
 - 首phone caller00:35:52.554Z距原due23.713s，满足120秒；预调用意图/控制证明先落盘。经fresh Projects/正确Project唯一原BI01-V2-执行行回返，未扫描旧bubble。进入瞬间第5帧尚在渲染旧文件卡，不作当前状态；独立第6次新鲜observe见准确R8 token/professional+正在思考/STOP，尚无助手正文或完整尾部。
 - 最后当前chat frame00:37:18.492Z、server完成00:37:19.147Z分列；6次正式phone（4导航动作+Projects初看+原chat最终observe），输入/Send/STOP/复制/文件/重启0。00:38:05.799412Z原section释放固定utility阳性，无pending/UNKNOWN，executor退役，六raw hash核同。
 - native104保持原thinking起点23:41:38.132Z；下一00:47:19.147Z（北京时间08:47:19），共享准入至01:31:50.672Z。实际调用8/完整有效回交7，原专业任务持续，尚无新回交，不重发或先触发EFFORT。
+
+## R0008第六次只读观察：原70min接续节点优先于下一普通观察
+
+- 首caller00:48:05.766Z距due46.619s满足120秒；frame00:48:04.488Z/server完成00:48:05.015Z分列。正确原chat连续性+当前token/professional及invocation可见后缀关联，标题遮挡部分inv，未冒称本屏全文重读。全部3tiles实查，正在思考/STOP，无助手正文/尾部/error/大加载圈。
+- observe1/其他动作0，预调用意图00:47:31.504940Z先落盘，00:48:41.816269Z原section释放阳性，无pending/UNKNOWN，executor退役。native105保持原thinking起点；普通下一00:58:05.015Z，原70min节点00:51:38.132Z更早，届时须先fresh远端/同轮ZIP对账，再依既有一次有界恢复条件处理，当前未开始恢复。
+- 远端截至00:46:53Z无新专业提交，有限共享作用域无同轮ZIP候选；实际调用8/完整有效回交7，完整任务持续，不虚记成功、不提前重发或结束Goal。
