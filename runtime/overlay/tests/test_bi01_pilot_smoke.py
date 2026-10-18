@@ -113,8 +113,9 @@ class BI01Smoke(unittest.TestCase):
         prepared = dispatch.prepare_dispatch(self.repo, self.policy, CONFIG, event)
         self.assertEqual((prepared["role"], prepared["mode"], prepared["stage"]),
                          ("management", "M-START", "BI01"))
-        self.assertIn("U2 OpportunityCluster 位置/边界是否合理", prepared["message"])
-        self.assertIn("U3 四方面能否真的区分品种好不好做", prepared["message"])
+        self.assertIn("07_BUSINESS_SCENE_OBSERVATION_METHOD.md", prepared["message"])
+        self.assertIn("基础 K 线/贴近转折图", prepared["message"])
+        self.assertIn("强弱", prepared["message"])
         self.assertIn("04_BI01_BUSINESS_BASELINE.md", prepared["message"])
         self.assertIn("06_U2_U3_DESIGN_SOURCE_MAP.md", prepared["message"])
         self.assertFalse(prepared["sent"])

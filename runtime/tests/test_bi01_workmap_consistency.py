@@ -13,7 +13,7 @@ SPEC = importlib.util.spec_from_file_location(
 gate = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(gate)
 BINDING = "runtime/config/WORKMAP_BINDING.json"
-RUN = "runs/BI-01-V2-01"
+RUN = "runs/BI-01-V2-02"
 
 
 class WorkmapSnapshotOffline(unittest.TestCase):

@@ -13,6 +13,7 @@ V2_SOURCES = [
     "professional/v2/04_BI01_BUSINESS_BASELINE.md",
     "professional/v2/05_BI01_FIXED_INPUT_DATA.md",
     "professional/v2/06_U2_U3_DESIGN_SOURCE_MAP.md",
+    "professional/v2/07_BUSINESS_SCENE_OBSERVATION_METHOD.md",
 ]
 ACTIVE_DOCS = [
     *sorted((ROOT / "runtime/dual_route_execution").glob("DR*.md")),
@@ -94,7 +95,8 @@ class V2Boundary(unittest.TestCase):
         ):
             with self.subTest(filename=filename):
                 self.assertIn(filename, fixed)
-                self.assertIn("两份 ZIP", goal)
+                self.assertIn("两份", goal)
+                self.assertIn("ZIP", goal)
         for checksum in (
             "7bebbee3fd7d425eb85116f33c5d0e01ae2163e6849818515fe3824a82b9a46c",
             "4fd1af4e7b34af6fc099e6289ffdd5d83125412fc16d2a9902af4fd9741b3987",
@@ -104,8 +106,8 @@ class V2Boundary(unittest.TestCase):
         self.assertIn("23 个 CSV", fixed)
         self.assertIn("15 CSV", fixed)
         self.assertIn("不安排重算", goal)
-        self.assertIn("本轮不让 AI 看渲染图片", chart)
-        self.assertIn("另建独立工作分支", chart)
+        self.assertIn("不视觉看图片像素", chart)
+        self.assertIn("aidata 的全新独立分支", chart)
 
         binding = json.loads((ROOT / "runtime/config/WORKMAP_BINDING.json").read_text(encoding="utf-8"))
         template = json.loads((ROOT / "runtime/operations/v2/templates/WORKMAP_BINDING_TEMPLATE.json").read_text(encoding="utf-8"))
@@ -117,9 +119,10 @@ class V2Boundary(unittest.TestCase):
     def test_v2_business_goal_is_not_a_role_assignment(self):
         goal = (ROOT / "professional/v2/00_PURPOSE_AND_THREE_STEP_FLOW.md").read_text(encoding="utf-8")
         first_section = goal.split("## 2.", 1)[0]
-        self.assertIn("业务认识", first_section)
-        self.assertIn("不合理", first_section)
-        self.assertIn("原因", first_section)
+        self.assertIn("叙事", first_section)
+        self.assertIn("真实市场行情", first_section)
+        self.assertIn("后续实际运动", first_section)
+        self.assertIn("强弱", first_section)
         self.assertIn("U2", first_section)
         self.assertIn("U3", first_section)
 
@@ -138,11 +141,11 @@ class V2Boundary(unittest.TestCase):
             self.assertIn(mcp_share, content)
             self.assertIn(codex_share, content)
         self.assertIn("不是上述固定 ZIP 数据目录", data)
-        self.assertIn("先核是否真未提交", rounds)
-        self.assertIn("不要再应用同轮 ZIP", rounds)
-        self.assertIn("非 force 提交并远端回读", rounds)
-        self.assertIn("不因不能提交", rounds)
-        self.assertIn("不规定一个不存在的专用 MCP API", rounds)
+        self.assertIn("先核 **新分支远端**", rounds)
+        self.assertIn("不能重复应用 ZIP", rounds)
+        self.assertIn("非 force 提交并 fresh readback", rounds)
+        self.assertIn("Pro 无法实际向 GitHub 提交", rounds)
+        self.assertIn("禁止伪造软件 API", rounds)
 
     def test_fixed_zip_current_codex_location_and_method_map(self):
         fixed = (ROOT / "professional/v2/05_BI01_FIXED_INPUT_DATA.md").read_text(encoding="utf-8")
@@ -163,7 +166,39 @@ class V2Boundary(unittest.TestCase):
         self.assertIn("refonly-ad8824a52552d7bffa91", fixed)
         self.assertIn("formal_assessments_committed=NO", fixed)
         self.assertIn("15 条", fixed)
-        self.assertIn("同一个 hc/i/rb Case 的 5 个 As-Of", (ROOT / V2_SOURCES[0]).read_text(encoding="utf-8"))
+        self.assertIn("同一个 hc/i/rb Case 的五个 As-Of", (ROOT / V2_SOURCES[0]).read_text(encoding="utf-8"))
+
+    def test_scene_first_business_method_and_no_preset_classification(self):
+        method = (ROOT / "professional/v2/07_BUSINESS_SCENE_OBSERVATION_METHOD.md").read_text(encoding="utf-8")
+        goal = (ROOT / "professional/v2/00_PURPOSE_AND_THREE_STEP_FLOW.md").read_text(encoding="utf-8")
+        chart = (ROOT / "professional/v2/01_AIDATA_CHART_AND_DATA.md").read_text(encoding="utf-8")
+        analysis = (ROOT / "professional/v2/02_OBSERVATION_IDEAS_AND_VALIDATION.md").read_text(encoding="utf-8")
+        for term in ("叙事", "基础行情", "后续", "U2", "U3", "不预设"):
+            self.assertIn(term, method)
+        self.assertIn("这份方法不定义固定的 A/B/C 场景类别", method)
+        self.assertIn("不能从某几个指标", goal)
+        self.assertIn("先用上游 K 线", chart)
+        self.assertIn("当时四方面判断", analysis)
+        self.assertIn("不自动证明提前选对", method)
+        self.assertIn("WITHHELD", method)
+        self.assertIn("BI-01-V2-02", goal)
+
+    def test_new_run_no_start_and_old_paused_history_retained(self):
+        run = ROOT / "runs/BI-01-V2-02"
+        self.assertTrue((run / "README.md").is_file())
+        for path in ("OWNER_START.md", "00_长程推进地图.md",
+                     "01_当前任务.md", "provenance/turns/R0001/INVOCATION.json",
+                     "reviews/WORKMAP_INTAKE_CURRENT.json"):
+            with self.subTest(path=path):
+                self.assertFalse((run / path).exists())
+        previous = ROOT / "runs/BI-01-V2-01/provenance/controller/OWNER_PAUSE_AND_CHART_REVIEW_20261018.json"
+        self.assertTrue(previous.is_file())
+        state = json.loads(previous.read_text(encoding="utf-8"))
+        self.assertEqual(state["state"], "PAUSED_BY_OWNER_NOT_COMPLETE")
+        binding = json.loads((ROOT / "runtime/config/WORKMAP_BINDING.json").read_text(encoding="utf-8"))
+        self.assertEqual(binding["status"], "NOT_CONFIGURED")
+        self.assertEqual(binding["overview"]["path"], "runs/BI-01-V2-02/README.md")
+        self.assertNotIn("BI-01-V2-01", json.dumps(binding, ensure_ascii=False).replace("old BI-01-V2-01 remains paused", ""))
 
     def test_new_run_template_does_not_claim_adoption_or_owner_start(self):
         # The live run legitimately gains GO/BOOTSTRAP and adoption. The reusable
@@ -171,13 +206,13 @@ class V2Boundary(unittest.TestCase):
         template = ROOT / "runtime/operations/v2/templates"
         binding = json.loads((template / "WORKMAP_BINDING_TEMPLATE.json").read_text(encoding="utf-8"))
         self.assertEqual(binding["status"], "NOT_CONFIGURED")
-        self.assertEqual(binding["streams"]["bi01"]["map"]["path"], "runs/BI-01-V2-01/00_长程推进地图.md")
-        self.assertEqual(binding["streams"]["bi01"]["task"], "runs/BI-01-V2-01/01_当前任务.md")
+        self.assertEqual(binding["streams"]["bi01"]["map"]["path"], "runs/BI-01-V2-02/00_长程推进地图.md")
+        self.assertEqual(binding["streams"]["bi01"]["task"], "runs/BI-01-V2-02/01_当前任务.md")
         for name in ("OWNER_START.md", "BOOTSTRAP.json"):
             self.assertFalse((template / name).exists())
         self.assertIn("TEMPLATE ONLY", binding["note"])
         gate = (ROOT / "runtime/tools/bi01_run_gate.py").read_text(encoding="utf-8")
-        self.assertIn('RUN = "runs/BI-01-V2-01"', gate)
+        self.assertIn('RUN = "runs/BI-01-V2-02"', gate)
 
 
 if __name__ == "__main__":

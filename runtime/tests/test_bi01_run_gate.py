@@ -22,10 +22,10 @@ spec = importlib.util.spec_from_file_location(
 question_work = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(question_work)
 
-RUN = "runs/BI-01-V2-01"
+RUN = "runs/BI-01-V2-02"
 ROLE = "management"
 RID = "R0001"
-INV = "BI01-V2-01-R0001-synthetic-unique-a"
+INV = "BI01-V2-02-R0001-synthetic-unique-a"
 MARKER = "[" + INV + "]"
 
 
@@ -49,7 +49,7 @@ class RoundGateOffline(unittest.TestCase):
         self.prompt = MARKER + "\nSynthetic message; NO PHONE.\n"
         self.record = {
             "schema": "bi01-invocation/v1",
-            "run_id": "BI-01-V2-01",
+            "run_id": "BI-01-V2-02",
             "round_id": RID,
             "work_id": "BI-01",
             "invocation_id": INV,
@@ -119,7 +119,7 @@ class RoundGateOffline(unittest.TestCase):
         self.write(gate.BINDING, json.dumps(self.map_binding))
         authority_path = RUN + '/reviews/management-R0001/DECISION.md'
         self.write(authority_path, '\n'.join([
-            'work_id: BI-01', 'run_id: BI-01-V2-01', 'role: management',
+            'work_id: BI-01', 'run_id: BI-01-V2-02', 'role: management',
             'invocation_id: ' + INV, 'assignment_token: ' + self.record['assignment_token'],
             '<a id="reader-pre-adoption"></a>', 'Synthetic technical authority only.',
             '<a id="adoption"></a>', 'Synthetic conditional intake.', '',
@@ -134,7 +134,7 @@ class RoundGateOffline(unittest.TestCase):
             'role_outputs': {'management': {'decision_ref': '#reader-pre-adoption'}},
             'artifact_refs': [{k: authority[k] for k in ('repo', 'commit', 'path')}],
         }))
-        prefix = ('task_id: BI01-V2-WORKMAP-READER-01\n'
+        prefix = ('task_id: BI01-V2-02-WORKMAP-READER-01\n'
                   'Synthetic read-only task, never a real independent report.\n'
                   '<a id="scope"></a>\nSynthetic full reading scope.\n'
                   '<a id="same-work"></a>\nContinue this synthetic reading.\n')
@@ -164,8 +164,8 @@ class RoundGateOffline(unittest.TestCase):
         bound_ref = self.loc(reader) | {'commit': bound_commit, 'selector': f'L{start}-L{end}'}
         self.reader_round = 'R0003'
         self.record = {
-            'schema': 'bi01-invocation/v1', 'run_id': 'BI-01-V2-01', 'round_id': self.reader_round,
-            'work_id': 'BI-01', 'invocation_id': 'BI01-V2-01-R0003-synthetic-reader-a',
+            'schema': 'bi01-invocation/v1', 'run_id': 'BI-01-V2-02', 'round_id': self.reader_round,
+            'work_id': 'BI-01', 'invocation_id': 'BI01-V2-02-R0003-synthetic-reader-a',
             'assignment_token': 'synthetic-reader-token', 'role': 'review',
             'recipient_ref': 'synthetic-reader-chat', 'policy_commit': self.policy,
             'binding_ref': bound_ref, 'current_task_ref': body_ref | {'commit': bound_commit},

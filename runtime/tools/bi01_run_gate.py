@@ -15,7 +15,7 @@ import subprocess
 import sys
 from pathlib import Path, PurePosixPath
 
-RUN = "runs/BI-01-V2-01"
+RUN = "runs/BI-01-V2-02"
 BINDING = "runtime/config/WORKMAP_BINDING.json"
 HEX40 = re.compile(r"^[0-9a-f]{40}$")
 HEX64 = re.compile(r"^[0-9a-f]{64}$")
@@ -130,7 +130,7 @@ def invocation(view: Git, round_id: str) -> tuple[dict, list[str]]:
     errors = require([
         (all(key in record for key in REQUIRED), "INVOCATION_FIELDS_MISSING"),
         (record.get("schema") == "bi01-invocation/v1", "INVOCATION_SCHEMA"),
-        (record.get("run_id") == "BI-01-V2-01", "RUN_ID_MISMATCH"),
+        (record.get("run_id") == "BI-01-V2-02", "RUN_ID_MISMATCH"),
         (record.get("round_id") == round_id, "ROUND_ID_MISMATCH"),
         (record.get("role") in ROLES, "ROLE_INVALID"),
         (HEX40.fullmatch(str(record.get("policy_commit", ""))) is not None, "POLICY_COMMIT_REQUIRED"),
@@ -143,7 +143,7 @@ def invocation(view: Git, round_id: str) -> tuple[dict, list[str]]:
             errors.append("MISSING_IDENTITY:" + name)
     # Existing coordinator-dispatch/v3 emits [invocation_id] as its first line.
     # That EXACT line is also the common phone scheduler's bracketed round marker.
-    prefix = "BI01-V2-01-" + round_id + "-"
+    prefix = "BI01-V2-02-" + round_id + "-"
     invocation_id = record.get("invocation_id")
     marker = record.get("round_marker")
     if (not isinstance(invocation_id, str)
@@ -226,7 +226,7 @@ def first_reader(view: Git, round_id: str, rec: dict) -> list[str]:
         task, _ = coordinator.source(view.root, task_ref, repository)
         if task.encode("utf-8") != view.raw(READER_TASK):
             raise ValueError("READER_TASK_NOT_CURRENT")
-        if not re.search(r"^task_id: BI01-V2-WORKMAP-READER-01$", task, re.M):
+        if not re.search(r"^task_id: BI01-V2-02-WORKMAP-READER-01$", task, re.M):
             raise ValueError("READER_TASK_ID_MISMATCH")
         bound, _ = coordinator.source(view.root, bound_ref, repository)
         binding = coordinator.loads(bound)
@@ -266,7 +266,7 @@ def first_reader(view: Git, round_id: str, rec: dict) -> list[str]:
         manager, problems = invocation(authority, manager_round)
         if problems or manager["role"] != "management":
             raise ValueError("FIRST_READER_MANAGEMENT_INVOCATION_REQUIRED")
-        for key, expected in (("work_id", "BI-01"), ("run_id", "BI-01-V2-01"),
+        for key, expected in (("work_id", "BI-01"), ("run_id", "BI-01-V2-02"),
                               ("role", "management"), ("invocation_id", manager["invocation_id"]),
                               ("assignment_token", manager["assignment_token"])):
             if not re.search(r"^" + key + ": " + re.escape(expected) + r"$", decision, re.M):
