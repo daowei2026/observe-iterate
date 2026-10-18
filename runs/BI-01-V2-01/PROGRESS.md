@@ -1,5 +1,13 @@
 # BI-01-V2-01 真实运行进度
 
+## 当前状态（2026-10-18 04:19—04:22 UTC）
+
+- R0010唯一原稿恢复实际COMMITTED：首手机caller04:16:00.032Z，距恢复ready48.857004秒，120秒SLO通过；fresh Pro5/5、手机full/none/SHA+31518 UTF-8+17605 UTF-16全匹配，IME1/Send1。Send caller04:19:07.550Z，承诺frame04:19:11.366Z，权威server observation04:19:11.930Z。新bubble准确唯一token/role和当前STOP已证；invocation中段被固定Project标题遮挡，保留该限制，不声称所有glyph无遮挡。详见 [RECOVERY_SEND_RECEIPT](provenance/turns/R0010/RECOVERY_SEND_RECEIPT.json)。
+- sender13次手机调用、无新chat/重试/STOP/回复捕获；04:19:48.835007Z阳性释放退役，无pending/UNKNOWN。Native138记实际承诺；R10总IME2/Send2仍是唯一逻辑R0010，不增加业务结果。当前完整有效结果9、唯一承诺调用10、实际模型消息12（含R8/R10各一次获准恢复）。
+- 原90分钟边界04:21:47.213Z不重置。到期首次Git只读TLS握手超时，错误保留，04:22:34.750114Z重试成功，仍无本轮最终turn complete/共享包。04:22:50.292597Z仅准入一次90分钟新鲜检查；必须当前STOP且无正文才可App-only重启，任何完整/有意义正文优先硬回交，STOPabsent仅有界复验。不授权STOP/IME/Send或第二重试。实际结果待收，见 [ORIGINAL90_RESTART_ADMISSION](provenance/turns/R0010/ORIGINAL90_RESTART_ADMISSION.json)。
+- 整体任务继续ACTIVE，所有阶段实证原样保留；完整Return到达后继续验收和有权管理接续，不将恢复承诺视作业务完成。
+
+
 ## 当前状态（2026-10-18 04:15 UTC）
 
 - 04:15:10.812093Z在实际NoReply恢复结果之后再次fresh核远端f49bfbb及共享路径，仍无最终同轮turn complete/ZIP。原31518字节、17605 UTF-16、SHA-256 `950ba44c8f2ec52c1f1bb2adb931bc8d408311114fbc6007eaab4f71c47dd2c8`逐字等于cfb77c4已冻结原稿，含最终换行，未加入任何恢复模板或新分析。
