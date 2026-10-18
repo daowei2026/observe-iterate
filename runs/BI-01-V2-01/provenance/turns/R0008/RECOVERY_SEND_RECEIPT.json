@@ -1,0 +1,131 @@
+{
+  "run_id": "BI-01-V2-01",
+  "round": "R0008",
+  "invocation_id": "BI01-V2-01-R0008-2f89478c8810068f99b16f76",
+  "assignment_token": "97c326de023f531d339a714a60dd36",
+  "state": "COMMITTED",
+  "recovery_type": "ONE_SAME_ORIGINAL_PAYLOAD_AND_MARKER",
+  "recorded_at": "2026-10-18T01:16:36.177671+00:00",
+  "original_first_committed_at": "2026-10-17T23:41:38.132Z",
+  "original_SEND_RECEIPT_preserved": true,
+  "same_round_and_original_task": true,
+  "highest": {
+    "raw": "19-open-highest-panel.raw.json",
+    "frame_utc": "2026-10-18T01:12:15.713Z",
+    "server_observation_finished_utc": "2026-10-18T01:12:16.210Z",
+    "model": "Pro",
+    "position": "5/5 rightmost",
+    "visually_verified": true
+  },
+  "empty_composer": {
+    "full_verified": true,
+    "utf8_bytes": 0,
+    "utf16_units": 0
+  },
+  "payload": {
+    "sha256": "564f33aa54635ded6eb0e124cc31f814444a5197a17416f8557c36573d281ee9",
+    "utf8_bytes": 29285,
+    "utf16_units": 16362,
+    "ends_with_newline": true,
+    "first_line": "[BI01-V2-01-R0008-2f89478c8810068f99b16f76]"
+  },
+  "full_readback": {
+    "coverage": "full",
+    "normalization": "none",
+    "sha256": "564f33aa54635ded6eb0e124cc31f814444a5197a17416f8557c36573d281ee9",
+    "utf8_bytes": 29285,
+    "utf16_units": 16362,
+    "post_IME_attempts": 1,
+    "exact_match": true
+  },
+  "times": {
+    "send_ready_at_original": "2026-10-18T01:02:47.958985+00:00",
+    "first_phone_caller_at": "2026-10-18T01:06:45.911Z",
+    "first_phone_after_ready_seconds": 237.952015,
+    "first_phone_slo_seconds": 120,
+    "first_phone_slo_met": false,
+    "commitment_frame_at": "2026-10-18T01:14:02.337Z",
+    "commitment_server_observation_finished_at": "2026-10-18T01:14:02.859Z",
+    "original_thinking_started_at": "2026-10-17T23:41:38.132Z",
+    "original_90min_at": "2026-10-18T01:11:38.132Z"
+  },
+  "IME_caller_at": "2026-10-18T01:13:11.151Z",
+  "Send_caller_at": "2026-10-18T01:13:57.508Z",
+  "counts": {
+    "phone_total": 26,
+    "by_tool": {
+      "mcp__chatgpt_terminal_prod__observe_current_ui": 2,
+      "mcp__chatgpt_terminal_prod__mark_coordinates_and_observe": 10,
+      "mcp__chatgpt_terminal_prod__tap_marked_coordinate_and_observe": 10,
+      "mcp__chatgpt_terminal_prod__read_focused_text_state": 3,
+      "mcp__chatgpt_terminal_prod__type_text_via_ime_and_observe": 1
+    },
+    "IME": 1,
+    "Send": 1,
+    "STOP": 0,
+    "newchat": 0,
+    "rename": 0,
+    "restart": 0,
+    "network_probe": 0,
+    "phone_tool_retry": 0,
+    "IME_retry": 0,
+    "Send_retry": 0,
+    "postime_readback_attempts": 1,
+    "preime_empty_reads": 2,
+    "read_only_postime_retry": 0
+  },
+  "generation_state": "model_thinking",
+  "STOP_visible": true,
+  "current_reply_body_available": false,
+  "control": {
+    "acquired_at": "2026-10-18T01:06:33.562255+00:00",
+    "first_phone_after_acquire": true,
+    "released_at": "2026-10-18T01:14:29.779965+00:00",
+    "released_positive": true,
+    "all_sections_terminal": 161
+  },
+  "executor": {
+    "fork_turns": "none",
+    "retired": true,
+    "pending_operations": [],
+    "unknown": []
+  },
+  "Native": {
+    "revision": 108,
+    "deadline_recovery_count": 1,
+    "original_90min_at": "2026-10-18T01:11:38.132000Z",
+    "second_70min_window": false,
+    "ordinary_next_check_at_server_plus_600": "2026-10-18T01:24:02.859Z",
+    "original_90min_is_already_due": true
+  },
+  "actual_counts": {
+    "unique_business_rounds_committed": 8,
+    "actual_model_messages_committed": 9,
+    "R0008_total_IME": 2,
+    "R0008_total_Send": 2,
+    "complete_effective_Pro_returns": 7
+  },
+  "root_timing_correction": {
+    "previous_reported_first_phone": "2026-10-18T01:06:45.856366+00:00",
+    "actual_first_phone": "2026-10-18T01:06:45.911Z",
+    "difference_seconds": 0.054634,
+    "explanation": "前者是phone前已落盘意图，root误用于Native107及前一授权记录；后者为实际独立caller采样。保留Native原transition及前件，当前回执以实际caller237.952015s计算120秒SLO失败；两者均迟，不影响原generation/90min时间。executor普通next曾按frame+600，实际Native按server完成+600为01:24:02.859Z。"
+  },
+  "local_anomalies": [
+    {
+      "kind": "local_JS_helper_scope_error_before_first_phone",
+      "effect": "ReferenceError phone is not defined; no phone invocation occurred in failed exec; first-call receipt updated immediately before actual first phone; no phone retry",
+      "control_order_deviation": false
+    },
+    {
+      "kind": "reasoning_control_visibility_detour",
+      "effect": "checked reasoning-menu row was toggled off at call 10, then enabled at call 17; gauge opened at call 19 proved fresh Pro rightmost 5/5 before IME; no text/Send occurred during detour"
+    }
+  ],
+  "parent_verification": {
+    "actual_raw_count": 26,
+    "all_raw_sha256_equal": true,
+    "same_payload_original_digest_equal": true
+  },
+  "full_goal": "ACTIVE_NOT_COMPLETE"
+}

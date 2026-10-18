@@ -420,3 +420,10 @@
 - fresh核75733f0远端及有限共享run/inv范围无R8回交后，Native105→106仅一次恢复准入；原payload/marker/任务/Binding不变，原23:41:38.132Z起点和01:11:38.132Z累计90min保持，没有第二70min窗口。
 - fresh零继承恢复执行器已实际派出并正向取得控制，首phone caller01:06:45.856366Z，距原ready01:02:47.958985Z为237.897381s，120秒SLO失败，如实保留。首次本地helper作用域错误发生在phone前，修正后没有重放phone；分项成本缺可靠边界记未知。Native107记录真实首call，未把准备当已Send。
 - 恢复Send承诺尚待真实回执；原首次COMMITTED记录保持，唯一业务R轮仍8，实际已承诺模型消息仍8/完整有效回交7。继续同一专业任务与交付对账，不创建新R或结束完整Goal。
+
+## R0008原稿唯一恢复Send真实承诺；原90min节点继续
+
+- fresh正确Project唯一原执行chat，现场Pro最右5/5 frame01:12:15.713Z；full空composer后IME一次，全文29285 UTF8/16362 UTF16及SHA564f33aa…81ee9完全匹配、尾换行保留，Send一次。Send caller01:13:57.508Z、承诺frame01:14:02.337Z、server完成01:14:02.859Z分列，准确当前新bubble inv/token/professional+STOP且无发送错误，COMMITTED/model_thinking；此前原bubble显示已停止思考。
+- 正式phone26/IME1/Send1，STOP/重启/新chat/重试0，01:14:29.779965Z原section释放固定utility阳性，161sections全terminal，无pending/UNKNOWN，executor退役；root核全部26raw SHA一致。原R8 SEND_RECEIPT保持，本次另存RECOVERY_SEND_RECEIPT；唯一业务轮8、实际模型已承诺消息9、有效完整回交仍7。
+- 首call实际独立caller01:06:45.911Z，ready后237.952015s，120秒episode SLO失败；前件及Native107曾误用提前54.634ms的落盘意图01:06:45.856366Z，保留原记录并在本回执纠正，不虚称实际时间。推理菜单一次off/on迂回均在IME前，最终fresh5/5已证明。普通next按server+600为01:24:02.859Z，不采用frame+600的早0.522s建议。
+- Native108沿用原23:41:38.132Z起点、01:11:38.132Z累计90min，恢复计数1、无第二70min窗口。fresh远端746f04b及有限共享作用域无同轮交付；已派新的零继承timeout executor，先fresh看有无答复，仅准确STOP无正文时一次App-only重启和真实网络/Recent/Projects postcheck，返回原chat分类。该episode零STOP/IME/Send，结果尚待真实验收，不再重发。完整Goal继续。
