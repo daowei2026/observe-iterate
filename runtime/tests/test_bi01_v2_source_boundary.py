@@ -106,7 +106,7 @@ class V2Boundary(unittest.TestCase):
         self.assertIn("23 个 CSV", fixed)
         self.assertIn("15 CSV", fixed)
         self.assertIn("不安排重算", goal)
-        self.assertIn("AI 本轮只读取同图结构化数据，不视觉看图片像素", chart)
+        self.assertIn("本轮不让 AI 看渲染图片", chart)
         self.assertIn("aidata 的全新独立分支", chart)
 
         binding = json.loads((ROOT / "runtime/config/WORKMAP_BINDING.json").read_text(encoding="utf-8"))
@@ -181,7 +181,7 @@ class V2Boundary(unittest.TestCase):
         self.assertIn("当时四方面判断", analysis)
         self.assertIn("不产生“提前识别”资格", method)
         self.assertIn("WITHHELD", method)
-        self.assertIn("BI-01-V2-02", goal)
+        self.assertIn("BI-01-V2-02", (ROOT / "professional/CURRENT_EXECUTION.md").read_text(encoding="utf-8"))
 
     def test_new_run_no_start_and_old_paused_history_retained(self):
         run = ROOT / "runs/BI-01-V2-02"
