@@ -17,3 +17,5 @@
 
 - `R0002` 已真实完成：原管理发布完整回答、两份 Return、Reader Binding 与 `management-R0002/DECISION.md`，after-return/schema 均通过；手机于北京时间 21:58:35 确认完整尾与动作栏。
 - `R0003` 首次独立 Reader 的 dispatcher、first_reader Gate 和远端原文核验已通过。实际手机输入一次后，全文回读为 null，**尚未点击 Send**，原稿保留。操作端正在执行无发送的草稿/网络准入恢复，核验后继续同一冻结轮次；尚无 Reader verdict、Intake 或 ADOPTED。
+
+- `R0003` 草稿安全恢复后全文两次 exact，当前 composer 最高推理档与全文再核后，于北京时间 **22:13:58** 确认首次 Send `COMMITTED`。全过程一次输入、一次 Send，恢复没有重输或重复派发；原始读取异常和完整耗时保留。见 [SEND_RECEIPT.json](provenance/turns/R0003/SEND_RECEIPT.json)。独立 Reader 正在思考，下一回复检查为北京时间 **22:23:58**；尚无 Reader verdict/Intake/ADOPTED。
