@@ -446,3 +446,8 @@
 - fresh正确Project唯一原BI01-V2-管理进入后明确Too many requests，旧R0005正文占位；frame01:34:52.225Z/server完成01:34:52.723Z。最高Pro档位/full空/输入exact尚未开始，不能声称这些门通过。IME0/Send0/STOP0/重启0/重试0，phone6；01:35:27.607220Z阳性释放，163sections全terminal，无pending/UNKNOWN，executor永久退役。root核6raw各chunk SHA并重组合法原JSON，原result保持。
 - 首caller独立时钟仅秒精度01:33:43UTC，距原ready01:32:42.516957Z为60.483043–61.483043s，120秒SLO通过；server action_started01:33:43.481Z另列。executor60.964043s值实际是ready到server动作之差，不冒称更高精度caller。Native113保存原采样秒，114记实际未发送终态，原ready/原inv/原稿均保持。
 - 已派fresh零继承safe非发送恢复，最多3次真实只读/导航尝试和每次fresh证据，恢复即停；仅snackbar消失且仍旧占位不足成功。本episode零IME/Send/STOP/App重启/网络改动，三次真实失败才按第三败+1h记录后续安全恢复。当前尚无恢复成功或三败结论，不计新Pro调用或有效结果；完整Goal继续。
+
+## R0009运行故障恢复，首fresh观察已正常，零新增发送
+
+- caller01:38:22.912034Z、frame01:38:22.961Z/server完成01:38:23.505Z，原管理chat正常显示M7发布回执准确b3ef5f67…及完整回答操作栏，无error/spinner/STOP；不是snackbar消失仍旧R5占位。仅observe1、恢复重试0，IME/Send/STOP/重启/网络修改/复制/文件0；01:39:02.323442Z阳性释放并永久退役，无pending/UNKNOWN，root核54原分块及整体SHA一致。没有三败，不登记一小时等待。
+- 原R9仍未输入发送，Native114及ready01:32:42.516957Z保持；后继通过真实noIME原回执/原稿hash的resume gate后，fresh sender续同R9。发布前一次本机GH只读TLS握手超时、零Git变更，随后同一读取已成功，属于实际准备成本。完整有效结果仍7，Goal继续。
