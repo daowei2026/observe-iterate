@@ -1,0 +1,95 @@
+{
+  "schema": "workmap-intake/v1",
+  "intakes": {
+    "bi01": {
+      "snapshot": "ac70ba8b4238adffa2d05dac9a6f99037dbfd33cd3908e98fe725aded7934cf5",
+      "manager": {
+        "role": "management",
+        "context": "真实management Pro：R0001 BI01-V2-02-R0001-20261018T130131Z-7f26abeb，R0002补签发，R0004 BI01-V2-02-R0004-20261018T143706Z-4e789f60；原规范管理chat BI01-V202-管理。操作端仅按R0004 #accept-after-repair机械记录，不代签业务判断。"
+      },
+      "decision_report": {
+        "path": "runs/BI-01-V2-02/reviews/management-R0004/DECISION.md",
+        "blob": "16f21079bd11428cbdfe67484568744b127ab243"
+      },
+      "reader_check": {
+        "status": "RECORDED",
+        "context": "独立原Reader R0003 BI01-V2-02-R0003-20261018T135502Z-2de24e8b 的狭义可理解性PASS；同一Reader R0005 BI01-V2-02-R0005-20261018T145233Z-362cbf9d仅合法Return格式修复，无第二次审查；新两Return及原正文均已真核。",
+        "independent_of_map_builder": true,
+        "report": {
+          "path": "runs/BI-01-V2-02/reviews/independent/WORKMAP_READER_R0001_INPUT.md",
+          "blob": "aeeb24be3330a1fc26df6b81a03136cb4818618e"
+        },
+        "input_commit": "5e8e4c1bb184a97bfe47bc40493c667bb7b8185d",
+        "input_snapshot": "a29852320c44b64cf05e4a9250d86104f878718b10dc14a00fe58d18e036b9f8",
+        "qualification": "只读可理解性；不代表U2/U3业务正确或Owner接收",
+        "repair_role_return": {
+          "commit": "5115c8f350646b101141a6552b6aa5d45b31ae06",
+          "path": "runs/BI-01-V2-02/provenance/turns/R0005/ROLE_RETURN.json"
+        },
+        "repair_question_work_return": {
+          "commit": "5115c8f350646b101141a6552b6aa5d45b31ae06",
+          "path": "runs/BI-01-V2-02/provenance/turns/R0005/QUESTION_WORK_RETURN.json"
+        },
+        "full_reply_transport_commit": "c6d488b69f2f654bde5c7d68ffea9237252da33e",
+        "original_R0003_schema_failure_preserved": true
+      },
+      "dispatch": {
+        "decision": "ISSUED",
+        "task_path": "runs/BI-01-V2-02/01_当前任务.md",
+        "task_blob": "8f90121bd9d1657992313b6c9a78d44fcd3a546f",
+        "task_id": "BI01-V2-02-S123-SCENE-OBSERVATION-01",
+        "kind": "NEW_STAGE",
+        "requires_reader_check": true,
+        "method_paths": [
+          "professional/v2/00_PURPOSE_AND_THREE_STEP_FLOW.md",
+          "professional/v2/01_AIDATA_CHART_AND_DATA.md",
+          "professional/v2/02_OBSERVATION_IDEAS_AND_VALIDATION.md",
+          "professional/v2/03_EXECUTION_HANDOFF.md",
+          "runtime/dual_route_execution/DR14_QUESTION_WORK_CONTRACT.md",
+          "runtime/overlay/08_自然语言运行提示_v0.3.md",
+          "professional/v2/04_BI01_BUSINESS_BASELINE.md",
+          "professional/v2/05_BI01_FIXED_INPUT_DATA.md",
+          "professional/v2/06_U2_U3_DESIGN_SOURCE_MAP.md",
+          "professional/v2/07_BUSINESS_SCENE_OBSERVATION_METHOD.md"
+        ]
+      },
+      "effort": {
+        "known_pro_turns": 5,
+        "rounds": [
+          {
+            "round": "R0001",
+            "invocation_id": "BI01-V2-02-R0001-20261018T130131Z-7f26abeb",
+            "role": "management"
+          },
+          {
+            "round": "R0002",
+            "invocation_id": "BI01-V2-02-R0002-20261018T133550Z-3e483710",
+            "role": "management"
+          },
+          {
+            "round": "R0003",
+            "invocation_id": "BI01-V2-02-R0003-20261018T135502Z-2de24e8b",
+            "role": "review"
+          },
+          {
+            "round": "R0004",
+            "invocation_id": "BI01-V2-02-R0004-20261018T143706Z-4e789f60",
+            "role": "management"
+          },
+          {
+            "round": "R0005",
+            "invocation_id": "BI01-V2-02-R0005-20261018T145233Z-362cbf9d",
+            "role": "review"
+          }
+        ],
+        "count_basis": "真实已提交Pro调用数量；手机episode、普通commit和失败本地校验不计Pro调用；有效结果/EFFORT触发资格仍由原专业/管理合同裁定，不由操作端重置。"
+      },
+      "scope_dispositions": {},
+      "validation_claims": [],
+      "recorded_by": "operator mechanical receipt under actual R0004 management authority",
+      "recorded_at": "2026-10-18T15:46:53.741988+00:00",
+      "authority_commit": "af50358f6de756d56759bc004baacf7ed596a2d0",
+      "authority_selector": "#accept-after-repair"
+    }
+  }
+}
