@@ -1,0 +1,121 @@
+{
+  "run_id": "BI-01-V2-01",
+  "round": "R0009",
+  "invocation_id": "BI01-V2-01-R0009-26e36d93fb3fd38bb60931e4",
+  "recorded_at": "2026-10-18T02:22:12.276795+00:00",
+  "classification": "response_incomplete_or_malformed",
+  "qualification": "Two unchanged same-screen viewports show exact R9 assistant reply beginning; final tail/completion action row is outside the visible evidence. This classifies incomplete phone evidence and does not establish that the full underlying reply is malformed or absent. Scrolling/copying are not authorized.",
+  "evidence": {
+    "exact_project_visible": true,
+    "current_invocation_marker_visible": true,
+    "assignment_token_exact_visible": true,
+    "role_management_visible": true,
+    "thread_identity_basis": "parent canonical physical-thread continuity plus unchanged current screen and fresh exact R9 invocation/token/role; no navigation",
+    "assistant_body_visible": true,
+    "assistant_current_round_header_visible": true,
+    "assistant_body_beginning_visible": true,
+    "stopped_thinking_label_visible": true,
+    "stop_present": false,
+    "complete_answer_proven": false,
+    "final_tail_visible": false,
+    "completion_action_row_visible": false,
+    "error_visible": false,
+    "large_loading_spinner_visible": false,
+    "offline_retry_pending_marker_visible": false,
+    "same_screen_recheck_unchanged": true
+  },
+  "phone_answer_state": "pending_original_grace_no_complete_tail_proven",
+  "original_grace_until": "2026-10-18T02:24:51.057229Z",
+  "actual_counts": {
+    "phone_calls": 2,
+    "observe_current_ui": 1,
+    "wait_and_observe": 1,
+    "phone_frames": 2,
+    "native_lossless_tiles": 6,
+    "ime": 0,
+    "send": 0,
+    "stop": 0,
+    "navigation": 0,
+    "copy": 0,
+    "attachments": 0,
+    "restart": 0,
+    "network": 0
+  },
+  "first_caller_delay_seconds": 69.809881,
+  "first_phone_120s_SLO_met": true,
+  "observations": [
+    {
+      "index": 1,
+      "tool": "mcp__chatgpt_terminal_prod__observe_current_ui",
+      "caller": "2026-10-18T02:16:00.867110+00:00",
+      "JS": {
+        "js_caller_utc": "2026-10-18T02:16:00.925Z",
+        "js_return_utc": "2026-10-18T02:16:01.824Z"
+      },
+      "frame": {
+        "captured_at_ms": 1792289760872,
+        "captured_at_utc": "2026-10-18T02:16:00.872000+00:00"
+      },
+      "server": {
+        "action_started_at_ms": 1792289760872,
+        "action_started_at_utc": "2026-10-18T02:16:00.872000+00:00",
+        "action_finished_at_ms": 1792289761405,
+        "action_finished_at_utc": "2026-10-18T02:16:01.405000+00:00",
+        "observation_finished_at_ms": 1792289761405,
+        "observation_finished_at_utc": "2026-10-18T02:16:01.405000+00:00"
+      },
+      "raw_bytes": 525623,
+      "raw_sha256": "ddc0c26bbfa1f10e59b1151953a2938f247acfc6088fcbb4e7208a9b1a4b39cc",
+      "raw_parts": 44,
+      "all_tiles_visually_inspected": true
+    },
+    {
+      "index": 2,
+      "tool": "mcp__chatgpt_terminal_prod__wait_and_observe",
+      "caller": "2026-10-18T02:16:33.040930+00:00",
+      "JS": {
+        "js_caller_utc": "2026-10-18T02:16:33.094Z",
+        "js_return_utc": "2026-10-18T02:17:04.163Z"
+      },
+      "frame": {
+        "captured_at_ms": 1792289823055,
+        "captured_at_utc": "2026-10-18T02:17:03.055000+00:00"
+      },
+      "server": {
+        "action_started_at_ms": 1792289793043,
+        "action_started_at_utc": "2026-10-18T02:16:33.043000+00:00",
+        "action_finished_at_ms": 1792289793043,
+        "action_finished_at_utc": "2026-10-18T02:16:33.043000+00:00",
+        "observation_finished_at_ms": 1792289823669,
+        "observation_finished_at_utc": "2026-10-18T02:17:03.669000+00:00"
+      },
+      "raw_bytes": 524331,
+      "raw_sha256": "4f806460787d691777725cb57bbcf7d0bc341cd9be9912688d0a389a186233f0",
+      "raw_parts": 44,
+      "all_tiles_visually_inspected": true
+    }
+  ],
+  "actual_bounded_recheck": {
+    "requested_schedule_ms": [
+      30000
+    ],
+    "actual_frame_elapsed_ms": 30012,
+    "actual_observation_elapsed_ms": 30626,
+    "valid_wait": true,
+    "same_screen": true,
+    "rechecks_used": 1
+  },
+  "parent_all_raw_part_whole_and_tiles_SHA_verification": "PASS",
+  "positive_release_at": "2026-10-18T02:17:46.953548+00:00",
+  "zero_after_terminal": true,
+  "pending": [],
+  "UNKNOWN": [],
+  "zero_inheritance_permanently_retired": true,
+  "Native": {
+    "grace_absent_recorded_revision": 121,
+    "complete_remote_collection_revision": 122,
+    "grace_not_extended": true,
+    "not_new_thinking_cycle": true
+  },
+  "business_completion": false
+}

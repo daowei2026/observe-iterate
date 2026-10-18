@@ -481,3 +481,13 @@
 - 从实际提交6042fe15411ae696be80fdc583c7469cfd54e260生成snapshot A，fingerprint d6413d6fe2094e441cb92cd8d7a2e2321f1ebc13f6d051ea332b7053da523431；最新真实采用base为128586，当前decision_report锁R9 c67bbfa原blob。原task blob与完整方法锁不变，watch根未删。
 - 原管理明示ROUTINE_RESULT/无需新reader；旧R3记录/input保留，只记RECORDED_OLD_INPUT，不冒称读过R9。现已真实取得第8份完整回交，R8仍不计结果；EFFORT8须在本采用及后继落实后消费，累计12保留。
 - 本提交登记完成后对精确B提交运行原workmap机械检查，结果另外保留；不以文件写入/ADOPTED标题宣称通过。
+
+
+### 2026-10-18 02:21Z｜R9实际采用通过，R10正常专业接续已冻结/机械preflight通过
+
+- 真实Intake B 87d6e85a79168016607f761e762b7e12eabfef74，前一实际base128586，原workmap检查PASS且三文件fresh raw核同。原R3仅RECORDED_OLD_INPUT，不冒称新独立审查。
+- R10准确新invocation/token及四原始准备文件在b1d9de7261976d37786ef6b6dc4b8616da3a5451冻结，prepare/verify与四文件fresh远端字节核同。原样31038 UTF8 bytes/17167 UTF16 units，SHA256 032e59464cbb07041bff6e8a161329e529f892cea47c02d9e921baa12349ea7c；当前采用实际M9#adoption，当前工作为原M9#continuation的新安排。不是R8旧稿换marker的恢复。
+- 实际BI01 pre-dispatch与workmap executor dispatch/base87d6检查PASS，Native122/root真实记录R10 NOT_SENT，IME/Send0，尚无sendready或sender。现phone actor只有获准无发送的到期network+有限R9 finalgrace。
+- 完整有效回交现8份：R1/R2/R5/R7/R9管理、R3必要阅读、R4/R6专业；R8两COMMITTED只计成本不计结果。原helper先确认EFFORT8 repeat-2到期；M9#effort明确允许本轮同范围等价复看，现完整原件+真实Intake+不同新后继已落实后才登记CONSUMED。复核无due/unknown/errors，下一原起点累计12 repeat-3未预关。旧首次RESULT/CHANGE/EFFORT4不重派。
+- 手机已见R9准确原答开头、无STOP但无完整tail；一次实际30秒复验仍同屏partial，仅分类可见证据不全，不断言全文malformed，不新造thinking周期。原grace至02:24:51.057229Z待最终收口。完整原答已从真实GitHub核验，五GitHub实物交付范围已收齐。
+- 下一步：原60min网络02:22:30.340Z到期才续验，同一新actor有限确认原R9到期grace。真实准入/去重及原样composer检查通过后实际Send R10。完整U2/U3仍ACTIVE，Worker空闲，不重复环境/图数/运输测试。
