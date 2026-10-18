@@ -1,5 +1,12 @@
 # BI-01-V2-01 真实运行进度
 
+## 当前状态（2026-10-18 03:29 UTC）
+
+- R0010实际新增提交dc61889；[主Case五截面与F05正反例](artifacts/professional-R0010/MAIN_CASE_CONTINUOUS_OBSERVATION.md)保存原价格序列、Completed历史端点与当前运动差异，以及迟知短段/已知后仍有运动的双向约束。已远端原字节核同，关联本轮准确invocation/token。连同此前[11个未覆盖转折实证](artifacts/professional-R0010/OBSERVATION.md)，均为Pro真实阶段业务原件；尚无最终turn complete或两Return，不冒称管理接收，不增加完整结果计数。
+- 原共享网络准入到期续验03:24:52.923Z实际开始，晚6.206秒、120秒SLO通过；Recent与Projects/全部真实列表通过，03:29:02.044Z完成，准入有效至04:29:02.044Z。14次手机调用、重启/IME/Send/STOP/copy/进入业务聊天均0，控制已阳性释放；详见 [NETWORK_RENEWAL_01.json](provenance/turns/R0010/NETWORK_RENEWAL_01.json)。
+- 整个run继续ACTIVE。R0010已COMMITTED，首次真实NoReply仅是界面事实；保留原70分钟04:01:47.213Z、90分钟04:21:47.213Z和恢复次数0。继续有限GitHub/既定共享目录对账，完整回交到达后核验Return/实物并接续；没有到期前重发或新增Worker。
+
+
 ## 当前状态（2026-10-18 03:03—03:04 UTC）
 
 - R0010 已真实 COMMITTED，原思考观察起点02:51:47.213Z。首次到期检查在03:02:07.024444Z调用，晚19.811444秒，120秒SLO通过；03:03:37.276Z完成唯一45秒同屏复验，仍“已停止思考”、无助手正文、无STOP。仅两次只读调用，IME/Send/重启/导航均0；不是后台取消或任务完成的证据。详见 [R0010/CHECK_01.json](provenance/turns/R0010/CHECK_01.json)。
