@@ -11,7 +11,9 @@
 - 专业 Pro 的[完整回交](artifacts/professional-R0006/FULL_RETURN.md)记录：从三品种全范围基础行情自主选择六处观察位置，保存搜索过程、正反例/第三对象问题及 SCN-01 五 As-Of 预分析。其初步认识是原机会 member-episode identity 有组织价值；U3 对成员质量的独立投资知识增量仍须多场景和合法时效检验。操作端未替 Pro 选场景或确认这些业务判断。
 - [轮次完整记录](provenance/turns/R0006/FULL_RESPONSE.md)与两 Return 已原字节归档。两个完整 schema、Binding原blob/span、16个回答锚点、7个实物引用及实际 after-return 均通过；只证明回交完整性，不是 U2/U3 或管理 Gate。`S1_SCENE_BASE_FACTS.csv` 仅被作者声明为本地支持文件，尚未Git交付，不计作S2同源数据。
 - 执行 Pro 已签[六场景 aidata 工单](artifacts/professional-R0006/WORKER_AIDATA_CHART_ORDER.md)，Worker于16:27:59Z真实启动并消费本单，见[启动证据](provenance/turns/R0006/WORKER_DISPATCH_RECEIPT.json)。先SCN-01，再按原单连续SCN-04/06、SCN-03/02、SCN-05；全部六场景、BASE/EVIDENCE及SCN-01五AsOf仍属当前责任。Worker只交真实图、同源数据、渲染/技术证据，不签业务结论。
-- 下一责任：Worker完成获授权图数施工；执行 Pro取得后按原same_work接续消费、挑战和完成S3。操作端持续收取成果，保留原起点核RESULT/CHANGE/EFFORT；累计投入资格由原管理有据裁定，专业工单继续。新执行物理chat首完整回复后正在独立办理规范唯一名 `BI01-V202-执行`，下一专业Send前必须真核完成。
+- 下一责任：Worker完成获授权图数施工；执行 Pro取得后按原same_work接续消费、挑战和完成S3。操作端持续收取成果，保留原起点核RESULT/CHANGE/EFFORT；累计投入资格由原管理有据裁定，专业工单继续。新执行物理chat已在首完整回复后真实规范为唯一 `BI01-V202-执行`，完整名称读回和正确Project唯一行已核，见[身份记录](provenance/turns/R0006/CHAT_IDENTITY_RECEIPT.json)。
 - 当前六场景的真实可打开图/aidata同源数据尚未交付，S2/S3未完成，尚未形成完整闭环或管理接收。首图、单Case、局部修通、格式修复或Workmap采用都不是完整任务停点。
+
+- R0007 原管理投入复看已按原Binding触发路线准备，尚未发送；[真实投入清单与差异](reviews/management-R0007/INPUT.md)保留R1起点、必要管理/接收及R6首专业结果，原管理将核定累计资格与消费责任。六场景Worker继续，不因该复看自动暂停。
 
 本页只投影真实证据；专业判断由专业/管理 Pro承担，Owner可继续从地图、当前任务、各轮Return与成果入口追踪。
