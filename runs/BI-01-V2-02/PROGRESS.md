@@ -1,28 +1,22 @@
 # BI-01-V2-02 真实运行进展
 
-当前：**R0008 已向原管理聊天真实 COMMITTED，管理正接收 Worker 全量图数并处理原 R0007 题号关联与新 Intake 快照。Worker 17新节点/1,928同源CSV已全交、远端核回；初始 S1 已接收，S2/S3 专业消费和完整管理接收仍未完成。**
+当前：**R0008 已完成 Worker S2 技术交付接收、R0007 QWR 题号关联修复和新 Workmap Intake 接入。17 个新节点、1,928 个同图 CSV 已取得执行 Pro 可消费资格；S2 业务解释、六场景 S3、首个 grounded cycle 和完整管理/Owner 接收仍未完成。**
 
 - 运行 `BI-01-V2-02`，业务 `BI-01`；真实 Owner GO 与两个指定版本见 [OWNER_START.md](OWNER_START.md)。旧 V2-01 仍暂停，其采用、Gate、在途及调度不继承。
 - 已有[管理地图](00_长程推进地图.md)和完整[当前任务](01_当前任务.md)，专业范围为连续 S1/S2/S3。管理 Pro 未预选场景、阈值、赢家、配额或单 Case 停点；操作端也未代选。
-- R0003 独立 [Reader 报告](reviews/independent/WORKMAP_READER_R0001_INPUT.md)的狭义可理解性 PASS 保留。原非法题号 Binding/QWR 的失败原件不改；R0004 真管理纠正、R0005 同一 Reader 的一次合法 Return repair 已完成。新两 Return、完整手机原文、full schema、身份/Binding、after-return、原报告 blob 和输入指纹均真核通过；[接收证据](provenance/turns/R0005/READER_REPAIR_ACCEPTANCE.json)仅按管理预授权机械消费，没有第二次实质审查或 U2/U3 业务 PASS。
-- 首次[真实 Intake](reviews/WORKMAP_INTAKE_CURRENT.json)把原报告与合法修复 Return 共同接入。先在 status 仍 NOT_CONFIGURED 的提交上实际 check/dispatch，PASS 后才 ADOPTED；[采用记录](reviews/WORKMAP_ADOPTION_VERIFICATION.json)与[采用后派发检查](reviews/WORKMAP_FINAL_DISPATCH_VERIFICATION.json)均可定位。完整 Reader 输入未变，reader fingerprint 仍 `a29852320c44b64cf05e4a9250d86104f878718b10dc14a00fe58d18e036b9f8`。
-- R0006 `BI01-V2-02-R0006-20261018T154801Z-a5ec3f46` 是本 run 的首次 professional 调用，接收方 `chatgpt:细节叙事生成_金标:BI01-V202-执行`，mode 为 OBSERVATION_SCOPE；完整 S1/S2/S3 任务与 Binding、固定专业合同及真实采用来源一并发送，范围未缩成局部 Case/图。原文和 [invocation](provenance/turns/R0006/INVOCATION.json)已冻结发布，prepare/verify、pre-dispatch和最终Workmap派发检查实际通过。随后正确 Project 新 composer、最高 Pro、空字段门禁和 full UTF8/U16/SHA 均真核通过；IME1、Send1，已实际 COMMITTED，见[真实发送回执](provenance/turns/R0006/SEND_RECEIPT.json)。
-- R0006 原 Send1/IME1 及思考起点15:56:58.289Z保留；GitHub真实相关 `turn complete` 为 `acb3aa5abb06472f25e07a51ad07a25620593280`。手机16:24:15.859Z完整尾/action row、无STOP，16:24:55.058Z分类 answer_complete；共享网络双列表真实通过，未重发本轮。
-- 专业 Pro 的[完整回交](artifacts/professional-R0006/FULL_RETURN.md)记录：从三品种全范围基础行情自主选择六处观察位置，保存搜索过程、正反例/第三对象问题及 SCN-01 五 As-Of 预分析。其初步认识是原机会 member-episode identity 有组织价值；U3 对成员质量的独立投资知识增量仍须多场景和合法时效检验。操作端未替 Pro 选场景或确认这些业务判断。
-- [轮次完整记录](provenance/turns/R0006/FULL_RESPONSE.md)与两 Return 已原字节归档。两个完整 schema、Binding原blob/span、16个回答锚点、7个实物引用及实际 after-return 均通过；只证明回交完整性，不是 U2/U3 或管理 Gate。`S1_SCENE_BASE_FACTS.csv` 仅被作者声明为本地支持文件，尚未Git交付，不计作S2同源数据。
-- 执行 Pro 已签[六场景 aidata 工单](artifacts/professional-R0006/WORKER_AIDATA_CHART_ORDER.md)，Worker于16:27:59Z真实启动并消费本单，见[启动证据](provenance/turns/R0006/WORKER_DISPATCH_RECEIPT.json)。先SCN-01，再按原单连续SCN-04/06、SCN-03/02、SCN-05；全部六场景、BASE/EVIDENCE及SCN-01五AsOf仍属当前责任。Worker只交真实图、同源数据、渲染/技术证据，不签业务结论。
-- Worker 已全交六场景 17 个新节点、1,928 个同源 CSV，技术未完为0。共同Return由原作者定向修复并核验通过，原custom原字节保留；[完整回交](artifacts/worker-R0006/WORKER_RETURN.md)及[索引](artifacts/worker-R0006/CURRENT_NODE_INDEX.csv)已发布于`19ef56db70addb71b2d29647bf93b56675f30370`，91文件逐字节远端核回，见[真实运输receipt](provenance/turns/R0006/WORKER_DELIVERY_RECEIPT.json)。B外ZIP、N/02单位等原限制仍待专业资格判断，不冒称跨包等价或已业务消费。
-- R0007 [管理决定](reviews/management-R0007/DECISION.md)已逐项核 R0006 方法、六场景和 SCN-01 预分析，接收性质为 `S1_INITIAL_SCOPE_ACCEPTED_FOR_CONTINUATION`：初始 S1 已足以进入 S2/S3，不再以扩大全范围搜索为前置；真实图或同源数据暴露窗口、方向、时点、第三对象或承重问题缺口时，才定向补 S1。该接收不等于完整阶段、U2/U3 业务 PASS 或 Owner 接收。
-- R0007 核定首次 EFFORT 周期在其启动前已有四份有效结果：R0001、R0003、R0004、R0006；R0002 签发缺件和 R0005 格式修复保留真实投入但不重复计数。初始 EFFORT-4 已由 R0007 消费；R0007 本身计入下一周期后累计有效结果为5，下次定期复看在累计8时到期，RESULT/CHANGE 可提前触发。
-- R0007 实际 Gate 的唯一错误 `INTAKE_STALE` 来自 watched artifacts 新增 R0006 成果；Binding、地图、任务、reader fingerprint 和 task payload 均未变。管理已把 snapshot `5fa0b9fb2d0ae8057590b153b3b28ce6b7ed4406afb2d476b81acc7d476cbf56` 接入[当前 Intake](reviews/WORKMAP_INTAKE_CURRENT.json)，将当前任务标为 `ROUTINE_RESULT` 同工作续作，并给出不需新 Reader 的有据理由。该更新仍需操作端在实际 exact commit 上重新运行适用 Gate，不能把 Intake 写入当成机械 PASS。
-- R0007 原管理消息已真实 COMMITTED，见[发送回执](provenance/turns/R0007/SEND_RECEIPT.json)。原稿 FULL hash/长度核对通过，累计 IME1/Send1；17:01:27.803Z 准确 invocation/token 气泡与 STOP、无 pending/error，17:02:04.460790Z 完成分类。管理现已实际作出处置，不再保持 IN_FLIGHT。
-- 当前真实后继：保留R7已成，按[具名缺项与新Worker交付输入](reviews/management-R0008/INPUT.md)返回原管理，窄补原QWR题号关联和新watched成果的Intake接收。当前实际Gate仅INTAKE_STALE，不假称PASS。通过真实适用Gate后，执行Pro沿原same_work连续消费全部六场景S2/S3，首个grounded cycle按原RESULT触发管理。
-- S2/S3 业务分析、U3 相对 KLine/C0/N 的增量判断、六场景综合行动和完整管理接收仍未完成。首图、单Case、技术图数完成、格式修复、Workmap采用或S1阶段接收都不是完整任务停点。
+- R0003 独立 [Reader 报告](reviews/independent/WORKMAP_READER_R0001_INPUT.md)的狭义可理解性 PASS 保留。R0004/R0005 只完成其合法 Return 修复；没有第二次实质审查或 U2/U3 业务 PASS。完整 Reader 输入未变，reader fingerprint 仍 `a29852320c44b64cf05e4a9250d86104f878718b10dc14a00fe58d18e036b9f8`。
+- Workmap 已合法 `ADOPTED`；当前 task blob、Binding、Owner/rules 和 task payload 均未改变。每次 watched result 新增后仍按真实 snapshot/Intake/check/dispatch 接续，不因旧采用自动放行。
+- R0006 `BI01-V2-02-R0006-20261018T154801Z-a5ec3f46` 是本 run 首次 professional 调用。执行 Pro 从基础行情自主选择六场景，形成 S1 场景记录、SCN-01 五 As-Of 预分析和六场景 Worker 工单。R0007 已将其接收为 `S1_INITIAL_SCOPE_ACCEPTED_FOR_CONTINUATION`，不等于完整阶段、U2/U3 业务 PASS 或 Owner 接收。
+- Worker 已全交六场景 17 个本 run 新节点、1,928 个同图原 CSV 和 17 个数据包，技术 pending 为 0。共同 Return 已合法修复，原 custom 回交原字节保留；[完整回交](artifacts/worker-R0006/WORKER_RETURN.md)、[节点索引](artifacts/worker-R0006/CURRENT_NODE_INDEX.csv)、[固定源绑定](artifacts/worker-R0006/FIXED_INPUT_BINDING.json)、[技术汇总](artifacts/worker-R0006/TECHNICAL_VALIDATION_SUMMARY.json)和[发布清单](artifacts/worker-R0006/PUBLICATION_MANIFEST.json)发布于 `19ef56db70addb71b2d29647bf93b56675f30370`，91 个文件经远端核回；真实运输见 [WORKER_DELIVERY_RECEIPT.json](provenance/turns/R0006/WORKER_DELIVERY_RECEIPT.json)。
+- Worker 证据表明 17/17 节点通过本地原行/坐标与真实 Chromium/Bokeh 检查；浏览器核验覆盖 CDS 原值、绘图坐标、Canvas glyph 绘制/重绘及 pan/zoom/tab/layer/table 交互。SCN-01 浏览器批次最终 exit 143、原因未知，但七份逐页报告已在终止前保存；未伪称 exit 0。
+- R0008 [管理决定](reviews/management-R0008/DECISION.md)将该交付接收为 `S2_TECHNICAL_DELIVERY_ACCEPTED_FOR_PROFESSIONAL_CONSUMPTION`。这只授执行 Pro 使用图、同源 CSV、版本/hash/浏览器证据的资格，不签 Worker 业务判断、不关闭 S2/S3、不形成正式 Cluster/H1、Quality、Allocation 或 Owner 接收。
+- 固定源资格已裁定：A 包实际 SHA 与专业附件一致；B 包实际 Worker DataBinding 为历史/Owner 指定路径的 `ff321512...`，项目附件为 `4fd1af4e...`。现行固定数据合同已预先记录该外层 ZIP 差异，因此实际 B 可消费，但不得声称两包字节等价。跨包 15 CSV 等价仍为 Unknown；只有出现具体 member/row/column 冲突时才限制相应图和结论，不重画全部节点、不重算 U2/U3。
+- N/02 六行空 `business_duration/normalized_amplitude`、原 `per_symbol_raw_quote` 单位、R03 Withheld、C2 无 official cluster/H1 和其他缺失继续保留为 Missing/Withheld；只限制对应判断，不冻结其他事实。
+- R0007 原两 Return 的 schema/身份/Binding/锚点/实物均通过，唯一关联错误是原 QWR 用 `M-REASSESS` 而原 Binding 题号为 `S1/S2/S3`。R0008 已在当前分支将 R0007 QWR 映射回 S1/S2/S3；原 invocation/token/决定/结果不变，原失败原件仍保留在 `2b7e66f30c17f53caca3951802e0150a90c56b90` 历史提交中，不追造 S2/S3 完成。
+- R0007 已消费首个 EFFORT-4。R0008 作为必要管理接收结果后，累计有效结果为 6；下一定期复看在累计 8 时到期，还需 2 个有效结果。FIRST-GROUNDED-CYCLE 和 CHANGE 当前均为 NOT_YET，二者可先于定期阈值触发。
+- R0008 实际 Gate 的唯一错误 `INTAKE_STALE` 来自新增 `artifacts/worker-R0006/`。管理已把 snapshot `9c42792d6d5ddcfdd2477bfbf635bd9fb555ae94478b1e77a6e00134473d27c2` 接入[当前 Intake](reviews/WORKMAP_INTAKE_CURRENT.json)，保持当前任务 `ROUTINE_RESULT / SAME_WORK`、`requires_reader_check=false`。操作端仍须在该 exact commit 上重新运行适用 check/dispatch；本记录不预造机械 PASS。
+- R0008 原管理消息已真实 COMMITTED，见[发送回执](provenance/turns/R0008/SEND_RECEIPT.json)：最高 Pro、一次输入/发送、FULL hash/UTF8/U16 一致，17:37:28.682Z 进入模型思考；本管理回交完成后不再保持 IN_FLIGHT。
+- 当前真实后继：操作端重跑 exact Workmap Gate；通过后沿 R0008 `#adoption` 向原 `BI01-V202-执行` 聊天发送 same_work。执行 Pro 先闭合 SCN-01 五 As-Of，再连续消费 SCN-04/06、SCN-03/02、SCN-05，完成 U2/U3/后续/基线 S3。首个 grounded cycle 触发非阻塞 RESULT；完整范围未完继续。
+- S2 的业务读图说明、S3 六场景判断、U3 相对 KLine/C0/N 的独立增量、综合设计行动和完整阶段接收仍未完成。技术图数完成、格式修复、Workmap采用、S1阶段接收都不是完整任务停点。
 
-本页只投影真实证据；专业判断由专业/管理 Pro承担，Owner可继续从地图、当前任务、各轮Return与成果入口追踪。
-
-- R0007 原两schema、身份、Binding、九锚点和六实物均真核；`association_errors`唯一QUESTION_NOT_ASSIGNED（focus M-REASSESS相对原S1/S2/S3），详见[原核验](provenance/turns/R0007/RETURN_VALIDATION.json)。原失败保留，不改写原管理决定，不通过改Binding或控制器消除错误。
-
-- R0007 手机也已真实完整结束，见[完成回执](provenance/turns/R0007/PHONE_COMPLETION_RECEIPT.json)：17:21:26.883Z完整JSON尾/操作栏、无STOP，17:21:57.559Z分类；没有重发或复制全手机正文。R0008准确载荷已准备、verify/pre-dispatch/远端读回通过，但仍未发送，待当前例行网络租约复核后按原管理具名路线首次提交。原R7题号缺项与新Worker Intake仍由原管理负责，S2/S3完整目标继续。
-
-- R0008 原管理 `decide` 消息已真实 COMMITTED，见[发送回执](provenance/turns/R0008/SEND_RECEIPT.json)。当前最高 Pro/空稿和 FULL 59,663B/37,254U16/SHA 全同均实证通过，累计IME1/Send1；null后仅同草稿安全聚焦，没有重输。17:37:28.682Z准确本轮气泡及STOP、无pending/error，17:38:05.120Z完成分类；R7原消息和初始EFFORT未重发。普通专业派发Gate的INTAKE_STALE仍保留，等待本轮原管理实质接收、原QWR一次窄补和真实Gate再核。
+本页只投影真实证据；专业判断由专业/管理 Pro承担，Owner可继续从地图、当前任务、Worker包、各轮Return与成果入口追踪。
