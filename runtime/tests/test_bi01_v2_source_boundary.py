@@ -106,7 +106,7 @@ class V2Boundary(unittest.TestCase):
         self.assertIn("23 个 CSV", fixed)
         self.assertIn("15 CSV", fixed)
         self.assertIn("不安排重算", goal)
-        self.assertIn("不视觉看图片像素", chart)
+        self.assertIn("AI 本轮只读取同图结构化数据，不视觉看图片像素", chart)
         self.assertIn("aidata 的全新独立分支", chart)
 
         binding = json.loads((ROOT / "runtime/config/WORKMAP_BINDING.json").read_text(encoding="utf-8"))
@@ -179,7 +179,7 @@ class V2Boundary(unittest.TestCase):
         self.assertIn("不能从某几个指标", goal)
         self.assertIn("先用上游 K 线", chart)
         self.assertIn("当时四方面判断", analysis)
-        self.assertIn("不自动证明提前选对", method)
+        self.assertIn("不产生“提前识别”资格", method)
         self.assertIn("WITHHELD", method)
         self.assertIn("BI-01-V2-02", goal)
 

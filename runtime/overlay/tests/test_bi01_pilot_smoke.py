@@ -114,7 +114,7 @@ class BI01Smoke(unittest.TestCase):
         self.assertEqual((prepared["role"], prepared["mode"], prepared["stage"]),
                          ("management", "M-START", "BI01"))
         self.assertIn("07_BUSINESS_SCENE_OBSERVATION_METHOD.md", prepared["message"])
-        self.assertIn("基础 K 线/贴近转折图", prepared["message"])
+        self.assertIn("基础 K线/贴近转折", prepared["message"])
         self.assertIn("强弱", prepared["message"])
         self.assertIn("04_BI01_BUSINESS_BASELINE.md", prepared["message"])
         self.assertIn("06_U2_U3_DESIGN_SOURCE_MAP.md", prepared["message"])
