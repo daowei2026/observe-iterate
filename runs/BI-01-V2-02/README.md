@@ -1,15 +1,19 @@
 # BI-01-V2-02：场景驱动的 U2/U3 业务观察
 
 <a id="common"></a>
-**RUNNING / R0001 M-START 已提交，等待真实管理回交**。Owner 已于 2026-10-18 在本次 Codex 聊天明确授权正式启动并持续推进本运行；完整原文见 [OWNER_START.md](OWNER_START.md)，来源与指纹见 [OWNER_START_PROVENANCE.json](OWNER_START_PROVENANCE.json)。本次专业/运行源锁定 `30d6cd28ca4cc52eb201f0aa474f9f4c93b74080`，操作控制源锁定 `1e28be8e361babadb3ef4b5e647c53ce625ef778`，均为 `fy/bi01-v2-02-business-scene-20261018` 的 Owner 指定版本。管理地图/任务/Binding/Intake 仍须由本次真实 M-START 签发与接收。
+**RUNNING / R0001 M-START 已形成实质管理结果，等待首次 Workmap 独立只读接收与采用。** Owner 已于 2026-10-18 明确授权正式启动并持续推进本运行；完整原文见 [OWNER_START.md](OWNER_START.md)。专业/运行 Source 锁定 `30d6cd28ca4cc52eb201f0aa474f9f4c93b74080`，操作控制 Source 锁定 `daowei2026/cgpterm@1e28be8e361babadb3ef4b5e647c53ce625ef778`。
 
 <a id="bi01"></a>
 ## 本次完整业务目的
 
-读 [00](../../professional/v2/00_PURPOSE_AND_THREE_STEP_FLOW.md)、[07](../../professional/v2/07_BUSINESS_SCENE_OBSERVATION_METHOD.md)和[06 U2/U3 原文导航](../../professional/v2/06_U2_U3_DESIGN_SOURCE_MAP.md)及其承重原文。从真实 K 线、Zig/贴近转折基础行情找到与 `DirectionalReleaseIntent` 对应的共同方向机会，选择真实有意义的位置，再核 U2 的位置/成员与 U3 四方面能否在合法当时数据下区别后续品种运动质量。**不预设场景类型、强弱公式、胜者和样本配额**。
+从固定 rb/i/hc 的 KLine、small Zig 和 mid 贴近转折基础行情中自主寻找有业务意义的共同方向运动位置，再检查 U2 的位置、成员和第三对象边界，以及 U3 Progress/Friction/Retention/ObservabilityAndConstraint 四束在合法 As-Of 能否区别成员后续运动质量；对照后续事实与 KLine/C0/N/静态组/简单共同事件，形成增量、无增量、支持、反证和设计行动。**不预设场景类型、强弱公式、胜者或样本配额。**
 
-原 [BI-01-V2-01](../BI-01-V2-01/README.md) 仍 Owner 暂停，旧R10已提交专业结果但未做管理接受；旧数据/图/发现经来源/版本和浏览器核实可供参考，不能当本次已接受 S1、Gate、Owner GO、任务或在途。两份预计算 ZIP 继续固定，不重算。
+当前管理实物：
 
-[新启动与隔离规则](../../runtime/operations/BI01_V2_RUN_GUIDE.md) · [轮次合同](../../runtime/operations/V2_ROUND_RECORD_CONTRACT.md)。
+- [00_长程推进地图.md](00_长程推进地图.md)
+- [01_当前任务.md](01_当前任务.md)，含连续 S1/S2/S3 `question-work/v2` Binding
+- [R0001 管理决定](reviews/management-R0001/DECISION.md)
 
-**当前尚未形成** `00_长程推进地图.md`、`01_当前任务.md`、`reviews/WORKMAP_INTAKE_CURRENT.json`或任何真实 Pro 专业成果。下一动作是本次独立 `R0001 / M-START` 管理 BOOTSTRAP；R0001 已于 2026-10-18 21:09:20（北京时间）通过正式手机 MCP 原样提交，发送证据见轮次 SEND_RECEIPT；不据此宣称管理已接收或业务已完成。后续实况见 [PROGRESS.md](PROGRESS.md)。
+原 [BI-01-V2-01](../BI-01-V2-01/README.md) 继续由 Owner 暂停。其任务、Workmap、Reader、Gate、R10、在途、旧选样与完成状态不继承；只有经来源、版本、窗口和浏览器实际渲染核实的图/同源数据可以技术复用。两份预计算 ZIP 固定，不重算或替换。
+
+当前尚未发生：首次 Workmap Reader 的真实调用/回交、`WORKMAP_INTAKE_CURRENT.json`、`WORKMAP_BINDING.json=ADOPTED`、专业首发，以及任何本 run 的 S1/S2/S3 专业结果。下一合法动作是按已签发 Reader 任务完成独立只读接收；输入未变且无实质歧义后，操作端才可机械形成 Intake、采用 Workmap 并向新的执行 Pro 聊天发送完整任务。实况见 [PROGRESS.md](PROGRESS.md)。
