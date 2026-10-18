@@ -1,0 +1,61 @@
+{
+  "schema": "question-work/v2",
+  "kind": "RETURN",
+  "work_id": "BI-01",
+  "invocation_id": "BI01-V2-02-R0010-20261018T175239Z-75847f6b",
+  "binding_ref": {
+    "repo": "daowei2026/observe-iterate",
+    "commit": "a3984f16415a5f1ac521a68c3a98d0364fed9546",
+    "path": "runs/BI-01-V2-02/01_当前任务.md",
+    "selector": "full"
+  },
+  "focus_results": [
+    {
+      "question_id": "S1",
+      "completed_ref": {"answer_ref": "#completed-s1"},
+      "remaining_ref": {"answer_ref": "#no-professional-remaining"},
+      "affected_refs": [
+        {"answer_ref": "#result"},
+        {"answer_ref": "#completed-s3"}
+      ]
+    },
+    {
+      "question_id": "S2",
+      "completed_ref": {"answer_ref": "#completed-s2"},
+      "remaining_ref": {"answer_ref": "#no-professional-remaining"},
+      "affected_refs": [
+        {"answer_ref": "#limitations"},
+        {"answer_ref": "#artifacts"}
+      ]
+    },
+    {
+      "question_id": "S3",
+      "completed_ref": {"answer_ref": "#completed-s3"},
+      "remaining_ref": {"answer_ref": "#no-professional-remaining"},
+      "affected_refs": [
+        {"answer_ref": "#result"},
+        {"answer_ref": "#triggers"}
+      ]
+    }
+  ],
+  "material_use_ref": {"answer_ref": "#materials"},
+  "trigger_observations": [
+    {
+      "trigger_id": "BI01V202-FIRST-GROUNDED-CYCLE",
+      "state": "TRIGGERED_ONCE_NON_BLOCKING",
+      "evidence_ref": {"answer_ref": "#triggers"}
+    },
+    {
+      "trigger_id": "BI01V202-SUBSTANTIVE-CHANGE",
+      "state": "NOT_TRIGGERED",
+      "evidence_ref": {"answer_ref": "#triggers"}
+    },
+    {
+      "trigger_id": "BI01V202-EFFORT-4",
+      "state": "NOT_YET",
+      "evidence_ref": {"answer_ref": "#triggers"}
+    }
+  ],
+  "continuation_ref": {"answer_ref": "#continuation"},
+  "batch_remaining_ref": {"answer_ref": "#no-professional-remaining"}
+}
