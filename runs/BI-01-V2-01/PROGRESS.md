@@ -458,3 +458,9 @@
 - 唯一Send caller01:51:54.384Z/server动作完成01:51:58.148Z；第一STOP候选frame01:51:58.449Z另存，fresh17最终证明准确R9 inv/token/management新bubble+STOP、无sending/wait/error，承诺frame01:52:08.919Z、server完成01:52:09.394Z。Native117按确证观察server记COMMITTED/model_thinking及初始调度时钟，不把候选帧或后端实际开始混为一谈。
 - 本sender phone17/IME1/Send1，重试/新chat/STOP/重启0；01:52:52.219846Z阳性释放并永久退役，165sections全terminal，无pending/UNKNOWN。root逐份重组17raw、核每个<=12KB分块与整体SHA一致。R9全程phone24（首未发送6+安全观察1+本sender17）、IME1/Send1；实际模型已承诺消息10/唯一业务R轮9，完整有效回交仍7。
 - 原ready到本首caller877.715043s/到Send caller1151.867043s/到确证承诺1166.877043s；resume到首caller211.307197s，120/300阈值真实FAIL，所有恢复/一次GitHub TLS暂态与准备成本保留，不重置ready或归咎Pro推理。下一普通观察02:02:09.394Z（北京时间10:02:09），70min03:02:09.394Z/90min03:22:09.394Z；共享准入至02:22:30.340Z。按约持续远端/同轮ZIP对账，未到due不提前重开chat；完整Goal继续等待真实管理决定及专业接续。
+
+## R0009首次到期只读检查：仍思考，SLO与原计时保持
+
+- 原due02:02:09.394Z，首caller02:02:13.821Z晚4.427s满足120秒；frame02:02:13.779Z/server完成02:02:14.247Z分列，独立clock相差42ms不混为同一时点。准确R9 inv/token/management+STOP与思考标签，无助手正文/完整尾部/错误/大spinner，全部三无损tiles实查。
+- 正式observe1，输入/Send/STOP/导航/网络/重启0，终态后phone0；02:02:53.404369Z阳性释放并永久退役，无pending/UNKNOWN，166sections全terminal。准备时一次regex元数据查询偏差已原样记录，没有调用额外手机工具；root核raw所有分块及整体SHA一致。
+- Native118只以实际server完成更新下一02:12:14.247Z（北京时间10:12:14），原thinking01:52:09.394Z/70min03:02:09.394Z/90min03:22:09.394Z保持；共享准入至02:22:30.340Z。未新增Pro调用或有效结果，真实完整回交仍7；继续等待管理回交和完整U2/U3后继。
