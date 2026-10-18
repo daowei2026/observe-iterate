@@ -1,6 +1,6 @@
 # BI-01-V2-02 真实运行进展
 
-当前：**R0010 六场景 S1/S2/S3 专业主体已真实提交；R0011 一次有限交付补齐已完成，回交完整性及手机终态均已核验。完整成果尚待原管理接收，R0012 原管理接收消息已准确冻结、发布核回并进入首次发送 episode；当前尚未取得其 COMMITTED 证据或管理决定。**
+当前：**R0010 六场景 S1/S2/S3 主体及 R0011 有限补交已真实收齐并校验，尚待原管理接收。R0012 唯一一次输入后 FULL 读回不可用，Send0／NOT_SENT；原草稿保留，新的受控 episode 正在只读核对同一草稿，通过精确校验后才恢复原首次发送。完整长程任务继续运行。**
 
 以下保留各前序轮次当时的事实与限制；最新接续见本页后续记录。
 
@@ -47,3 +47,6 @@ R0010/R0011 canonical round 正文和两 Return 均只逐字节镜像真实作�
 R0012 按原专业 `SUBMIT/accept` 后继交原 `BI01-V202-管理`，并合并一次非阻塞首次 RESULT 责任 `[BI-01, BI01V202_FIRST_RESULT_REASSESSMENT, initial]`，当前 PENDING 而非消费。原 initial EFFORT 已消费，原 R1 计数起点保持；R8 管理确认6/下次8，R10专业报告7，R11纯交付修复不增加有效结果，待原管理核定当前计数及后继。完整六场景正文、所有数据/图索引、资格限制与真实检查随[管理输入](reviews/management-R0012/INPUT.md)提供。
 
 当前 exact Workmap check 唯一错误仍为 INTAKE_STALE，新专业成果需要原管理实际 Intake 接收；未用旧 snapshot、机械 prepare 或原图技术验收代替本次业务接收。R0012 仅为首次发送 episode 运行中，未先宣称送达或决定。后续按真实管理回交持续推进完整目标，不以本批图、单个 Case 或补交完成为停点。
+
+
+R0012 首次发送尝试实际停在正文精确读回门：输入1次、Send0，未清空、重输或追加；见 [真实未发送记录](provenance/turns/R0012/SEND_ATTEMPT_01_NOT_SENT.json)。保留原 invocation/token/payload/草稿，通过现有草稿恢复机制接续，不将输入完成当作送达，也不重复派发。首次 RESULT 责任仍 PENDING，管理尚无本轮决定。
