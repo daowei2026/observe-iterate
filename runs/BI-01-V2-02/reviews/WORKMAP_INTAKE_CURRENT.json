@@ -2,18 +2,18 @@
   "schema": "workmap-intake/v1",
   "intakes": {
     "bi01": {
-      "snapshot": "5fa0b9fb2d0ae8057590b153b3b28ce6b7ed4406afb2d476b81acc7d476cbf56",
+      "snapshot": "9c42792d6d5ddcfdd2477bfbf635bd9fb555ae94478b1e77a6e00134473d27c2",
       "manager": {
         "role": "management",
-        "context": "真实 management Pro 已在 R0007（BI01-V2-02-R0007-20261018T163532Z-e0c15f97）读取 R0006 专业结果、投入清单和实际 INTAKE_STALE Gate，接收初始 S1 用于 S2/S3 连续推进并消费首次 EFFORT-4。地图、任务、Binding 和 Reader 输入未变；操作端不得把本记录解释为 U2/U3 业务 PASS、完整阶段完成或 Owner 接收。"
+        "context": "真实 management Pro 已在 R0008（BI01-V2-02-R0008-20261018T171352Z-8b01a7dd）读取并核 Worker 六场景技术交付、R0007 原回交关联错误和实际 INTAKE_STALE Gate。管理接受 Worker 技术结果供原执行 Pro消费，保留 S1 初始接收并继续 S2/S3；不把技术完成解释为 U2/U3 业务 PASS、完整阶段完成或 Owner 接收。"
       },
       "decision_report": {
-        "path": "runs/BI-01-V2-02/reviews/management-R0007/DECISION.md",
-        "blob": "b3c8a9df12b88a8bf6e36ee592f228d11fee9cf2"
+        "path": "runs/BI-01-V2-02/reviews/management-R0008/DECISION.md",
+        "blob": "91a111ff501b48afff2195a47ed90ec339f284dd"
       },
       "reader_check": {
         "status": "RECORDED",
-        "context": "独立原 Reader R0003 BI01-V2-02-R0003-20261018T135502Z-2de24e8b 的狭义可理解性 PASS；同一 Reader R0005 仅做合法 Return 格式修复，无第二次审查。R0007 核实当前 reader input、map、task、Owner/rules 与采用时完全未变；新增内容仅为 Reader 完成后产生并由管理实际读取的 R0006 专业结果树，因此按 ROUTINE_RESULT 复用原 Reader，不扩大其业务资格。",
+        "context": "独立原 Reader R0003 的狭义可理解性 PASS 继续适用于未变的 overview/map/task/Binding/Owner/rules；R0005 只修合法 Return 格式。R0008 新增接收的是 Reader 完成后生成的 Worker 技术结果树，业务和专业结果由 management/执行 Pro消费，不借 Reader 自签。",
         "independent_of_map_builder": true,
         "report": {
           "path": "runs/BI-01-V2-02/reviews/independent/WORKMAP_READER_R0001_INPUT.md",
@@ -21,7 +21,7 @@
         },
         "input_commit": "5e8e4c1bb184a97bfe47bc40493c667bb7b8185d",
         "input_snapshot": "a29852320c44b64cf05e4a9250d86104f878718b10dc14a00fe58d18e036b9f8",
-        "qualification": "只读可理解性；不代表 U2/U3 业务正确、R0006 专业结论通过或 Owner 接收",
+        "qualification": "只读可理解性；不代表 Worker 技术正确、U2/U3 业务正确、专业结论通过或 Owner 接收",
         "repair_role_return": {
           "commit": "5115c8f350646b101141a6552b6aa5d45b31ae06",
           "path": "runs/BI-01-V2-02/provenance/turns/R0005/ROLE_RETURN.json"
@@ -40,7 +40,7 @@
         "task_id": "BI01-V2-02-S123-SCENE-OBSERVATION-01",
         "kind": "ROUTINE_RESULT",
         "requires_reader_check": false,
-        "reader_reason": "R0007 核实 reader_fingerprint a29852320c44b64cf05e4a9250d86104f878718b10dc14a00fe58d18e036b9f8、任务 blob 8f90121bd9d1657992313b6c9a78d44fcd3a546f、地图和 Binding 均未改变；本次只接入 watched artifacts 下的 R0006 真实专业结果。现有独立 Reader 资格仅复用于未变任务可理解性，R0006 业务结果由 management 直接接收，未借 Reader 自签业务 PASS。",
+        "reader_reason": "R0008 核实 reader_fingerprint a29852320c44b64cf05e4a9250d86104f878718b10dc14a00fe58d18e036b9f8、task payload 85e7aa3dd7b7e3cde4135aacaa3535e7183a24b8c616aba59e108d6dec9e6b04、地图、任务、Binding、Owner/rules 均未变。新增内容仅为 artifacts/worker-R0006 的实际技术结果；由 management 接收技术资格，后续由执行 Pro消费业务，不扩大 Reader 资格。",
         "method_paths": [
           "professional/v2/00_PURPOSE_AND_THREE_STEP_FLOW.md",
           "professional/v2/01_AIDATA_CHART_AND_DATA.md",
@@ -55,7 +55,7 @@
         ]
       },
       "effort": {
-        "known_pro_turns": 7,
+        "known_pro_turns": 8,
         "rounds": [
           {
             "round": "R0001",
@@ -91,18 +91,25 @@
             "round": "R0007",
             "invocation_id": "BI01-V2-02-R0007-20261018T163532Z-e0c15f97",
             "role": "management"
+          },
+          {
+            "round": "R0008",
+            "invocation_id": "BI01-V2-02-R0008-20261018T171352Z-8b01a7dd",
+            "role": "management"
           }
         ],
-        "effective_result_count_before_R0007": 4,
-        "effective_result_rounds_before_R0007": [
+        "effective_result_count_before_R0008": 5,
+        "effective_result_rounds_before_R0008": [
           "R0001",
           "R0003",
           "R0004",
-          "R0006"
+          "R0006",
+          "R0007"
         ],
         "excluded_duplicate_or_format_rounds": {
           "R0002": "Reader 签发缺件的真实调用，保留投入但不另计一份实质结果",
-          "R0005": "R0003 的一次 Return 格式修复，不与原实质审查重复计数"
+          "R0005": "R0003 的一次 Return 格式修复，不与原实质审查重复计数",
+          "WORKER-R0006-RETURN-REPAIR": "Worker 技术调用与共同 Return 格式修复不作为专业/管理有效结果单独计数"
         },
         "consumed_obligation": {
           "trigger_id": "BI01V202-EFFORT-4",
@@ -111,39 +118,77 @@
           "consumed_by": "BI01-V2-02-R0007-20261018T163532Z-e0c15f97",
           "threshold_effective_results": 4
         },
-        "effective_result_count_after_R0007": 5,
+        "effective_result_count_after_R0008": 6,
         "next_due_at_cumulative_effective_results": 8,
-        "remaining_until_next_periodic_review": 3,
-        "count_basis": "从 R0001 原起点累计有效专业及必要管理/接收结果；手机 episode、普通 commit、Worker 技术调用和纯格式重复不另计。R0007 消费初始周期并作为下一周期第一份必要管理结果；RESULT/CHANGE 可提前触发。"
+        "remaining_until_next_periodic_review": 2,
+        "count_basis": "从 R0001 原起点累计有效专业及必要管理/接收结果；手机 episode、普通 commit、Worker 技术调用和纯格式重复不另计。R0008 计入的是 Worker 技术资格接收、来源裁定和 R0007 关联修复的必要管理结果。RESULT/CHANGE 可提前触发。"
       },
       "result_reception": {
-        "source_invocation": "BI01-V2-02-R0006-20261018T154801Z-a5ec3f46",
-        "source_commit": "acb3aa5abb06472f25e07a51ad07a25620593280",
-        "status": "S1_INITIAL_SCOPE_ACCEPTED_FOR_CONTINUATION",
-        "accepted": [
-          "固定输入身份与基础行情全范围搜索方法",
-          "六个具名场景、选择理由、共同可知时间、第三对象与反例",
-          "四个 Movement Bundle 的固定字段/缺失/资格映射",
-          "SCN-01 的有限结构化预分析",
-          "六场景 Worker aidata 工单"
-        ],
-        "not_accepted": [
-          "完整 S2/S3",
-          "首个 grounded cycle",
-          "正式 U2 OpportunityCluster/H1",
-          "正式 U3 Quality/Allocation Evidence",
-          "U3 相对 KLine/C0/N 的独立投资增量",
-          "完整管理或 Owner 接收"
-        ],
-        "worker_state": "ACTUALLY_STARTED at 2026-10-18T16:27:59Z; output not yet delivered; no duplicate dispatch"
+        "professional_s1": {
+          "source_invocation": "BI01-V2-02-R0006-20261018T154801Z-a5ec3f46",
+          "source_commit": "acb3aa5abb06472f25e07a51ad07a25620593280",
+          "status": "S1_INITIAL_SCOPE_ACCEPTED_FOR_CONTINUATION",
+          "accepted": [
+            "固定输入身份与基础行情全范围搜索方法",
+            "六个具名场景、选择理由、共同可知时间、第三对象与反例",
+            "四个 Movement Bundle 的固定字段/缺失/资格映射",
+            "SCN-01 的有限结构化预分析",
+            "六场景 Worker aidata 工单"
+          ]
+        },
+        "worker_s2_technical": {
+          "source_invocation": "BI01V202-WORKER-R0006-RETURN-REPAIR-20261018T170144Z-4bd1a77d",
+          "artifact_commit": "19ef56db70addb71b2d29647bf93b56675f30370",
+          "delivery_receipt_commit": "3584306a6c5ce0e563434788cf9a40066b27ce40",
+          "status": "S2_TECHNICAL_DELIVERY_ACCEPTED_FOR_PROFESSIONAL_CONSUMPTION",
+          "accepted": [
+            "六场景 17 个本 run 新节点",
+            "1,928 个同图原 CSV 与 17 个数据包",
+            "run/node/timespan/As-Of/URL/版本/hash/CRC/view 指纹",
+            "17 个真实 Chromium/Bokeh 渲染与交互报告",
+            "六场景成员/第三对象绑定与 SCN-01 原始事实核对",
+            "真实失败、空值、单位和来源限制"
+          ],
+          "not_accepted": [
+            "Worker 的 U2/U3 业务判断",
+            "S2 业务完成或 S3 完成",
+            "正式 U2 OpportunityCluster/H1",
+            "正式 U3 Quality/Allocation Evidence",
+            "首个 grounded cycle 或 Owner 接收"
+          ],
+          "technical_pending": 0,
+          "professional_consumption": false
+        },
+        "source_qualification": {
+          "package_A": "exact worker/professional attachment SHA 7bebbee3fd7d425eb85116f33c5d0e01ae2163e6849818515fe3824a82b9a46c",
+          "package_B_actual_worker_databinding": "ff3215126461a0cda564c82c4a6e42b99bf94cb7b6a8320df9c8ba93d269d70a",
+          "package_B_project_attachment": "4fd1af4e7b34af6fc099e6289ffdd5d83125412fc16d2a9902af4fd9741b3987",
+          "cross_zip_member_equivalence": "UNKNOWN",
+          "disposition": "actual Worker DataBinding is consumable with exact identity; no byte-equivalence claim, no global block, no rerun absent concrete member/row conflict"
+        },
+        "r0007_return_association": {
+          "original_error": "QUESTION_NOT_ASSIGNED: M-REASSESS vs assigned S1/S2/S3",
+          "historical_failure_commit": "2b7e66f30c17f53caca3951802e0150a90c56b90",
+          "repair_commit": "d364dd880434ca2f94b5b1ffa87b3c3c5e71ab23",
+          "repair": "current R0007 QWR now maps exact original result to S1/S2/S3; original invocation/token/decision/results preserved"
+        }
       },
-      "scope_dispositions": {},
-      "validation_claims": [],
-      "recorded_by": "actual R0007 management reception and effort reassessment",
-      "recorded_at": "2026-10-18T16:53:00Z",
-      "authority_commit": "a60b5092ed62dd48fccd1d414ea99c7c3ad1522d",
+      "scope_dispositions": {
+        "S1": "initial scope accepted; only evidence-driven targeted revision",
+        "S2": "technical delivery accepted; business consumption and Owner-location explanation pending",
+        "S3": "not completed; same-work professional continuation required"
+      },
+      "validation_claims": [
+        "Worker technical delivery qualification only",
+        "No U2/U3 business PASS",
+        "No cross-B-ZIP byte equivalence claim",
+        "No grounded-cycle or Owner acceptance claim"
+      ],
+      "recorded_by": "actual R0008 management reception, source qualification and R0007 association repair",
+      "recorded_at": "2026-10-18T17:40:00Z",
+      "authority_commit": "5448c367072519bbce3542e4fb35b22ff0af79eb",
       "authority_selector": "#workmap-disposition",
-      "task_adoption_commit": "a60b5092ed62dd48fccd1d414ea99c7c3ad1522d",
+      "task_adoption_commit": "5448c367072519bbce3542e4fb35b22ff0af79eb",
       "task_adoption_selector": "#adoption"
     }
   }
