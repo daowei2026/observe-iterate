@@ -12,11 +12,11 @@ recipient: chatgpt:细节叙事生成_金标:BI01-V202-执行
 ## 本轮原文与位置
 
 原调用：`daowei2026/observe-iterate@540b51052e850d705c5fea0eb454432796c37a99:runs/BI-01-V2-02/provenance/turns/R0010/PREPARED.json::full`
-具体缺件检查：`daowei2026/observe-iterate@f4dc64079c3a5e28671164472cef69e4ad0e0dd3:runs/BI-01-V2-02/reviews/professional-R0011/ISSUE.md::full`
+具体缺件检查：`daowei2026/observe-iterate@35d5758c39d829d109f9048dfd3057ed153f84b8:runs/BI-01-V2-02/reviews/professional-R0011/ISSUE.md::full`
 本次补交要求：`daowei2026/observe-iterate@a8ba3dba1da54d3715cecddfeb30bfdf78dd8358:runs/BI-01-V2-02/01_当前任务.md::#return-repair`
 原调用采用的任务绑定：`daowei2026/observe-iterate@a3984f16415a5f1ac521a68c3a98d0364fed9546:runs/BI-01-V2-02/01_当前任务.md::L259-L649`
 需要补齐的原产物：`daowei2026/observe-iterate@b3284c7737b04ebb3ae5b58192d117fa459e33d3:runs/BI-01-V2-02/artifacts/professional-R0010/QUESTION_WORK_RETURN.json::full`
-需要补齐的原产物：`daowei2026/observe-iterate@b3284c7737b04ebb3ae5b58192d117fa459e33d3:runs/BI-01-V2-02/artifacts/professional-R0010/ROLE_RETURN.json::full`
+需要补齐的原产物：`daowei2026/observe-iterate@da9b14377fd46e619a46db02273d5fef4c7b7e11:runs/BI-01-V2-02/artifacts/professional-R0010/ROLE_RETURN.json::full`
 需要补齐的原产物：`daowei2026/observe-iterate@b3284c7737b04ebb3ae5b58192d117fa459e33d3:runs/BI-01-V2-02/artifacts/professional-R0010/S3_BUSINESS_OBSERVATION.md::full`
 需要补齐的原产物：`daowei2026/observe-iterate@b3284c7737b04ebb3ae5b58192d117fa459e33d3:runs/BI-01-V2-02/artifacts/professional-R0010/FULL_RETURN.md::full`
 需要补齐的原产物：`daowei2026/observe-iterate@b3284c7737b04ebb3ae5b58192d117fa459e33d3:runs/BI-01-V2-02/artifacts/professional-R0010/S3_BUSINESS_OBSERVATION_PART_00.md::full`
