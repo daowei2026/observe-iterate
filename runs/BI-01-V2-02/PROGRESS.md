@@ -14,3 +14,6 @@
 
 - `R0001` 真实完整答复与两份角色回交已经收齐、通过 schema 及 after-return 核验。现有首次 Reader Gate 发现机器 Binding 和管理前置签发定位尚缺，已记录于 [MSTART_CONTINUATION_REQUIRED.md](provenance/turns/R0001/MSTART_CONTINUATION_REQUIRED.md)，由原管理续完；尚未替管理签发或跳过 Gate。
 - `R0002 / 原 M-START 连续事项` 已于 2026-10-18 21:48:55（北京时间）确认发送一次，Pro 最高档、23495 UTF-8 字节/11893 UTF-16 单位全文指纹匹配，正在思考。见 [SEND_RECEIPT.json](provenance/turns/R0002/SEND_RECEIPT.json)。下一回复监督为北京时间 21:58:55；补齐真实签发后继续 Reader、Intake 与专业派发，不需要逐轮 Owner GO。
+
+- `R0002` 已真实完成：原管理发布完整回答、两份 Return、Reader Binding 与 `management-R0002/DECISION.md`，after-return/schema 均通过；手机于北京时间 21:58:35 确认完整尾与动作栏。
+- `R0003` 首次独立 Reader 的 dispatcher、first_reader Gate 和远端原文核验已通过。实际手机输入一次后，全文回读为 null，**尚未点击 Send**，原稿保留。操作端正在执行无发送的草稿/网络准入恢复，核验后继续同一冻结轮次；尚无 Reader verdict、Intake 或 ADOPTED。
