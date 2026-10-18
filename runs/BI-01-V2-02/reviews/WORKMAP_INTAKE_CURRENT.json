@@ -2,18 +2,18 @@
   "schema": "workmap-intake/v1",
   "intakes": {
     "bi01": {
-      "snapshot": "ac70ba8b4238adffa2d05dac9a6f99037dbfd33cd3908e98fe725aded7934cf5",
+      "snapshot": "5fa0b9fb2d0ae8057590b153b3b28ce6b7ed4406afb2d476b81acc7d476cbf56",
       "manager": {
         "role": "management",
-        "context": "真实management Pro：R0001 BI01-V2-02-R0001-20261018T130131Z-7f26abeb，R0002补签发，R0004 BI01-V2-02-R0004-20261018T143706Z-4e789f60；原规范管理chat BI01-V202-管理。操作端仅按R0004 #accept-after-repair机械记录，不代签业务判断。"
+        "context": "真实 management Pro 已在 R0007（BI01-V2-02-R0007-20261018T163532Z-e0c15f97）读取 R0006 专业结果、投入清单和实际 INTAKE_STALE Gate，接收初始 S1 用于 S2/S3 连续推进并消费首次 EFFORT-4。地图、任务、Binding 和 Reader 输入未变；操作端不得把本记录解释为 U2/U3 业务 PASS、完整阶段完成或 Owner 接收。"
       },
       "decision_report": {
-        "path": "runs/BI-01-V2-02/reviews/management-R0004/DECISION.md",
-        "blob": "16f21079bd11428cbdfe67484568744b127ab243"
+        "path": "runs/BI-01-V2-02/reviews/management-R0007/DECISION.md",
+        "blob": "b3c8a9df12b88a8bf6e36ee592f228d11fee9cf2"
       },
       "reader_check": {
         "status": "RECORDED",
-        "context": "独立原Reader R0003 BI01-V2-02-R0003-20261018T135502Z-2de24e8b 的狭义可理解性PASS；同一Reader R0005 BI01-V2-02-R0005-20261018T145233Z-362cbf9d仅合法Return格式修复，无第二次审查；新两Return及原正文均已真核。",
+        "context": "独立原 Reader R0003 BI01-V2-02-R0003-20261018T135502Z-2de24e8b 的狭义可理解性 PASS；同一 Reader R0005 仅做合法 Return 格式修复，无第二次审查。R0007 核实当前 reader input、map、task、Owner/rules 与采用时完全未变；新增内容仅为 Reader 完成后产生并由管理实际读取的 R0006 专业结果树，因此按 ROUTINE_RESULT 复用原 Reader，不扩大其业务资格。",
         "independent_of_map_builder": true,
         "report": {
           "path": "runs/BI-01-V2-02/reviews/independent/WORKMAP_READER_R0001_INPUT.md",
@@ -21,7 +21,7 @@
         },
         "input_commit": "5e8e4c1bb184a97bfe47bc40493c667bb7b8185d",
         "input_snapshot": "a29852320c44b64cf05e4a9250d86104f878718b10dc14a00fe58d18e036b9f8",
-        "qualification": "只读可理解性；不代表U2/U3业务正确或Owner接收",
+        "qualification": "只读可理解性；不代表 U2/U3 业务正确、R0006 专业结论通过或 Owner 接收",
         "repair_role_return": {
           "commit": "5115c8f350646b101141a6552b6aa5d45b31ae06",
           "path": "runs/BI-01-V2-02/provenance/turns/R0005/ROLE_RETURN.json"
@@ -38,8 +38,9 @@
         "task_path": "runs/BI-01-V2-02/01_当前任务.md",
         "task_blob": "8f90121bd9d1657992313b6c9a78d44fcd3a546f",
         "task_id": "BI01-V2-02-S123-SCENE-OBSERVATION-01",
-        "kind": "NEW_STAGE",
-        "requires_reader_check": true,
+        "kind": "ROUTINE_RESULT",
+        "requires_reader_check": false,
+        "reader_reason": "R0007 核实 reader_fingerprint a29852320c44b64cf05e4a9250d86104f878718b10dc14a00fe58d18e036b9f8、任务 blob 8f90121bd9d1657992313b6c9a78d44fcd3a546f、地图和 Binding 均未改变；本次只接入 watched artifacts 下的 R0006 真实专业结果。现有独立 Reader 资格仅复用于未变任务可理解性，R0006 业务结果由 management 直接接收，未借 Reader 自签业务 PASS。",
         "method_paths": [
           "professional/v2/00_PURPOSE_AND_THREE_STEP_FLOW.md",
           "professional/v2/01_AIDATA_CHART_AND_DATA.md",
@@ -54,7 +55,7 @@
         ]
       },
       "effort": {
-        "known_pro_turns": 5,
+        "known_pro_turns": 7,
         "rounds": [
           {
             "round": "R0001",
@@ -80,16 +81,70 @@
             "round": "R0005",
             "invocation_id": "BI01-V2-02-R0005-20261018T145233Z-362cbf9d",
             "role": "review"
+          },
+          {
+            "round": "R0006",
+            "invocation_id": "BI01-V2-02-R0006-20261018T154801Z-a5ec3f46",
+            "role": "professional"
+          },
+          {
+            "round": "R0007",
+            "invocation_id": "BI01-V2-02-R0007-20261018T163532Z-e0c15f97",
+            "role": "management"
           }
         ],
-        "count_basis": "真实已提交Pro调用数量；手机episode、普通commit和失败本地校验不计Pro调用；有效结果/EFFORT触发资格仍由原专业/管理合同裁定，不由操作端重置。"
+        "effective_result_count_before_R0007": 4,
+        "effective_result_rounds_before_R0007": [
+          "R0001",
+          "R0003",
+          "R0004",
+          "R0006"
+        ],
+        "excluded_duplicate_or_format_rounds": {
+          "R0002": "Reader 签发缺件的真实调用，保留投入但不另计一份实质结果",
+          "R0005": "R0003 的一次 Return 格式修复，不与原实质审查重复计数"
+        },
+        "consumed_obligation": {
+          "trigger_id": "BI01V202-EFFORT-4",
+          "obligation_id": "BI01V202_CONTINUOUS_EFFORT_REVIEW",
+          "cycle_id": "initial",
+          "consumed_by": "BI01-V2-02-R0007-20261018T163532Z-e0c15f97",
+          "threshold_effective_results": 4
+        },
+        "effective_result_count_after_R0007": 5,
+        "next_due_at_cumulative_effective_results": 8,
+        "remaining_until_next_periodic_review": 3,
+        "count_basis": "从 R0001 原起点累计有效专业及必要管理/接收结果；手机 episode、普通 commit、Worker 技术调用和纯格式重复不另计。R0007 消费初始周期并作为下一周期第一份必要管理结果；RESULT/CHANGE 可提前触发。"
+      },
+      "result_reception": {
+        "source_invocation": "BI01-V2-02-R0006-20261018T154801Z-a5ec3f46",
+        "source_commit": "acb3aa5abb06472f25e07a51ad07a25620593280",
+        "status": "S1_INITIAL_SCOPE_ACCEPTED_FOR_CONTINUATION",
+        "accepted": [
+          "固定输入身份与基础行情全范围搜索方法",
+          "六个具名场景、选择理由、共同可知时间、第三对象与反例",
+          "四个 Movement Bundle 的固定字段/缺失/资格映射",
+          "SCN-01 的有限结构化预分析",
+          "六场景 Worker aidata 工单"
+        ],
+        "not_accepted": [
+          "完整 S2/S3",
+          "首个 grounded cycle",
+          "正式 U2 OpportunityCluster/H1",
+          "正式 U3 Quality/Allocation Evidence",
+          "U3 相对 KLine/C0/N 的独立投资增量",
+          "完整管理或 Owner 接收"
+        ],
+        "worker_state": "ACTUALLY_STARTED at 2026-10-18T16:27:59Z; output not yet delivered; no duplicate dispatch"
       },
       "scope_dispositions": {},
       "validation_claims": [],
-      "recorded_by": "operator mechanical receipt under actual R0004 management authority",
-      "recorded_at": "2026-10-18T15:46:53.741988+00:00",
-      "authority_commit": "af50358f6de756d56759bc004baacf7ed596a2d0",
-      "authority_selector": "#accept-after-repair"
+      "recorded_by": "actual R0007 management reception and effort reassessment",
+      "recorded_at": "2026-10-18T16:53:00Z",
+      "authority_commit": "a60b5092ed62dd48fccd1d414ea99c7c3ad1522d",
+      "authority_selector": "#workmap-disposition",
+      "task_adoption_commit": "a60b5092ed62dd48fccd1d414ea99c7c3ad1522d",
+      "task_adoption_selector": "#adoption"
     }
   }
 }
