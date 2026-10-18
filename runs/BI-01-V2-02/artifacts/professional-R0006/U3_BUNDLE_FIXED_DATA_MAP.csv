@@ -1,0 +1,26 @@
+bundle,design_field,fixed_data_field_or_source,availability,unit,window_or_state,judgement_boundary
+Progress,netDirectionalProgress,U3/02 raw_progress; raw_amplitude,AVAILABLE_REFERENCE,per_symbol_raw_quote,episode stage + observed_bar_elapsed,不能跨品种直接排名；可除以 start_price 仅作探索显示，非正式归一化
+Progress,movementDuration,U3/02 observed_bar_elapsed,PARTIAL_REFERENCE,30m observed bar positions,WorkingSoFar/Completed differ,不是业务日历 duration；Completed 1 bar 与 Working 14 bar 不可直接同票
+Progress,extremeUpdateRhythm,U3/02 extreme_count; advance_runs/counter_runs/flat_runs/sign_change_count,PARTIAL_PROXY,counts,stage-specific path,只有计数和 run 结构，没有正式 rhythm
+Progress,sameDirectionContinuity,U3/02 advance_runs/counter_runs/sign_change_count,PARTIAL_PROXY,counts,stage-specific path,共享同一路径证据，不是独立多票
+Progress,recentChange,N/02 recent_change,AVAILABLE_NODE_BASELINE_ONLY,per-symbol metric unit,recent 6 vs previous 6 completed episodes,属于 C0/N 单品种历史画像，不是 U3 cluster-member Current
+Friction,pathEfficiency,U3/02 path_efficiency,AVAILABLE_REFERENCE,ratio,stage-specific path,可观察但受观察长度和 lifecycle 影响
+Friction,maximumCounterMove,U3/02 max_counter_move,AVAILABLE_REFERENCE,per_symbol_raw_quote,stage-specific path,raw quote 单位；需与 start_price/尺度结合
+Friction,turnDensity,U3/02 sign_change_count/extreme_count + observed_bar_elapsed,PARTIAL_PROXY,count per observed bars (not materialized),stage-specific path,固定包未给正式密度字段
+Friction,retracementBurden,U3/02 retained_fraction/return_to_origin_progress,PARTIAL_PROXY,ratio/raw quote,stage-specific path,不是正式 retracement burden
+Friction,rapidReversalBurden,U3/02 sign_change_count/counter_runs,PARTIAL_PROXY,counts,stage-specific path,没有 reversal threshold/lifecycle 定义
+Retention,outsideRegionDwell,none in R02,MISSING,n/a,n/a,不可由 observed_bar_elapsed 冒充
+Retention,peakRetention,U3/02 retained_fraction + achieved_peak,AVAILABLE_REFERENCE_PROXY,ratio/raw quote,stage-specific path,retained_fraction 可观察；不是已校准 Retention bundle
+Retention,returnToOriginProgress,U3/02 return_to_origin_progress,AVAILABLE_REFERENCE,per_symbol_raw_quote,stage-specific path,需结合方向/起点解释
+Retention,recoveryTime,U3/02 completed_recovery_events only,MISSING_TIME_PARTIAL_COUNT,count only,stage-specific path,有恢复事件数，无恢复时间
+Retention,crossScaleContinuationCandidate,none,MISSING,n/a,n/a,固定单尺度 case 无跨尺度输出
+ObservabilityAndConstraint,sampleAdequacy,N/01 sample_adequacy; U3/02 observed_bar_elapsed/lifecycle,PARTIAL_AVAILABLE,status/bars,different windows,N 的 Available12 是历史窗口；R02 是当前路径可见长度，不能混为一个样本充分性
+ObservabilityAndConstraint,confirmationDelay,"C0/02 actual_ts, source_event_ts; U3/02 anchor_knowledge_proxy",DERIVABLE_REFERENCE,bar/calendar timestamps,turn-specific,原 reference method 明示 native calendar 未提供；只能说明代理延迟
+ObservabilityAndConstraint,dataQuality,"U3/02 path_status, missing_count; base Kline missing bars",AVAILABLE_REFERENCE,status/count,path-specific,selected six scenes不跨 2023-03-10/13 缺失段
+ObservabilityAndConstraint,liquidityFacts,none,MISSING,n/a,n/a,不得想象补齐
+ObservabilityAndConstraint,capacityFacts,none,MISSING,n/a,n/a,不得想象补齐
+ObservabilityAndConstraint,costCoverageFacts,none,MISSING,n/a,n/a,不得把 price path 当成本覆盖
+AllocationEvidence,OpportunityGroupBudgetEvidence,R03 quality_judgement/capital_use,WITHHELD,n/a,all 5 As-Of,NO_FORMAL_H1; calibration pending; LCC absent
+AllocationEvidence,MemberRelativeAllocationEvidence,R03,WITHHELD,n/a,all 5 As-Of,不能由 raw_progress 或单个 efficiency 排名生成
+AllocationEvidence,RepeatedExposureEvidence,U2 cluster identity only; no official H1,REFERENCE_BOUNDARY_ONLY,categorical,single closed universe case,组织同一机会身份有参考意义；正式 Evidence 未提交
+AllocationEvidence,UncertaintyHoldbackEvidence,R03 withholding reasons; C2 blockers,PARTIAL_REASON_ONLY,categorical,all 5 As-Of,可说明为何应扣减/不判断，但未形成正式资金接口
