@@ -1,5 +1,14 @@
 # BI-01-V2-01 真实运行进度
 
+## 当前状态：Owner已暂停（2026-10-18，Asia/Shanghai）
+
+- Owner明确暂停前述长程任务，先查看成果并检查图页。Native已stopped，task continuation已paused；停止新Pro派发、管理接收和旧定时动作，保留所有原件/已承诺消息及未决副作用，未经Owner明确恢复不自动续作。当前只办理Owner这次图页结果排查。
+- R0010已在ec5dde67d5d34d517b998706795bfd7152d6d67d真实提交[完整专业回交](artifacts/professional-R0010/FULL_RETURN.md)，报告状态SUBMITTED；尚未管理接收，不据此宣布整个BI-01完成或自动增加已验收结果。
+- Owner图5785一直加载已在真实浏览器复现：BokehJS报“could not resolve type DataTable”，并非正常等待。原技术验证有源行、实际绘图坐标及51个Bokeh会话，但遗漏了浏览器组件注册/实际渲染这一层；据此重新打开Owner可看验收缺口。
+- 已在独立Trier修复分支取消live模板重复预载Bokeh库，让server_document统一加载core及全部扩展。实际原链接刷新后无该错误，加载提示关闭、K线/图层可见，约8—9秒渲染；固定输入、aidata数据代码e59fd90与所有图层CSV保持原样。已完成4代表页、488浏览器图层、182946单元与冻结导出逐值比对，已知/事后页签与12条原缺失价格保留通过，实测约7—11秒；见 [浏览器补验记录](provenance/controller/OWNER_CHART_BROWSER_REVIEW_20261018.json)。没有宣称320页全部视觉验收，图例遮挡与旧首页未纳入本次操作历史的可读性/入口限制仍保留。
+- /aidata与本次共用aidata引擎和Trier图服务；但该旧操作台只列标准profile UserOperation记录，本次fixed-input run直建图页没有登记到其操作历史。当前图页顶部“全部固定窗口入口”可切换本次窗口。精确Owner原话及状态见 [暂停与图页排查记录](provenance/controller/OWNER_PAUSE_AND_CHART_REVIEW_20261018.json)。
+
+
 ## 当前状态（2026-10-18 04:19—04:22 UTC）
 
 - R0010唯一原稿恢复实际COMMITTED：首手机caller04:16:00.032Z，距恢复ready48.857004秒，120秒SLO通过；fresh Pro5/5、手机full/none/SHA+31518 UTF-8+17605 UTF-16全匹配，IME1/Send1。Send caller04:19:07.550Z，承诺frame04:19:11.366Z，权威server observation04:19:11.930Z。新bubble准确唯一token/role和当前STOP已证；invocation中段被固定Project标题遮挡，保留该限制，不声称所有glyph无遮挡。详见 [RECOVERY_SEND_RECEIPT](provenance/turns/R0010/RECOVERY_SEND_RECEIPT.json)。
