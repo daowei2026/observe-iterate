@@ -1,0 +1,65 @@
+{
+  "schema": "bi01-s3-reassembly/v1",
+  "work_id": "BI-01",
+  "run_id": "BI-01-V2-02",
+  "subject_invocation_id": "BI01-V2-02-R0010-20261018T175239Z-75847f6b",
+  "repair_invocation_id": "BI01-V2-02-R0011-20261018T184441Z-07111249",
+  "historical_claim": {
+    "source_ref": "daowei2026/observe-iterate@b3284c7737b04ebb3ae5b58192d117fa459e33d3:runs/BI-01-V2-02/artifacts/professional-R0010/S3_BUSINESS_OBSERVATION.md",
+    "claimed_local_merged_line_count": 715,
+    "claimed_local_merged_sha256": "e00fa31976d68c8151b3594f2cd860ee6ed09c6dbf7684d6e2fd88d901758e59",
+    "status": "PRESERVED_AS_HISTORICAL_CLAIM_NOT_REVALIDATED"
+  },
+  "original_local_merged_source": {
+    "status": "UNAVAILABLE_FOR_REVALIDATION",
+    "reason": "The original local merged byte stream was not present in the available R0010 artifacts or current runtime. This repair does not reconstruct a new stream and backdate it as that original source."
+  },
+  "delivered_parts": [
+    {
+      "ordinal": 0,
+      "path": "runs/BI-01-V2-02/artifacts/professional-R0010/S3_BUSINESS_OBSERVATION_PART_00.md",
+      "git_blob_sha": "9407a8ec61f535cc383dcff941d0638dab455b5f",
+      "bytes": 8813,
+      "body_change_in_repair": "NONE"
+    },
+    {
+      "ordinal": 1,
+      "path": "runs/BI-01-V2-02/artifacts/professional-R0010/S3_BUSINESS_OBSERVATION_PART_01.md",
+      "git_blob_sha": "7beeeadd9381768f3b4dd327546c1bc0e35a8d8a",
+      "bytes": 6859,
+      "body_change_in_repair": "NONE"
+    },
+    {
+      "ordinal": 2,
+      "path": "runs/BI-01-V2-02/artifacts/professional-R0010/S3_BUSINESS_OBSERVATION_PART_02.md",
+      "git_blob_sha": "988c00851bffefb68617535e2de59b41fd5b65ef",
+      "bytes": 5575,
+      "body_change_in_repair": "NONE"
+    },
+    {
+      "ordinal": 3,
+      "path": "runs/BI-01-V2-02/artifacts/professional-R0010/S3_BUSINESS_OBSERVATION_PART_03.md",
+      "git_blob_sha": "2b5d9a79caefdd3c5a895a022df61e28b83fda91",
+      "bytes": 7153,
+      "body_change_in_repair": "NONE"
+    }
+  ],
+  "reassembly": {
+    "mode": "RAW_BYTE_CONCATENATION",
+    "order": "ascending ordinal 0,1,2,3",
+    "separator_hex": "",
+    "newline_normalization": false,
+    "hash_scope": "raw concatenated bytes",
+    "line_count_method": "len(raw_bytes.decode('utf-8').splitlines())"
+  },
+  "delivered_concat_result": {
+    "bytes": 28400,
+    "splitlines": 714,
+    "sha256": "fa67d5d09dc17098291e8ce545ebc0c19424c7f287a6ab3caec16f8f553c8498"
+  },
+  "reproduction": {
+    "python": "from pathlib import Path; import hashlib; names=['S3_BUSINESS_OBSERVATION_PART_00.md','S3_BUSINESS_OBSERVATION_PART_01.md','S3_BUSINESS_OBSERVATION_PART_02.md','S3_BUSINESS_OBSERVATION_PART_03.md']; b=b''.join(Path(n).read_bytes() for n in names); print(len(b), len(b.decode('utf-8').splitlines()), hashlib.sha256(b).hexdigest())",
+    "expected_stdout": "28400 714 fa67d5d09dc17098291e8ce545ebc0c19424c7f287a6ab3caec16f8f553c8498"
+  },
+  "qualification": "The delivered_concat_result identifies only the bytewise concatenation of the four delivered parts. It does not prove equivalence to the unavailable historical local merged source."
+}
