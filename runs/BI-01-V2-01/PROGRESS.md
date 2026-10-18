@@ -383,3 +383,9 @@
 - 原due00:25:06.904Z；实际caller00:25:29.583Z迟22.679s满足120秒。预调用意图00:25:17.167434Z文件由executor真实exec exit0先落盘，再独立采样实际caller；frame00:25:28.316Z/server完成00:25:28.841Z分列。准确本轮inv/token/professional、正在思考/STOP，全部三tiles实查，无正文/尾部/错误/大加载圈。
 - observe1/其他phone动作0；00:26:29.627370Z原section释放阳性，无pending/UNKNOWN，executor退役。root曾误用最终已追加字段文件的mtime推断初次创建而本地assert失败，零phone/native副作用；已按实际pre-write/caller证据纠正，不改Pro或executor原件。
 - native102原thinking起点保持；下一00:35:28.841Z（北京时间08:35:28）将跨现有共享准入00:34:20.650Z，按原60min机制有限续验，不重算/重画/重跑前测。实际调用8/完整有效回交7，完整Goal持续。
+
+## R0008共享准入按原周期续验，原chat观察独立接续
+
+- 实际probe开始00:29:18Z，精确所需网络事实、实际Recent聊天行00:31:17.192Z和Projects/全部实际项目行00:31:50.672Z全部通过；完成时间按实际server记，60min lease至01:31:50.672Z，不按root接收时刻后移。12次正式phone、Send/STOP/正文/文件/重启/模型或网络修改0。
+- 00:32:27.462828Z原section释放固定utility阳性，全部pending/UNKNOWN为空，executor退役；末态Projects/全部，未额外进入业务chat。初始UI/首mark缺双caller边界、网络响应无server时间均如实限定，不补造。native103只更新共享准入，R8原thinking及due00:35:28.841Z保持。
+- 下一fresh零继承check5已按原due准备回正确Project唯一原执行chat再观察；不把Projects画面当R8终态，不输入或重发。本run仍实际调用8/完整有效回交7，完整目标继续。
