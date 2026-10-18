@@ -1,0 +1,41 @@
+{
+  "schema": "bi01-controller-routing/v1",
+  "recorded_at": "2026-10-18T16:41:33.148267Z",
+  "source_gate": "actual workmap_gate dispatch exit2, only INTAKE_STALE",
+  "source_ref": "60a366c91998b9f4b2b2c4b17d364ea5512c8033",
+  "normal_professional_dispatch_gate": "FAIL retained; no new professional Send admitted",
+  "original_manager_action": {
+    "recipient": "management",
+    "scope": "bi01",
+    "exact_input_commit": "60a366c91998b9f4b2b2c4b17d364ea5512c8033",
+    "task_path": "runs/BI-01-V2-02/01_当前任务.md",
+    "errors": [
+      "INTAKE_STALE"
+    ],
+    "instruction": "读取这些确切输入，定向补管理接收、地图或发送现场核对；保留已提交实质成果，不重跑业务、不重复派发、不替换未受影响任务。"
+  },
+  "unchanged_managed_blobs_since_adoption": {
+    "runtime/config/WORKMAP_BINDING.json": "ed956d24b23a6e3a2fbb780251a6cb296d95cb72",
+    "runs/BI-01-V2-02/00_长程推进地图.md": "368681d65d2196b3cc52180da1a1d74b889db85f",
+    "runs/BI-01-V2-02/01_当前任务.md": "8f90121bd9d1657992313b6c9a78d44fcd3a546f"
+  },
+  "changed_watched_result_paths": [
+    "runs/BI-01-V2-02/artifacts/professional-R0006/FULL_RETURN.md",
+    "runs/BI-01-V2-02/artifacts/professional-R0006/QUESTION_WORK_RETURN.json",
+    "runs/BI-01-V2-02/artifacts/professional-R0006/REFERENCE_CASE_PREANALYSIS.md",
+    "runs/BI-01-V2-02/artifacts/professional-R0006/REFERENCE_CASE_R02_NORMALIZED_VIEW.csv",
+    "runs/BI-01-V2-02/artifacts/professional-R0006/ROLE_RETURN.json",
+    "runs/BI-01-V2-02/artifacts/professional-R0006/S1_SCENE_SEARCH_AND_SELECTION.md",
+    "runs/BI-01-V2-02/artifacts/professional-R0006/S1_SCENE_SYMBOL_PATH_FACTS.csv",
+    "runs/BI-01-V2-02/artifacts/professional-R0006/S1_SELECTED_SCENES.csv",
+    "runs/BI-01-V2-02/artifacts/professional-R0006/U3_BUNDLE_FIXED_DATA_MAP.csv",
+    "runs/BI-01-V2-02/artifacts/professional-R0006/WORKER_AIDATA_CHART_ORDER.md"
+  ],
+  "reader_fingerprint_unchanged": true,
+  "task_payload_sha256_unchanged": true,
+  "decision": "Route exact failed gate to its named original management via existing bound #decide/EFFORT route; this is management reception repair, not a professional dispatch bypass",
+  "authority": "Original adopted Binding trigger:BI01V202-EFFORT-4/#decide; overlay12 management repair and overlay13§8 named narrow disposition",
+  "operator_writes_to_intake_binding_map": "NONE",
+  "worker_action": "existing six-scene order continues; preserve true artifacts",
+  "required_before_next_professional_send": "original manager actual disposition/intake followed by real applicable gate checks; no fabricated PASS"
+}

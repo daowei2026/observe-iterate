@@ -33,3 +33,12 @@ R6原全文`#triggers`把EFFORT写为NOT_YET，理由是“这是首次有效pro
 - 专业Pro自主选六场景和工单：`6b9d488aeb620def497c2a7c78a15ef74244f69d:runs/BI-01-V2-02/artifacts/professional-R0006/WORKER_AIDATA_CHART_ORDER.md`。Worker16:27:59Z真实启动；先SCN-01再全部六场景，本run图/同源导出尚未交回。
 - 真实已成、全部未完、增量尚未证明和合法接续见上述R6原全文`#completed/#remaining/#continuation`，不得用本清单替代原专业正文。
 - 本次是既有管理复看；当前Worker及完整S1/S2/S3授权继续，不因复看自动暂停。管理须按原完整目标处理投入、重要剩余和实际后继；是否有据保留或调整由管理判断，不由操作端预定结论。没有要求Owner逐Case或逐轮重新GO。
+
+
+## 同次既有管理接收：真实 Workmap 检查回交
+
+R7发送准备时，现有`workmap_gate dispatch`对确切输入`60a366c91998b9f4b2b2c4b17d364ea5512c8033`实际返回**仅INTAKE_STALE**，next_action明确交management“读取这些确切输入，定向补管理接收、地图或发送现场核对；保留已提交实质成果，不重跑业务、不重复派发、不替换未受影响任务”。原始输出见同目录WORKMAP_GATE_RETURN.json。
+
+已核：自首次ADOPTED以来，Workmap Binding、管理地图和完整任务的Git blob未变；reader_fingerprint仍`a29852320c44b64cf05e4a9250d86104f878718b10dc14a00fe58d18e036b9f8`，task_payload_sha256仍`85e7aa3dd7b7e3cde4135aacaa3535e7183a24b8c616aba59e108d6dec9e6b04`。watch结果面新增的是本次R6真实专业成果，full snapshot更新为`5fa0b9fb2d0ae8057590b153b3b28ce6b7ed4406afb2d476b81acc7d476cbf56`，原Intake仍绑定此前快照。
+
+这是同一次管理复看附带的具名接收修复。请原管理按现有Workmap机制核新成果、给有据的接收/复用/未覆盖处置及实际后继；Intake和是否需要新Reader等管理判断不由操作端代签。主控保持正常专业派发Gate的失败原件，不改工具/配置、不擅自刷新Intake或宣布通过。原六场景Worker工单独立继续。具体机械差异和路由依据见WORKMAP_ROUTING_DECISION.json。
