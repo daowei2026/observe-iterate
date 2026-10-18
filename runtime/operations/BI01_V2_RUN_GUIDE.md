@@ -1,54 +1,27 @@
-# BI-01 V2 全新长程运行指南（准备，不是发送授权）
+# BI-01 V2-02：下一轮启动、业务与角色运行指南
 
-## 0. 业务目标及本轮固定输入
+## 1. 只准备，不发送
 
-完整业务意图：[00 总目标](../../professional/v2/00_PURPOSE_AND_THREE_STEP_FLOW.md)。**不是“让 AI 多做几轮”，而是看既有 U2 机会簇位置是否合理、U3 四方面是否真的能辨别成员好不好做，并拿到具体不合理处、原因、反证及业务增量判断。**
+**PREPARED_NOT_STARTED / NO_SEND**。本分支准备下一轮 `run_id=BI-01-V2-02`（`work_id=BI-01` 不变）。旧 `BI-01-V2-01` 已按 Owner 要求暂停，原 R1–R10、R10 SUBMITTED、320图/包及旧管理接受均保留历史，未经 Owner 新授权不恢复旧M-CLOSE，也不借用旧GO、Binding、Gate或定时任务。
 
-本轮观察范围与数据不可任意重选：
-- rb、i、hc；已提前验算的 `steel_U2_U3_执行结果_20261010.zip`（数据目录 `/dwdhome/fy/资金管理`）；
-- 上游 `rb_hc_i_mid贴近转折_zig_small_K线_20210101_20240229.zip`。
-- 必须先消费 [04：原 I1–I3 业务起点](../../professional/v2/04_BI01_BUSINESS_BASELINE.md)、[05：固定数据位置与清单](../../professional/v2/05_BI01_FIXED_INPUT_DATA.md)、[06：U2/U3 人读叙事、具体设计与参考方法导航](../../professional/v2/06_U2_U3_DESIGN_SOURCE_MAP.md)，并按需进入其所引业务原文；不重新执行 I1–I3，也不把历史方法候选冒充已执行结果。
-- **预先验算结果固定**：不派“先重新算一版 U2/U3”或“找到正式 Feature 就替换这批数据”的工作；实际发现字段、算法或哈希异常时准确说明影响、反馈并做必要的有界核对。
-- U3 的“四方面”须按原业务定义和固定 CSV 已有输出对应；C2/H1 的 Shadow/未提交与 R03 Withheld 不能变成正式 Quality。
+只有未来新的明确 Owner GO 才能把原文存到 `runs/BI-01-V2-02/OWNER_START.md`，准备新 `M-START` BOOTSTRAP、独立管理/专业聊天、调度 root 与 `BI01-V2-02-R0001-<unique>`。每轮原样发送和真实返回按 [轮次合同](V2_ROUND_RECORD_CONTRACT.md)，不凭文件/测试当实际发送。管理真正形成新地图、Task和Binding、合法读者/Workmap Intake后才能更新本分支 `runtime/config/WORKMAP_BINDING.json` 从 `NOT_CONFIGURED` 到 `ADOPTED` 并派发专业工作。旧 R0002 的具名首次读者授权不属于新 run；如要 reader 须有新管理真实签发。
 
-## 1. 当前身份和真实开工
+## 2. 实质业务如何执行
 
-`PREPARED_NOT_STARTED / NO_SEND`。本文件不授权手机或 Pro 发消息。只有 Owner **以后明确 GO**，才可建立 `runs/BI-01-V2-01/OWNER_START.md`、BOOTSTRAP 和角色调用。不能把本轮仓库修改当开工授权。
+[00 目标](../../professional/v2/00_PURPOSE_AND_THREE_STEP_FLOW.md)与 [07 业务场景观察方法](../../professional/v2/07_BUSINESS_SCENE_OBSERVATION_METHOD.md) 为本次方法重点；专业者先经 [06](../../professional/v2/06_U2_U3_DESIGN_SOURCE_MAP.md)实际阅读 U2/U3 Owner Decision、Narrative/Use Case（必要的 Witness/Method），**不是只看链接或字段清单**。理解 `DirectionalReleaseIntent` 下的共同方向机会、品种之间强弱和 U3 四方面为何需要，然后优先根据真实基础 K 线、Zig、贴近转折图选择有意义的市场位置；**具体类型、样本数、强弱阈值、研究顺序由执行过程据实形成，本指南不预设分类或赢家**。
 
-- `work_id=BI-01`（固定业务路由），`run_id=BI-01-V2-01`（全新身份）；新的管理/专业聊天、调度 root、invocation/token/marker/ledger。
-- 开工时锁定 observe-iterate V2 和 cgpterm V2 各自的精确提交，核准本次机器工具；不用 moving main 代替已采用版本。
-- 旧 run 的聊天、Gate、在途、Owner 回答、业务诊断不进入本轮；原 I1–I3 的业务信息通过 04/05 与来源文件消费，不算旧运行继承。
+S1：叙事到真实行情位置与为何值得研究；S2：先基础行情图和同源 CSV，再定向对照 U2 实际位置成员与 U3 四方面；S3：合法 As-Of 下成员的四束证据、可能强弱/无法判断、后续运动支持或反证、既有 C0/N/简单关联的增量和修订价值。三步可多 R 循环，但字段缺项、状态错误或工程数量不是主业务目标。必须实际观察至少有能力检验“共同方向机会中较强运动与成员差别”的场景；如果固定数据找不到，应给可追溯原因，而非制造优质机会或退化成无限局部检查。回顾性发现典型行情不自动证明提前选对；要检验辨别力须分开历史 Current 和未来 Outcome/探索显示范围。
 
-## 2. 首次真实开工步骤
+## 3. 现有固定数据、图数和浏览器
 
-1. 新 Owner GO 原文进入 `OWNER_START.md`，以此形成真实 `question-work/v2 BOOTSTRAP`；首次管理阶段可引用该次 Owner START 作 current_task_ref 与 task_adoption_ref，不伪造已存在的管理地图。
-2. 使用 Overlay08/12 准备未经改写的完整载荷，首行唯一 `[BI01-V2-01-R0001-<unique>]`；按 `V2_ROUND_RECORD_CONTRACT.md` 保存、Git 远端读回、pre-dispatch 和实际 NOT_SENT 检查后才允许发送。
-3. 管理 Pro 按完整目标、原 I1–I3 背景和固定数据签出实际 `00_长程推进地图.md`、`01_当前任务.md`、专业 Binding、管理接收和 Workmap Intake；有权生效前不得派专业工作。
-4. 正式专业任务以 S1 整理观察问题、S2 对固定数据用 aidata 设计并实际画图、S3 以**同图数据**形成业务想法；必要时在不替换预计算数据的前提下返回 S2 补图。不可把单 Case 或制图完成视为整体完成。
-5. Worker 在实际技术工单下从 `/dwdhome/fy/BASE_E6_2` 执行 aidata，并从 `/dwdhome/fy/资金管理` 读取两份预先验算的固定 ZIP；以只读原件、尽量不修改 aidata 为优先。先查 aidata 的 `OWNER_INTENT_AND_RATIONALE.md`、`README.md`、`TODO.md` 和现有 API。确实需要修改 aidata 必须新建独立分支，不改原分支或在观察仓造第二套工具。
-6. 本轮不要求 AI 看图片像素；Owner 看实际图，AI 读图的对应原始/图层结构化数据。无法取得同源数据应如实反馈，但不能因无视觉模型而停工或新增视觉建设。
+两份预验算 ZIP 路径 `/dwdhome/fy/资金管理`、身份和不一致见 [05](../../professional/v2/05_BI01_FIXED_INPUT_DATA.md)，原业务背景见 [04](../../professional/v2/04_BI01_BUSINESS_BASELINE.md)。aidata 工作区 `/dwdhome/fy/BASE_E6_2`。不默认重算 U2/U3、换数据或从 N 冒出正式 U3；广域 C0/N/C1 raw 只有参考机会入口，一个完整单尺度参考 Case 五As-Of、U3 R02 15行，R03 WITHHELD。这是四束充分性检验的实际证据边界。
 
-## 3. 当前执行工作区和 Pro 无法提交 GitHub 时的备用成果通道
+技术图数可复用旧 `BI-01-V2-01` 锁定的源/窗口/图和对应 CSV，避免重新输出320图，但不能继承旧 S1 场景选择或已接受的业务判断。**Owner 实际能打开、看到K线/图层**才是图交付：旧图5785曾出现 `DataTable` 模型注册错误，已在 Trier 独立本地分支 `codex/bi01-v2-chart-render-fix-20261018`、提交 `adea9b46ce4016045eee714121f7a322924e14a3` 现场修复，核四张代表图，未证明全部320页及未来重启后仍正确；实际需要的页面按需核浏览器，不以 HTTP200/会话通过替代渲染。AI 本轮只读取同图结构化数据，不视觉看图片像素。aidata 尽量不改，确需通用改动只在新的 aidata 独立分支执行。
 
-这部分属于**运行环境与成果运输**，不是新增的业务步骤，也不更改 S1/S2/S3 的专业任务和数据范围。
+## 4. 专业成果与管理接收
 
-- **aidata 执行工作区**：`/dwdhome/fy/BASE_E6_2`；**固定两份 ZIP 数据目录**：`/dwdhome/fy/资金管理`。Owner 已确认 aidata 基础运行检查完成；这两条路径已明确且用途不同，不再以重复验证环境/重新定位数据为开工前置任务。真实使用仍记录实际代码版本、文件身份和图数据产物。
-- **Pro 无法提交 GitHub 时的 ZIP 备用通道**：
-  - MCP server 一侧可写：`H:\fy\observe-iterate-share`
-  - 操作 Codex 一侧可读：`/dwdhome/fy/observe-iterate-share`
-  - Owner 已反馈这对路径的共享挂载、读写与文件互见检查完成，这是**Owner 提供的已检查结果**，不是本仓 GitHub 测试重新验证；无需重测同一基础链路。对每一轮新的 ZIP 仍需核包内容、成员、来源关联及发布成功。
-- **正常交付仍是 GitHub**。只有该轮 Pro 确实无法把成果提交 GitHub，且复核同轮远端并无匹配的新提交后，才采用共享 ZIP；由 Pro/MCP server 侧产生并写入 ZIP，操作 Codex 在其对应路径读出、校验内容后按既有授权非强推方式提交 GitHub、远端回读，再进入正常 Return/管理接收。
-- 具体包内的真实文件、`work_id/run_id/invocation_id` 关联、同轮远端优先、路径安全与不可假称提交成功，见 [V2 轮次备用 ZIP 合同](V2_ROUND_RECORD_CONTRACT.md)。不在该通道另建常驻轮询、第二状态机、业务图/数据来源或自动签发。
-- 无法确认两端共享或文件实际可读时，应停在**具体的交付缺件**，说明 ZIP 生成/写入/读取/发布分别到哪一步；其他已有授权且不依赖此交付的工作可以继续。
+把 **为何按叙事选这个场景—基础行情原图—U2 对照—U3 四方面在当时对成员强弱的分析—之后行情/合法Outcome—支持反证与缺口—相对 C0/N 的增量** 组织成 Owner 可直接点图核查的业务认识。专业 Pro 形成实际研究、管理 Pro 检查完整目标与阶段接收、Worker 只执行实际图数、操作端不替专业者挑场景。未产生完整 U3 时具体说明不够的证据，不能假称已验证充分性或自动补算。
 
-## 3.1 长程运行的 R 轮次保持不变
+## 5. 原有长程机制与备用路径
 
-**S1/S2/S3 是业务步骤，不是三轮 Pro 消息。** 本次继续按 `R0001/R0002/…` 记录每一次真实管理或专业 Pro 调用，唯一 invocation 形如 `BI01-V2-01-Rnnnn-<unique>`；完整提示、回答、ROLE_RETURN、必要的 QUESTION_WORK_RETURN、发布和后继仍使用 [V2_ROUND_RECORD_CONTRACT.md](V2_ROUND_RECORD_CONTRACT.md) 及现有手机/Workmap 机制。可以在多个 R 中连续完成 S2/S3，并按业务问题返回 S2，不以第一个 Case 或单张图作为全目标停点。
-
-## 4. 机械与业务边界
-
-- 通用 `ROLE_RETURN`、`QUESTION_WORK_RETURN`、Workmap/管理 Gate、手机 Skills 和 GitHub 记录机制保持原样，不建立第二套手机消息调度器。
-- `runtime/config/WORKMAP_BINDING.json` 准备时必须是 `NOT_CONFIGURED`，实际管理签发、读回、intake 通过后才有权转为 ADOPTED。
-- `runtime/tools/bi01_run_gate.py` 只能核身份、原样载荷、实物和 Return 关联，不证明业务正确、实际发送或专业结果完成。
-- 本 run 的首次地图只读接收，按 [R0002 具名管理决定](../../runs/BI-01-V2-01/reviews/management-R0002/DECISION.md#reader-pre-adoption)先产生采用证据：仅当前已签 `BI01-V2-WORKMAP-READER-01` 的 review／INDEPENDENT_REVIEW，可在 `NOT_CONFIGURED` 下以完整任务、Binding、管理采用来源及冻结输入运行同一 BI01 pre-dispatch。该路径复用原 Overlay12 和 Workmap snapshot，不反向调用要求采用已完成的专业 Workmap dispatch；仍核来源、接收者、原样载荷与非重复发送。其他 review／receiver 和普通专业任务不取得此用途权限；真实读者报告取得并按已签条件完成 Intake／ADOPTED 后，专业首发仍走原 Workmap check／dispatch。
-- 没有真实图、实际取得的同源数据或 Owner 可审阅分析时，如实记录阻断/未完，不能声称已经完成 S2/S3。
+原 DR12/13/14、Overlay08/12/13、Workmap Gate、`ROLE_RETURN`/`QUESTION_WORK_RETURN`、M-START/M-REASSESS/M-CLOSE 与合法 Rnnnn 续作不变。基础环境和共享目录检查已确认，无须重新做同样预检。Pro 实际无法 GitHub 提交、且同轮远端无可信结果时，才从 MCP server `H:\fy\observe-iterate-share` → Codex `/dwdhome/fy/observe-iterate-share` 接收真实 ZIP，逐轮核 SHA、scope、完整 Return、安全路径并非 force 推送后 fresh readback；详细见轮次合同。不增加第二状态机。本分支离线检查不授权任何真实 send。

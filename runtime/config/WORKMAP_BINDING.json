@@ -1,9 +1,9 @@
 {
   "schema": "workmap-binding/v2",
-  "status": "ADOPTED",
+  "status": "NOT_CONFIGURED",
   "manager_role": "management",
   "overview": {
-    "path": "runs/BI-01-V2-01/README.md",
+    "path": "runs/BI-01-V2-02/README.md",
     "anchors": [
       "common",
       "bi01"
@@ -13,7 +13,7 @@
     "common"
   ],
   "owner_sources": [
-    "runs/BI-01-V2-01/OWNER_START.md",
+    "runs/BI-01-V2-02/OWNER_START.md",
     "professional/v2/00_PURPOSE_AND_THREE_STEP_FLOW.md"
   ],
   "rule_paths": [
@@ -25,13 +25,14 @@
     "runtime/overlay/08_自然语言运行提示_v0.3.md",
     "professional/v2/04_BI01_BUSINESS_BASELINE.md",
     "professional/v2/05_BI01_FIXED_INPUT_DATA.md",
-    "professional/v2/06_U2_U3_DESIGN_SOURCE_MAP.md"
+    "professional/v2/06_U2_U3_DESIGN_SOURCE_MAP.md",
+    "professional/v2/07_BUSINESS_SCENE_OBSERVATION_METHOD.md"
   ],
-  "receipt_path": "runs/BI-01-V2-01/reviews/WORKMAP_INTAKE_CURRENT.json",
+  "receipt_path": "runs/BI-01-V2-02/reviews/WORKMAP_INTAKE_CURRENT.json",
   "streams": {
     "bi01": {
       "map": {
-        "path": "runs/BI-01-V2-01/00_长程推进地图.md",
+        "path": "runs/BI-01-V2-02/00_长程推进地图.md",
         "anchors": [
           "goal",
           "stage",
@@ -42,15 +43,15 @@
           "next"
         ]
       },
-      "task": "runs/BI-01-V2-01/01_当前任务.md",
+      "task": "runs/BI-01-V2-02/01_当前任务.md",
       "overview_anchors": [
         "bi01"
       ],
       "watch_roots": [
-        "runs/BI-01-V2-01/artifacts",
-        "runs/BI-01-V2-01/reviews/independent"
+        "runs/BI-01-V2-02/artifacts",
+        "runs/BI-01-V2-02/reviews/independent"
       ]
     }
   },
-  "note": "R0002具名条件性管理授权下，R0003真实独立新上下文完整回交已验真；当前受保护reader输入与f87a9a6一致，实际报告/blob、输入指纹及发布后结果树snapshot已绑定本run Intake。机械check/dispatch按真实提交执行；此采用不等于专业业务PASS或已发送。旧run不继承。"
+  "note": "PREPARED_NOT_STARTED / NO_SEND. Future BI-01-V2-02 only; old BI-01-V2-01 remains paused. No new Owner GO, manager task, reader, or Intake exists."
 }

@@ -1,5 +1,3 @@
-# BI-01 V2 覆层操作入口
+# BI-01 V2-02 覆层
 
-先读 [V2 运行指南](../operations/BI01_V2_RUN_GUIDE.md)、[当前运行](CURRENT_EXECUTION.md)及[唯一协调者入口](08_自然语言运行提示_v0.3.md)。`BI-01-V2-01` 还没有获得实际 Owner GO；仅有配置不得发送真实消息。
-
-管理/专业/Worker/操作端沿现有角色协议，专业实际内容见 [V2](../../professional/v2/README.md)。回交与合法接续按[共同合同 13](13_角色回交与主控接续协议.md)。专业 Pro 不改管理地图，管理者负责真实判断，操作端只处理消息和运输状态。S2 图与数据统一使用 aidata，不创建平行制图工具。
+新 `BI-01-V2-02` 仍在[准备](../operations/BI01_V2_RUN_GUIDE.md)，未取得新 Owner GO；旧 `BI-01-V2-01` 是 Owner 暂停历史。按 [08](08_自然语言运行提示_v0.3.md)取源，[12](12_管理接收与地图校验.md)/[13](13_角色回交与主控接续协议.md)处理现行权限和回交。新业务方法从[07](../../professional/v2/07_BUSINESS_SCENE_OBSERVATION_METHOD.md)读取；实际场景由专业 Pro 基于叙事和基础行情自行发现，不预先分类。
