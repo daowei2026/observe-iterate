@@ -31,7 +31,7 @@ Pro 无法通过 GitHub 提交本轮成果时，应先保留原实质回答/Retu
 
 ## 5. 运行与业务分开
 
-正常 `ROLE_RETURN`、`QUESTION_WORK_RETURN`、管理 Workmap、合法续作及有权接收继续使用；这些是长程机制，不替代业务目标或多造三个 Owner 审批阶段。新 `BI-01-V2-01` 不继承旧 run 的专业结果和 Gate；**原 I1–I3 的业务背景作为 Source 阅读，和旧执行状态不是一回事**。
+正常 `ROLE_RETURN`、`QUESTION_WORK_RETURN`、管理 Workmap、合法续作及有权接收继续使用；这些是长程机制，不替代业务目标或多造三个 Owner 审批阶段。新 `BI-01-V2-02` 不继承旧 `BI-01-V2-01` 或更早 run 的专业结果和 Gate；**原 I1–I3 的业务背景作为 Source 阅读，和旧执行状态不是一回事**。
 
 ## 6. 新 run 的专业业务方法与旧试跑复用边界
 

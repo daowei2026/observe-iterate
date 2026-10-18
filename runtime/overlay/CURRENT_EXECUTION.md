@@ -1,5 +1,9 @@
-# 长程覆层当前状态：BI-01-V2-02 PREPARED_NOT_STARTED / NO_SEND
+# 长程覆层当前执行入口：BI-01 V2-02
 
-新 run `BI-01-V2-02` 尚无 Owner GO、真实管理地图/Binding、Pro 派发；前一 `BI-01-V2-01` 由 Owner 暂停，旧 R10 SUBMITTED 也不属于新 run 完成结果。
+当前专业流程：[V2 S1/S2/S3](../../professional/v2/README.md)和 [07 场景先行方法](../../professional/v2/07_BUSINESS_SCENE_OBSERVATION_METHOD.md)；全新预备 run `BI-01-V2-02`，尚无新 Owner GO、真实 Binding 或 Pro 派发；旧 `BI-01-V2-01` 已被 Owner 暂停。
 
-协调者唯一入口 [08](08_自然语言运行提示_v0.3.md)，准确消息准备 [12](12_管理接收与地图校验.md)，真实 Return/续作 [13](13_角色回交与主控接续协议.md)。管理 Pro 自新 GO 出发签发场景驱动完整工作；专业 Pro 按 [00](../../professional/v2/00_PURPOSE_AND_THREE_STEP_FLOW.md)与[07](../../professional/v2/07_BUSINESS_SCENE_OBSERVATION_METHOD.md)从原 U2/U3 叙事和真实基础行情自主选观察位置，核 U2 位置和 U3 四方面对后续成员质量辨别；Worker 按工单制图，操作端不预设场景分类或代做业务。机械测试不是授权或真实发送。
+协调者唯一日常入口是 [08](08_自然语言运行提示_v0.3.md)，通用接续与 Return 见 [13](13_角色回交与主控接续协议.md)，机械消息准备与校验见 [12](12_管理接收与地图校验.md)。操作主控不做业务分析，不选择图或编专业任务。
+
+管理 Pro 根据 Owner 完整目标、真实成果和全部未完签发 S1/S2/S3 工作并接收结果；执行 Pro 先读 U2/U3 原叙事、从基础行情自主选场景，再确定 U2/U3 观察图、消费 aidata 实际图与同源数据，检验四方面当时能否辨别后续强弱、提出业务认识和反证，必要时有目的返回 S2；Worker 在真实工单下执行技术制图和取数。专业方法从 V2 与本次真实 Source/Method 读取，不从旧文件推断。
+
+机械 Gate、执行自检、管理接收、独立审查、Owner 重要判断以及手机发送互不冒充；当前工具准备并不代表这些动作已经发生。

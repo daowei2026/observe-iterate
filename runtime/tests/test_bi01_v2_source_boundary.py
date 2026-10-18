@@ -141,7 +141,8 @@ class V2Boundary(unittest.TestCase):
             self.assertIn(mcp_share, content)
             self.assertIn(codex_share, content)
         self.assertIn("不是上述固定 ZIP 数据目录", data)
-        self.assertIn("先核 **新分支远端**", rounds)
+        self.assertIn("先核是否真未提交", rounds)
+        self.assertIn("新分支远端", rounds)
         self.assertIn("不能重复应用 ZIP", rounds)
         self.assertIn("非 force 提交并 fresh readback", rounds)
         self.assertIn("Pro 无法实际向 GitHub 提交", rounds)
@@ -166,7 +167,7 @@ class V2Boundary(unittest.TestCase):
         self.assertIn("refonly-ad8824a52552d7bffa91", fixed)
         self.assertIn("formal_assessments_committed=NO", fixed)
         self.assertIn("15 条", fixed)
-        self.assertIn("同一个 hc/i/rb Case 的五个 As-Of", (ROOT / V2_SOURCES[0]).read_text(encoding="utf-8"))
+        self.assertIn("同一个 hc/i/rb Case 的 5 个 As-Of", (ROOT / V2_SOURCES[0]).read_text(encoding="utf-8"))
 
     def test_scene_first_business_method_and_no_preset_classification(self):
         method = (ROOT / "professional/v2/07_BUSINESS_SCENE_OBSERVATION_METHOD.md").read_text(encoding="utf-8")
@@ -182,6 +183,27 @@ class V2Boundary(unittest.TestCase):
         self.assertIn("不产生“提前识别”资格", method)
         self.assertIn("WITHHELD", method)
         self.assertIn("BI-01-V2-02", (ROOT / "professional/CURRENT_EXECUTION.md").read_text(encoding="utf-8"))
+
+    def test_v2_01_operational_contracts_remain_available(self):
+        """V2-02 business change must not silently compress unrelated operation rules."""
+        roles = (ROOT / "runtime/AGENTS.md").read_text(encoding="utf-8")
+        self.assertIn("| 操作主控 |", roles)
+        self.assertIn("| 独立审查 |", roles)
+        self.assertIn("| 手机执行者 |", roles)
+        rounds = (ROOT / "runtime/operations/V2_ROUND_RECORD_CONTRACT.md").read_text(encoding="utf-8")
+        self.assertIn("分开存放唯一名称 ZIP", rounds)
+        self.assertIn("6. **无法转运时**", rounds)
+        self.assertIn("真实错误和恢复条件", rounds)
+        chart = (ROOT / "professional/v2/01_AIDATA_CHART_AND_DATA.md").read_text(encoding="utf-8")
+        self.assertIn("build_big_world_chart_pages", chart)
+        self.assertIn("真实回归测试与回用方式", chart)
+        guide = (ROOT / "runtime/operations/BI01_V2_RUN_GUIDE.md").read_text(encoding="utf-8")
+        self.assertIn("前一 `BI-01-V2-01` 已被 Owner 暂停", guide)
+        self.assertNotIn("前一 `BI-01-V2-02` 已被 Owner 暂停", guide)
+        for name in ("bi01-mechanical-gates.yml", "bi01-offline-smoke.yml"):
+            workflow = (ROOT / ".github/workflows" / name).read_text(encoding="utf-8")
+            self.assertIn("fy/observation-iteration-v2-20261017", workflow)
+            self.assertIn("fy/bi01-v2-02-business-scene-20261018", workflow)
 
     def test_new_run_no_start_and_old_paused_history_retained(self):
         run = ROOT / "runs/BI-01-V2-02"
