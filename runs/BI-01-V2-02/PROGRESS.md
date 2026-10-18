@@ -51,3 +51,10 @@ formal Formation qualification
 - 当前任务没有已知专业或管理主体未交。broad formal U2/U3、SCN-04/05 formal Formation、完整 Retention/Constraint、正式 Outcome calibration 和 Allocation Evidence 是已接收的 Missing/Unknown，不是本轮漏做或 deferred required。
 
 本页只投影真实证据和当前权力状态；详细业务结论、限制和后继以 R0012 管理决定及 R0010 专业正文为准。
+
+
+## 主控最终收取与验收（2026-10-18 19:38 UTC）
+
+R0012 完整管理回交、两 Return 与全部实物已收齐。原调用身份/Binding、完整 schema/关联、14 个同答锚点、20 个精确 Git 引用及 after-return 实际通过；管理最终提交 `a731c189d0421a2d6461ec5a1b6c34e2b44864df` 上 Workmap check 实际 PASS。当前 Intake dispatch=CLOSED；原管理已接收完整 S1/S2/S3，FIRST RESULT 与第二周期 EFFORT 已实际进入 Intake，稳定责任记录接收消费，累计有效8且不重装已关闭任务。手机当前完整尾/动作行与 Git turn complete 分别真实取得，未以技术检查代签业务。
+
+详见 [主控接收记录](reviews/management-R0012/CONTROLLER_RECEPTION.md)、[真实最终 Gate](reviews/management-R0012/WORKMAP_CHECK_AFTER_RECEPTION.json)及[回交验收](reviews/management-R0012/CONTROLLER_RETURN_VERIFICATION.json)。当前完整观察任务没有已知专业、管理或运输剩余；正式 U2/U3 资格限制、历史不可复验原件及下一轮实施授权边界保留。
