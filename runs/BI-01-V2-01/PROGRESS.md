@@ -464,3 +464,13 @@
 - 原due02:02:09.394Z，首caller02:02:13.821Z晚4.427s满足120秒；frame02:02:13.779Z/server完成02:02:14.247Z分列，独立clock相差42ms不混为同一时点。准确R9 inv/token/management+STOP与思考标签，无助手正文/完整尾部/错误/大spinner，全部三无损tiles实查。
 - 正式observe1，输入/Send/STOP/导航/网络/重启0，终态后phone0；02:02:53.404369Z阳性释放并永久退役，无pending/UNKNOWN，166sections全terminal。准备时一次regex元数据查询偏差已原样记录，没有调用额外手机工具；root核raw所有分块及整体SHA一致。
 - Native118只以实际server完成更新下一02:12:14.247Z（北京时间10:12:14），原thinking01:52:09.394Z/70min03:02:09.394Z/90min03:22:09.394Z保持；共享准入至02:22:30.340Z。未新增Pro调用或有效结果，真实完整回交仍7；继续等待管理回交和完整U2/U3后继。
+
+
+### 2026-10-18 02:14Z｜R0009真实管理回交已取得，原件与after-return核验通过
+
+- 第二次到期检查于server 02:12:23.978Z仍见准确R9 marker/token/management及STOP/思考，无正文/完整tail/error；只读observe一次，独立caller比原due晚9.207908秒，IME/Send/STOP/导航均0，控制阳性释放退役。22原始分块、整体和三图片SHA复核通过。该历史状态不覆盖后来的远端完成。
+- 实际新管理提交 c67bbfa80cac9bfcb55cce20e44697333a292030，准确turn complete R9；完整原答27,124 bytes，SHA256 311e53f530d02f5c48695f76c7405ec6f6e8a91644c4f7c251a84e95398ce5c9。五原文件fresh GitHub raw核同；两原JSON/schema、与实际派发的关联、28答内锚点、11同仓Git引用及真实after-return均通过，不代业务正确/独立审查/完整目标验收。
+- 管理裁定不再恢复R8运输，签发原完整任务的新正常专业接续：按业务问题及时形成并保存真实实证，再持续补齐全部重要问题，不等机械穷尽5430 CSV，也不以首个中间实物停止；原Task/Binding/方法/聊天/模型不变，无Worker新工单。详见R9 FULL_RESPONSE.md#plan/#continuation。
+- R9输入task_adoption_ref旧路径问题由管理明确核对，历史Invocation原样保留；后继采用真实R9#adoption，不再携带旧R5定位。真实增量Intake尚待办理，EFFORT8须落实本次安排和后继后才消费，累计12不预关。
+- 已在Native记录相关远端完成（revision120），手机grace独立至02:24:51.057229Z；仍等待新鲜手机分类，不以Git提交冒充手机已显示。R8无原答/无Return/after-return未运行的事实保留。
+- 完整U2/U3目标继续ACTIVE；后续按本管理原文办理Intake并真实派发正常专业续作。
