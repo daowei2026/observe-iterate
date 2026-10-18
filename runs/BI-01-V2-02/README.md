@@ -1,7 +1,7 @@
 # BI-01-V2-02：场景驱动的 U2/U3 业务观察
 
 <a id="common"></a>
-**PREPARED_NOT_STARTED / NO_SEND**。本目录仅为下一运行准备；没有新 Owner GO、管理地图/任务/Binding/Intake、真实 Rnnnn、Pro/Worker 调用或成果。只有未来 Owner 独立明确授权才可创建 `OWNER_START.md` 并发新 M-START。
+**OWNER_GO_RECORDED / M-START 待发送**。Owner 已于 2026-10-18 在本次 Codex 聊天明确授权正式启动并持续推进本运行；完整原文见 [OWNER_START.md](OWNER_START.md)，来源与指纹见 [OWNER_START_PROVENANCE.json](OWNER_START_PROVENANCE.json)。本次专业/运行源锁定 `30d6cd28ca4cc52eb201f0aa474f9f4c93b74080`，操作控制源锁定 `1e28be8e361babadb3ef4b5e647c53ce625ef778`，均为 `fy/bi01-v2-02-business-scene-20261018` 的 Owner 指定版本。管理地图/任务/Binding/Intake 仍须由本次真实 M-START 签发与接收。
 
 <a id="bi01"></a>
 ## 本次完整业务目的
@@ -12,4 +12,4 @@
 
 [新启动与隔离规则](../../runtime/operations/BI01_V2_RUN_GUIDE.md) · [轮次合同](../../runtime/operations/V2_ROUND_RECORD_CONTRACT.md)。
 
-**当前不存在** `OWNER_START.md`、`00_长程推进地图.md`、`01_当前任务.md`、`reviews/WORKMAP_INTAKE_CURRENT.json`或真实 `provenance/turns/Rnnnn/`；它们必须以后按真实角色行动才能生成。
+**当前尚未形成** `00_长程推进地图.md`、`01_当前任务.md`、`reviews/WORKMAP_INTAKE_CURRENT.json`或任何真实 Pro 专业成果。下一动作是本次独立 `R0001 / M-START` 管理 BOOTSTRAP；当前没有实际发送证据，不据此宣称管理已接收或业务已完成。后续实况见 [PROGRESS.md](PROGRESS.md)。
