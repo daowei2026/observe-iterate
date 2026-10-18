@@ -10,6 +10,8 @@ signed_by: BI01-V2-02-R0001-20261018T130131Z-7f26abeb
 
 本任务由 R0001 管理在既有 review 职责中签发，是一次性、只读、独立的首次 Workmap 接收。新上下文尚未创建、尚未发送、尚未返回。它不新增常驻角色，不授 U2/U3 业务独立审查 PASS，也不允许参与候选形成的人仅通过换聊天获得独立性。
 
+> **R0004 格式纠正说明：**上述句子保留 R0001 签发时点的历史事实。R0003 后来已经完成同一冻结输入的独立阅读并形成真实报告；当前重新使用本任务时，只允许按 R0004 管理决定做一次有限 Return 格式修复。不得重做审查、重写报告、改变 verdict 或把格式修复解释成第二次独立 PASS。
+
 <a id="scope"></a>
 ## 1. 受托范围
 
@@ -121,7 +123,7 @@ verdict：
 <a id="question-work-binding"></a>
 ## 10. QUESTION_WORK_BINDING
 
-以下 Binding 由 `BI01-V2-02-R0002-20261018T133550Z-3e483710` 在不改变 R0001 人读任务正文和业务输入的前提下补齐。`source_reads.reuse_evidence=null` 表示独立 Reader 必须实际取得正文；它不能借管理者已读状态或旧 Reader 资格。
+R0002 首次补齐的 Binding 使用了未受控题号 `WORKMAP-READABILITY`。R0003 已完成实质阅读后，操作端在真实 schema 校验中发现该题号无效。以下 Binding 由 `BI01-V2-02-R0004-20261018T143706Z-4e789f60` 纠正为 DR12 固定题 `AUDIT`，并把当前调用严格限制为原 Reader 对既有报告的一次 Return 格式修复。原业务输入、报告和 verdict 均不因本格式纠正重做或改变。
 
 ```json
 {
@@ -136,32 +138,32 @@ verdict：
   },
   "plan_ref": {
     "repo": "daowei2026/observe-iterate",
-    "commit": "ae5826028a8441a6ee018ebfac48eb0568a7be72",
-    "path": "runs/BI-01-V2-02/reviews/management-R0002/DECISION.md",
+    "commit": "af50358f6de756d56759bc004baacf7ed596a2d0",
+    "path": "runs/BI-01-V2-02/reviews/management-R0004/DECISION.md",
     "selector": "#reader-pre-adoption"
   },
   "full_scope_ref": {
     "repo": "daowei2026/observe-iterate",
-    "commit": "ae5826028a8441a6ee018ebfac48eb0568a7be72",
+    "commit": "e3d65aa5131be591416b861343afa9953eaf6661",
     "path": "runs/BI-01-V2-02/reviews/management-R0001/READER_TASK.md",
     "selector": "full"
   },
-  "batch_result": "独立读取冻结的 BI-01-V2-02 Workmap、专业任务、管理决定、Owner 目标和适用方法，判断未参与编写的执行者能否准确恢复完整业务链、证据资格、撤销/保留边界、完成条件与真实后继；只交可理解性 verdict，不修改候选或签 U2/U3 业务 PASS。",
+  "batch_result": "保留 R0003 已完成的独立报告和狭义 PASS，仅以 DR12 固定题 AUDIT 补交一个新 invocation 的合法 ROLE_RETURN 与 QUESTION_WORK_RETURN，纠正原 Binding/Return 的题号连接；不重读、重写或重判 Workmap。",
   "question_ids": [
-    "WORKMAP-READABILITY"
+    "AUDIT"
   ],
   "professional_mode": "INDEPENDENT_REVIEW",
   "focus_ref": {
     "repo": "daowei2026/observe-iterate",
-    "commit": "ae5826028a8441a6ee018ebfac48eb0568a7be72",
-    "path": "runs/BI-01-V2-02/reviews/management-R0001/READER_TASK.md",
-    "selector": "#focus"
+    "commit": "af50358f6de756d56759bc004baacf7ed596a2d0",
+    "path": "runs/BI-01-V2-02/reviews/management-R0004/DECISION.md",
+    "selector": "#reader-return-repair"
   },
   "coverage_ref": {
     "repo": "daowei2026/observe-iterate",
-    "commit": "ae5826028a8441a6ee018ebfac48eb0568a7be72",
-    "path": "runs/BI-01-V2-02/reviews/management-R0001/READER_TASK.md",
-    "selector": "#coverage"
+    "commit": "485a796b1d709be81957f25851e62e8c56ddd688",
+    "path": "runs/BI-01-V2-02/reviews/independent/WORKMAP_READER_R0001_INPUT.md",
+    "selector": "#review-scope"
   },
   "source_reads": [
     {
@@ -172,8 +174,13 @@ verdict：
         "selector": "full"
       },
       "requirement": "FOCUS_FULL",
-      "purpose": "恢复本 run overview、旧运行暂停边界和当前真实状态",
-      "reuse_evidence": null
+      "purpose": "保留并核对 R0003 已读的 frozen overview；不重新解释业务",
+      "reuse_evidence": {
+        "repo": "daowei2026/observe-iterate",
+        "commit": "485a796b1d709be81957f25851e62e8c56ddd688",
+        "path": "runs/BI-01-V2-02/reviews/independent/WORKMAP_READER_R0001_INPUT.md",
+        "selector": "#review-target"
+      }
     },
     {
       "source": {
@@ -183,8 +190,13 @@ verdict：
         "selector": "full"
       },
       "requirement": "MODE_FULL",
-      "purpose": "恢复业务问题—证据—认识—Owner/后继的完整管理地图",
-      "reuse_evidence": null
+      "purpose": "保留并核对 R0003 已完成的完整业务地图阅读",
+      "reuse_evidence": {
+        "repo": "daowei2026/observe-iterate",
+        "commit": "485a796b1d709be81957f25851e62e8c56ddd688",
+        "path": "runs/BI-01-V2-02/reviews/independent/WORKMAP_READER_R0001_INPUT.md",
+        "selector": "#review-scope"
+      }
     },
     {
       "source": {
@@ -194,8 +206,13 @@ verdict：
         "selector": "full"
       },
       "requirement": "MODE_FULL",
-      "purpose": "检查连续 S1/S2/S3 专业任务、专业 Binding、完成条件和路线",
-      "reuse_evidence": null
+      "purpose": "保留并核对 R0003 已完成的专业任务和 Binding 阅读",
+      "reuse_evidence": {
+        "repo": "daowei2026/observe-iterate",
+        "commit": "485a796b1d709be81957f25851e62e8c56ddd688",
+        "path": "runs/BI-01-V2-02/reviews/independent/WORKMAP_READER_R0001_INPUT.md",
+        "selector": "#review-scope"
+      }
     },
     {
       "source": {
@@ -205,8 +222,13 @@ verdict：
         "selector": "full"
       },
       "requirement": "FOCUS_FULL",
-      "purpose": "核当前 Workmap 结构已具备但 status 仍准确为 NOT_CONFIGURED",
-      "reuse_evidence": null
+      "purpose": "核当前 frozen Workmap 仍为 NOT_CONFIGURED 且 reader input 未变",
+      "reuse_evidence": {
+        "repo": "daowei2026/observe-iterate",
+        "commit": "485a796b1d709be81957f25851e62e8c56ddd688",
+        "path": "runs/BI-01-V2-02/reviews/independent/WORKMAP_READER_R0001_INPUT.md",
+        "selector": "#review-target"
+      }
     },
     {
       "source": {
@@ -216,8 +238,13 @@ verdict：
         "selector": "full"
       },
       "requirement": "MODE_FULL",
-      "purpose": "取得新 run 的真实 Owner GO、旧 V2-01 暂停和不继承边界",
-      "reuse_evidence": null
+      "purpose": "保留 R0003 已核 Owner GO、旧运行暂停和新 run 权限边界",
+      "reuse_evidence": {
+        "repo": "daowei2026/observe-iterate",
+        "commit": "485a796b1d709be81957f25851e62e8c56ddd688",
+        "path": "runs/BI-01-V2-02/reviews/independent/WORKMAP_READER_R0001_INPUT.md",
+        "selector": "#review-target"
+      }
     },
     {
       "source": {
@@ -227,95 +254,89 @@ verdict：
         "selector": "full"
       },
       "requirement": "FOCUS_FULL",
-      "purpose": "核实管理采用、撤销、预算、Reader 决定和专业后继没有被摘要改写",
-      "reuse_evidence": null
+      "purpose": "保留 R0003 已核的管理采用、撤销、预算和专业后继",
+      "reuse_evidence": {
+        "repo": "daowei2026/observe-iterate",
+        "commit": "485a796b1d709be81957f25851e62e8c56ddd688",
+        "path": "runs/BI-01-V2-02/reviews/independent/WORKMAP_READER_R0001_INPUT.md",
+        "selector": "#review-target"
+      }
     },
     {
       "source": {
         "repo": "daowei2026/observe-iterate",
-        "commit": "30d6cd28ca4cc52eb201f0aa474f9f4c93b74080",
-        "path": "professional/v2/00_PURPOSE_AND_THREE_STEP_FLOW.md",
-        "selector": "full"
-      },
-      "requirement": "MODE_FULL",
-      "purpose": "对照 Owner 完整业务目标、三步工作和完成条件",
-      "reuse_evidence": null
-    },
-    {
-      "source": {
-        "repo": "daowei2026/observe-iterate",
-        "commit": "30d6cd28ca4cc52eb201f0aa474f9f4c93b74080",
-        "path": "professional/v2/01_AIDATA_CHART_AND_DATA.md",
-        "selector": "full"
-      },
-      "requirement": "BOUNDARY",
-      "purpose": "核 S2 图、同源数据、实际渲染和 aidata 工具边界",
-      "reuse_evidence": null
-    },
-    {
-      "source": {
-        "repo": "daowei2026/observe-iterate",
-        "commit": "30d6cd28ca4cc52eb201f0aa474f9f4c93b74080",
-        "path": "professional/v2/02_OBSERVATION_IDEAS_AND_VALIDATION.md",
-        "selector": "full"
-      },
-      "requirement": "BOUNDARY",
-      "purpose": "核 S3 事实、设计承诺、反证、基线和行动的完成要求",
-      "reuse_evidence": null
-    },
-    {
-      "source": {
-        "repo": "daowei2026/observe-iterate",
-        "commit": "30d6cd28ca4cc52eb201f0aa474f9f4c93b74080",
-        "path": "professional/v2/03_EXECUTION_HANDOFF.md",
-        "selector": "full"
-      },
-      "requirement": "BOUNDARY",
-      "purpose": "核管理、执行 Pro、Worker 和 Owner 的生产/消费职责",
-      "reuse_evidence": null
-    },
-    {
-      "source": {
-        "repo": "daowei2026/observe-iterate",
-        "commit": "30d6cd28ca4cc52eb201f0aa474f9f4c93b74080",
-        "path": "professional/v2/04_BI01_BUSINESS_BASELINE.md",
-        "selector": "full"
-      },
-      "requirement": "BOUNDARY",
-      "purpose": "核 I1—I3 是业务 Source 而不是旧 run 状态继承",
-      "reuse_evidence": null
-    },
-    {
-      "source": {
-        "repo": "daowei2026/observe-iterate",
-        "commit": "30d6cd28ca4cc52eb201f0aa474f9f4c93b74080",
-        "path": "professional/v2/05_BI01_FIXED_INPUT_DATA.md",
+        "commit": "485a796b1d709be81957f25851e62e8c56ddd688",
+        "path": "runs/BI-01-V2-02/reviews/independent/WORKMAP_READER_R0001_INPUT.md",
         "selector": "full"
       },
       "requirement": "FOCUS_FULL",
-      "purpose": "核两份固定 ZIP、广域 raw、单 Case 五 As-Of 和身份限制",
+      "purpose": "取得已完成的独立报告、PASS、独立性、材料使用和资格边界",
       "reuse_evidence": null
     },
     {
       "source": {
         "repo": "daowei2026/observe-iterate",
-        "commit": "30d6cd28ca4cc52eb201f0aa474f9f4c93b74080",
-        "path": "professional/v2/06_U2_U3_DESIGN_SOURCE_MAP.md",
+        "commit": "f0bb3089da99bf9664c1f0c45fb058a292cb5f9f",
+        "path": "runs/BI-01-V2-02/provenance/turns/R0003/BINDING_FORMAT_CORRECTION_REQUIRED.md",
         "selector": "full"
       },
       "requirement": "FOCUS_FULL",
-      "purpose": "核 U2/U3 承重原文、四束与固定结果映射",
+      "purpose": "取得原 Binding/Return 题号格式失败和合法修复责任",
+      "reuse_evidence": null
+    },
+    {
+      "source": {
+        "repo": "daowei2026/observe-iterate",
+        "commit": "f0bb3089da99bf9664c1f0c45fb058a292cb5f9f",
+        "path": "runs/BI-01-V2-02/provenance/turns/R0003/TRANSPORT_PROVENANCE.json",
+        "selector": "full"
+      },
+      "requirement": "PROVENANCE_TRIGGER",
+      "purpose": "取得原全文与两份 Return 的字节身份、schema 失败路径和未采用状态",
+      "reuse_evidence": null
+    },
+    {
+      "source": {
+        "repo": "daowei2026/observe-iterate",
+        "commit": "f0bb3089da99bf9664c1f0c45fb058a292cb5f9f",
+        "path": "runs/BI-01-V2-02/provenance/turns/R0003/ROLE_RETURN.json",
+        "selector": "full"
+      },
+      "requirement": "PROVENANCE_TRIGGER",
+      "purpose": "取得已通过 schema 的原 review Role Return 并保持历史",
+      "reuse_evidence": null
+    },
+    {
+      "source": {
+        "repo": "daowei2026/observe-iterate",
+        "commit": "f0bb3089da99bf9664c1f0c45fb058a292cb5f9f",
+        "path": "runs/BI-01-V2-02/provenance/turns/R0003/QUESTION_WORK_RETURN.json",
+        "selector": "full"
+      },
+      "requirement": "PROVENANCE_TRIGGER",
+      "purpose": "取得只在 question_id 上失败的原 QWR；不得倒改",
+      "reuse_evidence": null
+    },
+    {
+      "source": {
+        "repo": "daowei2026/observe-iterate",
+        "commit": "af50358f6de756d56759bc004baacf7ed596a2d0",
+        "path": "runs/BI-01-V2-02/reviews/management-R0004/DECISION.md",
+        "selector": "full"
+      },
+      "requirement": "FOCUS_FULL",
+      "purpose": "取得固定题 AUDIT 的管理裁定、有限修复范围、完成条件和采用授权",
       "reuse_evidence": null
     },
     {
       "source": {
         "repo": "daowei2026/observe-iterate",
         "commit": "30d6cd28ca4cc52eb201f0aa474f9f4c93b74080",
-        "path": "professional/v2/07_BUSINESS_SCENE_OBSERVATION_METHOD.md",
+        "path": "runtime/dual_route_execution/DR12_PROFESSIONAL_QUESTION_CATALOG.md",
         "selector": "full"
       },
-      "requirement": "MODE_FULL",
-      "purpose": "核场景先行、基础行情自主选位置和 U2/U3/后续/基线链",
+      "requirement": "BOUNDARY",
+      "purpose": "核 AUDIT/INDEPENDENT_REVIEW 是已有固定审查题，无需造 CASE",
       "reuse_evidence": null
     },
     {
@@ -326,59 +347,37 @@ verdict：
         "selector": "full"
       },
       "requirement": "BOUNDARY",
-      "purpose": "核 Binding、路线、完成、未完和 Return 合同",
+      "purpose": "核固定题、Binding、return_repair 和历史不倒改合同",
       "reuse_evidence": null
     },
     {
       "source": {
         "repo": "daowei2026/observe-iterate",
         "commit": "30d6cd28ca4cc52eb201f0aa474f9f4c93b74080",
-        "path": "runtime/operations/ADOPTION_HANDOFF_CHECKLIST.md",
+        "path": "runtime/overlay/tools/question_work.schema.json",
         "selector": "full"
       },
       "requirement": "BOUNDARY",
-      "purpose": "核首次 Reader、真实 Intake、ADOPTED 与专业首发的合法顺序",
-      "reuse_evidence": null
-    },
-    {
-      "source": {
-        "repo": "daowei2026/observe-iterate",
-        "commit": "30d6cd28ca4cc52eb201f0aa474f9f4c93b74080",
-        "path": "runtime/overlay/12_管理接收与地图校验.md",
-        "selector": "full"
-      },
-      "requirement": "BOUNDARY",
-      "purpose": "核 snapshot/check/dispatch、Reader 证据和新消息取源边界",
-      "reuse_evidence": null
-    },
-    {
-      "source": {
-        "repo": "daowei2026/observe-iterate",
-        "commit": "30d6cd28ca4cc52eb201f0aa474f9f4c93b74080",
-        "path": "runtime/overlay/13_角色回交与主控接续协议.md",
-        "selector": "full"
-      },
-      "requirement": "BOUNDARY",
-      "purpose": "核 review 回交、独立性、完整 Goal 与主控接续",
+      "purpose": "以锁定 schema 校验 AUDIT Binding 与新 Return",
       "reuse_evidence": null
     }
   ],
   "deliverables_ref": {
     "repo": "daowei2026/observe-iterate",
-    "commit": "ae5826028a8441a6ee018ebfac48eb0568a7be72",
-    "path": "runs/BI-01-V2-02/reviews/management-R0001/READER_TASK.md",
-    "selector": "#coverage"
+    "commit": "af50358f6de756d56759bc004baacf7ed596a2d0",
+    "path": "runs/BI-01-V2-02/reviews/management-R0004/DECISION.md",
+    "selector": "#repair-deliverables"
   },
   "completion_ref": {
     "repo": "daowei2026/observe-iterate",
-    "commit": "ae5826028a8441a6ee018ebfac48eb0568a7be72",
-    "path": "runs/BI-01-V2-02/reviews/management-R0001/READER_TASK.md",
-    "selector": "#completion"
+    "commit": "af50358f6de756d56759bc004baacf7ed596a2d0",
+    "path": "runs/BI-01-V2-02/reviews/management-R0004/DECISION.md",
+    "selector": "#repair-completion"
   },
   "budget_ref": {
     "repo": "daowei2026/observe-iterate",
-    "commit": "ae5826028a8441a6ee018ebfac48eb0568a7be72",
-    "path": "runs/BI-01-V2-02/reviews/management-R0002/DECISION.md",
+    "commit": "af50358f6de756d56759bc004baacf7ed596a2d0",
+    "path": "runs/BI-01-V2-02/reviews/management-R0004/DECISION.md",
     "selector": "#reader-pre-adoption"
   },
   "routes": {
@@ -387,9 +386,9 @@ verdict：
       "recipient_ref": "chatgpt:细节叙事生成_金标:BI01-V202-地图只读接收-01",
       "instructions_ref": {
         "repo": "daowei2026/observe-iterate",
-        "commit": "ae5826028a8441a6ee018ebfac48eb0568a7be72",
-        "path": "runs/BI-01-V2-02/reviews/management-R0001/READER_TASK.md",
-        "selector": "#same-work"
+        "commit": "af50358f6de756d56759bc004baacf7ed596a2d0",
+        "path": "runs/BI-01-V2-02/reviews/management-R0004/DECISION.md",
+        "selector": "#reader-return-repair"
       }
     },
     "accept": {
@@ -397,9 +396,9 @@ verdict：
       "recipient_ref": "chatgpt:细节叙事生成_金标:BI01-V202-管理",
       "instructions_ref": {
         "repo": "daowei2026/observe-iterate",
-        "commit": "ae5826028a8441a6ee018ebfac48eb0568a7be72",
-        "path": "runs/BI-01-V2-02/reviews/management-R0001/READER_TASK.md",
-        "selector": "#accept"
+        "commit": "af50358f6de756d56759bc004baacf7ed596a2d0",
+        "path": "runs/BI-01-V2-02/reviews/management-R0004/DECISION.md",
+        "selector": "#accept-after-repair"
       }
     },
     "decide": {
@@ -407,8 +406,8 @@ verdict：
       "recipient_ref": "chatgpt:细节叙事生成_金标:BI01-V202-管理",
       "instructions_ref": {
         "repo": "daowei2026/observe-iterate",
-        "commit": "ae5826028a8441a6ee018ebfac48eb0568a7be72",
-        "path": "runs/BI-01-V2-02/reviews/management-R0001/READER_TASK.md",
+        "commit": "af50358f6de756d56759bc004baacf7ed596a2d0",
+        "path": "runs/BI-01-V2-02/reviews/management-R0004/DECISION.md",
         "selector": "#decide"
       }
     },
@@ -417,26 +416,31 @@ verdict：
       "recipient_ref": "chatgpt:细节叙事生成_金标:BI01-V202-地图只读接收-01",
       "instructions_ref": {
         "repo": "daowei2026/observe-iterate",
-        "commit": "ae5826028a8441a6ee018ebfac48eb0568a7be72",
-        "path": "runs/BI-01-V2-02/reviews/management-R0001/READER_TASK.md",
-        "selector": "#completion"
+        "commit": "af50358f6de756d56759bc004baacf7ed596a2d0",
+        "path": "runs/BI-01-V2-02/reviews/management-R0004/DECISION.md",
+        "selector": "#reader-return-repair"
       }
     }
   },
   "triggers": [],
   "explicit_no_trigger_reason_ref": {
     "repo": "daowei2026/observe-iterate",
-    "commit": "ae5826028a8441a6ee018ebfac48eb0568a7be72",
-    "path": "runs/BI-01-V2-02/reviews/management-R0002/DECISION.md",
+    "commit": "af50358f6de756d56759bc004baacf7ed596a2d0",
+    "path": "runs/BI-01-V2-02/reviews/management-R0004/DECISION.md",
     "selector": "#reader-pre-adoption"
   },
   "parent": {
-    "status": "NOT_APPLICABLE_NEW_CASE",
-    "ref": null,
+    "status": "PRESENT",
+    "ref": {
+      "repo": "daowei2026/observe-iterate",
+      "commit": "485a796b1d709be81957f25851e62e8c56ddd688",
+      "path": "runs/BI-01-V2-02/reviews/independent/WORKMAP_READER_R0001_INPUT.md",
+      "selector": "full"
+    },
     "reason_ref": {
       "repo": "daowei2026/observe-iterate",
-      "commit": "ae5826028a8441a6ee018ebfac48eb0568a7be72",
-      "path": "runs/BI-01-V2-02/reviews/management-R0001/READER_TASK.md",
+      "commit": "af50358f6de756d56759bc004baacf7ed596a2d0",
+      "path": "runs/BI-01-V2-02/reviews/management-R0004/DECISION.md",
       "selector": "#parent"
     }
   },
