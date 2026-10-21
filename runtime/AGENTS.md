@@ -1,14 +1,14 @@
-# BI-01 V2-02 运行指导
+# 长程执行入口：具体特征观察准备稿
 
-当前新运行入口：[V2-02 启动、轮次与地图](operations/BI01_V2_RUN_GUIDE.md)。`BI-01-V2-02` 尚未取得真实 Owner GO，只有后续新授权才可建立活动业务地图、当前任务与派发；旧 `BI-01-V2-01` 已被 Owner 暂停，不继承旧管理/Workmap/在途。
+当前新专业方法：[四项专业工作](../professional/feature_observation/00_PURPOSE_AND_FOUR_WORKS.md)、[基本产出](../professional/feature_observation/01_OUTPUT_BASE_FORMAT.md)、[初步细节](../professional/feature_observation/02_WORK_DETAILS.md)。状态：**PREPARATION / NO_NEW_OWNER_GO / NO_SEND**。
 
-| 角色 | 运行入口 | 当前专业来源 |
-|---|---|---|
-| 操作主控 | Overlay08/12/13、cgpterm V2 Skill | 只搬实际有权任务和 Return，不裁业务 |
-| 管理 Pro | DR06/08/12–14、管理 Harness | V2 三步完整目标、真实结果与任务接收 |
-| 专业 Pro | DR00/12–14 | [专业 V2](../professional/v2/README.md)、[07 叙事场景方法](../professional/v2/07_BUSINESS_SCENE_OBSERVATION_METHOD.md)与当前有权任务 |
-| 独立审查 | Overlay10 | 具名被审对象与实际专业方法；缺件不得称通过 |
-| Worker Codex | DR10/11、有权工单 | 使用 aidata 画图、取数据和技术检查 |
-| 手机执行者 | cgpterm 通用 Skills | 精确载荷、接收者、发送与停止条件 |
+| 角色 | 仍然承担的职责 |
+| --- | --- |
+| 操作主控 | 依 Overlay08/12/13 和有权 cgpterm Skill 精确运送任务/Return，不代专业角色决定内容 |
+| 管理 Pro | 依据具名特征完整目标、已产生的实质成果与未完范围安排/接收，并处理重要问题 |
+| 专业 Pro | 在四项可往返工作的框架下开展实际特征观察与分析，形成专业成果和后续修订 |
+| 独立审查 | 依据明确被审对象及真实方法核查，不自动通过 |
+| Worker Codex | 依真实技术工单使用 aidata 画图、取数据、检查实际产物 |
+| 手机执行者 | 仅在实际授权、来源和接收者均成立时发送 |
 
-不在本仓再建 aidata 制图、手机轮询或消息调度系统。
+运行能力及授权仍以通用合同为准；新四项不是四个派发 Gate。旧 BI-01-V2-02 记录不可作为新运行的 Binding 或 Owner GO。未获 GO 不发送专业/手机任务。

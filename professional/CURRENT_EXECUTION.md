@@ -1,19 +1,16 @@
-# 专业 Agent V2-02 当前入口
+# 具体特征专业观察：当前准备入口
 
-status: `V2_PREPARED_NOT_STARTED / NO_SEND`
+status: **FEATURE_OBSERVATION_PREPARATION / NO_SEND / NO_NEW_ADOPTED_WORKMAP**
 
-**完整业务目的：**理解 U2/U3 原叙事要解决的共同方向机会及成员强弱问题，先从 rb/i/hc 基础行情、贴近转折找到值得研究的真实位置，再检查 U2 识别位置/成员是否合理，U3 四方面当时能否区分成员后续运动质量、相对 C0/N 有无增量；场景由专业执行自主提出，不预设分类。
+**新专业目标**：以具名已实现、能取得数据的特征为观察主体，开展初始合理参数、特征展示方式、aidata 实际制图、正确性与普通投资者正常解读观察。四项工作可以往返，不设四道固定管理 Gate。U2/U3 仅为按需业务上下文，原 S1–S3 划分退出。
 
-正式专业入口及首轮必读：
-1. [00：业务总意图及 S1/S2/S3](v2/00_PURPOSE_AND_THREE_STEP_FLOW.md)
-2. [07：叙事业务场景先行观察方法](v2/07_BUSINESS_SCENE_OBSERVATION_METHOD.md)
-3. [06：U2/U3 原 Narratives、Use Cases 和设计来源](v2/06_U2_U3_DESIGN_SOURCE_MAP.md)
-4. [04：原 I1–I3 的业务背景、OP-01/Q-01、方法与使用限制](v2/04_BI01_BUSINESS_BASELINE.md)
-5. [05：固定已验算两份 ZIP、数据路径、哈希和 CSV 清单](v2/05_BI01_FIXED_INPUT_DATA.md)
-6. [01：使用 aidata 画图与同源数据；不让 AI 视觉看图](v2/01_AIDATA_CHART_AND_DATA.md)
-7. [02：业务观察、反证与 Owner 看图核验](v2/02_OBSERVATION_IDEAS_AND_VALIDATION.md)
-8. [03：既有角色交接/工具边界](v2/03_EXECUTION_HANDOFF.md)
+专业正文（不是目录摘要的替代）：
+1. [00 四项专业工作的含义与关系](feature_observation/00_PURPOSE_AND_FOUR_WORKS.md)
+2. [01 初始输出表达](feature_observation/01_OUTPUT_BASE_FORMAT.md)
+3. [02 初步实施细节](feature_observation/02_WORK_DETAILS.md)
+4. [03 旧 S1–S3 知识如何复用](feature_observation/03_REUSE_FROM_V2.md)
+5. [04 aidata 真实使用与展示](feature_observation/04_AIDATA_USE.md)
 
-本轮固定数据，不自动重算，不改变 aidata 既有分支。若必须扩展 aidata，先建独立新分支。
+**当前优先研究的已实现特征**：CYF 在 2026-10-21 10:24 提供了 U2NormalNodeBehaviorFrp 的真实成功运行与读出信息，可作为第一项专业观察对象。正式运行前需固定实际源码/数据身份、使用路径和本次特征实例，不从历史讨论直接推定已获取当前数据。
 
-新 run `BI-01-V2-02` 仅准备，尚无真实 Owner GO、管理签发或新 Pro 执行。前一 `BI-01-V2-01` 已获 Owner 暂停，旧 Gate/聊天/结果不继承；旧技术图和数据须核版本及实际可看方可复用。V1 专业源和运行工作面已从本分支清理。
+新任务**没有新 run ID、Owner GO、专业任务 Binding、管理签发或运行接收**；这些须按现有 runtime 的真实授权与发布程序建立。旧 BI-01-V2-02 已存在的 R、Workmap 和业务材料仍是该次历史，不自动延续。准备 3 在仓库改完后进行审查、修复和必要验证，再考虑新启动。

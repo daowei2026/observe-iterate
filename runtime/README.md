@@ -1,5 +1,7 @@
 # 观察迭代长程运行机制
 
-专业业务方法来自 [V2-02 总目标](../professional/v2/00_PURPOSE_AND_THREE_STEP_FLOW.md)和 [07 叙事驱动的场景观察](../professional/v2/07_BUSINESS_SCENE_OBSERVATION_METHOD.md)，真实安排由新的管理 Pro 工作地图和 Binding 签发。运行器继续承担身份、Git 锁、已授权派发、Workmap、Return、去重、真实发送收取与合法续作；不让运行器/Worker 替专业 Pro 选择场景和业务结论。
+新专业候选来自 [具体特征四项工作](../professional/feature_observation/00_PURPOSE_AND_FOUR_WORKS.md)及其初步细节、输出表达和旧知识复用。运行器负责身份、准确源版本、有权派发、Workmap/Intake、Git 提交与读回、Return、去重、发送收取和合法接续；不自行决定特征参数是否合理、展示什么或投资业务结论。
 
-[新 run 指南](operations/BI01_V2_RUN_GUIDE.md)是 `BI-01-V2-02` 的**准备入口**，未有 Owner 新 GO。旧 `BI-01-V2-01` 原始文件及暂停记录只作历史证据，不继承旧已采用 Workmap 或在途。通用手机、网络、定时 Skill 不在本仓重新实现。
+新任务准备及无授权边界见 [新任务准备说明](operations/FEATURE_OBSERVATION_PREPARATION_GUIDE.md)。新的 Owner GO、run 身份、签发地图与 Binding 当前尚未建立，不得使用旧 BI-01-V2-02 的已采用工作地图或运行记录替代。
+
+[BI01_V2_RUN_GUIDE.md](operations/BI01_V2_RUN_GUIDE.md)与 [旧 V2 专业材料](../professional/v2/README.md)属于上一轮方法的历史来源，不是新任务的现行专业目标。通用手机、网络和调度 Skill 仍按既有有权工具使用，不在本仓另造。

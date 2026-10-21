@@ -1,9 +1,9 @@
-# BI-01 V2-02 专业任务入口
+# 具体特征观察：专业任务路由（准备中）
 
-status: `MANAGER_ISSUED_TASK_REQUIRED / NEW_OWNER_GO_REQUIRED`
+status: **NEW_OWNER_GO_REQUIRED / MANAGER_ISSUED_TASK_REQUIRED / NO_SEND**
 
-业务仍为 S1（理解叙事和基础行情、在运行中自主找到有价值的共同方向机会场景）、S2（按实际场景用 aidata 画基础行情/贴近转折图，后对照 U2/U3 与同源数据）、S3（检查四方面当时辨别及后续运动，形成 Owner 图数可核验判断）。不预先固定场景分类、选样配额或赢家。专业总目标和 [07](v2/07_BUSINESS_SCENE_OBSERVATION_METHOD.md) 为必读，机器 mode 仍来自 `runtime/config/COORDINATOR_DISPATCH.json`。
+新专业工作按 [00 四项工作](feature_observation/00_PURPOSE_AND_FOUR_WORKS.md)组织：初始参数、特征展示设计、aidata 制图、真实观察分析；四项允许返回调整，**不构造 S1/S2/S3 或“四阶段依次签收”的运行协议**。基本成果表达及初步细节见 [01](feature_observation/01_OUTPUT_BASE_FORMAT.md)、[02](feature_observation/02_WORK_DETAILS.md)。
 
-**只有新 run 的管理 Pro 在真实 Owner GO 后**能够签发本次工作地图、任务与 Binding；旧 `BI-01-V2-01` 的已采用任务和 R 不取得本轮运行权，不另造与长程系统竞争的第二套专业 Router。
+现有管理/专业/Worker/操作端职责沿用原长程协议。专业角色根据具名特征和实际情况安排工作；Worker 只在有权工单下处理真实制图/数据/技术检查，不擅自确定投资专业结论；操作端只搬运合法消息与回交。
 
-不建立与长程系统竞争的第二套专业 Router，机械主控不自行形成业务内容。审查 Harness 未形成的地方仍保持未确认。
+未来正式启用时，机械模式由 runtime/config/COORDINATOR_DISPATCH.json 提供，专业推进采用统一候选模式 **FEATURE_OBSERVATION**（不代表每项工作各一轮）。此模式和文件都不是 Owner GO。此前 BI-01-V2-02 的 OBSERVATION_SCOPE / OBSERVATION_CHART / OBSERVATION_IDEAS 与其已采用 Binding 只属于旧 run，不自动取得新任务授权。
