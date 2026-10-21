@@ -1,18 +1,17 @@
-# BI-01 V2-02 观察迭代长程运行覆层
+# BI-01 具体特征观察：长程覆层入口（准备中）
 
-本覆层负责身份、准确来源、任务派发、回交、去重、合法续作；专业内容按 [V2 方法](../../professional/v2/README.md)与真实管理任务取得。通用 CYF 运行机制继续复用。
+本覆层负责身份、准确来源、派发、回交、去重和合法续作；专业内容来自[新专业方法](../../professional/feature_observation/README.md)及真实有权管理任务，继续复用已有通用运行机制。
 
-## 入口和角色
+## 角色与操作
 
-- 协调者日常入口：[08](08_自然语言运行提示_v0.3.md)；机械准备和 Workmap 接收：[12](12_管理接收与地图校验.md)；Return 接续：[13](13_角色回交与主控接续协议.md)。
-- 专业 Pro：[专业当前入口](../../professional/CURRENT_EXECUTION.md)、[07 叙事场景方法](../../professional/v2/07_BUSINESS_SCENE_OBSERVATION_METHOD.md)和本次真实 Binding，按 S1 阅读原叙事并从基础行情自主选实际场景、S2 先基础图再定向展示 U2/U3 同源数据、S3 检验当时 U3 四方面能否区分后续成员质量并给有据观察与反证。
-- 管理 Pro：DR06/08/12–14、当前任务，安排完整工作、实质接收和后继，不代做专业分析。
-- Worker：只在有权工单下通过 aidata 制图和取得同源数据；不代签业务结论。
-- 独立审查：需实际授权和完整适用方法。未覆盖部分不得声明 PASS。
+- 协调者：日常入口[08](08_自然语言运行提示_v0.3.md)、机械校验[12](12_管理接收与地图校验.md)、Return接续[13](13_角色回交与主控接续协议.md)，只运送有权消息。
+- 专业 Pro：[当前入口](../../professional/CURRENT_EXECUTION.md)和真实 source_reads；围绕具名特征的参数、展示、aidata 制图、正确性与普通投资者正常解读进行可迭代工作。
+- 管理 Pro：安排与接收真实专业成果、完整未完及后继；不拿四栏填满充当验收。
+- Worker Codex：仅按有权技术工单操作 aidata/数据/实际图，不裁决专业结论。
+- 独立审查：有明确授权与真实被审对象，不自动 PASS。
 
-## 全新 V2 运行
+## 新旧运行边界
 
-预备 run：[BI-01-V2-02](../../runs/BI-01-V2-02/README.md)，目前无新 Owner GO、管理任务、Binding、聊天或 Pro 轮次。前一 [BI-01-V2-01](../../runs/BI-01-V2-01/README.md) 已被 Owner 暂停，其 R/任务/Gate 不继承。运行入口：[V2 启动指南](../operations/BI01_V2_RUN_GUIDE.md)。先由真正 M-START BOOTSTRAP 开始，管理实际签发地图、任务、Binding 和 Workmap Intake 后才进入专业派发。
+新的具体特征观察**当前没有 Owner GO、run 身份、管理签发或 Binding/Intake**；[旧 V2-02](../../runs/BI-01-V2-02/README.md)已发生的轮次和 ADOPTED 状态不授予新任务权限。以后启动见[准备到运行衔接](../operations/FEATURE_OBSERVATION_PREPARATION_GUIDE.md)。
 
-本轮固定已有 [rb/i/hc 两份预计算 ZIP](../../professional/v2/05_BI01_FIXED_INPUT_DATA.md)，原 [I1–I3 业务积累](../../professional/v2/04_BI01_BUSINESS_BASELINE.md)必须作为新 run 业务 Source 读取，不把旧 Gate 当结果继承。Owner 看 aidata 图，AI 只读同图真实结构化数据，暂不启用视觉看图；不再重新验算输入。aidata 优先不改，实需修改时仅在 aidata 新建分支实施。通用手机、网络、定时和 GitHub 运输使用 cgpterm Skills。
-旧 V2-01 的图/数据可按当前业务场景核对版本及真实浏览器可见后复用，不继承其 S1 选样和专业接收。
+[旧 V2 专业材料](../../professional/v2/README.md)可作按需知识来源，不再规定现行 S1–S3、两份 ZIP 或完整 U2/U3 任务。通用消息和工具机制保持。

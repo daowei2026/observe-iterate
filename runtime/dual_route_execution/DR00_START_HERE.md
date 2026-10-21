@@ -1,4 +1,4 @@
-新一轮 V2 运行以 [V2 启动、轮次和地图合同](../operations/BI01_V2_RUN_GUIDE.md) 为共同入口；只有后续 Owner 的真实 GO 才能进入首次管理。当前还没有 V2 业务结果或在途工作。
+新具体特征观察尚处于[准备阶段](../operations/FEATURE_OBSERVATION_PREPARATION_GUIDE.md)，只有新 Owner 的真实 GO、管理签发和合法接收后才能进入新 run。旧 BI-01-V2-02 已有的业务结果及已采用记录属于历史，不能为新任务提供权限。
 
 # 观察迭代长程执行入口：角色分工、专业来源与管理接收
 
@@ -8,14 +8,14 @@
 
 |角色|共同入口|完整方法|
 |---|---|---|
-|专业执行Pro|DR12、DR13 和当前 Binding|[V2 专业完整方法](../../professional/v2/README.md)与本次 source_reads、真实业务 Source/Method|
-|Worker Codex|DR03/DR10/DR11的适用委派规则|[V2 aidata 技术交接](../../professional/v2/03_EXECUTION_HANDOFF.md)；无专业工单不自动授权|
-|管理Pro|DR06/DR08、DR13 管理题、管理 Harness|[V2 完整目标](../../professional/v2/00_PURPOSE_AND_THREE_STEP_FLOW.md)及本次真实进展与未完|
+|专业执行Pro|DR12、DR13 和当前 Binding|[具体特征专业方法](../../professional/feature_observation/README.md)与本次 source_reads、真实业务 Source/Method|
+|Worker Codex|DR03/DR10/DR11的适用委派规则|[新专业 aidata 使用边界](../../professional/feature_observation/04_AIDATA_USE.md)；无专业工单不自动授权|
+|管理Pro|DR06/DR08、DR13 管理题、管理 Harness|[具体特征四项工作的完整目标](../../professional/feature_observation/00_PURPOSE_AND_FOUR_WORKS.md)及本次真实进展与未完|
 |独立审查Pro|Overlay10/13、实际审查委派|具名被审对象与有资格的专业方法；方法未形成时不得宣称独立 PASS|
 
 DR12引用 BI-01 已有专业题及方法原文，DR13负责工作联动/读取/管理题，DR14负责绑定/回交/触发。题号不授mode或写权，不要求题数等于轮数。首次/新上下文/失效取必要全文，已读未变且仍可用则复用，题面不替方法。
 
-BI-01 V2 使用已固定预先验算的 rb/i/hc 数据，以[04 原 I1–I3 业务底稿](../../professional/v2/04_BI01_BUSINESS_BASELINE.md)、[05 数据包与位置](../../professional/v2/05_BI01_FIXED_INPUT_DATA.md)作为起点；S1 确定观察问题、S2 通过 aidata 对固定结果画图并给出同源数据、S3 提出业务想法和反证。Owner 看图，AI 本轮只读结构化数据而不视觉看图；不默认重算，也不随意修改 aidata 现有分支，必要工具修改在 aidata 新分支处理。
+新 BI-01 以具名已实现且能取得实际数据的特征为专业主体，围绕参数、展示、aidata 真实制图和观察分析开展可返回迭代的工作。U2/U3 与原 rb/i/hc 两包只按需作为上下文，不要求完成原 S1–S3 的目标。实际数据获取和展示依本次真实特征及任务核定；必要工具修改在 aidata 新分支处理，无新 Owner GO 不派发。
 
 管理以最快有效完成完整目标为责，旧计划/候选/自己旧结论都需核适用；局部进展不证明投入合理。及时采用合理首版、停止无当前价值深化，保留必需主体/真实验证，更新同一终点的预测、地图和实际后继。具体方式不强制问卷、评分、方案数或逐项轮数。
 

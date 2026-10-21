@@ -1,4 +1,4 @@
-> **V2-02 当前说明**：新运行 `BI-01-V2-02` 的准备模板见 [Workmap Binding](v2/templates/WORKMAP_BINDING_TEMPLATE.json) 和 [新运行指南](BI01_V2_RUN_GUIDE.md)。**没有 Owner 新 GO，不发送任何 Pro/手机消息**；旧 `BI-01-V2-01` 由 Owner 暂停，其 R0002 reader、R0010 SUBMITTED、Workmap ADOPTED 与其他 Gate/在途均是历史，不赋予新运行权限。仍使用原通用 Workmap 真实接收机制，不预造新采用。
+> **具体特征观察准备说明（2026-10-21）**：本页后文含较多 V2-02 run 的具体路径/例子，属于上一运行方法示例，**不可直接替新任务创建已采用 Binding 或派发**。新任务方法见[准备到运行](FEATURE_OBSERVATION_PREPARATION_GUIDE.md)，新工作以具体特征的四项可往返专业工作开展。当前尚无新 Owner GO、run 身份、真实管理地图/Binding 或 Intake；旧 BI-01-V2-02 的 ADOPTED Workmap 和结果是历史，不能继承。通用 Workmap 接收机制继续复用。
 
 # BI-01 Workmap 采用：从管理结果真正接到下一轮
 
@@ -14,4 +14,4 @@
 
 **关于每轮回交导致地图过期的处理：** `provenance/turns` 记录真实 Pro 轮次的发送/收取，不能列入 `workmap_gate.py` 的 `watch_roots`，否则仅提交一条准备发送的 `PROMPT.md`，就会让现行管理 Intake 在手机调用前无谓失效。正式 Binding 模板只 watch 实质 `artifacts/` 及必要独立审查材料；轮次身份、Return、去重和管理 RESULT/CHANGE/EFFORT 则走其原有协议处理。实际业务 artifact 变化仍可能使 Intake stale，此时定向管理接收，不允许为了连续发消息而假造通过。
 
-8. **业务接收判据**：管理 Pro 核当前专业者是否根据 Narrative/Use Case 理解共同方向场景，从基础行情自选真实有价值位置，不预先分类；U2 位置/成员是否合理、U3 当时四束能否辨别成员后续质量，反例、Outcome 资格和 C0/N 既有信息如何比较。不能把图/CSV/字段缺陷数量当作本轮 S3 业务接收资格。旧历史图可有界复用但旧场景选择不自动作为已做 S1。
+8. **业务接收判据（新任务须依真实 Owner Goal 更新）**：针对具名已实现特征，核实际参数、展示方案、aidata 图与数据、正确性及普通投资者正常解读等本次专业工作是否形成有据成果，哪里需返回调整；不因四栏填满、图/CSV 数量或单一局部问题完成就冒充完整接收。旧 U2/U3 和 S1–S3 接收条件属于历史，不自动搬用。
