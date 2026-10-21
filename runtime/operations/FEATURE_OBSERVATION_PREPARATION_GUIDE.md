@@ -28,4 +28,4 @@
 4. 操作端在真实身份、准确 payload、前置条件和 Gate 成立后才发送，保存真实回交并依法续作。未满足条件时反馈准确缺项，不能自签 Owner GO。
 5. 现有手机操作、Workmap、QUESTION_WORK_RETURN、ROLE_RETURN、Git 提交及备用运输能力优先沿用既有通用机制；本文件不重建平台。
 
-BI01_V2_RUN_GUIDE.md 和 runtime/operations/v2/templates/ 保存的具体 V2-02 名称、S1/S2/S3、固定数据及旧 run 示例是**历史参考**，不得直接拿来当新任务的有效启动载荷。未来新 run 的专属任务/Binding 须由真实 Owner GO 与管理签发确定。
+新任务的非活动模板位于 [feature_observation/templates/](feature_observation/templates/)；必须在新 Owner GO 后填成具名的新 run、实际特征、管理地图、当前任务、Binding 与 Intake，模板中 `<NEW_RUN_ID>` 不能用于真实派发。`BI01_V2_RUN_GUIDE.md` 与 `runtime/operations/v2/templates/` 保存的原 V2-02 具体运行内容只作历史参考，不能沿用旧专业职责、数据或已采用资格。
