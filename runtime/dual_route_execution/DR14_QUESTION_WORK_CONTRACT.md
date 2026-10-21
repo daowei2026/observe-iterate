@@ -44,9 +44,9 @@ Git方法、旧实物和任务用 `repo`、40位 `commit`、仓库根 `path`、`
 |---|---|
 |work_id|持续工作身份，普通续作不换|
 |goal_ref / plan_ref / full_scope_ref|Owner完整现行目标、由有权管理区分当前安排或历史复核的计划、本段全部范围；不能以最近 remaining 代替完整目标，也不能让已替代旧计划继续发相反行动指令|
-|batch_result|本段应形成的可检查观察/证据/图或后续行动，不能只写“推进 S2”|
+|batch_result|本段应形成的可检查结果、证据/图或后续行动，不能只写“推进下一项”|
 |parent|与§1.0同义；由实际来源判断，不强求新用例虚造父合同|
-|question_ids|DR12 的 V2 S1/S2/S3、M-START/M-REASSESS/M-CLOSE/AUDIT 或受控 CASE 问题|
+|question_ids|DR12 的具体特征专业工作、M-START/M-REASSESS/M-CLOSE/INDEPENDENT_REVIEW 或受控 CASE 问题|
 |question_definitions|无CASE时空数组；有CASE时逐项给定义、依据和授权|
 |professional_mode|当前 BI-01 有权专业 Router／实际任务规定的mode；Router 缺失不得从题号推断写权；兼任职责由真实委派确定|
 |focus_ref|首次签发时的集中重点；本段内最新接续按§1.4确定|
@@ -58,9 +58,9 @@ Git方法、旧实物和任务用 `repo`、40位 `commit`、仓库根 `path`、`
 |triggers|具名RESULT/EFFORT/CHANGE及管理委派，按§1.3|
 |explicit_no_trigger_reason_ref|triggers为空时必须有权解释结束/返回为何足够，否则null|
 
-**上述字段的完整目标解释：每次实质业务推进必须朝完整做完所属用例当前阶段全部约定工作进行。禁止把单个Case、一组局部观察、一个入口/文件或最近修复清单设为本轮目标和停点。**full_scope_ref保留全部责任；batch_result记录实际交回增量，focus_ref只决定顺序，completion_ref不得用局部交付结算全目标。真实容量或依赖限制如实说明，其他已明确工作继续；不得为每个地图节点创建一轮任务。
+**上述字段的完整目标解释：每次实质业务推进以有权任务定义的完整目标及真实剩余为责任范围。不能未经授权将整项任务缩成单个 Case、局部观察或最近修复清单；四项专业工作允许返回调整，不另设四个阶段 Gate。**full_scope_ref保留全部责任；batch_result记录实际交回增量，focus_ref只决定顺序，completion_ref不得用局部交付结算全目标。真实容量或依赖限制如实说明，其他已明确工作继续；不得为每个地图节点创建一轮任务。
 
-BI-01 V2-02 首次管理和专业任务须在真实 source_reads 中纳入 [00 业务目的](../../professional/v2/00_PURPOSE_AND_THREE_STEP_FLOW.md)、[07 叙事到基础行情再到 U3 后续质量检验](../../professional/v2/07_BUSINESS_SCENE_OBSERVATION_METHOD.md)、[06 U2/U3 业务 Source](../../professional/v2/06_U2_U3_DESIGN_SOURCE_MAP.md)及承重 Owner Decision/Narrative/Use Case 正文、[04 原 I1–I3](../../professional/v2/04_BI01_BUSINESS_BASELINE.md)、[05 固定 ZIP](../../professional/v2/05_BI01_FIXED_INPUT_DATA.md)，再按实际阶段真实读 01/02/03。场景的类别、阈值和样本必须由专业执行按真实市场需要提出，不能预设；管理接收必须检验 U2 位置成员和 U3 **当时对后续成员运动质量的辨别与反证**，不能以字段表、图数或原 35/11 Case 完成为业务 PASS。两个 ZIP 在 `/dwdhome/fy/资金管理`、不重算、AI 不视觉看图；旧 `BI-01-V2-01` 暂停，原 Gate/任务/业务接收不继承，图经实际身份/浏览器渲染核验后才可有限复用。
+BI-01 新任务的首次管理和专业派发，真实 source_reads 须包含[四项专业工作](../../professional/feature_observation/00_PURPOSE_AND_FOUR_WORKS.md)、[基本输出](../../professional/feature_observation/01_OUTPUT_BASE_FORMAT.md)、[初步细节](../../professional/feature_observation/02_WORK_DETAILS.md)，并按具名特征需要取得真实实现、数据、参数及相应[旧知识](../../professional/feature_observation/03_REUSE_FROM_V2.md)、[aidata](../../professional/feature_observation/04_AIDATA_USE.md)来源。U2/U3 及旧两份 ZIP 只按本次特征需要引用，不能强制继承旧 S1–S3、完整 U2/U3 目标或已采用 Gate。新 run 身份与真实数据来源由新 Owner GO 和有权任务确定；有价值的格式外分析保留，图/字段数不是专业 PASS。
 
 普通题内具名子问题优先引用原题，不发新编号。真实必要问题确超出题库时，管理/有权Pro可使用本工作内 `CASE-...`：definition_ref给出业务问题、当前输入、交付、结束/返回和与原义务关系；authority_ref给实际授权；parent_question_id可指相关固定题，确无则null。每个CASE均须定义，未使用的定义不塞入绑定。CASE不自动进入通用core，不扩权限、不豁免其他义务。
 
@@ -68,7 +68,7 @@ BI-01 V2-02 首次管理和专业任务须在真实 source_reads 中纳入 [00 �
 
 `FOCUS_FULL` 要求所选正文完整读取，不表示脚本把该来源正文嵌入消息。Owner 要求原文出现在实际消息时，当前任务正文须实际包含全文。已撤完整任务不能继续标为当前执行 `FOCUS_FULL`；追溯使用现有 `PROVENANCE_TRIGGER` 并说明用途。历史正文保留，旧行动不重新取得当前权力。管理已裁定事项由推进者采用，新冲突按原责任处理。
 
-默认专业来源由 DR12 的 V2 S1/S2/S3 和本次真实管理任务、Binding 共同决定；不能把上游CYF S01–S25当作BI-01必读，也不能让每轮管理者重新发明清单。首次必读负担仍需实际观察，题面不替全文。Owner校准与分支读取 [Overlay02](../overlay/02_Source版本任务授权与人类参与_v0.3.md) §§3–6。
+默认专业来源由 DR12 的新具体特征专业工作与本次真实管理任务、Binding 共同决定；不能把上游CYF S01–S25当作BI-01必读，也不能让每轮管理者重新发明清单。首次必读负担仍需实际观察，题面不替全文。Owner校准与分支读取 [Overlay02](../overlay/02_Source版本任务授权与人类参与_v0.3.md) §§3–6。
 
 routes每项含recipient_role、recipient_ref、instructions_ref。模板可复用，但占位必须以已有决定/事实填实；新范围或新阶段仍需原授权。技术工单存在不自动指派Worker，也不自动放行专业Gate。
 
@@ -108,7 +108,7 @@ focus_results每项有question_id、completed_ref、remaining_ref、affected_ref
 
 ### 当前专业工作说明：不特设 CYF C 工作段
 
-当前任务及最新合法 continuation 的权责，继续完全沿用上面的 §1.4。BI-01 V2 专业步骤、Scope、同源图与数据、观察想法及实际专业完成标准来自[当前 V2 合同](../../professional/v2/README.md)和本轮真实 Binding；不以运行协议另造业务阶段。不得将 CYF 五段 Host 工作或 `CURRENT_C_WORK` 当成新的 BI-01 机器步骤、必填标记或模板。新签工作或旧任务被替代时取有权`current_task_ref`完整正文；同工作合法续作时取最新`continuation_ref`，不得缩小完整范围。原`ROLE_RETURN`和`QUESTION_WORK_RETURN`字段不变。
+当前任务及最新合法 continuation 的权责，继续沿用上面的 §1.4。BI-01 具体特征观察的四项可往返工作、Scope、成果表达及实际专业完成标准来自[当前专业入口](../../professional/feature_observation/README.md)与本次真实 Binding；不以运行协议另造业务阶段。旧 CYF 五段 Host 或 CURRENT_C_WORK 不成为新的 BI-01 步骤；原 ROLE_RETURN、QUESTION_WORK_RETURN 字段不变。
 
 ### 1.5 可直接试跑的完整输入
 
