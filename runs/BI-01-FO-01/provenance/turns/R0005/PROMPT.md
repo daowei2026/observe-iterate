@@ -237,10 +237,10 @@ TIS/FRP 本任务只读。发现真实缺陷给准确输入、源码、受影响
 本次实际证据：`daowei2026/observe-iterate@d7410c70f7f43388946e3c9b7721202be53a24f9:runs/BI-01-FO-01/artifacts/worker-BI01-FO01-N-AIDATA-01/DELIVERY_MANIFEST.json::full`
 本次实际证据：`daowei2026/observe-iterate@d7410c70f7f43388946e3c9b7721202be53a24f9:runs/BI-01-FO-01/artifacts/worker-BI01-FO01-N-AIDATA-01/aidata_runs/bi01-fo01-n-aidata-rb-final-20261022/render_evidence/VISUAL_INSPECTION.json::full`
 本次实际证据：`daowei2026/observe-iterate@d210ed5086b259409626a1b578162bcec77dc0de:runs/BI-01-FO-01/artifacts/worker-BI01-FO01-N-AIDATA-01/GITHUB_RECEIPT.json::full`
-本次实际证据：`daowei2026/observe-iterate@595c245d030fa61534286294be7afb9d03817931:runs/BI-01-FO-01/provenance/turns/R0005/INPUT_STATE.md::full`
+本次实际证据：`daowei2026/observe-iterate@e407fa9e0b82e33845b442494132ccf07afe9dfe:runs/BI-01-FO-01/provenance/turns/R0005/INPUT_STATE.md::full`
 本次实际证据：`daowei2026/observe-iterate@595c245d030fa61534286294be7afb9d03817931:runs/BI-01-FO-01/provenance/turns/R0005/WORKMAP_CHECK.json::full`
 本次实际证据：`daowei2026/observe-iterate@595c245d030fa61534286294be7afb9d03817931:runs/BI-01-FO-01/provenance/turns/R0005/INPUT_SNAPSHOT.json::full`
-本次实际证据：`daowei2026/observe-iterate@595c245d030fa61534286294be7afb9d03817931:runs/BI-01-FO-01/provenance/turns/R0005/FIGURE_INPUTS.json::full`
+本次实际证据：`daowei2026/observe-iterate@e407fa9e0b82e33845b442494132ccf07afe9dfe:runs/BI-01-FO-01/provenance/turns/R0005/FIGURE_INPUTS.json::full`
 本次实际证据：`daowei2026/observe-iterate@595c245d030fa61534286294be7afb9d03817931:runs/BI-01-FO-01/provenance/turns/R0005/WORKER_TECHNICAL_VALIDATION.json::full`
 本次实际证据：`daowei2026/observe-iterate@aeccf4c91b94a7f889f84970b37ab5048b9c07f6:runs/BI-01-FO-01/reviews/management-R0003/DECISION.md::full`
 本次实际证据：`daowei2026/observe-iterate@d7410c70f7f43388946e3c9b7721202be53a24f9:runs/BI-01-FO-01/artifacts/worker-BI01-FO01-N-AIDATA-01/data/rb_projection/VERIFICATION.json::full`
