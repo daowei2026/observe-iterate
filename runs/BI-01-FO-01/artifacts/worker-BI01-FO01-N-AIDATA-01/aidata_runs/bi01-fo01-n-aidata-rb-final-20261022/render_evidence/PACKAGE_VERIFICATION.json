@@ -1,0 +1,1336 @@
+{
+  "schema_version": 1,
+  "result": "PASS",
+  "purpose": "detect packaging/data-source failures independently from workflow/render success",
+  "checks": [
+    {
+      "name": "source_identity.price",
+      "pass": true,
+      "evidence": {
+        "path": "/dwdhome/fy/observe-iterate-bi01-fo-01/runs/BI-01-FO-01/artifacts/worker-BI01-FO01-N-AIDATA-01/data/rb_projection/rb_price_display.csv",
+        "declared": "d66d85682820f4c8af99d2f3cb9b8a268492e41f9cd176f3bea3449d7d49f291",
+        "actual": "d66d85682820f4c8af99d2f3cb9b8a268492e41f9cd176f3bea3449d7d49f291"
+      }
+    },
+    {
+      "name": "source_identity.paths",
+      "pass": true,
+      "evidence": {
+        "path": "/dwdhome/fy/observe-iterate-bi01-fo-01/runs/BI-01-FO-01/artifacts/worker-BI01-FO01-N-AIDATA-01/data/rb_projection/rb_process_paths.csv",
+        "declared": "b7a58b960bcacb48af3b5b3f2d193eb950e8bd58ef8284ae08f367668836b843",
+        "actual": "b7a58b960bcacb48af3b5b3f2d193eb950e8bd58ef8284ae08f367668836b843"
+      }
+    },
+    {
+      "name": "source_identity.segments",
+      "pass": true,
+      "evidence": {
+        "path": "/dwdhome/fy/observe-iterate-bi01-fo-01/runs/BI-01-FO-01/artifacts/worker-BI01-FO01-N-AIDATA-01/data/rb_projection/rb_process_boundaries.csv",
+        "declared": "91ec4eb1beffdfdea5175b13cf713a4fa9f07ce72124811609f7f3e881317944",
+        "actual": "91ec4eb1beffdfdea5175b13cf713a4fa9f07ce72124811609f7f3e881317944"
+      }
+    },
+    {
+      "name": "source_identity.confirmations",
+      "pass": true,
+      "evidence": {
+        "path": "/dwdhome/fy/observe-iterate-bi01-fo-01/runs/BI-01-FO-01/artifacts/worker-BI01-FO01-N-AIDATA-01/data/rb_projection/rb_confirmation_markers.csv",
+        "declared": "623c85016e112b09f3a279d10f43548f149ec4e2028b55964bbf38b6f0472685",
+        "actual": "623c85016e112b09f3a279d10f43548f149ec4e2028b55964bbf38b6f0472685"
+      }
+    },
+    {
+      "name": "source_identity.statistics",
+      "pass": true,
+      "evidence": {
+        "path": "/dwdhome/fy/observe-iterate-bi01-fo-01/runs/BI-01-FO-01/artifacts/worker-BI01-FO01-N-AIDATA-01/data/rb_projection/rb_completed_window_statistics.csv",
+        "declared": "899f8ce2b74cdf76c76a357fa05f793ce106a7207ff40a4b649090f86ef9f272",
+        "actual": "899f8ce2b74cdf76c76a357fa05f793ce106a7207ff40a4b649090f86ef9f272"
+      }
+    },
+    {
+      "name": "source_identity.working",
+      "pass": true,
+      "evidence": {
+        "path": "/dwdhome/fy/observe-iterate-bi01-fo-01/runs/BI-01-FO-01/artifacts/worker-BI01-FO01-N-AIDATA-01/data/rb_projection/rb_working_values.csv",
+        "declared": "f70415ad154cff97e5070e24cfd1a05883702aed5262725991894c5d4139b53d",
+        "actual": "f70415ad154cff97e5070e24cfd1a05883702aed5262725991894c5d4139b53d"
+      }
+    },
+    {
+      "name": "source_identity.rhythm",
+      "pass": true,
+      "evidence": {
+        "path": "/dwdhome/fy/observe-iterate-bi01-fo-01/runs/BI-01-FO-01/artifacts/worker-BI01-FO01-N-AIDATA-01/data/rb_projection/rb_working_rhythm.csv",
+        "declared": "254e605c2932d10b3804bb201aa00ac7519fba6b7d55f400e19b229d158419a9",
+        "actual": "254e605c2932d10b3804bb201aa00ac7519fba6b7d55f400e19b229d158419a9"
+      }
+    },
+    {
+      "name": "source_identity.loo",
+      "pass": true,
+      "evidence": {
+        "path": "/dwdhome/fy/observe-iterate-bi01-fo-01/runs/BI-01-FO-01/artifacts/worker-BI01-FO01-N-AIDATA-01/data/rb_projection/rb_loo_details.csv",
+        "declared": "46d041d91524b1518044f47c2e1b9d4d71912991d2972f84028cc50cfbe6f720",
+        "actual": "46d041d91524b1518044f47c2e1b9d4d71912991d2972f84028cc50cfbe6f720"
+      }
+    },
+    {
+      "name": "aidata_feature_executions_zero",
+      "pass": true,
+      "evidence": {
+        "completed_stages": [
+          "chart_core"
+        ],
+        "data_mode": "fixed_input",
+        "feature_executions": 0,
+        "run_id": "bi01-fo01-n-aidata-rb-final-20261022",
+        "run_kind": "chart_core",
+        "source_count": 8,
+        "view_count": 3
+      }
+    },
+    {
+      "name": "three_fixed_views",
+      "pass": true,
+      "evidence": {
+        "summary": 3,
+        "spec": 3
+      }
+    },
+    {
+      "name": "three_bokeh_documents",
+      "pass": true,
+      "evidence": 3
+    },
+    {
+      "name": "bokeh_wire_serialized",
+      "pass": true,
+      "evidence": [
+        "46e8422d9ee74b8b9f6fa1237b78bb5729cc6357fba8050dd3a0c00a9043c7dc",
+        "59d78aca5ab2f25538418ccea4d8ee8c6074846d5eccbea3486b4718bef64c6f",
+        "5fe6137595b9c2d4fdfcc01b61e44d4913ba80a20d19025fa9265016823d3bc2"
+      ]
+    },
+    {
+      "name": "browser_capture",
+      "pass": true,
+      "evidence": "PASS"
+    },
+    {
+      "name": "visual_inspection",
+      "pass": true,
+      "evidence": "PASS_WITH_SCOPE"
+    },
+    {
+      "name": "platform_three_http_200_with_canvas",
+      "pass": true,
+      "evidence": [
+        {
+          "kind": "platform_report_url",
+          "node_id": "rb_long_12_plus_working",
+          "report_url": "http://192.168.11.40:6244/graph/cae/6124/report",
+          "http_status": 200,
+          "title": "Bokeh 图表",
+          "canvas_count": 4,
+          "screenshot": {
+            "path": "render_evidence/platform_rb_long_12_plus_working.png",
+            "bytes": 263746,
+            "sha256": "13b0e30338253f1c659eaa3fcca7d0511608f466849cc92fa8fbc54c228391e4"
+          },
+          "result": "PASS"
+        },
+        {
+          "kind": "platform_report_url",
+          "node_id": "rb_recent6_plus_working",
+          "report_url": "http://192.168.11.40:6244/graph/cae/6125/report",
+          "http_status": 200,
+          "title": "Bokeh 图表",
+          "canvas_count": 4,
+          "screenshot": {
+            "path": "render_evidence/platform_rb_recent6_plus_working.png",
+            "bytes": 246483,
+            "sha256": "0d8c6dc9b5219d2e8446f3467473885c7fb4b6428c7902aa5af1c2b45fbcbaf5"
+          },
+          "result": "PASS"
+        },
+        {
+          "kind": "platform_report_url",
+          "node_id": "rb_working_local",
+          "report_url": "http://192.168.11.40:6244/graph/cae/6126/report",
+          "http_status": 200,
+          "title": "Bokeh 图表",
+          "canvas_count": 4,
+          "screenshot": {
+            "path": "render_evidence/platform_rb_working_local.png",
+            "bytes": 246005,
+            "sha256": "2298ccadd0a21d8806f80b4ee949716b4ced80a2f9741c76ba031eb206cafaf5"
+          },
+          "result": "PASS"
+        }
+      ]
+    },
+    {
+      "name": "plot_package.render_rb_long_12_plus_working.not_primary",
+      "pass": true,
+      "evidence": true
+    },
+    {
+      "name": "plot_package.render_rb_long_12_plus_working.export_count",
+      "pass": true,
+      "evidence": {
+        "expected": 26,
+        "actual": 26
+      }
+    },
+    {
+      "name": "plot_package.render_rb_long_12_plus_working.fixed__rb_long_12_plus_working__known__completed_statistics.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 6,
+        "actual": 6
+      }
+    },
+    {
+      "name": "plot_package.render_rb_long_12_plus_working.fixed__rb_long_12_plus_working__known__loo_details.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 36,
+        "actual": 36
+      }
+    },
+    {
+      "name": "plot_package.render_rb_long_12_plus_working.fixed__rb_long_12_plus_working__known__previous_actual_close_path.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 2339,
+        "actual": 2339
+      }
+    },
+    {
+      "name": "plot_package.render_rb_long_12_plus_working.fixed__rb_long_12_plus_working__known__previous_confirmation.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 6,
+        "actual": 6
+      }
+    },
+    {
+      "name": "plot_package.render_rb_long_12_plus_working.fixed__rb_long_12_plus_working__known__previous_endpoint_boundaries.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 6,
+        "actual": 6
+      }
+    },
+    {
+      "name": "plot_package.render_rb_long_12_plus_working.fixed__rb_long_12_plus_working__known__rb_ohlc.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 4760,
+        "actual": 4760
+      }
+    },
+    {
+      "name": "plot_package.render_rb_long_12_plus_working.fixed__rb_long_12_plus_working__known__recent_actual_close_path.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 2004,
+        "actual": 2004
+      }
+    },
+    {
+      "name": "plot_package.render_rb_long_12_plus_working.fixed__rb_long_12_plus_working__known__recent_confirmation.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 6,
+        "actual": 6
+      }
+    },
+    {
+      "name": "plot_package.render_rb_long_12_plus_working.fixed__rb_long_12_plus_working__known__recent_endpoint_boundaries.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 6,
+        "actual": 6
+      }
+    },
+    {
+      "name": "plot_package.render_rb_long_12_plus_working.fixed__rb_long_12_plus_working__known__working_actual_close_path.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 429,
+        "actual": 429
+      }
+    },
+    {
+      "name": "plot_package.render_rb_long_12_plus_working.fixed__rb_long_12_plus_working__known__working_endpoint_boundaries.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 1,
+        "actual": 1
+      }
+    },
+    {
+      "name": "plot_package.render_rb_long_12_plus_working.fixed__rb_long_12_plus_working__known__working_rhythm.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 1,
+        "actual": 1
+      }
+    },
+    {
+      "name": "plot_package.render_rb_long_12_plus_working.fixed__rb_long_12_plus_working__known__working_values.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 6,
+        "actual": 6
+      }
+    },
+    {
+      "name": "plot_package.render_rb_long_12_plus_working.fixed__rb_long_12_plus_working__retrospective__completed_statistics.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 6,
+        "actual": 6
+      }
+    },
+    {
+      "name": "plot_package.render_rb_long_12_plus_working.fixed__rb_long_12_plus_working__retrospective__loo_details.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 36,
+        "actual": 36
+      }
+    },
+    {
+      "name": "plot_package.render_rb_long_12_plus_working.fixed__rb_long_12_plus_working__retrospective__previous_actual_close_path.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 2339,
+        "actual": 2339
+      }
+    },
+    {
+      "name": "plot_package.render_rb_long_12_plus_working.fixed__rb_long_12_plus_working__retrospective__previous_confirmation.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 6,
+        "actual": 6
+      }
+    },
+    {
+      "name": "plot_package.render_rb_long_12_plus_working.fixed__rb_long_12_plus_working__retrospective__previous_endpoint_boundaries.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 6,
+        "actual": 6
+      }
+    },
+    {
+      "name": "plot_package.render_rb_long_12_plus_working.fixed__rb_long_12_plus_working__retrospective__rb_ohlc.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 4760,
+        "actual": 4760
+      }
+    },
+    {
+      "name": "plot_package.render_rb_long_12_plus_working.fixed__rb_long_12_plus_working__retrospective__recent_actual_close_path.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 2004,
+        "actual": 2004
+      }
+    },
+    {
+      "name": "plot_package.render_rb_long_12_plus_working.fixed__rb_long_12_plus_working__retrospective__recent_confirmation.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 6,
+        "actual": 6
+      }
+    },
+    {
+      "name": "plot_package.render_rb_long_12_plus_working.fixed__rb_long_12_plus_working__retrospective__recent_endpoint_boundaries.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 6,
+        "actual": 6
+      }
+    },
+    {
+      "name": "plot_package.render_rb_long_12_plus_working.fixed__rb_long_12_plus_working__retrospective__working_actual_close_path.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 429,
+        "actual": 429
+      }
+    },
+    {
+      "name": "plot_package.render_rb_long_12_plus_working.fixed__rb_long_12_plus_working__retrospective__working_endpoint_boundaries.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 1,
+        "actual": 1
+      }
+    },
+    {
+      "name": "plot_package.render_rb_long_12_plus_working.fixed__rb_long_12_plus_working__retrospective__working_rhythm.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 1,
+        "actual": 1
+      }
+    },
+    {
+      "name": "plot_package.render_rb_long_12_plus_working.fixed__rb_long_12_plus_working__retrospective__working_values.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 6,
+        "actual": 6
+      }
+    },
+    {
+      "name": "plot_package.render_rb_recent6_plus_working.not_primary",
+      "pass": true,
+      "evidence": true
+    },
+    {
+      "name": "plot_package.render_rb_recent6_plus_working.export_count",
+      "pass": true,
+      "evidence": {
+        "expected": 20,
+        "actual": 20
+      }
+    },
+    {
+      "name": "plot_package.render_rb_recent6_plus_working.fixed__rb_recent6_plus_working__known__completed_statistics.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 6,
+        "actual": 6
+      }
+    },
+    {
+      "name": "plot_package.render_rb_recent6_plus_working.fixed__rb_recent6_plus_working__known__loo_details.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 36,
+        "actual": 36
+      }
+    },
+    {
+      "name": "plot_package.render_rb_recent6_plus_working.fixed__rb_recent6_plus_working__known__rb_ohlc.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 2427,
+        "actual": 2427
+      }
+    },
+    {
+      "name": "plot_package.render_rb_recent6_plus_working.fixed__rb_recent6_plus_working__known__recent_actual_close_path.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 2004,
+        "actual": 2004
+      }
+    },
+    {
+      "name": "plot_package.render_rb_recent6_plus_working.fixed__rb_recent6_plus_working__known__recent_confirmation.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 6,
+        "actual": 6
+      }
+    },
+    {
+      "name": "plot_package.render_rb_recent6_plus_working.fixed__rb_recent6_plus_working__known__recent_endpoint_boundaries.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 6,
+        "actual": 6
+      }
+    },
+    {
+      "name": "plot_package.render_rb_recent6_plus_working.fixed__rb_recent6_plus_working__known__working_actual_close_path.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 429,
+        "actual": 429
+      }
+    },
+    {
+      "name": "plot_package.render_rb_recent6_plus_working.fixed__rb_recent6_plus_working__known__working_endpoint_boundaries.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 1,
+        "actual": 1
+      }
+    },
+    {
+      "name": "plot_package.render_rb_recent6_plus_working.fixed__rb_recent6_plus_working__known__working_rhythm.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 1,
+        "actual": 1
+      }
+    },
+    {
+      "name": "plot_package.render_rb_recent6_plus_working.fixed__rb_recent6_plus_working__known__working_values.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 6,
+        "actual": 6
+      }
+    },
+    {
+      "name": "plot_package.render_rb_recent6_plus_working.fixed__rb_recent6_plus_working__retrospective__completed_statistics.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 6,
+        "actual": 6
+      }
+    },
+    {
+      "name": "plot_package.render_rb_recent6_plus_working.fixed__rb_recent6_plus_working__retrospective__loo_details.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 36,
+        "actual": 36
+      }
+    },
+    {
+      "name": "plot_package.render_rb_recent6_plus_working.fixed__rb_recent6_plus_working__retrospective__rb_ohlc.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 2427,
+        "actual": 2427
+      }
+    },
+    {
+      "name": "plot_package.render_rb_recent6_plus_working.fixed__rb_recent6_plus_working__retrospective__recent_actual_close_path.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 2004,
+        "actual": 2004
+      }
+    },
+    {
+      "name": "plot_package.render_rb_recent6_plus_working.fixed__rb_recent6_plus_working__retrospective__recent_confirmation.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 6,
+        "actual": 6
+      }
+    },
+    {
+      "name": "plot_package.render_rb_recent6_plus_working.fixed__rb_recent6_plus_working__retrospective__recent_endpoint_boundaries.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 6,
+        "actual": 6
+      }
+    },
+    {
+      "name": "plot_package.render_rb_recent6_plus_working.fixed__rb_recent6_plus_working__retrospective__working_actual_close_path.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 429,
+        "actual": 429
+      }
+    },
+    {
+      "name": "plot_package.render_rb_recent6_plus_working.fixed__rb_recent6_plus_working__retrospective__working_endpoint_boundaries.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 1,
+        "actual": 1
+      }
+    },
+    {
+      "name": "plot_package.render_rb_recent6_plus_working.fixed__rb_recent6_plus_working__retrospective__working_rhythm.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 1,
+        "actual": 1
+      }
+    },
+    {
+      "name": "plot_package.render_rb_recent6_plus_working.fixed__rb_recent6_plus_working__retrospective__working_values.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 6,
+        "actual": 6
+      }
+    },
+    {
+      "name": "plot_package.render_rb_working_local.not_primary",
+      "pass": true,
+      "evidence": true
+    },
+    {
+      "name": "plot_package.render_rb_working_local.export_count",
+      "pass": true,
+      "evidence": {
+        "expected": 20,
+        "actual": 20
+      }
+    },
+    {
+      "name": "plot_package.render_rb_working_local.fixed__rb_working_local__known__completed_statistics.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 6,
+        "actual": 6
+      }
+    },
+    {
+      "name": "plot_package.render_rb_working_local.fixed__rb_working_local__known__loo_details.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 36,
+        "actual": 36
+      }
+    },
+    {
+      "name": "plot_package.render_rb_working_local.fixed__rb_working_local__known__rb_ohlc.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 455,
+        "actual": 455
+      }
+    },
+    {
+      "name": "plot_package.render_rb_working_local.fixed__rb_working_local__known__recent_actual_close_path.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 28,
+        "actual": 28
+      }
+    },
+    {
+      "name": "plot_package.render_rb_working_local.fixed__rb_working_local__known__recent_confirmation.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 2,
+        "actual": 2
+      }
+    },
+    {
+      "name": "plot_package.render_rb_working_local.fixed__rb_working_local__known__recent_endpoint_boundaries.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 1,
+        "actual": 1
+      }
+    },
+    {
+      "name": "plot_package.render_rb_working_local.fixed__rb_working_local__known__working_actual_close_path.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 429,
+        "actual": 429
+      }
+    },
+    {
+      "name": "plot_package.render_rb_working_local.fixed__rb_working_local__known__working_endpoint_boundaries.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 1,
+        "actual": 1
+      }
+    },
+    {
+      "name": "plot_package.render_rb_working_local.fixed__rb_working_local__known__working_rhythm.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 1,
+        "actual": 1
+      }
+    },
+    {
+      "name": "plot_package.render_rb_working_local.fixed__rb_working_local__known__working_values.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 6,
+        "actual": 6
+      }
+    },
+    {
+      "name": "plot_package.render_rb_working_local.fixed__rb_working_local__retrospective__completed_statistics.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 6,
+        "actual": 6
+      }
+    },
+    {
+      "name": "plot_package.render_rb_working_local.fixed__rb_working_local__retrospective__loo_details.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 36,
+        "actual": 36
+      }
+    },
+    {
+      "name": "plot_package.render_rb_working_local.fixed__rb_working_local__retrospective__rb_ohlc.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 455,
+        "actual": 455
+      }
+    },
+    {
+      "name": "plot_package.render_rb_working_local.fixed__rb_working_local__retrospective__recent_actual_close_path.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 28,
+        "actual": 28
+      }
+    },
+    {
+      "name": "plot_package.render_rb_working_local.fixed__rb_working_local__retrospective__recent_confirmation.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 2,
+        "actual": 2
+      }
+    },
+    {
+      "name": "plot_package.render_rb_working_local.fixed__rb_working_local__retrospective__recent_endpoint_boundaries.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 1,
+        "actual": 1
+      }
+    },
+    {
+      "name": "plot_package.render_rb_working_local.fixed__rb_working_local__retrospective__working_actual_close_path.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 429,
+        "actual": 429
+      }
+    },
+    {
+      "name": "plot_package.render_rb_working_local.fixed__rb_working_local__retrospective__working_endpoint_boundaries.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 1,
+        "actual": 1
+      }
+    },
+    {
+      "name": "plot_package.render_rb_working_local.fixed__rb_working_local__retrospective__working_rhythm.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 1,
+        "actual": 1
+      }
+    },
+    {
+      "name": "plot_package.render_rb_working_local.fixed__rb_working_local__retrospective__working_values.csv.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 6,
+        "actual": 6
+      }
+    },
+    {
+      "name": "raw_columns_preserved.statistics",
+      "pass": true,
+      "evidence": {
+        "source_columns": [
+          "kind",
+          "metric",
+          "unit",
+          "present",
+          "current",
+          "previous",
+          "change",
+          "dispersion_unscaled_mad",
+          "loo_knownness",
+          "loo_knownness_name",
+          "loo_base",
+          "loo_maximum_absolute_shift",
+          "loo_ties_bitmask",
+          "all_six_loo_slots_tied",
+          "finite_reference_checks_pass",
+          "reference_recent_values",
+          "reference_previous_values",
+          "window_address",
+          "binding_address",
+          "known_at_time",
+          "as_of_time",
+          "n_exact",
+          "interpretation_boundary"
+        ],
+        "export_columns": [
+          "kind",
+          "metric",
+          "unit",
+          "present",
+          "current",
+          "previous",
+          "change",
+          "dispersion_unscaled_mad",
+          "loo_knownness",
+          "loo_knownness_name",
+          "loo_base",
+          "loo_maximum_absolute_shift",
+          "loo_ties_bitmask",
+          "all_six_loo_slots_tied",
+          "finite_reference_checks_pass",
+          "reference_recent_values",
+          "reference_previous_values",
+          "window_address",
+          "binding_address",
+          "known_at_time",
+          "as_of_time",
+          "n_exact",
+          "interpretation_boundary",
+          "_aidata_source_row",
+          "_aidata_source_id",
+          "_aidata_source_member",
+          "_aidata_source_sha256",
+          "_aidata_view_id",
+          "_aidata_asof",
+          "_aidata_visibility"
+        ]
+      }
+    },
+    {
+      "name": "raw_values_preserved.statistics",
+      "pass": true,
+      "evidence": {
+        "source_rows": 6,
+        "export_rows": 6
+      }
+    },
+    {
+      "name": "source_hash_column.statistics",
+      "pass": true,
+      "evidence": [
+        "899f8ce2b74cdf76c76a357fa05f793ce106a7207ff40a4b649090f86ef9f272"
+      ]
+    },
+    {
+      "name": "raw_columns_preserved.working",
+      "pass": true,
+      "evidence": {
+        "source_columns": [
+          "field",
+          "unit",
+          "value",
+          "present",
+          "knownness",
+          "knownness_name",
+          "applicability",
+          "applicability_name",
+          "reason",
+          "reference_value",
+          "direction",
+          "direction_name",
+          "start_uti",
+          "through_uti",
+          "completion_knownness",
+          "completion_knownness_name",
+          "known_at_time",
+          "as_of_time",
+          "n_exact"
+        ],
+        "export_columns": [
+          "field",
+          "unit",
+          "value",
+          "present",
+          "knownness",
+          "knownness_name",
+          "applicability",
+          "applicability_name",
+          "reason",
+          "reference_value",
+          "direction",
+          "direction_name",
+          "start_uti",
+          "through_uti",
+          "completion_knownness",
+          "completion_knownness_name",
+          "known_at_time",
+          "as_of_time",
+          "n_exact",
+          "_aidata_source_row",
+          "_aidata_source_id",
+          "_aidata_source_member",
+          "_aidata_source_sha256",
+          "_aidata_view_id",
+          "_aidata_asof",
+          "_aidata_visibility"
+        ]
+      }
+    },
+    {
+      "name": "raw_values_preserved.working",
+      "pass": true,
+      "evidence": {
+        "source_rows": 6,
+        "export_rows": 6
+      }
+    },
+    {
+      "name": "source_hash_column.working",
+      "pass": true,
+      "evidence": [
+        "f70415ad154cff97e5070e24cfd1a05883702aed5262725991894c5d4139b53d"
+      ]
+    },
+    {
+      "name": "raw_columns_preserved.rhythm",
+      "pass": true,
+      "evidence": {
+        "source_columns": [
+          "local_count",
+          "full_count",
+          "local_start_uti",
+          "last_update_uti",
+          "previous_median",
+          "current_median",
+          "median_change",
+          "intervals",
+          "waiting",
+          "waiting_ratio",
+          "knownness",
+          "knownness_name",
+          "known_at_time",
+          "as_of_time",
+          "n_exact",
+          "scope_note",
+          "reference_checks_pass"
+        ],
+        "export_columns": [
+          "local_count",
+          "full_count",
+          "local_start_uti",
+          "last_update_uti",
+          "previous_median",
+          "current_median",
+          "median_change",
+          "intervals",
+          "waiting",
+          "waiting_ratio",
+          "knownness",
+          "knownness_name",
+          "known_at_time",
+          "as_of_time",
+          "n_exact",
+          "scope_note",
+          "reference_checks_pass",
+          "_aidata_source_row",
+          "_aidata_source_id",
+          "_aidata_source_member",
+          "_aidata_source_sha256",
+          "_aidata_view_id",
+          "_aidata_asof",
+          "_aidata_visibility"
+        ]
+      }
+    },
+    {
+      "name": "raw_values_preserved.rhythm",
+      "pass": true,
+      "evidence": {
+        "source_rows": 1,
+        "export_rows": 1
+      }
+    },
+    {
+      "name": "source_hash_column.rhythm",
+      "pass": true,
+      "evidence": [
+        "254e605c2932d10b3804bb201aa00ac7519fba6b7d55f400e19b229d158419a9"
+      ]
+    },
+    {
+      "name": "raw_columns_preserved.price",
+      "pass": true,
+      "evidence": {
+        "source_columns": [
+          "bar_time",
+          "open_uti",
+          "open",
+          "high",
+          "low",
+          "close",
+          "volume",
+          "openInt",
+          "calendar_position",
+          "calendar_time",
+          "known_at_time",
+          "symbol"
+        ],
+        "export_columns": [
+          "bar_time",
+          "open_uti",
+          "open",
+          "high",
+          "low",
+          "close",
+          "volume",
+          "openInt",
+          "calendar_position",
+          "calendar_time",
+          "known_at_time",
+          "symbol",
+          "_aidata_source_row",
+          "_aidata_source_id",
+          "_aidata_source_member",
+          "_aidata_source_sha256",
+          "_aidata_plot_x",
+          "_aidata_plot_open",
+          "_aidata_plot_high",
+          "_aidata_plot_low",
+          "_aidata_plot_close",
+          "_aidata_view_id",
+          "_aidata_asof",
+          "_aidata_visibility"
+        ]
+      }
+    },
+    {
+      "name": "raw_values_preserved.price",
+      "pass": true,
+      "evidence": {
+        "source_rows": 4760,
+        "export_rows": 4760
+      }
+    },
+    {
+      "name": "source_hash_column.price",
+      "pass": true,
+      "evidence": [
+        "d66d85682820f4c8af99d2f3cb9b8a268492e41f9cd176f3bea3449d7d49f291"
+      ]
+    },
+    {
+      "name": "filtered_path.previous.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 2339,
+        "exported": 2339
+      }
+    },
+    {
+      "name": "filtered_path.previous.raw_values",
+      "pass": true,
+      "evidence": {
+        "columns": [
+          "group",
+          "slot",
+          "member",
+          "life",
+          "direction",
+          "direction_name",
+          "open_uti",
+          "bar_time",
+          "close",
+          "known_from_uti",
+          "known_at_time",
+          "confirmation_uti",
+          "confirmation_time",
+          "n_exact",
+          "as_of_uti",
+          "as_of_time",
+          "projection_status"
+        ]
+      }
+    },
+    {
+      "name": "filtered_path.previous.plot_coordinates_present",
+      "pass": true,
+      "evidence": "x/y nonempty"
+    },
+    {
+      "name": "filtered_path.recent.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 2004,
+        "exported": 2004
+      }
+    },
+    {
+      "name": "filtered_path.recent.raw_values",
+      "pass": true,
+      "evidence": {
+        "columns": [
+          "group",
+          "slot",
+          "member",
+          "life",
+          "direction",
+          "direction_name",
+          "open_uti",
+          "bar_time",
+          "close",
+          "known_from_uti",
+          "known_at_time",
+          "confirmation_uti",
+          "confirmation_time",
+          "n_exact",
+          "as_of_uti",
+          "as_of_time",
+          "projection_status"
+        ]
+      }
+    },
+    {
+      "name": "filtered_path.recent.plot_coordinates_present",
+      "pass": true,
+      "evidence": "x/y nonempty"
+    },
+    {
+      "name": "filtered_path.working.rows",
+      "pass": true,
+      "evidence": {
+        "expected": 429,
+        "exported": 429
+      }
+    },
+    {
+      "name": "filtered_path.working.raw_values",
+      "pass": true,
+      "evidence": {
+        "columns": [
+          "group",
+          "slot",
+          "member",
+          "life",
+          "direction",
+          "direction_name",
+          "open_uti",
+          "bar_time",
+          "close",
+          "known_from_uti",
+          "known_at_time",
+          "confirmation_uti",
+          "confirmation_time",
+          "n_exact",
+          "as_of_uti",
+          "as_of_time",
+          "projection_status"
+        ]
+      }
+    },
+    {
+      "name": "filtered_path.working.plot_coordinates_present",
+      "pass": true,
+      "evidence": "x/y nonempty"
+    },
+    {
+      "name": "statistics_six_formal_rows",
+      "pass": true,
+      "evidence": [
+        {
+          "metric": "BusinessDuration",
+          "current": "181800.0",
+          "previous": "234900.0",
+          "change": "-53100.0"
+        },
+        {
+          "metric": "CanonicalPathLength",
+          "current": "750.5",
+          "previous": "1273.5",
+          "change": "-523.0"
+        },
+        {
+          "metric": "DirectionalProgress",
+          "current": "138.5",
+          "previous": "128.0",
+          "change": "10.5"
+        },
+        {
+          "metric": "PathEfficiency",
+          "current": "0.1514170159139533",
+          "previous": "0.0845431992999649",
+          "change": "0.0668738166139883"
+        },
+        {
+          "metric": "RawAmplitude",
+          "current": "138.5",
+          "previous": "128.0",
+          "change": "10.5"
+        },
+        {
+          "metric": "RawCounterMove",
+          "current": "37.0",
+          "previous": "55.5",
+          "change": "-18.5"
+        }
+      ]
+    },
+    {
+      "name": "working_pending_and_available",
+      "pass": true,
+      "evidence": [
+        {
+          "field": "duration",
+          "value": "256800.0",
+          "completion_knownness_name": "Pending",
+          "knownness_name": "AvailableCommitted"
+        },
+        {
+          "field": "progress",
+          "value": "50.0",
+          "completion_knownness_name": "Pending",
+          "knownness_name": "AvailableCommitted"
+        },
+        {
+          "field": "efficiency",
+          "value": "0.0377643504531722",
+          "completion_knownness_name": "Pending",
+          "knownness_name": "AvailableCommitted"
+        },
+        {
+          "field": "counter",
+          "value": "80.0",
+          "completion_knownness_name": "Pending",
+          "knownness_name": "AvailableCommitted"
+        },
+        {
+          "field": "waiting",
+          "value": "123600.0",
+          "completion_knownness_name": "Pending",
+          "knownness_name": "AvailableCommitted"
+        },
+        {
+          "field": "waiting_ratio",
+          "value": "15.846153846153848",
+          "completion_knownness_name": "Pending",
+          "knownness_name": "AvailableCommitted"
+        }
+      ]
+    },
+    {
+      "name": "waiting_ratio_not_clipped",
+      "pass": true,
+      "evidence": [
+        "15.846153846153848"
+      ]
+    },
+    {
+      "name": "rhythm_reference_pass",
+      "pass": true,
+      "evidence": [
+        {
+          "local_count": "15",
+          "full_count": "15",
+          "local_start_uti": "103059000",
+          "last_update_uti": "103192200",
+          "previous_median": "600.0",
+          "current_median": "7800.0",
+          "median_change": "7200.0",
+          "intervals": "[600.0, 62400.0, 600.0, 18600.0, 600.0, 7800.0]",
+          "waiting": "123600.0",
+          "waiting_ratio": "15.846153846153848",
+          "knownness": "0",
+          "knownness_name": "AvailableCommitted",
+          "known_at_time": "2024-02-29 14:55:00.500000",
+          "as_of_time": "2024-02-29 14:55:00.500000",
+          "n_exact": "NodeBehaviorBook:NodeScaleTurnBehaviorRevision:b340dc6c-c135-462b-b6e0-04d24622c180:cfd51328-e2cf-4360-8314-20c9238e93fb",
+          "scope_note": "six saved local intervals compare previous 3 vs recent 3; local/full counts remain distinct",
+          "reference_checks_pass": "True",
+          "_aidata_source_row": "2",
+          "_aidata_source_id": "rhythm",
+          "_aidata_source_member": "rb_working_rhythm.csv",
+          "_aidata_source_sha256": "254e605c2932d10b3804bb201aa00ac7519fba6b7d55f400e19b229d158419a9",
+          "_aidata_view_id": "rb_long_12_plus_working",
+          "_aidata_asof": "2024-02-29 14:55:00.500000",
+          "_aidata_visibility": "known"
+        }
+      ]
+    }
+  ],
+  "failed_checks": [],
+  "source_hashes": {
+    "price": "d66d85682820f4c8af99d2f3cb9b8a268492e41f9cd176f3bea3449d7d49f291",
+    "paths": "b7a58b960bcacb48af3b5b3f2d193eb950e8bd58ef8284ae08f367668836b843",
+    "segments": "91ec4eb1beffdfdea5175b13cf713a4fa9f07ce72124811609f7f3e881317944",
+    "confirmations": "623c85016e112b09f3a279d10f43548f149ec4e2028b55964bbf38b6f0472685",
+    "statistics": "899f8ce2b74cdf76c76a357fa05f793ce106a7207ff40a4b649090f86ef9f272",
+    "working": "f70415ad154cff97e5070e24cfd1a05883702aed5262725991894c5d4139b53d",
+    "rhythm": "254e605c2932d10b3804bb201aa00ac7519fba6b7d55f400e19b229d158419a9",
+    "loo": "46d041d91524b1518044f47c2e1b9d4d71912991d2972f84028cc50cfbe6f720"
+  },
+  "plot_export_hashes": {
+    "plot_view_data/render_rb_long_12_plus_working/fixed__rb_long_12_plus_working__known__completed_statistics.csv": "47971d5243833f15aad4c8b91a7796993b2e2149013759f83a2339c7aa76f93d",
+    "plot_view_data/render_rb_long_12_plus_working/fixed__rb_long_12_plus_working__known__loo_details.csv": "108ff044b0cdace02fe86a6855ea835a21a8e74ac332090bdf0f60102e133fd1",
+    "plot_view_data/render_rb_long_12_plus_working/fixed__rb_long_12_plus_working__known__previous_actual_close_path.csv": "e7316800fa0789b2e0c2d84249f206dfde8e2c5d2ebf5320cef61ba5d82dea90",
+    "plot_view_data/render_rb_long_12_plus_working/fixed__rb_long_12_plus_working__known__previous_confirmation.csv": "62b5101802a638763fee67eb5d4a8c190c4d4bbf2e38d99bc25c57c12c684c2b",
+    "plot_view_data/render_rb_long_12_plus_working/fixed__rb_long_12_plus_working__known__previous_endpoint_boundaries.csv": "20155efc1fc3aac67908bd15ff44d4bd8cb2f060b2d9ed40ca9af36b4306a57c",
+    "plot_view_data/render_rb_long_12_plus_working/fixed__rb_long_12_plus_working__known__rb_ohlc.csv": "1fb527fb6d03d250a3d830be98a39a051b38c823c245d415be2fe469bb5572d8",
+    "plot_view_data/render_rb_long_12_plus_working/fixed__rb_long_12_plus_working__known__recent_actual_close_path.csv": "688d1398ce33360c6b6a5a0c37403e6a1b74016eedd236082234ab2fc4f3364c",
+    "plot_view_data/render_rb_long_12_plus_working/fixed__rb_long_12_plus_working__known__recent_confirmation.csv": "dc03da85a24d19916e3901856c8ca6b556b3e0e5f8ee2c626fb61ceaf73e6756",
+    "plot_view_data/render_rb_long_12_plus_working/fixed__rb_long_12_plus_working__known__recent_endpoint_boundaries.csv": "107f3a0616bcaeb01e889680affa1e2de3690ef05806ccc918d29200dbc967dc",
+    "plot_view_data/render_rb_long_12_plus_working/fixed__rb_long_12_plus_working__known__working_actual_close_path.csv": "9f12c1f505e655ae89e8bd4acc5cd00f4041b5eaea214c41f88ca1b3aa8eb0ef",
+    "plot_view_data/render_rb_long_12_plus_working/fixed__rb_long_12_plus_working__known__working_endpoint_boundaries.csv": "6f6f3e06b7d1942ea3aeba34204a2e4a9e4fb11464717f9e48fd27a3742722c6",
+    "plot_view_data/render_rb_long_12_plus_working/fixed__rb_long_12_plus_working__known__working_rhythm.csv": "57fccac2e35fa88f7ed34d7815c0c1c0ae039b0ed0ec238e3fb252caabf34f7d",
+    "plot_view_data/render_rb_long_12_plus_working/fixed__rb_long_12_plus_working__known__working_values.csv": "c17027cf1e7990b5a55dcad6b9d1e8903d3e57d007a8b6af0374603c15ccd759",
+    "plot_view_data/render_rb_long_12_plus_working/fixed__rb_long_12_plus_working__retrospective__completed_statistics.csv": "fa8a83e34366f522504453fa6c2029a2d92a94f3eab44ef2de0dc5436292551d",
+    "plot_view_data/render_rb_long_12_plus_working/fixed__rb_long_12_plus_working__retrospective__loo_details.csv": "e3f35ef0a06652b756e5d83dc5e18853988e0b84e076b0dfe5f5d6b57790b33b",
+    "plot_view_data/render_rb_long_12_plus_working/fixed__rb_long_12_plus_working__retrospective__previous_actual_close_path.csv": "615b58d802ad55fdbc2aae63d167ecfbfba656c7330f984bb9c8a3439baecda7",
+    "plot_view_data/render_rb_long_12_plus_working/fixed__rb_long_12_plus_working__retrospective__previous_confirmation.csv": "14c56e8daf63cf42ff773b7d8e60a535aac3ac798d5a0ae98fb95e80d6e6bd01",
+    "plot_view_data/render_rb_long_12_plus_working/fixed__rb_long_12_plus_working__retrospective__previous_endpoint_boundaries.csv": "70fa0e0a48b7a0e4a97bf19624c8abd37afc80087b66921700a69bc2f79b8aad",
+    "plot_view_data/render_rb_long_12_plus_working/fixed__rb_long_12_plus_working__retrospective__rb_ohlc.csv": "81b8ac20498b4d3ca2e66cbd5722602855755059d0446632bfbc478353186ee3",
+    "plot_view_data/render_rb_long_12_plus_working/fixed__rb_long_12_plus_working__retrospective__recent_actual_close_path.csv": "ded267e9ade3381c865b583ad563abf3e34d0435dd9f13da081d6e6839974c5d",
+    "plot_view_data/render_rb_long_12_plus_working/fixed__rb_long_12_plus_working__retrospective__recent_confirmation.csv": "b70dbbe9c188a8b738cd20b58b172afe34cd8917d20425ee218559e8d5d4b49a",
+    "plot_view_data/render_rb_long_12_plus_working/fixed__rb_long_12_plus_working__retrospective__recent_endpoint_boundaries.csv": "4cb21642ff31c3f3008de2fc8cfdb98e16a5ce46bea722e035ea8d8e8ab0627b",
+    "plot_view_data/render_rb_long_12_plus_working/fixed__rb_long_12_plus_working__retrospective__working_actual_close_path.csv": "55fc8d6379568d0b7f53effb08ecfbc78e5f8b5aeac0ad68f3524e5646e5b366",
+    "plot_view_data/render_rb_long_12_plus_working/fixed__rb_long_12_plus_working__retrospective__working_endpoint_boundaries.csv": "313c159b0353a26dd75db4252b60ed46d960dd8caea9fff43d3f7f1e6a545d05",
+    "plot_view_data/render_rb_long_12_plus_working/fixed__rb_long_12_plus_working__retrospective__working_rhythm.csv": "6f31c4834dfb5de57d4a7573eca2f15b300dd3a79162a8da142ce7d7f2ed2916",
+    "plot_view_data/render_rb_long_12_plus_working/fixed__rb_long_12_plus_working__retrospective__working_values.csv": "9b6f47105c9460352894ed333103554024adf2ebace81979e0460025fa49267d",
+    "plot_view_data/render_rb_recent6_plus_working/fixed__rb_recent6_plus_working__known__completed_statistics.csv": "8e3e556b646f2eed0a0d4e3cb6d857c3e1f2a89295047962562eda7e812078a2",
+    "plot_view_data/render_rb_recent6_plus_working/fixed__rb_recent6_plus_working__known__loo_details.csv": "dc872cc0aa16244c108491815598b6f0be16829e8771f86e60f412797edde972",
+    "plot_view_data/render_rb_recent6_plus_working/fixed__rb_recent6_plus_working__known__rb_ohlc.csv": "5d7fb0715e43ab9d9e3192e6c27d0d97b12628664e0cf2cdb17db16d0791d807",
+    "plot_view_data/render_rb_recent6_plus_working/fixed__rb_recent6_plus_working__known__recent_actual_close_path.csv": "56060ce9c771aa06ce6f0861c4efdf2cf1b6ddd8c08fb1b89ddd068c85c5e71a",
+    "plot_view_data/render_rb_recent6_plus_working/fixed__rb_recent6_plus_working__known__recent_confirmation.csv": "097deda0c98144ede85895293ada7695c1a993e3dee1162f28d5d09fab897f5e",
+    "plot_view_data/render_rb_recent6_plus_working/fixed__rb_recent6_plus_working__known__recent_endpoint_boundaries.csv": "557f79d56f68671ec412f6f1b496b962a2aa412bb0c53ed3d76323acf5c832f9",
+    "plot_view_data/render_rb_recent6_plus_working/fixed__rb_recent6_plus_working__known__working_actual_close_path.csv": "ddaf9e2bcbb7356dae62fb2120f807ac8b3df4359aa05106668c82b621c0c61d",
+    "plot_view_data/render_rb_recent6_plus_working/fixed__rb_recent6_plus_working__known__working_endpoint_boundaries.csv": "8a284abbc64063b82dd2a206e2a492d0c9199d29adf9dd65ac682c2e0ed415f5",
+    "plot_view_data/render_rb_recent6_plus_working/fixed__rb_recent6_plus_working__known__working_rhythm.csv": "1fb370d7ba7143e50791ad61c22b4f302e489ed875b62f5f72cb59376feef361",
+    "plot_view_data/render_rb_recent6_plus_working/fixed__rb_recent6_plus_working__known__working_values.csv": "2210b01e243e1a86738019969bc7f5e4b9d707545a7c80cb9c10a12a1fbdf88d",
+    "plot_view_data/render_rb_recent6_plus_working/fixed__rb_recent6_plus_working__retrospective__completed_statistics.csv": "c62d6a9d466f43fc7ac67a33e95fd7dbce9bbe2cb9bbd36934239313feb7e1f3",
+    "plot_view_data/render_rb_recent6_plus_working/fixed__rb_recent6_plus_working__retrospective__loo_details.csv": "e7c88241e37bd7275fe483d9b5aa8916319645cae81f1522cb9b536b233185f5",
+    "plot_view_data/render_rb_recent6_plus_working/fixed__rb_recent6_plus_working__retrospective__rb_ohlc.csv": "07360709ef7601762ffed3d85fab480dff4c7e8d0272abb8e0f834b70ad98af2",
+    "plot_view_data/render_rb_recent6_plus_working/fixed__rb_recent6_plus_working__retrospective__recent_actual_close_path.csv": "18a400f91f51d630a3ed0121abb317c93cd6b8ae30108413b218498658bbd716",
+    "plot_view_data/render_rb_recent6_plus_working/fixed__rb_recent6_plus_working__retrospective__recent_confirmation.csv": "f621eda8930b3c416c668cf423a9bf85994fde5403d2802eb056591f3a7b0b52",
+    "plot_view_data/render_rb_recent6_plus_working/fixed__rb_recent6_plus_working__retrospective__recent_endpoint_boundaries.csv": "db2e2a83590c7ed2502889086ff642b91114ddf3edaa69e7c1a9791f1bf0a64b",
+    "plot_view_data/render_rb_recent6_plus_working/fixed__rb_recent6_plus_working__retrospective__working_actual_close_path.csv": "29eaa81bdd4384e56aec535cb45119c8f213903ea06f58d7e81f26ec8359bf53",
+    "plot_view_data/render_rb_recent6_plus_working/fixed__rb_recent6_plus_working__retrospective__working_endpoint_boundaries.csv": "3a6397d0d6f502cfa287f0302fdea791c186e2ec2269b43008ed1a5f48d2edd8",
+    "plot_view_data/render_rb_recent6_plus_working/fixed__rb_recent6_plus_working__retrospective__working_rhythm.csv": "69ec805e5b2a763ce10b326bb7643c9c6fba35ce63bd9c86ae1baafa98a521d2",
+    "plot_view_data/render_rb_recent6_plus_working/fixed__rb_recent6_plus_working__retrospective__working_values.csv": "62955bf78aa6fdada6a535156e8cd471642a2126027e57f0612a4cae326e9708",
+    "plot_view_data/render_rb_working_local/fixed__rb_working_local__known__completed_statistics.csv": "5901df64d3c64350ef24ae400778561ea25d7f4d3cbfaee25bf84c149076ec76",
+    "plot_view_data/render_rb_working_local/fixed__rb_working_local__known__loo_details.csv": "c73521a0153426e3ff8bc1ae49a67ca6cb206eebbe11a8ddcb0645f12414197c",
+    "plot_view_data/render_rb_working_local/fixed__rb_working_local__known__rb_ohlc.csv": "b4983bc83061da04c97cf3df346b1c1374b805093de23c92df2956636f4de2d0",
+    "plot_view_data/render_rb_working_local/fixed__rb_working_local__known__recent_actual_close_path.csv": "a285132e438ac7d1dcecdff15bd43effedf8d27921db31d7b61d32d5a2d83a67",
+    "plot_view_data/render_rb_working_local/fixed__rb_working_local__known__recent_confirmation.csv": "f275531d78f8ddccda6d20f1fdc43a29eaef09af50fdbd8c9a53ff5feb5f2bcd",
+    "plot_view_data/render_rb_working_local/fixed__rb_working_local__known__recent_endpoint_boundaries.csv": "c83328e48d22f8f39f8d4734b9de309bb2b14f52278ef228d902e79afd4db1e2",
+    "plot_view_data/render_rb_working_local/fixed__rb_working_local__known__working_actual_close_path.csv": "093b729af649c03ade8742934b5a7b7f25b2c75e29da3108952b67d0b88c8972",
+    "plot_view_data/render_rb_working_local/fixed__rb_working_local__known__working_endpoint_boundaries.csv": "b032da7e186b1790f683fb371733ac7204c828222bacc317a150bdba352f790f",
+    "plot_view_data/render_rb_working_local/fixed__rb_working_local__known__working_rhythm.csv": "fc8f6abd8c0ff3cf52a21225ae13edc28091772a5fe9111cd5c877fd15b2b9b3",
+    "plot_view_data/render_rb_working_local/fixed__rb_working_local__known__working_values.csv": "0f9e73ce7f573ee27730f1a19e18ad75e754a12d02a3b2ea50a5ac64ddcdf3dd",
+    "plot_view_data/render_rb_working_local/fixed__rb_working_local__retrospective__completed_statistics.csv": "23f19a082365e423d29174433ab0ffe760be5dd7c654a515f77ad50baed9555d",
+    "plot_view_data/render_rb_working_local/fixed__rb_working_local__retrospective__loo_details.csv": "d72ae0be7e1baf0ee5791c977288ad15732334ad2349a251e2b30776764f758d",
+    "plot_view_data/render_rb_working_local/fixed__rb_working_local__retrospective__rb_ohlc.csv": "35f588e6dc7aaa0475e470c547a6f9782670092a9e4204fea4d40ec69caa1b62",
+    "plot_view_data/render_rb_working_local/fixed__rb_working_local__retrospective__recent_actual_close_path.csv": "75b31a1180ecede62af8adcbe4f98c5df9ff527ec010f77e92fd33a3a89d933c",
+    "plot_view_data/render_rb_working_local/fixed__rb_working_local__retrospective__recent_confirmation.csv": "5f5b6e93cab76410b3c47bc4e7fbad2963b1cfd0c97da49f3a71a2082ecdbd0d",
+    "plot_view_data/render_rb_working_local/fixed__rb_working_local__retrospective__recent_endpoint_boundaries.csv": "d4a2116a7a2f969c3a873a5ce1a757fb37a68d8e26077ca8d11ade4ace063496",
+    "plot_view_data/render_rb_working_local/fixed__rb_working_local__retrospective__working_actual_close_path.csv": "3ad0692202d579fe90c98f205af0fa807e524e249b637ab5d01b7e684bd2c142",
+    "plot_view_data/render_rb_working_local/fixed__rb_working_local__retrospective__working_endpoint_boundaries.csv": "3538de8320b74e335fe1a029f9b5ae8dc3b2733e7537b1a6b637bd1b177c89bf",
+    "plot_view_data/render_rb_working_local/fixed__rb_working_local__retrospective__working_rhythm.csv": "253ad04deae9ad1c2dd10105622a5ee1673054e2737a56090162ea84ccc29cb3",
+    "plot_view_data/render_rb_working_local/fixed__rb_working_local__retrospective__working_values.csv": "6a6cf1e133dbe085edaa0eb9ee948f17bd35b00b703cfe2294e550d3dc354a9a"
+  },
+  "boundaries": [
+    "platform URL creation, HTTP opening, Bokeh serialization, browser pixels, visual inspection, and CSV equality are separate checks",
+    "the package remains not_primary_evidence; professional interpretation returns to the issuing Pro"
+  ]
+}

@@ -1,0 +1,229 @@
+{
+  "schema_version": 1,
+  "result": "PASS",
+  "inputs": {
+    "n_manifest": {
+      "path": "/dwdhome/fy/observe-iterate-bi01-fo-01/runs/BI-01-FO-01/artifacts/worker-BI01-FO01-N-AIDATA-01/data/rb_asof_103315800/READ_MANIFEST.json",
+      "sha256": "45662ac7c68d6273b4de3b5d427113af6d20994dffbfca2ca59974a1827a7df7"
+    },
+    "kline_manifest": {
+      "path": "/dwdhome/fy/observe-iterate-bi01-fo-01/runs/BI-01-FO-01/artifacts/worker-BI01-FO01-N-AIDATA-01/data/rb_price_100460400_103315800/KLINE_READ_MANIFEST.json",
+      "sha256": "a0728f8ef56cd4079914f3ab8e9c5a2da28d65a8409af3845715ef4acc993e30"
+    }
+  },
+  "selection": {
+    "object": "rb",
+    "exact": [
+      "NodeBehaviorBook",
+      "NodeScaleTurnBehaviorRevision",
+      "b340dc6c-c135-462b-b6e0-04d24622c180",
+      "cfd51328-e2cf-4360-8314-20c9238e93fb"
+    ],
+    "as_of_uti": 103315800,
+    "as_of_time": "2024-02-29 14:55:00.500000",
+    "window_address": 37926,
+    "working_address": 37943,
+    "binding_address": 1,
+    "n": 6,
+    "loo_minimum": 3
+  },
+  "outputs": {
+    "price": {
+      "path": "rb_price_display.csv",
+      "rows": 4760,
+      "sha256": "d66d85682820f4c8af99d2f3cb9b8a268492e41f9cd176f3bea3449d7d49f291",
+      "columns": [
+        "bar_time",
+        "open_uti",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "openInt",
+        "calendar_position",
+        "calendar_time",
+        "known_at_time",
+        "symbol"
+      ]
+    },
+    "process_paths": {
+      "path": "rb_process_paths.csv",
+      "rows": 4772,
+      "sha256": "b7a58b960bcacb48af3b5b3f2d193eb950e8bd58ef8284ae08f367668836b843",
+      "columns": [
+        "group",
+        "slot",
+        "member",
+        "life",
+        "direction",
+        "direction_name",
+        "open_uti",
+        "bar_time",
+        "close",
+        "known_from_uti",
+        "known_at_time",
+        "confirmation_uti",
+        "confirmation_time",
+        "n_exact",
+        "as_of_uti",
+        "as_of_time",
+        "projection_status"
+      ]
+    },
+    "segments": {
+      "path": "rb_process_boundaries.csv",
+      "rows": 13,
+      "sha256": "91ec4eb1beffdfdea5175b13cf713a4fa9f07ce72124811609f7f3e881317944",
+      "columns": [
+        "group",
+        "slot",
+        "member",
+        "life",
+        "direction",
+        "direction_name",
+        "start_uti",
+        "start_time",
+        "start_close",
+        "end_uti",
+        "end_time",
+        "end_close",
+        "confirmation_uti",
+        "confirmation_time",
+        "known_from_uti",
+        "known_at_time",
+        "sample_count",
+        "calendar_contiguous",
+        "n_exact",
+        "as_of_uti",
+        "as_of_time",
+        "projection_status"
+      ]
+    },
+    "confirmations": {
+      "path": "rb_confirmation_markers.csv",
+      "rows": 12,
+      "sha256": "623c85016e112b09f3a279d10f43548f149ec4e2028b55964bbf38b6f0472685",
+      "columns": [
+        "group",
+        "slot",
+        "member",
+        "life",
+        "confirmation_uti",
+        "confirmation_time",
+        "confirmation_close",
+        "known_from_uti",
+        "known_at_time",
+        "actual_end_uti",
+        "actual_end_time",
+        "n_exact",
+        "as_of_time",
+        "projection_status"
+      ]
+    },
+    "statistics": {
+      "path": "rb_completed_window_statistics.csv",
+      "rows": 6,
+      "sha256": "899f8ce2b74cdf76c76a357fa05f793ce106a7207ff40a4b649090f86ef9f272",
+      "columns": [
+        "kind",
+        "metric",
+        "unit",
+        "present",
+        "current",
+        "previous",
+        "change",
+        "dispersion_unscaled_mad",
+        "loo_knownness",
+        "loo_knownness_name",
+        "loo_base",
+        "loo_maximum_absolute_shift",
+        "loo_ties_bitmask",
+        "all_six_loo_slots_tied",
+        "finite_reference_checks_pass",
+        "reference_recent_values",
+        "reference_previous_values",
+        "window_address",
+        "binding_address",
+        "known_at_time",
+        "as_of_time",
+        "n_exact",
+        "interpretation_boundary"
+      ]
+    },
+    "working": {
+      "path": "rb_working_values.csv",
+      "rows": 6,
+      "sha256": "f70415ad154cff97e5070e24cfd1a05883702aed5262725991894c5d4139b53d",
+      "columns": [
+        "field",
+        "unit",
+        "value",
+        "present",
+        "knownness",
+        "knownness_name",
+        "applicability",
+        "applicability_name",
+        "reason",
+        "reference_value",
+        "direction",
+        "direction_name",
+        "start_uti",
+        "through_uti",
+        "completion_knownness",
+        "completion_knownness_name",
+        "known_at_time",
+        "as_of_time",
+        "n_exact"
+      ]
+    },
+    "rhythm": {
+      "path": "rb_working_rhythm.csv",
+      "rows": 1,
+      "sha256": "254e605c2932d10b3804bb201aa00ac7519fba6b7d55f400e19b229d158419a9",
+      "columns": [
+        "local_count",
+        "full_count",
+        "local_start_uti",
+        "last_update_uti",
+        "previous_median",
+        "current_median",
+        "median_change",
+        "intervals",
+        "waiting",
+        "waiting_ratio",
+        "knownness",
+        "knownness_name",
+        "known_at_time",
+        "as_of_time",
+        "n_exact",
+        "scope_note",
+        "reference_checks_pass"
+      ]
+    },
+    "loo": {
+      "path": "rb_loo_details.csv",
+      "rows": 36,
+      "sha256": "46d041d91524b1518044f47c2e1b9d4d71912991d2972f84028cc50cfbe6f720",
+      "columns": [
+        "timestamp",
+        "occurrence",
+        "record_id",
+        "child_id_2",
+        "child_id_3",
+        "child_id_4",
+        "median",
+        "shift",
+        "metric",
+        "known_at_time",
+        "as_of_time",
+        "n_exact",
+        "interpretation_boundary"
+      ]
+    }
+  },
+  "verification": {
+    "path": "VERIFICATION.json",
+    "sha256": "2cfde4cd567606d5078df9210354c056ea939f7259e222b4c7ab2809cbcaa86d"
+  }
+}
