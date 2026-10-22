@@ -117,10 +117,10 @@ def main():
     check('new completed Life is prior working Life',RECENT_AFTER[-1][3],WORKING_LIVES['before_confirmation'])
     check('new member not knowable at preceding K',RECENT_AFTER[-1][2]>before[0])
     check('new member knowable at confirmation K',RECENT_AFTER[-1][2],after[0])
-    check('actual end did not itself change completed window',RB[0][11],RB[1][11])
+    check('actual end did not itself change completed window',RB[0][10],RB[1][10])
     check('actual-end prefix agrees with prior 27-close reference',RB[1][5],99/137)
     check('same working Life after confirmation and at final',WORKING_LIVES['at_or_after_confirmation'],WORKING_LIVES['final'])
-    check('same Life need not have same storage base',after[12]!=final[12])
+    check('same Life need not have same storage base',after[11]!=final[11])
     delta_current=after[1]-before[1]
     delta_previous=after[2]-before[2]
     delta_contrast=(after[1]-after[2])-(before[1]-before[2])
