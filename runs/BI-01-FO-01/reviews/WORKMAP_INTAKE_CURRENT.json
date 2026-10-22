@@ -2,14 +2,14 @@
   "schema": "workmap-intake/v1",
   "intakes": {
     "bi01": {
-      "snapshot": "a5a93ae6ddfe5d9c1699b78aee9679388341b23d1777abab87df40b4bc174e29",
+      "snapshot": "98bf5dae5898afccde4c97b4e9d60942c4f59ca0344bdb0b677e8bf20759e096",
       "manager": {
         "role": "management",
         "context": "chatgpt:细节叙事生成_金标:BI01-FO01-管理"
       },
       "decision_report": {
-        "path": "runs/BI-01-FO-01/reviews/management-R0005/FULL_RESPONSE.md",
-        "blob": "3a8c190b75f66eba6044c8056c54f22e01cf8b42"
+        "path": "runs/BI-01-FO-01/reviews/management-R0006/FULL_RESPONSE.md",
+        "blob": "d5ed53191aac56e14d5b1fa5355c163b99b05b0e"
       },
       "reader_check": {
         "status": "RECORDED",
@@ -23,7 +23,7 @@
         "input_snapshot": "76cc432bb46ec54c5bc2539e6ecf6d504a3b3cfba0e3e32bacd550bb11719c14"
       },
       "effort": {
-        "known_pro_turns": 5
+        "known_pro_turns": 6
       },
       "scope_dispositions": {},
       "validation_claims": [],
@@ -31,10 +31,10 @@
         "decision": "ISSUED",
         "task_id": "BI01-FO-01-N-OBSERVATION-01",
         "task_path": "runs/BI-01-FO-01/01_当前任务.md",
-        "task_blob": "2d755ece74558533b348fb3bb6f527bb889249a0",
-        "kind": "ROUTINE_RESULT",
+        "task_blob": "fa8dff545d6b8eaf45a269a872440341ebe37a92",
+        "kind": "EXISTING_AUTHORIZED_REPAIR",
         "requires_reader_check": false,
-        "reader_reason": "依据真实R0005 report262790e29237bf9d7bcba1097bc65bf265e12c3e#intake：专业/技术正常结果已实际消费，地图/README仅更新已有rb图数及未完进度；Owner、原方法、完整任务/写权/完成条件未变。本条只落实该历史输入ea0ace45的接收，不采用尚未发布的Owner纠正方法候选；原Reader保持其真实旧输入和资格，不冒称再次阅读。",
+        "reader_reason": "本次不是R5的ROUTINE_RESULT。明确分类为**EXISTING_AUTHORIZED_REPAIR**：对同一具体特征、同一完整四项任务，逐项落实Owner已经直接决定的职责/交付/边界；本管理没有新增参数算法、具体图形方案、跨仓公共写权、新阶段或另一套目标。候选方法与Owner逐项对照后无需要主控猜测的新增业务选择。因此**不重新派全量地图Reader，requires_reader_check=false只限本次有权定向纠正的接续**。这不是把改动说成纯排版，也不是认证新配置。原独立报告仅保留旧输入的历史资格；本次新增实质画法由执行Pro形成且尚未接受，若后续出现重要独立新设计/授权变化，按真实受影响范围处理必要独立核查，不能套用本次复用决定。",
         "method_paths": [
           "professional/feature_observation/00_PURPOSE_AND_FOUR_WORKS.md",
           "professional/feature_observation/01_OUTPUT_BASE_FORMAT.md",
