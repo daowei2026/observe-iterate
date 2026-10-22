@@ -118,10 +118,11 @@ Worker局部读取/图层失败只限制相关消费者，继续可靠部分；�
 原任务内最新接续：`daowei2026/observe-iterate@606d7ffcb75f7f5e896a187c366bfe1f4d1d4ffa:runs/BI-01-FO-01/artifacts/professional-R0007/FULL_RESPONSE.md::#continuation`
 本次实际证据：`daowei2026/observe-iterate@8af0eafe829eb139ec5563a15cf2c705aa0243ef:runs/BI-01-FO-01/reviews/management-R0008/FULL_RESPONSE.md::full`
 本次实际证据：`daowei2026/observe-iterate@606d7ffcb75f7f5e896a187c366bfe1f4d1d4ffa:runs/BI-01-FO-01/artifacts/professional-R0007/FULL_RESPONSE.md::full`
-本次实际证据：`daowei2026/observe-iterate@39308f4a8fe6b6f2fe1399f8d9e56b91a5ceb643:runs/BI-01-FO-01/artifacts/worker-BI01-FO01-N-DISPLAY-INTEGRATION-02/FULL_RESPONSE.md::full`
-本次实际证据：`daowei2026/observe-iterate@ded408da315b3edd2810dee1b3ec1078d95fc26c:runs/BI-01-FO-01/artifacts/worker-BI01-FO01-N-DISPLAY-INTEGRATION-02/GITHUB_RECEIPT.json::full`
-本次实际证据：`daowei2026/observe-iterate@bd17edd25c381fc8063fa2bdacbb3db9db07bc51:runs/BI-01-FO-01/provenance/turns/R0009/INPUT_STATE.md::full`
+本次实际证据：`daowei2026/observe-iterate@081e31241a0c88e47631f80a8b9b8dd43b2b569c:runs/BI-01-FO-01/artifacts/worker-BI01-FO01-N-DISPLAY-INTEGRATION-02/FULL_RESPONSE.md::full`
+本次实际证据：`daowei2026/observe-iterate@9bf6a9bb19656878efa12eae6696e847f7505d0c:runs/BI-01-FO-01/artifacts/worker-BI01-FO01-N-DISPLAY-INTEGRATION-02/GITHUB_RECEIPT.json::full`
+本次实际证据：`daowei2026/observe-iterate@c57158ef715de9eb263cb09f0dedd68144b4c5a1:runs/BI-01-FO-01/provenance/turns/R0009/INPUT_STATE.md::full`
 本次实际证据：`daowei2026/observe-iterate@90505c859d95f458f3c6ec5caeca06573c35a17a:runs/BI-01-FO-01/reviews/management-R0008/RETURNS.md::full`
+本次实际证据：`daowei2026/observe-iterate@081e31241a0c88e47631f80a8b9b8dd43b2b569c:runs/BI-01-FO-01/artifacts/worker-BI01-FO01-N-DISPLAY-INTEGRATION-02/ENDPOINT_R8_SUPPLEMENT.md::full`
 
 ## 本次直接读取的上下文
 
