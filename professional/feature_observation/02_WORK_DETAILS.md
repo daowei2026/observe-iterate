@@ -8,6 +8,11 @@
 
 目前优先实例为 **U2NormalNodeBehaviorFrp**。CYF 2026-10-21 10:24 的具体反馈已说明其当前涉及两个完成过程窗口（最近六段与此前六段）、当前未完成过程、推进/幅度/持续/行程/效率/逆向运动及当前节律等。该说明是研究入口，实际运行时仍应核定具体版本和数据读出结果，不凭本文代替源合同。
 
+**已有实例与来源可先参考，不必从零猜：**[CYF 的 U2NormalNodeBehaviorFrp 单特征任务说明](https://github.com/daowei2026/feature-refinement-implementation-agent-evolution/blob/main/agent_evolution/pilot_cases/network-dynamic-ceps-factory-u2-u3/implementation-start-prompts/U2_NORMAL_NODE_BEHAVIOR_FEATURE_TASK_20261016.md)定位了 FRP 的 `U2NormalNodeBehaviorFrp / constructNormalNodeBehaviorFrp`，以及 TIS 的 `U2NormalNodeBehaviorFrp.from_sources(sources)`、`to_dfs(products=...)`。先用它寻找真实实例化、结果读回与方法合同，再核当时和本次实际源码/数据版本，不能把该历史任务说明当成当前已完成证明。
+
+**另一个用于学习实例化和制图调用的已运行示例：**[aidata/examples/microstructure_review.py](https://github.com/daowei2026/aidata/blob/main/examples/microstructure_review.py)实例化 Zig/ScaleTurn/Thick，组织 `run_brief` 并生成图页；其运行和验收入口见[aidata/tests/README.md](https://github.com/daowei2026/aidata/blob/main/tests/README.md)。它是**技术调用形式参考**，不是本次 N 特征已接入 aidata，也不代表参数应照搬。
+
+
 ## 1. 初始合理参数
 
 - 先识别当前特征实际使用的参数及来源，也包括通过上游输入、子处理器和配置层层传入的参数。

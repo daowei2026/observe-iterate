@@ -1,5 +1,11 @@
 # aidata 在新四项专业工作中的位置（初版）
 
+## 首次使用：从 README 进入
+
+**先读取所采用 aidata 版本的 [README.md](https://github.com/daowei2026/aidata/blob/main/README.md)**，理解整体用途、长期概览和大—中—小尺度、定位特征与观察特征，以及图和对应数据的基本关系。实际配置时再按需阅读 [开发参考](https://github.com/daowei2026/aidata/blob/main/docs/DEVELOPMENT_GUIDE.md)、[run_brief 输入合同](https://github.com/daowei2026/aidata/blob/main/docs/RUN_BRIEF_INPUT_CONTRACT.md)、[真实数据测试说明](https://github.com/daowei2026/aidata/blob/main/tests/README.md)。
+
+可优先查阅已经提供实际运行方式的 [microstructure_review.py 示例](https://github.com/daowei2026/aidata/blob/main/examples/microstructure_review.py)，了解多个具体特征怎样实例化、配置 `run_brief`、创建看图页面；**只借调用方法，不默认借其板块、参数、时间尺度或特征含义**。本次 `U2NormalNodeBehaviorFrp` 仍须从自己的真实结果读回与方法合同判断能否接入。
+
 ## 1. 工具职责与专业职责分开
 
 - 工作 2 决定特征信息怎样展示才方便理解，包括实际要画的内容、文字解释以及是否先单品种/多品种。
