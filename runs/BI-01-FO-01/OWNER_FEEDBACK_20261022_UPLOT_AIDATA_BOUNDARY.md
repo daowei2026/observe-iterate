@@ -30,10 +30,9 @@
 
 ## 四、明确工作 2 的实际看图交付
 
-**工作 2 用 Uplot 真正重新画出的图必须让 Owner 和专业 Pro 方便直接查看，而不是只提交 GitHub 无法直接预览的 standalone HTML。** 正常交付须包括：
+**工作 2 用 Uplot 真正重新画出的图必须让 Owner 和专业 Pro 方便交互查看，不能只提交 GitHub 中无法直接运行的 standalone HTML；不要求也不以 PNG 截图作为看图交付。** 正常交付以可复现、可实际打开的 **Jupyter Notebook（`.ipynb`）** 为主：
 
-- 可在 GitHub 直接点开预览的真实绘图 **PNG**，给出准确链接；覆盖本次需要验的代表性演变和选定时点，不设固定张数配额。
-- 有实际运行代码、锁定参数/版本、正常数据入口的可复现 **Jupyter Notebook（`.ipynb`）**，使用 Uplot/CAEGraph 的实际显示方式（例如 `show(CAEGraph(...).layout())`），在可用 Jupyter 环境内可以重新运行、查看和必要时交互。尽可能保存可见输出；GitHub 不保证执行 Notebook 中的 Bokeh JavaScript，因此不能把 Notebook 或 HTML 的文件链接冒充 GitHub 上已可交互查看。
-- 说明真实输入、绘图入口、输出图与配置版本的对应关系；需要时附 HTML 供本地浏览器打开，但它不是唯一的看图交付，也不等于 aidata 的平台图节点。
+- Notebook 包含真实绘图代码、锁定参数/版本及正常数据入口，使用 Uplot/CAEGraph 的显示方式（例如 `show(CAEGraph(...).layout())`），在可用 Jupyter 环境中实际执行成功并能交互看图，覆盖本次需要验证的演变和选定观察时点，不设固定图数。
+- 提供 Notebook 的准确路径、实际运行环境/打开方法及与展示配置、真实数据的对应关系，便于 Owner 和专业 Pro 复现、查看与修订。GitHub 页面不保证运行 Bokeh JavaScript，不能把仅上传 `.ipynb` 或 HTML 冒充已经在 GitHub 内交互打开；需要时可以附 HTML 作为辅助，而非主交付。
 
 这些是**新重画图**的查看和复现要求，不使此前 Owner 已判定不采用的旧图恢复展示验收资格。工作 3 在此后负责用 aidata 生成正常平台交互图链接。
