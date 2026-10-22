@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "result": "PASS",
+  "checks": {
+    "life_components_match_order": true,
+    "life_uuid": true,
+    "start_end": true,
+    "direction_code_is_second_enum_constructor_down": true,
+    "direction_known": true,
+    "start_close": true,
+    "end_close": true,
+    "visual_slope_positive": true,
+    "frp_source_commit": true
+  },
+  "formal_member": {
+    "life_high": 15379319021888293305,
+    "life_low": 11629421669636382479,
+    "life": "d56e512a-d30f-49b9-a164-0164a9e81f0f",
+    "start": 100460400,
+    "end": 100633800,
+    "confirmation": 100723800,
+    "known_from": 100723800,
+    "direction": 1,
+    "direction_label": "down",
+    "direction_knownness": 0
+  },
+  "price": {
+    "start_close": 3953.0,
+    "end_close": 4034.0,
+    "endpoint_displacement": 81.0
+  },
+  "source_mapping": {
+    "frp_commit": "5154c407249c130a6e048c8541b76dfdec3ea48c",
+    "statements": {
+      "data TurnDirection = DirectionUp | DirectionDown": "data TurnDirection = DirectionUp | DirectionDown",
+      "deriving (Eq,Ord,Show,Read,Enum,Bounded,Generic)": "deriving (Eq,Ord,Show,Read,Enum,Bounded,Generic)",
+      "(maybe 255 (fromIntegral . fromEnum) (semanticValue direction))": "(episodeKnowledgeValidFrom e) (maybe 255 (fromIntegral . fromEnum) (semanticValue direction)) (status (semanticKnownness direction)))",
+      "\"memberDirection\" BSON.:=": "\"memberDirection\" BSON.:= BSON.val (fromIntegral (memberDirection x) :: Int64),",
+      "directionSign DirectionUp = 1": "directionSign DirectionUp = 1",
+      "directionSign DirectionDown = -1": "directionSign DirectionDown = -1",
+      "directionSign d * (b-a)": "(Just (a,b),AvailableCommitted,Just d) -> priceValue (directionSign d * (b-a))"
+    },
+    "meaning": "TurnDirection 的 Enum 构造顺序使 0=DirectionUp、1=DirectionDown；ThinMember 直接保存 fromEnum，不按端点斜率重映射；DirectionalProgress 再用 directionSign 乘端点位移，因此 down 与正端点位移可以并存。"
+  },
+  "inputs": {
+    "previous_members": {
+      "path": "runs/BI-01-FO-01/artifacts/worker-BI01-FO01-N-DISPLAY-INTEGRATION-02/data/selected_cuts/final/previous_members.csv",
+      "sha256": "c66342b1955670bc955f7bf0ae8d3c8d584c7565c430e2d9f603584646e51fad"
+    },
+    "same_bound_price": {
+      "path": "runs/BI-01-FO-01/artifacts/worker-BI01-FO01-N-DISPLAY-INTEGRATION-02/data/same_bound_price/rb_5m_price_calendar.csv",
+      "sha256": "09525f501526e150814161dcab8101be45c42523600453b91a474184a2fb1cf0"
+    }
+  },
+  "qualification": "核的是正常上游保存方向及方法映射；没有因视觉斜率改写正式方向。"
+}

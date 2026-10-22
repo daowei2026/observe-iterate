@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "result": "PASS",
+  "inspection": "Worker使用最终真实Chromium全页PNG原始分辨率逐页目视；该结论仅为技术可读性检查，不代替执行Pro专业看图。",
+  "common_checks": {
+    "viewport_not_compressed_by_full_price_domain": true,
+    "single_k_axis_has_one_readable_label_and_no_dense_black_band": true,
+    "legends_are_above_and_do_not_cover_the_single_point": true,
+    "present_scalar_values_and_units_are_visible_without_hover": true,
+    "paired_values_are_separated_left_and_right": true,
+    "top_bound_counter_and_waiting_labels_are_inside_the_panel": true,
+    "symbol_color_is_stable_and_line_marker_semantics_remain_distinct": true
+  },
+  "pages": {
+    "rb_evolution_actual_occurrences": {
+      "sha256": "2fef32509809b6b95e1ffee0fa3652d003331c90bd953a73bf5b81d5264575d6",
+      "finding": "主价格与四个附图共享实际发生/行情交集视口；日期标签稀疏可读；未再由完整长行情域压缩成左侧窄条。"
+    },
+    "rb_selected_before_confirmation_K103150800": {
+      "sha256": "c6240f68f4ca105b7b0e1f745bde52b45ae5743e7de0f09c78b8c73c33f2d7ad",
+      "finding": "效率0.133543/0.143467、推进43/逆向66、前缀效率0.0685805、waiting ratio 155均清楚可辨。"
+    },
+    "rb_selected_at_or_after_confirmation_K103151400": {
+      "sha256": "35075272bcbfc62873aca4b0c715e3c279f9280545892ef7dd782b6132fa1567",
+      "finding": "效率0.0845432/0.151417、推进40/逆向53、前缀效率0.107505、waiting ratio 82均清楚可辨。"
+    },
+    "rb_selected_final_K103315800": {
+      "sha256": "9365873c0bddfb3fae565a69cb1207abcd03fc87bf35c236ce8736809243488f",
+      "finding": "正式末拍效率0.0845432/0.151417、推进50/逆向80、前缀效率0.0377644、waiting ratio 15.8462均清楚可辨。"
+    }
+  },
+  "separate_facts": "HTML生成、Bokeh renderer/CDS核对、Chromium打开、全页截图和本文件的像素目视检查均分开留证。"
+}

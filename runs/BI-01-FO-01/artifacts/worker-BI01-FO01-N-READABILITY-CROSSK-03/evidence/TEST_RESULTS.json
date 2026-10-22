@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "result": "PASS",
+  "runtime": {
+    "python_overlay": "/tmp/bi01-fo01-w03-runtime-20261022",
+    "aidata_commit": "b044ad9c92ffc98ee1ac7aec829e3673c126c846"
+  },
+  "runs": [
+    {
+      "scope": "tests/test_u2_normal_node_behavior_display.py + tests/test_evidence_plot_contract.py",
+      "result": "PASS",
+      "passed": 34,
+      "warnings": 2,
+      "elapsed_seconds": 21.75
+    },
+    {
+      "scope": "aidata tests/ full suite",
+      "result": "PASS",
+      "passed": 61,
+      "warnings": 2,
+      "elapsed_seconds": 51.89
+    }
+  ],
+  "warning_boundary": "两条警告均为既有运行依赖的DeprecationWarning/SQLAlchemy 2.0兼容提示；没有测试失败。",
+  "additional_checks": {
+    "git_diff_check_before_commit": "PASS",
+    "professional_configuration_sha256_exact": "39275fa22a564649d9092a9a28f30a7e018c27d3673212f18a9bc05ebd964641"
+  }
+}

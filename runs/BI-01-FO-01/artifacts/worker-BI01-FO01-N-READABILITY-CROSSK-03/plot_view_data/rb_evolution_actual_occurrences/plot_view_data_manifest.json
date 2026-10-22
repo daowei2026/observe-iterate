@@ -1,0 +1,1381 @@
+{
+  "schema_version": 1,
+  "qualification": "display projection only; formal N remains the referenced TIS product",
+  "configuration": {
+    "feature": "U2NormalNodeBehaviorFrp",
+    "version": "0.2.1",
+    "symbol": "rb",
+    "mode": "evolution",
+    "layout_class": "PerSymFigSet",
+    "theme_class": "DefaultFigTheme",
+    "shared_x": "bound Calendar UTI",
+    "independent_y_by_panel": true,
+    "panels": {
+      "price": {
+        "class": "MainFig",
+        "title": "行情与过程边界",
+        "unit": "price",
+        "height": 420,
+        "default": true,
+        "price_normalization": false
+      },
+      "completed_efficiency": {
+        "class": "SubFig",
+        "title": "已完成过程效率：最近六段／此前六段",
+        "unit": "ratio",
+        "height": 210,
+        "default": true,
+        "price_normalization": false
+      },
+      "working_motion": {
+        "class": "SubFig",
+        "title": "当前未完成过程：沿原方向净推进／累计最大逆向量",
+        "unit": "price",
+        "height": 210,
+        "default": true,
+        "price_normalization": false,
+        "include_zero": true
+      },
+      "working_efficiency": {
+        "class": "SubFig",
+        "title": "当前过程前缀效率（非已完成样本）",
+        "unit": "ratio",
+        "height": 180,
+        "default": true,
+        "price_normalization": false
+      },
+      "rhythm": {
+        "class": "SubFig",
+        "title": "局部等待／近期三个极值间隔中位数",
+        "unit": "ratio",
+        "height": 180,
+        "default": false,
+        "price_normalization": false,
+        "clip_to_probability": false
+      }
+    },
+    "readability_policy": {
+      "primary_range": "intersection of selected actual occurrence coverage and price coverage",
+      "range_function": "evolution_display_range",
+      "price_context": "separate price-only overview on demand; not the scalar-panel range",
+      "tick_labels": {
+        "mode": "adaptive",
+        "maximum_visible": 10,
+        "fixed_5m_labels": false
+      },
+      "legend": {
+        "placement": "outside_above",
+        "short_labels": true
+      },
+      "numeric_range_function": "numeric_display_range",
+      "fit_y_range": "use explicit bounded range; do not allow a later callback to collapse it",
+      "value_labels": "selected/last observed values in margins; no plot-wide labels per bar",
+      "state_changes": "mark actual working-Life/start/direction changes at known K; not trading signals",
+      "storage_changes": "retain in hover; never label every working address as a new market process",
+      "rhythm_detail": "show actual waiting, current interval median, local-start and last-update when selected",
+      "empty_region": "outside formal coverage is not zero, immature, or a market gap"
+    },
+    "display_identity_fields": [
+      "symbol",
+      "node_life",
+      "data_binding",
+      "mode",
+      "selected_k_or_requested_range",
+      "resolved_exact_or_occurrence_selection",
+      "configuration_version",
+      "optional_panels"
+    ],
+    "layers": [
+      {
+        "view_id": "close_path",
+        "df_key": "n_display/close_path",
+        "time_binding": {
+          "time_mode": "uti_point",
+          "uti_fields": [
+            "x"
+          ]
+        },
+        "slice_levels": [
+          "big",
+          "mid",
+          "small"
+        ],
+        "plot_binding": {
+          "kind": "line",
+          "x_field": "x",
+          "y_field": "y",
+          "group": "price",
+          "label": "rb｜原5m close路径",
+          "surfaces": [
+            "overview",
+            "big",
+            "mid",
+            "small"
+          ],
+          "style": {
+            "line_width": 1,
+            "line_dash": "solid",
+            "color": "#4C78A8"
+          },
+          "hover_fields": [
+            {
+              "field": "symbol",
+              "label": "品种"
+            },
+            {
+              "field": "source_exact",
+              "label": "正式来源exact"
+            },
+            {
+              "field": "as_of_uti",
+              "label": "本视图知识截止UTI"
+            },
+            {
+              "field": "origin_uti",
+              "label": "该发生知识UTI"
+            },
+            {
+              "field": "state_text",
+              "label": "状态／原因"
+            },
+            {
+              "field": "meaning",
+              "label": "对象、范围和单位"
+            }
+          ]
+        }
+      },
+      {
+        "view_id": "completed_recent_hold",
+        "df_key": "n_display/completed_recent_hold",
+        "time_binding": {
+          "time_mode": "uti_interval",
+          "uti1_field": "x0",
+          "uti2_field": "x1",
+          "interval_policy": "overlap"
+        },
+        "slice_levels": [
+          "big",
+          "mid",
+          "small"
+        ],
+        "plot_binding": {
+          "kind": "segment",
+          "x0_field": "x0",
+          "x1_field": "x1",
+          "y0_field": "y0",
+          "y1_field": "y1",
+          "group": "completed_efficiency",
+          "label": "rb｜最近六段效率中位数（保持区间）",
+          "surfaces": [
+            "overview",
+            "big",
+            "mid",
+            "small"
+          ],
+          "style": {
+            "line_width": 2,
+            "line_dash": "solid",
+            "color": "#4C78A8"
+          },
+          "hover_fields": [
+            {
+              "field": "symbol",
+              "label": "品种"
+            },
+            {
+              "field": "source_exact",
+              "label": "正式来源exact"
+            },
+            {
+              "field": "as_of_uti",
+              "label": "本视图知识截止UTI"
+            },
+            {
+              "field": "origin_uti",
+              "label": "该发生知识UTI"
+            },
+            {
+              "field": "state_text",
+              "label": "状态／原因"
+            },
+            {
+              "field": "meaning",
+              "label": "对象、范围和单位"
+            }
+          ]
+        }
+      },
+      {
+        "view_id": "completed_previous_hold",
+        "df_key": "n_display/completed_previous_hold",
+        "time_binding": {
+          "time_mode": "uti_interval",
+          "uti1_field": "x0",
+          "uti2_field": "x1",
+          "interval_policy": "overlap"
+        },
+        "slice_levels": [
+          "big",
+          "mid",
+          "small"
+        ],
+        "plot_binding": {
+          "kind": "segment",
+          "x0_field": "x0",
+          "x1_field": "x1",
+          "y0_field": "y0",
+          "y1_field": "y1",
+          "group": "completed_efficiency",
+          "label": "rb｜此前六段效率中位数（保持区间）",
+          "surfaces": [
+            "overview",
+            "big",
+            "mid",
+            "small"
+          ],
+          "style": {
+            "line_width": 1.5,
+            "line_dash": "dashed",
+            "color": "#4C78A8"
+          },
+          "hover_fields": [
+            {
+              "field": "symbol",
+              "label": "品种"
+            },
+            {
+              "field": "source_exact",
+              "label": "正式来源exact"
+            },
+            {
+              "field": "as_of_uti",
+              "label": "本视图知识截止UTI"
+            },
+            {
+              "field": "origin_uti",
+              "label": "该发生知识UTI"
+            },
+            {
+              "field": "state_text",
+              "label": "状态／原因"
+            },
+            {
+              "field": "meaning",
+              "label": "对象、范围和单位"
+            }
+          ]
+        }
+      },
+      {
+        "view_id": "completed_recent_updates",
+        "df_key": "n_display/completed_recent_updates",
+        "time_binding": {
+          "time_mode": "uti_point",
+          "uti_fields": [
+            "x"
+          ]
+        },
+        "slice_levels": [
+          "big",
+          "mid",
+          "small"
+        ],
+        "plot_binding": {
+          "kind": "point",
+          "x_field": "x",
+          "y_field": "y",
+          "group": "completed_efficiency",
+          "label": "rb｜最近窗已知更新／选定值",
+          "surfaces": [
+            "overview",
+            "big",
+            "mid",
+            "small"
+          ],
+          "style": {
+            "marker": "circle",
+            "size": 6,
+            "color": "#4C78A8"
+          },
+          "hover_fields": [
+            {
+              "field": "symbol",
+              "label": "品种"
+            },
+            {
+              "field": "source_exact",
+              "label": "正式来源exact"
+            },
+            {
+              "field": "as_of_uti",
+              "label": "本视图知识截止UTI"
+            },
+            {
+              "field": "origin_uti",
+              "label": "该发生知识UTI"
+            },
+            {
+              "field": "state_text",
+              "label": "状态／原因"
+            },
+            {
+              "field": "meaning",
+              "label": "对象、范围和单位"
+            }
+          ]
+        }
+      },
+      {
+        "view_id": "completed_previous_updates",
+        "df_key": "n_display/completed_previous_updates",
+        "time_binding": {
+          "time_mode": "uti_point",
+          "uti_fields": [
+            "x"
+          ]
+        },
+        "slice_levels": [
+          "big",
+          "mid",
+          "small"
+        ],
+        "plot_binding": {
+          "kind": "point",
+          "x_field": "x",
+          "y_field": "y",
+          "group": "completed_efficiency",
+          "label": "rb｜此前窗已知更新／选定值",
+          "surfaces": [
+            "overview",
+            "big",
+            "mid",
+            "small"
+          ],
+          "style": {
+            "marker": "square",
+            "size": 6,
+            "color": "#4C78A8"
+          },
+          "hover_fields": [
+            {
+              "field": "symbol",
+              "label": "品种"
+            },
+            {
+              "field": "source_exact",
+              "label": "正式来源exact"
+            },
+            {
+              "field": "as_of_uti",
+              "label": "本视图知识截止UTI"
+            },
+            {
+              "field": "origin_uti",
+              "label": "该发生知识UTI"
+            },
+            {
+              "field": "state_text",
+              "label": "状态／原因"
+            },
+            {
+              "field": "meaning",
+              "label": "对象、范围和单位"
+            }
+          ]
+        }
+      },
+      {
+        "view_id": "working_progress_steps",
+        "df_key": "n_display/working_progress_steps",
+        "time_binding": {
+          "time_mode": "uti_interval",
+          "uti1_field": "x0",
+          "uti2_field": "x1",
+          "interval_policy": "overlap"
+        },
+        "slice_levels": [
+          "big",
+          "mid",
+          "small"
+        ],
+        "plot_binding": {
+          "kind": "segment",
+          "x0_field": "x0",
+          "x1_field": "x1",
+          "y0_field": "y0",
+          "y1_field": "y1",
+          "group": "working_motion",
+          "label": "rb｜当前过程沿原方向净推进",
+          "surfaces": [
+            "overview",
+            "big",
+            "mid",
+            "small"
+          ],
+          "style": {
+            "line_width": 2,
+            "line_dash": "solid",
+            "color": "#4C78A8"
+          },
+          "hover_fields": [
+            {
+              "field": "symbol",
+              "label": "品种"
+            },
+            {
+              "field": "source_exact",
+              "label": "正式来源exact"
+            },
+            {
+              "field": "as_of_uti",
+              "label": "本视图知识截止UTI"
+            },
+            {
+              "field": "origin_uti",
+              "label": "该发生知识UTI"
+            },
+            {
+              "field": "state_text",
+              "label": "状态／原因"
+            },
+            {
+              "field": "meaning",
+              "label": "对象、范围和单位"
+            }
+          ]
+        }
+      },
+      {
+        "view_id": "working_counter_steps",
+        "df_key": "n_display/working_counter_steps",
+        "time_binding": {
+          "time_mode": "uti_interval",
+          "uti1_field": "x0",
+          "uti2_field": "x1",
+          "interval_policy": "overlap"
+        },
+        "slice_levels": [
+          "big",
+          "mid",
+          "small"
+        ],
+        "plot_binding": {
+          "kind": "segment",
+          "x0_field": "x0",
+          "x1_field": "x1",
+          "y0_field": "y0",
+          "y1_field": "y1",
+          "group": "working_motion",
+          "label": "rb｜当前过程累计最大逆向量",
+          "surfaces": [
+            "overview",
+            "big",
+            "mid",
+            "small"
+          ],
+          "style": {
+            "line_width": 1.5,
+            "line_dash": "dashed",
+            "color": "#4C78A8"
+          },
+          "hover_fields": [
+            {
+              "field": "symbol",
+              "label": "品种"
+            },
+            {
+              "field": "source_exact",
+              "label": "正式来源exact"
+            },
+            {
+              "field": "as_of_uti",
+              "label": "本视图知识截止UTI"
+            },
+            {
+              "field": "origin_uti",
+              "label": "该发生知识UTI"
+            },
+            {
+              "field": "state_text",
+              "label": "状态／原因"
+            },
+            {
+              "field": "meaning",
+              "label": "对象、范围和单位"
+            }
+          ]
+        }
+      },
+      {
+        "view_id": "working_progress_points",
+        "df_key": "n_display/working_progress_points",
+        "time_binding": {
+          "time_mode": "uti_point",
+          "uti_fields": [
+            "x"
+          ]
+        },
+        "slice_levels": [
+          "big",
+          "mid",
+          "small"
+        ],
+        "plot_binding": {
+          "kind": "point",
+          "x_field": "x",
+          "y_field": "y",
+          "group": "working_motion",
+          "label": "rb｜净推进实际观测值",
+          "surfaces": [
+            "overview",
+            "big",
+            "mid",
+            "small"
+          ],
+          "style": {
+            "marker": "circle",
+            "size": 3,
+            "color": "#4C78A8"
+          },
+          "hover_fields": [
+            {
+              "field": "symbol",
+              "label": "品种"
+            },
+            {
+              "field": "source_exact",
+              "label": "正式来源exact"
+            },
+            {
+              "field": "as_of_uti",
+              "label": "本视图知识截止UTI"
+            },
+            {
+              "field": "origin_uti",
+              "label": "该发生知识UTI"
+            },
+            {
+              "field": "state_text",
+              "label": "状态／原因"
+            },
+            {
+              "field": "meaning",
+              "label": "对象、范围和单位"
+            }
+          ]
+        }
+      },
+      {
+        "view_id": "working_counter_points",
+        "df_key": "n_display/working_counter_points",
+        "time_binding": {
+          "time_mode": "uti_point",
+          "uti_fields": [
+            "x"
+          ]
+        },
+        "slice_levels": [
+          "big",
+          "mid",
+          "small"
+        ],
+        "plot_binding": {
+          "kind": "point",
+          "x_field": "x",
+          "y_field": "y",
+          "group": "working_motion",
+          "label": "rb｜逆向量实际观测值",
+          "surfaces": [
+            "overview",
+            "big",
+            "mid",
+            "small"
+          ],
+          "style": {
+            "marker": "square",
+            "size": 3,
+            "color": "#4C78A8"
+          },
+          "hover_fields": [
+            {
+              "field": "symbol",
+              "label": "品种"
+            },
+            {
+              "field": "source_exact",
+              "label": "正式来源exact"
+            },
+            {
+              "field": "as_of_uti",
+              "label": "本视图知识截止UTI"
+            },
+            {
+              "field": "origin_uti",
+              "label": "该发生知识UTI"
+            },
+            {
+              "field": "state_text",
+              "label": "状态／原因"
+            },
+            {
+              "field": "meaning",
+              "label": "对象、范围和单位"
+            }
+          ]
+        }
+      },
+      {
+        "view_id": "working_efficiency_steps",
+        "df_key": "n_display/working_efficiency_steps",
+        "time_binding": {
+          "time_mode": "uti_interval",
+          "uti1_field": "x0",
+          "uti2_field": "x1",
+          "interval_policy": "overlap"
+        },
+        "slice_levels": [
+          "big",
+          "mid",
+          "small"
+        ],
+        "plot_binding": {
+          "kind": "segment",
+          "x0_field": "x0",
+          "x1_field": "x1",
+          "y0_field": "y0",
+          "y1_field": "y1",
+          "group": "working_efficiency",
+          "label": "rb｜当前前缀效率",
+          "surfaces": [
+            "overview",
+            "big",
+            "mid",
+            "small"
+          ],
+          "style": {
+            "line_width": 2,
+            "line_dash": "solid",
+            "color": "#4C78A8"
+          },
+          "hover_fields": [
+            {
+              "field": "symbol",
+              "label": "品种"
+            },
+            {
+              "field": "source_exact",
+              "label": "正式来源exact"
+            },
+            {
+              "field": "as_of_uti",
+              "label": "本视图知识截止UTI"
+            },
+            {
+              "field": "origin_uti",
+              "label": "该发生知识UTI"
+            },
+            {
+              "field": "state_text",
+              "label": "状态／原因"
+            },
+            {
+              "field": "meaning",
+              "label": "对象、范围和单位"
+            }
+          ]
+        }
+      },
+      {
+        "view_id": "working_efficiency_points",
+        "df_key": "n_display/working_efficiency_points",
+        "time_binding": {
+          "time_mode": "uti_point",
+          "uti_fields": [
+            "x"
+          ]
+        },
+        "slice_levels": [
+          "big",
+          "mid",
+          "small"
+        ],
+        "plot_binding": {
+          "kind": "point",
+          "x_field": "x",
+          "y_field": "y",
+          "group": "working_efficiency",
+          "label": "rb｜当前前缀效率观测值",
+          "surfaces": [
+            "overview",
+            "big",
+            "mid",
+            "small"
+          ],
+          "style": {
+            "marker": "circle",
+            "size": 3,
+            "color": "#4C78A8"
+          },
+          "hover_fields": [
+            {
+              "field": "symbol",
+              "label": "品种"
+            },
+            {
+              "field": "source_exact",
+              "label": "正式来源exact"
+            },
+            {
+              "field": "as_of_uti",
+              "label": "本视图知识截止UTI"
+            },
+            {
+              "field": "origin_uti",
+              "label": "该发生知识UTI"
+            },
+            {
+              "field": "state_text",
+              "label": "状态／原因"
+            },
+            {
+              "field": "meaning",
+              "label": "对象、范围和单位"
+            }
+          ]
+        }
+      },
+      {
+        "view_id": "waiting_ratio_steps",
+        "df_key": "n_display/waiting_ratio_steps",
+        "time_binding": {
+          "time_mode": "uti_interval",
+          "uti1_field": "x0",
+          "uti2_field": "x1",
+          "interval_policy": "overlap"
+        },
+        "slice_levels": [
+          "big",
+          "mid",
+          "small"
+        ],
+        "plot_binding": {
+          "kind": "segment",
+          "x0_field": "x0",
+          "x1_field": "x1",
+          "y0_field": "y0",
+          "y1_field": "y1",
+          "group": "rhythm",
+          "label": "rb｜当前局部等待倍数（非概率）",
+          "surfaces": [
+            "overview",
+            "big",
+            "mid",
+            "small"
+          ],
+          "style": {
+            "line_width": 2,
+            "line_dash": "solid",
+            "color": "#4C78A8"
+          },
+          "hover_fields": [
+            {
+              "field": "symbol",
+              "label": "品种"
+            },
+            {
+              "field": "source_exact",
+              "label": "正式来源exact"
+            },
+            {
+              "field": "as_of_uti",
+              "label": "本视图知识截止UTI"
+            },
+            {
+              "field": "origin_uti",
+              "label": "该发生知识UTI"
+            },
+            {
+              "field": "state_text",
+              "label": "状态／原因"
+            },
+            {
+              "field": "meaning",
+              "label": "对象、范围和单位"
+            }
+          ]
+        }
+      },
+      {
+        "view_id": "waiting_ratio_points",
+        "df_key": "n_display/waiting_ratio_points",
+        "time_binding": {
+          "time_mode": "uti_point",
+          "uti_fields": [
+            "x"
+          ]
+        },
+        "slice_levels": [
+          "big",
+          "mid",
+          "small"
+        ],
+        "plot_binding": {
+          "kind": "point",
+          "x_field": "x",
+          "y_field": "y",
+          "group": "rhythm",
+          "label": "rb｜局部等待倍数观测值",
+          "surfaces": [
+            "overview",
+            "big",
+            "mid",
+            "small"
+          ],
+          "style": {
+            "marker": "circle",
+            "size": 3,
+            "color": "#4C78A8"
+          },
+          "hover_fields": [
+            {
+              "field": "symbol",
+              "label": "品种"
+            },
+            {
+              "field": "source_exact",
+              "label": "正式来源exact"
+            },
+            {
+              "field": "as_of_uti",
+              "label": "本视图知识截止UTI"
+            },
+            {
+              "field": "origin_uti",
+              "label": "该发生知识UTI"
+            },
+            {
+              "field": "state_text",
+              "label": "状态／原因"
+            },
+            {
+              "field": "meaning",
+              "label": "对象、范围和单位"
+            }
+          ]
+        }
+      }
+    ],
+    "time_policy": {
+      "evolution": {
+        "x": "formal evaluation/knowledge UTI mapped by the bound Calendar",
+        "source": "ordered formal occurrences and their own origins/revisions/bases",
+        "completed_hold": "horizontal intervals only across verified covered state; no linear interpolation",
+        "same_value_new_members": "retain a point/identity change even when the numeric value is unchanged",
+        "working": "observed prefixes only; new Life, missing input or failure breaks the trace",
+        "late_revision": "show at its actual known time; never overwrite the prior as-known trace",
+        "single_snapshot": "insufficient for a historical curve; draw only its observed point"
+      },
+      "selected_cut": {
+        "read": "read_at_knowledge(explicit_node_life, K), or its exact normally resolved equivalent",
+        "membership": "only members and revisions eligible at K; not terminal-window backfill",
+        "geometry": "actual process endpoints on price; confirmation markers at confirmation-time price",
+        "cut_limit": "no price or working prefix beyond K in the selected-cut page",
+        "later_revision_comparison": "separate labelled view with its own K and exact, never merged silently"
+      },
+      "bar_time": "HistoricalInputUTI/open_uti with same-bar close; NOT live opening knowledge certification",
+      "units": "CalendarUTITick retained; no automatic conversion to seconds or bar count",
+      "missing": "break numeric geometry; preserve present/knownness/applicability/reason and show a gap notice",
+      "zero": "a present, applicable zero stays numeric zero; missing values never become zero",
+      "no_live_engine": true
+    },
+    "price_background": {
+      "class": "KPriceLine",
+      "source": "same-bound original 5m OHLC",
+      "color": "#4C78A8",
+      "alpha": 0.25,
+      "std_method": null,
+      "enabled": true
+    },
+    "required_badges": [
+      "symbol",
+      "selected K or as-known mode",
+      "input history basis",
+      "formal coverage (separate from price context)",
+      "working direction/completion at selected K or LAST occurrence",
+      "gap/error notices",
+      "configuration version"
+    ],
+    "disclosure": "选择时点回看不等于当时已经知道后来确认的端点；效率不是收益或胜率。"
+  },
+  "meta": {
+    "formal_entry": "U2NormalNodeBehaviorFrp.to_dfs after CalType.OnlyRead",
+    "mode": "evolution",
+    "symbol": "rb",
+    "requested_range": [
+      103056600,
+      103315800
+    ],
+    "actual_occurrence_range": [
+      103056600,
+      103315800
+    ],
+    "formal_occurrences": 433,
+    "window_updates": 3,
+    "source_exact_last": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/cfd51328-e2cf-4360-8314-20c9238e93fb",
+    "node_life": "b340dc6c-c135-462b-b6e0-04d24622c180",
+    "working_direction": "down",
+    "working_completion": "formal-code:2",
+    "price_rows": 433,
+    "evolution_display_range": [
+      103056600,
+      103315800
+    ],
+    "loaded_price_context_range": [
+      100443000,
+      103315800
+    ],
+    "working_storage_updates": 8,
+    "working_process_transitions": [
+      {
+        "as_of": 103058400,
+        "reason": "方向变化（连续性在此断开）",
+        "working_life": "not-read-at-this-boundary",
+        "working_life_short": "not-read",
+        "start": null,
+        "direction": "up",
+        "previous_address": 37905,
+        "address": 37913,
+        "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/2607d3e9-d2b0-4d2d-a458-939c4a3e7255"
+      },
+      {
+        "as_of": 103151400,
+        "reason": "方向变化（连续性在此断开）",
+        "working_life": "a820d2c1-07be-44e6-8882-4edebf3b9e1b",
+        "working_life_short": "a820d2c1",
+        "start": null,
+        "direction": "down",
+        "previous_address": 37913,
+        "address": 37927,
+        "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/ef2f74f6-bdfe-4d89-bc78-4114de18e86c"
+      }
+    ],
+    "working_process_transition_count": 2,
+    "working_continuity_scope": "reused W02 projection preserves gaps at unverified storage boundaries; the new consumer connects only when fresh bases prove same Life/start/direction",
+    "source_exact_first": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/7bab81e5-c035-4673-8367-60464e07e881",
+    "data_binding": 1,
+    "working_life": "a820d2c1-07be-44e6-8882-4edebf3b9e1b",
+    "working_start": 103059000,
+    "rhythm_detail": {
+      "waiting": 123600.0,
+      "waiting_ratio": 15.846153846153848,
+      "current_interval_median": 7800.0,
+      "local_start": 103059000,
+      "last_update": 103192200,
+      "local_count": 15,
+      "full_count": 15,
+      "working_life": "a820d2c1-07be-44e6-8882-4edebf3b9e1b",
+      "working_address": 37943
+    },
+    "display_identity": {
+      "symbol": "rb",
+      "node_life": "b340dc6c-c135-462b-b6e0-04d24622c180",
+      "data_binding": 1,
+      "mode": "evolution",
+      "selected_k_or_requested_range": {
+        "requested_range": [
+          103056600,
+          103315800
+        ],
+        "display_range": [
+          103056600,
+          103315800
+        ]
+      },
+      "resolved_exact_or_occurrence_selection": {
+        "first_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/7bab81e5-c035-4673-8367-60464e07e881",
+        "last_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/cfd51328-e2cf-4360-8314-20c9238e93fb",
+        "formal_occurrences": 433
+      },
+      "configuration_version": "0.2.1",
+      "optional_panels": [
+        "rhythm"
+      ]
+    }
+  },
+  "notices": [],
+  "files": {
+    "close_path": {
+      "file": "n_display__close_path.csv",
+      "rows": 433,
+      "columns": [
+        "x",
+        "y",
+        "symbol",
+        "source_exact",
+        "as_of_uti",
+        "origin_uti",
+        "state_text",
+        "meaning"
+      ],
+      "sha256": "0d521244f3bc53512222e87dbac75de98e30e424e6270ca09e8ee1b7c07ae5db"
+    },
+    "completed_recent_updates": {
+      "file": "n_display__completed_recent_updates.csv",
+      "rows": 3,
+      "columns": [
+        "x",
+        "y",
+        "symbol",
+        "source_exact",
+        "as_of_uti",
+        "origin_uti",
+        "state_text",
+        "meaning"
+      ],
+      "sha256": "4841b2b02f53836126ac2ae49274b66a529bf4839cf3d963f78f801cefe8c76f"
+    },
+    "completed_previous_updates": {
+      "file": "n_display__completed_previous_updates.csv",
+      "rows": 3,
+      "columns": [
+        "x",
+        "y",
+        "symbol",
+        "source_exact",
+        "as_of_uti",
+        "origin_uti",
+        "state_text",
+        "meaning"
+      ],
+      "sha256": "983819a313c8f08ab92e13a2dcbcd0c00ba6ae727ccc93f886fac7e39ded13e1"
+    },
+    "working_progress_points": {
+      "file": "n_display__working_progress_points.csv",
+      "rows": 433,
+      "columns": [
+        "x",
+        "y",
+        "symbol",
+        "source_exact",
+        "as_of_uti",
+        "origin_uti",
+        "state_text",
+        "meaning"
+      ],
+      "sha256": "69edb0a93e264962366b91a09adf2e868650b1ee83530e7e246fc800fb48122d"
+    },
+    "working_counter_points": {
+      "file": "n_display__working_counter_points.csv",
+      "rows": 433,
+      "columns": [
+        "x",
+        "y",
+        "symbol",
+        "source_exact",
+        "as_of_uti",
+        "origin_uti",
+        "state_text",
+        "meaning"
+      ],
+      "sha256": "c10d17c6667b1da7427e717e38f47ac7336169020beb089f5add940601adea7c"
+    },
+    "working_efficiency_points": {
+      "file": "n_display__working_efficiency_points.csv",
+      "rows": 433,
+      "columns": [
+        "x",
+        "y",
+        "symbol",
+        "source_exact",
+        "as_of_uti",
+        "origin_uti",
+        "state_text",
+        "meaning"
+      ],
+      "sha256": "107c2bb65dfb50bd8c5db5fef625e2e446dcc82722c0baacd8f060ad5816a529"
+    },
+    "recent_duration_updates": {
+      "file": "n_display__recent_duration_updates.csv",
+      "rows": 3,
+      "columns": [
+        "x",
+        "y",
+        "symbol",
+        "source_exact",
+        "as_of_uti",
+        "origin_uti",
+        "state_text",
+        "meaning"
+      ],
+      "sha256": "7206851f02ed9f63f6cc561df9748cc5b5b6a45a875fb9ac389b92e70d12e2d1"
+    },
+    "previous_duration_updates": {
+      "file": "n_display__previous_duration_updates.csv",
+      "rows": 3,
+      "columns": [
+        "x",
+        "y",
+        "symbol",
+        "source_exact",
+        "as_of_uti",
+        "origin_uti",
+        "state_text",
+        "meaning"
+      ],
+      "sha256": "ff466a4acca2737cc41a2c8b13ac8485aa03d37a62664d8e948a88b89fd407f1"
+    },
+    "working_duration_points": {
+      "file": "n_display__working_duration_points.csv",
+      "rows": 433,
+      "columns": [
+        "x",
+        "y",
+        "symbol",
+        "source_exact",
+        "as_of_uti",
+        "origin_uti",
+        "state_text",
+        "meaning"
+      ],
+      "sha256": "79454b35f59b7b39072eb0e6baa8b6de94266492d67969e95463878eff255034"
+    },
+    "waiting_ratio_points": {
+      "file": "n_display__waiting_ratio_points.csv",
+      "rows": 433,
+      "columns": [
+        "x",
+        "y",
+        "symbol",
+        "source_exact",
+        "as_of_uti",
+        "origin_uti",
+        "state_text",
+        "meaning"
+      ],
+      "sha256": "49021cf5f42e07debc3d3c263eec45bc3b94980db97173299b2e91c54100c48a"
+    },
+    "selected_actual_endpoints": {
+      "file": "n_display__selected_actual_endpoints.csv",
+      "rows": 0,
+      "columns": [
+        "x",
+        "y",
+        "symbol",
+        "source_exact",
+        "as_of_uti",
+        "origin_uti",
+        "state_text",
+        "meaning"
+      ],
+      "sha256": "00bb260b7d25a84f963403a0b4dc318dc39f1bb38cad1dc22d60a48627b9772a"
+    },
+    "selected_confirmations": {
+      "file": "n_display__selected_confirmations.csv",
+      "rows": 0,
+      "columns": [
+        "x",
+        "y",
+        "symbol",
+        "source_exact",
+        "as_of_uti",
+        "origin_uti",
+        "state_text",
+        "meaning"
+      ],
+      "sha256": "00bb260b7d25a84f963403a0b4dc318dc39f1bb38cad1dc22d60a48627b9772a"
+    },
+    "completed_recent_hold": {
+      "file": "n_display__completed_recent_hold.csv",
+      "rows": 3,
+      "columns": [
+        "x0",
+        "x1",
+        "y0",
+        "y1",
+        "symbol",
+        "source_exact",
+        "as_of_uti",
+        "origin_uti",
+        "state_text",
+        "meaning"
+      ],
+      "sha256": "cf4e78e5eca5f5f87a75582e57fe926c7a9539bdfe5c22d7b02dacddf5b3b490"
+    },
+    "completed_previous_hold": {
+      "file": "n_display__completed_previous_hold.csv",
+      "rows": 3,
+      "columns": [
+        "x0",
+        "x1",
+        "y0",
+        "y1",
+        "symbol",
+        "source_exact",
+        "as_of_uti",
+        "origin_uti",
+        "state_text",
+        "meaning"
+      ],
+      "sha256": "05668cf2cc3a9708cfa255f137bde15efeafeeb54fa2d185ae872a6760b13dce"
+    },
+    "working_progress_steps": {
+      "file": "n_display__working_progress_steps.csv",
+      "rows": 807,
+      "columns": [
+        "x0",
+        "x1",
+        "y0",
+        "y1",
+        "symbol",
+        "source_exact",
+        "as_of_uti",
+        "origin_uti",
+        "state_text",
+        "meaning"
+      ],
+      "sha256": "59909875c0c91e0843ba185443cc559514a477817bebfe2cf486e0ef41510b18"
+    },
+    "working_counter_steps": {
+      "file": "n_display__working_counter_steps.csv",
+      "rows": 446,
+      "columns": [
+        "x0",
+        "x1",
+        "y0",
+        "y1",
+        "symbol",
+        "source_exact",
+        "as_of_uti",
+        "origin_uti",
+        "state_text",
+        "meaning"
+      ],
+      "sha256": "f5e8959edfdf0059e35a0e906e50cfcb17f1a931fb8b52960b0a05549cdc4610"
+    },
+    "working_efficiency_steps": {
+      "file": "n_display__working_efficiency_steps.csv",
+      "rows": 807,
+      "columns": [
+        "x0",
+        "x1",
+        "y0",
+        "y1",
+        "symbol",
+        "source_exact",
+        "as_of_uti",
+        "origin_uti",
+        "state_text",
+        "meaning"
+      ],
+      "sha256": "95da19f4f4c606e8445bc8e1302ba8799c3faf895177cbfae95b6adddbbb0454"
+    },
+    "recent_duration_hold": {
+      "file": "n_display__recent_duration_hold.csv",
+      "rows": 3,
+      "columns": [
+        "x0",
+        "x1",
+        "y0",
+        "y1",
+        "symbol",
+        "source_exact",
+        "as_of_uti",
+        "origin_uti",
+        "state_text",
+        "meaning"
+      ],
+      "sha256": "d0d4822c228e3b6f924e0692f2b4bce86a290df818d64a1685e795e35966352b"
+    },
+    "previous_duration_hold": {
+      "file": "n_display__previous_duration_hold.csv",
+      "rows": 3,
+      "columns": [
+        "x0",
+        "x1",
+        "y0",
+        "y1",
+        "symbol",
+        "source_exact",
+        "as_of_uti",
+        "origin_uti",
+        "state_text",
+        "meaning"
+      ],
+      "sha256": "a122aa60dd333c1bd4d562fe06edddf9e8e751e44e48783dd43b5108ec5355b6"
+    },
+    "waiting_ratio_steps": {
+      "file": "n_display__waiting_ratio_steps.csv",
+      "rows": 850,
+      "columns": [
+        "x0",
+        "x1",
+        "y0",
+        "y1",
+        "symbol",
+        "source_exact",
+        "as_of_uti",
+        "origin_uti",
+        "state_text",
+        "meaning"
+      ],
+      "sha256": "56a6a4c4ace1c2e2a80972e29013d61c547980b254dcac8b67294d7ef88b81f6"
+    },
+    "selected_previous_boundaries": {
+      "file": "n_display__selected_previous_boundaries.csv",
+      "rows": 0,
+      "columns": [
+        "x0",
+        "x1",
+        "y0",
+        "y1",
+        "symbol",
+        "source_exact",
+        "as_of_uti",
+        "origin_uti",
+        "state_text",
+        "meaning"
+      ],
+      "sha256": "6270696bfcdb60759c2384660f9fdc3420b5b91b1101e29c7bd9215548ceed70"
+    },
+    "selected_recent_boundaries": {
+      "file": "n_display__selected_recent_boundaries.csv",
+      "rows": 0,
+      "columns": [
+        "x0",
+        "x1",
+        "y0",
+        "y1",
+        "symbol",
+        "source_exact",
+        "as_of_uti",
+        "origin_uti",
+        "state_text",
+        "meaning"
+      ],
+      "sha256": "6270696bfcdb60759c2384660f9fdc3420b5b91b1101e29c7bd9215548ceed70"
+    },
+    "selected_working_boundary": {
+      "file": "n_display__selected_working_boundary.csv",
+      "rows": 0,
+      "columns": [
+        "x0",
+        "x1",
+        "y0",
+        "y1",
+        "symbol",
+        "source_exact",
+        "as_of_uti",
+        "origin_uti",
+        "state_text",
+        "meaning"
+      ],
+      "sha256": "6270696bfcdb60759c2384660f9fdc3420b5b91b1101e29c7bd9215548ceed70"
+    },
+    "same_bound_5m_ohlc": {
+      "file": "same_bound_5m_ohlc.csv",
+      "rows": 433,
+      "sha256": "401071f07d4ba00dd8ed150732d597663f578fba8b9e070fdeb97f25efa7adef"
+    }
+  }
+}
