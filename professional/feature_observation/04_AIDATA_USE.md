@@ -2,19 +2,21 @@
 
 ## 首次使用：从 README 进入
 
-**先读取所采用 aidata 版本的 [README.md](https://github.com/daowei2026/aidata/blob/main/README.md)**，理解整体用途、长期概览和大—中—小尺度、定位特征与观察特征，以及图和对应数据的基本关系。实际配置时再按需阅读 [开发参考](https://github.com/daowei2026/aidata/blob/main/docs/DEVELOPMENT_GUIDE.md)、[run_brief 输入合同](https://github.com/daowei2026/aidata/blob/main/docs/RUN_BRIEF_INPUT_CONTRACT.md)、[真实数据测试说明](https://github.com/daowei2026/aidata/blob/main/tests/README.md)。
+**先读取所采用 aidata 版本的 [README.md](https://github.com/daowei2026/aidata/blob/main/README.md)**，理解定位、观察范围、图和对应数据的关系。长期概览和大—中—小尺度是按问题使用的工具，不是工作 2 的设计模板。实际配置时再按需阅读 [开发参考](https://github.com/daowei2026/aidata/blob/main/docs/DEVELOPMENT_GUIDE.md)、[run_brief 输入合同](https://github.com/daowei2026/aidata/blob/main/docs/RUN_BRIEF_INPUT_CONTRACT.md)、[真实数据测试说明](https://github.com/daowei2026/aidata/blob/main/tests/README.md)，记录准确版本。
 
 可优先查阅已经提供实际运行方式的 [microstructure_review.py 示例](https://github.com/daowei2026/aidata/blob/main/examples/microstructure_review.py)，了解多个具体特征怎样实例化、配置 `run_brief`、创建看图页面；**只借调用方法，不默认借其板块、参数、时间尺度或特征含义**。本次 `U2NormalNodeBehaviorFrp` 仍须从自己的真实结果读回与方法合同判断能否接入。
 
 ## 1. 工具职责与专业职责分开
 
-- 工作 2 决定特征信息怎样展示才方便理解，包括实际要画的内容、文字解释以及是否先单品种/多品种。
-- 工作 3 检查 aidata 的长期概览和大—中—小尺度图是否适用，再按本次观察配置制图。
+- 工作 2 根据特征业务语义和 uplot/CAEGraph 实际能力，决定值得画的信息、K 线叠加或独立附图等具体表达，以及时间/状态/图层/更新含义，形成实际展示配置文件。应读取实际采用 uplot 版本的 `CAEGraph使用手册.md`，不能从 aidata 默认图反向决定专业画法。
+- 工作 3 消费工作 2 的文件，将其放入 `aidata/feature_configs` 对应位置，验证实际调用；借助 aidata 多层定位值得观察的位置、组织图和范围并提供图对应数据。重要业务画法仍由工作 2 决定，适配和调用不能代做这项选择。
+- 设计不固定为单 As-Of 的 6+6+Working 截面，要考虑沿时间观察和选定时点回看。最终多品种呈现中颜色优先留给品种，其他性质优先使用线型、形状、位置或分图；不新增单/多品种选择任务，不预设实时刷新或逐拍重算。
+- 工作 4 优先分析正式 N、对应行情及必要上游；数据足够时直接给有边界认识，需要几何或展示判断时才定向看图，实际未看像素就如实标明。
 - aidata 的实际绘图接口不是自动代替专业人员完成特征展示设计，更不是自动证明特征具有投资业务价值。
 
 ## 2. 已有能力的确认范围
 
-从 aidata 当前 README、docs/DEVELOPMENT_GUIDE.md、docs/RUN_BRIEF_INPUT_CONTRACT.md、feature_configs/ 和 evidence_plot.py 可核：
+以下是准备稿与首例提供的接口核对入口，不代表新设计已全部适配；实际能力以锁定版本的 README、docs/DEVELOPMENT_GUIDE.md、docs/RUN_BRIEF_INPUT_CONTRACT.md、feature_configs/、evidence_plot.py 和真实调用为准：
 
 - 正常使用时，通过 run_brief_input 指明时间、对象、定位及观察特征、观察尺度等配置；定位特征和观察特征可以不同。
 - 独立特征展示配置在 aidata/feature_configs，当前已有 ZigConfirm、ScaleTurnCalendar、ThickFrp、BlkThickFrp 的专属配置；通用绘图支持 point/line/segment 和有限的样式、文字、hover。
@@ -24,11 +26,13 @@
 
 ## 3. 实际使用时怎样考虑
 
-先对特征需要展示的信息及实际已有结果建立对应；检查能否使用已有特征展示配置、是否只需新配置、还是有某种展示方式超出当前通用绘图能力。再在适合的时间尺度与范围中生成实际图及对应数据。必要时通过结果调整前面的展示设计或参数。
+先将工作 2 的配置与真实输出、uplot/CAEGraph 能力及 aidata 消费入口建立对应，再按实际问题定位时间位置、组织范围并取得真实图和同范围数据。配置格式或接口有较大问题时给出实际证据与最小接法，不自行改变配置归属，也不因工具默认能力压回专业设计。
 
-**展示配置未来放入 feature_configs 是当前倾向，不是已经决定的执行时点**；不能只为使目录“有文件”就提交未经专业观察的正式画法。
+**工作 2 实际配置文件 → 工作 3 接入 `aidata/feature_configs` 的交接已明确。**文件作为可修订专业成果保存，入库和验证仍走相关仓库实际分支及写权，不因有文件就宣称画法、接口或专业观察已通过。
 
-对特征保存结果的读取、可能的接口衔接、实际多尺度制图及浏览器可用性，应在后续新仓库材料落实后的运行前审查中按本轮真实代码和执行环境核对；本准备稿不把旧运行遗留问题直接推断成新的必然问题。
+优先实际验证正常 Feature 实例/已有正式结果能否直接供绘图。N 使用多表 `to_dfs`/`read_session`，已有结果可经 `CalType.OnlyRead` 读取；不能把普通入口调用 `rerun()` 理解为必须重算整段历史。按锁定 aidata、uplot、TIS 版本核多表关联、随时间变化及画法，只有实际不足才定位缺层和最小适配，不凭表数量或旧 CSV 路径推定必须改公共接口。
+
+`BI-01-FO-01` Worker 首个 rb 单 As-Of 的八份 CSV 和 `fixed_input` 是有效的首例投影，不是未经比较即可固化的默认架构。需要缓存/导出时可保留 CSV 并说明理由，不为避开 CSV 复制正式计算或重跑 N。工作 4 的数据优先取正式特征、行情与必要上游；`plot_view_data` 核对显示内容，不能冒充正式结果或已经完成专业分析。
 
 ## 4. 工程边界
 
