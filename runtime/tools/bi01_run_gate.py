@@ -15,7 +15,8 @@ import subprocess
 import sys
 from pathlib import Path, PurePosixPath
 
-RUN = "runs/BI-01-V2-02"
+DEFAULT_RUN_ID = "BI-01-V2-02"
+RUN = "runs/" + DEFAULT_RUN_ID
 BINDING = "runtime/config/WORKMAP_BINDING.json"
 HEX40 = re.compile(r"^[0-9a-f]{40}$")
 HEX64 = re.compile(r"^[0-9a-f]{64}$")
@@ -30,7 +31,13 @@ REQUIRED = (
 
 
 class Git:
-    def __init__(self, root: str, ref: str):
+    def __init__(self, root: str, ref: str, run_id: str = DEFAULT_RUN_ID):
+        if not isinstance(run_id, str) or not re.fullmatch(r"BI-01-[A-Z0-9]+(?:-[A-Z0-9]+)*", run_id):
+            raise ValueError("INVALID_RUN_ID")
+        self.run_id = run_id
+        self.run_root = "runs/" + run_id
+        self.invocation_prefix = run_id.replace("BI-01-", "BI01-", 1)
+        self.reader_task = self.run_root + "/reviews/management-R0001/READER_TASK.md"
         if not HEX40.fullmatch(ref):
             raise ValueError("EXACT_COMMIT_REQUIRED")
         self.root = Path(root).resolve()
@@ -99,10 +106,10 @@ def active_binding(view: Git) -> list[str]:
     try:
         stream = b["streams"]["bi01"]
         paths = [
-            (b["overview"]["path"], RUN + "/README.md"),
-            (stream["map"]["path"], RUN + "/00_长程推进地图.md"),
-            (stream["task"], RUN + "/01_当前任务.md"),
-            (b["receipt_path"], RUN + "/reviews/WORKMAP_INTAKE_CURRENT.json"),
+            (b["overview"]["path"], view.run_root + "/README.md"),
+            (stream["map"]["path"], view.run_root + "/00_长程推进地图.md"),
+            (stream["task"], view.run_root + "/01_当前任务.md"),
+            (b["receipt_path"], view.run_root + "/reviews/WORKMAP_INTAKE_CURRENT.json"),
         ]
         problems = [
             "WORKMAP_PATH_MISMATCH:" + expected
@@ -124,13 +131,13 @@ def active_binding(view: Git) -> list[str]:
 def invocation(view: Git, round_id: str) -> tuple[dict, list[str]]:
     if not ROUND.fullmatch(round_id):
         raise ValueError("ROUND_ID_REQUIRED_RNNNN")
-    root = RUN + "/provenance/turns/" + round_id
+    root = view.run_root + "/provenance/turns/" + round_id
     record = view.obj(root + "/INVOCATION.json")
     prompt = view.raw(root + "/PROMPT.md")
     errors = require([
         (all(key in record for key in REQUIRED), "INVOCATION_FIELDS_MISSING"),
         (record.get("schema") == "bi01-invocation/v1", "INVOCATION_SCHEMA"),
-        (record.get("run_id") == "BI-01-V2-02", "RUN_ID_MISMATCH"),
+        (record.get("run_id") == view.run_id, "RUN_ID_MISMATCH"),
         (record.get("round_id") == round_id, "ROUND_ID_MISMATCH"),
         (record.get("role") in ROLES, "ROLE_INVALID"),
         (HEX40.fullmatch(str(record.get("policy_commit", ""))) is not None, "POLICY_COMMIT_REQUIRED"),
@@ -143,7 +150,7 @@ def invocation(view: Git, round_id: str) -> tuple[dict, list[str]]:
             errors.append("MISSING_IDENTITY:" + name)
     # Existing coordinator-dispatch/v3 emits [invocation_id] as its first line.
     # That EXACT line is also the common phone scheduler's bracketed round marker.
-    prefix = "BI01-V2-02-" + round_id + "-"
+    prefix = view.invocation_prefix + "-" + round_id + "-"
     invocation_id = record.get("invocation_id")
     marker = record.get("round_marker")
     if (not isinstance(invocation_id, str)
@@ -175,7 +182,7 @@ def locator(view: Git, value: object, label: str, run_scoped: bool = True) -> li
     ref, path, selector = value.get("commit"), value.get("path"), value.get("selector")
     if not isinstance(ref, str) or not HEX40.fullmatch(ref):
         return ["LOCATOR_COMMIT_REQUIRED:" + label]
-    if not isinstance(path, str) or (run_scoped and not path.startswith(RUN + "/")):
+    if not isinstance(path, str) or (run_scoped and not path.startswith(view.run_root + "/")):
         return ["LOCATOR_PATH_OUTSIDE_NEW_RUN:" + label]
     if not isinstance(selector, str) or not selector:
         return ["LOCATOR_SELECTOR_REQUIRED:" + label]
@@ -190,7 +197,7 @@ def locator(view: Git, value: object, label: str, run_scoped: bool = True) -> li
 
 
 def send_state(view: Git, round_id: str) -> tuple[str, list[str]]:
-    p = RUN + "/provenance/turns/" + round_id + "/SEND_RECEIPT.json"
+    p = view.run_root + "/provenance/turns/" + round_id + "/SEND_RECEIPT.json"
     if not view.exists(p):
         # Absence is not proof of no attempted phone action: live scheduler check required.
         return "NOT_RECORDED", []
@@ -220,13 +227,13 @@ def first_reader(view: Git, round_id: str, rec: dict) -> list[str]:
         repository = "daowei2026/observe-iterate"
         task_ref, bound_ref, adoption = (rec[k] for k in
                                          ("current_task_ref", "binding_ref", "task_adoption_ref"))
-        if (task_ref["path"] != READER_TASK or bound_ref["path"] != READER_TASK
+        if (task_ref["path"] != view.reader_task or bound_ref["path"] != view.reader_task
                 or bound_ref["commit"] != task_ref["commit"]):
             raise ValueError("READER_TASK_BINDING_SOURCE_MISMATCH")
         task, _ = coordinator.source(view.root, task_ref, repository)
-        if task.encode("utf-8") != view.raw(READER_TASK):
+        if task.encode("utf-8") != view.raw(view.reader_task):
             raise ValueError("READER_TASK_NOT_CURRENT")
-        if not re.search(r"^task_id: BI01-V2-02-WORKMAP-READER-01$", task, re.M):
+        if not re.search(r"^task_id: " + re.escape(view.invocation_prefix) + r"-WORKMAP-READER-01$", task, re.M):
             raise ValueError("READER_TASK_ID_MISMATCH")
         bound, _ = coordinator.source(view.root, bound_ref, repository)
         binding = coordinator.loads(bound)
@@ -235,7 +242,7 @@ def first_reader(view: Git, round_id: str, rec: dict) -> list[str]:
         if len(blocks) != 1 or binding != coordinator.loads(blocks[0]):
             raise ValueError("READER_BINDING_NOT_CURRENT")
 
-        event = view.obj(RUN + "/provenance/turns/" + round_id + "/DISPATCH.json")
+        event = view.obj(view.run_root + "/provenance/turns/" + round_id + "/DISPATCH.json")
         for key in ("work_id", "invocation_id", "assignment_token", "binding_ref"):
             if event.get(key) != rec.get(key):
                 raise ValueError("DISPATCH_IDENTITY_MISMATCH:" + key)
@@ -245,20 +252,20 @@ def first_reader(view: Git, round_id: str, rec: dict) -> list[str]:
                     raise ValueError("DISPATCH_SOURCE_MISMATCH:" + key)
         prepared = coordinator.prepare_dispatch(
             view.root, rec["policy_commit"], "runtime/config/COORDINATOR_DISPATCH.json", event)
-        coordinator.verify(prepared, view.raw(RUN + "/provenance/turns/" + round_id + "/PROMPT.md"))
+        coordinator.verify(prepared, view.raw(view.run_root + "/provenance/turns/" + round_id + "/PROMPT.md"))
         coordinator.verify_recipient(prepared, rec["recipient_ref"])
         if prepared["role"] != "review" or prepared["mode"] != "INDEPENDENT_REVIEW":
             raise ValueError("FIRST_READER_READ_ONLY_ROLE_REQUIRED")
 
         plan = binding["plan_ref"]
-        manager_path = re.fullmatch(re.escape(RUN) + r"/reviews/management-(R[0-9]{4})/DECISION.md",
+        manager_path = re.fullmatch(re.escape(view.run_root) + r"/reviews/management-(R[0-9]{4})/DECISION.md",
                                     adoption["path"])
         if (not manager_path or adoption["selector"] != "#adoption"
                 or plan["path"] != adoption["path"] or plan["commit"] != adoption["commit"]
                 or plan["selector"] != "#reader-pre-adoption"):
             raise ValueError("FIRST_READER_MANAGEMENT_ADOPTION_REQUIRED")
         coordinator.source(view.root, adoption, repository)
-        authority = Git(str(view.root), adoption["commit"])
+        authority = Git(str(view.root), adoption["commit"], view.run_id)
         decision = authority.text(adoption["path"])
         if decision.encode("utf-8") != view.raw(adoption["path"]):
             raise ValueError("FIRST_READER_MANAGEMENT_DECISION_NOT_CURRENT")
@@ -266,12 +273,12 @@ def first_reader(view: Git, round_id: str, rec: dict) -> list[str]:
         manager, problems = invocation(authority, manager_round)
         if problems or manager["role"] != "management":
             raise ValueError("FIRST_READER_MANAGEMENT_INVOCATION_REQUIRED")
-        for key, expected in (("work_id", "BI-01"), ("run_id", "BI-01-V2-02"),
+        for key, expected in (("work_id", "BI-01"), ("run_id", view.run_id),
                               ("role", "management"), ("invocation_id", manager["invocation_id"]),
                               ("assignment_token", manager["assignment_token"])):
             if not re.search(r"^" + key + ": " + re.escape(expected) + r"$", decision, re.M):
                 raise ValueError("FIRST_READER_MANAGEMENT_IDENTITY:" + key)
-        returned = view.obj(RUN + "/provenance/turns/" + manager_round + "/ROLE_RETURN.json")
+        returned = view.obj(view.run_root + "/provenance/turns/" + manager_round + "/ROLE_RETURN.json")
         artifact = {k: adoption[k] for k in ("repo", "commit", "path")}
         if (send_state(view, manager_round)[0] != "COMMITTED"
                 or returned.get("schema") != "longrun-return/v1"
@@ -283,10 +290,10 @@ def first_reader(view: Git, round_id: str, rec: dict) -> list[str]:
             raise ValueError("FIRST_READER_ISSUED_MANAGEMENT_DECISION_REQUIRED")
 
         sources = [entry["source"] for entry in binding["source_reads"]]
-        input_paths = [RUN + "/README.md", RUN + "/00_长程推进地图.md",
-                       RUN + "/01_当前任务.md", BINDING]
+        input_paths = [view.run_root + "/README.md", view.run_root + "/00_长程推进地图.md",
+                       view.run_root + "/01_当前任务.md", BINDING]
         inputs = []
-        for path in input_paths + [RUN + "/OWNER_START.md"]:
+        for path in input_paths + [view.run_root + "/OWNER_START.md"]:
             refs = [s for s in sources if s.get("path") == path]
             if len(refs) != 1 or refs[0].get("selector") not in ("full", "全文"):
                 raise ValueError("FIRST_READER_FULL_INPUT_REQUIRED:" + path)
@@ -323,7 +330,7 @@ def pre_dispatch(view: Git, round_id: str) -> dict:
             errors.append("BOOTSTRAP_BINDING_REF_MISMATCH")
         try:
             ref = rec["bootstrap_ref"]
-            bootstrap = Git(str(view.root), ref["commit"]).obj(ref["path"])
+            bootstrap = Git(str(view.root), ref["commit"], view.run_id).obj(ref["path"])
             if (ref.get("selector") not in ("full", "全文")
                     or bootstrap.get("schema") != "question-work/v2"
                     or bootstrap.get("kind") != "BOOTSTRAP"
@@ -345,7 +352,7 @@ def pre_dispatch(view: Git, round_id: str) -> dict:
             unconfigured = False
         if (rec.get("role") == "review" and not rec.get("bootstrap_ref")
                 and isinstance(rec.get("current_task_ref"), dict)
-                and rec["current_task_ref"].get("path") == READER_TASK
+                and rec["current_task_ref"].get("path") == view.reader_task
                 and unconfigured):
             errors.extend(first_reader(view, round_id, rec))
         else:
@@ -369,7 +376,7 @@ def after_return(view: Git, round_id: str) -> dict:
     errors.extend(state_errors)
     if state != "COMMITTED":
         errors.append("NO_CONFIRMED_SEND_FOR_RETURN")
-    p = RUN + "/provenance/turns/" + round_id
+    p = view.run_root + "/provenance/turns/" + round_id
     if not view.exists(p + "/FULL_RESPONSE.md"):
         errors.append("FULL_RESPONSE_MISSING")
     else:
@@ -419,7 +426,7 @@ def after_return(view: Git, round_id: str) -> dict:
     return {
         "check": "after-return", "round_id": round_id, "ok": not errors,
         "errors": sorted(set(errors)),
-        "limits": "Reply/Return integrity only. Management reception, independent audit and G1-G6 remain separate.",
+        "limits": "Reply/Return integrity only. Management reception and applicable independent review remain separate.",
         "business_gate": False,
     }
 
@@ -429,12 +436,14 @@ def main() -> int:
     parser.add_argument("command", choices=["status", "pre-dispatch", "after-return"])
     parser.add_argument("--repo", required=True)
     parser.add_argument("--ref", required=True)
+    parser.add_argument("--run-id", default=DEFAULT_RUN_ID,
+                        help="Explicit run identity; paths and markers stay scoped to this run")
     parser.add_argument("--round", help="R0001, R0002, ...")
     args = parser.parse_args()
     try:
-        view = Git(args.repo, args.ref)
+        view = Git(args.repo, args.ref, args.run_id)
         if args.command == "status":
-            ready_root = view.exists(RUN + "/README.md")
+            ready_root = view.exists(view.run_root + "/README.md")
             problems = [] if ready_root else ["NEW_RUN_ROOT_MISSING"]
             # A future OWNER GO and real adopted work are never inferred from files.
             result = {

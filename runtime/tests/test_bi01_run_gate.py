@@ -101,7 +101,7 @@ class RoundGateOffline(unittest.TestCase):
         self.write(RUN + "/README.md", '<a id="common"></a>\nSynthetic common\n<a id="bi01"></a>\nSynthetic run\n')
         self.write(RUN + "/00_长程推进地图.md", '<a id="goal"></a>\nSynthetic map\n')
         self.write(RUN + "/01_当前任务.md", 'Synthetic complete S1/S2/S3 task; no business result.\n')
-        goal = "professional/v2/00_PURPOSE_AND_THREE_STEP_FLOW.md"
+        goal = "professional/feature_observation/00_PURPOSE_AND_FOUR_WORKS.md"
         self.write(goal, 'Synthetic goal; not actual business input.\n')
         policy_path = 'runtime/overlay/08_自然语言运行提示_v0.3.md'
         self.write(policy_path, (PROJECT / policy_path).read_text())
@@ -267,6 +267,78 @@ class RoundGateOffline(unittest.TestCase):
         self.assertTrue(result["ok"], result)
         self.assertEqual(result["recorded_send_state"], "NOT_RECORDED")
         self.assertEqual(result["sent"], False)
+
+    def prepare_fresh_run(self):
+        """A second synthetic run cannot acquire the legacy run's authority."""
+        self.fresh_id = "BI-01-FO-01"
+        self.fresh_root = "runs/" + self.fresh_id
+        for name in ("README.md", "OWNER_START.md", "BOOTSTRAP.json"):
+            self.write(self.fresh_root + "/" + name,
+                       (self.repo / RUN / name).read_text())
+        fresh_source = self.commit("synthetic separate fresh-run sources")
+        self.fresh_record = copy.deepcopy(self.record)
+        self.fresh_record.update(run_id=self.fresh_id,
+                                 invocation_id="BI01-FO-01-R0001-synthetic-fresh-a")
+        self.fresh_record["round_marker"] = "[" + self.fresh_record["invocation_id"] + "]"
+        for key in ("bootstrap_ref", "binding_ref", "current_task_ref", "task_adoption_ref"):
+            loc = self.fresh_record[key]
+            loc.update(commit=fresh_source, path=loc["path"].replace(RUN, self.fresh_root))
+        self.fresh_prompt = self.fresh_record["round_marker"] + "\nSynthetic fresh-run input.\n"
+        self.fresh_record["prompt_sha256"] = hashlib.sha256(self.fresh_prompt.encode()).hexdigest()
+        self.save_fresh_run()
+
+    def save_fresh_run(self):
+        root = self.fresh_root + "/provenance/turns/" + RID + "/"
+        self.write(root + "INVOCATION.json", json.dumps(self.fresh_record))
+        self.write(root + "PROMPT.md", self.fresh_prompt)
+        self.current = self.commit("synthetic fresh-run invocation; NO PHONE")
+
+    def fresh_view(self):
+        return gate.Git(self.repo, self.current, self.fresh_id)
+
+    def test_fresh_run_bootstrap_and_legacy_view_are_isolated(self):
+        self.prepare_fresh_run()
+        self.assertTrue(gate.pre_dispatch(self.fresh_view(), RID)["ok"])
+        self.assertEqual(gate.invocation(self.fresh_view(), RID)[0]["run_id"], self.fresh_id)
+        self.assertEqual(gate.invocation(self.view(), RID)[0]["run_id"], "BI-01-V2-02")
+
+    def test_fresh_run_rejects_legacy_identity_marker_and_sources(self):
+        self.prepare_fresh_run()
+        original = copy.deepcopy(self.fresh_record)
+        for changes, expected in (
+            ({"run_id": "BI-01-V2-02"}, "RUN_ID_MISMATCH"),
+            ({"invocation_id": INV}, "ROUND_MARKER_OR_INVOCATION_MISMATCH"),
+            ({"current_task_ref": self.owner}, "LOCATOR_PATH_OUTSIDE_NEW_RUN:current_task_ref"),
+            ({"bootstrap_ref": self.bootstrap, "binding_ref": self.bootstrap},
+             "LOCATOR_PATH_OUTSIDE_NEW_RUN:bootstrap_ref"),
+        ):
+            with self.subTest(changes=changes):
+                self.fresh_record = copy.deepcopy(original)
+                self.fresh_record.update(changes)
+                self.save_fresh_run()
+                self.assertIn(expected, gate.pre_dispatch(self.fresh_view(), RID)["errors"])
+
+    def test_fresh_run_cannot_use_adopted_legacy_workmap(self):
+        self.prepare_fresh_run()
+        self.fresh_record.update(role="professional")
+        self.fresh_record.pop("bootstrap_ref")
+        binding = {
+            "schema": "workmap-binding/v2", "status": "ADOPTED",
+            "overview": {"path": RUN + "/README.md"},
+            "streams": {"bi01": {"map": {"path": RUN + "/00_长程推进地图.md"},
+                                  "task": RUN + "/01_当前任务.md"}},
+            "receipt_path": RUN + "/reviews/WORKMAP_INTAKE_CURRENT.json",
+        }
+        self.write(gate.BINDING, json.dumps(binding))
+        self.save_fresh_run()
+        result = gate.pre_dispatch(self.fresh_view(), RID)
+        self.assertFalse(result["ok"])
+        self.assertTrue(any(e.startswith("WORKMAP_PATH_MISMATCH:") for e in result["errors"]))
+
+    def test_run_id_cannot_escape_runs_directory(self):
+        for run_id in ("../BI-01-FO-01", "BI-01-FO-01/../../old", "", "BI-01-FO 01"):
+            with self.subTest(run_id=run_id), self.assertRaisesRegex(ValueError, "INVALID_RUN_ID"):
+                gate.Git(self.repo, self.current, run_id)
 
     def test_exact_first_line_and_marker_are_required(self):
         self.record["round_marker"] = "[DIFFERENT]"
