@@ -28,7 +28,7 @@ order_id：`BI01-FO01-N-DISPLAY-INTEGRATION-02`
 
 补充技术线索也已保留：hc 最近 500 个实际发生中，正式可用 `waiting_ratio` 最大为 430（不截成概率，未作业务判断）；i 在具名缺价上下文内有 24 个连续 night 行的 nullable close，最后有效 close 是 2017-03-30 14:55 的 564.5，2017-03-31 09:00 恢复为 572.0，Calendar position 连续。恢复值保持普通观察输入，没有填零或标成新极值确认。
 
-aidata 代码 commit 为 `db44a54fa30ff9b4b8dddbe37e020d087c914d62`，已推到 GitHub `daowei2026/aidata` 分支 `fy/bi01-fo01-n-display-r0007`。observe-iterate 技术包的最终 commit、远端 ref 和逐文件回读以 `GITHUB_RECEIPT.json` 为准。
+aidata 初始接入 commit 为 `db44a54fa30ff9b4b8dddbe37e020d087c914d62`；R8 修复后的当前 commit 为 `28260d3ec5d2ed254b2539cb9abc656e4737f80b`，均已推到 GitHub `daowei2026/aidata` 分支 `fy/bi01-fo01-n-display-r0007`。observe-iterate 技术包的最终 commit、远端 ref 和逐文件回读以 `GITHUB_RECEIPT.json` 为准。
 
 ## 二、权威原件与实际版本
 
@@ -50,7 +50,7 @@ aidata 代码 commit 为 `db44a54fa30ff9b4b8dddbe37e020d087c914d62`，已推到 
 |FRP 正常构造/方法|`5154c407249c130a6e048c8541b76dfdec3ea48c`|固定 checkout，只读|
 |worker ADT|`cd5c307dcb3483ef76242b5c37177a969c5fcbd2`|固定 overlay，用于保存类型匹配|
 |aidata 基线|`f58ea95c358b9ac31659c92b7bc20fe9bf7f8264`|独立工作树/分支改动；9ff 仅作参考|
-|aidata 结果|`db44a54fa30ff9b4b8dddbe37e020d087c914d62`|GitHub 分支 `fy/bi01-fo01-n-display-r0007`|
+|aidata 结果|`28260d3ec5d2ed254b2539cb9abc656e4737f80b`|GitHub 分支 `fy/bi01-fo01-n-display-r0007`；含 R8 标量实例身份修复|
 |uplot 实际导入|`13badc6c079eebe7242abd65e56b328c45dcee2a`|共享 checkout 只读；Owner 0a4fcd 只作参考|
 
 共享 uplot 在本单前已有 `pfw.py` 修改和两个未跟踪项；共享 TIS 也有既有 `STCalendar.py` 修改。本单原样保留，没有覆盖或提交它们。实际导入路径记录在 `evidence/RUNTIME_AND_RENDER_MANIFEST.json`。
@@ -113,9 +113,9 @@ i 缺价上下文另从同一正常主线入口读取 48 行。24 个 night bar 
 
 最终检查：
 
-- aidata 新测试与既有 evidence 合同测试共 `28 passed`；
+- aidata 新测试与既有 evidence 合同测试共 `29 passed`；
 - R0007 配置原件与实际落点的 CONFIG_VERSION、PANELS、TIME_POLICY、VIEW_RULES、23 个 configs 及两个 mode 的 `display_config` 全部语义相等；
-- `FINAL_VERIFICATION.json` 共 19 项，19 PASS、0 FAIL；
+- `FINAL_VERIFICATION.json` 共 20 项，20 PASS、0 FAIL；
 - 四页 HTML/PNG/runtime validation、全部 plot_view_data hash 和三个 selected-cut 的 K 后几何检查均通过；
 - i 缺价 24 行、恢复 UTI/close 得到固定核验。
 
@@ -132,10 +132,11 @@ i 缺价上下文另从同一正常主线入口读取 48 行。24 个 night bar 
 
 ## 七、提交、边界与剩余未完
 
-aidata 原 origin 指向内网 Gogs；第一次 push 因代理 502 失败。随后只读确认 `daowei2026/aidata` GitHub 仓存在，直接将独立分支推到 GitHub并回读 ref；没有改共享默认 remote。最终提交：
+aidata 原 origin 指向内网 Gogs；第一次 push 因代理 502 失败。随后只读确认 `daowei2026/aidata` GitHub 仓存在，直接将独立分支推到 GitHub并回读 ref；没有改共享默认 remote。初始接入和当前修复提交：
 
 ```text
 db44a54fa30ff9b4b8dddbe37e020d087c914d62
+28260d3ec5d2ed254b2539cb9abc656e4737f80b
 refs/heads/fy/bi01-fo01-n-display-r0007
 ```
 
@@ -160,7 +161,7 @@ refs/heads/fy/bi01-fo01-n-display-r0007
 |四页实际消费者数据|`plot_view_data/<page>/`|
 |HTML/PNG/浏览器/视觉证据|`render_evidence/`|
 |运行与安全边界|`evidence/RUNTIME_AND_RENDER_MANIFEST.json`|
-|19 项最终核验|`evidence/FINAL_VERIFICATION.json`|
+|20 项最终核验|`evidence/FINAL_VERIFICATION.json`|
 |可复跑及失败恢复脚本|`scripts/`|
 
 完整正式运行需固定：
@@ -177,3 +178,7 @@ aidata branch=fy/bi01-fo01-n-display-r0007
 ## 九、R8 端点补充
 
 管理后续要求直接核验 selected K 位于右开窗口边界时的可见性。现场实际 `end_uti_exclusive=K+1`，所以管理提出的 `end_uti=K` 条件没有出现；但直接审计此前发布的连续三页 HTML 时，发现后两页的标量 renderer 复用了首个 K=103150800 的 plotter 实例。该展示缺陷已在 aidata commit `28260d3ec5d2ed254b2539cb9abc656e4737f80b` 最小修复，三个 selected 页面已从原正式导出重新渲染并通过 K 点、无未来值、浏览器和像素检查。完整修前/修后证据、限制及发布信息见 `ENDPOINT_R8_SUPPLEMENT.md` 和更新后的 `GITHUB_RECEIPT.json`；本节不改变原正式读回数据或 Worker 的业务角色边界。
+
+## 十、九标量交付一致性挑战
+
+后续挑战要求不能只证明 K 点存在，还须逐项确认真实交付 HTML/CDS、图用 CSV 和正式 selected-cut 表的数值一致。新增审计从原 commit `39308f4…` 直接重现：确认时及末拍旧 HTML 的九类标量全部复用了确认前整行数据；这与主控观察一致。当前 R8 后三页则各有 9/9 标量与自身投影和正式值一致，末拍明确为完成效率 `0.1514170159 / 0.0845431993`、推进/逆向量 `50 / 80`、working efficiency `0.0377643505`，且无 K 后价格或特征。完整逐字段证据和准确限制见 `SCALAR_DISPLAY_CONSISTENCY_SUPPLEMENT.md` 与 `evidence/SCALAR_DISPLAY_CONSISTENCY_CHECK.json`。本挑战没有重读 N、再次重绘页面或新增 aidata 修改。

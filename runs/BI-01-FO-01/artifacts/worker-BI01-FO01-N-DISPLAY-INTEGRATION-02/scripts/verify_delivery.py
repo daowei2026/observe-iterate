@@ -77,6 +77,21 @@ def main() -> int:
     check("runtime/render manifest PASS", runtime["result"] == "PASS")
     check("browser capture PASS", browser["result"] == "PASS" and len(browser["results"]) == 4)
     check("Worker visual inspection PASS", visual["result"] == "PASS" and len(visual["pages"]) == 4)
+    scalar_consistency = json.loads(
+        (root / "evidence" / "SCALAR_DISPLAY_CONSISTENCY_CHECK.json").read_text(encoding="utf-8")
+    )
+    check(
+        "saved scalar HTML/CDS matches projections and formal tables",
+        scalar_consistency["result"] == "PASS"
+        and scalar_consistency["old_sequential_reuse_pattern_reproduced"] is True
+        and scalar_consistency["all_current_pages_pass"] is True,
+        {
+            "old_reuse_reproduced": scalar_consistency["old_sequential_reuse_pattern_reproduced"],
+            "current_page_results": {
+                page["label"]: page["result"] for page in scalar_consistency["pages"]
+            },
+        },
+    )
     page_ids = {page["page_id"] for page in runtime["pages"]}
     check("four expected pages", page_ids == EXPECTED_PAGES, sorted(page_ids))
 

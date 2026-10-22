@@ -1,0 +1,2181 @@
+{
+  "schema_version": 1,
+  "order_id": "BI01-FO01-N-DISPLAY-INTEGRATION-02",
+  "supplement_marker": "BI01-FO01-W02-SCALAR-CONSISTENCY-20261022",
+  "result": "PASS",
+  "method": "Read saved Bokeh HTML/CDS from old Git artifact and current delivery; compare all nine scalar rows with delivered plot-view CSVs and values independently selected from existing formal tables. No formal N read or isolated layout rebuild is used by this audit.",
+  "old_delivery_finding": "The 39308f4 before-confirmation page matches its projection.  Both later saved HTML documents reuse all nine before-confirmation scalar CDS rows, including x, y, exact and state fields.",
+  "current_delivery_finding": "The R8-rerendered three saved HTML documents each contain nine scalar CDS rows matching their own projection and formal selected-cut values, and contain no feature coordinate after K.",
+  "old_sequential_reuse_pattern_reproduced": true,
+  "old_later_pages_reuse_all_first_page_scalar_rows": {
+    "at_or_after_confirmation": true,
+    "final": true
+  },
+  "all_current_pages_pass": true,
+  "linked_fix": {
+    "aidata_commit": "28260d3ec5d2ed254b2539cb9abc656e4737f80b",
+    "observe_iterate_artifact_commit": "081e31241a0c88e47631f80a8b9b8dd43b2b569c",
+    "endpoint_check_sha256": "72f35038b9a5069c2d745c85aec02a09396b04f991d087e21c456f9453bfcce7",
+    "post_fix_html_audit_sha256": "caac19ee44487a0aa8a836c0c837f9826e6398adf113960dcd3bbe6119eeae3c",
+    "rerender_record_sha256": "e76399454cda6978a17f75d3e3b7ce2d6d11a6934b2b3afb1c807d85007f8e11"
+  },
+  "pages": [
+    {
+      "label": "before_confirmation",
+      "page_id": "rb_selected_before_confirmation_K103150800",
+      "selected_k": 103150800,
+      "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/6d4acb13-0d9b-48df-aced-4ec5e83f528a",
+      "formal_origin_as_of": 103150800,
+      "old_delivery": {
+        "source_ref": "39308f4a8fe6b6f2fe1399f8d9e56b91a5ceb643",
+        "html_sha256": "834a90b4623043d3bbe5df9ae728e6b1ca531f3ee77de004b6e17238ef4a19dc",
+        "png_sha256": "85fb33b799692725cd608ff7234d535e2e6839a46b4ffd6de53a6acf1096fc8c",
+        "scalar_views_matching_current_projection": 9,
+        "no_feature_coordinate_after_k": true
+      },
+      "current_delivery": {
+        "artifact_ref": "081e31241a0c88e47631f80a8b9b8dd43b2b569c",
+        "html_sha256": "432f56273f391e11df2b4e101e3da00797aed00dc2fae12df5659303d76d5ffa",
+        "png_sha256": "85fb33b799692725cd608ff7234d535e2e6839a46b4ffd6de53a6acf1096fc8c",
+        "scalar_views_matching_projection": 9,
+        "no_feature_coordinate_after_k": true
+      },
+      "scalar_views": {
+        "completed_recent_updates": {
+          "formal": {
+            "file": "data/selected_cuts/before_confirmation/metrics.csv",
+            "selector": "kind=8",
+            "column": "current",
+            "state": {
+              "present": 1,
+              "loo_knownness": 0
+            },
+            "value": 0.1434665770910312
+          },
+          "projection": {
+            "x": 103150800,
+            "y": 0.1434665770910312,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/6d4acb13-0d9b-48df-aced-4ec5e83f528a",
+            "as_of_uti": 103150800,
+            "origin_uti": 103150800,
+            "state_text": "present=1; loo_knownness=0",
+            "meaning": "最近窗PathEfficiency｜ratio"
+          },
+          "projection_checks": {
+            "x_is_k": true,
+            "as_of_is_k": true,
+            "origin_is_k": true,
+            "exact_matches_selected_cut": true,
+            "y_matches_formal_table": true
+          },
+          "old_delivery_html": {
+            "x": 103150800,
+            "y": 0.1434665770910312,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/6d4acb13-0d9b-48df-aced-4ec5e83f528a",
+            "as_of_uti": 103150800,
+            "origin_uti": 103150800,
+            "state_text": "present=1; loo_knownness=0",
+            "meaning": "最近窗PathEfficiency｜ratio"
+          },
+          "old_html_vs_projection": {
+            "fields": {
+              "x": true,
+              "y": true,
+              "symbol": true,
+              "source_exact": true,
+              "as_of_uti": true,
+              "origin_uti": true,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": true
+          },
+          "current_delivery_html": {
+            "x": 103150800,
+            "y": 0.1434665770910312,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/6d4acb13-0d9b-48df-aced-4ec5e83f528a",
+            "as_of_uti": 103150800,
+            "origin_uti": 103150800,
+            "state_text": "present=1; loo_knownness=0",
+            "meaning": "最近窗PathEfficiency｜ratio"
+          },
+          "current_html_vs_projection": {
+            "fields": {
+              "x": true,
+              "y": true,
+              "symbol": true,
+              "source_exact": true,
+              "as_of_uti": true,
+              "origin_uti": true,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": true
+          }
+        },
+        "completed_previous_updates": {
+          "formal": {
+            "file": "data/selected_cuts/before_confirmation/metrics.csv",
+            "selector": "kind=8",
+            "column": "previous",
+            "state": {
+              "present": 1,
+              "loo_knownness": 0
+            },
+            "value": 0.1335430475976482
+          },
+          "projection": {
+            "x": 103150800,
+            "y": 0.1335430475976482,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/6d4acb13-0d9b-48df-aced-4ec5e83f528a",
+            "as_of_uti": 103150800,
+            "origin_uti": 103150800,
+            "state_text": "present=1; loo_knownness=0",
+            "meaning": "此前窗PathEfficiency｜ratio"
+          },
+          "projection_checks": {
+            "x_is_k": true,
+            "as_of_is_k": true,
+            "origin_is_k": true,
+            "exact_matches_selected_cut": true,
+            "y_matches_formal_table": true
+          },
+          "old_delivery_html": {
+            "x": 103150800,
+            "y": 0.1335430475976482,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/6d4acb13-0d9b-48df-aced-4ec5e83f528a",
+            "as_of_uti": 103150800,
+            "origin_uti": 103150800,
+            "state_text": "present=1; loo_knownness=0",
+            "meaning": "此前窗PathEfficiency｜ratio"
+          },
+          "old_html_vs_projection": {
+            "fields": {
+              "x": true,
+              "y": true,
+              "symbol": true,
+              "source_exact": true,
+              "as_of_uti": true,
+              "origin_uti": true,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": true
+          },
+          "current_delivery_html": {
+            "x": 103150800,
+            "y": 0.1335430475976482,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/6d4acb13-0d9b-48df-aced-4ec5e83f528a",
+            "as_of_uti": 103150800,
+            "origin_uti": 103150800,
+            "state_text": "present=1; loo_knownness=0",
+            "meaning": "此前窗PathEfficiency｜ratio"
+          },
+          "current_html_vs_projection": {
+            "fields": {
+              "x": true,
+              "y": true,
+              "symbol": true,
+              "source_exact": true,
+              "as_of_uti": true,
+              "origin_uti": true,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": true
+          }
+        },
+        "recent_duration_updates": {
+          "formal": {
+            "file": "data/selected_cuts/before_confirmation/metrics.csv",
+            "selector": "kind=0",
+            "column": "current",
+            "state": {
+              "present": 1,
+              "loo_knownness": 0
+            },
+            "value": 270000.0
+          },
+          "projection": {
+            "x": 103150800,
+            "y": 270000.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/6d4acb13-0d9b-48df-aced-4ec5e83f528a",
+            "as_of_uti": 103150800,
+            "origin_uti": 103150800,
+            "state_text": "present=1; loo_knownness=0",
+            "meaning": "最近窗BusinessDuration｜CalendarUTITick"
+          },
+          "projection_checks": {
+            "x_is_k": true,
+            "as_of_is_k": true,
+            "origin_is_k": true,
+            "exact_matches_selected_cut": true,
+            "y_matches_formal_table": true
+          },
+          "old_delivery_html": {
+            "x": 103150800,
+            "y": 270000.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/6d4acb13-0d9b-48df-aced-4ec5e83f528a",
+            "as_of_uti": 103150800,
+            "origin_uti": 103150800,
+            "state_text": "present=1; loo_knownness=0",
+            "meaning": "最近窗BusinessDuration｜CalendarUTITick"
+          },
+          "old_html_vs_projection": {
+            "fields": {
+              "x": true,
+              "y": true,
+              "symbol": true,
+              "source_exact": true,
+              "as_of_uti": true,
+              "origin_uti": true,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": true
+          },
+          "current_delivery_html": {
+            "x": 103150800,
+            "y": 270000.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/6d4acb13-0d9b-48df-aced-4ec5e83f528a",
+            "as_of_uti": 103150800,
+            "origin_uti": 103150800,
+            "state_text": "present=1; loo_knownness=0",
+            "meaning": "最近窗BusinessDuration｜CalendarUTITick"
+          },
+          "current_html_vs_projection": {
+            "fields": {
+              "x": true,
+              "y": true,
+              "symbol": true,
+              "source_exact": true,
+              "as_of_uti": true,
+              "origin_uti": true,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": true
+          }
+        },
+        "previous_duration_updates": {
+          "formal": {
+            "file": "data/selected_cuts/before_confirmation/metrics.csv",
+            "selector": "kind=0",
+            "column": "previous",
+            "state": {
+              "present": 1,
+              "loo_knownness": 0
+            },
+            "value": 136500.0
+          },
+          "projection": {
+            "x": 103150800,
+            "y": 136500.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/6d4acb13-0d9b-48df-aced-4ec5e83f528a",
+            "as_of_uti": 103150800,
+            "origin_uti": 103150800,
+            "state_text": "present=1; loo_knownness=0",
+            "meaning": "此前窗BusinessDuration｜CalendarUTITick"
+          },
+          "projection_checks": {
+            "x_is_k": true,
+            "as_of_is_k": true,
+            "origin_is_k": true,
+            "exact_matches_selected_cut": true,
+            "y_matches_formal_table": true
+          },
+          "old_delivery_html": {
+            "x": 103150800,
+            "y": 136500.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/6d4acb13-0d9b-48df-aced-4ec5e83f528a",
+            "as_of_uti": 103150800,
+            "origin_uti": 103150800,
+            "state_text": "present=1; loo_knownness=0",
+            "meaning": "此前窗BusinessDuration｜CalendarUTITick"
+          },
+          "old_html_vs_projection": {
+            "fields": {
+              "x": true,
+              "y": true,
+              "symbol": true,
+              "source_exact": true,
+              "as_of_uti": true,
+              "origin_uti": true,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": true
+          },
+          "current_delivery_html": {
+            "x": 103150800,
+            "y": 136500.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/6d4acb13-0d9b-48df-aced-4ec5e83f528a",
+            "as_of_uti": 103150800,
+            "origin_uti": 103150800,
+            "state_text": "present=1; loo_knownness=0",
+            "meaning": "此前窗BusinessDuration｜CalendarUTITick"
+          },
+          "current_html_vs_projection": {
+            "fields": {
+              "x": true,
+              "y": true,
+              "symbol": true,
+              "source_exact": true,
+              "as_of_uti": true,
+              "origin_uti": true,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": true
+          }
+        },
+        "working_progress_points": {
+          "formal": {
+            "file": "data/selected_cuts/before_confirmation/working_progress.csv",
+            "selector": "row=0",
+            "column": "value",
+            "state": {
+              "present": 1,
+              "knownness": 0,
+              "applicability": 0,
+              "reason": 0
+            },
+            "value": 43.0
+          },
+          "projection": {
+            "x": 103150800,
+            "y": 43.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/6d4acb13-0d9b-48df-aced-4ec5e83f528a",
+            "as_of_uti": 103150800,
+            "origin_uti": 103150800,
+            "state_text": "present=1; knownness=0; applicability=0; reason=0",
+            "meaning": "当前未完成过程沿原方向净推进｜price"
+          },
+          "projection_checks": {
+            "x_is_k": true,
+            "as_of_is_k": true,
+            "origin_is_k": true,
+            "exact_matches_selected_cut": true,
+            "y_matches_formal_table": true
+          },
+          "old_delivery_html": {
+            "x": 103150800,
+            "y": 43.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/6d4acb13-0d9b-48df-aced-4ec5e83f528a",
+            "as_of_uti": 103150800,
+            "origin_uti": 103150800,
+            "state_text": "present=1; knownness=0; applicability=0; reason=0",
+            "meaning": "当前未完成过程沿原方向净推进｜price"
+          },
+          "old_html_vs_projection": {
+            "fields": {
+              "x": true,
+              "y": true,
+              "symbol": true,
+              "source_exact": true,
+              "as_of_uti": true,
+              "origin_uti": true,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": true
+          },
+          "current_delivery_html": {
+            "x": 103150800,
+            "y": 43.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/6d4acb13-0d9b-48df-aced-4ec5e83f528a",
+            "as_of_uti": 103150800,
+            "origin_uti": 103150800,
+            "state_text": "present=1; knownness=0; applicability=0; reason=0",
+            "meaning": "当前未完成过程沿原方向净推进｜price"
+          },
+          "current_html_vs_projection": {
+            "fields": {
+              "x": true,
+              "y": true,
+              "symbol": true,
+              "source_exact": true,
+              "as_of_uti": true,
+              "origin_uti": true,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": true
+          }
+        },
+        "working_counter_points": {
+          "formal": {
+            "file": "data/selected_cuts/before_confirmation/working_counter.csv",
+            "selector": "row=0",
+            "column": "value",
+            "state": {
+              "present": 1,
+              "knownness": 0,
+              "applicability": 0,
+              "reason": 0
+            },
+            "value": 66.0
+          },
+          "projection": {
+            "x": 103150800,
+            "y": 66.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/6d4acb13-0d9b-48df-aced-4ec5e83f528a",
+            "as_of_uti": 103150800,
+            "origin_uti": 103150800,
+            "state_text": "present=1; knownness=0; applicability=0; reason=0",
+            "meaning": "当前未完成过程累计最大逆向量｜price"
+          },
+          "projection_checks": {
+            "x_is_k": true,
+            "as_of_is_k": true,
+            "origin_is_k": true,
+            "exact_matches_selected_cut": true,
+            "y_matches_formal_table": true
+          },
+          "old_delivery_html": {
+            "x": 103150800,
+            "y": 66.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/6d4acb13-0d9b-48df-aced-4ec5e83f528a",
+            "as_of_uti": 103150800,
+            "origin_uti": 103150800,
+            "state_text": "present=1; knownness=0; applicability=0; reason=0",
+            "meaning": "当前未完成过程累计最大逆向量｜price"
+          },
+          "old_html_vs_projection": {
+            "fields": {
+              "x": true,
+              "y": true,
+              "symbol": true,
+              "source_exact": true,
+              "as_of_uti": true,
+              "origin_uti": true,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": true
+          },
+          "current_delivery_html": {
+            "x": 103150800,
+            "y": 66.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/6d4acb13-0d9b-48df-aced-4ec5e83f528a",
+            "as_of_uti": 103150800,
+            "origin_uti": 103150800,
+            "state_text": "present=1; knownness=0; applicability=0; reason=0",
+            "meaning": "当前未完成过程累计最大逆向量｜price"
+          },
+          "current_html_vs_projection": {
+            "fields": {
+              "x": true,
+              "y": true,
+              "symbol": true,
+              "source_exact": true,
+              "as_of_uti": true,
+              "origin_uti": true,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": true
+          }
+        },
+        "working_efficiency_points": {
+          "formal": {
+            "file": "data/selected_cuts/before_confirmation/working_efficiency.csv",
+            "selector": "row=0",
+            "column": "value",
+            "state": {
+              "present": 1,
+              "knownness": 0,
+              "applicability": 0,
+              "reason": 0
+            },
+            "value": 0.0685805422647528
+          },
+          "projection": {
+            "x": 103150800,
+            "y": 0.0685805422647528,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/6d4acb13-0d9b-48df-aced-4ec5e83f528a",
+            "as_of_uti": 103150800,
+            "origin_uti": 103150800,
+            "state_text": "present=1; knownness=0; applicability=0; reason=0",
+            "meaning": "当前未完成过程前缀效率｜ratio"
+          },
+          "projection_checks": {
+            "x_is_k": true,
+            "as_of_is_k": true,
+            "origin_is_k": true,
+            "exact_matches_selected_cut": true,
+            "y_matches_formal_table": true
+          },
+          "old_delivery_html": {
+            "x": 103150800,
+            "y": 0.0685805422647528,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/6d4acb13-0d9b-48df-aced-4ec5e83f528a",
+            "as_of_uti": 103150800,
+            "origin_uti": 103150800,
+            "state_text": "present=1; knownness=0; applicability=0; reason=0",
+            "meaning": "当前未完成过程前缀效率｜ratio"
+          },
+          "old_html_vs_projection": {
+            "fields": {
+              "x": true,
+              "y": true,
+              "symbol": true,
+              "source_exact": true,
+              "as_of_uti": true,
+              "origin_uti": true,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": true
+          },
+          "current_delivery_html": {
+            "x": 103150800,
+            "y": 0.0685805422647528,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/6d4acb13-0d9b-48df-aced-4ec5e83f528a",
+            "as_of_uti": 103150800,
+            "origin_uti": 103150800,
+            "state_text": "present=1; knownness=0; applicability=0; reason=0",
+            "meaning": "当前未完成过程前缀效率｜ratio"
+          },
+          "current_html_vs_projection": {
+            "fields": {
+              "x": true,
+              "y": true,
+              "symbol": true,
+              "source_exact": true,
+              "as_of_uti": true,
+              "origin_uti": true,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": true
+          }
+        },
+        "working_duration_points": {
+          "formal": {
+            "file": "data/selected_cuts/before_confirmation/working_duration.csv",
+            "selector": "row=0",
+            "column": "value",
+            "state": {
+              "present": 1,
+              "knownness": 0,
+              "applicability": 0,
+              "reason": 0
+            },
+            "value": 107400.0
+          },
+          "projection": {
+            "x": 103150800,
+            "y": 107400.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/6d4acb13-0d9b-48df-aced-4ec5e83f528a",
+            "as_of_uti": 103150800,
+            "origin_uti": 103150800,
+            "state_text": "present=1; knownness=0; applicability=0; reason=0",
+            "meaning": "当前未完成过程年龄｜CalendarUTITick"
+          },
+          "projection_checks": {
+            "x_is_k": true,
+            "as_of_is_k": true,
+            "origin_is_k": true,
+            "exact_matches_selected_cut": true,
+            "y_matches_formal_table": true
+          },
+          "old_delivery_html": {
+            "x": 103150800,
+            "y": 107400.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/6d4acb13-0d9b-48df-aced-4ec5e83f528a",
+            "as_of_uti": 103150800,
+            "origin_uti": 103150800,
+            "state_text": "present=1; knownness=0; applicability=0; reason=0",
+            "meaning": "当前未完成过程年龄｜CalendarUTITick"
+          },
+          "old_html_vs_projection": {
+            "fields": {
+              "x": true,
+              "y": true,
+              "symbol": true,
+              "source_exact": true,
+              "as_of_uti": true,
+              "origin_uti": true,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": true
+          },
+          "current_delivery_html": {
+            "x": 103150800,
+            "y": 107400.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/6d4acb13-0d9b-48df-aced-4ec5e83f528a",
+            "as_of_uti": 103150800,
+            "origin_uti": 103150800,
+            "state_text": "present=1; knownness=0; applicability=0; reason=0",
+            "meaning": "当前未完成过程年龄｜CalendarUTITick"
+          },
+          "current_html_vs_projection": {
+            "fields": {
+              "x": true,
+              "y": true,
+              "symbol": true,
+              "source_exact": true,
+              "as_of_uti": true,
+              "origin_uti": true,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": true
+          }
+        },
+        "waiting_ratio_points": {
+          "formal": {
+            "file": "data/selected_cuts/before_confirmation/working_waiting_ratio.csv",
+            "selector": "row=0",
+            "column": "value",
+            "state": {
+              "present": 1,
+              "knownness": 0,
+              "applicability": 0,
+              "reason": 0
+            },
+            "value": 155.0
+          },
+          "projection": {
+            "x": 103150800,
+            "y": 155.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/6d4acb13-0d9b-48df-aced-4ec5e83f528a",
+            "as_of_uti": 103150800,
+            "origin_uti": 103150800,
+            "state_text": "present=1; knownness=0; applicability=0; reason=0",
+            "meaning": "局部等待倍数（非概率）｜ratio"
+          },
+          "projection_checks": {
+            "x_is_k": true,
+            "as_of_is_k": true,
+            "origin_is_k": true,
+            "exact_matches_selected_cut": true,
+            "y_matches_formal_table": true
+          },
+          "old_delivery_html": {
+            "x": 103150800,
+            "y": 155.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/6d4acb13-0d9b-48df-aced-4ec5e83f528a",
+            "as_of_uti": 103150800,
+            "origin_uti": 103150800,
+            "state_text": "present=1; knownness=0; applicability=0; reason=0",
+            "meaning": "局部等待倍数（非概率）｜ratio"
+          },
+          "old_html_vs_projection": {
+            "fields": {
+              "x": true,
+              "y": true,
+              "symbol": true,
+              "source_exact": true,
+              "as_of_uti": true,
+              "origin_uti": true,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": true
+          },
+          "current_delivery_html": {
+            "x": 103150800,
+            "y": 155.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/6d4acb13-0d9b-48df-aced-4ec5e83f528a",
+            "as_of_uti": 103150800,
+            "origin_uti": 103150800,
+            "state_text": "present=1; knownness=0; applicability=0; reason=0",
+            "meaning": "局部等待倍数（非概率）｜ratio"
+          },
+          "current_html_vs_projection": {
+            "fields": {
+              "x": true,
+              "y": true,
+              "symbol": true,
+              "source_exact": true,
+              "as_of_uti": true,
+              "origin_uti": true,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": true
+          }
+        }
+      },
+      "checks": {
+        "all_nine_projection_rows_match_formal_value_and_identity": true,
+        "all_nine_current_html_cds_rows_match_projection": true,
+        "current_html_has_no_feature_coordinate_after_k": true,
+        "plot_price_ends_at_k": true,
+        "current_png_matches_browser_capture": true,
+        "browser_capture_result_pass": true
+      },
+      "result": "PASS"
+    },
+    {
+      "label": "at_or_after_confirmation",
+      "page_id": "rb_selected_at_or_after_confirmation_K103151400",
+      "selected_k": 103151400,
+      "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/ef2f74f6-bdfe-4d89-bc78-4114de18e86c",
+      "formal_origin_as_of": 103151400,
+      "old_delivery": {
+        "source_ref": "39308f4a8fe6b6f2fe1399f8d9e56b91a5ceb643",
+        "html_sha256": "d96b0773fc46b228815c9aeb41a8e6f50d0504cabc7b14052d1c74a218f5a8bc",
+        "png_sha256": "a53787b4aa1bb7ea9ab82c59a8f1487dfa3f1cfe1138eacc281f26defd9acd7c",
+        "scalar_views_matching_current_projection": 0,
+        "no_feature_coordinate_after_k": true
+      },
+      "current_delivery": {
+        "artifact_ref": "081e31241a0c88e47631f80a8b9b8dd43b2b569c",
+        "html_sha256": "189e505f670621cfe351aa659d30b75ccf8b470a8dafcd2f4625578ab6aef7b6",
+        "png_sha256": "82f0fa32b3f40f885bb44dce2dfc491cee4f94933f5a43900a901bb9865f2f04",
+        "scalar_views_matching_projection": 9,
+        "no_feature_coordinate_after_k": true
+      },
+      "scalar_views": {
+        "completed_recent_updates": {
+          "formal": {
+            "file": "data/selected_cuts/at_or_after_confirmation/metrics.csv",
+            "selector": "kind=8",
+            "column": "current",
+            "state": {
+              "present": 1,
+              "loo_knownness": 0
+            },
+            "value": 0.1514170159139533
+          },
+          "projection": {
+            "x": 103151400,
+            "y": 0.1514170159139533,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/ef2f74f6-bdfe-4d89-bc78-4114de18e86c",
+            "as_of_uti": 103151400,
+            "origin_uti": 103151400,
+            "state_text": "present=1; loo_knownness=0",
+            "meaning": "最近窗PathEfficiency｜ratio"
+          },
+          "projection_checks": {
+            "x_is_k": true,
+            "as_of_is_k": true,
+            "origin_is_k": true,
+            "exact_matches_selected_cut": true,
+            "y_matches_formal_table": true
+          },
+          "old_delivery_html": {
+            "x": 103150800,
+            "y": 0.1434665770910312,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/6d4acb13-0d9b-48df-aced-4ec5e83f528a",
+            "as_of_uti": 103150800,
+            "origin_uti": 103150800,
+            "state_text": "present=1; loo_knownness=0",
+            "meaning": "最近窗PathEfficiency｜ratio"
+          },
+          "old_html_vs_projection": {
+            "fields": {
+              "x": false,
+              "y": false,
+              "symbol": true,
+              "source_exact": false,
+              "as_of_uti": false,
+              "origin_uti": false,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": false
+          },
+          "current_delivery_html": {
+            "x": 103151400,
+            "y": 0.1514170159139533,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/ef2f74f6-bdfe-4d89-bc78-4114de18e86c",
+            "as_of_uti": 103151400,
+            "origin_uti": 103151400,
+            "state_text": "present=1; loo_knownness=0",
+            "meaning": "最近窗PathEfficiency｜ratio"
+          },
+          "current_html_vs_projection": {
+            "fields": {
+              "x": true,
+              "y": true,
+              "symbol": true,
+              "source_exact": true,
+              "as_of_uti": true,
+              "origin_uti": true,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": true
+          }
+        },
+        "completed_previous_updates": {
+          "formal": {
+            "file": "data/selected_cuts/at_or_after_confirmation/metrics.csv",
+            "selector": "kind=8",
+            "column": "previous",
+            "state": {
+              "present": 1,
+              "loo_knownness": 0
+            },
+            "value": 0.0845431992999649
+          },
+          "projection": {
+            "x": 103151400,
+            "y": 0.0845431992999649,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/ef2f74f6-bdfe-4d89-bc78-4114de18e86c",
+            "as_of_uti": 103151400,
+            "origin_uti": 103151400,
+            "state_text": "present=1; loo_knownness=0",
+            "meaning": "此前窗PathEfficiency｜ratio"
+          },
+          "projection_checks": {
+            "x_is_k": true,
+            "as_of_is_k": true,
+            "origin_is_k": true,
+            "exact_matches_selected_cut": true,
+            "y_matches_formal_table": true
+          },
+          "old_delivery_html": {
+            "x": 103150800,
+            "y": 0.1335430475976482,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/6d4acb13-0d9b-48df-aced-4ec5e83f528a",
+            "as_of_uti": 103150800,
+            "origin_uti": 103150800,
+            "state_text": "present=1; loo_knownness=0",
+            "meaning": "此前窗PathEfficiency｜ratio"
+          },
+          "old_html_vs_projection": {
+            "fields": {
+              "x": false,
+              "y": false,
+              "symbol": true,
+              "source_exact": false,
+              "as_of_uti": false,
+              "origin_uti": false,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": false
+          },
+          "current_delivery_html": {
+            "x": 103151400,
+            "y": 0.0845431992999649,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/ef2f74f6-bdfe-4d89-bc78-4114de18e86c",
+            "as_of_uti": 103151400,
+            "origin_uti": 103151400,
+            "state_text": "present=1; loo_knownness=0",
+            "meaning": "此前窗PathEfficiency｜ratio"
+          },
+          "current_html_vs_projection": {
+            "fields": {
+              "x": true,
+              "y": true,
+              "symbol": true,
+              "source_exact": true,
+              "as_of_uti": true,
+              "origin_uti": true,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": true
+          }
+        },
+        "recent_duration_updates": {
+          "formal": {
+            "file": "data/selected_cuts/at_or_after_confirmation/metrics.csv",
+            "selector": "kind=0",
+            "column": "current",
+            "state": {
+              "present": 1,
+              "loo_knownness": 0
+            },
+            "value": 181800.0
+          },
+          "projection": {
+            "x": 103151400,
+            "y": 181800.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/ef2f74f6-bdfe-4d89-bc78-4114de18e86c",
+            "as_of_uti": 103151400,
+            "origin_uti": 103151400,
+            "state_text": "present=1; loo_knownness=0",
+            "meaning": "最近窗BusinessDuration｜CalendarUTITick"
+          },
+          "projection_checks": {
+            "x_is_k": true,
+            "as_of_is_k": true,
+            "origin_is_k": true,
+            "exact_matches_selected_cut": true,
+            "y_matches_formal_table": true
+          },
+          "old_delivery_html": {
+            "x": 103150800,
+            "y": 270000.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/6d4acb13-0d9b-48df-aced-4ec5e83f528a",
+            "as_of_uti": 103150800,
+            "origin_uti": 103150800,
+            "state_text": "present=1; loo_knownness=0",
+            "meaning": "最近窗BusinessDuration｜CalendarUTITick"
+          },
+          "old_html_vs_projection": {
+            "fields": {
+              "x": false,
+              "y": false,
+              "symbol": true,
+              "source_exact": false,
+              "as_of_uti": false,
+              "origin_uti": false,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": false
+          },
+          "current_delivery_html": {
+            "x": 103151400,
+            "y": 181800.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/ef2f74f6-bdfe-4d89-bc78-4114de18e86c",
+            "as_of_uti": 103151400,
+            "origin_uti": 103151400,
+            "state_text": "present=1; loo_knownness=0",
+            "meaning": "最近窗BusinessDuration｜CalendarUTITick"
+          },
+          "current_html_vs_projection": {
+            "fields": {
+              "x": true,
+              "y": true,
+              "symbol": true,
+              "source_exact": true,
+              "as_of_uti": true,
+              "origin_uti": true,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": true
+          }
+        },
+        "previous_duration_updates": {
+          "formal": {
+            "file": "data/selected_cuts/at_or_after_confirmation/metrics.csv",
+            "selector": "kind=0",
+            "column": "previous",
+            "state": {
+              "present": 1,
+              "loo_knownness": 0
+            },
+            "value": 234900.0
+          },
+          "projection": {
+            "x": 103151400,
+            "y": 234900.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/ef2f74f6-bdfe-4d89-bc78-4114de18e86c",
+            "as_of_uti": 103151400,
+            "origin_uti": 103151400,
+            "state_text": "present=1; loo_knownness=0",
+            "meaning": "此前窗BusinessDuration｜CalendarUTITick"
+          },
+          "projection_checks": {
+            "x_is_k": true,
+            "as_of_is_k": true,
+            "origin_is_k": true,
+            "exact_matches_selected_cut": true,
+            "y_matches_formal_table": true
+          },
+          "old_delivery_html": {
+            "x": 103150800,
+            "y": 136500.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/6d4acb13-0d9b-48df-aced-4ec5e83f528a",
+            "as_of_uti": 103150800,
+            "origin_uti": 103150800,
+            "state_text": "present=1; loo_knownness=0",
+            "meaning": "此前窗BusinessDuration｜CalendarUTITick"
+          },
+          "old_html_vs_projection": {
+            "fields": {
+              "x": false,
+              "y": false,
+              "symbol": true,
+              "source_exact": false,
+              "as_of_uti": false,
+              "origin_uti": false,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": false
+          },
+          "current_delivery_html": {
+            "x": 103151400,
+            "y": 234900.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/ef2f74f6-bdfe-4d89-bc78-4114de18e86c",
+            "as_of_uti": 103151400,
+            "origin_uti": 103151400,
+            "state_text": "present=1; loo_knownness=0",
+            "meaning": "此前窗BusinessDuration｜CalendarUTITick"
+          },
+          "current_html_vs_projection": {
+            "fields": {
+              "x": true,
+              "y": true,
+              "symbol": true,
+              "source_exact": true,
+              "as_of_uti": true,
+              "origin_uti": true,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": true
+          }
+        },
+        "working_progress_points": {
+          "formal": {
+            "file": "data/selected_cuts/at_or_after_confirmation/working_progress.csv",
+            "selector": "row=0",
+            "column": "value",
+            "state": {
+              "present": 1,
+              "knownness": 0,
+              "applicability": 0,
+              "reason": 0
+            },
+            "value": 53.0
+          },
+          "projection": {
+            "x": 103151400,
+            "y": 53.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/ef2f74f6-bdfe-4d89-bc78-4114de18e86c",
+            "as_of_uti": 103151400,
+            "origin_uti": 103151400,
+            "state_text": "present=1; knownness=0; applicability=0; reason=0",
+            "meaning": "当前未完成过程沿原方向净推进｜price"
+          },
+          "projection_checks": {
+            "x_is_k": true,
+            "as_of_is_k": true,
+            "origin_is_k": true,
+            "exact_matches_selected_cut": true,
+            "y_matches_formal_table": true
+          },
+          "old_delivery_html": {
+            "x": 103150800,
+            "y": 43.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/6d4acb13-0d9b-48df-aced-4ec5e83f528a",
+            "as_of_uti": 103150800,
+            "origin_uti": 103150800,
+            "state_text": "present=1; knownness=0; applicability=0; reason=0",
+            "meaning": "当前未完成过程沿原方向净推进｜price"
+          },
+          "old_html_vs_projection": {
+            "fields": {
+              "x": false,
+              "y": false,
+              "symbol": true,
+              "source_exact": false,
+              "as_of_uti": false,
+              "origin_uti": false,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": false
+          },
+          "current_delivery_html": {
+            "x": 103151400,
+            "y": 53.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/ef2f74f6-bdfe-4d89-bc78-4114de18e86c",
+            "as_of_uti": 103151400,
+            "origin_uti": 103151400,
+            "state_text": "present=1; knownness=0; applicability=0; reason=0",
+            "meaning": "当前未完成过程沿原方向净推进｜price"
+          },
+          "current_html_vs_projection": {
+            "fields": {
+              "x": true,
+              "y": true,
+              "symbol": true,
+              "source_exact": true,
+              "as_of_uti": true,
+              "origin_uti": true,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": true
+          }
+        },
+        "working_counter_points": {
+          "formal": {
+            "file": "data/selected_cuts/at_or_after_confirmation/working_counter.csv",
+            "selector": "row=0",
+            "column": "value",
+            "state": {
+              "present": 1,
+              "knownness": 0,
+              "applicability": 0,
+              "reason": 0
+            },
+            "value": 40.0
+          },
+          "projection": {
+            "x": 103151400,
+            "y": 40.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/ef2f74f6-bdfe-4d89-bc78-4114de18e86c",
+            "as_of_uti": 103151400,
+            "origin_uti": 103151400,
+            "state_text": "present=1; knownness=0; applicability=0; reason=0",
+            "meaning": "当前未完成过程累计最大逆向量｜price"
+          },
+          "projection_checks": {
+            "x_is_k": true,
+            "as_of_is_k": true,
+            "origin_is_k": true,
+            "exact_matches_selected_cut": true,
+            "y_matches_formal_table": true
+          },
+          "old_delivery_html": {
+            "x": 103150800,
+            "y": 66.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/6d4acb13-0d9b-48df-aced-4ec5e83f528a",
+            "as_of_uti": 103150800,
+            "origin_uti": 103150800,
+            "state_text": "present=1; knownness=0; applicability=0; reason=0",
+            "meaning": "当前未完成过程累计最大逆向量｜price"
+          },
+          "old_html_vs_projection": {
+            "fields": {
+              "x": false,
+              "y": false,
+              "symbol": true,
+              "source_exact": false,
+              "as_of_uti": false,
+              "origin_uti": false,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": false
+          },
+          "current_delivery_html": {
+            "x": 103151400,
+            "y": 40.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/ef2f74f6-bdfe-4d89-bc78-4114de18e86c",
+            "as_of_uti": 103151400,
+            "origin_uti": 103151400,
+            "state_text": "present=1; knownness=0; applicability=0; reason=0",
+            "meaning": "当前未完成过程累计最大逆向量｜price"
+          },
+          "current_html_vs_projection": {
+            "fields": {
+              "x": true,
+              "y": true,
+              "symbol": true,
+              "source_exact": true,
+              "as_of_uti": true,
+              "origin_uti": true,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": true
+          }
+        },
+        "working_efficiency_points": {
+          "formal": {
+            "file": "data/selected_cuts/at_or_after_confirmation/working_efficiency.csv",
+            "selector": "row=0",
+            "column": "value",
+            "state": {
+              "present": 1,
+              "knownness": 0,
+              "applicability": 0,
+              "reason": 0
+            },
+            "value": 0.1075050709939148
+          },
+          "projection": {
+            "x": 103151400,
+            "y": 0.1075050709939148,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/ef2f74f6-bdfe-4d89-bc78-4114de18e86c",
+            "as_of_uti": 103151400,
+            "origin_uti": 103151400,
+            "state_text": "present=1; knownness=0; applicability=0; reason=0",
+            "meaning": "当前未完成过程前缀效率｜ratio"
+          },
+          "projection_checks": {
+            "x_is_k": true,
+            "as_of_is_k": true,
+            "origin_is_k": true,
+            "exact_matches_selected_cut": true,
+            "y_matches_formal_table": true
+          },
+          "old_delivery_html": {
+            "x": 103150800,
+            "y": 0.0685805422647528,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/6d4acb13-0d9b-48df-aced-4ec5e83f528a",
+            "as_of_uti": 103150800,
+            "origin_uti": 103150800,
+            "state_text": "present=1; knownness=0; applicability=0; reason=0",
+            "meaning": "当前未完成过程前缀效率｜ratio"
+          },
+          "old_html_vs_projection": {
+            "fields": {
+              "x": false,
+              "y": false,
+              "symbol": true,
+              "source_exact": false,
+              "as_of_uti": false,
+              "origin_uti": false,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": false
+          },
+          "current_delivery_html": {
+            "x": 103151400,
+            "y": 0.1075050709939148,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/ef2f74f6-bdfe-4d89-bc78-4114de18e86c",
+            "as_of_uti": 103151400,
+            "origin_uti": 103151400,
+            "state_text": "present=1; knownness=0; applicability=0; reason=0",
+            "meaning": "当前未完成过程前缀效率｜ratio"
+          },
+          "current_html_vs_projection": {
+            "fields": {
+              "x": true,
+              "y": true,
+              "symbol": true,
+              "source_exact": true,
+              "as_of_uti": true,
+              "origin_uti": true,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": true
+          }
+        },
+        "working_duration_points": {
+          "formal": {
+            "file": "data/selected_cuts/at_or_after_confirmation/working_duration.csv",
+            "selector": "row=0",
+            "column": "value",
+            "state": {
+              "present": 1,
+              "knownness": 0,
+              "applicability": 0,
+              "reason": 0
+            },
+            "value": 92400.0
+          },
+          "projection": {
+            "x": 103151400,
+            "y": 92400.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/ef2f74f6-bdfe-4d89-bc78-4114de18e86c",
+            "as_of_uti": 103151400,
+            "origin_uti": 103151400,
+            "state_text": "present=1; knownness=0; applicability=0; reason=0",
+            "meaning": "当前未完成过程年龄｜CalendarUTITick"
+          },
+          "projection_checks": {
+            "x_is_k": true,
+            "as_of_is_k": true,
+            "origin_is_k": true,
+            "exact_matches_selected_cut": true,
+            "y_matches_formal_table": true
+          },
+          "old_delivery_html": {
+            "x": 103150800,
+            "y": 107400.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/6d4acb13-0d9b-48df-aced-4ec5e83f528a",
+            "as_of_uti": 103150800,
+            "origin_uti": 103150800,
+            "state_text": "present=1; knownness=0; applicability=0; reason=0",
+            "meaning": "当前未完成过程年龄｜CalendarUTITick"
+          },
+          "old_html_vs_projection": {
+            "fields": {
+              "x": false,
+              "y": false,
+              "symbol": true,
+              "source_exact": false,
+              "as_of_uti": false,
+              "origin_uti": false,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": false
+          },
+          "current_delivery_html": {
+            "x": 103151400,
+            "y": 92400.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/ef2f74f6-bdfe-4d89-bc78-4114de18e86c",
+            "as_of_uti": 103151400,
+            "origin_uti": 103151400,
+            "state_text": "present=1; knownness=0; applicability=0; reason=0",
+            "meaning": "当前未完成过程年龄｜CalendarUTITick"
+          },
+          "current_html_vs_projection": {
+            "fields": {
+              "x": true,
+              "y": true,
+              "symbol": true,
+              "source_exact": true,
+              "as_of_uti": true,
+              "origin_uti": true,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": true
+          }
+        },
+        "waiting_ratio_points": {
+          "formal": {
+            "file": "data/selected_cuts/at_or_after_confirmation/working_waiting_ratio.csv",
+            "selector": "row=0",
+            "column": "value",
+            "state": {
+              "present": 1,
+              "knownness": 0,
+              "applicability": 0,
+              "reason": 0
+            },
+            "value": 82.0
+          },
+          "projection": {
+            "x": 103151400,
+            "y": 82.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/ef2f74f6-bdfe-4d89-bc78-4114de18e86c",
+            "as_of_uti": 103151400,
+            "origin_uti": 103151400,
+            "state_text": "present=1; knownness=0; applicability=0; reason=0",
+            "meaning": "局部等待倍数（非概率）｜ratio"
+          },
+          "projection_checks": {
+            "x_is_k": true,
+            "as_of_is_k": true,
+            "origin_is_k": true,
+            "exact_matches_selected_cut": true,
+            "y_matches_formal_table": true
+          },
+          "old_delivery_html": {
+            "x": 103150800,
+            "y": 155.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/6d4acb13-0d9b-48df-aced-4ec5e83f528a",
+            "as_of_uti": 103150800,
+            "origin_uti": 103150800,
+            "state_text": "present=1; knownness=0; applicability=0; reason=0",
+            "meaning": "局部等待倍数（非概率）｜ratio"
+          },
+          "old_html_vs_projection": {
+            "fields": {
+              "x": false,
+              "y": false,
+              "symbol": true,
+              "source_exact": false,
+              "as_of_uti": false,
+              "origin_uti": false,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": false
+          },
+          "current_delivery_html": {
+            "x": 103151400,
+            "y": 82.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/ef2f74f6-bdfe-4d89-bc78-4114de18e86c",
+            "as_of_uti": 103151400,
+            "origin_uti": 103151400,
+            "state_text": "present=1; knownness=0; applicability=0; reason=0",
+            "meaning": "局部等待倍数（非概率）｜ratio"
+          },
+          "current_html_vs_projection": {
+            "fields": {
+              "x": true,
+              "y": true,
+              "symbol": true,
+              "source_exact": true,
+              "as_of_uti": true,
+              "origin_uti": true,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": true
+          }
+        }
+      },
+      "checks": {
+        "all_nine_projection_rows_match_formal_value_and_identity": true,
+        "all_nine_current_html_cds_rows_match_projection": true,
+        "current_html_has_no_feature_coordinate_after_k": true,
+        "plot_price_ends_at_k": true,
+        "current_png_matches_browser_capture": true,
+        "browser_capture_result_pass": true
+      },
+      "result": "PASS"
+    },
+    {
+      "label": "final",
+      "page_id": "rb_selected_final_K103315800",
+      "selected_k": 103315800,
+      "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/cfd51328-e2cf-4360-8314-20c9238e93fb",
+      "formal_origin_as_of": 103315800,
+      "old_delivery": {
+        "source_ref": "39308f4a8fe6b6f2fe1399f8d9e56b91a5ceb643",
+        "html_sha256": "bf4e19994c63e84ac7ad0e332c22aee6476592b39f5f134f5c17facbbe42f04d",
+        "png_sha256": "1cddbaff3a293d296f32e3da1e1518566342a5f0295e137819aa69980a403091",
+        "scalar_views_matching_current_projection": 0,
+        "no_feature_coordinate_after_k": true
+      },
+      "current_delivery": {
+        "artifact_ref": "081e31241a0c88e47631f80a8b9b8dd43b2b569c",
+        "html_sha256": "7393e2d08625b932158f3f6df242247c13d4ae39654f6448d5fe2fa11da7ea2a",
+        "png_sha256": "edc062c62047733ad770f151cf1625c8c8493141c7000c3260d437092d2be650",
+        "scalar_views_matching_projection": 9,
+        "no_feature_coordinate_after_k": true
+      },
+      "scalar_views": {
+        "completed_recent_updates": {
+          "formal": {
+            "file": "data/selected_cuts/final/metrics.csv",
+            "selector": "kind=8",
+            "column": "current",
+            "state": {
+              "present": 1,
+              "loo_knownness": 0
+            },
+            "value": 0.1514170159139533
+          },
+          "projection": {
+            "x": 103315800,
+            "y": 0.1514170159139533,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/cfd51328-e2cf-4360-8314-20c9238e93fb",
+            "as_of_uti": 103315800,
+            "origin_uti": 103315800,
+            "state_text": "present=1; loo_knownness=0",
+            "meaning": "最近窗PathEfficiency｜ratio"
+          },
+          "projection_checks": {
+            "x_is_k": true,
+            "as_of_is_k": true,
+            "origin_is_k": true,
+            "exact_matches_selected_cut": true,
+            "y_matches_formal_table": true
+          },
+          "old_delivery_html": {
+            "x": 103150800,
+            "y": 0.1434665770910312,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/6d4acb13-0d9b-48df-aced-4ec5e83f528a",
+            "as_of_uti": 103150800,
+            "origin_uti": 103150800,
+            "state_text": "present=1; loo_knownness=0",
+            "meaning": "最近窗PathEfficiency｜ratio"
+          },
+          "old_html_vs_projection": {
+            "fields": {
+              "x": false,
+              "y": false,
+              "symbol": true,
+              "source_exact": false,
+              "as_of_uti": false,
+              "origin_uti": false,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": false
+          },
+          "current_delivery_html": {
+            "x": 103315800,
+            "y": 0.1514170159139533,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/cfd51328-e2cf-4360-8314-20c9238e93fb",
+            "as_of_uti": 103315800,
+            "origin_uti": 103315800,
+            "state_text": "present=1; loo_knownness=0",
+            "meaning": "最近窗PathEfficiency｜ratio"
+          },
+          "current_html_vs_projection": {
+            "fields": {
+              "x": true,
+              "y": true,
+              "symbol": true,
+              "source_exact": true,
+              "as_of_uti": true,
+              "origin_uti": true,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": true
+          }
+        },
+        "completed_previous_updates": {
+          "formal": {
+            "file": "data/selected_cuts/final/metrics.csv",
+            "selector": "kind=8",
+            "column": "previous",
+            "state": {
+              "present": 1,
+              "loo_knownness": 0
+            },
+            "value": 0.0845431992999649
+          },
+          "projection": {
+            "x": 103315800,
+            "y": 0.0845431992999649,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/cfd51328-e2cf-4360-8314-20c9238e93fb",
+            "as_of_uti": 103315800,
+            "origin_uti": 103315800,
+            "state_text": "present=1; loo_knownness=0",
+            "meaning": "此前窗PathEfficiency｜ratio"
+          },
+          "projection_checks": {
+            "x_is_k": true,
+            "as_of_is_k": true,
+            "origin_is_k": true,
+            "exact_matches_selected_cut": true,
+            "y_matches_formal_table": true
+          },
+          "old_delivery_html": {
+            "x": 103150800,
+            "y": 0.1335430475976482,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/6d4acb13-0d9b-48df-aced-4ec5e83f528a",
+            "as_of_uti": 103150800,
+            "origin_uti": 103150800,
+            "state_text": "present=1; loo_knownness=0",
+            "meaning": "此前窗PathEfficiency｜ratio"
+          },
+          "old_html_vs_projection": {
+            "fields": {
+              "x": false,
+              "y": false,
+              "symbol": true,
+              "source_exact": false,
+              "as_of_uti": false,
+              "origin_uti": false,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": false
+          },
+          "current_delivery_html": {
+            "x": 103315800,
+            "y": 0.0845431992999649,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/cfd51328-e2cf-4360-8314-20c9238e93fb",
+            "as_of_uti": 103315800,
+            "origin_uti": 103315800,
+            "state_text": "present=1; loo_knownness=0",
+            "meaning": "此前窗PathEfficiency｜ratio"
+          },
+          "current_html_vs_projection": {
+            "fields": {
+              "x": true,
+              "y": true,
+              "symbol": true,
+              "source_exact": true,
+              "as_of_uti": true,
+              "origin_uti": true,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": true
+          }
+        },
+        "recent_duration_updates": {
+          "formal": {
+            "file": "data/selected_cuts/final/metrics.csv",
+            "selector": "kind=0",
+            "column": "current",
+            "state": {
+              "present": 1,
+              "loo_knownness": 0
+            },
+            "value": 181800.0
+          },
+          "projection": {
+            "x": 103315800,
+            "y": 181800.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/cfd51328-e2cf-4360-8314-20c9238e93fb",
+            "as_of_uti": 103315800,
+            "origin_uti": 103315800,
+            "state_text": "present=1; loo_knownness=0",
+            "meaning": "最近窗BusinessDuration｜CalendarUTITick"
+          },
+          "projection_checks": {
+            "x_is_k": true,
+            "as_of_is_k": true,
+            "origin_is_k": true,
+            "exact_matches_selected_cut": true,
+            "y_matches_formal_table": true
+          },
+          "old_delivery_html": {
+            "x": 103150800,
+            "y": 270000.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/6d4acb13-0d9b-48df-aced-4ec5e83f528a",
+            "as_of_uti": 103150800,
+            "origin_uti": 103150800,
+            "state_text": "present=1; loo_knownness=0",
+            "meaning": "最近窗BusinessDuration｜CalendarUTITick"
+          },
+          "old_html_vs_projection": {
+            "fields": {
+              "x": false,
+              "y": false,
+              "symbol": true,
+              "source_exact": false,
+              "as_of_uti": false,
+              "origin_uti": false,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": false
+          },
+          "current_delivery_html": {
+            "x": 103315800,
+            "y": 181800.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/cfd51328-e2cf-4360-8314-20c9238e93fb",
+            "as_of_uti": 103315800,
+            "origin_uti": 103315800,
+            "state_text": "present=1; loo_knownness=0",
+            "meaning": "最近窗BusinessDuration｜CalendarUTITick"
+          },
+          "current_html_vs_projection": {
+            "fields": {
+              "x": true,
+              "y": true,
+              "symbol": true,
+              "source_exact": true,
+              "as_of_uti": true,
+              "origin_uti": true,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": true
+          }
+        },
+        "previous_duration_updates": {
+          "formal": {
+            "file": "data/selected_cuts/final/metrics.csv",
+            "selector": "kind=0",
+            "column": "previous",
+            "state": {
+              "present": 1,
+              "loo_knownness": 0
+            },
+            "value": 234900.0
+          },
+          "projection": {
+            "x": 103315800,
+            "y": 234900.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/cfd51328-e2cf-4360-8314-20c9238e93fb",
+            "as_of_uti": 103315800,
+            "origin_uti": 103315800,
+            "state_text": "present=1; loo_knownness=0",
+            "meaning": "此前窗BusinessDuration｜CalendarUTITick"
+          },
+          "projection_checks": {
+            "x_is_k": true,
+            "as_of_is_k": true,
+            "origin_is_k": true,
+            "exact_matches_selected_cut": true,
+            "y_matches_formal_table": true
+          },
+          "old_delivery_html": {
+            "x": 103150800,
+            "y": 136500.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/6d4acb13-0d9b-48df-aced-4ec5e83f528a",
+            "as_of_uti": 103150800,
+            "origin_uti": 103150800,
+            "state_text": "present=1; loo_knownness=0",
+            "meaning": "此前窗BusinessDuration｜CalendarUTITick"
+          },
+          "old_html_vs_projection": {
+            "fields": {
+              "x": false,
+              "y": false,
+              "symbol": true,
+              "source_exact": false,
+              "as_of_uti": false,
+              "origin_uti": false,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": false
+          },
+          "current_delivery_html": {
+            "x": 103315800,
+            "y": 234900.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/cfd51328-e2cf-4360-8314-20c9238e93fb",
+            "as_of_uti": 103315800,
+            "origin_uti": 103315800,
+            "state_text": "present=1; loo_knownness=0",
+            "meaning": "此前窗BusinessDuration｜CalendarUTITick"
+          },
+          "current_html_vs_projection": {
+            "fields": {
+              "x": true,
+              "y": true,
+              "symbol": true,
+              "source_exact": true,
+              "as_of_uti": true,
+              "origin_uti": true,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": true
+          }
+        },
+        "working_progress_points": {
+          "formal": {
+            "file": "data/selected_cuts/final/working_progress.csv",
+            "selector": "row=0",
+            "column": "value",
+            "state": {
+              "present": 1,
+              "knownness": 0,
+              "applicability": 0,
+              "reason": 0
+            },
+            "value": 50.0
+          },
+          "projection": {
+            "x": 103315800,
+            "y": 50.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/cfd51328-e2cf-4360-8314-20c9238e93fb",
+            "as_of_uti": 103315800,
+            "origin_uti": 103315800,
+            "state_text": "present=1; knownness=0; applicability=0; reason=0",
+            "meaning": "当前未完成过程沿原方向净推进｜price"
+          },
+          "projection_checks": {
+            "x_is_k": true,
+            "as_of_is_k": true,
+            "origin_is_k": true,
+            "exact_matches_selected_cut": true,
+            "y_matches_formal_table": true
+          },
+          "old_delivery_html": {
+            "x": 103150800,
+            "y": 43.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/6d4acb13-0d9b-48df-aced-4ec5e83f528a",
+            "as_of_uti": 103150800,
+            "origin_uti": 103150800,
+            "state_text": "present=1; knownness=0; applicability=0; reason=0",
+            "meaning": "当前未完成过程沿原方向净推进｜price"
+          },
+          "old_html_vs_projection": {
+            "fields": {
+              "x": false,
+              "y": false,
+              "symbol": true,
+              "source_exact": false,
+              "as_of_uti": false,
+              "origin_uti": false,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": false
+          },
+          "current_delivery_html": {
+            "x": 103315800,
+            "y": 50.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/cfd51328-e2cf-4360-8314-20c9238e93fb",
+            "as_of_uti": 103315800,
+            "origin_uti": 103315800,
+            "state_text": "present=1; knownness=0; applicability=0; reason=0",
+            "meaning": "当前未完成过程沿原方向净推进｜price"
+          },
+          "current_html_vs_projection": {
+            "fields": {
+              "x": true,
+              "y": true,
+              "symbol": true,
+              "source_exact": true,
+              "as_of_uti": true,
+              "origin_uti": true,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": true
+          }
+        },
+        "working_counter_points": {
+          "formal": {
+            "file": "data/selected_cuts/final/working_counter.csv",
+            "selector": "row=0",
+            "column": "value",
+            "state": {
+              "present": 1,
+              "knownness": 0,
+              "applicability": 0,
+              "reason": 0
+            },
+            "value": 80.0
+          },
+          "projection": {
+            "x": 103315800,
+            "y": 80.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/cfd51328-e2cf-4360-8314-20c9238e93fb",
+            "as_of_uti": 103315800,
+            "origin_uti": 103315800,
+            "state_text": "present=1; knownness=0; applicability=0; reason=0",
+            "meaning": "当前未完成过程累计最大逆向量｜price"
+          },
+          "projection_checks": {
+            "x_is_k": true,
+            "as_of_is_k": true,
+            "origin_is_k": true,
+            "exact_matches_selected_cut": true,
+            "y_matches_formal_table": true
+          },
+          "old_delivery_html": {
+            "x": 103150800,
+            "y": 66.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/6d4acb13-0d9b-48df-aced-4ec5e83f528a",
+            "as_of_uti": 103150800,
+            "origin_uti": 103150800,
+            "state_text": "present=1; knownness=0; applicability=0; reason=0",
+            "meaning": "当前未完成过程累计最大逆向量｜price"
+          },
+          "old_html_vs_projection": {
+            "fields": {
+              "x": false,
+              "y": false,
+              "symbol": true,
+              "source_exact": false,
+              "as_of_uti": false,
+              "origin_uti": false,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": false
+          },
+          "current_delivery_html": {
+            "x": 103315800,
+            "y": 80.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/cfd51328-e2cf-4360-8314-20c9238e93fb",
+            "as_of_uti": 103315800,
+            "origin_uti": 103315800,
+            "state_text": "present=1; knownness=0; applicability=0; reason=0",
+            "meaning": "当前未完成过程累计最大逆向量｜price"
+          },
+          "current_html_vs_projection": {
+            "fields": {
+              "x": true,
+              "y": true,
+              "symbol": true,
+              "source_exact": true,
+              "as_of_uti": true,
+              "origin_uti": true,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": true
+          }
+        },
+        "working_efficiency_points": {
+          "formal": {
+            "file": "data/selected_cuts/final/working_efficiency.csv",
+            "selector": "row=0",
+            "column": "value",
+            "state": {
+              "present": 1,
+              "knownness": 0,
+              "applicability": 0,
+              "reason": 0
+            },
+            "value": 0.0377643504531722
+          },
+          "projection": {
+            "x": 103315800,
+            "y": 0.0377643504531722,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/cfd51328-e2cf-4360-8314-20c9238e93fb",
+            "as_of_uti": 103315800,
+            "origin_uti": 103315800,
+            "state_text": "present=1; knownness=0; applicability=0; reason=0",
+            "meaning": "当前未完成过程前缀效率｜ratio"
+          },
+          "projection_checks": {
+            "x_is_k": true,
+            "as_of_is_k": true,
+            "origin_is_k": true,
+            "exact_matches_selected_cut": true,
+            "y_matches_formal_table": true
+          },
+          "old_delivery_html": {
+            "x": 103150800,
+            "y": 0.0685805422647528,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/6d4acb13-0d9b-48df-aced-4ec5e83f528a",
+            "as_of_uti": 103150800,
+            "origin_uti": 103150800,
+            "state_text": "present=1; knownness=0; applicability=0; reason=0",
+            "meaning": "当前未完成过程前缀效率｜ratio"
+          },
+          "old_html_vs_projection": {
+            "fields": {
+              "x": false,
+              "y": false,
+              "symbol": true,
+              "source_exact": false,
+              "as_of_uti": false,
+              "origin_uti": false,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": false
+          },
+          "current_delivery_html": {
+            "x": 103315800,
+            "y": 0.0377643504531722,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/cfd51328-e2cf-4360-8314-20c9238e93fb",
+            "as_of_uti": 103315800,
+            "origin_uti": 103315800,
+            "state_text": "present=1; knownness=0; applicability=0; reason=0",
+            "meaning": "当前未完成过程前缀效率｜ratio"
+          },
+          "current_html_vs_projection": {
+            "fields": {
+              "x": true,
+              "y": true,
+              "symbol": true,
+              "source_exact": true,
+              "as_of_uti": true,
+              "origin_uti": true,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": true
+          }
+        },
+        "working_duration_points": {
+          "formal": {
+            "file": "data/selected_cuts/final/working_duration.csv",
+            "selector": "row=0",
+            "column": "value",
+            "state": {
+              "present": 1,
+              "knownness": 0,
+              "applicability": 0,
+              "reason": 0
+            },
+            "value": 256800.0
+          },
+          "projection": {
+            "x": 103315800,
+            "y": 256800.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/cfd51328-e2cf-4360-8314-20c9238e93fb",
+            "as_of_uti": 103315800,
+            "origin_uti": 103315800,
+            "state_text": "present=1; knownness=0; applicability=0; reason=0",
+            "meaning": "当前未完成过程年龄｜CalendarUTITick"
+          },
+          "projection_checks": {
+            "x_is_k": true,
+            "as_of_is_k": true,
+            "origin_is_k": true,
+            "exact_matches_selected_cut": true,
+            "y_matches_formal_table": true
+          },
+          "old_delivery_html": {
+            "x": 103150800,
+            "y": 107400.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/6d4acb13-0d9b-48df-aced-4ec5e83f528a",
+            "as_of_uti": 103150800,
+            "origin_uti": 103150800,
+            "state_text": "present=1; knownness=0; applicability=0; reason=0",
+            "meaning": "当前未完成过程年龄｜CalendarUTITick"
+          },
+          "old_html_vs_projection": {
+            "fields": {
+              "x": false,
+              "y": false,
+              "symbol": true,
+              "source_exact": false,
+              "as_of_uti": false,
+              "origin_uti": false,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": false
+          },
+          "current_delivery_html": {
+            "x": 103315800,
+            "y": 256800.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/cfd51328-e2cf-4360-8314-20c9238e93fb",
+            "as_of_uti": 103315800,
+            "origin_uti": 103315800,
+            "state_text": "present=1; knownness=0; applicability=0; reason=0",
+            "meaning": "当前未完成过程年龄｜CalendarUTITick"
+          },
+          "current_html_vs_projection": {
+            "fields": {
+              "x": true,
+              "y": true,
+              "symbol": true,
+              "source_exact": true,
+              "as_of_uti": true,
+              "origin_uti": true,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": true
+          }
+        },
+        "waiting_ratio_points": {
+          "formal": {
+            "file": "data/selected_cuts/final/working_waiting_ratio.csv",
+            "selector": "row=0",
+            "column": "value",
+            "state": {
+              "present": 1,
+              "knownness": 0,
+              "applicability": 0,
+              "reason": 0
+            },
+            "value": 15.846153846153848
+          },
+          "projection": {
+            "x": 103315800,
+            "y": 15.846153846153848,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/cfd51328-e2cf-4360-8314-20c9238e93fb",
+            "as_of_uti": 103315800,
+            "origin_uti": 103315800,
+            "state_text": "present=1; knownness=0; applicability=0; reason=0",
+            "meaning": "局部等待倍数（非概率）｜ratio"
+          },
+          "projection_checks": {
+            "x_is_k": true,
+            "as_of_is_k": true,
+            "origin_is_k": true,
+            "exact_matches_selected_cut": true,
+            "y_matches_formal_table": true
+          },
+          "old_delivery_html": {
+            "x": 103150800,
+            "y": 155.0,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/6d4acb13-0d9b-48df-aced-4ec5e83f528a",
+            "as_of_uti": 103150800,
+            "origin_uti": 103150800,
+            "state_text": "present=1; knownness=0; applicability=0; reason=0",
+            "meaning": "局部等待倍数（非概率）｜ratio"
+          },
+          "old_html_vs_projection": {
+            "fields": {
+              "x": false,
+              "y": false,
+              "symbol": true,
+              "source_exact": false,
+              "as_of_uti": false,
+              "origin_uti": false,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": false
+          },
+          "current_delivery_html": {
+            "x": 103315800,
+            "y": 15.846153846153848,
+            "symbol": "rb",
+            "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/cfd51328-e2cf-4360-8314-20c9238e93fb",
+            "as_of_uti": 103315800,
+            "origin_uti": 103315800,
+            "state_text": "present=1; knownness=0; applicability=0; reason=0",
+            "meaning": "局部等待倍数（非概率）｜ratio"
+          },
+          "current_html_vs_projection": {
+            "fields": {
+              "x": true,
+              "y": true,
+              "symbol": true,
+              "source_exact": true,
+              "as_of_uti": true,
+              "origin_uti": true,
+              "state_text": true,
+              "meaning": true
+            },
+            "all_fields_match": true
+          }
+        }
+      },
+      "checks": {
+        "all_nine_projection_rows_match_formal_value_and_identity": true,
+        "all_nine_current_html_cds_rows_match_projection": true,
+        "current_html_has_no_feature_coordinate_after_k": true,
+        "plot_price_ends_at_k": true,
+        "current_png_matches_browser_capture": true,
+        "browser_capture_result_pass": true
+      },
+      "result": "PASS"
+    }
+  ],
+  "limitations": [
+    "The audit covers the three delivered rb selected cuts and all nine configured scalar views; it is not a claim about every aidata feature.",
+    "The current HTML/PNG files were already rerendered sequentially in the R8 endpoint supplement from the same hashed formal exports; this challenge did not rerender them again.",
+    "The evolution page follows the three selected pages and cannot retroactively alter their serialized HTML; it was not rerendered in R8 or this challenge.",
+    "Pixel placement alone is not used to decide numeric correctness; the saved renderer CDS is authoritative for this technical display check."
+  ]
+}

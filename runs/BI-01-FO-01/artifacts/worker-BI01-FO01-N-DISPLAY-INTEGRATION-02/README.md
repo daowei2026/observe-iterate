@@ -8,10 +8,11 @@
 
 核心入口：
 
+- `SCALAR_DISPLAY_CONSISTENCY_SUPPLEMENT.md`：旧/新 HTML CDS、图用 CSV与正式表的九标量逐项一致性核验；其数值结论优先于初版交付。
 - `ENDPOINT_R8_SUPPLEMENT.md`：R8右边界补充、修前真实缺陷、最小修复和修后直接检查；其端点结论优先于初版回交。
 - `FULL_RESPONSE.md`：完整技术回交、准确版本、结果、失败恢复和未完。
 - `evidence/RUNTIME_AND_RENDER_MANIFEST.json`：实际入口、页面和安全边界。
-- `evidence/FINAL_VERIFICATION.json`：19 项最终包装检查，全部通过。
+- `evidence/FINAL_VERIFICATION.json`：20 项最终包装检查，全部通过。
 - `render_evidence/BROWSER_CAPTURE.json`：四页实际浏览器检查。
 - `render_evidence/WORKER_VISUAL_INSPECTION.json`：Worker 全分辨率像素检查。
 - `data/selected_cuts/`：三个 `read_at_knowledge` 正式表导出。
