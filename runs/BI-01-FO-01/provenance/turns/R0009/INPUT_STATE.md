@@ -23,3 +23,11 @@ Worker原单BI01-FO01-N-DISPLAY-INTEGRATION-02实际完成第一批交付，包3
 沿R8#next-professional与R7完整continuation消费这些真实证据：分析确认前后当时成员可知性、window/working保持和变化、前缀成熟度与完成统计分化；核图数/单位/时点/正常解读，必要时回改参数/展示配置并交真实技术反馈。原四项完整责任及重要普通/反例/边界情形保留，不自设单图/单Case结束点，不重开来源综述或全U2/U3。
 
 原实际专业起点04:20:18.644Z、累计有效专业2保留；R8首次EFFORT已实质履行，进入后继后消费initial，下一段initial/repeat-2累计4。真实主动工时/token未知，不按墙钟冒充。保持全部重要未完、实际使用材料、数据/参考复算/本人视觉的资格和一致两Return。
+
+## 发送前增量事实：实际修复已发布，技术像素仍有定向疑问
+
+原pending记录保留为发生过的状态。新增正式补充为081e31241a0c88e47631f80a8b9b8dd43b2b569c的同Worker目录ENDPOINT_R8_SUPPLEMENT.md：实际aidata修复28260d3ec5d2ed254b2539cb9abc656e4737f80b，用display feature.ppid区分plotter身份，不改变正式值/K或protected源码。29项测试，三个顺序页面Bokeh HTML/CDS均具有本页K/exact，且正式/renderer/price无K后记录；按其直接检查的有限范围使用，原end_exclusive=K+1现场安全。此后到补充沿M8#continuation进入专业消费，不假称M8已实质审过它。
+
+主控实际查看修后的确认时与末拍PNG：完成效率及working净推进/逆向量已显示各自值，第四（working效率）和第六（waiting）附图像素仍显空白；不据此称正式值缺失，不把Worker的“九类点均可见”自检描述当全部像素正确。原单一致性挑战已排在端点补充回合后，要求正式表/图用CSV/实际交付HTML/CDS/像素一致；尚待该回交，没有重派整单。本Pro可使用可靠数据和必要实图独立判断画法及业务解释，真实技术问题仍沿原单处理。
+
+本次消息拟附2张针对性实图：前述原演变PNG（字节未变、已stage但未附/发送）及修后末拍PNG BI01FO01_W02_081e312_rb_selected_final.png，259339字节/SHA256 edc062c62047733ad770f151cf1625c8c8493141c7000c3260d437092d2be650，原081e312同路径render_evidence/rb_selected_final_K103315800.png。第二张已逐字从该Git blob复制到共享目录，尚未stage/附/Send。最终发送必须核2张准确卡片；不需要其余两张selected或每Case全图先齐。以实际附件支持本人的定向视觉，不用Root/Worker看图冒充Pro本人观察。
