@@ -1,0 +1,194 @@
+{
+  "schema_version": 1,
+  "result": "PASS",
+  "aidata_commit": "db44a54fa30ff9b4b8dddbe37e020d087c914d62",
+  "checks": [
+    {
+      "name": "all JSON parses",
+      "result": "PASS",
+      "evidence": {
+        "count": 16,
+        "errors": []
+      }
+    },
+    {
+      "name": "R0007 configuration semantic equality",
+      "result": "PASS",
+      "evidence": {
+        "CONFIG_VERSION": true,
+        "PANELS": true,
+        "TIME_POLICY": true,
+        "VIEW_RULES": true,
+        "configs": true,
+        "evolution": true,
+        "selected_cut": true
+      }
+    },
+    {
+      "name": "runtime/render manifest PASS",
+      "result": "PASS",
+      "evidence": null
+    },
+    {
+      "name": "browser capture PASS",
+      "result": "PASS",
+      "evidence": null
+    },
+    {
+      "name": "Worker visual inspection PASS",
+      "result": "PASS",
+      "evidence": null
+    },
+    {
+      "name": "four expected pages",
+      "result": "PASS",
+      "evidence": [
+        "rb_evolution_actual_occurrences",
+        "rb_selected_at_or_after_confirmation_K103151400",
+        "rb_selected_before_confirmation_K103150800",
+        "rb_selected_final_K103315800"
+      ]
+    },
+    {
+      "name": "rb_evolution_actual_occurrences HTML/PNG/runtime validation",
+      "result": "PASS",
+      "evidence": {
+        "html_sha256": "0a1f8128785240b89565bc67a92bbb89c814547db49850f7d289428cef41c06a",
+        "png_sha256": "1fd323ffaa02b92a4acc4bc0f2657e0061eb49f099fb1d4bb6534b4cbb63ff02",
+        "validation": {
+          "html_nonempty": true,
+          "one_figure_per_panel": true,
+          "independent_panel_figures": true,
+          "stable_symbol_color": true,
+          "working_segments_axis_aligned": true,
+          "selected_cut_has_no_geometry_after_K": true
+        }
+      }
+    },
+    {
+      "name": "rb_evolution_actual_occurrences plot_view_data hashes",
+      "result": "PASS",
+      "evidence": {
+        "files": 24,
+        "bad": []
+      }
+    },
+    {
+      "name": "rb_selected_at_or_after_confirmation_K103151400 HTML/PNG/runtime validation",
+      "result": "PASS",
+      "evidence": {
+        "html_sha256": "d96b0773fc46b228815c9aeb41a8e6f50d0504cabc7b14052d1c74a218f5a8bc",
+        "png_sha256": "a53787b4aa1bb7ea9ab82c59a8f1487dfa3f1cfe1138eacc281f26defd9acd7c",
+        "validation": {
+          "html_nonempty": true,
+          "one_figure_per_panel": true,
+          "independent_panel_figures": true,
+          "stable_symbol_color": true,
+          "working_segments_axis_aligned": true,
+          "selected_cut_has_no_geometry_after_K": true,
+          "circle_actual_and_diamond_confirmation": true
+        }
+      }
+    },
+    {
+      "name": "rb_selected_at_or_after_confirmation_K103151400 plot_view_data hashes",
+      "result": "PASS",
+      "evidence": {
+        "files": 24,
+        "bad": []
+      }
+    },
+    {
+      "name": "rb_selected_at_or_after_confirmation_K103151400 contains no geometry after K",
+      "result": "PASS",
+      "evidence": []
+    },
+    {
+      "name": "rb_selected_before_confirmation_K103150800 HTML/PNG/runtime validation",
+      "result": "PASS",
+      "evidence": {
+        "html_sha256": "834a90b4623043d3bbe5df9ae728e6b1ca531f3ee77de004b6e17238ef4a19dc",
+        "png_sha256": "85fb33b799692725cd608ff7234d535e2e6839a46b4ffd6de53a6acf1096fc8c",
+        "validation": {
+          "html_nonempty": true,
+          "one_figure_per_panel": true,
+          "independent_panel_figures": true,
+          "stable_symbol_color": true,
+          "working_segments_axis_aligned": true,
+          "selected_cut_has_no_geometry_after_K": true,
+          "circle_actual_and_diamond_confirmation": true
+        }
+      }
+    },
+    {
+      "name": "rb_selected_before_confirmation_K103150800 plot_view_data hashes",
+      "result": "PASS",
+      "evidence": {
+        "files": 24,
+        "bad": []
+      }
+    },
+    {
+      "name": "rb_selected_before_confirmation_K103150800 contains no geometry after K",
+      "result": "PASS",
+      "evidence": []
+    },
+    {
+      "name": "rb_selected_final_K103315800 HTML/PNG/runtime validation",
+      "result": "PASS",
+      "evidence": {
+        "html_sha256": "bf4e19994c63e84ac7ad0e332c22aee6476592b39f5f134f5c17facbbe42f04d",
+        "png_sha256": "1cddbaff3a293d296f32e3da1e1518566342a5f0295e137819aa69980a403091",
+        "validation": {
+          "html_nonempty": true,
+          "one_figure_per_panel": true,
+          "independent_panel_figures": true,
+          "stable_symbol_color": true,
+          "working_segments_axis_aligned": true,
+          "selected_cut_has_no_geometry_after_K": true,
+          "circle_actual_and_diamond_confirmation": true
+        }
+      }
+    },
+    {
+      "name": "rb_selected_final_K103315800 plot_view_data hashes",
+      "result": "PASS",
+      "evidence": {
+        "files": 24,
+        "bad": []
+      }
+    },
+    {
+      "name": "rb_selected_final_K103315800 contains no geometry after K",
+      "result": "PASS",
+      "evidence": []
+    },
+    {
+      "name": "i nullable-close recovery preserved",
+      "result": "PASS",
+      "evidence": [
+        {
+          "first_missing_time": "2017-03-30 21:00:00.500000",
+          "last_missing_time": "2017-03-30 22:55:00.500000",
+          "missing_rows": 24,
+          "previous_present_time": "2017-03-30 14:55:00.500000",
+          "previous_present_close": 564.5,
+          "recovery_time": "2017-03-31 09:00:00.500000",
+          "recovery_open_uti": 35361000,
+          "recovery_close": 572.0
+        }
+      ]
+    },
+    {
+      "name": "aidata commit recorded",
+      "result": "PASS",
+      "evidence": "db44a54fa30ff9b4b8dddbe37e020d087c914d62"
+    }
+  ],
+  "summary": {
+    "check_count": 19,
+    "pass_count": 19,
+    "fail_count": 0
+  },
+  "boundary": "This verifies transport/render/package facts, not professional market interpretation or management acceptance"
+}

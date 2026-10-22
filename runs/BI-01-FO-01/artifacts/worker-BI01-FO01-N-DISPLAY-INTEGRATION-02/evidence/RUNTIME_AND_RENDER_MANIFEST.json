@@ -1,0 +1,370 @@
+{
+  "schema_version": 1,
+  "order_id": "BI01-FO01-N-DISPLAY-INTEGRATION-02",
+  "result": "PASS",
+  "recovery_scope": "render-only continuation after all formal OnlyRead/read_at_knowledge exports completed",
+  "recovery_reason": "first layout used syms!rb as PlotSet.blk; fixed to the supported symbol list ['rb']",
+  "formal_reads": {
+    "full_evolution": "completed before recovery",
+    "selected_read_at_knowledge": {
+      "before_confirmation": 103150800,
+      "at_or_after_confirmation": 103151400,
+      "final": 103315800
+    },
+    "complete_three_source_identity": true,
+    "formal_N_recomputed": false
+  },
+  "imports": {
+    "aidata_display": "/dwdhome/fy/BASE_E6_2/mquant/aidata-bi01-fo01-n-display-r0007/u2_normal_node_behavior_display.py",
+    "TIS_U2NodeBehavior": "/tmp/bi01-fo01-worker-runtime-20261022/mquant/tis/frp/U2NodeBehavior.py",
+    "TIS_U2ThinNode": "/tmp/bi01-fo01-worker-runtime-20261022/mquant/tis/frp/U2ThinNode.py",
+    "uplot": "/dwdhome/fy/BASE_E6_2/mquant/uplot/__init__.py",
+    "worker_u2_schema": "/tmp/bi01-fo01-worker-sources-20261022/worker/adt/u2_node.py"
+  },
+  "aidata": {
+    "repo": "/dwdhome/fy/BASE_E6_2/mquant/aidata-bi01-fo01-n-display-r0007",
+    "branch": "fy/bi01-fo01-n-display-r0007",
+    "head_before_commit": "f58ea95c358b9ac31659c92b7bc20fe9bf7f8264",
+    "status_before_commit": "M feature_configs/__init__.py\n?? feature_configs/u2_normal_node_behavior.py\n?? tests/test_u2_normal_node_behavior_display.py\n?? u2_normal_node_behavior_display.py"
+  },
+  "uplot": {
+    "repo": "/dwdhome/fy/BASE_E6_2/mquant/uplot",
+    "branch": "e6.2",
+    "head": "13badc6c079eebe7242abd65e56b328c45dcee2a",
+    "status": "M pfw.py\n?? .ipynb_checkpoints/\n?? \"utlv2 copy.py\"",
+    "modified_by_order": false
+  },
+  "pages": [
+    {
+      "page_id": "rb_evolution_actual_occurrences",
+      "mode": "evolution",
+      "html": {
+        "path": "render_evidence/rb_evolution_actual_occurrences.html",
+        "bytes": 4905094,
+        "sha256": "0a1f8128785240b89565bc67a92bbb89c814547db49850f7d289428cef41c06a"
+      },
+      "plot_view_data_manifest_sha256": "a8247e57099a5186a47f8cd83b48667cb760a4b277dbde15d2ec606c4685669d",
+      "validation": {
+        "path": "render_evidence/rb_evolution_actual_occurrences.validation.json",
+        "sha256": "14b981a4d3ce185b69420ebf0637de4b673e6c24c417622ec5ab61a4e695c8b5",
+        "result": "PASS",
+        "mode": "evolution",
+        "figure_count": 6,
+        "configured_panels": [
+          "price",
+          "completed_efficiency",
+          "working_motion",
+          "working_efficiency",
+          "duration",
+          "rhythm"
+        ],
+        "column_data_source_count": 19,
+        "evidence_renderer_count": 18,
+        "evidence_groups": [
+          "group:completed_efficiency",
+          "group:duration",
+          "group:price",
+          "group:rhythm",
+          "group:working_efficiency",
+          "group:working_motion"
+        ],
+        "evidence_colors": [
+          "#4C78A8"
+        ],
+        "markers": [
+          "circle",
+          "square",
+          "triangle"
+        ],
+        "checks": {
+          "html_nonempty": true,
+          "one_figure_per_panel": true,
+          "independent_panel_figures": true,
+          "stable_symbol_color": true,
+          "working_segments_axis_aligned": true,
+          "selected_cut_has_no_geometry_after_K": true
+        }
+      }
+    },
+    {
+      "page_id": "rb_selected_before_confirmation_K103150800",
+      "mode": "selected_cut",
+      "html": {
+        "path": "render_evidence/rb_selected_before_confirmation_K103150800.html",
+        "bytes": 4009716,
+        "sha256": "834a90b4623043d3bbe5df9ae728e6b1ca531f3ee77de004b6e17238ef4a19dc"
+      },
+      "plot_view_data_manifest_sha256": "0f353b9d10671853c0a697202c9125e33bc35df70342d1f2470dd56032cae12a",
+      "validation": {
+        "path": "render_evidence/rb_selected_before_confirmation_K103150800.validation.json",
+        "sha256": "d2fa61414e750c4db11d371644bed3cadaa33d03d18ce83eaafa03b149063310",
+        "result": "PASS",
+        "mode": "selected_cut",
+        "figure_count": 6,
+        "configured_panels": [
+          "price",
+          "completed_efficiency",
+          "working_motion",
+          "working_efficiency",
+          "duration",
+          "rhythm"
+        ],
+        "column_data_source_count": 16,
+        "evidence_renderer_count": 15,
+        "evidence_groups": [
+          "group:completed_efficiency",
+          "group:duration",
+          "group:price",
+          "group:rhythm",
+          "group:working_efficiency",
+          "group:working_motion"
+        ],
+        "evidence_colors": [
+          "#4C78A8"
+        ],
+        "markers": [
+          "circle",
+          "diamond",
+          "square",
+          "triangle"
+        ],
+        "checks": {
+          "html_nonempty": true,
+          "one_figure_per_panel": true,
+          "independent_panel_figures": true,
+          "stable_symbol_color": true,
+          "working_segments_axis_aligned": true,
+          "selected_cut_has_no_geometry_after_K": true,
+          "circle_actual_and_diamond_confirmation": true
+        }
+      }
+    },
+    {
+      "page_id": "rb_selected_at_or_after_confirmation_K103151400",
+      "mode": "selected_cut",
+      "html": {
+        "path": "render_evidence/rb_selected_at_or_after_confirmation_K103151400.html",
+        "bytes": 4010259,
+        "sha256": "d96b0773fc46b228815c9aeb41a8e6f50d0504cabc7b14052d1c74a218f5a8bc"
+      },
+      "plot_view_data_manifest_sha256": "3ded98c1489037e3132dd32b3427bea78af3c9f7ddf28d25b5f616e27650e72a",
+      "validation": {
+        "path": "render_evidence/rb_selected_at_or_after_confirmation_K103151400.validation.json",
+        "sha256": "d2fa61414e750c4db11d371644bed3cadaa33d03d18ce83eaafa03b149063310",
+        "result": "PASS",
+        "mode": "selected_cut",
+        "figure_count": 6,
+        "configured_panels": [
+          "price",
+          "completed_efficiency",
+          "working_motion",
+          "working_efficiency",
+          "duration",
+          "rhythm"
+        ],
+        "column_data_source_count": 16,
+        "evidence_renderer_count": 15,
+        "evidence_groups": [
+          "group:completed_efficiency",
+          "group:duration",
+          "group:price",
+          "group:rhythm",
+          "group:working_efficiency",
+          "group:working_motion"
+        ],
+        "evidence_colors": [
+          "#4C78A8"
+        ],
+        "markers": [
+          "circle",
+          "diamond",
+          "square",
+          "triangle"
+        ],
+        "checks": {
+          "html_nonempty": true,
+          "one_figure_per_panel": true,
+          "independent_panel_figures": true,
+          "stable_symbol_color": true,
+          "working_segments_axis_aligned": true,
+          "selected_cut_has_no_geometry_after_K": true,
+          "circle_actual_and_diamond_confirmation": true
+        }
+      }
+    },
+    {
+      "page_id": "rb_selected_final_K103315800",
+      "mode": "selected_cut",
+      "html": {
+        "path": "render_evidence/rb_selected_final_K103315800.html",
+        "bytes": 4161517,
+        "sha256": "bf4e19994c63e84ac7ad0e332c22aee6476592b39f5f134f5c17facbbe42f04d"
+      },
+      "plot_view_data_manifest_sha256": "a72655b1c8e165d6bd27dfb78edcd1567d938283ecb2c6cb69b90fa66b3858d3",
+      "validation": {
+        "path": "render_evidence/rb_selected_final_K103315800.validation.json",
+        "sha256": "d2fa61414e750c4db11d371644bed3cadaa33d03d18ce83eaafa03b149063310",
+        "result": "PASS",
+        "mode": "selected_cut",
+        "figure_count": 6,
+        "configured_panels": [
+          "price",
+          "completed_efficiency",
+          "working_motion",
+          "working_efficiency",
+          "duration",
+          "rhythm"
+        ],
+        "column_data_source_count": 16,
+        "evidence_renderer_count": 15,
+        "evidence_groups": [
+          "group:completed_efficiency",
+          "group:duration",
+          "group:price",
+          "group:rhythm",
+          "group:working_efficiency",
+          "group:working_motion"
+        ],
+        "evidence_colors": [
+          "#4C78A8"
+        ],
+        "markers": [
+          "circle",
+          "diamond",
+          "square",
+          "triangle"
+        ],
+        "checks": {
+          "html_nonempty": true,
+          "one_figure_per_panel": true,
+          "independent_panel_figures": true,
+          "stable_symbol_color": true,
+          "working_segments_axis_aligned": true,
+          "selected_cut_has_no_geometry_after_K": true,
+          "circle_actual_and_diamond_confirmation": true
+        }
+      }
+    }
+  ],
+  "temporal_cases": {
+    "rb": {
+      "actual_occurrence_rows": 433,
+      "as_of_range": [
+        103056600,
+        103315800
+      ],
+      "selected_cuts": {
+        "before_confirmation": 103150800,
+        "at_or_after_confirmation": 103151400,
+        "final": 103315800
+      },
+      "selected_meta": {
+        "before_confirmation": {
+          "formal_entry": "U2NormalNodeBehaviorFrp.read_at_knowledge(explicit node Life, K) after CalType.OnlyRead",
+          "mode": "selected_cut",
+          "symbol": "rb",
+          "selected_k": 103150800,
+          "resolved_origin_as_of": 103150800,
+          "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/6d4acb13-0d9b-48df-aced-4ec5e83f528a",
+          "node_life": "b340dc6c-c135-462b-b6e0-04d24622c180",
+          "window_address": 37912,
+          "working_address": 37913,
+          "window_base_coordinate": "2024-02-21 13:40:00.500000/171754/0",
+          "working_base_coordinate": "2024-02-21 13:40:00.500000/171754/0",
+          "working_direction": "up",
+          "working_completion": "formal-code:2",
+          "price_range": [
+            100443000,
+            103150800
+          ],
+          "price_rows": 4514
+        },
+        "at_or_after_confirmation": {
+          "formal_entry": "U2NormalNodeBehaviorFrp.read_at_knowledge(explicit node Life, K) after CalType.OnlyRead",
+          "mode": "selected_cut",
+          "symbol": "rb",
+          "selected_k": 103151400,
+          "resolved_origin_as_of": 103151400,
+          "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/ef2f74f6-bdfe-4d89-bc78-4114de18e86c",
+          "node_life": "b340dc6c-c135-462b-b6e0-04d24622c180",
+          "window_address": 37926,
+          "working_address": 37927,
+          "window_base_coordinate": "2024-02-23 21:05:00.500000/171909/0",
+          "working_base_coordinate": "2024-02-23 21:05:00.500000/171909/0",
+          "working_direction": "down",
+          "working_completion": "formal-code:2",
+          "price_range": [
+            100443000,
+            103151400
+          ],
+          "price_rows": 4515
+        },
+        "final": {
+          "formal_entry": "U2NormalNodeBehaviorFrp.read_at_knowledge(explicit node Life, K) after CalType.OnlyRead",
+          "mode": "selected_cut",
+          "symbol": "rb",
+          "selected_k": 103315800,
+          "resolved_origin_as_of": 103315800,
+          "source_exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/b340dc6c-c135-462b-b6e0-04d24622c180/cfd51328-e2cf-4360-8314-20c9238e93fb",
+          "node_life": "b340dc6c-c135-462b-b6e0-04d24622c180",
+          "window_address": 37926,
+          "working_address": 37943,
+          "window_base_coordinate": "2024-02-23 21:05:00.500000/171909/0",
+          "working_base_coordinate": "2024-02-26 21:00:00.500000/171977/0",
+          "working_direction": "down",
+          "working_completion": "formal-code:2",
+          "price_range": [
+            100443000,
+            103315800
+          ],
+          "price_rows": 4789
+        }
+      }
+    },
+    "hc_tail": {
+      "rows": 500,
+      "as_of_range": [
+        103016400,
+        103315800
+      ],
+      "max_present_waiting_ratio": 430.0,
+      "qualification": "technical triage only; no business conclusion"
+    },
+    "i_named_interval": {
+      "rows": 25,
+      "as_of_range": [
+        35346000,
+        35360400
+      ],
+      "formal_failures": 0,
+      "present_waiting_zero": 0,
+      "price_context": {
+        "entry": "U2MainlineKLineInput.rerun(CalType.OnlyRead).to_df",
+        "manifest": "data/i_missing_context/I_MISSING_CONTEXT.json",
+        "manifest_sha256": "a8923ff8f0fea33bfd2f3a35c1627e4345b950417258b8e0028542cfcb150a65",
+        "rows": 48,
+        "missing_close_rows": 24,
+        "last_present_before_gap": "2017-03-30 14:55:00.500000 close=564.5",
+        "missing_close_range": "2017-03-30 21:00:00.500000 through 22:55:00.500000",
+        "first_restored_close": "2017-03-31 09:00:00.500000 open_uti=35361000 close=572.0",
+        "calendar_positions_contiguous": true
+      },
+      "qualification": "Formal failures remain zero. The 24 nullable night closes and the restored 09:00 close are preserved; recovery is not relabelled as a new extreme confirmation."
+    }
+  },
+  "safety": {
+    "TIS_FRP_core_SDK_uplot_source_modified": false,
+    "display_projection_is_formal_product": false,
+    "selected_price_after_K_drawn": false,
+    "ratios_or_duration_price_normalized": false
+  },
+  "acceptance_distinctions": {
+    "normal_reader": "PASS",
+    "normal_selected_reads": "PASS",
+    "aidata_configuration_consumed": "PASS",
+    "uplot_layout_and_html": "PASS",
+    "browser_pixels": "PASS; render_evidence/BROWSER_CAPTURE.json sha256=9d76932ecbcae6853e4bcdfe77ef781cbfbb6381eaf192f91666f09b1a2e27b2",
+    "worker_visual_inspection": "PASS; render_evidence/WORKER_VISUAL_INSPECTION.json sha256=9acec4f87bafad1f74a802a02097c7881630cef188e8891c791fd46fda0aadf9",
+    "professional_interpretation": "NOT_WORKER_AUTHORITY"
+  }
+}

@@ -1,0 +1,1636 @@
+{
+  "时间UTC": "2026-10-20T14:34:00.973709+00:00",
+  "模式": "gen",
+  "成员": [
+    "rb",
+    "hc",
+    "i"
+  ],
+  "Calendar": "night_end_at_2300",
+  "频率": "5m",
+  "SOF": "TA_updto20240229_DBA",
+  "配置": {
+    "__tag__": "U2NormalNodeBehaviorFrp",
+    "compact_history": true,
+    "result_layout": "core.v2",
+    "source": {
+      "sources": [
+        {
+          "behavior": {
+            "completed_episodes": 6,
+            "leave_one_out_minimum": 3,
+            "method": {
+              "book": "NodeBehaviorMethodBook",
+              "kind": "MedianTwoWindowV1",
+              "life": "N6-LOO3-six-metrics-v1",
+              "revision": "recent-source-episode-v1"
+            },
+            "metrics": [
+              {
+                "definition": {
+                  "book": "EpisodeMethodBook",
+                  "kind": "EpisodeMeasureDefinition",
+                  "life": "DirectionalProgress",
+                  "revision": "1"
+                },
+                "kind": "MetricDirectionalProgress",
+                "normalization": null,
+                "unit": "price"
+              },
+              {
+                "definition": {
+                  "book": "EpisodeMethodBook",
+                  "kind": "EpisodeMeasureDefinition",
+                  "life": "RawAmplitude",
+                  "revision": "1"
+                },
+                "kind": "MetricRawAmplitude",
+                "normalization": null,
+                "unit": "price"
+              },
+              {
+                "definition": {
+                  "book": "EpisodeMethodBook",
+                  "kind": "EpisodeMeasureDefinition",
+                  "life": "BusinessDuration",
+                  "revision": "1"
+                },
+                "kind": "MetricBusinessDuration",
+                "normalization": null,
+                "unit": "CalendarUTITick"
+              },
+              {
+                "definition": {
+                  "book": "EpisodeMethodBook",
+                  "kind": "EpisodeMeasureDefinition",
+                  "life": "CanonicalPathLength",
+                  "revision": "1"
+                },
+                "kind": "MetricCanonicalPathLength",
+                "normalization": null,
+                "unit": "price"
+              },
+              {
+                "definition": {
+                  "book": "EpisodeMethodBook",
+                  "kind": "EpisodeMeasureDefinition",
+                  "life": "PathEfficiency",
+                  "revision": "1"
+                },
+                "kind": "MetricPathEfficiency",
+                "normalization": null,
+                "unit": "ratio"
+              },
+              {
+                "definition": {
+                  "book": "EpisodeMethodBook",
+                  "kind": "EpisodeMeasureDefinition",
+                  "life": "RawCounterMove",
+                  "revision": "1"
+                },
+                "kind": "MetricRawCounterMove",
+                "normalization": null,
+                "unit": "price"
+              }
+            ]
+          },
+          "episode_policy": {
+            "book": "EpisodePolicyBook",
+            "kind": "KnownAdjacentTurns",
+            "life": "original-adjacency-v1",
+            "revision": "recent-source-episode-v1"
+          },
+          "market": {
+            "calendar_position_field": "calendar_position",
+            "calendar_stride": 1,
+            "duration_unit": "CalendarUTITick",
+            "normalization": null,
+            "price_comparison": {
+              "kind": "ExactNumericPrice",
+              "method": {
+                "book": "PriceComparisonMethodBook",
+                "kind": "ExactNumericPrice",
+                "life": "exact-native-price",
+                "revision": "1"
+              }
+            },
+            "units_per_calendar_tick": 1,
+            "units_per_open_minute": 120
+          },
+          "metrics": [
+            {
+              "measure": "DirectionalProgress",
+              "method": {
+                "definition": {
+                  "book": "EpisodeMethodBook",
+                  "kind": "EpisodeMeasureDefinition",
+                  "life": "DirectionalProgress",
+                  "revision": "1"
+                },
+                "kind": "MetricDirectionalProgress",
+                "normalization": null,
+                "unit": "price"
+              }
+            },
+            {
+              "measure": "RawAmplitude",
+              "method": {
+                "definition": {
+                  "book": "EpisodeMethodBook",
+                  "kind": "EpisodeMeasureDefinition",
+                  "life": "RawAmplitude",
+                  "revision": "1"
+                },
+                "kind": "MetricRawAmplitude",
+                "normalization": null,
+                "unit": "price"
+              }
+            },
+            {
+              "measure": "BusinessDuration",
+              "method": {
+                "definition": {
+                  "book": "EpisodeMethodBook",
+                  "kind": "EpisodeMeasureDefinition",
+                  "life": "BusinessDuration",
+                  "revision": "1"
+                },
+                "kind": "MetricBusinessDuration",
+                "normalization": null,
+                "unit": "CalendarUTITick"
+              }
+            },
+            {
+              "measure": "CanonicalPathLength",
+              "method": {
+                "definition": {
+                  "book": "EpisodeMethodBook",
+                  "kind": "EpisodeMeasureDefinition",
+                  "life": "CanonicalPathLength",
+                  "revision": "1"
+                },
+                "kind": "MetricCanonicalPathLength",
+                "normalization": null,
+                "unit": "price"
+              }
+            },
+            {
+              "measure": "PathEfficiency",
+              "method": {
+                "definition": {
+                  "book": "EpisodeMethodBook",
+                  "kind": "EpisodeMeasureDefinition",
+                  "life": "PathEfficiency",
+                  "revision": "1"
+                },
+                "kind": "MetricPathEfficiency",
+                "normalization": null,
+                "unit": "ratio"
+              }
+            },
+            {
+              "measure": "RawCounterMove",
+              "method": {
+                "definition": {
+                  "book": "EpisodeMethodBook",
+                  "kind": "EpisodeMeasureDefinition",
+                  "life": "RawCounterMove",
+                  "revision": "1"
+                },
+                "kind": "MetricRawCounterMove",
+                "normalization": null,
+                "unit": "price"
+              }
+            },
+            {
+              "measure": "NormalizedAmplitude",
+              "method": {
+                "definition": {
+                  "book": "EpisodeMethodBook",
+                  "kind": "EpisodeMeasureDefinition",
+                  "life": "NormalizedAmplitude",
+                  "revision": "1"
+                },
+                "kind": "MetricNormalizedAmplitude",
+                "normalization": null,
+                "unit": "ratio"
+              }
+            },
+            {
+              "measure": "NormalizedCounterMove",
+              "method": {
+                "definition": {
+                  "book": "EpisodeMethodBook",
+                  "kind": "EpisodeMeasureDefinition",
+                  "life": "NormalizedCounterMove",
+                  "revision": "1"
+                },
+                "kind": "MetricNormalizedCounterMove",
+                "normalization": null,
+                "unit": "ratio"
+              }
+            },
+            {
+              "measure": "ExtremeUpdateCount",
+              "method": {
+                "definition": {
+                  "book": "EpisodeMethodBook",
+                  "kind": "EpisodeMeasureDefinition",
+                  "life": "ExtremeUpdateCount",
+                  "revision": "1"
+                },
+                "kind": "MetricExtremeUpdateCount",
+                "normalization": null,
+                "unit": "count"
+              }
+            },
+            {
+              "measure": "StartConfirmationDelay",
+              "method": {
+                "definition": {
+                  "book": "EpisodeMethodBook",
+                  "kind": "EpisodeMeasureDefinition",
+                  "life": "StartConfirmationDelay",
+                  "revision": "1"
+                },
+                "kind": "MetricStartConfirmationDelay",
+                "normalization": null,
+                "unit": "CalendarUTITick"
+              }
+            }
+          ],
+          "source": {
+            "calendar": "night_end_at_2300",
+            "input_range": {
+              "end": 103315800,
+              "start": 0
+            },
+            "knowledge": {
+              "mode": "HistoricalInputUTI"
+            },
+            "memory_method": {
+              "candidateCapacity": 8,
+              "correctionOpenMinutes": 960,
+              "retainedMaterialBlocks": 2,
+              "revisableCompletedCapacity": 4,
+              "rhythmIntervalCapacity": 6,
+              "stableDescriptionCapacity": 12
+            },
+            "scale_turn": {
+              "__tag__": "ScaleTurnCalendar",
+              "falter": {
+                "__tag__": "RctZigWithStatus",
+                "zig": {
+                  "__tag__": "ZigZag",
+                  "featIn": {
+                    "__tag__": "Rable",
+                    "args": [
+                      "open_uti as uti",
+                      "close as value",
+                      "calendar_position as calendar_position",
+                      "calendar_time as calendar_time"
+                    ],
+                    "tar": {
+                      "__tag__": "U2MainlineKLineInput",
+                      "calendar_grid": {
+                        "__tag__": "ResampleCalendarTsa",
+                        "resample_len": 600
+                      },
+                      "source": {
+                        "__tag__": "MapKLineOpenData",
+                        "freq": "5m"
+                      }
+                    }
+                  },
+                  "retracePct": 0.5
+                }
+              },
+              "fcheck": {
+                "__tag__": "RctZigWithStatus",
+                "zig": {
+                  "__tag__": "ZigZag",
+                  "featIn": {
+                    "__tag__": "Rable",
+                    "args": [
+                      "open_uti as uti",
+                      "close as value",
+                      "calendar_position as calendar_position",
+                      "calendar_time as calendar_time"
+                    ],
+                    "tar": {
+                      "__tag__": "U2MainlineKLineInput",
+                      "calendar_grid": {
+                        "__tag__": "ResampleCalendarTsa",
+                        "resample_len": 600
+                      },
+                      "source": {
+                        "__tag__": "MapKLineOpenData",
+                        "freq": "5m"
+                      }
+                    }
+                  },
+                  "retracePct": 0.5
+                }
+              },
+              "fisSystem": {
+                "__tag__": "T1FisSystem",
+                "config": {
+                  "__tag__": "T1FisSystemConfig",
+                  "aggMethod1": "max",
+                  "andMethod1": "min",
+                  "defuzzMethod1": "centroid",
+                  "impMethod1": "min",
+                  "orMethod1": "max",
+                  "type1": "mamdani",
+                  "version1": "2.0"
+                },
+                "inputs": {
+                  "__tag__": "GMap",
+                  "adistance": {
+                    "__tag__": "OneUseGaussmfInOrOutPut",
+                    "mfValueFunc": {
+                      "__tag__": "GaussMFs",
+                      "overlap": 0.2
+                    },
+                    "mf_name": [
+                      "S",
+                      "M",
+                      "L"
+                    ],
+                    "range": [
+                      0,
+                      10
+                    ]
+                  }
+                },
+                "name": "T1FIS",
+                "outputs": {
+                  "__tag__": "GMap",
+                  "closegain": {
+                    "__tag__": "OneUseGaussmfInOrOutPut",
+                    "mfValueFunc": {
+                      "__tag__": "GaussMFs",
+                      "overlap": 0.2
+                    },
+                    "mf_name": [
+                      "S",
+                      "M",
+                      "L"
+                    ],
+                    "range": [
+                      0,
+                      1
+                    ]
+                  }
+                },
+                "rules": {
+                  "__tag__": "OneSetRules",
+                  "rules": {
+                    "__tag__": "GMap",
+                    "f0": {
+                      "__tag__": "IfAll",
+                      "inputs": {
+                        "adistance": "L"
+                      },
+                      "outputs": {
+                        "closegain": "L"
+                      },
+                      "weight": 1
+                    },
+                    "f1": {
+                      "__tag__": "IfAll",
+                      "inputs": {
+                        "adistance": "M"
+                      },
+                      "outputs": {
+                        "closegain": "M"
+                      },
+                      "weight": 1
+                    },
+                    "f2": {
+                      "__tag__": "IfAll",
+                      "inputs": {
+                        "adistance": "S"
+                      },
+                      "outputs": {
+                        "closegain": "S"
+                      },
+                      "weight": 1
+                    }
+                  }
+                }
+              },
+              "specTerm": "M",
+              "stCloseGainController": {
+                "__tag__": "BscCloseGainController",
+                "cgcCombine": {
+                  "__tag__": "InputCombineIfClose",
+                  "icicLine": 0
+                },
+                "cgcInputs": {
+                  "__tag__": "GMap",
+                  "f0": {
+                    "__tag__": "AdjCloseVerticalDistanceInput",
+                    "acvdDisTimes": 100,
+                    "acvdLabel": "adistance",
+                    "acvdXStepTimes": 0.1
+                  }
+                }
+              },
+              "stMembershipLine": 0.5,
+              "stRnd2ChooseTurn": {
+                "__tag__": "ChooseMaxExtraPoint",
+                "cmepOccupy": 0
+              }
+            },
+            "source": {
+              "calendar": {
+                "book": "CalendarBook",
+                "kind": "CalendarRevision",
+                "life": "night_end_at_2300",
+                "revision": "TA_updto20240229_DBA"
+              },
+              "data": {
+                "book": "MarketDataBindingBook",
+                "kind": "MapKLineOpenData",
+                "life": "/m3varI/var/L1_data/tick/map_kline_data/5m/rb_night_end_at_2300",
+                "revision": "TA_updto20240229_DBA"
+              },
+              "invocation": {
+                "book": "SourceInvocationBook",
+                "kind": "NativeScaleTurnCalculation",
+                "life": "/m3varI/var/L1_data/tick/map_kline_data/5m/rb_night_end_at_2300",
+                "revision": "native-N6-LOO3-six-metrics-v1"
+              },
+              "method": {
+                "book": "SourceMethodBook",
+                "kind": "ScaleTurnCalendar",
+                "life": "baseline-0.5-M-0.5",
+                "revision": "recent-source-episode-v1"
+              },
+              "origin_order": null,
+              "price_comparison": {
+                "book": "PriceComparisonMethodBook",
+                "kind": "ExactNumericPrice",
+                "life": "exact-native-price",
+                "revision": "1"
+              },
+              "price_unit": "price",
+              "process_fields": [
+                [
+                  "adistance",
+                  "ratio",
+                  {
+                    "tag": "MethodInput"
+                  },
+                  "原调整后垂直距离除以参考距离"
+                ],
+                [
+                  "degree",
+                  "ratio",
+                  {
+                    "tag": "MembershipDegree"
+                  },
+                  "原 M 项隶属度"
+                ],
+                [
+                  "gain",
+                  "ratio",
+                  {
+                    "tag": "MethodOutput"
+                  },
+                  "原 CFIS closegain 输出"
+                ]
+              ],
+              "scope": {
+                "context": "blk@steel",
+                "context_revision": {
+                  "book": "U2ContextBook",
+                  "kind": "U2ContextRevision",
+                  "life": "blk@steel",
+                  "revision": "recent-source-episode-v1"
+                },
+                "domain": "blk@steel",
+                "object": "rb",
+                "scale": {
+                  "book": "ScaleConfigurationBook",
+                  "kind": "ScaleTurnCalendarFrequency",
+                  "life": "5m",
+                  "revision": "1"
+                }
+              }
+            },
+            "target": {
+              "__tag__": "CalendarTarget",
+              "calendar": "night_end_at_2300",
+              "target": {
+                "__tag__": "Symbol",
+                "sym": "rb"
+              }
+            },
+            "turn_meaning": {
+              "negative_direction": "DirectionUp",
+              "negative_type": "SourceTroughTurn",
+              "positive_direction": "DirectionDown",
+              "positive_type": "SourcePeakTurn"
+            }
+          }
+        },
+        {
+          "behavior": {
+            "completed_episodes": 6,
+            "leave_one_out_minimum": 3,
+            "method": {
+              "book": "NodeBehaviorMethodBook",
+              "kind": "MedianTwoWindowV1",
+              "life": "N6-LOO3-six-metrics-v1",
+              "revision": "recent-source-episode-v1"
+            },
+            "metrics": [
+              {
+                "definition": {
+                  "book": "EpisodeMethodBook",
+                  "kind": "EpisodeMeasureDefinition",
+                  "life": "DirectionalProgress",
+                  "revision": "1"
+                },
+                "kind": "MetricDirectionalProgress",
+                "normalization": null,
+                "unit": "price"
+              },
+              {
+                "definition": {
+                  "book": "EpisodeMethodBook",
+                  "kind": "EpisodeMeasureDefinition",
+                  "life": "RawAmplitude",
+                  "revision": "1"
+                },
+                "kind": "MetricRawAmplitude",
+                "normalization": null,
+                "unit": "price"
+              },
+              {
+                "definition": {
+                  "book": "EpisodeMethodBook",
+                  "kind": "EpisodeMeasureDefinition",
+                  "life": "BusinessDuration",
+                  "revision": "1"
+                },
+                "kind": "MetricBusinessDuration",
+                "normalization": null,
+                "unit": "CalendarUTITick"
+              },
+              {
+                "definition": {
+                  "book": "EpisodeMethodBook",
+                  "kind": "EpisodeMeasureDefinition",
+                  "life": "CanonicalPathLength",
+                  "revision": "1"
+                },
+                "kind": "MetricCanonicalPathLength",
+                "normalization": null,
+                "unit": "price"
+              },
+              {
+                "definition": {
+                  "book": "EpisodeMethodBook",
+                  "kind": "EpisodeMeasureDefinition",
+                  "life": "PathEfficiency",
+                  "revision": "1"
+                },
+                "kind": "MetricPathEfficiency",
+                "normalization": null,
+                "unit": "ratio"
+              },
+              {
+                "definition": {
+                  "book": "EpisodeMethodBook",
+                  "kind": "EpisodeMeasureDefinition",
+                  "life": "RawCounterMove",
+                  "revision": "1"
+                },
+                "kind": "MetricRawCounterMove",
+                "normalization": null,
+                "unit": "price"
+              }
+            ]
+          },
+          "episode_policy": {
+            "book": "EpisodePolicyBook",
+            "kind": "KnownAdjacentTurns",
+            "life": "original-adjacency-v1",
+            "revision": "recent-source-episode-v1"
+          },
+          "market": {
+            "calendar_position_field": "calendar_position",
+            "calendar_stride": 1,
+            "duration_unit": "CalendarUTITick",
+            "normalization": null,
+            "price_comparison": {
+              "kind": "ExactNumericPrice",
+              "method": {
+                "book": "PriceComparisonMethodBook",
+                "kind": "ExactNumericPrice",
+                "life": "exact-native-price",
+                "revision": "1"
+              }
+            },
+            "units_per_calendar_tick": 1,
+            "units_per_open_minute": 120
+          },
+          "metrics": [
+            {
+              "measure": "DirectionalProgress",
+              "method": {
+                "definition": {
+                  "book": "EpisodeMethodBook",
+                  "kind": "EpisodeMeasureDefinition",
+                  "life": "DirectionalProgress",
+                  "revision": "1"
+                },
+                "kind": "MetricDirectionalProgress",
+                "normalization": null,
+                "unit": "price"
+              }
+            },
+            {
+              "measure": "RawAmplitude",
+              "method": {
+                "definition": {
+                  "book": "EpisodeMethodBook",
+                  "kind": "EpisodeMeasureDefinition",
+                  "life": "RawAmplitude",
+                  "revision": "1"
+                },
+                "kind": "MetricRawAmplitude",
+                "normalization": null,
+                "unit": "price"
+              }
+            },
+            {
+              "measure": "BusinessDuration",
+              "method": {
+                "definition": {
+                  "book": "EpisodeMethodBook",
+                  "kind": "EpisodeMeasureDefinition",
+                  "life": "BusinessDuration",
+                  "revision": "1"
+                },
+                "kind": "MetricBusinessDuration",
+                "normalization": null,
+                "unit": "CalendarUTITick"
+              }
+            },
+            {
+              "measure": "CanonicalPathLength",
+              "method": {
+                "definition": {
+                  "book": "EpisodeMethodBook",
+                  "kind": "EpisodeMeasureDefinition",
+                  "life": "CanonicalPathLength",
+                  "revision": "1"
+                },
+                "kind": "MetricCanonicalPathLength",
+                "normalization": null,
+                "unit": "price"
+              }
+            },
+            {
+              "measure": "PathEfficiency",
+              "method": {
+                "definition": {
+                  "book": "EpisodeMethodBook",
+                  "kind": "EpisodeMeasureDefinition",
+                  "life": "PathEfficiency",
+                  "revision": "1"
+                },
+                "kind": "MetricPathEfficiency",
+                "normalization": null,
+                "unit": "ratio"
+              }
+            },
+            {
+              "measure": "RawCounterMove",
+              "method": {
+                "definition": {
+                  "book": "EpisodeMethodBook",
+                  "kind": "EpisodeMeasureDefinition",
+                  "life": "RawCounterMove",
+                  "revision": "1"
+                },
+                "kind": "MetricRawCounterMove",
+                "normalization": null,
+                "unit": "price"
+              }
+            },
+            {
+              "measure": "NormalizedAmplitude",
+              "method": {
+                "definition": {
+                  "book": "EpisodeMethodBook",
+                  "kind": "EpisodeMeasureDefinition",
+                  "life": "NormalizedAmplitude",
+                  "revision": "1"
+                },
+                "kind": "MetricNormalizedAmplitude",
+                "normalization": null,
+                "unit": "ratio"
+              }
+            },
+            {
+              "measure": "NormalizedCounterMove",
+              "method": {
+                "definition": {
+                  "book": "EpisodeMethodBook",
+                  "kind": "EpisodeMeasureDefinition",
+                  "life": "NormalizedCounterMove",
+                  "revision": "1"
+                },
+                "kind": "MetricNormalizedCounterMove",
+                "normalization": null,
+                "unit": "ratio"
+              }
+            },
+            {
+              "measure": "ExtremeUpdateCount",
+              "method": {
+                "definition": {
+                  "book": "EpisodeMethodBook",
+                  "kind": "EpisodeMeasureDefinition",
+                  "life": "ExtremeUpdateCount",
+                  "revision": "1"
+                },
+                "kind": "MetricExtremeUpdateCount",
+                "normalization": null,
+                "unit": "count"
+              }
+            },
+            {
+              "measure": "StartConfirmationDelay",
+              "method": {
+                "definition": {
+                  "book": "EpisodeMethodBook",
+                  "kind": "EpisodeMeasureDefinition",
+                  "life": "StartConfirmationDelay",
+                  "revision": "1"
+                },
+                "kind": "MetricStartConfirmationDelay",
+                "normalization": null,
+                "unit": "CalendarUTITick"
+              }
+            }
+          ],
+          "source": {
+            "calendar": "night_end_at_2300",
+            "input_range": {
+              "end": 103315800,
+              "start": 0
+            },
+            "knowledge": {
+              "mode": "HistoricalInputUTI"
+            },
+            "memory_method": {
+              "candidateCapacity": 8,
+              "correctionOpenMinutes": 960,
+              "retainedMaterialBlocks": 2,
+              "revisableCompletedCapacity": 4,
+              "rhythmIntervalCapacity": 6,
+              "stableDescriptionCapacity": 12
+            },
+            "scale_turn": {
+              "__tag__": "ScaleTurnCalendar",
+              "falter": {
+                "__tag__": "RctZigWithStatus",
+                "zig": {
+                  "__tag__": "ZigZag",
+                  "featIn": {
+                    "__tag__": "Rable",
+                    "args": [
+                      "open_uti as uti",
+                      "close as value",
+                      "calendar_position as calendar_position",
+                      "calendar_time as calendar_time"
+                    ],
+                    "tar": {
+                      "__tag__": "U2MainlineKLineInput",
+                      "calendar_grid": {
+                        "__tag__": "ResampleCalendarTsa",
+                        "resample_len": 600
+                      },
+                      "source": {
+                        "__tag__": "MapKLineOpenData",
+                        "freq": "5m"
+                      }
+                    }
+                  },
+                  "retracePct": 0.5
+                }
+              },
+              "fcheck": {
+                "__tag__": "RctZigWithStatus",
+                "zig": {
+                  "__tag__": "ZigZag",
+                  "featIn": {
+                    "__tag__": "Rable",
+                    "args": [
+                      "open_uti as uti",
+                      "close as value",
+                      "calendar_position as calendar_position",
+                      "calendar_time as calendar_time"
+                    ],
+                    "tar": {
+                      "__tag__": "U2MainlineKLineInput",
+                      "calendar_grid": {
+                        "__tag__": "ResampleCalendarTsa",
+                        "resample_len": 600
+                      },
+                      "source": {
+                        "__tag__": "MapKLineOpenData",
+                        "freq": "5m"
+                      }
+                    }
+                  },
+                  "retracePct": 0.5
+                }
+              },
+              "fisSystem": {
+                "__tag__": "T1FisSystem",
+                "config": {
+                  "__tag__": "T1FisSystemConfig",
+                  "aggMethod1": "max",
+                  "andMethod1": "min",
+                  "defuzzMethod1": "centroid",
+                  "impMethod1": "min",
+                  "orMethod1": "max",
+                  "type1": "mamdani",
+                  "version1": "2.0"
+                },
+                "inputs": {
+                  "__tag__": "GMap",
+                  "adistance": {
+                    "__tag__": "OneUseGaussmfInOrOutPut",
+                    "mfValueFunc": {
+                      "__tag__": "GaussMFs",
+                      "overlap": 0.2
+                    },
+                    "mf_name": [
+                      "S",
+                      "M",
+                      "L"
+                    ],
+                    "range": [
+                      0,
+                      10
+                    ]
+                  }
+                },
+                "name": "T1FIS",
+                "outputs": {
+                  "__tag__": "GMap",
+                  "closegain": {
+                    "__tag__": "OneUseGaussmfInOrOutPut",
+                    "mfValueFunc": {
+                      "__tag__": "GaussMFs",
+                      "overlap": 0.2
+                    },
+                    "mf_name": [
+                      "S",
+                      "M",
+                      "L"
+                    ],
+                    "range": [
+                      0,
+                      1
+                    ]
+                  }
+                },
+                "rules": {
+                  "__tag__": "OneSetRules",
+                  "rules": {
+                    "__tag__": "GMap",
+                    "f0": {
+                      "__tag__": "IfAll",
+                      "inputs": {
+                        "adistance": "L"
+                      },
+                      "outputs": {
+                        "closegain": "L"
+                      },
+                      "weight": 1
+                    },
+                    "f1": {
+                      "__tag__": "IfAll",
+                      "inputs": {
+                        "adistance": "M"
+                      },
+                      "outputs": {
+                        "closegain": "M"
+                      },
+                      "weight": 1
+                    },
+                    "f2": {
+                      "__tag__": "IfAll",
+                      "inputs": {
+                        "adistance": "S"
+                      },
+                      "outputs": {
+                        "closegain": "S"
+                      },
+                      "weight": 1
+                    }
+                  }
+                }
+              },
+              "specTerm": "M",
+              "stCloseGainController": {
+                "__tag__": "BscCloseGainController",
+                "cgcCombine": {
+                  "__tag__": "InputCombineIfClose",
+                  "icicLine": 0
+                },
+                "cgcInputs": {
+                  "__tag__": "GMap",
+                  "f0": {
+                    "__tag__": "AdjCloseVerticalDistanceInput",
+                    "acvdDisTimes": 100,
+                    "acvdLabel": "adistance",
+                    "acvdXStepTimes": 0.1
+                  }
+                }
+              },
+              "stMembershipLine": 0.5,
+              "stRnd2ChooseTurn": {
+                "__tag__": "ChooseMaxExtraPoint",
+                "cmepOccupy": 0
+              }
+            },
+            "source": {
+              "calendar": {
+                "book": "CalendarBook",
+                "kind": "CalendarRevision",
+                "life": "night_end_at_2300",
+                "revision": "TA_updto20240229_DBA"
+              },
+              "data": {
+                "book": "MarketDataBindingBook",
+                "kind": "MapKLineOpenData",
+                "life": "/m3varI/var/L1_data/tick/map_kline_data/5m/hc_night_end_at_2300",
+                "revision": "TA_updto20240229_DBA"
+              },
+              "invocation": {
+                "book": "SourceInvocationBook",
+                "kind": "NativeScaleTurnCalculation",
+                "life": "/m3varI/var/L1_data/tick/map_kline_data/5m/hc_night_end_at_2300",
+                "revision": "native-N6-LOO3-six-metrics-v1"
+              },
+              "method": {
+                "book": "SourceMethodBook",
+                "kind": "ScaleTurnCalendar",
+                "life": "baseline-0.5-M-0.5",
+                "revision": "recent-source-episode-v1"
+              },
+              "origin_order": null,
+              "price_comparison": {
+                "book": "PriceComparisonMethodBook",
+                "kind": "ExactNumericPrice",
+                "life": "exact-native-price",
+                "revision": "1"
+              },
+              "price_unit": "price",
+              "process_fields": [
+                [
+                  "adistance",
+                  "ratio",
+                  {
+                    "tag": "MethodInput"
+                  },
+                  "原调整后垂直距离除以参考距离"
+                ],
+                [
+                  "degree",
+                  "ratio",
+                  {
+                    "tag": "MembershipDegree"
+                  },
+                  "原 M 项隶属度"
+                ],
+                [
+                  "gain",
+                  "ratio",
+                  {
+                    "tag": "MethodOutput"
+                  },
+                  "原 CFIS closegain 输出"
+                ]
+              ],
+              "scope": {
+                "context": "blk@steel",
+                "context_revision": {
+                  "book": "U2ContextBook",
+                  "kind": "U2ContextRevision",
+                  "life": "blk@steel",
+                  "revision": "recent-source-episode-v1"
+                },
+                "domain": "blk@steel",
+                "object": "hc",
+                "scale": {
+                  "book": "ScaleConfigurationBook",
+                  "kind": "ScaleTurnCalendarFrequency",
+                  "life": "5m",
+                  "revision": "1"
+                }
+              }
+            },
+            "target": {
+              "__tag__": "CalendarTarget",
+              "calendar": "night_end_at_2300",
+              "target": {
+                "__tag__": "Symbol",
+                "sym": "hc"
+              }
+            },
+            "turn_meaning": {
+              "negative_direction": "DirectionUp",
+              "negative_type": "SourceTroughTurn",
+              "positive_direction": "DirectionDown",
+              "positive_type": "SourcePeakTurn"
+            }
+          }
+        },
+        {
+          "behavior": {
+            "completed_episodes": 6,
+            "leave_one_out_minimum": 3,
+            "method": {
+              "book": "NodeBehaviorMethodBook",
+              "kind": "MedianTwoWindowV1",
+              "life": "N6-LOO3-six-metrics-v1",
+              "revision": "recent-source-episode-v1"
+            },
+            "metrics": [
+              {
+                "definition": {
+                  "book": "EpisodeMethodBook",
+                  "kind": "EpisodeMeasureDefinition",
+                  "life": "DirectionalProgress",
+                  "revision": "1"
+                },
+                "kind": "MetricDirectionalProgress",
+                "normalization": null,
+                "unit": "price"
+              },
+              {
+                "definition": {
+                  "book": "EpisodeMethodBook",
+                  "kind": "EpisodeMeasureDefinition",
+                  "life": "RawAmplitude",
+                  "revision": "1"
+                },
+                "kind": "MetricRawAmplitude",
+                "normalization": null,
+                "unit": "price"
+              },
+              {
+                "definition": {
+                  "book": "EpisodeMethodBook",
+                  "kind": "EpisodeMeasureDefinition",
+                  "life": "BusinessDuration",
+                  "revision": "1"
+                },
+                "kind": "MetricBusinessDuration",
+                "normalization": null,
+                "unit": "CalendarUTITick"
+              },
+              {
+                "definition": {
+                  "book": "EpisodeMethodBook",
+                  "kind": "EpisodeMeasureDefinition",
+                  "life": "CanonicalPathLength",
+                  "revision": "1"
+                },
+                "kind": "MetricCanonicalPathLength",
+                "normalization": null,
+                "unit": "price"
+              },
+              {
+                "definition": {
+                  "book": "EpisodeMethodBook",
+                  "kind": "EpisodeMeasureDefinition",
+                  "life": "PathEfficiency",
+                  "revision": "1"
+                },
+                "kind": "MetricPathEfficiency",
+                "normalization": null,
+                "unit": "ratio"
+              },
+              {
+                "definition": {
+                  "book": "EpisodeMethodBook",
+                  "kind": "EpisodeMeasureDefinition",
+                  "life": "RawCounterMove",
+                  "revision": "1"
+                },
+                "kind": "MetricRawCounterMove",
+                "normalization": null,
+                "unit": "price"
+              }
+            ]
+          },
+          "episode_policy": {
+            "book": "EpisodePolicyBook",
+            "kind": "KnownAdjacentTurns",
+            "life": "original-adjacency-v1",
+            "revision": "recent-source-episode-v1"
+          },
+          "market": {
+            "calendar_position_field": "calendar_position",
+            "calendar_stride": 1,
+            "duration_unit": "CalendarUTITick",
+            "normalization": null,
+            "price_comparison": {
+              "kind": "ExactNumericPrice",
+              "method": {
+                "book": "PriceComparisonMethodBook",
+                "kind": "ExactNumericPrice",
+                "life": "exact-native-price",
+                "revision": "1"
+              }
+            },
+            "units_per_calendar_tick": 1,
+            "units_per_open_minute": 120
+          },
+          "metrics": [
+            {
+              "measure": "DirectionalProgress",
+              "method": {
+                "definition": {
+                  "book": "EpisodeMethodBook",
+                  "kind": "EpisodeMeasureDefinition",
+                  "life": "DirectionalProgress",
+                  "revision": "1"
+                },
+                "kind": "MetricDirectionalProgress",
+                "normalization": null,
+                "unit": "price"
+              }
+            },
+            {
+              "measure": "RawAmplitude",
+              "method": {
+                "definition": {
+                  "book": "EpisodeMethodBook",
+                  "kind": "EpisodeMeasureDefinition",
+                  "life": "RawAmplitude",
+                  "revision": "1"
+                },
+                "kind": "MetricRawAmplitude",
+                "normalization": null,
+                "unit": "price"
+              }
+            },
+            {
+              "measure": "BusinessDuration",
+              "method": {
+                "definition": {
+                  "book": "EpisodeMethodBook",
+                  "kind": "EpisodeMeasureDefinition",
+                  "life": "BusinessDuration",
+                  "revision": "1"
+                },
+                "kind": "MetricBusinessDuration",
+                "normalization": null,
+                "unit": "CalendarUTITick"
+              }
+            },
+            {
+              "measure": "CanonicalPathLength",
+              "method": {
+                "definition": {
+                  "book": "EpisodeMethodBook",
+                  "kind": "EpisodeMeasureDefinition",
+                  "life": "CanonicalPathLength",
+                  "revision": "1"
+                },
+                "kind": "MetricCanonicalPathLength",
+                "normalization": null,
+                "unit": "price"
+              }
+            },
+            {
+              "measure": "PathEfficiency",
+              "method": {
+                "definition": {
+                  "book": "EpisodeMethodBook",
+                  "kind": "EpisodeMeasureDefinition",
+                  "life": "PathEfficiency",
+                  "revision": "1"
+                },
+                "kind": "MetricPathEfficiency",
+                "normalization": null,
+                "unit": "ratio"
+              }
+            },
+            {
+              "measure": "RawCounterMove",
+              "method": {
+                "definition": {
+                  "book": "EpisodeMethodBook",
+                  "kind": "EpisodeMeasureDefinition",
+                  "life": "RawCounterMove",
+                  "revision": "1"
+                },
+                "kind": "MetricRawCounterMove",
+                "normalization": null,
+                "unit": "price"
+              }
+            },
+            {
+              "measure": "NormalizedAmplitude",
+              "method": {
+                "definition": {
+                  "book": "EpisodeMethodBook",
+                  "kind": "EpisodeMeasureDefinition",
+                  "life": "NormalizedAmplitude",
+                  "revision": "1"
+                },
+                "kind": "MetricNormalizedAmplitude",
+                "normalization": null,
+                "unit": "ratio"
+              }
+            },
+            {
+              "measure": "NormalizedCounterMove",
+              "method": {
+                "definition": {
+                  "book": "EpisodeMethodBook",
+                  "kind": "EpisodeMeasureDefinition",
+                  "life": "NormalizedCounterMove",
+                  "revision": "1"
+                },
+                "kind": "MetricNormalizedCounterMove",
+                "normalization": null,
+                "unit": "ratio"
+              }
+            },
+            {
+              "measure": "ExtremeUpdateCount",
+              "method": {
+                "definition": {
+                  "book": "EpisodeMethodBook",
+                  "kind": "EpisodeMeasureDefinition",
+                  "life": "ExtremeUpdateCount",
+                  "revision": "1"
+                },
+                "kind": "MetricExtremeUpdateCount",
+                "normalization": null,
+                "unit": "count"
+              }
+            },
+            {
+              "measure": "StartConfirmationDelay",
+              "method": {
+                "definition": {
+                  "book": "EpisodeMethodBook",
+                  "kind": "EpisodeMeasureDefinition",
+                  "life": "StartConfirmationDelay",
+                  "revision": "1"
+                },
+                "kind": "MetricStartConfirmationDelay",
+                "normalization": null,
+                "unit": "CalendarUTITick"
+              }
+            }
+          ],
+          "source": {
+            "calendar": "night_end_at_2300",
+            "input_range": {
+              "end": 103315800,
+              "start": 0
+            },
+            "knowledge": {
+              "mode": "HistoricalInputUTI"
+            },
+            "memory_method": {
+              "candidateCapacity": 8,
+              "correctionOpenMinutes": 960,
+              "retainedMaterialBlocks": 2,
+              "revisableCompletedCapacity": 4,
+              "rhythmIntervalCapacity": 6,
+              "stableDescriptionCapacity": 12
+            },
+            "scale_turn": {
+              "__tag__": "ScaleTurnCalendar",
+              "falter": {
+                "__tag__": "RctZigWithStatus",
+                "zig": {
+                  "__tag__": "ZigZag",
+                  "featIn": {
+                    "__tag__": "Rable",
+                    "args": [
+                      "open_uti as uti",
+                      "close as value",
+                      "calendar_position as calendar_position",
+                      "calendar_time as calendar_time"
+                    ],
+                    "tar": {
+                      "__tag__": "U2MainlineKLineInput",
+                      "calendar_grid": {
+                        "__tag__": "ResampleCalendarTsa",
+                        "resample_len": 600
+                      },
+                      "source": {
+                        "__tag__": "MapKLineOpenData",
+                        "freq": "5m"
+                      }
+                    }
+                  },
+                  "retracePct": 0.5
+                }
+              },
+              "fcheck": {
+                "__tag__": "RctZigWithStatus",
+                "zig": {
+                  "__tag__": "ZigZag",
+                  "featIn": {
+                    "__tag__": "Rable",
+                    "args": [
+                      "open_uti as uti",
+                      "close as value",
+                      "calendar_position as calendar_position",
+                      "calendar_time as calendar_time"
+                    ],
+                    "tar": {
+                      "__tag__": "U2MainlineKLineInput",
+                      "calendar_grid": {
+                        "__tag__": "ResampleCalendarTsa",
+                        "resample_len": 600
+                      },
+                      "source": {
+                        "__tag__": "MapKLineOpenData",
+                        "freq": "5m"
+                      }
+                    }
+                  },
+                  "retracePct": 0.5
+                }
+              },
+              "fisSystem": {
+                "__tag__": "T1FisSystem",
+                "config": {
+                  "__tag__": "T1FisSystemConfig",
+                  "aggMethod1": "max",
+                  "andMethod1": "min",
+                  "defuzzMethod1": "centroid",
+                  "impMethod1": "min",
+                  "orMethod1": "max",
+                  "type1": "mamdani",
+                  "version1": "2.0"
+                },
+                "inputs": {
+                  "__tag__": "GMap",
+                  "adistance": {
+                    "__tag__": "OneUseGaussmfInOrOutPut",
+                    "mfValueFunc": {
+                      "__tag__": "GaussMFs",
+                      "overlap": 0.2
+                    },
+                    "mf_name": [
+                      "S",
+                      "M",
+                      "L"
+                    ],
+                    "range": [
+                      0,
+                      10
+                    ]
+                  }
+                },
+                "name": "T1FIS",
+                "outputs": {
+                  "__tag__": "GMap",
+                  "closegain": {
+                    "__tag__": "OneUseGaussmfInOrOutPut",
+                    "mfValueFunc": {
+                      "__tag__": "GaussMFs",
+                      "overlap": 0.2
+                    },
+                    "mf_name": [
+                      "S",
+                      "M",
+                      "L"
+                    ],
+                    "range": [
+                      0,
+                      1
+                    ]
+                  }
+                },
+                "rules": {
+                  "__tag__": "OneSetRules",
+                  "rules": {
+                    "__tag__": "GMap",
+                    "f0": {
+                      "__tag__": "IfAll",
+                      "inputs": {
+                        "adistance": "L"
+                      },
+                      "outputs": {
+                        "closegain": "L"
+                      },
+                      "weight": 1
+                    },
+                    "f1": {
+                      "__tag__": "IfAll",
+                      "inputs": {
+                        "adistance": "M"
+                      },
+                      "outputs": {
+                        "closegain": "M"
+                      },
+                      "weight": 1
+                    },
+                    "f2": {
+                      "__tag__": "IfAll",
+                      "inputs": {
+                        "adistance": "S"
+                      },
+                      "outputs": {
+                        "closegain": "S"
+                      },
+                      "weight": 1
+                    }
+                  }
+                }
+              },
+              "specTerm": "M",
+              "stCloseGainController": {
+                "__tag__": "BscCloseGainController",
+                "cgcCombine": {
+                  "__tag__": "InputCombineIfClose",
+                  "icicLine": 0
+                },
+                "cgcInputs": {
+                  "__tag__": "GMap",
+                  "f0": {
+                    "__tag__": "AdjCloseVerticalDistanceInput",
+                    "acvdDisTimes": 100,
+                    "acvdLabel": "adistance",
+                    "acvdXStepTimes": 0.1
+                  }
+                }
+              },
+              "stMembershipLine": 0.5,
+              "stRnd2ChooseTurn": {
+                "__tag__": "ChooseMaxExtraPoint",
+                "cmepOccupy": 0
+              }
+            },
+            "source": {
+              "calendar": {
+                "book": "CalendarBook",
+                "kind": "CalendarRevision",
+                "life": "night_end_at_2300",
+                "revision": "TA_updto20240229_DBA"
+              },
+              "data": {
+                "book": "MarketDataBindingBook",
+                "kind": "MapKLineOpenData",
+                "life": "/m3varI/var/L1_data/tick/map_kline_data/5m/i_night_end_at_2300",
+                "revision": "TA_updto20240229_DBA"
+              },
+              "invocation": {
+                "book": "SourceInvocationBook",
+                "kind": "NativeScaleTurnCalculation",
+                "life": "/m3varI/var/L1_data/tick/map_kline_data/5m/i_night_end_at_2300",
+                "revision": "native-N6-LOO3-six-metrics-v1"
+              },
+              "method": {
+                "book": "SourceMethodBook",
+                "kind": "ScaleTurnCalendar",
+                "life": "baseline-0.5-M-0.5",
+                "revision": "recent-source-episode-v1"
+              },
+              "origin_order": null,
+              "price_comparison": {
+                "book": "PriceComparisonMethodBook",
+                "kind": "ExactNumericPrice",
+                "life": "exact-native-price",
+                "revision": "1"
+              },
+              "price_unit": "price",
+              "process_fields": [
+                [
+                  "adistance",
+                  "ratio",
+                  {
+                    "tag": "MethodInput"
+                  },
+                  "原调整后垂直距离除以参考距离"
+                ],
+                [
+                  "degree",
+                  "ratio",
+                  {
+                    "tag": "MembershipDegree"
+                  },
+                  "原 M 项隶属度"
+                ],
+                [
+                  "gain",
+                  "ratio",
+                  {
+                    "tag": "MethodOutput"
+                  },
+                  "原 CFIS closegain 输出"
+                ]
+              ],
+              "scope": {
+                "context": "blk@steel",
+                "context_revision": {
+                  "book": "U2ContextBook",
+                  "kind": "U2ContextRevision",
+                  "life": "blk@steel",
+                  "revision": "recent-source-episode-v1"
+                },
+                "domain": "blk@steel",
+                "object": "i",
+                "scale": {
+                  "book": "ScaleConfigurationBook",
+                  "kind": "ScaleTurnCalendarFrequency",
+                  "life": "5m",
+                  "revision": "1"
+                }
+              }
+            },
+            "target": {
+              "__tag__": "CalendarTarget",
+              "calendar": "night_end_at_2300",
+              "target": {
+                "__tag__": "Symbol",
+                "sym": "i"
+              }
+            },
+            "turn_meaning": {
+              "negative_direction": "DirectionUp",
+              "negative_type": "SourceTroughTurn",
+              "positive_direction": "DirectionDown",
+              "positive_type": "SourcePeakTurn"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "N目录": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/U2NormalNodeBehaviorFrp/9/0/d/3/7/a/4/fb2007d71be1e620801457424d6dea8b4/func",
+  "Owner顺序纠正": "先真实输入；合成检查失败及未执行项如实保留，不冒充已通过",
+  "实际行情": {
+    "rb": {
+      "行数": 172194,
+      "首时点": "2013-01-04 09:00:00.500000",
+      "末时点": "2024-02-29 14:55:00.500000",
+      "字段": [
+        "calendar_position",
+        "calendar_time",
+        "close",
+        "high",
+        "low",
+        "open",
+        "openInt",
+        "open_uti",
+        "volume"
+      ]
+    },
+    "hc": {
+      "行数": 172194,
+      "首时点": "2013-01-04 09:00:00.500000",
+      "末时点": "2024-02-29 14:55:00.500000",
+      "字段": [
+        "calendar_position",
+        "calendar_time",
+        "close",
+        "high",
+        "low",
+        "open",
+        "openInt",
+        "open_uti",
+        "volume"
+      ]
+    },
+    "i": {
+      "行数": 172194,
+      "首时点": "2013-01-04 09:00:00.500000",
+      "末时点": "2024-02-29 14:55:00.500000",
+      "字段": [
+        "calendar_position",
+        "calendar_time",
+        "close",
+        "high",
+        "low",
+        "open",
+        "openInt",
+        "open_uti",
+        "volume"
+      ]
+    }
+  }
+}
