@@ -4,6 +4,8 @@
 
 **历史准备状态与当前运行分开：**`4d501afa160179818a0563fc6d03656d1e879ded` 的准备稿曾标记“未授权启动 / NO_SEND”；此后 `BI-01-FO-01` 已有独立的 [Owner START](../../runs/BI-01-FO-01/OWNER_START.md) 和真实调用，不能用旧准备标记停止该 run。本次按 [2026-10-22 Owner 定向反馈](../../runs/BI-01-FO-01/OWNER_FEEDBACK_20261022.md) 修订的方法，须经该 run 的实际管理采用及必要 Gate 接入后继；不倒改先前方法、任务、Return 或接收决定，也不将本次反馈当成新的 Owner GO。
 
+**本次职责纠正候选：**按 [Owner 工作2/3补充反馈（698b229）](https://github.com/daowei2026/observe-iterate/blob/698b22944fe409ea36505bf3df69cfec5d486772/runs/BI-01-FO-01/OWNER_FEEDBACK_20261022_UPLOT_AIDATA_BOUNDARY.md)，工作2由专业 Pro 对 Uplot 真实重新成图、验证及可执行交互 Notebook 负责；工作3实际使用 aidata 公开入口交付正常平台页面链接与同节点正式数据。Owner 已将此前所有图的工作2展示验收资格定为不采用；原图和历史不改，可信数据、配置及技术记录只作来源或未验证参考。本目录的定向修订仍须当前管理实际采用并接入 Task/Binding，不能把候选文件或旧 ADOPTED 当作新修订已生效。见 [修订说明](BOUNDARY_UPDATE_20261022.md)。
+
 ## 入口及阅读次序
 
 1. [00：四项专业工作及相互关系](00_PURPOSE_AND_FOUR_WORKS.md)
