@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "recorded_at": "2026-10-22T18:32:57+08:00",
+  "recorded_at": "2026-10-22T18:54:36+08:00",
   "result": "PASS",
   "repository": "daowei2026/observe-iterate",
   "branch": "fy/bi01-feature-observation-prep-20261021",
@@ -47,5 +47,60 @@
     ],
     "tests": "28 passed"
   },
-  "receipt_self_reference_boundary": "本文件在 artifact_commit 的后继提交发布；artifact_commit 是已从 GitHub fresh fetch 并逐文件回读的完整188文件技术包。后继回执提交的最终分支 SHA 由提交后的远端 ref 新鲜回读和结案消息记录，避免让文件内容自指自己的 commit。"
+  "endpoint_r8_supplement": {
+    "marker": "BI01-FO01-WORKER-DISPLAY02-ENDPOINT-R8-20261022",
+    "management_source": "daowei2026/observe-iterate@8af0eafe829eb139ec5563a15cf2c705aa0243ef:runs/BI-01-FO-01/reviews/management-R0008/FULL_RESPONSE.md#endpoint-disposition",
+    "result": "PASS",
+    "disposition": "RIGHT_OPEN_K_FILTER_NOT_REPRODUCED; SEQUENTIAL_PLOTTER_IDENTITY_REUSE_REPRODUCED_AND_FIXED",
+    "pre_fix_source_commit": "39308f4a8fe6b6f2fe1399f8d9e56b91a5ceb643",
+    "aidata": {
+      "repository": "daowei2026/aidata",
+      "branch": "fy/bi01-fo01-n-display-r0007",
+      "previous_commit": "db44a54fa30ff9b4b8dddbe37e020d087c914d62",
+      "commit": "28260d3ec5d2ed254b2539cb9abc656e4737f80b",
+      "remote_update": "db44a54fa30ff9b4b8dddbe37e020d087c914d62..28260d3ec5d2ed254b2539cb9abc656e4737f80b",
+      "fresh_fetch_head": "28260d3ec5d2ed254b2539cb9abc656e4737f80b",
+      "git_ls_remote": "28260d3ec5d2ed254b2539cb9abc656e4737f80b",
+      "commit_vs_fetch_diff": "EMPTY",
+      "tests": "29 passed",
+      "selected_remote_file_readback": [
+        {"path": "u2_normal_node_behavior_display.py", "sha256": "babb27611ecc5f341ce1ed9226e31a48f82657171946a3444bca19ca72b9315e"},
+        {"path": "tests/test_u2_normal_node_behavior_display.py", "sha256": "2d711fca1dd682065137fffeb3099f1cd916224208f287af00d9e001122aa158"}
+      ]
+    },
+    "observe_iterate": {
+      "artifact_commit": "081e31241a0c88e47631f80a8b9b8dd43b2b569c",
+      "artifact_parent_preserved": "26a19eb69e6f7216f9389c0f0f058f8aa5f4aaa5",
+      "remote_update": "ded408d22dc5289de2dff20a4d478ac85fd26ab7..081e31241a0c88e47631f80a8b9b8dd43b2b569c",
+      "fresh_fetch_head": "081e31241a0c88e47631f80a8b9b8dd43b2b569c",
+      "git_ls_remote": "081e31241a0c88e47631f80a8b9b8dd43b2b569c",
+      "artifact_vs_fetch_diff": "EMPTY",
+      "delivery_manifest_covered_files": 196,
+      "delivery_manifest_covered_bytes": 25198677,
+      "selected_remote_file_readback": [
+        {"path": "ENDPOINT_R8_SUPPLEMENT.md", "bytes": 6750, "sha256": "65ebb2b4b1f57cf2ce737f0f0b01c3cd18e20b10ab3b6734a8ca2fdb15ff8395"},
+        {"path": "DELIVERY_MANIFEST.json", "bytes": 40326, "sha256": "3ccf9633e71e0df7f52dc079c48ef3fc5062c530ded138a2c7c81a3089c08dfc"},
+        {"path": "evidence/ENDPOINT_R8_DIRECT_CHECK.json", "bytes": 17951, "sha256": "72f35038b9a5069c2d745c85aec02a09396b04f991d087e21c456f9453bfcce7"},
+        {"path": "evidence/ENDPOINT_R8_PRE_FIX_HTML_AUDIT.json", "bytes": 12605, "sha256": "8303fad5cb1d7167226b792a31435d36e3a79895b9f59cf14d05ce62361ba78e"},
+        {"path": "evidence/ENDPOINT_R8_POST_FIX_HTML_AUDIT.json", "bytes": 12552, "sha256": "caac19ee44487a0aa8a836c0c837f9826e6398adf113960dcd3bbe6119eeae3c"},
+        {"path": "evidence/ENDPOINT_R8_RERENDER.json", "bytes": 5626, "sha256": "e76399454cda6978a17f75d3e3b7ce2d6d11a6934b2b3afb1c807d85007f8e11"},
+        {"path": "evidence/FINAL_VERIFICATION.json", "bytes": 5896, "sha256": "5e24f99754cf8f70a69dbd5b88c7a2294c7266a4520ce12c0bc795e79d83b85c"},
+        {"path": "render_evidence/BROWSER_CAPTURE.json", "bytes": 7005, "sha256": "0343b9176635201e9882563a418210f47a75738812a9814fd739c8c2a941a2fb"},
+        {"path": "render_evidence/ENDPOINT_R8_VISUAL_INSPECTION.json", "bytes": 2030, "sha256": "8ae564c9823e6808e73b26ecce7243a511e1d73b58292424c2aeddcf6384fd19"},
+        {"path": "render_evidence/rb_selected_after_confirmation.html", "bytes": 4010259, "sha256": "189e505f670621cfe351aa659d30b75ccf8b470a8dafcd2f4625578ab6aef7b6"},
+        {"path": "render_evidence/rb_selected_after_confirmation.png", "bytes": 258841, "sha256": "82f0fa32b3f40f885bb44dce2dfc491cee4f94933f5a43900a901bb9865f2f04"},
+        {"path": "render_evidence/rb_selected_final.html", "bytes": 4161517, "sha256": "7393e2d08625b932158f3f6df242247c13d4ae39654f6448d5fe2fa11da7ea2a"},
+        {"path": "render_evidence/rb_selected_final.png", "bytes": 259339, "sha256": "edc062c62047733ad770f151cf1625c8c8493141c7000c3260d437092d2be650"}
+      ]
+    },
+    "execution_scope": {
+      "formal_n_reread": false,
+      "selected_pages_rerendered": 3,
+      "evolution_page_rerendered": false,
+      "browser_capture": "PASS",
+      "worker_pixel_inspection": "PASS"
+    },
+    "receipt_self_reference_boundary": "本补充节发布于 endpoint_r8_supplement.observe_iterate.artifact_commit 的后继回执提交；该最终回执提交 SHA 由提交后的远端 ref 新鲜回读和结案消息记录。"
+  },
+  "receipt_self_reference_boundary": "本文件在原 artifact_commit 及 R8 补充 artifact_commit 的后继提交发布；两份技术包均已从 GitHub fresh fetch 并逐文件回读。回执提交自身的最终分支 SHA 由提交后的远端 ref 新鲜回读和结案消息记录，避免让文件内容自指自己的 commit。"
 }
