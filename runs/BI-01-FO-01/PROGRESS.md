@@ -26,3 +26,10 @@ R0002追加真实发送：2026-10-22 11:10:34.456（Asia/Shanghai），新独立
 - 本轮沿原Reader Binding accept及DECISION#reader-accept，由原管理亲自消费Reader完整报告、有限PASS与F-01、冻结输入和真实快照。发送不是管理已作采用；Workmap仍NOT_CONFIGURED、Intake未形成。
 - Reader首次命名校验在不同菜单处安全停止，无标题/正文改动；仅该Reader后继同聊发送待正确Project列表入口修复，不阻挡原管理。
 - 真实专业有效回交仍0，尚无Worker技术单、本run现场N/aidata图或业务观察。目标保持active，后继必须真实采用后派完整FEATURE_OBSERVATION并持续迭代。
+
+## R0004：完整专业观察已真实首发，持续运行
+
+- R0003真实管理采用已完整回交并验收运输；真实Intake与ADOPTED已在afb6f0496e503a42ff2dcc1bf91c04697a5aaef4发布。仅进度/F01精确维护有据复用原Reader，检查资格如实为RECORDED_OLD_INPUT；Workmap、R3 Return、R4 Gate/载荷检查均通过。
+- R0004完整FEATURE_OBSERVATION任务已在本run首次专业chat单次COMMITTED。Send于2026-10-22T04:20:14.117Z开始，强证据观测完成04:20:18.644Z；Pro最高、FULL40181B/24993UTF16/hash精确，IME正文1/Send1。原完整任务/方法与四项往返不变，未拆四Gate，也不将受控CASE当单一市场案例。
+- 首次合法专业派发起点记真实commit证据04:20:18.644Z，原Send动作时点另存；专业有效回交仍0，首个真实技术工单、正式N现场读出、aidata图数/视觉证据和市场观察尚待专业推进。没有把管理/Reader或Git提交计为专业成果。
+- 专业首答尚在生成；逻辑thread bi01-fo01-professional，待首答完整后另episode精确命名BI01-FO01-执行。下一ordinary观察04:30:18.644Z；共享网络04:25:01.823Z先到期，主控已派shared监督并保留逾时记录。Root保持active继续真实观察、技术单、专业消费和必要管理复看，不在首发结束目标。
