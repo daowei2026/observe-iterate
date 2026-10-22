@@ -255,9 +255,18 @@ FRP 正常入口采用 `5154c407249c130a6e048c8541b76dfdec3ea48c:src/Frp/Instanc
 原投入与复看条件：`daowei2026/observe-iterate@270b8eca008fb20030fc8880355bcb60bb55b958:runs/BI-01-FO-01/reviews/management-R0006/FULL_RESPONSE.md::#effort`
 完整工作范围：`daowei2026/observe-iterate@270b8eca008fb20030fc8880355bcb60bb55b958:runs/BI-01-FO-01/reviews/management-R0006/FULL_RESPONSE.md::#scope`
 最新完整回答：`daowei2026/observe-iterate@7eacce5321a37e115c53f67811deb87704578bdd:runs/BI-01-FO-01/artifacts/professional-R0009/RETURNS.md::full`
+本次实际证据：`daowei2026/observe-iterate@698b22944fe409ea36505bf3df69cfec5d486772:runs/BI-01-FO-01/OWNER_FEEDBACK_20261022_UPLOT_AIDATA_BOUNDARY.md::full`
+本次实际证据：`daowei2026/observe-iterate@5470e43d46068f0ca317ccf77b6706e839e42b67:professional/feature_observation/README.md::full`
+本次实际证据：`daowei2026/observe-iterate@5470e43d46068f0ca317ccf77b6706e839e42b67:professional/feature_observation/00_PURPOSE_AND_FOUR_WORKS.md::full`
+本次实际证据：`daowei2026/observe-iterate@5470e43d46068f0ca317ccf77b6706e839e42b67:professional/feature_observation/01_OUTPUT_BASE_FORMAT.md::full`
+本次实际证据：`daowei2026/observe-iterate@5470e43d46068f0ca317ccf77b6706e839e42b67:professional/feature_observation/02_WORK_DETAILS.md::full`
+本次实际证据：`daowei2026/observe-iterate@5470e43d46068f0ca317ccf77b6706e839e42b67:professional/feature_observation/04_AIDATA_USE.md::full`
+本次实际证据：`daowei2026/observe-iterate@5470e43d46068f0ca317ccf77b6706e839e42b67:professional/feature_observation/BOUNDARY_UPDATE_20261022.md::full`
+本次实际证据：`daowei2026/observe-iterate@d04f3b08892ccf334a06028f3caab994743566a0:runs/BI-01-FO-01/artifacts/worker-BI01-FO01-N-READABILITY-CROSSK-03/FULL_RESPONSE.md::full`
+本次实际证据：`daowei2026/observe-iterate@d04f3b08892ccf334a06028f3caab994743566a0:runs/BI-01-FO-01/artifacts/worker-BI01-FO01-N-READABILITY-CROSSK-03/GITHUB_RECEIPT.json::full`
 本次实际证据：`daowei2026/observe-iterate@401b9f37719373978880b8f2893d74864010956c:runs/BI-01-FO-01/artifacts/professional-R0009/FULL_RESPONSE.md::full`
-本次实际证据：`daowei2026/observe-iterate@ae2b19e42caba4bff27f14068b2cf69aa4499ab4:runs/BI-01-FO-01/provenance/turns/R0010/INPUT_STATE.md::full`
-本次实际证据：`daowei2026/observe-iterate@ae2b19e42caba4bff27f14068b2cf69aa4499ab4:runs/BI-01-FO-01/provenance/turns/R0010/WORKMAP_CHECK.json::full`
+本次实际证据：`daowei2026/observe-iterate@0d14cc2c6b38e01c742617cfcae154f7c118a522:runs/BI-01-FO-01/provenance/turns/R0010/INPUT_STATE.md::full`
+本次实际证据：`daowei2026/observe-iterate@0d14cc2c6b38e01c742617cfcae154f7c118a522:runs/BI-01-FO-01/provenance/turns/R0010/WORKMAP_CHECK.json::full`
 本次实际证据：`daowei2026/observe-iterate@401b9f37719373978880b8f2893d74864010956c:runs/BI-01-FO-01/artifacts/professional-R0009/WORKER_ORDER.md::full`
 本次实际证据：`daowei2026/observe-iterate@8af0eafe829eb139ec5563a15cf2c705aa0243ef:runs/BI-01-FO-01/reviews/management-R0008/FULL_RESPONSE.md::full`
 本次实际证据：`daowei2026/observe-iterate@7d1b0121ee7ab39e9f6dd965f976c51b76bd8b2f:runs/BI-01-FO-01/provenance/turns/R0009/RETURN_VALIDATION.json::full`
@@ -345,7 +354,7 @@ FRP 正常入口采用 `5154c407249c130a6e048c8541b76dfdec3ea48c:src/Frp/Instanc
 方法版本、业务合同版本、源码版本和运行数据分别保持准确，不随一次方法更新全部追 latest。
 
 运行事实（来自现有记录）：
-观察时间：2026-10-22T12:39:24.670100+00:00
+观察时间：2026-10-22T13:42:40.545264+00:00
 有效回交数：3
 
 按既有协议交完整实质回答及ROLE_RETURN/QUESTION_WORK_RETURN，来源、未执行和资格如实保留，不新增控制表，不重抄协调者已存提示。完整任务未完成就保留完整责任及连续后继，局部交付不自设停点。要求GitHub提交时普通快进并fresh回读，最后commit message带turn complete及本轮invocation_id，无invocation时简要标明执行身份；不造空提交。
