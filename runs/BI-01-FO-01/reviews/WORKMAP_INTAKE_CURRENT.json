@@ -1,0 +1,48 @@
+{
+  "schema": "workmap-intake/v1",
+  "intakes": {
+    "bi01": {
+      "snapshot": "12ae8d6a4fe5d291497e0821db8b7591b3f38319dd53ad1eba8e8ce9ded54e08",
+      "manager": {
+        "role": "management",
+        "context": "chatgpt:细节叙事生成_金标:BI01-FO01-管理"
+      },
+      "decision_report": {
+        "path": "runs/BI-01-FO-01/reviews/management-R0003/DECISION.md",
+        "blob": "facdbbdb7def48422a5eea1e8774732b773a2712"
+      },
+      "reader_check": {
+        "status": "RECORDED",
+        "context": "chatgpt:细节叙事生成_金标:BI01-FO01-读图",
+        "independent_of_map_builder": true,
+        "report": {
+          "path": "runs/BI-01-FO-01/reviews/independent/WORKMAP_READER_01/FULL_RESPONSE.md",
+          "blob": "0908047ab96d313029246988f4afafc5f7f5bf83"
+        },
+        "input_commit": "89aacaa9b8d7068a567b77c2ca078cb2939c347d",
+        "input_snapshot": "76cc432bb46ec54c5bc2539e6ecf6d504a3b3cfba0e3e32bacd550bb11719c14"
+      },
+      "effort": {
+        "known_pro_turns": 3
+      },
+      "scope_dispositions": {},
+      "validation_claims": [],
+      "dispatch": {
+        "decision": "ISSUED",
+        "task_id": "BI01-FO-01-N-OBSERVATION-01",
+        "task_path": "runs/BI-01-FO-01/01_当前任务.md",
+        "task_blob": "2d755ece74558533b348fb3bb6f527bb889249a0",
+        "kind": "EXISTING_AUTHORIZED_REPAIR",
+        "requires_reader_check": false,
+        "reader_reason": "依据aeccf4c91b94a7f889f84970b37ab5048b9c07f6:DECISION#snapshot/#f01/#intake的真实管理判断：首次新意图已由R0002对完整原稿实际独立阅读并PASS，本管理已对原Owner/方法接收；本次仅登记发生了的阅读/接收与后继，不改业务任务/方法/写权/完成条件。同时只落实F-01两处精确文字修正；原Reader保留原input_commit和fingerprint，不冒称新正文已被Reader再次阅读。",
+        "method_paths": [
+          "professional/feature_observation/00_PURPOSE_AND_FOUR_WORKS.md",
+          "professional/feature_observation/01_OUTPUT_BASE_FORMAT.md",
+          "professional/feature_observation/02_WORK_DETAILS.md",
+          "professional/feature_observation/03_REUSE_FROM_V2.md",
+          "professional/feature_observation/04_AIDATA_USE.md"
+        ]
+      }
+    }
+  }
+}
