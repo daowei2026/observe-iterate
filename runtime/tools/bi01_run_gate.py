@@ -342,10 +342,10 @@ def first_reader_reception(view: Git, round_id: str, rec: dict) -> list[str]:
         if prepared["role"] != "management" or prepared["mode"] != "INDEPENDENT_REVIEW":
             raise ValueError("READER_MANAGEMENT_RECIPIENT_REQUIRED")
         body, response_meta = coordinator.source(view.root, event["latest_response_ref"], repository)
-        _, return_meta = coordinator.source(view.root, event["latest_return_ref"], repository)
+        return_body, return_meta = coordinator.source(view.root, event["latest_return_ref"], repository)
         if event["latest_response_ref"]["selector"] not in {"full", "全文"} or response_meta["blob"] != return_meta["blob"]:
             raise ValueError("READER_FULL_RETURN_SOURCE_REQUIRED")
-        returned = coordinator.find_return(body)
+        returned = coordinator.find_return(return_body)
         match = re.fullmatch(re.escape(view.invocation_prefix) + r"-(R[0-9]{4})-\S+", returned["invocation_id"])
         if not match or match[1] == round_id:
             raise ValueError("ORIGINAL_READER_ROUND_REQUIRED")

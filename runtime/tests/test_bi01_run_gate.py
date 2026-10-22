@@ -226,6 +226,7 @@ class RoundGateOffline(unittest.TestCase):
         self.write(p + 'ROLE_RETURN.json', json.dumps(self.reader_role_return))
         self.write(p + 'FULL_RESPONSE.md', (
             'Synthetic complete Reader report; no real review.\n'
+            '```text\nSynthetic business relation diagram.\n```\n'
             '<a id="continuation"></a>Return to original manager.\n'
             '<a id="question-work-return"></a>\n```json\n' + json.dumps(self.reader_return) +
             '\n```\n## ROLE_RETURN\n```json\n' + json.dumps(self.reader_role_return) + '\n```\n'))
