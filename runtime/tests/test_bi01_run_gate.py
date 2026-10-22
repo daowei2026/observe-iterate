@@ -123,6 +123,8 @@ class RoundGateOffline(unittest.TestCase):
             'invocation_id: ' + INV, 'assignment_token: ' + self.record['assignment_token'],
             '<a id="reader-pre-adoption"></a>', 'Synthetic technical authority only.',
             '<a id="adoption"></a>', 'Synthetic conditional intake.', '',
+            '<a id="reader-accept"></a>', 'Receive the actual synthetic Reader return.',
+            '<a id="budget"></a>', 'Synthetic unchanged effort boundary.', '',
         ]))
         self.input_commit = self.commit('synthetic frozen input and issued authority')
         self.policy = self.input_commit
@@ -147,12 +149,15 @@ class RoundGateOffline(unittest.TestCase):
             'plan_ref': authority | {'selector': '#reader-pre-adoption'},
             'full_scope_ref': body_ref, 'focus_ref': body_ref,
             'deliverables_ref': body_ref, 'completion_ref': body_ref,
+            'budget_ref': authority | {'selector': '#budget'},
             'source_reads': [{'source': self.loc(p), 'requirement': 'FOCUS_FULL',
                               'purpose': 'Synthetic direct input', 'reuse_evidence': None}
                              for p in [RUN + '/README.md', RUN + '/00_长程推进地图.md',
                                        RUN + '/01_当前任务.md', gate.BINDING, RUN + '/OWNER_START.md']],
             'routes': {'same_work': {'recipient_role': 'review', 'recipient_ref': 'synthetic-reader-chat',
-                                     'instructions_ref': body_ref | {'selector': '#same-work'}}},
+                                     'instructions_ref': body_ref | {'selector': '#same-work'}},
+                       'accept': {'recipient_role': 'management', 'recipient_ref': 'synthetic-management-chat',
+                                  'instructions_ref': authority | {'selector': '#reader-accept'}}},
             'question_ids': ['AUDIT'], 'triggers': [],
         }
         encoded = json.dumps(self.reader_binding, ensure_ascii=False, indent=2)
@@ -195,6 +200,91 @@ class RoundGateOffline(unittest.TestCase):
         self.assertFalse(result['sent'])
         self.assertFalse(result['business_gate'])
         self.assertFalse(self.view().exists(self.map_binding['receipt_path']))
+
+    def prepare_reader_reception(self):
+        self.prepare_reader()
+        self.original_reader_round = self.reader_round
+        self.original_reader_record = copy.deepcopy(self.record)
+        self.reader_return = {
+            'schema': 'question-work/v2', 'kind': 'RETURN', 'work_id': 'BI-01',
+            'invocation_id': self.record['invocation_id'],
+            'binding_ref': self.record['binding_ref'] | {'selector': '#question-work-binding'},
+            'focus_results': [{'question_id': 'AUDIT'}], 'trigger_observations': [],
+            'continuation_ref': {'answer_ref': '#continuation'},
+        }
+        self.reader_role_return = {
+            'schema': 'longrun-return/v1', 'work_id': 'BI-01',
+            'invocation_id': self.record['invocation_id'],
+            'assignment_token': self.record['assignment_token'],
+            'question_work_ref': '#question-work-return',
+            'handoff': {'kind': 'SUBMIT', 'route_key': 'accept'},
+            'role_outputs': {'review': {'verdict': 'PASS'}},
+        }
+        p = RUN + '/provenance/turns/' + self.reader_round + '/'
+        self.write(p + 'SEND_RECEIPT.json', json.dumps({'state': 'COMMITTED'}))
+        self.write(p + 'QUESTION_WORK_RETURN.json', json.dumps(self.reader_return))
+        self.write(p + 'ROLE_RETURN.json', json.dumps(self.reader_role_return))
+        self.write(p + 'FULL_RESPONSE.md', (
+            'Synthetic complete Reader report; no real review.\n'
+            '<a id="continuation"></a>Return to original manager.\n'
+            '<a id="question-work-return"></a>\n```json\n' + json.dumps(self.reader_return) +
+            '\n```\n## ROLE_RETURN\n```json\n' + json.dumps(self.reader_role_return) + '\n```\n'))
+        response_commit = self.commit('synthetic actual Reader return, no real Pro')
+        response = self.loc(p + 'FULL_RESPONSE.md') | {'commit': response_commit}
+        self.reader_round = 'R0004'
+        self.record.update(round_id=self.reader_round, role='management',
+                           invocation_id='BI01-V2-02-R0004-synthetic-reception-a',
+                           assignment_token='synthetic-reception-token',
+                           recipient_ref='synthetic-management-chat')
+        self.record['binding_ref']['selector'] = '#question-work-binding'
+        self.record['round_marker'] = '[' + self.record['invocation_id'] + ']'
+        self.reader_event = {k: self.record[k] for k in
+                             ('work_id', 'invocation_id', 'assignment_token', 'binding_ref',
+                              'current_task_ref', 'task_adoption_ref')}
+        self.reader_event.update(route='accept', send_state='NOT_SENT', dispatch_kind='NORMAL',
+                                 latest_response_ref=response,
+                                 latest_return_ref=response | {'selector': '#question-work-return'})
+        prepared = coordinator.prepare_dispatch(self.repo, self.policy,
+                                                 'runtime/config/COORDINATOR_DISPATCH.json', self.reader_event)
+        self.prompt = prepared['message']
+        self.record['prompt_sha256'] = hashlib.sha256(self.prompt.encode()).hexdigest()
+        self.save_reader('synthetic original manager receives actual first Reader')
+
+    def test_first_reader_can_return_to_its_signed_manager_before_adoption(self):
+        self.prepare_reader_reception()
+        result = gate.pre_dispatch(self.view(), self.reader_round)
+        self.assertTrue(result['ok'], result)
+        self.assertFalse(self.view().exists(self.map_binding['receipt_path']))
+
+    def test_reception_requires_original_committed_reader_and_matching_full_return(self):
+        self.prepare_reader_reception()
+        p = RUN + '/provenance/turns/' + self.original_reader_round + '/'
+        for state in ('NOT_SENT', 'UNKNOWN'):
+            with self.subTest(state=state):
+                self.write(p + 'SEND_RECEIPT.json', json.dumps({'state': state}))
+                self.current = self.commit('synthetic unconfirmed Reader')
+                self.assertFalse(gate.pre_dispatch(self.view(), self.reader_round)['ok'])
+        self.write(p + 'SEND_RECEIPT.json', json.dumps({'state': 'COMMITTED'}))
+        self.write(p + 'FULL_RESPONSE.md', 'Synthetic replaced body.\n')
+        self.current = self.commit('synthetic saved full answer drift')
+        errors = gate.pre_dispatch(self.view(), self.reader_round)['errors']
+        self.assertTrue(any('ORIGINAL_READER_FULL_RESPONSE_MISMATCH' in e for e in errors), errors)
+
+    def test_reception_does_not_allow_professional_recipient_or_changed_inputs(self):
+        self.prepare_reader_reception()
+        original = copy.deepcopy(self.record)
+        self.record['recipient_ref'] = 'synthetic-wrong-manager'
+        self.save_reader('synthetic changed reception recipient')
+        errors = gate.pre_dispatch(self.view(), self.reader_round)['errors']
+        self.assertTrue(any('RECIPIENT_CHANGED' in e for e in errors), errors)
+        self.record = original
+        self.write(RUN + '/00_长程推进地图.md', '<a id="goal"></a>Changed synthetic map.\n')
+        self.save_reader('synthetic changed frozen input before reception')
+        errors = gate.pre_dispatch(self.view(), self.reader_round)['errors']
+        self.assertTrue(any('FIRST_READER_INPUT_CHANGED' in e for e in errors), errors)
+        self.record['role'] = 'professional'
+        self.save_reader('synthetic professional cannot borrow manager reception')
+        self.assertIn('WORKMAP_NOT_ADOPTED', gate.pre_dispatch(self.view(), self.reader_round)['errors'])
 
     def test_other_roles_sources_and_recipients_cannot_borrow_reader_authority(self):
         self.prepare_reader()

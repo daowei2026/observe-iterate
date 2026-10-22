@@ -369,7 +369,7 @@ def prepare_dispatch(repo: str | Path, policy_ref: str, config_path: str, event:
     w = obj(cfg["works"][event["work_id"]], {"stage", "modes", "goal_ref"})
     if not isinstance(w["stage"], str) or not re.fullmatch(r"[A-Z][A-Z0-9_-]{1,40}", w["stage"]): fail("STAGE")
     bound_raw, bound_meta = source(repo, event["binding_ref"], repository)
-    b = loads(bound_raw)
+    b = binding_target(repo, event["binding_ref"], repository)["binding"]
     if isinstance(b, dict) and b.get("kind") == "BOOTSTRAP":
         return prepare_bootstrap(repo, policy_ref, config_path, event, policy, policy_oid,
                                  cfg_oid, repository, w, b, bound_meta)

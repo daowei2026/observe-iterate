@@ -220,6 +220,29 @@ class DispatchTests(unittest.TestCase):
         e=copy.deepcopy(self.event);e["binding_ref"]=self.loc("binding.json",ref=bad)
         with self.assertRaisesRegex(ValueError,"MODE_MISMATCH"):self.make(e)
 
+    def test_signed_markdown_binding_anchor_can_receive_its_original_return(self):
+        cfg=json.loads((self.repo/'config.json').read_text())
+        cfg['works']['w']['stage']='BI01'
+        self.write('config.json',json.dumps(cfg))
+        self.write('signed-task.md', '<a id="binding"></a>\n```json\n' + json.dumps(self.binding) + '\n```\n')
+        signed=self.commit('signed Binding in original markdown task')
+        self.ref=signed
+        e=copy.deepcopy(self.event);e['route']='accept'
+        e['binding_ref']=self.loc('signed-task.md','#binding',signed)
+        ret={'schema':'question-work/v2','kind':'RETURN','work_id':'w','binding_ref':e['binding_ref'],
+             'continuation_ref':{'answer_ref':'#continuation'}}
+        self.write('response.md','<a id="question-work-return"></a>\n```json\n'+json.dumps(ret)+'\n```\n')
+        returned=self.commit('original return uses exact signed anchor')
+        e['latest_return_ref']=self.loc('response.md','#question-work-return',returned)
+        e['latest_response_ref']=self.loc('response.md','full',returned)
+        p=self.make(e)
+        self.assertEqual(p['role'],'management')
+        self.assertEqual(p['recipient'],'management-chat')
+        self.write('ambiguous.md','<a id="binding"></a>\n```json\n'+json.dumps(self.binding)+'\n```\n```json\n{}\n```\n')
+        bad=self.commit('ambiguous Binding is rejected')
+        e['binding_ref']=self.loc('ambiguous.md','#binding',bad)
+        with self.assertRaisesRegex(ValueError,'ONE_COMPLETE_BINDING_REQUIRED'):self.make(e)
+
     def test_unknown_wrong_and_duplicate_inputs(self):
         for change in ({"route":"trigger:missing"},{"work_id":"other"},{"send_state":"UNKNOWN"},{"send_state":"RUNNING"}):
             e=self.event|change

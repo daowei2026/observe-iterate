@@ -235,8 +235,7 @@ def first_reader(view: Git, round_id: str, rec: dict) -> list[str]:
             raise ValueError("READER_TASK_NOT_CURRENT")
         if not re.search(r"^task_id: " + re.escape(view.invocation_prefix) + r"-WORKMAP-READER-01$", task, re.M):
             raise ValueError("READER_TASK_ID_MISMATCH")
-        bound, _ = coordinator.source(view.root, bound_ref, repository)
-        binding = coordinator.loads(bound)
+        binding = coordinator.binding_target(view.root, bound_ref, repository)["binding"]
         section = coordinator.selected(task, "#question-work-binding")
         blocks = re.findall(r"^```json\s*\n(.*?)^```\s*$", section, re.M | re.S)
         if len(blocks) != 1 or binding != coordinator.loads(blocks[0]):
@@ -315,6 +314,68 @@ def first_reader(view: Git, round_id: str, rec: dict) -> list[str]:
         return ["FIRST_READER_PRE_ADOPTION_INVALID:" + str(ex)]
 
 
+def first_reader_reception(view: Git, round_id: str, rec: dict) -> list[str]:
+    """Receive actual first-reader evidence before an intake can be adopted.
+
+    This is the manager route already signed in that Reader's Binding, not a
+    general unadopted-management exemption. Recheck the original issued Reader,
+    its committed dispatch, complete saved return, exact source and frozen input.
+    """
+    try:
+        tools = Path(__file__).resolve().parents[1] / "overlay" / "tools"
+        spec = importlib.util.spec_from_file_location("management_prompt", tools / "management_prompt.py")
+        coordinator = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(coordinator)
+        repository = "daowei2026/observe-iterate"
+        root = view.run_root + "/provenance/turns/"
+        event = view.obj(root + round_id + "/DISPATCH.json")
+        for key in ("work_id", "invocation_id", "assignment_token", "binding_ref",
+                    "current_task_ref", "task_adoption_ref"):
+            if event.get(key) != rec.get(key):
+                raise ValueError("DISPATCH_SOURCE_MISMATCH:" + key)
+        if event.get("dispatch_kind") != "NORMAL" or event.get("route") not in {"accept", "decide"}:
+            raise ValueError("SIGNED_READER_RECEPTION_ROUTE_REQUIRED")
+        prepared = coordinator.prepare_dispatch(
+            view.root, rec["policy_commit"], "runtime/config/COORDINATOR_DISPATCH.json", event)
+        coordinator.verify(prepared, view.raw(root + round_id + "/PROMPT.md"))
+        coordinator.verify_recipient(prepared, rec["recipient_ref"])
+        if prepared["role"] != "management" or prepared["mode"] != "INDEPENDENT_REVIEW":
+            raise ValueError("READER_MANAGEMENT_RECIPIENT_REQUIRED")
+        body, response_meta = coordinator.source(view.root, event["latest_response_ref"], repository)
+        _, return_meta = coordinator.source(view.root, event["latest_return_ref"], repository)
+        if event["latest_response_ref"]["selector"] not in {"full", "全文"} or response_meta["blob"] != return_meta["blob"]:
+            raise ValueError("READER_FULL_RETURN_SOURCE_REQUIRED")
+        returned = coordinator.find_return(body)
+        match = re.fullmatch(re.escape(view.invocation_prefix) + r"-(R[0-9]{4})-\S+", returned["invocation_id"])
+        if not match or match[1] == round_id:
+            raise ValueError("ORIGINAL_READER_ROUND_REQUIRED")
+        reader_round = match[1]
+        reader, problems = invocation(view, reader_round)
+        if problems or reader.get("role") != "review":
+            raise ValueError("ORIGINAL_READER_INVOCATION_INVALID")
+        if (reader["current_task_ref"] != rec["current_task_ref"]
+                or reader["task_adoption_ref"] != rec["task_adoption_ref"]
+                or coordinator.binding_target(view.root, reader["binding_ref"], repository)
+                != coordinator.binding_target(view.root, rec["binding_ref"], repository)):
+            raise ValueError("ORIGINAL_READER_AUTHORITY_MISMATCH")
+        problems = first_reader(view, reader_round, reader)
+        if problems or not after_return(view, reader_round)["ok"]:
+            raise ValueError("ORIGINAL_READER_OR_RETURN_INVALID:" + ",".join(problems))
+        if body.encode("utf-8") != view.raw(root + reader_round + "/FULL_RESPONSE.md"):
+            raise ValueError("ORIGINAL_READER_FULL_RESPONSE_MISMATCH")
+        if returned != view.obj(root + reader_round + "/QUESTION_WORK_RETURN.json"):
+            raise ValueError("ORIGINAL_READER_QUESTION_RETURN_MISMATCH")
+        role = view.obj(root + reader_round + "/ROLE_RETURN.json")
+        roles = [coordinator.loads(raw) for raw in re.findall(r"^```json\s*\n(.*?)^```\s*$", body, re.M | re.S)
+                 if '"longrun-return/' in raw]
+        if (roles != [role] or role.get("handoff", {}).get("route_key") != event["route"]
+                or not role.get("role_outputs", {}).get("review")):
+            raise ValueError("ORIGINAL_READER_BOUND_HANDOFF_REQUIRED")
+        return []
+    except (ValueError, KeyError, TypeError, UnicodeError) as ex:
+        return ["FIRST_READER_RECEPTION_INVALID:" + str(ex)]
+
+
 def pre_dispatch(view: Git, round_id: str) -> dict:
     rec, errors = invocation(view, round_id)
     state, state_errors = send_state(view, round_id)
@@ -355,6 +416,11 @@ def pre_dispatch(view: Git, round_id: str) -> dict:
                 and rec["current_task_ref"].get("path") == view.reader_task
                 and unconfigured):
             errors.extend(first_reader(view, round_id, rec))
+        elif (rec.get("role") == "management" and not rec.get("bootstrap_ref")
+                and isinstance(rec.get("current_task_ref"), dict)
+                and rec["current_task_ref"].get("path") == view.reader_task
+                and unconfigured):
+            errors.extend(first_reader_reception(view, round_id, rec))
         else:
             errors.extend(active_binding(view))
     return {
