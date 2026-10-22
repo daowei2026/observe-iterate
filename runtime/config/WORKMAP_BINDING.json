@@ -2,9 +2,20 @@
   "schema": "workmap-binding/v2",
   "status": "NOT_CONFIGURED",
   "manager_role": "management",
-  "overview": {"path": "runs/BI-01-FO-01/README.md", "anchors": ["common", "bi01"]},
-  "shared_overview_anchors": ["common"],
-  "owner_sources": ["runs/BI-01-FO-01/OWNER_START.md", "professional/feature_observation/00_PURPOSE_AND_FOUR_WORKS.md"],
+  "overview": {
+    "path": "runs/BI-01-FO-01/README.md",
+    "anchors": [
+      "common",
+      "bi01"
+    ]
+  },
+  "shared_overview_anchors": [
+    "common"
+  ],
+  "owner_sources": [
+    "runs/BI-01-FO-01/OWNER_START.md",
+    "professional/feature_observation/00_PURPOSE_AND_FOUR_WORKS.md"
+  ],
   "rule_paths": [
     "professional/feature_observation/00_PURPOSE_AND_FOUR_WORKS.md",
     "professional/feature_observation/01_OUTPUT_BASE_FORMAT.md",
@@ -17,11 +28,29 @@
   "receipt_path": "runs/BI-01-FO-01/reviews/WORKMAP_INTAKE_CURRENT.json",
   "streams": {
     "bi01": {
-      "map": {"path": "runs/BI-01-FO-01/00_长程推进地图.md", "anchors": ["goal", "stage", "evidence", "progress", "remaining", "management", "next"]},
+      "map": {
+        "path": "runs/BI-01-FO-01/00_长程推进地图.md",
+        "anchors": [
+          "goal",
+          "stage",
+          "evidence",
+          "progress",
+          "remaining",
+          "management",
+          "next"
+        ]
+      },
       "task": "runs/BI-01-FO-01/01_当前任务.md",
-      "overview_anchors": ["bi01"],
-      "watch_roots": ["runs/BI-01-FO-01/artifacts", "runs/BI-01-FO-01/reviews/independent"],
-      "reader_output_roots": ["runs/BI-01-FO-01/reviews/independent/WORKMAP_READER_01"]
+      "overview_anchors": [
+        "bi01"
+      ],
+      "watch_roots": [
+        "runs/BI-01-FO-01/artifacts",
+        "runs/BI-01-FO-01/reviews/independent"
+      ],
+      "reader_output_roots": [
+        "runs/BI-01-FO-01/reviews/independent/WORKMAP_READER_01"
+      ]
     }
   },
   "note": "R0001 已签发本 run 真实管理决定、地图与专业任务；仍为 NOT_CONFIGURED，待真实首次 Reader 和管理 Intake 合法采用。专用 reader 输出排除沿现有 v2 能力，不排除业务成果；不继承旧运行，不凭发布改 ADOPTED。"
