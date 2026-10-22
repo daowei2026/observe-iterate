@@ -62,3 +62,7 @@ R0007 invocation `BI01-FO-01-R0007-20261022T081903Z-a9efdb6a` 的准确正文为
 原Pro实际签发新单BI01-FO01-N-DISPLAY-INTEGRATION-02，来源`d7d9a092e915b0184344e37a21a180f2c185bbd1`同目录WORKER_ORDER.md。主控已向既有Worker聊天投递一次，queue被实际消费；新turn于2026-10-22T09:23:22Z启动，完整访问/xhigh及新工程命令已核。Worker已核现场aidata仍为f58、9ff为其祖先，没有换基线；共享TIS/uplot他人修改保持只读。没有重复旧单、恢复常驻轮询或由Worker自定画法。
 
 R0007为第二份有效专业实质回交；EFFORT满足原每2次持续复看条件，RESULT/未来CHANGE按本轮Return仍NOT_YET。管理复看与必要接收是当前已安排后继，非阻塞的实际技术工作继续；不因配置、单个Case或接口局部修通关闭整项。
+
+R0007 的手机完整末尾于09:31:45.003Z实证闭合正文、附件卡片与完整操作栏，完整远端原件收齐，未作手机正文复制。原EFFORT复看R0008 invocation `BI01-FO-01-R0008-20261022T093053Z-90e9250b` 已真实提交给同一管理聊天：最高Pro第五档、51979B/31317 UTF16全文hash一致、单IME/单Send/0附件，10:06:00.660Z确认当前准确invocation/token与真正STOP/正在思考。首尝试因时限在IME之前结束，IME0/Send0/空composer；原ready时钟保留，共享网络实际恢复后沿同一消息继续，没有重复业务发送。管理决定尚未取得，不能预写采用或接收。
+
+新技术单的原生OnlyRead三来源已读出，发生索引已完成，当前按真实origins选定K并实际执行read_at_knowledge，4项展示适配定向测试已通过。正式定向数据包、新图及原专业的消费/修改仍待实际完成；不把本段工程进度当作业务接受。
