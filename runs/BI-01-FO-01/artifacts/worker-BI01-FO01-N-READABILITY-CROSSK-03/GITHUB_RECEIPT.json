@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "result": "PASS",
+  "order_id": "BI01-FO01-N-READABILITY-CROSSK-03",
+  "aidata": {
+    "repository": "daowei2026/aidata",
+    "branch": "fy/bi01-fo01-n-readability-r0009",
+    "commit": "b044ad9c92ffc98ee1ac7aec829e3673c126c846",
+    "fresh_ref": "refs/codex/bi01-worker03-aidata-published",
+    "fresh_sha": "b044ad9c92ffc98ee1ac7aec829e3673c126c846",
+    "key_files": {
+      "feature_configs/u2_normal_node_behavior.py": "39275fa22a564649d9092a9a28f30a7e018c27d3673212f18a9bc05ebd964641",
+      "u2_normal_node_behavior_display.py": "619560fac4a2066be318bf24b9100c57343119ff1dca589103b55b6417a9be10",
+      "tests/test_u2_normal_node_behavior_display.py": "d308c6bbe68443d9daf9a5b642a26a7f987c8facfc52dff4e51e6a03940ca2c2"
+    },
+    "fresh_tree_diff": "no difference for the three authorized files"
+  },
+  "observe_iterate_payload": {
+    "repository": "daowei2026/observe-iterate",
+    "branch": "fy/bi01-feature-observation-prep-20261021",
+    "payload_commit": "14c70fc50c2d11b462beeb08a6faa20975f2b2a8",
+    "fresh_ref": "refs/codex/bi01-worker03-payload-published",
+    "fresh_sha": "14c70fc50c2d11b462beeb08a6faa20975f2b2a8",
+    "artifact_tree_diff": "no difference",
+    "delivery_manifest": {
+      "sha256": "55f024af96370dad15f5bae4f387812e40b90ba1cc10582e6ad8dc4f5f0b9009",
+      "file_count_excluding_manifest_and_receipt": 210,
+      "total_bytes": 18357722
+    },
+    "key_files": {
+      "FULL_RESPONSE.md": "5f56c0844f3166dbcf8274789f94ecabdcb01ff4aada3aa7f6118b51a131c390",
+      "README.md": "510386aeb9a9e33bf5e22ddae4056780d161a89c91a81bd92b97f687f79688ee",
+      "evidence/FINAL_VERIFICATION.json": "d17bde07b804be4c3f43a4a96e79e24b136ba096b1ee154c79f032952c2e4bcb",
+      "evidence/CROSSK_READ_MANIFEST.json": "6c9c96adfc0bca6cde0f52781ffd057cce3715967740928383ae06a931f60d13",
+      "render_evidence/BROWSER_CAPTURE.json": "f94aff8ecf4af1940aa3ff0c1529a97879f07c27cc4244c2c2efed51e93d3ac3",
+      "render_evidence/WORKER_VISUAL_INSPECTION.json": "13be5a7c9d0453b01814384047ac4c3bf29848b4e8510b3adbaf341bde9127ac"
+    }
+  },
+  "concurrent_reconciliation": {
+    "common_base": "7d1b0121ee7ab39e9f6dd965f976c51b76bd8b2f",
+    "preserved_local_management_head": "22bb13c5abecd748b062ba562bd791b14fdd6a66",
+    "preserved_remote_owner_head": "4996cd49aa6549bcc3425cad78a144f4d62776cb",
+    "normal_merge_commit": "3cf327d",
+    "force_push": false
+  },
+  "receipt_note": "本文件在payload完成远端精确回读后生成；承载本文件的后继commit因自引用不能写入文件自身，最终分支SHA由发布后的fresh ref和Worker最终回交另行报告。",
+  "boundary": "远端存在、字节一致和技术验证不等于执行Pro专业采用、工作2通过、工作3平台链接完成或管理接受。"
+}
