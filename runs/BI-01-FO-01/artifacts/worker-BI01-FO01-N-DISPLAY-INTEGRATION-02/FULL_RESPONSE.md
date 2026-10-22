@@ -173,3 +173,7 @@ aidata branch=fy/bi01-fo01-n-display-r0007
 ```
 
 `scripts/run_display_integration.py` 是完整读回/投影/渲染入口；`resume_render_from_exports.py` 只用于正式读回已经完成后的可审计渲染恢复；`capture_rendered_pages.py` 和 `verify_delivery.py` 分别执行浏览器及最终包装验收。
+
+## 九、R8 端点补充
+
+管理后续要求直接核验 selected K 位于右开窗口边界时的可见性。现场实际 `end_uti_exclusive=K+1`，所以管理提出的 `end_uti=K` 条件没有出现；但直接审计此前发布的连续三页 HTML 时，发现后两页的标量 renderer 复用了首个 K=103150800 的 plotter 实例。该展示缺陷已在 aidata commit `28260d3ec5d2ed254b2539cb9abc656e4737f80b` 最小修复，三个 selected 页面已从原正式导出重新渲染并通过 K 点、无未来值、浏览器和像素检查。完整修前/修后证据、限制及发布信息见 `ENDPOINT_R8_SUPPLEMENT.md` 和更新后的 `GITHUB_RECEIPT.json`；本节不改变原正式读回数据或 Worker 的业务角色边界。

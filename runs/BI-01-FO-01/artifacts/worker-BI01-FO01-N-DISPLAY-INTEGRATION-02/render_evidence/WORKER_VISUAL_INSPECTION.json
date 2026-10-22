@@ -25,23 +25,31 @@
     },
     {
       "page_id": "rb_selected_at_or_after_confirmation_K103151400",
-      "screenshot_sha256": "a53787b4aa1bb7ea9ab82c59a8f1487dfa3f1cfe1138eacc281f26defd9acd7c",
+      "screenshot_sha256": "82f0fa32b3f40f885bb44dce2dfc491cee4f94933f5a43900a901bb9865f2f04",
       "observed": [
         "页首知识切点 103151400 与确认后的不同 exact 可辨认",
         "相对确认前页面，末端成员/working 几何和 direction 状态实际发生变化，未把末拍倒填到确认前页面",
-        "价格与过程边界、六面板布局、同品种稳定颜色和实际/确认标记均可见"
+        "价格与过程边界、六面板布局、同品种稳定颜色和实际/确认标记均可见",
+        "R8补充重绘后，各附图标量点位于本页右端K=103151400；未再复用确认前K=103150800的标量位置"
       ]
     },
     {
       "page_id": "rb_selected_final_K103315800",
-      "screenshot_sha256": "1cddbaff3a293d296f32e3da1e1518566342a5f0295e137819aa69980a403091",
+      "screenshot_sha256": "edc062c62047733ad770f151cf1625c8c8493141c7000c3260d437092d2be650",
       "observed": [
         "页首末拍 K=103315800、final exact、direction=down 与 completion formal-code 可辨认",
         "所选当时十二个完成过程和 working 的端点/确认几何实际出现在行情背景上",
-        "各附图只显示末拍合法标量点，没有用单切面冒充连续演变"
+        "各附图只显示末拍合法标量点，没有用单切面冒充连续演变",
+        "R8补充重绘后，各附图标量点位于本页右端K=103315800；价格和特征均未显示K之后记录"
       ]
     }
   ],
+  "endpoint_r8_supplement": {
+    "result": "PASS",
+    "inspected_with": "Codex view_image original-detail",
+    "scope": "重新查看三个selected-cut页面；确认点位及右端K位置，不改变专业业务解释",
+    "aidata_commit": "28260d3ec5d2ed254b2539cb9abc656e4737f80b"
+  },
   "limitations": [
     "截图为 1800px 全页技术验收，密集 hover 原值需在 HTML 内交互查看",
     "本检查确认像素、布局、图例和时间几何可见，不判断这些市场事实的专业业务含义"

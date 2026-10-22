@@ -8,6 +8,7 @@
 
 核心入口：
 
+- `ENDPOINT_R8_SUPPLEMENT.md`：R8右边界补充、修前真实缺陷、最小修复和修后直接检查；其端点结论优先于初版回交。
 - `FULL_RESPONSE.md`：完整技术回交、准确版本、结果、失败恢复和未完。
 - `evidence/RUNTIME_AND_RENDER_MANIFEST.json`：实际入口、页面和安全边界。
 - `evidence/FINAL_VERIFICATION.json`：19 项最终包装检查，全部通过。
@@ -17,4 +18,4 @@
 - `plot_view_data/`：四页实际消费者输入。
 - `GITHUB_RECEIPT.json`：推送并从远端回读后生成的最终回执。
 
-aidata 最小改动已提交到 GitHub 分支 `fy/bi01-fo01-n-display-r0007`，commit `db44a54fa30ff9b4b8dddbe37e020d087c914d62`。
+aidata 最小接入的初始 commit 为 `db44a54fa30ff9b4b8dddbe37e020d087c914d62`；R8端点补充后的当前 commit 为 `28260d3ec5d2ed254b2539cb9abc656e4737f80b`，分支仍为 `fy/bi01-fo01-n-display-r0007`。
