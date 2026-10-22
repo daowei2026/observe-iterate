@@ -119,10 +119,11 @@ Worker局部读取/图层失败只限制相关消费者，继续可靠部分；�
 本次实际证据：`daowei2026/observe-iterate@8af0eafe829eb139ec5563a15cf2c705aa0243ef:runs/BI-01-FO-01/reviews/management-R0008/FULL_RESPONSE.md::full`
 本次实际证据：`daowei2026/observe-iterate@606d7ffcb75f7f5e896a187c366bfe1f4d1d4ffa:runs/BI-01-FO-01/artifacts/professional-R0007/FULL_RESPONSE.md::full`
 本次实际证据：`daowei2026/observe-iterate@081e31241a0c88e47631f80a8b9b8dd43b2b569c:runs/BI-01-FO-01/artifacts/worker-BI01-FO01-N-DISPLAY-INTEGRATION-02/FULL_RESPONSE.md::full`
-本次实际证据：`daowei2026/observe-iterate@9bf6a9bb19656878efa12eae6696e847f7505d0c:runs/BI-01-FO-01/artifacts/worker-BI01-FO01-N-DISPLAY-INTEGRATION-02/GITHUB_RECEIPT.json::full`
-本次实际证据：`daowei2026/observe-iterate@c57158ef715de9eb263cb09f0dedd68144b4c5a1:runs/BI-01-FO-01/provenance/turns/R0009/INPUT_STATE.md::full`
+本次实际证据：`daowei2026/observe-iterate@6b6be54fa0b2245416d5923f6213788d879f6367:runs/BI-01-FO-01/artifacts/worker-BI01-FO01-N-DISPLAY-INTEGRATION-02/GITHUB_RECEIPT.json::full`
+本次实际证据：`daowei2026/observe-iterate@aabeacd3e2bdaed05ae85ff7fcd9ea8ee428626c:runs/BI-01-FO-01/provenance/turns/R0009/INPUT_STATE.md::full`
 本次实际证据：`daowei2026/observe-iterate@90505c859d95f458f3c6ec5caeca06573c35a17a:runs/BI-01-FO-01/reviews/management-R0008/RETURNS.md::full`
 本次实际证据：`daowei2026/observe-iterate@081e31241a0c88e47631f80a8b9b8dd43b2b569c:runs/BI-01-FO-01/artifacts/worker-BI01-FO01-N-DISPLAY-INTEGRATION-02/ENDPOINT_R8_SUPPLEMENT.md::full`
+本次实际证据：`daowei2026/observe-iterate@34d9bae99530cbfd9936d98d61b527dd216b88a5:runs/BI-01-FO-01/artifacts/worker-BI01-FO01-N-DISPLAY-INTEGRATION-02/SCALAR_DISPLAY_CONSISTENCY_SUPPLEMENT.md::full`
 
 ## 本次直接读取的上下文
 
@@ -205,7 +206,7 @@ Worker局部读取/图层失败只限制相关消费者，继续可靠部分；�
 方法版本、业务合同版本、源码版本和运行数据分别保持准确，不随一次方法更新全部追 latest。
 
 运行事实（来自现有记录）：
-观察时间：2026-10-22T10:50:05.085670+00:00
+观察时间：2026-10-22T11:17:03.097299+00:00
 有效回交数：2
 
 按既有协议交完整实质回答及ROLE_RETURN/QUESTION_WORK_RETURN，来源、未执行和资格如实保留，不新增控制表，不重抄协调者已存提示。完整任务未完成就保留完整责任及连续后继，局部交付不自设停点。要求GitHub提交时普通快进并fresh回读，最后commit message带turn complete及本轮invocation_id，无invocation时简要标明执行身份；不造空提交。
