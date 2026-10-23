@@ -2,14 +2,14 @@
   "schema": "workmap-intake/v1",
   "intakes": {
     "bi01": {
-      "snapshot": "592323ae2e44bcc713214ffa639f8d177708258b5629d98b9481059c1897e24f",
+      "snapshot": "3c90ba966685aa7d3064359b1ae7c4baa586241ac76faa72cb8b8f306130d9af",
       "manager": {
         "role": "management",
         "context": "chatgpt:细节叙事生成_金标:BI01-FO01-管理"
       },
       "decision_report": {
-        "path": "runs/BI-01-FO-01/reviews/management-R0010/FULL_RESPONSE.md",
-        "blob": "a346a5c10f636b58a665afdad90ca68bf8da53b2"
+        "path": "runs/BI-01-FO-01/reviews/management-R0013/FULL_RESPONSE.md",
+        "blob": "3bf0229b28d57b9e855e87eb6612a8792b7db8a2"
       },
       "reader_check": {
         "status": "RECORDED",
@@ -23,10 +23,10 @@
         "input_snapshot": "76cc432bb46ec54c5bc2539e6ecf6d504a3b3cfba0e3e32bacd550bb11719c14"
       },
       "effort": {
-        "known_pro_turns": 10,
-        "effective_professional_returns": 3,
+        "known_pro_turns": 12,
+        "effective_professional_returns": 4,
         "effective_professional_origin": "2026-10-22T04:20:18.644Z",
-        "note": "known_pro_turns为已真实发生的全部Pro角色轮次，R1至R10；业务EFFORT只计R4/R7/R9三份有效专业回交，管理/Reader/Worker不加该专业计数；原起点不变，下一阈值累计4。依据R0010#effort及真实发送回执。"
+        "note": "R1—R11及R13共12次真实Pro角色调用，旧R12未发送不计；专业有效回交R4/R7/R9/R11累计4，原起点与间隔2保持。R13#effort实际复看累计4段，真实后继后消费；下一累计6，不以新任务/SHA重置。"
       },
       "scope_dispositions": {},
       "validation_claims": [],
@@ -34,10 +34,10 @@
         "decision": "ISSUED",
         "task_id": "BI01-FO-01-N-OBSERVATION-01",
         "task_path": "runs/BI-01-FO-01/01_当前任务.md",
-        "task_blob": "42b6ea5adb2c7ce1e0e2cbbaecb57bf5c7110a2c",
+        "task_blob": "0dde82c1027e5b788ce2894f699fde51f3307d40",
         "kind": "EXISTING_AUTHORIZED_REPAIR",
         "requires_reader_check": false,
-        "reader_reason": "本次分类为 **EXISTING_AUTHORIZED_REPAIR**，不是ROUTINE_RESULT：Owner已明确纠正职责和展示完成条件，必须实际更新当前Task/Binding及方法锁。仍是同一具体N和完整四项任务，不增加新的业务目的、参数算法、资金用途、公共写权或阶段；本管理逐项落地Owner已定要求，没有另发明具体新画法。因此本次 **requires_reader_check=false**，不派一次全量地图Reader来重复核Owner已经确定的方向。\n\n这个判定只允许本次有权任务修订进入专业续作，不是新Notebook/平台/专业结果的独立认证。原Reader只保留89aacaa输入的地图可读性资格；本次新的重要设计、接口影响和实际成果如确需独立核查，按真实范围走既有渠道，不能由本布尔值豁免。此区分对照当前runtime/overlay/12_管理接收与地图校验.md §3/§5，不改Gate、不扩大reader排除面。",
+        "reader_reason": "本次为EXISTING_AUTHORIZED_REPAIR、requires_reader_check=false：直接落实Owner已经认可的专业规范，仍是同一N/同一完整四项任务，没有另造业务设计、算法、阶段或公共写权；本管理已亲核关键实物和旧授权冲突。此分类仅适用于当前定向任务修订，不是对未运行Notebook/新平台的认证，亦不免除后来真正重要设计的必要独立核查。原Reader仍仅覆盖89aacaa冻结地图，不能写成读过当前新任务。",
         "method_paths": [
           "professional/feature_observation/00_PURPOSE_AND_FOUR_WORKS.md",
           "professional/feature_observation/01_OUTPUT_BASE_FORMAT.md",
@@ -45,11 +45,11 @@
           "professional/feature_observation/03_REUSE_FROM_V2.md",
           "professional/feature_observation/04_AIDATA_USE.md"
         ],
-        "task_payload_sha256": "6a020816151322136b5a8efa44d308c1ee99bad85070957eedbe9592c7140ea9",
-        "policy_ref": "5470e43d46068f0ca317ccf77b6706e839e42b67",
+        "task_payload_sha256": "5314dba05ae8d9289642f0faea8aea1db72fa5b7da52a9dfde9dd3686c708462",
+        "policy_ref": "b81cfa14299a415bd4b666f9f69cdc4f5871931f",
         "goal_ref": {
           "repo": "daowei2026/observe-iterate",
-          "commit": "5470e43d46068f0ca317ccf77b6706e839e42b67",
+          "commit": "b81cfa14299a415bd4b666f9f69cdc4f5871931f",
           "path": "professional/feature_observation/00_PURPOSE_AND_FOUR_WORKS.md",
           "selector": "full"
         }
