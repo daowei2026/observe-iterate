@@ -2,14 +2,14 @@
   "schema": "workmap-intake/v1",
   "intakes": {
     "bi01": {
-      "snapshot": "03f9b3d07a0bfd6ecc8b8a1dbe8137ea231e2fdaa2e843370a9f1ac62edccc84",
+      "snapshot": "b1e11d82fbe2fa6484e5a20d2bf76da26042273dff80689557c64339c5142454",
       "manager": {
         "role": "management",
         "context": "chatgpt:细节叙事生成_金标:BI01-FO01-管理"
       },
       "decision_report": {
-        "path": "runs/BI-01-FO-01/reviews/management-R0016/FULL_RESPONSE.md",
-        "blob": "62db37ce7807817848e465b10f43d31d5daa829f"
+        "path": "runs/BI-01-FO-01/reviews/management-R0018/FULL_RESPONSE.md",
+        "blob": "13f677df8e14d5c4378b1f1398422df8c4eab9ac"
       },
       "reader_check": {
         "status": "RECORDED",
@@ -23,10 +23,11 @@
         "input_snapshot": "76cc432bb46ec54c5bc2539e6ecf6d504a3b3cfba0e3e32bacd550bb11719c14"
       },
       "effort": {
-        "known_pro_turns": 14,
-        "effective_professional_returns": 5,
+        "known_pro_turns": 16,
+        "effective_professional_returns": 6,
         "effective_professional_origin": "2026-10-22T04:20:18.644Z",
-        "note": "R1—R11/R13/R14/R16共14次真实Pro角色调用，R12/R15未发不计；专业R4/R7/R9/R11/R14累计5，原起点/间隔2保持，下一累计6。Worker/Codex/Git不计Pro；R16处理正常技术成果Intake，不重置投入。"
+        "note": "R1—R11/R13/R14/R16/R17/R18共16次真实Pro角色调用；R12/R15未发不计。专业R4/R7/R9/R11/R14/R17累计6，起点2026-10-22T04:20:18.644Z和间隔2保持；M18实际复看累计6，下一累计8。Worker/Codex/Git不计专业回交；本轮不清零投入。",
+        "next_effort_cumulative_effective_returns": 8
       },
       "scope_dispositions": {},
       "validation_claims": [],
@@ -37,7 +38,7 @@
         "task_blob": "0dde82c1027e5b788ce2894f699fde51f3307d40",
         "kind": "ROUTINE_RESULT",
         "requires_reader_check": false,
-        "reader_reason": "**本次classification=ROUTINE_RESULT，requires_reader_check=false。**理由：同一已理解的具体N任务、方法、角色权限和工作2→管理认可→工作3→管理认可→工作4关系保持；新增的是R14已签单的现场结果及其后继消费安排。本文没有设计新的业务算法或放行新下游，地图只更新真实进度/材料资格/后继。原Reader只保留89aacaa冻结输入的可读性资格，不造读过当前版或新设计独立通过的记录。",
+        "reader_reason": "本次classification=ROUTINE_RESULT、requires_reader_check=false：仍是同一具体N任务/方法/角色权限和既有依赖，P17在已有工作2授权内发现并签发局部显示修复，本管理核实其主张、接收专业增量及采用明确后继。没有更换业务目标、创建新算法或放行新的下游，地图只更新事实/资格/下一责任。原Reader仅覆盖89aacaa冻结地图，不造本版或新画法的独立PASS；后续真正重要新设计仍按原实际需要核查。",
         "method_paths": [
           "professional/feature_observation/00_PURPOSE_AND_FOUR_WORKS.md",
           "professional/feature_observation/01_OUTPUT_BASE_FORMAT.md",
