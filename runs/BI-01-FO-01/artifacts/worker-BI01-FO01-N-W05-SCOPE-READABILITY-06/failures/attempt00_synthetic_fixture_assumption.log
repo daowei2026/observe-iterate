@@ -1,0 +1,30 @@
+.....F                                                                   [100%]
+=================================== FAILURES ===================================
+_______ test_real_nan_and_formal_missing_remain_visible_with_local_scope _______
+
+    def test_real_nan_and_formal_missing_remain_visible_with_local_scope():
+        price = _price()
+        price.loc[price["open_uti"] == 200, "close"] = float("nan")
+        bundle = build_selected_cut_bundle(_frames(), price, symbol="rb", color="#4C78A8", as_of=300,
+                                           display_range=(200, 300))
+        assert bundle.meta["display_missing_close_rows"] == 1
+        assert bundle.views["close_path"]["y"].isna().sum() == 1
+        assert any(n.get("category") == "price_missing" for n in bundle.notices)
+>       assert any(n.get("category") is None and n.get("formal_state") for n in bundle.notices)
+E       assert False
+E        +  where False = any(<generator object test_real_nan_and_formal_missing_remain_visible_with_local_scope.<locals>.<genexpr> at 0x72b443557d10>)
+
+tests/test_u2_normal_node_behavior_display.py:283: AssertionError
+=============================== warnings summary ===============================
+../../../../../m3c3/py-prod/m3v/web/res.py:99
+  /m3c3/py-prod/m3v/web/res.py:99: DeprecationWarning: "@coroutine" decorator is deprecated since Python 3.8, use "async def" instead
+    def _handle(self, request):
+
+tests/test_u2_normal_node_behavior_display.py::test_plotter_identity_changes_between_selected_cuts
+  /tmp/bi01-fo01-w03-runtime-20261022/mquant/quant/db/engine.py:21: MovedIn20Warning: Deprecated API features detected! These feature(s) are not compatible with SQLAlchemy 2.0. To prevent incompatible upgrades prior to updating applications, ensure requirements files are pinned to "sqlalchemy<2.0". Set environment variable SQLALCHEMY_WARN_20=1 to show all deprecation warnings.  Set environment variable SQLALCHEMY_SILENCE_UBER_WARNING=1 to silence this message. (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+    BaseModel = declarative_base()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_u2_normal_node_behavior_display.py::test_real_nan_and_formal_missing_remain_visible_with_local_scope
+1 failed, 5 passed, 10 deselected, 2 warnings in 19.26s

@@ -1,0 +1,57 @@
+{
+  "id": "r0011-06",
+  "cell_type": "code",
+  "source": [
+    "rb_K = widgets.Dropdown(options=[(name, name) for name in PLAN[\"rb_cuts\"]], value=\"final\", description=\"rb知识K\")\n",
+    "rb_range = widgets.Dropdown(options=[(\"完整已供成员/行情\", \"full\"), (\"确认附近局部行情\", \"local\")], value=\"full\", description=\"显示范围\")\n",
+    "rb_out = widgets.Output()\n",
+    "def display_rb_cut(change=None):\n",
+    "    name, mode = rb_K.value, rb_range.value\n",
+    "    K = PLAN[\"rb_cuts\"][name]\n",
+    "    price = rb_price if mode == \"full\" else rb_price[rb_price[\"open_uti\"].between(103140000, K)]\n",
+    "    with rb_out:\n",
+    "        clear_output(wait=True)\n",
+    "        bundle = new_selected(rb_cuts[name], price, \"rb\", K)\n",
+    "        render_new(\"rb_\" + name + \"_\" + mode, bundle)\n",
+    "rb_K.observe(display_rb_cut, names=\"value\")\n",
+    "rb_range.observe(display_rb_cut, names=\"value\")\n",
+    "display(widgets.HBox([rb_K, rb_range]), rb_out)\n",
+    "display_rb_cut()\n"
+  ],
+  "metadata": {},
+  "execution_count": 4,
+  "outputs_index": [
+    {
+      "position": "/cells/6/outputs/0",
+      "output_type": "display_data",
+      "mime_index": [
+        {
+          "mime": "application/vnd.jupyter.widget-view+json",
+          "json_utf8_bytes": 88,
+          "json_sha256": "ec5be4103e6958ef1eefadac1750022d5bea68f21f9b8fb6779a402c13d6f009"
+        },
+        {
+          "mime": "text/plain",
+          "json_utf8_bytes": 121,
+          "json_sha256": "ccdd900ba9bc677053d1aaf8eb7bf7d7f4f4bc4e0056766bf3e4ef70cb30d522"
+        }
+      ]
+    },
+    {
+      "position": "/cells/6/outputs/1",
+      "output_type": "display_data",
+      "mime_index": [
+        {
+          "mime": "application/vnd.jupyter.widget-view+json",
+          "json_utf8_bytes": 88,
+          "json_sha256": "d3ac5dea7c4607a357a3987037c7274e85d4259d1c24c2adc7cc2d1287cf9014"
+        },
+        {
+          "mime": "text/plain",
+          "json_utf8_bytes": 12,
+          "json_sha256": "ec4c992cb9cfa769ccf51f831535a9f6137e6742f04e93f871e7739459db4c7e"
+        }
+      ]
+    }
+  ]
+}

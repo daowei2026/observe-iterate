@@ -1,0 +1,288 @@
+{
+  "id": "r0011-08",
+  "cell_type": "code",
+  "source": [
+    "i_cuts = {name: cut_tables(PLAN[\"source_refs\"][\"W03\"], W03 + \"data/crossk/\" + name + \"/\")\n",
+    "          for name in PLAN[\"i_cuts\"]}\n",
+    "i_price = frame_at(PLAN[\"source_refs\"][\"W02\"], W02 + \"data/i_missing_context/i_5m_price_calendar.csv\", False)\n",
+    "i_selected = {name: new_selected(i_cuts[name], i_price, \"i\", K) for name, K in PLAN[\"i_cuts\"].items()}\n",
+    "i_sparse = sparse_evolution(i_cuts, i_selected, i_price, \"i\", list(PLAN[\"i_cuts\"].values()))\n",
+    "render_new(\"i_sparse_recovery\", i_sparse)\n",
+    "fields = (\"working_progress\", \"working_efficiency\", \"working_counter\", \"working_duration\", \"working_waiting\", \"working_waiting_ratio\")\n",
+    "status_rows = []\n",
+    "for label, tables in i_cuts.items():\n",
+    "    for field in fields:\n",
+    "        for row in tables[field].reset_index().to_dict(\"records\"):\n",
+    "            status_rows.append({\"cut\": label, \"K\": PLAN[\"i_cuts\"][label], \"field\": field,\n",
+    "                **{key: row.get(key) for key in (\"value\", \"present\", \"knownness\", \"applicability\", \"reason\")}})\n",
+    "display(pd.DataFrame(status_rows))\n",
+    "# These original fields are audit support. They do not substitute for checking\n",
+    "# whether the NEW graphic makes the missing/zero/local-restart distinction clear.\n",
+    "\n",
+    "i_K = widgets.Dropdown(options=[(name, name) for name in PLAN[\"i_cuts\"]], value=\"i_recovery\", description=\"i知识K\")\n",
+    "i_out = widgets.Output()\n",
+    "def display_i_cut(change=None):\n",
+    "    with i_out:\n",
+    "        clear_output(wait=True)\n",
+    "        name = i_K.value\n",
+    "        render_new(name, new_selected(i_cuts[name], i_price, \"i\", PLAN[\"i_cuts\"][name]))\n",
+    "i_K.observe(display_i_cut, names=\"value\")\n",
+    "display(i_K, i_out)\n",
+    "display_i_cut()\n"
+  ],
+  "metadata": {},
+  "execution_count": 5,
+  "outputs_index": [
+    {
+      "position": "/cells/8/outputs/0",
+      "output_type": "display_data",
+      "mime_index": [
+        {
+          "mime": "text/html",
+          "json_utf8_bytes": 824,
+          "json_sha256": "42df170f98c223c470ab6d2a4e1d3132d147f42e3a432b41a3f18e8b821dc8a2"
+        },
+        {
+          "mime": "text/plain",
+          "json_utf8_bytes": 429,
+          "json_sha256": "551de1fd7f8229cc6893be1e5ccdb8d7f65af8c44452f232bd714d40e174aba5"
+        }
+      ]
+    },
+    {
+      "position": "/cells/8/outputs/1",
+      "output_type": "display_data",
+      "mime_index": [
+        {
+          "mime": "text/html",
+          "json_utf8_bytes": 1768,
+          "json_sha256": "3e4d7b85f8c5e746cb462fd90ca3bb15e3226b1dcac0c5c9c97570bc80e398d7"
+        },
+        {
+          "mime": "text/plain",
+          "json_utf8_bytes": 561,
+          "json_sha256": "948bbeb5afd75c77d4c2d6a454e718a714e16b31ce71951d95787ca6cc72f23e"
+        }
+      ]
+    },
+    {
+      "position": "/cells/8/outputs/2",
+      "output_type": "display_data",
+      "mime_index": [
+        {
+          "mime": "text/html",
+          "json_utf8_bytes": 1768,
+          "json_sha256": "3e4d7b85f8c5e746cb462fd90ca3bb15e3226b1dcac0c5c9c97570bc80e398d7"
+        },
+        {
+          "mime": "text/plain",
+          "json_utf8_bytes": 561,
+          "json_sha256": "948bbeb5afd75c77d4c2d6a454e718a714e16b31ce71951d95787ca6cc72f23e"
+        }
+      ]
+    },
+    {
+      "position": "/cells/8/outputs/3",
+      "output_type": "display_data",
+      "mime_index": [
+        {
+          "mime": "text/html",
+          "json_utf8_bytes": 1768,
+          "json_sha256": "3e4d7b85f8c5e746cb462fd90ca3bb15e3226b1dcac0c5c9c97570bc80e398d7"
+        },
+        {
+          "mime": "text/plain",
+          "json_utf8_bytes": 561,
+          "json_sha256": "948bbeb5afd75c77d4c2d6a454e718a714e16b31ce71951d95787ca6cc72f23e"
+        }
+      ]
+    },
+    {
+      "position": "/cells/8/outputs/4",
+      "output_type": "display_data",
+      "mime_index": [
+        {
+          "mime": "text/html",
+          "json_utf8_bytes": 1768,
+          "json_sha256": "3e4d7b85f8c5e746cb462fd90ca3bb15e3226b1dcac0c5c9c97570bc80e398d7"
+        },
+        {
+          "mime": "text/plain",
+          "json_utf8_bytes": 561,
+          "json_sha256": "948bbeb5afd75c77d4c2d6a454e718a714e16b31ce71951d95787ca6cc72f23e"
+        }
+      ]
+    },
+    {
+      "position": "/cells/8/outputs/5",
+      "output_type": "display_data",
+      "mime_index": [
+        {
+          "mime": "text/html",
+          "json_utf8_bytes": 964,
+          "json_sha256": "b07e70348b096d0cb7de018848278a1e04a7bb49a9c5a832c75823915b6bd9bc"
+        },
+        {
+          "mime": "text/plain",
+          "json_utf8_bytes": 429,
+          "json_sha256": "e18df19492a4da337d34ba7fea4e15a1251d33ceafd0db2851be04d7bbc8eb16"
+        }
+      ]
+    },
+    {
+      "position": "/cells/8/outputs/6",
+      "output_type": "display_data",
+      "mime_index": [
+        {
+          "mime": "text/html",
+          "json_utf8_bytes": 964,
+          "json_sha256": "b07e70348b096d0cb7de018848278a1e04a7bb49a9c5a832c75823915b6bd9bc"
+        },
+        {
+          "mime": "text/plain",
+          "json_utf8_bytes": 429,
+          "json_sha256": "e18df19492a4da337d34ba7fea4e15a1251d33ceafd0db2851be04d7bbc8eb16"
+        }
+      ]
+    },
+    {
+      "position": "/cells/8/outputs/7",
+      "output_type": "display_data",
+      "mime_index": [
+        {
+          "mime": "text/html",
+          "json_utf8_bytes": 1768,
+          "json_sha256": "3e4d7b85f8c5e746cb462fd90ca3bb15e3226b1dcac0c5c9c97570bc80e398d7"
+        },
+        {
+          "mime": "text/plain",
+          "json_utf8_bytes": 561,
+          "json_sha256": "948bbeb5afd75c77d4c2d6a454e718a714e16b31ce71951d95787ca6cc72f23e"
+        }
+      ]
+    },
+    {
+      "position": "/cells/8/outputs/8",
+      "output_type": "display_data",
+      "mime_index": [
+        {
+          "mime": "text/html",
+          "json_utf8_bytes": 1768,
+          "json_sha256": "3e4d7b85f8c5e746cb462fd90ca3bb15e3226b1dcac0c5c9c97570bc80e398d7"
+        },
+        {
+          "mime": "text/plain",
+          "json_utf8_bytes": 561,
+          "json_sha256": "948bbeb5afd75c77d4c2d6a454e718a714e16b31ce71951d95787ca6cc72f23e"
+        }
+      ]
+    },
+    {
+      "position": "/cells/8/outputs/9",
+      "output_type": "display_data",
+      "mime_index": [
+        {
+          "mime": "text/html",
+          "json_utf8_bytes": 1768,
+          "json_sha256": "3e4d7b85f8c5e746cb462fd90ca3bb15e3226b1dcac0c5c9c97570bc80e398d7"
+        },
+        {
+          "mime": "text/plain",
+          "json_utf8_bytes": 561,
+          "json_sha256": "948bbeb5afd75c77d4c2d6a454e718a714e16b31ce71951d95787ca6cc72f23e"
+        }
+      ]
+    },
+    {
+      "position": "/cells/8/outputs/10",
+      "output_type": "display_data",
+      "mime_index": [
+        {
+          "mime": "text/html",
+          "json_utf8_bytes": 1768,
+          "json_sha256": "3e4d7b85f8c5e746cb462fd90ca3bb15e3226b1dcac0c5c9c97570bc80e398d7"
+        },
+        {
+          "mime": "text/plain",
+          "json_utf8_bytes": 561,
+          "json_sha256": "948bbeb5afd75c77d4c2d6a454e718a714e16b31ce71951d95787ca6cc72f23e"
+        }
+      ]
+    },
+    {
+      "position": "/cells/8/outputs/11",
+      "output_type": "display_data",
+      "mime_index": [
+        {
+          "mime": "text/html",
+          "json_utf8_bytes": 121,
+          "json_sha256": "e14a2ab413d462375916e05e972cc0870f154a533d31d7ce8a4ecf00e40299a2"
+        }
+      ]
+    },
+    {
+      "position": "/cells/8/outputs/12",
+      "output_type": "display_data",
+      "mime_index": [
+        {
+          "mime": "application/javascript",
+          "json_utf8_bytes": 84947,
+          "json_sha256": "51650c9cadc2d514a8201cdf43fd1f1510e58da3fdf4dad46119d9a306d3850b"
+        },
+        {
+          "mime": "application/vnd.bokehjs_exec.v0+json",
+          "json_utf8_bytes": 2,
+          "json_sha256": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126"
+        }
+      ]
+    },
+    {
+      "position": "/cells/8/outputs/13",
+      "output_type": "display_data",
+      "mime_index": [
+        {
+          "mime": "text/html",
+          "json_utf8_bytes": 5577,
+          "json_sha256": "3ca05e980bb1f4267afacaff53f592caf3e2778218c1d0308860ca20b9a76165"
+        },
+        {
+          "mime": "text/plain",
+          "json_utf8_bytes": 2532,
+          "json_sha256": "47d01545a62d1b6744afb868c0379e4646934d3f4744e96088e611f52906ee94"
+        }
+      ]
+    },
+    {
+      "position": "/cells/8/outputs/14",
+      "output_type": "display_data",
+      "mime_index": [
+        {
+          "mime": "application/vnd.jupyter.widget-view+json",
+          "json_utf8_bytes": 88,
+          "json_sha256": "4fce9d5770223146af503b413f4792158d39125586f9a98853ce991584adbfd0"
+        },
+        {
+          "mime": "text/plain",
+          "json_utf8_bytes": 121,
+          "json_sha256": "27b1293f570eee7df3336c1b4d8491ebc98fc975dfa7d2a997cd9731379debbd"
+        }
+      ]
+    },
+    {
+      "position": "/cells/8/outputs/15",
+      "output_type": "display_data",
+      "mime_index": [
+        {
+          "mime": "application/vnd.jupyter.widget-view+json",
+          "json_utf8_bytes": 88,
+          "json_sha256": "9ff7cfdb01d20e7af02ad15f4bda2ed778a44e7a9a986c019ac6d6893aadc3e5"
+        },
+        {
+          "mime": "text/plain",
+          "json_utf8_bytes": 12,
+          "json_sha256": "ec4c992cb9cfa769ccf51f831535a9f6137e6742f04e93f871e7739459db4c7e"
+        }
+      ]
+    }
+  ]
+}

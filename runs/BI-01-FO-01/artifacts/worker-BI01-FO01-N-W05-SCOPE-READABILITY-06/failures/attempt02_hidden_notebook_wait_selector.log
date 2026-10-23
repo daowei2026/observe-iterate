@@ -1,0 +1,23 @@
+Traceback (most recent call last):
+  File "/dwdhome/fy/observe-iterate-bi01-fo-01/runs/BI-01-FO-01/artifacts/worker-BI01-FO01-N-W05-SCOPE-READABILITY-06/scripts/frontend_run.py", line 28, in <module>
+    page.wait_for_selector('.jp-Notebook',timeout=60000)
+  File "/home/dw/.local/lib/python3.12/site-packages/playwright/sync_api/_generated.py", line 8213, in wait_for_selector
+    self._sync(
+  File "/home/dw/.local/lib/python3.12/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/home/dw/.local/lib/python3.12/site-packages/playwright/_impl/_page.py", line 419, in wait_for_selector
+    return await self._main_frame.wait_for_selector(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dw/.local/lib/python3.12/site-packages/playwright/_impl/_frame.py", line 369, in wait_for_selector
+    await self._channel.send(
+  File "/home/dw/.local/lib/python3.12/site-packages/playwright/_impl/_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dw/.local/lib/python3.12/site-packages/playwright/_impl/_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Page.wait_for_selector: Timeout 60000ms exceeded.
+Call log:
+  - waiting for locator(".jp-Notebook") to be visible
+    106 × locator resolved to 2 elements. Proceeding with the first one: <div role="region" tabindex="-1" data-jp-undoer="true" data-jp-kernel-user="true" data-jp-code-runner="true" aria-label="main area content" id="id-0af2e04b-1b4f-44f7-8cdd-f17c8500fc59" class="jp-WindowedPanel lm-Widget jp-Notebook jp-mod-scrollPastEnd jp-mod-showHiddenCellsButton jp-NotebookPanel-notebook jp-mod-commandMode">…</div>
+

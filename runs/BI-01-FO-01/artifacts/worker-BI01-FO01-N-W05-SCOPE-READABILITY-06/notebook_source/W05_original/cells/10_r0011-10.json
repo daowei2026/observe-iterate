@@ -1,0 +1,81 @@
+{
+  "id": "r0011-10",
+  "cell_type": "code",
+  "source": [
+    "hc_ref = PLAN[\"source_refs\"][\"W03\"]\n",
+    "hc_folder = W03 + \"data/crossk/hc_final/\"\n",
+    "hc_price = frame_at(hc_ref, hc_folder + \"hc_5m_price_calendar.csv\", False)\n",
+    "hc_rhythm = frame_at(hc_ref, hc_folder + \"rhythm.csv\").reset_index()\n",
+    "hc_intervals = frame_at(hc_ref, hc_folder + \"intervals.csv\").reset_index().sort_values(\"child_id_3\")\n",
+    "assert hc_intervals[\"present\"].eq(1).all()\n",
+    "denominator = float(hc_intervals.tail(3)[\"duration\"].median())\n",
+    "assert denominator == float(hc_rhythm.iloc[0][\"current_median_value\"])\n",
+    "K = int(hc_price[\"open_uti\"].max())\n",
+    "last_update = int(hc_rhythm.iloc[0][\"last_update_value\"])\n",
+    "print({\"formal_recent_intervals\": hc_intervals.tail(3)[\"duration\"].tolist(),\n",
+    "       \"formal_median\": denominator, \"waiting_reference\": K-last_update,\n",
+    "       \"ratio_reference\": (K-last_update)/denominator,\n",
+    "       \"qualification\": \"reference arithmetic beside formal tables; no new production N\"})\n",
+    "print(\"实际核源文件数\", len(SOURCE_READS))\n",
+    "\n",
+    "hc_tables = cut_tables(hc_ref, hc_folder)\n",
+    "hc_bundle = new_selected(hc_tables, hc_price, \"hc\", K)\n",
+    "nd.add_price_reference_points(hc_bundle, [\n",
+    "    {\"uti\": last_update, \"field\": \"close\", \"label\": \"last_update 原close3952\"},\n",
+    "    {\"uti\": last_update+600, \"field\": \"close\", \"label\": \"下一根close3946\"},\n",
+    "    {\"uti\": last_update+600, \"field\": \"high\", \"label\": \"下一根high3959（非close更新）\"},\n",
+    "    {\"uti\": K, \"field\": \"close\", \"label\": \"末拍close3904\"},\n",
+    "])\n",
+    "render_new(\"hc_close_waiting_final\", hc_bundle)\n",
+    "(EVIDENCE / \"SOURCE_READS.json\").write_text(json.dumps(SOURCE_READS, ensure_ascii=False, indent=2))\n",
+    "(EVIDENCE / \"KERNEL_COMPLETION.json\").write_text(json.dumps({\"execution_id\": EXECUTION_ID,\n",
+    "    \"completed_at\": datetime.datetime.now(datetime.timezone.utc).isoformat(), \"source_files\": len(SOURCE_READS),\n",
+    "    \"cases\": list(LAYOUTS)}, ensure_ascii=False, indent=2))\n",
+    "print(\"实际正式源文件\", len(SOURCE_READS), \"；未重读生产N、未调用平台入口\")\n"
+  ],
+  "metadata": {},
+  "execution_count": 6,
+  "outputs_index": [
+    {
+      "position": "/cells/10/outputs/0",
+      "output_type": "stream",
+      "stream_bytes": 240,
+      "stream_sha256": "26f3b293cfa190f0b411e6de654942f49071f9e8dd395835b781dd68d3eeb400",
+      "actual_stream_text": "{'formal_recent_intervals': [2400.0, 600.0, 600.0], 'formal_median': 600.0, 'waiting_reference': 258000, 'ratio_reference': 430.0, 'qualification': 'reference arithmetic beside formal tables; no new production N'}\n实际核源文件数 113\n"
+    },
+    {
+      "position": "/cells/10/outputs/1",
+      "output_type": "display_data",
+      "mime_index": [
+        {
+          "mime": "text/html",
+          "json_utf8_bytes": 121,
+          "json_sha256": "cbc09454c380c6c6980053050340e24dd2303c3e3041563f1ac27dadd815a8f4"
+        }
+      ]
+    },
+    {
+      "position": "/cells/10/outputs/2",
+      "output_type": "display_data",
+      "mime_index": [
+        {
+          "mime": "application/javascript",
+          "json_utf8_bytes": 262608,
+          "json_sha256": "8f93aa31a31433d7d31e7a32eb55f25448353a08c9b17627457f481ba5a2a2ef"
+        },
+        {
+          "mime": "application/vnd.bokehjs_exec.v0+json",
+          "json_utf8_bytes": 2,
+          "json_sha256": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126"
+        }
+      ]
+    },
+    {
+      "position": "/cells/10/outputs/3",
+      "output_type": "stream",
+      "stream_bytes": 70,
+      "stream_sha256": "5b2878639cc51f33b12d43d028eff4427f66e370d3b7ad08da06d26b42b24294",
+      "actual_stream_text": "实际正式源文件 130 ；未重读生产N、未调用平台入口\n"
+    }
+  ]
+}

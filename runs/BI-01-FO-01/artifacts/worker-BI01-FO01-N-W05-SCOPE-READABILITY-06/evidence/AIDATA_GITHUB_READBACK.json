@@ -1,0 +1,57 @@
+{
+  "checked_at": "2026-10-23T21:03:58.790760+00:00",
+  "repo": "daowei2026/aidata",
+  "branch": "fy/bi01-fo01-n-w05-scope-r0017",
+  "commit": "8a08300cb70a610401424bedadb42e9dcde13e71",
+  "fresh_ref": "refs/codex/bi01-worker06-aidata-final",
+  "transport": "明确GitHub地址、--no-write-fetch-head；原origin未改",
+  "files": [
+    {
+      "path": "feature_configs/u2_normal_node_behavior.py",
+      "bytes": 21453,
+      "sha256": "01bd05d786a834268ffd70925614c66f3799891103f4cf879a5135b37e2b13cc",
+      "remote_equals_worktree": true
+    },
+    {
+      "path": "u2_normal_node_behavior_display.py",
+      "bytes": 75580,
+      "sha256": "16d95f81c8d05411095ca61adee5a0636500a4e3382046e92f83d53c19dc50a3",
+      "remote_equals_worktree": true
+    },
+    {
+      "path": "tests/test_u2_normal_node_behavior_display.py",
+      "bytes": 17960,
+      "sha256": "f0d9c3b33ca13cb918db857f6e71a55f19fc1412a57bc3c956387e043d6f93fa",
+      "remote_equals_worktree": true
+    }
+  ],
+  "actually_executed_helper_matches": true,
+  "actual_configuration_version": "0.2.4-worker06",
+  "actual_consumed_policy": {
+    "price_range": "full view uses supplied price through K; local view displays only its selected range; completed statistics retain the original K-eligible members; outside-view boundaries are omitted, not missing source data",
+    "scalar_layout": {
+      "arrangement": "compact_grid",
+      "columns": 2,
+      "height": 220
+    },
+    "scalar_x": "keep actual x=K; detach historical shared x range; show only K tick and a single-cut label",
+    "scalar_x_padding": "equal display-only margins, at least 24 screen pixels; no synthetic or future records",
+    "numeric_range_function": "numeric_display_range",
+    "fit_y_range": "explicit nondegenerate y range; check final range after callbacks",
+    "legend": {
+      "placement": "outside_above",
+      "short_labels": true
+    },
+    "value_labels": "each present scalar has a readable value+unit in the margin; no hover required",
+    "absent_value": "explicit state/reason rather than an unexplained blank or zero",
+    "price_tick_labels": {
+      "mode": "adaptive",
+      "maximum_visible": 10,
+      "fixed_5m_labels": false
+    },
+    "temporal_note": "member actual endpoints and confirmation times differ; scalar has one observation only",
+    "rhythm_detail": "waiting / actual recent interval median = waiting_ratio, never a probability cap"
+  },
+  "execution_id": "W06-20261023T205802Z-e33312ba",
+  "worktree_clean": true
+}
