@@ -1,5 +1,7 @@
 # BI-01 V2：U2/U3 业务叙事、具体设计与本轮实际计算的来源导航
 
+> **历史参考资料（非现行执行合同）**：本文件原属于 V2 S1–S3 方法；当前仅按具体特征需要参考其中的业务知识。旧固定数据、阶段目标、操作方式及 GO/Gate 不能直接适用于 BI-01-FO-01；现行任务以已采用的 `professional/feature_observation/` 与 FO-01 Binding 为准。
+
 ## 0. 为什么需要这些材料
 
 **此次工作要检验现有 U2/U3 设计的价值，而非重新设计或重新验算它们。** 仅凭固定 ZIP 的 CSV 字段，无法知道设计原先承诺了什么、什么被参考验算实现了、还有什么未输出。执行 Pro 在 S1 确定观察图之前，应取得本导航所指的**相关完整正文**；S2 画图和 S3 观察时，遇到业务方法疑问则回到对应的准确 Source/Method 与实际 CSV，不能从标题、字段名、示意图或本索引猜出规则。
@@ -26,7 +28,7 @@
 
 **权限与方法状态：** 上述 EAW Local Contract 的文件头显示 candidate/owner_accepted=false，Upstream First Edition Profile 也显示 `current_application=NOT_APPLIED`。本轮对照其业务语义和候选算法，**不可把这些文件当成已经正式生效且运行过本次 ZIP 的生产实现**。最终采用哪种单尺度参考兼容、时间窗、Δ、Shadow 处理，由本次固定输出与其明确来源查实；细节见 [04 原 I1–I3 业务底稿](04_BI01_BUSINESS_BASELINE.md) 和原始对话 §3.4。
 
-本轮固定 ZIP 中的 U2 结果路径见 [05](05_BI01_FIXED_INPUT_DATA.md)，包括全范围的 C0/N、C1 raw，以及少量单尺度 C1/S/C2 **参考** Case。OpportunityCluster 位置/成员、正式 Commit 和 H1 必须区分；图上可以展示参考候选，不得写成正式已 Commit 的簇。
+本轮固定 ZIP 中的 U2 结果路径见 [05](https://github.com/daowei2026/observe-iterate/blob/c7971cc616e09db47681abc868e77acdc272f84a/professional/v2/05_BI01_FIXED_INPUT_DATA.md)，包括全范围的 C0/N、C1 raw，以及少量单尺度 C1/S/C2 **参考** Case。OpportunityCluster 位置/成员、正式 Commit 和 H1 必须区分；图上可以展示参考候选，不得写成正式已 Commit 的簇。
 
 ## 2. U3：这些位置的品种是否好做，具体怎样判断
 
@@ -59,7 +61,7 @@ U3 设计里同时存在 **两套不同的“四”**：
 
 ## 3. 以已冻结的真实 ZIP 确定这次究竟有哪些输出
 
-**唯一预计算数据输入仍是 [05](05_BI01_FIXED_INPUT_DATA.md) 指向的两份 ZIP**，实际 Codex 目录 `/dwdhome/fy/资金管理`；工作区 `/dwdhome/fy/BASE_E6_2` 不是数据目录。按原包保留正式/Reference/Shadow/Withheld 区别。
+**唯一预计算数据输入仍是 [05](https://github.com/daowei2026/observe-iterate/blob/c7971cc616e09db47681abc868e77acdc272f84a/professional/v2/05_BI01_FIXED_INPUT_DATA.md) 指向的两份 ZIP**，实际 Codex 目录 `/dwdhome/fy/资金管理`；工作区 `/dwdhome/fy/BASE_E6_2` 不是数据目录。按原包保留正式/Reference/Shadow/Withheld 区别。
 
 就本轮实际提供的 ZIP 结构而言：
 

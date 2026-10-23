@@ -14,8 +14,8 @@ spec = importlib.util.spec_from_file_location("bi01_dispatch_under_test", MODULE
 dispatch = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(dispatch)
 
-GOAL = "professional/v2/00_PURPOSE_AND_THREE_STEP_FLOW.md"
-S2 = "professional/v2/01_AIDATA_CHART_AND_DATA.md"
+GOAL = "professional/feature_observation/00_PURPOSE_AND_FOUR_WORKS.md"
+S2 = "professional/feature_observation/02_WORK_DETAILS.md"
 CONFIG = "runtime/config/COORDINATOR_DISPATCH.json"
 
 
@@ -72,7 +72,7 @@ class BI01Smoke(unittest.TestCase):
             "task_adoption_ref": self.loc("authority.md"),
         }
 
-    def make_binding(self, mode="OBSERVATION_CHART", role="professional"):
+    def make_binding(self, mode="FEATURE_OBSERVATION", role="professional"):
         binding = {
             "schema": "question-work/v2", "kind": "BINDING", "work_id": "BI-01",
             "professional_mode": mode, "goal_ref": self.loc(GOAL),
@@ -113,10 +113,9 @@ class BI01Smoke(unittest.TestCase):
         prepared = dispatch.prepare_dispatch(self.repo, self.policy, CONFIG, event)
         self.assertEqual((prepared["role"], prepared["mode"], prepared["stage"]),
                          ("management", "M-START", "BI01"))
-        self.assertIn("07_BUSINESS_SCENE_OBSERVATION_METHOD.md", prepared["message"])
-        self.assertIn("基础 K线/贴近转折", prepared["message"])
-        self.assertIn("强弱", prepared["message"])
-        self.assertIn("04_BI01_BUSINESS_BASELINE.md", prepared["message"])
+        self.assertIn("具体特征", prepared["message"])
+        self.assertIn("四项", prepared["message"])
+        self.assertIn("U2NormalNodeBehaviorFrp", prepared["message"])
         self.assertIn("06_U2_U3_DESIGN_SOURCE_MAP.md", prepared["message"])
         self.assertFalse(prepared["sent"])
         self.assertFalse(prepared["semantic_review_passed"])
@@ -129,7 +128,7 @@ class BI01Smoke(unittest.TestCase):
         event = self.event("binding.json", bound_commit)
         prepared = dispatch.prepare_dispatch(self.repo, self.policy, CONFIG, event)
         self.assertEqual((prepared["role"], prepared["mode"], prepared["stage"]),
-                         ("professional", "OBSERVATION_CHART", "BI01"))
+                         ("professional", "FEATURE_OBSERVATION", "BI01"))
         self.assertEqual(prepared["recipient"], "professional-synthetic")
         self.assertIn("专业任务 BI01", prepared["message"])
         self.assertIn(S2, prepared["message"])

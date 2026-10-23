@@ -1,20 +1,21 @@
-# 专业 Agent V2：当前业务起点和方法索引
+# V2 专业知识历史参考（非现行执行方法）
 
-**当前范围固定：rb / i / hc + 已经提前验算的两份真实数据包（Codex 数据目录 `/dwdhome/fy/资金管理`）。** 本轮不重算一版结果；发现具体数据问题可以核查和反馈。管理/执行/Worker/Owner 角色依原长程机制分工。
+此目录不再是 BI-01 当前长程任务的专业执行入口。现行专业方法为 [具体特征观察的四项工作](../feature_observation/README.md)，当前执行以 `runs/BI-01-FO-01` 的 Owner 授权、实际采用的任务、Binding 与精确版本为准。
 
-本轮 S1 的必要改动是：先读 U2/U3 叙事与 Use Case，再从基础行情和贴近转折自主选真实场景，之后检验 U2 组织与 U3 四方面在合法 As-Of 对成员后续质量的辨别。具体场景类型不预设，方法见 [07](07_BUSINESS_SCENE_OBSERVATION_METHOD.md)。
+## 本分支仅保留的独立参考
 
-阅读顺序（真实专业任务不得只看目录）：
+- [04 原 I1–I3 业务起点](04_BI01_BUSINESS_BASELINE.md)：业务问题、前序设计认识和证据适用边界。
+- [06 U2/U3 设计 Source 导航](06_U2_U3_DESIGN_SOURCE_MAP.md)：原叙事、Use Case、Source Witness 与实现候选的来源区分。
+- [07 场景驱动的观察方法](07_BUSINESS_SCENE_OBSERVATION_METHOD.md)：根据具体业务问题观察市场场景、寻找反例等可复用认识。
 
-1. [00：业务上要拿到什么，以及 S1/S2/S3](00_PURPOSE_AND_THREE_STEP_FLOW.md)
-2. [07：从叙事与基础行情选择真实场景的方法](07_BUSINESS_SCENE_OBSERVATION_METHOD.md)
-3. [04：原 I1/I2/I3 已有的业务认识与设计/方法来源](04_BI01_BUSINESS_BASELINE.md)
-4. [05：本轮固定的两份 ZIP、全部数据文件、所在位置、可用性与差异](05_BI01_FIXED_INPUT_DATA.md)
-5. [06：U2/U3 的人读叙事、详细用例、Source Witness 和实际候选算法来源](06_U2_U3_DESIGN_SOURCE_MAP.md)
-6. [01：只使用 aidata 画图、给 AI 图对应数据，不要求 AI 视觉看图](01_AIDATA_CHART_AND_DATA.md)
-7. [02：观察想法、反证与可供 Owner 按图核验的结果](02_OBSERVATION_IDEAS_AND_VALIDATION.md)
-8. [03：正常角色与工具问题的处理边界](03_EXECUTION_HANDOFF.md)
+上述三份原属于 V2 历史方法，其正文中关于 S1/S2/S3、固定 ZIP、rb/i/hc、AI 不看图或 U2/U3 整体目标的要求，**均不自动成为当前 FO-01 的执行规则**。当前工作必须以已采用的 `feature_observation` 方法和具体任务为准。
 
-旧业务 Agent 的 I1–I6 阶段合同和旧实际运行记录已从 V2 工作树清理；业务知识与输入源在 04/05 以准确来源恢复，而旧 Pro 结果、Gate、聊天、in-flight 不继承。
+## 已移出当前分支、但可从 Git 历史取得的原件
 
-状态：`V2_PREPARED_NOT_STARTED / NO_SEND`。新 `BI-01-V2-02` 尚未取得 Owner GO、真实任务或派发；前一 `BI-01-V2-01` 已由 Owner 暂停，只能经来源核验复用旧图/数据，不继承旧阶段结论、业务接收或 Gate。本次方法与输入固定不等于实际已派发新 Pro 任务或取得正式业务判断。可在新的 Owner 真实 GO 后按 V2 运行指南启动。
+- [00 V2 总目标与三步流程](https://github.com/daowei2026/observe-iterate/blob/c7971cc616e09db47681abc868e77acdc272f84a/professional/v2/00_PURPOSE_AND_THREE_STEP_FLOW.md)
+- [01 旧 aidata 图与数据工作](https://github.com/daowei2026/observe-iterate/blob/c7971cc616e09db47681abc868e77acdc272f84a/professional/v2/01_AIDATA_CHART_AND_DATA.md)
+- [02 旧 S3 观察与验证](https://github.com/daowei2026/observe-iterate/blob/c7971cc616e09db47681abc868e77acdc272f84a/professional/v2/02_OBSERVATION_IDEAS_AND_VALIDATION.md)
+- [03 旧执行交接](https://github.com/daowei2026/observe-iterate/blob/c7971cc616e09db47681abc868e77acdc272f84a/professional/v2/03_EXECUTION_HANDOFF.md)
+- [05 V2 两份固定输入资料](https://github.com/daowei2026/observe-iterate/blob/c7971cc616e09db47681abc868e77acdc272f84a/professional/v2/05_BI01_FIXED_INPUT_DATA.md)
+
+这些文件只从**当前分支工作树**移出；其原字节仍位于固定 Git 提交 `c7971cc616e09db47681abc868e77acdc272f84a` 的历史树中。旧运行的索引见 [runs/history](../../runs/README.md)。不继承旧 GO、管理 Gate、已采用任务、运行轮次或图的专业验收资格。

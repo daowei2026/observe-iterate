@@ -1,5 +1,7 @@
 # BI-01 V2 业务起点：复用原 I1/I2/I3 已积累的业务认识
 
+> **历史参考资料（非现行执行合同）**：本文件原属于 V2 S1–S3 方法；当前仅按具体特征需要参考其中的业务知识。旧固定数据、阶段目标、操作方式及 GO/Gate 不能直接适用于 BI-01-FO-01；现行任务以已采用的 `professional/feature_observation/` 与 FO-01 Binding 为准。
+
 ## 0. 本文的来源与权限
 
 **本文件保存的是已积累的业务内容、Source 和方法背景，不是旧版运行状态的迁移。** 当前新运行准备为 `BI-01-V2-02`，需未来真实 Owner GO；上一 `BI-01-V2-01` 已由 Owner 暂停，原 `BI-01-RESTART-01` 亦是更早的历史。旧运行的 Gate、聊天、Owner 授权、已采用 Task/Workmap、在途、预算或执行结果不自动进入新运行；仅可将明确来源的业务知识、原图和真实数据作为历史证据核实后使用。
@@ -66,7 +68,7 @@ U3 R03：Quality / Allocation 的可用或 Withheld 状态
 - `C2/01_case_opportunity_cluster_gates_v0.csv` 的 `official_cluster_committed` / `official_h1_emitted` 不是已正式获批的 Cluster 或 H1；`U3/03_r03_quality_withholding.csv` 的 `quality_judgement=WITHHELD` 不能被说成正式品种优劣。
 - 两包没有独立可执行的完整 U2/U3 Runner 和全链 Trace，不适于自动宣称正式实现/生产资格。**当前 Owner 已固定这批已验算数据作为观察输入，不要求因没有 Runner 而重新计算**；但如发现数据/方法具体矛盾，应指出有疑问的行、源规则及受影响分析，向 Owner 反馈而不默默修改。
 
-以上是可以带入 S1/S2 的**业务背景与输入事实**，不是复用旧 I4/I5/I6 产生的诊断，也不是将上轮 Gate Pass 搬进新 run。数据实际如何取得详见 [05](05_BI01_FIXED_INPUT_DATA.md)。
+以上是可以带入 S1/S2 的**业务背景与输入事实**，不是复用旧 I4/I5/I6 产生的诊断，也不是将上轮 Gate Pass 搬进新 run。数据实际如何取得详见 [05](https://github.com/daowei2026/observe-iterate/blob/c7971cc616e09db47681abc868e77acdc272f84a/professional/v2/05_BI01_FIXED_INPUT_DATA.md)。
 
 ## 4. 对本轮的直接使用要求
 

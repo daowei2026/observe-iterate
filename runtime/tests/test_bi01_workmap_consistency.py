@@ -27,7 +27,7 @@ class WorkmapSnapshotOffline(unittest.TestCase):
         b = json.loads((PROJECT / "runtime/operations/v2/templates/WORKMAP_BINDING_TEMPLATE.json").read_text())
         b["status"] = "ADOPTED"  # synthetic only, never commit this into real repo.
         self.write(BINDING, json.dumps(b, ensure_ascii=False))
-        self.write(RUN + "/README.md", (PROJECT / RUN / "README.md").read_text())
+        self.write(RUN + "/README.md", '# Synthetic historical-run overview\n<a id="common"></a>\n<a id="bi01"></a>\n')
         for path in b["owner_sources"] + b["rule_paths"]:
             if not (self.repo / path).exists():
                 self.write(path, "Synthetic document: " + path + "\n")

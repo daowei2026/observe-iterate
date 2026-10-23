@@ -1,5 +1,7 @@
 # BI-01 V2：叙事业务问题驱动的真实行情观察方法
 
+> **历史参考资料（非现行执行合同）**：本文件原属于 V2 S1–S3 方法；当前仅按具体特征需要参考其中的业务知识。旧固定数据、阶段目标、操作方式及 GO/Gate 不能直接适用于 BI-01-FO-01；现行任务以已采用的 `professional/feature_observation/` 与 FO-01 Binding 为准。
+
 ## 1. 方法定位：不替实际执行预设场景分类
 
 **这份方法不定义固定的 A/B/C 场景类别、用例清单、优质阈值、强弱计算公式或样本配额。** 要观察什么类型的场景，是专业 Agent 在真实阅读 U2/U3 人读 Narrative、Use Case、Owner Decision 并初步查看基础行情后，解释性地决定和必要时修订的。既不能只挑事后强者，也不能让初始化、Pending、缺项、工程测试或某个单字段反例替代中心目标。
@@ -17,7 +19,7 @@
 
 ## 3. 先观察只有基础行情/转折的图，独立发现位置
 
-优先看固定 rb/i/hc K 线、small Zig、mid 贴近转折的 actual/confirm/known、原 Segment/Episode 等在 [05](05_BI01_FIXED_INPUT_DATA.md) 有来源的事实，使用已有 aidata 的基础可见图和同源结构化数据；Owner 实际看图，AI 仍不视觉看像素，不能声称 Pro 亲眼见到了图。基础图本身可用于理解转折与运动，**先不以 U2 的现成 raw 集合或 U3 数值决定哪些行情值得观察**。
+优先看固定 rb/i/hc K 线、small Zig、mid 贴近转折的 actual/confirm/known、原 Segment/Episode 等在 [05](https://github.com/daowei2026/observe-iterate/blob/c7971cc616e09db47681abc868e77acdc272f84a/professional/v2/05_BI01_FIXED_INPUT_DATA.md) 有来源的事实，使用已有 aidata 的基础可见图和同源结构化数据；Owner 实际看图，AI 仍不视觉看像素，不能声称 Pro 亲眼见到了图。基础图本身可用于理解转折与运动，**先不以 U2 的现成 raw 集合或 U3 数值决定哪些行情值得观察**。
 
 专业 Agent 自行从真实市场过程提出候选观察位置与研究理由：谁在何时出现相近转折、是否沿共同方向运动、是否值得比较、成员之间在什么已知范围表现强弱差异、有哪些基础事实使“机会”或“强弱”仍模糊。不得把“同actual”“正进展”“单一效率高”直接等同于有效机会或较强品种。基于未来路径得到的候选须注明是**回顾性发现**，且不能用这些发现反证“当时已预知”。
 
