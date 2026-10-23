@@ -2,14 +2,14 @@
   "schema": "workmap-intake/v1",
   "intakes": {
     "bi01": {
-      "snapshot": "3c90ba966685aa7d3064359b1ae7c4baa586241ac76faa72cb8b8f306130d9af",
+      "snapshot": "03f9b3d07a0bfd6ecc8b8a1dbe8137ea231e2fdaa2e843370a9f1ac62edccc84",
       "manager": {
         "role": "management",
         "context": "chatgpt:细节叙事生成_金标:BI01-FO01-管理"
       },
       "decision_report": {
-        "path": "runs/BI-01-FO-01/reviews/management-R0013/FULL_RESPONSE.md",
-        "blob": "3bf0229b28d57b9e855e87eb6612a8792b7db8a2"
+        "path": "runs/BI-01-FO-01/reviews/management-R0016/FULL_RESPONSE.md",
+        "blob": "62db37ce7807817848e465b10f43d31d5daa829f"
       },
       "reader_check": {
         "status": "RECORDED",
@@ -23,10 +23,10 @@
         "input_snapshot": "76cc432bb46ec54c5bc2539e6ecf6d504a3b3cfba0e3e32bacd550bb11719c14"
       },
       "effort": {
-        "known_pro_turns": 12,
-        "effective_professional_returns": 4,
+        "known_pro_turns": 14,
+        "effective_professional_returns": 5,
         "effective_professional_origin": "2026-10-22T04:20:18.644Z",
-        "note": "R1—R11及R13共12次真实Pro角色调用，旧R12未发送不计；专业有效回交R4/R7/R9/R11累计4，原起点与间隔2保持。R13#effort实际复看累计4段，真实后继后消费；下一累计6，不以新任务/SHA重置。"
+        "note": "R1—R11/R13/R14/R16共14次真实Pro角色调用，R12/R15未发不计；专业R4/R7/R9/R11/R14累计5，原起点/间隔2保持，下一累计6。Worker/Codex/Git不计Pro；R16处理正常技术成果Intake，不重置投入。"
       },
       "scope_dispositions": {},
       "validation_claims": [],
@@ -35,9 +35,9 @@
         "task_id": "BI01-FO-01-N-OBSERVATION-01",
         "task_path": "runs/BI-01-FO-01/01_当前任务.md",
         "task_blob": "0dde82c1027e5b788ce2894f699fde51f3307d40",
-        "kind": "EXISTING_AUTHORIZED_REPAIR",
+        "kind": "ROUTINE_RESULT",
         "requires_reader_check": false,
-        "reader_reason": "本次为EXISTING_AUTHORIZED_REPAIR、requires_reader_check=false：直接落实Owner已经认可的专业规范，仍是同一N/同一完整四项任务，没有另造业务设计、算法、阶段或公共写权；本管理已亲核关键实物和旧授权冲突。此分类仅适用于当前定向任务修订，不是对未运行Notebook/新平台的认证，亦不免除后来真正重要设计的必要独立核查。原Reader仍仅覆盖89aacaa冻结地图，不能写成读过当前新任务。",
+        "reader_reason": "**本次classification=ROUTINE_RESULT，requires_reader_check=false。**理由：同一已理解的具体N任务、方法、角色权限和工作2→管理认可→工作3→管理认可→工作4关系保持；新增的是R14已签单的现场结果及其后继消费安排。本文没有设计新的业务算法或放行新下游，地图只更新真实进度/材料资格/后继。原Reader只保留89aacaa冻结输入的可读性资格，不造读过当前版或新设计独立通过的记录。",
         "method_paths": [
           "professional/feature_observation/00_PURPOSE_AND_FOUR_WORKS.md",
           "professional/feature_observation/01_OUTPUT_BASE_FORMAT.md",
