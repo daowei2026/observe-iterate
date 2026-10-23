@@ -76,7 +76,7 @@ routes每项含recipient_role、recipient_ref、instructions_ref。模板可复�
 
 trigger保留 `trigger_id, kind, condition_ref, signal_key, route, blocking, effort_limit`，增加 `obligation_id, cycle_id, rearm_ref`；v2的EFFORT可选`repeat=ONCE|WHILE_WORK_ACTIVE`，缺省为ONCE，RESULT/CHANGE只能ONCE。condition_ref是有权Pro写清的真实条件；route指准确管理接收者及M题、完整目标和本次专业结果。blocking只限制具名受影响工作。旧记录没有repeat时继续按一次性解释，不静默改历史。
 
-- RESULT：具名范围的实际形成/接收结果，专业者判定并交证据，不用commit数或小测试替代。
+- RESULT：具名范围的实际形成/接收结果，专业者判定并交证据，不用commit数或小测试替代。BI-01涉及依赖性交接时，须把上游成果送管理 Pro 真实认可并签发下游；专业 RESULT=SATISFIED、普通CONTINUE或技术工单都不是管理放行。使用已有触发与准确引用，不新增新返回类型。
 - CHANGE：Owner/方法/业务前提/反馈的具体变化；专业者判性质，主控转交原文。直接Owner纠正不等待Builder批准。
 - EFFORT：effort_limit含unit（EFFECTIVE_CALLS/ELAPSED_HOURS）、正limit、count_from_ref。计数基于实际专业/必要管理/审查结果；重复回执和无回答不冒充有效进展。时间按原起点及真实记录，不假填。复看条件不强制通过、缩范围或全线停工。
 
@@ -98,7 +98,7 @@ focus_results每项有question_id、completed_ref、remaining_ref、affected_ref
 
 **持续约束**是完整scope、question义务、mode/权限、完成条件、方法锁、预算和接收/触发关系；只由有权修订的正式绑定改变。**最新重点**在原约束内由承办者交清，不要求每轮管理重签。
 
-`continuation_ref`是本轮唯一的实际续作/交接正文。ROLE_RETURN.handoff.instructions_ref必须解析到它；正常CONTINUE时professional.continuation_ref也同指。原binding.focus_ref仅表示初始重点，routes.same_work是固定消息骨架，不得覆盖本轮已授权的最新重点。主控拼装原骨架＋最新同一续作正文＋既有完整范围/源位置，不概括改义。
+`continuation_ref`是本轮唯一的实际续作/交接正文。对于BI-01已明确依赖上游接收的下游工作，continuation本身不产生管理认可或新的派发权。ROLE_RETURN.handoff.instructions_ref必须解析到它；正常CONTINUE时professional.continuation_ref也同指。原binding.focus_ref仅表示初始重点，routes.same_work是固定消息骨架，不得覆盖本轮已授权的最新重点。主控拼装原骨架＋最新同一续作正文＋既有完整范围/源位置，不概括改义。
 
 承办者交自己实际已成、具体未完和合法续作；管理接收、全局预算、全局状态与新范围签发不转给专业者。续作不能缩完整任务；当前任务被有权新采用替代时，旧续作只作历史，不能覆盖新任务。
 
@@ -123,7 +123,7 @@ focus_results每项有question_id、completed_ref、remaining_ref、affected_ref
 2. 解析恰好一个ROLE_RETURN，再取得question_work_ref、RETURN及其确切输入。核schema、职责、题目定义、mode和引用；按§1.4核最新重点及两份回交同义。
 3. 缺结构/定位/指令一致性按原return_repair定向补。缺实质分析继续原专业/管理工作；同一机械补交一次仍失败交decide窄处理，不无限重试或全面重审。BOOTSTRAP缺项返回原提供/承办者，不让Owner先填计划。
 4. 核Owner/方法/任务变化的实际影响。普通检查点不收回原授权，已知错误只限制依赖动作。旧gate冲突报告，不静默跳过或造PASS。
-5. 主动作按原ROLE_RETURN：IN_PROGRESS/CONTINUE续原工作；SUBMITTED交原接收；NEEDS_DECISION交有权判断；WAITING_INPUT具名等待；交付INCOMPLETE补交付。管理尚未完成不派依赖未定判断的新方向。
+5. 主动作按原ROLE_RETURN：IN_PROGRESS/CONTINUE仅续原仍合法且不受依赖阻断的工作；SUBMITTED交原接收；NEEDS_DECISION交有权判断；WAITING_INPUT具名等待；交付INCOMPLETE补交付。BI-01工作2/3被下游依赖时，必须存在上游合格交付及管理Pro对确切范围的认可和签发，不能由主控解读RETURN或自报技术PASS代行放行；管理尚未完成不派依赖未定判断的新方向。
 6. 独立核全部trigger和稳定责任记录，无论主动作CONTINUE/SUBMIT/WAIT。RESULT/CHANGE消费专业原判，EFFORT核实际记录。到期管理、非阻塞专业续作和已签独立接收分别保留；冲突/UNKNOWN不默认未触发。工作ACTIVE但所有一次性复看都已结算、又没有持续复看或等价管理／交接时，返回“持续管理安排缺失”，交原管理者补关系，不由主控挑新数值。
 7. 按原任务/固定操作文字＋最新一致的续作正文＋准确原文入口生成消息。管理输入保留完整目标与重要工作位置。主控不润色业务，不自行增加完成压力；必须原样传递Owner已明确的完整推进目标及禁止局部停点要求，不将其改成必须虚报一轮完成。
 8. 按稳定责任键记录PENDING/IN_FLIGHT/RETURNED/CONSUMED/SUPERSEDED。准备不等于发送，收到不等于消费。已有循环可顺序投递不同聊天，不宣称后台并行。
