@@ -1,0 +1,12 @@
+open_notebook
+restart_kernel_run_all_clicked
+Traceback (most recent call last):
+  File "/dwdhome/fy/observe-iterate-bi01-fo-01/runs/BI-01-FO-01/artifacts/worker-BI01-FO01-N-UPLOT-NOTEBOOK-05/scripts/frontend_run.py", line 42, in <module>
+    nb=json.loads((OUT/'N_observation_Worker05.ipynb').read_text())
+  File "/m3c3/Linux/apps/anaconda3/lib/python3.10/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/m3c3/Linux/apps/anaconda3/lib/python3.10/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/m3c3/Linux/apps/anaconda3/lib/python3.10/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
