@@ -235,7 +235,7 @@ class DispatchTests(unittest.TestCase):
             m.github_reference_message(self.repo, p, self.loc("archived-message.md", "L1-L2", published))
 
     def test_standalone_github_report_role_and_question_returns(self):
-        self.write("report.md", '<a id="continuation"></a>同一有权任务继续。\n')
+        self.write("report.md", 'prior-real-turn\n<a id="continuation"></a>同一有权任务继续。\n')
         report_sha = self.commit("full professional report")
         qret = {"schema": "question-work/v2", "kind": "RETURN", "work_id": "w",
                 "invocation_id": "prior-real-turn", "binding_ref": self.event["binding_ref"],

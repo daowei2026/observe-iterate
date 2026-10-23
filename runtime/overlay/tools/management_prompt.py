@@ -224,6 +224,15 @@ def load_return_sources(repo: Path, repository: str, question_ref: dict,
         fail("LATEST_RESPONSE_FULL_TEXT_REQUIRED")
     if not response_body.strip(): fail("LATEST_RESPONSE_EMPTY")
     question = find_return(raw)
+    try: standalone = loads(raw)
+    except (ValueError, TypeError): standalone = None
+    if isinstance(standalone, dict) and standalone.get("kind") == "RETURN":
+        if question_ref.get("selector") not in {"full", "全文"}:
+            fail("GITHUB_QUESTION_RETURN_FULL_TEXT_REQUIRED")
+        if question_meta["blob"] == response_meta["blob"]:
+            fail("GITHUB_FULL_REPORT_REQUIRED")
+        if str(question.get("invocation_id", "")) not in response_body:
+            fail("GITHUB_REPORT_INVOCATION_MISSING")
     role_meta = None
     if question_meta["blob"] != response_meta["blob"]:
         if role_ref is None: fail("GITHUB_ROLE_RETURN_REQUIRED")
