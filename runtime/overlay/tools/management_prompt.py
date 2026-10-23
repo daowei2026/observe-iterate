@@ -199,6 +199,12 @@ def render_source_reads(repo: Path, entries: Any, carrier: dict, repository: str
 
 
 def find_return(body: str) -> dict:
+    """Accept one standalone GitHub JSON question-work RETURN or one legacy fenced RETURN."""
+    try: standalone = loads(body)
+    except (ValueError, TypeError): standalone = None
+    if (isinstance(standalone, dict) and standalone.get("kind") == "RETURN"
+            and str(standalone.get("schema", "")).startswith("question-work/")):
+        return standalone
     found = []
     for raw in re.findall(r"```(?:json)?\s*\n(.*?)\n```", body, re.S):
         try: v = loads(raw)
@@ -207,6 +213,41 @@ def find_return(body: str) -> dict:
             found.append(v)
     if len(found) != 1: fail("ONE_QUESTION_WORK_RETURN_REQUIRED")
     return found[0]
+
+
+def load_return_sources(repo: Path, repository: str, question_ref: dict,
+                        response_ref: dict, role_ref: dict | None = None) -> tuple:
+    """Read the exact report and Returns; no new authority or business approval."""
+    raw, question_meta = source(repo, question_ref, repository)
+    response_body, response_meta = source(repo, response_ref, repository)
+    if response_ref.get("selector") not in {"full", "全文"}:
+        fail("LATEST_RESPONSE_FULL_TEXT_REQUIRED")
+    if not response_body.strip(): fail("LATEST_RESPONSE_EMPTY")
+    question = find_return(raw)
+    role_meta = None
+    if question_meta["blob"] != response_meta["blob"]:
+        if role_ref is None: fail("GITHUB_ROLE_RETURN_REQUIRED")
+        role_body, role_meta = source(repo, role_ref, repository)
+        if role_ref.get("selector") not in {"full", "全文"}:
+            fail("GITHUB_ROLE_RETURN_FULL_TEXT_REQUIRED")
+        try: role = loads(role_body)
+        except (ValueError, TypeError) as exc:
+            raise ValueError("GITHUB_ROLE_RETURN_INVALID_JSON") from exc
+        if (not isinstance(role, dict) or role.get("schema") != "longrun-return/v1"
+                or role.get("work_id") != question.get("work_id")
+                or role.get("invocation_id") != question.get("invocation_id")
+                or not isinstance(role.get("assignment_token"), str)
+                or not role["assignment_token"].strip()):
+            fail("GITHUB_ROLE_QUESTION_IDENTITY_MISMATCH")
+        if role.get("question_work_ref") not in {cite(question_meta), "github:" + cite(question_meta)}:
+            fail("GITHUB_QUESTION_RETURN_REFERENCE_MISMATCH")
+        # The final Role Return commit must still contain the exact Q-Return and report.
+        for meta in (question_meta, response_meta):
+            _, current_blob = read_git(repo, role_meta["commit"], meta["path"])
+            if current_blob != meta["blob"]: fail("GITHUB_RETURN_SOURCES_DIVERGED")
+    elif role_ref is not None:
+        fail("LEGACY_INLINE_RETURN_MUST_NOT_REQUIRE_SEPARATE_ROLE")
+    return question, question_meta, response_meta, role_meta
 
 
 def dispatch_identity(body: str) -> dict:
@@ -315,15 +356,14 @@ def prepare_bootstrap(repo: Path, policy_ref: str, config_path: str, event: dict
         _, meta = source(repo, event[key], repository); refs.append((label, meta))
     latest_return, latest_response = event.get("latest_return_ref"), event.get("latest_response_ref")
     if bool(latest_return) != bool(latest_response): fail("LATEST_RETURN_AND_RESPONSE_REQUIRED_TOGETHER")
+    if not latest_return and event.get("latest_role_return_ref"): fail("ORPHAN_ROLE_RETURN_REF")
     if latest_return:
-        raw, meta = source(repo, latest_return, repository)
-        _, response_meta = source(repo, latest_response, repository)
-        if latest_response.get("selector") not in {"full", "全文"}: fail("LATEST_RESPONSE_FULL_TEXT_REQUIRED")
-        if meta["blob"] != response_meta["blob"]: fail("LATEST_RETURN_RESPONSE_BLOB_MISMATCH")
-        ret = find_return(raw)
+        ret, meta, response_meta, role_meta = load_return_sources(
+            repo, repository, latest_return, latest_response, event.get("latest_role_return_ref"))
         if ret.get("work_id") != b["work_id"]: fail("RETURN_WORK_MISMATCH")
         if ret.get("binding_ref") != event["binding_ref"]: fail("RETURN_BINDING_MISMATCH")
         refs.append(("最新完整管理回答", response_meta))
+        if role_meta: refs.extend([("最新结构化问题回交", meta), ("最新角色回交", role_meta)])
         _, continuation = source(repo, resolve(ret["continuation_ref"], meta), repository)
         refs.append(("同一管理事项最新接续", continuation))
     evidence = event.get("evidence_refs", [])
@@ -355,7 +395,7 @@ def prepare_dispatch(repo: str | Path, policy_ref: str, config_path: str, event:
     repo = Path(repo).resolve()
     obj(event, {"work_id", "invocation_id", "assignment_token", "binding_ref", "route", "send_state",
                 "dispatch_kind"},
-        {"current_task_ref", "task_adoption_ref", "latest_return_ref", "latest_response_ref",
+        {"current_task_ref", "task_adoption_ref", "latest_return_ref", "latest_response_ref", "latest_role_return_ref",
          "repair_context", "evidence_refs", "observed_at", "effective_calls", "elapsed_hours"})
     for name in ("work_id", "invocation_id", "assignment_token"): text(event[name])
     if event["send_state"] not in {"NOT_SENT", "CONFIRMED_SEND_FAILED"}: fail("NOT_SAFE_TO_SEND")
@@ -449,16 +489,14 @@ def prepare_dispatch(repo: str | Path, policy_ref: str, config_path: str, event:
     latest_return = event.get("latest_return_ref")
     latest_response = event.get("latest_response_ref")
     if bool(latest_return) != bool(latest_response): fail("LATEST_RETURN_AND_RESPONSE_REQUIRED_TOGETHER")
+    if not latest_return and event.get("latest_role_return_ref"): fail("ORPHAN_ROLE_RETURN_REF")
     if latest_return:
-        raw, return_meta = source(repo, latest_return, repository)
-        response_raw, response_meta = source(repo, latest_response, repository)
-        if latest_response.get("selector") not in {"full", "全文"}: fail("LATEST_RESPONSE_FULL_TEXT_REQUIRED")
-        if return_meta["blob"] != response_meta["blob"]: fail("LATEST_RETURN_RESPONSE_BLOB_MISMATCH")
-        r = find_return(raw)
+        r, return_meta, response_meta, role_meta = load_return_sources(
+            repo, repository, latest_return, latest_response, event.get("latest_role_return_ref"))
         if r.get("work_id") != b["work_id"]: fail("RETURN_WORK_MISMATCH")
         if r.get("binding_ref") != event["binding_ref"]: fail("RETURN_BINDING_MISMATCH")
-        if not response_raw.strip(): fail("LATEST_RESPONSE_EMPTY")
         refs.append(("最新完整回答", response_meta))
+        if role_meta: refs.extend([("最新结构化问题回交", return_meta), ("最新角色回交", role_meta)])
         if route_key == "same_work":
             cont_body, cont = source(repo, resolve(r["continuation_ref"], return_meta), repository)
             label = "原任务内最新接续"
@@ -543,6 +581,28 @@ def verify(prepared: dict, payload: bytes) -> None:
     if payload != prepared["message"].encode("utf-8"): fail("MESSAGE_CHANGED")
 
 
+def github_reference_message(repo: str | Path, prepared: dict, loc: dict) -> dict:
+    """Retain the complete assignment in Git; relay only an immutable locator."""
+    if loc.get("selector") not in {"full", "全文"}: fail("GITHUB_MESSAGE_FULL_TEXT_REQUIRED")
+    repository = prepared["sources"][0]["repo"]
+    body, meta = source(Path(repo), loc, repository)
+    if body.encode("utf-8") != prepared["message"].encode("utf-8"):
+        fail("GITHUB_MESSAGE_DIFFERS_FROM_PREPARED_ASSIGNMENT")
+    identity = prepared["message"].split("\n\n", 1)[0]
+    message = (identity + "\n\n本轮完整目的、当前任务及适用要求均在下列已提交原文中。"
+               "先全文读取这份任务及其要求的材料，再按原委派继续；本条不缩小任务。"
+               "完整业务成果、ROLE_RETURN和QUESTION_WORK_RETURN分别提交GitHub；"
+               "成功后手机只回复准确commit及交付位置，不重复贴报告或JSON。"
+               "GitHub不可写时按原备用ZIP运输规则报告实际情况。\n\n"
+               "完整派发原文：`" + cite(meta) + "`\n")
+    out = dict(prepared, message=message, message_transport="github_reference",
+               inline_message_sha256=prepared["message_sha256"], github_message_ref=meta)
+    out["sources"] = prepared["sources"] + [meta]
+    out["message_sha256"] = digest(message.encode("utf-8"))
+    out["delivery_key_sha256"] = digest((prepared["recipient"] + "\0" + message).encode("utf-8"))
+    return out
+
+
 def verify_recipient(prepared: dict, recipient: str) -> None:
     if text(recipient) != prepared["recipient"]: fail("RECIPIENT_CHANGED")
 
@@ -570,12 +630,18 @@ def main() -> int:
     p.add_argument("command", choices=("prepare", "verify"))
     for name in ("repo", "ref", "config", "dispatch"): p.add_argument("--" + name, required=True)
     p.add_argument("--message-output"); p.add_argument("--output"); p.add_argument("--payload"); p.add_argument("--recipient")
+    p.add_argument("--github-message-ref", help="Exact published full assignment commit/path/full JSON locator")
+    p.add_argument("--direct-body-authorized", action="store_true", help="Explicit Owner-authorized full-text delivery")
     a = p.parse_args()
     try:
         event = loads(Path(a.dispatch).read_text(encoding="utf-8"))
         result = prepare_dispatch(a.repo, a.ref, a.config, event)
+        if a.github_message_ref and a.direct_body_authorized: fail("CONFLICTING_TRANSPORT_MODES")
+        if a.github_message_ref:
+            result = github_reference_message(a.repo, result, loads(Path(a.github_message_ref).read_text(encoding="utf-8")))
         if a.command == "verify":
             if not a.payload or not a.recipient or a.message_output: fail("VERIFY_PAYLOAD_AND_RECIPIENT_ONLY")
+            if not a.github_message_ref and not a.direct_body_authorized: fail("GITHUB_SHORT_RELAY_REQUIRED")
             verify(result, Path(a.payload).read_bytes()); verify_recipient(result, a.recipient); result["ok"] = True
         elif a.payload: fail("USE_VERIFY")
         outs = [Path(x).resolve() for x in (a.output, a.message_output) if x]

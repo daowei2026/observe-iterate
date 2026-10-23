@@ -214,6 +214,60 @@ class DispatchTests(unittest.TestCase):
         self.assertIn("最新完整回答",p["message"]);self.assertIn("原任务内最新接续",p["message"])
         self.assertNotIn("最新完整回交：`test/repo@"+ref+":response.md::#question-work-return`",p["message"])
 
+    def test_github_relay_preserves_full_assignment_without_inline_duplication(self):
+        p = self.make()
+        self.write("archived-message.md", p["message"])
+        published = self.commit("complete full task on GitHub")
+        loc = self.loc("archived-message.md", ref=published)
+        out = m.github_reference_message(self.repo, p, loc)
+        self.assertEqual(out["message_transport"], "github_reference")
+        self.assertEqual(out["message"].split("\n\n", 1)[0], p["message"].split("\n\n", 1)[0])
+        self.assertIn(published + ":archived-message.md::full", out["message"])
+        self.assertNotIn("当前完整工程任务", out["message"])
+        self.assertNotIn("## Owner完整目的", out["message"])
+        self.assertEqual(out["inline_message_sha256"], p["message_sha256"])
+        m.verify(out, out["message"].encode("utf-8"))
+        self.write("archived-message.md", p["message"] + "mutated")
+        changed = self.commit("changed archive")
+        with self.assertRaisesRegex(ValueError, "DIFFERS_FROM_PREPARED"):
+            m.github_reference_message(self.repo, p, self.loc("archived-message.md", ref=changed))
+        with self.assertRaisesRegex(ValueError, "FULL_TEXT_REQUIRED"):
+            m.github_reference_message(self.repo, p, self.loc("archived-message.md", "L1-L2", published))
+
+    def test_standalone_github_report_role_and_question_returns(self):
+        self.write("report.md", '<a id="continuation"></a>同一有权任务继续。\n')
+        report_sha = self.commit("full professional report")
+        qret = {"schema": "question-work/v2", "kind": "RETURN", "work_id": "w",
+                "invocation_id": "prior-real-turn", "binding_ref": self.event["binding_ref"],
+                "continuation_ref": self.loc("report.md", "#continuation", report_sha)}
+        self.write("question.json", json.dumps(qret))
+        question_sha = self.commit("independent question return")
+        role = {"schema": "longrun-return/v1", "work_id": "w",
+                "invocation_id": "prior-real-turn", "assignment_token": "prior-real-token",
+                "question_work_ref": "github:test/repo@" + question_sha + ":question.json::full"}
+        self.write("role.json", json.dumps(role))
+        role_sha = self.commit("independent role return")
+        e = copy.deepcopy(self.event); e["route"] = "same_work"
+        e["latest_return_ref"] = self.loc("question.json", ref=question_sha)
+        e["latest_response_ref"] = self.loc("report.md", ref=report_sha)
+        with self.assertRaisesRegex(ValueError, "GITHUB_ROLE_RETURN_REQUIRED"):
+            self.make(e)
+        e["latest_role_return_ref"] = self.loc("role.json", ref=role_sha)
+        p = self.make(e)
+        self.assertIn("同一有权任务继续", p["message"])
+        self.assertIn("最新结构化问题回交", p["message"])
+        self.assertIn("最新角色回交", p["message"])
+        wrong = dict(role, question_work_ref="github:test/repo@" + report_sha + ":question.json::full")
+        self.write("role.json", json.dumps(wrong))
+        bad_sha = self.commit("wrong question reference")
+        e["latest_role_return_ref"] = self.loc("role.json", ref=bad_sha)
+        with self.assertRaisesRegex(ValueError, "GITHUB_QUESTION_RETURN_REFERENCE_MISMATCH"):
+            self.make(e)
+        e.pop("latest_return_ref")
+        e.pop("latest_response_ref")
+        with self.assertRaisesRegex(ValueError, "ORPHAN_ROLE_RETURN_REF"):
+            self.make(e)
+
     def test_binding_mode_mismatch_rejected(self):
         self.binding["professional_mode"]="IMPLEMENTATION"
         self.write("binding.json",json.dumps(self.binding));bad=self.commit("bad mode")
@@ -289,8 +343,22 @@ class DispatchTests(unittest.TestCase):
         r=subprocess.run([sys.executable,str(TOOL),"prepare",*args,"--message-output",str(payload)],capture_output=True,text=True)
         self.assertEqual(r.returncode,0,r.stdout+r.stderr)
         r=subprocess.run([sys.executable,str(TOOL),"verify",*args,"--payload",str(payload),"--recipient","management-chat"],capture_output=True,text=True)
+        self.assertEqual(r.returncode,2)
+        self.assertIn("GITHUB_SHORT_RELAY_REQUIRED",r.stdout)
+        r=subprocess.run([sys.executable,str(TOOL),"verify",*args,"--direct-body-authorized","--payload",str(payload),"--recipient","management-chat"],capture_output=True,text=True)
         self.assertEqual(r.returncode,0,r.stdout+r.stderr)
-        r=subprocess.run([sys.executable,str(TOOL),"verify",*args,"--payload",str(payload),"--recipient","wrong-chat"],capture_output=True,text=True)
+        self.write("archived.md",payload.read_text(encoding="utf-8"))
+        archived=self.commit("archive assignment for short relay")
+        locpath=self.repo/"message-locator.json"
+        locpath.write_text(json.dumps(self.loc("archived.md",ref=archived)))
+        short=self.repo/"short.md"
+        args=["--repo",str(self.repo),"--ref",self.ref,"--config","config.json","--dispatch",str(e)]
+        r=subprocess.run([sys.executable,str(TOOL),"prepare",*args,"--github-message-ref",str(locpath),"--message-output",str(short)],capture_output=True,text=True)
+        self.assertEqual(r.returncode,0,r.stdout+r.stderr)
+        self.assertLess(len(short.read_bytes()),len(payload.read_bytes()))
+        r=subprocess.run([sys.executable,str(TOOL),"verify",*args,"--github-message-ref",str(locpath),"--payload",str(short),"--recipient","management-chat"],capture_output=True,text=True)
+        self.assertEqual(r.returncode,0,r.stdout+r.stderr)
+        r=subprocess.run([sys.executable,str(TOOL),"verify",*args,"--github-message-ref",str(locpath),"--payload",str(short),"--recipient","wrong-chat"],capture_output=True,text=True)
         self.assertEqual(r.returncode,2)
 
     def test_legacy_free_text_cannot_generate_new_dispatch(self):

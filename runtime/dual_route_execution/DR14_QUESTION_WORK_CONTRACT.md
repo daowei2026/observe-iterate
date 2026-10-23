@@ -38,7 +38,7 @@ Git方法、旧实物和任务用 `repo`、40位 `commit`、仓库根 `path`、`
 
 ### 1.2 正式绑定的字段合同
 
-`QUESTION_WORK_BINDING`置于原签发任务正文（schema=`question-work/v2`, kind=`BINDING`）；`QUESTION_WORK_RETURN`置于本轮完整回答。无需新用例目录、全局注册或第二任务正文。以下定位可复用现有真实正文，不能用ID或空泛句代替。
+ `QUESTION_WORK_BINDING`置于原签发任务正文（schema=`question-work/v2`, kind=`BINDING`）；`QUESTION_WORK_RETURN`置于本轮有权GitHub完整回交，可为独立的有效JSON，并由`ROLE_RETURN.question_work_ref`准确引用。GitHub经远端核验齐全时手机只提供commit及交付定位，旧内嵌Markdown和ZIP备用方式继续支持。无需新用例目录、全局注册或第二任务正文。以下定位可复用现有真实正文，不能用ID或空泛句代替。
 
 |字段|必须表达的内容|
 |---|---|
