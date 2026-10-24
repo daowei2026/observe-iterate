@@ -354,19 +354,106 @@ def check(repo: Path | str, ref: str, binding_path: str, scope: str, *,
             'limits':'不证明业务正确、审查实际独立、远端已同步或本地调度已部署；输入记录真实性由执行者与审查承担。'}
 
 
+def _order_field(body: str, name: str) -> str:
+    """Read the existing Worker order/report header, including semicolon-separated fields."""
+    match=re.search(r'(?m)(?:^|；)\s*'+re.escape(name)+r':\s*([^\r\n；]+)',body)
+    return match.group(1).strip() if match else ''
+
+
+def worker_result(repo: Path | str, ref: str, binding_path: str, scope: str, *,
+                  base_ref: str, order_path: str, report_path: str) -> dict:
+    """Route an actual Worker result to its issuing Pro, without adopting new results."""
+    v=GitView(repo,ref); old=GitView(repo,base_ref)
+    b,s=binding_for(v,binding_path,scope)
+    errors=[]
+    try: v.run('merge-base','--is-ancestor',base_ref,ref)
+    except ValueError: errors.append('BASE_NOT_ANCESTOR')
+    if b['schema']!='workmap-binding/v2':
+        errors.append('WORKER_RETURN_REQUIRES_V2')
+    if not check(repo,base_ref,binding_path,scope,base_ref=base_ref)['ok']:
+        errors.append('ACCEPTED_BASE_INTAKE_REQUIRED')
+    earlier=snapshot(repo,base_ref,binding_path,scope)
+    current=snapshot(repo,ref,binding_path,scope)
+    if (v.oid(binding_path)!=old.oid(binding_path)
+            or earlier.get('reader_fingerprint')!=current.get('reader_fingerprint')):
+        errors.append('PROTECTED_INPUT_CHANGED')
+    if v.oid(b['receipt_path'])!=old.oid(b['receipt_path']):
+        errors.append('MANAGEMENT_INTAKE_CHANGED')
+
+    order_path=safe_path(order_path); report_path=safe_path(report_path)
+    run_root=s['task'].rsplit('/',1)[0]
+    order=v.text(order_path); report=v.text(report_path)
+    order_id=_order_field(order,'order_id')
+    issuer_role=_order_field(order,'issuer_role')
+    issuer=_order_field(order,'issuer_ref')
+    issuer_invocation=_order_field(order,'issuer_invocation_id')
+    token=_order_field(order,'issuer_assignment_token')
+    recipient=_order_field(order,'return_to')
+    round_match=re.search(r'-R(\d{4})-',issuer_invocation)
+    round_id='R'+round_match.group(1) if round_match else ''
+    issuer_dir=(run_root+'/artifacts/professional-' if issuer_role=='professional'
+                else run_root+'/reviews/management-')+round_id
+    if (issuer_role not in ('professional','management')
+            or not round_id or order_path!=issuer_dir+'/WORKER_ORDER.md'
+            or not issuer or not token or recipient!=issuer or not re.fullmatch(r'[A-Za-z0-9_-]+',order_id)):
+        errors.append('WORKER_ORDER_AUTHORITY_INVALID')
+    if report_path!=run_root+'/artifacts/worker-'+order_id+'/FULL_RESPONSE.md':
+        errors.append('WORKER_RESULT_PATH_MISMATCH')
+    for name,value in (('order_id',order_id),('work_id',_order_field(order,'work_id')),
+                       ('run_id',_order_field(order,'run_id')),
+                       ('return_to',recipient),('issuer_invocation_id',issuer_invocation)):
+        if not value or _order_field(report,name)!=value:
+            errors.append('WORKER_RESULT_IDENTITY_MISMATCH:'+name)
+    if old.exists(report_path) and old.oid(report_path)==v.oid(report_path):
+        errors.append('WORKER_RESULT_UNCHANGED')
+
+    if round_id:
+        try:
+            source=run_root+'/provenance/turns/'+round_id+'/'
+            invocation=v.obj(source+'INVOCATION.json')
+            sent=v.obj(source+'SEND_RECEIPT.json')
+            if (invocation.get('role')!=issuer_role or invocation.get('recipient_ref')!=issuer
+                    or invocation.get('invocation_id')!=issuer_invocation
+                    or invocation.get('assignment_token')!=token
+                    or invocation.get('work_id')!=_order_field(order,'work_id')
+                    or invocation.get('run_id')!=_order_field(order,'run_id')
+                    or sent.get('state')!='COMMITTED'
+                    or sent.get('invocation_id')!=issuer_invocation
+                    or sent.get('assignment_token')!=token
+                    or sent.get('recipient_ref')!=issuer):
+                errors.append('ISSUER_CALL_NOT_VERIFIED')
+        except ValueError:
+            errors.append('ISSUER_CALL_NOT_VERIFIED')
+    errors=sorted(set(errors))
+    return {'schema':'workmap-worker-result/v1','scope':scope,'exact_input_commit':ref,
+            'check_kind':'WORKER_RESULT_TO_ISSUER','ok':not errors,'errors':errors,
+            'recipient':issuer if not errors else None,'order_id':order_id,
+            'full_intake_current':current['fingerprint']==v.obj(b['receipt_path'])['intakes'][scope]['snapshot'],
+            'next_action':({'recipient':issuer,'instruction':'将本工单真实技术结果交原签发Pro消费；需要管理判断由该Pro按有效Binding提出。'}
+                           if not errors else None),
+            'limits':'仅验证原工单技术结果的交接身份；不更新Intake、不认可专业成果、不批准下游派发。'}
+
+
 def main() -> int:
     p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument('command',choices=['snapshot','check','dispatch'])
+    p.add_argument('command',choices=['snapshot','check','dispatch','worker-result'])
     p.add_argument('--repo',required=True); p.add_argument('--ref',required=True)
     p.add_argument('--binding',required=True); p.add_argument('--scope',required=True)
     p.add_argument('--base-ref'); p.add_argument('--actor',choices=['management_review','executor'],default='management_review')
     p.add_argument('--delivery',help='local JSON observation from the actual sending endpoint, never guessed')
+    p.add_argument('--order',help='exact issued WORKER_ORDER.md path for worker-result')
+    p.add_argument('--worker-report',help='exact Worker FULL_RESPONSE.md path for worker-result')
     p.add_argument('--output',help='write a machine result to this local file; does not edit Git')
     args=p.parse_args()
     try:
         if args.command!='snapshot' and not args.base_ref:
             raise ValueError('BASE_REF_REQUIRED: supply the previous accepted input, not a guessed current HEAD')
         if args.command=='snapshot': result=snapshot(args.repo,args.ref,args.binding,args.scope)
+        elif args.command=='worker-result':
+            if not args.order or not args.worker_report:
+                raise ValueError('WORKER_ORDER_AND_REPORT_REQUIRED')
+            result=worker_result(args.repo,args.ref,args.binding,args.scope,
+                                 base_ref=args.base_ref,order_path=args.order,report_path=args.worker_report)
         else:
             delivery=json.loads(Path(args.delivery).read_text(encoding='utf-8')) if args.delivery else None
             result=check(args.repo,args.ref,args.binding,args.scope,base_ref=args.base_ref,
@@ -377,7 +464,7 @@ def main() -> int:
         return 0 if result.get('ok',True) else 2
     except (ValueError,KeyError,TypeError,OSError) as e:
         sys.stdout.write(json.dumps({'ok':False,'error':str(e),'next_action':
-            '回管理端修正指定绑定或取得确切Git对象；不猜版本，不重跑业务。'},ensure_ascii=False)+'\n')
+            ('核对原工单、实际回交与有权签发来源；不自行改派管理。' if args.command=='worker-result' else '回管理端修正指定绑定或取得确切Git对象；不猜版本，不重跑业务。')},ensure_ascii=False)+'\n')
         return 2
 
 if __name__=='__main__': raise SystemExit(main())

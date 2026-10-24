@@ -127,6 +127,102 @@ class V2RegressionTests(unittest.TestCase):
         self.put_json('intake.json',self.receipts); self.commit()
         self.assertIn('PROFESSIONAL_METHOD_INPUT_REQUIRED',self.check(dispatch=True,delivery=self.delivery_v2())['errors'])
 
+
+    def worker_fixture(self, role='professional'):
+        self.enable_v2(); self.seal_v2()
+        base=self.git('rev-parse','HEAD')
+        order_id='SYNTHETIC-W05'
+        round_id='R0004'
+        who='chatgpt:synthetic:'+role
+        invocation_id='BI01-FO01-R0004-SYNTHETIC'
+        token='synthetic-assignment-token'
+        prefix='one/artifacts/professional-' if role=='professional' else 'one/reviews/management-'
+        order=prefix+round_id+'/WORKER_ORDER.md'
+        report='one/artifacts/worker-'+order_id+'/FULL_RESPONSE.md'
+        self.put(order,('\n'.join([
+            '# Synthetic issued Worker order', 'work_id: BI-01',
+            'run_id: ONE-01', 'order_id: '+order_id,
+            'issuer_role: '+role, 'issuer_ref: '+who,
+            'issuer_invocation_id: '+invocation_id,
+            'issuer_assignment_token: '+token, 'return_to: '+who,
+            ''])))
+        self.put(report,('\n'.join([
+            '# Synthetic Worker result', 'order_id: '+order_id,
+            'work_id: BI-01；run_id: ONE-01',
+            'issuer_invocation_id: '+invocation_id,
+            'return_to: '+who, 'Actual bounded technical findings.', ''])))
+        origin='one/provenance/turns/'+round_id+'/'
+        self.put_json(origin+'INVOCATION.json', {
+            'role':role,'recipient_ref':who,'invocation_id':invocation_id,
+            'assignment_token':token,'work_id':'BI-01','run_id':'ONE-01'})
+        self.put_json(origin+'SEND_RECEIPT.json', {
+            'state':'COMMITTED','recipient_ref':who,'invocation_id':invocation_id,
+            'assignment_token':token})
+        self.commit()
+        return base,order,report,who
+
+    def worker_check(self, base, order, report):
+        return self.mod.worker_result(self.repo,self.git('rev-parse','HEAD'),
+                                      'binding.json','one',base_ref=base,
+                                      order_path=order,report_path=report)
+
+    def test_worker_result_returns_to_issuing_professional_without_intake(self):
+        base,order,report,who=self.worker_fixture()
+        self.assertIn('INTAKE_STALE',self.check()['errors'])
+        outcome=self.worker_check(base,order,report)
+        self.assertTrue(outcome['ok'],outcome['errors'])
+        self.assertEqual(outcome['recipient'],who)
+        self.assertFalse(outcome['full_intake_current'])
+        self.assertIn('INTAKE_STALE',self.check(dispatch=True,delivery=self.delivery_v2())['errors'])
+
+    def test_manager_issued_worker_result_returns_to_manager(self):
+        base,order,report,who=self.worker_fixture(role='management')
+        outcome=self.worker_check(base,order,report)
+        self.assertTrue(outcome['ok'],outcome['errors'])
+        self.assertEqual(outcome['recipient'],who)
+
+    def test_worker_failure_is_still_returned_to_issuing_professional(self):
+        base,order,report,who=self.worker_fixture()
+        self.put(report,(self.repo/report).read_text()+'\nHTTP 500; platform incomplete.\n')
+        self.commit()
+        outcome=self.worker_check(base,order,report)
+        self.assertTrue(outcome['ok'],outcome['errors'])
+        self.assertEqual(outcome['recipient'],who)
+
+    def test_worker_result_wrong_order_or_recipient_fails(self):
+        base,order,report,_=self.worker_fixture()
+        self.put(report,(self.repo/report).read_text().replace(
+            'return_to: chatgpt:synthetic:professional',
+            'return_to: chatgpt:synthetic:management'))
+        self.commit()
+        self.assertIn('WORKER_RESULT_IDENTITY_MISMATCH:return_to',
+                      self.worker_check(base,order,report)['errors'])
+
+    def test_worker_return_does_not_bypass_owner_method_or_map_change(self):
+        base,order,report,_=self.worker_fixture()
+        for changed in ('owner.md','rules.md','one/map.md'):
+            with self.subTest(changed=changed):
+                previous=(self.repo/changed).read_text()
+                self.put(changed,previous+'\nNew condition.\n')
+                self.commit()
+                self.assertIn('PROTECTED_INPUT_CHANGED',
+                              self.worker_check(base,order,report)['errors'])
+                self.put(changed,previous)
+                self.commit()
+
+    def test_worker_return_requires_actual_sent_issuer_and_same_intake(self):
+        base,order,report,_=self.worker_fixture()
+        origin='one/provenance/turns/R0004/SEND_RECEIPT.json'
+        self.put_json(origin,{'state':'NOT_SENT'})
+        self.commit()
+        self.assertIn('ISSUER_CALL_NOT_VERIFIED',
+                      self.worker_check(base,order,report)['errors'])
+        self.receipts['intakes']['one']['effort']['known_pro_turns']=3
+        self.put_json('intake.json',self.receipts)
+        self.commit()
+        self.assertIn('MANAGEMENT_INTAKE_CHANGED',
+                      self.worker_check(base,order,report)['errors'])
+
     def test_v2_exclusion_cannot_hide_whole_business_root(self):
         self.enable_v2()
         self.binding['streams']['one']['reader_output_roots']=['one/artifacts']
