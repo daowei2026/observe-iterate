@@ -70,6 +70,8 @@ aidata 新独立分支 `fy/bi01-fo01-n-platform-board-r0022`，独立工作树 `
 
 相连普通错误已经处理：最初固定源不存在rb intervals.csv，改为只采用实际已供表，hc/i原intervals仍交；空surfaces不符合泛型合同，已撤除对仅正式切片输入的虚假plot_binding。原API01异常日志保留在ignored；早期API02错误的旧JSON被后次结果覆盖，现场准确错误已观察为 `plot_binding.surfaces 不能为空`，不能把当前成功JSON充作那次原件。数据库库自身INFO日志含连接配置，原始日志已隔离ignored，后续脚本增加日志屏蔽，不运输或提交该类内容。实际数据/API行为未因日志屏蔽改变。
 
+取证中Worker曾误将上述连接配置随上游日志带入本聊天工具输出；这是实际输出边界失误。已停止打印原日志，后续仅输出经限定/去敏的异常位置，GitHub运输内容已检查未包含该类凭据。本报告不复述其值，也未擅自改变共享认证配置。
+
 独立检查的初始探针还错误要求行情close_path的来源标签等于N exact；该失败原件在INITIAL_SOURCE_ROLE_PROBE保留。行情标签实际为 `same-bound U2MainlineKLineInput CalType.OnlyRead`，与原价来源角色相符；修正探针分别检查N exact/K与行情来源/无未来，未改图元或正式值。DAO回读的初始位置参数调用不符合其repo注入装饰器，准确TypeError保留；改用正常平台相同的 `node_id=` 调用，而非修改受保护DAO。
 
 实际入口可复现为：在已核环境以本目录scripts置于PYTHONPATH，先 `import bootstrap` 选择本单aidata工作树，然后runpy执行 `scripts/run_worker07.py`，传 `--run-root /dwdhome/fy/observe-iterate-bi01-fo-01/artifacts/bi01-worker07-runs --private-evidence /dwdhome/fy/cgpterm/artifacts/bi01-worker07-runtime --prefix BI01-FO01-W07-20261024T0028`。这是本次三API调用的参数；当前已有冻结run和节点，后继应优先沿同run/core复核，不盲目再全跑。scripts中的reference文件保留实际本机调用源，依赖其ignored现场目录，不把它们当作可脱离现场的一键部署器。
