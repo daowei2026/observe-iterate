@@ -28,7 +28,7 @@
 
 正常平台路径须实际核：`build_chart_run(run_brief_input)`建立定位节点/冻结run与范围；`build_big_world_chart_pages(run, run_brief_input=..., save=True)`注册现有Trier/CAE节点、取得`report_url`并实际打开核图层；`build_board_run({...原run_brief_input, "run_id": run.run_id}, reuse_core=True)`复用同定位取得`feature_slices/`、来源索引及`delivery/`。三者重在真实结果与同run衔接，不机械重跑三遍；board可创建/复用core，已有有效run可复用，按问题取层级/范围而非固定全导出。具体API和兼容情况须读所采用版本README/合同，不凭本文预言现场已成功。
 
-N展示或多表不兼容时核实际差异、必要最小衔接及写权，不能绕过标准入口后把standalone HTML、PNG、临时localhost或写了适配器称工作3完成。平台链接要真实打开且同位置正式数据身份可追溯，缺任一部分如实记未完。
+N展示、多表数据或接口不兼容时，先按`02_WORK_DETAILS.md`第5节判断问题性质、根因及合理修改位置；确认确需改动aidata时，再确定必要最小衔接及相应写权。不能绕过标准入口后把standalone HTML、PNG、临时localhost或写了适配器称工作3完成。平台链接要真实打开且同位置正式数据身份可追溯，缺任一部分如实记未完。
 
 先将工作 2 的配置与真实输出、uplot/CAEGraph 能力及 aidata 消费入口建立对应，再按实际问题定位时间位置、组织范围并取得真实图和同范围数据。配置格式或接口有较大问题时给出实际证据与最小接法，不自行改变配置归属，也不因工具默认能力压回专业设计。
 
