@@ -2,14 +2,14 @@
   "schema": "workmap-intake/v1",
   "intakes": {
     "bi01": {
-      "snapshot": "5a3b67501868077b2e4358df73d8c064c914a61f95547f4815172a996d78f118",
+      "snapshot": "f59a6a482d4deedafd98ca27ac69d79a770d63f48967ae5d390749d535b15ce0",
       "manager": {
         "role": "management",
         "context": "chatgpt:细节叙事生成_金标:BI01-FO01-管理"
       },
       "decision_report": {
-        "path": "runs/BI-01-FO-01/reviews/management-R0028/FULL_RESPONSE.md",
-        "blob": "484f983e4e7b46eb7d6964219f5b25c8b5900a14"
+        "path": "runs/BI-01-FO-01/reviews/management-R0031/FULL_RESPONSE.md",
+        "blob": "364a1d210407e292601134a89c07fcdfeb180c80"
       },
       "reader_check": {
         "status": "RECORDED",
@@ -23,11 +23,11 @@
         "input_snapshot": "76cc432bb46ec54c5bc2539e6ecf6d504a3b3cfba0e3e32bacd550bb11719c14"
       },
       "effort": {
-        "known_pro_turns": 26,
-        "effective_professional_returns": 10,
+        "known_pro_turns": 29,
+        "effective_professional_returns": 11,
         "effective_professional_origin": "2026-10-22T04:20:18.644Z",
-        "note": "R1—R28除未发R12/R15共26次实际Pro角色调用。有效专业R4/R7/R9/R11/R14/R17/R20/R22/R25/R27累计10；M28按38b192#effort实际处理initial/repeat-5，合法采用后下一repeat-6累计12。原2026-10-22T04:20:18.644Z起点/间隔2/WHILE_WORK_ACTIVE不变。管理与Worker不增加专业回交；主动工时及token未知。",
-        "next_effort_cumulative_effective_returns": 12
+        "next_effort_cumulative_effective_returns": 12,
+        "note": "实际29个COMMITTED角色调用（R1—R31，不含未发R12/R15）逐SEND_RECEIPT计数；有效专业11，M28累计10/initial-repeat-5已处理，下一repeat-6累计12，原起点/间隔2/WHILE_WORK_ACTIVE保持。M31管理不增专业回交、不提前消费12，主动工时/token未知。"
       },
       "scope_dispositions": {},
       "validation_claims": [],
@@ -35,10 +35,10 @@
         "decision": "ISSUED",
         "task_id": "BI01-FO-01-N-OBSERVATION-01",
         "task_path": "runs/BI-01-FO-01/01_当前任务.md",
-        "task_blob": "821172f23931a7e709f58479a4d5ff6b1fd6a159",
-        "kind": "ROUTINE_RESULT",
+        "task_blob": "c3815c9fa76f3157a9ed2bc2f02014e6094be80b",
+        "kind": "EXISTING_AUTHORIZED_REPAIR",
         "requires_reader_check": false,
-        "reader_reason": "M28主报告#intake分类ROUTINE_RESULT且requires_reader_check=false；同一3f任务/Binding、目标/方法/M21范围/角色/写权，接收R27增量与累计10。后到a189b264补记全文明确Worker08已到、结果先回原签发Pro，不新增管理技术先验或公共方案许可；85eb4e3b绑定说明已准确同步。原Reader仍只覆盖89aacaa，非本版独立PASS。实际新Worker材料纳入输入，不冒称管理技术接收。",
+        "reader_reason": "原Management R31 e7f6589#intake明确EXISTING_AUTHORIZED_REPAIR/no new reader：Owner纠正限制尚未派候选工程，在原四项工作内补专业判断，无新架构采用/共享权/图数通过；按原3f派发完整schema/身份/两Return/23refs/finaltree已核。新完整Task f59、M31采用和27source_reads进入后继。旧Reader仅覆盖89aacaa，RECORDED_OLD_INPUT准确保留，不称新版独立PASS；未来必要独立核验仍依实际影响。",
         "method_paths": [
           "professional/feature_observation/00_PURPOSE_AND_FOUR_WORKS.md",
           "professional/feature_observation/01_OUTPUT_BASE_FORMAT.md",
@@ -46,7 +46,7 @@
           "professional/feature_observation/03_REUSE_FROM_V2.md",
           "professional/feature_observation/04_AIDATA_USE.md"
         ],
-        "task_payload_sha256": "7318bf0b1d40abb5777cbe6d5efbfbb81990ff58b0b2de1e961b0b63dee845d0",
+        "task_payload_sha256": "8b7bf7fa3a151077312af02ef5e9af4e9bada3c012fbb3132b6955b3466832b9",
         "policy_ref": "21dd5971f493a6d724948b84dacb7b200ff43b54",
         "goal_ref": {
           "repo": "daowei2026/observe-iterate",
