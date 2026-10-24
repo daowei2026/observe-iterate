@@ -2,14 +2,14 @@
   "schema": "workmap-intake/v1",
   "intakes": {
     "bi01": {
-      "snapshot": "7d3fc26551f8e82661efed101c099d10b7d74b8f951bad3e802b8d5ee05172df",
+      "snapshot": "5a3b67501868077b2e4358df73d8c064c914a61f95547f4815172a996d78f118",
       "manager": {
         "role": "management",
         "context": "chatgpt:细节叙事生成_金标:BI01-FO01-管理"
       },
       "decision_report": {
-        "path": "runs/BI-01-FO-01/reviews/management-R0026/FULL_RESPONSE.md",
-        "blob": "1d829896a35ebf5733f1489826e1392579009ffb"
+        "path": "runs/BI-01-FO-01/reviews/management-R0028/FULL_RESPONSE.md",
+        "blob": "484f983e4e7b46eb7d6964219f5b25c8b5900a14"
       },
       "reader_check": {
         "status": "RECORDED",
@@ -23,11 +23,11 @@
         "input_snapshot": "76cc432bb46ec54c5bc2539e6ecf6d504a3b3cfba0e3e32bacd550bb11719c14"
       },
       "effort": {
-        "known_pro_turns": 24,
-        "effective_professional_returns": 9,
+        "known_pro_turns": 26,
+        "effective_professional_returns": 10,
         "effective_professional_origin": "2026-10-22T04:20:18.644Z",
-        "note": "R1—R26除未发R12/R15共24次实际Pro角色调用；有效专业R4/R7/R9/R11/R14/R17/R20/R22/R25累计9。R26依Owner CHANGE采用21dd和修订同一Task/Binding并签原Pro实质再判断，不计第10份专业回交；原2026-10-22T04:20:18.644Z起点/间隔2保持，M23累计8已消费，next10 NOT_YET。Worker与管理调用不凑专业计数，主动工时/token未知。",
-        "next_effort_cumulative_effective_returns": 10
+        "note": "R1—R28除未发R12/R15共26次实际Pro角色调用。有效专业R4/R7/R9/R11/R14/R17/R20/R22/R25/R27累计10；M28按38b192#effort实际处理initial/repeat-5，合法采用后下一repeat-6累计12。原2026-10-22T04:20:18.644Z起点/间隔2/WHILE_WORK_ACTIVE不变。管理与Worker不增加专业回交；主动工时及token未知。",
+        "next_effort_cumulative_effective_returns": 12
       },
       "scope_dispositions": {},
       "validation_claims": [],
@@ -36,9 +36,9 @@
         "task_id": "BI01-FO-01-N-OBSERVATION-01",
         "task_path": "runs/BI-01-FO-01/01_当前任务.md",
         "task_blob": "821172f23931a7e709f58479a4d5ff6b1fd6a159",
-        "kind": "EXISTING_AUTHORIZED_REPAIR",
+        "kind": "ROUTINE_RESULT",
         "requires_reader_check": false,
-        "reader_reason": "R26完整报告#intake的实际判断：明确Owner CHANGE在同一目标/四项职责内定向恢复已有专业判断，未新Run/阶段/对象/角色或扩大共享/上游写权，未形成或批准新技术方案；旧Reader只覆盖89aacaa冻结地图，不升级本版独立PASS，后续重要新设计按实际影响仍需独立核查。",
+        "reader_reason": "M28完整报告#intake的实际分类：同一3f任务/Binding、目标、方法、M21范围、角色及写权，接收R27已有增量并处理累计10，维持Worker08真实结果先回原Pro；无最终公共方案/工作3整体接收/工作4签发。原Reader仍只覆盖89aacaa，未冒充本版独立PASS。后到Worker08仅作为实际回交输入，不因此标成管理技术认可；按原worker-result限定核验。",
         "method_paths": [
           "professional/feature_observation/00_PURPOSE_AND_FOUR_WORKS.md",
           "professional/feature_observation/01_OUTPUT_BASE_FORMAT.md",
