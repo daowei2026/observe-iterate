@@ -185,4 +185,3 @@ def native_graph_checks(page,final,RT,event,scope):
     before=visible();page.mouse.click(legend['x'],legend['y']);page.wait_for_timeout(300);hidden=visible();page.mouse.click(legend['x'],legend['y']);page.wait_for_timeout(300);restored=visible()
     assert before and not hidden and restored, 'native legend hide/restore failed'
     event('native_legend_hide_restore_pass',target=legend,before=before,after_click=hidden,restored=restored)
-

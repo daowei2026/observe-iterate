@@ -72,7 +72,7 @@ dump(target/'INDEX.json',{'notebook_file':nb_path.name,'notebook_bytes':len(raw)
     'notebook_blob':subprocess.check_output(['git','hash-object',str(nb_path)],text=True).strip(),
     'metadata':nb['metadata'],'cell_source_exact_match':True,'cells':rows,
     'qualification':'source文本逐字对应；大段保存输出未展开，不能称完整Notebook副本'})
-(target/'NOTEBOOK_SOURCE.md').write_text(''.join(parts))
+(target/'NOTEBOOK_SOURCE.md').write_text(''.join(parts).rstrip()+'\n')
 
 failures=[]
 for name in ('FIRST_FRONTEND_EVENTS.json','FIRST_FRONTEND_RECOVERY.json','FIRST_OWNED_KERNEL_CLEANUP.json',
