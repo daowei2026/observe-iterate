@@ -1,0 +1,41 @@
+{
+  "order_id": "BI01-FO01-N-PLATFORM-BOARD-07",
+  "issuer_invocation_id": "BI01-FO-01-R0022-20261023T231811Z-3342cb6b",
+  "status": "PARTIAL_BLOCKED_NORMAL_PLATFORM_DEPLOYMENT",
+  "readback_at": "2026-10-24T00:52:36.990725+00:00",
+  "observe": {
+    "repository": "https://github.com/daowei2026/observe-iterate.git",
+    "branch": "fy/bi01-feature-observation-prep-20261021",
+    "payload_commit": "9afca701c69f7f5fc12aa8691bf68d7421506460",
+    "fresh_remote_observed_commit": "9afca701c69f7f5fc12aa8691bf68d7421506460",
+    "remote_contains_payload": true,
+    "payload_manifest_files_verified": 370,
+    "report_path": "runs/BI-01-FO-01/artifacts/worker-BI01-FO01-N-PLATFORM-BOARD-07/FULL_RESPONSE.md",
+    "report_sha256": "1b399aea118baf223bd778539a5132013ae4dc0f90de318272e32977b459115b",
+    "verification": "fresh GitHub git fetch --no-write-fetch-head into task-private ref; remote ancestry and all committed payload bytes checked"
+  },
+  "aidata": {
+    "repository": "https://github.com/daowei2026/aidata.git",
+    "branch": "fy/bi01-fo01-n-platform-board-r0022",
+    "base": "8a08300cb70a610401424bedadb42e9dcde13e71",
+    "commit": "cbd0a1f9bf92d9d65e0ad00bfd1a9e3afb7c2cf0",
+    "readback": "evidence/AIDATA_GITHUB_READBACK.json"
+  },
+  "actual_platform": {
+    "cae_nodes": [
+      6128,
+      6129,
+      6130,
+      6131
+    ],
+    "http_status": [
+      500,
+      500,
+      500,
+      500
+    ],
+    "reason": "running service lacks normal_node_behavior_manifest param declaration",
+    "front_end_accepted": false
+  },
+  "boundary": "技术结果回原Pro；未签工作4；未创建Goal/后台服务/自动唤醒；两仓非原子发布"
+}
