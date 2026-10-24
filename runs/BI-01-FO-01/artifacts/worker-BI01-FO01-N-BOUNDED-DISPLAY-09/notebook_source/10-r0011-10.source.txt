@@ -1,0 +1,30 @@
+hc_ref = PLAN["source_refs"]["W03"]
+hc_folder = W03 + "data/crossk/hc_final/"
+hc_price = frame_at(hc_ref, hc_folder + "hc_5m_price_calendar.csv", False)
+hc_rhythm = frame_at(hc_ref, hc_folder + "rhythm.csv").reset_index()
+hc_intervals = frame_at(hc_ref, hc_folder + "intervals.csv").reset_index().sort_values("child_id_3")
+assert hc_intervals["present"].eq(1).all()
+denominator = float(hc_intervals.tail(3)["duration"].median())
+assert denominator == float(hc_rhythm.iloc[0]["current_median_value"])
+K = int(hc_price["open_uti"].max())
+last_update = int(hc_rhythm.iloc[0]["last_update_value"])
+print({"formal_recent_intervals": hc_intervals.tail(3)["duration"].tolist(),
+       "formal_median": denominator, "waiting_reference": K-last_update,
+       "ratio_reference": (K-last_update)/denominator,
+       "qualification": "reference arithmetic beside formal tables; no new production N"})
+print("实际核源文件数", len(SOURCE_READS))
+
+hc_tables = cut_tables(hc_ref, hc_folder)
+hc_bundle = new_selected(hc_tables, hc_price, "hc", K)
+nd.add_price_reference_points(hc_bundle, [
+    {"uti": last_update, "field": "close", "label": "last_update 原close3952"},
+    {"uti": last_update+600, "field": "close", "label": "下一根close3946"},
+    {"uti": last_update+600, "field": "high", "label": "下一根high3959（非close更新）"},
+    {"uti": K, "field": "close", "label": "末拍close3904"},
+])
+render_new("hc_close_waiting_final", hc_bundle)
+(EVIDENCE / "SOURCE_READS.json").write_text(json.dumps(SOURCE_READS, ensure_ascii=False, indent=2))
+(EVIDENCE / "KERNEL_COMPLETION.json").write_text(json.dumps({"execution_id": EXECUTION_ID,
+    "completed_at": datetime.datetime.now(datetime.timezone.utc).isoformat(), "source_files": len(SOURCE_READS),
+    "cases": list(LAYOUTS)}, ensure_ascii=False, indent=2))
+print("实际正式源文件", len(SOURCE_READS), "；未重读生产N、未调用平台入口")

@@ -1,0 +1,15 @@
+rb_K = widgets.Dropdown(options=[(name, name) for name in PLAN["rb_cuts"]], value="final", description="rb知识K")
+rb_range = widgets.Dropdown(options=[("完整已供成员/行情", "full"), ("确认附近局部行情", "local")], value="full", description="显示范围")
+rb_out = widgets.Output()
+def display_rb_cut(change=None):
+    name, mode = rb_K.value, rb_range.value
+    K = PLAN["rb_cuts"][name]
+    display_range = None if mode == "full" else (103140000, K)
+    with rb_out:
+        clear_output(wait=True)
+        bundle = new_selected(rb_cuts[name], rb_price, "rb", K, display_range=display_range)
+        render_new("rb_" + name + "_" + mode, bundle)
+rb_K.observe(display_rb_cut, names="value")
+rb_range.observe(display_rb_cut, names="value")
+display(widgets.HBox([rb_K, rb_range]), rb_out)
+display_rb_cut()

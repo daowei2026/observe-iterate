@@ -1,0 +1,51 @@
+def new_selected(tables, price, symbol, K, display_range=None):
+    bundle = nd.build_selected_cut_bundle(tables, price, symbol=symbol,
+        color=PLAN["instrument_colors"][symbol], as_of=int(K), display_range=display_range,
+        optional_panels=tuple(PLAN["optional_panels"] + (["duration"] if symbol == "i" else [])))
+    assert int(bundle.meta["resolved_origin_as_of"]) <= K
+    assert int(bundle.price["open_uti"].max()) <= K
+    bundle.meta["formal_entry"] = "Pinned normal-OnlyRead export reuse; not a fresh Feature read"
+    bundle.meta["display_identity"]["worker09_plan"] = PLAN["version"]
+    return bundle
+
+def sparse_evolution(cuts, selected, price, symbol, Ks):
+    bundle = nd.build_evolution_bundle(merge_real_cuts(cuts), price, symbol=symbol,
+        color=PLAN["instrument_colors"][symbol], start_uti=min(Ks), end_uti=max(Ks),
+        optional_panels=tuple(PLAN["optional_panels"] + (["duration"] if symbol == "i" else [])))
+    for name in bundle.views:
+        if name.endswith("_hold") or name.endswith("_steps"):
+            bundle.views[name] = bundle.views[name].iloc[0:0].copy()
+        elif name.endswith("_updates") or name.endswith("_points"):
+            bundle.views[name] = pd.concat([b.views[name] for b in selected.values()], ignore_index=True)
+    bundle.meta["formal_entry"] = "Sparse pinned knowledge-cut exports; NOT continuous occurrence history"
+    bundle.meta["display_identity"]["worker09_plan"] = PLAN["version"]
+    bundle.meta["display_identity"]["observed_Ks"] = sorted(Ks)
+    return bundle
+
+rb_cuts = {name: cut_tables(PLAN["source_refs"]["W02"], W02 + "data/selected_cuts/" + name + "/")
+           for name in PLAN["rb_cuts"]}
+rb_price = frame_at(PLAN["source_refs"]["W02"], W02 + "data/same_bound_price/rb_5m_price_calendar.csv", False)
+rb_selected = {name: new_selected(rb_cuts[name], rb_price, "rb", K) for name, K in PLAN["rb_cuts"].items()}
+# 如确需其他演变，按真实范围另作工作2；当前四视域不依赖该布局。
+# 保留准确稀疏准备代码谱系，但本次默认不执行额外画法/扩大平台范围。
+
+# 真实不同K、完全相同价窗的缓存/读数作用域回归；仅工作2技术准备，不作平台发布。
+same_window=(103140000, min(PLAN["rb_cuts"].values()))
+scope_results=[]
+for label in ("before_confirmation","at_or_after_confirmation"):
+    k=PLAN["rb_cuts"][label]
+    sample=new_selected(rb_cuts[label],rb_price,"rb",k,display_range=same_window)
+    actual=nd.build_uplot_layout(sample,context=context,calendar_name=PLAN["calendar"],title_suffix="同价窗不同K技术回归；未获平台用途认可")
+    from bokeh.models import GlyphRenderer
+    observed={}
+    for renderer in actual.select({"type":GlyphRenderer}):
+        names=[t[5:] for t in renderer.tags if isinstance(t,str) and t.startswith("view:")]
+        if names and names[0] in ("completed_recent_updates","working_progress_points"):
+            observed[names[0]]=clean(renderer.data_source.data)
+            assert list(renderer.data_source.data["x"])==[k]
+            assert list(renderer.data_source.data["y"])==sample.views[names[0]]["y"].tolist()
+    assert len(observed)==2
+    scope_results.append({"K":k,"price_range":sample.meta["price_range"],"exact":sample.meta["source_exact"],"display_identity":nd.U2NormalNodeBehaviorDisplayFeature(sample).ppid,"actual_scalar_renderers":observed})
+assert scope_results[0]["price_range"]==scope_results[1]["price_range"]
+assert scope_results[0]["display_identity"]!=scope_results[1]["display_identity"]
+(EVIDENCE/"SAME_PRICE_DIFFERENT_K.json").write_text(json.dumps({"execution_id":EXECUTION_ID,"qualification":"真实原表/实际组合器图层；仅工作2技术回归，非新增平台认可", "results":scope_results},ensure_ascii=False,indent=2))
