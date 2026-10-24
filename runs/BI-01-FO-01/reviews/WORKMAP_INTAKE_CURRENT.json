@@ -2,14 +2,60 @@
   "schema": "workmap-intake/v1",
   "intakes": {
     "bi01": {
-      "snapshot": "d6252bbb6b72d5d5089ed1496f91f250d9ce4d5f79e85382f63008f3aa632f1c",
+      "snapshot": {
+        "observed_commit": "c21cf40913c5565b5dc7194a7e9e2faa35986ac0",
+        "observed_binding_blob": "4625094c833d41b9ab4f35633ac22f0c6f908e41",
+        "scope": "bi01",
+        "material": {
+          "schema": "workmap-snapshot/v2",
+          "scope": "bi01",
+          "binding": "4b41e8aa5aba06180d070d2e944b3b3a2b262c54d6d009f1ae1e8d4277744f5f",
+          "reader_input": {
+            "schema": "workmap-reader-input/v2",
+            "scope": "bi01",
+            "overview": {
+              "runs/BI-01-FO-01/README.md": {
+                "__preamble__": "1ec1eb657ee5b3890de03de8eff64ea850f4a3586fc6982e6e50e31c449fc2bb",
+                "common": "0371e6cce4ea3d8b8bf318cfa0971a5eeb6c9c0fbcd36f8e05afb8bb6b3559f1",
+                "bi01": "5666f087dc8fd3168f079b9d48a1439e58458cd485cbef90681ca3e08bcbaa1f"
+              }
+            },
+            "map": {
+              "runs/BI-01-FO-01/00_长程推进地图.md": "46618d506f3ca1c088ce8e74aca127035bf048cf"
+            },
+            "task": {
+              "runs/BI-01-FO-01/01_当前任务.md": "821172f23931a7e709f58479a4d5ff6b1fd6a159"
+            },
+            "owner_sources": {
+              "runs/BI-01-FO-01/OWNER_START.md": "f5dec0768f695ba9a2dd6cb2b2102f064d3749b9",
+              "professional/feature_observation/00_PURPOSE_AND_FOUR_WORKS.md": "7c48d3e8b62d5bbfba2ec57c8331bdfaf9e44815"
+            },
+            "rules": {
+              "professional/feature_observation/00_PURPOSE_AND_FOUR_WORKS.md": "7c48d3e8b62d5bbfba2ec57c8331bdfaf9e44815",
+              "professional/feature_observation/01_OUTPUT_BASE_FORMAT.md": "f7310908e1ad9819863e2b810fd08d8dd3a9cdad",
+              "professional/feature_observation/02_WORK_DETAILS.md": "55267c9eee78c3fc5f3d3d5cba0a1c945d04f4f1",
+              "professional/feature_observation/03_REUSE_FROM_V2.md": "13c0d80e2814e4db0d6b0ed1f1b9b57bb8530f07",
+              "professional/feature_observation/04_AIDATA_USE.md": "202ba94569beb4e43764622b9f5a2d3f9ffe8d09",
+              "runtime/dual_route_execution/DR14_QUESTION_WORK_CONTRACT.md": "aa55d8e2026681af1815bd346bfbeb8066624bab",
+              "runtime/overlay/08_自然语言运行提示_v0.3.md": "d71bd5ffa7b4a936801f6d0dee384ef46ecf96de"
+            }
+          },
+          "result_trees": {
+            "runs/BI-01-FO-01/artifacts": "b73831223efa8cf6d3836d4e442083bee6a19fe84c3d9807a9c6fa59c897bad8",
+            "runs/BI-01-FO-01/reviews/independent": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        },
+        "fingerprint": "7d3fc26551f8e82661efed101c099d10b7d74b8f951bad3e802b8d5ee05172df",
+        "reader_fingerprint": "116623191be84c783a6e9d81b4721c78302b1d5eacf9fba6aae7cf5a7870f11d",
+        "task_payload_sha256": "7318bf0b1d40abb5777cbe6d5efbfbb81990ff58b0b2de1e961b0b63dee845d0"
+      },
       "manager": {
         "role": "management",
         "context": "chatgpt:细节叙事生成_金标:BI01-FO01-管理"
       },
       "decision_report": {
-        "path": "runs/BI-01-FO-01/reviews/management-R0024/FULL_RESPONSE.md",
-        "blob": "1aa1a903cf8a6f14a0fdf4da2c58b530e07a8f03"
+        "path": "runs/BI-01-FO-01/reviews/management-R0026/FULL_RESPONSE.md",
+        "blob": "1d829896a35ebf5733f1489826e1392579009ffb"
       },
       "reader_check": {
         "status": "RECORDED",
@@ -23,10 +69,10 @@
         "input_snapshot": "76cc432bb46ec54c5bc2539e6ecf6d504a3b3cfba0e3e32bacd550bb11719c14"
       },
       "effort": {
-        "known_pro_turns": 22,
-        "effective_professional_returns": 8,
+        "known_pro_turns": 24,
+        "effective_professional_returns": 9,
         "effective_professional_origin": "2026-10-22T04:20:18.644Z",
-        "note": "R1—R11/R13/R14/R16—R24共22次真实Pro角色调用；R12/R15未发不计。合法专业R4/R7/R9/R11/R14/R17/R20/R22累计8，原2026-10-22T04:20:18.644Z起点/间隔2保持，M23 EFFORT8已消费、next10 NOT_YET。M24为真实W07部分交付及局部部署依赖实质接收，不增加专业回交；原Worker07自然结束，下一原Pro实际消费与Owner有权部署输入并行。主动工时/token未知。",
+        "note": "R1—R26除未发R12/R15共24次实际Pro角色调用；有效专业R4/R7/R9/R11/R14/R17/R20/R22/R25累计9。R26依Owner CHANGE采用21dd和修订同一Task/Binding并签原Pro实质再判断，不计第10份专业回交；原2026-10-22T04:20:18.644Z起点/间隔2保持，M23累计8已消费，next10 NOT_YET。Worker与管理调用不凑专业计数，主动工时/token未知。",
         "next_effort_cumulative_effective_returns": 10
       },
       "scope_dispositions": {},
@@ -35,10 +81,10 @@
         "decision": "ISSUED",
         "task_id": "BI01-FO-01-N-OBSERVATION-01",
         "task_path": "runs/BI-01-FO-01/01_当前任务.md",
-        "task_blob": "82876341dc16a2271a10614763826fdef98114e8",
-        "kind": "ROUTINE_RESULT",
+        "task_blob": "821172f23931a7e709f58479a4d5ff6b1fd6a159",
+        "kind": "EXISTING_AUTHORIZED_REPAIR",
         "requires_reader_check": false,
-        "reader_reason": "M24报告#intake明确ROUTINE_RESULT/requires_reader_check=false：原目标、具体N、b81方法、3a Task/Binding、M21认可和工作3权限/保护面不变；有限接纳W07实物/真实500并形成原Pro消费和Owner部署/认证责任输入两条后继，未整体接收工作3/未签正式4。Reader仍仅89aacaa冻结旧输入。",
+        "reader_reason": "R26完整报告#intake的实际判断：明确Owner CHANGE在同一目标/四项职责内定向恢复已有专业判断，未新Run/阶段/对象/角色或扩大共享/上游写权，未形成或批准新技术方案；旧Reader只覆盖89aacaa冻结地图，不升级本版独立PASS，后续重要新设计按实际影响仍需独立核查。",
         "method_paths": [
           "professional/feature_observation/00_PURPOSE_AND_FOUR_WORKS.md",
           "professional/feature_observation/01_OUTPUT_BASE_FORMAT.md",
@@ -46,11 +92,11 @@
           "professional/feature_observation/03_REUSE_FROM_V2.md",
           "professional/feature_observation/04_AIDATA_USE.md"
         ],
-        "task_payload_sha256": "d909e51462c379509cf9bdf7a12b064eee546d9be85897df174f621c4c27b11d",
-        "policy_ref": "b81cfa14299a415bd4b666f9f69cdc4f5871931f",
+        "task_payload_sha256": "7318bf0b1d40abb5777cbe6d5efbfbb81990ff58b0b2de1e961b0b63dee845d0",
+        "policy_ref": "21dd5971f493a6d724948b84dacb7b200ff43b54",
         "goal_ref": {
           "repo": "daowei2026/observe-iterate",
-          "commit": "b81cfa14299a415bd4b666f9f69cdc4f5871931f",
+          "commit": "21dd5971f493a6d724948b84dacb7b200ff43b54",
           "path": "professional/feature_observation/00_PURPOSE_AND_FOUR_WORKS.md",
           "selector": "full"
         }
