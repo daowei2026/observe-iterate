@@ -1,0 +1,102 @@
+{
+  "qualification": "本单技术事实/正反对照完整性，不是平台恢复、工作3或业务正确性验收",
+  "checks": [
+    {
+      "name": "baseline ordinary same-version restore is a positive control",
+      "passed": true
+    },
+    {
+      "name": "cbd accepts the old ordinary serialized contract",
+      "passed": true
+    },
+    {
+      "name": "ordinary_chart_path actually serializes the N key",
+      "passed": true
+    },
+    {
+      "name": "ordinary_chart_path same-version recovery accepted",
+      "passed": true
+    },
+    {
+      "name": "ordinary_chart_path rejected by old receiver at the precise N parameter",
+      "passed": true
+    },
+    {
+      "name": "ordinary_key_omitted actually serializes the N key",
+      "passed": true
+    },
+    {
+      "name": "ordinary_key_omitted same-version recovery accepted",
+      "passed": true
+    },
+    {
+      "name": "ordinary_key_omitted rejected by old receiver at the precise N parameter",
+      "passed": true
+    },
+    {
+      "name": "ordinary_explicit_empty actually serializes the N key",
+      "passed": true
+    },
+    {
+      "name": "ordinary_explicit_empty same-version recovery accepted",
+      "passed": true
+    },
+    {
+      "name": "ordinary_explicit_empty rejected by old receiver at the precise N parameter",
+      "passed": true
+    },
+    {
+      "name": "named_n actually serializes the N key",
+      "passed": true
+    },
+    {
+      "name": "named_n same-version recovery accepted",
+      "passed": true
+    },
+    {
+      "name": "named_n rejected by old receiver at the precise N parameter",
+      "passed": true
+    },
+    {
+      "name": "ordinary_key_omitted is byte-identical to ordinary chart serialization",
+      "passed": true
+    },
+    {
+      "name": "ordinary_explicit_empty is byte-identical to ordinary chart serialization",
+      "passed": true
+    },
+    {
+      "name": "ordinary ppid changed between baseline and cbd under identical probe scope",
+      "passed": true
+    },
+    {
+      "name": "live Trier existing shared-class instance returned application success",
+      "passed": true
+    },
+    {
+      "name": "live Trier expanded keys match baseline rather than cbd",
+      "passed": true
+    },
+    {
+      "name": "live Trier existing N node metadata recovery currently rejects the N key",
+      "passed": true
+    },
+    {
+      "name": "isolated named host follows actual normal recovery",
+      "passed": true
+    },
+    {
+      "name": "prewarmed eval namespace reproduces missing-name boundary",
+      "passed": true
+    }
+  ],
+  "all_passed": true,
+  "evidence_hashes": {
+    "old-restore.json": "bd8c19d3078a18de87e565b55d2d735f80204906a2548f45ead10fe1347c899b",
+    "cbd-restore.json": "44405d5c105347b7ab4cd286782b09f29b0a789322a9fae1faffb8328899cf68",
+    "ACTIVE_TRIER_FASON_OBSERVATION.json": "20e489d72552970eb437181a0772ebc0898e5aa51909936fdd41be4d3f6b7f44",
+    "ACTIVE_TRIER_N_RECOVERY.json": "8edd11b4aabe8c95f747067df6082a5124fe0ad159b1bf06597fde648dadc5d2",
+    "NAMED_HOST_CONSTRUCTOR.json": "c74fc1fa34a6601d79257a80dd8c6f57757a16ac15c9b8fa2a2a302eba43a072",
+    "NAMED_HOST_PREWARMED.json": "cb51bc0c23b7d8f583d40171ba326927d582ab8f8ca76dc46c58799464dda0ba"
+  }
+}
