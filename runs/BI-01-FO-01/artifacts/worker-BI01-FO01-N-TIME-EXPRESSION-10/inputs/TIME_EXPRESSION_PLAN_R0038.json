@@ -1,0 +1,127 @@
+{
+  "version": "0.5.0-time-expression-R0038",
+  "status": "WORK2_SCENE_CANDIDATE_NOT_EXECUTED_NOT_MANAGER_ACCEPTED",
+  "feature": "U2NormalNodeBehaviorFrp",
+  "production_parameters_changed": false,
+  "sof_name": "TA_updto20240229_DBA",
+  "calendar": "night_end_at_2300",
+  "baseline": {
+    "repo": "daowei2026/aidata",
+    "commit": "25a9fd8b1333aafd4c56fd1b288e7f8d3c8c3113",
+    "consumer_configuration": "0.3.0-worker09",
+    "notebook_repo": "daowei2026/observe-iterate",
+    "notebook_commit": "35e1836f6a0ef8a123d0441070d3e8e4e760a816",
+    "notebook_path": "runs/BI-01-FO-01/artifacts/worker-BI01-FO01-N-BOUNDED-DISPLAY-09/N_observation_Worker09.ipynb",
+    "existing_execution": "W09-20261024T204705Z-81a98827",
+    "existing_execution_is_not_this_candidate_execution": true
+  },
+  "source_refs": {
+    "W02": "081e31241a0c88e47631f80a8b9b8dd43b2b569c",
+    "W03": "d04f3b08892ccf334a06028f3caab994743566a0"
+  },
+  "source_roots": {
+    "W02": "runs/BI-01-FO-01/artifacts/worker-BI01-FO01-N-DISPLAY-INTEGRATION-02/",
+    "W03": "runs/BI-01-FO-01/artifacts/worker-BI01-FO01-N-READABILITY-CROSSK-03/"
+  },
+  "instrument_colors": {
+    "rb": "#4C78A8",
+    "i": "#F58518",
+    "hc": "#54A24B"
+  },
+  "rb_cuts": {
+    "before_confirmation": 103150800,
+    "at_or_after_confirmation": 103151400,
+    "final": 103315800
+  },
+  "i_cuts": {
+    "i_before_missing_recovery": 35360400,
+    "i_recovery": 35361000,
+    "i_after_recovery": 35361600
+  },
+  "optional_panels": ["rhythm", "waiting_time"],
+  "time_expression": {
+    "qualification": "This section is a scene specification to be consumed by the new Notebook/limited adapter; it is not an already implemented aidata API or a new production data contract.",
+    "primary_purposes": ["rb_confirmation_reorganizes_known_processes", "i_local_recovery_does_not_reset_the_whole_process"],
+    "query_mode": {
+      "label": "所选K当时可知的结果",
+      "allowed_Ks": "Only the pinned cuts listed above; do not advertise an arbitrary-K reader from sparse exports.",
+      "price_end": "min(selected_K, available_source_end)",
+      "no_later_cut_members_or_annotations": true,
+      "show": ["selected_K", "resolved_origin_as_of", "source_exact", "working_life_short_with_full_identity", "working_actual_start", "formal_working_duration", "natural_time_from_source_calendar"],
+      "axis_notice": "单K图按本切点取范围；不同选择的屏幕高度不直接表示数值可比。"
+    },
+    "comparison_mode": {
+      "label": "事后并列所列切点；每个值仍为其原K可知结果",
+      "primary_geometry": "Separate points or paired selected-cut diagrams, with same-scale numeric comparison within each declared coordinate. Keep the selected-K query view available.",
+      "price_context": "Use the existing selected-cut price view and bounded time annotations; do not construct a new charting platform.",
+      "knowledge_point_x": "original_selected_K",
+      "forbid_hold_steps_and_interpolation": true,
+      "forbid_connecting_different_working_Lives": true,
+      "shared_numeric_range": "Use the finite values of the explicitly compared cuts and existing nominal_range/identity capability; label this as retrospective comparison. Do not leak later-cut axis bounds or notes into the separate as-known query mode.",
+      "missing": "No numeric substitute; display a state/reason label at the relevant cut, preserving formal present/knownness/applicability/reason.",
+      "no_sample_ordinal_as_market_time": true,
+      "not_complete_occurrence_history": true
+    },
+    "rb": {
+      "primary_pair": ["before_confirmation", "at_or_after_confirmation"],
+      "later_reference": "final",
+      "primary_price_start": 103043400,
+      "primary_price_end": "selected_K for query; confirmation_K for retrospective pair",
+      "optional_panels": ["duration", "rhythm", "waiting_time"],
+      "required_expressions": [
+        "At the confirmation cut, mark actual start/end separately from confirmation/known_from; new knowledge is not a new market start.",
+        "Keep recent and previous completed-window efficiency separate; identify the newly admitted member, recent-to-previous member, and exiting previous member by actual Life and source order.",
+        "Annotate changed membership only in the retrospective comparison or at a cut where it is already known; never place the newly completed member into the before-confirmation as-known view.",
+        "Show the new working Life, its actual start and formal age together; do not interpret direction change or the changed counter value as a same-process improvement.",
+        "At the later reference, distinguish same working Life from changed storage address; show waiting and formal denominator alongside the ratio. Endpoint equality of a statistic is not proof it held throughout the interval."
+      ],
+      "geometry": {
+        "price_annotations": ["actual process anchor", "confirmation marker", "selected knowledge point"],
+        "member_encoding": "Use existing boundary styles and limited labels/markers for the three changed roles, not new state colors or a general categorical plotting subsystem.",
+        "scalar_comparison": "Focused before/confirmation pair; keep the distant final reference separate or selectable so it does not compress the confirmation pair.",
+        "identity_detail": "Human-readable short Life in the graphic, full Life/revision and original fields in hover or compact supporting data."
+      }
+    },
+    "i": {
+      "comparison_cuts": ["i_before_missing_recovery", "i_recovery", "i_after_recovery"],
+      "price_start": 35339400,
+      "price_end": "selected_K in query; last compared K in explicitly retrospective comparison",
+      "optional_panels": ["duration", "rhythm", "waiting_time"],
+      "required_expressions": [
+        "Keep the whole working start/Life/age visible separately from local_start and waiting.",
+        "Preserve a local-clock explanation after the zero waiting cut when local_start is present and last_update is still absent; do not label a positive waiting value as time since a known extreme in this state.",
+        "Distinguish restored endpoint progress from still missing path efficiency/counter and missing rhythm denominator at each cut.",
+        "Show source natural timestamps as well as CalendarUTITick; the overnight observation gap is not 600 natural seconds or proof of missing market trading.",
+        "Never add a price mark at the whole-process start when its source price was not supplied. An off-screen/input-coverage text anchor is allowed, not a fabricated price."
+      ],
+      "geometry": {
+        "clock_comparison": "Separate whole-process age and local waiting readouts; actual observed points with no connecting/holding line across the supplied cuts.",
+        "state_encoding": "Readable per-cut missingness labels and actual zero markers. Use shapes, positions and words, not extra colors for status."
+      }
+    },
+    "revision_and_coverage": {
+      "revision_id_change_alone_is_not_historical_correction": true,
+      "actual_confirmation_not_backfilled_into_earlier_as_known_state": true,
+      "same_Life_does_not_establish_path_completeness": true,
+      "same_statistic_at_two_cuts_does_not_establish_an_unbroken_hold": true,
+      "no_new_revision_replay_fixture_without_real_evidence": true,
+      "additional_OnlyRead": "Only for a specifically identified missing relation or a necessary interval/correction claim. First reuse existing raw cuts. No blanket 433-occurrence archive or recomputation."
+    }
+  },
+  "validation_focus": [
+    "Re-use the existing same-price/different-K renderer evidence; do not relabel it as completed browser interaction.",
+    "Actually switch rb before-confirmation -> confirmation -> before-confirmation and verify that later members/annotations do not persist.",
+    "Actually switch i missing-before-recovery -> recovery -> after-recovery -> earlier cut, checking local versus whole age and persistent missing fields.",
+    "Inspect the new time/member annotations, comparison axes and per-cut missingness with real pixels; name the actual operator.",
+    "Use exact raw members, working values/bases/rhythm and source prices, not hardcoded historical numbers or plot_view_data as formal data.",
+    "Deliver an actually executed .ipynb, consumed configuration and source/graph linkage; uploading this plan alone is not display completion."
+  ],
+  "scope": {
+    "current_work": "Work1/2 temporal identity and display intelligibility, not formal Work4",
+    "hc_existing_purpose_unchanged": true,
+    "accepted_four_view_platform_adoption_not_blocked_by_this_work": true,
+    "shared_service_write_or_DAO_authority_granted": false,
+    "new_platform_use_requires_management_acceptance": true,
+    "producer_source_write_allowed": false
+  }
+}

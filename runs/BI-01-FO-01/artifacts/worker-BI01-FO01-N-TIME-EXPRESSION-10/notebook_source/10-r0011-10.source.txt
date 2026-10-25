@@ -1,0 +1,5 @@
+
+(EVIDENCE/'SOURCE_READS.json').write_text(json.dumps(SOURCE_READS,ensure_ascii=False,indent=2))
+(EVIDENCE/'KERNEL_COMPLETION.json').write_text(json.dumps({'execution_id':EXECUTION_ID,'completed_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),
+ 'cases':list(LAYOUTS),'qualification':'新kernel默认图完成；后续真实控件/比较/像素证据另记，不预签'},ensure_ascii=False,indent=2))
+print('本次新kernel已执行默认查询图；实际控件回看/事后对照和像素由当前活会话核验，未采用共享平台。')

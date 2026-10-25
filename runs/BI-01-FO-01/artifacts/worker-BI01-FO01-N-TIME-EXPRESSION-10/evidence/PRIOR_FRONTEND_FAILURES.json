@@ -1,0 +1,43 @@
+{
+  "qualification": "原失败/限制不改称通过；设备、PID、原日志与失败图只保留本机ignored",
+  "originals": [
+    {
+      "ignored_original": "FIRST_FRONTEND_EPISODE_LIFECYCLE.json",
+      "sha256": "295e5aa4c3168b802bdac0b42a5a5ba5a37e8cbe77f555c3e8beecd8c42a8dcd"
+    },
+    {
+      "ignored_original": "SECOND_FRONTEND_RECOVERY.json",
+      "sha256": "424a0f1662a214d054d648725332fbe17993ebd9e5c2a557b61fbdf7308b0e7e"
+    },
+    {
+      "ignored_original": "SECOND_OWNED_KERNEL_CLEANUP.json",
+      "sha256": "a8581f691894c4571eb17d9f45c3baa5b4d256297e58dd85ec2f590d9d597fe0"
+    }
+  ],
+  "episodes": [
+    {
+      "execution": "W10-20261024T233438Z-a26203b8",
+      "result": "Run All及rb前后前已成，比较dropdown未选成；修正实际label定位"
+    },
+    {
+      "execution": "W10-20261024T233941Z-3b235d8a",
+      "result": "模型/控件已成但i实际canvas白、hover未成；包装退出143来源未知，自有残留kernel精确清理为0"
+    },
+    {
+      "execution": "W10-20261024T235157Z-1cc76a61",
+      "result": "none虚拟挂载下全操作/hover成功；像素发现少量文字拥挤，保留该版再改标签"
+    },
+    {
+      "execution": "W10-20261024T235919Z-81be67ef",
+      "result": "全操作/hover成功；再拉开年龄文字屏幕间距，原值/坐标不改，保存该版后清输出新执行"
+    }
+  ],
+  "final_execution": "W10-20261025T000436Z-c3b56676",
+  "final_lifecycle": "FRONTEND_EPISODE_LIFECYCLE.json",
+  "early_probes": [
+    "m3sof路径缺失按已有环境接回，未升级共享依赖。",
+    "原CSV与解析时间的小数秒文本格式不同，比较按ISO时间值，原字节hash仍逐字核。",
+    "清输出重执行中与缺PVD隔离快照的检查因输入未完整而拒绝，未记为通过。"
+  ],
+  "raw_logs_and_images_uploaded": false
+}
