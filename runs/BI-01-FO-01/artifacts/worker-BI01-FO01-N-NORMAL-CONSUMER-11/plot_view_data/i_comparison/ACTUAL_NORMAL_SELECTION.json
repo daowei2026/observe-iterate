@@ -1,0 +1,172 @@
+{
+  "run_id": "BI01-FO01-W11-20261025T023136Z-317d6c-i-comparison",
+  "node_id": "big_000001",
+  "purpose": "retrospective_listed_cuts",
+  "knowledge_ks": [
+    35360400,
+    35361000,
+    35361600
+  ],
+  "primary_and_reference": [
+    {
+      "knowledge_k": 35360400,
+      "exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/9410abda-b111-442d-aa25-6b99da2afeb6/3d8951d5-2518-4dea-85c8-9f0b19648da4",
+      "working_life": "5727e951-20b6-4a82-8c52-fc3a32f686cc",
+      "working_start": 35319000,
+      "working_direction": "down",
+      "formal_root_coordinate": [
+        "2017-03-30 22:55:00.500000",
+        58924,
+        2
+      ],
+      "role": "primary",
+      "reference_roles": []
+    },
+    {
+      "knowledge_k": 35361000,
+      "exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/9410abda-b111-442d-aa25-6b99da2afeb6/1d82177d-6e82-44fd-b4b8-8cb899a94e28",
+      "working_life": "5727e951-20b6-4a82-8c52-fc3a32f686cc",
+      "working_start": 35319000,
+      "working_direction": "down",
+      "formal_root_coordinate": [
+        "2017-03-31 09:00:00.500000",
+        58925,
+        2
+      ],
+      "role": "primary",
+      "reference_roles": []
+    },
+    {
+      "knowledge_k": 35361600,
+      "exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/9410abda-b111-442d-aa25-6b99da2afeb6/b4de4558-dbb3-4873-a77e-7d73ad70fb29",
+      "working_life": "5727e951-20b6-4a82-8c52-fc3a32f686cc",
+      "working_start": 35319000,
+      "working_direction": "down",
+      "formal_root_coordinate": [
+        "2017-03-31 09:05:00.500000",
+        58926,
+        2
+      ],
+      "role": "primary",
+      "reference_roles": []
+    }
+  ],
+  "spec": {
+    "version": 1,
+    "mode": "selected_cut",
+    "panels": {
+      "price": {
+        "class": "MainFig",
+        "title": "行情与过程边界",
+        "unit": "price",
+        "height": 420,
+        "coordinate": "price_level",
+        "width": 1800,
+        "x_scope": "market",
+        "include_zero": false
+      },
+      "completed_efficiency": {
+        "class": "SubFig",
+        "title": "已完成过程效率：最近六段／此前六段",
+        "unit": "ratio",
+        "height": 260,
+        "coordinate": "ratio",
+        "width": 880,
+        "x_scope": "market",
+        "include_zero": true,
+        "nominal_range": [
+          0.0,
+          1.0
+        ]
+      },
+      "working_motion": {
+        "class": "SubFig",
+        "title": "当前未完成过程：沿原方向净推进／累计最大逆向量",
+        "unit": "price",
+        "height": 260,
+        "coordinate": "price_delta",
+        "width": 880,
+        "x_scope": "market",
+        "include_zero": true
+      },
+      "working_efficiency": {
+        "class": "SubFig",
+        "title": "当前过程前缀效率（非已完成样本）",
+        "unit": "ratio",
+        "height": 260,
+        "coordinate": "ratio",
+        "width": 880,
+        "x_scope": "market",
+        "include_zero": true,
+        "nominal_range": [
+          0.0,
+          1.0
+        ]
+      },
+      "duration": {
+        "class": "SubFig",
+        "title": "已完成过程时长／当前过程年龄",
+        "unit": "CalendarUTITick",
+        "height": 260,
+        "coordinate": "calendar_tick",
+        "width": 880,
+        "x_scope": "market",
+        "include_zero": true
+      },
+      "rhythm": {
+        "class": "SubFig",
+        "title": "局部等待／近期三个极值间隔中位数",
+        "unit": "ratio",
+        "height": 260,
+        "coordinate": "ratio",
+        "width": 880,
+        "x_scope": "market",
+        "include_zero": true
+      },
+      "waiting_time": {
+        "class": "SubFig",
+        "title": "局部等待与正式近期三间隔中位数（非概率）",
+        "unit": "CalendarUTITick",
+        "height": 260,
+        "coordinate": "calendar_tick",
+        "width": 880,
+        "x_scope": "market",
+        "include_zero": true
+      }
+    },
+    "scalar_columns": 2
+  },
+  "reading_policy": {
+    "version": 1,
+    "knowledge_ticks": [
+      {
+        "x": 35360400,
+        "label": "03-30 22:55 / K35360400"
+      },
+      {
+        "x": 35361000,
+        "label": "03-31 09:00 / K35361000"
+      },
+      {
+        "x": 35361600,
+        "label": "03-31 09:05 / K35361600"
+      }
+    ],
+    "margin_fraction": 0.7,
+    "inside_value_labels": true,
+    "short_value_units": [
+      "CalendarUTITick"
+    ]
+  },
+  "identity": "aidata-display-only:i:selected_cut:c87065c5305d64304e54d1149580bccd4a4d0408cac969039e8c271cda123110",
+  "descriptor": {
+    "prepared_display": {
+      "version": 2,
+      "adapter": "normal_node_behavior",
+      "run_dir": "/dwdhome/fy/observe-iterate-bi01-fo-01/artifacts/bi01-worker11-runs/BI01-FO01-W11-20261025T023136Z-317d6c-i-comparison",
+      "selection_sha256": "f04c8412662ff94388031a7ff65f97864eb326e9827ba633a786b06f58dc2c9d",
+      "configuration_version": "0.6.0-worker11"
+    }
+  },
+  "qualification": "实际普通CAE另构图；此处同源图用投影/绑定只用于核显示，非正式多K产品"
+}

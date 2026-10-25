@@ -1,0 +1,130 @@
+{
+  "run_id": "BI01-FO01-W11-20261025T023136Z-317d6c-i-i_recovery",
+  "node_id": "big_000001",
+  "purpose": "as_known_query",
+  "knowledge_ks": [
+    35361000
+  ],
+  "primary_and_reference": [
+    {
+      "knowledge_k": 35361000,
+      "exact": "NodeBehaviorBook/NodeScaleTurnBehaviorRevision/9410abda-b111-442d-aa25-6b99da2afeb6/1d82177d-6e82-44fd-b4b8-8cb899a94e28",
+      "working_life": "5727e951-20b6-4a82-8c52-fc3a32f686cc",
+      "working_start": 35319000,
+      "working_direction": "down",
+      "formal_root_coordinate": [
+        "2017-03-31 09:00:00.500000",
+        58925,
+        2
+      ],
+      "role": "primary",
+      "reference_roles": []
+    }
+  ],
+  "spec": {
+    "version": 1,
+    "mode": "selected_cut",
+    "panels": {
+      "price": {
+        "class": "MainFig",
+        "title": "行情与过程边界",
+        "unit": "price",
+        "height": 420,
+        "coordinate": "price_level",
+        "width": 1800,
+        "x_scope": "market",
+        "include_zero": false
+      },
+      "completed_efficiency": {
+        "class": "SubFig",
+        "title": "已完成过程效率：最近六段／此前六段",
+        "unit": "ratio",
+        "height": 220,
+        "coordinate": "ratio",
+        "width": 880,
+        "x_scope": "single_k",
+        "include_zero": true,
+        "nominal_range": [
+          0.0,
+          1.0
+        ]
+      },
+      "working_motion": {
+        "class": "SubFig",
+        "title": "当前未完成过程：沿原方向净推进／累计最大逆向量",
+        "unit": "price",
+        "height": 220,
+        "coordinate": "price_delta",
+        "width": 880,
+        "x_scope": "single_k",
+        "include_zero": true
+      },
+      "working_efficiency": {
+        "class": "SubFig",
+        "title": "当前过程前缀效率（非已完成样本）",
+        "unit": "ratio",
+        "height": 220,
+        "coordinate": "ratio",
+        "width": 880,
+        "x_scope": "single_k",
+        "include_zero": true,
+        "nominal_range": [
+          0.0,
+          1.0
+        ]
+      },
+      "duration": {
+        "class": "SubFig",
+        "title": "已完成过程时长／当前过程年龄",
+        "unit": "CalendarUTITick",
+        "height": 220,
+        "coordinate": "calendar_tick",
+        "width": 880,
+        "x_scope": "single_k",
+        "include_zero": true
+      },
+      "rhythm": {
+        "class": "SubFig",
+        "title": "局部等待／近期三个极值间隔中位数",
+        "unit": "ratio",
+        "height": 220,
+        "coordinate": "ratio",
+        "width": 880,
+        "x_scope": "single_k",
+        "include_zero": true
+      },
+      "waiting_time": {
+        "class": "SubFig",
+        "title": "局部等待与正式近期三间隔中位数（非概率）",
+        "unit": "CalendarUTITick",
+        "height": 220,
+        "coordinate": "calendar_tick",
+        "width": 880,
+        "x_scope": "single_k",
+        "include_zero": true
+      }
+    },
+    "scalar_columns": 2
+  },
+  "reading_policy": {
+    "version": 1,
+    "value_label_offsets": {
+      "working_duration_points": {
+        "x_offset": -12,
+        "text_align": "right",
+        "y_offset": -36
+      }
+    }
+  },
+  "identity": "aidata-display-only:i:selected_cut:7659d29d5a4289f05e4c61e6ae889b1a539f18927a679a7526478b7920cecc8a",
+  "descriptor": {
+    "prepared_display": {
+      "version": 2,
+      "adapter": "normal_node_behavior",
+      "run_dir": "/dwdhome/fy/observe-iterate-bi01-fo-01/artifacts/bi01-worker11-runs/BI01-FO01-W11-20261025T023136Z-317d6c-i-i_recovery",
+      "selection_sha256": "dd1f02ce4589cb1ebf533ccdcdabb9ded548909eac00a90a78e40f47673b513a",
+      "configuration_version": "0.6.0-worker11"
+    }
+  },
+  "qualification": "实际普通CAE另构图；此处同源图用投影/绑定只用于核显示，非正式多K产品"
+}

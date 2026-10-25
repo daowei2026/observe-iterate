@@ -1,0 +1,9 @@
+
+i_K=widgets.Dropdown(options=list(PLAN['i_cuts']),value='i_before_missing_recovery',description='i知识K')
+i_mode=widgets.Dropdown(options=[('所选K当时可知','query'),('事后三切点对照','comparison')],value='query',description='阅读模式')
+i_out=widgets.Output()
+def display_i(change=None):
+ with i_out:
+  clear_output(wait=True);render_normal('i',i_K.value,i_mode.value)
+i_K.observe(display_i,names='value');i_mode.observe(display_i,names='value')
+display(widgets.HBox([i_mode,i_K]),i_out);display_i()

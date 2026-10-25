@@ -1,0 +1,155 @@
+{
+  "run_manifest.yaml": {
+    "run_id": "BI01-FO01-W11-20261025T023136Z-317d6c-i-i_before_missing_recovery",
+    "blk": "i",
+    "calendar_name": "night_end_at_2300",
+    "member_symbols": [
+      "i"
+    ],
+    "delivery_model": "overview_packet_plus_standalone_big_node_packets",
+    "full_mixed_run_zip_generated": false
+  },
+  "artifact_roles.yaml": {
+    "feature_slices": {
+      "role": "content_primary_evidence",
+      "can_support": [
+        "local_feature_values",
+        "feature_presence_inside_node"
+      ],
+      "cannot_support": [
+        "final_narrative_truth",
+        "priority_score"
+      ]
+    },
+    "source_occurrences": {
+      "role": "locating_primary_evidence",
+      "can_support": [
+        "why_node_generated",
+        "anchor_origin"
+      ],
+      "cannot_support": [
+        "candidate_quality",
+        "priority_score"
+      ]
+    },
+    "turn_skeleton": {
+      "role": "low_opinion_path_envelope",
+      "cannot_support": [
+        "causal_claim",
+        "score"
+      ]
+    },
+    "plot_refs": {
+      "role": "shared_human_ai_view",
+      "cannot_replace": [
+        "feature_slices",
+        "source_occurrences"
+      ]
+    }
+  },
+  "evidence_boundary.yaml": {
+    "primary_content_evidence": "03_FEATURE_SLICES.csv",
+    "primary_locating_evidence": "04_SOURCE_OCCURRENCES.csv",
+    "market_context_sidecar": "05_MARKET_SIDECAR.csv",
+    "human_visual_refs": "07_PLOT_REFS.csv",
+    "do_not_use_as_primary_evidence": [
+      "05_MARKET_SIDECAR.csv",
+      "07_PLOT_REFS.csv"
+    ]
+  },
+  "field_dictionary.yaml": {
+    "node_id": "稳定节点 ID，必须用于引用，不要说“第几个图”。",
+    "slice_id": "当前 packet 内的短来源 ID；真实 run 内路径见 06_FEATURE_CONFIGS_AND_FIELDS.yaml 的 slice_index。",
+    "raw_fields_json": "原始证据行字段，未做解释性聚合。",
+    "time_preview_json": "从原始行中抽出的自然时间 / UTI 字段预览。",
+    "value_preview_json": "从原始行中抽出的价格 / strength 等字段预览。",
+    "05_MARKET_SIDECAR.csv": "K 线等 sidecar 使用扁平 OHLCV/time 列，默认不要全读。"
+  },
+  "output_contract.yaml": {
+    "required_output": "LocalTurnNarrative 或 DataSideRequest",
+    "must_bind_to": [
+      "big_node_id",
+      "node_id",
+      "evidence_refs"
+    ],
+    "forbidden": [
+      "global_story",
+      "cross_big_causal_claim",
+      "score_from_row_count"
+    ]
+  },
+  "no_code_policy.yaml": {
+    "mode": "default_no_code",
+    "when_join_or_stats_needed": "emit_DataSideRequest_first",
+    "approved_micro_code_exception_only": true
+  },
+  "data_request_protocol.yaml": {
+    "DataSideRequest": {
+      "run_id": "BI01-FO01-W11-20261025T023136Z-317d6c-i-i_before_missing_recovery",
+      "big_node_id": "<big_node_id>",
+      "trigger": "join_needed|stats_needed|new_window_needed|raw_preview_needed|negative_control_needed",
+      "current_evidence": [],
+      "missing_decision": "",
+      "requested_view": {
+        "primitive_type": "",
+        "target_nodes": [],
+        "time_window": "",
+        "symbols": [],
+        "required_columns": []
+      },
+      "confidence_without_this": "low|medium|high",
+      "stop_when_known": ""
+    }
+  },
+  "read_order.yaml": {
+    "overview_packet": [
+      "README_FOR_PRO.md",
+      "00_RUN_CONTRACT.yaml",
+      "01_BIG_NODE_CASE_INDEX.csv",
+      "02_NODE_SCOPE_INDEX.csv",
+      "03_BATCH_PLAN.csv",
+      "04_CASE_READ_BUDGET.csv"
+    ],
+    "big_node_packet": [
+      "README_FOR_PRO.md",
+      "00_CONTRACT.yaml",
+      "01_NODE_SCOPE.csv",
+      "02_EVIDENCE_REFS.csv",
+      "03_FEATURE_SLICES.csv",
+      "04_SOURCE_OCCURRENCES.csv",
+      "05_MARKET_SIDECAR.csv",
+      "06_FEATURE_CONFIGS_AND_FIELDS.yaml",
+      "07_PLOT_REFS.csv",
+      "08_VALIDATION.md",
+      "09_EVIDENCE_REVISION.json"
+    ]
+  },
+  "view_transform_policy.yaml": {
+    "allowed_transforms": [
+      "scope_filter_by_big_node",
+      "scope_filter_by_node_ids",
+      "relative_path_normalization",
+      "column_projection",
+      "concat_existing_rows_without_aggregation",
+      "file_ref_indexing"
+    ],
+    "forbidden_transforms": [
+      "ranking",
+      "scoring",
+      "priority_assignment",
+      "candidate_type_assignment",
+      "head_tail_bucket_labeling",
+      "strength_sum",
+      "sync_score",
+      "interpretation_label",
+      "phase_label_inference",
+      "selecting_top_rows_by_strength",
+      "deriving_narrative_hint"
+    ]
+  },
+  "chart_lookup_protocol.yaml": {
+    "plot_refs_file": "07_PLOT_REFS.csv",
+    "chart_manifest_lookup": "manifest/chart_manifest.csv#node_id=<node_id>",
+    "big_world_page_lookup": "review/big_world_chart_pages.csv#big_node_id=<big_node_id>"
+  }
+}

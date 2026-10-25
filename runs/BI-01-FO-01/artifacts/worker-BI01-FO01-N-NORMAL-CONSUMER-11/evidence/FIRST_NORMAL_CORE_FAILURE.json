@@ -1,0 +1,80 @@
+{
+  "reason": "首轮manual仅给UTI，start_ts/end_ts落成UTI字符串；虽API/冷layout执行成功，不能作为正确自然时间交付",
+  "original_runs_retained": true,
+  "DAO_writes": false,
+  "repair": "从同源原价index取得准确自然时间，新增适配校验；新观察身份重建，不改首轮冻结core",
+  "cases": [
+    {
+      "run_id": "BI01-FO01-W11-20261025T022539Z-df87ab-rb-before_confirmation",
+      "node_id": "big_000001",
+      "start_uti": "103043400",
+      "end_uti": "103150800",
+      "stored_start_ts": "103043400",
+      "stored_end_ts": "103150800",
+      "timespan_sha256": "dc778c9e4234eb3825068e6bb9e6c6e276033a035228653c65dfbb521ba3556d"
+    },
+    {
+      "run_id": "BI01-FO01-W11-20261025T022539Z-df87ab-rb-at_or_after_confirmation",
+      "node_id": "big_000001",
+      "start_uti": "103043400",
+      "end_uti": "103151400",
+      "stored_start_ts": "103043400",
+      "stored_end_ts": "103151400",
+      "timespan_sha256": "4b3b0e6278ed7833574ea7d1f40e896933c919e735e71c30795d851f8a843b22"
+    },
+    {
+      "run_id": "BI01-FO01-W11-20261025T022539Z-df87ab-rb-final",
+      "node_id": "big_000001",
+      "start_uti": "103043400",
+      "end_uti": "103315800",
+      "stored_start_ts": "103043400",
+      "stored_end_ts": "103315800",
+      "timespan_sha256": "3888b46d4db2d9ae12bd6d270132639ba032c92c8a470d5107cc192594c48972"
+    },
+    {
+      "run_id": "BI01-FO01-W11-20261025T022539Z-df87ab-rb-comparison",
+      "node_id": "big_000001",
+      "start_uti": "103043400",
+      "end_uti": "103151400",
+      "stored_start_ts": "103043400",
+      "stored_end_ts": "103151400",
+      "timespan_sha256": "b648d471fdacc83e7ea0bd34e88e8353c382da68feb3c1a1c4687006c0cd6284"
+    },
+    {
+      "run_id": "BI01-FO01-W11-20261025T022539Z-df87ab-i-i_before_missing_recovery",
+      "node_id": "big_000001",
+      "start_uti": "35339400",
+      "end_uti": "35360400",
+      "stored_start_ts": "35339400",
+      "stored_end_ts": "35360400",
+      "timespan_sha256": "2151bfa7349a8b93e83e38ebcb7ffd62dd7e1071992437d93e3730e9f7272e91"
+    },
+    {
+      "run_id": "BI01-FO01-W11-20261025T022539Z-df87ab-i-i_recovery",
+      "node_id": "big_000001",
+      "start_uti": "35339400",
+      "end_uti": "35361000",
+      "stored_start_ts": "35339400",
+      "stored_end_ts": "35361000",
+      "timespan_sha256": "3142591723b59951065dc91b8d40d3416df3b20d41686ac41ef090c3362db643"
+    },
+    {
+      "run_id": "BI01-FO01-W11-20261025T022539Z-df87ab-i-i_after_recovery",
+      "node_id": "big_000001",
+      "start_uti": "35339400",
+      "end_uti": "35361600",
+      "stored_start_ts": "35339400",
+      "stored_end_ts": "35361600",
+      "timespan_sha256": "85562ca9dc8887d8a6c18a0130ad12cab47f78b88762ef5da1b0e48e5fb6f7d4"
+    },
+    {
+      "run_id": "BI01-FO01-W11-20261025T022539Z-df87ab-i-comparison",
+      "node_id": "big_000001",
+      "start_uti": "35339400",
+      "end_uti": "35361600",
+      "stored_start_ts": "35339400",
+      "stored_end_ts": "35361600",
+      "timespan_sha256": "ec9f0b8d4f18d67587b609450941f5c888c0efc45e4dbdb6b1f0ff4377bad9be"
+    }
+  ]
+}

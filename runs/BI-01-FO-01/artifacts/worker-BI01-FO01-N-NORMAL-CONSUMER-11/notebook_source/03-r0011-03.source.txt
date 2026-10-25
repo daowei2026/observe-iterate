@@ -1,0 +1,38 @@
+
+import inspect,subprocess,hashlib,io
+import pandas as pd,numpy as np
+from bokeh.io import output_notebook,show
+from bokeh.resources import INLINE
+from bokeh.models import GlyphRenderer
+from IPython.display import display,clear_output
+import ipywidgets as widgets
+from mquant.quant.models.graph import CaeNodeDao
+from mquant.aidata.contracts import build_run_handle
+from mquant.aidata.evidence_composition import prepare_node_evidence
+import mquant.aidata.evidence_composition as ec
+import mquant.aidata.normal_node_behavior as nn
+import mquant.aidata.normal_node_behavior_time as nc
+import mquant.aidata.u2_normal_node_behavior_display as nd
+import mquant.aidata.u2_normal_node_behavior_time as nt
+import mquant.aidata.big_world_chart as bw
+RT=Path(os.environ.get('BI01_W11_RUNTIME','/dwdhome/fy/cgpterm/artifacts/bi01-worker11-runtime'))
+CASES=json.loads((RT/'BUILT_RUNS.json').read_text())['cases'];BY_CASE={c['case']:c for c in CASES}
+EVIDENCE=ARTIFACT_DIR/'evidence';EVIDENCE.mkdir(exist_ok=True)
+PLAN=json.loads(Path(json.loads((Path(CASES[0]['run_dir'])/'manifest/normal_node_behavior.json').read_text())['scene']['path']).read_text())
+output_notebook(resources=INLINE,hide_banner=True)
+def clean(v):
+ if isinstance(v,dict):return {str(k):clean(x) for k,x in v.items()}
+ if isinstance(v,(list,tuple,pd.Series,pd.Index,np.ndarray)):return [clean(x) for x in v]
+ if isinstance(v,np.generic):return clean(v.item())
+ if v is pd.NA or v is pd.NaT:return None
+ if isinstance(v,float) and not np.isfinite(v):return None
+ if isinstance(v,(pd.Timestamp,datetime.datetime,Path)):return str(v)
+ return v
+RUNTIME=dict(execution_id=EXECUTION_ID,order_id='BI01-FO01-N-NORMAL-CONSUMER-11',python=sys.version,executable=sys.executable,kernel='python3',
+ actual_aidata_head=subprocess.check_output(['git','-C',str(AIDATA_WORKTREE),'rev-parse','HEAD'],text=True).strip(),
+ scene_version=PLAN['version'],normal_consumer_version=nc.CONSUMER_VERSION,modules={})
+for mod in (nn,nc,nt,nd,ec,bw):
+ p=Path(inspect.getfile(mod)).resolve();RUNTIME['modules'][mod.__name__]=dict(file=str(p),sha256=hashlib.sha256(p.read_bytes()).hexdigest())
+(EVIDENCE/'EXECUTION_RUNTIME.json').write_text(json.dumps(RUNTIME,ensure_ascii=False,indent=2))
+LAYOUTS={};AUDITS={}
+print('本次新kernel/普通CAE',EXECUTION_ID,RUNTIME['actual_aidata_head'])
