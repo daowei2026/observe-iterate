@@ -1,0 +1,90 @@
+{
+  "historical_and_candidate_readonly_replays": [
+    {
+      "input_commit": "46e60ed697f2b1e9ab791c7d64ba3100dca376ed",
+      "code_commit": "235c0f29861340a56dbfd3bfd749532328583849",
+      "command": "pre-dispatch",
+      "round_id": "R0002",
+      "result": {
+        "check": "pre-dispatch",
+        "round_id": "R0002",
+        "ok": true,
+        "errors": [],
+        "recorded_send_state": "NOT_SENT",
+        "next_external_checks": [
+          "OWNER_START_AND_ROLE_AUTHORIZATION",
+          "ACTUAL_MCP_PHONE_CONTROL_AND_UNIQUE_RECIPIENT",
+          "LOCAL_SCHEDULER_SEND_DEDUP",
+          "OVERLAY12_EXACT_PAYLOAD_AND_RECIPIENT_VERIFY"
+        ],
+        "sent": false,
+        "business_gate": false
+      }
+    },
+    {
+      "input_commit": "56e7b84cc78f75828ebb602cf0bc74a7c4aa6a1a",
+      "code_commit": "235c0f29861340a56dbfd3bfd749532328583849",
+      "command": "pre-dispatch",
+      "round_id": "R0002",
+      "result": {
+        "check": "pre-dispatch",
+        "round_id": "R0002",
+        "ok": true,
+        "reception_kind": "ORIGINAL_ISSUER_PROBLEM",
+        "reader_input_errors": [],
+        "reader_dispatch_ready": false,
+        "errors": [],
+        "recorded_send_state": "NOT_SENT",
+        "next_external_checks": [
+          "OWNER_START_AND_ROLE_AUTHORIZATION",
+          "ACTUAL_MCP_PHONE_CONTROL_AND_UNIQUE_RECIPIENT",
+          "LOCAL_SCHEDULER_SEND_DEDUP",
+          "OVERLAY12_EXACT_PAYLOAD_AND_RECIPIENT_VERIFY"
+        ],
+        "sent": false,
+        "business_gate": false
+      }
+    },
+    {
+      "input_commit": "235c0f29861340a56dbfd3bfd749532328583849",
+      "code_commit": "235c0f29861340a56dbfd3bfd749532328583849",
+      "command": "pre-dispatch",
+      "round_id": "R0002",
+      "result": {
+        "check": "pre-dispatch",
+        "round_id": "R0002",
+        "ok": false,
+        "reception_kind": "ORIGINAL_ISSUER_PROBLEM",
+        "reader_input_errors": [],
+        "reader_dispatch_ready": false,
+        "errors": [
+          "SEND_NOT_SAFE:COMMITTED"
+        ],
+        "recorded_send_state": "COMMITTED",
+        "next_external_checks": [
+          "OWNER_START_AND_ROLE_AUTHORIZATION",
+          "ACTUAL_MCP_PHONE_CONTROL_AND_UNIQUE_RECIPIENT",
+          "LOCAL_SCHEDULER_SEND_DEDUP",
+          "OVERLAY12_EXACT_PAYLOAD_AND_RECIPIENT_VERIFY"
+        ],
+        "sent": false,
+        "business_gate": false
+      }
+    },
+    {
+      "input_commit": "235c0f29861340a56dbfd3bfd749532328583849",
+      "code_commit": "235c0f29861340a56dbfd3bfd749532328583849",
+      "command": "after-return",
+      "round_id": "R0002",
+      "result": {
+        "check": "after-return",
+        "round_id": "R0002",
+        "ok": true,
+        "errors": [],
+        "limits": "Reply/Return integrity only. Management reception and applicable independent review remain separate.",
+        "business_gate": false
+      }
+    }
+  ],
+  "worker_result_component_probe": "报告提交后补记真实 exact 来源核验结果"
+}

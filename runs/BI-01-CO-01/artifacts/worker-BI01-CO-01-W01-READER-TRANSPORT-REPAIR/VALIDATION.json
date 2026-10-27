@@ -1,0 +1,65 @@
+{
+  "order_id": "BI01-CO-01-W01-READER-TRANSPORT-REPAIR",
+  "code_commit": "235c0f29861340a56dbfd3bfd749532328583849",
+  "policy_commit": "f7f2bffe9bcddd951d5bf218d56449e8f42999ae",
+  "results": [
+    {
+      "command": "python -m unittest runtime.tests.test_bi01_run_gate -q",
+      "code_commit": "4fd147e124e54617acdd72d90a0f2f0c0c00f459",
+      "tests": 23,
+      "exit_code": 0,
+      "meaning": "修改前现有 Gate 基线；79.636 秒"
+    },
+    {
+      "command": "python -m unittest runtime.tests.test_bi01_run_gate runtime.overlay.tests.test_management_prompt.BI01ReaderTransportTests -v",
+      "code_commit": "235c0f29861340a56dbfd3bfd749532328583849",
+      "tests": 40,
+      "exit_code": 0,
+      "elapsed_seconds": 328.078,
+      "meaning": "最终 Gate 与现有运输断言的 BI01 fixture；隔离临时 Git，无手机"
+    },
+    {
+      "command": "python -m unittest discover -s runtime/overlay/tests -p test_workmap_gate_v2.py -v",
+      "code_commit": "235c0f29861340a56dbfd3bfd749532328583849",
+      "tests": 15,
+      "exit_code": 0,
+      "test_elapsed_seconds": 57.982,
+      "meaning": "workmap_gate.py 与该测试文件未修改；其输入源码与本候选相同"
+    },
+    {
+      "command": "python -m py_compile runtime/tools/bi01_run_gate.py runtime/overlay/tools/management_prompt.py runtime/tests/test_bi01_run_gate.py runtime/overlay/tests/test_management_prompt.py",
+      "code_commit": "235c0f29861340a56dbfd3bfd749532328583849",
+      "exit_code": 0
+    },
+    {
+      "command": "git diff --check",
+      "code_commit": "235c0f29861340a56dbfd3bfd749532328583849",
+      "exit_code": 0
+    }
+  ],
+  "known_out_of_scope_failures": {
+    "baseline_commit": "4fd147e124e54617acdd72d90a0f2f0c0c00f459",
+    "classes": [
+      "runtime.overlay.tests.test_management_prompt.DispatchTests",
+      "runtime.overlay.tests.test_management_prompt.CWorkflowDeltaTests"
+    ],
+    "tests": 44,
+    "failures": 11,
+    "errors": 32,
+    "baseline_reproduced": true,
+    "details": "旧 B/C 单字母 stage 与当前 STAGE/INVALID_STAGE_ID 检查不兼容，导致多项断言在运输检查前失败；初跑与未修改基线同结果；没有声称全文件/全仓通过"
+  },
+  "development_failures_resolved": [
+    "初版新 fixture 的 accept/decide 共用 instructions_ref，产生无变化 Git commit；已用不同实际指引区分，最终测试覆盖通过",
+    "新增 artifacts 变更用例暴露仅 reader_fingerprint 比较漏掉 watched result trees；现已补核并通过",
+    "v2 测试以模块名加载遇同目录 import ModuleNotFoundError；改用其适用的 unittest discover 命令通过"
+  ],
+  "code_files_sha256": {
+    "runtime/tools/bi01_run_gate.py": "fe98eaa23e90196361d7d80a61f4b061d8f60079bf9e5c125f655f235d875cea",
+    "runtime/overlay/tools/management_prompt.py": "7219165d1a133cbeba10053e0c526fbd028daa5601e96c23219415025d57868a",
+    "runtime/tests/test_bi01_run_gate.py": "8f967c8b15f60b6d9aecdb0d9a46c6bd57b3d720d180e19a984404fc3ce0e098",
+    "runtime/overlay/tests/test_management_prompt.py": "61407f8690b4f270721583579260859cb34aa9b995e0565ee0aaf94e70311087"
+  },
+  "phone_used": false,
+  "business_gate": false
+}
