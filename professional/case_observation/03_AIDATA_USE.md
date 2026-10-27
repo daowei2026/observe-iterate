@@ -1,53 +1,113 @@
 # aidata 的必经数据入口与两种本批用法
 
+本页保存可复用的接口用法、当前输入选择和影响研究的工具边界。依据是 Owner 提供的两项真实测试报告及代码；原件、版本和材料覆盖范围见 [测试来源说明](references/aidata_20261027/README.md)。测试结果不是本批业务成果，也不另设一项专业工作或运行 Gate。
+
 ## 1. 位置与责任
 
-本批所有正式行情、定位特征和分析输入必须由 aidata 接口及其正式交付提供。允许 AI 在取得的数据上程序筛选、计算辅助量和回看，不允许在 observe-iterate/cgpterm 中另建直接 KLine、数据库或旧 ZIP 的平行取数路径。工具暂缺能力时如实定位，按真实授权在工具所属仓处理；本次材料修改不授权改 aidata、uplot、tis/frp 或共享服务。
+本批所有正式行情、定位特征和分析输入必须由 aidata 接口及其正式交付提供。允许 AI 在取得的数据上程序筛选、计算辅助量和回看，不允许在 observe-iterate/cgpterm 中另建直接 KLine、数据库或旧 ZIP 的平行取数路径。构造 `KLine(...)` 等 Feature 对象交给 aidata 是正常配置，不是绕过 aidata 取数。
 
-已知实际工作区为 `/dwdhome/fy/BASE_E6_2`。它不是 Git 仓库身份，也不授予其中所有仓库写权。现场记录真实 checkout、环境、Context、品种和历史范围；不照搬讨论中的假日期与方法参数。
+已知实际工作区为 `/dwdhome/fy/BASE_E6_2`。它不是 Git 仓库身份，也不授予其中所有仓库写权。沿用现场已有环境，记录真实 checkout 和必要本地差异，不因整理本页重新安装依赖或重做全部基础预检。本次材料修改不授权改 aidata、uplot、tis/frp 或共享服务。
 
-使用前读实际采用 aidata 的 README、API 和输入合同。现有旧用法的准确历史出处：[04_AIDATA_USE.md 第3节](https://github.com/daowei2026/observe-iterate/blob/9badfa6f30caebbe3156c5e4ee4deb43d22cacb5/professional/feature_observation/04_AIDATA_USE.md#3-%E5%AE%9E%E9%99%85%E4%BD%BF%E7%94%A8%E6%97%B6%E6%80%8E%E6%A0%B7%E8%80%83%E8%99%91)。只复用接口关系，不继承旧四项工作的验收顺序。
+接口历史出处仍是 [04_AIDATA_USE.md 第3节](https://github.com/daowei2026/observe-iterate/blob/9badfa6f30caebbe3156c5e4ee4deb43d22cacb5/professional/feature_observation/04_AIDATA_USE.md#3-%E5%AE%9E%E9%99%85%E4%BD%BF%E7%94%A8%E6%97%B6%E6%80%8E%E6%A0%B7%E8%80%83%E8%99%91)。只复用接口关系，不继承旧四项工作的验收顺序。使用版本变化时定向核 README、API 和输入合同，不把报告中的工作分支名或缩写 SHA 当作新的实际版本证明。
 
 ## 2. 仍从这三个接口理解
 
 | 接口 | 负责什么 | 不代表什么 |
 | --- | --- | --- |
-| `build_chart_run(run_brief_input)` | 建立 run，确定图与数据共用的节点/时间范围 core | 尚未证明生成了平台图或正式 feature_slices |
-| `build_big_world_chart_pages(run, run_brief_input=..., save=True)` | 消费 core，生成平台图并返回图定位 | URL 存在不证明页面可用，也不自动证明所有图已在同一页 |
-| `build_board_run({...run_brief_input, "run_id": run.run_id}, reuse_core=True)` | 复用该 core，形成正式切片、来源索引和数据交付 | 不能把新增窗口悄悄塞进冻结 core，不替代专业分析 |
+| `build_chart_run(run_brief_input, dry_run=False)` | 建立 run，确定图与数据共用的节点/时间范围 core | 尚未证明生成平台图或正式 feature_slices |
+| `build_big_world_chart_pages(run, run_brief_input=..., save=True)` | 消费 core，生成平台图并返回图定位；测试版本内部先建 overview，再逐 big 建页 | 返回多个页面不等于已经组合为一个页面 |
+| `build_board_run({...run_brief_input, "run_id": run.run_id}, reuse_core=True, dry_run=False)` | 复用同一 core，形成正式切片、来源索引和数据交付 | 不追加冻结节点，不替代专业分析或平台打开核验 |
 
-并非每次必须按三接口全调。按实际目的采用其中所需入口，记录真实顺序和输出。若只画概览实际使用 `build_run_overview_chart_page`，须明确它是图生成层的独立入口，与第二接口的关系由采用版本和真实结果说明，不能假称调用了第二接口。
+仅画概览时实际调用 `build_run_overview_chart_page`，它是图生成层的独立入口，不是假称调用了第二接口。单页组合是现有平台的页面组织动作，不是第四种行情获取接口；实际采用的组合代码、调用顺序与 URL 另记。
 
-## 3. 两种要先验证、随后复用的方式
+## 3. 当前这组三品种的输入选择
 
-### 方式一：只有 1d 的图和数据
+以下是本批 rb/hc/i 的具体设置，不是所有未来板块的永久默认值。
 
-取得完整研究范围的多品种日线正式数据，并生成可打开的 1d 概览；不为找用例预先生成大量 30min/1min/5s 图。
+| 输入 | 本批采用方式 |
+| --- | --- |
+| 对象 | `blk=extract_time_syms="blk@steel"`；报告中的实际成员为 rb、hc、i，实际运行仍保留成员展开结果 |
+| Context 数据集 | 沿用已测试的 `sof_name="TA_updto20240229_DBA"`、`stk_tlist="tick_test_all57_takeout_lcNsiNcy"` |
+| 共同观察起点 | `2021-01-01`。Owner 明确这三个品种从此时起交易日历相同，之前时间对不齐；概览不再从 2013 年开始 |
+| Context 起点 | 两种方式均把 `OptContext` 的 `startDay` 设为 `2021-01-01`，不能只修改 manual 用例窗口或前端缩放而保留 2013 年概览 |
+| 结束边界 | 按实际选定范围传入 `endDay`；报告使用 `2024-02-29`，但有效日线止于 2024-02-28 收盘，不能写成包含结束日全天 |
+| 日历 | `calendar_override="night_end_at_2300"`；本批共同范围不等于以后任何品种都可强行套同一日历 |
+| 节点 | `generation_depth="big"`、`big_source.mode="manual"`；不生成 mid/small/tick 子节点 |
+| 正式行情证据 | `make_point_anchor(KLine(freq="1d"/"30m"), uti_fields="closeUti", slice_levels=["big"], evidence_role="market_context_sidecar", is_raw_market_data=True, ...)` |
+| 30m 图上的贴近转折 | `ScaleTurnCalendar("mid")`，时间字段 `x`、图点 `x/y`，`slice_levels=["big"]`、`plot_binding.surfaces=["big"]` |
+| 运行与输出 | 本次唯一 run_id、实际 output_root；不复用测试 run_id 或把测试目录当正式批次目录 |
 
-验证输入要明确 Context、成员、历史范围、日历、1d KLine evidence/时间字段和输出位置。用现有 `build_chart_run`/数据交付入口及实际 overview 入口实现；日线 Feature 的字段绑定和切片结果必须在真实环境验证，本文不预填未经验证的字段名或可运行代码。
+**30m 是 K 线频率，big 是节点/展示层级，mid 是贴近转折参数，三者独立。** 换成 mid 不需要改 `generation_depth`、`slice_levels` 或 `surfaces`，也不表示增加 1m 中尺度页面。特征对象、feature_key、图例和正式数据引用都应一致改成 mid；不能只把 large 的图例改名，或继续读取 large 的旧 CSV。
 
-验收看实际数据覆盖、价格与时间字段、来源、图链接及打开结果。不得仅凭图内部使用日线，就声称已通过正式接口给 AI 交付日线数据。
+本批初始全范围扫描与概览采用上述共同范围；回看仍不预设固定 T 或固定长度。若具体研究确需更早信息或计算预热，分别说明实际计算范围、可比范围和展示范围，不能把 2021 年之前未对齐的信息无说明并入三品种共同对照。
 
-### 方式二：1d 概览 + 用例 30min 大尺度图及对应数据
+已整理 [当前入参示例](examples/aidata_inputs.py)：只构造 brief 和 Feature 描述，没有取数、保存图或自动执行；保留现有 aidata API。结束边界、输出位置、run_id 和真实用例窗口由调用方填写。该示例已按 Owner 要求改为 2021 起点和 mid，不能冒称其全部组合已在现场重跑通过。原测试的 `ensure_profile_runtime()` 只是注册配置；自定义 brief 的 `profile_id="" / profile_version=0` 不能称为标准 Profile v4。
 
-将 AI 实际找到的用例位置及适当前后范围交给 aidata。可使用真实采用版本支持的 manual 时间窗方式；完整概览与全部用例的大尺度图应在一个平台页面内。大尺度先画行情与贴近转折，暂不扩展为 N 特征专页或全 U2/U3 图层。
+## 4. 两种用法及各自真正得到的数据
 
-需要的 30min 行情和贴近转折也经 aidata 交付。将核心差异区间、展示窗口和研究取数范围分开；显示 extra_time 不当然扩大正式切片。贴近转折的实际点和确认信息不混用。
+### 方式一：只有 1d 的图和正式数据——用于全范围寻找位置
 
-可以扩展已有平台图，也可以重新定义一个完整图；不要求不断沿用同一 URL，但每次 Owner 入口所指必须是含概览及全批大尺度图的一个页面。新窗口需要重新建立适用 core/run 或使用真实支持的更新方式，不把 reuse_core=True 当追加节点接口，不覆盖旧冻结证据。
+用 `make_overview_brief` 构造本次 brief：Context 从 2021-01-01 开始，唯一 manual 窗口为 `(2021-01-01, 实际结束边界, full_history)`，证据只有 1d KLine。`slice_levels=["big"]` 只表示在该全范围节点切日线，不会因此自动创建 30m 页面。
 
-## 4. 图和数据共同使用
+```python
+# brief 是当前有效完整输入；在已有 mquant 环境中调用以下现有 API。
+run = build_chart_run(brief, dry_run=False)
+page = build_run_overview_chart_page(run, run_brief_input=brief, save=True)
+board = build_board_run(
+    {**brief, "run_id": run.run_id}, reuse_core=True, dry_run=False
+)
+```
 
-先消费方式一的数据找位置，再按方式二提供用例观察；可使用同一或不同 aidata run，取决于实际接口是否支持，但保留数据上下文和来源对应，不能强行规定必须两个 run。
+实际顺序为第一个接口 → 独立 overview 入口 → 第三个接口；不调用 `build_big_world_chart_pages`。从正式交付取得这段共同历史的 rb/hc/i 日线，供 AI 扫描并自行选择用例。报告已验证 `closeUti` 绑定和这条图数链，不必再次从零调查日线是否能导出；新起点下的实际覆盖仍由本次输出说明。
 
-`generation_depth="big"`、manual windows、overview 独立入口、页面组合和 evidence 配置均以实际采用版本为准。源码推断、执行成功、平台真实打开三者分开报告。普通接口测试不是新研究用例，测试窗口不得伪装成 AI 找到的业务场景。
+### 方式二：1d 概览 + 用例 30m 大尺度图 + mid 贴近转折及正式数据
 
-本次仓库准备尚未产生新的现场验证结果。Codex 的方式一/方式二验证应以真实版本、完整输入、调用顺序、数据路径、图 URL、页面组成及失败限制回交；有已取得且适用的结果就消费，不重复做相同基础预检。能力不符时先指出最小缺口，再由有权责任者安排必要修复，不另造绘图平台。
+用 `make_case_brief` 构造本次 brief：Context 仍覆盖 2021 起的共同历史，manual 窗口由 AI 实际选出的 3–5 个用例及适当前后范围给出；证据包括 1d KLine、30m KLine 和 mid 贴近转折。
 
-## 5. 结果消费与写权
+```python
+run = build_chart_run(brief, dry_run=False)
+pages = build_big_world_chart_pages(run, run_brief_input=brief, save=True)
+board = build_board_run(
+    {**brief, "run_id": run.run_id}, reuse_core=True, dry_run=False
+)
+# 这三次调用不冒称已得到单页综合 URL；页面组合见下一小节。
+```
+
+第二接口内部已经创建 overview，不为相同用途再重复调用独立 overview 入口。大尺度先画行情与 mid 贴近转折，不扩展成 N 特征专页或全 U2/U3 图层。菱形大小 20 是原测试样式，不是业务阈值；显示细节可按可读性调整，颜色仍主要区分品种。
+
+**方式二的正式 1d 切片只覆盖各个 manual big 窗口，不覆盖概览显示的全部历史。** 报告的任务 2 只有 282 行日线切片，不能据一张全历史概览图声称已取得全历史正式数据。继续使用方式一的正式日线交付，或通过 aidata 另取所需完整范围，并记录对应 run；不从 Bokeh 图层反向提取数据冒充正式切片。
+
+### 同一平台页面怎样处理
+
+首轮正文和原 probe 的四个 URL，是“一个 overview + 三个独立 big 页面”的历史结果。报告开头随后更正：**已用现有 CAEGraph 的四个 PlotSet 组合成单页，并改为 mid，无需改源码。** 因此不再把首轮末尾提出的 aidata 源码改造方案当作当前待办。
+
+本次附件没有包含更正所引用的 `mid_combined_revision/补充测试报告.md` 和组合代码。采用方向是复用已经报告成功的现有平台组合，不重新设计服务；执行者从 [测试来源说明](references/aidata_20261027/README.md) 指定的现场位置取得补充代码和实际页面身份，用于本批页面。不得虚构一个新的公开接口、组合选项或补充测试 URL。
+
+正式交付仍须一个页面内包含本批概览和全部用例 30m 图；3 个测试用例的四个 PlotSet 不是永久固定数量。追加/刷新页面按实际支持方式操作，不把“曾组合成功”扩写为“同一 URL 无限追加已经验证”。新窗口需要重新建立适用 core/run 或使用真实支持的更新方式，`reuse_core=True` 不是追加节点接口。保留旧冻结证据；页面组合不改变各图与其数据源的对应。
+
+## 5. 影响研究的范围与时间含义
+
+| 已知情况 | 实际使用时怎样处理 |
+| --- | --- |
+| 日期字符串映射为日历边界，报告各窗口未包含结束日的日盘收盘 | 同时记录请求范围与实际首末时间；需要覆盖某日收盘时，在 aidata 支持的边界表达下取数并检查，不能未经核对一律加一天或声称全天已含 |
+| 30m 图配置 `extra_time="10h"`，图上有窗口外点 | 区分核心差异区间、manual 冻结/切片窗口、实际显示范围和研究所需范围；需要分析额外点时经 aidata 补正式数据，不能拿显示行数当正式切片行数 |
+| 转折的 `x/y` 是实际位置 | 用于历史定位；不能据 x 推断该时点已确认/可知。声称当时能够辨别时，另核确认信息；本次材料未给出可直接照用的确认时间字段 |
+| 原始 OHLC 存在空值 | 保留并区分无效行情和有效行情，不填零或拼接不同时刻制造共同走势；2021 起点不自动证明每行无缺失 |
+| 图层有展示投影/归一化 | 图数核对比较同源原始值和时间；展示坐标不冒充正式价格或独立证据 |
+| `context_ref.start_day/end_day` 在原报告中为 null | 保留实际 OptContext 的 camelCase 输入、窗口索引和实际数据覆盖；不能只靠这两个空字段判无范围，也不为此先改通用序列化层 |
+
+正式数据从 `board.delivery_manifest_path`、`board.feature_slice_stats_path` 和 run 的 `manifest/timespan_index.csv` 定位。原路径形状为 `feature_slices/<node>/symbol/<sym>/<feature_key>/__default__.csv`；实际文件以本次 manifest 为准，不能机械写死测试前缀、节点编号、默认参数组名或行数。
+
+## 6. 已有验证怎样复用，哪些仍须看本次实物
+
+已有报告可支持正式图数链、字段绑定、big-only 和原范围图数一致性的复用，不要求每个用例重新证明全部基础设施。报告和代码原件不自动变成本批通过证据；aidata 精确提交、依赖本地差异及实际环境的适用性仍需对应。
+
+本次发生变化的关键处是 2021 起点、mid 特征和单页组合。随本次正常交付核实际范围/成员、mid 实物与图例、正式切片和同页全部图即可；不继承旧 8,031 行、47 个 large 转折或旧 URL 的通过结论。单页补充代码暂未取得只影响相关页面交付，不冻结已经取得可靠日线上的选例和回看研究。
+
+每次结果按 [02](02_OWNER_DELIVERY.md) 给 Owner 看到实际输入、接口调用及页面组合顺序、图内名称、正式数据路径和未解决缺口。程序创建成功、页面真实打开、专业研究成立和 Owner 认可分别说明；测试窗口不是业务发现。
+
+## 7. 结果消费与写权
 
 原签发 Pro 接收 Worker 的数据/图/调用实物，判断是否足够支撑具体研究；管理接收范围仍依真实任务。技术 PASS 不等于专业认可，未实际看图不声称本人看过。
 
-按 [02](02_OWNER_DELIVERY.md) 将关键输入和实际接口顺序给 Owner 直接查看。图层参数、数据配置和业务解释各有用途，不把全部中间量都画出来。各品种标识应一致，必要区分优先不占用品种颜色。
-
-遇到共享服务、认证、注册或部署权限缺口时只限制真正依赖的动作，保留已取得可靠数据上的研究；不能绕过权限、修改全局服务或把旧运行的等待直接继承为本批等待。
+遇到共享服务、认证、注册或部署权限缺口时只限制真正依赖的动作，保留已取得可靠数据上的研究。确有工具缺口才按授权在工具所属仓处理，不能绕过权限、修改全局服务或在观察仓另造数据/绘图平台。
