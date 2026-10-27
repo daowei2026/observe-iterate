@@ -2,7 +2,7 @@
 """BI-01 new-run Git evidence gate. Read-only, no phone, no business decisions.
 
 Exit 0 means mechanical prerequisites are present at an exact local Git commit.
-It never authorizes a message or certifies actual send, management quality or V2 business acceptance.
+It never authorizes a message or certifies actual send, management quality or professional business acceptance.
 """
 from __future__ import annotations
 
@@ -15,6 +15,7 @@ import subprocess
 import sys
 from pathlib import Path, PurePosixPath
 
+# Legacy library/fixture compatibility only; the CLI requires an explicit run ID.
 DEFAULT_RUN_ID = "BI-01-V2-02"
 RUN = "runs/" + DEFAULT_RUN_ID
 BINDING = "runtime/config/WORKMAP_BINDING.json"
@@ -31,11 +32,13 @@ REQUIRED = (
 
 
 class Git:
-    def __init__(self, root: str, ref: str, run_id: str = DEFAULT_RUN_ID):
+    def __init__(self, root: str, ref: str, run_id: str = DEFAULT_RUN_ID,
+                 binding_path: str = BINDING):
         if not isinstance(run_id, str) or not re.fullmatch(r"BI-01-[A-Z0-9]+(?:-[A-Z0-9]+)*", run_id):
             raise ValueError("INVALID_RUN_ID")
         self.run_id = run_id
         self.run_root = "runs/" + run_id
+        self.binding_path = self.path(binding_path)
         self.invocation_prefix = run_id.replace("BI-01-", "BI01-", 1)
         self.reader_task = self.run_root + "/reviews/management-R0001/READER_TASK.md"
         if not HEX40.fullmatch(ref):
@@ -96,7 +99,7 @@ def require(conditions: list[tuple[bool, str]]) -> list[str]:
 def active_binding(view: Git) -> list[str]:
     """Only verify adopted structural references; real intake requires workmap_gate."""
     try:
-        b = view.obj(BINDING)
+        b = view.obj(view.binding_path)
     except (ValueError, KeyError, UnicodeError, json.JSONDecodeError):
         return ["WORKMAP_BINDING_UNREADABLE"]
     if b.get("status") != "ADOPTED":
@@ -160,7 +163,7 @@ def invocation(view: Git, round_id: str) -> tuple[dict, list[str]]:
             or marker != "[" + invocation_id + "]"):
         errors.append("ROUND_MARKER_OR_INVOCATION_MISMATCH")
     if prompt.split(b"\n", 1)[0] != str(marker).encode("utf-8"):
-        errors.append("PROMPT_FIRST_LINE_NOT_SCHEDULER_MARKER")
+        errors.append("PROMPT_FIRST_LINE_NOT_SCHEDULER_MARKER",)
     if record.get("work_id") != "BI-01":
         errors.append("COORDINATOR_FIXED_WORK_ID_REQUIRED")
     if record.get("policy_commit") != view.ref:
@@ -264,7 +267,7 @@ def first_reader(view: Git, round_id: str, rec: dict) -> list[str]:
                 or plan["selector"] != "#reader-pre-adoption"):
             raise ValueError("FIRST_READER_MANAGEMENT_ADOPTION_REQUIRED")
         coordinator.source(view.root, adoption, repository)
-        authority = Git(str(view.root), adoption["commit"], view.run_id)
+        authority = Git(str(view.root), adoption["commit"], view.run_id, view.binding_path)
         decision = authority.text(adoption["path"])
         if decision.encode("utf-8") != view.raw(adoption["path"]):
             raise ValueError("FIRST_READER_MANAGEMENT_DECISION_NOT_CURRENT")
@@ -290,7 +293,7 @@ def first_reader(view: Git, round_id: str, rec: dict) -> list[str]:
 
         sources = [entry["source"] for entry in binding["source_reads"]]
         input_paths = [view.run_root + "/README.md", view.run_root + "/00_长程推进地图.md",
-                       view.run_root + "/01_当前任务.md", BINDING]
+                       view.run_root + "/01_当前任务.md", view.binding_path]
         inputs = []
         for path in input_paths + [view.run_root + "/OWNER_START.md"]:
             refs = [s for s in sources if s.get("path") == path]
@@ -304,8 +307,8 @@ def first_reader(view: Git, round_id: str, rec: dict) -> list[str]:
                 inputs.append(refs[0]["commit"])
         if len(set(inputs)) != 1:
             raise ValueError("FIRST_READER_INPUT_COMMIT_MISMATCH")
-        frozen = workmap.snapshot(view.root, inputs[0], BINDING, "bi01")
-        current = workmap.snapshot(view.root, view.ref, BINDING, "bi01")
+        frozen = workmap.snapshot(view.root, inputs[0], view.binding_path, "bi01")
+        current = workmap.snapshot(view.root, view.ref, view.binding_path, "bi01")
         if ("reader_fingerprint" not in frozen
                 or frozen["reader_fingerprint"] != current.get("reader_fingerprint")):
             raise ValueError("FIRST_READER_INPUT_CHANGED")
@@ -391,7 +394,7 @@ def pre_dispatch(view: Git, round_id: str) -> dict:
             errors.append("BOOTSTRAP_BINDING_REF_MISMATCH")
         try:
             ref = rec["bootstrap_ref"]
-            bootstrap = Git(str(view.root), ref["commit"], view.run_id).obj(ref["path"])
+            bootstrap = Git(str(view.root), ref["commit"], view.run_id, view.binding_path).obj(ref["path"])
             if (ref.get("selector") not in ("full", "全文")
                     or bootstrap.get("schema") != "question-work/v2"
                     or bootstrap.get("kind") != "BOOTSTRAP"
@@ -408,7 +411,7 @@ def pre_dispatch(view: Git, round_id: str) -> dict:
         if isinstance(rec.get("current_task_ref"), dict) and rec["current_task_ref"].get("selector") not in ("full", "全文"):
             errors.append("CURRENT_TASK_FULL_TEXT_REQUIRED")
         try:
-            unconfigured = view.obj(BINDING).get("status") == "NOT_CONFIGURED"
+            unconfigured = view.obj(view.binding_path).get("status") == "NOT_CONFIGURED"
         except (ValueError, TypeError):
             unconfigured = False
         if (rec.get("role") == "review" and not rec.get("bootstrap_ref")
@@ -502,12 +505,14 @@ def main() -> int:
     parser.add_argument("command", choices=["status", "pre-dispatch", "after-return"])
     parser.add_argument("--repo", required=True)
     parser.add_argument("--ref", required=True)
-    parser.add_argument("--run-id", default=DEFAULT_RUN_ID,
+    parser.add_argument("--run-id", required=True,
                         help="Explicit run identity; paths and markers stay scoped to this run")
+    parser.add_argument("--binding", default=BINDING,
+                        help="Repository-relative Workmap Binding path for this run")
     parser.add_argument("--round", help="R0001, R0002, ...")
     args = parser.parse_args()
     try:
-        view = Git(args.repo, args.ref, args.run_id)
+        view = Git(args.repo, args.ref, args.run_id, args.binding)
         if args.command == "status":
             ready_root = view.exists(view.run_root + "/README.md")
             problems = [] if ready_root else ["NEW_RUN_ROOT_MISSING"]

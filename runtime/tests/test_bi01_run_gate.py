@@ -101,7 +101,7 @@ class RoundGateOffline(unittest.TestCase):
         self.write(RUN + "/README.md", '<a id="common"></a>\nSynthetic common\n<a id="bi01"></a>\nSynthetic run\n')
         self.write(RUN + "/00_长程推进地图.md", '<a id="goal"></a>\nSynthetic map\n')
         self.write(RUN + "/01_当前任务.md", 'Synthetic complete S1/S2/S3 task; no business result.\n')
-        goal = "professional/feature_observation/00_PURPOSE_AND_FOUR_WORKS.md"
+        goal = json.loads((PROJECT / "runtime/config/COORDINATOR_DISPATCH.json").read_text())["works"]["BI-01"]["goal_ref"]["path"]
         self.write(goal, 'Synthetic goal; not actual business input.\n')
         policy_path = 'runtime/overlay/08_自然语言运行提示_v0.3.md'
         self.write(policy_path, (PROJECT / policy_path).read_text())

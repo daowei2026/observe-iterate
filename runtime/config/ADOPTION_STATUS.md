@@ -1,10 +1,9 @@
-# 具体特征观察：新任务准备状态
+# 本分支方法与采用状态
 
-**FEATURE_OBSERVATION_PREPARATION / NO_SEND / NO_NEW_OWNER_GO / NO_NEW_WORKMAP_ADOPTION**
+本分支准备新的多品种差异用例研究，专业入口见 [professional](../../professional/README.md)。**本次仅修改仓库材料，未取得针对新运行的启动 GO，未创建新 run、BOOTSTRAP、管理地图、有效 Intake 或实际派发。**
 
-- 2026-10-21 开始的新专业候选，以具体已实现且可取数据的特征为观察主体；四项专业工作可往返迭代。参见 professional/feature_observation/。
-- **本新任务尚未获新的 Owner GO、run_id、管理实质任务、签发地图或有效 Binding**。不得借用旧运行已采用信息派发。
-- 旧 BI-01-V2-02 在此前分支里已经存在真实 R、管理/专业回交及 ADOPTED Workmap；这些都是**该旧 run 的历史记录**，不是“从未发生”，也不能作为新任务已获授权的证明。
-- 为避免候选分支误用旧 Adopted Binding，runtime/config/WORKMAP_BINDING.json 在本分支标记为 NOT_CONFIGURED，**没有可用的现行地图/接收来源**。新的正式启动必须由有权管理重新签发，并根据真实来源、完整目标及精确提交重新形成 Binding 和 Intake。
-- 旧 V2 专业材料、固定 ZIP 和具体技术图可作为具名历史资料按需复用，但旧 S1–S3 职责、U2/U3 整体目标、Owner GO、管理采用与专业结论不得直接继承。
-- 先对新材料完成准备 1（基本输出）、准备 2（细节及旧知识）、准备 3（仓库修改后审查、必要修复）。准备质量要覆盖已知和高概率的关键运行阻断，不要求提前穷举所有专业观察结果。
+`WORKMAP_BINDING.json` 在本新分支为 `NOT_CONFIGURED`，其中 `<NEW_RUN_ID>` 是非活动占位，不可发送。实际采用按 [运行指南](../operations/CASE_OBSERVATION_RUN_GUIDE.md) 与 [接收清单](../operations/ADOPTION_HANDOFF_CHECKLIST.md) 办理，不用模板或测试假造 ADOPTED。
+
+旧 `BI-01-FO-01` 已有真实管理任务与 ADOPTED 仓库记录，完整旧绑定在 [9badfa6 的配置](https://github.com/daowei2026/observe-iterate/blob/9badfa6f30caebbe3156c5e4ee4deb43d22cacb5/runtime/config/WORKMAP_BINDING.json)。这不是新任务授权，也不证明现场进程此刻的运行/暂停状态。旧 run 内的记录原样保留；是否恢复或结束只取真实 Owner 决定。
+
+仓库提交、现场 Skill 采用、aidata 两种方式真实验证、平台实际打开、专业成果成立和 Owner 阅读/认可分别记录。当前没有本批新的 aidata 验证结果或统一平台 URL；后续消费 Codex 的真实结果，不在本状态文件编造成功。

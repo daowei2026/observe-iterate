@@ -1,16 +1,9 @@
-# 具体特征专业观察：当前准备入口
+# 当前专业方法与运行边界
 
-status: **FEATURE_OBSERVATION_PREPARATION / NO_SEND / NO_NEW_ADOPTED_WORKMAP**
+当前方法：`case_observation`，入口 [README](case_observation/README.md)。本批研究 3–5 个有差别的多品种历史用例，每例形成具体差异用例及回看解释研究；完整目标见 [00](case_observation/00_PURPOSE_AND_OUTPUTS.md)。
 
-**新专业目标**：以具名已实现、能取得数据的特征为观察主体，开展初始合理参数、特征展示方式、aidata 实际制图、正确性与普通投资者正常解读观察。四项工作可以往返，不设四道固定管理 Gate。U2/U3 仅为按需业务上下文，原 S1–S3 划分退出。
+本文件描述方法，不维护现场进度。新的运行身份、Owner GO、当前任务、管理地图与采用关系取本次 `runs/<run_id>/` 的真实记录及其 Binding；准备状态见 [ADOPTION_STATUS](../runtime/config/ADOPTION_STATUS.md)。仓库修改不等于启动。
 
-专业正文（不是目录摘要的替代）：
-1. [00 四项专业工作的含义与关系](feature_observation/00_PURPOSE_AND_FOUR_WORKS.md)
-2. [01 初始输出表达](feature_observation/01_OUTPUT_BASE_FORMAT.md)
-3. [02 初步实施细节](feature_observation/02_WORK_DETAILS.md)
-4. [03 旧 S1–S3 知识如何复用](feature_observation/03_REUSE_FROM_V2.md)
-5. [04 aidata 真实使用与展示](feature_observation/04_AIDATA_USE.md)
+旧 `BI-01-FO-01` 的任务与结果不被改写；本批不得继承它的已采用状态、在途、聊天、预算、特征前置或平台等待。旧任务是否暂停、结束或恢复只取真实 Owner 决定和现场记录，本文件不作决定。
 
-**当前优先研究的已实现特征**：CYF 在 2026-10-21 10:24 提供了 U2NormalNodeBehaviorFrp 的真实成功运行与读出信息，可作为第一项专业观察对象。正式运行前需固定实际源码/数据身份、使用路径和本次特征实例，不从历史讨论直接推定已获取当前数据。
-
-新任务**没有新 run ID、Owner GO、专业任务 Binding、管理签发或运行接收**；这些须按现有 runtime 的真实授权与发布程序建立。旧 BI-01-V2-02 已存在的 R、Workmap 和业务材料仍是该次历史，不自动延续。准备 3 在仓库改完后进行审查、修复和必要验证，再考虑新启动。
+U2/U3 是按需要查询的业务叙事与词汇来源，不要求先实现、验证完整 U2，也不以指定 N 特征为默认研究主体。正式业务合同未修改时，不把本批研究冒称为正式 U3 产品运行或普遍有效的预测能力。

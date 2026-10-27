@@ -1,27 +1,24 @@
-# 观察迭代 Agent — 具体特征观察迭代准备分支
+# 观察研究 Agent：多品种差异用例与回看研究
 
-**状态：新专业方法准备中 / 未取得新 Owner GO / NO_SEND。** 本分支不启动新 run，不继承原 BI-01-V2-02 的运行授权、管理地图、已采用 Binding、轮次或业务接收；原 V2-02 文件仍保留作为历史来源。
+当前专业方法是[多品种差异用例观察](professional/case_observation/README.md)，替换旧具体特征四项工作。运行机制继续复用，不另建调度或回交系统。
 
-当前专业工作的观察主体是**已实现且能取得真实数据的具体特征**；专业主干为：
-1. 初始合理参数；
-2. 特征展示方式；
-3. 使用 aidata 实际制图；
-4. 围绕特征正确性和普通投资者正常解读开展观察分析。
+**本分支为方法与运行接线准备；本次修改没有启动长程任务。** 新任务仍须真实 Owner GO、独立 run 身份和管理采用。旧运行记录保留，不能据此推定新任务已授权。
 
-它们是可以来回调整的**工作内容**，不是四个依次验收的固定阶段。新专业工作替代原 S1–S3 的划分，保留旧材料中仍适用的专业知识；U2/U3 只是按需使用的上下文，不再要求完成原完整 U2/U3 的业务观察。
+## 当前专业入口
 
-## 当前准备成果
+- [完整目标及两项具体产出](professional/case_observation/00_PURPOSE_AND_OUTPUTS.md)
+- [初步研究方法](professional/case_observation/01_RESEARCH_METHOD.md)
+- [Owner 阅读入口、统一平台图及调用记录](professional/case_observation/02_OWNER_DELIVERY.md)
+- [aidata 三接口及两种图数使用方式](professional/case_observation/03_AIDATA_USE.md)
+- [U2/U3 与旧知识的按需复用](professional/case_observation/04_SOURCES_AND_REUSE.md)
 
-- [专业方法候选入口](professional/feature_observation/README.md)
-- [四项工作的主干与关系](professional/feature_observation/00_PURPOSE_AND_FOUR_WORKS.md)
-- [基本输出格式](professional/feature_observation/01_OUTPUT_BASE_FORMAT.md)
-- [初步工作细节](professional/feature_observation/02_WORK_DETAILS.md)
-- [旧 S1–S3 专业知识复用](professional/feature_observation/03_REUSE_FROM_V2.md)
-- [aidata 使用及展示边界](professional/feature_observation/04_AIDATA_USE.md)
-- [新任务后续运行准备与授权边界](runtime/operations/FEATURE_OBSERVATION_PREPARATION_GUIDE.md)
+当前一批为 3–5 个有明显好坏分化的多品种用例，每例完成位置发现与投资者视角的自主回看。数据必须经 aidata；Owner 从一个汇总文档和一个包含 1d 概览及各例大尺度图的平台链接查看。本批暂不深入用例间关系，不把特征实现与完整 U2/U3 验证变成前置。
 
-## 历史与运行边界
+## 运行与版本
 
-- [旧 V2 专业材料](professional/v2/README.md)和 [BI-01-V2-02 历史运行](runs/BI-01-V2-02/README.md)保留；旧目标、固定 ZIP、阶段划分与结果不会自动成为新专业目标。
-- [长程运行机制](runtime/README.md)继续负责管理、角色、Git 记录、Gate、Return 和操作接续，不另建并行机制。
-- 预备完成之后，仍须对**修改后的本分支**进行真实审查与必要修正。准备文件、配置修改和审核都不构成 Owner GO。
+- 操作仓：`daowei2026/cgpterm`，分支 `fy/observation-iteration-agent-longrun-20261015`。
+- 本专业及运行仓的新分支：`fy/multisymbol-case-observation-20261027`，从 `fy/bi01-feature-observation-prep-20261021@9badfa6f30caebbe3156c5e4ee4deb43d22cacb5` 建立。
+- [通用运行入口](runtime/README.md)、[本批启动准备](runtime/operations/CASE_OBSERVATION_RUN_GUIDE.md)、[采用状态](runtime/config/ADOPTION_STATUS.md)。
+- [已有运行记录](runs/README.md)：旧 FO-01 的真实记录保持不变。旧专业正文以以上准确历史提交读取，不并列为当前规范。
+
+后续实际启动分别锁定两仓真实完成提交、aidata 现场版本及本次任务来源；分支名、模板、代码检查或图数试验不代替授权。当前尚未有本批实际用例、平台链接或 aidata 现场验证结果。

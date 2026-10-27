@@ -1,9 +1,15 @@
-# 具体特征观察：专业任务路由（准备中）
+# 专业任务路由
 
-status: **NEW_OWNER_GO_REQUIRED / MANAGER_ISSUED_TASK_REQUIRED / NO_SEND**
+当前 `COORDINATOR_DISPATCH.json` 的 `CASE_OBSERVATION` 指向同一项完整研究任务，不把两项产出拆成两个强制串行 Gate。
 
-新专业工作按 [00 四项工作](feature_observation/00_PURPOSE_AND_FOUR_WORKS.md)组织：初始参数、特征展示设计、aidata 制图、真实观察分析；四项允许返回调整，**不构造 S1/S2/S3 或“四阶段依次签收”的运行协议**。基本成果表达及初步细节见 [01](feature_observation/01_OUTPUT_BASE_FORMAT.md)、[02](feature_observation/02_WORK_DETAILS.md)。
+| 实际需要 | 专业正文 | 形成的内容 |
+| --- | --- | --- |
+| 理解本批要做什么、交付什么 | [00](case_observation/00_PURPOSE_AND_OUTPUTS.md) | 完整目标、3–5 例批次与两项具体产出 |
+| 寻找多品种差异位置、回看解释 | [01](case_observation/01_RESEARCH_METHOD.md) | 有依据的用例及逐例研究 |
+| 组织给 Owner 看的实物 | [02](case_observation/02_OWNER_DELIVERY.md) | 一个阅读入口、统一平台图和实际调用记录 |
+| 委派取数、制图、核同源范围 | [03](case_observation/03_AIDATA_USE.md) | aidata 正式数据与真实平台结果 |
+| 需要理解 U2/U3 或旧经验 | [04](case_observation/04_SOURCES_AND_REUSE.md) | 按具体疑问取得所需原文，不增加整套前置 |
 
-现有管理/专业/Worker/操作端职责沿用原长程协议。管理Pro根据具名特征、真实上游交付及管理认可范围签发下游工作；无实际依赖的活动可并行。Worker只在有权工单下处理真实制图/数据/技术检查，接收核验可由管理Pro按现行专业方法具名委派，但Worker不裁业务或签管理认可；操作端只搬运合法消息与回交。
+管理、执行、独立审查、Worker 的通用职责仍由 runtime 提供。Worker 的工单由原签发 Pro 接收，技术成功不替代专业判断。Owner 反馈沿原 CHANGE/任务修订机制处理，不另建反馈状态机。
 
-未来正式启用时，机械模式由 runtime/config/COORDINATOR_DISPATCH.json 提供，专业推进采用统一候选模式 **FEATURE_OBSERVATION**（不代表每项工作各一轮）。此模式和文件都不是 Owner GO。此前 BI-01-V2-02 的 OBSERVATION_SCOPE / OBSERVATION_CHART / OBSERVATION_IDEAS 与其已采用 Binding 只属于旧 run，不自动取得新任务授权。
+普通研究方法可在目标和写权内迭代；改变本批研究对象、交付边界、数据入口或转入正式特征开发时，由有权任务责任者处理，主控不自行扩展。

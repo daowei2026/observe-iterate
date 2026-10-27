@@ -5,10 +5,12 @@ on:
     branches:
       - fy/observation-iteration-v2-20261017
       - fy/bi01-v2-02-business-scene-20261018
+      - fy/multisymbol-case-observation-20261027
     paths:
       - 'runtime/overlay/**'
       - 'runtime/config/COORDINATOR_DISPATCH.json'
-      - 'professional/v2/**'
+      - 'professional/**'
+      - '.github/workflows/bi01-offline-smoke.yml'
   workflow_dispatch:
 
 permissions:
@@ -19,5 +21,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Verify BI-01 bootstrap, bound dispatch and no-send guards
+      - name: Verify configured bootstrap, bound dispatch and no-send guards
         run: python3 -m unittest discover -s runtime/overlay/tests -p 'test_bi01_pilot_smoke.py' -v

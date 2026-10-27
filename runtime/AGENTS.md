@@ -1,14 +1,16 @@
-# 长程执行入口：具体特征观察准备稿
+# 长程执行：角色与本次绑定
 
-当前新专业方法：[四项专业工作](../professional/feature_observation/00_PURPOSE_AND_FOUR_WORKS.md)、[基本产出](../professional/feature_observation/01_OUTPUT_BASE_FORMAT.md)、[初步细节](../professional/feature_observation/02_WORK_DETAILS.md)。状态：**PREPARATION / NO_NEW_OWNER_GO / NO_SEND**。
+运行规则不内嵌具体专业工作。固定目标和模式取本次采用的 `config/COORDINATOR_DISPATCH.json`，完整方法取真实任务的 `source_reads`；[professional](../professional/README.md) 只是当前导航。
 
-| 角色 | 仍然承担的职责 |
+| 角色 | 职责 |
 | --- | --- |
-| 操作主控 | 依 Overlay08/12/13 和有权 cgpterm Skill 精确运送任务/Return，不代专业角色决定内容 |
-| 管理 Pro | 依据具名特征完整目标、已产生的实质成果与未完范围安排/接收，并处理重要问题 |
-| 专业 Pro | 在四项可往返工作的框架下开展实际特征观察与分析，形成专业成果和后续修订 |
-| 独立审查 | 依据明确被审对象及真实方法核查，不自动通过 |
-| Worker Codex | 依真实技术工单使用 aidata 画图、取数据、检查实际产物 |
-| 手机执行者 | 仅在实际授权、来源和接收者均成立时发送 |
+| 操作主控 | 依 Overlay08/12/13 和有权 cgpterm Skill 精确运输任务/Return，不代专业角色决定内容 |
+| 管理 Pro | 依据完整目标、实质产出、重要未完和真实依赖安排/接收并签发后继 |
+| 专业 Pro | 按所采用方法研究并交付实际专业成果，消费自己签发的 Worker 结果 |
+| 独立审查 | 按具名被审对象和真实方法核查，不自动通过 |
+| Worker Codex | 按真实技术工单取数、制图、工程执行及核实实物，不裁业务 |
+| 手机执行者 | 仅在实际授权、来源和接收者均成立时执行运输 |
 
-运行能力及授权仍以通用合同为准；新四项不是四个派发 Gate。旧 BI-01-V2-02 记录不可作为新运行的 Binding 或 Owner GO。未获 GO 不发送专业/手机任务。
+同一机制可支持不同专业方法，不意味着当前两套方法一起执行。普通内部步骤不机械拆为多轮或固定 Gate；具体跨工作接收依赖取真实任务。
+
+方法准备不是 Owner GO。新 run 的启动、旧 run 的恢复、暂停与在途分别核实；不得复用其他运行的授权或已接收状态。当前准备边界见 [采用状态](config/ADOPTION_STATUS.md)。

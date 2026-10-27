@@ -1,41 +1,40 @@
-# BI-01 V2 GitHub Pro 轮次与真实发送记录
+# BI-01 GitHub Pro 轮次与真实发送记录
 
-本文件只改变旧 Rnnnn 记录合同中的 **run 作用域和 V2 专业标识**；原来的手机发送/回复/Return/调度器义务不因改版而放松。真实 Pro 调用逐一记录 R0001/R0002……，手机 Episode、Worker 操作和 Git commit 不算 R。
+文件路径保留 V2 名称只为既有引用兼容；正文不再选择某个历史 run 或专业方法。手机发送/回复/Return/调度义务不因专业方法替换而放松。真实 Pro 调用逐一记录 R0001/R0002……，手机 Episode、Worker 操作和 Git commit 不算 R。
 
-- `work_id=BI-01`
-- `run_id=BI-01-V2-02`
-- 轮次目录：`runs/BI-01-V2-02/provenance/turns/Rnnnn/`
-- 唯一 invocation 前缀：`BI01-V2-02-Rnnnn-<independent-unique-id>`
-- scheduler `round_marker`：严格为 `[` + invocation_id + `]`，亦为真实要发送 UTF-8 载荷第一行。
-- 当前专业工作标识：`S1`（叙事、基础行情与自主选场景）、`S2`（基础图后定向 U2/U3 与同源数据）、`S3`（合法 As-Of 四束辨别与后续观察想法）；调度 mode 分别由当前正式 dispatch 配置确定。管理模式保留 M-START/M-REASSESS/M-CLOSE。
+- `work_id=BI-01` 是稳定路由键。
+- `run_id` 取本次真实授权的新运行或原有权续作，不设历史默认值。
+- 轮次目录为 `runs/<本次run_id>/provenance/turns/Rnnnn/`。
+- invocation 前缀按该 run 的实际约定生成；既有 BI-01 工具将 run_id 开头的 `BI-01-` 映射为 `BI01-`，再接 `-Rnnnn-<唯一ID>`。
+- scheduler round_marker 严格为 `[` + invocation_id + `]`，亦为真实要发送 UTF-8 载荷第一行。
+- 专业 mode、question_ids 与业务内容由本次实际配置/Binding 确定，本合同不预置 S1/S2/S3 或四项专业工作。管理模式沿 M-START/M-REASSESS/M-CLOSE。
 
-每轮依原流程写 `INVOCATION.json`、精确 `PROMPT.md`、真实 `SEND_RECEIPT.json`、完整 `FULL_RESPONSE.md`、有效 `ROLE_RETURN.json` 和必要的 `QUESTION_WORK_RETURN.json` 与 Gate 检查；发送前 commit+remote readback+pre-dispatch+NOT_SENT，收到后按真实完整回答与角色 Return 核验证据。首次 BOOTSTRAP 的 binding/current task 可引用实际新 Owner 启动，不可引用旧 run；后续必须用新管理签发的 map/task/Binding/intake。
+每轮依原流程写 INVOCATION.json、精确 PROMPT.md、真实 SEND_RECEIPT.json、完整 FULL_RESPONSE.md、有效 ROLE_RETURN.json 和实际要求的 QUESTION_WORK_RETURN.json 与检查结果；发送前 commit+remote readback+pre-dispatch+NOT_SENT，收到后按真实完整回答与角色 Return 核验证据。首次 BOOTSTRAP 的 binding/current task 可引用实际新 Owner 启动；后续用本次管理签发的 map/task/Binding/intake，不借另一 run。
 
-新 run 若确需首次地图 Reader，必须由本次管理**重新签发具名授权和相应前置采用规则**，核当前完整任务、Binding、管理依据、冻结输入及新方法，不以旧 V2-01 R0002 的特例获得权限。Reader 仍属于独立真实 Pro 新 R，照常保存原样载荷、NOT_SENT 与实际回交，不预填 PASS；普通专业任务仍须完成新 Workmap 采用后派发。
+新 run 若确需首次地图 Reader，必须由本次管理重新签发具名授权和相应前置采用规则，核完整任务、Binding、管理依据、输入及方法；不能从历史 Reader 特例取得权限。Reader 属于真实 Pro 新 R，保存原样载荷、NOT_SENT 和实际回交，不预填 PASS。
 
-不可把历史 V1 的 R、token、Owner 决定、G1–G6 或 I4/I5/I6 回交翻译为 V2 的当前任务事实。专业文件不负责发送，机械操作端不自行签业务结果。
-
+历史 R、token、Owner 决定、Gate 和业务结论不翻译成新运行事实。专业文件不负责发送，机械操作端不自行签业务结果。
 
 ## GitHub 回交失败时：共享 ZIP 备用交付
 
-本轮有真实授权的 Pro **优先按 GitHub 原有流程提交**。若 Pro 无法实际向 GitHub 提交、GitHub 写入不可用，不因不能提交就丢失已有专业成果，也不把“已生成 ZIP”当成“已提交 GitHub”。
+本轮有真实授权的 Pro 优先按 GitHub 原有流程提交。若无法实际提交，不丢失已有成果，也不把“已生成 ZIP”当成“已提交 GitHub”。
 
 ### 共享目录（按角色选路径）
 
 | 使用者 | 实际路径 | 用途 |
 | --- | --- | --- |
-| MCP server / Pro 侧可写 | `H:\fy\observe-iterate-share` | 存放当轮 Pro 产生的 ZIP 交付 |
-| 操作 Codex 侧可读 | `/dwdhome/fy/observe-iterate-share` | 读取同一 ZIP，核对后代为合法发布 |
+| MCP server / Pro 侧可写 | `H:\fy\observe-iterate-share` | 存放当轮 Pro 产生的 ZIP |
+| 操作 Codex 侧可读 | `/dwdhome/fy/observe-iterate-share` | 读取同一 ZIP，核对后合法发布 |
 
-以上是 Owner 提供的**路径映射**。Owner 已报告两机器共享目录的基础读写和互见测试通过，不因新版重做同一基础预检；这不是本轮 ZIP 已产生或已交付的证据。**每轮**仍须确认真实文件、实际大小/字节和 SHA-256、一致的 invocation/成员/来源及发布结果。它们不是固定数据 ZIP 的所在位置，也不是 aidata 执行工作区 `/dwdhome/fy/BASE_E6_2`。
+以上为 Owner 提供的路径映射，适用时沿用。Owner 已报告基础读写和互见通过，不因换方法重复同一预检；这不是本轮 ZIP 已产生的证据。每轮仍确认真实文件、大小/字节/SHA-256、一致的 invocation/成员/来源和发布结果。共享路径不是业务数据入口，也不是 aidata 工作区 `/dwdhome/fy/BASE_E6_2`。
 
 ### 正常判断和交接顺序
 
-1. **先核是否真未提交**：Pro 报告 GitHub 不可写时，操作 Codex 先核 **新分支远端**，检查本轮派发前的目标仓库/分支 base 和当前远端；若已有匹配 `invocation_id/round_marker`（及实际有记录时的 assignment token）的提交，回读相关文件，以 GitHub 实物为准，**不要再应用同轮 ZIP**，不能重复应用 ZIP。
-2. **有真实 ZIP 才接收**：若确无对应 GitHub 提交，Pro 可按 MCP server 当前可用写文件能力，在 `H:\fy\observe-iterate-share` 下按 `BI-01-V2-02`、当轮 invocation 分开存放唯一名称 ZIP；提供确切完整路径、文件名、实际打包范围、工作身份/轮次、能取得时的大小和 SHA-256。不规定一个不存在的专用 MCP API，禁止伪造软件 API，也不假称共享目录自动创建或已写入成功。
-3. **交付内容**：尽可能保留原本要提交到 `observe-iterate` 的**全部真实成果**及仓库相对路径，包括完整可见回答、`ROLE_RETURN`、实际要求的 `QUESTION_WORK_RETURN`、相关专业 artifact/管理正文或 Worker 实物；不可用摘要、伪造数据、空 ZIP 或另一轮材料代替。与原指令中的写权和允许路径一一对应，不打包凭据、私有设备状态、整个工作区或无关附件。
-4. **操作 Codex 实际取包**：从 `/dwdhome/fy/observe-iterate-share` 定位相同 ZIP，记录真实 bytes/SHA-256 和关联 invocation；先检查 ZIP 成员路径、`..`/绝对路径/符号链接/嵌入 `.git`/凭据/超出授权范围等，禁止不经检查直接覆盖工作树。与 GitHub 远端同轮状态再对账后，才在合法 V2 工作分支恢复仓库相对路径、校验完整 Return/实际成果，做适用测试与审阅，**非 force 提交并 fresh readback**。
-5. **回到原机制**：发布后引用新的 exact commit/blob、轮次和完成证据，继续原 `ROLE_RETURN/QUESTION_WORK_RETURN` 校验、管理接收与接续。共享文件并不改变原来的发消息/去重/授权/管理流程；未实际提交时标记为 `ZIP_STAGED / PENDING_GITHUB_PUBLICATION` 等**说明性文字**，不伪造既有机器状态或 Gate。
-6. **无法转运时**：若 Pro 无法生成 ZIP、MCP server 无法写、共享路径不能互见、Codex 无法读取或发布，则记下受阻位置、真实错误和恢复条件，不让 ZIP 看起来像已完成 GitHub 交付，不因传输失败重做已完成的业务分析。
+1. **先核是否真未提交**：Pro 报告不可写时，操作 Codex 核本次有权目标分支的派发前 base 和当前远端；已有匹配 invocation/round_marker 及实际 token 的提交时，fresh 回读实物，以 GitHub 为准，不再应用同轮 ZIP。手机说法作为矛盾证据保留。
+2. **有真实 ZIP 才接收**：确无对应提交时，Pro 可按实际 MCP 文件能力，在共享目录下按本次 run/invocation 分开存放唯一 ZIP，提供真实路径、名称、打包范围、工作身份及能取得的 bytes/hash。不规定不存在的 MCP API，不伪造写入成功。
+3. **交付内容**：保留原本要提交的全部真实成果及仓库相对路径，包括完整回答、有效 Return、专业/管理正文及实际要求的实物；不能用摘要、空 ZIP、假数据或另一轮材料替代。按原写权打包，不含凭据、设备私密状态、整个工作区或无关附件。
+4. **实际取包与发布**：操作端定位同一 ZIP，记录 bytes/SHA-256 和 invocation；检查成员路径、..、绝对路径、符号链接、嵌入 .git、凭据及越权范围，禁止直接覆盖。再次核远端同轮状态后，只在本次合法分支恢复实际文件，校验完整 Return/成果、做适用检查，非 force 提交并 fresh readback。
+5. **回到原机制**：发布后以真实 exact commit/blob、轮次和证据继续既有 Return、管理接收及接续。共享文件不改变发消息/去重/授权流程；未发布时只能说明 ZIP_STAGED / PENDING_GITHUB_PUBLICATION，不伪造机器状态或 Gate。
+6. **无法转运**：实际不能生成、写、读、互见或发布时，记录真实错误、受阻位置和恢复条件，不把运输失败当作业务没做，不重做已完成的分析。
 
-若通用手机附件的 ZIP 回收链已经成功提供同轮实物，可继续按照现成通用 Skill 运送与核验，不重复回收两份同轮成果；本共享路径只是一种明确的备用承运位置，不能绕过已存在的 `github_or_zip_1h` 核实顺序。
+通用手机附件回收链已取得同轮真实 ZIP 时复用，不重复收两份；共享路径只是备用承运位置，不绕过既有 github_or_zip_1h 核实顺序。
