@@ -14,17 +14,19 @@ Owner 最终从一个研究入口及一个真实统一平台页面看完整 1d �
 <a id="bi01"></a>
 ## 当前进展及实际下一步
 
-R0001 首次管理已形成完整判断和签发材料；**尚未完成首轮独立阅读、管理 Intake 采用或专业发送**。本 run 还没有已交的行情 manifest、Case 研究或统一平台 URL，历史工具测试不算本批成果。
+R0001 已形成完整判断和签发材料；R0002 针对首轮阅读的真实运输阻断签发 W01；R0003 已消费 W01 实物，采用工具实现 `235c0f29861340a56dbfd3bfd749532328583849`，结束该有限修复并更新首轮阅读输入。**尚未完成首轮独立阅读、管理 Intake 采用或专业发送。** 本 run 还没有已交的行情 manifest、Case 研究或统一平台 URL，历史工具测试不算本批成果。
 
-当前直接后继：按本次新签的首轮 Reader 任务，对准确版本的地图、完整任务、Binding 和依据进行独立只读核查，结果交原管理实际接收；不由编写者自签独立 PASS，也不由主控代裁。采用后派发一个覆盖全批的 `CASE_OBSERVATION` 专业任务，首要动作是取得方式一正式日线并开始多品种选例。
+当前直接后继：按 R0003 决定与已更新的原 Reader 任务，对准确版本的地图、完整任务、Binding 和依据进行独立只读核查，结果交原管理实际接收；不由编写者自签独立 PASS，也不由主控代裁。不再派同一修复单或重做启动规划。采用后派发一个覆盖全批的 `CASE_OBSERVATION` 专业任务，首要动作是取得方式一正式日线并开始多品种选例。
 
 | 入口 | 用途 |
 | --- | --- |
 | [长程推进地图](00_长程推进地图.md) | 业务问题、输入生产者、结果消费者、真实进展与全部重要未完 |
-| [完整专业任务](01_当前任务.md) | 本批范围、首版输入、自由研究方法、权限、交付、路由与持续管理 Binding |
-| [管理决定](reviews/management-R0001/DECISION.md) | 当前采用、旧任务退出、首轮只读预采用授权及专业发送前提 |
-| [完整管理回答](https://github.com/daowei2026/observe-iterate/blob/215bc3ae1c4817fdbc3be4494fb1b6b674103da4/runs/BI-01-CO-01/provenance/turns/R0001/FULL_RESPONSE.md) | 本次全部实质判断、条件性投入预期、实际材料使用与唯一后继 |
+| [完整专业任务](01_当前任务.md) | 本批范围、首版输入、自由研究方法、权限、交付、路由与持续管理 Binding；正文保持 |
+| [当前管理决定](reviews/management-R0003/DECISION.md) | W01 接收、工具版本采用、更新后 Reader 授权及尚未放行的范围 |
+| [R0001 业务采用决定](reviews/management-R0001/DECISION.md) | 保留的完整业务安排、旧任务退出及专业发送前提；即时 Reader 授权已由 R0003 更新 |
+| [R0001 完整管理回答](https://github.com/daowei2026/observe-iterate/blob/215bc3ae1c4817fdbc3be4494fb1b6b674103da4/runs/BI-01-CO-01/provenance/turns/R0001/FULL_RESPONSE.md) | 初始完整业务判断、条件性投入预期和来源处置 |
+| [R0003 完整管理回答](https://github.com/daowei2026/observe-iterate/blob/dd98280852fbbc8cfcff8dc2edabe1364d8e7eca/runs/BI-01-CO-01/provenance/turns/R0003/FULL_RESPONSE.md) | 本次实质接收依据、证据限制、全部未完和准确后继 |
 
-首轮 Reader 路径为 `reviews/management-R0001/READER_TASK.md`，由本次管理签发并固定输入提交。当前 Workmap Binding 具体化为本 run，但在真实阅读和管理接收前不标 ADOPTED。主控按原协议保存实际发送/收到/消费事实，不能用路径存在替代这些事实。
+首轮 Reader 路径仍为 `reviews/management-R0001/READER_TASK.md`，由 R0003 在原文件更新统一输入提交及当前采用来源。当前 Workmap Binding 具体化为本 run，但在真实阅读和管理接收前不标 ADOPTED。主控按原协议保存实际发送/收到/消费事实，不能用路径存在替代这些事实；已到达管理消息的持久回执由原发送者据实对账，不重复发送。
 
 专业结果未来在 `artifacts/batch-01/OWNER_REVIEW.md` 汇总；该路径目前是交付安排，不是已经存在的研究报告。管理持续核 RESULT、CHANGE 和专业首次合法发送起的每两实际小时 EFFORT 复看；不是完工时限或局部停点。整批交齐后交 Owner 一次性查看，真实反馈沿原责任定向修订，不自行开启无限新批次或开发计划。
