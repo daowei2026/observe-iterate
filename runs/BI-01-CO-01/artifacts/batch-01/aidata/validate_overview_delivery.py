@@ -153,7 +153,7 @@ def main() -> None:
     (output / "COVERAGE.json").write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n")
     (output / "FILE_INDEX.json").write_text(json.dumps({"run_id": run_id, "copied_files": copied}, ensure_ascii=False, indent=2) + "\n")
     with (output / "LONG_GAPS.csv").open("w", newline="", encoding="utf-8") as stream:
-        writer = csv.DictWriter(stream, fieldnames=["symbol", "previous_close", "next_close", "calendar_days"])
+        writer = csv.DictWriter(stream, fieldnames=["symbol", "previous_close", "next_close", "calendar_days"], lineterminator="\n")
         writer.writeheader()
         writer.writerows(long_gaps)
     print(json.dumps({"run_id": run_id, "symbols": {key: {name: value[name] for name in ["total_rows", "valid_ohlc_rows", "missing_ohlc_rows", "invalid_ohlc_bounds_rows"]} for key, value in report["symbols"].items()},

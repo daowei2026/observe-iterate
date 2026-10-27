@@ -160,5 +160,11 @@
   "browser_page_errors": [],
   "actual_screenshot_viewed_by_worker": true,
   "synthetic_data_used": false,
-  "research_acceptance_claimed": false
+  "research_acceptance_claimed": false,
+  "format_checks": {
+    "initial_local_commit": "716c60728ae0f55b6219ddb6edf76a453577bc9a",
+    "initial_diff_check_exit_code": 2,
+    "finding": "generated LONG_GAPS.csv CRLF and sanitized stderr trailing whitespace",
+    "correction": "LF for derived gap CSV; trim sanitized log line endings; original 12 copied artifacts unchanged"
+  }
 }
