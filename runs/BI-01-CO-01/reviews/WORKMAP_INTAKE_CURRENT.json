@@ -1,0 +1,48 @@
+{
+  "schema": "workmap-intake/v1",
+  "intakes": {
+    "bi01": {
+      "snapshot": "c862237a2646e99ad31289ff8193c6dcb2561905a525c499e02835374b2e2f71",
+      "manager": {
+        "role": "management",
+        "context": "chatgpt:BI-01-CO-01:management / BI01-CO-01-R0005-ee8f176122"
+      },
+      "decision_report": {
+        "path": "runs/BI-01-CO-01/reviews/management-R0005/DECISION.md",
+        "blob": "03dc13a472b3df45050aac17997ee4e8d1692906"
+      },
+      "reader_check": {
+        "status": "RECORDED",
+        "context": "chatgpt:BI-01-CO-01:review / BI01-CO-01-R0004-30dde75097",
+        "independent_of_map_builder": true,
+        "report": {
+          "path": "runs/BI-01-CO-01/reviews/independent/workmap-01/REVIEW.md",
+          "blob": "21bea2e5d67dbf6fe1a0bd372cd23156491829f3"
+        },
+        "input_commit": "d4ba5e043367fa4678eca339ba32b53044baaad9",
+        "input_snapshot": "b8e71eaf3a0868275789f6557d817b22e24af7ed0469133119b8a062e3b365ef"
+      },
+      "effort": {
+        "known_pro_turns": 5
+      },
+      "scope_dispositions": {},
+      "validation_claims": [],
+      "dispatch": {
+        "decision": "ISSUED",
+        "kind": "NEW_STAGE",
+        "requires_reader_check": true,
+        "task_id": "BI01-CO-01-CASE-RESEARCH-01",
+        "task_path": "runs/BI-01-CO-01/01_当前任务.md",
+        "task_blob": "c3517c957d70118312af627b1efa22b1699849d4",
+        "method_paths": [
+          "professional/case_observation/README.md",
+          "professional/case_observation/00_PURPOSE_AND_OUTPUTS.md",
+          "professional/case_observation/01_RESEARCH_METHOD.md",
+          "professional/case_observation/02_OWNER_DELIVERY.md",
+          "professional/case_observation/03_AIDATA_USE.md",
+          "professional/case_observation/04_SOURCES_AND_REUSE.md"
+        ]
+      }
+    }
+  }
+}
