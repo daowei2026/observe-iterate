@@ -530,4 +530,47 @@ class CWorkflowDeltaTests(unittest.TestCase):
         self.assertIn('RETURN_REPAIR-正文',msg);self.assertNotIn('C_WORKFLOW_COMMON-正文',msg)
         self.assertNotIn('## 本轮当前工作',msg);self.assertNotIn('## Owner完整目的',msg)
 
+class BI01ReaderTransportTests(unittest.TestCase):
+    """Reuse existing carrier regressions with the current configured BI01 stage.
+
+    The historical B/C fixture suites are not adopted BI-01 business inputs.
+    """
+    write = DispatchTests.write
+    git = DispatchTests.git
+    make = DispatchTests.make
+    commit = DispatchTests.commit
+
+    def setUp(self):
+        DispatchTests.setUp(self)
+        cfg = json.loads((self.repo / 'config.json').read_text())
+        cfg['works']['w']['stage'] = 'BI01'
+        self.write('config.json', json.dumps(cfg))
+        self.ref = self.commit('synthetic current BI01 transport fixture')
+
+    test_github_relay_preserves_full_assignment_without_inline_duplication = DispatchTests.test_github_relay_preserves_full_assignment_without_inline_duplication
+    test_standalone_github_report_role_and_question_returns = DispatchTests.test_standalone_github_report_role_and_question_returns
+    test_changed_text_or_recipient_never_sent = DispatchTests.test_changed_text_or_recipient_never_sent
+    test_replay_original_bytes = DispatchTests.test_replay_original_bytes
+
+    def test_return_binding_selectors_must_resolve_to_the_same_exact_object(self):
+        self.write('signed-task.md', '<a id="binding"></a>\n```json\n' + json.dumps(self.binding) + '\n```\n')
+        ref = self.commit('synthetic original Markdown Binding')
+        self.event['binding_ref'] = self.loc('signed-task.md', '#binding', ref)
+        question = {'schema': 'question-work/v2', 'kind': 'RETURN', 'work_id': 'w',
+                    'binding_ref': self.loc('signed-task.md', 'L3-L3', ref),
+                    'continuation_ref': {'answer_ref': '#continuation'}}
+        self.write('response.md', '<a id="continuation"></a>完整正文。\n```json\n' + json.dumps(question) + '\n```\n')
+        returned = self.commit('synthetic original return with exact line selector')
+        self.event.update(route='accept', latest_response_ref=self.loc('response.md', ref=returned),
+                          latest_return_ref=self.loc('response.md', ref=returned))
+        self.assertEqual(self.make()['role'], 'management')
+        question['binding_ref']['selector'] = 'L1-L1'
+        self.write('response.md', '```json\n' + json.dumps(question) + '\n```\n')
+        wrong = self.commit('synthetic partial Binding is not equivalent')
+        self.event.update(latest_response_ref=self.loc('response.md', ref=wrong),
+                          latest_return_ref=self.loc('response.md', ref=wrong))
+        with self.assertRaisesRegex(ValueError, 'RETURN_BINDING_MISMATCH'):
+            self.make()
+
+
 if __name__=="__main__": unittest.main()

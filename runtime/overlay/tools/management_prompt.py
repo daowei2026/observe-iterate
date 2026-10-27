@@ -5,6 +5,7 @@ checks mechanical relations, not authority, actual reading or business truth.
 from __future__ import annotations
 import argparse
 import hashlib
+import importlib.util
 import json
 import re
 import subprocess
@@ -503,7 +504,14 @@ def prepare_dispatch(repo: str | Path, policy_ref: str, config_path: str, event:
         r, return_meta, response_meta, role_meta = load_return_sources(
             repo, repository, latest_return, latest_response, event.get("latest_role_return_ref"))
         if r.get("work_id") != b["work_id"]: fail("RETURN_WORK_MISMATCH")
-        if r.get("binding_ref") != event["binding_ref"]: fail("RETURN_BINDING_MISMATCH")
+        spec = importlib.util.spec_from_file_location(
+            "question_work_check", Path(__file__).with_name("question_work_check.py"))
+        question_work = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(question_work)
+        if not question_work.binding_refs_equal(
+                event["binding_ref"], r.get("binding_ref"), binding=b,
+                resolver=lambda loc: binding_target(repo, loc, repository)):
+            fail("RETURN_BINDING_MISMATCH")
         refs.append(("最新完整回答", response_meta))
         if role_meta: refs.extend([("最新结构化问题回交", return_meta), ("最新角色回交", role_meta)])
         if route_key == "same_work":
