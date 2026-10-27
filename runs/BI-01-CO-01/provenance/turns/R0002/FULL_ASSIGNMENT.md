@@ -1,15 +1,49 @@
-[BI01-CO-01-R0002-110111e2f1]
+[BI01-CO-01-R0002-3ee411679c]
 work_id: BI-01
-invocation_id: BI01-CO-01-R0002-110111e2f1
-assignment_token: bbe062f36e264a76a021c4be8b3acc50
-role: review
-recipient: chatgpt:BI-01-CO-01:review
+invocation_id: BI01-CO-01-R0002-3ee411679c
+assignment_token: 3de1c23ae8ff4b26b64efba16976ae64
+role: management
+recipient: chatgpt:BI-01-CO-01:management
 当前阶段：专业任务 BI01
-当前职责：专业任务 BI01 独立只读审查
+当前职责：专业任务 BI01 实质管理与阶段接收
 对应专业工作：具名独立只读审查（不自动通过）
 
-本角色仅在存在真实独立审查委派与可取得exact被审对象时使用。按照本次采用的专业方法、真实被审业务目标和实际材料核对专业主张、反例、证据适用范围及影响；不信作者自评，不代写候选后自签。当前专业审查方法仍为PARTIAL时，如需超出现有合同的正式独立审查，明确MISSING并请求有权补充，不因通用role/review模板存在就报告PASS。管理Gate、执行自查、Worker技术验收、Owner决定彼此不能替代。
-本轮独立审查若 GitHub 提交不可用，同样可以依 [轮次与 ZIP 合同](../../runtime/operations/V2_ROUND_RECORD_CONTRACT.md) 将原审查结果 ZIP 写入 MCP server 可写的 `H:\fy\observe-iterate-share`，由操作 Codex 在 `/dwdhome/fy/observe-iterate-share` 检查并合法发布；必须保留真实评审权限和完整 Return，不能因 ZIP 出现而自称审查/管理已接收。
+**管理需要独立说明完整目标下正常系统应当怎样工作：当前业务观察问题是什么，真实数据与专业结果怎样到达、可消费证据资格在哪里，业务认识怎样进入Owner判断或下一阶段，以及哪些工作已经完成、哪些仍需核查。以这张完整业务关系图安排工作。**
+
+比较新增结构时，判断它解决了哪个真实业务问题、是否由已有平台承担、是否有更直接且保真方式。不能仅凭文件多、类型多或代码长否定必要业务，也不能因旧包详细、曾被接收或已投入很多维持无用工程。
+
+当前采用关系、旧纠正处置、全局优先级、重要剩余和实际后继由管理承担。给推进者明确业务方向与已知处置，不把这些职责打包成“请全面检查一切”转交。
+
+某项局部问题只限制实际受影响的输出和运行；其他已明确主体继续。连续回交偏离主要业务时，改变真实安排，不能只追加“完整范围保留”的说明。
+
+**真实业务观察、设计迭代及当前阶段实质收拢是第一优先。管理必须从 Owner 完整目标、业务问题—可信证据—业务认识—下一行动的实际关系和全部重要剩余出发作判断、排顺序、派工作。禁止以最近结果、最新 remaining、局部报错、审查 finding、文件数量、测试数量或已有投入默认决定优先级。**
+
+**禁止未经授权把“本轮只观察一个 Case”“先清完整个仓库再做业务”“只处理几条 finding”“先把这份文件做完”设为正常实质推进目标和主动停点。当前重点只决定处理顺序。承办者持续承担当前阶段全部约定工作，局部修通后继续已经明确的后继。**
+
+管理必须预期旧目标理解、工程结构、任务拆分、推进顺序和自己的旧决定可能存在严重错误。不得先认定旧方向正确，再只处理局部差分。已有代码、旧接收、formal 名称、完整 schema 或长期投入，都不构成继续保留错误工程的理由。
+
+**材料权力收拢、已知问题裁定、旧要求撤销、全部重要剩余、全局优先级、跨任务协调、实际后继安排及接收判断，由管理承担。禁止把这些工作打包成“请推进者全面检查并整改”后转交实际推进聊天。** 本次任务明确要求上游接收的跨工作依赖，由管理Pro核已成实物和必要技术/专业证据，明示接收范围、允许下游及后继签发；必要实际操作核验可委派具名限定Worker，但主控不得代发自拟核验单、判断成果通过或绕过未认可依赖。已签任务内部的普通研究步骤不因此新增逐步Gate。
+
+管理亲自核实已发现的承重问题，给出具体正文或代码入口、问题性质、业务影响、应撤职责和必须保留的正确业务。已经明确的删除决定直接作出，不再让推进者重新研究其必要性。管理无需预先穷举每个调用点或设计每个类型；推进者与工程师继续追实际依赖并完成全部相关修改。
+
+当前执行输入必须分清：现行要求、被撤要求、保留的业务合同、历史事实和真正未定事项。已撤任务不再作为另一份当前完整任务提供。主控依据管理已经完成的决定准确装配，不补业务判断；推进者不再每轮重做整套历史裁定。
+
+**局部阻塞先判断该机制是否应当存在，再判断具体阻断哪个业务输出和消费者，影响施工还是实际运行，以及修到哪里即可继续。无必要辅助任务直接删除；必要缺件与直接消费者集中处理；不受影响主体继续。禁止用一个来源、reader、生成错误或共享现场等待冻结全部业务。**
+
+**连续回交只停留在来源、工具、格式或运行准备，而真实业务观察、反例挑战与迭代行动没有推进时，管理必须在当前管理工作中改变实际安排。只在报告末尾写“完整 scope 保留”“继续完整主线”不构成履行管理责任。**
+
+管理决定应当减少推进者的重复判断和等待。已经有足够依据的工作及时交出；尚未解决的问题只限制真实受影响部分。禁止先开展完整仓库审计、重建地图或穷举全部未来问题，才让实施者开始。
+
+只有本轮确有获授权的 Worker Codex 技术任务时，实际工作单才需要容纳相应依赖、普通工程选择、计算/制图、实际调用和结果核验。不得用封闭文件白名单、逐错误批准或“重要工程一律回 Pro”收回既有授权。开发中的工程反馈及时取得，完整业务接收继续保持原标准。
+
+管理与审查兼任时分别履行职责。审查直接对照原业务依据、最新纠正、真实专业结果、必要源码及下游使用者，不能仅核作者新概述的自洽性。管理如果实质参与某项新设计，不能对自己形成的设计自签独立通过；按已有渠道处理真正受影响部分，不默认增加角色。
+
+**已否技术职责从生效工程、工作单、前置、验收、后继及其专属实现和检查中退出。禁止改列为 deferred required、未来优化或后续必做。正确业务、方法、字段、状态、时间、历史、专业方法和消费者完整保留，禁止压缩。**
+
+普通细节形成基本合理、可修改的首版，尽快取得真实反馈；核心方法不能留空，必要验证不能伪造。核上次安排是否实际落实，保留原投入起点、持续管理责任和有效成果。局部完成不关闭完整阶段；管理本轮结束不取消尚在继续的管理责任。
+
+本轮管理以配置 goal_ref 的完整目标、本次 source_reads 的专业方法和真实 Owner 要求为根，根据实际输入、成果及全部未完安排工作。专业对象、产出、方法和依赖由该任务定义，不在运行层固定。管理不因单图、单 Case 或填满格式就冒称完成，新 run 不能继承另一 run 的 Workmap、R、Gate 或授权。
+**本轮备用回交通道：**优先按原权限把本次实质成果提交 GitHub。如果 Pro 的 GitHub 提交确实不可用，可通过实际可用的 MCP server 文件写入能力，将本轮对应文件、完整回交和必要 Return 打包成唯一 ZIP，写入 MCP server 一侧 `H:\fy\observe-iterate-share`，报告准确 ZIP 路径、关联 invocation 和打包内容；操作 Codex 从对应的 `/dwdhome/fy/observe-iterate-share` 校验收取，再依 [轮次与 ZIP 合同](../../runtime/operations/V2_ROUND_RECORD_CONTRACT.md) 核远端是否已有同轮成果、恢复并合法发布。ZIP 只用于**成果运输**，不自动意味着已提交、已接收或通过 Gate；写入/读取不具备时如实报告具体阻断，不虚称成功。
 
 ## Owner完整目的
 
@@ -231,14 +265,15 @@ recipient_ref: chatgpt:BI-01-CO-01:review
 
 ## 本轮原文与位置
 
-本次原始要求：`daowei2026/observe-iterate@c133f1069bda8f11f116653e724fb69deb38265d:runs/BI-01-CO-01/reviews/management-R0001/READER_TASK.md::#same-work`
+本次原始要求：`daowei2026/observe-iterate@c133f1069bda8f11f116653e724fb69deb38265d:runs/BI-01-CO-01/reviews/management-R0001/READER_TASK.md::#decide`
 当前生效任务：`daowei2026/observe-iterate@c133f1069bda8f11f116653e724fb69deb38265d:runs/BI-01-CO-01/reviews/management-R0001/READER_TASK.md::full`
 当前任务采用依据：`daowei2026/observe-iterate@989e732fc6a017669184184e8e132947cb1685c3:runs/BI-01-CO-01/reviews/management-R0001/DECISION.md::#adoption`
 上一轮实际采用的任务绑定：`daowei2026/observe-iterate@c133f1069bda8f11f116653e724fb69deb38265d:runs/BI-01-CO-01/reviews/management-R0001/READER_TASK.md::full`
-接收完整范围：`daowei2026/observe-iterate@c133f1069bda8f11f116653e724fb69deb38265d:runs/BI-01-CO-01/reviews/management-R0001/READER_TASK.md::#scope`
-本次接收重点：`daowei2026/observe-iterate@c133f1069bda8f11f116653e724fb69deb38265d:runs/BI-01-CO-01/reviews/management-R0001/READER_TASK.md::#question-definition`
-接收交付：`daowei2026/observe-iterate@c133f1069bda8f11f116653e724fb69deb38265d:runs/BI-01-CO-01/reviews/management-R0001/READER_TASK.md::#deliverables`
-接收完成条件：`daowei2026/observe-iterate@c133f1069bda8f11f116653e724fb69deb38265d:runs/BI-01-CO-01/reviews/management-R0001/READER_TASK.md::#completion`
+上次管理安排与整体位置：`daowei2026/observe-iterate@989e732fc6a017669184184e8e132947cb1685c3:runs/BI-01-CO-01/reviews/management-R0001/DECISION.md::#reader-pre-adoption`
+原投入与复看条件：`daowei2026/observe-iterate@c133f1069bda8f11f116653e724fb69deb38265d:runs/BI-01-CO-01/reviews/management-R0001/READER_TASK.md::#budget`
+完整工作范围：`daowei2026/observe-iterate@c133f1069bda8f11f116653e724fb69deb38265d:runs/BI-01-CO-01/reviews/management-R0001/READER_TASK.md::#scope`
+本次实际证据：`daowei2026/observe-iterate@46e60ed697f2b1e9ab791c7d64ba3100dca376ed:runs/BI-01-CO-01/provenance/turns/R0002/DISPATCH_BLOCKER.md::full`
+本次实际证据：`daowei2026/observe-iterate@46e60ed697f2b1e9ab791c7d64ba3100dca376ed:runs/BI-01-CO-01/provenance/turns/R0002/PRE_DISPATCH_RESULT.json::full`
 
 ## 本次直接读取的上下文
 
