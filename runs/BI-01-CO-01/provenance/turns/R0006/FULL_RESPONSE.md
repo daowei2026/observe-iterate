@@ -97,7 +97,7 @@ recipient: chatgpt:BI-01-CO-01:professional
 | 提交脚本 fresh 回读 | 已从 `eacadfa7d16493ad792de56123f69f1f1c19a864` 读取，blob `490acad8308ca55eae7454e1b86651dcac99b659` 与本地脚本 Git blob 计算一致 |
 | 方法与输入语义 | 已按采用的 README/00–04、输入构造器及原任务核对；方法事实不是本次运行结果 |
 | 正式行情、平台页面、业务解释 | 均未执行/未取得，不填 PASS、行数、URL 或投资结论 |
-| 仓库运行 Gate、现场派工与时间回执 | 本 Pro 未执行，不代主控填通过或已送达 |
+| 仓库运行 Gate 与现场派工 | 本 Pro 未执行，不代主控填通过或已送达；本专业调用的外部发送回执另按第8节消费 |
 
 没有用替身数据测试出“符合业务”的结果，没有为取数另建测试矩阵。原测试曾成功、当前脚本可解析、未来实际运行成功和专业判断成立是不同事实。
 
@@ -140,25 +140,28 @@ recipient: chatgpt:BI-01-CO-01:professional
 | 同 3db5：`runtime/README.md`、DR00、DR12全文；DR13专业安排/读取段；DR14绑定/回交/触发/接续段 | 原完整范围、两份回交、材料使用和未知触发处理；未按旧题号增加业务阶段 |
 | 同 3db5：DR03委派全文、DR10/DR11适用交接/执行段；Overlay13回交段与Overlay08正常运输/Worker结果路由段 | 工单、原签发者消费和写面；不加载无关 Mission 实现任务，不冒充已运行全仓检查 |
 | 同 3db5：`runtime/overlay/tools/longrun_handoff.schema.json`全文；`question_work.schema.json` 的 repoRef/RETURN v2/observation定义 | 用于两份回交字段、原身份、引用和触发一致性；不是独立审查或运行 Gate 证明 |
+| `5c3c8f83fa04ce7d4cabccfc2525571236ac54ef:runs/BI-01-CO-01/provenance/turns/R0006/SEND_RECEIPT.json::full` | 最终比对发现并读取并发更新的 COMMITTED 回执，恢复真实投入起点；只读，未修改或重发消息 |
 
 尚不可取得的承重输入为本 run 的 aidata 正式行情及真实运行交付，见 #blocked-input。现场补充组合报告/代码亦未取得，属于后续页面复用缺件，不是已读材料。未实际调用 U2/U3 词汇/实现、历史行情 ZIP 或上传项目文件来得出本批结论。
 
 <a id="trigger-result"></a>
 ## 8. 原 Binding 的三项触发观察
 
-**CO01-BATCH-RESULT：NOT_YET。** 没有已研究 Case、正式数据或统一页，未满足 #completion，不请求 M-CLOSE，不把脚本/工单当完整批次提交。
+**CO01-BATCH-RESULT：NOT_YET。** 没有已研究 Case、正式数据或统一页，未满足原任务 #completion，不请求 M-CLOSE，不把脚本/工单当完整批次提交。
 
 <a id="trigger-change"></a>
 **CO01-MATERIAL-CHANGE：NOT_YET。** 本轮未改变目标/对象/数据集，未发现本批正式数据不可信，未请求越权源码/服务修改，也没有认真研究后不足三例的结果。当前会话不在业务现场，通过原授权 Worker 取数是正常执行依赖，不将它升格成新的市场/方法变化。
 
 <a id="trigger-effort"></a>
-**CO01-EFFORT-REVIEW：UNKNOWN。** 已 fresh 读取：
+**CO01-EFFORT-REVIEW：NOT_YET。** 最终比对发现发送回执在本轮写入期间由另一提交更新，已 fresh 读取：
 
-`daowei2026/observe-iterate@c5955c2e562ca0f318cf08278b81ff56d6479d4e:runs/BI-01-CO-01/provenance/turns/R0006/SEND_RECEIPT.json`
+`daowei2026/observe-iterate@5c3c8f83fa04ce7d4cabccfc2525571236ac54ef:runs/BI-01-CO-01/provenance/turns/R0006/SEND_RECEIPT.json::full`
 
-该文件仍为 `state=NOT_SENT`，只有当前 invocation 与准备说明，未含首次合法发送完成时间。本会话确已收到当前用户派发，不能据旧回执文字说消息未到；但也不能凭当前容器时间、提交时间或阅读耗时倒填发送起点。缺口是运行记录尚不能提供约定计时源，不是判定两小时尚未到。
+其身份与当前 invocation/token 一致，状态为 `COMMITTED`，`professional_effort_origin_at=send_completed_at=2026-10-27T20:21:19.179Z`，首次到期 `2026-10-27T22:21:19.179Z`。本次取得的当前时钟为 `2026-10-27T20:37:11Z`，距原起点约15分52秒，未达已绑定两实际小时。该判定只在所列核对时点成立，不表示后续免检。
 
-由原操作端据真实发送记录对账；能够恢复就沿该原起点检查已采用每两实际小时的持续复看，不因 R0006 回交/新 SHA 重置。若实际仍无法取得计时来源，按原 Binding 的 decide/投入缺口安排交原管理说明。该责任非阻塞，与本轮 W02 的合法派工/结果回收分别保留；本 Pro 不改发送回执、预算或全局运行状态。
+前次在 `c5955c2e562ca0f318cf08278b81ff56d6479d4e` 读取时，回执仍为 `NOT_SENT` 且无计时字段，因此初稿曾回 UNKNOWN；现有新真实记录已解除这个缺口，本次两份 Return 同步改为 NOT_YET。保留 Git 历史及回执中的原 UNKNOWN/只读对账事实，不把提交时间、模型耗时或准备动作当作发送起点，不改原起点，不重发消息。
+
+原操作端继续沿 `20:21:19.179Z` 起点和已采用 `WHILE_WORK_ACTIVE` 的每两小时规则检查；本轮提交/新 SHA 不清零累计投入。该责任非阻塞，与 W02 的合法派工/结果回收分别保留；本 Pro 不改发送回执、预算或全局运行状态。当前没有仍需因计时源未知而新增的管理请求。
 
 <a id="continuation"></a>
 ## 9. 唯一实际接续：派 W02 取真实输入，回原 Pro 继续全批
@@ -175,7 +178,7 @@ Worker 的正式数据与实际调用返回本签发者 `chatgpt:BI-01-CO-01:pro
 
 恢复后的完整剩余按 #remaining，不只看最近一次错误。研究结果、反证、未知和图数关系均由本 Pro 实做；全部交齐才走原管理接收，尚不足最少三例须在认真研究后据实走 decide。完成本批不自行启动无限新批次或开发。
 
-上节计时源缺口仍按原非阻塞管理机制并行处理，不因这份等待回交消失，也不伪称当前已形成后台调度或发出了任何新消息。
+每两小时的持续复看义务仍按原非阻塞管理机制保留。本次计时源已恢复，NOT_YET 不取消后续检查；本回交也不伪称当前已形成后台调度或发出了任何新消息。
 
 <a id="delivery-scope"></a>
 ## 10. 本轮交付资格
