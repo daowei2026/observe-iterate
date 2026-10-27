@@ -2,26 +2,43 @@
   "schema": "workmap-binding/v2",
   "status": "NOT_CONFIGURED",
   "manager_role": "management",
-  "overview": {"path": "runs/<NEW_RUN_ID>/README.md", "anchors": ["common", "bi01"]},
+  "overview": {
+    "path": "runs/BI-01-CO-01/README.md",
+    "anchors": ["common", "bi01"]
+  },
   "shared_overview_anchors": ["common"],
-  "owner_sources": ["runs/<NEW_RUN_ID>/OWNER_START.md", "professional/case_observation/00_PURPOSE_AND_OUTPUTS.md"],
+  "owner_sources": [
+    "runs/BI-01-CO-01/OWNER_START.md",
+    "professional/case_observation/00_PURPOSE_AND_OUTPUTS.md"
+  ],
   "rule_paths": [
+    "professional/case_observation/README.md",
     "professional/case_observation/00_PURPOSE_AND_OUTPUTS.md",
     "professional/case_observation/01_RESEARCH_METHOD.md",
     "professional/case_observation/02_OWNER_DELIVERY.md",
     "professional/case_observation/03_AIDATA_USE.md",
     "professional/case_observation/04_SOURCES_AND_REUSE.md",
     "runtime/dual_route_execution/DR14_QUESTION_WORK_CONTRACT.md",
-    "runtime/overlay/08_自然语言运行提示_v0.3.md"
+    "runtime/overlay/08_自然语言运行提示_v0.3.md",
+    "runs/BI-01-CO-01/reviews/management-R0001/DECISION.md"
   ],
-  "receipt_path": "runs/<NEW_RUN_ID>/reviews/WORKMAP_INTAKE_CURRENT.json",
+  "receipt_path": "runs/BI-01-CO-01/reviews/WORKMAP_INTAKE_CURRENT.json",
   "streams": {
     "bi01": {
-      "map": {"path": "runs/<NEW_RUN_ID>/00_长程推进地图.md", "anchors": ["goal", "stage", "evidence", "progress", "remaining", "management", "next"]},
-      "task": "runs/<NEW_RUN_ID>/01_当前任务.md",
+      "map": {
+        "path": "runs/BI-01-CO-01/00_长程推进地图.md",
+        "anchors": ["goal", "stage", "evidence", "progress", "remaining", "management", "next"]
+      },
+      "task": "runs/BI-01-CO-01/01_当前任务.md",
       "overview_anchors": ["bi01"],
-      "watch_roots": ["runs/<NEW_RUN_ID>/artifacts", "runs/<NEW_RUN_ID>/reviews/independent"]
+      "watch_roots": [
+        "runs/BI-01-CO-01/artifacts",
+        "runs/BI-01-CO-01/reviews/independent"
+      ],
+      "reader_output_roots": [
+        "runs/BI-01-CO-01/reviews/independent/workmap-01"
+      ]
     }
   },
-  "note": "新分支的非活动准备配置，不是 GO、真实地图、Intake 或派发。实际新 run 由真实授权与管理签发后填写；不能只改 status。旧 FO-01 Binding 完整保存在 9badfa6f30caebbe3156c5e4ee4deb43d22cacb5:runtime/config/WORKMAP_BINDING.json；旧运行资料到旧分支及准确历史版本读取，本分支不保留其 runs，不继承其等待、采用或责任。"
+  "note": "R0001 已依据真实新 Owner GO 签发本 run 地图、完整任务及首轮 Reader。当前仅具体化来源与保护面，NOT_CONFIGURED 表示尚待真实独立阅读、管理接收、Intake 及检查，不表示任务为空；不得只切状态冒充 ADOPTED。首轮 Reader 沿 DECISION.md#reader-pre-adoption 的限定授权进入，结果回原管理。provenance/turns 不进入 watch_roots；仅首轮读者专用窄输出目录从 reader 结果投影排除，全部实际业务成果仍受监控。旧运行资格不继承。"
 }
