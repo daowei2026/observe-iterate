@@ -43,9 +43,11 @@ branch: fy/multisymbol-case-observation-20261027
 
 开发期的 fixture 无变化 commit、初版漏核 watched artifacts，以及 v2 测试模块形式加载的同目录 import 失败均已定位；分别通过区分原指引、补核现有 snapshot 投影、改用适用 discover 入口解决，未采用 allow-empty/skip 或安装依赖。准备至账本初始化前没有单独可靠计时，总投入未知；测试耗时不冒充全任务耗时。
 
-以本候选当前工具只读重放：`46e60ed697f2b1e9ab791c7d64ba3100dca376ed` 的 R0002 历史 Reader pre-dispatch 从原 MESSAGE_CHANGED 变为 ok=true；`56e7b84cc78f75828ebb602cf0bc74a7c4aa6a1a` 的历史管理阻断回报为 ok=true，且 reader_dispatch_ready=false；候选 235c0f2… 的真实 R0002 pre-dispatch 仍以唯一 `SEND_NOT_SAFE:COMMITTED` 拒绝重发，after-return 为 ok=true。均为 exact Git 输入重放，不是新生产派发。原错误和原 NOT_SENT 记录未被覆盖；当前真实发送事实来自 c77d8e9… 已记入的 COMMITTED 回执。
+以本候选当前工具只读重放：`46e60ed697f2b1e9ab791c7d64ba3100dca376ed` 的 R0002 历史 Reader pre-dispatch 从原 MESSAGE_CHANGED 变为 ok=true；`56e7b84cc78f75828ebb602cf0bc74a7c4aa6a1a` 的历史管理阻断回报为 ok=true，且 reader_dispatch_ready=false；候选 235c0f2… 的真实 R0002 pre-dispatch 仍以唯一 `SEND_NOT_SAFE:COMMITTED` 拒绝重发，after-return 为 ok=true。均为 exact Git 输入重放，不是新生产派发。原错误和原 NOT_SENT 记录未被覆盖；当前真实发送事实来自 c77d8e9ec7d92d6f725bd8ec807e1a0bf5059e83 已记入的 COMMITTED 回执。
 
-本报告成为 exact Git 实物后，将补核真实 R0002 三份回交、正式工单及本报告的只读技术结果关联；此处未声称已执行该检查。
+已在报告首个提交 `91c8dcfda6821402177b1f794be197f6d4a7afa3` 上完成**真实来源的只读组件核验**：直接调用本候选的 returned_call、reader_worker_evidence 和 reader_input_errors，以真实 R0002 管理完整报告@1503a17…、Q-Return@dfbd116…、Role Return@4fd147e…、正式工单@47276ee…以及本报告@91c8dcf…作为输入。工单/技术结果关联通过，未创建新的 invocation，未执行发送；这项组件核验不能冒充尚未建立的新管理 pre-dispatch。完整 exact 来源和结果存 REAL_REPLAYS.json。
+
+该树的受监控结果已变化，冻结输入检查准确返回 `FIRST_READER_INPUT_CHANGED`。冻结 full snapshot fingerprint 为 `14af9ffb30bf71175a26b41e07d4a47e9ae7fc393231044be9813399590a1240`，91c8dcf… 树为 `3d623cc88b1fa26e2f078c9c6b83a245f6b7382a8e69451b7c1753b7deb7dd7c`；文档 reader_fingerprint 两者仍为 `bc910fd94f4f992e126e312181d34fb27f64bf48a11c1c7e3999d100249e02b0`，不能单凭此摘要未变就放行。R0002 仍以 `SEND_NOT_SAFE:COMMITTED` 拒绝重发，after-return 仍通过。最终补齐本段和证据 JSON 又会改变结果树，原管理应在实际接收后的真实提交取得新 snapshot，而不是复用这里的中间快照。最终提交还会做相同只读核验和远端回读，结果由本聊天交付回执确认。
 
 所有 fixture 的 Owner/发送/管理/Reader 内容均为临时 Git 仓隔离数据；它们不是本 run 的 COMMITTED、独立审查或管理接受。现场 exact Git 重放只读既存实物，不构成重发授权；没有把技术报告算作 Reader Return，也没有调用需要 accepted base 的 worker-result 来伪造首次 Intake。
 
