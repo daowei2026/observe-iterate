@@ -1,0 +1,11 @@
+[2026-10-28T07:15:42 2205218](mquant) ### create neo4j connection 'bolt://[REDACTED_CONNECTION_URI]' ###
+ -INFO- File "/dwdhome/fy/BASE_E6_2/mquant/quant/db/graph.py", line 41, in __init__
+[2026-10-28T07:15:42 2205218](mquant) ### cleanup neo4j connection ###
+ -INFO- File "/dwdhome/fy/BASE_E6_2/mquant/quant/db/graph.py", line 57, in cleanup
+Traceback (most recent call last):
+  File "<string>", line 8, in <module>
+  File "/dwdhome/fy/BASE_E6_2/mquant/frame/core/base/internal/dict.py", line 252, in __getattr__
+    raise KeyError(f"{caller_name(inspect.stack(0),self)} have no {key!r} attrrbute")
+  File "/dwdhome/fy/BASE_E6_2/mquant/frame/core/base/internal/dict.py", line 128, in caller_name
+    args, _, _, value_dict = inspect.getargvalues(frs[i][0])
+IndexError: list index out of range

@@ -1,0 +1,247 @@
+{
+  "aidata_workspace": "",
+  "anchor_registry": [
+    {
+      "anchor_name": "1d KLine正式行情数据_closeUti",
+      "df_key_normalized": "__default__",
+      "dffilter_id": "identity",
+      "evidence_role": "market_context_sidecar",
+      "evidence_roles": [
+        "market_context_sidecar"
+      ],
+      "feature_identity_hash": "fc156d30e8cbdbd780acc6f8e5300ebbab0629aa",
+      "feature_key": "kline_1d",
+      "feature_params_hash": "ae8e6b5a2a3114253fab77f45ada478c29f78f1a",
+      "feature_ppid": "KLine_b1c78a836a84daaa3c8fe02057af79a05db9614c",
+      "feature_repr": "KLine({'freq': '1d'})",
+      "hash_method": "repr_sha1_v0",
+      "is_raw_market_data": true,
+      "locator_roles": [],
+      "plot_binding": {},
+      "selection_feature_id": "",
+      "selection_variant_id": "",
+      "slice_levels": [
+        "big"
+      ],
+      "target_id": "",
+      "target_type": "symbol",
+      "time_binding": {
+        "interval_policy": "point_inside",
+        "time_mode": "uti_point",
+        "uti1_field": "closeUti",
+        "uti2_field": null,
+        "uti_fields": [
+          "closeUti"
+        ]
+      },
+      "view_id": "__default__"
+    },
+    {
+      "anchor_name": "30m KLine正式行情数据_closeUti",
+      "df_key_normalized": "__default__",
+      "dffilter_id": "identity",
+      "evidence_role": "market_context_sidecar",
+      "evidence_roles": [
+        "market_context_sidecar"
+      ],
+      "feature_identity_hash": "452f14b721601beaad009ad850beea6d5d81b2a7",
+      "feature_key": "kline_30m",
+      "feature_params_hash": "ff0b6220020b36879293a31c879f887088d25200",
+      "feature_ppid": "KLine_273ae3a17c71b574ce50c5106870d7348e2436da",
+      "feature_repr": "KLine({'freq': '30m'})",
+      "hash_method": "repr_sha1_v0",
+      "is_raw_market_data": true,
+      "locator_roles": [],
+      "plot_binding": {},
+      "selection_feature_id": "",
+      "selection_variant_id": "",
+      "slice_levels": [
+        "big"
+      ],
+      "target_id": "",
+      "target_type": "symbol",
+      "time_binding": {
+        "interval_policy": "point_inside",
+        "time_mode": "uti_point",
+        "uti1_field": "closeUti",
+        "uti2_field": null,
+        "uti_fields": [
+          "closeUti"
+        ]
+      },
+      "view_id": "__default__"
+    },
+    {
+      "anchor_name": "30m图上的贴近转折（mid）_x",
+      "df_key_normalized": "__default__",
+      "dffilter_id": "identity",
+      "evidence_role": "internal_structure",
+      "evidence_roles": [
+        "internal_structure"
+      ],
+      "feature_identity_hash": "d9712cd260ac722d9200c4a2f3c71356303c1f1b",
+      "feature_key": "scale_turn_mid",
+      "feature_params_hash": "a2982b5663e157ccd2f7c28480ea6f4bd1131fa2",
+      "feature_ppid": "ScaleTurnCalendar_1108fcdf993ff41f1e26c18b3bf2097a3258a77f",
+      "feature_repr": "ScaleTurnCalendar({'stCloseGainController': BscCloseGainController({'cgcInputs': GMap({'f0': AdjCloseVerticalDistanceInput({'acvdLabel': 'adistance', 'acvdXStepTimes': 0.1, 'acvdDisTimes': 100})}), 'cgcCombine': InputCombineIfClose({'icicLine': 0})}), 'stMembershipLine': 0.3, 'stRnd2ChooseTurn': ChooseMaxExtraPoint({'cmepOccupy': 0}), 'specTerm': 'M', 'falter': RctZigWithStatus({'zig': ZigZag({'featIn': Rable(KLine({'freq': '30m'}),('closeUti as uti', 'close as value')), 'retracePct': 0.5})}), 'fcheck': RctZigWithStatus({'zig': ZigZag({'featIn': Rable(KLine({'freq': '30m'}),('closeUti as uti', 'close as value')), 'retracePct': 0.5})}), 'fisSystem': T1FisSystem({'Name': 'T1FIS', 'Config': T1FisSystemConfig({'type1': 'mamdani', 'version1': '2.0', 'andMethod1': 'min', 'orMethod1': 'max', 'impMethod1': 'min', 'aggMethod1': 'max', 'defuzzMethod1': 'centroid'}), 'Inputs': GMap({'adistance': OneUseGaussmfInOrOutPut({'range': (0, 10), 'mf_name': ['S', 'M', 'L'], 'MfValueFunc': GaussMFs({'overlap': 0.2})})}), 'Outputs': GMap({'closegain': OneUseGaussmfInOrOutPut({'range': (0, 1), 'mf_name': ['S', 'M', 'L'], 'MfValueFunc': GaussMFs({'overlap': 0.2})})}), 'Rules': OneSetRules({'rules': GMap({'f0': IfAll({'inputs': {'adistance': 'L'}, 'outputs': {'closegain': 'L'}, 'weight': 1}), 'f1': IfAll({'inputs': {'adistance': 'M'}, 'outputs': {'closegain': 'M'}, 'weight': 1}), 'f2': IfAll({'inputs': {'adistance': 'S'}, 'outputs': {'closegain': 'S'}, 'weight': 1})})})})})",
+      "hash_method": "repr_sha1_v0",
+      "is_raw_market_data": false,
+      "locator_roles": [],
+      "plot_binding": {
+        "group": "evidence",
+        "hover_fields": [],
+        "kind": "point",
+        "label": "贴近转折（mid）",
+        "style": {
+          "marker": "diamond",
+          "size": 20
+        },
+        "surfaces": [
+          "big"
+        ],
+        "visible": {
+          "big": true,
+          "mid": true,
+          "overview": true,
+          "small": true,
+          "tick": true
+        },
+        "x_field": "x",
+        "y_field": "y"
+      },
+      "selection_feature_id": "",
+      "selection_variant_id": "",
+      "slice_levels": [
+        "big"
+      ],
+      "target_id": "",
+      "target_type": "symbol",
+      "time_binding": {
+        "interval_policy": "point_inside",
+        "time_mode": "uti_point",
+        "uti1_field": "x",
+        "uti2_field": null,
+        "uti_fields": [
+          "x"
+        ]
+      },
+      "view_id": "__default__"
+    }
+  ],
+  "blk": "blk@steel",
+  "calendar_name": "night_end_at_2300",
+  "calendar_source": "override",
+  "chart_family": "explicit_timespan_caegraph_v0",
+  "context_ref": {
+    "end_day": null,
+    "sof_name": "TA_updto20240229_DBA",
+    "start_day": null,
+    "stk_tlist": "tick_test_all57_takeout_lcNsiNcy"
+  },
+  "effective_data_end": "",
+  "effective_data_range_policy": "",
+  "effective_data_start": "",
+  "extract_time_syms": "blk@steel",
+  "feature_registry": [
+    {
+      "df_keys_normalized": [
+        "__default__"
+      ],
+      "evidence_role": "market_context_sidecar",
+      "feature_identity_hash": "fc156d30e8cbdbd780acc6f8e5300ebbab0629aa",
+      "feature_key": "kline_1d",
+      "feature_params_hash": "ae8e6b5a2a3114253fab77f45ada478c29f78f1a",
+      "feature_ppid": "KLine_b1c78a836a84daaa3c8fe02057af79a05db9614c",
+      "feature_repr": "KLine({'freq': '1d'})",
+      "hash_method": "repr_sha1_v0",
+      "is_raw_market_data": true,
+      "slice_levels": [
+        "big"
+      ],
+      "target_id": "",
+      "target_type": "symbol"
+    },
+    {
+      "df_keys_normalized": [
+        "__default__"
+      ],
+      "evidence_role": "market_context_sidecar",
+      "feature_identity_hash": "452f14b721601beaad009ad850beea6d5d81b2a7",
+      "feature_key": "kline_30m",
+      "feature_params_hash": "ff0b6220020b36879293a31c879f887088d25200",
+      "feature_ppid": "KLine_273ae3a17c71b574ce50c5106870d7348e2436da",
+      "feature_repr": "KLine({'freq': '30m'})",
+      "hash_method": "repr_sha1_v0",
+      "is_raw_market_data": true,
+      "slice_levels": [
+        "big"
+      ],
+      "target_id": "",
+      "target_type": "symbol"
+    },
+    {
+      "df_keys_normalized": [
+        "__default__"
+      ],
+      "evidence_role": "internal_structure",
+      "feature_identity_hash": "d9712cd260ac722d9200c4a2f3c71356303c1f1b",
+      "feature_key": "scale_turn_mid",
+      "feature_params_hash": "a2982b5663e157ccd2f7c28480ea6f4bd1131fa2",
+      "feature_ppid": "ScaleTurnCalendar_1108fcdf993ff41f1e26c18b3bf2097a3258a77f",
+      "feature_repr": "ScaleTurnCalendar({'stCloseGainController': BscCloseGainController({'cgcInputs': GMap({'f0': AdjCloseVerticalDistanceInput({'acvdLabel': 'adistance', 'acvdXStepTimes': 0.1, 'acvdDisTimes': 100})}), 'cgcCombine': InputCombineIfClose({'icicLine': 0})}), 'stMembershipLine': 0.3, 'stRnd2ChooseTurn': ChooseMaxExtraPoint({'cmepOccupy': 0}), 'specTerm': 'M', 'falter': RctZigWithStatus({'zig': ZigZag({'featIn': Rable(KLine({'freq': '30m'}),('closeUti as uti', 'close as value')), 'retracePct': 0.5})}), 'fcheck': RctZigWithStatus({'zig': ZigZag({'featIn': Rable(KLine({'freq': '30m'}),('closeUti as uti', 'close as value')), 'retracePct': 0.5})}), 'fisSystem': T1FisSystem({'Name': 'T1FIS', 'Config': T1FisSystemConfig({'type1': 'mamdani', 'version1': '2.0', 'andMethod1': 'min', 'orMethod1': 'max', 'impMethod1': 'min', 'aggMethod1': 'max', 'defuzzMethod1': 'centroid'}), 'Inputs': GMap({'adistance': OneUseGaussmfInOrOutPut({'range': (0, 10), 'mf_name': ['S', 'M', 'L'], 'MfValueFunc': GaussMFs({'overlap': 0.2})})}), 'Outputs': GMap({'closegain': OneUseGaussmfInOrOutPut({'range': (0, 1), 'mf_name': ['S', 'M', 'L'], 'MfValueFunc': GaussMFs({'overlap': 0.2})})}), 'Rules': OneSetRules({'rules': GMap({'f0': IfAll({'inputs': {'adistance': 'L'}, 'outputs': {'closegain': 'L'}, 'weight': 1}), 'f1': IfAll({'inputs': {'adistance': 'M'}, 'outputs': {'closegain': 'M'}, 'weight': 1}), 'f2': IfAll({'inputs': {'adistance': 'S'}, 'outputs': {'closegain': 'S'}, 'weight': 1})})})})})",
+      "hash_method": "repr_sha1_v0",
+      "is_raw_market_data": false,
+      "slice_levels": [
+        "big"
+      ],
+      "target_id": "",
+      "target_type": "symbol"
+    }
+  ],
+  "generation_depth": "big",
+  "limits": {},
+  "management_period": {},
+  "member_symbols": [
+    "rb",
+    "hc",
+    "i"
+  ],
+  "profile_global_end": "",
+  "profile_global_start": "",
+  "profile_id": "",
+  "profile_version": 0,
+  "registry_fingerprint": "",
+  "resolved_profile_fingerprint": "",
+  "run_brief_path": "/dwdhome/fy/BASE_E6_2/mquant/aidata/test_runs/bi01_co_01_w03_cases_30m_mid_20261028_5e4fa62eaf/bi01_co01_w03_cases_20261028_5e4fa62eaf/run_brief.json",
+  "run_id": "bi01_co01_w03_cases_20261028_5e4fa62eaf",
+  "run_kind": "board_full",
+  "run_note": "多品种差异研究：aidata正式图数输入",
+  "search_end": "2023-10-12 00:00:00",
+  "search_start": "2021-02-01 00:00:00",
+  "search_timespans": [
+    {
+      "end": "2021-04-07",
+      "label": "CO01-C01",
+      "start": "2021-02-01"
+    },
+    {
+      "end": "2021-10-15",
+      "label": "CO01-C02",
+      "start": "2021-07-01"
+    },
+    {
+      "end": "2022-06-24",
+      "label": "CO01-C03",
+      "start": "2022-04-01"
+    },
+    {
+      "end": "2023-10-12",
+      "label": "CO01-C04",
+      "start": "2023-06-01"
+    }
+  ],
+  "selection_end": "",
+  "selection_start": "",
+  "source_chart_run_id": "",
+  "timespan_extraction": {}
+}
