@@ -1,6 +1,6 @@
 # 专业问题的任务绑定、回交与主控逐步处理
 
-修订：2026-10-10-question-work-v2-complete-goal-map。使用 [BI-01专业题与原文](DR12_PROFESSIONAL_QUESTION_CATALOG.md)、[DR13工作组合/管理题](DR13_WORK_ARRANGEMENT_AND_CONTEXT.md) 和 [Overlay13](../overlay/13_角色回交与主控接续协议.md)。专业正文保持自然语言，结构只定位已形成内容。v2修首次输入、续作、触发与试跑连接，并为新采用的EFFORT增加显式持续复看；保留v1及既有v2读取，不追造旧调用采用资格。离线检查不证明语义、发送或部署，旧自动gate未改造。
+修订：2026-10-27-question-work-bound-methods。使用 [专业取源入口](DR12_PROFESSIONAL_QUESTION_CATALOG.md)、[DR13工作组合/管理题](DR13_WORK_ARRANGEMENT_AND_CONTEXT.md) 和 [Overlay13](../overlay/13_角色回交与主控接续协议.md)。专业正文保持自然语言，结构只定位已形成内容。v2修首次输入、续作、触发与试跑连接，并为新采用的EFFORT增加显式持续复看；保留v1及既有v2读取，不追造旧调用采用资格。离线检查不证明语义、发送或部署，旧自动gate未改造。
 
 ## 1. 从启动输入到正式绑定
 
@@ -46,7 +46,7 @@ Git方法、旧实物和任务用 `repo`、40位 `commit`、仓库根 `path`、`
 |goal_ref / plan_ref / full_scope_ref|Owner完整现行目标、由有权管理区分当前安排或历史复核的计划、本段全部范围；不能以最近 remaining 代替完整目标，也不能让已替代旧计划继续发相反行动指令|
 |batch_result|本段应形成的可检查结果、证据/图或后续行动，不能只写“推进下一项”|
 |parent|与§1.0同义；由实际来源判断，不强求新用例虚造父合同|
-|question_ids|DR12 的具体特征专业工作、M-START/M-REASSESS/M-CLOSE/INDEPENDENT_REVIEW 或受控 CASE 问题|
+|question_ids|本次采用的专业问题、管理题或受控 CASE 问题；使用既有 schema 合法身份，新 CASE 按下述定义与授权，不把专业 mode 冒充题号|
 |question_definitions|无CASE时空数组；有CASE时逐项给定义、依据和授权|
 |professional_mode|当前 BI-01 有权专业 Router／实际任务规定的mode；Router 缺失不得从题号推断写权；兼任职责由真实委派确定|
 |focus_ref|首次签发时的集中重点；本段内最新接续按§1.4确定|
@@ -58,9 +58,9 @@ Git方法、旧实物和任务用 `repo`、40位 `commit`、仓库根 `path`、`
 |triggers|具名RESULT/EFFORT/CHANGE及管理委派，按§1.3|
 |explicit_no_trigger_reason_ref|triggers为空时必须有权解释结束/返回为何足够，否则null|
 
-**上述字段的完整目标解释：每次实质业务推进以有权任务定义的完整目标及真实剩余为责任范围。不能未经授权将整项任务缩成单个 Case、局部观察或最近修复清单；四项专业工作允许返回调整，不另设四个阶段 Gate。**full_scope_ref保留全部责任；batch_result记录实际交回增量，focus_ref只决定顺序，completion_ref不得用局部交付结算全目标。真实容量或依赖限制如实说明，其他已明确工作继续；不得为每个地图节点创建一轮任务。
+**上述字段的完整目标解释：每次实质业务推进以有权任务定义的完整目标及真实剩余为责任范围。不能未经授权将整项任务缩成单个 Case、局部观察或最近修复清单；专业方法内部步骤不自动成为串行 Gate。**full_scope_ref保留全部责任；batch_result记录实际交回增量，focus_ref只决定顺序，completion_ref不得用局部交付结算全目标。真实容量或依赖限制如实说明，其他已明确工作继续；不得为每个地图节点创建一轮任务。
 
-BI-01 新任务的首次管理和专业派发，真实 source_reads 须包含[四项专业工作](../../professional/feature_observation/00_PURPOSE_AND_FOUR_WORKS.md)、[基本输出](../../professional/feature_observation/01_OUTPUT_BASE_FORMAT.md)、[初步细节](../../professional/feature_observation/02_WORK_DETAILS.md)，并按具名特征需要取得真实实现、数据、参数及相应[旧知识](../../professional/feature_observation/03_REUSE_FROM_V2.md)、[aidata](../../professional/feature_observation/04_AIDATA_USE.md)来源。U2/U3 及旧两份 ZIP 只按本次特征需要引用，不能强制继承旧 S1–S3、完整 U2/U3 目标或已采用 Gate。新 run 身份与真实数据来源由新 Owner GO 和有权任务确定；有价值的格式外分析保留，图/字段数不是专业 PASS。
+BI-01 新任务的首次管理和专业派发，真实 source_reads 须提供本次采用的完整专业目标、产出要求、实施方法及实际承重输入；具体位置由 goal_ref、专业 Router 和有权任务确定，不在本合同写死某种业务工作。旧设计和资料仅按需引用，不继承旧任务目标、数据或已采用 Gate。新 run 身份与真实数据来源由新 Owner GO 和有权任务确定；有价值的格式外分析保留，图/字段数不是专业 PASS。
 
 普通题内具名子问题优先引用原题，不发新编号。真实必要问题确超出题库时，管理/有权Pro可使用本工作内 `CASE-...`：definition_ref给出业务问题、当前输入、交付、结束/返回和与原义务关系；authority_ref给实际授权；parent_question_id可指相关固定题，确无则null。每个CASE均须定义，未使用的定义不塞入绑定。CASE不自动进入通用core，不扩权限、不豁免其他义务。
 
@@ -68,7 +68,7 @@ BI-01 新任务的首次管理和专业派发，真实 source_reads 须包含[�
 
 `FOCUS_FULL` 要求所选正文完整读取，不表示脚本把该来源正文嵌入消息。Owner 要求原文出现在实际消息时，当前任务正文须实际包含全文。已撤完整任务不能继续标为当前执行 `FOCUS_FULL`；追溯使用现有 `PROVENANCE_TRIGGER` 并说明用途。历史正文保留，旧行动不重新取得当前权力。管理已裁定事项由推进者采用，新冲突按原责任处理。
 
-默认专业来源由 DR12 的新具体特征专业工作与本次真实管理任务、Binding 共同决定；不能把上游CYF S01–S25当作BI-01必读，也不能让每轮管理者重新发明清单。首次必读负担仍需实际观察，题面不替全文。Owner校准与分支读取 [Overlay02](../overlay/02_Source版本任务授权与人类参与_v0.3.md) §§3–6。
+默认专业来源由本次配置、DR12取源与真实管理任务、Binding共同决定；不能把上游历史方法当作BI-01必读，也不能让每轮管理者重新发明清单。首次必读负担仍需实际观察，题面不替全文。Owner校准与分支读取 [Overlay02](../overlay/02_Source版本任务授权与人类参与_v0.3.md) §§3–6。
 
 routes每项含recipient_role、recipient_ref、instructions_ref。模板可复用，但占位必须以已有决定/事实填实；新范围或新阶段仍需原授权。技术工单存在不自动指派Worker，也不自动放行专业Gate。
 
@@ -76,7 +76,7 @@ routes每项含recipient_role、recipient_ref、instructions_ref。模板可复�
 
 trigger保留 `trigger_id, kind, condition_ref, signal_key, route, blocking, effort_limit`，增加 `obligation_id, cycle_id, rearm_ref`；v2的EFFORT可选`repeat=ONCE|WHILE_WORK_ACTIVE`，缺省为ONCE，RESULT/CHANGE只能ONCE。condition_ref是有权Pro写清的真实条件；route指准确管理接收者及M题、完整目标和本次专业结果。blocking只限制具名受影响工作。旧记录没有repeat时继续按一次性解释，不静默改历史。
 
-- RESULT：具名范围的实际形成/接收结果，专业者判定并交证据，不用commit数或小测试替代。BI-01涉及依赖性交接时，须把上游成果送管理 Pro 真实认可并签发下游；专业 RESULT=SATISFIED、普通CONTINUE或技术工单都不是管理放行。使用已有触发与准确引用，不新增新返回类型。
+- RESULT：具名范围的实际形成/接收结果，专业者判定并交证据，不用commit数或小测试替代。本次任务明确要求管理接收的跨工作依赖，须真实认可并签发下游；专业 RESULT=SATISFIED、普通CONTINUE或技术工单都不是管理放行。普通内部步骤不由此新增Gate。使用已有触发与准确引用，不新增新返回类型。
 - CHANGE：Owner/方法/业务前提/反馈的具体变化；专业者判性质，主控转交原文。直接Owner纠正不等待Builder批准。
 - EFFORT：effort_limit含unit（EFFECTIVE_CALLS/ELAPSED_HOURS）、正limit、count_from_ref。计数基于实际专业/必要管理/审查结果；重复回执和无回答不冒充有效进展。时间按原起点及真实记录，不假填。复看条件不强制通过、缩范围或全线停工。
 
@@ -106,9 +106,9 @@ focus_results每项有question_id、completed_ref、remaining_ref、affected_ref
 
 两份回交还须与实际派发的work/invocation/token、binding_ref、question_work_ref及真实来源相符。旧结果只留历史，不覆盖新有效指令。结构正确不证明这些引用真实可取或业务在授权内。
 
-### 当前专业工作说明：不特设 CYF C 工作段
+### 当前专业工作说明：不特设历史工作段
 
-当前任务及最新合法 continuation 的权责，继续沿用上面的 §1.4。BI-01 具体特征观察的四项可往返工作、Scope、成果表达及实际专业完成标准来自[当前专业入口](../../professional/feature_observation/README.md)与本次真实 Binding；不以运行协议另造业务阶段。旧 CYF 五段 Host 或 CURRENT_C_WORK 不成为新的 BI-01 步骤；原 ROLE_RETURN、QUESTION_WORK_RETURN 字段不变。
+当前任务及最新合法 continuation 的权责，继续沿用上面的 §1.4。专业Scope、成果表达及完成标准来自本次准确专业正文和真实 Binding；不以运行协议另造业务阶段。旧 CYF 五段 Host 或 CURRENT_C_WORK 不成为新的 BI-01 步骤；原 ROLE_RETURN、QUESTION_WORK_RETURN 字段不变。
 
 ### 1.5 可直接试跑的完整输入
 
@@ -123,7 +123,7 @@ focus_results每项有question_id、completed_ref、remaining_ref、affected_ref
 2. 解析恰好一个ROLE_RETURN，再取得question_work_ref、RETURN及其确切输入。核schema、职责、题目定义、mode和引用；按§1.4核最新重点及两份回交同义。
 3. 缺结构/定位/指令一致性按原return_repair定向补。缺实质分析继续原专业/管理工作；同一机械补交一次仍失败交decide窄处理，不无限重试或全面重审。BOOTSTRAP缺项返回原提供/承办者，不让Owner先填计划。
 4. 核Owner/方法/任务变化的实际影响。普通检查点不收回原授权，已知错误只限制依赖动作。旧gate冲突报告，不静默跳过或造PASS。
-5. 主动作按原ROLE_RETURN：IN_PROGRESS/CONTINUE仅续原仍合法且不受依赖阻断的工作；SUBMITTED交原接收；NEEDS_DECISION交有权判断；WAITING_INPUT具名等待；交付INCOMPLETE补交付。BI-01工作2/3被下游依赖时，必须存在上游合格交付及管理Pro对确切范围的认可和签发，不能由主控解读RETURN或自报技术PASS代行放行；管理尚未完成不派依赖未定判断的新方向。
+5. 主动作按原ROLE_RETURN：IN_PROGRESS/CONTINUE仅续原仍合法且不受依赖阻断的工作；SUBMITTED交原接收；NEEDS_DECISION交有权判断；WAITING_INPUT具名等待；交付INCOMPLETE补交付。实际任务要求管理接收的跨工作依赖，必须有适用上游交付及管理Pro认可与签发；不能由主控解读RETURN或技术PASS代行放行，普通内部步骤不据此添加Gate。管理尚未完成不派依赖未定判断的新方向。
 6. 独立核全部trigger和稳定责任记录，无论主动作CONTINUE/SUBMIT/WAIT。RESULT/CHANGE消费专业原判，EFFORT核实际记录。到期管理、非阻塞专业续作和已签独立接收分别保留；冲突/UNKNOWN不默认未触发。工作ACTIVE但所有一次性复看都已结算、又没有持续复看或等价管理／交接时，返回“持续管理安排缺失”，交原管理者补关系，不由主控挑新数值。
 7. 按原任务/固定操作文字＋最新一致的续作正文＋准确原文入口生成消息。管理输入保留完整目标与重要工作位置。主控不润色业务，不自行增加完成压力；必须原样传递Owner已明确的完整推进目标及禁止局部停点要求，不将其改成必须虚报一轮完成。
 8. 按稳定责任键记录PENDING/IN_FLIGHT/RETURNED/CONSUMED/SUPERSEDED。准备不等于发送，收到不等于消费。已有循环可顺序投递不同聊天，不宣称后台并行。
@@ -134,7 +134,7 @@ BI-01正常消息按Overlay08取已采用的当前任务与完整专业方法，
 
 ## 3. 主动作与管理责任并存
 
-一批I4专业观察已有部分可信事实、必要挑战仍未完。RETURN回CONTINUE并报告某项已绑定非阻塞管理条件SATISFIED：主控发送原专业续作及已签发M-REASSESS两条消息。重复同回交不重派。后续消费者修订改变证据SHA：原管理在途则补证据，已消费则只记新证据，不重新发同一回看。需要新判断由有权Pro开新cycle并说明依据。前提被否定且影响后续时仅暂停该依赖，不能所有trigger都设成不阻塞或全线阻塞。
+例如一批专业观察已有部分可信事实、必要挑战仍未完。RETURN回CONTINUE并报告某项已绑定非阻塞管理条件SATISFIED：主控发送原专业续作及已签发M-REASSESS两条消息。重复同回交不重派。后续消费者修订改变证据SHA：原管理在途则补证据，已消费则只记新证据，不重新发同一回看。需要新判断由有权Pro开新cycle并说明依据。前提被否定且影响后续时仅暂停该依赖，不能所有trigger都设成不阻塞或全线阻塞。
 
 ## 4. 固定操作文字
 
@@ -144,7 +144,7 @@ BI-01正常消息按Overlay08取已采用的当前任务与完整专业方法，
 
 补交付：“已成判断见〔位置〕，原承诺〔确切实物〕尚未取得。完成原交付；确实还欠专业工作则交清原工作未完。主控没有新增业务要求。”
 
-审查：“按已签发独立审查委派，对〔exact候选/范围/新依据〕使用〔DR12题和完整方法〕复做承重判断，返回实际finding和影响；已有覆盖见〔位置〕。探针/Builder自评不代替独立资格，局部不升整包。”
+审查：“按已签发独立审查委派，对〔exact候选/范围/新依据〕使用〔DR12定位的完整专业方法〕复做承重判断，返回实际finding和影响；已有覆盖见〔位置〕。探针/Builder自评不代替独立资格，局部不升整包。”
 
 管理回看：“执行稳定责任〔work/obligation/cycle或repeat段〕，本次条件与证据见〔位置〕。按〔M题〕消费〔完整目标、重要工作位置、相应专业成果和原文〕，完成投入取舍/剩余/预算/地图/具体后继。任务仍继续时交清下一段工作和复看安排；已有持续间隔可有据保留或调整，本轮返回不取消看管。原专业及已签接收按〔既定阻塞关系〕继续、收取或仅暂停受影响动作。新证据更新已有事项；未完继续同一管理事项。”
 
@@ -154,7 +154,7 @@ BI-01正常消息按Overlay08取已采用的当前任务与完整专业方法，
 
 ## 5. Harness、离线检查与真实试跑
 
-[question_work.schema.json](../overlay/tools/question_work.schema.json)区分v1/v2及BOOTSTRAP/BINDING/RETURN。[question_work_check.py](../overlay/tools/question_work_check.py)只核可观察关联和返回待处理责任，不发消息、不写运行状态、不判断专业语义/授权。引用存在与实际阅读另核。
+[question_work.schema.json](../overlay/tools/question_work.schema.json)区分v1/v2及BOOTSTRAP/BINDING/RETURN。[question_work_check.py](../overlay/tools/question_work_check.py)只核可观察关联和返回待处理责任，不发消息、不写运行状态、不判断专业语义/授权。引用存在与实际阅读另核。schema保留的历史题号和说明不选择当前专业方法，实际专业mode必须与本次派发配置及Binding匹配。
 
 语义检查仍用当前BI-01实际授权的专业审查依据及管理Harness，核题目与输入是否适当、原义务是否实做、重要反馈是否被消费。向后追Owner与完整方法，向前核接收者无需猜。schema通过不等于读懂、选题正确、独立审查或部署。
 
