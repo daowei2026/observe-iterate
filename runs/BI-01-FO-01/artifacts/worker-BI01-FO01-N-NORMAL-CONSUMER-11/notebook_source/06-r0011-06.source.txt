@@ -1,9 +1,0 @@
-
-rb_K=widgets.Dropdown(options=list(PLAN['rb_cuts']),value='before_confirmation',description='rb知识K')
-rb_mode=widgets.Dropdown(options=[('所选K当时可知','query'),('事后确认两切点对照','comparison')],value='query',description='阅读模式')
-rb_out=widgets.Output()
-def display_rb(change=None):
- with rb_out:
-  clear_output(wait=True);render_normal('rb',rb_K.value,rb_mode.value)
-rb_K.observe(display_rb,names='value');rb_mode.observe(display_rb,names='value')
-display(widgets.HBox([rb_mode,rb_K]),rb_out);display_rb()

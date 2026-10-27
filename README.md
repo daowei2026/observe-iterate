@@ -2,7 +2,7 @@
 
 当前专业方法是[多品种差异用例观察](professional/case_observation/README.md)，替换旧具体特征四项工作。运行机制继续复用，不另建调度或回交系统。
 
-**本分支为方法与运行接线准备；本次修改没有启动长程任务。** 新任务仍须真实 Owner GO、独立 run 身份和管理采用。旧运行记录保留，不能据此推定新任务已授权。
+**本分支为方法与运行接线准备；本次修改没有启动长程任务。** 新任务仍须真实 Owner GO、独立 run 身份和管理采用。旧运行资料只在旧分支及准确历史版本读取，不保留在本分支 `runs/`，不能据此推定新任务已授权。
 
 ## 当前专业入口
 
@@ -19,6 +19,6 @@
 - 操作仓：`daowei2026/cgpterm`，分支 `fy/observation-iteration-agent-longrun-20261015`。
 - 本专业及运行仓的新分支：`fy/multisymbol-case-observation-20261027`，从 `fy/bi01-feature-observation-prep-20261021@9badfa6f30caebbe3156c5e4ee4deb43d22cacb5` 建立。
 - [通用运行入口](runtime/README.md)、[本批启动准备](runtime/operations/CASE_OBSERVATION_RUN_GUIDE.md)、[采用状态](runtime/config/ADOPTION_STATUS.md)。
-- [已有运行记录](runs/README.md)：旧 FO-01 的真实记录保持不变。旧专业正文以以上准确历史提交读取，不并列为当前规范。
+- [运行记录入口](runs/README.md)：本分支只保存新任务运行资料，旧 FO-01 及更早记录到旧分支定向读取。旧专业正文以以上准确历史提交读取，不并列为当前规范。
 
 后续实际启动分别锁定两仓真实完成提交、aidata 现场版本及本次任务来源；分支名、模板、代码检查或图数试验不代替授权。当前尚未有本批实际用例、平台链接或 aidata 现场验证结果。

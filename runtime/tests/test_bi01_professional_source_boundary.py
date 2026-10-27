@@ -1,4 +1,4 @@
-"""Current professional sources are replaceable; historical records remain historical."""
+"""Current professional sources are replaceable; historical runs stay on their branch."""
 import json
 import re
 import unittest
@@ -7,13 +7,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 METHOD = ROOT / "professional/case_observation"
 BASE = "9badfa6f30caebbe3156c5e4ee4deb43d22cacb5"
-OLDER = "c7971cc616e09db47681abc868e77acdc272f84a"
 METHOD_FILES = {
     "README.md", "00_PURPOSE_AND_OUTPUTS.md", "01_RESEARCH_METHOD.md",
     "02_OWNER_DELIVERY.md", "03_AIDATA_USE.md", "04_SOURCES_AND_REUSE.md",
 }
 ACTIVE = [
-    "README.md", "professional/README.md", "professional/CURRENT_EXECUTION.md",
+    "README.md", "runs/README.md", "professional/README.md", "professional/CURRENT_EXECUTION.md",
     "professional/TASK_ROUTER.md", "runtime/README.md", "runtime/AGENTS.md",
     "runtime/overlay/AGENTS.md", "runtime/overlay/CURRENT_EXECUTION.md",
     "runtime/overlay/00_README_当前运行入口.md",
@@ -32,15 +31,15 @@ class ProfessionalSourceBoundary(unittest.TestCase):
             self.assertFalse((ROOT / old).exists())
         self.assertIn(BASE, (METHOD / "04_SOURCES_AND_REUSE.md").read_text(encoding="utf-8"))
 
-    def test_old_runs_remain_separate(self):
-        for run in ("BI-01-V2-01", "BI-01-V2-02"):
-            self.assertFalse((ROOT / "runs" / run).exists())
-            body = (ROOT / "runs/history" / (run + ".md")).read_text(encoding="utf-8")
-            self.assertIn(OLDER, body)
-            self.assertIn("/runs/" + run, body)
-        self.assertTrue((ROOT / "runs/BI-01-FO-01/01_当前任务.md").is_file())
-        self.assertTrue((ROOT / "runs/BI-01-FO-01/provenance").is_dir())
-        self.assertIn("BI-01-FO-01", (ROOT / "runs/README.md").read_text(encoding="utf-8"))
+    def test_retired_runs_are_external_not_local_fixtures(self):
+        for path in ("runs/BI-01-FO-01", "runs/BI-01-V2-01", "runs/BI-01-V2-02",
+                     "runs/history/BI-01-V2-01.md", "runs/history/BI-01-V2-02.md"):
+            with self.subTest(path=path):
+                self.assertFalse((ROOT / path).exists())
+        body = (ROOT / "runs/README.md").read_text(encoding="utf-8")
+        prefix = "https://github.com/daowei2026/observe-iterate/tree/"
+        self.assertIn(prefix + "fy/bi01-feature-observation-prep-20261021/runs", body)
+        self.assertIn(prefix + BASE + "/runs", body)
 
     def test_dispatch_selects_actual_method(self):
         cfg = json.loads((ROOT / "runtime/config/COORDINATOR_DISPATCH.json").read_text())

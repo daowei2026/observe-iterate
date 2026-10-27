@@ -24,7 +24,7 @@
 
 ## 3. 旧运行与新运行隔离
 
-旧 `runs/BI-01-FO-01/` 原样保存。原采用配置、专业方法和旧入口在 `9badfa6f30caebbe3156c5e4ee4deb43d22cacb5` 可完整取得。本新分支的默认 Workmap 是非活动准备状态，不继承旧等待、预算、轮次、Owner GO 或接收。
+本分支的 `runs/` 只保存新任务资料，旧 `BI-01-FO-01/` 与历史索引已移除；需要时从[运行索引中的旧分支及准确版本](../../runs/README.md)定向读取。原采用配置、专业方法和旧运行在 `9badfa6f30caebbe3156c5e4ee4deb43d22cacb5` 可完整取得。本新分支的默认 Workmap 是非活动准备状态，不继承旧等待、预算、轮次、Owner GO 或接收。
 
 本次不替 Owner 宣告旧 run 已停止或完成。启动前核真实在途；若仍有有效旧操作，按原授权处理，不能通过清状态或切分支掩盖。新 run 用独立目录、聊天定位、token/marker、scheduler root 与任务。稳定 BI-01 work_id 不表示同一实际 run。
 
