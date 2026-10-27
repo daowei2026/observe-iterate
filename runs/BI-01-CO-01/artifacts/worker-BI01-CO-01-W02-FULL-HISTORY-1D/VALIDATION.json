@@ -1,0 +1,164 @@
+{
+  "work_order_id": "BI01-CO-01-W02-FULL-HISTORY-1D",
+  "worker_execution_id": "BI01-CO-01-W02-dispatch-c4202eae70",
+  "formal_call_exit_code": 0,
+  "formal_api_calls": {
+    "build_chart_run": 1,
+    "build_run_overview_chart_page": 1,
+    "build_board_run_reuse_core": 1
+  },
+  "repeat_data_calls": 0,
+  "copy_checks": [
+    {
+      "copy_relative": "feature_slices/big_000001/symbol/rb/kline_1d/__default__.csv",
+      "sha256": "59aaf24c4594340c076f5f118e9deb8e8cf2c5998d660034cfcda47109976460",
+      "bytes": 114654,
+      "exact_source_copy": true
+    },
+    {
+      "copy_relative": "feature_slices/big_000001/symbol/hc/kline_1d/__default__.csv",
+      "sha256": "e6f4f798e9e720b66942d1061b49fec373c74ba4d6fb4a55f0f8a468374f9947",
+      "bytes": 113702,
+      "exact_source_copy": true
+    },
+    {
+      "copy_relative": "feature_slices/big_000001/symbol/i/kline_1d/__default__.csv",
+      "sha256": "dc152d88beb1dc844ba1bc2718997f9ccf59f03b6ead149dd07f2740670469ae",
+      "bytes": 111330,
+      "exact_source_copy": true
+    },
+    {
+      "copy_relative": "run_brief.json",
+      "sha256": "50d20b3720d4b06749da5c0624659f329f370a11c514755272fb1009baa389c0",
+      "bytes": 3158,
+      "exact_source_copy": true
+    },
+    {
+      "copy_relative": "manifest/run_summary.json",
+      "sha256": "55323f2e34e185e27e0df059f3585bcf7430448ca39c2c8078451045cd02fa3a",
+      "bytes": 5968,
+      "exact_source_copy": true
+    },
+    {
+      "copy_relative": "manifest/feature_slice_stats.csv",
+      "sha256": "990b053747f56de3168fd951465003e1d55ebfca1842c8b9bb2e25b141cb852a",
+      "bytes": 2585,
+      "exact_source_copy": true
+    },
+    {
+      "copy_relative": "manifest/timespan_index.csv",
+      "sha256": "533a0f6d2f1268639c46d63749d53c5dd9417a85adb432cea0a6207340110243",
+      "bytes": 1026,
+      "exact_source_copy": true
+    },
+    {
+      "copy_relative": "manifest/chart_manifest.csv",
+      "sha256": "6a1627046f8500c45bb8aab45790f40bbb2ea9077fa88e8265e35248b98725f7",
+      "bytes": 878,
+      "exact_source_copy": true
+    },
+    {
+      "copy_relative": "delivery/DELIVERY_MANIFEST.json",
+      "sha256": "58a94e0002a078ea1a63a13ff86d5c10d5ddabda4dee85fc9caf201f7fbc8558",
+      "bytes": 500,
+      "exact_source_copy": true
+    },
+    {
+      "copy_relative": "delivery/PACKAGE_INDEX.csv",
+      "sha256": "2eb71be24a90cb75cf4ad997548eb5d6ccf03d4050e1c02564991df975f82c73",
+      "bytes": 432,
+      "exact_source_copy": true
+    },
+    {
+      "copy_relative": "review/run_overview_chart_page.csv",
+      "sha256": "1e6a5dbe9fd54642274117b262861594cd8ba697de9ff757a4ba9acaf692b4c4",
+      "bytes": 413,
+      "exact_source_copy": true
+    },
+    {
+      "copy_relative": "review/run_overview_chart_page.md",
+      "sha256": "3982647d45c80be99e4635fcb95fe6264a6031ff59acde59e0fdc50234249c3f",
+      "bytes": 935,
+      "exact_source_copy": true
+    }
+  ],
+  "common": {
+    "valid_close_uti_count": 762,
+    "union_close_uti_count": 763,
+    "first_valid_close_uti": 72030599,
+    "last_valid_close_uti": 103274999,
+    "first_valid_close": "2021-01-04 15:00:00",
+    "last_valid_close": "2024-02-28 15:00:00",
+    "cross_symbol_time_mapping_mismatches": [],
+    "valid_segments_on_observed_index": [
+      {
+        "first_close": "2021-01-04 15:00:00",
+        "last_close": "2023-03-10 15:00:00",
+        "rows": 529
+      },
+      {
+        "first_close": "2023-03-14 15:00:00",
+        "last_close": "2024-02-28 15:00:00",
+        "rows": 233
+      }
+    ],
+    "missing_from_union_by_symbol": {
+      "hc": [],
+      "rb": [],
+      "i": []
+    },
+    "noncommon_valid_rows_by_symbol": {
+      "hc": [],
+      "rb": [],
+      "i": []
+    }
+  },
+  "invalid_common_close": "2023-03-13 15:00:00",
+  "compile_command": [
+    "/m3c3/Linux/apps/anaconda3/bin/python",
+    "-m",
+    "py_compile",
+    "/dwdhome/fy/observe-iterate-bi01-co-01/runs/BI-01-CO-01/artifacts/batch-01/aidata/run_overview.py",
+    "/dwdhome/fy/observe-iterate-bi01-co-01/runs/BI-01-CO-01/artifacts/batch-01/aidata/validate_overview_delivery.py"
+  ],
+  "compile_exit_code": 0,
+  "source_integrity": [
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/mquant/aidata",
+      "head": "f58ea95c358b9ac31659c92b7bc20fe9bf7f8264",
+      "tracked_state_matches_pre_call": true
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/mquant/uplot",
+      "head": "13badc6c079eebe7242abd65e56b328c45dcee2a",
+      "tracked_state_matches_pre_call": true
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/mquant/frame",
+      "head": "4d0ff8f2640e07a8b9ff066c48114f451fca6cfe",
+      "tracked_state_matches_pre_call": true
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/mquant/quant",
+      "head": "c2dcad1b4a85f79d0d3d3f2986f00d803fa8f33a",
+      "tracked_state_matches_pre_call": true
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/mquant/tis",
+      "head": "f26495c23d4afd11dc8d03426eaf3ca5fd02f65b",
+      "tracked_state_matches_pre_call": true
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/m3sof",
+      "head": "f2d5b316b2d323c6344778f22561d56d258d252b",
+      "tracked_state_matches_pre_call": true
+    }
+  ],
+  "delivered_logs_authentication_redacted": true,
+  "local_markdown_links_exist": true,
+  "browser_http_status": 200,
+  "browser_page_errors": [],
+  "actual_screenshot_viewed_by_worker": true,
+  "synthetic_data_used": false,
+  "research_acceptance_claimed": false
+}

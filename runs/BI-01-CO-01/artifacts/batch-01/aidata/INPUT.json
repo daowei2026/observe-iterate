@@ -1,0 +1,61 @@
+{
+  "worker_execution_id": "BI01-CO-01-W02-dispatch-c4202eae70",
+  "work_order_id": "BI01-CO-01-W02-FULL-HISTORY-1D",
+  "policy_and_data_contract_commit": "f7f2bffe9bcddd951d5bf218d56449e8f42999ae",
+  "input_constructor_blob": "8f44359b17dde2d30e985f20f4866e23742a8f28",
+  "constructor": "make_overview_brief",
+  "constructor_arguments": {
+    "output_root": "/dwdhome/fy/BASE_E6_2/mquant/aidata/test_runs/bi01_co_01_w02_full_history_1d_20261028_c4202eae70",
+    "run_id": "bi01_co01_w02_1d_20261028_c4202eae70",
+    "end_day": "2024-02-29"
+  },
+  "context_construction_parameters": {
+    "sof_name": "TA_updto20240229_DBA",
+    "stk_tlist": "tick_test_all57_takeout_lcNsiNcy",
+    "startDay": "2021-01-01",
+    "endDay": "2024-02-29"
+  },
+  "blk": "blk@steel",
+  "extract_time_syms": "blk@steel",
+  "actual_member_symbols": [
+    "rb",
+    "hc",
+    "i"
+  ],
+  "calendar_override": "night_end_at_2300",
+  "generation_depth": "big",
+  "big_source": {
+    "mode": "manual",
+    "timespans": [
+      [
+        "2021-01-01",
+        "2024-02-29",
+        "full_history"
+      ]
+    ]
+  },
+  "evidence_features": [
+    {
+      "feature_repr": "KLine({'freq': '1d'})",
+      "feature_key": "kline_1d",
+      "uti_fields": "closeUti",
+      "slice_levels": [
+        "big"
+      ],
+      "evidence_role": "market_context_sidecar",
+      "is_raw_market_data": true
+    }
+  ],
+  "actual_api_order": [
+    "build_chart_run(brief, dry_run=False)",
+    "build_run_overview_chart_page(run, run_brief_input=brief, save=True)",
+    "build_board_run({**brief, \"run_id\": run.run_id}, reuse_core=True, dry_run=False)"
+  ],
+  "profile_id": "",
+  "profile_version": 0,
+  "not_executed": [
+    "build_big_world_chart_pages",
+    "30m or mid feature generation",
+    "combined Case page assembly"
+  ]
+}

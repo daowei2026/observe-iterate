@@ -1,0 +1,169 @@
+{
+  "actual_big_end": "2024-02-29 00:00:00",
+  "actual_big_start": "2021-01-01 00:00:00",
+  "aidata_workspace": "",
+  "blk": "blk@steel",
+  "calendar_name": "night_end_at_2300",
+  "completed_stages": [
+    "resolve",
+    "timespan_index",
+    "source_occurrences",
+    "chart_manifest",
+    "feature_slices",
+    "candidate_tree",
+    "delivery"
+  ],
+  "delivery": {
+    "full_mixed_run_zip_generated": false,
+    "manifest_path": "/dwdhome/fy/BASE_E6_2/mquant/aidata/test_runs/bi01_co_01_w02_full_history_1d_20261028_c4202eae70/bi01_co01_w02_1d_20261028_c4202eae70/delivery/DELIVERY_MANIFEST.json",
+    "zips_dir": "/dwdhome/fy/BASE_E6_2/mquant/aidata/test_runs/bi01_co_01_w02_full_history_1d_20261028_c4202eae70/bi01_co01_w02_1d_20261028_c4202eae70/delivery/zips"
+  },
+  "effective_data_end": "",
+  "effective_data_range_policy": "",
+  "effective_data_start": "",
+  "events": [
+    {
+      "blk": "blk@steel",
+      "dry_run": false,
+      "message": "开始",
+      "reuse_core": true,
+      "run_id": "bi01_co01_w02_1d_20261028_c4202eae70",
+      "run_kind": "board_full",
+      "stage": "ChartCore",
+      "ts": "2026-10-28T05:02:04"
+    },
+    {
+      "by_level": {
+        "big": 1
+      },
+      "message": "复用已有 timespan index/source occurrences",
+      "path": "/dwdhome/fy/BASE_E6_2/mquant/aidata/test_runs/bi01_co_01_w02_full_history_1d_20261028_c4202eae70/bi01_co01_w02_1d_20261028_c4202eae70/manifest/timespan_index.csv",
+      "row_count": 1,
+      "stage": "Timespan",
+      "ts": "2026-10-28T05:02:04"
+    },
+    {
+      "message": "复用已有 chart manifest",
+      "path": "/dwdhome/fy/BASE_E6_2/mquant/aidata/test_runs/bi01_co_01_w02_full_history_1d_20261028_c4202eae70/bi01_co01_w02_1d_20261028_c4202eae70/manifest/chart_manifest.csv",
+      "stage": "ChartManifest",
+      "ts": "2026-10-28T05:02:04"
+    },
+    {
+      "column_count": 12,
+      "error_message": "",
+      "feature_key": "kline_1d",
+      "level": "big",
+      "message": "已导出 feature slice",
+      "node_id": "big_000001",
+      "path": "/dwdhome/fy/BASE_E6_2/mquant/aidata/test_runs/bi01_co_01_w02_full_history_1d_20261028_c4202eae70/bi01_co01_w02_1d_20261028_c4202eae70/feature_slices/big_000001/symbol/rb/kline_1d/__default__.csv",
+      "row_count": 763,
+      "slice_success": true,
+      "stage": "FeatureSlice",
+      "target_id": "rb",
+      "ts": "2026-10-28T05:02:08"
+    },
+    {
+      "column_count": 12,
+      "error_message": "",
+      "feature_key": "kline_1d",
+      "level": "big",
+      "message": "已导出 feature slice",
+      "node_id": "big_000001",
+      "path": "/dwdhome/fy/BASE_E6_2/mquant/aidata/test_runs/bi01_co_01_w02_full_history_1d_20261028_c4202eae70/bi01_co01_w02_1d_20261028_c4202eae70/feature_slices/big_000001/symbol/hc/kline_1d/__default__.csv",
+      "row_count": 763,
+      "slice_success": true,
+      "stage": "FeatureSlice",
+      "target_id": "hc",
+      "ts": "2026-10-28T05:02:08"
+    },
+    {
+      "column_count": 12,
+      "error_message": "",
+      "feature_key": "kline_1d",
+      "level": "big",
+      "message": "已导出 feature slice",
+      "node_id": "big_000001",
+      "path": "/dwdhome/fy/BASE_E6_2/mquant/aidata/test_runs/bi01_co_01_w02_full_history_1d_20261028_c4202eae70/bi01_co01_w02_1d_20261028_c4202eae70/feature_slices/big_000001/symbol/i/kline_1d/__default__.csv",
+      "row_count": 763,
+      "slice_success": true,
+      "stage": "FeatureSlice",
+      "target_id": "i",
+      "ts": "2026-10-28T05:02:09"
+    },
+    {
+      "empty_slices": 0,
+      "failures": 0,
+      "message": "已写入 feature slice stats",
+      "path": "/dwdhome/fy/BASE_E6_2/mquant/aidata/test_runs/bi01_co_01_w02_full_history_1d_20261028_c4202eae70/bi01_co01_w02_1d_20261028_c4202eae70/manifest/feature_slice_stats.csv",
+      "row_count": 3,
+      "stage": "FeatureSlice",
+      "ts": "2026-10-28T05:02:09"
+    },
+    {
+      "candidate_tree": "/dwdhome/fy/BASE_E6_2/mquant/aidata/test_runs/bi01_co_01_w02_full_history_1d_20261028_c4202eae70/bi01_co01_w02_1d_20261028_c4202eae70/candidate_tree/candidate_tree.json",
+      "chart_manifest": "/dwdhome/fy/BASE_E6_2/mquant/aidata/test_runs/bi01_co_01_w02_full_history_1d_20261028_c4202eae70/bi01_co01_w02_1d_20261028_c4202eae70/manifest/chart_manifest.csv",
+      "message": "已生成 candidate tree",
+      "stage": "Package",
+      "ts": "2026-10-28T05:02:09"
+    },
+    {
+      "big_node_packet_count": 1,
+      "delivery_manifest": "/dwdhome/fy/BASE_E6_2/mquant/aidata/test_runs/bi01_co_01_w02_full_history_1d_20261028_c4202eae70/bi01_co01_w02_1d_20261028_c4202eae70/delivery/DELIVERY_MANIFEST.json",
+      "message": "已导出总览包和 big node 独立交付包",
+      "stage": "Delivery",
+      "ts": "2026-10-28T05:02:12"
+    },
+    {
+      "message": "完成",
+      "run_id": "bi01_co01_w02_1d_20261028_c4202eae70",
+      "stage": "BoardRun",
+      "ts": "2026-10-28T05:02:12"
+    }
+  ],
+  "extract_time_syms": "blk@steel",
+  "feature_slice_summary": {
+    "failed_slices": 0,
+    "successful_empty_slices": 0,
+    "total_rows": 2289,
+    "total_slices": 3
+  },
+  "generation_depth": "big",
+  "level_counts": {
+    "big": 1,
+    "mid": 0,
+    "small": 0,
+    "tick": 0
+  },
+  "management_period": {},
+  "member_symbols": [
+    "rb",
+    "hc",
+    "i"
+  ],
+  "profile_global_end": "",
+  "profile_global_start": "",
+  "profile_id": "",
+  "profile_version": 0,
+  "registry_fingerprint": "",
+  "resolved_profile_fingerprint": "",
+  "run_id": "bi01_co01_w02_1d_20261028_c4202eae70",
+  "run_kind": "board_full",
+  "search_end": "2024-02-29 00:00:00",
+  "search_start": "2021-01-01 00:00:00",
+  "search_timespans": [
+    {
+      "end": "2024-02-29",
+      "label": "full_history",
+      "start": "2021-01-01"
+    }
+  ],
+  "selection_end": "",
+  "selection_start": "",
+  "source_chart_run_id": "",
+  "truncation_details": [],
+  "truncation_levels": [],
+  "truncation_summary": "",
+  "truncation_total_dropped": 0,
+  "warnings": [],
+  "was_truncated": false
+}
