@@ -36,11 +36,11 @@ branch: fy/multisymbol-case-observation-20261027
 | `observe-iterate@f7f2bffe9bcddd951d5bf218d56449e8f42999ae:runtime/overlay/12_管理接收与地图校验.md` §3、§5，及 `13_角色回交与主控接续协议.md` §2–§5、§8 | 已采用的短指引、独立 JSON、真实身份、原签发接收和资格边界，不采用其中已被管理明确替换的旧业务工作名称。 |
 | 同一 f7 提交的 `runtime/overlay/tools/workmap_gate.py` 的 worker_result 及相关字段读取 | 区分已采用工作流的 worker-result 与本次没有 Intake 的原签发者问题回报；不能伪造 accepted base。 |
 | `observe-iterate@56e7b84cc78f75828ebb602cf0bc74a7c4aa6a1a:runs/BI-01-CO-01/provenance/turns/R0002/INVOCATION.json`、`DISPATCH.json`、`SEND_RECEIPT.json` | 本次管理回报的真实形状。读取 INVOCATION 指向的确切归档未发 Reader 准备，仅为复现本次故障；不是读取所有旧 runs。 |
-| `observe-iterate@c133f1069bda8f11f116653e724fb69deb38265d:runs/BI-01-CO-01/reviews/management-R0001/READER_TASK.md` 的身份、#input、#question-work-binding；`@989e732fc6a017669184184e8e132947cb1685c3:.../management-R0001/DECISION.md` 的 #adoption、#reader-pre-adoption | 核对本次原签发授权、合法角色/route、冻结输入。必要校验可读取其真实引用，但不要求 Worker 重做市场专业分析。 |
+| `observe-iterate@c133f1069bda8f11f116653e724fb69deb38265d:runs/BI-01-CO-01/reviews/management-R0001/READER_TASK.md` 的身份、#input、#question-work-binding；`observe-iterate@989e732fc6a017669184184e8e132947cb1685c3:runs/BI-01-CO-01/reviews/management-R0001/DECISION.md` 的 #adoption、#reader-pre-adoption | 核对本次原签发授权、合法角色/route、冻结输入。必要校验可读取其真实引用，但不要求 Worker 重做市场专业分析。 |
 | `observe-iterate@0c00de3312d8428ff94b76352a6a24f8a190b843:runs/BI-01-CO-01/OWNER_START.md` | 真实分支、Worker 和运行授权。 |
 | 当前实际 checkout 的 `runtime/tests/test_bi01_run_gate.py` 及直接命中的既有提示/回交测试 | 查找并扩充能复现该问题的现有 fixture 和断言；不递归读取全部测试。 |
 
-固定政策与方法基线仍是 f7；现有源码已核基线为 6767，施工时记录实际 current。若相关代码已有其他真实变动，按差异追实际依赖，不倒退覆盖。没有理由不读旧 ZIP、完整 U2/U3、无关专业 Source、cgpterm 历史聊天或 aidata 代码。
+固定政策与方法基线仍是 f7；现有源码已核基线为 6767，施工时记录实际 current。若相关代码已有其他真实变动，按差异追实际依赖，不倒退覆盖。没有具体依赖时，不读旧 ZIP、完整 U2/U3、无关专业 Source、cgpterm 历史聊天或 aidata 代码。
 
 <a id="repair"></a>
 ## 3. 已确定的修复责任
