@@ -10,7 +10,7 @@ recipient_ref: chatgpt:BI-01-CO-01:review
 <a id="scope"></a>
 ## 本次确切委派与独立性
 
-这是本次新 run 的启动候选审查，来源是 R0001 管理的[首轮预采用授权](https://github.com/daowei2026/observe-iterate/blob/989e732fc6a017669184184e8e132947cb1685c3/runs/BI-01-CO-01/reviews/management-R0001/DECISION.md#reader-pre-adoption)，不是继承旧运行的 Reader 特例或 PASS。
+这是本次新 run 的启动候选审查，当前来源是 R0003 管理的[首轮预采用授权](https://github.com/daowei2026/observe-iterate/blob/2edace84ff6129dca8f39370cde57bc3b880f5d8/runs/BI-01-CO-01/reviews/management-R0003/DECISION.md#reader-pre-adoption)，不是继承旧运行的 Reader 特例或 PASS。R0001 签发后尚未完成真实阅读；R0002 的 W01 修复已由 R0003 实质接收。本次在原文件、原 task_id 下更新输入与授权，不另开 Run 或第二项审查。
 
 在真实未参与本次候选编写的上下文中，独立恢复 Owner 目标和本批完整专业方法，检查下列准确版本的地图、任务及 Binding 是否忠实、完整、可执行。只读受审材料，不替管理编计划、不替执行 Pro 选 Case、不做不存在的市场成果验收，不进行全仓审计。
 
@@ -19,7 +19,7 @@ recipient_ref: chatgpt:BI-01-CO-01:review
 <a id="input"></a>
 ## 冻结的受审输入
 
-四项受审实物统一在提交 **`0d66c31da2bb4a005fc6e04ff727f169313b7c2f`**：
+四项受审实物统一在提交 **`d4ba5e043367fa4678eca339ba32b53044baaad9`**：
 
 | 文件 | 检查用途 |
 | --- | --- |
@@ -28,9 +28,11 @@ recipient_ref: chatgpt:BI-01-CO-01:review
 | `runs/BI-01-CO-01/01_当前任务.md` | 已签全批专业任务、权限、方法、回交及持续复看 |
 | `runtime/config/WORKMAP_BINDING.json` | 当前 run 路径、保护面、读者窄输出、尚未采用状态 |
 
-另外读取 exact Owner START、00–04 与 README 原专业方法、R0001 完整回答和管理决定。来源版本由下面 Binding 固定，不追 moving branch，不借别的 run 任务/资格。
+另外读取 exact Owner START、00–04 与 README 原专业方法、R0001 完整回答及保留的业务决定、R0003 当前接收/授权决定。来源版本由下面 Binding 固定，不追 moving branch，不借别的 run 任务/资格。
 
-主控按既有 `workmap_gate.py snapshot --binding runtime/config/WORKMAP_BINDING.json --scope bi01` 对冻结输入取得真实 snapshot/reader_fingerprint，并在发送前与当前输入核对；不得手填指纹或把有摘要当成已读。读者实际收到什么、真正读到什么分别说明。若受审输入变化，回原管理说明具体变化和影响，不能对未读新版本签通过。
+主控按既有 `workmap_gate.py snapshot --binding runtime/config/WORKMAP_BINDING.json --scope bi01` 对冻结输入取得真实 snapshot/reader_fingerprint，并在发送前与当前输入核对；不得手填指纹或把有摘要当成已读。检查同时保留受监控结果树与 scoped Binding 的变化，不只比较文档 reader_fingerprint。读者实际收到什么、真正读到什么分别说明。若受审输入变化，回原管理说明具体变化和影响，不能对未读新版本签通过。
+
+W01 的技术接收与工具实现采用已经由原签发管理者完成，范围见 R0003 决定。本次不是工程重审，不要求读者重跑测试或阅读全部运行源码；发现影响业务候选可执行性的具体新矛盾仍如实指出。技术通过、独立阅读与管理 Intake 不互相替代。
 
 <a id="question-definition"></a>
 ## CASE-CO-WORKMAP-READ：专业问题与全部覆盖
@@ -53,9 +55,9 @@ recipient_ref: chatgpt:BI-01-CO-01:review
 
 提交 `runs/BI-01-CO-01/reviews/independent/workmap-01/REVIEW.md`，说明真实输入提交、真实独立上下文依据、实际读到的来源、关键检查及结论、具体 finding/影响、未审范围与限制。结论按真实情况为 PASS、REPAIR_REQUIRED 或 INSUFFICIENT_EVIDENCE；PASS 只限本次启动候选，不是市场研究、工具可用、管理 Intake 或 Owner 认可。
 
-只写上述独立输出窄目录和主控为本次真实 Reader 调用建立的 `provenance/turns/Rnnnn/` 完整回答及 Return。不改受审 README/地图/任务、当前 Workmap 配置、管理决定、共享规范、Intake 或源码。自己的回交绑定自己的实际 invocation/token，不能复用 R0001 管理身份。未实际打开图不声称看过，本次也不存在须先验收的业务图。
+只写上述独立输出窄目录和主控为本次真实 Reader 调用建立的 `provenance/turns/Rnnnn/` 完整回答及 Return。不改受审 README/地图/任务、当前 Workmap 配置、管理决定、共享规范、Intake 或源码。自己的回交绑定自己的实际 invocation/token，不能复用 R0001/R0003 管理身份或归档未发 Reader 身份。未实际打开图不声称看过，本次也不存在须先验收的业务图。
 
-沿原 ROLE_RETURN 与 QUESTION_WORK_RETURN 合同交完整报告和有效回交，准确定位同一份实质报告。初始 Reader 的专用接收路径若要求既有全文内嵌回交形式，可使用协议已有兼容方式，独立 JSON 保留同一语义；不让机械运输形式改掉审查结论或另造业务阶段。主控实际检查失败则如实回原责任者定位，不自行改工具、伪造通过或把此 Reader 偷换成普通专业派发。
+沿原 ROLE_RETURN 与 QUESTION_WORK_RETURN 合同交完整报告和有效回交，准确定位同一份实质报告。现已采用的接收实现支持完整正文及两份独立 JSON；正文不必再内嵌重复 JSON，旧合法内嵌形式的兼容不是本次新增义务。主控实际检查失败则如实回原责任者定位，不自行改工具、伪造通过或把此 Reader 偷换成普通专业派发。
 
 <a id="completion"></a>
 ## 完成与资格边界
@@ -67,12 +69,12 @@ recipient_ref: chatgpt:BI-01-CO-01:review
 <a id="same-work"></a>
 ## 同一审查续作
 
-继续本次 exact 输入的首轮独立只读审查，恢复仍可使用的已读原文与已核结果，完成全部相关检查。只补真实未完，不改候选；有新版本或权限冲突交原管理明确受影响范围。交真实独立结论、具体限制和一致回交，不把局部检查扩成整批研究 PASS。
+开始或继续本次 exact 输入的首轮独立只读审查，恢复仍可使用的已读原文与已核结果，完成全部相关检查。只补真实未完，不改候选；有新版本或权限冲突交原管理明确受影响范围。交真实独立结论、具体限制和一致回交，不把局部检查扩成整批研究 PASS。本次尚无真实旧 Reader 结果，管理回交不能被当作你的既有审查。
 
 <a id="accept"></a>
 ## 返回原管理的完整接收要求
 
-由 `chatgpt:BI-01-CO-01:management` 接收本次真实 Reader 报告与两份回交，结合 Owner 完整目标、冻结输入、R0001 决定及全部重要未完，核实 finding 的实际影响和范围。准确候选可采用则明确采用、实际 Intake 和专业后继；有实质问题则由管理定向修改自己的地图/任务并限定重读受影响部分。Reader PASS 不自动替代管理决定；主控不代判。当前尚不存在研究成果，不把启动审查当作本批业务接收。
+由 `chatgpt:BI-01-CO-01:management` 接收本次真实 Reader 报告与两份回交，结合 Owner 完整目标、冻结输入、R0001 保留的业务决定、R0003 当前决定及全部重要未完，核实 finding 的实际影响和范围。准确候选可采用则明确采用、实际 Intake 和专业后继；有实质问题则由管理定向修改自己的地图/任务并限定重读受影响部分。Reader PASS 不自动替代管理决定；主控不代判。当前尚不存在研究成果，不把启动审查当作本批业务接收。
 
 <a id="decide"></a>
 ## 缺口或变化返回原管理
@@ -103,20 +105,20 @@ recipient_ref: chatgpt:BI-01-CO-01:review
   "kind": "BINDING",
   "work_id": "BI-01",
   "goal_ref": {"repo":"daowei2026/observe-iterate","commit":"f7f2bffe9bcddd951d5bf218d56449e8f42999ae","path":"professional/case_observation/00_PURPOSE_AND_OUTPUTS.md","selector":"full"},
-  "plan_ref": {"repo":"daowei2026/observe-iterate","commit":"989e732fc6a017669184184e8e132947cb1685c3","path":"runs/BI-01-CO-01/reviews/management-R0001/DECISION.md","selector":"#reader-pre-adoption"},
+  "plan_ref": {"repo":"daowei2026/observe-iterate","commit":"2edace84ff6129dca8f39370cde57bc3b880f5d8","path":"runs/BI-01-CO-01/reviews/management-R0003/DECISION.md","selector":"#reader-pre-adoption"},
   "full_scope_ref": {"answer_ref":"#scope"},
   "batch_result": "对准确冻结的本run启动地图、完整专业任务和Binding进行真实独立只读核查，交有具体检查依据、finding/影响/限制的报告及有效回交，返回原管理作采用或修订；不冒称业务研究已完成。",
   "parent": {"status":"NOT_APPLICABLE_NEW_CASE","ref":null,"reason_ref":{"repo":"daowei2026/observe-iterate","commit":"0c00de3312d8428ff94b76352a6a24f8a190b843","path":"runs/BI-01-CO-01/OWNER_START.md","selector":"full"}},
   "question_ids": ["CASE-CO-WORKMAP-READ"],
-  "question_definitions": [{"question_id":"CASE-CO-WORKMAP-READ","definition_ref":{"answer_ref":"#question-definition"},"authority_ref":{"repo":"daowei2026/observe-iterate","commit":"989e732fc6a017669184184e8e132947cb1685c3","path":"runs/BI-01-CO-01/reviews/management-R0001/DECISION.md","selector":"#reader-pre-adoption"},"parent_question_id":null}],
+  "question_definitions": [{"question_id":"CASE-CO-WORKMAP-READ","definition_ref":{"answer_ref":"#question-definition"},"authority_ref":{"repo":"daowei2026/observe-iterate","commit":"2edace84ff6129dca8f39370cde57bc3b880f5d8","path":"runs/BI-01-CO-01/reviews/management-R0003/DECISION.md","selector":"#reader-pre-adoption"},"parent_question_id":null}],
   "professional_mode": "INDEPENDENT_REVIEW",
   "focus_ref": {"answer_ref":"#question-definition"},
   "coverage_ref": {"answer_ref":"#question-definition"},
   "source_reads": [
-    {"source":{"repo":"daowei2026/observe-iterate","commit":"0d66c31da2bb4a005fc6e04ff727f169313b7c2f","path":"runs/BI-01-CO-01/README.md","selector":"full"},"requirement":"FOCUS_FULL","purpose":"冻结的人读全景和当前状态","reuse_evidence":null},
-    {"source":{"repo":"daowei2026/observe-iterate","commit":"0d66c31da2bb4a005fc6e04ff727f169313b7c2f","path":"runs/BI-01-CO-01/00_长程推进地图.md","selector":"full"},"requirement":"FOCUS_FULL","purpose":"冻结的完整业务地图和剩余","reuse_evidence":null},
-    {"source":{"repo":"daowei2026/observe-iterate","commit":"0d66c31da2bb4a005fc6e04ff727f169313b7c2f","path":"runs/BI-01-CO-01/01_当前任务.md","selector":"full"},"requirement":"FOCUS_FULL","purpose":"冻结的完整专业任务、方法引用与Binding","reuse_evidence":null},
-    {"source":{"repo":"daowei2026/observe-iterate","commit":"0d66c31da2bb4a005fc6e04ff727f169313b7c2f","path":"runtime/config/WORKMAP_BINDING.json","selector":"full"},"requirement":"FOCUS_FULL","purpose":"同一输入提交的保护面、run路径和未采用状态","reuse_evidence":null},
+    {"source":{"repo":"daowei2026/observe-iterate","commit":"d4ba5e043367fa4678eca339ba32b53044baaad9","path":"runs/BI-01-CO-01/README.md","selector":"full"},"requirement":"FOCUS_FULL","purpose":"冻结的人读全景和当前状态","reuse_evidence":null},
+    {"source":{"repo":"daowei2026/observe-iterate","commit":"d4ba5e043367fa4678eca339ba32b53044baaad9","path":"runs/BI-01-CO-01/00_长程推进地图.md","selector":"full"},"requirement":"FOCUS_FULL","purpose":"冻结的完整业务地图和剩余","reuse_evidence":null},
+    {"source":{"repo":"daowei2026/observe-iterate","commit":"d4ba5e043367fa4678eca339ba32b53044baaad9","path":"runs/BI-01-CO-01/01_当前任务.md","selector":"full"},"requirement":"FOCUS_FULL","purpose":"冻结的完整专业任务、方法引用与Binding；业务正文未因W01改变","reuse_evidence":null},
+    {"source":{"repo":"daowei2026/observe-iterate","commit":"d4ba5e043367fa4678eca339ba32b53044baaad9","path":"runtime/config/WORKMAP_BINDING.json","selector":"full"},"requirement":"FOCUS_FULL","purpose":"同一输入提交的保护面、run路径和未采用状态","reuse_evidence":null},
     {"source":{"repo":"daowei2026/observe-iterate","commit":"0c00de3312d8428ff94b76352a6a24f8a190b843","path":"runs/BI-01-CO-01/OWNER_START.md","selector":"full"},"requirement":"BOUNDARY","purpose":"真实Owner GO、运行身份和权限","reuse_evidence":null},
     {"source":{"repo":"daowei2026/observe-iterate","commit":"f7f2bffe9bcddd951d5bf218d56449e8f42999ae","path":"professional/case_observation/README.md","selector":"full"},"requirement":"MODE_FULL","purpose":"恢复当前两项产出及方法替换关系","reuse_evidence":null},
     {"source":{"repo":"daowei2026/observe-iterate","commit":"f7f2bffe9bcddd951d5bf218d56449e8f42999ae","path":"professional/case_observation/00_PURPOSE_AND_OUTPUTS.md","selector":"full"},"requirement":"MODE_FULL","purpose":"恢复完整业务目标、批次和非目标","reuse_evidence":null},
@@ -124,8 +126,9 @@ recipient_ref: chatgpt:BI-01-CO-01:review
     {"source":{"repo":"daowei2026/observe-iterate","commit":"f7f2bffe9bcddd951d5bf218d56449e8f42999ae","path":"professional/case_observation/02_OWNER_DELIVERY.md","selector":"full"},"requirement":"MODE_FULL","purpose":"核Owner入口、统一页面及完整图数交付","reuse_evidence":null},
     {"source":{"repo":"daowei2026/observe-iterate","commit":"f7f2bffe9bcddd951d5bf218d56449e8f42999ae","path":"professional/case_observation/03_AIDATA_USE.md","selector":"full"},"requirement":"MODE_FULL","purpose":"核必经数据入口、两种用法、2021/mid和时间范围","reuse_evidence":null},
     {"source":{"repo":"daowei2026/observe-iterate","commit":"f7f2bffe9bcddd951d5bf218d56449e8f42999ae","path":"professional/case_observation/04_SOURCES_AND_REUSE.md","selector":"full"},"requirement":"MODE_FULL","purpose":"核旧任务退出、知识复用和测试证据层次","reuse_evidence":null},
-    {"source":{"repo":"daowei2026/observe-iterate","commit":"215bc3ae1c4817fdbc3be4494fb1b6b674103da4","path":"runs/BI-01-CO-01/provenance/turns/R0001/FULL_RESPONSE.md","selector":"full"},"requirement":"BOUNDARY","purpose":"核管理原判断、已知冲突处置、投入与实际未完，不信自评替独立检查","reuse_evidence":null},
-    {"source":{"repo":"daowei2026/observe-iterate","commit":"989e732fc6a017669184184e8e132947cb1685c3","path":"runs/BI-01-CO-01/reviews/management-R0001/DECISION.md","selector":"full"},"requirement":"BOUNDARY","purpose":"本次具名只读授权、采用限制和接收责任","reuse_evidence":null},
+    {"source":{"repo":"daowei2026/observe-iterate","commit":"215bc3ae1c4817fdbc3be4494fb1b6b674103da4","path":"runs/BI-01-CO-01/provenance/turns/R0001/FULL_RESPONSE.md","selector":"full"},"requirement":"BOUNDARY","purpose":"核初始管理业务判断、已知冲突处置和投入依据；当前状态以R0003及冻结输入为准，不信自评替独立检查","reuse_evidence":null},
+    {"source":{"repo":"daowei2026/observe-iterate","commit":"989e732fc6a017669184184e8e132947cb1685c3","path":"runs/BI-01-CO-01/reviews/management-R0001/DECISION.md","selector":"full"},"requirement":"BOUNDARY","purpose":"保留的完整业务安排和旧要求退出；即时Reader授权已由R0003更新","reuse_evidence":null},
+    {"source":{"repo":"daowei2026/observe-iterate","commit":"2edace84ff6129dca8f39370cde57bc3b880f5d8","path":"runs/BI-01-CO-01/reviews/management-R0003/DECISION.md","selector":"full"},"requirement":"BOUNDARY","purpose":"当前W01接收、工具采用、更新后的首次阅读授权及未放行边界；不要求重做工程验收","reuse_evidence":null},
     {"source":{"repo":"daowei2026/observe-iterate","commit":"f7f2bffe9bcddd951d5bf218d56449e8f42999ae","path":"runtime/operations/ADOPTION_HANDOFF_CHECKLIST.md","selector":"full"},"requirement":"BOUNDARY","purpose":"首轮独立阅读与管理实际采用不能混同","reuse_evidence":null},
     {"source":{"repo":"daowei2026/observe-iterate","commit":"f7f2bffe9bcddd951d5bf218d56449e8f42999ae","path":"runtime/overlay/13_角色回交与主控接续协议.md","selector":"full"},"requirement":"BOUNDARY","purpose":"真实读者回交、独立性、原接收和有限补件","reuse_evidence":null}
   ],
