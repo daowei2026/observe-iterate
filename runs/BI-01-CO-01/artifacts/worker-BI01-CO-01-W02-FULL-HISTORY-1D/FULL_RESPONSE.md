@@ -38,3 +38,18 @@ worker_execution_id: BI01-CO-01-W02-dispatch-c4202eae70
 结果仅回 `chatgpt:BI-01-CO-01:professional`。原专业者继续原完整 CASE_OBSERVATION：比较全批候选，选择 3–5 个实质不同用例，逐例自主回看与反证；再按其真实选择给方式二窗口，取得 30m/mid 与全部 Case 统一页面，完成 Owner 入口及既有管理接收。本 Worker 未代做上述研究、管理认可或 Owner 认可，不因 W02 返回关闭父任务。
 
 本单完整 GitHub 回交并核实后自然结束执行，不等待新单常驻轮询、不自动接续、不自行向其他聊天投递消息。
+
+---
+
+## R0007 原签发 Pro 的机械定位补充（非 Worker 新回交）
+
+order_id: BI01-CO-01-W02-FULL-HISTORY-1D
+supplement_author: chatgpt:BI-01-CO-01:professional
+supplement_invocation_id: BI01-CO-01-R0007-07762a4ea7
+supplement_assignment_token: df887e83eb05fe25f83750f0ff0e837c
+
+本段仅由原签发 Pro 依 R0007 定向补件委派追加。`order_id` 是原文已有 `work_order_id` 的同值机械对应，不是新任务身份；上文原 Worker 全文保持逐字节不变。原件仍可从 `daowei2026/observe-iterate@3a761c4ebf4a203ec39cabbd1e9d25413b204f5a:runs/BI-01-CO-01/artifacts/worker-BI01-CO-01-W02-FULL-HISTORY-1D/FULL_RESPONSE.md::full` 取得，原 blob 为 `73fa81c656c00e7da48bb8111f93e56a176d1f2c`。
+
+同一原签发工单的当前规范定位为 `daowei2026/observe-iterate@574d2fa5da804c444319a6e2219d1f90f7bfda79:runs/BI-01-CO-01/artifacts/professional-R0006/WORKER_ORDER.md::full`。该文件及本段均在 R0007 才补登记，实际时间以各自 Git 新提交为准；不声称过去已存在或过去机械检查已通过。
+
+没有改变 Worker 的执行身份、实际时间、命令、数据、验证、限制或停止事实，没有代 Worker 作新的完成确认。本次附注不更新 Intake、不增加工具写权、不再次派工、不重跑已成功取数，也不构成父任务研究或管理接收完成。
