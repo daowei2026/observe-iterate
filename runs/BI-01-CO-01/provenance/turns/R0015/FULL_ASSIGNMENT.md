@@ -136,6 +136,8 @@ Worker在原单内完成必要局部修复、真实恢复/缩放/显隐和四例
 最新结构化问题回交：`daowei2026/observe-iterate@f24c1f951edc897b975088fa7390020250f9a725:runs/BI-01-CO-01/provenance/turns/R0013/QUESTION_WORK_RETURN.json::full`
 最新角色回交：`daowei2026/observe-iterate@b8ea40deb7d429dfe5c0af38197d3722560df529:runs/BI-01-CO-01/provenance/turns/R0013/ROLE_RETURN.json::full`
 原任务内最新接续：`daowei2026/observe-iterate@19943485016ee880bd73759cb91e6614fb9ce2f9:runs/BI-01-CO-01/provenance/turns/R0013/FULL_RESPONSE.md::#continuation`
+本次实际证据：`daowei2026/observe-iterate@cc671a273b507b5f4e2db06779f38b54a712ea43:runs/BI-01-CO-01/reviews/management-R0014/DECISION.md::full`
+本次实际证据：`daowei2026/observe-iterate@673b38e19e9e009c34d7f44c5163e53a11fd1b4f:runs/BI-01-CO-01/provenance/turns/R0014/FULL_RESPONSE.md::full`
 本次实际证据：`daowei2026/observe-iterate@f2fbfb8cbdbd74b80e21b4cbe1cb5484d031e2f7:runs/BI-01-CO-01/provenance/turns/R0015/W04_WORKER_RESULT_TO_ISSUER_CHECK.json::full`
 本次实际证据：`daowei2026/observe-iterate@f2fbfb8cbdbd74b80e21b4cbe1cb5484d031e2f7:runs/BI-01-CO-01/provenance/turns/R0015/W04_RETURN_VERIFIED.json::full`
 本次实际证据：`daowei2026/observe-iterate@ad7d3b94b04f93f2f188e99409b7ee39f10f4bbb:runs/BI-01-CO-01/artifacts/professional-R0013/WORKER_ORDER.md::full`
@@ -222,7 +224,7 @@ Worker在原单内完成必要局部修复、真实恢复/缩放/显隐和四例
 方法版本、业务合同版本、源码版本和运行数据分别保持准确，不随一次方法更新全部追 latest。
 
 运行事实（来自现有记录）：
-观察时间：2026-10-28T13:01:16.918124+00:00
+观察时间：2026-10-28T13:11:41.655486+00:00
 有效回交数：14
 
 按既有协议把完整实质报告及符合Schema的ROLE_RETURN/QUESTION_WORK_RETURN交付GitHub，来源、未执行和资格如实保留；GitHub提交与远端校验成功后手机只回准确定位，不贴长报告或两份JSON。无法交付时按原备用渠道提供真实完整回交，不新增控制表，不重抄协调者已存提示。完整任务未完成就保留完整责任及连续后继，局部交付不自设停点。要求GitHub提交时普通快进并fresh回读，最后commit message带turn complete及本轮invocation_id，无invocation时简要标明执行身份；不造空提交。
