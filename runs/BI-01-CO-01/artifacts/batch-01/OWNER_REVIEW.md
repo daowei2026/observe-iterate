@@ -1,6 +1,6 @@
 # BI-01-CO-01｜第一批四例：多品种差异与回看研究
 
-**专业提交：四例均已完成日线与正式30m/mid消费、逐例两项研究产出及同页图数定位；现交原管理整批接收，尚不表示管理通过或Owner认可。** R0008的日线初判已经根据W03实物修订，不再等待取数、源重算或页面生成。
+**R0011管理已接收本批四例历史差异与回看研究，现交Owner一次性查看；Owner尚未阅读或认可的事实不预填。** 四例均已完成日线与正式30m/mid消费、逐例两项研究产出及同页图数定位。R0008的日线初判已经根据W03实物修订，不再等待取数、源重算或页面生成。[准确接收决定](../../reviews/management-R0011/DECISION.md)。本次管理只更新此入口的接收状态并补§4调用摘要，四例专业正文、计算和原数据保持。
 
 **同一平台页面：[完整概览与四例30m/mid（6148）](http://192.168.11.40:5006/cae?node_id=6148)。** 先看完整历史定位，再按下表中的Case标题进入对应图；正文和实际数据位置逐例对应。旧6142仅为原概览，不是本批最终入口。
 
@@ -61,6 +61,20 @@ K线按`closeUti`定位；mid实际点按`x/y`，确认另看`xConfirm/yConfirm`
 
 实际数据和图均沿既有aidata取得：[W02实际输入及调用](aidata/INPUT_AND_CALLS.md)、[W03实际输入及调用](aidata/W03_INPUT_AND_CALLS.md)。本轮没有重跑W02/W03、改工具源码或另造画图/取数平台。
 
+### R0011管理补充：实际关键入参与调用顺序摘要
+
+下表只从上述已发生调用记录提取，未新增调用或改动原执行事实。实际对象为`blk=extract_time_syms="blk@steel"`展开的rb/hc/i；`OptContext`为`sof_name="TA_updto20240229_DBA"`、`stk_tlist="tick_test_all57_takeout_lcNsiNcy"`、`startDay="2021-01-01"`、`endDay="2024-02-29"`，日历`night_end_at_2300`，源时间无时区标识、不补猜。请求末界与上列实际有效首末分开。
+
+| 实际用途 | 关键配置与调用顺序 | 已有输出和来源 |
+|---|---|---|
+| W02全范围选例 | 1d行情、big/manual全范围窗；`build_chart_run → build_run_overview_chart_page → build_board_run(reuse_core=True)` | 全范围正式日线及overview6142；[完整入参、脚本与执行记录](aidata/INPUT_AND_CALLS.md) |
+| W03四例细看 | 本页§2所列manual窗；`generation_depth="big"`；`KLine("1d"/"30m")`及`ScaleTurnCalendar("mid")`；`build_chart_run → build_big_world_chart_pages → build_board_run(reuse_core=True)` | 36份正式切片及中间图页；第二接口内部已生成overview，不虚记一次独立overview调用；[实际请求与调用](aidata/W03_INPUT_AND_CALLS.md) |
+| 单页组织 | 现有`TestCAE1 → CAEGraph → GMap(5 PlotSets)`；复用W02完整overview及W03四例 | 统一6148；这是图组织，不是第四个行情接口；[实际组合代码](aidata/w03/build_native_combined.py) |
+
+30m是频率、big是节点层级、mid是贴近转折参数，三者不混称尺度。mid实际映射为`specTerm=M, stMembershipLine=0.3`；没有增加mid/small子节点。业务工作区`/dwdhome/fy/BASE_E6_2`，既有`run-python.sh`入口；aidata实际提交`f58ea95c358b9ac31659c92b7bc20fe9bf7f8264`。依赖精确版本及已有本地差异、实际output_root、run_id、evidence_features和逐次实参由[版本记录](aidata/w03/DEPENDENCY_VERSIONS.json)、[W03完整调用正文](aidata/W03_INPUT_AND_CALLS.md)及其脚本保存，未在本次接收时升级环境。`context_ref.start_day/end_day`为空不替代真实camelCase输入。
+
+### 计算来源与时间更正
+
 R0008通过完整日线正文形成四例及统计，W03随后在原文件上核73个锚点、重算12行统计，已发表36个数值的差异在记录的舍入容差内；本Pro已消费该结果，不声称本人重跑字节验证。[日线研究来历](research/DAILY_RESEARCH.md)、[实际重算](aidata/w03/DAILY_RECOMPUTE.json)。本轮另全文读取十二份mid，并按四例问题定向读取三品种共同30m行段；完整范围、计算公式和没有穷尽全窗的边界见[正式新证据研究](research/INTRADAY_RESEARCH.md)。
 
 **W03报告中“closeTs与closeUti_ts全量一致”的说法须纠正。** 例如C01正式30m的`closeUti=73902599`同时保留`closeTs=2021-03-16 10:30:00`与`closeUti_ts=2021-03-16 10:15:00`。当前不改原CSV或Worker历史报告，而按UTI对应，保留两种标签，不在该类时槽推断十五分钟领先或实盘可接收性。[具体原行、更正及影响范围](research/INTRADAY_RESEARCH.md#time-correction)。这不等于已有原价无效，也不能被“技术检查通过”掩盖。
@@ -69,6 +83,6 @@ R0008通过完整日线正文形成四例及统计，W03随后在原文件上核
 
 ## 5. 接收范围与可反馈位置
 
-本批提交的是**四个可定位历史差异用例及其回看解释**，以及支撑它们的完整概览、全部用例正式图数和一个统一页面；不是已确认的低风险策略或因果机制。原管理尚须对整批实质接收，Owner尚未作出认可。
+本批交付的是**四个可定位历史差异用例及其回看解释**，以及支撑它们的完整概览、全部用例正式图数和一个统一页面；不是已确认的低风险策略或因果机制。R0011原管理已按此有限范围完成整批实质接收；Owner尚未作出认可。四例正文中的“待原管理接收”保留为R0010专业提交时点说明，当前接收状态以本入口和具名管理决定为准，不因此再派一轮研究。
 
 每例末尾都有基于具体位置的可修正问题。当前共同的业务取舍是：**较多延伸/保留、途中较大反向、恢复被取消及确认滞后，应当分别怎样影响“值得重点研究”的判断？** 这里把冲突直接交出来，而非选一个总分替Owner决定。真实接收或反馈指出承重问题后，由原专业者定向处理；不自动追加第五例、重派已完成取数、恢复旧四项工作或启动新特征开发。
