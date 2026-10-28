@@ -2,14 +2,14 @@
   "schema": "workmap-intake/v1",
   "intakes": {
     "bi01": {
-      "snapshot": "c862237a2646e99ad31289ff8193c6dcb2561905a525c499e02835374b2e2f71",
+      "snapshot": "b1fe680d141b6e8c3f68c614f0d01ed814eac7fdeb94b2fb02a5ac433d039e07",
       "manager": {
         "role": "management",
-        "context": "chatgpt:BI-01-CO-01:management / BI01-CO-01-R0005-ee8f176122"
+        "context": "chatgpt:BI-01-CO-01:management / BI01-CO-01-R0009-7b7f56a641"
       },
       "decision_report": {
-        "path": "runs/BI-01-CO-01/reviews/management-R0005/DECISION.md",
-        "blob": "03dc13a472b3df45050aac17997ee4e8d1692906"
+        "path": "runs/BI-01-CO-01/reviews/management-R0009/DECISION.md",
+        "blob": "dc5bb4d3943df8b18592330eef84f2ac6c6cbb32"
       },
       "reader_check": {
         "status": "RECORDED",
@@ -23,14 +23,14 @@
         "input_snapshot": "b8e71eaf3a0868275789f6557d817b22e24af7ed0469133119b8a062e3b365ef"
       },
       "effort": {
-        "known_pro_turns": 5
+        "known_pro_turns": 9
       },
       "scope_dispositions": {},
       "validation_claims": [],
       "dispatch": {
         "decision": "ISSUED",
-        "kind": "NEW_STAGE",
-        "requires_reader_check": true,
+        "kind": "ROUTINE_RESULT",
+        "requires_reader_check": false,
         "task_id": "BI01-CO-01-CASE-RESEARCH-01",
         "task_path": "runs/BI-01-CO-01/01_当前任务.md",
         "task_blob": "c3517c957d70118312af627b1efa22b1699849d4",
@@ -41,7 +41,8 @@
           "professional/case_observation/02_OWNER_DELIVERY.md",
           "professional/case_observation/03_AIDATA_USE.md",
           "professional/case_observation/04_SOURCES_AND_REUSE.md"
-        ]
+        ],
+        "reader_reason": "已采用CASE_OBSERVATION同一全批工作内的新实物消费与进展更新；完整任务/方法/权限/完成条件不变。R0009管理已实际消费阶段成果及输入限制，保留R0004启动审查历史，不将其冒作新案例审查。"
       }
     }
   }
