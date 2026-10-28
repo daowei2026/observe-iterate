@@ -307,13 +307,19 @@ CASE-CO-BATCH 覆盖全部目标：共同历史及可信输入 → 3–5 个具�
 本次实际证据：`daowei2026/observe-iterate@7b4eee86f97c7f58d217c57c54ece5e462982df5:runs/BI-01-CO-01/provenance/turns/R0007/SEND_RECEIPT.json::full`
 本次实际证据：`daowei2026/observe-iterate@78a2d2154a20982a60e63d87dc9693c7d3ca6129:runs/BI-01-CO-01/provenance/turns/R0009/EFFORT_OBSERVATION.json::full`
 本次实际证据：`daowei2026/observe-iterate@de6ee16594fbff9bb8388728aeedebc78b7ec348:runs/BI-01-CO-01/provenance/turns/R0008/SEND_RECEIPT.json::full`
-本次实际证据：`daowei2026/observe-iterate@c45d9d4aa862cf85ca2a69f5c5d0663df9c062ee:runs/BI-01-CO-01/provenance/turns/R0009/LATEST_WORK_OBSERVATION.json::full`
+本次实际证据：`daowei2026/observe-iterate@5c838c50c59e241643d37bac208d26b5034d6a9e:runs/BI-01-CO-01/provenance/turns/R0009/LATEST_WORK_OBSERVATION.json::full`
 本次实际证据：`daowei2026/observe-iterate@f61e3c6d15c8150b2d183887a51341414e8d2a07:runs/BI-01-CO-01/artifacts/professional-R0008/WORKER_ORDER.md::full`
 本次实际证据：`daowei2026/observe-iterate@234fe91ffb3c8e88c89dd43a52cb01ae77e61f67:runs/BI-01-CO-01/artifacts/batch-01/OWNER_REVIEW.md::full`
 本次实际证据：`daowei2026/observe-iterate@234fe91ffb3c8e88c89dd43a52cb01ae77e61f67:runs/BI-01-CO-01/artifacts/batch-01/cases/CO01-C01.md::full`
 本次实际证据：`daowei2026/observe-iterate@234fe91ffb3c8e88c89dd43a52cb01ae77e61f67:runs/BI-01-CO-01/artifacts/batch-01/cases/CO01-C02.md::full`
 本次实际证据：`daowei2026/observe-iterate@234fe91ffb3c8e88c89dd43a52cb01ae77e61f67:runs/BI-01-CO-01/artifacts/batch-01/cases/CO01-C03.md::full`
 本次实际证据：`daowei2026/observe-iterate@234fe91ffb3c8e88c89dd43a52cb01ae77e61f67:runs/BI-01-CO-01/artifacts/batch-01/cases/CO01-C04.md::full`
+本次实际证据：`daowei2026/observe-iterate@5c838c50c59e241643d37bac208d26b5034d6a9e:runs/BI-01-CO-01/provenance/turns/R0009/OWNER_RESUME_OBSERVATION.json::full`
+本次实际证据：`daowei2026/observe-iterate@5c838c50c59e241643d37bac208d26b5034d6a9e:runs/BI-01-CO-01/provenance/turns/R0009/EFFORT_REPEAT_OBSERVATIONS.json::full`
+本次实际证据：`daowei2026/observe-iterate@1f7e4b441c2c0381790393fc46e61bc63c93171c:runs/BI-01-CO-01/artifacts/worker-BI01-CO-01-W03-CASES-30M-MID/FULL_RESPONSE.md::full`
+本次实际证据：`daowei2026/observe-iterate@1f7e4b441c2c0381790393fc46e61bc63c93171c:runs/BI-01-CO-01/artifacts/worker-BI01-CO-01-W03-CASES-30M-MID/VALIDATION.json::full`
+本次实际证据：`daowei2026/observe-iterate@1f7e4b441c2c0381790393fc46e61bc63c93171c:runs/BI-01-CO-01/artifacts/worker-BI01-CO-01-W03-CASES-30M-MID/REMOTE_DELIVERY.json::full`
+本次实际证据：`daowei2026/observe-iterate@f4de6fc5c6101d88321263c4b3ffaf4bb2510e97:runs/BI-01-CO-01/provenance/turns/R0010/W03_WORKER_RESULT_RECHECK.json::full`
 
 ## 本次直接读取的上下文
 
@@ -360,9 +366,9 @@ CASE-CO-BATCH 覆盖全部目标：共同历史及可信输入 → 3–5 个具�
 方法版本、业务合同版本、源码版本和运行数据分别保持准确，不随一次方法更新全部追 latest。
 
 运行事实（来自现有记录）：
-观察时间：2026-10-27T23:13:34.305547+00:00
+观察时间：2026-10-28T02:51:11.570875+00:00
 有效回交数：8
-原起点累计小时：2.8708684852777777
+原起点累计小时：6.500071299722221
 
 按既有协议把完整实质报告及符合Schema的ROLE_RETURN/QUESTION_WORK_RETURN交付GitHub，来源、未执行和资格如实保留；GitHub提交与远端校验成功后手机只回准确定位，不贴长报告或两份JSON。无法交付时按原备用渠道提供真实完整回交，不新增控制表，不重抄协调者已存提示。完整任务未完成就保留完整责任及连续后继，局部交付不自设停点。要求GitHub提交时普通快进并fresh回读，最后commit message带turn complete及本轮invocation_id，无invocation时简要标明执行身份；不造空提交。
 
