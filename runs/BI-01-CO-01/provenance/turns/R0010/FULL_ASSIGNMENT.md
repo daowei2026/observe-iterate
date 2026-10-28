@@ -107,33 +107,187 @@ U2/U3 为这一业务范围提供已有抽象、词汇和设计参考，不是�
 
 ## 本轮当前工作
 
-<a id="continuation"></a>
-## 7. 唯一业务接续与非阻塞管理复看
+# BI-01-CO-01 完整专业任务：多品种差异用例与回看研究
 
-主业务交接为 **WAITING_INPUT / WAIT / same_work**：等待具名W03的实际现场图数/核对结果，不等待Owner再选题，也不是无输入重复调用本专业聊天。
+task_id: BI01-CO-01-CASE-RESEARCH-01
+work_id: BI-01
+run_id: BI-01-CO-01
+role: professional
+professional_mode: CASE_OBSERVATION
+recipient_ref: chatgpt:BI-01-CO-01:professional
 
-原操作端收本轮交付并核真实身份、在途后，沿既有工程师机制把`f61e3c6d15c8150b2d183887a51341414e8d2a07:artifacts/professional-R0008/WORKER_ORDER.md::full`送Owner指定Worker。已发送同单先对账，不重复派。工单是完整任务，不以链接索引替代Worker需要的正文；不携带无关旧运行要求。
+签发：R0001 管理。当前为已签首版，须经本次首轮独立阅读及管理真实采用后首次发送；不是已发送或已接受业务结果。采用依据见 [DECISION](https://github.com/daowei2026/observe-iterate/blob/989e732fc6a017669184184e8e132947cb1685c3/runs/BI-01-CO-01/reviews/management-R0001/DECISION.md)。
 
-Worker连续完成源文件核对、方式二四窗、原生单页和真实可读取交付，返回本原签发Pro。普通调用适配原单内处理；真实权限缺口精确回原Pro，不越权修改工具。只有路径/URL、接口自评或固定模板不能替代数据。
+<a id="scope"></a>
+## 完整责任
 
-原Pro恢复后先消费重算与30m/mid实际结果，修正四例承重陈述，补齐准确图数和Owner入口，按第4节完成全部重要未完。数据可靠时页面的局部缺口不冻结研究；数据或图确实反证初判时保留旧来历并修正，不为了保四例而硬解释。全部交齐才走原管理实质接收。
+持续完成本批 **3–5 个有差别的多品种用例**。每例同时交：具体位置、各成员真实差异与业务价值；自主回看此前信息后的解释研究，包括实际查看范围、具体依据、解释链、支持/疑问/反证/竞争解释、当时可知边界及尚未讲清的内容。整批一个 Owner 阅读入口，一个同页包含概览及全部 Case 图的平台链接，保留 aidata 正式数据和真实调用证据。
 
-与此同时按第6节原EFFORT路由请求非阻塞投入复看。这里没有新派发协议、自动后台任务或代管理决策；只给原机制可消费的准确工单、实际触发、输入依赖和恢复条件。
+完整目标和详细方法为 Binding 指定的 `professional/case_observation/README.md` 与 00–04 全文；本任务给实际安排，不以概述替代这些正文。优先级是从真实行情形成有价值的比较和解释，不是完成工具报告。找到一例可立即研究，并继续全批；当前重点只决定顺序，不能把单例、单图、一次接口调用或最近修复当停点。
 
+本 run 不继承旧 FO-01、V2、I1–I6/G1–G6 或四项特征工作的阶段/输入/资格。DR08/Harness/Overlay12 已识别的旧业务措辞按管理决定不适用。不要要求先选 N、先做 Notebook、先验完整 U2/U3 或先改工具平台。U2/U3 仅为具体问题按需查询的业务语言/设计来源；需要新表达时记录该例缺口，不自动开 Mission A、实现或分类工程。
 
-来源：daowei2026/observe-iterate@4b492e42468fe4050533e022619a2f45bef3bc00:runs/BI-01-CO-01/provenance/turns/R0008/FULL_RESPONSE.md::#continuation
+<a id="question-definition"></a>
+## CASE-CO-BATCH：本工作采用的完整专业问题
+
+问题：rb、hc、i 在相近或可合理对照的市场情境里，哪些运动过程有值得从偏单边品种选择角度研究的好坏差异？向此前自主回看，哪些具体事实能够解释这些差异，哪些只是事后认识，哪些还不能判断？
+
+输入：本次 aidata 正式交付的共同历史 1d，选中位置及必要回看范围的 30m/mid 与有理由补充的信息，实际版本、时间和数据上下文。输出：全批 3–5 例两项实质产出及规定的统一图数/Owner 交付。它覆盖全部现行目标，不是增加第三项业务工作或旧 S1 的改名。无可继承 parent；依据是本次新 Owner START 和真实管理签发。
+
+<a id="focus"></a>
+## 首先做什么，怎样连续推进
+
+先在既有现场环境通过方式一取得共同全范围的正式 1d 数据，直接开始多品种对照和候选定位；不要先花一轮通盘审计工具。复用已有调用知识，记录本次实际覆盖及可比口径。初筛程序只消费 aidata 正式交付，不直接查 KLine/数据库，不用旧 ZIP 或从图层导出冒充正式数据。
+
+本管理确定首版请求：`blk=extract_time_syms="blk@steel"`，预期成员 rb/hc/i，实际展开需记录；`sof_name="TA_updto20240229_DBA"`、`stk_tlist="tick_test_all57_takeout_lcNsiNcy"`；两种方式的 OptContext 均 `startDay="2021-01-01"`、`endDay="2024-02-29"`；`calendar_override="night_end_at_2300"`。请求末界与实际最后有效行情分开，不声称包含结束日全天。若本次输出显示覆盖不足，沿 aidata 补必要范围，记录原因和真实边界；对象/数据集等稳定前提改变回管理，不暗换。
+
+选例保持多品种共同情境，不先找赢家再找陪衬，不把相邻窗口平移凑数。检查完整路径、反向负担、方向保持和强弱变化，不只按涨跌幅或一个效率值定好坏。允许过程起点不同，但说明比较含义，不强制共同机会簇。
+
+找到有价值的位置即可回看，同时继续其他候选。各例核心区间、manual/切片窗口、前后展示留量与实际回看范围分别记录；不固定 T0–T6、N 根或统一跨度。需要更多历史/尺度时说明研究用途并经 aidata 取得。回看后的未知可以诚实交付，但必须呈现已经做过的研究，不能以一句“不确定”替代可继续的分析。
+
+方式二只按真实选出的 3–5 例窗口取图数：30m 是频率，big 是节点/展示层级，mid 是贴近转折参数。使用 `ScaleTurnCalendar("mid")`，feature_key、图例和正式 CSV 一致，不能把 large 改个名字。继续保留方式一的完整日线来源；方式二各 manual 切片不是完整概览对应的全历史数据。
+
+图数暂缺只限制其真实依赖。已经取得可靠日线可继续选例和回看；缺确认字段只限制相应“当时已知”断言；单页组合缺件不让全批研究等待。没有数据就不能冒充研究结果，没有统一页就不能冒充整批交齐。
+
+<a id="technical-work"></a>
+## aidata 调用、Worker 与写权
+
+方式一顺序：`build_chart_run` → `build_run_overview_chart_page` → 同 core 的 `build_board_run(..., reuse_core=True)`。方式二顺序：`build_chart_run` → `build_big_world_chart_pages` → 同 core 的 `build_board_run(..., reuse_core=True)`；第二接口内部 overview 不虚记成一次额外调用。只写实际调用及真实实参。
+
+使用 03 指向的现有 `examples/aidata_inputs.py` 构造输入，按实际需要再读 reference/现场补充代码；它不是已实跑成果。现有 CAEGraph/PlotSet 单页组合优先复用，不签已被更正的源码改造建议。`reuse_core=True` 不追加冻结节点；新增窗口用真实支持方式形成适用 core/run，保留旧证据。
+
+你可以签发完成本批实际取数、入参/调用脚本、辅助计算、制图、组合和核验的技术工单，结果回你消费。Worker 使用 Owner 指定 thread `01a17dd7-5033-7e63-b7a2-edd90b691c33`，预期聊天工作区 `/dwdhome/fy/cgpterm`；业务环境 `/dwdhome/fy/BASE_E6_2`。首次合法工单才由主控核 thread/workspace，并按 Owner START 处理真实异常；不要提前读取 Worker 无关历史。
+
+普通输入构造、研究脚本、实际 API 调用和必要局部重试在原工单内连续处理，不逐错误批准。本任务没有授予 aidata/uplot/tis/frp 源码、共享服务、全局注册、依赖安装或部署的修改权。真需此类权力时说明准确缺口、直接消费者和受阻范围回管理，其他已明确工作继续。
+
+正式数据按本次 delivery_manifest、feature_slice_stats、timespan_index 及实际文件定位，保留有效行/缺项；不写死测试节点、行数、参数组或 URL。`extra_time` 是显示留量，不是自动增加的正式分析范围。`x/y` 的实际转折点不证明当时确认，声称当时可知前须定向核其确认依据。时区、日历、换月、归一化和展示坐标分别说明。
+
+你维护 `runs/BI-01-CO-01/artifacts/batch-01/` 的业务正文、入参与调用脚本/索引、必要自查及自己的真实轮次回交；可依实际正文长度合理组织文件。大数据保留既有交付位置，不上传整工作区或凭据。不得代写公共地图、Intake、全局预算、管理认可、主控派发或 Owner 认可。
+
+<a id="deliverables"></a>
+## 实物交付
+
+`artifacts/batch-01/OWNER_REVIEW.md` 开头给实际对象、请求/有效历史、已研究例数与主要认识，直接给一个真实统一平台页和每例的图内标题/PlotSet/位置；链接逐例全文及 `aidata/INPUT_AND_CALLS.md` 或等价单一正文。没有真实数据和 URL 前不预填结果。
+
+每例交：ID/品种/核心差异时段；各成员真实运动与变化；研究价值；图数定位；回看问题及实际选择；具名事实如何支持解释；相冲突事实、竞争解释和未知；当时可辨别主张的真实可知信息；对比较的影响和 Owner 可具体反馈处。可以一份正文覆盖两项产出，不强制重复文件。不得把描述性好坏、交易机会和预测有效性合并。
+
+调用记录包括真实 workspace/checkout/必要本地差异、实际 Context/DataBinding/成员、OptContext startDay/endDay、日历/时区、各窗口、频率/big/mid、evidence_features、generation_depth、run_id/output_root、各实际接口/页面组合入口及输入输出/用途。记录哪位操作者实际打开页面及结果；模型只读数据时不得写成本人看过像素。
+
+整批图页须有 2021 起的完整 1d 概览和每例 30m 行情+mid；多个独立 URL 的 Markdown 集合不等于单页。统一页暂缺如实列缺口，不以 PNG、standalone HTML 或 localhost 替代。历史测试只作工具依据，不作为本批 Case、数据或通过结论。
+
+<a id="coverage"></a>
+## 覆盖及未完维护
+
+CASE-CO-BATCH 覆盖全部目标：共同历史及可信输入 → 3–5 个具体多品种用例 → 每例回看解释与必要挑战 → 正式图数对应/同页 → Owner 入口 → 本次限制与反馈位置。每次回交列真实已成和全批全部重要未完，不只列最近失败或当前例的 remaining。初始这些专业产出均未完成。
+
+<a id="completion"></a>
+## 完成与返回条件
+
+3–5 例均有两项实质产出，例间不是同段平移，正式数据和统一页可定位，真实调用/打开证据及限制完整，才提交整批供原管理接收。交齐不等于管理已接受或 Owner 已认可。若认真研究后不足 3 例，保留全部实际成果，说明具体原因并走 decide，不凑数、不自称完成。
+
+已授权内必要修订继续；原任务普通研究步骤不逐步交管理 Gate。无法在一次调用完成时，交真实容量/依赖原因及实际产物，给出覆盖完整剩余的合法 continuation，不以自定局部目标完成解释停止。整批提交后不自行开下一批、分类研究或开发计划。
+
+<a id="same-work"></a>
+## 同工作续作消息
+
+继续 `BI01-CO-01-CASE-RESEARCH-01`。完整范围、方法、权限和完成条件仍按本任务；采用你最新完整 QUESTION_WORK_RETURN 的 continuation_ref，核对应已成与全批未完，复用仍有效的结果，持续推进全部 3–5 例及统一交付。当前重点只决定顺序，不因单 Case、局部修复或一次取数完成而停。实际 Worker 结果由原签发 Pro 消费；不触发本任务之外的开发。交完整实物、材料使用、全部触发观察及一致的两份回交。
+
+<a id="accept"></a>
+## 整批接收消息（原管理）
+
+执行 M-CLOSE，接收本任务实际提交的完整批次。以 Owner 00 全目标、本任务与 01–04 原方法、真实 Case/图数/调用/反证为准，独立判断两项产出是否实做，结论和当时可知边界是否有证据，统一页面及实际打开是否成立，哪些限制仍存在。消费真实未完，不以文件数或工具 PASS 替代；明确接收/返修范围、Owner 入口与后继。本批边界外不得自动开启新批次。需要现场核验时具名限定委派，不能冒称已看图。
+
+<a id="decide"></a>
+## 重要变化或实际阻断消息（原管理）
+
+执行 M-REASSESS。结合完整目标和已交实物，处理本次具名 CHANGE/权限/不足3例/真实依赖问题；指出受影响的数据、主张、交付及消费者，决定保持、定向修订或向 Owner 提出具体事项。停止已无必要的工具循环，安排能继续的真实研究；不受影响工作继续。管理完成已知裁定和全局后继，不把问题目录退给执行者重判；更新必要预算和持续复看，不用新 SHA 清零。
+
+<a id="return-repair"></a>
+## 专业回交的定向补件消息
+
+仅对原专业调用真实指出的缺字段/定位/两份回交一致性补齐，保留原事实、资格和完整成果；缺实质研究则沿原全任务继续而非填成完成。不重复运行已成研究，不代补管理缺件。同一机械补交仍失败回原管理窄处理；此限不限制正常专业研究。
+
+<a id="trigger-result"></a>
+## RESULT 条件
+
+执行者已经实际交齐本任务 #completion 定义的 3–5 例及同页/图数/正文/调用证据并请求整批接收时 SATISFIED。技术调用成功、首个 Case 或入口骨架不满足。该触发只阻止将未接收批次宣称最终通过或进入未授权新批次，不阻止完成已有必要返修。
+
+<a id="trigger-change"></a>
+## CHANGE 条件
+
+真实 Owner/方法纠正，研究对象或数据前提重大改变，正式数据身份不可信而影响已有结论，需要越权修改工具/服务，或认真研究后无法取得最少3个有价值 Case 时，带原文/实物交管理。blocking 只暂停真正受影响的主张、取数或新权限动作，其他可靠数据上的研究继续。普通解释被反证、方法内部调整或补数本身不必升级管理批准。
+
+<a id="effort-origin"></a>
+## 实际投入起点
+
+以本任务首次合法专业派发的 SEND_RECEIPT 中真实发送完成时间为 ELAPSED_HOURS 起点。运行端只记录该真实事实；不存在时保持未知，不编造时间。换 R、换证据 SHA 或管理返回不重置原起点，暂停/合法交接/完成按既有责任状态处理。
+
+<a id="trigger-effort"></a>
+## EFFORT 条件与管理消息
+
+完整工作 ACTIVE 时，每累计2个实际小时形成一次投入复看，沿原起点持续计算 repeat 段；无新回答仍在既有运行循环检查。非阻塞，已在途/返回未消费不重复派。缺实际计时来源交原管理说明，不永远视作未到期。
+
+执行 M-REASSESS：核全批实际进展、解释增量与全部重要剩余。若主体尚未推进、仍只在工具/来源/格式循环，必须改变实际安排并保留可继续研究；已有足够首版的内容及时整合，不把细节扩成新工程。核条件性预测与真实投入差异，保留或有据修订下一段复看；到期不要求虚报完成、不缩范围、不强停。
+
+<a id="question-work-binding"></a>
+## QUESTION_WORK_BINDING
+
+```json
+{
+  "schema": "question-work/v2",
+  "kind": "BINDING",
+  "work_id": "BI-01",
+  "goal_ref": {"repo":"daowei2026/observe-iterate","commit":"f7f2bffe9bcddd951d5bf218d56449e8f42999ae","path":"professional/case_observation/00_PURPOSE_AND_OUTPUTS.md","selector":"full"},
+  "plan_ref": {"repo":"daowei2026/observe-iterate","commit":"989e732fc6a017669184184e8e132947cb1685c3","path":"runs/BI-01-CO-01/reviews/management-R0001/DECISION.md","selector":"#plan"},
+  "full_scope_ref": {"answer_ref":"#scope"},
+  "batch_result": "3–5个实质不同的rb/hc/i多品种差异用例及逐例回看解释；一个Owner入口、同页概览和全部30m/mid图、可定位正式数据与真实调用记录；不足或未完如实返回而不虚报完整批次。",
+  "parent": {"status":"NOT_APPLICABLE_NEW_CASE","ref":null,"reason_ref":{"repo":"daowei2026/observe-iterate","commit":"0c00de3312d8428ff94b76352a6a24f8a190b843","path":"runs/BI-01-CO-01/OWNER_START.md","selector":"full"}},
+  "question_ids": ["CASE-CO-BATCH"],
+  "question_definitions": [{"question_id":"CASE-CO-BATCH","definition_ref":{"answer_ref":"#question-definition"},"authority_ref":{"repo":"daowei2026/observe-iterate","commit":"989e732fc6a017669184184e8e132947cb1685c3","path":"runs/BI-01-CO-01/reviews/management-R0001/DECISION.md","selector":"#plan"},"parent_question_id":null}],
+  "professional_mode": "CASE_OBSERVATION",
+  "focus_ref": {"answer_ref":"#focus"},
+  "coverage_ref": {"answer_ref":"#coverage"},
+  "source_reads": [
+    {"source":{"repo":"daowei2026/observe-iterate","commit":"f7f2bffe9bcddd951d5bf218d56449e8f42999ae","path":"professional/case_observation/README.md","selector":"full"},"requirement":"MODE_FULL","purpose":"当前两项产出、完整批次和来源导航；不继承旧四项工作","reuse_evidence":null},
+    {"source":{"repo":"daowei2026/observe-iterate","commit":"f7f2bffe9bcddd951d5bf218d56449e8f42999ae","path":"professional/case_observation/00_PURPOSE_AND_OUTPUTS.md","selector":"full"},"requirement":"MODE_FULL","purpose":"完整Owner目标、3–5例及稳定边界","reuse_evidence":null},
+    {"source":{"repo":"daowei2026/observe-iterate","commit":"f7f2bffe9bcddd951d5bf218d56449e8f42999ae","path":"professional/case_observation/01_RESEARCH_METHOD.md","selector":"full"},"requirement":"MODE_FULL","purpose":"真实选例、自主回看、解释挑战和同工作迭代","reuse_evidence":null},
+    {"source":{"repo":"daowei2026/observe-iterate","commit":"f7f2bffe9bcddd951d5bf218d56449e8f42999ae","path":"professional/case_observation/02_OWNER_DELIVERY.md","selector":"full"},"requirement":"MODE_FULL","purpose":"Owner入口、同页图数及真实输入调用的完整交付","reuse_evidence":null},
+    {"source":{"repo":"daowei2026/observe-iterate","commit":"f7f2bffe9bcddd951d5bf218d56449e8f42999ae","path":"professional/case_observation/03_AIDATA_USE.md","selector":"full"},"requirement":"MODE_FULL","purpose":"aidata必经、两种调用、2021/mid与范围/时间/页面边界","reuse_evidence":null},
+    {"source":{"repo":"daowei2026/observe-iterate","commit":"f7f2bffe9bcddd951d5bf218d56449e8f42999ae","path":"professional/case_observation/04_SOURCES_AND_REUSE.md","selector":"full"},"requirement":"MODE_FULL","purpose":"新旧来源采用和U2/U3按需复用","reuse_evidence":null},
+    {"source":{"repo":"daowei2026/observe-iterate","commit":"0c00de3312d8428ff94b76352a6a24f8a190b843","path":"runs/BI-01-CO-01/OWNER_START.md","selector":"full"},"requirement":"BOUNDARY","purpose":"真实GO、分支、Worker身份和权限边界","reuse_evidence":null},
+    {"source":{"repo":"daowei2026/observe-iterate","commit":"989e732fc6a017669184184e8e132947cb1685c3","path":"runs/BI-01-CO-01/reviews/management-R0001/DECISION.md","selector":"#decision"},"requirement":"BOUNDARY","purpose":"采用当前方法及明确不继承的旧运行正文；不重新调查已裁定事项","reuse_evidence":null}
+  ],
+  "deliverables_ref": {"answer_ref":"#deliverables"},
+  "completion_ref": {"answer_ref":"#completion"},
+  "budget_ref": {"repo":"daowei2026/observe-iterate","commit":"215bc3ae1c4817fdbc3be4494fb1b6b674103da4","path":"runs/BI-01-CO-01/provenance/turns/R0001/FULL_RESPONSE.md","selector":"#budget"},
+  "routes": {
+    "same_work":{"recipient_role":"professional","recipient_ref":"chatgpt:BI-01-CO-01:professional","instructions_ref":{"answer_ref":"#same-work"}},
+    "accept":{"recipient_role":"management","recipient_ref":"chatgpt:BI-01-CO-01:management","instructions_ref":{"answer_ref":"#accept"}},
+    "decide":{"recipient_role":"management","recipient_ref":"chatgpt:BI-01-CO-01:management","instructions_ref":{"answer_ref":"#decide"}},
+    "return_repair":{"recipient_role":"professional","recipient_ref":"chatgpt:BI-01-CO-01:professional","instructions_ref":{"answer_ref":"#return-repair"}}
+  },
+  "triggers": [
+    {"trigger_id":"CO01-BATCH-RESULT","kind":"RESULT","condition_ref":{"answer_ref":"#trigger-result"},"signal_key":"CO01_BATCH_SUBMITTED","route":{"recipient_role":"management","recipient_ref":"chatgpt:BI-01-CO-01:management","instructions_ref":{"answer_ref":"#accept"}},"blocking":true,"effort_limit":null,"obligation_id":"CO01-BATCH-ACCEPTANCE","cycle_id":"initial","rearm_ref":null,"repeat":"ONCE"},
+    {"trigger_id":"CO01-MATERIAL-CHANGE","kind":"CHANGE","condition_ref":{"answer_ref":"#trigger-change"},"signal_key":"CO01_MATERIAL_CHANGE","route":{"recipient_role":"management","recipient_ref":"chatgpt:BI-01-CO-01:management","instructions_ref":{"answer_ref":"#decide"}},"blocking":true,"effort_limit":null,"obligation_id":"CO01-CHANGE-DISPOSITION","cycle_id":"initial","rearm_ref":null,"repeat":"ONCE"},
+    {"trigger_id":"CO01-EFFORT-REVIEW","kind":"EFFORT","condition_ref":{"answer_ref":"#trigger-effort"},"signal_key":"CO01_ELAPSED_REVIEW","route":{"recipient_role":"management","recipient_ref":"chatgpt:BI-01-CO-01:management","instructions_ref":{"answer_ref":"#trigger-effort"}},"blocking":false,"effort_limit":{"unit":"ELAPSED_HOURS","limit":2,"count_from_ref":{"answer_ref":"#effort-origin"}},"obligation_id":"CO01-CONTINUING-MANAGEMENT","cycle_id":"initial","rearm_ref":null,"repeat":"WHILE_WORK_ACTIVE"}
+  ],
+  "explicit_no_trigger_reason_ref": null
+}
+```
+
+来源：daowei2026/observe-iterate@d4ba5e043367fa4678eca339ba32b53044baaad9:runs/BI-01-CO-01/01_当前任务.md::full
 
 ## 本轮原文与位置
 
 本次原始要求：`daowei2026/observe-iterate@d4ba5e043367fa4678eca339ba32b53044baaad9:runs/BI-01-CO-01/01_当前任务.md::#same-work`
 当前生效任务：`daowei2026/observe-iterate@d4ba5e043367fa4678eca339ba32b53044baaad9:runs/BI-01-CO-01/01_当前任务.md::full`
-当前任务采用依据：`daowei2026/observe-iterate@d814fd492552f48923321249b0245cd6226f3433:runs/BI-01-CO-01/reviews/management-R0005/DECISION.md::#adoption`
+当前任务采用依据：`daowei2026/observe-iterate@62fd58ea983a1484ff4eaa2a0482a8d14d713431:runs/BI-01-CO-01/reviews/management-R0009/DECISION.md::#adoption`
 上一轮实际采用的任务绑定：`daowei2026/observe-iterate@d4ba5e043367fa4678eca339ba32b53044baaad9:runs/BI-01-CO-01/01_当前任务.md::full`
 完整工作范围：`daowei2026/observe-iterate@d4ba5e043367fa4678eca339ba32b53044baaad9:runs/BI-01-CO-01/01_当前任务.md::#scope`
 最新完整回答：`daowei2026/observe-iterate@398df1517218f47db2d9a01857b245d1368e329c:runs/BI-01-CO-01/provenance/turns/R0008/FULL_RESPONSE.md::full`
 最新结构化问题回交：`daowei2026/observe-iterate@1376b2445131e518a34ad8da3598f1ec4df9c7bf:runs/BI-01-CO-01/provenance/turns/R0008/QUESTION_WORK_RETURN.json::full`
 最新角色回交：`daowei2026/observe-iterate@398df1517218f47db2d9a01857b245d1368e329c:runs/BI-01-CO-01/provenance/turns/R0008/ROLE_RETURN.json::full`
-原任务内最新接续：`daowei2026/observe-iterate@4b492e42468fe4050533e022619a2f45bef3bc00:runs/BI-01-CO-01/provenance/turns/R0008/FULL_RESPONSE.md::#continuation`
+被当前任务替代的旧续作（仅历史）：`daowei2026/observe-iterate@4b492e42468fe4050533e022619a2f45bef3bc00:runs/BI-01-CO-01/provenance/turns/R0008/FULL_RESPONSE.md::#continuation`
 本次实际证据：`daowei2026/observe-iterate@f4de6fc5c6101d88321263c4b3ffaf4bb2510e97:runs/BI-01-CO-01/provenance/turns/R0010/W03_WORKER_RESULT_RECHECK.json::full`
 本次实际证据：`daowei2026/observe-iterate@f4de6fc5c6101d88321263c4b3ffaf4bb2510e97:runs/BI-01-CO-01/provenance/turns/R0010/W03_RESULT_RECEIVED.json::full`
 本次实际证据：`daowei2026/observe-iterate@f61e3c6d15c8150b2d183887a51341414e8d2a07:runs/BI-01-CO-01/artifacts/professional-R0008/WORKER_ORDER.md::full`
@@ -148,6 +302,9 @@ Worker连续完成源文件核对、方式二四窗、原生单页和真实可�
 本次实际证据：`daowei2026/observe-iterate@1f7e4b441c2c0381790393fc46e61bc63c93171c:runs/BI-01-CO-01/artifacts/batch-01/aidata/w03/MID_CONFIRMATIONS_OUTSIDE_REQUEST.json::full`
 本次实际证据：`daowei2026/observe-iterate@1f7e4b441c2c0381790393fc46e61bc63c93171c:runs/BI-01-CO-01/artifacts/batch-01/aidata/delivery/bi01_co01_w03_cases_20261028_5e4fa62eaf/FILE_INDEX.json::full`
 本次实际证据：`daowei2026/observe-iterate@1f7e4b441c2c0381790393fc46e61bc63c93171c:runs/BI-01-CO-01/artifacts/batch-01/aidata/delivery/bi01_co01_w03_cases_20261028_5e4fa62eaf/CASE_FILE_PLOT_INDEX.csv::full`
+本次实际证据：`daowei2026/observe-iterate@62fd58ea983a1484ff4eaa2a0482a8d14d713431:runs/BI-01-CO-01/reviews/management-R0009/DECISION.md::full`
+本次实际证据：`daowei2026/observe-iterate@f472470e545d5f790a07279940c0016d69bf16a9:runs/BI-01-CO-01/provenance/turns/R0009/FULL_RESPONSE.md::full`
+本次实际证据：`daowei2026/observe-iterate@947bbde3eea73c2137986cc839e5b1013ddc3ccf:runs/BI-01-CO-01/reviews/WORKMAP_INTAKE_CURRENT.json::full`
 
 ## 本次直接读取的上下文
 
