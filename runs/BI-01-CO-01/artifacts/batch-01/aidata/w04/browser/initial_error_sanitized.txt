@@ -1,0 +1,347 @@
+<pre style='margin-top:30px;white-space:pre-wrap;font-size:16px'>Traceback (most recent call last):
+  File "/dwdhome/fy/BASE_E6_2/insights/trier/server/bokeh.py", line 41, in create_layout
+    graph = cae.doShowCAEGraph()
+  File "/dwdhome/fy/BASE_E6_2/mquant/frame/core/app/proxy.py", line 87, in __getattribute__
+    return getattr(self.lazy_target, key)
+  File "/dwdhome/fy/BASE_E6_2/mquant/frame/core/app/proxy.py", line 74, in __getattribute__
+    return super().__getattribute__(key)
+  File "/dwdhome/fy/BASE_E6_2/mquant/frame/core/app/proxy.py", line 44, in lazy_target
+    target = cls.create_instance(obj, *args, **kwargs)
+  File "/dwdhome/fy/BASE_E6_2/mquant/frame/lang/internal/base.py", line 1253, in create_instance
+    p = cls._full_params_stru(lazy_obj,*args, **kwargs)
+  File "/dwdhome/fy/BASE_E6_2/mquant/frame/lang/internal/base.py", line 1310, in _full_params_stru
+    return key,cls._update_params_stru(params, upt_params)
+  File "/dwdhome/fy/BASE_E6_2/mquant/frame/lang/internal/base.py", line 1404, in _update_params_stru
+    raise MQuantException(f"{cls.__name__} have no param key '{k}',\n {ppshow(params)} \n key must all in \n {ppshow(strus)}")
+mquant.frame.core.base.exception.MQuantException: AidataRunOverviewCAE have no param key 'combined_graph_config',
+ {
+  "run_dir": '/dwdhome/fy/BASE_E6_2/mquant/aidata/test_runs/bi01_co_01_w03_cases_30m_mid_20261028_5e4fa62eaf/bi01_co01_w03_cases_20261028_5e4fa62eaf',
+  "run_id": 'bi01_co01_w03_cases_20261028_5e4fa62eaf',
+  "big_node_id": 'RUN_OVERVIEW',
+  "context": OptContext({
+  "sof_name": 'TA_updto20240229_DBA',  # 数据源名称,隐藏参数
+  "stk_tlist": 'tick_test_all57_takeout_lcNsiNcy',  # 品种集
+  "startDay": '2021-01-01',            # 开始时间
+  "endDay": '2024-02-29'               # 结束时间
+}),
+  "calendar_name": 'night_end_at_2300',
+  "blk": 'blk@steel',
+  "display_blks": [],
+  "overview_start": '2021-01-01',
+  "overview_end": '2024-02-29',
+  "overview_search_spans_json": '[]',
+  "combined_graph_config.Context": OptContext({
+  "sof_name": 'TA_updto20240229_DBA',  # 数据源名称,隐藏参数
+  "stk_tlist": 'tick_test_all57_takeout_lcNsiNcy',  # 品种集
+  "startDay": '2021-01-01',            # 开始时间
+  "endDay": '2024-02-29'               # 结束时间
+}),
+  "combined_graph_config.plotsets": GMap({
+  "overview": PlotSet({
+    "calendar_name": 'night_end_at_2300',
+    "blk": 'blk@steel',
+    "timespans": [('2021-01-01', '2024-02-29', '板块有效行情范围')],
+    "timespans_fao": Nothing,
+    "figs": GMapX({
+      "f0": SpecEntitiesMainFig({
+        "title": '!全局概览 1d {span_info0}',
+        "fig_width": None,
+        "fig_height": None,
+        "show_legend": True,
+        "legend_alpha": 1,
+        "legend_size": 10,
+        "legend_location": 'top_right',
+        "hover": True,
+        "static_dynstd": False,
+        "fit_y_range": True,
+        "colors2": None,
+        "nb_fig_time_range": True,
+        "plots": GMap(),
+        "entity_plots": GMap({
+          "syms!blk@steel": GMapX({
+            "f0": KPriceLine({
+              "std_method": 'ratio',
+              "feat": KLine({
+                "freq": '1d'   # 频率
+              }),
+              "extra_bars": 0,
+              "add_hover": True,
+              "color": None,
+              "alpha": 0.8,
+              "label": 'K'
+            })
+          })
+        })
+      })
+    })
+  }),
+  "case_CO01_C01": PlotSet({
+    "calendar_name": 'night_end_at_2300',
+    "blk": 'blk@steel',
+    "timespans": [('2021-02-01', '2021-04-07', 'CO01-C01')],
+    "timespans_fao": Nothing,
+    "figs": GMapX({
+      "f0": SpecEntitiesMainFig({
+        "title": '!CO01-C01 / 30m / mid / 2021-02-01 → 2021-04-07',
+        "fig_width": None,
+        "fig_height": None,
+        "show_legend": True,
+        "legend_alpha": 1,
+        "legend_size": 10,
+        "legend_location": 'top_right',
+        "hover": True,
+        "static_dynstd": False,
+        "fit_y_range": True,
+        "colors2": None,
+        "nb_fig_time_range": True,
+        "plots": GMap(),
+        "entity_plots": GMap({
+          "syms!blk@steel": GMapX({
+            "f0": KPriceLine({
+              "std_method": 'ratio',
+              "feat": KLine({
+                "freq": '30m'   # 频率
+              }),
+              "extra_bars": 0,
+              "add_hover": True,
+              "color": None,
+              "alpha": 0.8,
+              "label": 'K'
+            }),
+            "f1": MulFieldsGlyphs({
+              "glyphs": 'diamond',
+              "feats": GMap({
+                "mid": ScaleTurnCalendar('mid')
+              }),
+              "dfkeys": [None],
+              "legend_labels": ['贴近转折（M，mid参数）'],
+              "colors": [None],
+              "xfields": ['x'],
+              "yfields": ['y'],
+              "timefieldtype": 'uti',
+              "size_fields": None,
+              "size_scale_factor": True,
+              "size_scale": 100,
+              "size_base": 5,
+              "size": 20,
+              "alphas": 0.75,
+              "dynstd_method": True,
+              "hover_tslabel": True
+            })
+          })
+        })
+      })
+    })
+  }),
+  "case_CO01_C02": PlotSet({
+    "calendar_name": 'night_end_at_2300',
+    "blk": 'blk@steel',
+    "timespans": [('2021-07-01', '2021-10-15', 'CO01-C02')],
+    "timespans_fao": Nothing,
+    "figs": GMapX({
+      "f0": SpecEntitiesMainFig({
+        "title": '!CO01-C02 / 30m / mid / 2021-07-01 → 2021-10-15',
+        "fig_width": None,
+        "fig_height": None,
+        "show_legend": True,
+        "legend_alpha": 1,
+        "legend_size": 10,
+        "legend_location": 'top_right',
+        "hover": True,
+        "static_dynstd": False,
+        "fit_y_range": True,
+        "colors2": None,
+        "nb_fig_time_range": True,
+        "plots": GMap(),
+        "entity_plots": GMap({
+          "syms!blk@steel": GMapX({
+            "f0": KPriceLine({
+              "std_method": 'ratio',
+              "feat": KLine({
+                "freq": '30m'   # 频率
+              }),
+              "extra_bars": 0,
+              "add_hover": True,
+              "color": None,
+              "alpha": 0.8,
+              "label": 'K'
+            }),
+            "f1": MulFieldsGlyphs({
+              "glyphs": 'diamond',
+              "feats": GMap({
+                "mid": ScaleTurnCalendar('mid')
+              }),
+              "dfkeys": [None],
+              "legend_labels": ['贴近转折（M，mid参数）'],
+              "colors": [None],
+              "xfields": ['x'],
+              "yfields": ['y'],
+              "timefieldtype": 'uti',
+              "size_fields": None,
+              "size_scale_factor": True,
+              "size_scale": 100,
+              "size_base": 5,
+              "size": 20,
+              "alphas": 0.75,
+              "dynstd_method": True,
+              "hover_tslabel": True
+            })
+          })
+        })
+      })
+    })
+  }),
+  "case_CO01_C03": PlotSet({
+    "calendar_name": 'night_end_at_2300',
+    "blk": 'blk@steel',
+    "timespans": [('2022-04-01', '2022-06-24', 'CO01-C03')],
+    "timespans_fao": Nothing,
+    "figs": GMapX({
+      "f0": SpecEntitiesMainFig({
+        "title": '!CO01-C03 / 30m / mid / 2022-04-01 → 2022-06-24',
+        "fig_width": None,
+        "fig_height": None,
+        "show_legend": True,
+        "legend_alpha": 1,
+        "legend_size": 10,
+        "legend_location": 'top_right',
+        "hover": True,
+        "static_dynstd": False,
+        "fit_y_range": True,
+        "colors2": None,
+        "nb_fig_time_range": True,
+        "plots": GMap(),
+        "entity_plots": GMap({
+          "syms!blk@steel": GMapX({
+            "f0": KPriceLine({
+              "std_method": 'ratio',
+              "feat": KLine({
+                "freq": '30m'   # 频率
+              }),
+              "extra_bars": 0,
+              "add_hover": True,
+              "color": None,
+              "alpha": 0.8,
+              "label": 'K'
+            }),
+            "f1": MulFieldsGlyphs({
+              "glyphs": 'diamond',
+              "feats": GMap({
+                "mid": ScaleTurnCalendar('mid')
+              }),
+              "dfkeys": [None],
+              "legend_labels": ['贴近转折（M，mid参数）'],
+              "colors": [None],
+              "xfields": ['x'],
+              "yfields": ['y'],
+              "timefieldtype": 'uti',
+              "size_fields": None,
+              "size_scale_factor": True,
+              "size_scale": 100,
+              "size_base": 5,
+              "size": 20,
+              "alphas": 0.75,
+              "dynstd_method": True,
+              "hover_tslabel": True
+            })
+          })
+        })
+      })
+    })
+  }),
+  "case_CO01_C04": PlotSet({
+    "calendar_name": 'night_end_at_2300',
+    "blk": 'blk@steel',
+    "timespans": [('2023-06-01', '2023-10-12', 'CO01-C04')],
+    "timespans_fao": Nothing,
+    "figs": GMapX({
+      "f0": SpecEntitiesMainFig({
+        "title": '!CO01-C04 / 30m / mid / 2023-06-01 → 2023-10-12',
+        "fig_width": None,
+        "fig_height": None,
+        "show_legend": True,
+        "legend_alpha": 1,
+        "legend_size": 10,
+        "legend_location": 'top_right',
+        "hover": True,
+        "static_dynstd": False,
+        "fit_y_range": True,
+        "colors2": None,
+        "nb_fig_time_range": True,
+        "plots": GMap(),
+        "entity_plots": GMap({
+          "syms!blk@steel": GMapX({
+            "f0": KPriceLine({
+              "std_method": 'ratio',
+              "feat": KLine({
+                "freq": '30m'   # 频率
+              }),
+              "extra_bars": 0,
+              "add_hover": True,
+              "color": None,
+              "alpha": 0.8,
+              "label": 'K'
+            }),
+            "f1": MulFieldsGlyphs({
+              "glyphs": 'diamond',
+              "feats": GMap({
+                "mid": ScaleTurnCalendar('mid')
+              }),
+              "dfkeys": [None],
+              "legend_labels": ['贴近转折（M，mid参数）'],
+              "colors": [None],
+              "xfields": ['x'],
+              "yfields": ['y'],
+              "timefieldtype": 'uti',
+              "size_fields": None,
+              "size_scale_factor": True,
+              "size_scale": 100,
+              "size_base": 5,
+              "size": 20,
+              "alphas": 0.75,
+              "dynstd_method": True,
+              "hover_tslabel": True
+            })
+          })
+        })
+      })
+    })
+  })
+}),
+  "combined_graph_config.theme": DefaultFigTheme(background_fill_color='white'),
+  "combined_graph_config.x_label_freq": '1d',
+  "combined_graph_config.extra_time": 0,
+  "combined_graph_config.fig_width": 2400,
+  "combined_graph_config.fig_height1": 600,
+  "combined_graph_config.fig_height": 150,
+  "combined_graph_config.manual_upd": True,
+  "combined_graph_config.plot_name": 'bi01_co01_w03_cases_20261028_5e4fa62eaf：2021起概览和四例30m/mid',
+  "overview_scope_rows_json": '[{"run_id": "bi01_co01_w03_cases_20261028_5e4fa62eaf", "node_id": "big_000001", "level": "big", "parent_node_id": "ROOT", "start_uti": "2021-02-01", "end_uti": "2021-04-07", "start_ts": "2021-02-01", "end_ts": "2021-04-07", "label": "CO01-C01", "blk": "blk@steel", "calendar_name": "night_end_at_2300", "member_symbols": "[\\"rb\\", \\"hc\\", \\"i\\"]", "extract_time_syms": "\\"blk@steel\\"", "target_type": "manual", "target_id": "blk@steel", "anchor_name": "manual_big_source", "anchor_feature": "manual_big_source", "anchor_feature_repr": "manual_big_source", "anchor_feature_params_hash": "afc265fb5bc443a295ebfb3890ec1e0d56530a5c", "anchor_feature_ppid": "", "anchor_feature_identity_hash": "afc265fb5bc443a295ebfb3890ec1e0d56530a5c", "anchor_utifields": "[]", "anchor_feature_key": "manual_big_source", "source_df_key_normalized": "__default__", "source_symbollist": "\\"blk@steel\\"", "n_inter": "", "n_margin": "", "n_max": "", "max_spans": "", "notes_for_debug": "", "source_occurrence_scope": "manual_timespan_no_source_occurrence", "source_occurrence_selection_rule": "manual_timespan", "source_occurrence_count": "0", "source_occurrence_unique_count": "0", "source_occurrence_duplicate_count": "0", "source_occurrence_rows_path": "", "scope_label": "CO01-C01 / big_000001"}, {"run_id": "bi01_co01_w03_cases_20261028_5e4fa62eaf", "node_id": "big_000002", "level": "big", "parent_node_id": "ROOT", "start_uti": "2021-07-01", "end_uti": "2021-10-15", "start_ts": "2021-07-01", "end_ts": "2021-10-15", "label": "CO01-C02", "blk": "blk@steel", "calendar_name": "night_end_at_2300", "member_symbols": "[\\"rb\\", \\"hc\\", \\"i\\"]", "extract_time_syms": "\\"blk@steel\\"", "target_type": "manual", "target_id": "blk@steel", "anchor_name": "manual_big_source", "anchor_feature": "manual_big_source", "anchor_feature_repr": "manual_big_source", "anchor_feature_params_hash": "afc265fb5bc443a295ebfb3890ec1e0d56530a5c", "anchor_feature_ppid": "", "anchor_feature_identity_hash": "afc265fb5bc443a295ebfb3890ec1e0d56530a5c", "anchor_utifields": "[]", "anchor_feature_key": "manual_big_source", "source_df_key_normalized": "__default__", "source_symbollist": "\\"blk@steel\\"", "n_inter": "", "n_margin": "", "n_max": "", "max_spans": "", "notes_for_debug": "", "source_occurrence_scope": "manual_timespan_no_source_occurrence", "source_occurrence_selection_rule": "manual_timespan", "source_occurrence_count": "0", "source_occurrence_unique_count": "0", "source_occurrence_duplicate_count": "0", "source_occurrence_rows_path": "", "scope_label": "CO01-C02 / big_000002"}, {"run_id": "bi01_co01_w03_cases_20261028_5e4fa62eaf", "node_id": "big_000003", "level": "big", "parent_node_id": "ROOT", "start_uti": "2022-04-01", "end_uti": "2022-06-24", "start_ts": "2022-04-01", "end_ts": "2022-06-24", "label": "CO01-C03", "blk": "blk@steel", "calendar_name": "night_end_at_2300", "member_symbols": "[\\"rb\\", \\"hc\\", \\"i\\"]", "extract_time_syms": "\\"blk@steel\\"", "target_type": "manual", "target_id": "blk@steel", "anchor_name": "manual_big_source", "anchor_feature": "manual_big_source", "anchor_feature_repr": "manual_big_source", "anchor_feature_params_hash": "afc265fb5bc443a295ebfb3890ec1e0d56530a5c", "anchor_feature_ppid": "", "anchor_feature_identity_hash": "afc265fb5bc443a295ebfb3890ec1e0d56530a5c", "anchor_utifields": "[]", "anchor_feature_key": "manual_big_source", "source_df_key_normalized": "__default__", "source_symbollist": "\\"blk@steel\\"", "n_inter": "", "n_margin": "", "n_max": "", "max_spans": "", "notes_for_debug": "", "source_occurrence_scope": "manual_timespan_no_source_occurrence", "source_occurrence_selection_rule": "manual_timespan", "source_occurrence_count": "0", "source_occurrence_unique_count": "0", "source_occurrence_duplicate_count": "0", "source_occurrence_rows_path": "", "scope_label": "CO01-C03 / big_000003"}, {"run_id": "bi01_co01_w03_cases_20261028_5e4fa62eaf", "node_id": "big_000004", "level": "big", "parent_node_id": "ROOT", "start_uti": "2023-06-01", "end_uti": "2023-10-12", "start_ts": "2023-06-01", "end_ts": "2023-10-12", "label": "CO01-C04", "blk": "blk@steel", "calendar_name": "night_end_at_2300", "member_symbols": "[\\"rb\\", \\"hc\\", \\"i\\"]", "extract_time_syms": "\\"blk@steel\\"", "target_type": "manual", "target_id": "blk@steel", "anchor_name": "manual_big_source", "anchor_feature": "manual_big_source", "anchor_feature_repr": "manual_big_source", "anchor_feature_params_hash": "afc265fb5bc443a295ebfb3890ec1e0d56530a5c", "anchor_feature_ppid": "", "anchor_feature_identity_hash": "afc265fb5bc443a295ebfb3890ec1e0d56530a5c", "anchor_utifields": "[]", "anchor_feature_key": "manual_big_source", "source_df_key_normalized": "__default__", "source_symbollist": "\\"blk@steel\\"", "n_inter": "", "n_margin": "", "n_max": "", "max_spans": "", "notes_for_debug": "", "source_occurrence_scope": "manual_timespan_no_source_occurrence", "source_occurrence_selection_rule": "manual_timespan", "source_occurrence_count": "0", "source_occurrence_unique_count": "0", "source_occurrence_duplicate_count": "0", "source_occurrence_rows_path": "", "scope_label": "CO01-C04 / big_000004"}]',
+  "evidence_features": [],
+  "k_alpha": 0.5,
+  "fig_width_big": 2400,
+  "fig_width_mid": 500,
+  "fig_height_big": 600,
+  "fig_height_mid": 400,
+} 
+ key must all in 
+ {
+  "sof_name": UnFree().hide,
+  "run_dir": '',
+  "run_id": '',
+  "big_node_id": 'RUN_OVERVIEW',
+  "context": None,
+  "calendar_name": '',
+  "blk": '',
+  "display_blks": [],
+  "overview_start": '',
+  "overview_end": '',
+  "overview_search_spans_json": '[]',
+  "evidence_features": [],
+  "k_alpha": 0.5,
+  "fig_width_big": 2400,
+  "fig_width_mid": 500,
+  "fig_height_big": 600,
+  "fig_height_mid": 400,
+}
+</pre>
