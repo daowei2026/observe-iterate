@@ -321,10 +321,14 @@ CASE-CO-BATCH 覆盖全部目标：共同历史及可信输入 → 3–5 个具�
 本次实际证据：`daowei2026/observe-iterate@1f7e4b441c2c0381790393fc46e61bc63c93171c:runs/BI-01-CO-01/artifacts/worker-BI01-CO-01-W03-CASES-30M-MID/REMOTE_DELIVERY.json::full`
 本次实际证据：`daowei2026/observe-iterate@f4de6fc5c6101d88321263c4b3ffaf4bb2510e97:runs/BI-01-CO-01/provenance/turns/R0010/W03_WORKER_RESULT_RECHECK.json::full`
 本次实际证据：`daowei2026/observe-iterate@0aec93c9e9c60aaa84c5f97a1d6c0053cad34685:runs/BI-01-CO-01/provenance/turns/R0011/EFFORT_OBSERVATION.json::full`
-本次实际证据：`daowei2026/observe-iterate@0aec93c9e9c60aaa84c5f97a1d6c0053cad34685:runs/BI-01-CO-01/provenance/turns/R0011/LATEST_WORK_OBSERVATION.json::full`
+本次实际证据：`daowei2026/observe-iterate@82061b325e95620e7105545990c3109c55a9d654:runs/BI-01-CO-01/provenance/turns/R0011/LATEST_WORK_OBSERVATION.json::full`
 本次实际证据：`daowei2026/observe-iterate@62fd58ea983a1484ff4eaa2a0482a8d14d713431:runs/BI-01-CO-01/reviews/management-R0009/DECISION.md::full`
 本次实际证据：`daowei2026/observe-iterate@42d5625eb1103b5e797f7c79733640fde6c77040:runs/BI-01-CO-01/provenance/turns/R0009/FULL_RESPONSE.md::full`
 本次实际证据：`daowei2026/observe-iterate@8d1d3ece9c61a6c8a7d0f80907b7db90bc1400a6:runs/BI-01-CO-01/provenance/turns/R0010/SEND_RECEIPT.json::full`
+本次实际证据：`daowei2026/observe-iterate@ec8266bade9e72018ab4b9e433d0211f2f60e126:runs/BI-01-CO-01/artifacts/batch-01/research/INTRADAY_COMPARISONS.csv::full`
+本次实际证据：`daowei2026/observe-iterate@26187cf48cbdc733872b2edb816e6af2e4eac1eb:runs/BI-01-CO-01/artifacts/batch-01/research/INTRADAY_RESEARCH.md::full`
+本次实际证据：`daowei2026/observe-iterate@13f59ef25eb28a102471e683f1002e0643a5b595:runs/BI-01-CO-01/artifacts/batch-01/cases/CO01-C01.md::full`
+本次实际证据：`daowei2026/observe-iterate@13f59ef25eb28a102471e683f1002e0643a5b595:runs/BI-01-CO-01/artifacts/batch-01/cases/CO01-C02.md::full`
 
 ## 本次直接读取的上下文
 
@@ -371,9 +375,9 @@ CASE-CO-BATCH 覆盖全部目标：共同历史及可信输入 → 3–5 个具�
 方法版本、业务合同版本、源码版本和运行数据分别保持准确，不随一次方法更新全部追 latest。
 
 运行事实（来自现有记录）：
-观察时间：2026-10-28T04:25:58.862584+00:00
+观察时间：2026-10-28T04:36:00.423973+00:00
 有效回交数：10
-原起点累计小时：8.077689884444444
+原起点累计小时：8.249732536944444
 
 按既有协议把完整实质报告及符合Schema的ROLE_RETURN/QUESTION_WORK_RETURN交付GitHub，来源、未执行和资格如实保留；GitHub提交与远端校验成功后手机只回准确定位，不贴长报告或两份JSON。无法交付时按原备用渠道提供真实完整回交，不新增控制表，不重抄协调者已存提示。完整任务未完成就保留完整责任及连续后继，局部交付不自设停点。要求GitHub提交时普通快进并fresh回读，最后commit message带turn complete及本轮invocation_id，无invocation时简要标明执行身份；不造空提交。
 
