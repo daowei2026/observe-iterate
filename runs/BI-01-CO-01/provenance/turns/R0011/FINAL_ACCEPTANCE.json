@@ -1,0 +1,69 @@
+{
+  "schema": "bi01-final-acceptance/v1",
+  "work_id": "BI-01",
+  "run_id": "BI-01-CO-01",
+  "policy_commit": "f7f2bffe9bcddd951d5bf218d56449e8f42999ae",
+  "operator_commit": "86dec991abb27a927c1b5c22af1e51b3f39b918b",
+  "business_scope": "Original finite CASE_OBSERVATION batch, no expansion",
+  "management_turn_complete": "c9fde29d802529023f9208e7a27a5cac102e2aea",
+  "management_decision_commit": "052f2e545dd3234e05c9d10913fab1c5dc3bcdf1",
+  "professional_turn_complete": "c80507c5903fdb295effcc072e8ff517bf812482",
+  "full_batch_accepted": true,
+  "management_reply_and_files_verified": true,
+  "professional_reply_and_files_verified": true,
+  "final_intake_snapshot": "f9d87333b7ee300eb0c8f9e1332f16f6ab3c1e2a65245508f3c4620233ee87a0",
+  "final_intake_commit": "22a64a8754a2dccc2b73b060fb1ff0a0510d7d34",
+  "dispatch_decision": "HOLD",
+  "new_issued_work_refs": [],
+  "worker_state": "Actualcomplete/stopped; no neworder",
+  "effort_consumed_segments": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "professional_effort_origin_preserved": "2026-10-27T20:21:19.179Z",
+  "active_effort_ended": true,
+  "phone_pending_operations": 0,
+  "unknown_sends": 0,
+  "criteria": [
+    {
+      "requirement": "Owner真实GO、新Run身份/起始R0001及锁定policy/operator",
+      "evidence": "OWNER_START原件和实际首次管理已采用；当前仍BI-01-CO-01，无新Run/分支",
+      "state": "complete"
+    },
+    {
+      "requirement": "3–5个不同多品种差异用例与逐例回看研究",
+      "evidence": "实际C01-C04四例；R10完整提交，R11实质内容/源反例接收，1e1aca8f业务快照",
+      "state": "complete_by_actual_management_acceptance"
+    },
+    {
+      "requirement": "aidata正式历史输入、全范围1d、各例30m及真实统一平台页/调用记录",
+      "evidence": "W02/W03真实完成/82新实物验证；nativepage6148全范围overview+四Case；R10实际消费及时间标签冲突纠正；管理Owner入口调用摘要补齐",
+      "state": "complete_with_declared_limits"
+    },
+    {
+      "requirement": "专业/Worker/独立审查按实际适用机制、完整Return和Git实物",
+      "evidence": "W01/W02/W03停止、R4启动Reader历史资格不冒作新四例独立认证、R10所有11实物+两Return、R11所有7实物+两Return exact；after-returnPASS",
+      "state": "complete"
+    },
+    {
+      "requirement": "原管理实际接收、地图/任务/Binding与适用Intake、后继安排",
+      "evidence": "R11实际接受整批并消费segment4；A c9fde/B22a64 snapshotf9d873机械PASS；HOLD、issued_work_refs=[]；完整任务/方法/保护不改",
+      "state": "complete"
+    },
+    {
+      "requirement": "Owner一次性阅读入口、同一统一图页及诚实反馈边界",
+      "evidence": "准确阅读入口及page6148准备在本已授权Owner聊天呈现；未声明Owner实际阅读/认可",
+      "state": "handoff_prepared_delivery_pending"
+    }
+  ],
+  "owner_delivery_state": "PREPARED_FOR_EXISTING_OWNER_CHAT_NOT_YET_RECORDED_DELIVERED",
+  "owner_read_or_approval_claimed": false,
+  "platform_access_evidence": "Worker actual browser+render evidence accepted; currentOwner network access andOwnerreading notassumed",
+  "remaining_required": [
+    "Actual sameOwnerchat handoff and finalledgerclosure"
+  ],
+  "future_boundary": "Wait actualOwnerfeedback/newauthorized successor; no timer/newresearch/Worker/Reader/M-CLOSE loops",
+  "recorded_at": "2026-10-28T05:19:16.658123+00:00"
+}
