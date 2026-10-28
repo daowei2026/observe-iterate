@@ -6,7 +6,7 @@
 
 本批所有正式行情、定位特征和分析输入必须由 aidata 接口及其正式交付提供。允许 AI 在取得的数据上程序筛选、计算辅助量和回看，不允许在 observe-iterate/cgpterm 中另建直接 KLine、数据库或旧 ZIP 的平行取数路径。构造 `KLine(...)` 等 Feature 对象交给 aidata 是正常配置，不是绕过 aidata 取数。
 
-已知实际工作区为 `/dwdhome/fy/BASE_E6_2`。它不是 Git 仓库身份，也不授予其中所有仓库写权。沿用现场已有环境，记录真实 checkout 和必要本地差异，不因整理本页重新安装依赖或重做全部基础预检。本次材料修改不授权改 aidata、uplot、tis/frp 或共享服务。
+已知实际工作区为 `/dwdhome/fy/BASE_E6_2`。它不是 Git 仓库身份，也不授予其中所有仓库写权。沿用现场已有环境，记录真实 checkout 和必要本地差异，不因整理本页重新安装依赖或重做全部基础预检。本页本身不授予 aidata、uplot、tis/frp 或共享服务写权；具体修复以真实 Owner 授权及相应技术工单的明确范围为准。
 
 接口历史出处仍是 [04_AIDATA_USE.md 第3节](https://github.com/daowei2026/observe-iterate/blob/9badfa6f30caebbe3156c5e4ee4deb43d22cacb5/professional/feature_observation/04_AIDATA_USE.md#3-%E5%AE%9E%E9%99%85%E4%BD%BF%E7%94%A8%E6%97%B6%E6%80%8E%E6%A0%B7%E8%80%83%E8%99%91)。只复用接口关系，不继承旧四项工作的验收顺序。使用版本变化时定向核 README、API 和输入合同，不把报告中的工作分支名或缩写 SHA 当作新的实际版本证明。
 
@@ -85,6 +85,16 @@ board = build_board_run(
 
 正式交付仍须一个页面内包含本批概览和全部用例 30m 图；3 个测试用例的四个 PlotSet 不是永久固定数量。追加/刷新页面按实际支持方式操作，不把“曾组合成功”扩写为“同一 URL 无限追加已经验证”。新窗口需要重新建立适用 core/run 或使用真实支持的更新方式，`reuse_core=True` 不是追加节点接口。保留旧冻结证据；页面组合不改变各图与其数据源的对应。
 
+### 概览上的大尺度节点范围阴影
+
+单页组合须保留概览的节点范围阴影。行情可以复用全范围日线交付，但要标出的范围须来自本批实际 Case 对应的冻结 big 节点，不能沿用只有全历史节点的旧 overview 范围。各阴影须能对应 Case/节点，边界按同一 Context、日历及图坐标口径落到正确位置；核心差异区间、manual 节点范围和显示边距仍分开。
+
+已有代码中，`AidataRunOverviewCAE.layout()` 是在生成概览布局后调用 `_mark_review_scope` 添加范围标记和显隐控件；只抽取 `_register_run_overview_graph` 的 PlotSet 不会自动带走这些后置标记。另有 manual 节点的 `start_uti/end_uti` 实际保存日期字符串的情况，直接用 `_number_or_none` 转数值会跳过该窗口。须按真实字段形态复用已有 Context/日历转换能力，不能按字段名假定是数值、当Unix时间解释，或静默漏画。
+
+这两项已知定位分别可核 [W03组合代码](https://github.com/daowei2026/observe-iterate/blob/1fa38c7a3a084a5a364437b21b6a3041b9ca0738/runs/BI-01-CO-01/artifacts/batch-01/aidata/w03/build_native_combined.py)、[W03冻结节点索引](https://github.com/daowei2026/observe-iterate/blob/1fa38c7a3a084a5a364437b21b6a3041b9ca0738/runs/BI-01-CO-01/artifacts/batch-01/aidata/delivery/bi01_co01_w03_cases_20261028_5e4fa62eaf/manifest/timespan_index.csv)及[对应aidata实现](https://github.com/daowei2026/aidata/blob/f58ea95c358b9ac31659c92b7bc20fe9bf7f8264/big_world_chart.py)。它们是修复依据，不是修复成功证明；实际修复方式按现场能力及工单权限选择，不预设必须新增接口或改造平台。
+
+阴影通过情况按 02 单独实核：交付页面上实际可见、边界和Case对应正确，重新打开及相关缩放/显隐操作后仍正确。修复页面不默认要求重取原行情或改写冻结节点、CSV；所做代码/配置变化和实际验收结果沿原交付记录保存。
+
 ## 5. 影响研究的范围与时间含义
 
 | 已知情况 | 实际使用时怎样处理 |
@@ -102,7 +112,7 @@ board = build_board_run(
 
 已有报告可支持正式图数链、字段绑定、big-only 和原范围图数一致性的复用，不要求每个用例重新证明全部基础设施。报告和代码原件不自动变成本批通过证据；aidata 精确提交、依赖本地差异及实际环境的适用性仍需对应。
 
-本次发生变化的关键处是 2021 起点、mid 特征和单页组合。随本次正常交付核实际范围/成员、mid 实物与图例、正式切片和同页全部图即可；不继承旧 8,031 行、47 个 large 转折或旧 URL 的通过结论。单页补充代码暂未取得只影响相关页面交付，不冻结已经取得可靠日线上的选例和回看研究。
+本次发生变化的关键处是 2021 起点、mid 特征和单页组合。随本次正常交付核实际范围/成员、mid 实物与图例、正式切片、同页全部图及概览节点范围阴影；不继承旧 8,031 行、47 个 large 转折或旧 URL 的通过结论。单页补充代码暂未取得只影响相关页面交付，不冻结已经取得可靠日线上的选例和回看研究。
 
 每次结果按 [02](02_OWNER_DELIVERY.md) 给 Owner 看到实际输入、接口调用及页面组合顺序、图内名称、正式数据路径和未解决缺口。程序创建成功、页面真实打开、专业研究成立和 Owner 认可分别说明；测试窗口不是业务发现。
 
