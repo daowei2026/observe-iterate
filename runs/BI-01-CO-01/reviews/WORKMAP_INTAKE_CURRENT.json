@@ -2,14 +2,14 @@
   "schema": "workmap-intake/v1",
   "intakes": {
     "bi01": {
-      "snapshot": "5ae5cc709cac56a4638649d12e8f9f1efb1c8a71e0b25b48a9069d858a682a51",
+      "snapshot": "83a460a625bb4f8b873420626223a424780f7aa6453d469e432a68c787fbef37",
       "manager": {
         "role": "management",
-        "context": "chatgpt:BI-01-CO-01:management / BI01-CO-01-R0017-e26bceee07"
+        "context": "chatgpt:BI-01-CO-01:management / BI01-CO-01-R0018-01ff085137"
       },
       "decision_report": {
-        "path": "runs/BI-01-CO-01/reviews/management-R0017/DECISION.md",
-        "blob": "bfecd2d9534c0dc20833a5e28b2c2b9b1add1eaa"
+        "path": "runs/BI-01-CO-01/reviews/management-R0018/DECISION.md",
+        "blob": "76d208aeec71ee979077d471abb6572a3d6bbcde"
       },
       "reader_check": {
         "status": "RECORDED",
@@ -23,17 +23,17 @@
         "input_snapshot": "b8e71eaf3a0868275789f6557d817b22e24af7ed0469133119b8a062e3b365ef"
       },
       "effort": {
-        "known_pro_turns": 17
+        "known_pro_turns": 18
       },
       "scope_dispositions": {},
       "validation_claims": [],
       "dispatch": {
-        "decision": "HOLD",
-        "kind": "ROUTINE_RESULT",
+        "decision": "ISSUED",
+        "kind": "EXISTING_AUTHORIZED_REPAIR",
         "requires_reader_check": false,
         "task_id": "BI01-CO-01-CASE-RESEARCH-01",
         "task_path": "runs/BI-01-CO-01/01_当前任务.md",
-        "task_blob": "7c24f3361fbec13b5e498fd1a6b66e5178ffcdc0",
+        "task_blob": "a7363fcb511a9776a7bf05651c34c905c456f5ec",
         "method_paths": [
           "professional/case_observation/README.md",
           "professional/case_observation/00_PURPOSE_AND_OUTPUTS.md",
@@ -42,7 +42,7 @@
           "professional/case_observation/03_AIDATA_USE.md",
           "professional/case_observation/04_SOURCES_AND_REUSE.md"
         ],
-        "reader_reason": "原工作内真实部分接收及具名环境等待，原合同/方法/权限不变、无新设计；独立Reader保持历史范围"
+        "reader_reason": "## 5. 历史职责退出与采用类型\n\n本次是`EXISTING_AUTHORIZED_REPAIR`，`requires_reader_check=false`：Owner直接对同一四例、同一两项产出提出明确质量纠正，管理将其落实到原合同，没有新增市场模型、分组算法、强制结构或写权，不重新M-START或先做启动Reader。R4独立报告只保留当时输入资格，不能称已审新方法/用例；后续真实需要独立审查按准确对象和参与关系办理。\n\nR17“没有新输入时无即时工单”的前提已经被本次反馈打破。撤销的是这一即时停止适用性及旧文字接收充足性，不是删除正确证据、旧决定或W04消费事实。当前Workmap活动管理规则改为R18，旧R16采用只作前序；正确业务和权限由新任务承接，历史决定仍可准确取得。旧相反即时动作不以deferred required或未来优化重新出现。\n\n保留全部业务anchors、Owner来源、成果watch_roots和专用Reader窄投影，不把新增规则保护问题转为清仓/审全仓前置。当前不新签Worker、Reader或维护工单。"
       }
     }
   }
