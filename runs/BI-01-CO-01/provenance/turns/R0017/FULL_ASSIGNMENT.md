@@ -332,13 +332,16 @@ CASE-CO-BATCH覆盖全部目标：可信共同输入 → 具体多品种差异 �
 
 ## 本轮原文与位置
 
-本次原始要求：`daowei2026/observe-iterate@b3cc11bc64ea6dd5648fd93e83b03292c11339e5:runs/BI-01-CO-01/01_当前任务.md::#trigger-effort`
+本次原始要求：`daowei2026/observe-iterate@b3cc11bc64ea6dd5648fd93e83b03292c11339e5:runs/BI-01-CO-01/01_当前任务.md::#accept`
 当前生效任务：`daowei2026/observe-iterate@b3cc11bc64ea6dd5648fd93e83b03292c11339e5:runs/BI-01-CO-01/01_当前任务.md::full`
 当前任务采用依据：`daowei2026/observe-iterate@b6caf1cd8753c76285a9ffda2a5f3676794e4dc8:runs/BI-01-CO-01/reviews/management-R0016/DECISION.md::#adoption`
 上一轮实际采用的任务绑定：`daowei2026/observe-iterate@b3cc11bc64ea6dd5648fd93e83b03292c11339e5:runs/BI-01-CO-01/01_当前任务.md::full`
 上次管理安排与整体位置：`daowei2026/observe-iterate@b6caf1cd8753c76285a9ffda2a5f3676794e4dc8:runs/BI-01-CO-01/reviews/management-R0016/DECISION.md::#plan`
 原投入与复看条件：`daowei2026/observe-iterate@bfbc5fd41b29299394e16265996589c0b69c26e5:runs/BI-01-CO-01/provenance/turns/R0016/FULL_RESPONSE.md::#budget`
 完整工作范围：`daowei2026/observe-iterate@b3cc11bc64ea6dd5648fd93e83b03292c11339e5:runs/BI-01-CO-01/01_当前任务.md::#scope`
+最新完整回答：`daowei2026/observe-iterate@c59572dac9460370fcedcd5cb49aec1dba530b29:runs/BI-01-CO-01/provenance/turns/R0015/FULL_RESPONSE.md::full`
+最新结构化问题回交：`daowei2026/observe-iterate@17f6b35a82aa416fd7988181ab57efc5a3a7fed7:runs/BI-01-CO-01/provenance/turns/R0015/QUESTION_WORK_RETURN.json::full`
+最新角色回交：`daowei2026/observe-iterate@056467a7e6affb3855acf2d8e31d2c67563f0260:runs/BI-01-CO-01/provenance/turns/R0015/ROLE_RETURN.json::full`
 本次实际证据：`daowei2026/observe-iterate@44915d65e57a1c318898cfeb976e9ee609776ff0:runs/BI-01-CO-01/provenance/turns/R0017/EFFORT_OBSERVATION.json::full`
 本次实际证据：`daowei2026/observe-iterate@b99d2f2918b862bfa2e73adb9e5122787a1f7126:runs/BI-01-CO-01/provenance/turns/R0015/SEND_RECEIPT.json::full`
 本次实际证据：`daowei2026/observe-iterate@91aa954308ccc51ac0b920cdc7c2e9ba30b29340:runs/BI-01-CO-01/provenance/turns/R0016/RETURN_VERIFIED.json::full`
@@ -444,9 +447,9 @@ CASE-CO-BATCH覆盖全部目标：可信共同输入 → 具体多品种差异 �
 方法版本、业务合同版本、源码版本和运行数据分别保持准确，不随一次方法更新全部追 latest。
 
 运行事实（来自现有记录）：
-观察时间：2026-10-29T08:37:36.760948+00:00
+观察时间：2026-10-29T08:43:40.909146+00:00
 有效回交数：16
-原起点累计小时：36.27155054111111
+原起点累计小时：36.372702832499996
 
 按既有协议把完整实质报告及符合Schema的ROLE_RETURN/QUESTION_WORK_RETURN交付GitHub，来源、未执行和资格如实保留；GitHub提交与远端校验成功后手机只回准确定位，不贴长报告或两份JSON。无法交付时按原备用渠道提供真实完整回交，不新增控制表，不重抄协调者已存提示。完整任务未完成就保留完整责任及连续后继，局部交付不自设停点。要求GitHub提交时普通快进并fresh回读，最后commit message带turn complete及本轮invocation_id，无invocation时简要标明执行身份；不造空提交。
 
