@@ -22,7 +22,7 @@
 
 **优先参考（有固定 GitHub 版本，可直接取得原文）：**
 
-1. [U3 人读叙事 V0.3.0，重点第4节「完整连续自然语言叙事」](https://github.com/daowei2026/complex-systems-vocabulary/blob/48f55f53e25d04e5b4b59fae1e652dd4b679c9d3/docs/network-dynamic-ceps-factory/U3_MOVEMENT_QUALITY_ACTIVITY_CONVERSION_ALLOCATION_NARRATIVE_SPEC_V0.3.0.md)：首要参考业务表达方式、叙事组织与层次。
+1. [U3 人读叙事 V0.3.0，重点第4节「完整连续自然语言叙事」](https://github.com/daowei2026/complex-systems-vocabulary/blob/48f55f53e25d04e5b4b59fae1e652dd4b679c9d3/docs/network-dynamic-ceps-factory/U3_MOVEMENT_QUALITY_ACTIVITY_CONVERSION_ALLOCATION_NARRATIVE_SPEC_V0.3.0.md)：首要参考业务表达方式、叙事组织与层次；网络关系重点看 U3N05 的接近/分化、候选组、组自身质量、组外差距和成员行为，不把“相对最好”直接当作质量足够。
 2. [U3 具体用例卡 V0.4.0](https://github.com/daowei2026/complex-systems-vocabulary/blob/48f55f53e25d04e5b4b59fae1e652dd4b679c9d3/docs/network-dynamic-ceps-factory/U3_MOVEMENT_QUALITY_ACTIVITY_CONVERSION_ALLOCATION_USE_CASE_CARD_V0.4.0.md)：参考业务用例的细化、情境差异和边界；其设计/验证用例不自动成为历史行情已证实结论。
 3. [U2 人读叙事 V0.3.0](https://github.com/daowei2026/complex-systems-vocabulary/blob/48f55f53e25d04e5b4b59fae1e652dd4b679c9d3/docs/network-dynamic-ceps-factory/U2_OPPORTUNITY_CLUSTER_SCALE_TURN_NARRATIVE_SPEC_V0.3.0.md)：补充多品种共同运动、关系、组与演变的表达。
 4. [U2 具体用例卡 V0.4.0](https://github.com/daowei2026/complex-systems-vocabulary/blob/48f55f53e25d04e5b4b59fae1e652dd4b679c9d3/docs/network-dynamic-ceps-factory/U2_OPPORTUNITY_CLUSTER_SCALE_TURN_USE_CASE_CARD_V0.4.0.md)：补充相关业务用例细化方式；不把其正式设计职责强加给本批研究。
@@ -32,9 +32,22 @@
 - `同步_策略特征需求规格说明书V0.1.0.0_结合业务分析实践提出特征需求文档模板雏形_创建日期：20240930.docx`：参考原有口语化业务用例、关系讨论与细化过程；历史设想不自动视为当前有效结论。
 - `从嵌合死亡的角度理解不利条件、锯子.docx`：参考从具体投资不利条件讨论多品种运动及关系的业务语言；强机制解释仍须验证。
 - `一个品种是否应当成为重点品种.md`：参考多个观察角度怎样组织为重点品种的完整业务问题；示例不能当作真实 Case 结果。
-- `02_PRIMARY_NETWORK_DYNAMIC_USE_CASE_AND_VALIDATION_SOURCE.md`：参考 Network Dynamic 主用例的业务表达及反例/验证边界；示例性数据不当成实盘事实。
+- `02_PRIMARY_NETWORK_DYNAMIC_USE_CASE_AND_VALIDATION_SOURCE.md`：参考 Network Dynamic 主用例的业务表达及反例/验证边界；具体网络语义阅读位置见下节，示例性数据不当成实盘事实。
 
-这四份附件不因本索引而变成 GitHub 可访问文件；实际阅读前须核对接收角色能否取得项目原件。不可取得的注明并按需走既有来源获取途径，不凭文件名猜内容，也不因此跳过已经可读的 U3/U2 主要材料。本次不另建 AI 重写的用例库、不复制未核的背景资料。更细的 U2/U3 历史版本和设计来源仍使用上文§2已有的来源地图。
+这些附件不因本索引而变成 GitHub 可访问文件；实际阅读前须核对接收角色能否取得项目原件。不可取得的注明并按需走既有来源获取途径，不凭文件名猜内容，也不因此跳过已经可读的 U3/U2 主要材料。本次不另建 AI 重写的用例库、不复制未核的背景资料。更细的 U2/U3 历史版本和设计来源仍使用上文§2已有的来源地图。
+
+### 2.2 网络业务语言的定向阅读
+
+以下均为项目已上传原件，遵守上节获取与实际阅读要求。专业者针对本例直接读所需原文及理解语义必需的上下文，不以本索引代替原文，不把全部背景都变成每轮必读包。
+
+| 原始文件及定位 | 本轮参考用途 |
+| --- | --- |
+| `00_MAIN_SOURCE.md` §6.3、§8—11 | §6.3明确反对“每个品种一个分数→排名→称为网络”；参考具体关系、组形成/自身质量/组外差距、成员及组演变，以及不同网络之间的条件/支持/反对/补充。正式类型和全套生命周期设计不自动成为本轮义务。 |
+| `02_PRIMARY_NETWORK_DYNAMIC_USE_CASE_AND_VALIDATION_SOURCE.md` §3.2—3.3、§5、§7 | 参考不同属性上关系语义的区别，以及已有原子网络与组合叙事；理解接近、共同性、差异、分化、组和成员怎样进入业务故事。不照搬示范品种、数值或结论。 |
+| `网络与非线性动力学裸词的业务表达词典（第一版）.md` 第三、四、六、七部分 | 按需参考节点/关系、群体结构及时间变化的业务措辞。该历史词典不是当前事实认证；强机制标签仍需证据，不由术语推出因果或自持。 |
+| `基本的同步和网络词汇整理.md`「紧密组」及其临近关系说明 | 理解对象的某种属性在具体约束下形成临近关系、组和更新。旧 CloseGroup 的特定身份/结束规则不推广为所有业务组，代码示例不成为本轮实现前置。 |
+
+本轮采用这些来源来理解业务语义，不为四例预定关系或成组结论。事实不足时如实保留未决；不得只把“排名/关注顺序”改成“核心/组”，也不要求每例展示所有网络模式。用例自身的条件与支持/反对关系，和对当前候选用例进行检验所得的反例记录，按 00/02 的用途分开组织而保持联系。
 
 ## 3. 旧文件退出与仍可复用的内容
 
