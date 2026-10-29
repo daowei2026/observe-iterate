@@ -349,6 +349,7 @@ CASE-CO-BATCH覆盖全部目标：可信共同输入 → 具体多品种差异 �
 本次实际证据：`daowei2026/observe-iterate@a9893264ca6687c2514a64eb16da20cac6d9f494:runs/BI-01-CO-01/artifacts/batch-01/cases/CO01-C04.md::full`
 本次实际证据：`daowei2026/observe-iterate@2338a273ba67fd99fb835a41ee80225a1bec7e0e:runs/BI-01-CO-01/artifacts/batch-01/research/R0015_RESEARCH_AND_W04_CONSUMPTION.md::full`
 本次实际证据：`daowei2026/observe-iterate@a9893264ca6687c2514a64eb16da20cac6d9f494:runs/BI-01-CO-01/artifacts/batch-01/OWNER_REVIEW.md::full`
+本次实际证据：`daowei2026/observe-iterate@c59572dac9460370fcedcd5cb49aec1dba530b29:runs/BI-01-CO-01/provenance/turns/R0015/FULL_RESPONSE.md::full`
 
 ## 本次直接读取的上下文
 
@@ -443,9 +444,9 @@ CASE-CO-BATCH覆盖全部目标：可信共同输入 → 具体多品种差异 �
 方法版本、业务合同版本、源码版本和运行数据分别保持准确，不随一次方法更新全部追 latest。
 
 运行事实（来自现有记录）：
-观察时间：2026-10-29T08:23:33.968712+00:00
+观察时间：2026-10-29T08:37:36.760948+00:00
 有效回交数：16
-原起点累计小时：36.03744158666667
+原起点累计小时：36.27155054111111
 
 按既有协议把完整实质报告及符合Schema的ROLE_RETURN/QUESTION_WORK_RETURN交付GitHub，来源、未执行和资格如实保留；GitHub提交与远端校验成功后手机只回准确定位，不贴长报告或两份JSON。无法交付时按原备用渠道提供真实完整回交，不新增控制表，不重抄协调者已存提示。完整任务未完成就保留完整责任及连续后继，局部交付不自设停点。要求GitHub提交时普通快进并fresh回读，最后commit message带turn complete及本轮invocation_id，无invocation时简要标明执行身份；不造空提交。
 
