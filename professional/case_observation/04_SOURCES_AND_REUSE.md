@@ -16,6 +16,26 @@
 
 原始事实、描述性业务词、候选解释、正式特征结果分别表达。需要新词或新特征时记录本例的具体表达缺口和已有能力覆盖情况，保留交给 Mission A/实现工作的入口；本批不自动修改它们的合同或代码。
 
+### 2.1 现有业务用例与叙事表达参考（不新编示范）
+
+本批优先直接阅读以下**已有原文**，特别是 U3 人读叙事的业务语言与叙事层次；这些材料是供专业者自己参考的来源，不是本方法指定的市场事实、已证实的辨别规律，也不是必须复制的特征/处理器清单。完整来源尽量多提供，按具体研究问题使用，不要求每轮机械阅读全文。
+
+**优先参考（有固定 GitHub 版本，可直接取得原文）：**
+
+1. [U3 人读叙事 V0.3.0，重点第4节「完整连续自然语言叙事」](https://github.com/daowei2026/complex-systems-vocabulary/blob/48f55f53e25d04e5b4b59fae1e652dd4b679c9d3/docs/network-dynamic-ceps-factory/U3_MOVEMENT_QUALITY_ACTIVITY_CONVERSION_ALLOCATION_NARRATIVE_SPEC_V0.3.0.md)：首要参考业务表达方式、叙事组织与层次。
+2. [U3 具体用例卡 V0.4.0](https://github.com/daowei2026/complex-systems-vocabulary/blob/48f55f53e25d04e5b4b59fae1e652dd4b679c9d3/docs/network-dynamic-ceps-factory/U3_MOVEMENT_QUALITY_ACTIVITY_CONVERSION_ALLOCATION_USE_CASE_CARD_V0.4.0.md)：参考业务用例的细化、情境差异和边界；其设计/验证用例不自动成为历史行情已证实结论。
+3. [U2 人读叙事 V0.3.0](https://github.com/daowei2026/complex-systems-vocabulary/blob/48f55f53e25d04e5b4b59fae1e652dd4b679c9d3/docs/network-dynamic-ceps-factory/U2_OPPORTUNITY_CLUSTER_SCALE_TURN_NARRATIVE_SPEC_V0.3.0.md)：补充多品种共同运动、关系、组与演变的表达。
+4. [U2 具体用例卡 V0.4.0](https://github.com/daowei2026/complex-systems-vocabulary/blob/48f55f53e25d04e5b4b59fae1e652dd4b679c9d3/docs/network-dynamic-ceps-factory/U2_OPPORTUNITY_CLUSTER_SCALE_TURN_USE_CASE_CARD_V0.4.0.md)：补充相关业务用例细化方式；不把其正式设计职责强加给本批研究。
+
+**补充原始参考（当前项目已提供的背景附件，非本仓库文件；按需读取实际原件）：**
+
+- `同步_策略特征需求规格说明书V0.1.0.0_结合业务分析实践提出特征需求文档模板雏形_创建日期：20240930.docx`：参考原有口语化业务用例、关系讨论与细化过程；历史设想不自动视为当前有效结论。
+- `从嵌合死亡的角度理解不利条件、锯子.docx`：参考从具体投资不利条件讨论多品种运动及关系的业务语言；强机制解释仍须验证。
+- `一个品种是否应当成为重点品种.md`：参考多个观察角度怎样组织为重点品种的完整业务问题；示例不能当作真实 Case 结果。
+- `02_PRIMARY_NETWORK_DYNAMIC_USE_CASE_AND_VALIDATION_SOURCE.md`：参考 Network Dynamic 主用例的业务表达及反例/验证边界；示例性数据不当成实盘事实。
+
+这四份附件不因本索引而变成 GitHub 可访问文件；实际阅读前须核对接收角色能否取得项目原件。不可取得的注明并按需走既有来源获取途径，不凭文件名猜内容，也不因此跳过已经可读的 U3/U2 主要材料。本次不另建 AI 重写的用例库、不复制未核的背景资料。更细的 U2/U3 历史版本和设计来源仍使用上文§2已有的来源地图。
+
 ## 3. 旧文件退出与仍可复用的内容
 
 旧专业规范位于 `observe-iterate@9badfa6f30caebbe3156c5e4ee4deb43d22cacb5:professional/`。当前分支不并存旧四项与新两项要求，旧规范与运行历史仍可用 exact commit 读取。
