@@ -1,0 +1,20 @@
+{
+  "invocation_id": "BI01-CO-01-R0015-19052090cf",
+  "checked_at_utc": "2026-10-29T08:05:37.136155+00:00",
+  "scope": "Directly read official CSV rows projected into three explicit source facts; not full byte replay or strategy backtest.",
+  "source": {
+    "repo": "daowei2026/observe-iterate",
+    "commit": "1f7e4b441c2c0381790393fc46e61bc63c93171c",
+    "path": "runs/BI-01-CO-01/artifacts/batch-01/aidata/delivery/bi01_co01_w03_cases_20261028_5e4fa62eaf/feature_slices/big_000003/symbol/i/kline_30m/__default__.csv",
+    "read_range": "L365-L403 (visible returned content)"
+  },
+  "source_facts": [
+    {"time": "2022-05-23 09:30:00", "closeUti": 85607999, "close": "866.5", "line": 366, "role": "pre_judgment_background"},
+    {"time": "2022-05-23 15:00:00", "closeUti": 85631399, "close": "859.5", "line": 373, "role": "judgment_boundary"},
+    {"time": "2022-05-26 10:00:00", "closeUti": 85735799, "close": "804", "line": 403, "role": "later_test_endpoint"}
+  ],
+  "formula": "100*(end_close/start_close-1)",
+  "background_whole_segment_pct": "-7.212925562608193883439122910",
+  "strictly_from_judgment_to_endpoint_pct": "-6.457242582897033158813263530",
+  "qualification": "The first segment crosses the chosen 15:00 judgment boundary; only the second starts at that boundary. Neither is maximum drawdown, trade PnL, or an OHLC intrabar path."
+}
