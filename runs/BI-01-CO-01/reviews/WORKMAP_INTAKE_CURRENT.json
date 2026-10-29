@@ -2,14 +2,14 @@
   "schema": "workmap-intake/v1",
   "intakes": {
     "bi01": {
-      "snapshot": "0ada147b1273b6ae8d87bdd07df510ac2e08bc29f90b1862c401b47e933dc081",
+      "snapshot": "5ae5cc709cac56a4638649d12e8f9f1efb1c8a71e0b25b48a9069d858a682a51",
       "manager": {
         "role": "management",
-        "context": "chatgpt:BI-01-CO-01:management / BI01-CO-01-R0016-492ae29a77"
+        "context": "chatgpt:BI-01-CO-01:management / BI01-CO-01-R0017-e26bceee07"
       },
       "decision_report": {
-        "path": "runs/BI-01-CO-01/reviews/management-R0016/DECISION.md",
-        "blob": "7218af09738a5e2f946d62cb86824c5031471fe2"
+        "path": "runs/BI-01-CO-01/reviews/management-R0017/DECISION.md",
+        "blob": "bfecd2d9534c0dc20833a5e28b2c2b9b1add1eaa"
       },
       "reader_check": {
         "status": "RECORDED",
@@ -23,13 +23,13 @@
         "input_snapshot": "b8e71eaf3a0868275789f6557d817b22e24af7ed0469133119b8a062e3b365ef"
       },
       "effort": {
-        "known_pro_turns": 15
+        "known_pro_turns": 17
       },
       "scope_dispositions": {},
       "validation_claims": [],
       "dispatch": {
-        "decision": "ISSUED",
-        "kind": "EXISTING_AUTHORIZED_REPAIR",
+        "decision": "HOLD",
+        "kind": "ROUTINE_RESULT",
         "requires_reader_check": false,
         "task_id": "BI01-CO-01-CASE-RESEARCH-01",
         "task_path": "runs/BI-01-CO-01/01_当前任务.md",
@@ -42,7 +42,7 @@
           "professional/case_observation/03_AIDATA_USE.md",
           "professional/case_observation/04_SOURCES_AND_REUSE.md"
         ],
-        "reader_reason": "## 5. 已撤即时指令与本次采用资格\n\nR12“首次起手立即签阴影工单”已经由真实W04完成签发并部分执行，当前不再重复；R14“现在向Owner投递同一环境请求”已有实际投递记录，当前不再重复；R15旧未发准备不能按旧版本继续发送。R11结束等待不关闭本次未完研究。撤的是已被事实满足或被新Owner替换的即时动作，不删除正确目标、已有成果、旧回执、W04未验责任或历史文件。\n\n本次采用 `EXISTING_AUTHORIZED_REPAIR`，requires_reader_check=false：Owner对同一批次明确补充成果层次和参考，稳定对象/两项产出/数据入口/完整交付与写权没有扩大；管理没有创造新的市场模型、示范或实现方案。无需无关启动Reader前置。R4真实审查仅保留其历史输入资格，不声称读者审过新方法或四例；后续真正需要的独立审查仍按准确对象和参与关系办理，管理不自签独立PASS。"
+        "reader_reason": "原工作内真实部分接收及具名环境等待，原合同/方法/权限不变、无新设计；独立Reader保持历史范围"
       }
     }
   }
