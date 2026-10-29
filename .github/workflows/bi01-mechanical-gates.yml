@@ -44,5 +44,7 @@ jobs:
           PY
       - name: Run isolated synthetic Git round and source tests
         run: python3 -m unittest discover -s runtime/tests -p 'test_bi01_*.py' -v
+      - name: Validate issued Worker orders and result handoffs in isolated Git
+        run: python3 -m unittest discover -s runtime/overlay/tests -p 'test_workmap_gate_v2.py' -v
       - name: Test current professional dispatch in synthetic Git repo
         run: python3 -m unittest discover -s runtime/overlay/tests -p 'test_bi01_pilot_smoke.py' -v

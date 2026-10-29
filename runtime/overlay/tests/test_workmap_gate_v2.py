@@ -161,6 +161,81 @@ class V2RegressionTests(unittest.TestCase):
         self.commit()
         return base,order,report,who
 
+    def order_check(self, order):
+        return self.mod.worker_order(self.repo,self.git('rev-parse','HEAD'),
+                                     'binding.json','one',order_path=order)
+
+    def test_worker_order_preflight_before_worker_report_or_intake(self):
+        base,order,report,who=self.worker_fixture()
+        self.git('rm','--',report,'intake.json')
+        self.commit()
+        outcome=self.order_check(order)
+        self.assertTrue(outcome['ok'],outcome['errors'])
+        self.assertEqual(outcome['recipient'],who)
+        self.assertEqual(outcome['expected_worker_report_path'],report)
+        self.assertFalse(self.mod.GitView(self.repo,self.git('rev-parse','HEAD')).exists(report))
+        self.assertFalse(self.mod.GitView(self.repo,self.git('rev-parse','HEAD')).exists('intake.json'))
+
+    def test_worker_order_cli_checks_committed_order_without_report_or_base(self):
+        base,order,report,who=self.worker_fixture()
+        self.git('rm','--',report,'intake.json')
+        self.commit()
+        result=base_tests.subprocess.run(
+            [base_tests.sys.executable,str(base_tests.TOOL),'worker-order',
+             '--repo',str(self.repo),'--ref',self.git('rev-parse','HEAD'),
+             '--binding','binding.json','--scope','one','--order',order],
+            check=False,text=True,capture_output=True)
+        self.assertEqual(result.returncode,0,result.stdout+result.stderr)
+        body=base_tests.json.loads(result.stdout)
+        self.assertTrue(body['ok'],body)
+        self.assertEqual(body['recipient'],who)
+
+
+    def test_worker_order_preflight_accepts_management_before_intake(self):
+        base,order,report,who=self.worker_fixture(role='management')
+        self.git('rm','--',report,'intake.json')
+        self.commit()
+        outcome=self.order_check(order)
+        self.assertTrue(outcome['ok'],outcome['errors'])
+        self.assertEqual(outcome['recipient'],who)
+
+    def test_worker_order_preflight_catches_original_w02_field_and_path_shape(self):
+        base,order,report,who=self.worker_fixture()
+        legacy='one/artifacts/batch-01/aidata/W02_WORK_ORDER.md'
+        (self.repo/legacy).parent.mkdir(parents=True,exist_ok=True)
+        self.git('mv',order,legacy)
+        body=(self.repo/legacy).read_text(encoding='utf-8')
+        body=body.replace('order_id: SYNTHETIC-W05','work_order_id: SYNTHETIC-W05')
+        body=body.replace('issuer_role: professional\nissuer_ref: '+who,
+                          'issued_by: '+who)
+        self.put(legacy,body)
+        self.commit()
+        outcome=self.order_check(legacy)
+        self.assertFalse(outcome['ok'])
+        self.assertIn('WORKER_ORDER_AUTHORITY_INVALID',outcome['errors'])
+        self.assertIn('ISSUER_CALL_NOT_VERIFIED',outcome['errors'])
+        # The same historical-shaped order must not be accepted as a Worker result.
+        result=self.worker_check(base,legacy,report)
+        self.assertIn('WORKER_ORDER_AUTHORITY_INVALID',result['errors'])
+
+    def test_worker_order_authority_rejection_is_shared_with_worker_result(self):
+        base,order,report,who=self.worker_fixture()
+        self.put(order,(self.repo/order).read_text(encoding='utf-8').replace(
+            'issuer_assignment_token: synthetic-assignment-token',
+            'issuer_assignment_token: wrong-token'))
+        self.commit()
+        self.assertIn('ISSUER_CALL_NOT_VERIFIED',self.order_check(order)['errors'])
+        self.assertIn('ISSUER_CALL_NOT_VERIFIED',self.worker_check(base,order,report)['errors'])
+
+    def test_worker_order_not_sent_rejected_without_worker_report(self):
+        base,order,report,who=self.worker_fixture()
+        self.git('rm','--',report)
+        self.put_json('one/provenance/turns/R0004/SEND_RECEIPT.json',{'state':'NOT_SENT'})
+        self.commit()
+        outcome=self.order_check(order)
+        self.assertIn('ISSUER_CALL_NOT_VERIFIED',outcome['errors'])
+
+
     def worker_check(self, base, order, report):
         return self.mod.worker_result(self.repo,self.git('rev-parse','HEAD'),
                                       'binding.json','one',base_ref=base,
