@@ -2,14 +2,14 @@
   "schema": "workmap-intake/v1",
   "intakes": {
     "bi01": {
-      "snapshot": "83a460a625bb4f8b873420626223a424780f7aa6453d469e432a68c787fbef37",
+      "snapshot": "6a13133422f94302fb1c0b1aea4719981b917fe0e2f6d6e39f066cdb751cb3eb",
       "manager": {
         "role": "management",
-        "context": "chatgpt:BI-01-CO-01:management / BI01-CO-01-R0018-01ff085137"
+        "context": "chatgpt:BI-01-CO-01:management / BI01-CO-01-R0020-1a851b0836"
       },
       "decision_report": {
-        "path": "runs/BI-01-CO-01/reviews/management-R0018/DECISION.md",
-        "blob": "76d208aeec71ee979077d471abb6572a3d6bbcde"
+        "path": "runs/BI-01-CO-01/reviews/management-R0020/DECISION.md",
+        "blob": "03e2cbf1c07c402c97362811c947fabab5a0f927"
       },
       "reader_check": {
         "status": "RECORDED",
@@ -23,13 +23,13 @@
         "input_snapshot": "b8e71eaf3a0868275789f6557d817b22e24af7ed0469133119b8a062e3b365ef"
       },
       "effort": {
-        "known_pro_turns": 18
+        "known_pro_turns": 20
       },
       "scope_dispositions": {},
       "validation_claims": [],
       "dispatch": {
-        "decision": "ISSUED",
-        "kind": "EXISTING_AUTHORIZED_REPAIR",
+        "decision": "HOLD",
+        "kind": "ROUTINE_RESULT",
         "requires_reader_check": false,
         "task_id": "BI01-CO-01-CASE-RESEARCH-01",
         "task_path": "runs/BI-01-CO-01/01_当前任务.md",
@@ -42,7 +42,7 @@
           "professional/case_observation/03_AIDATA_USE.md",
           "professional/case_observation/04_SOURCES_AND_REUSE.md"
         ],
-        "reader_reason": "## 5. 历史职责退出与采用类型\n\n本次是`EXISTING_AUTHORIZED_REPAIR`，`requires_reader_check=false`：Owner直接对同一四例、同一两项产出提出明确质量纠正，管理将其落实到原合同，没有新增市场模型、分组算法、强制结构或写权，不重新M-START或先做启动Reader。R4独立报告只保留当时输入资格，不能称已审新方法/用例；后续真实需要独立审查按准确对象和参与关系办理。\n\nR17“没有新输入时无即时工单”的前提已经被本次反馈打破。撤销的是这一即时停止适用性及旧文字接收充足性，不是删除正确证据、旧决定或W04消费事实。当前Workmap活动管理规则改为R18，旧R16采用只作前序；正确业务和权限由新任务承接，历史决定仍可准确取得。旧相反即时动作不以deferred required或未来优化重新出现。\n\n保留全部业务anchors、Owner来源、成果watch_roots和专用Reader窄投影，不把新增规则保护问题转为清仓/审全仓前置。当前不新签Worker、Reader或维护工单。"
+        "reader_reason": "原合同内现行文字/材料接收及具名依赖处置，方法/权限未变、没有新设计；R4仅保留历史资格"
       }
     }
   }
