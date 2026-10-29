@@ -10,4 +10,4 @@ recipient: chatgpt:BI-01-CO-01:management
 
 本轮完整目的、当前任务及适用要求均在下列已提交原文中。先全文读取这份任务及其要求的材料，再按原委派继续；本条不缩小任务。完整业务成果、ROLE_RETURN和QUESTION_WORK_RETURN分别提交GitHub；成功后手机只回复准确commit及交付位置，不重复贴报告或JSON。GitHub不可写时按原备用ZIP运输规则报告实际情况。
 
-完整派发原文：`daowei2026/observe-iterate@ecc3d5fa2f0b4116199fc8ae2c9eb8af776304f7:runs/BI-01-CO-01/provenance/turns/R0017/FULL_ASSIGNMENT.md::full`
+完整派发原文：`daowei2026/observe-iterate@deac7a1332a2f863a02b08c5c1d1094afd852caf:runs/BI-01-CO-01/provenance/turns/R0017/FULL_ASSIGNMENT.md::full`
