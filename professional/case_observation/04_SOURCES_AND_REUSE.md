@@ -1,75 +1,43 @@
-# 来源、U2/U3 与旧知识复用
+# 来源与复用：本次特征输入优先，历史按问题读取
 
-## 1. 本次方法依据
+## 1. 当前依据与阅读顺序
 
-本方法依据 Owner 在当前讨论中逐步明确的要求，由本次仓库修改授权物化：专业部分是替换关系；先事后一起看多个品种的明显差异，再向此前回看；回看方式由 AI 从投资者角度选择；一次交 3–5 例，暂不深入用例间关系；正式数据必须经 aidata；Owner 入口要有一个含全部图的平台链接，并说明实际入参和三个接口的调用。
+本分支按Owner批准的新方法组织：基于既有贴近转折及衍生对象，先轻量核框架，再开展具体用例观察，优先取得一个有价值的初版。00—03为完整专业要求，05为启动时设想；运行后采用的当前修订、输入和授权以本Run准确来源为准。
 
-这些要求经 [00](00_PURPOSE_AND_OUTPUTS.md)、[01](01_RESEARCH_METHOD.md)、[02](02_OWNER_DELIVERY.md)、[03](03_AIDATA_USE.md) 成为当前首版正文。本次是材料修改，不是实际研究启动；正式启动仍记录真实 Owner GO 及其原件，不以本文件代替。
+优先读本次实际特征交付及其必要语义、当前任务/方法/设想。遇到具体关系词汇、时间或工具问题，再定向读下方原件。不是先通读U3和全部聊天，再从中挑一个故事套数据。
 
-曹总补充解释中的“像人研究具体行情”“不断表达词汇和必要特征”是业务背景；本批先完成上述两项产出，不把更大循环的全部能力作为本批必须实现的条件。口语转写中无法确定的术语，不擅自升格成正式业务定义。
+[两层观察的讨论说明](../../discuss-materials/初始用例设想与两层观察迭代说明.md)保留形成过程中的具体思考，不作为第二套执行规范；假想顺序不是固定状态机。文件中的范围选择仍须接受实际数据反馈。
 
-## 2. U2/U3 怎样用
+## 2. 可选业务原文
 
-需要解释运动片段、推进、摩擦、保持、品种关系或信息缺口时，按需查 U2/U3 原叙事、Workmap、Local Contract 与实现。查的是当前具体疑问，不要求先把整个上游合理性或整套正式链证明完。
+以下固定版本供理解业务表达和关系语义，不是本轮已验证规律、市场答案或正式特征链前置：
 
-准确历史来源地图：[U2/U3 设计来源](https://github.com/daowei2026/observe-iterate/blob/9badfa6f30caebbe3156c5e4ee4deb43d22cacb5/professional/v2/06_U2_U3_DESIGN_SOURCE_MAP.md)。这是导航，不替代所需业务原文，也不把其历史采用版本自动当作现场最新版。
+- [U3人读叙事V0.3.0](https://github.com/daowei2026/complex-systems-vocabulary/blob/48f55f53e25d04e5b4b59fae1e652dd4b679c9d3/docs/network-dynamic-ceps-factory/U3_MOVEMENT_QUALITY_ACTIVITY_CONVERSION_ALLOCATION_NARRATIVE_SPEC_V0.3.0.md)：第4节及U3N05，理解推进/摩擦/保持、接近/分化、相对较好与绝对有利的区别。
+- [U3用例卡V0.4.0](https://github.com/daowei2026/complex-systems-vocabulary/blob/48f55f53e25d04e5b4b59fae1e652dd4b679c9d3/docs/network-dynamic-ceps-factory/U3_MOVEMENT_QUALITY_ACTIVITY_CONVERSION_ALLOCATION_USE_CASE_CARD_V0.4.0.md)：按需参考细化情境与边界，不当作真实行情验证。
+- [U2人读叙事V0.3.0](https://github.com/daowei2026/complex-systems-vocabulary/blob/48f55f53e25d04e5b4b59fae1e652dd4b679c9d3/docs/network-dynamic-ceps-factory/U2_OPPORTUNITY_CLUSTER_SCALE_TURN_NARRATIVE_SPEC_V0.3.0.md)与[U2用例卡V0.4.0](https://github.com/daowei2026/complex-systems-vocabulary/blob/48f55f53e25d04e5b4b59fae1e652dd4b679c9d3/docs/network-dynamic-ceps-factory/U2_OPPORTUNITY_CLUSTER_SCALE_TURN_USE_CASE_CARD_V0.4.0.md)：按需理解多品种转折、过程和关系，不导入全套工程职责。
+- [历史U2/U3来源地图](https://github.com/daowei2026/observe-iterate/blob/9badfa6f30caebbe3156c5e4ee4deb43d22cacb5/professional/v2/06_U2_U3_DESIGN_SOURCE_MAP.md)：查具体设计或版本时使用，历史采用不是现场最新版证明。
 
-原始事实、描述性业务词、候选解释、正式特征结果分别表达。需要新词或新特征时记录本例的具体表达缺口和已有能力覆盖情况，保留后续按需阅读和核对的线索；本批不自动修改相关合同或代码。
+项目原始附件按需使用，先确认接收角色能取得实际原文，不伪造Git路径：
 
-### 2.1 现有业务用例与叙事表达参考（不新编示范）
+| 原件 | 定向参考内容 |
+|---|---|
+| `00_MAIN_SOURCE.md` §6.3、§8—11 | 明确属性关系及其变化；组形成、组自身质量和组外差距不混成分数排名。 |
+| `02_PRIMARY_NETWORK_DYNAMIC_USE_CASE_AND_VALIDATION_SOURCE.md` §3.2—3.3、§5、§7 | 不同性质关系和已有业务示例；示例性数据不当作本轮历史事实。 |
+| `网络与非线性动力学裸词的业务表达词典（第一版）.md`、`基本的同步和网络词汇整理.md` | 按具体问题理解接近、分化、组及更新；旧机制标签或代码不成为本轮定论。 |
+| `同步_策略特征需求规格说明书V0.1.0.0_结合业务分析实践提出特征需求文档模板雏形_创建日期：20240930.docx` | 原有口语化业务用例及细化思路，历史设想不自动成立。 |
+| `从嵌合死亡的角度理解不利条件、锯子.docx`、`一个品种是否应当成为重点品种.md` | 业务问题与多角度叙事；不直接采用机制或构造数据结论。 |
 
-本批优先直接阅读以下**已有原文**，特别是 U3 人读叙事的业务语言与叙事层次；这些材料是供专业者自己参考的来源，不是本方法指定的市场事实、已证实的辨别规律，也不是必须复制的特征/处理器清单。完整来源尽量多提供，按具体研究问题使用，不要求每轮机械阅读全文。
+参考用于理解，不新增AI重写的示范库，不要求每例包含全部网络词汇，也不强迫形成组或因果解释。
 
-**优先参考（有固定 GitHub 版本，可直接取得原文）：**
+## 3. 旧分支的定向复用
 
-1. [U3 人读叙事 V0.3.0，重点第4节「完整连续自然语言叙事」](https://github.com/daowei2026/complex-systems-vocabulary/blob/48f55f53e25d04e5b4b59fae1e652dd4b679c9d3/docs/network-dynamic-ceps-factory/U3_MOVEMENT_QUALITY_ACTIVITY_CONVERSION_ALLOCATION_NARRATIVE_SPEC_V0.3.0.md)：首要参考业务表达方式、叙事组织与层次；网络关系重点看 U3N05 的接近/分化、候选组、组自身质量、组外差距和成员行为，不把“相对最好”直接当作质量足够。
-2. [U3 具体用例卡 V0.4.0](https://github.com/daowei2026/complex-systems-vocabulary/blob/48f55f53e25d04e5b4b59fae1e652dd4b679c9d3/docs/network-dynamic-ceps-factory/U3_MOVEMENT_QUALITY_ACTIVITY_CONVERSION_ALLOCATION_USE_CASE_CARD_V0.4.0.md)：参考业务用例的细化、情境差异和边界；其设计/验证用例不自动成为历史行情已证实结论。
-3. [U2 人读叙事 V0.3.0](https://github.com/daowei2026/complex-systems-vocabulary/blob/48f55f53e25d04e5b4b59fae1e652dd4b679c9d3/docs/network-dynamic-ceps-factory/U2_OPPORTUNITY_CLUSTER_SCALE_TURN_NARRATIVE_SPEC_V0.3.0.md)：补充多品种共同运动、关系、组与演变的表达。
-4. [U2 具体用例卡 V0.4.0](https://github.com/daowei2026/complex-systems-vocabulary/blob/48f55f53e25d04e5b4b59fae1e652dd4b679c9d3/docs/network-dynamic-ceps-factory/U2_OPPORTUNITY_CLUSTER_SCALE_TURN_USE_CASE_CARD_V0.4.0.md)：补充相关业务用例细化方式；不把其正式设计职责强加给本批研究。
+本次基线为 `daowei2026/observe-iterate@674c1be1820dfd5c0bfcb590fe934bf2b0dc328c`，旧分支 `fy/multisymbol-case-observation-20261027` 保留全部历史。新分支不复制旧Run、讨论全集、测试脚本或旧规范。
 
-**补充原始参考（当前项目已提供的背景附件，非本仓库文件；按需读取实际原件）：**
+| 确有问题时可查 | 准确入口与使用边界 |
+|---|---|
+| aidata接口关系、时间坐标及范围经验 | [旧03](https://github.com/daowei2026/observe-iterate/blob/674c1be1820dfd5c0bfcb590fe934bf2b0dc328c/professional/case_observation/03_AIDATA_USE.md)；只取适用知识，不继承旧品种、时间、mid参数或四例布局。 |
+| 旧测试原件和输入示例 | [测试来源](https://github.com/daowei2026/observe-iterate/blob/674c1be1820dfd5c0bfcb590fe934bf2b0dc328c/professional/case_observation/references/aidata_20261027/README.md)、[输入示例](https://github.com/daowei2026/observe-iterate/blob/674c1be1820dfd5c0bfcb590fe934bf2b0dc328c/professional/case_observation/examples/aidata_inputs.py)；不是本次待执行脚本或现场成功证明。 |
+| C01—C04、正式CSV及W04实物 | [旧Run](https://github.com/daowei2026/observe-iterate/tree/674c1be1820dfd5c0bfcb590fe934bf2b0dc328c/runs/BI-01-CO-01)；不默认选用旧区间，不继续原四篇修订。必要时只取实际承重片段并保留资格。 |
+| 历史讨论来历 | [旧讨论目录](https://github.com/daowei2026/observe-iterate/tree/674c1be1820dfd5c0bfcb590fe934bf2b0dc328c/discuss-materials)；不是主控或专业每轮必读。 |
 
-- `同步_策略特征需求规格说明书V0.1.0.0_结合业务分析实践提出特征需求文档模板雏形_创建日期：20240930.docx`：参考原有口语化业务用例、关系讨论与细化过程；历史设想不自动视为当前有效结论。
-- `从嵌合死亡的角度理解不利条件、锯子.docx`：参考从具体投资不利条件讨论多品种运动及关系的业务语言；强机制解释仍须验证。
-- `一个品种是否应当成为重点品种.md`：参考多个观察角度怎样组织为重点品种的完整业务问题；示例不能当作真实 Case 结果。
-- `02_PRIMARY_NETWORK_DYNAMIC_USE_CASE_AND_VALIDATION_SOURCE.md`：参考 Network Dynamic 主用例的业务表达及反例/验证边界；具体网络语义阅读位置见下节，示例性数据不当成实盘事实。
-
-这些附件不因本索引而变成 GitHub 可访问文件；实际阅读前须核对接收角色能否取得项目原件。不可取得的注明并按需走既有来源获取途径，不凭文件名猜内容，也不因此跳过已经可读的 U3/U2 主要材料。本次不另建 AI 重写的用例库、不复制未核的背景资料。更细的 U2/U3 历史版本和设计来源仍使用上文§2已有的来源地图。
-
-### 2.2 网络业务语言的定向阅读
-
-以下均为项目已上传原件，遵守上节获取与实际阅读要求。专业者针对本例直接读所需原文及理解语义必需的上下文，不以本索引代替原文，不把全部背景都变成每轮必读包。
-
-| 原始文件及定位 | 本轮参考用途 |
-| --- | --- |
-| `00_MAIN_SOURCE.md` §6.3、§8—11 | §6.3明确反对“每个品种一个分数→排名→称为网络”；参考具体关系、组形成/自身质量/组外差距、成员及组演变，以及不同网络之间的条件/支持/反对/补充。正式类型和全套生命周期设计不自动成为本轮义务。 |
-| `02_PRIMARY_NETWORK_DYNAMIC_USE_CASE_AND_VALIDATION_SOURCE.md` §3.2—3.3、§5、§7 | 参考不同属性上关系语义的区别，以及已有原子网络与组合叙事；理解接近、共同性、差异、分化、组和成员怎样进入业务故事。不照搬示范品种、数值或结论。 |
-| `网络与非线性动力学裸词的业务表达词典（第一版）.md` 第三、四、六、七部分 | 按需参考节点/关系、群体结构及时间变化的业务措辞。该历史词典不是当前事实认证；强机制标签仍需证据，不由术语推出因果或自持。 |
-| `基本的同步和网络词汇整理.md`「紧密组」及其临近关系说明 | 理解对象的某种属性在具体约束下形成临近关系、组和更新。旧 CloseGroup 的特定身份/结束规则不推广为所有业务组，代码示例不成为本轮实现前置。 |
-
-本轮采用这些来源来理解业务语义，不为四例预定关系或成组结论。事实不足时如实保留未决；不得只把“排名/关注顺序”改成“核心/组”，也不要求每例展示所有网络模式。用例自身的条件与支持/反对关系，和对当前候选用例进行检验所得的反例记录，按 00/02 的用途分开组织而保持联系。
-
-## 3. 旧文件退出与仍可复用的内容
-
-旧专业规范位于 `observe-iterate@9badfa6f30caebbe3156c5e4ee4deb43d22cacb5:professional/`。当前分支不并存旧四项与新两项要求，旧规范与运行历史仍可用 exact commit 读取。
-
-可按需要复用：真实来源与时间含义、事实/假设区分、图数对应、aidata 三接口关系、多品种展示经验、Worker 结果返回原签发 Pro、已有合法工具实物。
-
-不继承：必须先选已实现 N 特征、初始参数→Notebook→平台→观察的旧具体依赖、旧 S1–S3、固定预计算 ZIP、旧四束验收、旧运行的 GO/Binding/预算/在途/等待、以及曾被否定图的旧资格处置。旧事实仍按旧版本保持，不倒改成从未发生。
-
-无需为历史可追溯复制整套旧方法进当前目录。当前专业正文与普通运行入口只加载本次必要资料，避免再次把旧任务当成前置。
-
-## 4. 本次 aidata 测试材料的分层采用
-
-Owner 随本次修改提供 `测试报告.md` 和 `probe.py`，并明确：三品种概览从 2021-01-01 起；30m 大尺度图的贴近转折使用 mid 而非 large。这两项是当前输入/展示要求，不是从测试行数推导出的市场规律。
-
-| 内容性质 | 放置与使用 |
-| --- | --- |
-| 可复用接口、字段、两种调用方式及范围边界 | [03_AIDATA_USE.md](03_AIDATA_USE.md)；服务实际选例、回看和图数交付 |
-| Owner 查看所需的输入、顺序、范围和页面对应 | [02_OWNER_DELIVERY.md](02_OWNER_DELIVERY.md)，不把全部环境日志搬进首页 |
-| 已按 2021/mid 调整的输入构造示例 | [examples/aidata_inputs.py](examples/aidata_inputs.py)；不是数据服务，也不是已实跑成果 |
-| 原报告、原脚本、测试版本、补充说明及未随附材料 | [references/aidata_20261027/README.md](references/aidata_20261027/README.md)；按需追溯，不作为每次调用必读包 |
-
-原报告开头的后续更正优于正文中的首轮页面差距判断；原脚本仍是首轮 2013/large 版本，保留原字节，不把它倒改成已测试的 2021/mid 脚本。报告声明的补充单页成功、当前附件实际提供的代码、当前参数要求和本次未来运行结果分别记录。
-
-不把测试窗口当作正式业务用例，不把历史 URL/行数当本批交付，也不把已被更正的源码改造建议变成研发任务。环境和版本仅用于准确复用，不将所有历史依赖版本变成长期硬锁；有具体变化再检查受影响部分。运行协议、管理触发、GO、Binding 和 cgpterm 无需因这份工具使用知识改变。
+旧事实、失败和资格按原版本保留，引用不代表重做。旧GO、Binding、预算、在途、管理接收和环境待办不继承到新Run。当前任务不绑定或启动其他具名业务工作。

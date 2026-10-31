@@ -1,45 +1,41 @@
 {
   "schema": "workmap-binding/v2",
-  "status": "ADOPTED",
+  "status": "NOT_CONFIGURED",
   "manager_role": "management",
   "overview": {
-    "path": "runs/BI-01-CO-01/README.md",
+    "path": "runs/<NEW_RUN_ID>/README.md",
     "anchors": ["common", "bi01"]
   },
   "shared_overview_anchors": ["common"],
   "owner_sources": [
-    "runs/BI-01-CO-01/OWNER_START.md",
-    "professional/case_observation/00_PURPOSE_AND_OUTPUTS.md",
-    "runs/BI-01-CO-01/OWNER_CHANGE_20261028.md",
-    "runs/BI-01-CO-01/OWNER_CHANGE_20261029.md",
-    "runs/BI-01-CO-01/OWNER_CHANGE_20261029_INITIAL_USE_CASE.md"
+    "runs/<NEW_RUN_ID>/OWNER_START.md",
+    "professional/case_observation/00_PURPOSE_AND_OUTPUTS.md"
   ],
   "rule_paths": [
     "professional/case_observation/README.md",
     "professional/case_observation/00_PURPOSE_AND_OUTPUTS.md",
     "professional/case_observation/01_RESEARCH_METHOD.md",
     "professional/case_observation/02_OWNER_DELIVERY.md",
-    "professional/case_observation/03_AIDATA_USE.md",
+    "professional/case_observation/03_FEATURE_DATA_AND_VIEWS.md",
     "professional/case_observation/04_SOURCES_AND_REUSE.md",
+    "professional/case_observation/05_INITIAL_SCENARIO.md",
     "runtime/dual_route_execution/DR14_QUESTION_WORK_CONTRACT.md",
-    "runtime/overlay/08_自然语言运行提示_v0.3.md",
-    "runs/BI-01-CO-01/reviews/management-R0018/DECISION.md"
+    "runtime/overlay/08_自然语言运行提示_v0.3.md"
   ],
-  "receipt_path": "runs/BI-01-CO-01/reviews/WORKMAP_INTAKE_CURRENT.json",
+  "receipt_path": "runs/<NEW_RUN_ID>/reviews/WORKMAP_INTAKE_CURRENT.json",
   "streams": {
     "bi01": {
       "map": {
-        "path": "runs/BI-01-CO-01/00_长程推进地图.md",
+        "path": "runs/<NEW_RUN_ID>/00_长程推进地图.md",
         "anchors": ["goal", "stage", "evidence", "progress", "remaining", "management", "next"]
       },
-      "task": "runs/BI-01-CO-01/01_当前任务.md",
+      "task": "runs/<NEW_RUN_ID>/01_当前任务.md",
       "overview_anchors": ["bi01"],
       "watch_roots": [
-        "runs/BI-01-CO-01/artifacts",
-        "runs/BI-01-CO-01/reviews/independent"
-      ],
-      "reader_output_roots": ["runs/BI-01-CO-01/reviews/independent/workmap-01"]
+        "runs/<NEW_RUN_ID>/artifacts",
+        "runs/<NEW_RUN_ID>/reviews/independent"
+      ]
     }
   },
-  "note": "R0020已按620方法实质接收R19的f247四例初始用例及配套材料，并在同一调用处理后来到达的R19完整回交和原repeat20。当前决定为observe-iterate@1fbf825bbb35063e7b4623f920ad6a839ec959a9:runs/BI-01-CO-01/reviews/management-R0020/DECISION.md，#recording给当前主控01a1875a-5d14-7970-9a4c-89da4439707f真实收取/去重/Intake登记，#resume给真实新环境或业务输入后的原完整后继。c8任务/Binding、620方法、R18活动rule_paths和全部权限保持；本轮ROUTINE_RESULT，无新专业/Reader/Worker签发，旧ISSUED不用于重复派单。实物变化下须真实新snapshot/check，当前Intake取HOLD，无其他新输入/在途时按既有机制实际登记具名依赖PAUSED，父任务不COMPLETE；status ADOPTED不自证暂停或发送。实际图面/四范围阴影/持久交互仍未验，文字接收不抵扣，W04已成消费不重复，R14请求不重投，不新增部署重启注册存储或换日历权限。RESULT/EFFORT仍owner-change-20261028，CHANGE仍owner-initial-usecase-20261029，原起点/累计保持；18已消费、19非活动，20已由本轮处理，不再继承R18当时UNKNOWN、不因R19同观察重派，不rearm或倒签暂停。全部Owner来源、业务anchors、watch_roots及Reader窄投影保持，provenance/turns不纳监控；R4不冒作新用例独立审查。"
+  "note": "PREPARATION ONLY. NEW_RUN_ID为显式占位符，不是可派发身份。真实Owner GO后由有权管理采用准确方法、05启动设想、本次输入及实际任务，填入独立Run并完成原机制的map/task/Intake/check后才可ADOPTED。运行内当前设想和修订保存在artifacts并纳入正常实质成果范围，不每次改写启动设想。不要复制旧CO-01的决定、角色聊天、在途、等待、预算或接收；provenance/turns不纳watch_roots。当前无真实派发、无完成证明、无扩大权限。"
 }

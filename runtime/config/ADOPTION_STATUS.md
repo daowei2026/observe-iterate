@@ -1,9 +1,12 @@
-# 本分支方法与采用状态
+# 新方法采用准备
 
-本分支准备新的多品种差异用例研究，专业入口见 [professional](../../professional/README.md)。**本次仅修改仓库材料，未取得针对新运行的启动 GO，未创建新 run、BOOTSTRAP、管理地图、有效 Intake 或实际派发。**
+当前状态：**仅完成方法与分支准备，尚未建立实际运行采用。** `WORKMAP_BINDING.json`为NOT_CONFIGURED模板状态，不代表已签发或待发送任务。
 
-`WORKMAP_BINDING.json` 在本新分支为 `NOT_CONFIGURED`，其中 `<NEW_RUN_ID>` 是非活动占位，不可发送。实际采用按 [运行指南](../operations/CASE_OBSERVATION_RUN_GUIDE.md) 与 [接收清单](../operations/ADOPTION_HANDOFF_CHECKLIST.md) 办理，不用模板或测试假造 ADOPTED。
+- 专业及运行仓：`daowei2026/observe-iterate`，新分支 `fy/feature-based-case-observation`。
+- 基线：`674c1be1820dfd5c0bfcb590fe934bf2b0dc328c`；旧分支和CO-01历史保持原样。
+- 专业入口：[case_observation](../../professional/case_observation/README.md)，包括新03及启动设想05。
+- 稳定work_id为BI-01，继续使用CASE_OBSERVATION模式；新Run身份必须在真实启动时确定，不承接旧task、R序列、GO、接收、等待或预算。
 
-旧 `BI-01-FO-01` 已有真实管理任务与 ADOPTED 仓库记录，完整旧绑定在 [9badfa6 的配置](https://github.com/daowei2026/observe-iterate/blob/9badfa6f30caebbe3156c5e4ee4deb43d22cacb5/runtime/config/WORKMAP_BINDING.json)。这不是新任务授权，也不证明现场进程此刻的运行/暂停状态。旧 run 及历史索引不再保留在本分支，按 [runs 入口](../../runs/README.md) 到旧分支/准确版本读取；是否恢复或结束只取真实 Owner 决定。
+尚待真实事实：Owner启动授权、实际特征交付及必要语义/图面信息、独立运行身份及角色定位、原有机制下的管理任务/地图/Binding/Intake及其校验。预计数据到达时间不填成实际完成；方法提交、数据已到、图面通过和业务接收分别记录。
 
-仓库提交、现场 Skill 采用、aidata 两种方式真实验证、平台实际打开、专业成果成立和 Owner 阅读/认可分别记录。当前没有本批新的 aidata 验证结果或统一平台 URL；后续消费 Codex 的真实结果，不在本状态文件编造成功。
+通用工具、协议和设备能力复用，不重装或重做全套预检；旧故障只按本次实际依赖判断。没有新授权，不执行手机、派发、环境维护或启动其他工作。准备顺序见 [运行指南](../operations/CASE_OBSERVATION_RUN_GUIDE.md)。

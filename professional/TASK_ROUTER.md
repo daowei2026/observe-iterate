@@ -1,15 +1,16 @@
 # 专业任务路由
 
-当前 `COORDINATOR_DISPATCH.json` 的 `CASE_OBSERVATION` 指向同一项完整研究任务，不把两项产出拆成两个强制串行 Gate。
+继续使用 `CASE_OBSERVATION` 承载同一项完整研究责任，不为两层观察新增调度模式或串行验收Gate。目标取配置中的goal_ref，实际采用的完整方法、设想和输入取真实任务及source_reads。
 
-| 实际需要 | 专业正文 | 形成的内容 |
-| --- | --- | --- |
-| 理解本批要做什么、交付什么 | [00](case_observation/00_PURPOSE_AND_OUTPUTS.md) | 完整目标、3–5 例批次与两项具体产出 |
-| 寻找多品种差异位置、回看解释 | [01](case_observation/01_RESEARCH_METHOD.md) | 有依据的用例及逐例研究 |
-| 组织给 Owner 看的实物 | [02](case_observation/02_OWNER_DELIVERY.md) | 一个阅读入口、统一平台图和实际调用记录 |
-| 委派取数、制图、核同源范围 | [03](case_observation/03_AIDATA_USE.md) | aidata 正式数据与真实平台结果 |
-| 需要理解 U2/U3 或旧经验 | [04](case_observation/04_SOURCES_AND_REUSE.md) | 按具体疑问取得所需原文，不增加整套前置 |
+| 实际需要 | 定向读取 | 形成什么 |
+|---|---|---|
+| 明确业务目的与成果 | [00](case_observation/00_PURPOSE_AND_OUTPUTS.md) | 一个可迭代初版的业务要求与边界 |
+| 理解当前优先框架 | [05](case_observation/05_INITIAL_SCENARIO.md)及本Run当前修订 | 待观察的设想，而非预设市场答案 |
+| 查背景、看结构、研究判断 | [01](case_observation/01_RESEARCH_METHOD.md)、实际特征输入 | 可定位的观察、候选规律、具体判断及反馈 |
+| 核对特征语义和图面可知范围 | [03](case_observation/03_FEATURE_DATA_AND_VIEWS.md)及交付原文 | 正确消费现有数据；只对必要缺口提出技术请求 |
+| 向Owner交付与接回反馈 | [02](case_observation/02_OWNER_DELIVERY.md) | 一个业务阅读入口及准确图数对应 |
+| 遇到具体业务或工具疑问 | [04](case_observation/04_SOURCES_AND_REUSE.md) | 相关原文或旧实物，不加载整套历史 |
 
-管理、执行、独立审查、Worker 的通用职责仍由 runtime 提供。Worker 的工单由原签发 Pro 接收，技术成功不替代专业判断。Owner 反馈沿原 CHANGE/任务修订机制处理，不另建反馈状态机。
+专业者负责观察、判断和用例修订；管理负责实质目标、范围和接收；主控只按有权任务运转；Worker负责具名技术工作并回原签发Pro。通用责任、Return与独立审查仍取 [runtime](../runtime/README.md)，本页不改其协议。
 
-普通研究方法可在目标和写权内迭代；改变本批研究对象、交付边界、数据入口或转入正式特征开发时，由有权任务责任者处理，主控不自行扩展。
+执行者取得本轮承重正文；已读未变且可恢复的内容复用，不机械每轮重读。主控不为运输通读背景库或替专业者构造场景答案。两层之间正常往返不逐步请示Owner；真实反馈随时按具体影响处理，未收到反馈不停止可独立推进的已授权工作。

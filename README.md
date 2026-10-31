@@ -1,24 +1,34 @@
-# 观察研究 Agent：多品种差异用例与回看研究
+# 观察研究Agent：基于既有特征形成可迭代用例
 
-当前专业方法是[多品种差异用例观察](professional/case_observation/README.md)，替换旧具体特征四项工作。运行机制继续复用，不另建调度或回交系统。
+本分支采用 [基于既有特征的两层观察方法](professional/case_observation/README.md)：从贴近转折点、线段及属性关系出发，发现现象和候选规律，利用它们提前判断后续品种走势、机会与反向风险，优先形成一个有业务价值的初始用例。
 
-**本分支为方法与运行接线准备；本次修改没有启动长程任务。** 新任务仍须真实 Owner GO、独立 run 身份和管理采用。旧运行资料只在旧分支及准确历史版本读取，不保留在本分支 `runs/`，不能据此推定新任务已授权。
+**当前仅完成新方法和运行接线准备，未启动任务，未宣称数据已到或图面已通过。** 正式运行仍须真实Owner GO、独立Run、实际输入和原机制下的管理采用。
 
-## 当前专业入口
+## 当前入口
 
-- [完整目标及两项具体产出](professional/case_observation/00_PURPOSE_AND_OUTPUTS.md)
-- [初步研究方法](professional/case_observation/01_RESEARCH_METHOD.md)
-- [Owner 阅读入口、统一平台图及调用记录](professional/case_observation/02_OWNER_DELIVERY.md)
-- [aidata 三接口及两种图数使用方式](professional/case_observation/03_AIDATA_USE.md)
-- [U2/U3 与旧知识的按需复用](professional/case_observation/04_SOURCES_AND_REUSE.md)
+| 需要理解什么 | 文件 |
+|---|---|
+| 完整目的、产出与完成边界 | [00 目标与产出](professional/case_observation/00_PURPOSE_AND_OUTPUTS.md) |
+| 当前先试的框架及尚未成立的前提 | [05 初版场景设想](professional/case_observation/05_INITIAL_SCENARIO.md) |
+| 怎样按时间观察、何时进入具体研究 | [01 两层观察方法](professional/case_observation/01_RESEARCH_METHOD.md) |
+| 实际特征、确认语义及图面使用 | [03 特征数据与视图](professional/case_observation/03_FEATURE_DATA_AND_VIEWS.md) |
+| 用例、观察材料和Owner交流 | [02 业务交付](professional/case_observation/02_OWNER_DELIVERY.md) |
+| 按问题取得原文与旧实物 | [04 来源复用](professional/case_observation/04_SOURCES_AND_REUSE.md) |
 
-当前一批为 3–5 个有明显好坏分化的多品种用例，每例完成位置发现与投资者视角的自主回看。数据必须经 aidata；Owner 从一个汇总文档和一个包含 1d 概览及各例大尺度图的平台链接查看。本批暂不深入用例间关系，不把特征实现与完整 U2/U3 验证变成前置。
+第一层只取得足以研究的背景和结构，不先做全历史分段；第二层实际形成、检验和修订后续品种判断。两层可往返，不是两个固定Gate。当前同向大尺度框架是优先尝试的选择，不是已证实规律或唯一研究路径。
 
-## 运行与版本
+方法与设想分开维护：00—04规定专业责任，05是启动设想；运行中采用的修订及其依据保存在本Run。首轮不再固定3—5例，不以完整历史中最终整齐、最终谁较好倒选候选；不以工具成功代替业务进展。
 
-- 操作仓：`daowei2026/cgpterm`，分支 `fy/observation-iteration-agent-longrun-20261015`。
-- 本专业及运行仓的新分支：`fy/multisymbol-case-observation-20261027`，从 `fy/bi01-feature-observation-prep-20261021@9badfa6f30caebbe3156c5e4ee4deb43d22cacb5` 建立。
-- [通用运行入口](runtime/README.md)、[本批启动准备](runtime/operations/CASE_OBSERVATION_RUN_GUIDE.md)、[采用状态](runtime/config/ADOPTION_STATUS.md)。
-- [运行记录入口](runs/README.md)：本分支只保存新任务运行资料，旧 FO-01 及更早记录到旧分支定向读取。旧专业正文以以上准确历史提交读取，不并列为当前规范。
+## 分支内容与历史
 
-后续实际启动分别锁定两仓真实完成提交、aidata 现场版本及本次任务来源；分支名、模板、代码检查或图数试验不代替授权。当前尚未有本批实际用例、平台链接或 aidata 现场验证结果。
+- 新分支：`fy/feature-based-case-observation`。
+- 基线：旧分支 `fy/multisymbol-case-observation-20261027` 的 `674c1be1820dfd5c0bfcb590fe934bf2b0dc328c`。原分支保持不变。
+- 新工作树替换专业正文；旧CO-01、旧案例/数据/日志、旧输入示例和讨论全集不复制为当前上下文，需要时从[历史入口](runs/README.md)定向读取。
+- `discuss-materials/`保留[两层观察说明](discuss-materials/初始用例设想与两层观察迭代说明.md)原文作为来历，不是第二套专业规范。
+- 通用runtime协议、工具、测试和必要兼容材料复用；本次只更新专业接线说明与配置，不改工具代码或消息协议。
+
+## 从准备到启动
+
+见 [运行指南](runtime/operations/CASE_OBSERVATION_RUN_GUIDE.md)、[采用状态](runtime/config/ADOPTION_STATUS.md)和[运行机制](runtime/README.md)。配置目前NOT_CONFIGURED，NEW_RUN_ID为占位符；尚未建立实际Run或有效派发。
+
+实际数据交付到达后，补入品种/范围、尺度配置、方向与确认语义、对象状态、图数入口和必要缺口；已有适用正式交付直接消费，不重复取数或全套环境预检。主控不代写业务场景，Worker结果回原签发Pro。方法修改不绑定或启动其他业务、设计或实现任务。

@@ -1,13 +1,20 @@
-# 专业方法入口
+# 专业入口：基于既有特征形成可迭代用例
 
-当前专业方法为[多品种差异用例观察与回看研究](case_observation/README.md)。它替换旧具体特征观察的四项工作，不与旧方法叠加执行。
+当前专业方法仍放在 [case_observation](case_observation/README.md)，但正文已替换为基于既有特征的两层观察方法，不再执行旧CO-01的事后选例与3—5例批次要求。
 
-- [完整目标与两项产出](case_observation/00_PURPOSE_AND_OUTPUTS.md)：稳定的研究意图、本批边界和完成含义。
-- [初步研究方法](case_observation/01_RESEARCH_METHOD.md)：怎样从多品种历史发现位置，再自主回看；方法可迭代。
-- [Owner 阅读交付](case_observation/02_OWNER_DELIVERY.md)：汇总入口、统一平台图、逐例正文、aidata 输入和调用记录。
-- [aidata 使用](case_observation/03_AIDATA_USE.md)：仍按既有三个接口理解，使用实际验证结果。
-- [来源与旧知识复用](case_observation/04_SOURCES_AND_REUSE.md)：区分本次 Owner 要求、业务参考、历史方法和现场验证。
+本轮优先取得一个有业务价值的初始用例：用贴近转折点、线段及其属性和关系发现现象与候选规律，并利用它们提前判断后续品种走势、机会与反向风险。第一层只寻找足以进入具体研究的背景和结构，不发展为独立的分段工程。
 
-[任务路由](TASK_ROUTER.md)只定位本次采用的方法，不另定义一套专业工作。[当前方法与运行边界](CURRENT_EXECUTION.md)不代替真实 Owner GO、任务、Binding 或管理接收。
+## 阅读入口
 
-旧方法、旧运行及其来源在准确 Git 历史中保留。旧运行仍按自己的 exact 版本理解，不能用当前新方法倒改旧结论。当前分支只保留一套现行专业正文。
+| 实际需要 | 入口 |
+|---|---|
+| 理解完整目的和产出 | [00 目标与产出](case_observation/00_PURPOSE_AND_OUTPUTS.md) |
+| 理解当前先试什么 | [05 初版场景设想](case_observation/05_INITIAL_SCENARIO.md) |
+| 实际开展两层观察 | [01 研究方法](case_observation/01_RESEARCH_METHOD.md) |
+| 使用特征、时间信息与图面 | [03 特征数据与视图](case_observation/03_FEATURE_DATA_AND_VIEWS.md) |
+| 组织业务成果和反馈 | [02 Owner交付](case_observation/02_OWNER_DELIVERY.md) |
+| 查具体原文和旧实物 | [04 来源复用](case_observation/04_SOURCES_AND_REUSE.md) |
+
+当前入口不记录现场进度；真实任务、输入和状态取实际Run及其Binding。[CURRENT_EXECUTION](CURRENT_EXECUTION.md)说明方法与运行边界，[TASK_ROUTER](TASK_ROUTER.md)说明按职责取源。
+
+本分支是新方法和接线准备，不是启动授权，不承接旧Run的已采用状态或未完工单。

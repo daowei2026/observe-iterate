@@ -1,45 +1,43 @@
-# 多品种用例研究：准备到实际运行
+# 基于既有特征的用例观察：新分支准备到实际运行
 
-本文件负责本批运行接线，不另定义专业方法，不是 Owner GO。完整业务要求见 [专业入口](../../professional/case_observation/README.md)。
+本文件只负责接线，不另定义专业方法，不是Owner GO。完整业务要求见 [专业入口](../../professional/case_observation/README.md)，当前框架见 [05](../../professional/case_observation/05_INITIAL_SCENARIO.md)。
 
-## 1. 仓库、环境与来源
+## 1. 新旧隔离与复用
 
-| 对象 | 本次位置/职责 |
-| --- | --- |
-| 操作仓 | `daowei2026/cgpterm@fy/observation-iteration-agent-longrun-20261015`，原分支修改 controller |
-| 专业及运行仓 | `daowei2026/observe-iterate@fy/multisymbol-case-observation-20261027`，本次新分支 |
-| aidata 工作区 | `/dwdhome/fy/BASE_E6_2`，不是代码写权或数据版本 |
-| 专业方法 | `professional/case_observation/`，以采用的 exact commit 为准 |
-| 当前派发配置 | `runtime/config/COORDINATOR_DISPATCH.json`，稳定 work_id 为 BI-01 |
+| 对象 | 本次采用方式 |
+|---|---|
+| 专业及运行仓 | `daowei2026/observe-iterate@fy/feature-based-case-observation`；启动时锁实际完成提交。 |
+| 操作仓 | 复用既有有权cgpterm环境及工具；此前入口分支为 `fy/observation-iteration-agent-longrun-20261015`，现场具体checkout与适用Skill以实际记录为准，不因换方法自动升级。 |
+| 专业模式 | 稳定work_id=BI-01、CASE_OBSERVATION；只换目标/方法来源，不增加两层阶段模式。 |
+| Run | 独立新身份，例如待授权采用的BI-01-CO-02；名称仅为建议，准备时不创建虚假实例或GO。 |
+| 数据、图与环境 | 消费届时正式交付，不默认旧品种/范围/路径/日历；现场路径不等于代码或服务写权限。 |
 
-正式启动分别锁定两仓实际完成提交、现场工具/数据版本。不能从分支名推导 GO，不能把旧 fixed ZIP 或旧 N 特征作为本批默认输入。无需因换专业方法重装通用手机、连接、恢复、计时和调度机制。
+新分支不保留旧CO-01运行目录，历史和准确来源见 [runs](../../runs/README.md)及[04](../../professional/case_observation/04_SOURCES_AND_REUSE.md)。不继承旧GO、任务、管理决定、预算、R序列、等待或未完图面责任，也不宣告旧Run已经完成/停止。
 
-## 2. 必要工具准备
+启动前核真实在途与同一设备/Worker的使用，不能通过换分支隐藏仍有效的旧动作。设备和工具能力可复用，实际角色/聊天、任务标记、输出根、scheduler root与Run身份按原机制区分。没有证据不默认复用旧收件人或重置其活动状态。
 
-消费 Codex 对两种 aidata 方式的真实验证：只有 1d 图和数据；1d 概览 + 选定窗口的 30min 大尺度图和数据。后者以行情和贴近转折为起点，Owner 查看需一个含全部图的平台页面。输入和调用说明见 [aidata 专业说明](../../professional/case_observation/03_AIDATA_USE.md)。
+## 2. 数据到齐时，只补必要输入事实
 
-已存在且适用的验证直接复用，不重复基础环境预检；只有源码推断的不算实测。图暂缺时可以保留可靠数据上的研究，整批平台交付仍如实标未完，不以独立 URL 清单或 PNG 替代。
+准备阶段可以完成新方法、来源和非活动配置，不填写真实研究成果。数据交付到达后，按 [03](../../professional/case_observation/03_FEATURE_DATA_AND_VIEWS.md)核品种/覆盖、尺度与对象、方向、实际/确认时间、当前部分、图数位置和必要缺口。把实际交付及语义写进本Run输入记录，已有正式生产记录直接引用。
 
-本次修改没有现场执行上述验证，也不授予工具仓/共享服务修改权限。确有缺口时由有权 Pro 按已知完整目标签具体技术工作，Worker 结果回原签发 Pro，不另建调度。
+确认当前方法能消费所需对象、关键时点可知范围可以正确说明、图面能支持本轮交流即可，不重复全套环境预检，不强制开发完整回放。补数/补图必须有具体业务理由及有权工单。旧I盘/旧页面故障按这次是否实际依赖判断，既不自动继承阻塞，也不假称恢复。
 
-## 3. 旧运行与新运行隔离
+## 3. 真实GO后的首次采用
 
-本分支的 `runs/` 只保存新任务资料，旧 `BI-01-FO-01/` 与历史索引已移除；需要时从[运行索引中的旧分支及准确版本](../../runs/README.md)定向读取。原采用配置、专业方法和旧运行在 `9badfa6f30caebbe3156c5e4ee4deb43d22cacb5` 可完整取得。本新分支的默认 Workmap 是非活动准备状态，不继承旧等待、预算、轮次、Owner GO 或接收。
+沿 [ADOPTION_HANDOFF_CHECKLIST](ADOPTION_HANDOFF_CHECKLIST.md)及既有M-START/BOOTSTRAP保存真实Owner授权、输入、完整目标和角色定位。由管理形成地图、当前任务、Binding及适用接收，使用 [通用模板](templates/)，不从旧Run复制已采用状态。
 
-本次不替 Owner 宣告旧 run 已停止或完成。启动前核真实在途；若仍有有效旧操作，按原授权处理，不能通过清状态或切分支掩盖。新 run 用独立目录、聊天定位、token/marker、scheduler root 与任务。稳定 BI-01 work_id 不表示同一实际 run。
+默认 `runtime/config/WORKMAP_BINDING.json` 目前NOT_CONFIGURED。将NEW_RUN_ID换为真实身份并填实际来源；原工具要求的任务、快照、Intake和校验真实完成后才可ADOPTED。method_paths包含README及00—05；本Run当前设想与输入使用准确引用，不把讨论说明当成第二套规范。
 
-## 4. 有了真实 GO 后的接线
+`bi01_run_gate.py`显式传真实 `--run-id`；非默认Binding同时传 `--binding`，与workmap_gate的snapshot/check/dispatch使用同一来源。保留原独立审查条件，不因新方法省略应有资格，也不额外把两层观察变成两个Reader前置。
 
-记录实际 Owner 启动原件及允许范围，确定真实 run_id，使用已有 M-START BOOTSTRAP。管理依据完整目标形成地图、任务、Binding 和适用接收；[通用模板](templates/)只提供结构，不预填业务完成或授权。
+主控只装配有权任务、发送收取和记录，不代写业务场景；专业者实际读承重方法与数据。GitHub全文与手机短指引、两份Return及去重继续沿既有合同。定向核实际读取本次专业checkout与有权操作Skill；不因分支创建重新安装所有依赖。
 
-按 [ADOPTION_HANDOFF_CHECKLIST.md](ADOPTION_HANDOFF_CHECKLIST.md) 采用真实结果；沿既有 `ROLE_RETURN`/`QUESTION_WORK_RETURN`、GitHub 全文与手机短指引交付。轮次/ZIP 合同仍在 [V2_ROUND_RECORD_CONTRACT.md](V2_ROUND_RECORD_CONTRACT.md)，文件名兼容旧引用，正文已不固定历史 run 或专业阶段。
+## 4. 持续工作与反馈
 
-所有 `runtime/tools/bi01_run_gate.py` 调用显式给 `--run-id`；使用非默认 Binding 时也给 `--binding`。`workmap_gate.py` 的 snapshot/check/dispatch 同样用该 Binding，不能一个检查新 run、另一个读旧全局配置。
+首轮一次覆盖当前框架的两层往返及一个用例的形成/修订。第一层取得够用背景和结构就进第二层，不先全历史分段，不每个内部动作请示或拆新轮次。第一层的方法完善不能取代品种判断的业务进展。
 
-cgpterm 的 `sync-chatgpt-project-skills.sh` 默认五个 Skill 不包括观察 controller；确认现场直接读取本次 checkout 或已定向同步该目录，记录真实版本。提交不等于安装、发送或业务成功。
+专业者可定向签Worker处理必要技术缺口，结果先回原签发Pro消费；无依赖工作可并行。Owner可随时看图交流，实际反馈按已有CHANGE/任务修订机制处理；无反馈时继续独立可做研究，不新增固定逐例批准阶段。
 
-## 5. 本批正常执行与结束边界
+管理复看关注对象、候选规律、当时判断与后续修订的实际增量；当前框架受阻带具体事实调整，不无限润色或自动扩成新分类/平台。首个初版达到授权目标后交真实接收，不因旧规则要求补足3—5例。不能形成用例时交实质发现、具体缺口及后继裁定，不伪称业务完成。
 
-完整任务一次覆盖 3–5 个用例，每例有位置和回看研究。方法由专业者自主选择，不把每个内部步骤拆成 R 或强制 Gate。没有依赖的工作可并行，实际接收义务依真实任务。
-
-管理最终将真实批次入口交 Owner 一次性查看，正常反馈通过已有 CHANGE/任务修订路径返回；不新增固定反馈阶段或逐例人工批准。交齐本批不授权无限新批次或正式特征开发，后继由真实安排确定。无法完成的内容保留实物和具体未完，不伪造完整接收。
+有权主体决定后续工作，提交或数据到齐不自动启动；不继承旧W04、四范围阴影或其他任务的义务。通用代码、回交协议和现场权限不因本次专业替换而扩大。
