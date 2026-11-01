@@ -1,0 +1,41 @@
+{
+  "schema": "workmap-binding/v2",
+  "status": "NOT_CONFIGURED",
+  "manager_role": "management",
+  "overview": {
+    "path": "runs/<NEW_RUN_ID>/README.md",
+    "anchors": ["common", "bi01"]
+  },
+  "shared_overview_anchors": ["common"],
+  "owner_sources": [
+    "runs/<NEW_RUN_ID>/OWNER_START.md",
+    "professional/case_observation/00_PURPOSE_AND_OUTPUTS.md"
+  ],
+  "rule_paths": [
+    "professional/case_observation/README.md",
+    "professional/case_observation/00_PURPOSE_AND_OUTPUTS.md",
+    "professional/case_observation/01_RESEARCH_METHOD.md",
+    "professional/case_observation/02_OWNER_DELIVERY.md",
+    "professional/case_observation/03_FEATURE_DATA_AND_VIEWS.md",
+    "professional/case_observation/04_SOURCES_AND_REUSE.md",
+    "professional/case_observation/05_INITIAL_SCENARIO.md",
+    "runtime/dual_route_execution/DR14_QUESTION_WORK_CONTRACT.md",
+    "runtime/overlay/08_自然语言运行提示_v0.3.md"
+  ],
+  "receipt_path": "runs/<NEW_RUN_ID>/reviews/WORKMAP_INTAKE_CURRENT.json",
+  "streams": {
+    "bi01": {
+      "map": {
+        "path": "runs/<NEW_RUN_ID>/00_长程推进地图.md",
+        "anchors": ["goal", "stage", "evidence", "progress", "remaining", "management", "next"]
+      },
+      "task": "runs/<NEW_RUN_ID>/01_当前任务.md",
+      "overview_anchors": ["bi01"],
+      "watch_roots": [
+        "runs/<NEW_RUN_ID>/artifacts",
+        "runs/<NEW_RUN_ID>/reviews/independent"
+      ]
+    }
+  },
+  "note": "PREPARATION ONLY. NEW_RUN_ID为显式占位符，不是可派发身份。真实Owner GO后由有权管理采用准确方法、05启动设想、本次输入及实际任务，填入独立Run并完成原机制的map/task/Intake/check后才可ADOPTED。运行内当前设想和修订保存在artifacts并纳入正常实质成果范围，不每次改写启动设想。不要复制旧CO-01的决定、角色聊天、在途、等待、预算或接收；provenance/turns不纳watch_roots。当前无真实派发、无完成证明、无扩大权限。"
+}

@@ -1,11 +1,5 @@
-# 当前专业方法与运行边界
+# 当前探索的管理接续
 
-当前方法：基于既有特征的初始用例观察，目录为 [case_observation](case_observation/README.md)。方法规定研究责任；[05](case_observation/05_INITIAL_SCENARIO.md)仅保存启动时优先尝试的框架与细节设想，不是已证实规律。
+Management Pro先理解[业务目标](exploration/00_BUSINESS_OBJECTIVE.md)、[既有特征](exploration/01_EXISTING_FEATURES_AND_CAPABILITIES.md)、[当前设想](exploration/02_CURRENT_WORKING_IDEAS.md)、[工具与数据说明](exploration/03_TOOLING_AND_DATA_USAGE.md)及当前具体工作，再结合Owner最新反馈和实际运行成果决定下一项专业委派。
 
-本分支当前为方法准备。没有实际Owner GO、数据交付及管理采用前，不创建有效Run、当前专业任务、派发、结果或接收。预计数据到齐的时间不等于数据已经可用。
-
-首轮优先形成一个业务用例，不是继续修C01—C04，也不以已实现特征的计算正确性验收替代业务观察。后续确需技术支持时由有权角色定向安排，工具通过不代替业务进展。
-
-运行后，当前设想、观察到的实际对象、用例及修订保存在本Run成果中。普通局部修订沿原授权执行；研究范围、必要输入或权限的实质变化由有权责任者处理，不由主控扩展。
-
-旧运行的成果、GO、任务、管理接收、在途、预算、等待和图面义务均留在旧分支，不转为新Run的事实。新分支建立不代表旧Run已完成或停止。历史入口见 [runs/README](../runs/README.md)。
+这是一项方法探索，不要求专业Pro机械重复同一套流程。每轮需明确本次具体业务问题、实际输入、工具需求、交付及未决事项；管理Pro负责跨轮整合，不把尚未验证的做法提升为固定规范。
