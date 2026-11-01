@@ -1,0 +1,39 @@
+
+import * 'uom/duration'
+import * 'haskit/RT'
+import * 'trade/frp'
+
+# python 端单参数运行调用脚本
+# 其需要把参数保存到一个json文件中
+# 示例: stack run ts -- --f=./frp/trade-poc/edh_modules/trade/frp/worker/one.edh --jp=/m3varB/AppData/mquant/task/frp/dev/TestTisFrp.2023-01-18-16-41-57.json
+
+# %% #
+start_time = console.now()
+
+# 获取命令行参数中的 json 文件路径
+json_path = getArgs(name = "jp")
+
+# 读取 json 文件
+jstr = readFile(name = json_path)
+
+# 解析 json
+params = dejson(jstr = jstr)
+
+# 通过参数构建任务
+task = FrpHistoryModel(**params["task_params"])
+target = params["target"]
+
+cal_type = if "cal_type" in params then params["cal_type"] else "Gen"
+
+# 运行任务
+console.print$ "开始优化 "++ task.name ++ " 参数: " ++ task.params
+task.run(target,cal_type=cal_type)
+
+time_cost = (console.now()-start_time)*1ns
+console.print$ 'time used: ' ++ time_cost.reduced.toFixed(2)
+
+import * 'batteries/root/debug'
+console.print$ 'NATIVE_OBJECT_CAPABILITY_BEGIN'
+printDir$ task.object
+printDir$ FrpUtil.getClass('ScaleTurnCalendar')
+console.print$ 'NATIVE_OBJECT_CAPABILITY_END'

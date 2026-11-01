@@ -1,0 +1,35 @@
+{
+  "replay_run_id": "BI01CO04_ASOF_REPLAY_20261101T203232Z_f4a75f64",
+  "qualification": "BLOCKED_NO_LOOKAHEAD_PROOF",
+  "checks": {
+    "monotone_input_audit": {
+      "status": "NOT_PROVEN_PER_EVENT",
+      "batch_bound": "PASS_RB_BIG_2160_ONLY"
+    },
+    "prefix_invariance_all_decision_state_changes": {
+      "status": "NOT_PROVEN_NO_PRIMARY_EVENT_LEDGER"
+    },
+    "future_tail_deletion": {
+      "status": "NOT_RUN_NO_PRIMARY_EVENT_LEDGER"
+    },
+    "future_tail_perturbation": {
+      "status": "NOT_RUN_NO_PRIMARY_EVENT_LEDGER"
+    },
+    "instrumentation_neutrality": {
+      "status": "PASS_FIXED_PREFIX_ONLY",
+      "scope": "rb/big 2160 bars 14 rows"
+    },
+    "formal_baseline_numeric_equality": {
+      "status": "PASS_FROZEN_PREFIX_COMPARISON",
+      "rows_compared": 620,
+      "explicit_outside_prefix": 1
+    },
+    "operational_known_time": {
+      "status": "BLOCKED_NATIVE_EVENT_OBSERVATION_ABI_UNAVAILABLE"
+    }
+  },
+  "production_no_lookahead_pass_claim": false,
+  "future_leak_observed": null,
+  "known_time_assigned_objects": 0,
+  "evaluation_tail_consumed": false
+}

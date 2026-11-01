@@ -1,0 +1,23 @@
+{##
+ # Resemble Numpy vectorized operations, with folding operations
+ #}
+
+import * 'dim/primitive/ops'
+
+
+export {
+
+  method sum( col ) fold( add, col )
+  method nansum( col ) fold( add'valid, col )
+
+  method cumsum( col ) scanl( add, 0, col )
+  method nancumsum( col ) scanl( add'valid, 0, col )
+
+
+  method prod( col ) fold( multiply, col )
+  method nanprod( col ) fold( multiply'valid, col )
+
+  method cumprod( col ) scanl( multiply, 1, col )
+  method nancumprod( col ) scanl( multiply'valid, 1, col )
+
+}

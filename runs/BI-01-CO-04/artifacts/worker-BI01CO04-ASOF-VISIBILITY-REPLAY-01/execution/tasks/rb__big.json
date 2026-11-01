@@ -1,0 +1,27 @@
+{
+  "cal_type": "Gen",
+  "target": {
+    "__tag__": "CalendarTarget",
+    "calendar": "@",
+    "target": {
+      "__tag__": "Symbol",
+      "sym": "rb"
+    }
+  },
+  "task_params": {
+    "app": {
+      "app_dir": "/dwdhome/fy/observe-iterate-bi01-co-04-worker-recovery-01/runs/BI-01-CO-04/artifacts/worker-BI01CO04-ASOF-VISIBILITY-REPLAY-01/execution/app",
+      "enable_extra": 1,
+      "env_name": "prod"
+    },
+    "name": "ScaleTurnCalendar",
+    "params": "{\"__on_date_range__\":true,\"__tag__\":\"ScaleTurnCalendar\",\"__tar_type__\":{\"__tag__\":\"CalendarTarType\",\"contents\":{\"__tag__\":\"SymbolType\"}},\"falter\":{\"__on_date_range__\":true,\"__tag__\":\"RctZigWithStatus\",\"__tar_type__\":{\"__tag__\":\"CalendarTarType\",\"contents\":{\"__tag__\":\"SymbolType\"}},\"zig\":{\"__on_date_range__\":true,\"__tag__\":\"ZigZag\",\"__tar_type__\":{\"__tag__\":\"CalendarTarType\",\"contents\":{\"__tag__\":\"SymbolType\"}},\"featIn\":{\"__tag__\":\"Rable\",\"args\":[\"closeUti as uti\",\"close as value\"],\"tar\":{\"__on_date_range__\":true,\"__tag__\":\"KLine\",\"__tar_type__\":{\"__tag__\":\"CalendarTarType\",\"contents\":{\"__tag__\":\"SymbolType\"}},\"freq\":\"30m\"}},\"retracePct\":0.5}},\"fcheck\":{\"__on_date_range__\":true,\"__tag__\":\"RctZigWithStatus\",\"__tar_type__\":{\"__tag__\":\"CalendarTarType\",\"contents\":{\"__tag__\":\"SymbolType\"}},\"zig\":{\"__on_date_range__\":true,\"__tag__\":\"ZigZag\",\"__tar_type__\":{\"__tag__\":\"CalendarTarType\",\"contents\":{\"__tag__\":\"SymbolType\"}},\"featIn\":{\"__tag__\":\"Rable\",\"args\":[\"closeUti as uti\",\"close as value\"],\"tar\":{\"__on_date_range__\":true,\"__tag__\":\"KLine\",\"__tar_type__\":{\"__tag__\":\"CalendarTarType\",\"contents\":{\"__tag__\":\"SymbolType\"}},\"freq\":\"30m\"}},\"retracePct\":0.5}},\"fisSystem\":{\"__on_date_range__\":true,\"__tag__\":\"T1FisSystem\",\"__tar_type__\":{\"__tag__\":\"FuncTarType\"},\"config\":{\"__on_date_range__\":true,\"__tag__\":\"T1FisSystemConfig\",\"__tar_type__\":{\"__tag__\":\"FuncTarType\"},\"aggMethod1\":\"max\",\"andMethod1\":\"min\",\"defuzzMethod1\":\"centroid\",\"impMethod1\":\"min\",\"orMethod1\":\"max\",\"type1\":\"mamdani\",\"version1\":\"2.0\"},\"inputs\":{\"__tag__\":\"GMap\",\"adistance\":{\"__on_date_range__\":true,\"__tag__\":\"OneUseGaussmfInOrOutPut\",\"__tar_type__\":{\"__tag__\":\"FuncTarType\"},\"mfValueFunc\":{\"__on_date_range__\":true,\"__tag__\":\"GaussMFs\",\"__tar_type__\":{\"__tag__\":\"FuncTarType\"},\"overlap\":0.2},\"mf_name\":[\"S\",\"M\",\"L\"],\"range\":[0,10]}},\"name\":\"T1FIS\",\"outputs\":{\"__tag__\":\"GMap\",\"closegain\":{\"__on_date_range__\":true,\"__tag__\":\"OneUseGaussmfInOrOutPut\",\"__tar_type__\":{\"__tag__\":\"FuncTarType\"},\"mfValueFunc\":{\"__on_date_range__\":true,\"__tag__\":\"GaussMFs\",\"__tar_type__\":{\"__tag__\":\"FuncTarType\"},\"overlap\":0.2},\"mf_name\":[\"S\",\"M\",\"L\"],\"range\":[0,1]}},\"rules\":{\"__on_date_range__\":true,\"__tag__\":\"OneSetRules\",\"__tar_type__\":{\"__tag__\":\"FuncTarType\"},\"rules\":{\"__tag__\":\"GMap\",\"f0\":{\"__on_date_range__\":true,\"__tag__\":\"IfAll\",\"__tar_type__\":{\"__tag__\":\"FuncTarType\"},\"inputs\":{\"adistance\":\"L\"},\"outputs\":{\"closegain\":\"L\"},\"weight\":1},\"f1\":{\"__on_date_range__\":true,\"__tag__\":\"IfAll\",\"__tar_type__\":{\"__tag__\":\"FuncTarType\"},\"inputs\":{\"adistance\":\"M\"},\"outputs\":{\"closegain\":\"M\"},\"weight\":1},\"f2\":{\"__on_date_range__\":true,\"__tag__\":\"IfAll\",\"__tar_type__\":{\"__tag__\":\"FuncTarType\"},\"inputs\":{\"adistance\":\"S\"},\"outputs\":{\"closegain\":\"S\"},\"weight\":1}}}},\"specTerm\":\"L\",\"stCloseGainController\":{\"__on_date_range__\":true,\"__tag__\":\"BscCloseGainController\",\"__tar_type__\":{\"__tag__\":\"FuncTarType\"},\"cgcCombine\":{\"__on_date_range__\":true,\"__tag__\":\"InputCombineIfClose\",\"__tar_type__\":{\"__tag__\":\"FuncTarType\"},\"icicLine\":0},\"cgcInputs\":{\"__tag__\":\"GMap\",\"f0\":{\"__on_date_range__\":true,\"__tag__\":\"AdjCloseVerticalDistanceInput\",\"__tar_type__\":{\"__tag__\":\"FuncTarType\"},\"acvdDisTimes\":100,\"acvdLabel\":\"adistance\",\"acvdXStepTimes\":0.1}}},\"stMembershipLine\":0.3,\"stRnd2ChooseTurn\":{\"__on_date_range__\":true,\"__tag__\":\"ChooseMaxExtraPoint\",\"__tar_type__\":{\"__tag__\":\"FuncTarType\"},\"cmepOccupy\":0}}",
+    "sof": {
+      "endDay": null,
+      "full_period": null,
+      "sof_name": "GTQH_L1_20210104_20240208",
+      "startDay": null,
+      "stk_tlist": "gtqh_four"
+    }
+  }
+}

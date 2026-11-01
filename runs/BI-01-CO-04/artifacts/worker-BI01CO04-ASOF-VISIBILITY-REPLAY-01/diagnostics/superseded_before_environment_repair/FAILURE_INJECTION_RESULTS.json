@@ -1,0 +1,64 @@
+{
+  "replay_run_id": "BI01CO04_ASOF_REPLAY_20261101T203232Z_f4a75f64",
+  "structural_tests": {
+    "scope": "STRUCTURAL_VALIDATOR_FIXTURES_ONLY_NOT_PRODUCTION_REPLAY_TESTS",
+    "positive_fixture_passed": true,
+    "cases": [
+      {
+        "case": "未来数据泄漏探针",
+        "expected_rejection": "FUTURE_INPUT_LEAK",
+        "fixture_only": true,
+        "rejected": true,
+        "observed_rejection": "FUTURE_INPUT_LEAK",
+        "passed": true
+      },
+      {
+        "case": "时间轴错配/消灭alternate",
+        "expected_rejection": "TIME_AXIS_MISMATCH",
+        "fixture_only": true,
+        "rejected": true,
+        "observed_rejection": "TIME_AXIS_MISMATCH",
+        "passed": true
+      },
+      {
+        "case": "撤回重现非法连接",
+        "expected_rejection": "REAPPEAR_WITHOUT_WITHDRAWAL",
+        "fixture_only": true,
+        "rejected": true,
+        "observed_rejection": "REAPPEAR_WITHOUT_WITHDRAWAL",
+        "passed": true
+      },
+      {
+        "case": "缺方向伪称已核",
+        "expected_rejection": "MISSING_DIRECTION_MISREPRESENTED",
+        "fixture_only": true,
+        "rejected": true,
+        "observed_rejection": "MISSING_DIRECTION_MISREPRESENTED",
+        "passed": true
+      },
+      {
+        "case": "空事件伪称状态",
+        "expected_rejection": "EMPTY_EVENT_WITH_STATE",
+        "fixture_only": true,
+        "rejected": true,
+        "observed_rejection": "EMPTY_EVENT_WITH_STATE",
+        "passed": true
+      },
+      {
+        "case": "乱序或重复输入",
+        "expected_rejection": "OUT_OF_ORDER",
+        "fixture_only": true,
+        "rejected": true,
+        "observed_rejection": "OUT_OF_ORDER",
+        "passed": true
+      }
+    ],
+    "all_expected_rejections_passed": true
+  },
+  "scope": "生产引擎测试未通过；以下仅是独立validator的确定性正/负fixture检查",
+  "real_package_false_qualification_injection": {
+    "expected_rejection": "QUALIFIED_WITHOUT_OBSERVED_LEDGER",
+    "execution": "independent_validator.py validate_package() 每次实测",
+    "not_a_production_test": true
+  }
+}

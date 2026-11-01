@@ -1,0 +1,22 @@
+
+export {
+
+  # conventional Nedh channel for error reporting
+  errChan := 'err'
+
+  # conventional Nedh channel for data exchange
+  dataChan := 'data'
+
+  # effectful identifier of the peer object
+  symbol @netPeer
+
+  # effectful identifier of the method procedure for normal command sending
+  symbol @sendCmd
+
+  # effectful identifier of the method procedure for normal data sending
+  symbol @sendData
+
+  # effectful identifier of the method procedure to disconnect the connection
+  symbol @disconnectPeer
+
+}

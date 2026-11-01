@@ -1,0 +1,41 @@
+
+import * 'trade/frp/lib3'
+
+mquant'scope = scope()
+
+export method evalStr(code){
+  if(type(code) == 'String'){
+    return mquant'scope.eval(parseEdh(code))
+  }
+  return code
+}
+
+export method evalDtype(code){
+  if(type(code) == 'String'){
+    if(code == 'i1'){
+      return byte
+    }
+    return evalStr(code)
+  }
+  return code
+}
+
+export class FrpUtil{
+  {##
+   # 通过特征类名获取特征类
+   #}
+  method getClass(cls_name){
+    return evalStr(cls_name)
+  }
+
+  {## 获取目标对象 #}
+  method getObject(cls_name,params:'str|dict'){
+    tcls = FrpUtil.getClass(cls_name)
+
+    if(type(params) == 'String'){
+      return tcls(params)
+    }
+
+    return tcls(json(params)) # to json
+  }
+}

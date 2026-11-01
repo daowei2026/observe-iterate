@@ -1,0 +1,39 @@
+
+import * 'trade/frp/lib3'
+import * 'trade/frp/frame'
+
+
+{##
+ # 对应 python mquant 中的 AlgoScoreResult
+ #}
+export class AlgoScoreResult{
+  method __init__(stat:dict = None) {
+    this.stat = stat
+  }
+
+  method __json__() {
+    'stat': this.stat,
+  }
+}
+
+
+{##
+ # 对应 python mquant 中的 OneJobResult
+ #}
+export class OneJobResult{
+  method __init__(res:dict,cost:dict = None,score:AlgoScoreResult = None) {
+    this.res = res
+    this.cost = cost
+    this.score = score
+  }
+
+  method success(cost = None,score = None){
+    return OneJobResult(res = dict(status = 1),cost = cost,score = score)
+  }
+
+  method __json__() {
+    'res': this.res,
+    'cost': this.cost,
+    'score': this.score,
+  }
+}

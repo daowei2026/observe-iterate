@@ -1,0 +1,98 @@
+{##
+
+http://tools.ietf.org/html/rfc3986
+
+  foo://example.com:8042/over/there?name=ferret#nose
+  \_/   \______________/\_________/ \_________/ \__/
+   |           |            |            |        |
+scheme     authority       path        query   fragment
+   |   _____________________|__
+  / \ /                        \
+  urn:example:animal:ferret:nose
+
+ #}
+
+# a language server will follow this import to find meta artifacts,
+# while an interpreter will import nothing from the meta host module
+import * 'batteries/meta'
+
+
+{##
+ # A pattern eanbled data class for URI
+
+```edh
+ # %%
+case 'https://code.visualstudio.com/docs/extensions/overview#frag'
+of { URI( scheme, authority, path, query, fragment ) } -> {
+  assert$ scheme is 'https'
+  assert$ authority is 'code.visualstudio.com'
+  assert$ path is '/docs/extensions/overview'
+  assert$ query is ''
+  assert$ fragment is 'frag'
+  uri = URI( scheme, authority, path, query, fragment )
+  assert$ str( uri ) is 'https://code.visualstudio.com/docs/extensions/overview#frag'
+  console.print$ repr$ uri
+  console.print$ str$ uri
+}
+ # %#
+```
+ #}
+export data URI(
+  scheme= 'file',
+  authority= '',
+  path= '',
+  query= '',
+  fragment= '',
+) {
+
+  {##
+   # Convert the URI object to string form
+   #}
+  method __str__() {
+    uri = this.scheme ++ '://' ++ this.authority ++ this.path
+    if this.query then uri += ( '?' ++ this.query )
+    if this.fragment then uri += ( '#' ++ this.fragment )
+    return uri
+  }
+
+  {##
+   # Match a string as URI object
+   #
+   # TODO write some Haskell code to help decodeURI
+   # https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/decodeURI
+   #}
+  method __match__( s ) {
+    # init default values of fields
+    scheme= 'file'
+    authority= ''
+    path= ''
+    query= ''
+    fragment= ''
+    # parse fields
+    case s of {
+      { schema @< '://' >@ rest } -> {
+        case rest of { rest @< '#' >@ fragment } -> pass
+        case rest of { rest @< '?' >@ query } -> pass
+        case rest of {
+          { authority @< '/' >@ path } -> {
+            path = '/' ++ path
+          }
+          _ -> authority = rest
+        }
+        return URI( schema, authority, path, query, fragment )
+      }
+    }
+    return nil
+  }
+
+  {##
+   # Meant to be called *statically* as @URI.parse(xxx)@
+   #
+   # Note this method throws for failure of conversion
+   #}
+  method parse ( v ) case v|str of {
+    { URI() as uri } -> uri
+    error( 'bad URI: ' ++ desc( v ) )
+  }
+
+}

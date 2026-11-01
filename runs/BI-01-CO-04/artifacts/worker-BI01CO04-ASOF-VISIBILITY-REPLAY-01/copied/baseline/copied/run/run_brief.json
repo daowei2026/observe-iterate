@@ -1,0 +1,327 @@
+{
+  "aidata_workspace": "",
+  "anchor_registry": [
+    {
+      "anchor_name": "GTQH 30m正式行情_closeUti",
+      "df_key_normalized": "__default__",
+      "dffilter_id": "identity",
+      "evidence_role": "market_context_sidecar",
+      "evidence_roles": [
+        "market_context_sidecar"
+      ],
+      "feature_identity_hash": "452f14b721601beaad009ad850beea6d5d81b2a7",
+      "feature_key": "gtqh_kline_30m",
+      "feature_params_hash": "ff0b6220020b36879293a31c879f887088d25200",
+      "feature_ppid": "KLine_273ae3a17c71b574ce50c5106870d7348e2436da",
+      "feature_repr": "KLine({'freq': '30m'})",
+      "hash_method": "repr_sha1_v0",
+      "is_raw_market_data": true,
+      "locator_roles": [],
+      "plot_binding": {},
+      "selection_feature_id": "",
+      "selection_variant_id": "",
+      "slice_levels": [
+        "big"
+      ],
+      "target_id": "",
+      "target_type": "symbol",
+      "time_binding": {
+        "interval_policy": "point_inside",
+        "time_mode": "uti_point",
+        "uti1_field": "closeUti",
+        "uti2_field": null,
+        "uti_fields": [
+          "closeUti"
+        ]
+      },
+      "view_id": "__default__"
+    },
+    {
+      "anchor_name": "small（S） 原E暂存验证结果__csv_x",
+      "df_key_normalized": "__default__",
+      "dffilter_id": "identity",
+      "evidence_role": "internal_structure",
+      "evidence_roles": [
+        "internal_structure"
+      ],
+      "feature_identity_hash": "21700b149b33c4d2bb59e5ddfa38298b404157c7",
+      "feature_key": "gtqh_E_small",
+      "feature_params_hash": "7ba82ac7449c0e7f8a95dfa89cbe5f03ff7c303d",
+      "feature_ppid": "ReadOnlyCsvFeature_de537446d739244b3a273d29a3a4d409c85895ba",
+      "feature_repr": "ReadOnlyCsvFeature({'alias': 'GTQH_30m_original_E_small', 'path': '/dwdhome/fy/BASE_E6_2/mquant/aidata/test_runs/fy_owner_1d_30m_20261027/storage_migration_20261101/three_turn_plot/small_original_E.csv', 'member': '', 'sha256': '6be222f3d5f21eba95b98a9c0281969f847810e47f531585e0cccd2c6c7df1a6', 'symbol_field': 'symbol', 'index_field': 'event_ts', 'equals': {}, 'numeric_columns': {'_csv_y': 'y', '_csv_yConfirm': 'yConfirm'}, 'integer_columns': {'_csv_x': 'x', '_csv_xConfirm': 'xConfirm'}, 'display_config_json': ''})",
+      "hash_method": "repr_sha1_v0",
+      "is_raw_market_data": false,
+      "locator_roles": [],
+      "plot_binding": {
+        "group": "evidence",
+        "hover_fields": [],
+        "kind": "point",
+        "label": "small（S）",
+        "style": {
+          "marker": "circle",
+          "size": 8
+        },
+        "surfaces": [
+          "big"
+        ],
+        "visible": {
+          "big": true,
+          "mid": true,
+          "overview": true,
+          "small": true,
+          "tick": true
+        },
+        "x_field": "_csv_x",
+        "y_field": "_csv_y"
+      },
+      "selection_feature_id": "",
+      "selection_variant_id": "",
+      "slice_levels": [
+        "big"
+      ],
+      "target_id": "",
+      "target_type": "symbol",
+      "time_binding": {
+        "interval_policy": "point_inside",
+        "time_mode": "uti_point",
+        "uti1_field": "_csv_x",
+        "uti2_field": null,
+        "uti_fields": [
+          "_csv_x"
+        ]
+      },
+      "view_id": "__default__"
+    },
+    {
+      "anchor_name": "mid（M） 原E暂存验证结果__csv_x",
+      "df_key_normalized": "__default__",
+      "dffilter_id": "identity",
+      "evidence_role": "internal_structure",
+      "evidence_roles": [
+        "internal_structure"
+      ],
+      "feature_identity_hash": "e32b97b43a8f09b576853ecd5cde16aa23b61470",
+      "feature_key": "gtqh_E_mid",
+      "feature_params_hash": "2276420827c7c3f82751053f10e95666b2cbe988",
+      "feature_ppid": "ReadOnlyCsvFeature_7c902362055515b1b50058580d932c5b4ef1139d",
+      "feature_repr": "ReadOnlyCsvFeature({'alias': 'GTQH_30m_original_E_mid', 'path': '/dwdhome/fy/BASE_E6_2/mquant/aidata/test_runs/fy_owner_1d_30m_20261027/storage_migration_20261101/three_turn_plot/mid_original_E.csv', 'member': '', 'sha256': '1bada33f45aa6edcf13864b05da89f89dbad910382b52c99ad29a08f76eeacab', 'symbol_field': 'symbol', 'index_field': 'event_ts', 'equals': {}, 'numeric_columns': {'_csv_y': 'y', '_csv_yConfirm': 'yConfirm'}, 'integer_columns': {'_csv_x': 'x', '_csv_xConfirm': 'xConfirm'}, 'display_config_json': ''})",
+      "hash_method": "repr_sha1_v0",
+      "is_raw_market_data": false,
+      "locator_roles": [],
+      "plot_binding": {
+        "group": "evidence",
+        "hover_fields": [],
+        "kind": "point",
+        "label": "mid（M）",
+        "style": {
+          "marker": "diamond",
+          "size": 12
+        },
+        "surfaces": [
+          "big"
+        ],
+        "visible": {
+          "big": true,
+          "mid": true,
+          "overview": true,
+          "small": true,
+          "tick": true
+        },
+        "x_field": "_csv_x",
+        "y_field": "_csv_y"
+      },
+      "selection_feature_id": "",
+      "selection_variant_id": "",
+      "slice_levels": [
+        "big"
+      ],
+      "target_id": "",
+      "target_type": "symbol",
+      "time_binding": {
+        "interval_policy": "point_inside",
+        "time_mode": "uti_point",
+        "uti1_field": "_csv_x",
+        "uti2_field": null,
+        "uti_fields": [
+          "_csv_x"
+        ]
+      },
+      "view_id": "__default__"
+    },
+    {
+      "anchor_name": "big（L，large） 原E暂存验证结果__csv_x",
+      "df_key_normalized": "__default__",
+      "dffilter_id": "identity",
+      "evidence_role": "internal_structure",
+      "evidence_roles": [
+        "internal_structure"
+      ],
+      "feature_identity_hash": "ad64859fb059ad8138f397e38bfe32b60a729874",
+      "feature_key": "gtqh_E_big",
+      "feature_params_hash": "7f9963b921757b6692dcdcf0aab25ccd48eb7259",
+      "feature_ppid": "ReadOnlyCsvFeature_fa5d79f20aa558907c8ba9f08f158422e3448524",
+      "feature_repr": "ReadOnlyCsvFeature({'alias': 'GTQH_30m_original_E_big', 'path': '/dwdhome/fy/BASE_E6_2/mquant/aidata/test_runs/fy_owner_1d_30m_20261027/storage_migration_20261101/three_turn_plot/big_original_E.csv', 'member': '', 'sha256': 'd18b358c362072b55b9e0a14c3a45e07db9c4aae9df71af77109a45d26c7a296', 'symbol_field': 'symbol', 'index_field': 'event_ts', 'equals': {}, 'numeric_columns': {'_csv_y': 'y', '_csv_yConfirm': 'yConfirm'}, 'integer_columns': {'_csv_x': 'x', '_csv_xConfirm': 'xConfirm'}, 'display_config_json': ''})",
+      "hash_method": "repr_sha1_v0",
+      "is_raw_market_data": false,
+      "locator_roles": [],
+      "plot_binding": {
+        "group": "evidence",
+        "hover_fields": [],
+        "kind": "point",
+        "label": "big（L，large）",
+        "style": {
+          "marker": "triangle",
+          "size": 17
+        },
+        "surfaces": [
+          "big"
+        ],
+        "visible": {
+          "big": true,
+          "mid": true,
+          "overview": true,
+          "small": true,
+          "tick": true
+        },
+        "x_field": "_csv_x",
+        "y_field": "_csv_y"
+      },
+      "selection_feature_id": "",
+      "selection_variant_id": "",
+      "slice_levels": [
+        "big"
+      ],
+      "target_id": "",
+      "target_type": "symbol",
+      "time_binding": {
+        "interval_policy": "point_inside",
+        "time_mode": "uti_point",
+        "uti1_field": "_csv_x",
+        "uti2_field": null,
+        "uti_fields": [
+          "_csv_x"
+        ]
+      },
+      "view_id": "__default__"
+    }
+  ],
+  "blk": "blk@steel",
+  "calendar_name": "@",
+  "calendar_source": "override",
+  "chart_family": "explicit_timespan_caegraph_v0",
+  "context_ref": {
+    "end_day": null,
+    "sof_name": "GTQH_L1_20210104_20240208",
+    "start_day": null,
+    "stk_tlist": "gtqh_four"
+  },
+  "effective_data_end": "",
+  "effective_data_range_policy": "",
+  "effective_data_start": "",
+  "extract_time_syms": "blk@steel",
+  "feature_registry": [
+    {
+      "df_keys_normalized": [
+        "__default__"
+      ],
+      "evidence_role": "market_context_sidecar",
+      "feature_identity_hash": "452f14b721601beaad009ad850beea6d5d81b2a7",
+      "feature_key": "gtqh_kline_30m",
+      "feature_params_hash": "ff0b6220020b36879293a31c879f887088d25200",
+      "feature_ppid": "KLine_273ae3a17c71b574ce50c5106870d7348e2436da",
+      "feature_repr": "KLine({'freq': '30m'})",
+      "hash_method": "repr_sha1_v0",
+      "is_raw_market_data": true,
+      "slice_levels": [
+        "big"
+      ],
+      "target_id": "",
+      "target_type": "symbol"
+    },
+    {
+      "df_keys_normalized": [
+        "__default__"
+      ],
+      "evidence_role": "internal_structure",
+      "feature_identity_hash": "21700b149b33c4d2bb59e5ddfa38298b404157c7",
+      "feature_key": "gtqh_E_small",
+      "feature_params_hash": "7ba82ac7449c0e7f8a95dfa89cbe5f03ff7c303d",
+      "feature_ppid": "ReadOnlyCsvFeature_de537446d739244b3a273d29a3a4d409c85895ba",
+      "feature_repr": "ReadOnlyCsvFeature({'alias': 'GTQH_30m_original_E_small', 'path': '/dwdhome/fy/BASE_E6_2/mquant/aidata/test_runs/fy_owner_1d_30m_20261027/storage_migration_20261101/three_turn_plot/small_original_E.csv', 'member': '', 'sha256': '6be222f3d5f21eba95b98a9c0281969f847810e47f531585e0cccd2c6c7df1a6', 'symbol_field': 'symbol', 'index_field': 'event_ts', 'equals': {}, 'numeric_columns': {'_csv_y': 'y', '_csv_yConfirm': 'yConfirm'}, 'integer_columns': {'_csv_x': 'x', '_csv_xConfirm': 'xConfirm'}, 'display_config_json': ''})",
+      "hash_method": "repr_sha1_v0",
+      "is_raw_market_data": false,
+      "slice_levels": [
+        "big"
+      ],
+      "target_id": "",
+      "target_type": "symbol"
+    },
+    {
+      "df_keys_normalized": [
+        "__default__"
+      ],
+      "evidence_role": "internal_structure",
+      "feature_identity_hash": "e32b97b43a8f09b576853ecd5cde16aa23b61470",
+      "feature_key": "gtqh_E_mid",
+      "feature_params_hash": "2276420827c7c3f82751053f10e95666b2cbe988",
+      "feature_ppid": "ReadOnlyCsvFeature_7c902362055515b1b50058580d932c5b4ef1139d",
+      "feature_repr": "ReadOnlyCsvFeature({'alias': 'GTQH_30m_original_E_mid', 'path': '/dwdhome/fy/BASE_E6_2/mquant/aidata/test_runs/fy_owner_1d_30m_20261027/storage_migration_20261101/three_turn_plot/mid_original_E.csv', 'member': '', 'sha256': '1bada33f45aa6edcf13864b05da89f89dbad910382b52c99ad29a08f76eeacab', 'symbol_field': 'symbol', 'index_field': 'event_ts', 'equals': {}, 'numeric_columns': {'_csv_y': 'y', '_csv_yConfirm': 'yConfirm'}, 'integer_columns': {'_csv_x': 'x', '_csv_xConfirm': 'xConfirm'}, 'display_config_json': ''})",
+      "hash_method": "repr_sha1_v0",
+      "is_raw_market_data": false,
+      "slice_levels": [
+        "big"
+      ],
+      "target_id": "",
+      "target_type": "symbol"
+    },
+    {
+      "df_keys_normalized": [
+        "__default__"
+      ],
+      "evidence_role": "internal_structure",
+      "feature_identity_hash": "ad64859fb059ad8138f397e38bfe32b60a729874",
+      "feature_key": "gtqh_E_big",
+      "feature_params_hash": "7f9963b921757b6692dcdcf0aab25ccd48eb7259",
+      "feature_ppid": "ReadOnlyCsvFeature_fa5d79f20aa558907c8ba9f08f158422e3448524",
+      "feature_repr": "ReadOnlyCsvFeature({'alias': 'GTQH_30m_original_E_big', 'path': '/dwdhome/fy/BASE_E6_2/mquant/aidata/test_runs/fy_owner_1d_30m_20261027/storage_migration_20261101/three_turn_plot/big_original_E.csv', 'member': '', 'sha256': 'd18b358c362072b55b9e0a14c3a45e07db9c4aae9df71af77109a45d26c7a296', 'symbol_field': 'symbol', 'index_field': 'event_ts', 'equals': {}, 'numeric_columns': {'_csv_y': 'y', '_csv_yConfirm': 'yConfirm'}, 'integer_columns': {'_csv_x': 'x', '_csv_xConfirm': 'xConfirm'}, 'display_config_json': ''})",
+      "hash_method": "repr_sha1_v0",
+      "is_raw_market_data": false,
+      "slice_levels": [
+        "big"
+      ],
+      "target_id": "",
+      "target_type": "symbol"
+    }
+  ],
+  "generation_depth": "big",
+  "limits": {},
+  "management_period": {},
+  "member_symbols": [
+    "rb",
+    "hc",
+    "i"
+  ],
+  "profile_global_end": "",
+  "profile_global_start": "",
+  "profile_id": "",
+  "profile_version": 0,
+  "registry_fingerprint": "",
+  "resolved_profile_fingerprint": "",
+  "run_brief_path": "/dwdhome/fy/BASE_E6_2/mquant/aidata/test_runs/fy_owner_1d_30m_20261027/storage_migration_20261101/three_turn_plot/GTQH_C001_three_turns_20261101_162005/run_brief.json",
+  "run_id": "GTQH_C001_three_turns_20261101_162005",
+  "run_kind": "board_full",
+  "run_note": "GTQH自身日历，原E small/mid/large暂存结果；large标为big；只生成一个30m图",
+  "search_end": "2021-09-30 00:00:00",
+  "search_start": "2021-08-15 00:00:00",
+  "search_timespans": [
+    {
+      "end": "2021-09-30",
+      "label": "TEST-C001",
+      "start": "2021-08-15"
+    }
+  ],
+  "selection_end": "",
+  "selection_start": "",
+  "source_chart_run_id": "",
+  "timespan_extraction": {}
+}

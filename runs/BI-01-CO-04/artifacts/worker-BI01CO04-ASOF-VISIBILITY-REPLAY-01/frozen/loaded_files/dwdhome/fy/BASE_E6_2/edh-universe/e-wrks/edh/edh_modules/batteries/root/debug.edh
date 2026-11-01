@@ -1,0 +1,274 @@
+
+# a language server will follow this import to find meta artifacts,
+# while an interpreter will import nothing from the meta host module
+import * 'batteries/meta'
+
+import * './cmd'
+import * './str'
+
+export {
+
+  if console.logLevel > console.debug then {
+
+    # not debugging
+    debug = false
+    interpreter assert( assertion, msg= None, ***details ) pass
+
+  } else {
+
+    {##
+     # World-wide indicator whether the world is under debugging.
+     #
+     # This is controlled by the world's logging level, which in turn is
+     # controlled by os environment variable `EDH_LOG_LEVEL`.
+     #
+     # The idiom like below would come handy:
+   ```edh
+debug and replHere() or console.warn<| 'An unusual case needs inspection here.'
+   ```
+     #}
+    debug = true
+
+    {##
+     # Calling `assert()` is nop when not debugging, or it'll err out unless
+     # `assertion` is true.
+     #
+     # Failure message and details can optionally be supplied as arguments.
+     #
+     # The advantage of being an interpreter procedure here, is no eval of rest
+     # exprs as long as the assertion stands.
+     #}
+    interpreter assert( callerScope: scope,
+      assertion, msg= None, ***details
+    ) {
+      case callerScope.eval( assertion ) of {
+        true -> return nil # as it should be
+        # other values are unexpected
+        nil -> result = '<nil>'
+        { result } -> pass
+      }
+
+      detailsResult = if null$ details
+      then () # empty apk, don't bother eval it
+      # note in below we localize artifacts (avoid polluting the outer scope), with a scoped block {@ ... @}
+      else {@ case d = callerScope.eval(*** details ) | type of {
+          nil -> () # a very corner case, convert to an empty apk
+          "ArgsPack" -> d
+          _ -> ( d, ) # single value, convert to an apk
+      } @}
+
+      error(
+        msg and callerScope.eval( msg ) or 'assertion failed',
+        # hide the `assert()` call frame as well as the `error()` frame
+        unwind= 2,
+        # following goes as the thrown exception's `.details`
+        result= result, ***detailsResult
+      )
+    }
+
+  }
+
+  {##
+   # The default basic implementation for the `dir` command
+   #
+   # CAVEAT:
+   #  This output to the stdout by `console.print()`
+   #}
+  interpreter printDir( callerScope: scope, ofThe= None, ) case (
+    if ofThe is not None
+    then callerScope.eval( ofThe )
+    else callerScope
+  ) of {
+    { { scope: ofScope } }
+    -> console.print( ofScope.lexiLoc, **ofScope.attrs() )
+    { otherVal } -> {
+      ; | type( otherVal ) is in (
+        "Object", "Class", "HostClass", "EventClass",
+      ) -> {
+        ofScope = scope( ofObj= otherVal )
+        console.print( desc( otherVal ), **ofScope.attrs() )
+      }
+      console.print( '⛔ No scope inside - ' ++ desc( otherVal ) )
+    }
+  }
+
+  {##
+   # Basic implementation of a string form for `dir` command to
+   # output to a remote console
+   #}
+  interpreter sprintDir( callerScope: scope, ofThe= None, ) case (
+    if ofThe is not None
+    then callerScope.eval( ofThe )
+    else callerScope
+  ) of {
+    { { scope: ofScope } } -> '\n'.join(
+      ofScope.lexiLoc,
+      *() =< for ( k, v ) from ofScope.attrs() do
+      '  ' ++ k ++ '= ' ++ v
+    )
+    { otherVal } -> {
+      ; | type( otherVal ) is in (
+        "Object", "Class", "HostClass", "EventClass",
+      ) -> {
+        ofScope = scope( ofObj= otherVal )
+        '\n'.join(
+          desc( otherVal ),
+          *() =< for ( k, v ) from ofScope.attrs() do
+          '  ' ++ k ++ '= ' ++ v
+        )
+      }
+      '⛔ No scope inside - ' ++ desc( otherVal )
+    }
+  }
+
+  {##
+   # Run a REPL at current code location, interacting with *stdio*.
+   #
+   # CAVEATs:
+   #  *) This will hook up stdin/stdout, be aware that concurrent REPLs
+   #     hooking stdio will create poor UX if not rendered it unusable at all
+   #
+   #  *) This can terminate the process when *stdin* is already at EOF
+   #}
+  interpreter replHere( callerScope: scope, prompt=None ) {
+    prompt = prompt and callerScope.eval( prompt ) or repr( callerScope )
+
+    console.print(
+      ' * entering a repl at ' ++ callerScope.lexiLoc,
+      ' * key in `quit` or `continue` to leave the repl and continue.',
+    )
+
+    rcArgs = ( ps1= '' ++prompt++ ' Đ: ', ps2= "Đ| ", inScopeOf=callerScope )
+    while true {
+
+      case console.readCommand(*** rcArgs ) of {@
+        { continue } -> break
+        { { Command: cmd } } -> case cmd.cmd of {
+          # todo
+          #  *) enrich custom behaviors according to `cmd.apk`
+          #  *) support more commands
+          'quit' -> break
+          'dir' -> case cmd.apk of {
+            # bare dir command
+            { () } -> {
+              printDir( ofThe= callerScope )
+            }
+            # single arg as the target scope
+            { ( tgtScope ) } -> case tgtScope of {
+              { { scope:_ } } -> printDir( ofThe= tgtScope )
+              # todo special treatment for module/namespace ?
+              # { { module:_ } } -> printDir( ofThe= scope( ofObj=tgtScope ) )
+              # { { namespace:_ } } -> printDir( ofThe= scope( ofObj=tgtScope ) )
+              ; | type( tgtScope ) is in (
+                "Object", "Class", "HostClass", "EventClass",
+              ) -> printDir(
+                ofThe= scope( ofObj=tgtScope )
+              )
+              _ -> console.print(
+                'Unexpected args to dir command: ' ++ cmd.apk
+              )
+            }
+            _ -> console.print( 'Unexpected args to dir command: ' ++ cmd.apk )
+          }
+          _ -> console.print( 'Unsupported command: ' ++ cmd )
+        }
+
+        { cmdVal } -> {
+          console.print( cmdVal )
+        }
+      @}
+
+    } $=> { # catch exceptions
+
+      { { IOError:ioExc } } -> {
+        console.fatal <| 'IO error - ' ++ ioExc
+        rethrow # escalate it to the program loop of the
+        # host interpreter, let it decide what to do.
+      }
+
+      { cmdExc } -> {
+        console.error<| 'Recovered from error: ' ++ desc( cmdExc )
+      }
+
+    }
+
+  }
+
+  {##
+   # Run a REPL within an object's (probably a module) scope, e.g.
+  ```edh
+  m = { import _ 'batteries/magic' }
+  replWith(m)
+  ```
+   #
+   # CAVEATs:
+   #  *) This will hook up stdin/stdout, be aware that concurrent REPLs
+   #     hooking stdio will create poor UX if not rendered it unusable at all
+   #
+   #  *) This can terminate the process when *stdin* is already at EOF
+   #}
+  method replWith( obj ) {
+    if type( obj ) is not in ( "Object", "Class", "HostClass", "EventClass", )
+    # if we don't throw here, the while-loop below will loop infinitely,
+    # as it'll try recover from errors
+    then error( 'No scope inside - ' ++ desc( obj ) )
+
+    console.print( ' * entering a repl within ' ++ desc( obj ) )
+    console.print( ' * key in `quit` or `continue` to leave the repl.' )
+
+    # use scope obj's repr for ps1
+    rcArgs = ( ps1=repr( obj ) ++ ' Đ: ', ps2= "Đ| ", inScopeOf=obj )
+    while true {
+
+      case console.readCommand(*** rcArgs ) of {@
+        { continue } -> break
+        { { Command: cmd } } -> case cmd.cmd of {
+          # todo
+          #  *) enrich custom behaviors according to `cmd.apk`
+          #  *) support more commands
+          'quit' -> break
+          'dir' -> case cmd.apk of {
+            # bare dir command
+            { () } -> {
+              printDir( scope( ofObj=obj ) )
+            }
+            # single arg as the target scope
+            { ( tgtScope ) } -> case tgtScope of {
+              { { scope:_ } } -> printDir( ofThe= tgtScope )
+              # todo special treatment for module/namespace ?
+              # { { module:_ } } -> printDir( ofThe= scope( ofObj=tgtScope ) )
+              # { { namespace:_ } } -> printDir( ofThe= scope( ofObj=tgtScope ) )
+              ; | type( tgtScope ) is in (
+                "Object", "Class", "HostClass", "EventClass",
+              ) -> printDir(
+                ofThe= scope( ofObj=tgtScope )
+              )
+              _ -> console.print( 'Unexpected args to dir command: ' ++ cmd.apk )
+            }
+            _ -> console.print( 'Unexpected args to dir command: ' ++ cmd.apk )
+          }
+          _ -> console.print( 'Unsupported command: ' ++ cmd )
+        }
+
+        { cmdVal } -> {
+          console.print( cmdVal )
+        }
+      @}
+
+    } $=> { # catch exceptions
+
+      { { IOError:ioExc } } -> {
+        console.fatal <| 'IO error - ' ++ ioExc
+        rethrow # escalate it to the program loop of the
+        # host interpreter, let it decide what to do.
+      }
+
+      { cmdExc } -> {
+        console.error<| 'Recovered from error: ' ++ desc( cmdExc )
+      }
+
+    }
+
+  }
+
+}

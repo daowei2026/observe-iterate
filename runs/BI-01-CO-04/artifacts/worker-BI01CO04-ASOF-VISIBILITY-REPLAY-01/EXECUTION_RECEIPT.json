@@ -1,0 +1,40 @@
+{
+  "command": [
+    "/usr/bin/strace",
+    "-f",
+    "-ttt",
+    "-yy",
+    "-s",
+    "160",
+    "-e",
+    "trace=openat,mmap,write,close",
+    "-o",
+    "/dwdhome/fy/observe-iterate-bi01-co-04-worker-recovery-01/runs/BI-01-CO-04/artifacts/worker-BI01CO04-ASOF-VISIBILITY-REPLAY-01/logs/native_engine.strace",
+    "/dwdhome/fy/observe-iterate-bi01-co-04-worker-recovery-01/runs/BI-01-CO-04/artifacts/worker-BI01CO04-ASOF-VISIBILITY-REPLAY-01/frozen/bin/ts",
+    "--f=/dwdhome/fy/observe-iterate-bi01-co-04-worker-recovery-01/runs/BI-01-CO-04/artifacts/worker-BI01CO04-ASOF-VISIBILITY-REPLAY-01/frozen/entrypoint/one.edh",
+    "--jp=/dwdhome/fy/observe-iterate-bi01-co-04-worker-recovery-01/runs/BI-01-CO-04/artifacts/worker-BI01CO04-ASOF-VISIBILITY-REPLAY-01/execution/tasks/rb__big.json"
+  ],
+  "cwd": "/dwdhome/fy/BASE_E6_2",
+  "environment_allowlist": {
+    "HOME": "/home/dw",
+    "PATH": "/m3c3/Linux/apps/anaconda3/bin:/m3c3/Linux/bin:/usr/bin:/bin",
+    "LANG": "C.UTF-8",
+    "TZ": "Asia/Shanghai",
+    "M3ROOT": "/m3c3",
+    "M3WORKS": "/dwdhome/fy/BASE_E6_2",
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1"
+  },
+  "started_at": "2026-11-01T20:32:54.830557+00:00",
+  "symbol": "rb",
+  "scale": "big",
+  "input_bars": 2160,
+  "max_input_bar_ts": "2021-09-30T15:00:00+08:00",
+  "input_boundary": "only frozen KLine prefix in new store_dir; pnv/tick fallback empty",
+  "write_guard": "Landlock ABI>=3: write/remove/create/truncate/rename restricted to this OUT",
+  "instrumentation": "strace file/mmap/write boundary only, no mathematical patch",
+  "returncode": 0,
+  "finished_at": "2026-11-01T20:33:12.369323+00:00",
+  "elapsed_seconds": 17.538934546988457
+}

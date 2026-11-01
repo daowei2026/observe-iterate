@@ -1,0 +1,87 @@
+{
+  "schema": "independent-package-check/v1",
+  "byte_gate": "PASS",
+  "asof_semantic_gate": "BLOCKED",
+  "market_rows": {
+    "rb": {
+      "with_warmup": 2160,
+      "formal": 368,
+      "complete_observation": 376
+    },
+    "hc": {
+      "with_warmup": 2160,
+      "formal": 368,
+      "complete_observation": 376
+    },
+    "i": {
+      "with_warmup": 2160,
+      "formal": 368,
+      "complete_observation": 376
+    }
+  },
+  "object_rows": {
+    "rb/big": {
+      "prefix": 14,
+      "formal": 2
+    },
+    "rb/mid": {
+      "prefix": 112,
+      "formal": 18
+    },
+    "hc/big": {
+      "prefix": 20,
+      "formal": 1
+    },
+    "hc/mid": {
+      "prefix": 109,
+      "formal": 16
+    },
+    "i/big": {
+      "prefix": 45,
+      "formal": 12
+    },
+    "i/mid": {
+      "prefix": 224,
+      "formal": 47
+    }
+  },
+  "time_conflicts": {
+    "rb": {
+      "warmup_and_window": 182,
+      "observation_window": 32
+    },
+    "hc": {
+      "warmup_and_window": 182,
+      "observation_window": 32
+    },
+    "i": {
+      "warmup_and_window": 182,
+      "observation_window": 32
+    }
+  },
+  "future_events_in_formal_actual_position_slice": [
+    {
+      "symbol": "i",
+      "scale": "mid",
+      "source_row": "568",
+      "event_ts": "2021-10-08 09:30:00",
+      "x": "7421399",
+      "xConfirm": "7448399",
+      "original_actual_time": "2021-09-29 23:00:00",
+      "original_confirm_time": "2021-09-30 15:00:00"
+    }
+  ],
+  "checks": [
+    "完整文件集合",
+    "逐文件hash/bytes/CSV行数/首末时间",
+    "精确五字段",
+    "三品种30m和窗口",
+    "原正式行情与warmup导出重叠逐值相符",
+    "每个整理对象actual/confirm位置及价格精确连接",
+    "缺方向/revision保留未知",
+    "原切片未来event边界单列",
+    "无小尺度数据或算法重算"
+  ],
+  "total_prefix_objects": 524,
+  "total_time_conflicts": 546
+}

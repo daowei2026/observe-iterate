@@ -1,0 +1,163 @@
+
+import * 'trade/frp/lib3'
+import * 'trade/frp/frame'
+import * 'trade/frp/quant/base'
+
+{## 实时模型 #}
+export class FrpRealTimeModel {
+
+  method __init__(name,params,app,sof){
+    this.name = name
+    this.params = params
+    this.app = AppConfig(**app)
+    this.sof = SofConfig(**sof)
+    this.object = FrpUtil.getObject(name,params)
+  }
+  method uniqueId(sym,calendar=None){
+    # 通过 sof 特征参数 目标(sym) calendar 创建的唯一ID
+    target = None
+    if(calendar is None){
+      target = Target(json({
+            "__tag__": "Symbol",
+            "sym": sym
+      }))
+    }else{
+      target = Target(json({
+            "__tag__": "CalendarTarget",
+            "calendar": calendar,
+            "target": {
+              "__tag__": "Symbol",
+              "sym": sym
+            }
+      }))
+    }
+    return this.object.uniqueId(target=target, app=this.app, sof=this.sof)
+  }
+
+  {## 运行单品种特征 Frp程序#}
+  method runSymbol(sym,calendar=None){
+    if(calendar is None){
+      target = Target(json({
+            "__tag__": "Symbol",
+            "sym": sym
+      }))
+    }else{
+      target = Target(json({
+            "__tag__": "CalendarTarget",
+            "calendar": calendar,
+            "target": {
+              "__tag__": "Symbol",
+              "sym": sym
+            }
+      }))
+    }
+    console.print$ "开始运行 Frp 单品种实时模型 " ++ this.name ++ ",目标【" ++ sym ++ "】"
+    this.object.runRealTime(target=target, app=this.app, sof=this.sof)
+  }
+
+  {## 运行单品种特征 Frp程序#}
+  method runFunc(){
+    target = Target(json({
+          "__tag__": "FuncTarget"
+    }))
+    # 运行
+    console.print$ "开始运行 Frp 函数特征实时模型 " ++ this.name
+    this.object.runRealTime(target=target, app=this.app, sof=this.sof)
+  }
+  {## TODO 其他待添加 #}
+
+  {## 推送一个 tick , 某个特征的某个品种的某个字段
+   f : Fao 特征对象
+   tar_name: f 的 propTarType 对应的目标名称，如单品种类型，一般为品种名称
+   field: 事件字段名称
+   #}
+  method pushTick(f:'Fao',tar_name:'String', field:'String', ts:'Int|String', value:'Double|json', price:'Double'=None){
+    ename = f.packEventName(tar_name,field)
+    let tick = RTTick(ename=ename,ts=ts,value=value,price=price)
+    this.object.pushTick(tick)
+  }
+
+  {## 同时推送多个 tick #}
+  method pushTicks(ts:'Int|String',ticks:'[dict]'){
+    let xs = [] =< for ds from ticks do {
+      RTTick(ename=ds["f"].packEventName(ds["tar_name"],ds["field"]),ts=ts,value=ds["value"],price=ds["price"])
+    }
+    this.object.pushTicks(xs)
+  }
+
+  {## 退出 #}
+  method stop(){
+    this.object.stopRealTime()
+  }
+
+}
+
+{##
+ # Frp 历史回测模型
+ # Params:
+ #   name: 对应 Frp 中的特征名称
+ #   params: 对应 Frp 中的特征参数
+ #   app: AppConfig
+ #   sof: SofConfig
+ #}
+export class FrpHistoryModel {
+
+  method __init__(name,params,app,sof){
+    this.name = name
+    this.params = params
+    this.app = AppConfig(**app)
+    this.sof = SofConfig(**sof)
+    this.object = FrpUtil.getObject(name,params)
+  }
+
+  {## 运行单品种特征 Frp程序#}
+  method runSymbol(sym,calendar=None){
+    if(calendar is None){
+      this.run({
+          "__tag__": "Symbol",
+          "sym": sym
+      })
+    }else{
+      this.run({
+          "__tag__": "CalendarTarget",
+          "calendar": calendar,
+          "target": {
+            "__tag__": "Symbol",
+            "sym": sym
+          }
+      })
+    }
+  }
+
+
+  method run(target:'dict',cal_type="Gen"){
+    target = Target(json(target))
+
+    console.print$ "开始运行 Frp 回测模型 " ++ this.name ++ ",目标【" ++ target ++ "】"
+
+    # 运行
+    this.object.run(target=target, app=this.app, sof=this.sof,cal_type=cal_type)
+  }
+
+  method uniqueId(sym,calendar=None){
+    # 通过 sof 特征参数 目标(sym) calendar 创建的唯一ID
+    target = None
+    if(calendar is None){
+      target = Target(json({
+            "__tag__": "Symbol",
+            "sym": sym
+      }))
+    }else{
+      target = Target(json({
+            "__tag__": "CalendarTarget",
+            "calendar": calendar,
+            "target": {
+              "__tag__": "Symbol",
+              "sym": sym
+            }
+      }))
+    }
+    return this.object.uniqueId(target=target, app=this.app, sof=this.sof)
+  }
+
+}

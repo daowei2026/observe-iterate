@@ -1,0 +1,186 @@
+{
+  "schema": "bi01-input-recovery/v1",
+  "order_id": "BI01CO04-INPUT-RECOVERY-01",
+  "work_id": "BI-01",
+  "run_id": "BI-01-CO-04",
+  "source_run_id": "GTQH_C001_three_turns_20261101_162005",
+  "source_root": "/dwdhome/fy/BASE_E6_2/mquant/aidata/test_runs/fy_owner_1d_30m_20261027/storage_migration_20261101",
+  "source_data_root": "/m3varF/BaseData/futures/GTQH_L1_20210104_20240208",
+  "original_output_root": "/dwdhome/fy/BASE_E6_2/mquant/aidata/test_runs/fy_owner_1d_30m_20261027/storage_migration_20261101/three_turn_plot/GTQH_C001_three_turns_20261101_162005",
+  "delivery_root": "/dwdhome/fy/observe-iterate-bi01-co-04-worker-recovery-01/runs/BI-01-CO-04/artifacts/worker-BI01CO04-INPUT-RECOVERY-01",
+  "symbols": [
+    "rb",
+    "hc",
+    "i"
+  ],
+  "frequency": "30m",
+  "original_window": {
+    "start": "2021-08-15 00:00:00",
+    "end": "2021-09-30 00:00:00",
+    "end_includes_sep30_day": false
+  },
+  "recovery_export_window": {
+    "start": "2021-01-04 09:30:00",
+    "end_exclusive": "2021-10-01 00:00:00",
+    "reason": "实际原运行源起点warm-up，补齐工单9月30日；无全历史复制"
+  },
+  "core": {
+    "aidata_head": "b5a752c2701dd8997b47583808f30bc5da5d9769",
+    "engine_version_from_log": "e6.2.0.6",
+    "engine_sha256_from_original_receipts": "dba166c7fc8d0acf2e56499699b36ac47dd30c923a739e52a7288860fae57450",
+    "historical_source_build_complete": false
+  },
+  "p0": {
+    "5.1_formal_identity": "PARTIAL",
+    "5.2_actual_parameters_and_consumption": "SATISFIED",
+    "5.3_market": "PARTIAL",
+    "5.4_large_mid_objects": "PARTIAL",
+    "5.5_semantic_dictionary": "PARTIAL",
+    "5.6_receipt": "SATISFIED"
+  },
+  "overall_p0": "PARTIAL_BLOCKED_FOR_ASOF",
+  "suitable_for_professional_asof_resume": false,
+  "p1": "EXISTING_STATIC_PNG_RECOVERED_AND_VIEWED",
+  "object_coverage": [
+    {
+      "symbol": "rb",
+      "scale": "big",
+      "rows": 14,
+      "path": "regenerated/objects/rb_big_events_through_20210930.csv",
+      "formal_window_rows": 2,
+      "source_merged_sha256": "d18b358c362072b55b9e0a14c3a45e07db9c4aae9df71af77109a45d26c7a296",
+      "actual_and_confirm_uti_price_match_consumed_market": true,
+      "direction_known_rows": 0,
+      "official_object_id_rows": 0,
+      "revision_known_rows": 0
+    },
+    {
+      "symbol": "hc",
+      "scale": "big",
+      "rows": 20,
+      "path": "regenerated/objects/hc_big_events_through_20210930.csv",
+      "formal_window_rows": 1,
+      "source_merged_sha256": "d18b358c362072b55b9e0a14c3a45e07db9c4aae9df71af77109a45d26c7a296",
+      "actual_and_confirm_uti_price_match_consumed_market": true,
+      "direction_known_rows": 0,
+      "official_object_id_rows": 0,
+      "revision_known_rows": 0
+    },
+    {
+      "symbol": "i",
+      "scale": "big",
+      "rows": 45,
+      "path": "regenerated/objects/i_big_events_through_20210930.csv",
+      "formal_window_rows": 12,
+      "source_merged_sha256": "d18b358c362072b55b9e0a14c3a45e07db9c4aae9df71af77109a45d26c7a296",
+      "actual_and_confirm_uti_price_match_consumed_market": true,
+      "direction_known_rows": 0,
+      "official_object_id_rows": 0,
+      "revision_known_rows": 0
+    },
+    {
+      "symbol": "rb",
+      "scale": "mid",
+      "rows": 112,
+      "path": "regenerated/objects/rb_mid_events_through_20210930.csv",
+      "formal_window_rows": 18,
+      "source_merged_sha256": "1bada33f45aa6edcf13864b05da89f89dbad910382b52c99ad29a08f76eeacab",
+      "actual_and_confirm_uti_price_match_consumed_market": true,
+      "direction_known_rows": 0,
+      "official_object_id_rows": 0,
+      "revision_known_rows": 0
+    },
+    {
+      "symbol": "hc",
+      "scale": "mid",
+      "rows": 109,
+      "path": "regenerated/objects/hc_mid_events_through_20210930.csv",
+      "formal_window_rows": 16,
+      "source_merged_sha256": "1bada33f45aa6edcf13864b05da89f89dbad910382b52c99ad29a08f76eeacab",
+      "actual_and_confirm_uti_price_match_consumed_market": true,
+      "direction_known_rows": 0,
+      "official_object_id_rows": 0,
+      "revision_known_rows": 0
+    },
+    {
+      "symbol": "i",
+      "scale": "mid",
+      "rows": 224,
+      "path": "regenerated/objects/i_mid_events_through_20210930.csv",
+      "formal_window_rows": 47,
+      "source_merged_sha256": "1bada33f45aa6edcf13864b05da89f89dbad910382b52c99ad29a08f76eeacab",
+      "actual_and_confirm_uti_price_match_consumed_market": true,
+      "direction_known_rows": 0,
+      "official_object_id_rows": 0,
+      "revision_known_rows": 0
+    }
+  ],
+  "market_coverage": {
+    "rb": {
+      "frequency": "30m",
+      "source_input_rows": 8964,
+      "exported_warmup_rows": 2160,
+      "first_business_time": "2021-01-04 09:30:00",
+      "last_business_time": "2021-09-30 15:00:00",
+      "source_input_first": "2021-01-04 09:30:00",
+      "source_input_last": "2024-02-08 15:00:00",
+      "warmup_start": "2021-01-04 09:30:00",
+      "warmup_end_exclusive": "2021-08-15 00:00:00",
+      "window_rows_including_sep30": 376,
+      "formal_market_rows": 368,
+      "formal_market_matches_consumed_staged_input": true,
+      "calendar_close_disagrees_with_bar_close": 182,
+      "calendar_close_disagrees_with_source_index": 182,
+      "market_nulls": {}
+    },
+    "hc": {
+      "frequency": "30m",
+      "source_input_rows": 8964,
+      "exported_warmup_rows": 2160,
+      "first_business_time": "2021-01-04 09:30:00",
+      "last_business_time": "2021-09-30 15:00:00",
+      "source_input_first": "2021-01-04 09:30:00",
+      "source_input_last": "2024-02-08 15:00:00",
+      "warmup_start": "2021-01-04 09:30:00",
+      "warmup_end_exclusive": "2021-08-15 00:00:00",
+      "window_rows_including_sep30": 376,
+      "formal_market_rows": 368,
+      "formal_market_matches_consumed_staged_input": true,
+      "calendar_close_disagrees_with_bar_close": 182,
+      "calendar_close_disagrees_with_source_index": 182,
+      "market_nulls": {}
+    },
+    "i": {
+      "frequency": "30m",
+      "source_input_rows": 8964,
+      "exported_warmup_rows": 2160,
+      "first_business_time": "2021-01-04 09:30:00",
+      "last_business_time": "2021-09-30 15:00:00",
+      "source_input_first": "2021-01-04 09:30:00",
+      "source_input_last": "2024-02-08 15:00:00",
+      "warmup_start": "2021-01-04 09:30:00",
+      "warmup_end_exclusive": "2021-08-15 00:00:00",
+      "window_rows_including_sep30": 376,
+      "formal_market_rows": 368,
+      "formal_market_matches_consumed_staged_input": true,
+      "calendar_close_disagrees_with_bar_close": 182,
+      "calendar_close_disagrees_with_source_index": 182,
+      "market_nulls": {}
+    }
+  },
+  "missing": [
+    "direction及其与本配置上游zig的可靠逐对象对应",
+    "revision/撤回/更新及current状态的原合同",
+    "UTI natural_tsa、bar closeTs、event index 三者可知时间冲突的权威解释",
+    "原E二进制完整源码/构建绑定及冻结日历版本"
+  ],
+  "algorithm_regeneration": {
+    "performed": false,
+    "allowed_exact_conditions_met": false
+  },
+  "classification": {
+    "copied": "copied/：原字节；其中图像含原small图例但不补小尺度数据",
+    "regenerated": "regenerated/：现存缓存/CSV的只读时间截取与字段整理，零特征重算"
+  },
+  "generated_at": "2026-11-01T19:16:12.806184+00:00"
+}

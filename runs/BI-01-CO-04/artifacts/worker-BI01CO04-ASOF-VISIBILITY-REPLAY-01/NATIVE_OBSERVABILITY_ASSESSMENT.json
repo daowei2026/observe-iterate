@@ -1,0 +1,32 @@
+{
+  "replay_run_id": "BI01CO04_ASOF_REPLAY_20261101T203232Z_f4a75f64",
+  "final_exit": "BLOCKED_NO_LOOKAHEAD_PROOF",
+  "temporary_directory_failure_resolved": true,
+  "owned_pnv_route_resolved": true,
+  "native_successful_symbol_scales": 6,
+  "native_recomputed_rows": 524,
+  "native_public_class_methods": [
+    "__repr__",
+    "run",
+    "runRealTime",
+    "stopRealTime",
+    "pushTick",
+    "pushTicks",
+    "packEventName",
+    "uniqueId"
+  ],
+  "instance_scope_result": "No scope inside native host object",
+  "per_event_state_subscription_or_step_readback_exposed": false,
+  "history_interface_result": "batch result available after history completion, without per-event first-seen/withdraw/reappear observations",
+  "source_reference_not_build_attestation": true,
+  "critical_missing": "主顺序增量执行的逐事件状态/输入前缀观察合同与可用观察入口，及其与本冻结二进制的绑定",
+  "not_claimed": [
+    "算法含未来信息",
+    "算法数学错误",
+    "临时目录不可修复",
+    "只允许启动一次进程"
+  ],
+  "counterfactual_prefix_queries_are_not_primary_event_observations": true,
+  "why_not_more_same_runs": "重复batch仅增加终态快照，不补该次主执行内部首次输出/撤回/重现及逐事件实际读边界；独立prefix计算是第9.2节校验，不能未经合同改名为第7节主增量观察。",
+  "minimum_recovery": "给同一冻结原引擎提供只观察的逐事件输出/状态回读与输入frontier回调，或由Management具名采用不同的查询式可知性合同；前者需neutrality及全部第9节检验，后者不得由Worker自行替换。"
+}

@@ -1,0 +1,13 @@
+--- initial_finite_probe.py
++++ scripts/finite_probe.py
+@@ -164,8 +164,8 @@
+     js('SOURCE_SNAPSHOT.json',{'replay_run_id':replay,'created_at':NOW(),'files':records,'actual_opened_external_files':imports,
+           'freeze_complete_for_qualified_replay':False,
+           'limitation':'首个原生调用尚未证明每个内部状态的first-seen与输入前缀边界；依真实结果在报告给出出口B，不把静态event_ts当观察时间。'})
+-    manifest.update(finished_at=NOW(),exit='BLOCKED_NO_LOOKAHEAD_PROOF',
+-                    stop_boundary='FIRST_NATIVE_PREFIX_PROBE_ONLY_NO_ALTERNATIVE_IMPLEMENTATION')
++    manifest.update(finished_at=NOW(),exit='PENDING_EVIDENCE_REVIEW',
++                    stop_boundary='SAME_ORDER_BOUNDED_ENGINEERING_AND_REQUIRED_VALIDATIONS')
+     js('REPLAY_MANIFEST.json',manifest)
+     print(json.dumps({'replay_run_id':replay,'engine_attempts':1,'receipt':execution,'copied_files':len(records)},ensure_ascii=False))
+ 

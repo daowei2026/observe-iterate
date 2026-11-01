@@ -1,0 +1,27 @@
+{
+  "replay_run_id": "BI01CO04_ASOF_REPLAY_20261101T203232Z_f4a75f64",
+  "process_returncode": 0,
+  "native_success": false,
+  "task_initialization_entered": true,
+  "completed_feature_outputs": 0,
+  "observed_visibility_events": 0,
+  "actual_market_reads_proven": false,
+  "failure": "FIS_TEMPORARY_FILE_CREATE_DENIED_WITHIN_REQUIRED_WRITE_BOUNDARY",
+  "failure_syscalls": [
+    "2988598 1793565189.063592 openat(AT_FDCWD</dwdhome/fy/BASE_E6_2>, \"/proc/self/task/2988599/comm\", O_RDWR) = -1 EACCES (Permission denied)",
+    "2988598 1793565189.075622 openat(AT_FDCWD</dwdhome/fy/BASE_E6_2>, \"/proc/self/task/2988600/comm\", O_RDWR) = -1 EACCES (Permission denied)",
+    "2988600 1793565189.080728 openat(AT_FDCWD</dwdhome/fy/BASE_E6_2>, \"/proc/self/task/2988601/comm\", O_RDWR) = -1 EACCES (Permission denied)",
+    "2988601 1793565189.086317 openat(AT_FDCWD</dwdhome/fy/BASE_E6_2>, \"/proc/self/task/2988602/comm\", O_RDWR) = -1 EACCES (Permission denied)",
+    "2988602 1793565189.098507 openat(AT_FDCWD</dwdhome/fy/BASE_E6_2>, \"/proc/self/task/2988603/comm\", O_RDWR) = -1 EACCES (Permission denied)",
+    "2988602 1793565191.259847 openat(AT_FDCWD</dwdhome/fy/BASE_E6_2>, \"/tmp/hsfis2988598-0\", O_RDWR|O_CREAT|O_EXCL|O_NOCTTY|O_NONBLOCK, 0600) = -1 EACCES (Permission denied)"
+  ],
+  "earlier_comment_correction": "完整落盘日志表明已进入参数初始化和模型调用，不是完全尚未进入任务。",
+  "bootstrap_temp_check": {
+    "python_check_executed": true,
+    "engine_invocations": 0,
+    "reason": "前置断言发现原stdout已有任务调用，立即停止；未重启引擎，TMPDIR效果未测试"
+  },
+  "prepared_max_input_bar_ts": "2021-09-30T15:00:00+08:00",
+  "observed_max_input_bar_ts": null,
+  "prepared_boundary_is_not_observed_read_boundary": true
+}
