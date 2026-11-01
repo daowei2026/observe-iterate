@@ -1,0 +1,72 @@
+{
+  "schema": "bi01-professional-input-qualification/v1",
+  "work_id": "BI-01",
+  "run_id": "BI-01-CO-04",
+  "round_id": "R0005",
+  "invocation_id": "BI01-CO-04-R0005-PROFESSIONAL-678c6b83",
+  "question_id": "CASE-FIRST-ASOF-CROSS-SYMBOL-SELECTION",
+  "verdict": "INPUT_UNQUALIFIED_FOR_ASOF_COMPARISON",
+  "market_no_candidate_claim": false,
+  "asof_t": null,
+  "candidate_ranking": null,
+  "historical_candidate": {
+    "symbols": [
+      "rb",
+      "hc",
+      "i"
+    ],
+    "frequency": "30m",
+    "window_documented": [
+      "2021-08-15",
+      "2021-09-30"
+    ],
+    "page_documented": "http://192.168.11.40:5006/cae?node_id=6153",
+    "run_id_documented": "GTQH_C001_three_turns_20261101_162005",
+    "qualification": "DOCUMENTED_LOCATOR_ONLY_NOT_BYTE_VERIFIED"
+  },
+  "qualified_scope": [
+    "formal_task_and_binding",
+    "method_and_asof_boundaries",
+    "historical_locator_facts"
+  ],
+  "unqualified_required_inputs": [
+    "formal_run_or_board_manifest",
+    "actual_selected_turn_parameters_bytes",
+    "rb_hc_i_30m_kline_slices",
+    "rb_hc_i_large_and_mid_feature_slices",
+    "object_actual_and_confirm_time_instances",
+    "direction_object_id_revision_status_fields",
+    "calendar_timezone_uti_mapping",
+    "missing_failure_no_signal_distinction",
+    "static_chart_or_readable_page_content",
+    "immutable_file_hashes_and_row_coverage"
+  ],
+  "blocked_outputs": [
+    "legal_asof_t",
+    "comparable_large_scale_background",
+    "confirmed_mid_scale_difference",
+    "forward_candidate_or_ranking",
+    "market_no_candidate",
+    "nearest_market_challenge_or_counterexample",
+    "method_efficacy_conclusion"
+  ],
+  "evidence_classes": {
+    "formal_evidence": "GitHub task, management, owner, exploration, tooling and schema materials",
+    "visual_clues": "NONE_VIEWED",
+    "unknown": "all instance-level market, feature, chart and post-T facts"
+  },
+  "worker_order": {
+    "issued": false,
+    "reason": "No verifiable Worker send/return interface was available; no unsent draft was represented as a real order."
+  },
+  "effective_professional_call_count": 1,
+  "trigger_observations": {
+    "FIRST_USABLE_ASOF_LOOP": "NOT_YET",
+    "MATERIAL_INPUT_OR_METHOD_CHANGE": "NOT_YET",
+    "ACTIVE_WORK_EFFORT_REVIEW": "NOT_YET"
+  },
+  "route": "accept",
+  "continuation": "Resume the same bound question after the minimum immutable recovery package is made readable; do not rescan the full market.",
+  "report_path": "runs/BI-01-CO-04/artifacts/R0005/REPORT.md",
+  "evidence_index_path": "runs/BI-01-CO-04/artifacts/R0005/EVIDENCE_INDEX.md"
+}
