@@ -1,9 +1,10 @@
 # 方法探索项目采用准备
 
-当前状态：**完成探索背景、工具说明和运行入口准备，尚未建立实际运行采用。** runtime/config/WORKMAP_BINDING.json仍为NOT_CONFIGURED，不代表已签发或待发送任务。
+当前状态：**完成探索背景、Owner原始做事过程说明、工具说明和运行入口准备，尚未建立实际运行采用。** runtime/config/WORKMAP_BINDING.json仍为NOT_CONFIGURED，不代表已签发或待发送任务。
 
 - 专业及运行仓：daowei2026/observe-iterate，分支 fy/feature-based-case-observation。
 - 探索背景入口：professional/README.md；professional/exploration/README.md。
+- Owner提供的完整做事过程原文：professional/exploration/05_OWNER_PROCESS_EXPLANATION.md；当前摘要：professional/exploration/02_CURRENT_WORKING_IDEAS.md。
 - 工具和首次观察图面说明：professional/exploration/03_TOOLING_AND_DATA_USAGE.md。
 - 稳定work_id为BI-01，继续使用CASE_OBSERVATION模式；新Run身份必须在真实启动时确定。
 
