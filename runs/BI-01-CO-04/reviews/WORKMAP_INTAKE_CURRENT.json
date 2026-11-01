@@ -4,20 +4,20 @@
     "bi01": {
       "manager": {
         "role": "management",
-        "context": "chatgpt:BI-01-CO-04:management / BI01-CO-04-R0007-WORKER-INTAKE-c149d108"
+        "context": "chatgpt:BI-01-CO-04:management / BI01-CO-04-R0008-REPLAY-INTAKE-82bb0b60"
       },
       "snapshot": null,
-      "snapshot_state": "INVALIDATED_BY_MATERIAL_INPUT_CHANGE_PENDING_QUALIFIED_REPLAY",
+      "snapshot_state": "RECOMPUTE_REQUIRED_FOR_QUERY_COMPLETION_CONTINUATION",
       "snapshot_recompute_required_before_professional_dispatch": true,
-      "observed_commit": "af02bd91ca33f42a8bc86b1ca348dacc758ee542",
+      "observed_commit": "fe720ea2a60dd86a438ea2665a346489fe43bbc5",
       "decision_report": {
-        "path": "runs/BI-01-CO-04/reviews/management-R0007/DECISION.md",
-        "blob": "d78fc7c98a48ad4767ebd3ead4bc4a3145d8e463"
+        "path": "runs/BI-01-CO-04/reviews/management-R0008/DECISION.md",
+        "blob": "844c370465c94eb3522b61dbae8c7724fe64b78f"
       },
       "effort": {
         "known_pro_turns": 1,
-        "coverage": "FIRST_WORKER_PACKAGE_ACCEPTED_PARTIAL_MATERIAL_INPUT_CHANGE_CONSUMED_VISIBILITY_REPLAY_ISSUED",
-        "source_note": "R0005 remains the only effective Professional call. R0007 accepted the first Worker package only as a byte-qualified diagnostic baseline, consumed MATERIAL_INPUT_OR_METHOD_CHANGE, held Professional continuation, and issued one narrow visibility replay. Worker calls do not count toward the Professional budget."
+        "coverage": "BLOCKED_REPLAY_ACCEPTED_NATIVE_VISIBILITY_ROUTE_CLOSED_QUERY_COMPLETION_ASOF_ADOPTED_PROFESSIONAL_CONTINUATION_ISSUED",
+        "source_note": "R0005 remains the only effective Professional call. R0008 accepted the replay exit BLOCKED_NO_LOOKAHEAD_PROOF, closed same-kind technical search, adopted QUERY_COMPLETION_ASOF_V1, and issued the second same-work Professional continuation. Worker calls do not count toward the Professional budget."
       },
       "reader_check": {
         "status": "RECORDED",
@@ -40,7 +40,7 @@
           "blob": "2c52fe9a2c6b4584442bad1b8ae1487375a222c2"
         },
         "accepted_by": "BI01-CO-04-R0004-READER-INTAKE-98c1c699",
-        "reuse_note": "The business question and authoritative task remain unchanged. No second Reader is required for the bounded technical replay; a fresh current snapshot is still required before any later Professional dispatch."
+        "reuse_note": "The authoritative business question and task blob remain unchanged. R0008 explicitly consumed the operational input-contract change; no second Reader is required, but a fresh current snapshot is required before Professional dispatch."
       },
       "professional_intake": {
         "invocation_id": "BI01-CO-04-R0005-PROFESSIONAL-678c6b83",
@@ -50,7 +50,7 @@
         "market_no_candidate_claim": false,
         "asof_t": null,
         "candidate_ranking": null,
-        "task_status": "ACTIVE_PENDING_QUALIFIED_REPLAY_INPUT",
+        "task_status": "ACTIVE_RELEASED_UNDER_QUERY_COMPLETION_ASOF_V1_PENDING_DISPATCH",
         "report": {
           "path": "runs/BI-01-CO-04/artifacts/R0005/REPORT.md",
           "blob": "863e4773fcf5c28ba265db6ceb42560981385d72"
@@ -63,58 +63,74 @@
           "path": "runs/BI-01-CO-04/artifacts/R0005/INPUT_QUALIFICATION.json",
           "blob": "6489676fef71b5b02cc4ab45e2b0ad0d4119fb81"
         },
-        "accepted_by": "BI01-CO-04-R0006-PROFESSIONAL-INTAKE-6fd91174",
-        "original_trigger_states": {
-          "FIRST_USABLE_ASOF_LOOP": "NOT_YET",
-          "MATERIAL_INPUT_OR_METHOD_CHANGE": "NOT_YET",
-          "ACTIVE_WORK_EFFORT_REVIEW": "NOT_YET"
-        }
+        "accepted_by": "BI01-CO-04-R0006-PROFESSIONAL-INTAKE-6fd91174"
       },
       "worker_intake": {
         "order_id": "BI01CO04-INPUT-RECOVERY-01",
-        "order_path": "runs/BI-01-CO-04/reviews/management-R0006/WORKER_ORDER.md",
-        "dispatch_receipt_path": "runs/BI-01-CO-04/provenance/worker-BI01CO04-INPUT-RECOVERY-01/DISPATCH_RECEIPT.json",
-        "actual_thread_id": "01a19881-cebf-73f3-a4d3-76c57bce0fe4",
         "result_commit": "dfdf843b47c03c0121fd7151b72f24adb5d986c0",
         "result_root": "runs/BI-01-CO-04/artifacts/worker-BI01CO04-INPUT-RECOVERY-01",
         "verdict": "PARTIAL_BLOCKED_FOR_ASOF",
         "accepted_scope": "TECHNICAL_BASELINE_ONLY",
         "byte_gate": "PASS",
         "asof_semantic_gate": "BLOCKED",
-        "algorithm_regeneration_count": 0,
-        "file_count_including_receipt_and_seal": 96,
-        "package_receipt_blob": "22fb631c45fbe923d17da955e6b94cacb023363a",
-        "blocker_report_blob": "7dd2f54ae466e47b20bf8860d4596fd146fbe453",
         "accepted_by": "BI01-CO-04-R0007-WORKER-INTAKE-c149d108",
         "state": "ACCEPTED_PARTIAL_CLOSED"
       },
+      "replay_intake": {
+        "order_id": "BI01CO04-ASOF-VISIBILITY-REPLAY-01",
+        "order_path": "runs/BI-01-CO-04/reviews/management-R0007/WORKER_ORDER.md",
+        "result_commit": "e25e585779152aa670d54c87efecba984af4b7e3",
+        "result_root": "runs/BI-01-CO-04/artifacts/worker-BI01CO04-ASOF-VISIBILITY-REPLAY-01",
+        "replay_run_id": "BI01CO04_ASOF_REPLAY_20261101T203232Z_f4a75f64",
+        "verdict": "BLOCKED_NO_LOOKAHEAD_PROOF",
+        "accepted_scope": "PHYSICAL_PREFIX_AND_BATCH_QUERY_TECHNICAL_EVIDENCE_ONLY",
+        "physical_prefix_bound": "PASS",
+        "native_event_visibility": "BLOCKED",
+        "native_first_seen": "NOT_OBSERVABLE",
+        "result_check_path": "runs/BI-01-CO-04/provenance/worker-BI01CO04-ASOF-VISIBILITY-REPLAY-01/RESULT_CHECK.json",
+        "package_receipt_blob": "42d467c69ebcb5f6123a57b61ddf9872feb7f564",
+        "blocker_report_blob": "c5c0f8db675c967241014ff06e478482c75e7c02",
+        "independent_validation_blob": "e7ca2cb12a0822a417e0bfffb0b1342271270fed",
+        "accepted_by": "BI01-CO-04-R0008-REPLAY-INTAKE-82bb0b60",
+        "state": "ACCEPTED_BLOCKED_CLOSED_NO_FURTHER_NATIVE_VISIBILITY_REPLAY"
+      },
+      "operational_contract": {
+        "contract_id": "QUERY_COMPLETION_ASOF_V1",
+        "status": "ADOPTED_FOR_CURRENT_CASE_ONLY",
+        "decision_ref": "runs/BI-01-CO-04/reviews/management-R0008/DECISION.md#operational-contract",
+        "bar_cutoff": "2021-09-30T15:00:00+08:00",
+        "decision_time_semantics": "FROZEN_PREFIX_QUERY_COMPLETION",
+        "symbols": ["rb", "hc", "i"],
+        "frequency": "30m",
+        "scales": ["big", "mid"],
+        "future_evaluation_end": "2021-10-15T15:00:00+08:00",
+        "native_publish_claim": false,
+        "event_level_lifecycle_claim": false,
+        "direction_semantics": "DERIVED_GEOMETRIC_PROXY_ONLY_WHEN_UPSTREAM_DIRECTION_NULL",
+        "cutoff_selection": "PRECOMMITTED_DECISION_WINDOW_ENDPOINT_NO_OUTCOME_CHERRY_PICKING"
+      },
       "management_trigger_consumption": {
         "FIRST_USABLE_ASOF_LOOP": "NOT_YET",
-        "MATERIAL_INPUT_OR_METHOD_CHANGE": "SATISFIED_AND_CONSUMED_BY_R0007",
+        "MATERIAL_INPUT_OR_METHOD_CHANGE": "SATISFIED_AND_CONSUMED_BY_R0008",
         "ACTIVE_WORK_EFFORT_REVIEW": "NOT_YET"
       },
       "technical_recovery": {
-        "order_id": "BI01CO04-ASOF-VISIBILITY-REPLAY-01",
-        "order_path": "runs/BI-01-CO-04/reviews/management-R0007/WORKER_ORDER.md",
-        "order_blob": "4caaeff372ce81a879c9423fef40cd207e3d184a",
-        "state": "ISSUED_NOT_SENT",
-        "continuation_thread_id": "01a19881-cebf-73f3-a4d3-76c57bce0fe4",
-        "expected_result_root": "runs/BI-01-CO-04/artifacts/worker-BI01CO04-ASOF-VISIBILITY-REPLAY-01",
-        "allowed_exits": [
-          "QUALIFIED_FOR_PROFESSIONAL_ASOF",
-          "BLOCKED_NO_LOOKAHEAD_PROOF"
-        ],
-        "return_to": "chatgpt:BI-01-CO-04:management"
+        "state": "CLOSED",
+        "no_further_worker": true,
+        "reason": "The replay truthfully established the native event-visibility limit. R0008 changed the operational contract rather than repeating same-kind technical search."
       },
       "dispatch": {
         "task_path": "runs/BI-01-CO-04/01_当前任务.md",
         "task_id": "BI-01-CO-04-CASE-INITIAL-ASOF",
         "task_blob": "9fee8ee372094282529020760329314394dc6b68",
-        "decision": "HOLD_PENDING_QUALIFIED_REPLAY",
-        "kind": "MATERIAL_INPUT_CHANGE_PENDING_TECHNICAL_RECOVERY",
+        "continuation_path": "runs/BI-01-CO-04/reviews/management-R0008/PROFESSIONAL_CONTINUATION.md",
+        "continuation_blob": "2c500cd57dc3ca88e26788e1ad8f44e975e496c8",
+        "decision": "RELEASE_AFTER_CURRENT_SNAPSHOT_AND_PREFLIGHT",
+        "kind": "EXISTING_AUTHORIZED_REPAIR",
         "requires_reader_check": false,
-        "reader_reason": "The authoritative business task is unchanged and the new work is a bounded technical replay. No second Reader is required, but the Workmap snapshot is intentionally invalidated and Professional dispatch is prohibited until management accepts a qualified replay and records a fresh snapshot.",
-        "continuation_condition": "Management accepts QUALIFIED_FOR_PROFESSIONAL_ASOF, records a current Workmap snapshot, and explicitly routes the existing task back to the original Professional.",
+        "reader_reason": "The question and task blob are unchanged. Management explicitly consumed the operational input-contract change and bounded the continuation; no second Reader is required.",
+        "task_adoption_ref": "runs/BI-01-CO-04/reviews/management-R0008/DECISION.md#professional-release",
+        "continuation_condition": "Record the current Workmap snapshot, pass applicable pre-dispatch, and send the exact R0008 continuation to the original Professional. No Worker or Reader may be inserted.",
         "method_paths": [
           "professional/README.md",
           "professional/exploration/README.md",
@@ -129,13 +145,16 @@
         ]
       },
       "scope_dispositions": {
-        "GTQH_C001_three_turns_20261101_162005": "DIAGNOSTIC_BASELINE_NOT_ASOF_INPUT"
+        "GTQH_C001_three_turns_20261101_162005": "DIAGNOSTIC_BASELINE_NOT_ASOF_INPUT",
+        "BI01CO04_ASOF_REPLAY_20261101T203232Z_f4a75f64": "FROZEN_BATCH_QUERY_EVIDENCE_NOT_NATIVE_EVENT_VISIBILITY",
+        "NATIVE_EVENT_LEVEL_FIRST_SEEN_ROUTE": "CLOSED_BLOCKED_NO_LOOKAHEAD_PROOF",
+        "QUERY_COMPLETION_ASOF_V1": "ADOPTED_CURRENT_CASE_ONLY"
       },
-      "validation_claims": [],
-      "technical_acceptance_labels": [
-        "WORKER_PACKAGE_BYTE_GATE_PASS",
-        "WORKER_PACKAGE_ASOF_SEMANTIC_GATE_BLOCKED",
-        "PROFESSIONAL_DISPATCH_INTENTIONALLY_HELD"
+      "validation_claims": [
+        "REPLAY_PHYSICAL_PREFIX_BOUND_PASS",
+        "REPLAY_NATIVE_EVENT_VISIBILITY_BLOCKED",
+        "NO_FURTHER_NATIVE_VISIBILITY_WORKER",
+        "PROFESSIONAL_CONTINUATION_RELEASED_PENDING_SNAPSHOT_AND_PREFLIGHT"
       ]
     }
   }
