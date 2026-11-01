@@ -1,0 +1,11 @@
+# R0007 接收记录字段格式的机械修复
+
+真实 Management R0007 已在 956ae5891409e0092dd453d1379017486dca0d76 作出限域技术接收和新重放签发；其完整报告、DECISION、两份 Return 与签单保留原字节。
+
+原 Intake 的 validation_claims 放入了 WORKER_PACKAGE_BYTE_GATE_PASS、WORKER_PACKAGE_ASOF_SEMANTIC_GATE_BLOCKED、PROFESSIONAL_DISPATCH_INTENTIONALLY_HELD 三个字符串。该字段在既有 check 中专供带 evidence、tested_code_commit、claimed_code_commit 的代码验证声明使用，原字符串使检查在读取 evidence 前即报类型错误。三项均为本次管理接收状态，不是代码验证通过的声明。
+
+主控只将这三个字符串原样移至说明字段 technical_acceptance_labels，并将无代码验证实物的 validation_claims 设为空数组；不为其虚构代码验证证据或覆盖版本。manager、snapshot、observed_commit、decision_report、Reader、专业接收、Worker签发、dispatch和其余字段逐项不变。此修复不增加任何技术或业务通过信用，不是主控重新签发、采纳或放行。
+
+修复后已运行既有 Workmap check：字段类型错误消失，仍返回 INTAKE_STALE。进一步核对确认 snapshot=null、INVALIDATED_BY_MATERIAL_INPUT_CHANGE_PENDING_QUALIFIED_REPLAY 及 HOLD_PENDING_QUALIFIED_REPLAY 都是 Management 的明确业务安排，故全部原样保留，不补写或“修复”为有效快照，不声称全局 Intake 已通过。
+
+管理 observed_commit 的真实输入材料与当前输入逐项相同；这一机械比对不构成新的采用。Worker-order preflight 独立于全局 Intake，已对真实签单通过，故有限重放可按原签发权限执行。结果仍只回原签发 Management 消费；Professional 继续保持阻断，只有实际管理接收合格重放并记录新快照后才可续发。未来技术回交如遇 accepted-base 机械检查与此有意 HOLD 不兼容，应如实保留检查结果和原签发回交权限，不自签快照或改投其他角色。
