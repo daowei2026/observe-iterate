@@ -6,11 +6,11 @@
         "role": "management",
         "context": "chatgpt:BI-01-CO-04:management / BI01-CO-04-R0010-EFFORT-REASSESS-cad9dec8"
       },
-      "snapshot": null,
-      "snapshot_state": "RECOMPUTE_REQUIRED_FOR_FROZEN_TAIL_WORKER_DISPATCH",
+      "snapshot": "df6e51aed197adfc964867a5a4dec2722a63d6639516a291c8377dae6db5763d",
+      "snapshot_state": "RECORDED_FOR_FROZEN_TAIL_WORKER_DISPATCH",
       "snapshot_recompute_required_before_worker_dispatch": true,
       "snapshot_recompute_required_before_professional_dispatch": true,
-      "observed_commit": "d52321ae6c5cc40a2c00f1a9ad2851bf11485ca0",
+      "observed_commit": "32b18173a5f085fee7cfba5c9f27dfaac09a54e3",
       "decision_report": {
         "path": "runs/BI-01-CO-04/reviews/management-R0010/DECISION.md",
         "blob": "c286f29713a06e9cebc90e1db7fd32831bc20099"
@@ -62,8 +62,13 @@
         "bar_cutoff": "2021-09-30T15:00:00+08:00",
         "candidate": null,
         "ranking": null,
-        "comparable_pair": ["rb", "hc"],
-        "excluded_from_pair": ["i"],
+        "comparable_pair": [
+          "rb",
+          "hc"
+        ],
+        "excluded_from_pair": [
+          "i"
+        ],
         "future_evaluation_status": "NOT_EXECUTABLE_FROM_DELIVERED_BYTES",
         "first_usable_asof_loop": "NOT_YET",
         "task_status": "ACTIVE_FINAL_CLOSURE_PENDING_FROZEN_TAIL",
@@ -108,9 +113,16 @@
         "decision_ref": "runs/BI-01-CO-04/reviews/management-R0008/DECISION.md#operational-contract",
         "bar_cutoff": "2021-09-30T15:00:00+08:00",
         "decision_time_semantics": "FROZEN_PREFIX_QUERY_COMPLETION",
-        "symbols": ["rb", "hc", "i"],
+        "symbols": [
+          "rb",
+          "hc",
+          "i"
+        ],
         "frequency": "30m",
-        "scales": ["big", "mid"],
+        "scales": [
+          "big",
+          "mid"
+        ],
         "future_evaluation_end": "2021-10-15T15:00:00+08:00",
         "native_publish_claim": false,
         "event_level_lifecycle_claim": false,
@@ -129,7 +141,10 @@
         "state": "ISSUED_NOT_SENT",
         "continuation_thread_id": "01a19881-cebf-73f3-a4d3-76c57bce0fe4",
         "expected_result_root": "runs/BI-01-CO-04/artifacts/worker-BI01CO04-FROZEN-TAIL-TRANSPORT-01",
-        "allowed_exits": ["TAIL_PACKAGE_READY", "TAIL_SOURCE_INACCESSIBLE"],
+        "allowed_exits": [
+          "TAIL_PACKAGE_READY",
+          "TAIL_SOURCE_INACCESSIBLE"
+        ],
         "return_to": "chatgpt:BI-01-CO-04:management",
         "scope": "PURE_TAIL_TRANSPORT_NO_FEATURE_RECOMPUTE_NO_BUSINESS_JUDGMENT"
       },
@@ -174,7 +189,8 @@
         "R0009_NO_CANDIDATE": "SNAPSHOT_DECISION_ACCEPTED_OUTCOME_UNVERIFIED",
         "CURRENT_CASE": "FINAL_CLOSURE_PENDING_FROZEN_TAIL"
       },
-      "validation_claims": [
+      "validation_claims": [],
+      "technical_acceptance_labels": [
         "R0009_SNAPSHOT_DECISION_ACCEPTED",
         "R0009_OUTCOME_NOT_YET_EVALUATED",
         "EFFORT_REVIEW_CONSUMED",
