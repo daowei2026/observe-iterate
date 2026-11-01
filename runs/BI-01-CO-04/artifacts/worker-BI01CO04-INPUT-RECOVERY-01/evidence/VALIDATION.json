@@ -1,0 +1,172 @@
+{
+  "source_run_id": "GTQH_C001_three_turns_20261101_162005",
+  "checked_at": "2026-11-01T19:16:12.806184+00:00",
+  "failures": [],
+  "warnings": [
+    "SOURCE_TIME_AXIS_CONFLICT",
+    "DIRECTION_NOT_PRESENT_OR_CONFIG_LINKED",
+    "REVISION_LIFECYCLE_NOT_PROVEN",
+    "NO_FULL_HISTORICAL_BUILD_ATTESTATION"
+  ],
+  "symbols": {
+    "rb": {
+      "frequency": "30m",
+      "source_input_rows": 8964,
+      "exported_warmup_rows": 2160,
+      "first_business_time": "2021-01-04 09:30:00",
+      "last_business_time": "2021-09-30 15:00:00",
+      "source_input_first": "2021-01-04 09:30:00",
+      "source_input_last": "2024-02-08 15:00:00",
+      "warmup_start": "2021-01-04 09:30:00",
+      "warmup_end_exclusive": "2021-08-15 00:00:00",
+      "window_rows_including_sep30": 376,
+      "formal_market_rows": 368,
+      "formal_market_matches_consumed_staged_input": true,
+      "calendar_close_disagrees_with_bar_close": 182,
+      "calendar_close_disagrees_with_source_index": 182,
+      "market_nulls": {}
+    },
+    "hc": {
+      "frequency": "30m",
+      "source_input_rows": 8964,
+      "exported_warmup_rows": 2160,
+      "first_business_time": "2021-01-04 09:30:00",
+      "last_business_time": "2021-09-30 15:00:00",
+      "source_input_first": "2021-01-04 09:30:00",
+      "source_input_last": "2024-02-08 15:00:00",
+      "warmup_start": "2021-01-04 09:30:00",
+      "warmup_end_exclusive": "2021-08-15 00:00:00",
+      "window_rows_including_sep30": 376,
+      "formal_market_rows": 368,
+      "formal_market_matches_consumed_staged_input": true,
+      "calendar_close_disagrees_with_bar_close": 182,
+      "calendar_close_disagrees_with_source_index": 182,
+      "market_nulls": {}
+    },
+    "i": {
+      "frequency": "30m",
+      "source_input_rows": 8964,
+      "exported_warmup_rows": 2160,
+      "first_business_time": "2021-01-04 09:30:00",
+      "last_business_time": "2021-09-30 15:00:00",
+      "source_input_first": "2021-01-04 09:30:00",
+      "source_input_last": "2024-02-08 15:00:00",
+      "warmup_start": "2021-01-04 09:30:00",
+      "warmup_end_exclusive": "2021-08-15 00:00:00",
+      "window_rows_including_sep30": 376,
+      "formal_market_rows": 368,
+      "formal_market_matches_consumed_staged_input": true,
+      "calendar_close_disagrees_with_bar_close": 182,
+      "calendar_close_disagrees_with_source_index": 182,
+      "market_nulls": {}
+    }
+  },
+  "parameter_checks": [
+    {
+      "symbol": "rb",
+      "role": "big",
+      "task_hash_matches_prepared": true,
+      "task_equals_engine_logged_parameters": true,
+      "ppid_matches_selection": true,
+      "validated_csv_hash_matches": true,
+      "merged_consumed_csv_sha256": "d18b358c362072b55b9e0a14c3a45e07db9c4aae9df71af77109a45d26c7a296",
+      "engine_returncode": 0
+    },
+    {
+      "symbol": "hc",
+      "role": "big",
+      "task_hash_matches_prepared": true,
+      "task_equals_engine_logged_parameters": true,
+      "ppid_matches_selection": true,
+      "validated_csv_hash_matches": true,
+      "merged_consumed_csv_sha256": "d18b358c362072b55b9e0a14c3a45e07db9c4aae9df71af77109a45d26c7a296",
+      "engine_returncode": 0
+    },
+    {
+      "symbol": "i",
+      "role": "big",
+      "task_hash_matches_prepared": true,
+      "task_equals_engine_logged_parameters": true,
+      "ppid_matches_selection": true,
+      "validated_csv_hash_matches": true,
+      "merged_consumed_csv_sha256": "d18b358c362072b55b9e0a14c3a45e07db9c4aae9df71af77109a45d26c7a296",
+      "engine_returncode": 0
+    },
+    {
+      "symbol": "rb",
+      "role": "mid",
+      "task_hash_matches_prepared": true,
+      "task_equals_engine_logged_parameters": true,
+      "ppid_matches_selection": true,
+      "validated_csv_hash_matches": true,
+      "merged_consumed_csv_sha256": "1bada33f45aa6edcf13864b05da89f89dbad910382b52c99ad29a08f76eeacab",
+      "engine_returncode": 0
+    },
+    {
+      "symbol": "hc",
+      "role": "mid",
+      "task_hash_matches_prepared": true,
+      "task_equals_engine_logged_parameters": true,
+      "ppid_matches_selection": true,
+      "validated_csv_hash_matches": true,
+      "merged_consumed_csv_sha256": "1bada33f45aa6edcf13864b05da89f89dbad910382b52c99ad29a08f76eeacab",
+      "engine_returncode": 0
+    },
+    {
+      "symbol": "i",
+      "role": "mid",
+      "task_hash_matches_prepared": true,
+      "task_equals_engine_logged_parameters": true,
+      "ppid_matches_selection": true,
+      "validated_csv_hash_matches": true,
+      "merged_consumed_csv_sha256": "1bada33f45aa6edcf13864b05da89f89dbad910382b52c99ad29a08f76eeacab",
+      "engine_returncode": 0
+    }
+  ],
+  "formal_slices": [
+    {
+      "symbol": "rb",
+      "scale": "big",
+      "rows": 2,
+      "source_row_and_hash_link_verified": true,
+      "slice_success": true
+    },
+    {
+      "symbol": "hc",
+      "scale": "big",
+      "rows": 1,
+      "source_row_and_hash_link_verified": true,
+      "slice_success": true
+    },
+    {
+      "symbol": "i",
+      "scale": "big",
+      "rows": 12,
+      "source_row_and_hash_link_verified": true,
+      "slice_success": true
+    },
+    {
+      "symbol": "rb",
+      "scale": "mid",
+      "rows": 18,
+      "source_row_and_hash_link_verified": true,
+      "slice_success": true
+    },
+    {
+      "symbol": "hc",
+      "scale": "mid",
+      "rows": 16,
+      "source_row_and_hash_link_verified": true,
+      "slice_success": true
+    },
+    {
+      "symbol": "i",
+      "scale": "mid",
+      "rows": 47,
+      "source_row_and_hash_link_verified": true,
+      "slice_success": true
+    }
+  ],
+  "three_symbol_axes_equal": true,
+  "verification_scope": "字节身份、参数消费、行数和坐标/价格关系通过；as-of语义未通过。"
+}

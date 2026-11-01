@@ -1,0 +1,170 @@
+TestCAE1({
+  # CAEGraph 别名
+  "name": {
+    "Context": OptContext({
+      "sof_name": 'GTQH_L1_20210104_20240208',  # 数据源名称,隐藏参数
+      "stk_tlist": 'gtqh_four',  # 品种集
+      "startDay": None,          # 开始时间
+      "endDay": None             # 结束时间
+    }),
+    "plotsets": GMap({
+      "TEST_C001": PlotSet({
+        "calendar_name": '@',
+        "blk": ['rb'],
+        "timespans": [('2021-08-15', '2021-09-30', 'TEST-C001')],
+        "timespans_fao": Nothing,
+        "figs": GMapX({
+          "f0": SpecEntitiesMainFig({
+            "title": '!GTQH 30m TEST-C001 · small / mid / big（large）',
+            "fig_width": None,
+            "fig_height": None,
+            "show_legend": True,
+            "legend_alpha": 1,
+            "legend_size": 10,
+            "legend_location": 'top_right',
+            "hover": True,
+            "static_dynstd": False,
+            "fit_y_range": True,
+            "colors2": None,
+            "nb_fig_time_range": True,
+            "plots": GMap(),
+            "entity_plots": GMap({
+              "syms!blk@steel": GMapX({
+                "f0": KPriceLine({
+                  "std_method": 'ratio',
+                  "feat": KLine({
+                    "freq": '30m'   # 频率
+                  }),
+                  "extra_bars": 0,
+                  "add_hover": True,
+                  "color": None,
+                  "alpha": 0.8,
+                  "label": 'K'
+                }),
+                "f1": MulFieldsGlyphs({
+                  "glyphs": 'circle',
+                  "feats": GMap({
+                    "small": ReadOnlyCsvFeature({
+                      "alias": 'GTQH_30m_original_E_small',
+                      "path": '/dwdhome/fy/BASE_E6_2/mquant/aidata/test_runs/fy_owner_1d_30m_20261027/storage_migration_20261101/three_turn_plot/small_original_E.csv',
+                      "member": '',
+                      "sha256": '6be222f3d5f21eba95b98a9c0281969f847810e47f531585e0cccd2c6c7df1a6',
+                      "symbol_field": 'symbol',
+                      "index_field": 'event_ts',
+                      "equals": {},
+                      "numeric_columns": {
+                        "_csv_y": 'y',
+                        "_csv_yConfirm": 'yConfirm'
+                      },
+                      "integer_columns": {
+                        "_csv_x": 'x',
+                        "_csv_xConfirm": 'xConfirm'
+                      },
+                      "display_config_json": ''
+                    })
+                  }),
+                  "dfkeys": [None],
+                  "legend_labels": ['small（S）'],
+                  "colors": [None],
+                  "xfields": ['_csv_x'],
+                  "yfields": ['_csv_y'],
+                  "timefieldtype": 'uti',
+                  "size_fields": None,
+                  "size_scale_factor": True,
+                  "size_scale": 100,
+                  "size_base": 5,
+                  "size": 8,
+                  "alphas": 0.85,
+                  "dynstd_method": True,
+                  "hover_tslabel": True
+                }),
+                "f2": MulFieldsGlyphs({
+                  "glyphs": 'diamond',
+                  "feats": GMap({
+                    "mid": ReadOnlyCsvFeature({
+                      "alias": 'GTQH_30m_original_E_mid',
+                      "path": '/dwdhome/fy/BASE_E6_2/mquant/aidata/test_runs/fy_owner_1d_30m_20261027/storage_migration_20261101/three_turn_plot/mid_original_E.csv',
+                      "member": '',
+                      "sha256": '1bada33f45aa6edcf13864b05da89f89dbad910382b52c99ad29a08f76eeacab',
+                      "symbol_field": 'symbol',
+                      "index_field": 'event_ts',
+                      "equals": {},
+                      "numeric_columns": {
+                        "_csv_y": 'y',
+                        "_csv_yConfirm": 'yConfirm'
+                      },
+                      "integer_columns": {
+                        "_csv_x": 'x',
+                        "_csv_xConfirm": 'xConfirm'
+                      },
+                      "display_config_json": ''
+                    })
+                  }),
+                  "dfkeys": [None],
+                  "legend_labels": ['mid（M）'],
+                  "colors": [None],
+                  "xfields": ['_csv_x'],
+                  "yfields": ['_csv_y'],
+                  "timefieldtype": 'uti',
+                  "size_fields": None,
+                  "size_scale_factor": True,
+                  "size_scale": 100,
+                  "size_base": 5,
+                  "size": 12,
+                  "alphas": 0.85,
+                  "dynstd_method": True,
+                  "hover_tslabel": True
+                }),
+                "f3": MulFieldsGlyphs({
+                  "glyphs": 'triangle',
+                  "feats": GMap({
+                    "big": ReadOnlyCsvFeature({
+                      "alias": 'GTQH_30m_original_E_big',
+                      "path": '/dwdhome/fy/BASE_E6_2/mquant/aidata/test_runs/fy_owner_1d_30m_20261027/storage_migration_20261101/three_turn_plot/big_original_E.csv',
+                      "member": '',
+                      "sha256": 'd18b358c362072b55b9e0a14c3a45e07db9c4aae9df71af77109a45d26c7a296',
+                      "symbol_field": 'symbol',
+                      "index_field": 'event_ts',
+                      "equals": {},
+                      "numeric_columns": {
+                        "_csv_y": 'y',
+                        "_csv_yConfirm": 'yConfirm'
+                      },
+                      "integer_columns": {
+                        "_csv_x": 'x',
+                        "_csv_xConfirm": 'xConfirm'
+                      },
+                      "display_config_json": ''
+                    })
+                  }),
+                  "dfkeys": [None],
+                  "legend_labels": ['big（L，large）'],
+                  "colors": [None],
+                  "xfields": ['_csv_x'],
+                  "yfields": ['_csv_y'],
+                  "timefieldtype": 'uti',
+                  "size_fields": None,
+                  "size_scale_factor": True,
+                  "size_scale": 100,
+                  "size_base": 5,
+                  "size": 17,
+                  "alphas": 0.85,
+                  "dynstd_method": True,
+                  "hover_tslabel": True
+                })
+              })
+            })
+          })
+        })
+      })
+    }),
+    "theme": DefaultFigTheme(background_fill_color='white'),
+    "x_label_freq": '1d',
+    "extra_time": 0,
+    "fig_width": 2400,
+    "fig_height1": 700,
+    "fig_height": 150,
+    "manual_upd": True,
+    "plot_name": 'GTQH_C001_three_turns_20261101_162005'
+  }
+})
