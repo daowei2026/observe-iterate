@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "exit": "TAIL_PACKAGE_READY",
+  "mode": "DATA_ONLY",
+  "checks_passed": [
+    "fixed_symbols_frequency_interval",
+    "unique_matching_anchor",
+    "strict_tail_and_exact_endpoint",
+    "monotone_finite_closes",
+    "same_identity_and_explicit_calendar",
+    "raw_source_range_to_CSV_all_ten_fields",
+    "frozen_formula_independent_exact_recalculation",
+    "source_allowlist_and_zero_feature_execution"
+  ],
+  "rows": {
+    "rb": 69,
+    "hc": 69,
+    "i": 69
+  },
+  "tail_rows": {
+    "rb": 68,
+    "hc": 68,
+    "i": 68
+  },
+  "common_tail_timestamps": 68,
+  "all_ten_fields_compared": true,
+  "live_source_files_independently_read": 63,
+  "receipt_files_checked": null,
+  "formula_values_and_exact_fractions_match": true,
+  "feature_engine_calls": 0,
+  "frozen_decision_changed": false,
+  "command_receipt": "logs/independent-live-final-validator.json",
+  "validator_sha256": "7cced294974ac609f91952961839d678af24b8b2c5150f62e6b962b2bcf88158",
+  "validator_note": "Final validator code independently re-read exact live source; final receipt/seal and Git archive are checked using this same frozen code without --data-only."
+}

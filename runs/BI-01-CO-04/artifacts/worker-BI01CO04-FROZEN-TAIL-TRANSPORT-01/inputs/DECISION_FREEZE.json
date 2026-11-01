@@ -1,0 +1,89 @@
+{
+  "schema": "bi01-query-asof-decision-freeze/v1",
+  "work_id": "BI-01",
+  "run_id": "BI-01-CO-04",
+  "round_id": "R0009",
+  "invocation_id": "BI01-CO-04-R0009-PROFESSIONAL-QUERY-ASOF-8d6fcf14",
+  "question_id": "CASE-FIRST-ASOF-CROSS-SYMBOL-SELECTION",
+  "contract": "QUERY_COMPLETION_ASOF_V1",
+  "replay_run_id": "BI01CO04_ASOF_REPLAY_20261101T203232Z_f4a75f64",
+  "time_boundary": {
+    "bar_cutoff": "2021-09-30T15:00:00+08:00",
+    "decision_known_at_after_all_six_queries_utc": "2026-11-01T21:01:47.861354+00:00",
+    "future_evaluation_start_exclusive": "2021-09-30T15:00:00+08:00",
+    "future_evaluation_end_inclusive": "2021-10-15T15:00:00+08:00"
+  },
+  "freeze": {
+    "decision": "NO_CANDIDATE",
+    "candidate": null,
+    "ranking": null,
+    "freeze_commit": "c497abf49806a596e34a51a8a35541644ff84215",
+    "freeze_commit_time_utc": "2026-11-01T22:28:15Z",
+    "future_tail_accessed_before_freeze": false
+  },
+  "snapshot_read": {
+    "row_selection": "MAX_XCONFIRM_RETURNED_OCCURRENCE_PER_SYMBOL_SCALE",
+    "row_selection_limit": "rightmost returned batch occurrence only; no active-state, lifecycle, first-seen, withdrawal or reappearance claim",
+    "proxy_rule": {
+      "LOW_CONFIRMED_PROXY": "yConfirm > y",
+      "HIGH_CONFIRMED_PROXY": "yConfirm < y",
+      "FLAT_OR_UNRESOLVED_PROXY": "yConfirm == y or either value missing",
+      "status": "DERIVED_NOT_UPSTREAM_DIRECTION"
+    },
+    "large_scale": {
+      "rb": "HIGH_CONFIRMED_PROXY",
+      "hc": "HIGH_CONFIRMED_PROXY",
+      "i": "LOW_CONFIRMED_PROXY"
+    },
+    "mid_scale": {
+      "rb": "HIGH_CONFIRMED_PROXY; delta_pct_of_y=-0.270660",
+      "hc": "HIGH_CONFIRMED_PROXY; delta_pct_of_y=-0.196113",
+      "i": "LOW_CONFIRMED_PROXY; delta_pct_of_y=5.689278"
+    }
+  },
+  "decision_rationale": [
+    "rb and hc are the only pair with the same large-scale geometric proxy: HIGH_CONFIRMED_PROXY.",
+    "Their latest returned mid-scale occurrences have the same HIGH_CONFIRMED_PROXY sign and both are shallow; the snapshot supplies no cross-symbol mid-scale state difference strong enough to select or rank one.",
+    "i has LOW_CONFIRMED_PROXY on both large and mid scales and is not a same-background comparator for rb/hc.",
+    "Using the larger rb-versus-hc big-scale confirmation magnitude difference to force a ranking would answer a different question and would not establish independent mid-scale selection information."
+  ],
+  "target_process": {
+    "name": "RELATIVE_RESILIENCE_WITHIN_COMMON_BIG_HIGH_PROXY_PAIR",
+    "eligible_pair": [
+      "rb",
+      "hc"
+    ],
+    "business_meaning": "During the held-out tail, one member would show a higher close path from the cutoff and a smaller adverse excursion than the other.",
+    "decision_use": "No member selected because the as-of mid-scale snapshot did not differentiate them."
+  },
+  "future_evaluation_plan_frozen": {
+    "base": "each symbol close at or immediately corresponding to the fixed cutoff",
+    "metrics": [
+      "terminal close return to 2021-10-15T15:00:00+08:00",
+      "minimum close return from cutoff within tail",
+      "maximum close return from cutoff within tail",
+      "rb-minus-hc normalized close path and terminal gap"
+    ],
+    "case_only_material_separation": "absolute terminal return gap >= 5 percentage points OR absolute difference in minimum tail return >= 5 percentage points",
+    "threshold_status": "EXPLORATORY_CASE_THRESHOLD_NOT_A_GENERAL_GATE",
+    "interpretation": {
+      "no_material_separation": "supports the conservative no-candidate disposition for this snapshot",
+      "material_separation": "shows a missed ex-post differentiation and challenges the sufficiency of latest-occurrence mid proxy; it does not authorize retroactive selection",
+      "i_outcome": "diagnostic only because i was excluded by non-comparable large-scale background"
+    }
+  },
+  "artifact_hashes": {
+    "source_worker_commit": "e25e585779152aa670d54c87efecba984af4b7e3",
+    "RECOMPUTED_OBJECT_ROWS.csv_sha256": "9dc2fda0f7ed729c28b1d77c1d631acfa37429376586408d8729a45fb357b54c",
+    "REPLAY_MANIFEST.json_sha256": "72af57a0e33dd419ec15aa7dbb3543ee07ba967597a1ef4f13e1c29ebc585e33",
+    "TIME_CONTRACT.md_sha256": "051dcf2d05db9306b7709fcc29f0d65d5ba8be9d910317766701317309573eeb",
+    "MATRIX_EXECUTION_RECEIPTS.json_sha256": "c3d1b42019bb4132e32df82745ed51cdc45a4cfde1645460e9b88a75bb6f5e2",
+    "QUERY_SNAPSHOT_STATE_TABLE.csv_sha256": "973e0a4ce080b3e3d354c91c9e9222e4098b682949e05ee2fbcf7a8ee2e01b08"
+  },
+  "prohibitions": [
+    "Do not treat event_ts, xConfirm, bar time or calendar alternate as native object first-known time.",
+    "Do not treat geometric proxy as formal upstream direction.",
+    "Do not infer lifecycle or active-state semantics from final rows.",
+    "Do not change cutoff, symbols, scales, parameters or target process after viewing the held-out tail."
+  ]
+}

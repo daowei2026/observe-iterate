@@ -1,0 +1,132 @@
+{
+  "dataset": "GTQH_L1_20210104_20240208",
+  "inputs": [
+    {
+      "symbol": "rb",
+      "rows": 8964,
+      "staged_kline_cache": "/dwdhome/fy/BASE_E6_2/mquant/aidata/test_runs/fy_owner_1d_30m_20261027/storage_migration_20261101/turn_staging/cache/BaseData/futures/GTQH_L1_20210104_20240208/fao/prod/KLine/e/c/3/e/0/2/3/0a9cc80a32b85890741475ee0505af8dc/rb",
+      "fields": {
+        "close": "f8",
+        "closeTs": "datetime64[ns]",
+        "closeUti": "int64",
+        "high": "f8",
+        "low": "f8",
+        "open": "f8",
+        "openInt": "f8",
+        "openTs": "datetime64[ns]",
+        "openUti": "int64",
+        "volume": "f8"
+      }
+    },
+    {
+      "symbol": "hc",
+      "rows": 8964,
+      "staged_kline_cache": "/dwdhome/fy/BASE_E6_2/mquant/aidata/test_runs/fy_owner_1d_30m_20261027/storage_migration_20261101/turn_staging/cache/BaseData/futures/GTQH_L1_20210104_20240208/fao/prod/KLine/e/c/3/e/0/2/3/0a9cc80a32b85890741475ee0505af8dc/hc",
+      "fields": {
+        "close": "f8",
+        "closeTs": "datetime64[ns]",
+        "closeUti": "int64",
+        "high": "f8",
+        "low": "f8",
+        "open": "f8",
+        "openInt": "f8",
+        "openTs": "datetime64[ns]",
+        "openUti": "int64",
+        "volume": "f8"
+      }
+    },
+    {
+      "symbol": "i",
+      "rows": 8964,
+      "staged_kline_cache": "/dwdhome/fy/BASE_E6_2/mquant/aidata/test_runs/fy_owner_1d_30m_20261027/storage_migration_20261101/turn_staging/cache/BaseData/futures/GTQH_L1_20210104_20240208/fao/prod/KLine/e/c/3/e/0/2/3/0a9cc80a32b85890741475ee0505af8dc/i",
+      "fields": {
+        "close": "f8",
+        "closeTs": "datetime64[ns]",
+        "closeUti": "int64",
+        "high": "f8",
+        "low": "f8",
+        "open": "f8",
+        "openInt": "f8",
+        "openTs": "datetime64[ns]",
+        "openUti": "int64",
+        "volume": "f8"
+      }
+    }
+  ],
+  "jobs": [
+    {
+      "symbol": "rb",
+      "role": "small",
+      "preset": "small",
+      "feature_ppid": "ScaleTurnCalendar_fd6dfd1388b45dad603abc80768f1f8a0d47aca4",
+      "task_file": "/dwdhome/fy/BASE_E6_2/mquant/aidata/test_runs/fy_owner_1d_30m_20261027/storage_migration_20261101/turn_staging/rb__small.task.json",
+      "task_sha256": "6e4e72c5f44864801f62bc9eadde6fa51cbbcd770db691dfe5dc99eb31fee715"
+    },
+    {
+      "symbol": "rb",
+      "role": "mid",
+      "preset": "mid",
+      "feature_ppid": "ScaleTurnCalendar_1108fcdf993ff41f1e26c18b3bf2097a3258a77f",
+      "task_file": "/dwdhome/fy/BASE_E6_2/mquant/aidata/test_runs/fy_owner_1d_30m_20261027/storage_migration_20261101/turn_staging/rb__mid.task.json",
+      "task_sha256": "8f5fff776ce27602a4a7ff5dbcaff569d525b3937f6db29d3b49cd2c5d9618df"
+    },
+    {
+      "symbol": "rb",
+      "role": "big",
+      "preset": "large",
+      "feature_ppid": "ScaleTurnCalendar_b62208dc57cd56dc5e04939d2e960f751b6aafbb",
+      "task_file": "/dwdhome/fy/BASE_E6_2/mquant/aidata/test_runs/fy_owner_1d_30m_20261027/storage_migration_20261101/turn_staging/rb__big.task.json",
+      "task_sha256": "d067b294f50f4c7e3f0cc30998622787adbfdacd1afc1eb79622452009751b73"
+    },
+    {
+      "symbol": "hc",
+      "role": "small",
+      "preset": "small",
+      "feature_ppid": "ScaleTurnCalendar_fd6dfd1388b45dad603abc80768f1f8a0d47aca4",
+      "task_file": "/dwdhome/fy/BASE_E6_2/mquant/aidata/test_runs/fy_owner_1d_30m_20261027/storage_migration_20261101/turn_staging/hc__small.task.json",
+      "task_sha256": "f600157bbc473297240f1c113757ab2ec3008564bb703b2a58e96cfe75afcb33"
+    },
+    {
+      "symbol": "hc",
+      "role": "mid",
+      "preset": "mid",
+      "feature_ppid": "ScaleTurnCalendar_1108fcdf993ff41f1e26c18b3bf2097a3258a77f",
+      "task_file": "/dwdhome/fy/BASE_E6_2/mquant/aidata/test_runs/fy_owner_1d_30m_20261027/storage_migration_20261101/turn_staging/hc__mid.task.json",
+      "task_sha256": "9f460b54d4750d2d093cfbb57b037126f7ac92808439bbfe0ea3d9714f1bac79"
+    },
+    {
+      "symbol": "hc",
+      "role": "big",
+      "preset": "large",
+      "feature_ppid": "ScaleTurnCalendar_b62208dc57cd56dc5e04939d2e960f751b6aafbb",
+      "task_file": "/dwdhome/fy/BASE_E6_2/mquant/aidata/test_runs/fy_owner_1d_30m_20261027/storage_migration_20261101/turn_staging/hc__big.task.json",
+      "task_sha256": "7eeb70c322000085f1b219002318641b88610ded66c6b4c188e6f3167907daeb"
+    },
+    {
+      "symbol": "i",
+      "role": "small",
+      "preset": "small",
+      "feature_ppid": "ScaleTurnCalendar_fd6dfd1388b45dad603abc80768f1f8a0d47aca4",
+      "task_file": "/dwdhome/fy/BASE_E6_2/mquant/aidata/test_runs/fy_owner_1d_30m_20261027/storage_migration_20261101/turn_staging/i__small.task.json",
+      "task_sha256": "111b7f695160db59510f8d0af65b864d9e1af3696292dc29583af8a9c954ac87"
+    },
+    {
+      "symbol": "i",
+      "role": "mid",
+      "preset": "mid",
+      "feature_ppid": "ScaleTurnCalendar_1108fcdf993ff41f1e26c18b3bf2097a3258a77f",
+      "task_file": "/dwdhome/fy/BASE_E6_2/mquant/aidata/test_runs/fy_owner_1d_30m_20261027/storage_migration_20261101/turn_staging/i__mid.task.json",
+      "task_sha256": "2550f234ce4757ca45a4b32daa913139f33bda01420725737e28b19a5c5119e9"
+    },
+    {
+      "symbol": "i",
+      "role": "big",
+      "preset": "large",
+      "feature_ppid": "ScaleTurnCalendar_b62208dc57cd56dc5e04939d2e960f751b6aafbb",
+      "task_file": "/dwdhome/fy/BASE_E6_2/mquant/aidata/test_runs/fy_owner_1d_30m_20261027/storage_migration_20261101/turn_staging/i__big.task.json",
+      "task_sha256": "d544a935ef45eaecd910c848cb7a4a35265eb914757adffabab3cf2e38793ab9"
+    }
+  ],
+  "formal_source_modified": false,
+  "numerical_turn_jobs_started": false
+}

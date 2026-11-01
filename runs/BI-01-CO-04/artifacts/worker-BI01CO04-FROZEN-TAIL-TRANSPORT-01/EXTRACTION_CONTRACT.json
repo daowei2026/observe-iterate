@@ -1,0 +1,23 @@
+{
+  "order_id": "BI01CO04-FROZEN-TAIL-TRANSPORT-01",
+  "base_commit": "43223e4a84cbf32c25745ce6b1cbce43c82488ed",
+  "management_commit": "c8c6f05442f4e2111528cb3ac7c925dfba60e9a2",
+  "professional_rules_commit": "b6ccf766dac055a793e75f76b77a73f4cfc74064",
+  "source_data_root": "/m3varF/BaseData/futures/GTQH_L1_20210104_20240208",
+  "symbols": [
+    "rb",
+    "hc",
+    "i"
+  ],
+  "frequency": "30m",
+  "cutoff": "2021-09-30T15:00:00+08:00",
+  "endpoint": "2021-10-15T15:00:00+08:00",
+  "source_business_clock": "PNV closeTs naive labels + Asia/Shanghai, exact same as frozen prefix",
+  "metrics": "r_s(t)=close_s(t)/C_s(T)-1; min/max strictly tail; exact endpoint; rb-hc common path; abs(gap)>=0.05 OR abs(min_return_rb-min_return_hc)>=0.05",
+  "i_role": "DIAGNOSTIC_ONLY",
+  "allowed_extraction": "one deterministic invocation plus necessary same-script corrections, no new route",
+  "extraction_script_sha256": "dad4cadf3b19bc715b095f5acf59b1e103b2e83a3915742b98274431a5e548cf",
+  "python_executable": "/usr/bin/python",
+  "python_version": "3.12.3",
+  "native_feature_calls_authorized": 0
+}

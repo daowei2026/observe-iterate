@@ -1,0 +1,1115 @@
+{
+  "schema": "frozen-tail-mechanical-metrics/v1",
+  "formula": "r_s(t) = close_s(t) / C_s(T) - 1; minimum and maximum exclude anchor",
+  "arithmetic": "exact rational arithmetic on decoded IEEE754 input prices; numeric value is float(exact_fraction)",
+  "cutoff": "2021-09-30T15:00:00+08:00",
+  "endpoint": "2021-10-15T15:00:00+08:00",
+  "per_symbol": {
+    "rb": {
+      "terminal_return_s": {
+        "value": -0.0353045013239188,
+        "exact_fraction": "-40/1133"
+      },
+      "minimum_tail_return_s": {
+        "value": -0.053486319505736984,
+        "exact_fraction": "-303/5665"
+      },
+      "maximum_tail_return_s": {
+        "value": 0.025419240953221536,
+        "exact_fraction": "144/5665"
+      },
+      "minimum_timestamps": [
+        "2021-10-13T10:30:00+08:00"
+      ],
+      "maximum_timestamps": [
+        "2021-10-08T23:00:00+08:00"
+      ],
+      "role": "FROZEN_PAIR_MEMBER"
+    },
+    "hc": {
+      "terminal_return_s": {
+        "value": 0.0038746037337090526,
+        "exact_fraction": "11/2839"
+      },
+      "minimum_tail_return_s": {
+        "value": -0.02676998943289891,
+        "exact_fraction": "-76/2839"
+      },
+      "maximum_tail_return_s": {
+        "value": 0.029587883057414582,
+        "exact_fraction": "84/2839"
+      },
+      "minimum_timestamps": [
+        "2021-10-13T10:30:00+08:00"
+      ],
+      "maximum_timestamps": [
+        "2021-10-08T23:00:00+08:00"
+      ],
+      "role": "FROZEN_PAIR_MEMBER"
+    },
+    "i": {
+      "terminal_return_s": {
+        "value": 0.004207573632538569,
+        "exact_fraction": "3/713"
+      },
+      "minimum_tail_return_s": {
+        "value": -0.009817671809256662,
+        "exact_fraction": "-7/713"
+      },
+      "maximum_tail_return_s": {
+        "value": 0.10659186535764376,
+        "exact_fraction": "76/713"
+      },
+      "minimum_timestamps": [
+        "2021-10-13T21:30:00+08:00"
+      ],
+      "maximum_timestamps": [
+        "2021-10-11T22:00:00+08:00"
+      ],
+      "role": "DIAGNOSTIC_ONLY"
+    }
+  },
+  "rb_minus_hc_path": [
+    {
+      "business_timestamp": "2021-10-08T09:30:00+08:00",
+      "r_rb": {
+        "value": 0.011120917917034422,
+        "exact_fraction": "63/5665"
+      },
+      "r_hc": {
+        "value": 0.018140190207819654,
+        "exact_fraction": "103/5678"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.007019272290785233,
+        "exact_fraction": "-225781/32165870"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-08T10:00:00+08:00",
+      "r_rb": {
+        "value": 0.00441306266548985,
+        "exact_fraction": "5/1133"
+      },
+      "r_hc": {
+        "value": 0.009158154279675942,
+        "exact_fraction": "26/2839"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.0047450916141860925,
+        "exact_fraction": "-15263/3216587"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-08T10:30:00+08:00",
+      "r_rb": {
+        "value": 0.006001765225066196,
+        "exact_fraction": "34/5665"
+      },
+      "r_hc": {
+        "value": 0.011447692849594928,
+        "exact_fraction": "65/5678"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.005445927624528732,
+        "exact_fraction": "-175173/32165870"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-08T11:00:00+08:00",
+      "r_rb": {
+        "value": 0.0088261253309797,
+        "exact_fraction": "10/1133"
+      },
+      "r_hc": {
+        "value": 0.01532229658330398,
+        "exact_fraction": "87/5678"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.006496171252324281,
+        "exact_fraction": "-41791/6433174"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-08T11:30:00+08:00",
+      "r_rb": {
+        "value": 0.011120917917034422,
+        "exact_fraction": "63/5665"
+      },
+      "r_hc": {
+        "value": 0.01655512504402959,
+        "exact_fraction": "47/2839"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.005434207126995166,
+        "exact_fraction": "-87398/16082935"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-08T14:00:00+08:00",
+      "r_rb": {
+        "value": 0.008296557811120918,
+        "exact_fraction": "47/5665"
+      },
+      "r_hc": {
+        "value": 0.019020781965480803,
+        "exact_fraction": "54/2839"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.010724224154359885,
+        "exact_fraction": "-172477/16082935"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-08T14:30:00+08:00",
+      "r_rb": {
+        "value": 0.010944395410414828,
+        "exact_fraction": "62/5665"
+      },
+      "r_hc": {
+        "value": 0.021486438886932017,
+        "exact_fraction": "61/2839"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.010542043476517191,
+        "exact_fraction": "-169547/16082935"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-08T15:00:00+08:00",
+      "r_rb": {
+        "value": 0.006884377758164166,
+        "exact_fraction": "39/5665"
+      },
+      "r_hc": {
+        "value": 0.016907361747094046,
+        "exact_fraction": "48/2839"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.010022983988929882,
+        "exact_fraction": "-161199/16082935"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-08T21:30:00+08:00",
+      "r_rb": {
+        "value": 0.014651368049426301,
+        "exact_fraction": "83/5665"
+      },
+      "r_hc": {
+        "value": 0.02571327932370553,
+        "exact_fraction": "73/2839"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.011061911274279228,
+        "exact_fraction": "-177908/16082935"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-08T22:00:00+08:00",
+      "r_rb": {
+        "value": 0.01818181818181818,
+        "exact_fraction": "1/55"
+      },
+      "r_hc": {
+        "value": 0.028002817893624514,
+        "exact_fraction": "159/5678"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.009820999711806333,
+        "exact_fraction": "-3067/312290"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-08T22:30:00+08:00",
+      "r_rb": {
+        "value": 0.021006178287731686,
+        "exact_fraction": "119/5665"
+      },
+      "r_hc": {
+        "value": 0.028531172948221203,
+        "exact_fraction": "81/2839"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.007524994660489519,
+        "exact_fraction": "-121024/16082935"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-08T23:00:00+08:00",
+      "r_rb": {
+        "value": 0.025419240953221536,
+        "exact_fraction": "144/5665"
+      },
+      "r_hc": {
+        "value": 0.029587883057414582,
+        "exact_fraction": "84/2839"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.004168642104193047,
+        "exact_fraction": "-67044/16082935"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-11T09:30:00+08:00",
+      "r_rb": {
+        "value": 0.014474845542806708,
+        "exact_fraction": "82/5665"
+      },
+      "r_hc": {
+        "value": 0.019020781965480803,
+        "exact_fraction": "54/2839"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.004545936422674095,
+        "exact_fraction": "-73112/16082935"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-11T10:00:00+08:00",
+      "r_rb": {
+        "value": 0.0088261253309797,
+        "exact_fraction": "10/1133"
+      },
+      "r_hc": {
+        "value": 0.011799929552659388,
+        "exact_fraction": "67/5678"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.0029738042216796872,
+        "exact_fraction": "-19131/6433174"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-11T10:30:00+08:00",
+      "r_rb": {
+        "value": 0.012533097969991174,
+        "exact_fraction": "71/5665"
+      },
+      "r_hc": {
+        "value": 0.014617823177175061,
+        "exact_fraction": "83/5678"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.0020847252071838876,
+        "exact_fraction": "-67057/32165870"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-11T11:00:00+08:00",
+      "r_rb": {
+        "value": 0.0176522506619594,
+        "exact_fraction": "20/1133"
+      },
+      "r_hc": {
+        "value": 0.020429728777738642,
+        "exact_fraction": "58/2839"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.0027774781157792407,
+        "exact_fraction": "-8934/3216587"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-11T11:30:00+08:00",
+      "r_rb": {
+        "value": 0.01712268314210062,
+        "exact_fraction": "97/5665"
+      },
+      "r_hc": {
+        "value": 0.020781965480803098,
+        "exact_fraction": "59/2839"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.0036592823387024817,
+        "exact_fraction": "-58852/16082935"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-11T14:00:00+08:00",
+      "r_rb": {
+        "value": 0.021359223300970873,
+        "exact_fraction": "11/515"
+      },
+      "r_hc": {
+        "value": 0.023599859105318775,
+        "exact_fraction": "67/2839"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.0022406358043479003,
+        "exact_fraction": "-3276/1462085"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-11T14:30:00+08:00",
+      "r_rb": {
+        "value": 0.020476610767872903,
+        "exact_fraction": "116/5665"
+      },
+      "r_hc": {
+        "value": 0.019549137020077493,
+        "exact_fraction": "111/5678"
+      },
+      "rb_minus_hc_path": {
+        "value": 0.0009274737477954117,
+        "exact_fraction": "29833/32165870"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-11T15:00:00+08:00",
+      "r_rb": {
+        "value": 0.01712268314210062,
+        "exact_fraction": "97/5665"
+      },
+      "r_hc": {
+        "value": 0.020253610426206412,
+        "exact_fraction": "115/5678"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.003130927284105793,
+        "exact_fraction": "-100709/32165870"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-11T21:30:00+08:00",
+      "r_rb": {
+        "value": 0.01412180052956752,
+        "exact_fraction": "16/1133"
+      },
+      "r_hc": {
+        "value": 0.017611835153222965,
+        "exact_fraction": "50/2839"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.003490034623655446,
+        "exact_fraction": "-11226/3216587"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-11T22:00:00+08:00",
+      "r_rb": {
+        "value": 0.012886142983230361,
+        "exact_fraction": "73/5665"
+      },
+      "r_hc": {
+        "value": 0.01567453328636844,
+        "exact_fraction": "89/5678"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.0027883903031380775,
+        "exact_fraction": "-89691/32165870"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-11T22:30:00+08:00",
+      "r_rb": {
+        "value": 0.00617828773168579,
+        "exact_fraction": "7/1133"
+      },
+      "r_hc": {
+        "value": 0.010214864388869321,
+        "exact_fraction": "29/2839"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.00403657665718353,
+        "exact_fraction": "-12984/3216587"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-11T23:00:00+08:00",
+      "r_rb": {
+        "value": 0.006707855251544572,
+        "exact_fraction": "38/5665"
+      },
+      "r_hc": {
+        "value": 0.009686509334272632,
+        "exact_fraction": "55/5678"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.002978654082728059,
+        "exact_fraction": "-95811/32165870"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-12T09:30:00+08:00",
+      "r_rb": {
+        "value": 0.004766107678729038,
+        "exact_fraction": "27/5665"
+      },
+      "r_hc": {
+        "value": 0.006516379006692497,
+        "exact_fraction": "37/5678"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.0017502713279634594,
+        "exact_fraction": "-56299/32165870"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-12T10:00:00+08:00",
+      "r_rb": {
+        "value": -0.003706972639011474,
+        "exact_fraction": "-21/5665"
+      },
+      "r_hc": {
+        "value": -0.0019373018668545263,
+        "exact_fraction": "-11/5678"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.0017696707721569476,
+        "exact_fraction": "-56923/32165870"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-12T10:30:00+08:00",
+      "r_rb": {
+        "value": 0.003177405119152692,
+        "exact_fraction": "18/5665"
+      },
+      "r_hc": {
+        "value": 0.0031701303275801338,
+        "exact_fraction": "9/2839"
+      },
+      "rb_minus_hc_path": {
+        "value": 7.274791572558118e-06,
+        "exact_fraction": "117/16082935"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-12T11:00:00+08:00",
+      "r_rb": {
+        "value": 0.000353045013239188,
+        "exact_fraction": "2/5665"
+      },
+      "r_hc": {
+        "value": 0.0014089468122578373,
+        "exact_fraction": "4/2839"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.0010559017990186494,
+        "exact_fraction": "-16982/16082935"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-12T11:30:00+08:00",
+      "r_rb": {
+        "value": -0.016063548102383054,
+        "exact_fraction": "-91/5665"
+      },
+      "r_hc": {
+        "value": -0.012680521310320535,
+        "exact_fraction": "-36/2839"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.0033830267920625184,
+        "exact_fraction": "-54409/16082935"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-12T14:00:00+08:00",
+      "r_rb": {
+        "value": -0.01676963812886143,
+        "exact_fraction": "-19/1133"
+      },
+      "r_hc": {
+        "value": -0.011095456146530468,
+        "exact_fraction": "-63/5678"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.005674181982330962,
+        "exact_fraction": "-36503/6433174"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-12T14:30:00+08:00",
+      "r_rb": {
+        "value": -0.02206531332744925,
+        "exact_fraction": "-25/1133"
+      },
+      "r_hc": {
+        "value": -0.013208876364917225,
+        "exact_fraction": "-75/5678"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.008856436962532025,
+        "exact_fraction": "-56975/6433174"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-12T15:00:00+08:00",
+      "r_rb": {
+        "value": -0.025419240953221536,
+        "exact_fraction": "-144/5665"
+      },
+      "r_hc": {
+        "value": -0.01549841493483621,
+        "exact_fraction": "-44/2839"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.009920826018385325,
+        "exact_fraction": "-159556/16082935"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-12T21:30:00+08:00",
+      "r_rb": {
+        "value": -0.02789055604589585,
+        "exact_fraction": "-158/5665"
+      },
+      "r_hc": {
+        "value": -0.013032758013384995,
+        "exact_fraction": "-37/2839"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.014857798032510857,
+        "exact_fraction": "-238957/16082935"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-12T22:00:00+08:00",
+      "r_rb": {
+        "value": -0.03089143865842895,
+        "exact_fraction": "-35/1133"
+      },
+      "r_hc": {
+        "value": -0.014441704825642832,
+        "exact_fraction": "-41/2839"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.01644973383278612,
+        "exact_fraction": "-52912/3216587"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-12T22:30:00+08:00",
+      "r_rb": {
+        "value": -0.0324801412180053,
+        "exact_fraction": "-184/5665"
+      },
+      "r_hc": {
+        "value": -0.01567453328636844,
+        "exact_fraction": "-89/5678"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.016805607931636855,
+        "exact_fraction": "-540567/32165870"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-12T23:00:00+08:00",
+      "r_rb": {
+        "value": -0.03283318623124448,
+        "exact_fraction": "-186/5665"
+      },
+      "r_hc": {
+        "value": -0.01514617823177175,
+        "exact_fraction": "-43/2839"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.01768700799947273,
+        "exact_fraction": "-284459/16082935"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-13T09:30:00+08:00",
+      "r_rb": {
+        "value": -0.03671668137687555,
+        "exact_fraction": "-208/5665"
+      },
+      "r_hc": {
+        "value": -0.017787953504755195,
+        "exact_fraction": "-101/5678"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.018928727872120354,
+        "exact_fraction": "-608859/32165870"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-13T10:00:00+08:00",
+      "r_rb": {
+        "value": -0.0441306266548985,
+        "exact_fraction": "-50/1133"
+      },
+      "r_hc": {
+        "value": -0.022014793941528707,
+        "exact_fraction": "-125/5678"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.022115832713369792,
+        "exact_fraction": "-142275/6433174"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-13T10:30:00+08:00",
+      "r_rb": {
+        "value": -0.053486319505736984,
+        "exact_fraction": "-303/5665"
+      },
+      "r_hc": {
+        "value": -0.02676998943289891,
+        "exact_fraction": "-76/2839"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.026716330072838072,
+        "exact_fraction": "-429677/16082935"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-13T11:00:00+08:00",
+      "r_rb": {
+        "value": -0.049779346866725506,
+        "exact_fraction": "-282/5665"
+      },
+      "r_hc": {
+        "value": -0.021486438886932017,
+        "exact_fraction": "-61/2839"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.02829290797979349,
+        "exact_fraction": "-455033/16082935"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-13T11:30:00+08:00",
+      "r_rb": {
+        "value": -0.048190644307149165,
+        "exact_fraction": "-273/5665"
+      },
+      "r_hc": {
+        "value": -0.017435716801690735,
+        "exact_fraction": "-99/5678"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.030754927505458426,
+        "exact_fraction": "-989259/32165870"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-13T14:00:00+08:00",
+      "r_rb": {
+        "value": -0.030185348631950572,
+        "exact_fraction": "-171/5665"
+      },
+      "r_hc": {
+        "value": 0.008629799225079253,
+        "exact_fraction": "49/5678"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.03881514785702983,
+        "exact_fraction": "-1248523/32165870"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-13T14:30:00+08:00",
+      "r_rb": {
+        "value": -0.03089143865842895,
+        "exact_fraction": "-35/1133"
+      },
+      "r_hc": {
+        "value": 0.008453680873547023,
+        "exact_fraction": "24/2839"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.039345119531975975,
+        "exact_fraction": "-126557/3216587"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-13T15:00:00+08:00",
+      "r_rb": {
+        "value": -0.04872021182700794,
+        "exact_fraction": "-276/5665"
+      },
+      "r_hc": {
+        "value": -0.01620288834096513,
+        "exact_fraction": "-46/2839"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.03251732348604282,
+        "exact_fraction": "-522974/16082935"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-13T21:30:00+08:00",
+      "r_rb": {
+        "value": -0.046954986760812,
+        "exact_fraction": "-266/5665"
+      },
+      "r_hc": {
+        "value": -0.018492426910884114,
+        "exact_fraction": "-105/5678"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.02846255984992789,
+        "exact_fraction": "-915523/32165870"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-13T22:00:00+08:00",
+      "r_rb": {
+        "value": -0.04342453662842012,
+        "exact_fraction": "-246/5665"
+      },
+      "r_hc": {
+        "value": -0.013737231419513914,
+        "exact_fraction": "-39/2839"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.02968730520890621,
+        "exact_fraction": "-477459/16082935"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-13T22:30:00+08:00",
+      "r_rb": {
+        "value": -0.043954104148278904,
+        "exact_fraction": "-249/5665"
+      },
+      "r_hc": {
+        "value": -0.01532229658330398,
+        "exact_fraction": "-87/5678"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.028631807564974927,
+        "exact_fraction": "-920967/32165870"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-13T23:00:00+08:00",
+      "r_rb": {
+        "value": -0.04466019417475728,
+        "exact_fraction": "-23/515"
+      },
+      "r_hc": {
+        "value": -0.017787953504755195,
+        "exact_fraction": "-101/5678"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.026872240670002087,
+        "exact_fraction": "-78579/2924170"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-14T09:30:00+08:00",
+      "r_rb": {
+        "value": -0.04201235657546337,
+        "exact_fraction": "-238/5665"
+      },
+      "r_hc": {
+        "value": -0.010919337794998239,
+        "exact_fraction": "-31/2839"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.031093018780465134,
+        "exact_fraction": "-500067/16082935"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-14T10:00:00+08:00",
+      "r_rb": {
+        "value": -0.0383053839364519,
+        "exact_fraction": "-217/5665"
+      },
+      "r_hc": {
+        "value": -0.007044734061289186,
+        "exact_fraction": "-20/2839"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.031260649875162715,
+        "exact_fraction": "-502763/16082935"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-14T10:30:00+08:00",
+      "r_rb": {
+        "value": -0.037069726390114736,
+        "exact_fraction": "-42/1133"
+      },
+      "r_hc": {
+        "value": -0.004755195491370201,
+        "exact_fraction": "-27/5678"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.03231453089874454,
+        "exact_fraction": "-207885/6433174"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-14T11:00:00+08:00",
+      "r_rb": {
+        "value": -0.03671668137687555,
+        "exact_fraction": "-208/5665"
+      },
+      "r_hc": {
+        "value": -0.0052835505459668895,
+        "exact_fraction": "-15/2839"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.031433130830908665,
+        "exact_fraction": "-505537/16082935"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-14T11:30:00+08:00",
+      "r_rb": {
+        "value": -0.031597528684907325,
+        "exact_fraction": "-179/5665"
+      },
+      "r_hc": {
+        "value": -0.0008805917576611482,
+        "exact_fraction": "-5/5678"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.030716936927246176,
+        "exact_fraction": "-988037/32165870"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-14T14:00:00+08:00",
+      "r_rb": {
+        "value": -0.03742277140335393,
+        "exact_fraction": "-212/5665"
+      },
+      "r_hc": {
+        "value": -0.004579077139837971,
+        "exact_fraction": "-13/2839"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.03284369426351596,
+        "exact_fraction": "-528223/16082935"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-14T14:30:00+08:00",
+      "r_rb": {
+        "value": -0.0411297440423654,
+        "exact_fraction": "-233/5665"
+      },
+      "r_hc": {
+        "value": -0.008277562522014795,
+        "exact_fraction": "-47/5678"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.03285218152035061,
+        "exact_fraction": "-1056719/32165870"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-14T15:00:00+08:00",
+      "r_rb": {
+        "value": -0.04201235657546337,
+        "exact_fraction": "-238/5665"
+      },
+      "r_hc": {
+        "value": -0.008982035928143712,
+        "exact_fraction": "-3/334"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.03303032064731966,
+        "exact_fraction": "-62497/1892110"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-14T21:30:00+08:00",
+      "r_rb": {
+        "value": -0.04642541924095322,
+        "exact_fraction": "-263/5665"
+      },
+      "r_hc": {
+        "value": -0.012152166255723846,
+        "exact_fraction": "-69/5678"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.034273252985229374,
+        "exact_fraction": "-1102429/32165870"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-14T22:00:00+08:00",
+      "r_rb": {
+        "value": -0.043954104148278904,
+        "exact_fraction": "-249/5665"
+      },
+      "r_hc": {
+        "value": -0.010743219443466009,
+        "exact_fraction": "-61/5678"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.0332108847048129,
+        "exact_fraction": "-1068257/32165870"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-14T22:30:00+08:00",
+      "r_rb": {
+        "value": -0.047837599293909974,
+        "exact_fraction": "-271/5665"
+      },
+      "r_hc": {
+        "value": -0.014441704825642832,
+        "exact_fraction": "-41/2839"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.03339589446826714,
+        "exact_fraction": "-537104/16082935"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-14T23:00:00+08:00",
+      "r_rb": {
+        "value": -0.04095322153574581,
+        "exact_fraction": "-232/5665"
+      },
+      "r_hc": {
+        "value": -0.008629799225079253,
+        "exact_fraction": "-49/5678"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.03232342231066655,
+        "exact_fraction": "-1039711/32165870"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-15T09:30:00+08:00",
+      "r_rb": {
+        "value": -0.042188879082082964,
+        "exact_fraction": "-239/5665"
+      },
+      "r_hc": {
+        "value": -0.010743219443466009,
+        "exact_fraction": "-61/5678"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.03144565963861696,
+        "exact_fraction": "-1011477/32165870"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-15T10:00:00+08:00",
+      "r_rb": {
+        "value": -0.03971756398940865,
+        "exact_fraction": "-45/1133"
+      },
+      "r_hc": {
+        "value": -0.006868615709756957,
+        "exact_fraction": "-39/5678"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.032848948279651694,
+        "exact_fraction": "-211323/6433174"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-15T10:30:00+08:00",
+      "r_rb": {
+        "value": -0.040776699029126215,
+        "exact_fraction": "-21/515"
+      },
+      "r_hc": {
+        "value": -0.0063402606551602675,
+        "exact_fraction": "-18/2839"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.03443643837396595,
+        "exact_fraction": "-50349/1462085"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-15T11:00:00+08:00",
+      "r_rb": {
+        "value": -0.03971756398940865,
+        "exact_fraction": "-45/1133"
+      },
+      "r_hc": {
+        "value": -0.0040507220852412824,
+        "exact_fraction": "-23/5678"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.03566684190416737,
+        "exact_fraction": "-229451/6433174"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-15T11:30:00+08:00",
+      "r_rb": {
+        "value": -0.035127978817299205,
+        "exact_fraction": "-199/5665"
+      },
+      "r_hc": {
+        "value": 0.0024656569214512153,
+        "exact_fraction": "7/2839"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.03759363573875042,
+        "exact_fraction": "-604616/16082935"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-15T14:00:00+08:00",
+      "r_rb": {
+        "value": -0.03442188879082083,
+        "exact_fraction": "-39/1133"
+      },
+      "r_hc": {
+        "value": 0.0031701303275801338,
+        "exact_fraction": "9/2839"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.03759201911840097,
+        "exact_fraction": "-120918/3216587"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-15T14:30:00+08:00",
+      "r_rb": {
+        "value": -0.030538393645189763,
+        "exact_fraction": "-173/5665"
+      },
+      "r_hc": {
+        "value": 0.006868615709756957,
+        "exact_fraction": "39/5678"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.037407009354946716,
+        "exact_fraction": "-1203229/32165870"
+      }
+    },
+    {
+      "business_timestamp": "2021-10-15T15:00:00+08:00",
+      "r_rb": {
+        "value": -0.0353045013239188,
+        "exact_fraction": "-40/1133"
+      },
+      "r_hc": {
+        "value": 0.0038746037337090526,
+        "exact_fraction": "11/2839"
+      },
+      "rb_minus_hc_path": {
+        "value": -0.03917910505762785,
+        "exact_fraction": "-126023/3216587"
+      }
+    }
+  ],
+  "terminal_gap": {
+    "value": -0.03917910505762785,
+    "exact_fraction": "-126023/3216587"
+  },
+  "minimum_return_difference": {
+    "value": -0.026716330072838072,
+    "exact_fraction": "-429677/16082935"
+  },
+  "frozen_case_only_test": {
+    "threshold": 0.05,
+    "threshold_exact_fraction": "1/20",
+    "abs_terminal_gap_gte_0_05": false,
+    "abs_minimum_return_difference_gte_0_05": false,
+    "boolean_or": false,
+    "eligible_pair": [
+      "rb",
+      "hc"
+    ],
+    "i_enters_test": false
+  },
+  "business_interpretation": "NOT_PERFORMED_WORKER_TRANSPORT_ONLY"
+}

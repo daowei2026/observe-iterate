@@ -1,0 +1,91 @@
+--- attempt-01/extract_tail.py
++++ corrected/extract_tail.py
+@@ -87,9 +87,21 @@
+     version, offset, item_size, alignment = struct.unpack_from('<4I', b)
+     n = struct.unpack_from('<q', b, 16)[0]
+     assert (version, offset, item_size, alignment) == (0, 64, 8, 8)
+-    assert n >= 0 and len(b) == 64 + 8 * n
++    assert n >= 0 and len(b) >= 64 + 8 * n
+     code = 'd' if dtype == 'f8' else 'q'
+-    return list(struct.unpack('<' + str(n) + code, b[64:]))
++    return list(struct.unpack('<' + str(n) + code, b[64:64 + 8 * n]))
++
++
++def logical_source_bytes(p):
++    # 原PNV为预分配文件。只读取头部声明的有效行；容量尾部不是行情行。
++    with p.open('rb') as f:
++        header = f.read(64)
++        assert len(header) == 64
++        count = struct.unpack_from('<q', header, 16)[0]
++        assert count == 8964
++        payload = f.read(count * 8)
++        assert len(payload) == count * 8
++    return header + payload
+ 
+ 
+ def ratio(q):
+@@ -101,7 +113,14 @@
+ 
+ 
+ def run():
+-    marker = OUT / '.runtime/extraction-started.json'
++    assert sys.argv[1:] in ([], ['--repair-dba-capacity'])
++    repair = bool(sys.argv[1:])
++    if repair:
++        assert read_json('logs/extraction-01.json')['returncode'] == 1
++        failure = read_json('EXTRACTION_FAILURE.json')
++        assert 'sv, v = dba(sb, dtype), dba(b, dtype)' in failure['traceback']
++        assert not any((OUT / f'{s}_30m_tail.csv').exists() for s in SYMBOLS)
++    marker = OUT / ('.runtime/extraction-repair-started.json' if repair else '.runtime/extraction-started.json')
+     fd = os.open(marker, os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o600)
+     os.write(fd, (json.dumps({'started_at': now(), 'script_sha256': sha(Path(__file__).read_bytes())}) + '\n').encode())
+     os.close(fd)
+@@ -137,7 +156,7 @@
+             sp = stage / (field + '.dba')
+             dp = srcdir / (field + '.dba')
+             stage_before, pnv_before = stat(sp), stat(dp)
+-            sb, b = sp.read_bytes(), dp.read_bytes()
++            sb, b = sp.read_bytes(), logical_source_bytes(dp)
+             expected = prior[str(sp)]
+             assert len(sb) == expected['bytes'] and sha(sb) == expected['sha256'], str(sp)
+             sv, v = dba(sb, dtype), dba(b, dtype)
+@@ -152,7 +171,9 @@
+             assert dba(frozen, dtype) == v[:2160]
+             record = {'symbol': sym, 'field': field, 'dtype': dtype, 'source_path': str(dp),
+                       'source_stat_before': pnv_before, 'source_sha256_before': sha(b),
+-                      'source_bytes': len(b), 'source_rows': len(v),
++                      'source_bytes': pnv_before['bytes'], 'source_logical_bytes': len(b), 'source_rows': len(v),
++                      'source_full_file_sha256': None,
++                      'source_hash_scope': 'original header64 + all 8964 logical rows; preallocated capacity beyond logical length not hashed',
+                       'source_header_hex': b[:64].hex(),
+                       'staging_path': str(sp), 'staging_stat_before': stage_before,
+                       'staging_sha256_before': sha(sb), 'prior_staging_sha256': expected['sha256'],
+@@ -224,7 +245,7 @@
+             writer.writerows(rows)
+         for record in records:
+             dp, sp = Path(record['source_path']), Path(record['staging_path'])
+-            record['source_sha256_after'] = sha(dp.read_bytes())
++            record['source_sha256_after'] = sha(logical_source_bytes(dp))
+             record['source_stat_after'] = stat(dp)
+             record['staging_sha256_after'] = sha(sp.read_bytes())
+             record['staging_stat_after'] = stat(sp)
+@@ -304,7 +325,9 @@
+          'timezone': 'Asia/Shanghai', 'source_version_policy': 'same GTQH snapshot with full numeric payload equal to prior SHA256-verified staging; no replacement source',
+          'outputs': csv_stats, 'timestamp_alignment': alignment,
+          'source_identity_check': 'SOURCE_IDENTITY_CHECK.json', 'metrics': 'TAIL_MECHANICAL_METRICS.json',
+-         'extraction_attempts': 1, 'feature_engine_calls': 0, 'interpolation': False,
++         'extraction_attempts': 2 if repair else 1,
++         'correction': 'same-script DBA logical length versus preallocated capacity fix' if repair else None,
++         'feature_engine_calls': 0, 'interpolation': False,
+          'frozen_decision_modified': False, 'professional_automatically_continued': False,
+          'tool': {'name': 'extract_tail.py', 'python': platform.python_version(),
+                   'script_sha256': sha(Path(__file__).read_bytes())}, 'finished_at': now()})
+@@ -315,7 +338,7 @@
+     try:
+         run()
+     except Exception as exc:
+-        save('EXTRACTION_FAILURE.json', {'started_at': started, 'failed_at': now(),
++        save('EXTRACTION_REPAIR_FAILURE.json' if sys.argv[1:] else 'EXTRACTION_FAILURE.json', {'started_at': started, 'failed_at': now(),
+              'elapsed_seconds': time.monotonic() - start, 'error': repr(exc),
+              'traceback': traceback.format_exc(), 'source_opened_paths': sorted(set(opened)),
+              'feature_engine_calls': 0})
