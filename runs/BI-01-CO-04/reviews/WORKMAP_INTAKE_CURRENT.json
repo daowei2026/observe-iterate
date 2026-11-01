@@ -4,18 +4,18 @@
     "bi01": {
       "manager": {
         "role": "management",
-        "context": "chatgpt:BI-01-CO-04:management / BI01-CO-04-R0004-READER-INTAKE-98c1c699"
+        "context": "chatgpt:BI-01-CO-04:management / BI01-CO-04-R0006-PROFESSIONAL-INTAKE-6fd91174"
       },
-      "snapshot": "8169c23ff60c21da382a32c8e104c99678a2a793a04f8185b1d85ddc18771fbd",
-      "observed_commit": "56ad93f138b6f62fb8435a8c667018f2ce701805",
+      "snapshot": "129a14657244cbac8ebeb9ce509f6ea7e5627254e283e278e4b53ad7fd84f589",
+      "observed_commit": "cc426f542286a43df6ac4f3a3e8ef6c860ddc62d",
       "decision_report": {
-        "path": "runs/BI-01-CO-04/reviews/management-R0004/DECISION.md",
-        "blob": "15b169fff99722b134eb5c4a5351ae7691c21416"
+        "path": "runs/BI-01-CO-04/reviews/management-R0006/DECISION.md",
+        "blob": "21bfd21019a483a22b72168135f2792804848434"
       },
       "effort": {
-        "known_pro_turns": 0,
-        "coverage": "M_START_COMPLETE_READER_ACCEPTED_PROFESSIONAL_NOT_STARTED",
-        "source_note": "R0004 accepted the exact R0003 independent Workmap Reader PASS. The Reader call does not count toward the Professional budget; no Professional call or business result is recorded yet."
+        "known_pro_turns": 1,
+        "coverage": "FIRST_PROFESSIONAL_RESULT_ACCEPTED_LIMITED_INPUT_UNQUALIFIED_RECOVERY_ORDER_ISSUED",
+        "source_note": "R0005 is the first effective Professional call. R0006 accepted only INPUT_UNQUALIFIED_FOR_ASOF_COMPARISON, kept the same business question active, and issued a minimum technical recovery order. Worker calls do not count toward the Professional budget."
       },
       "reader_check": {
         "status": "RECORDED",
@@ -39,18 +39,50 @@
         },
         "accepted_by": "BI01-CO-04-R0004-READER-INTAKE-98c1c699"
       },
+      "professional_intake": {
+        "invocation_id": "BI01-CO-04-R0005-PROFESSIONAL-678c6b83",
+        "assignment_token": "0649d81fca1b11b13103f0a0202e943936b6edb65cd173ff",
+        "verdict": "INPUT_UNQUALIFIED_FOR_ASOF_COMPARISON",
+        "accepted_scope": "INPUT_QUALIFICATION_ONLY",
+        "market_no_candidate_claim": false,
+        "asof_t": null,
+        "candidate_ranking": null,
+        "task_status": "ACTIVE_SAME_QUESTION_PENDING_INPUT_RECOVERY",
+        "report": {
+          "path": "runs/BI-01-CO-04/artifacts/R0005/REPORT.md",
+          "blob": "863e4773fcf5c28ba265db6ceb42560981385d72"
+        },
+        "evidence_index": {
+          "path": "runs/BI-01-CO-04/artifacts/R0005/EVIDENCE_INDEX.md",
+          "blob": "976a7c028c58e066dc09668a430816d87819fd87"
+        },
+        "input_qualification": {
+          "path": "runs/BI-01-CO-04/artifacts/R0005/INPUT_QUALIFICATION.json",
+          "blob": "6489676fef71b5b02cc4ab45e2b0ad0d4119fb81"
+        },
+        "accepted_by": "BI01-CO-04-R0006-PROFESSIONAL-INTAKE-6fd91174",
+        "trigger_states": {
+          "FIRST_USABLE_ASOF_LOOP": "NOT_YET",
+          "MATERIAL_INPUT_OR_METHOD_CHANGE": "NOT_YET",
+          "ACTIVE_WORK_EFFORT_REVIEW": "NOT_YET"
+        }
+      },
+      "technical_recovery": {
+        "order_id": "BI01CO04-INPUT-RECOVERY-01",
+        "order_path": "runs/BI-01-CO-04/reviews/management-R0006/WORKER_ORDER.md",
+        "order_blob": "daccc14ba38950677c7dbf794cd16caa9c3f517e",
+        "state": "ISSUED_NOT_SENT",
+        "return_to": "chatgpt:BI-01-CO-04:management"
+      },
       "dispatch": {
         "task_path": "runs/BI-01-CO-04/01_当前任务.md",
         "task_id": "BI-01-CO-04-CASE-INITIAL-ASOF",
         "task_blob": "9fee8ee372094282529020760329314394dc6b68",
         "decision": "ISSUED",
-        "kind": "NEW_STAGE",
-        "requires_reader_check": true,
-        "reader_reason": "R0004 accepted the exact independent Reader PASS for the current reader fingerprint. The Reader condition is satisfied; an actual dispatch preflight and a separately recorded Professional send are still required.",
-        "reader_acceptance_ref": {
-          "path": "runs/BI-01-CO-04/reviews/management-R0004/DECISION.md",
-          "blob": "15b169fff99722b134eb5c4a5351ae7691c21416"
-        },
+        "kind": "EXISTING_AUTHORIZED_REPAIR",
+        "requires_reader_check": false,
+        "reader_reason": "R0006 preserves the same adopted CASE_OBSERVATION question, authority, task blob and method inputs. The only current action is recovery of missing instance bytes identified by the first Professional call; no second Reader is required before same-work continuation after technical acceptance.",
+        "continuation_condition": "Management accepts the P0 recovery package or an exact blocker and explicitly routes the existing task back to the original Professional.",
         "method_paths": [
           "professional/README.md",
           "professional/exploration/README.md",
