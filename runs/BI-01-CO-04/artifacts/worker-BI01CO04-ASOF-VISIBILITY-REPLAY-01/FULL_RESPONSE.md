@@ -59,4 +59,4 @@ BLOCKER_REPORT和NATIVE_OBSERVABILITY_ASSESSMENT给出实测方法清单、结�
 
 ## GitHub 与回交
 
-仓库daowei2026/observe-iterate，分支fy/feature-based-case-observation；唯一输出`runs/BI-01-CO-04/artifacts/worker-BI01CO04-ASOF-VISIBILITY-REPLAY-01/`。最终数据commit在封口时记录，完整提交SHA由本聊天最终回交，避免自引用。只回原Management供技术接收，不发其他聊天、不操作手机、不改旧包、管理决定、任务、地图、Intake或主控Goal。
+仓库daowei2026/observe-iterate，分支fy/feature-based-case-observation；唯一输出`runs/BI-01-CO-04/artifacts/worker-BI01CO04-ASOF-VISIBILITY-REPLAY-01/`。数据基线commit：`0cf1f1e9cd56f442d0b94657058f480eb761daa1`；最终完整封口为其后继提交，精确SHA由本聊天回交，避免自引用。只回原Management供技术接收，不发其他聊天、不操作手机、不改旧包、管理决定、任务、地图、Intake或主控Goal。

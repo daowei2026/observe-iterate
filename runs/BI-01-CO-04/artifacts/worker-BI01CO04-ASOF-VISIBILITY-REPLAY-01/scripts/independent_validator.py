@@ -92,6 +92,16 @@ def validate_package():
     matrix=json.loads((ROOT/'MATRIX_EXECUTION_RECEIPTS.json').read_text())
     require(len(matrix)==5 and all(v['native_success'] for v in matrix),'NATIVE_MATRIX_INCOMPLETE')
     require(m['native_process_invocations']==9 and m['successful_native_computations']==7,'ATTEMPT_ACCOUNTING_MISMATCH')
+    logs=[('rb','big',name) for name in ['native_engine','temp_redirect_check','pnv_prefix_probe','observer_capability']]
+    logs += [(s,c,'matrix_'+s+'_'+c) for s in ['rb','hc','i'] for c in ['big','mid'] if (s,c)!=('rb','big')]
+    for symbol,scale,name in logs:
+        text=(ROOT/'logs'/ (name+'.stdout')).read_text()
+        line=next(line for line in text.splitlines() if line.startswith('开始优化 ScaleTurnCalendar 参数: '))
+        consumed=json.loads(line.split('参数: ',1)[1])
+        frozen=json.loads((ROOT/f'copied/baseline/copied/config_and_consumption/jobs/{symbol}__{scale}.task.json').read_text())
+        current=json.loads((ROOT/f'execution/tasks/{symbol}__{scale}.json').read_text())
+        require(consumed==json.loads(frozen['task_params']['params'])==json.loads(current['task_params']['params']),'ACTUAL_PARAMETER_CONSUMPTION_MISMATCH')
+        require('tar_sym = "'+symbol+'"' in text,'ACTUAL_TARGET_MISMATCH')
     capability=(ROOT/'logs/observer_capability.stdout').read_text()
     require('NATIVE_OBJECT_CAPABILITY_END' in capability,'CAPABILITY_PROBE_INCOMPLETE')
     require(m['final_blocker']=='EVENT_OBSERVATION_AND_PER_EVENT_INPUT_FRONTIER_NOT_EXPOSED','TEMP_FAILURE_MISUSED_AS_FINAL_BLOCKER')
@@ -129,6 +139,7 @@ def validate_package():
     return {'result':'PASS_BLOCKER_DELIVERY_INTEGRITY','qualification':'BLOCKED_NO_LOOKAHEAD_PROOF',
             'production_no_lookahead_tests':'NOT_COMPLETED','lifecycle_observations':0,'baseline_rows_retained':620,
             'native_calls':9,'native_successful_computations':7,'native_object_rows':524,
+            'native_parameter_consumption_verified_calls':9,
             'baseline_matches':619,'explicit_out_of_prefix_rows':1,
             'structural_bad_fixtures_rejected':6,'false_qualified_real_package_rejected':True}
 
