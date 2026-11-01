@@ -1,6 +1,6 @@
 # BI-01-CO-04 操作主控运行事实
 
-更新时间：2026-11-01T22:43:47.680625+00:00（北京时间 2026-11-02T06:43:47.680625+08:00）。本文件是运行事实的滚动投影；正式业务目标、工作安排和接收结论取 Run README、推进地图、当前任务及有权 Pro 决定。
+更新时间：2026-11-01T23:30:24.126422+00:00（北京时间 2026-11-02T07:30:24.126422+08:00）。本文件是运行事实的滚动投影；正式业务目标、工作安排和接收结论取 Run README、推进地图、当前任务及有权 Pro 决定。
 
 ## 身份与来源
 
@@ -8,7 +8,7 @@
 - Owner GO 原始消息时点：2026-11-01T14:33:16.505Z；原文位于 ../OWNER_START.md，已与原消息逐字核验。
 - 操作 controller：cgpterm@86dec991abb27a927c1b5c22af1e51b3f39b918b。
 - 专业及运行规则：observe-iterate@b6ccf766dac055a793e75f76b77a73f4cfc74064；动态采用取当前 Run 实际 Git 记录。
-- 截至本记录，从 Owner GO 起总经过 29431 秒（约 490 分钟），包含准备、外部等待、操作、收取与恢复；模型队列和实际思考耗时未单独取得。
+- 截至本记录，从 Owner GO 起总经过 32227 秒（约 537 分钟），包含准备、外部等待、操作、收取与恢复；模型队列和实际思考耗时未单独取得。
 
 ## 真实 Pro 调用
 
@@ -23,20 +23,22 @@
 | R0007 | 原管理接收第一技术包 | 19:53:18.717 | 20:05:36.173 | 接收诊断基线、消费输入路线变化，保持Professional阻断，签发一次可知性重放 |
 
 | R0008 | 原管理接收重放与业务取舍 | 21:53:21.971 | 22:04:01.932 | 实际接收B出口、关闭native visibility路线，当前Case采用QUERY_COMPLETION_ASOF_V1，放行原专业续作 |
-| R0009 | 第二次Professional同任务续作 | 22:22:10.619（首次正面提交实证） | 手机完整待核；远端已完整 | 固定snapshot无候选已先冻结；bounded-tail字节未交付，评价未执行，EFFORT到期 |
+| R0009 | 第二次Professional同任务续作 | 22:22:10.619（首次正面提交实证） | 22:43:19.538（当前reply可见；GitHub完成来源） | 已remote_verified并handled；无候选先冻结，tail未交付，EFFORT已由R0010消费 |
+
+| R0010 | 原管理投入复看及Case闭合安排 | 23:04:55.705（首次正面提交实证） | 23:18:39.695 | 限域接收冻结无候选，消费EFFORT，签一次纯尾部运输及最终专业闭合上限 |
 
 这些时点均为 2026-11-01 UTC（后段已进入北京时间11月2日）。提交到观察完成的区间包含监督等待，不能据此分解实际思考耗时。
 
 ## 当前资格与后继
 
-- 两个有限Worker单均已真实结束并由原Management接收关闭。第一包dfdf843b47c03c0121fd7151b72f24adb5d986c0为诊断基线；第二包e25e585779152aa670d54c87efecba984af4b7e3为BLOCKED_NO_LOOKAHEAD_PROOF，448项receipt/449项封口hash已由主控独立核验。
-- R0008真实接收B出口并关闭同类native event-level visibility技术搜索；未将旧first-seen资格改PASS。仅本Case采用QUERY_COMPLETION_ASOF_V1：固定2021-09-30 15:00前缀，六组query完成后状态可用；方向仅固定几何proxy，先冻结判断再读至2021-10-15的评价tail。
-- R0008明确授权主控登记新快照并机械接合字段，93436588999d6af0724348b828a5d899134bb3d3的snapshot及适用check/dispatch实际PASS，复用旧Reader有真实管理理由；R7旧HOLD已被R8合法替代，不再作为当前阻断。
-- R0009已向原BI04专业一次实际提交，IME1/Send1/全文exact/Pro最高/控制释放。955UTF8/627UTF16的准确发送凭证a4d46cb32457d778233ce11d0a58a47a36476de8；服务端精确提交事件时刻未暴露，以首次正面实证22:22:10.619Z作监督起点。
-- 实际R0009结果2970cd94f74594f9c1f034706ec1332daef0d5da：固定snapshot下NO_CANDIDATE已提交冻结，后续评价因原source一致的bounded-tail行未运输而未执行。不能声称无候选已获市场支持/反证或首完整as-of循环完成。完整原报告及两Return/身份/schema/实物refs通过，原报告逐字归档607423622b584188a814d0f269c9d363b27e16c4。
-- Professional有效回交2、实际派发2，完整as-of市场循环仍0。R0009正式EFFORT=SATISFIED，原Management的decide复看责任到期；当前生成R0010精确管理请求，未有R0010手机Sender/IME/Send，不把专业的运输建议当已签Worker工单。
-- R0009手机最新22:35:13.354Z仍思考；远端完成后的有界phone grace仍待新鲜完成证据。fresh network6已按22:42:44.795Z到期准入执行NO_SEND，主控不phone/不并行抢锁，不因已收GitHub结果假称手机长答已捕获。
-- 当前真实业务后继由原Management按完整目标、已成冻结业务判断、输入缺口与EFFORT作取舍，主控不代签恢复单、不自选业务路线。Owner首版、必要独立业务审查、相邻Case及整体阶段收拢仍未完成。
+- R0009的固定query snapshot NO_CANDIDATE已被R0010实际管理限域接收；尚无held-out outcome，不计首个完整as-of市场循环。Professional有效回交2、派发2，完整市场循环仍0。
+- R0010已实际消费EFFORT并纠正R0008过宽的no-Worker表述。native visibility/first-seen/feature replay路线仍关闭；仅允许一次同源纯行情tail运输和一次原Professional tail-only closure，当前Case之后明确停止，再由管理决定相邻Case与整个阶段后继。
+- 新签单BI01CO04-FROZEN-TAIL-TRANSPORT-01，e2ca9cf0e264855f4c10a4f081fed13db1603e53；同一source、固定三品种30m、cutoff anchor及至2021-10-15 15:00的tail，两个出口TAIL_PACKAGE_READY或TAIL_SOURCE_INACCESSIBLE，不重算特征、不作市场判断。
+- 原实际Worker同一thread01a19881-cebf-73f3-a4d3-76c57bce0fe4，新turn 01a1996f-9fbb-7e61-9905-58dd929335c1 已真实一次派发并采用；gpt-6.1-sol/xhigh、cwd、原生有限Goal active及原单读取动作均核。不是恢复两个旧已完成Goal，也未新建聊天或服务器。
+- R0010明确要求的Worker输入快照已登记43223e4a84cbf32c25745ce6b1cbce43c82488ed，工单preflight和当前技术输入check PASS。Professional HOLD与需重算标志仍保留；只有原Management实际接收新tail后才可签最后专业closure。
+- 当前Worker结果尚未回交；下一常规复核 2026-11-01T23:47:29.057637+00:00。完成、明确错误或Owner输入可提前处理；不以tokens/heartbeat判工程进展，不重派。若20min无实质动作，先排除真实运行/构建/压缩或合法等待，再按既有一次恢复规则。
+- 所有Prophone轮次均已完整接收handled，无phoneactor/Send未知。shared network lease23:51:52.061Z只在下一实际phone业务按资格处理，不对已handled聊天机械探针。两旧Worker单完成接收关闭，新有限单执行中。
+- Worker新结果按原签单return_to原Management技术接收；主控不解释机械指标、不消费业务Gate、不自动续Professional。当前Case之后的Owner首版、必要独立业务审查、预先成套相邻Case及整个探索目标仍未完成。
 
 ## 保留的运行限制
 
@@ -68,3 +70,5 @@
 - [重放实际派发凭证](worker-BI01CO04-ASOF-VISIBILITY-REPLAY-01/DISPATCH_RECEIPT.json)
 
 - R0008发送ready至首实际phone超过120秒33.962930秒，R0009到期观察首实际phone较原due+120秒分别按server/local迟59.398/63.177秒；原deadline和独立时钟均保留，不通过新观察期限掩盖。
+
+- R0010计划唤醒实际已进入新回合且Goal active，但fire后线程历史数据库锁使计划记failed、脚本ACK skipped；已独立核同一令牌/实际新turn/model/owner/Goal后以原CLI登记真实active，未伪造脚本ACK或重投/恢复Goal。原故障保留。R0010到期观察比due+120秒按server/local迟100.658/104.449秒，实际时钟保留。
