@@ -1,6 +1,6 @@
 # 方法探索项目采用状态
 
-当前状态：**BI-01-CO-04 首项 `CASE_OBSERVATION` 已完成第一次有效 Professional 调用。R0007 管理接收首个 Worker 包为 `PARTIAL_BLOCKED_FOR_ASOF` 技术基线：字节、参数、行情、大／中对象、图面与 receipt 已恢复，但 old run 的首次可知性、方向、生命周期和时间合同不合格。原业务问题继续 ACTIVE；新 visibility replay 工单已签发，实际发送、重放资格和首个 as-of 业务循环尚未被证明。**
+当前状态：**BI-01-CO-04 首项 `CASE_OBSERVATION` 已完成第一次有效 Professional 调用。R0008 管理接收 visibility replay 的真实出口 `BLOCKED_NO_LOOKAHEAD_PROOF`：物理 prefix 与 batch 执行可审计，但 native event-level first-seen／publish／revision 不可证明。该技术路线已关闭；管理采用范围受限的 `QUERY_COMPLETION_ASOF_V1` 并签发原 Professional 的 same-work continuation。实际续发和首个业务循环尚未被证明。**
 
 - 专业及运行仓：`daowei2026/observe-iterate`
 - 有权分支：`fy/feature-based-case-observation`
@@ -10,9 +10,10 @@
 - Reader 接收：`runs/BI-01-CO-04/reviews/management-R0004/DECISION.md`
 - 首轮 Professional：`runs/BI-01-CO-04/artifacts/R0005/REPORT.md`
 - 首轮专业接收：`runs/BI-01-CO-04/reviews/management-R0006/DECISION.md`
-- 首个 Worker 包：`runs/BI-01-CO-04/artifacts/worker-BI01CO04-INPUT-RECOVERY-01/`
-- Worker 技术接收：`runs/BI-01-CO-04/reviews/management-R0007/DECISION.md`
-- 新重放工单：`runs/BI-01-CO-04/reviews/management-R0007/WORKER_ORDER.md`
+- 旧 run 恢复包：`runs/BI-01-CO-04/artifacts/worker-BI01CO04-INPUT-RECOVERY-01/`
+- Visibility replay：`runs/BI-01-CO-04/artifacts/worker-BI01CO04-ASOF-VISIBILITY-REPLAY-01/`
+- Replay 管理接收：`runs/BI-01-CO-04/reviews/management-R0008/DECISION.md`
+- Professional continuation：`runs/BI-01-CO-04/reviews/management-R0008/PROFESSIONAL_CONTINUATION.md`
 - Run 入口：`runs/BI-01-CO-04/README.md`
 - 长程地图：`runs/BI-01-CO-04/00_长程推进地图.md`
 - 当前任务：`runs/BI-01-CO-04/01_当前任务.md`
@@ -22,30 +23,31 @@
 
 ## 已采用与已接收
 
-R0001 建立的完整业务目标和当前专业任务仍是唯一业务工作面。R0005 的 `INPUT_UNQUALIFIED_FOR_ASOF_COMPARISON` 仍是准确专业边界。
+R0001 的完整业务目标和当前专业任务继续有效。R0005 的 `INPUT_UNQUALIFIED_FOR_ASOF_COMPARISON`、R0007 对旧 run 的 `DIAGNOSTIC_BASELINE_NOT_ASOF_INPUT` 降级，以及 R0008 对 event-level native visibility 的阻断均保留。
 
-R0007 只接收首个 Worker 包的技术范围：旧 run 身份、实际参数消费、rb／hc／i 30m 行情、大／中对象、静态图、逐文件 receipt 和 blocker 可追溯；`byte_gate=PASS`。同时接收 `asof_semantic_gate=BLOCKED`：时间轴冲突、known-time 无证明、方向／生命周期缺失和历史 build 不完整，使旧 run 不能直接承担 T 时已知输入。
+R0008 接受 replay package 的技术事实：冻结至 `2021-09-30 15:00 Asia/Shanghai` 的 rb／hc／i 30m 物理前缀、big／mid 六组 batch 执行、源码／参数／环境、边界审计、baseline、failure injection、receipt 和 validator 可核；没有证据支持逐事件 first-seen、撤回／重现或旧生产 publish time。`physical_prefix_bound_passed=true` 不等于 event-level no-lookahead proof。
 
-`MATERIAL_INPUT_OR_METHOD_CHANGE` 已在输入路线层面满足并由 R0007 消费。旧 `GTQH_C001_three_turns_20261101_162005` 降级为 `DIAGNOSTIC_BASELINE_NOT_ASOF_INPUT`；这不等于特征方法失败或市场无候选。
+管理不再派发同类 Worker。当前采用 `QUERY_COMPLETION_ASOF_V1`：决策者只用截至固定 cutoff 的物理前缀运行冻结 batch，query 完成后返回的 snapshot 是该次决策信息。它可以测试当前特征在 on-demand query workflow 中的选择价值，但不能证明旧生产系统历史实时发布。
 
 ## 当前直接动作
 
-主控对 `BI01CO04-ASOF-VISIBILITY-REPLAY-01` 运行 Worker-order preflight，通过后向 actual Worker thread `01a19881-cebf-73f3-a4d3-76c57bce0fe4` 实际发送并核 workspace `/dwdhome/fy/cgpterm`。新工单只做三品种、30m、同窗口的新命名顺序重放，冻结真实源码／参数，记录 first-seen 生命周期，并执行 prefix invariance、未来尾部扰动、instrumentation neutrality 和失败注入。
+主控记录当前 Workmap snapshot，使用现有 `01_当前任务.md`、R0008 `#professional-release` 和 `PROFESSIONAL_CONTINUATION.md` 运行 pre-dispatch，通过后向原 Professional 实际发送。
 
-结果先回管理。只有管理接收 `QUALIFIED_FOR_PROFESSIONAL_ASOF`，原 Professional 才以 same-work continuation 执行第二次有效调用；不增加第二 Reader、不重复 R0005 已成输入边界。
+唯一 cutoff 已锁定为 `2021-09-30 15:00 Asia/Shanghai`；三品种、30m、big／mid、参数、几何代理公式和 bounded future tail 均不可根据结果改变。Professional 必须先冻结候选／排序／无候选与未来过程，再读 T 后行情并交最近自然挑战和方法反馈。
 
 ## 未被本状态证明
 
 本状态不证明：
 
-- 新 Worker 工单已实际发送、执行或 replay 已形成；
-- 旧正式 slice、`event_ts`、`xConfirm`、calendar time 或 bar time 已取得 operational known-time 资格；
-- 已选合法 T、已有候选／排序／市场无候选；
+- Professional continuation 已实际发送或第二次有效调用已发生；
+- 已有候选、排序或市场无候选；
 - 中尺度具有或不具有独立选择增量；
-- 首个业务循环、后续独立专业审查、管理业务 Gate 或 Owner 接收已经通过。
+- 旧系统的 `event_ts`、`xConfirm` 或任何对象具有历史原生 publish／known-time；
+- query-completion 结论可外推为实时流式部署能力；
+- 首个业务循环、独立专业审查、管理业务 Gate 或 Owner 接收已经通过。
 
-这些事实分别在 Worker 派发／回交、Professional continuation、业务实物和后续管理决定中记录，不用技术包、validator 或重放工单签发代替。
+这些事实分别在 Professional 派发／回交、业务实物和后续管理决定中记录。
 
 ## 连续性与投入边界
 
-旧 CO Run、U2／U3、I2—I6、历史图、旧聊天、旧预算和旧 Gate 仅按准确来源定向使用，不取得本 Run 当前权力。当前 `known_pro_turns=1`；Worker 不计入 Professional 调用预算。`FIRST_USABLE_ASOF_LOOP=NOT_YET`、`MATERIAL_INPUT_OR_METHOD_CHANGE=SATISFIED`、`ACTIVE_WORK_EFFORT_REVIEW=NOT_YET`。新重放只允许一次有限执行；若出口为 `BLOCKED_NO_LOOKAHEAD_PROOF`，不再重复同类来源搜索。
+旧 CO Run、U2／U3、I2—I6、历史图、旧聊天、旧预算和旧 Gate 只按准确来源定向使用。当前 `known_pro_turns=1`；Worker 不计入 Professional 调用预算。`FIRST_USABLE_ASOF_LOOP=NOT_YET`、`MATERIAL_INPUT_OR_METHOD_CHANGE=SATISFIED_AND_CONSUMED_BY_R0008`、`ACTIVE_WORK_EFFORT_REVIEW=NOT_YET`。R0008 continuation 是第二次有效调用；若仍无业务主体，必须执行 EFFORT 复看，不得回到技术来源循环。
