@@ -4,18 +4,20 @@
     "bi01": {
       "manager": {
         "role": "management",
-        "context": "chatgpt:BI-01-CO-04:management / BI01-CO-04-R0006-PROFESSIONAL-INTAKE-6fd91174"
+        "context": "chatgpt:BI-01-CO-04:management / BI01-CO-04-R0007-WORKER-INTAKE-c149d108"
       },
-      "snapshot": "129a14657244cbac8ebeb9ce509f6ea7e5627254e283e278e4b53ad7fd84f589",
-      "observed_commit": "cc426f542286a43df6ac4f3a3e8ef6c860ddc62d",
+      "snapshot": null,
+      "snapshot_state": "INVALIDATED_BY_MATERIAL_INPUT_CHANGE_PENDING_QUALIFIED_REPLAY",
+      "snapshot_recompute_required_before_professional_dispatch": true,
+      "observed_commit": "af02bd91ca33f42a8bc86b1ca348dacc758ee542",
       "decision_report": {
-        "path": "runs/BI-01-CO-04/reviews/management-R0006/DECISION.md",
-        "blob": "21bfd21019a483a22b72168135f2792804848434"
+        "path": "runs/BI-01-CO-04/reviews/management-R0007/DECISION.md",
+        "blob": "d78fc7c98a48ad4767ebd3ead4bc4a3145d8e463"
       },
       "effort": {
         "known_pro_turns": 1,
-        "coverage": "FIRST_PROFESSIONAL_RESULT_ACCEPTED_LIMITED_INPUT_UNQUALIFIED_RECOVERY_ORDER_ISSUED",
-        "source_note": "R0005 is the first effective Professional call. R0006 accepted only INPUT_UNQUALIFIED_FOR_ASOF_COMPARISON, kept the same business question active, and issued a minimum technical recovery order. Worker calls do not count toward the Professional budget."
+        "coverage": "FIRST_WORKER_PACKAGE_ACCEPTED_PARTIAL_MATERIAL_INPUT_CHANGE_CONSUMED_VISIBILITY_REPLAY_ISSUED",
+        "source_note": "R0005 remains the only effective Professional call. R0007 accepted the first Worker package only as a byte-qualified diagnostic baseline, consumed MATERIAL_INPUT_OR_METHOD_CHANGE, held Professional continuation, and issued one narrow visibility replay. Worker calls do not count toward the Professional budget."
       },
       "reader_check": {
         "status": "RECORDED",
@@ -37,7 +39,8 @@
           "path": "runs/BI-01-CO-04/reviews/independent/workmap-01/ROLE_RETURN.json",
           "blob": "2c52fe9a2c6b4584442bad1b8ae1487375a222c2"
         },
-        "accepted_by": "BI01-CO-04-R0004-READER-INTAKE-98c1c699"
+        "accepted_by": "BI01-CO-04-R0004-READER-INTAKE-98c1c699",
+        "reuse_note": "The business question and authoritative task remain unchanged. No second Reader is required for the bounded technical replay; a fresh current snapshot is still required before any later Professional dispatch."
       },
       "professional_intake": {
         "invocation_id": "BI01-CO-04-R0005-PROFESSIONAL-678c6b83",
@@ -47,7 +50,7 @@
         "market_no_candidate_claim": false,
         "asof_t": null,
         "candidate_ranking": null,
-        "task_status": "ACTIVE_SAME_QUESTION_PENDING_INPUT_RECOVERY",
+        "task_status": "ACTIVE_PENDING_QUALIFIED_REPLAY_INPUT",
         "report": {
           "path": "runs/BI-01-CO-04/artifacts/R0005/REPORT.md",
           "blob": "863e4773fcf5c28ba265db6ceb42560981385d72"
@@ -61,28 +64,57 @@
           "blob": "6489676fef71b5b02cc4ab45e2b0ad0d4119fb81"
         },
         "accepted_by": "BI01-CO-04-R0006-PROFESSIONAL-INTAKE-6fd91174",
-        "trigger_states": {
+        "original_trigger_states": {
           "FIRST_USABLE_ASOF_LOOP": "NOT_YET",
           "MATERIAL_INPUT_OR_METHOD_CHANGE": "NOT_YET",
           "ACTIVE_WORK_EFFORT_REVIEW": "NOT_YET"
         }
       },
-      "technical_recovery": {
+      "worker_intake": {
         "order_id": "BI01CO04-INPUT-RECOVERY-01",
         "order_path": "runs/BI-01-CO-04/reviews/management-R0006/WORKER_ORDER.md",
-        "order_blob": "daccc14ba38950677c7dbf794cd16caa9c3f517e",
+        "dispatch_receipt_path": "runs/BI-01-CO-04/provenance/worker-BI01CO04-INPUT-RECOVERY-01/DISPATCH_RECEIPT.json",
+        "actual_thread_id": "01a19881-cebf-73f3-a4d3-76c57bce0fe4",
+        "result_commit": "dfdf843b47c03c0121fd7151b72f24adb5d986c0",
+        "result_root": "runs/BI-01-CO-04/artifacts/worker-BI01CO04-INPUT-RECOVERY-01",
+        "verdict": "PARTIAL_BLOCKED_FOR_ASOF",
+        "accepted_scope": "TECHNICAL_BASELINE_ONLY",
+        "byte_gate": "PASS",
+        "asof_semantic_gate": "BLOCKED",
+        "algorithm_regeneration_count": 0,
+        "file_count_including_receipt_and_seal": 96,
+        "package_receipt_blob": "22fb631c45fbe923d17da955e6b94cacb023363a",
+        "blocker_report_blob": "7dd2f54ae466e47b20bf8860d4596fd146fbe453",
+        "accepted_by": "BI01-CO-04-R0007-WORKER-INTAKE-c149d108",
+        "state": "ACCEPTED_PARTIAL_CLOSED"
+      },
+      "management_trigger_consumption": {
+        "FIRST_USABLE_ASOF_LOOP": "NOT_YET",
+        "MATERIAL_INPUT_OR_METHOD_CHANGE": "SATISFIED_AND_CONSUMED_BY_R0007",
+        "ACTIVE_WORK_EFFORT_REVIEW": "NOT_YET"
+      },
+      "technical_recovery": {
+        "order_id": "BI01CO04-ASOF-VISIBILITY-REPLAY-01",
+        "order_path": "runs/BI-01-CO-04/reviews/management-R0007/WORKER_ORDER.md",
+        "order_blob": "4caaeff372ce81a879c9423fef40cd207e3d184a",
         "state": "ISSUED_NOT_SENT",
+        "continuation_thread_id": "01a19881-cebf-73f3-a4d3-76c57bce0fe4",
+        "expected_result_root": "runs/BI-01-CO-04/artifacts/worker-BI01CO04-ASOF-VISIBILITY-REPLAY-01",
+        "allowed_exits": [
+          "QUALIFIED_FOR_PROFESSIONAL_ASOF",
+          "BLOCKED_NO_LOOKAHEAD_PROOF"
+        ],
         "return_to": "chatgpt:BI-01-CO-04:management"
       },
       "dispatch": {
         "task_path": "runs/BI-01-CO-04/01_当前任务.md",
         "task_id": "BI-01-CO-04-CASE-INITIAL-ASOF",
         "task_blob": "9fee8ee372094282529020760329314394dc6b68",
-        "decision": "ISSUED",
-        "kind": "EXISTING_AUTHORIZED_REPAIR",
+        "decision": "HOLD_PENDING_QUALIFIED_REPLAY",
+        "kind": "MATERIAL_INPUT_CHANGE_PENDING_TECHNICAL_RECOVERY",
         "requires_reader_check": false,
-        "reader_reason": "R0006 preserves the same adopted CASE_OBSERVATION question, authority, task blob and method inputs. The only current action is recovery of missing instance bytes identified by the first Professional call; no second Reader is required before same-work continuation after technical acceptance.",
-        "continuation_condition": "Management accepts the P0 recovery package or an exact blocker and explicitly routes the existing task back to the original Professional.",
+        "reader_reason": "The authoritative business task is unchanged and the new work is a bounded technical replay. No second Reader is required, but the Workmap snapshot is intentionally invalidated and Professional dispatch is prohibited until management accepts a qualified replay and records a fresh snapshot.",
+        "continuation_condition": "Management accepts QUALIFIED_FOR_PROFESSIONAL_ASOF, records a current Workmap snapshot, and explicitly routes the existing task back to the original Professional.",
         "method_paths": [
           "professional/README.md",
           "professional/exploration/README.md",
@@ -96,8 +128,14 @@
           "overlay/08_自然语言运行提示_v0.3.md"
         ]
       },
-      "scope_dispositions": {},
-      "validation_claims": []
+      "scope_dispositions": {
+        "GTQH_C001_three_turns_20261101_162005": "DIAGNOSTIC_BASELINE_NOT_ASOF_INPUT"
+      },
+      "validation_claims": [
+        "WORKER_PACKAGE_BYTE_GATE_PASS",
+        "WORKER_PACKAGE_ASOF_SEMANTIC_GATE_BLOCKED",
+        "PROFESSIONAL_DISPATCH_INTENTIONALLY_HELD"
+      ]
     }
   }
 }
