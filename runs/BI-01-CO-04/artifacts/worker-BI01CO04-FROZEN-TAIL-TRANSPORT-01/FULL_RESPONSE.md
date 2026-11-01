@@ -44,4 +44,4 @@ return_to: chatgpt:BI-01-CO-04:management
 
 原Management技术接收尚待执行；原Professional tail-only closure、业务支持/反证、自然挑战、当前Case闭合及后续管理裁定均未由Worker执行，未宣布FIRST_USABLE_ASOF_LOOP。只回原Management，不自动续Professional、不操作手机或其他聊天。新有限Goal只覆盖本单；旧记录/用量保留，主控Goal不动。
 
-仓库`daowei2026/observe-iterate`，原分支`fy/feature-based-case-observation`；唯一输出`runs/BI-01-CO-04/artifacts/worker-BI01CO04-FROZEN-TAIL-TRANSPORT-01/`。最终准确提交SHA在本聊天回交，由该提交固定本报告与seal，避免自引用。
+仓库`daowei2026/observe-iterate`，原分支`fy/feature-based-case-observation`；唯一输出`runs/BI-01-CO-04/artifacts/worker-BI01CO04-FROZEN-TAIL-TRANSPORT-01/`。数据交付commit：`d9a81ce768b23412e0f0547d3959285c33364d0e`。本报告、归档核验脚本与最终seal由其后继封口提交固定；最终准确SHA在本聊天回交，避免文件自引用。

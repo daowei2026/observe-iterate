@@ -34,3 +34,5 @@ sha256sum -c SHA256SUMS
 ```
 
 receipt排除自身与外层SHA256SUMS；外层seal包括receipt和全部其他交付文件但排除自身。Git提交固定seal字节。`.runtime/`为本单工程账本及消费者临时归档目录，明确不进入交付seal。普通文档/脚本为工程编写，原件为copied，行情CSV/range为deterministically_extracted；本单没有recomputed_feature_output。
+
+提交/远端归档验收由`python -B <本包路径>/scripts/verify_git_archive.py --base-commit <数据提交的父提交> --check-remote`执行，逐项证明新单唯一写面、两个旧包/R0009不变、工作树干净、远端包含准确HEAD、Git归档的完整validator与sha256sum通过。实际结果保存于本单.runtime/PUBLISH_VERIFICATION.json并在聊天回交。
