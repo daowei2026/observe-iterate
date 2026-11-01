@@ -1,0 +1,39 @@
+{
+  "schema": "bi01-worker-result-observation/v1",
+  "checked_at": "2026-11-01T21:42:48.997443+00:00",
+  "result_commit": "e25e585779152aa670d54c87efecba984af4b7e3",
+  "comparison_base": "ec68cf15d660a5b32ba19652af79716b7dfc9492",
+  "comparison_base_is_accepted_intake": false,
+  "identity": {
+    "order_id": "BI01CO04-ASOF-VISIBILITY-REPLAY-01",
+    "work_id": "BI-01",
+    "run_id": "BI-01-CO-04",
+    "issuer_invocation_id": "BI01-CO-04-R0007-WORKER-INTAKE-c149d108",
+    "return_to": "chatgpt:BI-01-CO-04:management"
+  },
+  "changed_files": 450,
+  "all_changed_paths_inside_issued_output": true,
+  "receipt_items_verified": 448,
+  "outer_hashes_verified": 449,
+  "byte_verification_evidence": "Controller independently read and compared all448 bytes/hash entries; external sha256sum quiet check449 returned0. First path assertion used quoted Git names; corrected to NUL-separated paths, no data change.",
+  "full_response_sha256": "9c0b99bf56a4ebf57aa3fa27725628f1e49c629e59d27a9d6876d292ff92f371",
+  "worker_exit": "BLOCKED_NO_LOOKAHEAD_PROOF",
+  "worker_result_mechanical_gate": {
+    "schema": "workmap-worker-result/v1",
+    "scope": "bi01",
+    "exact_input_commit": "e25e585779152aa670d54c87efecba984af4b7e3",
+    "check_kind": "WORKER_RESULT_TO_ISSUER",
+    "ok": false,
+    "errors": [
+      "ACCEPTED_BASE_INTAKE_REQUIRED"
+    ],
+    "recipient": null,
+    "order_id": "BI01CO04-ASOF-VISIBILITY-REPLAY-01",
+    "full_intake_current": false,
+    "next_action": null,
+    "limits": "仅验证原工单技术结果的交接身份；不更新Intake、不认可专业成果、不批准下游派发。"
+  },
+  "routing_authority": "Original signed R0007 WORKER_ORDER section12, DECISION#handoff and existing QuestionWorkBinding.accept require technical reception by original Management. This is not a worker-result PASS; its sole rejected premise is an accepted Intake base absent by deliberate management HOLD.",
+  "professional_dispatch": "HOLD preserved; no qualification or snapshot self-sign",
+  "engineering_scope_clarification_author": "Controller within original Owner authorization; not a new Owner GO or Management decision"
+}

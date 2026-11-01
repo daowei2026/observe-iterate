@@ -1,6 +1,6 @@
 # BI-01-CO-04 操作主控运行事实
 
-更新时间：2026-11-01T20:30:30+00:00（北京时间 2026-11-02T04:30:30+08:00）。本文件是运行事实的滚动投影；正式业务目标、工作安排和接收结论取 Run README、推进地图、当前任务及有权 Pro 决定。
+更新时间：2026-11-01T21:43:15.456596+00:00（北京时间 2026-11-02T05:43:15.456596+08:00）。本文件是运行事实的滚动投影；正式业务目标、工作安排和接收结论取 Run README、推进地图、当前任务及有权 Pro 决定。
 
 ## 身份与来源
 
@@ -8,7 +8,7 @@
 - Owner GO 原始消息时点：2026-11-01T14:33:16.505Z；原文位于 ../OWNER_START.md，已与原消息逐字核验。
 - 操作 controller：cgpterm@86dec991abb27a927c1b5c22af1e51b3f39b918b。
 - 专业及运行规则：observe-iterate@b6ccf766dac055a793e75f76b77a73f4cfc74064；动态采用取当前 Run 实际 Git 记录。
-- 截至本记录，从 Owner GO 起总经过 21433 秒（约 357 分钟），包含准备、外部等待、操作、收取与恢复；模型队列和实际思考耗时未单独取得。
+- 截至本记录，从 Owner GO 起总经过 25798 秒（约 429 分钟），包含准备、外部等待、操作、收取与恢复；模型队列和实际思考耗时未单独取得。
 
 ## 真实 Pro 调用
 
@@ -30,10 +30,12 @@
 - Management R0007 已限域接收该包为诊断/对照基线，关闭第一技术单；P0仍为 PARTIAL_BLOCKED_FOR_ASOF，没有接受市场输入资格。
 - MATERIAL_INPUT_OR_METHOD_CHANGE 已由实际R0007判定满足并消费，旧历史run降级为 DIAGNOSTIC_BASELINE_NOT_ASOF_INPUT；业务问题及待检验设想继续，Professional有效调用仍1，完整市场as-of循环0。
 - Management 签发一次有限 BI01CO04-ASOF-VISIBILITY-REPLAY-01。已向同一真实Worker聊天01a19881-cebf-73f3-a4d3-76c57bce0fe4实际发送一次；新turn01a198c2-1b9c-7bd2-8dd7-a157012d2ed0、gpt-6.1-sol/xhigh和新有限Goal active均已核，原单/必读读取动作已观察。
-- 第一取件Goal没有恢复；新单独立按已签范围执行顺序重放、源冻结、可知性账本和无未来验证。结果尚未回交，只有原Management能接收其合法出口并决定后续。
+- 第一取件Goal没有恢复；新单已在同一有限Goal内结项并正式发布 e25e585779152aa670d54c87efecba984af4b7e3，出口为 BLOCKED_NO_LOOKAHEAD_PROOF。九次原生调用、七次计算完成，六组共524行数值核对；逐事件可知性/生命周期与输入frontier观察合同未成立，生产无未来测试未完成。只有原Management能实际接收并决定后续。
+- 主控已独立核448项receipt字节/hash及449项封口，450个变更均限新单唯一目录。机械worker-result唯一拒绝项为ACCEPTED_BASE_INTAKE_REQUIRED：R7有意null Snapshot后无当前accepted base，未伪称gate PASS；按原签单第12节和DECISION#handoff送回同一原Management技术接收。
+- 一次工程边界澄清由主控在原Owner授权内同turn发出并被真实采用，未新增Owner GO、数学、参数或实现路线。初始临时目录/PNV故障和修复均保留；已解决环境错误未充当最终B原因。
 - R0007主动将snapshot置null并HOLD Professional，主控保留这项裁定。接收记录中三条说明标签的字段类型已机械修正，未填有效snapshot、未改变manager或业务/接收/派发状态；全局check仍明确INTAKE_STALE，未被称作通过。
 - 后续技术事实按原已签return_to回Management消费；Professional只有在真实管理接收合格重放并记录新快照后才可续发，无第二Reader。
-- 最近实际Worker复核20:19:16.948103Z，下一常规复核20:39:16.948103Z（20分钟）。完成、明确错误或Owner新输入可以提前处理；不为正常等待频繁询问进度。
+- Worker21:39:03.492Z实际有限Goal complete，21:39:18.598Z最终回交；不再定时复核或重派该已完成单。当前准备R0008原Management接收，fresh网络准入在途，尚未向手机发送。完整Owner探索Goal仍active，Professional有效1、市场as-of循环0。
 
 ## 保留的运行限制
 
