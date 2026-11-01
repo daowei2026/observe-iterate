@@ -1,43 +1,45 @@
-# 基于既有特征的用例观察：新分支准备到实际运行
+# 方法探索期：准备与实际运行接续
 
-本文件只负责接线，不另定义专业方法，不是Owner GO。完整业务要求见 [专业入口](../../professional/case_observation/README.md)，当前框架见 [05](../../professional/case_observation/05_INITIAL_SCENARIO.md)。
+本指南只负责运行接线，不定义固定专业方法，也不是Owner GO。专业背景见 professional/README.md；探索材料见 professional/exploration/README.md。
 
-## 1. 新旧隔离与复用
+## 1. 持续运行职责与唯一管理工作面
 
-| 对象 | 本次采用方式 |
-|---|---|
-| 专业及运行仓 | `daowei2026/observe-iterate@fy/feature-based-case-observation`；启动时锁实际完成提交。 |
-| 操作仓 | 复用既有有权cgpterm环境及工具；此前入口分支为 `fy/observation-iteration-agent-longrun-20261015`，现场具体checkout与适用Skill以实际记录为准，不因换方法自动升级。 |
-| 专业模式 | 稳定work_id=BI-01、CASE_OBSERVATION；只换目标/方法来源，不增加两层阶段模式。 |
-| Run | 独立新身份，例如待授权采用的BI-01-CO-02；名称仅为建议，准备时不创建虚假实例或GO。 |
-| 数据、图与环境 | 消费届时正式交付，不默认旧品种/范围/路径/日历；现场路径不等于代码或服务写权限。 |
+Owner提供整体业务意图、反馈和授权；Management Pro持续理解探索背景、历史实践及当前输入，决定并派发下一项具体专业工作；Professional Pro按本轮真实委派执行并交付；Management Pro消化结果、更新认识并安排下一轮。当前方法尚在摸索，不要求每轮重复固定流程，也不把探索说明直接视为任务授权。
 
-新分支不保留旧CO-01运行目录，历史和准确来源见 [runs](../../runs/README.md)及[04](../../professional/case_observation/04_SOURCES_AND_REUSE.md)。不继承旧GO、任务、管理决定、预算、R序列、等待或未完图面责任，也不宣告旧Run已经完成/停止。
+**动态管理工作面统一位于当前Run的 runs/<RUN_ID>/：**
+- 每轮管理判断和安排记录在 reviews/management-Rxxxx/DECISION.md，并按原协议形成管理回交。
+- 00_长程推进地图.md持续表达整体目标、真实成果、重要剩余和后继。
+- 01_当前任务.md表达当前正式任务及其完整范围、输入、交付和授权。
+- README.md提供Owner查看入口；provenance/turns/Rxxxx/保存正式身份及回交记录。
 
-启动前核真实在途与同一设备/Worker的使用，不能通过换分支隐藏仍有效的旧动作。设备和工具能力可复用，实际角色/聊天、任务标记、输出根、scheduler root与Run身份按原机制区分。没有证据不默认复用旧收件人或重置其活动状态。
+Management Pro依据真实变化维护地图和当前任务，不要求每次管理调用都机械修改它们；若只是复看且整体状态/当前任务没有改变，可只记录本轮DECISION及回交。**不在professional目录另建current_work、CURRENT_EXECUTION或TASK_ROUTER来重复维护任务、进度或路由。** 通用角色路由、管理职责、接收、去重和回交格式沿现有运行协议执行，本次不另建一套。
 
-## 2. 数据到齐时，只补必要输入事实
+## 2. 新旧隔离与复用
 
-准备阶段可以完成新方法、来源和非活动配置，不填写真实研究成果。数据交付到达后，按 [03](../../professional/case_observation/03_FEATURE_DATA_AND_VIEWS.md)核品种/覆盖、尺度与对象、方向、实际/确认时间、当前部分、图数位置和必要缺口。把实际交付及语义写进本Run输入记录，已有正式生产记录直接引用。
+- 专业及运行仓：daowei2026/observe-iterate@fy/feature-based-case-observation；启动时锁定实际完成提交。
+- 操作仓：复用既有有权cgpterm环境及工具；现场checkout、Skill和实际权限以记录为准。
+- 稳定work_id为BI-01，继续使用CASE_OBSERVATION模式；每个真实Run独立身份。模式名不代表固定的两层研究Gate。
+- 设备、Worker、调度、身份、发送收取和回交协议按原机制复用；不因换方法扩大权限或隐藏仍在途的旧动作。
+- 旧CO-01、GO、管理决定、预算、R序列、接收、等待和未完图面责任不复制到新Run，也不宣告旧Run已完成或停止。
 
-确认当前方法能消费所需对象、关键时点可知范围可以正确说明、图面能支持本轮交流即可，不重复全套环境预检，不强制开发完整回放。补数/补图必须有具体业务理由及有权工单。旧I盘/旧页面故障按这次是否实际依赖判断，既不自动继承阻塞，也不假称恢复。
+## 3. 数据到齐后的必要准备
 
-## 3. 真实GO后的首次采用
+先核本次正式特征交付、品种/范围、尺度配置、方向字段、实际点/确认点、线段和当前部分语义，以及图数入口。首次画图的Owner设想和aidata使用参考见 professional/exploration/03_TOOLING_AND_DATA_USAGE.md。已适用的正式交付和core可复用；只补本轮实际缺少的内容，不重跑全套环境测试、不默认旧参数。
 
-沿 [ADOPTION_HANDOFF_CHECKLIST](ADOPTION_HANDOFF_CHECKLIST.md)及既有M-START/BOOTSTRAP保存真实Owner授权、输入、完整目标和角色定位。由管理形成地图、当前任务、Binding及适用接收，使用 [通用模板](templates/)，不从旧Run复制已采用状态。
+Management Pro将真实输入、当前业务问题、责任角色及交付范围纳入本Run的正式管理任务；数据到齐本身不自动派发或启动。按既有M-START/BOOTSTRAP、Workmap/Binding/Intake机制办理真实Owner授权和管理采用，不从旧Run复制已采用状态。
 
-默认 `runtime/config/WORKMAP_BINDING.json` 目前NOT_CONFIGURED。将NEW_RUN_ID换为真实身份并填实际来源；原工具要求的任务、快照、Intake和校验真实完成后才可ADOPTED。method_paths包含README及00—05；本Run当前设想与输入使用准确引用，不把讨论说明当成第二套规范。
+runtime/config/WORKMAP_BINDING.json目前为NOT_CONFIGURED准备状态。真实采用时由有权管理按本次准确来源填入独立Run身份；owner_sources、rule_paths指向本分支探索背景、真实Run任务及现有运行协议，不引用professional下的平行任务文件。原工具要求的任务、快照、Intake和校验真实完成后才可ADOPTED。
 
-`bi01_run_gate.py`显式传真实 `--run-id`；非默认Binding同时传 `--binding`，与workmap_gate的snapshot/check/dispatch使用同一来源。保留原独立审查条件，不因新方法省略应有资格，也不额外把两层观察变成两个Reader前置。
+bi01_run_gate.py显式传真实 --run-id；非默认Binding同时传 --binding，与workmap_gate的snapshot/check/dispatch使用同一来源。保留原独立审查条件，不因本次探索省略应有资格，也不把当前工作设想升级为额外Reader前置。
 
-主控只装配有权任务、发送收取和记录，不代写业务场景；专业者实际读承重方法与数据。GitHub全文与手机短指引、两份Return及去重继续沿既有合同。定向核实际读取本次专业checkout与有权操作Skill；不因分支创建重新安装所有依赖。
+主控只装配有权任务、发送收取和记录，不代写业务场景；专业者实际读取本轮承重材料和数据。GitHub全文与手机短指引、两份Return及去重继续沿既有合同；不因分支创建重新安装所有依赖。
 
-## 4. 持续工作与反馈
+## 4. 多轮探索与管理接续
 
-首轮一次覆盖当前框架的两层往返及一个用例的形成/修订。第一层取得够用背景和结构就进第二层，不先全历史分段，不每个内部动作请示或拆新轮次。第一层的方法完善不能取代品种判断的业务进展。
+每轮由Management Pro结合Owner最新反馈、探索背景、当前Run地图和前轮真实成果，判断下一项最值得做的专业工作。当前同向大尺度背景、中尺度观察及两层过程只是可供本轮采用或修正的设想，不要求每轮都完整重复，也不把“先第一层通过、再第二层通过”固化成Gate。
 
-专业者可定向签Worker处理必要技术缺口，结果先回原签发Pro消费；无依赖工作可并行。Owner可随时看图交流，实际反馈按已有CHANGE/任务修订机制处理；无反馈时继续独立可做研究，不新增固定逐例批准阶段。
+Professional Pro可在正式授权范围内开展实际特征观察、提出和修正业务设想、报告工具或数据缺口；必要技术工作由原签发Pro按现有机制委派Worker，结果先回原签发者消费。Owner可随时看图交流，反馈按现有任务修订和管理机制处理。管理复看关注真实业务发现、候选规律、当时可知信息、后续品种判断及其修订，不以流程文件、数据取得或图能打开代替业务进展。
 
-管理复看关注对象、候选规律、当时判断与后续修订的实际增量；当前框架受阻带具体事实调整，不无限润色或自动扩成新分类/平台。首个初版达到授权目标后交真实接收，不因旧规则要求补足3—5例。不能形成用例时交实质发现、具体缺口及后继裁定，不伪称业务完成。
+如果当前设想受阻，管理应根据实际发现安排继续、修正或换框架；不无限润色不成立的设想，也不自动扩成全面场景分类、平台建设或专用Agent。多轮实践证明某些做法稳定有效后，再考虑固定专业规范或Agent。
 
-有权主体决定后续工作，提交或数据到齐不自动启动；不继承旧W04、四范围阴影或其他任务的义务。通用代码、回交协议和现场权限不因本次专业替换而扩大。
+有权主体决定实际启动和后继。数据到齐、文档提交或工具准备完成都不自动构成GO。旧故障按本次是否实际依赖判断，不自动继承阻塞，也不假称已经恢复。
