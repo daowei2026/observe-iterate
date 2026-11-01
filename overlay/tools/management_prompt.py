@@ -13,7 +13,7 @@ import sys
 from pathlib import Path, PurePosixPath
 from typing import Any, Callable
 
-POLICY_PATH = "runtime/overlay/08_自然语言运行提示_v0.3.md"
+POLICY_PATH = "overlay/08_自然语言运行提示_v0.3.md"
 SHA = re.compile(r"[0-9a-f]{40}\Z")
 ROLES = {"management", "professional", "review", "receiver", "maintenance", "owner"}
 DISPATCH_KINDS = {"NORMAL", "DELIVERY_REPAIR"}
