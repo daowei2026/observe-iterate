@@ -1,6 +1,6 @@
 # 方法探索项目采用状态
 
-当前状态：**BI-01-CO-04 首项 `CASE_OBSERVATION` 已完成第一次有效 Professional 调用。R0008 管理接收 visibility replay 的真实出口 `BLOCKED_NO_LOOKAHEAD_PROOF`：物理 prefix 与 batch 执行可审计，但 native event-level first-seen／publish／revision 不可证明。该技术路线已关闭；管理采用范围受限的 `QUERY_COMPLETION_ASOF_V1` 并签发原 Professional 的 same-work continuation。实际续发和首个业务循环尚未被证明。**
+当前状态：**BI-01-CO-04 已完成 2 次有效 Professional 调用。R0010 接收 R0009 的固定 query snapshot `NO_CANDIDATE` 为合格负向业务判断，但 held-out tail 尚未运输，因此首个完整 as-of loop 未完成。`ACTIVE_WORK_EFFORT_REVIEW` 已满足并由 R0010 消费；一次 pure frozen-tail transport 已签发，当前 Case 随后只允许一次 tail-only Professional closure 并硬停止。**
 
 - 专业及运行仓：`daowei2026/observe-iterate`
 - 有权分支：`fy/feature-based-case-observation`
@@ -8,12 +8,12 @@
 - `run_id`: `BI-01-CO-04`
 - 首次管理采用：`runs/BI-01-CO-04/reviews/management-R0001/DECISION.md`
 - Reader 接收：`runs/BI-01-CO-04/reviews/management-R0004/DECISION.md`
-- 首轮 Professional：`runs/BI-01-CO-04/artifacts/R0005/REPORT.md`
-- 首轮专业接收：`runs/BI-01-CO-04/reviews/management-R0006/DECISION.md`
-- 旧 run 恢复包：`runs/BI-01-CO-04/artifacts/worker-BI01CO04-INPUT-RECOVERY-01/`
-- Visibility replay：`runs/BI-01-CO-04/artifacts/worker-BI01CO04-ASOF-VISIBILITY-REPLAY-01/`
-- Replay 管理接收：`runs/BI-01-CO-04/reviews/management-R0008/DECISION.md`
-- Professional continuation：`runs/BI-01-CO-04/reviews/management-R0008/PROFESSIONAL_CONTINUATION.md`
+- 第一次 Professional：`runs/BI-01-CO-04/artifacts/R0005/REPORT.md`
+- 第二次 Professional：`runs/BI-01-CO-04/artifacts/R0009/REPORT.md`
+- R0009 snapshot：`runs/BI-01-CO-04/artifacts/R0009/QUERY_SNAPSHOT_STATE_TABLE.csv`
+- R0009 冻结决定：`runs/BI-01-CO-04/artifacts/R0009/DECISION_FREEZE.json`
+- R0010 投入复看：`runs/BI-01-CO-04/reviews/management-R0010/DECISION.md`
+- Frozen-tail 工单：`runs/BI-01-CO-04/reviews/management-R0010/WORKER_ORDER.md`
 - Run 入口：`runs/BI-01-CO-04/README.md`
 - 长程地图：`runs/BI-01-CO-04/00_长程推进地图.md`
 - 当前任务：`runs/BI-01-CO-04/01_当前任务.md`
@@ -21,33 +21,51 @@
 - Workmap Binding：`runtime/config/WORKMAP_BINDING.json`
 - 当前 Intake：`runs/BI-01-CO-04/reviews/WORKMAP_INTAKE_CURRENT.json`
 
-## 已采用与已接收
+## 当前采用与已接收范围
 
-R0001 的完整业务目标和当前专业任务继续有效。R0005 的 `INPUT_UNQUALIFIED_FOR_ASOF_COMPARISON`、R0007 对旧 run 的 `DIAGNOSTIC_BASELINE_NOT_ASOF_INPUT` 降级，以及 R0008 对 event-level native visibility 的阻断均保留。
+R0001 的完整业务目标和当前任务继续有效。R0005 的输入资格否定、R0007 对旧 run 的降级、R0008 对 native event-level visibility 的阻断及 `QUERY_COMPLETION_ASOF_V1` 当前 Case 合同均保留。
 
-R0008 接受 replay package 的技术事实：冻结至 `2021-09-30 15:00 Asia/Shanghai` 的 rb／hc／i 30m 物理前缀、big／mid 六组 batch 执行、源码／参数／环境、边界审计、baseline、failure injection、receipt 和 validator 可核；没有证据支持逐事件 first-seen、撤回／重现或旧生产 publish time。`physical_prefix_bound_passed=true` 不等于 event-level no-lookahead proof。
+R0010 接收 R0009 的 snapshot 业务认识：
 
-管理不再派发同类 Worker。当前采用 `QUERY_COMPLETION_ASOF_V1`：决策者只用截至固定 cutoff 的物理前缀运行冻结 batch，query 完成后返回的 snapshot 是该次决策信息。它可以测试当前特征在 on-demand query workflow 中的选择价值，但不能证明旧生产系统历史实时发布。
+- rb 与 hc 是唯一共同 big `HIGH_CONFIRMED_PROXY` pair；
+- i 的 big proxy 不同，不进入同背景比较；
+- rb／hc latest returned mid occurrence 同号且差异很浅；
+- 在不发明新规则、不偷看未来的条件下，没有合法候选或排序；
+- `NO_CANDIDATE` 是 snapshot 业务输出，不是输入失败。
+
+R0010 不接收 outcome 支持／反证、最近自然挑战、mid 一般有效／无效、任何未来方向或首个完整 loop。原因是固定 `(2021-09-30 15:00, 2021-10-15 15:00]` 三品种 30m tail 尚未进入封口交付。
 
 ## 当前直接动作
 
-主控记录当前 Workmap snapshot，使用现有 `01_当前任务.md`、R0008 `#professional-release` 和 `PROFESSIONAL_CONTINUATION.md` 运行 pre-dispatch，通过后向原 Professional 实际发送。
+主控对 `BI01CO04-FROZEN-TAIL-TRANSPORT-01` 运行 Worker-order preflight，通过后向既有 actual Worker thread `01a19881-cebf-73f3-a4d3-76c57bce0fe4` 发送并核 workspace `/dwdhome/fy/cgpterm`。
 
-唯一 cutoff 已锁定为 `2021-09-30 15:00 Asia/Shanghai`；三品种、30m、big／mid、参数、几何代理公式和 bounded future tail 均不可根据结果改变。Professional 必须先冻结候选／排序／无候选与未来过程，再读 T 后行情并交最近自然挑战和方法反馈。
+工单只允许从已核同一 GTQH source input 提取 cutoff anchor 与固定 held-out tail，交 timestamp／close、source identity、receipt、validator 和冻结公式的机械指标。禁止 feature 重算、换源、改 T、改阈值、改品种或作业务解释。
+
+出口仅为 `TAIL_PACKAGE_READY` 或 `TAIL_SOURCE_INACCESSIBLE`。管理接受 A 后签一次 tail-only Professional continuation；出口 B 则当前 Case 以 `SNAPSHOT_DECISION_VALID__OUTCOME_UNVERIFIED` 停止，不签第二个 tail Worker。
+
+## 旧要求撤销与保留
+
+撤销 R0008 中过宽的 “No Worker may be inserted” 及地图中的“不得再派第三个 Worker”。该表述错误地把直接 held-out 数据运输与已关闭的技术研究混为一谈。
+
+继续有效：
+
+- `NO_FURTHER_NATIVE_VISIBILITY_WORKER`；
+- 不再做 first-seen／publish／revision、feature replay、旧文件搜索、全市场重算或参数寻优；
+- 本次 tail transport 完成或阻断后，其技术职责退出；
+- 当前 cutoff、snapshot、`NO_CANDIDATE`、目标过程、指标和 5pp Case-only challenge line 不得改写。
 
 ## 未被本状态证明
 
 本状态不证明：
 
-- Professional continuation 已实际发送或第二次有效调用已发生；
-- 已有候选、排序或市场无候选；
-- 中尺度具有或不具有独立选择增量；
-- 旧系统的 `event_ts`、`xConfirm` 或任何对象具有历史原生 publish／known-time；
-- query-completion 结论可外推为实时流式部署能力；
-- 首个业务循环、独立专业审查、管理业务 Gate 或 Owner 接收已经通过。
-
-这些事实分别在 Professional 派发／回交、业务实物和后续管理决定中记录。
+- frozen-tail Worker 已实际发送、执行或交付；
+- R0009 `NO_CANDIDATE` 得到后续市场支持或被反证；
+- 中尺度具有或不具有一般选择增量；
+- 首个完整 loop、独立专业审查、Owner 接收或方法稳定性已通过；
+- query-completion 结论可外推为实时流式部署能力。
 
 ## 连续性与投入边界
 
-旧 CO Run、U2／U3、I2—I6、历史图、旧聊天、旧预算和旧 Gate 只按准确来源定向使用。当前 `known_pro_turns=1`；Worker 不计入 Professional 调用预算。`FIRST_USABLE_ASOF_LOOP=NOT_YET`、`MATERIAL_INPUT_OR_METHOD_CHANGE=SATISFIED_AND_CONSUMED_BY_R0008`、`ACTIVE_WORK_EFFORT_REVIEW=NOT_YET`。R0008 continuation 是第二次有效调用；若仍无业务主体，必须执行 EFFORT 复看，不得回到技术来源循环。
+当前 `known_pro_turns=2`，原起点累计 `8.1462` 小时。`FIRST_USABLE_ASOF_LOOP=NOT_YET`、`MATERIAL_INPUT_OR_METHOD_CHANGE=NOT_YET`、`ACTIVE_WORK_EFFORT_REVIEW=SATISFIED_AND_CONSUMED_BY_R0010`。
+
+允许新增投入仅为 1 次 pure tail transport 和 1 次 tail-only Professional closure；closure 后当前 Case 硬停止，不建立新的两调用等待周期。后续相邻 Case 必须在派发 Professional 前把 snapshot input 与 held-out tail 成套封口，禁止重复数据可得性循环。
