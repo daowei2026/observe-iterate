@@ -1,15 +1,34 @@
-# 方法探索项目采用准备
+# 方法探索项目采用状态
 
-当前状态：**完成探索背景、Owner原始做事过程说明、工具说明和运行入口准备，尚未建立实际运行采用。** runtime/config/WORKMAP_BINDING.json仍为NOT_CONFIGURED，不代表已签发或待发送任务。
+当前状态：**BI-01-CO-04 已完成首次实质管理采用；首项 `CASE_OBSERVATION` 任务已签发，独立 Reader／dispatch preflight 和实际发送尚未被证明。**
 
-- 专业及运行仓：daowei2026/observe-iterate，分支 fy/feature-based-case-observation。
-- 探索背景入口：professional/README.md；professional/exploration/README.md。
-- Owner提供的完整做事过程原文：professional/exploration/05_OWNER_PROCESS_EXPLANATION.md；当前摘要：professional/exploration/02_CURRENT_WORKING_IDEAS.md。
-- 工具和首次观察图面说明：professional/exploration/03_TOOLING_AND_DATA_USAGE.md。
-- 稳定work_id为BI-01，继续使用CASE_OBSERVATION模式；新Run身份必须在真实启动时确定。
+- 专业及运行仓：`daowei2026/observe-iterate`
+- 有权分支：`fy/feature-based-case-observation`
+- `work_id`: `BI-01`
+- `run_id`: `BI-01-CO-04`
+- 管理采用：`runs/BI-01-CO-04/reviews/management-R0001/DECISION.md`
+- Run 入口：`runs/BI-01-CO-04/README.md`
+- 长程地图：`runs/BI-01-CO-04/00_长程推进地图.md`
+- 当前任务：`runs/BI-01-CO-04/01_当前任务.md`
+- 当前 mode：`CASE_OBSERVATION`
+- Workmap Binding：`runtime/config/WORKMAP_BINDING.json`
+- 当前 Intake：`runs/BI-01-CO-04/reviews/WORKMAP_INTAKE_CURRENT.json`
 
-动态管理工作面只在真实Run下维护：README.md、00_长程推进地图.md、01_当前任务.md、reviews/management-Rxxxx/DECISION.md及正式回交。professional目录不另建current_work、当前进度或任务路由副本。
+## 已采用
 
-尚待真实事实：Owner启动授权、实际特征交付及必要语义/图面信息、独立Run身份及角色定位、原有机制下的管理任务/地图/Binding/Intake及其校验。预计数据到达时间不填成实际完成；材料提交、数据已到、图面通过和业务接收分别记录。
+Owner GO、探索完整目标、Owner 原过程、现有特征／工具背景、当前 Run 动态工作面、Question Work v2、Workmap v2 和角色回交机制已由 R0001 管理用于签发首项专业任务。当前任务要求先核真实输入与 as-of 时间资格，再形成主多品种判断、最近自然挑战／失败候选／合法无候选及方法反馈。
 
-通用工具、协议和设备能力复用，不重装或重做全套预检；旧故障只按本次实际依赖判断。没有新授权，不执行手机、派发、环境维护或启动其他工作。准备顺序见 operations/CASE_OBSERVATION_RUN_GUIDE.md。
+## 未被本状态证明
+
+本状态不证明：
+
+- 独立 Reader 已完成或 dispatch preflight 已通过；
+- 手机消息已发送、Professional 已开始或 Worker 工单已签发；
+- 本 Run 正式数据已取得；
+- 任何业务判断、独立专业审查、管理 Gate 或 Owner 接收已经通过。
+
+这些事实分别在 Intake、派发记录、专业实物、Return 和管理决定中记录，不用 `ADOPTED` 一词合并。
+
+## 连续性边界
+
+旧 CO Run、U2／U3、I2—I6、历史图、旧聊天、旧预算和旧 Gate 仅按准确来源定向使用，不取得本 Run 当前权力。`professional/` 保存稳定探索背景，不维护平行 current task。动态状态只在 `runs/BI-01-CO-04/` 与本配置中维护。
