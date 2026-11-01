@@ -6,10 +6,10 @@
         "role": "management",
         "context": "chatgpt:BI-01-CO-04:management / BI01-CO-04-R0008-REPLAY-INTAKE-82bb0b60"
       },
-      "snapshot": null,
-      "snapshot_state": "RECOMPUTE_REQUIRED_FOR_QUERY_COMPLETION_CONTINUATION",
-      "snapshot_recompute_required_before_professional_dispatch": true,
-      "observed_commit": "fe720ea2a60dd86a438ea2665a346489fe43bbc5",
+      "snapshot": "b610fe223cb8c127a5076a35ab0d93b8fc3cac02eec67dd631f37b36cd4705db",
+      "snapshot_state": "RECORDED_FOR_QUERY_COMPLETION_CONTINUATION",
+      "snapshot_recompute_required_before_professional_dispatch": false,
+      "observed_commit": "b0fa85edcacb33ce63663db47375bd14c13728db",
       "decision_report": {
         "path": "runs/BI-01-CO-04/reviews/management-R0008/DECISION.md",
         "blob": "844c370465c94eb3522b61dbae8c7724fe64b78f"
@@ -100,9 +100,16 @@
         "decision_ref": "runs/BI-01-CO-04/reviews/management-R0008/DECISION.md#operational-contract",
         "bar_cutoff": "2021-09-30T15:00:00+08:00",
         "decision_time_semantics": "FROZEN_PREFIX_QUERY_COMPLETION",
-        "symbols": ["rb", "hc", "i"],
+        "symbols": [
+          "rb",
+          "hc",
+          "i"
+        ],
         "frequency": "30m",
-        "scales": ["big", "mid"],
+        "scales": [
+          "big",
+          "mid"
+        ],
         "future_evaluation_end": "2021-10-15T15:00:00+08:00",
         "native_publish_claim": false,
         "event_level_lifecycle_claim": false,
@@ -125,7 +132,7 @@
         "task_blob": "9fee8ee372094282529020760329314394dc6b68",
         "continuation_path": "runs/BI-01-CO-04/reviews/management-R0008/PROFESSIONAL_CONTINUATION.md",
         "continuation_blob": "2c500cd57dc3ca88e26788e1ad8f44e975e496c8",
-        "decision": "RELEASE_AFTER_CURRENT_SNAPSHOT_AND_PREFLIGHT",
+        "decision": "ISSUED",
         "kind": "EXISTING_AUTHORIZED_REPAIR",
         "requires_reader_check": false,
         "reader_reason": "The question and task blob are unchanged. Management explicitly consumed the operational input-contract change and bounded the continuation; no second Reader is required.",
@@ -150,7 +157,8 @@
         "NATIVE_EVENT_LEVEL_FIRST_SEEN_ROUTE": "CLOSED_BLOCKED_NO_LOOKAHEAD_PROOF",
         "QUERY_COMPLETION_ASOF_V1": "ADOPTED_CURRENT_CASE_ONLY"
       },
-      "validation_claims": [
+      "validation_claims": [],
+      "technical_acceptance_labels": [
         "REPLAY_PHYSICAL_PREFIX_BOUND_PASS",
         "REPLAY_NATIVE_EVENT_VISIBILITY_BLOCKED",
         "NO_FURTHER_NATIVE_VISIBILITY_WORKER",

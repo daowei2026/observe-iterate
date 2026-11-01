@@ -1,0 +1,12 @@
+# R0008 已授权的快照登记与机械字段接合
+
+权力来源：c286238462c07f15d9ebfe3cac06edc6a2da29d4 的 DECISION#professional-release、#handoff，及216a83a9594e8ce65681f51c48ca10a607d5aa84的正式Professional continuation。管理已实际接受B出口并采用QUERY_COMPLETION_ASOF_V1，明确要求主控计算/记录当前快照，通过派发检查后直接续原Professional；不新增Worker/Reader。
+
+本次只登记该已授权机械接合：
+
+- exact input commit：b0fa85edcacb33ce63663db47375bd14c13728db
+- current snapshot：b610fe223cb8c127a5076a35ab0d93b8fc3cac02eec67dd631f37b36cd4705db
+- observed_commit改为本次实际计算输入；snapshot状态登记完成并清除需重算标志；dispatch.decision从有条件放行字符串接合现有检查器要求的ISSUED，仍必须通过适用preflight才可实际发送。
+- 原四条validation_claims是技术/派发说明标签，不是带evidence/tested_code_commit/claimed_code_commit的代码验证主张，故逐字移至technical_acceptance_labels，validation_claims置空。没有新增代码验证信用。
+
+manager、管理决定blob、旧Reader身份与原报告/结论、known_pro_turns=1、技术B出口、当前Case范围、query合同及所有专业业务要求保持原决定。没有把旧native visibility资格改为PASS，也没有自行采纳另一业务方法。该登记不证明Professional已派发或已形成业务结果；实际preflight和手机发送另有真实证据。
