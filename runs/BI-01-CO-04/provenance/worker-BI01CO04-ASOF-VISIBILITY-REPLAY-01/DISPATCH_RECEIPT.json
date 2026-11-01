@@ -1,0 +1,30 @@
+{
+  "schema": "bi01-worker-dispatch/v1",
+  "run_id": "BI-01-CO-04",
+  "work_id": "BI-01",
+  "order_id": "BI01CO04-ASOF-VISIBILITY-REPLAY-01",
+  "actual_thread_id": "01a19881-cebf-73f3-a4d3-76c57bce0fe4",
+  "actual_turn_id": "01a198c2-1b9c-7bd2-8dd7-a157012d2ed0",
+  "cwd": "/dwdhome/fy/cgpterm",
+  "model": "gpt-6.1-sol",
+  "effort": "xhigh",
+  "marker": "BI01CO04-ASOF-VISIBILITY-REPLAY-01-DISPATCH-67d8f0d0",
+  "payload_sha256": "27afa156a826ab9d796560deedd2d092e42cfdc22812a038d830d6f195b55d81",
+  "order_sha256": "85512f2daafd0b5d9d145750216e266390c74ce03f30ff88d32a10445677f997",
+  "order_ref": {
+    "commit": "a0341c995c81632fb92d61ec96dc63a9ed755ef8",
+    "path": "runs/BI-01-CO-04/reviews/management-R0007/WORKER_ORDER.md",
+    "selector": "full"
+  },
+  "state": "STARTED_AND_ADOPTED",
+  "business_message_count_this_order": 1,
+  "previous_order": "BI01CO04-INPUT-RECOVERY-01 ACCEPTED_PARTIAL_CLOSED; not resumed",
+  "model_evidence": "Actual new turn_context and fresh same-owner/current-turn checks match gpt-6.1-sol/xhigh; persistent model-reroute event audit empty. Initial broad notification guard warning reconciled, no resend.",
+  "adoption_evidence": "Actual create_goal for new signed order and exact original-order/required-source read commands observed.",
+  "last_actual_review_at": "2026-11-01T20:19:16.948103+00:00",
+  "next_review_at": "2026-11-01T20:39:16.948103+00:00",
+  "last_engineering_call_at": "2026-11-01T20:17:29.803Z",
+  "return_to": "chatgpt:BI-01-CO-04:management",
+  "accepted_intake_base": null,
+  "intake_state": "INTENTIONALLY_INVALIDATED_BY_R0007; professional HOLD preserved. Signed Worker-order preflight PASS is independent of full intake. Return technical facts to original manager; do not self-sign a new snapshot."
+}
