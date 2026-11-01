@@ -6,12 +6,13 @@
 - [专业探索入口](professional/README.md)
 - [业务目标](professional/exploration/00_BUSINESS_OBJECTIVE.md)
 - [既有特征](professional/exploration/01_EXISTING_FEATURES_AND_CAPABILITIES.md)
-- [当前工作设想](professional/exploration/02_CURRENT_WORKING_IDEAS.md)
+- [当前工作设想摘要](professional/exploration/02_CURRENT_WORKING_IDEAS.md)
+- [Owner提供的完整做事过程说明（原文保留）](professional/exploration/05_OWNER_PROCESS_EXPLANATION.md)
 - [工具、数据与首次画图](professional/exploration/03_TOOLING_AND_DATA_USAGE.md)
 - [既有业务参考](professional/exploration/04_EXISTING_BUSINESS_REFERENCES.md)
-- [运行接续指南](operations/CASE_OBSERVATION_RUN_GUIDE.md)
+- [运行接续指南](runtime/operations/CASE_OBSERVATION_RUN_GUIDE.md)
 
-当前同向大尺度背景下观察中尺度差异只是待实践检验的设想。专业方法、图面方式和任务拆分可随实践修正；多轮跑通后才考虑固定规范或Agent。
+当前同向大尺度背景下观察中尺度差异只是待实践检验的设想。专业方法、图面方式和任务拆分可随实践修正；多轮跑通后才考虑固定规范或Agent。完整做事过程原文保留在05文件，不以摘要替代。
 
 ## 实际运行与Owner查看
 
