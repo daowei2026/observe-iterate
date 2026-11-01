@@ -1,9 +1,9 @@
 {
   "schema": "workmap-binding/v2",
-  "status": "NOT_CONFIGURED",
+  "status": "ADOPTED",
   "manager_role": "management",
   "overview": {
-    "path": "runs/<NEW_RUN_ID>/README.md",
+    "path": "runs/BI-01-CO-04/README.md",
     "anchors": [
       "common",
       "bi01"
@@ -13,7 +13,7 @@
     "common"
   ],
   "owner_sources": [
-    "runs/<NEW_RUN_ID>/OWNER_START.md",
+    "runs/BI-01-CO-04/OWNER_START.md",
     "professional/exploration/00_BUSINESS_OBJECTIVE.md",
     "professional/exploration/02_CURRENT_WORKING_IDEAS.md",
     "professional/exploration/05_OWNER_PROCESS_EXPLANATION.md"
@@ -30,11 +30,11 @@
     "dual_route_execution/DR14_QUESTION_WORK_CONTRACT.md",
     "overlay/08_自然语言运行提示_v0.3.md"
   ],
-  "receipt_path": "runs/<NEW_RUN_ID>/reviews/WORKMAP_INTAKE_CURRENT.json",
+  "receipt_path": "runs/BI-01-CO-04/reviews/WORKMAP_INTAKE_CURRENT.json",
   "streams": {
     "bi01": {
       "map": {
-        "path": "runs/<NEW_RUN_ID>/00_长程推进地图.md",
+        "path": "runs/BI-01-CO-04/00_长程推进地图.md",
         "anchors": [
           "goal",
           "stage",
@@ -45,15 +45,15 @@
           "next"
         ]
       },
-      "task": "runs/<NEW_RUN_ID>/01_当前任务.md",
+      "task": "runs/BI-01-CO-04/01_当前任务.md",
       "overview_anchors": [
         "bi01"
       ],
       "watch_roots": [
-        "runs/<NEW_RUN_ID>/artifacts",
-        "runs/<NEW_RUN_ID>/reviews/independent"
+        "runs/BI-01-CO-04/artifacts",
+        "runs/BI-01-CO-04/reviews/independent"
       ]
     }
   },
-  "note": "PREPARATION ONLY. NEW_RUN_ID is an explicit placeholder, not a dispatchable identity. After real Owner GO, management adopts the actual exploration context, current Run task, feature delivery and role assignments; then completes map/task/Intake/check using the existing mechanism before ADOPTED. The detailed Owner process explanation is preserved verbatim as source context; the shorter working-ideas file is only a summary. The professional method remains exploratory and may evolve between tasks; current working ideas are not a fixed protocol. Management's dynamic records live only under runs/<RUN_ID>/ (DECISION, map, task and formal returns); do not create parallel current-work/task/progress files under professional/. Do not copy old CO-01 decisions, chats, in-flight work, waits, budget or receipts. No dispatch, completion proof or expanded authority is implied."
+  "note": "BI-01-CO-04 已由 R0001 M-START 管理采用。ADOPTED 仅表示当前 Run、地图、任务与 Binding 已获管理签发；Reader、dispatch preflight、手机发送、Professional 执行、业务结果、独立专业审查和管理接收分别以真实记录为准。旧 Run 的任务、Gate、预算、在途和结果不继承。"
 }
