@@ -69,5 +69,6 @@ Management尚未接收本技术包，Professional尚未恢复输入资格或执�
 
 - 仓库：daowei2026/observe-iterate；分支：fy/feature-based-case-observation。
 - 唯一输出：runs/BI-01-CO-04/artifacts/worker-BI01CO04-INPUT-RECOVERY-01/。
-- 数据提交及最终完整提交采用两阶段封口：数据commit在本报告最终封口时写入；最终完整commit的精确SHA由本聊天最终回交给原Management/主控，避免把本文件自身commit SHA写入自身造成循环。
+- 已完成数据提交：[数据基线 87b0db30b4c9a3b73764654ab1bd6e436a8c45dd](https://github.com/daowei2026/observe-iterate/commit/87b0db30b4c9a3b73764654ab1bd6e436a8c45dd)。最终完整交付由本提交的后继封口commit包含更新后的本报告、receipt及SHA256SUMS；精确最终SHA在本聊天回交，避免将本文件自身commit SHA写入自身造成循环。
+- 验收实物为94项（66项原字节copied、28项导出/报告/工程证据regenerated），加receipt和SHA256SUMS共96文件；离线独立核验及系统sha256sum的95项封口核验均通过。复制原件自带的尾部空白保持字节不变，新编写文件的git diff检查通过。
 - 本单完成的是技术包与准确blocker回交；不是市场输入合格或业务任务完成。后续只由原签发Management消费并决定下一步。
