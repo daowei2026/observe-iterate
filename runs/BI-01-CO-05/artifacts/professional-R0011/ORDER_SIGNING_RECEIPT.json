@@ -1,0 +1,71 @@
+{
+  "schema": "bi01-worker-order-signing/v1",
+  "work_id": "BI-01",
+  "run_id": "BI-01-CO-05",
+  "round_id": "R0011",
+  "invocation_id": "BI01-CO-05-R0011-e186238bf811",
+  "assignment_token": "ade5d48ee39949aa99991f4b0a39",
+  "issuer_role": "professional",
+  "issuer_ref": "chatgpt:BI-01-CO-05:professional",
+  "return_to": "chatgpt:BI-01-CO-05:professional",
+  "order": {
+    "order_id": "BI01CO05-FULLRANGE-CONDITIONAL-REENTRY-01",
+    "path": "runs/BI-01-CO-05/artifacts/professional-R0011/WORKER_ORDER.md",
+    "state": "SIGNED_PENDING_CONTROLLER_VALIDATION_AND_DISPATCH",
+    "target_thread_id": "01a17dd7-5033-7e63-b7a2-edd90b691c33",
+    "target_workspace": "/dwdhome/fy/cgpterm",
+    "one_shot_same_path_reentry": true
+  },
+  "signing_basis": {
+    "control_commit": "4699c3c947753f65d0a3f3ff044f5c74d68fdc3b",
+    "invocation_path": "runs/BI-01-CO-05/provenance/turns/R0011/INVOCATION.json",
+    "send_receipt_path": "runs/BI-01-CO-05/provenance/turns/R0011/SEND_RECEIPT.json",
+    "send_receipt_state": "COMMITTED",
+    "same_invocation_id": true,
+    "same_assignment_token": true,
+    "same_recipient": true,
+    "management_decision": "daowei2026/observe-iterate@0776c5645be4bf1d38c7151baa8662def243e26b:runs/BI-01-CO-05/reviews/management-R0010/DECISION.md::#reentry"
+  },
+  "predecessor": {
+    "order_id": "BI01CO05-FULLRANGE-CHART-DATA-R0008-01",
+    "state": "TERMINAL_NO_REDISPATCH_NO_AUTORETRY_NO_DEFERRED",
+    "reused_as_current_order": false,
+    "script_reused_by_exact_identity": true
+  },
+  "fixed_script": {
+    "path": "runs/BI-01-CO-05/artifacts/professional-R0008/build_bi01_co05_r0008_fullrange_chart_data.py",
+    "accepted_commit": "34198df6d4435feaa089baeae73e934559bd8b19",
+    "git_blob_sha": "f84bf86d4bfe1cf5411ee7e35d6c867aa4957d6c",
+    "sha256": "5571cad70d5c519d9e0c5260564346837833eb147d7c4fafb40afb0505a3df16",
+    "modified_this_round": false
+  },
+  "business_inputs": {
+    "status": "UNCHANGED_FROM_R0008",
+    "symbols": ["rb", "hc", "i"],
+    "frequency": "30m",
+    "features": ["KLine_30m", "ScaleTurnCalendar_large", "ScaleTurnCalendar_mid"],
+    "small_enabled": false,
+    "main_window": "[2021-01-04 00:00:00, 2024-03-01 00:00:00)",
+    "sof_name": "GTQH_L1_20210104_20240229",
+    "stk_tlist": "gtqh_four",
+    "chart_and_formal_data_same_run_core": true
+  },
+  "conditional_execution": {
+    "probe_file": "/m3varI/var/L1_data/sof/unit/affiliated_calendar_no_night.csv",
+    "expected_mount_point": "/m3varI",
+    "expected_mount_source": "192.168.9.79:/m3varI",
+    "probe_attempt_limit": 1,
+    "full_business_script_attempt_limit": 1,
+    "probe_failure_action": "STOP_BEFORE_FULL_RUN__QUOTA_CONSUMED__RETURN_TO_PROFESSIONAL",
+    "probe_success_action": "RUN_FIXED_R0008_SCRIPT_IN_SAME_WORKER_EXECUTION_WITH_FRESH_DYNAMIC_RUN_ID",
+    "third_same_path_order_authorized": false
+  },
+  "claims": {
+    "controller_worker_order_check_ran": false,
+    "worker_dispatched": false,
+    "worker_executed": false,
+    "worker_result_received": false,
+    "technical_pass": false,
+    "market_result": false
+  }
+}
