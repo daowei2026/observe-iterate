@@ -1,0 +1,96 @@
+{
+  "schema": "bi01-chart-data-request/v1",
+  "work_id": "BI-01",
+  "run_id": "BI-01-CO-05",
+  "round_id": "R0005",
+  "invocation_id": "BI01-CO-05-R0005-39b928f3b0b1",
+  "state": "SCRIPT_READY__FORMAL_ORDER_SIGNED__PENDING_CONTROLLER_VALIDATION",
+  "business_selection": {
+    "symbols": [
+      "rb",
+      "hc",
+      "i"
+    ],
+    "frequency": "30m",
+    "window": {
+      "start": "2021-08-15 00:00:00",
+      "end_exclusive": "2021-09-30 00:00:00",
+      "window_id": "BI01-CO05-C001"
+    },
+    "layers": [
+      "KLine(freq=30m, closeUti formal market sidecar)",
+      "ScaleTurnCalendar(large)",
+      "ScaleTurnCalendar(mid)"
+    ],
+    "excluded_layers": [
+      "ScaleTurnCalendar(small)"
+    ],
+    "chart": {
+      "layout": "one figure, rb/hc/i together",
+      "price_axis": "relative-price ratio normalization",
+      "background_axis_symbol": "rb",
+      "calendar_policy": "each symbol uses its source calendar; verify alignment in the selected window",
+      "large_marker": "triangle, size 17",
+      "mid_marker": "diamond, size 12"
+    },
+    "formal_data": {
+      "producer": "build_board_run(..., reuse_core=True)",
+      "required": [
+        "30m KLine formal slices for rb/hc/i in the selected window",
+        "large ScaleTurnCalendar formal slices for rb/hc/i in the selected window",
+        "mid ScaleTurnCalendar formal slices for rb/hc/i in the selected window",
+        "delivery manifest and feature-slice index/statistics sufficient to locate those slices"
+      ],
+      "same_run_core_as_chart": true
+    }
+  },
+  "owner_fixed_environment": {
+    "worker_chat_workspace": "/dwdhome/fy/cgpterm",
+    "aidata_execution_workspace": "/dwdhome/fy/BASE_E6_2",
+    "aidata_code_dir": "/dwdhome/fy/BASE_E6_2/mquant/aidata",
+    "sof_name": "GTQH_L1_20210104_20240229",
+    "stk_tlist": "gtqh_four"
+  },
+  "script": {
+    "path": "runs/BI-01-CO-05/artifacts/professional-R0005/build_bi01_co05_r0005_chart_data.py",
+    "sha256": "a109c6c390eb8d1b4cf155c1fb6fbbf4c0d7ca48e0e780083b257eb57fa3811f",
+    "command": "cd /dwdhome/fy/BASE_E6_2 && python /dwdhome/fy/cgpterm/runs/BI-01-CO-05/artifacts/professional-R0005/build_bi01_co05_r0005_chart_data.py",
+    "output_root": "/dwdhome/fy/BASE_E6_2/mquant/aidata/test_runs/bi01_co05_r0005_chart_data"
+  },
+  "worker_fix_boundary": {
+    "allowed": [
+      "ordinary import/API signature compatibility fixes required by the current authorized checkout",
+      "expressing the already-fixed rb/hc/i selector in the exact syntax accepted by the current API if blk@steel does not resolve exactly",
+      "using the current authorized plotting helper needed to realize the already-fixed one-figure relative-ratio view",
+      "path and serialization fixes that do not change data or feature semantics"
+    ],
+    "forbidden": [
+      "changing symbols, window, frequency, large/mid feature choice, SOF or stk_tlist",
+      "adding small scale, selecting a new use case or defining business key T",
+      "reconstructing first-visible/revision history or direction mappings",
+      "modifying shared aidata/mquant/tis/FRP source, switching checkout or upgrading dependencies",
+      "claiming delivery from URL existence, process exit code, or paths without opening the page and reading the formal data"
+    ]
+  },
+  "non_goals": [
+    "KEY_T_EVENT_LEDGER",
+    "FIELD_QUALIFICATION",
+    "DIRECTION_MAPPING_RECEIPT",
+    "full environment or repository diff audit",
+    "business background/candidate/no-candidate judgment"
+  ],
+  "formal_order": {
+    "path": "runs/BI-01-CO-05/artifacts/professional-R0005/WORKER_ORDER.md",
+    "order_id": "BI01CO05-CHART-DATA-R0005-01",
+    "signed": true,
+    "signing_basis": {
+      "control_commit": "748de226b79aa66044d60c1dfa5a4b6ac48b138a",
+      "send_receipt_path": "runs/BI-01-CO-05/provenance/turns/R0005/SEND_RECEIPT.json",
+      "send_receipt_state": "COMMITTED",
+      "same_invocation_and_assignment_token": true
+    },
+    "controller_validated": false,
+    "dispatched": false,
+    "worker_result_received": false
+  }
+}
