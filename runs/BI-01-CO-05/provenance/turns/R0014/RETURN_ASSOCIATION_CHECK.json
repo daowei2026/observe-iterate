@@ -1,0 +1,37 @@
+{
+  "schema": "bi01-return-association-check/v1",
+  "run_id": "BI-01-CO-05",
+  "original_invocation_id": "BI01-CO-05-R0014-db657637c4f2",
+  "original_assignment_token": "b60e8c793449424d8383b18c27bb",
+  "checked_commit": "d5640cf6b5f679b357de311a125cbb47276ce3ed",
+  "schema_structure_review": "PASS",
+  "local_schema_cli": "NOT_RUN__REMOTE_READBACK_AND_FIELD_LEVEL_REVIEW_ONLY",
+  "association_errors": [],
+  "artifacts_verified": 10,
+  "checks": {
+    "role_and_question_work_invocation_match": "PASS",
+    "role_assignment_token_matches_original": "PASS",
+    "role_question_work_ref_exact": "PASS",
+    "completed_scope_locator_consistent": "PASS",
+    "remaining_scope_locator_consistent": "PASS",
+    "continuation_locator_consistent": "PASS",
+    "management_decision_locator_resolves": "PASS",
+    "material_use_locator_resolves": "PASS",
+    "role_handoff_kind": "PASS_CLOSE",
+    "issued_work_refs": "PASS_EMPTY_NO_ACTIVE_WORK",
+    "delivery_ready_without_missing_refs": "PASS"
+  },
+  "continuation": {
+    "role": "github:daowei2026/observe-iterate@36e9d680e2465e562845d72700e3cb2e7fd1f21a:runs/BI-01-CO-05/provenance/turns/R0014/FULL_RESPONSE.md::#continuation",
+    "question_work": "github:daowei2026/observe-iterate@36e9d680e2465e562845d72700e3cb2e7fd1f21a:runs/BI-01-CO-05/provenance/turns/R0014/FULL_RESPONSE.md::#continuation"
+  },
+  "terminal_state": {
+    "case_execution": "STOPPED_ON_CURRENT_INPUT_PATH",
+    "active_dispatch": "NONE",
+    "handoff": "CLOSE",
+    "future_reactivation": "OWNER_AUTHORIZED_NEW_CASE_ONLY"
+  },
+  "frozen_business_and_historical_files": "UNCHANGED_AFTER_SUBMISSION",
+  "scope": "Verify R0014 Management report and the two original-call Returns only. This check does not certify Workmap CLI PASS, refresh the intentionally non-dispatchable terminal Intake, create a new Case, send a Professional/Worker/Reviewer call, accept market results or alter the R0014 decision.",
+  "actual_effort_review": "R0014 substantively consumed the R0011/R0013 effort trigger and stopped the current input-path Case. This check adds no Professional call, does not rearm effort and does not create active work."
+}
