@@ -4,46 +4,50 @@
     "bi01": {
       "manager": {
         "role": "management",
-        "context": "chatgpt://global/BI05管理 / BI01-CO-05-R0010-b1ffdd7d4721"
+        "context": "chatgpt://global/BI05管理 / BI01-CO-05-R0014-db657637c4f2"
       },
       "snapshot": "4c67cdf27d96cee0ec2fe0d029f4062b892730b1cba78e201feaaed901e40014",
-      "snapshot_state": "RECORDED_AFTER_R0010_EFFORT_REVIEW_AND_ONE_SHOT_CONDITIONAL_REENTRY_DECISION",
+      "snapshot_state": "HISTORICAL_R0010_SNAPSHOT_INVALIDATED_BY_R0014_TERMINAL_UPDATE__NOT_DISPATCHABLE",
+      "snapshot_observed_commit": "2d8568a081bab2da80f7a154238d2b8ea37166bb",
+      "terminal_state_observed_commit": "1bed7e583a24dff310a5efb9d8aa6ad0225468fd",
       "snapshot_recompute_required_before_worker_dispatch": true,
-      "snapshot_recompute_required_before_professional_dispatch": false,
-      "observed_commit": "2d8568a081bab2da80f7a154238d2b8ea37166bb",
+      "snapshot_recompute_required_before_professional_dispatch": true,
+      "future_reactivation_requires_new_case_binding_and_intake": true,
       "observed_binding_blob": "baf957a4f029008a0f533fb4baedb82b07c65900",
       "reader_input_snapshot": "75f8b09654fc8d3189d59d0306de980247400894e74f987414e905fb76e9af97",
+      "reader_input_snapshot_state": "HISTORICAL_R0010__NOT_CURRENT_READER_PASS",
       "decision_report": {
-        "path": "runs/BI-01-CO-05/reviews/management-R0010/DECISION.md",
-        "blob": "e79c87b621285ddfac9c3603e2faa576ac440190"
+        "path": "runs/BI-01-CO-05/reviews/management-R0014/DECISION.md",
+        "blob": "a706e097228bb62e629561f56997db64c8e9f241"
+      },
+      "case_state": {
+        "status": "STOPPED_ON_CURRENT_INPUT_PATH",
+        "stop_reason": "AUTHORIZED_EXECUTION_PATH_AND_ENVIRONMENT_COST_EXHAUSTED",
+        "owner_process_result": "UNTESTED_DUE_TO_INPUT_EXECUTION_PATH_EXHAUSTION",
+        "qualified_market_T_count": 0,
+        "first_process_practice_package": "NOT_ACCEPTED",
+        "market_or_method_negative_conclusion": "NOT_FORMED",
+        "active_queue": "EMPTY",
+        "automatic_reactivation": false
       },
       "effort": {
-        "known_pro_turns": 4,
-        "coverage": "R0002_R0005_R0008_R0009_EFFECTIVE__R0010_SECOND_EFFORT_REVIEW_CONSUMED",
-        "source_note": "R0002 and R0005 formed the first two-call segment consumed by R0006. After R0006 rearm, R0008 produced the Owner-corrected full-range design, reusable script and signed order; R0009 consumed the actual Worker failure and classified an exact pre-core calendar-file I/O blocker. R0010 consumed the due ACTIVE_PROCESS_PRACTICE_EFFORT_REVIEW, closed the terminal R0008 order, authorized one one-shot conditional reentry and rearmed counting from the next effective Professional call."
+        "known_pro_turns": 6,
+        "coverage": "R0002_R0005_R0008_R0009_R0011_R0013_EFFECTIVE__R0014_THIRD_EFFORT_REVIEW_CONSUMED",
+        "source_note": "R0002/R0005 formed segment one consumed by R0006; R0008/R0009 formed segment two consumed by R0010; R0011 signed the one-shot conditional reentry order and R0013 consumed its actual failed Worker result. R0012 was Return repair only and did not count. R0014 consumed the due effort review and stopped the current input-path Case."
       },
       "effort_rearm": {
         "consumed_trigger": "ACTIVE_PROCESS_PRACTICE_EFFORT_REVIEW",
-        "consumed_by_invocation": "BI01-CO-05-R0010-b1ffdd7d4721",
-        "consumption_decision": "runs/BI-01-CO-05/reviews/management-R0010/DECISION.md#effort",
-        "next_segment_starts": "NEXT_EFFECTIVE_PROFESSIONAL_CALL_AFTER_R0010",
-        "next_limit": 2,
-        "expected_sequence": [
-          "original Professional signs one one-shot conditional reentry order without redesign",
-          "Worker returns probe plus conditional full-run result",
-          "original Professional consumes result and, on technical success, begins evidence qualification and first-layer observation in the same call"
-        ],
-        "non_counting": [
-          "transport repair",
-          "duplicate receipt",
-          "SHA-only resubmission",
-          "no-answer invocation"
-        ]
+        "consumed_by_invocation": "BI01-CO-05-R0014-db657637c4f2",
+        "consumption_decision": "runs/BI-01-CO-05/reviews/management-R0014/DECISION.md#case-stop",
+        "next_segment_starts": "NOT_APPLICABLE_CASE_STOPPED",
+        "next_limit": null,
+        "rearm_state": "DISABLED_WHILE_CASE_STOPPED",
+        "future_rule": "Only an Owner-authorized new Case with a new task, Binding, Intake and budget may establish a new effort segment."
       },
       "reader_check": {
         "status": "NOT_REQUIRED",
         "authority_source": "professional/exploration/06_EXPLORATION_STAGE_GOAL.md",
-        "reason": "Owner-authorized OWNER_OPTIONAL policy remains applicable. R0010 preserves the same formal task, named question, Owner 05 process, tooling boundary and Workmap Binding; it consumes an actual due effort review and changes only the execution feedback loop after a precisely evidenced environment blocker. No independent Reader was requested and no replacement of the research problem, main business process or direction is adopted. This waiver is not a Reader PASS and does not waive mechanical intake, dispatch, worker-order or later business-review checks."
+        "reason": "Owner-authorized OWNER_OPTIONAL policy remains the historical Workmap state. R0014 does not replace the research question, Owner 05 process or Binding; it stops the current input-path Case after the authorized execution route was exhausted. NOT_REQUIRED is not Reader PASS. No current dispatch is issued, and any future Owner-authorized new Case must make its own Reader decision and rebuild Intake."
       },
       "professional_history": [
         {
@@ -51,171 +55,168 @@
           "invocation_id": "BI01-CO-05-R0002-a60d58cf183f",
           "effective_call_index": 1,
           "effort_segment": 1,
-          "result": "FAIL_CLOSED_INPUT_QUALIFICATION__ZERO_QUALIFIED_MARKET_T",
-          "accepted_scope": "No formal market claim without same-run/core formal evidence; the broad historical Worker scope is not active.",
-          "report": {
-            "path": "runs/BI-01-CO-05/artifacts/professional-R0002/REPORT.md",
-            "blob": "8f0dad6f5c7a142f1f5ab5f41b8f894b352c9f90"
-          }
+          "result": "FAIL_CLOSED_INPUT_QUALIFICATION__ZERO_QUALIFIED_MARKET_T"
         },
         {
           "round": "R0005",
           "invocation_id": "BI01-CO-05-R0005-39b928f3b0b1",
           "effective_call_index": 2,
           "effort_segment": 1,
-          "result": "STATIC_SCRIPT_AND_SIGNED_ORDER__NO_RUNTIME_DATA_OR_MARKET_RESULT",
-          "accepted_scope": "rb/hc/i, 30m, large+mid, no default small, fixed SOF/tlist, same-run/core chart-board structure and script preparation only; the old 45-day range and order are not active.",
-          "report": {
-            "path": "runs/BI-01-CO-05/artifacts/professional-R0005/REPORT.md",
-            "blob": "8cd0c4116081d734debebaf4ec594311bb98a3dc"
-          }
+          "result": "STATIC_SCRIPT_AND_SIGNED_ORDER__NO_RUNTIME_OR_MARKET_RESULT"
         },
         {
           "round": "R0008",
           "invocation_id": "BI01-CO-05-R0008-38f9aa094823",
           "effective_call_index": 3,
           "effort_segment": 2,
-          "result": "FULL_RANGE_DESIGN_SCRIPT_AND_SIGNED_ORDER__NO_RUNTIME_OR_MARKET_RESULT",
-          "accepted_scope": "Owner-fixed full range, rb/hc/i, 30m, large+mid, no small, fixed SOF/tlist, mandatory full-range main page plus seven prior auxiliary pages, same-run/core chart and formal-data design, and immutable script bytes.",
-          "report": {
-            "path": "runs/BI-01-CO-05/artifacts/professional-R0008/REPORT.md",
-            "blob": "23dac39f68f3ff4f8bea7a735b8b454d40301690"
-          },
-          "order": {
-            "order_id": "BI01CO05-FULLRANGE-CHART-DATA-R0008-01",
-            "path": "runs/BI-01-CO-05/artifacts/professional-R0008/WORKER_ORDER.md",
-            "blob": "f8e461db2b50b638b5af9aaf087aa92aae341936"
-          }
+          "result": "FULL_RANGE_DESIGN_SCRIPT_AND_SIGNED_ORDER__NO_RUNTIME_OR_MARKET_RESULT"
         },
         {
           "round": "R0009",
           "invocation_id": "BI01-CO-05-R0009-a71674a1a56f",
           "effective_call_index": 4,
           "effort_segment": 2,
-          "result": "ACTUAL_WORKER_FAILURE_CONSUMED__EXECUTION_ENVIRONMENT_IO_BLOCKER__ZERO_QUALIFIED_MARKET_T",
-          "accepted_scope": "Exact pre-core calendar-file errno 5 from one real execution, script identity and fail-closed business impact; no market, feature-inadequacy or method conclusion.",
-          "report": {
-            "path": "runs/BI-01-CO-05/artifacts/professional-R0009/REPORT.md",
-            "blob": "3683077f27d2d33b527abf923df3acee790a59be"
-          },
-          "question_work_return": {
+          "result": "FIRST_WORKER_FAILURE_CONSUMED__PRE_CORE_CALENDAR_ERRNO5__ZERO_QUALIFIED_MARKET_T"
+        },
+        {
+          "round": "R0011",
+          "invocation_id": "BI01-CO-05-R0011-e186238bf811",
+          "effective_call_index": 5,
+          "effort_segment": 3,
+          "result": "ONE_SHOT_CONDITIONAL_REENTRY_ORDER_SIGNED__NO_BUSINESS_RESULT",
+          "order_ref": {
             "repo": "daowei2026/observe-iterate",
-            "commit": "63c9768f218f53837c93e98157e36d56d5864f84",
-            "path": "runs/BI-01-CO-05/provenance/turns/R0009/QUESTION_WORK_RETURN.json"
+            "commit": "ed0da9d0ff8974ac34ebbb290c859627bfdd6137",
+            "path": "runs/BI-01-CO-05/artifacts/professional-R0011/WORKER_ORDER.md",
+            "blob": "aaf734c967d4afaa373a8b23ceac845bc9b69d0b"
+          }
+        },
+        {
+          "round": "R0013",
+          "invocation_id": "BI01-CO-05-R0013-7bb3a890a1de",
+          "effective_call_index": 6,
+          "effort_segment": 3,
+          "result": "CONDITIONAL_REENTRY_FAILURE_CONSUMED__PYTHON_PROBE_NOT_STARTED__SAME_PATH_ROUTE_EXHAUSTED",
+          "report_ref": {
+            "repo": "daowei2026/observe-iterate",
+            "commit": "e58711b94de4af294ca473720a94f80f3e122092",
+            "path": "runs/BI-01-CO-05/provenance/turns/R0013/FULL_RESPONSE.md"
           }
         }
       ],
+      "non_effective_repairs": [
+        {
+          "round": "R0012",
+          "reason": "Return association/schema repair only; no new Professional business or technical work."
+        }
+      ],
       "professional_intake": {
-        "status": "FULL_RANGE_TECHNICAL_BASIS_AND_BLOCKER_CLASSIFICATION_ACCEPTED__BUSINESS_PACKAGE_NOT_ACCEPTED",
+        "status": "TECHNICAL_AND_GOVERNANCE_FACTS_ACCEPTED__CURRENT_CASE_STOPPED__BUSINESS_PACKAGE_NOT_ACCEPTED",
         "accepted": [
-          "R0008 fixed full-range chart/data contract and script SHA-256 5571cad70d5c519d9e0c5260564346837833eb147d7c4fafb40afb0505a3df16",
-          "rb/hc/i, 30m, large+mid, small disabled, GTQH_L1_20210104_20240229 / gtqh_four",
-          "mandatory full-range main page plus seven deterministic auxiliary pages",
-          "same-run/core chart-board-formal-data chain",
-          "one actual Worker attempt with matching script bytes and no compatibility diff",
-          "exact pre-core environment I/O blocker at affiliated_calendar_no_night.csv",
-          "R0009 fail-closed classification and complete remaining scope"
+          "R0008 fixed full-range chart/formal-data design and immutable script",
+          "first real Worker attempt reached the required calendar file and observed one errno 5 before actual core/run",
+          "R0011 one-shot conditional reentry order preserved the same input identity and explicit exit boundary",
+          "second real Worker session exited 143 before the Python probe started; exact file open/read and full-range script were not executed",
+          "R0013 correctly kept file state, launcher cause, market data, feature coverage and Owner method result unknown",
+          "authorized same-path execution quota is exhausted"
         ],
         "not_accepted": [
-          "pre-request run_id as an actual run/core",
-          "zero pages or slices as a market zero or data absence",
-          "single errno 5 as permanent storage failure or missing market data",
-          "technical transport or static checks as technical PASS",
-          "common large-scale background, mid-scale structure, candidate, ranking or no-candidate conclusion",
+          "calendar file currently readable or unreadable",
+          "exit 143 root cause",
+          "actual run/core, pages, board, manifest/index or formal KLine/large/mid",
+          "common large-scale background, mid-scale structure, candidate, ranking or legal no-candidate conclusion",
+          "Owner process success or failure",
           "FIRST_PROCESS_PRACTICE_PACKAGE"
         ],
         "qualified_market_T_count": 0,
-        "decision_ref": "runs/BI-01-CO-05/reviews/management-R0010/DECISION.md#acceptance"
+        "decision_ref": "runs/BI-01-CO-05/reviews/management-R0014/DECISION.md#stage-acceptance"
       },
       "worker_intake": {
-        "terminal_order": {
-          "order_id": "BI01CO05-FULLRANGE-CHART-DATA-R0008-01",
-          "order_path": "runs/BI-01-CO-05/artifacts/professional-R0008/WORKER_ORDER.md",
-          "signed_commit": "34198df6d4435feaa089baeae73e934559bd8b19",
-          "actual_dispatch": "DISPATCHED_AND_EXECUTED_ONCE",
-          "worker_execution_id": "BI01CO05-R0008-worker-e20dc4a50455",
-          "result_commit": "8c7de6c113f38d24584d73e081d441d85e8a8c4b",
-          "result_path": "runs/BI-01-CO-05/artifacts/worker-BI01CO05-FULLRANGE-CHART-DATA-R0008-01/FULL_RESPONSE.md",
-          "terminal_status": "FAILED_ENVIRONMENT_IO_ORDER_STOP",
-          "attempts": 1,
-          "current_disposition": "TERMINAL_NO_REDISPATCH_NO_AUTORETRY_NO_DEFERRED_STATUS",
-          "new_dispatch_allowed": false
-        },
-        "blocker": {
-          "classification": "EXECUTION_ENVIRONMENT_IO_BLOCKER",
-          "path": "/m3varI/var/L1_data/sof/unit/affiliated_calendar_no_night.csv",
-          "observed_exception": "OSError(errno=5)",
-          "persistence": "UNKNOWN_SINGLE_OBSERVED_ATTEMPT",
-          "core_created": false,
-          "market_data_read_reached": false,
-          "mount_source": "192.168.9.79:/m3varI"
-        },
-        "replacement_required": "ORIGINAL_PROFESSIONAL_SIGNS_ONE_ONE_SHOT_CONDITIONAL_REENTRY_ORDER",
-        "suggested_new_order_id": "BI01CO05-FULLRANGE-CONDITIONAL-REENTRY-01",
-        "new_order_semantics": "same-target exact file open/read probe; if PASS immediately run original R0008 full-range script once; if FAIL stop before expensive run and do not issue a third same-path order",
-        "worker_direct_dispatch_now": false,
-        "input_change_prohibited_without_management": true
+        "terminal_orders": [
+          {
+            "order_id": "BI01CO05-FULLRANGE-CHART-DATA-R0008-01",
+            "order_path": "runs/BI-01-CO-05/artifacts/professional-R0008/WORKER_ORDER.md",
+            "actual_dispatch": "DISPATCHED_AND_EXECUTED_ONCE",
+            "terminal_status": "FAILED_ENVIRONMENT_IO_ORDER_STOP",
+            "observed_failure": "one OSError(errno=5) opening the required calendar file before actual core/run",
+            "current_disposition": "TERMINAL_NO_REDISPATCH_NO_AUTORETRY_NO_DEFERRED_STATUS"
+          },
+          {
+            "order_id": "BI01CO05-FULLRANGE-CONDITIONAL-REENTRY-01",
+            "order_path": "runs/BI-01-CO-05/artifacts/professional-R0011/WORKER_ORDER.md",
+            "signed_commit": "ed0da9d0ff8974ac34ebbb290c859627bfdd6137",
+            "actual_dispatch": "DISPATCHED_AND_EXECUTED_ONCE",
+            "worker_execution_id": "BI01CO05-CONDITIONAL-worker-93ea13632560",
+            "result_commit": "45e9f33474d8d36f4f9fa07a3f72824c710c0d46",
+            "terminal_status": "FAILED_PROBE_EVIDENCE_INCOMPLETE",
+            "session_exit_code": 143,
+            "python_probe_started": false,
+            "exact_file_open_attempts": 0,
+            "exact_file_read_calls": 0,
+            "full_run_attempts": 0,
+            "conditional_reentry_quota": "CONSUMED_FAILED",
+            "current_disposition": "TERMINAL_NO_REDISPATCH_NO_THIRD_SAME_PATH_ORDER_NO_DEFERRED_STATUS"
+          }
+        ],
+        "pending_or_executable_queue": [],
+        "same_path_new_dispatch_allowed": false,
+        "management_or_controller_may_issue_worker_now": false
       },
       "management_trigger_consumption": {
-        "FIRST_PROCESS_PRACTICE_PACKAGE": "NOT_YET",
-        "CORE_INPUT_OR_PROCESS_CHANGE": "NOT_YET",
-        "ACTIVE_PROCESS_PRACTICE_EFFORT_REVIEW": "SATISFIED_AND_CONSUMED_R0010__REARMED_NEXT_EFFECTIVE_PROFESSIONAL_CALL"
+        "FIRST_PROCESS_PRACTICE_PACKAGE": "NOT_YET__NOT_ACCEPTED__CURRENT_CASE_STOPPED",
+        "CORE_INPUT_OR_PROCESS_CHANGE": "NOT_YET__NOT_ADOPTED__NO_CONCRETE_PROPOSAL",
+        "ACTIVE_PROCESS_PRACTICE_EFFORT_REVIEW": "SATISFIED_AND_CONSUMED_R0014__NOT_REARMED"
       },
       "dispatch": {
         "task_path": "runs/BI-01-CO-05/01_当前任务.md",
         "task_id": "BI-01-CO-05-OWNER-PROCESS-PRACTICE-01",
         "task_blob": "5d6589c9a6104f879711787157494247c0293932",
-        "decision": "ISSUED",
-        "kind": "ROUTINE_RESULT",
+        "decision": "NOT_ISSUED_CASE_STOPPED",
+        "kind": "TERMINAL_CASE_STOP",
         "requires_reader_check": false,
-        "reader_reason": "The same Owner-authorized task and question continue after a substantive Management effort review. R0010 consumes actual R0008/R0009 results and changes only the execution feedback loop around a precisely evidenced environment blocker; OWNER_OPTIONAL NOT_REQUIRED remains valid and is not a PASS.",
-        "method_paths": [
-          "professional/README.md",
-          "professional/exploration/README.md",
-          "professional/exploration/00_BUSINESS_OBJECTIVE.md",
-          "professional/exploration/01_EXISTING_FEATURES_AND_CAPABILITIES.md",
-          "professional/exploration/02_CURRENT_WORKING_IDEAS.md",
-          "professional/exploration/03_TOOLING_AND_DATA_USAGE.md",
-          "professional/exploration/04_EXISTING_BUSINESS_REFERENCES.md",
-          "professional/exploration/05_OWNER_PROCESS_EXPLANATION.md",
-          "dual_route_execution/DR14_QUESTION_WORK_CONTRACT.md",
-          "overlay/08_自然语言运行提示_v0.3.md",
-          "professional/exploration/06_EXPLORATION_STAGE_GOAL.md"
-        ],
-        "recipient_ref": "chatgpt:BI-01-CO-05:professional",
-        "route": "same_work",
+        "reader_reason": "No dispatch exists. Historical OWNER_OPTIONAL NOT_REQUIRED remains non-PASS; any future new Case must rebuild Reader/Intake state.",
+        "recipient_ref": "NONE_CASE_STOPPED",
+        "route": "none",
         "management_decision_ref": {
-          "path": "runs/BI-01-CO-05/reviews/management-R0010/DECISION.md",
-          "blob": "e79c87b621285ddfac9c3603e2faa576ac440190"
+          "path": "runs/BI-01-CO-05/reviews/management-R0014/DECISION.md",
+          "blob": "a706e097228bb62e629561f56997db64c8e9f241"
         },
-        "owner_correction_ref": {
-          "repo": "daowei2026/observe-iterate",
-          "commit": "e03e184b06fb058c36fe18c28bc0dc52701b803f",
-          "path": "runs/BI-01-CO-05/OWNER_CHANGE_20261102_R0005_TIME_COVERAGE.md",
-          "selector": "full"
-        },
-        "latest_professional_result_ref": {
-          "repo": "daowei2026/observe-iterate",
-          "commit": "402e73c1f8c5c5067d6d39242bd1a9afd27a6e30",
-          "path": "runs/BI-01-CO-05/artifacts/professional-R0009/REPORT.md",
-          "selector": "full"
-        },
-        "continuation": "ORIGINAL_PROFESSIONAL_SIGNS_ONE_CONDITIONAL_REENTRY_ORDER__CONTROLLER_PREFLIGHT_AND_DISPATCH__WORKER_PROBE_THEN_CONDITIONAL_FULL_RUN__RESULT_RETURNS_TO_ISSUER",
-        "actual_delivery_state": "NOT_SENT_PENDING_CONTROLLER_PREFLIGHT"
+        "continuation": "NO_AUTOMATIC_CONTINUATION__FUTURE_OWNER_AUTHORIZED_NEW_CASE_ONLY",
+        "actual_delivery_state": "NO_ACTIVE_DISPATCH"
+      },
+      "future_reentry_contract": {
+        "current_owner_request_issued": false,
+        "waiting_for_owner": false,
+        "background_monitoring": false,
+        "minimum_trigger": "Owner explicitly authorizes a concrete new core-input identity or approves a fully specified core-input change proposal.",
+        "required_new_objects": [
+          "new Case identity",
+          "new task and Question Work Binding",
+          "new Workmap Binding/Intake decision as applicable",
+          "new budget and exit conditions",
+          "new Professional/Worker dispatch records"
+        ],
+        "prohibited": [
+          "revive R0008 or R0011 order",
+          "restore the old same_work route",
+          "reuse an old requested run_id as evidence",
+          "silent source/resolver/path/checkout substitution"
+        ]
       },
       "scope_dispositions": {},
       "validation_claims": [],
       "technical_acceptance_labels": [
-        "R0010_SUBSTANTIVE_EFFORT_REVIEW_COMPLETE",
-        "R0008_FULL_RANGE_TECHNICAL_BASIS_ACCEPTED_WITH_LIMITS",
-        "R0008_ORDER_TERMINAL_FAILED_NO_REDISPATCH",
-        "R0009_ENVIRONMENT_IO_CLASSIFICATION_ACCEPTED",
-        "ONE_SHOT_CONDITIONAL_REENTRY_AUTHORIZED",
-        "FORMAL_TASK_BINDING_OWNER05_TOOLING03_UNCHANGED",
-        "READER_NOT_REQUIRED_NOT_PASS",
+        "R0014_SUBSTANTIVE_EFFORT_REVIEW_COMPLETE",
+        "CURRENT_INPUT_PATH_CASE_STOPPED",
+        "AUTHORIZED_EXECUTION_PATH_AND_ENVIRONMENT_COST_EXHAUSTED",
+        "R0011_CONDITIONAL_REENTRY_ORDER_TERMINAL_CONSUMED_FAILED",
+        "NO_THIRD_SAME_PATH_WORKER",
+        "OWNER_PROCESS_UNTESTED_NOT_FAILED",
         "QUALIFIED_MARKET_T_ZERO",
         "FIRST_PROCESS_PRACTICE_PACKAGE_NOT_ACCEPTED",
-        "NEXT_PROFESSIONAL_ROUTINE_SAME_WORK_NOT_SENT"
+        "CORE_INPUT_CHANGE_NOT_ADOPTED",
+        "NO_ACTIVE_PROFESSIONAL_WORKER_OR_REVIEW_DISPATCH",
+        "HISTORICAL_SNAPSHOT_INTENTIONALLY_NON_DISPATCHABLE"
       ]
     }
   }
