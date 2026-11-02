@@ -1,10 +1,11 @@
 # 观察研究Agent：基于既有特征的业务用例探索
 
-当前处于**业务用例形成方法的探索与实践阶段**，不是已定型专业规范或专用Agent。目标是基于既有贴近转折特征及衍生对象，发现现象与候选规律，并利用它们提前判断后续品种走势、机会与反向风险；由Management Pro根据Owner整体意图和各轮实践结果持续安排下一项专业工作。
+当前处于**业务用例形成方法的探索与实践阶段**，不是已定型专业规范或专用Agent。最终投资目的仍是利用既有贴近转折特征及衍生对象发现现象与候选规律，逐渐支持前瞻品种判断；**当前长程任务的直接目的，是组织 Owner 已有初版用例形成过程的真实实践，并依据实践反馈迭代这套过程。** Management Pro 负责组织和管理反馈，重要新增业务分析按性质呈现供 Owner 检查。
 
 ## 探索背景
 - [专业探索入口](professional/README.md)
-- [业务目标](professional/exploration/00_BUSINESS_OBJECTIVE.md)
+- [最终投资业务目标](professional/exploration/00_BUSINESS_OBJECTIVE.md)
+- [当前长程任务的直接目标](professional/exploration/06_EXPLORATION_STAGE_GOAL.md)
 - [既有特征](professional/exploration/01_EXISTING_FEATURES_AND_CAPABILITIES.md)
 - [当前工作设想摘要](professional/exploration/02_CURRENT_WORKING_IDEAS.md)
 - [Owner提供的完整做事过程说明（原文保留）](professional/exploration/05_OWNER_PROCESS_EXPLANATION.md)

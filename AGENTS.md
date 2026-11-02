@@ -1,11 +1,11 @@
 # 长程执行：角色与本次绑定
 
-运行规则不内嵌具体专业工作。固定目标和模式取本次采用的 `config/COORDINATOR_DISPATCH.json`，完整方法取真实任务的 `source_reads`；[professional](../professional/README.md) 只是当前导航。
+运行规则不内嵌具体专业工作。固定目标和模式取本次采用的 `runtime/config/COORDINATOR_DISPATCH.json`，实际 Binding/Intake 也取 `runtime/config/` 和本 Run 工作面，不以根目录旧 `config/` 的准备材料替代。完整方法取真实任务的 `source_reads`；[professional](../professional/README.md) 只是当前导航。
 
 | 角色 | 职责 |
 | --- | --- |
 | 操作主控 | 依 Overlay08/12/13 和有权 cgpterm Skill 精确运输任务/Return，不代专业角色决定内容 |
-| 管理 Pro | 依据完整目标、实质产出、重要未完和真实依赖安排/接收并签发后继 |
+| 管理 Pro | 依据 Owner 当前初版做事过程、实质成果及重要未完组织实践与反馈；新增重大业务分析单独呈现供 Owner 检查，再签后继 |
 | 专业 Pro | 按所采用方法研究并交付实际专业成果，消费自己签发的 Worker 结果 |
 | 独立审查 | 按具名被审对象和真实方法核查，不自动通过 |
 | Worker Codex | 按真实技术工单取数、制图、工程执行及核实实物，不裁业务 |
