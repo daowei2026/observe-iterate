@@ -1,0 +1,86 @@
+{
+  "schema": "management-delivery-checks/v1",
+  "work_id": "BI-01",
+  "run_id": "BI-01-CO-05",
+  "invocation_id": "BI01-CO-05-R0010-b1ffdd7d4721",
+  "assignment_token": "cf21dd5b82654fe2ab91cd6aae97",
+  "branch": "fy/owner-led-case-exploration-optional-reader-20261102",
+  "pre_finalization_head": "ce6e2bb26ab2bf420a9a777d5318c4dec93e4f76",
+  "managed_state": {
+    "formal_task_blob": "5d6589c9a6104f879711787157494247c0293932",
+    "binding_blob": "baf957a4f029008a0f533fb4baedb82b07c65900",
+    "readme_blob": "97c2ac84018d89cd1ead5c39927f1b2503529765",
+    "map_blob": "7764b34717f6e2517938b9a3dc7d98dd38ff375d",
+    "adoption_status_blob": "1c1fc9ce989c5f3daa0c29d08d006825817a403b",
+    "decision_blob": "e79c87b621285ddfac9c3603e2faa576ac440190",
+    "intake_commit": "0576037aaf485bc7167ba8274703a3db22c33ffc",
+    "intake_blob": "1fc0bd5939d73eee5d4b9f5856dda28af7a798fb",
+    "workmap_snapshot": "4c67cdf27d96cee0ec2fe0d029f4062b892730b1cba78e201feaaed901e40014",
+    "reader_input_snapshot": "75f8b09654fc8d3189d59d0306de980247400894e74f987414e905fb76e9af97",
+    "artifact_tree_projection": "adf35bf8b11cb092d0c35284f458a4ac2bf7499b15b1301499fbf0a7961ad351"
+  },
+  "deliverables": {
+    "full_response": {
+      "commit": "0776c5645be4bf1d38c7151baa8662def243e26b",
+      "path": "runs/BI-01-CO-05/provenance/turns/R0010/FULL_RESPONSE.md",
+      "blob": "d0c60017ee166c8c3b151b11d0a0ab58d567756d",
+      "readback": "PASS"
+    },
+    "question_work_return": {
+      "commit": "ccc5f8901a908c1737c3bfb499a1db109fbe70f7",
+      "path": "runs/BI-01-CO-05/provenance/turns/R0010/QUESTION_WORK_RETURN.json",
+      "blob": "472c93a08f2041e115bf2f52bff1951ae0906bb0",
+      "readback": "PASS"
+    },
+    "role_return": {
+      "commit": "421304987c907481882e6a958ddfa5b73e3c9445",
+      "path": "runs/BI-01-CO-05/provenance/turns/R0010/ROLE_RETURN.json",
+      "blob": "a310acb75ff7bbd6d365fae43619e27aa51d694e",
+      "readback": "PASS"
+    },
+    "return_association_check": {
+      "commit": "ce6e2bb26ab2bf420a9a777d5318c4dec93e4f76",
+      "path": "runs/BI-01-CO-05/provenance/turns/R0010/RETURN_ASSOCIATION_CHECK.json",
+      "blob": "37e4da90395eb938c5ed065350b79087340b0470",
+      "readback": "PASS",
+      "association_errors": []
+    }
+  },
+  "checks": {
+    "required_sources_read": "PASS",
+    "assignment_identity": "PASS",
+    "r0008_full_result_script_and_order_read": "PASS",
+    "actual_worker_result_and_blocker_evidence_read": "PASS",
+    "r0009_full_consumption_and_returns_read": "PASS",
+    "complete_business_relationship_reconstructed": "PASS",
+    "stage_acceptance": "TECHNICAL_BASIS_AND_EXACT_BLOCKER_ONLY",
+    "r0008_original_order": "TERMINAL_NO_REDISPATCH_NO_AUTORETRY_NO_DEFERRED",
+    "qualified_market_T_count": 0,
+    "first_process_practice_package": "NOT_YET",
+    "core_input_or_process_change": "NOT_YET",
+    "effort_trigger": "SATISFIED_AND_CONSUMED_R0010",
+    "one_shot_conditional_reentry": "AUTHORIZED_TO_ORIGINAL_PROFESSIONAL_FOR_NEW_ORDER",
+    "formal_task_unchanged": true,
+    "binding_unchanged": true,
+    "owner_05_and_tooling_03_unchanged": true,
+    "reader_status": "NOT_REQUIRED_NOT_PASS",
+    "business_reviewer_issued": false,
+    "worker_order_issued_by_management": false,
+    "workmap_v2_fingerprint_reconstructed": "PASS",
+    "remote_deliverable_bytes_read_back": "PASS",
+    "role_and_qwr_invocation_match": "PASS",
+    "role_assignment_token_match": "PASS",
+    "role_question_work_ref_exact": "PASS",
+    "continuation_association": "PASS",
+    "completed_and_remaining_association": "PASS",
+    "local_workmap_gate_cli": "NOT_RUN__CONTROLLER_PREFLIGHT_REQUIRED",
+    "routine_professional_dispatch": "NOT_RUN__CONTROLLER_ACTION_REQUIRED",
+    "new_worker_order": "NOT_YET_EXISTS__MUST_BE_SIGNED_BY_ORIGINAL_PROFESSIONAL",
+    "conditional_worker_dispatch": "NOT_RUN"
+  },
+  "limits": [
+    "This receipt verifies repository identities, remote blobs, reconstructed Workmap projection and submitted Management artifacts only; it does not certify local workmap_gate CLI PASS.",
+    "No calendar recovery, conditional reentry order, Worker redispatch, full-range run/core, chart/data delivery, qualified market observation, business-package acceptance, independent review or Owner acceptance of new business analysis is claimed.",
+    "The R0010 control-plane SEND_RECEIPT remains NOT_SENT and was not rewritten by Management; the controller must reconcile actual dispatch facts before the next Professional call."
+  ]
+}
