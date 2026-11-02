@@ -1,0 +1,63 @@
+{
+  "schema": "bi01-invocation/v1",
+  "run_id": "BI-01-CO-05",
+  "round_id": "R0012",
+  "round": "R0012",
+  "work_id": "BI-01",
+  "invocation_id": "BI01-CO-05-R0012-ae98959b9146",
+  "assignment_token": "88bf3c93f32347b6ac848e36cafc",
+  "round_marker": "[BI01-CO-05-R0012-ae98959b9146]",
+  "role": "professional",
+  "recipient_ref": "chatgpt:BI-01-CO-05:professional",
+  "policy_commit": "b6b344ef0dbd5bc5596c8ec726aad39474254fc4",
+  "dispatch_kind": "DELIVERY_REPAIR",
+  "route": "return_repair",
+  "binding_ref": {
+    "repo": "daowei2026/observe-iterate",
+    "commit": "a6a8acf7fa65665218d0f2163598d434fb921b24",
+    "path": "runs/BI-01-CO-05/01_当前任务.md",
+    "selector": "#question-work-binding"
+  },
+  "repair_context": {
+    "original_dispatch_ref": {
+      "repo": "daowei2026/observe-iterate",
+      "commit": "43a1ce02ca5e7c17ddcb27e43df97a766f90bbb9",
+      "path": "runs/BI-01-CO-05/provenance/turns/R0011/PROMPT.md",
+      "selector": "full"
+    },
+    "issue_ref": {
+      "repo": "daowei2026/observe-iterate",
+      "commit": "51d727705eb65e3885a6792494bc617ca7da6d4a",
+      "path": "runs/BI-01-CO-05/provenance/turns/R0011/RETURN_SCHEMA_CHECK.json",
+      "selector": "full"
+    },
+    "missing_output_refs": [
+      {
+        "repo": "daowei2026/observe-iterate",
+        "commit": "da52023ad7f2512687c36f0c602286b681c01505",
+        "path": "runs/BI-01-CO-05/provenance/turns/R0011/ROLE_RETURN.json",
+        "selector": "full"
+      }
+    ]
+  },
+  "requires_reader_check": false,
+  "reader_reason": "Only original R11 Role Return unsupported properties are removed under current delivery-repair route; no task, source, business result, script or order change. Existing Owner-qualified NOT_REQUIRED is not PASS.",
+  "question_work_required": true,
+  "state": "FROZEN_NOT_SENT",
+  "send_state": "NOT_SENT",
+  "send_attempts": 0,
+  "original_business_invocation_id": "BI01-CO-05-R0011-e186238bf811",
+  "original_business_assignment_token": "ade5d48ee39949aa99991f4b0a39",
+  "counts_as_effective_professional_call": false,
+  "prompt_sha256": "5e2682e5b7021575b794e270cc8495958e3e6d21ed8b915cce0ea653c9859eba",
+  "prompt_utf8_bytes": 884,
+  "prompt_utf16_units": 568,
+  "message_transport": "github_reference",
+  "full_assignment_ref": {
+    "repo": "daowei2026/observe-iterate",
+    "commit": "3395daee3555b004a59d695b3d734ecc6c2c3865",
+    "path": "runs/BI-01-CO-05/provenance/turns/R0012/FULL_ASSIGNMENT.md",
+    "selector": "full"
+  },
+  "full_assignment_sha256": "4e0043160eac8a18134166a63f2a3ed7afe607579bb73321f4a2a93bcc37a628"
+}
