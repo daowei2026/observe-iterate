@@ -181,6 +181,11 @@ def snapshot(repo: Path | str, ref: str, binding_path: str, scope: str) -> dict:
     scoped_binding={'manager_role':b['manager_role'],'receipt_path':b['receipt_path'],
                     'overview':b['overview'],'shared_overview_anchors':b['shared_overview_anchors'],
                     'stream':s,'owner_sources':b['owner_sources'],'rule_paths':b['rule_paths']}
+    if 'reader_policy' in b:
+        # Policy changes must invalidate both the independent-reader input
+        # and the management intake fingerprint, not just dispatch logic.
+        reader_material['reader_policy']=b['reader_policy']
+        scoped_binding['reader_policy']=b['reader_policy']
     material={'schema':'workmap-snapshot/v2','scope':scope,'binding':canonical_hash(scoped_binding),
               'reader_input':reader_material,'result_trees':result_projection(v,b,s)}
     return {'observed_commit':ref,'observed_binding_blob':v.oid(binding_path),'scope':scope,

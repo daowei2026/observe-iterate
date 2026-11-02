@@ -167,6 +167,17 @@ class V2RegressionTests(unittest.TestCase):
         r=self.check(dispatch=True, delivery=self.delivery_v2())
         self.assertIn('INTAKE_STALE',r['errors'])
 
+    def test_v2_optional_reader_policy_changes_invalidate_snapshot(self):
+        self.owner_optional_waiver()
+        old=self.mod.snapshot(self.repo,self.git('rev-parse','HEAD'),'binding.json','one')
+        self.binding['reader_policy']['note']='Updated policy explanation'
+        self.put_json('binding.json',self.binding);self.commit()
+        new=self.mod.snapshot(self.repo,self.git('rev-parse','HEAD'),'binding.json','one')
+        self.assertNotEqual(old['reader_fingerprint'],new['reader_fingerprint'])
+        self.assertNotEqual(old['fingerprint'],new['fingerprint'])
+        self.assertIn('INTAKE_STALE',
+                      self.check(dispatch=True, delivery=self.delivery_v2())['errors'])
+
     def test_v2_new_stage_cannot_skip_reader(self):
         self.enable_v2(); self.seal_v2(reader=False)
         self.receipts['intakes']['one']['dispatch']['kind']='NEW_STAGE'
