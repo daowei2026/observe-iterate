@@ -1,0 +1,72 @@
+{
+  "schema": "bi01-professional-artifact-manifest/v1",
+  "work_id": "BI-01",
+  "run_id": "BI-01-CO-05",
+  "round_id": "R0013",
+  "invocation_id": "BI01-CO-05-R0013-7bb3a890a1de",
+  "package_state": "CONDITIONAL_REENTRY_FAILURE_CONSUMED__MANAGEMENT_DECISION_REQUIRED__NOT_PROCESS_PRACTICE_PACKAGE",
+  "content_addressing": "git_blob_sha",
+  "files": [
+    {
+      "path": "runs/BI-01-CO-05/artifacts/professional-R0013/REPORT.md",
+      "git_blob_sha": "1fdae99e95caa5c1b093bb3f48aad59d379203a7"
+    },
+    {
+      "path": "runs/BI-01-CO-05/artifacts/professional-R0013/EVIDENCE_INDEX.md",
+      "git_blob_sha": "3c953f20b3f1bac2e1be8cc031e69b7ce1ad35ca"
+    },
+    {
+      "path": "runs/BI-01-CO-05/artifacts/professional-R0013/WORKER_RESULT_CONSUMPTION.json",
+      "git_blob_sha": "b9f70dee5846a230d432df745a19835966c42819"
+    },
+    {
+      "path": "runs/BI-01-CO-05/artifacts/professional-R0013/CASE_ROUTE_DECISION.md",
+      "git_blob_sha": "1e65e18cc5e9d4dd54beff9d20115fcd44bf361a"
+    },
+    {
+      "path": "runs/BI-01-CO-05/artifacts/professional-R0013/KEY_T_STATE_TABLE.csv",
+      "git_blob_sha": "e142ecd2a31397aad3b01e7c1f91cd0a08b2c4ac"
+    },
+    {
+      "path": "runs/BI-01-CO-05/artifacts/professional-R0013/OWNER_PROCESS_FEEDBACK.md",
+      "git_blob_sha": "ebae7efab1aee596feff99c250ed5cf245693810"
+    },
+    {
+      "path": "runs/BI-01-CO-05/artifacts/professional-R0013/MANAGEMENT_TRIGGER_NOTICE.md",
+      "git_blob_sha": "e0a5a1c1381f0fb6bbc2b181b775695625947f44"
+    },
+    {
+      "path": "runs/BI-01-CO-05/provenance/turns/R0013/FULL_RESPONSE.md",
+      "git_blob_sha": "1fdae99e95caa5c1b093bb3f48aad59d379203a7"
+    }
+  ],
+  "worker_result": {
+    "source_commit": "45e9f33474d8d36f4f9fa07a3f72824c710c0d46",
+    "transport_check": "PASS_WORKER_RESULT_TO_ISSUER",
+    "status": "FAILED_PROBE_EVIDENCE_INCOMPLETE",
+    "conditional_reentry_quota": "CONSUMED_FAILED",
+    "technical_pass": false,
+    "consumed_by_professional": true
+  },
+  "decision": {
+    "route": "decide",
+    "management_decision_required": true,
+    "professional_recommendation": "STOP_CURRENT_CASE_ON_CURRENT_INPUT_PATH",
+    "alternative": "REQUEST_OWNER_AUTHORIZATION_FOR_CORE_INPUT_CHANGE"
+  },
+  "invariants": {
+    "report_equals_full_response": true,
+    "qualified_market_T_count": 0,
+    "python_probe_started": false,
+    "exact_target_open_attempts": 0,
+    "exact_target_read_calls": 0,
+    "full_range_script_attempts": 0,
+    "actual_run_core_claimed": false,
+    "pages_or_formal_data_claimed": false,
+    "third_same_path_worker_signed": false,
+    "first_process_practice_package_claimed": false,
+    "market_result_claimed": false,
+    "effort_review_triggered": true,
+    "management_dispatch_claimed": false
+  }
+}

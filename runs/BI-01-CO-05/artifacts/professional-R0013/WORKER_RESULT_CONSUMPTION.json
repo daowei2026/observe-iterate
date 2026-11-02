@@ -1,0 +1,99 @@
+{
+  "schema": "bi01-worker-result-consumption/v1",
+  "work_id": "BI-01",
+  "run_id": "BI-01-CO-05",
+  "round_id": "R0013",
+  "invocation_id": "BI01-CO-05-R0013-7bb3a890a1de",
+  "source_order": {
+    "order_id": "BI01CO05-FULLRANGE-CONDITIONAL-REENTRY-01",
+    "issuer_invocation_id": "BI01-CO-05-R0011-e186238bf811",
+    "worker_result_commit": "45e9f33474d8d36f4f9fa07a3f72824c710c0d46",
+    "transport_check_commit": "2e34c004458e30d4bb02863def47514beb3a7ed7",
+    "transport_check": "PASS_WORKER_RESULT_TO_ISSUER",
+    "sha256sum_files_verified": 18
+  },
+  "execution": {
+    "worker_execution_id": "BI01CO05-CONDITIONAL-worker-93ea13632560",
+    "thread_id": "01a17dd7-5033-7e63-b7a2-edd90b691c33",
+    "launcher_attempts": 1,
+    "launcher_start_utc": "2026-11-02T19:20:20.622819+00:00",
+    "first_process_disappearance_observation_utc": "2026-11-02T19:24:22.053405+00:00",
+    "session_exit_code": 143,
+    "termination_cause": "UNKNOWN",
+    "python_probe_started": false,
+    "exact_target_open_attempts": 0,
+    "exact_target_read_calls": 0,
+    "target_bytes_read": 0,
+    "target_bytes_semantics": "NO_PROBE_START__NOT_FILE_SIZE",
+    "target_errno": null,
+    "target_errno_state": "UNKNOWN_NOT_READ",
+    "full_run_attempted": false,
+    "full_run_attempts": 0,
+    "fresh_run_id": null,
+    "actual_run_core_created": false,
+    "pages_generated_or_opened": 0,
+    "formal_data_generated_or_read": 0
+  },
+  "environment_observation": {
+    "scope": "WORKER_HOST_POST_SESSION_OBSERVATION_NOT_BUSINESS_PYTHON_PROBE",
+    "worker_uid": 501,
+    "worker_euid": 501,
+    "worker_gid": 80,
+    "worker_egid": 80,
+    "worker_username": "dw",
+    "no_privilege_switch": true,
+    "business_python_executable": "NOT_OBSERVED",
+    "expected_business_python_executable": "/m3c3/Linux/apps/anaconda3/bin/python",
+    "expected_business_python_version": "3.10.13",
+    "launcher": "/dwdhome/fy/BASE_E6_2/run-python.sh",
+    "mount_point": "/m3varI",
+    "mount_type": "nfs",
+    "mount_source": "192.168.9.79:/m3varI",
+    "mount_observation_does_not_prove_file_read": true
+  },
+  "fixed_artifacts": {
+    "worker_order_bytes": 13408,
+    "worker_order_sha256": "29f93511bdc2af1a266240d4f7dd439081a8eaf01da48da1cad037386c648389",
+    "r0008_script_bytes": 13242,
+    "r0008_script_sha256_expected": "5571cad70d5c519d9e0c5260564346837833eb147d7c4fafb40afb0505a3df16",
+    "r0008_script_sha256_actual_before_after": "5571cad70d5c519d9e0c5260564346837833eb147d7c4fafb40afb0505a3df16",
+    "script_hash_match": true,
+    "business_inputs_changed": false,
+    "shared_dependencies_before_after_equal": true,
+    "old_evidence_hashes_unchanged": true,
+    "background_processes_remaining": false
+  },
+  "technical_outcome": {
+    "status": "FAILED_PROBE_EVIDENCE_INCOMPLETE",
+    "technical_pass": false,
+    "failure_class": "LAUNCHER_INTERRUPTED_BEFORE_PYTHON_PROBE_EVIDENCE",
+    "previous_r0008_errno_reused_as_current_result": false,
+    "conditional_reentry_quota": "CONSUMED_FAILED",
+    "automatic_retry": false,
+    "third_same_path_order_authorized": false
+  },
+  "professional_classification": {
+    "market_data_absence_established": false,
+    "calendar_file_readability_established": false,
+    "calendar_file_unreadability_established": false,
+    "feature_inadequacy_established": false,
+    "owner_process_failure_established": false,
+    "market_no_candidate_established": false,
+    "qualified_market_T_count": 0,
+    "qualified_market_T_count_semantics": "EVIDENCE_QUALIFICATION_ONLY"
+  },
+  "decision": {
+    "route": "decide",
+    "management_decision_required": true,
+    "professional_recommendation": "STOP_CURRENT_CASE_ON_CURRENT_INPUT_PATH",
+    "alternative_requiring_owner_authorization": "REQUEST_OWNER_AUTHORIZATION_FOR_CORE_INPUT_CHANGE",
+    "new_worker_order_signed_this_round": false,
+    "same_path_retry_permitted": false
+  },
+  "triggers": {
+    "FIRST_PROCESS_PRACTICE_PACKAGE": "NOT_YET",
+    "CORE_INPUT_OR_PROCESS_CHANGE": "NOT_YET__REQUIRED_IF_CONTINUATION_IS_CHOSEN",
+    "ACTIVE_PROCESS_PRACTICE_EFFORT_REVIEW": "SATISFIED",
+    "CONDITIONAL_REENTRY_EXIT": "SATISFIED_QUOTA_CONSUMED_FAILED"
+  }
+}
