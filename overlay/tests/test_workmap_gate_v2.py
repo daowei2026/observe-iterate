@@ -99,6 +99,74 @@ class V2RegressionTests(unittest.TestCase):
         self.put_json('intake.json',self.receipts); self.commit()
         self.assertTrue(self.check()['ok'])
 
+    def owner_optional_waiver(self):
+        """Prepare a realistic owner-policy + management-waiver new stage."""
+        self.enable_v2()
+        self.binding['reader_policy'] = {
+            'mode': 'OWNER_OPTIONAL', 'authority_source': 'rules.md'}
+        self.binding['owner_sources'].append('rules.md')
+        self.put_json('binding.json', self.binding); self.commit()
+        self.seal_v2(reader=False)
+        entry = self.receipts['intakes']['one']
+        entry['reader_check'] = {
+            'status':'NOT_REQUIRED', 'authority_source':'rules.md',
+            'reason':'Owner authorized an exploratory first run without Reader.'}
+        entry['dispatch'].update(
+            kind='NEW_STAGE', requires_reader_check=False,
+            reader_reason='Owner-authorized initial exploration; management checks the task.')
+        self.put_json('intake.json', self.receipts); self.commit()
+
+    def test_v2_owner_authorized_new_stage_without_reader(self):
+        self.owner_optional_waiver()
+        r = self.check(dispatch=True, delivery=self.delivery_v2())
+        self.assertTrue(r['ok'], r['errors'])
+        self.assertEqual(r['reader_qualification'], 'NOT_REQUIRED')
+
+    def test_v2_new_stage_false_without_owner_policy_is_not_enough(self):
+        self.enable_v2(); self.seal_v2(reader=False)
+        entry=self.receipts['intakes']['one']
+        entry['dispatch'].update(
+            kind='NEW_STAGE', requires_reader_check=False,
+            reader_reason='A proposed bypass without Owner authority.')
+        self.put_json('intake.json',self.receipts); self.commit()
+        r=self.check(dispatch=True, delivery=self.delivery_v2())
+        self.assertIn('READER_WAIVER_UNAUTHORIZED',r['errors'])
+        self.assertIn('READER_CHECK_REQUIRED',r['errors'])
+
+    def test_v2_owner_waiver_requires_exact_reader_state_and_reason(self):
+        self.owner_optional_waiver()
+        entry=self.receipts['intakes']['one']
+        entry['reader_check']['reason']=' '
+        self.put_json('intake.json',self.receipts); self.commit()
+        r=self.check(dispatch=True, delivery=self.delivery_v2())
+        self.assertIn('READER_WAIVER_UNAUTHORIZED',r['errors'])
+
+        entry['reader_check']['reason']='Owner authorization with reason restored'
+        entry['reader_check']['authority_source']='wrong.md'
+        self.put_json('intake.json',self.receipts); self.commit()
+        r=self.check(dispatch=True, delivery=self.delivery_v2())
+        self.assertIn('READER_WAIVER_UNAUTHORIZED',r['errors'])
+
+        entry['reader_check']['authority_source']='rules.md'
+        entry['reader_check']['status']='PENDING'
+        self.put_json('intake.json',self.receipts); self.commit()
+        r=self.check(dispatch=True, delivery=self.delivery_v2())
+        self.assertIn('READER_WAIVER_UNAUTHORIZED',r['errors'])
+
+    def test_v2_owner_waiver_needs_dispatch_reason(self):
+        self.owner_optional_waiver()
+        entry=self.receipts['intakes']['one']
+        entry['dispatch']['reader_reason']=''
+        self.put_json('intake.json',self.receipts); self.commit()
+        r=self.check(dispatch=True, delivery=self.delivery_v2())
+        self.assertIn('READER_WAIVER_UNAUTHORIZED',r['errors'])
+
+    def test_v2_owner_waiver_does_not_mask_intake_drift(self):
+        self.owner_optional_waiver()
+        self.put('rules.md','Changed Owner-scoped policy source.\n');self.commit()
+        r=self.check(dispatch=True, delivery=self.delivery_v2())
+        self.assertIn('INTAKE_STALE',r['errors'])
+
     def test_v2_new_stage_cannot_skip_reader(self):
         self.enable_v2(); self.seal_v2(reader=False)
         self.receipts['intakes']['one']['dispatch']['kind']='NEW_STAGE'

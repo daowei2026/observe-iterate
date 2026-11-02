@@ -100,6 +100,15 @@ def binding_for(view: GitView, path: str, scope: str) -> tuple[dict,dict]:
         raise ValueError('owner, method and actual-result watch inputs may not be empty')
     if any(b['receipt_path']==r or b['receipt_path'].startswith(r.rstrip('/')+'/') for r in s['watch_roots']):
         raise ValueError('intake cannot watch itself or a containing directory')
+    # Owner-authorized exploration may make an independent Workmap Reader optional.
+    # Other bindings retain their existing reader prerequisites.
+    policy=b.get('reader_policy')
+    if policy is not None:
+        if (b['schema']!='workmap-binding/v2' or not isinstance(policy,dict)
+            or policy.get('mode')!='OWNER_OPTIONAL'
+            or policy.get('authority_source') not in b['owner_sources']
+            or policy.get('authority_source') not in b['rule_paths']):
+            raise ValueError('invalid owner reader policy')
     return b,s
 
 
@@ -238,6 +247,7 @@ def check(repo: Path | str, ref: str, binding_path: str, scope: str, *,
     v2=b['schema']=='workmap-binding/v2'
     reader_current=False
     reader_history_valid=False
+    reader_waiver_valid=False
     try:
         all_intakes=v.obj(b['receipt_path'])
         if all_intakes.get('schema')!='workmap-intake/v1': raise ValueError('bad intake schema')
@@ -264,6 +274,16 @@ def check(repo: Path | str, ref: str, binding_path: str, scope: str, *,
             else:
                 reader_current=reader.get('input_snapshot')==snap['fingerprint']
                 if not reader_current: errors.append('READER_INPUT_MISMATCH')
+        elif reader.get('status')=='NOT_REQUIRED':
+            policy=b.get('reader_policy',{})
+            reader_waiver_valid=(
+                v2 and policy.get('mode')=='OWNER_OPTIONAL'
+                and reader.get('authority_source')==policy.get('authority_source')
+                and isinstance(reader.get('reason'),str)
+                and bool(reader['reason'].strip())
+                and bool(manager.get('context'))
+                and valid_report(v,intake.get('decision_report')))
+            if not reader_waiver_valid: errors.append('READER_WAIVER_UNAUTHORIZED')
         elif reader.get('status')!='PENDING': errors.append('READER_STATUS_REQUIRED')
         for claim in intake.get('validation_claims',[]):
             if not valid_report(v,claim.get('evidence')): errors.append('VALIDATION_EVIDENCE_UNBOUND')
@@ -316,8 +336,18 @@ def check(repo: Path | str, ref: str, binding_path: str, scope: str, *,
         if v2:
             # Unknown transitions fail closed. Routine reuse is an explicit management judgement.
             routine=d.get('kind') in ('ROUTINE_RESULT','EXISTING_AUTHORIZED_REPAIR')
-            needs_reader=d.get('requires_reader_check',True) or not routine
-            if routine and not needs_reader and not d.get('reader_reason'):
+            requested=d.get('requires_reader_check',True)
+            # A new-stage bypass must have both Owner policy and the exact
+            # Management Intake waiver; a bare false is never sufficient.
+            authorized_waiver=(reader_waiver_valid and requested is False
+                               and isinstance(d.get('reader_reason'),str)
+                               and bool(d['reader_reason'].strip()))
+            if requested is not True and requested is not False:
+                errors.append('READER_POLICY_VALUE_INVALID')
+            if requested is False and not routine and not authorized_waiver:
+                errors.append('READER_WAIVER_UNAUTHORIZED')
+            needs_reader=(requested is not False or not (routine or authorized_waiver))
+            if requested is False and routine and not d.get('reader_reason'):
                 errors.append('READER_REUSE_REASON_REQUIRED')
             if needs_reader and not reader_current: errors.append('READER_CHECK_REQUIRED')
             methods=d.get('method_paths')
