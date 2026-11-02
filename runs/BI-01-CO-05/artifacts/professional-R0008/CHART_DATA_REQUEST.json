@@ -1,0 +1,171 @@
+{
+  "schema": "bi01-chart-data-request/v2",
+  "work_id": "BI-01",
+  "run_id": "BI-01-CO-05",
+  "round_id": "R0008",
+  "invocation_id": "BI01-CO-05-R0008-38f9aa094823",
+  "state": "SCRIPT_READY__FORMAL_ORDER_SIGNED__PENDING_CONTROLLER_VALIDATION",
+  "business_selection": {
+    "symbols": [
+      "rb",
+      "hc",
+      "i"
+    ],
+    "frequency": "30m",
+    "main_window": {
+      "start": "2021-01-04 00:00:00",
+      "end_exclusive": "2024-03-01 00:00:00",
+      "window_id": "BI01-CO05-FULL-20210104-20240301",
+      "role": "mandatory_full_range_main"
+    },
+    "auxiliary_windows": [
+      {
+        "start": "2021-01-04",
+        "end_exclusive": "2021-07-01",
+        "window_id": "BI01-CO05-AUX-2021H1",
+        "role": "auxiliary_readability_only"
+      },
+      {
+        "start": "2021-07-01",
+        "end_exclusive": "2022-01-01",
+        "window_id": "BI01-CO05-AUX-2021H2",
+        "role": "auxiliary_readability_only"
+      },
+      {
+        "start": "2022-01-01",
+        "end_exclusive": "2022-07-01",
+        "window_id": "BI01-CO05-AUX-2022H1",
+        "role": "auxiliary_readability_only"
+      },
+      {
+        "start": "2022-07-01",
+        "end_exclusive": "2023-01-01",
+        "window_id": "BI01-CO05-AUX-2022H2",
+        "role": "auxiliary_readability_only"
+      },
+      {
+        "start": "2023-01-01",
+        "end_exclusive": "2023-07-01",
+        "window_id": "BI01-CO05-AUX-2023H1",
+        "role": "auxiliary_readability_only"
+      },
+      {
+        "start": "2023-07-01",
+        "end_exclusive": "2024-01-01",
+        "window_id": "BI01-CO05-AUX-2023H2",
+        "role": "auxiliary_readability_only"
+      },
+      {
+        "start": "2024-01-01",
+        "end_exclusive": "2024-03-01",
+        "window_id": "BI01-CO05-AUX-2024P",
+        "role": "auxiliary_readability_only"
+      }
+    ],
+    "features": [
+      "KLine(freq=30m)",
+      "ScaleTurnCalendar(\"large\")",
+      "ScaleTurnCalendar(\"mid\")"
+    ],
+    "small_scale_enabled": false,
+    "chart": {
+      "layout": "one_figure_multi_symbol",
+      "price_axis": "relative_price_ratio_normalization",
+      "background_axis_symbol": "rb",
+      "calendar_policy": "source_symbol_own_calendar",
+      "large_marker": "triangle,size=17",
+      "mid_marker": "diamond,size=12",
+      "main_page_required": true,
+      "auxiliary_pages_must_not_replace_main": true
+    },
+    "formal_data": {
+      "same_run_core_as_chart": true,
+      "requested_layers": [
+        "30m KLine",
+        "large ScaleTurnCalendar",
+        "mid ScaleTurnCalendar"
+      ],
+      "requested_range": [
+        "2021-01-04 00:00:00",
+        "2024-03-01 00:00:00"
+      ],
+      "required_identity_objects": [
+        "delivery_manifest",
+        "feature_slice_stats",
+        "file_index_or_manifest_index"
+      ]
+    }
+  },
+  "owner_fixed_environment": {
+    "worker_chat_workspace": "/dwdhome/fy/cgpterm",
+    "aidata_execution_workspace": "/dwdhome/fy/BASE_E6_2",
+    "aidata_code_dir": "/dwdhome/fy/BASE_E6_2/mquant/aidata",
+    "sof_name": "GTQH_L1_20210104_20240229",
+    "stk_tlist": "gtqh_four"
+  },
+  "script": {
+    "path": "runs/BI-01-CO-05/artifacts/professional-R0008/build_bi01_co05_r0008_fullrange_chart_data.py",
+    "sha256": "5571cad70d5c519d9e0c5260564346837833eb147d7c4fafb40afb0505a3df16",
+    "command": "cd /dwdhome/fy/BASE_E6_2 && python /dwdhome/fy/cgpterm/runs/BI-01-CO-05/artifacts/professional-R0008/build_bi01_co05_r0008_fullrange_chart_data.py",
+    "output_root": "/dwdhome/fy/BASE_E6_2/mquant/aidata/test_runs/bi01_co05_r0008_fullrange_chart_data"
+  },
+  "execution_verification": {
+    "actual_symbols_exactly": [
+      "rb",
+      "hc",
+      "i"
+    ],
+    "actual_main_page_full_range": true,
+    "auxiliary_pages_additional_only": true,
+    "actual_layers_exactly": [
+      "30m KLine",
+      "large turns",
+      "mid turns"
+    ],
+    "small_absent_by_default": true,
+    "actual_first_last_rows_missing_duplicates_per_symbol_layer": true,
+    "manifest_and_index_opened": true,
+    "same_run_core_chart_data_correspondence": true,
+    "page_actually_opened_and_visually_checked": true,
+    "formal_data_actually_opened_and_read": true,
+    "requested_range_not_misreported_as_actual_coverage": true,
+    "feature_warmup_or_effective_start_reported_separately": true
+  },
+  "worker_fix_boundary": {
+    "allowed": [
+      "ordinary import/API signature compatibility fixes required by the current authorized checkout",
+      "expressing the already-fixed rb/hc/i selector in the exact current API syntax",
+      "using an existing authorized plotting helper to realize the fixed one-figure relative-ratio view",
+      "path and serialization fixes that do not change data, feature, chart or business semantics"
+    ],
+    "forbidden": [
+      "changing symbols, main or auxiliary windows, frequency, large/mid choice, SOF or stk_tlist",
+      "adding small scale",
+      "replacing the mandatory full-range main page with segments",
+      "selecting a use case or defining business key T",
+      "reconstructing first-visible/revision history or direction mappings",
+      "modifying shared aidata/mquant/tis/FRP source, switching checkout or upgrading dependencies",
+      "claiming delivery from URL existence, process exit code or path existence without opening the page and formal data"
+    ]
+  },
+  "non_goals": [
+    "KEY_T_EVENT_LEDGER",
+    "FIELD_QUALIFICATION",
+    "DIRECTION_MAPPING_RECEIPT",
+    "full environment or repository diff audit",
+    "business background/candidate/ranking/no-candidate judgment"
+  ],
+  "formal_order": {
+    "path": "runs/BI-01-CO-05/artifacts/professional-R0008/WORKER_ORDER.md",
+    "order_id": "BI01CO05-FULLRANGE-CHART-DATA-R0008-01",
+    "signed": true,
+    "signing_basis": {
+      "control_commit": "4f688c6185ea22cabcafc62af9572c05822f0386",
+      "send_receipt_state": "COMMITTED",
+      "same_invocation_and_assignment_token": true
+    },
+    "controller_validated": false,
+    "dispatched": false,
+    "worker_result_received": false
+  }
+}

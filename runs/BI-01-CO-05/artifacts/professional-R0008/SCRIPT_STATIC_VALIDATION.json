@@ -1,0 +1,25 @@
+{
+  "schema": "bi01-script-static-validation/v1",
+  "work_id": "BI-01",
+  "run_id": "BI-01-CO-05",
+  "round_id": "R0008",
+  "script": "runs/BI-01-CO-05/artifacts/professional-R0008/build_bi01_co05_r0008_fullrange_chart_data.py",
+  "sha256": "5571cad70d5c519d9e0c5260564346837833eb147d7c4fafb40afb0505a3df16",
+  "utf8_bytes": 13242,
+  "line_count": 381,
+  "checks": [
+    {
+      "check": "python -m py_compile",
+      "result": "PASS",
+      "scope": "syntax_only",
+      "environment": "submission build container; target aidata imports and runtime were not executed"
+    },
+    {
+      "check": "AST parse",
+      "result": "PASS",
+      "scope": "syntax_structure_only"
+    }
+  ],
+  "runtime_claimed": false,
+  "target_environment_execution_claimed": false
+}
