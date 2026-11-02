@@ -1,0 +1,117 @@
+{
+  "schema": "bi01-input-qualification/v1",
+  "work_id": "BI-01",
+  "run_id": "BI-01-CO-05",
+  "invocation_id": "BI01-CO-05-R0002-a60d58cf183f",
+  "question_id": "CASE-OWNER-PROCESS-PRACTICE-01",
+  "disposition": "CANDIDATE_SELECTED__NOT_QUALIFIED",
+  "qualified_for_business_observation": false,
+  "qualified_market_T_count": 0,
+  "candidate": {
+    "candidate_id": "GTQH_C001_three_turns_20261101_162005",
+    "source_status": "DOCUMENTED_REFERENCE_ONLY",
+    "workspace": "/dwdhome/fy/BASE_E6_2",
+    "page": "http://192.168.11.40:5006/cae?node_id=6153",
+    "symbols": [
+      "rb",
+      "hc",
+      "i"
+    ],
+    "kline_frequency": "30m",
+    "documented_display_start": "2021-08-15 00:00:00",
+    "documented_display_end_exclusive": "2021-09-30 00:00:00",
+    "documented_feature_scales": [
+      "large",
+      "mid",
+      "small"
+    ],
+    "task_scales_to_qualify_first": [
+      "large",
+      "mid"
+    ],
+    "selection_reason": [
+      "same documented run contains three related symbols",
+      "documented multi-scale overlay is close to the Owner process question",
+      "existing run/core is lower cost than creating a new pipeline",
+      "actual/confirm position semantics are documented at method level"
+    ]
+  },
+  "qualification_checks": [
+    {
+      "check": "workspace_checkout_and_versions",
+      "state": "UNAVAILABLE"
+    },
+    {
+      "check": "expanded_parameters_and_hashes",
+      "state": "UNAVAILABLE"
+    },
+    {
+      "check": "run_core_manifest",
+      "state": "UNAVAILABLE"
+    },
+    {
+      "check": "board_delivery_manifest_and_file_index",
+      "state": "UNAVAILABLE"
+    },
+    {
+      "check": "formal_kline_and_feature_slices",
+      "state": "UNAVAILABLE"
+    },
+    {
+      "check": "formal_first_last_valid_time_and_missingness",
+      "state": "UNAVAILABLE"
+    },
+    {
+      "check": "direction_coverage",
+      "state": "UNKNOWN"
+    },
+    {
+      "check": "upstream_zig_mapping",
+      "state": "UNKNOWN"
+    },
+    {
+      "check": "extra_directionless_turns",
+      "state": "UNKNOWN"
+    },
+    {
+      "check": "actual_confirm_event_revision_rows",
+      "state": "UNAVAILABLE"
+    },
+    {
+      "check": "visual_page_readback",
+      "state": "NOT_VIEWED"
+    },
+    {
+      "check": "cross_symbol_calendar_alignment",
+      "state": "UNKNOWN"
+    }
+  ],
+  "claim_boundary": {
+    "allowed": [
+      "candidate run exists as a documented reference",
+      "candidate is the lowest-cost currently identified input path",
+      "current readable surface is insufficient for market observation",
+      "no qualified market T exists in this submission"
+    ],
+    "forbidden": [
+      "same-direction large-scale background existed",
+      "background failed to exist",
+      "medium-scale structure was sufficient or insufficient",
+      "any symbol was a forward candidate",
+      "market-level no-candidate conclusion",
+      "natural challenge was observed"
+    ]
+  },
+  "worker_control": {
+    "formal_order_issued": true,
+    "order_id": "BI01CO05-AIDATA-EVIDENCE-01",
+    "order_path": "runs/BI-01-CO-05/artifacts/professional-R0002/WORKER_ORDER.md",
+    "send_receipt_commit": "a7f9c4cf261a751989a2cda6857176a33acca037",
+    "send_receipt_state": "COMMITTED",
+    "controller_validation_claimed": false,
+    "dispatch_claimed": false,
+    "worker_result_claimed": false,
+    "professional_consumption_claimed": false
+  },
+  "next_state": "SAME_WORK_AFTER_WORKER_RESULT_RETURNS_TO_ISSUER"
+}
