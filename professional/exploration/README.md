@@ -8,8 +8,9 @@
 - [02_CURRENT_WORKING_IDEAS.md](02_CURRENT_WORKING_IDEAS.md)：当前候选场景和观察思路，待实践修正。
 - [03_TOOLING_AND_DATA_USAGE.md](03_TOOLING_AND_DATA_USAGE.md)：aidata接口职责、数据与图准备、正式交付消费、首次画图注意事项及权限边界。
 - [04_EXISTING_BUSINESS_REFERENCES.md](04_EXISTING_BUSINESS_REFERENCES.md)：U2/U3和历史业务实物定向入口。
-- [05_OWNER_PROCESS_EXPLANATION.md](05_OWNER_PROCESS_EXPLANATION.md)：Owner提供的完整做事过程说明，按原文逐字保留；是理解当前探索的重要来源，不是已采用的固定规范。
-- [tooling_examples/](tooling_examples/)：已完成的工具实践记录；其中 [2026-11-01_30m_multi_symbol_turn_chart.md](tooling_examples/2026-11-01_30m_multi_symbol_turn_chart.md) 记录 uplot、CAEGraph/PlotSet 和 aidata 的一次多品种三尺度绘图实践。它是特定输入和参数下的实物参考，不是通用规范或当前任务默认配置。
-
+- [05_OWNER_PROCESS_EXPLANATION.md](05_OWNER_PROCESS_EXPLANATION.md)：Owner提供的完整做事过程说明；是理解当前探索的重要来源，不是已采用的固定规范。当前初版贴近转折计算参数随 Owner 纠正保留在第一节。
+- [07_图数准备工单约定.md](07_图数准备工单约定.md)：Professional 先确定具体图、正式数据和可执行脚本，Worker 主要执行、核对并简明回交的当前图数准备边界。
 
 00/06/05 分别承担最终目的、当前任务目的与 Owner 完整过程的不同职责，不能用其中一份的摘要代替另一份。区分Owner已明确要求、正式特征事实、当前假设和待核事项；不得把假设写成已验证事实。工具说明用于避免重复探索已知操作方式，不等于固定每轮必须采用相同图形、数据范围或调用顺序。
+
+旧的 2026-11-01 单次绘图案例已退出当前导航；其历史提交和已发生运行事实仍可按准确 commit 定向核对，但不再承担当前参数来源、默认配置或普通图数工单要求。
