@@ -1,0 +1,99 @@
+{
+  "schema": "bi01-worker-result-consumption/v1",
+  "work_id": "BI-01",
+  "run_id": "BI-01-CO-05",
+  "round_id": "R0009",
+  "invocation_id": "BI01-CO-05-R0009-a71674a1a56f",
+  "source_order": {
+    "order_id": "BI01CO05-FULLRANGE-CHART-DATA-R0008-01",
+    "issuer_invocation_id": "BI01-CO-05-R0008-38f9aa094823",
+    "worker_result_commit": "8c7de6c113f38d24584d73e081d441d85e8a8c4b",
+    "transport_check": "PASS_WORKER_RESULT_TO_ISSUER"
+  },
+  "execution": {
+    "worker_execution_id": "BI01CO05-R0008-worker-e20dc4a50455",
+    "attempt_count": 1,
+    "start_utc": "2026-11-02T16:52:59.914834+00:00",
+    "end_utc": "2026-11-02T16:56:22.289409+00:00",
+    "elapsed_seconds": 202.3519373307936,
+    "exit_code": 1,
+    "script_sha256_expected": "5571cad70d5c519d9e0c5260564346837833eb147d7c4fafb40afb0505a3df16",
+    "script_sha256_actual": "5571cad70d5c519d9e0c5260564346837833eb147d7c4fafb40afb0505a3df16",
+    "script_hash_match": true,
+    "compatibility_patch_bytes": 0,
+    "shared_code_config_checkout_unchanged": true
+  },
+  "technical_outcome": {
+    "status": "FAILED_ENVIRONMENT_IO_ORDER_STOP",
+    "technical_pass": false,
+    "failure_type": "ENVIRONMENT_DATA_IO_ERROR",
+    "exception": "OSError",
+    "errno": 5,
+    "file": "/m3varI/var/L1_data/sof/unit/affiliated_calendar_no_night.csv",
+    "mount_source": "192.168.9.79:/m3varI",
+    "mount_type": "nfs",
+    "file_read_attempts": 1,
+    "persistence": "UNKNOWN_SINGLE_OBSERVED_ATTEMPT",
+    "call_chain": [
+      "script.main",
+      "build_chart_run",
+      "_build_chart_core_run",
+      "_default_calendar_resolver",
+      "blk_suitable_calendars",
+      "read_symbol_calendars_csv",
+      "open"
+    ],
+    "build_chart_run": "CALLED_FAILED",
+    "build_big_world_chart_pages": "NOT_CALLED",
+    "build_board_run": "NOT_CALLED",
+    "core_created": false,
+    "pages_generated": 0,
+    "pages_opened": 0,
+    "formal_slices_generated": 0,
+    "quotes_read": "NOT_REACHED_BY_THIS_SCRIPT"
+  },
+  "professional_classification": {
+    "class": "EXECUTION_ENVIRONMENT_IO_BLOCKER",
+    "market_data_absence_established": false,
+    "feature_inadequacy_established": false,
+    "script_semantic_defect_established": false,
+    "business_input_change_established": false,
+    "market_no_candidate_established": false,
+    "qualified_market_T_count": 0
+  },
+  "claim_boundary": {
+    "supported": [
+      "the exact calendar configuration read failed once in the authorized target runtime",
+      "the fixed script bytes matched the Professional hash",
+      "no actual run/core, chart page, board or formal slice was created",
+      "the Worker stopped according to the order boundary"
+    ],
+    "unsupported": [
+      "the calendar file is permanently unavailable or corrupt",
+      "the market-data SOF is absent",
+      "2024-02-29 is or is not covered",
+      "large or mid features are empty",
+      "a common large-scale background exists or fails",
+      "any candidate, ranking or no-candidate market result"
+    ]
+  },
+  "reentry": {
+    "immediate_retry_authorized": false,
+    "new_worker_order_signed_this_round": false,
+    "management_review_required": true,
+    "recommended_management_decision": "CONDITIONAL_CONTINUE_AFTER_RECOVERY_EVIDENCE",
+    "minimum_recovery_evidence": [
+      "successful open/read of the exact calendar file from the same target workspace and Python identity",
+      "observed time, byte count, sha256, exit code and stderr",
+      "current /m3varI mount source",
+      "proof that no stale copy or alternative calendar source was used"
+    ],
+    "if_calendar_source_or_resolver_changes": "ASSESS_CORE_INPUT_OR_PROCESS_CHANGE_BEFORE_EXECUTION"
+  },
+  "triggers": {
+    "FIRST_PROCESS_PRACTICE_PACKAGE": "NOT_YET",
+    "CORE_INPUT_OR_PROCESS_CHANGE": "NOT_YET",
+    "ACTIVE_PROCESS_PRACTICE_EFFORT_REVIEW": "SATISFIED"
+  },
+  "route": "decide"
+}
