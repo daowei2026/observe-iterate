@@ -4,45 +4,105 @@
     "bi01": {
       "manager": {
         "role": "management",
-        "context": "chatgpt://global/BI05管理 / BI01-CO-05-R0001-ba918c19cb62"
+        "context": "chatgpt://global/BI05管理 / BI01-CO-05-R0004-5d7d1d14347b"
       },
-      "snapshot": "e386e8e53a1b50a5962c55b55e3b3e09a475d5747d4d5eec3bdb2d847d1a6f6c",
-      "snapshot_state": "RECORDED_FOR_INITIAL_PROFESSIONAL_DISPATCH",
+      "snapshot": "e162b27e8050918456714655879f0f3e6f9e936290bf11d7ceedacc073b0d542",
+      "snapshot_state": "RECORDED_AFTER_R0004_STAGE_ACCEPTANCE_FOR_SAME_WORK_DISPATCH",
       "snapshot_recompute_required_before_worker_dispatch": true,
       "snapshot_recompute_required_before_professional_dispatch": false,
-      "observed_commit": "a6a8acf7fa65665218d0f2163598d434fb921b24",
-      "observed_binding_blob": "baf957a4f029008a0f533fb4baedb82b07c65900",
-      "reader_input_snapshot": "4edffee94dc23db3b5624e390c4729b3853a89b33c288a1767768881d030b785",
+      "observed_commit": "193b17367f3275ec496bb1de6388021898c62b66",
+      "observed_binding_blob": "c6c7ed8039c23c66310e5fc2f59db248dbef6655",
+      "reader_input_snapshot": "9953e5edc68cfc3444bd77dd841c12f52741e57a85f0912d555f94077e1ba3bc",
+      "snapshot_components": {
+        "scoped_binding": "40fbc86859a5efb8c84bbad2ca4701bde10eac0c249397a67d6b4c884e28dbd8",
+        "artifacts_result_tree": "6bde3f11fefa4b5eab49fc8b2e195c47ccc9744a3092ff9da98ca90621511d94",
+        "independent_review_tree": null
+      },
       "decision_report": {
-        "path": "runs/BI-01-CO-05/reviews/management-R0001/DECISION.md",
-        "blob": "953ed03e572e89eda89130669873b1c5b7da1873"
+        "path": "runs/BI-01-CO-05/reviews/management-R0004/DECISION.md",
+        "blob": "a8fadc5e4f2b0627985501f38619949fdbad54ce"
       },
       "effort": {
-        "known_pro_turns": 0,
-        "coverage": "M_START_COMPLETE_NO_PROFESSIONAL_CALL",
-        "source_note": "R0001 is the first substantive Management call. No Professional invocation, Worker result, business observation, or accepted market claim exists in BI-01-CO-05."
+        "known_pro_turns": 1,
+        "coverage": "R0002_EFFECTIVE__R0003_RETURN_REPAIR_NOT_COUNTED__NEXT_EFFECTIVE_CALL_IS_2",
+        "source_note": "R0002 is the first effective Professional business call. R0003 only repaired the ROLE_RETURN continuation association and did not repeat business work. The old Worker execution does not count as a Professional call."
       },
       "reader_check": {
         "status": "NOT_REQUIRED",
         "authority_source": "professional/exploration/06_EXPLORATION_STAGE_GOAL.md",
-        "reason": "Owner-authorized first-run policy makes the Workmap Reader optional. Management built the real Run map/task/source relation in R0001; no independent Reader was requested and no prior current map is being reused. This waiver is not a Reader PASS and does not waive mechanical intake or dispatch checks."
+        "reason": "Owner-authorized OWNER_OPTIONAL policy remains applicable. R0004 is a substantive Management acceptance and same-work continuation, not an unreviewed replacement of the business question. Management bound the updated Owner correction, map, task, methods, accepted result and exact next route. This waiver is not a Reader PASS and does not waive mechanical intake or dispatch checks."
       },
-      "professional_history": [],
-      "professional_intake": null,
-      "worker_intake": null,
+      "professional_history": [
+        {
+          "invocation_id": "BI01-CO-05-R0002-a60d58cf183f",
+          "effective_call": true,
+          "effective_call_number": 1,
+          "report": {
+            "path": "runs/BI-01-CO-05/artifacts/professional-R0002/REPORT.md",
+            "blob": "8f0dad6f5c7a142f1f5ab5f41b8f894b352c9f90",
+            "commit": "dc9e18e69b14b751ed6f02ff9830defd77e00b7d"
+          },
+          "management_disposition": "PARTIAL_ACCEPT__CANDIDATE_INPUT_NOT_QUALIFIED__NO_MARKET_RESULT",
+          "qualified_market_T_count": 0,
+          "first_process_practice_package": "NOT_YET"
+        },
+        {
+          "invocation_id": "BI01-CO-05-R0003-REPAIR-a7f7907b",
+          "effective_call": false,
+          "purpose": "RETURN_ASSOCIATION_REPAIR_ONLY",
+          "management_disposition": "ACCEPTED_AS_TRANSPORT_REPAIR__NO_BUSINESS_CHANGE"
+        }
+      ],
+      "professional_intake": {
+        "status": "PARTIAL_RESULT_ACCEPTED",
+        "source_invocation_id": "BI01-CO-05-R0002-a60d58cf183f",
+        "accepted": [
+          "documented candidate was not a qualified business input on the Professional-readable surface",
+          "qualified market T count was zero",
+          "fail-closed separation between unavailable evidence and market no-candidate",
+          "full business scope remains incomplete"
+        ],
+        "not_accepted": [
+          "same-direction large-scale background existed or failed to exist",
+          "medium-scale structure was sufficient or insufficient",
+          "any forward candidate, ranking, or market-level no-candidate conclusion",
+          "H-PRACTICE-01 as an adopted rule",
+          "first process practice package"
+        ],
+        "management_report": {
+          "path": "runs/BI-01-CO-05/reviews/management-R0004/DECISION.md",
+          "blob": "a8fadc5e4f2b0627985501f38619949fdbad54ce"
+        }
+      },
+      "worker_intake": {
+        "order_id": "BI01CO05-AIDATA-EVIDENCE-01",
+        "state": "HISTORICAL_DISPATCH_INTERRUPTED__NO_ACCEPTED_RESULT__DO_NOT_RESUME_OR_REDISPATCH",
+        "actual_facts": {
+          "was_dispatched": true,
+          "goal_paused": true,
+          "last_turn_interrupted": true,
+          "queue_empty": true,
+          "partial_file_count": 122,
+          "partial_bytes": 5367632,
+          "full_response_present": false,
+          "accepted_technical_result": false
+        },
+        "authority": "runs/BI-01-CO-05/OWNER_CHANGE_20261102_CHART_DATA_PREPARATION.md",
+        "next_worker_order": "ONLY_AFTER_PROFESSIONAL_DEFINES_CONCRETE_CHART_DATA_AND_EXECUTABLE_SCRIPT_UNDER_07"
+      },
       "management_trigger_consumption": {
         "FIRST_PROCESS_PRACTICE_PACKAGE": "NOT_YET",
-        "CORE_INPUT_OR_PROCESS_CHANGE": "NOT_YET",
-        "ACTIVE_PROCESS_PRACTICE_EFFORT_REVIEW": "NOT_YET"
+        "CORE_INPUT_OR_PROCESS_CHANGE": "NOT_YET__OWNER_TECHNICAL_DISPATCH_CORRECTION_CONSUMED_WITHOUT_CHANGING_BUSINESS_QUESTION",
+        "ACTIVE_PROCESS_PRACTICE_EFFORT_REVIEW": "NOT_YET__1_OF_2_EFFECTIVE_PROFESSIONAL_CALLS"
       },
       "dispatch": {
         "task_path": "runs/BI-01-CO-05/01_当前任务.md",
         "task_id": "BI-01-CO-05-OWNER-PROCESS-PRACTICE-01",
-        "task_blob": "5d6589c9a6104f879711787157494247c0293932",
+        "task_blob": "b001fc06a1b05e989b47bac60c39f5c9b1407f55",
         "decision": "ISSUED",
-        "kind": "NEW_OWNER_AUTHORIZED_CASE_OBSERVATION",
+        "kind": "ROUTINE_RESULT",
         "requires_reader_check": false,
-        "reader_reason": "Owner-authorized first-run Workmap Reader waiver is recorded in this Intake and bound to the current Management decision; the coordinator must still run exact mechanical and delivery preflight.",
+        "reader_reason": "Same-work continuation after a bound substantive Management acceptance under the Owner-authorized optional-reader policy; current business question and full scope remain unchanged.",
         "method_paths": [
           "professional/README.md",
           "professional/exploration/README.md",
@@ -52,95 +112,26 @@
           "professional/exploration/03_TOOLING_AND_DATA_USAGE.md",
           "professional/exploration/04_EXISTING_BUSINESS_REFERENCES.md",
           "professional/exploration/05_OWNER_PROCESS_EXPLANATION.md",
+          "professional/exploration/06_EXPLORATION_STAGE_GOAL.md",
+          "professional/exploration/07_图数准备工单约定.md",
           "dual_route_execution/DR14_QUESTION_WORK_CONTRACT.md",
-          "overlay/08_自然语言运行提示_v0.3.md",
-          "professional/exploration/06_EXPLORATION_STAGE_GOAL.md"
+          "overlay/08_自然语言运行提示_v0.3.md"
         ],
         "recipient_ref": "chatgpt:BI-01-CO-05:professional",
         "actual_delivery_state": "NOT_SENT_PENDING_CONTROLLER_PREFLIGHT"
       },
-      "scope_dispositions": {
-        "runs/<NEW_RUN_ID>/README.md#common": {
-          "target": "runs/BI-01-CO-05/README.md#common",
-          "reason": "M-START replaces the explicit preparation placeholder with the Owner-authorized BI-01-CO-05 Run; no prior active scope is inherited.",
-          "source": {
-            "path": "runs/BI-01-CO-05/reviews/management-R0001/DECISION.md",
-            "blob": "953ed03e572e89eda89130669873b1c5b7da1873"
-          }
-        },
-        "runs/<NEW_RUN_ID>/README.md#bi01": {
-          "target": "runs/BI-01-CO-05/README.md#bi01",
-          "reason": "M-START replaces the explicit preparation placeholder with the Owner-authorized BI-01-CO-05 Run; no prior active scope is inherited.",
-          "source": {
-            "path": "runs/BI-01-CO-05/reviews/management-R0001/DECISION.md",
-            "blob": "953ed03e572e89eda89130669873b1c5b7da1873"
-          }
-        },
-        "runs/<NEW_RUN_ID>/00_长程推进地图.md#goal": {
-          "target": "runs/BI-01-CO-05/00_长程推进地图.md#goal",
-          "reason": "M-START replaces the explicit preparation placeholder with the Owner-authorized BI-01-CO-05 Run; no prior active scope is inherited.",
-          "source": {
-            "path": "runs/BI-01-CO-05/reviews/management-R0001/DECISION.md",
-            "blob": "953ed03e572e89eda89130669873b1c5b7da1873"
-          }
-        },
-        "runs/<NEW_RUN_ID>/00_长程推进地图.md#stage": {
-          "target": "runs/BI-01-CO-05/00_长程推进地图.md#stage",
-          "reason": "M-START replaces the explicit preparation placeholder with the Owner-authorized BI-01-CO-05 Run; no prior active scope is inherited.",
-          "source": {
-            "path": "runs/BI-01-CO-05/reviews/management-R0001/DECISION.md",
-            "blob": "953ed03e572e89eda89130669873b1c5b7da1873"
-          }
-        },
-        "runs/<NEW_RUN_ID>/00_长程推进地图.md#evidence": {
-          "target": "runs/BI-01-CO-05/00_长程推进地图.md#evidence",
-          "reason": "M-START replaces the explicit preparation placeholder with the Owner-authorized BI-01-CO-05 Run; no prior active scope is inherited.",
-          "source": {
-            "path": "runs/BI-01-CO-05/reviews/management-R0001/DECISION.md",
-            "blob": "953ed03e572e89eda89130669873b1c5b7da1873"
-          }
-        },
-        "runs/<NEW_RUN_ID>/00_长程推进地图.md#progress": {
-          "target": "runs/BI-01-CO-05/00_长程推进地图.md#progress",
-          "reason": "M-START replaces the explicit preparation placeholder with the Owner-authorized BI-01-CO-05 Run; no prior active scope is inherited.",
-          "source": {
-            "path": "runs/BI-01-CO-05/reviews/management-R0001/DECISION.md",
-            "blob": "953ed03e572e89eda89130669873b1c5b7da1873"
-          }
-        },
-        "runs/<NEW_RUN_ID>/00_长程推进地图.md#remaining": {
-          "target": "runs/BI-01-CO-05/00_长程推进地图.md#remaining",
-          "reason": "M-START replaces the explicit preparation placeholder with the Owner-authorized BI-01-CO-05 Run; no prior active scope is inherited.",
-          "source": {
-            "path": "runs/BI-01-CO-05/reviews/management-R0001/DECISION.md",
-            "blob": "953ed03e572e89eda89130669873b1c5b7da1873"
-          }
-        },
-        "runs/<NEW_RUN_ID>/00_长程推进地图.md#management": {
-          "target": "runs/BI-01-CO-05/00_长程推进地图.md#management",
-          "reason": "M-START replaces the explicit preparation placeholder with the Owner-authorized BI-01-CO-05 Run; no prior active scope is inherited.",
-          "source": {
-            "path": "runs/BI-01-CO-05/reviews/management-R0001/DECISION.md",
-            "blob": "953ed03e572e89eda89130669873b1c5b7da1873"
-          }
-        },
-        "runs/<NEW_RUN_ID>/00_长程推进地图.md#next": {
-          "target": "runs/BI-01-CO-05/00_长程推进地图.md#next",
-          "reason": "M-START replaces the explicit preparation placeholder with the Owner-authorized BI-01-CO-05 Run; no prior active scope is inherited.",
-          "source": {
-            "path": "runs/BI-01-CO-05/reviews/management-R0001/DECISION.md",
-            "blob": "953ed03e572e89eda89130669873b1c5b7da1873"
-          }
-        }
-      },
       "validation_claims": [],
       "technical_acceptance_labels": [
-        "M_START_SUBSTANTIVE_MANAGEMENT_COMPLETE",
-        "WORKMAP_AND_TASK_ADOPTED",
+        "R0002_PARTIAL_RESULT_ACCEPTED",
+        "R0002_NOT_A_FIRST_PROCESS_PRACTICE_PACKAGE",
+        "R0003_TRANSPORT_REPAIR_ACCEPTED_NOT_COUNTED",
+        "OWNER_CHART_DATA_CORRECTION_ADOPTED",
+        "OLD_WORKER_SCOPE_WITHDRAWN_NO_REDISPATCH",
+        "PROFESSIONAL_SCRIPT_FIRST_WORKER_EXECUTION_ONLY",
+        "SAME_WORK_TASK_REISSUED_NOT_SENT",
         "READER_NOT_REQUIRED_NOT_PASS",
-        "PROFESSIONAL_TASK_ISSUED_NOT_SENT",
-        "NO_WORKER_PREISSUED",
-        "NO_BUSINESS_RESULT_ACCEPTED"
+        "NO_MARKET_RESULT_ACCEPTED",
+        "NO_INDEPENDENT_BUSINESS_REVIEW_YET"
       ]
     }
   }
