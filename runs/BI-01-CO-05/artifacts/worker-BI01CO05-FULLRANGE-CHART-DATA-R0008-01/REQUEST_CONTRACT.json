@@ -1,0 +1,79 @@
+{
+  "schema": "bi01-co05-fullrange-chart-data-request/v1",
+  "run_id": "BI01_CO05_R0008_FULL_LM_20261103_005320",
+  "professional_fixed_inputs": {
+    "symbols": [
+      "rb",
+      "hc",
+      "i"
+    ],
+    "bar_frequency": "30m",
+    "main_window": {
+      "start": "2021-01-04 00:00:00",
+      "end_exclusive": "2024-03-01 00:00:00",
+      "window_id": "BI01-CO05-FULL-20210104-20240301"
+    },
+    "auxiliary_timespans": [
+      {
+        "start": "2021-01-04",
+        "end_exclusive": "2021-07-01",
+        "window_id": "BI01-CO05-AUX-2021H1"
+      },
+      {
+        "start": "2021-07-01",
+        "end_exclusive": "2022-01-01",
+        "window_id": "BI01-CO05-AUX-2021H2"
+      },
+      {
+        "start": "2022-01-01",
+        "end_exclusive": "2022-07-01",
+        "window_id": "BI01-CO05-AUX-2022H1"
+      },
+      {
+        "start": "2022-07-01",
+        "end_exclusive": "2023-01-01",
+        "window_id": "BI01-CO05-AUX-2022H2"
+      },
+      {
+        "start": "2023-01-01",
+        "end_exclusive": "2023-07-01",
+        "window_id": "BI01-CO05-AUX-2023H1"
+      },
+      {
+        "start": "2023-07-01",
+        "end_exclusive": "2024-01-01",
+        "window_id": "BI01-CO05-AUX-2023H2"
+      },
+      {
+        "start": "2024-01-01",
+        "end_exclusive": "2024-03-01",
+        "window_id": "BI01-CO05-AUX-2024P"
+      }
+    ],
+    "features": [
+      "KLine(30m)",
+      "ScaleTurnCalendar(\"large\")",
+      "ScaleTurnCalendar(\"mid\")"
+    ],
+    "small_scale_enabled": false,
+    "main_page_required": true,
+    "auxiliary_pages_replace_main": false,
+    "one_figure_multi_symbol": true,
+    "relative_price_ratio_axis": true,
+    "rb_background_axis": true,
+    "calendar_policy": "source_symbol_own_calendar"
+  },
+  "owner_fixed_context": {
+    "sof_name": "GTQH_L1_20210104_20240229",
+    "stk_tlist": "gtqh_four",
+    "context_start": "2021-01-04",
+    "context_end": "2024-02-29"
+  },
+  "identity_requirement": "chart_and_formal_data_same_run_core",
+  "coverage_policy": {
+    "requested_range_is_not_claimed_actual_coverage": true,
+    "do_not_fill_missing_source_times": true,
+    "report_actual_first_last_rows_missing_duplicates_per_symbol_layer": true,
+    "report_feature_warmup_or_effective_start_separately": true
+  }
+}

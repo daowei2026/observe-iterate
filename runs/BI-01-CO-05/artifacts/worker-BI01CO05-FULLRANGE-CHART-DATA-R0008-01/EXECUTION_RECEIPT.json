@@ -1,0 +1,90 @@
+{
+  "order_id": "BI01CO05-FULLRANGE-CHART-DATA-R0008-01",
+  "work_id": "BI-01",
+  "run_id": "BI-01-CO-05",
+  "return_to": "chatgpt:BI-01-CO-05:professional",
+  "worker_execution_id": "BI01CO05-R0008-worker-e20dc4a50455",
+  "local_execution_turn_id": "569417bd-f109-4849-9e7f-2d5b7b80f5cd",
+  "native_turn_id": "NOT_EXPOSED",
+  "thread_id": "01a17dd7-5033-7e63-b7a2-edd90b691c33",
+  "status": "FAILED_ENVIRONMENT_IO_ORDER_STOP",
+  "technical_pass": false,
+  "bounded_execution_stopped": true,
+  "attempts": [
+    {
+      "attempt": 1,
+      "cmd": [
+        "/dwdhome/fy/BASE_E6_2/run-python.sh",
+        "/dwdhome/fy/observe-iterate-bi01-co-05/runs/BI-01-CO-05/artifacts/professional-R0008/build_bi01_co05_r0008_fullrange_chart_data.py"
+      ],
+      "cwd": "/dwdhome/fy/BASE_E6_2",
+      "start_utc": "2026-11-02T16:52:59.914834+00:00",
+      "log": "/dwdhome/fy/BASE_E6_2/mquant/aidata/test_runs/bi01_co05_r0008_fullrange_chart_data/attempt01.raw.log",
+      "script_sha256": "5571cad70d5c519d9e0c5260564346837833eb147d7c4fafb40afb0505a3df16",
+      "pid": 3060339,
+      "end_utc": "2026-11-02T16:56:22.289409+00:00",
+      "elapsed_seconds": 202.3519373307936,
+      "exit_code": 1
+    }
+  ],
+  "script_original_path": "/dwdhome/fy/observe-iterate-bi01-co-05/runs/BI-01-CO-05/artifacts/professional-R0008/build_bi01_co05_r0008_fullrange_chart_data.py",
+  "order_declared_script_path": "/dwdhome/fy/cgpterm/runs/BI-01-CO-05/artifacts/professional-R0008/build_bi01_co05_r0008_fullrange_chart_data.py",
+  "script_sha256": "5571cad70d5c519d9e0c5260564346837833eb147d7c4fafb40afb0505a3df16",
+  "compatibility_copy_sha256": "5571cad70d5c519d9e0c5260564346837833eb147d7c4fafb40afb0505a3df16",
+  "compatibility_diff_bytes": 0,
+  "compatibility": "仅命令路径映射和使用现场现有Python入口；原件未改，副本同字节且未执行，无API或业务参数修通",
+  "business_python": "/m3c3/Linux/apps/anaconda3/bin/python",
+  "business_python_version": "3.10.13",
+  "request_contract_path": "/dwdhome/fy/BASE_E6_2/mquant/aidata/test_runs/bi01_co05_r0008_fullrange_chart_data/BI01_CO05_R0008_FULL_LM_20261103_005320_REQUEST_CONTRACT.json",
+  "request_contract_sha256": "99c751cd49d536f31f589336cb3c8c5ba23d1d17aa28bc6679762dc813773fd5",
+  "raw_log": {
+    "path": "/dwdhome/fy/BASE_E6_2/mquant/aidata/test_runs/bi01_co05_r0008_fullrange_chart_data/attempt01.raw.log",
+    "bytes": 1419,
+    "sha256": "7c001e8c40ca0de05bd266650e1f2087e9d9b20832327e25ad5bc981fde5456e",
+    "submitted_sanitized_copy": "attempt01.sanitized.log"
+  },
+  "api_calls": [
+    {
+      "api": "ensure_profile_runtime",
+      "status": "RETURNED existing function imported mquant.worker.beat; no custom registration/config edits"
+    },
+    {
+      "api": "OptContext",
+      "status": "CONSTRUCTED; not proof market-data access"
+    },
+    {
+      "api": "build_chart_run",
+      "dry_run": false,
+      "status": "CALLED_FAILED",
+      "exception": "OSError errno5",
+      "failure_file": "/m3varI/var/L1_data/sof/unit/affiliated_calendar_no_night.csv"
+    },
+    {
+      "api": "build_big_world_chart_pages",
+      "save": true,
+      "status": "NOT_CALLED"
+    },
+    {
+      "api": "build_board_run",
+      "reuse_core": true,
+      "dry_run": false,
+      "status": "NOT_CALLED"
+    }
+  ],
+  "actual_rendered_pages": 0,
+  "actual_formal_slices_generated": 0,
+  "opened_pages": 0,
+  "coverage_counts": "UNKNOWN_NO_DATA_READ",
+  "stop_conditions": [
+    "目标环境/数据不可访问",
+    "全段主图未生成/未打开",
+    "正式切片未实际读取",
+    "图数同run/core无法证明"
+  ],
+  "shared_code_config_checkout_unchanged": true,
+  "no_service_restart_install_or_deploy": true,
+  "old_R2_R5_and_other_runs": "NOT_TOUCHED",
+  "task_status_tool_correction": "2026-11-03(Asia/Shanghai) switched to /dwdhome/fy/cgpterm/.agents/skills/long-task-status/scripts/task_status.py; preserved same ledger and cost; initial invalid uppercase project.id left empty directory only, removed by rmdir before valid init, no valid ledger/event deleted",
+  "wall_time_start_utc": "2026-11-02T16:50:34.781390+00:00",
+  "preparation_recovery_and_delivery_cost": "included from initial goal/access; no invented sub-duration"
+}

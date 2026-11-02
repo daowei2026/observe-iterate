@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/dwdhome/fy/observe-iterate-bi01-co-05/runs/BI-01-CO-05/artifacts/professional-R0008/build_bi01_co05_r0008_fullrange_chart_data.py", line 381, in <module>
+    raise SystemExit(main())
+  File "/dwdhome/fy/observe-iterate-bi01-co-05/runs/BI-01-CO-05/artifacts/professional-R0008/build_bi01_co05_r0008_fullrange_chart_data.py", line 290, in main
+    run = build_chart_run(brief, dry_run=False)
+  File "/dwdhome/fy/BASE_E6_2/mquant/aidata/boardrun.py", line 156, in build_chart_run
+    core = _build_chart_core_run(
+  File "/dwdhome/fy/BASE_E6_2/mquant/aidata/boardrun.py", line 196, in _build_chart_core_run
+    calendars = [rbi["calendar_override"]] if rbi.get("calendar_override") else (calendar_resolver or _default_calendar_resolver)(context, blk)
+  File "/dwdhome/fy/BASE_E6_2/mquant/aidata/boardrun.py", line 479, in _default_calendar_resolver
+    return list(blk_suitable_calendars(context.sof, blk))
+  File "/dwdhome/fy/BASE_E6_2/mquant/tis/calendar/base.py", line 72, in blk_suitable_calendars
+    cs = read_symbol_calendars_csv("/m3varI/var/L1_data/sof/unit/affiliated_calendar_no_night.csv")
+  File "/dwdhome/fy/BASE_E6_2/mquant/tis/calendar/base.py", line 20, in read_symbol_calendars_csv
+    with open(csv_file_path, mode='r', encoding='utf-8', newline='') as f:
+OSError: [Errno 5] Input/output error: '/m3varI/var/L1_data/sof/unit/affiliated_calendar_no_night.csv'

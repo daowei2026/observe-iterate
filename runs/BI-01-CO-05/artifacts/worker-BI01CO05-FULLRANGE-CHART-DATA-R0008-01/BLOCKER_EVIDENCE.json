@@ -1,0 +1,25 @@
+{
+  "observed_utc": "2026-11-02T17:03:05.462784+00:00",
+  "type": "ENVIRONMENT_DATA_IO_ERROR",
+  "exception": "OSError",
+  "errno": 5,
+  "file": "/m3varI/var/L1_data/sof/unit/affiliated_calendar_no_night.csv",
+  "call_chain": [
+    "script.main line290",
+    "build_chart_run",
+    "_build_chart_core_run line196",
+    "_default_calendar_resolver line479",
+    "blk_suitable_calendars line72",
+    "read_symbol_calendars_csv line20 open"
+  ],
+  "mountinfo": [
+    "1173 31 0:70 / /m3varI rw,noatime shared:1121 - nfs 192.168.9.79:/m3varI rw,vers=3,rsize=1048576,wsize=1048576,namlen=255,acregmin=60,acdirmin=60,soft,nolock,noacl,proto=tcp,timeo=600,retrans=2,sec=sys,mountaddr=192.168.9.79,mountvers=3,mountport=36957,mountproto=udp,local_lock=all,addr=192.168.9.79"
+  ],
+  "mount_type": "nfs",
+  "mount_source": "192.168.9.79:/m3varI",
+  "file_read_attempts": 1,
+  "retry": "NOT_RETRIED_ORDER_STOP_CONDITION",
+  "core_directory_created": false,
+  "quotes_read": "NOT_REACHED_BY_THIS_SCRIPT",
+  "no_claim_about_exclusive_quote_disk": true
+}
