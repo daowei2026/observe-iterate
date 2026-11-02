@@ -5,8 +5,10 @@
 
 - **Run**：`BI-01-CO-05`
 - **Work**：`BI-01`
-- **当前专业 mode**：`CASE_OBSERVATION`
-- **当前状态**：R0008 已形成 Owner 指定全段图数脚本和正式工单；Worker 已真实执行一次，但在 actual core/run 创建前读取必需日历配置时发生单次 NFS `OSError(errno=5)`，未生成图页或正式切片。R0009 已消费该失败并触发投入复看；R0010 已有限接收技术成果、关闭原工单并授权一次性条件重入。
+- **专业 mode**：`CASE_OBSERVATION`
+- **当前状态**：`STOPPED_ON_CURRENT_INPUT_PATH`
+- **停止原因**：`AUTHORIZED_EXECUTION_PATH_AND_ENVIRONMENT_COST_EXHAUSTED`
+- **业务结论状态**：`OWNER_PROCESS_UNTESTED`；没有市场、特征或方法负面结论
 - **有权分支**：`fy/owner-led-case-exploration-optional-reader-20261102`
 - **Owner GO**：[OWNER_START.md](OWNER_START.md)
 - **Owner 全段时间纠正**：[OWNER_CHANGE_20261102_R0005_TIME_COVERAGE.md](OWNER_CHANGE_20261102_R0005_TIME_COVERAGE.md)
@@ -14,41 +16,49 @@
 - **当前探索直接目标**：[06_EXPLORATION_STAGE_GOAL.md](../../professional/exploration/06_EXPLORATION_STAGE_GOAL.md)
 - **Owner 完整初版过程**：[05_OWNER_PROCESS_EXPLANATION.md](../../professional/exploration/05_OWNER_PROCESS_EXPLANATION.md)
 
-本 Run 不继承 CO-01—CO-04 的任务、地图、Reader、预算、在途、Gate 或业务结论。当前业务目标仍是用真实特征与连续市场过程实践并迭代 Owner 的初版用例形成方式，不是证明旧图、旧参数、技术脚本或单一 Case 正确。
+本 Run 不继承 CO-01—CO-04 的任务、地图、Reader、预算、在途、Gate 或业务结论。本 Run 也没有因为技术执行失败而宣告市场无候选、特征无效或 Owner 两层过程失败。它真实记录了：完整业务目标尚未进入市场观察，而当前有权输入路径及其一次性重入额度已经耗尽。
 
 <a id="bi01"></a>
 ## BI-01 当前入口
 
-### 当前业务关系
+### 原业务关系
 
-`Owner 初版过程与当前问题 → 同身份全段图/正式数据 → 证据资格核对 → 沿当时可知信息观察大尺度背景形成/改变 → 检查中尺度结构 → 形成并更新具体用例/前瞻判断 → 管理接收与方法反馈 → Owner 校准或下一轮专业实践`
+`Owner 初版过程与当前问题 → 同身份全段图/正式数据 → 证据资格 → 沿当时可知信息观察大尺度背景 → 检查同 T 的中尺度结构 → 形成并更新具体用例/前瞻判断 → 管理接收与方法反馈 → Owner 校准或下一轮实践`
+
+该关系仍是未来任何合格新 Case 的业务要求；当前 Case 没有到达“同身份全段图/正式数据”这一步。
 
 ### 当前已成
 
-1. R0002 完成 fail-closed 输入资格：没有正式同身份图数时，不制造市场背景、候选或无候选；合格 market T 为 0。
-2. R0006 采用 Owner 全段纠正并停止旧 45 天工单。
-3. R0008 固定 `rb/hc/i`、30m、large+mid、small 关闭、`GTQH_L1_20210104_20240229 / gtqh_four`、主范围 `[2021-01-04 00:00:00, 2024-03-01 00:00:00)`、一张全段主图、七张先验辅助图及同 run/core 图—正式数据链；脚本 SHA-256 为 `5571cad70d5c519d9e0c5260564346837833eb147d7c4fafb40afb0505a3df16`。
-4. Worker 按 R0008 工单实际执行一次。原脚本字节匹配、无兼容 diff；在读取 `/m3varI/var/L1_data/sof/unit/affiliated_calendar_no_night.csv` 时发生一次 `OSError(errno=5)`，失败早于 actual core/run、页面和 board。
-5. R0009 已把该结果裁定为执行环境 I/O 阻断，而非市场、特征或方法结论；R0010 已消费本段 EFFORT，关闭原 R0008 工单并授权一次性条件重入。
+1. R0002 建立 fail-closed 输入资格：没有正式同身份图数，不制造市场背景、候选或无候选。
+2. R0006 采用 Owner 全段范围 `[2021-01-04 00:00:00, 2024-03-01 00:00:00)` 并停止旧 45 天主范围。
+3. R0008 形成 `rb/hc/i`、30m、large+mid、small 关闭、固定 SOF/tlist、全段主图、七个辅助图及同 run/core 图—正式数据设计；原脚本 SHA-256 为 `5571cad70d5c519d9e0c5260564346837833eb147d7c4fafb40afb0505a3df16`。
+4. 第一次 Worker 真实执行到 calendar 文件读取并发生一次 `OSError(errno=5)`，早于 actual core/run。
+5. R0011 一次性条件重入工单真实执行；launcher/session 以 `143` 结束，Python 探针未开始，精确文件 `open/read` 和全段脚本均未执行。
+6. R0013 正确消费第二次结果：文件当前状态、`143` 根因、行情/特征覆盖和市场过程均保持未知；条件重入额度耗尽，合格 market T 仍为 0。
+7. R0014 实质消费本段 EFFORT，选择 `STOP_CURRENT_CASE_ON_CURRENT_INPUT_PATH`，关闭当前输入路径 Case，不发起无具体方案的 Core Input 变更请求。
 
 ### 当前未成
 
-尚未取得 actual run/core、可打开全段主图、七张辅助图、正式 KLine/large/mid 切片、manifest/FILE_INDEX、实际覆盖与字段语义；没有合格 market T、第一层连续市场过程、中尺度用例、候选/排序/合法无候选、自然挑战或对 Owner 过程的业务有效性结论。首个过程实践包未被接收。
+没有 actual run/core、全段主图、辅助图、正式 KLine/large/mid、manifest/FILE_INDEX、字段/方向/时间语义资格、第一层、第二层、候选/排序/合法无候选、自然挑战或真实 Owner 方法反馈。`FIRST_PROCESS_PRACTICE_PACKAGE` 未被接收，Owner 方法只能记为 `UNTESTED_DUE_TO_INPUT_EXECUTION_PATH_EXHAUSTION`。
 
 ### 当前正式工作面
 
 - [长程推进地图](00_长程推进地图.md)
-- [当前正式专业任务](01_当前任务.md)
-- [R0010 阶段接收与条件重入决定](reviews/management-R0010/DECISION.md)
-- [当前 Workmap Intake](reviews/WORKMAP_INTAKE_CURRENT.json)
+- [原正式专业任务](01_当前任务.md)（保留原字节，当前不再派发）
+- [R0014 管理关闭决定](reviews/management-R0014/DECISION.md)
+- [Terminal Workmap Intake](reviews/WORKMAP_INTAKE_CURRENT.json)
 - [运行采用状态](../../runtime/config/ADOPTION_STATUS.md)
 
-### 下一实际动作
+### 当前没有自动后继
 
-协调者在同一 exact commit 上核当前 Intake 与 unchanged formal task，运行 routine Professional dispatch preflight；通过后向 `chatgpt:BI-01-CO-05:professional` 发送完整任务与 R0010 决定。原 Professional 只需签发一个新 order：同一 Worker、workspace、解释器与权限身份先真实 `open/read` 精确日历文件；探针通过就在同一执行中从头运行 R0008 原全段脚本一次，探针失败则在昂贵运行前停止。R0008 原工单不得重派。
+- 不再向原 Professional 派发 `same_work`；
+- 不再签发或派发第三个同路径 Worker；
+- 不派业务 Reviewer；
+- 不建立无责任主体的“等待环境恢复”在途；
+- 不向 Owner 提交没有具名替代输入、身份影响和投入收益的模糊变更请求。
 
-Worker 结果回原 Professional。技术成功时，Professional 必须在消费结果的同一调用内完成证据资格核对并从第一条合格 as-of T 开始第一层观察；同路径探针再次失败时不得签第三单，回 Management 决定终止当前 Case 或提出有权输入变化。
+若 Owner 未来明确要求以具体新 core-input 身份继续，必须建立新的 Case、任务、Binding、Intake、预算和派发；不得复活 R0008/R0011 order，也不得直接恢复原任务中的旧 route。
 
 ### 当前不能声称
 
-本入口不证明日历文件已经恢复、条件重入工单已形成或派发、Worker 已再次执行、图数已取得、字段语义已核、共同背景或中尺度结构存在、候选规律成立、市场无候选、Owner 初版过程有效、独立业务审查通过，或当前探索阶段完成。
+不能声称 calendar 文件当前可读或不可读、`143` 根因已知、全段图数已经取得、市场没有候选、特征无效、Owner 方法失败、独立审查通过或本探索目标已经完成。当前唯一被关闭的是本 Case 的当前输入执行路径。
