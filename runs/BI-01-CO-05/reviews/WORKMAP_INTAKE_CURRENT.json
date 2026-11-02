@@ -4,30 +4,35 @@
     "bi01": {
       "manager": {
         "role": "management",
-        "context": "chatgpt://global/BI05管理 / BI01-CO-05-R0006-81bbad74993d"
+        "context": "chatgpt://global/BI05管理 / BI01-CO-05-R0010-b1ffdd7d4721"
       },
-      "snapshot": "b14912e7bc7cf044b6d26f2718df10d727bef0144fccba4bfa73dd0b50e5ec6c",
-      "snapshot_state": "RECORDED_AFTER_R0006_EFFORT_REVIEW_AND_OWNER_TIME_COVERAGE_CORRECTION",
+      "snapshot": "4c67cdf27d96cee0ec2fe0d029f4062b892730b1cba78e201feaaed901e40014",
+      "snapshot_state": "RECORDED_AFTER_R0010_EFFORT_REVIEW_AND_ONE_SHOT_CONDITIONAL_REENTRY_DECISION",
       "snapshot_recompute_required_before_worker_dispatch": true,
       "snapshot_recompute_required_before_professional_dispatch": false,
-      "observed_commit": "631ef5b7ebd44cbeb881b02be1dfb88aa3827e54",
+      "observed_commit": "2d8568a081bab2da80f7a154238d2b8ea37166bb",
       "observed_binding_blob": "baf957a4f029008a0f533fb4baedb82b07c65900",
-      "reader_input_snapshot": "2e75bd43f0cca9c4761d1e579291f425b581acf12aa7b17f1a413f3a8a8d7888",
+      "reader_input_snapshot": "75f8b09654fc8d3189d59d0306de980247400894e74f987414e905fb76e9af97",
       "decision_report": {
-        "path": "runs/BI-01-CO-05/reviews/management-R0006/DECISION.md",
-        "blob": "1802cb2deb14bafdde42437b0259fabc9169285d"
+        "path": "runs/BI-01-CO-05/reviews/management-R0010/DECISION.md",
+        "blob": "e79c87b621285ddfac9c3603e2faa576ac440190"
       },
       "effort": {
-        "known_pro_turns": 2,
-        "coverage": "R0002_AND_R0005_EFFECTIVE__R0006_EFFORT_REVIEW_CONSUMED",
-        "source_note": "R0002 was the first effective Professional call and produced a fail-closed input qualification with zero qualified market T. R0005 was the second effective Professional call and produced a static script plus a formally signed but never dispatched 45-day Worker order. R0006 consumed the due ACTIVE_PROCESS_PRACTICE_EFFORT_REVIEW, stopped that old order, adopted the Owner-fixed full-range correction, and rearmed counting from the next effective Professional call."
+        "known_pro_turns": 4,
+        "coverage": "R0002_R0005_R0008_R0009_EFFECTIVE__R0010_SECOND_EFFORT_REVIEW_CONSUMED",
+        "source_note": "R0002 and R0005 formed the first two-call segment consumed by R0006. After R0006 rearm, R0008 produced the Owner-corrected full-range design, reusable script and signed order; R0009 consumed the actual Worker failure and classified an exact pre-core calendar-file I/O blocker. R0010 consumed the due ACTIVE_PROCESS_PRACTICE_EFFORT_REVIEW, closed the terminal R0008 order, authorized one one-shot conditional reentry and rearmed counting from the next effective Professional call."
       },
       "effort_rearm": {
         "consumed_trigger": "ACTIVE_PROCESS_PRACTICE_EFFORT_REVIEW",
-        "consumed_by_invocation": "BI01-CO-05-R0006-81bbad74993d",
-        "consumption_decision": "runs/BI-01-CO-05/reviews/management-R0006/DECISION.md#effort",
-        "next_segment_starts": "NEXT_EFFECTIVE_PROFESSIONAL_CALL_AFTER_R0006",
+        "consumed_by_invocation": "BI01-CO-05-R0010-b1ffdd7d4721",
+        "consumption_decision": "runs/BI-01-CO-05/reviews/management-R0010/DECISION.md#effort",
+        "next_segment_starts": "NEXT_EFFECTIVE_PROFESSIONAL_CALL_AFTER_R0010",
         "next_limit": 2,
+        "expected_sequence": [
+          "original Professional signs one one-shot conditional reentry order without redesign",
+          "Worker returns probe plus conditional full-run result",
+          "original Professional consumes result and, on technical success, begins evidence qualification and first-layer observation in the same call"
+        ],
         "non_counting": [
           "transport repair",
           "duplicate receipt",
@@ -38,13 +43,14 @@
       "reader_check": {
         "status": "NOT_REQUIRED",
         "authority_source": "professional/exploration/06_EXPLORATION_STAGE_GOAL.md",
-        "reason": "Owner-authorized OWNER_OPTIONAL policy remains applicable. R0006 preserves the same formal task, named question, Owner 05 process and Binding; it updates true progress, consumes the due effort review and applies an explicit Owner execution-input correction. No independent Workmap Reader was requested and no substantive replacement of the research problem, main process or business direction is adopted. This waiver is not a Reader PASS and does not waive mechanical intake, dispatch or future business-review checks."
+        "reason": "Owner-authorized OWNER_OPTIONAL policy remains applicable. R0010 preserves the same formal task, named question, Owner 05 process, tooling boundary and Workmap Binding; it consumes an actual due effort review and changes only the execution feedback loop after a precisely evidenced environment blocker. No independent Reader was requested and no replacement of the research problem, main business process or direction is adopted. This waiver is not a Reader PASS and does not waive mechanical intake, dispatch, worker-order or later business-review checks."
       },
       "professional_history": [
         {
           "round": "R0002",
           "invocation_id": "BI01-CO-05-R0002-a60d58cf183f",
           "effective_call_index": 1,
+          "effort_segment": 1,
           "result": "FAIL_CLOSED_INPUT_QUALIFICATION__ZERO_QUALIFIED_MARKET_T",
           "accepted_scope": "No formal market claim without same-run/core formal evidence; the broad historical Worker scope is not active.",
           "report": {
@@ -56,56 +62,104 @@
           "round": "R0005",
           "invocation_id": "BI01-CO-05-R0005-39b928f3b0b1",
           "effective_call_index": 2,
+          "effort_segment": 1,
           "result": "STATIC_SCRIPT_AND_SIGNED_ORDER__NO_RUNTIME_DATA_OR_MARKET_RESULT",
-          "accepted_scope": "rb/hc/i, 30m, large+mid, no default small, fixed SOF/tlist, same-run/core chart-board structure and script preparation only; old 45-day main range rejected for current execution.",
+          "accepted_scope": "rb/hc/i, 30m, large+mid, no default small, fixed SOF/tlist, same-run/core chart-board structure and script preparation only; the old 45-day range and order are not active.",
           "report": {
             "path": "runs/BI-01-CO-05/artifacts/professional-R0005/REPORT.md",
             "blob": "8cd0c4116081d734debebaf4ec594311bb98a3dc"
+          }
+        },
+        {
+          "round": "R0008",
+          "invocation_id": "BI01-CO-05-R0008-38f9aa094823",
+          "effective_call_index": 3,
+          "effort_segment": 2,
+          "result": "FULL_RANGE_DESIGN_SCRIPT_AND_SIGNED_ORDER__NO_RUNTIME_OR_MARKET_RESULT",
+          "accepted_scope": "Owner-fixed full range, rb/hc/i, 30m, large+mid, no small, fixed SOF/tlist, mandatory full-range main page plus seven prior auxiliary pages, same-run/core chart and formal-data design, and immutable script bytes.",
+          "report": {
+            "path": "runs/BI-01-CO-05/artifacts/professional-R0008/REPORT.md",
+            "blob": "23dac39f68f3ff4f8bea7a735b8b454d40301690"
+          },
+          "order": {
+            "order_id": "BI01CO05-FULLRANGE-CHART-DATA-R0008-01",
+            "path": "runs/BI-01-CO-05/artifacts/professional-R0008/WORKER_ORDER.md",
+            "blob": "f8e461db2b50b638b5af9aaf087aa92aae341936"
+          }
+        },
+        {
+          "round": "R0009",
+          "invocation_id": "BI01-CO-05-R0009-a71674a1a56f",
+          "effective_call_index": 4,
+          "effort_segment": 2,
+          "result": "ACTUAL_WORKER_FAILURE_CONSUMED__EXECUTION_ENVIRONMENT_IO_BLOCKER__ZERO_QUALIFIED_MARKET_T",
+          "accepted_scope": "Exact pre-core calendar-file errno 5 from one real execution, script identity and fail-closed business impact; no market, feature-inadequacy or method conclusion.",
+          "report": {
+            "path": "runs/BI-01-CO-05/artifacts/professional-R0009/REPORT.md",
+            "blob": "3683077f27d2d33b527abf923df3acee790a59be"
           },
           "question_work_return": {
             "repo": "daowei2026/observe-iterate",
-            "commit": "9e1b8031a5704733c3a355acf98e044f55a8d291",
-            "path": "runs/BI-01-CO-05/provenance/turns/R0005/QUESTION_WORK_RETURN.json"
+            "commit": "63c9768f218f53837c93e98157e36d56d5864f84",
+            "path": "runs/BI-01-CO-05/provenance/turns/R0009/QUESTION_WORK_RETURN.json"
           }
         }
       ],
       "professional_intake": {
-        "status": "LIMITED_TECHNICAL_PREPARATION_ACCEPTED__BUSINESS_PACKAGE_NOT_ACCEPTED",
-        "accepted_from_R0005": [
-          "rb/hc/i",
-          "30m",
-          "ScaleTurnCalendar(large) and ScaleTurnCalendar(mid)",
-          "GTQH_L1_20210104_20240229 / gtqh_four",
-          "same-run/core chart-board call chain",
-          "relative-price multi-symbol chart plan subject to runtime verification",
-          "static Python syntax PASS only"
+        "status": "FULL_RANGE_TECHNICAL_BASIS_AND_BLOCKER_CLASSIFICATION_ACCEPTED__BUSINESS_PACKAGE_NOT_ACCEPTED",
+        "accepted": [
+          "R0008 fixed full-range chart/data contract and script SHA-256 5571cad70d5c519d9e0c5260564346837833eb147d7c4fafb40afb0505a3df16",
+          "rb/hc/i, 30m, large+mid, small disabled, GTQH_L1_20210104_20240229 / gtqh_four",
+          "mandatory full-range main page plus seven deterministic auxiliary pages",
+          "same-run/core chart-board-formal-data chain",
+          "one actual Worker attempt with matching script bytes and no compatibility diff",
+          "exact pre-core environment I/O blocker at affiliated_calendar_no_night.csv",
+          "R0009 fail-closed classification and complete remaining scope"
         ],
         "not_accepted": [
-          "2021-08-15 to 2021-09-30 as the main observation/formal-data range",
-          "old R0005 script as a currently dispatchable script",
-          "runtime, page, manifest, formal-slice or market-result success",
+          "pre-request run_id as an actual run/core",
+          "zero pages or slices as a market zero or data absence",
+          "single errno 5 as permanent storage failure or missing market data",
+          "technical transport or static checks as technical PASS",
+          "common large-scale background, mid-scale structure, candidate, ranking or no-candidate conclusion",
           "FIRST_PROCESS_PRACTICE_PACKAGE"
         ],
         "qualified_market_T_count": 0,
-        "decision_ref": "runs/BI-01-CO-05/reviews/management-R0006/DECISION.md#acceptance"
+        "decision_ref": "runs/BI-01-CO-05/reviews/management-R0010/DECISION.md#acceptance"
       },
       "worker_intake": {
-        "historical_order_id": "BI01CO05-CHART-DATA-R0005-01",
-        "historical_order_path": "runs/BI-01-CO-05/artifacts/professional-R0005/WORKER_ORDER.md",
-        "historical_signed_commit": "c0b628e58a2231bc50796e56c153446018fdab5a",
-        "worker_order_check": "PASS_HISTORICAL",
-        "actual_dispatch": "NOT_DISPATCHED",
-        "current_disposition": "STOP_NEW_DISPATCH_PERMANENTLY",
-        "new_dispatch_allowed": false,
-        "historical_files_must_remain_unchanged": true,
-        "replacement_required": "ORIGINAL_PROFESSIONAL_MUST_CREATE_NEW_FULL_RANGE_SCRIPT_AND_NEW_ORDER_ID",
-        "replacement_main_range": "[2021-01-04 00:00:00, 2024-03-01 00:00:00)",
-        "worker_direct_dispatch_now": false
+        "terminal_order": {
+          "order_id": "BI01CO05-FULLRANGE-CHART-DATA-R0008-01",
+          "order_path": "runs/BI-01-CO-05/artifacts/professional-R0008/WORKER_ORDER.md",
+          "signed_commit": "34198df6d4435feaa089baeae73e934559bd8b19",
+          "actual_dispatch": "DISPATCHED_AND_EXECUTED_ONCE",
+          "worker_execution_id": "BI01CO05-R0008-worker-e20dc4a50455",
+          "result_commit": "8c7de6c113f38d24584d73e081d441d85e8a8c4b",
+          "result_path": "runs/BI-01-CO-05/artifacts/worker-BI01CO05-FULLRANGE-CHART-DATA-R0008-01/FULL_RESPONSE.md",
+          "terminal_status": "FAILED_ENVIRONMENT_IO_ORDER_STOP",
+          "attempts": 1,
+          "current_disposition": "TERMINAL_NO_REDISPATCH_NO_AUTORETRY_NO_DEFERRED_STATUS",
+          "new_dispatch_allowed": false
+        },
+        "blocker": {
+          "classification": "EXECUTION_ENVIRONMENT_IO_BLOCKER",
+          "path": "/m3varI/var/L1_data/sof/unit/affiliated_calendar_no_night.csv",
+          "observed_exception": "OSError(errno=5)",
+          "persistence": "UNKNOWN_SINGLE_OBSERVED_ATTEMPT",
+          "core_created": false,
+          "market_data_read_reached": false,
+          "mount_source": "192.168.9.79:/m3varI"
+        },
+        "replacement_required": "ORIGINAL_PROFESSIONAL_SIGNS_ONE_ONE_SHOT_CONDITIONAL_REENTRY_ORDER",
+        "suggested_new_order_id": "BI01CO05-FULLRANGE-CONDITIONAL-REENTRY-01",
+        "new_order_semantics": "same-target exact file open/read probe; if PASS immediately run original R0008 full-range script once; if FAIL stop before expensive run and do not issue a third same-path order",
+        "worker_direct_dispatch_now": false,
+        "input_change_prohibited_without_management": true
       },
       "management_trigger_consumption": {
         "FIRST_PROCESS_PRACTICE_PACKAGE": "NOT_YET",
         "CORE_INPUT_OR_PROCESS_CHANGE": "NOT_YET",
-        "ACTIVE_PROCESS_PRACTICE_EFFORT_REVIEW": "SATISFIED_AND_CONSUMED_R0006__REARMED_NEXT_EFFECTIVE_PROFESSIONAL_CALL"
+        "ACTIVE_PROCESS_PRACTICE_EFFORT_REVIEW": "SATISFIED_AND_CONSUMED_R0010__REARMED_NEXT_EFFECTIVE_PROFESSIONAL_CALL"
       },
       "dispatch": {
         "task_path": "runs/BI-01-CO-05/01_当前任务.md",
@@ -114,7 +168,7 @@
         "decision": "ISSUED",
         "kind": "ROUTINE_RESULT",
         "requires_reader_check": false,
-        "reader_reason": "The same Owner-authorized task and question continue after a substantive Management effort review. R0006 applies an explicit Owner time-coverage correction and changes the execution arrangement without replacing the research problem, main process or Binding; OWNER_OPTIONAL NOT_REQUIRED remains valid and is not a PASS.",
+        "reader_reason": "The same Owner-authorized task and question continue after a substantive Management effort review. R0010 consumes actual R0008/R0009 results and changes only the execution feedback loop around a precisely evidenced environment blocker; OWNER_OPTIONAL NOT_REQUIRED remains valid and is not a PASS.",
         "method_paths": [
           "professional/README.md",
           "professional/exploration/README.md",
@@ -131,8 +185,8 @@
         "recipient_ref": "chatgpt:BI-01-CO-05:professional",
         "route": "same_work",
         "management_decision_ref": {
-          "path": "runs/BI-01-CO-05/reviews/management-R0006/DECISION.md",
-          "blob": "1802cb2deb14bafdde42437b0259fabc9169285d"
+          "path": "runs/BI-01-CO-05/reviews/management-R0010/DECISION.md",
+          "blob": "e79c87b621285ddfac9c3603e2faa576ac440190"
         },
         "owner_correction_ref": {
           "repo": "daowei2026/observe-iterate",
@@ -140,17 +194,24 @@
           "path": "runs/BI-01-CO-05/OWNER_CHANGE_20261102_R0005_TIME_COVERAGE.md",
           "selector": "full"
         },
-        "continuation": "ORIGINAL_PROFESSIONAL_REVISES_FULL_RANGE_SCRIPT_AND_SIGNS_NEW_ORDER__THEN_WORKER_RETURNS_TO_ISSUER__THEN_BUSINESS_OBSERVATION",
+        "latest_professional_result_ref": {
+          "repo": "daowei2026/observe-iterate",
+          "commit": "402e73c1f8c5c5067d6d39242bd1a9afd27a6e30",
+          "path": "runs/BI-01-CO-05/artifacts/professional-R0009/REPORT.md",
+          "selector": "full"
+        },
+        "continuation": "ORIGINAL_PROFESSIONAL_SIGNS_ONE_CONDITIONAL_REENTRY_ORDER__CONTROLLER_PREFLIGHT_AND_DISPATCH__WORKER_PROBE_THEN_CONDITIONAL_FULL_RUN__RESULT_RETURNS_TO_ISSUER",
         "actual_delivery_state": "NOT_SENT_PENDING_CONTROLLER_PREFLIGHT"
       },
       "scope_dispositions": {},
       "validation_claims": [],
       "technical_acceptance_labels": [
-        "R0006_SUBSTANTIVE_EFFORT_REVIEW_COMPLETE",
-        "R0005_TECHNICAL_PREPARATION_ACCEPTED_WITH_LIMITS",
-        "OLD_45DAY_ORDER_STOPPED_NOT_DISPATCHED",
-        "OWNER_FULL_RANGE_CORRECTION_ADOPTED",
-        "FORMAL_TASK_AND_BINDING_UNCHANGED",
+        "R0010_SUBSTANTIVE_EFFORT_REVIEW_COMPLETE",
+        "R0008_FULL_RANGE_TECHNICAL_BASIS_ACCEPTED_WITH_LIMITS",
+        "R0008_ORDER_TERMINAL_FAILED_NO_REDISPATCH",
+        "R0009_ENVIRONMENT_IO_CLASSIFICATION_ACCEPTED",
+        "ONE_SHOT_CONDITIONAL_REENTRY_AUTHORIZED",
+        "FORMAL_TASK_BINDING_OWNER05_TOOLING03_UNCHANGED",
         "READER_NOT_REQUIRED_NOT_PASS",
         "QUALIFIED_MARKET_T_ZERO",
         "FIRST_PROCESS_PRACTICE_PACKAGE_NOT_ACCEPTED",
