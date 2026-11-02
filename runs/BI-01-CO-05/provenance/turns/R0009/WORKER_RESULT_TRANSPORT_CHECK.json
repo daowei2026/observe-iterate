@@ -1,0 +1,39 @@
+{
+  "schema": "bi01-worker-result-transport-check/v1",
+  "run_id": "BI-01-CO-05",
+  "observed_at": "2026-11-02T17:30:29.927038+00:00",
+  "mechanical_return_gate": {
+    "schema": "workmap-worker-result/v1",
+    "scope": "bi01",
+    "exact_input_commit": "8c7de6c113f38d24584d73e081d441d85e8a8c4b",
+    "check_kind": "WORKER_RESULT_TO_ISSUER",
+    "ok": true,
+    "errors": [],
+    "recipient": "chatgpt:BI-01-CO-05:professional",
+    "order_id": "BI01CO05-FULLRANGE-CHART-DATA-R0008-01",
+    "full_intake_current": false,
+    "next_action": {
+      "recipient": "chatgpt:BI-01-CO-05:professional",
+      "instruction": "将本工单真实技术结果交原签发Pro消费；需要管理判断由该Pro按有效Binding提出。"
+    },
+    "limits": "仅验证原工单技术结果的交接身份；不更新Intake、不认可专业成果、不批准下游派发。"
+  },
+  "artifact_integrity": {
+    "verified_commit": "8c7de6c113f38d24584d73e081d441d85e8a8c4b",
+    "verified_files": 18,
+    "sha256_and_utf8": "PASS",
+    "dependency_snapshot_unchanged": true
+  },
+  "technical_outcome": "FAILED_ENVIRONMENT_IO_ORDER_STOP",
+  "technical_pass": false,
+  "core_created": false,
+  "charts_generated": false,
+  "formal_slices_generated": false,
+  "failure": "OSError Errno5 reading /m3varI/var/L1_data/sof/unit/affiliated_calendar_no_night.csv; fixed script unchanged",
+  "worker_terminal_state": "Original target turn completed, Goal absent, queue empty; no automatic retry",
+  "business_acceptance_claimed": false,
+  "professional_effective_calls_before_consumption": 3,
+  "effort_segment_calls_before_consumption": 1,
+  "reader_and_protected_inputs": "Unchanged from accepted Management baseline9cee; full current Intake remains intentionally not adopted by worker-result gate",
+  "next_authorized_action": "Return actual technical failure to the original issuing Professional under same_work; decisions needing management remain with that Pro under Binding; no root repair of shared NFS or new business scope"
+}
