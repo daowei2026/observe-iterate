@@ -1,0 +1,72 @@
+{
+  "schema": "bi01-owner-local-correction-reconciliation/v1",
+  "run_id": "BI-01-CO-05",
+  "work_id": "BI-01",
+  "recorded_at": "2026-11-02T09:32:47.820525+00:00",
+  "owner_original_sha256": "801708ac95a6aaeb102523468cab79e3a471ae43ac1d869f9a0ec7b7ab60d3d7",
+  "owner_requested_material_commit": "d2ec75bcc9744569198ff100969fd5a1236dc5ac",
+  "controller_policy_commit_unchanged": "b6b344ef0dbd5bc5596c8ec726aad39474254fc4",
+  "original_current_task_binding_and_adoption_unchanged": true,
+  "effective_professional_calls": 1,
+  "R0003_at_resume": {
+    "status": "NOT_SENT",
+    "remote_paths": [
+      "DISPATCH.json",
+      "FULL_ASSIGNMENT.md"
+    ],
+    "phone_latest_R0002_completed_at": "2026-11-02T09:20:58.269Z",
+    "narrow_repair_only": true,
+    "new_owner_substantive_correction_excluded": true
+  },
+  "old_worker_order": {
+    "order_id": "BI01CO05-AIDATA-EVIDENCE-01",
+    "actually_dispatched": true,
+    "goal": "paused",
+    "last_turn": "interrupted",
+    "queue_empty": true,
+    "local_partial_file_count": 122,
+    "local_partial_total_bytes": 5367632,
+    "full_response_present": false,
+    "partial_directory": "/dwdhome/fy/observe-iterate-bi01-co-05/runs/BI-01-CO-05/artifacts/worker-BI01CO05-AIDATA-EVIDENCE-01",
+    "existing_partial_preserved_unchanged": true,
+    "partial_chart_and_data_files_present": true,
+    "accepted_technical_result": false,
+    "resume_old_scope": false,
+    "duplicate_dispatch_allowed": false
+  },
+  "proposed_NORMAL_same_work_gate": {
+    "exact_input_commit": "54e5770e1f753888dc3855df43791f353efe1646",
+    "ok": false,
+    "errors": [
+      "INTAKE_STALE"
+    ],
+    "reader_qualification": "NOT_REQUIRED",
+    "previous_accepted_commit": "204e81c2c3199341a70417eeb4894a0444a4d3e7",
+    "previous_fingerprint": "e386e8e53a1b50a5962c55b55e3b3e09a475d5747d4d5eec3bdb2d847d1a6f6c",
+    "current_fingerprint": "70d36f26a13c7d33f491b41b1db128c5ca15910100307d804252a6e04ec9d28e",
+    "reader_fingerprint_unchanged": true,
+    "material_changed_keys": [
+      "result_trees"
+    ],
+    "original_gate_next_action": {
+      "recipient": "management",
+      "scope": "bi01",
+      "exact_input_commit": "54e5770e1f753888dc3855df43791f353efe1646",
+      "task_path": "runs/BI-01-CO-05/01_当前任务.md",
+      "errors": [
+        "INTAKE_STALE"
+      ],
+      "instruction": "读取这些确切输入，定向补管理接收、地图或发送现场核对；保留已提交实质成果，不重跑业务、不重复派发、不替换未受影响任务。"
+    }
+  },
+  "controller_state": "HOLD_AFFECTED_NORMAL_SAME_WORK_PENDING_AUTHORIZED_DIRECTION; R0003 narrow delivery repair independently continues",
+  "business_scope_or_task_replanning_requested": false,
+  "new_M_START_requested": false,
+  "managed_surface_changes_made": false,
+  "management_trigger_state": {
+    "RESULT": "NOT_YET per latest actual Professional return",
+    "CHANGE": "not asserted SATISFIED by controller for this local technical correction",
+    "EFFORT": "1 of 2 effective Professional calls; repair excluded"
+  },
+  "owner_scope_reference": "OWNER_RESUME.original.md section 三 (specific authorization/source/mechanical blocker only), section 五 (no current migration or Task/Binding/Intake edits)"
+}
