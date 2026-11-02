@@ -1,0 +1,59 @@
+{
+  "schema": "management-delivery-checks/v1",
+  "work_id": "BI-01",
+  "run_id": "BI-01-CO-05",
+  "invocation_id": "BI01-CO-05-R0001-ba918c19cb62",
+  "assignment_token": "57b781aa42384e16bb6d6ae70994767b",
+  "branch": "fy/owner-led-case-exploration-optional-reader-20261102",
+  "pre_finalization_head": "f6712486bc00e8e0bc208cbbb6af2289cc8f86cb",
+  "frozen_workmap": {
+    "content_commit": "a6a8acf7fa65665218d0f2163598d434fb921b24",
+    "binding_blob": "baf957a4f029008a0f533fb4baedb82b07c65900",
+    "snapshot": "e386e8e53a1b50a5962c55b55e3b3e09a475d5747d4d5eec3bdb2d847d1a6f6c",
+    "reader_input_snapshot": "4edffee94dc23db3b5624e390c4729b3853a89b33c288a1767768881d030b785",
+    "intake_commit": "92a8e5f648b7a37eb8c293032a63048b63d7bc58",
+    "intake_blob": "67b085ee271777cc88d21602e1e31446a763ad0e"
+  },
+  "deliverables": {
+    "full_response": {
+      "commit": "0b01da944f63fc42b9d5155252707e529bf1be6b",
+      "path": "runs/BI-01-CO-05/provenance/turns/R0001/FULL_RESPONSE.md",
+      "blob": "0daa1ae3616ce148427e36ce7aef01b54bd58a0f",
+      "sha256": "4f6be1b6ea4118d014456f4b69642f289242047b6045a3d704d299a82e29e0d3",
+      "readback": "PASS"
+    },
+    "question_work_return": {
+      "commit": "3c7550e21deca0999fb5c4207e415361ca15d705",
+      "path": "runs/BI-01-CO-05/provenance/turns/R0001/QUESTION_WORK_RETURN.json",
+      "blob": "0bc2cad6e131f65245e7b956eb37bfc7362a80f5",
+      "sha256": "c3fbd348f7c11f1ad161b88d74920f89e6cb675c7b9aacb1fec1d371625e6c45",
+      "readback": "PASS"
+    },
+    "role_return": {
+      "commit": "f6712486bc00e8e0bc208cbbb6af2289cc8f86cb",
+      "path": "runs/BI-01-CO-05/provenance/turns/R0001/ROLE_RETURN.json",
+      "blob": "1f068cd667391c8abbb9544a5a4a75091df5452c",
+      "sha256": "304dd8785a411493fc8fb7be9f35abd1ee990bbc3c0f730a56f570d25015eff9",
+      "readback": "PASS"
+    }
+  },
+  "checks": {
+    "required_sources_read": "PASS",
+    "business_report_complete": "PASS",
+    "question_work_v2_relevant_schema_shape": "PASS",
+    "longrun_return_v1_schema_shape": "PASS",
+    "role_question_work_ref_exact": "PASS",
+    "remote_blob_matches_submitted_bytes": "PASS",
+    "workmap_v2_snapshot_reconstructed": "PASS",
+    "reader_status": "NOT_REQUIRED_NOT_PASS",
+    "worker_preissued": false,
+    "professional_task_status": "ISSUED_NOT_SENT",
+    "professional_business_result_accepted": false,
+    "local_workmap_gate_cli": "NOT_RUN__CONTROLLER_PREFLIGHT_REQUIRED",
+    "dispatch_prepare_verify": "NOT_RUN__CONTROLLER_ACTION_REQUIRED"
+  },
+  "limits": [
+    "This receipt verifies the management artifacts and exact remote bytes only; it does not certify local workmap_gate CLI PASS.",
+    "No Professional dispatch, execution, market observation, independent review, management business acceptance, or Owner approval is claimed."
+  ]
+}
