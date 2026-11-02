@@ -1,0 +1,25 @@
+{
+  "order_id": "BI01CO05-FULLRANGE-CONDITIONAL-REENTRY-01",
+  "type": "LAUNCHER_INTERRUPTED_BEFORE_PROBE_EVIDENCE",
+  "session_exit_code": 143,
+  "target": "/m3varI/var/L1_data/sof/unit/affiliated_calendar_no_night.csv",
+  "actual_target_open_attempts": 0,
+  "actual_target_read_calls": 0,
+  "python_probe_receipt_created_during_launch": false,
+  "observed_runtime_wait": "bash launcher and child, child wchan=rpc_wait_bit_killable; no Python probe receipt",
+  "wait_location": "run-python.sh initialization before executing probe Python; parent stderr was redirected to .migration/records/m3rc.log",
+  "current_file_errno": "UNKNOWN_NOT_READ",
+  "previous_R0008_errno": "not reused as this attempt result",
+  "interruption_cause": "UNKNOWN",
+  "processes_confirmed_absent": [
+    3072048,
+    3072049,
+    3072055
+  ],
+  "full_run_attempted": false,
+  "probe_launch_attempts": 1,
+  "second_probe_launch": false,
+  "conditional_reentry_quota": "CONSUMED_FAILED",
+  "matched_order_condition": "探针失败或身份/来源证据不完整：在昂贵全段调用前停止",
+  "no_NFS_resolver_source_checkout_dependency_or_shared_config_changes": true
+}

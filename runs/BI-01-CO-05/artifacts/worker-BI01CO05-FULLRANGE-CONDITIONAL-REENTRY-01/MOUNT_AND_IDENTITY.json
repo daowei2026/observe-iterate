@@ -1,0 +1,64 @@
+{
+  "order_id": "BI01CO05-FULLRANGE-CONDITIONAL-REENTRY-01",
+  "observed_utc": "2026-11-02T19:27:29.102774+00:00",
+  "evidence_scope": "WORKER_HOST_POST_SESSION_OBSERVATION_NOT_BUSINESS_PYTHON_PROBE",
+  "worker_identity": {
+    "uid": 501,
+    "euid": 501,
+    "gid": 80,
+    "egid": 80,
+    "groups": [
+      4,
+      24,
+      27,
+      30,
+      46,
+      80,
+      100,
+      114
+    ],
+    "username": "dw"
+  },
+  "expected_identity": {
+    "uid": 501,
+    "euid": 501,
+    "gid": 80,
+    "egid": 80,
+    "groups": [
+      4,
+      24,
+      27,
+      30,
+      46,
+      80,
+      100,
+      114
+    ],
+    "username": "dw"
+  },
+  "same_host_identity_as_launch_setup": true,
+  "business_python_identity": "NOT_OBSERVED_PYTHON_PROBE_NOT_STARTED",
+  "business_executable": "NOT_OBSERVED",
+  "expected_business_executable": "/m3c3/Linux/apps/anaconda3/bin/python",
+  "expected_business_python_version": "3.10.13",
+  "launcher": "/dwdhome/fy/BASE_E6_2/run-python.sh",
+  "launcher_sha256": "417ac56aa0b2b2af96771fc435c00bc7b92a4284bc0e25bf9320abdb7482cd67",
+  "launch_business_cwd": "/dwdhome/fy/BASE_E6_2",
+  "target": "/m3varI/var/L1_data/sof/unit/affiliated_calendar_no_night.csv",
+  "effective_mount": {
+    "mount_point": "/m3varI",
+    "fs_type": "nfs",
+    "source": "192.168.9.79:/m3varI",
+    "mountinfo_line": "1173 31 0:70 / /m3varI rw,noatime shared:1121 - nfs 192.168.9.79:/m3varI rw,vers=3,rsize=1048576,wsize=1048576,namlen=255,acregmin=60,acdirmin=60,soft,nolock,noacl,proto=tcp,timeo=600,retrans=2,sec=sys,mountaddr=192.168.9.79,mountvers=3,mountport=36957,mountproto=udp,local_lock=all,addr=192.168.9.79"
+  },
+  "findmnt_T_equivalent": {
+    "method": "longest path-component match in /proc/self/mountinfo; no target stat/open performed by this metadata observation",
+    "result": {
+      "mount_point": "/m3varI",
+      "fs_type": "nfs",
+      "source": "192.168.9.79:/m3varI",
+      "mountinfo_line": "1173 31 0:70 / /m3varI rw,noatime shared:1121 - nfs 192.168.9.79:/m3varI rw,vers=3,rsize=1048576,wsize=1048576,namlen=255,acregmin=60,acdirmin=60,soft,nolock,noacl,proto=tcp,timeo=600,retrans=2,sec=sys,mountaddr=192.168.9.79,mountvers=3,mountport=36957,mountproto=udp,local_lock=all,addr=192.168.9.79"
+    }
+  },
+  "no_privilege_switch": true
+}
