@@ -21,11 +21,12 @@
 - **实际 aidata 执行工作区**：`/dwdhome/fy/BASE_E6_2`。
 - **aidata 代码目录**：`/dwdhome/fy/BASE_E6_2/mquant/aidata`。
 - **正常执行入口**：在 `/dwdhome/fy/BASE_E6_2` 中使用当前环境现有的 Python 运行 Professional 已给定的脚本。例如 `cd /dwdhome/fy/BASE_E6_2 && python <本次指定脚本路径>`；此处尖括号是待替换的脚本路径，不是可照抄的命令。
-- **数据源、脚本和输出位置**：由 Professional 的本次具体 aidata 脚本/brief 指定。已有 `test_runs/fy_owner_1d_30m_20261027` 是历史测试位置，不作为全部后续工单的固定输出根。
+- **当前画图数据的固定 SOF/Context 来源（Owner 最新指定）**：`OptContext` 中 `sof_name="GTQH_L1_20210104_20240229"`、`stk_tlist="gtqh_four"`。后续本 Run 图数准备脚本直接采用这两个值，不沿用历史示例中的 `TA_updto20240229_DBA`、`tick_test_all57_takeout_lcNsiNcy` 或旧 `GTQH_L1_20210104_20240208`。这两个配置值不等于已核实磁盘数据路径，也不代表本次品种、日期或特征参数已经固定。
+- **其它具体输入、脚本和输出位置**：由 Professional 的本次 aidata 脚本/brief 指定；已有 `test_runs/fy_owner_1d_30m_20261027` 是历史测试位置，不作为后续每张工单的固定输出根。
 
 **版本核实边界：**目前已提交的资料只确认以上路径，没有提供可独立核实的本地 aidata/关联代码 checkout commit、Python 解释器版本及依赖锁定值。不能凭历史案例声称这些版本已核实。由 Worker 在第一次合法现场执行时读取现有工作区实际版本并报告，**不自行切换、升级或另选版本**；如果发现与现行有权环境要求不一致，报告具体差异和影响，待有权方处理。后续如果固定版本已有真实正式来源，直接按该来源使用，不要求 Professional 逐次重新指定。
 
-上述定位依据既有 `画图.md` 及 R0002 历史 Worker 工单，尚未经本次现场复验；不因补充本段就额外发起环境搭建或平台研究任务。
+上述工作区定位依据既有 `画图.md` 及 R0002 历史 Worker 工单；SOF/Context 两个值依据 Owner 本次最新明确指定。两者均尚未经本次现场复验；不因补充本段就额外发起环境搭建或平台研究任务。
 
 ## 二、R0002 已签工单处理
 
