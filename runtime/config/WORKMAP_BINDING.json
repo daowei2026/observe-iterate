@@ -1,9 +1,9 @@
 {
   "schema": "workmap-binding/v2",
-  "status": "NOT_CONFIGURED",
+  "status": "ADOPTED",
   "manager_role": "management",
   "overview": {
-    "path": "runs/<NEW_RUN_ID>/README.md",
+    "path": "runs/BI-01-CO-05/README.md",
     "anchors": [
       "common",
       "bi01"
@@ -13,7 +13,7 @@
     "common"
   ],
   "owner_sources": [
-    "runs/<NEW_RUN_ID>/OWNER_START.md",
+    "runs/BI-01-CO-05/OWNER_START.md",
     "professional/exploration/00_BUSINESS_OBJECTIVE.md",
     "professional/exploration/02_CURRENT_WORKING_IDEAS.md",
     "professional/exploration/05_OWNER_PROCESS_EXPLANATION.md",
@@ -32,11 +32,11 @@
     "overlay/08_自然语言运行提示_v0.3.md",
     "professional/exploration/06_EXPLORATION_STAGE_GOAL.md"
   ],
-  "receipt_path": "runs/<NEW_RUN_ID>/reviews/WORKMAP_INTAKE_CURRENT.json",
+  "receipt_path": "runs/BI-01-CO-05/reviews/WORKMAP_INTAKE_CURRENT.json",
   "streams": {
     "bi01": {
       "map": {
-        "path": "runs/<NEW_RUN_ID>/00_长程推进地图.md",
+        "path": "runs/BI-01-CO-05/00_长程推进地图.md",
         "anchors": [
           "goal",
           "stage",
@@ -47,19 +47,19 @@
           "next"
         ]
       },
-      "task": "runs/<NEW_RUN_ID>/01_当前任务.md",
+      "task": "runs/BI-01-CO-05/01_当前任务.md",
       "overview_anchors": [
         "bi01"
       ],
       "watch_roots": [
-        "runs/<NEW_RUN_ID>/artifacts",
-        "runs/<NEW_RUN_ID>/reviews/independent"
+        "runs/BI-01-CO-05/artifacts",
+        "runs/BI-01-CO-05/reviews/independent"
       ]
     }
   },
-  "note": "PREPARATION ONLY. <NEW_RUN_ID> is a placeholder, not an active Run. Current Owner-authorized exploration permits optional Workmap Reader, but no automatic waiver/PASS: future Manager must record NOT_REQUIRED and reason/authority in the real Intake and dispatch. All mechanical gates, actual Owner GO and management decision remain required. 00 is final investment goal, 06 current exploration task goal, 05 Owner's original process. Old CO-04 Run data/Reader/Intake do not carry into a new Run.",
   "reader_policy": {
     "mode": "OWNER_OPTIONAL",
     "authority_source": "professional/exploration/06_EXPLORATION_STAGE_GOAL.md"
-  }
+  },
+  "note": "BI-01-CO-05 已由 BI01-CO-05-R0001-ba918c19cb62 首次实质管理采用。ADOPTED 仅表示本 Run 的 Owner 来源、地图、当前任务和 Binding 已获管理签发；首次 Workmap Reader 依 Owner 授权记为 NOT_REQUIRED 而非 PASS。Professional 派发、实际发送、数据资格、业务结果、独立业务审查、管理接收与 Owner 校准均以真实后续记录为准。CO-01—CO-04 的任务、Reader、预算、在途、Gate 和业务结论不继承。"
 }
