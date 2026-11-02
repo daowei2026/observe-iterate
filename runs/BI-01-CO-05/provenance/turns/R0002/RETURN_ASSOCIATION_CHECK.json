@@ -1,0 +1,23 @@
+{
+  "work_id": "BI-01",
+  "run_id": "BI-01-CO-05",
+  "round_id": "R0002",
+  "invocation_id": "BI01-CO-05-R0002-a60d58cf183f",
+  "source_commit": "ad2400142de7f909f135b5db117b08f1ff30649c",
+  "role_schema": "PASS",
+  "question_schema": "PASS",
+  "binding_schema": "PASS",
+  "all_artifact_refs_present_unchanged": true,
+  "association_errors": [
+    "CONTINUATION_MISMATCH"
+  ],
+  "affected": "Role Return handoff.instructions_ref points REPORT.md#handoff, while Q-Return continuation_ref and professional.continuation_ref point REPORT.md#continuation. Their real sections differ.",
+  "required_repair": "Original Professional only aligns handoff.instructions_ref to the existing unique continuation_ref; preserve original invocation/token, business report, hypotheses, scope, signed Worker order and actual incomplete states.",
+  "signed_worker_order_check": "PASS; original signed technical order remains independently authorized and is not blocked by this metadata mismatch",
+  "selected_actions": [
+    "DISPATCH_SIGNED_WORKER_ORDER",
+    "REQUEST_RETURN_REPAIR"
+  ],
+  "report_sha256": "96adf3aeca7696fb373785664249af1c034b831c283977ebf62a5d3dd450b6c8",
+  "created_at": "2026-11-02T06:07:21.826630+00:00"
+}
