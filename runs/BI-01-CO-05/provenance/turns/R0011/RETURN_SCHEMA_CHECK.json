@@ -1,0 +1,23 @@
+{
+  "run_id": "BI-01-CO-05",
+  "round": "R0011",
+  "observed_commit": "da52023ad7f2512687c36f0c602286b681c01505",
+  "invocation_id": "BI01-CO-05-R0011-e186238bf811",
+  "assignment_token": "ade5d48ee39949aa99991f4b0a39",
+  "schema": "longrun-return/v1",
+  "schema_source": "overlay/tools/longrun_handoff.schema.json at locked policy/current unchanged schema",
+  "validation": "FAIL_ADDITIONAL_PROPERTIES",
+  "exact_pointer": "/role_outputs/professional",
+  "unexpected_fields": [
+    "worker_order_ref",
+    "worker_order_state"
+  ],
+  "allowed_fields": [
+    "mode",
+    "result_ref",
+    "continuation_ref"
+  ],
+  "required_repair": "Only remove the two unsupported additional properties from the original R0011 ROLE_RETURN. Keep original invocation/token, the existing legitimate fields, artifact_refs (including WORKER_ORDER), original report/order/script/Q and all substantive work unchanged. Retain actual history through an ordinary commit; revalidate original Return under the current schema and association.",
+  "boundary": "This is narrow transport/Return repair, not a new effective Professional business call, new order, redesigned script, repeat Management or Worker dispatch.",
+  "at": "2026-11-02T19:10:56.274121+00:00"
+}
