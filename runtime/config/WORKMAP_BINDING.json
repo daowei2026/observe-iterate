@@ -1,9 +1,9 @@
 {
   "schema": "workmap-binding/v2",
-  "status": "ADOPTED",
+  "status": "NOT_CONFIGURED",
   "manager_role": "management",
   "overview": {
-    "path": "runs/BI-01-CO-04/README.md",
+    "path": "runs/<NEW_RUN_ID>/README.md",
     "anchors": [
       "common",
       "bi01"
@@ -13,10 +13,11 @@
     "common"
   ],
   "owner_sources": [
-    "runs/BI-01-CO-04/OWNER_START.md",
+    "runs/<NEW_RUN_ID>/OWNER_START.md",
     "professional/exploration/00_BUSINESS_OBJECTIVE.md",
     "professional/exploration/02_CURRENT_WORKING_IDEAS.md",
-    "professional/exploration/05_OWNER_PROCESS_EXPLANATION.md"
+    "professional/exploration/05_OWNER_PROCESS_EXPLANATION.md",
+    "professional/exploration/06_EXPLORATION_STAGE_GOAL.md"
   ],
   "rule_paths": [
     "professional/README.md",
@@ -28,13 +29,14 @@
     "professional/exploration/04_EXISTING_BUSINESS_REFERENCES.md",
     "professional/exploration/05_OWNER_PROCESS_EXPLANATION.md",
     "dual_route_execution/DR14_QUESTION_WORK_CONTRACT.md",
-    "overlay/08_自然语言运行提示_v0.3.md"
+    "overlay/08_自然语言运行提示_v0.3.md",
+    "professional/exploration/06_EXPLORATION_STAGE_GOAL.md"
   ],
-  "receipt_path": "runs/BI-01-CO-04/reviews/WORKMAP_INTAKE_CURRENT.json",
+  "receipt_path": "runs/<NEW_RUN_ID>/reviews/WORKMAP_INTAKE_CURRENT.json",
   "streams": {
     "bi01": {
       "map": {
-        "path": "runs/BI-01-CO-04/00_长程推进地图.md",
+        "path": "runs/<NEW_RUN_ID>/00_长程推进地图.md",
         "anchors": [
           "goal",
           "stage",
@@ -45,18 +47,19 @@
           "next"
         ]
       },
-      "task": "runs/BI-01-CO-04/01_当前任务.md",
+      "task": "runs/<NEW_RUN_ID>/01_当前任务.md",
       "overview_anchors": [
         "bi01"
       ],
       "watch_roots": [
-        "runs/BI-01-CO-04/artifacts",
-        "runs/BI-01-CO-04/reviews/independent"
-      ],
-      "reader_output_roots": [
-        "runs/BI-01-CO-04/reviews/independent/workmap-01"
+        "runs/<NEW_RUN_ID>/artifacts",
+        "runs/<NEW_RUN_ID>/reviews/independent"
       ]
     }
   },
-  "note": "BI-01-CO-04 已由 R0001 M-START 管理采用。R0002 仅补原承诺的独立 Reader 正式接线，并把其专属输出目录从 Reader 输入投影中排除，避免审查结果反向改变自身输入；这不改变当前专业任务、业务判断或资格。ADOPTED 仅表示当前 Run、地图、任务与 Binding 已获管理签发；Reader、dispatch preflight、手机发送、Professional 执行、业务结果、独立专业审查和管理接收分别以真实记录为准。旧 Run 的任务、Gate、预算、在途和结果不继承。"
+  "note": "PREPARATION ONLY. <NEW_RUN_ID> is a placeholder, not an active Run. Current Owner-authorized exploration permits optional Workmap Reader, but no automatic waiver/PASS: future Manager must record NOT_REQUIRED and reason/authority in the real Intake and dispatch. All mechanical gates, actual Owner GO and management decision remain required. 00 is final investment goal, 06 current exploration task goal, 05 Owner's original process. Old CO-04 Run data/Reader/Intake do not carry into a new Run.",
+  "reader_policy": {
+    "mode": "OWNER_OPTIONAL",
+    "authority_source": "professional/exploration/06_EXPLORATION_STAGE_GOAL.md"
+  }
 }

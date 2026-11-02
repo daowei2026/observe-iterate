@@ -2,7 +2,8 @@
 
 本目录保存探索项目背景，不是固定专业规范。Management Pro应理解整体业务目标、既有特征基础、当前设想和已具备的工具能力，再根据实践安排具体专业任务。
 
-- [00_BUSINESS_OBJECTIVE.md](00_BUSINESS_OBJECTIVE.md)：业务目标与阶段定位。
+- [00_BUSINESS_OBJECTIVE.md](00_BUSINESS_OBJECTIVE.md)：最终投资业务目的。
+- [06_EXPLORATION_STAGE_GOAL.md](06_EXPLORATION_STAGE_GOAL.md)：当前探索任务的直接目的、Owner 过程的实践定位、管理职责与新增分析边界。
 - [01_EXISTING_FEATURES_AND_CAPABILITIES.md](01_EXISTING_FEATURES_AND_CAPABILITIES.md)：既有特征对象及能力边界。
 - [02_CURRENT_WORKING_IDEAS.md](02_CURRENT_WORKING_IDEAS.md)：当前候选场景和观察思路，待实践修正。
 - [03_TOOLING_AND_DATA_USAGE.md](03_TOOLING_AND_DATA_USAGE.md)：aidata接口职责、数据与图准备、正式交付消费、首次画图注意事项及权限边界。
@@ -11,4 +12,4 @@
 - [tooling_examples/](tooling_examples/)：已完成的工具实践记录；其中 [2026-11-01_30m_multi_symbol_turn_chart.md](tooling_examples/2026-11-01_30m_multi_symbol_turn_chart.md) 记录 uplot、CAEGraph/PlotSet 和 aidata 的一次多品种三尺度绘图实践。它是特定输入和参数下的实物参考，不是通用规范或当前任务默认配置。
 
 
-区分Owner已明确要求、正式特征事实、当前假设和待核事项；不得把假设写成已验证事实。工具说明用于避免重复探索已知操作方式，不等于固定每轮必须采用相同图形、数据范围或调用顺序。
+00/06/05 分别承担最终目的、当前任务目的与 Owner 完整过程的不同职责，不能用其中一份的摘要代替另一份。区分Owner已明确要求、正式特征事实、当前假设和待核事项；不得把假设写成已验证事实。工具说明用于避免重复探索已知操作方式，不等于固定每轮必须采用相同图形、数据范围或调用顺序。
