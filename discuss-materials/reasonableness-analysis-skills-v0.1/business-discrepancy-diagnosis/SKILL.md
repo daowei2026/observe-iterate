@@ -15,6 +15,7 @@ status: draft
 - 同一现象有数据、实现、算法和业务定义等多种解释；
 - 改动前需要判断真正的问题发生在哪一层；
 - 需要找最小实验区分两个或多个原因；
+- 需要初步判断偏差是否可能由现有参数修复，以决定是继续参数求解还是移交叙事迭代；
 - 需要把真正的业务取舍整理给 Owner。
 
 不用于：
@@ -213,6 +214,29 @@ CompetingExplanations
 未定位：业务预期与输入特征目的可能不匹配
 ```
 
+**参数可修复性初筛：**
+
+在已经定位的责任阶段，检查当前问题是否值得进入参数标定：
+
+1. 可疑参数是否实际参与了造成偏差的判断，其定义处与相关消费处是什么；
+2. 参数改变后，相关中间量是否可能进入预期需要的范围；
+3. 是否存在其他不受该参数影响的条件，仍然阻止结果改变；
+4. 参数是否同时影响上游输入、业务对象或其他消费处；
+5. 是否已有足够证据证明存在不可由现有参数消除的约束冲突。
+
+在此阶段优先利用已有中间数据、公式与代码做低成本判断；不要求穷尽所有参数组合或完成完整实例试验。若已经能证明某类场景在当前配置能力下不可调，不再为该场景盲目试值；若还需要多位置求解、复杂耦合分析或完整实例重跑，交给 `feature-instance-calibration`。
+
+可修复性状态：
+
+| 状态 | 含义 | 后续 |
+|---|---|---|
+| `POSSIBLY_ADJUSTABLE` | 有证据表明现有参数可能解决问题 | 进入参数标定 |
+| `COUPLED_UNRESOLVED` | 参数影响上游对象，需完整评估才能判断 | 进入参数标定作深入可行性分析 |
+| `PROVEN_NOT_ADJUSTABLE` | 在当前已明确的参数配置范围内无法满足预期 | 根据证据移交叙事迭代等角色 |
+| `EVIDENCE_INSUFFICIENT` | 还不能判断是否可调 | 补证据或继续偏差诊断 |
+
+诊断中的少量反事实干预只用于区分原因，不等于正式开始标定参数。
+
 ### 步骤 7：判断是否需要返回预期推导
 
 若发现：
@@ -226,20 +250,32 @@ CompetingExplanations
 ### 步骤 8：决定下一步路由
 
 ```text
-数据问题
+数据或输入事实不正确
     → 数据准备／数据质量角色
 
-实现未照既有规则
+现有代码没有按既定业务逻辑执行
     → 实现修正角色
 
-现有规则执行正确但业务效果不合理
+现有参数可能解决问题
+    → feature-instance-calibration
+
+参数耦合，尚需深入求解
+    → feature-instance-calibration
+      必要时返回偏差诊断
+
+已证明现有参数无法表达所需业务区别
     → 叙事／需求迭代角色
+      附不可调证明及业务反例
 
-证据不足但可继续分析
-    → 证据对照 Skill
+原业务预期本身需要修订
+    → business-expectation-derivation
 
-真正业务取舍
-    → Owner
+证据不足，仍可由 AI 分析
+    → business-evidence-comparison
+      或继续 diagnosis
+
+真正需要 Owner 作业务取舍
+    → OwnerDecisionPacket
 ```
 
 ---
@@ -348,6 +384,15 @@ ruled_out_explanations:
 remaining_explanations:
 discriminating_checks:
 current_localization:
+parameter_repairability:
+  suspected_parameters:
+  parameter_consumers:
+  earliest_business_divergence:
+  feasibility_status:  # POSSIBLY_ADJUSTABLE | COUPLED_UNRESOLVED | PROVEN_NOT_ADJUSTABLE | EVIDENCE_INSUFFICIENT
+  feasibility_evidence:
+  upstream_dependency:
+  unresolved_constraints:
+  next_route:
 confidence:
 next_route:
 ```

@@ -1,12 +1,13 @@
 # 合理性分析 Skills V0.1
 
-本包包含三个初版 Skill：
+本包包含四个初版 Skill：
 
 1. `business-expectation-derivation`：业务预期推导与可观察化
 2. `business-evidence-comparison`：业务预期—真实证据对照
 3. `business-discrepancy-diagnosis`：业务偏差诊断与 Owner 决策材料
+4. `feature-instance-calibration`：特征实例参数可调性分析与标定
 
-README 不是第四个 Skill，只规定三者的协作方式。
+README 不属于 Skill，只规定四者的协作方式。
 
 ---
 
@@ -25,7 +26,7 @@ README 不是第四个 Skill，只规定三者的协作方式。
 → 必要时产生下一版预期
 ```
 
-因此，三个 Skill 采用**渐进式预期—证据循环**，而不是瀑布式流程。
+因此，这套 Skill 采用**渐进式预期—证据循环**，而不是瀑布式流程。
 
 但“可以边看边想”不等于允许事后解释。必须保留：
 
@@ -122,7 +123,7 @@ RETIRED
 
 ---
 
-## 4. 三个 Skill 的协作关系
+## 4. 四个 Skill 的协作关系
 
 ```text
 business-expectation-derivation
@@ -132,17 +133,32 @@ business-evidence-comparison
     形成 EvidenceComparisonPackage、支持／反证／缺失证据和效果对照
               ↓
 business-discrepancy-diagnosis
-    沿处理链定位偏差、设计区分性实验、形成 OwnerDecisionPacket
-              ↓
-可能回到前两个 Skill 形成新版本
+    沿处理链定位偏差，初步判断现有参数是否可能修复
+              │
+              ├─ 参数可修复或需要深入求解
+              │       ↓
+              │   feature-instance-calibration
+              │       ├─ 反求可行域与多位置共同范围
+              │       ├─ 少量有依据的候选试验
+              │       └─ 形成候选实例
+              │               ↓
+              │   business-evidence-comparison 复验
+              │       ├─ 达到合理性要求 → 固定合理实例
+              │       └─ 仍有偏差 → 返回诊断
+              │
+              ├─ 已证明现有参数不能表达业务区别 → 叙事迭代
+              ├─ 实现与既有规则不一致 → 实现修正
+              ├─ 证据不足 → 补证据、继续诊断
+              └─ 真正业务取舍 → Owner
 ```
 
-三者不是只能顺序调用：
+四者不是只能顺序调用：
 
 - 只缺字段和代码事实时，可先做事实准备，再回到预期推导；
 - 小样本观察发现新场景时，可从证据对照返回预期推导；
 - 诊断发现原业务预期本身不充分时，可生成新的候选预期；
-- 已有清晰 Owner 预期和干净数据时，可快速直达证据对照。
+- 已有清晰 Owner 预期和干净数据时，可快速直达证据对照；
+- 已有明确参数标定问题或首次实例化任务时，可进入 `feature-instance-calibration`；求解中发现新的上游问题，返回偏差诊断。
 
 ---
 
@@ -170,8 +186,9 @@ business-discrepancy-diagnosis
 → 证据清单与来源核验
 → 条件化对照
 → 偏差诊断
-→ 低成本区分性实验
-→ Owner 决策或后续改动请求
+→ 初步判断参数是否可修复
+→ 可调则反求参数并验证候选实例；不可调则移交叙事／实现问题
+→ 必要时 Owner 决策
 ```
 
 ---
@@ -194,7 +211,8 @@ business-discrepancy-diagnosis
 - 渐进式预期冻结；
 - 事实准备轨道与业务判断轨道分开；
 - 三种不确定性的路由规则；
-- 三个 Skill 的输入输出合同和回环方式。
+- 原有三个 Skill 的输入输出合同和回环方式；
+- 在偏差诊断中补充参数可修复性判断与路由，并增加实例参数标定 Skill。
 
 ---
 
