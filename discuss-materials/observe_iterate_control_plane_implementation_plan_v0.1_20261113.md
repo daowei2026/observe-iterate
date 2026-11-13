@@ -1,10 +1,13 @@
-# Observe–Iterate 业务控制面落地计划（讨论候选 V0.1）
+# Observe–Iterate 业务控制面落地计划（反馈审查修订候选 V0.2）
 
 - 形成日期：2026-11-13
+- 修订基线：`discuss-materials/observe_iterate_control_plane_implementation_plan_v0.1_20261113.md`（完整历史原文单独保留）
+- 修订来源：新上传的《修改建议》（审查 V0.1 §1～7.2）及之后已明确的 GitHub 持久化、一次性落地、暂缓外部长程接线、统一 `advance` 入口的讨论。详见 §13 的逐项采纳记录。
 - 文档性质：**待确认的实施计划，不是已批准的技术合同，也不是仓库已实现状态**
 - 目标：在现有长程 Codex 主控—管理/执行 Pro—Worker—GitHub 协作方式之上，建设**一个共用业务控制核心**，组织「观察材料准备」与「合理性分析」两个可循环、可交接的业务 Workflow，使正常授权工作按 Gate 自动接续，异常定向恢复。
 - 当前范围：仅纳入 `observe-iterate/main/discuss-materials/观察材料规划与准备Skill_候选V0.1_20261113/`、`observe-iterate/main/discuss-materials/reasonableness-analysis-skills-v0.1/` 与《业务控制面与 Skill 工程规范》；`observe-iterate` 其它历史目录**不视为当前 Agent 体系**。旧长程协议仅用于执行对接边界与兼容性核查。
-- 实施边界：**本计划不授权修改现有 Skill、正式特征、参数、数据或长程主控协议**。所有新增设计均需要可追溯、必要时由 Owner 明确批准；实际落地先创建独立候选目录和新代码目录，不覆盖旧目录。
+- 实施边界：**本计划不授权修改现有 Skill、正式特征、参数、数据或长程主控协议**。只在设计确认后一次性落地本轮文件和控制程序，随后立即试跑；本轮不改外部长程主控代码。所有新增设计均需可追溯，涉及权限、Gate 权限与正式接收的未决事项不得由实现者自作决定。
+- 持久化约束：本轮按 Owner 已表达的意图，**控制状态、交接、证据及运行记录都存放 GitHub**；运行代码可在受控 Codex/Actions 环境执行，本地临时文件不构成第二权威状态。GitHub 存储、受保护写入与真实可执行环境的资格尚须实测和授权。
 
 ## 1. 来源、继承与新增的识别规则
 
@@ -53,378 +56,452 @@ Worker Codex / 数据与 CAEGraph 工具
 长程主控核实运输事实 → 业务控制核心登记候选/验证/Gate/接续
 ```
 
-**唯一权威**：受信任控制程序及其存储保存正式业务状态；管理 Pro 可以作专业提议、在 Owner 授权范围内复核，但不能凭聊天、角色自填或普通 GitHub 文件直接改正式状态。GitHub 用于跨角色实物和 provenance，不自动等于权威状态数据库。
+**唯一权威**：受信任控制程序和经受保护的 GitHub 正式状态分支保存业务状态；管理 Pro 可以作专业提议、在 Owner 授权范围内复核，但不能凭聊天、角色自填或普通 GitHub 文件直接改正式状态。GitHub 用于跨角色实物、provenance 和受保护的权威状态分支；普通提交文件不自动构成正式业务接受。
 
 **角色可合并，权力不可假合并**：同一个 Pro 可以承担管理和专业执行，但有独立性要求的正式接受必须用真实独立复核执行或经 Owner 授权的有权主体；不能通过同一聊天里自称“复核角色”绕过。
 
-**强制力分级**：未具备真实身份验证、隔离的状态写入口与受保护验证器时，只能开展草稿/影子/建议模式；不得声称自动正式采纳。首轮选用一个受控进程和简单事务存储即可，但必须使 Worker 无法直接写入正式状态与验收策略。
+**强制力分级**：未具备真实身份验证、隔离的状态写入口与受保护验证器时，只能开展草稿/影子/建议模式；不得声称自动正式采纳。本轮按 GitHub-only 设计受保护写入、版本比较与提交回执；只有真实隔离 Worker/Pro 写权、验证器与接受策略时才可称强制型控制面。
 
 ## 3. A：管理 Pro 合同
 
-### 3.1 共用职责（新增 N）
+### 3.1 共用职责与专业决定生效协议（S + C + N）
 
-管理 Pro 对完整业务目标负责，持续掌握目标、现有证据、当前正式阶段、工作计划、未决专业判断和后继安排。它：
+管理 Pro 对当前授权的**整体业务目标**负责，掌握目标、当前正式状态、专业工作安排、证据、业务未决项和完成边界；它读取权威业务状态，不在聊天中维护第二份「最新状态」。可以组织或修订专业计划、提交专业 Gate 复核意见、判断可复用材料以及定向返修；不能以自己的口述直接变更权威状态或扩充授权。
 
-- 读取 `read_business_state` 和已接受计划，而非自行维护另一份权威状态；
-- 组织或修订专业工作计划，并说明工作项依赖、激活条件、最小充分结果及成本；
-- 在相应 Gate 提交专业 `StageAssessment` 与 `ManagementDecisionProposal`；
-- 将问题分为事实缺口、可由专业/证据解决、真正 Owner 取舍、越权或超预算；
-- 对新材料需求、旧计划不充分、标定复验等情况形成可执行的定向返修或跨 Workflow 申请；
-- 只在有权范围内决定，不自行生效范围变更、工具授权、正式接收或业务状态写入。
+管理 Pro 的回交类型仍采用 V0.1 四类：`ProfessionalTaskPlan`、`StageAssessment`、`ManagementDecisionProposal`、`ProfessionalChangeProposal`。**四类是按需提交的内容类型，不是每轮必须独立编写四份文件。**
 
-建议管理 Pro 的四类结果：`ProfessionalTaskPlan`、`StageAssessment`、`ManagementDecisionProposal`、`ProfessionalChangeProposal`。正常步骤用结构化字段与引用，不强制逐轮长文。
+**N-新增：专业决定到可执行状态的转换。** 有权专业判断必须归结为受控、可核的结构化结果，程序不通过自然语言重新推断业务后继：
 
-### 3.2 观察材料准备管理合同 A1（S0～S5；新增管理阶段 N，映射现有 Skill S）
-
-| 阶段 | 来自现有 Skill 的专业活动 | 管理 Pro 的输入与工作 | 候选产物 | 转移/门禁 |
-|---|---|---|---|---|
-| S0 任务接管与调查 | 第 0 步、部分第 1 步；任务单 A | 明确目标、已有图/数据/源码、事实缺口和必要调查 | `AssetAndBindingAssessment` | 基础事实充分方可详细规划；不要求未知数据在首次调查前全部填齐 |
-| S1 材料规划 | 第 1～4 步；任务单 B/C | 判断关键输入、实质阶段、预期/实现输出是否覆盖；每项材料必要性、来源、取数方式、依赖 | `MaterialPlan`/工作项提案 | **G-PLAN**：结构检查＋专业充分性复核 |
-| S2 执行准备 | 第 4～5 步；取数参考 | 核实真实入口、版本、是否重算、预算、工具授权 | `ExecutionPlan`/前置调查 | **G-RUN**：针对有成本或副作用的动作授权；可逐次触发，不强制每个只读动作复核 |
-| S3 实际材料取得 | 第 5 步；任务单 D | 监督逐项取得数据/图，处理技术异常和必要补查 | `MaterialItemResult`＋实际回执和证据 | 工作项级检查，符合条件的自动继续 |
-| S4 整体核验 | 第 6 步；CAEGraph 最小验收 | 判断来源、身份、时间、源/显示阶段、缺项及可用范围 | `MaterialReview` | **G-MATERIAL**：全量/限定范围接受与未解决事项；不得自行降低原必需范围 |
-| S5 接收与交付 | 第 7 步；任务单 F | 汇总可回答/不能回答的问题和材料包 | `AcceptedObservationMaterialPackage` 候选 | 受保护正式提交与回执；任务完成条件另行核对 |
-
-每项材料计划记录 `material_id / necessity / business_question / processing_stage / source / data_stage / identity_and_time / dependencies / activation_condition / completion_evidence / cost_estimate / current_unknowns`。专业字段来自 Skill，`id/依赖/触发/验收可追踪性` 为控制面新增 N。条件材料仅在触发事实与专业决定成立时激活。
-
-### 3.3 合理性分析管理合同 A2（R0～R5；新增管理阶段 N，专业方法仍来自 Skill S）
-
-| 阶段 | 对应现有 Skill | 专业活动与管理重点 | 关键控制/转移 |
+| 决定类型 | 必须给出的内容 | 控制程序动作 | 无足够内容时 |
 |---|---|---|---|
-| R0 接管与证据资格 | 四 Skill 的共同入口及 README 双轨 | 核对业务目标、判断对象、已有材料包及最低可用信息 | 可进入探索，不代表可以进入正式对照；必要时并行请求事实准备 |
-| R1 预期推导与冻结 | `business-expectation-derivation` | 区分 `OWNER_EXPLICIT / BUSINESS_INFERRED / IMPLEMENTATION_DERIVED`，提出最小可检验预期和场景 | **正式冻结** `FrozenExpectationSet`，有版本/摘要/适用范围和接受记录；`WORKING` 可用于探索 |
-| R2 证据对照 | `business-evidence-comparison` | 按冻结预期比较 `SUPPORTS/COUNTERS/MISSING/AMBIGUOUS/NOT_APPLICABLE/PENDING`，形成效果对照与偏差队列 | 正式对照须绑定已冻结版本、数据口径和来源；新证据诱发新候选预期，不回写旧版 |
-| R3 偏差诊断 | `business-discrepancy-diagnosis` | 区分数据/时间/输入/处理/预期等原因，定位最早分歧，形成最小区分性实验 | 证据缺口→补证；预期问题→R1；实现问题→外部实现修正；真正取舍→Owner；参数初筛→条件进入 R4 |
-| R4 实例参数标定（有条件） | `feature-instance-calibration` | 合法自由参数、可行域、多位置交集、少量试验、上游耦合与完整实例复验 | 启动/高成本试验需要授权；标定后回 R2 复验；初次实例化可按 Skill 条件直接进入，不强制先 R3 |
-| R5 分析结果接收与后继 | 汇集四 Skill 输出 | 明确支持/反证/未决、适用范围、后继及未解决问题 | 依据本轮完成定义正式接受；不能把“已诊断”或“候选实例合理”当作生产参数已改 |
+| `PROPOSE_WORK_DELTA` | 增删/修改的具名工作，必要性、输入、输出、责任角色、依赖条件、预算和分支 | 验证计划修订并提交新计划版本；受影响工作项待重验 | 返回 `NEEDS_SPECIFICATION`，要求原 Pro 补具体化，不自行翻译自然语言 |
+| `PROPOSE_GATE_RESULT` | 具体 Gate、候选摘要、所据事实、结论与适用范围 | 核验复核身份和权限，结合硬检查形成正式 Gate 决定 | 进入具名复核/补证，不能自称通过 |
+| `PROPOSE_CHANGE` | 旧/新范围、原因、影响、预算、所需授权 | 保留变更申请；有权批准后才更新任务/计划 | `WAIT_OWNER` 或原授权复核者 |
+| `REQUEST_FACT_CHECK` | 事实缺项、具体位置、预期检查结果与最小动作 | 在现有计划/授权内登记局部续作或适当调用 | 事实目标不清则补具体问题 |
+| `NO_CHANGE` / `COMPLETE_ASSESSMENT` | 当前专业工作已无新增行动、已回答的问题和未决项 | 按本轮完成定义验证并决定继续/接收/结束 | 不把「值得继续研究」无边界地加入必做范围 |
 
-**非瀑布**：README 允许先用少量事实和样本形成 `WORKING` 预期，正式支持/反证前才冻结。R2 发现新场景可生成 R1 新版本；R3 缺证据可返回事实准备/R2；R4 后回 R2，仍有偏差返回 R3。工作流需在 `workflow.yaml` 里明示合法分支，不能只用阶段数字线性推进。
+例如管理 Pro 判断「先核对 BP-09 的 actual/confirm，若未错位再调查参数」时，应输出一个核对工作项，以及 `TIME_MISMATCH_FOUND`／`TIME_BASIS_VERIFIED` 两条有据可判的后继条件；控制程序只验证、登记和调度，不再让第二个模型猜该做什么。
 
-### 3.4 Gate 的专业语义及责任
+**N-新增：管理 Pro 的调用边界。** 控制面可以安排任务；管理 Pro 在已有计划可直接继续时不应每轮再决定。确实出现未覆盖的新业务问题时才提交 `ProfessionalChangeProposal`。同一未决问题与同一候选摘要未产生新事实前不得反复调用同一管理判断。
 
-- **G-PLAN**：针对材料规划，验证是否遗漏关键业务输入/实质中间阶段/最终输出，必要性和取数路径是否合理。程序只做字段、来源、依赖、版本等机械检查；专业充分性需授权复核。
-- **G-RUN**：针对具体高成本取数/重放/图构建动作，核对是否需要、是否已用更低成本方法、资源许可、当前版本和剩余预算；一般只读和已授权低成本操作不用默认重复审批。
-- **G-MATERIAL**：材料真实取得、数据阶段与身份/时间一致、必要性覆盖、缺口影响；允许限定范围接受，但不得把核心必需项无授权降为可选，也不得无权结束整个任务。
-- **G-EXPECTATION-FREEZE（新增）**：最小预期包有来源、可证伪、适用/不适用条件、范围与版本；完成正式冻结后不可无痕改写。
-- **G-COMPARISON（新增）**：冻结版本、证据资格、时间口径与反例依据；对照产物明确支持、反证、缺失、歧义，不用源码正确冒充业务合理。
-- **G-DIAGNOSIS（新增）**：偏差是否定位、有无排除竞争解释、后继指向是否受证据支持；是否有必要补证/返预期/移交实现/Owner。
-- **G-CALIBRATION（新增）**：入口可修复性或初次实例化依据、合法参数自由度、实验权限、成本上限、基线、完整实例复验；试验成功不等于生产采纳。
-- **G-ANALYSIS-DELIVERY（新增）**：本轮证据与结论是否充分、未决是否如实保留，是否满足该轮定义的完成标准。
+### 3.2 观察材料准备管理合同 A1：阶段不是调用单位（S + N）
 
-各 Gate 的 `AUTO / REVIEW / FORBIDDEN` 资格和接受者权限**不能凭本计划擅自设定**；在工作包 W2 经 Owner 或已授权治理者批准。自动程序性检查必须与专业语义复核分开，必须检查 `PASS/FAIL/UNKNOWN/NOT_RUN`。
+保留 V0.1 的 **S0～S5 业务阶段**，仅作为业务进展与 Gate 的管理视图，不新增六个独立专业 Skill，也不要求每次调用完整 Skill 从头重做。现有 [观察材料准备 Skill] 的第 0～7 步仍是唯一专业方法来源。
+
+| 阶段 | 现有 Skill 对应 | 专业工作和候选产物 | 调用边界与 Gate |
+|---|---|---|---|
+| S0 接管调查 | 第 0、部分第 1 步；任务单 A | 确认观察目的、源/图/版本线索、缺口，`AssetAndBindingAssessment` | 允许调查未知事实；可沿用已证实的历史调查；关键资产未定位时不得虚构版本 |
+| S1 材料规划 | 第 1～4 步；任务单 B/C | `MaterialPlan`：实质阶段、必需/条件/建议材料、处理与取数路径 | `G-PLAN` 管规划覆盖和可执行性；允许已授权的**小范围接口探查**，但不得偷偷启动需 G-RUN 的完整重算 |
+| S2 执行准备 | 第 4～5 步及 CAEGraph 说明 | `ExecutionPlan`、版本、运行入口、成本/资源前置检查 | `G-RUN` **作用于具体高成本动作**，不是所有调查的统一人工门禁 |
+| S3 实际取数 | 第 5 步；任务单 D | 可分批产生多项材料、执行证据、不可得说明 | 只对被授权工作运行；可用中间产物按依赖就绪资格继续加工，未必等待整包接受 |
+| S4 材料核验 | 第 6 步及 CAEGraph 最小验收 | 质量核对、部分/不可得/适用范围与 `MaterialReview` | `G-MATERIAL` 评价材料真实和可交付资格，缺口精确影响对应问题 |
+| S5 交付接收 | 第 7 步；任务单 F | 受控接收的 `AcceptedObservationMaterialPackage`；或明确未完与阻断 | 按原任务完成条件结束；部分接受本身不降级必需范围 |
+
+**N-新增：一次专业调用的固定封面 `ProfessionalCallSpec`**，包含 `business_task_id, stage_view, call_id, work_item_ids, purpose, already_accepted_inputs, permitted_local_actions, forbidden_actions, expected_outputs, stop_boundary, escalation_rule, skill_ref`。该调用可覆盖多个 Skill 步骤、多个材料项，也可只用于一轮补查，不得仅用「执行 S1」代替完整工作边界。
+
+**N-新增：三个不能互相替代的单位。**
+
+- `MaterialRequirement`：最终需要交付什么（例如 BP-07、BP-09、K 线和图层身份映射）。源自现有任务单，不能默认每项单独执行。
+- `WorkItem`：某项可安排的专业工作，如运行已有完整 CAEGraph 并取得全部需要的图层与源表；可产出多个材料，亦可组合多次执行。
+- `ExecutionAction`：一次实际工具/模型/脚本调用的授权与回执。一个 WorkItem 可有多个 Action，也可一次运行满足多个 WorkItem。
+
+映射是多对多，显式记录 `produces`、`consumes`、`execution_group_key` 和可复用产物，**不按材料项数量机械生成 WorkItem**。若已有完整 CAEGraph 同一次构图覆盖四项交付，程序不得无依据派四次完整构图。
+
+每条材料要求继续沿用 `必需 / 有条件需要 / 可选建议 / 暂不准备`；条件材料只在真实触发条件满足后激活。专业方法怎样执行仍由 Skill 决定，控制面只管可执行范围、成果依赖和正式接收。
+
+### 3.3 合理性分析管理合同 A2：专业调用模式与循环身份（S + N）
+
+仍保留 V0.1 的 **R0～R5 业务视图**和现有四个 Skill；不按编号固定顺序派发，不强制把每个 R 作为一次独立 Pro 调用。
+
+| 阶段视图 | 唯一专业方法来源 | 合法调用模式（N） | 有效成果/门禁 |
+|---|---|---|---|
+| R0 分析接管 | README 的事实/业务双轨 | `FACT_PREP`、`MINIMAL_INTAKE` | 目的、来源、可用材料和最低分析范围明确；可在预期未冻结时查事实 |
+| R1 预期推导 | `business-expectation-derivation` | `WORKING_EXPECTATION`、`FREEZE_REQUEST` | 有来源、可证伪的最小预期；正式对照前独立冻结版本 |
+| R2 证据对照 | `business-evidence-comparison` | `EXPLORE`、`FORMAL_COMPARE`、`TARGETED_RECHECK`、`INSTANCE_REVALIDATION` | 探索不冒充正式反证；正式对照锁定预期与证据版本 |
+| R3 偏差诊断 | `business-discrepancy-diagnosis` | `DIAGNOSE`、`LOCAL_FACT_CHECK`、`PARAMETER_REPAIRABILITY` | 追最早分歧；结论可为已定位、尚存替代解释或不可由参数修复 |
+| R4 实例标定（条件） | `feature-instance-calibration` | `FEASIBILITY_SOLVE`、`BOUNDED_TRIAL`、`REQUEST_INSTANCE_COMPARISON` | 试验授权、可行域与完整实例新旧对照；首次实例化可合法直接进入 |
+| R5 结果接收 | 汇集四 Skill 正式成果 | `ANALYSIS_DELIVERY` | 分开接收分析质量、业务支持/反证/未决和后继，不要求最终特征必然合理 |
+
+每次调用除 `ProfessionalCallSpec` 外必须携带 `analysis_round_id, question_id, expectation_id/version/digest, data/code/parameter/material_binding, proposal_id, call_mode` 中与当前目的相关的字段；若尚无冻结预期，明确 `exploratory`，不得填造冻结版本。
+
+**N-新增：同一次完整实例复验只执行一次。** 当前标定 Skill 第 4 步已经要求调用证据对照 Skill；控制面应创建/复用一个有唯一 `comparison_work_item_id` 的 `INSTANCE_REVALIDATION` 工作。R4 对该工作形成等待依赖，R2 的专业能力产出被 R4 `CalibrationResult` 和整体分析共同引用，禁止 R4 完成后机械重复派发另一轮同目的 R2。必须在结果回来后再验收 R4 的完整实例合理性判断；有现成同版本、同窗口、同目的的合格对照则复用。对上游对象可能重分段的参数，绑定**原始业务窗口、旧/新实例身份与参数**，不能只依赖旧事件 ID。
+
+R2 发现新场景→R1 新候选预期；R3 缺证→当前授权内局部查证或跨工作流补证；R3 可调→受控 R4；R4 发现旧定位错误→R3；首次实例化可直接 R4。每条返回都绑定原 `question_id + analysis_round_id + expectation_version`，不是只按「当前 R2」定位。
+
+### 3.4 Gate 的验收对象必须分清（S + C + N）
+
+本版保留 G-PLAN/G-RUN/G-MATERIAL/G-EXPECTATION-FREEZE/G-COMPARISON/G-DIAGNOSIS/G-CALIBRATION/G-ANALYSIS-DELIVERY，但**不默认每个 Gate 都是独立 Pro 调用**；相同已验证证据可在同一版本与适用范围内复用。Gate 应明确区分下列三种判定：
+
+1. `WorkQualityGate`：本次专业工作和证据是否达到合同要求？例如真实对照得出 `COUNTERS` 或诊断证明 `PROVEN_NOT_ADJUSTABLE`，仍可属于 **合格专业工作**。
+2. `BusinessFinding`：被分析特征到底支持、反证、不适用、歧义、未决或不可调？这些是**领域结论**，不等于 Gate PASS/FAIL。
+3. `NextActionEligibility`：在当前授权和事实下，能否启动新实验、补证、实现修正或下一轮判断？不因工作通过就自动授权修改生产参数。
+
+| Gate | 验收对象（非“必须业务合理”） | 专业与硬检查重点 | 后继 |
+|---|---|---|---|
+| G-PLAN | 本轮材料规划的覆盖和可执行性 | Skill 第 1～4 步、必要性和来源 | 合格→取数准备；不充分→返修 |
+| G-RUN | 本次成本/副作用动作资格 | 版本、依赖、授权和预算；小探查按已授权能力直接做 | 合法动作放行，超界等待授权 |
+| G-MATERIAL | 真正取得材料及适用范围 | Skill 第 5～7 步，数据阶段、时间、身份、有效空/缺失 | 接收完整/限定材料，或记录不可得 |
+| G-EXPECTATION-FREEZE | 冻结命题可对照性 | 预期来源、反例、适用条件、已看探索证据和版本 | 锁定本轮版本，而不是冻结所有未来想法 |
+| G-COMPARISON | 对照执行和证据是否合格 | 真实场景、冻结版本、支持/反证/缺失的对应关系 | `COUNTERS` 可以是通过 Gate 的分析结果 |
+| G-DIAGNOSIS | 诊断是否沿证据追因、给出有据后继 | 已排除竞争解释、尚存未知、必要实验 | 已定位/不可调/有界未决都可以合格交付 |
+| G-CALIBRATION | 标定准入、试验动作、完整实例判定的各自资格 | 有效自由度、预算、原始窗口、新旧实例和复验 | `PROVEN_NOT_ADJUSTABLE` 可被接受，不强迫产生候选实例 |
+| G-ANALYSIS-DELIVERY | 本轮约定问题是否合格交付 | 支持/反证/未决与适用范围、完整性和后继 | 接受分析成果不代表生产特征已修好 |
+
+规范 CP-013 的 `FAIL / UNKNOWN / NOT_RUN` 不可当作**必需硬检查**通过，但已经完成检查后形成 `MISSING/AMBIGUOUS/PENDING` 等**业务结果**，在本轮已批准完成条件允许时仍可被如实接收。`AUTO/REVIEW/FORBIDDEN` 和各 Gate 接受权仍为待授权决定，不由本计划给默认权。
 
 ## 4. C：观察材料准备与合理性分析的衔接（新增 N）
 
-### 4.1 父子任务
+### 4.1 父子任务、问题及分析轮次的身份（S + N）
 
-- `ParentBusinessTask`：一次完整观察—分析业务目的；可以有多个业务子任务与分析轮次。其是否完成不同于任何 Pro/Worker Return 完成。
-- `MaterialPreparationTask`：按本轮材料计划准备并验收材料；可有后继补证子任务，不改写已接受原包。
-- `ReasonablenessTask / AnalysisRound`：按某轮冻结预期、数据版本与场景形成判断；可能多轮修订。
-- `AdditionalEvidenceRequest`：由合理性分析对指定场景和偏差提出可核查的材料缺口，关联原分析轮次、证据与回交目标。
-- `CalibrationRun`：可作为 ReasonablenessTask 的受控工作项或子执行，不能自动升级为生产修改任务。
+- `ParentBusinessTask`：一次观察—分析目的及本轮必须回答的问题、允许的分析深度、退出条件；不等于一个长程 Run。
+- `MaterialPreparationTask`：准备、验收指定材料；可包含补证工作，不重写旧版本。
+- `ReasonablenessTask / AnalysisRound`：某个问题针对某版预期、数据、参数形成一轮判断；保留当前轮和旧轮的关联。
+- `AdditionalEvidenceRequest`：关联具体原问题/轮次的事实缺口和原回交点。
+- `CalibrationRun`：有界专业工作，不等于正式生产修改任务。
 
-`production_run_id`（长程）、`business_task_id`（业务）、`analysis_round_id`（证据轮次）、`work_item_id` 和 `W/R`（长程工单/轮次）分开；一轮 Pro 可包含多项工作，一项业务工作可经过多轮 Pro/Worker。
+`production_run_id`、`business_task_id`、`question_id`、`analysis_round_id`、`expectation_id/version`、`material_package_id/version`、`work_item_id`、`proposal_id/attempt` 与长程 R/W 分开。每次计划、Gate、补证、标定比较都绑定当时读取的相关摘要及版本（不适用的字段可为空而不得伪造）。补证迟到时只能先回到原 `question_id + analysis_round_id + request_id`，不能自动附到新的 v2 对照；如 v2 也需要此材料，单独核验其适用范围和依赖。
 
-### 4.2 两种使用资格
+**N-新增：父任务按业务问题收束。** 任务创建时须区分本轮目标是「完成材料准备」「对指定预期作合理性判断」「定位偏差」还是「取得候选实例」，记 `required_questions`、`authorized_depth`、`completion_evidence`、`acceptable_unresolved_conditions`、`future_work_boundary`。发现有价值的新问题，只登记 `FutureQuestionProposal`；未获授权不自动升为本轮必做。反证本身可能是合格终点；不能以「必须将特征修到合理」替代原任务定义。
 
-1. **探索用途**：合理性分析可以使用已标明来源和限制的少量真实样本，形成 `WORKING` 候选预期、了解实际字段和场景；不能据此直接给出正式“符合/不符合”结论。
-2. **正式对照用途**：必须绑定已冻结 `FrozenExpectationSet`、符合用途的已接受材料或通过专门受保护证据资格检查的原始证据、明确数据/代码/参数/时间版本与适用范围。材料准备内部 Gate 不代替合理性分析的目的适用性检查。
+### 4.2 中间就绪、探索使用与正式接收（S + C + N）
 
-材料准备 G-MATERIAL 负责材料自身是否可交付；合理性分析入口/对照资格负责它是否足以检验具体预期。可复用材料验证，不重复做无意义检查。
+保留 V0.1 的**探索用途**与**正式对照用途**两种业务资格，同时新增工作依赖所需的中间就绪等级，解决循环等待：
 
-### 4.3 `AcceptedObservationMaterialPackage`（由 Skill 任务单 D/F、CAEGraph manifest 提取并加受控字段）
+| 就绪等级 | 允许的用途 | 不能宣称 |
+|---|---|---|
+| `PRODUCED` | 文件/对象实际产出，能够按源位置查询；仅供后续最小核查 | 不能证明质量或直接正式交付 |
+| `CHECKED_FOR_PROCESSING` | 来源、身份、版本、关键字段及当前加工需要的检查已通过；可以作为同一受控工作链的上游输入 | 不等于整个材料包 G-MATERIAL 已接受 |
+| `EXPLORABLE` | 有明确来源、风险和限制的少量真实样本，可形成 `WORKING` 预期或定位问题 | 不得作正式支持/反证结论 |
+| `ACCEPTED_FOR_SCOPE` | 已获得受保护接收，声明对象/窗口/用途/版本及证据资格 | 不自动保证对任意新预期均适用 |
 
-至少包含：`package_id, material_task_id, parent_business_task_id, purpose_id, material_plan_version, accepted_artifact_refs/digests, code/data/parameter/skill bindings, object/time/window/data_stage, data_quality, answerable_questions, limitations, unresolved_questions, acceptance_decision_ref, commit_receipt_ref`。
+等级不是新增的全局 RunState，也不是所有工作必须线性经过四道 Gate。每条工作依赖显式说明 `required_readiness` 和 `required_scope`。例如 `源表导出 A→视图加工 B→整体核验 C→G-MATERIAL`，B 只要求 A 的 `CHECKED_FOR_PROCESSING`，不等待整体 G-MATERIAL；正式交给分析阶段则需要限定范围接收或专门的正式证据准入检查。这样内部加工不会因等待未来整包验收而死锁。
 
-该包只代表已接受的材料及适用范围，不代表合理性分析结论。
+已接受部分材料若足以支撑某个**不依赖其余材料**的分析问题，可以按限定范围启动；任务整体完成仍按最初必要范围判断，不能为推进而擅自降级。
 
-### 4.4 `AdditionalEvidenceRequest`（新增 N）
+### 4.3 `AcceptedObservationMaterialPackage`（S + N）
 
-至少包含：`request_id, parent_business_task_id, requesting_analysis_round_id, purpose_id, missing_question, discriminating_value, needed_evidence, existing_evidence_refs, object/time/field_scope, priority, authorized_cost_boundary, desired_return_to, requesting_proposal_ref`。
+沿用任务单 D/F 与 CAEGraph manifest：`package_id, material_task_id, parent_business_task_id, purpose_id, material_plan_version, accepted_artifact_refs/digests, code/data/parameter/skill bindings, object/time/window/data_stage, data_quality, answerable_questions, limitations, unresolved_questions, acceptance_decision_ref, commit_receipt_ref`。额外提供 `question_scope`、每项材料的 `readiness` 和已接受用途，确保同一包可供后继局部分析使用，但不能自动得到任何新预期的业务适用资格。
 
-控制流程：
+材料计划中的 `MaterialRequirement` 与实际执行 `WorkItem/ExecutionAction` 分离，多对多的 `produced_by / depends_on` 引用保持可追踪，不为每份输出重复构图。
 
-```text
-R2/R3发现缺失且值得补
-→ 提交补证提案
-→ 查询是否已有同范围/版本的合格材料
-→ 若已有：绑定引用，恢复分析
-→ 若无：核权、核预算、专业规划最小工作
-→ 建立关联材料子任务/追加工作项
-→ 既有长程主控派 Pro/Worker 实际补证
-→ G-MATERIAL 核验补证候选
-→ 生成新材料包/补充包与提交回执
-→ 解除原分析轮次的对应等待
-→ 重验受影响的结果，恢复 R2/R3
-```
+### 4.4 `AdditionalEvidenceRequest`：局部查证和跨 Workflow 补证不能混同（S + N）
 
-核心条件：不得无限循环同一补证请求；不能把条件材料一律提前全量准备；不能因为新材料出现就无痕改写既有冻结预期；仅重验真正受影响的工作项及结论。
+先判断：
 
-### 4.5 上游变更的失效传播
+- **当前 Skill 局部续作**：查字段、源码、已有中间结果、少量已授权对照，不更换正式事实基线、不需要专门交付，仍在本 WorkItem 内继续；留证据即可，不走完整 G-PLAN/G-RUN/G-MATERIAL。
+- **跨 Workflow 补证**：需要另一专业能力、另取材料/trace、实质性数据基线或计算成本变更、或需要正式独立交付；由原分析问题提出受控请求，由材料准备侧处理并原路返回。
 
-明确记录 `read_set`（源代码/数据/参数/预期/材料包版本与摘要）。若发生修订：旧产物保留只读；计算依赖图定位受影响的下游提案，标记待重验或产生新轮次，**不能**把旧产物 version 改成新值冒充已验收。
+`AdditionalEvidenceRequest` 维持 V0.1 字段，并新增 `question_id, originating_analysis_round_id, expectation_version/digest, material_readiness_required, request_fingerprint, return_to, requested_completion_definition`。请求 ID、业务目的、场景/字段、代码/数据/参数版本及未决原因相同，不得无依据反复新建同一请求。
+
+**N-新增：完整返回结果**（`EvidenceRequestOutcome` 作为请求的结案记录，非伪造数据）：
+
+| 结果 | 材料侧交付 | 分析侧合法后继 |
+|---|---|---|
+| `OBTAINED` | 已核验证据及适用范围 | 解除原问题对应等待，复验受影响对照/诊断 |
+| `PARTIAL` | 部分证据、真实限制、剩余缺口 | 判断哪些原问题可以继续、哪些仍未决，允许有界局部继续 |
+| `PROVEN_UNAVAILABLE` | 已调查且不可可靠取得的证据与理由 | 接受「当前条件不可得」事实，考虑替代证据、未决交付或新授权；不得伪装证据齐全 |
+| `NOT_APPLICABLE` | 证据请求的对象/字段/时间条件不成立的事实 | 返回请求专业方修订需求，不重复无效取数 |
+| `CANCELLED / SUPERSEDED` | 撤销或后继版本依据 | 关闭对应等待；迟到回交保留历史但不得解锁新轮次 |
+
+所有返回都先匹配**原请求、原问题、原分析轮次和原预期版本**；若新轮也需要数据，由独立用途验证决定复用，而不是自动迁移。一次补证出结果后，无论成功、部分还是不可得，都必须产生可验证的关闭/续作决定，不能永远卡在 `WAITING_EVIDENCE`。
+
+控制过程：发现需要补证→先检查同版本可复用材料→选择合法局部续作或受控材料子任务→记录请求和授权→派发实际调查/取数→分别验收「证据」或「不可得事实」→绑定原轮次→决定定向复验、受限交付、重新申请授权或关闭。不得把材料调查失败自动理解为可无限重算。
+
+### 4.5 上游变更与受影响范围（C + N）
+
+记录完整 `read_set`：源代码、数据、时间口径、参数、预期、材料包、候选和已验证摘要。若发生修订，旧产物保留；沿已登记的 `consumes/produces` 和适用范围判断哪些下游结果须重验。**补充独立证据不自动推翻所有既有结果；关键上游基线改变不允许仅改版本号而沿用旧结论。**
+
+复验目标要保留 `question_id + analysis_round_id + frozen_expectation_ref + original_business_window + old/new_parameter_instance`。对校准造成的对象分段变化，回到固定原始业务窗口进行新旧比较，不用已变更的局部对象 ID 作为唯一对照锚点。
 
 ## 5. B：共用业务控制程序设计
 
-### 5.1 四种状态维度
+### 5.1 状态维度及本轮问题完成标准（C + N）
 
-- `DomainState`：`ParentBusinessTask`、材料包、已冻结预期、分析结论等**业务事实**及版本；只在受保护正式提交时更新。
-- `RunState`：任务/阶段执行过程（参考规范 `NEW / READY / RUNNING / SUBMITTED / VALIDATING / ACCEPTED / REPAIR_REQUIRED / WAITING_REVIEW / REJECTED` 等），不等于业务版本。
-- `WorkItemState`（新增）：例如 `PLANNED / READY / IN_FLIGHT / SUBMITTED / VALIDATING / ACCEPTED / REPAIR_REQUIRED / BLOCKED / SUPERSEDED`；多个工作项可同时处于不同状态。
-- `ActionState`：外部实际派发 `REQUESTED / AUTHORIZED / DISPATCHED / CONFIRMED / FAILED / EFFECT_UNKNOWN`；R/W 物理执行状态仍由长程主控负责并提供可信回执。
+- `DomainState`：已接收材料、冻结预期、分析结论、当前受保护业务版本；只有正式提交更新。
+- `RunState`：任务/阶段 `NEW/READY/RUNNING/SUBMITTED/VALIDATING/ACCEPTED/REPAIR_REQUIRED/WAITING_REVIEW/REJECTED` 等执行过程状态；不得将流程状态冒充领域结论。
+- `WorkItemState`：`PLANNED/READY/IN_FLIGHT/SUBMITTED/VALIDATING/ACCEPTED/REPAIR_REQUIRED/BLOCKED/SUPERSEDED` 等；实质上另记局部 `readiness`，不是必须等最终阶段 ACCEPTED 才允许所有下游加工。
+- `ActionState`：`REQUESTED/AUTHORIZED/DISPATCHED/CONFIRMED/FAILED/EFFECT_UNKNOWN`；长程实际消息执行仍来自已核实回执。
 
-现有 Skill 的交付标签、合理性分析的预期状态、证据状态、诊断可调性状态均作为**领域内容字段**，不混成一种通用 RunState。
+每次阶段或任务完成检查还需要本轮的 `QuestionCompletionRecord`：`question_id, required_deliverable, authorized_depth, result_type (SUPPORT/COUNTER/LOCALIZED/UNRESOLVED/NOT_APPLICABLE等领域事实), evidence_refs, missing_required_checks, still_required_work, optional_future_questions, completion_eligible`。`completion_eligible` 不能由结果正负决定，只根据原任务完成合同和必要验证决定。
 
-### 5.2 共用数据/协议对象
+**任务终止不得依赖所有子任务都成功或每次发现的新问题都解决。** 若分析结果可信但找到了明确反证或不可调结论，该业务问题可被合格交付；未决能否收束取决于本轮预先允许的有界未决规则。不允许以「研究还有价值」自动扩充本轮必做范围。
 
-`TaskContract`、`WorkPlanProposal`、`ResultProposal`、`ArtifactRef`/`EvidenceRef`、`ExecutionReceipt`、`ValidationReport`、`ReviewRecord`、`DecisionRecord`、`CommitReceipt`、`ActionRequest`/`ActionReceipt`、`Blocker`、`AuditEvent`、`SourceDependency`。这些主要由规范 C 定义通用骨架，业务字段与具体业务产物来自 S 或新增 N。
+### 5.2 共用与领域对象及其消费者（C + N）
 
-业务专有对象：`MaterialPlan`、`MaterialItemResult`、`AcceptedObservationMaterialPackage`、`FrozenExpectationSet`、`EvidenceComparisonPackage`、`DiagnosisReport`、`CalibrationResult`、`AdditionalEvidenceRequest`。后四个专业包的内容合同**引用既有 Skill**，不要在控制面重复重新定义一套业务含义。
+保留 V0.1 的通用：`TaskContract/WorkPlanProposal/ResultProposal/ArtifactRef/EvidenceRef/ExecutionReceipt/ValidationReport/ReviewRecord/DecisionRecord/CommitReceipt/ActionRequest/ActionReceipt/Blocker/AuditEvent/SourceDependency`；另增显式：`ProfessionalCallSpec`、`ProfessionalDecisionEffect`、`QuestionCompletionRecord`、`EvidenceRequestOutcome`、`ComparisonWorkRef`，并将 `MaterialRequirement`、`WorkItem`、`ExecutionAction` 分开。
 
-### 5.3 控制程序接口及语义
+业务原产物仍由现有 Skill 定义：`MaterialPlan/MaterialItemResult/AcceptedObservationMaterialPackage/FrozenExpectationSet/EvidenceComparisonPackage/DiagnosisReport/CalibrationResult/AdditionalEvidenceRequest`。新增统一 Envelope 只封装 `task/round/question/source/version/digest/role/receipt` 等控制信息，不再次定义专业内容。
 
-| 接口 | 输入 | 权威结果/副作用 |
+**文件／配置存在的必要条件：必须有真实运行消费者。** 新增或保留任何受保护配置、合同或管理材料，应注明 `consumed_by_operation`、`enforced_at`、`change_of_behavior`、`verification_case`。仅有一条「检查合理性」但无真实检查器/复核任务的 Gate 文本，不计作可运行能力。
+
+### 5.3 控制程序接口与统一驱动入口（C + N）
+
+对长程主控**只暴露一个固定驱动入口**：`advance(task_ref, event_ref, idempotency_key)`（CLI 可为 `oi-control advance`）。触发条件是新业务 GO、真实 Pro Return 已核验、Worker Return 已核验、派发/回交回执、取消/超时或恢复等**固定运输事件**；主控不判断应调用哪个内部程序。控制程序在一次调用内部处理事件去重、关联工作、必要验证、Gate 资格、正式提交、依赖和调度，输出**一个或若干已经准备好的、有权的外部动作**，或具名 `WAIT/RECONCILE/REQUEST_OWNER/COMPLETE`。无新事件及无可推进工作时必须幂等返回等待，不能凭空生成新工作。
+
+内部接口仍保留、但**不要求主控调用其每一个**：
+
+| 内部接口 | 输入与前提 | 输出/真实职责 |
 |---|---|---|
-| `create_or_resume_task` | Owner任务原文及受认证授权、父子任务身份、版本/范围 | 新建（先去重）或恢复同一任务；初始化不代表任意外部动作获准 |
-| `read_business_state` | task/parent id、认证调用身份 | 权威状态、已接受计划/材料、候选、阻塞、预算、下一合法工作概览 |
-| `submit_work_plan` | 管理/执行 Pro 的计划提案、依赖/激活条件、范围变化 | 保存不可变候选，审核后才可变为已接受计划 |
-| `submit_stage_result` | 关联 task/stage/work item 的候选结果及证据 | 保存候选与 attempt，不自动推进或接受 |
-| `record_verified_execution_result` | 现有长程主控已核验的 R/W 回交、执行证据和动作身份 | 关联 WorkItem 与真实派发/回交，不把 Worker 口述当工具事实 |
-| `validate_stage_result` | 候选摘要、受保护验收配置/验证器版本 | 独立 `ValidationReport`，逐项 PASS/FAIL/UNKNOWN/NOT_RUN |
-| `record_gate_decision` | 有权 Gate 身份、证据、ReviewRecord、候选摘要 | 保存有权决定；不只依赖模型自报 role |
-| `commit_stage_transition` | 决定、当前 domain version、完整 read_set、幂等键 | 原子登记业务版本/决定/审计/CommitReceipt，触发已批准后继 |
-| `get_next_business_action` | 读取权威状态、依赖、授权、预算、现有在途动作 | **只规划**合法下一动作；不直接发送消息或执行工具 |
-| `claim_and_dispatch_action`（新增必需） | 合法下一动作、当前版本、资源锁/lease | 原子占用+登记 outbox/派发请求，防止双主控重复发送；由现有长程主控实际发送 |
-| `submit_additional_evidence_request`（新增） | R2/R3 提出的缺项/场景/影响/目标轮次 | 查询可复用材料，建补证提案/工作或待授权请求 |
-| `register_material_handoff`（新增） | G-MATERIAL 已接受的材料包+用途 | 绑定接收范围与下游分析，不隐含目的适用性已通过 |
-| `freeze_expectation`（新增） | 预期提案、来源、范围、冻结准入复核 | 受保护写入冻结版本和摘要；不由 Skill 自改 status 实现 |
-| `request_action / reconcile_action / cancel_run` | 动作/授权、外部回执、待取消运行 | 检查实物和未知效果，安全取消/对账；复用长程真实运输状态 |
+| `create_or_resume_task` | 经核实 GO、task/purpose/授权/Skill 版本 | 建/恢复正式任务；未知事实可保留待调查 |
+| `read_business_state` | task/id 和有权调用方 | 读取权威状态及范围内计划/轮次/材料/在途动作 |
+| `submit_work_plan` | 专业计划或 `ProfessionalDecisionEffect` 提案 | 校验后进入计划待接受；不由程序猜新业务意义 |
+| `submit_stage_result` | 绑定 question/round/work/call/attempt 的结果 | 仅保存候选；同摘要已失败的验证不能被无限重跑 |
+| `record_verified_execution_result` | 与真实 R/W、Action 关联的回交和工具证据 | 登记实际事实；消息运输成功不等于数据合格 |
+| `validate_stage_result` | 候选摘要、权威配置和验证器版本 | 按需生成 PASS/FAIL/UNKNOWN/NOT_RUN 的独立验证报告 |
+| `record_gate_decision` | 有权复核者、绑定候选/版本/范围 | 登记有权专业决定；不相信自填角色 |
+| `commit_stage_transition` | Gate、read_set、版本、幂等键 | 原子接收状态、Decision/Receipt/Audit；冲突拒绝而非覆盖 |
+| `get_next_business_action` | 已接受计划、work/readiness、授权、阻塞和在途记录 | 确定性筛选可行动作；纯查询不得直接发消息 |
+| `claim_and_dispatch_action` | 候选合法动作、预计版本和资源占用 | 原子登记 outbox/唯一动作 ID；由长程主控实际发送 |
+| `submit_additional_evidence_request` | 原问题/轮次/预期/数据范围与请求 | 去重、复用、局部续作或受控跨 Workflow 子工作 |
+| `register_material_handoff` | 已接收材料及用途资格 | 绑定分析消费者和限制，不替代目的适用性判断 |
+| `freeze_expectation` | 候选预期、授权和冻结复核 | 产生不可变版本、摘要和冻结回执 |
+| `request_action/reconcile_action/cancel_run` | 实际动作、回执或撤销授权 | 未知效果先对账；取消不抹掉在途后果 |
 
-前面讨论的 `get_next_business_action` 仍是**核心调度决策**，但为了可靠性，要把“查询下一动作”和“原子占用并发派”明确分开。否则两个主控可能同时读取同一 `READY` 项并重复派发。
+**N-新增：`ProfessionalDecisionEffect` 机器合同。** `decision_kind` 必须属于 §3.1 已列的类型；对于 `PROPOSE_WORK_DELTA`，具名 `work_delta.create/update/supersede` 要含 `work_id, purpose, professional_owner, input_refs, expected_outputs, dependencies + required_readiness, condition, authorized_scope, cost_class, completion_predicate`；分支后继由已接受条件驱动。只有经有权同意并落入正式计划的动作才进入 Scheduler。自由文本仅作理由，不能替代 `work_delta`。
 
-### 5.4 下一动作决策优先级（新增 N，需回归测试）
+**对长程主控输出最小合同**：`business_action_id, task_id, question_id/round_id(如适用), target_role, assignment_ref(完整原件), expected_return, allowed_scope, idempotency_key`；其物理发送/工单协议仍按旧长程规则执行，本轮不改旧代码。结果回交后通知 `advance` 即可。
 
-```text
-1 读取权威状态，若任务 CANCELLED / QUARANTINED / 完成，不再派发
-2 若有 EFFECT_UNKNOWN 的动作：先 reconcile，暂停会重放同一效果的路径
-3 若有已提交未验证的候选：执行受保护验证
-4 若硬检查 PASS 但需语义复核：形成具名 Gate 任务
-5 若有合法有权 Gate 决定尚未提交：执行原子提交
-6 若有等待的已获批准 WorkItem，依赖齐全且预算/权限满足：派发
-7 若需要专业新增计划/明确后继：定向 CALL 管理/执行 Pro 提议
-8 若需要补证：关联请求并启动或恢复指定材料子任务
-9 若合法阶段完成：自动进入下一阶段/下一 Workflow
-10 否则具名 WAIT_INPUT / WAIT_OWNER / BLOCKED，附责任者、解除条件、恢复点
+### 5.4 调度不能只用任务级 `if/elif` 优先级（N 修订）
+
+V0.1 的十条顺序**仅保留作为说明性检查清单，不作为全局调度算法**。本版建议两步：
+
+**第 1 步：逐个 `question_id / work_item / action` 判断资格。** 每个候选动作明确：`trigger_fact, consumed_pending_item, produced_fact, dependency_readiness, scope, blocking_refs, budget/authority, prior_attempt, retry_on_new_fact, idempotency_key`。只被阻断的依赖路径不得封锁其他独立问题；同一候选摘要验证 FAIL 后没有新摘要/新事实，不可再安排相同验证。`EFFECT_UNKNOWN` 仅阻断可能重复同一外部效果的动作路径，其他独立工作可以继续。
+
+**第 2 步：在合格动作集合中确定性排序**（优先保证正式状态必要维护与已接收 Gate 提交，再按已经批准的计划依赖、明确业务优先级和资源预算选择工作；同级稳定排序如 `work_id`）。不得为实现“优先级”临时发明业务价值排序。可授权多个独立动作但需检查资源独占和在途占用；首版即使单线程也不得造成跨问题饥饿。
+
+```
+for each pending_business_question:
+  enumerate action candidates from accepted WorkPlan and valid events
+  check exact identity, dependency readiness, event freshness and blocking scope
+  reject unauthorized/over_budget/duplicate/unchanged_failed_proposals
+eligible = union of all scoped legal actions
+if eligible: choose deterministically; claim action(s) in authoritative storage
+else: return named WAIT / REVIEW / OWNER / COMPLETE with unblock condition
 ```
 
-绝不让“建议继续研究”在没有新事实、新工作项或阶段推进时构成无限循环。
+`CALL_PRO` 只有当计划缺失新专业判断、相关输入已有新事实且存在具体期望回交时才合法；管理 Pro 已提出的补查若尚未执行，应先激活已批准补查而非再问 Pro。一项专业意见只有产生了 `work_delta / gate_decision / blocker / owner_request / completion` 等**可消费状态变化**才算驱动进度，不以写了新报告判定进展。
 
-### 5.5 Gate / 正式提交与权限
+调度每一轮必须有进展测度：新证据、排除一个竞争解释、工作项验证完成、合法 Gate 转移、消耗一个阻断或发现明确不可得，均可能是实质进展；语义同义复述不是。正常无新事实时返回稳定的 WAIT，不能原地循环调用模型。
 
-- 每个 Gate 配 `entry_condition / required_hard_checks / semantic_review_policy / authority / accepted_scope / failure_route / cost_boundary`；可执行验收配置受保护，不能由候选产物覆盖。
-- 必需硬检查为 `FAIL / UNKNOWN / NOT_RUN` 时不能正式通过；语义复核的权限和证据要求必须明确；不使用模型 confidence 自动扩权。
-- **接受权与创建权分离**；管理 Pro 拥有多少 Gate 接受权限由 Owner 本轮授权决定。
-- `SCOPED_ACCEPT` 是讨论中提出的**扩展业务表达**：可实现为正式 `ACCEPT` 加上不可变的 `accepted_scope/limitations`，但需确定它是否允许结束当前任务；不得擅自扩大通用规范的机器枚举。
-- 状态、决定、审计、回执必须同一事务性边界原子提交；同幂等键同载荷返回同一结果，同键异载荷报冲突。
-- 新候选引用必须固定版本；GitHub path 或 branch 名单独不构成不可变证据。来源和语义验证不能由哈希单独证明。
+### 5.5 Gate、正式提交与权限（C + N）
 
-### 5.6 恢复与审计
+每个 Gate 的受保护合同必须有 `gate_subject (WORK_QUALITY/BUSINESS_FINDING/NEXT_ACTION_ELIGIBILITY), entry_conditions, hard_checks, semantic_review_policy, authority, accepted_scope, failure_route, cost_boundary`。硬检查的 `UNKNOWN/NOT_RUN` 不得等价 PASS；业务结论 `COUNTERS/PROVEN_NOT_ADJUSTABLE/AMBIGUOUS` 与验证结果分别存储。
 
-保留：`stage/work_item/attempt`, `what_blocked`, `who_resolves`, `what_is_missing`, `when_to_retry_or_expire`, `resume_from`, `remaining_budget`, `read_set`；崩溃后从正式状态、租约、CommitReceipt 与在途动作恢复，不从模型记忆重建。
+创建者与正式接受者在权限上分离；管理 Pro 的 Gate 权限来自真实 Owner 委托，不由同一聊天自称两种角色取得；需要独立复核时使用受控的另一调用。`SCOPED_ACCEPT` 可以建议表达为规范基础决定 `ACCEPT` 加不可变 `accepted_scope/limitations`，**是否允许整项任务结束仍须单独判断**。
 
-`TIMEOUT/EFFECT_UNKNOWN` 先查物理端和外部对象，绝不盲目重发昂贵或有副作用的工作；重复无进展触发 `NO_PROGRESS`；数据/参数/代码变化只使依赖结果待重验；安全或越权进入拒绝/隔离。展示页是正式状态的读模型，非权威状态源。
+状态、正式决定、审计、可查询 CommitReceipt 必须同一受保护原子提交范围；验证后修改产物、计划、数据版本必须重新检查受影响的依赖。同幂等键相同规范载荷返回同一结果，不同载荷冲突；不把 GitHub 普通候选 Markdown 当授权或接收。
 
-## 6. 与既有长程主控的接口边界（新增适配，不复制旧协议）
+### 5.6 恢复、失败和审计（C + N）
 
-**控制面向长程主控发出**：`business_action_id, business_task_id, stage_id, work_item_id, target_role, skill_ref, purpose, assignment_ref, expected_return, allowed_scope, deadline/budget, idempotency_key`；业务控制端不自行发送物理聊天。
+保留每个 `question/stage/work/attempt/action` 的版本、前置依赖、阻断范围、责任方、解除条件、重试条件、剩余预算和 `read_set`。崩溃/超时/迟到回交按动作 ID 对账；`EFFECT_UNKNOWN` 先查真实结果，不盲目重算；已证实的材料、失败调查和 `PROVEN_UNAVAILABLE` 不因下次继续而无痕覆盖。
 
-**长程主控核实后回交**：`business_action_id, production_run_id, actual_invocation_id, optional_work_order_id, sent/received receipt refs, exact GitHub commit+path refs, action outcome/effect-known status`。
+`NO_PROGRESS` 依据新可验证事实和具体问题的未决集合变化，而不是报告篇数或 token 数。同一补证请求在无新事实时不得再次派发；必要条件不再满足或旧轮已被替代时关闭等待并隔离迟到回交。审计至少能回答「为什么触发该调用、为何阻断/放行、谁批准、哪些文件版本被采纳、后续回到了哪个问题/分析轮次」。
 
-有三个必须保持的旧约束：
+## 6. 与既有长程主控的接口边界（只固定业务协议，本次不改外部长程代码）
 
-1. 由**Pro 签发** Worker Order，业务控制程序不能自己伪造 W；Codex 主控只负责合法派发/监控/回交。
-2. R/W 是长程运输与工单编号，不等于业务阶段/工作项；一项业务工作可以多轮 R/W，一个 R 可包含多个工作结果。
-3. 旧长程中的 `PRO_CURRENT`、发件和 Return 等不等于业务状态数据库。业务状态只能由 B 的正式提交更新；长程 Gate 也不能证明业务正确。
+本轮只定义 `advance(task_ref,event_ref,idempotency_key)` 与外部事件/动作合同，**不实现 `cgpterm` 或 `feature-production-agent` 的调用改造，也不重建 R/W 工单运输**。当 Owner GO、已核验 Pro Return、已核验 Worker Return、动作回执、恢复/超时/取消等固定事件出现时，由未来长程主控按统一规则通知 `advance`，无需判断调用 Scheduler 还是 Gate/Commit；控制面内部决定并输出明确 `SEND_PRO_ASSIGNMENT / ALLOW_WORKER_DISPATCH / REQUEST_OWNER / WAIT / RECONCILE / COMPLETE`。
 
-首先开展接口盘点，确认当前 cgpterm 实际采用版本与 `LONGRUN_PROTOCOL_V1` 的调用契约；尚未接通之前只能做模拟适配测试，不宣称跨端自动运行。
+业务动作引用完整任务原件 `assignment_ref`，不得只返回「下步做 BP-09」让主控重新编业务 Prompt。只有 Pro 按原长程授权签 Worker Order；主控核实实物和收件端后发送；Worker Return 先回原 Pro 作专业消费，运输完成不等于业务 Gate 通过。
+
+**本次实现范围的限制**：控制面代码可用模拟已验证回交和已存在 GitHub 实物做完整业务调度测试，但**跨端真实自动派发**是否已接通依赖后续独立工作；不得据控制面测试 PASS 夸称外部长程集成完成。
 
 ## 7. 推荐文件组织（提议：新增目录；不搬动旧版 Observe Iterate 目录）
 
-### 7.1 讨论/审批资料——存在 `observe-iterate` 已纳入的 `discuss-materials/` 下
+### 7.1 讨论/审批与管理资料：继续留在已纳入的 `discuss-materials/`
 
 ```text
 observe-iterate/
 └─ discuss-materials/
-   └─ 观察迭代业务控制面_候选V0.1_20261113/                 [新增]
-      ├─ README.md                                       [定位/权威关系/阅读顺序/成熟度]
-      ├─ 01_SOURCE_RULE_MATRIX.md                         [逐条：S/C/N、出处、原义、归属、实施状态/冲突]
-      ├─ 02_ARCHITECTURE_AND_LONGRUN_BOUNDARY.md           [管理 Pro / 主控 / Worker / GitHub / B 的边界]
-      ├─ 03_A_SHARED_MANAGEMENT_PRO_CONTRACT.md            [共用管理职责、授权、四类回交]
-      ├─ 04_A1_MATERIAL_MANAGEMENT.md                      [S0-S5、G-PLAN/G-RUN/G-MATERIAL、工作项]
-      ├─ 05_A2_REASONABLENESS_MANAGEMENT.md                [R0-R5、四 Skill、冻结/诊断/标定/复验]
-      ├─ 06_C_CROSS_WORKFLOW_HANDOFF.md                    [探索/正式使用、材料包/补证/恢复]
-      ├─ 07_B_CONTROL_CORE_DESIGN.md                       [状态/接口/权限/调度/提交/审计/恢复]
-      ├─ 08_IMPLEMENTATION_WORK_PACKAGES.md                [W0-W7、依赖、验收、证据]
-      ├─ 09_TEST_AND_NEGATIVE_CASES.md                     [正常/反例/真实故障/影子与真实区分]
-      └─ 10_OPEN_DECISIONS_AND_CHANGELOG.md                [待裁事项、正式决定、任何偏离先提案]
+   ├─ observe_iterate_control_plane_implementation_plan_v0.1_20261113.md   # 历史原版，不覆盖
+   ├─ observe_iterate_control_plane_implementation_plan_v0.2_20261113.md   # 本修订计划
+   └─ 观察迭代业务控制面_候选V0.2_20261113/                   # 计划经确认后一次性落地
+      ├─ README.md
+      ├─ 01_SOURCE_RULE_MATRIX.md
+      ├─ 02_ARCHITECTURE_AND_LONGRUN_BOUNDARY.md
+      ├─ 03_A_SHARED_MANAGEMENT_PRO_CONTRACT.md
+      ├─ 04_A1_MATERIAL_MANAGEMENT.md
+      ├─ 05_A2_REASONABLENESS_MANAGEMENT.md
+      ├─ 06_C_CROSS_WORKFLOW_HANDOFF.md
+      ├─ 07_B_CONTROL_CORE_DESIGN.md
+      ├─ 08_IMPLEMENTATION_AND_ONE_SHOT_ACCEPTANCE.md
+      ├─ 09_TEST_AND_NEGATIVE_CASES.md
+      ├─ 10_OPEN_DECISIONS_AND_CHANGELOG.md
+      └─ 11_OPERATIONAL_PATHS.md                # 新增：八种具体运行路径及唯一合法后继
 ```
 
-**文档职责**：解释为什么以及如何实施，维护来自现有文档的出处；不能再维护另一套会与运行 YAML 冲突的“正式状态真相”。`01_SOURCE_RULE_MATRIX.md` 是差异审计和变更保护的关键。现有两包 Skill 不搬走、不覆盖；只以 commit+path 引用它们。
+每份文件维护其说明/审议职责；**唯一生效 Workflow 和权限定义位于受保护配置/执行入口**，说明文档只引用，不再另立一套状态真相。每新增一个文件或配置需在 `SOURCE_RULE_MATRIX` 登记 `谁读/何时读/改变什么/测试哪条`；没有运行消费者的文件不应强制成为每轮必交材料。当前两 Skill 包不移动或重写。
 
-### 7.2 可执行候选实现——新建独立 `control-plane/`（不是复用旧 `runtime/`）
+### 7.2 可执行候选实现：共用 `control-plane/`（本轮只设计，确认后一次性落地）
 
 ```text
 observe-iterate/
-└─ control-plane/                                          [新增、待实现]
-   ├─ README.md                                           [如何运行/权限前提/哪些仍为候选]
-   ├─ config/
-   │  └─ source_bindings.lock.yaml                         [首次经批准锁定两包Skill及规范引用]
-   ├─ workflows/                                          [生效的状态与合法路由唯一位置]
-   │  ├─ material_preparation.yaml                         [S0-S5 + G-PLAN/G-RUN/G-MATERIAL]
-   │  ├─ reasonableness_analysis.yaml                      [R0-R5 + 快速路径/循环/标定分支]
-   │  └─ cross_workflow.yaml                               [材料接收/补证/恢复/完成]
-   ├─ policy/                                             [仅保护版本可运行]
-   │  ├─ role_authority.yaml                               [Owner/管理Pro/执行Pro/Worker/主控/Gate复核]
-   │  ├─ capability_budget.yaml                            [动作权限/成本/超限/暂停条件]
-   │  └─ acceptance/
-   │     ├─ material_plan.yaml                             [G-PLAN]
-   │     ├─ material_run.yaml                              [G-RUN]
-   │     ├─ material_acceptance.yaml                       [G-MATERIAL]
-   │     ├─ handoff.yaml                                   [接收与用途资格]
-   │     ├─ expectation_freeze.yaml                        [冻结前检查]
-   │     ├─ evidence_comparison.yaml                       [正式证据对照]
-   │     ├─ diagnosis.yaml                                 [诊断与后继]
-   │     ├─ calibration.yaml                               [标定及实验许可/复验]
-   │     └─ analysis_delivery.yaml                         [R5]
+└─ control-plane/
+   ├─ README.md                             # 实际启动/advance/影子与正式模式
+   ├─ config/source_bindings.lock.yaml      # 精确绑定两 Skill 包和审定控制规则
+   ├─ workflows/
+   │  ├─ material_preparation.yaml          # S0-S5管理视图和调用模式/合法路由
+   │  ├─ reasonableness_analysis.yaml       # R0-R5, 探索/正式/定向重查/实例复验
+   │  └─ cross_workflow.yaml                # 补证成功/部分/不可得/不适用/撤销
+   ├─ policy/
+   │  ├─ role_authority.yaml                # 有权决定谁能复核/放行/正式接收
+   │  ├─ capability_budget.yaml             # 各种能力及成本边界
+   │  └─ acceptance/                     # Gate 资格/必需检查；不强制每项独立 Pro 轮次
+   │     ├─ material_plan.yaml
+   │     ├─ material_run.yaml
+   │     ├─ material_acceptance.yaml
+   │     ├─ handoff.yaml
+   │     ├─ expectation_freeze.yaml
+   │     ├─ evidence_comparison.yaml
+   │     ├─ diagnosis.yaml
+   │     ├─ calibration.yaml
+   │     └─ analysis_delivery.yaml
    ├─ contracts/
-   │  ├─ shared/                                           [通用受保护对象，仅一份定义]
-   │  │  ├─ task_contract.schema.json
-   │  │  ├─ work_item.schema.json
-   │  │  ├─ result_proposal.schema.json
-   │  │  ├─ artifact_evidence_ref.schema.json
-   │  │  ├─ execution_action_receipt.schema.json
-   │  │  ├─ validation_review_decision.schema.json
-   │  │  └─ commit_receipt.schema.json
-   │  ├─ material/
-   │  │  ├─ material_plan.schema.json                       [源自现有任务单A-C]
-   │  │  ├─ material_item_result.schema.json               [源自任务单D和CAEGraph清单]
-   │  │  └─ accepted_material_package.schema.json          [跨Workflow正式交付N]
-   │  └─ analysis/
-   │     ├─ expectation_freeze_request.schema.json        [引用原Skill的ExpectationRegister]
-   │     ├─ analysis_result_envelope.schema.json           [引用原Skill的对照/诊断/标定包]
-   │     └─ additional_evidence_request.schema.json       [跨Workflow请求N]
+   │  ├─ shared/                           # task, question, call, work, action, proposal, review, receipt
+   │  ├─ material/                         # material_requirement, plan, item, accepted_package
+   │  └─ analysis/                         # expectation_freeze_request, result_envelope,
+   │                                      # additional_evidence_request, evidence_request_outcome
    ├─ src/oi_control/
-   │  ├─ api.py                                            [create/resume/read/submit/commit等接口]
-   │  ├─ state_store.py                                    [权威状态、版本、事务、幂等]
-   │  ├─ scheduler.py                                      [get_next_business_action]
-   │  ├─ action_dispatch.py                                [动作占用/租约/outbox，交长程主控]
-   │  ├─ gate_engine.py                                    [hard check + 语义复核请求]
-   │  ├─ authorization.py                                 [角色/真实主体/资源操作校验]
-   │  ├─ validation.py                                    [受保护执行、产物/回执核对]
-   │  ├─ commit.py                                        [Decision/CommitReceipt 原子提交]
-   │  ├─ dependencies.py                                  [版本read_set/失效传播]
-   │  ├─ recovery.py                                      [失败/NO_PROGRESS/UNKNOWN对账]
-   │  └─ audit.py                                         [可查询审计与状态读模型]
-   ├─ adapters/
-   │  └─ cgpterm_longrun.py                                [只翻译业务动作/已核实的R/W回交]
-   └─ tests/
-      ├─ fixtures/                                        [模拟用例；不得冒充真实行情验收]
-      ├─ unit/                                            [状态/权限/版本/调度等]
-      ├─ integration/                                     [控制核与长程适配模拟]
-      ├─ fault_injection/                                 [超时/重复/崩溃/迟到/越权]
-      └─ real_case/                                       [真实取数、正式接收的证据索引，不存敏感原始数据]
+   │  ├─ cli.py                            # oi-control advance/status/init; 不强迫主控逐个选内部函数
+   │  ├─ advance.py                        # 固定事件进入→验证/Gate/提交→返回可执行动作
+   │  ├─ github_store.py                   # GitHub 精确读取、条件写入与版本冲突
+   │  ├─ scheduler.py                      # 逐作用域资格判定→合格动作确定性排序
+   │  ├─ plans.py                          # 管理 Pro 的结构化 work_delta 核验与应用
+   │  ├─ gates.py                          # Gate 内部验证和受控语义复核入口
+   │  ├─ authorization.py                  # 实际认证身份/操作权限/成本
+   │  ├─ commit.py                         # Decision/状态/Audit/Receipt 原子入库
+   │  ├─ dependencies.py                   # readiness/版本read_set/最小失效传播
+   │  └─ recovery.py                       # 去重、失败不重做、未知效果、原轮次接续
+   ├─ tests/
+   │  ├─ fixtures/                         # 仅合成/模拟（禁止标为真实行情）
+   │  ├─ unit/                             # 合同、就绪、算法、Gate、权限
+   │  ├─ integration/                      # advance 与模拟已核验 R/W 回交
+   │  ├─ fault_injection/                  # 重复、未知、冲突、迟到、补证不可得
+   │  └─ real_case/                        # 真实用例的 GitHub 证据索引
+   └─ pyproject.toml                       # 可运行工具及测试配置
 ```
 
-注：这棵树是**目标结构，不要求第一工作包立即建完所有文件**。实现中可合并 Python 模块，但不得合并候选、验证、接受与回执的权力和概念。`analysis_result_envelope` 只为接收和版本管理提供统一封面，四个原 Skill 的业务输出合同保持原位。
+可按实际代码复杂度合并较小 Python 模块，但**`advance`、权威状态写入、验证/审核、真正可核对的回执不能只有空壳函数**。不为每个材料项建独立绘图任务；不重写原 Skill 的数据操作代码；本轮不创建 `adapters/cgpterm_longrun.py`，只保留未来对接合同。
 
-### 7.3 运行期数据不放在哪里
+### 7.3 运行期状态与材料全部存放 GitHub（按用户明确方向修订）
 
-**不要**把可变数据库、密钥、任务当前状态直接当作 GitHub 讨论文档。运行期推荐独立的受控存储（首轮可用真正隔离写权的轻量事务服务/SQLite 后端）。`GitHub` 只存固定提交可查的候选材料、决定引用和允许公开的审计/结果摘要；源数据和敏感日志按已有授权存放在合适的数据盘或受控制品库。控制程序能根据其正式存储生成只读进度报告。
+**取消 V0.1 中独立 SQLite/事务数据库为默认运行状态源的建议。** GitHub 是本轮所有正式运行材料、状态、原件和证据的唯一持久化来源；本地计算缓存和临时文件不是第二权威状态。可复用其他 GitHub 仓库既有文件，以 `repo@commit:path + digest` 精确引用；大型历史数据要在真正使用前核实普通 Git、LFS 与权限能否承载，不能无依据假定所有行情文件都适合 Git 对象。
 
-### 7.4 外部长程代码放在哪里
+建议控制状态使用独立的、受保护的 GitHub 分支（具体名称与写入身份仍待确认），按 `control-plane-data/tasks/<task_id>/` 保存 `task/current_state, plans, work_items, proposals, validations, reviews, decisions, receipts, actions, dependencies, audit`。`current_state` 是由正式提交导出的查询视图，不能靠最后修改时间裁定最新。候选材料可位于普通提交；正式状态和受保护验收配置须由独立、经授权的入口写入，模型/Worker 不得凭自述改正式结论。
 
-**先不更改** `cgpterm` 和 `feature-production-agent` 旧协议或主控 Skill。先在新的 `adapters/cgpterm_longrun.py` 做接口适配和模拟；真实接入之前，由拥有对应仓库权限的维护者确认准确入口和必要改动，再按独立变更计划实施。不建立第二套物理消息发送、R/W ID 或 Worker Order 机制。
+事务边界建议采用 Git commit 固定成组状态变更、分支引用带预期 head 的条件更新（CAS）、业务版本与幂等键核验；冲突后重新读取并核对，不能 `force` 覆盖。`CommitReceipt` 写业务提交 ID、版本与关联摘要，提交成功后向调用方返回 Git commit SHA，避免回执自引用 Git SHA 问题。仅在身份/分支写入权限真实隔离的情况下才称正式自动控制；否则标记草稿/影子模式。凭据绝不入仓。
 
-## 8. 分期实施工作包与验收
+### 7.4 外部长程代码：本轮不处理
 
-| 阶段 | 实施工作包 | 主要交付及来源 | 验收完成定义 |
+不修改 `cgpterm`、`feature-production-agent` 旧主控协议/Skill/Worker 模式；不建立第二套物理消息发送和 R/W 运输。本轮只交 `advance` 外部事件及动作合同，利用模拟真实身份结构的 fixture 验证控制程序；旧长程代码实际接入另行处理。不将「模拟 R/W 接口通过」写成真实跨端已接通。
+
+## 8. 一次性落地、随后立即试跑（原 W0～W7 为内部实施依赖，不再分批确认）
+
+根据用户已明确的实施意图：**设计与新增控制规则先确认一次，再一并创建本轮文档、Workflow、Schema、Python 控制程序、测试和运行说明，之后直接启动真实业务试跑。** 不要求 W0、W1 等每个工作包结束后重复向 Owner 申请「继续」。工程实施内部仍应遵循先后依赖，以防带着未决规则写死代码：
+
+1. **同一次实施的源规则核对**：锁定当前两个 Skill 目录及 CP 规范的可查版本；完成逐条 S/C/N 来源、冲突、受权状态与消费者矩阵，保留原 Skill 的专业内容。
+2. **同一次实施的 A/C 管理材料**：共用管理 Pro、A1/A2 调用边界、不同结论与 Gate、跨任务补证全结果、按问题收束；参照 §3～4 和新增 `11_OPERATIONAL_PATHS.md`，不要求每轮重复输出四份文件。
+3. **同一次实施的 B 核心实现**：GitHub 权威状态、统一 `advance`、结构化专业决定、按作用域调度、依赖就绪、受保护验证/Gate/提交、幂等和恢复，全部与测试联动，不能只写骨架。
+4. **同一次实施的控制面测试**：模拟已核验长程回交、非法动作、缓存/回执冲突、双派发、补证不可得、v1/v2 迟到、不可调结论等；明确 PASS/FAIL/NOT_RUN，保留真实测试证据。
+5. **落地后立即试跑**：在授权的真实高频或 EAW 用例，检查材料准备及到合理性分析的正式衔接；必要时试一次定向补证与恢复。若能力/权限不具备，记录准确阻塞和影子模式范围，不假称正式自动运行。
+
+**本次不做**旧长程代码接线。真正 Pro/Worker 物理派发仍取决于后续独立工程，当前一次性交付不能代替它。正式状态写入身份、Gate 权限和高成本试验授权等若仍未确定，必须在真实动作前保持阻断并明确告知，不允许实施者自行批准。
+
+**整体验收**：一套程序同时支持材料与分析两 Workflow；测试至少覆盖 `Skill调用边界/Material–Work–Action多对多/分层就绪/Gate结果与业务反证分离/补证全分支/round精确回归/标定复验单次复用/按依赖调度/问题级完成/advance`，并能追溯每条真实生效规则的消费者与证据。
+
+## 9. 一次性落地的验收测试清单（保留 V0.1 义务、补本轮八类运行路径）
+
+> 全部为拟实施测试，未运行；每个样例记录 `初始状态 → 合法后继 → 输入与证据 → Gate → 状态更新 → 后继`，分别标明模拟/真实、硬检查与专业结果。以下无「模拟运行＝业务实测通过」推断。
+
+1. **正常材料链**：一轮 GO 后 S0/S1 调查规划通过→S2 合法运行→S3 实际取数→S4 验收→S5 交付；固定事件触发 `advance`，无需 Owner 逐步喊继续。
+2. **调用边界**：派 S1 时允许小范围接口验证、不允许未经 G-RUN 的昂贵重算；已接受 S0 不被重复调查。
+3. **材料与执行非一一对应**：一次完整 CAEGraph 返回 BP-07、BP-09、K线与映射；不得派四次完整计算。
+4. **中间就绪无死锁**：源数据已 `CHECKED_FOR_PROCESSING` 但整包未接受；后续视图加工可继续，正式对照仍被限制。
+5. **部分独立推进**：BP-07 具备限定用途、BP-09 阻塞；BP-07 合法工作仍可推进，不能暗降整体必需范围。
+6. **假完成**：只有图定义/5行预览或仅 `construction_snapshot` 却声称完整/`viewport_final`，硬验收拒绝；T056/T059/正式看板不能混用。
+7. **专业决定可落地**：管理 Pro 给出「先核对时间，若无错位再诊断参数」的结构化 work_delta，程序创建准确的工作与两条条件后继；仅自然语言则要求补结构，不擅自推断。
+8. **Gate 与反证分离**：有充分证据的 `COUNTERS` 可通过分析工作 Gate；明确 `PROVEN_NOT_ADJUSTABLE` 是可接受的专业结论；不得强迫调到合理。
+9. **硬检查与业务未决分离**：mandatory `UNKNOWN/NOT_RUN` 不能 PASS；`AMBIGUOUS/MISSING/PENDING` 经实证和授权完成定义可作受限业务交付。
+10. **正式预期冻结**：`WORKING` 可探索；正式对照只用冻结版本，事后诱发的新预期进下一版。
+11. **局部查证**：分析 Skill 在既有权限内查一个字段/小样本不新建跨 Workflow 补证任务。
+12. **补证全结果**：`OBTAINED/PARTIAL/PROVEN_UNAVAILABLE/NOT_APPLICABLE/CANCELLED/SUPERSEDED` 均能解除或转移原等待，不出现无限 `WAITING_EVIDENCE`。
+13. **迟到轮次**：v1 预期的补证在 v2 开始后返回，先回原 question/round/expectation；新轮必须另行验证适用，不能直接接入。
+14. **标定复验只一次**：R4 内调用对照 Skill 的完整实例比较被 R2 能力复用为同一 work_id；不重复计算、不出现 R4 与 R2 互等。
+15. **上游对象变化**：参数改变导致对象分段变化，必须回原始业务窗口比较新旧实例，不用已消失事件ID冒充同一对象。
+16. **调度逐作用域**：一项阻断/效果未知不挡独立工作；同一候选失败且摘要不变不再重复验收；既定补查优先落地而非反复问 Pro。
+17. **整体完成边界**：本轮仅授权识别/定位 select 与 merged；新市场环境问题进入后继建议，不能自动扩大必做范围；反证可以是合格交付。
+18. **无进展**：重复换词报告不算进展；排除不同竞争解释或得到不可得事实算有效变化。
+19. **权限和自我接受**：Agent 自写 `ACCEPTED`/reviewer role 不改变正式状态；无高成本许可不得执行重算。
+20. **幂等与恢复**：相同 GO、相同 event/decision 提交与相同外部动作不能双提交/双派发；GitHub CAS 冲突按版本失败而非覆盖。
+21. **真实执行回执**：长程 R/W 已回交不等于业务 Gate 通过；模拟运输的测试必须标模拟。
+22. **取消、超时、未知效果**：先对账，不重放可能已有副作用的动作；允许受影响范围外已授权工作继续。
+23. **限定范围完成**：只有经明确批准的任务完成条件允许时整体才可有界结束；否则局部接受不代表 ParentBusinessTask 完成。
+24. **数据与存储安全**：GitHub 受保护状态写入无权者不可替代；过大的敏感原始数据或凭据不得无授权入普通 Git。
+
+## 10. 必须公开的缺口和待确认事项（N；未经 Owner 批准不使权限/业务选择生效）
+
+| ID | 需要确认 | 明确前可以怎样处理 |
+|---|---|---|
+| D01 | CP-SKILL-001 仍是评审稿，本次正式采用哪些条款？ | 以约束性设计和候选测试推进，不冒充已批准的业务授权 |
+| D02 | GitHub 权威状态用哪个分支/路径；哪个经认证独立身份具有唯一写入权、如何隔离 Pro/Worker 直写？ | 可以制作本地/影子模拟；不能宣称正式强制门禁 |
+| D03 | G-PLAN/G-MATERIAL/冻结/证据/诊断/标定/分析交付各由谁接受，管理与执行 Pro 同人时如何独立复核？ | 仅保留候选专业意见，无有权复核不正式提交 |
+| D04 | `AUTO/REVIEW/FORBIDDEN` 的授权门槛、预算单位及哪些小探查免 G-RUN？ | 默认拒绝尚未授权的高成本动作；允许已有明确授权的只读探查 |
+| D05 | 父任务 `required_questions/authorized_depth/acceptable_unresolved` 及材料/分析各自完成定义？ | 不擅自降低必需范围，也不把后继建议强塞本轮 |
+| D06 | GitHub 原始数据、LFS/大文件、敏感信息与有效访问范围怎样安排？ | 只提交获准的材料和固定引用，未批准数据不出本地安全现场 |
+| D07 | `SCOPED_ACCEPT` 的机器表达及是否允许特定受限问题完成？ | 建议规范基本 `ACCEPT + accepted_scope`，不能自行使父任务结束 |
+| D08 | 真实长程主控何时及如何调用 `advance`、返回物理回执？ | **本轮后置**，只做边界合同与模拟，另项处理代码 |
+| D09 | 第一条高频或 EAW 真实验证场景的版本、数据权限和运行条件？ | 在权限内做低成本确认；没有真实证据不能声称业务闭环实测 |
+| D10 | 预期冻结时已看探索证据与正式样本如何隔离、记录截止/时区？ | 先保留版本与已看证据，未经批准不能无痕覆盖 |
+| D11 | 标定可调参数、联合试验/完整重算的预算和候选实例接受权？ | 可以做公式层调查，未经授权不做超成本实验或正式参数修改 |
+| D12 | 各候选 Skill 以什么范围试用，跨例推广或正式采纳的门槛？ | 锁定实际版本，报告候选能力，不预先宣称生产级 |
+| D13 | 局部续作与跨 Workflow 补证的允许成本、能力、数据基线改变边界？ | 采用 §4.4 的专业判断原则；超出原授权时请求决定 |
+| D14 | 调度同级业务优先级/资源独占/可并行范围；如何避免独立 WorkItem 被局部阻断饿死？ | 仅在已经批准的优先级/资源范围按稳定 ID 排序，不发明业务权重 |
+| D15 | 各调用模式的停止边界与最小产物如何由当前 Pro/Worker 执行环境保证？ | 用 `ProfessionalCallSpec` 明确载荷，尚未接通物理端时靠模拟验收 |
+| D16 | 补证 `PROVEN_UNAVAILABLE` 的调查充分性/是否允许本轮未决收束？ | 接受调查事实不等于证据齐全；需相应 Gate 与完成合同 |
+| D17 | R4 内/外的比较工作唯一 ID、复用覆盖范围及实例变化下的原始窗口对齐策略？ | 先按 §3.3 单工作项设计，未验证等价不复用旧对照 |
+| D18 | 正式状态写入在 GitHub Git 对象上的 CAS/授权如何工程验收？ | Git 提交/版本策略不能凭文档声明通过，需真实负例测试 |
+| D19 | 统一 `advance` 如何让旧主控按固定事件触发，真实传递已验证调用身份？ | 本轮只定义事件/动作 Envelope，不自行接外部代码 |
+
+每项须在 `10_OPEN_DECISIONS_AND_CHANGELOG.md` 标注 `proposed/approved/rejected/deferred`、授权主体、版本和影响。**本 V0.2 提出具体建议不等于自动替 Owner 作出 D 项批准。**
+
+## 11. 非目标、可运行边界和停止规则
+
+- 不搬动/改写现有两包专业 Skill，不利用 Observe Iterate 的其它旧目录作当前架构，不重新实现 CAEGraph/uplot/FeatDFProcessor 专业取数方法。
+- 不改 `cgpterm` 或 `feature-production-agent` 旧长程代码；不建设第二套跨端消息、R/W 编号或 Worker 工单体系；物理自动派发未接入时如实说明。
+- 不把 S0～S5、R0～R5 强制解释为十二次 Pro 调用，不逐份材料重复跑完整图，不强制每项补字段都走跨 Workflow Gate。
+- 不把 Skill `DATA_READY`、模型 `confidence`、Worker 自述或 GitHub 普通文件的 `ACCEPTED` 当受保护正式采纳。
+- 不把可信反证或参数不可调等领域结论判作专业工作不合格；不以修到合理为默认任务目标。
+- 不以全局优先级遮蔽独立问题；不将新版预期与旧补证无条件混用；同一标定复验不重复计算；无新事实不无限调用 Pro。
+- 不先开发任意 Workflow 引擎、微服务平台或通用 Agent 市场；不因精简代码而删除版本锁、必要硬 Gate、权限、幂等和回执。
+- GitHub-only 不代表允许泄漏凭据或全部市场原始数据，真实存储资格未确认前拒绝相关敏感写入。
+
+## 12. 一次性交付、审计和变更保护
+
+1. V0.1 独立保存、不可改写；本 V0.2 只作为审查采纳后的**候选修改版**，所有新增 N 规则具有定位与验收目标，但不自动构成 Owner 授权。
+2. 在本轮设计确认后，实施者**一次性落地本轮范围内**的管理文件、业务 Workflow、受控合同、可运行 Python 代码与测试；实施过程可按代码依赖编排，但不建立 W0～W7 八次独立确认/发布门槛。
+3. 落地若遇本计划未覆盖、互相矛盾或无法真正执行之处，提出精确 `ChangeProposal`（原条款、失败现场、建议、替代方案、影响、所需批准），不能擅自删 Gate、扩权、改 Skill、降低必需范围或改变完成定义。
+4. 每项代码和配置必须有具体消费者、受保护入口、读写对象、负例测试和真实执行凭据。GitHub-only 的正式状态需有独立授权身份和 CAS 实测；否则只可称影子/候选模式。
+5. 完整落地后直接启动一个获授权真实用例：材料准备→交付→合理性分析→必要的定向补证→原轮次继续；明确模拟测试与真实行情/真实接收测试的证据区别。未授权的真实大规模标定不执行，不能假报 PASS。
+6. 后续旧长程代码接线另行处理，只交业务动作协议和验收需求，不把其接线混入本次提交。
+
+## 13. 新上传《修改建议》的逐项裁决与修订追溯
+
+该反馈只审核 V0.1 §1～7.2，其关于第 7.3 及以后没有提出存储和排期结论；GitHub-only、一次性落地、长程代码后置、统一 `advance` 来自本聊天后续已明确的用户反馈，**不是冒称来自该审查文件**。
+
+| 反馈问题/建议 | 本次判断 | 采纳位置 | 边界与保留项 |
 |---|---|---|---|
-| **W0 源约束冻结/盘点** | 取得两 Skill 包精确 Git commit 与完整引用、规范版本；整理 `S/C/N` 来源矩阵，盘点现有长程入口、旧资产仅作兼容核查 | `01_SOURCE_RULE_MATRIX.md`，差异表（已实施/仅文档/缺失/冲突） | 所有拟新增规则能追溯；无未经说明的旧目录复活/Skill改写 |
-| **W1 A 管理合同** | 共用管理 Pro、A1 S0–S5、A2 R0–R5、各 Gate 输入/输出/专业判断/返修与Owner升级；明确非瀑布 | 03/04/05 文档；专业源自 S，管理增量 N | 用一个材料案例和一个合理性分析案例可以逐步明确谁做什么、返回什么、何时自动继续 |
-| **W2 权限/合同/跨Workflow设计** | 父子任务、两用途资格、材料包/补证请求、版本/读依赖、正式冻结、角色权限、预算、Gate接收人 | 06/07、workflows、contracts、policy 草案 | 对两条 Workflow 都能列出合法/非法转移；Owner 未决项明确且未经批准不得正式生效 |
-| **W3 B 最小控制核心** | 受控状态存储、提案、验证、复核、正式提交回执、get_next、原子派发占用、依赖与审计 | `src/oi_control/` 核心，unit tests | 在模拟执行回交下，一次 GO 后自动运行合法后继、Gate 返修、恢复；非法自我接受被程序实际挡住 |
-| **W4 长程适配** | 控制动作↔既有长程 Pro R/Worker W 回交的映射，真实收件端验证、幂等派发/UNKNOWN对账 | adapters，integration tests；旧协议作为输入但不改写 | 主控能核实实际派发及回交，再通知业务控制核；不把 W 完成当业务 Gate 通过 |
-| **W5 首个真实材料准备闭环** | 选择有实际运行条件的高频或 EAW 用例，真实取数、G-PLAN/G-RUN/G-MATERIAL、交付限定范围 | real_case 实物及回执；源自材料 Skill | 真实数据、来源、图/数据阶段、缺口与可用范围经独立验证；不是只有预览、Notebook定义或模拟 |
-| **W6 真正的分析/交接闭环** | 接收材料、渐进探索、冻结最小预期、正式对照、诊断、补证并恢复原轮次 | 四 Skill 原产物＋新 handoff/analysis Gate | 不重复从头取数；补证能原路回交；数据/预期更新只重验受影响部分；证据未充分不冒充结论 |
-| **W7 标定分支与故障/发布验收** | 参数首次实例化/诊断后标定资格、受限试验、完整复验；超时、取消、并发、重复、失效、未知动作、越权与恢复 | calibration profile、fault-injection、回归与实测报告 | 无权限不发生正式重算/改生产参数；模拟与真实分开；全部 mandatory Gate 有实际结果与残余风险说明 |
+| S/R 阶段与真实 Skill 调用没有一一对应 | **采纳** | §3.2～3.3、§5.3 | 保留阶段管理视图，不拆旧 Skill，不预设十二次调用 |
+| 材料项不等于 WorkItem/ExecutionAction | **采纳** | §3.2、§5.2 | 多对多映射，优先复用完整图，避免重复重算 |
+| 管理 Pro 决定缺少生效形式 | **采纳** | §3.1、§5.3 | 结构化 `work_delta/conditional successor`；程序不推断新业务价值 |
+| 中间工作依赖全部等正式 ACCEPTED 易死锁 | **采纳但限定用途** | §4.2、§5.1 | 中间加工可受控继续，正式对照仍需独立材料/证据准入 |
+| Gate 把反证/不可调判成失败 | **采纳** | §3.4、§5.1 | 分清工作合格、领域发现和下一动作资格；硬检查仍不得豁免 |
+| 补证没有失败/不适用/取消返回；局部查字段流程过重 | **采纳** | §4.4、§5.6 | 只跨专业边界或独立交付才生成补证任务；不能把不可得当证据充分 |
+| 轮次/预期/数据版本不贯穿回交 | **采纳** | §3.3、§4.1、§4.5 | 迟到先回原轮次；新轮复用另行验证 |
+| R4 内部对照和外部 R2 重复复验 | **采纳并明确单次工作** | §3.3、§9 | 一个 comparison WorkItem，结果被 R4/R2 逻辑角色复用，正式验收不省略 |
+| `get_next` 优先级不能作全局 if/elif | **采纳** | §5.4 | 按问题/WorkItem 判断资格，再确定性排序；局部阻塞不全局停 |
+| 新问题无限扩充本轮、无法结束 | **采纳** | §4.1、§5.1 | 问题级 completion + authorized_depth；不偷偷缩小必需范围 |
+| 所有管理结果都要四份文件、Gate 都要独立调用 | **采纳减负意见** | §3.1、§3.4、§7 | 四类回交按需存在，Gate 共用验证与受控结果，不增无消费者文件 |
+| 用具体八个现场做正反面验证 | **采纳** | §9、目标目录 `11_OPERATIONAL_PATHS.md` | 实施后以真实回交/模拟负例分别证实，不能把文档推演当实测 |
 
-**依赖安排**：W0 → W1/W2 可部分并行 → W3 → W4 → W5/W6（可提前用模拟打通，真实按依赖分步）→ W7。跨 Workflow 数据结构和冻结条件必须在 W3 前定义；不能等材料准备代码全部写完才发现合理性分析的路由不兼容。
+**未采纳为“替代性架构”的做法**：不删除共用控制核心，不退回纯管理 Pro 自律；不取消正式 Gate、身份/版本保护；不要求每份中间产物都先获整体业务接受；不把合理性分析目标强制改成「修到合理」。反馈主张填补运行语义，而非推翻这些已讨论的原则。
 
-**实施节奏约束**：每一工作包结束先形成 source diff（原定内容/实际实现/新增理由/影响/待批准）。不能为“快速成功”自行删减 Gate、改变 Skill 专业判断、把源 `DATA_READY` 写成正式 `ACCEPTED`，或把 `FROZEN_FOR_COMPARISON` 改为模型可编辑的字段。
-
-## 9. 第一轮验收测试清单
-
-> 下列是**待实施**的验收用例，未运行；真实测试必须记录环境、输入、预期、实际证据、状态写入与审核者。
-
-1. 正常链路：一次启动后，S0→S1 材料规划/审核→S2合法动作→S3取数→S4核验→S5正式接收；通过后无需 Owner 再说“继续”。
-2. 只找到图定义或 5 行预览时，`DATA_READY` 的候选不得被正式接受。
-3. CAEGraph `construction_snapshot` 不得冒充 `viewport_final`；T056、T059、正式看板不得误混。
-4. `PARTIAL_WITH_LIMITS` 可登记限定范围使用；必需材料未完成时未经授权不得把整个任务标为完成。
-5. G-PLAN 规划漏必要中间阶段：返回定向专业返修，而不是改写任务目的。
-6. 未绑定 Skill/代码/数据版本或使用旧基线候选：应拒绝对应正式执行/接收。
-7. 管理 Pro/执行 Pro 在同一对话里自行填写 `role: reviewer` 或 `ACCEPTED`：不改变正式状态。
-8. 合法下一 WorkItem 自动派发；无进展重复 `CALL_PRO` 被限次；并发两个调度者不产生重复派发。
-9. 长程 W Return 已回交但材料未验证：工作项保持待检；长程 R/W 不能直接推动业务 Gate。
-10. 事实准备/少量样本探索可在 `WORKING` 预期下进行；正式对照必须绑定 `FrozenExpectationSet`，新证据只能产生新版本。
-11. `MISSING / PENDING / ValidEmpty / NoOccurrence / InsufficientHistory` 不被误当业务反证或可忽略的空值。
-12. 合理性分析请求已存在的合格材料，控制面直接复用；不存在时生成唯一补证工作并回原 `analysis_round_id`。
-13. 补证新增材料不改变旧依赖时，不重跑所有分析；改变冻结相关数据/参数/版本时，受影响对照进入重验。
-14. 诊断 `POSSIBLY_ADJUSTABLE / COUPLED_UNRESOLVED` 可提出 R4 资格申请；无实际授权不得开启昂贵试验；首次实例化路径不要求先伪造诊断。
-15. 参数局部试验成功但改变上游对象，不能自动称完整实例合理；正式修改生产参数仍为范围外动作。
-16. 超时/回执丢失/外部效果未知，先对账；成功的 Worker 动作不可盲目重跑。
-17. 崩溃/重复请求/迟到回交/过期租约不会形成双提交、双派发或无痕覆盖。
-18. 取消/超预算/越权/安全异常必须停派发、保留现有有效产物、显示明确负责人和恢复条件。
-19. 同一人管理/执行场景下，独立接受要求有真实受控复核，而不是同一提示词扮演两种身份。
-20. 父任务完成由完整业务完成标准判断；某个 S5、R5、Worker 回交成功不能自动结束父任务。
-
-## 10. 必须公开的缺口和待确认事项（N；不自行填默认值生效）
-
-| ID | 未决问题 | 影响和需要的决定 | 决定前可以做什么 |
-|---|---|---|---|
-| D01 | 本次是否正式采纳 CP-SKILL-001 v0.1 的哪些条款？ | 它是工程评审稿，不自动成为现行授权 | 依据其原则做草案和模拟，不宣称强制控制已部署 |
-| D02 | 谁是权威状态写入口的持有者，运行环境/认证/存储具体在哪里？ | 若 Pro/Worker 能写状态库或验收程序，强制门禁失效 | 设计保护方案，模拟/影子运行；正式接受暂停 |
-| D03 | 谁对 G-PLAN/G-MATERIAL/G-EXPECTATION/G-COMPARISON/G-DIAGNOSIS/G-CALIBRATION/G-ANALYSIS 有接受权？ | 管理 Pro 的委托范围和独立复核要求 | 列 Gate 权限矩阵草案，待授权确认 |
-| D04 | AUTO / REVIEW / FORBIDDEN、风险等级及高成本操作的授权阈值？ | 决定是否能够无人介入执行 | 先不自动执行成本/权限未明确的操作 |
-| D05 | 父业务任务、材料任务和分析轮次的完成定义是什么？ | 尤其“局部被接受”与“整个任务结束”不能混同 | 首版强制保留剩余项，不擅自缩范围 |
-| D06 | 正式接收的材料包存储、数据访问、可保留哪些来源/敏感日志、期限？ | 影响真实交付/复查及安全 | 草案使用无敏感 fixtures，真实数据路径待核 |
-| D07 | `SCOPED_ACCEPT` 机器枚举如何表达？ | 规范通用 DecisionRecord 是 `ACCEPT/REPAIR/REVIEW/REJECT`；讨论中希望局部接受 | 建议 `ACCEPT + accepted_scope`，正式决定前保留待裁 |
-| D08 | 哪套 `cgpterm` 主控实现和长程协作协议是本次实际采用版本？ | 旧 FPA 合同有具体实现，但不证明现在已接好观察迭代 | W0 盘点真正入口，先模拟兼容 |
-| D09 | 第一条真实端到端用例选高频还是 EAW？数据/计算权限是否具备？ | 决定 W5 能否真正执行 | 用现有 Skill 做低成本可行性调查，不伪称实测 |
-| D10 | 正式预期冻结怎样处理证据截止时间、已看探索样本与正式反例样本？ | 避免事后调整预期导致循环论证 | 记录已看证据与版本，待制定冻结/对照准入策略 |
-| D11 | 参数标定的试验预算、允许变化的参数、正式候选实例接受权，是否授权实际重算？ | 关系到业务与计算风险 | 可以做代码/公式层面的低成本可行性调查，未经授权不大规模重算 |
-| D12 | 语义复核是否必须独立 Pro？同一 Pro 同时管理/执行时怎样满足创建者与接受者分离？ | 决定人工成本与真实性 | 先留独立复核任务接口，不以自评直接接收 |
-| D13 | 各专业 Skill 当前均是候选/草稿，哪些允许在试用范围使用？ | 不能把测试通过等同正式发布 | 将试用环境和验收结果分离，记录成熟度 |
-| D14 | 当前哪些补证或实现修正应由本控制面内部完成，哪些属于新业务任务？ | 防止诊断跨越观察材料/合理性分析授权 | 默认：低成本合法补证内部；正式实现修改/需求迭代只提出交接申请 |
-
-所有 D 项应在 `10_OPEN_DECISIONS_AND_CHANGELOG.md` 中按 `proposed / approved / rejected / deferred` 记录决定主体、时间、版本和影响；不能把表中“建议”直接视为已批准。
-
-## 11. 非目标与停止规则
-
-- 不移动、合并、重写当前两包专业 Skill，也不采纳 `observe-iterate` 其它历史目录的架构。
-- 不复制旧长程协议中的 R/W 运输；不新建第二套跨端消息系统；不让 Codex 主控承担专业 Gate 判断。
-- 不重建 CAEGraph/uplot/FeatDFProcessor 专业方法；控制面检查材料资格和授权，不能代替专业取数。
-- 不将材料准备、预期推导、证据对照、诊断、标定压成一个线性大 Skill；保持事实轨道与业务判断轨道、合理性分析内部循环。
-- 不把 Skill 自检、模型 confidence、GitHub Markdown 自写 `ACCEPTED` 当正式采纳，也不把模型扮演两种角色当独立复核。
-- 不在版本未锁定、权限缺失、mandatory 验收未执行或有未知外部效果时继续正式提交或高风险自动动作。
-- 不先开发通用 DSL、微服务集群、自动 Skill 市场、全局智能路由器，亦不为了轻量化删掉本业务必要的强制门禁。
-
-## 12. 交付/变更管控
-
-本计划对应一轮**先确认设计、再实施**的流程：
-
-1. 先交完整源矩阵、A/B/C 合同、文件组织、待裁事项和测试方案供审阅；审阅后冻结 V0.1 基线。
-2. 每个 W 包开始时以冻结基线为依据；发现必要新增/冲突，出具 `ChangeProposal`：原计划条款、实际问题、建议变更、备选方案、影响范围、需谁批准。
-3. 未获批准不得以“顺手优化”为由重写阶段、合并/新增 Skill、修改已有验收标准、放宽权限或改变完成定义；不妨碍在授权内作低风险局部技术选择。
-4. 每个 W 包结束提供：准确 Git commit/path（如实际提交）、代码与版本、测试 PASS/FAIL/NOT_RUN、实际运行证据、限制与残余风险、下一包进入条件。若未提交仓库，不报假 SHA。
-5. 第一轮上线判断以至少一条真实材料准备→正式交接→合理性分析→定向补证→返回分析的闭环和负向门禁实际阻断为核心；调参分支可单列能力验收，但不能声称已完成未经授权的真实标定。
-
+**变更摘要**：V0.1 的 A/B/C 分工、两套专业 Skill、S0～S5/R0～R5 管理视图、Gate 核心、长程角色边界保持；V0.2 增强真实调用接口、管理决定生效、分层就绪、Gate 语义、补证退出、轮次身份、标定复验单工作项、按作用域调度和问题级结束。存储/交付/统一入口的修订属于用户后续明确条件，审查反馈原文未涵盖。
