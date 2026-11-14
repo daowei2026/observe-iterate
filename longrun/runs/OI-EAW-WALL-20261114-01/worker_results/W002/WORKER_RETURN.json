@@ -1,0 +1,1262 @@
+{
+  "schema": "longrun-worker-return/v2",
+  "run_id": "OI-EAW-WALL-20261114-01",
+  "work_order_id": "W002",
+  "order_ref": "daowei2026/observe-iterate@8bc47de4fe83742049853a6538d1db0bad9468e4:longrun/runs/OI-EAW-WALL-20261114-01/work_orders/W002/ORDER.json",
+  "worker": "codex:OI-EAW-WALL-20261114-01:worker:W1",
+  "return_to": "chatgpt:OI-EAW-WALL-20261114-01:executor:E1",
+  "outcome": "STOP",
+  "result_ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/WORKER_EXECUTION_REPORT.md",
+  "missing": [
+    "EP-WALL-SHARED-01 snapshot accessor/patch/typecheck not constructed after Phase0 stop",
+    "EP-WALL-SHARED-02 evidence DTO/schema/canonical serialization not constructed",
+    "EP-WALL-SHARED-03 compatible offline dependency closure, four resource predictions and auditable zero outside writes not proven; procfs follow-up write facts unknown",
+    "EP-SCENARIO-01 dedicated target/main not constructed or compiled",
+    "EP-SCENARIO-02 exact-error evidence adapters/assertions not constructed or validated",
+    "EP-SCENARIO-03 transaction DTO and direct synthetic serialization not constructed or validated",
+    "EP-SCENARIO-04 only exact-source static conflict ledger delivered; dedicated harness/manifest absent",
+    "EP-SCENARIO-05 complete FX-WALL-SCENARIO-001 schema/fixture/hash and static 9/18/22 count/order validation absent",
+    "no staged tree/prerequisite local commit/PREREQUISITE_PATCHSET.diff; no compile-only or serialization test result; none invented",
+    "PREREQUISITE_PATCHSET.diff with only reviewable text changes：Phase0 STOP后未构造该patch；manifest未为缺失文件虚构ref。",
+    "FIXTURE_SCHEMA_AND_PROVENANCE.md plus the complete static FX-WALL-SCENARIO-001 fixture with 9 scenarios, 18 firings and 22 inputs, never executed：仅已出版状态/来源说明文档；完整fixture/schema及9/18/22静态验证仍缺失。",
+    "V2 WORKER_RETURN.json returning only to executor E1：本正式Return已在本地生成；仍待主控逐字发布至longrun/runs/OI-EAW-WALL-20261114-01/worker_results/W002/WORKER_RETURN.json，当前没有该Return真实出版ref，禁止self/future ref。299份原件出版缺口已由commit 2af8a364b4157958b59d68ab4fc24eb6a95f5593解决；冻结handoff/report的pending仅为先前本地阶段历史。"
+  ],
+  "manifest": {
+    "COMMAND_LOG.jsonl": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/COMMAND_LOG.jsonl",
+      "sha256": "b8bad5eb270d2a1efc8fdf9f19c6a89483bd64e16beb5d523ca03d97622b852d"
+    },
+    "D003_BINDING.json": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/D003_BINDING.json",
+      "sha256": "a8f3a70d80a6140cb820330b2a1f40cd7f5a9124bf432aeb503a4bc175d11df4"
+    },
+    "D003_BINDING_CANDIDATE.json": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/D003_BINDING_CANDIDATE.json",
+      "sha256": "88fcf8eb661453d4f29fad66ddb4587cba2713dcc96282654c61bac0986a52e3"
+    },
+    "DRY_DEPENDENCY_PREFLIGHT.json": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/DRY_DEPENDENCY_PREFLIGHT.json",
+      "sha256": "31c52836b1d130b57c6f9cd0c0a553ae71be8b06f1c14bd7b84f28e8d718f8a8"
+    },
+    "ENGINEERING_STOP_REPORT.md": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/ENGINEERING_STOP_REPORT.md",
+      "sha256": "acdd75cd2a86dcfe54a90bf046a7c9d7512387bb24bf01c9a67a4fc4c9cce27d"
+    },
+    "EP_ACCEPTANCE_MATRIX.md": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/EP_ACCEPTANCE_MATRIX.md",
+      "sha256": "89c4bb3996938596443f1616c8a595b5b14147964d6a38f5462ea29f9b89df4d"
+    },
+    "FIXTURE_SCHEMA_AND_PROVENANCE.md": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/FIXTURE_SCHEMA_AND_PROVENANCE.md",
+      "sha256": "f7176578f6581ffcfbf735e84939d10ccdf1506bc38f3992663a3f4f97bdce63"
+    },
+    "HASHES.sha256": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/HASHES.sha256",
+      "sha256": "75aff94c2b4554cfdff50f1d6e68abaea2b7772defddedef7dd517b8e43ebe4f"
+    },
+    "KNOWN_CONTRACT_CONFLICTS.md": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/KNOWN_CONTRACT_CONFLICTS.md",
+      "sha256": "d051b1545c0784bf71893c015b7ed52041e28fabf044516a2f50296d219bf6d9"
+    },
+    "LOCAL_STAGE_HANDOFF.json": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/LOCAL_STAGE_HANDOFF.json",
+      "sha256": "3485f46ac262e1eba93c0ab7488be14e0044bddb95005344488624bb690f7396"
+    },
+    "LOCAL_STAGE_PLAN.json": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/LOCAL_STAGE_PLAN.json",
+      "sha256": "80ef6418c1135008ad4bd96e222c15aa7c082d2cb519b285eca94eb13ebc9373"
+    },
+    "PRECONDITION_REPORT.md": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/PRECONDITION_REPORT.md",
+      "sha256": "bd736cf903ee7f52285751c26c46383c572d6136a13d5b0d82e595d02e50ff46"
+    },
+    "SOURCE_BASELINE_REPORT.md": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/SOURCE_BASELINE_REPORT.md",
+      "sha256": "cfa2392928adb555d4b6d9cc373061660c5c616667092e821bb310e71acd4f12"
+    },
+    "SOURCE_CHANGE_MANIFEST.json": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/SOURCE_CHANGE_MANIFEST.json",
+      "sha256": "2d057fb3e1286dc84d707a7f65ac526fca574d4b8166c3301ef613c46167edf9"
+    },
+    "WORKER_EXECUTION_REPORT.md": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/WORKER_EXECUTION_REPORT.md",
+      "sha256": "2ab3240b7c9306d61a67e60e7a27f478d6322f07dcc11f6b46df0932ccecd0ac"
+    },
+    "WRITE_SURFACE_AUDIT.json": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/WRITE_SURFACE_AUDIT.json",
+      "sha256": "69a84a263bc01a6b280c17046d1d7b0991436d15076f709fe6cbea50b5d70f4c"
+    },
+    "WRITE_SURFACE_PLAN.json": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/WRITE_SURFACE_PLAN.json",
+      "sha256": "93ad1caed580bdc0168e42916e377837226d0043e6c3bdc8bfc8534d0809ae0f"
+    },
+    "audit/frozen-local-task-status/tasks/w002-local-stage/events.jsonl": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/audit/frozen-local-task-status/tasks/w002-local-stage/events.jsonl",
+      "sha256": "bb6d775d82f3a6db18258001d7258236c4e66348076c23a9d467953d7dde3554"
+    },
+    "audit/frozen-local-task-status/tasks/w002-local-stage/plan.json": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/audit/frozen-local-task-status/tasks/w002-local-stage/plan.json",
+      "sha256": "d9209c02f02372697481501e31893a3ed005dd711322f6d405cbafd409381468"
+    },
+    "audit/frozen-local-task-status/tasks/w002-local-stage/snapshot.json": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/audit/frozen-local-task-status/tasks/w002-local-stage/snapshot.json",
+      "sha256": "8919a4ef318df18f0b640b80a3cbdc271e2702eb31cc97ce482b284e3eb2ee01"
+    },
+    "audit/BOUNDED_CACHE_INDEX.json": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/audit/BOUNDED_CACHE_INDEX.json",
+      "sha256": "6b7073a60dc4a84aca644be6b0f9061cb545434a764502c83e314a4ef5d2168a"
+    },
+    "audit/BOUNDED_CACHE_INDEX_DETAIL.json": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/audit/BOUNDED_CACHE_INDEX_DETAIL.json",
+      "sha256": "65e55cd5ca960dd0e11e80f4c5671d4ebe91c13f2b4aab2926dba6bd0f68438d"
+    },
+    "audit/EXACT_SOURCE_BLOBS.json": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/audit/EXACT_SOURCE_BLOBS.json",
+      "sha256": "13b6b51ae494aef24b3dc8164b4e2b247be6589ea0804ed3dfd2520fd2932da7"
+    },
+    "audit/FRP_BASE_TREE.json": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/audit/FRP_BASE_TREE.json",
+      "sha256": "120f0eece90e8d0e823829d1ee51ea334c80ac66357fa54a028ed6a97d4ec216"
+    },
+    "audit/LANDLOCK_AVAILABILITY.json": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/audit/LANDLOCK_AVAILABILITY.json",
+      "sha256": "66a09794b72405c435afa94f88dcc092593a935c4e0c2865a5d1e2e481feff5b"
+    },
+    "audit/LOCAL_PACKAGE_CLOSURE.json": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/audit/LOCAL_PACKAGE_CLOSURE.json",
+      "sha256": "0d3406e1fa6b384fb94e9a19ae99d4ff5217c4954d27efbbe511f2dd15c0fff9"
+    },
+    "audit/SHARED_AFTER.json": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/audit/SHARED_AFTER.json",
+      "sha256": "94bfe21e1687f9edd5097b715d11fbb9e34840314cd1ffcfdfa4a4ce048ccc12"
+    },
+    "audit/SHARED_BEFORE.json": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/audit/SHARED_BEFORE.json",
+      "sha256": "064888ad890099d2da54f37803a65f6b0b8496388225cb25c3006f90a35e6dc5"
+    },
+    "audit/TOOL_BINDINGS.json": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/audit/TOOL_BINDINGS.json",
+      "sha256": "574500d5d1ac62f52c6cb6d2e2d95653815a956ecdeb821d28a0154a9dfa5134"
+    },
+    "audit/TOOL_METADATA_TRACE_REVIEW.json": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/audit/TOOL_METADATA_TRACE_REVIEW.json",
+      "sha256": "2b6a1f05aac9f197d458241fe718c0901e0d48b5c1985d91dbc883bd6d6abab0"
+    },
+    "audit/cabal-version.strace": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/audit/cabal-version.strace",
+      "sha256": "fcc4eeb784ac01ae764067e47cf6acfa4a9fd7e2a45010e57699ab90758baf2b"
+    },
+    "audit/finalize_delivery.py": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/audit/finalize_delivery.py",
+      "sha256": "fda632747aef9c48dbc861c39e102b256dd33134eeafeaa23d4f1f4e1f59c451"
+    },
+    "audit/ghc-global-packages.strace": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/audit/ghc-global-packages.strace",
+      "sha256": "3fe99661e77a616c1ce62ba5a5b05396a97fe392656acb60c0bf5903c754c347"
+    },
+    "audit/ghc-version.strace": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/audit/ghc-version.strace",
+      "sha256": "7046c1f50572fdbede92878bf8b92e3b6d7761707b2945e80eee419b320b215b"
+    },
+    "audit/preflight_collect.py": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/audit/preflight_collect.py",
+      "sha256": "a5905f795366ac017b31df8ac537540e87e43fea2a897137942e4e00c132d2ea"
+    },
+    "audit/runner.py": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/audit/runner.py",
+      "sha256": "5f5470617f9b9636752077c9277a192d788e5c06701f5c10ffa1957a51f561ad"
+    },
+    "audit/stack-version.strace": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/audit/stack-version.strace",
+      "sha256": "cbd48b2c8db3d9d8f83325504533223ae0add3c57d4404625f7336bfd3745fd0"
+    },
+    "input/BASE-stack.yaml": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/input/BASE-stack.yaml",
+      "sha256": "4739137f1b19abf64701c05297b378c331a2666b8b462e9ca0e888d1a66393fc"
+    },
+    "input/BASE-stack.yaml.lock": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/input/BASE-stack.yaml.lock",
+      "sha256": "48b9d7d9ab41c7c24040e6e299f686dfba148a22e0600cf3395c43740c0b7b78"
+    },
+    "input/C0006-remote-ACTION_ELIGIBILITY_MATRIX.md": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/input/C0006-remote-ACTION_ELIGIBILITY_MATRIX.md",
+      "sha256": "b429dcbb2f1fc773b7dd305b2d1bea8b9ce6d67bc33e7ffac5d1e3cc9615ecc2"
+    },
+    "input/C0006-remote-ADDITIONAL_ENGINEERING_PRECONDITION.md": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/input/C0006-remote-ADDITIONAL_ENGINEERING_PRECONDITION.md",
+      "sha256": "775a1941d2086dcac718f5aa1d8dcb60524bbfdc3222ea71a8a04f5112f87718"
+    },
+    "input/C0006-remote-CONTROLLED_SCENARIO_ACTION_DESIGN.md": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/input/C0006-remote-CONTROLLED_SCENARIO_ACTION_DESIGN.md",
+      "sha256": "cd522ce16fd47888d927700119cd6bf36721414a7d2a8f302e73cec84efd9dea"
+    },
+    "input/C0008-remote-business_control--decisions--MD-C0008-001.md": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/input/C0008-remote-business_control--decisions--MD-C0008-001.md",
+      "sha256": "24d732f76e8f2642243a4a84ba623bf1e9abdc2b4c3cf39042334a44ace3b7e1"
+    },
+    "input/C0008-remote-delegations--D003--DELEGATION.json": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/input/C0008-remote-delegations--D003--DELEGATION.json",
+      "sha256": "4f544748a95dee05021c41b232081b1724680fc68bd20065e1157d0176f046fa"
+    },
+    "input/C0008-remote-delegations--D003--DELEGATION.md": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/input/C0008-remote-delegations--D003--DELEGATION.md",
+      "sha256": "6bae2b9f61794574fa4206ba9e10e32bf36ae0e8cf5a315f9fda0e183c6d23aa"
+    },
+    "input/C0009-remote-calls--C0009--PRO_RETURN.json": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/input/C0009-remote-calls--C0009--PRO_RETURN.json",
+      "sha256": "afc10bc2c160fd1d66591cb7eb7819cc44fbb0e042654567f8694e5c1d5191e5"
+    },
+    "input/C0009-remote-work_orders--W002--ORDER.json": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/input/C0009-remote-work_orders--W002--ORDER.json",
+      "sha256": "1752e212d056d73a7868a168612e8e609a3d16247db4071b6f67aa03755ae249"
+    },
+    "input/C0009-remote-work_orders--W002--ORDER.md": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/input/C0009-remote-work_orders--W002--ORDER.md",
+      "sha256": "03aaf0dbbb3b29602635e2d5f6874722874a68bfef7ccb62e3797bad1c785331"
+    },
+    "input/LONGRUN_PROTOCOL_V2.md": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/input/LONGRUN_PROTOCOL_V2.md",
+      "sha256": "86ad342ca0aef9f28449dd9ec9168bba465f60a4ef552634b553573491a38c39"
+    },
+    "input/RUN_BINDING.json": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/input/RUN_BINDING.json",
+      "sha256": "2dc9e25124f9bf08c967e2b50b723014bb680cf57a24bd9841854692c24957cc"
+    },
+    "input/W002-DISPATCH.txt": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/input/W002-DISPATCH.txt",
+      "sha256": "97531ff1c33d02233bae75c8e7b0aa0685e3a040f3e3f3ff503a99e575b1bca5"
+    },
+    "input/W002-lock-competition-proof.json": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/input/W002-lock-competition-proof.json",
+      "sha256": "6064f48ea5d1b7a75b1299223a6b038e913e45b99ee30aa535ed24298b33f8fb"
+    },
+    "input/exact-base/frp.cabal": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/input/exact-base/frp.cabal",
+      "sha256": "21e3a41cf35e06687ea96bddec135a2fc4b9f3d6632ec542a1776315287c1086"
+    },
+    "input/exact-base/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/input/exact-base/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+      "sha256": "45e13a1d57856d44c9b3f8c1bdbcbb1cacfb93b94df9a3394580e8ce4b07a861"
+    },
+    "input/exact-base/src/Frp/Instance/ISL/Eaw/P1/Internal/OccurrenceLedger.hs": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/input/exact-base/src/Frp/Instance/ISL/Eaw/P1/Internal/OccurrenceLedger.hs",
+      "sha256": "568f3a5acb306f3c7dd2f23f40a416bb18f14404e35b6cf58455626e246ba2c8"
+    },
+    "input/exact-base/src/Frp/Instance/ISL/Eaw/P1/Products.hs": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/input/exact-base/src/Frp/Instance/ISL/Eaw/P1/Products.hs",
+      "sha256": "213bc5e4d73de9fc2e87adc92921a53ecc99bacbc3d22fa1b5bb3b6613a6c0cd"
+    },
+    "input/exact-base/src/Frp/Instance/ISL/Eaw/P1/Publication.hs": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/input/exact-base/src/Frp/Instance/ISL/Eaw/P1/Publication.hs",
+      "sha256": "9d9700a205c6aa88a0fe186320e8e0f8d56e106df112c22ad31fb492c05aa437"
+    },
+    "input/exact-base/src/Frp/Instance/ISL/Eaw/P1/WallLifecycle.hs": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/input/exact-base/src/Frp/Instance/ISL/Eaw/P1/WallLifecycle.hs",
+      "sha256": "fcdb43fb1e61ed53b4a4e7cac52ca4c5eed41db11b9b52e9fe3e773e982f8382"
+    },
+    "input/exact-base/stack.yaml": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/input/exact-base/stack.yaml",
+      "sha256": "86fb1c29a4d682da4a75932cb99adea3ea847d075c418cd23ec53907dacd56c4"
+    },
+    "input/exact-base/test/Frp/Instance/ISL/Eaw/P1/P1EndToEndSpec.hs": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/input/exact-base/test/Frp/Instance/ISL/Eaw/P1/P1EndToEndSpec.hs",
+      "sha256": "2c43f06be591d4bff3f91a23d963299b9eba36dfb59a2ac7bb2bf2fcef80542d"
+    },
+    "input/local-package-declarations/edh-universe/e-wrks/eas/host.hs/eas.cabal": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/input/local-package-declarations/edh-universe/e-wrks/eas/host.hs/eas.cabal",
+      "sha256": "1597f09349f694ad00dbfe47bcba84d24aa19e10ceee0e8047d167347e86d9cd"
+    },
+    "input/local-package-declarations/edh-universe/e-wrks/edh/elr/elr.cabal": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/input/local-package-declarations/edh-universe/e-wrks/edh/elr/elr.cabal",
+      "sha256": "f18615b93137fb64ede8e75a0030f60a72dc613f2d414b345c1a4dc627201f78"
+    },
+    "input/local-package-declarations/edh-universe/e-wrks/edh/host.hs/edh.cabal": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/input/local-package-declarations/edh-universe/e-wrks/edh/host.hs/edh.cabal",
+      "sha256": "00c1f64870d46b603e33d1c9f2f4d5ffaa2983d6a0b0921dc56005e3f4b12424"
+    },
+    "input/local-package-declarations/edh-universe/e-wrks/edh/lossless-decimal/lossless-decimal.cabal": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/input/local-package-declarations/edh-universe/e-wrks/edh/lossless-decimal/lossless-decimal.cabal",
+      "sha256": "87cea3bbb3786061688be7bb2718a5fdbaa083083bb9cc4c43279d28d2a6c42c"
+    },
+    "input/local-package-declarations/edh-universe/e-wrks/els/host.hs/els.cabal": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/input/local-package-declarations/edh-universe/e-wrks/els/host.hs/els.cabal",
+      "sha256": "93f21ff0c9641774eac404785c64de86a3564021cd0ec9ce3ed741e910d58d0b"
+    },
+    "input/local-package-declarations/edh-universe/e-wrks/hasdim/host.hs/hasdim.cabal": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/input/local-package-declarations/edh-universe/e-wrks/hasdim/host.hs/hasdim.cabal",
+      "sha256": "cbd09f31cda6c45ab88c51842fa058fc19c1f88c770aa0218767f7ddf3609910"
+    },
+    "input/local-package-declarations/edh-universe/e-wrks/haskit/host.hs/haskit.cabal": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/input/local-package-declarations/edh-universe/e-wrks/haskit/host.hs/haskit.cabal",
+      "sha256": "ecba5e0995156e2ce4507f8eca3a9f2018cc8c5d2bee6e2d4192388da8e09abf"
+    },
+    "input/local-package-declarations/edh-universe/e-wrks/nedh/host.hs/nedh.cabal": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/input/local-package-declarations/edh-universe/e-wrks/nedh/host.hs/nedh.cabal",
+      "sha256": "cdb8efb68da37d23b6d2f5d3f685bf06e636720cc0df380d3ddbff02591a7893"
+    },
+    "input/local-package-declarations/edh-universe/e-wrks/sedh/host.hs/sedh.cabal": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/input/local-package-declarations/edh-universe/e-wrks/sedh/host.hs/sedh.cabal",
+      "sha256": "1324e00fe6e2218761c7b5d0aec85bd62d676b75351cd0f25f99244417276cbd"
+    },
+    "input/local-package-declarations/edh-universe/fis/cfis/host.hs/cfis.cabal": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/input/local-package-declarations/edh-universe/fis/cfis/host.hs/cfis.cabal",
+      "sha256": "2e6f54bc06665155a6430ed165b190b1baa7a6e417e5ed8700dd1ef9dacdba68"
+    },
+    "input/local-package-declarations/edh-universe/frp/frp-core/frp-core.cabal": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/input/local-package-declarations/edh-universe/frp/frp-core/frp-core.cabal",
+      "sha256": "83f9299e02417427f12c7b7f214362ab559162193c707027506c4070344ca088"
+    },
+    "input/local-package-declarations/edh-universe/frp/frp-poc/frp-poc.cabal": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/input/local-package-declarations/edh-universe/frp/frp-poc/frp-poc.cabal",
+      "sha256": "cd45917c6fdfdb4990740c4dad1e442563dcb0c8ca4c7b39ea1a8b133ff1a3e3"
+    },
+    "input/local-package-declarations/edh-universe/frp/frp/frp.cabal": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/input/local-package-declarations/edh-universe/frp/frp/frp.cabal",
+      "sha256": "21e3a41cf35e06687ea96bddec135a2fc4b9f3d6632ec542a1776315287c1086"
+    },
+    "input/local-package-declarations/edh-universe/hsite3/hgeometry/hgeometry-combinatorial/hgeometry-combinatorial.cabal": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/input/local-package-declarations/edh-universe/hsite3/hgeometry/hgeometry-combinatorial/hgeometry-combinatorial.cabal",
+      "sha256": "1edab416ce6fd0c8fbaa894a66d0577566ba7ea1560f1a0a4e01d3eb3b99a001"
+    },
+    "input/local-package-declarations/edh-universe/hsite3/hgeometry/hgeometry/hgeometry.cabal": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/input/local-package-declarations/edh-universe/hsite3/hgeometry/hgeometry/hgeometry.cabal",
+      "sha256": "1b14d43195d64ecd92d593f7788a929a89ed02f9dba261b39e9a7d06550140ae"
+    },
+    "input/longrun_schema_v2.json": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/input/longrun_schema_v2.json",
+      "sha256": "32c1e2409ff4936a87d688848736bb9af71fe0415d338ba66dd031e3149243d3"
+    },
+    "logs/COMMAND_LOG.jsonl": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/COMMAND_LOG.jsonl",
+      "sha256": "40228d5e035d99a9cbdce791c02ebd8aac787a665500f9f7ee8df53565d2b84d"
+    },
+    "logs/EXEC_COMMAND_TRANSPORT.jsonl": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/EXEC_COMMAND_TRANSPORT.jsonl",
+      "sha256": "6828ec3d5c71cb3b52f29cf3390c7f6fc68008cc73b949001db0b74da9e5c860"
+    },
+    "logs/after-0-branch.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/after-0-branch.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/after-0-branch.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/after-0-branch.stdout",
+      "sha256": "3b3807bf483127b67add14e817ddac712c3b51c297741580216aebd40121be5b"
+    },
+    "logs/after-0-head.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/after-0-head.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/after-0-head.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/after-0-head.stdout",
+      "sha256": "83316ed67be844d3430ea9fefb5601fca6057c1dc2b344709f7e0f93e31925f1"
+    },
+    "logs/after-0-status.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/after-0-status.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/after-0-status.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/after-0-status.stdout",
+      "sha256": "028d16850f8dd9a2d448aa9438fbd5f134d938f66fa624739f5b231c187e6900"
+    },
+    "logs/after-1-branch.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/after-1-branch.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/after-1-branch.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/after-1-branch.stdout",
+      "sha256": "3b3807bf483127b67add14e817ddac712c3b51c297741580216aebd40121be5b"
+    },
+    "logs/after-1-head.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/after-1-head.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/after-1-head.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/after-1-head.stdout",
+      "sha256": "292b4aeeed194370b0f68f79ff6456568a16d32489a0ab17cae7c1a14232c891"
+    },
+    "logs/after-1-status.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/after-1-status.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/after-1-status.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/after-1-status.stdout",
+      "sha256": "cb8556ea64df26c4fb8af82427a9c63b0f963185022965376a7bcbbd58b5ef12"
+    },
+    "logs/after-2-branch.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/after-2-branch.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/after-2-branch.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/after-2-branch.stdout",
+      "sha256": "88ad5bf322eda2b0f2271dedc546f599ef049c3893598a967874181ea4b1b5fe"
+    },
+    "logs/after-2-head.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/after-2-head.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/after-2-head.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/after-2-head.stdout",
+      "sha256": "c92e3a53cb3b439a3bcb6b67f405214884ef3fdfa99fbd16dd8400dd9071d65c"
+    },
+    "logs/after-2-status.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/after-2-status.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/after-2-status.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/after-2-status.stdout",
+      "sha256": "93af179c38ce88c227387402b2464994699b324b70cf8b7d28a587bab80c8adc"
+    },
+    "logs/base-blob-0.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/base-blob-0.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/base-blob-0.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/base-blob-0.stdout",
+      "sha256": "fcdb43fb1e61ed53b4a4e7cac52ca4c5eed41db11b9b52e9fe3e773e982f8382"
+    },
+    "logs/base-blob-1.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/base-blob-1.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/base-blob-1.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/base-blob-1.stdout",
+      "sha256": "45e13a1d57856d44c9b3f8c1bdbcbb1cacfb93b94df9a3394580e8ce4b07a861"
+    },
+    "logs/base-blob-2.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/base-blob-2.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/base-blob-2.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/base-blob-2.stdout",
+      "sha256": "213bc5e4d73de9fc2e87adc92921a53ecc99bacbc3d22fa1b5bb3b6613a6c0cd"
+    },
+    "logs/base-blob-3.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/base-blob-3.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/base-blob-3.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/base-blob-3.stdout",
+      "sha256": "9d9700a205c6aa88a0fe186320e8e0f8d56e106df112c22ad31fb492c05aa437"
+    },
+    "logs/base-blob-4.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/base-blob-4.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/base-blob-4.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/base-blob-4.stdout",
+      "sha256": "568f3a5acb306f3c7dd2f23f40a416bb18f14404e35b6cf58455626e246ba2c8"
+    },
+    "logs/base-blob-5.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/base-blob-5.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/base-blob-5.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/base-blob-5.stdout",
+      "sha256": "2c43f06be591d4bff3f91a23d963299b9eba36dfb59a2ac7bb2bf2fcef80542d"
+    },
+    "logs/base-blob-6.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/base-blob-6.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/base-blob-6.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/base-blob-6.stdout",
+      "sha256": "21e3a41cf35e06687ea96bddec135a2fc4b9f3d6632ec542a1776315287c1086"
+    },
+    "logs/base-blob-7.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/base-blob-7.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/base-blob-7.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/base-blob-7.stdout",
+      "sha256": "86fb1c29a4d682da4a75932cb99adea3ea847d075c418cd23ec53907dacd56c4"
+    },
+    "logs/base-tree.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/base-tree.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/base-tree.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/base-tree.stdout",
+      "sha256": "4242986c54a613cfb9d712b373d029a8fa623da29c4e2cf5ed1209aedab4f9e8"
+    },
+    "logs/before-0-branch.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/before-0-branch.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/before-0-branch.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/before-0-branch.stdout",
+      "sha256": "3b3807bf483127b67add14e817ddac712c3b51c297741580216aebd40121be5b"
+    },
+    "logs/before-0-head.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/before-0-head.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/before-0-head.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/before-0-head.stdout",
+      "sha256": "83316ed67be844d3430ea9fefb5601fca6057c1dc2b344709f7e0f93e31925f1"
+    },
+    "logs/before-0-root.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/before-0-root.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/before-0-root.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/before-0-root.stdout",
+      "sha256": "b0ae6ebfa6fa508e4f910a73d4d6523b9fd7dbb9bb6619cde82732d8fba1488a"
+    },
+    "logs/before-0-status.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/before-0-status.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/before-0-status.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/before-0-status.stdout",
+      "sha256": "028d16850f8dd9a2d448aa9438fbd5f134d938f66fa624739f5b231c187e6900"
+    },
+    "logs/before-1-branch.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/before-1-branch.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/before-1-branch.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/before-1-branch.stdout",
+      "sha256": "3b3807bf483127b67add14e817ddac712c3b51c297741580216aebd40121be5b"
+    },
+    "logs/before-1-head.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/before-1-head.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/before-1-head.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/before-1-head.stdout",
+      "sha256": "292b4aeeed194370b0f68f79ff6456568a16d32489a0ab17cae7c1a14232c891"
+    },
+    "logs/before-1-root.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/before-1-root.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/before-1-root.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/before-1-root.stdout",
+      "sha256": "be08a8cbb77da1d66cc87b65b805ada7337fb5e408028762aab3efaf19000651"
+    },
+    "logs/before-1-status.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/before-1-status.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/before-1-status.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/before-1-status.stdout",
+      "sha256": "cb8556ea64df26c4fb8af82427a9c63b0f963185022965376a7bcbbd58b5ef12"
+    },
+    "logs/before-2-branch.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/before-2-branch.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/before-2-branch.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/before-2-branch.stdout",
+      "sha256": "88ad5bf322eda2b0f2271dedc546f599ef049c3893598a967874181ea4b1b5fe"
+    },
+    "logs/before-2-head.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/before-2-head.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/before-2-head.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/before-2-head.stdout",
+      "sha256": "c92e3a53cb3b439a3bcb6b67f405214884ef3fdfa99fbd16dd8400dd9071d65c"
+    },
+    "logs/before-2-root.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/before-2-root.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/before-2-root.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/before-2-root.stdout",
+      "sha256": "5675e02aea1a6857317f632f0ce2b4371a85cd32cfefa8ada8f98992b144a7fd"
+    },
+    "logs/before-2-status.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/before-2-status.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/before-2-status.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/before-2-status.stdout",
+      "sha256": "93af179c38ce88c227387402b2464994699b324b70cf8b7d28a587bab80c8adc"
+    },
+    "logs/bounded-preflight-collection.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/bounded-preflight-collection.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/bounded-preflight-collection.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/bounded-preflight-collection.stdout",
+      "sha256": "dd2940af818916a874c5c2c5b6cc4cfa34509bc0cc19751af2090f17fe5e6343"
+    },
+    "logs/cabal-version.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/cabal-version.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/cabal-version.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/cabal-version.stdout",
+      "sha256": "882513e2208efd1b8e68889d6a2ebef0fbed06f35a2350bceb609af655f0a3d5"
+    },
+    "logs/cabal-version.time": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/cabal-version.time",
+      "sha256": "02388e3b3fe746617a2c9761db636e6d196bab3d52d9d0e399c6669aa6b9ff11"
+    },
+    "logs/exact-contract-lines.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/exact-contract-lines.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/exact-contract-lines.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/exact-contract-lines.stdout",
+      "sha256": "d8eb786b6334014d40512021f1ce1bc76712bca3c2176b923992a1e1ebb8e0e8"
+    },
+    "logs/ghc-global-packages.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/ghc-global-packages.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/ghc-global-packages.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/ghc-global-packages.stdout",
+      "sha256": "c113c8e35133eaf7a6d47ae4ca640a1bce70b9b2892952408858fd50dde7625e"
+    },
+    "logs/ghc-global-packages.time": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/ghc-global-packages.time",
+      "sha256": "9cd17766ba5553fd2d5474afaccecb378b40b65d7875002cce0a0aa432a53d12"
+    },
+    "logs/ghc-version.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/ghc-version.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/ghc-version.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/ghc-version.stdout",
+      "sha256": "63f4b0ceaa8fb29d041493db427d4282addb1ad02313b701f23ff28dcec95e8c"
+    },
+    "logs/ghc-version.time": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/ghc-version.time",
+      "sha256": "d82c8348b8e1e353c99bb564e47047b1a87a80e905ae7afba4645d36c09fa3fd"
+    },
+    "logs/handoff-record-completed.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/handoff-record-completed.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/handoff-record-completed.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/handoff-record-completed.stdout",
+      "sha256": "a8dc48136338a102c2b2f9f09704411b2701c0ef3e12cc605048dfc1700ad4ab"
+    },
+    "logs/input-object-0.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/input-object-0.stderr",
+      "sha256": "a32697f38d85544bb5ee67e88a71ac5d18254e98334abf3c0237f148c08d64f7"
+    },
+    "logs/input-object-0.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/input-object-0.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/input-object-1.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/input-object-1.stderr",
+      "sha256": "102e0992ae9855ebf5c5e9512609b3ba6fe923348656602740385970766d13e6"
+    },
+    "logs/input-object-1.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/input-object-1.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/input-object-10.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/input-object-10.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/input-object-10.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/input-object-10.stdout",
+      "sha256": "32c1e2409ff4936a87d688848736bb9af71fe0415d338ba66dd031e3149243d3"
+    },
+    "logs/input-object-11.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/input-object-11.stderr",
+      "sha256": "c80c8b068a884233d897ad33ad27392b6a566bdd6ded8833d3b6a3239274b0ec"
+    },
+    "logs/input-object-11.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/input-object-11.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/input-object-2.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/input-object-2.stderr",
+      "sha256": "37a0679b375eb73c23ff31cbb99ba81f4bab986acf695af0bfedeb266cfa75ed"
+    },
+    "logs/input-object-2.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/input-object-2.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/input-object-3.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/input-object-3.stderr",
+      "sha256": "a21e29dc7804d05f196c85504dd6965693e15d95fd7466e14956c4f76e4e9965"
+    },
+    "logs/input-object-3.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/input-object-3.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/input-object-4.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/input-object-4.stderr",
+      "sha256": "9d12846171565d7f01ebd2f6af7923ef593a47bd2d026fae8008b675f3de0629"
+    },
+    "logs/input-object-4.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/input-object-4.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/input-object-5.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/input-object-5.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/input-object-5.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/input-object-5.stdout",
+      "sha256": "2dc9e25124f9bf08c967e2b50b723014bb680cf57a24bd9841854692c24957cc"
+    },
+    "logs/input-object-6.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/input-object-6.stderr",
+      "sha256": "5356f68c1a2865b676bf8b4f1ebf043a621f5157f7b6eda1c01848d57f0995d7"
+    },
+    "logs/input-object-6.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/input-object-6.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/input-object-7.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/input-object-7.stderr",
+      "sha256": "50db7bb94a40997016180c0347d7d9c68d3ab12821e5b1e377a793e5f8a98bab"
+    },
+    "logs/input-object-7.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/input-object-7.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/input-object-8.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/input-object-8.stderr",
+      "sha256": "4dc68a67d06dd21ed7898e6d829e63086ed37861bea25c45220dadd6238ce72d"
+    },
+    "logs/input-object-8.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/input-object-8.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/input-object-9.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/input-object-9.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/input-object-9.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/input-object-9.stdout",
+      "sha256": "86ad342ca0aef9f28449dd9ec9168bba465f60a4ef552634b553573491a38c39"
+    },
+    "logs/local-0-frp-core-cabal.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-0-frp-core-cabal.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/local-0-frp-core-cabal.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-0-frp-core-cabal.stdout",
+      "sha256": "83f9299e02417427f12c7b7f214362ab559162193c707027506c4070344ca088"
+    },
+    "logs/local-0-head.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-0-head.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/local-0-head.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-0-head.stdout",
+      "sha256": "d4227820a8778f416f385e5d57a512304f8613c9e66805d8a541c61e3e87d055"
+    },
+    "logs/local-0-root.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-0-root.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/local-0-root.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-0-root.stdout",
+      "sha256": "25baa510fa31eb6fd84e6cd66feb3ba30b5294d6a0b20bed8de77e4ec70d8929"
+    },
+    "logs/local-1-frp-cabal.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-1-frp-cabal.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/local-1-frp-cabal.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-1-frp-cabal.stdout",
+      "sha256": "21e3a41cf35e06687ea96bddec135a2fc4b9f3d6632ec542a1776315287c1086"
+    },
+    "logs/local-1-head.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-1-head.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/local-1-head.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-1-head.stdout",
+      "sha256": "83316ed67be844d3430ea9fefb5601fca6057c1dc2b344709f7e0f93e31925f1"
+    },
+    "logs/local-1-root.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-1-root.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/local-1-root.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-1-root.stdout",
+      "sha256": "b0ae6ebfa6fa508e4f910a73d4d6523b9fd7dbb9bb6619cde82732d8fba1488a"
+    },
+    "logs/local-10-head.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-10-head.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/local-10-head.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-10-head.stdout",
+      "sha256": "71aa0bbf2da4b8129122e688cd36803b5c59ba82dcbc3b5dc41c68d4c75154c8"
+    },
+    "logs/local-10-hgeometry-combinatorial-cabal.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-10-hgeometry-combinatorial-cabal.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/local-10-hgeometry-combinatorial-cabal.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-10-hgeometry-combinatorial-cabal.stdout",
+      "sha256": "1edab416ce6fd0c8fbaa894a66d0577566ba7ea1560f1a0a4e01d3eb3b99a001"
+    },
+    "logs/local-10-root.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-10-root.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/local-10-root.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-10-root.stdout",
+      "sha256": "a204a242237e02e4575d240a0eef8e86631518a5632fcd27602b0df2ce31642e"
+    },
+    "logs/local-11-head.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-11-head.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/local-11-head.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-11-head.stdout",
+      "sha256": "503402aa66866641054bba4ddd9f5123b92d401122825355c9f64aff2d277d1c"
+    },
+    "logs/local-11-nedh-cabal.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-11-nedh-cabal.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/local-11-nedh-cabal.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-11-nedh-cabal.stdout",
+      "sha256": "cdb8efb68da37d23b6d2f5d3f685bf06e636720cc0df380d3ddbff02591a7893"
+    },
+    "logs/local-11-root.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-11-root.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/local-11-root.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-11-root.stdout",
+      "sha256": "39e67521ea86d2290390336dbec8fe2765ded35495aeede98038fb037943eb64"
+    },
+    "logs/local-12-haskit-cabal.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-12-haskit-cabal.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/local-12-haskit-cabal.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-12-haskit-cabal.stdout",
+      "sha256": "ecba5e0995156e2ce4507f8eca3a9f2018cc8c5d2bee6e2d4192388da8e09abf"
+    },
+    "logs/local-12-head.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-12-head.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/local-12-head.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-12-head.stdout",
+      "sha256": "5c0fa3ef59a8acc4e8bd202fc9b294b10a76f198bc6203f0c0f32f078dc5e926"
+    },
+    "logs/local-12-root.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-12-root.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/local-12-root.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-12-root.stdout",
+      "sha256": "9de3d651a96ce4f0cb338046e63213b389eeda4b32fd97ba840a9e6f3b3bcafb"
+    },
+    "logs/local-13-head.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-13-head.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/local-13-head.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-13-head.stdout",
+      "sha256": "0ccc86966bf9de107c11e99104023eeff264b354aebbdb8f6a0938c19cc80dec"
+    },
+    "logs/local-13-root.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-13-root.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/local-13-root.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-13-root.stdout",
+      "sha256": "465eb3f2f9859f11e59386f3395361ccf30a1617311995631aaa715dd456f6f7"
+    },
+    "logs/local-13-sedh-cabal.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-13-sedh-cabal.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/local-13-sedh-cabal.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-13-sedh-cabal.stdout",
+      "sha256": "1324e00fe6e2218761c7b5d0aec85bd62d676b75351cd0f25f99244417276cbd"
+    },
+    "logs/local-14-els-cabal.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-14-els-cabal.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/local-14-els-cabal.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-14-els-cabal.stdout",
+      "sha256": "93f21ff0c9641774eac404785c64de86a3564021cd0ec9ce3ed741e910d58d0b"
+    },
+    "logs/local-14-head.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-14-head.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/local-14-head.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-14-head.stdout",
+      "sha256": "4632917d2524f1b10ecfb901c4751e81b316622b8c350322f3d4eeed143df9e1"
+    },
+    "logs/local-14-root.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-14-root.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/local-14-root.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-14-root.stdout",
+      "sha256": "54d72f57d0dd133b95364822277051d649da3afc6cc96c0ae6c94f04a130e4af"
+    },
+    "logs/local-2-frp-poc-cabal.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-2-frp-poc-cabal.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/local-2-frp-poc-cabal.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-2-frp-poc-cabal.stdout",
+      "sha256": "cd45917c6fdfdb4990740c4dad1e442563dcb0c8ca4c7b39ea1a8b133ff1a3e3"
+    },
+    "logs/local-2-head.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-2-head.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/local-2-head.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-2-head.stdout",
+      "sha256": "d306f015083d3d3996821630ce973eba83784539bf61410f7f7cb54fb3c33ce5"
+    },
+    "logs/local-2-root.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-2-root.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/local-2-root.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-2-root.stdout",
+      "sha256": "d011b4cf34265ec4cd222a4f56c617201f7bd74118e6c70c288b7b910a3b72e3"
+    },
+    "logs/local-3-edh-cabal.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-3-edh-cabal.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/local-3-edh-cabal.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-3-edh-cabal.stdout",
+      "sha256": "00c1f64870d46b603e33d1c9f2f4d5ffaa2983d6a0b0921dc56005e3f4b12424"
+    },
+    "logs/local-3-head.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-3-head.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/local-3-head.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-3-head.stdout",
+      "sha256": "fdaecd1b50b1b500b202a0c61f8bb9e2166e4b13ff8a16e13b39466e710ff23f"
+    },
+    "logs/local-3-root.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-3-root.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/local-3-root.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-3-root.stdout",
+      "sha256": "72d271f6af478230a1d9cf8c71960a6265f25f4182eb3fca65bac524d9b53d5c"
+    },
+    "logs/local-4-elr-cabal.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-4-elr-cabal.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/local-4-elr-cabal.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-4-elr-cabal.stdout",
+      "sha256": "f18615b93137fb64ede8e75a0030f60a72dc613f2d414b345c1a4dc627201f78"
+    },
+    "logs/local-4-head.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-4-head.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/local-4-head.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-4-head.stdout",
+      "sha256": "fdaecd1b50b1b500b202a0c61f8bb9e2166e4b13ff8a16e13b39466e710ff23f"
+    },
+    "logs/local-4-root.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-4-root.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/local-4-root.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-4-root.stdout",
+      "sha256": "72d271f6af478230a1d9cf8c71960a6265f25f4182eb3fca65bac524d9b53d5c"
+    },
+    "logs/local-5-eas-cabal.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-5-eas-cabal.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/local-5-eas-cabal.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-5-eas-cabal.stdout",
+      "sha256": "1597f09349f694ad00dbfe47bcba84d24aa19e10ceee0e8047d167347e86d9cd"
+    },
+    "logs/local-5-head.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-5-head.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/local-5-head.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-5-head.stdout",
+      "sha256": "0f4955709a84b24944126fec9f13dc303ce2661662433a01ec0147cb3bfd37c1"
+    },
+    "logs/local-5-root.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-5-root.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/local-5-root.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-5-root.stdout",
+      "sha256": "5b7a4d62cfa431a59a68c3b97d8bcd5cc82e8b4439a29152df939efc58f845bd"
+    },
+    "logs/local-6-hasdim-cabal.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-6-hasdim-cabal.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/local-6-hasdim-cabal.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-6-hasdim-cabal.stdout",
+      "sha256": "cbd09f31cda6c45ab88c51842fa058fc19c1f88c770aa0218767f7ddf3609910"
+    },
+    "logs/local-6-head.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-6-head.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/local-6-head.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-6-head.stdout",
+      "sha256": "00e1334e50f9c88a9b510b38562ac5c1ee0cdcbe286f07021ac63c7c6315e834"
+    },
+    "logs/local-6-root.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-6-root.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/local-6-root.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-6-root.stdout",
+      "sha256": "eb5d3e479cc6c8d9913f7da88af28a557b368d635ad8575c378c3089af47215d"
+    },
+    "logs/local-7-head.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-7-head.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/local-7-head.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-7-head.stdout",
+      "sha256": "fdaecd1b50b1b500b202a0c61f8bb9e2166e4b13ff8a16e13b39466e710ff23f"
+    },
+    "logs/local-7-lossless-decimal-cabal.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-7-lossless-decimal-cabal.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/local-7-lossless-decimal-cabal.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-7-lossless-decimal-cabal.stdout",
+      "sha256": "87cea3bbb3786061688be7bb2718a5fdbaa083083bb9cc4c43279d28d2a6c42c"
+    },
+    "logs/local-7-root.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-7-root.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/local-7-root.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-7-root.stdout",
+      "sha256": "72d271f6af478230a1d9cf8c71960a6265f25f4182eb3fca65bac524d9b53d5c"
+    },
+    "logs/local-8-cfis-cabal.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-8-cfis-cabal.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/local-8-cfis-cabal.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-8-cfis-cabal.stdout",
+      "sha256": "2e6f54bc06665155a6430ed165b190b1baa7a6e417e5ed8700dd1ef9dacdba68"
+    },
+    "logs/local-8-head.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-8-head.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/local-8-head.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-8-head.stdout",
+      "sha256": "f130c2fbec68a21d83b9026c0b9062662f2114dba48a391a065a7001b11777bb"
+    },
+    "logs/local-8-root.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-8-root.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/local-8-root.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-8-root.stdout",
+      "sha256": "2250e89df85a9bee103e4027a3b4a1326ac8e38e35b99d18d00a9741f55247eb"
+    },
+    "logs/local-9-head.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-9-head.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/local-9-head.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-9-head.stdout",
+      "sha256": "71aa0bbf2da4b8129122e688cd36803b5c59ba82dcbc3b5dc41c68d4c75154c8"
+    },
+    "logs/local-9-hgeometry-cabal.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-9-hgeometry-cabal.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/local-9-hgeometry-cabal.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-9-hgeometry-cabal.stdout",
+      "sha256": "1b14d43195d64ecd92d593f7788a929a89ed02f9dba261b39e9a7d06550140ae"
+    },
+    "logs/local-9-root.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-9-root.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/local-9-root.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-9-root.stdout",
+      "sha256": "a204a242237e02e4575d240a0eef8e86631518a5632fcd27602b0df2ce31642e"
+    },
+    "logs/local-stage-ledger-finished.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-stage-ledger-finished.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/local-stage-ledger-finished.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/local-stage-ledger-finished.stdout",
+      "sha256": "8919a4ef318df18f0b640b80a3cbdc271e2702eb31cc97ce482b284e3eb2ee01"
+    },
+    "logs/mirror-git-root-readback.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/mirror-git-root-readback.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/mirror-git-root-readback.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/mirror-git-root-readback.stdout",
+      "sha256": "f86c6de59ae95b8acd85b1c48164dfc4951ae172668999bc4479cb76849d1593"
+    },
+    "logs/preflight-heartbeat.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/preflight-heartbeat.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/preflight-heartbeat.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/preflight-heartbeat.stdout",
+      "sha256": "bc1f43c7b6a9adb05ed7bfb072b1a7c54afdb13406f73726b2d04e5db8d530ba"
+    },
+    "logs/preflight-record-completed.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/preflight-record-completed.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/preflight-record-completed.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/preflight-record-completed.stdout",
+      "sha256": "cd9e0eeea1c10f06e75c9c9593c94c271c9af557852ea1931f81b60f5b8ad852"
+    },
+    "logs/prepare-exact-local-delivery.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/prepare-exact-local-delivery.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/prepare-exact-local-delivery.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/prepare-exact-local-delivery.stdout",
+      "sha256": "094d154dd5bb1eb94f5bb00944e4e7950aef488d809906fba26f2a473c0b81dc"
+    },
+    "logs/publication-handoff-started.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/publication-handoff-started.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/publication-handoff-started.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/publication-handoff-started.stdout",
+      "sha256": "cc78829bf7577339065e38a40995809802c3d579028c6fddc703839c7e4f1ecd"
+    },
+    "logs/sandbox-readonly-probe.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/sandbox-readonly-probe.stderr",
+      "sha256": "ed3471f7900377f86150471417911309833a36d664cb5af7409e139103f67ddf"
+    },
+    "logs/sandbox-readonly-probe.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/sandbox-readonly-probe.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/sandbox-readonly-without-network-namespace-probe.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/sandbox-readonly-without-network-namespace-probe.stderr",
+      "sha256": "6722ac7f6d5dd369bd7fe48142072295d4894a41818c22da36804bd329388bbc"
+    },
+    "logs/sandbox-readonly-without-network-namespace-probe.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/sandbox-readonly-without-network-namespace-probe.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/stack-version.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/stack-version.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/stack-version.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/stack-version.stdout",
+      "sha256": "ddc9fab4875e780383a9299db5ada19ef6de7f0d3c14dfa0c3a5eb5d84a072ca"
+    },
+    "logs/stack-version.time": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/stack-version.time",
+      "sha256": "5774f637350dd4aa8ab5311c49c554a27c1458be8b6c9aad9beb93190daeec58"
+    },
+    "logs/stop-evidence-record-completed.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/stop-evidence-record-completed.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/stop-evidence-record-completed.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/stop-evidence-record-completed.stdout",
+      "sha256": "f2afec96c3711db18b88fd778f6131de55f11f1a0245b3f34176bf78e7282952"
+    },
+    "logs/stop-handoff-started.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/stop-handoff-started.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/stop-handoff-started.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/stop-handoff-started.stdout",
+      "sha256": "37c375e6bac8be3ac9b7542919eefb2bf246a0813d20aebf3f0392f9ae2122f3"
+    },
+    "logs/task-init.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/task-init.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/task-init.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/task-init.stdout",
+      "sha256": "09f9df5694ddd4bae0095c3b3235ee9a2aabff8c3ca2e7a8c952fddfd32d4f33"
+    },
+    "logs/task-start-preflight.stderr": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/task-start-preflight.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logs/task-start-preflight.stdout": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/logs/task-start-preflight.stdout",
+      "sha256": "1b14f76f41b626dedd12bf411e3eafbc0e9e0853de1a4608c108b66e9f1dce21"
+    },
+    "receipts/INPUT_GIT_OBJECT_VERIFICATION.json": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/receipts/INPUT_GIT_OBJECT_VERIFICATION.json",
+      "sha256": "f7e464080f2dd72e03f74530d0bc7751ed1d317573c21ac65182bb9ba4c83cd0"
+    },
+    "receipts/INPUT_MIRROR_MANIFEST.json": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/receipts/INPUT_MIRROR_MANIFEST.json",
+      "sha256": "6888cbb350d3f87fb6e89cb279fd54d27079b8d8f1c6f28213650f59955b32a5"
+    },
+    "receipts/LOCAL_STAGE_VALIDATION.json": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/receipts/LOCAL_STAGE_VALIDATION.json",
+      "sha256": "2eeda1cec07a4c6bc996509a138c4673b5f6fa47a2227a04aa7765853f2332ca"
+    },
+    "PUBLICATION_MANIFEST.json": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/PUBLICATION_MANIFEST.json",
+      "sha256": "f7186aaa239b1a89899b4190a1ee95a650c29005d8938266f6dba5be2398e30c"
+    },
+    "HANDOFF_RECEIPT.json": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/HANDOFF_RECEIPT.json",
+      "sha256": "c523829f1b1d146d1bffb2d94c1c01a24e3e6923dc27769d5934d44a0c028744"
+    },
+    "WORKER_EXECUTION_REPORT.md with phased outcome, direct evidence and exact limitations": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/WORKER_EXECUTION_REPORT.md",
+      "sha256": "2ab3240b7c9306d61a67e60e7a27f478d6322f07dcc11f6b46df0932ccecd0ac"
+    },
+    "D003_BINDING.json with actual thread/model/effort/cwd, single-writer lock, Owner literal grant and W002 actual root": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/D003_BINDING.json",
+      "sha256": "a8f3a70d80a6140cb820330b2a1f40cd7f5a9124bf432aeb503a4bc175d11df4"
+    },
+    "DRY_DEPENDENCY_PREFLIGHT.json with exact closure, tool hashes, measurable caps and preflight decision": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/DRY_DEPENDENCY_PREFLIGHT.json",
+      "sha256": "31c52836b1d130b57c6f9cd0c0a553ae71be8b06f1c14bd7b84f28e8d718f8a8"
+    },
+    "WRITE_SURFACE_PLAN.json plus WRITE_SURFACE_AUDIT.json proving or accurately failing zero writes outside W002 WORK_ROOT": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/PUBLICATION_MANIFEST.json",
+      "sha256": "f7186aaa239b1a89899b4190a1ee95a650c29005d8938266f6dba5be2398e30c"
+    },
+    "SOURCE_BASELINE_REPORT.md and SOURCE_CHANGE_MANIFEST.json binding exact base, staged tree and every patch file": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/PUBLICATION_MANIFEST.json",
+      "sha256": "f7186aaa239b1a89899b4190a1ee95a650c29005d8938266f6dba5be2398e30c"
+    },
+    "PRECONDITION_REPORT.md and EP_ACCEPTANCE_MATRIX.md for EP-WALL-SHARED-01..03 and EP-SCENARIO-01..05": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/EP_ACCEPTANCE_MATRIX.md",
+      "sha256": "89c4bb3996938596443f1616c8a595b5b14147964d6a38f5462ea29f9b89df4d"
+    },
+    "FIXTURE_SCHEMA_AND_PROVENANCE.md plus the complete static FX-WALL-SCENARIO-001 fixture with 9 scenarios, 18 firings and 22 inputs, never executed": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/FIXTURE_SCHEMA_AND_PROVENANCE.md",
+      "sha256": "f7176578f6581ffcfbf735e84939d10ccdf1506bc38f3992663a3f4f97bdce63"
+    },
+    "KNOWN_CONTRACT_CONFLICTS.md with exact source/test functions and unresolved contract choices": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/KNOWN_CONTRACT_CONFLICTS.md",
+      "sha256": "d051b1545c0784bf71893c015b7ed52041e28fabf044516a2f50296d219bf6d9"
+    },
+    "COMMAND_LOG.jsonl and HASHES.sha256": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/PUBLICATION_MANIFEST.json",
+      "sha256": "f7186aaa239b1a89899b4190a1ee95a650c29005d8938266f6dba5be2398e30c"
+    },
+    "Conditional COMPILE_ONLY_REPORT.json, SERIALIZATION_TEST_REPORT.json, STAGED_LOCAL_COMMIT_REPORT.json or ENGINEERING_STOP_REPORT.md only when actually applicable": {
+      "ref": "daowei2026/observe-iterate@2af8a364b4157958b59d68ab4fc24eb6a95f5593:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/ENGINEERING_STOP_REPORT.md",
+      "sha256": "acdd75cd2a86dcfe54a90bf046a7c9d7512387bb24bf01c9a67a4fc4c9cce27d"
+    }
+  }
+}
