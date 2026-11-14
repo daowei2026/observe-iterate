@@ -1,0 +1,131 @@
+{
+  "utc": "2026-11-14T22:19:34.277598+00:00",
+  "run_id": "OI-EAW-WALL-20261114-01",
+  "work_order_id": "W004",
+  "issuer_call_id": "C0012",
+  "worker": "codex:OI-EAW-WALL-20261114-01:worker:W1",
+  "return_to": "chatgpt:OI-EAW-WALL-20261114-01:executor:E1",
+  "order_ref": "daowei2026/observe-iterate@347e4b2322ff2401aca21333cd3118f93d490baf:longrun/runs/OI-EAW-WALL-20261114-01/work_orders/W004/ORDER.json",
+  "original_physical_thread": "01a1da55-5881-7590-94a1-0661f0236977",
+  "session_id": "01a1da55-5881-7590-94a1-0661f0236977",
+  "actual_context": {
+    "timestamp": "2026-11-14T22:15:31.087Z",
+    "turn_id": "01a1dc21-4349-77d3-b755-32065e02eeb2",
+    "cwd": "/dwdhome/fy/BASE_E6_2",
+    "model": "gpt-6.1-sol",
+    "effort": "max"
+  },
+  "owner_pid": 2890,
+  "owner_startticks": "20139",
+  "owner_uid": 501,
+  "owner_exe": "/home/dw/.local/lib/node_modules/@openai/codex/node_modules/@openai/codex-linux-x64/vendor/x86_64-unknown-linux-musl/bin/codex",
+  "controller_pre_dispatch_evidence": "input/W004-final-pre-dispatch-context.json",
+  "controller_idle_and_goal_null": true,
+  "prior_holder_PID240810_absent": true,
+  "root_absent_before_creation": true,
+  "actual_root": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004",
+  "root_canonical": true,
+  "HOME": "/home/dw",
+  "CODEX_HOME": "/home/dw/.codex",
+  "HOME_or_CODEX_HOME_reset": false,
+  "new_lock": {
+    "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/.D003-writer.lock",
+    "holder_pid": 243622,
+    "startticks": "47124402",
+    "inode": 14806399,
+    "controller_session": 90041,
+    "fdinfo": "pos:\t0\nflags:\t02100002\nmnt_id:\t4061\nino:\t14806399\nlock:\t1: FLOCK  ADVISORY  WRITE 243622 00:53:14806399 0 EOF\n",
+    "fresh_same_inode_competition_errno": 11,
+    "holder_modified": false
+  },
+  "owner_literal_grant": {
+    "operation": "wall-observation-work",
+    "execution_context": "linux:/dwdhome/fy/BASE_E6_2",
+    "allowed_writes": [
+      "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01"
+    ],
+    "authority_quote": "operation=wall-observation-work execution_context=linux:/dwdhome/fy/BASE_E6_2 allowed_writes=/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01"
+  },
+  "Owner_D003_subset_verified": true,
+  "sentinel_preconfirmation_copy": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/artifacts/CONTROLLER_SENTINEL_PRECONFIRMATION.json",
+  "sentinel_sha256": "d56b0541daeb37e39978b88ecafbc8fa3e562f882b46d8042b3ad669b3e5bc4a",
+  "other_negative_targets_absent": [
+    {
+      "label": "SHARED",
+      "path": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/.W004-deny-shared-C0012-e9ed948d",
+      "result": "ENOENT",
+      "errno": 2,
+      "read_only_lstat": true
+    },
+    {
+      "label": "HOME",
+      "path": "/home/dw/.W004-deny-home-C0012-e9ed948d",
+      "result": "ENOENT",
+      "errno": 2,
+      "read_only_lstat": true
+    },
+    {
+      "label": "CODEX_HOME",
+      "path": "/home/dw/.codex/.W004-deny-codex-C0012-e9ed948d",
+      "result": "ENOENT",
+      "errno": 2,
+      "read_only_lstat": true
+    },
+    {
+      "label": "SYMLINK_TARGET",
+      "path": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/.W004-deny-symlink-C0012-e9ed948d",
+      "result": "ENOENT",
+      "errno": 2,
+      "read_only_lstat": true
+    }
+  ],
+  "no_new_worker_or_other_chat": true,
+  "github_write_authority": false,
+  "additional_no_writer_evidence": {
+    "predispatch_queue_empty": true,
+    "predispatch_Goal_null": true,
+    "prior_formal_W003_turn_completed": [
+      [
+        "01a1dbe9-a130-75a2-8f43-0d67468a532c",
+        "completed"
+      ]
+    ],
+    "source": "input/W004-worker-pre-dispatch-state.json"
+  },
+  "post_attempt_lock": {
+    "utc": "2026-11-14T22:29:00.536974+00:00",
+    "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/.D003-writer.lock",
+    "holder_pid": 243622,
+    "startticks": "47124402",
+    "inode": 14806399,
+    "controller_session": 90041,
+    "fdinfo": "pos:\t0\nflags:\t02100002\nmnt_id:\t4061\nino:\t14806399\nlock:\t1: FLOCK  ADVISORY  WRITE 243622 00:53:14806399 0 EOF\n",
+    "fresh_same_inode_competition": {
+      "errno": 11,
+      "inode": 14806399,
+      "result": "FAILED_AS_REQUIRED"
+    },
+    "holder_modified_replaced_released": false
+  },
+  "actual_parent_stdin_receipt": "receipts/r0a1-parent-stdin.json",
+  "actual_launcher_fd0": {
+    "fd": 0,
+    "path": "/dev/null",
+    "flags": 32768,
+    "access_mode": 0,
+    "writable": false,
+    "inode": 5,
+    "nlink": 1
+  },
+  "inherited_competing_FD_closed": [
+    {
+      "fd": 3,
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/.D003-writer.lock",
+      "flags": 163842,
+      "writable": true,
+      "closed_before_restrict_and_exec": true
+    }
+  ],
+  "kernel_setup_succeeded_but_R0A_probe_not_PASS": true,
+  "global_zero_outside_writes_proven": false
+}

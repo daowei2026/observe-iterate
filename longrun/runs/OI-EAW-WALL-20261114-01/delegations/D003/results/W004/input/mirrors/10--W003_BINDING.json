@@ -1,0 +1,83 @@
+{
+  "utc": "2026-11-14T20:50:12.109398+00:00",
+  "run_id": "OI-EAW-WALL-20261114-01",
+  "work_order_id": "W003",
+  "worker": "codex:OI-EAW-WALL-20261114-01:worker:W1",
+  "issuer_call_id": "C0011",
+  "return_to": "chatgpt:OI-EAW-WALL-20261114-01:executor:E1",
+  "original_physical_thread_reused": true,
+  "thread_id": "01a1da55-5881-7590-94a1-0661f0236977",
+  "session_id": "01a1da55-5881-7590-94a1-0661f0236977",
+  "actual_turn_id": "01a1dbbd-01ac-7d03-983d-2f655359abf4",
+  "cwd": "/dwdhome/fy/BASE_E6_2",
+  "model": "gpt-6.1-sol",
+  "effort": "max",
+  "current_turn_context_evidence": {
+    "timestamp": "2026-11-14T20:45:52.993Z",
+    "turn_id": "01a1dbbd-01ac-7d03-983d-2f655359abf4",
+    "cwd": "/dwdhome/fy/BASE_E6_2",
+    "model": "gpt-6.1-sol",
+    "effort": "max",
+    "reasoning_effort": null
+  },
+  "actual_processes_read_only_verified": [
+    {
+      "pid": 2890,
+      "startticks": "20139",
+      "uid": 501,
+      "exe": "/home/dw/.local/lib/node_modules/@openai/codex/node_modules/@openai/codex-linux-x64/vendor/x86_64-unknown-linux-musl/bin/codex"
+    },
+    {
+      "pid": 240810,
+      "startticks": "46501758",
+      "uid": 501,
+      "exe": "/usr/bin/python3.12"
+    }
+  ],
+  "controller_owner_binding": {
+    "kind": "remote-app-server",
+    "transport": "remote-unix-websocket",
+    "pid": 2890,
+    "start_ticks": "20139",
+    "exe": "/home/dw/.local/lib/node_modules/@openai/codex/node_modules/@openai/codex-linux-x64/vendor/x86_64-unknown-linux-musl/bin/codex",
+    "socket": "/tmp/codex-daemon-501/5bd7261868abb7f6afd1642c17f5ba3d4c57aa34059b8fb5b3a4666529b63ea2",
+    "owner_authorization": "Owner在本聊天答复：沿用当前主控配置和现有执行器；对应问题明确为当前gpt-6.1-sol/xhigh及已核实正在承载本聊天的现有Linux App Server单次唤醒。"
+  },
+  "owner_binding_evidence": "input/W003-worker-pre-dispatch-state.json; input/W003-worker-loaded-context.json; fresh PID/startticks/uid/exe checks",
+  "prior_worker_status": {
+    "controller_old_turn_completed_and_goal_null_queue_empty": true,
+    "controller_evidence": "input/W003-worker-pre-dispatch-state.json",
+    "old_lock_holder_pid237355_absent_now": true,
+    "original_thread_loaded_idle_before_dispatch": true,
+    "new_root_precreation_absent_verified_in_bootstrap_native_command_log": true,
+    "no_other_writer_claim_scope": "Fresh new controller lock plus original-thread idle/queue snapshot and old PID absent; no broad process or HOME scan."
+  },
+  "new_lock": {
+    "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/.D003-writer.lock",
+    "session": 30931,
+    "holder_pid": 240810,
+    "holder_startticks": "46501758",
+    "inode": 14806399,
+    "current_holder_fdinfo": "pos:\t0\nflags:\t02100002\nmnt_id:\t4061\nino:\t14806399\nlock:\t1: FLOCK  ADVISORY  WRITE 240810 00:53:14806399 0 EOF\n",
+    "competition": {
+      "result": "FAILED_AS_REQUIRED",
+      "errno": 11,
+      "inode": 14806399,
+      "fd_opened_for_competition_only_no_write": true
+    },
+    "holder_lock_acquired_replaced_or_released_by_worker": false
+  },
+  "HOME": "/home/dw",
+  "CODEX_HOME": "/home/dw/.codex",
+  "HOME_or_CODEX_HOME_reset": false,
+  "HOME_and_CODEX_HOME_business_new_writes_contract": 0,
+  "HOME_and_CODEX_HOME_trace_observed_successful_writes": 0,
+  "global_zero_external_writes_proven": false,
+  "actual_write_root": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003",
+  "root_canonical": true,
+  "owner_literal_grant": "operation=wall-observation-work execution_context=linux:/dwdhome/fy/BASE_E6_2 allowed_writes=/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01",
+  "grant_validation": "Exact Owner RUN_BINDING copy, current D003 and W003 literal grant subset verified in bootstrap; originals in input, command evidence retained.",
+  "github_write_authority": false,
+  "no_other_chat_messages": true,
+  "no_new_worker_or_subagent": true
+}

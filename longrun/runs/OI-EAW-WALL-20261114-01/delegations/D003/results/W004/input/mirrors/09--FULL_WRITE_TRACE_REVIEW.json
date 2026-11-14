@@ -1,0 +1,163 @@
+{
+  "record_type": "W003_FULL_WRITE_TRACE_REVIEW",
+  "utc": "2026-11-14T20:52:10.080802+00:00",
+  "status": "COMPLETE_FOR_FAILED_LAUNCHER_ONLY",
+  "R0A_WRITE_CONFINEMENT_PASS": false,
+  "trace_scope": "One attempted launcher PID241337, from execve through exit73. The probe was never execed; no descendants. Parent/control and native platform are not kernel-confined by this trace.",
+  "configuration": {
+    "absolute_tool": "/usr/bin/strace",
+    "flags": [
+      "--kill-on-exit",
+      "-ff",
+      "-yy",
+      "-ttt",
+      "-s",
+      "128",
+      "-e",
+      "trace=all"
+    ],
+    "raw_read_payloads": "read/pread64/readv/preadv/preadv2/recvfrom/recvmsg/recvmmsg payloads rendered raw to avoid copying data; calls retained; write-family remains decoded with FD path",
+    "open_write_payload_truncation": "-s128 limits displayed byte buffer only, not actual return count, FD path or syscall coverage"
+  },
+  "files": [
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/trace/r0a-positive.241337",
+      "bytes": 133303,
+      "sha256": "ea4a8881e8a3967196e0b6ef4f904ddb6ad17bd80d866b5e5b2e8bfec51177bb",
+      "mtime_ns": 1794689238161816438,
+      "inode": 14821822,
+      "dev": 83,
+      "lines": 1071,
+      "normal_terminal_record": true
+    }
+  ],
+  "syscall_histogram": {
+    "execve": 1,
+    "brk": 19,
+    "mmap": 83,
+    "access": 1,
+    "openat": 85,
+    "fstat": 125,
+    "close": 78,
+    "readlinkat": 1,
+    "read": 110,
+    "munmap": 12,
+    "mprotect": 18,
+    "pread64": 2,
+    "arch_prctl": 1,
+    "set_tid_address": 1,
+    "set_robust_list": 1,
+    "rseq": 1,
+    "prlimit64": 1,
+    "getrandom": 2,
+    "uname": 2,
+    "shmget": 2,
+    "shmat": 1,
+    "futex": 18,
+    "gettid": 1,
+    "readlink": 2,
+    "newfstatat": 258,
+    "lseek": 97,
+    "getdents64": 16,
+    "fcntl": 5,
+    "ioctl": 57,
+    "rt_sigaction": 66,
+    "write": 1,
+    "shmdt": 1,
+    "exit_group": 1
+  },
+  "unparsed_records": [],
+  "successful_descriptor_writes": [
+    {
+      "file": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/trace/r0a-positive.241337",
+      "line": 1063,
+      "syscall": "write",
+      "return_text": "1214",
+      "raw": "1794689238.073443 write(4</dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/receipts/r0a-positive-launcher.json>, \"{\\n  \\\"record_type\\\": \\\"W003_LANDLOCK_AND_SECCOMP_LAUNCHER\\\",\\n  \\\"utc\\\": \\\"2026-11-14T20:47:18.044408+00:00\\\",\\n  \\\"root\\\": \\\"/dwdhome/fy/BAS\"..., 1214) = 1214",
+      "destination": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/receipts/r0a-positive-launcher.json",
+      "return_value": 1214,
+      "inside_WORK_ROOT": true
+    }
+  ],
+  "successful_descriptor_write_count": 1,
+  "successful_descriptor_write_bytes": 1214,
+  "successful_descriptor_writes_with_unknown_destination": [],
+  "successful_outside_descriptor_writes_in_this_trace": 0,
+  "successful_writable_or_creating_opens": [
+    {
+      "file": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/trace/r0a-positive.241337",
+      "line": 1058,
+      "syscall": "openat",
+      "return_text": "4</dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/receipts/r0a-positive-launcher.json>",
+      "raw": "1794689238.053326 openat(AT_FDCWD</dwdhome/fy/BASE_E6_2>, \"/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/receipts/r0a-positive-launcher.json\", O_WRONLY|O_CREAT|O_TRUNC|O_CLOEXEC, 0666) = 4</dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/receipts/r0a-positive-launcher.json>",
+      "destination": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/receipts/r0a-positive-launcher.json",
+      "inside_WORK_ROOT": true
+    }
+  ],
+  "other_mutation_syscalls": [],
+  "shared_mappings": [
+    {
+      "file": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/trace/r0a-positive.241337",
+      "line": 112,
+      "syscall": "mmap",
+      "return_text": "0x760af77f5000",
+      "raw": "1794689237.642164 mmap(NULL, 27028, PROT_READ, MAP_SHARED, 4</usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache>, 0) = 0x760af77f5000",
+      "success": true,
+      "PROT_WRITE": false
+    }
+  ],
+  "sysv_ipc": [
+    {
+      "file": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/trace/r0a-positive.241337",
+      "line": 93,
+      "syscall": "shmget",
+      "return_text": "-1 EEXIST (File exists)",
+      "raw": "1794689237.636130 shmget(0xa5723213, 16384, IPC_CREAT|IPC_EXCL|0666) = -1 EEXIST (File exists)",
+      "success": false
+    },
+    {
+      "file": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/trace/r0a-positive.241337",
+      "line": 94,
+      "syscall": "shmget",
+      "return_text": "0",
+      "raw": "1794689237.636374 shmget(0xa5723213, 16384, 000) = 0",
+      "success": true
+    },
+    {
+      "file": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/trace/r0a-positive.241337",
+      "line": 95,
+      "syscall": "shmat",
+      "return_text": "0x760af77fc000",
+      "raw": "1794689237.636654 shmat(0, NULL, SHM_RDONLY) = 0x760af77fc000",
+      "success": true
+    },
+    {
+      "file": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/trace/r0a-positive.241337",
+      "line": 1069,
+      "syscall": "shmdt",
+      "return_text": "0",
+      "raw": "1794689238.110031 shmdt(0x760af77fc000) = 0",
+      "success": true
+    }
+  ],
+  "sysv_ipc_note": "Startup IPC_CREAT|IPC_EXCL returned EEXIST; existing shmid0 obtained and attached SHM_RDONLY, then detached. No successful IPC object creation or writable shared mapping observed.",
+  "network_syscalls_observed": [],
+  "proc_comm_records": [],
+  "proc_comm_status": "NO_OPEN_OR_ACTUAL_WRITE_OBSERVED_IN_THIS_ATTEMPT",
+  "inherited_fd0": {
+    "path": "/dev/null",
+    "observed_flags": "O_RDWR|O_LARGEFILE",
+    "actual_write_observed": false,
+    "trace_line": 1055,
+    "effect": "Launcher rejected writable stdin before Landlock or child exec."
+  },
+  "inherited_lock_fd3": {
+    "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/.D003-writer.lock",
+    "origin": "Controller lock path opened on a separate competing open file description; failed LOCK_EX|LOCK_NB before launch; passed FD number3; parent finally closed its own FD only.",
+    "holder_lock_modified": false,
+    "launcher_enumeration_completed": false
+  },
+  "kernel_policy_install_syscalls_observed": 0,
+  "global_or_future_zero_outside_write_proof": false,
+  "conclusion_zh": "这份完整 trace 可回溯本次失败 launcher 的唯一成功 write 到 W003 receipt；不能据此证明 confinement、未执行探针或后继命令零外写。"
+}

@@ -1,0 +1,182 @@
+{
+  "schema": "w004-local-stage-handoff/v1",
+  "utc": "2026-11-14T22:26:47.339624+00:00",
+  "run_id": "OI-EAW-WALL-20261114-01",
+  "work_order_id": "W004",
+  "worker": "codex:OI-EAW-WALL-20261114-01:worker:W1",
+  "return_to": "chatgpt:OI-EAW-WALL-20261114-01:executor:E1",
+  "order_ref": "daowei2026/observe-iterate@347e4b2322ff2401aca21333cd3118f93d490baf:longrun/runs/OI-EAW-WALL-20261114-01/work_orders/W004/ORDER.json",
+  "outcome": "STOP",
+  "phase0_verdict": "PREFLIGHT_STOP",
+  "specific_stop": "PROBE_BOOTSTRAP_IOCTL_FIOCLEX_EPERM",
+  "resolved_prior_preconditions": [
+    "显式只读stdin父子接线",
+    "主控sentinel预确认原件已核并逐字复制"
+  ],
+  "missing": [
+    {
+      "id": "M-R0A1-BOOTSTRAP",
+      "detail": "NNP/Landlock ABI6 create/add/restrict/seccomp均已成功，后继Python启动以ioctl(FIOCLEX) EPERM/exit2停止；probe主体未运行，WRITE_CONFINEMENT_PASS=false。保留原policy，不自动重试。"
+    },
+    {
+      "id": "M-REQUIRED-PROBES",
+      "detail": "inside/outside/shared/HOME/CODEX新写拒绝、child/grandchild、symlink和network等实测缺；已有stdin只读、锁FD关闭、policy安装和限域trace不能替代九项probe。"
+    },
+    {
+      "id": "M-CLOSURE",
+      "detail": "R0-B未进入；单一兼容offline resolver/compiler/tools/packageDB/传递依赖/rebuild set和missing deps为空未证。8个exact git source对象未在本W读取。"
+    },
+    {
+      "id": "M-BUDGETS-MONITORS",
+      "detail": "R0-C未进入；四项非空预测/可比依据及连续监测/阈值kill receipt缺。"
+    },
+    {
+      "id": "M-CONDITIONAL-EP",
+      "detail": "四PASS未成立，Phase1/2和八EP未实施；未产出staged source/patch/DTO/schema/9-18-22 fixture/compile/serialization/local commit，不造空文件。"
+    },
+    {
+      "id": "M-STATIC-LEDGER",
+      "detail": "只继承C0012 E1对旧SCENARIO-04的PARTIAL静态输入；无新target manifest或current result，不能冒充本W新增EP满足。"
+    },
+    {
+      "id": "M-PUBLICATION",
+      "detail": "本地W004原件尚未真实出版，无真实新commit/ref；待主控按清单逐字运输并回传真refs/bytes/hash。"
+    },
+    {
+      "id": "M-FORMAL-RETURN",
+      "detail": "本地阶段不生成正式Return；同一原W1同W004取得真实已出版证据refs后再生成V2，仅回原E1，正式Return自身再由主控出版至worker_results/W004/WORKER_RETURN.json。"
+    }
+  ],
+  "deliverable_mapping": [
+    {
+      "index": 1,
+      "literal_ORDER_deliverable": "WORKER_EXECUTION_REPORT.md with exact corrected-wiring, Phase0 recovery and conditional EP outcome",
+      "local_files": [
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/artifacts/WORKER_EXECUTION_REPORT.md"
+      ],
+      "status": "LOCAL_READY"
+    },
+    {
+      "index": 2,
+      "literal_ORDER_deliverable": "W004_BINDING.json with original W1 physical-chat reuse, fresh owner/thread/model/effort/cwd/no-writer/new-lock, unchanged HOME/CODEX_HOME and independent W004 root",
+      "local_files": [
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/artifacts/W004_BINDING.json"
+      ],
+      "status": "LOCAL_READY"
+    },
+    {
+      "index": 3,
+      "literal_ORDER_deliverable": "CONTROLLER_SENTINEL_PRECONFIRMATION.json preserving the controller read-only absence receipt for /D003/.W004-deny-outside-C0012-e9ed948d",
+      "local_files": [
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/artifacts/CONTROLLER_SENTINEL_PRECONFIRMATION.json"
+      ],
+      "status": "LOCAL_READY"
+    },
+    {
+      "index": 4,
+      "literal_ORDER_deliverable": "PARENT_LAUNCHER_WIRING_DELTA.json proving explicit O_RDONLY /dev/null stdin and no relaxation of inherited-FD checks",
+      "local_files": [
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/artifacts/PARENT_LAUNCHER_WIRING_DELTA.json"
+      ],
+      "status": "LOCAL_READY"
+    },
+    {
+      "index": 5,
+      "literal_ORDER_deliverable": "WRITE_CONFINEMENT_REPORT.json and FULL_WRITE_TRACE_REVIEW.json proving or accurately failing kernel enforcement, probes and path-complete writes",
+      "local_files": [
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/artifacts/WRITE_CONFINEMENT_REPORT.json",
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/artifacts/FULL_WRITE_TRACE_REVIEW.json"
+      ],
+      "status": "LOCAL_READY"
+    },
+    {
+      "index": 6,
+      "literal_ORDER_deliverable": "OFFLINE_CLOSURE_REPORT.json selecting exactly one compatible complete offline closure or stopping",
+      "local_files": [
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/artifacts/OFFLINE_CLOSURE_REPORT.json"
+      ],
+      "status": "LOCAL_READY"
+    },
+    {
+      "index": 7,
+      "literal_ORDER_deliverable": "RESOURCE_BUDGET_REPORT.json with non-null evidence-backed disk/RSS/wall/file bounds and verified continuous monitors or stopping",
+      "local_files": [
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/artifacts/RESOURCE_BUDGET_REPORT.json"
+      ],
+      "status": "LOCAL_READY"
+    },
+    {
+      "index": 8,
+      "literal_ORDER_deliverable": "PHASE0_RECOVERY_VERDICT.json with four independent PASS results and exact gate/stop routing",
+      "local_files": [
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/artifacts/PHASE0_RECOVERY_VERDICT.json"
+      ],
+      "status": "LOCAL_READY"
+    },
+    {
+      "index": 9,
+      "literal_ORDER_deliverable": "COMMAND_LOG.jsonl, WRITE_SURFACE_AUDIT.json, EP_ACCEPTANCE_MATRIX.md, PUBLICATION_MANIFEST.json and HASHES.sha256",
+      "local_files": [
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/artifacts/COMMAND_LOG.jsonl",
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/artifacts/WRITE_SURFACE_AUDIT.json",
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/artifacts/EP_ACCEPTANCE_MATRIX.md",
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/artifacts/PUBLICATION_MANIFEST.json",
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/artifacts/HASHES.sha256"
+      ],
+      "status": "LOCAL_READY"
+    },
+    {
+      "index": 10,
+      "literal_ORDER_deliverable": "If and only if all four Phase0 requirements pass: exact-base staged eight-EP package, reviewable patch/manifest, complete unexecuted 9/18/22 fixture, permitted compile-only/synthetic-serialization reports, and NOT_UPSTREAM_PUBLISHED local commit report if actually created",
+      "local_files": [],
+      "status": "NOT_APPLICABLE_FOUR_PASS_NOT_MET",
+      "conditional_files_not_created": [
+        "SOURCE_BASELINE_AND_STAGING_REPORT.md",
+        "SOURCE_CHANGE_MANIFEST.json",
+        "PREREQUISITE_PATCHSET.diff",
+        "PRECONDITION_REPORT.md",
+        "D003_BINDING_CANDIDATE.json",
+        "FIXTURE_SCHEMA_AND_PROVENANCE.md",
+        "FX_WALL_SCENARIO_001.schema.json",
+        "FX_WALL_SCENARIO_001.json",
+        "KNOWN_CONTRACT_CONFLICTS.md",
+        "COMPILE_ONLY_REPORT.json",
+        "SERIALIZATION_TEST_REPORT.json",
+        "STAGED_LOCAL_COMMIT_REPORT.json"
+      ],
+      "reason": "PREFLIGHT_STOP；不得进入条件工程。"
+    },
+    {
+      "index": 11,
+      "literal_ORDER_deliverable": "ENGINEERING_STOP_REPORT.md for any STOP without fake empty conditional artifacts",
+      "local_files": [
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/artifacts/ENGINEERING_STOP_REPORT.md"
+      ],
+      "status": "LOCAL_READY"
+    },
+    {
+      "index": 12,
+      "literal_ORDER_deliverable": "V2 WORKER_RETURN.json returning only to executor E1",
+      "local_files": [],
+      "status": "DEFERRED_UNTIL_REAL_PUBLICATION_REFS",
+      "reason": "两阶段出版合同；不造future/self ref。",
+      "return_to": "chatgpt:OI-EAW-WALL-20261114-01:executor:E1",
+      "transport_target": "longrun/runs/OI-EAW-WALL-20261114-01/worker_results/W004/WORKER_RETURN.json",
+      "real_ref": null
+    }
+  ],
+  "actual_write_root": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004",
+  "local_result_path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/artifacts/WORKER_EXECUTION_REPORT.md",
+  "result_ref": null,
+  "real_publication_commit": null,
+  "publication_target_prefix": "longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W004/",
+  "transport_mapping": "W004/artifacts/<name>发布到目标根同名；其余W004/<relative>保留相对路径，逐字运输。",
+  "formal_Return_generated": false,
+  "next_steps": [
+    "主控按PUBLICATION_MANIFEST/HASHES/FREEZE_RECEIPT逐字出版本地证据并真实回读。",
+    "真实commit/ref/hash/bytes回传同原W1同W004。",
+    "同单核真后生成正式V2 Return及独立校验，仅回原E1，由主控出版到worker_results/W004/。"
+  ],
+  "business_acceptance_or_parent_completion_claim": false,
+  "no_polling_or_other_chat": true
+}

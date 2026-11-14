@@ -1,0 +1,48 @@
+{
+  "record_type": "W003_PHASE0_RECOVERY_VERDICT",
+  "utc": "2026-11-14T20:56:06.991210+00:00",
+  "run_id": "OI-EAW-WALL-20261114-01",
+  "work_order_id": "W003",
+  "outcome": "STOP",
+  "phase0_verdict": "PREFLIGHT_STOP",
+  "primary_stop_reason": "RECOVERY_STOP_WRITE_CONFINEMENT",
+  "primary_evidence": "Inherited fd0 /dev/null is O_RDWR; pre-enforcement assertion failed; launcher exit73; no Landlock/seccomp installation calls.",
+  "four_independent_requirements": {
+    "WRITE_CONFINEMENT_PASS": {
+      "pass": false,
+      "status": "FAIL_BEFORE_POLICY",
+      "evidence": "WRITE_CONFINEMENT_REPORT.json"
+    },
+    "OFFLINE_CLOSURE_PASS": {
+      "pass": false,
+      "status": "NOT_ATTEMPTED_R0A_GATE",
+      "evidence": "OFFLINE_CLOSURE_REPORT.json"
+    },
+    "FOUR_BUDGETS_KNOWN_WITHIN_CAP": {
+      "pass": false,
+      "status": "NOT_ATTEMPTED_R0A_GATE",
+      "evidence": "RESOURCE_BUDGET_REPORT.json"
+    },
+    "CONTINUOUS_MONITORS_PASS": {
+      "pass": false,
+      "status": "NOT_ATTEMPTED_R0A_GATE",
+      "evidence": "RESOURCE_BUDGET_REPORT.json"
+    }
+  },
+  "independent_successful_subfacts": [
+    "派发任务原件 5210 bytes/hash 完全一致；22 项文件镜像 hash 校验与只读复制",
+    "原 W1 当前实际 turn_context 的 Sol/max/cwd、owner PID/startticks、原 thread/session 及新锁实核",
+    "主控 lock PID240810/startticks46501758/inode14806399 存活持有、同 inode 非阻塞竞争失败，未替换/释放主控锁",
+    "完整 -ff -yy trace 覆盖唯一失败 launcher：1 个成功 descriptor write，1214 bytes，路径在 W003 内；本 trace 未见成功外写或未知 write 路径",
+    "22 项指定输入 hash/bytes/mtime/inode/dev 未变"
+  ],
+  "no_confinement_pass_inferred_from_subfacts": true,
+  "R0B_entered": false,
+  "R0C_entered": false,
+  "Phase1_or_Phase2_entered": false,
+  "scenario_evidence_runs": 0,
+  "compile_runs": 0,
+  "serialization_runs": 0,
+  "automatic_retry": false,
+  "local_goal_completion_scope": "仅本地原件交付；不表示 W/E1 专业接受、D003、G-RUN 或父任务完成。"
+}

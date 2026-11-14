@@ -1,0 +1,70 @@
+{
+  "record_type": "W004_WRITE_SURFACE_AUDIT",
+  "utc": "2026-11-14T22:29:00.604331+00:00",
+  "actual_new_business_root": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004",
+  "root_canonical": true,
+  "HOME": "/home/dw",
+  "CODEX_HOME": "/home/dw/.codex",
+  "HOME_or_CODEX_HOME_reset": false,
+  "explicit_task_directories": {
+    "tmp": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/tmp",
+    "cache": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/cache",
+    "config": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/config",
+    "logs": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/logs",
+    "trace": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/trace",
+    "audit": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/audit",
+    "receipts": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/receipts",
+    "artifacts": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/artifacts",
+    "probes": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/probes"
+  },
+  "current_kernel_setup_for_single_attempt": {
+    "ABI": 6,
+    "NNP_Landlock_seccomp_installed": true,
+    "probe_body_ran": false,
+    "bootstrap_exit_code": 2
+  },
+  "single_trace_scope": {
+    "process": 244050,
+    "lines": 1518,
+    "write_count": 2,
+    "write_bytes": 4628,
+    "success_outside_writes": 0,
+    "unknown_write_destinations": 0,
+    "proc_comm_open_write": 0,
+    "network_syscalls_or_destinations_requested_by_probe": 0
+  },
+  "whole_W_or_future_global_zero_outside_writes_proven": false,
+  "parent_control_scope": "原生控制命令写入均显式W004 root，未受本次trace的kernel restriction；原生平台会话按原执行器续写，不能据限定trace宣称全系统零写。",
+  "outside_probe_create_invocations": 0,
+  "negative_probes_body_executed": false,
+  "controller_outside_preconfirmation": "656bytes回执已逐字复制；policy前Worker只复核回执，未尝试该外部create。",
+  "other4_negative_targets": "仅具名只读lstat ENOENT，未创建/写入/清理。",
+  "exact_input_after_checks": 35,
+  "all_named_inputs_unchanged": true,
+  "frozen_W003_no_mutations": true,
+  "frozen_W003_verification_scope": "仅索引具名输入hash/mtime/inode；未广扫所有旧W3原件。",
+  "new_scene_normal_DBA_wrapper_reader_production_actions": 0,
+  "build_compile_serialization": 0,
+  "github_or_other_chat_writes": false,
+  "fresh_lock_after_attempt": {
+    "utc": "2026-11-14T22:29:00.536974+00:00",
+    "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/.D003-writer.lock",
+    "holder_pid": 243622,
+    "startticks": "47124402",
+    "inode": 14806399,
+    "controller_session": 90041,
+    "fdinfo": "pos:\t0\nflags:\t02100002\nmnt_id:\t4061\nino:\t14806399\nlock:\t1: FLOCK  ADVISORY  WRITE 243622 00:53:14806399 0 EOF\n",
+    "fresh_same_inode_competition": {
+      "errno": 11,
+      "inode": 14806399,
+      "result": "FAILED_AS_REQUIRED"
+    },
+    "holder_modified_replaced_released": false
+  },
+  "root_snapshot_before_outer_indexes": {
+    "files": 66,
+    "logical_bytes": 1169185,
+    "allocated_bytes": 690688
+  },
+  "recursive_enumeration_scope": "仅W004新小根，file limit2000；不扫描BASE/HOME/cache，/m3varK/production完全未访问。"
+}

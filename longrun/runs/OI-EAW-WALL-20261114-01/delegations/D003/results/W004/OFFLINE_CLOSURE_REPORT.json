@@ -1,0 +1,29 @@
+{
+  "record_type": "W004_OFFLINE_CLOSURE_REPORT",
+  "utc": "2026-11-14T22:26:47.339624+00:00",
+  "status": "NOT_ATTEMPTED_R0A_GATE",
+  "OFFLINE_CLOSURE_PASS": false,
+  "selected_environment": null,
+  "candidates": [
+    {
+      "id": "E",
+      "declaration": "exact frp stack.yaml/lts18.28",
+      "status": "NOT_INVESTIGATED_THIS_W004"
+    },
+    {
+      "id": "B",
+      "declaration": "BASE overlay/lts22.24/historical GHC9.4.8",
+      "status": "NOT_INVESTIGATED_THIS_W004"
+    }
+  ],
+  "compiler_tool_hashes_packageDB_dependency_mapping": null,
+  "transitive_package_ids": null,
+  "missing_dependencies": null,
+  "minimum_rebuild_set": null,
+  "exact_base_compatibility_proven": false,
+  "no_network_proof_for_future_closure": false,
+  "environments_mixed": false,
+  "Haskell_Stack_Cabal_GHC_metadata_invocations": 0,
+  "8_exact_git_objects_read_this_W004": false,
+  "reason": "R0-A必需probe尚未运行且解释器bootstrap退出2；禁止进入R0-B。未把两候选未调查改写成已实测失败；未复用旧W3资料冒充本W closure事实。"
+}

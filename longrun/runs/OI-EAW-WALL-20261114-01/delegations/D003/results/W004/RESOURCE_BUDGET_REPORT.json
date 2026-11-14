@@ -1,0 +1,66 @@
+{
+  "record_type": "W004_RESOURCE_BUDGET_REPORT",
+  "utc": "2026-11-14T22:26:47.339624+00:00",
+  "status": "NOT_ATTEMPTED_R0A_GATE",
+  "FOUR_BUDGETS_KNOWN_WITHIN_CAP": false,
+  "CONTINUOUS_MONITORS_PASS": false,
+  "metrics": [
+    {
+      "metric": "new_disk",
+      "unit": "bytes",
+      "cap": 2147483648,
+      "predicted_value": null,
+      "predicted_upper_bound": null,
+      "comparable_measured_evidence": null,
+      "monitor_verified": false,
+      "stop_threshold": 2147483648,
+      "status": "NOT_ATTEMPTED_R0A_GATE"
+    },
+    {
+      "metric": "peak_RSS",
+      "unit": "bytes",
+      "cap": 4294967296,
+      "predicted_value": null,
+      "predicted_upper_bound": null,
+      "comparable_measured_evidence": null,
+      "monitor_verified": false,
+      "stop_threshold": 4294967296,
+      "status": "NOT_ATTEMPTED_R0A_GATE"
+    },
+    {
+      "metric": "post_preflight_wall",
+      "unit": "seconds",
+      "cap": 1500,
+      "predicted_value": null,
+      "predicted_upper_bound": null,
+      "comparable_measured_evidence": null,
+      "monitor_verified": false,
+      "stop_threshold": 1500,
+      "status": "NOT_ATTEMPTED_R0A_GATE"
+    },
+    {
+      "metric": "new_files",
+      "unit": "files",
+      "cap": 50000,
+      "predicted_value": null,
+      "predicted_upper_bound": null,
+      "comparable_measured_evidence": null,
+      "monitor_verified": false,
+      "stop_threshold": 50000,
+      "status": "NOT_ATTEMPTED_R0A_GATE"
+    }
+  ],
+  "continuous_monitor_verification": {
+    "monotonic_post_preflight_deadline": false,
+    "whole_process_group_RSS": false,
+    "root_disk_files": false,
+    "all_descendants": false,
+    "threshold_kill_receipt": false
+  },
+  "existing_comparable_artifact_build_logs_read": false,
+  "actual_single_R0A1_elapsed_seconds": 0.8291986740077846,
+  "actual_R0A1_command_timeout_seconds": 45,
+  "timeout_triggered": false,
+  "command_timeout_not_budget_monitor_proof": true,
+  "reason": "R0-A必需probe未通过，R0-B/C均未进入。固定cap和小命令耗时不能代替同compiler/closure/target可比实测的工程预测。"
+}

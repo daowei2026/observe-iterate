@@ -1,0 +1,41 @@
+{
+  "utc": "2026-11-14T22:20:22.671901+00:00",
+  "stage": "R0-A0",
+  "status": "STATIC_WIRING_REVIEW_PASS",
+  "launcher_not_started_by_this_check": true,
+  "runtime_source_before": {
+    "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/tools/runtime.py",
+    "local_readonly_path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/tools/runtime.py",
+    "sha256": "30f268d6e6a144405dd4fba5d067924f71ba92170cf94313cd0ba24de17419b5",
+    "bytes": 2742,
+    "frozen": true
+  },
+  "launcher_source_before": {
+    "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/tools/landlock_launcher.py",
+    "local_readonly_path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/tools/landlock_launcher.py",
+    "sha256": "a6586b1622017434ea6c27592d79ccd0a80735016939d0a3f532a6496bbe2479",
+    "bytes": 6921,
+    "frozen": true
+  },
+  "new_runtime_sha256": "8e1d234ff2f5b6167e0b9a0fe94d292a138039e3608954639cb96c57c92b0eac",
+  "new_launcher_sha256": "8f12bc66a0318f5394193331c07bf1cdd583711c232b6f1ab180ebae549c7002",
+  "parent_stdin_open_flags_check": {
+    "path": "/dev/null",
+    "parent_fd": 3,
+    "raw_flags": 32768,
+    "access_mode": "O_RDONLY",
+    "pid": 244024,
+    "close_timestamp": "2026-11-14T22:20:22.671873+00:00",
+    "close_result": "SUCCESS"
+  },
+  "stdin_DEVNULL_in_new_runtime_AST": false,
+  "stdin_keyword_is_explicit_fd": true,
+  "launcher_readonly_stdin_assertion_preserved": true,
+  "launcher_other_inherited_FD_and_stdio_assertions_preserved": true,
+  "Landlock_rights_rules_and_seccomp_policy_unchanged": true,
+  "write_exceptions_added": [],
+  "HOME_or_CODEX_HOME_reset": false,
+  "runtime_full_line_diff": "--- W003_FROZEN/runtime.py\n+++ W004/tools/runtime.py\n@@ -1,12 +1,12 @@\n from pathlib import Path\n import os,sys,json,hashlib,datetime,time,fcntl,errno,subprocess,signal\n-ROOT=Path('/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003');BASE=Path('/dwdhome/fy/BASE_E6_2');LOCK=ROOT.parents[1]/'.D003-writer.lock'\n+ROOT=Path('/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004');BASE=Path('/dwdhome/fy/BASE_E6_2');LOCK=ROOT.parents[1]/'.D003-writer.lock'\n def utc():return datetime.datetime.now(datetime.timezone.utc).isoformat()\n def guard():\n  assert Path.cwd()==BASE and ROOT.resolve()==ROOT and not any(p.is_symlink() for p in ROOT.parents)\n  assert os.environ['HOME']=='/home/dw' and os.environ['CODEX_HOME']=='/home/dw/.codex'\n- t=Path('/proc/240810/stat').read_text();assert t[t.rfind(')')+2:].split()[19]=='46501758';assert LOCK.lstat().st_ino==14806399\n- info=Path('/proc/240810/fdinfo/3').read_text();assert 'FLOCK' in info and 'WRITE 240810' in info\n+ t=Path('/proc/243622/stat').read_text();assert t[t.rfind(')')+2:].split()[19]=='47124402';assert LOCK.lstat().st_ino==14806399\n+ info=Path('/proc/243622/fdinfo/3').read_text();assert 'FLOCK' in info and 'WRITE 243622' in info\n  fd=os.open(LOCK,os.O_RDWR|os.O_NOFOLLOW)\n  try:\n   try:fcntl.flock(fd,fcntl.LOCK_EX|fcntl.LOCK_NB)\n@@ -21,7 +21,18 @@\n  guard();assert Path(argv[0]).is_absolute();out=ROOT/'logs'/(label+'.stdout');err=ROOT/'logs'/(label+'.stderr');assert not out.exists() and not err.exists()\n  start=utc();tick=time.monotonic();timed=False\n  with out.open('xb') as so,err.open('xb') as se:\n-  child=subprocess.Popen(argv,cwd=BASE,env=os.environ.copy(),stdin=subprocess.DEVNULL,stdout=so,stderr=se,pass_fds=pass_fds,start_new_session=True)\n+  stdin_fd=os.open('/dev/null',os.O_RDONLY|os.O_CLOEXEC)\n+  flags=fcntl.fcntl(stdin_fd,fcntl.F_GETFL)\n+  assert (flags & os.O_ACCMODE)==os.O_RDONLY\n+  stdin_record={'opened_path':'/dev/null','F_GETFL_raw':flags,'access_mode':'O_RDONLY','parent_fd':stdin_fd,'parent_pid':os.getpid(),'opened_at':utc(),'child_pid':None}\n+  try:\n+   child=subprocess.Popen(argv,cwd=BASE,env=os.environ.copy(),stdin=stdin_fd,stdout=so,stderr=se,pass_fds=pass_fds,start_new_session=True)\n+   stdin_record['child_pid']=child.pid\n+  finally:\n+   os.close(stdin_fd)\n+   stdin_record['parent_close_timestamp']=utc()\n+   stdin_record['parent_close_result']='CLOSED_OWN_COPY_SUCCESS'\n+   save('receipts/'+label+'-parent-stdin.json',stdin_record)\n   try:rc=child.wait(timeout=limit)\n   except subprocess.TimeoutExpired:\n    timed=True;os.killpg(child.pid,signal.SIGKILL);rc=child.wait()\n",
+  "launcher_full_line_diff": "--- W003_FROZEN/landlock_launcher.py\n+++ W004/tools/landlock_launcher.py\n@@ -1,5 +1,5 @@\n from pathlib import Path\n-import os,sys,ctypes,fcntl,errno,json,hashlib,argparse,stat,datetime\n+import os,sys,ctypes,fcntl,errno,json,hashlib,argparse,stat,datetime,traceback\n assert sys.flags.isolated and sys.flags.no_site and sys.dont_write_bytecode\n p=argparse.ArgumentParser();p.add_argument('--root',required=True);p.add_argument('--report',required=True);p.add_argument('--blocked-inherited-fd',type=int,required=True)\n for n in ['tmp','cache','config']:p.add_argument('--task-'+n,required=True)\n@@ -10,7 +10,7 @@\n for n in ['tmp','cache','config']:assert Path(getattr(a,'task_'+n)).resolve().is_relative_to(root)\n command=a.command[1:] if a.command[:1]==['--'] else a.command;assert command and Path(command[0]).is_absolute()\n libc=ctypes.CDLL(None,use_errno=True);libc.syscall.restype=ctypes.c_long;libc.prctl.restype=ctypes.c_int\n-calls=[];info={'record_type':'W003_LANDLOCK_AND_SECCOMP_LAUNCHER','utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'root':str(root),'root_realpath':str(root.resolve()),'script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'HOME':os.environ['HOME'],'CODEX_HOME':os.environ['CODEX_HOME'],'HOME_or_CODEX_HOME_reset':False,'explicit_task_directories':{n:getattr(a,'task_'+n) for n in ['tmp','cache','config']},'filesystem_write_exceptions':[],'calls':calls,'command':command}\n+calls=[];info={'record_type':'W004_LANDLOCK_AND_SECCOMP_LAUNCHER','utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'root':str(root),'root_realpath':str(root.resolve()),'script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'HOME':os.environ['HOME'],'CODEX_HOME':os.environ['CODEX_HOME'],'HOME_or_CODEX_HOME_reset':False,'explicit_task_directories':{n:getattr(a,'task_'+n) for n in ['tmp','cache','config']},'filesystem_write_exceptions':[],'calls':calls,'command':command}\n def invoke(name,fn,*args):\n  ctypes.set_errno(0);rc=fn(*args);err=ctypes.get_errno();calls.append({'operation':name,'return':int(rc),'errno':err});return rc\n try:\n@@ -23,6 +23,7 @@\n    raise\n   access=flags & os.O_ACCMODE;writable=access in (os.O_WRONLY,os.O_RDWR)\n   if fd<=2:\n+   info.setdefault('stdio_fds',[]).append({'fd':fd,'path':path,'flags':flags,'access_mode':access,'writable':writable,'inode':fs.st_ino,'nlink':fs.st_nlink})\n    if fd==0:assert not writable\n    else:assert writable and stat.S_ISREG(fs.st_mode) and fs.st_nlink==1 and Path(path).resolve().is_relative_to(root)\n   else:\n@@ -55,7 +56,7 @@\n  info['seccomp_denied_syscalls']=denied;info['seccomp_denied_prctl_options']=['PR_SET_NAME'];info['network_policy']='Landlock TCP bind/connect denied plus seccomp all socket/connect/send/recv calls denied; no inherited nonstdio fd survives';info['global_reads_permitted_by_landlock']=True;info['status']='KERNEL_POLICY_INSTALLED_BEFORE_EXEC'\n  report.write_text(json.dumps(info,ensure_ascii=False,indent=2)+'\\n');os.execve(command[0],command,os.environ.copy())\n except BaseException as exc:\n- info['status']='LAUNCHER_FAILED';info['error']={'type':type(exc).__name__,'text':str(exc)}\n+ info['status']='LAUNCHER_FAILED';info['error']={'type':type(exc).__name__,'text':str(exc),'traceback':traceback.format_exc()}\n  try:report.write_text(json.dumps(info,ensure_ascii=False,indent=2)+'\\n')\n  except BaseException as nested:print(json.dumps({'launcher_error':info,'report_write_error':str(nested)},ensure_ascii=False),flush=True)\n  raise SystemExit(73)\n",
+  "scope_zh": "仅stdin父接线、显式receipt、新root/PID/startticks/binding与错误定位回执变化；没有移除/放宽安全断言或业务禁令。实际父子接线结果必须以后续唯一R0-A1实测回执为准。"
+}

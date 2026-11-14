@@ -1,0 +1,48 @@
+{
+  "record_type": "W004_PHASE0_RECOVERY_VERDICT",
+  "utc": "2026-11-14T22:26:47.339624+00:00",
+  "run_id": "OI-EAW-WALL-20261114-01",
+  "work_order_id": "W004",
+  "outcome": "STOP",
+  "verdict": "PREFLIGHT_STOP",
+  "stop_reason": "RECOVERY_STOP_WRITE_CONFINEMENT",
+  "specific_stop": "PROBE_BOOTSTRAP_IOCTL_FIOCLEX_EPERM",
+  "R0_A0_stdin_wiring": "PASS_STATIC_AND_ACTUAL_PARENT_CHILD",
+  "controller_sentinel_preconfirmation": "PASS_READONLY_ENOENT_RECEIPT_COPIED",
+  "kernel_setup": "ABI6_NNP_LANDLOCK_CREATE_ADD_RESTRICT_AND_SECCOMP_SUCCESS",
+  "four_requirements": {
+    "WRITE_CONFINEMENT_PASS": {
+      "pass": false,
+      "status": "PROBE_BOOTSTRAP_FAILED_EXIT2"
+    },
+    "OFFLINE_CLOSURE_PASS": {
+      "pass": false,
+      "status": "NOT_ATTEMPTED_R0A_GATE"
+    },
+    "FOUR_BUDGETS_KNOWN_WITHIN_CAP": {
+      "pass": false,
+      "status": "NOT_ATTEMPTED_R0A_GATE"
+    },
+    "CONTINUOUS_MONITORS_PASS": {
+      "pass": false,
+      "status": "NOT_ATTEMPTED_R0A_GATE"
+    }
+  },
+  "independent_successful_subfacts": [
+    "任务7209 bytes/hash、22文件镜像hash和Owner/D003/W004字面子集校验",
+    "原W1实际Sol/max/cwd/owner/current turn及fresh锁PID243622/startticks47124402/inode14806399和竞争EAGAIN",
+    "主控sentinel只读ENOENT回执656bytes/hash完全匹配，逐字复制；其余4目标只读ENOENT",
+    "只修stdin/receipt/new-root/binding的逐行delta；父fd6与launcher fd0为O_RDONLY /dev/null，父关闭自己副本",
+    "独立writable lock FD3在policy前关闭，holder仍在并竞争失败",
+    "当前ABI6和六个setup API均errno0；policy在exec前成功安装，后继exec成功并观察ioctl拒绝",
+    "1518行完整trace的两个实际write均映射W004内路径，无未知write路径"
+  ],
+  "R0_B_entered": false,
+  "R0_C_entered": false,
+  "Phase1_2_entered": false,
+  "scenario_runs": 0,
+  "build_compile_serialization_runs": 0,
+  "automatic_retry": false,
+  "global_zero_outside_writes_proven": false,
+  "local_terminal_scope": "仅本地停止原件交付；不作W专业接受、D003、action、H3、G-RUN或父任务完成决定。"
+}
