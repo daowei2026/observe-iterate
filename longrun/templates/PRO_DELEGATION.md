@@ -3,11 +3,16 @@
 - Run / 委派身份：`run_id` / `Dxxx`
 - 发单专业负责人及其已真实调用身份：`issuer / issuer_call_id`
 - 接受的专业执行人及返回对象：`recipient / return_to`
-- 原父任务 / 问题 / 业务节点：`parent_task_id / question_id / control_nodes`
+- 原父任务 / 问题 / 业务节点：`parent_task_id / question_id / control_nodes`（节点可多个，非固定一次调用）
+- 本 D 属于材料准备 M、合理性分析 R 或有明确边界的接续；上游真实成果如何被下一专业工作消费：
 - 原专业目标：为什么需要这项工作，哪个问题要得到怎样的结果
 - 已有证据和输入：精确提交与路径，证据缺失/未决单列
 - 专业工作边界与**禁止擅自扩大**的范围：
-- 允许使用的专业 Skill、工作方法入口（如已指定）：
+- 专业执行人候选指南：同版 `longrun/professional/PRO_EXECUTOR_GUIDE.md` 精确引用
+- 允许使用的专业 Skill、方法步骤/调用模式（实际需要才引用，不要求全流程）：
+- 已接受或可复用的前序成果、尚未获得的事实（不能自动重复取数）：
+- 数据/代码/参数/时间及预期版本，未冻结时明确 `not_frozen`：
+- 可接受的原生专业成果、必要证据与准确消费者：
 - 可接受的最终结果、部分、不可得、失败、需要上层判断：
 - 对 Worker 可进一步下放的 `permitted_operations / allowed_writes`（不得超 Owner）：
 - 产出引用与证据、专业执行人何时认为 D 完成：

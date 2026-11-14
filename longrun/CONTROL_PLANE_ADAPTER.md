@@ -2,9 +2,9 @@
 
 ## 1. 不同层的权威边界
 
-本分支 `00_README_范围来源与阅读顺序.md` 明确：L0/ L1/ L2 控制逻辑为候选、专业 Skill 方法不在控制面重写、管理 Pro／程序／专业角色的具体分工还未确定。本文件只定义**可以跨角色安全传输的上下文形状**，不制定业务 Gate 的专业充分性政策。
+本分支根 [README](../README.md) 与 `control/`、`review/` 明确：L0/L1/L2 仍为候选控制设计；专业 Skill 的方法不在控制面重写。本次在 [professional/](professional/README.md) 增加两份**候选角色适配指南**，将完整任务与工作接收组织给 manager、实质专业分析及 Worker 结果专业消费给 executor；**这不等于正式确定所有 Gate 的接受权，也不改变控制面未决规则**。本文件继续只规定可安全跨角色传输的上下文边界。
 
-- L0：`TaskBrief` / `TaskBoundary` / `ParentTaskOutcome`，M ↔ R 与 AdditionalEvidenceRequest 的原点恢复。
+- L0：单份 `BusinessTaskInput`（业务目的、对象、已知约束和未定边界）/ `ParentTaskOutcome`，M ↔ R 与 AdditionalEvidenceRequest 的原点恢复；完成深度及允许未决可随任务合法查明，不强制起步另填第二份 `TaskBoundary`。
 - L1：材料准备 `S0～S5`；合理性分析 `R0～R5`，仅管理视图，不是固定调用次数。
 - L2：`M01…`/`R01…` 的 I/O；`MaterialRequirement`、`WorkItem`、`ExecutionAction` 三种实体不应混同。
 - 运行层：`run_id`、`delegation_id`、`work_order_id`、`call_id` 是通信/任务执行身份，不替代 `question_id`、`analysis_round_id`、`expectation_version`、`material_id`。
@@ -45,9 +45,15 @@ V2 机械门禁只回答：谁派给谁、来源是否已存在、精确版本�
 
 - `AdditionalEvidenceRequest` 须指向原 `question_id`、`work_item_id`、原分析上下文/预期版本；冻结前允许记录 `not_frozen`；结果返回**同一原始消费者**，不可自动用在新预期版本。
 - 实例复验 `INSTANCE_REVALIDATION` 要有唯一 `comparison_work_item_id`、原始业务窗口、新旧版本与用途，以避免 R2/R4 重复发起。
-- `PARTIAL / PROVEN_UNAVAILABLE / BLOCKED` 只关闭/限制对应工作；是否可交付有界未决必须符合原 `TaskBoundary`，不能因执行层完成就宣布 `ParentTaskOutcome` 合格。
+- `PARTIAL / PROVEN_UNAVAILABLE / BLOCKED` 只关闭/限制对应工作；是否允许有界未决，须符合本轮**已经合法明确的完成范围**，不能因执行层完成就宣布 `ParentTaskOutcome` 合格。
 - 任一子工单 STOP 不是父专业任务的 STOP；某局部无后继也不代表其他独立问题不能继续。
 
-## 5. 接入后续实现的条件
+## 5. 专业指南怎样进入具体 D（不新增 Schema）
+
+manager 首轮实际完整任务应包含已锁定 [manager 指南](professional/PRO_MANAGER_GUIDE.md) 和业务问题/控制来源；executor 的 D 应引用同版 [executor 指南](professional/PRO_EXECUTOR_GUIDE.md)，并按本次 D 明确引用 [材料准备 Skill](../skills/observation-material-preparation/SKILL.md) 或 [合理性分析 Skills](../skills/reasonableness-analysis/README.md) 的真正适用部分。
+
+D 的 `DELEGATION.md` 使用 `question_id`、节点范围、输入版本/材料与结果消费者定义**业务工作**；`DELEGATION.json` 仍遵从已有 V2 的 D 身份与授权字段，专业指南不能给机读 Schema 增加私有必填项。不同 D 可以共用一个专业执行人，但不得把跨 D、跨问题的结果混为一次完成。
+
+## 6. 接入后续实现的条件
 
 只有在业务控制面确定实际 Gate 规则后，才能将其转成受版本管理的具体规则/程序或专门专业判断任务。调用确定性程序的**选择依据**须来自明确路由规则/已接受的专业决定，不能让主控依据工具名称自行判断。程序结果须有 action_id、真实输出引用、版本、失败/未知状态；主控维护可信执行账本。专业执行人的方法可单独在 Skill 中定义，不进入本文件。

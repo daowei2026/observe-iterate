@@ -4,10 +4,10 @@
 
 ## 1. 角色与责任不可混淆
 
-- **Owner**：提供 `TaskBrief`、`TaskBoundary`、具体任务 GO 及权限；涉及超授权/超原业务范围或需 Owner 专断的事项返回 Owner。
+- **Owner**：提供当前业务目标、对象和**已经明确的**范围/约束（统一归入 `BusinessTaskInput`）、真实 GO 和具体操作权限。分析深度/完成边界有未知项时允许在授权范围内先做有界调查；但未经合法确定不得扩范围、开展超授权动作或宣布整项完成。真正业务取舍与新授权仍返回 Owner。
 - **主控 Codex**：持有**可信** Run 事实账本和物理聊天/线程映射；送达、监控、回交、去重/对账、按规则调用确定性检查；不决定专业业务正确性、不根据结果措辞擅自扩展任务。
-- **专业负责人 Pro（manager）**：持续持有父业务任务专业责任；决定是否派 D 给哪个专业执行人，检查其专业回交，形成继续、补证、受限交付、请求 Owner 等后继。其专业方法与业务结束标准不在本协议预定义。
-- **专业执行人 Pro（executor）**：只在正式 D 授权范围内承担专业子任务；可以零 W 自行完成，也可以签 W 给 Worker；对 Worker 实物作专业接受/返修/继续决定，并汇总结果交回原 manager。
+- **专业负责人 Pro（manager）**：持续持有父业务任务专业责任；按当前问题/依赖安排具名专业 D，检查对应专业成果和被消费范围，形成继续、补证、限定交付、请求 Owner 等候选后继。专业操作见 [manager 候选指南](../professional/PRO_MANAGER_GUIDE.md)；正式业务 Gate/完成资格仍来自已获批准的控制规则，而非其自述。
+- **专业执行人 Pro（executor）**：只在正式 D 授权范围内**依据仓库现有材料准备/合理性分析 Skill 实际开展专业工作**；可零 W 自行完成，也可按需要签 W 给 Worker；先专业审查 Worker 结果，再将原生业务成果、未决与适用范围交回原 manager。专业操作见 [executor 候选指南](../professional/PRO_EXECUTOR_GUIDE.md)。
 - **Worker Codex**：按 W 中明确的已授权操作和现场执行，交付事实、未完成项和证据；不替代专业 Pro 判断。
 
 本版**固定 manager→executor→worker** 两个委派层级，不支持通用任意深度代理树。多位 executor/worker 可绑定，主控不能为方便让一个 Worker 绕过原执行人直接“专业回交” manager。未来是否允许 manager 直接签 W 另行设计，不从旧版默认迁入。
@@ -90,12 +90,12 @@ BLOCKED → COMPLETED（只在原动作证据已查清时）
 
 - **Worker Return**：`EXECUTED / PARTIAL / STOP / FAILED` 只说明操作端结果；未交付项和真实证据必须列明；返回原 executor，由其决定专业接受。
 - **Executor Return**：汇总当前 D 的专业结果/已验证 W、未解决问题、续作、请求上层；`REPORTED_COMPLETE` 只代表此 D 范围的专业报告完整，不代表父任务完成。
-- **Manager Return**：汇总已接受的 D、自己完成的专业工作、后继 D/续作/Owner 请求，父任务完成资格由**原业务 TaskBoundary 和已确认 Gate**给出；禁止主控凭 Return 标志宣布。
+- **Manager Return**：汇总已接受的 D、自己完成的专业工作、后继 D/续作/Owner 请求，父任务完成资格由**本轮已经合法明确的完成范围与已确认 Gate**给出；禁止主控凭 Return 标志宣布。
 - 某 D/W 因确切缺前置而受阻，只阻断依赖它的工作；已满足独立前置的其他委派可继续。确认没有合法后继时可有据停止，但“停止”不等于“成功完成”。
 
 ## 8. 与控制面、Skill 和确定性程序的接口
 
-`00～07` 文件中 `H0/H1/H2/H3`、`G-*`、`Mxx/Rxx`、`AdditionalEvidenceRequest` 的规则由该业务控制面维护。本协议不把 `DATA_READY`、`COUNTERS`、`PROVEN_UNAVAILABLE` 误译成机械“专业 PASS/FAIL”。
+当前分支的 `control/` 与 `review/` 中 `H0/H1/H2/H3`、`G-*`、`Mxx/Rxx`、`AdditionalEvidenceRequest` 的规则由业务控制面维护。本协议不把 `DATA_READY`、`COUNTERS`、`PROVEN_UNAVAILABLE` 误译成机械“专业 PASS/FAIL”。
 
 确定性程序只能在**明确、可追溯的行动选择规则或专业决定**允许后调用；脚本维护事实并回交输出，不决定专业争议。何时启动某种专业分析、是否需标定和能否有界收束，不属于主控自由判断。
 
