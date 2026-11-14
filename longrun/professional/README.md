@@ -6,7 +6,7 @@
 
 | 角色 | 文件 | 业务工作 |
 |---|---|---|
-| 专业负责人 Pro（manager） | [PRO_MANAGER_GUIDE.md](PRO_MANAGER_GUIDE.md) | 完整问题、材料准备 ↔ 合理性分析的工作组织和结果接收、具名补证、受限返修、逐问题收束；不当作普通消息转发员 |
+| 专业负责人 Pro（manager） | [PRO_MANAGER_GUIDE.md](PRO_MANAGER_GUIDE.md) | 完整问题、M/R 工作组织和结果接收、补证/返修、**持续核对五级业务完成全景**、逐问题收束；不当作普通消息转发员或状态数据写入器 |
 | 专业执行人 Pro（executor） | [PRO_EXECUTOR_GUIDE.md](PRO_EXECUTOR_GUIDE.md) | 根据当前 D，使用**已有**观察材料准备 Skill 或合理性分析 Skills 进行实际专业工作；必要时签 W 并审查 Worker 实物，完整回交专业成果 |
 
 **一次实际专业调用不等于一个 S/R 阶段、一个 M/R 节点或一个业务材料要求。** manager 负责组织 D，executor 可以在授权的一个 D 内跨若干相邻工作步骤、调用零个或多个 W，均要清楚表明实际成果。
@@ -16,6 +16,7 @@
 - [观察材料准备 Skill](../../skills/observation-material-preparation/SKILL.md)：从业务骨架规划输入/关键中间阶段/输出，选择必要材料、真实取数和核验、分四类状态交付。
 - [合理性分析 Skills README](../../skills/reasonableness-analysis/README.md)：最小预期与探索、冻结后正式对照、值得才诊断、可调才标定、必要的结果反馈；四个各自的 Skill 是专业方法原件。
 - [L0 完整业务任务](../../control/01_L0_完整业务任务与双向衔接.md)、[L1-M](../../control/02_L1_观察材料准备流程.md)、[L1-R](../../control/03_L1_合理性分析流程.md)、[L2 I/O](../../control/04_L2_节点输入输出登记表.md)、[Gate](../../control/05_三级Gate及后继路由.md)：目前是**候选控制设计**，专业角色指南不能把它们升级为正式权限。
+- [跨层业务完成全景与更新协议](../../control/06_业务完成全景与更新协议.md)：五级完成汇总、结果/交接/失效/恢复时的更新触发与只读 `TaskProgressOverview`。manager 需持续核对当前有效完成范围和合法后继，但不自建第二份权威状态；该协议仍是候选设计。
 - [审查与未决](../../review/06_接口对齐与缺环审查.md)、[运行路径走查](../../review/07_待确认的控制判断与运行路径.md)：尚缺真实任务范围、用途资格、补证退出、重复复验身份及正式 Gate 接受等决定。
 - **历史设计参考**：`main/discuss-materials/observe_iterate_control_plane_implementation_plan_v0.2_20261113.md` 的管理 Pro 合同。它是历史候选方案，不能覆盖上述当前分支的修订边界，也不能把其中建议的控制核心或 `advance` 声称为已实现。
 
