@@ -1,0 +1,175 @@
+{
+  "schema": "w001-formal-return-local-validation/v1",
+  "run_id": "OI-EAW-WALL-20261114-01",
+  "work_order_id": "W001",
+  "scope": "仅原W001正式Return生成；未重跑调查、未运行计算、未写GitHub、未改冻结原件",
+  "started_at_utc": "2026-11-14T15:03:44.247354+00:00",
+  "validation_finished_at_utc": "2026-11-14T15:03:45.790997+00:00",
+  "cwd": "/dwdhome/fy/BASE_E6_2",
+  "thread_id": "01a1da55-5881-7590-94a1-0661f0236977",
+  "actual_turn_config": {
+    "cwd": "/dwdhome/fy/BASE_E6_2",
+    "model": "gpt-6.1-sol",
+    "effort": "max"
+  },
+  "lock_checks": [
+    {
+      "checked_at_utc": "2026-11-14T15:03:44.247745+00:00",
+      "holder_pid": 227535,
+      "holder_startticks": "44274656",
+      "lock_inode": 14781898,
+      "competition_errno": 11,
+      "no_holder_lock_mutation": true
+    },
+    {
+      "checked_at_utc": "2026-11-14T15:03:45.554175+00:00",
+      "holder_pid": 227535,
+      "holder_startticks": "44274656",
+      "lock_inode": 14781898,
+      "competition_errno": 11,
+      "no_holder_lock_mutation": true
+    },
+    {
+      "checked_at_utc": "2026-11-14T15:03:45.763208+00:00",
+      "holder_pid": 227535,
+      "holder_startticks": "44274656",
+      "lock_inode": 14781898,
+      "competition_errno": 11,
+      "no_holder_lock_mutation": true
+    }
+  ],
+  "published_mapping": {
+    "path": "/dwdhome/fy/cgpterm/artifacts/oi-eaw-wall/OI-EAW-WALL-20261114-01/W001-published-refs.json",
+    "sha256": "926ea54f3885856644b9221c75d290cbe70ad7ac79c9741e2fbb70fd6da17a17",
+    "state": "PUBLISHED_REMOTE_VERIFIED",
+    "commit": "c0c44515e9722c239534ac72eed942536e2ff436",
+    "file_count": 313,
+    "all_local_bytes_and_sha256_match": true
+  },
+  "local_git_object_verification": {
+    "command": [
+      "git",
+      "--no-optional-locks",
+      "-C",
+      "/dwdhome/fy/cgpterm/artifacts/oi-eaw-wall/OI-EAW-WALL-20261114-01/observe-iterate",
+      "cat-file",
+      "--batch"
+    ],
+    "started_at_utc": "2026-11-14T15:03:45.228790+00:00",
+    "ended_at_utc": "2026-11-14T15:03:45.385654+00:00",
+    "exit_code": 0,
+    "stderr": "",
+    "blob_count": 313,
+    "bytes_verified": 4487955,
+    "all_313_blob_bodies_equal_frozen_local_bytes": true,
+    "ordered_path_blob_sha256_validation_digest": "bb310901f6ee0a895e43e4a8951b31a77f1f4e1107a795e86982d5e6aa74da88",
+    "git_fetch_performed_by_worker": false,
+    "reason": "只读主控已实际fetch的本地Git对象；未联网fetch"
+  },
+  "frozen_originals": {
+    "count": 313,
+    "sha256_bytes_and_mtime_unchanged_before_after": true,
+    "HASHES_sha256_unchanged": "aadd5bfa5708c9a2d46f579df05866fe950a86daf872cf2c81ca6664af0e1702",
+    "PUBLICATION_MANIFEST_sha256_unchanged": "98fd6a5a19b69e5db316da43e22ac81bed554f2494dec00893c47d6fc4242b74",
+    "new_files_are_outside_old_hash_index": true,
+    "reason": "用户明确要求313份原件冻结，不回写旧hash索引"
+  },
+  "formal_return": {
+    "absolute_path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/WORKER_RETURN.json",
+    "sha256": "c1b39bcc36df962f6a57fa11bfde51546faf405cec130f1556546cdbaf0b38c8",
+    "bytes": 108206,
+    "outcome": "PARTIAL",
+    "return_to": "chatgpt:OI-EAW-WALL-20261114-01:executor:E1",
+    "result_ref": "daowei2026/observe-iterate@c0c44515e9722c239534ac72eed942536e2ff436:longrun/runs/OI-EAW-WALL-20261114-01/worker_results/W001/WORKER_EXECUTION_REPORT.md",
+    "evidence_manifest_entries": 320,
+    "published_file_entries": 313,
+    "order_description_aliases": 7,
+    "only_ref_and_sha256_per_manifest_item": true,
+    "self_or_future_return_ref_present": false
+  },
+  "schema_validation": {
+    "schema_path": "/dwdhome/fy/cgpterm/artifacts/oi-eaw-wall/OI-EAW-WALL-20261114-01/observe-iterate/longrun/contracts/longrun_schema_v2.json",
+    "schema_sha256": "32c1e2409ff4936a87d688848736bb9af71fe0415d338ba66dd031e3149243d3",
+    "definition": "#/$defs/worker_return",
+    "validator": "jsonschema.Draft202012Validator",
+    "passed": true
+  },
+  "binding_checks": {
+    "order_ref_unchanged": true,
+    "worker_matches_order": true,
+    "return_to_is_original_executor_E1": true,
+    "outcome_PARTIAL_preserved": true,
+    "evidence_publication_gap_resolved": true,
+    "formal_return_publication_pending": true
+  },
+  "mechanical_contract": {
+    "missing_order_deliverable_keys": [
+      "V2 WORKER_RETURN.json returning only to executor E1"
+    ],
+    "reason": "正式Return本地已生成，但不能假造自身已发布ref；PARTIAL/missing如实保留该限制；未改ORDER",
+    "full_validate_worker_return_gate_executed": false,
+    "full_gate_reason": "需要尚未存在的已发布worker_return_ref及独立Worker回执；由主控出版后验证，未伪造通过"
+  },
+  "publish_target": {
+    "repository": "daowei2026/observe-iterate",
+    "branch": "runs/OI-EAW-WALL-20261114-01",
+    "path": "longrun/runs/OI-EAW-WALL-20261114-01/worker_results/W001/WORKER_RETURN.json",
+    "publication_performed": false
+  },
+  "professional_acceptance_or_parent_completion_claimed": false,
+  "prior_phase_commands_this_turn": [
+    {
+      "started_at_ms": 1794668404174,
+      "completed_at_ms": 1794668404184,
+      "command": [
+        "/bin/bash",
+        "-lc",
+        "PYTHONDONTWRITEBYTECODE=1 TMPDIR=/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/tmp XDG_CACHE_HOME=/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/cache python3 -B - <<'PY'\nimport os,pathlib,fcntl,json,datetime,hashlib\nstarted=datetime.datetime.now(datetime.timezone.utc).isoformat();B=pathlib.Path('/dwdhome/fy/BASE_E6_2');W=B/'.oi-runs/OI-EAW-WALL-20261114-01/D001/W001';assert pathlib.Path.cwd()==B\nlock=B/'.oi-runs/OI-EAW-WALL-20261114-01/.W001-writer.lock';s=lock.stat();p=pathlib.Path('/proc/227535/stat').read_text();a=p[p.rfind(')')+2:].split();assert a[19]=='44274656' and s.st_ino==14781898 and a[0]!='Z'\nfds=[]\nfor p in pathlib.Path('/proc/227535/fd').iterdir():\n try:\n  q=p.stat()\n  if q.st_ino==s.st_ino and q.st_dev==s.st_dev:fds.append({'fd':p.name,'fdinfo':pathlib.Path('/proc/227535/fdinfo/'+p.name).read_text()})\n except (FileNotFoundError,PermissionError):pass\nassert fds\nfd=os.open(lock,os.O_RDWR);blocked=False\ntry:\n try:fcntl.flock(fd,fcntl.LOCK_EX|fcntl.LOCK_NB)\n except BlockingIOError as e:blocked=e.errno==11\nfinally:os.close(fd)\nassert blocked\nprint('LOCK',json.dumps({'started_at_utc':started,'checked_at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'cwd':str(pathlib.Path.cwd()),'thread_id':os.environ.get('CODEX_THREAD_ID'),'pid':227535,'startticks':a[19],'inode':s.st_ino,'competition_errno':11,'holder_fds':fds,'no_create_write_truncate_or_holder_unlock':True},ensure_ascii=False))\nC=pathlib.Path('/dwdhome/fy/cgpterm/artifacts/oi-eaw-wall/OI-EAW-WALL-20261114-01')\nfor name in ('C0003-remote-ORDER.md','C0003-remote-ORDER.json','W001-published-refs.json'):\n p=C/name;assert p.stat().st_size<2*1024*1024;data=p.read_bytes();print('FILE',str(p),'BYTES',len(data),'SHA256',hashlib.sha256(data).hexdigest());print(data.decode())\np=C/'observe-iterate/longrun/contracts/longrun_schema_v2.json';data=p.read_bytes();j=json.loads(data);print('SCHEMA_FILE',str(p),'SHA256',hashlib.sha256(data).hexdigest());print(json.dumps(j['$defs']['worker_return'],ensure_ascii=False,indent=2));print('REF_SCHEMA',json.dumps({k:j['$defs'][k] for k in ('id','ref')},ensure_ascii=False))\np=W/'WORKER_RETURN_PREPARATION.json';print('PREPARATION',p.read_text());print('RETURN_EXISTS',(W/'WORKER_RETURN.json').exists())\nPY"
+      ],
+      "cwd": "file:///dwdhome/fy/BASE_E6_2",
+      "exit_code": 0,
+      "duration": {
+        "secs": 0,
+        "nanos": 6907696
+      }
+    },
+    {
+      "started_at_ms": 1794668453587,
+      "completed_at_ms": 1794668454253,
+      "command": [
+        "/bin/bash",
+        "-lc",
+        "PYTHONDONTWRITEBYTECODE=1 TMPDIR=/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/tmp XDG_CACHE_HOME=/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/cache GIT_OPTIONAL_LOCKS=0 python3 -B - <<'PY'\nimport pathlib,json,re,subprocess,hashlib,os,datetime\nC=pathlib.Path('/dwdhome/fy/cgpterm/artifacts/oi-eaw-wall/OI-EAW-WALL-20261114-01');W=pathlib.Path('/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001');p=C/'W001-published-refs.json';m=json.loads(p.read_bytes());schema=json.loads((C/'observe-iterate/longrun/contracts/longrun_schema_v2.json').read_bytes());pattern=schema['$defs']['ref']['pattern'];ref=next(x['ref'] for x in m['files'] if x['relative_path']=='WORKER_EXECUTION_REPORT.md')\nprint('PUBLICATION_SUMMARY',json.dumps({k:v for k,v in m.items() if k!='files'},ensure_ascii=False));print('FILES',len(m['files']),'UNIQUE',len({x['relative_path'] for x in m['files']}),'REF_SCHEMA_PATTERN',pattern,'REPORT_SCHEMA_PATTERN_MATCH',bool(re.fullmatch(pattern,ref)));print('PATTERN_CHAR_CODES',list(map(ord,pattern[-12:])))\nerrors=[]\nfor x in m['files']:\n rel=pathlib.PurePosixPath(x['relative_path']);assert not rel.is_absolute() and '..' not in rel.parts;p=W/rel;data=p.read_bytes()\n if len(data)!=x['bytes'] or hashlib.sha256(data).hexdigest()!=x['sha256']:errors.append(x['relative_path'])\n assert x['ref']=='daowei2026/observe-iterate@c0c44515e9722c239534ac72eed942536e2ff436:longrun/runs/OI-EAW-WALL-20261114-01/worker_results/W001/'+str(rel)\nprint('FROZEN_313_LOCAL_BYTE_HASH_ERRORS',errors)\ncmd=['git','--no-optional-locks','-C',str(C/'observe-iterate'),'cat-file','-t','c0c44515e9722c239534ac72eed942536e2ff436'];t=datetime.datetime.now(datetime.timezone.utc).isoformat();r=subprocess.run(cmd,stdin=subprocess.DEVNULL,capture_output=True,text=True,timeout=10);print('GIT_OBJECT_PROBE',json.dumps({'command':cmd,'started_at_utc':t,'ended_at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'exit_code':r.returncode,'stdout':r.stdout,'stderr':r.stderr},ensure_ascii=False))\nprint('VALIDATOR_FILES',[x.name for x in sorted((C/'observe-iterate/longrun/tools').iterdir())]);print('SCHEMA_RAW_REF_LINE',next(line for line in (C/'observe-iterate/longrun/contracts/longrun_schema_v2.json').read_text().splitlines() if '@[a-f0-9]' in line))\nPY"
+      ],
+      "cwd": "file:///dwdhome/fy/BASE_E6_2",
+      "exit_code": 0,
+      "duration": {
+        "secs": 0,
+        "nanos": 665927325
+      }
+    },
+    {
+      "started_at_ms": 1794668518211,
+      "completed_at_ms": 1794668518234,
+      "command": [
+        "/bin/bash",
+        "-lc",
+        "PYTHONDONTWRITEBYTECODE=1 TMPDIR=/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/tmp XDG_CACHE_HOME=/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/cache python3 -B - <<'PY'\nimport pathlib,ast,json,importlib.util\np=pathlib.Path('/dwdhome/fy/cgpterm/artifacts/oi-eaw-wall/OI-EAW-WALL-20261114-01/observe-iterate/longrun/tools/longrun_gate.py');txt=p.read_text();ls=txt.splitlines();tree=ast.parse(txt)\nprint('JSONSCHEMA_INSTALLED',importlib.util.find_spec('jsonschema') is not None)\nfor node in tree.body:\n if isinstance(node,(ast.FunctionDef,ast.AsyncFunctionDef)) and ('worker_return' in node.name or node.name in ('main','build_parser','validate_ref','validate_manifest')):\n  print('FUNCTION',node.name,node.lineno,node.end_lineno)\n  if 'worker_return' in node.name or node.name in ('validate_ref','validate_manifest'):\n   print('\\n'.join(f'{i+1}: {ls[i]}' for i in range(node.lineno-1,node.end_lineno)))\nprint('PUBLISHED_BYTES',sum(x['bytes'] for x in json.loads(pathlib.Path('/dwdhome/fy/cgpterm/artifacts/oi-eaw-wall/OI-EAW-WALL-20261114-01/W001-published-refs.json').read_text())['files']))\nPY"
+      ],
+      "cwd": "file:///dwdhome/fy/BASE_E6_2",
+      "exit_code": 0,
+      "duration": {
+        "secs": 0,
+        "nanos": 22448095
+      }
+    }
+  ],
+  "current_command_receipt": {
+    "started_at_utc": "2026-11-14T15:03:44.247354+00:00",
+    "validation_finished_at_utc": "2026-11-14T15:03:45.791988+00:00",
+    "actual_shell_exit_code": null,
+    "reason": "进程不能自行观测自身退出；实际exit code由本次exec工具独立返回。"
+  },
+  "validation_record_self_sha256": null,
+  "validation_record_self_sha256_reason": "避免自hash循环；本记录准确sha256在exec结果及最终回报给出"
+}
