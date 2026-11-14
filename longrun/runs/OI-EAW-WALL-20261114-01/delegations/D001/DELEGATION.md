@@ -4,11 +4,17 @@
 
 - `run_id`：`OI-EAW-WALL-20261114-01`
 - `delegation_id`：`D001`
-- `issuer_call_id`：`C0001`
+- `issuer_call_id`：`C0002`
 - `issuer`：`chatgpt:OI-EAW-WALL-20261114-01:manager`
-- `recipient / return_to`：`chatgpt:OI-EAW-WALL-20261114-01:executor:E1`
+- `recipient`：`chatgpt:OI-EAW-WALL-20261114-01:executor:E1`
+- `return_to`：`chatgpt:OI-EAW-WALL-20261114-01:manager`
 - 父任务：对 `EawP1WallLifecycleFrp` 开展观察材料准备和业务合理性分析。
 - 本 D 的管理决定：`daowei2026/observe-iterate@0dd8a0cb3e243fa6915d07523a17ca5feaca13d3:longrun/runs/OI-EAW-WALL-20261114-01/business_control/decisions/MD-C0001-001.md`
+- 被替代的未派发候选：
+  - `daowei2026/observe-iterate@27b8ca60903cfd722f875d7b40edcc887a96abac:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D001/DELEGATION.md`
+  - `daowei2026/observe-iterate@7b3b75d2f03b520b62a3fecfead1a978c3bb91ae:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D001/DELEGATION.json`
+
+本修订由 C0002 对同一未派发 `D001` 重签，是当前唯一可派发版本；C0001 所签旧版本仅保留为精确历史，不得再派发。除运输身份一致性修复外，D001 的专业目标、输入、产出、接收标准和权限边界均不改变。
 
 本 D 是正式专业子任务，不是测试。executor 对本 D 的专业方法选择、事实核对、Worker 结果审查和交付质量负责；不得把本 D 继续扩为新的父任务。
 
