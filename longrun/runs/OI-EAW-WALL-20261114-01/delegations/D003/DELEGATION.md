@@ -1,18 +1,53 @@
 # D003｜Run-local scenario-first 工程前置实现、隔离验证与可执行性封口
 
-## 0. 运输身份
+## 0. 运输身份与修签状态
 
 - `run_id`：`OI-EAW-WALL-20261114-01`
 - `delegation_id`：`D003`
-- `issuer_call_id`：`C0007`
+- `issuer_call_id`：`C0008`
 - `issuer`：`chatgpt:OI-EAW-WALL-20261114-01:manager`
 - `recipient`：`chatgpt:OI-EAW-WALL-20261114-01:executor:E1`
 - `return_to`：`chatgpt:OI-EAW-WALL-20261114-01:manager`
-- 管理决定：`daowei2026/observe-iterate@11fce23f543b000425350153d9cb1eda5e78453c:longrun/runs/OI-EAW-WALL-20261114-01/business_control/decisions/MD-C0007-001.md`
+- 原专业管理决定：`daowei2026/observe-iterate@11fce23f543b000425350153d9cb1eda5e78453c:longrun/runs/OI-EAW-WALL-20261114-01/business_control/decisions/MD-C0007-001.md`
+- C0008 静态运输预检：`daowei2026/observe-iterate@a8a5952a696b2857a6b2a02b296b32503decc2a5:longrun/runs/OI-EAW-WALL-20261114-01/calls/C0008/D003_LITERAL_SCOPE_AUDIT.json`
+- 被替代、从未送达的 C0007 候选：
+  - `daowei2026/observe-iterate@adda66cf75e672fc16e3f0d327f315d5af81f09d:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/DELEGATION.md`
+  - `daowei2026/observe-iterate@2f0a3003da25c8d63d349c47a23b58057b77047e:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/DELEGATION.json`
+
+本修订由 C0008 对尚未派发、尚未产生 W 的同一 D003 作运输表示修签。C0007 的 scenario-first 顺序、八项 EP、exact source baseline、成本 cap、全部禁令、业务 Gate 和 `G-RUN=NOT PASSED` 均原样保留；C0007 版本继续作为历史候选，但不得再派发。C0008 修订版是当前唯一可派发 D003。
 
 本 D 是 D002 被接受后的新工程前置专业任务，不是 D002 返修，也不是 `ARUN-WALL-SCENARIO-001` 的实际运行。
 
 本 D 只在本 Run 隔离目录中建设并验证 shared + scenario prerequisite package。它不能修改共享源码 checkout，不能 push `daowei2026/frp`，不能生成并消费九场景的正式 O/C/A/D evidence，也不取得 current scenario G-RUN。
+
+### 0.1 机读 grant token 与实际排他写面的分层
+
+采用版 Gate 对 `allowed_writes` 使用**字面集合包含**，不把子目录解释为父目录 token 的自然子集。为使后续合法 W 同时满足 D scope 与 Owner Binding，D003 JSON 的机读 `allowed_writes` 必须沿用 Owner 原文的两个根 token：
+
+```text
+Linux grant token:
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01
+
+GitHub grant token:
+longrun/runs/OI-EAW-WALL-20261114-01
+```
+
+这两个根 token 仅是**机械运输授权上限**，不扩大 D003 的实际执行写面。D003 的实际排他写面仍严格只有：
+
+```text
+Linux actual exclusive write root:
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003
+
+GitHub actual publish root:
+longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003
+```
+
+后续如由 E1 签 W：
+
+1. `W.grant.operation`、`execution_context`、`authority_quote` 和 `allowed_writes` 必须逐字沿用相应 Owner grant；
+2. W 的 instructions、cwd、输出路径和 write audit 必须再次把真实写入锁死到上述 D003 actual root；
+3. 对 Owner root 内但 D003 子根外的任何真实写入，均视为越出本 D 的专业执行范围并触发硬停止；
+4. 不得以空 `allowed_writes` 绕过 Gate后再实际写入，也不得把根 token解释成新增源码目录权限。
 
 ## 1. 业务连接、阶段和完成目的
 
@@ -67,6 +102,8 @@ D003 完成后，manager 只能决定 prerequisite 是否满足以及 action 是
 
 - `daowei2026/observe-iterate@1e00424349ce8a5d72c9fccf74585d18630b62b8:longrun/runs/OI-EAW-WALL-20261114-01/BusinessTaskInput.md`
 - `daowei2026/observe-iterate@11fce23f543b000425350153d9cb1eda5e78453c:longrun/runs/OI-EAW-WALL-20261114-01/business_control/decisions/MD-C0007-001.md`
+- `daowei2026/observe-iterate@3e6ead1648ccee8364eac315c705e07ba8e938ac:longrun/runs/OI-EAW-WALL-20261114-01/calls/C0008/FULL_ASSIGNMENT.md`
+- `daowei2026/observe-iterate@a8a5952a696b2857a6b2a02b296b32503decc2a5:longrun/runs/OI-EAW-WALL-20261114-01/calls/C0008/D003_LITERAL_SCOPE_AUDIT.json`
 - `daowei2026/observe-iterate@ca7fdae84f65265332e3a53865724a2615508766:longrun/professional/PRO_EXECUTOR_GUIDE.md`
 - `daowei2026/observe-iterate@ca7fdae84f65265332e3a53865724a2615508766:longrun/contracts/LONGRUN_PROTOCOL_V2.md`
 - `daowei2026/observe-iterate@ca7fdae84f65265332e3a53865724a2615508766:control/02_L1_观察材料准备流程.md`
@@ -164,7 +201,8 @@ SOURCE_BASELINE_REPORT.md
 - cache/tmp/home/build/log paths；
 - predicted disk/RSS/wall/file-count；
 - filesystem audit 方法；
-- actual Worker/thread/model/effort/cwd 和 single-writer lock（若签 W）。
+- actual Worker/thread/model/effort/cwd 和 single-writer lock（若签 W）；
+- W grant 的 Owner literal token 与 D003 actual root 的双重约束及核对方式。
 
 只有以下 cap 均可监测且预计不超限，才可进入 Phase 2 的 compile-only/serialization verification：
 
@@ -183,7 +221,7 @@ scenario evidence fixture run     = 0
 
 ### 4.1 隔离 source
 
-唯一 Linux 根：
+唯一 Linux 实际排他写根：
 
 ```text
 /dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/
@@ -313,7 +351,7 @@ origin = CONTROLLED
 
 ## 5. 必须交付的原生结果
 
-GitHub 结果只发布到：
+GitHub 结果实际只发布到：
 
 ```text
 longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/
@@ -341,7 +379,7 @@ longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/
 15. `STAGED_LOCAL_COMMIT_REPORT.json`——只有 staged tree形成 local commit时产生，必须标明 `NOT_UPSTREAM_PUBLISHED`；
 16. `ENGINEERING_STOP_REPORT.md`——preflight/cap/写面/依赖阻断时产生。
 
-不得发布大型 build/cache、二进制、凭据或生产数据。GitHub patch和manifest必须足以审查 staged source改动；Linux source tree仍留在授权 D003 root。
+不得发布大型 build/cache、二进制、凭据或生产数据。GitHub patch和manifest必须足以审查 staged source改动；Linux source tree仍留在授权 D003 actual root。
 
 ## 6. 接收标准
 
@@ -357,10 +395,12 @@ longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/
 
 ### 6.2 权限和写面
 
+- 机读 grant 使用 Owner literal root token，不改变 actual exclusive write root；
 - shared FRP/TIS/worker checkout字节、git status和mtime无 D003 造成的改变；
 - `/m3varK`、现役 product、production wrapper和源码 GitHub repo无写入；
-- 所有新文件在 D003 root或本 Run GitHub path；
+- 所有 Linux 新文件实际位于 D003 root，所有 GitHub 新成果实际位于本 Run 的 `delegations/D003`；
 - build/cache/tmp/home/log全部显式重定向；
+- write audit 必须证明 D003 actual root 外零写入；
 - 无法证明零外写即不能把 EP-WALL-SHARED-03判满足。
 
 ### 6.3 工程验证边界
@@ -390,7 +430,7 @@ E1 可以零 Worker完成专业设计和审查；需要 Linux staged source、pa
 - Worker只执行 D003 已明确的 preflight/staged engineering/limited verification；
 - Worker不能决定 EP 是否专业接受、action eligibility、G-RUN、业务预期或父任务完成；
 - Worker Return先回 E1，由 E1消费、审查 patch和验证证据后再回 manager；
-- 主控在实际派发前核物理 thread、模型/effort、cwd、single-writer lock和写面；旧 W001 的锁、thread和资格不延续。
+- 主控在实际派发前核物理 thread、模型/effort、cwd、single-writer lock、Owner literal grant token和D003 actual write root；旧 W001 的锁、thread和资格不延续。
 
 允许操作仍仅为：
 
@@ -399,17 +439,26 @@ wall-observation-work
 run-record-publish
 ```
 
-Linux 写面严格收窄为：
+用于 V2 Gate 的 delegated `allowed_writes` token 是 Owner Binding 原文：
+
+```text
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01
+longrun/runs/OI-EAW-WALL-20261114-01
+```
+
+但是 Linux 实际排他写面严格收窄为：
 
 ```text
 /dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003
 ```
 
-GitHub 写面严格收窄为：
+GitHub 实际发布面严格收窄为：
 
 ```text
 longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003
 ```
+
+Worker order 的 grant 必须逐字复制对应 Owner grant token和authority quote；instructions必须再次固定实际子根。任何 actual subroot 外写入均越界，即使它仍位于 Owner root token之下。
 
 ## 8. 硬停止和结果分流
 
@@ -422,7 +471,8 @@ longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003
 - dry preflight超 cap或不可监测；
 - 必须修改 production lifecycle语义才能编译；
 - 必须运行9场景才能证明前置；
-- 发现 D003 root外写入；
+- 发现 D003 actual root外写入；
+- W grant token/authority quote与Owner原文不一致；
 - 外部动作可能已发生但回执未知。
 
 ### 结果分流
@@ -433,4 +483,4 @@ longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003
 - **需要额外源码权限**：形成具名 Owner authorization candidate；不修改共享 repo。
 - **发现 product semantic问题**：只登记新问题候选；不在 prerequisite package修产品行为。
 
-最终 `EXECUTOR_RETURN` 必须引用 D003、全部真实结果、已接受 Worker（如有）、remaining scope和准确后继。`REPORTED_COMPLETE` 只表示 D003 合同完整交付，不表示 scenario action、三个父问题或父任务完成。
+最终 `EXECUTOR_RETURN` 必须引用当前 C0008 修订 D003、全部真实结果、已接受 Worker（如有）、remaining scope和准确后继。`REPORTED_COMPLETE` 只表示 D003 合同完整交付，不表示 scenario action、三个父问题或父任务完成。
