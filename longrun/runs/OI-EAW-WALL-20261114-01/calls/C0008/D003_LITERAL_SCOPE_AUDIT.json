@@ -1,0 +1,16 @@
+{
+  "kind": "STATIC_LITERAL_SCOPE_INTERSECTION_AUDIT_NOT_WORKER_DISPATCH",
+  "adopted_gate_ref": "daowei2026/observe-iterate@ca7fdae84f65265332e3a53865724a2615508766:longrun/tools/longrun_gate.py",
+  "owner_literal_allowed_writes": [
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01",
+    "longrun/runs/OI-EAW-WALL-20261114-01"
+  ],
+  "D003_literal_allowed_writes": [
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003",
+    "longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003"
+  ],
+  "nonempty_write_token_intersection": [],
+  "nonempty_worker_write_grant_possible": false,
+  "reason": "order() requires W allowed_writes literal subset of D and grant_covers() requires literal subset of Owner; descendants are physically within scope but not equal tokens; no W exists and no runtime result claimed",
+  "physical_authorization": "D003 descendants fit Owner roots; no new Owner permission needed for representation correction"
+}
