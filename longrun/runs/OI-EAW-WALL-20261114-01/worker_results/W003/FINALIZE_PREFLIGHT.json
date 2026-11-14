@@ -1,0 +1,761 @@
+{
+  "utc": "2026-11-14T21:17:34.466176+00:00",
+  "phase": "W003_FORMAL_RETURN_ONLY",
+  "write_root": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/final-return",
+  "cwd": "/dwdhome/fy/BASE_E6_2",
+  "HOME": "/home/dw",
+  "CODEX_HOME": "/home/dw/.codex",
+  "HOME_or_CODEX_HOME_reset": false,
+  "actual_context": {
+    "timestamp": "2026-11-14T21:14:43.951Z",
+    "turn_id": "01a1dbe9-a130-75a2-8f43-0d67468a532c",
+    "cwd": "/dwdhome/fy/BASE_E6_2",
+    "model": "gpt-6.1-sol",
+    "effort": "max"
+  },
+  "original_physical_thread": "01a1da55-5881-7590-94a1-0661f0236977",
+  "current_owner_pid": 2890,
+  "owner_startticks": "20139",
+  "holder_lock": {
+    "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/.D003-writer.lock",
+    "session": 30931,
+    "pid": 240810,
+    "startticks": "46501758",
+    "inode": 14806399,
+    "fdinfo": "pos:\t0\nflags:\t02100002\nmnt_id:\t4061\nino:\t14806399\nlock:\t1: FLOCK  ADVISORY  WRITE 240810 00:53:14806399 0 EOF\n",
+    "same_inode_competition_errno": 11,
+    "holder_modified": false
+  },
+  "publication_receipt": {
+    "path": "/dwdhome/fy/cgpterm/artifacts/oi-eaw-wall/OI-EAW-WALL-20261114-01/W003-published-refs.json",
+    "bytes": 52290,
+    "sha256": "855d095bc2b625cdabe28168c11666f3c1e627e09ba7b0a06968671193581ae2",
+    "commit": "9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3",
+    "remote_verification_source": "主控真实回执，Worker 不联网；本地72份逐项核 bytes/SHA256/Git blob SHA-1 一致。"
+  },
+  "frozen_files": [
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/artifacts/COMMAND_LOG.jsonl",
+      "bytes": 420885,
+      "sha256": "76b4992c60685284754239df258d08c1a8391547c1e2f7ed36065d2d440f1099",
+      "git_blob_sha": "73a5f2fcf364900b49927746187a0d2834d5dc30",
+      "mtime_ns": 1794689984760406621,
+      "inode": 14822204,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/COMMAND_LOG.jsonl"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/artifacts/ENGINEERING_STOP_REPORT.md",
+      "bytes": 2491,
+      "sha256": "ca4e29d8534bc77c3243d72730c072e4180d730a18c5675e07b1948ec68f0c7b",
+      "git_blob_sha": "2788940fcb2c8e2c89d9db124ac45dea4cc32faa",
+      "mtime_ns": 1794689767130922626,
+      "inode": 14822466,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/ENGINEERING_STOP_REPORT.md"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/artifacts/EP_ACCEPTANCE_MATRIX.md",
+      "bytes": 1807,
+      "sha256": "60af1b82b5f0c2ecd98024741af0810702e7df95f479816e2858b4b999938be8",
+      "git_blob_sha": "615f0cb57f3c1ec445c7996178950f8c218a9545",
+      "mtime_ns": 1794689767111864188,
+      "inode": 14820953,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/EP_ACCEPTANCE_MATRIX.md"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/artifacts/FULL_WRITE_TRACE_REVIEW.json",
+      "bytes": 6705,
+      "sha256": "d54d01e4f0f342535b383c02ada821049592bda6deb589cc8f46c6159d96f5ba",
+      "git_blob_sha": "dfb9de3f3551aa79c004e72839d26686824a66a2",
+      "mtime_ns": 1794689530117191749,
+      "inode": 14822313,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/FULL_WRITE_TRACE_REVIEW.json"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/artifacts/HASHES.sha256",
+      "bytes": 12096,
+      "sha256": "4e1bec9ff36bb529923cfe7365a47844522d0b02fed4d63ff5a95a76e41b2d8d",
+      "git_blob_sha": "3dd9817b8509b97cd19332b759a70a41ac7ba0ba",
+      "mtime_ns": 1794689985255943210,
+      "inode": 14822942,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/HASHES.sha256"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/artifacts/LOCAL_ARCHIVE_VALIDATION.json",
+      "bytes": 1784,
+      "sha256": "cee1746b25d458b39a02a15dc47fa467ead20d51d0fa080caa6b5b81904409d7",
+      "git_blob_sha": "0c64b1aeacfbb941316d114431700d764f447761",
+      "mtime_ns": 1794689985025581323,
+      "inode": 14822941,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/LOCAL_ARCHIVE_VALIDATION.json"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/artifacts/LOCAL_STAGE_HANDOFF.json",
+      "bytes": 8963,
+      "sha256": "55aec653618dc3a33d3b224c644b92eaf1232e5190db949e79b725a839050146",
+      "git_blob_sha": "7facb2bfdf887f433d059501d4fd605359af252e",
+      "mtime_ns": 1794689767097702816,
+      "inode": 14820460,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/LOCAL_STAGE_HANDOFF.json"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/artifacts/OFFLINE_CLOSURE_REPORT.json",
+      "bytes": 1632,
+      "sha256": "3b68523d348d670156f726b519ddcd9fdf31dbb6c34f5fd08c13706f720febdd",
+      "git_blob_sha": "5a726cc0c3595ec5268c2291f22223fe173280dd",
+      "mtime_ns": 1794689767045644542,
+      "inode": 14820543,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/OFFLINE_CLOSURE_REPORT.json"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/artifacts/PHASE0_RECOVERY_VERDICT.json",
+      "bytes": 2083,
+      "sha256": "7a37e8784139d55801eeefa7a74d24f754b37d3e3cb2cbf09e45e082c665abbe",
+      "git_blob_sha": "5c89b7c97df4914446ec5e27dc3e3ecb07d949ff",
+      "mtime_ns": 1794689767079778979,
+      "inode": 14821873,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/PHASE0_RECOVERY_VERDICT.json"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/artifacts/PUBLICATION_MANIFEST.json",
+      "bytes": 41511,
+      "sha256": "3fd7be75290a5bf28a58de8a13e1ef2b08bae3cb3279df4df3ceaa055f70571b",
+      "git_blob_sha": "d4f067eb11e64201a50702c9f9875f263121a243",
+      "mtime_ns": 1794689985188405983,
+      "inode": 14820086,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/PUBLICATION_MANIFEST.json"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/artifacts/R0A_EXECUTION_PLAN.json",
+      "bytes": 1420,
+      "sha256": "803ace24916e29a604f3e10335219a324f04c539c50ee6aa9ef99d56e00e98b3",
+      "git_blob_sha": "311381e45895546485859729214f0e8ed8873a40",
+      "mtime_ns": 1794688866155674225,
+      "inode": 14820897,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/R0A_EXECUTION_PLAN.json"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/artifacts/RESOURCE_BUDGET_REPORT.json",
+      "bytes": 2424,
+      "sha256": "65787cbcc2353e1ba6cc7a2291cd6c5df19a911c5ed0fa399f7c8af3bdeaee51",
+      "git_blob_sha": "4e8de1cd541936a27d76add7b4e3f7d2b3016587",
+      "mtime_ns": 1794689767061587514,
+      "inode": 14820079,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/RESOURCE_BUDGET_REPORT.json"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/artifacts/W003_BINDING.json",
+      "bytes": 3907,
+      "sha256": "bb47cd2fca298405ce92923500df6ceeef44135dbab434d7e6b61d6d924ef8e2",
+      "git_blob_sha": "066cd149cd833a1ffcbc3b16e8a00c2f97f284f0",
+      "mtime_ns": 1794689412464606032,
+      "inode": 14820052,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/W003_BINDING.json"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/artifacts/WORKER_EXECUTION_REPORT.md",
+      "bytes": 6884,
+      "sha256": "839c7c62302dd1b07cca3da7115364702a89d6290a2f11014a8cb9e28a1f7357",
+      "git_blob_sha": "63a79bd424982455621c28bfd26e9b5b1de8c7cb",
+      "mtime_ns": 1794689767149664572,
+      "inode": 14821941,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/WORKER_EXECUTION_REPORT.md"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/artifacts/WRITE_CONFINEMENT_REPORT.json",
+      "bytes": 4889,
+      "sha256": "4816991ab4ba97dadb12de7c96a595ed28a115da1d9428f41374f0d29580bc04",
+      "git_blob_sha": "df074d0b4878e5f948a6eaf078b343a29727d6a8",
+      "mtime_ns": 1794689767020972862,
+      "inode": 14823171,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/WRITE_CONFINEMENT_REPORT.json"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/artifacts/WRITE_SURFACE_AUDIT.json",
+      "bytes": 3280,
+      "sha256": "055cf8d5a086f9d61f56e352348d861c44bfc1db5caa20ee8f2486330bb24b29",
+      "git_blob_sha": "c111edc193fe8e3af1ce982159494db4fa7a7162",
+      "mtime_ns": 1794689984857747659,
+      "inode": 14822083,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/WRITE_SURFACE_AUDIT.json"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/audit/ABSOLUTE_TOOLS.json",
+      "bytes": 409,
+      "sha256": "f3b217ac00737f9c3ee0332022497a4be6188f2d650196fb2c2fc73d9718d9fa",
+      "git_blob_sha": "c814ef20ea42cc4259d215fe22bc4159b473880f",
+      "mtime_ns": 1794688866120745968,
+      "inode": 14821020,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/audit/ABSOLUTE_TOOLS.json"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/audit/INPUT_COPY_FINAL_CHECK.json",
+      "bytes": 14734,
+      "sha256": "412b8497d5b26302b3e08b66c59b534a64b69d35172405d06f091be3cc39492a",
+      "git_blob_sha": "0aba7a9e46a68de3db0e6360b331d91e4806812f",
+      "mtime_ns": 1794689984433165763,
+      "inode": 14822203,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/audit/INPUT_COPY_FINAL_CHECK.json"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/audit/NATIVE_COMMAND_CAPTURE.json",
+      "bytes": 1048,
+      "sha256": "18ea4d0623eecb0bdfab426d98c41ac82228b818e9dd03837b93718bbb641183",
+      "git_blob_sha": "5843ac300832229164930832d469e995d0abe6a9",
+      "mtime_ns": 1794689984675579361,
+      "inode": 14820930,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/audit/NATIVE_COMMAND_CAPTURE.json"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/audit/NATIVE_COMMAND_COMPLETIONS.jsonl",
+      "bytes": 415406,
+      "sha256": "6ac059c8e9d5d383102f067269ca50508dac1550071893f977d0ad8bbc95117b",
+      "git_blob_sha": "ac732302a68aa1f406f63877f769fe1908c5a6ec",
+      "mtime_ns": 1794689984633295160,
+      "inode": 14822535,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/audit/NATIVE_COMMAND_COMPLETIONS.jsonl"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/audit/READONLY_INPUTS_AFTER.json",
+      "bytes": 16435,
+      "sha256": "5786634e16a757d13447a636d13ad08fcbd6e11e133dc449d3235b295b561b7f",
+      "git_blob_sha": "914fc6df35d41c95994ff38861e63417d5a833c3",
+      "mtime_ns": 1794689984277986434,
+      "inode": 14822052,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/audit/READONLY_INPUTS_AFTER.json"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/audit/READONLY_INPUTS_BEFORE.json",
+      "bytes": 6783,
+      "sha256": "3a4acd39661039ac1d2074e36a5ac1bd6750656a9ba44e3a47021938e6c4e4de",
+      "git_blob_sha": "56b62fe92e3ecc039ad38300a62f7fa2aa08feef",
+      "mtime_ns": 1794688865948275159,
+      "inode": 14821902,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/audit/READONLY_INPUTS_BEFORE.json"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/input/C0011-remote-calls--C0011--PRO_RETURN.json",
+      "bytes": 1395,
+      "sha256": "dc81441c9f4147b479791ae3fa1d593e250ff2eb0a45bb2da6af4e1adb2d1001",
+      "git_blob_sha": "9d913b29e8ba1ce427288f82f5be9dc0fcfb5d4a",
+      "mtime_ns": 1794688865760000957,
+      "inode": 14820895,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/input/C0011-remote-calls--C0011--PRO_RETURN.json"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/input/C0011-remote-delegations--D003--results--D003_W003_BINDING_REPAIR_C0011.md",
+      "bytes": 7385,
+      "sha256": "799bff46100d5b4baf75824e74e53c16d80d8f4322e1d7d302fda1893887ecd4",
+      "git_blob_sha": "156cd8fc47cbb0bff4942e22eec5239c67518e7d",
+      "mtime_ns": 1794688865777752548,
+      "inode": 14822017,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/input/C0011-remote-delegations--D003--results--D003_W003_BINDING_REPAIR_C0011.md"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/input/C0011-remote-work_orders--W003--ORDER.json",
+      "bytes": 6807,
+      "sha256": "c0906a7cabcf970d51f052d9747592ad9e66b015080d4ff48fd5b6f39e32effb",
+      "git_blob_sha": "abacab511b89e37a0be66db59282cd597157027d",
+      "mtime_ns": 1794688865737941155,
+      "inode": 14820816,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/input/C0011-remote-work_orders--W003--ORDER.json"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/input/C0011-remote-work_orders--W003--ORDER.md",
+      "bytes": 17309,
+      "sha256": "c6bf89c9a2c4c8b477e8e81458123ac7c69f7e0194545b5257312781ca1c05c7",
+      "git_blob_sha": "0c43e2bf5738c6beacf99ca68df0cff20293e5d8",
+      "mtime_ns": 1794688865716781874,
+      "inode": 14821457,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/input/C0011-remote-work_orders--W003--ORDER.md"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/input/RUN_BINDING.json",
+      "bytes": 1328,
+      "sha256": "2dc9e25124f9bf08c967e2b50b723014bb680cf57a24bd9841854692c24957cc",
+      "git_blob_sha": "08efa7f41b25ba72a2fcd0febf363ccbd6078674",
+      "mtime_ns": 1794688865984787314,
+      "inode": 14820028,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/input/RUN_BINDING.json"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/input/W003-execution-binding-audit.json",
+      "bytes": 2480,
+      "sha256": "e01c411df3031c0820fc68e26b9b0d23d0bf632a942cc4aa08e86ad94ee30d77",
+      "git_blob_sha": "090ee2dc621fba6d0db0b67c0512f853309c053d",
+      "mtime_ns": 1794688865846058750,
+      "inode": 14820297,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/input/W003-execution-binding-audit.json"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/input/W003-input-mirror-index.json",
+      "bytes": 12965,
+      "sha256": "7380a602fd2466039d3a7478691b5717c2a04cedc81bedd342bfb8801b4ffbe8",
+      "git_blob_sha": "edfae5e2174ce33e479ecc040e95f42e510a6fb3",
+      "mtime_ns": 1794688865807098695,
+      "inode": 14820817,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/input/W003-input-mirror-index.json"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/input/W003-lock-competition-proof.json",
+      "bytes": 986,
+      "sha256": "ebe88faae3cb2cd37307cfab51ffaa2a4f3a848c6c7efeb2c43e956573f1758d",
+      "git_blob_sha": "81196b5fde2b7bfc283ebd885211786a78f2d054",
+      "mtime_ns": 1794688865826954525,
+      "inode": 14819690,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/input/W003-lock-competition-proof.json"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/input/W003-worker-loaded-context.json",
+      "bytes": 4749,
+      "sha256": "8d287d744897dba33749fcf5014cf2076114d25cfe8eb0af31a4172e57443ade",
+      "git_blob_sha": "8bd95bb1124fd4c55d8bbacfa97e94dd8f62f639",
+      "mtime_ns": 1794689412437750112,
+      "inode": 14821048,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/input/W003-worker-loaded-context.json"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/input/W003-worker-pre-dispatch-state.json",
+      "bytes": 9490,
+      "sha256": "4e5193accb85cba16eccea67e41065addf5b92aa6ecee9c0088872878d500e8b",
+      "git_blob_sha": "747c5557aebf3cc1b1989cb1a238fb9b33dfd1ec",
+      "mtime_ns": 1794688865900559327,
+      "inode": 14820161,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/input/W003-worker-pre-dispatch-state.json"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/input/W003-workspace-readonly-binding.json",
+      "bytes": 393,
+      "sha256": "df0f7aa40326ed4e0ee5032f9d118f2525aa38ed530858414f9ab6d5c037f473",
+      "git_blob_sha": "9c673369beb6c980facb5db9e1ddc834a89a625c",
+      "mtime_ns": 1794688865871969247,
+      "inode": 14820896,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/input/W003-workspace-readonly-binding.json"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/input/WORKER_TASK-W003.md",
+      "bytes": 5210,
+      "sha256": "f8aae85a8bf268c5f2dd7c48edf7383d810749d6c83094f7ca0d61db9fb3ce87",
+      "git_blob_sha": "2c518c484e67ac98631584d776375e841a968d90",
+      "mtime_ns": 1794688865686756899,
+      "inode": 14820815,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/input/WORKER_TASK-W003.md"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/input/mirrors/00--FULL_ASSIGNMENT-C0011.md",
+      "bytes": 4707,
+      "sha256": "b92c0690ecab12c8106bff23089f5f8a0da57fd3091e45e607e26bf213f1c22f",
+      "git_blob_sha": "d4eaaaed59a37188a64682050be69df235ed54d7",
+      "mtime_ns": 1794688865042041760,
+      "inode": 14820813,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/input/mirrors/00--FULL_ASSIGNMENT-C0011.md"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/input/mirrors/01--INVOCATION-C0011.json",
+      "bytes": 1559,
+      "sha256": "272fe037c65bdd0074984775bd34c2aaab2c9d58991376cd119d657e927491ac",
+      "git_blob_sha": "ac0cb5ccf472efa9c94f10596830838dddbc024e",
+      "mtime_ns": 1794688865072254330,
+      "inode": 14819196,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/input/mirrors/01--INVOCATION-C0011.json"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/input/mirrors/02--W003_EXECUTION_BINDING_FEEDBACK-C0011.json",
+      "bytes": 2633,
+      "sha256": "0efe12276cf056899f6560a0a9f8ed1d96056d356e167220cd6c50e41bc53365",
+      "git_blob_sha": "6b1cfdad38028fee77aa76f5930784ce00a83b89",
+      "mtime_ns": 1794688865099272372,
+      "inode": 14821161,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/input/mirrors/02--W003_EXECUTION_BINDING_FEEDBACK-C0011.json"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/input/mirrors/03--C0010-remote-calls--C0010--PRO_RETURN.json",
+      "bytes": 1391,
+      "sha256": "695cb93a411cf63b675e48b7bf878981eaa6e9fca3b4a004ece0df94532c6e3b",
+      "git_blob_sha": "487ad2931b98f95aa8a04be847fb84717b91aa15",
+      "mtime_ns": 1794688865130943413,
+      "inode": 14820506,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/input/mirrors/03--C0010-remote-calls--C0010--PRO_RETURN.json"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/input/mirrors/04--C0010-remote-work_orders--W003--ORDER.md",
+      "bytes": 13812,
+      "sha256": "d8ace158ad2933d9fc39146c7f35537a197e5986ff651fcb8862f25dd88307f9",
+      "git_blob_sha": "a06d583b4a987468379a53bc42583f45b8b4a082",
+      "mtime_ns": 1794688865159053430,
+      "inode": 14821901,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/input/mirrors/04--C0010-remote-work_orders--W003--ORDER.md"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/input/mirrors/05--C0010-remote-work_orders--W003--ORDER.json",
+      "bytes": 6127,
+      "sha256": "8d63bbe90ffa91be05446c8edb77c672fea20b52f25f5e701c77af9f1744af3d",
+      "git_blob_sha": "dd9f762425c73e5ef88f77099e48a45f5e1aed84",
+      "mtime_ns": 1794688865189448245,
+      "inode": 14821555,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/input/mirrors/05--C0010-remote-work_orders--W003--ORDER.json"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/input/mirrors/06--C0008-remote-delegations--D003--DELEGATION.md",
+      "bytes": 19158,
+      "sha256": "6bae2b9f61794574fa4206ba9e10e32bf36ae0e8cf5a315f9fda0e183c6d23aa",
+      "git_blob_sha": "d5c69a09f6d72becaa819668602fe066f7fe9b48",
+      "mtime_ns": 1794688865219212033,
+      "inode": 14820814,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/input/mirrors/06--C0008-remote-delegations--D003--DELEGATION.md"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/input/mirrors/07--C0008-remote-delegations--D003--DELEGATION.json",
+      "bytes": 3282,
+      "sha256": "4f544748a95dee05021c41b232081b1724680fc68bd20065e1157d0176f046fa",
+      "git_blob_sha": "c85d70b3c25b1f0deeccd1267c5ab21a60d75b79",
+      "mtime_ns": 1794688865250100244,
+      "inode": 14821289,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/input/mirrors/07--C0008-remote-delegations--D003--DELEGATION.json"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/input/mirrors/08--WORKER_RETURN.json",
+      "bytes": 100634,
+      "sha256": "049face8b30657d3046ecc754e6f6b32cfaec5bdeef66344d93ed031799b8294",
+      "git_blob_sha": "afc099da3be6766de996d10fab29cb434414d32b",
+      "mtime_ns": 1794688865281388859,
+      "inode": 14820419,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/input/mirrors/08--WORKER_RETURN.json"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/input/mirrors/09--WORKER_EXECUTION_REPORT.md",
+      "bytes": 5095,
+      "sha256": "2ab3240b7c9306d61a67e60e7a27f478d6322f07dcc11f6b46df0932ccecd0ac",
+      "git_blob_sha": "b9a492f8fbaee3e3c36af3c0f5876bbd0d21f7f7",
+      "mtime_ns": 1794688865314080703,
+      "inode": 14821290,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/input/mirrors/09--WORKER_EXECUTION_REPORT.md"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/input/mirrors/10--DRY_DEPENDENCY_PREFLIGHT.json",
+      "bytes": 35564,
+      "sha256": "31c52836b1d130b57c6f9cd0c0a553ae71be8b06f1c14bd7b84f28e8d718f8a8",
+      "git_blob_sha": "68e652e8686aa2ebd1c70a783809153a358b4c29",
+      "mtime_ns": 1794688865342526480,
+      "inode": 14821455,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/input/mirrors/10--DRY_DEPENDENCY_PREFLIGHT.json"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/input/mirrors/11--WRITE_SURFACE_PLAN.json",
+      "bytes": 8413,
+      "sha256": "93ad1caed580bdc0168e42916e377837226d0043e6c3bdc8bfc8534d0809ae0f",
+      "git_blob_sha": "578af6c4e4ff3c87d54c9c1cde30cb23b144b0a0",
+      "mtime_ns": 1794688865382227290,
+      "inode": 14821804,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/input/mirrors/11--WRITE_SURFACE_PLAN.json"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/input/mirrors/12--WRITE_SURFACE_AUDIT.json",
+      "bytes": 3191,
+      "sha256": "69a84a263bc01a6b280c17046d1d7b0991436d15076f709fe6cbea50b5d70f4c",
+      "git_blob_sha": "a293375630d1fd36a0de0ba22784055c9d4ac409",
+      "mtime_ns": 1794688865414876031,
+      "inode": 14821291,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/input/mirrors/12--WRITE_SURFACE_AUDIT.json"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/input/mirrors/13--SOURCE_BASELINE_REPORT.md",
+      "bytes": 3756,
+      "sha256": "cfa2392928adb555d4b6d9cc373061660c5c616667092e821bb310e71acd4f12",
+      "git_blob_sha": "da9d1b9b5c94b04c089f67b254b7e25d0f241570",
+      "mtime_ns": 1794688865439904353,
+      "inode": 14821018,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/input/mirrors/13--SOURCE_BASELINE_REPORT.md"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/input/mirrors/14--EP_ACCEPTANCE_MATRIX.md",
+      "bytes": 2478,
+      "sha256": "89c4bb3996938596443f1616c8a595b5b14147964d6a38f5462ea29f9b89df4d",
+      "git_blob_sha": "8b1c1267a1ed0138b168f4daf6a7dfe01d819bc4",
+      "mtime_ns": 1794688865464899351,
+      "inode": 14821557,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/input/mirrors/14--EP_ACCEPTANCE_MATRIX.md"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/input/mirrors/15--ENGINEERING_STOP_REPORT.md",
+      "bytes": 2415,
+      "sha256": "acdd75cd2a86dcfe54a90bf046a7c9d7512387bb24bf01c9a67a4fc4c9cce27d",
+      "git_blob_sha": "034dd9d6903dce0d62cc7d4611c4114ad52c66a5",
+      "mtime_ns": 1794688865490908869,
+      "inode": 14821558,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/input/mirrors/15--ENGINEERING_STOP_REPORT.md"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/input/mirrors/16--KNOWN_CONTRACT_CONFLICTS.md",
+      "bytes": 2488,
+      "sha256": "d051b1545c0784bf71893c015b7ed52041e28fabf044516a2f50296d219bf6d9",
+      "git_blob_sha": "d26f7bfd353a31a064f6befd3bad906693488397",
+      "mtime_ns": 1794688865515385622,
+      "inode": 14819771,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/input/mirrors/16--KNOWN_CONTRACT_CONFLICTS.md"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/input/mirrors/17--C0010-remote-delegations--D003--results--D003_W002_PROFESSIONAL_REVIEW.md",
+      "bytes": 7262,
+      "sha256": "857d503cbf4f70c41e46340a8df840fb5aeb2ee51356e813a29326d5bfbc39df",
+      "git_blob_sha": "2af887c942f7d63426af34a15862707f8d5d81f9",
+      "mtime_ns": 1794688865540921049,
+      "inode": 14820160,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/input/mirrors/17--C0010-remote-delegations--D003--results--D003_W002_PROFESSIONAL_REVIEW.md"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/input/mirrors/18--C0010-remote-delegations--D003--results--EP_ACCEPTANCE_MATRIX_C0010.md",
+      "bytes": 4154,
+      "sha256": "45c2a4073ba144a7a99e93a0ecc05bc50fa4841e49fa07700f58e6c3686b89e7",
+      "git_blob_sha": "7009b4a5c495b8ff363d79185cc73f3132bb8b58",
+      "mtime_ns": 1794688865565918687,
+      "inode": 14821292,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/input/mirrors/18--C0010-remote-delegations--D003--results--EP_ACCEPTANCE_MATRIX_C0010.md"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/input/mirrors/19--C0010-remote-delegations--D003--results--PHASE0_RECOVERY_PLAN_C0010.md",
+      "bytes": 6701,
+      "sha256": "93ec7259660def0ebe6246ae1239d13b0ecde92c669bc7c298604e2d4cbc6712",
+      "git_blob_sha": "eead5df45e761883af422262b165abec63c84ee5",
+      "mtime_ns": 1794688865591558091,
+      "inode": 14821456,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/input/mirrors/19--C0010-remote-delegations--D003--results--PHASE0_RECOVERY_PLAN_C0010.md"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/input/mirrors/20--C0006-remote-ADDITIONAL_ENGINEERING_PRECONDITION.md",
+      "bytes": 14218,
+      "sha256": "775a1941d2086dcac718f5aa1d8dcb60524bbfdc3222ea71a8a04f5112f87718",
+      "git_blob_sha": "78367510f035b7a6f8f60f8ded2352ba3828c50b",
+      "mtime_ns": 1794688865618380611,
+      "inode": 14821805,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/input/mirrors/20--C0006-remote-ADDITIONAL_ENGINEERING_PRECONDITION.md"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/input/mirrors/21--C0006-remote-CONTROLLED_SCENARIO_ACTION_DESIGN.md",
+      "bytes": 15106,
+      "sha256": "cd522ce16fd47888d927700119cd6bf36721414a7d2a8f302e73cec84efd9dea",
+      "git_blob_sha": "67c528559ed007c90038e2f8fceb3fef27024cc8",
+      "mtime_ns": 1794688865651535369,
+      "inode": 14821019,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/input/mirrors/21--C0006-remote-CONTROLLED_SCENARIO_ACTION_DESIGN.md"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/logs/COMMAND_LOG.jsonl",
+      "bytes": 3100,
+      "sha256": "7bffd32fb4c65b806d05204cdd94b13d6844b6a187c6b7eb4ea87c5d86279bc1",
+      "git_blob_sha": "4dc2910ce2d4c68f5abbb0ec9c62d595e6d4dbe3",
+      "mtime_ns": 1794689238236153050,
+      "inode": 14820647,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/logs/COMMAND_LOG.jsonl"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/logs/r0a-positive.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "mtime_ns": 1794689237604761985,
+      "inode": 14818012,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/logs/r0a-positive.stderr"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/logs/r0a-positive.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "mtime_ns": 1794689237574592834,
+      "inode": 14820320,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/logs/r0a-positive.stdout"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/logs/strace-supported-options.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "mtime_ns": 1794688994108336447,
+      "inode": 14820305,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/logs/strace-supported-options.stderr"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/logs/strace-supported-options.stdout",
+      "bytes": 9459,
+      "sha256": "c5724e4ace42e85e70c048563c972a23473aaefc0a49bf30cad630ef0f3841ff",
+      "git_blob_sha": "de662ebe4615267035f85d26fc9791f3f8ce51e3",
+      "mtime_ns": 1794688994127325421,
+      "inode": 14822021,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/logs/strace-supported-options.stdout"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/receipts/INPUT_HASH_AND_COPY_VERIFICATION.json",
+      "bytes": 20734,
+      "sha256": "31f3b17cc7277e779387b4c684a8c7d8b60240f3299720a6decc78100dea7388",
+      "git_blob_sha": "b2bdea901ba56b919533748d6728fef7b2f72dd9",
+      "mtime_ns": 1794688865927127570,
+      "inode": 14819422,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/receipts/INPUT_HASH_AND_COPY_VERIFICATION.json"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/receipts/r0a-positive-launcher.json",
+      "bytes": 1214,
+      "sha256": "39d5a5de7b55579db8503d7c900d10c15cfdd386fa9a8d1a74ebf22452e9fa26",
+      "git_blob_sha": "6ca0ab9ee23053a5e28c49b523bf6d9948e927fb",
+      "mtime_ns": 1794689238107634558,
+      "inode": 14819780,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/receipts/r0a-positive-launcher.json"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/tools/collect_audit.py",
+      "bytes": 6351,
+      "sha256": "1ac9defbaae2ccd7ffc34e062b110681064dd98b6b1c0c00186939a14b242a00",
+      "git_blob_sha": "238d251b1c80fb1640a863d99d4b4cb1e30778c2",
+      "mtime_ns": 1794689411898385122,
+      "inode": 14822051,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/tools/collect_audit.py"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/tools/confinement_probe.py",
+      "bytes": 5659,
+      "sha256": "3ad8a6331b4b878691de2c974549f9cc034967237492fc54880104b4ebf99eda",
+      "git_blob_sha": "99130fff7963f693ecd94f90e23fd134fc70f77d",
+      "mtime_ns": 1794689221588387832,
+      "inode": 14821320,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/tools/confinement_probe.py"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/tools/finalize_archive.py",
+      "bytes": 17516,
+      "sha256": "18b4db640a46f9f0e495a31f4062bead5a144f103b86b54f5a458de974a01e4d",
+      "git_blob_sha": "d128b85c182c3c68cab9037c0a739079b96ab484",
+      "mtime_ns": 1794689983881313245,
+      "inode": 14822940,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/tools/finalize_archive.py"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/tools/landlock_launcher.py",
+      "bytes": 6921,
+      "sha256": "a6586b1622017434ea6c27592d79ccd0a80735016939d0a3f532a6496bbe2479",
+      "git_blob_sha": "e1bb534fb7c070f58934cc4a19872bf467139d28",
+      "mtime_ns": 1794688994055222737,
+      "inode": 14821470,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/tools/landlock_launcher.py"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/tools/review_trace.py",
+      "bytes": 5750,
+      "sha256": "fd0aa69665a0774eac94877a2af8e8965096110f666181201fb9982c9a2920f9",
+      "git_blob_sha": "2cccb576a03a73b0447f0a22e6aec678d30fc05b",
+      "mtime_ns": 1794689529836258213,
+      "inode": 14820945,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/tools/review_trace.py"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/tools/runtime.py",
+      "bytes": 2742,
+      "sha256": "30f268d6e6a144405dd4fba5d067924f71ba92170cf94313cd0ba24de17419b5",
+      "git_blob_sha": "28cddc006c843454439aac28cca11810e7939785",
+      "mtime_ns": 1794688866199408673,
+      "inode": 14819691,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/tools/runtime.py"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/tools/write_reports.py",
+      "bytes": 25199,
+      "sha256": "0ec64163a4fb782194c884af09f3fa8ae955e19c00929e89d9fa397eb8aad5e7",
+      "git_blob_sha": "99fbd1468792760ce07d7be6822d569a27e7213d",
+      "mtime_ns": 1794689766722953497,
+      "inode": 14819810,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/tools/write_reports.py"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/trace/r0a-positive.241337",
+      "bytes": 133303,
+      "sha256": "ea4a8881e8a3967196e0b6ef4f904ddb6ad17bd80d866b5e5b2e8bfec51177bb",
+      "git_blob_sha": "e6aaeef71f6129d7efecafe406386dc5b8a9f8de",
+      "mtime_ns": 1794689238161816438,
+      "inode": 14821822,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/trace/r0a-positive.241337"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/artifacts/FREEZE_RECEIPT.json",
+      "bytes": 35037,
+      "sha256": "cca74831142c6852eaa432615eda7723585222dd335d4a8f965fffc271377fa9",
+      "git_blob_sha": "e2841dc2a754093ba23679946a586bc8376b2175",
+      "mtime_ns": 1794689985389766163,
+      "inode": 14822205,
+      "dev": 83,
+      "ref": "daowei2026/observe-iterate@9aaaf4a3b322333b46f33b9e55c916b4cea1b1e3:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/FREEZE_RECEIPT.json"
+    }
+  ],
+  "frozen_count": 72,
+  "frozen_bytes": 1585202,
+  "new_phase_R0_or_engineering_actions": 0
+}
