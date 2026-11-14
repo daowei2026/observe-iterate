@@ -1,0 +1,40 @@
+{
+  "schema": "longrun-order/v2",
+  "run_id": "OI-EAW-WALL-20261114-01",
+  "work_order_id": "W001",
+  "delegation_ref": "daowei2026/observe-iterate@944f2c57e44ee9d89b69b6b24a03a3a32fdff11e:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D001/DELEGATION.json",
+  "issuer_call_id": "C0003",
+  "issuer": "chatgpt:OI-EAW-WALL-20261114-01:executor:E1",
+  "worker": "codex:OI-EAW-WALL-20261114-01:worker:W1",
+  "return_to": "chatgpt:OI-EAW-WALL-20261114-01:executor:E1",
+  "instructions_ref": "daowei2026/observe-iterate@db0487b03bd81c6393639ac02ffe6534874dc80d:longrun/runs/OI-EAW-WALL-20261114-01/work_orders/W001/ORDER.md",
+  "input_refs": [
+    "daowei2026/observe-iterate@cdec293a4bfdac85ca4ab3171f9eeb083a338493:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D001/DELEGATION.md",
+    "daowei2026/observe-iterate@ca7fdae84f65265332e3a53865724a2615508766:task-inputs/eaw-p1-wall-lifecycle/FEATURE_CONTEXT.md",
+    "daowei2026/feature-refinement-implementation-agent-evolution@8d58ddd3392a3e67ef5ba44adf2c4cd0c9077f9f:candidate_gold_cases/eaw/taskpacks_and_checkpoints/p1/EAW_P1_PREL0_BASE_PRODUCTS_ENGINEERING_DESIGN_AND_VCC_V1_6_1_20260818/dsu/P1-DSU-01_Wall_生命周期_DSU.md",
+    "daowei2026/tis@ef887396e0a06d6e75be47efee0f1985ad7988a3:frp/EawBattleP.py",
+    "daowei2026/tis@ef887396e0a06d6e75be47efee0f1985ad7988a3:hf/prel0/wall_assembler.py",
+    "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/WallLifecycle.hs",
+    "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/Products.hs",
+    "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/Publication.hs",
+    "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs"
+  ],
+  "deliverables": [
+    "WORKER_EXECUTION_REPORT.md with per-check evidence and exact limitations",
+    "WORKSPACE_BINDING.json with actual repo/worktree/HEAD/dirty facts",
+    "CODE_AND_READER_ENTRYPOINTS.md with current symbols, paths and line-level evidence",
+    "ASSET_INVENTORY.json separating existence, decodability and suitability prerequisites",
+    "COMMAND_LOG.txt and HASHES.sha256 in the W001 run-local write area",
+    "SAMPLE_CHAIN.jsonl plus SAMPLE_CHAIN_README.md only when a real low-cost chain is safely available",
+    "ACTION_PREFLIGHT_FACTS.md when no usable material exists or a run would be required",
+    "V2 WORKER_RETURN.json returning only to executor E1"
+  ],
+  "grant": {
+    "operation": "wall-observation-work",
+    "execution_context": "linux:/dwdhome/fy/BASE_E6_2",
+    "allowed_writes": [
+      "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01"
+    ],
+    "authority_quote": "operation=wall-observation-work execution_context=linux:/dwdhome/fy/BASE_E6_2 allowed_writes=/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01"
+  }
+}
