@@ -2,213 +2,244 @@
 
 > `run_id`：`OI-EAW-WALL-20261114-01`  
 > `delegation_id`：`D001`  
-> 评估时点：C0003 首轮专业执行  
-> 当前材料状态：**PLAN_READY**  
-> 当前 D 状态：**IN_PROGRESS；等待 W001 真实 Linux 回报**
+> 更新调用：`C0004`  
+> Worker：`W001`  
+> 当前材料状态：**PARTIAL_WITH_LIMITS**  
+> 当前 D 专业状态：**可回交；不等于父任务完成**
 
-## 1. 结论先行
+## 1. 专业结论
 
-目前只能确认：
+W001 的正式回交及其冻结证据包可以接受为**真实现场调查结果**，但只能在下列边界内使用：
 
-1. Owner 的 Linux/GitHub grant、Run 逻辑绑定、D001 与 C0003 运输身份有效；
-2. 指定需求、TIS 旧源码、FRP 旧源码可读，并足以形成处理骨架和 WORKING 预期；
-3. W001 已按“只读核验、无重算”发布正式 ORDER 原件；
-4. 真实 `/dwdhome/fy/BASE_E6_2` checkout、当前 HEAD/dirty、现役参数、generated wrapper、DBA/receipt/fields、三路输出、active-map/state trace、真实读取入口和成本**尚未由 Worker Return 证明**。
+1. 当前 BASE 中 TIS、FRP 的 checkout、HEAD、branch、dirty 和相关源码已经真实核定；
+2. 当前相关源码文本与 D001 指定阅读基线在相关路径上相同；
+3. 真实存在 WallAssembler receipt／sparse／state trace，以及两组历史三路 Wall 产品；
+4. 其中短窗旧物化已经用有界物理 reader 解码，并取得三条可复核的 `Start → BandUpdate → End` 链；
+5. 这些产品是 **legacy `P1Wall*Storage` 物化**，产品自身生成版本回执缺失，不能绑定为当前 canonical typed writer 的运行结果；
+6. 当前 generated wrapper 不含旧三类或当前三类 Wall ADT，原生 reader 运行态未验证；
+7. FRP DSU 完整 active map、Dormant／恢复、重复／冲突／非法／迟到和同 firing 混合事务证据仍缺失。
 
-因此：
-
-```text
-旧源码可读        ≠ 当前现役 tuple 已核实
-历史报告存在      ≠ 当前物化数据可复用
-ORDER 已发布      ≠ Worker 已收到/执行
-文件可能存在      ≠ 可解码
-可解码            ≠ 足以回答本轮业务问题
-```
-
-不得填写 `DATA_READY`。
-
-## 2. 授权与逻辑绑定
-
-| 项目 | 已核事实 | 证据 | 状态 |
-|---|---|---|---|
-| Owner GO | 本 Run 目标为对 `EawP1WallLifecycleFrp` 开展观察材料准备和业务合理性分析 | `daowei2026/observe-iterate@9188847b057f1e39dd210a80862f6af358b617a9:longrun/runs/OI-EAW-WALL-20261114-01/OWNER_START.md` | VERIFIED |
-| Linux grant | `operation=wall-observation-work execution_context=linux:/dwdhome/fy/BASE_E6_2 allowed_writes=/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01` | 同上、`RUN_BINDING.json` | VERIFIED AS TEXT; PHYSICAL ACCESS PENDING |
-| GitHub grant | Run 分支/目录写面 | 同上 | VERIFIED；本 C 已实际发布 Run 文件 |
-| executor | `chatgpt:OI-EAW-WALL-20261114-01:executor:E1` | `RUN_BINDING.json`、C0003 invocation | VERIFIED |
-| Worker logical identity | `codex:OI-EAW-WALL-20261114-01:worker:W1` | `RUN_BINDING.json` | VERIFIED LOGICAL ONLY |
-| Worker physical thread/cwd/model | 请求 `GPT-6.1 Sol Max`、cwd `/dwdhome/fy/BASE_E6_2` | W001 要求主控核真 | NOT YET VERIFIED |
-| 单写者 | 必须由主控派 W 前独立核实 | V2 协议/W001 | NOT YET VERIFIED |
-
-## 3. 已核 Source Baseline
-
-### 3.1 需求/业务范围
-
-已读：
-
-- `feature-refinement-implementation-agent-evolution@8d58.../01_EFFECTIVE_SCOPE_AND_REQUIREMENT_CORRECTIONS.md`
-- 同提交 `02_FINAL_P1_ARCHITECTURE.md`
-- 同提交 `dsu/P1-DSU-01_Wall_生命周期_DSU.md`
-- 同提交 `tables/PYTHON_PROJECTION_TABLES.csv`
-
-可以稳定保留的范围：
-
-- Wall 是六个独立 P1 Feature 之一；
-- WallLifecycleDSU 只维护 producer 已认出的 run-local Wall；
-- identity 由 exact run scope + local no 解释；
-- 输出角色为 occurrences/current view/diagnostics；
-- 不做 source correction、跨运行 matching 或 P1 总聚合。
-
-### 3.2 TIS 旧阅读基线
-
-`daowei2026/tis@ef887396e0a06d6e75be47efee0f1985ad7988a3`
-
-已确认文本：
-
-- `EawBattleP.py` 中 ingress 是 `OnlyRead`；`_CalculatedP1Product` 报 `Cache`；直接 `to_df()` 被禁止并提示读 materialized public products；
-- `WallAssembler` 旧实现能产出 receipt、packed sparse events、tick-aligned state trace、chunk meta/carry/summary/checkpoint；
-- sparse event code 4/5/6/7 分别对应 Start/BandUpdate/StateChange/End；
-- receipt 包含参数、source scope、code fingerprint 和 state-trace capability。
-
-未证明：BASE 当前就是这个 commit、这些文件已实际运行、数据仍在、正式 reader 可用。
-
-### 3.3 FRP 旧阅读基线
-
-`daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13`
-
-已确认文本：
-
-- `EawP1WallLifecycleFrp` FaoMeta 在该 SHA 报 `Cal`，与旧 TIS product wrapper 的 `Cache` 构成需要实际组合核实的差异；
-- `WallOccurrenceFao` 只读 receipt+DBA，packed row 转 typed occurrence；
-- lifecycle transition、transaction、active map、current update 与 diagnostics 的具体控制流；
-- writer 键名和 current update 口径；
-- compact-local-v2 occurrence ref 物理断点。
-
-未证明：当前生成类/注册/DBA 与该 SHA 同版，或旧 cache 可由现行 decoder 读取。
-
-## 4. 资产资格分层
-
-| 层级 | 定义 | 当前情况 |
-|---|---|---|
-| `SOURCE_BASELINE_VERIFIED` | 精确 Git ref 的需求/源码文本已读 | 达到 |
-| `CURRENT_CHECKOUT_VERIFIED` | Linux repo/worktree/HEAD/dirty 与相关文件 hash 已核 | 未达到，W001 |
-| `CURRENT_CONFIG_VERIFIED` | 实际参数、target/calendar/time/source scope/CalType 已核 | 未达到，W001 |
-| `ASSET_EXISTS` | receipt/fields/DBA/三路表/trace 在实际路径存在 | 未达到，W001 |
-| `ASSET_DECODABLE` | 当前 reader 对 schema/version/path 读取成功 | 未达到 |
-| `ASSET_IDENTITY_COMPLETE` | 可恢复 exact run identity、local no、时间和参数 | 未达到 |
-| `MATERIAL_PURPOSE_SUITABLE` | 足以对账 sparse input、O/C/A/D 和反例 | 未达到，由 E1 在 Worker 回报后判断 |
-| `DATA_READY` | 本轮必需材料真实取得并通过质量核验 | 未达到 |
-
-## 5. 候选资产与复用资格
-
-### 5.1 旧 GitHub 源码
-
-资格：`SOURCE_BASELINE_VERIFIED`。  
-用途：形成处理骨架、字段/reader 查找路径、反例和 W001 定向问题。  
-不可承担：现役版本证明、数据存在证明、真实行为结论。
-
-### 5.2 历史 real-data feedback 报告
-
-已知历史目录曾记录：
-
-- P1 四产品短窗口 writer→第二次 load 的历史结果；
-- Wall 长跨度 writer 内存/物理布局问题及后续修正；
-- occurrence identity/长 Text/物理合同等后续接缝问题。
-
-资格：`HISTORICAL_CANDIDATE_ONLY`。  
-原因：历史报告不等于当前 BASE 的目录、tuple 或数据；其中一些物理合同后来有断点。只有 W001 找到精确 artifact、receipt、schema/code、reader 并对齐后，才可能局部复用。
-
-### 5.3 既有 EAW 看板/CAEGraph
-
-Feature context 已指出 T056/T059 等 BP 图是下游 `EawBattleP` 观察，不是 WallLifecycle 的三路输出材料。  
-资格：`NOT_ELIGIBLE_AS_WALL_EVIDENCE`；最多借技术组织方式，不能冒充本轮数据。
-
-### 5.4 当前 Run 资产
-
-- W001 ORDER MD：`daowei2026/observe-iterate@db0487b03bd81c6393639ac02ffe6534874dc80d:longrun/runs/OI-EAW-WALL-20261114-01/work_orders/W001/ORDER.md`
-- W001 ORDER JSON：`daowei2026/observe-iterate@ad20770c69bc431d2e9188dcecd89883bce20cfa:longrun/runs/OI-EAW-WALL-20261114-01/work_orders/W001/ORDER.json`
-
-资格：`ORDER_PUBLISHED`。  
-目前没有主控物理发送回执、Worker receipt 或 `WORKER_RETURN`；不得写成 `EXECUTED`。
-
-## 6. 当前需要由 W001 查明的绑定
-
-### 6.1 工作区/仓库
-
-- 实际 `pwd`、repo root、worktree、branch/detached、HEAD 40位 SHA、dirty；
-- 当前 TIS/FRP/相关需求仓是否在 BASE，是否有多个 checkout；
-- 相关文件 hash 与旧 baseline 的限定差异；
-- 共享工作区单写者。
-
-### 6.2 运行/配置
-
-- `EawP1WallLifecycleFrp`、`WallOccurrenceFao`、`WallAssembler` 当前注册；
-- `Cal/Cache/OnlyRead` 的真实组合；
-- parameter set、target、calendar、time range、source scope；
-- generated wrapper、FrpDbaDao/DBA/public product reader；
-- `to_df` 限制在现役组合中的实际含义。
-
-### 6.3 物化/数据
-
-- `p1_receipts/wall_lifecycle.json`、`fields.json`、DBA result keys；
-- WallAssembler sparse events/state trace/manifest；
-- `wall_occurrences`、`wall_current_view`、`wall_diagnostics`；
-- 文件/分区数量、大小、mtime、范围、schema/code/params；
-- 当前 reader 是否低成本可解码；
-- 是否存在一条真实正常链。
-
-## 7. 关键风险与核验动作
-
-| 风险 | 为什么重要 | 当前动作 |
-|---|---|---|
-| 旧 SHA 与当前 checkout 不同 | 静态反例可能已修或另有变化 | W001 记录 HEAD/blob/diff；E1 只按相符范围消费 |
-| TIS `Cache` 与 FRP `Cal` 表面不一致 | 可能只是跨语言职责差异，也可能影响读取入口 | 定位 generated wrapper/FaoMeta/实际 reader；不靠名字下结论 |
-| compact-local-v2 物理断点 | 老 cache 可能不能被新 decoder 静默复用 | receipt/schema/code 必须先过；不强行双轨读取 |
-| current update 被当全量快照 | 会误判无行、End 和 active membership | 必须取得 active map/state trace或可验证重放 |
-| local no 脱离 receipt | 会跨 run 错连 Wall | 样本包强制附 exact run identity |
-| reader 隐式触发重算/写入 | 可能越权、耗时、污染现役目录 | W001 静态/metadata 优先；未知副作用立即停 |
-| 大范围 writer/DBA 内存成本 | 历史已有风险线索 | 禁止全年重算；无资产只做 ActionPreflight |
-| diagnostics 空被当正确 | 异常可能根本未发生 | 空 D 只说明已核范围未观察到 diagnostic |
-| End terminality/跨 firing dedup 静态疑点 | 可能影响同一 Wall 身份完整性 | current code + producer invariant + 定向 fixture/样本分层核验 |
-| 同 firing 整批拒绝 | 可能是业务原子性，也可能是物理同拍放大损失 | 先查 firing formation，再决定业务判断 |
-
-## 8. Action Eligibility
-
-| 动作 | 当前资格 | 说明 |
-|---|---|---|
-| GitHub 需求/源码只读分析 | ELIGIBLE / 已执行 | D001 授权范围内 |
-| 发布 Run 结果/工单 | ELIGIBLE / 已执行 | 仅 Run branch/path |
-| Linux 只读资产核验 | ELIGIBLE，待主控派 W | W001 已收窄操作和写面 |
-| 读取现有低成本 metadata/局部分区 | 条件 ELIGIBLE | 由 W001 在无副作用、无大加载前提执行 |
-| 实际短窗重跑 | **NOT ELIGIBLE YET** | 需无材料后的 ActionPreflight + manager/G-RUN 决定 |
-| 全年/全品种重算 | NOT ELIGIBLE | D001 明确禁止 |
-| 修改 TIS/FRP/reader/schema | NOT AUTHORIZED | 本 D 只调查与分析 |
-| expectation freeze/正式对照 | NOT ELIGIBLE YET | 真实材料和 manager Gate 未满足 |
-
-## 9. 接收 W001 后的专业消费规则
-
-E1 不会把 Worker 的 `EXECUTED` 自动转成 `DATA_READY`。逐项检查：
-
-1. 真实 checkout 与旧 baseline 对齐到哪些文件/语义；
-2. asset 是“存在”还是“可解码”；
-3. identity/time/version 是否完整；
-4. reader 是否重算/二次处理；
-5. sample 是否真实、局部、可复现；
-6. O/C/A/D 是否能按 firing+identity 对账；
-7. 缺失项限制哪个问题；
-8. 是否需要 ActionPreflight，而不是直接运行。
-
-然后把 D001 状态更新为真实的 `DATA_READY`、`PARTIAL_WITH_LIMITS`、`BLOCKED` 或继续 `PLAN_READY`。
-
-## 10. 当前准确状态
+所以准确关系是：
 
 ```text
-Source baseline:        VERIFIED at specified old refs
-Linux current checkout: UNKNOWN
-Current config/binding: UNKNOWN
-Materialized assets:    UNKNOWN
-Reader/decodability:    UNKNOWN
-Real sample:            NOT OBTAINED
-W001 order:             PUBLISHED, NOT YET ACCEPTED/EXECUTED
-Material status:        PLAN_READY
-Professional D state:   IN_PROGRESS
+current source checkout verified
+≠ current runtime tuple verified
+
+legacy material exists and is physically decodable
+≠ current canonical material
+
+normal-chain sample reconciled
+≠ lifecycle semantics fully validated
+
+worker return accepted as evidence
+≠ business suitability passed
 ```
+
+## 2. W001 专业消费
+
+### 2.1 正式回交
+
+- Worker Return：`daowei2026/observe-iterate@4edf75c2df58227084a595d869bdbe24c83e6871:longrun/runs/OI-EAW-WALL-20261114-01/worker_results/W001/WORKER_RETURN.json`
+- 执行报告：`daowei2026/observe-iterate@c0c44515e9722c239534ac72eed942536e2ff436:longrun/runs/OI-EAW-WALL-20261114-01/worker_results/W001/WORKER_EXECUTION_REPORT.md`
+- 原件 manifest：`daowei2026/observe-iterate@c0c44515e9722c239534ac72eed942536e2ff436:longrun/runs/OI-EAW-WALL-20261114-01/worker_results/W001/PUBLICATION_MANIFEST.json`
+
+主控已独立核验原件出版、hash、V2 schema 和路由。E1 进一步阅读了工作区绑定、源码／reader 入口、资产库存、物理数据统计、样本链、预检和必要验证原件。
+
+### 2.2 接受范围
+
+| Worker 事实 | 专业处理 |
+|---|---|
+| 真实 cwd/thread/model/effort、单写者和权限边界 | 接受；只用于证明 W001 真实执行 |
+| 当前 repo/worktree/HEAD/dirty | 接受；相关源码可作为当前 working-tree 静态事实 |
+| 物化目录、文件数量、大小和字段布局 | 接受；限已核路径与扫描范围 |
+| 旧短窗／全年产品的 firing、record 数 | 接受；全年只接受首尾及数量，不扩写为全局统计 |
+| 三条真实局部链 | 接受为 legacy historical exploratory material |
+| bounded physical reader 的解码结果 | 接受为物理布局解码；不当原生生产 reader 通过 |
+| current tuple、产品生成版本、active map 等缺口 | 保留；不得用当前 HEAD 或目录名补齐 |
+
+## 3. 当前工作区绑定
+
+### 3.1 核心仓库
+
+| 仓库 | 真实路径 | HEAD / branch | 初始 dirty | 与 D001 相关路径 |
+|---|---|---|---|---|
+| TIS | `/dwdhome/fy/BASE_E6_2/mquant/tis` | `ef887396e0a06d6e75be47efee0f1985ad7988a3` / `eaw/p123-integration-20260820` | `frpExample/STCalendar.py` 已有修改 | 指定旧阅读 SHA 与当前 HEAD 相同 |
+| FRP | `/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp` | `cac6c912dd65a14acbd591ca57e0afd8ddb4ef13` / `eaw/p123-integration-20260820` | `src/Frp/Instance/BussinessUtils.hs` 已有修改 | P1 相关路径相对基线 diff 为空 |
+| frp-core | `/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp-core` | `d3153e085cd0d99d86876b73aeb1d05497638f80` / `e6.2` | 无已记录修改 | Fao CalType／读写分派依据 |
+
+其他 frame、worker、m3sof、m3、pydim 等绑定详见 W001 `WORKSPACE_BINDING.json`。它们的既有 dirty 未被修改，也不能被拼接成一次现役运行配置。
+
+### 3.2 当前代码可确认的静态组合
+
+- TIS `WallOccurrenceFao`：`OnlyRead`；
+- TIS `_CalculatedP1Product`：`Cache`，直接 `to_df()` 主动拒绝；
+- FRP `EawP1WallLifecycleFrp`：`Cal`；
+- Fao core 对 `OnlyRead / Cal / Cache` 的分派逻辑已经定位；
+- `doFrpTaskParam(run_ups=True)` 可能执行上游并写 task linker，不是安全只读入口；
+- 当前正式 writer 名仍为 `wall_occurrences / wall_current_view / wall_diagnostics`；
+- 当前源码明确把 current writer 定义为本 firing 的 update，而非全量快照。
+
+这些是当前 working-tree 的实现事实，不是当前二进制实际运行证明。
+
+## 4. 配置、包装与 reader
+
+### 4.1 参数和范围
+
+WallAssembler 源码默认值已经定位，包括 `qt_freq=1d`、`qt_n=30`、`qt_quantile=0.997`、`w_depth_ref_ticks=1200`、`p_wall_ticks=1`、`t_wall_ticks=6` 等；这些是源码默认，不是本次生效参数。
+
+现有上游 receipt 给出：
+
+```text
+target: rb
+calendar: night_end_at_2300
+schema: wall_lifecycle-v1.6.1
+code_version: git:61988a3723ebadc861b4e94284254275be843255
+              + source-sha256:47c09eb4ac84034ab9140be79249c338e266fa2b922ce1c14c021a3857b771f6
+```
+
+当前产品生成 binary、参数、对象、日历、范围与当前代码形成的完整 tuple：**UNKNOWN**。
+
+### 4.2 generated wrapper
+
+`/dwdhome/fy/BASE_E6_2/mquant/worker/adt/dbaw.py` 存在，113,663 bytes，AST 共 118 类，但未见：
+
+- legacy：`MulWrap_P1WallOccurrenceStorage`、`MulWrap_P1WallCurrentStorage`、`MulWrap_P1DiagnosticStorage`；
+- current：`WallOccurrenceBatch`、`WallCurrentBatch`、`WallDiagnostic`。
+
+所以：
+
+```text
+generic wrapper exists
+but matching native Wall wrapper is missing in inspected file
+```
+
+W001 没有重生成 wrapper，也没有导入可能产生副作用的项目运行环境。原生 `FrpDbaDao` 路径只做到静态定位。
+
+### 4.3 reader 资格
+
+- 原生 reader 运行态：`NOT_VERIFIED`；
+- W001 `bounded_dba_reader.py`：`VERIFIED_FOR_BOUNDED_PHYSICAL_LAYOUT_ONLY`；
+- 当前 canonical typed ADT readback：`NOT_VERIFIED`。
+
+## 5. 物化资产
+
+### 5.1 已核范围
+
+三个代码／配置指向的候选 prod 根经过一层清单和 588 个明确类路径存在性检查；进入已存在 Wall 相关目录后，共清点：
+
+```text
+155 directories
+796 files
+41,550,396,966 bytes metadata total
+```
+
+这不是全盘无界扫描，也没有全量读取 41.55GB。
+
+### 5.2 两组历史三路产品
+
+| 目录范围 | occurrence firing / records | current firing / records | diagnostic firing / records | 专业资格 |
+|---|---:|---:|---:|---|
+| `2020-12-01 21:00:00~2021-02-22 20:00:00` | 14,858 / 15,809 | 14,858 / 15,208 | 328 / 328 | legacy，短窗部分完整解码，可做局部探索 |
+| `2021-01-01 21:00:00~2021-12-31 20:00:00` | 241,659 / 266,469 | 241,659 / 254,424 | 7,456 / 7,469 | legacy，仅 header、数量和首尾；不可扩写为全量业务统计 |
+
+短窗三路 physical firing timestamp 全列范围：
+
+- occurrences/current：`2021-01-14T09:04:10Z` ～ `2021-02-22T14:44:30Z`；
+- diagnostics：`2021-01-14T09:31:19.5Z` ～ `2021-02-22T10:09:03.5Z`。
+
+目录范围、上游 receipt source range 和实际有输出的 firing range 不得混同。
+
+### 5.3 schema 断点
+
+历史 fields 为：
+
+```text
+MulWrap_P1WallOccurrenceStorage
+MulWrap_P1WallCurrentStorage
+MulWrap_P1DiagnosticStorage
+```
+
+当前源码 writer 为：
+
+```text
+WallOccurrenceBatch
+WallCurrentBatch
+WallDiagnostic
+```
+
+产品 leaf 中没有找到生成版本 receipt／manifest。因此不能把历史产品贴上当前 TIS/FRP HEAD，也不能把旧字段当当前 canonical schema。
+
+## 6. 真实局部链
+
+已核 chain：同一上游 artifact、`wall_local_no=1`、`rb / night_end_at_2300`。
+
+| writer firing | UTI | occurrence | current update | 上游 |
+|---|---:|---|---|---|
+| `2021-01-14T09:04:10Z` | 72335299 | Start / Present / band=core=4270 | Present | sparse、packed、state trace 对齐 |
+| `2021-01-14T09:04:11.5Z` | 72335302 | BandUpdate / Present / low=4269, high=4270, core≈4269.8528 | Present | sparse、packed、state trace 对齐 |
+| `2021-01-14T09:04:14.5Z` | 72335308 | End / `not_present` / stored band/core=0 | Ended | 上游 sparse/trace band/core=4269 |
+
+专业解释：
+
+- 该链证明旧物化内 occurrence、current update、上游 sparse/packed 和 producer trace 可在三个 firing 上物理对账；
+- End 时旧 occurrence 的 band/core 归零且标为 `not_present`，而上游仍保留 4269。这是明确的**转换信息损失／语义压缩**，不是由 E1 直接认定为 bug；解释 End 前最后 band/core 必须回到上游材料；
+- `FeatureRunIdentity` 没有从旧产品获得。该链只能用“精确上游 artifact + local no”定位，不能把裸 local no 提升为跨 artifact 身份；
+- producer trace 不是 FRP active map；active deletion 没有被物理验证；
+- 样本没有 Dormant／恢复，也不是同 firing 多变化样本。
+
+## 7. diagnostics
+
+短窗 diagnostics 非空，共 328 firing。前三条实读为：
+
+```text
+source = ingress
+kind = InvalidNumericDomain
+field = wall_band
+message = band_lo <= core_price <= band_hi is required
+```
+
+三条正常链同 firing 的 diagnostic 数为 0。限制：legacy diagnostics 没有直接 Wall identity 字段，只能按 firing 对齐，不能据此完成 identity-specific 异常链；“样本同 firing 无诊断”也不证明异常分支正确。
+
+## 8. 资产资格阶梯
+
+| 层级 | 状态 | 说明 |
+|---|---|---|
+| `SOURCE_BASELINE_VERIFIED` | YES | current checkout 与指定相关源码基线相同 |
+| `CURRENT_CHECKOUT_VERIFIED` | YES | repo/worktree/HEAD/dirty 已核 |
+| `CURRENT_CONFIG_VERIFIED` | NO | current effective params/target/calendar/range/binary 未绑定 |
+| `LEGACY_ASSET_EXISTS` | YES | receipt/sparse/trace/三路产品存在 |
+| `LEGACY_ASSET_DECODABLE` | PARTIAL | 短窗 bounded physical decode；全年仅 header/首尾 |
+| `LEGACY_IDENTITY_COMPLETE` | PARTIAL | artifact+local no 可用；canonical FeatureRunIdentity 缺失 |
+| `CURRENT_CANONICAL_ASSET_EXISTS` | NOT VERIFIED | 未核 current typed materialization |
+| `CURRENT_NATIVE_READER_READY` | NO | matching wrapper 缺失，runtime 未验证 |
+| `MATERIAL_PURPOSE_SUITABLE` | PARTIAL | 仅正常 legacy chain 与局部 publication 关系 |
+| `DATA_READY` | NO | 不满足正式全场景／当前版本对照 |
+
+综合 readiness：**PARTIAL_WITH_LIMITS**。
+
+## 9. 三个业务问题的可回答范围
+
+| 问题 | 当前可回答 | 当前不能回答 |
+|---|---|---|
+| `Q-WALL-IDENTITY-LIFECYCLE` | artifact+localNo 下的 legacy Start→BandUpdate→End 正常链；当前源码的 transition 静态语义 | canonical run identity、Dormant/恢复、duplicate/conflict/late、End 后事件与 runtime 行为 |
+| `Q-WALL-PUBLICATION-STATE` | legacy occurrence/current/diagnostic 的物理存在、计数、三 firing 对账、End update | FRP active-map 删除、同 firing 最后更新规则的真实多更新样本、事务回滚、current canonical schema |
+| `Q-WALL-BUSINESS-SUITABILITY` | 可建立局部材料基线和高价值反例队列 | 不能对现役完整语义作 PASS/FAIL，不能冻结全量 expectation |
+
+## 10. Action Eligibility
+
+| 动作 | 资格 |
+|---|---|
+| 使用 legacy chain 做探索性材料审查 | ELIGIBLE |
+| 将 W001 作为当前 runtime PASS | NOT ELIGIBLE |
+| 对全套 expectation 作正式 SUPPORTS/COUNTERS | NOT ELIGIBLE |
+| 直接运行现有 integration runner | NOT ELIGIBLE：会 build、跑多个上游/产品，写面和成本未闭合 |
+| 全年/全品种重算 | NOT AUTHORIZED |
+| 修改 TIS/FRP/schema/wrapper | NOT AUTHORIZED |
+| 提交 manager 后续 G-PLAN／G-RUN 候选 | ELIGIBLE，见 `ACTION_PREFLIGHT.md` |
+
+## 11. 当前处理决定
+
+- **接受 W001 正式回交作为本 D 的事实证据包**；
+- 不返修 W001：已完成的只读事实与缺口表达满足原 W 合同；
+- 不签 W002：当前剩余关键缺口不是另一次同边界只读扫描即可闭合；新运行需要 manager 的 G-RUN 和更窄、可验证的动作；
+- D001 可按 `PARTIAL_WITH_LIMITS` 回交；这表示专业基线工作已完成，不表示三个业务问题或父任务已经完成。
