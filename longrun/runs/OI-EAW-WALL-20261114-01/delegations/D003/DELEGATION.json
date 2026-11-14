@@ -1,0 +1,49 @@
+{
+  "schema": "longrun-delegation/v2",
+  "run_id": "OI-EAW-WALL-20261114-01",
+  "delegation_id": "D003",
+  "issuer_call_id": "C0007",
+  "issuer": "chatgpt:OI-EAW-WALL-20261114-01:manager",
+  "recipient": "chatgpt:OI-EAW-WALL-20261114-01:executor:E1",
+  "return_to": "chatgpt:OI-EAW-WALL-20261114-01:manager",
+  "task_ref": "daowei2026/observe-iterate@1e00424349ce8a5d72c9fccf74585d18630b62b8:longrun/runs/OI-EAW-WALL-20261114-01/BusinessTaskInput.md",
+  "business_context_ref": "daowei2026/observe-iterate@11fce23f543b000425350153d9cb1eda5e78453c:longrun/runs/OI-EAW-WALL-20261114-01/business_control/decisions/MD-C0007-001.md",
+  "input_refs": [
+    "daowei2026/observe-iterate@ca7fdae84f65265332e3a53865724a2615508766:longrun/professional/PRO_EXECUTOR_GUIDE.md",
+    "daowei2026/observe-iterate@ca7fdae84f65265332e3a53865724a2615508766:longrun/contracts/LONGRUN_PROTOCOL_V2.md",
+    "daowei2026/observe-iterate@602c53c5602840d14068110a92bd90e80af6a306:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D002/results/D002_EXECUTOR_REPORT.md",
+    "daowei2026/observe-iterate@d8ae5332c94c535d330263ec59bddfbfa3bc52b0:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D002/results/CONTROLLED_SCENARIO_ACTION_DESIGN.md",
+    "daowei2026/observe-iterate@faaa2f2f13c65979d423f584746167aa1ead2117:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D002/results/ACTION_ELIGIBILITY_MATRIX.md",
+    "daowei2026/observe-iterate@2b872fb3f65d1b40a6f4beb75bff783deac758e6:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D002/results/ADDITIONAL_ENGINEERING_PRECONDITION.md",
+    "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/WallLifecycle.hs",
+    "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+    "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:test/Frp/Instance/ISL/Eaw/P1/P1EndToEndSpec.hs"
+  ],
+  "expected_outputs": [
+    "D003_EXECUTOR_REPORT.md",
+    "PRECONDITION_REPORT.md",
+    "SOURCE_BASELINE_AND_STAGING_REPORT.md",
+    "SOURCE_CHANGE_MANIFEST.json",
+    "PREREQUISITE_PATCHSET.diff",
+    "EP_ACCEPTANCE_MATRIX.md",
+    "D003_BINDING_CANDIDATE.json",
+    "DRY_DEPENDENCY_PREFLIGHT.json",
+    "WRITE_SURFACE_AUDIT.json",
+    "FIXTURE_SCHEMA_AND_PROVENANCE.md",
+    "KNOWN_CONTRACT_CONFLICTS.md",
+    "HASHES.sha256",
+    "Conditional COMPILE_ONLY_REPORT.json when compile-only verification is actually performed",
+    "Conditional SERIALIZATION_TEST_REPORT.json when permitted engineering tests are actually performed",
+    "Conditional STAGED_LOCAL_COMMIT_REPORT.json marked NOT_UPSTREAM_PUBLISHED",
+    "Conditional ENGINEERING_STOP_REPORT.md when preflight, cap, write-surface, or dependency constraints block progress",
+    "Formal EXECUTOR_RETURN for D003"
+  ],
+  "permitted_operations": [
+    "wall-observation-work",
+    "run-record-publish"
+  ],
+  "allowed_writes": [
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003",
+    "longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003"
+  ]
+}
