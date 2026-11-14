@@ -1,0 +1,32 @@
+{
+  "schema": "longrun-binding/v2",
+  "run_id": "OI-EAW-WALL-20261114-01",
+  "work_id": "OI-EAW-WALL",
+  "owner_go_ref": "daowei2026/observe-iterate@9188847b057f1e39dd210a80862f6af358b617a9:longrun/runs/OI-EAW-WALL-20261114-01/OWNER_START.md",
+  "coordinator": "codex:01a1da15-a31a-7900-9314-d6214a73ec42",
+  "manager": "chatgpt:OI-EAW-WALL-20261114-01:manager",
+  "executors": [
+    "chatgpt:OI-EAW-WALL-20261114-01:executor:E1"
+  ],
+  "workers": [
+    "codex:OI-EAW-WALL-20261114-01:worker:W1"
+  ],
+  "grants": [
+    {
+      "operation": "wall-observation-work",
+      "execution_context": "linux:/dwdhome/fy/BASE_E6_2",
+      "allowed_writes": [
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01"
+      ],
+      "authority_quote": "operation=wall-observation-work execution_context=linux:/dwdhome/fy/BASE_E6_2 allowed_writes=/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01"
+    },
+    {
+      "operation": "run-record-publish",
+      "execution_context": "github:daowei2026/observe-iterate:runs/OI-EAW-WALL-20261114-01",
+      "allowed_writes": [
+        "longrun/runs/OI-EAW-WALL-20261114-01"
+      ],
+      "authority_quote": "operation=run-record-publish execution_context=github:daowei2026/observe-iterate:runs/OI-EAW-WALL-20261114-01 allowed_writes=longrun/runs/OI-EAW-WALL-20261114-01"
+    }
+  ]
+}
