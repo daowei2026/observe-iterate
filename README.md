@@ -28,8 +28,8 @@
 | **执行技术参考** | [CAEGraph 真实取数与核验](skills/observation-material-preparation/references/CAEGraph执行取数与验证.md) | 构图/视窗/源值等不同数据阶段、执行接口和质量验证；不是具体候选观察方法 |
 | **任务产物模板** | [观察材料准备任务单](skills/observation-material-preparation/templates/观察材料准备任务单.md) | 记录业务处理阶段、材料必要性、取数、缺口与交接；保留 |
 | **候选方法组索引** | [S1～S4、E1～E4 方法索引](skills/observation-method-candidates/README.md) | 唯一的触发条件、跨用例对应关系及成熟度目录；从上位 Skill 的 references 移出 |
-| **高频候选 Skill 初稿** | [标准化高频四候选](skills/observation-method-candidates/high-frequency/四个候选观察准备Skill_标准化高频用例落地与复用边界_20261112.md) | S1～S4 的专业方法、落地证据、复用限制；是候选 Skill 研究稿，不是普通案例 |
-| **EAW 候选 Skill 初稿** | [EAW CAEGraph 候选](skills/observation-method-candidates/eaw/EAW_CAEGraph观察准备Skill候选_原图落地与复用边界_20261112.md) | E1/E3 新候选及 E2/E4 对 S3/S4 的复用核查；同样是候选 Skill 研究稿 |
+| **高频候选 Skill 初稿** | [标准化高频四候选](skills/observation-method-candidates/四个候选观察准备Skill_标准化高频用例落地与复用边界_20261112.md) | S1～S4 的专业方法、落地证据、复用限制；是候选 Skill 研究稿，不是普通案例 |
+| **EAW 候选 Skill 初稿** | [EAW CAEGraph 候选](skills/observation-method-candidates/EAW_CAEGraph观察准备Skill候选_原图落地与复用边界_20261112.md) | E1/E3 新候选及 E2/E4 对 S3/S4 的复用核查；同样是候选 Skill 研究稿 |
 | **合理性分析** | [四个合理性分析 Skill](skills/reasonableness-analysis/README.md) | 已迁入的四个专业 Skill 及协作协议，本轮不改动 |
 
 **不再保留**：观察材料准备文件夹的重复导航 `README.md`（本表承担导航）；原来 `examples/` 的两用例示范（未经充分验证，不能用作稳定规范）；原来 `reference-cases/` 的“案例附件”分类（两份材料已归入候选 Skill）；原上位 Skill 的方法索引旧副本（现由候选组 README 唯一维护）。

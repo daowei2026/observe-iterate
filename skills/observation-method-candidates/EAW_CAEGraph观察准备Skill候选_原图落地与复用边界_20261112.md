@@ -2,7 +2,7 @@
 
 > 日期：2026-11-12  
 > 性质：基于 EAW 已有 CAEGraph 定义的候选专业方法专题整理，**不是已发布 Skill、已验收的跨用例通用实现、完整对话逐字归档或 EAW 业务合理性结论**。  
-> 对照格式：[四个候选观察准备 Skill：标准化高频用例落地与复用边界](../high-frequency/四个候选观察准备Skill_标准化高频用例落地与复用边界_20261112.md)。  
+> 对照格式：[四个候选观察准备 Skill：标准化高频用例落地与复用边界](四个候选观察准备Skill_标准化高频用例落地与复用边界_20261112.md)。  
 > 录音背景：[观察迭代讨论转写（第一段录音）](https://github.com/daowei2026/feature-refinement-implementation-agent-evolution/blob/fy/observation-iteration-agent-20261109/discuss-materials/observation-iteration-agent/observation-iteration-recording-transcript.txt)。其重点是：给 AI 的应该是针对观察意图准备的适当数据；人的选区、缩放、叠加及辨识重叠等动作包含潜在的数据处理方法，不应要求 AI 反向从图像读回已经可以由代码整理的数据。  
 > **本轮范围限制：只把 CAEGraph 图及其定义的画法和直接数据变换作为 Skill 提取证据。** AI Data 的通用运行/导出工具、Binder 为 EAW 另写的取数、引用回连、盘口衍生量、tick Bokeh 画法、附图0、批量页面组织等另设任务讨论；本文只在必要时用于辨明图形边界，不把其处理能力计入 CAEGraph 候选。
 
@@ -132,7 +132,7 @@
 
 | 类型 | 入口 | 读什么 |
 | --- | --- | --- |
-| 对照讨论稿 | [标准化高频四候选](../high-frequency/四个候选观察准备Skill_标准化高频用例落地与复用边界_20261112.md) | S1～S4 的专业方法粒度、三层落地结构及复用限制 |
+| 对照讨论稿 | [标准化高频四候选](四个候选观察准备Skill_标准化高频用例落地与复用边界_20261112.md) | S1～S4 的专业方法粒度、三层落地结构及复用限制 |
 | T014 讨论样稿 | [VS6 看图调研 `②](https://github.com/daowei2026/binder/blob/c6f928a04adbbc08c50036e31d07cec028128eb1/input/O001/A1%20%26%20A2%20opened/A2_M029_%E4%BB%BB%E5%8A%A1%E5%8C%85%E6%8B%86%E5%88%86%E5%B7%A5%E7%A8%8B/60_%E6%94%B6%E5%8F%A3%E8%BF%87%E7%A8%8B/%E7%AB%96%E5%88%87_%E5%8D%87%E7%BA%A7%E7%89%88Opened_20261015/VS6_%E7%9C%8B%E5%9B%BE%E8%B0%83%E7%A0%94/%E8%B0%83%E7%A0%94_v0_1.md) | 最初四面板方案，**只写未跑** |
 | **原始 CAEGraph** | [T056 `configuration()](https://github.com/daowei2026/binder/blob/c6f928a04adbbc08c50036e31d07cec028128eb1/input/O001/A1%20%26%20A2%20opened/A2_M029_%E4%BB%BB%E5%8A%A1%E5%8C%85%E6%8B%86%E5%88%86%E5%B7%A5%E7%A8%8B/60_%E6%94%B6%E5%8F%A3%E8%BF%87%E7%A8%8B/%E7%AB%96%E5%88%87_%E5%8D%87%E7%BA%A7%E7%89%88Opened_20261015/VS6_%E8%AF%95%E9%A1%B5_GTQH/tools/page/page.py) | 实际 CAEGraph、四面板、`point` 的字段映射，K 线 `std_method=None` |
 | T056 实际图 | [S01.html](https://github.com/daowei2026/binder/blob/c6f928a04adbbc08c50036e31d07cec028128eb1/input/O001/A1%20%26%20A2%20opened/A2_M029_%E4%BB%BB%E5%8A%A1%E5%8C%85%E6%8B%86%E5%88%86%E5%B7%A5%E7%A8%8B/60_%E6%94%B6%E5%8F%A3%E8%BF%87%E7%A8%8B/%E7%AB%96%E5%88%87_%E5%8D%87%E7%BA%A7%E7%89%88Opened_20261015/VS6_%E8%AF%95%E9%A1%B5_GTQH/tools/page/page.py_HTML)、[试页及读回记录](https://github.com/daowei2026/binder/blob/c6f928a04adbbc08c50036e31d07cec028128eb1/input/O001/A1%20%26%20A2%20opened/A2_M029_%E4%BB%BB%E5%8A%A1%E5%8C%85%E6%8B%86%E5%88%86%E5%B7%A5%E7%A8%8B/60_%E6%94%B6%E5%8F%A3%E8%BF%87%E7%A8%8B/%E7%AB%96%E5%88%87_%E5%8D%87%E7%BA%A7%E7%89%88Opened_20261015/VS6_%E8%AF%95%E9%A1%B5_GTQH/tools/page/page.py_REPORT) | 实际输出已生成，六项 BP-09 关键数字实读对账，确认“图已出”而非业务验收 |

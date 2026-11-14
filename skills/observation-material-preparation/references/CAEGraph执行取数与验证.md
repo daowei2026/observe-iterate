@@ -6,7 +6,7 @@
 
 - 若已有图，找到**原 Notebook / 真实注册函数**、对象、参数、交易日历、PlotSet.timespans、实际特征来源和原运行路径。不能只凭图截图恢复含义。
 - 新图按手册查：图集 CAEGraph/PlotSet → 主附图布局类 → VBarPlot/MulFieldsGlyphs/MulSegPlot/KPriceLine 等 → 参数/字段绑定与必要后处理 → 控件及视窗。
-- EAW 有多个版本：T056 是含 1m/5s K 线及两张支持度附图的 CAEGraph；T059 剩余 CAEGraph 主要为 K 线，其它内容可由直接 Bokeh 实现；正式看板 30m/1m/5s 为多个 CAEGraph。**独立 Bokeh 内容必须另取，不能由 CAEGraph 图树推断它存在**。详见 [EAW 原稿](../../observation-method-candidates/eaw/EAW_CAEGraph观察准备Skill候选_原图落地与复用边界_20261112.md)。
+- EAW 有多个版本：T056 是含 1m/5s K 线及两张支持度附图的 CAEGraph；T059 剩余 CAEGraph 主要为 K 线，其它内容可由直接 Bokeh 实现；正式看板 30m/1m/5s 为多个 CAEGraph。**独立 Bokeh 内容必须另取，不能由 CAEGraph 图树推断它存在**。详见 [EAW 原稿](../../observation-method-candidates/EAW_CAEGraph观察准备Skill候选_原图落地与复用边界_20261112.md)。
 - 有条件读取原特征表（`to_df` / `to_dfs`）时，通常比从最后显示值反推更可靠；CAEGraph 则提供其实际显示/组织口径。两者应在需要时关联而非二选一。
 
 ## 2. 三个不可混成一份的数据阶段
@@ -88,7 +88,7 @@ observation_manifest.md / json
 5. 检查一条同一对象多时间图元只计一次事件；检查某条业务重要但原图未提供的中间信息是否能从源特征取得。
 6. 记录 `PLAN_READY / DATA_READY / PARTIAL_WITH_LIMITS / BLOCKED`，只在实际运行数据及关键核查完成后写 `DATA_READY`。
 
-验收数据不在本文件中伪造。参考案例：[高频完整原图](https://github.com/daowei2026/viewer/blob/e6.2/frp/同步(多对象)/密集与板块密集的简单标准化.ipynb)、[EAW T056/正式看板源码导航](../../observation-method-candidates/eaw/EAW_CAEGraph观察准备Skill候选_原图落地与复用边界_20261112.md)。
+验收数据不在本文件中伪造。参考案例：[高频完整原图](https://github.com/daowei2026/viewer/blob/e6.2/frp/同步(多对象)/密集与板块密集的简单标准化.ipynb)、[EAW T056/正式看板源码导航](../../observation-method-candidates/EAW_CAEGraph观察准备Skill候选_原图落地与复用边界_20261112.md)。
 
 ## 7. 当现有功能不够
 
