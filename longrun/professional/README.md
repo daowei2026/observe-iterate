@@ -6,7 +6,7 @@
 
 | 角色 | 文件 | 业务工作 |
 |---|---|---|
-| 专业负责人 Pro（manager） | [PRO_MANAGER_GUIDE.md](PRO_MANAGER_GUIDE.md) | 完整问题、材料准备 ↔ 合理性分析的工作组织和结果接收、具名补证、受限返修、逐问题收束；不当作普通消息转发员 |
+| 专业负责人 Pro（manager） | [PRO_MANAGER_GUIDE.md](PRO_MANAGER_GUIDE.md) | 试运行 GO 授权后执行完整业务控制面：Gate、异常与补证、五级完成全景持久更新、M↔R 接续及逐问题收束；不当作消息转发员 |
 | 专业执行人 Pro（executor） | [PRO_EXECUTOR_GUIDE.md](PRO_EXECUTOR_GUIDE.md) | 根据当前 D，使用**已有**观察材料准备 Skill 或合理性分析 Skills 进行实际专业工作；必要时签 W 并审查 Worker 实物，完整回交专业成果 |
 
 **一次实际专业调用不等于一个 S/R 阶段、一个 M/R 节点或一个业务材料要求。** manager 负责组织 D，executor 可以在授权的一个 D 内跨若干相邻工作步骤、调用零个或多个 W，均要清楚表明实际成果。
@@ -15,7 +15,7 @@
 
 - [观察材料准备 Skill](../../skills/observation-material-preparation/SKILL.md)：从业务骨架规划输入/关键中间阶段/输出，选择必要材料、真实取数和核验、分四类状态交付。
 - [合理性分析 Skills README](../../skills/reasonableness-analysis/README.md)：最小预期与探索、冻结后正式对照、值得才诊断、可调才标定、必要的结果反馈；四个各自的 Skill 是专业方法原件。
-- [L0 完整业务任务](../../control/01_L0_完整业务任务与双向衔接.md)、[L1-M](../../control/02_L1_观察材料准备流程.md)、[L1-R](../../control/03_L1_合理性分析流程.md)、[L2 I/O](../../control/04_L2_节点输入输出登记表.md)、[Gate](../../control/05_三级Gate及后继路由.md)：目前是**候选控制设计**，专业角色指南不能把它们升级为正式权限。
+- [L0 完整业务任务](../../control/01_L0_完整业务任务与双向衔接.md)、[L1-M](../../control/02_L1_观察材料准备流程.md)、[L1-R](../../control/03_L1_合理性分析流程.md)、[L2 I/O](../../control/04_L2_节点输入输出登记表.md)、[Gate](../../control/05_三级Gate及后继路由.md)、[完成全景](../../control/06_业务完成全景与更新协议.md)：业务控制逻辑均为候选设计；本 Run 的真实 GO 采用 manager 执行模式后，manager 可作试运行决定，**不是部署生产级强制 Gate**。
 - [审查与未决](../../review/06_接口对齐与缺环审查.md)、[运行路径走查](../../review/07_待确认的控制判断与运行路径.md)：尚缺真实任务范围、用途资格、补证退出、重复复验身份及正式 Gate 接受等决定。
 - **历史设计参考**：`main/discuss-materials/observe_iterate_control_plane_implementation_plan_v0.2_20261113.md` 的管理 Pro 合同。它是历史候选方案，不能覆盖上述当前分支的修订边界，也不能把其中建议的控制核心或 `advance` 声称为已实现。
 
@@ -35,3 +35,9 @@
 ## 明确未完成
 
 当前新指南没有经过真实 manager→executor→worker→executor→manager 多轮验证；cgpterm 的物理消息、专业执行侧工具可用性、受保护业务状态/独立复核及正式 Gate 权限仍需实测和有权确定。
+
+## 本次管理 Pro 的业务控制与进度更新
+
+试运行由 manager 承担全部业务控制职责，按真实结果进行节点→阶段→M/R→问题→父任务五级汇总，在其管理回交中提供 Gate 决定和准确的后继；主控将决定和 `TASK_PROGRESS.md` 原样持久化到本 Run 的 GitHub 位置（或核 manager 自行提交的真实 commit）。详细操作和模板见 [manager 指南 §7](PRO_MANAGER_GUIDE.md)、[进度模板](../templates/TASK_PROGRESS.md)、[决定模板](../templates/MANAGEMENT_DECISION.md)。
+
+“管理 Pro 自主推进”不是每个节点另开一次 Owner 审批；实际 Worker 操作仍须符合真实 GO 的一次性 `grants` 和技术访问权，不能伪造工具身份或写入权限。Owner 将直接安排真实业务 Run，由真实任务自然验证长程链路，**不额外安排专项测试 Run**。

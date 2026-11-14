@@ -33,6 +33,8 @@ Owner GO
 | [tools/longrun_gate.py](tools/longrun_gate.py) | **只读、无副作用**的离线身份、工单、回交、状态链校验；不发送、不写账本 |
 | [tests/test_longrun_gate.py](tests/test_longrun_gate.py) | 可运行的正/反向离线夹具，无法证明真实通道接通 |
 | [templates/OWNER_GO.md](templates/OWNER_GO.md) | 新 Run 的最小 GO 信息与明确授权 |
+| [templates/TASK_PROGRESS.md](templates/TASK_PROGRESS.md) | 管理 Pro 在真实 Run 持续维护的五级业务完成全景模板；运行期实际文件按 Run 生成 |
+| [templates/MANAGEMENT_DECISION.md](templates/MANAGEMENT_DECISION.md) | 管理 Pro 的 Gate、返修、补证和后继业务决定原件模板 |
 | [templates/PRO_DELEGATION.md](templates/PRO_DELEGATION.md) | 专业负责人签发的 D 专业委派正文 |
 | [templates/WORKER_ORDER.md](templates/WORKER_ORDER.md) | 专业执行人签发的 W 工单正文 |
 | [MIGRATION_FROM_FPA.md](MIGRATION_FROM_FPA.md) | 旧特征生产 longrun 的保留/不迁入/改变清单 |
@@ -45,11 +47,19 @@ Owner GO
 2. 主控把正式任务及同版本 [专业负责人指南](professional/PRO_MANAGER_GUIDE.md) 作为来源交给绑定的 manager；其根据真实问题及材料、R 分析依赖签发具名专业委派 D，主控核身份/来源/授权后送执行人。
 3. D 的执行人根据 [专业执行人指南](professional/PRO_EXECUTOR_GUIDE.md) 读取本次有权的材料准备或合理性分析 Skill，并**亲自承担专业分析**；能直接完成时零 W 回交；确需执行工具时签 W，主控检查 W 与 D、授权、去重、实际工作区独占后送 Worker。
 4. Worker 发布结果和实物证据；主控用可信实际回执核实、交还签单专业执行人。专业执行人检查、形成专业结果，再回原专业负责人。
-5. 专业负责人消费专业结果后决定新委派、继续自身专业工作、要求受限补件、请求 Owner，或按已授权业务完成条件请求任务级收束。主控不能从某个 Return 的 `COMPLETE` 字样自己推断 L0 业务完成。
+5. 专业负责人消费结果后执行本次业务 Gate、决定新委派/返修/补证/继续/有据结束；**同轮提交具体业务决定与受影响的五级完成全景更新**。若 Pro 不能直接写 GitHub，主控按其原文保存并回读；主控不替 Pro 作专业决定，也不从 Return `COMPLETE` 推断父任务完成。
 
 状态未知/发送是否成功不明时，**先核实原物理通道和账本，不能重发**。专业阻断与确定性缺字段应分流，不强制全 Run 暂停。完整条件在协议中。
 
-## 4. 快速离线校验
+## 4. 本次优先采用管理 Pro 执行控制面的试运行模式
+
+当 Owner 的真实 GO 选定此模式时，不等待业务控制程序，manager 承担 L0/L1/L2 的业务 Gate、工作安排、返修、补证、任务收束和 [control/06](../control/06_业务完成全景与更新协议.md) 的全部管理判断。**普通工作和 Gate 不逐项向 Owner 请示；** 实际 Worker 工具权限仍通过 V2 一次性 GO 的真实 `grants` 和运行环境核验。
+
+Run 内当前业务完成全景约定位置为 `longrun/runs/<run_id>/business_control/TASK_PROGRESS.md`，管理决定为 `.../decisions/<decision_id>.md`。每次 manager 获得新的可核实节点/阶段/Gate 结果后，将全景增量变化与决定在同轮回交，主控只负责按原文持久化并核实际 commit。历史接受与当前需要重验的成果分别保存；没有新事实不需要反复重写进度。**业务完成全景不是 `long-task-status` 的运行心跳，也不是新的独立权威数据库**。详细接线见 [CONTROL_PLANE_ADAPTER](CONTROL_PLANE_ADAPTER.md) 和 [manager 指南](professional/PRO_MANAGER_GUIDE.md)。
+
+具体特征输入尚未就绪时，不为此虚构业务 Run；Owner 随后用实际任务自然检验跨角色收发与 Worker 往返，不另强制设立专门测试 Run。首次真实调用仍必须满足主控的物理绑定、精确引用与回执核验，不能声称已经联调通过。
+
+## 5. 快速离线校验
 
 ```bash
 python -m unittest discover -s longrun/tests -v
@@ -64,7 +74,7 @@ python longrun/tools/longrun_gate.py reconcile-actions snapshot.json
 
 `snapshot.json` 是主控**独立获取且已核实**的文件/回执/账本只读快照，不是被派发者自述的事实，也不是自动从 GitHub 单方文件形成的权威状态。校验脚本不连接 GitHub、不验证签名/真实聊天、不取得锁；这些必须由主控及真实工具另行实施，不能拿离线 PASS 当派发许可证。
 
-## 5. 当前未完成 / 禁止冒充
+## 6. 当前未完成 / 禁止冒充
 
 - 本分支 `control/`、`review/` 明说三层业务 Gate 和部分完成/限域政策尚待确认，`professional/` 的角色分工也为待验证适配，不预先固定这些判定结果。
 - cgpterm 已提交专门的 V2 主控 Skill，但物理收发、持久动作账本、并发独占锁、GitHub 远端证据读取、专业角色指南的实际派发和恢复对账 **尚未与 V2 完成联调**。

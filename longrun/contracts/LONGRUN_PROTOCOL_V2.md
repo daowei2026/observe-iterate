@@ -99,6 +99,17 @@ BLOCKED → COMPLETED（只在原动作证据已查清时）
 
 确定性程序只能在**明确、可追溯的行动选择规则或专业决定**允许后调用；脚本维护事实并回交输出，不决定专业争议。何时启动某种专业分析、是否需标定和能否有界收束，不属于主控自由判断。
 
-## 9. V2 机械程序的真实能力
+## 9. 试运行控制面交给管理 Pro（本次 GO 明确采用时生效）
+
+这是 V2 运输协议与当前业务控制面的一种**试运行采用模式**，不是更改机器 Schema 或把主控变为业务决策者：
+
+- 当真实 Owner GO 明确采用时，manager 对该 Run 的 L0/L1/L2 业务控制点、Gate、返回/返修、材料补证、业务全景维护、阶段/问题完成判断拥有**试运行业务管理决定权**。已明确的业务目标不因执行发现新问题而被无痕改写。
+- 在正常管理活动中不设置每节点、每 Gate 的 Owner 再批准流程。Owner 定期查看运行记录即可；只有实际工具能力/访问权限不足、与明确禁令冲突、或重大业务目标取舍确需 Owner 决策时，形成**具名**问题。不能以 Pro 当前没想好一个实现细节为由无限等待。
+- 管理 Pro 的业务决定应记录为真实 `business_control/decisions/<decision_id>.md`，并据已核实工作/Gate/回执刷新 `business_control/TASK_PROGRESS.md`。生产者为 manager，主控负责在 GO 指定 GitHub 路径原样保存、验证准确 commit 和精确来源；若 manager 已经有真实写入工具，可自行提交，主控核其提交。模板见 [MANAGEMENT_DECISION](../templates/MANAGEMENT_DECISION.md) 和 [TASK_PROGRESS](../templates/TASK_PROGRESS.md)。
+- 管理决定和进度材料可由专业报告 `result_ref` 等已有引用承载，**不增加第二种 `PRO_RETURN`**。主控不可擅自计算新业务 Gate 或修改 manager 文字，只根据已核实的具体后继继续派 C/D/W。历史接受与当前失效范围应能同时在全景中查询。
+- 本协议 §5 的 `grants` 用于实际 Worker 工具动作的 `operation/execution_context/allowed_writes` 机械核对，**不等于每项业务管理判断需要 Owner 签字**。在初始 GO 内可以一次性声明本 Run 可能使用的常规操作类别与工作区/写面，具体机器记录必须被真实 Owner 原文覆盖，不能让 Pro 或主控假造 `authority_quote`。没有真实工具写权限或共享写面冲突时仍不可强行执行。
+- 此模式的“接受”是**本次试运行的业务接续依据**，不能声称已经部署受保护的生产 Gate/自动状态库；初次真实 Run 自然检验物理派发和回交，**不要求另开专门测试 Run**。
+
+## 10. V2 机械程序的真实能力
 
 `longrun/tools/longrun_gate.py` 是只读校验/路由建议程序；它**不是**远端消息通道、GitHub 仓库读取器、持久动作账本、锁管理器、自动控制面和完整专业任务引擎。使用时需把真实 GO 文本、合法 Binding、D、W、Pro/Worker Return 和独立验实回执作为可信快照输入。模型自述的 `true` 或假造的 snapshot 不能当可信外部事实。实际发送、状态写入、强制独占和跨仓 Skill 更新仍需在后续联调完成。
