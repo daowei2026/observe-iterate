@@ -1,0 +1,346 @@
+CANDIDATE /dwdhome/fy/BASE_E6_2/mquant/tis GIT True REAL /dwdhome/fy/BASE_E6_2/mquant/tis
+TOP [('.exportignore', False, False), ('.git', True, False), ('.gitignore', False, False), ('CHANGELOG.md', False, False), ('CHANGELOG_USER.md', False, False), ('README.md', False, False), ('__init__.py', False, False), ('__pycache__', True, False), ('abc', True, False), ('blk', True, False), ('calc', True, False), ('calendar', True, False), ('dynamic', True, False), ('frp', True, False), ('frpExample', True, False), ('hedge', True, False), ('hf', True, False), ('kline', True, False), ('label', True, False), ('lib3.py', False, False), ('pretty-exports.py', False, False), ('proof', True, False), ('seed_inits.py', False, False), ('state', True, False), ('t0', True, False), ('t1', True, False), ('t2', True, False), ('t3', True, False), ('test', True, False), ('tests', True, False), ('tn', True, False), ('tool', True, False), ('ufrp', True, False), ('zbak', True, False)]
+EXACT /dwdhome/fy/BASE_E6_2/mquant/tis/frp/EawBattleP.py BYTES 38993
+EXACT /dwdhome/fy/BASE_E6_2/mquant/tis/hf/prel0/wall_assembler.py BYTES 36326
+EXACT /dwdhome/fy/BASE_E6_2/mquant/tis/__init__.py BYTES 8242
+EXACT /dwdhome/fy/BASE_E6_2/mquant/tis/frp/__init__.py BYTES 9785
+CANDIDATE /m3c3/py-prod/tis GIT False REAL /m3c3/py-prod/tis
+TOP [('tti', True, False)]
+CANDIDATE /m3varK/workspace/zx_mquant6.2_test/tis GIT False REAL /m3varK/workspace/zx_mquant6.2_test/tis
+TOP [('tti', True, False)]
+CANDIDATE /dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/test/Frp/Instance/ISL/Eaw/P1 GIT False REAL /dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/test/Frp/Instance/ISL/Eaw/P1
+TOP [('P1EndToEndSpec.hs', False, False)]
+CANDIDATE /dwdhome/fy/BASE_E6_2/m3sof/settings/sof GIT False REAL /dwdhome/fy/BASE_E6_2/m3sof/settings/sof
+TOP [('.ipynb_checkpoints', True, False), ('CHANGELOG_USER.md', False, False), ('CTP.py', False, False), ('GTQH_L1_20210104_20240208.py', False, False), ('GTQH_L1_20210104_20240229.py', False, False), ('TA_updto20240229.py', False, False), ('TA_updto20240229_DBA.py', False, False), ('TB.py', False, False), ('TB_main_contract_all.py', False, False), ('__pycache__', True, False), ('block.ini', False, False), ('default.py', False, False), ('tb20200716.py', False, False), ('virtual_currency.py', False, False)]
+CANDIDATE /dwdhome/fy/BASE_E6_2/m3sof/settings/env GIT False REAL /dwdhome/fy/BASE_E6_2/m3sof/settings/env
+TOP [('.ipynb_checkpoints', True, False), ('__pycache__', True, False), ('default.py', False, False), ('dev.py', False, False), ('prod.py', False, False), ('test.py', False, False)]
+FILE /dwdhome/fy/BASE_E6_2/edh-universe/frp/frp-core/src/Frp/Core/Fao/Class.hs LINES 420 530
+420: 
+421:   -- | Fao的目标对象类型
+422:   --
+423:   -- 支持通过判断上下文信息(如 currentCalendar)来设置 TarType
+424:   propTarType :: f -> FaoModel TarType
+425: 
+426:   -- | 文件夹路径是否包含 Sof 起止日期,默认包含
+427:   -- 与 python 端 prop_on_date_range 名称对应
+428:   propOnDateRange :: f -> Bool
+429:   propOnDateRange = const True
+430: 
+431: -- | 特征对象接口 ,与 python 端同名
+432: class (FaoMeta f) => Fao f where
+433:   -- \| 特征名+参数ID
+434:   --   ppid :: f -> Text
+435:   --   ppid f = ppname f <> T.pack (getParamId f)
+436: 
+437:   -- ggjson 的 sha1 值
+438:   getParamId :: f -> String
+439:   getParamId = encodeSha1 . BL.unpack . ggjson
+440: 
+441:   -- 和 python 端一致 将路径分为 8 份
+442:   getParamPath :: f -> String
+443:   getParamPath f =
+444:     let (b1, b2) = splitAt 8 $ getParamId f
+445:      in intersperse '/' b1 <> b2
+446: 
+447:   -- 根路径
+448:   getStoreDir :: f -> FaoModel FilePath
+449:   getStoreDir f = lift $ do
+450:     -- TODO
+451:     sof <- view (env'ctx . ctx'sof)
+452:     store_dirs <- view (env'ctx . ctx'store'dirs)
+453:     let res = Map.findWithDefault (sof ^. sof'store_dir) (ppname f) store_dirs
+454:     return $ head res
+455: 
+456:   -- | 通过起止日期创建没有 store_dir 的路径  
+457:   createHeadLessFullDir :: f -> Maybe Text -> Maybe Text -> FaoModel FilePath
+458:   createHeadLessFullDir f mstart mend= do
+459:     sof <- lift $ view (env'ctx . ctx'sof)
+460:     let sof_path = (sof ^. sof'category) </> T.unpack (sof ^. sof'name) </> (sof ^. sof'store_name)
+461:     ename <- lift $ view (env'ctx . ctx'app'config . env'name)
+462: 
+463:     let cls_name = T.unpack $ ppname f
+464:     tar_name <- getTarName f <&> T.unpack
+465: 
+466:     -- 是否包含起止日期
+467:     if propOnDateRange f
+468:       then do
+469:         -- Tensor 时期遗留的逻辑，兼容已保存数据
+470:         -- startDay + OPT_HOUR_STR 
+471:         let shour = view sof'opt_start_hour sof 
+472:             ehour = view sof'opt_end_hour sof
+473: 
+474:         let _parse (Just start) Nothing = Just $ start <> " " <> shour <> "~None"
+475:             _parse Nothing (Just end) = Just $ "None~" <> end <> " " <> ehour
+476:             _parse (Just start) (Just end) = Just $ start <> " " <> shour <> "~" <> end <> " " <> ehour
+477:             _parse _ _ = Nothing
+478: 
+479:         -- 将日期范围添加到路径中，与 python 端一致
+480:         case _parse mstart mend of
+481:           Nothing -> return $ sof_path </> ename </> cls_name </> getParamPath f </> tar_name
+482:           Just dkey -> return $ sof_path </> ename </> T.unpack dkey </> cls_name </> getParamPath f </> tar_name
+483:       else return $ sof_path </> ename </> cls_name </> getParamPath f </> tar_name
+484: 
+485:   createFullDir :: f -> Maybe Text -> Maybe Text -> FaoModel FilePath
+486:   createFullDir f mstart mend= do
+487:     store_dir <- getStoreDir f
+488:     param_dir <- createHeadLessFullDir f mstart mend
+489:     return (store_dir </> param_dir)
+490: 
+491:   -- | 获取优化查询起止日期范围路径  
+492:   getGFullDir :: f -> FaoModel (Maybe FilePath)
+493:   getGFullDir f = do
+494:     -- 是否包含起止日期
+495:     if propOnDateRange f then do
+496:         mperiod <- lift $ view (env'ctx . ctx'sof . sof'full_period)
+497:         case mperiod of 
+498:             Nothing -> return Nothing 
+499:             Just (mstart,mend) -> createFullDir f mstart mend <&> Just
+500:     else return Nothing
+501: 
+502:   -- 特征当前目标全路径
+503:   getFullDir :: f -> FaoModel FilePath
+504:   getFullDir f = do
+505:     sof <- lift $ view (env'ctx . ctx'sof)
+506:     let mstart = view sof'startDay sof
+507:         mend = view sof'endDay sof
+508:     createFullDir f mstart mend
+509: 
+510:   -- 特征所有保存路径
+511:   getAllFullDirs :: f -> FaoModel [FilePath]
+512:   getAllFullDirs f = do
+513:     sof <- lift $ view (env'ctx . ctx'sof)
+514:     store_dirs <- lift $ view (env'ctx . ctx'store'dirs)
+515:     let xs = Map.findWithDefault (sof ^. sof'store_dir) (ppname f) store_dirs
+516:     let mstart = view sof'startDay sof
+517:         mend = view sof'endDay sof
+518:     param_dir <- createHeadLessFullDir f mstart mend
+519:     return $ fmap (</> param_dir) xs
+520:     
+521:    -- 包含参数和目标对象的唯一ID
+522:   getUniqueId :: f -> FaoModel UniqueId
+523:   getUniqueId f = do
+524:     sof <- lift $ view (env'ctx . ctx'sof)
+525:     let mstart = view sof'startDay sof
+526:         mend = view sof'endDay sof
+527:     param_dir <- createHeadLessFullDir f mstart mend
+528:     return $ T.pack (encodeSha1 param_dir)
+529: 
+530:   -- | 根据Fao的目标对象类型获取当前目标对象名称
+FILE /dwdhome/fy/BASE_E6_2/m3sof/settings/app.py LINES 1 120
+1: # ===== 通用配置 =====
+2: 
+3: # 配置环境,对应 env 包下的文件名
+4: ENV = "prod" # dev 开发 test 测试 prod 生产等  
+5: 
+6: 
+7: # 其他通用存储基础路径,最好手动创建好
+8: # 一般与数据源，时间范围等无关的一些信息
+9: # 如任务链接，特征参数链接等
+10: # trier 的 json 文件
+11: APP_DIR = "/m3varE/AppData"
+12: 
+13: 
+14: 
+15: 
+FILE /dwdhome/fy/BASE_E6_2/m3sof/settings/env/default.py LINES 1 45
+1: # ======= 不同环境默认配置 ========
+2: 
+3: # 参数转码路径类型
+4: DEFAULT_PATH_SHA_TYPE = "json" # repr(旧版) or json(支持跨语言)
+5: 
+6: # 特征存储路径: 基础存储磁盘路径 + 数据源种类 + 数据源名称 + fdb
+7: # 如 "/m3varB/futures/tb20200716/fdb"
+8: # 优化存储路径: 基础存储磁盘路径 + 数据源种类 + 数据源名称 + optimizer
+9: # 如 "/m3varB/futures/tb20200716/optimizer"
+10: # 不同特征可手动设置不同的基础存储磁盘路径
+11: 
+12: # 默认基础存储磁盘路径
+13: DEFAULT_STORE_DIR = "/m3varK" 
+14: 
+15: # Fao 特征存储路径中的应用名称
+16: # 对应旧版本的 fdb
+17: # 新版需要重新存数据，使用新文件夹来区分开
+18: DEFAULT_STORE_NAME = "fao" 
+19: 
+20: # 默认数据源
+21: DEFAULT_SOF_NAME = "TB" 
+22: 
+23: # 默认特征保存方式  msb dba
+24: MQUANT_STORE_SOURCE = 'dba' 
+25: 
+26: # Pable 只作为优化参数范围的设置
+27: # 当构建成特征时，应该还原为目标对象
+28: # 否则因为跑不同的参数范围，但是参数值相同时，被时为不同的特征,从而就会保存了相同的特征值在不同的参数路径
+29: # 设置此开关，如果需要兼容2.0版本的特征路径，设置为True,否则为False
+30: MQUANT_ON_PABLE = False # True: 表示2.0版，Pable对象; False: 表示还原为目标对象
+31: 
+32: 
+33: # ==== 其他配置 ====
+34: 
+35: # 优化时间startDay和endDay
+36: # 以所设日期当前的几点作为开始和结束点
+37: # 尽量让每个品种的每个频率截取的开始结束交易日一致
+38: # 如startDay:以当天21点作为开始点
+39: # endDay:以当天20点作为结束点;
+40: # 如果设置为 21 点,分钟线为可能会多一个最后一天21点(下一个交易日)的bar,而1d频率则没有
+41: # 但是并不影响前面的特征结果,会影响到特征保存路径
+42: OPT_HOUR_STR = ("21:00:00", "20:00:00")
+43: 
+44: # 用于所有检查全局开关
+45: # 在生产环境可以关闭,尽可能的减少性能消耗(一般用于跑特征时)
+FILE /dwdhome/fy/BASE_E6_2/m3sof/settings/env/dev.py LINES 1 35
+1: # ======= 开发环境配置 ========
+2: # 不设置的继承 default 配置
+3: 
+4: # 默认基础存储磁盘路径
+5: DEFAULT_STORE_DIR = "/m3varK"
+6: 
+7: # 默认数据源
+8: DEFAULT_SOF_NAME = "TB" 
+9: 
+10: MQUANT_ON_KDATA_CHECK_MODE = "warning"
+11: 
+12: # logging 日志级别 INFO ERROR WARNING ...
+13: MQUANT_LOGGER_LEVEL = "INFO"
+14: 
+15: # 日志存储根路径
+16: MQUANT_LOGGER_DIR = "/tmp/logs" # 默认旧版本路径，自行根据需要调整
+17: 
+18: # 优化失败重试次数
+19: # mpds 3.0.2.0 以前版本
+20: # 小于等于0: 一直重试直到成功
+21: # 大于0: 重试n次都失败，退出整个优化任务
+22: 
+23: # mpds 3.0.2.0 版本
+24: # 0: 不重试
+25: # 大于0: 重试n次都失败，放弃优化，继续其他参数优化
+26: # 小于0: 重试n次都失败，退出整个优化任务; 
+27: 
+28: # 重试次数值需根据实际情况调整
+29: # 生产环境中，理论上不再有代码级别的错误,如果有，重试多少次都是失败
+30: # 资源级别的错误，可能一两次就能成功
+31: # 如果是网络链接异常，多重试几次也不一定能连接成功
+32: # 对于优化算法(穷举，进化)，少跑一些参数也无所谓，所以一般不用设置太大. 否则不断的重试抛异常，影响机器性能
+33: OPT_JOB_ERROR_RETRY_CNTS = -1
+34: 
+35: # 超时重试
+FILE /dwdhome/fy/BASE_E6_2/m3sof/core/sof.py LINES 1 100
+1: import importlib,weakref,collections,os,traceback
+2: from typing import *
+3: import pandas as pd
+4: from m3tt.iset import InstrumentSet
+5: from m3.mts import mdb,msb
+6: from m3 import str2sha1,get_logger
+7: from .base import load_pkg
+8: from .settings import settings
+9: from pydim import DbArray
+10: 
+11: logger = get_logger(__name__)
+12: 
+13: __all__ = ["Sof","load_sof"]
+14: 
+15: class _SofContents:
+16:     BASE_PKG = "m3sof.settings.sof"
+17: 
+18:     def __init__(self):
+19:         self.__dict__.update(self._get_contexts())
+20: 
+21:     def _get_contexts(self):
+22:         defs = load_pkg(f"{self.BASE_PKG}.default")
+23: 
+24:         mdl = importlib.import_module(self.BASE_PKG)
+25:         res = {}
+26:         par = mdl.__path__._path[0]
+27:         for name in os.listdir(par):
+28:             if os.path.isfile(os.path.join(par,name)) and name.endswith(".py"): 
+29:                 source = name[:-3]
+30:                 if source.startswith("__") and source.endswith("__"):continue
+31:                 if source == "default": continue
+32:                 try:
+33:                     ctx = load_pkg(f"{self.BASE_PKG}.{source}")
+34: 
+35:                     if not ctx.get("sof_label"):
+36:                         raise ValueError(f"{name} must be set sof_label")
+37:                     
+38:                     sof_name = ctx.get("sof_name")
+39:                     if not sof_name:
+40:                         raise ValueError(f"{name} must be set sof_name")
+41: 
+42:                     if res.get(sof_name):
+43:                         raise ValueError(f"this sof_name {sof_name!r} already existed")    
+44: 
+45:                     ds = dict(**defs)     
+46:                     ds.update(ctx)
+47:                     res[sof_name] = ds   
+48:                 except ModuleNotFoundError as e:
+49:                     print(e)
+50:                     continue 
+51:         return res
+52: 
+53:     def get(self,name):
+54:         name = name or settings.DEFAULT_SOF_NAME
+55:         res = self.__dict__.get(name)
+56:         if res is None:
+57:             raise ValueError(f"no exist sof_name: {name!r},please check")
+58:         return res
+59: 
+60: sof_contexts = _SofContents()
+61: 
+62: class MBlockSet():
+63:     """自定义板块配置"""
+64:     
+65:     def __init__(self,name = None):
+66:         self.__name = name
+67:         self.__use_blks = None
+68:         self.__ctx = sof_contexts.get(name)
+69:  
+70:     def __getattr__(self,key):
+71:         return self.__ctx[key]
+72:     
+73:     def __repr__(self):
+74:         return f"{type(self).__name__}({self.__name!r})"
+75:     
+76:     def symbols(self, blk_name,use_blk = None):
+77:         """
+78:         Desc: 某个板块下所有品种
+79:         Params:
+80:            blk_name:板块名称
+81:            use_blk：None固定板块，否则品种使用板块 
+82:         """
+83:         if use_blk:
+84:             blks = self.block_ask.get(use_blk)
+85:             if blks is None:
+86:                 raise KeyError(f"没有配置品种使用板块:{use_blk}")
+87:                 
+88:             _symbols = blks.get(blk_name)
+89:             if _symbols is None:
+90:                 raise KeyError(f"品种使用板块{use_blk!r}没有配置板块{blk_name!r}")
+91:             return _symbols
+92:         
+93:         _symbols = self.block_fixed.get(blk_name)
+94:         if _symbols is None:
+95:             raise KeyError(f"没有配置板块:{blk_name}")
+96:         return _symbols
+97:    
+98:     def use_blk_name(self, sym, use_blk="default"):
+99:         """
+100:         Desc:  某个品种所在板块名
+FILE /dwdhome/fy/BASE_E6_2/config.yml LINES 1 30
+1: # 存储盘根目录（键名 = store_dir 代号）
+2: store_roots:
+3:   m3varK: /m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod
+4:   # m3varH: /path/to/m3varH  # Uncomment if exists
+5:   # m3varG: /path/to/m3varG  # Uncomment if exists
+6: 
+7: # 历史 default_store 别名映射（如 fdb 旧版映射到 fao）
+8: default_store_map:
+9:   fao: fao
+10: 
+11: # 允许的 ENV 列表
+12: envs: [prod]
+13: 
+14: # 你们参数哈希在目录中的层数（示例 8 级：5/5/e/c/4/9/f/d66c8a1ba15469684451）
+15: hash_depth: 8
+16: 
+17: # 老数据没有时间轴目录时用的占位符
+18: default_time_axis: "__no_time_axis__"

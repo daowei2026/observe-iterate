@@ -1,0 +1,816 @@
+FILE /dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1.hs LINES 1 205
+1: {-# LANGUAGE DeriveGeneric #-}
+2: {-# LANGUAGE DerivingVia #-}
+3: {-# LANGUAGE TypeFamilies #-}
+4: 
+5: -- | EAW P1 v1.6.1 façade、产品 Feature caller 与注册面。
+6: -- 不存在 P1PublicPorts、P1BaseDSUP 或总 P1 runtime。
+7: module Frp.Instance.ISL.Eaw.P1
+8:   ( EawP1WallLifecycleFrp (..),
+9:     EawP1BuildActivityFrp (..),
+10:     EawP1AttackSegmentBookFrp (..),
+11:     EawP1AbsorbInteractionFrp (..),
+12:     doWallLifecycleFrp,
+13:     doBuildActivityFrp,
+14:     doAttackSegmentBookFrp,
+15:     doAbsorbInteractionFrp,
+16:     module Frp.Instance.ISL.Eaw.P1.Products,
+17:     module Frp.Instance.ISL.Eaw.P1.FaoIngress,
+18:     module Frp.Instance.ISL.Eaw.P1.DirectedLargeDeal,
+19:     dumpWallOutputs,
+20:     dumpBuildOutputs,
+21:     dumpAttackOutputs,
+22:     dumpAbsorbOutputs,
+23:     WallLifecycleP (..),
+24:     WallLifecycleState,
+25:     WallLifecycleError (..),
+26:     WallLifecycleOutputs (..),
+27:     emptyWallLifecycleState,
+28:     applyWallOccurrenceBatch,
+29:     maintainWallLifecycle,
+30:     BuildActivityP (..),
+31:     BuildActivityState,
+32:     BuildActivityError (..),
+33:     BuildActivityOutputs (..),
+34:     emptyBuildActivityState,
+35:     applyBuildFrame,
+36:     maintainBuildActivity,
+37:     AttackSegmentBookP (..),
+38:     AttackIngressEvents (..),
+39:     AttackSegmentBookState,
+40:     AttackSegmentBookError (..),
+41:     AttackSegmentBookOutputs (..),
+42:     emptyAttackSegmentBookState,
+43:     currentAttackSegmentBookView,
+44:     applyAttackFrame,
+45:     maintainAttackSegmentBook,
+46:     AbsorbInteractionP (..),
+47:     AbsorbInteractionState,
+48:     AbsorbInteractionError (..),
+49:     AbsorbInteractionOutputs (..),
+50:     emptyAbsorbInteractionState,
+51:     applyAbsorbFrame,
+52:     maintainAbsorbInteractions,
+53:   )
+54: where
+55: 
+56: import Data.Aeson (FromJSON, ToJSON)
+57: import Frp.Apt (FrpEvent, StructJSON (..))
+58: import Frp.Core
+59: import Frp.Instance.ISL.Eaw.P1.AbsorbInteraction
+60: import Frp.Instance.ISL.Eaw.P1.AttackSegmentBook
+61: import Frp.Instance.ISL.Eaw.P1.BuildActivity
+62: import Frp.Instance.ISL.Eaw.P1.DirectedLargeDeal
+63: import Frp.Instance.ISL.Eaw.P1.FaoIngress
+64: import Frp.Instance.ISL.Eaw.P1.Products
+65: import Frp.Instance.ISL.Eaw.P1.Publication
+66: import Frp.Instance.ISL.Eaw.P1.WallLifecycle
+67: import Frp.Instance.ISLTC.Fao (Generic2AdtFao (..))
+68: import GHC.Generics (Generic)
+69: import Reflex (mergeWith)
+70: 
+71: newtype EawP1WallLifecycleFrp = EawP1WallLifecycleFrp
+72:   { wallLifecycleInput :: WallOccurrenceFao
+73:   }
+74:   deriving (Generic, Show, PyParams)
+75:   deriving (ToJSON, FromJSON) via (StructJSON EawP1WallLifecycleFrp)
+76: 
+77: newtype EawP1BuildActivityFrp = EawP1BuildActivityFrp
+78:   { buildActivityInput :: BuildOccurrenceFao
+79:   }
+80:   deriving (Generic, Show, PyParams)
+81:   deriving (ToJSON, FromJSON) via (StructJSON EawP1BuildActivityFrp)
+82: 
+83: data EawP1AttackSegmentBookFrp = EawP1AttackSegmentBookFrp
+84:   { attackSegmentInput :: AttackSegmentFao,
+85:     attackFormationInput :: FormationEvidenceFao,
+86:     attackBarrierInput :: WallBarrierFao
+87:   }
+88:   deriving (Generic, Show, PyParams)
+89:   deriving (ToJSON, FromJSON) via (StructJSON EawP1AttackSegmentBookFrp)
+90: 
+91: newtype EawP1AbsorbInteractionFrp = EawP1AbsorbInteractionFrp
+92:   { absorbInteractionInput :: AbsorbOccurrenceFao
+93:   }
+94:   deriving (Generic, Show, PyParams)
+95:   deriving (ToJSON, FromJSON) via (StructJSON EawP1AbsorbInteractionFrp)
+96: 
+97: instance FaoMeta EawP1WallLifecycleFrp where
+98:   propTarType = const $ pure (CalendarTarType SymbolType)
+99:   propCalType = const Cal
+100: 
+101: instance FaoMeta EawP1BuildActivityFrp where
+102:   propTarType = const $ pure (CalendarTarType SymbolType)
+103:   propCalType = const Cal
+104: 
+105: instance FaoMeta EawP1AttackSegmentBookFrp where
+106:   propTarType = const $ pure (CalendarTarType SymbolType)
+107:   propCalType = const Cal
+108: 
+109: instance FaoMeta EawP1AbsorbInteractionFrp where
+110:   propTarType = const $ pure (CalendarTarType SymbolType)
+111:   propCalType = const Cal
+112: 
+113: mergeIngressDiagnostics :: [FrpEvent [P1IngressError]] -> FrpEvent (P1ProductDiagnostics productError) -> FrpEvent (P1ProductDiagnostics productError)
+114: mergeIngressDiagnostics ingress stateDiagnostics =
+115:   mergeWith
+116:     (\left right -> mergeP1ProductDiagnostics [left, right])
+117:     ( ((\event -> (\errors -> P1ProductDiagnostics errors []) <$> event) <$> ingress)
+118:         <> [stateDiagnostics]
+119:     )
+120: 
+121: doWallLifecycleFrp :: EawP1WallLifecycleFrp -> FaoModel WallLifecycleOutputs
+122: doWallLifecycleFrp feature = do
+123:   ingress <- wallOccurrenceIngress (wallLifecycleInput feature)
+124:   outputs <- maintainWallLifecycle (ingressOccurrences ingress)
+125:   pure
+126:     outputs
+127:       { wallLifecycleDiagnostics =
+128:           mergeIngressDiagnostics [ingressDiagnostics ingress] (wallLifecycleDiagnostics outputs)
+129:       }
+130: 
+131: doBuildActivityFrp :: EawP1BuildActivityFrp -> FaoModel BuildActivityOutputs
+132: doBuildActivityFrp feature = do
+133:   let source = buildActivityInput feature
+134:   (catalog, ingress) <- buildOccurrenceIngressWithCatalog source
+135:   outputs <- maintainBuildActivity catalog (ingressOccurrences ingress)
+136:   pure
+137:     outputs
+138:       { buildActivityDiagnostics =
+139:           mergeIngressDiagnostics [ingressDiagnostics ingress] (buildActivityDiagnostics outputs)
+140:       }
+141: 
+142: doAttackSegmentBookFrp :: EawP1AttackSegmentBookFrp -> FaoModel AttackSegmentBookOutputs
+143: doAttackSegmentBookFrp feature = do
+144:   (catalog, segments, formations, barriers) <-
+145:     attackProductIngresses
+146:       (attackSegmentInput feature)
+147:       (attackFormationInput feature)
+148:       (attackBarrierInput feature)
+149:   outputs <-
+150:     maintainAttackSegmentBook
+151:       catalog
+152:       (ingressOccurrences segments)
+153:       (ingressOccurrences formations)
+154:       (ingressOccurrences barriers)
+155:   pure
+156:     outputs
+157:       { attackSegmentBookDiagnostics =
+158:           mergeIngressDiagnostics
+159:             [ ingressDiagnostics segments,
+160:               ingressDiagnostics formations,
+161:               ingressDiagnostics barriers
+162:             ]
+163:             (attackSegmentBookDiagnostics outputs)
+164:       }
+165: 
+166: doAbsorbInteractionFrp :: EawP1AbsorbInteractionFrp -> FaoModel AbsorbInteractionOutputs
+167: doAbsorbInteractionFrp feature = do
+168:   let source = absorbInteractionInput feature
+169:   (catalog, ingress) <- absorbOccurrenceIngressWithCatalog source
+170:   outputs <- maintainAbsorbInteractions catalog (ingressOccurrences ingress)
+171:   pure
+172:     outputs
+173:       { absorbInteractionDiagnostics =
+174:           mergeIngressDiagnostics [ingressDiagnostics ingress] (absorbInteractionDiagnostics outputs)
+175:       }
+176: 
+177: instance Fao EawP1WallLifecycleFrp where
+178:   type FaoResult EawP1WallLifecycleFrp = WallLifecycleOutputs
+179:   dump = dumpWallOutputs
+180:   doImpl = doWallLifecycleFrp
+181: 
+182: instance Fao EawP1BuildActivityFrp where
+183:   type FaoResult EawP1BuildActivityFrp = BuildActivityOutputs
+184:   dump = dumpBuildOutputs
+185:   doImpl = doBuildActivityFrp
+186: 
+187: instance Fao EawP1AttackSegmentBookFrp where
+188:   type FaoResult EawP1AttackSegmentBookFrp = AttackSegmentBookOutputs
+189:   dump = dumpAttackOutputs
+190:   doImpl = doAttackSegmentBookFrp
+191: 
+192: instance Fao EawP1AbsorbInteractionFrp where
+193:   type FaoResult EawP1AbsorbInteractionFrp = AbsorbInteractionOutputs
+194:   dump = dumpAbsorbOutputs
+195:   doImpl = doAbsorbInteractionFrp
+FILE /dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs LINES 220 365
+220:       )
+221:   pure (fullDir, selected)
+222: 
+223: -- | 同一物理行的全部字段只形成一条历史事件，避免按宽表字段数放大事件数。
+224: loadPackedProductRows :: PyAny -> [Text] -> FaoModel (FrpEvent [(Text, NumericRow)])
+225: loadPackedProductRows source prefixes = do
+226:   (fullDir, groups) <- loadPackedProductMetadata source prefixes
+227:   target <- getTarName source
+228:   events <-
+229:     forM (Map.toList groups) $ \(resultKey, fields) -> do
+230:       let ?hisBack = BackNumber 0
+231:       event <-
+232:         lift $
+233:           newAdtFrpEvent4His @PackedNumericRowsHistoryData @NumericRow
+234:             (packEventName source target ("__eaw_occurrence_row__." <> resultKey))
+235:             (BackNumber 0)
+236:             (loadPackedNumericRows fullDir resultKey fields)
+237:       pure ((\tick -> [(resultKey, atTickValue tick)]) <$> event)
+238:   pure (mergeWith (<>) events)
+239: 
+240: newtype WallOccurrenceFao = WallOccurrenceFao {wallOccurrenceSource :: PyAny}
+241:   deriving (Generic, Show, PyParams)
+242:   deriving (ToJSON, FromJSON) via (StructJSON WallOccurrenceFao)
+243: 
+244: data BuildOccurrenceFao = BuildOccurrenceFao
+245:   { buildOccurrenceSource :: PyAny,
+246:     buildWallSource :: PyAny
+247:   }
+248:   deriving (Generic, Show, PyParams)
+249:   deriving (ToJSON, FromJSON) via (StructJSON BuildOccurrenceFao)
+250: 
+251: data AttackSegmentFao = AttackSegmentFao
+252:   { attackSegmentSource :: PyAny,
+253:     attackSegmentWallSource :: PyAny
+254:   }
+255:   deriving (Generic, Show, PyParams)
+256:   deriving (ToJSON, FromJSON) via (StructJSON AttackSegmentFao)
+257: 
+258: data FormationEvidenceFao = FormationEvidenceFao
+259:   { formationEvidenceSource :: PyAny,
+260:     formationEvidenceWallSource :: PyAny
+261:   }
+262:   deriving (Generic, Show, PyParams)
+263:   deriving (ToJSON, FromJSON) via (StructJSON FormationEvidenceFao)
+264: 
+265: data WallBarrierFao = WallBarrierFao
+266:   { wallBarrierSource :: PyAny,
+267:     wallBarrierWallSource :: PyAny
+268:   }
+269:   deriving (Generic, Show, PyParams)
+270:   deriving (ToJSON, FromJSON) via (StructJSON WallBarrierFao)
+271: 
+272: data AbsorbOccurrenceFao = AbsorbOccurrenceFao
+273:   { absorbOccurrenceSource :: PyAny,
+274:     absorbWallSource :: PyAny
+275:   }
+276:   deriving (Generic, Show, PyParams)
+277:   deriving (ToJSON, FromJSON) via (StructJSON AbsorbOccurrenceFao)
+278: 
+279: newtype DirectedLargeDealOccurrenceFao = DirectedLargeDealOccurrenceFao
+280:   { directedLargeDealSource :: PyAny
+281:   }
+282:   deriving (Generic, Show, PyParams)
+283:   deriving (ToJSON, FromJSON) via (StructJSON DirectedLargeDealOccurrenceFao)
+284: 
+285: instance FaoMeta WallOccurrenceFao where
+286:   propTarType = const $ pure (CalendarTarType SymbolType)
+287:   propCalType = const OnlyRead
+288: 
+289: instance FaoMeta BuildOccurrenceFao where
+290:   propTarType = const $ pure (CalendarTarType SymbolType)
+291:   propCalType = const OnlyRead
+292: 
+293: instance FaoMeta AttackSegmentFao where
+294:   propTarType = const $ pure (CalendarTarType SymbolType)
+295:   propCalType = const OnlyRead
+296: 
+297: instance FaoMeta FormationEvidenceFao where
+298:   propTarType = const $ pure (CalendarTarType SymbolType)
+299:   propCalType = const OnlyRead
+300: 
+301: instance FaoMeta WallBarrierFao where
+302:   propTarType = const $ pure (CalendarTarType SymbolType)
+303:   propCalType = const OnlyRead
+304: 
+305: instance FaoMeta AbsorbOccurrenceFao where
+306:   propTarType = const $ pure (CalendarTarType SymbolType)
+307:   propCalType = const OnlyRead
+308: 
+309: instance FaoMeta DirectedLargeDealOccurrenceFao where
+310:   propTarType = const $ pure (CalendarTarType SymbolType)
+311:   propCalType = const OnlyRead
+312: 
+313: instance Fao WallOccurrenceFao where
+314:   type FaoResult WallOccurrenceFao = GenericFaoResult
+315:   load f = Just <$> loadGenericProduct (wallOccurrenceSource f) "wall_lifecycle"
+316:   dump f _ = error (show (ppname f) <> " is read-only")
+317:   doImpl f = loadGenericProduct (wallOccurrenceSource f) "wall_lifecycle"
+318: 
+319: instance Fao BuildOccurrenceFao where
+320:   type FaoResult BuildOccurrenceFao = GenericFaoResult
+321:   load f = Just <$> loadGenericProduct (buildOccurrenceSource f) "build_activity"
+322:   dump f _ = error (show (ppname f) <> " is read-only")
+323:   doImpl f = loadGenericProduct (buildOccurrenceSource f) "build_activity"
+324: 
+325: instance Fao AttackSegmentFao where
+326:   type FaoResult AttackSegmentFao = GenericFaoResult
+327:   load f = Just <$> loadGenericProduct (attackSegmentSource f) "attack_segment"
+328:   dump f _ = error (show (ppname f) <> " is read-only")
+329:   doImpl f = loadGenericProduct (attackSegmentSource f) "attack_segment"
+330: 
+331: instance Fao FormationEvidenceFao where
+332:   type FaoResult FormationEvidenceFao = GenericFaoResult
+333:   load f = Just <$> loadGenericProduct (formationEvidenceSource f) "attack_formation_evidence"
+334:   dump f _ = error (show (ppname f) <> " is read-only")
+335:   doImpl f = loadGenericProduct (formationEvidenceSource f) "attack_formation_evidence"
+336: 
+337: instance Fao WallBarrierFao where
+338:   type FaoResult WallBarrierFao = GenericFaoResult
+339:   load f = Just <$> loadGenericProduct (wallBarrierSource f) "wall_relation_barrier"
+340:   dump f _ = error (show (ppname f) <> " is read-only")
+341:   doImpl f = loadGenericProduct (wallBarrierSource f) "wall_relation_barrier"
+342: 
+343: instance Fao AbsorbOccurrenceFao where
+344:   type FaoResult AbsorbOccurrenceFao = GenericFaoResult
+345:   load f = Just <$> loadGenericProduct (absorbOccurrenceSource f) "absorb_interaction"
+346:   dump f _ = error (show (ppname f) <> " is read-only")
+347:   doImpl f = loadGenericProduct (absorbOccurrenceSource f) "absorb_interaction"
+348: 
+349: instance Fao DirectedLargeDealOccurrenceFao where
+350:   type FaoResult DirectedLargeDealOccurrenceFao = GenericFaoResult
+351:   load f = Just <$> loadGenericProduct (directedLargeDealSource f) "directed_large_deal_stream"
+352:   dump f _ = error (show (ppname f) <> " is read-only")
+353:   doImpl f = loadGenericProduct (directedLargeDealSource f) "directed_large_deal_stream"
+354: 
+355: instance FaoRable WallOccurrenceFao
+356: 
+357: instance FaoRable BuildOccurrenceFao
+358: 
+359: instance FaoRable AttackSegmentFao
+360: 
+361: instance FaoRable FormationEvidenceFao
+362: 
+363: instance FaoRable WallBarrierFao
+364: 
+365: instance FaoRable AbsorbOccurrenceFao
+FILE /dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Publication.hs LINES 1 85
+1: {-# LANGUAGE DeriveAnyClass #-}
+2: {-# LANGUAGE DeriveGeneric #-}
+3: {-# LANGUAGE FlexibleContexts #-}
+4: {-# LANGUAGE FlexibleInstances #-}
+5: {-# LANGUAGE UndecidableInstances #-}
+6: 
+7: -- | P1 产品 DSU 的正式 writer。
+8: --
+9: -- 每个 writer 只物化自己的 typed product。批次外壳只保留同一 FRP
+10: -- transaction 中的 0..N 条 occurrence 或本次变化的 current state；业务字段
+11: -- 仍由产品 ADT 逐字段进入现有 DBA，不经 @show@ 文本化，也不形成 P1 总表。
+12: module Frp.Instance.ISL.Eaw.P1.Publication
+13:   ( dumpWallOutputs,
+14:     dumpBuildOutputs,
+15:     dumpAttackOutputs,
+16:     dumpAbsorbOutputs,
+17:   )
+18: where
+19: 
+20: import Data.List.NonEmpty (NonEmpty (..))
+21: import Data.Text qualified as Text
+22: import Database.MongoDB (Val, (=:))
+23: import Database.MongoDB qualified as BSON
+24: import Frp.Apt.Bson (FromBSON (..), ToBSON (..))
+25: import Frp.Core (Fao, FaoModel, dumpAdtEvent', withEventDump)
+26: import Frp.Instance.ISL.Eaw.Interface.Common
+27: import Frp.Instance.ISL.Eaw.Interface.PreL0 qualified as Spine
+28: import Frp.Instance.ISL.Eaw.P1.AbsorbInteraction
+29: import Frp.Instance.ISL.Eaw.P1.AttackSegmentBook
+30: import Frp.Instance.ISL.Eaw.P1.BuildActivity
+31: import Frp.Instance.ISL.Eaw.P1.Products
+32: import Frp.Instance.ISL.Eaw.P1.WallLifecycle
+33: import GHC.Generics (Generic)
+34: 
+35: -- P1 writer 的现有 DBA 只要求 BSON 实例。实例留在产品 writer 内，避免让
+36: -- 共享接口脊柱反向承担 P1 的物理持久化责任；序列化对象仍是唯一 canonical
+37: -- ADT，并未定义第二套业务 payload。
+38: instance ToBSON InstrumentSymbol
+39: 
+40: instance FromBSON InstrumentSymbol
+41: 
+42: instance ToBSON UnitInterval
+43: 
+44: instance FromBSON UnitInterval
+45: 
+46: instance ToBSON WallSide
+47: 
+48: instance FromBSON WallSide
+49: 
+50: instance ToBSON AggressorDirection
+51: 
+52: instance FromBSON AggressorDirection
+53: 
+54: instance (Val a) => ToBSON (Measurement a)
+55: 
+56: instance (Val a) => FromBSON (Measurement a)
+57: 
+58: instance ToBSON WallRef
+59: 
+60: instance FromBSON WallRef
+61: 
+62: instance ToBSON BuildRef
+63: 
+64: instance FromBSON BuildRef
+65: 
+66: instance ToBSON AttackFormationScopeRef
+67: 
+68: instance FromBSON AttackFormationScopeRef
+69: 
+70: instance ToBSON SourceMaterialRef
+71: 
+72: instance FromBSON SourceMaterialRef
+73: 
+74: instance ToBSON FormationEvidenceRef
+75: 
+76: instance FromBSON FormationEvidenceRef
+77: 
+78: instance ToBSON AttackSegmentRef
+79: 
+80: instance FromBSON AttackSegmentRef
+81: 
+82: instance ToBSON AttackSegmentAttemptRef
+83: 
+84: instance FromBSON AttackSegmentAttemptRef
+85: 
+FILE /dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Publication.hs LINES 170 350
+170:         Spine.WallStarted
+171:           <$> BSON.lookup "band" document
+172:           <*> BSON.lookup "presence" document
+173:       "WallBandUpdated" ->
+174:         Spine.WallBandUpdated
+175:           <$> BSON.lookup "band" document
+176:           <*> BSON.lookup "presence" document
+177:       "WallPresenceChanged" ->
+178:         Spine.WallPresenceChanged
+179:           <$> BSON.lookup "band" document
+180:           <*> BSON.lookup "presence" document
+181:       "WallEnded" -> Spine.WallEnded <$> BSON.lookup "reason" document
+182:       _ -> Nothing
+183: 
+184: instance ToBSON Spine.WallLifecycleEvent
+185: 
+186: instance FromBSON Spine.WallLifecycleEvent
+187: 
+188: instance ToBSON Spine.BuildMilestone
+189: 
+190: instance FromBSON Spine.BuildMilestone
+191: 
+192: instance ToBSON Spine.BuildMilestoneValue
+193: 
+194: instance FromBSON Spine.BuildMilestoneValue
+195: 
+196: instance ToBSON Spine.BuildStopReason
+197: 
+198: instance FromBSON Spine.BuildStopReason
+199: 
+200: instance ToBSON Spine.BuildAvailability
+201: 
+202: instance FromBSON Spine.BuildAvailability
+203: 
+204: instance ToBSON Spine.BuildMeasurements
+205: 
+206: instance FromBSON Spine.BuildMeasurements
+207: 
+208: instance ToBSON Spine.BuildActivityChange where
+209:   toBSON change =
+210:     case change of
+211:       Spine.BuildStarted measurements ->
+212:         [ "_co" =: ("BuildStarted" :: String),
+213:           "measurements" =: measurements
+214:         ]
+215:       Spine.BuildReachedMilestone milestone value measurements ->
+216:         [ "_co" =: ("BuildReachedMilestone" :: String),
+217:           "milestone" =: milestone,
+218:           "value" =: value,
+219:           "measurements" =: measurements
+220:         ]
+221:       Spine.BuildStopped reason measurements ->
+222:         [ "_co" =: ("BuildStopped" :: String),
+223:           "reason" =: reason,
+224:           "measurements" =: measurements
+225:         ]
+226: 
+227: instance FromBSON Spine.BuildActivityChange where
+228:   fromBSON document = do
+229:     constructor <- BSON.lookup "_co" document :: Maybe String
+230:     case constructor of
+231:       "BuildStarted" -> Spine.BuildStarted <$> BSON.lookup "measurements" document
+232:       "BuildReachedMilestone" ->
+233:         Spine.BuildReachedMilestone
+234:           <$> BSON.lookup "milestone" document
+235:           <*> BSON.lookup "value" document
+236:           <*> BSON.lookup "measurements" document
+237:       "BuildStopped" ->
+238:         Spine.BuildStopped
+239:           <$> BSON.lookup "reason" document
+240:           <*> BSON.lookup "measurements" document
+241:       _ -> Nothing
+242: 
+243: instance ToBSON Spine.BuildActivityEvent
+244: 
+245: instance FromBSON Spine.BuildActivityEvent
+246: 
+247: instance ToBSON Spine.AttackFormationReason
+248: 
+249: instance FromBSON Spine.AttackFormationReason
+250: 
+251: instance ToBSON Spine.AttackFormationAvailability
+252: 
+253: instance FromBSON Spine.AttackFormationAvailability
+254: 
+255: instance ToBSON Spine.AttackFormationSource
+256: 
+257: instance FromBSON Spine.AttackFormationSource
+258: 
+259: instance ToBSON Spine.AttackFormationBody where
+260:   toBSON body =
+261:     case body of
+262:       Spine.AcceptedFormationMaterial source ->
+263:         [ "_co" =: ("AcceptedFormationMaterial" :: String),
+264:           "source" =: source
+265:         ]
+266:       Spine.UnresolvedFormationMaterial reason source ->
+267:         [ "_co" =: ("UnresolvedFormationMaterial" :: String),
+268:           "reason" =: reason,
+269:           "source" =: source
+270:         ]
+271:       Spine.MethodLocalGapBreak reason source ->
+272:         [ "_co" =: ("MethodLocalGapBreak" :: String),
+273:           "reason" =: reason,
+274:           "source" =: source
+275:         ]
+276:       Spine.ObservedNoAcceptedAttackInterval reason source ->
+277:         [ "_co" =: ("ObservedNoAcceptedAttackInterval" :: String),
+278:           "reason" =: reason,
+279:           "source" =: source
+280:         ]
+281:       Spine.FormalFormationBarrier barrier reason ->
+282:         [ "_co" =: ("FormalFormationBarrier" :: String),
+283:           "barrier" =: barrier,
+284:           "reason" =: reason
+285:         ]
+286:       Spine.ExcludedFormationMaterial reason source ->
+287:         [ "_co" =: ("ExcludedFormationMaterial" :: String),
+288:           "reason" =: reason,
+289:           "source" =: source
+290:         ]
+291: 
+292: instance FromBSON Spine.AttackFormationBody where
+293:   fromBSON document = do
+294:     constructor <- BSON.lookup "_co" document :: Maybe String
+295:     case constructor of
+296:       "AcceptedFormationMaterial" ->
+297:         Spine.AcceptedFormationMaterial <$> BSON.lookup "source" document
+298:       "UnresolvedFormationMaterial" ->
+299:         Spine.UnresolvedFormationMaterial
+300:           <$> BSON.lookup "reason" document
+301:           <*> BSON.lookup "source" document
+302:       "MethodLocalGapBreak" ->
+303:         Spine.MethodLocalGapBreak
+304:           <$> BSON.lookup "reason" document
+305:           <*> BSON.lookup "source" document
+306:       "ObservedNoAcceptedAttackInterval" ->
+307:         Spine.ObservedNoAcceptedAttackInterval
+308:           <$> BSON.lookup "reason" document
+309:           <*> BSON.lookup "source" document
+310:       "FormalFormationBarrier" ->
+311:         Spine.FormalFormationBarrier
+312:           <$> BSON.lookup "barrier" document
+313:           <*> BSON.lookup "reason" document
+314:       "ExcludedFormationMaterial" ->
+315:         Spine.ExcludedFormationMaterial
+316:           <$> BSON.lookup "reason" document
+317:           <*> BSON.lookup "source" document
+318:       _ -> Nothing
+319: 
+320: instance ToBSON Spine.AttackFormationMaterial
+321: 
+322: instance FromBSON Spine.AttackFormationMaterial
+323: 
+324: instance ToBSON Spine.AttackLaneQualification
+325: 
+326: instance FromBSON Spine.AttackLaneQualification
+327: 
+328: instance ToBSON Spine.PositiveGrade where
+329:   toBSON value = ["positiveGradeValue" =: Spine.positiveGradeValue value]
+330: 
+331: instance FromBSON Spine.PositiveGrade where
+332:   fromBSON document = do
+333:     value <- BSON.lookup "positiveGradeValue" document
+334:     either (const Nothing) Just (Spine.mkPositiveGrade value)
+335: 
+336: instance ToBSON Spine.LaneGradeObservation where
+337:   toBSON observation =
+338:     case observation of
+339:       Spine.LaneAbsent -> ["_co" =: ("LaneAbsent" :: String)]
+340:       Spine.LaneObserved grade ->
+341:         [ "_co" =: ("LaneObserved" :: String),
+342:           "grade" =: grade
+343:         ]
+344:       Spine.LaneUnavailable -> ["_co" =: ("LaneUnavailable" :: String)]
+345: 
+346: instance FromBSON Spine.LaneGradeObservation where
+347:   fromBSON document = do
+348:     constructor <- BSON.lookup "_co" document :: Maybe String
+349:     case constructor of
+350:       "LaneAbsent" -> Just Spine.LaneAbsent
+FILE /dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Publication.hs LINES 665 700
+665: 
+666: newtype AbsorbOccurrenceBatch = AbsorbOccurrenceBatch
+667:   { absorbOccurrences :: [AbsorbInteractionOccurrence]
+668:   }
+669:   deriving (Eq, Show, Generic, ToBSON, FromBSON)
+670: 
+671: newtype AbsorbCurrentBatch = AbsorbCurrentBatch
+672:   { absorbCurrentViews :: [AbsorbCurrentView]
+673:   }
+674:   deriving (Eq, Show, Generic, ToBSON, FromBSON)
+675: 
+676: newtype AbsorbDiagnostic = AbsorbDiagnostic
+677:   { absorbDiagnosticError :: P1ProductDiagnostics AbsorbInteractionError
+678:   }
+679:   deriving (Eq, Show, Generic, ToBSON, FromBSON)
+680: 
+681: -- current_view 是按业务身份追加的最新状态更新表，不是每次更新都复制截至
+682: -- 当时的全局快照。完整 current Map 仍由各 DSU 的 Dynamic 提供给 FRP 消费者。
+683: 
+684: dumpWallOutputs :: (Fao owner) => owner -> WallLifecycleOutputs -> FaoModel ()
+685: dumpWallOutputs owner outputs = withEventDump owner $ do
+686:   dumpAdtEvent' "wall_occurrences" (WallOccurrenceBatch <$> wallLifecycleOccurrences outputs)
+687:   dumpAdtEvent' "wall_current_view" (WallCurrentBatch <$> wallLifecycleCurrentUpdates outputs)
+688:   dumpAdtEvent' "wall_diagnostics" (WallDiagnostic <$> wallLifecycleDiagnostics outputs)
+689: 
+690: dumpBuildOutputs :: (Fao owner) => owner -> BuildActivityOutputs -> FaoModel ()
+691: dumpBuildOutputs owner outputs = withEventDump owner $ do
+692:   dumpAdtEvent' "build_occurrences" (BuildOccurrenceBatch <$> buildActivityOccurrences outputs)
+693:   dumpAdtEvent' "build_current_view" (BuildCurrentBatch <$> buildActivityCurrentUpdates outputs)
+694:   dumpAdtEvent' "build_diagnostics" (BuildDiagnostic <$> buildActivityDiagnostics outputs)
+695: 
+696: dumpAttackOutputs :: (Fao owner) => owner -> AttackSegmentBookOutputs -> FaoModel ()
+697: dumpAttackOutputs owner outputs = withEventDump owner $ do
+698:   dumpAdtEvent' "attack_segments" (AttackSegmentBatch <$> attackSegmentsAtWall outputs)
+699:   dumpAdtEvent' "formation_evidence" (FormationEvidenceBatch <$> attackFormationMaterials outputs)
+700:   dumpAdtEvent' "wall_attack_barriers" (WallBarrierBatch <$> wallAttackBarriers outputs)
+FILE /dwdhome/fy/BASE_E6_2/edh-universe/mpds/host.py/mpds/task/frp.py LINES 1 180
+1: __all__ = ["manage_this_work"]
+2: 
+3: from typing import *
+4: import asyncio
+5: 
+6: import edh 
+7: import sedh
+8: 
+9: from m3sof import settings
+10: from mquant.worker.beat import (
+11:     TimeUtil,Task,get_mlogger,CurrServeEnv,
+12:     eval_link
+13: )
+14: # edh frp单品种特征优化,多个Frp特征同时优化
+15: 
+16: # work definition scripts are allowed to change the inferred configuration at
+17: # `sedh.senv`, import the module as a reference, to get/set effective
+18: # artifacts living there
+19: 
+20: logger = get_mlogger()
+21: 
+22: # Python 实现的集群任务脚本，从集群召集 Haskell 工作进程完成计算任务
+23: sedh.senv.jobExecutable = [
+24:     "epm",
+25:     "exec",
+26:     "wo",
+27: ]
+28: 
+29: # the enclosing module here is the Python based work definition module
+30: #workModu = __name__
+31: workModu = "trade/frp/worker/more"
+32: 
+33: async def doOneJob_(**ips):
+34:     raise RuntimeError("Not for a Python worker to do this!")
+35: 
+36: retry_stat = {}
+37: 
+38: # 异常重试次数
+39: # 0: 不重试
+40: # 大于0: 重试n次都失败，放弃优化，继续其他参数优化
+41: # 小于0: 重试n次都失败，退出整个优化任务
+42: retry_cnts = settings.ctx.get("OPT_JOB_ERROR_RETRY_CNTS",1)
+43: 
+44: async def shouldRetryJob_(jobExc: object, ips: dict):
+45:     seq = ips["stats_seq"]
+46:     if retry_cnts == 0:
+47:         logger.error(f"⏩ doOneJob 第【{seq}】组参数异常，不重试，放弃优化:\n{jobExc}")
+48:         return None
+49:     
+50:     n = retry_stat.get(seq,0)
+51:     if retry_cnts > 0 and n >= retry_cnts:
+52:         logger.error(f"⏩ doOneJob 第【{seq}】组参数重试了 {n} 次，依然失败，放弃优化:\n{jobExc}")
+53:         retry_stat.pop(seq,None)
+54:         return None
+55: 
+56:     logger.info(f"🔃 doOneJob 第【{seq}】组参数任务异常,开始第 {n + 1} 次重试:\n{jobExc}")
+57:     retry_stat[seq] = n + 1
+58:     return ips  # retry the same ips
+59:     # a different ips can be returned from here to retry
+60: 
+61: async def manage_this_work(task_file,headhunter = None):
+62:     # 获取任务实例
+63:     task:Task = eval_link(task_file)
+64:     tar = task.get_tar()
+65: 
+66:     with CurrServeEnv(task):
+67:         task.rerun(0)
+68:         # seems that defining effects here doesn't work, may due to `create_task()`
+69:         # in the `run_producer()` implementation breaks the async call stack
+70:         #
+71:         # while `effect_import()` this work definition module from the work script
+72:         # file is a workaround so far
+73:         edh.effect(__all_symbolic__)
+74: 
+75:         iterater = task.paramIterator
+76:         # 超时重试
+77:         timeout_retry_params = settings.ctx.get("OPT_JOB_TIMEOUT_RETRY_PARAMS",{})
+78:         
+79:         async def iterate_params():
+80:             if iterater.isAsyncIter:
+81:                 async for ips in iterater.iterate_params(task):
+82:                         params = tar.doFrpOptTaskParam(ips)
+83:                         yield dict(_start_ts = TimeUtil.now_str(),params = params,**timeout_retry_params,**ips) 
+84:             else:
+85:                 for ips in iterater.iterate_params(task):
+86:                     params = tar.doFrpOptTaskParam(ips)
+87:                     yield dict(_start_ts = TimeUtil.now_str(),params = params,**timeout_retry_params,**ips)
+88: 
+89:         def settle_result(ips: dict, result: dict = None, job_exc = None):
+90:             if result is None:
+91:                 seq = ips["stats_seq"]
+92:                 n = retry_stat.get(seq,0)
+93: 
+94:                 # 放弃之前反馈错误
+95:                 if retry_cnts == 0: # 不重试
+96:                     task.doOneFail(ips)
+97:                 elif retry_cnts > 0 and n >= retry_cnts: # 重试n次后放弃
+98:                     task.doOneFail(ips)    
+99: 
+100:                 if retry_cnts < 0 and n >= abs(retry_cnts):
+101:                     task.doSystemExit(f"❌ doOneJob 第【{seq}】组参数重试了 {n} 次，依然失败，停止优化:\n{job_exc}")
+102:                 return
+103: 
+104:             ips.pop("params")
+105:             _start_ts = ips.pop("_start_ts")
+106:             
+107:             # 去掉超时重试参数
+108:             for k,v in timeout_retry_params.items():
+109:                 ips.pop(k,None)
+110: 
+111:             # 一组参数执行完
+112:             task.doOneFinish(ips,result,_start_ts)
+113:             
+114:         result_sink = edh.BChan()
+115:         await sedh.manage_batch_jobs(iterate_params, result_sink, settle_result,hh = headhunter)
+116:         # result_sink = edh.BChan()
+117:         # asyncio.create_task(sedh.manage_batch_jobs(iterate_params, result_sink,None,hh = headhunter))
+118:         # async for (ips, result) in result_sink.stream():
+119:         #     settle_result(ips,result)
+120: 
+121:         # 所有参数执行完    
+122:         task.doAllDone()
+123:         logger.info("🏁🏁🏁 All done 🏁🏁🏁")
+124:         
+125: __all_symbolic__ = {
+126:     sedh.workDefinition: workModu,
+127:     sedh.doOneJob: doOneJob_,
+128:     sedh.shouldRetryJob: shouldRetryJob_,
+129: }
+FILE /dwdhome/fy/BASE_E6_2/settings/__init__.py LINES 1 160
+FILE /dwdhome/fy/BASE_E6_2/params/tis/__init__.py LINES 1 160
+FILE /dwdhome/fy/BASE_E6_2/run-python.sh LINES 1 100
+1: #!/usr/bin/env bash
+2: # 使用本工作区的 Python 环境，并兼容当前主机的 TLS 动态库。
+3: set -eo pipefail
+4: workspace_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+5: cd -- "$workspace_dir"
+6: mkdir -p "$workspace_dir/.migration/records"
+7: source "$workspace_dir/m3rc" 2> "$workspace_dir/.migration/records/m3rc.log"
+8: 
+9: # 旧 beacon 无法解析时，按到 Gogs 的内网路由确定本机服务地址。
+10: if [[ -z "${M3HOST:-}" ]]; then
+11:   M3HOST="$(python - <<'PY'
+12: import socket
+13: with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as sock:
+14:     sock.connect(("gogs.dw", 443))
+15:     print(sock.getsockname()[0])
+16: PY
+17: )"
+18:   export M3HOST
+19: fi
+20: 
+21: export NO_PROXY="${NO_PROXY:+${NO_PROXY},}${M3HOST},localhost,127.0.0.1,gogs.dw"
+22: export no_proxy="${NO_PROXY}"
+23: 
+24: # 使用本工作区的独立加密依赖，兼容下方 PostgreSQL TLS 设置。
+25: runtime_deps="$workspace_dir/.runtime/python-deps"
+26: if [[ -d "$runtime_deps" ]]; then
+27:   export PYTHONPATH="${runtime_deps}:${PYTHONPATH}"
+28: fi
+29: 
+30: # 当前共享 Anaconda 的 TLS 库在 PostgreSQL 握手时会崩溃。
+31: # 只为本次进程加载本机已验证的系统库，保持数据库 TLS 连接。
+32: tls_libraries="/lib/x86_64-linux-gnu/libssl.so.3:/lib/x86_64-linux-gnu/libcrypto.so.3"
+33: export LD_PRELOAD="${tls_libraries}${LD_PRELOAD:+:${LD_PRELOAD}}"
+34: ulimit -c 0
+35: exec python "$@"

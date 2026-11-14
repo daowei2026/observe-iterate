@@ -1,0 +1,23 @@
+edh-universe/frp/frp/src/Frp/Instance.hs:67:        , EawP1WallLifecycleFrp
+edh-universe/frp/frp/src/Frp/Instance/ISL/Segmentor/EawBattleP.hs:57:  { eawBattleWallLifecycleInput :: P1.EawP1WallLifecycleFrp,
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:17:    WallOccurrenceFao (..),
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:240:newtype WallOccurrenceFao = WallOccurrenceFao {wallOccurrenceSource :: PyAny}
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:242:  deriving (ToJSON, FromJSON) via (StructJSON WallOccurrenceFao)
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:285:instance FaoMeta WallOccurrenceFao where
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:313:instance Fao WallOccurrenceFao where
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:314:  type FaoResult WallOccurrenceFao = GenericFaoResult
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:355:instance FaoRable WallOccurrenceFao
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:1345:instance Generic2AdtFao WallOccurrenceFao (FrpEvent [WallLifecycleOccurrence]) where
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:1372:wallOccurrenceEvent :: WallOccurrenceFao -> FaoModel (FrpEvent [WallLifecycleOccurrence])
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:1375:wallOccurrenceIngress :: WallOccurrenceFao -> FaoModel (P1DecodedIngress WallLifecycleOccurrence)
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Publication.hs:686:  dumpAdtEvent' "wall_occurrences" (WallOccurrenceBatch <$> wallLifecycleOccurrences outputs)
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Publication.hs:687:  dumpAdtEvent' "wall_current_view" (WallCurrentBatch <$> wallLifecycleCurrentUpdates outputs)
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Publication.hs:688:  dumpAdtEvent' "wall_diagnostics" (WallDiagnostic <$> wallLifecycleDiagnostics outputs)
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1.hs:8:  ( EawP1WallLifecycleFrp (..),
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1.hs:71:newtype EawP1WallLifecycleFrp = EawP1WallLifecycleFrp
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1.hs:72:  { wallLifecycleInput :: WallOccurrenceFao
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1.hs:75:  deriving (ToJSON, FromJSON) via (StructJSON EawP1WallLifecycleFrp)
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1.hs:97:instance FaoMeta EawP1WallLifecycleFrp where
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1.hs:121:doWallLifecycleFrp :: EawP1WallLifecycleFrp -> FaoModel WallLifecycleOutputs
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1.hs:177:instance Fao EawP1WallLifecycleFrp where
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1.hs:178:  type FaoResult EawP1WallLifecycleFrp = WallLifecycleOutputs

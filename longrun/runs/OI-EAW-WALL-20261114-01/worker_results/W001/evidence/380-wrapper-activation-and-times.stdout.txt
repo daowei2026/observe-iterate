@@ -1,0 +1,26 @@
+edh-universe/frp/frp-core/src/Frp/Apt/Time.hs:22:    -- * Timestamp
+edh-universe/frp/frp-core/src/Frp/Apt/Time.hs:23:    Timestamp (..),
+edh-universe/frp/frp-core/src/Frp/Apt/Time.hs:24:    formatTimestampT,
+edh-universe/frp/frp-core/src/Frp/Apt/Time.hs:25:    convertTimestampInLatestMinute,
+edh-universe/frp/frp-core/src/Frp/Apt/Time.hs:26:    textToTimestamp,
+edh-universe/frp/frp-core/src/Frp/Apt/Time.hs:128:newtype Timestamp = Timestamp Word64
+edh-universe/frp/frp-core/src/Frp/Apt/Time.hs:132:-- | 为 Timestamp 实现 Unbox 实例
+edh-universe/frp/frp-core/src/Frp/Apt/Time.hs:133:newtype instance VU.MVector s Timestamp = MV_Word64 (VP.MVector s Word64)
+edh-universe/frp/frp-core/src/Frp/Apt/Time.hs:134:newtype instance VU.Vector    Timestamp = V_Word64  (VP.Vector    Word64)
+edh-universe/frp/frp-core/src/Frp/Apt/Time.hs:135:deriving via (VU.UnboxViaPrim Word64) instance VGM.MVector VU.MVector Timestamp
+edh-universe/frp/frp-core/src/Frp/Apt/Time.hs:136:deriving via (VU.UnboxViaPrim Word64) instance VG.Vector   VU.Vector  Timestamp
+edh-universe/frp/frp-core/src/Frp/Apt/Time.hs:137:instance VU.Unbox Timestamp
+edh-universe/frp/frp-core/src/Frp/Apt/Time.hs:139:instance MDB.Val Timestamp where
+edh-universe/frp/frp-core/src/Frp/Apt/Time.hs:151:        where v1 :: Timestamp = convert v
+edh-universe/frp/frp-core/src/Frp/Apt/Time.hs:154:instance FromJSON Timestamp where
+edh-universe/frp/frp-core/src/Frp/Apt/Time.hs:159:        _ -> fail "Timestamp json parse error: Expected a String or Int" 
+edh-universe/frp/frp-core/src/Frp/Apt/Time.hs:161:    _ -> fail "Timestamp json parse error: Expected a String or Int"
+edh-universe/frp/frp-core/src/Frp/Apt/Time.hs:163:instance Convertible Word64 Timestamp where
+edh-universe/frp/frp-core/src/Frp/Apt/Time.hs:164:  safeConvert :: Word64 -> ConvertResult Timestamp
+edh-universe/frp/frp-core/src/Frp/Apt/Time.hs:165:  safeConvert = return . Timestamp
+edh-universe/frp/frp-core/src/Frp/Apt/Time.hs:167:instance Convertible Timestamp Word64 where
+edh-universe/frp/frp-core/src/Frp/Apt/Time.hs:168:  safeConvert :: Timestamp -> ConvertResult Word64
+edh-universe/frp/frp-core/src/Frp/Apt/Time.hs:169:  safeConvert (Timestamp tv) = return tv
+edh-universe/frp/frp-core/src/Frp/Apt/Time.hs:171:instance Convertible Int64 Timestamp where
+edh-universe/frp/frp-core/src/Frp/Apt/Time.hs:172:  safeConvert :: Int64 -> ConvertResult Timestamp
+edh-universe/frp/frp-core/src/Frp/Apt/Time.hs:173:  safeConvert = return . Timestamp . fromIntegral

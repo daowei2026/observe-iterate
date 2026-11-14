@@ -1,0 +1,620 @@
+FILE /dwdhome/fy/BASE_E6_2/pydim/dim/rt.py
+65: u8 = dtype("u8")
+66: # fmt: on
+67: 
+68: 
+69: DbArrayHeaderDtype = np.dtype(
+70:     [
+71:         # version of array layout
+72:         ("layout_version", "i4"),
+73:         # a.k.a. padded header size
+74:         ("data_offset", "i4"),
+75:         # padded item size
+76:         ("item_size", "i4"),
+77:         # alignment required for an item
+78:         ("item_align", "i4"),
+79:         # number of valid items in the array, to be read/written on-the-fly
+80:         # rest of the file content should be considered pre-allocated capacity
+81:         ("data_length", "i8"),
+82:     ],
+83:     align=True,
+84: )
+85: 
+86: # a disk file for array is always mmaped from beginning, data following the
+87: # header. align the header so start of data is aligned with at least 512
+88: # bits for possible SIMD performance improvement or even compliance
+89: DbArrayHeaderAlign = 64
+90: 
+91: # so 40 bytes is unused in the head as far
+92: DbArrayHeaderSize = DbArrayHeaderDtype.itemsize
+93: assert DbArrayHeaderSize == 24, "C struct layout rules changed?"
+94: 
+95: 
+96: def dbArrayHeaderV0(dtype_: dtype):
+97:     dt = dtype_.dt
+98:     hdr = np.ndarray(1, dtype=DbArrayHeaderDtype)
+99:     hdr[0] = (
+100:         0,
+101:         DbArrayHeaderAlign * (1 + DbArrayHeaderSize // DbArrayHeaderAlign),
+102:         dt.itemsize,
+103:         dt.alignment,
+104:         0,
+105:     )
+106:     return hdr
+107: 
+108: 
+109: class DbArray:
+110:     __slots__ = "data_dir", "data_path", "dtype", "mm", "hdr", "shape", "access"
+111: 
+112:     def __init__(
+113:         self,
+114:         data_dir: str,
+115:         data_path: str,
+116:         dtype_: dtype = float64,
+117:         shape: Optional[Tuple[int, ...]] = None,
+118:         access: int = mmap.ACCESS_READ,
+119:     ):
+120:         if isinstance(dtype_, str):
+121:             dtype_ = dtype(dtype_)
+122:         assert isinstance(dtype_, dtype)
+123: 
+124:         self.data_dir = data_dir
+125:         self.data_path = data_path
+126:         self.dtype = dtype_
+127:         self.access = access
+128: 
+129:         data_file_path = os.path.join(data_dir, f'{data_path}.dba')
+130:         dt = dtype_.dt
+131: 
+132:         if shape is None:
+133:             # load existing array file, use header and file length to
+134:             # calculate shape, assuming 1d
+135: 
+136:             with open(
+137:                 data_file_path, "rb" if access == mmap.ACCESS_READ else "r+b"
+138:             ) as f:
+139:                 fsz = f.seek(0, 2)
+140:                 if fsz < DbArrayHeaderSize:
+141:                     # don't have a header long enough, most prolly not existing
+142:                     # todo more care of abnormal situations
+143:                     raise IOError(f"Invalid disk file for array: {data_file_path}")
+144:                 # existing and with a header long enough
+145:                 fd = f.fileno()
+146:                 self.mm = mmap.mmap(
+147:                     fileno=fd, length=fsz, flags=mmap.MAP_SHARED, access=self.access,
+148:                 )
+149:                 self.hdr = np.ndarray(
+150:                     shape=1, dtype=DbArrayHeaderDtype, buffer=self.mm, offset=0,
+151:                 )
+152:             # caution: mm.size() is file size, not mmap'd size, don't misuse
+153:             # memoryview(mm).nbytes is way to go otherwise
+154:             fsz = self.mm.size()
+155:             self.shape = ((fsz - self.hdr["data_offset"][0]) // dt.itemsize,)
+156:             if self.hdr["data_offset"][0] != 64:
+157:                 logger.error(f"invalid file--wrong hdr[{self.hdr}]--repr={self.__repr__()}")
+158: 
+159:         else:
+160:             # create if not exists, or load existing file with truncation
+161: 
+162:             data_nbytes = dt.itemsize * np.prod(shape)
+163: 
+164:             data_file_dir = os.path.dirname(data_file_path)
+165:             os.makedirs(data_file_dir, mode=0o755, exist_ok=True)
+166:             try:
+167:                 fd = os.open(data_file_path, os.O_RDWR | os.O_CREAT | os.O_EXCL, mode=0o644)
+168: 
+169:                 hdr = dbArrayHeaderV0(dtype_)
+170:                 expect_fsz = hdr["data_offset"][0] + data_nbytes
+171:                 os.ftruncate(fd, expect_fsz)
+172:                 self.mm = mmap.mmap(
+173:                     fileno=fd,
+174:                     length=expect_fsz,
+175:                     flags=mmap.MAP_SHARED,
+176:                     access=self.access,
+177:                 )
+178:                 self.hdr = np.ndarray(
+179:                     shape=1, dtype=DbArrayHeaderDtype, buffer=self.mm, offset=0,
+180:                 )
+FILE /dwdhome/fy/BASE_E6_2/pydim/dim/dbas.py
+1: __all__ = [
+2:     "DbaStore",
+3:     "DbaStruct",
+4: ]
+5: 
+6: from collections import *
+7: 
+8: import numpy as np
+9: from numba import njit
+10: 
+11: from .rt import *
+12: 
+13: 
+14: def _load_Text(pa, aa, vin: int):
+15:     i_next = aa[vin]
+16:     i_start = aa[vin - 1] if vin > 0 else 0
+17:     if i_next <= i_start:
+18:         return ""
+19:     bs = pa[i_start:i_next].tobytes()
+20:     return bs.decode("utf-8")
+21: 
+22: 
+23: class DbaStore:
+24: 
+25:     def __init__(self, root_dir: str, root_struct: type):
+26:         self.root_dir = root_dir
+27:         self.seq_reg = {}
+28:         self.root_seq = self.arm_seq("", root_struct)
+29: 
+30:         try:
+31:             self.Text_payload = DbArray(root_dir, "Text$Data.Text/payload", byte)
+32:             self.Text_anchor = DbArray(root_dir, "Text$Data.Text/anchor", intp)
+33:         except:
+34:             pass
+35: 
+36:         try:
+37:             self.TextList_payload = DbArray(root_dir, "[Text]$Data.Text/payload", byte)
+38:             self.TextList_anchor = DbArray(root_dir, "[Text]$Data.Text/anchor", intp)
+39:             self.TextList_anchor1 = DbArray(root_dir, "[Text]$Data.Text/anchor1", intp)
+40:         except:
+41:             pass
+42: 
+43:     def load_Text(self, vin: int):
+44:         return _load_Text(self.Text_payload.ndarray, self.Text_anchor.ndarray, vin)
+45: 
+46:     def load_TextList(self, vin: int):
+47:         a1a = self.TextList_anchor1.ndarray
+48:         i_next = a1a[vin]
+49:         i_start = a1a[vin - 1] if vin > 0 else 0
+50:         if i_next <= i_start:
+51:             return []
+52:         pa = self.TextList_payload.ndarray
+53:         aa = self.TextList_anchor.ndarray
+54:         return [_load_Text(pa, aa, i) for i in range(i_start, i_next)]
+55: 
+56:     def __repr__(self) -> str:
+57:         return f"DbaStore({self.root_dir!r}, {type(self.root_seq)!r})"
+58: 
+59:     def __len__(self):
+60:         return self.root_seq.count()
+61: 
+62:     def __iter__(self):
+63:         return iter(self.root_seq)
+64: 
+65:     def arm_seq(self, sp: str, struct: type):
+66:         adt_seq = self.seq_reg.get(sp, None)
+67:         if adt_seq:
+68:             return adt_seq
+69:         adt_seq = struct()
+70:         try:
+71:             adt_seq.__store__ = self
+72:             adt_seq.__arm_store__(self, sp)
+73:         except FileNotFoundError as e:
+74:             print(f"FileNotFoundError: {e}")
+75:             adt_seq = EmptyDbaStruct()
+76:         self.seq_reg[sp] = adt_seq
+77:         return adt_seq
+78: 
+79:     def __getitem__(self, k: str):
+80:         return self.root_seq[k]
+81: 
+82:     def get(self, k: str, default):
+83:         try:
+84:             return self.__getitem__(k)
+85:         except KeyError:
+86:             return default
+87: 
+88: 
+89: class DbaStruct:
+90: 
+91:     __slots__ = ("__store__",)
+92: 
+93:     __adt__ = namedtuple("Void", [])
+94: 
+95:     def __arm_store__(self, store: DbaStore, sp: str):
+96:         pass
+97: 
+98:     def count(self) -> int:
+99:         raise NotImplementedError
+100: 
+101:     def load(self, vin: int) -> __adt__:
+102:         raise NotImplementedError
+103: 
+104:     def __len__(self):
+105:         return self.count()
+106: 
+107:     def __iter__(self):
+108:         for vin in range(self.count()):
+109:             yield self.load(vin)
+110: 
+111:     def __repr__(self) -> str:
+112:         adt = self.__adt__
+113:         try:
+114:             if adt.__origin__ is list:
+115:                 edt = adt.__args__[0]
+116:                 return "SeqOf[" + edt.__doc__ + "]"
+117:         except AttributeError:
+118:             pass
+119:         return adt.__doc__
+120: 
+121:     def __getitem__(self, k: str):
+122:         return _VecFieldGetter(self)[k]
+123: 
+124: 
+125: @njit(nogil=True)
+126: def _varlenseq_idxs(aa, in_idxs, in_ridxs):
+127:     assert in_idxs.ndim == in_ridxs.ndim - 1 == 1
+128:     assert in_idxs.shape == in_ridxs.shape[1:]
+129: 
+130:     cap = in_idxs.size * 5
+131:     idxs = np.empty(cap, np.intp)
+132:     ridxs = np.empty((in_ridxs.shape[0] + 1, cap), np.intp)
+133:     cnt = 0
+134:     for ii in range(in_idxs.size):
+135:         ai = in_idxs[ii]
+136:         i_end = aa[ai]
+137:         i_start = 0 if ai < 1 else aa[ai - 1]
+138: 
+139:         if cnt + i_end - i_start > cap:
+140:             cap = int(cap * 1.5)
+141:             old_idxs, old_ridxs = idxs, ridxs
+142:             idxs = np.empty(cap, np.intp)
+143:             ridxs = np.empty((in_ridxs.shape[0] + 1, cap), np.intp)
+144:             idxs[:cnt] = old_idxs[:cnt]
+145:             ridxs[:, :cnt] = old_ridxs[:, :cnt]
+146:             old_idxs, old_ridxs = None, None
+147: 
+148:         for i in range(i_start, i_end):
+149:             idxs[cnt] = i
+150:             ridxs[-1, cnt] = i - i_start
+151:             ridxs[:-1, cnt] = in_ridxs[:, ii]
+152:             cnt += 1
+153: 
+154:     return idxs[:cnt].copy(), ridxs[:, :cnt].copy()
+FILE /dwdhome/fy/BASE_E6_2/mquant/frame/core/store.py
+1: # 特征返回字段类型
+2: # 对旧版本 StoreFields 重构
+3: 
+4: import numpy as np
+5: import pandas as pd
+6: import abc
+7: import mmap
+8: import uuid
+9: import os
+10: from typing import *
+11: from ..lib3 import i8, f8, DbArray
+12: from .base import Ndict,eval2
+13: 
+14: __all__ = [
+15:     "TS_PATH_NAME",
+16:     "StoreFields",
+17:     "FaoField",
+18:     "DataFrameField",
+19:     "DictField",
+20:     "NormalField",
+21:     "FloatField",
+22:     "IntField",
+23:     "DateTimeField",
+24:     "EventField",
+25:     "BoolEventField",
+26:     "NanEventField",
+27:     "Nan0EventField",
+28:     "StatusEventField",
+29:     "StatusBoolEventField",
+30:     "SharedTsField",
+31:     "MvField",
+32:     "AdtEventField",
+33:     "DbaUtil",
+34: ]
+35: 
+36: # dba 时间轴名称，旧版本为 ts ,但是容易与 字段名重名
+37: TS_PATH_NAME = "__ts__"
+38: 
+39: 
+40: class FaoField(metaclass=abc.ABCMeta):
+41:     """ 字段类型基类 """
+42:     
+43:     @abc.abstractmethod
+44:     def exist_state_field(self):
+45:         """是否存在状态型字段"""
+46:         pass
+47: 
+48:     @abc.abstractmethod
+49:     def exist_event_field(self):
+50:         """是否存在事件型字段"""
+51:         pass
+52: 
+53:     @abc.abstractmethod
+54:     def fit_dictfield(self, df: pd.DataFrame) -> "DictField":
+55:         """ 根据 DataFrame 解析字段类型 """
+56:         pass
+57: 
+58:     def get(self, key: str, default=None) -> "NormalField":
+59:         """ 获取字段类型 """
+60:         return None
+61: 
+62: 
+63: class NormalField(FaoField):
+64:     """ 普通字段类型"""
+65:     dtype: str = None
+66: 
+67:     # 默认值
+68:     default_val = None
+69: 
+70:     def redtype(self):
+71:         return "f8"
+72: 
+73:     # 默认值
+74:     def default(self):
+75:         return self.default_val
+76: 
+77:     def fit_dictfield(self, df: pd.DataFrame):
+78:         """所有字段都使用相同的字段类型"""
+79:         return DictField({name: self for name in df.columns})
+80: 
+81:     def exist_state_field(self):
+82:         """是否存在状态型字段"""
+83:         return self.is_state_field()
+84: 
+85:     def exist_event_field(self):
+470:         return df
+471: 
+472:     def __repr__(self):
+473:         return f"DateTimeField"
+474: 
+475: 
+476: DateTimeField = _DateTimeField()
+477: 
+478: 
+479: class AdtEventField(NormalField):
+480: 
+481:     FDTYPE_PREFIX = "adt"
+482: 
+483:     # def is_event_field(self):
+484:     #     return True
+485:     
+486:     def is_adt_field(self):
+487:         return True
+488:     
+489:     def __init__(self,dtype = None):
+490:         self.dtype = dtype
+491: 
+492:     @classmethod
+493:     def from_str(cls, fdtype: str):
+494:         xs = fdtype.split("@")
+495:         if len(xs) == 2 and xs[0] == cls.FDTYPE_PREFIX:
+496:             return cls(xs[1])
+497:         return None
+498: 
+499:     @property
+500:     def adt_class(self):
+501:         """ 结构化对象类 """
+502:         return eval2(self.dtype)
+503: 
+504:     def __repr__(self):
+505:         return f"{type(self).__name__}({self.dtype})"
+506: 
+507: 
+508: class EventField(NormalField):
+509:     """
+510:     事件型字段
+511:     """
+512: 
+513:     __slots__ = ("dtype", "default_val", "dropna", "drop0")
+514: 
+515:     RULES = {
+516:         "f8": "f8",
+517:         "f4": "f4",
+518:         "float64": "f8",
+519:         "Double": "f8",
+520:         "float32": "f4",
+521:         "i8": "i8",
+522:         "Int": "i8",
+523:         "i1": "i1",
+524:         "int8": "i1",
+525:         "int64": "i8",
+526:     }
+527: 
+528:     FDTYPE_PREFIX = "event"
+529: 
+530:     @classmethod
+FILE /dwdhome/fy/BASE_E6_2/edh-universe/frp/frp-core/src/Frp/DbaStore/Internal.hs
+100:         else matchVer (vl + 1) ('.' : acc) rest
+101:     matchVer vl acc (c : rest) =
+102:       if isDigit c
+103:         then matchVer vl (c : acc) rest
+104:         else reverse acc -- version part not long enough
+105: 
+106: _dbaBasePath :: String -> String -> String -> String
+107: _dbaBasePath typeName moduName pkgName = typeName
+108: 
+109: -- 保存 Dba 时，暂时忽略模块和包名，待模块组织重构稳定后再考虑正常处理
+110: -- if any
+111: --   (`isPrefixOf` pkgName)
+112: --   ( [ "base-",
+113: --       "ghc-"
+114: --     ] ::
+115: --       [String]
+116: --   )
+117: --   then qName
+118: --   else qName ++ "@" ++ nameUpToVerLen 2 pkgName
+119: -- where
+120: --   qName =
+121: --     if any
+122: --       (`isPrefixOf` moduName)
+123: --       ( [ "GHC.Types"
+124: --         ] ::
+125: --           [String]
+126: --       )
+127: --       then typeName
+128: --       else typeName ++ "$" ++ moduName
+129: 
+130: dbaBasePath :: forall (a :: Type). (Typeable a) => DbaPath
+131: dbaBasePath =
+132:   beListTypeOrNot @a
+133:     (\(_ :: Proxy e) -> dbaBasePathForListOf @e)
+134:     (dbaBasePathFor @a)
+135:   where
+136:     beListTypeOrNot ::
+137:       forall t r.
+138:       (Typeable t) =>
+139:       (forall k (e :: k). (Typeable e) => Proxy e -> r) ->
+140:       r ->
+141:       r
+142:     beListTypeOrNot listCase nonListCase = case TRefl.typeRep @t of
+143:       TRefl.App (TRefl.Con maybeListTyCon) (et :: TRefl.TypeRep e)
+144:         | maybeListTyCon == listTyCon ->
+145:             TRefl.withTypeable et $ listCase $ Proxy @e
+146:       _ -> nonListCase
+147:       where
+148:         listTyCon :: TRefl.TyCon
+149:         listTyCon = TRefl.someTypeRepTyCon $ TRefl.SomeTypeRep $ TRefl.typeRep @[()]
+150: 
+151: dbaBasePathFor :: forall a. (Typeable a) => DbaPath
+152: dbaBasePathFor =
+153:   if typeRep (Proxy @a) == typeRep (Proxy @Text)
+154:     then "Text$Data.Text"
+155:     else _dbaBasePath typeName moduName pkgName
+156:   where
+157:     tr = typeRep $ Proxy @a
+158:     typeName = show tr
+159:     moduName = tyConModule (typeRepTyCon tr)
+160:     pkgName = tyConPackage $ typeRepTyCon tr
+FILE /dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Products.hs
+75: import Frp.Instance.ISL.Eaw.Interface.PreL0 qualified as Spine
+76: import GHC.Generics (Generic)
+77: 
+78: data SourceScope = SourceScope
+79:   { sourceTarget :: Text,
+80:     sourceCalendarOrSession :: Text,
+81:     sourceTimeRange :: Text,
+82:     sourceMarketCut :: Text
+83:   }
+84:   deriving (Eq, Ord, Show, Generic)
+85: 
+86: instance FromJSON SourceScope where
+87:   parseJSON = withObject "SourceScope" $ \o ->
+88:     SourceScope
+89:       <$> o .: "target"
+90:       <*> o .: "calendar_or_session"
+91:       <*> o .: "time_range"
+92:       <*> o .: "market_source_cut"
+93: 
+94: instance ToJSON SourceScope where
+95:   toJSON value =
+96:     object
+97:       [ "target" .= sourceTarget value,
+98:         "calendar_or_session" .= sourceCalendarOrSession value,
+99:         "time_range" .= sourceTimeRange value,
+100:         "market_source_cut" .= sourceMarketCut value
+101:       ]
+102: 
+103: data DirectUpstreamArtifact = DirectUpstreamArtifact
+104:   { upstreamProductKind :: Text,
+105:     upstreamFeatureInstance :: Text,
+106:     upstreamParameterSetId :: Text,
+107:     upstreamArtifactLocation :: Text,
+108:     upstreamSchemaVersion :: Text,
+109:     upstreamCodeVersion :: Text
+110:   }
+111:   deriving (Eq, Ord, Show, Generic)
+112: 
+113: instance FromJSON DirectUpstreamArtifact where
+114:   parseJSON = withObject "DirectUpstreamArtifact" $ \o ->
+115:     DirectUpstreamArtifact
+116:       <$> o .: "product_kind"
+117:       <*> o .: "feature_instance"
+118:       <*> o .: "parameter_set_id"
+119:       <*> o .: "artifact_location"
+120:       <*> o .: "schema_version"
+121:       <*> o .: "code_version"
+122: 
+123: instance ToJSON DirectUpstreamArtifact where
+124:   toJSON value =
+125:     object
+126:       [ "product_kind" .= upstreamProductKind value,
+127:         "feature_instance" .= upstreamFeatureInstance value,
+128:         "parameter_set_id" .= upstreamParameterSetId value,
+129:         "artifact_location" .= upstreamArtifactLocation value,
+130:         "schema_version" .= upstreamSchemaVersion value,
+131:         "code_version" .= upstreamCodeVersion value
+132:       ]
+133: 
+134: data ProductReceipt = ProductReceipt
+135:   { receiptProductKind :: Text,
+136:     receiptFeatureInstance :: Text,
+137:     receiptParameterSetId :: Text,
+138:     receiptSourceScope :: SourceScope,
+139:     receiptActualBusinessParameters :: Value,
+140:     receiptProducerPrivateParameters :: Value,
+141:     receiptDirectUpstreamArtifacts :: [DirectUpstreamArtifact],
+142:     receiptMethodSnapshotFingerprint :: Maybe Text,
+143:     receiptSchemaVersion :: Text,
+144:     receiptCodeVersion :: Text,
+145:     receiptArtifactLocation :: Text,
+146:     receiptStatus :: Text,
+147:     receiptError :: Maybe Text
+148:   }
+149:   deriving (Eq, Show, Generic)
+150: 
+151: instance FromJSON ProductReceipt where
+152:   parseJSON = withObject "ProductReceipt" $ \o ->
+153:     ProductReceipt
+154:       <$> o .: "product_kind"
+155:       <*> o .: "feature_instance"
+156:       <*> o .: "parameter_set_id"
+157:       <*> o .: "source_scope"
+158:       <*> o .: "actual_business_parameters"
+159:       <*> o .:? "producer_private_parameters" .!= object []
+160:       <*> o .: "direct_upstream_artifacts"
+161:       <*> o .:? "method_snapshot_fingerprint"
+162:       <*> o .: "schema_version"
+163:       <*> o .: "code_version"
+164:       <*> o .: "artifact_location"
+165:       <*> o .: "status"
+166:       <*> o .:? "error"
+167: 
+168: instance ToJSON ProductReceipt where
+169:   toJSON value =
+170:     object
+171:       [ "product_kind" .= receiptProductKind value,
+172:         "feature_instance" .= receiptFeatureInstance value,
+173:         "parameter_set_id" .= receiptParameterSetId value,
+174:         "source_scope" .= receiptSourceScope value,
+175:         "actual_business_parameters" .= receiptActualBusinessParameters value,
+176:         "producer_private_parameters" .= receiptProducerPrivateParameters value,
+177:         "direct_upstream_artifacts" .= receiptDirectUpstreamArtifacts value,
+178:         "method_snapshot_fingerprint" .= receiptMethodSnapshotFingerprint value,
+179:         "schema_version" .= receiptSchemaVersion value,
+180:         "code_version" .= receiptCodeVersion value,
+181:         "artifact_location" .= receiptArtifactLocation value,
+182:         "status" .= receiptStatus value,
+183:         "error" .= receiptError value
+184:       ]
+185: 
+186: data FeatureRunIdentity = FeatureRunIdentity
+187:   { featureClassName :: Text,
+188:     parameterSetId :: Text,
+189:     targetRef :: Text,
+190:     calendarRef :: Text,
+FILE /dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Publication.hs
+608: 
+609: instance FromBSON AbsorbInteractionError
+610: 
+611: newtype WallOccurrenceBatch = WallOccurrenceBatch
+612:   { wallOccurrences :: [WallLifecycleOccurrence]
+613:   }
+614:   deriving (Eq, Show, Generic, ToBSON, FromBSON)
+615: 
+616: newtype WallCurrentBatch = WallCurrentBatch
+617:   { wallCurrentViews :: [WallCurrentView]
+618:   }
+619:   deriving (Eq, Show, Generic, ToBSON, FromBSON)
+620: 
+621: newtype WallDiagnostic = WallDiagnostic
+622:   { wallDiagnosticError :: P1ProductDiagnostics WallLifecycleError
+623:   }
+624:   deriving (Eq, Show, Generic, ToBSON, FromBSON)
+625: 
+626: newtype BuildOccurrenceBatch = BuildOccurrenceBatch
+627:   { buildOccurrences :: [BuildActivityOccurrence]
+628:   }

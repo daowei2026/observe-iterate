@@ -1,0 +1,513 @@
+GENERATED_WRAPPER /dwdhome/fy/BASE_E6_2/mquant/worker/adt/dbaw.py EXISTS True BYTES 113663
+SHA256 d6a58f6cb6595461ead45bb08c002826856bcacaab9e50c0e62cd45d76e7e4f2 CLASSES 118 WALL_P1_CLASSES []
+HAS_EXPECTED_LEGACY False
+HAS_EXPECTED_CURRENT []
+FILE /dwdhome/fy/BASE_E6_2/mquant/frame/lang/frp/base.py
+169:         import subprocess
+170: 
+171:         args = [
+172:             f"--f={poc_file}",
+173:             f"--jp={json_path}",
+174:         ]
+175:         args = " ".join(args)
+176:         process = subprocess.Popen(
+177:             f"epm exec ts {args}",
+178:             # f"stack exec -- ts {args}",
+179:             shell=True,
+180:             stdout=subprocess.PIPE,
+181:             stderr=subprocess.STDOUT,
+182:             encoding="utf-8",
+183:             cwd=os.getenv("M3WORKS") + "/edh-universe",  # 工作区默认使用M3WORKS
+184:         )
+185: 
+186:         success = True
+187:         for line in iter(process.stdout.readline, "b"):
+188:             msg = f"{line.rstrip()}"
+189:             logger.info(msg)
+190: 
+191:             # 检测到退出异常则表示优化失败
+192:             if msg.startswith(("SystemExit:",)):
+193:                 logger.warning(f"⛔ 检测到异常日志，即将退出优化 ......")
+194:                 success = False
+195:                 break
+196: 
+197:             if not subprocess.Popen.poll(process) is None:
+198:                 if line == "":
+199:                     success = True
+200:                     break
+201:         if success:
+202:             success = process.poll() == 0
+203: 
+204:         # 删除任务文件
+205:         if os.path.exists(json_path):
+206:             os.remove(json_path)
+207: 
+208:         if not success:
+209:             raise RuntimeError(
+210:                 f"⛔ {self.that.ppname} for {self.that.tar_name} 执行异常"
+211:             )
+212: 
+213:         # 加载数据
+214:         res = self.that.load()
+215:         if not res and not isinstance(res, dict):
+216:             raise Exception(
+217:                 f"{self.that.ppname} not find save result for {self.that.tar_name}: {res}"
+218:             )
+219:         return res
+220:     
+221:     def load_extra(self) -> dict:
+222:         """ 获取 Frp 保存的中间特征数据 """
+FILE /dwdhome/fy/BASE_E6_2/mquant/tis/test/integration/verify_eaw_p1_real_run.py
+20: import types
+21: from pathlib import Path
+22: 
+23: import yaml
+24: 
+25: 
+26: RUNNER_VERSION = "EAW-P1-REAL-RUN-V1.6.1"
+27: AUTH_ENV = "EAW_P1_HEAVY_RUN_AUTHORIZED"
+28: PRODUCT_KINDS_BY_INSTANCE = {
+29:     "wall_lifecycle": ("wall_lifecycle",),
+30:     "directed_large_deal_tactical": ("directed_large_deal_stream",),
+31:     "directed_large_deal_structural": ("directed_large_deal_stream",),
+32:     "build_activity": ("build_activity",),
+33:     "attack_segment": (
+34:         "attack_segment",
+35:         "attack_formation_evidence",
+36:         "wall_relation_barrier",
+37:     ),
+38:     "absorb_interaction": ("absorb_interaction",),
+39: }
+40: EXECUTION_ORDER = tuple(PRODUCT_KINDS_BY_INSTANCE)
+41: REQUIRED_PRODUCT_FEATURES = (
+42:     "EawP1WallLifecycleFrp",
+43:     "EawP1BuildActivityFrp",
+44:     "EawP1AttackSegmentBookFrp",
+45:     "EawP1AbsorbInteractionFrp",
+46: )
+47: PLACEHOLDER_PREFIX = "REPLACE_"
+48: FRP_STACK_TARGET = "trade-poc:exe:ts"
+49: FRP_WORKER_RELATIVE = Path(
+50:     "frp/trade-poc/edh_modules/trade/frp/worker/one.edh"
+51: )
+52: FRP_WRITER_FIELDS = {
+53:     "EawP1WallLifecycleFrp": (
+54:         "wall_occurrences",
+55:         "wall_current_view",
+56:         "wall_diagnostics",
+57:     ),
+58:     "EawP1BuildActivityFrp": (
+59:         "build_occurrences",
+60:         "build_current_view",
+61:         "build_diagnostics",
+62:     ),
+63:     "EawP1AttackSegmentBookFrp": (
+64:         "attack_segments",
+65:         "formation_evidence",
+66:         "wall_attack_barriers",
+67:         "attack_segment_book_current_view",
+68:         "attack_diagnostics",
+69:     ),
+70:     "EawP1AbsorbInteractionFrp": (
+71:         "absorb_occurrences",
+72:         "absorb_current_view",
+73:         "absorb_diagnostics",
+74:     ),
+75: }
+76: FRP_DUMP_DIRECTORY_PATTERN = re.compile(r"save result to file '([^']+)'")
+77: 
+78: 
+79: class RunnerContractError(ValueError):
+80:     pass
+81: 
+82: 
+507:     expected_fields = set(FRP_WRITER_FIELDS[feature_name])
+508:     candidates = []
+509:     for match in FRP_DUMP_DIRECTORY_PATTERN.finditer(log_text):
+510:         output_dir = Path(match.group(1)).resolve()
+511:         if not output_dir.is_dir():
+512:             continue
+513:         fields_path = output_dir / "fields.json"
+514:         if not fields_path.is_file():
+515:             continue
+516:         fields = _read_json(fields_path)
+517:         if isinstance(fields, dict) and set(fields) == expected_fields:
+518:             candidates.append((output_dir, fields_path, fields))
+519:     if len(candidates) != 1:
+520:         raise RunnerContractError(
+521:             f"{feature_name} 必须且只能定位一份包含正式 writer 字段的物化目录，实际 {len(candidates)}"
+522:         )
+523:     output_dir, fields_path, fields = candidates[0]
+524:     artifacts = []
+525:     for field in sorted(expected_fields):
+526:         data_path = output_dir / field
+527:         time_path = output_dir / f"{field}.__ts__.dba"
+528:         if not data_path.exists():
+529:             raise RunnerContractError(
+530:                 f"{feature_name}.{field} writer 数据未物化: {data_path}"
+531:             )
+532:         if not time_path.is_file():
+533:             raise RunnerContractError(
+534:                 f"{feature_name}.{field} writer 时间轴未物化: {time_path}"
+535:             )
+536:         artifacts.append(
+537:             {
+538:                 "field": field,
+539:                 "field_type": fields[field],
+540:                 "data_path": str(data_path),
+541:                 "time_path": str(time_path),
+542:                 "time_bytes": time_path.stat().st_size,
+543:             }
+544:         )
+545:     return {
+546:         "output_directory": str(output_dir),
+547:         "fields_file": str(fields_path),
+548:         "fields": artifacts,
+549:     }
+550: 
+551: 
+552: def _validate_distinct_writer_materializations(completed):
+553:     directories = [
+554:         item["writer_materialization"]["output_directory"]
+555:         for item in completed
+556:     ]
+557:     if len(directories) != len(set(directories)):
+558:         raise RunnerContractError("四个产品 Feature 必须物化到互不相同的正式 writer 目录")
+559:     return completed
+560: 
+561: 
+562: def _run_frp_tasks(tasks, evidence_dir, host_executable, worker_file, workdir):
+563:     """顺序调用现有 ts/Edh worker；不使用 shell，不实现第二套执行平台。"""
+564:     task_dir = evidence_dir / "frp_tasks"
+565:     log_dir = evidence_dir / "frp_logs"
+566:     completed = []
+567:     for ordinal, (name, task) in enumerate(tasks, start=1):
+568:         stem = f"{ordinal:02d}_{name}"
+569:         task_path = task_dir / f"{stem}.json"
+570:         log_path = log_dir / f"{stem}.log"
+571:         _write_json_atomic(task_path, task)
+572:         process = subprocess.run(
+573:             [
+574:                 str(host_executable),
+575:                 f"--f={worker_file}",
+596:                 "return_code": process.returncode,
+597:                 "writer_materialization": writer,
+598:             }
+599:         )
+600:     return _validate_distinct_writer_materializations(completed)
+601: 
+602: 
+603: def _construct_feature(cls, explicit_parameters, **dependencies):
+604:     parameters = dict(explicit_parameters)
+605:     overlap = set(parameters).intersection(dependencies)
+606:     if overlap:
+607:         raise RunnerContractError(f"上游依赖不得被 fixture 覆盖: {sorted(overlap)}")
+608:     parameters.update(dependencies)
+609:     return cls(parameters) if parameters else cls()
+610: 
+611: 
+612: def _construct_features(runtime, config):
+613:     parameters = config.get("feature_parameters", {})
+614:     wall = _construct_feature(runtime["WallAssembler"], parameters.get("wall_lifecycle", {}))
+615:     tactical = _construct_feature(
+616:         runtime["DirectedBigDealTick"],
+617:         parameters.get("directed_large_deal_tactical", {}),
+618:     )
+619:     structural_parameters = {
+620:         "parameter_set_id": "structural-default",
+621:         "qualification_family": "structural",
+622:         **parameters.get("directed_large_deal_structural", {}),
+623:     }
+624:     structural_parameters["lane_threshold_map"] = runtime["FAnyParam"](
+625:         structural_parameters.get(
+626:             "lane_threshold_map", {"structural": ["0.997", "0.999"]}
+627:         )
+628:     )
+629:     structural = _construct_feature(runtime["DirectedBigDealTick"], structural_parameters)
+630:     return {
+631:         "wall_lifecycle": wall,
+632:         "directed_large_deal_tactical": tactical,
+633:         "directed_large_deal_structural": structural,
+634:         "build_activity": _construct_feature(
+635:             runtime["BuildAssembler"],
+636:             parameters.get("build_activity", {}),
+637:             wall=wall,
+638:         ),
+639:         "attack_segment": _construct_feature(
+640:             runtime["AttackFlowAssembler"],
+641:             parameters.get("attack_segment", {}),
+642:             wall=wall,
+643:             directed_large_deal_tactical=tactical,
+644:             directed_large_deal_structural=structural,
+645:         ),
+646:         "absorb_interaction": _construct_feature(
+647:             runtime["AbsorbAssembler"],
+648:             parameters.get("absorb_interaction", {}),
+649:             wall=wall,
+650:         ),
+651:     }
+800:         args.frp_stack_yaml,
+801:         args.frp_project_root,
+802:         args.frp_source_worktree,
+803:     )
+804:     code_snapshots = {
+805:         "tis": _git_snapshot(_tis_worktree_root(), "TIS"),
+806:         "frp": _git_snapshot(args.frp_source_worktree, "FRP"),
+807:     }
+808:     args.evidence_dir.mkdir(parents=True, exist_ok=True)
+809:     frp_execution = _prepare_frp_executable(frp_binding, args.evidence_dir)
+810:     execute_normal(
+811:         _runtime_imports(),
+812:         fixture,
+813:         args.evidence_dir,
+814:         frp_execution=frp_execution,
+815:         frp_binding=frp_binding,
+816:         code_snapshots=code_snapshots,
+817:     )
+818:     return 0
+819: 
+820: 
+821: if __name__ == "__main__":
+822:     raise SystemExit(main())
+FILE /dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Products.hs
+300: 
+301: exactUpstreamArtifacts :: Text -> ProductReceipt -> [DirectUpstreamArtifact]
+302: exactUpstreamArtifacts kind = filter ((== kind) . upstreamProductKind) . receiptDirectUpstreamArtifacts
+303: 
+304: data AttackFormationMethodSnapshot = AttackFormationMethodSnapshot
+305:   { eligibleWallDistanceTicks :: Int,
+306:     segmentContinuationGapTicks :: Int,
+307:     selectedF4Streams :: [FeatureRunIdentity],
+308:     qualificationParameterSets :: [Text],
+309:     laneMergePolicy :: Text,
+310:     methodSnapshotFingerprint :: Text
+311:   }
+312:   deriving (Eq, Ord, Show, Generic)
+313: 
+314: lookupObject :: Text -> Value -> Maybe Value
+315: lookupObject key (Object values) = KeyMap.lookup (Key.fromText key) values
+316: lookupObject _ _ = Nothing
+317: 
+318: valueText :: Text -> Value -> Maybe Text
+319: valueText key value = case lookupObject key value of
+320:   Just (String item) -> Just item
+321:   _ -> Nothing
+322: 
+323: valueInt :: Text -> Value -> Maybe Int
+324: valueInt key value = case lookupObject key value of
+325:   Just (Number item) -> Just (round item)
+326:   _ -> Nothing
+327: 
+328: receiptBusinessParameterText :: Text -> ProductReceipt -> Maybe Text
+329: receiptBusinessParameterText key = valueText key . receiptActualBusinessParameters
+330: 
+331: selectedIdentity :: Value -> Maybe FeatureRunIdentity
+332: selectedIdentity value = do
+333:   feature <- valueText "feature_instance" value
+334:   parameter <- valueText "parameter_set_id" value
+335:   artifact <- valueText "artifact_location" value
+336:   schema <- valueText "schema_version" value
+337:   code <- valueText "code_version" value
+338:   scopeValue <- lookupObject "source_scope" value
+339:   scope <- case fromJSON scopeValue of Success parsed -> Just parsed; Error _ -> Nothing
+340:   pure (featureRunIdentityFromFaoContext (ProductReceipt "directed_large_deal_stream" feature parameter scope (object []) (object []) [] Nothing schema code artifact "success" Nothing))
+341: 
+342: attackFormationMethodSnapshotFromReceipt :: ProductReceipt -> Either Text AttackFormationMethodSnapshot
+343: attackFormationMethodSnapshotFromReceipt receipt = do
+344:   distance <- maybe (Left "Attack receipt misses eligible_wall_distance_ticks") Right (valueInt "p_attack_ticks" params)
+345:   gap <- maybe (Left "Attack receipt misses segment_continuation_gap_ticks") Right (valueInt "t_gap_attack_ticks" params)
+346:   selected <- case lookupObject "selected_f4_streams" params of
+347:     Just (Array values) -> traverse (maybe (Left "Attack selected F4 identity is incomplete") Right . selectedIdentity) (foldr (:) [] values)
+348:     _ -> Left "Attack receipt misses selected_f4_streams"
+349:   producerLanePolicy <- maybe (Left "Attack receipt misses lane_merge_policy") Right (valueText "lane_merge_policy" params)
+350:   lanePolicy <-
+351:     if producerLanePolicy == "union_keep_labels"
+352:       then Right "attack-segment-local-union-keep-labels"
+353:       else Left "Attack receipt lane_merge_policy is not the frozen local union policy"
+354:   fingerprintValue <- maybe (Left "Attack receipt misses method_snapshot_fingerprint") Right (receiptMethodSnapshotFingerprint receipt)
+355:   if null selected
+356:     then Left "Attack receipt selected_f4_streams is empty"
+357:     else
+358:       Right
+359:         ( AttackFormationMethodSnapshot
+360:             distance
+361:             gap
+362:             selected
+363:             (fmap parameterSetId selected)
+364:             lanePolicy
+365:             fingerprintValue
+366:         )
+367:   where
+368:     params = receiptActualBusinessParameters receipt
+369: 
+370: data F4QualificationHit = F4QualificationHit
+371:   { qualificationStreamOrdinal :: Int,
+372:     qualificationFamilyCode :: Int,
+373:     qualificationFamily :: Text,
+374:     qualificationGrade :: Int
+375:   }
+376:   deriving (Eq, Ord, Show, Generic)
+377: 
+378: -- | 完整 AttackSegment 的公开可用性；technical close 不能伪装成正常闭段。
+379: data AttackSegmentAvailability
+380:   = AttackSegmentAvailable
+381:   | AttackSegmentTechnicalTruncated
+382:   | AttackSegmentUnavailable
+383:   deriving (Eq, Ord, Show, Enum, Bounded, Generic)
+384: 
+385: -- | P2 字段合同冻结的 FormationEvidence 角色。它只标注 producer 已给出的
+386: -- 同一行材料，不在 Haskell 重新形成段或 Continuity cut。
+387: data FormationEvidenceKind
+388:   = AcceptedMaterialEvidence
+389:   | OrdinaryGapBreakEvidence
+390:   | SameUtiOrderUnresolvedEvidence
+391:   | ObservedNoAcceptedAttackIntervalEvidence
+392:   | AvailabilityIntervalSummaryEvidence
+393:   | CapabilityUnavailableEvidence
+394:   deriving (Eq, Ord, Show, Enum, Bounded, Generic)
+395: 
+396: data FormationEvidenceAvailability
+397:   = FormationEvidenceAvailable
+398:   | FormationEvidenceMissing
+399:   | FormationEvidenceStale
+400:   | FormationEvidenceSessionInvalid
+FILE /dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/WallLifecycle.hs
+15: import Control.Monad (foldM)
+16: import Data.Map.Strict (Map)
+17: import Data.Map.Strict qualified as Map
+18: import Frp.Apt (FrpDynamic, FrpEvent)
+19: import Frp.CEP.Class (CEPS (..))
+20: import Frp.Core (FaoModel)
+21: import Frp.Instance.ISL.Eaw.Interface.PreL0 qualified as Spine
+22: import Frp.Instance.ISL.Eaw.P1.Internal.OccurrenceLedger
+23: import Frp.Instance.ISL.Eaw.P1.Products
+24: import GHC.Generics (Generic)
+25: import Reflex (fmapMaybe, foldDyn, holdDyn, updated)
+26: 
+27: data WallLifecycleError
+28:   = WallOccurrenceRefConflict OccurrenceRef
+29:   | WallStartedTwice WallIdentity
+30:   | WallMustStartPresent WallIdentity
+31:   | WallUpdateBeforeStart WallIdentity
+32:   | WallUpdateAfterEnd WallIdentity
+33:   | WallEndBeforeStart WallIdentity
+34:   | WallBandUpdateChangedPresence WallIdentity WallBusinessState Spine.WallPresence
+35:   | WallInvalidPresenceTransition WallIdentity WallBusinessState Spine.WallPresence
+36:   deriving (Eq, Ord, Show, Generic)
+37: 
+38: data WallLifecycleState = WallLifecycleState
+39:   { wallLedger :: OccurrenceLedger OccurrenceRef,
+40:     wallViews :: Map WallIdentity WallCurrentView,
+41:     wallCurrentUpdateBatch :: Map WallIdentity WallCurrentView
+42:   }
+43:   deriving (Eq, Ord, Show, Generic)
+44: 
+45: emptyWallLifecycleState :: WallLifecycleState
+46: emptyWallLifecycleState = WallLifecycleState emptyOccurrenceLedger Map.empty Map.empty
+47: 
+48: validateWallTransition :: WallIdentity -> Maybe WallCurrentView -> Spine.WallLifecycleChange -> Either WallLifecycleError WallBusinessState
+49: validateWallTransition identity before change = case (before, change) of
+50:   (Nothing, Spine.WallStarted _ Spine.WallAlive) -> Right WallPresent
+51:   (Nothing, Spine.WallStarted _ Spine.WallDormant) -> Left (WallMustStartPresent identity)
+52:   (Nothing, Spine.WallEnded _) -> Left (WallEndBeforeStart identity)
+53:   (Nothing, _) -> Left (WallUpdateBeforeStart identity)
+54:   (Just _, Spine.WallStarted _ _) -> Left (WallStartedTwice identity)
+55:   (Just current, _)
+56:     | wallCurrentState current == WallEndedState -> Left (WallUpdateAfterEnd identity)
+57:   (Just current, Spine.WallBandUpdated _ presence) -> case (wallCurrentState current, presence) of
+58:     (WallPresent, Spine.WallAlive) -> Right WallPresent
+59:     (WallDormantState, Spine.WallDormant) -> Right WallDormantState
+60:     _ -> Left (WallBandUpdateChangedPresence identity (wallCurrentState current) presence)
+61:   (Just current, Spine.WallPresenceChanged _ presence) -> case (wallCurrentState current, presence) of
+62:     (WallPresent, Spine.WallDormant) -> Right WallDormantState
+63:     (WallDormantState, Spine.WallAlive) -> Right WallPresent
+64:     _ -> Left (WallInvalidPresenceTransition identity (wallCurrentState current) presence)
+65:   (Just _, Spine.WallEnded _) -> Right WallEndedState
+66: 
+67: applyWallOccurrence :: WallLifecycleState -> WallLifecycleOccurrence -> Either WallLifecycleError (WallLifecycleState, Maybe WallLifecycleOccurrence)
+68: applyWallOccurrence state occurrence = do
+69:   let ref = wallOccurrenceRef occurrence
+70:       identity = wallOccurrenceIdentity occurrence
+71:       change = Spine.wallLifecycleChange (wallOccurrencePayload occurrence)
+72:   case appendOccurrence ref occurrence (wallLedger state) of
+73:     (_, OccurrenceRefConflict) -> Left (WallOccurrenceRefConflict ref)
+74:     (_, OccurrenceAlreadyPresent) -> Right (state, Nothing)
+75:     (nextLedger, OccurrenceAppended) -> do
+76:       let before = Map.lookup identity (wallViews state)
+77:       afterState <- validateWallTransition identity before change
+78:       let current = WallCurrentView identity afterState occurrence
+79:           nextViews =
+80:             case afterState of
+81:               WallEndedState -> Map.delete identity (wallViews state)
+82:               _ -> Map.insert identity current (wallViews state)
+83:           next =
+84:             state
+85:               { wallLedger = nextLedger,
+86:                 wallViews = nextViews,
+87:                 wallCurrentUpdateBatch = Map.insert identity current (wallCurrentUpdateBatch state)
+88:               }
+89:       Right (next, Just occurrence)
+90: 
+91: applyWallOccurrenceBatch :: WallLifecycleState -> [WallLifecycleOccurrence] -> Either WallLifecycleError (WallLifecycleState, [WallLifecycleOccurrence])
+92: applyWallOccurrenceBatch initial occurrences = do
+93:   -- occurrence_ref 的唯一性由已提交 artifact 保证；运行态只检查当前
+94:   -- firing，不能再永久镜像全年 occurrence fingerprint。
+95:   let firingState = initial {wallLedger = emptyOccurrenceLedger, wallCurrentUpdateBatch = Map.empty}
+96:   (next, publishedReversed) <- foldM step (firingState, []) occurrences
+97:   pure (next, reverse publishedReversed)
+98:   where
+99:     step (state, published) occurrence = do
+100:       (next, accepted) <- applyWallOccurrence state occurrence
+101:       pure (next, maybe published (: published) accepted)
+102: 
+103: data WallLifecycleOutputs = WallLifecycleOutputs
+104:   { wallLifecycleOccurrences :: FrpEvent [WallLifecycleOccurrence],
+105:     wallLifecycleCurrent :: FrpDynamic (Map WallIdentity WallCurrentView),
+106:     wallLifecycleCurrentUpdates :: FrpEvent [WallCurrentView],
+107:     wallLifecycleDiagnostics :: FrpEvent (P1ProductDiagnostics WallLifecycleError)
+108:   }
+109: 
+110: data WallTxn = WallTxn
+111:   { wallTxnState :: WallLifecycleState,
+112:     wallTxnResult :: Maybe (Either WallLifecycleError [WallLifecycleOccurrence])
+113:   }
+114: 
+115: stepWall :: [WallLifecycleOccurrence] -> WallTxn -> WallTxn
+116: stepWall occurrences txn = case applyWallOccurrenceBatch (wallTxnState txn) occurrences of
+117:   Left err -> txn {wallTxnResult = Just (Left err)}
+118:   Right (next, published) -> WallTxn next (Just (Right published))
+119: 
+120: wallCurrentUpdatesFor :: WallLifecycleState -> [WallCurrentView]
+121: wallCurrentUpdatesFor = Map.elems . wallCurrentUpdateBatch
+122: 
+123: data WallLifecycleP = WallLifecycleP
+124: 
+125: instance CEPS WallLifecycleP FaoModel where
+126:   type Input WallLifecycleP = FrpEvent [WallLifecycleOccurrence]
+127:   type Output WallLifecycleP = WallLifecycleOutputs
+128: 
+129:   processEvents WallLifecycleP input = do
+130:     transactions <- foldDyn stepWall (WallTxn emptyWallLifecycleState Nothing) input
+131:     let outcomes = fmapMaybe wallTxnResult (updated transactions)
+132:         acceptedTransactions =
+133:           fmapMaybe
+134:             (\txn -> case wallTxnResult txn of
+135:                 Just (Right published) | not (null published) -> Just (txn, published)
+136:                 _ -> Nothing
+137:             )
+138:             (updated transactions)
+139:     current <- holdDyn Map.empty (wallViews . wallTxnState . fst <$> acceptedTransactions)
+140:     pure
+141:       WallLifecycleOutputs
+142:         { wallLifecycleOccurrences = snd <$> acceptedTransactions,
+143:           wallLifecycleCurrent = current,
+144:           wallLifecycleCurrentUpdates =
+145:             (\(txn, _published) -> wallCurrentUpdatesFor (wallTxnState txn))
+146:               <$> acceptedTransactions,
+147:           wallLifecycleDiagnostics =
+148:             (\err -> P1ProductDiagnostics [] [err])
+149:               <$> fmapMaybe (either Just (const Nothing)) outcomes
+150:         }
+151: 
+152: maintainWallLifecycle :: FrpEvent [WallLifecycleOccurrence] -> FaoModel WallLifecycleOutputs
+153: maintainWallLifecycle = processEvents WallLifecycleP

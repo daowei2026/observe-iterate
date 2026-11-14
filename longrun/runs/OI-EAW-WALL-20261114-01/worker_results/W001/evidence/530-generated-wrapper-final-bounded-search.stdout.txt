@@ -1,0 +1,11 @@
+edh-universe/frp/frp/poc/dbas-poc.py:8:from dbaw import *
+edh-universe/frp/frp/poc/dbas-poc.py:11:store = DbaStore("dbas-poc", Envelope2D_Double)
+mquant/worker/adt/__init__.py:4:    # exports from .dbaw
+mquant/worker/adt/__init__.py:63:from .dbaw import *
+mquant/worker/zbak/adt/__init__.py:4:    # exports from .dbaw
+mquant/worker/zbak/adt/__init__.py:28:from .dbaw import *
+mquant/worker/README.md:47:    *   **关键文件**: `adt/dbaw.py` 是核心的自动生成文件，包含了 ADT 事件 occurrence 类型的 Python 包装类。
+mquant/worker/README.md:57:        2.  将新的 ADT 类型添加到 `frp.dbaw.Main.hs` 文件中。
+mquant/worker/README.md:58:        3.  在 `edh-universe` 项目目录下运行命令 `stack run dbaw > ../mquant/worker/adt/dbaw.py` 来重新生成 `dbaw.py` 文件。
+mquant/worker/README.md:60:    *   **文件放置/用户操作**: **用户通常不应直接修改 `adt/` 目录下的任何文件**。此目录的内容是**自动生成**的。如果用户在 Haskell 端添加了新的 ADT 类型，并且需要在 Python 端处理其对应的事件 occurrence，则需要按照上述步骤重新生成 `dbaw.py`。
+mquant/worker/CHANGELOG.md:21:    - `adt/`: 存放 **自动生成的 ADT 事件 occurrence 包装类** (`dbaw.py`)，用于 Python 端处理 Haskell ADT 事件，并明确了其生成前提和流程。

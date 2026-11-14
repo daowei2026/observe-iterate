@@ -1,0 +1,438 @@
+mquant/tis/hf/prel0/wall_assembler.py:5:- `WallAssembler` 的 repo-facing wrapper
+mquant/tis/hf/prel0/wall_assembler.py:10:- 正式 repo-facing class 当前先交付 `A0 WallAssembler`
+mquant/tis/hf/prel0/wall_assembler.py:36:from .p1_product_receipt import feature_code_fingerprint
+mquant/tis/hf/prel0/wall_assembler.py:37:from .p1_product_receipt import make_product_receipt
+mquant/tis/hf/prel0/wall_assembler.py:38:from .p1_product_receipt import source_scope
+mquant/tis/hf/prel0/wall_assembler.py:39:from .p1_product_receipt import stage_product_receipts
+mquant/tis/hf/prel0/wall_assembler.py:50:    "WallAssembler",
+mquant/tis/hf/prel0/wall_assembler.py:76:class WallAssemblerWrapperSupport(TrackWallCandidatesWrapperSupport):
+mquant/tis/hf/prel0/wall_assembler.py:139:        sparse_event_rows = []
+mquant/tis/hf/prel0/wall_assembler.py:140:        state_trace_frames = []
+mquant/tis/hf/prel0/wall_assembler.py:175:            for event in result["sparse_events"]:
+mquant/tis/hf/prel0/wall_assembler.py:185:                sparse_event_rows.append(row)
+mquant/tis/hf/prel0/wall_assembler.py:186:            columns = result.get("wall_state_trace_columns", {})
+mquant/tis/hf/prel0/wall_assembler.py:188:                state_trace_frames.append(
+mquant/tis/hf/prel0/wall_assembler.py:189:                    self._wall_state_trace_frame(meta["chunk_id"], columns)
+mquant/tis/hf/prel0/wall_assembler.py:198:            f"{packet_name}_sparse_events": self._rows_to_chunk_frame(sparse_event_rows, "ts"),
+mquant/tis/hf/prel0/wall_assembler.py:199:            f"{packet_name}_state_trace": (
+mquant/tis/hf/prel0/wall_assembler.py:200:                pd.concat(state_trace_frames, axis=0, copy=False)
+mquant/tis/hf/prel0/wall_assembler.py:201:                if state_trace_frames
+mquant/tis/hf/prel0/wall_assembler.py:209:    def _wall_state_trace_frame(self, chunk_id, columns):
+mquant/tis/hf/prel0/wall_assembler.py:262:    feature_name="WallAssembler",
+mquant/tis/hf/prel0/wall_assembler.py:264:    """按交易日分块执行 `A0 WallAssembler`。"""
+mquant/tis/hf/prel0/wall_assembler.py:265:    support = WallAssemblerWrapperSupport()
+mquant/tis/hf/prel0/wall_assembler.py:364:        wall_state_trace_columns = {
+mquant/tis/hf/prel0/wall_assembler.py:367:            **replay_out["wall_state_trace"],
+mquant/tis/hf/prel0/wall_assembler.py:377:            "sparse_events": replay_out["events"],
+mquant/tis/hf/prel0/wall_assembler.py:381:            "wall_state_trace_columns": wall_state_trace_columns,
+mquant/tis/hf/prel0/wall_assembler.py:397:def _wall_state_trace_schema():
+mquant/tis/hf/prel0/wall_assembler.py:417:def _wall_lifecycle_receipt_schema():
+mquant/tis/hf/prel0/wall_assembler.py:431:class WallAssembler(P1DbaExportMixin, DataFrameMixIn, GeneralSymbolFao, WallAssemblerWrapperSupport):
+mquant/tis/hf/prel0/wall_assembler.py:435:    Feature: A0 WallAssembler
+mquant/tis/hf/prel0/wall_assembler.py:562:      wall_assembler_state_trace:
+mquant/tis/hf/prel0/wall_assembler.py:584:      wall_assembler_sparse_events:
+mquant/tis/hf/prel0/wall_assembler.py:749:        trace_key = "wall_assembler_state_trace"
+mquant/tis/hf/prel0/wall_assembler.py:750:        trace_schema = _wall_state_trace_schema()
+mquant/tis/hf/prel0/wall_assembler.py:788:                    trace_key,
+mquant/tis/hf/prel0/wall_assembler.py:789:                    self._wall_state_trace_frame(
+mquant/tis/hf/prel0/wall_assembler.py:791:                        chunk["wall_state_trace_columns"],
+mquant/tis/hf/prel0/wall_assembler.py:808:                compact["wall_state_trace_columns"] = {}
+mquant/tis/hf/prel0/wall_assembler.py:814:            artifact = frames["wall_assembler_sparse_events"].copy()
+mquant/tis/frp/EawBattleP.py:15:from mquant.tis.hf.prel0.wall_assembler import WallAssembler
+mquant/tis/frp/EawBattleP.py:37:    def hold_cal_type(self):
+mquant/tis/frp/EawBattleP.py:41:class _CalculatedP1Product(BaseSymbolFrpFao):
+mquant/tis/frp/EawBattleP.py:44:    def hold_cal_type(self):
+mquant/tis/frp/EawBattleP.py:47:    def to_df(self):
+mquant/tis/frp/EawBattleP.py:54:class WallOccurrenceFao(_OnlyReadTypedIngress):
+mquant/tis/frp/EawBattleP.py:55:    params = lambda: {"wallOccurrenceSource": WallAssembler()}
+mquant/tis/frp/EawBattleP.py:61:        "buildWallSource": WallAssembler(),
+mquant/tis/frp/EawBattleP.py:68:        "attackSegmentWallSource": WallAssembler(),
+mquant/tis/frp/EawBattleP.py:75:        "formationEvidenceWallSource": WallAssembler(),
+mquant/tis/frp/EawBattleP.py:82:        "wallBarrierWallSource": WallAssembler(),
+mquant/tis/frp/EawBattleP.py:89:        "absorbWallSource": WallAssembler(),
+mquant/tis/frp/EawBattleP.py:93:class EawP1WallLifecycleFrp(_CalculatedP1Product):
+mquant/tis/frp/EawBattleP.py:182:            raise ValueError(f"{label} must be the exact selected WallAssembler")
+mquant/tis/frp/EawBattleP.py:241:    wall = WallAssembler()
+mquant/tis/frp/EawBattleP.py:432:    def to_df(self):
+mquant/tis/frp/EawBattleP.py:438:    def to_dfs(self):
+mquant/tis/frp/EawBattleP.py:513:            "trace_support": "p2MaterialityTraceSupport",
+mquant/tis/hf/prel0/tick_quote_context.py:260:    def hold_cal_type(self):
+mquant/tis/hf/prel0/tick_quote_context.py:373:        sparse_events=None,
+mquant/tis/hf/prel0/tick_quote_context.py:391:        if sparse_events is not None:
+mquant/tis/hf/prel0/tick_quote_context.py:392:            for event in sparse_events:
+mquant/tis/hf/prel0/tick_quote_context.py:411:        sparse_event_rows = []
+mquant/tis/hf/prel0/tick_quote_context.py:423:            for event in result["sparse_events"]:
+mquant/tis/hf/prel0/tick_quote_context.py:431:                sparse_event_rows.append(row)
+mquant/tis/hf/prel0/tick_quote_context.py:439:            f"{packet_name}_sparse_events": self._rows_to_chunk_frame(sparse_event_rows, "ts"),
+mquant/tis/hf/prel0/tick_quote_context.py:493:                "sparse_events": [],
+mquant/tis/hf/prel0/tick_quote_context.py:499:                    sparse_events=[],
+mquant/tis/hf/prel0/tick_quote_context.py:555:                "sparse_events": [],
+mquant/tis/hf/prel0/tick_quote_context.py:561:                    sparse_events=[],
+mquant/tis/hf/prel0/tick_quote_context.py:618:                "sparse_events": [],
+mquant/tis/hf/prel0/tick_quote_context.py:624:                    sparse_events=[],
+mquant/tis/hf/prel0/tick_quote_context.py:755:      depth_baseline_tick_sparse_events:
+mquant/tis/hf/prel0/tick_quote_context.py:857:      large_quote_tick_sparse_events:
+mquant/tis/hf/prel0/tick_quote_context.py:1066:      relative_thickness_tick_sparse_events:
+mquant/tis/hf/prel0/absorb_assembler.py:14:from .p1_product_receipt import feature_code_fingerprint
+mquant/tis/hf/prel0/absorb_assembler.py:15:from .p1_product_receipt import load_p1_product_receipt
+mquant/tis/hf/prel0/absorb_assembler.py:16:from .p1_product_receipt import make_product_receipt
+mquant/tis/hf/prel0/absorb_assembler.py:17:from .p1_product_receipt import source_scope
+mquant/tis/hf/prel0/absorb_assembler.py:18:from .p1_product_receipt import stage_product_receipts
+mquant/tis/hf/prel0/absorb_assembler.py:19:from .p1_product_receipt import validate_product_artifact
+mquant/tis/hf/prel0/absorb_assembler.py:33:from .wall_assembler import WallAssembler
+mquant/tis/hf/prel0/absorb_assembler.py:84:            "absorb_assembler_sparse_events": self._frame(events, "ts"),
+mquant/tis/hf/prel0/absorb_assembler.py:100:    *, cc_df, qt_df, wall_state_trace_df, price_shift_ratio_thres, t_track_max_ticks,
+mquant/tis/hf/prel0/absorb_assembler.py:117:        wall = _require_exact_wall(wall_state_trace_df, chunk_df.index)
+mquant/tis/hf/prel0/absorb_assembler.py:275:        wall=WallAssembler(), qt_freq="1d", qt_n=30, qt_quantile=0.997,
+mquant/tis/hf/prel0/absorb_assembler.py:286:        wall_receipt = load_p1_product_receipt(self.P.wall, "wall_lifecycle")
+mquant/tis/hf/prel0/absorb_assembler.py:288:            wall_receipt,
+mquant/tis/hf/prel0/absorb_assembler.py:292:            cc_df=cc_df, qt_df=self._load_qt_df(), wall_state_trace_df=wall_result.wall_assembler_state_trace,
+mquant/tis/hf/prel0/absorb_assembler.py:301:        artifact = frames["absorb_assembler_sparse_events"].rename(
+mquant/tis/hf/prel0/absorb_assembler.py:326:        receipt = make_product_receipt(
+mquant/tis/hf/prel0/absorb_assembler.py:338:            upstream_receipts=(("exact_wall_lifecycle", wall_receipt),),
+mquant/tis/hf/prel0/absorb_assembler.py:346:        stage_product_receipts(self, (receipt,))
+mquant/tis/hf/prel0/wall_assembler_core.py:8:- A0 `WallAssembler`
+mquant/tis/hf/prel0/wall_assembler_core.py:28:    "WallAssemblerInvariantError",
+mquant/tis/hf/prel0/wall_assembler_core.py:95:class WallAssemblerInvariantError(RuntimeError):
+mquant/tis/hf/prel0/wall_assembler_core.py:868:    trace_wall_id = np.zeros(n, dtype=np.int64)
+mquant/tis/hf/prel0/wall_assembler_core.py:869:    trace_side_code = np.zeros(n, dtype=np.int8)
+mquant/tis/hf/prel0/wall_assembler_core.py:870:    trace_status_code = np.zeros(n, dtype=np.int8)
+mquant/tis/hf/prel0/wall_assembler_core.py:871:    trace_band_lo = np.zeros(n, dtype=np.float64)
+mquant/tis/hf/prel0/wall_assembler_core.py:872:    trace_band_hi = np.zeros(n, dtype=np.float64)
+mquant/tis/hf/prel0/wall_assembler_core.py:873:    trace_core_price = np.zeros(n, dtype=np.float64)
+mquant/tis/hf/prel0/wall_assembler_core.py:1068:            trace_wall_id[i] = state_i[_WS_WALL_ID]
+mquant/tis/hf/prel0/wall_assembler_core.py:1069:            trace_side_code[i] = state_i[_WS_SIDE_CODE]
+mquant/tis/hf/prel0/wall_assembler_core.py:1070:            trace_status_code[i] = state_i[_WS_STATUS_CODE]
+mquant/tis/hf/prel0/wall_assembler_core.py:1071:            trace_band_lo[i] = state_f[_WF_BAND_LO]
+mquant/tis/hf/prel0/wall_assembler_core.py:1072:            trace_band_hi[i] = state_f[_WF_BAND_HI]
+mquant/tis/hf/prel0/wall_assembler_core.py:1073:            trace_core_price[i] = state_f[_WF_CORE_PRICE]
+mquant/tis/hf/prel0/wall_assembler_core.py:1268:        trace_wall_id[i] = state_i[_WS_WALL_ID]
+mquant/tis/hf/prel0/wall_assembler_core.py:1269:        trace_side_code[i] = state_i[_WS_SIDE_CODE]
+mquant/tis/hf/prel0/wall_assembler_core.py:1270:        trace_status_code[i] = state_i[_WS_STATUS_CODE]
+mquant/tis/hf/prel0/wall_assembler_core.py:1271:        trace_band_lo[i] = state_f[_WF_BAND_LO]
+mquant/tis/hf/prel0/wall_assembler_core.py:1272:        trace_band_hi[i] = state_f[_WF_BAND_HI]
+mquant/tis/hf/prel0/wall_assembler_core.py:1273:        trace_core_price[i] = state_f[_WF_CORE_PRICE]
+mquant/tis/hf/prel0/wall_assembler_core.py:1276:        (trace_wall_id, trace_side_code, trace_status_code, trace_band_lo, trace_band_hi, trace_core_price),
+mquant/tis/hf/prel0/wall_assembler_core.py:1354:    """运行每侧至多一堵当前 Wall 的有界 `A0 WallAssembler` replay。"""
+mquant/tis/hf/prel0/wall_assembler_core.py:1410:        raise WallAssemblerInvariantError("carry 必须同时包含 bid／ask Wall slot")
+mquant/tis/hf/prel0/wall_assembler_core.py:1433:    wall_state_trace = {}
+mquant/tis/hf/prel0/wall_assembler_core.py:1442:    trace_names = ("wall_id", "wall_side_code", "wall_status_code", "wall_band_lo", "wall_band_hi", "wall_core_price")
+mquant/tis/hf/prel0/wall_assembler_core.py:1447:            raise WallAssemblerInvariantError(f"{side_name} slot 携带了错误 side_code")
+mquant/tis/hf/prel0/wall_assembler_core.py:1450:            trace_kernel,
+mquant/tis/hf/prel0/wall_assembler_core.py:1503:            raise WallAssemblerInvariantError(
+mquant/tis/hf/prel0/wall_assembler_core.py:1506:        for name, values in zip(trace_names, trace_kernel):
+mquant/tis/hf/prel0/wall_assembler_core.py:1507:            wall_state_trace[f"{name}_{side_name}"] = values
+mquant/tis/hf/prel0/wall_assembler_core.py:1594:        "wall_state_trace": wall_state_trace,
+mquant/tis/hf/prel0/attack_flow_assembler_core.py:5:- F12 `WallHugeDealTick(wall_id,lane,t)` 的 sparse atom tape
+mquant/tis/hf/prel0/attack_flow_assembler_core.py:10:- 来自 A0 的最小 wall state trace
+mquant/tis/hf/prel0/attack_flow_assembler_core.py:14:- sparse atom tape
+mquant/tis/hf/prel0/attack_flow_assembler_core.py:606:    生成 F12 sparse atom tape。
+mquant/tis/hf/prel0/attack_flow_assembler_core.py:610:    - `wall_*`: 来自 A0 `wall_state_trace`
+mquant/tis/hf/prel0/attack_flow_assembler_core.py:1048:    把 F12 sparse atom tape 拼成 `AttackSegment@Wall`。
+mquant/tis/hf/prel0/attack_flow_assembler_core.py:1261:    一次性执行 F12 sparse atom tape 生成 + A3 replay。
+mquant/tis/hf/prel0/p1_product_receipt.py:1:"""EAW P1 v1.6.1 产品级薄 receipt。
+mquant/tis/hf/prel0/p1_product_receipt.py:3:receipt 只说明当前 DBA artifact 的产品、Feature 实例、参数集、来源切面和直接
+mquant/tis/hf/prel0/p1_product_receipt.py:23:RECEIPT_DIR_NAME = "p1_receipts"
+mquant/tis/hf/prel0/p1_product_receipt.py:27:        "wall_lifecycle",
+mquant/tis/hf/prel0/p1_product_receipt.py:48:    "wall_lifecycle": frozenset(),
+mquant/tis/hf/prel0/p1_product_receipt.py:50:    "build_activity": frozenset({"wall_lifecycle"}),
+mquant/tis/hf/prel0/p1_product_receipt.py:52:        {"wall_lifecycle", "directed_large_deal_stream"}
+mquant/tis/hf/prel0/p1_product_receipt.py:55:        {"wall_lifecycle", "directed_large_deal_stream"}
+mquant/tis/hf/prel0/p1_product_receipt.py:57:    "wall_relation_barrier": frozenset({"wall_lifecycle"}),
+mquant/tis/hf/prel0/p1_product_receipt.py:58:    "absorb_interaction": frozenset({"wall_lifecycle"}),
+mquant/tis/hf/prel0/p1_product_receipt.py:191:        raise P1ReceiptError("不能为无输入范围的产品生成 success receipt")
+mquant/tis/hf/prel0/p1_product_receipt.py:235:def _direct_upstream(receipt):
+mquant/tis/hf/prel0/p1_product_receipt.py:236:    checked = validate_product_receipt(receipt)
+mquant/tis/hf/prel0/p1_product_receipt.py:240:def make_product_receipt(
+mquant/tis/hf/prel0/p1_product_receipt.py:251:    upstream_receipts=(),
+mquant/tis/hf/prel0/p1_product_receipt.py:260:    """构造一张与单产品 DBA artifact 同目录保存的薄 receipt。"""
+mquant/tis/hf/prel0/p1_product_receipt.py:278:    upstream_receipts = tuple(upstream_receipts)
+mquant/tis/hf/prel0/p1_product_receipt.py:279:    for _role, upstream_receipt in upstream_receipts:
+mquant/tis/hf/prel0/p1_product_receipt.py:280:        checked_upstream = validate_product_receipt(upstream_receipt)
+mquant/tis/hf/prel0/p1_product_receipt.py:283:    upstreams = [_direct_upstream(receipt) for _, receipt in upstream_receipts]
+mquant/tis/hf/prel0/p1_product_receipt.py:287:    receipt = {
+mquant/tis/hf/prel0/p1_product_receipt.py:304:    return validate_product_receipt(receipt)
+mquant/tis/hf/prel0/p1_product_receipt.py:307:def validate_product_receipt(receipt, expected_kind=None, **_ignored):
+mquant/tis/hf/prel0/p1_product_receipt.py:308:    value = _json_value(dict(receipt))
+mquant/tis/hf/prel0/p1_product_receipt.py:313:        raise P1ReceiptError(f"thin receipt 字段不合法: missing={missing}, extra={extra}")
+mquant/tis/hf/prel0/p1_product_receipt.py:315:        raise P1ReceiptError("thin receipt product_kind 非法")
+mquant/tis/hf/prel0/p1_product_receipt.py:317:        raise P1ReceiptError("thin receipt schema_version 与产品合同不一致")
+mquant/tis/hf/prel0/p1_product_receipt.py:330:            raise P1ReceiptError(f"thin receipt {name} 必须是非空字符串")
+mquant/tis/hf/prel0/p1_product_receipt.py:332:        raise P1ReceiptError("thin receipt source_scope 字段不完整")
+mquant/tis/hf/prel0/p1_product_receipt.py:334:        raise P1ReceiptError("thin receipt source_scope 不得含空值")
+mquant/tis/hf/prel0/p1_product_receipt.py:354:        raise P1ReceiptError("thin receipt status 非法")
+mquant/tis/hf/prel0/p1_product_receipt.py:356:        raise P1ReceiptError("failed receipt 必须给出 error")
+mquant/tis/hf/prel0/p1_product_receipt.py:360:def receipt_sidecar_path(feature_or_dir, product_kind):
+mquant/tis/hf/prel0/p1_product_receipt.py:367:    fd, temporary_name = tempfile.mkstemp(prefix=".p1-receipt-", dir=str(path.parent))
+mquant/tis/hf/prel0/p1_product_receipt.py:382:def write_p1_product_receipt(*, feature_or_dir, receipt):
+mquant/tis/hf/prel0/p1_product_receipt.py:383:    checked = validate_product_receipt(receipt)
+mquant/tis/hf/prel0/p1_product_receipt.py:385:        receipt_sidecar_path(feature_or_dir, checked["product_kind"]), checked
+mquant/tis/hf/prel0/p1_product_receipt.py:390:def load_p1_product_receipt(feature_or_dir, product_kind, **_ignored):
+mquant/tis/hf/prel0/p1_product_receipt.py:391:    path = receipt_sidecar_path(feature_or_dir, product_kind)
+mquant/tis/hf/prel0/p1_product_receipt.py:393:        raise P1ReceiptError(f"缺少 P1 thin receipt: {path}")
+mquant/tis/hf/prel0/pressure_big_deal_core.py:27:    "extract_directed_big_deal_sparse_events",
+mquant/tis/hf/prel0/pressure_big_deal_core.py:275:def extract_directed_big_deal_sparse_events(uti, ts, f4_out, buy_hit_vol=None, sell_hit_vol=None):
+mquant/tis/hf/prel0/pressure_big_deal_core.py:586:        "sparse_events": extract_directed_big_deal_sparse_events(
+mquant/tis/hf/prel0/pressure_big_deal.py:26:from .p1_product_receipt import feature_code_fingerprint
+mquant/tis/hf/prel0/pressure_big_deal.py:27:from .p1_product_receipt import make_product_receipt
+mquant/tis/hf/prel0/pressure_big_deal.py:28:from .p1_product_receipt import source_scope
+mquant/tis/hf/prel0/pressure_big_deal.py:29:from .p1_product_receipt import stage_product_receipts
+mquant/tis/hf/prel0/pressure_big_deal.py:286:            "sparse_events": chunk_out["sparse_events"],
+mquant/tis/hf/prel0/pressure_big_deal.py:296:                sparse_events=chunk_out["sparse_events"],
+mquant/tis/hf/prel0/pressure_big_deal.py:416:def _directed_large_deal_receipt_schema():
+mquant/tis/hf/prel0/pressure_big_deal.py:440:      命中结果会压缩进 chunk_summary，并以独立 sparse occurrence 流输出。
+mquant/tis/hf/prel0/pressure_big_deal.py:484:      directed_big_deal_tick_sparse_events:
+mquant/tis/hf/prel0/pressure_big_deal.py:658:            artifact = frames["directed_big_deal_tick_sparse_events"].copy()
+mquant/tis/hf/prel0/pressure_big_deal.py:697:        receipt = make_product_receipt(
+mquant/tis/hf/prel0/pressure_big_deal.py:711:                "directed_large_deal": _directed_large_deal_receipt_schema()
+mquant/tis/hf/prel0/pressure_big_deal.py:724:        stage_product_receipts(self, (receipt,))
+mquant/tis/hf/prel0/pair_active_flow_observation_core.py:5:CommonSegment，也不产生 P1 identity/receipt/dictionary 或历史 replay。
+mquant/tis/hf/prel0/pair_active_flow_observation_core.py:544:            # when its sparse trigger projection does not emit an occurrence.
+mquant/tis/hf/prel0/build_assembler_core.py:11:- 来自 A0 的最小 wall state trace
+mquant/tis/hf/prel0/build_assembler.py:14:from .p1_product_receipt import feature_code_fingerprint
+mquant/tis/hf/prel0/build_assembler.py:15:from .p1_product_receipt import load_p1_product_receipt
+mquant/tis/hf/prel0/build_assembler.py:16:from .p1_product_receipt import make_product_receipt
+mquant/tis/hf/prel0/build_assembler.py:17:from .p1_product_receipt import source_scope
+mquant/tis/hf/prel0/build_assembler.py:18:from .p1_product_receipt import stage_product_receipts
+mquant/tis/hf/prel0/build_assembler.py:19:from .p1_product_receipt import validate_product_artifact
+mquant/tis/hf/prel0/build_assembler.py:30:from .wall_assembler import WallAssembler
+mquant/tis/hf/prel0/build_assembler.py:64:            for event in result["sparse_events"]:
+mquant/tis/hf/prel0/build_assembler.py:72:            "build_assembler_sparse_events": self._rows_to_frame(event_rows, "ts"),
+mquant/tis/hf/prel0/build_assembler.py:90:    wall_state_trace_df,
+mquant/tis/hf/prel0/build_assembler.py:123:        wall = _require_exact_axis("Wall artifact", wall_state_trace_df, chunk_df.index, wall_columns)
+mquant/tis/hf/prel0/build_assembler.py:196:                "sparse_events": events,
+mquant/tis/hf/prel0/build_assembler.py:211:        parameter_set_id="build-default", wall=WallAssembler(),
+mquant/tis/hf/prel0/build_assembler.py:224:        wall_receipt = load_p1_product_receipt(self.P.wall, "wall_lifecycle")
+mquant/tis/hf/prel0/build_assembler.py:226:            wall_receipt,
+mquant/tis/hf/prel0/build_assembler.py:232:            wall_state_trace_df=wall_result.wall_assembler_state_trace,
+mquant/tis/hf/prel0/build_assembler.py:249:        artifact = frames["build_assembler_sparse_events"].rename(
+mquant/tis/hf/prel0/build_assembler.py:279:        receipt = make_product_receipt(
+mquant/tis/hf/prel0/build_assembler.py:296:            upstream_receipts=(("exact_wall_lifecycle", wall_receipt),),
+mquant/tis/hf/prel0/build_assembler.py:304:        stage_product_receipts(self, (receipt,))
+mquant/tis/hf/prel0/active_flow_phase_changes.py:4:它不为 P1 构造 identity、receipt、dictionary、sidecar 或专用 transport，也不重跑
+mquant/tis/hf/prel0/active_flow_phase_changes.py:850:    buy_reference_traceable = "buy_pressure_reference" in dense.columns
+mquant/tis/hf/prel0/active_flow_phase_changes.py:851:    sell_reference_traceable = "sell_pressure_reference" in dense.columns
+mquant/tis/hf/prel0/active_flow_phase_changes.py:854:        if buy_reference_traceable
+mquant/tis/hf/prel0/active_flow_phase_changes.py:859:        if sell_reference_traceable
+mquant/tis/hf/prel0/active_flow_phase_changes.py:876:        buy_reference_traceable,
+mquant/tis/hf/prel0/active_flow_phase_changes.py:877:        sell_reference_traceable,
+mquant/tis/hf/prel0/active_flow_phase_changes.py:1473:        def to_dfs(self):
+mquant/tis/hf/prel0/track_wall_candidates_core.py:23:    "extract_track_wall_candidate_sparse_events",
+mquant/tis/hf/prel0/track_wall_candidates_core.py:206:def extract_track_wall_candidate_sparse_events(uti, ts, f5_out, f6_out):
+mquant/tis/hf/prel0/track_wall_candidates_core.py:291:    sparse_events = extract_track_wall_candidate_sparse_events(
+mquant/tis/hf/prel0/track_wall_candidates_core.py:301:        "sparse_events": sparse_events,
+mquant/tis/hf/prel0/wall_assembler.py:5:- `WallAssembler` 的 repo-facing wrapper
+mquant/tis/hf/prel0/wall_assembler.py:10:- 正式 repo-facing class 当前先交付 `A0 WallAssembler`
+mquant/tis/hf/prel0/wall_assembler.py:36:from .p1_product_receipt import feature_code_fingerprint
+mquant/tis/hf/prel0/wall_assembler.py:37:from .p1_product_receipt import make_product_receipt
+mquant/tis/hf/prel0/wall_assembler.py:38:from .p1_product_receipt import source_scope
+mquant/tis/hf/prel0/wall_assembler.py:39:from .p1_product_receipt import stage_product_receipts
+mquant/tis/hf/prel0/wall_assembler.py:50:    "WallAssembler",
+mquant/tis/hf/prel0/wall_assembler.py:76:class WallAssemblerWrapperSupport(TrackWallCandidatesWrapperSupport):
+mquant/tis/hf/prel0/wall_assembler.py:139:        sparse_event_rows = []
+mquant/tis/hf/prel0/wall_assembler.py:140:        state_trace_frames = []
+mquant/tis/hf/prel0/wall_assembler.py:175:            for event in result["sparse_events"]:
+mquant/tis/hf/prel0/wall_assembler.py:185:                sparse_event_rows.append(row)
+mquant/tis/hf/prel0/wall_assembler.py:186:            columns = result.get("wall_state_trace_columns", {})
+mquant/tis/hf/prel0/wall_assembler.py:188:                state_trace_frames.append(
+mquant/tis/hf/prel0/wall_assembler.py:189:                    self._wall_state_trace_frame(meta["chunk_id"], columns)
+mquant/tis/hf/prel0/wall_assembler.py:198:            f"{packet_name}_sparse_events": self._rows_to_chunk_frame(sparse_event_rows, "ts"),
+mquant/tis/hf/prel0/wall_assembler.py:199:            f"{packet_name}_state_trace": (
+mquant/tis/hf/prel0/wall_assembler.py:200:                pd.concat(state_trace_frames, axis=0, copy=False)
+mquant/tis/hf/prel0/wall_assembler.py:201:                if state_trace_frames
+mquant/tis/hf/prel0/wall_assembler.py:209:    def _wall_state_trace_frame(self, chunk_id, columns):
+mquant/tis/hf/prel0/wall_assembler.py:262:    feature_name="WallAssembler",
+mquant/tis/hf/prel0/wall_assembler.py:264:    """按交易日分块执行 `A0 WallAssembler`。"""
+mquant/tis/hf/prel0/wall_assembler.py:265:    support = WallAssemblerWrapperSupport()
+mquant/tis/hf/prel0/wall_assembler.py:364:        wall_state_trace_columns = {
+mquant/tis/hf/prel0/wall_assembler.py:367:            **replay_out["wall_state_trace"],
+mquant/tis/hf/prel0/wall_assembler.py:377:            "sparse_events": replay_out["events"],
+mquant/tis/hf/prel0/wall_assembler.py:381:            "wall_state_trace_columns": wall_state_trace_columns,
+mquant/tis/hf/prel0/wall_assembler.py:397:def _wall_state_trace_schema():
+mquant/tis/hf/prel0/wall_assembler.py:417:def _wall_lifecycle_receipt_schema():
+mquant/tis/hf/prel0/wall_assembler.py:431:class WallAssembler(P1DbaExportMixin, DataFrameMixIn, GeneralSymbolFao, WallAssemblerWrapperSupport):
+mquant/tis/hf/prel0/wall_assembler.py:435:    Feature: A0 WallAssembler
+mquant/tis/hf/prel0/wall_assembler.py:562:      wall_assembler_state_trace:
+mquant/tis/hf/prel0/wall_assembler.py:584:      wall_assembler_sparse_events:
+mquant/tis/hf/prel0/wall_assembler.py:749:        trace_key = "wall_assembler_state_trace"
+mquant/tis/hf/prel0/wall_assembler.py:750:        trace_schema = _wall_state_trace_schema()
+mquant/tis/hf/prel0/wall_assembler.py:788:                    trace_key,
+mquant/tis/hf/prel0/wall_assembler.py:789:                    self._wall_state_trace_frame(
+mquant/tis/hf/prel0/wall_assembler.py:791:                        chunk["wall_state_trace_columns"],
+mquant/tis/hf/prel0/wall_assembler.py:808:                compact["wall_state_trace_columns"] = {}
+mquant/tis/hf/prel0/wall_assembler.py:814:            artifact = frames["wall_assembler_sparse_events"].copy()
+mquant/tis/hf/prel0/active_flow_phase_detector_core.py:180:    pressure_reference_traceable,
+mquant/tis/hf/prel0/active_flow_phase_detector_core.py:192:        pressure_reference_traceable
+mquant/tis/hf/prel0/active_flow_phase_detector_core.py:246:    buy_pressure_reference_traceable,
+mquant/tis/hf/prel0/active_flow_phase_detector_core.py:247:    sell_pressure_reference_traceable,
+mquant/tis/hf/prel0/active_flow_phase_detector_core.py:259:            buy_pressure_reference_traceable,
+mquant/tis/hf/prel0/active_flow_phase_detector_core.py:267:            sell_pressure_reference_traceable,
+mquant/tis/hf/prel0/active_flow_phase_detector_core.py:310:    buy_pressure_reference_traceable,
+mquant/tis/hf/prel0/active_flow_phase_detector_core.py:311:    sell_pressure_reference_traceable,
+mquant/tis/hf/prel0/active_flow_phase_detector_core.py:351:            buy_pressure_reference_traceable,
+mquant/tis/hf/prel0/active_flow_phase_detector_core.py:359:            sell_pressure_reference_traceable,
+mquant/tis/hf/prel0/active_flow_phase_detector_core.py:589:    pressure_reference_traceable,
+mquant/tis/hf/prel0/active_flow_phase_detector_core.py:599:        pressure_reference_traceable
+mquant/tis/hf/prel0/active_flow_phase_detector_core.py:1221:            bool(values.get("pressure_reference_traceable", False)),
+mquant/tis/hf/prel0/attack_flow_assembler.py:16:from .p1_product_receipt import feature_code_fingerprint
+mquant/tis/hf/prel0/attack_flow_assembler.py:17:from .p1_product_receipt import load_p1_product_receipt
+mquant/tis/hf/prel0/attack_flow_assembler.py:18:from .p1_product_receipt import make_product_receipt
+mquant/tis/hf/prel0/attack_flow_assembler.py:19:from .p1_product_receipt import source_scope
+mquant/tis/hf/prel0/attack_flow_assembler.py:20:from .p1_product_receipt import stage_product_receipts
+mquant/tis/hf/prel0/attack_flow_assembler.py:21:from .p1_product_receipt import validate_product_artifact
+mquant/tis/hf/prel0/attack_flow_assembler.py:33:from .wall_assembler import WallAssembler
+mquant/tis/hf/prel0/attack_flow_assembler.py:53:def _sparse_f4_to_dense(uti, sparse):
+mquant/tis/hf/prel0/attack_flow_assembler.py:63:    if sparse.shape[0] <= 0:
+mquant/tis/hf/prel0/attack_flow_assembler.py:65:    for (current_uti, side_code), rows in sparse.groupby(["uti", "side_code"], sort=False):
+mquant/tis/hf/prel0/attack_flow_assembler.py:551:    *, cc_df, wall_state_trace_df, wall_events_df, directed_large_deal_df,
+mquant/tis/hf/prel0/attack_flow_assembler.py:584:        wall = _require_exact_axis("Wall artifact", wall_state_trace_df, chunk_df.index, wall_columns)
+mquant/tis/hf/prel0/attack_flow_assembler.py:586:        f4_sparse = select_sorted_uti_range(
+mquant/tis/hf/prel0/attack_flow_assembler.py:623:                f4_sparse[f4_sparse.side_code == side_code]
+mquant/tis/hf/prel0/attack_flow_assembler.py:624:                if f4_sparse.shape[0]
+mquant/tis/hf/prel0/attack_flow_assembler.py:625:                else f4_sparse
+mquant/tis/hf/prel0/attack_flow_assembler.py:642:            f4_dense = _sparse_f4_to_dense(uti, accepted_f4)
+mquant/tis/hf/prel0/attack_flow_assembler.py:763:        wall=WallAssembler(),
+mquant/tis/hf/prel0/attack_flow_assembler.py:782:        wall_receipt = load_p1_product_receipt(self.P.wall, "wall_lifecycle")
+mquant/tis/hf/prel0/attack_flow_assembler.py:784:            wall_receipt,
+mquant/tis/hf/prel0/attack_flow_assembler.py:791:        f4_receipts = []
+mquant/tis/hf/prel0/attack_flow_assembler.py:796:            receipt = load_p1_product_receipt(
+mquant/tis/hf/prel0/attack_flow_assembler.py:804:            validate_product_artifact(receipt, streams)
+mquant/tis/hf/prel0/attack_flow_assembler.py:805:            family = receipt["actual_business_parameters"]["qualification_family"]
+mquant/tis/hf/prel0/attack_flow_assembler.py:813:            f4_receipts.append(receipt)
+mquant/tis/hf/prel0/attack_flow_assembler.py:814:        if not f4_receipts:
+mquant/tis/hf/prel0/attack_flow_assembler.py:818:        first_scope = f4_receipts[0]["source_scope"]
+mquant/tis/hf/prel0/attack_flow_assembler.py:819:        if any(receipt["source_scope"] != first_scope for receipt in f4_receipts[1:]):
+mquant/tis/hf/prel0/attack_flow_assembler.py:822:            cc_df=cc_df, wall_state_trace_df=wall_result.wall_assembler_state_trace,
+mquant/tis/hf/prel0/attack_flow_assembler.py:823:            wall_events_df=wall_result.wall_assembler_sparse_events,
+mquant/tis/hf/prel0/attack_flow_assembler.py:861:                "feature_instance": receipt["feature_instance"],
+mquant/tis/hf/prel0/attack_flow_assembler.py:862:                "parameter_set_id": receipt["parameter_set_id"],
+mquant/tis/hf/prel0/attack_flow_assembler.py:863:                "source_scope": receipt["source_scope"],
+mquant/tis/hf/prel0/attack_flow_assembler.py:864:                "artifact_location": receipt["artifact_location"],
+mquant/tis/hf/prel0/attack_flow_assembler.py:865:                "schema_version": receipt["schema_version"],
+mquant/tis/hf/prel0/attack_flow_assembler.py:866:                "code_version": receipt["code_version"],
+mquant/tis/hf/prel0/attack_flow_assembler.py:868:            for receipt in f4_receipts
+mquant/tis/hf/prel0/attack_flow_assembler.py:905:        receipts = []
+mquant/tis/hf/prel0/attack_flow_assembler.py:907:            receipt_common = dict(common)
+mquant/tis/hf/prel0/attack_flow_assembler.py:908:            receipt_common["upstream_receipts"] = (
+mquant/tis/hf/prel0/exhaustion_assembler_core.py:36:- `battle_watch_trace`:
+mquant/tis/hf/prel0/exhaustion_assembler_core.py:47:- `events`: sparse event list
+mquant/tis/hf/prel0/exhaustion_assembler_core.py:280:def _write_battle_watch_trace(trace, i, state):
+mquant/tis/hf/prel0/exhaustion_assembler_core.py:281:    trace["battle_id"][i] = int(state["battle_id"])
+mquant/tis/hf/prel0/exhaustion_assembler_core.py:282:    trace["wall_id"][i] = int(state["wall_id"])
+mquant/tis/hf/prel0/exhaustion_assembler_core.py:283:    trace["side_code"][i] = int(state["side_code"])
+mquant/tis/hf/prel0/exhaustion_assembler_core.py:284:    trace["battle_end_uti"][i] = int(state["battle_end_uti"])
+mquant/tis/hf/prel0/exhaustion_assembler_core.py:285:    trace["quiet_start_uti"][i] = int(state["quiet_start_uti"])
+mquant/tis/hf/prel0/exhaustion_assembler_core.py:286:    trace["status_code"][i] = int(state["status_code"])
+mquant/tis/hf/prel0/exhaustion_assembler_core.py:287:    trace["tactical_activity_short"][i] = float(state["tactical_activity_short"])
+mquant/tis/hf/prel0/exhaustion_assembler_core.py:288:    trace["structural_activity_short"][i] = float(state["structural_activity_short"])
+mquant/tis/hf/prel0/exhaustion_assembler_core.py:289:    trace["total_activity_short"][i] = float(state["total_activity_short"])
+mquant/tis/hf/prel0/exhaustion_assembler_core.py:290:    trace["structural_hit_count_short"][i] = int(state["structural_hit_count_short"])
+mquant/tis/hf/prel0/exhaustion_assembler_core.py:397:    battle_watch_trace = {
+mquant/tis/hf/prel0/exhaustion_assembler_core.py:421:            _write_battle_watch_trace(battle_watch_trace, i, state)
+mquant/tis/hf/prel0/exhaustion_assembler_core.py:471:        _write_battle_watch_trace(battle_watch_trace, i, state)
+mquant/tis/hf/prel0/exhaustion_assembler_core.py:489:        "battle_watch_trace": battle_watch_trace,
+mquant/tis/hf/prel0/exhaustion_assembler_core.py:592:    battle_watch_trace = {
+mquant/tis/hf/prel0/exhaustion_assembler_core.py:616:            _write_battle_watch_trace(battle_watch_trace, i, state)
+mquant/tis/hf/prel0/exhaustion_assembler_core.py:671:        _write_battle_watch_trace(battle_watch_trace, i, state)
+mquant/tis/hf/prel0/exhaustion_assembler_core.py:689:        "battle_watch_trace": battle_watch_trace,
+mquant/tis/hf/prel0/pair_active_flow_observations.py:4:它不建立 total-P3 Feature，不构造 P1 identity/receipt/dictionary/sidecar，也不物化
+mquant/tis/hf/prel0/pair_active_flow_observations.py:329:    # 这两个字段是合同明确允许缺席的 private trace；现有 numeric
+mquant/tis/hf/prel0/pair_active_flow_observations.py:508:    sparse_tick = []
+mquant/tis/hf/prel0/pair_active_flow_observations.py:509:    sparse_member = []
+mquant/tis/hf/prel0/pair_active_flow_observations.py:510:    sparse_direction = []
+mquant/tis/hf/prel0/pair_active_flow_observations.py:511:    sparse_stream = []
+mquant/tis/hf/prel0/pair_active_flow_observations.py:544:        buy_reference_traceable = "buy_pressure_reference" in dense.columns
+mquant/tis/hf/prel0/pair_active_flow_observations.py:545:        sell_reference_traceable = "sell_pressure_reference" in dense.columns
+mquant/tis/hf/prel0/pair_active_flow_observations.py:548:            if buy_reference_traceable
+mquant/tis/hf/prel0/pair_active_flow_observations.py:553:            if sell_reference_traceable
+mquant/tis/hf/prel0/pair_active_flow_observations.py:568:            buy_reference_traceable,
+mquant/tis/hf/prel0/pair_active_flow_observations.py:569:            sell_reference_traceable,
+mquant/tis/hf/prel0/pair_active_flow_observations.py:609:                sparse_tick.append(scope_position)
+mquant/tis/hf/prel0/pair_active_flow_observations.py:610:                sparse_member.append(member)
+mquant/tis/hf/prel0/pair_active_flow_observations.py:611:                sparse_direction.append(
+mquant/tis/hf/prel0/pair_active_flow_observations.py:614:                sparse_stream.append(stream_index[stream])
+mquant/tis/hf/prel0/pair_active_flow_observations.py:618:    sparse_tick = np.asarray(sparse_tick, dtype=np.int64)
+mquant/tis/hf/prel0/pair_active_flow_observations.py:619:    sparse_member = np.asarray(sparse_member, dtype=np.int64)
+mquant/tis/hf/prel0/pair_active_flow_observations.py:620:    sparse_direction = np.asarray(sparse_direction, dtype=np.int64)
+mquant/tis/hf/prel0/pair_active_flow_observations.py:621:    sparse_stream = np.asarray(sparse_stream, dtype=np.int64)
+mquant/tis/hf/prel0/pair_active_flow_observations.py:622:    if sparse_tick.size:
+mquant/tis/hf/prel0/pair_active_flow_observations.py:623:        order = np.argsort(sparse_tick, kind="stable")
+mquant/tis/hf/prel0/pair_active_flow_observations.py:624:        sparse_tick = sparse_tick[order]
+mquant/tis/hf/prel0/pair_active_flow_observations.py:625:        sparse_member = sparse_member[order]
+mquant/tis/hf/prel0/pair_active_flow_observations.py:626:        sparse_direction = sparse_direction[order]
+mquant/tis/hf/prel0/pair_active_flow_observations.py:627:        sparse_stream = sparse_stream[order]
+mquant/tis/hf/prel0/pair_active_flow_observations.py:636:        "sparse_tick": sparse_tick,
+mquant/tis/hf/prel0/pair_active_flow_observations.py:637:        "sparse_member": sparse_member,
+mquant/tis/hf/prel0/pair_active_flow_observations.py:638:        "sparse_direction": sparse_direction,
+mquant/tis/hf/prel0/pair_active_flow_observations.py:639:        "sparse_stream": sparse_stream,
+mquant/tis/hf/prel0/pair_active_flow_observations.py:1194:    sparse_tick = prepared["sparse_tick"]
+mquant/tis/hf/prel0/pair_active_flow_observations.py:1206:        sparse_start = int(np.searchsorted(sparse_tick, block_start, side="left"))
+mquant/tis/hf/prel0/pair_active_flow_observations.py:1207:        sparse_stop = int(np.searchsorted(sparse_tick, block_stop, side="left"))
+mquant/tis/hf/prel0/pair_active_flow_observations.py:1208:        if sparse_stop > sparse_start:
+mquant/tis/hf/prel0/pair_active_flow_observations.py:1209:            local_tick = sparse_tick[sparse_start:sparse_stop] - block_start
+mquant/tis/hf/prel0/pair_active_flow_observations.py:1210:            member = prepared["sparse_member"][sparse_start:sparse_stop]
+mquant/tis/hf/prel0/pair_active_flow_observations.py:1211:            direction = prepared["sparse_direction"][sparse_start:sparse_stop]
+mquant/tis/hf/prel0/pair_active_flow_observations.py:1212:            stream = prepared["sparse_stream"][sparse_start:sparse_stop]
+mquant/tis/hf/prel0/pair_active_flow_observations.py:1723:        def to_dfs(self):
+mquant/tis/hf/prel0/track_wall_candidates.py:131:                "sparse_events": chunk_out["sparse_events"],
+mquant/tis/hf/prel0/track_wall_candidates.py:137:                    sparse_events=chunk_out["sparse_events"],
+mquant/tis/hf/prel0/track_wall_candidates.py:269:      track_start_candidate_tick_sparse_events:
+mquant/tis/hf/prel0/track_wall_candidates.py:466:      wall_brick_candidate_tick_sparse_events:
+mquant/tis/hf/prel0/p1_dba_export.py:4:dump 成功后写薄 receipt；不建立新的 transport、revision 或 commit-marker 层。
+mquant/tis/hf/prel0/p1_dba_export.py:21:from .p1_product_receipt import P1ReceiptError
+mquant/tis/hf/prel0/p1_dba_export.py:22:from .p1_product_receipt import validate_product_receipt
+mquant/tis/hf/prel0/p1_dba_export.py:23:from .p1_product_receipt import write_p1_product_receipt
+mquant/tis/hf/prel0/p1_dba_export.py:541:    """复用平台原生 DBA dump，并在成功后写产品级薄 receipt。"""
+mquant/tis/hf/prel0/p1_dba_export.py:557:        pending = tuple(getattr(self, "_p1_pending_receipts", ()))
+mquant/tis/hf/prel0/p1_dba_export.py:559:            raise P1ReceiptError("P1 Feature 未形成产品 receipt，拒绝提交 artifact")
+mquant/tis/hf/prel0/p1_dba_export.py:594:        for pending_receipt in pending:
+mquant/tis/hf/prel0/p1_dba_export.py:595:            receipt = dict(pending_receipt)
+mquant/tis/hf/prel0/p1_dba_export.py:596:            receipt["artifact_location"] = str(full_dir)
+mquant/tis/hf/prel0/p1_dba_export.py:597:            write_p1_product_receipt(
+mquant/tis/hf/prel0/p1_dba_export.py:599:                receipt=validate_product_receipt(receipt),
+mquant/tis/hf/prel0/p1_dba_export.py:601:        object.__setattr__(self, "_p1_pending_receipts", ())
+mquant/tis/hf/prel0/exhaustion_assembler.py:89:        sparse_event_rows = []
+mquant/tis/hf/prel0/exhaustion_assembler.py:118:            for event in result["sparse_events"]:
+mquant/tis/hf/prel0/exhaustion_assembler.py:126:                sparse_event_rows.append(row)
+mquant/tis/hf/prel0/exhaustion_assembler.py:134:            f"{packet_name}_sparse_events": self._rows_to_chunk_frame(sparse_event_rows, "ts"),
+mquant/tis/hf/prel0/exhaustion_assembler.py:192:                "sparse_events": replay_out["events"],
+mquant/tis/hf/prel0/absorb_assembler_core.py:74:- `quote_track_trace`:
+mquant/tis/hf/prel0/absorb_assembler_core.py:88:- `events`: sparse event list
+mquant/tis/hf/prel0/absorb_assembler_core.py:779:    trace_track_id = np.zeros(n, dtype=np.int64)
+mquant/tis/hf/prel0/absorb_assembler_core.py:780:    trace_side_code = np.zeros(n, dtype=np.int8)
+mquant/tis/hf/prel0/absorb_assembler_core.py:781:    trace_tracked_price = np.zeros(n, dtype=np.float64)
+mquant/tis/hf/prel0/absorb_assembler_core.py:782:    trace_initial_visible_vol = np.zeros(n, dtype=np.float64)
+mquant/tis/hf/prel0/absorb_assembler_core.py:783:    trace_start_uti = np.full(n, -1, dtype=np.int64)
+mquant/tis/hf/prel0/absorb_assembler_core.py:784:    trace_last_hit_uti = np.full(n, -1, dtype=np.int64)
+mquant/tis/hf/prel0/absorb_assembler_core.py:785:    trace_consumed_proxy_cum = np.zeros(n, dtype=np.float64)
+mquant/tis/hf/prel0/absorb_assembler_core.py:786:    trace_visible_remaining = np.zeros(n, dtype=np.float64)
+mquant/tis/hf/prel0/absorb_assembler_core.py:787:    trace_visible_min = np.zeros(n, dtype=np.float64)
+mquant/tis/hf/prel0/absorb_assembler_core.py:788:    trace_status_code = np.zeros(n, dtype=np.int8)
+mquant/tis/hf/prel0/absorb_assembler_core.py:789:    trace_resolved_type_code = np.zeros(n, dtype=np.int8)
+mquant/tis/hf/prel0/absorb_assembler_core.py:790:    trace_milestone_mask = np.zeros(n, dtype=np.int64)
+mquant/tis/hf/prel0/absorb_assembler_core.py:791:    trace_wall_id = np.zeros(n, dtype=np.int64)
+mquant/tis/hf/prel0/absorb_assembler_core.py:995:        trace_track_id[i] = track_id
+mquant/tis/hf/prel0/absorb_assembler_core.py:996:        trace_side_code[i] = side_code
+mquant/tis/hf/prel0/absorb_assembler_core.py:997:        trace_tracked_price[i] = tracked_price
+mquant/tis/hf/prel0/absorb_assembler_core.py:998:        trace_initial_visible_vol[i] = initial_visible_vol
+mquant/tis/hf/prel0/absorb_assembler_core.py:999:        trace_start_uti[i] = start_uti
+mquant/tis/hf/prel0/absorb_assembler_core.py:1000:        trace_last_hit_uti[i] = last_hit_uti
+mquant/tis/hf/prel0/absorb_assembler_core.py:1001:        trace_consumed_proxy_cum[i] = consumed_proxy_cum
+mquant/tis/hf/prel0/absorb_assembler_core.py:1002:        trace_visible_remaining[i] = visible_remaining
+mquant/tis/hf/prel0/absorb_assembler_core.py:1003:        trace_visible_min[i] = visible_min
+mquant/tis/hf/prel0/absorb_assembler_core.py:1004:        trace_status_code[i] = status_code
+mquant/tis/hf/prel0/absorb_assembler_core.py:1005:        trace_resolved_type_code[i] = resolved_type_code
+mquant/tis/hf/prel0/absorb_assembler_core.py:1006:        trace_milestone_mask[i] = milestone_mask
+mquant/tis/hf/prel0/absorb_assembler_core.py:1007:        trace_wall_id[i] = active_wall_id
+mquant/tis/hf/prel0/absorb_assembler_core.py:1030:            trace_track_id, trace_side_code, trace_tracked_price, trace_initial_visible_vol,
+mquant/tis/hf/prel0/absorb_assembler_core.py:1031:            trace_start_uti, trace_last_hit_uti, trace_consumed_proxy_cum, trace_visible_remaining,
+mquant/tis/hf/prel0/absorb_assembler_core.py:1032:            trace_visible_min, trace_status_code, trace_resolved_type_code, trace_milestone_mask,
+mquant/tis/hf/prel0/absorb_assembler_core.py:1033:            trace_wall_id,
+mquant/tis/hf/prel0/absorb_assembler_core.py:1141:        trace_kernel,
+mquant/tis/hf/prel0/absorb_assembler_core.py:1222:    quote_track_trace = dict(
+mquant/tis/hf/prel0/absorb_assembler_core.py:1239:            trace_kernel,
+mquant/tis/hf/prel0/absorb_assembler_core.py:1384:        "quote_track_trace": quote_track_trace,
+mquant/fis/rule/rules.py:88:    def hold_cal_type(self):
+mquant/fis/rule/rules.py:109:        self.logger.info(f"{self.ppname} save data to: {self.file_path}")
+mquant/fis/rule/rules.py:217:        wb.save(output_file)
+mquant/fis/rule/rules.py:218:        self.logger.info(f"{self.ppname} save grid to: {output_file}")

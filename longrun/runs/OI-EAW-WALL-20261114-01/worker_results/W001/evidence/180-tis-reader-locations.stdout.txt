@@ -1,0 +1,484 @@
+mquant/tis/frp/MultiSeriesActiveFlow.py:51:    """把 dbaw 的 present/value product 编码还原成 canonical 可选值。"""
+mquant/tis/frp/MultiSeriesActiveFlow.py:208:    """按真实 DBAS 存储形态读取标量、Text 与嵌套 MulWrap 字段。"""
+mquant/tis/frp/MultiSeriesActiveFlow.py:532:    def to_dfs(self):
+mquant/tis/frp/MultiSeriesActiveFlow.py:544:    def to_df(self):
+mquant/tis/frp/MultiSeriesActiveFlow.py:546:            "MultiSeriesActiveFlowFao has five canonical products; use to_dfs()"
+mquant/tis/frp/MultiSeriesActiveFlow.py:559:        """按实际 DBAS 路径读取标量和嵌套字段，并保留稀疏空产品。"""
+mquant/tis/frp/CommonTurnOpportunityClusters.py:72:    def to_df(self):raise TypeError('机会完整成员与roots为多表，请用to_dfs/read_session')
+mquant/tis/frp/CommonTurnOpportunityClusters.py:78:    def to_dfs(self,products=None):return self.read_session().to_dfs(products)
+mquant/tis/frp/CommonTurnOpportunityClusters.py:80:    def read_exact(self,reference,products=None):return self.read_session(reference=reference).to_dfs(products)
+mquant/tis/frp/CommonTurnOpportunityClusters.py:81:    def read_at_knowledge(self,life,as_of,products=None):return self.read_session(life=life,as_of=as_of).to_dfs(products)
+mquant/tis/frp/CommonTurnOpportunityClusters.py:95:        """同一原Clusters的稀疏Turn/修订/Clock发生，走正常生成根和平台DBA。"""
+mquant/tis/frp/CommonTurnOpportunityClusters.py:231:        # 仍从同一正常Fao目录调用平台DBA和实际生成根，不改原文件。
+mquant/tis/frp/U2CoreResults.py:179:    def to_dfs(self, products=None):
+mquant/tis/frp/OpportunityInterpretationFeedback.py:240:    """准确物理选择交原 field_frame；不实现 DBA 解码器或重算反馈算法。"""
+mquant/tis/frp/OpportunityInterpretationFeedback.py:296:    def to_dfs(self, products=None):
+mquant/tis/frp/OpportunityInterpretationFeedback.py:425:    def to_df(self):
+mquant/tis/frp/OpportunityInterpretationFeedback.py:426:        raise TypeError("I08 含 0..N 主张、来源和用途，请用 to_dfs 或准确读口")
+mquant/tis/frp/OpportunityInterpretationFeedback.py:429:    def to_dfs(self, products=None):
+mquant/tis/frp/OpportunityInterpretationFeedback.py:430:        return self.read_session().to_dfs(products)
+mquant/tis/frp/U3Results.py:11:__all__ = ["movement_to_dfs", "form_evidence_to_dfs", "current_to_dfs", "outcome_to_dfs",
+mquant/tis/frp/U3Results.py:12:           "activity_conversion_to_dfs", "read_current_budget", "read_current_exposure"]
+mquant/tis/frp/U3Results.py:60:def activity_conversion_to_dfs(feature, products=None):
+mquant/tis/frp/U3Results.py:324:def movement_to_dfs(feature):
+mquant/tis/frp/U3Results.py:402:def form_evidence_to_dfs(feature):
+mquant/tis/frp/U3Results.py:567:def current_to_dfs(feature):
+mquant/tis/frp/U3Results.py:745:                   CurrentBudgetReadSession(feature).to_dfs().items()})
+mquant/tis/frp/U3Results.py:746:    from .DirectionalPriceMovementQuality import movement_quality_to_dfs
+mquant/tis/frp/U3Results.py:747:    result.update({"m02_" + name: frame for name, frame in movement_quality_to_dfs(
+mquant/tis/frp/U3Results.py:756:def outcome_to_dfs(feature):
+mquant/tis/frp/Base.py:49:        生成参数,调用该函数实现to_dfs()的prompt:
+mquant/tis/frp/DirectionalMovementComparison.py:12:           "MovementComparisonUsesFrp", "movement_comparison_to_dfs"]
+mquant/tis/frp/DirectionalMovementComparison.py:48:    def to_df(self):
+mquant/tis/frp/DirectionalMovementComparison.py:49:        raise TypeError("M03为独立Pair发生及原生轴/依据，请使用to_dfs")
+mquant/tis/frp/DirectionalMovementComparison.py:51:    def to_dfs(self, products=None):
+mquant/tis/frp/DirectionalMovementComparison.py:52:        return movement_comparison_to_dfs(self, products=products)
+mquant/tis/frp/DirectionalMovementComparison.py:55:        return comparison_domain_to_dfs(self, products)
+mquant/tis/frp/DirectionalMovementComparison.py:58:        tables = comparison_domain_to_dfs(self, _header=True)
+mquant/tis/frp/DirectionalMovementComparison.py:70:        tables = comparison_domain_to_dfs(self, _header=True)
+mquant/tis/frp/DirectionalMovementComparison.py:95:        tables = movement_comparison_to_dfs(self, _header=True)
+mquant/tis/frp/DirectionalMovementComparison.py:109:        tables = movement_comparison_to_dfs(self, _header=True)
+mquant/tis/frp/DirectionalMovementComparison.py:120:    header = comparison_domain_to_dfs(feature, _coordinates=coordinates, _header=True)["domains"]
+mquant/tis/frp/DirectionalMovementComparison.py:123:    tables = comparison_domain_to_dfs(feature, products=requested, _coordinates=coordinates)
+mquant/tis/frp/DirectionalMovementComparison.py:129:    header = movement_comparison_to_dfs(feature, _coordinates=coordinates, _header=True)["observations"]
+mquant/tis/frp/DirectionalMovementComparison.py:132:    tables = movement_comparison_to_dfs(feature, products=requested, _coordinates=coordinates)
+mquant/tis/frp/DirectionalMovementComparison.py:143:def comparison_domain_to_dfs(feature, products=None, *, _coordinates=None, _header=False):
+mquant/tis/frp/DirectionalMovementComparison.py:232:def movement_comparison_to_dfs(feature, products=None, *, event=None, record="mul.", _coordinates=None, _header=False):
+mquant/tis/frp/DirectionalMovementComparison.py:440:                      "comparisonReassessmentOnlyRead": False}
+mquant/tis/frp/DirectionalMovementComparison.py:445:        p["comparisonReassessmentOnlyRead"] = False
+mquant/tis/frp/DirectionalMovementComparison.py:452:    def to_dfs(self):
+mquant/tis/frp/DirectionalMovementComparison.py:454:        return {"original": movement_comparison_to_dfs(self, event=event, record="mul.reassessmentOriginal."),
+mquant/tis/frp/DirectionalMovementComparison.py:455:                "proposed": movement_comparison_to_dfs(self, event=event, record="mul.reassessmentProposed.")}
+mquant/tis/frp/DirectionalMovementComparison.py:461:    params = lambda: {"comparisonUsesSource": None, "comparisonUsesRoots": [], "comparisonUsesOnlyRead": False}
+mquant/tis/frp/DirectionalMovementComparison.py:466:        p["comparisonUsesOnlyRead"] = False
+mquant/tis/frp/DirectionalMovementComparison.py:473:    def to_dfs(self):
+mquant/tis/frp/DirectionalMovementComparison.py:475:        tables = movement_comparison_to_dfs(self, event=event, record="mul.comparisonUseOriginal.")
+mquant/tis/frp/ActivityProfile.py:10:__all__ = ["activity_profile_to_dfs"]
+mquant/tis/frp/ActivityProfile.py:13:def activity_profile_to_dfs(feature):
+mquant/tis/frp/U2HistoryQueries.py:31:    # Import lazily: the public feature imports this query helper. to_dfs never
+mquant/tis/frp/U2HistoryQueries.py:33:    from .U2NodeBehavior import node_behavior_to_dfs
+mquant/tis/frp/U2HistoryQueries.py:37:        left = node_behavior_to_dfs(feature, _reader=reader)
+mquant/tis/frp/U2HistoryQueries.py:39:        right = node_behavior_to_dfs(feature, _reader=reader)
+mquant/tis/frp/CommonPriceTurnGroupCandidates.py:71:    def to_df(self):
+mquant/tis/frp/CommonPriceTurnGroupCandidates.py:72:        raise TypeError('共同候选包含成员、Required与时间，请使用to_dfs/read_session')
+mquant/tis/frp/CommonPriceTurnGroupCandidates.py:80:    def to_dfs(self, products=None):return self.read_session().to_dfs(products)
+mquant/tis/frp/CommonPriceTurnGroupCandidates.py:83:    def read_exact(self, reference, products=None):return self.read_session(reference=reference).to_dfs(products)
+mquant/tis/frp/CommonPriceTurnGroupCandidates.py:85:        return self.read_session(life=life,as_of=as_of).to_dfs(products)
+mquant/tis/frp/CommonPriceTurnGroupCandidates.py:89:        groups=reader.to_dfs(['occurrences'])['occurrences']
+mquant/tis/frp/CommonPriceTurnGroupCandidates.py:90:        members=reader.to_dfs(['occurrences_groupMembers'])['occurrences_groupMembers']
+mquant/tis/frp/OpportunityUncertaintyHoldback.py:4:from mquant.frame.lang.internal.dao.frp.dba import FrpDbaDao
+mquant/tis/frp/OpportunityUncertaintyHoldback.py:59:class _HoldbackV3Dao(FrpDbaDao):
+mquant/tis/frp/OpportunityUncertaintyHoldback.py:101:    def _run_ups(self):pass  # 正式I01来源由Haskell正常OnlyRead装载，不在此重跑上游。
+mquant/tis/frp/OpportunityUncertaintyHoldback.py:102:    def to_df(self):raise TypeError('I05为0..N Life/限制行，请用多表或准确读口')
+mquant/tis/frp/OpportunityUncertaintyHoldback.py:103:    def to_dfs(self):
+mquant/tis/frp/OpportunityUncertaintyHoldback.py:104:        return self.read_session().to_dfs()
+mquant/tis/frp/_OpportunityInterpretationFeedbackFields.py:1:"""I08 正常具名记录的字段路径；正文仍交公共 DBA getter 展开。"""
+mquant/tis/frp/_OpportunityInterpretationFeedbackFields.py:51:# I08 关系小值沿同一 DBA 正常读口展开；不保存上游全对象。
+mquant/tis/frp/_OpportunityInterpretationFeedbackFields.py:79:FEEDBACK_QUESTION = dict(fqPurpose="int64", fqMode="int64", fqOriginalKnown=[AS_OF], fqStructural=[EV_QUESTION])
+mquant/tis/frp/_OpportunityInterpretationFeedbackFields.py:80:EVALUATION = dict(feQuestion=[FEEDBACK_QUESTION], feStructural=[EV_RESULT], feH1=[H1_USE], feTarget=TARGET, feMapping=[MAPPING], feSources=[SOURCE], feMethod="int64", feEvidence=[EVIDENCE], feAsOf=AS_OF,
+mquant/tis/frp/EarliestActualStartMember.py:46:        if clusters.ggdict1().get("only_read",False):raise ValueError('在线O04不能以OnlyRead代替生产')
+mquant/tis/frp/EarliestActualStartMember.py:57:    def to_df(self):raise TypeError('O04完整域是多表，请使用read_session或full_domain')
+mquant/tis/frp/EarliestActualStartMember.py:63:    def to_dfs(self,products=None):return self.read_session().to_dfs(products)
+mquant/tis/frp/EarliestActualStartMember.py:65:    def read_exact(self,reference,products=None):return self.read_session(reference=reference).to_dfs(products)
+mquant/tis/frp/EarliestActualStartMember.py:66:    def read_at_knowledge(self,life,as_of,products=None):return self.read_session(life=life,as_of=as_of).to_dfs(products)
+mquant/tis/frp/EarliestActualStartMember.py:68:        return self.read_session(host_life=host_life,as_of=as_of,batch_ordinal=batch_ordinal).to_dfs()
+mquant/tis/frp/EarliestActualStartMember.py:191:    def to_dfs(self,products=None):
+mquant/tis/frp/EarliestActualStartMember.py:192:        values=super().to_dfs(products)
+mquant/tis/frp/EarliestActualStartMember.py:194:            original=self.feature.read_session(reference=self._asof_assignment).to_dfs(products)
+mquant/tis/frp/EarliestActualStartMember.py:228:            'assignment':assignment,'full_domain':self.to_dfs()}
+mquant/tis/frp/EarliestActualStartMember.py:232:        return {'targets':targets,'full_domain':self.to_dfs(),'missing_required':[r for r in targets if r not in existing]}
+mquant/tis/frp/DirectionalPriceMovementAxes.py:9:__all__ = ["DirectionalPriceMovementAxesFrp", "MovementMethodComparisonFrp", "directional_axes_to_dfs"]
+mquant/tis/frp/DirectionalPriceMovementAxes.py:59:    def to_df(self):
+mquant/tis/frp/DirectionalPriceMovementAxes.py:60:        raise TypeError("M01包含逐过程三轴、共享事实和来源，请使用to_dfs")
+mquant/tis/frp/DirectionalPriceMovementAxes.py:62:    def to_dfs(self, products=None):
+mquant/tis/frp/DirectionalPriceMovementAxes.py:63:        return directional_axes_to_dfs(self, products=products)
+mquant/tis/frp/DirectionalPriceMovementAxes.py:103:        tables = self.to_dfs(products=["observations"])
+mquant/tis/frp/DirectionalPriceMovementAxes.py:110:            tables = self.to_dfs()
+mquant/tis/frp/DirectionalPriceMovementAxes.py:113:        return _select_observations(self.to_dfs(products=products), heads.index, products)
+mquant/tis/frp/DirectionalPriceMovementAxes.py:118:        tables = self.to_dfs(products=["observations"])
+mquant/tis/frp/DirectionalPriceMovementAxes.py:129:            tables = self.to_dfs()
+mquant/tis/frp/DirectionalPriceMovementAxes.py:131:        return _select_observations(self.to_dfs(products=products), selected.index, products)
+mquant/tis/frp/DirectionalPriceMovementAxes.py:164:def directional_axes_to_dfs(feature, products=None, *, _event=EVENT, _record="mul."):
+mquant/tis/frp/DirectionalPriceMovementAxes.py:354:        "comparisonCorrections": [], "comparisonOnlyRead": False,
+mquant/tis/frp/DirectionalPriceMovementAxes.py:360:        parameters["comparisonOnlyRead"] = False
+mquant/tis/frp/DirectionalPriceMovementAxes.py:367:    def to_df(self):
+mquant/tis/frp/DirectionalPriceMovementAxes.py:368:        raise TypeError("方法对照请使用to_dfs，分别保留原值和新方法值")
+mquant/tis/frp/DirectionalPriceMovementAxes.py:370:    def to_dfs(self):
+mquant/tis/frp/DirectionalPriceMovementAxes.py:381:            tables = directional_axes_to_dfs(self, _event=event, _record="mul." + field + ".")
+mquant/tis/frp/U2Mainline.py:41:        frame = source.rerun().to_df()
+mquant/tis/frp/U2Mainline.py:44:        calendar_frame = self.P.calendar_grid.rerun().to_df()
+mquant/tis/frp/U2Mainline.py:184:    def to_df(self):
+mquant/tis/frp/U2Mainline.py:185:        raise TypeError("U2SourceMainlineFrp提供具名结果；请使用to_dfs()")
+mquant/tis/frp/U2Mainline.py:187:    def to_dfs(self, products=None):
+mquant/tis/frp/U2Mainline.py:313:        cal_type = CalType.OnlyRead
+mquant/tis/frp/U2Mainline.py:327:    def to_df(self):
+mquant/tis/frp/U2Mainline.py:328:        return self.to_dfs()["role_current"]
+mquant/tis/frp/U2Mainline.py:330:    def to_dfs(self):
+mquant/tis/frp/HistoricalFormationParticipation.py:32:        if clusters.ggdict1().get('only_read', False): raise ValueError('Q05在线构造不能使用OnlyRead上游')
+mquant/tis/frp/HistoricalFormationParticipation.py:44:    def to_df(self): raise TypeError('Q05完整域为多表，请用read_session/full_domain')
+mquant/tis/frp/HistoricalFormationParticipation.py:50:    def to_dfs(self, products=None): return self.read_session().to_dfs(products)
+mquant/tis/frp/HistoricalFormationParticipation.py:52:    def read_exact(self, reference, products=None): return self.read_session(reference=reference).to_dfs(products)
+mquant/tis/frp/HistoricalFormationParticipation.py:53:    def read_at_knowledge(self, life, as_of, products=None): return self.read_session(life=life, as_of=as_of).to_dfs(products)
+mquant/tis/frp/HistoricalFormationParticipation.py:55:        return self.read_session(host_life=host_life, as_of=as_of, batch_ordinal=batch_ordinal).to_dfs()
+mquant/tis/frp/HistoricalFormationParticipation.py:326:    def to_dfs(self, products=None):
+mquant/tis/frp/HistoricalFormationParticipation.py:327:        values=super().to_dfs(products)
+mquant/tis/frp/HistoricalFormationParticipation.py:332:                original=super().to_dfs(products)
+mquant/tis/frp/HistoricalFormationParticipation.py:369:        return {'question':'Q05','exact':reference,'intention':intention,'assignment':assignment,'full_domain':self.to_dfs()}
+mquant/tis/frp/HistoricalFormationParticipation.py:373:        return {'question':'Q05','targets':targets,'full_domain':self.to_dfs(),'missing_required':[r for r in targets if r not in existing]}
+mquant/tis/frp/CrossScaleTargetCoveragePattern.py:57:    def to_df(self):
+mquant/tis/frp/CrossScaleTargetCoveragePattern.py:58:        raise TypeError('O15定义与发生为嵌套核心值，请使用to_dfs或read_session')
+mquant/tis/frp/CrossScaleTargetCoveragePattern.py:66:    def to_dfs(self,products=None):
+mquant/tis/frp/CrossScaleTargetCoveragePattern.py:67:        return self.read_session().to_dfs(products)
+mquant/tis/frp/CrossScaleTargetCoveragePattern.py:69:        return self.read_session(key=key,occurrence=occurrence).to_dfs(products)
+mquant/tis/frp/CrossScaleTargetCoveragePattern.py:71:        return self.read_session(key=key).to_dfs(products)
+mquant/tis/frp/CrossScaleTargetCoveragePattern.py:73:        return self.read_session(key=key,as_of=as_of).to_dfs(products)
+mquant/tis/frp/CrossScaleEndpointParticipationPattern.py:48:    def to_df(self):
+mquant/tis/frp/CrossScaleEndpointParticipationPattern.py:49:        raise TypeError('O14定义与发生为嵌套核心值，请使用to_dfs或read_session')
+mquant/tis/frp/CrossScaleEndpointParticipationPattern.py:57:    def to_dfs(self, products=None):
+mquant/tis/frp/CrossScaleEndpointParticipationPattern.py:58:        return self.read_session().to_dfs(products)
+mquant/tis/frp/CrossScaleEndpointParticipationPattern.py:60:        return self.read_session(key=key, occurrence=occurrence).to_dfs(products)
+mquant/tis/frp/CrossScaleEndpointParticipationPattern.py:62:        return self.read_session(key=key).to_dfs(products)
+mquant/tis/frp/CrossScaleEndpointParticipationPattern.py:64:        return self.read_session(key=key, as_of=as_of).to_dfs(products)
+mquant/tis/frp/CurrentMovementOutcome.py:10:__all__ = ["NormalCurrentMovementOutcomeFao", "current_movement_outcome_to_dfs"]
+mquant/tis/frp/CurrentMovementOutcome.py:30:    """公开DBA的具名键载荷，保字段和原列表顺序，不形成摘要身份。"""
+mquant/tis/frp/CurrentMovementOutcome.py:251:                  products=current_movement_outcome_to_dfs(feature, products, [at]))
+mquant/tis/frp/CurrentMovementOutcome.py:271:def current_movement_outcome_to_dfs(feature, products=None, parents=None):
+mquant/tis/frp/CurrentMovementOutcome.py:384:    def to_df(self):
+mquant/tis/frp/CurrentMovementOutcome.py:385:        raise TypeError("I07保完整题域、窗口、两侧知识和用途，请用to_dfs")
+mquant/tis/frp/CurrentMovementOutcome.py:386:    def to_dfs(self, products=None):
+mquant/tis/frp/CurrentMovementOutcome.py:387:        return current_movement_outcome_to_dfs(self, products)
+mquant/tis/frp/CurrentMovementOutcome.py:390:        header = current_movement_outcome_to_dfs(self, ["results"], parents)["results"]
+mquant/tis/frp/CurrentMovementOutcome.py:393:        return current_movement_outcome_to_dfs(self, products, parents)
+mquant/tis/frp/U2SourceTurns.py:321:    def to_df(self):
+mquant/tis/frp/U2SourceTurns.py:323:            "U2SourceTurnsFrp has eight named products; use to_dfs()"
+mquant/tis/frp/U2SourceTurns.py:326:    def to_dfs(self):
+mquant/tis/frp/RejectedCandidateParticipation.py:47:        # 解析拒绝旧配置，以保留已有Q10的Cache/OnlyRead正常读取。
+mquant/tis/frp/RejectedCandidateParticipation.py:52:    def to_df(self):raise TypeError('Q10含完整candidate/admission和0..N关系，请用read_session/full_domain')
+mquant/tis/frp/RejectedCandidateParticipation.py:62:    def to_dfs(self,products=None):return self.read_session().to_dfs(products)
+mquant/tis/frp/RejectedCandidateParticipation.py:64:    def read_exact(self,reference,products=None):return self.read_session(reference=reference).to_dfs(products)
+mquant/tis/frp/RejectedCandidateParticipation.py:65:    def read_at_knowledge(self,life,as_of,products=None,*,candidate_scope,admission=None):return self.read_session(life=life,as_of=as_of,candidate_scope=candidate_scope,admission=admission).to_dfs(products)
+mquant/tis/frp/RejectedCandidateParticipation.py:66:    def full_domain(self,host_life,*,as_of=None,batch_ordinal=None):return self.read_session(host_life=host_life,as_of=as_of,batch_ordinal=batch_ordinal).to_dfs()
+mquant/tis/frp/RejectedCandidateParticipation.py:101:                targets.append({'host_life':life,'candidate_scope':scope,'admission':admission,'targets':positions,'full_domain':session.to_dfs()})
+mquant/tis/frp/RejectedCandidateParticipation.py:326:        return {'question':'Q10','scope':_ref(assignment,'rejectionCandidateScope'),'admission':_ref(assignment,'rejectionAdmission'),'combination_scope':RejectionCombinationScope.WholeCandidateCombination,'exact':reference,'intention':intention,'assignment':assignment,'full_domain':self.to_dfs()}
+mquant/tis/frp/RejectedCandidateParticipation.py:330:        return {'question':'Q10','targets':targets,'full_domain':self.to_dfs(),'missing_required':[r for r in targets if r not in existing]}
+mquant/tis/frp/RejectedCandidateParticipation.py:331:    def to_dfs(self, products=None):
+mquant/tis/frp/RejectedCandidateParticipation.py:332:        values=super().to_dfs(products)
+mquant/tis/frp/RejectedCandidateParticipation.py:337:                original=super().to_dfs(products)
+mquant/tis/frp/RejectedCandidateParticipation.py:349:                    values.update({'previous_domain_'+name:frame for name,frame in super().to_dfs(products).items()})
+mquant/tis/frp/InvestmentEvidenceContribution.py:12:__all__=['InvestmentEvidenceContributionFrp','ContributionDisposition','ContributionTargetNotFound','NATIVE_HOLDBACK_USES']
+mquant/tis/frp/InvestmentEvidenceContribution.py:15:NATIVE_HOLDBACK_USES=dict(domain='I01.NativeGroupBehaviorHoldbackV1',intent='I05.GroupBehaviorQualification',
+mquant/tis/frp/InvestmentEvidenceContribution.py:346:    def to_df(self):raise TypeError('I01有0..N问题及贡献组件，请使用正常多表或准确读口')
+mquant/tis/frp/InvestmentEvidenceContribution.py:348:    def to_dfs(self,products=None):return self.read_session().to_dfs(products)
+mquant/tis/frp/MovementGroupExternalSeparation.py:11:__all__ = ["MovementGroupExternalSeparationFrp", "movement_external_separation_to_dfs"]
+mquant/tis/frp/MovementGroupExternalSeparation.py:39:def movement_external_separation_to_dfs(feature, products=None, parents=None):
+mquant/tis/frp/MovementGroupExternalSeparation.py:259:    def to_dfs(self, products=None):
+mquant/tis/frp/MovementGroupExternalSeparation.py:260:        return movement_external_separation_to_dfs(self, products)
+mquant/tis/frp/MovementGroupExternalSeparation.py:264:        result = movement_external_separation_to_dfs(self, products, parents=target)
+mquant/tis/frp/MovementGroupExternalSeparation.py:265:        heads = movement_external_separation_to_dfs(self, ["results"], parents=target)["results"]
+mquant/tis/frp/MovementGroupExternalSeparation.py:313:        return movement_external_separation_to_dfs(self, products, parents=selected)
+mquant/tis/frp/MovementGroupExternalSeparation.py:349:        return movement_external_separation_to_dfs(self, products, parents=selected)
+mquant/tis/frp/U2Relations.py:6:__all__ = ['U2NormalTurnRelationsFrp', 'turn_relations_to_dfs']
+mquant/tis/frp/U2Relations.py:46:            raise ValueError("旧v3仅允许正常OnlyRead，不再计算")
+mquant/tis/frp/U2Relations.py:49:    def to_df(self):
+mquant/tis/frp/U2Relations.py:50:        raise TypeError('关系结果包含多个具名表，请使用to_dfs/read_session')
+mquant/tis/frp/U2Relations.py:64:    def to_dfs(self, products=None):
+mquant/tis/frp/U2Relations.py:65:        return self.read_session().to_dfs(products)
+mquant/tis/frp/U2Relations.py:71:        return self.read_session(reference=reference).to_dfs(products)
+mquant/tis/frp/U2Relations.py:74:        return self.read_session(life=life, as_of=as_of).to_dfs(products)
+mquant/tis/frp/U2Relations.py:77:def turn_relations_to_dfs(feature, products=None):
+mquant/tis/frp/U2Relations.py:78:    return feature.read_session().to_dfs(products)
+mquant/tis/frp/EarliestCrossScaleEndpoint.py:6:from mquant.frame.lang.internal.dao import FrpDbaDao
+mquant/tis/frp/EarliestCrossScaleEndpoint.py:18:class _EarliestEndpointDao(FrpDbaDao):
+mquant/tis/frp/EarliestCrossScaleEndpoint.py:92:    def to_df(self):
+mquant/tis/frp/EarliestCrossScaleEndpoint.py:93:        raise TypeError('O13一次保存完整Set与所有角色，请使用to_dfs或准确read_session')
+mquant/tis/frp/EarliestCrossScaleEndpoint.py:96:    def to_dfs(self, products=None):
+mquant/tis/frp/EarliestCrossScaleEndpoint.py:97:        return self.read_session().to_dfs(products)
+mquant/tis/frp/OpportunityInterpretation.py:4:from mquant.frame.lang.internal.dao import FrpDbaDao
+mquant/tis/frp/OpportunityInterpretation.py:29:class _InterpretationV11Dao(FrpDbaDao):
+mquant/tis/frp/OpportunityInterpretation.py:97:    def to_df(self):raise TypeError('O17请使用to_dfs/read_session，保留独立题与范围')
+mquant/tis/frp/OpportunityInterpretation.py:103:    def to_dfs(self,products=None):return self.read_session().to_dfs(products)
+mquant/tis/frp/OpportunityInterpretation.py:106:    def read_exact(self,key,occurrence,products=None):return self.read_session(key=key,occurrence=occurrence).to_dfs(products)
+mquant/tis/frp/OpportunityInterpretation.py:107:    def read_current(self,key,products=None):return self.read_session(key=key).to_dfs(products)
+mquant/tis/frp/OpportunityInterpretation.py:108:    def read_at_knowledge(self,key,as_of,products=None):return self.read_session(key=key,as_of=as_of).to_dfs(products)
+mquant/tis/frp/OpportunityInterpretation.py:143:        if profile==InterpretationProfile.ExactExplanation:raise ValueError('准确历史解释使用OnlyRead，不运行来源')
+mquant/tis/frp/DirectionalPriceMovementQuality.py:9:__all__ = ["DirectionalPriceMovementQualityFrp", "MovementQualityComparisonFrp", "movement_quality_to_dfs"]
+mquant/tis/frp/DirectionalPriceMovementQuality.py:29:    def to_df(self):
+mquant/tis/frp/DirectionalPriceMovementQuality.py:30:        raise TypeError("M02为逐过程质量与父域，请使用to_dfs")
+mquant/tis/frp/DirectionalPriceMovementQuality.py:32:    def to_dfs(self, products=None):
+mquant/tis/frp/DirectionalPriceMovementQuality.py:33:        return movement_quality_to_dfs(self, products=products)
+mquant/tis/frp/DirectionalPriceMovementQuality.py:89:        tables = self.to_dfs()
+mquant/tis/frp/DirectionalPriceMovementQuality.py:130:        tables = self.to_dfs()
+mquant/tis/frp/DirectionalPriceMovementQuality.py:198:def movement_quality_to_dfs(feature, products=None, *, event=None, record="mul.", parent_depth=2):
+mquant/tis/frp/DirectionalPriceMovementQuality.py:306:        "qualityComparisonVisibility": None, "qualityComparisonEvaluation": None, "qualityComparisonOnlyRead": False}
+mquant/tis/frp/DirectionalPriceMovementQuality.py:311:        values["qualityComparisonOnlyRead"] = False
+mquant/tis/frp/DirectionalPriceMovementQuality.py:318:    def to_dfs(self):
+mquant/tis/frp/DirectionalPriceMovementQuality.py:319:        return {name: movement_quality_to_dfs(self, event="quality_comparisons.v3",
+mquant/tis/frp/OpportunityJudgementAssertion.py:8:from mquant.frame.lang.internal.dao import FrpDbaDao
+mquant/tis/frp/OpportunityJudgementAssertion.py:84:class _LegacyAssertionDao(FrpDbaDao):
+mquant/tis/frp/OpportunityJudgementAssertion.py:144:    def to_df(self):raise TypeError('O16请使用to_dfs或read_session，保留完整声明与位置')
+mquant/tis/frp/OpportunityJudgementAssertion.py:150:    def to_dfs(self,products=None):return self.read_session().to_dfs(products)
+mquant/tis/frp/OpportunityJudgementAssertion.py:151:    def read_exact(self,key,occurrence,products=None):return self.read_session(key=key,occurrence=occurrence).to_dfs(products)
+mquant/tis/frp/OpportunityJudgementAssertion.py:152:    def read_current(self,key,products=None):return self.read_session(key=key).to_dfs(products)
+mquant/tis/frp/OpportunityJudgementAssertion.py:153:    def read_at_knowledge(self,key,as_of,products=None):return self.read_session(key=key,as_of=as_of).to_dfs(products)
+mquant/tis/frp/MarketActivityProcess.py:86:        cal_type = CalType.OnlyRead
+mquant/tis/frp/MarketActivityProcess.py:159:    def to_df(self):
+mquant/tis/frp/MarketActivityProcess.py:160:        raise TypeError('A01为双侧Episode及七量多表，请用to_dfs或准确读口')
+mquant/tis/frp/MarketActivityProcess.py:170:    def to_dfs(self, products=None):
+mquant/tis/frp/MarketActivityProcess.py:171:        return self.read_session().to_dfs(products)
+mquant/tis/frp/_MovementGroupPhysicalizationLegacy.py:12:__all__ = ["MovementGroupPhysicalizationFrp", "movement_physicalization_to_dfs"]
+mquant/tis/frp/_MovementGroupPhysicalizationLegacy.py:41:def movement_physicalization_to_dfs(feature, products=None, parents=None):
+mquant/tis/frp/CommonTurnGroupExternalSeparation.py:70:    def to_df(self): raise TypeError('S包含全成员和原因，请使用to_dfs/read_session')
+mquant/tis/frp/CommonTurnGroupExternalSeparation.py:77:    def to_dfs(self, products=None): return self.read_session().to_dfs(products)
+mquant/tis/frp/CommonTurnGroupExternalSeparation.py:80:    def read_exact(self, reference, products=None): return self.read_session(reference=reference).to_dfs(products)
+mquant/tis/frp/CommonTurnGroupExternalSeparation.py:82:        return self.read_session(life=life, as_of=as_of).to_dfs(products)
+mquant/tis/frp/CommonTurnGroupExternalSeparation.py:84:        return self.to_dfs(['occurrences', 'occurrences_separationRecordMembers', 'occurrences_separationRecordObjects'])
+mquant/tis/frp/CommonTurnGroupValidity.py:55:    def to_df(self): raise TypeError('V包含全成员和原因，请使用to_dfs/read_session')
+mquant/tis/frp/CommonTurnGroupValidity.py:62:    def to_dfs(self, products=None): return self.read_session().to_dfs(products)
+mquant/tis/frp/CommonTurnGroupValidity.py:65:    def read_exact(self, reference, products=None): return self.read_session(reference=reference).to_dfs(products)
+mquant/tis/frp/CommonTurnGroupValidity.py:67:        return self.read_session(life=life, as_of=as_of).to_dfs(products)
+mquant/tis/frp/CommonTurnGroupValidity.py:69:        return self.to_dfs(['occurrences', 'occurrences_validityMembers', 'occurrences_validityReasons'])
+mquant/tis/frp/P3PublicProducts.py:31:    ``to_dfs()``，且结果必须带有已检查的 V2 物理版本。拒绝旧 wrapper/旧物理结果。
+mquant/tis/frp/P3PublicProducts.py:35:    if run_handle is None or not callable(getattr(run_handle, "to_dfs", None)):
+mquant/tis/frp/P3PublicProducts.py:36:        raise TypeError("run_handle must be an already-materialized Frame/Fao handle with to_dfs()")
+mquant/tis/frp/P3PublicProducts.py:38:    products = run_handle.to_dfs()
+mquant/tis/frp/OpportunityExposureBoundary.py:52:    def to_df(self):raise TypeError('O03为完整Pair矩阵及subject集合多表，请用read_session')
+mquant/tis/frp/OpportunityExposureBoundary.py:58:    def to_dfs(self,products=None):return self.read_session().to_dfs(products)
+mquant/tis/frp/OpportunityExposureBoundary.py:60:    def read_exact(self,reference,products=None):return self.read_session(reference=reference).to_dfs(products)
+mquant/tis/frp/OpportunityExposureBoundary.py:61:    def read_at_knowledge(self,family,life,as_of,products=None):return self.read_session(family=family,life=life,as_of=as_of).to_dfs(products)
+mquant/tis/frp/OpportunityExposureBoundary.py:150:        values=self.to_dfs();result={}
+mquant/tis/frp/ConversionAftermathLegacy.py:22:__all__ = ['legacy_conversion_aftermath_to_dfs', 'read_legacy_conversion_aftermath_result']
+mquant/tis/frp/ConversionAftermathLegacy.py:70:def legacy_conversion_aftermath_to_dfs(feature, *, version, products=None, parents=None):
+mquant/tis/frp/ConversionAftermathLegacy.py:174:    header = legacy_conversion_aftermath_to_dfs(feature, version=version, products=['results'], parents=parents)['results']
+mquant/tis/frp/ConversionAftermathLegacy.py:177:    return legacy_conversion_aftermath_to_dfs(feature, version=version, products=products, parents=parents)
+mquant/tis/frp/LongestParticipationMember.py:31:        if clusters.ggdict1().get('only_read', False): raise ValueError('Q04在线构造不能使用OnlyRead上游')
+mquant/tis/frp/LongestParticipationMember.py:43:    def to_df(self): raise TypeError('Q04完整域为多表，请用read_session/full_domain')
+mquant/tis/frp/LongestParticipationMember.py:49:    def to_dfs(self, products=None): return self.read_session().to_dfs(products)
+mquant/tis/frp/LongestParticipationMember.py:51:    def read_exact(self, reference, products=None): return self.read_session(reference=reference).to_dfs(products)
+mquant/tis/frp/LongestParticipationMember.py:52:    def read_at_knowledge(self, life, as_of, products=None): return self.read_session(life=life, as_of=as_of).to_dfs(products)
+mquant/tis/frp/LongestParticipationMember.py:54:        return self.read_session(host_life=host_life, as_of=as_of, batch_ordinal=batch_ordinal).to_dfs()
+mquant/tis/frp/LongestParticipationMember.py:268:    def to_dfs(self, products=None):
+mquant/tis/frp/LongestParticipationMember.py:269:        values=super().to_dfs(products)
+mquant/tis/frp/LongestParticipationMember.py:274:                original=super().to_dfs(products)
+mquant/tis/frp/LongestParticipationMember.py:310:        return {'exact':reference,'question':'Q04','intention':intention,'unique':intention==AssertionIntent.Asserted and len({r['earliestName'] for _,r in ties})==1,'assignment':assignment,'full_domain':self.to_dfs()}
+mquant/tis/frp/LongestParticipationMember.py:314:        return {'question':'Q04','targets':targets,'full_domain':self.to_dfs(),'missing_required':[r for r in targets if r not in existing]}
+mquant/tis/frp/MovementGroupPhysicalization.py:11:__all__ = ["MovementGroupPhysicalizationFrp", "movement_physicalization_to_dfs"]
+mquant/tis/frp/MovementGroupPhysicalization.py:80:def movement_physicalization_to_dfs(feature, products=None, parents=None):
+mquant/tis/frp/MovementGroupPhysicalization.py:83:        from ._MovementGroupPhysicalizationLegacy import movement_physicalization_to_dfs as read_legacy
+mquant/tis/frp/MovementGroupPhysicalization.py:288:    def to_df(self):
+mquant/tis/frp/MovementGroupPhysicalization.py:289:        raise TypeError("M06包含阶段/J/W/全部参与过程，请使用to_dfs")
+mquant/tis/frp/MovementGroupPhysicalization.py:290:    def to_dfs(self, products=None):
+mquant/tis/frp/MovementGroupPhysicalization.py:291:        return movement_physicalization_to_dfs(self, products)
+mquant/tis/frp/MovementGroupPhysicalization.py:295:        result = movement_physicalization_to_dfs(self, products=["results"], parents=[(event_position, record_position)])
+mquant/tis/frp/MovementGroupPhysicalization.py:298:        return movement_physicalization_to_dfs(self, products, parents=[(event_position, record_position)])
+mquant/tis/frp/MovementGroupPhysicalization.py:300:        headers = movement_physicalization_to_dfs(self, products=["results"])["results"]
+mquant/tis/frp/MovementGroupPhysicalization.py:310:        tables = movement_physicalization_to_dfs(self, products=requested, parents=list(selected.index))
+mquant/tis/frp/MovementGroupPhysicalization.py:318:        headers = movement_physicalization_to_dfs(self, products=["results"])["results"]
+mquant/tis/frp/MovementGroupPhysicalization.py:329:        tables = movement_physicalization_to_dfs(
+mquant/tis/frp/EawBattleP.py:26:    "EawP1WallLifecycleFrp",
+mquant/tis/frp/EawBattleP.py:34:class _OnlyReadTypedIngress(BaseSymbolFrpFao):
+mquant/tis/frp/EawBattleP.py:38:        return CalType.OnlyRead
+mquant/tis/frp/EawBattleP.py:47:    def to_df(self):
+mquant/tis/frp/EawBattleP.py:54:class WallOccurrenceFao(_OnlyReadTypedIngress):
+mquant/tis/frp/EawBattleP.py:58:class BuildOccurrenceFao(_OnlyReadTypedIngress):
+mquant/tis/frp/EawBattleP.py:65:class AttackSegmentFao(_OnlyReadTypedIngress):
+mquant/tis/frp/EawBattleP.py:72:class FormationEvidenceFao(_OnlyReadTypedIngress):
+mquant/tis/frp/EawBattleP.py:79:class WallBarrierFao(_OnlyReadTypedIngress):
+mquant/tis/frp/EawBattleP.py:86:class AbsorbOccurrenceFao(_OnlyReadTypedIngress):
+mquant/tis/frp/EawBattleP.py:93:class EawP1WallLifecycleFrp(_CalculatedP1Product):
+mquant/tis/frp/EawBattleP.py:191:    wall_root = EawP1WallLifecycleFrp(
+mquant/tis/frp/EawBattleP.py:432:    def to_df(self):
+mquant/tis/frp/EawBattleP.py:435:            "streams; use to_dfs()"
+mquant/tis/frp/EawBattleP.py:438:    def to_dfs(self):
+mquant/tis/frp/U2CompactTables.py:1:"""Read normal v2 products with the original DBA field reader.
+mquant/tis/frp/U2CompactTables.py:222:        read-eligibility role. Full to_dfs deliberately has no such restriction.
+mquant/tis/frp/U2NodeBehavior.py:14:           'node_behavior_to_dfs', 'episode_products_to_dfs', 'NormalProductReadSession']
+mquant/tis/frp/U2NodeBehavior.py:39:    def to_df(self):
+mquant/tis/frp/U2NodeBehavior.py:40:        raise TypeError('Core results have named tables; use to_dfs/read_session')
+mquant/tis/frp/U2NodeBehavior.py:42:    def to_dfs(self, products=None):
+mquant/tis/frp/U2NodeBehavior.py:43:        return self.read_session().to_dfs(products)
+mquant/tis/frp/U2NodeBehavior.py:49:        return self.read_session(reference=reference).to_dfs(products)
+mquant/tis/frp/U2NodeBehavior.py:52:        return self.read_session(life=life, as_of=as_of).to_dfs(products)
+mquant/tis/frp/U2NodeBehavior.py:99:        return self.read_session().choose_path(reference).to_dfs(products)
+mquant/tis/frp/U2NodeBehavior.py:111:                                          evaluation=evaluation).to_dfs(products)
+mquant/tis/frp/U2NodeBehavior.py:121:def node_behavior_to_dfs(feature, products=None, _reader=None):
+mquant/tis/frp/U2NodeBehavior.py:122:    return (_reader if _reader is not None else feature.read_session()).to_dfs(products)
+mquant/tis/frp/U2NodeBehavior.py:125:def episode_products_to_dfs(feature, products=None, _reader=None):
+mquant/tis/frp/U2NodeBehavior.py:126:    return (_reader if _reader is not None else feature.read_session()).to_dfs(products)
+mquant/tis/frp/MovementGroupAbsoluteQuality.py:13:__all__ = ["MovementGroupAbsoluteQualityFrp", "movement_absolute_quality_to_dfs"]
+mquant/tis/frp/MovementGroupAbsoluteQuality.py:138:def movement_absolute_quality_to_dfs(feature, products=None, parents=None, *, _include_dependencies=False):
+mquant/tis/frp/MovementGroupAbsoluteQuality.py:277:    def to_df(self):
+mquant/tis/frp/MovementGroupAbsoluteQuality.py:278:        raise TypeError("M07包含全部阶段、局部范围和原质量，请使用to_dfs")
+mquant/tis/frp/MovementGroupAbsoluteQuality.py:279:    def to_dfs(self, products=None):
+mquant/tis/frp/MovementGroupAbsoluteQuality.py:280:        return movement_absolute_quality_to_dfs(self, products)
+mquant/tis/frp/MovementGroupAbsoluteQuality.py:283:        head = movement_absolute_quality_to_dfs(self, ["results"], parent)["results"]
+mquant/tis/frp/MovementGroupAbsoluteQuality.py:286:        return movement_absolute_quality_to_dfs(self, products, parent)
+mquant/tis/frp/MovementGroupAbsoluteQuality.py:297:        tables = movement_absolute_quality_to_dfs(self, products, list(heads.index), _include_dependencies=True)
+mquant/tis/frp/MovementGroupAbsoluteQuality.py:299:        return movement_absolute_quality_to_dfs(self, products, list(unique.index))
+mquant/tis/frp/MovementGroupAbsoluteQuality.py:303:        heads = movement_absolute_quality_to_dfs(self, ["results"])["results"]
+mquant/tis/frp/MovementGroupAbsoluteQuality.py:309:        heads = movement_absolute_quality_to_dfs(self, ["results"])["results"]
+mquant/tis/frp/MovementGroupAbsoluteQuality.py:312:            return movement_absolute_quality_to_dfs(self, products, [])
+mquant/tis/frp/ActivityToMovementConversion.py:13:__all__ = ["ActivityToMovementConversionFrp", "activity_to_movement_conversion_to_dfs", "ActivityConversionReadSession"]
+mquant/tis/frp/ActivityToMovementConversion.py:140:def activity_to_movement_conversion_to_dfs(feature, products=None):
+mquant/tis/frp/ActivityToMovementConversion.py:141:    return ActivityConversionReadSession(feature).to_dfs(products)
+mquant/tis/frp/ActivityToMovementConversion.py:168:    def to_df(self):
+mquant/tis/frp/ActivityToMovementConversion.py:169:        raise TypeError("A05为完整域/局部响应产品，请用to_dfs")
+mquant/tis/frp/ActivityToMovementConversion.py:171:    def to_dfs(self, products=None):
+mquant/tis/frp/ActivityToMovementConversion.py:172:        return activity_to_movement_conversion_to_dfs(self, products)
+mquant/tis/frp/CrossScaleEndpointTimeOrder.py:83:    def to_df(self):
+mquant/tis/frp/CrossScaleEndpointTimeOrder.py:84:        raise TypeError('两题/两端与原件分表，用to_dfs或准确read_session')
+mquant/tis/frp/CrossScaleEndpointTimeOrder.py:92:    def to_dfs(self, products=None):
+mquant/tis/frp/CrossScaleEndpointTimeOrder.py:93:        return self.read_session().to_dfs(products)
+mquant/tis/frp/CrossScaleEndpointTimeOrder.py:97:        return self.read_session(key=key,revision=revision).to_dfs(products)
+mquant/tis/frp/CrossScaleEndpointTimeOrder.py:99:        return self.read_session(key=key).to_dfs(products)
+mquant/tis/frp/CrossScaleEndpointTimeOrder.py:101:        return self.read_session(key=key,as_of=as_of,observation=observation).to_dfs(products)
+mquant/tis/frp/U2EpisodeDomain.py:1:"""Episode core.v2 的完整来源域和准确正文；只读正常DBA，不恢复owner。"""
+mquant/tis/frp/U2RecentFieldReader.py:1:"""Select actual physical coordinates before the existing DBA path resolver.
+mquant/tis/frp/NativeActivityProfile.py:318:    def to_dfs(self, products=None):
+mquant/tis/frp/NativeActivityProfile.py:319:        return self.read_session().to_dfs(products)
+mquant/tis/frp/NativeActivityProfile.py:324:    def to_df(self):
+mquant/tis/frp/NativeActivityProfile.py:325:        raise TypeError('A02/A03为具名多表产品，请用to_dfs或自身准确读口')
+mquant/tis/frp/NativeActivityProfile.py:350:        cal_type = CalType.OnlyRead
+mquant/tis/frp/NativeActivityProfile.py:368:            raise ValueError('A02 OnlyRead缺准确自身root/target')
+mquant/tis/frp/NativeActivityProfile.py:370:            raise ValueError('A02自身OnlyRead目标不符')
+mquant/tis/frp/NativeActivityProfile.py:392:def activity_profile_to_dfs(feature, products=None):
+mquant/tis/frp/NativeActivityProfile.py:393:    return ActivityOwnReadSession(feature, 'profile').to_dfs(products)
+mquant/tis/frp/NativeActivityProfile.py:396:def activity_supply_to_dfs(feature, products=None):
+mquant/tis/frp/NativeActivityProfile.py:397:    return ActivityOwnReadSession(feature, 'supply').to_dfs(products)
+mquant/tis/frp/OpportunityExposureConstraint.py:255:    def to_df(self):raise TypeError('I04为原Pair/完整Set及用途多表，请使用准确读口')
+mquant/tis/frp/OpportunityExposureConstraint.py:257:    def to_dfs(self,products=None):return self.read_session().to_dfs(products)
+mquant/tis/frp/_U2ParticipationMaintenanceFields.py:1:"""有限参与维护的真实字段；沿正常生成类和DBA读取。"""
+mquant/tis/frp/U2Formation.py:7:__all__ = ["U2NormalFormationCandidatesFrp", "U2NormalFormationClustersFrp", "formation_to_dfs", "cluster_to_dfs"]
+mquant/tis/frp/U2Formation.py:31:    def to_df(self):
+mquant/tis/frp/U2Formation.py:32:        raise TypeError("U2机会形成包含不同业务结果；请使用to_dfs(products=...)")
+mquant/tis/frp/U2Formation.py:34:    def to_dfs(self, products=None):
+mquant/tis/frp/U2Formation.py:35:        return formation_to_dfs(self, products=products)
+mquant/tis/frp/U2Formation.py:59:    def to_df(self):
+mquant/tis/frp/U2Formation.py:60:        raise TypeError("Formation/S与Cluster分别保留；请使用to_dfs(products=...)")
+mquant/tis/frp/U2Formation.py:62:    def to_dfs(self, products=None):
+mquant/tis/frp/U2Formation.py:64:            return {**formation_to_dfs(self), **cluster_to_dfs(self)}
+mquant/tis/frp/U2Formation.py:67:            **formation_to_dfs(self, tuple(name for name in selected if not name.startswith("cluster_"))),
+mquant/tis/frp/U2Formation.py:68:            **cluster_to_dfs(self, tuple(name for name in selected if name.startswith("cluster_"))),
+mquant/tis/frp/U2Formation.py:72:def cluster_to_dfs(feature, products=None):
+mquant/tis/frp/U2Formation.py:147:def formation_to_dfs(feature, products=None):
+mquant/tis/frp/PostTurnGroupDirectionalOrganization.py:58:    def to_df(self):raise TypeError('方向组织有完整成员与六量，请使用to_dfs/read_session')
+mquant/tis/frp/PostTurnGroupDirectionalOrganization.py:64:    def to_dfs(self,products=None):return self.read_session().to_dfs(products)
+mquant/tis/frp/PostTurnGroupDirectionalOrganization.py:66:    def read_exact(self,reference,products=None):return self.read_session(reference=reference).to_dfs(products)
+mquant/tis/frp/PostTurnGroupDirectionalOrganization.py:67:    def read_at_knowledge(self,life,as_of,products=None):return self.read_session(life=life,as_of=as_of).to_dfs(products)
+mquant/tis/frp/PostTurnGroupDirectionalOrganization.py:69:        return self.to_dfs(['occurrences','occurrences_organizationMembers'])
+mquant/tis/frp/OpportunityInvestmentInterpretation.py:103:    def to_dfs(self,products=None):
+mquant/tis/frp/OpportunityInvestmentInterpretation.py:105:        result=super().to_dfs()
+mquant/tis/frp/OpportunityInvestmentInterpretation.py:122:        with self.selecting({'records':{a}}):left=self.to_dfs()
+mquant/tis/frp/OpportunityInvestmentInterpretation.py:123:        with self.selecting({'records':{b}}):right=self.to_dfs()
+mquant/tis/frp/OpportunityInvestmentInterpretation.py:179:          tables=self.to_dfs())
+mquant/tis/frp/PostTurnEpisodeDomainOrganization.py:86:        # 正常源的OnlyRead由其自己处理；本Q的OnlyRead不恢复上游。
+mquant/tis/frp/PostTurnEpisodeDomainOrganization.py:92:    def to_df(self):
+mquant/tis/frp/PostTurnEpisodeDomainOrganization.py:93:        raise TypeError('组织结果有原成员、J、pair、最大集合与限制；使用to_dfs')
+mquant/tis/frp/PostTurnEpisodeDomainOrganization.py:101:    def to_dfs(self, products=None):
+mquant/tis/frp/PostTurnEpisodeDomainOrganization.py:102:        return self.read_session().to_dfs(products)
+mquant/tis/frp/PostTurnEpisodeDomainOrganization.py:106:        return self.read_session(reference=reference).to_dfs(products)
+mquant/tis/frp/PostTurnEpisodeDomainOrganization.py:108:        return self.read_session(life=life).to_dfs(products)
+mquant/tis/frp/PostTurnEpisodeDomainOrganization.py:110:        return self.read_session(life=life, visibility=visibility, evaluation=evaluation).to_dfs(products)
+mquant/tis/frp/PostTurnEpisodeDomainOrganization.py:113:        return self.read_session(life=life, visibility=visibility, evaluation=evaluation).to_dfs(
+mquant/tis/frp/PostTurnEpisodeDomainOrganization.py:163:    # 二重列表沿Generic DBA原两层索引，组本身没有Life。
+mquant/tis/frp/ActivityMovementCorrespondence.py:20:__all__ = ["ActivityMovementCorrespondenceFrp", "activity_movement_correspondence_to_dfs"]
+mquant/tis/frp/ActivityMovementCorrespondence.py:69:def activity_movement_correspondence_to_dfs(feature, products=None):
+mquant/tis/frp/ActivityMovementCorrespondence.py:180:    def to_df(self):
+mquant/tis/frp/ActivityMovementCorrespondence.py:181:        raise TypeError("A04完整Pair/Case请使用to_dfs")
+mquant/tis/frp/ActivityMovementCorrespondence.py:183:    def to_dfs(self, products=None):
+mquant/tis/frp/ActivityMovementCorrespondence.py:184:        return activity_movement_correspondence_to_dfs(self, products)
+mquant/tis/frp/ActivityMovementCorrespondence.py:187:        tables = self.to_dfs()
+mquant/tis/frp/ActivityMovementCorrespondence.py:193:        tables = self.to_dfs()
+mquant/tis/frp/EarliestConfirmedMember.py:33:        if clusters.ggdict1().get('only_read', False): raise ValueError('Q02在线构造不能使用OnlyRead上游')
+mquant/tis/frp/EarliestConfirmedMember.py:46:    def to_df(self): raise TypeError('Q02完整域为多表，请用read_session/full_domain')
+mquant/tis/frp/EarliestConfirmedMember.py:52:    def to_dfs(self, products=None): return self.read_session().to_dfs(products)
+mquant/tis/frp/EarliestConfirmedMember.py:54:    def read_exact(self, reference, products=None): return self.read_session(reference=reference).to_dfs(products)
+mquant/tis/frp/EarliestConfirmedMember.py:55:    def read_at_knowledge(self, life, as_of, products=None): return self.read_session(life=life, as_of=as_of).to_dfs(products)
+mquant/tis/frp/EarliestConfirmedMember.py:57:        return self.read_session(host_life=host_life, as_of=as_of, batch_ordinal=batch_ordinal).to_dfs()
+mquant/tis/frp/EarliestConfirmedMember.py:232:    def to_dfs(self, products=None):
+mquant/tis/frp/EarliestConfirmedMember.py:233:        values=super().to_dfs(products)
+mquant/tis/frp/EarliestConfirmedMember.py:238:                original=super().to_dfs(products)
+mquant/tis/frp/EarliestConfirmedMember.py:273:        return {'exact':reference,'question':'Q02','intention':intention,'unique':intention==AssertionIntent.Asserted and len({r['earliestName'] for _,r in ties})==1,'assignment':assignment,'full_domain':self.to_dfs()}
+mquant/tis/frp/EarliestConfirmedMember.py:277:        return {'question':'Q02','targets':targets,'full_domain':self.to_dfs(),'missing_required':[r for r in targets if r not in existing]}
+mquant/tis/frp/LargestNormalizedJourneyMember.py:31:        if clusters.ggdict1().get('only_read', False): raise ValueError('Q03在线构造不能使用OnlyRead上游')
+mquant/tis/frp/LargestNormalizedJourneyMember.py:43:    def to_df(self): raise TypeError('Q03完整域为多表，请用read_session/full_domain')
+mquant/tis/frp/LargestNormalizedJourneyMember.py:49:    def to_dfs(self, products=None): return self.read_session().to_dfs(products)
+mquant/tis/frp/LargestNormalizedJourneyMember.py:51:    def read_exact(self, reference, products=None): return self.read_session(reference=reference).to_dfs(products)
+mquant/tis/frp/LargestNormalizedJourneyMember.py:52:    def read_at_knowledge(self, life, as_of, products=None): return self.read_session(life=life, as_of=as_of).to_dfs(products)
+mquant/tis/frp/LargestNormalizedJourneyMember.py:54:        return self.read_session(host_life=host_life, as_of=as_of, batch_ordinal=batch_ordinal).to_dfs()
+mquant/tis/frp/LargestNormalizedJourneyMember.py:291:    def to_dfs(self, products=None):
+mquant/tis/frp/LargestNormalizedJourneyMember.py:292:        values=super().to_dfs(products)
+mquant/tis/frp/LargestNormalizedJourneyMember.py:297:                original=super().to_dfs(products)
+mquant/tis/frp/LargestNormalizedJourneyMember.py:333:        return {'exact':reference,'question':'Q03','intention':intention,'unique':intention==AssertionIntent.Asserted and len({r['earliestName'] for _,r in ties})==1,'assignment':assignment,'full_domain':self.to_dfs()}
+mquant/tis/frp/LargestNormalizedJourneyMember.py:337:        return {'question':'Q03','targets':targets,'full_domain':self.to_dfs(),'missing_required':[r for r in targets if r not in existing]}
+mquant/tis/frp/ConversionAftermath.py:161:def conversion_aftermath_to_dfs(feature, products=None):
+mquant/tis/frp/ConversionAftermath.py:162:    return ConversionAftermathReadSession(feature).to_dfs(products)
+mquant/tis/frp/ConversionAftermath.py:188:    def to_df(self):
+mquant/tis/frp/ConversionAftermath.py:189:        raise TypeError('A06 为嵌套完整结果，请用 to_dfs 或准确读面')
+mquant/tis/frp/ConversionAftermath.py:191:    def to_dfs(self, products=None):
+mquant/tis/frp/ConversionAftermath.py:192:        return conversion_aftermath_to_dfs(self, products)
+mquant/tis/frp/OpportunityTargetScaleAppearance.py:88:        # 只用于正常计算；正式读取路径由框架OnlyRead，不调用此入口。
+mquant/tis/frp/OpportunityTargetScaleAppearance.py:99:    def to_df(self):
+mquant/tis/frp/OpportunityTargetScaleAppearance.py:100:        raise TypeError('O01保留范围、覆盖和见证多表，请用to_dfs/read_session')
+mquant/tis/frp/OpportunityTargetScaleAppearance.py:108:    def to_dfs(self, products=None):
+mquant/tis/frp/OpportunityTargetScaleAppearance.py:109:        return self.read_session().to_dfs(products)
+mquant/tis/frp/OpportunityTargetScaleAppearance.py:113:        return self.read_session(position=position).to_dfs(products)
+mquant/tis/frp/OpportunityTargetScaleAppearance.py:115:        return self.read_session(position=position, revision=revision).to_dfs(products)
+mquant/tis/frp/OpportunityTargetScaleAppearance.py:117:        return self.read_session(position=position, as_of=as_of).to_dfs(products)
+mquant/tis/frp/OpportunityCrossScaleCarriage.py:136:    def to_df(self):
+mquant/tis/frp/OpportunityCrossScaleCarriage.py:137:        raise TypeError('O02保完整Set/Relation/成员参与，请用to_dfs或准确read_session')
+mquant/tis/frp/OpportunityCrossScaleCarriage.py:145:    def to_dfs(self, products=None):
+mquant/tis/frp/OpportunityCrossScaleCarriage.py:146:        return self.read_session().to_dfs(products)
+mquant/tis/frp/OpportunityCrossScaleCarriage.py:155:        return self.read_session(family=family,key=key,revision=revision).to_dfs(products)
+mquant/tis/frp/OpportunityCrossScaleCarriage.py:157:        return self.read_session(family=family,key=key).to_dfs(products)
+mquant/tis/frp/OpportunityCrossScaleCarriage.py:159:        return self.read_session(family=family,key=key,as_of=as_of).to_dfs(products)
+mquant/tis/frp/OpportunityCrossScaleCarriage.py:423:        tables = self.to_dfs()
+mquant/tis/frp/MemberMovementSource.py:88:    def to_df(self):
+mquant/tis/frp/MemberMovementSource.py:90:    def to_dfs(self,products=None):
+mquant/tis/frp/MemberMovementSource.py:91:        return self.read_session().to_dfs(products)
+mquant/tis/frp/MemberMovementSource.py:95:        return self.read_session(reference=reference).to_dfs(products)
+mquant/tis/frp/MemberMovementSource.py:97:        return self.read_session(life=life,as_of=as_of).to_dfs(products)
+mquant/tis/frp/MemberMovementSource.py:396:                        calendar_grid=eval2('ResampleCalendarTsa')(**raw_calendar)).rerun(CalType.OnlyRead).to_df()
+mquant/tis/frp/DirectionalMovementOutcome.py:10:__all__ = ["DirectionalMovementOutcomeFrp", "movement_outcome_to_dfs", "native_outcome_price_binding"]
+mquant/tis/frp/DirectionalMovementOutcome.py:186:def movement_outcome_to_dfs(feature, products=None, parents=None):
+mquant/tis/frp/DirectionalMovementOutcome.py:327:    def to_df(self):
+mquant/tis/frp/DirectionalMovementOutcome.py:328:        raise TypeError("M10包含准确目标、范围、数值精度及恢复关系，请用to_dfs")
+mquant/tis/frp/DirectionalMovementOutcome.py:329:    def to_dfs(self, products=None):
+mquant/tis/frp/DirectionalMovementOutcome.py:330:        return movement_outcome_to_dfs(self, products)
+mquant/tis/frp/DirectionalMovementOutcome.py:346:        headers = movement_outcome_to_dfs(self, ["results"], selected)["results"]
+mquant/tis/frp/DirectionalMovementOutcome.py:349:        return movement_outcome_to_dfs(self, products, selected)
+mquant/tis/frp/DirectionalMovementOutcome.py:351:        headers = movement_outcome_to_dfs(self, ["results"])["results"]
+mquant/tis/frp/DirectionalMovementOutcome.py:360:        tables = movement_outcome_to_dfs(self, None, list(selected.index))
+mquant/tis/frp/DirectionalMovementOutcome.py:363:        return movement_outcome_to_dfs(self, products, list(unique.index))
+mquant/tis/frp/DirectionalMovementOutcome.py:365:        headers = movement_outcome_to_dfs(self, ["results"])["results"]
+mquant/tis/frp/DirectionalMovementOutcome.py:368:        tables = movement_outcome_to_dfs(self, None, list(selected.index))
+mquant/tis/frp/DirectionalMovementOutcome.py:371:        return movement_outcome_to_dfs(self, products, list(latest.index))
+mquant/tis/frp/DirectionalMovementGroups.py:11:__all__ = ["DirectionalMovementGroupsFrp", "movement_groups_to_dfs"]
+mquant/tis/frp/DirectionalMovementGroups.py:52:def movement_groups_to_dfs(feature, products=None, selections=None):
+mquant/tis/frp/DirectionalMovementGroups.py:337:    def to_df(self):
+mquant/tis/frp/DirectionalMovementGroups.py:338:        raise TypeError("M05有域/Group/成员及准确依据，请使用to_dfs")
+mquant/tis/frp/DirectionalMovementGroups.py:340:    def to_dfs(self, products=None):
+mquant/tis/frp/DirectionalMovementGroups.py:341:        return movement_groups_to_dfs(self, products)
+mquant/tis/frp/DirectionalMovementGroups.py:355:        tables = movement_groups_to_dfs(self, products=["groups"] + _GROUP_CHILDREN,
+mquant/tis/frp/DirectionalMovementGroups.py:390:        tables = movement_groups_to_dfs(self, products=["groups"] + _GROUP_CHILDREN,
+mquant/tis/frp/DirectionalMovementGroups.py:396:        tables = movement_groups_to_dfs(self, products=["groups"] + _GROUP_CHILDREN,
+mquant/tis/frp/DirectionalMovementGroups.py:409:            selected = movement_groups_to_dfs(self, products=names,
+mquant/tis/frp/DirectionalMovementGroups.py:418:        tables = movement_groups_to_dfs(self, products=['domains', 'domain_groups', 'domain_reasons', 'domain_outcomes', 'domain_outcome_basis', 'domain_outcome_scope', 'domain_outcome_reasons'],
+mquant/tis/frp/DirectionalMovementGroups.py:448:        tables = movement_groups_to_dfs(self, products=['domains', 'domain_groups', 'domain_reasons', 'domain_outcomes', 'domain_outcome_basis', 'domain_outcome_scope', 'domain_outcome_reasons'],
+mquant/tis/frp/MovementQualityGroupBehavior.py:13:__all__=["MovementQualityGroupBehaviorFrp", "movement_group_behavior_to_dfs"]
+mquant/tis/frp/MovementQualityGroupBehavior.py:21:def movement_group_behavior_to_dfs(feature, products=None, parents=None, *, _include_dependencies=False):
+mquant/tis/frp/MovementQualityGroupBehavior.py:146:    def to_dfs(self,products=None):return movement_group_behavior_to_dfs(self,products)
+mquant/tis/frp/MovementQualityGroupBehavior.py:149:        heads=movement_group_behavior_to_dfs(self,["results"],parents=target)["results"]
+mquant/tis/frp/MovementQualityGroupBehavior.py:176:        finite=movement_group_behavior_to_dfs(self,["finite_questions","finite_ranges","finite_ranges_subject_cluster"],parents=selected,
+mquant/tis/frp/MovementQualityGroupBehavior.py:202:        tables=movement_group_behavior_to_dfs(self,products,parents=selected,_include_dependencies=True)
+mquant/tis/frp/MovementQualityGroupBehavior.py:205:        return movement_group_behavior_to_dfs(self,products,parents=list(unique.index))
+mquant/tis/frp/MovementQualityGroupBehavior.py:216:            return movement_group_behavior_to_dfs(self,products,parents=[])
+mquant/tis/frp/DirectionalMovementGroupingBasis.py:12:__all__ = ["DirectionalMovementGroupingBasisFrp", "grouping_basis_to_dfs"]
+mquant/tis/frp/DirectionalMovementGroupingBasis.py:60:def grouping_basis_to_dfs(feature, products=None, *, event=None, record="mul.", base_depth=2):
+mquant/tis/frp/DirectionalMovementGroupingBasis.py:199:    def to_df(self):
+mquant/tis/frp/DirectionalMovementGroupingBasis.py:200:        raise TypeError("M04有全部逐过程依据及三种覆盖，请使用to_dfs/collection_results")
+mquant/tis/frp/DirectionalMovementGroupingBasis.py:201:    def to_dfs(self, products=None):
+mquant/tis/frp/DirectionalMovementGroupingBasis.py:202:        return grouping_basis_to_dfs(self, products)
+mquant/tis/frp/DirectionalMovementGroupingBasis.py:204:        return grouping_collection_to_dfs(self, products)
+mquant/tis/frp/DirectionalMovementGroupingBasis.py:208:        tables = self.to_dfs()
+mquant/tis/frp/DirectionalMovementGroupingBasis.py:233:        tables = self.to_dfs()
+mquant/tis/frp/DirectionalMovementGroupingBasis.py:246:def grouping_collection_to_dfs(feature, products=None, *, event="grouping_collections.v1", record="mul."):

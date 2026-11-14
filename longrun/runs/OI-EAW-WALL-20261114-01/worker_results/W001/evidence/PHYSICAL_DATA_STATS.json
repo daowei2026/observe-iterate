@@ -1,0 +1,364 @@
+{
+  "assets": [
+    {
+      "source_leaf": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/EawP1WallLifecycleFrp/1/c/b/0/c/1/4/44aea11813b85d33becc06242f43621b6/rb.night_end_at_2300",
+      "time_range_path": "2021-01-01 21:00:00~2021-12-31 20:00:00",
+      "mode": "historical materialized physical DBA; not current canonical schema",
+      "streams": {
+        "wall_occurrences": {
+          "firing_count": 241659,
+          "time": {
+            "scope": "first/last only; global min/max not asserted",
+            "first_utc": "2021-02-23T09:07:08.500000000Z",
+            "last_utc": "2021-12-31T14:58:53.000000000Z",
+            "first_raw": 1614071228500000000,
+            "last_raw": 1640962733000000000
+          },
+          "actual_time": null,
+          "confirm_time": null,
+          "known_time": null,
+          "time_role_reason": "physical writer trigger timestamps only; distinct actual/confirm/known columns absent in this legacy layout",
+          "list_record_count": 266469,
+          "anchor_event_count_matches": true,
+          "numeric_record_count": 266469,
+          "anchor_last_matches_numeric_records": true
+        },
+        "wall_current_view": {
+          "firing_count": 241659,
+          "time": {
+            "scope": "first/last only; global min/max not asserted",
+            "first_utc": "2021-02-23T09:07:08.500000000Z",
+            "last_utc": "2021-12-31T14:58:53.000000000Z",
+            "first_raw": 1614071228500000000,
+            "last_raw": 1640962733000000000
+          },
+          "actual_time": null,
+          "confirm_time": null,
+          "known_time": null,
+          "time_role_reason": "physical writer trigger timestamps only; distinct actual/confirm/known columns absent in this legacy layout",
+          "list_record_count": 254424,
+          "anchor_event_count_matches": true,
+          "numeric_record_count": 254424,
+          "anchor_last_matches_numeric_records": true
+        },
+        "wall_diagnostics": {
+          "firing_count": 7456,
+          "time": {
+            "scope": "first/last only; global min/max not asserted",
+            "first_utc": "2021-02-23T14:20:05.500000000Z",
+            "last_utc": "2021-12-31T14:58:35.000000000Z",
+            "first_raw": 1614090005500000000,
+            "last_raw": 1640962715000000000
+          },
+          "actual_time": null,
+          "confirm_time": null,
+          "known_time": null,
+          "time_role_reason": "physical writer trigger timestamps only; distinct actual/confirm/known columns absent in this legacy layout",
+          "list_record_count": 7469,
+          "anchor_event_count_matches": true
+        }
+      }
+    },
+    {
+      "source_leaf": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/EawP1WallLifecycleFrp/1/c/b/0/c/1/4/44aea11813b85d33becc06242f43621b6/rb.night_end_at_2300",
+      "time_range_path": "2020-12-01 21:00:00~2021-02-22 20:00:00",
+      "mode": "historical materialized physical DBA; not current canonical schema",
+      "streams": {
+        "wall_occurrences": {
+          "firing_count": 14858,
+          "time": {
+            "scope": "full short-window physical firing timestamp column",
+            "min_raw": 1610615050000000000,
+            "max_raw": 1614005070000000000,
+            "min_utc": "2021-01-14T09:04:10.000000000Z",
+            "max_utc": "2021-02-22T14:44:30.000000000Z",
+            "monotonic_non_decreasing": true,
+            "zero_timestamps": 0
+          },
+          "actual_time": null,
+          "confirm_time": null,
+          "known_time": null,
+          "time_role_reason": "physical writer trigger timestamps only; distinct actual/confirm/known columns absent in this legacy layout",
+          "list_record_count": 15809,
+          "anchor_event_count_matches": true,
+          "numeric_record_count": 15809,
+          "anchor_last_matches_numeric_records": true,
+          "local_no_stats": {
+            "min": 1,
+            "max": 5013,
+            "distinct": 5009,
+            "zero_count": 0,
+            "negative_count": 0
+          },
+          "occurred_at_raw_stats": {
+            "min": 72335299,
+            "max": 73256339,
+            "zero_count": 0,
+            "reason": "stored Int field; sample joins upstream uti, do not relabel as epoch time"
+          },
+          "float_columns": {
+            "p1WallCore": {
+              "count": 15809,
+              "nan_count": 0,
+              "infinite_count": 0,
+              "min_finite": 0.0,
+              "max_finite": 4670.0,
+              "zero_count": 4807
+            },
+            "p1WallBandLow": {
+              "count": 15809,
+              "nan_count": 0,
+              "infinite_count": 0,
+              "min_finite": 0.0,
+              "max_finite": 4670.0,
+              "zero_count": 4807
+            },
+            "p1WallBandHigh": {
+              "count": 15809,
+              "nan_count": 0,
+              "infinite_count": 0,
+              "min_finite": 0.0,
+              "max_finite": 4670.0,
+              "zero_count": 4807
+            }
+          }
+        },
+        "wall_current_view": {
+          "firing_count": 14858,
+          "time": {
+            "scope": "full short-window physical firing timestamp column",
+            "min_raw": 1610615050000000000,
+            "max_raw": 1614005070000000000,
+            "min_utc": "2021-01-14T09:04:10.000000000Z",
+            "max_utc": "2021-02-22T14:44:30.000000000Z",
+            "monotonic_non_decreasing": true,
+            "zero_timestamps": 0
+          },
+          "actual_time": null,
+          "confirm_time": null,
+          "known_time": null,
+          "time_role_reason": "physical writer trigger timestamps only; distinct actual/confirm/known columns absent in this legacy layout",
+          "list_record_count": 15208,
+          "anchor_event_count_matches": true,
+          "numeric_record_count": 15208,
+          "anchor_last_matches_numeric_records": true,
+          "local_no_stats": {
+            "min": 1,
+            "max": 5013,
+            "distinct": 5009,
+            "zero_count": 0,
+            "negative_count": 0
+          }
+        },
+        "wall_diagnostics": {
+          "firing_count": 328,
+          "time": {
+            "scope": "full short-window physical firing timestamp column",
+            "min_raw": 1610616679500000000,
+            "max_raw": 1613988543500000000,
+            "min_utc": "2021-01-14T09:31:19.500000000Z",
+            "max_utc": "2021-02-22T10:09:03.500000000Z",
+            "monotonic_non_decreasing": true,
+            "zero_timestamps": 0
+          },
+          "actual_time": null,
+          "confirm_time": null,
+          "known_time": null,
+          "time_role_reason": "physical writer trigger timestamps only; distinct actual/confirm/known columns absent in this legacy layout",
+          "list_record_count": 328,
+          "anchor_event_count_matches": true
+        }
+      }
+    }
+  ],
+  "read_budget": {
+    "bytes_read": 994952,
+    "byte_limit": 3145728,
+    "seconds_limit": 18,
+    "elapsed_seconds": 0.1075024509918876,
+    "calls": 21,
+    "files": [
+      {
+        "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/EawP1WallLifecycleFrp/1/c/b/0/c/1/4/44aea11813b85d33becc06242f43621b6/rb.night_end_at_2300/wall_occurrences.__ts__.dba",
+        "offset": 64,
+        "item_size": 8,
+        "n": 241659,
+        "size": 1933336,
+        "mtime_ns": 1787624031481493303,
+        "unchanged_size_and_mtime": true
+      },
+      {
+        "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/EawP1WallLifecycleFrp/1/c/b/0/c/1/4/44aea11813b85d33becc06242f43621b6/rb.night_end_at_2300/wall_occurrences/[P1WallOccurrenceStorage]/anchor.dba",
+        "offset": 64,
+        "item_size": 8,
+        "n": 241659,
+        "size": 1933336,
+        "mtime_ns": 1787624032918892473,
+        "unchanged_size_and_mtime": true
+      },
+      {
+        "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/EawP1WallLifecycleFrp/1/c/b/0/c/1/4/44aea11813b85d33becc06242f43621b6/rb.night_end_at_2300/wall_occurrences/[P1WallOccurrenceStorage]/p1WallOccurrenceLocalNo::Int64.dba",
+        "offset": 64,
+        "item_size": 8,
+        "n": 266469,
+        "size": 2131816,
+        "mtime_ns": 1787624032930052810,
+        "unchanged_size_and_mtime": true
+      },
+      {
+        "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/EawP1WallLifecycleFrp/1/c/b/0/c/1/4/44aea11813b85d33becc06242f43621b6/rb.night_end_at_2300/wall_current_view.__ts__.dba",
+        "offset": 64,
+        "item_size": 8,
+        "n": 241659,
+        "size": 1933336,
+        "mtime_ns": 1787623977537088111,
+        "unchanged_size_and_mtime": true
+      },
+      {
+        "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/EawP1WallLifecycleFrp/1/c/b/0/c/1/4/44aea11813b85d33becc06242f43621b6/rb.night_end_at_2300/wall_current_view/[P1WallCurrentStorage]/anchor.dba",
+        "offset": 64,
+        "item_size": 8,
+        "n": 241659,
+        "size": 1933336,
+        "mtime_ns": 1787623994026342041,
+        "unchanged_size_and_mtime": true
+      },
+      {
+        "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/EawP1WallLifecycleFrp/1/c/b/0/c/1/4/44aea11813b85d33becc06242f43621b6/rb.night_end_at_2300/wall_current_view/[P1WallCurrentStorage]/p1WallCurrentLocalNo::Int64.dba",
+        "offset": 64,
+        "item_size": 8,
+        "n": 254424,
+        "size": 2035456,
+        "mtime_ns": 1787623993944361007,
+        "unchanged_size_and_mtime": true
+      },
+      {
+        "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/EawP1WallLifecycleFrp/1/c/b/0/c/1/4/44aea11813b85d33becc06242f43621b6/rb.night_end_at_2300/wall_diagnostics.__ts__.dba",
+        "offset": 64,
+        "item_size": 8,
+        "n": 7456,
+        "size": 59712,
+        "mtime_ns": 1787623978370526261,
+        "unchanged_size_and_mtime": true
+      },
+      {
+        "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/EawP1WallLifecycleFrp/1/c/b/0/c/1/4/44aea11813b85d33becc06242f43621b6/rb.night_end_at_2300/wall_diagnostics/[P1DiagnosticStorage]/anchor.dba",
+        "offset": 64,
+        "item_size": 8,
+        "n": 7456,
+        "size": 59712,
+        "mtime_ns": 1787623994025573543,
+        "unchanged_size_and_mtime": true
+      },
+      {
+        "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/EawP1WallLifecycleFrp/1/c/b/0/c/1/4/44aea11813b85d33becc06242f43621b6/rb.night_end_at_2300/wall_occurrences.__ts__.dba",
+        "offset": 64,
+        "item_size": 8,
+        "n": 14858,
+        "size": 118928,
+        "mtime_ns": 1787465291263770170,
+        "unchanged_size_and_mtime": true
+      },
+      {
+        "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/EawP1WallLifecycleFrp/1/c/b/0/c/1/4/44aea11813b85d33becc06242f43621b6/rb.night_end_at_2300/wall_occurrences/[P1WallOccurrenceStorage]/anchor.dba",
+        "offset": 64,
+        "item_size": 8,
+        "n": 14858,
+        "size": 118928,
+        "mtime_ns": 1787465324133574916,
+        "unchanged_size_and_mtime": true
+      },
+      {
+        "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/EawP1WallLifecycleFrp/1/c/b/0/c/1/4/44aea11813b85d33becc06242f43621b6/rb.night_end_at_2300/wall_occurrences/[P1WallOccurrenceStorage]/p1WallOccurrenceLocalNo::Int64.dba",
+        "offset": 64,
+        "item_size": 8,
+        "n": 15809,
+        "size": 126536,
+        "mtime_ns": 1787465324187740743,
+        "unchanged_size_and_mtime": true
+      },
+      {
+        "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/EawP1WallLifecycleFrp/1/c/b/0/c/1/4/44aea11813b85d33becc06242f43621b6/rb.night_end_at_2300/wall_occurrences/[P1WallOccurrenceStorage]/p1WallLifecycleOccurredAt::Int.dba",
+        "offset": 64,
+        "item_size": 8,
+        "n": 15809,
+        "size": 126536,
+        "mtime_ns": 1787465324185512438,
+        "unchanged_size_and_mtime": true
+      },
+      {
+        "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/EawP1WallLifecycleFrp/1/c/b/0/c/1/4/44aea11813b85d33becc06242f43621b6/rb.night_end_at_2300/wall_occurrences/[P1WallOccurrenceStorage]/p1WallCore::Double.dba",
+        "offset": 64,
+        "item_size": 8,
+        "n": 15809,
+        "size": 126536,
+        "mtime_ns": 1787465324172847800,
+        "unchanged_size_and_mtime": true
+      },
+      {
+        "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/EawP1WallLifecycleFrp/1/c/b/0/c/1/4/44aea11813b85d33becc06242f43621b6/rb.night_end_at_2300/wall_occurrences/[P1WallOccurrenceStorage]/p1WallBandLow::Double.dba",
+        "offset": 64,
+        "item_size": 8,
+        "n": 15809,
+        "size": 126536,
+        "mtime_ns": 1787465324132172060,
+        "unchanged_size_and_mtime": true
+      },
+      {
+        "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/EawP1WallLifecycleFrp/1/c/b/0/c/1/4/44aea11813b85d33becc06242f43621b6/rb.night_end_at_2300/wall_occurrences/[P1WallOccurrenceStorage]/p1WallBandHigh::Double.dba",
+        "offset": 64,
+        "item_size": 8,
+        "n": 15809,
+        "size": 126536,
+        "mtime_ns": 1787465324169012812,
+        "unchanged_size_and_mtime": true
+      },
+      {
+        "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/EawP1WallLifecycleFrp/1/c/b/0/c/1/4/44aea11813b85d33becc06242f43621b6/rb.night_end_at_2300/wall_current_view.__ts__.dba",
+        "offset": 64,
+        "item_size": 8,
+        "n": 14858,
+        "size": 118928,
+        "mtime_ns": 1787465288488094711,
+        "unchanged_size_and_mtime": true
+      },
+      {
+        "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/EawP1WallLifecycleFrp/1/c/b/0/c/1/4/44aea11813b85d33becc06242f43621b6/rb.night_end_at_2300/wall_current_view/[P1WallCurrentStorage]/anchor.dba",
+        "offset": 64,
+        "item_size": 8,
+        "n": 14858,
+        "size": 118928,
+        "mtime_ns": 1787465319017498642,
+        "unchanged_size_and_mtime": true
+      },
+      {
+        "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/EawP1WallLifecycleFrp/1/c/b/0/c/1/4/44aea11813b85d33becc06242f43621b6/rb.night_end_at_2300/wall_current_view/[P1WallCurrentStorage]/p1WallCurrentLocalNo::Int64.dba",
+        "offset": 64,
+        "item_size": 8,
+        "n": 15208,
+        "size": 121728,
+        "mtime_ns": 1787465319012207581,
+        "unchanged_size_and_mtime": true
+      },
+      {
+        "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/EawP1WallLifecycleFrp/1/c/b/0/c/1/4/44aea11813b85d33becc06242f43621b6/rb.night_end_at_2300/wall_diagnostics.__ts__.dba",
+        "offset": 64,
+        "item_size": 8,
+        "n": 328,
+        "size": 2688,
+        "mtime_ns": 1787465288557801525,
+        "unchanged_size_and_mtime": true
+      },
+      {
+        "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/EawP1WallLifecycleFrp/1/c/b/0/c/1/4/44aea11813b85d33becc06242f43621b6/rb.night_end_at_2300/wall_diagnostics/[P1DiagnosticStorage]/anchor.dba",
+        "offset": 64,
+        "item_size": 8,
+        "n": 328,
+        "size": 2688,
+        "mtime_ns": 1787465319017557649,
+        "unchanged_size_and_mtime": true
+      }
+    ]
+  },
+  "text_null_scope": "only sampled values in SHORT_WINDOW_PHYSICAL_PROBE; global text null count unknown"
+}

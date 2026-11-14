@@ -1,0 +1,311 @@
+FILE /dwdhome/fy/BASE_E6_2/mquant/tis/test/integration/verify_eaw_p1_real_run.py LINES 822
+120: def validate_fixture(value, *, allow_placeholders=True):
+121:     value = _require_keys(value, ("runner_contract_version", "normal_run"), "fixture")
+122:     if set(value) != {"runner_contract_version", "normal_run"}:
+123:         raise RunnerContractError("v1.6.1 fixture 不接受 source-correction 或其他运行模式")
+124:     if value["runner_contract_version"] != RUNNER_VERSION:
+125:         raise RunnerContractError("runner_contract_version 不匹配")
+126:     run = _require_keys(
+127:         value["normal_run"],
+128:         (
+129:             "sof_name",
+130:             "stk_tlist",
+131:             "startDay",
+132:             "endDay",
+133:             "symbol",
+134:             "frp_calendar",
+135:         ),
+136:         "normal_run",
+137:     )
+138:     for key in (
+139:         "sof_name",
+140:         "stk_tlist",
+141:         "startDay",
+142:         "endDay",
+143:         "symbol",
+144:         "frp_calendar",
+145:     ):
+146:         if not isinstance(run[key], str) or not run[key]:
+147:             raise RunnerContractError(f"normal_run.{key} 必须是非空字符串")
+148:         if not allow_placeholders and run[key].startswith(PLACEHOLDER_PREFIX):
+149:             raise RunnerContractError("真实执行拒绝 REPLACE_* 占位值")
+150:     parameters = run.get("feature_parameters", {})
+151:     if not isinstance(parameters, dict):
+152:         raise RunnerContractError("normal_run.feature_parameters 必须是对象")
+153:     unknown = sorted(set(parameters).difference(EXECUTION_ORDER))
+154:     if unknown:
+155:         raise RunnerContractError(f"feature_parameters 含未知 Feature 实例: {unknown}")
+156:     if any(not isinstance(item, dict) for item in parameters.values()):
+157:         raise RunnerContractError("feature_parameters 每项必须是对象")
+158:     return value
+159: 
+160: 
+161: def _require_heavy_authorization():
+162:     if os.environ.get(AUTH_ENV) != "YES":
+163:         raise RunnerContractError(
+164:             f"重型运行未获授权：必须由 owner 明确授权后设置 {AUTH_ENV}=YES"
+165:         )
+166: 
+167: 
+168: def _tis_worktree_root():
+169:     return Path(__file__).resolve().parents[2]
+170: 
+171: 
+172: def _bind_tis_worktree_package():
+173:     """把 `mquant.tis` 精确绑定到承载本 runner 的 TIS worktree。"""
+174:     root = _tis_worktree_root().resolve()
+299: def _build_frp_tasks(runtime, context, config, features):
+300:     """按平台既有 FrpTaskParam/worker 合同生成四个独立任务。"""
+301:     with runtime["CurrFrpEnv"]():
+302:         source_json = {
+303:             name: feature.for_json() for name, feature in features.items()
+304:         }
+305:         payloads = _build_frp_parameter_payloads(source_json)
+306:         target = _tagged(
+307:             "CalendarTarget",
+308:             calendar=config["frp_calendar"],
+309:             target=_tagged("Symbol", sym=config["symbol"]),
+310:         )
+311:         return tuple(
+312:             (
+313:                 name,
+314:                 {
+315:                     "target": target,
+316:                     "task_params": runtime["FrpTaskParam"](
+317:                         name=name,
+318:                         params=params,
+319:                         sof=context.sof,
+320:                         enable_extra=True,
+321:                     ).for_json(),
+322:                     "cal_type": "Gen",
+323:                 },
+324:             )
+325:             for name, params in payloads
+326:         )
+327: 
+328: 
+329: def _cabal_package_name(package_dir):
+427: def _prepare_frp_executable(binding, evidence_dir):
+428:     build_command = (
+429:         binding["stack_executable"],
+430:         "--stack-yaml",
+431:         binding["stack_yaml"],
+432:         "build",
+433:         FRP_STACK_TARGET,
+434:         "--no-run-tests",
+435:     )
+436:     build_log = Path(evidence_dir) / "frp_build" / "stack-build.log"
+437:     _run_command(
+438:         build_command,
+439:         cwd=binding["project_root"],
+440:         log_path=build_log,
+441:         label="当前 FRP worktree 的 Stack 构建",
+442:     )
+443:     path_command = (
+444:         binding["stack_executable"],
+445:         "--stack-yaml",
+446:         binding["stack_yaml"],
+447:         "path",
+448:         "--local-install-root",
+449:     )
+450:     path_log = Path(evidence_dir) / "frp_build" / "stack-path.log"
+451:     local_install_root = _run_command(
+452:         path_command,
+453:         cwd=binding["project_root"],
+454:         log_path=path_log,
+455:         label="FRP Stack executable 定位",
+456:     ).strip()
+457:     host_executable = Path(local_install_root) / "bin" / "ts"
+458:     if not host_executable.is_file() or not os.access(host_executable, os.X_OK):
+459:         raise RunnerContractError(
+460:             f"Stack 构建完成但未找到 trade-poc ts executable: {host_executable}"
+461:         )
+462:     return {
+463:         "host_executable": host_executable.resolve(),
+464:         "worker_file": binding["worker_file"],
+465:         "workdir": binding["project_root"],
+466:         "build_command": [str(item) for item in build_command],
+467:         "build_log": str(build_log),
+468:         "path_command": [str(item) for item in path_command],
+469:         "path_log": str(path_log),
+470:     }
+471: 
+472: 
+473: def _git_snapshot(root, label):
+652: 
+653: 
+654: def execute_normal(
+655:     runtime,
+656:     fixture,
+657:     evidence_dir,
+658:     *,
+659:     frp_execution,
+660:     frp_binding,
+661:     code_snapshots,
+662: ):
+663:     config = fixture["normal_run"]
+664:     context = runtime["OptContext"](
+665:         {
+666:             "sof_name": config["sof_name"],
+667:             "stk_tlist": config["stk_tlist"],
+668:             "startDay": config["startDay"],
+669:             "endDay": config["endDay"],
+670:         }
+671:     )
+672:     features = _construct_features(runtime, config)
+673:     receipts = []
+674:     feature_evidence = []
+675:     with (
+676:         runtime["CurrTradeSet"](context.sof),
+677:         runtime["CurrSymbol"](config["symbol"]),
+678:         runtime["CurrCalendar"](config["frp_calendar"]),
+679:     ):
+680:         for instance_name in EXECUTION_ORDER:
+681:             feature = features[instance_name]
+682:             result = feature.run().F
+683:             loaded = [
+684:                 runtime["load_p1_product_receipt"](feature, kind)
+685:                 for kind in PRODUCT_KINDS_BY_INSTANCE[instance_name]
+686:             ]
+687:             receipts.extend(loaded)
+688:             feature_evidence.append(
+689:                 {
+690:                     "feature_instance": instance_name,
+691:                     "feature_class": type(feature).__name__,
+692:                     "product_kinds": [item["product_kind"] for item in loaded],
+693:                     "parameter_set_ids": [item["parameter_set_id"] for item in loaded],
+694:                     "artifact_directory": str(feature.full_dir),
+695:                     "result_keys": sorted(result.keys()),
+696:                 }
+697:             )
+698:     evidence_dir = Path(evidence_dir)
+699:     for item in receipts:
+700:         filename = f"{item['product_kind']}__{item['parameter_set_id']}.json"
+701:         _write_json_atomic(evidence_dir / "receipts" / filename, item)
+702: 
+703:     tasks = _build_frp_tasks(runtime, context, config, features)
+704:     manifest = {
+705:         "runner_contract_version": RUNNER_VERSION,
+706:         "mode": "tis_stage",
+707:         "context": {
+708:             key: config[key]
+709:             for key in (
+710:                 "sof_name",
+711:                 "stk_tlist",
+712:                 "startDay",
+713:                 "endDay",
+714:                 "symbol",
+715:                 "frp_calendar",
+716:             )
+717:         },
+718:         "execution_order": list(EXECUTION_ORDER),
+719:         "features": feature_evidence,
+720:         "thin_receipt_count": len(receipts),
+721:         "required_haskell_product_features": list(REQUIRED_PRODUCT_FEATURES),
+722:         "frp_tasks": [name for name, _ in tasks],
+723:         "frp_stage_executed": False,
+724:         "code_snapshots": code_snapshots,
+725:         "frp_execution_binary": {
+726:             "path": str(frp_execution["host_executable"]),
+727:             "sha256": _sha256_file(frp_execution["host_executable"]),
+728:             "worker_file": str(frp_execution["worker_file"]),
+729:             "worker_sha256": _sha256_file(frp_execution["worker_file"]),
+730:             "stack_executable": str(frp_binding["stack_executable"]),
+731:             "stack_yaml": str(frp_binding["stack_yaml"]),
+732:             "stack_yaml_sha256": _sha256_file(frp_binding["stack_yaml"]),
+733:             "stack_package_count": frp_binding["package_count"],
+734:             "build_command": frp_execution["build_command"],
+735:             "build_log": frp_execution["build_log"],
+736:         },
+737:         "python_aidata_return_in_scope": False,
+738:         "source_correction_in_scope": False,
+739:         "p1_p2_p3_joint_pass_claimed": False,
+740:     }
+741:     _write_json_atomic(evidence_dir / "FRP_INGRESS_MANIFEST.json", manifest)
+742: 
+743:     frp_evidence = _run_frp_tasks(
+744:         tasks,
+745:         evidence_dir,
+746:         frp_execution["host_executable"],
+747:         frp_execution["worker_file"],
+748:         frp_execution["workdir"],
+749:     )
+750:     manifest["frp_stage_executed"] = True
+751:     manifest["frp_execution_evidence"] = frp_evidence
+752:     _write_json_atomic(evidence_dir / "FRP_INGRESS_MANIFEST.json", manifest)
+753:     _write_json_atomic(
+754:         evidence_dir / "RUN_REPORT.json",
+755:         {
+756:             "runner_contract_version": RUNNER_VERSION,
+757:             "run_kind": "normal",
+758:             "tis_stage_complete": True,
+759:             "frp_stage_complete": True,
+760:             "frp_product_feature_count": len(frp_evidence),
+761:             "p2_fixture_consumer_proof": "由同一提交的 P1EndToEndSpec 字段级 consumer fixture 证明；不声称 P1/P2/P3 common-HEAD 联合运行",
+762:             "heavy_run_authorized": True,
+763:             "code_snapshots": code_snapshots,
+764:             "frp_host_executable_sha256": _sha256_file(
+765:                 frp_execution["host_executable"]
+766:             ),
+767:             "thin_receipt_count": len(receipts),
+768:             "p1_p2_p3_joint_pass_claimed": False,
+769:         },
+770:     )
+771: 
+772: 
+773: def parse_args(argv=None):
+774:     parser = argparse.ArgumentParser()
+775:     parser.add_argument("--fixture", required=True, type=Path)
+776:     parser.add_argument("--execute-normal", action="store_true")
+777:     parser.add_argument("--evidence-dir", type=Path)
+778:     parser.add_argument("--frp-stack-executable", type=Path)
+779:     parser.add_argument("--frp-stack-yaml", type=Path)
+780:     parser.add_argument("--frp-project-root", type=Path)
+781:     parser.add_argument("--frp-source-worktree", type=Path)
+782:     return parser.parse_args(argv)
+783: 
+784: 
+785: def main(argv=None):
+786:     args = parse_args(argv)
+787:     fixture = validate_fixture(
+788:         _read_json(args.fixture), allow_placeholders=not args.execute_normal
+789:     )
+790:     if not args.execute_normal:
+791:         print("PASS: EAW P1 v1.6.1 real-run fixture valid; no heavy run executed")
+792:         return 0
+793:     _require_heavy_authorization()
+794:     if args.evidence_dir is None or not args.evidence_dir.is_absolute():
+795:         raise RunnerContractError("真实执行必须用 --evidence-dir 指定绝对目录")
+796:     if args.evidence_dir.exists() and any(args.evidence_dir.iterdir()):
+797:         raise RunnerContractError("evidence-dir 必须不存在或为空，拒绝覆盖既有证据")
+798:     frp_binding = _validate_frp_stack_binding(
+799:         args.frp_stack_executable,
+800:         args.frp_stack_yaml,
+801:         args.frp_project_root,
+802:         args.frp_source_worktree,
+803:     )
+804:     code_snapshots = {
+805:         "tis": _git_snapshot(_tis_worktree_root(), "TIS"),
+806:         "frp": _git_snapshot(args.frp_source_worktree, "FRP"),
+807:     }
+808:     args.evidence_dir.mkdir(parents=True, exist_ok=True)
+809:     frp_execution = _prepare_frp_executable(frp_binding, args.evidence_dir)
+810:     execute_normal(
+811:         _runtime_imports(),
+812:         fixture,
+813:         args.evidence_dir,
+814:         frp_execution=frp_execution,
+815:         frp_binding=frp_binding,
+816:         code_snapshots=code_snapshots,
+817:     )
+818:     return 0
+819: 
+820: 
+821: if __name__ == "__main__":
+822:     raise SystemExit(main())
+FUNCTION_SPAN _runtime_imports 216 230
+FUNCTION_SPAN _build_frp_parameter_payloads 237 296
+FUNCTION_SPAN _run_command 410 424
+FUNCTION_SPAN _prepare_frp_executable 427 470
+FUNCTION_SPAN _run_frp_tasks 562 600
+FUNCTION_SPAN main 785 818

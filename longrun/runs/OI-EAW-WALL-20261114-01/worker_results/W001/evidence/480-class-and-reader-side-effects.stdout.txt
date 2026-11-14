@@ -1,0 +1,112 @@
+FILE /dwdhome/fy/BASE_E6_2/mquant/frame/core/app/env.py EXISTS True
+110:     StraEnv 其他扩展
+111:     1、获取以及检查所有特征类等
+112:     2、清楚类实例以及运行时环境等缓存
+113:     """
+114: 
+115:     class_cache: Dict[str, "FaoCacheMeta"] = {}
+116: 
+117:     @classmethod
+118:     def clear_cache(cls):
+119:         # 清除特征类实例缓存
+120:         for each in cls.class_cache.values():
+121:             each.clear_instance()
+122:         # 清除运行时缓存
+123:         FaoResultManager.clear_cache()
+124: 
+125:     @classmethod
+126:     def push_class(cls, v):
+127:         """保存特征类"""
+128:         cls.class_cache[v.__name__] = v
+129: 
+130:     @classmethod
+131:     def load_class(cls):
+132:         """加载所有特征类"""
+133:         return cls.class_cache
+134: 
+135:     @classmethod
+136:     def get_class(cls, name: str, reget=True):
+137:         c = cls.class_cache.get(name, None)
+138:         if c is None and reget:
+139:             name = name.split("@")[0]  # ATR@"Test" 有可能为该格式
+140:             c = cls.class_cache.get(name, None)
+141:             if c is None and reget:
+142:                 # 可能是函数特征，在不改变原有基础上，再查询一次
+143:                 name = FuncUtil.hump(name)
+144:                 c = cls.get_class(name, reget=False)
+145:         return c
+146: 
+147:     @classmethod
+148:     def check_class(cls, name):
+149:         if settings.MQUANT_ON_CHECK:
+150:             return cls.get_class(name, reget=False)
+151:         return None
+152: 
+153: 
+154: class KwMeta(type):
+155:     """初始化类关键字列表"""
+156: 
+157:     KEY_WORDS = set()  # set
+158: 
+159:     def __new__(cls, name, bases, attrs):
+160:         res = type.__new__(cls, name, bases, attrs)
+161:         res.KEY_WORDS = res.KEY_WORDS.union(dir(res))
+162:         return res
+163:     
+164: 
+165: class FaoCacheMeta(KwMeta):
+166:     """缓存实例Meta"""
+167: 
+168:     instance_cache = None
+169:     cls_doc = object
+170: 
+171:     def __new__(cls, name, bases, attrs):
+172:         res = super().__new__(cls, name, bases, attrs)
+173:         res.instance_cache = GeneralCache()
+174:         StraApp.push_class(res)
+175:         return res
+176:     
+177:     def getDoc(cls):
+178:         if cls.cls_doc is object:
+179:             from ..base.doc import Doc
+180:             try:
+181:                 cls.cls_doc = Doc.from_doc(cls)
+182:             except:
+183:                 cls.cls_doc = None
+184:         return cls.cls_doc
+185: 
+186:     def create_instance(cls, *args, **kwargs):
+187:         raise NotImplementedError(f"{cls.__name__} have no impl create_instance")
+188: 
+189:     def new_instance(cls, meta, *args, **kwargs):
+190:         return super(meta, cls).__call__(*args, **kwargs)
+191: 
+192:     def cache_instance(cls, meta, key, *args, **kwargs):
+193:         _value = CurrFaoCache.get_instance_cache(cls,key)
+194:         if _value is None:
+195:             _value = super(meta, cls).__call__(*args, **kwargs)
+196:             CurrFaoCache.set_instance_cache(cls,key, _value)
+197:         return _value
+198: 
+199:     def clear_instance(cls):
+200:         cls.instance_cache = GeneralCache()
+201: 
+202: 
+203: class CurrSof(AbsContextManager):
+204:     """
+205:     当前数据源,自动管理CurrTradeSet
+206:     Params:
+207:         rewith:
+208:             - True表示需要重新 with CurrTradeSet
+209:     """
+210: 
+211:     __slots__ = ["_sof", "_rewith", "_tradeset"]
+212: 
+213:     def __init__(self, rewith=False, **kwargs):
+214:         old_sof: Sof = CurrTradeSet.sof()
+215: 
+FILE /dwdhome/fy/BASE_E6_2/mquant/frame/lang/internal/abstract/fao.py EXISTS False
+DIR mquant/frame/lang/internal/mixin [('__init__.py', False), ('__pycache__', True), ('doc.py', False), ('misc.py', False), ('pp.py', False)]
+DIR mquant/frame/lang/internal/data []
+DIR mquant/frame/core/app [('__init__.py', False), ('__pycache__', True), ('env.py', False), ('proxy.py', False), ('type.py', False), ('utils.py', False)]
+DIR mquant/frame/lang/internal/abstract []

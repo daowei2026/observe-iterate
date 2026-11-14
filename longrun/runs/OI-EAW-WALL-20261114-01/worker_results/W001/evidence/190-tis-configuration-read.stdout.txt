@@ -1,0 +1,744 @@
+FILE /dwdhome/fy/BASE_E6_2/mquant/tis/frp/EawBattleP.py LINES 1 115
+1: """EAW P1 typed ingress 与 P2 八项主产品、三条成员流的正式 Python Fao 包装。"""
+2: 
+3: from __future__ import annotations
+4: 
+5: import hashlib
+6: 
+7: import numpy as np
+8: import pandas as pd
+9: 
+10: from mquant.frame import BaseSymbolFrpFao, CalType, FAnyParam
+11: from mquant.tis.hf.prel0.absorb_assembler import AbsorbAssembler
+12: from mquant.tis.hf.prel0.attack_flow_assembler import AttackFlowAssembler
+13: from mquant.tis.hf.prel0.build_assembler import BuildAssembler
+14: from mquant.tis.hf.prel0.pressure_big_deal import DirectedBigDealTick
+15: from mquant.tis.hf.prel0.wall_assembler import WallAssembler
+16: 
+17: from .Base import FrpAdtDfMixIn
+18: 
+19: __all__ = [
+20:     "WallOccurrenceFao",
+21:     "BuildOccurrenceFao",
+22:     "AttackSegmentFao",
+23:     "FormationEvidenceFao",
+24:     "WallBarrierFao",
+25:     "AbsorbOccurrenceFao",
+26:     "EawP1WallLifecycleFrp",
+27:     "EawP1BuildActivityFrp",
+28:     "EawP1AttackSegmentBookFrp",
+29:     "EawP1AbsorbInteractionFrp",
+30:     "EawBattleP",
+31: ]
+32: 
+33: 
+34: class _OnlyReadTypedIngress(BaseSymbolFrpFao):
+35:     __abstract_fao__ = True
+36: 
+37:     def hold_cal_type(self):
+38:         return CalType.OnlyRead
+39: 
+40: 
+41: class _CalculatedP1Product(BaseSymbolFrpFao):
+42:     __abstract_fao__ = True
+43: 
+44:     def hold_cal_type(self):
+45:         return CalType.Cache
+46: 
+47:     def to_df(self):
+48:         raise TypeError(
+49:             f"{type(self).__name__} is a typed P2 input configuration; "
+50:             "read the materialized EawBattleP public products instead"
+51:         )
+52: 
+53: 
+54: class WallOccurrenceFao(_OnlyReadTypedIngress):
+55:     params = lambda: {"wallOccurrenceSource": WallAssembler()}
+56: 
+57: 
+58: class BuildOccurrenceFao(_OnlyReadTypedIngress):
+59:     params = lambda: {
+60:         "buildOccurrenceSource": BuildAssembler(),
+61:         "buildWallSource": WallAssembler(),
+62:     }
+63: 
+64: 
+65: class AttackSegmentFao(_OnlyReadTypedIngress):
+66:     params = lambda: {
+67:         "attackSegmentSource": AttackFlowAssembler(),
+68:         "attackSegmentWallSource": WallAssembler(),
+69:     }
+70: 
+71: 
+72: class FormationEvidenceFao(_OnlyReadTypedIngress):
+73:     params = lambda: {
+74:         "formationEvidenceSource": AttackFlowAssembler(),
+75:         "formationEvidenceWallSource": WallAssembler(),
+76:     }
+77: 
+78: 
+79: class WallBarrierFao(_OnlyReadTypedIngress):
+80:     params = lambda: {
+81:         "wallBarrierSource": AttackFlowAssembler(),
+82:         "wallBarrierWallSource": WallAssembler(),
+83:     }
+84: 
+85: 
+86: class AbsorbOccurrenceFao(_OnlyReadTypedIngress):
+87:     params = lambda: {
+88:         "absorbOccurrenceSource": AbsorbAssembler(),
+89:         "absorbWallSource": WallAssembler(),
+90:     }
+91: 
+92: 
+93: class EawP1WallLifecycleFrp(_CalculatedP1Product):
+94:     params = lambda: {"wallLifecycleInput": WallOccurrenceFao()}
+95: 
+96:     def doFrpUpSource(self):
+97:         return [self.P.wallLifecycleInput.P.wallOccurrenceSource]
+98: 
+99: 
+100: class EawP1BuildActivityFrp(_CalculatedP1Product):
+101:     params = lambda: {"buildActivityInput": BuildOccurrenceFao()}
+102: 
+103:     def doFrpUpSource(self):
+104:         source = self.P.buildActivityInput
+105:         return _distinct_features(
+106:             source.P.buildOccurrenceSource,
+107:             source.P.buildWallSource,
+108:         )
+109: 
+110: 
+111: class EawP1AttackSegmentBookFrp(_CalculatedP1Product):
+112:     params = lambda: {
+113:         "attackSegmentInput": AttackSegmentFao(),
+114:         "attackFormationInput": FormationEvidenceFao(),
+115:         "attackBarrierInput": WallBarrierFao(),
+FILE /dwdhome/fy/BASE_E6_2/mquant/tis/frp/__init__.py LINES 1 175
+1: 
+2: __all__ = [
+3: 
+4:     # exports from .Abnormal
+5:     'AccumStdDev', 'AccumMean', 'AccumKurtosis', 'AccumCount',
+6:     'SinBiTHCombZScore', 'SinMulTHWithTwo', 'InputFromAccumByFuncSinMulTH',
+7:     'InputFromAccumByFuncAccumTH', 'InputCombineIfClose',
+8: 
+9:     # exports from .ActivityMovementCorrespondence
+10:     'ActivityMovementCorrespondenceFrp',
+11:     'activity_movement_correspondence_to_dfs',
+12: 
+13:     # exports from .ActivityProfile
+14:     'activity_profile_to_dfs',
+15: 
+16:     # exports from .ActivityToMovementConversion
+17:     'ActivityToMovementConversionFrp',
+18:     'activity_to_movement_conversion_to_dfs', 'ActivityConversionReadSession',
+19: 
+20:     # exports from .Base
+21:     'FrpAdtDfMixIn',
+22: 
+23:     # exports from .CommonPriceTurnGroupCandidates
+24:     'CommonPriceTurnGroupCandidatesFrp',
+25: 
+26:     # exports from .CommonTurnGroupExternalSeparation
+27:     'CommonTurnGroupExternalSeparationFrp',
+28: 
+29:     # exports from .CommonTurnGroupValidity
+30:     'CommonTurnGroupValidityFrp',
+31: 
+32:     # exports from .CommonTurnOpportunityClusters
+33:     'CommonTurnOpportunityClustersFrp',
+34: 
+35:     # exports from .ConversionAftermathLegacy
+36:     'legacy_conversion_aftermath_to_dfs',
+37:     'read_legacy_conversion_aftermath_result',
+38: 
+39:     # exports from .CrossScaleEndpointParticipationPattern
+40:     'CrossScaleEndpointParticipationPatternFrp',
+41: 
+42:     # exports from .CrossScaleEndpointTimeOrder
+43:     'CrossScaleEndpointTimeOrderFrp',
+44: 
+45:     # exports from .CrossScaleTargetCoveragePattern
+46:     'CrossScaleTargetCoveragePatternFrp',
+47: 
+48:     # exports from .CurrentMovementOutcome
+49:     'NormalCurrentMovementOutcomeFao', 'current_movement_outcome_to_dfs',
+50: 
+51:     # exports from .DirectionalMovementComparison
+52:     'DirectionalMovementComparisonFrp', 'MovementComparisonReassessmentFrp',
+53:     'MovementComparisonUsesFrp', 'movement_comparison_to_dfs',
+54: 
+55:     # exports from .DirectionalMovementGroupingBasis
+56:     'DirectionalMovementGroupingBasisFrp', 'grouping_basis_to_dfs',
+57: 
+58:     # exports from .DirectionalMovementGroups
+59:     'DirectionalMovementGroupsFrp', 'movement_groups_to_dfs',
+60: 
+61:     # exports from .DirectionalMovementOutcome
+62:     'DirectionalMovementOutcomeFrp', 'movement_outcome_to_dfs',
+63:     'native_outcome_price_binding',
+64: 
+65:     # exports from .DirectionalPriceMovementAxes
+66:     'DirectionalPriceMovementAxesFrp', 'MovementMethodComparisonFrp',
+67:     'directional_axes_to_dfs',
+68: 
+69:     # exports from .DirectionalPriceMovementQuality
+70:     'DirectionalPriceMovementQualityFrp', 'MovementQualityComparisonFrp',
+71:     'movement_quality_to_dfs',
+72: 
+73:     # exports from .EarliestActualStartMember
+74:     'EarliestActualStartMemberFrp',
+75: 
+76:     # exports from .EarliestConfirmedMember
+77:     'EarliestConfirmedMemberFrp',
+78: 
+79:     # exports from .EarliestCrossScaleEndpoint
+80:     'EarliestCrossScaleEndpointFrp',
+81: 
+82:     # exports from .EawBattleP
+83:     'WallOccurrenceFao', 'BuildOccurrenceFao', 'AttackSegmentFao',
+84:     'FormationEvidenceFao', 'WallBarrierFao', 'AbsorbOccurrenceFao',
+85:     'EawP1WallLifecycleFrp', 'EawP1BuildActivityFrp',
+86:     'EawP1AttackSegmentBookFrp', 'EawP1AbsorbInteractionFrp', 'EawBattleP',
+87: 
+88:     # exports from .HistoricalFormationParticipation
+89:     'HistoricalFormationParticipationFrp',
+90: 
+91:     # exports from .InvestmentEvidenceContribution
+92:     'InvestmentEvidenceContributionFrp', 'ContributionDisposition',
+93:     'ContributionTargetNotFound', 'NATIVE_HOLDBACK_USES',
+94: 
+95:     # exports from .LargestNormalizedJourneyMember
+96:     'LargestNormalizedJourneyMemberFrp',
+97: 
+98:     # exports from .LongestParticipationMember
+99:     'LongestParticipationMemberFrp',
+100: 
+101:     # exports from .MarketActivityProcess
+102:     'MarketActivityProcessFrp', 'ActivityAmountSourceFao',
+103: 
+104:     # exports from .MemberMovementSource
+105:     'MemberMovementSourceFrp',
+106: 
+107:     # exports from .MovementGroupAbsoluteQuality
+108:     'MovementGroupAbsoluteQualityFrp', 'movement_absolute_quality_to_dfs',
+109: 
+110:     # exports from .MovementGroupExternalSeparation
+111:     'MovementGroupExternalSeparationFrp',
+112:     'movement_external_separation_to_dfs',
+113: 
+114:     # exports from .MovementGroupPhysicalization
+115:     'MovementGroupPhysicalizationFrp', 'movement_physicalization_to_dfs',
+116: 
+117:     # exports from .MovementQualityGroupBehavior
+118:     'MovementQualityGroupBehaviorFrp', 'movement_group_behavior_to_dfs',
+119: 
+120:     # exports from .MultiSeriesActiveFlow
+121:     'MultiSeriesActiveFlowFao',
+122: 
+123:     # exports from .NativeActivityProfile
+124:     'ActivityProfileFrp', 'ActivityProfileReaderFrp', 'ActivitySupplyFrp',
+125:     'ActivityOwnReadSession',
+126: 
+127:     # exports from .OpportunityCrossScaleCarriage
+128:     'OpportunityCrossScaleCarriageFrp', 'RelationBoundParticipationAddress',
+129:     'IndependentParticipationAddress', 'CarriageOccurrenceNotFound',
+130: 
+131:     # exports from .OpportunityExposureBoundary
+132:     'OpportunityExposureBoundaryFrp',
+133: 
+134:     # exports from .OpportunityExposureConstraint
+135:     'OpportunityExposureConstraintForR12', 'OpportunityExposureConstraintFrp',
+136:     'ExposureConstraintJudgement', 'ExposureConstraintTargetNotFound',
+137: 
+138:     # exports from .OpportunityInterpretation
+139:     'OpportunityInterpretationFrp', 'InterpretationProfile',
+140:     'ExplanationRelation', 'InterpretationReadSession',
+141:     'InterpretationClaimSelector', 'H1UseSelection',
+142: 
+143:     # exports from .OpportunityInterpretationFeedback
+144:     'OpportunityInterpretationFeedbackFrp',
+145: 
+146:     # exports from .OpportunityInvestmentInterpretation
+147:     'CurrentInterpretationReadSession', 'NoSavedCurrentVisible', 'read_exact',
+148:     'frozen_parent',
+149: 
+150:     # exports from .OpportunityJudgementAssertion
+151:     'OpportunityJudgementAssertionFrp', 'AssertionFamily',
+152:     'AssertionPredicate', 'AssertionDecision', 'AssertionPolarity',
+153: 
+154:     # exports from .OpportunityTargetScaleAppearance
+155:     'OpportunityTargetScaleAppearanceFrp', 'MulWrap_AppearanceRecord',
+156:     'MulWrap_AppearanceSourceSelectedRecord',
+157: 
+158:     # exports from .OpportunityUncertaintyHoldback
+159:     'OpportunityUncertaintyHoldbackFrp', 'HoldbackTargetNotFound',
+160: 
+161:     # exports from .PositionRisk
+162:     'CombineFirstStartEnd',
+163: 
+164:     # exports from .PostTurnEpisodeDomainOrganization
+165:     'PostTurnEpisodeDomainOrganizationFrp', 'EpisodeOrganizationReadSession',
+166:     'OrganizationStatus', 'OrganizationMemberState', 'OrganizationPairState',
+167: 
+168:     # exports from .PostTurnGroupDirectionalOrganization
+169:     'PostTurnGroupDirectionalOrganizationFrp',
+170: 
+171:     # exports from .RejectedCandidateParticipation
+172:     'RejectedCandidateParticipationFrp',
+173: 
+174:     # exports from .U2Formation
+175:     'U2NormalFormationCandidatesFrp', 'U2NormalFormationClustersFrp',
+FILE /dwdhome/fy/BASE_E6_2/mquant/tis/hf/prel0/wall_assembler.py LINES 600 730
+600:           wall_id:
+601:             Type: int64
+602:             Desc: 事件关联的 producer-local 墙编号。
+603:           side_code:
+604:             Type: int8
+605:             Desc: 事件关联的墙方向编码。
+606:           reason_code:
+607:             Type: int8
+608:             Desc: 仅 Wall.End 需要的终结原因编码。
+609:           core_price:
+610:             Type: float64
+611:             Desc: 事件发生时的墙核心价格。
+612:           band_lo:
+613:             Type: float64
+614:             Desc: 事件发生时的墙带下界。
+615:           band_hi:
+616:             Type: float64
+617:             Desc: 事件发生时的墙带上界。
+618:       wall_assembler_chunk_summary:
+619:         Type: DataFrame
+620:         Desc: 每个 chunk 的 replay 摘要。
+621:         Notes:
+622:           - `active_bid_wall_id`／`active_ask_wall_id` 分别是 chunk 末的 producer-local ref。
+623:         Fields:
+624:           wall_start_count:
+625:             Type: int64
+626:             Desc: 新起墙次数。
+627:           wall_end_count:
+628:             Type: int64
+629:             Desc: 墙终结次数。
+630:           support_count:
+631:             Type: int64
+632:             Desc: F8 support_flag 命中的 tick 数。
+633:           thin_touch_count:
+634:             Type: int64
+635:             Desc: F9 thin_touch_flag 命中的 tick 数。
+636:           active_bid_wall_status_code / active_ask_wall_status_code:
+637:             Type: int8
+638:             Desc: chunk 结束时对应侧 Wall 状态编码。
+639:           active_bid_wall_id / active_ask_wall_id:
+640:             Type: int64
+641:             Desc: chunk 结束时对应侧 source-run producer-local Wall 编号；无 Wall 时为 0。
+642:       wall_assembler_chunk_checkpoints:
+643:         Type: DataFrame
+644:         Desc: 关键状态检查点表，只记录 chunk start / chunk end 与事件发射点。
+645:       wall_assembler_chunk_meta:
+646:         Type: DataFrame
+647:         Desc: 每个交易日 chunk 的边界与定位信息。
+648:         Fields:
+649:           chunk_id:
+650:             Type: int64
+651:             Desc: chunk 序号，从 0 开始递增。
+652:           boundary_type_code:
+653:             Type: int8
+654:             Desc: chunk 边界类型编码；当前 trading_day=1。
+655:           trade_day:
+656:             Type: datetime64[ns]
+657:             Desc: 该 chunk 对应的交易日日期。
+658:           start_uti:
+659:             Type: int64
+660:             Desc: chunk 首个 tick 的项目侧 uti。
+661:           end_uti:
+662:             Type: int64
+663:             Desc: chunk 最后一个 tick 的项目侧 uti。
+664:           start_ts:
+665:             Type: datetime64[ns]
+666:             Desc: chunk 首个 tick 的时间戳。
+667:           end_ts:
+668:             Type: datetime64[ns]
+669:             Desc: chunk 最后一个 tick 的时间戳。
+670:           n_ticks:
+671:             Type: int64
+672:             Desc: chunk 内 tick 数量。
+673:       wall_assembler_carry_out_state:
+674:         Type: DataFrame
+675:         Desc: 跨物理 chunk 传递的 bid／ask 两个 Wall slot 完整状态；字段与 chunk_end_state 使用相同侧别后缀。
+676:       wall_assembler_optional_audit_outputs:
+677:         Type: DataFrame
+678:         Desc: 预留审计输出，默认为空表。
+679:     """
+680: 
+681:     params = lambda: dict(
+682:         parameter_set_id="wall-default",
+683:         qt_freq="1d",
+684:         qt_n=30,
+685:         qt_quantile=0.997,
+686:         w_depth_ref_ticks=1200,
+687:         large_quote_ratio_min=1.0,
+688:         allow_zero_qt_fallback=False,
+689:         thick_vs_hi_ratio=1.0,
+690:         thin_vs_mid_ratio=0.7,
+691:         allow_thin_brick=False,
+692:         p_wall_ticks=1,
+693:         t_wall_ticks=6,
+694:         near_band_ticks=None,
+695:         far_band_ticks=None,
+696:         connect_max_core_dist_ticks=None,
+697:         connect_gap_max_ticks=None,
+698:         support_buffer_keep_ticks=None,
+699:         thin_eval_window_ticks=None,
+700:         band_update_min_shift_ticks=None,
+701:         dormant_no_presence_ticks=None,
+702:         dormant_far_ticks=None,
+703:         end_far_hold_ticks=None,
+704:         end_far_ticks=None,
+705:         break_after_no_presence_ticks=None,
+706:         wall_dead_timeout_ticks=None,
+707:         allow_brick_join_dormant=True,
+708:         thin_contact_min_hits=3,
+709:         thin_contact_frac_end=0.6,
+710:     )
+711: 
+712:     def _impl(self):
+713:         sym = CurrSymbol.sym()
+714: 
+715:         cc_df = self._load_cc_df()
+716:         qt_df = self._load_qt_df()
+717:         params = make_wall_params(
+718:             p_wall_ticks=self.P.p_wall_ticks,
+719:             t_wall_ticks=self.P.t_wall_ticks,
+720:             near_band_ticks=self.P.near_band_ticks,
+721:             far_band_ticks=self.P.far_band_ticks,
+722:             connect_max_core_dist_ticks=self.P.connect_max_core_dist_ticks,
+723:             connect_gap_max_ticks=self.P.connect_gap_max_ticks,
+724:             support_buffer_keep_ticks=self.P.support_buffer_keep_ticks,
+725:             thin_eval_window_ticks=self.P.thin_eval_window_ticks,
+726:             band_update_min_shift_ticks=self.P.band_update_min_shift_ticks,
+727:             dormant_no_presence_ticks=self.P.dormant_no_presence_ticks,
+728:             dormant_far_ticks=self.P.dormant_far_ticks,
+729:             end_far_hold_ticks=self.P.end_far_hold_ticks,
+730:             end_far_ticks=self.P.end_far_ticks,
+FILE /dwdhome/fy/BASE_E6_2/mquant/tis/hf/prel0/wall_assembler.py LINES 733 860
+733:             allow_brick_join_dormant=self.P.allow_brick_join_dormant,
+734:             thin_contact_min_hits=self.P.thin_contact_min_hits,
+735:             thin_contact_frac_end=self.P.thin_contact_frac_end,
+736:         )
+737:         producer_private_parameters = {
+738:             "qt_freq": self.P.qt_freq,
+739:             "qt_n": self.P.qt_n,
+740:             "qt_quantile": self.P.qt_quantile,
+741:             "large_quote_ratio_min": self.P.large_quote_ratio_min,
+742:             "allow_zero_qt_fallback": self.P.allow_zero_qt_fallback,
+743:             "w_depth_ref_ticks": self.P.w_depth_ref_ticks,
+744:             "thick_vs_hi_ratio": self.P.thick_vs_hi_ratio,
+745:             "thin_vs_mid_ratio": self.P.thin_vs_mid_ratio,
+746:             "eps_vol": DEFAULT_EPS_VOL,
+747:             "allow_thin_brick": self.P.allow_thin_brick,
+748:         }
+749:         trace_key = "wall_assembler_state_trace"
+750:         trace_schema = _wall_state_trace_schema()
+751: 
+752:         def execute(append_chunk):
+753:             compact_results = []
+754:             for chunk in _iter_wall_assembler_trading_day_chunks(
+755:                 cc_df=cc_df,
+756:                 qt_df=qt_df,
+757:                 p_wall_ticks=self.P.p_wall_ticks,
+758:                 t_wall_ticks=self.P.t_wall_ticks,
+759:                 near_band_ticks=self.P.near_band_ticks,
+760:                 far_band_ticks=self.P.far_band_ticks,
+761:                 connect_max_core_dist_ticks=self.P.connect_max_core_dist_ticks,
+762:                 connect_gap_max_ticks=self.P.connect_gap_max_ticks,
+763:                 support_buffer_keep_ticks=self.P.support_buffer_keep_ticks,
+764:                 thin_eval_window_ticks=self.P.thin_eval_window_ticks,
+765:                 band_update_min_shift_ticks=self.P.band_update_min_shift_ticks,
+766:                 dormant_no_presence_ticks=self.P.dormant_no_presence_ticks,
+767:                 dormant_far_ticks=self.P.dormant_far_ticks,
+768:                 end_far_hold_ticks=self.P.end_far_hold_ticks,
+769:                 end_far_ticks=self.P.end_far_ticks,
+770:                 break_after_no_presence_ticks=self.P.break_after_no_presence_ticks,
+771:                 wall_dead_timeout_ticks=self.P.wall_dead_timeout_ticks,
+772:                 allow_brick_join_dormant=self.P.allow_brick_join_dormant,
+773:                 thin_contact_min_hits=self.P.thin_contact_min_hits,
+774:                 thin_contact_frac_end=self.P.thin_contact_frac_end,
+775:                 w_depth_ref_ticks=self.P.w_depth_ref_ticks,
+776:                 large_quote_ratio_min=self.P.large_quote_ratio_min,
+777:                 allow_zero_qt_fallback=self.P.allow_zero_qt_fallback,
+778:                 thick_vs_hi_ratio=self.P.thick_vs_hi_ratio,
+779:                 thin_vs_mid_ratio=self.P.thin_vs_mid_ratio,
+780:                 eps_vol=DEFAULT_EPS_VOL,
+781:                 allow_thin_brick=self.P.allow_thin_brick,
+782:                 logger=self.logger,
+783:                 sym=sym,
+784:                 feature_name=repr(self),
+785:             ):
+786:                 write_started = time.perf_counter()
+787:                 append_chunk(
+788:                     trace_key,
+789:                     self._wall_state_trace_frame(
+790:                         chunk["chunk_meta"]["chunk_id"],
+791:                         chunk["wall_state_trace_columns"],
+792:                     ),
+793:                 )
+794:                 write_seconds = time.perf_counter() - write_started
+795:                 if self._should_log_chunk_progress(
+796:                     chunk["chunk_meta"]["chunk_id"] + 1,
+797:                     chunk["_total_chunks"],
+798:                 ):
+799:                     log_chunk_performance(
+800:                         self.logger,
+801:                         sym=sym,
+802:                         feature_name=repr(self),
+803:                         chunk_meta=chunk["chunk_meta"],
+804:                         compute_seconds=chunk["_compute_seconds"],
+805:                         dba_copy_seconds=write_seconds,
+806:                     )
+807:                 compact = dict(chunk)
+808:                 compact["wall_state_trace_columns"] = {}
+809:                 compact_results.append(compact)
+810: 
+811:             frames = self._wall_chunk_contract_frames(
+812:                 "wall_assembler", compact_results
+813:             )
+814:             artifact = frames["wall_assembler_sparse_events"].copy()
+815:             artifact["availability_code"] = np.int8(1)
+816:             frames["wall_assembler_sparse_events"] = artifact
+817:             formal_streams = packed_occurrence_streams(
+818:                 artifact,
+819:                 prefix="wall",
+820:                 local_no_column="wall_id",
+821:             )
+822:             result = select_numeric_frames(
+823:                 frames, ("wall_assembler_sparse_events",)
+824:             )
+825:             result.update(formal_streams)
+826:             return result
+827: 
+828:         plan = P1ChunkedArtifactPlan(
+829:             (
+830:                 P1ChunkedFrameSpec(
+831:                     key=trace_key,
+832:                     row_count=int(cc_df.shape[0]),
+833:                     schema=trace_schema,
+834:                 ),
+835:             ),
+836:             execute,
+837:         )
+838:         receipt = make_product_receipt(
+839:             product_kind="wall_lifecycle",
+840:             feature_module=__name__,
+841:             feature_symbol=type(self).__name__,
+842:             formal_output="wall_lifecycle",
+843:             actual_parameters=params,
+844:             producer_private_parameters=producer_private_parameters,
+845:             source_input_scope=source_scope(
+846:                 sym, cc_df, target=sym, calendar=CurrCalendar.name(True)
+847:             ),
+848:             output_frames={"wall": _wall_lifecycle_receipt_schema()},
+849:             code_fingerprint=feature_code_fingerprint(__file__, run_wall_assembler_replay),
+850:             feature=self,
+851:             parameter_set_id=self.P.parameter_set_id,
+852:             semantic_lineage={
+853:                 "wall_parameter_snapshot_fingerprint": "derived-from-actual-wall-parameters",
+854:                 "supplemental_artifacts": {
+855:                     "wall_assembler_state_trace": "same-feature-dba-result-key"
+856:                 },
+857:             },
+858:             capabilities={"frp_dsu_backend": True, "state_trace": True, "partition_invariant_carry": True},
+859:         )
+860:         stage_product_receipts(self, (receipt,))
+FILE /dwdhome/fy/BASE_E6_2/m3sof/settings/sof/TA_updto20240229_DBA.py LINES 1 90
+1: # 数据源以及相关基础配置
+2: # 不设置的继承 default 配置
+3: # 界面显示名称,必须设置,可自行调整名词
+4: sof_label = "TA期货"
+5: 
+6: # 英文名称, 必须设置,新版尽量简化名称   
+7: # 1、将作为特征在不同数据源下的一个存储子文件夹
+8: # 2、其他设置数据源时使用的名称
+9: sof_name = "TA_updto20240229_DBA"
+10: 
+11: # 基础路径                                
+12: base_dir = f"/m3varI/BaseData/futures/{sof_name}"
+13: # # 高频基础数据路径
+14: # ori_dir = f"{base_dir}/basic"
+15: # 基础数据源sof路径
+16: sof_dir = f"{base_dir}/sof"
+17: # pnv文件路径：
+18: pnv_dir = "/m3varI/var/L1_data/pnv"
+19: 
+20: 
+21: # 高频基础数据路径 
+22: ori_dir = "/m3varI/var/L1_data/tick"   
+23: # 品种集列表文件夹路径 (必须与 sof_dir 一起重置)
+24: sof_tlist_dir = '/m3varI/BaseData/futures/TB/sof/tlist'
+25: # 品种属性csv文件路径 (必须与 sof_dir 一起重置)
+26: sof_unit_dir = "/m3varI/BaseData/futures/TB/sof/unit/attribute"
+27: # calendar文件路径 (必须与 sof_dir 一起重置)
+28: # calendar 分两类(不是业务上严格分法，仅做说明使用):
+29: # 1. 这里的 calendar_dir 对应按k线频率存放的 calendar msb, 如 calendar.30m.msb / calendar.1d.msb
+30: # 2. 另一类是按 calendar name (@, no_night, ...)组织的tick数据 dba 时间轴目录, 如 calendar/@/natural_tsa
+31: # 当前项目里 calendar_dir 只用于读取第1类 msb 数据, 代码里不会通过它读取第2类 dba calendar
+32: # 因此这里应指向放置 calendar.{freq}.msb 的目录, 而不是 tick calendar 或按 calendar name 的目录
+33: calendar_dir = sof_dir
+FILE /dwdhome/fy/BASE_E6_2/m3sof/settings/sof/default.py LINES 1 85
+1: # ======= 不同数据源默认配置 ========
+2: ## 旧版本需要的信息,目前不再需要
+3: # 界面显示名称,必须设置                    
+4: sof_label = None                 
+5: 
+6: # 默认品种集                             
+7: stk_tlist = "tick_test_trade27"
+8: # 频率列表
+9: freqs = "5m","15m","30m","60m","240m","1d","1W","1M"
+10: 
+11: 
+12: # 特殊标识符@，代表使用品种自身的交易日历
+13: calendar_name = "all"
+14:    
+15: 
+16: # 英文名称, 必须设置，新版尽量简化名称         
+17: # 1、将作为特征在不同数据源下的一个存储子文件夹
+18: # 2、其他设置数据源时使用的名称
+19: sof_name = None 
+20: # 目前的作用是拼接特征存储路径，与旧版路径兼容  
+21: sof_category ="BaseData/futures"
+22: # 基础路径                                
+23: base_dir = f"/m3varH/BaseData/futures/{sof_name}"
+24: # 基础数据源sof路径
+25: sof_dir = f"{base_dir}/sof"
+26: 
+27: # 数据完整时间周期
+28: full_period = None # 示例格式 ("2011-01-01","2012-01-01") or dict(startDay="2011-01-01",endDay="2012-01-01")
+29: 
+30:    
+31: # 高频基础数据路径
+32: ori_dir = "/m3varH/BaseData/futures/TB/basic"   
+33: # 品种集列表文件夹路径 (必须与 sof_dir 一起重置)
+34: sof_tlist_dir = '/m3varH/BaseData/futures/TB/sof/tlist'
+35: # 品种属性csv文件路径 (必须与 sof_dir 一起重置)
+36: sof_unit_dir = "/m3varH/BaseData/futures/TB/sof/unit/attribute"
+37: # calendar文件路径 (必须与 sof_dir 一起重置)
+38: calendar_dir = "/m3varH/BaseData/futures/TB/sof"
+39: 
+40: # 单品种 K 线基础路径
+41: pnv_dir = "/m3varI/var/L1_data/pnv"
+42: 
+43: 
+44: # 自定义板块配置，暂时配置在这里，之后可能在数据库中配置      
+45: # 板块名称尽量用英文简写,不要用两个字母的缩写,避免和品种名称重复
+46: # 固定板块配置                          
+47: block_fixed = {
+48:     # 1.用于叙事SubSetSelectSymV3的板块划分,满足以下基本要求:
+49:     # a.品种个数大致为5-6个
+50:     # b.相关性大于0.3
+51:     # c.是对有效全品种集进行分类
+52:     "subsetselsym_black": ["hc","i","j","rb","sf","sm"],    # 优化起始时间：2014-08-08 09:00:00
+53:     "subsetselsym_chemistry": ["ru", "ma", "ta", "pp", "l", "v","sa"],  # 优化起始时间：20191206
+54:     "subsetselsym_energy": ["bu","fu","pg","sc"],  #优化起始时间：2020-03-30 09:00:00
+55:     "subsetselsym_oil": ["b","m","oi","p","rm","y"],    # 优化起始时间：20130219
+56:     "subsetselsym_nonferrous":["al","cu","ni","sn","ss","zn"],#优化起始时间：2019-09-25 09:00:00
+57:     "select_agriculture": [ "c", "cf", "jd", "m", "p", "rm", "sr",],#农产品 2013-11-08 09:00:00 去掉了ap cj
+58:     "select_industry":["ag","al","cu","ni","zn", "j", "rb", "i", "ru", "ma", "ta", "pp", "l",],  #工业品 2015-03-27 09:00:00
+59: 
+60:     # 配置示例,自行修改
+61:     # "black": ["jm","j", "zc", "rb", "i","hc"],  # 黑色
+62:     "black": ["jm","j", "rb", "i","hc"],  # 黑色
+63:     "chemistry_6": ["ru", "ma", "ta", "pp", "l", "v"],
+64:     "nonferrous": ["cu", "zn", "al", "ni",],  # 有色金属
+65:     "oil_fat_5":["y","m","oi","rm", "p", ],# 油脂链
+66:     "agriculture": ["c","rm","m","p","cf","sr"],  # 农产品
+67:     "chemistry": ["ru", "ma", "ta", "pp", "l",],  # 化工
+68:     "agriculture_8": ["ap", "cf", "cj", "jd", "sr", "cy", "lh", "pk"],# 农产品去掉油脂链,"rr"是粳米先去掉
+69:     "oil_9":["c", "m", "p", "rm", "a", "cs", "oi",  "y", "b"],# 油脂链
+70:     "black_9": ["j", "rb", "i", "hc","ss","jm", "sf", "sm","fg"],  # 黑色+玻璃
+71:     "energy_7" :["sc","bu", "pg", "fu","ec","lu", "lc"], # 能源 + 运输
+72:     "chemistry_8":["ma", "ta", "pp", "l","eg", "eb", "v","pf" ], # 相关性高的通用化工
+73:     "special_8": ["ru", "nr","sp", "pg", "ur", "sa", "br", "si"] ,#特殊用途
+74:     "nonferrous_10":["cu", "zn", "al", "ni",'sn','pb',"au", "ag", "ao", "bc",], # 有色金属
+75: 
+76:     "agriculturebig":["ap","b","c","cf","cj","jd","p","rm","ru","sr",],
+77:     "chemistrybig":["eb","eg" ,"lc","ma","sa","sp","ta","ur"],#"px","sh",这两个品种暂无数据，先去掉
+78:     "industrybig":["ag","al","cu","ec","fg","fu","i","jm","ni","pg","rb","sc","si","ss",],
+79:     "industrybigAndChemistry":["ag","al","cu","ec","fg","fu","i","jm","ni","pg","rb","sc","si","ss","eg" ,"ma","sa","ta","ur","pp", "l",],#
+80: 
+81:     "industry_nonferrous":["ag",'cu', 'al', 'ni'],
+82:     "industry_black":["rb", "i","ss","jm",],
+83:     "industry_energy":["fu","sc","pg",],
+84:     "industry_chemistry":["eg" ,"ma","sa","ta","ur","pp", "l",],
+85:     "agriculture_oil":["b","c","p","rm",],
+FILE /dwdhome/fy/BASE_E6_2/mquant/tis/__init__.py LINES 1 70
+1: 
+2: __all__ = [
+3: 
+4:     # exports from .abc
+5:     'RctOccurFldSeg',
+6: 
+7:     # exports from .blk
+8:     'GenTickIndexFao', 'GenBarIndexData',
+9: 
+10:     # exports from .calc
+11:     'FeatDFProcessor', 'clip_linear', 'FeatADTProcessor',
+12: 
+13:     # exports from .calendar
+14:     'read_symbol_calendars_csv', 'blk_suitable_calendars',
+15:     'symbol_suitable_calendars', 'sort_calendar',
+16: 
+17:     # exports from .frp
+18:     'AccumStdDev', 'AccumMean', 'AccumKurtosis', 'AccumCount',
+19:     'SinBiTHCombZScore', 'SinMulTHWithTwo', 'InputFromAccumByFuncSinMulTH',
+20:     'InputFromAccumByFuncAccumTH', 'InputCombineIfClose',
+21:     'ActivityMovementCorrespondenceFrp',
+22:     'activity_movement_correspondence_to_dfs', 'activity_profile_to_dfs',
+23:     'ActivityToMovementConversionFrp',
+24:     'activity_to_movement_conversion_to_dfs', 'ActivityConversionReadSession',
+25:     'FrpAdtDfMixIn', 'CommonPriceTurnGroupCandidatesFrp',
+26:     'CommonTurnGroupExternalSeparationFrp', 'CommonTurnGroupValidityFrp',
+27:     'CommonTurnOpportunityClustersFrp', 'legacy_conversion_aftermath_to_dfs',
+28:     'read_legacy_conversion_aftermath_result',
+29:     'CrossScaleEndpointParticipationPatternFrp',
+30:     'CrossScaleEndpointTimeOrderFrp', 'CrossScaleTargetCoveragePatternFrp',
+31:     'NormalCurrentMovementOutcomeFao', 'current_movement_outcome_to_dfs',
+32:     'DirectionalMovementComparisonFrp', 'MovementComparisonReassessmentFrp',
+33:     'MovementComparisonUsesFrp', 'movement_comparison_to_dfs',
+34:     'DirectionalMovementGroupingBasisFrp', 'grouping_basis_to_dfs',
+35:     'DirectionalMovementGroupsFrp', 'movement_groups_to_dfs',
+36:     'DirectionalMovementOutcomeFrp', 'movement_outcome_to_dfs',
+37:     'native_outcome_price_binding', 'DirectionalPriceMovementAxesFrp',
+38:     'MovementMethodComparisonFrp', 'directional_axes_to_dfs',
+39:     'DirectionalPriceMovementQualityFrp', 'MovementQualityComparisonFrp',
+40:     'movement_quality_to_dfs', 'EarliestActualStartMemberFrp',
+41:     'EarliestConfirmedMemberFrp', 'EarliestCrossScaleEndpointFrp',
+42:     'WallOccurrenceFao', 'BuildOccurrenceFao', 'AttackSegmentFao',
+43:     'FormationEvidenceFao', 'WallBarrierFao', 'AbsorbOccurrenceFao',
+44:     'EawP1WallLifecycleFrp', 'EawP1BuildActivityFrp',
+45:     'EawP1AttackSegmentBookFrp', 'EawP1AbsorbInteractionFrp', 'EawBattleP',
+46:     'HistoricalFormationParticipationFrp', 'InvestmentEvidenceContributionFrp',
+47:     'ContributionDisposition', 'ContributionTargetNotFound',
+48:     'NATIVE_HOLDBACK_USES', 'LargestNormalizedJourneyMemberFrp',
+49:     'LongestParticipationMemberFrp', 'MarketActivityProcessFrp',
+50:     'ActivityAmountSourceFao', 'MemberMovementSourceFrp',
+51:     'MovementGroupAbsoluteQualityFrp', 'movement_absolute_quality_to_dfs',
+52:     'MovementGroupExternalSeparationFrp',
+53:     'movement_external_separation_to_dfs', 'MovementGroupPhysicalizationFrp',
+54:     'movement_physicalization_to_dfs', 'MovementQualityGroupBehaviorFrp',
+55:     'movement_group_behavior_to_dfs', 'MultiSeriesActiveFlowFao',
+56:     'ActivityProfileFrp', 'ActivityProfileReaderFrp', 'ActivitySupplyFrp',
+57:     'ActivityOwnReadSession', 'OpportunityCrossScaleCarriageFrp',
+58:     'RelationBoundParticipationAddress', 'IndependentParticipationAddress',
+59:     'CarriageOccurrenceNotFound', 'OpportunityExposureBoundaryFrp',
+60:     'OpportunityExposureConstraintForR12', 'OpportunityExposureConstraintFrp',
+61:     'ExposureConstraintJudgement', 'ExposureConstraintTargetNotFound',
+62:     'OpportunityInterpretationFrp', 'InterpretationProfile',
+63:     'ExplanationRelation', 'InterpretationReadSession',
+64:     'InterpretationClaimSelector', 'H1UseSelection',
+65:     'OpportunityInterpretationFeedbackFrp', 'CurrentInterpretationReadSession',
+66:     'NoSavedCurrentVisible', 'read_exact', 'frozen_parent',
+67:     'OpportunityJudgementAssertionFrp', 'AssertionFamily',
+68:     'AssertionPredicate', 'AssertionDecision', 'AssertionPolarity',
+69:     'OpportunityTargetScaleAppearanceFrp', 'MulWrap_AppearanceRecord',
+70:     'MulWrap_AppearanceSourceSelectedRecord',

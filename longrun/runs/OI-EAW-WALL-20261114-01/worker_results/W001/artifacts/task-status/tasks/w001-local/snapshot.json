@@ -1,0 +1,185 @@
+{
+  "schema_version": 1,
+  "project": {
+    "id": "oi-eaw-wall",
+    "title": "W001 本地事实核验"
+  },
+  "task": {
+    "id": "w001-local",
+    "title": "W001 有限本地调查与原件交付",
+    "type": "engineering",
+    "priority": "normal",
+    "owner": "agent",
+    "completion_gate": "仅本地：原件、限制、hash 与发布映射完整；不代表 W001 或父任务完成。",
+    "monitoring": {
+      "scope": "general"
+    },
+    "origin": {
+      "machine": "dw-VMware-Virtual-Platform",
+      "codex_thread_id": "01a1da55-5881-7590-94a1-0661f0236977"
+    }
+  },
+  "task_id": "w001-local",
+  "source_kind": "task_status_ledger",
+  "source": {
+    "path": "tasks/w001-local/snapshot.json"
+  },
+  "ledger_seq": 9,
+  "snapshot_seq": 9,
+  "projection_current": true,
+  "business_terminal": {
+    "task_id": "w001-local",
+    "type": "task_finished",
+    "status": "completed",
+    "seq": 9,
+    "at": "2026-11-14T14:48:03Z",
+    "evidence_present": true
+  },
+  "queue_position": null,
+  "plan_hash": "1a55dc03d3bfb22f94aa207462307e762b40d90013b4c027621722b2a55bcbe9",
+  "status": "completed",
+  "current_phase_id": null,
+  "current_step_id": null,
+  "action": "本地原件交付阶段结束；W001本身为PARTIAL，等待主控先发布证据后回准确refs，由原W1补正式Return回E1",
+  "next_action": "",
+  "blocker": null,
+  "resources": [],
+  "progress": {
+    "completed_steps": 3,
+    "total_steps": 3,
+    "completed_weight": 3.0,
+    "total_weight": 3.0,
+    "percent": 100.0
+  },
+  "timing": {
+    "started_at": "2026-11-14T14:18:36Z",
+    "updated_at": "2026-11-14T14:48:03Z",
+    "heartbeat_at": "2026-11-14T14:24:51Z",
+    "finished_at": "2026-11-14T14:48:03Z",
+    "elapsed_seconds": 1767,
+    "active_seconds": 1766,
+    "waiting_seconds": 0,
+    "waiting_external_seconds": 0,
+    "blocked_seconds": 0,
+    "needs_human_seconds": 0,
+    "idle_seconds": 1,
+    "accounted_seconds": 1767,
+    "unassigned_seconds": 3,
+    "unobserved_seconds": 0
+  },
+  "phases": [
+    {
+      "id": "local",
+      "title": "本地核验",
+      "steps": [
+        {
+          "id": "binding-code",
+          "title": "工作区绑定与静态入口",
+          "acceptance": "物理绑定及相关 repo 状态、源码和读取入口有带行号证据",
+          "weight": 1.0,
+          "phase_id": "local",
+          "phase_title": "本地核验",
+          "state": "completed",
+          "started_at": "2026-11-14T14:18:37Z",
+          "completed_at": "2026-11-14T14:35:04Z",
+          "evidence": [
+            "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/WORKSPACE_BINDING.json"
+          ],
+          "note": null,
+          "timing": {
+            "started_at": "2026-11-14T14:18:37Z",
+            "finished_at": "2026-11-14T14:35:04Z",
+            "elapsed_seconds": 987,
+            "active_seconds": 987,
+            "waiting_seconds": 0,
+            "waiting_external_seconds": 0,
+            "blocked_seconds": 0,
+            "needs_human_seconds": 0,
+            "idle_seconds": 0
+          }
+        },
+        {
+          "id": "assets",
+          "title": "候选资产与必要解码或预检",
+          "acceptance": "有界资产清单完整；如无可用材料，明确不运行并给预检",
+          "weight": 1.0,
+          "phase_id": "local",
+          "phase_title": "本地核验",
+          "state": "completed",
+          "started_at": "2026-11-14T14:35:04Z",
+          "completed_at": "2026-11-14T14:35:05Z",
+          "evidence": [
+            "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/evidence/WALL_ASSET_METADATA.json",
+            "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/SAMPLE_CHAIN.jsonl"
+          ],
+          "note": null,
+          "timing": {
+            "started_at": "2026-11-14T14:35:04Z",
+            "finished_at": "2026-11-14T14:35:05Z",
+            "elapsed_seconds": 1,
+            "active_seconds": 1,
+            "waiting_seconds": 0,
+            "waiting_external_seconds": 0,
+            "blocked_seconds": 0,
+            "needs_human_seconds": 0,
+            "idle_seconds": 0
+          }
+        },
+        {
+          "id": "delivery",
+          "title": "本地原件交付",
+          "acceptance": "报告、JSON、命令原件、hash、待发布 manifest 验证通过",
+          "weight": 1.0,
+          "phase_id": "local",
+          "phase_title": "本地核验",
+          "state": "completed",
+          "started_at": "2026-11-14T14:35:06Z",
+          "completed_at": "2026-11-14T14:48:02Z",
+          "evidence": [
+            "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/WORKER_EXECUTION_REPORT.md",
+            "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/VALIDATION_REPORT.json"
+          ],
+          "note": "本地原件已齐、物理对账及JSON验证通过；下一条封包命令生成最终映射和hash并核验，不含GitHub或正式Return完成",
+          "timing": {
+            "started_at": "2026-11-14T14:35:06Z",
+            "finished_at": "2026-11-14T14:48:02Z",
+            "elapsed_seconds": 776,
+            "active_seconds": 776,
+            "waiting_seconds": 0,
+            "waiting_external_seconds": 0,
+            "blocked_seconds": 0,
+            "needs_human_seconds": 0,
+            "idle_seconds": 0
+          }
+        }
+      ],
+      "completed_steps": 3,
+      "total_steps": 3
+    }
+  ],
+  "evidence": [
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/WORKSPACE_BINDING.json",
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/evidence/WALL_ASSET_METADATA.json",
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/SAMPLE_CHAIN.jsonl",
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/WORKER_EXECUTION_REPORT.md",
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/VALIDATION_REPORT.json",
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/WORKER_RETURN_PREPARATION.json"
+  ],
+  "event_count": 9,
+  "source_status": "completed",
+  "admission": {
+    "state": "excluded",
+    "reason_code": "explicit_general_scope",
+    "source": "task.monitoring.scope"
+  },
+  "business_status": "unknown",
+  "business_completion": {
+    "verified": false,
+    "reason_code": "not_admitted"
+  },
+  "execution": {
+    "state": "unknown",
+    "reason_code": "missing_exact_root_thread",
+    "observed_at": null
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "state": "LOCAL_ARTIFACTS_READY_AWAITING_REAL_PUBLICATION_REFS",
+  "is_formal_worker_return": false,
+  "schema_for_final_return": "longrun-worker-return/v2",
+  "run_id": "OI-EAW-WALL-20261114-01",
+  "work_order_id": "W001",
+  "order_ref": "daowei2026/observe-iterate@ad20770c69bc431d2e9188dcecd89883bce20cfa:longrun/runs/OI-EAW-WALL-20261114-01/work_orders/W001/ORDER.json",
+  "worker": "codex:OI-EAW-WALL-20261114-01:worker:W1",
+  "return_to": "chatgpt:OI-EAW-WALL-20261114-01:executor:E1",
+  "outcome": "PARTIAL",
+  "result_ref": null,
+  "result_ref_reason": "实际 GitHub commit 尚不存在；主控先逐字发布报告后回准确 commit/ref/sha256",
+  "missing": [
+    "CURRENT_TUPLE_UNBOUND：未取得当前任务/二进制/生效参数/对象/日历/范围与当前代码和数据的完整绑定。",
+    "LEGACY_SCHEMA_ONLY：已解码为真实旧 P1Wall*Storage 物化；与当前 typed writer 不能认定同版，产品自身生成版本回执缺失。",
+    "MATCHING_NATIVE_WRAPPER_MISSING：现存 generated dbaw 缺旧三组及当前三组 P1 Wall 类型；未验证原生 reader 运行态。",
+    "FRP_ACTIVE_MAP_NOT_MATERIALIZED：没有 FRP 完整 active-map trace；上游 WallAssembler trace 与之区分。",
+    "LIMITED_SCENARIOS_AND_TIMES：3条链没有 Dormant/恢复；未覆盖全部异常分支；独立 actual/confirm/known 未取得。",
+    "COST_LIMIT：796文件 header 尝试35秒超时；全年与GB级上游未全量加载，范围外未知。",
+    "PUBLICATION_PENDING：未写GitHub；缺真实发布commit及每文件准确ref；正式Return尚待同W补签，仅回E1。"
+  ],
+  "manifest_source": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/PUBLICATION_MANIFEST.json",
+  "required_final_fields": [
+    "schema",
+    "run_id",
+    "work_order_id",
+    "order_ref",
+    "worker",
+    "return_to",
+    "outcome",
+    "result_ref",
+    "missing",
+    "manifest"
+  ],
+  "final_manifest_contract": "每项仅 ref 和 sha256；ref 必须真实 pinned commit，不使用 branch/placeholder 冒充；内容 sha256 须与本地原件核对",
+  "publication_repository": "daowei2026/observe-iterate",
+  "publication_branch": "runs/OI-EAW-WALL-20261114-01",
+  "publication_prefix": "longrun/runs/OI-EAW-WALL-20261114-01/worker_results/W001/",
+  "formal_WORKER_RETURN_json_exists": false,
+  "formal_WORKER_RETURN_json_reason": "用户明确分两阶段：待主控真实证据 refs 回传后由原W1生成，当前不可伪造"
+}

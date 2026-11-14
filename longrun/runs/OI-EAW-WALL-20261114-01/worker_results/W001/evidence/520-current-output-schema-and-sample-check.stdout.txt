@@ -1,0 +1,192 @@
+FILE /dwdhome/fy/BASE_E6_2/mquant/frame/lang/frp/base.py BYTES 8048
+1: from dataclasses import dataclass
+2: from typing import *
+3: import os
+4: from m3sof import settings, Sof
+5: from ...lib3 import *
+6: from ...core import *
+7: from ..internal.type import CurrIndustry, CurrFrpEnv
+8: from ..internal import *
+9: from ..internal.dao import FrpDbaDao,FrpExtraDbaDao
+10: from ..general import FunctionFao
+11: 
+12: __all__ = (
+13:     "FrpTaskParam",
+14:     "FrpMixIn",
+15: )
+16: 
+17: 
+18: @dataclass
+19: class FrpTaskParam:
+20:     """
+21:     King 2024-09-09 17:53
+22: 
+23:     Frp 任务参数
+24:     Params:
+25:        name: 对应 Frp 中的特征名称
+26:        params: 对应 Frp 中的特征参数
+27:        sof: Sof
+28:        enable_extra: 是否开启保存中间事件数据, 一般在优化器优化时不开启，单独运行则开启
+29:     """
+30: 
+31:     name: str
+32:     params: Dict[str, Any]
+33:     sof: Sof
+34:     enable_extra: bool = False
+35: 
+36:     def for_json(self) -> str:
+37:         sof = self.sof
+38:         app = dict(
+39:             env_name=settings.ENV,
+40:             app_dir=settings.APP_DIR,
+41:             enable_extra= 1 if self.enable_extra else 0
+42:         )
+43:         return dict(
+44:             name=self.name,
+45:             params=JsonUtil.dumps(self.params),
+46:             sof=dict(
+47:                 sof_name=sof.sof_name,
+48:                 stk_tlist=sof.stk_tlist,
+49:                 startDay=sof.startDay,
+50:                 endDay=sof.endDay,
+51:                 full_period=sof.full_period
+52:             ),
+53:             app=app,
+54:         )
+55: 
+56:     # 保留旧版函数
+57:     def to_dict(self) -> dict:
+58:         return self.for_json()
+59:     
+60: class FrpMixIn(JsonParamPathMixIn):
+61:     """
+62:     Author: King
+63:     Since : 2023-01-05 10:31
+64:     Desc  :
+65:        - Frp 混入类
+66:     """
+67: 
+68:     @property
+69:     def that(self) -> AbsFao:
+70:         return self
+71: 
+72:     def hold_cal_type(self):
+73:         return CalType.Cache
+74: 
+75:     @property
+76:     def Dao(self):
+77:         return FrpDbaDao(self)
+78: 
+79:     def to_df(self):
+80:         """ 没有 adt 数据时的默认 to_df 实现"""
+81:         dfs = list(self.that.F.values())
+82:         if len(dfs) == 1:
+83:             return dfs[0]
+84:         return pd.concat(dfs, axis=1, join="outer")
+85:     
+86:     def to_dfs(self):
+87:         return self.that.F
+88: 
+89:     def doFrpTarget(self) -> dict:
+90:         """优化目标"""
+91:         return self.that.tar_type.doFrpTarget()
+92:         
+93:     def doFrpUpSource(self) -> Union[List[FaoType],Dict]:
+94:         """Frp 特征需要保存的上游特征数据源, 默认 params 中的 Fao 类型"""
+95:         return list(self.that.P.values())
+96: 
+97:     def doFrpTaskParam(self,run_ups=True,enable_extra=False) -> FrpTaskParam:
+98:         """Frp 程序运行需要的相关数据
+99:         Params:
+100:             run_ups: True 表示需要运行上游特征，确保数据保存到 dba
+101:             enable_extra: 是否开启保存中间事件数据, 一般在优化器优化时不开启，单独运行则开启
+102:         """
+103:         that = self.that
+104: 
+105:         if run_ups and that.prop_on_run_ups:
+106:             self._run_ups()
+107: 
+108:         with CurrFrpEnv():
+109:             return FrpTaskParam(
+110:                 name=that.alias,
+111:                 params=that.for_json(),
+112:                 sof=that.sof,
+113:                 enable_extra=enable_extra,
+114:             )
+115: 
+116:     def _run_ups(self):
+117:         ups = self.doFrpUpSource()
+118:         if isinstance(ups,dict):
+119:             ups = list(ups.values())
+120:         if ups:
+121:             for v in ups:
+122:                 if isinstance(v, FaoType):
+123:                     self._run_up(v)
+124: 
+125:     def _run_up(self, up: FaoType):
+126:         """运行上游特征"""
+127:         ttype = self.that.tar_type
+128:         if ttype.isBlockSet():  # 板块集特征
+129:             # 上游特征是板块特征， children 一定是板块集，则需要对每个板块运行
+130:             if up.tar_type.isNormalBlock():
+131:                 for blk in ttype.children():
+132:                     with CurrIndustry(blk):
+133:                         up.run()
+134:                 return
+135: 
+136:         if ttype.isNormalBlock():  # 板块特征
+137:             # 上游特征是单品种特征，则需要对每个品种运行
+138:             if up.tar_type.isSymbol():
+139:                 for sym in ttype.symbols():
+140:                     with CurrSymbol(sym):
+141:                         up.run()
+142:                 return
+143:         up.run()
+144: 
+145:     def dump(self, *args, **kwargs):
+146:         # python 端不再保存相关信息
+147:         pass
+148: 
+149:     def _impl(self):
+150:         logger = self.that.logger
+151: 
+152:         # 保存 frp 需要的参数到 json 文件中
+153:         ts = TimeUtil.now_str("%Y%m%d%H%M%S")
+154:         import uuid
+155: 
+156:         linker = FrpTaskLinker(
+157:             task_name=f"{self.that.alias}.{ts}!{uuid.uuid1()}",
+158:             target=self.doFrpTarget(),
+159:             task_params=self.doFrpTaskParam(enable_extra=True),
+160:         )
+161:         json_path = linker.rerun(CalType.Gen).F.value
+162:         poc_file = "./frp/trade-poc/edh_modules/trade/frp/worker/one.edh"
+163:         # poc_file = (
+164:         #     "./frp/trade-poc/edh_modules/trade/frp/worker/one.edh +RTS -sstderr -RTS"
+165:         # )
+166:         # poc_file = "./frp/trade-poc/edh_modules/trade/frp/worker/one.edh +RTS -hy -p -RTS"
+167: 
+168:         # 启动进程运行 frp 程序
+169:         import subprocess
+170: 
+171:         args = [
+172:             f"--f={poc_file}",
+173:             f"--jp={json_path}",
+174:         ]
+175:         args = " ".join(args)
+FILE /dwdhome/fy/BASE_E6_2/mquant/tis/test/integration/fixtures/eaw_p1_real_run.example.json BYTES 379
+1: {
+2:   "runner_contract_version": "EAW-P1-REAL-RUN-V1.6.1",
+3:   "normal_run": {
+4:     "sof_name": "REPLACE_WITH_OWNER_SELECTED_SOF",
+5:     "stk_tlist": "REPLACE_WITH_OWNER_SELECTED_SET",
+6:     "startDay": "REPLACE_WITH_START_DAY",
+7:     "endDay": "REPLACE_WITH_END_DAY",
+8:     "symbol": "REPLACE_WITH_SYMBOL",
+9:     "frp_calendar": "REPLACE_WITH_FRP_CALENDAR",
+10:     "feature_parameters": {}
+11:   }
+12: }
+SAMPLE_VERIFIED 0 started 2021-01-14T09:04:10.000000000Z UPSTREAM 1 1 NONFINITE [{'json_path': '/upstream_sparse_rows/0/payload/reason_code', 'stored_value_repr': 'nan', 'reason': 'on-disk IEEE nonfinite numeric value; represented as JSON null, not imputed'}, {'json_path': '/upstream_packed_rows/0/payload/reason_code', 'stored_value_repr': 'nan', 'reason': 'on-disk IEEE nonfinite numeric value; represented as JSON null, not imputed'}]
+SAMPLE_VERIFIED 1 band_updated 2021-01-14T09:04:11.500000000Z UPSTREAM 1 1 NONFINITE [{'json_path': '/upstream_sparse_rows/0/payload/reason_code', 'stored_value_repr': 'nan', 'reason': 'on-disk IEEE nonfinite numeric value; represented as JSON null, not imputed'}, {'json_path': '/upstream_packed_rows/0/payload/reason_code', 'stored_value_repr': 'nan', 'reason': 'on-disk IEEE nonfinite numeric value; represented as JSON null, not imputed'}]
+SAMPLE_VERIFIED 2 ended 2021-01-14T09:04:14.500000000Z UPSTREAM 1 1 NONFINITE []

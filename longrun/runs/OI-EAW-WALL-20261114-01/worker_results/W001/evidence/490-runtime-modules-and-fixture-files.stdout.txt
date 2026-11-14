@@ -1,0 +1,184 @@
+PATH /dwdhome/fy/BASE_E6_2/mquant/frame EXISTS True GIT True
+CHILDREN [('.git', True), ('.gitignore', False), ('CHANGELOG.md', False), ('README.md', False), ('__init__.py', False), ('__pycache__', True), ('core', True), ('lang', True), ('lib3.py', False), ('meta.py', False), ('pretty-exports.py', False), ('reload', True), ('zzz.py', False)]
+PATH /dwdhome/fy/BASE_E6_2/mquant/frame/lang EXISTS True GIT False
+CHILDREN [('__init__.py', False), ('__pycache__', True), ('cae.py', False), ('frp', True), ('general.py', False), ('internal', True), ('m.py', False), ('ms.py', False), ('s.py', False)]
+PATH /dwdhome/fy/BASE_E6_2/mquant/frame/DBAS.py EXISTS False GIT None
+PATH /dwdhome/fy/BASE_E6_2/mquant/frame/lang/frp EXISTS True GIT False
+CHILDREN [('__init__.py', False), ('__pycache__', True), ('base.py', False), ('tis.py', False), ('trade', True)]
+PATH /dwdhome/fy/BASE_E6_2/mquant/tis/tests EXISTS True GIT False
+CHILDREN [('test_u2_compact_tables.py', False), ('test_u2_history_r06.py', False), ('test_u2_history_r07.py', False), ('test_u2_history_r09.py', False), ('test_u2_recent_reader.py', False), ('test_u2_streaming_tables.py', False)]
+FILE /dwdhome/fy/BASE_E6_2/mquant/frame/lang/__init__.py BYTES 2062
+1: 
+2: __all__ = [
+3: 
+4:     # exports from .cae
+5:     'PlotterMixIn', 'CAEFaoMixIn', 'BaseCAEFao', 'TestCAE1', 'TestCAE2',
+6: 
+7:     # exports from .frp
+8:     'FrpTaskParam', 'FrpMixIn', 'BaseDynFrpFao', 'BaseSymbolFrpFao',
+9:     'BaseBlockFrpFao', 'BaseBlockSetFrpFao', 'GeneralDynFrpTrader',
+10: 
+11:     # exports from .general
+12:     'DynFaoMixIn', 'BaseDynDataFrameFao', 'FunctionFao', 'DoFunctionFao',
+13:     'NoFunctionFao', 'AbstractFuncParam', 'OptStoreRule', 'CurrStoreEnv',
+14:     'TmpStoreEnv',
+15: 
+16:     # exports from .internal
+17:     'FAnyParam', 'FasonEncoder', 'FaoType', 'AbsFao', 'Nothing', 'CurrOnPable',
+18:     'MetaSettings', 'new_fao_class', 'check_fao', 'eval_fao', 'WrapFao',
+19:     'PableInfo', 'SymPPRange', 'CurrSymbolPable', 'DFDbaDao', 'FrpDbaDao',
+20:     'FrpExtraDbaDao', 'AbstractFileDao', 'AbstractFaoDao', 'Li', 'Arr',
+21:     'FxArr', 'GMap', 'GMapX', 'XMap', 'HMap', 'AbstractParamFao', 'ChainLink',
+22:     'ChainFrame', 'ChainList', 'AbsChain', 'ChainFao', 'Chain', 'Rable',
+23:     'Pable', 'XPableQuery', 'DataFrameMixIn', 'MergeFrame', 'MergeFao',
+24:     'Merge', 'PatternFrame', 'DocMixIn', 'JsonParamPathMixIn', 'ABCMroMixIn',
+25:     'SerializeMixIn', 'SerializePMixIn', 'MiscMixIn', 'AskMixIn', 'CacheMixIn',
+26:     'TraderMixIn', 'CurTrading', 'BindTradeFieldCtor', 'PPEmpMixIn', 'PPMixIn',
+27:     'FPRange', 'flist', 'fmap', 'fmap4', 'FPIterator', 'ffmap', 'CurrIndustry',
+28:     'CurrFrpEnv', 'TarType', 'FuncTarType', 'SymTarType', 'PairTarType',
+29:     'UnKnownBlockTarType', 'BlockTarType', 'BlockSetTarType',
+30:     'AskBlockSymTarType', 'CalendarTarType', 'CurrCalendar', 'CalendarName',
+31: 
+32:     # exports from .m
+33:     'BlockFaoMixIn', 'GeneralBlockFao', 'BaseBlockDFFao', 'BlkKLine',
+34: 
+35:     # exports from .ms
+36:     'BlockSetFaoMixIn', 'GeneralBlockSetFao', 'GeneralStdBlockSetFao',
+37:     'BaseBlockSetDFFao', 'GeneralStdAskBlockSymbolFao',
+38:     'BaseAskBlockSymbolDFFao',
+39: 
+40:     # exports from .s
+41:     'SymbolFaoMixIn', 'GeneralSymbolFao', 'BaseSymbolDFFao', 'KLine',
+42: 
+43: ]
+44: 
+45: from .cae import *
+46: from .frp import *
+47: from .general import *
+48: from .internal import *
+49: from .m import *
+50: from .ms import *
+51: from .s import *
+FILE /dwdhome/fy/BASE_E6_2/mquant/frame/lang/internal/base.py BYTES 76918
+FILE /dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/poc/dbaw.py BYTES 6527
+1: __all__ = [
+2:   "Envelope2D_Double", 
+3:   "SeqOf_Envelope2D_Double", 
+4:   "Line2D_Double", 
+5:   "SeqOf_Line2D_Double", 
+6:   "Point2D_Double", 
+7:   "SeqOf_Point2D_Double", 
+8:   "Vector2D_Double", 
+9:   "SeqOf_Vector2D_Double", 
+10: ]
+11: 
+12: import os.path
+13: from collections import *
+14: from pydim.dim import *
+15: 
+16: class Envelope2D_Double(DbaStruct):
+17:   __adt__ = namedtuple("Envelope2D_Double", [ "enveLine", "enveOnPoints", "enveOutPoints", "enveMemo", ])
+18: 
+19:   def __arm_store__(self, store: DbaStore, sp: str):
+20:     self.enveLine = DbArray(store.root_dir, os.path.join(sp, "enveLine::Line2D Double$Frp.DbaStore.PoC@frp-core-0.3"), intp)
+21:     self.enveLine_seq = store.arm_seq("Line2D Double$Frp.DbaStore.PoC@frp-core-0.3", Line2D_Double)
+22:     self.enveOnPoints = DbArray(store.root_dir, os.path.join(sp, "enveOnPoints::[Point2D Double]$Frp.DbaStore.PoC@frp-core-0.3"), intp)
+23:     self.enveOnPoints_seq = store.arm_seq("[Point2D Double]$Frp.DbaStore.PoC@frp-core-0.3", SeqOf_Point2D_Double)
+24:     self.enveOutPoints = DbArray(store.root_dir, os.path.join(sp, "enveOutPoints::[Point2D Double]$Frp.DbaStore.PoC@frp-core-0.3"), intp)
+25:     self.enveOutPoints_seq = store.arm_seq("[Point2D Double]$Frp.DbaStore.PoC@frp-core-0.3", SeqOf_Point2D_Double)
+26:     self.enveMemo = DbArray(store.root_dir, os.path.join(sp, "enveMemo::[Text]$Data.Text"), intp)
+27: 
+28:   def count(self) -> int:
+29:     return self.enveLine.len1d
+30: 
+31:   def load(self, vin: int) -> __adt__:
+32:     return self.__adt__(
+33:       enveLine = self.enveLine_seq.load(self.enveLine.ndarray[vin]),
+34:       enveOnPoints = self.enveOnPoints_seq.load(self.enveOnPoints.ndarray[vin]),
+35:       enveOutPoints = self.enveOutPoints_seq.load(self.enveOutPoints.ndarray[vin]),
+36:       enveMemo = self.__store__.load_TextList(self.enveMemo.ndarray[vin]),
+37:     )
+38: 
+39: class SeqOf_Envelope2D_Double(DbaStruct):
+40:   __adt__ = list[Envelope2D_Double.__adt__]
+41: 
+42:   def __arm_store__(self, store: DbaStore, sp: str):
+43:     self.__anchor__ = DbArray(store.root_dir, f"{sp}/anchor", intp)
+44: 
+45:   def count(self) -> int:
+46:     return self.__anchor__.len1d
+47: 
+48:   def load(self, vin: int) -> __adt__:
+49:     aa = self.__anchor__.ndarray
+50:     i_next = aa[vin]
+51:     i_start = aa[vin - 1] if vin > 0 else 0
+52:     if i_next <= i_start:
+53:         return []
+54:     return [
+55:         Envelope2D_Double.__adt__(
+56:         ) for (
+57:         ) in zip(
+58:         )
+59:     ]
+60: 
+61: class Line2D_Double(DbaStruct):
+62:   __adt__ = namedtuple("Line2D_Double", [ "anchorPoint", "direction", "memo", ])
+63: 
+64:   def __arm_store__(self, store: DbaStore, sp: str):
+65:     self.anchorPoint = DbArray(store.root_dir, os.path.join(sp, "anchorPoint::Point2D Double$Frp.DbaStore.PoC@frp-core-0.3"), intp)
+66:     self.anchorPoint_seq = store.arm_seq("Point2D Double$Frp.DbaStore.PoC@frp-core-0.3", Point2D_Double)
+67:     self.direction = DbArray(store.root_dir, os.path.join(sp, "direction::Vector2D Double$Frp.DbaStore.PoC@frp-core-0.3"), intp)
+68:     self.direction_seq = store.arm_seq("Vector2D Double$Frp.DbaStore.PoC@frp-core-0.3", Vector2D_Double)
+69:     self.memo = DbArray(store.root_dir, os.path.join(sp, "memo::Text$Data.Text"), intp)
+70: 
+71:   def count(self) -> int:
+72:     return self.anchorPoint.len1d
+73: 
+74:   def load(self, vin: int) -> __adt__:
+75:     return self.__adt__(
+76:       anchorPoint = self.anchorPoint_seq.load(self.anchorPoint.ndarray[vin]),
+77:       direction = self.direction_seq.load(self.direction.ndarray[vin]),
+78:       memo = self.__store__.load_Text(self.memo.ndarray[vin]),
+79:     )
+80: 
+81: class SeqOf_Line2D_Double(DbaStruct):
+82:   __adt__ = list[Line2D_Double.__adt__]
+83: 
+84:   def __arm_store__(self, store: DbaStore, sp: str):
+85:     self.__anchor__ = DbArray(store.root_dir, f"{sp}/anchor", intp)
+86: 
+87:   def count(self) -> int:
+88:     return self.__anchor__.len1d
+89: 
+90:   def load(self, vin: int) -> __adt__:
+91:     aa = self.__anchor__.ndarray
+92:     i_next = aa[vin]
+93:     i_start = aa[vin - 1] if vin > 0 else 0
+94:     if i_next <= i_start:
+95:         return []
+96:     return [
+97:         Line2D_Double.__adt__(
+98:         ) for (
+99:         ) in zip(
+100:         )
+101:     ]
+102: 
+103: class Point2D_Double(DbaStruct):
+104:   __adt__ = namedtuple("Point2D_Double", [ "x", "y", ])
+105: 
+106:   def __arm_store__(self, store: DbaStore, sp: str):
+107:     self.x = DbArray(store.root_dir, os.path.join(sp, "x::Double"), f8)
+108:     self.y = DbArray(store.root_dir, os.path.join(sp, "y::Double"), f8)
+109: 
+110:   def count(self) -> int:
+111:     return self.x.len1d
+112: 
+113:   def load(self, vin: int) -> __adt__:
+114:     return self.__adt__(
+115:       x = self.x.ndarray[vin],
+116:       y = self.y.ndarray[vin],
+117:     )
+118: 
+119: class SeqOf_Point2D_Double(DbaStruct):
+120:   __adt__ = list[Point2D_Double.__adt__]
+FILE /dwdhome/fy/BASE_E6_2/edh-universe/bin/dbaw BYTES 76371504

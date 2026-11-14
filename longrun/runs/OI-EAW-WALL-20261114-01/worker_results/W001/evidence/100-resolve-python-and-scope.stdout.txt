@@ -1,0 +1,134 @@
+TIS_PARENT_GIT toplevel /dwdhome/fy
+
+TIS_PARENT_GIT head 0cb55e4726c7af711fa790f848c2fec88db6b949
+
+TIS_PARENT_GIT worktrees worktree /dwdhome/fy
+HEAD 0cb55e4726c7af711fa790f848c2fec88db6b949
+branch refs/heads/master
+
+
+TIS_PARENT_GIT remotes origin	https://gogs.dw/mquant/uplot.git (fetch)
+origin	https://gogs.dw/mquant/uplot.git (push)
+
+GIT_ENV {}
+FILE /dwdhome/fy/BASE_E6_2/m3rc True
+1: #!/bin/bash
+2: 
+3: # m3 root setup
+4: export M3ROOT=/m3c3
+5: # export M3ROOT=`mount | grep " / " | awk '{print $1}' | awk -F : '{print $2}' | awk -F 'root' '{print $1}'`
+6: # export M3ROOT=$(cd $(dirname $(realpath "${BASH_SOURCE}")); pwd)
+7: 
+8: # m3 workspace path setup, infer from where `m3rc` is placed
+9: export M3WORKS=$(cd $(dirname "${BASH_SOURCE}"); pwd)
+10: 
+11: export AIRFLOW_HOME="/m3varK/workspace/zx_mquant6.2_test/mquant/airflow"
+12: export PATH=$AIRFLOW_HOME:$PATH
+13: 
+14: # default repo location for Edh packages
+15: export EPM_REPO_BASE=https://gogs.dw/e-wrks
+16: 
+17: # locale setup
+18: export LANG=en_US.UTF-8
+19: export LC_NUMERIC=C
+20: 
+21: export NUMPY_MADVISE_HUGEPAGE=0
+22: 
+23: # m3 program/script path setup
+24: M3BIN="${M3ROOT}/$(uname)/bin"
+25: if [[ ":$PATH:" != *":${M3BIN}:"* ]]; then
+26:   export PATH=${M3BIN}:$PATH
+27: fi
+28: M3SBIN="${M3ROOT}/sbin"
+29: if [[ -d "${M3SBIN}" ]]; then
+30:   if [[ ":$PATH:" != *":${M3SBIN}:"* ]]; then
+31:     export PATH=${M3SBIN}:$PATH
+32:   fi
+33: fi
+34: M3WBIN="${M3WORKS}/sbin"
+35: if [[ -d "${M3WBIN}" ]]; then
+36:   if [[ ":$PATH:" != *":${M3WBIN}:"* ]]; then
+37:     export PATH=${M3WBIN}:$PATH
+38:   fi
+39: fi
+40: 
+41: 
+42: # CMake path setup
+43: CMAKE_ROOT=${M3ROOT}/$(uname)/apps/cmake
+44: if [[ "$(which cmake)" != "${CMAKE_ROOT}/bin/cmake" ]]; then
+45:   export PATH=${CMAKE_ROOT}/bin:$PATH
+46: fi
+47: 
+48: 
+49: # Python interpreter path setup
+50: PY_ROOT=${M3ROOT}/$(uname)/apps/anaconda3
+51: if [[ "$(which python)" != "${PY_ROOT}/bin/python" ]]; then
+52:   export PATH=${PY_ROOT}/bin:$PATH
+53: fi
+54: 
+55: 
+56: # M3HOST to be the network interface serving tools should listen on
+57: # determined by a beacon server name
+58: export M3HOST=$(${M3SBIN}/nif2 dwcc.dw)
+59: 
+60: 
+61: # set PYTHONPATH to absolute path of workspace
+62: if [[ "${M3WORKS}" == "${M3ROOT}" ]]; then
+63:   # use py-prod if activated bare m3root
+64:   PYTHONPATH=${M3ROOT}/py-prod
+65: elif [[ "$(uname)" == "Darwin" ]]; then
+66:   # macOS `readlink` does not support `-f`, it always canonicalize
+67:   PYTHONPATH=$(readlink "${M3WORKS}")
+68: else # assuming Linux
+69:   PYTHONPATH=$(readlink -f "${M3WORKS}")
+70: fi
+71: # in case no symlink, readlink gives empty string, revert to original
+72: export PYTHONPATH=${PYTHONPATH:-"${M3WORKS}"}
+73: 
+74: 
+75: # Go proxy setup
+76: export GOPRIVATE='*.dw'
+77: export GOPROXY=https://goproxy.cn
+78: # Go path setup
+79: export GOPATH="${M3WORKS}/go-deps:${M3ROOT}/go-pkgs:${M3ROOT}/go-devs"
+80: # Go handles shared home for pkgs, but not bin, guide it by setting GOBIN
+81: if [[ "${M3WORKS}" == "${M3ROOT}" ]]; then
+82:   export GOBIN="${M3BIN}"
+FILE /dwdhome/fy/BASE_E6_2/m3sof/core/__init__.py True
+FILE /dwdhome/fy/BASE_E6_2/m3sof/core/settings.py True
+46:     def DEFAULT_PATH_SHA_TYPE(self): return self.ctx["DEFAULT_PATH_SHA_TYPE"]
+49:     def DEFAULT_STORE_DIR(self): return self.ctx["DEFAULT_STORE_DIR"]
+80:     def MQUANT_TIS_MDL_PREFIX(self): return self.ctx["MQUANT_TIS_MDL_PREFIX"]
+109:     def APP_DIR(self): return self.ctx["APP_DIR"]
+112:     def MQUANT_LINK_DIR(self): 
+114:         return os.path.join(self.APP_DIR,"mquant","link")
+117:     def MQUANT_LOGGER_DIR(self): 
+118:         return self.ctx["MQUANT_LOGGER_DIR"]
+121:     def MQUANT_TASK_DIR(self): 
+123:         return os.path.join(self.APP_DIR,"mquant","task")
+126:     def MQUANT_TESTER_REPORT_DIR(self): 
+128:         return os.path.join(self.APP_DIR,"mquant","tester","report")
+131:     def MQUANT_LINE_REPORT_DIR(self):
+133:         return os.path.join(self.APP_DIR,"mquant","line","report")
+138:     def TRIER_THOUGHT_DIR(self): 
+140:         path = self.ctx.get("TRIER_THOUGHT_DIR")
+141:         if path is None:
+142:             raise Exception("请在 m3sof.settings.env 中配置 TRIER_THOUGHT_DIR (分析节点附件保存路径)") 
+143:         return os.path.join(path,self.ENV)
+146:     def TRIER_JSON_DIR(self): 
+148:         return os.path.join(self.APP_DIR,"trier","json")
+151:     def TRIER_OPT_JSON_DIR(self): 
+153:         return os.path.join(self.APP_DIR,"trier","optimize")
+159:     def DATABASES(self): return self.ctx["DATABASES"]
+179:     def parse_opt_json_path(self,remember:str):
+FILE /dwdhome/fy/BASE_E6_2/m3sof/settings.py False
+FILE /dwdhome/fy/BASE_E6_2/m3sof/core/setting.py False
+LAYOUT /dwdhome/fy/BASE_E6_2/tis_auto [('.git', True, False), ('README.md', False, False), ('gsl_t1', True, False), ('gsl_t2', True, False), ('gsl_t3', True, False)]
+LAYOUT /dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/dbaw [('Main.hs', False, False)]
+LAYOUT /dwdhome/fy/BASE_E6_2/edh-universe/frp/frp-core/dbas [('Main.hs', False, False)]
+LAYOUT /dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/test-data [('eaw', True, False)]
+LAYOUT /dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/test [('Frp', True, False), ('Spec.hs', False, False)]
+LAYOUT /dwdhome/fy/BASE_E6_2/m3sof/core [('__init__.py', False, False), ('__pycache__', True, False), ('base.py', False, False), ('common.py', False, False), ('settings.py', False, False), ('sof.py', False, False), ('sql', True, False)]
+PATH_META /dwdhome/fy/BASE_E6_2/.runtime/python-deps /dwdhome/fy/BASE_E6_2/.runtime/python-deps True
+PATH_META /dwdhome/fy/BASE_E6_2/python_modules/tis /dwdhome/fy/BASE_E6_2/tis True
+PATH_META /dwdhome/fy/BASE_E6_2/tis_auto /dwdhome/fy/BASE_E6_2/tis_auto True

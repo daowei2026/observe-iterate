@@ -1,0 +1,433 @@
+FILE /dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs LINES 90 240
+90: import Data.Word (Word64)
+91: import Frp.Apt (FrpEvent, StructJSON (..), Timestamp)
+92: import Frp.Core
+93: import Frp.Core.Fao.Store.Base (FDtypeJson (..), loadFieldDtypes, readDbaAsVectorDouble)
+94: import Frp.DbaStore (loadBitsDba)
+95: import Frp.Instance.ISL.Eaw.Interface.Common
+96: import Frp.Instance.ISL.Eaw.Interface.PreL0 qualified as Spine
+97: import Frp.Instance.ISL.Eaw.P1.Internal.UpstreamReference
+98: import Frp.Instance.ISL.Eaw.P1.Products
+99: import Frp.Instance.ISLTC.Fao (Generic2AdtFao (..))
+100: import GHC.Generics (Generic)
+101: import Reflex (fmapMaybe, mergeMap, mergeWith, never)
+102: import System.Directory (doesFileExist)
+103: import System.FilePath (normalise, (<.>), (</>))
+104: 
+105: {-# ANN module ("HLint: ignore Redundant bracket" :: String) #-}
+106: 
+107: type NumericRow = Map Text Double
+108: 
+109: -- | P1 的 Python DBA 一行就是一条业务 occurrence。平台通用
+110: -- 'genericLoad' 会把一行的每个数值字段分别注册成历史事件；对宽 occurrence
+111: -- 表会按字段数放大底层事件。这里仍读取同一份 fields.json／DBA 文件，但
+112: -- 每个 result key 只注册一条行事件，列只在该行触发时组装成 NumericRow。
+113: data PackedNumericRowsHistoryData = PackedNumericRowsHistoryData
+114:   { packedRowTimestamps :: VS.Vector Timestamp,
+115:     packedRowColumns :: Map Text (VS.Vector Double)
+116:   }
+117: 
+118: instance HasFrpHistoryTs PackedNumericRowsHistoryData where
+119:   atHistoryTs = packedRowTimestamps
+120: 
+121: instance HasFrpHistoryData PackedNumericRowsHistoryData NumericRow where
+122:   lookupHistoryData PackedNumericRowsHistoryData {..} index =
+123:     ( packedRowTimestamps VS.! index,
+124:       Map.map (VS.! index) packedRowColumns,
+125:       Nothing
+126:     )
+127: 
+128: loadPackedNumericRows :: FilePath -> Text -> Map Text Text -> IO PackedNumericRowsHistoryData
+129: loadPackedNumericRows fullDir resultKey fields = do
+130:   timestamps <-
+131:     loadBitsDba @Word64 (fullDir </> Text.unpack (resultKey <> ".__ts__") <.> "dba")
+132:       <&> VS.map convert
+133:   columns <-
+134:     Map.traverseWithKey
+135:       (\field dtype -> readDbaAsVectorDouble fullDir (Text.unpack resultKey <> "." <> Text.unpack field) dtype)
+136:       fields
+137:   let expected = VS.length timestamps
+138:   forM_ (Map.toList columns) $ \(field, values) ->
+139:     unless (VS.length values == expected) $
+140:       error
+141:         ( "P1 packed occurrence row length mismatch: "
+142:             <> Text.unpack resultKey
+143:             <> "."
+144:             <> Text.unpack field
+145:             <> " has "
+146:             <> show (VS.length values)
+147:             <> " values but "
+148:             <> show expected
+149:             <> " timestamps"
+150:         )
+151:   pure (PackedNumericRowsHistoryData timestamps columns)
+152: 
+153: data P1DecodedIngress value = P1DecodedIngress
+154:   { ingressOccurrences :: FrpEvent [value],
+155:     ingressDiagnostics :: FrpEvent [P1IngressError]
+156:   }
+157: 
+158: partitionIngressBatch :: [Either P1IngressError value] -> (Maybe [value], Maybe [P1IngressError])
+159: partitionIngressBatch values =
+160:   case partitionEithers values of
+161:     ([], accepted) -> (nonEmpty accepted, Nothing)
+162:     (diagnostics, _rejectedWholeBatch) -> (Nothing, nonEmpty diagnostics)
+163:   where
+164:     nonEmpty items = if null items then Nothing else Just items
+165: 
+166: readThinProductReceipt :: FilePath -> Text -> IO (Either Text ProductReceipt)
+167: readThinProductReceipt fullDir kind = do
+168:   let receiptPath = fullDir <> "/p1_receipts/" <> Text.unpack kind <> ".json"
+169:   receiptExists <- doesFileExist receiptPath
+170:   if not receiptExists
+171:     then pure (Left ("P1 thin receipt sidecar is missing: " <> kind))
+172:     else do
+173:       receiptResult <- eitherDecodeFileStrict' receiptPath
+174:       pure $ do
+175:         receipt <- either (Left . Text.pack) Right receiptResult
+176:         validateReceiptKind kind receipt
+177: 
+178: loadProductReceiptFrom :: PyAny -> Text -> FaoModel ProductReceipt
+179: loadProductReceiptFrom source kind = do
+180:   fullDir <- getFullDir source
+181:   result <- liftIO (readThinProductReceipt fullDir kind)
+182:   receipt <- either (error . Text.unpack) pure result
+183:   when
+184:     (normalise (Text.unpack (receiptArtifactLocation receipt)) /= normalise fullDir)
+185:     (error ("P1 thin receipt artifact_location 与实际 Fao source 不一致: " <> fullDir))
+186:   pure receipt
+187: 
+188: loadGenericArtifact :: (HasHisBack) => PyAny -> Text -> FaoModel GenericFaoResult
+189: loadGenericArtifact source kind = do
+190:   loaded <- genericLoad source
+191:   case loaded of
+192:     Nothing -> do
+193:       fullDir <- getFullDir source
+194:       error (Text.unpack kind <> " requires a committed DBA artifact: " <> fullDir)
+195:     Just generic -> pure generic
+196: 
+197: loadGenericProduct :: (HasHisBack) => PyAny -> Text -> FaoModel GenericFaoResult
+198: loadGenericProduct source kind = do
+199:   _ <- loadProductReceiptFrom source kind
+200:   loadGenericArtifact source kind
+201: 
+202: loadPackedProductMetadata :: PyAny -> [Text] -> FaoModel (FilePath, Map Text (Map Text Text))
+203: loadPackedProductMetadata source prefixes = do
+204:   fullDir <- getFullDir source
+205:   metadata <- liftIO (loadFieldDtypes fullDir)
+206:   fields <- maybe (error ("P1 packed occurrence fields.json is missing: " <> fullDir)) pure metadata
+207:   let selected =
+208:         Map.mapMaybe
+209:           ( \case
+210:               FDtypeMapJson nested -> Just nested
+211:               FDtypeTextJson _ -> Nothing
+212:           )
+213:           (Map.filterWithKey (\key _ -> any (`Text.isPrefixOf` key) prefixes) fields)
+214:   when (Map.null selected) $
+215:     error
+216:       ( "P1 packed occurrence product has no matching result key in "
+217:           <> fullDir
+218:           <> ": "
+219:           <> show prefixes
+220:       )
+221:   pure (fullDir, selected)
+222: 
+223: -- | 同一物理行的全部字段只形成一条历史事件，避免按宽表字段数放大事件数。
+224: loadPackedProductRows :: PyAny -> [Text] -> FaoModel (FrpEvent [(Text, NumericRow)])
+225: loadPackedProductRows source prefixes = do
+226:   (fullDir, groups) <- loadPackedProductMetadata source prefixes
+227:   target <- getTarName source
+228:   events <-
+229:     forM (Map.toList groups) $ \(resultKey, fields) -> do
+230:       let ?hisBack = BackNumber 0
+231:       event <-
+232:         lift $
+233:           newAdtFrpEvent4His @PackedNumericRowsHistoryData @NumericRow
+234:             (packEventName source target ("__eaw_occurrence_row__." <> resultKey))
+235:             (BackNumber 0)
+236:             (loadPackedNumericRows fullDir resultKey fields)
+237:       pure ((\tick -> [(resultKey, atTickValue tick)]) <$> event)
+238:   pure (mergeWith (<>) events)
+239: 
+240: newtype WallOccurrenceFao = WallOccurrenceFao {wallOccurrenceSource :: PyAny}
+FILE /dwdhome/fy/BASE_E6_2/edh-universe/frp/frp-core/src/Frp/Core/Fao/Class.hs LINES 595 687
+595:   -- 如果是读取文件的，需要在开始时间点回溯数据
+596:   runFaoBack :: (Typeable (FaoResult f)) => HisBack -> f -> FaoModel (FaoResult f)
+597:   runFaoBack back = do
+598:     let ?hisBack = back
+599:     runFaoBack'
+600: 
+601:   -- | 运行特征,使用当前上下文的 HisBack
+602:   --
+603:   -- 如在 FaoRable， GMap 内部实现中会使用到
+604:   --
+605:   -- 如果是读取文件的，需要在开始时间点回溯数据
+606:   runFaoBack' :: (Typeable (FaoResult f), HasHisBack) => f -> FaoModel (FaoResult f)
+607:   runFaoBack' f = do
+608:     tarType <- getTarType f
+609:     case tarType of
+610:           -- 固定板块参数类型
+611:           BlockType expr -> withBlock expr $ executeFao f
+612:           _ -> executeFao f
+613: 
+614:   executeFao :: (Typeable (FaoResult f), HasHisBack) => f -> FaoModel (FaoResult f)
+615:   executeFao f = do
+616:     (glb_fid, glb_type) <- view curr'cal'type
+617:     cacheRef <- getFaoResultCacheRef
+618:     cache <- liftIO $ readRef cacheRef
+619:     uid <- getUniqueId f
+620: 
+621:     -- Fao 本身可以设置的三种类型
+622:     let cal_type = propCalType f
+623:     -- 加载文件的，缓存key需要加上 HisBack
+624:     let back = getHisBack ?hisBack
+625:     let buid = if cal_type == OnlyRead || cal_type == Cache then T.intercalate "#" [uid, T.pack (show back)] else uid
+626: 
+627:     case lookupGDict buid cache of
+628:       Just v -> return v
+629:       Nothing -> do
+630:         res <- case cal_type of
+631:           -- 永远读取
+632:           OnlyRead -> do
+633:             full_dir <- getFullDir f
+634:             cfg <- lift $ view (env'ctx . ctx'app'config . env'mongo'config)
+635:             mres <- load f
+636:             case mres of 
+637:                 Just v -> return v 
+638:                 Nothing -> ifM isMongoDbMode doMongo doFile
+639:                     where doFile = error $ show (getFaoConstr f) ++ " OnlyRead not find result:" ++ full_dir ++ "\n" ++ show (ggjson f)
+640:                           doMongo = error $ show (getFaoConstr f) ++ " OnlyRead not find result:" ++ show cfg ++ "\n" ++ show (ggjson f)
+641:           -- 永远计算
+642:           Cal -> doImpl f
+643:           Cache ->
+644:             case glb_type of
+645:               -- 本特征计算
+646:               Cal ->
+647:                 if glb_fid == getParamId f
+648:                   then doImpl f
+649:                   else do
+650:                     mres <- load f
+651:                     maybe doImplAndDump return mres
+652:               -- 本特征重新计算后保存
+653:               Gen ->
+654:                 if glb_fid == getParamId f
+655:                   then doImplAndDump
+656:                   else do
+657:                     mres <- load f
+658:                     maybe doImplAndDump return mres
+659:               AllCal -> doImpl f -- 所有特征都计算
+660:               AllGen -> doImplAndDump -- 所有特征重新计算后保存
+661:               _ -> error $ "not support cal_type" ++ show glb_type
+662:           _ -> error $ "Fao propCalType must be Cal or Cache or OnlyRead, cannot be " ++ show cal_type
+663:         liftIO $ writeRef cacheRef $ insertGDict buid res cache
+664:         return res
+665:     where
+666:       doImplAndDump = do
+667:         enable <- lift $ view (env'ctx . ctx'app'config . env'enable_extra)
+668:         res <-
+669:           if not enable
+670:             then doImpl f
+671:             else do
+672:               withEventDumpEnv True f (doImpl f)
+673:         dump f res
+674:         return res
+675: 
+676:   -- | 获取真实的目标对象类型
+677:   getTarType :: f -> FaoModel TarType
+678:   getTarType f = do
+679:     tartype <- propTarType f
+680:     case tartype of
+681:       RunTimeTarType -> currentTarType
+682:       t -> return t
+683: 
+684:   -- | 获取当前特征目标类型下的品种集
+685:   getSymbols :: f -> FaoModel Symbols
+686:   getSymbols f = getTarType f >>= loadTarTypeSymbols
+687: 
+FILE /dwdhome/fy/BASE_E6_2/edh-universe/frp/frp-core/src/Frp/Core/Fao/Class.hs LINES 744 815
+744: withEventDumpEnv :: (Fao f) => Bool -> f -> FaoModel a -> FaoModel a
+745: withEventDumpEnv is_extra f runModel = do
+746:   let fao_name = ppname f
+747:   uid0 <- getUniqueId f
+748:   let uid = if is_extra then "extra" <> uid0 else uid0
+749: 
+750:   full_dirs0 <- getAllFullDirs f  
+751:   let full_dirs =  
+752:         if is_extra 
+753:         then fmap (</> "extra") full_dirs0
+754:         else full_dirs0
+755: 
+756:   -- 设置存储路径
+757:   let ctx = DumpContext uid fao_name full_dirs def
+758:   modify (over curr'store'contexts (ctx :)) -- 添加到列表中
+759:   !res <- runModel
+760:   fields <- curr'dump'fields
+761:   bMongoMode <- isMongoDbMode
+762: 
+763:   sof <- lift $ view (env'ctx . ctx'sof)
+764:   cal_name <- currentCalendar'
+765:   tar_name <- getTarName f
+766: 
+767:   unless (Map.null fields) $ do
+768:     mpipe <- getMongoPipe
+769:     let _dump = do
+770:           rs <- forM fields $ \(fdtype, fn) -> fn >>= \n -> return (fdtype, n)
+771:           let ps0 = Map.map (snd . snd) rs
+772:               ps1 = catMaybes $ Map.elems ps0
+773:               ps = Map.fromList $ fmap (,"event@f8") ps1
+774:               etypes :: FieldMap Text = Map.union (Map.map fst rs) ps
+775:           if bMongoMode then _dump2mongo rs etypes else _dump2File rs etypes
+776: 
+777:         _dump2mongo rs etypes = do
+778:           -- 保存该特征相关汇总信息
+779:           -- sof_name startDay endDay calendar fao_name params tar_name fields
+780:           let doc :: MDB.Document
+781:               doc =
+782:                 [ "_id" =: uid,
+783:                   "sof_name" =: sof ^. sof'name,
+784:                   "startDay" =: sof ^. sof'startDay,
+785:                   "endDay" =: sof ^. sof'endDay,
+786:                   "calendar" =: cal_name,
+787:                   "fao_name" =: fao_name,
+788:                   "tar_name" =: tar_name,
+789:                   "params" =: (T.pack . BL.unpack) (ggjson f),
+790:                   "fields" =: (T.pack . BL.unpack) (encode etypes),
+791:                   "full_dir" =: head full_dirs
+792:                 ]
+793:           case mpipe of 
+794:             Nothing -> error "请配置 MongoDB 连接"
+795:             Just pipe -> do 
+796:                 MDB.access pipe MDB.master "fao" $ do
+797:                     wres <- MDB.updateMany "record" [(["_id" =: uid], doc, [MDB.Upsert])]
+798:                     when (MDB.failed wres) $ do
+799:                         liftIO $ printM $ "save result to mongo error:" ++ show wres
+800:                 printM $ "📂 save result to mongo[" ++ show uid ++ "] '" ++ "'," ++ show rs
+801: 
+802:         _dump2File rs etypes = do
+803:           uuid <- nextRandom
+804:           let go full_dir2 = do-- 最后需要保存字段相关信息的 json 文件, 这里都是 event@f8 类型
+805:                 let jsonPath = full_dir2 </> "fields.json"
+806:                     tmpPath = jsonPath ++ "!" ++ toString uuid
+807:                 B.writeFile tmpPath (encode etypes)
+808:                 renamePath tmpPath jsonPath
+809:                 printM $ "📂 save result to file '" ++ full_dir2 ++ "'," ++ show rs
+810:           mapM_ go full_dirs
+811: 
+812:     -- 结束事件触发执行保存函数
+813:     eend <- getHistoryEndEvent
+814:     performEvent_ $ liftIO . const _dump <$> eend
+815: 
+FILE /dwdhome/fy/BASE_E6_2/edh-universe/frp/frp-core/src/Frp/Core/Fao/Store/Class.hs LINES 160 215
+160:               else do
+161:                 -- 如果有价格，价格长度需要和值长度一致
+162:                 whenJust prices $ \(VS.length -> pn) ->
+163:                   unless (pn == dn) $ error $ show ename ++ " loadAdtEvent 历史数据价格长度不一致:" ++ show dn ++ " /= " ++ show pn ++ "," ++ full_dir
+164:                 return $ AdtHistoryData tss datas prices
+165: 
+166:       lift $ newAdtFrpEvent4His ename def _read
+167: 
+168: -- | 从 dba 文件中获取 Adt 类型结果到事件, 不带 Tick
+169: --
+170: -- 一般用于保存特征 Adt 结果,而不是像 KLine 那样的基础数据，所以该函数暂时不支持实时触发
+171: loadAdtEvent' ::
+172:   forall a.
+173:   (DbaField a StructField, Typeable a, HasHisBack, Val a) =>
+174:   FieldName -> -- 字段名称
+175:   ReaderT LoadContext FaoModel (FrpEvent a)
+176: loadAdtEvent' field = loadAdtEvent field <&> fmap value
+177: 
+178: -- | 准备读取 Fao 事件结果
+179: withEventLoad :: (Fao f) => f -> ReaderT LoadContext FaoModel b -> FaoModel (Maybe b)
+180: withEventLoad f runModel = do
+181:   full_dir <- getFullDir f
+182:   uid <- getUniqueId f
+183:   bMongoMode <- isMongoDbMode
+184:   if bMongoMode
+185:     then do
+186:       mfields <- doMongo uid
+187:       doLoad mfields full_dir uid
+188:     else do
+189:       mfull_dir <- getGFullDir f
+190:       case mfull_dir of
+191:         Just gfull_dir -> do
+192:           gfields <- doFile gfull_dir
+193:           case gfields of
+194:             Just _ -> doLoad gfields gfull_dir uid
+195:             Nothing -> do
+196:               mfields <- doFile full_dir
+197:               doLoad mfields full_dir uid
+198:         Nothing -> do
+199:           mfields <- doFile full_dir
+200:           doLoad mfields full_dir uid
+201:   where
+202:     doMongo uid = do
+203:       pipe <- getMongoPipe
+204:       loadFieldDtypes4Mongo pipe uid
+205:     doFile = liftIO . loadFieldDtypes
+206:     doLoad mfields full_dir uid = do
+207:       forM mfields $ \fields -> do
+208:         tar_name <- getTarName f
+209:         let ctx = LoadContext full_dir (ppname f) uid fields (packEventName f tar_name)
+210:         runReaderT runModel ctx
+211: 
+212: --------------
+213: -- dump
+214: --------------
+215: 
+FILE /dwdhome/fy/BASE_E6_2/edh-universe/frp/frp-core/src/Frp/Core/Fao/Store/Class.hs LINES 250 305
+250:   where
+251:     _dump full_dir xs = do
+252:       uuid <- nextRandom <&> toString
+253:       let old_path = full_dir <.> uuid <.> "dba"
+254:           new_path = full_dir <.> "dba"
+255:       storeBitsDba old_path xs
+256:       renamePath old_path new_path
+257: 
+258: dumpBitsEvent' ::
+259:   forall a.
+260:   (DbaField a BitsField, Val a, Eq a, Storable a, EdhXchg a, Typeable a) =>
+261:   FieldName ->
+262:   FrpEvent a ->
+263:   FaoModel ()
+264: dumpBitsEvent' field e = wrapTickEvent e >>= dumpBitsEvent field
+265: 
+266: -- | 保存事件数据到 dba
+267: gdumpEvent ::
+268:   forall a ft.
+269:   (DbaField a ft, Typeable a, HasTickValue (Tick a) a, Val a) =>
+270:   -- | 不同类型的保存函数
+271:   (FilePath -> [a] -> IO ()) ->
+272:   FieldName ->
+273:   FDType ->
+274:   FrpEvent (Tick a) ->
+275:   FaoModel ()
+276: gdumpEvent _store field@(T.unpack -> sname) fdtype e = do
+277:   !mctx <- curr'dump'context
+278:   case mctx of
+279:     Nothing -> return ()
+280:     Just DumpContext {..} -> do
+281:       -- 累积历史事件结果到变量
+282:       valRef :: IORef [Tick a] <- liftIO $ newIORef []
+283: 
+284:       let _append :: Tick a -> IO ()
+285:           _append a = do
+286:             vals <- readIORef valRef
+287:             writeIORef valRef $ a : vals -- 降序添加
+288:       performEvent_ $ liftIO . _append <$> ffilter (isHistoryQuote . atTickTs) e
+289: 
+290:       pipe <- getMongoPipe
+291:       bMongo <- isMongoDbMode
+292:       bRT <- isRealTimeMode
+293:       let _writeHis = do
+294:             readIORef valRef >>= \vals -> do
+295:               if bMongo 
+296:               then _dump2mongo pipe dump_fao_name dump_unique_id vals 
+297:               else do 
+298:                 xs <- mapM (`_dump2File` vals) dump_full_dirs
+299:                 return $ head xs
+300:       modify'curr'dump'fields field (fdtype, _writeHis)
+301: 
+302:       -- 创建 collection 和 索引
+303:       when bMongo $ createFaoIndex2Mongo pipe dump_fao_name
+304: 
+305:       -- 如果是实时，还需要增加记录到 mongo db

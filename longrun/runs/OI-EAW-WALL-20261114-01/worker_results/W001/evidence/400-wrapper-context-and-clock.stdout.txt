@@ -1,0 +1,191 @@
+FILE /dwdhome/fy/BASE_E6_2/m3sof/settings/json.py
+1: 
+2: 
+3: # dejson eval 时可能需要的包
+4: # enjson 和 dejson 一般也因为优化参数，需跨平台存取时使用
+5: # 一般为一些基础函数和mquant框架中自定义的一些基础函数
+6: # 根据需要添加
+7: 
+8: import numpy as np
+9: import pandas as pd
+10: 
+11: from numpy import nan, inf
+12: 
+13: from mquant.worker.beat import *
+14: from mquant.frame.reload.cls import *
+15: from mquant.aidata.big_world_chart import AidataBigWorldReviewCAE, AidataMidTickWorldReviewCAE, AidataRunOverviewCAE
+16: from mquant.aidata.csv_feature import ReadOnlyCsvFeature
+FILE /dwdhome/fy/BASE_E6_2/m3sof/settings/lib3.py
+1: 
+2: # 统一导入交易相关包,提供给 run_in_context
+3: import os.path
+4: import numpy as np
+5: import pandas as pd
+6: 
+7: from numpy import nan, inf
+8: from typing import *
+9: 
+10: from m3 import *
+11: from m3tt.lang import *
+12: from m3tt import *
+13: from m3tt.lang.feat.blk import *
+14: from m3tt.lang.feat.bskt import *
+15: from m3tt.lang.feat.pnv import *
+16: from m3tt.lang.feat.trial import *
+17: 
+18: from tis.tti.feats import *
+19: from tis_auto.gsl_t1.feats import *
+20: from tis_auto.gsl_t3.feats import *
+21: 
+22: from mquant.worker.beat import *
+23: from mquant.frame.reload.cls import *
+24: 
+FILE /dwdhome/fy/BASE_E6_2/edh-universe/frp/frp-core/src/Frp/Apt/Time.hs
+118:   start <- liftIO getZonedTime
+119:   traceM $ "### start " ++ title ++ ": " ++ show start
+120: 
+121:   res <- fn
+122: 
+123:   end <- liftIO getZonedTime
+124:   traceM $ "### end " ++ title ++ ": " ++ show end ++ " >> cost:" ++ show (end `diffZonedTime` start)
+125:   return res
+126: 
+127: -- | 时间
+128: newtype Timestamp = Timestamp Word64
+129:   deriving newtype (Eq, Ord, Num, NFData, Storable)
+130:   deriving (Generic)
+131: 
+132: -- | 为 Timestamp 实现 Unbox 实例
+133: newtype instance VU.MVector s Timestamp = MV_Word64 (VP.MVector s Word64)
+134: newtype instance VU.Vector    Timestamp = V_Word64  (VP.Vector    Word64)
+135: deriving via (VU.UnboxViaPrim Word64) instance VGM.MVector VU.MVector Timestamp
+136: deriving via (VU.UnboxViaPrim Word64) instance VG.Vector   VU.Vector  Timestamp
+137: instance VU.Unbox Timestamp
+138: 
+139: instance MDB.Val Timestamp where
+140:   val = MDB.UTC . convert
+141:   cast' (MDB.String v) = Just (convert v)
+142:   cast' (MDB.Int64 v) = Just (convert v)
+143:   cast' (MDB.UTC v) = Just (convert v)
+144:   cast' _ = Nothing
+145: 
+146: instance MDB.Val Word64 where
+147:   val = MDB.Int64 . convert
+148:   cast' (MDB.Float v) = Just . round $ v
+149:   cast' (MDB.Int64 v) = Just . convert $ v
+150:   cast' (MDB.String v) = Just (convert v1)
+151:         where v1 :: Timestamp = convert v
+152:   cast' _ = Nothing
+153: 
+154: instance FromJSON Timestamp where
+155:   parseJSON v = case v of
+156:     String s -> return $ convert s
+157:     Number s -> case floatingOrInteger s :: Either Double Int of 
+158:         Right i -> return $ convert i 
+159:         _ -> fail "Timestamp json parse error: Expected a String or Int" 
+160:     -- 如果不是上述类型，则解析失败
+161:     _ -> fail "Timestamp json parse error: Expected a String or Int"
+162: 
+163: instance Convertible Word64 Timestamp where
+164:   safeConvert :: Word64 -> ConvertResult Timestamp
+165:   safeConvert = return . Timestamp
+166: 
+167: instance Convertible Timestamp Word64 where
+168:   safeConvert :: Timestamp -> ConvertResult Word64
+169:   safeConvert (Timestamp tv) = return tv
+170: 
+171: instance Convertible Int64 Timestamp where
+172:   safeConvert :: Int64 -> ConvertResult Timestamp
+173:   safeConvert = return . Timestamp . fromIntegral
+174: 
+175: instance Convertible Timestamp Int64 where
+176:   safeConvert :: Timestamp -> ConvertResult Int64
+177:   safeConvert (Timestamp tv) = return $ fromIntegral tv
+178: 
+179: instance Convertible Int Timestamp where
+180:   safeConvert :: Int -> ConvertResult Timestamp
+181:   safeConvert = return . Timestamp . convert
+182: 
+183: instance Convertible Integer Timestamp where
+184:   safeConvert :: Integer -> ConvertResult Timestamp
+185:   safeConvert = return . Timestamp . convert
+186: 
+187: instance Convertible Text Timestamp where
+188:   safeConvert :: Text -> ConvertResult Timestamp
+189:   safeConvert s = return . Timestamp $ textToEpoch fmt s
+190:         where fmt = if T.isInfixOf "T" s then dateFmtPatternT else dateFmtPattern
+191: 
+192: instance Convertible UTCTime Timestamp where
+193:   safeConvert :: UTCTime -> ConvertResult Timestamp
+194:   safeConvert = return . Timestamp . utcTimeToEpoch
+195: 
+196: instance Convertible Timestamp UTCTime where
+197:   safeConvert :: Timestamp -> ConvertResult UTCTime
+198:   safeConvert (Timestamp v)= return . wordToUTCTime $ v
+199: 
+200: instance Show Timestamp where
+201:   show = formatTimestampT
+202: 
+203: instance ToField Timestamp where
+204:   toField = toField . formatTimestampT
+205: 
+206: instance Out Timestamp where
+207:   doc = Pretty.text . show
+208:   docPrec _ = doc
+209: 
+210: instance Default Timestamp where def = Timestamp 0
+211: 
+212: instance GStorable Timestamp
+213: 
+214: -- | text to Timestamp, format error ,raise exception
+215: {-# INLINE textToTimestamp #-}
+216: textToTimestamp :: String -> Text -> Timestamp
+217: textToTimestamp p = Timestamp . textToEpoch p
+218: 
+219: -- | 格式化 Timestamp "%FT%H:%M:%S%Q"
+220: {-# INLINE formatTimestampT #-}
+221: formatTimestampT :: Timestamp -> String
+222: formatTimestampT (Timestamp et) = formatTime defaultTimeLocale dateFmtPatternT $ wordToUTCTime et
+223: 
+224: -- | 获取 Timestamp 所在的最近间隔分钟所在时间
+225: --
+226: -- 如 15 -> 2018-01-01 02:46:59 -> 2018-01-01 02:45:00
+227: convertTimestampInLatestMinute :: Int -> Timestamp -> Timestamp
+228: convertTimestampInLatestMinute intervalM (Timestamp et) =
+229:   let utime0 = wordToUTCTime et
+230:       utime = convertUTCTimeInLatestMinute intervalM utime0
+FILE /dwdhome/fy/BASE_E6_2/edh-universe/frp/frp-core/src/Frp/Apt/Time.hs
+230:       utime = convertUTCTimeInLatestMinute intervalM utime0
+231:    in Timestamp $ utcTimeToEpoch utime
+232: 
+233: -- | Timestamp 添加天数
+234: addDays :: Int -> Timestamp ->  Timestamp
+235: addDays n t = 
+236:     let ut :: UTCTime = convert t 
+237:         s = utcTimeToPOSIXSeconds ut 
+238:         news = s + fromIntegral (n * 86400)
+239:         newut = posixSecondsToUTCTime news
+240:     in convert newut
+241: 
+HEADERS_COMMAND {
+  "label": "390-bounded-product-headers",
+  "command": [
+    "/usr/bin/python3",
+    "-B",
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/commands/390-bounded-product-headers.py"
+  ],
+  "cwd": "/dwdhome/fy/BASE_E6_2",
+  "started_at_utc": "2026-11-14T14:27:54.016626+00:00",
+  "ended_at_utc": "2026-11-14T14:27:54.679123+00:00",
+  "exit_code": 0,
+  "timed_out": false,
+  "stdout_path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/evidence/390-bounded-product-headers.stdout.txt",
+  "stderr_path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/evidence/390-bounded-product-headers.stderr.txt",
+  "stdout_bytes": 9515,
+  "stderr_bytes": 0
+}
+
+HEADER_TAIL 1640, "capacity": 1640, "header_valid": true}
+KEY_HEADER {"path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_sparse_events.__ts__.dba", "bytes": 131312, "layout_version": 0, "data_offset": 64, "item_size": 8, "item_alignment": 8, "row_count": 16406, "capacity": 16406, "header_valid": true}
+TOTAL 95 SELECTED 95 ELAPSED 0.2209725669817999 INVALID 0
+

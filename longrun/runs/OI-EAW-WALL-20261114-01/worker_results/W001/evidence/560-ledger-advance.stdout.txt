@@ -1,0 +1,294 @@
+{"label": "561-binding-complete", "command": ["/usr/bin/python3", "-B", "/home/dw/.agents/skills/long-task-status/scripts/task_status.py", "step-complete", "--root", "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001", "--task-id", "w001-local", "--step-id", "binding-code", "--evidence", "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/WORKSPACE_BINDING.json"], "cwd": "/dwdhome/fy/BASE_E6_2", "started_at_utc": "2026-11-14T14:35:03.210667+00:00", "ended_at_utc": "2026-11-14T14:35:04.241328+00:00", "exit_code": 0, "timed_out": false, "stdout_path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/evidence/561-binding-complete.stdout.txt", "stderr_path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/evidence/561-binding-complete.stderr.txt", "stdout_bytes": 5076, "stderr_bytes": 0}
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/evidence/561-binding-complete.stdout.txt
+{
+  "schema_version": 1,
+  "project": {
+    "id": "oi-eaw-wall",
+    "title": "W001 本地事实核验"
+  },
+  "task": {
+    "id": "w001-local",
+    "title": "W001 有限本地调查与原件交付",
+    "type": "engineering",
+    "priority": "normal",
+    "owner": "agent",
+    "completion_gate": "仅本地：原件、限制、hash 与发布映射完整；不代表 W001 或父任务完成。",
+    "monitoring": {
+      "scope": "general"
+    },
+    "origin": {
+      "machine": "dw-VMware-Virtual-Platform",
+      "codex_thread_id": "01a1da55-5881-7590-94a1-0661f0236977"
+    }
+  },
+  "task_id": "w001-local",
+  "source_kind": "task_status_ledger",
+  "source": {
+    "path": "tasks/w001-local/snapshot.json"
+  },
+  "ledger_seq": 4,
+  "snapshot_seq": 4,
+  "projection_current": true,
+  "business_terminal": null,
+  "queue_position": null,
+  "plan_hash": "1a55dc03d3bfb22f94aa207462307e762b40d90013b4c027621722b2a55bcbe9",
+  "status": "running",
+  "current_phase_id": "local",
+  "current_step_id": "assets",
+  "action": "已定位当前 TIS/FRP 和真实旧 schema 物化资产；核验包装、只读解码边界",
+  "next_action": "区分版本差异，完成有界资产解码或明确停止",
+  "blocker": null,
+  "resources": [],
+  "progress": {
+    "completed_steps": 1,
+    "total_steps": 3,
+    "completed_weight": 1.0,
+    "total_weight": 3.0,
+    "percent": 33.3
+  },
+  "timing": {
+    "started_at": "2026-11-14T14:18:36Z",
+    "updated_at": "2026-11-14T14:35:04Z",
+    "heartbeat_at": "2026-11-14T14:24:51Z",
+    "finished_at": null,
+    "elapsed_seconds": 988,
+    "active_seconds": 987,
+    "waiting_seconds": 0,
+    "waiting_external_seconds": 0,
+    "blocked_seconds": 0,
+    "needs_human_seconds": 0,
+    "idle_seconds": 1,
+    "accounted_seconds": 988,
+    "unassigned_seconds": 1,
+    "unobserved_seconds": 0
+  },
+  "phases": [
+    {
+      "id": "local",
+      "title": "本地核验",
+      "steps": [
+        {
+          "id": "binding-code",
+          "title": "工作区
+[tool preview truncated; full file retained]
+{"label": "562-assets-start", "command": ["/usr/bin/python3", "-B", "/home/dw/.agents/skills/long-task-status/scripts/task_status.py", "step-start", "--root", "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001", "--task-id", "w001-local", "--step-id", "assets", "--action", "读取真实短窗 DBA 局部链并登记 schema/version 缺口", "--next-action", "完成库存、预检和样本说明"], "cwd": "/dwdhome/fy/BASE_E6_2", "started_at_utc": "2026-11-14T14:35:04.278205+00:00", "ended_at_utc": "2026-11-14T14:35:05.125772+00:00", "exit_code": 0, "timed_out": false, "stdout_path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/evidence/562-assets-start.stdout.txt", "stderr_path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/evidence/562-assets-start.stderr.txt", "stdout_bytes": 5059, "stderr_bytes": 0}
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/evidence/562-assets-start.stdout.txt
+{
+  "schema_version": 1,
+  "project": {
+    "id": "oi-eaw-wall",
+    "title": "W001 本地事实核验"
+  },
+  "task": {
+    "id": "w001-local",
+    "title": "W001 有限本地调查与原件交付",
+    "type": "engineering",
+    "priority": "normal",
+    "owner": "agent",
+    "completion_gate": "仅本地：原件、限制、hash 与发布映射完整；不代表 W001 或父任务完成。",
+    "monitoring": {
+      "scope": "general"
+    },
+    "origin": {
+      "machine": "dw-VMware-Virtual-Platform",
+      "codex_thread_id": "01a1da55-5881-7590-94a1-0661f0236977"
+    }
+  },
+  "task_id": "w001-local",
+  "source_kind": "task_status_ledger",
+  "source": {
+    "path": "tasks/w001-local/snapshot.json"
+  },
+  "ledger_seq": 5,
+  "snapshot_seq": 5,
+  "projection_current": true,
+  "business_terminal": null,
+  "queue_position": null,
+  "plan_hash": "1a55dc03d3bfb22f94aa207462307e762b40d90013b4c027621722b2a55bcbe9",
+  "status": "running",
+  "current_phase_id": "local",
+  "current_step_id": "assets",
+  "action": "读取真实短窗 DBA 局部链并登记 schema/version 缺口",
+  "next_action": "完成库存、预检和样本说明",
+  "blocker": null,
+  "resources": [],
+  "progress": {
+    "completed_steps": 1,
+    "total_steps": 3,
+    "completed_weight": 1.0,
+    "total_weight": 3.0,
+    "percent": 33.3
+  },
+  "timing": {
+    "started_at": "2026-11-14T14:18:36Z",
+    "updated_at": "2026-11-14T14:35:04Z",
+    "heartbeat_at": "2026-11-14T14:24:51Z",
+    "finished_at": null,
+    "elapsed_seconds": 989,
+    "active_seconds": 987,
+    "waiting_seconds": 0,
+    "waiting_external_seconds": 0,
+    "blocked_seconds": 0,
+    "needs_human_seconds": 0,
+    "idle_seconds": 1,
+    "accounted_seconds": 988,
+    "unassigned_seconds": 1,
+    "unobserved_seconds": 1
+  },
+  "phases": [
+    {
+      "id": "local",
+      "title": "本地核验",
+      "steps": [
+        {
+          "id": "binding-code",
+          "title": "工作区绑定与静态入口",
+     
+[tool preview truncated; full file retained]
+{"label": "563-assets-complete", "command": ["/usr/bin/python3", "-B", "/home/dw/.agents/skills/long-task-status/scripts/task_status.py", "step-complete", "--root", "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001", "--task-id", "w001-local", "--step-id", "assets", "--evidence", "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/evidence/WALL_ASSET_METADATA.json", "--evidence", "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/SAMPLE_CHAIN.jsonl"], "cwd": "/dwdhome/fy/BASE_E6_2", "started_at_utc": "2026-11-14T14:35:05.156365+00:00", "ended_at_utc": "2026-11-14T14:35:06.062869+00:00", "exit_code": 0, "timed_out": false, "stdout_path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/evidence/563-assets-complete.stdout.txt", "stderr_path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/evidence/563-assets-complete.stderr.txt", "stdout_bytes": 5519, "stderr_bytes": 0}
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/evidence/563-assets-complete.stdout.txt
+{
+  "schema_version": 1,
+  "project": {
+    "id": "oi-eaw-wall",
+    "title": "W001 本地事实核验"
+  },
+  "task": {
+    "id": "w001-local",
+    "title": "W001 有限本地调查与原件交付",
+    "type": "engineering",
+    "priority": "normal",
+    "owner": "agent",
+    "completion_gate": "仅本地：原件、限制、hash 与发布映射完整；不代表 W001 或父任务完成。",
+    "monitoring": {
+      "scope": "general"
+    },
+    "origin": {
+      "machine": "dw-VMware-Virtual-Platform",
+      "codex_thread_id": "01a1da55-5881-7590-94a1-0661f0236977"
+    }
+  },
+  "task_id": "w001-local",
+  "source_kind": "task_status_ledger",
+  "source": {
+    "path": "tasks/w001-local/snapshot.json"
+  },
+  "ledger_seq": 6,
+  "snapshot_seq": 6,
+  "projection_current": true,
+  "business_terminal": null,
+  "queue_position": null,
+  "plan_hash": "1a55dc03d3bfb22f94aa207462307e762b40d90013b4c027621722b2a55bcbe9",
+  "status": "running",
+  "current_phase_id": "local",
+  "current_step_id": "delivery",
+  "action": "读取真实短窗 DBA 局部链并登记 schema/version 缺口",
+  "next_action": "完成库存、预检和样本说明",
+  "blocker": null,
+  "resources": [],
+  "progress": {
+    "completed_steps": 2,
+    "total_steps": 3,
+    "completed_weight": 2.0,
+    "total_weight": 3.0,
+    "percent": 66.7
+  },
+  "timing": {
+    "started_at": "2026-11-14T14:18:36Z",
+    "updated_at": "2026-11-14T14:35:05Z",
+    "heartbeat_at": "2026-11-14T14:24:51Z",
+    "finished_at": null,
+    "elapsed_seconds": 990,
+    "active_seconds": 988,
+    "waiting_seconds": 0,
+    "waiting_external_seconds": 0,
+    "blocked_seconds": 0,
+    "needs_human_seconds": 0,
+    "idle_seconds": 1,
+    "accounted_seconds": 989,
+    "unassigned_seconds": 1,
+    "unobserved_seconds": 1
+  },
+  "phases": [
+    {
+      "id": "local",
+      "title": "本地核验",
+      "steps": [
+        {
+          "id": "binding-code",
+          "title": "工作区绑定与静态入口",
+   
+[tool preview truncated; full file retained]
+{"label": "564-delivery-start", "command": ["/usr/bin/python3", "-B", "/home/dw/.agents/skills/long-task-status/scripts/task_status.py", "step-start", "--root", "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001", "--task-id", "w001-local", "--step-id", "delivery", "--action", "编制完整报告、库存、发布映射和哈希；只结束本地阶段", "--next-action", "验证原件后交主控发布，待真实 refs 再生成正式 Return"], "cwd": "/dwdhome/fy/BASE_E6_2", "started_at_utc": "2026-11-14T14:35:06.104641+00:00", "ended_at_utc": "2026-11-14T14:35:07.014858+00:00", "exit_code": 0, "timed_out": false, "stdout_path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/evidence/564-delivery-start.stdout.txt", "stderr_path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/evidence/564-delivery-start.stderr.txt", "stdout_bytes": 5601, "stderr_bytes": 0}
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/evidence/564-delivery-start.stdout.txt
+{
+  "schema_version": 1,
+  "project": {
+    "id": "oi-eaw-wall",
+    "title": "W001 本地事实核验"
+  },
+  "task": {
+    "id": "w001-local",
+    "title": "W001 有限本地调查与原件交付",
+    "type": "engineering",
+    "priority": "normal",
+    "owner": "agent",
+    "completion_gate": "仅本地：原件、限制、hash 与发布映射完整；不代表 W001 或父任务完成。",
+    "monitoring": {
+      "scope": "general"
+    },
+    "origin": {
+      "machine": "dw-VMware-Virtual-Platform",
+      "codex_thread_id": "01a1da55-5881-7590-94a1-0661f0236977"
+    }
+  },
+  "task_id": "w001-local",
+  "source_kind": "task_status_ledger",
+  "source": {
+    "path": "tasks/w001-local/snapshot.json"
+  },
+  "ledger_seq": 7,
+  "snapshot_seq": 7,
+  "projection_current": true,
+  "business_terminal": null,
+  "queue_position": null,
+  "plan_hash": "1a55dc03d3bfb22f94aa207462307e762b40d90013b4c027621722b2a55bcbe9",
+  "status": "running",
+  "current_phase_id": "local",
+  "current_step_id": "delivery",
+  "action": "编制完整报告、库存、发布映射和哈希；只结束本地阶段",
+  "next_action": "验证原件后交主控发布，待真实 refs 再生成正式 Return",
+  "blocker": null,
+  "resources": [],
+  "progress": {
+    "completed_steps": 2,
+    "total_steps": 3,
+    "completed_weight": 2.0,
+    "total_weight": 3.0,
+    "percent": 66.7
+  },
+  "timing": {
+    "started_at": "2026-11-14T14:18:36Z",
+    "updated_at": "2026-11-14T14:35:06Z",
+    "heartbeat_at": "2026-11-14T14:24:51Z",
+    "finished_at": null,
+    "elapsed_seconds": 991,
+    "active_seconds": 989,
+    "waiting_seconds": 0,
+    "waiting_external_seconds": 0,
+    "blocked_seconds": 0,
+    "needs_human_seconds": 0,
+    "idle_seconds": 1,
+    "accounted_seconds": 990,
+    "unassigned_seconds": 2,
+    "unobserved_seconds": 1
+  },
+  "phases": [
+    {
+      "id": "local",
+      "title": "本地核验",
+      "steps": [
+        {
+          "id": "binding-code",
+          "title": "工作区绑定与
+[tool preview truncated; full file retained]

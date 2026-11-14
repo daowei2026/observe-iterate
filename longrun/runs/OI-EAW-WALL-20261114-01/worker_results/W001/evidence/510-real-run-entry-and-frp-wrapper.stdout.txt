@@ -1,0 +1,147 @@
+mquant/tis/test/integration/verify_eaw_p1_real_run.py:17:import subprocess
+mquant/tis/test/integration/verify_eaw_p1_real_run.py:76:FRP_DUMP_DIRECTORY_PATTERN = re.compile(r"save result to file '([^']+)'")
+mquant/tis/test/integration/verify_eaw_p1_real_run.py:83:def _read_json(path):
+mquant/tis/test/integration/verify_eaw_p1_real_run.py:85:        return json.loads(Path(path).read_text(encoding="utf-8"))
+mquant/tis/test/integration/verify_eaw_p1_real_run.py:90:def _write_json_atomic(path, value):
+mquant/tis/test/integration/verify_eaw_p1_real_run.py:111:def _require_keys(value, keys, label):
+mquant/tis/test/integration/verify_eaw_p1_real_run.py:120:def validate_fixture(value, *, allow_placeholders=True):
+mquant/tis/test/integration/verify_eaw_p1_real_run.py:131:            "startDay",
+mquant/tis/test/integration/verify_eaw_p1_real_run.py:132:            "endDay",
+mquant/tis/test/integration/verify_eaw_p1_real_run.py:134:            "frp_calendar",
+mquant/tis/test/integration/verify_eaw_p1_real_run.py:141:        "startDay",
+mquant/tis/test/integration/verify_eaw_p1_real_run.py:142:        "endDay",
+mquant/tis/test/integration/verify_eaw_p1_real_run.py:144:        "frp_calendar",
+mquant/tis/test/integration/verify_eaw_p1_real_run.py:148:        if not allow_placeholders and run[key].startswith(PLACEHOLDER_PREFIX):
+mquant/tis/test/integration/verify_eaw_p1_real_run.py:161:def _require_heavy_authorization():
+mquant/tis/test/integration/verify_eaw_p1_real_run.py:168:def _tis_worktree_root():
+mquant/tis/test/integration/verify_eaw_p1_real_run.py:172:def _bind_tis_worktree_package():
+mquant/tis/test/integration/verify_eaw_p1_real_run.py:207:        "mquant.tis", loader=None, is_package=True
+mquant/tis/test/integration/verify_eaw_p1_real_run.py:216:def _runtime_imports():
+mquant/tis/test/integration/verify_eaw_p1_real_run.py:221:    from mquant.frame import CurrCalendar, CurrFrpEnv, FAnyParam
+mquant/tis/test/integration/verify_eaw_p1_real_run.py:226:    from mquant.tis.hf.prel0.p1_product_receipt import load_p1_product_receipt
+mquant/tis/test/integration/verify_eaw_p1_real_run.py:233:def _tagged(tag, **fields):
+mquant/tis/test/integration/verify_eaw_p1_real_run.py:237:def _build_frp_parameter_payloads(source_json):
+mquant/tis/test/integration/verify_eaw_p1_real_run.py:238:    """形成四个现有 Haskell Fao class 的产品特定参数；不建立总 P1 参数。"""
+mquant/tis/test/integration/verify_eaw_p1_real_run.py:249:                    "WallOccurrenceFao", wallOccurrenceSource=wall
+mquant/tis/test/integration/verify_eaw_p1_real_run.py:258:                    "BuildOccurrenceFao",
+mquant/tis/test/integration/verify_eaw_p1_real_run.py:269:                    "AttackSegmentFao",
+mquant/tis/test/integration/verify_eaw_p1_real_run.py:274:                    "FormationEvidenceFao",
+mquant/tis/test/integration/verify_eaw_p1_real_run.py:279:                    "WallBarrierFao",
+mquant/tis/test/integration/verify_eaw_p1_real_run.py:290:                    "AbsorbOccurrenceFao",
+mquant/tis/test/integration/verify_eaw_p1_real_run.py:299:def _build_frp_tasks(runtime, context, config, features):
+mquant/tis/test/integration/verify_eaw_p1_real_run.py:305:        payloads = _build_frp_parameter_payloads(source_json)
+mquant/tis/test/integration/verify_eaw_p1_real_run.py:307:            "CalendarTarget",
+mquant/tis/test/integration/verify_eaw_p1_real_run.py:308:            calendar=config["frp_calendar"],
+mquant/tis/test/integration/verify_eaw_p1_real_run.py:322:                    "cal_type": "Gen",
+mquant/tis/test/integration/verify_eaw_p1_real_run.py:325:            for name, params in payloads
+mquant/tis/test/integration/verify_eaw_p1_real_run.py:329:def _cabal_package_name(package_dir):
+mquant/tis/test/integration/verify_eaw_p1_real_run.py:342:def _validate_frp_stack_binding(
+mquant/tis/test/integration/verify_eaw_p1_real_run.py:372:        overlay = yaml.safe_load(stack_yaml.read_text(encoding="utf-8"))
+mquant/tis/test/integration/verify_eaw_p1_real_run.py:389:        package_dirs.append(package_dir)
+mquant/tis/test/integration/verify_eaw_p1_real_run.py:390:        package_names.append(_cabal_package_name(package_dir))
+mquant/tis/test/integration/verify_eaw_p1_real_run.py:410:def _run_command(command, *, cwd, log_path, label):
+mquant/tis/test/integration/verify_eaw_p1_real_run.py:411:    process = subprocess.run(
+mquant/tis/test/integration/verify_eaw_p1_real_run.py:414:        stdout=subprocess.PIPE,
+mquant/tis/test/integration/verify_eaw_p1_real_run.py:415:        stderr=subprocess.STDOUT,
+mquant/tis/test/integration/verify_eaw_p1_real_run.py:427:def _prepare_frp_executable(binding, evidence_dir):
+mquant/tis/test/integration/verify_eaw_p1_real_run.py:473:def _git_snapshot(root, label):
+mquant/tis/test/integration/verify_eaw_p1_real_run.py:475:    head = subprocess.run(
+mquant/tis/test/integration/verify_eaw_p1_real_run.py:477:        stdout=subprocess.PIPE,
+mquant/tis/test/integration/verify_eaw_p1_real_run.py:478:        stderr=subprocess.PIPE,
+mquant/tis/test/integration/fixtures/eaw_p1_real_run.example.json:6:    "startDay": "REPLACE_WITH_START_DAY",
+mquant/tis/test/integration/fixtures/eaw_p1_real_run.example.json:7:    "endDay": "REPLACE_WITH_END_DAY",
+mquant/tis/test/integration/fixtures/eaw_p1_real_run.example.json:9:    "frp_calendar": "REPLACE_WITH_FRP_CALENDAR",
+mquant/frame/lang/internal/base.py:8:from mquant.apt.tool.json import GenericJSONEncoder
+mquant/frame/lang/internal/base.py:9:from m3sof import Sof,settings,load_sof
+mquant/frame/lang/internal/base.py:17:    "FaoType","AbsFao","Nothing","CurrOnPable",
+mquant/frame/lang/internal/base.py:19:    "WrapFao","PableInfo","SymPPRange", "CurrSymbolPable"
+mquant/frame/lang/internal/base.py:26:    Fao 参数一种任意值类型，即 Nothing 和 None 的综合功能
+mquant/frame/lang/internal/base.py:29:    def __init__(self,val:Any):
+mquant/frame/lang/internal/base.py:32:    def __getattr__(self, key):
+mquant/frame/lang/internal/base.py:35:    def get_val(self):
+mquant/frame/lang/internal/base.py:38:    def __repr__(self):
+mquant/frame/lang/internal/base.py:41:    def items(self):
+mquant/frame/lang/internal/base.py:45:    def __len__(self):
+mquant/frame/lang/internal/base.py:49:class FaoAssert():
+mquant/frame/lang/internal/base.py:70:    def assert_keyword(cls,fao:"FaoType", keys: list, kw: set = None):
+mquant/frame/lang/internal/base.py:83:    def assert_param_type(cls,fao:"FaoType"):
+mquant/frame/lang/internal/base.py:91:        #     if isinstance(v,FaoType) and isinstance(v1,FaoType):
+mquant/frame/lang/internal/base.py:104:    def assertKeysExits(cls,fao:"FaoType", ps1:dict, ps2:dict):
+mquant/frame/lang/internal/base.py:114:        name = type(fao).__name__ if isinstance(fao, FaoType) else fao.__name__
+mquant/frame/lang/internal/base.py:118:    def assertDownFreq(cls,self:"FaoType", tensors:dict):
+mquant/frame/lang/internal/base.py:143:class FasonEncoder(GenericJSONEncoder):
+mquant/frame/lang/internal/base.py:145:    针对 Fao repr 完美打印
+mquant/frame/lang/internal/base.py:149:        def __init__(self,tar:"FaoType"):
+mquant/frame/lang/internal/base.py:156:        def __init__(self,p:dict):
+mquant/frame/lang/internal/base.py:159:    class FaoMode():
+mquant/frame/lang/internal/base.py:162:    class FaoKeyMode():
+mquant/frame/lang/internal/base.py:163:        def __init__(self,key,kwargs:dict):
+mquant/frame/lang/internal/base.py:167:    class FaoUpdateMode():
+mquant/frame/lang/internal/base.py:168:        def __init__(self,tar,key,kwargs:dict):
+mquant/frame/lang/internal/base.py:174:        def __init__(self,cur_tar,kwargs):
+mquant/frame/lang/internal/base.py:179:        def __init__(self,tar,args,operator:str):
+mquant/frame/lang/internal/base.py:185:    def dumps(cls,obj):
+mquant/frame/lang/internal/base.py:189:    def _make_iterencode(self,markers, _default, _encoder, _indent, _floatstr,
+mquant/frame/lang/internal/base.py:210:        def _cal_n(k,v):
+mquant/frame/lang/internal/base.py:215:        def _iterencode_dict(dct:Union[dict,LikeDict,XDict], _current_indent_level,doc:dict = None):
+mquant/frame/lang/internal/base.py:288:        def _iterencode_fao(f:FaoType, _current_indent_level,forceAll = 1,doc: dict = None):
+mquant/frame/lang/internal/base.py:291:            if isinstance(mode,FasonEncoder.FaoMode):
+mquant/frame/lang/internal/base.py:299:            if isinstance(mode,FasonEncoder.FaoKeyMode):
+mquant/frame/lang/internal/base.py:311:            if isinstance(mode,FasonEncoder.FaoUpdateMode):    
+mquant/frame/lang/internal/base.py:359:        def _iterencode(o, _current_indent_level,doc: dict = None):
+mquant/frame/lang/internal/base.py:363:            elif isinstance(o,FaoType):
+mquant/frame/lang/internal/base.py:372:        def _isobject(o):
+mquant/frame/lang/internal/base.py:373:            return isinstance(o, (LikeDict,XDict,dict,FaoType,FAnyParam))
+mquant/frame/lang/internal/base.py:378:class FaoType(PPMixIn,DocMixIn,MiscMixIn,LoggingMixIn,HasGGDict):
+mquant/frame/lang/internal/base.py:383:    def _init_attrs(self):
+mquant/frame/lang/internal/base.py:397:    def _loop_on_trade_field(cls,f:"FaoType"):
+mquant/frame/lang/internal/base.py:398:        if not isinstance(f,FaoType) or isinstance(f.primary_tar,TraderMixIn):
+mquant/frame/lang/internal/base.py:408:            if isinstance(f,FaoType):
+mquant/frame/lang/internal/base.py:415:    def prop_on_trade_field(self):
+mquant/frame/lang/internal/base.py:425:    def P(self) -> Ndict:
+mquant/frame/lang/internal/base.py:430:    def P0(self) -> Ndict:
+mquant/frame/lang/internal/base.py:435:    def Ps(self) -> Ndict:
+mquant/frame/lang/frp/base.py:9:from ..internal.dao import FrpDbaDao,FrpExtraDbaDao
+mquant/frame/lang/frp/base.py:10:from ..general import FunctionFao
+mquant/frame/lang/frp/base.py:36:    def for_json(self) -> str:
+mquant/frame/lang/frp/base.py:49:                startDay=sof.startDay,
+mquant/frame/lang/frp/base.py:50:                endDay=sof.endDay,
+mquant/frame/lang/frp/base.py:57:    def to_dict(self) -> dict:
+mquant/frame/lang/frp/base.py:60:class FrpMixIn(JsonParamPathMixIn):
+mquant/frame/lang/frp/base.py:69:    def that(self) -> AbsFao:
+mquant/frame/lang/frp/base.py:72:    def hold_cal_type(self):
+mquant/frame/lang/frp/base.py:73:        return CalType.Cache
+mquant/frame/lang/frp/base.py:76:    def Dao(self):
+mquant/frame/lang/frp/base.py:77:        return FrpDbaDao(self)
+mquant/frame/lang/frp/base.py:79:    def to_df(self):
+mquant/frame/lang/frp/base.py:86:    def to_dfs(self):
+mquant/frame/lang/frp/base.py:89:    def doFrpTarget(self) -> dict:
+mquant/frame/lang/frp/base.py:93:    def doFrpUpSource(self) -> Union[List[FaoType],Dict]:
+mquant/frame/lang/frp/base.py:94:        """Frp 特征需要保存的上游特征数据源, 默认 params 中的 Fao 类型"""
+mquant/frame/lang/frp/base.py:97:    def doFrpTaskParam(self,run_ups=True,enable_extra=False) -> FrpTaskParam:
+mquant/frame/lang/frp/base.py:116:    def _run_ups(self):
+mquant/frame/lang/frp/base.py:122:                if isinstance(v, FaoType):
+mquant/frame/lang/frp/base.py:125:    def _run_up(self, up: FaoType):
+mquant/frame/lang/frp/base.py:145:    def dump(self, *args, **kwargs):
+mquant/frame/lang/frp/base.py:149:    def _impl(self):
+mquant/frame/lang/frp/base.py:161:        json_path = linker.rerun(CalType.Gen).F.value
+mquant/frame/lang/frp/base.py:169:        import subprocess
+mquant/frame/lang/frp/base.py:176:        process = subprocess.Popen(
+mquant/frame/lang/frp/base.py:180:            stdout=subprocess.PIPE,
+mquant/frame/lang/frp/base.py:181:            stderr=subprocess.STDOUT,
+mquant/frame/lang/frp/base.py:192:            if msg.startswith(("SystemExit:",)):
+mquant/frame/lang/frp/base.py:197:            if not subprocess.Popen.poll(process) is None:
+mquant/frame/lang/frp/base.py:214:        res = self.that.load()
+mquant/frame/lang/frp/base.py:217:                f"{self.that.ppname} not find save result for {self.that.tar_name}: {res}"
+mquant/frame/lang/frp/base.py:221:    def load_extra(self) -> dict:
+mquant/frame/lang/frp/base.py:223:        return FrpExtraDbaDao(self).load()
+mquant/frame/lang/frp/base.py:226:class FrpTaskLinker(CacheMixIn, FunctionFao):
+mquant/frame/lang/frp/base.py:243:    def hold_on_date_range(self):
+mquant/frame/lang/frp/base.py:247:    def _run_ups(self):
+mquant/frame/lang/frp/base.py:251:    def root_dir(self):
+mquant/frame/lang/frp/base.py:255:    def full_dir(self):
+mquant/frame/lang/frp/base.py:264:    def link_path(self):
+mquant/frame/lang/frp/base.py:267:    def _impl(self):
+mquant/frame/lang/frp/base.py:270:    def load(self, *args, **kwargs):
+mquant/frame/lang/frp/base.py:275:    def dump(self, *args, **kwargs):
+mquant/frame/lang/frp/base.py:281:        self.logger.info(f"📘 save frp task json: {self.link_path}")

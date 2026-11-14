@@ -1,0 +1,214 @@
+FILE /dwdhome/fy/BASE_E6_2/mquant/frame/reload/cls.py EXISTS True
+1: 
+2: from ..lib3 import *
+3: from ..core import *
+4: 
+5: # 导入自动创建的特征类
+6: 
+7: cls = StraApp.load_class()
+8: locals().update(cls)
+9: 
+10: __all__ = list(cls.keys())
+FILE /dwdhome/fy/BASE_E6_2/mquant/tis/lib3.py EXISTS True
+1: 
+2: #引用的第三方包
+3: 
+4: from ..frame.lib3 import *
+5: from ..frame import *
+6: from ..quant import *
+7: from ..tkit import *
+FILE /dwdhome/fy/BASE_E6_2/mquant/worker/beat.py EXISTS True
+1: from .lib3 import * 
+2: from . import *
+3: 
+4: # 统一 export 入口，并运行一些配置程序
+FILE /dwdhome/fy/BASE_E6_2/edh-universe/frp/frp-core/src/Frp/Apt/Time.hs EXISTS True
+1: {-# LANGUAGE DerivingStrategies #-}
+2: {-# LANGUAGE TypeFamilies #-}
+3: {-# LANGUAGE DerivingVia #-}
+4: 
+5: module Frp.Apt.Time
+6:   ( -- * time format
+7:     dateFmtPatternT,
+8:     dateFmtPattern,
+9:     nowStr,
+10:     nowStrMaybe,
+11:     wordToUTCTime,
+12:     utcTimeToEpoch,
+13:     textToEpoch,
+14:     convertUTCTimeInLatestMinute,
+15:     diffZonedTime,
+16: 
+17:     -- * cost
+18:     cost,
+19:     costM,
+20:     costFM,
+21: 
+22:     -- * Timestamp
+23:     Timestamp (..),
+24:     formatTimestampT,
+25:     convertTimestampInLatestMinute,
+26:     textToTimestamp,
+27:     addDays,
+28:   )
+29: where
+30: 
+31: import Control.DeepSeq
+32: import Control.Monad.IO.Class
+33: import Data.Convertible
+34: import Data.Csv
+35: import Data.Aeson
+36: import Data.Scientific
+37: import Data.Default
+38: import Data.Int
+39: import Data.Text (Text)
+40: import Data.Text qualified as T
+41: import Data.Time hiding (addDays)
+42: import Data.Time.Clock.POSIX
+43: import Data.Word
+44: import Debug.Trace
+45: import Foreign.Storable.Generic
+46: import Text.PrettyPrint qualified as Pretty
+47: import Text.PrettyPrint.GenericPretty
+48: import qualified Data.Vector.Generic as VG
+49: import qualified Data.Vector.Generic.Mutable as VGM
+50: import qualified Data.Vector.Primitive as VP
+51: import qualified Data.Vector.Unboxed as VU
+52: import Database.MongoDB qualified as MDB
+53: 
+54: -- | 日期格式化字符串 %FT%H:%M:%S%Q
+55: {-# INLINE dateFmtPatternT #-}
+56: dateFmtPatternT :: String
+57: dateFmtPatternT = "%FT%T%Q" -- "%FT%H:%M:%S%Q"
+58: 
+59: -- | 日期格式化字符串 %F %H:%M:%S
+60: {-# INLINE dateFmtPattern #-}
+61: dateFmtPattern :: String
+62: dateFmtPattern = "%F %H:%M:%S"
+63: 
+64: -- | 当前字符串时间
+65: nowStr :: IO Text
+66: nowStr = nowStrMaybe Nothing
+67: 
+68: -- | 当前字符串时间
+69: nowStrMaybe :: Maybe Text -> IO Text
+70: nowStrMaybe mfmt = do
+71:   ut <- liftIO getZonedTime
+72:   let fmt = maybe dateFmtPatternT T.unpack mfmt
+73:       t = formatTime defaultTimeLocale fmt ut
+74:   return $ T.pack t
+75: 
+76: -- | Word64 的 timestamp 转换为 UTCTime
+77: wordToUTCTime :: Word64 -> UTCTime
+78: wordToUTCTime t = posixSecondsToUTCTime $ realToFrac t / 1e9
+79: 
+80: -- | UTCTime to epoch , timestamp
+81: utcTimeToEpoch :: (Integral a) => UTCTime -> a
+82: utcTimeToEpoch = floor . (1e9 *) . nominalDiffTimeToSeconds . utcTimeToPOSIXSeconds
+83: 
+84: -- | 时间格式字符串转换为 epoch
+85: textToEpoch :: (Integral a) => String -> Text -> a
+86: textToEpoch fmtP = utcTimeToEpoch . parseTimeOrError True defaultTimeLocale fmtP . T.unpack
+87: 
+88: -- | 获取 UTCTime 所在的最近间隔分钟所在时间
+89: -- @
+90: --  15 -> 2018-01-01 02:46:59 -> 2018-01-01 02:45:00
+FILE /dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/dbaw/Main.hs EXISTS True
+75:             --   , MulWrap ClearHeadTailWidget1
+76:             --   , MulWrap UnclearHeadTailWidget1
+77:             --   , CheckP
+78:             --   , ConfirmP
+79:             --   , MulWrap CandidateTurn
+80:             --   , ConfirmedTurn
+81:             --   , MulWrap CandidateSplit
+82:             --   , MulWrap CandidateTurn
+83:               , TurtleCapitalRatioOcc
+84:               , CapitalManagerOcc
+85:               , SpeOcc
+86:               , SpeGtOcc
+87:               , AMAOcc
+88:               , AMAAbsLtOcc
+89:               , MulWrap P2AttackMaterialityStorage
+90:               , MulWrap P2AttackContinuityStorage
+91:               , MulWrap P2OpenedAnchorStorage
+92:               , MulWrap P2FateAnchorStorage
+93:               , MulWrap P2BattleObservationScopeStorage
+94:               , MulWrap P2BattleSummaryStorage
+95:               , MulWrap P2BattleWindowStorage
+96:               , MulWrap P2DefenseActivityStorage
+97:               , MulWrap P2BattleAttackMembershipStorage
+98:               , MulWrap P2BattleAttackRoleStorage
+99:               , MulWrap P2DefenseActivitySourceMembershipStorage
+100:               , P3ParticipantScopeStorage
+101:               , MulWrap P3ActiveFlowPhaseStorage
+102:               , MulWrap P3PairCommonFlowRelationStorage
+103:               , MulWrap P3CommonFlowPreambleStorage
+104:               , MulWrap P3CommonActiveFlowSegmentStorage
+105:             ]
+106:   genPyWrapper stdout pySchema 
+FILE /dwdhome/fy/BASE_E6_2/mquant/tis/hf/prel0/p1_product_receipt.py EXISTS True
+97: def _json_value(value):
+98:     if isinstance(value, Mapping):
+99:         return {
+100:             str(key): _json_value(item)
+101:             for key, item in sorted(value.items(), key=lambda pair: str(pair[0]))
+102:         }
+103:     if isinstance(value, (list, tuple, set, frozenset)):
+104:         return [_json_value(item) for item in value]
+105:     if hasattr(value, "item"):
+106:         return value.item()
+107:     if isinstance(value, pd.Timestamp):
+108:         return value.isoformat()
+109:     if isinstance(value, Path):
+110:         return str(value)
+111:     return value
+112: 
+113: 
+114: def canonical_json(value):
+115:     return json.dumps(
+116:         _json_value(value), sort_keys=True, ensure_ascii=False, separators=(",", ":")
+117:     )
+118: 
+119: 
+120: def fingerprint(value):
+121:     """非权威完整性摘要；不得作为产品或 occurrence 的业务身份。"""
+122:     return hashlib.sha256(canonical_json(value).encode("utf-8")).hexdigest()
+123: 
+124: 
+125: def feature_code_fingerprint(*objects):
+126:     """返回 repo commit 与完整 producer 源文件共同形成的实现版本。"""
+127:     if not objects:
+128:         raise P1ReceiptError("code_version 必须绑定至少一个 producer 源文件")
+129:     paths = []
+130:     for value in objects:
+131:         if isinstance(value, (str, os.PathLike, Path)):
+132:             path = Path(value)
+133:         else:
+134:             source_file = inspect.getsourcefile(value)
+135:             if source_file is None:
+136:                 raise P1ReceiptError(f"无法定位 producer 源文件: {value!r}")
+137:             path = Path(source_file)
+138:         path = path.resolve()
+139:         if not path.is_file():
+140:             raise P1ReceiptError(f"producer 源文件不存在: {path}")
+141:         paths.append(path)
+142: 
+143:     roots = set()
+144:     for path in paths:
+145:         process = subprocess.run(
+146:             ["git", "-C", str(path.parent), "rev-parse", "--show-toplevel"],
+147:             stdout=subprocess.PIPE,
+148:             stderr=subprocess.PIPE,
+149:             text=True,
+150:             check=False,
+151:         )
+152:         if process.returncode != 0 or not process.stdout.strip():
+153:             raise P1ReceiptError(f"producer 源文件不在可识别的 repo/build 中: {path}")
+154:         roots.add(Path(process.stdout.strip()).resolve())
+155:     if len(roots) != 1:
+156:         raise P1ReceiptError("同一 Feature 的 producer 源文件跨越多个 repo")
+157:     root = roots.pop()
+158:     commit_process = subprocess.run(
+DIR /dwdhome/fy/BASE_E6_2/mquant/tis/ufrp ['__init__.py', '__pycache__']
+DIR /dwdhome/fy/BASE_E6_2/mquant/frame/reload ['__init__.py', '__pycache__', 'cls.py']
+DIR /dwdhome/fy/BASE_E6_2/mquant/frame/lang/internal/impl []

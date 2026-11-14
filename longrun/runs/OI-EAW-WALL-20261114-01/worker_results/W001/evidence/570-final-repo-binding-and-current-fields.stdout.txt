@@ -1,0 +1,67 @@
+REPO frame 4d0ff8f2640e07a8b9ff066c48114f451fca6cfe ## e6.2...origin/e6.2
+REPO worker da0475a9c7fa769c2db8c803a5376ff2cdf09e0d ## e6.2...origin/e6.2
+ M __init__.py
+ M params/__init__.py
+ M params/cae/__init__.py
+ M params/cae/nodes/ScaleTurnCAEGraph.py
+ M params/cae/nodes/__init__.py
+?? params/cae/nodes/RecoveredStandardizedHFCAEGraph.py
+PIN {"command": ["git", "--no-optional-locks", "-C", "/dwdhome/fy/cgpterm/artifacts/oi-eaw-wall/OI-EAW-WALL-20261114-01/observe-iterate", "show", "cdec293a4bfdac85ca4ab3171f9eeb083a338493:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D001/DELEGATION.md"], "start": "2026-11-14T14:35:49.726831+00:00", "end": "2026-11-14T14:35:49.770556+00:00", "exit_code": 0, "sha256": "de7407da8cec044c14d7a8328993ab7e36a6f136dd3c79ff46aabc4c18f64f17", "matches_local_mirror": true, "reason": null, "stderr": ""}
+PIN {"command": ["git", "--no-optional-locks", "-C", "/dwdhome/fy/cgpterm/artifacts/oi-eaw-wall/OI-EAW-WALL-20261114-01/observe-iterate", "show", "ca7fdae84f65265332e3a53865724a2615508766:task-inputs/eaw-p1-wall-lifecycle/FEATURE_CONTEXT.md"], "start": "2026-11-14T14:35:49.785448+00:00", "end": "2026-11-14T14:35:49.800984+00:00", "exit_code": 0, "sha256": "acf114c7060ad1dde8e93a389b2d506166f9e0d71c61d6895562ebc6edec4fd5", "matches_local_mirror": true, "reason": null, "stderr": ""}
+{"label": "571-current-wall-field-lines", "command": ["rg", "-n", "--max-count", "28", "data Wall|wall.* ::|WallIdentity|FeatureRunIdentity|wallLifecycleCurrent|WallOccurrenceRef|WallLifecycleOccurrence|WallCurrentView", "edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Products.hs", "edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/WallLifecycle.hs"], "cwd": "/dwdhome/fy/BASE_E6_2", "started_at_utc": "2026-11-14T14:35:49.849488+00:00", "ended_at_utc": "2026-11-14T14:35:49.965678+00:00", "exit_code": 0, "timed_out": false, "stdout_path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/evidence/571-current-wall-field-lines.stdout.txt", "stderr_path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/evidence/571-current-wall-field-lines.stderr.txt", "stdout_bytes": 6790, "stderr_bytes": 0}
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/evidence/571-current-wall-field-lines.stdout.txt
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/WallLifecycle.hs:27:data WallLifecycleError
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/WallLifecycle.hs:28:  = WallOccurrenceRefConflict OccurrenceRef
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/WallLifecycle.hs:29:  | WallStartedTwice WallIdentity
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/WallLifecycle.hs:30:  | WallMustStartPresent WallIdentity
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/WallLifecycle.hs:31:  | WallUpdateBeforeStart WallIdentity
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/WallLifecycle.hs:32:  | WallUpdateAfterEnd WallIdentity
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/WallLifecycle.hs:33:  | WallEndBeforeStart WallIdentity
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/WallLifecycle.hs:34:  | WallBandUpdateChangedPresence WallIdentity WallBusinessState Spine.WallPresence
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/WallLifecycle.hs:35:  | WallInvalidPresenceTransition WallIdentity WallBusinessState Spine.WallPresence
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/WallLifecycle.hs:38:data WallLifecycleState = WallLifecycleState
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/WallLifecycle.hs:39:  { wallLedger :: OccurrenceLedger OccurrenceRef,
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/WallLifecycle.hs:40:    wallViews :: Map WallIdentity WallCurrentView,
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/WallLifecycle.hs:41:    wallCurrentUpdateBatch :: Map WallIdentity WallCurrentView
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/WallLifecycle.hs:48:validateWallTransition :: WallIdentity -> Maybe WallCurrentView -> Spine.WallLifecycleChange -> Either WallLifecycleError WallBusinessState
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/WallLifecycle.hs:67:applyWallOccurrence :: WallLifecycleState -> WallLifecycleOccurrence -> Either WallLifecycleError (WallLifecycleState, Maybe WallLifecycleOccurrence)
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/WallLifecycle.hs:73:    (_, OccurrenceRefConflict) -> Left (WallOccurrenceRefConflict ref)
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/WallLifecycle.hs:78:      let current = WallCurrentView identity afterState occurrence
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/WallLifecycle.hs:91:applyWallOccurrenceBatch :: WallLifecycleState -> [WallLifecycleOccurrence] -> Either WallLifecycleError (WallLifecycleState, [WallLifecycleOccurrence])
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/WallLifecycle.hs:103:data WallLifecycleOutputs = WallLifecycleOutputs
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/WallLifecycle.hs:104:  { wallLifecycleOccurrences :: FrpEvent [WallLifecycleOccurrence],
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/WallLifecycle.hs:105:    wallLifecycleCurrent :: FrpDynamic (Map WallIdentity WallCurrentView),
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/WallLifecycle.hs:106:    wallLifecycleCurrentUpdates :: FrpEvent [WallCurrentView],
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/WallLifecycle.hs:107:    wallLifecycleDiagnostics :: FrpEvent (P1ProductDiagnostics WallLifecycleError)
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/WallLifecycle.hs:110:data WallTxn = WallTxn
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/WallLifecycle.hs:111:  { wallTxnState :: WallLifecycleState,
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/WallLifecycle.hs:112:    wallTxnResult :: Maybe (Either WallLifecycleError [WallLifecycleOccurrence])
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/WallLifecycle.hs:115:stepWall :: [WallLifecycleOccurrence] -> WallTxn -> WallTxn
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/WallLifecycle.hs:120:wallCurrentUpdatesFor :: WallLifecycleState -> [WallCurrentView]
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Products.hs:7:-- 或 publication trace。FeatureRunIdentity 只属于一次 Fao/receipt 运行上下文；
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Products.hs:13:    FeatureRunIdentity (..),
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Products.hs:29:    WallIdentity (..),
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Products.hs:39:    WallLifecycleOccurrence (..),
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Products.hs:46:    WallIdentityCatalog (..),
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Products.hs:47:    emptyWallIdentityCatalog,
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Products.hs:48:    containsWallIdentity,
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Products.hs:52:    WallCurrentView (..),
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Products.hs:186:data FeatureRunIdentity = FeatureRunIdentity
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Products.hs:199:instance ToJSON FeatureRunIdentity where
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Products.hs:213:instance FromJSON FeatureRunIdentity where
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Products.hs:214:  parseJSON = withObject "FeatureRunIdentity" $ \o ->
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Products.hs:215:    FeatureRunIdentity
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Products.hs:229:featureRunIdentityFromFaoContext :: ProductReceipt -> FeatureRunIdentity
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Products.hs:232:   in FeatureRunIdentity
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Products.hs:307:    selectedF4Streams :: [FeatureRunIdentity],
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Products.hs:331:selectedIdentity :: Value -> Maybe FeatureRunIdentity
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Products.hs:443:newtype WallIdentity = WallIdentity
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Products.hs:444:  { wallIdentityLocalNo :: Int64
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Products.hs:471:wallRefOf :: WallIdentity -> WallRef
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Products.hs:472:wallRefOf (WallIdentity localNo) = WallRef ("wall:" <> localText localNo)
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Products.hs:486:data WallLifecycleOccurrence = WallLifecycleOccurrence
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Products.hs:487:  { wallOccurrenceIdentity :: WallIdentity,
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Products.hs:488:    wallOccurrenceRef :: OccurrenceRef,
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Products.hs:489:    wallOccurrencePayload :: Spine.WallLifecycleEvent
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Products.hs:495:    buildOccurrenc
+[tool preview truncated; full file retained]

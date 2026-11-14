@@ -1,0 +1,163 @@
+{
+  "schema_version": 1,
+  "project": {
+    "id": "oi-eaw-wall",
+    "title": "W001 本地事实核验"
+  },
+  "task": {
+    "id": "w001-local",
+    "title": "W001 有限本地调查与原件交付",
+    "type": "engineering",
+    "priority": "normal",
+    "owner": "agent",
+    "completion_gate": "仅本地：原件、限制、hash 与发布映射完整；不代表 W001 或父任务完成。",
+    "monitoring": {
+      "scope": "general"
+    },
+    "origin": {
+      "machine": "dw-VMware-Virtual-Platform",
+      "codex_thread_id": "01a1da55-5881-7590-94a1-0661f0236977"
+    }
+  },
+  "task_id": "w001-local",
+  "source_kind": "task_status_ledger",
+  "source": {
+    "path": "tasks/w001-local/snapshot.json"
+  },
+  "ledger_seq": 1,
+  "snapshot_seq": 1,
+  "projection_current": true,
+  "business_terminal": null,
+  "queue_position": null,
+  "plan_hash": "1a55dc03d3bfb22f94aa207462307e762b40d90013b4c027621722b2a55bcbe9",
+  "status": "planned",
+  "current_phase_id": "local",
+  "current_step_id": "binding-code",
+  "action": "Plan initialized",
+  "next_action": "工作区绑定与静态入口",
+  "blocker": null,
+  "resources": [],
+  "progress": {
+    "completed_steps": 0,
+    "total_steps": 3,
+    "completed_weight": 0,
+    "total_weight": 3.0,
+    "percent": 0.0
+  },
+  "timing": {
+    "started_at": "2026-11-14T14:18:36Z",
+    "updated_at": "2026-11-14T14:18:36Z",
+    "heartbeat_at": "2026-11-14T14:18:36Z",
+    "finished_at": null,
+    "elapsed_seconds": 1,
+    "active_seconds": 0,
+    "waiting_seconds": 0,
+    "waiting_external_seconds": 0,
+    "blocked_seconds": 0,
+    "needs_human_seconds": 0,
+    "idle_seconds": 0,
+    "accounted_seconds": 0,
+    "unassigned_seconds": 0,
+    "unobserved_seconds": 1
+  },
+  "phases": [
+    {
+      "id": "local",
+      "title": "本地核验",
+      "steps": [
+        {
+          "id": "binding-code",
+          "title": "工作区绑定与静态入口",
+          "acceptance": "物理绑定及相关 repo 状态、源码和读取入口有带行号证据",
+          "weight": 1.0,
+          "phase_id": "local",
+          "phase_title": "本地核验",
+          "state": "planned",
+          "started_at": null,
+          "completed_at": null,
+          "evidence": [],
+          "note": null,
+          "timing": {
+            "started_at": null,
+            "finished_at": null,
+            "elapsed_seconds": 0,
+            "active_seconds": 0,
+            "waiting_seconds": 0,
+            "waiting_external_seconds": 0,
+            "blocked_seconds": 0,
+            "needs_human_seconds": 0,
+            "idle_seconds": 0
+          }
+        },
+        {
+          "id": "assets",
+          "title": "候选资产与必要解码或预检",
+          "acceptance": "有界资产清单完整；如无可用材料，明确不运行并给预检",
+          "weight": 1.0,
+          "phase_id": "local",
+          "phase_title": "本地核验",
+          "state": "planned",
+          "started_at": null,
+          "completed_at": null,
+          "evidence": [],
+          "note": null,
+          "timing": {
+            "started_at": null,
+            "finished_at": null,
+            "elapsed_seconds": 0,
+            "active_seconds": 0,
+            "waiting_seconds": 0,
+            "waiting_external_seconds": 0,
+            "blocked_seconds": 0,
+            "needs_human_seconds": 0,
+            "idle_seconds": 0
+          }
+        },
+        {
+          "id": "delivery",
+          "title": "本地原件交付",
+          "acceptance": "报告、JSON、命令原件、hash、待发布 manifest 验证通过",
+          "weight": 1.0,
+          "phase_id": "local",
+          "phase_title": "本地核验",
+          "state": "planned",
+          "started_at": null,
+          "completed_at": null,
+          "evidence": [],
+          "note": null,
+          "timing": {
+            "started_at": null,
+            "finished_at": null,
+            "elapsed_seconds": 0,
+            "active_seconds": 0,
+            "waiting_seconds": 0,
+            "waiting_external_seconds": 0,
+            "blocked_seconds": 0,
+            "needs_human_seconds": 0,
+            "idle_seconds": 0
+          }
+        }
+      ],
+      "completed_steps": 0,
+      "total_steps": 3
+    }
+  ],
+  "evidence": [],
+  "event_count": 1,
+  "source_status": "planned",
+  "admission": {
+    "state": "excluded",
+    "reason_code": "explicit_general_scope",
+    "source": "task.monitoring.scope"
+  },
+  "business_status": "unknown",
+  "business_completion": {
+    "verified": false,
+    "reason_code": "not_admitted"
+  },
+  "execution": {
+    "state": "unknown",
+    "reason_code": "missing_exact_root_thread",
+    "observed_at": null
+  }
+}

@@ -1,0 +1,35 @@
+pydim/dim/dbas.py:23:class DbaStore:
+pydim/dim/dbas.py:25:    def __init__(self, root_dir: str, root_struct: type):
+pydim/dim/dbas.py:160:    def __init__(self, seq, idxs=None, ridxs=None):
+pydim/dim/dbas.py:182:            va = getattr(seq, k)
+pydim/dim/dbas.py:193:            outer_seq = getattr(seq, k + "_seq")
+mquant/tis/hf/prel0/p1_dba_export.py:65:        if getattr(field, "dtype", None) == "int8":
+mquant/tis/hf/prel0/p1_dba_export.py:103:    def __init__(self, specs, execute):
+mquant/tis/hf/prel0/p1_dba_export.py:152:    def __init__(self, directories, specs):
+mquant/tis/hf/prel0/p1_dba_export.py:489:    """只读取当前 chunk 的 dense mmap 区间，再验证 exact tick 覆盖。"""
+mquant/tis/hf/prel0/p1_dba_export.py:557:        pending = tuple(getattr(self, "_p1_pending_receipts", ()))
+pydim/dim/rt.py:30:import mmap
+pydim/dim/rt.py:37:ACCESS_READ = mmap.ACCESS_READ
+pydim/dim/rt.py:38:ACCESS_WRITE = mmap.ACCESS_WRITE
+pydim/dim/rt.py:39:ACCESS_COPY = mmap.ACCESS_COPY
+pydim/dim/rt.py:45:    def __init__(self, repr_: str, dt: Optional[np.dtype] = None):
+pydim/dim/rt.py:73:        # a.k.a. padded header size
+pydim/dim/rt.py:74:        ("data_offset", "i4"),
+pydim/dim/rt.py:86:# a disk file for array is always mmaped from beginning, data following the
+pydim/dim/rt.py:87:# header. align the header so start of data is aligned with at least 512
+pydim/dim/rt.py:109:class DbArray:
+pydim/dim/rt.py:112:    def __init__(
+pydim/dim/rt.py:118:        access: int = mmap.ACCESS_READ,
+pydim/dim/rt.py:133:            # load existing array file, use header and file length to
+pydim/dim/rt.py:137:                data_file_path, "rb" if access == mmap.ACCESS_READ else "r+b"
+pydim/dim/rt.py:141:                    # don't have a header long enough, most prolly not existing
+pydim/dim/rt.py:144:                # existing and with a header long enough
+pydim/dim/rt.py:146:                self.mm = mmap.mmap(
+pydim/dim/rt.py:147:                    fileno=fd, length=fsz, flags=mmap.MAP_SHARED, access=self.access,
+pydim/dim/rt.py:152:            # caution: mm.size() is file size, not mmap'd size, don't misuse
+pydim/dim/rt.py:155:            self.shape = ((fsz - self.hdr["data_offset"][0]) // dt.itemsize,)
+pydim/dim/rt.py:156:            if self.hdr["data_offset"][0] != 64:
+pydim/dim/rt.py:170:                expect_fsz = hdr["data_offset"][0] + data_nbytes
+mquant/frame/lang/internal/dao/util.py:15:    def __init__(self, feat: AbsFao):
+mquant/frame/lang/internal/dao/util.py:22:    def __getattr__(self, key):
+mquant/frame/lang/internal/dao/util.py:24:        return getattr(self.feat, key)

@@ -1,0 +1,240 @@
+pydim/dim/dbas.py:23:class DbaStore:
+pydim/dim/rt.bak:103:class DbArray:
+pydim/dim/rt.py:109:class DbArray:
+mquant/frame/core/store.py:63:class NormalField(FaoField):
+mquant/frame/core/store.py:500:    def adt_class(self):
+mquant/frame/lang/internal/dao/frp/dba.py:78:                    "value": DbaStore(os.path.join(full_dir, field), fld.adt_class),
+
+LAYOUT mquant/frame/core ['__init__.py', 'data.py', 'store.py']
+LAYOUT mquant/frame/lang/internal ['__init__.py', 'base.py', 'type.py']
+LAYOUT pydim/dim ['__init__.py', 'dbas.py', 'rt.bak', 'rt.py']
+LAYOUT mquant/tis/hf/prel0 ['absorb_assembler.py', 'absorb_assembler_core.py', 'active_flow_phase_changes.py', 'active_flow_phase_detector_core.py', 'attack_flow_assembler.py', 'attack_flow_assembler_core.py', 'build_assembler.py', 'build_assembler_core.py', 'eaw_interface_contract.py', 'exhaustion_assembler.py', 'exhaustion_assembler_core.py', 'p1_dba_export.py', 'p1_product_receipt.py', 'pair_active_flow_observation_core.py', 'pair_active_flow_observations.py', 'pressure_big_deal.py', 'pressure_big_deal_core.py', 'tick_quote_context.py', 'tick_quote_context_core.py', 'track_wall_candidates.py', 'track_wall_candidates_core.py', 'trading_day_chunk_progress.py', 'wall_assembler.py', 'wall_assembler_core.py']
+TYPE_FILE /m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/EawP1WallLifecycleFrp/1/c/b/0/c/1/4/44aea11813b85d33becc06242f43621b6/rb.night_end_at_2300/wall_current_view/type 'MulWrap P1WallCurrentStorage'
+TYPE_FILE /m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/EawP1WallLifecycleFrp/1/c/b/0/c/1/4/44aea11813b85d33becc06242f43621b6/rb.night_end_at_2300/wall_occurrences/type 'MulWrap P1WallOccurrenceStorage'
+TYPE_FILE /m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/EawP1WallLifecycleFrp/1/c/b/0/c/1/4/44aea11813b85d33becc06242f43621b6/rb.night_end_at_2300/wall_diagnostics/type 'MulWrap P1DiagnosticStorage'
+DBA_HEADER_BYTES /m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/EawP1WallLifecycleFrp/1/c/b/0/c/1/4/44aea11813b85d33becc06242f43621b6/rb.night_end_at_2300/wall_diagnostics.__ts__.dba 128 0000000040000000080000000800000048010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000abea2a560f5a1600079d17790f5a16004a529ca60f5a16000252a8ce0f5a16007d8ab7d90f5a1600c67e0ea51e5a16000548ddf3205a160017774243215a16
+DBA_HEADER_BYTES /m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/EawP1WallLifecycleFrp/1/c/b/0/c/1/4/44aea11813b85d33becc06242f43621b6/rb.night_end_at_2300/wall_current_view.__ts__.dba 128 000000004000000008000000080000000a3a0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000e425c5da0d5a1600138e1edb0d5a1600715ed1db0d5a1600ad7bb8270e5a16007716f4270e5a1600e15de92b0e5a1600233af02e0e5a1600b76f672f0e5a16
+DBA_HEADER_BYTES /m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/EawP1WallLifecycleFrp/1/c/b/0/c/1/4/44aea11813b85d33becc06242f43621b6/rb.night_end_at_2300/wall_occurrences.__ts__.dba 128 000000004000000008000000080000000a3a0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000e425c5da0d5a1600138e1edb0d5a1600715ed1db0d5a1600ad7bb8270e5a16007716f4270e5a1600e15de92b0e5a1600233af02e0e5a1600b76f672f0e5a16
+FILE /dwdhome/fy/BASE_E6_2/pydim/dim/__init__.py
+1: 
+2: __all__ = [
+3: 
+4:     # exports from .dbas
+5:     'DbaStore', 'DbaStruct',
+6: 
+7:     # exports from .rt
+8:     'dtype', 'float64', 'f8', 'float32', 'f4', 'int64', 'i8', 'int32', 'i4',
+9:     'int8', 'byte', 'intp', 'u8', 'yesno', 'DbArray', 'ACCESS_READ',
+10:     'ACCESS_WRITE', 'ACCESS_COPY',
+11: 
+12: ]
+13: 
+14: from .dbas import *
+15: from .rt import *
+FILE /dwdhome/fy/BASE_E6_2/mquant/frame/lang/internal/dao/util.py
+1: from typing import *
+2: from ....core import *
+3: from ..base import AbsFao
+4: 
+5: __all__ = ["AbstractFileDao", "AbstractFaoDao"]
+6: 
+7: 
+8: class AbstractFileDao(LoggingMixIn):
+9:     """数据存取对象接口"""
+10: 
+11:     def is_exist_data(self) -> bool:
+12:         # 是否保存了数据
+13:         raise NotImplementedError
+14: 
+15:     def __init__(self, feat: AbsFao):
+16:         self.feat = feat
+17:         self._init_attrs()
+18: 
+19:     def _init_attrs(self):
+20:         pass
+21: 
+22:     def __getattr__(self, key):
+23:         """没有的属性，则使用目标对象的属性"""
+24:         return getattr(self.feat, key)
+25: 
+26:     def load(self, refresh=True):
+27:         """加载结果"""
+28:         pass
+29: 
+30:     def dump(self, *args, **kwargs):
+31:         """保存结果"""
+32:         pass
+33: 
+34:     @property
+35:     def full_dir(self):
+36:         return self.feat.full_dir
+37: 
+38:     @property
+39:     def freq(self):
+40:         return self.feat.freq
+41: 
+42:     @property
+43:     def file_name(self):
+44:         return self.feat.file_name or self.freq
+45: 
+46: 
+47: class AbstractFaoDao(AbstractFileDao):
+48: 
+49:     def _init_attrs(self):
+50:         self.__tar_fields = {}
+51: 
+52:     @property
+53:     def freq(self):
+54:         return self.feat.freq or "@"
+55: 
+56:     @property
+57:     def tar_fields(self) -> dict:
+58:         # 同一特征不同目标对象字段可能不同
+59:         key = self.feat.tar_name
+60:         res = self.__tar_fields.get(key, None)
+61:         if res is None:
+62:             res = self.load_fields()
+63:             self.__tar_fields[key] = res
+64:         return res
+65: 
+66:     def load_fields(self):
+67:         # 加载字段信息
+68:         raise NotImplementedError
+69: 
+70:     def is_exist_data(self) -> bool:
+71:         # 是否保存了数据
+72:         raise NotImplementedError
+73: 
+74:     def load(self, refresh=False):
+75:         """读取数据"""
+76:         raise NotImplementedError
+77: 
+78:     def dump(self, *args, **kwargs):
+79:         """保存结果"""
+80:         raise NotImplementedError
+FILE /dwdhome/fy/BASE_E6_2/mquant/tis/hf/prel0/p1_dba_export.py
+1: """P1 对现有 DataFrameMixIn/DFDbaDao 的产品级薄适配。
+2: 
+3: 本模块只负责 DBA 可接受的数值表形状、同一业务时间的物理分流，以及在平台原生
+4: dump 成功后写薄 receipt；不建立新的 transport、revision 或 commit-marker 层。
+5: """
+6: 
+7: from __future__ import annotations
+8: 
+9: from dataclasses import dataclass
+10: import os
+11: import resource
+12: import time
+13: 
+14: import numpy as np
+15: import pandas as pd
+16: 
+17: from mquant.frame import DataFrameField
+18: from mquant.frame import DbaUtil
+19: from mquant.frame.lib3 import JsonUtil
+20: 
+21: from .p1_product_receipt import P1ReceiptError
+22: from .p1_product_receipt import validate_product_receipt
+23: from .p1_product_receipt import write_p1_product_receipt
+24: 
+25: 
+26: def process_peak_rss_mib():
+27:     """Linux ru_maxrss 以 KiB 计；只用于运行观察，不进入业务合同。"""
+28:     return float(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss) / 1024.0
+29: 
+30: 
+31: def log_chunk_performance(
+32:     logger,
+33:     *,
+34:     sym,
+35:     feature_name,
+36:     chunk_meta,
+37:     compute_seconds,
+38:     dba_copy_seconds,
+39: ):
+40:     if logger is None:
+41:         return
+42:     elapsed = max(float(compute_seconds) + float(dba_copy_seconds), 1e-12)
+43:     n_ticks = int(chunk_meta["n_ticks"])
+44:     logger.info(
+45:         "分块性能: %s %s trade_day=%s n_ticks=%d compute_seconds=%.6f "
+46:         "dba_copy_seconds=%.6f rows_per_second=%.1f peak_rss_mib=%.1f",
+47:         sym,
+48:         feature_name,
+49:         chunk_meta["trade_day"],
+50:         n_ticks,
+51:         float(compute_seconds),
+52:         float(dba_copy_seconds),
+53:         n_ticks / elapsed,
+54:         process_peak_rss_mib(),
+55:     )
+56: 
+57: 
+58: def _fit_cross_language_dba_fields(frame):
+59:     """让 P1 DBA 元数据使用 FRP 现有读取器支持的 canonical dtype 名。"""
+60:     fields = DataFrameField.fit_dictfield(frame)
+61:     for _name, field in fields.items():
+62:         # Python DataFrameField 会把 numpy.int8 原样记成 ``int8``，但既有
+63:         # FRP generic loader 的一字节整数名是 ``i1``。这里只修 P1 artifact
+64:         # 的物理元数据，不改变字段值、业务参数身份或公共平台。
+65:         if getattr(field, "dtype", None) == "int8":
+66:             field.dtype = "i1"
+67:     return fields
+68: 
+69: 
+70: def _widen_int8_for_platform_dump(frame):
+71:     """普通平台 dump 无法注入 canonical i1 元数据时，改用等值 int64。"""
+72:     columns = [
+73:         column for column in frame.columns
+74:         if pd.api.types.is_dtype_equal(frame[column].dtype, np.dtype("int8"))
+75:     ]
+76:     if not columns:
+77:         return frame
+78:     widened = frame.copy()
+79:     for column in columns:
+80:         widened[column] = widened[column].astype("int64", copy=False)
+81:     return widened
+82: 
+83: 
+84: @dataclass(frozen=True)
+85: class P1ChunkedFrameSpec:
+86:     """一个仍由平台 DBA 承载、但按 chunk 填充的 dense result-key。"""
+87: 
+88:     key: str
+89:     row_count: int
+90:     schema: pd.DataFrame
+91: 
+92:     def __post_init__(self):
+93:         if not isinstance(self.key, str) or not self.key:
+94:             raise P1ReceiptError("chunked DBA key 必须是非空字符串")
+95:         if int(self.row_count) < 0:
+96:             raise P1ReceiptError(f"{self.key} row_count 不得为负")
+97:         require_dba_frame(self.key, self.schema)
+98: 
+99: 
+100: class P1ChunkedArtifactPlan:
+101:     """P1 内部的受控内存执行计划；它不是 public product 或新 transport。"""
+102: 
+103:     def __init__(self, specs, execute):
+104:         specs = tuple(specs)
+105:         if not specs:
+106:             raise P1ReceiptError("chunked artifact plan 至少需要一个 dense result-key")
+107:         keys = [spec.key for spec in specs]
+108:         if len(keys) != len(set(keys)):
+109:             raise P1ReceiptError(f"chunked artifact plan 含重复 key: {keys}")
+110:         if not callable(execute):
+111:             raise P1ReceiptError("chunked artifact plan execute 必须可调用")
+112:         self.specs = specs
+113:         self._execute = execute
+114:         self._used = False
+115: 
+116:     def execute(self, append_chunk):
+117:         if self._used:
+118:             raise P1ReceiptError("chunked artifact plan 不得重复执行")
+119:         self._used = True
+120:         frames = self._execute(append_chunk)
+121:         if not isinstance(frames, dict):
+122:             raise P1ReceiptError("chunked artifact plan 必须返回普通 result-key/DataFrame")
+123:         return frames
+124: 
+125:     def materialize(self):

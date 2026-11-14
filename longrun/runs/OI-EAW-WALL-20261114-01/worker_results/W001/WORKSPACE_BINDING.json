@@ -1,0 +1,2368 @@
+{
+  "observed_at_utc": "2026-11-14T14:18:05.234827+00:00",
+  "cwd": "/dwdhome/fy/BASE_E6_2",
+  "thread_id": "01a1da55-5881-7590-94a1-0661f0236977",
+  "actual_model": "gpt-6.1-sol",
+  "actual_effort": "max",
+  "session_source": "/home/dw/.codex/sessions/2026/11/14/rollout-2026-11-14T21-53-08-01a1da55-5881-7590-94a1-0661f0236977.jsonl",
+  "session_meta": {
+    "id": "01a1da55-5881-7590-94a1-0661f0236977",
+    "timestamp": "2026-11-14T13:53:08.812Z",
+    "cwd": "/dwdhome/fy/BASE_E6_2",
+    "originator": "Codex Desktop",
+    "cli_version": "0.163.0",
+    "source": "vscode",
+    "model_provider": "openai"
+  },
+  "turn_config": {
+    "cwd": "/dwdhome/fy/BASE_E6_2",
+    "model": "gpt-6.1-sol",
+    "collaboration_mode": {
+      "mode": "default",
+      "settings": {
+        "model": "gpt-6.1-sol",
+        "reasoning_effort": "max",
+        "developer_instructions": null
+      }
+    },
+    "effort": "max"
+  },
+  "lock": {
+    "pid": 227535,
+    "startticks": "44274656",
+    "inode": 14781898,
+    "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/.W001-writer.lock",
+    "competition_errno": 11,
+    "no_write_or_truncate": true
+  },
+  "hostname": "dw-VMware-Virtual-Platform",
+  "uid": 501,
+  "user": "dw",
+  "disk_available_bytes": 442721370112,
+  "schema": "w001-workspace-binding/local-v1",
+  "run_id": "OI-EAW-WALL-20261114-01",
+  "work_order_id": "W001",
+  "repos": [
+    {
+      "name": "frp",
+      "path": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp",
+      "realpath": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp",
+      "old_baseline": "cac6c912dd65a14acbd591ca57e0afd8ddb4ef13",
+      "commands": {
+        "toplevel": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp",
+            "rev-parse",
+            "--show-toplevel"
+          ],
+          "start": "2026-11-14T14:19:56.832975+00:00",
+          "end": "2026-11-14T14:19:56.848711+00:00",
+          "exit_code": 0,
+          "stdout": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp\n",
+          "stderr": ""
+        },
+        "head": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp",
+            "rev-parse",
+            "HEAD"
+          ],
+          "start": "2026-11-14T14:19:56.875676+00:00",
+          "end": "2026-11-14T14:19:56.892291+00:00",
+          "exit_code": 0,
+          "stdout": "cac6c912dd65a14acbd591ca57e0afd8ddb4ef13\n",
+          "stderr": ""
+        },
+        "branch": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp",
+            "symbolic-ref",
+            "--quiet",
+            "--short",
+            "HEAD"
+          ],
+          "start": "2026-11-14T14:19:56.916589+00:00",
+          "end": "2026-11-14T14:19:56.926748+00:00",
+          "exit_code": 0,
+          "stdout": "eaw/p123-integration-20260820\n",
+          "stderr": ""
+        },
+        "status": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp",
+            "status",
+            "--short",
+            "--branch"
+          ],
+          "start": "2026-11-14T14:19:56.944460+00:00",
+          "end": "2026-11-14T14:19:57.069393+00:00",
+          "exit_code": 0,
+          "stdout": "## eaw/p123-integration-20260820\n M src/Frp/Instance/BussinessUtils.hs\n",
+          "stderr": ""
+        },
+        "worktrees": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp",
+            "worktree",
+            "list",
+            "--porcelain"
+          ],
+          "start": "2026-11-14T14:19:57.088386+00:00",
+          "end": "2026-11-14T14:19:57.098581+00:00",
+          "exit_code": 0,
+          "stdout": "worktree /dwdhome/fy/BASE_E6_2/edh-universe/frp/frp\nHEAD cac6c912dd65a14acbd591ca57e0afd8ddb4ef13\nbranch refs/heads/eaw/p123-integration-20260820\n\n",
+          "stderr": ""
+        },
+        "remotes": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp",
+            "remote",
+            "-v"
+          ],
+          "start": "2026-11-14T14:19:57.108061+00:00",
+          "end": "2026-11-14T14:19:57.118110+00:00",
+          "exit_code": 0,
+          "stdout": "origin\thttps://gogs.dw/frp/frp (fetch)\norigin\thttps://gogs.dw/frp/frp (push)\n",
+          "stderr": ""
+        }
+      },
+      "files": [
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/src/Frp/Instance.hs",
+          "exists": true,
+          "relative_path": "src/Frp/Instance.hs",
+          "bytes": 6770,
+          "sha256": "1a38a7292d87e13af7730261aad87cf5dbdde3927c1ee156c116083ec1e528a6",
+          "git_blob": {
+            "command": [
+              "git",
+              "--no-optional-locks",
+              "-C",
+              "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp",
+              "hash-object",
+              "--",
+              "src/Frp/Instance.hs"
+            ],
+            "start": "2026-11-14T14:19:57.177877+00:00",
+            "end": "2026-11-14T14:19:57.187755+00:00",
+            "exit_code": 0,
+            "stdout": "45675dcbaaa5f02d325b27a825d31abeb5a34a8b\n",
+            "stderr": ""
+          }
+        },
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1.hs",
+          "exists": true,
+          "relative_path": "src/Frp/Instance/ISL/Eaw/P1.hs",
+          "bytes": 6823,
+          "sha256": "afddc86709f3a29c00cf2dad028bbcb0f5f9ae80bf30bd4a6333ca84ad5b79aa",
+          "git_blob": {
+            "command": [
+              "git",
+              "--no-optional-locks",
+              "-C",
+              "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp",
+              "hash-object",
+              "--",
+              "src/Frp/Instance/ISL/Eaw/P1.hs"
+            ],
+            "start": "2026-11-14T14:19:57.195681+00:00",
+            "end": "2026-11-14T14:19:57.205493+00:00",
+            "exit_code": 0,
+            "stdout": "046da131356c95bb794e093ea9ea2a30887e2631\n",
+            "stderr": ""
+          }
+        },
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/WallLifecycle.hs",
+          "exists": true,
+          "relative_path": "src/Frp/Instance/ISL/Eaw/P1/WallLifecycle.hs",
+          "bytes": 7194,
+          "sha256": "fcdb43fb1e61ed53b4a4e7cac52ca4c5eed41db11b9b52e9fe3e773e982f8382",
+          "git_blob": {
+            "command": [
+              "git",
+              "--no-optional-locks",
+              "-C",
+              "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp",
+              "hash-object",
+              "--",
+              "src/Frp/Instance/ISL/Eaw/P1/WallLifecycle.hs"
+            ],
+            "start": "2026-11-14T14:19:57.212880+00:00",
+            "end": "2026-11-14T14:19:57.223094+00:00",
+            "exit_code": 0,
+            "stdout": "0cb1b9d0350459d671119d5dcaa67eee869b34f4\n",
+            "stderr": ""
+          }
+        },
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Products.hs",
+          "exists": true,
+          "relative_path": "src/Frp/Instance/ISL/Eaw/P1/Products.hs",
+          "bytes": 24420,
+          "sha256": "213bc5e4d73de9fc2e87adc92921a53ecc99bacbc3d22fa1b5bb3b6613a6c0cd",
+          "git_blob": {
+            "command": [
+              "git",
+              "--no-optional-locks",
+              "-C",
+              "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp",
+              "hash-object",
+              "--",
+              "src/Frp/Instance/ISL/Eaw/P1/Products.hs"
+            ],
+            "start": "2026-11-14T14:19:57.235495+00:00",
+            "end": "2026-11-14T14:19:57.245718+00:00",
+            "exit_code": 0,
+            "stdout": "bc74ec9aaa3a10bd3cef880f0e76f68adbea5014\n",
+            "stderr": ""
+          }
+        },
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Publication.hs",
+          "exists": true,
+          "relative_path": "src/Frp/Instance/ISL/Eaw/P1/Publication.hs",
+          "bytes": 21294,
+          "sha256": "9d9700a205c6aa88a0fe186320e8e0f8d56e106df112c22ad31fb492c05aa437",
+          "git_blob": {
+            "command": [
+              "git",
+              "--no-optional-locks",
+              "-C",
+              "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp",
+              "hash-object",
+              "--",
+              "src/Frp/Instance/ISL/Eaw/P1/Publication.hs"
+            ],
+            "start": "2026-11-14T14:19:57.254097+00:00",
+            "end": "2026-11-14T14:19:57.264270+00:00",
+            "exit_code": 0,
+            "stdout": "6c185b5a18e8673d2753fa118306ce3dfe47eb63\n",
+            "stderr": ""
+          }
+        },
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+          "exists": true,
+          "relative_path": "src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+          "bytes": 71231,
+          "sha256": "45e13a1d57856d44c9b3f8c1bdbcbb1cacfb93b94df9a3394580e8ce4b07a861",
+          "git_blob": {
+            "command": [
+              "git",
+              "--no-optional-locks",
+              "-C",
+              "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp",
+              "hash-object",
+              "--",
+              "src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs"
+            ],
+            "start": "2026-11-14T14:19:57.271163+00:00",
+            "end": "2026-11-14T14:19:57.282024+00:00",
+            "exit_code": 0,
+            "stdout": "e64db328a9bcb21bc3dbe4964fdf84581b423642\n",
+            "stderr": ""
+          }
+        }
+      ],
+      "old_commit_present": true,
+      "baseline_probe": {
+        "command": [
+          "git",
+          "--no-optional-locks",
+          "-C",
+          "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp",
+          "cat-file",
+          "-e",
+          "cac6c912dd65a14acbd591ca57e0afd8ddb4ef13^{commit}"
+        ],
+        "start": "2026-11-14T14:19:57.127722+00:00",
+        "end": "2026-11-14T14:19:57.143424+00:00",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "baseline_related_diff": {
+        "command": [
+          "git",
+          "--no-optional-locks",
+          "-C",
+          "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp",
+          "diff",
+          "--stat",
+          "cac6c912dd65a14acbd591ca57e0afd8ddb4ef13",
+          "HEAD",
+          "--",
+          "src/Frp/Instance.hs",
+          "src/Frp/Instance/ISL/Eaw/P1.hs",
+          "src/Frp/Instance/ISL/Eaw/P1/WallLifecycle.hs",
+          "src/Frp/Instance/ISL/Eaw/P1/Products.hs",
+          "src/Frp/Instance/ISL/Eaw/P1/Publication.hs",
+          "src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs"
+        ],
+        "start": "2026-11-14T14:19:57.151277+00:00",
+        "end": "2026-11-14T14:19:57.167166+00:00",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "frp-core",
+      "path": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp-core",
+      "realpath": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp-core",
+      "old_baseline": null,
+      "commands": {
+        "toplevel": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp-core",
+            "rev-parse",
+            "--show-toplevel"
+          ],
+          "start": "2026-11-14T14:19:57.288409+00:00",
+          "end": "2026-11-14T14:19:57.314201+00:00",
+          "exit_code": 0,
+          "stdout": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp-core\n",
+          "stderr": ""
+        },
+        "head": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp-core",
+            "rev-parse",
+            "HEAD"
+          ],
+          "start": "2026-11-14T14:19:57.325786+00:00",
+          "end": "2026-11-14T14:19:57.342192+00:00",
+          "exit_code": 0,
+          "stdout": "d3153e085cd0d99d86876b73aeb1d05497638f80\n",
+          "stderr": ""
+        },
+        "branch": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp-core",
+            "symbolic-ref",
+            "--quiet",
+            "--short",
+            "HEAD"
+          ],
+          "start": "2026-11-14T14:19:57.352188+00:00",
+          "end": "2026-11-14T14:19:57.362222+00:00",
+          "exit_code": 0,
+          "stdout": "e6.2\n",
+          "stderr": ""
+        },
+        "status": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp-core",
+            "status",
+            "--short",
+            "--branch"
+          ],
+          "start": "2026-11-14T14:19:57.369077+00:00",
+          "end": "2026-11-14T14:19:57.452402+00:00",
+          "exit_code": 0,
+          "stdout": "## e6.2...origin/e6.2\n",
+          "stderr": ""
+        },
+        "worktrees": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp-core",
+            "worktree",
+            "list",
+            "--porcelain"
+          ],
+          "start": "2026-11-14T14:19:57.462830+00:00",
+          "end": "2026-11-14T14:19:57.473306+00:00",
+          "exit_code": 0,
+          "stdout": "worktree /dwdhome/fy/BASE_E6_2/edh-universe/frp/frp-core\nHEAD d3153e085cd0d99d86876b73aeb1d05497638f80\nbranch refs/heads/e6.2\n\n",
+          "stderr": ""
+        },
+        "remotes": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp-core",
+            "remote",
+            "-v"
+          ],
+          "start": "2026-11-14T14:19:57.479481+00:00",
+          "end": "2026-11-14T14:19:57.489294+00:00",
+          "exit_code": 0,
+          "stdout": "origin\thttps://gogs.dw/frp/frp-core (fetch)\norigin\thttps://gogs.dw/frp/frp-core (push)\n",
+          "stderr": ""
+        }
+      },
+      "files": [
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp-core/src/Frp/DbaStore.hs",
+          "exists": true,
+          "relative_path": "src/Frp/DbaStore.hs",
+          "bytes": 120,
+          "sha256": "3fe0b55965636be62d2b525c73195d02c10aa433623ba5a56af9acdbd53fa027",
+          "git_blob": {
+            "command": [
+              "git",
+              "--no-optional-locks",
+              "-C",
+              "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp-core",
+              "hash-object",
+              "--",
+              "src/Frp/DbaStore.hs"
+            ],
+            "start": "2026-11-14T14:19:57.496577+00:00",
+            "end": "2026-11-14T14:19:57.506178+00:00",
+            "exit_code": 0,
+            "stdout": "8640198aaf8b5c47d05601e1e70a28a43eea698d\n",
+            "stderr": ""
+          }
+        },
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp-core/src/Frp/Core/Fao.hs",
+          "exists": true,
+          "relative_path": "src/Frp/Core/Fao.hs",
+          "bytes": 226,
+          "sha256": "aa43a0b304052000431784227567e07732a55507d4959896aac5fe281ea342a1",
+          "git_blob": {
+            "command": [
+              "git",
+              "--no-optional-locks",
+              "-C",
+              "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp-core",
+              "hash-object",
+              "--",
+              "src/Frp/Core/Fao.hs"
+            ],
+            "start": "2026-11-14T14:19:57.513874+00:00",
+            "end": "2026-11-14T14:19:57.523454+00:00",
+            "exit_code": 0,
+            "stdout": "067c4c0c97581721c69a3488d8e997f28b0c5eaa\n",
+            "stderr": ""
+          }
+        }
+      ]
+    },
+    {
+      "name": "mpds",
+      "path": "/dwdhome/fy/BASE_E6_2/edh-universe/mpds",
+      "realpath": "/dwdhome/fy/BASE_E6_2/edh-universe/mpds",
+      "old_baseline": null,
+      "commands": {
+        "toplevel": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/edh-universe/mpds",
+            "rev-parse",
+            "--show-toplevel"
+          ],
+          "start": "2026-11-14T14:19:57.531699+00:00",
+          "end": "2026-11-14T14:19:57.598241+00:00",
+          "exit_code": 0,
+          "stdout": "/dwdhome/fy/BASE_E6_2/edh-universe/mpds\n",
+          "stderr": ""
+        },
+        "head": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/edh-universe/mpds",
+            "rev-parse",
+            "HEAD"
+          ],
+          "start": "2026-11-14T14:19:57.606760+00:00",
+          "end": "2026-11-14T14:19:57.663341+00:00",
+          "exit_code": 0,
+          "stdout": "26245696c1cdcd7c1b0202e00c998ef7f55ee0b0\n",
+          "stderr": ""
+        },
+        "branch": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/edh-universe/mpds",
+            "symbolic-ref",
+            "--quiet",
+            "--short",
+            "HEAD"
+          ],
+          "start": "2026-11-14T14:19:57.673565+00:00",
+          "end": "2026-11-14T14:19:57.686839+00:00",
+          "exit_code": 0,
+          "stdout": "6.2\n",
+          "stderr": ""
+        },
+        "status": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/edh-universe/mpds",
+            "status",
+            "--short",
+            "--branch"
+          ],
+          "start": "2026-11-14T14:19:57.696811+00:00",
+          "end": "2026-11-14T14:19:57.901063+00:00",
+          "exit_code": 0,
+          "stdout": "## 6.2...origin/6.2\n",
+          "stderr": ""
+        },
+        "worktrees": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/edh-universe/mpds",
+            "worktree",
+            "list",
+            "--porcelain"
+          ],
+          "start": "2026-11-14T14:19:57.911243+00:00",
+          "end": "2026-11-14T14:19:57.921691+00:00",
+          "exit_code": 0,
+          "stdout": "worktree /dwdhome/fy/BASE_E6_2/edh-universe/mpds\nHEAD 26245696c1cdcd7c1b0202e00c998ef7f55ee0b0\nbranch refs/heads/6.2\n\n",
+          "stderr": ""
+        },
+        "remotes": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/edh-universe/mpds",
+            "remote",
+            "-v"
+          ],
+          "start": "2026-11-14T14:19:57.932820+00:00",
+          "end": "2026-11-14T14:19:57.942491+00:00",
+          "exit_code": 0,
+          "stdout": "origin\thttps://gogs.dw/bestpractice/mpds (fetch)\norigin\thttps://gogs.dw/bestpractice/mpds (push)\n",
+          "stderr": ""
+        }
+      },
+      "files": [
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/edh-universe/mpds/host.py/mpds/task/frp.py",
+          "exists": true,
+          "relative_path": "host.py/mpds/task/frp.py",
+          "bytes": 4646,
+          "sha256": "34dc27c55b8f37007bb2968979f5b018b1819b775d880f84265ab016814a5240",
+          "git_blob": {
+            "command": [
+              "git",
+              "--no-optional-locks",
+              "-C",
+              "/dwdhome/fy/BASE_E6_2/edh-universe/mpds",
+              "hash-object",
+              "--",
+              "host.py/mpds/task/frp.py"
+            ],
+            "start": "2026-11-14T14:19:57.953806+00:00",
+            "end": "2026-11-14T14:19:57.963878+00:00",
+            "exit_code": 0,
+            "stdout": "1891ff9537c53ed20a29768ed405f08262ce3af8\n",
+            "stderr": ""
+          }
+        }
+      ]
+    },
+    {
+      "name": "hasdim",
+      "path": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/hasdim",
+      "realpath": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/hasdim",
+      "old_baseline": null,
+      "commands": {
+        "toplevel": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/hasdim",
+            "rev-parse",
+            "--show-toplevel"
+          ],
+          "start": "2026-11-14T14:19:57.974464+00:00",
+          "end": "2026-11-14T14:19:58.002684+00:00",
+          "exit_code": 0,
+          "stdout": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/hasdim\n",
+          "stderr": ""
+        },
+        "head": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/hasdim",
+            "rev-parse",
+            "HEAD"
+          ],
+          "start": "2026-11-14T14:19:58.012614+00:00",
+          "end": "2026-11-14T14:19:58.042447+00:00",
+          "exit_code": 0,
+          "stdout": "43c11e34822a4877e83a8316fbd6051499805d3f\n",
+          "stderr": ""
+        },
+        "branch": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/hasdim",
+            "symbolic-ref",
+            "--quiet",
+            "--short",
+            "HEAD"
+          ],
+          "start": "2026-11-14T14:19:58.057961+00:00",
+          "end": "2026-11-14T14:19:58.067846+00:00",
+          "exit_code": 0,
+          "stdout": "master\n",
+          "stderr": ""
+        },
+        "status": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/hasdim",
+            "status",
+            "--short",
+            "--branch"
+          ],
+          "start": "2026-11-14T14:19:58.079067+00:00",
+          "end": "2026-11-14T14:19:58.268353+00:00",
+          "exit_code": 0,
+          "stdout": "## master...origin/master\n",
+          "stderr": ""
+        },
+        "worktrees": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/hasdim",
+            "worktree",
+            "list",
+            "--porcelain"
+          ],
+          "start": "2026-11-14T14:19:58.280872+00:00",
+          "end": "2026-11-14T14:19:58.291443+00:00",
+          "exit_code": 0,
+          "stdout": "worktree /dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/hasdim\nHEAD 43c11e34822a4877e83a8316fbd6051499805d3f\nbranch refs/heads/master\n\n",
+          "stderr": ""
+        },
+        "remotes": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/hasdim",
+            "remote",
+            "-v"
+          ],
+          "start": "2026-11-14T14:19:58.299699+00:00",
+          "end": "2026-11-14T14:19:58.309312+00:00",
+          "exit_code": 0,
+          "stdout": "origin\thttps://gogs.dw/e-wrks/hasdim (fetch)\norigin\thttps://gogs.dw/e-wrks/hasdim (push)\n",
+          "stderr": ""
+        }
+      },
+      "files": [
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/hasdim/host.py/hasdim/rt.py",
+          "exists": true,
+          "relative_path": "host.py/hasdim/rt.py",
+          "bytes": 6876,
+          "sha256": "5692258fc83bb9b0ef430de99af151d00a49a02c4b331d07764e34148140e542",
+          "git_blob": {
+            "command": [
+              "git",
+              "--no-optional-locks",
+              "-C",
+              "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/hasdim",
+              "hash-object",
+              "--",
+              "host.py/hasdim/rt.py"
+            ],
+            "start": "2026-11-14T14:19:58.322277+00:00",
+            "end": "2026-11-14T14:19:58.336228+00:00",
+            "exit_code": 0,
+            "stdout": "a534746ad56386edd01fdc37e8d1edf5b18c860a\n",
+            "stderr": ""
+          }
+        }
+      ]
+    },
+    {
+      "name": "m3",
+      "path": "/dwdhome/fy/BASE_E6_2/m3",
+      "realpath": "/dwdhome/fy/BASE_E6_2/m3",
+      "old_baseline": null,
+      "commands": {
+        "toplevel": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/m3",
+            "rev-parse",
+            "--show-toplevel"
+          ],
+          "start": "2026-11-14T14:19:58.349098+00:00",
+          "end": "2026-11-14T14:19:58.380029+00:00",
+          "exit_code": 0,
+          "stdout": "/dwdhome/fy/BASE_E6_2/m3\n",
+          "stderr": ""
+        },
+        "head": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/m3",
+            "rev-parse",
+            "HEAD"
+          ],
+          "start": "2026-11-14T14:19:58.392027+00:00",
+          "end": "2026-11-14T14:19:58.407579+00:00",
+          "exit_code": 0,
+          "stdout": "62dddc5f6ad9247eb4508867117a570b6573584d\n",
+          "stderr": ""
+        },
+        "branch": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/m3",
+            "symbolic-ref",
+            "--quiet",
+            "--short",
+            "HEAD"
+          ],
+          "start": "2026-11-14T14:19:58.412001+00:00",
+          "end": "2026-11-14T14:19:58.421732+00:00",
+          "exit_code": 0,
+          "stdout": "new_ver\n",
+          "stderr": ""
+        },
+        "status": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/m3",
+            "status",
+            "--short",
+            "--branch"
+          ],
+          "start": "2026-11-14T14:19:58.430977+00:00",
+          "end": "2026-11-14T14:19:58.577570+00:00",
+          "exit_code": 0,
+          "stdout": "## new_ver...origin/new_ver\n?? mts/rebuild-prod\n?? perfp/rebuild-prod\n",
+          "stderr": ""
+        },
+        "worktrees": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/m3",
+            "worktree",
+            "list",
+            "--porcelain"
+          ],
+          "start": "2026-11-14T14:19:58.595052+00:00",
+          "end": "2026-11-14T14:19:58.605605+00:00",
+          "exit_code": 0,
+          "stdout": "worktree /dwdhome/fy/BASE_E6_2/m3\nHEAD 62dddc5f6ad9247eb4508867117a570b6573584d\nbranch refs/heads/new_ver\n\n",
+          "stderr": ""
+        },
+        "remotes": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/m3",
+            "remote",
+            "-v"
+          ],
+          "start": "2026-11-14T14:19:58.614380+00:00",
+          "end": "2026-11-14T14:19:58.624083+00:00",
+          "exit_code": 0,
+          "stdout": "origin\thttps://gogs.dw/platform/m3 (fetch)\norigin\thttps://gogs.dw/platform/m3 (push)\n",
+          "stderr": ""
+        }
+      },
+      "files": [
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/m3/hpath.py",
+          "exists": true,
+          "relative_path": "hpath.py",
+          "bytes": 1003,
+          "sha256": "a25655fa2d204d135f4e8acf0504790d16a5c8edb4020aa764e714ac25ff8152",
+          "git_blob": {
+            "command": [
+              "git",
+              "--no-optional-locks",
+              "-C",
+              "/dwdhome/fy/BASE_E6_2/m3",
+              "hash-object",
+              "--",
+              "hpath.py"
+            ],
+            "start": "2026-11-14T14:19:58.639092+00:00",
+            "end": "2026-11-14T14:19:58.648671+00:00",
+            "exit_code": 0,
+            "stdout": "aa880499fd94d27b228e0cdb7713ca11a8ec2fbf\n",
+            "stderr": ""
+          }
+        }
+      ]
+    },
+    {
+      "name": "pydim",
+      "path": "/dwdhome/fy/BASE_E6_2/pydim",
+      "realpath": "/dwdhome/fy/BASE_E6_2/pydim",
+      "old_baseline": null,
+      "commands": {
+        "toplevel": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/pydim",
+            "rev-parse",
+            "--show-toplevel"
+          ],
+          "start": "2026-11-14T14:19:58.654317+00:00",
+          "end": "2026-11-14T14:19:58.682631+00:00",
+          "exit_code": 0,
+          "stdout": "/dwdhome/fy/BASE_E6_2/pydim\n",
+          "stderr": ""
+        },
+        "head": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/pydim",
+            "rev-parse",
+            "HEAD"
+          ],
+          "start": "2026-11-14T14:19:58.697779+00:00",
+          "end": "2026-11-14T14:19:58.719395+00:00",
+          "exit_code": 0,
+          "stdout": "0dbe020a29f0bb1f7a37fae2cfa0a64827350fc8\n",
+          "stderr": ""
+        },
+        "branch": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/pydim",
+            "symbolic-ref",
+            "--quiet",
+            "--short",
+            "HEAD"
+          ],
+          "start": "2026-11-14T14:19:58.730161+00:00",
+          "end": "2026-11-14T14:19:58.739930+00:00",
+          "exit_code": 0,
+          "stdout": "master\n",
+          "stderr": ""
+        },
+        "status": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/pydim",
+            "status",
+            "--short",
+            "--branch"
+          ],
+          "start": "2026-11-14T14:19:58.753602+00:00",
+          "end": "2026-11-14T14:19:58.817057+00:00",
+          "exit_code": 0,
+          "stdout": "## master...origin/master\n?? dim/rt.bak\n",
+          "stderr": ""
+        },
+        "worktrees": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/pydim",
+            "worktree",
+            "list",
+            "--porcelain"
+          ],
+          "start": "2026-11-14T14:19:58.830869+00:00",
+          "end": "2026-11-14T14:19:58.841630+00:00",
+          "exit_code": 0,
+          "stdout": "worktree /dwdhome/fy/BASE_E6_2/pydim\nHEAD 0dbe020a29f0bb1f7a37fae2cfa0a64827350fc8\nbranch refs/heads/master\n\n",
+          "stderr": ""
+        },
+        "remotes": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/pydim",
+            "remote",
+            "-v"
+          ],
+          "start": "2026-11-14T14:19:58.855080+00:00",
+          "end": "2026-11-14T14:19:58.864778+00:00",
+          "exit_code": 0,
+          "stdout": "origin\thttps://gogs.dw/e-wrks/pydim.git (fetch)\norigin\thttps://gogs.dw/e-wrks/pydim.git (push)\n",
+          "stderr": ""
+        }
+      },
+      "files": [
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/pydim/__init__.py",
+          "exists": true,
+          "relative_path": "__init__.py",
+          "bytes": 394,
+          "sha256": "359e2cfe76ab7573c4a14c7100537d341881dfda0575caed982997c9c1261cbd",
+          "git_blob": {
+            "command": [
+              "git",
+              "--no-optional-locks",
+              "-C",
+              "/dwdhome/fy/BASE_E6_2/pydim",
+              "hash-object",
+              "--",
+              "__init__.py"
+            ],
+            "start": "2026-11-14T14:19:58.871053+00:00",
+            "end": "2026-11-14T14:19:58.882004+00:00",
+            "exit_code": 0,
+            "stdout": "0929b74e075ea6a6c5230e43dd16ff2053fb8fc6\n",
+            "stderr": ""
+          }
+        }
+      ]
+    },
+    {
+      "name": "tis_path",
+      "path": "/dwdhome/fy/BASE_E6_2/tis",
+      "realpath": "/dwdhome/fy/BASE_E6_2/tis",
+      "old_baseline": "ef887396e0a06d6e75be47efee0f1985ad7988a3",
+      "commands": {
+        "toplevel": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/tis",
+            "rev-parse",
+            "--show-toplevel"
+          ],
+          "start": "2026-11-14T14:19:58.890904+00:00",
+          "end": "2026-11-14T14:19:58.904003+00:00",
+          "exit_code": 0,
+          "stdout": "/dwdhome/fy\n",
+          "stderr": ""
+        },
+        "head": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/tis",
+            "rev-parse",
+            "HEAD"
+          ],
+          "start": "2026-11-14T14:19:58.913549+00:00",
+          "end": "2026-11-14T14:19:58.926939+00:00",
+          "exit_code": 0,
+          "stdout": "0cb55e4726c7af711fa790f848c2fec88db6b949\n",
+          "stderr": ""
+        },
+        "branch": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/tis",
+            "symbolic-ref",
+            "--quiet",
+            "--short",
+            "HEAD"
+          ],
+          "start": "2026-11-14T14:19:58.937674+00:00",
+          "end": "2026-11-14T14:19:58.947486+00:00",
+          "exit_code": 0,
+          "stdout": "master\n",
+          "stderr": ""
+        },
+        "status": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/tis",
+            "status",
+            "--short",
+            "--branch"
+          ],
+          "start": "2026-11-14T14:19:58.956424+00:00",
+          "end": "2026-11-14T14:19:59.801731+00:00",
+          "exit_code": 0,
+          "stdout": "## master...origin/master\n?? ../../.ICEauthority\n?? ../../.bash_history\n?? ../../.bash_logout\n?? ../../.bashrc\n?? ../../.cache/\n?? ../../.conda/\n?? ../../.condarc\n?? ../../.config/\n?? ../../.cursor-server/\n?? ../../.cursor-tutor-1/\n?? ../../.cursor-tutor-10/\n?? ../../.cursor-tutor-100/\n?? ../../.cursor-tutor-101/\n?? ../../.cursor-tutor-102/\n?? ../../.cursor-tutor-103/\n?? ../../.cursor-tutor-104/\n?? ../../.cursor-tutor-105/\n?? ../../.cursor-tutor-106/\n?? ../../.cursor-tutor-107/\n?? ../../.cursor-tutor-108/\n?? ../../.cursor-tutor-109/\n?? ../../.cursor-tutor-11/\n?? ../../.cursor-tutor-110/\n?? ../../.cursor-tutor-111/\n?? ../../.cursor-tutor-112/\n?? ../../.cursor-tutor-113/\n?? ../../.cursor-tutor-114/\n?? ../../.cursor-tutor-116/\n?? ../../.cursor-tutor-117/\n?? ../../.cursor-tutor-118/\n?? ../../.cursor-tutor-119/\n?? ../../.cursor-tutor-12/\n?? ../../.cursor-tutor-120/\n?? ../../.cursor-tutor-121/\n?? ../../.cursor-tutor-122/\n?? ../../.cursor-tutor-123/\n?? ../../.cursor-tutor-124/\n?? ../../.cursor-tutor-125/\n?? ../../.cursor-tutor-126/\n?? ../../.cursor-tutor-127/\n?? ../../.cursor-tutor-128/\n?? ../../.cursor-tutor-129/\n?? ../../.cursor-tutor-13/\n?? ../../.cursor-tutor-130/\n?? ../../.cursor-tutor-131/\n?? ../../.cursor-tutor-132/\n?? ../../.cursor-tutor-133/\n?? ../../.cursor-tutor-134/\n?? ../../.cursor-tutor-135/\n?? ../../.cursor-tutor-136/\n?? ../../.cursor-tutor-137/\n?? ../../.cursor-tutor-138/\n?? ../../.cursor-tutor-139/\n?? ../../.cursor-tutor-14/\n?? ../../.cursor-tutor-140/\n?? ../../.cursor-tutor-141/\n?? ../../.cursor-tutor-142/\n?? ../../.cursor-tutor-143/\n?? ../../.cursor-tutor-144/\n?? ../../.cursor-tutor-145/\n?? ../../.cursor-tutor-146/\n?? ../../.cursor-tutor-147/\n?? ../../.cursor-tutor-148/\n?? ../../.cursor-tutor-149/\n?? ../../.cursor-tutor-15/\n?? ../../.cursor-tutor-150/\n?? ../../.cursor-tutor-16/\n?? ../../.cursor-tutor-17/\n?? ../../.cursor-tutor-18/\n?? ../../.cursor-tutor-19/\n?? ../../.cursor-tutor-2/\n?? ../../.cursor-tutor-20/\n?? ../../.cursor-tutor-21/\n?? ../../.cursor-tutor-22/\n?? ../../.cursor-tutor-23/\n?? ../../.cursor-tutor-24/\n?? ../../.cursor-tutor-25/\n?? ../../.cursor-tutor-26/\n?? ../../.cursor-tutor-27/\n?? ../../.cursor-tutor-28/\n?? ../../.cursor-tutor-29/\n?? ../../.cursor-tutor-3/\n?? ../../.cursor-tutor-30/\n?? ../../.cursor-tutor-31/\n?? ../../.cursor-tutor-32/\n?? ../../.cursor-tutor-33/\n?? ../../.cursor-tutor-34/\n?? ../../.cursor-tutor-35/\n?? ../../.cursor-tutor-36/\n?? ../../.cursor-tutor-37/\n?? ../../.cursor-tutor-38/\n?? ../../.cursor-tutor-39/\n?? ../../.cursor-tutor-4/\n?? ../../.cursor-tutor-40/\n?? ../../.cursor-tutor-41/\n?? ../../.cursor-tutor-42/\n?? ../../.cursor-tutor-43/\n?? ../../.cursor-tutor-44/\n?? ../../.cursor-tutor-45/\n?? ../../.cursor-tutor-46/\n?? ../../.cursor-tutor-47/\n?? ../../.cursor-tutor-48/\n?? ../../.cursor-tutor-49/\n?? ../../.cursor-tutor-5/\n?? ../../.cursor-tutor-50/\n?? ../../.cursor-tutor-51/\n?? ../../.cursor-tutor-52/\n?? ../../.cursor-tutor-53/\n?? ../../.cursor-tutor-54/\n?? ../../.cursor-tutor-55/\n?? ../../.cursor-tutor-56/\n?? ../../.cursor-tutor-57/\n?? ../../.cursor-tutor-58/\n?? ../../.cursor-tutor-59/\n?? ../../.cursor-tutor-6/\n?? ../../.cursor-tutor-60/\n?? ../../.cursor-tutor-61/\n?? ../../.cursor-tutor-62/\n?? ../../.cursor-tutor-63/\n?? ../../.cursor-tutor-64/\n?? ../../.cursor-tutor-65/\n?? ../../.cursor-tutor-66/\n?? ../../.cursor-tutor-67/\n?? ../../.cursor-tutor-68/\n?? ../../.cursor-tutor-69/\n?? ../../.cursor-tutor-7/\n?? ../../.cursor-tutor-70/\n?? ../../.cursor-tutor-71/\n?? ../../.cursor-tutor-72/\n?? ../../.cursor-tutor-73/\n?? ../../.cursor-tutor-74/\n?? ../../.cursor-tutor-75/\n?? ../../.cursor-tutor-76/\n?? ../../.cursor-tutor-77/\n?? ../../.cursor-tutor-78/\n?? ../../.cursor-tutor-79/\n?? ../../.cursor-tutor-8/\n?? ../../.cursor-tutor-80/\n?? ../../.cursor-tutor-81/\n?? ../../.cursor-tutor-82/\n?? ../../.cursor-tutor-83/\n?? ../../.cursor-tutor-84/\n?? ../../.cursor-tutor-85/\n?? ../../.cursor-tutor-86/\n?? ../../.cursor-tutor-87/\n?? ../../.cursor-tutor-88/\n?? ../../.cursor-tutor-89/\n?? ../../.cursor-tutor-9/\n?? ../../.cursor-tutor-90/\n?? ../../.cursor-tutor-91/\n?? ../../.cursor-tutor-92/\n?? ../../.cursor-tutor-93/\n?? ../../.cursor-tutor-94/\n?? ../../.cursor-tutor-95/\n?? ../../.cursor-tutor-96/\n?? ../../.cursor-tutor-97/\n?? ../../.cursor-tutor-98/\n?? ../../.cursor-tutor-99/\n?? ../../.cursor-tutor/\n?? ../../.cursor/\n?? ../../.dbus/\n?? ../../.dotnet/\n?? ../../.ghc/\n?? ../../.git-credentials\n?? ../../.git-credentials.lock\n?? ../../.gitconfig\n?? ../../.gk/\n?? ../../.gnome/\n?? ../../.gnupg/\n?? ../../.ipython/\n?? ../../.jupyter/\n?? ../../.lesshst\n?? ../../.local/\n?? ../../.macromedia/\n?? ../../.mono/\n?? ../../.mozilla/\n?? ../../.npm/\n?? ../../.pam_environment\n?? ../../.pki/\n?? ../../.presage/\n?? ../../.profile\n?? ../../.pylint.d/\n?? ../../.python_history\n?? ../../.sogouinput/\n?? ../../.ssh/\n?? ../../.stack/\n?? ../../.sudo_as_admin_successful\n?? ../../.viminfo\n?? ../../.vscode-server/\n?? ../../.vscode/\n?? ../../.wget-hsts\n?? ../../.xinputrc\n?? \"../../3\\344\\270\\252\\346\\234\\210_2\\346\\254\\241\\345\\260\\235\\350\\257\\225\\346\\210\\220\\345\\212\\237\\346\\257\\224\\344\\276\\213.xlsx\"\n?? \"../../3\\344\\270\\252\\346\\234\\210_2\\346\\254\\241\\345\\260\\235\\350\\257\\225\\346\\210\\220\\345\\212\\237\\346\\257\\224\\344\\276\\213_57\\345\\223\\201\\347\\247\\215_TA_updto20240229.xlsx\"\n?? \"../../C:\\\\des\\\\.ssh\\\\id_rsa\"\n?? ../../Desktop/\n?? ../../Downloads/\n?? ../../Music/\n?? \"../../Obsidian Vault/\"\n?? ../../Pictures/\n?? ../../Templates/\n?? ../../airflow/\n?? ../../bak/\n?? ../../cgpterm-bi01-co-01/\n?? ../../cgpterm-bi01-co-02-adopted/\n?? ../../cgpterm-bi01-v2-02/\n?? ../../cgpterm-v2/\n?? ../../dma.test\n?? ../../dma_equity.csv\n?? ../../dma_test.csv\n?? \"../../frp\\344\\272\\213\\344\\273\\266\\346\\225\\260\\346\\215\\256\\346\\265\\201\\350\\215\\211\\347\\250\\277 .csv\"\n?? \"../../m3works.20220618\\347\\224\\237\\346\\210\\220\\350\\265\\204\\351\\207\\221\\351\\207\\217\"\n?? \"../../m3works.20220618\\347\\224\\237\\346\\210\\220\\350\\265\\204\\351\\207\\221\\351\\207\\217.csv\"\n?? ../../m3works/\n?? ../../m3works_ap.csv\n?? ../../mfstra\n?? ../../mstra\n?? ../../n8n\n?? ../../observe-iterate-bi01-co-01-controller-provenance/\n?? ../../observe-iterate-bi01-co-01/\n?? ../../observe-iterate-bi01-co-02/\n?? ../../observe-iterate-bi01-co-04-worker-recovery-01/\n?? ../../observe-iterate-bi01-co-04/\n?? ../../observe-iterate-bi01-co-05/\n?? ../../observe-iterate-bi01-feature-observation/\n?? ../../observe-iterate-bi01-fo-01/\n?? ../../observe-iterate-bi01-v2-02/\n?? ../../observe-iterate-share/\n?? ../../observe-iterate-v2/\n?? ../../r0003_r0007_phone_compare.zip\n?? \"../../vocabulary_20230804\\345\\273\\272\\347\\253\\213.xlsx\"\n?? ../../vscode-cpptools/\n?? \"../../\\345\\216\\237\\345\\247\\213\\350\\267\\263\\347\\251\\272\\347\\211\\271\\345\\276\\201_\\351\\234\\200\\346\\261\\202\\346\\226\\207\\346\\241\\243v0.1_\\346\\250\\212\\346\\234\\210_v0.2_\\350\\215\\211\\347\\250\\277_20241203.docx\"\n?? \"../../\\345\\270\\270\\347\\224\\250\\345\\221\\275\\344\\273\\244\\346\\261\\207\\346\\200\\273.xlsx\"\n?? \"../../\\346\\226\\260\\346\\225\\260\\346\\215\\256.csv\"\n?? \"../../\\350\\265\\204\\351\\207\\221\\347\\256\\241\\347\\220\\206\\346\\265\\213\\350\\257\\225.csv\"\n",
+          "stderr": ""
+        },
+        "worktrees": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/tis",
+            "worktree",
+            "list",
+            "--porcelain"
+          ],
+          "start": "2026-11-14T14:19:59.838685+00:00",
+          "end": "2026-11-14T14:19:59.848600+00:00",
+          "exit_code": 0,
+          "stdout": "worktree /dwdhome/fy\nHEAD 0cb55e4726c7af711fa790f848c2fec88db6b949\nbranch refs/heads/master\n\n",
+          "stderr": ""
+        },
+        "remotes": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/tis",
+            "remote",
+            "-v"
+          ],
+          "start": "2026-11-14T14:19:59.862703+00:00",
+          "end": "2026-11-14T14:19:59.872486+00:00",
+          "exit_code": 0,
+          "stdout": "origin\thttps://gogs.dw/mquant/uplot.git (fetch)\norigin\thttps://gogs.dw/mquant/uplot.git (push)\n",
+          "stderr": ""
+        }
+      },
+      "files": [
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/tis/frp/EawBattleP.py",
+          "exists": false,
+          "relative_path": "frp/EawBattleP.py"
+        },
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/tis/hf/prel0/wall_assembler.py",
+          "exists": false,
+          "relative_path": "hf/prel0/wall_assembler.py"
+        }
+      ],
+      "old_commit_present": false,
+      "baseline_probe": {
+        "command": [
+          "git",
+          "--no-optional-locks",
+          "-C",
+          "/dwdhome/fy/BASE_E6_2/tis",
+          "cat-file",
+          "-e",
+          "ef887396e0a06d6e75be47efee0f1985ad7988a3^{commit}"
+        ],
+        "start": "2026-11-14T14:19:59.889600+00:00",
+        "end": "2026-11-14T14:19:59.931002+00:00",
+        "exit_code": 128,
+        "stdout": "",
+        "stderr": "fatal: Not a valid object name ef887396e0a06d6e75be47efee0f1985ad7988a3^{commit}\n"
+      },
+      "baseline_status": "UNAVAILABLE_LOCALLY",
+      "relevance": "NOT_TIS: 向上发现 /dwdhome/fy 的 uplot 父仓库；不用于 TIS tuple。无关父级 status 已记录但不再扩展。"
+    },
+    {
+      "name": "tis",
+      "path": "/dwdhome/fy/BASE_E6_2/mquant/tis",
+      "realpath": "/dwdhome/fy/BASE_E6_2/mquant/tis",
+      "old_baseline": "ef887396e0a06d6e75be47efee0f1985ad7988a3",
+      "commands": {
+        "toplevel": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/mquant/tis",
+            "rev-parse",
+            "--show-toplevel"
+          ],
+          "start": "2026-11-14T14:22:18.637037+00:00",
+          "end": "2026-11-14T14:22:18.650981+00:00",
+          "exit_code": 0,
+          "stdout": "/dwdhome/fy/BASE_E6_2/mquant/tis\n",
+          "stderr": ""
+        },
+        "head": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/mquant/tis",
+            "rev-parse",
+            "HEAD"
+          ],
+          "start": "2026-11-14T14:22:18.662732+00:00",
+          "end": "2026-11-14T14:22:18.678216+00:00",
+          "exit_code": 0,
+          "stdout": "ef887396e0a06d6e75be47efee0f1985ad7988a3\n",
+          "stderr": ""
+        },
+        "branch": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/mquant/tis",
+            "symbolic-ref",
+            "--quiet",
+            "--short",
+            "HEAD"
+          ],
+          "start": "2026-11-14T14:22:18.708451+00:00",
+          "end": "2026-11-14T14:22:18.719429+00:00",
+          "exit_code": 0,
+          "stdout": "eaw/p123-integration-20260820\n",
+          "stderr": ""
+        },
+        "status": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/mquant/tis",
+            "status",
+            "--short",
+            "--branch"
+          ],
+          "start": "2026-11-14T14:22:18.737794+00:00",
+          "end": "2026-11-14T14:22:19.240815+00:00",
+          "exit_code": 0,
+          "stdout": "## eaw/p123-integration-20260820\n M frpExample/STCalendar.py\n",
+          "stderr": ""
+        },
+        "worktrees": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/mquant/tis",
+            "worktree",
+            "list",
+            "--porcelain"
+          ],
+          "start": "2026-11-14T14:22:19.287557+00:00",
+          "end": "2026-11-14T14:22:19.298439+00:00",
+          "exit_code": 0,
+          "stdout": "worktree /dwdhome/fy/BASE_E6_2/mquant/tis\nHEAD ef887396e0a06d6e75be47efee0f1985ad7988a3\nbranch refs/heads/eaw/p123-integration-20260820\n\n",
+          "stderr": ""
+        },
+        "remotes": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/mquant/tis",
+            "remote",
+            "-v"
+          ],
+          "start": "2026-11-14T14:22:19.317228+00:00",
+          "end": "2026-11-14T14:22:19.327325+00:00",
+          "exit_code": 0,
+          "stdout": "origin\thttps://gogs.dw/mquant/tis.git (fetch)\norigin\thttps://gogs.dw/mquant/tis.git (push)\n",
+          "stderr": ""
+        },
+        "baseline_probe": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/mquant/tis",
+            "cat-file",
+            "-e",
+            "ef887396e0a06d6e75be47efee0f1985ad7988a3^{commit}"
+          ],
+          "start": "2026-11-14T14:22:19.346144+00:00",
+          "end": "2026-11-14T14:22:19.360797+00:00",
+          "exit_code": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        "baseline_related_diff": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/mquant/tis",
+            "diff",
+            "--stat",
+            "ef887396e0a06d6e75be47efee0f1985ad7988a3",
+            "HEAD",
+            "--",
+            "frp/EawBattleP.py",
+            "hf/prel0/wall_assembler.py",
+            "frp/__init__.py",
+            "__init__.py"
+          ],
+          "start": "2026-11-14T14:22:19.371267+00:00",
+          "end": "2026-11-14T14:22:19.386828+00:00",
+          "exit_code": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        "worktree_related_diff": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/mquant/tis",
+            "diff",
+            "--stat",
+            "ef887396e0a06d6e75be47efee0f1985ad7988a3",
+            "--",
+            "frp/EawBattleP.py",
+            "hf/prel0/wall_assembler.py",
+            "frp/__init__.py",
+            "__init__.py"
+          ],
+          "start": "2026-11-14T14:22:19.392075+00:00",
+          "end": "2026-11-14T14:22:19.408601+00:00",
+          "exit_code": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        "blob_frp_EawBattleP.py": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/mquant/tis",
+            "hash-object",
+            "--",
+            "frp/EawBattleP.py"
+          ],
+          "start": "2026-11-14T14:22:19.415101+00:00",
+          "end": "2026-11-14T14:22:19.425277+00:00",
+          "exit_code": 0,
+          "stdout": "36b930bd6acf07acf57212dfe7be00de5dfac206\n",
+          "stderr": ""
+        },
+        "blob_hf_prel0_wall_assembler.py": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/mquant/tis",
+            "hash-object",
+            "--",
+            "hf/prel0/wall_assembler.py"
+          ],
+          "start": "2026-11-14T14:22:19.437153+00:00",
+          "end": "2026-11-14T14:22:19.447179+00:00",
+          "exit_code": 0,
+          "stdout": "83070644ceba777a2f3a8e6760e45492fc9cba48\n",
+          "stderr": ""
+        },
+        "blob_frp___init__.py": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/mquant/tis",
+            "hash-object",
+            "--",
+            "frp/__init__.py"
+          ],
+          "start": "2026-11-14T14:22:19.459318+00:00",
+          "end": "2026-11-14T14:22:19.469818+00:00",
+          "exit_code": 0,
+          "stdout": "a2a357624a697fd9c0123cdbf43d86ae7ea5bc98\n",
+          "stderr": ""
+        },
+        "blob___init__.py": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/mquant/tis",
+            "hash-object",
+            "--",
+            "__init__.py"
+          ],
+          "start": "2026-11-14T14:22:19.483115+00:00",
+          "end": "2026-11-14T14:22:19.492750+00:00",
+          "exit_code": 0,
+          "stdout": "5e156e42f429371108142d6456a24a815214f2e7\n",
+          "stderr": ""
+        }
+      },
+      "files": [
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/mquant/tis/frp/EawBattleP.py",
+          "relative_path": "frp/EawBattleP.py",
+          "exists": true,
+          "sha256": "f8a469a1317ea3208044e8581a3cf54b63b261f2358c2ba34755b41b4ef567ff",
+          "bytes": 38993,
+          "blob": "36b930bd6acf07acf57212dfe7be00de5dfac206"
+        },
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/mquant/tis/hf/prel0/wall_assembler.py",
+          "relative_path": "hf/prel0/wall_assembler.py",
+          "exists": true,
+          "sha256": "2c1f81bb953618e34271433601d82adf4dd58eb9bb460110786a040d042d32d1",
+          "bytes": 36326,
+          "blob": "83070644ceba777a2f3a8e6760e45492fc9cba48"
+        },
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/mquant/tis/frp/__init__.py",
+          "relative_path": "frp/__init__.py",
+          "exists": true,
+          "sha256": "bb571045eac9157ee5b47e18045caeb8b461ad314091fc1be073413f001302eb",
+          "bytes": 9785,
+          "blob": "a2a357624a697fd9c0123cdbf43d86ae7ea5bc98"
+        },
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/mquant/tis/__init__.py",
+          "relative_path": "__init__.py",
+          "exists": true,
+          "sha256": "e08ba28d41692077f10557854cf6efe8465c456256b05804d623db3aa2470c79",
+          "bytes": 8242,
+          "blob": "5e156e42f429371108142d6456a24a815214f2e7"
+        }
+      ],
+      "old_commit_present": true
+    },
+    {
+      "name": "m3sof",
+      "path": "/dwdhome/fy/BASE_E6_2/m3sof",
+      "realpath": "/dwdhome/fy/BASE_E6_2/m3sof",
+      "old_baseline": null,
+      "commands": {
+        "toplevel": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/m3sof",
+            "rev-parse",
+            "--show-toplevel"
+          ],
+          "start": "2026-11-14T14:22:19.504955+00:00",
+          "end": "2026-11-14T14:22:19.541993+00:00",
+          "exit_code": 0,
+          "stdout": "/dwdhome/fy/BASE_E6_2/m3sof\n",
+          "stderr": ""
+        },
+        "head": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/m3sof",
+            "rev-parse",
+            "HEAD"
+          ],
+          "start": "2026-11-14T14:22:19.550879+00:00",
+          "end": "2026-11-14T14:22:19.577747+00:00",
+          "exit_code": 0,
+          "stdout": "f2d5b316b2d323c6344778f22561d56d258d252b\n",
+          "stderr": ""
+        },
+        "branch": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/m3sof",
+            "symbolic-ref",
+            "--quiet",
+            "--short",
+            "HEAD"
+          ],
+          "start": "2026-11-14T14:22:19.590668+00:00",
+          "end": "2026-11-14T14:22:19.600550+00:00",
+          "exit_code": 0,
+          "stdout": "codex/aidata-csv-feature-smoke-20261019\n",
+          "stderr": ""
+        },
+        "status": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/m3sof",
+            "status",
+            "--short",
+            "--branch"
+          ],
+          "start": "2026-11-14T14:22:19.613361+00:00",
+          "end": "2026-11-14T14:22:19.718675+00:00",
+          "exit_code": 0,
+          "stdout": "## codex/aidata-csv-feature-smoke-20261019\n M __init__.py\n M core/__init__.py\n M settings/app.py\n M settings/env/default.py\n M settings/env/dev.py\n M settings/env/prod.py\n M settings/env/test.py\n M settings/sof/CTP.py\n?? settings/.ipynb_checkpoints/\n?? settings/env/.ipynb_checkpoints/\n?? settings/sof/.ipynb_checkpoints/\n?? settings/sof/GTQH_L1_20210104_20240208.py\n?? settings/sof/GTQH_L1_20210104_20240229.py\n",
+          "stderr": ""
+        },
+        "worktrees": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/m3sof",
+            "worktree",
+            "list",
+            "--porcelain"
+          ],
+          "start": "2026-11-14T14:22:19.725652+00:00",
+          "end": "2026-11-14T14:22:19.736285+00:00",
+          "exit_code": 0,
+          "stdout": "worktree /dwdhome/fy/BASE_E6_2/m3sof\nHEAD f2d5b316b2d323c6344778f22561d56d258d252b\nbranch refs/heads/codex/aidata-csv-feature-smoke-20261019\n\n",
+          "stderr": ""
+        },
+        "remotes": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/m3sof",
+            "remote",
+            "-v"
+          ],
+          "start": "2026-11-14T14:22:19.746663+00:00",
+          "end": "2026-11-14T14:22:19.756454+00:00",
+          "exit_code": 0,
+          "stdout": "origin\thttps://gogs.dw/platform/m3sof.git (fetch)\norigin\thttps://gogs.dw/platform/m3sof.git (push)\n",
+          "stderr": ""
+        },
+        "blob_settings_app.py": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/m3sof",
+            "hash-object",
+            "--",
+            "settings/app.py"
+          ],
+          "start": "2026-11-14T14:22:19.770950+00:00",
+          "end": "2026-11-14T14:22:19.780670+00:00",
+          "exit_code": 0,
+          "stdout": "22028021a84352fcf80bcf93dc42ed4d409f7fda\n",
+          "stderr": ""
+        },
+        "blob_settings_env_default.py": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/m3sof",
+            "hash-object",
+            "--",
+            "settings/env/default.py"
+          ],
+          "start": "2026-11-14T14:22:19.792930+00:00",
+          "end": "2026-11-14T14:22:19.802935+00:00",
+          "exit_code": 0,
+          "stdout": "a979b73b23ca275da380818179817cbe618f090c\n",
+          "stderr": ""
+        },
+        "blob_settings_env_prod.py": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/m3sof",
+            "hash-object",
+            "--",
+            "settings/env/prod.py"
+          ],
+          "start": "2026-11-14T14:22:19.814114+00:00",
+          "end": "2026-11-14T14:22:19.824373+00:00",
+          "exit_code": 0,
+          "stdout": "02e40a9f9efebb6838ab271ebf1b279bdd814e56\n",
+          "stderr": ""
+        },
+        "blob_settings_sof_TA_updto20240229_DBA.py": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/m3sof",
+            "hash-object",
+            "--",
+            "settings/sof/TA_updto20240229_DBA.py"
+          ],
+          "start": "2026-11-14T14:22:19.830405+00:00",
+          "end": "2026-11-14T14:22:19.841334+00:00",
+          "exit_code": 0,
+          "stdout": "f120daea5fafcfd729179b984ddb3a870f9d6d87\n",
+          "stderr": ""
+        }
+      },
+      "files": [
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/m3sof/settings/app.py",
+          "relative_path": "settings/app.py",
+          "exists": true,
+          "sha256": "948abc6a21fc9c2e79239fa647301fd556f16b3ac40234efce33ea46c2af2712",
+          "bytes": 343,
+          "blob": "22028021a84352fcf80bcf93dc42ed4d409f7fda"
+        },
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/m3sof/settings/env/default.py",
+          "relative_path": "settings/env/default.py",
+          "exists": true,
+          "sha256": "09d3c7f11abac2e9c8e69fe55e38beed911be59e8d8970a1456e8e734bd389e6",
+          "bytes": 8565,
+          "blob": "a979b73b23ca275da380818179817cbe618f090c"
+        },
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/m3sof/settings/env/prod.py",
+          "relative_path": "settings/env/prod.py",
+          "exists": true,
+          "sha256": "0846479b86adcc90cfa9dba2d1a6d9668a7fbf837013c0d5ca9ed30c2674aab7",
+          "bytes": 3878,
+          "blob": "02e40a9f9efebb6838ab271ebf1b279bdd814e56"
+        },
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/m3sof/settings/sof/TA_updto20240229_DBA.py",
+          "relative_path": "settings/sof/TA_updto20240229_DBA.py",
+          "exists": true,
+          "sha256": "9fbefaf49cc14c3a4b79395a31ca82977cac9471b45a619142ef8b8ed2e71700",
+          "bytes": 1563,
+          "blob": "f120daea5fafcfd729179b984ddb3a870f9d6d87"
+        }
+      ]
+    },
+    {
+      "name": "frame",
+      "path": "/dwdhome/fy/BASE_E6_2/mquant/frame",
+      "realpath": "/dwdhome/fy/BASE_E6_2/mquant/frame",
+      "old_baseline": null,
+      "old_baseline_reason": "ORDER 未为此依赖指定旧 SHA",
+      "commands": {
+        "toplevel": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/mquant/frame",
+            "rev-parse",
+            "--show-toplevel"
+          ],
+          "start": "2026-11-14T14:35:49.118898+00:00",
+          "end": "2026-11-14T14:35:49.132464+00:00",
+          "exit_code": 0,
+          "stdout": "/dwdhome/fy/BASE_E6_2/mquant/frame\n",
+          "stderr": ""
+        },
+        "head": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/mquant/frame",
+            "rev-parse",
+            "HEAD"
+          ],
+          "start": "2026-11-14T14:35:49.142933+00:00",
+          "end": "2026-11-14T14:35:49.158034+00:00",
+          "exit_code": 0,
+          "stdout": "4d0ff8f2640e07a8b9ff066c48114f451fca6cfe\n",
+          "stderr": ""
+        },
+        "branch": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/mquant/frame",
+            "symbolic-ref",
+            "--quiet",
+            "--short",
+            "HEAD"
+          ],
+          "start": "2026-11-14T14:35:49.170655+00:00",
+          "end": "2026-11-14T14:35:49.180058+00:00",
+          "exit_code": 0,
+          "stdout": "e6.2\n",
+          "stderr": ""
+        },
+        "status": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/mquant/frame",
+            "status",
+            "--short",
+            "--branch"
+          ],
+          "start": "2026-11-14T14:35:49.201885+00:00",
+          "end": "2026-11-14T14:35:49.359632+00:00",
+          "exit_code": 0,
+          "stdout": "## e6.2...origin/e6.2\n",
+          "stderr": ""
+        },
+        "worktrees": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/mquant/frame",
+            "worktree",
+            "list",
+            "--porcelain"
+          ],
+          "start": "2026-11-14T14:35:49.370561+00:00",
+          "end": "2026-11-14T14:35:49.381310+00:00",
+          "exit_code": 0,
+          "stdout": "worktree /dwdhome/fy/BASE_E6_2/mquant/frame\nHEAD 4d0ff8f2640e07a8b9ff066c48114f451fca6cfe\nbranch refs/heads/e6.2\n\n",
+          "stderr": ""
+        },
+        "remotes": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/mquant/frame",
+            "remote",
+            "-v"
+          ],
+          "start": "2026-11-14T14:35:49.393605+00:00",
+          "end": "2026-11-14T14:35:49.403434+00:00",
+          "exit_code": 0,
+          "stdout": "origin\thttps://gogs.dw/mquant/frame.git (fetch)\norigin\thttps://gogs.dw/mquant/frame.git (push)\n",
+          "stderr": ""
+        }
+      },
+      "files": [
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/mquant/frame/lang/frp/base.py",
+          "relative_path": "lang/frp/base.py",
+          "exists": true,
+          "bytes": 8048,
+          "sha256": "0618b4016c311c43623d7e902e0906a6aa4431910f0c0faef6cc13b0568d9275",
+          "git_blob_sha1": "7b78dd17f3f010174fddaef719a071b5c5f6bc62"
+        },
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/mquant/frame/lang/internal/base.py",
+          "relative_path": "lang/internal/base.py",
+          "exists": true,
+          "bytes": 76918,
+          "sha256": "46ce3b66b1fad388dd8511e368db788e72e81aad48f90cb61647d9b36a7961ca",
+          "git_blob_sha1": "ba207e4597a21e6686416a9f27da6ab09bbb7728"
+        },
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/mquant/frame/lang/internal/dao/frp/dba.py",
+          "relative_path": "lang/internal/dao/frp/dba.py",
+          "exists": true,
+          "bytes": 3271,
+          "sha256": "58f4932d959b93db6379368f8b51f49d55ca89315ff8dba8afa4e386a7b3bf55",
+          "git_blob_sha1": "672d9380f0b70a14030ee40537b576d8071c175c"
+        },
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/mquant/frame/core/store.py",
+          "relative_path": "core/store.py",
+          "exists": true,
+          "bytes": 21556,
+          "sha256": "0ef83eac77d73d6188f4f5508a6e58b28b2d583183b82ea080004e0fd120c3d6",
+          "git_blob_sha1": "8efcec33884c410a35064c2bcd6b0a9ecdbcd0ed"
+        }
+      ]
+    },
+    {
+      "name": "worker",
+      "path": "/dwdhome/fy/BASE_E6_2/mquant/worker",
+      "realpath": "/dwdhome/fy/BASE_E6_2/mquant/worker",
+      "old_baseline": null,
+      "old_baseline_reason": "ORDER 未为此依赖指定旧 SHA",
+      "commands": {
+        "toplevel": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/mquant/worker",
+            "rev-parse",
+            "--show-toplevel"
+          ],
+          "start": "2026-11-14T14:35:49.420440+00:00",
+          "end": "2026-11-14T14:35:49.434925+00:00",
+          "exit_code": 0,
+          "stdout": "/dwdhome/fy/BASE_E6_2/mquant/worker\n",
+          "stderr": ""
+        },
+        "head": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/mquant/worker",
+            "rev-parse",
+            "HEAD"
+          ],
+          "start": "2026-11-14T14:35:49.443829+00:00",
+          "end": "2026-11-14T14:35:49.459282+00:00",
+          "exit_code": 0,
+          "stdout": "da0475a9c7fa769c2db8c803a5376ff2cdf09e0d\n",
+          "stderr": ""
+        },
+        "branch": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/mquant/worker",
+            "symbolic-ref",
+            "--quiet",
+            "--short",
+            "HEAD"
+          ],
+          "start": "2026-11-14T14:35:49.468666+00:00",
+          "end": "2026-11-14T14:35:49.480771+00:00",
+          "exit_code": 0,
+          "stdout": "e6.2\n",
+          "stderr": ""
+        },
+        "status": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/mquant/worker",
+            "status",
+            "--short",
+            "--branch"
+          ],
+          "start": "2026-11-14T14:35:49.487577+00:00",
+          "end": "2026-11-14T14:35:49.670771+00:00",
+          "exit_code": 0,
+          "stdout": "## e6.2...origin/e6.2\n M __init__.py\n M params/__init__.py\n M params/cae/__init__.py\n M params/cae/nodes/ScaleTurnCAEGraph.py\n M params/cae/nodes/__init__.py\n?? params/cae/nodes/RecoveredStandardizedHFCAEGraph.py\n",
+          "stderr": ""
+        },
+        "worktrees": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/mquant/worker",
+            "worktree",
+            "list",
+            "--porcelain"
+          ],
+          "start": "2026-11-14T14:35:49.685647+00:00",
+          "end": "2026-11-14T14:35:49.695677+00:00",
+          "exit_code": 0,
+          "stdout": "worktree /dwdhome/fy/BASE_E6_2/mquant/worker\nHEAD da0475a9c7fa769c2db8c803a5376ff2cdf09e0d\nbranch refs/heads/e6.2\n\n",
+          "stderr": ""
+        },
+        "remotes": {
+          "command": [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            "/dwdhome/fy/BASE_E6_2/mquant/worker",
+            "remote",
+            "-v"
+          ],
+          "start": "2026-11-14T14:35:49.704111+00:00",
+          "end": "2026-11-14T14:35:49.714213+00:00",
+          "exit_code": 0,
+          "stdout": "origin\thttps://gogs.dw/mquant/worker.git (fetch)\norigin\thttps://gogs.dw/mquant/worker.git (push)\n",
+          "stderr": ""
+        }
+      },
+      "files": [
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/mquant/worker/adt/dbaw.py",
+          "relative_path": "adt/dbaw.py",
+          "exists": true,
+          "bytes": 113663,
+          "sha256": "d6a58f6cb6595461ead45bb08c002826856bcacaab9e50c0e62cd45d76e7e4f2",
+          "git_blob_sha1": "496e92aa412a169ff7cbb2d73affffed9f1f6380"
+        },
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/mquant/worker/adt/__init__.py",
+          "relative_path": "adt/__init__.py",
+          "exists": true,
+          "bytes": 3493,
+          "sha256": "477037bc6d1b3db5caf239dee1768b72bcfe24d111f5945d2e6ff230a5c392ec",
+          "git_blob_sha1": "8ed8f1e7700616d081e2677e500097ad43a2bf81"
+        }
+      ]
+    }
+  ],
+  "base_is_repo": false,
+  "base_is_repo_reason": "BASE 无自身 .git；BASE/tis 的 rev-parse 归属 /dwdhome/fy uplot，真实 TIS 是 BASE/mquant/tis",
+  "runtime_tuple": null,
+  "runtime_tuple_reason": "checkout 已查明；现有物化为 P1Wall*Storage 历史 schema，产品 code receipt 缺失、generated wrapper 缺类型；未运行、未把现有二进制绑定到 HEAD",
+  "scope_deviation": {
+    "command": "git -C BASE/tis status --short --branch",
+    "reason": "未先据 toplevel 拒绝上层无关仓库，意外列出无关父级未跟踪名字；仅元数据、未读内容，无后续扩搜"
+  },
+  "pinned_input_checks": [
+    {
+      "command": [
+        "git",
+        "--no-optional-locks",
+        "-C",
+        "/dwdhome/fy/cgpterm/artifacts/oi-eaw-wall/OI-EAW-WALL-20261114-01/observe-iterate",
+        "show",
+        "cdec293a4bfdac85ca4ab3171f9eeb083a338493:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D001/DELEGATION.md"
+      ],
+      "start": "2026-11-14T14:35:49.726831+00:00",
+      "end": "2026-11-14T14:35:49.770556+00:00",
+      "exit_code": 0,
+      "sha256": "de7407da8cec044c14d7a8328993ab7e36a6f136dd3c79ff46aabc4c18f64f17",
+      "matches_local_mirror": true,
+      "reason": null,
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "--no-optional-locks",
+        "-C",
+        "/dwdhome/fy/cgpterm/artifacts/oi-eaw-wall/OI-EAW-WALL-20261114-01/observe-iterate",
+        "show",
+        "ca7fdae84f65265332e3a53865724a2615508766:task-inputs/eaw-p1-wall-lifecycle/FEATURE_CONTEXT.md"
+      ],
+      "start": "2026-11-14T14:35:49.785448+00:00",
+      "end": "2026-11-14T14:35:49.800984+00:00",
+      "exit_code": 0,
+      "sha256": "acf114c7060ad1dde8e93a389b2d506166f9e0d71c61d6895562ebc6edec4fd5",
+      "matches_local_mirror": true,
+      "reason": null,
+      "stderr": ""
+    }
+  ],
+  "additional_related_file_hashes": [
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/pydim/dim/rt.py",
+      "bytes": 6940,
+      "sha256": "60d9cae0ffbf577462c6e6ffe7f8fda31d1e6224f48faf82ef8f29104d7296d4",
+      "git_blob_sha1_of_worktree_bytes": "f10f3038576afb20a3f2dd2b1bae310c19b19baf"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/pydim/dim/dbas.py",
+      "bytes": 6090,
+      "sha256": "c1630c44f8290d491124867bd1735c26783e7a3ee07077aa0033fcf1d4f2e587",
+      "git_blob_sha1_of_worktree_bytes": "126f242e2d13526061e4f04cace3daf8931b4fbb"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/mquant/tis/hf/prel0/p1_product_receipt.py",
+      "bytes": 15409,
+      "sha256": "6ded1b833d52822fc2a7fecb92e4a46454d4f460ae828162edfda3b542f01c2c",
+      "git_blob_sha1_of_worktree_bytes": "3c8d2b3d996d2c57dc250291da36485dae7b07d4"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/mquant/tis/hf/prel0/p1_dba_export.py",
+      "bytes": 25004,
+      "sha256": "0f5f6a72581b0c872426835cc324dad0fa5bae51fbd422fd917a70ada54c0ca4",
+      "git_blob_sha1_of_worktree_bytes": "426514fed0e7bfb9586fcf9156bd4bc28acc9ef5"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/mquant/tis/hf/prel0/wall_assembler_core.py",
+      "bytes": 59508,
+      "sha256": "986df9da43418977bee1eb44cc64d3fbf21ec448f791c5c950e9eed67a712409",
+      "git_blob_sha1_of_worktree_bytes": "b2e179fc1daf11f993a840f011dfb3cce9843af3"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/mquant/tis/test/integration/verify_eaw_p1_real_run.py",
+      "bytes": 29885,
+      "sha256": "e8710fe072bbab029233c7835f3db8b392b7a38e93c35b7c67777d7b4762ba3c",
+      "git_blob_sha1_of_worktree_bytes": "d27940388368ccd76ab33ccbc99c68e5bfc49703"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/mquant/tis/test/integration/fixtures/eaw_p1_real_run.example.json",
+      "bytes": 379,
+      "sha256": "84434a023590ccfcc892f66f1039d6c86bbcbdd25487976795fa7fa3f3df3230",
+      "git_blob_sha1_of_worktree_bytes": "b288de14ecf44779145ab74132a941648006a0cc"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/dbaw/Main.hs",
+      "bytes": 4134,
+      "sha256": "02bd5aa59195bf02ed989ac7fa497887137ea772957281c1539aacb987d96c4e",
+      "git_blob_sha1_of_worktree_bytes": "d799451beca9979b123f52199fd794f968e6781c"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp-core/src/Frp/Core/Fao/Class.hs",
+      "bytes": 43206,
+      "sha256": "2c47b99ff1593e873e0974af8795effaec0a4765250e63e0b64c7596c89965f6",
+      "git_blob_sha1_of_worktree_bytes": "094805cb313dd4b171572f46652ad43f91b27acc"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp-core/src/Frp/Core/Fao/Store/Class.hs",
+      "bytes": 17226,
+      "sha256": "ab8cddeaabe89704ba25ddcb0a7a84c492cb0313cb46bc89843a3901d87eaad5",
+      "git_blob_sha1_of_worktree_bytes": "96b5b6fcedfae5bf2f2831a2c3c1aba1bc660955"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp-core/src/Frp/Apt/Time.hs",
+      "bytes": 7633,
+      "sha256": "8ef99eb49138286a625e42877b697cd6cd635858c6c18e2a702f0bd1fc9cdb33",
+      "git_blob_sha1_of_worktree_bytes": "87e61f837e1debba0b634961ecfe0e11c5636f10"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/m3sof/settings/json.py",
+      "bytes": 529,
+      "sha256": "c27f585e8f5dbbb20e609e0231b73de631c2f3e626f0f55428b7010dd1469f95",
+      "git_blob_sha1_of_worktree_bytes": "5eba445f10d7916a3a454ea2d44ecdbf06fb83d8"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/m3sof/settings/lib3.py",
+      "bytes": 529,
+      "sha256": "f5df905909045fe5c3b7ed619b0601ffb6e32f994aefb590c568eb58370a6e4d",
+      "git_blob_sha1_of_worktree_bytes": "107d2da3641a62bb6c613469f3f4026882b2299d"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/config.yml",
+      "bytes": 570,
+      "sha256": "6fa1693d8f96646a2dde80dbfda4c37119692addd341b8a19d40a93233c9556b",
+      "git_blob_sha1_of_worktree_bytes": "36faf307997f6328b3e31a043da1e7a911dbe31b"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/run-python.sh",
+      "bytes": 1325,
+      "sha256": "417ac56aa0b2b2af96771fc435c00bc7b92a4284bc0e25bf9320abdb7482cd67",
+      "git_blob_sha1_of_worktree_bytes": "d301bfe81f0d4b952859e8708cdb0a18b0356e7c"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/m3rc",
+      "bytes": 2959,
+      "sha256": "82cfb457188994aa7482ad884dc64b69a54ecddf3f1bd553cad7c816403f46e0",
+      "git_blob_sha1_of_worktree_bytes": "bc1cf34a02035aff9e9dcc4124182a578ab9aa48"
+    }
+  ],
+  "final_readonly_audit": {
+    "checked_at_utc": "2026-11-14T14:45:12.892955+00:00",
+    "all_relevant_heads_and_statuses_unchanged": true,
+    "source_file_hashes_unchanged": true,
+    "repos": [
+      {
+        "repo": "frp",
+        "path": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp",
+        "head_and_status_unchanged": true,
+        "current": {
+          "head": {
+            "command": [
+              "git",
+              "--no-optional-locks",
+              "-C",
+              "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp",
+              "rev-parse",
+              "HEAD"
+            ],
+            "start": "2026-11-14T14:45:02.865243+00:00",
+            "end": "2026-11-14T14:45:02.936601+00:00",
+            "exit_code": 0,
+            "stdout": "cac6c912dd65a14acbd591ca57e0afd8ddb4ef13\n",
+            "stderr": ""
+          },
+          "status": {
+            "command": [
+              "git",
+              "--no-optional-locks",
+              "-C",
+              "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp",
+              "status",
+              "--short",
+              "--branch"
+            ],
+            "start": "2026-11-14T14:45:03.026868+00:00",
+            "end": "2026-11-14T14:45:06.055561+00:00",
+            "exit_code": 0,
+            "stdout": "## eaw/p123-integration-20260820\n M src/Frp/Instance/BussinessUtils.hs\n",
+            "stderr": ""
+          }
+        }
+      },
+      {
+        "repo": "frp-core",
+        "path": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp-core",
+        "head_and_status_unchanged": true,
+        "current": {
+          "head": {
+            "command": [
+              "git",
+              "--no-optional-locks",
+              "-C",
+              "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp-core",
+              "rev-parse",
+              "HEAD"
+            ],
+            "start": "2026-11-14T14:45:06.090617+00:00",
+            "end": "2026-11-14T14:45:06.111736+00:00",
+            "exit_code": 0,
+            "stdout": "d3153e085cd0d99d86876b73aeb1d05497638f80\n",
+            "stderr": ""
+          },
+          "status": {
+            "command": [
+              "git",
+              "--no-optional-locks",
+              "-C",
+              "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp-core",
+              "status",
+              "--short",
+              "--branch"
+            ],
+            "start": "2026-11-14T14:45:06.132308+00:00",
+            "end": "2026-11-14T14:45:07.269466+00:00",
+            "exit_code": 0,
+            "stdout": "## e6.2...origin/e6.2\n",
+            "stderr": ""
+          }
+        }
+      },
+      {
+        "repo": "mpds",
+        "path": "/dwdhome/fy/BASE_E6_2/edh-universe/mpds",
+        "head_and_status_unchanged": true,
+        "current": {
+          "head": {
+            "command": [
+              "git",
+              "--no-optional-locks",
+              "-C",
+              "/dwdhome/fy/BASE_E6_2/edh-universe/mpds",
+              "rev-parse",
+              "HEAD"
+            ],
+            "start": "2026-11-14T14:45:07.290551+00:00",
+            "end": "2026-11-14T14:45:07.312734+00:00",
+            "exit_code": 0,
+            "stdout": "26245696c1cdcd7c1b0202e00c998ef7f55ee0b0\n",
+            "stderr": ""
+          },
+          "status": {
+            "command": [
+              "git",
+              "--no-optional-locks",
+              "-C",
+              "/dwdhome/fy/BASE_E6_2/edh-universe/mpds",
+              "status",
+              "--short",
+              "--branch"
+            ],
+            "start": "2026-11-14T14:45:07.328626+00:00",
+            "end": "2026-11-14T14:45:08.072604+00:00",
+            "exit_code": 0,
+            "stdout": "## 6.2...origin/6.2\n",
+            "stderr": ""
+          }
+        }
+      },
+      {
+        "repo": "hasdim",
+        "path": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/hasdim",
+        "head_and_status_unchanged": true,
+        "current": {
+          "head": {
+            "command": [
+              "git",
+              "--no-optional-locks",
+              "-C",
+              "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/hasdim",
+              "rev-parse",
+              "HEAD"
+            ],
+            "start": "2026-11-14T14:45:08.097385+00:00",
+            "end": "2026-11-14T14:45:08.127198+00:00",
+            "exit_code": 0,
+            "stdout": "43c11e34822a4877e83a8316fbd6051499805d3f\n",
+            "stderr": ""
+          },
+          "status": {
+            "command": [
+              "git",
+              "--no-optional-locks",
+              "-C",
+              "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/hasdim",
+              "status",
+              "--short",
+              "--branch"
+            ],
+            "start": "2026-11-14T14:45:08.172386+00:00",
+            "end": "2026-11-14T14:45:09.250627+00:00",
+            "exit_code": 0,
+            "stdout": "## master...origin/master\n",
+            "stderr": ""
+          }
+        }
+      },
+      {
+        "repo": "m3",
+        "path": "/dwdhome/fy/BASE_E6_2/m3",
+        "head_and_status_unchanged": true,
+        "current": {
+          "head": {
+            "command": [
+              "git",
+              "--no-optional-locks",
+              "-C",
+              "/dwdhome/fy/BASE_E6_2/m3",
+              "rev-parse",
+              "HEAD"
+            ],
+            "start": "2026-11-14T14:45:09.266882+00:00",
+            "end": "2026-11-14T14:45:09.289986+00:00",
+            "exit_code": 0,
+            "stdout": "62dddc5f6ad9247eb4508867117a570b6573584d\n",
+            "stderr": ""
+          },
+          "status": {
+            "command": [
+              "git",
+              "--no-optional-locks",
+              "-C",
+              "/dwdhome/fy/BASE_E6_2/m3",
+              "status",
+              "--short",
+              "--branch"
+            ],
+            "start": "2026-11-14T14:45:09.304821+00:00",
+            "end": "2026-11-14T14:45:11.362555+00:00",
+            "exit_code": 0,
+            "stdout": "## new_ver...origin/new_ver\n?? mts/rebuild-prod\n?? perfp/rebuild-prod\n",
+            "stderr": ""
+          }
+        }
+      },
+      {
+        "repo": "pydim",
+        "path": "/dwdhome/fy/BASE_E6_2/pydim",
+        "head_and_status_unchanged": true,
+        "current": {
+          "head": {
+            "command": [
+              "git",
+              "--no-optional-locks",
+              "-C",
+              "/dwdhome/fy/BASE_E6_2/pydim",
+              "rev-parse",
+              "HEAD"
+            ],
+            "start": "2026-11-14T14:45:11.391740+00:00",
+            "end": "2026-11-14T14:45:11.411237+00:00",
+            "exit_code": 0,
+            "stdout": "0dbe020a29f0bb1f7a37fae2cfa0a64827350fc8\n",
+            "stderr": ""
+          },
+          "status": {
+            "command": [
+              "git",
+              "--no-optional-locks",
+              "-C",
+              "/dwdhome/fy/BASE_E6_2/pydim",
+              "status",
+              "--short",
+              "--branch"
+            ],
+            "start": "2026-11-14T14:45:11.426555+00:00",
+            "end": "2026-11-14T14:45:11.466542+00:00",
+            "exit_code": 0,
+            "stdout": "## master...origin/master\n?? dim/rt.bak\n",
+            "stderr": ""
+          }
+        }
+      },
+      {
+        "repo": "tis",
+        "path": "/dwdhome/fy/BASE_E6_2/mquant/tis",
+        "head_and_status_unchanged": true,
+        "current": {
+          "head": {
+            "command": [
+              "git",
+              "--no-optional-locks",
+              "-C",
+              "/dwdhome/fy/BASE_E6_2/mquant/tis",
+              "rev-parse",
+              "HEAD"
+            ],
+            "start": "2026-11-14T14:45:11.480025+00:00",
+            "end": "2026-11-14T14:45:11.501565+00:00",
+            "exit_code": 0,
+            "stdout": "ef887396e0a06d6e75be47efee0f1985ad7988a3\n",
+            "stderr": ""
+          },
+          "status": {
+            "command": [
+              "git",
+              "--no-optional-locks",
+              "-C",
+              "/dwdhome/fy/BASE_E6_2/mquant/tis",
+              "status",
+              "--short",
+              "--branch"
+            ],
+            "start": "2026-11-14T14:45:11.513572+00:00",
+            "end": "2026-11-14T14:45:11.992037+00:00",
+            "exit_code": 0,
+            "stdout": "## eaw/p123-integration-20260820\n M frpExample/STCalendar.py\n",
+            "stderr": ""
+          }
+        }
+      },
+      {
+        "repo": "m3sof",
+        "path": "/dwdhome/fy/BASE_E6_2/m3sof",
+        "head_and_status_unchanged": true,
+        "current": {
+          "head": {
+            "command": [
+              "git",
+              "--no-optional-locks",
+              "-C",
+              "/dwdhome/fy/BASE_E6_2/m3sof",
+              "rev-parse",
+              "HEAD"
+            ],
+            "start": "2026-11-14T14:45:12.036950+00:00",
+            "end": "2026-11-14T14:45:12.062942+00:00",
+            "exit_code": 0,
+            "stdout": "f2d5b316b2d323c6344778f22561d56d258d252b\n",
+            "stderr": ""
+          },
+          "status": {
+            "command": [
+              "git",
+              "--no-optional-locks",
+              "-C",
+              "/dwdhome/fy/BASE_E6_2/m3sof",
+              "status",
+              "--short",
+              "--branch"
+            ],
+            "start": "2026-11-14T14:45:12.079901+00:00",
+            "end": "2026-11-14T14:45:12.158375+00:00",
+            "exit_code": 0,
+            "stdout": "## codex/aidata-csv-feature-smoke-20261019\n M __init__.py\n M core/__init__.py\n M settings/app.py\n M settings/env/default.py\n M settings/env/dev.py\n M settings/env/prod.py\n M settings/env/test.py\n M settings/sof/CTP.py\n?? settings/.ipynb_checkpoints/\n?? settings/env/.ipynb_checkpoints/\n?? settings/sof/.ipynb_checkpoints/\n?? settings/sof/GTQH_L1_20210104_20240208.py\n?? settings/sof/GTQH_L1_20210104_20240229.py\n",
+            "stderr": ""
+          }
+        }
+      },
+      {
+        "repo": "frame",
+        "path": "/dwdhome/fy/BASE_E6_2/mquant/frame",
+        "head_and_status_unchanged": true,
+        "current": {
+          "head": {
+            "command": [
+              "git",
+              "--no-optional-locks",
+              "-C",
+              "/dwdhome/fy/BASE_E6_2/mquant/frame",
+              "rev-parse",
+              "HEAD"
+            ],
+            "start": "2026-11-14T14:45:12.181419+00:00",
+            "end": "2026-11-14T14:45:12.200708+00:00",
+            "exit_code": 0,
+            "stdout": "4d0ff8f2640e07a8b9ff066c48114f451fca6cfe\n",
+            "stderr": ""
+          },
+          "status": {
+            "command": [
+              "git",
+              "--no-optional-locks",
+              "-C",
+              "/dwdhome/fy/BASE_E6_2/mquant/frame",
+              "status",
+              "--short",
+              "--branch"
+            ],
+            "start": "2026-11-14T14:45:12.210775+00:00",
+            "end": "2026-11-14T14:45:12.335198+00:00",
+            "exit_code": 0,
+            "stdout": "## e6.2...origin/e6.2\n",
+            "stderr": ""
+          }
+        }
+      },
+      {
+        "repo": "worker",
+        "path": "/dwdhome/fy/BASE_E6_2/mquant/worker",
+        "head_and_status_unchanged": true,
+        "current": {
+          "head": {
+            "command": [
+              "git",
+              "--no-optional-locks",
+              "-C",
+              "/dwdhome/fy/BASE_E6_2/mquant/worker",
+              "rev-parse",
+              "HEAD"
+            ],
+            "start": "2026-11-14T14:45:12.349818+00:00",
+            "end": "2026-11-14T14:45:12.370893+00:00",
+            "exit_code": 0,
+            "stdout": "da0475a9c7fa769c2db8c803a5376ff2cdf09e0d\n",
+            "stderr": ""
+          },
+          "status": {
+            "command": [
+              "git",
+              "--no-optional-locks",
+              "-C",
+              "/dwdhome/fy/BASE_E6_2/mquant/worker",
+              "status",
+              "--short",
+              "--branch"
+            ],
+            "start": "2026-11-14T14:45:12.379722+00:00",
+            "end": "2026-11-14T14:45:12.804946+00:00",
+            "exit_code": 0,
+            "stdout": "## e6.2...origin/e6.2\n M __init__.py\n M params/__init__.py\n M params/cae/__init__.py\n M params/cae/nodes/ScaleTurnCAEGraph.py\n M params/cae/nodes/__init__.py\n?? params/cae/nodes/RecoveredStandardizedHFCAEGraph.py\n",
+            "stderr": ""
+          }
+        }
+      }
+    ]
+  }
+}

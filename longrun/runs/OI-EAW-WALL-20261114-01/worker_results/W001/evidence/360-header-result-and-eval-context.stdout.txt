@@ -1,0 +1,151 @@
+HEADER_COMMAND {
+  "label": "340-headers-only",
+  "command": [
+    "/usr/bin/python3",
+    "-B",
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/commands/340-headers-only.py"
+  ],
+  "cwd": "/dwdhome/fy/BASE_E6_2",
+  "started_at_utc": "2026-11-14T14:26:23.055351+00:00",
+  "ended_at_utc": "2026-11-14T14:26:58.207942+00:00",
+  "exit_code": 124,
+  "timed_out": true,
+  "stdout_path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/evidence/340-headers-only.stdout.txt",
+  "stderr_path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/evidence/340-headers-only.stderr.txt",
+  "stdout_bytes": 0,
+  "stderr_bytes": 0
+}
+
+HEADER_JSON_EXISTS False
+FILE /dwdhome/fy/BASE_E6_2/mquant/frame/core/base/json.py
+1: import numpy as np
+2: import hbi
+3: from typing import Callable,Union
+4: 
+5: from ...lib3 import is_float
+6: from .internal import HasPropertyFunc, HasPPDict, Ndict, ppshow, CurrFaoRepr
+7: 
+8: __all__ = [
+9:     "enjson",
+10:     "enjson2",
+11:     "dejson",
+12:     "dejson2",
+13:     "eval2",
+14:     "EvalCtx",
+15:     "StringFn",
+16: ]
+17: 
+18: 
+19: def enjson(ips, enlist=True, ennone=True):
+20:     """
+21:     Author: King
+22:     Since : 2022-08-04 14:07
+23:     Desc  :
+24:         - 字典参数跨平台 json 转换
+25:         - 将不是字符串或者数字的值,前后加*转换为字符串
+26:     Params:
+27:        enlist: list列表是否加*转换
+28:        ennone: None 值是否加*转换
+29:     """
+30: 
+31:     def go(value):
+32:         if isinstance(value, dict):
+33:             return {k: go(v) for k, v in value.items()}
+34:         # list 也加**，因为csv不认识list
+35: 
+36:         if not enlist:
+37:             if isinstance(value, list):
+38:                 return [go(v) for v in value]
+39: 
+40:             if isinstance(value, tuple):
+41:                 return tuple([go(v) for v in value])
+42: 
+43:         if not ennone and value is None:
+44:             return value
+45: 
+46:         if isinstance(value, float) and not np.isfinite(value):
+47:             return f"*{value}*"
+48:         if isinstance(value, (str, int, float, bool)) or is_float(str(value)):
+49:             return value
+50:         return f"*{value}*"
+51: 
+52:     with CurrFaoRepr(): # 特征对象只显示输入参数
+53:         if isinstance(ips, dict):
+54:             return {k: go(v) for k, v in Ndict.fold(ips).items()}
+55:         if isinstance(ips, HasPPDict):
+56:             return f"*{ips.__class__.__name__}({ppshow(ips.ppdict)})*"
+57:         if isinstance(ips,(list,tuple)):
+58:             return [go(v) for v in ips]
+59:         return f"*{ips}*"
+60: 
+61: 
+62: def enjson2(ips):
+63:     """
+64:     Author: King
+65:     Since : 2022-08-04 14:10
+66:     Desc  :
+67:         - list列表,None不转换
+68:     """
+69:     return enjson(ips, False, False)
+70: 
+71: 
+72: class _EvalCtx:
+73:     __slots__ = ["_json_ctx"]
+74: 
+75:     def __init__(self):
+76:         self._json_ctx = None
+77: 
+78:     @property
+79:     def json_ctx(self):
+80:         if self._json_ctx is None:
+81:             import importlib
+82: 
+83:             self._json_ctx = importlib.import_module("m3sof.settings.json")
+84:         return self._json_ctx
+85: 
+86:     @property
+87:     def tis_ctx(self):
+88:         return self.json_ctx
+89: 
+90:     def tis_vars(self, other=None):
+FILE /dwdhome/fy/BASE_E6_2/mquant/frame/core/__init__.py
+1: 
+2: __all__ = [
+3: 
+4:     # exports from .app
+5:     'CurrFaoCache', 'FaoResultManager', 'KwMeta', 'CurrFaoCache',
+6:     'FaoCacheMeta', 'StraApp', 'CurrCalType', 'StraEnv', 'CurrSof',
+7:     'CurrTrial', 'Proxy', 'CalType', 'opt_date_range', 'FaoUtil',
+8: 
+9:     # exports from .base
+10:     'COND', 'XParam', 'FnClass', 'Free', 'SelfFree', 'UnFree', 'Hidden', 'Doc',
+11:     'MQuantException', 'KDataException', 'FaoRunException', 'NoValue',
+12:     'HasGGDict', 'HasPPDict', 'HasPPStr', 'HasCreate', 'HasPropertyVal',
+13:     'HasPropertyFunc', 'GeneralCache', 'CurrFaoRepr', 'DefaceUtil', 'Ndict',
+14:     'DefaceDict', 'LikeDict', 'XDict', 'ppshow', 'pprint', 'enjson', 'enjson2',
+15:     'dejson', 'dejson2', 'eval2', 'EvalCtx', 'StringFn', 'get_mlogger',
+16:     'CurrMquantLogger', 'StraLogger', 'LoggingMixIn', 'fieldSuffixLag0',
+17:     'FieldUtil', 'FreqUtil', 'size', 'ParamsIterator', 'GPRange', 'VsGPRange',
+18:     'glist', 'grange', 'gaxis', 'gbox', 'gkwargs', 'gaxis4step', 'gaxis4ratio',
+19:     'plist', 'prange', 'paxis', 'pbox', 'pkwargs', 'paxis4step', 'paxis4ratio',
+20:     'OPRange', 'OPIterator', 'NoIterMixIn', 'pproduct', 'StringFao',
+21:     'SHARE_REF', 'PARAMS_PR', 'SHARE_PR', 'GSHARE_PR', 'PPShare', 'TrierCode',
+22: 
+23:     # exports from .data
+24:     'KDataLoader', 'MulKDataLoader',
+25: 
+26:     # exports from .store
+27:     'TS_PATH_NAME', 'StoreFields', 'FaoField', 'DataFrameField', 'DictField',
+28:     'NormalField', 'FloatField', 'IntField', 'DateTimeField', 'EventField',
+29:     'BoolEventField', 'NanEventField', 'Nan0EventField', 'StatusEventField',
+30:     'StatusBoolEventField', 'SharedTsField', 'MvField', 'AdtEventField',
+31:     'DbaUtil',
+32: 
+33: ]
+34: 
+35: from .app import *
+36: from .base import *
+37: from .data import *
+38: from .store import *
+DIR /dwdhome/fy/BASE_E6_2/mquant/apt ['.git', '.git_back', '.gitignore', 'CHANGELOG.md', 'README.md', '__init__.py', '__pycache__', 'data', 'pretty-exports.py', 'tool']
+DIR /dwdhome/fy/BASE_E6_2/mquant/frame/lang/internal/ext ['__init__.py', '__pycache__', 'arr.py', 'chain.py', 'df.py', 'merge.py', 'pattern.py']

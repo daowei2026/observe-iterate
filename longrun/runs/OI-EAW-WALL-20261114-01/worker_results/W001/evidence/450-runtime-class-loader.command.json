@@ -1,0 +1,22 @@
+{
+  "label": "450-runtime-class-loader",
+  "command": [
+    "rg",
+    "-n",
+    "--max-count",
+    "22",
+    "def load_class|dbaw|DBAW|wrapper|generated|define_class|fao_.*py|class_path|load_cls",
+    "mquant/frame/core/app",
+    "mquant/worker/lib3.py",
+    "mquant/worker/__init__.py"
+  ],
+  "cwd": "/dwdhome/fy/BASE_E6_2",
+  "started_at_utc": "2026-11-14T14:30:52.370667+00:00",
+  "ended_at_utc": "2026-11-14T14:30:52.485822+00:00",
+  "exit_code": 0,
+  "timed_out": false,
+  "stdout_path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/evidence/450-runtime-class-loader.stdout.txt",
+  "stderr_path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/evidence/450-runtime-class-loader.stderr.txt",
+  "stdout_bytes": 58,
+  "stderr_bytes": 0
+}

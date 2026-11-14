@@ -1,0 +1,421 @@
+FILE /dwdhome/fy/BASE_E6_2/mquant/frame/core/base/json.py
+90:     def tis_vars(self, other=None):
+91:         res = vars(self.tis_ctx)
+92:         if other:
+93:             res.update(other)
+94:         return res
+95: 
+96: 
+97: EvalCtx = _EvalCtx()
+98: 
+99: 
+100: def dejson(ips:Union[dict,str]):
+101:     """
+102:     如果value的值前后有*,则去掉后eval
+103: 
+104:     一般用于从csv或者数据库读取的参数,通过enjson后的参数，eval回原有的类型
+105:     """
+106:     def go(v):
+107:         if isinstance(v, str):
+108:             if v.startswith("*") and v.endswith("*"):
+109:                 return hbi.run_in_context(v[1:-1], vars(EvalCtx.json_ctx))
+110:             return v
+111:         if isinstance(v, dict):
+112:             return {k1: go(v1) for k1, v1 in v.items()}
+113:         if isinstance(v, list):
+114:             return [go(v1) for v1 in v]
+115:         return v
+116:     
+117:     if isinstance(ips,str):
+118:         ips = eval2(ips)
+119: 
+120:     assert isinstance(ips, dict), f"dejson ips:{ips} is not dict"
+121:     return {k: go(v) for k, v in ips.items()} if isinstance(ips, dict) else ips
+122: 
+123: 
+124: def dejson2(ips):
+125:     """
+126:     如果value的值前后有*,则去掉后eval
+127: 
+128:     一般用于从csv或者数据库读取的参数,通过enjson后的参数，eval回原有的类型
+129:     """
+130:     def go(v):
+131:         if isinstance(v, str):
+132:             if v.startswith("*") and v.endswith("*"):
+133:                 return hbi.run_in_context(v[1:-1], vars(EvalCtx.json_ctx))
+134:             # 处理老版本list未处理的情况
+135:             if v.startswith("[") and v.endswith("]"):
+136:                 return hbi.run_in_context(v, vars(EvalCtx.json_ctx))
+137:             return v
+138:         if isinstance(v, dict):
+139:             return {k1: go(v1) for k1, v1 in v.items()}
+140:         if isinstance(v, list):
+141:             return [go(v1) for v1 in v]
+142:         return v
+143: 
+144:     return {k: go(v) for k, v in ips.items()} if isinstance(ips, dict) else ips
+145: 
+146: 
+147: def eval2(s: str,**defs):
+148:     vs = vars(EvalCtx.json_ctx)
+149:     return hbi.run_in_context(s, vs,defs)
+150: 
+151: 
+152: class StringFn(HasPropertyFunc):
+153:     """
+154:     Author: King
+155:     Since : 2022-09-06 17:04
+156:     Desc  :
+157:         - 字符串形式实现lambda函数，可以作为特征类的参数
+158:         - 注意字符串中的空格等都会影响参数路径,请统一按照格式规范书写
+159:     Params:
+160:        code: lambda 函数代码字符串
+161:     Example:
+162:         >>> StringFn("lambda x:x > 0")
+163:     """
+164: 
+165:     __slots__ = ["code"]
+FILE /dwdhome/fy/BASE_E6_2/mquant/frame/core/store.py
+750:     StatusEventField = StatusEventField
+751:     StatusBoolEventField = StatusBoolEventField
+752: 
+753: 
+754: class DbaUtil:
+755:     """ dba 读写工具类 """
+756: 
+757:     @classmethod
+758:     def dbarray(
+759:         cls, full_dir, file_name, dt=f8, shape=None, access=mmap.ACCESS_READ
+760:     ) -> DbArray:
+761:         bwrite = access == mmap.ACCESS_WRITE
+762:         if bwrite:
+763:             file_path = f"{full_dir}/{file_name}.dba"
+764: 
+765:             temp_file_name = f"{file_name}_{uuid.uuid1()}"
+766:             temp_path = f"{full_dir}/{temp_file_name}.dba"
+767: 
+768:             res = DbArray(full_dir, temp_file_name, dt, shape, access=access)
+769:             
+770:             if hasattr(res,"flush"):
+771:                 res.flush()
+772: 
+773:             os.rename(temp_path, file_path)
+774:             return res
+775:         return DbArray(full_dir, file_name, dt, shape, access=access)
+776: 
+777:     @classmethod
+778:     def read_ndarray(cls, full_dir,file_name, dt=f8):
+779:         return cls.dbarray(
+780:             full_dir,file_name, dt, shape=None, access=mmap.ACCESS_READ
+781:         ).ndarray
+782: 
+783:     @classmethod
+784:     def write_array(cls, full_dir,file_name, dt=f8, shape=None) -> "DbArray":
+785:         return cls.dbarray(
+786:             full_dir, file_name, dt, shape, access=mmap.ACCESS_WRITE
+787:         )
+788: 
+789:     @classmethod
+790:     def read_field_ts(cls, full_dir,field:str=None,is_event:bool=False,key:str = None):
+791:         """ 读取字段时间轴 
+792:         key 不为None，表示两层，如 Datarame 型特征
+793:         """
+794:         tsPath = None
+795:         if is_event:
+796:             tsPath = f"{key}.{field}.{TS_PATH_NAME}" if key else f"{field}.{TS_PATH_NAME}"
+797:         else:
+798:             tsPath = f"{key}.{TS_PATH_NAME}" if key else TS_PATH_NAME
+799:         return DbaUtil.read_ndarray(full_dir, tsPath, "M8[ns]")
+800: 
+801:     @classmethod
+802:     def dump(cls, df:pd.DataFrame, full_dir:str, flds: DictField):
+803:         """
+804:         Author: King
+805:         Since : 2024-08-26 15:53
+806:         Desc  :
+807:             - 事件型字段一个字段保存一个时间轴
+808:             - 所有Bar型字段保存一个时间周期
+809:         """
+810:         hasBar = False
+811:         for field, fld in flds.items():
+812:             ds = fld.fit_df(df[field])
+813:             n = ds.shape[0]
+814: 
+815:             val = cls.write_array(full_dir, field, fld.dtype, n)
+816:             val.len1d = n
+817:             val.ndarray[:] = ds.values
+818: 
+819:             # 事件型需要保存自己的时间轴
+820:             if fld.is_event_field():
+FILE /dwdhome/fy/BASE_E6_2/mquant/frame/core/base/app.py
+1: import enum, functools
+2: from typing import Any, Optional, Callable
+3: from ...lib3 import deprecated
+4: from .internal import HasPropertyVal, HasPropertyFunc, HasCreate, Ndict
+5: 
+6: __all__ = [
+7:     "COND",
+8:     "XParam",
+9:     "FnClass",
+10:     "Free",
+11:     "SelfFree",
+12:     "UnFree",
+13:     "Hidden",
+14: ]
+15: 
+16: 
+17: class CondMagic:
+18:     """m3 中 CASE 语法糖的分解版"""
+19: 
+20:     __slots__ = ()
+21: 
+22:     def __getitem__(self, item):
+23:         if not isinstance(item, tuple):
+24:             raise SyntaxError("Expecting a tuple of slices for COND[...]")
+25:         return item
+26: 
+27: 
+28: COND = CondMagic()
+29: 
+30: 
+31: class FnClass(HasPropertyFunc):
+32:     """# 便于参数直接传函数,repr后可以eval，可以将函数注解为类函数"""
+33: 
+34:     __slots__ = ("_func",)
+35: 
+36:     def __init__(self, func):
+37:         self._func = func
+38:         functools.update_wrapper(self, func)
+39: 
+40:     @property
+41:     def func(self) -> Callable:
+42:         return self._func
+43: 
+44:     @property
+45:     def name(self) -> str:
+46:         return self.func.__name__
+47: 
+48:     def __call__(self, *args, **kwargs):
+49:         return self.func(*args, **kwargs)
+50: 
+51:     def __repr__(self):
+52:         return self.name
+53: 
+54: 
+55: class XParam:
+56:     """
+57:     Author: King
+58:     Since : 2022-07-22 10:10
+59:     Desc  :
+60:         - 当特征参数定义为None时，如果前一次是特征类型，用 XParam 包装，可以替换为非特征类型
+61:         - 当特征参数定义为空字典时，用 XParam 包装，可以覆盖字典
+62:     """
+63: 
+64:     __slots__ = ("val",)
+65: 
+66:     def __init__(self, val: Any):
+67:         self.val = val
+68: 
+69:     def __repr__(self):
+70:         return f"XParam({self.val})"
+71: 
+72: 
+73: class Free(HasPropertyVal, HasCreate):
+74:     """
+75:     Desc  :
+76:         - 自由参数概念: Hidden参数扩展
+77:         - 这些参数在ppdict、ppdoc中显示，但根据不同的类型判断是否影响参数路径
+78:         - 而策略优化器中优化范围参数暂时没有支持,即参数范围中显示的参数都会影响参数路径
+79:     Params:
+80:         val: 参数值
+81:     """
+82: 
+83:     class Mode(enum.Enum):
+84:         Any = 0  # 任何时候都不会影响参数路径
+85:         Self = 1  # 设置了值时，不会影响本特征参数路径，但会影响下游特征参数路径
+86:         Not = 2  # 设置了值时就会影响参数路径
+87: 
+88:         def __repr__(self):
+89:             return f"Free.Mode.{self.name}"
+90: 
+91:     __slots__ = ["val", "display"]
+92: 
+93:     mode = Mode.Any
+94: 
+95:     def __init__(self, val: Optional[Any] = None):
+96:         self.val = val
+97:         self.display = True
+98: 
+99:     def gets(self, key: str):
+100:         if isinstance(self.val, dict):
+101:             return Ndict.create(self.val).gets(key)
+102:         if hasattr(self.val, "ppdict"):
+103:             return Ndict.create(self.val.ppdict).gets(key)
+104:         raise f"{self.val} can't gets {key}"
+105: 
+106:     def create(self, other,fname = None,ables = None,on_pable = None):
+107:         if other is None:
+108:             return self
+109: 
+110:         if isinstance(other, Free):
+FILE /dwdhome/fy/BASE_E6_2/mquant/frame/lib3.py
+1: 
+2: #引用的第三方包
+3: from m3 import *
+4: from m3v import *
+5: 
+6: from m3tt import *
+7: from m3tt.lang.feat.pnv import *
+8: 
+9: from tis.tti import *
+10: 
+11: # dba
+12: from pydim.dim import *
+13: 
+14: from m3sof import *
+15: 
+16: from mquant.apt import *
+17: 
+FILE /dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/src/Frp/Instance.hs
+30:         -- , HfStrengthChg
+31:         -- , SimpleSymmetryFrp
+32:         , BlkThickFrp
+33:         , ThickFrp
+34:         , OpenGap
+35:         , TradeSessionOpen
+36:         , TradeSessionClose
+37:         , ZigZag
+38:         , ZigStatus
+39:         , ZigConfirm
+40:         , HighLowZigZag
+41:         , RctZigWithStatus
+42:         , ATRHP
+43:         , ATRHPEnve
+44:         , MACDFrp
+45:         , WaveTurnBack
+46:         , SimpleKeepImportantHFToCoverPivot
+47:         , FeatADTProcessor
+48:         , TimePriceSynchronizedRangeHF
+49:         , BlkZigPivotNeighborAsTimePriceSynchronizedRange
+50:         , TimePriceSynchronizedRangeHFStrengthCluster
+51:         -- , TargetHeadTailCheck
+52:         -- , HeadTailLeftConUpdater
+53:         -- , GainOptimizedStructureBuilder
+54:         -- , SplitedGainOptimizedStructureBuilder
+55:         , EnveEndpoints
+56:         , EnveEndpointsDbg
+57:         , EnveEndpointsWrapper
+58:         , VolEnveEndpointsWrapper
+59:         , PrecipitationFundsFeat
+60:         , TurnoverRateFeat
+61:         , TurtleCapitalRatioFrp
+62:         , CapitalManagerFrp
+63:         , SpeFrp
+64:         , SpeGtFrp
+65:         , AMAFrp
+66:         , AMAAbsLtFrp
+67:         , EawP1WallLifecycleFrp
+68:         , EawP1BuildActivityFrp
+69:         , EawP1AttackSegmentBookFrp
+70:         , EawP1AbsorbInteractionFrp
+71:         , EawBattleP
+72:         , PhaseChangeOccurrenceFao
+73:         , PairObservationOccurrenceFao
+74:         , MultiSeriesActiveFlowFao
+75:       ]  
+76:   -- 注册可以使用 PyAny 替换的 Fao 特征
+77:   liftIO definePyAnyArts  
+78: -- defineFrpTisArts :: Edh [Object]
+79: -- defineFrpTisArts = 
+80: --     planFrpTisClass
+81: --         @'[
+82: --             MulFieldKeptByFitRatio
+83: --             , FbetaScoreFrpCalculator
+84: --             , FirstEvBAfterFirstEvAFeatFrp
+85: --             , EarlyExitNResumeFrp
+FILE /dwdhome/fy/BASE_E6_2/mquant/frame/__init__.py
+1: 
+2: __all__ = [
+3: 
+4:     # exports from .core
+5:     'CurrFaoCache', 'FaoResultManager', 'KwMeta', 'CurrFaoCache',
+6:     'FaoCacheMeta', 'StraApp', 'CurrCalType', 'StraEnv', 'CurrSof',
+7:     'CurrTrial', 'Proxy', 'CalType', 'opt_date_range', 'FaoUtil', 'COND',
+8:     'XParam', 'FnClass', 'Free', 'SelfFree', 'UnFree', 'Hidden', 'Doc',
+9:     'MQuantException', 'KDataException', 'FaoRunException', 'NoValue',
+10:     'HasGGDict', 'HasPPDict', 'HasPPStr', 'HasCreate', 'HasPropertyVal',
+11:     'HasPropertyFunc', 'GeneralCache', 'CurrFaoRepr', 'DefaceUtil', 'Ndict',
+12:     'DefaceDict', 'LikeDict', 'XDict', 'ppshow', 'pprint', 'enjson', 'enjson2',
+13:     'dejson', 'dejson2', 'eval2', 'EvalCtx', 'StringFn', 'get_mlogger',
+14:     'CurrMquantLogger', 'StraLogger', 'LoggingMixIn', 'fieldSuffixLag0',
+15:     'FieldUtil', 'FreqUtil', 'size', 'ParamsIterator', 'GPRange', 'VsGPRange',
+16:     'glist', 'grange', 'gaxis', 'gbox', 'gkwargs', 'gaxis4step', 'gaxis4ratio',
+17:     'plist', 'prange', 'paxis', 'pbox', 'pkwargs', 'paxis4step', 'paxis4ratio',
+18:     'OPRange', 'OPIterator', 'NoIterMixIn', 'pproduct', 'StringFao',
+19:     'SHARE_REF', 'PARAMS_PR', 'SHARE_PR', 'GSHARE_PR', 'PPShare', 'TrierCode',
+20:     'KDataLoader', 'MulKDataLoader', 'TS_PATH_NAME', 'StoreFields', 'FaoField',
+21:     'DataFrameField', 'DictField', 'NormalField', 'FloatField', 'IntField',
+22:     'DateTimeField', 'EventField', 'BoolEventField', 'NanEventField',
+23:     'Nan0EventField', 'StatusEventField', 'StatusBoolEventField',
+24:     'SharedTsField', 'MvField', 'AdtEventField', 'DbaUtil',
+25: 
+26:     # exports from .lang
+27:     'PlotterMixIn', 'CAEFaoMixIn', 'BaseCAEFao', 'TestCAE1', 'TestCAE2',
+28:     'FrpTaskParam', 'FrpMixIn', 'BaseDynFrpFao', 'BaseSymbolFrpFao',
+29:     'BaseBlockFrpFao', 'BaseBlockSetFrpFao', 'GeneralDynFrpTrader',
+30:     'DynFaoMixIn', 'BaseDynDataFrameFao', 'FunctionFao', 'DoFunctionFao',
+31:     'NoFunctionFao', 'AbstractFuncParam', 'OptStoreRule', 'CurrStoreEnv',
+32:     'TmpStoreEnv', 'FAnyParam', 'FasonEncoder', 'FaoType', 'AbsFao', 'Nothing',
+33:     'CurrOnPable', 'MetaSettings', 'new_fao_class', 'check_fao', 'eval_fao',
+34:     'WrapFao', 'PableInfo', 'SymPPRange', 'CurrSymbolPable', 'DFDbaDao',
+35:     'FrpDbaDao', 'FrpExtraDbaDao', 'AbstractFileDao', 'AbstractFaoDao', 'Li',
+36:     'Arr', 'FxArr', 'GMap', 'GMapX', 'XMap', 'HMap', 'AbstractParamFao',
+37:     'ChainLink', 'ChainFrame', 'ChainList', 'AbsChain', 'ChainFao', 'Chain',
+38:     'Rable', 'Pable', 'XPableQuery', 'DataFrameMixIn', 'MergeFrame',
+39:     'MergeFao', 'Merge', 'PatternFrame', 'DocMixIn', 'JsonParamPathMixIn',
+40:     'ABCMroMixIn', 'SerializeMixIn', 'SerializePMixIn', 'MiscMixIn',
+41:     'AskMixIn', 'CacheMixIn', 'TraderMixIn', 'CurTrading',
+42:     'BindTradeFieldCtor', 'PPEmpMixIn', 'PPMixIn', 'FPRange', 'flist', 'fmap',
+43:     'fmap4', 'FPIterator', 'ffmap', 'CurrIndustry', 'CurrFrpEnv', 'TarType',
+44:     'FuncTarType', 'SymTarType', 'PairTarType', 'UnKnownBlockTarType',
+45:     'BlockTarType', 'BlockSetTarType', 'AskBlockSymTarType', 'CalendarTarType',
+46:     'CurrCalendar', 'CalendarName', 'BlockFaoMixIn', 'GeneralBlockFao',
+47:     'BaseBlockDFFao', 'BlkKLine', 'BlockSetFaoMixIn', 'GeneralBlockSetFao',
+48:     'GeneralStdBlockSetFao', 'BaseBlockSetDFFao',
+49:     'GeneralStdAskBlockSymbolFao', 'BaseAskBlockSymbolDFFao', 'SymbolFaoMixIn',
+50:     'GeneralSymbolFao', 'BaseSymbolDFFao', 'KLine',
+51: 
+52:     # exports from .meta
+53:     '__version__',
+54: 
+55:     # exports from .zzz
+56:     'FaoConfigSynchronizer', 'FaoMultiProcess', 'FaoLinker', 'eval_opt_cls',
+57:     'eval_pprange', 'generate_sub_classes',
+58: 
+59: ]
+60: 
+61: from .core import *
+62: from .lang import *
+63: from .meta import *
+64: from .reload import *
+65: from .zzz import *
+HEADER_COMMAND_COMPLETED True
+{
+  "label": "340-headers-only",
+  "command": [
+    "/usr/bin/python3",
+    "-B",
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/commands/340-headers-only.py"
+  ],
+  "cwd": "/dwdhome/fy/BASE_E6_2",
+  "started_at_utc": "2026-11-14T14:26:23.055351+00:00",
+  "ended_at_utc": "2026-11-14T14:26:58.207942+00:00",
+  "exit_code": 124,
+  "timed_out": true,
+  "stdout_path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/evidence/340-headers-only.stdout.txt",
+  "stderr_path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/evidence/340-headers-only.stderr.txt",
+  "stdout_bytes": 0,
+  "stderr_bytes": 0
+}
+
+

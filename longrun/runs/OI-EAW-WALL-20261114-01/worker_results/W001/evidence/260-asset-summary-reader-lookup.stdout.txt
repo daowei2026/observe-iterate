@@ -1,0 +1,296 @@
+PROBE_TOTALS {'limits': {'max_directories': 320, 'max_entries_per_directory': 160, 'max_files': 2200, 'max_depth': 13, 'small_hash_threshold': 65536, 'max_hash_bytes': 8388608, 'elapsed_stop_seconds': 22}, 'elapsed_seconds': 1.8096158639527857, 'directories_visited': 155, 'files_observed': 796, 'small_bytes_hashed': 3161740, 'stops': []}
+SUMMARY WallAssembler 2021-01-01 21:00:00~2021-12-31 20:00:00 FILES 102 BYTES 1714048994 STOP False
+LEAF /m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300 FILE_COUNT 92 SIZE 1056727954
+RECEIPT /m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/p1_receipts/wall_lifecycle.json {"actual_business_parameters": {"allow_brick_join_dormant": true, "band_update_min_shift_ticks": 1, "break_after_no_presence_ticks": 3, "connect_gap_max_ticks": 3, "connect_max_core_dist_ticks": 1, "dormant_far_ticks": 2, "dormant_no_presence_ticks": 3, "end_far_hold_ticks": 3, "end_far_ticks": 2, "far_band_ticks": 2, "near_band_ticks": 1, "p_wall_ticks": 1, "support_buffer_keep_ticks": 6, "t_wall_ticks": 6, "thin_contact_frac_end": 0.6, "thin_contact_min_hits": 3, "thin_eval_window_ticks": 3, "wall_dead_timeout_ticks": 12}, "artifact_location": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300", "code_version": "git:2c5595139cd24c5614aed0aa7f5c3b45d835a824+source-sha256:47c09eb4ac84034ab9140be79249c338e266fa2b922ce1c14c021a3857b771f6", "direct_upstream_artifacts": [], "error": null, "feature_instance": "WallAssembler:wall-default", "method_snapshot_fingerprint": null, "parameter_set_id": "wall-default", "producer_private_parameters": {"allow_thin_brick": false, "allow_zero_qt_fallback": false, "eps_vol": 1e-12, "large_quote_ratio_min": 1.0, "qt_freq": "1d", "qt_n": 30, "qt_quantile": 0.997, "thick_vs_hi_ratio": 1.0, "thin_vs_mid_ratio": 0.7, "w_depth_ref_ticks": 1200}, "product_kind": "wall_lifecycle", "schema_version": "wall_lifecycle-v1.6.1", "source_scope": {"calendar_or_session": "night_end_at_2300", "market_source_cut": "market:rb:night_end_at_2300:time:2021-01-04T09:00:00.500000..2021-12-31T15:00:00", "target": "rb", "time_range": "time:2021-01-04T09:00:00.500000..2021-12-31T15:00:00"}, "status": "success"}
+SUMMARY EawP1WallLifecycleFrp 2021-01-01 21:00:00~2021-12-31 20:00:00 FILES 43 BYTES 131322404 STOP False
+LEAF /m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/EawP1WallLifecycleFrp/1/c/b/0/c/1/4/44aea11813b85d33becc06242f43621b6/rb.night_end_at_2300 FILE_COUNT 43 SIZE 131322404
+PRODUCT_FILE wall_current_view.__ts__.dba 1933336 None
+PRODUCT_FILE wall_diagnostics.__ts__.dba 59712 cdb054d9f9231e0ad21e1c27969ce86d010b72576fea89f7d914fd920afaf5e7
+PRODUCT_FILE wall_occurrences.__ts__.dba 1933336 None
+PRODUCT_FILE fields.json 166 3c538ca68d248f22776ee6698a94546464c2cd9ab6836efa2ecbca95c1ff2b46
+PRODUCT_FILE wall_occurrences/mul::[P1WallOccurrenceStorage].dba 1933336 None
+PRODUCT_FILE wall_occurrences/type 31 bc18b34400d4f450867092df3f0b5be2b595d4ca48acd28d2092b5c425d71e7b
+PRODUCT_FILE wall_diagnostics/type 27 78aa871ef206a981cde6c75a932881b8676eaca4ce15626f6b11946562fee737
+PRODUCT_FILE wall_diagnostics/mul::[P1DiagnosticStorage].dba 59712 523c8985381884e686597957b2c5ca1c6d507f6464f9b08e827e99e67f1f7e28
+PRODUCT_FILE wall_current_view/type 28 c008ec906151d4f891dc31d01f49acddbbf838c4d081bb3f98fc10e094a87877
+PRODUCT_FILE wall_current_view/mul::[P1WallCurrentStorage].dba 1933336 None
+PRODUCT_FILE wall_occurrences/[P1WallOccurrenceStorage]/p1WallOccurrenceLocalNo::Int64.dba 2131816 None
+PRODUCT_FILE wall_occurrences/[P1WallOccurrenceStorage]/p1WallBandMeasurementReason::Text$Data.Text.dba 2131816 None
+PRODUCT_FILE wall_occurrences/[P1WallOccurrenceStorage]/p1WallLifecycleSide::Text$Data.Text.dba 2131816 None
+PRODUCT_FILE wall_occurrences/[P1WallOccurrenceStorage]/p1WallLifecycleAvailability::Text$Data.Text.dba 2131816 None
+PRODUCT_FILE wall_occurrences/[P1WallOccurrenceStorage]/p1WallCore::Double.dba 2131816 None
+PRODUCT_FILE wall_occurrences/[P1WallOccurrenceStorage]/p1WallBandHigh::Double.dba 2131816 None
+PRODUCT_FILE wall_occurrences/[P1WallOccurrenceStorage]/p1WallOccurrenceRef::Text$Data.Text.dba 2131816 None
+PRODUCT_FILE wall_occurrences/[P1WallOccurrenceStorage]/p1WallBandMeasurementKind::Text$Data.Text.dba 2131816 None
+PRODUCT_FILE wall_occurrences/[P1WallOccurrenceStorage]/p1WallLifecycleChangeKind::Text$Data.Text.dba 2131816 None
+PRODUCT_FILE wall_occurrences/[P1WallOccurrenceStorage]/anchor.dba 1933336 None
+PRODUCT_FILE wall_occurrences/[P1WallOccurrenceStorage]/p1WallBandLow::Double.dba 2131816 None
+PRODUCT_FILE wall_occurrences/[P1WallOccurrenceStorage]/p1WallLifecycleOccurredAt::Int.dba 2131816 None
+PRODUCT_FILE wall_occurrences/[P1WallOccurrenceStorage]/p1WallPresence::Text$Data.Text.dba 2131816 None
+PRODUCT_FILE wall_occurrences/[P1WallOccurrenceStorage]/p1WallEndReason::Text$Data.Text.dba 2131816 None
+PRODUCT_FILE wall_occurrences/Text$Data.Text/anchor.dba 17054080 None
+PRODUCT_FILE wall_occurrences/Text$Data.Text/payload.dba 65591950 None
+PRODUCT_FILE wall_diagnostics/[P1DiagnosticStorage]/p1DiagnosticText1::Text$Data.Text.dba 59816 87c91858d419004edfabe7757313366b696782df130f09b435686ed0c6aec0e3
+PRODUCT_FILE wall_diagnostics/[P1DiagnosticStorage]/p1DiagnosticInt2::Int64.dba 59816 e915c6771181bb5b6e8f12515d899064b856d2c00b8cad0e223ad0a4ca8b0cc6
+PRODUCT_FILE wall_diagnostics/[P1DiagnosticStorage]/anchor.dba 59712 caef800d3b871b5264c05916b668f929f48494c6f60f05790d0677e9641a8ea6
+PRODUCT_FILE wall_diagnostics/[P1DiagnosticStorage]/p1DiagnosticKind::Text$Data.Text.dba 59816 70f239c8e122a55fbb7c2e7bf6dcd344746c7994a2201467b5c9b3be4d2d9743
+PRODUCT_FILE wall_diagnostics/[P1DiagnosticStorage]/p1DiagnosticText2::Text$Data.Text.dba 59816 8a15b64f9f4e77fb1c91f7ac13a0493ff56af794ad6bb307732106455a2eba92
+PRODUCT_FILE wall_diagnostics/[P1DiagnosticStorage]/p1DiagnosticDouble1::Double.dba 59816 e915c6771181bb5b6e8f12515d899064b856d2c00b8cad0e223ad0a4ca8b0cc6
+PRODUCT_FILE wall_diagnostics/[P1DiagnosticStorage]/p1DiagnosticInt1::Int64.dba 59816 1426bcefbbea87be07634530d94c2bfe9947d1ed82a1cd7455c2ef8752b24882
+PRODUCT_FILE wall_diagnostics/[P1DiagnosticStorage]/p1DiagnosticSource::Text$Data.Text.dba 59816 e0111828d933f12e4b0b06663f745b5b4280ab191080ba831c4e7723f19a5206
+PRODUCT_FILE wall_diagnostics/[P1DiagnosticStorage]/p1DiagnosticText3::Text$Data.Text.dba 59816 c3d2c662388926573fee33ceeb2b675060bb70cb21593eab23f8dad173233b15
+PRODUCT_FILE wall_diagnostics/[P1DiagnosticStorage]/p1DiagnosticInt3::Int64.dba 59816 e915c6771181bb5b6e8f12515d899064b856d2c00b8cad0e223ad0a4ca8b0cc6
+PRODUCT_FILE wall_diagnostics/Text$Data.Text/anchor.dba 298824 None
+PRODUCT_FILE wall_diagnostics/Text$Data.Text/payload.dba 593662 None
+PRODUCT_FILE wall_current_view/[P1WallCurrentStorage]/p1WallCurrentLocalNo::Int64.dba 2035456 None
+PRODUCT_FILE wall_current_view/[P1WallCurrentStorage]/p1WallCurrentState::Text$Data.Text.dba 2035456 None
+PRODUCT_FILE wall_current_view/[P1WallCurrentStorage]/anchor.dba 1933336 None
+PRODUCT_FILE wall_current_view/Text$Data.Text/payload.dba 1646164 None
+PRODUCT_FILE wall_current_view/Text$Data.Text/anchor.dba 2035456 None
+SUMMARY WallAssembler 2020-12-01 21:00:00~2021-02-22 20:00:00 FILES 87 BYTES 369914222 STOP False
+LEAF /m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300 FILE_COUNT 77 SIZE 224264782
+RECEIPT /m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/p1_receipts/wall_lifecycle.json {"actual_business_parameters": {"allow_brick_join_dormant": true, "band_update_min_shift_ticks": 1, "break_after_no_presence_ticks": 3, "connect_gap_max_ticks": 3, "connect_max_core_dist_ticks": 1, "dormant_far_ticks": 2, "dormant_no_presence_ticks": 3, "end_far_hold_ticks": 3, "end_far_ticks": 2, "far_band_ticks": 2, "near_band_ticks": 1, "p_wall_ticks": 1, "support_buffer_keep_ticks": 6, "t_wall_ticks": 6, "thin_contact_frac_end": 0.6, "thin_contact_min_hits": 3, "thin_eval_window_ticks": 3, "wall_dead_timeout_ticks": 12}, "artifact_location": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300", "code_version": "git:61988a3723ebadc861b4e94284254275be843255+source-sha256:47c09eb4ac84034ab9140be79249c338e266fa2b922ce1c14c021a3857b771f6", "direct_upstream_artifacts": [], "error": null, "feature_instance": "WallAssembler:wall-default", "method_snapshot_fingerprint": null, "parameter_set_id": "wall-default", "producer_private_parameters": {"allow_thin_brick": false, "allow_zero_qt_fallback": false, "eps_vol": 1e-12, "large_quote_ratio_min": 1.0, "qt_freq": "1d", "qt_n": 30, "qt_quantile": 0.997, "thick_vs_hi_ratio": 1.0, "thin_vs_mid_ratio": 0.7, "w_depth_ref_ticks": 1200}, "product_kind": "wall_lifecycle", "schema_version": "wall_lifecycle-v1.6.1", "source_scope": {"calendar_or_session": "night_end_at_2300", "market_source_cut": "market:rb:night_end_at_2300:time:2020-12-01T09:00:00.500000..2021-02-22T23:00:00", "target": "rb", "time_range": "time:2020-12-01T09:00:00.500000..2021-02-22T23:00:00"}, "status": "success"}
+SUMMARY EawP1WallLifecycleFrp 2020-12-01 21:00:00~2021-02-22 20:00:00 FILES 46 BYTES 8024734 STOP False
+LEAF /m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/EawP1WallLifecycleFrp/1/c/b/0/c/1/4/44aea11813b85d33becc06242f43621b6/rb.night_end_at_2300 FILE_COUNT 46 SIZE 8024734
+PRODUCT_FILE wall_diagnostics.__ts__.dba 2688 e264671876b11879b7a38db57d970c92e5079713c69cad1bea070bad4505c4c0
+PRODUCT_FILE fields.json 166 3c538ca68d248f22776ee6698a94546464c2cd9ab6836efa2ecbca95c1ff2b46
+PRODUCT_FILE wall_current_view.__ts__.dba 118928 None
+PRODUCT_FILE wall_occurrences.__ts__.dba 118928 None
+PRODUCT_FILE wall_current_view/wallCurrentViews::[P1WallCurrentStorage].dba 118928 None
+PRODUCT_FILE wall_current_view/mul::[P1WallCurrentStorage].dba 118928 None
+PRODUCT_FILE wall_current_view/type 28 c008ec906151d4f891dc31d01f49acddbbf838c4d081bb3f98fc10e094a87877
+PRODUCT_FILE wall_occurrences/type 31 bc18b34400d4f450867092df3f0b5be2b595d4ca48acd28d2092b5c425d71e7b
+PRODUCT_FILE wall_occurrences/wallOccurrences::[P1WallOccurrenceStorage].dba 118928 None
+PRODUCT_FILE wall_occurrences/mul::[P1WallOccurrenceStorage].dba 118928 None
+PRODUCT_FILE wall_diagnostics/mul::[P1DiagnosticStorage].dba 2688 2b3624933f782454b99f460e483b902fe5e810d9eefc79fd1d6e2f0f99662d95
+PRODUCT_FILE wall_diagnostics/wallDiagnosticRows::[P1DiagnosticStorage].dba 2688 2b3624933f782454b99f460e483b902fe5e810d9eefc79fd1d6e2f0f99662d95
+PRODUCT_FILE wall_diagnostics/type 27 78aa871ef206a981cde6c75a932881b8676eaca4ce15626f6b11946562fee737
+PRODUCT_FILE wall_current_view/[P1WallCurrentStorage]/p1WallCurrentLocalNo::Int64.dba 121728 None
+PRODUCT_FILE wall_current_view/[P1WallCurrentStorage]/anchor.dba 118928 None
+PRODUCT_FILE wall_current_view/[P1WallCurrentStorage]/p1WallCurrentState::Text$Data.Text.dba 121728 None
+PRODUCT_FILE wall_current_view/Text$Data.Text/anchor.dba 121728 None
+PRODUCT_FILE wall_current_view/Text$Data.Text/payload.dba 96906 None
+PRODUCT_FILE wall_occurrences/[P1WallOccurrenceStorage]/p1WallLifecycleOccurredAt::Int.dba 126536 None
+PRODUCT_FILE wall_occurrences/[P1WallOccurrenceStorage]/p1WallPresence::Text$Data.Text.dba 126536 None
+PRODUCT_FILE wall_occurrences/[P1WallOccurrenceStorage]/anchor.dba 118928 None
+PRODUCT_FILE wall_occurrences/[P1WallOccurrenceStorage]/p1WallLifecycleSide::Text$Data.Text.dba 126536 None
+PRODUCT_FILE wall_occurrences/[P1WallOccurrenceStorage]/p1WallBandMeasurementKind::Text$Data.Text.dba 126536 None
+PRODUCT_FILE wall_occurrences/[P1WallOccurrenceStorage]/p1WallLifecycleChangeKind::Text$Data.Text.dba 126536 None
+PRODUCT_FILE wall_occurrences/[P1WallOccurrenceStorage]/p1WallOccurrenceRef::Text$Data.Text.dba 126536 None
+PRODUCT_FILE wall_occurrences/[P1WallOccurrenceStorage]/p1WallLifecycleAvailability::Text$Data.Text.dba 126536 None
+PRODUCT_FILE wall_occurrences/[P1WallOccurrenceStorage]/p1WallEndReason::Text$Data.Text.dba 126536 None
+PRODUCT_FILE wall_occurrences/[P1WallOccurrenceStorage]/p1WallOccurrenceLocalNo::Int64.dba 126536 None
+PRODUCT_FILE wall_occurrences/[P1WallOccurrenceStorage]/p1WallCore::Double.dba 126536 None
+PRODUCT_FILE wall_occurrences/[P1WallOccurrenceStorage]/p1WallBandHigh::Double.dba 126536 None
+PRODUCT_FILE wall_occurrences/[P1WallOccurrenceStorage]/p1WallBandLow::Double.dba 126536 None
+PRODUCT_FILE wall_occurrences/[P1WallOccurrenceStorage]/p1WallBandMeasurementReason::Text$Data.Text.dba 126536 None
+PRODUCT_FILE wall_occurrences/Text$Data.Text/payload.dba 3879589 None
+PRODUCT_FILE wall_occurrences/Text$Data.Text/anchor.dba 1011840 None
+PRODUCT_FILE wall_diagnostics/[P1DiagnosticStorage]/p1DiagnosticSource::Text$Data.Text.dba 2688 7d6d6320e084d2a71e986012ed2d4623253e39270e88bcd672215a56b15798fb
+PRODUCT_FILE wall_diagnostics/[P1DiagnosticStorage]/p1DiagnosticText1::Text$Data.Text.dba 2688 fcad60c6d7a56b719c1c8fc0f6005dc435413484b0e23c5e78bc67f4803b58f8
+PRODUCT_FILE wall_diagnostics/[P1DiagnosticStorage]/anchor.dba 2688 1b58957d9ca10b825d080688ee4b21ae05cbd947b19bf0a8d4d8383fe77be329
+PRODUCT_FILE wall_diagnostics/[P1DiagnosticStorage]/p1DiagnosticText2::Text$Data.Text.dba 2688 ed6e97cca1e2fc6a2b86b549ce01fdee3e4b49ba2e750e3870f8a3f26f1821de
+PRODUCT_FILE wall_diagnostics/[P1DiagnosticStorage]/p1DiagnosticKind::Text$Data.Text.dba 2688 8ff1f957df69030e157406e15b6d1eacabc67c62c780d86f5e757401b0fca696
+PRODUCT_FILE wall_diagnostics/[P1DiagnosticStorage]/p1DiagnosticInt2::Int64.dba 2688 f80c9d76450a1a8abfad58390ffecc452f7896a5b371380f82e015d90b8688a4
+PRODUCT_FILE wall_diagnostics/[P1DiagnosticStorage]/p1DiagnosticInt3::Int64.dba 2688 f80c9d76450a1a8abfad58390ffecc452f7896a5b371380f82e015d90b8688a4
+PRODUCT_FILE wall_diagnostics/[P1DiagnosticStorage]/p1DiagnosticInt1::Int64.dba 2688 3ed6e2f42afacf6ce7009e5db1caa31c5c8348d191ce13b647434253a82eb104
+PRODUCT_FILE wall_diagnostics/[P1DiagnosticStorage]/p1DiagnosticDouble1::Double.dba 2688 f80c9d76450a1a8abfad58390ffecc452f7896a5b371380f82e015d90b8688a4
+PRODUCT_FILE wall_diagnostics/[P1DiagnosticStorage]/p1DiagnosticText3::Text$Data.Text.dba 2688 3874df9b8699f1039e750b23e72d33ed11d056220f7c2e343c85981ba41cbd71
+PRODUCT_FILE wall_diagnostics/Text$Data.Text/payload.dba 26443 a957fc2983d5f22fd48c5318f7881f3c56c8175985006da0ef3871dcd8eaa477
+PRODUCT_FILE wall_diagnostics/Text$Data.Text/anchor.dba 13184 2a03ec0dc304061f685c227fae741c8c32cf6a2511c958bbc0a20b0c9ccec2e3
+SUMMARY WallAssembler 2013-02-19 21:00:00~2024-02-29 20:00:00 FILES 368 BYTES 38768769989 STOP False
+LEAF /m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2013-02-19 21:00:00~2024-02-29 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300 FILE_COUNT 92 SIZE 10449372896
+RECEIPT /m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2013-02-19 21:00:00~2024-02-29 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/p1_receipts/wall_lifecycle.json {"actual_business_parameters": {"allow_brick_join_dormant": true, "band_update_min_shift_ticks": 1, "break_after_no_presence_ticks": 3, "connect_gap_max_ticks": 3, "connect_max_core_dist_ticks": 1, "dormant_far_ticks": 2, "dormant_no_presence_ticks": 3, "end_far_hold_ticks": 3, "end_far_ticks": 2, "far_band_ticks": 2, "near_band_ticks": 1, "p_wall_ticks": 1, "support_buffer_keep_ticks": 6, "t_wall_ticks": 6, "thin_contact_frac_end": 0.6, "thin_contact_min_hits": 3, "thin_eval_window_ticks": 3, "wall_dead_timeout_ticks": 12}, "artifact_location": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2013-02-19 21:00:00~2024-02-29 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300", "code_version": "git:e5bfd95d3c293ebff401abd2d31ceb6c93a4995d+source-sha256:47c09eb4ac84034ab9140be79249c338e266fa2b922ce1c14c021a3857b771f6", "direct_upstream_artifacts": [], "error": null, "feature_instance": "WallAssembler:wall-default", "method_snapshot_fingerprint": null, "parameter_set_id": "wall-default", "producer_private_parameters": {"allow_thin_brick": false, "allow_zero_qt_fallback": false, "eps_vol": 1e-12, "large_quote_ratio_min": 1.0, "qt_freq": "1d", "qt_n": 30, "qt_quantile": 0.997, "thick_vs_hi_ratio": 1.0, "thin_vs_mid_ratio": 0.7, "w_depth_ref_ticks": 1200}, "product_kind": "wall_lifecycle", "schema_version": "wall_lifecycle-v1.6.1", "source_scope": {"calendar_or_session": "night_end_at_2300", "market_source_cut": "market:rb:night_end_at_2300:time:2013-02-19T09:00:00.500000..2024-02-29T15:00:00", "target": "rb", "time_range": "time:2013-02-19T09:00:00.500000..2024-02-29T15:00:00"}, "status": "success"}
+LEAF /m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2013-02-19 21:00:00~2024-02-29 20:00:00/WallAssembler/f/d/6/6/b/8/4/b90f6c19cebcb90ab7b264ad52b164de8/hc.night_end_at_2300 FILE_COUNT 92 SIZE 8119479156
+RECEIPT /m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2013-02-19 21:00:00~2024-02-29 20:00:00/WallAssembler/f/d/6/6/b/8/4/b90f6c19cebcb90ab7b264ad52b164de8/hc.night_end_at_2300/p1_receipts/wall_lifecycle.json {"actual_business_parameters": {"allow_brick_join_dormant": true, "band_update_min_shift_ticks": 1, "break_after_no_presence_ticks": 3, "connect_gap_max_ticks": 3, "connect_max_core_dist_ticks": 1, "dormant_far_ticks": 2, "dormant_no_presence_ticks": 3, "end_far_hold_ticks": 3, "end_far_ticks": 2, "far_band_ticks": 2, "near_band_ticks": 1, "p_wall_ticks": 1, "support_buffer_keep_ticks": 6, "t_wall_ticks": 6, "thin_contact_frac_end": 0.6, "thin_contact_min_hits": 3, "thin_eval_window_ticks": 3, "wall_dead_timeout_ticks": 12}, "artifact_location": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2013-02-19 21:00:00~2024-02-29 20:00:00/WallAssembler/f/d/6/6/b/8/4/b90f6c19cebcb90ab7b264ad52b164de8/hc.night_end_at_2300", "code_version": "git:c747d88a93528fa65cce8f2a6238e1c925bb3b9f+source-sha256:e5144afcf10de8bda39625157a01b09297410c83dca65321340ad2460497be0d", "direct_upstream_artifacts": [], "error": null, "feature_instance": "WallAssembler:wall-default", "method_snapshot_fingerprint": null, "parameter_set_id": "wall-default", "producer_private_parameters": {"allow_thin_brick": false, "allow_zero_qt_fallback": false, "eps_vol": 1e-12, "large_quote_ratio_min": 1.0, "qt_contract_scope": "main_contract", "qt_freq": "1d", "qt_n": 30, "qt_quantile": 0.997, "thick_vs_hi_ratio": 1.0, "thin_vs_mid_ratio": 0.7, "w_depth_ref_ticks": 1200}, "product_kind": "wall_lifecycle", "schema_version": "wall_lifecycle-v1.6.1", "source_scope": {"calendar_or_session": "night_end_at_2300", "market_source_cut": "market:hc:night_end_at_2300:time:2015-12-14T09:00:00.500000..2024-02-29T15:00:00", "target": "hc", "time_range": "time:2015-12-14T09:00:00.500000..2024-02-29T15:00:00"}, "status": "success"}
+LEAF /m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2013-02-19 21:00:00~2024-02-29 20:00:00/WallAssembler/f/d/6/6/b/8/4/b90f6c19cebcb90ab7b264ad52b164de8/i.night_end_at_2300 FILE_COUNT 92 SIZE 9875844423
+RECEIPT /m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2013-02-19 21:00:00~2024-02-29 20:00:00/WallAssembler/f/d/6/6/b/8/4/b90f6c19cebcb90ab7b264ad52b164de8/i.night_end_at_2300/p1_receipts/wall_lifecycle.json {"actual_business_parameters": {"allow_brick_join_dormant": true, "band_update_min_shift_ticks": 1, "break_after_no_presence_ticks": 3, "connect_gap_max_ticks": 3, "connect_max_core_dist_ticks": 1, "dormant_far_ticks": 2, "dormant_no_presence_ticks": 3, "end_far_hold_ticks": 3, "end_far_ticks": 2, "far_band_ticks": 2, "near_band_ticks": 1, "p_wall_ticks": 1, "support_buffer_keep_ticks": 6, "t_wall_ticks": 6, "thin_contact_frac_end": 0.6, "thin_contact_min_hits": 3, "thin_eval_window_ticks": 3, "wall_dead_timeout_ticks": 12}, "artifact_location": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2013-02-19 21:00:00~2024-02-29 20:00:00/WallAssembler/f/d/6/6/b/8/4/b90f6c19cebcb90ab7b264ad52b164de8/i.night_end_at_2300", "code_version": "git:c747d88a93528fa65cce8f2a6238e1c925bb3b9f+source-sha256:e5144afcf10de8bda39625157a01b09297410c83dca65321340ad2460497be0d", "direct_upstream_artifacts": [], "error": null, "feature_instance": "WallAssembler:wall-default", "method_snapshot_fingerprint": null, "parameter_set_id": "wall-default", "producer_private_parameters": {"allow_thin_brick": false, "allow_zero_qt_fallback": false, "eps_vol": 1e-12, "large_quote_ratio_min": 1.0, "qt_contract_scope": "main_contract", "qt_freq": "1d", "qt_n": 30, "qt_quantile": 0.997, "thick_vs_hi_ratio": 1.0, "thin_vs_mid_ratio": 0.7, "w_depth_ref_ticks": 1200}, "product_kind": "wall_lifecycle", "schema_version": "wall_lifecycle-v1.6.1", "source_scope": {"calendar_or_session": "night_end_at_2300", "market_source_cut": "market:i:night_end_at_2300:time:2013-10-18T09:00:00.500000..2024-02-29T15:00:00", "target": "i", "time_range": "time:2013-10-18T09:00:00.500000..2024-02-29T15:00:00"}, "status": "success"}
+LEAF /m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2013-02-19 21:00:00~2024-02-29 20:00:00/WallAssembler/f/d/6/6/b/8/4/b90f6c19cebcb90ab7b264ad52b164de8/rb.night_end_at_2300 FILE_COUNT 92 SIZE 10324073514
+RECEIPT /m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2013-02-19 21:00:00~2024-02-29 20:00:00/WallAssembler/f/d/6/6/b/8/4/b90f6c19cebcb90ab7b264ad52b164de8/rb.night_end_at_2300/p1_receipts/wall_lifecycle.json {"actual_business_parameters": {"allow_brick_join_dormant": true, "band_update_min_shift_ticks": 1, "break_after_no_presence_ticks": 3, "connect_gap_max_ticks": 3, "connect_max_core_dist_ticks": 1, "dormant_far_ticks": 2, "dormant_no_presence_ticks": 3, "end_far_hold_ticks": 3, "end_far_ticks": 2, "far_band_ticks": 2, "near_band_ticks": 1, "p_wall_ticks": 1, "support_buffer_keep_ticks": 6, "t_wall_ticks": 6, "thin_contact_frac_end": 0.6, "thin_contact_min_hits": 3, "thin_eval_window_ticks": 3, "wall_dead_timeout_ticks": 12}, "artifact_location": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2013-02-19 21:00:00~2024-02-29 20:00:00/WallAssembler/f/d/6/6/b/8/4/b90f6c19cebcb90ab7b264ad52b164de8/rb.night_end_at_2300", "code_version": "git:c747d88a93528fa65cce8f2a6238e1c925bb3b9f+source-sha256:e5144afcf10de8bda39625157a01b09297410c83dca65321340ad2460497be0d", "direct_upstream_artifacts": [], "error": null, "feature_instance": "WallAssembler:wall-default", "method_snapshot_fingerprint": null, "parameter_set_id": "wall-default", "producer_private_parameters": {"allow_thin_brick": false, "allow_zero_qt_fallback": false, "eps_vol": 1e-12, "large_quote_ratio_min": 1.0, "qt_contract_scope": "main_contract", "qt_freq": "1d", "qt_n": 30, "qt_quantile": 0.997, "thick_vs_hi_ratio": 1.0, "thin_vs_mid_ratio": 0.7, "w_depth_ref_ticks": 1200}, "product_kind": "wall_lifecycle", "schema_version": "wall_lifecycle-v1.6.1", "source_scope": {"calendar_or_session": "night_end_at_2300", "market_source_cut": "market:rb:night_end_at_2300:time:2013-02-19T09:00:00.500000..2024-02-29T15:00:00", "target": "rb", "time_range": "time:2013-02-19T09:00:00.500000..2024-02-29T15:00:00"}, "status": "success"}
+SUMMARY WallAssembler 2021-01-01 21:00:00~2021-02-22 20:00:00 FILES 48 BYTES 294417151 STOP False
+LEAF /m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-02-22 20:00:00/WallAssembler/1/4/3/e/7/7/9/03da69c066106e547ec8807555677dc62/rb.night_end_at_2300 FILE_COUNT 14 SIZE 83756858
+RECEIPT /m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-02-22 20:00:00/WallAssembler/1/4/3/e/7/7/9/03da69c066106e547ec8807555677dc62/rb.night_end_at_2300/p1_receipts/wall_lifecycle.json {"actual_business_parameters": {"allow_brick_join_dormant": false, "band_update_min_shift_ticks": 1, "break_after_no_presence_ticks": 3, "connect_gap_max_ticks": 3, "connect_max_core_dist_ticks": 1, "dormant_far_ticks": 2, "dormant_no_presence_ticks": 3, "end_far_hold_ticks": 3, "end_far_ticks": 2, "far_band_ticks": 2, "near_band_ticks": 1, "p_wall_ticks": 1, "support_buffer_keep_ticks": 6, "t_wall_ticks": 6, "thin_contact_frac_end": 0.6, "thin_contact_min_hits": 3, "thin_eval_window_ticks": 3, "wall_dead_timeout_ticks": 12}, "artifact_location": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-02-22 20:00:00/WallAssembler/1/4/3/e/7/7/9/03da69c066106e547ec8807555677dc62/rb.night_end_at_2300", "code_version": "git:23e13ffdde4d3402294456b7fdd7c6bf25cffc1a+source-sha256:9038550e12057710fbcf421bc6edb39283c39345833cef1871012c546858f2d3", "direct_upstream_artifacts": [], "error": null, "feature_instance": "WallAssembler:wall-default", "method_snapshot_fingerprint": null, "parameter_set_id": "wall-default", "producer_private_parameters": {"allow_thin_brick": false, "allow_zero_qt_fallback": false, "eps_vol": 1e-12, "large_quote_ratio_min": 1.0, "qt_freq": "1d", "qt_n": 30, "qt_quantile": 0.997, "thick_vs_hi_ratio": 1.0, "thin_vs_mid_ratio": 0.7, "w_depth_ref_ticks": 1200}, "product_kind": "wall_lifecycle", "schema_version": "wall_lifecycle-v1.6.1", "source_scope": {"calendar_or_session": "night_end_at_2300", "market_source_cut": "market:rb:night_end_at_2300:time:2021-01-04T09:00:00.500000..2021-02-22T23:00:00", "target": "rb", "time_range": "time:2021-01-04T09:00:00.500000..2021-02-22T23:00:00"}, "status": "success"}
+LEAF /m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-02-22 20:00:00/WallAssembler/7/5/2/3/7/e/7/590b51a580417e165b9307c9c2fb9cb6f/rb.night_end_at_2300 FILE_COUNT 14 SIZE 83756858
+RECEIPT /m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-02-22 20:00:00/WallAssembler/7/5/2/3/7/e/7/590b51a580417e165b9307c9c2fb9cb6f/rb.night_end_at_2300/p1_receipts/wall_lifecycle.json {"actual_business_parameters": {"allow_brick_join_dormant": false, "band_update_min_shift_ticks": 1, "break_after_no_presence_ticks": 3, "connect_gap_max_ticks": 3, "connect_max_core_dist_ticks": 1, "dormant_far_ticks": 2, "dormant_no_presence_ticks": 3, "end_far_hold_ticks": 3, "end_far_ticks": 2, "far_band_ticks": 2, "near_band_ticks": 1, "p_wall_ticks": 1, "support_buffer_keep_ticks": 6, "t_wall_ticks": 6, "thin_contact_frac_end": 0.6, "thin_contact_min_hits": 3, "thin_eval_window_ticks": 3, "wall_dead_timeout_ticks": 12}, "artifact_location": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-02-22 20:00:00/WallAssembler/7/5/2/3/7/e/7/590b51a580417e165b9307c9c2fb9cb6f/rb.night_end_at_2300", "code_version": "git:23e13ffdde4d3402294456b7fdd7c6bf25cffc1a+source-sha256:9dc87edf25761b683deae6bf5989aa0d44838067184320d41b430ca868421de7", "direct_upstream_artifacts": [], "error": null, "feature_instance": "WallAssembler:wall-default", "method_snapshot_fingerprint": null, "parameter_set_id": "wall-default", "producer_private_parameters": {"allow_thin_brick": false, "allow_zero_qt_fallback": false, "eps_vol": 1e-12, "large_quote_ratio_min": 1.0, "qt_freq": "1d", "qt_n": 30, "qt_quantile": 0.997, "thick_vs_hi_ratio": 1.0, "thin_vs_mid_ratio": 0.7, "w_depth_ref_ticks": 1200}, "product_kind": "wall_lifecycle", "schema_version": "wall_lifecycle-v1.6.1", "source_scope": {"calendar_or_session": "night_end_at_2300", "market_source_cut": "market:rb:night_end_at_2300:time:2021-01-04T09:00:00.500000..2021-02-22T23:00:00", "target": "rb", "time_range": "time:2021-01-04T09:00:00.500000..2021-02-22T23:00:00"}, "status": "success"}
+LEAF /m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300 FILE_COUNT 20 SIZE 126903435
+RECEIPT /m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/p1_receipts/wall_lifecycle.json {"actual_business_parameters": {"allow_brick_join_dormant": true, "band_update_min_shift_ticks": 1, "break_after_no_presence_ticks": 3, "connect_gap_max_ticks": 3, "connect_max_core_dist_ticks": 1, "dormant_far_ticks": 2, "dormant_no_presence_ticks": 3, "end_far_hold_ticks": 3, "end_far_ticks": 2, "far_band_ticks": 2, "near_band_ticks": 1, "p_wall_ticks": 1, "support_buffer_keep_ticks": 6, "t_wall_ticks": 6, "thin_contact_frac_end": 0.6, "thin_contact_min_hits": 3, "thin_eval_window_ticks": 3, "wall_dead_timeout_ticks": 12}, "artifact_location": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300", "code_version": "git:61988a3723ebadc861b4e94284254275be843255+source-sha256:47c09eb4ac84034ab9140be79249c338e266fa2b922ce1c14c021a3857b771f6", "direct_upstream_artifacts": [], "error": null, "feature_instance": "WallAssembler:wall-default", "method_snapshot_fingerprint": null, "parameter_set_id": "wall-default", "producer_private_parameters": {"allow_thin_brick": false, "allow_zero_qt_fallback": false, "eps_vol": 1e-12, "large_quote_ratio_min": 1.0, "qt_freq": "1d", "qt_n": 30, "qt_quantile": 0.997, "thick_vs_hi_ratio": 1.0, "thin_vs_mid_ratio": 0.7, "w_depth_ref_ticks": 1200}, "product_kind": "wall_lifecycle", "schema_version": "wall_lifecycle-v1.6.1", "source_scope": {"calendar_or_session": "night_end_at_2300", "market_source_cut": "market:rb:night_end_at_2300:time:2021-01-04T09:00:00.500000..2021-02-22T23:00:00", "target": "rb", "time_range": "time:2021-01-04T09:00:00.500000..2021-02-22T23:00:00"}, "status": "success"}
+SUMMARY WallAssembler 2021-01-04 21:00:00~2021-01-04 20:00:00 FILES 14 BYTES 2735258 STOP False
+LEAF /m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-04 21:00:00~2021-01-04 20:00:00/WallAssembler/1/4/3/e/7/7/9/03da69c066106e547ec8807555677dc62/rb.night_end_at_2300 FILE_COUNT 14 SIZE 2735258
+RECEIPT /m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-04 21:00:00~2021-01-04 20:00:00/WallAssembler/1/4/3/e/7/7/9/03da69c066106e547ec8807555677dc62/rb.night_end_at_2300/p1_receipts/wall_lifecycle.json {"actual_business_parameters": {"allow_brick_join_dormant": false, "band_update_min_shift_ticks": 1, "break_after_no_presence_ticks": 3, "connect_gap_max_ticks": 3, "connect_max_core_dist_ticks": 1, "dormant_far_ticks": 2, "dormant_no_presence_ticks": 3, "end_far_hold_ticks": 3, "end_far_ticks": 2, "far_band_ticks": 2, "near_band_ticks": 1, "p_wall_ticks": 1, "support_buffer_keep_ticks": 6, "t_wall_ticks": 6, "thin_contact_frac_end": 0.6, "thin_contact_min_hits": 3, "thin_eval_window_ticks": 3, "wall_dead_timeout_ticks": 12}, "artifact_location": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-04 21:00:00~2021-01-04 20:00:00/WallAssembler/1/4/3/e/7/7/9/03da69c066106e547ec8807555677dc62/rb.night_end_at_2300", "code_version": "git:788b39f6241de7ab109940165292abe44b457191+source-sha256:9038550e12057710fbcf421bc6edb39283c39345833cef1871012c546858f2d3", "direct_upstream_artifacts": [], "error": null, "feature_instance": "WallAssembler:wall-default", "method_snapshot_fingerprint": null, "parameter_set_id": "wall-default", "producer_private_parameters": {"allow_thin_brick": false, "allow_zero_qt_fallback": false, "eps_vol": 1e-12, "large_quote_ratio_min": 1.0, "qt_freq": "1d", "qt_n": 30, "qt_quantile": 0.997, "thick_vs_hi_ratio": 1.0, "thin_vs_mid_ratio": 0.7, "w_depth_ref_ticks": 1200}, "product_kind": "wall_lifecycle", "schema_version": "wall_lifecycle-v1.6.1", "source_scope": {"calendar_or_session": "night_end_at_2300", "market_source_cut": "market:rb:night_end_at_2300:time:2021-01-04T09:00:00.500000..2021-01-04T23:00:00", "target": "rb", "time_range": "time:2021-01-04T09:00:00.500000..2021-01-04T23:00:00"}, "status": "success"}
+SUMMARY WallAssembler 2013-02-19 21:00:00~2024-09-19 20:00:00 FILES 88 BYTES 261164214 STOP False
+LEAF /m3varK/BaseData/futures/TA_updto20240229/fao/prod/2013-02-19 21:00:00~2024-09-19 20:00:00/WallAssembler/2/d/1/e/3/2/d/c501c28b7663f32cfdabec4f487d2f44f/rb FILE_COUNT 88 SIZE 261164214
+{"label": "261-reader-types-symbols", "command": ["rg", "-n", "--max-count", "25", "class NormalField|adt_class|class DbaStore|class DbArray|P1WallOccurrenceStorage|P1WallCurrentStorage|MulWrap_P1Wall", "mquant/frame/core", "mquant/frame/lang/internal", "pydim/dim"], "cwd": "/dwdhome/fy/BASE_E6_2", "started_at_utc": "2026-11-14T14:24:50.613784+00:00", "ended_at_utc": "2026-11-14T14:24:50.927450+00:00", "exit_code": 0, "timed_out": false, "stdout_path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/evidence/261-reader-types-symbols.stdout.txt", "stderr_path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/evidence/261-reader-types-symbols.stderr.txt", "stdout_bytes": 353, "stderr_bytes": 0}
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/evidence/261-reader-types-symbols.stdout.txt
+pydim/dim/dbas.py:23:class DbaStore:
+pydim/dim/rt.bak:103:class DbArray:
+pydim/dim/rt.py:109:class DbArray:
+mquant/frame/core/store.py:63:class NormalField(FaoField):
+mquant/frame/core/store.py:500:    def adt_class(self):
+mquant/frame/lang/internal/dao/frp/dba.py:78:                    "value": DbaStore(os.path.join(full_dir, field), fld.adt_class),
+
+{"label": "262-ledger-heartbeat", "command": ["/usr/bin/python3", "-B", "/home/dw/.agents/skills/long-task-status/scripts/task_status.py", "heartbeat", "--root", "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001", "--task-id", "w001-local", "--action", "已定位当前 TIS/FRP 和真实旧 schema 物化资产；核验包装、只读解码边界", "--next-action", "区分版本差异，完成有界资产解码或明确停止"], "cwd": "/dwdhome/fy/BASE_E6_2", "started_at_utc": "2026-11-14T14:24:50.990524+00:00", "ended_at_utc": "2026-11-14T14:24:51.883301+00:00", "exit_code": 0, "timed_out": false, "stdout_path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/evidence/262-ledger-heartbeat.stdout.txt", "stderr_path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/evidence/262-ledger-heartbeat.stderr.txt", "stdout_bytes": 4831, "stderr_bytes": 0}
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D001/W001/evidence/262-ledger-heartbeat.stdout.txt
+{
+  "schema_version": 1,
+  "project": {
+    "id": "oi-eaw-wall",
+    "title": "W001 本地事实核验"
+  },
+  "task": {
+    "id": "w001-local",
+    "title": "W001 有限本地调查与原件交付",
+    "type": "engineering",
+    "priority": "normal",
+    "owner": "agent",
+    "completion_gate": "仅本地：原件、限制、hash 与发布映射完整；不代表 W001 或父任务完成。",
+    "monitoring": {
+      "scope": "general"
+    },
+    "origin": {
+      "machine": "dw-VMware-Virtual-Platform",
+      "codex_thread_id": "01a1da55-5881-7590-94a1-0661f0236977"
+    }
+  },
+  "task_id": "w001-local",
+  "source_kind": "task_status_ledger",
+  "source": {
+    "path": "tasks/w001-local/snapshot.json"
+  },
+  "ledger_seq": 3,
+  "snapshot_seq": 3,
+  "projection_current": true,
+  "business_terminal": null,
+  "queue_position": null,
+  "plan_hash": "1a55dc03d3bfb22f94aa207462307e762b40d90013b4c027621722b2a55bcbe9",
+  "status": "running",
+  "current_phase_id": "local",
+  "current_step_id": "binding-code",
+  "action": "已定位当前 TIS/FRP 和真实旧 schema 物化资产；核验包装、只读解码边界",
+  "next_action": "区分版本差异，完成有界资产解码或明确停止",
+  "blocker": null,
+  "resources": [],
+  "progress": {
+    "completed_steps": 0,
+    "total_steps": 3,
+    "completed_weight": 0,
+    "total_weight": 3.0,
+    "percent": 0.0
+  },
+  "timing": {
+    "started_at": "2026-11-14T14:18:36Z",
+    "updated_at": "2026-11-14T14:24:51Z",
+    "heartbeat_at": "2026-11-14T14:24:51Z",
+    "finished_at": null,
+    "elapsed_seconds": 376,
+    "active_seconds": 374,
+    "waiting_seconds": 0,
+    "waiting_external_seconds": 0,
+    "blocked_seconds": 0,
+    "needs_human_seconds": 0,
+    "idle_seconds": 1,
+    "accounted_seconds": 375,
+    "unassigned_seconds": 1,
+    "unobserved_seconds": 1
+  },
+  "phases": [
+    {
+      "id": "local",
+      "title": "本地核验",
+      "steps": [
+        {
+          "id": "binding-code",
+          "title": "工作区绑定与静态入口",
+          "acceptance": "物理绑定及相关 repo 状态、源码和读取入口有带行号证据",
+          "weight": 1.0,
+          "phase_id": "local",
+          "phase_title": "本地核验",
+          "state": "running",
+          "started_at": "2026-11-14T14:18:37Z",
+          "completed_at": null,
+          "evidence": [],
+          "note": null,
+          "timing": {
+            "started_at": "2026-11-14T14:18:37Z",
+            "finished_at": null,
+            "elapsed_seconds": 374,
+            "active_seconds": 374,
+            "waiting_seconds": 0,
+            "waiting_external_seconds": 0,
+            "blocked_seconds": 0,
+            "needs_human_seconds": 0,
+            "idle_seconds": 0
+          }
+        },
+        {
+          "id": "assets",
+          "title": "候选资产与必要解码或预检",
+          "acceptance": "有界资产清单完整；如无可用材料，明确不运行并给预检",
+          "weight": 1.0,
+          "phase_id": "local",
+          "phase_title": "本地核验",
+          "state": "planned",
+          "started_at": null,
+          "completed_at": null,
+          "evidence": [],
+          "note": null,
+          "timing": {
+            "started_at": null,
+            "finished_at": null,
+            "elapsed_seconds": 0,
+            "active_seconds": 0,
+            "waiting_seconds": 0,
+            "waiting_external_seconds": 0,
+            "blocked_seconds": 0,
+            "needs_human_seconds": 0,
+            "idle_seconds": 0
+          }
+        },
+        {
+          "id": "delivery",
+          "title": "本地原件交付",
+          "acceptance": "报告、JSON、命令原件、hash、待发布 manifest 验证通过",
+          "weight": 1.0,
+          "phase_id": "local",
+          "phase_title": "本地核验",
+          "state": "planned",
+          "started_at": null,
+          "completed_at": null,
+          "evidence": [],
+          "note": null,
+          "timing": {
+            "started_at": null,
+            "finished_at": null,
+            "elapsed_seconds": 0,
+            "active_seconds": 0,
+            "waiting_seconds": 0,
+            "waiting_external_seconds": 0,
+            "blocked_seconds": 0,
+            "needs_human_seconds": 0,
+            "idle_seconds": 0
+          }
+        }
+      ],
+      "completed_steps": 0,
+      "total_steps": 3
+    }
+  ],
+  "evidence": [],
+  "event_count": 3,
+  "source_status": "running",
+  "admission": {
+    "state": "excluded",
+    "reason_code": "explicit_general_scope",
+    "source": "task.monitoring.scope"
+  },
+  "business_status": "unknown",
+  "business_completion": {
+    "verified": false,
+    "reason_code": "not_admitted"
+  },
+  "execution": {
+    "state": "unknown",
+    "reason_code": "missing_exact_root_thread",
+    "observed_at": null
+  }
+}
+

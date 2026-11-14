@@ -1,0 +1,628 @@
+FILE /dwdhome/fy/BASE_E6_2/mquant/tis/frp/EawBattleP.py EXISTS True
+30:     "EawBattleP",
+31: ]
+32: 
+33: 
+34: class _OnlyReadTypedIngress(BaseSymbolFrpFao):
+35:     __abstract_fao__ = True
+36: 
+37:     def hold_cal_type(self):
+38:         return CalType.OnlyRead
+39: 
+40: 
+41: class _CalculatedP1Product(BaseSymbolFrpFao):
+42:     __abstract_fao__ = True
+43: 
+44:     def hold_cal_type(self):
+45:         return CalType.Cache
+46: 
+47:     def to_df(self):
+48:         raise TypeError(
+49:             f"{type(self).__name__} is a typed P2 input configuration; "
+50:             "read the materialized EawBattleP public products instead"
+51:         )
+52: 
+53: 
+54: class WallOccurrenceFao(_OnlyReadTypedIngress):
+55:     params = lambda: {"wallOccurrenceSource": WallAssembler()}
+56: 
+57: 
+58: class BuildOccurrenceFao(_OnlyReadTypedIngress):
+59:     params = lambda: {
+60:         "buildOccurrenceSource": BuildAssembler(),
+61:         "buildWallSource": WallAssembler(),
+62:     }
+63: 
+64: 
+65: class AttackSegmentFao(_OnlyReadTypedIngress):
+66:     params = lambda: {
+67:         "attackSegmentSource": AttackFlowAssembler(),
+68:         "attackSegmentWallSource": WallAssembler(),
+69:     }
+70: 
+71: 
+72: class FormationEvidenceFao(_OnlyReadTypedIngress):
+73:     params = lambda: {
+74:         "formationEvidenceSource": AttackFlowAssembler(),
+75:         "formationEvidenceWallSource": WallAssembler(),
+76:     }
+77: 
+78: 
+79: class WallBarrierFao(_OnlyReadTypedIngress):
+80:     params = lambda: {
+81:         "wallBarrierSource": AttackFlowAssembler(),
+82:         "wallBarrierWallSource": WallAssembler(),
+83:     }
+84: 
+85: 
+86: class AbsorbOccurrenceFao(_OnlyReadTypedIngress):
+87:     params = lambda: {
+88:         "absorbOccurrenceSource": AbsorbAssembler(),
+89:         "absorbWallSource": WallAssembler(),
+90:     }
+91: 
+92: 
+93: class EawP1WallLifecycleFrp(_CalculatedP1Product):
+94:     params = lambda: {"wallLifecycleInput": WallOccurrenceFao()}
+95: 
+96:     def doFrpUpSource(self):
+97:         return [self.P.wallLifecycleInput.P.wallOccurrenceSource]
+98: 
+99: 
+100: class EawP1BuildActivityFrp(_CalculatedP1Product):
+101:     params = lambda: {"buildActivityInput": BuildOccurrenceFao()}
+102: 
+103:     def doFrpUpSource(self):
+104:         source = self.P.buildActivityInput
+FILE /dwdhome/fy/BASE_E6_2/mquant/tis/frp/Base.py EXISTS True
+1: from mquant.frame import *
+2: 
+3: import numpy as np
+4: import pandas as pd
+5: import os
+6: 
+7: from ..lib3 import *
+8: 
+9: __all__ = [
+10:     "FrpAdtDfMixIn"
+11: ]
+12: 
+13: class FrpAdtDfMixIn(FrpMixIn, AbstractParamFao):
+14:     '''
+15:     Author: zy
+16:     Since : 2025-05-20 14:50
+17:     Desc  : adt事件转换DataFrame的混入类
+18:     '''
+19:     def _gen_df_from_event(self, event_name, fields_map, index_depth=1):
+20:         """通用的adt事件转DataFrame函数.最多支持3层索引,即adt有两层不定长度的字段
+21:         
+22:         Args:
+23:             event_name: 事件名称
+24:             fields_map: 字段映射字典 {df列名: 事件字段路径}
+25:             index_depth: 索引层级数量 (1-3)
+26:         
+27:         Returns:
+28:             pandas.DataFrame
+29:         
+30:         将adt event转为df的规律:
+31:             ①. 1个adt event转成1个或多个df
+32:             针对1个保存了多个event的特征,通常而言,1个adt event转成1个df。最终返回df的dict。
+33:             除非这个adt的field之间长度不一致(则index不能对齐)。长度不一致的情况比如:data Envelope2D r = Envelope2D {
+34:                 nenveLine :: Line2D r,
+35:                 nenveOnPoints :: [Point2D r],
+36:                 nenveOutPoints :: [Point2D r]
+37:             }
+38:             长度不一致时,每种长度的field调用1次_gen_df_from_event,转成1个df,即nenveLine是1个df,nenveOnPoints、nenveOutPoints是另外两个。
+39:             ②. 如何打平adt event得到1个df
+40:             针对每个df,有几层MulWrap(包装list的类型,泛指不定长度的类型)则有几层index。
+41:             生成该df的步骤是:
+42:             1.读取每个field的序列,以多层adt的field拼接的字符串作为列名,以触发的自然时间为第一层index创建df;
+43:             可能遇到事件从未触发,则获取field序列会报错,此时触发exception,返回空df。
+44:             如果只有一层index则完成。如果还有第两层,继续:
+45:             2.以第一层index进行分组,同时触发的归为一组,计数得第二层index,df的基础上加入第二层index;
+46:             如果只有两层index则完成,如果还有第三层,继续:
+47:             3.以第二层index进行分组,同时触发的归为一组,计数得第三层index,df的基础上加入第三层index;    
+48:             
+49:         生成参数,调用该函数实现to_dfs()的prompt:
+50:             根据adt的声明,按照adt转df的规律,为xx特征保存的adt event准备多个fields_map,
+51:             应用gen_df_from_event得到多个df,最终返回df的dict,坚决不要额外加代码。
+52:             要求fields_map一层层地抵达adt的最底层,完全对照着提供的adt类型来,不要自己编字段。
+53:         """
+54:         
+55:         if self.load_extra() is not None:
+56:             datas = {**self.F,**self.load_extra()}
+57:         else:
+58:             datas = self.F
+59:         dbasr = datas.get(event_name).value.root_seq
+60:         event_ts = datas.get(event_name).ts
+61: 
+62:         # 构建基础数据
+63:         data = {}
+64:         # 有可能事件从未触发而取不到
+65:         try:
+66:             for col_name, field_path in fields_map.items():
+67:                 # 处理嵌套字段路径,如 "mul.startPoint.x"
+68:                 parts = field_path.split('.')
+69:                 curr_data = dbasr
+70:                 for part in parts:
+71:                     curr_data = curr_data[part]
+72:                 data[col_name] = curr_data
+73:         except Exception as e:
+74:             print(f"Exception generating DataFrame for event \"{event_name}\", maybe no occurrence?: {e}")
+75:             return pd.DataFrame(columns=fields_map.keys())
+76:         # 处理不同层级的索引
+77:         if index_depth == 1:
+78:             # 单层索引 - 直接使用事件时间戳
+79:             df = pd.DataFrame(data, index=event_ts)
+80: 
+81:         else:
+82:             # 多层索引处理
+83:             # 第二层索引。取第1个`.`截断的位置,因为要求长度一致,所以必定是MulWrap这种类型
+84:             keys = list(fields_map.values())
+85:             
+86:             if index_depth == 2:
+87:                 ridxs = dbasr[keys[0].split('.')[0]].ridxs
+88:                 ts_index = event_ts[ridxs[0,:]]
+89:                 df = pd.DataFrame(data, index=ts_index)
+90: 
+91:                 # 第二层索引 - 同时间点分组计数
+92:                 # df['record_id'] = ridxs[1,:]
+93:                 df['record_id'] = pd.Series(ridxs[1,:],index=df.index,copy=False)
+94:                 df.set_index('record_id', append=True, inplace=True)
+95: 
+FILE /dwdhome/fy/BASE_E6_2/mquant/frame/lang/internal/dao/frp/dba.py EXISTS True
+1: import pandas as pd
+2: import os
+3: from pydim.dim import *
+4: from .....lib3 import *
+5: from .....core import *
+6: from ..util import *
+7: 
+8: 
+9: __all__ = ["FrpDbaDao", "FrpExtraDbaDao"]
+10: 
+11: 
+12: class FrpDbaDao(AbstractFaoDao):
+13:     """
+14:     Author: King
+15:     Since : 2025-04-02 15:53
+16:     Desc  :
+17:         - Frp 特征 dba 存取对象
+18:         - 不保存数据,由 haskell 端保存
+19:     """
+20: 
+21:     def dump(self, *args, **kwargs):
+22:         # 这里不保存，在 haskell 端保存
+23:         raise NotImplementedError
+24:     
+25:     @property
+26:     def file_path(self):
+27:         """字段文件路径"""
+28:         return os.path.join(self.full_dir, "fields.json")
+29: 
+30:     def is_exist_data(self):
+31:         """是否保存了结果"""
+32:         return os.path.isfile(self.file_path)
+33:     
+34:     def load_fields(self):
+35:         """字段信息单独保存到了一个文件中"""
+36:         ds: dict = JsonUtil.load2(self.file_path)
+37:         res = dict()
+38:         for k, v in ds.items():
+39:             res[k] = NormalField.from_str(v)
+40:         return DictField(res)
+41: 
+42:     @property
+43:     def gfull_dir(self):    
+44:         return self.feat.gfull_dir
+45: 
+46:     def load(self, refresh=False):
+47:         res = None
+48:         gfull_dir = self.gfull_dir
+49:         if gfull_dir is not None:
+50:             res = self.loadWith(gfull_dir)
+51:         if res is None:
+52:             res = self.loadWith(self.full_dir)
+53:         return res
+54:     
+55:     def loadWith(self, full_dir):
+56:         fields_path = os.path.join(full_dir, "fields.json")
+57:         if not os.path.isfile(fields_path):
+58:             return None
+59:         
+60:         ds: dict = JsonUtil.load2(fields_path)
+61:         tar_fields = dict()
+62:         for k, v in ds.items():
+63:             tar_fields[k] = NormalField.from_str(v)
+64:         tar_fields = DictField(tar_fields)
+65:     
+66:         res = {}
+67:         tfields = tar_fields
+68:         for field, fld in tfields.items():
+69:             if field.startswith("price."):
+70:                 continue
+71: 
+72:             pname = f"price.{field}"
+73:             pfld = tfields.get(pname)
+74: 
+75:             fdata = None
+76:             if fld.is_adt_field():
+77:                 fdata = {
+78:                     "value": DbaStore(os.path.join(full_dir, field), fld.adt_class),
+79:                     "ts": DbaUtil.read_field_ts(full_dir, field, True),
+80:                 }
+81:                 if pfld:
+82:                     fdata[pname] = DbaUtil.read_ndarray(full_dir, pname, pfld.dtype)
+83: 
+84:             elif isinstance(fld, NormalField):
+85:                 ts = DbaUtil.read_field_ts(full_dir, field, True)
+86: 
+87:                 data = {field: DbaUtil.read_ndarray(full_dir, field, fld.dtype)}
+88:                 if pfld:
+89:                     data[pname] = DbaUtil.read_ndarray(full_dir, pname, pfld.dtype)
+90: 
+91:                 fdata = pd.DataFrame(index=ts, data=data, copy=False)
+92:             else:
+93:                 raise Exception(f"{field} no support field type: {fld}")
+94: 
+95:             res[field] = fdata
+96: 
+97:         return Ndict(res)
+98: 
+99: 
+100: class FrpExtraDbaDao(FrpDbaDao):
+101:     """
+102:     Author: King
+103:     Since : 2025-02-20 15:53
+104:     Desc  :
+105:         - 获取 Frp 保存的中间特征数据
+106:     """
+107: 
+108:     @property
+109:     def full_dir(self):
+110:         return os.path.join(self.feat.full_dir, "extra")
+111: 
+112:     @property
+113:     def gfull_dir(self):
+114:         path = self.feat.gfull_dir
+115:         if path is None:
+116:             return None
+117:         return os.path.join(path, "extra")
+FILE /dwdhome/fy/BASE_E6_2/mquant/tis/hf/prel0/wall_assembler.py EXISTS True
+630:           support_count:
+631:             Type: int64
+632:             Desc: F8 support_flag 命中的 tick 数。
+633:           thin_touch_count:
+634:             Type: int64
+635:             Desc: F9 thin_touch_flag 命中的 tick 数。
+636:           active_bid_wall_status_code / active_ask_wall_status_code:
+637:             Type: int8
+638:             Desc: chunk 结束时对应侧 Wall 状态编码。
+639:           active_bid_wall_id / active_ask_wall_id:
+640:             Type: int64
+641:             Desc: chunk 结束时对应侧 source-run producer-local Wall 编号；无 Wall 时为 0。
+642:       wall_assembler_chunk_checkpoints:
+643:         Type: DataFrame
+644:         Desc: 关键状态检查点表，只记录 chunk start / chunk end 与事件发射点。
+645:       wall_assembler_chunk_meta:
+646:         Type: DataFrame
+647:         Desc: 每个交易日 chunk 的边界与定位信息。
+648:         Fields:
+649:           chunk_id:
+650:             Type: int64
+651:             Desc: chunk 序号，从 0 开始递增。
+652:           boundary_type_code:
+653:             Type: int8
+654:             Desc: chunk 边界类型编码；当前 trading_day=1。
+655:           trade_day:
+656:             Type: datetime64[ns]
+657:             Desc: 该 chunk 对应的交易日日期。
+658:           start_uti:
+659:             Type: int64
+660:             Desc: chunk 首个 tick 的项目侧 uti。
+661:           end_uti:
+662:             Type: int64
+663:             Desc: chunk 最后一个 tick 的项目侧 uti。
+664:           start_ts:
+665:             Type: datetime64[ns]
+666:             Desc: chunk 首个 tick 的时间戳。
+667:           end_ts:
+668:             Type: datetime64[ns]
+669:             Desc: chunk 最后一个 tick 的时间戳。
+670:           n_ticks:
+671:             Type: int64
+672:             Desc: chunk 内 tick 数量。
+673:       wall_assembler_carry_out_state:
+674:         Type: DataFrame
+675:         Desc: 跨物理 chunk 传递的 bid／ask 两个 Wall slot 完整状态；字段与 chunk_end_state 使用相同侧别后缀。
+676:       wall_assembler_optional_audit_outputs:
+677:         Type: DataFrame
+678:         Desc: 预留审计输出，默认为空表。
+679:     """
+680: 
+681:     params = lambda: dict(
+682:         parameter_set_id="wall-default",
+683:         qt_freq="1d",
+684:         qt_n=30,
+685:         qt_quantile=0.997,
+686:         w_depth_ref_ticks=1200,
+687:         large_quote_ratio_min=1.0,
+688:         allow_zero_qt_fallback=False,
+689:         thick_vs_hi_ratio=1.0,
+690:         thin_vs_mid_ratio=0.7,
+691:         allow_thin_brick=False,
+692:         p_wall_ticks=1,
+693:         t_wall_ticks=6,
+694:         near_band_ticks=None,
+695:         far_band_ticks=None,
+696:         connect_max_core_dist_ticks=None,
+697:         connect_gap_max_ticks=None,
+698:         support_buffer_keep_ticks=None,
+699:         thin_eval_window_ticks=None,
+700:         band_update_min_shift_ticks=None,
+701:         dormant_no_presence_ticks=None,
+702:         dormant_far_ticks=None,
+703:         end_far_hold_ticks=None,
+704:         end_far_ticks=None,
+705:         break_after_no_presence_ticks=None,
+706:         wall_dead_timeout_ticks=None,
+707:         allow_brick_join_dormant=True,
+708:         thin_contact_min_hits=3,
+709:         thin_contact_frac_end=0.6,
+710:     )
+711: 
+712:     def _impl(self):
+FILE /dwdhome/fy/BASE_E6_2/mquant/tis/hf/prel0/p1_dba_export.py EXISTS True
+1: """P1 对现有 DataFrameMixIn/DFDbaDao 的产品级薄适配。
+2: 
+3: 本模块只负责 DBA 可接受的数值表形状、同一业务时间的物理分流，以及在平台原生
+4: dump 成功后写薄 receipt；不建立新的 transport、revision 或 commit-marker 层。
+5: """
+6: 
+7: from __future__ import annotations
+8: 
+9: from dataclasses import dataclass
+10: import os
+11: import resource
+12: import time
+13: 
+14: import numpy as np
+15: import pandas as pd
+16: 
+17: from mquant.frame import DataFrameField
+18: from mquant.frame import DbaUtil
+19: from mquant.frame.lib3 import JsonUtil
+20: 
+21: from .p1_product_receipt import P1ReceiptError
+22: from .p1_product_receipt import validate_product_receipt
+23: from .p1_product_receipt import write_p1_product_receipt
+24: 
+25: 
+26: def process_peak_rss_mib():
+27:     """Linux ru_maxrss 以 KiB 计；只用于运行观察，不进入业务合同。"""
+28:     return float(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss) / 1024.0
+29: 
+30: 
+31: def log_chunk_performance(
+32:     logger,
+33:     *,
+34:     sym,
+35:     feature_name,
+36:     chunk_meta,
+37:     compute_seconds,
+38:     dba_copy_seconds,
+39: ):
+40:     if logger is None:
+41:         return
+42:     elapsed = max(float(compute_seconds) + float(dba_copy_seconds), 1e-12)
+43:     n_ticks = int(chunk_meta["n_ticks"])
+44:     logger.info(
+45:         "分块性能: %s %s trade_day=%s n_ticks=%d compute_seconds=%.6f "
+46:         "dba_copy_seconds=%.6f rows_per_second=%.1f peak_rss_mib=%.1f",
+47:         sym,
+48:         feature_name,
+49:         chunk_meta["trade_day"],
+50:         n_ticks,
+51:         float(compute_seconds),
+52:         float(dba_copy_seconds),
+53:         n_ticks / elapsed,
+54:         process_peak_rss_mib(),
+55:     )
+56: 
+57: 
+58: def _fit_cross_language_dba_fields(frame):
+59:     """让 P1 DBA 元数据使用 FRP 现有读取器支持的 canonical dtype 名。"""
+60:     fields = DataFrameField.fit_dictfield(frame)
+61:     for _name, field in fields.items():
+62:         # Python DataFrameField 会把 numpy.int8 原样记成 ``int8``，但既有
+63:         # FRP generic loader 的一字节整数名是 ``i1``。这里只修 P1 artifact
+64:         # 的物理元数据，不改变字段值、业务参数身份或公共平台。
+65:         if getattr(field, "dtype", None) == "int8":
+66:             field.dtype = "i1"
+67:     return fields
+68: 
+69: 
+70: def _widen_int8_for_platform_dump(frame):
+71:     """普通平台 dump 无法注入 canonical i1 元数据时，改用等值 int64。"""
+72:     columns = [
+73:         column for column in frame.columns
+74:         if pd.api.types.is_dtype_equal(frame[column].dtype, np.dtype("int8"))
+75:     ]
+76:     if not columns:
+77:         return frame
+78:     widened = frame.copy()
+79:     for column in columns:
+80:         widened[column] = widened[column].astype("int64", copy=False)
+81:     return widened
+82: 
+83: 
+84: @dataclass(frozen=True)
+85: class P1ChunkedFrameSpec:
+FILE /dwdhome/fy/BASE_E6_2/mquant/tis/hf/prel0/p1_product_receipt.py EXISTS True
+158:     commit_process = subprocess.run(
+159:         ["git", "-C", str(root), "rev-parse", "HEAD"],
+160:         stdout=subprocess.PIPE,
+161:         stderr=subprocess.PIPE,
+162:         text=True,
+163:         check=False,
+164:     )
+165:     commit = commit_process.stdout.strip()
+166:     if commit_process.returncode != 0 or len(commit) != 40:
+167:         raise P1ReceiptError("无法取得 producer repo commit/build")
+168: 
+169:     digest = hashlib.sha256()
+170:     for path in sorted(set(paths)):
+171:         relative = path.relative_to(root).as_posix()
+172:         digest.update(relative.encode("utf-8"))
+173:         digest.update(b"\0")
+174:         digest.update(path.read_bytes())
+175:         digest.update(b"\0")
+176:     return f"git:{commit}+source-sha256:{digest.hexdigest()}"
+177: 
+178: 
+179: def source_scope(
+180:     symbol,
+181:     frame,
+182:     *,
+183:     target=None,
+184:     calendar=None,
+185:     session=None,
+186:     uti_column="uti",
+187:     market_source_cut=None,
+188: ):
+189:     """从当前 Feature 的真实输入切面形成结构化 source scope。"""
+190:     if not isinstance(frame, pd.DataFrame) or frame.shape[0] <= 0:
+191:         raise P1ReceiptError("不能为无输入范围的产品生成 success receipt")
+192:     if uti_column in frame.columns:
+193:         values = frame[uti_column].astype("int64")
+194:         time_range = f"uti:{int(values.min())}..{int(values.max())}"
+195:     else:
+196:         first = pd.Timestamp(frame.index[0]).isoformat()
+197:         last = pd.Timestamp(frame.index[-1]).isoformat()
+198:         time_range = f"time:{first}..{last}"
+199:     target_value = str(target or symbol)
+200:     calendar_value = str(session or calendar or "@")
+201:     source_cut = market_source_cut or frame.attrs.get("market_source_cut")
+202:     if not source_cut:
+203:         source_cut = f"market:{target_value}:{calendar_value}:{time_range}"
+204:     return {
+205:         "target": target_value,
+240: def make_product_receipt(
+241:     *,
+242:     product_kind,
+243:     feature_module,
+244:     feature_symbol,
+245:     formal_output,
+246:     actual_parameters,
+247:     source_input_scope,
+248:     output_frames,
+249:     code_fingerprint,
+250:     feature=None,
+251:     upstream_receipts=(),
+252:     producer_private_parameters=None,
+253:     parameter_identity=None,
+254:     parameter_set_id=None,
+255:     artifact_path=None,
+256:     attack_segment_formation_method_snapshot=None,
+257:     method_snapshot_fingerprint=None,
+258:     **_ignored_non_authoritative_metadata,
+259: ):
+260:     """构造一张与单产品 DBA artifact 同目录保存的薄 receipt。"""
+261:     if product_kind not in PRODUCT_KINDS:
+262:         raise P1ReceiptError(f"未知 P1 product_kind: {product_kind}")
+263:     for key, frame in dict(output_frames).items():
+264:         if not isinstance(key, str) or not isinstance(frame, pd.DataFrame):
+265:             raise P1ReceiptError("output_frames 必须是 result-key 到 DataFrame 的映射")
+266:     parameters = _json_value(actual_parameters)
+267:     selected_parameter_set = _parameter_set_id(
+268:         feature, parameters, parameter_set_id or parameter_identity
+269:     )
+270:     family = parameters.get("qualification_family")
+271:     instance_parts = [str(feature_symbol)]
+272:     if family:
+273:         instance_parts.append(str(family))
+274:     instance_parts.append(selected_parameter_set)
+275:     if artifact_path is None:
+276:         base = _feature_directory(feature) if feature is not None else Path(".")
+277:         artifact_path = base
+278:     upstream_receipts = tuple(upstream_receipts)
+279:     for _role, upstream_receipt in upstream_receipts:
+280:         checked_upstream = validate_product_receipt(upstream_receipt)
+281:         if checked_upstream["source_scope"] != _json_value(source_input_scope):
+282:             raise P1ReceiptError("direct upstream 与当前产品 source_scope 不一致")
+283:     upstreams = [_direct_upstream(receipt) for _, receipt in upstream_receipts]
+284:     snapshot = attack_segment_formation_method_snapshot
+285:     if method_snapshot_fingerprint is None and snapshot is not None:
+286:         method_snapshot_fingerprint = "sha256:" + fingerprint(snapshot)
+287:     receipt = {
+288:         "product_kind": product_kind,
+289:         "feature_instance": ":".join(instance_parts),
+290:         "parameter_set_id": selected_parameter_set,
+291:         "source_scope": _json_value(source_input_scope),
+292:         "actual_business_parameters": parameters,
+293:         "producer_private_parameters": _json_value(
+294:             producer_private_parameters or {}
+295:         ),
+296:         "direct_upstream_artifacts": upstreams,
+297:         "method_snapshot_fingerprint": method_snapshot_fingerprint,
+298:         "schema_version": PRODUCT_SCHEMA_VERSIONS[product_kind],
+299:         "code_version": str(code_fingerprint),
+300:         "artifact_location": str(artifact_path),
+301:         "status": "success",
+302:         "error": None,
+303:     }
+304:     return validate_product_receipt(receipt)
+305: 
+306: 
+307: def validate_product_receipt(receipt, expected_kind=None, **_ignored):
+360: def receipt_sidecar_path(feature_or_dir, product_kind):
+361:     return _feature_directory(feature_or_dir) / RECEIPT_DIR_NAME / f"{product_kind}.json"
+362: 
+363: 
+364: def _atomic_write_json(path, payload):
+365:     path = Path(path)
+366:     path.parent.mkdir(parents=True, exist_ok=True)
+367:     fd, temporary_name = tempfile.mkstemp(prefix=".p1-receipt-", dir=str(path.parent))
+368:     try:
+369:         with os.fdopen(fd, "w", encoding="utf-8") as handle:
+370:             json.dump(payload, handle, ensure_ascii=False, sort_keys=True, indent=2)
+371:             handle.flush()
+372:             os.fsync(handle.fileno())
+373:         os.replace(temporary_name, path)
+374:     except Exception:
+375:         try:
+376:             os.unlink(temporary_name)
+377:         except FileNotFoundError:
+378:             pass
+379:         raise
+380: 
+381: 
+382: def write_p1_product_receipt(*, feature_or_dir, receipt):
+383:     checked = validate_product_receipt(receipt)
+384:     _atomic_write_json(
+385:         receipt_sidecar_path(feature_or_dir, checked["product_kind"]), checked
+386:     )
+387:     return checked
+388: 
+389: 
+390: def load_p1_product_receipt(feature_or_dir, product_kind, **_ignored):
+391:     path = receipt_sidecar_path(feature_or_dir, product_kind)
+392:     if not path.is_file():
+393:         raise P1ReceiptError(f"缺少 P1 thin receipt: {path}")
+394:     try:
+395:         value = json.loads(path.read_text(encoding="utf-8"))
+396:     except json.JSONDecodeError as exc:
+397:         raise P1ReceiptError(f"P1 thin receipt 非法: {path}") from exc
+398:     return validate_product_receipt(value, expected_kind=product_kind)
+399: 
+400: 
+401: def stage_product_receipts(feature, receipts):
+402:     checked = tuple(validate_product_receipt(item) for item in receipts)
+403:     if not checked:
+404:         raise P1ReceiptError("P1 Feature 至少需要一张产品 receipt")
+405:     # Feature/Fao 对普通属性赋值有参数保护；这是 dump 生命周期内的私有暂存，
+406:     # 不属于业务参数，必须绕过其受限 __setattr__。
+407:     object.__setattr__(feature, "_p1_pending_receipts", checked)
+408:     return checked
+409: 
+410: 

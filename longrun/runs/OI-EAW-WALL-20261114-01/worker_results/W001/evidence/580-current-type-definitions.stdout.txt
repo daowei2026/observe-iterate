@@ -1,0 +1,117 @@
+TYPE /dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Products.hs 186
+186: data FeatureRunIdentity = FeatureRunIdentity
+187:   { featureClassName :: Text,
+188:     parameterSetId :: Text,
+189:     targetRef :: Text,
+190:     calendarRef :: Text,
+191:     timeRangeRef :: Text,
+192:     sourceScopeRef :: Text,
+193:     artifactRef :: Text,
+194:     schemaVersion :: Text,
+195:     codeVersion :: Text
+196:   }
+197:   deriving (Eq, Ord, Show, Generic)
+198: 
+199: instance ToJSON FeatureRunIdentity where
+200:   toJSON value =
+201:     object
+202:       [ "feature_symbol" .= featureClassName value,
+203:         "parameter_set_id" .= parameterSetId value,
+204:         "target" .= targetRef value,
+TYPE /dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Products.hs 428
+428: data P1ProductDiagnostics productError = P1ProductDiagnostics
+429:   { p1IngressDiagnostics :: [P1IngressError],
+430:     p1StateDiagnostics :: [productError]
+431:   }
+432:   deriving (Eq, Ord, Show, Generic)
+433: 
+434: mergeP1ProductDiagnostics :: [P1ProductDiagnostics productError] -> P1ProductDiagnostics productError
+435: mergeP1ProductDiagnostics values =
+436:   P1ProductDiagnostics
+437:     (concatMap p1IngressDiagnostics values)
+438:     (concatMap p1StateDiagnostics values)
+439: 
+440: newtype OccurrenceRef = OccurrenceRef {unOccurrenceRef :: Text}
+441:   deriving (Eq, Ord, Show, Generic)
+442: 
+443: newtype WallIdentity = WallIdentity
+444:   { wallIdentityLocalNo :: Int64
+445:   }
+446:   deriving (Eq, Ord, Show, Generic)
+TYPE /dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Products.hs 486
+486: data WallLifecycleOccurrence = WallLifecycleOccurrence
+487:   { wallOccurrenceIdentity :: WallIdentity,
+488:     wallOccurrenceRef :: OccurrenceRef,
+489:     wallOccurrencePayload :: Spine.WallLifecycleEvent
+490:   }
+491:   deriving (Eq, Ord, Show, Generic)
+492: 
+493: data BuildActivityOccurrence = BuildActivityOccurrence
+494:   { buildOccurrenceIdentity :: BuildActivityIdentity,
+495:     buildOccurrenceWallIdentity :: WallIdentity,
+496:     buildOccurrenceRef :: OccurrenceRef,
+497:     buildOccurrencePayload :: Spine.BuildActivityEvent
+498:   }
+499:   deriving (Eq, Ord, Show, Generic)
+500: 
+501: data AttackFormationMaterialOccurrence = AttackFormationMaterialOccurrence
+502:   { formationOccurrenceWallIdentity :: WallIdentity,
+503:     formationOccurrenceRef :: OccurrenceRef,
+504:     formationOccurrenceAttemptRef :: Maybe AttackSegmentAttemptRef,
+TYPE /dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Products.hs 570
+570: data WallBusinessState = WallPresent | WallDormantState | WallEndedState deriving (Eq, Ord, Show, Generic)
+571: 
+572: data BuildBusinessState = BuildInProgress | BuildStoppedState deriving (Eq, Ord, Show, Generic)
+573: 
+574: data AbsorbBusinessState = AbsorbInProgress | AbsorbResolvedState deriving (Eq, Ord, Show, Generic)
+575: 
+576: data WallCurrentView = WallCurrentView
+577:   { wallCurrentIdentity :: WallIdentity,
+578:     wallCurrentState :: WallBusinessState,
+579:     wallCurrentOccurrence :: WallLifecycleOccurrence
+580:   }
+581:   deriving (Eq, Ord, Show, Generic)
+582: 
+583: data BuildCurrentView = BuildCurrentView
+584:   { buildCurrentIdentity :: BuildActivityIdentity,
+585:     buildCurrentWallIdentity :: WallIdentity,
+586:     buildCurrentState :: BuildBusinessState,
+587:     buildCurrentMilestoneCount :: Int,
+588:     buildCurrentOccurrence :: BuildActivityOccurrence
+TYPE /dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Products.hs 576
+576: data WallCurrentView = WallCurrentView
+577:   { wallCurrentIdentity :: WallIdentity,
+578:     wallCurrentState :: WallBusinessState,
+579:     wallCurrentOccurrence :: WallLifecycleOccurrence
+580:   }
+581:   deriving (Eq, Ord, Show, Generic)
+582: 
+583: data BuildCurrentView = BuildCurrentView
+584:   { buildCurrentIdentity :: BuildActivityIdentity,
+585:     buildCurrentWallIdentity :: WallIdentity,
+586:     buildCurrentState :: BuildBusinessState,
+587:     buildCurrentMilestoneCount :: Int,
+588:     buildCurrentOccurrence :: BuildActivityOccurrence
+589:   }
+590:   deriving (Eq, Ord, Show, Generic)
+591: 
+592: -- | 贴墙攻势段簿的当前业务投影。
+593: --
+594: -- 已形成段按业务身份寻址。FormationEvidence 与 formal Barrier 由各自的
+WRITER_TYPES /dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Publication.hs
+611: newtype WallOccurrenceBatch = WallOccurrenceBatch
+612:   { wallOccurrences :: [WallLifecycleOccurrence]
+613:   }
+614:   deriving (Eq, Show, Generic, ToBSON, FromBSON)
+615: 
+616: newtype WallCurrentBatch = WallCurrentBatch
+617:   { wallCurrentViews :: [WallCurrentView]
+618:   }
+619:   deriving (Eq, Show, Generic, ToBSON, FromBSON)
+620: 
+621: newtype WallDiagnostic = WallDiagnostic
+622:   { wallDiagnosticError :: P1ProductDiagnostics WallLifecycleError
+623:   }
+624:   deriving (Eq, Show, Generic, ToBSON, FromBSON)
+625: 
+626: newtype BuildOccurrenceBatch = BuildOccurrenceBatch

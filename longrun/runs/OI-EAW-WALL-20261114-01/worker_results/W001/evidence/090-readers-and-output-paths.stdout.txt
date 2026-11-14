@@ -1,0 +1,187 @@
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:27:    groupResultKeyFields,
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:111:-- 表会按字段数放大底层事件。这里仍读取同一份 fields.json／DBA 文件，但
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:129:loadPackedNumericRows fullDir resultKey fields = do
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:136:      fields
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:168:  let receiptPath = fullDir <> "/p1_receipts/" <> Text.unpack kind <> ".json"
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:169:  receiptExists <- doesFileExist receiptPath
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:170:  if not receiptExists
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:171:    then pure (Left ("P1 thin receipt sidecar is missing: " <> kind))
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:173:      receiptResult <- eitherDecodeFileStrict' receiptPath
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:175:        receipt <- either (Left . Text.pack) Right receiptResult
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:176:        validateReceiptKind kind receipt
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:182:  receipt <- either (error . Text.unpack) pure result
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:184:    (normalise (Text.unpack (receiptArtifactLocation receipt)) /= normalise fullDir)
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:185:    (error ("P1 thin receipt artifact_location 与实际 Fao source 不一致: " <> fullDir))
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:186:  pure receipt
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:197:loadGenericProduct :: (HasHisBack) => PyAny -> Text -> FaoModel GenericFaoResult
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:198:loadGenericProduct source kind = do
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:206:  fields <- maybe (error ("P1 packed occurrence fields.json is missing: " <> fullDir)) pure metadata
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:213:          (Map.filterWithKey (\key _ -> any (`Text.isPrefixOf` key) prefixes) fields)
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:229:    forM (Map.toList groups) $ \(resultKey, fields) -> do
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:236:            (loadPackedNumericRows fullDir resultKey fields)
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:287:  propCalType = const OnlyRead
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:291:  propCalType = const OnlyRead
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:295:  propCalType = const OnlyRead
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:299:  propCalType = const OnlyRead
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:303:  propCalType = const OnlyRead
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:307:  propCalType = const OnlyRead
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:311:  propCalType = const OnlyRead
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:315:  load f = Just <$> loadGenericProduct (wallOccurrenceSource f) "wall_lifecycle"
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:317:  doImpl f = loadGenericProduct (wallOccurrenceSource f) "wall_lifecycle"
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:321:  load f = Just <$> loadGenericProduct (buildOccurrenceSource f) "build_activity"
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:323:  doImpl f = loadGenericProduct (buildOccurrenceSource f) "build_activity"
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:327:  load f = Just <$> loadGenericProduct (attackSegmentSource f) "attack_segment"
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:329:  doImpl f = loadGenericProduct (attackSegmentSource f) "attack_segment"
+edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:333:  load f = Just <$> loadGenericProduct (formationEvidenceSource f) "attack_formation_evidence"
+edh-universe/frp/frp-core/src/Frp/DbaStore/PyWrap.hs:73:      py'struct'bits'fields :: [PyBitsField],
+edh-universe/frp/frp-core/src/Frp/DbaStore/PyWrap.hs:75:      py'struct'seq'fields :: [PySeqField],
+edh-universe/frp/frp-core/src/Frp/DbaStore/PyWrap.hs:76:      py'struct'text'fields :: [String],
+edh-universe/frp/frp-core/src/Frp/DbaStore/PyWrap.hs:77:      py'struct'text'list'fields :: [String]
+edh-universe/frp/frp-core/src/Frp/DbaStore/PyWrap.hs:104:      bits'fields
+edh-universe/frp/frp-core/src/Frp/DbaStore/PyWrap.hs:106:      seq'fields
+edh-universe/frp/frp-core/src/Frp/DbaStore/PyWrap.hs:107:      text'fields
+edh-universe/frp/frp-core/src/Frp/DbaStore/PyWrap.hs:108:      text'list'fields
+edh-universe/frp/frp-core/src/Frp/DbaStore/PyWrap.hs:112:      (reverse bits'fields)
+edh-universe/frp/frp-core/src/Frp/DbaStore/PyWrap.hs:114:      (reverse seq'fields)
+edh-universe/frp/frp-core/src/Frp/DbaStore/PyWrap.hs:115:      (reverse text'fields)
+edh-universe/frp/frp-core/src/Frp/DbaStore/PyWrap.hs:116:      (reverse text'list'fields)
+edh-universe/frp/frp-core/src/Frp/DbaStore/PyWrap.hs:143:                bits'fields
+edh-universe/frp/frp-core/src/Frp/DbaStore/PyWrap.hs:145:                seq'fields
+edh-universe/frp/frp-core/src/Frp/DbaStore/PyWrap.hs:146:                text'fields
+edh-universe/frp/frp-core/src/Frp/DbaStore/PyWrap.hs:147:                text'list'fields
+edh-universe/frp/frp-core/src/Frp/DbaStore/PyWrap.hs:153:        forM_ bits'fields $ \(PyBitsField _ fn) -> pyShow (pyFieldName fn) >> pyStr ", "
+edh-universe/frp/frp-core/src/Frp/DbaStore/PyWrap.hs:155:        forM_ seq'fields $ \(PySeqField _ fn) -> pyShow (pyFieldName fn) >> pyStr ", "
+edh-universe/frp/frp-core/src/Frp/DbaStore/PyWrap.hs:156:        forM_ text'fields $ \fn -> pyShow (pyFieldName fn) >> pyStr ", "
+edh-universe/frp/frp-core/src/Frp/DbaStore/PyWrap.hs:157:        forM_ text'list'fields $ \fn -> pyShow (pyFieldName fn) >> pyStr ", "
+edh-universe/frp/frp-core/src/Frp/DbaStore/PyWrap.hs:161:        forM_ bits'fields $ \(PyBitsField (_ :: Proxy t) fn) -> do
+edh-universe/frp/frp-core/src/Frp/DbaStore/PyWrap.hs:185:        forM_ seq'fields $ \(PySeqField (_ :: Proxy e) fn) -> do
+edh-universe/frp/frp-core/src/Frp/DbaStore/PyWrap.hs:200:        forM_ text'fields $ \fn -> do
+edh-universe/frp/frp-core/src/Frp/DbaStore/PyWrap.hs:207:        forM_ text'list'fields $ \fn -> do
+edh-universe/frp/frp-core/src/Frp/DbaStore/PyWrap.hs:220:        forM_ bits'fields $ \(PyBitsField (_ :: Proxy t) fn) -> do
+edh-universe/frp/frp-core/src/Frp/DbaStore/PyWrap.hs:236:        forM_ seq'fields $ \(PySeqField (_ :: Proxy e) fn) -> do
+edh-universe/frp/frp-core/src/Frp/DbaStore/PyWrap.hs:245:        forM_ text'fields $ \fn -> do
+edh-universe/frp/frp-core/src/Frp/DbaStore/PyWrap.hs:252:        forM_ text'list'fields $ \fn -> do
+edh-universe/frp/frp-core/src/Frp/DbaStore/PyWrap.hs:268:        forM_ bits'fields $ \(PyBitsField (_ :: Proxy t) fn) -> do
+edh-universe/frp/frp-core/src/Frp/DbaStore/PyWrap.hs:292:        forM_ seq'fields $ \(PySeqField (_ :: Proxy e) fn) -> do
+edh-universe/frp/frp-core/src/Frp/DbaStore/PyWrap.hs:307:        forM_ text'fields $ \fn -> do
+edh-universe/frp/frp-core/src/Frp/DbaStore/PyWrap.hs:314:        forM_ text'list'fields $ \fn -> do
+edh-universe/frp/frp-core/src/Frp/DbaStore/PyWrap.hs:333:        forM_ bits'fields $ \(PyBitsField (_ :: Proxy t) fn) -> do
+edh-universe/frp/frp-core/src/Frp/DbaStore/PyWrap.hs:335:        forM_ text'fields $ \fn -> do
+edh-universe/frp/frp-core/src/Frp/DbaStore/PyWrap.hs:338:        forM_ bits'fields $ \(PyBitsField (_ :: Proxy t) fn) -> do
+edh-universe/frp/frp-core/src/Frp/DbaStore/Class.hs:43:    \dbaPath (DbaInfo (_ :: Proxy t) cap) ->
+edh-universe/frp/frp-core/src/Frp/DbaStore/Class.hs:44:      uncurry DbaData <$> mmapDBA @t (rootDir </> dbaPath) (Just cap) True
+edh-universe/frp/frp-core/src/Frp/Core/Trade/Class.hs:143:        withEventDump f $ do
+edh-universe/frp/frp-core/src/Frp/Core/Trade/Class.hs:147:          dumpAdtEvent' "long" elong
+edh-universe/frp/frp-core/src/Frp/Core/Trade/Class.hs:148:          dumpAdtEvent' "short" eshort
+edh-universe/frp/frp-core/src/Frp/DbaStore/Internal.hs:36:--   these can only support up to 64 constructors/fields per sum/product type,
+edh-universe/frp/frp-core/src/Frp/DbaStore/Internal.hs:235:  Map.lookup dbaPath <$> readIORef storeRef >>= \case
+edh-universe/frp/frp-core/src/Frp/DbaStore/Internal.hs:237:      (hdr, da) <- mmapDBA @a (rootDir </> dbaPath) Nothing False
+edh-universe/frp/frp-core/src/Frp/DbaStore/Internal.hs:238:      modifyIORef' storeRef $ Map.insert dbaPath (DbaData hdr da)
+edh-universe/frp/frp-core/src/Frp/DbaStore/Internal.hs:243:          "element type mismatch for dba in store: " ++ dbaPath
+edh-universe/frp/frp-core/src/Frp/DbaStore/Internal.hs:246:    dbaPath = sp ++ ".dba"
+edh-universe/frp/frp-core/src/Frp/DbaStore/Internal.hs:255:  Map.lookup dbaPath <$> readIORef storeRef >>= \case
+edh-universe/frp/frp-core/src/Frp/DbaStore/Internal.hs:260:            (hdr, da) <- mmapDBA @a (rootDir </> dbaPath) Nothing False
+edh-universe/frp/frp-core/src/Frp/DbaStore/Internal.hs:261:            modifyIORef' storeRef $ Map.insert dbaPath (DbaData hdr da)
+edh-universe/frp/frp-core/src/Frp/DbaStore/Internal.hs:268:          "element type mismatch for dba in store: " ++ dbaPath
+edh-universe/frp/frp-core/src/Frp/DbaStore/Internal.hs:271:    dbaPath = sp ++ ".dba"
+edh-universe/frp/frp-core/src/Frp/DbaStore/Internal.hs:288:countDbaElement' n sp = Map.alter chkUpd dbaPath
+edh-universe/frp/frp-core/src/Frp/DbaStore/Internal.hs:296:    dbaPath = sp ++ ".dba"
+edh-universe/frp/frp-core/src/Frp/DbaStore/Internal.hs:372:-- * instantiate known storable types as bits fields
+edh-universe/frp/frp-core/src/Frp/DbaStore/Internal.hs:400:-- TODO instantiate more bits fields as needed
+edh-universe/frp/frp-core/src/Frp/DbaStore/Internal.hs:480:-- | fallback impl for struct fields, i.e. custom ADT having Generic instance
+edh-universe/frp/frp-core/src/Frp/DbaStore/Internal.hs:519:                    userError "multiple fields calling back with diff VINs?!"
+edh-universe/frp/frp-core/src/Frp/DbaStore/Internal.hs:527:                userError "multiple fields calling back with diff VINs?!"
+edh-universe/frp/frp-core/src/Frp/Apt/Data.hs:13:    , getData'Fields'Type
+edh-universe/frp/frp-core/src/Frp/Apt/Data.hs:14:    , getData'Fields
+edh-universe/frp/frp-core/src/Frp/Apt/Data.hs:46:getData'Fields'Type :: (Data r) => r -> [(Text,TypeRep)]
+edh-universe/frp/frp-core/src/Frp/Apt/Data.hs:47:getData'Fields'Type r =
+edh-universe/frp/frp-core/src/Frp/Apt/Data.hs:49:        fields = getData'Fields r
+edh-universe/frp/frp-core/src/Frp/Apt/Data.hs:50:    in zip fields types
+edh-universe/frp/frp-core/src/Frp/Apt/Data.hs:53:getData'Fields :: (Data r) => r -> [Text]
+edh-universe/frp/frp-core/src/Frp/Apt/Data.hs:54:getData'Fields = fmap T.pack . constrFields <$> toConstr
+edh-universe/frp/frp-core/src/Frp/Apt/Data.hs:72:findData'FieldIndex n r = fromMaybe (error $ "No such field: " ++ T.unpack n) (n `elemIndex` getData'Fields r)
+edh-universe/frp/frp-core/src/Frp/Apt/Data.hs:99:--         tfs = getData'Fields'Type r
+edh-universe/frp/frp-core/src/Frp/Apt/Series.hs:563:writeList2Dba dataDir dataPath uuid xs = do
+edh-universe/frp/frp-core/src/Frp/Apt/Series.hs:566:      tmpPath = dataPath <.> toString uuid
+edh-universe/frp/frp-core/src/Frp/Apt/Series.hs:574:      new_path = dataDir </> dataPath <.> "dba"
+edh-universe/frp/frp-core/src/Frp/Apt/Series.hs:581:    createDeviceArray dataDir' dataPath' !mmapShape = do
+edh-universe/frp/frp-core/src/Frp/Apt/Series.hs:583:      mmapDbArray @a asVar dataDir' dataPath' mmapShape True
+edh-universe/frp/frp-core/src/Frp/Apt/Series.hs:608:writeList2DbaWith dataDir dataPath uuid xs f = do
+edh-universe/frp/frp-core/src/Frp/Apt/Series.hs:611:      tmpPath = dataPath <.> toString uuid
+edh-universe/frp/frp-core/src/Frp/Apt/Series.hs:619:      new_path1 = dataDir </> dataPath <.> "dba"
+edh-universe/frp/frp-core/src/Frp/Apt/Series.hs:626:    createDeviceArray dataDir' dataPath' !mmapShape = do
+edh-universe/frp/frp-core/src/Frp/Apt/Series.hs:628:      mmapDbArray @a asVar1 dataDir' dataPath' mmapShape True
+edh-universe/frp/frp-core/src/Frp/Apt/Series.hs:653:readDbaAsVector dataDir dataPath = do
+edh-universe/frp/frp-core/src/Frp/Apt/Series.hs:655:  mmapDbArray @a asVar (T.pack dataDir) (T.pack dataPath) Nothing False
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Tis.hs:123:  propCalType = const OnlyRead
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Tis.hs:205:  propCalType = const OnlyRead
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Ext.hs:87:  propCalType = const OnlyRead
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Ext.hs:196:  propCalType = const OnlyRead
+edh-universe/frp/frp-core/src/Frp/Core/Fao/GMap.hs:107:  propCalType = const OnlyRead
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Class.hs:32:    withEventDumpEnv,
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Class.hs:34:    modify'curr'dump'fields,
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Class.hs:35:    curr'dump'fields,
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Class.hs:147:  | OnlyRead -- 本特征只读
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Class.hs:151:  | AllCal -- 所有特征都重新计算不保存 OnlyRead 除外
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Class.hs:157:  safeConvert "OnlyRead" = return OnlyRead
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Class.hs:186:    dump_fields :: FieldMap (Text, IO (Int, Maybe Text)) -- 字段类型，保存函数 IO(数据长度，是否有价格)
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Class.hs:625:    let buid = if cal_type == OnlyRead || cal_type == Cache then T.intercalate "#" [uid, T.pack (show back)] else uid
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Class.hs:632:          OnlyRead -> do
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Class.hs:639:                    where doFile = error $ show (getFaoConstr f) ++ " OnlyRead not find result:" ++ full_dir ++ "\n" ++ show (ggjson f)
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Class.hs:640:                          doMongo = error $ show (getFaoConstr f) ++ " OnlyRead not find result:" ++ show cfg ++ "\n" ++ show (ggjson f)
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Class.hs:662:          _ -> error $ "Fao propCalType must be Cal or Cache or OnlyRead, cannot be " ++ show cal_type
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Class.hs:672:              withEventDumpEnv True f (doImpl f)
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Class.hs:719:curr'dump'fields :: FaoModel (FieldMap (Text, IO (Int, Maybe Text)))
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Class.hs:720:curr'dump'fields = do
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Class.hs:722:  return . dump_fields $ head ctxs
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Class.hs:729:modify'curr'dump'fields :: FieldName -> (FDType, IO (Int, Maybe Text)) -> FaoModel ()
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Class.hs:730:modify'curr'dump'fields field v = do
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Class.hs:735:    _uptCtx ctx@DumpContext {..} = ctx {dump_fields = _upt dump_fields}
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Class.hs:744:withEventDumpEnv :: (Fao f) => Bool -> f -> FaoModel a -> FaoModel a
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Class.hs:745:withEventDumpEnv is_extra f runModel = do
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Class.hs:760:  fields <- curr'dump'fields
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Class.hs:767:  unless (Map.null fields) $ do
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Class.hs:770:          rs <- forM fields $ \(fdtype, fn) -> fn >>= \n -> return (fdtype, n)
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Class.hs:779:          -- sof_name startDay endDay calendar fao_name params tar_name fields
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Class.hs:790:                  "fields" =: (T.pack . BL.unpack) (encode etypes),
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Class.hs:805:                let jsonPath = full_dir2 </> "fields.json"
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Store/Class.hs:14:    withEventDump,
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Store/Class.hs:15:    dumpAdtEvent,
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Store/Class.hs:16:    dumpAdtEvent',
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Store/Class.hs:68:    fields :: FieldMap FDtypeJson,
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Store/Class.hs:83:  case Map.lookup field (fields ctx) of
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Store/Class.hs:99:            let dataPath = T.unpack field
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Store/Class.hs:101:                tsPath = if isEventField fdtype then dataPath ++ ".__ts__" else "__ts__"
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Store/Class.hs:104:            let file_path = full_dir </> dataPath <.> "dba"
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Store/Class.hs:132:  case Map.lookup field (fields ctx) of
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Store/Class.hs:147:            let dataPath1 = T.unpack field
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Store/Class.hs:149:                tsPath = dataPath1 ++ ".__ts__"
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Store/Class.hs:152:            let file_path = full_dir </> dataPath1
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Store/Class.hs:186:      mfields <- doMongo uid
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Store/Class.hs:187:      doLoad mfields full_dir uid
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Store/Class.hs:192:          gfields <- doFile gfull_dir
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Store/Class.hs:193:          case gfields of
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Store/Class.hs:194:            Just _ -> doLoad gfields gfull_dir uid
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Store/Class.hs:196:              mfields <- doFile full_dir
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Store/Class.hs:197:              doLoad mfields full_dir uid
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Store/Class.hs:199:          mfields <- doFile full_dir
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Store/Class.hs:200:          doLoad mfields full_dir uid
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Store/Class.hs:206:    doLoad mfields full_dir uid = do
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Store/Class.hs:207:      forM mfields $ \fields -> do
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Store/Class.hs:209:        let ctx = LoadContext full_dir (ppname f) uid fields (packEventName f tar_name)
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Store/Class.hs:217:dumpAdtEvent ::
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Store/Class.hs:223:dumpAdtEvent field e = do
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Store/Class.hs:228:dumpAdtEvent' ::
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Store/Class.hs:234:dumpAdtEvent' field e = wrapTickEvent e >>= dumpAdtEvent field
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Store/Class.hs:300:      modify'curr'dump'fields field (fdtype, _writeHis)
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Store/Class.hs:351:withEventDump :: (Fao f) => f -> FaoModel () -> FaoModel ()
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Store/Class.hs:352:withEventDump = withEventDumpEnv False
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Store/Class.hs:356:genericDump f es = withEventDump f $ void $ Map.traverseWithKey dumpBitsEvent es
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Store/Class.hs:359:genericDump' f es = withEventDump f $ void $ Map.traverseWithKey dumpBitsEvent' es
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Store/Class.hs:374:      mfields <- loadFieldDtypes4Mongo pipe uid
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Store/Class.hs:375:      forM mfields $ Map.traverseWithKey (_newEvent4Mongo pipe uid) . _tranFDTypes . _filterPriceDotMap
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Store/Base.hs:132:  let file_path = full_dir </> "fields.json"
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Store/Base.hs:156:readDbaAsVectorDouble dataDir dataPath fdtype =
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Store/Base.hs:164:    file_path = dataDir </> dataPath <.> "dba"
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Store/Base.hs:253:      let mfields = fmap (decodeJsonText . MDB.at "fields") mdocs
+edh-universe/frp/frp-core/src/Frp/Core/Fao/Store/Base.hs:254:      return mfields

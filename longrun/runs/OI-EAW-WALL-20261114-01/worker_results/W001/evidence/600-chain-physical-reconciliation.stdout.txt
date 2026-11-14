@@ -1,0 +1,59 @@
+{
+  "checks": [
+    {
+      "event": "wall_occurrences",
+      "root_list_reference_rows": 14858,
+      "root_list_indices_are_exact_sequential": true,
+      "meaning": "verifies physical list anchor row and writer firing row alignment for this short-window leaf"
+    },
+    {
+      "event": "wall_current_view",
+      "root_list_reference_rows": 14858,
+      "root_list_indices_are_exact_sequential": true,
+      "meaning": "verifies physical list anchor row and writer firing row alignment for this short-window leaf"
+    },
+    {
+      "event": "wall_diagnostics",
+      "root_list_reference_rows": 328,
+      "root_list_indices_are_exact_sequential": true,
+      "meaning": "verifies physical list anchor row and writer firing row alignment for this short-window leaf"
+    },
+    {
+      "sample_value_row": 0,
+      "uti": 72335299,
+      "source_path_identity_uti_and_trigger_time_match": true,
+      "source_and_product_numeric_values_equal": {
+        "band_lo": true,
+        "band_hi": true,
+        "core_price": true
+      },
+      "stored_change": "started",
+      "diagnostics_same_firing_count": 0
+    },
+    {
+      "sample_value_row": 1,
+      "uti": 72335302,
+      "source_path_identity_uti_and_trigger_time_match": true,
+      "source_and_product_numeric_values_equal": {
+        "band_lo": true,
+        "band_hi": true,
+        "core_price": true
+      },
+      "stored_change": "band_updated",
+      "diagnostics_same_firing_count": 0
+    },
+    {
+      "sample_value_row": 2,
+      "uti": 72335308,
+      "source_path_identity_uti_and_trigger_time_match": true,
+      "source_and_product_numeric_values_equal": {
+        "band_lo": false,
+        "band_hi": false,
+        "core_price": false
+      },
+      "stored_change": "ended",
+      "diagnostics_same_firing_count": 0
+    }
+  ],
+  "bytes_read": 240424
+}
