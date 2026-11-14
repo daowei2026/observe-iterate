@@ -1,0 +1,32 @@
+{
+  "run_id": "OI-EAW-WALL-20261114-01",
+  "call_id": "C0011",
+  "type": "W003_MINIMAL_EXECUTION_BINDING_REPAIR",
+  "state": "ORIGINAL_W003_NEVER_SENT_NO_NEW_LOCK_OR_WORKER_CREATED",
+  "current_order_ref": "daowei2026/observe-iterate@35eeb0414cf71963938bcbf97afc744bff72ef8c:longrun/runs/OI-EAW-WALL-20261114-01/work_orders/W003/ORDER.json",
+  "current_instructions_ref": "daowei2026/observe-iterate@f3d4b60ee499875c02b1fa7ebe8d15666a4951c2:longrun/runs/OI-EAW-WALL-20261114-01/work_orders/W003/ORDER.md",
+  "issues": [
+    {
+      "id": "W3-PHYSICAL-THREAD-001",
+      "order_quote": "W002 原件、锁、thread、命令资格和本地目录均不复用。",
+      "current_run_execution_constraint": "必须沿用本Run已绑定原W1独立聊天；本次不新建或重建Worker聊天。每次新W重新核真实owner、thread/session、model/effort/cwd、无旧写者和新独占，不继承旧W2执行资格。",
+      "minimal_requested_repair": "明确可沿用原W1物理聊天，但不得复用旧锁会话、执行资格、工程目录或冻结原件。W3新子根和新真实独占保持。"
+    },
+    {
+      "id": "W3-HOME-001",
+      "order_quote": "所有 source、fixture、tool script、tmp、HOME、cache、build、logs、audit、receipts 和 artifacts 必须位于规范化真实 WORK_ROOT 内。",
+      "current_run_execution_constraint": "现有执行绑定的HOME和CODEX_HOME须保持真实值不变且业务只读，不能要求移动或重设；所有新增任务文件/tmp/cache/工具配置与结果仍须W003 WORK_ROOT内，外写0。",
+      "minimal_requested_repair": "将HOME本身位于WORK_ROOT的要求改为保留HOME/CODEX_HOME实际绑定且不写入；用工具支持的任务临时/缓存/配置选项定向WORK_ROOT。如果工具不能满足真实绑定与零外写两者，准确STOP，不扩权。"
+    }
+  ],
+  "preserve": [
+    "原C8 D003与原manager决定",
+    "W2有效STOP与限域专业接受",
+    "新W003独立实际写根与单写者",
+    "R0-A kernel confinement/fullwrite trace、R0-B唯一offline closure、R0-C四预算/continuous monitors",
+    "全部caps、外写0、procfs不能例外",
+    "条件性八EP；禁止任一scenario/normal/DBA/wrapper/native-reader/共享源码写入/push",
+    "父任务/三Q OPEN，G-RUN未通过，H3不具备"
+  ],
+  "required_signing_consistency": "若同W003最小重签，ORDER.md身份issuer_call_id=C0011、ORDER.json issuer_call_id=C0011/instructions_ref为先发布新MD准确ref；本轮PRO_RETURN issued_order_refs指先发布新JSON。保留旧C10候选从未送达的历史，不引用未来Return或扩展权限。"
+}

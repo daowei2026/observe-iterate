@@ -1,0 +1,74 @@
+{
+  "record_type": "W003_RESOURCE_BUDGET_REPORT",
+  "utc": "2026-11-14T20:56:06.991210+00:00",
+  "status": "NOT_ATTEMPTED_R0A_GATE",
+  "four_budgets_known_within_cap": false,
+  "continuous_monitors_pass": false,
+  "metrics": [
+    {
+      "name": "new_disk",
+      "unit": "bytes",
+      "cap": 2147483648,
+      "predicted_value": null,
+      "predicted_upper_bound": null,
+      "evidence": null,
+      "monitor_verified": false,
+      "stop_threshold": 2147483648,
+      "status": "NOT_ATTEMPTED_R0A_GATE"
+    },
+    {
+      "name": "peak_RSS",
+      "unit": "bytes",
+      "cap": 4294967296,
+      "predicted_value": null,
+      "predicted_upper_bound": null,
+      "evidence": null,
+      "monitor_verified": false,
+      "stop_threshold": 4294967296,
+      "status": "NOT_ATTEMPTED_R0A_GATE"
+    },
+    {
+      "name": "post_preflight_wall",
+      "unit": "seconds",
+      "cap": 1500,
+      "predicted_value": null,
+      "predicted_upper_bound": null,
+      "evidence": null,
+      "monitor_verified": false,
+      "stop_threshold": 1500,
+      "status": "NOT_ATTEMPTED_R0A_GATE"
+    },
+    {
+      "name": "new_files",
+      "unit": "files",
+      "cap": 50000,
+      "predicted_value": null,
+      "predicted_upper_bound": null,
+      "evidence": null,
+      "monitor_verified": false,
+      "stop_threshold": 50000,
+      "status": "NOT_ATTEMPTED_R0A_GATE"
+    }
+  ],
+  "comparable_build_artifacts_or_logs_read": false,
+  "same_compiler_closure_target_comparability_proven": false,
+  "dry_run_rebuild_set_available": false,
+  "verified_continuous_monitors": {
+    "single_post_preflight_monotonic_deadline": false,
+    "whole_process_group_RSS": false,
+    "root_disk_files": false,
+    "all_children_included": false,
+    "threshold_kill_and_receipt": false
+  },
+  "actual_failed_launcher_duration_seconds": 0.679316209978424,
+  "actual_failed_launcher_per_command_timeout_seconds": 45,
+  "timeout_triggered": false,
+  "per_command_timeout_is_post_preflight_budget_or_monitor_proof": false,
+  "reason": "R0-A 失败，R0-B/C 未进入。命令的短超时与实际持续时间不能推导 compile/serialization 的四预算或持续监测 PASS。",
+  "missing": [
+    "同 compiler/closure/可比 target 的真实 artifact/build/time 依据",
+    "四项非空保守预测与上界",
+    "全进程组/子孙进程连续监测和阈值杀停回执"
+  ],
+  "budget_values_inferred_from_version_commands": false
+}

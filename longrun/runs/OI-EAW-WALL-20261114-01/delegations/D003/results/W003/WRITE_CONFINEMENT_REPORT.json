@@ -1,0 +1,115 @@
+{
+  "record_type": "W003_WRITE_CONFINEMENT_REPORT",
+  "utc": "2026-11-14T20:56:06.991210+00:00",
+  "outcome": "STOP",
+  "status": "RECOVERY_STOP_WRITE_CONFINEMENT",
+  "write_confinement_pass": false,
+  "attempts": 1,
+  "automatic_retry_or_parameter_change": false,
+  "failure": {
+    "stage": "pre-enforcement inherited-FD inspection",
+    "launcher_exit_code": 73,
+    "type": "AssertionError",
+    "source": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/tools/landlock_launcher.py",
+    "line": 26,
+    "expression": "if fd==0:assert not writable",
+    "fd": 0,
+    "path": "/dev/null",
+    "actual_F_GETFL": "O_RDWR|O_LARGEFILE",
+    "actual_trace_line": 1055,
+    "integration_cause": "runtime.py subprocess.Popen(stdin=subprocess.DEVNULL) supplied a writable /dev/null FD. The launcher deliberately required stdin read-only and failed closed.",
+    "worker_implementation_integration_issue": true
+  },
+  "kernel_policy": {
+    "candidate": "Python -I -S -B/ctypes Landlock ABI6 plus seccomp",
+    "expected_ABI": 6,
+    "ABI_observed_this_W003": null,
+    "PR_SET_NO_NEW_PRIVS_called": false,
+    "landlock_ruleset_created": false,
+    "landlock_rule_added": false,
+    "landlock_restrict_self_called": false,
+    "seccomp_installed": false,
+    "recorded_kernel_policy_calls": [],
+    "write_allow_root_candidate": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003",
+    "write_exceptions": [],
+    "candidate_code_executed_to_installation": false
+  },
+  "HOME": "/home/dw",
+  "CODEX_HOME": "/home/dw/.codex",
+  "HOME_or_CODEX_HOME_reset": false,
+  "explicit_task_directories": {
+    "tmp": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/tmp",
+    "cache": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/cache",
+    "config": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/config"
+  },
+  "probes": [
+    {
+      "number": 1,
+      "requirement": "inside-root create/write/rename/remove",
+      "status": "NOT_EXECUTED_LAUNCHER_REJECTED_BEFORE_POLICY"
+    },
+    {
+      "number": 2,
+      "requirement": "outside nonexistent sentinel kernel rejection",
+      "status": "NOT_EXECUTED_LAUNCHER_REJECTED_BEFORE_POLICY"
+    },
+    {
+      "number": 3,
+      "requirement": "shared FRP nonexistent temp create denied at open",
+      "status": "NOT_EXECUTED_LAUNCHER_REJECTED_BEFORE_POLICY"
+    },
+    {
+      "number": 4,
+      "requirement": "actual HOME/CODEX unchanged and readable; new create denied",
+      "status": "NOT_EXECUTED_LAUNCHER_REJECTED_BEFORE_POLICY"
+    },
+    {
+      "number": 5,
+      "requirement": "child/grandchild inheritance",
+      "status": "NOT_EXECUTED_LAUNCHER_REJECTED_BEFORE_POLICY"
+    },
+    {
+      "number": 6,
+      "requirement": "symlink escape rejection",
+      "status": "NOT_EXECUTED_LAUNCHER_REJECTED_BEFORE_POLICY"
+    },
+    {
+      "number": 7,
+      "requirement": "inherited writable FD handling verified",
+      "status": "FAIL_BEFORE_KERNEL_POLICY",
+      "detail": "fd0 is writable /dev/null (O_RDWR); launcher required read-only stdin and rejected it. It did not finish enumerating/closing other inherited FDs."
+    },
+    {
+      "number": 8,
+      "requirement": "network socket/connect denied or full offline proof",
+      "status": "NOT_EXECUTED_LAUNCHER_REJECTED_BEFORE_POLICY"
+    },
+    {
+      "number": 9,
+      "requirement": "all probes covered by complete trace",
+      "status": "NOT_EXECUTED_LAUNCHER_REJECTED_BEFORE_POLICY",
+      "detail": "Full trace covers the attempted launcher only; probe was never execed."
+    }
+  ],
+  "outside_sentinel_controller_preconfirmation": {
+    "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/.W003-deny-outside-240810-46501758",
+    "required_by": "PHASE0_RECOVERY_PLAN_C0010.md §2.2",
+    "requested_in_original_chat": true,
+    "received_before_terminal_STOP": false,
+    "dependent_negative_probe_executed": false,
+    "role_in_outcome": "Additional unfulfilled negative-probe prerequisite; not substituted for the earlier observed fd0 failure."
+  },
+  "raw_launcher_receipt": {
+    "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/receipts/r0a-positive-launcher.json",
+    "bytes": 1214,
+    "sha256": "39d5a5de7b55579db8503d7c900d10c15cfdd386fa9a8d1a74ebf22452e9fa26",
+    "mtime_ns": 1794689238107634558,
+    "inode": 14819780,
+    "dev": 83
+  },
+  "full_trace_review": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/artifacts/FULL_WRITE_TRACE_REVIEW.json",
+  "observed_successful_outside_writes_in_failed_launch_trace": 0,
+  "global_or_future_zero_external_writes_proven": false,
+  "downstream_R0B_R0C_entered": false,
+  "conclusion_zh": "当前尝试尚未安装 kernel restriction。拒绝 writable fd0 是实测失败终点；不可把 fail-closed 当 confinement PASS，不修改 launcher/runtime 后重试。"
+}

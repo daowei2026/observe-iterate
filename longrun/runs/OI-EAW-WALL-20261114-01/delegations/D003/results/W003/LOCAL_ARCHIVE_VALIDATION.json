@@ -1,0 +1,38 @@
+{
+  "record_type": "W003_LOCAL_ARCHIVE_VALIDATION",
+  "utc": "2026-11-14T20:59:45.015414+00:00",
+  "status": "PASS_FOR_LOCAL_STOP_ARCHIVE_ONLY",
+  "project_build_or_test_run": false,
+  "work_order_identity_and_return_to_match": true,
+  "outcome_STOP_and_phase0_PREFLIGHT_STOP": true,
+  "four_recovery_requirements_not_PASS": true,
+  "11_literal_order_deliverables_mapped": true,
+  "required_STOP_payload_files_present": [
+    "WORKER_EXECUTION_REPORT.md",
+    "W003_BINDING.json",
+    "WRITE_CONFINEMENT_REPORT.json",
+    "FULL_WRITE_TRACE_REVIEW.json",
+    "OFFLINE_CLOSURE_REPORT.json",
+    "RESOURCE_BUDGET_REPORT.json",
+    "PHASE0_RECOVERY_VERDICT.json",
+    "COMMAND_LOG.jsonl",
+    "WRITE_SURFACE_AUDIT.json",
+    "EP_ACCEPTANCE_MATRIX.md",
+    "ENGINEERING_STOP_REPORT.md",
+    "LOCAL_STAGE_HANDOFF.json"
+  ],
+  "conditional_artifacts_or_formal_Return_fabricated": false,
+  "launcher_and_runtime_hashes_unchanged_after_failure": true,
+  "input22_hash_metadata_unchanged": true,
+  "initial32_copies_match_sources": true,
+  "helper_Python_files_AST_parsed": 7,
+  "JSON_files_parsed_before_seal": 34,
+  "JSONL_files_parsed_before_seal": 3,
+  "completed_native_commands_captured": 30,
+  "explicit_child_commands": 2,
+  "nonengineering_archival_preparation_errors_preserved": [
+    "写报告脚本外层引号造成 SyntaxError，首次未写文件；随后一次执行找不到该脚本。只恢复报告脚本文本并完成归档，没有重跑 R0-A。",
+    "write_reports stdout reports_generated=9 是辅助计数错误，实际该脚本新写8个报告文件；实际完整文件数以本封存清单为准。"
+  ],
+  "hash_seal_validation": "实际逐文件结果在外层 FREEZE_RECEIPT。该本地一致性 PASS 不等于 confinement/closure/预算/EP/业务 PASS。"
+}

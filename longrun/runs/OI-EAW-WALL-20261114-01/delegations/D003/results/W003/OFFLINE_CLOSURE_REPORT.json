@@ -1,0 +1,42 @@
+{
+  "record_type": "W003_OFFLINE_CLOSURE_REPORT",
+  "utc": "2026-11-14T20:56:06.991210+00:00",
+  "status": "NOT_ATTEMPTED_R0A_GATE",
+  "offline_closure_pass": false,
+  "selected_candidate": null,
+  "reason": "R0-A 在安装 kernel restriction 前终止；ORDER 禁止进入 R0-B。",
+  "candidates": [
+    {
+      "id": "E",
+      "declaration": "exact frp stack.yaml / lts-18.28",
+      "status": "NOT_INVESTIGATED_THIS_W003"
+    },
+    {
+      "id": "B",
+      "declaration": "BASE overlay / lts-22.24 / historical observed GHC9.4.8",
+      "status": "NOT_INVESTIGATED_THIS_W003"
+    }
+  ],
+  "current_compiler_or_package_db_commands": 0,
+  "current_package_db_paths_hashes_sizes": null,
+  "current_transitive_package_ids_versions": null,
+  "current_missing_dependencies": null,
+  "minimum_rebuild_set": null,
+  "exact_base_compatibility_proven": false,
+  "offline_no_network_proven_for_future_closure": false,
+  "historical_W002_facts_reused_as_current_measurements": false,
+  "candidate_environments_mixed": false,
+  "deferred_exact_git_inputs": {
+    "count": 8,
+    "source": "input/W003-input-mirror-index.json",
+    "read_this_W003": false,
+    "reason": "未进入允许的 confined closure/staging 阶段；未运行 git 或读取这八个源码 blob。"
+  },
+  "missing": [
+    "兼容的单一 resolver/compiler/工具哈希",
+    "snapshot/global/local package DB 与传递依赖完整映射",
+    "local packages exact HEAD/tree/cabal 与最小 rebuild set",
+    "缺失依赖为空及真正离线的证明"
+  ],
+  "classification": "R0-A 阻断后的未尝试；不声称两候选已被本 W 实测证明失败。"
+}

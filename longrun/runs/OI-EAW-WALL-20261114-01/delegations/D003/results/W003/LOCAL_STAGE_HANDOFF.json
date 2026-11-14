@@ -1,0 +1,170 @@
+{
+  "schema": "w003-local-stage-handoff/v1",
+  "utc": "2026-11-14T20:56:06.991210+00:00",
+  "run_id": "OI-EAW-WALL-20261114-01",
+  "work_order_id": "W003",
+  "worker": "codex:OI-EAW-WALL-20261114-01:worker:W1",
+  "return_to": "chatgpt:OI-EAW-WALL-20261114-01:executor:E1",
+  "outcome": "STOP",
+  "phase0_verdict": "PREFLIGHT_STOP",
+  "stop_reason": "RECOVERY_STOP_WRITE_CONFINEMENT",
+  "order_ref": "daowei2026/observe-iterate@3afc8e9eedb34ac3b25ba69e383c778c37622c30:longrun/runs/OI-EAW-WALL-20261114-01/work_orders/W003/ORDER.json",
+  "actual_write_root": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003",
+  "local_result_path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/artifacts/WORKER_EXECUTION_REPORT.md",
+  "result_ref": null,
+  "github_publication_commit": null,
+  "publication_target_prefix": "longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W003/",
+  "transport_path_mapping": "W003/artifacts/<name> -> publication_target_prefix/<name>; all other W003/<relative> -> publication_target_prefix/<relative>. All payload originals transported verbatim.",
+  "deliverable_mapping": [
+    {
+      "index": 1,
+      "literal_ORDER_deliverable": "WORKER_EXECUTION_REPORT.md with exact Phase0 recovery and conditional phase outcome",
+      "status": "LOCAL_FILE_READY",
+      "local_files": [
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/artifacts/WORKER_EXECUTION_REPORT.md"
+      ]
+    },
+    {
+      "index": 2,
+      "literal_ORDER_deliverable": "W003_BINDING.json with original bound W1 physical chat reuse, freshly verified owner/thread/session/model/effort/cwd/no-writer/new-lock, unchanged real HOME/CODEX_HOME, Owner literal grant and W003 actual root",
+      "status": "LOCAL_FILE_READY",
+      "local_files": [
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/artifacts/W003_BINDING.json"
+      ]
+    },
+    {
+      "index": 3,
+      "literal_ORDER_deliverable": "WRITE_CONFINEMENT_REPORT.json proving or accurately failing kernel-enforced W003-only new writes while real HOME/CODEX_HOME remain unchanged and task-read-only",
+      "status": "LOCAL_FILE_READY",
+      "local_files": [
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/artifacts/WRITE_CONFINEMENT_REPORT.json"
+      ]
+    },
+    {
+      "index": 4,
+      "literal_ORDER_deliverable": "FULL_WRITE_TRACE_REVIEW.json mapping every successful descriptor write to a path or stopping as unknown",
+      "status": "LOCAL_FILE_READY",
+      "local_files": [
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/artifacts/FULL_WRITE_TRACE_REVIEW.json"
+      ]
+    },
+    {
+      "index": 5,
+      "literal_ORDER_deliverable": "OFFLINE_CLOSURE_REPORT.json selecting exactly one compatible offline resolver/compiler/package DB closure or stopping",
+      "status": "LOCAL_FILE_READY",
+      "local_files": [
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/artifacts/OFFLINE_CLOSURE_REPORT.json"
+      ]
+    },
+    {
+      "index": 6,
+      "literal_ORDER_deliverable": "RESOURCE_BUDGET_REPORT.json with non-null disk/RSS/wall/file upper bounds, evidence and continuous monitors or stopping",
+      "status": "LOCAL_FILE_READY",
+      "local_files": [
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/artifacts/RESOURCE_BUDGET_REPORT.json"
+      ]
+    },
+    {
+      "index": 7,
+      "literal_ORDER_deliverable": "PHASE0_RECOVERY_VERDICT.json with the four independent PASS requirements and exact stop reason",
+      "status": "LOCAL_FILE_READY",
+      "local_files": [
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/artifacts/PHASE0_RECOVERY_VERDICT.json"
+      ]
+    },
+    {
+      "index": 8,
+      "literal_ORDER_deliverable": "COMMAND_LOG.jsonl, WRITE_SURFACE_AUDIT.json, EP_ACCEPTANCE_MATRIX.md, PUBLICATION_MANIFEST.json and HASHES.sha256",
+      "status": "LOCAL_FILE_READY",
+      "local_files": [
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/artifacts/COMMAND_LOG.jsonl",
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/artifacts/WRITE_SURFACE_AUDIT.json",
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/artifacts/EP_ACCEPTANCE_MATRIX.md",
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/artifacts/PUBLICATION_MANIFEST.json",
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/artifacts/HASHES.sha256"
+      ]
+    },
+    {
+      "index": 9,
+      "literal_ORDER_deliverable": "If and only if Phase0 passes: exact-base staged prerequisite package, patch, manifest, complete unexecuted 9/18/22 fixture, permitted compile-only/serialization reports and NOT_UPSTREAM_PUBLISHED local commit report when actually produced",
+      "status": "NOT_APPLICABLE_PHASE0_STOP",
+      "local_files": [],
+      "missing": "Recovery 未 PASS；未进入 Phase1/2。",
+      "conditional_filenames_not_created": [
+        "SOURCE_BASELINE_AND_STAGING_REPORT.md",
+        "SOURCE_CHANGE_MANIFEST.json",
+        "PREREQUISITE_PATCHSET.diff",
+        "PRECONDITION_REPORT.md",
+        "D003_BINDING_CANDIDATE.json",
+        "FIXTURE_SCHEMA_AND_PROVENANCE.md",
+        "FX_WALL_SCENARIO_001.schema.json",
+        "FX_WALL_SCENARIO_001.json",
+        "KNOWN_CONTRACT_CONFLICTS.md",
+        "COMPILE_ONLY_REPORT.json",
+        "SERIALIZATION_TEST_REPORT.json",
+        "STAGED_LOCAL_COMMIT_REPORT.json"
+      ]
+    },
+    {
+      "index": 10,
+      "literal_ORDER_deliverable": "ENGINEERING_STOP_REPORT.md for any STOP without fake empty conditional artifacts",
+      "status": "LOCAL_FILE_READY",
+      "local_files": [
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/artifacts/ENGINEERING_STOP_REPORT.md"
+      ]
+    },
+    {
+      "index": 11,
+      "literal_ORDER_deliverable": "V2 WORKER_RETURN.json returning only to executor E1",
+      "status": "DEFERRED_TWO_STAGE_REAL_PUBLICATION_CONTRACT",
+      "local_files": [],
+      "missing": "先由主控真实出版本地证据，再由同一 W1 同 W003 生成正式 Return。",
+      "future_transport_target": "longrun/runs/OI-EAW-WALL-20261114-01/worker_results/W003/WORKER_RETURN.json",
+      "return_to": "chatgpt:OI-EAW-WALL-20261114-01:executor:E1",
+      "real_ref": null
+    }
+  ],
+  "missing": [
+    {
+      "id": "M-CONFINEMENT",
+      "detail": "当前 R0-A 失败，kernel policy 未安装；继承 writable fd、外写拒绝、HOME/CODEX 新写拒绝、子孙继承、symlink 和网络等 probe 未通过。不得声称零外写合同已证明。"
+    },
+    {
+      "id": "M-SENTINEL-PRECONFIRMATION",
+      "detail": "恢复计划要求主控预确认外部 sentinel 不存在；本聊天已请求，停止前未收到确认；未运行该负向探针。主阻断仍是先发生的 fd0 失败。"
+    },
+    {
+      "id": "M-CLOSURE",
+      "detail": "R0-B 未进入，单一兼容离线 closure 及完整依赖/工具/package DB/rebuild set 未固定。"
+    },
+    {
+      "id": "M-BUDGETS-MONITORS",
+      "detail": "R0-C 未进入；四项预测上界与可比实测依据、连续监测/杀停回执均缺。固定 cap 不是预测。"
+    },
+    {
+      "id": "M-CONDITIONAL-EP",
+      "detail": "Phase1/2 未进入，八 EP 未实施。无 staged source/patch/schema/fixture/compile/serialization/local commit；不生成空替代文件。"
+    },
+    {
+      "id": "M-E1-STATIC-LEDGER",
+      "detail": "只保留 C0010 E1 对旧 EP-SCENARIO-04 的 PARTIAL 静态子集输入，不冒充当前 target manifest 或当前业务实测。"
+    },
+    {
+      "id": "M-EVIDENCE-PUBLICATION",
+      "detail": "当前 W003 本地证据尚无真实 GitHub 出版 commit/refs；需主控逐字运输本清单后回传准确 refs/sha256。"
+    },
+    {
+      "id": "M-FORMAL-RETURN",
+      "detail": "同一 W1/W003 取得真实已出版证据 refs 后才生成正式 V2 Return，仅回原 E1；Return 自身需第二次主控出版，不能提前引用未来文件或伪造自 hash。"
+    }
+  ],
+  "formal_Return_generated": false,
+  "conditional_artifact_files_created": false,
+  "next_steps": [
+    "主控按 PUBLICATION_MANIFEST、HASHES 和 FREEZE_RECEIPT 逐字运输本地原件，并从真实出版对象回读。",
+    "主控把真实 commit/ref/sha256/bytes 映射交同一原 W1 同 W003。",
+    "同一 W1 在续接授权内核真实 refs 后生成 V2 WORKER_RETURN.json，仅回原 E1；再交主控出版至 worker_results/W003/WORKER_RETURN.json。"
+  ],
+  "terminal_scope": "本地阶段可终结；不常驻轮询、不自行新建 W、不向其他聊天发送消息。W/D/专业接受和父任务完成由原 E1/manager 决定。",
+  "index_self_hash_policy": "完整文件 hash 从 PUBLICATION_MANIFEST/HASHES 的无环层级和最终 FREEZE_RECEIPT/本聊天外层 hash 读取；不捏造 index 自 hash 或 Return 自 ref。"
+}

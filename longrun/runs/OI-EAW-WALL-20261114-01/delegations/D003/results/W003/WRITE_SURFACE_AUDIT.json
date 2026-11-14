@@ -1,0 +1,61 @@
+{
+  "record_type": "W003_WRITE_SURFACE_AUDIT",
+  "utc": "2026-11-14T20:59:44.834980+00:00",
+  "actual_new_business_write_root": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003",
+  "canonical_root": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003",
+  "scope": "本 W 原生控制命令和新根文件、唯一失败 launcher 的完整 trace；没有全系统写审计或未执行后继 kernel confinement 的证明。",
+  "HOME": "/home/dw",
+  "CODEX_HOME": "/home/dw/.codex",
+  "HOME_or_CODEX_HOME_reset": false,
+  "task_tmp_cache_config_log": {
+    "tmp": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/tmp",
+    "cache": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/cache",
+    "config": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/config",
+    "logs": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/logs",
+    "trace": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/trace",
+    "audit": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/audit",
+    "receipts": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/receipts",
+    "artifacts": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/artifacts"
+  },
+  "traced_successful_descriptor_writes": 1,
+  "traced_successful_descriptor_write_bytes": 1214,
+  "traced_outside_successful_writes": 0,
+  "traced_unknown_write_paths": 0,
+  "traced_proc_comm_open_or_write": 0,
+  "global_business_outside_writes_proven_zero": false,
+  "kernel_enforcement_established": false,
+  "outside_inherited_FD_issue": {
+    "fd0": "/dev/null O_RDWR rejected before enforcement, no write observed",
+    "fd3": "Separate contending lock FD; no lock acquired or write; parent finally close. Holder FD/lock untouched."
+  },
+  "negative_probe_invocations": 0,
+  "no_external_negative_probe_created_files_claim_scope": "未执行任何负向 create/open，不能把未确认 sentinel 的当前存在性写为已知。",
+  "readonly_22_named_inputs_unchanged": true,
+  "initial_32_input_copies_match_sources": true,
+  "frozen_W002_scope": "从不回写、清理或补写 W002；这里只核指定输入子集，未扫描全299原件。",
+  "source_checkout_or_production_writes_by_requested_commands": 0,
+  "scenario_runs": 0,
+  "compile_runs": 0,
+  "serialization_runs": 0,
+  "network_download_install_calls_requested": 0,
+  "native_platform_session": "平台沿既有执行器写原生会话；Worker 仅读取精确 session 的本 turn CommandExecution/turn_context。未将 HOME/CODEX_HOME 用作业务写面，也未据此宣称全局零外写。",
+  "snapshot_before_index_seal": {
+    "files": 67,
+    "logical_bytes": 1491494,
+    "allocated_bytes": 1200128
+  },
+  "fresh_controller_lock": {
+    "holder_pid": 240810,
+    "startticks": "46501758",
+    "inode": 14806399,
+    "fdinfo": "pos:\t0\nflags:\t02100002\nmnt_id:\t4061\nino:\t14806399\nlock:\t1: FLOCK  ADVISORY  WRITE 240810 00:53:14806399 0 EOF\n",
+    "competition": {
+      "errno": 11,
+      "result": "FAILED_AS_REQUIRED",
+      "inode": 14806399
+    },
+    "replaced_released_or_acquired": false
+  },
+  "whole_new_root_small_enumeration_limit": 2000,
+  "no_BASE_HOME_cache_recursive_search": true
+}

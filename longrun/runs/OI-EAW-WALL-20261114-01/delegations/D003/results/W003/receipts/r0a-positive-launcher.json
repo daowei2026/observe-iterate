@@ -1,0 +1,35 @@
+{
+  "record_type": "W003_LANDLOCK_AND_SECCOMP_LAUNCHER",
+  "utc": "2026-11-14T20:47:18.044408+00:00",
+  "root": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003",
+  "root_realpath": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003",
+  "script_sha256": "a6586b1622017434ea6c27592d79ccd0a80735016939d0a3f532a6496bbe2479",
+  "HOME": "/home/dw",
+  "CODEX_HOME": "/home/dw/.codex",
+  "HOME_or_CODEX_HOME_reset": false,
+  "explicit_task_directories": {
+    "tmp": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/tmp",
+    "cache": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/cache",
+    "config": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/config"
+  },
+  "filesystem_write_exceptions": [],
+  "calls": [],
+  "command": [
+    "/usr/bin/python3.12",
+    "-I",
+    "-S",
+    "-B",
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003/tools/confinement_probe.py",
+    "--root",
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W003",
+    "--stage",
+    "positive",
+    "--forbidden-fd",
+    "3"
+  ],
+  "status": "LAUNCHER_FAILED",
+  "error": {
+    "type": "AssertionError",
+    "text": ""
+  }
+}
