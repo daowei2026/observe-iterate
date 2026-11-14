@@ -16,13 +16,23 @@
 
 **已删除合订版。** 规则以各自独立文档为准，避免一套内容复制两份、修订不一致。06/07 与主体流程分目录管理。
 
-## 专业 Skill 已纳入本分支
+## 专业 Skill、候选方法与技术资料归档
 
-- [skills/observation-material-preparation/](skills/observation-material-preparation/README.md)：观察材料准备候选 Skill，保留专业方法、CAEGraph 引用、候选方法索引、任务单与示例。
-- [skills/reasonableness-analysis/](skills/reasonableness-analysis/README.md)：合理性分析四个 Skill 及其协作说明。
-- [reference-cases/](reference-cases/)：上述观察材料 Skill 引用的两份早期高频／EAW 方法分析讨论稿，作为案例依据，不当作本轮控制面正式规则。
+| 类别 | 入口 | 作用与保留理由 |
+|---|---|---|
+| **上位候选 Skill** | [观察材料规划与准备 SKILL](skills/observation-material-preparation/SKILL.md) | 按业务问题规划材料、选择方法、实际取数、核验和交接；专业步骤保留 |
+| **执行技术参考** | [CAEGraph 真实取数与核验](skills/observation-material-preparation/references/CAEGraph执行取数与验证.md) | 构图/视窗/源值等不同数据阶段、执行接口和质量验证；不是具体候选观察方法 |
+| **任务产物模板** | [观察材料准备任务单](skills/observation-material-preparation/templates/观察材料准备任务单.md) | 记录业务处理阶段、材料必要性、取数、缺口与交接；保留 |
+| **候选方法组索引** | [S1～S4、E1～E4 方法索引](skills/observation-method-candidates/README.md) | 唯一的触发条件、跨用例对应关系及成熟度目录；从上位 Skill 的 references 移出 |
+| **高频候选 Skill 初稿** | [标准化高频四候选](skills/observation-method-candidates/high-frequency/四个候选观察准备Skill_标准化高频用例落地与复用边界_20261112.md) | S1～S4 的专业方法、落地证据、复用限制；是候选 Skill 研究稿，不是普通案例 |
+| **EAW 候选 Skill 初稿** | [EAW CAEGraph 候选](skills/observation-method-candidates/eaw/EAW_CAEGraph观察准备Skill候选_原图落地与复用边界_20261112.md) | E1/E3 新候选及 E2/E4 对 S3/S4 的复用核查；同样是候选 Skill 研究稿 |
+| **合理性分析** | [四个合理性分析 Skill](skills/reasonableness-analysis/README.md) | 已迁入的四个专业 Skill 及协作协议，本轮不改动 |
 
-本分支的专业依据**直接引用上述本地文件**，不再指向旧的 `main/discuss-materials/` Skill 路径。观察材料 Skill 仅对原有案例讨论稿链接改为本地相对路径，专业内容、相对目录结构和候选成熟度不变。引用外部 `uplot`、`viewer` 等实现仓库是技术依赖，不属于本次搬入范围。
+**不再保留**：观察材料准备文件夹的重复导航 `README.md`（本表承担导航）；原来 `examples/` 的两用例示范（未经充分验证，不能用作稳定规范）；原来 `reference-cases/` 的“案例附件”分类（两份材料已归入候选 Skill）；原上位 Skill 的方法索引旧副本（现由候选组 README 唯一维护）。
+
+**性质边界**：高频、EAW 两份稿原文都明确是初版候选、未证明跨真实用例稳定复用，不能因重新归档就冒充正式可直接执行的独立 `SKILL.md`。保留原稿的研究和来源信息，必要的改动仅用于修复本分支相对链接。当前上位 Skill 仍通过索引选用方法，不要求拆开已有完整 CAEGraph 重做。
+
+技术上仍可能需要引用 `viewer`、`uplot` 等外部源码或手册；它们是外部技术依赖，不是旧版观察材料 Skill 的地址。本分支内的专业资料互相引用均转为本地相对路径。
 
 ## 本轮讨论确认的三处边界
 

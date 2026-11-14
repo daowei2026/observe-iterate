@@ -1,8 +1,8 @@
 # 具体观察方法索引：标准化高频与 EAW 双用例
 
-> 状态：Candidate Index；用于**按具体观察问题选择方法**，不代替两份完整原用例专题稿，不声称所有方法已完成真实运行和跨用例验收。
+> 状态：**初版候选 Skill 方法索引**，用于按观察问题选择并区分高频 S1–S4、EAW E1/E3 与 E2/E4 复用关系。以下两份文档本身是候选 Skill 提取成果（含具体用例证据），不是正式发布的独立 `SKILL.md` 或已验收通用实现。
 >
-> 权威原材料：[标准化高频候选 S1–S4](../../../reference-cases/四个候选观察准备Skill_标准化高频用例落地与复用边界_20261112.md)；[EAW 原图候选 E1–E4](../../../reference-cases/EAW_CAEGraph观察准备Skill候选_原图落地与复用边界_20261112.md)。
+> 同目录候选原稿：[标准化高频候选 S1–S4](high-frequency/四个候选观察准备Skill_标准化高频用例落地与复用边界_20261112.md)；[EAW 原图候选 E1–E4](eaw/EAW_CAEGraph观察准备Skill候选_原图落地与复用边界_20261112.md)。
 
 ## 方法选择速查
 
@@ -40,7 +40,7 @@
 
 - [高频原 Notebook cell 9](https://github.com/daowei2026/viewer/blob/e6.2/frp/同步(多对象)/密集与板块密集的简单标准化.ipynb)提供 S1–S4 的原图组合证据。
 - [CAEGraph 使用手册](https://github.com/daowei2026/uplot/blob/e6.2/CAEGraph使用手册.md)提供参数与组件用法，**不负责决定业务上应该观察什么**。
-- [EAW 专题来源](../../../reference-cases/EAW_CAEGraph观察准备Skill候选_原图落地与复用边界_20261112.md)区分 T056 真正 CAEGraph、T059 剩余 CAEGraph 和正式看板；非 CAEGraph/Bokeh 的 EAW 专属计算不得混入该索引。
+- [EAW 专题来源](eaw/EAW_CAEGraph观察准备Skill候选_原图落地与复用边界_20261112.md)区分 T056 真正 CAEGraph、T059 剩余 CAEGraph 和正式看板；非 CAEGraph/Bokeh 的 EAW 专属计算不得混入该索引。
 
 ## 什么时候不使用上述候选
 
