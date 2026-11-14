@@ -61,4 +61,4 @@ operation=run-record-publish execution_context=github:daowei2026/observe-iterate
 
 本 Run 的唯一发布分支是 `daowei2026/observe-iterate:runs/OI-EAW-WALL-20261114-01`；所有新成果仅可写 `longrun/runs/OI-EAW-WALL-20261114-01/`。有真实 GitHub 写入工具就直接提交；每次写入先回读分支 HEAD，遇他人更新重新核验，禁止 force。若没有工具，直接在本聊天完整给出每个文件的准确相对路径和原样完整正文，主控负责逐字发布与回读。引用未来 commit 不可提前捏造；需分两阶段固化引用时，清楚给出当前已完成原文与待填的已发布引用位置，由主控落地后把实际精确引用回交，你再签正式 Return。不要因缺 GitHub 写工具要求 Owner 逐 Gate 批准，也不要把未写入说成已提交。
 
-请在真实完成本次工作后给出简洁接管摘要、准确实物来源和后继。若实际通过 GitHub 全部发布本调用正式交付，最后提交 message 包含 `turn complete [OI-EAW-WALL-20261114-01 C0001] oiwall-C0001-3894324d05811147ad50a5c8`，便于主控仅核本调用结果；不能仅在聊天中声称已提交。
+请在真实完成本次工作后给出简洁接管摘要、准确实物来源和后继。若实际通过 GitHub 全部发布本调用正式交付，最后提交 message 包含 `turn complete [OI-EAW-WALL-20261114-01-C0001] oiwall-C0001-3894324d05811147ad50a5c8`，便于主控仅核本调用结果；不能仅在聊天中声称已提交。
