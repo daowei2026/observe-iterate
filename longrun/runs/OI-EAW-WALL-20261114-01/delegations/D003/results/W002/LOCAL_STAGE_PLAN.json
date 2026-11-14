@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "project": {
+    "id": "oi-eaw-wall-20261114-01",
+    "title": "OI EAW Wall D003 W002"
+  },
+  "task": {
+    "id": "w002-local-stage",
+    "title": "W002 本地工程阶段与准确停止交付",
+    "completion_gate": "Phase0形成真实决定；仅合格时按W002继续。已执行原件、限制、hash与逐项本地出版映射完整交E1运输。仅本地阶段结束，不表示W/D/业务接受。",
+    "monitoring": {
+      "scope": "general"
+    }
+  },
+  "phases": [
+    {
+      "id": "local",
+      "title": "W002 本地阶段",
+      "steps": [
+        {
+          "id": "preflight",
+          "title": "dry preflight与阶段判定",
+          "acceptance": "输入、物理绑定、依赖、工具、写面、cap具直接证据，并输出ELIGIBLE或PREFLIGHT_STOP",
+          "weight": 2
+        },
+        {
+          "id": "bounded-outcome",
+          "title": "按阶段判定完成允许的本地结果",
+          "acceptance": "若合格则完成合法工程子集；否则停止构造/执行并形成准确STOP与EP缺口",
+          "weight": 2
+        },
+        {
+          "id": "handoff",
+          "title": "审计与逐字交付",
+          "acceptance": "完整本地文件、hash、逐deliverable映射、真实限制与待出版Return步骤已交付",
+          "weight": 1
+        }
+      ]
+    }
+  ]
+}

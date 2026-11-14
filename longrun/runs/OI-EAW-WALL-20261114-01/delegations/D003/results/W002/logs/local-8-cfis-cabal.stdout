@@ -1,0 +1,311 @@
+cabal-version: 2.4
+
+name:          cfis
+version:       0.0.3.0
+
+-- synopsis:
+-- description:
+-- bug-reports:
+-- license:
+license:       BSD-3-Clause
+author:        ComplYue
+maintainer:    compl.yue@icloud.com
+
+-- copyright:
+-- category:
+build-type:    Simple
+
+library
+  exposed-modules:
+    CFIS
+    HsFIS
+
+  c-sources:
+    ../src/cfis.c
+    ../codegen/lib/cfis/all.c
+    ../codegen/lib/cfis/any.c
+    ../codegen/lib/cfis/applyLowerLag.c
+    ../codegen/lib/cfis/applyMamdaniAggregationMethod.c
+    ../codegen/lib/cfis/applyMamdaniAggregationMethodType2.c
+    ../codegen/lib/cfis/applyMamdaniImplicationMethod.c
+    ../codegen/lib/cfis/applyMamdaniImplicationMethodType2.c
+    ../codegen/lib/cfis/applyOperators.c
+    ../codegen/lib/cfis/applyOperatorsType2.c
+    ../codegen/lib/cfis/applySugenoAggregationMethod.c
+    ../codegen/lib/cfis/applySugenoAggregationMethodType2.c
+    ../codegen/lib/cfis/applySugenoImplicationMethod.c
+    ../codegen/lib/cfis/applySugenoImplicationMethodType2.c
+    ../codegen/lib/cfis/centroid.c
+    ../codegen/lib/cfis/cfis2.c
+    ../codegen/lib/cfis/cfis.c
+    ../codegen/lib/cfis/cfis_data.c
+    ../codegen/lib/cfis/cfis_emxAPI.c
+    ../codegen/lib/cfis/cfis_emxutil.c
+    ../codegen/lib/cfis/cfis_initialize.c
+    ../codegen/lib/cfis/cfis_rtwutil.c
+    ../codegen/lib/cfis/cfis_terminate.c
+    ../codegen/lib/cfis/createMamdaniOutputMFCacheType2.c
+    ../codegen/lib/cfis/deblank.c
+    ../codegen/lib/cfis/diff.c
+    ../codegen/lib/cfis/dsigmf.c
+    ../codegen/lib/cfis/eiasc.c
+    ../codegen/lib/cfis/ekm.c
+    ../codegen/lib/cfis/eml_mtimes_helper.c
+    ../codegen/lib/cfis/evaluateAndMethod.c
+    ../codegen/lib/cfis/evaluateCommonMembershipFcn.c
+    ../codegen/lib/cfis/evaluateFIS.c
+    ../codegen/lib/cfis/evaluateOrMethod.c
+    ../codegen/lib/cfis/evaluateType2FIS.c
+    ../codegen/lib/cfis/extractVarMF.c
+    ../codegen/lib/cfis/extractVarMFType2.c
+    ../codegen/lib/cfis/feof.c
+    ../codegen/lib/cfis/fileManager.c
+    ../codegen/lib/cfis/find.c
+    ../codegen/lib/cfis/findTopic.c
+    ../codegen/lib/cfis/fuzzifyInputs.c
+    ../codegen/lib/cfis/fuzzifyInputsType2.c
+    ../codegen/lib/cfis/gauss2mf.c
+    ../codegen/lib/cfis/getFileID.c
+    ../codegen/lib/cfis/getNextLine.c
+    ../codegen/lib/cfis/getRules.c
+    ../codegen/lib/cfis/iasc.c
+    ../codegen/lib/cfis/inferAggFIS2.c
+    ../codegen/lib/cfis/inferAggFIS.c
+    ../codegen/lib/cfis/inferFIS2.c
+    ../codegen/lib/cfis/inferFIS.c
+    ../codegen/lib/cfis/isequal.c
+    ../codegen/lib/cfis/karnikmendel.c
+    ../codegen/lib/cfis/linspace.c
+    ../codegen/lib/cfis/minOrMax.c
+    ../codegen/lib/cfis/packageAndSetDataType2.c
+    ../codegen/lib/cfis/packageAndSetDataType.c
+    ../codegen/lib/cfis/pimf1.c
+    ../codegen/lib/cfis/pimf.c
+    ../codegen/lib/cfis/psigmf.c
+    ../codegen/lib/cfis/putNonzeroUMFAtBeginning.c
+    ../codegen/lib/cfis/readFISAsHomogenousStructure.c
+    ../codegen/lib/cfis/readType2FISAsHomogenousStructure.c
+    ../codegen/lib/cfis/rtGetInf.c
+    ../codegen/lib/cfis/rtGetNaN.c
+    ../codegen/lib/cfis/rt_nonfinite.c
+    ../codegen/lib/cfis/str2double.c
+    ../codegen/lib/cfis/strcmp.c
+    ../codegen/lib/cfis/string1.c
+    ../codegen/lib/cfis/sum.c
+    ../codegen/lib/cfis/xor.c
+  include-dirs:
+    ../codegen/lib/cfis
+    ../mlc/include
+  hs-source-dirs:     src
+  default-language:   Haskell2010
+  default-extensions:
+    NoImplicitPrelude
+    BangPatterns
+    ConstraintKinds
+    DataKinds
+    DerivingStrategies
+    FlexibleContexts
+    FlexibleInstances
+    GADTs
+    GeneralizedNewtypeDeriving
+    KindSignatures
+    LambdaCase
+    MultiWayIf
+    OverloadedStrings
+    PatternSynonyms
+    RankNTypes
+    ScopedTypeVariables
+    StandaloneDeriving
+    TupleSections
+    TypeApplications
+    AllowAmbiguousTypes
+    TypeOperators
+    ViewPatterns
+    MultiParamTypeClasses
+    FunctionalDependencies
+    RecursiveDo
+    ImportQualifiedPost
+
+  ghc-options:        -Wall
+  build-depends:
+    , base                  >=4.12
+    , bytestring
+    , containers
+    , mtl
+    , primitive             >=0.2.1
+    , random
+    , temporary
+    , text
+    , transformers
+    , unordered-containers
+    , vector
+    , hmatrix
+
+executable cfis
+  main-is:            Main.hs
+  hs-source-dirs:     src
+  other-modules:
+    CFIS
+  default-language:   Haskell2010
+  default-extensions:
+    NoImplicitPrelude
+    BangPatterns
+    ConstraintKinds
+    DataKinds
+    DerivingStrategies
+    FlexibleContexts
+    FlexibleInstances
+    GADTs
+    GeneralizedNewtypeDeriving
+    KindSignatures
+    LambdaCase
+    MultiWayIf
+    OverloadedStrings
+    PatternSynonyms
+    RankNTypes
+    ScopedTypeVariables
+    StandaloneDeriving
+    TupleSections
+    TypeApplications
+    AllowAmbiguousTypes
+    TypeOperators
+    ViewPatterns
+    MultiParamTypeClasses
+    FunctionalDependencies
+    ImportQualifiedPost
+
+  ghc-options:
+    -Wall -threaded -rtsopts "-with-rtsopts=-maxN2 -A32m -qg -I0"
+
+  build-depends:
+    , base              >=4.12
+    , bytestring
+    , text
+    , vector
+    , hmatrix
+    , cfis
+
+executable cfis2
+  main-is:            Main.hs
+  hs-source-dirs:     src2
+  other-modules:
+  default-language:   Haskell2010
+  default-extensions:
+    NoImplicitPrelude
+    BangPatterns
+    ConstraintKinds
+    DataKinds
+    DerivingStrategies
+    FlexibleContexts
+    FlexibleInstances
+    GADTs
+    GeneralizedNewtypeDeriving
+    KindSignatures
+    LambdaCase
+    MultiWayIf
+    OverloadedStrings
+    PatternSynonyms
+    RankNTypes
+    ScopedTypeVariables
+    StandaloneDeriving
+    TupleSections
+    TypeApplications
+    AllowAmbiguousTypes
+    TypeOperators
+    ViewPatterns
+    MultiParamTypeClasses
+    FunctionalDependencies
+    ImportQualifiedPost
+
+  ghc-options:
+    -Wall -threaded -rtsopts "-with-rtsopts=-maxN2 -A32m -qg -I0"
+
+  build-depends:
+    , base              >=4.12
+    , bytestring
+    , text
+    , vector
+    , hmatrix
+    , cfis
+
+executable hsfis
+  main-is:            Main.hs
+  hs-source-dirs:     hsfis
+  other-modules:
+  default-language:   Haskell2010
+  default-extensions:
+    NoImplicitPrelude
+    BangPatterns
+    ConstraintKinds
+    DataKinds
+    DerivingStrategies
+    FlexibleContexts
+    FlexibleInstances
+    GADTs
+    GeneralizedNewtypeDeriving
+    KindSignatures
+    LambdaCase
+    MultiWayIf
+    OverloadedStrings
+    PatternSynonyms
+    RankNTypes
+    ScopedTypeVariables
+    StandaloneDeriving
+    TupleSections
+    TypeApplications
+    AllowAmbiguousTypes
+    TypeOperators
+    ViewPatterns
+    MultiParamTypeClasses
+    FunctionalDependencies
+    ImportQualifiedPost
+
+  ghc-options:
+    -Wall -threaded -rtsopts "-with-rtsopts=-maxN2 -A32m -qg -I0"
+
+  build-depends:
+    , base              >=4.12
+    , bytestring
+    , text
+    , vector
+    , cfis
+
+executable debug-cfis
+  hs-source-dirs:     debug
+  main-is:            Main.hs
+  default-language:   Haskell2010
+  default-extensions:
+    NoImplicitPrelude
+    BangPatterns
+    ConstraintKinds
+    DataKinds
+    DerivingStrategies
+    FlexibleContexts
+    FlexibleInstances
+    GADTs
+    GeneralizedNewtypeDeriving
+    KindSignatures
+    LambdaCase
+    MultiWayIf
+    OverloadedStrings
+    PatternSynonyms
+    RankNTypes
+    ScopedTypeVariables
+    StandaloneDeriving
+    TupleSections
+    TypeApplications
+    AllowAmbiguousTypes
+    TypeOperators
+    ViewPatterns
+    MultiParamTypeClasses
+    FunctionalDependencies
+
+  ghc-options:        -Wall -threaded -funbox-strict-fields -fspecialise-aggressively -g -rtsopts
+  build-depends:
+    , base              >=4.12
+    , bytestring
+    , chronos           >=1.1
+    , mtl
+    , text
+    , transformers
+    , cfis

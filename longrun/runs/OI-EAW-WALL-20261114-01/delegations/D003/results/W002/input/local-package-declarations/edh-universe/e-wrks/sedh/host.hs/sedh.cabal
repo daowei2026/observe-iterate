@@ -1,0 +1,197 @@
+cabal-version:      2.4
+name:               sedh
+version:            0.1.0.0
+license:            BSD-3-Clause
+copyright:          Compl Yue
+maintainer:         compl.yue@icloud.com
+author:             Compl Yue
+stability:          experimental
+homepage:           https://github.com/e-wrks/sedh
+bug-reports:        https://github.com/e-wrks/sedh/issues
+synopsis:           Swarming Edh
+description:
+  Please see the README on Github at <https://github.com/e-wrks/sedh>
+
+category:           Distributed,Network,Cluster
+build-type:         Simple
+extra-source-files: README.md
+
+source-repository head
+  type:     git
+  location: https://github.com/e-wrks/sedh
+  subdir:   host.hs
+
+executable gwd
+  main-is:            Main.hs
+  hs-source-dirs:     gwd
+  other-modules:
+  default-language:   Haskell2010
+  default-extensions:
+    NoImplicitPrelude
+    BangPatterns
+    ConstraintKinds
+    DataKinds
+    FlexibleContexts
+    FlexibleInstances
+    GADTs
+    KindSignatures
+    LambdaCase
+    OverloadedStrings
+    ScopedTypeVariables
+    TupleSections
+    TypeApplications
+    AllowAmbiguousTypes
+    TypeOperators
+    ViewPatterns
+
+  -- more HECs usually result in worse performance in shared cloud computing
+  -- environments, e.g. a Gitpod workspace exposes 16 cores to the VM, but
+  -- those hardware threads are mostly busy doing some jobs for the others,
+  -- attempts to leverage more of them will be losing (up to 15x slower),
+  -- possibly due to extra waiting time & scheduling overhead.
+  --
+  -- but multi-cores are the norm for event distribution & hosting, which is
+  -- our purpose.
+  --
+  -- custom interpreters can be built on purpose with more HECs enabled, but
+  -- pay attention to https://github.com/commercialhaskell/stack/issues/680
+  -- which suggests -N >=32 is always a bad idea
+  ghc-options:        -Wall -threaded "-with-rtsopts=-maxN3 -qg -I0"
+  build-depends:
+    , base              >=4.12
+    , bytestring
+    , edh
+    , lossless-decimal
+    , mtl
+    , nedh
+    , sedh
+    , stm               >=2.5
+    , text
+    , transformers
+
+executable forage
+  main-is:            Main.hs
+  hs-source-dirs:     forage
+  other-modules:
+  default-language:   Haskell2010
+  default-extensions:
+    NoImplicitPrelude
+    BangPatterns
+    ConstraintKinds
+    DataKinds
+    FlexibleContexts
+    FlexibleInstances
+    GADTs
+    KindSignatures
+    LambdaCase
+    OverloadedStrings
+    ScopedTypeVariables
+    TupleSections
+    TypeApplications
+    AllowAmbiguousTypes
+    TypeOperators
+    ViewPatterns
+
+  -- for now use `-N1` to workaround https://github.com/haskell/unix/issues/62
+  -- some equivalence of `getAnyProcessStatus` is absent from package `process`,
+  -- or we should really switch to use `process` instead
+  ghc-options:        -Wall -threaded -rtsopts "-with-rtsopts=-N1 -qg"
+  build-depends:
+    , base              >=4.12
+    , bytestring
+    , edh
+    , lossless-decimal
+    , mtl
+    , nedh
+    , sedh
+    , stm               >=2.5
+    , text
+    , transformers
+
+executable swarmcc
+  main-is:            Main.hs
+  hs-source-dirs:     swarmcc
+  other-modules:
+  default-language:   Haskell2010
+  default-extensions:
+    NoImplicitPrelude
+    BangPatterns
+    ConstraintKinds
+    DataKinds
+    FlexibleContexts
+    FlexibleInstances
+    GADTs
+    KindSignatures
+    LambdaCase
+    OverloadedStrings
+    ScopedTypeVariables
+    TupleSections
+    TypeApplications
+    AllowAmbiguousTypes
+    TypeOperators
+    ViewPatterns
+
+  ghc-options:        -Wall -threaded -rtsopts "-with-rtsopts=-maxN2 -qg"
+  build-depends:
+    , base              >=4.12
+    , bytestring
+    , edh
+    , lossless-decimal
+    , mtl
+    , nedh
+    , sedh
+    , stm               >=2.5
+    , text
+    , transformers
+
+library
+  exposed-modules:
+    Language.Edh.Swarm
+    Language.Edh.Swarm.NodeCfg
+    Language.Edh.Swarm.Starter
+  other-modules:
+    Language.Edh.Swarm.Worker
+
+  hs-source-dirs:     src
+  default-language:   Haskell2010
+  default-extensions:
+    NoImplicitPrelude
+    BangPatterns
+    ConstraintKinds
+    DataKinds
+    FlexibleContexts
+    FlexibleInstances
+    GADTs
+    KindSignatures
+    LambdaCase
+    OverloadedStrings
+    ScopedTypeVariables
+    TupleSections
+    TypeApplications
+    AllowAmbiguousTypes
+    TypeOperators
+    ViewPatterns
+
+  ghc-options:        -Wall
+  build-depends:
+    , base                  >=4.12
+    , binary
+    , bytestring
+    , clock
+    , containers
+    , directory
+    , edh
+    , filepath
+    , hashable
+    , lossless-decimal
+    , mtl
+    , nedh
+    , network
+    , process
+    , scientific
+    , stm                   >=2.5
+    , text
+    , time
+    , transformers
+    , unix
+    , unordered-containers

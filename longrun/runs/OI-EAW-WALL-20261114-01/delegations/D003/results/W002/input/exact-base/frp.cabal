@@ -1,0 +1,456 @@
+cabal-version:  2.4
+
+name:           frp
+version:        0.3.1.0
+
+description:    Please see the README on GitHub at <https://gogs.dw/frp/frp#readme>
+homepage:       https://gogs.dw/frp/frp#readme
+
+author:         King
+maintainer:     example@example.com
+license:        BSD-3-Clause
+
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+source-repository head
+  type: git
+  location: https://gogs.dw/frp/frp
+
+library
+  hs-source-dirs: src
+  default-language: GHC2021 
+  ghc-options: -Wall -fno-warn-orphans -funbox-strict-fields -fspecialise-aggressively -O2 -ddump-splices
+
+  default-extensions: 
+    OverloadedStrings 
+    OverloadedLists
+    OverloadedLabels 
+
+    DuplicateRecordFields
+    RecordWildCards
+
+    LambdaCase 
+    BangPatterns 
+    ViewPatterns
+    TupleSections 
+    MultiWayIf 
+     
+    TemplateHaskell 
+    RecursiveDo
+    TypeFamilies
+
+    DeriveAnyClass
+
+  exposed-modules:
+    Frp.Instance
+
+    Frp.Instance.Tis
+    
+    -- Frp.Instance.Type
+
+    -- Frp.Instance.Old.Utils.PositionChange.PositionLogic
+    -- Frp.Instance.Old.Utils.Risk.Base
+    
+    Frp.Instance.Apt
+    Frp.Instance.Apt.Base
+    Frp.Instance.Apt.Tick
+    Frp.Instance.Apt.Reflex
+    Frp.Instance.Apt.Statistics
+    Frp.Instance.Apt.Compare
+    Frp.Instance.Apt.Combine
+    Frp.Instance.Apt.Filter
+    Frp.Instance.Apt.Accum
+    Frp.Instance.Apt.Trans
+    Frp.Instance.Apt.Group
+    
+    Frp.Instance.BussinessUtils
+
+    Frp.Instance.ISL.Eaw.Interface
+    Frp.Instance.ISL.Eaw.Interface.Common
+    Frp.Instance.ISL.Eaw.Interface.PreL0
+    Frp.Instance.ISL.Eaw.Interface.Battle
+    Frp.Instance.ISL.Eaw.Interface.CommonFlow
+    Frp.Instance.ISL.Eaw.Interface.EpisodeScout
+    Frp.Instance.ISL.Eaw.Interface.Sample
+
+    Frp.Instance.ISL.Eaw.P1
+    Frp.Instance.ISL.Eaw.P1.Products
+    Frp.Instance.ISL.Eaw.P1.FaoIngress
+    Frp.Instance.ISL.Eaw.P1.WallLifecycle
+    Frp.Instance.ISL.Eaw.P1.BuildActivity
+    Frp.Instance.ISL.Eaw.P1.AttackSegmentBook
+    Frp.Instance.ISL.Eaw.P1.AbsorbInteraction
+    Frp.Instance.ISL.Eaw.P1.DirectedLargeDeal
+    Frp.Instance.ISL.Eaw.P1.Publication
+
+    Frp.Instance.ISL.Eaw.P2
+    Frp.Instance.ISL.Eaw.P2.Types
+    Frp.Instance.ISL.Eaw.P2.Cfis
+    Frp.Instance.ISL.Eaw.P2.Input
+    Frp.Instance.ISL.Eaw.P2.PublicStorage
+    Frp.Instance.ISL.Eaw.P2.Runtime
+    Frp.Instance.ISL.Eaw.P2.Opening
+    Frp.Instance.ISL.Eaw.P2.Fate
+    Frp.Instance.ISL.Eaw.P2.Battle
+    Frp.Instance.ISL.Eaw.P2.Window
+    Frp.Instance.ISL.Eaw.P2.Commit
+    Frp.Instance.ISL.Segmentor.A1_BoundaryContextChain
+    Frp.Instance.ISL.Segmentor.A2_ResolutionContextChain
+    Frp.Instance.ISL.Segmentor.EawBattleP
+
+    Frp.Instance.ISL.Segmentor.MultiSeriesActiveFlow.Input.PhaseChanges
+    Frp.Instance.ISL.Segmentor.MultiSeriesActiveFlow.Input.PairObservations
+    Frp.Instance.ISL.Segmentor.MultiSeriesActiveFlow.FaoIngress
+    Frp.Instance.ISL.Segmentor.MultiSeriesActiveFlow.Production
+    Frp.Instance.ISL.Segmentor.MultiSeriesActiveFlow.Phase
+    Frp.Instance.ISL.Segmentor.MultiSeriesActiveFlow.ActiveFlowPhaseBook
+    Frp.Instance.ISL.Segmentor.MultiSeriesActiveFlow.PairEvidence
+    Frp.Instance.ISL.Segmentor.MultiSeriesActiveFlow.PairMethod
+    Frp.Instance.ISL.Segmentor.MultiSeriesActiveFlow.PairCommonFlowRelationBook
+    Frp.Instance.ISL.Segmentor.MultiSeriesActiveFlow.CommonFlowPreamble
+    Frp.Instance.ISL.Segmentor.MultiSeriesActiveFlow.ConfirmedRelationCore
+    Frp.Instance.ISL.Segmentor.MultiSeriesActiveFlow.CommonActiveFlowSegmentBook
+    Frp.Instance.ISL.Segmentor.MultiSeriesActiveFlow.Conformance
+    Frp.Instance.ISL.Segmentor.MultiSeriesActiveFlow.Publication
+    Frp.Instance.ISL.Segmentor.MultiSeriesActiveFlow.PublicStorage
+    Frp.Instance.ISL.Segmentor.MultiSeriesActiveFlow
+
+    Frp.Instance.ISLTC.AdtStorage
+    Frp.Instance.ISLTC.ConnectPlatformTrade
+    Frp.Instance.ISLTC.Fao
+
+    Frp.Instance.ISL.Base.HF.HF
+    Frp.Instance.ISL.Base.HF.Types
+    Frp.Instance.ISL.Base.LookBack.Types
+    Frp.Instance.ISL.Base.LookBack.Processors
+    Frp.Instance.ISL.Base.DistDiff.Helpers
+    Frp.Instance.ISL.Base.DistDiff.Types
+    Frp.Instance.ISL.Base.Fuzzy.Helpers
+    Frp.Instance.ISL.Base.Fuzzy.Types
+    Frp.Instance.ISL.Base.Fuzzy.Processors
+    Frp.Instance.ISL.Base.Geometry.Helpers
+    Frp.Instance.ISL.Base.Geometry.Processors
+    Frp.Instance.ISL.Base.Geometry.Types
+    Frp.Instance.ISL.Base.Geometry.NormRaw
+    Frp.Instance.ISL.Base.PositionChange.Types
+    Frp.Instance.ISL.Base.PositionChange.Helpers
+    Frp.Instance.ISL.Base.SinceStart.Types
+    Frp.Instance.ISL.Base.SinceStart.Helpers
+    Frp.Instance.ISL.Base.SpecificTimeConstraint.Processors
+    Frp.Instance.ISL.Base.Region
+    Frp.Instance.ISL.Base.Until
+
+    Frp.Instance.ISL.Geometry.ScaleTurn.ScaleTurn
+    Frp.Instance.ISL.Geometry.ScaleTurn.STCalendar
+    Frp.Instance.ISL.Geometry.Symmetry.Symmetry
+    Frp.Instance.ISL.Geometry.Gap.Gap
+    Frp.Instance.ISL.Geometry.CoverPivot.Type
+    Frp.Instance.ISL.Geometry.CoverPivot.Functions
+    Frp.Instance.ISL.Geometry.CoverPivot.Processors
+    Frp.Instance.ISL.Geometry.TurnBack.SimpleKeepImportantHFToCoverPivot
+    
+    Frp.Instance.ISL.MergeToStrategy.MergeToStrategy
+    Frp.Instance.ISL.Geometry.Enve.Base
+    Frp.Instance.ISL.Geometry.Enve.Wrapper
+    -- Frp.Instance.ISL.Geometry.HeadTail.Types
+    Frp.Instance.ISL.Geometry.BrkHP.LeftCon
+    Frp.Instance.ISL.Geometry.BrkHP.Splits
+    
+    Frp.Instance.ISL.StrengthChg.Type
+    -- Frp.Instance.ISL.StrengthChg.Processor
+    Frp.Instance.ISL.StrengthChg.Processor.LookBackChg
+    Frp.Instance.ISL.StrengthChg.Processor.Statistics
+
+    Frp.Instance.ISL.Synchronized.Processor.Thick
+    Frp.Instance.ISL.Synchronized.Types
+    Frp.Instance.ISL.Synchronized.Base
+    Frp.Instance.ISL.Synchronized.CloseGroup.Type
+    Frp.Instance.ISL.Synchronized.CloseGroup.Functions
+    Frp.Instance.ISL.Wave.ZigZag
+    Frp.Instance.ISL.Wave.Base
+    Frp.Instance.ISL.Wave.ZigN
+    Frp.Instance.ISL.Wave.HP
+    Frp.Instance.ISL.Wave.Oscillators
+    Frp.Instance.ISL.Wave.MarketBasics
+    Frp.Instance.ISL.Wave.CapitalManager
+    Frp.Instance.ISL.Wave.Spe
+    Frp.Instance.ISL.Wave.AMA
+    Frp.Instance.ProcessorConstructor
+    Frp.Instance.ProcessorConstructor.Operator.PPS
+    Frp.Instance.ProcessorConstructor.Generalizer.Ordinary
+    Frp.Instance.ProcessorConstructor.Generalizer.Processor
+    Frp.Instance.ProcessorConstructor.Aggregator
+    Frp.Instance.ProcessorConstructor.Convertor
+    Frp.Instance.ProcessorConstructor.Class
+
+  other-modules:
+    Frp.Instance.ISL.Eaw.Interface.EpisodeScout.Candidate
+    Frp.Instance.ISL.Eaw.P1.Internal.OccurrenceLedger
+    Frp.Instance.ISL.Eaw.P1.Internal.UpstreamReference
+
+    -- Frp.Instance.Temp.PyFeatureExistentialTypes
+    -- Frp.Instance.Temp.PyFeatureADTs
+
+  build-depends:
+    base  
+    ,template-haskell
+    ,derive-storable 
+    ,containers
+    ,data-default
+    ,dependent-map 
+    ,dependent-sum 
+    ,lens
+    ,mtl
+    ,ref-tf
+    ,time 
+    ,transformers
+    ,witherable
+    ,these 
+    ,semialign
+    ,monoidal-containers
+    ,primitive
+    ,dependent-sum-template 
+    ,statistics 
+    ,vector 
+    ,extra 
+    ,text 
+    ,unordered-containers 
+    ,sort 
+    ,hashable 
+    ,aeson
+    ,bytestring 
+    ,cassava 
+    ,directory 
+    ,filepath
+    ,scientific 
+    ,pretty 
+    ,GenericPretty 
+    ,syb
+    ,reflex 
+    ,convertible 
+    ,bson
+    ,mongoDB
+    ,filepath
+    -- ,bson-generic
+    , stm 
+    , eas
+    , edh
+    , elr
+    , hasdim
+    , lossless-decimal
+    , frp-core 
+    , cfis
+    , hgeometry
+    , hgeometry-combinatorial
+    , order-statistic-tree
+    -- , inline-r
+    -- , inline-c
+    -- , criterion
+    -- , pyfi
+    -- , inline-julia
+
+
+executable dbaw
+  main-is:            Main.hs
+  hs-source-dirs:     dbaw
+  other-modules:
+  default-language: GHC2021 
+
+  default-extensions: 
+    OverloadedStrings 
+    OverloadedLists
+    OverloadedLabels 
+
+    DuplicateRecordFields
+    RecordWildCards
+
+    LambdaCase 
+    BangPatterns 
+    ViewPatterns
+    TupleSections 
+    MultiWayIf 
+    TemplateHaskell
+    RecursiveDo
+    TypeFamilies
+
+  build-depends:
+    base  
+    ,template-haskell
+    ,derive-storable 
+    ,containers
+    ,deque
+    ,data-default
+    ,dependent-map 
+    ,dependent-sum 
+    ,lens
+    ,mtl
+    ,ref-tf
+    ,time 
+    ,transformers
+    ,witherable
+    ,these 
+    ,semialign
+    ,monoidal-containers
+    ,primitive
+    ,dependent-sum-template 
+    ,statistics 
+    ,vector 
+    ,extra 
+    ,text 
+    ,unordered-containers 
+    ,sort 
+    ,hashable 
+    ,aeson
+    ,bytestring 
+    ,cassava 
+    ,directory 
+    ,scientific 
+    ,pretty 
+    ,GenericPretty 
+    ,syb
+    ,filepath
+    ,reflex 
+    ,attoparsec
+    ,keys 
+    ,convertible 
+    ,deepseq 
+    ,megaparsec 
+    ,parser-combinators
+    ,uuid 
+    , stm 
+    , eas
+    , edh
+    , elr
+    , hasdim
+    , lossless-decimal
+    , ghc-prim
+    , frp-core
+    , frp
+    , hgeometry
+    , hgeometry-combinatorial
+
+test-suite frp-tests
+  -- 类型：exitcode-stdio-1.0 是测试套件的标准类型，表示通过 exit code 判断成功或失败
+  type:               exitcode-stdio-1.0
+
+  -- 测试的入口文件。需要在 test 目录下创建这个文件。
+  main-is:            Spec.hs
+
+  -- 指定测试代码所在的源目录
+  hs-source-dirs:     test
+
+  -- Cabal 通常会自动发现测试目录下的模块。如果它找不到，可以在这里手动添加。
+  -- 比如：
+  other-modules:
+    Frp.Instance.Testing.Gen
+    Frp.Instance.Apt.ReflexSpec
+    Frp.Instance.ISL.Eaw.InterfaceSpec
+    Frp.Instance.ISL.Eaw.P2BoundedStateSpec
+    Frp.Instance.ISL.Eaw.P2V211Spec
+
+  -- GHC 编译选项，建议与您的 library 节保持一致，并为测试添加线程支持
+  ghc-options:        -Wall -fno-warn-orphans -funbox-strict-fields -fspecialise-aggressively -O2 -ddump-splices -threaded -rtsopts -with-rtsopts=-N
+
+  -- 默认语言，与 library 节保持一致
+  default-language:   GHC2021
+
+  -- 默认 GHC 扩展，建议从 library 节复制过来，以确保环境一致
+  default-extensions: 
+    OverloadedStrings 
+    OverloadedLists
+    OverloadedLabels 
+    DuplicateRecordFields
+    RecordWildCards
+    LambdaCase 
+    BangPatterns 
+    ViewPatterns
+    TupleSections 
+    MultiWayIf 
+    TemplateHaskell 
+    RecursiveDo
+    TypeFamilies
+    DeriveAnyClass
+
+  build-depends:
+      -- 1. 基础依赖包
+      base
+
+      -- 2. 核心！依赖项目自身的 'frp' 库。
+      --    这个名字必须与文件顶部的 'name' 字段完全一致。
+      --    这样您的测试代码才能 import "src" 目录下的模块。
+    , frp
+
+      -- 3. 添加测试框架的依赖，这里以 Hspec 为例
+    , hspec
+    , uuid
+
+      -- 4. 从 library 节复制所有其他相关的依赖包。
+      --    测试代码很可能需要用到和主代码相同的库。
+    , template-haskell
+    , derive-storable 
+    , containers
+    , data-default
+    , dependent-map 
+    , dependent-sum 
+    , lens
+    , mtl
+    , ref-tf
+    , time 
+    , transformers
+    , witherable
+    , these 
+    , semialign
+    , monoidal-containers
+    , primitive
+    , dependent-sum-template 
+    , statistics 
+    , vector 
+    , extra 
+    , text 
+    , unordered-containers 
+    , sort 
+    , hashable 
+    , aeson
+    , bytestring 
+    , cassava 
+    , directory 
+    , scientific 
+    , pretty 
+    , GenericPretty 
+    , syb
+    , reflex 
+    , convertible 
+    , bson
+    , stm 
+    , eas
+    , edh
+    , elr
+    , hasdim
+    , lossless-decimal
+    , frp-core 
+    , cfis
+    , hgeometry
+    , hgeometry-combinatorial
+    , order-statistic-tree
+
+test-suite eaw-p1-v1-6-1-light-integration
+  type:               exitcode-stdio-1.0
+  main-is:            Frp/Instance/ISL/Eaw/P1/P1EndToEndSpec.hs
+  hs-source-dirs:     test
+  ghc-options:        -Wall
+  default-language:   GHC2021
+  default-extensions:
+    OverloadedStrings
+  build-depends:
+      base
+    , aeson
+    , bytestring
+    , containers
+    , directory
+    , filepath
+    , frp
+    , frp-core
+    , text

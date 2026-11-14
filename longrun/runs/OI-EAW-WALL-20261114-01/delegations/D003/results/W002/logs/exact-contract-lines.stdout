@@ -1,0 +1,48 @@
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/exact-base/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:29:    partitionIngressBatch,
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/exact-base/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:30:    decodeWallNumericRow,
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/exact-base/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:158:partitionIngressBatch :: [Either P1IngressError value] -> (Maybe [value], Maybe [P1IngressError])
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/exact-base/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:159:partitionIngressBatch values =
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/exact-base/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:383:  Nothing -> Left (MissingNumericField name)
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/exact-base/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:460:      Nothing -> Left (MissingNumericField fieldName)
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/exact-base/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:476:          Nothing -> Left (MissingNumericField "wall_id")
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/exact-base/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:526:      Nothing -> Left (MissingNumericField "wall_local_no")
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/exact-base/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:532:      Nothing -> Left (MissingNumericField "side_code")
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/exact-base/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:587:decodeWallNumericRow :: ProductReceipt -> Text -> NumericRow -> Either P1IngressError WallLifecycleOccurrence
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/exact-base/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:588:decodeWallNumericRow receipt resultKey row = do
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/exact-base/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:916:      | bodyCode == 4 || bodyCode == 5 || bodyCode == 6 -> Left (MissingNumericField "interval_start_uti/interval_end_uti")
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/exact-base/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:918:    _ -> Left (MissingNumericField "interval_start_uti/interval_end_uti")
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/exact-base/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:1195:      accepted = fst . partitionIngressBatch
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/exact-base/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:1196:      rejected = snd . partitionIngressBatch
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/exact-base/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:1216:      accepted = fst . partitionIngressBatch
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/exact-base/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:1217:      rejected = snd . partitionIngressBatch
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/exact-base/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:1232:    { ingressOccurrences = fmapMaybe (fst . partitionIngressBatch) decoded,
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/exact-base/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:1233:      ingressDiagnostics = fmapMaybe (snd . partitionIngressBatch) decoded
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/exact-base/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:1245:    { ingressOccurrences = fmapMaybe (fst . partitionIngressBatch) decoded,
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/exact-base/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:1246:      ingressDiagnostics = fmapMaybe (snd . partitionIngressBatch) decoded
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/exact-base/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:1252:toWallLifecycleIngress receipt generic = pure (decodeGroupsWithDiagnostics "wall__" (decodeWallNumericRow receipt) generic)
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/exact-base/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs:1379:  pure (decodePackedRowsWithDiagnostics (decodeWallNumericRow receipt) rows)
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/exact-base/src/Frp/Instance/ISL/Eaw/P1/WallLifecycle.hs:29:  | WallStartedTwice WallIdentity
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/exact-base/src/Frp/Instance/ISL/Eaw/P1/WallLifecycle.hs:31:  | WallUpdateBeforeStart WallIdentity
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/exact-base/src/Frp/Instance/ISL/Eaw/P1/WallLifecycle.hs:53:  (Nothing, _) -> Left (WallUpdateBeforeStart identity)
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/exact-base/src/Frp/Instance/ISL/Eaw/P1/WallLifecycle.hs:54:  (Just _, Spine.WallStarted _ _) -> Left (WallStartedTwice identity)
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/exact-base/src/Frp/Instance/ISL/Eaw/P1/WallLifecycle.hs:81:              WallEndedState -> Map.delete identity (wallViews state)
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/exact-base/src/Frp/Instance/ISL/Eaw/P1/WallLifecycle.hs:95:  let firingState = initial {wallLedger = emptyOccurrenceLedger, wallCurrentUpdateBatch = Map.empty}
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/exact-base/src/Frp/Instance/ISL/Eaw/P1/WallLifecycle.hs:117:  Left err -> txn {wallTxnResult = Just (Left err)}
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/exact-base/test/Frp/Instance/ISL/Eaw/P1/P1EndToEndSpec.hs:32:  wallLifecycleMustBeProductSpecificAndIdempotent
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/exact-base/test/Frp/Instance/ISL/Eaw/P1/P1EndToEndSpec.hs:34:  wallLifecycleTransitionTableMustBeComplete
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/exact-base/test/Frp/Instance/ISL/Eaw/P1/P1EndToEndSpec.hs:360:  occurrence <- requireRight "complete Wall numeric row" (decodeWallNumericRow wallReceipt "wall__999" row)
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/exact-base/test/Frp/Instance/ISL/Eaw/P1/P1EndToEndSpec.hs:361:  sameOccurrence <- requireRight "transport-split Wall numeric row" (decodeWallNumericRow wallReceipt "wall__999__occ0001" row)
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/exact-base/test/Frp/Instance/ISL/Eaw/P1/P1EndToEndSpec.hs:365:  compactOccurrence <- requireRight "compact Wall numeric row" (decodeWallNumericRow wallReceipt "wall__stream" compactRow)
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/exact-base/test/Frp/Instance/ISL/Eaw/P1/P1EndToEndSpec.hs:366:  compactSplit <- requireRight "transport-split compact Wall numeric row" (decodeWallNumericRow wallReceipt "wall__stream__occ0001" compactRow)
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/exact-base/test/Frp/Instance/ISL/Eaw/P1/P1EndToEndSpec.hs:374:    (decodeWallNumericRow wallReceipt "wall__1000" compactRow)
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/exact-base/test/Frp/Instance/ISL/Eaw/P1/P1EndToEndSpec.hs:375:  requireLeft "missing field must not default to zero" (decodeWallNumericRow wallReceipt "wall__999" (Map.delete "core_price" row))
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/exact-base/test/Frp/Instance/ISL/Eaw/P1/P1EndToEndSpec.hs:376:  requireLeft "invalid Wall band must fail closed" (decodeWallNumericRow wallReceipt "wall__999" (Map.insert "core_price" 102 row))
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/exact-base/test/Frp/Instance/ISL/Eaw/P1/P1EndToEndSpec.hs:379:    ( decodeWallNumericRow
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/exact-base/test/Frp/Instance/ISL/Eaw/P1/P1EndToEndSpec.hs:414:      complete = decodeWallNumericRow wallReceipt "wall__999" row
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/exact-base/test/Frp/Instance/ISL/Eaw/P1/P1EndToEndSpec.hs:415:      invalid = decodeWallNumericRow wallReceipt "wall__1000" (Map.delete "core_price" row)
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/exact-base/test/Frp/Instance/ISL/Eaw/P1/P1EndToEndSpec.hs:416:  case partitionIngressBatch [complete, invalid] of
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/exact-base/test/Frp/Instance/ISL/Eaw/P1/P1EndToEndSpec.hs:417:    (Nothing, Just [MissingNumericField "core_price"]) -> pure ()
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/exact-base/test/Frp/Instance/ISL/Eaw/P1/P1EndToEndSpec.hs:455:wallLifecycleMustBeProductSpecificAndIdempotent :: IO ()
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/exact-base/test/Frp/Instance/ISL/Eaw/P1/P1EndToEndSpec.hs:456:wallLifecycleMustBeProductSpecificAndIdempotent = do
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/exact-base/test/Frp/Instance/ISL/Eaw/P1/P1EndToEndSpec.hs:503:wallLifecycleTransitionTableMustBeComplete :: IO ()
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/exact-base/test/Frp/Instance/ISL/Eaw/P1/P1EndToEndSpec.hs:504:wallLifecycleTransitionTableMustBeComplete = do

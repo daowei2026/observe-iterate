@@ -1,0 +1,50 @@
+{
+  "schema": "longrun-order/v2",
+  "run_id": "OI-EAW-WALL-20261114-01",
+  "work_order_id": "W002",
+  "delegation_ref": "daowei2026/observe-iterate@b7200816f86395cd1475ea3a482fc2e63086b967:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/DELEGATION.json",
+  "issuer_call_id": "C0009",
+  "issuer": "chatgpt:OI-EAW-WALL-20261114-01:executor:E1",
+  "worker": "codex:OI-EAW-WALL-20261114-01:worker:W1",
+  "return_to": "chatgpt:OI-EAW-WALL-20261114-01:executor:E1",
+  "instructions_ref": "daowei2026/observe-iterate@79c2f2b159998fe6ca25e2e0bbba5f196f7fbd94:longrun/runs/OI-EAW-WALL-20261114-01/work_orders/W002/ORDER.md",
+  "input_refs": [
+    "daowei2026/observe-iterate@461a420bbacc5d24ee093f9f20f2f86653973041:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/DELEGATION.md",
+    "daowei2026/observe-iterate@b7200816f86395cd1475ea3a482fc2e63086b967:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/DELEGATION.json",
+    "daowei2026/observe-iterate@147770cb63bc0de3b9a97eee1c6aa4abd6fbbbff:longrun/runs/OI-EAW-WALL-20261114-01/business_control/decisions/MD-C0008-001.md",
+    "daowei2026/observe-iterate@1e00424349ce8a5d72c9fccf74585d18630b62b8:longrun/runs/OI-EAW-WALL-20261114-01/RUN_BINDING.json",
+    "daowei2026/observe-iterate@2b872fb3f65d1b40a6f4beb75bff783deac758e6:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D002/results/ADDITIONAL_ENGINEERING_PRECONDITION.md",
+    "daowei2026/observe-iterate@d8ae5332c94c535d330263ec59bddfbfa3bc52b0:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D002/results/CONTROLLED_SCENARIO_ACTION_DESIGN.md",
+    "daowei2026/observe-iterate@faaa2f2f13c65979d423f584746167aa1ead2117:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D002/results/ACTION_ELIGIBILITY_MATRIX.md",
+    "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/WallLifecycle.hs",
+    "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+    "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/Products.hs",
+    "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/Publication.hs",
+    "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/Internal/OccurrenceLedger.hs",
+    "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:test/Frp/Instance/ISL/Eaw/P1/P1EndToEndSpec.hs",
+    "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:frp.cabal",
+    "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:stack.yaml"
+  ],
+  "deliverables": [
+    "WORKER_EXECUTION_REPORT.md with phased outcome, direct evidence and exact limitations",
+    "D003_BINDING.json with actual thread/model/effort/cwd, single-writer lock, Owner literal grant and W002 actual root",
+    "DRY_DEPENDENCY_PREFLIGHT.json with exact closure, tool hashes, measurable caps and preflight decision",
+    "WRITE_SURFACE_PLAN.json plus WRITE_SURFACE_AUDIT.json proving or accurately failing zero writes outside W002 WORK_ROOT",
+    "SOURCE_BASELINE_REPORT.md and SOURCE_CHANGE_MANIFEST.json binding exact base, staged tree and every patch file",
+    "PREREQUISITE_PATCHSET.diff with only reviewable text changes",
+    "PRECONDITION_REPORT.md and EP_ACCEPTANCE_MATRIX.md for EP-WALL-SHARED-01..03 and EP-SCENARIO-01..05",
+    "FIXTURE_SCHEMA_AND_PROVENANCE.md plus the complete static FX-WALL-SCENARIO-001 fixture with 9 scenarios, 18 firings and 22 inputs, never executed",
+    "KNOWN_CONTRACT_CONFLICTS.md with exact source/test functions and unresolved contract choices",
+    "COMMAND_LOG.jsonl and HASHES.sha256",
+    "Conditional COMPILE_ONLY_REPORT.json, SERIALIZATION_TEST_REPORT.json, STAGED_LOCAL_COMMIT_REPORT.json or ENGINEERING_STOP_REPORT.md only when actually applicable",
+    "V2 WORKER_RETURN.json returning only to executor E1"
+  ],
+  "grant": {
+    "operation": "wall-observation-work",
+    "execution_context": "linux:/dwdhome/fy/BASE_E6_2",
+    "allowed_writes": [
+      "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01"
+    ],
+    "authority_quote": "operation=wall-observation-work execution_context=linux:/dwdhome/fy/BASE_E6_2 allowed_writes=/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01"
+  }
+}

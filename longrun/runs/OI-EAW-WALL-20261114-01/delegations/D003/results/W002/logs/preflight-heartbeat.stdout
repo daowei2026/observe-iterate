@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "project": {
+    "id": "oi-eaw-wall-20261114-01",
+    "title": "OI EAW Wall D003 W002"
+  },
+  "task": {
+    "id": "w002-local-stage",
+    "title": "W002 本地工程阶段与准确停止交付",
+    "type": "engineering",
+    "priority": "normal",
+    "owner": "agent",
+    "completion_gate": "Phase0形成真实决定；仅合格时按W002继续。已执行原件、限制、hash与逐项本地出版映射完整交E1运输。仅本地阶段结束，不表示W/D/业务接受。",
+    "monitoring": {
+      "scope": "general"
+    },
+    "origin": {
+      "codex_thread_id": "01a1da55-5881-7590-94a1-0661f0236977"
+    }
+  },
+  "task_id": "w002-local-stage",
+  "source_kind": "task_status_ledger",
+  "source": {
+    "path": "tasks/w002-local-stage/snapshot.json"
+  },
+  "ledger_seq": 3,
+  "snapshot_seq": 3,
+  "projection_current": true,
+  "business_terminal": null,
+  "queue_position": null,
+  "plan_hash": "1b02a82148951ca1653cc232c7bda835df4c92450b5e745ba08e3d62d96404e0",
+  "status": "running",
+  "current_phase_id": "local",
+  "current_step_id": "preflight",
+  "action": "工具版本与包列表真实读取成功，rg路径已按现场定位修正；闭包/成本与隔离仍不合格",
+  "next_action": "形成PREFLIGHT_STOP、冲突台账和本地交付原件",
+  "blocker": null,
+  "resources": [],
+  "progress": {
+    "completed_steps": 0,
+    "total_steps": 3,
+    "completed_weight": 0,
+    "total_weight": 5.0,
+    "percent": 0.0
+  },
+  "timing": {
+    "started_at": "2026-11-14T18:37:00Z",
+    "updated_at": "2026-11-14T18:42:55Z",
+    "heartbeat_at": "2026-11-14T18:42:55Z",
+    "finished_at": null,
+    "elapsed_seconds": 356,
+    "active_seconds": 354,
+    "waiting_seconds": 0,
+    "waiting_external_seconds": 0,
+    "blocked_seconds": 0,
+    "needs_human_seconds": 0,
+    "idle_seconds": 1,
+    "accounted_seconds": 355,
+    "unassigned_seconds": 1,
+    "unobserved_seconds": 1
+  },
+  "phases": [
+    {
+      "id": "local",
+      "title": "W002 本地阶段",
+      "steps": [
+        {
+          "id": "preflight",
+          "title": "dry preflight与阶段判定",
+          "acceptance": "输入、物理绑定、依赖、工具、写面、cap具直接证据，并输出ELIGIBLE或PREFLIGHT_STOP",
+          "weight": 2.0,
+          "phase_id": "local",
+          "phase_title": "W002 本地阶段",
+          "state": "running",
+          "started_at": "2026-11-14T18:37:01Z",
+          "completed_at": null,
+          "evidence": [],
+          "note": null,
+          "timing": {
+            "started_at": "2026-11-14T18:37:01Z",
+            "finished_at": null,
+            "elapsed_seconds": 354,
+            "active_seconds": 354,
+            "waiting_seconds": 0,
+            "waiting_external_seconds": 0,
+            "blocked_seconds": 0,
+            "needs_human_seconds": 0,
+            "idle_seconds": 0
+          }
+        },
+        {
+          "id": "bounded-outcome",
+          "title": "按阶段判定完成允许的本地结果",
+          "acceptance": "若合格则完成合法工程子集；否则停止构造/执行并形成准确STOP与EP缺口",
+          "weight": 2.0,
+          "phase_id": "local",
+          "phase_title": "W002 本地阶段",
+          "state": "planned",
+          "started_at": null,
+          "completed_at": null,
+          "evidence": [],
+          "note": null,
+          "timing": {
+            "started_at": null,
+            "finished_at": null,
+            "elapsed_seconds": 0,
+            "active_seconds": 0,
+            "waiting_seconds": 0,
+            "waiting_external_seconds": 0,
+            "blocked_seconds": 0,
+            "needs_human_seconds": 0,
+            "idle_seconds": 0
+          }
+        },
+        {
+          "id": "handoff",
+          "title": "审计与逐字交付",
+          "acceptance": "完整本地文件、hash、逐deliverable映射、真实限制与待出版Return步骤已交付",
+          "weight": 1.0,
+          "phase_id": "local",
+          "phase_title": "W002 本地阶段",
+          "state": "planned",
+          "started_at": null,
+          "completed_at": null,
+          "evidence": [],
+          "note": null,
+          "timing": {
+            "started_at": null,
+            "finished_at": null,
+            "elapsed_seconds": 0,
+            "active_seconds": 0,
+            "waiting_seconds": 0,
+            "waiting_external_seconds": 0,
+            "blocked_seconds": 0,
+            "needs_human_seconds": 0,
+            "idle_seconds": 0
+          }
+        }
+      ],
+      "completed_steps": 0,
+      "total_steps": 3
+    }
+  ],
+  "evidence": [],
+  "event_count": 3,
+  "source_status": "running",
+  "admission": {
+    "state": "excluded",
+    "reason_code": "explicit_general_scope",
+    "source": "task.monitoring.scope"
+  },
+  "business_status": "unknown",
+  "business_completion": {
+    "verified": false,
+    "reason_code": "not_admitted"
+  },
+  "execution": {
+    "state": "unknown",
+    "reason_code": "missing_exact_root_thread",
+    "observed_at": null
+  }
+}

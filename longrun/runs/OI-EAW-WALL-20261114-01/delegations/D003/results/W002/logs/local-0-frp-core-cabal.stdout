@@ -1,0 +1,244 @@
+cabal-version:  2.4
+
+name:           frp-core
+version:        0.6.2.0
+
+description:    Please see the README on GitHub at <https://gogs.dw/frp/frp-core#readme>
+homepage:       https://gogs.dw/frp/frp-core#readme
+
+author:         King
+maintainer:     youqing.king@gmail.com
+license:        BSD-3-Clause
+
+build-type:     Simple
+extra-source-files:
+    README.md
+    CHANGELOG.md
+
+source-repository head
+  type: git
+  location: https://gogs.dw/frp/frp-core
+
+flag debug-enable
+  description: Enable debugging of app
+  default: True
+  manual: True
+
+library
+  hs-source-dirs: src
+  default-language: GHC2021 
+  ghc-options: -Wall -fno-warn-orphans -funbox-strict-fields -fspecialise-aggressively -O2 -ddump-splices
+
+  if flag(debug-enable)
+    cpp-options: -DDEBUG_ENABLE
+
+  default-extensions: 
+    OverloadedStrings 
+    OverloadedLists
+    OverloadedLabels 
+
+    DuplicateRecordFields
+    RecordWildCards
+
+    LambdaCase 
+    BangPatterns 
+    ViewPatterns
+    TupleSections 
+    MultiWayIf 
+    TemplateHaskell
+    RecursiveDo
+    TypeFamilies
+
+  exposed-modules:
+    Frp.DbaStore
+    Frp.DbaStore.Class
+    Frp.DbaStore.Internal
+    Frp.DbaStore.PyWrap
+    Frp.DbaStore.PoC
+
+    Frp.CEP
+    Frp.CEP.Class
+    Frp.CEP.TH
+    Frp.CEP.PoC
+
+    Frp.Apt
+    Frp.Apt.Ini
+    Frp.Apt.Base
+    Frp.Apt.Bson
+    Frp.Apt.Mongo
+    Frp.Apt.Collection
+    Frp.Apt.Data
+    Frp.Apt.Edh
+    Frp.Apt.Expr
+    Frp.Apt.HList
+    Frp.Apt.Print
+    Frp.Apt.Reflex
+    Frp.Apt.Series
+    Frp.Apt.Text
+    Frp.Apt.Time
+    Frp.Apt.Json
+
+    Frp.Core
+    Frp.Core.Engine
+    Frp.Core.Engine.Base
+    Frp.Core.Engine.Class
+    Frp.Core.Engine.Host
+
+    Frp.Core.Fao 
+    
+    Frp.Core.Fao.Class
+    Frp.Core.Fao.Ext
+    Frp.Core.Fao.GMap
+    Frp.Core.Fao.Store
+    Frp.Core.Fao.Store.Base
+    Frp.Core.Fao.Store.Class
+    Frp.Core.Fao.Tis
+
+    Frp.Core.Trade
+    Frp.Core.Trade.Base
+    Frp.Core.Trade.Class
+
+    Frp.Core.Tkit
+    Frp.Core.Tkit.Mutable
+    Frp.Core.Tkit.Tick
+    Frp.Core.Tkit.Trade
+
+  build-depends:
+    base  
+    ,template-haskell
+    ,derive-storable 
+    ,containers
+    ,deque
+    ,data-default
+    ,dependent-map 
+    ,dependent-sum 
+    ,lens
+    ,mtl
+    ,ref-tf
+    ,time 
+    ,transformers
+    ,witherable
+    ,these 
+    ,semialign
+    ,monoidal-containers
+    ,primitive
+    ,dependent-sum-template 
+    ,vector 
+    ,extra 
+    ,text 
+    ,unordered-containers 
+    ,sort 
+    ,hashable 
+    ,aeson
+    ,bytestring 
+    ,cassava 
+    ,directory 
+    ,scientific 
+    ,pretty 
+    ,GenericPretty 
+    ,syb
+    ,filepath
+    ,reflex 
+    ,attoparsec
+    ,keys 
+    ,convertible 
+    ,deepseq 
+    ,megaparsec 
+    ,parser-combinators
+    ,uuid 
+    ,mongoDB
+    ,cryptohash-sha1
+    ,memory
+    ,exceptions
+    ,parallel
+    ,vector-algorithms
+    -- ,split
+    -- ,async
+    , stm 
+    , eas
+    , edh
+    , elr
+    , hasdim
+    , lossless-decimal
+    , ghc-prim
+    -- , hgeometry
+    -- , hgeometry-combinatorial
+
+
+-- executable dbas
+--   main-is:            Main.hs
+--   hs-source-dirs:     dbas
+--   other-modules:
+--   default-language: GHC2021 
+
+--   default-extensions: 
+--     OverloadedStrings 
+--     OverloadedLists
+--     OverloadedLabels 
+
+--     DuplicateRecordFields
+--     RecordWildCards
+
+--     LambdaCase 
+--     BangPatterns 
+--     ViewPatterns
+--     TupleSections 
+--     MultiWayIf 
+--     TemplateHaskell
+--     RecursiveDo
+--     TypeFamilies
+
+--   build-depends:
+--     base  
+--     ,template-haskell
+--     ,derive-storable 
+--     ,containers
+--     ,deque
+--     ,data-default
+--     ,dependent-map 
+--     ,dependent-sum 
+--     ,lens
+--     ,mtl
+--     ,ref-tf
+--     ,time 
+--     ,transformers
+--     ,witherable
+--     ,these 
+--     ,semialign
+--     ,monoidal-containers
+--     ,primitive
+--     ,dependent-sum-template 
+--     ,statistics 
+--     ,vector 
+--     ,extra 
+--     ,text 
+--     ,unordered-containers 
+--     ,sort 
+--     ,hashable 
+--     ,aeson
+--     ,bytestring 
+--     ,cassava 
+--     ,directory 
+--     ,scientific 
+--     ,pretty 
+--     ,GenericPretty 
+--     ,syb
+--     ,filepath
+--     ,reflex 
+--     ,attoparsec
+--     ,keys 
+--     ,convertible 
+--     ,deepseq 
+--     ,megaparsec 
+--     ,parser-combinators
+--     ,uuid 
+--     , stm 
+--     , eas
+--     , edh
+--     , elr
+--     , hasdim
+--     , lossless-decimal
+--     , ghc-prim
+--     , frp-core
+--     , hgeometry
+--     , hgeometry-combinatorial

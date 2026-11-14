@@ -1,0 +1,1299 @@
+{
+  "record_type": "W002_ACTUAL_BINDING_AND_PREFLIGHT",
+  "utc": "2026-11-14T18:50:57.319315+00:00",
+  "run_id": "OI-EAW-WALL-20261114-01",
+  "delegation_id": "D003",
+  "work_order_id": "W002",
+  "worker": "codex:OI-EAW-WALL-20261114-01:worker:W1",
+  "return_to": "chatgpt:OI-EAW-WALL-20261114-01:executor:E1",
+  "actual_thread_id": "01a1da55-5881-7590-94a1-0661f0236977",
+  "actual_session_path": "/home/dw/.codex/sessions/2026/11/14/rollout-2026-11-14T21-53-08-01a1da55-5881-7590-94a1-0661f0236977.jsonl",
+  "actual_configuration": {
+    "cwd": "/dwdhome/fy/BASE_E6_2",
+    "model": "gpt-6.1-sol",
+    "effort": "max"
+  },
+  "host_nonsecret": "dw-VMware-Virtual-Platform",
+  "grant": {
+    "operation": "wall-observation-work",
+    "execution_context": "linux:/dwdhome/fy/BASE_E6_2",
+    "allowed_writes": [
+      "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01"
+    ],
+    "authority_quote": "operation=wall-observation-work execution_context=linux:/dwdhome/fy/BASE_E6_2 allowed_writes=/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01"
+  },
+  "owner_literal_grant_matched": true,
+  "delegation_literal_token_subset": true,
+  "actual_work_root": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002",
+  "actual_work_root_realpath": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002",
+  "symlink_ancestors": false,
+  "lock": {
+    "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/.D003-writer.lock",
+    "holder_pid": 237355,
+    "holder_startticks": "45798445",
+    "inode": 14806399,
+    "holder_fdinfo": "pos:\t0\nflags:\t02102002\nmnt_id:\t4061\nino:\t14806399\nlock:\t1: FLOCK  ADVISORY  WRITE 237355 00:53:14806399 0 EOF\n",
+    "same_inode_nonblocking_competition": "FAILED_EXPECTED_EAGAIN",
+    "worker_acquired_or_released_holder_lock": false,
+    "original_controller_evidence": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/W002-lock-competition-proof.json"
+  },
+  "shared_repositories": {
+    "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp": {
+      "path": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp",
+      "realpath": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp",
+      "repo_root": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp",
+      "head": "cac6c912dd65a14acbd591ca57e0afd8ddb4ef13",
+      "branch": "eaw/p123-integration-20260820",
+      "status": " M src/Frp/Instance/BussinessUtils.hs\n",
+      "files": [
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/.git/HEAD",
+          "realpath": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/.git/HEAD",
+          "symlink": false,
+          "mode": 33188,
+          "dev": 83,
+          "inode": 14771231,
+          "size": 46,
+          "mtime_ns": 1794658364538715281,
+          "sha256": "1108d6648377dce9b09aa94c7b18cd717ba3b87dbaa277231a461408d6ff3de5"
+        },
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/.git/index",
+          "realpath": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/.git/index",
+          "symlink": false,
+          "mode": 33188,
+          "dev": 83,
+          "inode": 14771592,
+          "size": 29092,
+          "mtime_ns": 1794658365381816938,
+          "sha256": "250d73d3b2ff3b2c5a11642377f24741fb3a73ec40ffb8f8f4b14ac40cc87314"
+        },
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/WallLifecycle.hs",
+          "realpath": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/WallLifecycle.hs",
+          "symlink": false,
+          "mode": 33188,
+          "dev": 83,
+          "inode": 14770022,
+          "size": 7194,
+          "mtime_ns": 1794658362854056044,
+          "sha256": "fcdb43fb1e61ed53b4a4e7cac52ca4c5eed41db11b9b52e9fe3e773e982f8382"
+        },
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+          "realpath": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+          "symlink": false,
+          "mode": 33188,
+          "dev": 83,
+          "inode": 14769777,
+          "size": 71231,
+          "mtime_ns": 1794658362624391742,
+          "sha256": "45e13a1d57856d44c9b3f8c1bdbcbb1cacfb93b94df9a3394580e8ce4b07a861"
+        },
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Products.hs",
+          "realpath": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Products.hs",
+          "symlink": false,
+          "mode": 33188,
+          "dev": 83,
+          "inode": 14770600,
+          "size": 24420,
+          "mtime_ns": 1794658362736818592,
+          "sha256": "213bc5e4d73de9fc2e87adc92921a53ecc99bacbc3d22fa1b5bb3b6613a6c0cd"
+        },
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Publication.hs",
+          "realpath": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Publication.hs",
+          "symlink": false,
+          "mode": 33188,
+          "dev": 83,
+          "inode": 14771227,
+          "size": 21294,
+          "mtime_ns": 1794658362826148074,
+          "sha256": "9d9700a205c6aa88a0fe186320e8e0f8d56e106df112c22ad31fb492c05aa437"
+        },
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Internal/OccurrenceLedger.hs",
+          "realpath": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Internal/OccurrenceLedger.hs",
+          "symlink": false,
+          "mode": 33188,
+          "dev": 83,
+          "inode": 14769275,
+          "size": 2095,
+          "mtime_ns": 1794658362683814218,
+          "sha256": "568f3a5acb306f3c7dd2f23f40a416bb18f14404e35b6cf58455626e246ba2c8"
+        },
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/test/Frp/Instance/ISL/Eaw/P1/P1EndToEndSpec.hs",
+          "realpath": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/test/Frp/Instance/ISL/Eaw/P1/P1EndToEndSpec.hs",
+          "symlink": false,
+          "mode": 33188,
+          "dev": 83,
+          "inode": 14771457,
+          "size": 52536,
+          "mtime_ns": 1794658364241408719,
+          "sha256": "2c43f06be591d4bff3f91a23d963299b9eba36dfb59a2ac7bb2bf2fcef80542d"
+        },
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/frp.cabal",
+          "realpath": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/frp.cabal",
+          "symlink": false,
+          "mode": 33188,
+          "dev": 83,
+          "inode": 14770019,
+          "size": 11958,
+          "mtime_ns": 1794658362059878474,
+          "sha256": "21e3a41cf35e06687ea96bddec135a2fc4b9f3d6632ec542a1776315287c1086"
+        },
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/stack.yaml",
+          "realpath": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/stack.yaml",
+          "symlink": false,
+          "mode": 33188,
+          "dev": 83,
+          "inode": 5478989,
+          "size": 2650,
+          "mtime_ns": 1770694243215974000,
+          "sha256": "86fb1c29a4d682da4a75932cb99adea3ea847d075c418cd23ec53907dacd56c4"
+        },
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/src/Frp/Instance/BussinessUtils.hs",
+          "realpath": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/src/Frp/Instance/BussinessUtils.hs",
+          "symlink": false,
+          "mode": 33188,
+          "dev": 83,
+          "inode": 5478099,
+          "size": 20487,
+          "mtime_ns": 1793892762644713965,
+          "sha256": "6c77c83d220fcd5a448499d890c9ebee8c35b6bdde80bbe1b96ab26fa750242e"
+        }
+      ]
+    },
+    "/dwdhome/fy/BASE_E6_2/mquant/tis": {
+      "path": "/dwdhome/fy/BASE_E6_2/mquant/tis",
+      "realpath": "/dwdhome/fy/BASE_E6_2/mquant/tis",
+      "repo_root": "/dwdhome/fy/BASE_E6_2/mquant/tis",
+      "head": "ef887396e0a06d6e75be47efee0f1985ad7988a3",
+      "branch": "eaw/p123-integration-20260820",
+      "status": " M frpExample/STCalendar.py\n",
+      "files": [
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/mquant/tis/.git/HEAD",
+          "realpath": "/dwdhome/fy/BASE_E6_2/mquant/tis/.git/HEAD",
+          "symlink": false,
+          "mode": 33188,
+          "dev": 83,
+          "inode": 14773135,
+          "size": 46,
+          "mtime_ns": 1794659078138582735,
+          "sha256": "1108d6648377dce9b09aa94c7b18cd717ba3b87dbaa277231a461408d6ff3de5"
+        },
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/mquant/tis/.git/index",
+          "realpath": "/dwdhome/fy/BASE_E6_2/mquant/tis/.git/index",
+          "symlink": false,
+          "mode": 33188,
+          "dev": 83,
+          "inode": 14771758,
+          "size": 39968,
+          "mtime_ns": 1794659079636987764,
+          "sha256": "b53324417b12326bff159c60fa1b7db1624187f0299b24ea60d6535c2507919d"
+        },
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/mquant/tis/frpExample/STCalendar.py",
+          "realpath": "/dwdhome/fy/BASE_E6_2/mquant/tis/frpExample/STCalendar.py",
+          "symlink": false,
+          "mode": 33188,
+          "dev": 83,
+          "inode": 5489022,
+          "size": 6175,
+          "mtime_ns": 1790653959865457403,
+          "sha256": "3001e49a3b812b5281ddca12795e5aa279d5ca09fd510ba0a4cfc330b42c6980"
+        }
+      ]
+    },
+    "/dwdhome/fy/BASE_E6_2/mquant/worker": {
+      "path": "/dwdhome/fy/BASE_E6_2/mquant/worker",
+      "realpath": "/dwdhome/fy/BASE_E6_2/mquant/worker",
+      "repo_root": "/dwdhome/fy/BASE_E6_2/mquant/worker",
+      "head": "da0475a9c7fa769c2db8c803a5376ff2cdf09e0d",
+      "branch": "e6.2",
+      "status": " M __init__.py\n M params/__init__.py\n M params/cae/__init__.py\n M params/cae/nodes/ScaleTurnCAEGraph.py\n M params/cae/nodes/__init__.py\n?? params/cae/nodes/RecoveredStandardizedHFCAEGraph.py\n",
+      "files": [
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/mquant/worker/.git/HEAD",
+          "realpath": "/dwdhome/fy/BASE_E6_2/mquant/worker/.git/HEAD",
+          "symlink": false,
+          "mode": 33188,
+          "dev": 83,
+          "inode": 5485195,
+          "size": 21,
+          "mtime_ns": 1778313275904123790,
+          "sha256": "790065dc14ba5e57c7ba3f6cd4c576f3aedb0db50f4eb359453c1de6385b9a50"
+        },
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/mquant/worker/.git/index",
+          "realpath": "/dwdhome/fy/BASE_E6_2/mquant/worker/.git/index",
+          "symlink": false,
+          "mode": 33188,
+          "dev": 83,
+          "inode": 12433571,
+          "size": 41200,
+          "mtime_ns": 1792645805329958539,
+          "sha256": "72f87b9487d33fd09acf704f70dd5af9a6504fdeeb34465f0d7c77801562890d"
+        },
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/mquant/worker/adt/dbaw.py",
+          "realpath": "/dwdhome/fy/BASE_E6_2/mquant/worker/adt/dbaw.py",
+          "symlink": false,
+          "mode": 33188,
+          "dev": 83,
+          "inode": 5484142,
+          "size": 113663,
+          "mtime_ns": 1778313276008849320,
+          "sha256": "d6a58f6cb6595461ead45bb08c002826856bcacaab9e50c0e62cd45d76e7e4f2"
+        },
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/mquant/worker/__init__.py",
+          "realpath": "/dwdhome/fy/BASE_E6_2/mquant/worker/__init__.py",
+          "symlink": false,
+          "mode": 33188,
+          "dev": 83,
+          "inode": 5484980,
+          "size": 4536,
+          "mtime_ns": 1794401036428884169,
+          "sha256": "bd61577ecdc228925883682c5c4f47cb0b59a0a2469c3ccd52f8c1c43c63256f"
+        },
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/mquant/worker/params/__init__.py",
+          "realpath": "/dwdhome/fy/BASE_E6_2/mquant/worker/params/__init__.py",
+          "symlink": false,
+          "mode": 33188,
+          "dev": 83,
+          "inode": 5485989,
+          "size": 611,
+          "mtime_ns": 1794401036447459948,
+          "sha256": "f904363dda5bbe2b04ee0f77740029af9f6f8257f0e2d65b19b807b3589c818d"
+        },
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/mquant/worker/params/cae/__init__.py",
+          "realpath": "/dwdhome/fy/BASE_E6_2/mquant/worker/params/cae/__init__.py",
+          "symlink": false,
+          "mode": 33188,
+          "dev": 83,
+          "inode": 5485736,
+          "size": 566,
+          "mtime_ns": 1794401036462086454,
+          "sha256": "1f8b3be9bd1b9c252356d920ec35b15ff05c464fcbccacd38f48170f82d4480e"
+        },
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/mquant/worker/params/cae/nodes/ScaleTurnCAEGraph.py",
+          "realpath": "/dwdhome/fy/BASE_E6_2/mquant/worker/params/cae/nodes/ScaleTurnCAEGraph.py",
+          "symlink": false,
+          "mode": 33188,
+          "dev": 83,
+          "inode": 5485477,
+          "size": 29179,
+          "mtime_ns": 1790674420681549335,
+          "sha256": "53885930e36479b00d30c68e0a25addb35fccec4c743d17bfccbd8b951f8fe9e"
+        },
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/mquant/worker/params/cae/nodes/__init__.py",
+          "realpath": "/dwdhome/fy/BASE_E6_2/mquant/worker/params/cae/nodes/__init__.py",
+          "symlink": false,
+          "mode": 33188,
+          "dev": 83,
+          "inode": 5485478,
+          "size": 1516,
+          "mtime_ns": 1794401036478030646,
+          "sha256": "7d57ef31adb14669cf570621fa50a35e48f2722c90f5f39132f0e54dc0f1789a"
+        }
+      ]
+    }
+  },
+  "exact_base_commit": "cac6c912dd65a14acbd591ca57e0afd8ddb4ef13",
+  "exact_base_readable": true,
+  "base_tree": "66c53649915731c4665536ad810823f50e4749d9",
+  "source_staging": {
+    "status": "NOT_STARTED_PHASE0_STOP",
+    "method_candidate": "git archive exact commit into WORK_ROOT/source; initialize independent local history only after eligibility; no worktree add",
+    "all_source_directories_empty": true
+  },
+  "absolute_tool_bindings": {
+    "/usr/bin/python3.12": {
+      "exists": true,
+      "path": "/usr/bin/python3.12",
+      "realpath": "/usr/bin/python3.12",
+      "symlink": false,
+      "mode": 33261,
+      "dev": 2050,
+      "inode": 2492563,
+      "size": 8020928,
+      "mtime_ns": 1769115462000000000,
+      "sha256": "c2c20b4745d447551221ec3d4e70f92c270c4609fe3df34fc52ea6dd46e92273",
+      "invocation_path": "/usr/bin/python3.12",
+      "invocation_is_symlink": false
+    },
+    "/usr/bin/git": {
+      "exists": true,
+      "path": "/usr/bin/git",
+      "realpath": "/usr/bin/git",
+      "symlink": false,
+      "mode": 33261,
+      "dev": 2050,
+      "inode": 2491746,
+      "size": 4066232,
+      "mtime_ns": 1751487822000000000,
+      "sha256": "2a8c18fbf43da9f692d75474c72bea9dfd796c260b0f3dfe456376abc3bbd668",
+      "invocation_path": "/usr/bin/git",
+      "invocation_is_symlink": false
+    },
+    "/usr/bin/bash": {
+      "exists": true,
+      "path": "/usr/bin/bash",
+      "realpath": "/usr/bin/bash",
+      "symlink": false,
+      "mode": 33261,
+      "dev": 2050,
+      "inode": 2490926,
+      "size": 1446024,
+      "mtime_ns": 1711874463000000000,
+      "sha256": "bc5945feb8bd26203ebfafea5ce1878bb2e32cb8fb50ab7ae395cfb1e1aaaef1",
+      "invocation_path": "/usr/bin/bash",
+      "invocation_is_symlink": false
+    },
+    "/usr/bin/true": {
+      "exists": true,
+      "path": "/usr/bin/true",
+      "realpath": "/usr/bin/true",
+      "symlink": false,
+      "mode": 33261,
+      "dev": 2050,
+      "inode": 2491842,
+      "size": 26936,
+      "mtime_ns": 1712327817000000000,
+      "sha256": "7e419b0d95e2ae12993878ad13ad4b911ce5464c15cde7a6adce2fca7ee22706",
+      "invocation_path": "/usr/bin/true",
+      "invocation_is_symlink": false
+    },
+    "/usr/bin/bwrap": {
+      "exists": true,
+      "path": "/usr/bin/bwrap",
+      "realpath": "/usr/bin/bwrap",
+      "symlink": false,
+      "mode": 33261,
+      "dev": 2050,
+      "inode": 2490954,
+      "size": 72160,
+      "mtime_ns": 1727115356000000000,
+      "sha256": "52231e1caf55bcbc667b269f49c63599a6f7db4767ae6a039580d0ff853db712",
+      "invocation_path": "/usr/bin/bwrap",
+      "invocation_is_symlink": false
+    },
+    "/usr/bin/strace": {
+      "exists": true,
+      "path": "/usr/bin/strace",
+      "realpath": "/usr/bin/strace",
+      "symlink": false,
+      "mode": 33261,
+      "dev": 2050,
+      "inode": 2491758,
+      "size": 2087432,
+      "mtime_ns": 1713432762000000000,
+      "sha256": "28f957c227012de0b18d1bd7fff2d396cb693ea60ed8013be68de071e84b5001",
+      "invocation_path": "/usr/bin/strace",
+      "invocation_is_symlink": false
+    },
+    "/usr/bin/timeout": {
+      "exists": true,
+      "path": "/usr/bin/timeout",
+      "realpath": "/usr/bin/timeout",
+      "symlink": false,
+      "mode": 33261,
+      "dev": 2050,
+      "inode": 2491814,
+      "size": 39880,
+      "mtime_ns": 1712327817000000000,
+      "sha256": "2ee918a5358c0388719e710134bc32cffb934f4bd2a8fb9beb86ef4d6ec8bd8a",
+      "invocation_path": "/usr/bin/timeout",
+      "invocation_is_symlink": false
+    },
+    "/usr/bin/time": {
+      "exists": true,
+      "path": "/usr/bin/time",
+      "realpath": "/usr/bin/time",
+      "symlink": false,
+      "mode": 33261,
+      "dev": 2050,
+      "inode": 2491812,
+      "size": 27160,
+      "mtime_ns": 1712593262000000000,
+      "sha256": "3b11dec50514a8473e9f6efa7a34d584d0657538c09988f61b72d38ad4991a10",
+      "invocation_path": "/usr/bin/time",
+      "invocation_is_symlink": false
+    },
+    "/usr/bin/prlimit": {
+      "exists": true,
+      "path": "/usr/bin/prlimit",
+      "realpath": "/usr/bin/prlimit",
+      "symlink": false,
+      "mode": 33261,
+      "dev": 2050,
+      "inode": 2491589,
+      "size": 27536,
+      "mtime_ns": 1749125858000000000,
+      "sha256": "2b1871af7faccf698e1a3615c9d87f544e12b7db0a87026699ff049ef0f35b31",
+      "invocation_path": "/usr/bin/prlimit",
+      "invocation_is_symlink": false
+    },
+    "/usr/bin/tar": {
+      "exists": true,
+      "path": "/usr/bin/tar",
+      "realpath": "/usr/bin/tar",
+      "symlink": false,
+      "mode": 33261,
+      "dev": 2050,
+      "inode": 2491801,
+      "size": 432048,
+      "mtime_ns": 1712593247000000000,
+      "sha256": "6453fce2cf2dde32b86557bb44f533afb3b5171b59b8d21cc797b9b20d9c7b06",
+      "invocation_path": "/usr/bin/tar",
+      "invocation_is_symlink": false
+    },
+    "/usr/bin/cp": {
+      "exists": true,
+      "path": "/usr/bin/cp",
+      "realpath": "/usr/bin/cp",
+      "symlink": false,
+      "mode": 33261,
+      "dev": 2050,
+      "inode": 2490997,
+      "size": 141848,
+      "mtime_ns": 1712327817000000000,
+      "sha256": "2e17fe58f9bd77232d9565a503fb43f20bdc2206a3c6bf0d841071a1da6efd35",
+      "invocation_path": "/usr/bin/cp",
+      "invocation_is_symlink": false
+    },
+    "/usr/bin/rsync": {
+      "exists": true,
+      "path": "/usr/bin/rsync",
+      "realpath": "/usr/bin/rsync",
+      "symlink": false,
+      "mode": 33261,
+      "dev": 2050,
+      "inode": 2491660,
+      "size": 514176,
+      "mtime_ns": 1737019766000000000,
+      "sha256": "2b92417ff0819f07aae24cfaef81f377077e61f926abc80088a2fcf76074e9e1",
+      "invocation_path": "/usr/bin/rsync",
+      "invocation_is_symlink": false
+    },
+    "/usr/bin/find": {
+      "exists": true,
+      "path": "/usr/bin/find",
+      "realpath": "/usr/bin/find",
+      "symlink": false,
+      "mode": 33261,
+      "dev": 2050,
+      "inode": 2491103,
+      "size": 204264,
+      "mtime_ns": 1712591848000000000,
+      "sha256": "ac1ea1c5391de921aca1572f1bf25d03707beb3887b27c16a5b4948fd553941b",
+      "invocation_path": "/usr/bin/find",
+      "invocation_is_symlink": false
+    },
+    "/usr/bin/du": {
+      "exists": true,
+      "path": "/usr/bin/du",
+      "realpath": "/usr/bin/du",
+      "symlink": false,
+      "mode": 33261,
+      "dev": 2050,
+      "inode": 2491059,
+      "size": 100872,
+      "mtime_ns": 1712327817000000000,
+      "sha256": "ea80a98104973f74439085c07941b62eb583089b2be5f784aa01db3ef0ac3d0b",
+      "invocation_path": "/usr/bin/du",
+      "invocation_is_symlink": false
+    },
+    "/usr/bin/stat": {
+      "exists": true,
+      "path": "/usr/bin/stat",
+      "realpath": "/usr/bin/stat",
+      "symlink": false,
+      "mode": 33261,
+      "dev": 2050,
+      "inode": 2491756,
+      "size": 88592,
+      "mtime_ns": 1712327817000000000,
+      "sha256": "708bae43fa1b9ca0c507e026566dc151852e935db3fa9e292ac4a5f3e42f76cc",
+      "invocation_path": "/usr/bin/stat",
+      "invocation_is_symlink": false
+    },
+    "/usr/bin/sha256sum": {
+      "exists": true,
+      "path": "/usr/bin/sha256sum",
+      "realpath": "/usr/bin/sha256sum",
+      "symlink": false,
+      "mode": 33261,
+      "dev": 2050,
+      "inode": 2491712,
+      "size": 39336,
+      "mtime_ns": 1712327817000000000,
+      "sha256": "f293048f656688883ee919eb3f4b12926aaa13362de0eb6e3b5716b915b18b35",
+      "invocation_path": "/usr/bin/sha256sum",
+      "invocation_is_symlink": false
+    },
+    "/home/dw/.local/bin/stack": {
+      "exists": true,
+      "path": "/home/dw/.local/bin/stack",
+      "realpath": "/home/dw/.local/bin/stack",
+      "symlink": false,
+      "mode": 33261,
+      "dev": 2050,
+      "inode": 797071,
+      "size": 285,
+      "mtime_ns": 1775715278370214780,
+      "sha256": "a15645b7eadb4d9c1fa545267f7fec5f369019b7472027507bc86434a03a4997",
+      "invocation_path": "/home/dw/.local/bin/stack",
+      "invocation_is_symlink": false
+    },
+    "/nix/.ghcup/bin/stack": {
+      "exists": true,
+      "path": "/nix/.ghcup/bin/stack-3.3.1",
+      "realpath": "/nix/.ghcup/bin/stack-3.3.1",
+      "symlink": false,
+      "mode": 33261,
+      "dev": 64,
+      "inode": 2545699,
+      "size": 91353072,
+      "mtime_ns": 1743422002247918643,
+      "sha256": "153db35cc564928240f033da9261233d547ba847264b24a75e4ed8dbac389c6f",
+      "invocation_path": "/nix/.ghcup/bin/stack",
+      "invocation_is_symlink": true
+    },
+    "/nix/.ghcup/bin/cabal": {
+      "exists": true,
+      "path": "/nix/.ghcup/bin/cabal-3.10.2.1",
+      "realpath": "/nix/.ghcup/bin/cabal-3.10.2.1",
+      "symlink": false,
+      "mode": 33261,
+      "dev": 64,
+      "inode": 1862303,
+      "size": 37133128,
+      "mtime_ns": 1705312621691455713,
+      "sha256": "536f36a84f700c564a9f0f2f5c34a831a237d20212287e071852a7089b608698",
+      "invocation_path": "/nix/.ghcup/bin/cabal",
+      "invocation_is_symlink": true
+    },
+    "/nix/.ghcup/ghc/9.4.8/bin/ghc-9.4.8": {
+      "exists": true,
+      "path": "/nix/.ghcup/ghc/9.4.8/bin/ghc-9.4.8",
+      "realpath": "/nix/.ghcup/ghc/9.4.8/bin/ghc-9.4.8",
+      "symlink": false,
+      "mode": 33261,
+      "dev": 64,
+      "inode": 1858453,
+      "size": 376,
+      "mtime_ns": 1705309643294026348,
+      "sha256": "d2bc58f7afc547a412690e27748eb983f6dd456405884c9bf24d1ab2c93c1d23",
+      "invocation_path": "/nix/.ghcup/ghc/9.4.8/bin/ghc-9.4.8",
+      "invocation_is_symlink": false
+    },
+    "/nix/.ghcup/ghc/9.4.8/bin/ghc-pkg-9.4.8": {
+      "exists": true,
+      "path": "/nix/.ghcup/ghc/9.4.8/bin/ghc-pkg-9.4.8",
+      "realpath": "/nix/.ghcup/ghc/9.4.8/bin/ghc-pkg-9.4.8",
+      "symlink": false,
+      "mode": 33261,
+      "dev": 64,
+      "inode": 1858451,
+      "size": 436,
+      "mtime_ns": 1705309643389597417,
+      "sha256": "71d80454064ef8506d385bf3ac3dbe84afbc5b5d8fc15c12cd7382175d6b4fc5",
+      "invocation_path": "/nix/.ghcup/ghc/9.4.8/bin/ghc-pkg-9.4.8",
+      "invocation_is_symlink": false
+    },
+    "/nix/.ghcup/ghc/9.4.8/lib/ghc-9.4.8/bin/ghc-9.4.8": {
+      "exists": true,
+      "path": "/nix/.ghcup/ghc/9.4.8/lib/ghc-9.4.8/bin/ghc-9.4.8",
+      "realpath": "/nix/.ghcup/ghc/9.4.8/lib/ghc-9.4.8/bin/ghc-9.4.8",
+      "symlink": false,
+      "mode": 33261,
+      "dev": 64,
+      "inode": 1851010,
+      "size": 2107152,
+      "mtime_ns": 1705309642029621835,
+      "sha256": "c8e5ce888a1ad6f137943fb7369dd5b6633f41f32f7401176705ec7c87f50ae7",
+      "invocation_path": "/nix/.ghcup/ghc/9.4.8/lib/ghc-9.4.8/bin/ghc-9.4.8",
+      "invocation_is_symlink": false
+    },
+    "/nix/.ghcup/ghc/9.4.8/lib/ghc-9.4.8/bin/ghc-pkg-9.4.8": {
+      "exists": true,
+      "path": "/nix/.ghcup/ghc/9.4.8/lib/ghc-9.4.8/bin/ghc-pkg-9.4.8",
+      "realpath": "/nix/.ghcup/ghc/9.4.8/lib/ghc-9.4.8/bin/ghc-pkg-9.4.8",
+      "symlink": false,
+      "mode": 33261,
+      "dev": 64,
+      "inode": 1846124,
+      "size": 469736,
+      "mtime_ns": 1705309642444284079,
+      "sha256": "49778c0590cffae8e1f159491c31732a5c3c443d9d5adf4fbaab9ce13c9224fc",
+      "invocation_path": "/nix/.ghcup/ghc/9.4.8/lib/ghc-9.4.8/bin/ghc-pkg-9.4.8",
+      "invocation_is_symlink": false
+    },
+    "/home/dw/.agents/skills/long-task-status/scripts/task_status.py": {
+      "exists": true,
+      "path": "/home/dw/.agents/skills/long-task-status/scripts/task_status.py",
+      "realpath": "/home/dw/.agents/skills/long-task-status/scripts/task_status.py",
+      "symlink": false,
+      "mode": 33188,
+      "dev": 2050,
+      "inode": 1057681,
+      "size": 73425,
+      "mtime_ns": 1788505042000000000,
+      "sha256": "353e16672478723e96eccd89ffa895563f2d9026cc8d227ecfb3712f44ab870b",
+      "invocation_path": "/home/dw/.agents/skills/long-task-status/scripts/task_status.py",
+      "invocation_is_symlink": false
+    },
+    "/home/dw/.local/lib/node_modules/@openai/codex/node_modules/@openai/codex-linux-x64/vendor/x86_64-unknown-linux-musl/codex-path/rg": {
+      "path": "/home/dw/.local/lib/node_modules/@openai/codex/node_modules/@openai/codex-linux-x64/vendor/x86_64-unknown-linux-musl/codex-path/rg",
+      "realpath": "/home/dw/.local/lib/node_modules/@openai/codex/node_modules/@openai/codex-linux-x64/vendor/x86_64-unknown-linux-musl/codex-path/rg",
+      "bytes": 5408904,
+      "sha256": "e62198eb19b136b88c330af83647b5a962cb99b6b1f066758568f12de1974849"
+    }
+  },
+  "planned_local_package_roots_and_commits": [
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp-core",
+      "exists": true,
+      "realpath": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp-core",
+      "repo_root": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp-core",
+      "head": "d3153e085cd0d99d86876b73aeb1d05497638f80",
+      "declarations": [
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp-core/frp-core.cabal",
+          "head_relative_path": "frp-core.cabal",
+          "working": {
+            "path": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp-core/frp-core.cabal",
+            "realpath": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp-core/frp-core.cabal",
+            "symlink": false,
+            "mode": 33188,
+            "dev": 83,
+            "inode": 5479681,
+            "size": 4380,
+            "mtime_ns": 1749274668588837000,
+            "sha256": "83f9299e02417427f12c7b7f214362ab559162193c707027506c4070344ca088"
+          },
+          "exact_head_sha256": "83f9299e02417427f12c7b7f214362ab559162193c707027506c4070344ca088",
+          "matches_head": true,
+          "receipt_path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/local-package-declarations/edh-universe/frp/frp-core/frp-core.cabal",
+          "declared_fields": [
+            "cabal-version:  2.4",
+            "name:           frp-core",
+            "version:        0.6.2.0",
+            "build-type:     Simple",
+            "hs-source-dirs: src",
+            "build-depends:"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp",
+      "exists": true,
+      "realpath": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp",
+      "repo_root": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp",
+      "head": "cac6c912dd65a14acbd591ca57e0afd8ddb4ef13",
+      "declarations": [
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/frp.cabal",
+          "head_relative_path": "frp.cabal",
+          "working": {
+            "path": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/frp.cabal",
+            "realpath": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/frp.cabal",
+            "symlink": false,
+            "mode": 33188,
+            "dev": 83,
+            "inode": 14770019,
+            "size": 11958,
+            "mtime_ns": 1794658362059878474,
+            "sha256": "21e3a41cf35e06687ea96bddec135a2fc4b9f3d6632ec542a1776315287c1086"
+          },
+          "exact_head_sha256": "21e3a41cf35e06687ea96bddec135a2fc4b9f3d6632ec542a1776315287c1086",
+          "matches_head": true,
+          "receipt_path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/local-package-declarations/edh-universe/frp/frp/frp.cabal",
+          "declared_fields": [
+            "cabal-version:  2.4",
+            "name:           frp",
+            "version:        0.3.1.0",
+            "build-type:     Simple",
+            "hs-source-dirs: src",
+            "build-depends:",
+            "hs-source-dirs:     dbaw",
+            "build-depends:",
+            "hs-source-dirs:     test",
+            "build-depends:",
+            "hs-source-dirs:     test",
+            "build-depends:"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp-poc",
+      "exists": true,
+      "realpath": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp-poc",
+      "repo_root": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp-poc",
+      "head": "09033d2751368ac191442abcc0965f5c6a40253a",
+      "declarations": [
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp-poc/frp-poc.cabal",
+          "head_relative_path": "frp-poc.cabal",
+          "working": {
+            "path": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp-poc/frp-poc.cabal",
+            "realpath": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp-poc/frp-poc.cabal",
+            "symlink": false,
+            "mode": 33188,
+            "dev": 83,
+            "inode": 5477244,
+            "size": 4094,
+            "mtime_ns": 1772422583546801000,
+            "sha256": "cd45917c6fdfdb4990740c4dad1e442563dcb0c8ca4c7b39ea1a8b133ff1a3e3"
+          },
+          "exact_head_sha256": "cd45917c6fdfdb4990740c4dad1e442563dcb0c8ca4c7b39ea1a8b133ff1a3e3",
+          "matches_head": true,
+          "receipt_path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/local-package-declarations/edh-universe/frp/frp-poc/frp-poc.cabal",
+          "declared_fields": [
+            "cabal-version:  2.4",
+            "name:           frp-poc",
+            "version:        0.6.2.0",
+            "build-type:     Simple",
+            "hs-source-dirs: src",
+            "build-depends:",
+            "hs-source-dirs: test",
+            "build-depends:",
+            "hs-source-dirs:     genadt",
+            "build-depends:"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/edh/host.hs",
+      "exists": true,
+      "realpath": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/edh/host.hs",
+      "repo_root": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/edh",
+      "head": "a2e9b95ef1f84cc5677499512c69d4b03a12cbdc",
+      "declarations": [
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/edh/host.hs/edh.cabal",
+          "head_relative_path": "host.hs/edh.cabal",
+          "working": {
+            "path": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/edh/host.hs/edh.cabal",
+            "realpath": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/edh/host.hs/edh.cabal",
+            "symlink": false,
+            "mode": 33188,
+            "dev": 83,
+            "inode": 4487872,
+            "size": 6437,
+            "mtime_ns": 1673938589851779000,
+            "sha256": "00c1f64870d46b603e33d1c9f2f4d5ffaa2983d6a0b0921dc56005e3f4b12424"
+          },
+          "exact_head_sha256": "00c1f64870d46b603e33d1c9f2f4d5ffaa2983d6a0b0921dc56005e3f4b12424",
+          "matches_head": true,
+          "receipt_path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/local-package-declarations/edh-universe/e-wrks/edh/host.hs/edh.cabal",
+          "declared_fields": [
+            "cabal-version:      2.4",
+            "name:               edh",
+            "version:            0.3.0.0",
+            "build-type:         Simple",
+            "hs-source-dirs:     src",
+            "build-depends:",
+            "hs-source-dirs:     repl",
+            "build-depends:",
+            "hs-source-dirs:     runfile",
+            "build-depends:",
+            "hs-source-dirs:     runmodu",
+            "build-depends:"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/edh/elr",
+      "exists": true,
+      "realpath": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/edh/elr",
+      "repo_root": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/edh",
+      "head": "a2e9b95ef1f84cc5677499512c69d4b03a12cbdc",
+      "declarations": [
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/edh/elr/elr.cabal",
+          "head_relative_path": "elr/elr.cabal",
+          "working": {
+            "path": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/edh/elr/elr.cabal",
+            "realpath": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/edh/elr/elr.cabal",
+            "symlink": false,
+            "mode": 33188,
+            "dev": 83,
+            "inode": 4488843,
+            "size": 2032,
+            "mtime_ns": 1671616051544622000,
+            "sha256": "f18615b93137fb64ede8e75a0030f60a72dc613f2d414b345c1a4dc627201f78"
+          },
+          "exact_head_sha256": "f18615b93137fb64ede8e75a0030f60a72dc613f2d414b345c1a4dc627201f78",
+          "matches_head": true,
+          "receipt_path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/local-package-declarations/edh-universe/e-wrks/edh/elr/elr.cabal",
+          "declared_fields": [
+            "cabal-version:      2.4",
+            "name:               elr",
+            "version:            0.3.0.0",
+            "build-type:         Simple",
+            "hs-source-dirs:     src",
+            "build-depends:"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/eas/host.hs",
+      "exists": true,
+      "realpath": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/eas/host.hs",
+      "repo_root": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/eas",
+      "head": "eccc03d2086f6190e79eb7f4c5a2ecf06105d135",
+      "declarations": [
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/eas/host.hs/eas.cabal",
+          "head_relative_path": "host.hs/eas.cabal",
+          "working": {
+            "path": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/eas/host.hs/eas.cabal",
+            "realpath": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/eas/host.hs/eas.cabal",
+            "symlink": false,
+            "mode": 33188,
+            "dev": 83,
+            "inode": 4480080,
+            "size": 2754,
+            "mtime_ns": 1671618687006147000,
+            "sha256": "1597f09349f694ad00dbfe47bcba84d24aa19e10ceee0e8047d167347e86d9cd"
+          },
+          "exact_head_sha256": "1597f09349f694ad00dbfe47bcba84d24aa19e10ceee0e8047d167347e86d9cd",
+          "matches_head": true,
+          "receipt_path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/local-package-declarations/edh-universe/e-wrks/eas/host.hs/eas.cabal",
+          "declared_fields": [
+            "cabal-version:      2.4",
+            "name:               eas",
+            "version:            0.1.0.0",
+            "build-type:         Simple",
+            "hs-source-dirs:     repl",
+            "build-depends:",
+            "hs-source-dirs:     src",
+            "build-depends:"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/hasdim/host.hs",
+      "exists": true,
+      "realpath": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/hasdim/host.hs",
+      "repo_root": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/hasdim",
+      "head": "43c11e34822a4877e83a8316fbd6051499805d3f",
+      "declarations": [
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/hasdim/host.hs/hasdim.cabal",
+          "head_relative_path": "host.hs/hasdim.cabal",
+          "working": {
+            "path": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/hasdim/host.hs/hasdim.cabal",
+            "realpath": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/hasdim/host.hs/hasdim.cabal",
+            "symlink": false,
+            "mode": 33188,
+            "dev": 83,
+            "inode": 5477268,
+            "size": 4667,
+            "mtime_ns": 1671616052554567000,
+            "sha256": "cbd09f31cda6c45ab88c51842fa058fc19c1f88c770aa0218767f7ddf3609910"
+          },
+          "exact_head_sha256": "cbd09f31cda6c45ab88c51842fa058fc19c1f88c770aa0218767f7ddf3609910",
+          "matches_head": true,
+          "receipt_path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/local-package-declarations/edh-universe/e-wrks/hasdim/host.hs/hasdim.cabal",
+          "declared_fields": [
+            "cabal-version:      2.4",
+            "name:               hasdim",
+            "version:            0.1.0.0",
+            "build-type:         Simple",
+            "hs-source-dirs:     repl",
+            "build-depends:",
+            "hs-source-dirs:     runfile",
+            "build-depends:",
+            "hs-source-dirs:     runmodu",
+            "build-depends:",
+            "hs-source-dirs:     src",
+            "build-depends:"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/edh/lossless-decimal",
+      "exists": true,
+      "realpath": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/edh/lossless-decimal",
+      "repo_root": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/edh",
+      "head": "a2e9b95ef1f84cc5677499512c69d4b03a12cbdc",
+      "declarations": [
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/edh/lossless-decimal/lossless-decimal.cabal",
+          "head_relative_path": "lossless-decimal/lossless-decimal.cabal",
+          "working": {
+            "path": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/edh/lossless-decimal/lossless-decimal.cabal",
+            "realpath": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/edh/lossless-decimal/lossless-decimal.cabal",
+            "symlink": false,
+            "mode": 33188,
+            "dev": 83,
+            "inode": 4485915,
+            "size": 1282,
+            "mtime_ns": 1631783887980346000,
+            "sha256": "87cea3bbb3786061688be7bb2718a5fdbaa083083bb9cc4c43279d28d2a6c42c"
+          },
+          "exact_head_sha256": "87cea3bbb3786061688be7bb2718a5fdbaa083083bb9cc4c43279d28d2a6c42c",
+          "matches_head": true,
+          "receipt_path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/local-package-declarations/edh-universe/e-wrks/edh/lossless-decimal/lossless-decimal.cabal",
+          "declared_fields": [
+            "cabal-version: 2.4",
+            "name: lossless-decimal",
+            "version: 0.3.0.0",
+            "build-type: Simple",
+            "hs-source-dirs: src",
+            "build-depends:"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/edh-universe/fis/cfis/host.hs",
+      "exists": true,
+      "realpath": "/dwdhome/fy/BASE_E6_2/edh-universe/fis/cfis/host.hs",
+      "repo_root": "/dwdhome/fy/BASE_E6_2/edh-universe/fis/cfis",
+      "head": "91693b5d585f084b89cb5e08870a1e39f5274fc8",
+      "declarations": [
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/edh-universe/fis/cfis/host.hs/cfis.cabal",
+          "head_relative_path": "host.hs/cfis.cabal",
+          "working": {
+            "path": "/dwdhome/fy/BASE_E6_2/edh-universe/fis/cfis/host.hs/cfis.cabal",
+            "realpath": "/dwdhome/fy/BASE_E6_2/edh-universe/fis/cfis/host.hs/cfis.cabal",
+            "symlink": false,
+            "mode": 33188,
+            "dev": 83,
+            "inode": 5492901,
+            "size": 7566,
+            "mtime_ns": 1732603121807386000,
+            "sha256": "2e6f54bc06665155a6430ed165b190b1baa7a6e417e5ed8700dd1ef9dacdba68"
+          },
+          "exact_head_sha256": "2e6f54bc06665155a6430ed165b190b1baa7a6e417e5ed8700dd1ef9dacdba68",
+          "matches_head": true,
+          "receipt_path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/local-package-declarations/edh-universe/fis/cfis/host.hs/cfis.cabal",
+          "declared_fields": [
+            "cabal-version: 2.4",
+            "name:          cfis",
+            "version:       0.0.3.0",
+            "build-type:    Simple",
+            "hs-source-dirs:     src",
+            "build-depends:",
+            "hs-source-dirs:     src",
+            "build-depends:",
+            "hs-source-dirs:     src2",
+            "build-depends:",
+            "hs-source-dirs:     hsfis",
+            "build-depends:",
+            "hs-source-dirs:     debug",
+            "build-depends:"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/edh-universe/hsite3/hgeometry/hgeometry",
+      "exists": true,
+      "realpath": "/dwdhome/fy/BASE_E6_2/edh-universe/hsite3/hgeometry/hgeometry",
+      "repo_root": "/dwdhome/fy/BASE_E6_2/edh-universe/hsite3/hgeometry",
+      "head": "eed3fe9626eca3accf8449214df531cd15e3dabc",
+      "declarations": [
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/edh-universe/hsite3/hgeometry/hgeometry/hgeometry.cabal",
+          "head_relative_path": "hgeometry/hgeometry.cabal",
+          "working": {
+            "path": "/dwdhome/fy/BASE_E6_2/edh-universe/hsite3/hgeometry/hgeometry/hgeometry.cabal",
+            "realpath": "/dwdhome/fy/BASE_E6_2/edh-universe/hsite3/hgeometry/hgeometry/hgeometry.cabal",
+            "symlink": false,
+            "mode": 33188,
+            "dev": 83,
+            "inode": 5480994,
+            "size": 16816,
+            "mtime_ns": 1717733823231355000,
+            "sha256": "1b14d43195d64ecd92d593f7788a929a89ed02f9dba261b39e9a7d06550140ae"
+          },
+          "exact_head_sha256": "1b14d43195d64ecd92d593f7788a929a89ed02f9dba261b39e9a7d06550140ae",
+          "matches_head": true,
+          "receipt_path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/local-package-declarations/edh-universe/hsite3/hgeometry/hgeometry/hgeometry.cabal",
+          "declared_fields": [
+            "cabal-version:       2.4",
+            "name:                hgeometry",
+            "version:             0.15",
+            "build-type:          Simple",
+            "build-depends:",
+            "hs-source-dirs: src",
+            "hs-source-dirs: benchmark",
+            "build-depends: tasty-bench",
+            "build-depends: base",
+            "hs-source-dirs:       test/src",
+            "build-depends: hgeometry"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/edh-universe/hsite3/hgeometry/hgeometry-combinatorial",
+      "exists": true,
+      "realpath": "/dwdhome/fy/BASE_E6_2/edh-universe/hsite3/hgeometry/hgeometry-combinatorial",
+      "repo_root": "/dwdhome/fy/BASE_E6_2/edh-universe/hsite3/hgeometry",
+      "head": "eed3fe9626eca3accf8449214df531cd15e3dabc",
+      "declarations": [
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/edh-universe/hsite3/hgeometry/hgeometry-combinatorial/hgeometry-combinatorial.cabal",
+          "head_relative_path": "hgeometry-combinatorial/hgeometry-combinatorial.cabal",
+          "working": {
+            "path": "/dwdhome/fy/BASE_E6_2/edh-universe/hsite3/hgeometry/hgeometry-combinatorial/hgeometry-combinatorial.cabal",
+            "realpath": "/dwdhome/fy/BASE_E6_2/edh-universe/hsite3/hgeometry/hgeometry-combinatorial/hgeometry-combinatorial.cabal",
+            "symlink": false,
+            "mode": 33188,
+            "dev": 83,
+            "inode": 5479551,
+            "size": 8503,
+            "mtime_ns": 1717733822969317000,
+            "sha256": "1edab416ce6fd0c8fbaa894a66d0577566ba7ea1560f1a0a4e01d3eb3b99a001"
+          },
+          "exact_head_sha256": "1edab416ce6fd0c8fbaa894a66d0577566ba7ea1560f1a0a4e01d3eb3b99a001",
+          "matches_head": true,
+          "receipt_path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/local-package-declarations/edh-universe/hsite3/hgeometry/hgeometry-combinatorial/hgeometry-combinatorial.cabal",
+          "declared_fields": [
+            "cabal-version:       2.4",
+            "name:                hgeometry-combinatorial",
+            "version:             0.15",
+            "build-type:          Simple",
+            "build-depends:",
+            "hs-source-dirs: src",
+            "build-depends: base",
+            "hs-source-dirs:       test",
+            "build-depends: hspec                   >= 2.1"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/nedh/host.hs",
+      "exists": true,
+      "realpath": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/nedh/host.hs",
+      "repo_root": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/nedh",
+      "head": "04f5e0f62aabe656c21c3181edd9ba72c3f0c5b7",
+      "declarations": [
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/nedh/host.hs/nedh.cabal",
+          "head_relative_path": "host.hs/nedh.cabal",
+          "working": {
+            "path": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/nedh/host.hs/nedh.cabal",
+            "realpath": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/nedh/host.hs/nedh.cabal",
+            "symlink": false,
+            "mode": 33188,
+            "dev": 83,
+            "inode": 5495089,
+            "size": 4642,
+            "mtime_ns": 1713259429040315000,
+            "sha256": "cdb8efb68da37d23b6d2f5d3f685bf06e636720cc0df380d3ddbff02591a7893"
+          },
+          "exact_head_sha256": "cdb8efb68da37d23b6d2f5d3f685bf06e636720cc0df380d3ddbff02591a7893",
+          "matches_head": true,
+          "receipt_path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/local-package-declarations/edh-universe/e-wrks/nedh/host.hs/nedh.cabal",
+          "declared_fields": [
+            "cabal-version:      2.4",
+            "name:               nedh",
+            "version:            0.1.0.0",
+            "build-type:         Simple",
+            "hs-source-dirs:     src",
+            "build-depends:",
+            "build-depends:",
+            "hs-source-dirs:     repl",
+            "build-depends:",
+            "hs-source-dirs:     runfile",
+            "build-depends:",
+            "hs-source-dirs:     runmodu",
+            "build-depends:"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/haskit/host.hs",
+      "exists": true,
+      "realpath": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/haskit/host.hs",
+      "repo_root": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/haskit",
+      "head": "dd4f85540e5b5f3d38837f7ecc67e6be8fa1e094",
+      "declarations": [
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/haskit/host.hs/haskit.cabal",
+          "head_relative_path": "host.hs/haskit.cabal",
+          "working": {
+            "path": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/haskit/host.hs/haskit.cabal",
+            "realpath": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/haskit/host.hs/haskit.cabal",
+            "symlink": false,
+            "mode": 33188,
+            "dev": 83,
+            "inode": 5493846,
+            "size": 2433,
+            "mtime_ns": 1671616048198842000,
+            "sha256": "ecba5e0995156e2ce4507f8eca3a9f2018cc8c5d2bee6e2d4192388da8e09abf"
+          },
+          "exact_head_sha256": "ecba5e0995156e2ce4507f8eca3a9f2018cc8c5d2bee6e2d4192388da8e09abf",
+          "matches_head": true,
+          "receipt_path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/local-package-declarations/edh-universe/e-wrks/haskit/host.hs/haskit.cabal",
+          "declared_fields": [
+            "cabal-version:      2.4",
+            "name:               haskit",
+            "version:            0.1.0.0",
+            "build-type:         Simple",
+            "hs-source-dirs:     hski",
+            "build-depends:",
+            "hs-source-dirs:     src",
+            "build-depends:"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/sedh/host.hs",
+      "exists": true,
+      "realpath": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/sedh/host.hs",
+      "repo_root": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/sedh",
+      "head": "2567b52ed58985d0edfa6312a3b883c5cf8b79ab",
+      "declarations": [
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/sedh/host.hs/sedh.cabal",
+          "head_relative_path": "host.hs/sedh.cabal",
+          "working": {
+            "path": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/sedh/host.hs/sedh.cabal",
+            "realpath": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/sedh/host.hs/sedh.cabal",
+            "symlink": false,
+            "mode": 33188,
+            "dev": 83,
+            "inode": 5494941,
+            "size": 4660,
+            "mtime_ns": 1631783611434985000,
+            "sha256": "1324e00fe6e2218761c7b5d0aec85bd62d676b75351cd0f25f99244417276cbd"
+          },
+          "exact_head_sha256": "1324e00fe6e2218761c7b5d0aec85bd62d676b75351cd0f25f99244417276cbd",
+          "matches_head": true,
+          "receipt_path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/local-package-declarations/edh-universe/e-wrks/sedh/host.hs/sedh.cabal",
+          "declared_fields": [
+            "cabal-version:      2.4",
+            "name:               sedh",
+            "version:            0.1.0.0",
+            "build-type:         Simple",
+            "hs-source-dirs:     gwd",
+            "build-depends:",
+            "hs-source-dirs:     forage",
+            "build-depends:",
+            "hs-source-dirs:     swarmcc",
+            "build-depends:",
+            "hs-source-dirs:     src",
+            "build-depends:"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/els/host.hs",
+      "exists": true,
+      "realpath": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/els/host.hs",
+      "repo_root": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/els",
+      "head": "5f5ccf2f5c56a83e047d88df50d482cec7b8c28e",
+      "declarations": [
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/els/host.hs/els.cabal",
+          "head_relative_path": "host.hs/els.cabal",
+          "working": {
+            "path": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/els/host.hs/els.cabal",
+            "realpath": "/dwdhome/fy/BASE_E6_2/edh-universe/e-wrks/els/host.hs/els.cabal",
+            "symlink": false,
+            "mode": 33188,
+            "dev": 83,
+            "inode": 5475092,
+            "size": 2647,
+            "mtime_ns": 1631783885340845000,
+            "sha256": "93f21ff0c9641774eac404785c64de86a3564021cd0ec9ce3ed741e910d58d0b"
+          },
+          "exact_head_sha256": "93f21ff0c9641774eac404785c64de86a3564021cd0ec9ce3ed741e910d58d0b",
+          "matches_head": true,
+          "receipt_path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/input/local-package-declarations/edh-universe/e-wrks/els/host.hs/els.cabal",
+          "declared_fields": [
+            "cabal-version:      2.4",
+            "name:               els",
+            "version:            0.1.0.0",
+            "build-type:         Simple",
+            "hs-source-dirs:     src",
+            "build-depends:",
+            "hs-source-dirs:     server",
+            "build-depends:"
+          ]
+        }
+      ]
+    }
+  ],
+  "environment_redirections": {
+    "PATH": "/usr/bin:/bin:/nix/.ghcup/ghc/9.4.8/bin",
+    "LANG": "C.UTF-8",
+    "LC_ALL": "C.UTF-8",
+    "USER": "dw",
+    "LOGNAME": "dw",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "GIT_OPTIONAL_LOCKS": "0",
+    "GIT_CONFIG_NOSYSTEM": "1",
+    "GIT_CONFIG_GLOBAL": "/dev/null",
+    "GIT_NO_REPLACE_OBJECTS": "1",
+    "GIT_PAGER": "cat",
+    "GHC_ENVIRONMENT": "-",
+    "LD_LIBRARY_PATH": "/home/dw/.local/lib",
+    "CODEX_THREAD_ID": "01a1da55-5881-7590-94a1-0661f0236977",
+    "HOME": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/home",
+    "TMPDIR": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/tmp",
+    "TMP": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/tmp",
+    "TEMP": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/tmp",
+    "XDG_CACHE_HOME": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/xdg-cache",
+    "XDG_CONFIG_HOME": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/home/.config",
+    "XDG_DATA_HOME": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/home/.local/share",
+    "XDG_STATE_HOME": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/home/.local/state",
+    "STACK_ROOT": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/stack-root",
+    "STACK_WORK": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/build/stack-work",
+    "CABAL_DIR": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/home/.cabal",
+    "CABAL_CONFIG": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/home/.cabal/config",
+    "CABAL_BUILDDIR": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/build/cabal",
+    "GHCUP_INSTALL_BASE_PREFIX": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/home",
+    "GHCUP_TMP_DIR": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/tmp",
+    "GHCUP_LOGS_DIR": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/logs/ghcup",
+    "PYTHONPYCACHEPREFIX": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/xdg-cache/python",
+    "PYTHONUSERBASE": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/home/.local",
+    "MPLCONFIGDIR": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/home/.config/matplotlib",
+    "PIP_CACHE_DIR": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/xdg-cache/pip",
+    "NPM_CONFIG_CACHE": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/xdg-cache/npm",
+    "CARGO_HOME": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/home/.cargo",
+    "RUSTUP_HOME": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/home/.rustup",
+    "CCACHE_DIR": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/xdg-cache/ccache",
+    "SQLITE_TMPDIR": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/tmp",
+    "GHC_HISTORY": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/home/.ghci_history"
+  },
+  "disk_free_bytes_at_record": 442668941312,
+  "engineering_eligibility": "PREFLIGHT_STOP",
+  "qualification_limits": [
+    "model/session/cwd and lock verified; tool availability does not establish isolated build eligibility",
+    "nine successful write-capable procfs opens in dry Haskell metadata calls; subsequent write syscalls were not traced",
+    "only designated metadata and files audited; no whole filesystem zero-write proof"
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "utc": "2026-11-14T18:53:04.474000+00:00",
+  "run_id": "OI-EAW-WALL-20261114-01",
+  "work_order_id": "W002",
+  "actual_work_root": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002",
+  "writes_outside_WORK_ROOT": "unknown",
+  "shared_checkout_changed_by_W002": false,
+  "m3varK_written": "unknown",
+  "production_wrapper_written": false,
+  "production_product_written": "unknown",
+  "shared_audit_results": {
+    "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp": {
+      "head_equal": true,
+      "branch_equal": true,
+      "status_equal": true,
+      "all_selected_file_metadata_and_hashes_equal": true,
+      "selected_file_count": 11
+    },
+    "/dwdhome/fy/BASE_E6_2/mquant/tis": {
+      "head_equal": true,
+      "branch_equal": true,
+      "status_equal": true,
+      "all_selected_file_metadata_and_hashes_equal": true,
+      "selected_file_count": 3
+    },
+    "/dwdhome/fy/BASE_E6_2/mquant/worker": {
+      "head_equal": true,
+      "branch_equal": true,
+      "status_equal": true,
+      "all_selected_file_metadata_and_hashes_equal": true,
+      "selected_file_count": 8
+    }
+  },
+  "shared_scope": "HEAD/branch/status plus exact selected source/build declarations, dirty source files, wrapper, index/HEAD sha256 and mtime; no full-volume filesystem scan",
+  "shared_before": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/audit/SHARED_BEFORE.json",
+  "shared_after": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/audit/SHARED_AFTER.json",
+  "global_zero_write_proof": false,
+  "external_procfs_findings": {
+    "successful_write_capable_opens": 9,
+    "actual_subsequent_write_syscalls": "NOT_CAPTURED",
+    "actual_bytes_written": "unknown",
+    "evidence": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/audit/TOOL_METADATA_TRACE_REVIEW.json"
+  },
+  "persistent_external_file_writes_detected_in_traced_metadata_subset": 0,
+  "untraced_coverage_gap": "bootstrap, task-status and read-only collector processes not continuously traced; four metadata traces also omit write-family calls; absence of evidence is not zero-write proof",
+  "m3varK_policy": "no intentional stat/read/traversal/import/run; no path event in four metadata traces; all-process proof unavailable, so global field stays unknown",
+  "production_wrapper_policy": "no generation or Python import; worker/adt/dbaw.py bytes/mtime equal in selected before/after audit",
+  "symlinks_under_work_root": [],
+  "file_count_and_disk_sample": {
+    "utc": "2026-11-14T18:53:04.457132+00:00",
+    "file_count": 277,
+    "apparent_bytes": 1542450,
+    "allocated_bytes": 1730560,
+    "scope": "before final command ledger/hash/publication indexes; no staged or build payload"
+  },
+  "phase1_source_staging": false,
+  "phase2_compile_or_test": false,
+  "source_directory_empty": true,
+  "fixture_directory_empty": true,
+  "tests_directory_empty": true,
+  "build_directory_empty": true,
+  "stack_root_empty": true,
+  "scenario_evidence_fixture_runs": 0,
+  "network_downloads": 0,
+  "dependency_installs": 0,
+  "source_repo_pushes": 0,
+  "stop_decision": "PREFLIGHT_STOP",
+  "EP_WALL_SHARED_03": "UNSATISFIED",
+  "no_cleanup_hiding_evidence": true
+}

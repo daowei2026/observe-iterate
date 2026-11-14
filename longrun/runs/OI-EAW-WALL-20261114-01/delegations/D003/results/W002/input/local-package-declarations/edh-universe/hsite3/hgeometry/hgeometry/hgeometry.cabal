@@ -1,0 +1,461 @@
+cabal-version:       2.4
+name:                hgeometry
+version:             0.15
+synopsis:            Geometric Algorithms, Data structures, and Data types.
+description:
+  HGeometry provides some basic geometry types, and geometric algorithms and
+  data structures for them. The main two focusses are: (1) Strong type safety,
+  and (2) implementations of geometric algorithms and data structures with good
+  asymptotic running time guarantees. Note that HGeometry is still highly experimental, don't be surprised to find bugs.
+
+homepage:            https://fstaals.net/software/hgeometry
+license:             BSD-3-Clause
+license-file:        LICENSE
+author:              Frank Staals
+maintainer:          frank@fstaals.net
+tested-with:         GHC >= 8.10
+category:            Geometry
+build-type:          Simple
+
+extra-source-files:  README.md
+                     changelog
+                     changelog.org
+
+extra-doc-files:     docs/**/*.png
+                     docs/**/*.jpg
+
+data-files:          test/src/Data/PlaneGraph/testsegs.png
+                     test/data/polygons.simple
+                     test/data/polygons.multi
+                     test/src/**/*.yaml
+
+source-repository head
+  type:     git
+  location: https://github.com/noinia/hgeometry
+
+--------------------------------------------------------------------------------
+-- * Common Stanzas
+
+common setup
+  ghc-options: -O2 -Wall -fno-warn-unticked-promoted-constructors -fno-warn-type-defaults
+
+  default-language:    Haskell2010
+
+  default-extensions: TypeFamilies
+                    , GADTs
+                    , KindSignatures
+                    , DataKinds
+                    , TypeOperators
+                    , ConstraintKinds
+                    , PolyKinds
+                    , RankNTypes
+                    , TypeApplications
+                    , ScopedTypeVariables
+
+                    , PatternSynonyms
+                    , TupleSections
+                    , LambdaCase
+                    , ViewPatterns
+
+                    , StandaloneDeriving
+                    , GeneralizedNewtypeDeriving
+                    , DeriveFunctor
+                    , DeriveFoldable
+                    , DeriveTraversable
+                    , DeriveGeneric
+                    , DerivingStrategies
+                    , DerivingVia
+
+
+                    , FlexibleInstances
+                    , FlexibleContexts
+                    , MultiParamTypeClasses
+  build-depends:
+                base                    >= 4.11      &&     < 5
+              , hgeometry-combinatorial >= 0.15
+
+              , bifunctors              >= 4.1
+              , bytestring              >= 0.10
+              , containers              >= 0.5.9
+              -- , multi-containers        >= 0.2
+              , dlist                   >= 0.7
+              , lens                    >= 4.2
+              , semigroupoids           >= 5
+              , semigroups              >= 0.18
+              -- , singletons              >= 2.0
+              , linear                  >= 1.10
+              , fixed-vector            >= 1.0
+              , vector-builder          >= 0.3.7
+              , vinyl                   >= 0.10
+              , deepseq                 >= 1.1
+              , fingertree              >= 0.1
+              , MonadRandom             >= 0.5
+              , random                  >= 1.2
+              , QuickCheck              >= 2.5
+              , quickcheck-instances    >= 0.3
+              , reflection              >= 2.1
+              , primitive               >= 0.6.3.0
+              , hashable                >= 1.2
+
+              -- , singleton-typelits      >= 0.1.0.0
+
+              -- , ghc-typelits-natnormalise >= 0.6
+              -- , ghc-typelits-knownnat     >= 0.6
+
+              , vector                  >= 0.11
+              , data-clist              >= 0.1.2.3
+              , vector-circular         >= 0.1.4
+              , nonempty-vector         >= 0.2.0.0
+              , text                    >= 1.1.1.0
+              , vector-algorithms
+              , witherable              >= 0.4
+
+              , aeson                   >= 1.0
+              , yaml                    >= 0.8
+
+              , mtl                     >= 2.2
+              , template-haskell
+
+              , hspec, QuickCheck, quickcheck-instances
+
+
+--------------------------------------------------------------------------------
+-- * Main Library
+
+library
+  import: setup
+  hs-source-dirs: src
+
+  exposed-modules:  Geometry
+                    -- * Primitives; Simulating General Position
+                    -- Geometry.SoS
+                    Geometry.SoS.Point
+                    Geometry.SoS.Orientation
+
+                    -- * Generic Geometry
+                    Geometry.Properties
+                    Geometry.Transformation
+                    Geometry.Boundary
+                    Geometry.Duality
+                    Geometry.Directions
+
+                    -- * Basic Geometry Types
+                    Geometry.Vector
+                    Geometry.Vector.VectorFixed
+                    Geometry.Vector.VectorFamily
+
+                    Geometry.Matrix
+
+                    -- Geometry.Vector.Vinyl
+                    Geometry.Interval
+                    Geometry.Point
+
+                    Geometry.Line
+                    Geometry.LineSegment
+                    Geometry.LineSegment.Internal
+                    Geometry.SubLine
+                    Geometry.HalfLine
+                    Geometry.PolyLine
+                    Geometry.HyperPlane
+                    Geometry.HalfSpace
+                    Geometry.Triangle
+                    -- Geometry.Plane
+                    Geometry.Slab
+                    Geometry.Box
+                    Geometry.Box.Sides
+                    Geometry.Box.Corners
+
+                    Geometry.Ball
+                    Geometry.Ellipse
+
+                    Geometry.Polygon
+                    Geometry.Polygon.Bezier
+                    Geometry.Polygon.Inflate
+                    Geometry.Polygon.Convex
+                    Geometry.Polygon.Monotone
+
+                    Geometry.BezierSpline
+
+                    -- * Geometric Data Structures
+                    Geometry.IntervalTree
+                    Geometry.SegmentTree
+                    Geometry.SegmentTree.Generic
+
+                    Geometry.KDTree
+
+                    Geometry.PlanarSubdivision
+                    Geometry.PlanarSubdivision.Raw
+                    Geometry.PlanarSubdivision.Dynamic
+                    Geometry.PlanarSubdivision.TreeRep
+
+                    Geometry.Arrangement
+
+                    Geometry.RangeTree
+                    Geometry.RangeTree.Measure
+                    Geometry.RangeTree.Generic
+
+                    Geometry.PrioritySearchTree
+
+                    Geometry.QuadTree
+                    Geometry.QuadTree.Cell
+                    Geometry.QuadTree.Quadrants
+                    Geometry.QuadTree.Split
+                    Geometry.QuadTree.Tree
+
+                    Geometry.PointLocation
+                    Geometry.PointLocation.PersistentSweep
+
+                    Geometry.VerticalRayShooting
+                    Geometry.VerticalRayShooting.PersistentSweep
+
+                    -- * Algorithms
+
+                    -- * Geometric Algorithms
+                    Algorithms.Geometry.ConvexHull
+                    Algorithms.Geometry.ConvexHull.GrahamScan
+                    Algorithms.Geometry.ConvexHull.DivideAndConquer
+                    Algorithms.Geometry.ConvexHull.QuickHull
+                    Algorithms.Geometry.ConvexHull.JarvisMarch
+                    Algorithms.Geometry.ConvexHull.Naive
+
+                    Algorithms.Geometry.LowerEnvelope.DualCH
+
+                    Algorithms.Geometry.SmallestEnclosingBall
+                    Algorithms.Geometry.SmallestEnclosingBall.RIC
+                    Algorithms.Geometry.SmallestEnclosingBall.Naive
+
+                    Algorithms.Geometry.DelaunayTriangulation.Types
+                    Algorithms.Geometry.DelaunayTriangulation.DivideAndConquer
+                    Algorithms.Geometry.DelaunayTriangulation.Naive
+
+                    Algorithms.Geometry.PolyLineSimplification.ImaiIri
+                    Algorithms.Geometry.PolyLineSimplification.DouglasPeucker
+
+                    Algorithms.Geometry.EuclideanMST
+                    Algorithms.Geometry.EuclideanMST.EuclideanMST
+
+                    Algorithms.Geometry.WSPD
+                    Algorithms.Geometry.WellSeparatedPairDecomposition.WSPD
+                    Algorithms.Geometry.WellSeparatedPairDecomposition.Types
+
+                    Algorithms.Geometry.Diameter
+                    Algorithms.Geometry.Diameter.Naive
+                    Algorithms.Geometry.Diameter.ConvexHull
+
+                    -- Algorithms.Geometry.Sweep
+                    Algorithms.Geometry.PolygonTriangulation
+                    Algorithms.Geometry.PolygonTriangulation.Types
+                    Algorithms.Geometry.PolygonTriangulation.Triangulate
+                    Algorithms.Geometry.PolygonTriangulation.MakeMonotone
+                    Algorithms.Geometry.PolygonTriangulation.TriangulateMonotone
+                    Algorithms.Geometry.PolygonTriangulation.EarClip
+
+                    Algorithms.Geometry.LineSegmentIntersection
+                    Algorithms.Geometry.LineSegmentIntersection.Naive
+                    Algorithms.Geometry.LineSegmentIntersection.BentleyOttmann
+                    Algorithms.Geometry.LineSegmentIntersection.BooleanSweep
+
+                    -- Algorithms.Geometry.HiddenSurfaceRemoval.HiddenSurfaceRemoval
+
+                    Algorithms.Geometry.ClosestPair
+                    Algorithms.Geometry.ClosestPair.Naive
+                    Algorithms.Geometry.ClosestPair.DivideAndConquer
+
+                    Algorithms.Geometry.LinearProgramming
+                    Algorithms.Geometry.LinearProgramming.LP2DRIC
+
+                    Algorithms.Geometry.RedBlueSeparator.RIC
+
+                    Algorithms.Geometry.FrechetDistance.Discrete
+
+                    Algorithms.Geometry.VisibilityPolygon.Lee
+                    Algorithms.Geometry.SSSP
+                    Algorithms.Geometry.SSSP.Naive
+
+                    Algorithms.Geometry.RayShooting.Naive
+
+                    -- * Embedded Planar Graphs
+                    Data.PlaneGraph
+                    Data.PlaneGraph.AdjRep
+                    Data.PlaneGraph.IO
+
+                    -- * Graphics stuff
+                    Graphics.Camera
+                    Graphics.Render
+
+  other-modules:
+                    Geometry.Matrix.Internal
+                    Geometry.Transformation.Internal
+
+                    Geometry.Box.Internal
+
+                    -- * Implementation Internals of Polygons
+                    Geometry.Polygon.Core
+                    Geometry.Polygon.Extremes
+                    Algorithms.Geometry.InPolygon
+
+                    Algorithms.Geometry.LineSegmentIntersection.Types
+                    Algorithms.Geometry.SmallestEnclosingBall.Types
+
+                    Algorithms.Geometry.WSPD.Types
+
+                    Algorithms.Geometry.LinearProgramming.Types
+
+                    Geometry.Vector.VectorFamilyPeano
+
+                    Geometry.Point.Internal
+                    Geometry.Point.Orientation
+                    Geometry.Point.Quadrants
+                    Geometry.Point.Orientation.Degenerate
+                    Geometry.Point.Class
+
+                    Geometry.Line.Internal
+
+
+                    Geometry.Interval.Util
+
+                    -- Algorithms.Geometry.SoS.Expr
+                    Geometry.SoS.Determinant
+
+                    Data.PlaneGraph.Core
+
+                    Geometry.Arrangement.Internal
+
+                    Geometry.PlanarSubdivision.Basic
+                    Geometry.PlanarSubdivision.Merge
+
+  -- other-extensions:
+
+--------------------------------------------------------------------------------
+-- * Benchmarks
+
+benchmark benchmarks
+  import: setup
+  hs-source-dirs: benchmark
+
+  main-is: Benchmarks.hs
+  type: exitcode-stdio-1.0
+
+  other-modules: Benchmark.Util
+                 Algorithms.Geometry.ConvexHull.Bench
+                 Algorithms.Geometry.ConvexHull.GrahamV2
+                 Algorithms.Geometry.ConvexHull.GrahamFam
+                 -- Algorithms.Geometry.ConvexHull.GrahamFamPeano
+                 Algorithms.Geometry.ConvexHull.GrahamFixed
+                 Geometry.Vector.VectorFamily6
+                 Algorithms.Geometry.ConvexHull.GrahamFam6
+                 Geometry.IntervalTreeBench
+                 -- Demo.ExpectedPairwiseDistance
+                 -- Demo.TriangulateWorld
+                 -- WSPDBench
+                 Algorithms.Geometry.ClosestPair.Bench
+
+                 Algorithms.Geometry.LineSegmentIntersection.Bench
+                 Algorithms.Geometry.LineSegmentIntersection.BentleyOttmannOld
+                 Algorithms.Geometry.LineSegmentIntersection.BentleyOttmannNoExt
+                 Algorithms.Geometry.LineSegmentIntersection.TypesNoExt
+
+                 Algorithms.Geometry.PolygonTriangulation.Bench
+                 Algorithms.Geometry.PolygonTriangulation.MakeMonotoneOld
+
+
+  build-depends: tasty-bench
+               , hgeometry
+               , deepseq-generics
+               , optparse-applicative
+
+--------------------------------------------------------------------------------
+-- * Test Suites
+
+test-suite doctests
+  type:          exitcode-stdio-1.0
+  ghc-options:   -threaded
+  main-is:       doctests.hs
+  build-depends: base
+               , doctest             >= 0.8
+               , doctest-discover
+               , QuickCheck
+               , quickcheck-instances
+
+  default-language:    Haskell2010
+
+test-suite hspec
+  import: setup
+  type:                 exitcode-stdio-1.0
+  default-language:     Haskell2010
+  hs-source-dirs:       test/src
+  main-is:              Main.hs
+
+  build-depends: hgeometry
+               , cereal           >= 0.5
+               , singletons       >= 2.7
+               , directory        >= 1.3
+               , filepath         >= 1.4
+
+
+  -- -threaded -with-rtsopts=-N
+  ghc-options:   -Wall
+                 -fno-warn-unticked-promoted-constructors
+                 -fno-warn-partial-type-signatures
+                 -fno-warn-missing-signatures
+                 -fno-warn-type-defaults
+                 -fno-warn-orphans
+
+  build-tool-depends: hspec-discover:hspec-discover
+
+  other-modules: Data.PlaneGraphSpec
+                 Geometry.PolygonSpec
+                 Geometry.LineSegmentSpec
+                 Geometry.PointSpec
+                 Geometry.VectorSpec
+                 Geometry.Polygon.Convex.ConvexSpec
+                 Geometry.Polygon.Convex.LowerTangentSpec
+                 Geometry.Polygon.PickPointSpec
+                 Geometry.KDTreeSpec
+                 Geometry.IntervalSpec
+                 Geometry.BoxSpec
+                 Geometry.BallSpec
+                 Geometry.LineSpec
+                 Geometry.SubLineSpec
+                 Geometry.PlanarSubdivisionSpec
+                 Geometry.PlanarSubdivision.IOSpec
+                 Geometry.TriangleSpec
+                 Geometry.HalfSpaceSpec
+                 Geometry.PrioritySearchTreeSpec
+                 Geometry.RangeTreeSpec
+                 Geometry.BezierSplineSpec
+                 Geometry.BezierMaarten
+                 Geometry.QuadTreeSpec
+
+                 Geometry.SoSSpec
+                 -- Geometry.SoS.SortSpec
+                 Geometry.SoS.OrientationSpec
+                 Geometry.SoS.ConvexHull
+
+                 Algorithms.Geometry.WSPDSpec
+                 Algorithms.Geometry.PolygonTriangulation.TriangulateSpec
+                 Algorithms.Geometry.PolygonTriangulation.EarClipSpec
+                 Algorithms.Geometry.ConvexHull.ConvexHullSpec
+                 -- Algorithms.Geometry.HiddenSurfaceRemoval.HiddenSurfaceRemovalSpec
+                 Algorithms.Geometry.ClosestPair.ClosestPairSpec
+                 Algorithms.Geometry.FrechetDistance.DiscreteSpec
+                 -- Algorithms.Geometry.VisibilityPolygon.VisibilityPolygonSpec
+                 Algorithms.Geometry.SSSPSpec
+                 Algorithms.Geometry.PolyLineSimplificationSpec
+                 Algorithms.Geometry.LineSegmentIntersection.BentleyOttmannSpec
+                 Algorithms.Geometry.LineSegmentIntersection.BooleanSweepSpec
+
+                 Geometry.VerticalRayShooting.VerticalRayShootingSpec
+
+                 Graphics.CameraSpec
+
+                 Test.Util
+                 Spec
+                 Paths_hgeometry
+
+                 Geometry.Point.CmpAround
+                 Geometry.Polygon.Convex.LowerTangent
+
+                 Algorithms.Geometry.ConvexHull.OldDivideAndConquer
+
+                 Geometry.IntersectionSpec

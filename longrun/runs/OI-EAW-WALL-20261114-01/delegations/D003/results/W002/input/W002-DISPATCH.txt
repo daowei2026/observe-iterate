@@ -1,0 +1,45 @@
+[OI-EAW-WALL-20261114-01-W002-FIRST-DISPATCH-01]
+继续本Run原Worker W1，实际执行新合法W002，不新建Worker或测试Run。原W001已完整消费关闭、旧锁释放，其有限工作权限不作为本新单的工程禁令；本单必须按当前W002原件和Owner/D003真实授权执行。
+
+必须完整读的逐字镜像（不以此转交摘要代替）：
+/dwdhome/fy/cgpterm/artifacts/oi-eaw-wall/OI-EAW-WALL-20261114-01/C0009-remote-work_orders--W002--ORDER.md
+/dwdhome/fy/cgpterm/artifacts/oi-eaw-wall/OI-EAW-WALL-20261114-01/C0009-remote-work_orders--W002--ORDER.json
+MD SHA256 03aaf0dbbb3b29602635e2d5f6874722874a68bfef7ccb62e3797bad1c785331
+JSON SHA256 1752e212d056d73a7868a168612e8e609a3d16247db4071b6f67aa03755ae249
+准确ORDER JSON ref：daowei2026/observe-iterate@8bc47de4fe83742049853a6538d1db0bad9468e4:longrun/runs/OI-EAW-WALL-20261114-01/work_orders/W002/ORDER.json
+签单E1 Return：daowei2026/observe-iterate@b19d7f4499310f8cfebf64a3b2132644426aba8c:longrun/runs/OI-EAW-WALL-20261114-01/calls/C0009/PRO_RETURN.json
+主控已核完整四文件/三精确refs逐字/hash，validate-executor-return与validate-order-W002通过；Gate自身只是PREFLIGHT_ONLY_NOT_LOCK，真实锁另见下文。
+
+当前D003（issuer C0008）MD/JSON逐字本地镜像：
+/dwdhome/fy/cgpterm/artifacts/oi-eaw-wall/OI-EAW-WALL-20261114-01/C0008-remote-delegations--D003--DELEGATION.md
+/dwdhome/fy/cgpterm/artifacts/oi-eaw-wall/OI-EAW-WALL-20261114-01/C0008-remote-delegations--D003--DELEGATION.json
+D002三份专业输入本地镜像：
+/dwdhome/fy/cgpterm/artifacts/oi-eaw-wall/OI-EAW-WALL-20261114-01/C0006-remote-ADDITIONAL_ENGINEERING_PRECONDITION.md
+/dwdhome/fy/cgpterm/artifacts/oi-eaw-wall/OI-EAW-WALL-20261114-01/C0006-remote-CONTROLLED_SCENARIO_ACTION_DESIGN.md
+/dwdhome/fy/cgpterm/artifacts/oi-eaw-wall/OI-EAW-WALL-20261114-01/C0006-remote-ACTION_ELIGIBILITY_MATRIX.md
+V2协议/schema：/dwdhome/fy/cgpterm/artifacts/oi-eaw-wall/OI-EAW-WALL-20261114-01/observe-iterate/longrun/contracts/LONGRUN_PROTOCOL_V2.md 与同目录 longrun_schema_v2.json；采用业务版本ca7fdae84f65265332e3a53865724a2615508766。当前D3 JSON精确ref以ORDER为准；旧C7候选从未派发且已替代。
+
+实际原线程01a1da55-5881-7590-94a1-0661f0236977，实际cwd必须/dwdhome/fy/BASE_E6_2，实际模型gpt-6.1-sol/effort=max。本次主控已在同一现有App Server加载原已完成且无Goal/无queue线程，未新建聊天、未恢复旧Goal；派前实际owner/model/effort/cwd已重新核真。
+
+主控现真实持有覆盖D003的独占锁：
+path /dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/.D003-writer.lock
+holder PID237355/startticks45798445/inode14806399，root exec session85804。
+证据 /dwdhome/fy/cgpterm/artifacts/oi-eaw-wall/OI-EAW-WALL-20261114-01/W002-lock-competition-proof.json。
+你是该独占区唯一获准施工者，仅执行W002；先只读核PID/startticks/inode和同inode非阻塞竞争失败。不要重取、替换、释放主控锁。锁已被主控持有不是拒绝你施工，缺保证则STOP。此锁全程保持到你本地写者真实终态，旧W001锁不适用。
+
+Owner grant逐字：
+operation=wall-observation-work execution_context=linux:/dwdhome/fy/BASE_E6_2 allowed_writes=/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01
+但本W真实唯一工程写根严格：
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002
+你可按W创建所需子目录；全部source/cache/tmp/home/build/log/fixture/artifact实际写入必须在此规范化realpath内，其他BASE、共享FRP/TIS、worker checkout、cgpterm、生产路径和全局缓存全部只读。使用PYTHONDONTWRITEBYTECODE=1，避免导入镜像工具时写pycache。主控锁/派工台账是主控控制面文件，你不得写改。
+
+只读shared FRP=/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp，exact source base=cac6c912dd65a14acbd591ca57e0afd8ddb4ef13。先有界dry dependency/write/cost preflight和绝对工具/hash绑定，不联网下载/安装，不用build来探依赖。不要先stage或运行。只有Phase0明确合格、cap可监测且预计不超限才能进入Phase1/2；否则PREFLIGHT_STOP并交已有事实和最小解除条件。必须遵守W002更窄的阶段Gate，不因D3总体目标跳过。
+
+上限：new disk<=2GiB，RSS<=4GiB，post-preflight总wall<=25min，newfiles<=50000，WORK_ROOT外工程写入0，scenario evidence execution0。实际build/test遵守W的timeout/resource/write audit；bounded source/路径调查，不大范围递归搜索，预计大搜索先回具名范围，继续其他合法小范围工作。保持旧产品和共享源码字节/状态/mtime证据，不改production生命周期语义。仅合法条件compile-only/serialization工程验证，禁止任意真实scenario/九场景/normal/DBA/wrapper/native-reader执行和current O/C/A/D业务材料；不替E1/manager接受EP、G-RUN或业务完成。
+
+请创建只覆盖本W本地阶段的有限Goal并连续执行到本地交付边界。记录真实工程事实、命令日志、原件及hash；局部问题保留已完成合格子集，不整包抛弃，不凭first修复错误退回。Phase0失败不得构造假patch/假fixture/假编译报告，缺项如实说明。
+
+W002仅下放Linux操作，无GitHub写权限、无源码push。可发布文本/JSON/patch/fixture/报告在本地交付给主控，指定建议发布位置 longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W002/ 内对应路径；大build/cache/source tree不出版。先给真实本地文件、sha256、outcome/missing和每项deliverable→本地文件manifest映射，不能捏造尚不存在的GitHub commit/ref。
+主控将逐字归档允许的原件、独立核hash，然后回传真实发布refs给原你同W002生成正式WORKER_RETURN.json。V2正式Return的固定运输路径为worker_results/W002/WORKER_RETURN.json，return_to必须原E1而非manager。当前没有发布commit时不以虚构ref完成正式Return；本地Goal完成仅表示本地阶段完成，不等于W/专业任务或父任务完成。
+
+本地交付后自然结束等待有据同单接续，不常驻轮询、不联系其他chat、不额外安排测试Run、不重开W001调查或重复出版旧313原件。给完整结果绝对路径/hash/准确限制及后续出版/Return步骤，无需逐项即时汇报或等待确认。

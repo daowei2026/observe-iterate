@@ -1,0 +1,58 @@
+{
+  "cabal-version.strace": {
+    "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/audit/cabal-version.strace",
+    "sha256": "fcc4eeb784ac01ae764067e47cf6acfa4a9fd7e2a45010e57699ab90758baf2b",
+    "line_count": 50,
+    "write_intent_or_mutation_lines": [
+      "237859 openat(AT_FDCWD, \"/proc/self/task/237860/comm\", O_RDWR) = 5",
+      "237859 openat(AT_FDCWD, \"/proc/self/task/237861/comm\", O_RDWR) = 9",
+      "237861 openat(AT_FDCWD, \"/proc/self/task/237862/comm\", O_RDWR) = 12",
+      "237862 openat(AT_FDCWD, \"/proc/self/task/237863/comm\", O_RDWR) = 12"
+    ],
+    "network_lines": [],
+    "scope": "four version/package-list processes and descendants only, not untraced bootstrap/task-status/collector"
+  },
+  "ghc-global-packages.strace": {
+    "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/audit/ghc-global-packages.strace",
+    "sha256": "3fe99661e77a616c1ce62ba5a5b05396a97fe392656acb60c0bf5903c754c347",
+    "line_count": 209,
+    "write_intent_or_mutation_lines": [
+      "237842 openat(AT_FDCWD, \"/dev/tty\", O_RDWR|O_NONBLOCK) = -1 ENXIO (No such device or address)",
+      "237842 openat(AT_FDCWD, \"/proc/self/task/237843/comm\", O_RDWR) = 5"
+    ],
+    "network_lines": [
+      "237842 socket(AF_UNIX, SOCK_STREAM|SOCK_CLOEXEC|SOCK_NONBLOCK, 0) = 4",
+      "237842 connect(4, {sa_family=AF_UNIX, sun_path=\"/var/run/nscd/socket\"}, 110) = -1 ENOENT (No such file or directory)",
+      "237842 socket(AF_UNIX, SOCK_STREAM|SOCK_CLOEXEC|SOCK_NONBLOCK, 0) = 4",
+      "237842 connect(4, {sa_family=AF_UNIX, sun_path=\"/var/run/nscd/socket\"}, 110) = -1 ENOENT (No such file or directory)"
+    ],
+    "scope": "four version/package-list processes and descendants only, not untraced bootstrap/task-status/collector"
+  },
+  "ghc-version.strace": {
+    "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/audit/ghc-version.strace",
+    "sha256": "7046c1f50572fdbede92878bf8b92e3b6d7761707b2945e80eee419b320b215b",
+    "line_count": 178,
+    "write_intent_or_mutation_lines": [
+      "237828 openat(AT_FDCWD, \"/dev/tty\", O_RDWR|O_NONBLOCK) = -1 ENXIO (No such device or address)",
+      "237828 openat(AT_FDCWD, \"/proc/self/task/237833/comm\", O_RDWR) = 5",
+      "237828 openat(AT_FDCWD, \"/proc/self/task/237834/comm\", O_RDWR) = 9",
+      "237828 openat(AT_FDCWD, \"/proc/self/task/237835/comm\", O_RDWR) = 12",
+      "237828 openat(AT_FDCWD, \"/proc/self/task/237836/comm\", O_RDWR) = 12"
+    ],
+    "network_lines": [
+      "237828 socket(AF_UNIX, SOCK_STREAM|SOCK_CLOEXEC|SOCK_NONBLOCK, 0) = 4",
+      "237828 connect(4, {sa_family=AF_UNIX, sun_path=\"/var/run/nscd/socket\"}, 110) = -1 ENOENT (No such file or directory)",
+      "237828 socket(AF_UNIX, SOCK_STREAM|SOCK_CLOEXEC|SOCK_NONBLOCK, 0) = 4",
+      "237828 connect(4, {sa_family=AF_UNIX, sun_path=\"/var/run/nscd/socket\"}, 110) = -1 ENOENT (No such file or directory)"
+    ],
+    "scope": "four version/package-list processes and descendants only, not untraced bootstrap/task-status/collector"
+  },
+  "stack-version.strace": {
+    "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W002/audit/stack-version.strace",
+    "sha256": "cbd48b2c8db3d9d8f83325504533223ae0add3c57d4404625f7336bfd3745fd0",
+    "line_count": 12,
+    "write_intent_or_mutation_lines": [],
+    "network_lines": [],
+    "scope": "four version/package-list processes and descendants only, not untraced bootstrap/task-status/collector"
+  }
+}

@@ -1,0 +1,250 @@
+cabal-version:  2.4
+
+name:           frp-poc
+version:        0.6.2.0
+
+description:    Please see the README on GitHub at <https://gogs.dw/frp/frp-poc#readme>
+homepage:       https://gogs.dw/frp/frp-poc#readme
+
+author:         King
+maintainer:     example@example.com
+license:        BSD-3-Clause
+
+build-type:     Simple
+extra-source-files:
+    README.md
+    CHANGELOG.md
+
+source-repository head
+  type: git
+  location: https://gogs.dw/frp/frp-poc
+
+library
+  hs-source-dirs: src
+  default-language: Haskell2010 
+  ghc-options: -Wall -fno-warn-orphans -funbox-strict-fields -fspecialise-aggressively -O2 -ddump-splices
+
+  default-extensions: 
+    OverloadedStrings 
+    OverloadedLists
+    OverloadedLabels 
+
+    DuplicateRecordFields
+    RecordWildCards
+
+    LambdaCase 
+    BangPatterns 
+    ViewPatterns
+    TupleSections 
+    MultiWayIf 
+     
+    TemplateHaskell 
+    RecursiveDo
+
+  exposed-modules:
+    Frp
+    Frp.Poc
+    Frp.Poc.Class
+    Frp.Poc.Method
+
+    Frp.Example
+    Frp.Example.Block
+    Frp.Example.Ext
+    Frp.Example.Tis
+    Frp.Example.Py
+    Frp.Example.Trade
+
+  build-depends:
+    base  
+    ,derive-storable 
+    ,containers
+    ,data-default
+    ,dependent-map 
+    ,dependent-sum 
+    ,lens
+    ,mtl
+    ,ref-tf
+    ,time 
+    ,transformers
+    ,witherable
+    ,these 
+    ,semialign
+    ,monoidal-containers
+    ,primitive
+    ,dependent-sum-template 
+    ,vector 
+    ,extra 
+    ,text 
+    ,unordered-containers 
+    ,sort 
+    ,hashable 
+    ,aeson
+    ,bytestring 
+    ,cassava 
+    ,directory 
+    ,scientific 
+    ,pretty 
+    ,GenericPretty 
+    ,syb
+    ,filepath
+    ,reflex 
+    ,attoparsec
+    ,keys 
+    ,convertible 
+    ,uuid 
+    ,mongoDB
+    , stm 
+    , eas
+    , edh
+    , elr
+    , hasdim
+    , lossless-decimal
+    , frp-core
+    , frp
+
+test-suite test
+  default-language: GHC2021 
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  hs-source-dirs: test
+  other-modules:
+    KeepFstEventSpec
+    NthOccurUntilNextASpec
+    HandleAtrPeriodNSpec
+  build-depends:
+    base  
+    , hspec
+    , QuickCheck
+    ,template-haskell
+    ,derive-storable 
+    ,containers
+    ,deque
+    ,data-default
+    ,dependent-map 
+    ,dependent-sum 
+    ,lens
+    ,mtl
+    ,ref-tf
+    ,time 
+    ,transformers
+    ,witherable
+    ,these 
+    ,semialign
+    ,monoidal-containers
+    ,primitive
+    ,dependent-sum-template 
+    ,vector 
+    ,extra 
+    ,text 
+    ,unordered-containers 
+    ,sort 
+    ,hashable 
+    ,aeson
+    ,bytestring 
+    ,cassava 
+    ,directory 
+    ,scientific 
+    ,pretty 
+    ,GenericPretty 
+    ,syb
+    ,filepath
+    ,reflex 
+    ,attoparsec
+    ,keys 
+    ,convertible 
+    ,deepseq 
+    ,megaparsec 
+    ,parser-combinators
+    ,uuid 
+    ,mongoDB
+    ,cryptohash-sha1
+    ,memory
+    ,exceptions
+    , stm 
+    , eas
+    , edh
+    , elr
+    , hasdim
+    , lossless-decimal
+    , ghc-prim
+    ,frp-core
+    ,frp-poc
+    ,frp
+
+executable genadt
+  main-is:            Main.hs
+  hs-source-dirs:     genadt
+  other-modules:
+  default-language: GHC2021 
+
+  default-extensions: 
+    OverloadedStrings 
+    OverloadedLists
+    OverloadedLabels 
+
+    DuplicateRecordFields
+    RecordWildCards
+
+    LambdaCase 
+    BangPatterns 
+    ViewPatterns
+    TupleSections 
+    MultiWayIf 
+    TemplateHaskell
+    RecursiveDo
+    TypeFamilies
+
+  build-depends:
+    base  
+    ,template-haskell
+    ,derive-storable 
+    ,containers
+    ,deque
+    ,data-default
+    ,dependent-map 
+    ,dependent-sum 
+    ,lens
+    ,mtl
+    ,ref-tf
+    ,time 
+    ,transformers
+    ,witherable
+    ,these 
+    ,semialign
+    ,monoidal-containers
+    ,primitive
+    ,dependent-sum-template 
+    ,vector 
+    ,extra 
+    ,text 
+    ,unordered-containers 
+    ,sort 
+    ,hashable 
+    ,aeson
+    ,bytestring 
+    ,cassava 
+    ,directory 
+    ,scientific 
+    ,pretty 
+    ,GenericPretty 
+    ,syb
+    ,filepath
+    ,reflex 
+    ,attoparsec
+    ,keys 
+    ,convertible 
+    ,deepseq 
+    ,megaparsec 
+    ,parser-combinators
+    ,uuid 
+    ,mongoDB
+    , stm 
+    , eas
+    , edh
+    , elr
+    , hasdim
+    , lossless-decimal
+    , ghc-prim
+    ,frp-core
+    ,frp-poc
+    --,frp

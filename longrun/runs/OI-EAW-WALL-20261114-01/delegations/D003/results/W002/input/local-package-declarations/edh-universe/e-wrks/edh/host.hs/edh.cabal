@@ -1,0 +1,278 @@
+cabal-version:      2.4
+name:               edh
+version:            0.3.0.0
+license:            BSD-3-Clause
+copyright:          Compl Yue
+maintainer:         compl.yue@icloud.com
+author:             Compl Yue
+stability:          experimental
+homepage:           https://github.com/e-wrks/edh
+bug-reports:        https://github.com/e-wrks/edh/issues
+synopsis:           Đ (Edh) - Event Distributing & Hosting
+description:
+  Please see the README on Github at <https://github.com/e-wrks/edh>
+
+category:           Object,Event,Interpreted,Programming,Language
+build-type:         Simple
+extra-source-files:
+  README.md
+  CHANGELOG.md
+
+source-repository head
+  type:     git
+  location: https://github.com/e-wrks/edh
+  subdir:   host.hs
+
+library
+  exposed-modules:
+    Language.Edh.Batteries
+    Language.Edh.EHI
+    Language.Edh.Repl
+    Language.Edh.Run
+    Language.Edh.RuntimeM
+
+  other-modules:
+    Language.Edh.Batteries.Assign
+    Language.Edh.Batteries.Chan
+    Language.Edh.Batteries.Console
+    Language.Edh.Batteries.Ctrl
+    Language.Edh.Batteries.Data
+    Language.Edh.Batteries.Evt
+    Language.Edh.Batteries.InterOp
+    Language.Edh.Batteries.Math
+    Language.Edh.Batteries.Reflect
+    Language.Edh.Batteries.Sema
+    Language.Edh.Batteries.Vector
+    Language.Edh.Runtime
+
+  hs-source-dirs:     src
+  default-language:   Haskell2010
+  default-extensions:
+    NoImplicitPrelude
+    BangPatterns
+    ConstraintKinds
+    DataKinds
+    DerivingStrategies
+    FlexibleContexts
+    FlexibleInstances
+    GADTs
+    GeneralizedNewtypeDeriving
+    KindSignatures
+    LambdaCase
+    MultiWayIf
+    OverloadedStrings
+    PatternSynonyms
+    RankNTypes
+    ScopedTypeVariables
+    StandaloneDeriving
+    TupleSections
+    TypeApplications
+    AllowAmbiguousTypes
+    TypeOperators
+    ViewPatterns
+
+  ghc-options:        -Wall
+  build-depends:
+    , base                  >=4.12  && <5
+    , bytestring
+    , clock
+    , containers
+    , directory
+    , elr
+    , filepath
+    , ghc                   >=8.6.5
+    , hashable
+    , haskeline
+    , exceptions
+    , lossless-decimal
+    , megaparsec            >7.0
+    , mtl
+    , scientific
+    , stm                   >=2.5
+    , text
+    , time
+    , transformers
+    , unix
+    , unordered-containers
+    , uuid
+    , vector
+
+executable edh
+  main-is:            Main.hs
+  hs-source-dirs:     repl
+  default-language:   Haskell2010
+  default-extensions:
+    NoImplicitPrelude
+    BangPatterns
+    ConstraintKinds
+    DataKinds
+    DerivingStrategies
+    FlexibleContexts
+    FlexibleInstances
+    GADTs
+    GeneralizedNewtypeDeriving
+    KindSignatures
+    LambdaCase
+    MultiWayIf
+    OverloadedStrings
+    PatternSynonyms
+    RankNTypes
+    ScopedTypeVariables
+    StandaloneDeriving
+    TupleSections
+    TypeApplications
+    AllowAmbiguousTypes
+    TypeOperators
+    ViewPatterns
+
+  -- more HECs usually result in worse performance in shared cloud computing
+  -- environments, e.g. a Gitpod workspace exposes 16 cores to the VM, but
+  -- those hardware threads are mostly busy doing some jobs for the others,
+  -- attempts to leverage more of them will be losing (up to 15x slower),
+  -- possibly due to extra waiting time & scheduling overhead.
+  --
+  -- but multi-cores are the norm for event distribution & hosting, which is
+  -- our purpose.
+  --
+  -- custom interpreters can be built on purpose with more HECs enabled, but
+  -- pay attention to https://github.com/commercialhaskell/stack/issues/680
+  -- which suggests -N >=32 is always a bad idea
+  ghc-options:        -Wall -threaded -rtsopts -with-rtsopts=-maxN3
+
+  -- same dependencies as edh, so you can:
+  -- cabal v2-repl "--repl-options=-isrc" edh
+  build-depends:
+    , base                  >=4.12  && <5
+    , bytestring
+    , clock
+    , containers
+    , directory
+    , edh
+    , elr
+    , filepath
+    , ghc                   >=8.6.5
+    , hashable
+    , haskeline
+    , exceptions
+    , lossless-decimal
+    , megaparsec            >7.0
+    , mtl
+    , scientific
+    , stm                   >=2.5
+    , text
+    , time
+    , transformers
+    , unordered-containers
+    , vector
+
+executable runedh
+  main-is:            Main.hs
+  hs-source-dirs:     runfile
+  default-language:   Haskell2010
+  default-extensions:
+    NoImplicitPrelude
+    BangPatterns
+    ConstraintKinds
+    DataKinds
+    DerivingStrategies
+    FlexibleContexts
+    FlexibleInstances
+    GADTs
+    GeneralizedNewtypeDeriving
+    KindSignatures
+    LambdaCase
+    MultiWayIf
+    OverloadedStrings
+    PatternSynonyms
+    RankNTypes
+    ScopedTypeVariables
+    StandaloneDeriving
+    TupleSections
+    TypeApplications
+    AllowAmbiguousTypes
+    TypeOperators
+    ViewPatterns
+
+  ghc-options:        -Wall -threaded -rtsopts -with-rtsopts=-maxN3
+
+  -- same dependencies as edh, so you can:
+  -- cabal v2-repl "--repl-options=-isrc" runedh
+  build-depends:
+    , base                  >=4.12  && <5
+    , bytestring
+    , clock
+    , containers
+    , directory
+    , edh
+    , elr
+    , filepath
+    , ghc                   >=8.6.5
+    , hashable
+    , haskeline
+    , exceptions
+    , lossless-decimal
+    , megaparsec            >7.0
+    , mtl
+    , scientific
+    , stm                   >=2.5
+    , text
+    , time
+    , transformers
+    , unordered-containers
+    , vector
+
+executable edhm
+  main-is:            Main.hs
+  hs-source-dirs:     runmodu
+  default-language:   Haskell2010
+  default-extensions:
+    NoImplicitPrelude
+    BangPatterns
+    ConstraintKinds
+    DataKinds
+    DerivingStrategies
+    FlexibleContexts
+    FlexibleInstances
+    GADTs
+    GeneralizedNewtypeDeriving
+    KindSignatures
+    LambdaCase
+    MultiWayIf
+    OverloadedStrings
+    PatternSynonyms
+    RankNTypes
+    ScopedTypeVariables
+    StandaloneDeriving
+    TupleSections
+    TypeApplications
+    AllowAmbiguousTypes
+    TypeOperators
+    ViewPatterns
+
+  ghc-options:        -Wall -threaded -rtsopts -with-rtsopts=-maxN3
+
+  -- same dependencies as edh, so you can:
+  -- cabal v2-repl "--repl-options=-isrc" edhm
+  build-depends:
+    , base                  >=4.12  && <5
+    , bytestring
+    , clock
+    , containers
+    , directory
+    , edh
+    , elr
+    , filepath
+    , ghc                   >=8.6.5
+    , hashable
+    , haskeline
+    , exceptions
+    , lossless-decimal
+    , megaparsec            >7.0
+    , mtl
+    , scientific
+    , stm                   >=2.5
+    , text
+    , time
+    , transformers
+    , unordered-containers
+    , vector
