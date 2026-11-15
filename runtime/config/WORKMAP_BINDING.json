@@ -1,7 +1,47 @@
 {
   "schema": "workmap-binding/v2",
-  "status": "NOT_CONFIGURED",
-  "professional_source_index": "professional/source/INDEX.md",
-  "runtime_root": "runs/",
-  "note": "旧 BI-01-IT-01 运行工作面未复制。首次真实采用时由有权管理者以实际任务、工作地图、接收者和证据位置形成 binding；不得从历史索引补造。"
+  "status": "ADOPTED",
+  "manager_role": "management",
+  "overview": {
+    "path": "runs/BI-01-RESTART-01/README.md",
+    "anchors": ["common", "bi01"]
+  },
+  "shared_overview_anchors": ["common"],
+  "owner_sources": [
+    "runs/BI-01-RESTART-01/OWNER_START.md",
+    "runs/BI-01-RESTART-01/OWNER_DECISION_RESPONSE_R0008.md",
+    "professional/source/00_AGENT_CHARTER_AND_STAGE_CONTRACT.md"
+  ],
+  "rule_paths": [
+    "professional/source/00_AGENT_CHARTER_AND_STAGE_CONTRACT.md",
+    "professional/source/01_I1_I3_PROFESSIONAL_CONTRACT.md",
+    "professional/source/02_I4_OBSERVATION_AND_CHALLENGE.md",
+    "professional/source/03_STAGE_HANDOFF_AND_READINESS.md",
+    "professional/source/04_PRO_WORKER_CODEX_HANDOFF.md",
+    "professional/source/05_ROLE_GATE_AND_HANDOFF_CONTRACT.md",
+    "runtime/dual_route_execution/DR13_WORK_ARRANGEMENT_AND_CONTEXT.md",
+    "runtime/dual_route_execution/DR14_QUESTION_WORK_CONTRACT.md",
+    "runtime/overlay/08_自然语言运行提示_v0.3.md"
+  ],
+  "receipt_path": "runs/BI-01-RESTART-01/reviews/WORKMAP_INTAKE_CURRENT.json",
+  "streams": {
+    "bi01": {
+      "map": {
+        "path": "runs/BI-01-RESTART-01/00_长程推进地图.md",
+        "anchors": ["goal", "stage", "evidence", "progress", "remaining", "management", "next"]
+      },
+      "task": "runs/BI-01-RESTART-01/01_当前任务.md",
+      "overview_anchors": ["bi01"],
+      "watch_roots": [
+        "runs/BI-01-RESTART-01/artifacts",
+        "runs/BI-01-RESTART-01/reviews/independent"
+      ]
+    }
+  },
+  "management_decision": "runs/BI-01-RESTART-01/reviews/MANAGEMENT_OWNER_DECISION_AND_I6_START_R0009.md",
+  "owner_decision_request": "runs/BI-01-RESTART-01/reviews/OWNER_DECISION_REQUEST_R0008.md",
+  "owner_decision_response": "runs/BI-01-RESTART-01/OWNER_DECISION_RESPONSE_R0008.md",
+  "question_work_binding": "runs/BI-01-RESTART-01/bindings/QUESTION_WORK_BINDING_I6.json",
+  "question_work_binding_status": "ACTIVE_PENDING_DISPATCH",
+  "note": "R0009 accepts the Owner's explicit A decision and starts I6 action/closure work. The active task is BI01-RESTART-01-I6-ACTION-CLOSE-01 in OBSERVATION_I6. The I5 binding and Owner-decision task remain historical and must not be sent again. A fresh snapshot, reader, intake, pre-dispatch and new I6 chat NOT_SENT/duplicate-send check are required before dispatch. No I6 send, G6 pass, run closure, independent review or production qualification is claimed."
 }

@@ -1,0 +1,112 @@
+{
+  "schema": "bi01-workmap-gate-disposition/v1",
+  "run_id": "BI-01-RESTART-01",
+  "round_id": "R0009",
+  "professional_round_id": "R0010",
+  "management_invocation_id": "BI01-RESTART-01-R0009-8a1bf0c117c9285bfec5f77b7a077a58",
+  "professional_invocation_id": "BI01-RESTART-01-R0010-c34d5a92b3e194a609f1fb5af1fce098",
+  "management_turn_complete_commit": "7681a810e2e146329affe9d10d692a1e7e8c33ae",
+  "intake_commit": "370c398dea7b3b0f5fdca04a9c458262ab88e7f3",
+  "previous_accepted_intake_commit": "09f5b52b6f8c92639c475ae29f6cbcf8d2bfd7ea",
+  "prepared_dispatch_commit": "2a2d2c824274d2c0f7d71c935da362e88cc5cd5a",
+  "after_return": {
+    "result": "PASS",
+    "ok": true,
+    "errors": [],
+    "evidence": "runs/BI-01-RESTART-01/provenance/turns/R0009/GATE_CHECK.json",
+    "qualification": "Reply/Return integrity only; not G6 or run closure."
+  },
+  "snapshot": {
+    "observed_commit": "2a2d2c824274d2c0f7d71c935da362e88cc5cd5a",
+    "binding_blob": "53ccb06593fbc10463b4998ebfd432af5822a265",
+    "fingerprint": "0437dce4b2d6a2f5922f5e2bb0107e3d31c6c0a461935aed8111cfafe7d49d4e",
+    "reader_fingerprint": "fa37e74d7e34d4e3e812ed25c35ee8d0c6f5f1343ab53fb20db01e9f66e34931",
+    "task_blob": "03f5d412ba4550810216025042fadc2341c8d42f",
+    "task_payload_sha256": "e33990f34f5122f067c0f98d8322ed5bdacb6258bb572b58e7d8ab32228ae755"
+  },
+  "candidate_intake": {
+    "disposition": "NOT_APPLICABLE_ACTIVE_BINDING_ALREADY_ADOPTED",
+    "candidate_path": "runtime/config/WORKMAP_BINDING_CANDIDATE.json",
+    "reason": "The candidate preserves R0001/R0002 bootstrap repair and adoption history. R0009 updated the active ADOPTED binding through the original management role; replaying the historical candidate would regress the current I6 state."
+  },
+  "reader": {
+    "result": "READABLE",
+    "independent_context": "/root/bi01_r0009_i6_fresh_reader",
+    "input_commit": "7681a810e2e146329affe9d10d692a1e7e8c33ae",
+    "input_snapshot": "fa37e74d7e34d4e3e812ed25c35ee8d0c6f5f1343ab53fb20db01e9f66e34931",
+    "report": "runs/BI-01-RESTART-01/reviews/WORKMAP_READER_R0009.md",
+    "report_blob": "7c76ba55bfed6c97b662f44561964d968753430e",
+    "qualification": "Readability and safe-continuation check only; not G6, business acceptance, independent business audit or production qualification."
+  },
+  "binding": {
+    "workmap_path": "runtime/config/WORKMAP_BINDING.json",
+    "workmap_schema": "workmap-binding/v2",
+    "workmap_status": "ADOPTED",
+    "question_work_path": "runs/BI-01-RESTART-01/bindings/QUESTION_WORK_BINDING_I6.json",
+    "question_work_commit": "fcf659ad53df868ca676335b6417a5c0444b11c1",
+    "question_work_blob": "0c2921fa46ca7803dc355b9104c8b971c59c4c98",
+    "question_work_schema_validation": "PASS",
+    "question_work_binding_status": "ACTIVE_PENDING_DISPATCH",
+    "current_task_id": "BI01-RESTART-01-I6-ACTION-CLOSE-01",
+    "current_recipient": "chatgpt-project:细节叙事生成_金标/chat:new:BI01-RESTART-01-I6-ACTION-CLOSE",
+    "professional_mode": "OBSERVATION_I6"
+  },
+  "mechanical_intake": {
+    "tool": "runtime/overlay/tools/workmap_gate.py check",
+    "checked_ref": "370c398dea7b3b0f5fdca04a9c458262ab88e7f3",
+    "base_ref": "09f5b52b6f8c92639c475ae29f6cbcf8d2bfd7ea",
+    "actor": "management_review",
+    "check_kind": "MECHANICAL_INTAKE",
+    "ok": true,
+    "errors": [],
+    "reader_qualification": "RECORDED",
+    "next_action": null
+  },
+  "delivery": {
+    "state": "NOT_SENT",
+    "observed_commit": "2a2d2c824274d2c0f7d71c935da362e88cc5cd5a",
+    "evidence": "runs/BI-01-RESTART-01/provenance/turns/R0010/DELIVERY_OBSERVATION.json",
+    "attempt_01": {
+      "state": "UNKNOWN",
+      "evidence": "runs/BI-01-RESTART-01/provenance/turns/R0010/DELIVERY_OBSERVATION_ATTEMPT_01.json",
+      "preserved": true
+    },
+    "cumulative_full_list": true,
+    "exact_title_count": 0,
+    "marker_count": 0,
+    "equivalent_chat_count": 0,
+    "current_in_flight": false,
+    "reliable_bottom_frames": [1792205790171, 1792205801078, 1792205814402]
+  },
+  "dispatch": {
+    "tool": "runtime/overlay/tools/workmap_gate.py dispatch",
+    "formal_dispatch_command_run": true,
+    "checked_ref": "2a2d2c824274d2c0f7d71c935da362e88cc5cd5a",
+    "base_ref": "370c398dea7b3b0f5fdca04a9c458262ab88e7f3",
+    "actor": "executor",
+    "scope": "bi01",
+    "check_kind": "DISPATCH_PREFLIGHT",
+    "result": "PASS",
+    "ok": true,
+    "errors": [],
+    "reader_qualification": "RECORDED",
+    "professional_dispatch_eligible_after_scheduler_gate": true,
+    "qualification": "Mechanical dispatch consistency only; it does not itself authorize or prove a Send."
+  },
+  "current_state": {
+    "i5": "CLOSED",
+    "owner": "A_ACCEPTED",
+    "i6": "STARTED_PENDING_PROFESSIONAL_SEND",
+    "g6": "PENDING",
+    "adopted": true,
+    "professional_round_created": true,
+    "professional_message_sent": false,
+    "run_closed": false
+  },
+  "preflight_deviations": [
+    "One local Overlay12 verify invocation used the changing current ref instead of locked policy commit 75d42776a78cd4cbdf3b61bbf86ec93701d06b84 and returned MESSAGE_CHANGED. It changed no file, scheduler or external state; locked-policy verification then passed.",
+    "The first local Workmap dispatch invocation used the display scope BI-01 instead of configured stream key bi01 and failed with unknown work stream before reading a dispatch input. It changed no file, scheduler or external state.",
+    "The delegated delivery-observation packet and immutable production-control receipts contained a one-character transcription omission in task_payload_sha256. The first correctly scoped Workmap dispatch invocation failed closed with TASK_PAYLOAD_CHANGED. The tracked delivery carrier was corrected from the immutable observed commit and task blob; task_id, task_blob, observed commit, recipient, canonical title and marker had remained exact. The rerun passed with errors=[]."
+  ],
+  "limits": "This record proves R0009 Return integrity, a fresh reader, the active I6 binding relation, mechanical intake, actual endpoint NOT_SENT evidence and formal mechanical dispatch preflight. It does not validate the management business judgment, authorize Send without scheduler readiness, pass G6, close the run, establish independent audit or confer production qualification."
+}

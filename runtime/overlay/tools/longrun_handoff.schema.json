@@ -1,59 +1,56 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "urn:observation-iteration:longrun-return:v1",
+  "$id": "urn:market-process:longrun-return:v1",
   "title": "ROLE_RETURN v1 — structure only",
-  "type": "object",
-  "required": [
-    "schema",
-    "work_id",
-    "invocation_id",
-    "assignment_token",
-    "work_status",
-    "completed_scope_ref",
-    "remaining_scope_ref",
-    "artifact_refs",
-    "delivery",
-    "materials",
-    "handoff",
-    "role_outputs"
-  ],
+  "$comment": "Structure does not prove authority, content, material use, independence, completion or dispatch. Required roles come from the actual assignment. question_work_ref is optional for legacy calls and required by the explicitly adopted question-work/v1 binding; automatic transition/dispatch remains deferred.",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema", "work_id", "invocation_id", "assignment_token", "work_status", "completed_scope_ref", "remaining_scope_ref", "artifact_refs", "delivery", "materials", "handoff", "role_outputs"],
   "properties": {
-    "schema": {
-      "const": "longrun-return/v1"
-    },
-    "work_id": {
-      "type": "string"
-    },
-    "invocation_id": {
-      "type": "string"
-    },
-    "assignment_token": {
-      "type": "string"
-    },
-    "work_status": {
-      "enum": [
-        "IN_PROGRESS",
-        "SUBMITTED",
-        "NEEDS_DECISION",
-        "WAITING_INPUT"
+    "schema": {"const": "longrun-return/v1"},
+    "work_id": {"$ref": "#/$defs/text"}, "invocation_id": {"$ref": "#/$defs/text"}, "assignment_token": {"$ref": "#/$defs/text"},
+    "question_work_ref": {"$ref": "#/$defs/text"},
+    "work_status": {"enum": ["IN_PROGRESS", "SUBMITTED", "NEEDS_DECISION", "WAITING_INPUT"]},
+    "completed_scope_ref": {"$ref": "#/$defs/text"}, "remaining_scope_ref": {"$ref": "#/$defs/nullableRef"},
+    "artifact_refs": {"type": "array", "items": {"$ref": "#/$defs/artifact"}},
+    "delivery": {
+      "type": "object", "additionalProperties": false, "required": ["status", "missing_refs"],
+      "properties": {"status": {"enum": ["READY", "INCOMPLETE"]}, "missing_refs": {"$ref": "#/$defs/refs"}},
+      "allOf": [
+        {"if": {"properties": {"status": {"const": "READY"}}}, "then": {"properties": {"missing_refs": {"maxItems": 0}}}},
+        {"if": {"properties": {"status": {"const": "INCOMPLETE"}}}, "then": {"properties": {"missing_refs": {"minItems": 1}}}}
       ]
     },
-    "completed_scope_ref": {},
-    "remaining_scope_ref": {},
-    "artifact_refs": {
-      "type": "array"
-    },
-    "delivery": {
-      "type": "object"
-    },
     "materials": {
-      "type": "object"
+      "type": "object", "additionalProperties": false, "required": ["use_record_ref", "unread_required", "unavailable_required"],
+      "properties": {"use_record_ref": {"$ref": "#/$defs/text"}, "unread_required": {"$ref": "#/$defs/refs"}, "unavailable_required": {"$ref": "#/$defs/refs"}}
     },
     "handoff": {
-      "type": "object"
+      "type": "object", "additionalProperties": false, "required": ["kind", "route_key", "instructions_ref"],
+      "properties": {"kind": {"enum": ["CONTINUE", "SUBMIT", "DECISION", "WAIT", "CLOSE"]}, "route_key": {"$ref": "#/$defs/text"}, "instructions_ref": {"$ref": "#/$defs/text"}}
     },
     "role_outputs": {
-      "type": "object"
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "management": {"type": "object", "additionalProperties": false, "required": ["decision_ref", "plan_ref", "issued_work_refs", "delivery_scope_ref"], "properties": {"decision_ref": {"$ref": "#/$defs/text"}, "plan_ref": {"$ref": "#/$defs/text"}, "issued_work_refs": {"$ref": "#/$defs/refs"}, "delivery_scope_ref": {"$ref": "#/$defs/text"}}},
+        "professional": {"type": "object", "additionalProperties": false, "required": ["mode", "result_ref", "continuation_ref"], "properties": {"mode": {"$ref": "#/$defs/text"}, "result_ref": {"$ref": "#/$defs/text"}, "continuation_ref": {"$ref": "#/$defs/nullableRef"}}},
+        "review": {"type": "object", "additionalProperties": false, "required": ["review_target_ref", "review_scope_ref", "verdict", "findings_ref", "remaining_review_ref"], "properties": {"review_target_ref": {"$ref": "#/$defs/text"}, "review_scope_ref": {"$ref": "#/$defs/text"}, "verdict": {"enum": ["PASS", "REPAIR_REQUIRED", "INSUFFICIENT_EVIDENCE"]}, "findings_ref": {"$ref": "#/$defs/text"}, "remaining_review_ref": {"$ref": "#/$defs/nullableRef"}}},
+        "maintenance": {"type": "object", "additionalProperties": false, "required": ["candidate_change_ref", "applicability_ref", "validation_ref"], "properties": {"candidate_change_ref": {"$ref": "#/$defs/text"}, "applicability_ref": {"$ref": "#/$defs/text"}, "validation_ref": {"$ref": "#/$defs/text"}}}
+      }
     }
+  },
+  "allOf": [
+    {"if": {"properties": {"work_status": {"const": "IN_PROGRESS"}}}, "then": {"properties": {"remaining_scope_ref": {"$ref": "#/$defs/text"}, "handoff": {"properties": {"kind": {"const": "CONTINUE"}}}}}},
+    {"if": {"properties": {"work_status": {"const": "NEEDS_DECISION"}}}, "then": {"properties": {"remaining_scope_ref": {"$ref": "#/$defs/text"}, "handoff": {"properties": {"kind": {"const": "DECISION"}}}}}},
+    {"if": {"properties": {"work_status": {"const": "WAITING_INPUT"}}}, "then": {"properties": {"remaining_scope_ref": {"$ref": "#/$defs/text"}, "handoff": {"properties": {"kind": {"const": "WAIT"}}}}}},
+    {"if": {"properties": {"work_status": {"const": "SUBMITTED"}}}, "then": {"properties": {"handoff": {"properties": {"kind": {"enum": ["SUBMIT", "CLOSE"]}}}}}}
+  ],
+  "$defs": {
+    "text": {"type": "string", "minLength": 1, "pattern": "\\S"},
+    "nullableRef": {"anyOf": [{"$ref": "#/$defs/text"}, {"type": "null"}]},
+    "refs": {"type": "array", "items": {"$ref": "#/$defs/text"}, "uniqueItems": true},
+    "artifact": {"oneOf": [
+      {"type": "object", "additionalProperties": false, "required": ["repo", "commit", "path"], "properties": {"repo": {"type": "string", "pattern": "^[^/\\s]+/[^/\\s]+$"}, "commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"}, "path": {"$ref": "#/$defs/text"}}},
+      {"type": "object", "additionalProperties": false, "required": ["answer_ref"], "properties": {"answer_ref": {"type": "string", "pattern": "^#[^\\s]+$"}}}
+    ]}
   }
 }

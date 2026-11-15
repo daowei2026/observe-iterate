@@ -1,0 +1,36 @@
+{
+  "schema": "management-notice/v1",
+  "management_required": true,
+  "events": [
+    {
+      "id": "BI01-R0005-I4-SELECTION-VALUE-RESULT",
+      "kind": "REVIEW_RESULT",
+      "trigger_id": "BI01-I4-SELECTION-VALUE-RESULT",
+      "obligation_id": "BI01-I4-SELECTION-REVIEW",
+      "cycle_id": "BI01-RESTART-01-I4-SELECTION-01",
+      "evidence": "github:daowei2026/observe-iterate@ff0c157baf037f502f0158b35f92c26bec4218a4:runs/BI-01-RESTART-01/artifacts/I4_R0005/REPORT.md::#trigger-result"
+    },
+    {
+      "id": "BI01-R0005-I4-SELECTION-EFFORT-REVIEW",
+      "kind": "EFFORT_REVIEW",
+      "trigger_id": "BI01-I4-SELECTION-EFFORT-REVIEW",
+      "obligation_id": "BI01-I4-SELECTION-REVIEW",
+      "cycle_id": "BI01-RESTART-01-I4-SELECTION-01",
+      "evidence": "github:daowei2026/observe-iterate@ff0c157baf037f502f0158b35f92c26bec4218a4:runs/BI-01-RESTART-01/artifacts/I4_R0005/REPORT.md::#trigger-effort"
+    }
+  ],
+  "deduplication": {
+    "same_obligation": true,
+    "same_cycle": true,
+    "management_invocations_required": 1
+  },
+  "not_triggered": [
+    "BI01-I3-CASE02-CONSUMPTION-CONFLICT",
+    "BI01-OWNER-METHOD-CHANGE-R0004"
+  ],
+  "recipient": "chatgpt-project:细节叙事生成_金标/chat:BI01-R01-管理",
+  "dispatched": false,
+  "stop_unaffected_work": false,
+  "instruction": "沿已绑定管理路线和 Overlay08/12 组装一个新的 M-REASSESS 管理调用；由原管理角色接收结果并决定 I5、具名补证或有据结束/修订，同时更新地图、当前任务及相关签发物。",
+  "limits": "信号性质来自原角色 Return 和已签 Binding；本 notice 不评价业务、不签 Gate、不改地图、不代表实际发送。"
+}

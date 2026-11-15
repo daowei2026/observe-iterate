@@ -1,0 +1,31 @@
+{
+  "schema": "bi01-r0010-composite-after-return-gate/v1",
+  "run_id": "BI-01-RESTART-01",
+  "round_id": "R0010",
+  "checked_ref": "56080b6103665ce9266de4211228bf4279d8ea7c",
+  "generic_after_return": {
+    "tool": "runtime/tools/bi01_run_gate.py",
+    "ok": true,
+    "errors": [],
+    "business_gate": false
+  },
+  "question_work_association": {
+    "tool": "runtime/overlay/tools/question_work_check.py::association_errors",
+    "ok": false,
+    "errors": [
+      "CONTINUATION_MISMATCH"
+    ],
+    "exact_mismatch": {
+      "question_work_continuation_ref": {
+        "repo": "daowei2026/observe-iterate",
+        "commit": "dc992b8afb22c7ae186df87707c45c3055e4a353",
+        "path": "runs/BI-01-RESTART-01/artifacts/I6_ACTION_CLOSE/I6_ACTION_AND_CLOSURE.md",
+        "selector": "#continuation"
+      },
+      "role_handoff_instructions_ref": "github:daowei2026/observe-iterate@006e65e8ac6db6d218fe910d8e3ed11d57b1decc:runs/BI-01-RESTART-01/01_当前任务.md::#route-accept"
+    }
+  },
+  "disposition": "PROFESSIONAL_DELIVERY_REPAIR_REQUIRED",
+  "dispatch_or_g6_authorized": false,
+  "note": "The operator did not choose a replacement business reference. The original professional role must issue a corrected coherent Return pair."
+}

@@ -1,0 +1,41 @@
+name: BI-01 offline mechanical gates
+
+on:
+  push:
+    branches:
+      - fix/full-cyf-runtime-copy-20261015
+    paths:
+      - 'runtime/tools/bi01_run_gate.py'
+      - 'runtime/tests/test_bi01_run_gate.py'
+      - 'runtime/tests/test_bi01_workmap_consistency.py'
+      - 'runtime/overlay/tools/question_work.schema.json'
+      - 'runtime/config/COORDINATOR_DISPATCH.json'
+      - '.github/workflows/bi01-mechanical-gates.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  offline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile mechanical scripts
+        run: python3 -m py_compile runtime/tools/bi01_run_gate.py runtime/overlay/tools/management_prompt.py runtime/overlay/tools/workmap_gate.py
+      - name: Check BI-01 v2 question identifiers
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          schema=json.loads(Path('runtime/overlay/tools/question_work.schema.json').read_text())
+          names={'I1','I2','I3','I4','I5','I6'}
+          d=schema['$defs']
+          assert names<=set(d['bindingV2']['properties']['question_ids']['items']['anyOf'][0]['enum'])
+          assert names<=set(d['returnV2']['properties']['focus_results']['items']['properties']['question_id']['anyOf'][0]['enum'])
+          modes=json.loads(Path('runtime/config/COORDINATOR_DISPATCH.json').read_text())['works']['BI-01']['modes']
+          assert {'M-START','M-REASSESS','M-CLOSE','INDEPENDENT_REVIEW'}<=set(modes)
+          assert {'OBSERVATION_'+x for x in names}<=set(modes)
+          PY
+      - name: Run isolated synthetic Git round tests
+        run: python3 -m unittest discover -s runtime/tests -p 'test_bi01_*.py' -v

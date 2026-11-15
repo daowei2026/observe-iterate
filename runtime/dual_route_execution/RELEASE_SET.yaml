@@ -1,3 +1,300 @@
-schema_version: observation-iteration-runtime-release-set/v0.1
-runtime_maturity: candidate_scaffold
-validated_runnable: false
+schema: composed-agent-execution-release/v1
+revision: 2026-09-30-continuous-implementation
+parent_commit: b85af4a6578cf455a3da8884a999d98bd5fb1050
+scope: Approved Mission C continuous implementation, role responsibility, exact current-work prompts and existing
+  projections; preserve A/B business, runtime state and platform imports
+canonical_methods:
+- path: agent_evolution/agent_candidates/dual_route_execution/DR00_START_HERE.md
+  bytes: 3250
+  git_blob: decaea5ec47c77ed0224cfa8a5531b7a8e580684
+  sha256: 02353d75e790decf908cb88fe10e36fd2f2ccb2412aec9d8017ae3d72899c0bf
+- path: agent_evolution/agent_candidates/dual_route_execution/DR01_A_COMPLEXITY.md
+  bytes: 5044
+  git_blob: 06988f4f8b36c6264259fef29471b81c3e3fbaae
+  sha256: 236ad1d9b986c22e09fab51414d1db4d3d58d989ef298fe846e8f37ed4f81de3
+- path: agent_evolution/agent_candidates/dual_route_execution/DR02_AB_SUBSTANTIVE_DEPTH.md
+  bytes: 10145
+  git_blob: a9088ee925affb745be12323a8dcbef055e650c4
+  sha256: 4393cdbe54ab4745e4be7b5126d4f32913bee222f382980a1af45b03993998d4
+- path: agent_evolution/agent_candidates/dual_route_execution/DR03_DELEGATION.md
+  bytes: 5600
+  git_blob: da1729e05325942508a65ac52e479bcf2b6906f5
+  sha256: 4e75d36d85d63955cc268d483c49e2f5f72e8eabafdf7ea05c8c4877bd543d45
+- path: agent_evolution/agent_candidates/dual_route_execution/DR04_B_ENGINEERING_PACKS.md
+  bytes: 6792
+  git_blob: 866206259e412273597439b4b50621ba4bbe2f72
+  sha256: 024ed9d0bf4c93c11bdf5347a2e9ce93127ad0f7ff1bcc8b6e9680e9dbc03f1e
+- path: agent_evolution/agent_candidates/dual_route_execution/DR05_COMPOSITION_IMPLEMENTATION.md
+  bytes: 7321
+  git_blob: 379244dc5bdb93cde2e4a284aeadfd0ce770c305
+  sha256: dcadd327bd2282b411eb837a9580053b685be4224fc732a441ab45e2e3a086f1
+- path: agent_evolution/agent_candidates/dual_route_execution/DR06_SUBSTANTIVE_MANAGEMENT.md
+  bytes: 15638
+  git_blob: 202d68bf675fa6bd613978579f52d2c4b30bdd97
+  sha256: 6a08d50b6a4607ae99a03874e7ffd7bf17de98c2b5c6f09382001f4f204d994a
+- path: agent_evolution/agent_candidates/dual_route_execution/DR07_FEATURE_PRODUCTION_ADAPTER.md
+  bytes: 9269
+  git_blob: 2a1baf5df1755f1c63eb597b3ac760d7b9e466f8
+  sha256: 140ae05cc925c233aef320d717132e587012ceeaf00cc7cb0fba9d976f850ff4
+- path: agent_evolution/agent_candidates/dual_route_execution/DR08_START_CONTINUE_AND_RETURN.md
+  bytes: 4109
+  git_blob: 664bea33a29c6a30b07d4b26ea0f849476718a3b
+  sha256: bb60fc444a328f021a412ea0da348b902b61c27858f98509e26661fe8ef4a627
+- path: agent_evolution/agent_candidates/dual_route_execution/DR09_CHANGE_AND_SOURCE_MAP.md
+  bytes: 8737
+  git_blob: f7ca743e182eb2e350b43488e17f391987c35cdb
+  sha256: 74f10ad097855af0ddf22a9f6802594dcc49c63a51984727dacf937add11c291
+- path: agent_evolution/agent_candidates/dual_route_execution/DR10_PRO_IMPLEMENTATION_AND_CODEX_ORDERS.md
+  bytes: 11210
+  git_blob: f7adabc57a505ef4184c523bf2fd46ec1b75da72
+  sha256: ffa47668d14675e9d2fb58914739789da0a62ecd21d4710feefd834d8a460714
+- path: agent_evolution/agent_candidates/dual_route_execution/DR11_CODEX_TWO_ROUTE_EXECUTION_AND_FEEDBACK.md
+  bytes: 13663
+  git_blob: 8075a20350057807bf0bde661194636cf87bf301
+  sha256: 2c386e89ec3a8c65892a4bf7d84862d0e4f6c6c477c110ba88d4e00e5c3fadad
+- path: agent_evolution/agent_candidates/dual_route_execution/MANAGEMENT_METHOD_HARNESS.md
+  bytes: 7709
+  git_blob: 7a234b91a65e2b3b4eb360ab58c2041e100ca73d
+  sha256: d3b8fe350a23f48c1ea98b465347d477564cc4fd49ec7202fed52c5fb88637f3
+- path: agent_evolution/agent_candidates/dual_route_execution/DR13_WORK_ARRANGEMENT_AND_CONTEXT.md
+  bytes: 24518
+  git_blob: fc44187eec1f29f5cd45bfc3ca8b08061579c22e
+  sha256: 84da9c10a4b0de35d7af6e9c1dc0e4702fea9c83f6b436ec9a03dada8cf508ef
+- path: agent_evolution/agent_candidates/dual_route_execution/DR12_PROFESSIONAL_QUESTION_CATALOG.md
+  bytes: 33146
+  git_blob: 6812cc35d7aae23aacf3b23eaed7873cc67efd4f
+  sha256: 2eba5a78c37dc7c1c7fed769ad352f1e9ea1624b66bee05d9433cc974807a4c6
+- path: agent_evolution/agent_candidates/dual_route_execution/DR14_QUESTION_WORK_CONTRACT.md
+  bytes: 22719
+  git_blob: 7c9110908bf93067494a37f79ec67b66f9f4656f
+  sha256: d09f0b79226cbcbf6f6f527a75a1c7eb1d053f7e69a5cd527bcc53a5234e0f78
+projection_rule: 本次改动DR成员与对应双投影使用相同Git blob；未触及成员保留原来源/投影身份，不在本轮重写A/B材料。
+generated_projections:
+- source: agent_evolution/agent_candidates/dual_route_execution/DR00_START_HERE.md
+  target: agent_evolution/agent_candidates/runtime_release_candidates/agent_refinement_runtime_release_candidate_v0_3_20260904/dual_route_execution/DR00_START_HERE.md
+  git_blob: 6d636e8cd1a33dcc5075ecb548695eb6577e1d55
+- source: agent_evolution/agent_candidates/dual_route_execution/DR00_START_HERE.md
+  target: agent_evolution/agent_candidates/runtime_release_candidates/agent_refinement_runtime_release_candidate_v0_3_20260904/project_upload_core/DR00_START_HERE.md
+  git_blob: 6d636e8cd1a33dcc5075ecb548695eb6577e1d55
+- source: agent_evolution/agent_candidates/dual_route_execution/DR01_A_COMPLEXITY.md
+  target: agent_evolution/agent_candidates/runtime_release_candidates/agent_refinement_runtime_release_candidate_v0_3_20260904/dual_route_execution/DR01_A_COMPLEXITY.md
+  git_blob: fbb9a7712a6b6b6a8c0b3b380a1f688232d9b7fd
+- source: agent_evolution/agent_candidates/dual_route_execution/DR01_A_COMPLEXITY.md
+  target: agent_evolution/agent_candidates/runtime_release_candidates/agent_refinement_runtime_release_candidate_v0_3_20260904/project_upload_core/DR01_A_COMPLEXITY.md
+  git_blob: fbb9a7712a6b6b6a8c0b3b380a1f688232d9b7fd
+- source: agent_evolution/agent_candidates/dual_route_execution/DR02_AB_SUBSTANTIVE_DEPTH.md
+  target: agent_evolution/agent_candidates/runtime_release_candidates/agent_refinement_runtime_release_candidate_v0_3_20260904/dual_route_execution/DR02_AB_SUBSTANTIVE_DEPTH.md
+  git_blob: 75f1d8e63abfde6a527e7178fabbcc0cf32db2d6
+- source: agent_evolution/agent_candidates/dual_route_execution/DR02_AB_SUBSTANTIVE_DEPTH.md
+  target: agent_evolution/agent_candidates/runtime_release_candidates/agent_refinement_runtime_release_candidate_v0_3_20260904/project_upload_core/DR02_AB_SUBSTANTIVE_DEPTH.md
+  git_blob: 75f1d8e63abfde6a527e7178fabbcc0cf32db2d6
+- source: agent_evolution/agent_candidates/dual_route_execution/DR03_DELEGATION.md
+  target: agent_evolution/agent_candidates/runtime_release_candidates/agent_refinement_runtime_release_candidate_v0_3_20260904/dual_route_execution/DR03_DELEGATION.md
+  git_blob: d0c4ea97cf7315936d1ed6c2be7670e4426ce9f8
+- source: agent_evolution/agent_candidates/dual_route_execution/DR03_DELEGATION.md
+  target: agent_evolution/agent_candidates/runtime_release_candidates/agent_refinement_runtime_release_candidate_v0_3_20260904/project_upload_core/DR03_DELEGATION.md
+  git_blob: d0c4ea97cf7315936d1ed6c2be7670e4426ce9f8
+- source: agent_evolution/agent_candidates/dual_route_execution/DR04_B_ENGINEERING_PACKS.md
+  target: agent_evolution/agent_candidates/runtime_release_candidates/agent_refinement_runtime_release_candidate_v0_3_20260904/dual_route_execution/DR04_B_ENGINEERING_PACKS.md
+  git_blob: 866206259e412273597439b4b50621ba4bbe2f72
+- source: agent_evolution/agent_candidates/dual_route_execution/DR04_B_ENGINEERING_PACKS.md
+  target: agent_evolution/agent_candidates/runtime_release_candidates/agent_refinement_runtime_release_candidate_v0_3_20260904/project_upload_core/DR04_B_ENGINEERING_PACKS.md
+  git_blob: 866206259e412273597439b4b50621ba4bbe2f72
+- source: agent_evolution/agent_candidates/dual_route_execution/DR05_COMPOSITION_IMPLEMENTATION.md
+  target: agent_evolution/agent_candidates/runtime_release_candidates/agent_refinement_runtime_release_candidate_v0_3_20260904/dual_route_execution/DR05_COMPOSITION_IMPLEMENTATION.md
+  git_blob: 379244dc5bdb93cde2e4a284aeadfd0ce770c305
+- source: agent_evolution/agent_candidates/dual_route_execution/DR05_COMPOSITION_IMPLEMENTATION.md
+  target: agent_evolution/agent_candidates/runtime_release_candidates/agent_refinement_runtime_release_candidate_v0_3_20260904/project_upload_core/DR05_COMPOSITION_IMPLEMENTATION.md
+  git_blob: 379244dc5bdb93cde2e4a284aeadfd0ce770c305
+- source: agent_evolution/agent_candidates/dual_route_execution/DR06_SUBSTANTIVE_MANAGEMENT.md
+  target: agent_evolution/agent_candidates/runtime_release_candidates/agent_refinement_runtime_release_candidate_v0_3_20260904/dual_route_execution/DR06_SUBSTANTIVE_MANAGEMENT.md
+  git_blob: 202d68bf675fa6bd613978579f52d2c4b30bdd97
+- source: agent_evolution/agent_candidates/dual_route_execution/DR06_SUBSTANTIVE_MANAGEMENT.md
+  target: agent_evolution/agent_candidates/runtime_release_candidates/agent_refinement_runtime_release_candidate_v0_3_20260904/project_upload_core/DR06_SUBSTANTIVE_MANAGEMENT.md
+  git_blob: 202d68bf675fa6bd613978579f52d2c4b30bdd97
+- source: agent_evolution/agent_candidates/dual_route_execution/DR07_FEATURE_PRODUCTION_ADAPTER.md
+  target: agent_evolution/agent_candidates/runtime_release_candidates/agent_refinement_runtime_release_candidate_v0_3_20260904/dual_route_execution/DR07_FEATURE_PRODUCTION_ADAPTER.md
+  git_blob: a081fa24780f76fb0f49edc6f182d4695a18876a
+- source: agent_evolution/agent_candidates/dual_route_execution/DR07_FEATURE_PRODUCTION_ADAPTER.md
+  target: agent_evolution/agent_candidates/runtime_release_candidates/agent_refinement_runtime_release_candidate_v0_3_20260904/project_upload_core/DR07_FEATURE_PRODUCTION_ADAPTER.md
+  git_blob: a081fa24780f76fb0f49edc6f182d4695a18876a
+- source: agent_evolution/agent_candidates/dual_route_execution/DR08_START_CONTINUE_AND_RETURN.md
+  target: agent_evolution/agent_candidates/runtime_release_candidates/agent_refinement_runtime_release_candidate_v0_3_20260904/dual_route_execution/DR08_START_CONTINUE_AND_RETURN.md
+  git_blob: ec1b586a4cca84b879d7324140a31a194494b446
+- source: agent_evolution/agent_candidates/dual_route_execution/DR08_START_CONTINUE_AND_RETURN.md
+  target: agent_evolution/agent_candidates/runtime_release_candidates/agent_refinement_runtime_release_candidate_v0_3_20260904/project_upload_core/DR08_START_CONTINUE_AND_RETURN.md
+  git_blob: ec1b586a4cca84b879d7324140a31a194494b446
+- source: agent_evolution/agent_candidates/dual_route_execution/DR09_CHANGE_AND_SOURCE_MAP.md
+  target: agent_evolution/agent_candidates/runtime_release_candidates/agent_refinement_runtime_release_candidate_v0_3_20260904/dual_route_execution/DR09_CHANGE_AND_SOURCE_MAP.md
+  git_blob: f7ca743e182eb2e350b43488e17f391987c35cdb
+- source: agent_evolution/agent_candidates/dual_route_execution/DR09_CHANGE_AND_SOURCE_MAP.md
+  target: agent_evolution/agent_candidates/runtime_release_candidates/agent_refinement_runtime_release_candidate_v0_3_20260904/project_upload_core/DR09_CHANGE_AND_SOURCE_MAP.md
+  git_blob: f7ca743e182eb2e350b43488e17f391987c35cdb
+- source: agent_evolution/agent_candidates/dual_route_execution/DR10_PRO_IMPLEMENTATION_AND_CODEX_ORDERS.md
+  target: agent_evolution/agent_candidates/runtime_release_candidates/agent_refinement_runtime_release_candidate_v0_3_20260904/dual_route_execution/DR10_PRO_IMPLEMENTATION_AND_CODEX_ORDERS.md
+  git_blob: f7adabc57a505ef4184c523bf2fd46ec1b75da72
+- source: agent_evolution/agent_candidates/dual_route_execution/DR10_PRO_IMPLEMENTATION_AND_CODEX_ORDERS.md
+  target: agent_evolution/agent_candidates/runtime_release_candidates/agent_refinement_runtime_release_candidate_v0_3_20260904/project_upload_core/DR10_PRO_IMPLEMENTATION_AND_CODEX_ORDERS.md
+  git_blob: f7adabc57a505ef4184c523bf2fd46ec1b75da72
+- source: agent_evolution/agent_candidates/dual_route_execution/DR11_CODEX_TWO_ROUTE_EXECUTION_AND_FEEDBACK.md
+  target: agent_evolution/agent_candidates/runtime_release_candidates/agent_refinement_runtime_release_candidate_v0_3_20260904/dual_route_execution/DR11_CODEX_TWO_ROUTE_EXECUTION_AND_FEEDBACK.md
+  git_blob: 8075a20350057807bf0bde661194636cf87bf301
+- source: agent_evolution/agent_candidates/dual_route_execution/DR11_CODEX_TWO_ROUTE_EXECUTION_AND_FEEDBACK.md
+  target: agent_evolution/agent_candidates/runtime_release_candidates/agent_refinement_runtime_release_candidate_v0_3_20260904/project_upload_core/DR11_CODEX_TWO_ROUTE_EXECUTION_AND_FEEDBACK.md
+  git_blob: 8075a20350057807bf0bde661194636cf87bf301
+- source: agent_evolution/agent_candidates/dual_route_execution/MANAGEMENT_METHOD_HARNESS.md
+  target: agent_evolution/agent_candidates/runtime_release_candidates/agent_refinement_runtime_release_candidate_v0_3_20260904/dual_route_execution/MANAGEMENT_METHOD_HARNESS.md
+  git_blob: 7a234b91a65e2b3b4eb360ab58c2041e100ca73d
+- source: agent_evolution/agent_candidates/dual_route_execution/MANAGEMENT_METHOD_HARNESS.md
+  target: agent_evolution/agent_candidates/runtime_release_candidates/agent_refinement_runtime_release_candidate_v0_3_20260904/project_upload_core/MANAGEMENT_METHOD_HARNESS.md
+  git_blob: 7a234b91a65e2b3b4eb360ab58c2041e100ca73d
+- source: agent_evolution/agent_candidates/dual_route_execution/DR13_WORK_ARRANGEMENT_AND_CONTEXT.md
+  target: agent_evolution/agent_candidates/runtime_release_candidates/agent_refinement_runtime_release_candidate_v0_3_20260904/dual_route_execution/DR13_WORK_ARRANGEMENT_AND_CONTEXT.md
+  git_blob: fc44187eec1f29f5cd45bfc3ca8b08061579c22e
+- source: agent_evolution/agent_candidates/dual_route_execution/DR13_WORK_ARRANGEMENT_AND_CONTEXT.md
+  target: agent_evolution/agent_candidates/runtime_release_candidates/agent_refinement_runtime_release_candidate_v0_3_20260904/project_upload_core/DR13_WORK_ARRANGEMENT_AND_CONTEXT.md
+  git_blob: fc44187eec1f29f5cd45bfc3ca8b08061579c22e
+- source: agent_evolution/agent_candidates/dual_route_execution/DR12_PROFESSIONAL_QUESTION_CATALOG.md
+  target: agent_evolution/agent_candidates/runtime_release_candidates/agent_refinement_runtime_release_candidate_v0_3_20260904/dual_route_execution/DR12_PROFESSIONAL_QUESTION_CATALOG.md
+  git_blob: 6812cc35d7aae23aacf3b23eaed7873cc67efd4f
+- source: agent_evolution/agent_candidates/dual_route_execution/DR12_PROFESSIONAL_QUESTION_CATALOG.md
+  target: agent_evolution/agent_candidates/runtime_release_candidates/agent_refinement_runtime_release_candidate_v0_3_20260904/project_upload_core/DR12_PROFESSIONAL_QUESTION_CATALOG.md
+  git_blob: 6812cc35d7aae23aacf3b23eaed7873cc67efd4f
+- source: agent_evolution/agent_candidates/dual_route_execution/DR14_QUESTION_WORK_CONTRACT.md
+  target: agent_evolution/agent_candidates/runtime_release_candidates/agent_refinement_runtime_release_candidate_v0_3_20260904/dual_route_execution/DR14_QUESTION_WORK_CONTRACT.md
+  git_blob: 7c9110908bf93067494a37f79ec67b66f9f4656f
+- source: agent_evolution/agent_candidates/dual_route_execution/DR14_QUESTION_WORK_CONTRACT.md
+  target: agent_evolution/agent_candidates/runtime_release_candidates/agent_refinement_runtime_release_candidate_v0_3_20260904/project_upload_core/DR14_QUESTION_WORK_CONTRACT.md
+  git_blob: 7c9110908bf93067494a37f79ec67b66f9f4656f
+entrypoints:
+- agent_evolution/agent_candidates/README.md
+- agent_evolution/agent_candidates/AGENTS.md
+- agent_evolution/agent_candidates/market_process_modeling_contract_pro_candidate_v0_2/CURRENT_EXECUTION.md
+- agent_evolution/agent_candidates/repo-aware-engineering-agent-candidate-v0.2/CURRENT_EXECUTION.md
+- agent_evolution/agent_candidates/mission-c-host-implementation-system-candidate-v0.2/CURRENT_EXECUTION.md
+- agent_evolution/agent_candidates/runtime_overlay_candidates/agent_owned_long_horizon_overlay_v0_3/CURRENT_EXECUTION.md
+- agent_evolution/agent_candidates/runtime_release_candidates/agent_refinement_runtime_release_candidate_v0_3_20260904/COMPOSED_EXECUTION_RELEASE.md
+- agent_evolution/agent_candidates/runtime_release_candidates/agent_refinement_runtime_release_candidate_v0_3_20260904/project_upload_core/R_CURRENT_EXECUTION.md
+- agent_evolution/agent_candidates/market_process_modeling_contract_pro_candidate_v0_2/RUNTIME_INSTRUCTIONS.md
+- agent_evolution/agent_candidates/runtime_release_candidates/agent_refinement_runtime_release_candidate_v0_3_20260904/PROJECT_UPLOAD_VIEWS.md
+- agent_evolution/agent_candidates/runtime_release_candidates/agent_refinement_runtime_release_candidate_v0_3_20260904/mission_a_runtime_v0_2/00_RUNTIME_FRONT_DOOR.md
+- agent_evolution/agent_candidates/runtime_release_candidates/agent_refinement_runtime_release_candidate_v0_3_20260904/project_upload_core/A00_MISSION_A_FRONT_DOOR.md
+overlay_current_manifest:
+  path: agent_evolution/agent_candidates/runtime_overlay_candidates/agent_owned_long_horizon_overlay_v0_3/MANIFEST.yaml
+  bytes: 5033
+  git_blob: ca8b25727c838c66b22e7c839583b727d860c442
+  sha256: ee1b1e1f6b68dfe9106f765811a559ee486355c0502c89e5f03aa6b7dd83f5ba
+retained_professional_methods: Existing A/B/C full professional references and unchanged base runtime files remain;
+  historical seals only attest their exact original members.
+maturity:
+  tool_regression_tests: 37
+  original_tests_passed: 21
+  new_tests_passed: 16
+  fresh_reader_executed: false
+  fresh_pro_method_validation: NOT_EXECUTED
+  platform_reference_behavioral_pilot: NOT_EXECUTED
+  local_routine_deployed: false
+  case_binding_migrated: false
+  case_business_repaired: false
+  production_authorized: false
+self_reference_policy: RELEASE_SET does not hash itself or the case intake. Current Git commit fixes its bytes.
+shared_platform_engineering_reference:
+  package_id: feature-platform-engineering-reference-pack-candidate-v0.1.0
+  material_class: FIXED_COLD_PLATFORM_ENGINEERING_REFERENCE
+  canonical_root: agent_evolution/platform_engineering_references/feature-platform-engineering-reference-pack-candidate-v0.1.0
+  manifest:
+    path: agent_evolution/platform_engineering_references/feature-platform-engineering-reference-pack-candidate-v0.1.0/REFERENCE_MANIFEST.yaml
+    bytes: 4353
+    git_blob: 27a50762addf89e4d909231de77fad8b206198fa
+    sha256: 6ffa5296bc6b107e94f19295303fa9d932db503ba9c633cc5458f0284afa3069
+  checksum:
+    path: agent_evolution/platform_engineering_references/feature-platform-engineering-reference-pack-candidate-v0.1.0/SHA256SUMS.txt
+    bytes: 1332
+    git_blob: 41cd10845c3b6c7470a8e698a7e73b23dd4924ca
+    sha256: 03257439506502560159204fcf3a2f43afad0e55ff6e8a195735384288762125
+  runtime_root: agent_evolution/agent_candidates/runtime_release_candidates/agent_refinement_runtime_release_candidate_v0_3_20260904/platform_engineering_reference_v0_1
+  projection_map:
+    path: agent_evolution/agent_candidates/runtime_release_candidates/agent_refinement_runtime_release_candidate_v0_3_20260904/PLATFORM_ENGINEERING_PROJECTION_MAP.yaml
+    bytes: 2921
+    git_blob: af1e51a219354e8d3293d84aec8ad5b448a310b6
+    sha256: 7039908caaf7027acab078f5340758380b39456ef9f9d827e70ebdc5974ea733
+  flat_core:
+  - path: agent_evolution/agent_candidates/runtime_release_candidates/agent_refinement_runtime_release_candidate_v0_3_20260904/project_upload_core/P00_FEATURE_PLATFORM_ENGINEERING_ROUTER.md
+    bytes: 4749
+    git_blob: 8330d58fc5bb83b45b5ff9bead32c2482b9dfec8
+    sha256: 702bb8461a2bc208e845834fc1ce6b42ba0a53c113ba9d17ae4871da7c470419
+  - path: agent_evolution/agent_candidates/runtime_release_candidates/agent_refinement_runtime_release_candidate_v0_3_20260904/project_upload_core/P01_FEATURE_PLATFORM_REFERENCE_MANIFEST.yaml
+    bytes: 4353
+    git_blob: 27a50762addf89e4d909231de77fad8b206198fa
+    sha256: 6ffa5296bc6b107e94f19295303fa9d932db503ba9c633cc5458f0284afa3069
+  flat_optional_prefix: agent_evolution/agent_candidates/runtime_release_candidates/agent_refinement_runtime_release_candidate_v0_3_20260904/project_upload_optional/P_
+  flat_optional_reference_hashes: P_01 through P_08 retain the bytes and SHA-256 declared by REFERENCE_MANIFEST.yaml
+  flat_provenance:
+    path: agent_evolution/agent_candidates/runtime_release_candidates/agent_refinement_runtime_release_candidate_v0_3_20260904/project_upload_optional/P_09_SOURCE_PROVENANCE.md
+    bytes: 1578
+    git_blob: c6e16c972f84e1f4eab16af0af9c3e5041f99131
+    sha256: 91d4da813e7aeace25e993b90733d7b6a145c4ddf3d13f7482b6f19320409850
+  copy_policy: one canonical vendored snapshot; Mission B, Mission C, feature-production adapter and runtime projections
+    do not own independent text
+updated_entrypoints:
+- path: agent_evolution/agent_candidates/README.md
+  bytes: 7555
+  git_blob: 1086c9a076a2ddc205ab961083404835bba104c6
+  sha256: e685bfd6f1d30c7c6c1cfee8c9050b423dd3f812292c1b18ebef77b5db25a54e
+- path: agent_evolution/agent_candidates/AGENTS.md
+  bytes: 2130
+  git_blob: c8560dc2282a4c480767a98c54e231bf71014b45
+  sha256: f9030463fcf34b451f7875097616341bcba5dce3068a5437ff39ad347e70d437
+- path: agent_evolution/agent_candidates/market_process_modeling_contract_pro_candidate_v0_2/CURRENT_EXECUTION.md
+  bytes: 2897
+  git_blob: c0ec31618edadf7355d38ff04d71f086bea02da3
+  sha256: 577355b67bb53207220a74f4102ef0f1c64615b2a87ab2ef48a12870381f0d84
+- path: agent_evolution/agent_candidates/market_process_modeling_contract_pro_candidate_v0_2/RUNTIME_INSTRUCTIONS.md
+  bytes: 8372
+  git_blob: e1486ff767d7de6833653b76d1a7f431c1743dfa
+  sha256: a2691d1420c51cc8200a1d68d3f7457d9bc68a7fe2d01e172791de8d06c82123
+- path: agent_evolution/agent_candidates/repo-aware-engineering-agent-candidate-v0.2/CURRENT_EXECUTION.md
+  bytes: 3901
+  git_blob: d0a04c17696ef0e2e494759ade754fdaca32db67
+  sha256: 2c7e5ae80259ba6ba904a0706fb38e4e52e754e3455d0e40c445b9481b95b052
+- path: agent_evolution/agent_candidates/runtime_overlay_candidates/agent_owned_long_horizon_overlay_v0_3/CURRENT_EXECUTION.md
+  bytes: 2401
+  git_blob: 1654fe2990830f80690f6454858d04b1ade18147
+  sha256: 50864d7269a37b20afcef2c901b2594ac210983c752d4374ee1a07486bedc4fe
+- path: agent_evolution/agent_candidates/runtime_release_candidates/agent_refinement_runtime_release_candidate_v0_3_20260904/COMPOSED_EXECUTION_RELEASE.md
+  bytes: 4189
+  git_blob: f928081eea2b454d3135bfd937b1833383966d4c
+  sha256: 5a411d9070a7b98fd2af172678eb03c8d75d009fd12fb9a11fd8a82c9d781fa0
+- path: agent_evolution/agent_candidates/runtime_release_candidates/agent_refinement_runtime_release_candidate_v0_3_20260904/PROJECT_UPLOAD_VIEWS.md
+  bytes: 1265
+  git_blob: 04c58e9343034970ed80e7cff262c2508f2b6e14
+  sha256: db873cadf2cbdaf76e3bd9286b0db22e637907b3fa5fba58747e3b13922d52fb
+- path: agent_evolution/agent_candidates/runtime_release_candidates/agent_refinement_runtime_release_candidate_v0_3_20260904/project_upload_core/R_CURRENT_EXECUTION.md
+  bytes: 2695
+  git_blob: 15cc4a4ac1603435927dfc04d024ead47e7e432d
+  sha256: 535ad24969433c9d28e879dd4ac7f725d773aca980a6e6fc4599a12948e2b53e
+- path: agent_evolution/agent_candidates/runtime_release_candidates/agent_refinement_runtime_release_candidate_v0_3_20260904/mission_a_runtime_v0_2/00_RUNTIME_FRONT_DOOR.md
+  bytes: 3868
+  git_blob: c22a10334d6edf99f87d8382d1955ca7aba5ed31
+  sha256: 7350754bb9469ea80dcb5f23b8b4c00839c87995fbc04e07040ef12071e46c3c
+- path: agent_evolution/agent_candidates/runtime_release_candidates/agent_refinement_runtime_release_candidate_v0_3_20260904/project_upload_core/A00_MISSION_A_FRONT_DOOR.md
+  bytes: 3868
+  git_blob: c22a10334d6edf99f87d8382d1955ca7aba5ed31
+  sha256: 7350754bb9469ea80dcb5f23b8b4c00839c87995fbc04e07040ef12071e46c3c
+professional_runtime_projection:
+  source_methods:
+  - agent_evolution/agent_candidates/market_process_modeling_contract_pro_candidate_v0_2/RUNTIME_INSTRUCTIONS.md
+  - agent_evolution/agent_candidates/market_process_modeling_contract_pro_candidate_v0_2/CURRENT_EXECUTION.md
+  runtime_front:
+    path: agent_evolution/agent_candidates/runtime_release_candidates/agent_refinement_runtime_release_candidate_v0_3_20260904/mission_a_runtime_v0_2/00_RUNTIME_FRONT_DOOR.md
+    bytes: 3868
+    git_blob: c22a10334d6edf99f87d8382d1955ca7aba5ed31
+    sha256: 7350754bb9469ea80dcb5f23b8b4c00839c87995fbc04e07040ef12071e46c3c
+  flat_front:
+    path: agent_evolution/agent_candidates/runtime_release_candidates/agent_refinement_runtime_release_candidate_v0_3_20260904/project_upload_core/A00_MISSION_A_FRONT_DOOR.md
+    bytes: 3868
+    git_blob: c22a10334d6edf99f87d8382d1955ca7aba5ed31
+    sha256: 7350754bb9469ea80dcb5f23b8b4c00839c87995fbc04e07040ef12071e46c3c
+  boundary: front-door projection only; original full professional references retained; old base seals identify
+    historical bytes only
+delivery_report: agent_evolution/agent_candidates/refinement_wave_reports/20260914_management_repair/DELIVERY_AND_COVERAGE.md

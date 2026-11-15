@@ -1,0 +1,55 @@
+schema_version: agent-refinement-task-local-packet/v0.3
+release_set:
+  release_set_id: agent-refinement-runtime-release-candidate-v0.3-integrated-20260904
+  overlay: agent_owned_long_horizon_overlay_v0_3
+  mission_candidate: A_v0.2 | B_v0.2 | C_v0.2
+task:
+  identity:
+  mission:
+  mode:
+  complete_scope:
+authority:
+  latest_owner_delta:
+  accepted_current_artifact:
+  accepted_parent:
+  project_guards:
+delegation:
+  pro_may_decide: []
+  pro_may_set_provisional: []
+  human_calibration: []
+  owner_decision_required: []
+sources:
+  mandatory_runtime_files: []
+  required_external_sources: []
+  repo_live_ref_check:
+current_artifact:
+  identity:
+  existing_artifact_effect: NONE | FUTURE_ONLY | REAUDIT_EXISTING | RETROFIT_EXISTING | INVALIDATE_AND_REBASE_DOWNSTREAM
+deliverables: []
+non_goals: []
+completion_limit:
+continuation_from:
+
+# 工作面信息也可放在已有任务正文，不另填第二份同义表。
+workspace:
+  execution_contract_revision: 2026-09-08
+  repository:
+  authorized_branch:
+  root_or_existing_map:
+  input_commit: # 必须已经存在；不是包含本文件的未来输出提交
+  mode: START | RESUME | REVIEW | REPAIR | CONVERGE | MATERIAL_CATCHUP
+  task_id:
+  task_status: DRAFT | READY | IN_PROGRESS | DELIVERED | NEEDS_REVIEW
+  issued_from_review_or_owner:
+  map_writer:
+  downstream_frozen_versions: []
+
+# 可用已有本轮问答／地图中的同义信息，不要求另建台账。
+publication:
+  responsible: current_pro
+  prompt_and_answer: current_turn_full_text
+  history_backfill: not_required
+  substantive_files: one_canonical_copy_with_verified_links
+  current_turn_record:
+  material_missing_or_conflicting: []
+  remote_readback: NOT_YET_VERIFIED

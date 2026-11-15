@@ -1,0 +1,126 @@
+{
+  "schema": "exact-task-delivery-observation/v1",
+  "run_id": "BI-01-RESTART-01",
+  "round_id": "R0010",
+  "invocation_id": "BI01-RESTART-01-R0010-c34d5a92b3e194a609f1fb5af1fce098",
+  "observed_commit": "2a2d2c824274d2c0f7d71c935da362e88cc5cd5a",
+  "state": "NOT_SENT",
+  "send_commit_state": "not_committed",
+  "generation_state": "not_started",
+  "collection_state": "not_started",
+  "current_in_flight": false,
+  "task_id": "BI01-RESTART-01-I6-ACTION-CLOSE-01",
+  "task_blob": "03f5d412ba4550810216025042fadc2341c8d42f",
+  "task_payload_sha256": "e33990f34f5122f067c0f98d8322ed5bdacb6258bb572b58e7d8ab32228ae755",
+  "evidence": "两段相邻、只读、单向扫描构成 exact Project 的累计全列表证据：第一段从顶部到旧记录续扫点，第二段从同一位置继续到可靠底端。累计 exact canonical title、R0010 marker/snippet、等价 I6/action-close chat 及 in-flight/sending/waiting/offline/retry/error 均为 0；底端由连续三帧在 executed fling 后行与位置稳定重复、末行后终结空隙直接接空 composer 且无 skeleton/loading/error 证明。",
+  "control_acquired_at": "2026-10-17T02:53:56.415Z",
+  "observed_at": "2026-10-17T02:54:10.316Z",
+  "finished_at": "2026-10-17T02:57:09.711Z",
+  "recipient": {
+    "project": "细节叙事生成_金标",
+    "project_visible": true,
+    "chat": "BI01-RESTART-01-I6-ACTION-CLOSE",
+    "chat_expected_new": true,
+    "chat_exact_count": 0,
+    "recipient_ref": "chatgpt-project:细节叙事生成_金标/chat:new:BI01-RESTART-01-I6-ACTION-CLOSE"
+  },
+  "new_round": {
+    "round_marker": "[BI01-RESTART-01-R0010-c34d5a92b3e194a609f1fb5af1fce098]",
+    "marker_exact_count": 0,
+    "equivalent_i6_action_close_count": 0,
+    "draft_or_user_bubble_visible": false,
+    "new_committed_chat_count": 0
+  },
+  "continuity": {
+    "prior_attempt_ref": "runs/BI-01-RESTART-01/provenance/turns/R0010/DELIVERY_OBSERVATION_ATTEMPT_01.json",
+    "prior_attempt_state": "UNKNOWN",
+    "prior_final_frame": 1792205483050,
+    "continuation_initial_frame": 1792205650316,
+    "same_exact_project": true,
+    "same_old_record_scan_position": true,
+    "top_to_bottom_cumulative_coverage": true,
+    "direction": "forward_toward_older_records_only"
+  },
+  "bottom_evidence": {
+    "reliable_bottom_reached": true,
+    "stable_frames": [1792205790171, 1792205801078, 1792205814402],
+    "last_visible_row": "撰写动力学机制叙事",
+    "list_end_gap_before_empty_composer": true,
+    "skeleton_loading_error_visible": false
+  },
+  "scan": {
+    "continuation_flings": 8,
+    "continuation_bounded_waits": 4,
+    "continuation_frames": [
+      1792205650316,
+      1792205667453,
+      1792205683924,
+      1792205694077,
+      1792205708763,
+      1792205717652,
+      1792205732745,
+      1792205741739,
+      1792205757008,
+      1792205768558,
+      1792205790171,
+      1792205801078,
+      1792205814402
+    ],
+    "continuation_ack_sequences": [
+      2832083883,
+      2832083884,
+      2832083885,
+      2832083886,
+      2832083887,
+      2832083888,
+      2832083889,
+      2832083890
+    ],
+    "all_flings_executed": true,
+    "all_acks_non_duplicate": true
+  },
+  "frame_transport": {
+    "source_size": [1080, 2340],
+    "lossless_tiles_per_frame": 3,
+    "continuation_lossless_tiles_inspected": 39,
+    "complete_source_coverage": true,
+    "source_png_retained_for_strict_authority": true
+  },
+  "calls": {
+    "continuation_product_total": 13,
+    "observe_current_ui": 1,
+    "fling_screen_and_observe": 8,
+    "wait_and_observe": 4,
+    "send": 0,
+    "input": 0,
+    "copy": 0,
+    "rename": 0,
+    "new_chat": 0,
+    "chat_entry": 0,
+    "mark_or_tap_or_press": 0,
+    "network_or_vpn": 0,
+    "descendants": 0
+  },
+  "network_lease": {
+    "reused": true,
+    "valid_until": "2026-10-17T03:23:31.369Z",
+    "contrary_fresh_evidence": false,
+    "all_actions_within_lease": true
+  },
+  "control": {
+    "controller": "/root/bi01_r0010_not_sent_deep",
+    "released_at": "2026-10-17T02:57:09.711Z",
+    "handoff": "/root"
+  },
+  "final_ui": {
+    "frame": 1792205814402,
+    "surface": "exact_project_chat_list_reliable_bottom",
+    "composer_empty": true,
+    "composer_focused": false,
+    "keyboard_visible": false,
+    "marks_cleared": true,
+    "error_visible": false
+  },
+  "protocol_deviation": "The delegated observation packet and immutable production-control receipt carried a controller transcription typo in task_payload_sha256 (one missing b after dac). This tracked carrier corrects it from observed_commit + task_blob; task_id, task_blob, observed_commit, recipient, title and marker were exact, so the phone target and semantic NOT_SENT observation were unaffected. The first workmap dispatch preflight exposed the mismatch as TASK_PAYLOAD_CHANGED before any Send authority was created.",
+  "authorization_effect": "OBSERVATION_ONLY; subsequent Send still requires all configured Gates and scheduler authorization."
+}

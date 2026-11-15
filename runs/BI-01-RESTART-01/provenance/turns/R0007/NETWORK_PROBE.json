@@ -1,0 +1,51 @@
+{
+  "schema": "chatgpt-network-probe/v1",
+  "run_id": "BI-01-RESTART-01",
+  "round_id": "R0007",
+  "classification": "PASS",
+  "probe_started_at": "2026-10-16T14:50:52.411Z",
+  "probe_completed_at": "2026-10-16T14:51:54.679Z",
+  "valid_until": "2026-10-16T15:51:54.679Z",
+  "android_network": {
+    "ssid": "dw-usa-vps4",
+    "wifi_transport_count": 1,
+    "transport": "WIFI",
+    "state": "CONNECTED/CONNECTED",
+    "capabilities": ["INTERNET", "VALIDATED"],
+    "interface": "wlan0",
+    "vpn_checked_or_operated": false
+  },
+  "list_probes": [
+    {
+      "name": "sidebar/Project 列表",
+      "frame": 1792162281941,
+      "result": "PASS",
+      "evidence": "多个真实 Project/folder 行可见；无 loading/error。"
+    },
+    {
+      "name": "全局当前聊天/最近",
+      "frame": 1792162263556,
+      "result": "PASS",
+      "evidence": "精确‘最近’与多个真实聊天行可见；无 loading/error。"
+    }
+  ],
+  "final_fresh_observation": {
+    "frame": 1792162311286,
+    "finished_at": "2026-10-16T14:51:54.679Z",
+    "surface": "safe_sidebar_global_recent",
+    "focused_count": 0,
+    "keyboard_visible": false,
+    "marks_cleared": true,
+    "error_visible": false
+  },
+  "calls": {
+    "product_total": 5,
+    "get_android_network_status": 1,
+    "observe_current_ui": 3,
+    "mark_coordinates_and_observe": 1,
+    "send": 0,
+    "input": 0,
+    "vpn": 0
+  },
+  "protocol_deviation": "NONE"
+}

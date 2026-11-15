@@ -1,0 +1,97 @@
+{
+  "schema": "workmap-intake/v1",
+  "intakes": {
+    "bi01": {
+      "snapshot": "0437dce4b2d6a2f5922f5e2bb0107e3d31c6c0a461935aed8111cfafe7d49d4e",
+      "observed_commit": "7681a810e2e146329affe9d10d692a1e7e8c33ae",
+      "manager": {
+        "role": "management",
+        "context": "同一原物理管理会话 BI01-R01-管理：R0009 接收 Owner 原文‘选A，继续往后运行’，在 R0008 G5 已通过边界内结束 WaitingOwner，启动 I6，并签发 task_id BI01-RESTART-01-I6-ACTION-CLOSE-01、professional_mode OBSERVATION_I6 与新专业 recipient。I6 尚未发送；G6、run 结案、独立审查和生产资格均未发生。"
+      },
+      "decision_report": {
+        "path": "runs/BI-01-RESTART-01/reviews/MANAGEMENT_OWNER_DECISION_AND_I6_START_R0009.md",
+        "blob": "94b7fbe0ec62b2c09ec523e244a2f4ac60cfa3a7"
+      },
+      "effort": {
+        "known_pro_turns": 9,
+        "coverage": "一次真实管理 Pro M-START、一次 Owner 授权的同会话管理修复 invocation、三次已完整回交的专业执行 Pro invocation，以及四次已完整回交的管理 invocation。",
+        "source_note": "R0001 至 R0009 的实际角色调用均有轮次账本；R0003/R0005/R0007 专业结果和 R0004/R0006/R0008/R0009 管理结果均有精确关联的远端 turn-complete、双 Return 与 after-return 记录。手机 operation episode、Git 提交和独立 Codex reader 不计 Pro 轮次。"
+      },
+      "reader_check": {
+        "status": "RECORDED",
+        "context": "/root/bi01_r0009_i6_fresh_reader 新的零继承、xhigh、独立只读上下文；只读 7681a810 exact Git allowlist 输入，不读取旧/current reader/intake、管理决定、Return、其他 reviews、artifacts、PROGRESS、prompt/invocation 或手机证据",
+        "independent_of_map_builder": true,
+        "input_commit": "7681a810e2e146329affe9d10d692a1e7e8c33ae",
+        "input_snapshot": "fa37e74d7e34d4e3e812ed25c35ee8d0c6f5f1343ab53fb20db01e9f66e34931",
+        "report": {
+          "path": "runs/BI-01-RESTART-01/reviews/WORKMAP_READER_R0009.md",
+          "blob": "7c76ba55bfed6c97b662f44561964d968753430e"
+        },
+        "result": "READABLE",
+        "qualification": "仅证明 fresh 接收者能理解 Owner A、当前 I6 task/mode/new recipient、旧 Binding 禁止重发、I6 尚未发送、G6 尚未通过及合法后继；不复核管理业务正确，不授权发送，不签 G6、run 结案、独立审查或生产资格。"
+      },
+      "dispatch": {
+        "decision": "ISSUED",
+        "task_id": "BI01-RESTART-01-I6-ACTION-CLOSE-01",
+        "task_path": "runs/BI-01-RESTART-01/01_当前任务.md",
+        "task_blob": "03f5d412ba4550810216025042fadc2341c8d42f",
+        "kind": "NEW_STAGE",
+        "requires_reader_check": true,
+        "method_paths": [
+          "professional/source/00_AGENT_CHARTER_AND_STAGE_CONTRACT.md",
+          "professional/source/03_STAGE_HANDOFF_AND_READINESS.md",
+          "professional/source/04_PRO_WORKER_CODEX_HANDOFF.md",
+          "professional/source/05_ROLE_GATE_AND_HANDOFF_CONTRACT.md"
+        ],
+        "qualification": "R0009_OWNER_A_ACCEPTED_I6_ACTION_CLOSE_ISSUED",
+        "blockers": [],
+        "pending_gates": [
+          "DELIVERY_NOT_SENT",
+          "OVERLAY12_EXACT_PAYLOAD_AND_RECIPIENT",
+          "SCHEDULER_DEDUP"
+        ],
+        "professional_dispatch_eligible_after_all_gates": true,
+        "dispatch_gate_disposition": "PENDING_DELIVERY_PREFLIGHT"
+      },
+      "issue_resolution": {
+        "original_issue": {
+          "path": "runs/BI-01-RESTART-01/reviews/MANAGEMENT_DELIVERY_REPAIR_REQUIRED_R0001.md",
+          "blob": "79bdf046e46d2d02a8f991ce1230039725e12a1a"
+        },
+        "repair_decision": {
+          "path": "runs/BI-01-RESTART-01/reviews/MANAGEMENT_DELIVERY_REPAIR_R0002.md",
+          "blob": "b6d89c3a77199b13dc59441abfce3e5085359097"
+        },
+        "r0001_after_return": "PASS",
+        "r0002_after_return": "PASS",
+        "candidate_mechanical_intake": "PASS",
+        "candidate_dispatch_preflight": "PASS",
+        "official_binding_status": "ADOPTED",
+        "official_binding_mechanical_intake": "PASS",
+        "official_binding_dispatch_preflight": "BLOCKED_DELIVERY_UNKNOWN",
+        "resume_exact_input_commit": "3a8b8da2ce61c65fc04c0eb938ac9385c31b304e",
+        "resume_reader": "READABLE",
+        "resume_delivery_observation": "NOT_SENT",
+        "resume_mechanical_intake": "PASS",
+        "resume_formal_dispatch": "PASS"
+      },
+      "latest_result_intake": {
+        "round_id": "R0007",
+        "turn_complete_commit": "340dd36938ccbe065c6d525aced992b3fb0ef956",
+        "round_ledger_commit": "8894a0589fb93f16b244db4beee412e1bc83cf0f",
+        "after_return": "PASS",
+        "management_trigger_notice": "runs/BI-01-RESTART-01/reviews/MANAGEMENT_TRIGGER_NOTICE_R0007.json",
+        "limits": "仅记录 R0007 Owner Pack、双 Return 和管理触发已收取；不由操作端签 G5，不替 Owner 选择 A/B，不启动 I6。"
+      },
+      "latest_management_intake": {
+        "round_id": "R0009",
+        "turn_complete_commit": "7681a810e2e146329affe9d10d692a1e7e8c33ae",
+        "after_return": "PASS",
+        "decision": "OWNER_A_ACCEPTED__I6_STARTED__G6_PENDING",
+        "next_route": "chatgpt-project:细节叙事生成_金标/chat:new:BI01-RESTART-01-I6-ACTION-CLOSE",
+        "limits": "管理已接收 Owner A 并签发 I6；不等于 I6 已发送、G6 已通过、run 已结案、独立审查或生产资格。专业发送仍须 fresh reader、机械 intake、Overlay12、NOT_SENT/去重和 scheduler Gates 全部通过。"
+      },
+      "validation_claims": []
+    }
+  }
+}

@@ -1,0 +1,374 @@
+{
+  "invocation_id": "BI01-RESTART-01-R0005-427e020c096844a98f9f46148fce405c",
+  "case_ref": "refonly-671359b4c10f73db5c",
+  "method": "BI01-I4-CASE02-DIAGNOSTIC-R0005-v1",
+  "input_bindings": {
+    "steel_U2_U3_执行结果_20261010.zip": "7bebbee3fd7d425eb85116f33c5d0e01ae2163e6849818515fe3824a82b9a46c",
+    "rb_hc_i_mid贴近转折_zig_small_K线_20210101_20240229.zip": "4fd1af4e7b34af6fc099e6289ffdd5d83125412fc16d2a9902af4fd9741b3987"
+  },
+  "scope": "Readable selection from complete EVIDENCE.json; not a new sample or formal U2/U3 output.",
+  "complete_evidence_sha256": "a4df147e6b7b6f448724cdaceaa0369b38360efaabae9a35037b9b1e69aa2b40",
+  "case_identity": [
+    {
+      "ref_reference_candidate": "refonly-671359b4c10f73db5c",
+      "actual_uti": 75344399,
+      "actual_bar_ts": "2021-05-10 21:30:00",
+      "common_visible_asof": "2021-05-11 10:30:00",
+      "member_count": 2,
+      "member_symbols": "hc|rb",
+      "source_turn_types": "Peak",
+      "source_expected_directions": "Down",
+      "raw_complete_link_zero_lag": 1,
+      "raw_positive_progress_count": 2,
+      "raw_negative_progress_count": 0,
+      "raw_zero_or_unavailable_count": 0,
+      "formal_formation_candidate_status": "NOT_ISSUED_SCOPE_MATRIX_DELTA_AND_EPOCH_NOT_EVALUATED",
+      "formal_assessment_status": "NOT_EVALUATED_F29_BC30_BC31",
+      "method": "C1_SAME_ACTUAL_UTI_SCOPE_DIAGNOSTIC_NO_FORMAL_CANDIDATE",
+      "_csv_line": 36
+    }
+  ],
+  "anchors": [
+    {
+      "symbol": "rb",
+      "ref_turn_id": "refonly-910213b3cc62a71bdf",
+      "actual_uti": 75344399,
+      "actual_ts": "2021-05-10 21:30:00",
+      "actual_price": 6087.0,
+      "confirm_point_ts": "2021-05-10 23:00:00",
+      "source_event_ts": "2021-05-11 09:30:00",
+      "turn_type": "Peak",
+      "expected_direction": "Down",
+      "source_channel": "value1",
+      "_csv_line": 44
+    },
+    {
+      "symbol": "hc",
+      "ref_turn_id": "refonly-d5b779f4ad88a8a276",
+      "actual_uti": 75344399,
+      "actual_ts": "2021-05-10 21:30:00",
+      "actual_price": 6482.0,
+      "confirm_point_ts": "2021-05-11 10:00:00",
+      "source_event_ts": "2021-05-11 10:30:00",
+      "turn_type": "Peak",
+      "expected_direction": "Down",
+      "source_channel": "value1",
+      "_csv_line": 407
+    },
+    {
+      "symbol": "i",
+      "ref_turn_id": "refonly-4af5fd6260f29a3c68",
+      "actual_uti": 75326399,
+      "actual_ts": "2021-05-10 11:00:00",
+      "actual_price": 1282.0,
+      "confirm_point_ts": "2021-05-10 15:00:00",
+      "source_event_ts": "2021-05-10 21:30:00",
+      "turn_type": "Peak",
+      "expected_direction": "Down",
+      "source_channel": "value1",
+      "_csv_line": 791
+    }
+  ],
+  "canonical_completed": [
+    {
+      "symbol": "rb",
+      "episode_id": "refonly-8ece0d42fdbfb0152a",
+      "start": "2021-05-10 21:30:00",
+      "end": "2021-05-10 23:00:00",
+      "completion_visible": "2021-05-11 15:00:00",
+      "h": 3,
+      "P": 159.0,
+      "L": 161.0,
+      "E": 0.9875776397515528,
+      "counter": 1.0,
+      "retained": 1.0,
+      "first_csv_line": 970,
+      "last_csv_line": 973
+    },
+    {
+      "symbol": "hc",
+      "episode_id": "refonly-a3fa6d9969b2e3679a",
+      "start": "2021-05-10 21:30:00",
+      "end": "2021-05-11 10:00:00",
+      "completion_visible": "2021-05-12 09:30:00",
+      "h": 5,
+      "P": 128.0,
+      "L": 172.0,
+      "E": 0.7441860465116279,
+      "counter": 22.0,
+      "retained": 1.0,
+      "first_csv_line": 970,
+      "last_csv_line": 975
+    },
+    {
+      "symbol": "i",
+      "episode_id": "refonly-3e1f6ff2791e56bfc7",
+      "start": "2021-05-10 11:00:00",
+      "end": "2021-05-10 23:00:00",
+      "completion_visible": "2021-05-11 21:30:00",
+      "h": 8,
+      "P": 46.5,
+      "L": 67.5,
+      "E": 0.6888888888888889,
+      "counter": 10.5,
+      "retained": 1.0,
+      "first_csv_line": 965,
+      "last_csv_line": 973
+    }
+  ],
+  "t0_original": [
+    {
+      "symbol": "hc",
+      "asof": "2021-05-11 10:30:00",
+      "stage": "Working",
+      "h": 6,
+      "P": 124.0,
+      "L": 176.0,
+      "E": 0.7045454545454546,
+      "counter": 22.0,
+      "retained": 0.96875,
+      "progress_pct": 1.9129898179574205,
+      "counter_pct": 0.3394014193150262
+    },
+    {
+      "symbol": "rb",
+      "asof": "2021-05-11 10:30:00",
+      "stage": "Working",
+      "h": 6,
+      "P": 140.0,
+      "L": 190.0,
+      "E": 0.7368421052631579,
+      "counter": 20.0,
+      "retained": 0.8805031446540881,
+      "progress_pct": 2.2999835715459174,
+      "counter_pct": 0.3285690816494168
+    },
+    {
+      "symbol": "i",
+      "asof": "2021-05-11 10:30:00",
+      "stage": "Working",
+      "h": 11,
+      "P": 46.0,
+      "L": 90.0,
+      "E": 0.5111111111111111,
+      "counter": 10.5,
+      "retained": 0.9019607843137255,
+      "progress_pct": 3.5881435257410295,
+      "counter_pct": 0.8190327613104524
+    }
+  ],
+  "common_window_t0_and_1130": [
+    {
+      "symbol": "hc",
+      "asof": "2021-05-11 10:30:00",
+      "start": "2021-05-10 21:30:00",
+      "end": "2021-05-11 10:30:00",
+      "h": 6,
+      "P": 124.0,
+      "L": 176.0,
+      "E": 0.7045454545454546,
+      "counter": 22.0,
+      "retained": 0.96875,
+      "progress_pct": 1.9129898179574205,
+      "counter_pct": 0.3394014193150262
+    },
+    {
+      "symbol": "rb",
+      "asof": "2021-05-11 10:30:00",
+      "start": "2021-05-10 21:30:00",
+      "end": "2021-05-11 10:30:00",
+      "h": 6,
+      "P": 140.0,
+      "L": 190.0,
+      "E": 0.7368421052631579,
+      "counter": 20.0,
+      "retained": 0.8805031446540881,
+      "progress_pct": 2.2999835715459174,
+      "counter_pct": 0.3285690816494168
+    },
+    {
+      "symbol": "i",
+      "asof": "2021-05-11 10:30:00",
+      "start": "2021-05-10 21:30:00",
+      "end": "2021-05-11 10:30:00",
+      "h": 6,
+      "P": 45.5,
+      "L": 68.5,
+      "E": 0.6642335766423357,
+      "counter": 6.5,
+      "retained": 0.900990099009901,
+      "progress_pct": 3.5505267264923916,
+      "counter_pct": 0.5072181037846274
+    },
+    {
+      "symbol": "hc",
+      "asof": "2021-05-11 11:30:00",
+      "start": "2021-05-10 21:30:00",
+      "end": "2021-05-11 11:30:00",
+      "h": 8,
+      "P": 45.0,
+      "L": 255.0,
+      "E": 0.17647058823529413,
+      "counter": 83.0,
+      "retained": 0.3515625,
+      "progress_pct": 0.6942301758716446,
+      "counter_pct": 1.2804689910521443
+    },
+    {
+      "symbol": "rb",
+      "asof": "2021-05-11 11:30:00",
+      "start": "2021-05-10 21:30:00",
+      "end": "2021-05-11 11:30:00",
+      "h": 8,
+      "P": 84.0,
+      "L": 246.0,
+      "E": 0.34146341463414637,
+      "counter": 75.0,
+      "retained": 0.5283018867924528,
+      "progress_pct": 1.3799901429275505,
+      "counter_pct": 1.232134056185313
+    },
+    {
+      "symbol": "i",
+      "asof": "2021-05-11 11:30:00",
+      "start": "2021-05-10 21:30:00",
+      "end": "2021-05-11 11:30:00",
+      "h": 8,
+      "P": 33.5,
+      "L": 80.5,
+      "E": 0.4161490683229814,
+      "counter": 17.0,
+      "retained": 0.6633663366336634,
+      "progress_pct": 2.614124073351541,
+      "counter_pct": 1.3265704252828716
+    }
+  ],
+  "i_pre_common": {
+    "symbol": "i",
+    "start": "2021-05-10 11:00:00",
+    "end": "2021-05-10 21:30:00",
+    "h": 5,
+    "P": 0.5,
+    "L": 21.5,
+    "E": 0.023255813953488372,
+    "counter": 10.5,
+    "first_csv_line": 965,
+    "last_csv_line": 970
+  },
+  "n_t0": [
+    {
+      "symbol": "rb",
+      "asof_event_ts_proxy": "2021-05-11 10:30:00",
+      "current_level_median": 0.275690585074749,
+      "previous_level_median": 0.397031023618426,
+      "recent_change": -0.121340438543676,
+      "recent_dispersion_MAD": 0.13288779496695,
+      "LOO_max_shift": 0.104474704181449,
+      "supporting_window_refs": "refonly-e260756b276d0d405f|refonly-dc1a1240e6c1c5c5db",
+      "method": "MedianTwoWindowV1_N6_MAD_LOO_EXACT",
+      "_csv_line": 7797
+    },
+    {
+      "symbol": "hc",
+      "asof_event_ts_proxy": "2021-05-11 10:30:00",
+      "current_level_median": 0.377075098814229,
+      "previous_level_median": 0.534999453133545,
+      "recent_change": -0.157924354319316,
+      "recent_dispersion_MAD": 0.281495143859274,
+      "LOO_max_shift": 0.222924901185771,
+      "supporting_window_refs": "refonly-5e9526d3c2728c2016|refonly-21ebb622c2eede7799",
+      "method": "MedianTwoWindowV1_N6_MAD_LOO_EXACT",
+      "_csv_line": 80437
+    },
+    {
+      "symbol": "i",
+      "asof_event_ts_proxy": "2021-05-11 10:30:00",
+      "current_level_median": 0.834862385321101,
+      "previous_level_median": 0.286525554981931,
+      "recent_change": 0.54833683033917,
+      "recent_dispersion_MAD": 0.165137614678899,
+      "LOO_max_shift": 0.165137614678899,
+      "supporting_window_refs": "refonly-750b3256ccb66cedfb|refonly-efc01f8adb2d7d092e",
+      "method": "MedianTwoWindowV1_N6_MAD_LOO_EXACT",
+      "_csv_line": 153077
+    }
+  ],
+  "case02_N_relation": [
+    {
+      "ref_pair_input": "refonly-0de752084ddacf1f3c",
+      "ref_reference_candidate": "refonly-671359b4c10f73db5c",
+      "common_visible_asof": "2021-05-11 10:30:00",
+      "left_symbol": "hc",
+      "right_symbol": "rb",
+      "relation_kind": "NodeBehaviorComparison",
+      "raw_observation": "0.10138451373947993",
+      "raw_measure_detail": "path_efficiency_recent_median_gap=0.10138451373947993;all_metrics_are_separate",
+      "field_knownness": "AvailableEfficiencyMedianDifferenceReference",
+      "formal_relation_decision": "WITHHELD_FORMAL_DECISION",
+      "method": "U2_B_01_SECTION_6_2_PARTIAL_TYPED_REFERENCE",
+      "_csv_line": 553
+    }
+  ],
+  "case01_other_carrier": {
+    "carrier": "single_scale_U2_C1_S_C2_U3/C1/02_case_eight_relations.csv",
+    "count": 15
+  },
+  "baseline_S": [
+    {
+      "ref_reference_candidate": "refonly-671359b4c10f73db5c",
+      "symbol_universe_reference": "rb|hc|i",
+      "candidate_members": "hc|rb",
+      "outside_members": "i",
+      "outside_member_count": 1,
+      "outside_x_confirmed_comparisons_expected": 2,
+      "scope_provenance": "USER_DATA_RESEARCH_DOMAIN_ONLY_NOT_CONFIRMED_COMPLETE_STEEL_SECTOR",
+      "separation_current": "NOT_EVALUATED",
+      "persistence_K3_D4DELTA": "NOT_EVALUATED",
+      "formal_s_assessment": "NOT_COMMITTED",
+      "_csv_line": 36
+    }
+  ],
+  "baseline_C2": [
+    {
+      "ref_reference_candidate": "refonly-671359b4c10f73db5c",
+      "FormationBasis": "NOT_EVALUATED",
+      "Qualification": "NOT_EVALUATED",
+      "OrganizationValidity": "NOT_EVALUATED",
+      "ExternalSeparation": "NOT_EVALUATED",
+      "BC20_identity_decision": "NOT_EVALUATED",
+      "BC33_cluster_physicalization": "NOT_ISSUED",
+      "why": "REQUIRED FOUR ASSESSMENTS NOT PRODUCED; NO LIVE PUBLISHER; NO DELTA/MATRICES",
+      "_csv_line": 36
+    }
+  ],
+  "u3_scope": {
+    "U3/01_single_scale_shadow_bridge.csv": {
+      "case_refs": [
+        "refonly-ad8824a52552d7bffa91"
+      ],
+      "case02_rows": 0
+    },
+    "U3/02_movement_r02_objective_facts.csv": {
+      "case_refs": [
+        "refonly-ad8824a52552d7bffa91"
+      ],
+      "case02_rows": 0
+    },
+    "U3/03_r03_quality_withholding.csv": {
+      "case_refs": [
+        "refonly-ad8824a52552d7bffa91"
+      ],
+      "case02_rows": 0
+    }
+  },
+  "limitations": [
+    "Reference diagnostics only; no new G3/G4/G5 signature",
+    "Original recovery counts not consumed or repaired",
+    "No Case-02 formal Formation/S/C2/H1/R02/R03 output produced",
+    "No native Calendar-duration or formal NormalizationProfile",
+    "Price percentages are not risk-adjusted returns or PnL",
+    "N history checked against exported C0 metrics, not all raw historical paths",
+    "Producer implementation not inspected; numeric export correspondence only",
+    "No third Case, Worker execution, I5 execution, independent review or market-wide law"
+  ]
+}

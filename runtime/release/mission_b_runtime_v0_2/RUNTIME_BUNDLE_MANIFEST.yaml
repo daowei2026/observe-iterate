@@ -1,0 +1,52 @@
+schema_version: mission-b-project-runtime-bundle/v0.2
+bundle_id: mission-b-project-runtime-bundle-candidate-v0.2.0-20260904
+canonical_successor: repo-aware-engineering-agent-candidate-v0.2 materialized exact-parent
+  successor
+runtime_maturity: human_led_candidate
+validated_runnable: false
+owner_acceptance: pending
+files:
+- path: 00_RUNTIME_FRONT_DOOR.md
+  bytes: 885
+  sha256: 80bd1f956184f3b2d0cb1a65a3ff519e3d5274575e4fd4863e6c8f101a52aa36
+  role: generated_runtime_projection
+- path: 01_REPOFACT_RUNTIME_METHOD.md
+  bytes: 785
+  sha256: 319978e337ea1843b71d58afaffb1a9ed17ae2b6c25f96961f5ee42741d1b025
+  role: generated_runtime_projection
+- path: 02_ENGINEERING_COMPILATION_RUNTIME_METHOD.md
+  bytes: 678
+  sha256: 61206a5be9abf24bfb7cf72daa35fb44505c44e0e83ab9a6af0274add36d1853
+  role: generated_runtime_projection
+- path: 03_FEATURE_STATE_METHOD_REALIZATION.md
+  bytes: 10135
+  sha256: 4a00869e99ed0744bdfdf462993d4e27e52e428fa7c9e6b5be08b3ade28ea811
+  role: generated_runtime_projection
+- path: 04_VCC_OWNER_AND_IMPLEMENTER_PROBE.md
+  bytes: 2614
+  sha256: 75cce6cb884e10636f5d7dcaadc04c40a47f2d9ec7bb2e4c530801b47bff9099
+  role: generated_runtime_projection
+- path: 05_SOURCE_HANDOFF_AND_HUMAN.md
+  bytes: 959
+  sha256: f06c96977f8dfb7fd3df4ecdbf1515ef32d52c930618eee7c6f88932a8a50957
+  role: generated_runtime_projection
+- path: 06_TASK_PACKET_TEMPLATE.yaml
+  bytes: 507
+  sha256: ea04219073d21ce40131c0c8108d7bd15a7b1e4d49ab032867b1821b6f9d4e51
+  role: generated_runtime_projection
+- path: 07_CASE_CORE_AND_NONCLAIMS.md
+  bytes: 704
+  sha256: 61e9de3e4efd9ac32afcf4ee3f60287df06de315f16a478da22dd49996eefe35
+  role: generated_runtime_projection
+- path: README.md
+  bytes: 779
+  sha256: 257add14b06b7c05d9a0d9cdb9d49eff53e671aa57af2cc007cfb5633ba543a0
+  role: generated_runtime_projection
+- path: RELEASE_SET_BINDING.yaml
+  bytes: 631
+  sha256: 5c25c4e333dd04b59804fba37d828b090c491c87d6e3afb8ef3bb4d1f54d549e
+  role: generated_runtime_projection
+release_set_binding: RELEASE_SET_BINDING.yaml
+self_reference_policy:
+  RUNTIME_BUNDLE_MANIFEST.yaml: hash recorded in SHA256SUMS.txt
+  SHA256SUMS.txt: excluded from its own entries

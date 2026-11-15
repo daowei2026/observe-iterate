@@ -1,0 +1,57 @@
+schema_version: feature-platform-engineering-runtime-projection/v0.1
+package_id: feature-platform-engineering-reference-pack-candidate-v0.1.0
+canonical_root: agent_evolution/platform_engineering_references/feature-platform-engineering-reference-pack-candidate-v0.1.0
+runtime_root: platform_engineering_reference_v0_1
+generation_rules:
+- nested runtime tree is an exact byte copy of the canonical package
+- flat router changes only relative links and the manifest locator for upload names
+- flat manifest and P_01 through P_09 are exact byte copies of canonical members
+- generated projections must never be edited before the canonical package
+core_projections:
+- source: 00_REFERENCE_ROUTER.md
+  output: project_upload_core/P00_FEATURE_PLATFORM_ENGINEERING_ROUTER.md
+  transform: relative_markdown_links_and_manifest_locator_to_flat_upload_names
+- source: REFERENCE_MANIFEST.yaml
+  output: project_upload_core/P01_FEATURE_PLATFORM_REFERENCE_MANIFEST.yaml
+  transform: byte_copy
+optional_projections:
+- reference_id: FP-PY-OUTPUT-ENCODING
+  source: python_numba/03A_output_contract_and_encoding_checks.md
+  output: project_upload_optional/P_01_PY_OUTPUT_ENCODING.md
+  transform: byte_copy
+- reference_id: FP-PY-ARTIFACT-BOUNDARY
+  source: python_numba/03B_scope_and_artifact_boundary_checks.md
+  output: project_upload_optional/P_02_PY_ARTIFACT_BOUNDARY.md
+  transform: byte_copy
+- reference_id: FP-RUNTIME-HOTPATH
+  source: python_numba/03C_runtime_shape_and_hotpath_checks.md
+  output: project_upload_optional/P_03_RUNTIME_HOTPATH.md
+  transform: byte_copy
+- reference_id: FP-CROSS-LANGUAGE-HANDOFF
+  source: cross_language/07_cross_language_product_handoff.md
+  output: project_upload_optional/P_04_CROSS_LANGUAGE_HANDOFF.md
+  transform: byte_copy
+- reference_id: FP-FRP-BUSINESS-CODE
+  source: haskell_frp/frp_business_style_code_requirements.md
+  output: project_upload_optional/P_05_FRP_BUSINESS_CODE.md
+  transform: byte_copy
+- reference_id: FP-FRP-STATE-IDENTITY
+  source: haskell_frp/frp_business_object_state_identity_and_correction.md
+  output: project_upload_optional/P_06_FRP_STATE_IDENTITY.md
+  transform: byte_copy
+- reference_id: FP-FRP-ACTION-CONTEXT
+  source: haskell_frp/frp_action_context_state_and_parameters.md
+  output: project_upload_optional/P_07_FRP_ACTION_CONTEXT.md
+  transform: byte_copy
+- reference_id: FP-FRP-RULEPACK
+  source: haskell_frp/frp_rulepack_and_fuzzy_integration.md
+  output: project_upload_optional/P_08_FRP_RULEPACK.md
+  transform: byte_copy
+- source: SOURCE_PROVENANCE.md
+  output: project_upload_optional/P_09_SOURCE_PROVENANCE.md
+  transform: byte_copy
+verification:
+  canonical_checksum: agent_evolution/platform_engineering_references/feature-platform-engineering-reference-pack-candidate-v0.1.0/SHA256SUMS.txt
+  nested_checksum: platform_engineering_reference_v0_1/SHA256SUMS.txt
+  byte_copy_members_must_match_sha256: true
+  flat_router_requires_link_target_check: true

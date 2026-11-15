@@ -1,0 +1,93 @@
+{
+  "schema": "bi01-send-receipt/v1",
+  "run_id": "BI-01-RESTART-01",
+  "round_id": "R0003",
+  "round_class": "PROFESSIONAL_INVOCATION",
+  "professional_round": true,
+  "invocation_id": "BI01-RESTART-01-R0003-9dda7755b8d94803ba5b03f53721d18c",
+  "assignment_token": "eab45254f4464b148d9ee7fd0833730a",
+  "state": "COMMITTED",
+  "recipient": {
+    "project": "细节叙事生成_金标",
+    "chat": "BI01-RESTART-01-I4-EXECUTION",
+    "physical_chat": "first_authorized_new_professional_chat",
+    "canonical_rename_pending_first_complete_reply": true,
+    "model_context": "Pro",
+    "reasoning_strength": "rightmost"
+  },
+  "payload": {
+    "path": "runs/BI-01-RESTART-01/provenance/turns/R0003/PROMPT.md",
+    "sha256": "23de81b49a90c46b838ad3b543a1ddc2b37b10225eea858953a927c492d2ef83",
+    "utf8_bytes": 32367,
+    "utf16_code_units": 18292,
+    "focused_readback": "exact_verified",
+    "focused_readback_coverage": "full",
+    "selection": "18292/18292",
+    "normalization": "none",
+    "ime_input_calls": 1,
+    "ime_chunks": 1129,
+    "ime_packets": 1129
+  },
+  "transport": {
+    "send_taps": 1,
+    "send_mark": "dzEQ21",
+    "send_ack_sequence": 2832083732,
+    "send_ack_status": "executed",
+    "duplicate": false,
+    "commit_evidence": "stop_visible",
+    "generation_state": "model_thinking",
+    "message_identity": "[BI01-RESTART-01-R0003-9dda7755b8d94803ba5b03f53721d18c]"
+  },
+  "timing": {
+    "controller_attempt_anchor": "2026-10-16T06:34:55.082954Z",
+    "executor_episode_start": "2026-10-16T06:35:52Z",
+    "terminal_evidence": "2026-10-16T06:42:00Z",
+    "scheduler_commit_recorded_at": "2026-10-16T06:43:29.694439Z",
+    "executor_episode_end": "2026-10-16T06:42:00Z"
+  },
+  "evidence": {
+    "initial_safe_sidebar_frame": "1792132572211",
+    "focused_state_capture": "1792132830525",
+    "focused_state_receive": "1792132832890",
+    "keyboard_open_pre_send_frame": "1792132839381",
+    "send_mark_frame": "1792132864409",
+    "post_send_frames": ["1792132882876", "1792132883979", "1792132885689"],
+    "terminal_frame": "1792132899805",
+    "final_marker_selector_match_count": 1,
+    "stop_visible": true,
+    "sending_or_waiting_marker_visible": false,
+    "offline_retry_or_error_visible": false,
+    "correlation": "unique exact round marker"
+  },
+  "strict_actions": {
+    "project_mark": "TikrYf",
+    "reasoning_rightmost_mark": "IvJ7iQ",
+    "send_mark": "dzEQ21",
+    "ack_sequences": [2832083726, 2832083727, 2832083728, 2832083729, 2832083730, 2832083731, 2832083732],
+    "all_acks": "executed_non_duplicate",
+    "candidate_marks_replaced_before_touch": 3
+  },
+  "gates": {
+    "bi01_pre_dispatch": "PASS",
+    "overlay12_prepare": "PASS",
+    "overlay12_verify": "PASS",
+    "workmap_dispatch": "PASS",
+    "recipient_not_sent": "PASS",
+    "scheduler_send_ready": "PASS"
+  },
+  "network_probe": {
+    "result": "PASS_REUSED",
+    "ssid": "dw-usa-vps4",
+    "connectivity": "WIFI CONNECTED/CONNECTED; INTERNET; VALIDATED",
+    "completed_at": "2026-10-16T06:15:23Z",
+    "valid_until": "2026-10-16T07:15:23Z"
+  },
+  "side_effects": {
+    "new_chats_created": 1,
+    "renamed": false,
+    "messages_sent": 1,
+    "attachments_added": 0,
+    "reply_capture_performed": false
+  },
+  "limits": "This receipt proves one exact R0003 professional message committed in the first authorized professional chat. It does not prove reply completion, package collection, business correctness, G4, management acceptance, or canonical chat rename."
+}

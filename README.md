@@ -6,7 +6,7 @@
 status: candidate_scaffold
 validated_runnable: false
 owner_acceptance: pending
-real_phone_pilot: NOT_EXECUTED
+real_phone_pilot: PRIOR_EXPERIMENT_STOPPED_NEW_RUN_NOT_STARTED
 professional_interface_completeness: PARTIAL
 ```
 
@@ -15,7 +15,7 @@ professional_interface_completeness: PARTIAL
 - `runtime/`：长程运行规则、协议、工具、配置和发布候选。
 - `professional/source/`：只提取原 00—08 中与观察迭代专业 Agent 直接相关的内容；不复制其它业务资料。
 - `professional/interfaces/`：运行系统消费的专业接口；没有来源支持的部分保持 `MISSING`。
-- `runs/`：未来真实任务工作面；不复制旧 BI-01 运行状态。
+- `runs/BI-01-RESTART-01/`：下一次独立新运行的预备工作面；不继承旧 I4/Gate/聊天。下一次真正管理才形成地图、当前任务及 R 轮。运行入口见 `runtime/operations/BI01_REAL_RUN_V1.md`。
 - `migration/`：CYF 基线、角色—文件—依赖分析和迁移状态。
 
 ## 边界

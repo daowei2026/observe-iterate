@@ -1,0 +1,92 @@
+{
+  "schema": "chatgpt-network-probe/v1",
+  "run_id": "BI-01-RESTART-01",
+  "round_id": "R0005",
+  "classification": "PASS",
+  "probe_started_at": "2026-10-16T12:46:59.844Z",
+  "probe_completed_at": "2026-10-16T12:48:53.990Z",
+  "valid_until": "2026-10-16T13:48:53.990Z",
+  "android_network": {
+    "ssid": "dw-usa-vps4",
+    "wifi_transport_count": 1,
+    "transport": "WIFI",
+    "state": "CONNECTED/CONNECTED",
+    "capabilities": ["INTERNET", "VALIDATED"],
+    "interface": "wlan0",
+    "vpn_checked_or_operated": false
+  },
+  "list_probes": [
+    {
+      "name": "全局当前聊天/最近",
+      "fresh_anchor_frame": 1792154918838,
+      "final_frame": 1792154930562,
+      "result": "PASS",
+      "evidence": "最近及多个现有聊天行可见；无 loading/error/offline。"
+    },
+    {
+      "name": "sidebar/Project 列表",
+      "fresh_anchor_frame": 1792154874232,
+      "final_frame": 1792154903681,
+      "result": "PASS",
+      "evidence": "置顶及多个 folder 项目可见；无 loading/error/offline。"
+    }
+  ],
+  "project_navigation_evidence": {
+    "frame": 1792154853217,
+    "project": "细节叙事生成_金标",
+    "canonical_business_titles_visible": 2,
+    "counted_as_network_criterion": false
+  },
+  "touches": [
+    {
+      "purpose": "返回箭头",
+      "mark_id": "nyplHf",
+      "coordinate": [100, 190],
+      "marked_frame": 1792154837990,
+      "ack_seq": 2832083765,
+      "ack_status": "executed",
+      "duplicate": false,
+      "sent_coordinate": [99, 190]
+    },
+    {
+      "purpose": "Hamburger",
+      "mark_id": "8g2XcN",
+      "coordinate": [100, 190],
+      "marked_frame": 1792154860246,
+      "ack_seq": 2832083766,
+      "ack_status": "executed",
+      "duplicate": false,
+      "sent_coordinate": [100, 193]
+    },
+    {
+      "purpose": "Sidebar list fresh fling",
+      "from": [810, 1900],
+      "to": [810, 1100],
+      "requested_velocity_px_per_s": 2300,
+      "fresh_frame": 1792154903681,
+      "ack_seq": 2832083767,
+      "ack_status": "executed",
+      "duplicate": false
+    }
+  ],
+  "calls": {
+    "product_total": 9,
+    "get_android_network_status": 1,
+    "observe_current_ui": 3,
+    "mark_coordinates_and_observe": 2,
+    "tap_marked_coordinate_and_observe": 2,
+    "fling_screen_and_observe": 1,
+    "launch": 0,
+    "restart": 0,
+    "wait": 0,
+    "send": 0,
+    "input": 0,
+    "copy": 0,
+    "vpn": 0
+  },
+  "control": {
+    "released_at": "2026-10-16T12:49:26.473Z",
+    "handoff": "/root"
+  },
+  "protocol_deviation": "NONE"
+}
