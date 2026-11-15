@@ -1,0 +1,69 @@
+{
+  "label": "cached-p1-test-paths",
+  "at": "2026-11-15T05:09:48.040038+00:00",
+  "argv": [
+    "rg",
+    "--files",
+    "--hidden",
+    "--no-ignore",
+    ".stack-work/dist",
+    "-g",
+    "*eaw*p1*",
+    "-g",
+    "package.conf.inplace",
+    "-g",
+    "setup-config",
+    "-g",
+    "*P1EndToEnd*",
+    "-g",
+    "*WallLifecycle*"
+  ],
+  "cwd": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp",
+  "input_scope": "仅FRP现有.stack-work/dist，文件名限定P1/test/buildmetadata",
+  "expected_writes": [
+    "W008日志/receipt"
+  ],
+  "timeout_seconds": 120,
+  "stop_method": "private process group TERM then KILL after 5s on timeout or stdout/stderr >5GiB; no automatic retry",
+  "output_paths": [
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/logs/cached-p1-test-paths.stdout",
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/logs/cached-p1-test-paths.stderr"
+  ],
+  "env_overrides": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "TMPDIR": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/tmp",
+    "TMP": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/tmp",
+    "TEMP": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/tmp",
+    "XDG_CACHE_HOME": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/cache",
+    "GIT_OPTIONAL_LOCKS": "0"
+  },
+  "lock": {
+    "at": "2026-11-15T05:09:48.042363+00:00",
+    "pid": 255320,
+    "startticks": "49586940",
+    "inode": 14866078,
+    "competition_errno": 11
+  },
+  "ended_at": "2026-11-15T05:09:48.422307+00:00",
+  "exit_code": 0,
+  "elapsed_seconds": 0.345052361022681,
+  "stop_reason": null,
+  "stdout": {
+    "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/logs/cached-p1-test-paths.stdout",
+    "bytes": 53,
+    "sha256": "d3a97b63ab24f7cdebb4a76d772707989db852cb0fcedbdd7bbb768f88c3daa0",
+    "mtime_ns": 1794719388391961615,
+    "mtime_ns_decimal": "1794719388391961615",
+    "inode": 14866469,
+    "dev": 83
+  },
+  "stderr": {
+    "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/logs/cached-p1-test-paths.stderr",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "mtime_ns": 1794719388111173044,
+    "mtime_ns_decimal": "1794719388111173044",
+    "inode": 14867082,
+    "dev": 83
+  }
+}

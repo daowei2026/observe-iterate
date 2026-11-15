@@ -1,0 +1,45 @@
+{
+  "label": "base-pre-frp-cached-diff",
+  "at": "2026-11-15T05:09:29.507273+00:00",
+  "argv": [
+    "git",
+    "--no-optional-locks",
+    "-c",
+    "core.fsmonitor=false",
+    "-c",
+    "gc.auto=0",
+    "-C",
+    "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp",
+    "diff",
+    "--cached",
+    "--no-ext-diff",
+    "--no-textconv",
+    "--binary"
+  ],
+  "cwd": "/dwdhome/fy/BASE_E6_2",
+  "input_scope": "单一已指定仓库FRP的cached-diff，不扫描untracked；stdout完整归档",
+  "expected_writes": [
+    "仅W008日志/receipt"
+  ],
+  "timeout_seconds": 120,
+  "stop_method": "private process group TERM then KILL after 5s on timeout or stdout/stderr >5GiB; no automatic retry",
+  "output_paths": [
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/logs/base-pre-frp-cached-diff.stdout",
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/logs/base-pre-frp-cached-diff.stderr"
+  ],
+  "env_overrides": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "TMPDIR": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/tmp",
+    "TMP": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/tmp",
+    "TEMP": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/tmp",
+    "XDG_CACHE_HOME": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/cache",
+    "GIT_OPTIONAL_LOCKS": "0"
+  },
+  "lock": {
+    "at": "2026-11-15T05:09:29.509285+00:00",
+    "pid": 255320,
+    "startticks": "49586940",
+    "inode": 14866078,
+    "competition_errno": 11
+  }
+}

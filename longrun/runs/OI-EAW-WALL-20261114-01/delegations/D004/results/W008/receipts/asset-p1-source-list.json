@@ -1,0 +1,62 @@
+{
+  "label": "asset-p1-source-list",
+  "at": "2026-11-15T05:09:32.185807+00:00",
+  "argv": [
+    "rg",
+    "--files",
+    "src/Frp/Instance/ISL/Eaw/P1",
+    "test/Frp/Instance/ISL/Eaw/P1",
+    "-g",
+    "*.hs",
+    "-g",
+    "AGENTS.md"
+  ],
+  "cwd": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp",
+  "input_scope": "仅FRP既知P1源码/test两目录",
+  "expected_writes": [
+    "W008日志"
+  ],
+  "timeout_seconds": 120,
+  "stop_method": "private process group TERM then KILL after 5s on timeout or stdout/stderr >5GiB; no automatic retry",
+  "output_paths": [
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/logs/asset-p1-source-list.stdout",
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/logs/asset-p1-source-list.stderr"
+  ],
+  "env_overrides": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "TMPDIR": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/tmp",
+    "TMP": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/tmp",
+    "TEMP": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/tmp",
+    "XDG_CACHE_HOME": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/cache",
+    "GIT_OPTIONAL_LOCKS": "0"
+  },
+  "lock": {
+    "at": "2026-11-15T05:09:32.187854+00:00",
+    "pid": 255320,
+    "startticks": "49586940",
+    "inode": 14866078,
+    "competition_errno": 11
+  },
+  "ended_at": "2026-11-15T05:09:32.293093+00:00",
+  "exit_code": 0,
+  "elapsed_seconds": 0.0881797909969464,
+  "stop_reason": null,
+  "stdout": {
+    "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/logs/asset-p1-source-list.stdout",
+    "bytes": 569,
+    "sha256": "7b790d7f02ff8cb4d9d71c6d43671cdd1c5ccb1f5afd19efb0af69ed9eb57397",
+    "mtime_ns": 1794719372285769284,
+    "mtime_ns_decimal": "1794719372285769284",
+    "inode": 14866596,
+    "dev": 83
+  },
+  "stderr": {
+    "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/logs/asset-p1-source-list.stderr",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "mtime_ns": 1794719372231819261,
+    "mtime_ns_decimal": "1794719372231819261",
+    "inode": 14866334,
+    "dev": 83
+  }
+}

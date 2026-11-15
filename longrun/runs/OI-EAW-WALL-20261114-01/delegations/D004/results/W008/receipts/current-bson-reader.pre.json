@@ -1,0 +1,33 @@
+{
+  "label": "current-bson-reader",
+  "at": "2026-11-15T05:18:45.671262+00:00",
+  "argv": [
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/build/read-current-bson"
+  ],
+  "cwd": "/dwdhome/fy/BASE_E6_2",
+  "input_scope": "仅4个既有normal typedoccurrences内存ToBSON/FromBSON",
+  "expected_writes": [
+    "W008日志/receipt；reader程序不写文件"
+  ],
+  "timeout_seconds": 30,
+  "stop_method": "private process group TERM then KILL after 5s on timeout or stdout/stderr >5GiB; no automatic retry",
+  "output_paths": [
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/logs/current-bson-reader.stdout",
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/logs/current-bson-reader.stderr"
+  ],
+  "env_overrides": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "TMPDIR": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/tmp",
+    "TMP": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/tmp",
+    "TEMP": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/tmp",
+    "XDG_CACHE_HOME": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/cache",
+    "GIT_OPTIONAL_LOCKS": "0"
+  },
+  "lock": {
+    "at": "2026-11-15T05:18:45.673317+00:00",
+    "pid": 255320,
+    "startticks": "49586940",
+    "inode": 14866078,
+    "competition_errno": 11
+  }
+}

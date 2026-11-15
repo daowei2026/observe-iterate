@@ -1,0 +1,36 @@
+{
+  "label": "current-tis-wall-entrypoints",
+  "at": "2026-11-15T05:15:16.454207+00:00",
+  "argv": [
+    "rg",
+    "-n",
+    "EawP1WallLifecycleFrp|wall_occurrences|wall_current_view|wall_diagnostics|FrpDbaDao|OnlyRead|Cache",
+    "frp/EawBattleP.py"
+  ],
+  "cwd": "/dwdhome/fy/BASE_E6_2/mquant/tis",
+  "input_scope": "一个既知TIS feature文件，核current产品定义与reader调用，不执行真实市场计算",
+  "expected_writes": [
+    "W008日志"
+  ],
+  "timeout_seconds": 60,
+  "stop_method": "private process group TERM then KILL after 5s on timeout or stdout/stderr >5GiB; no automatic retry",
+  "output_paths": [
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/logs/current-tis-wall-entrypoints.stdout",
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/logs/current-tis-wall-entrypoints.stderr"
+  ],
+  "env_overrides": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "TMPDIR": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/tmp",
+    "TMP": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/tmp",
+    "TEMP": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/tmp",
+    "XDG_CACHE_HOME": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/cache",
+    "GIT_OPTIONAL_LOCKS": "0"
+  },
+  "lock": {
+    "at": "2026-11-15T05:15:16.456617+00:00",
+    "pid": 255320,
+    "startticks": "49586940",
+    "inode": 14866078,
+    "competition_errno": 11
+  }
+}

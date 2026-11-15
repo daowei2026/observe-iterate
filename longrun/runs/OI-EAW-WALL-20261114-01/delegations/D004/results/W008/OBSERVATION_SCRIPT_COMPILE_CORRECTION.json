@@ -1,0 +1,25 @@
+{
+  "at": "2026-11-15T05:16:22.033408+00:00",
+  "failure_receipt": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/receipts/current-normal-compile.json",
+  "old_script": {
+    "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/tools/ObserveCurrent_v1_failed.hs",
+    "bytes": 4893,
+    "sha256": "24c9cfcc4e422163a6dc20f4d7a76a5fbdaaf2484edbbfe7e30901dec1f0ad7a",
+    "mtime_ns": 1794719781991004897,
+    "mtime_ns_decimal": "1794719781991004897",
+    "inode": 14867130,
+    "dev": 83
+  },
+  "corrected_script": {
+    "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/tools/ObserveCurrent.hs",
+    "bytes": 4928,
+    "sha256": "e6e075e2c3498bfb104598e276054f157394e9deef20415e527e3e966a3dfbde",
+    "mtime_ns": 1794719782026185712,
+    "mtime_ns_decimal": "1794719782026185712",
+    "inode": 14866502,
+    "dev": 83
+  },
+  "cause": "Worker新增观察脚本foldM列表受全局OverloadedLists影响类型歧义；5个production模块已成功编译",
+  "change": "只在本W脚本添加NoOverloadedLists pragma，不改既有BASE源码或功能",
+  "rerun_qualification": "精确已知本地脚本编译错误修复；沿用相同有限输入，仅复用W008编译对象，不是重试未知计算"
+}

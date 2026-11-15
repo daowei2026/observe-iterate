@@ -1,0 +1,28 @@
+
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/tools/ObserveCurrent.hs:57:83: error:
+    • Couldn't match expected type: GHC.IsList.Item
+                                      (t0 (Text.Text, [WallLifecycleOccurrence]))
+                  with actual type: (a0, b0)
+      The type variable ‘t0’ is ambiguous
+    • In the expression: ("N1", [wallStart])
+      In the third argument of ‘foldM’, namely
+        ‘[("N1", [wallStart]), ("N2", [updateA, ....]), ("N3", [ended])]’
+      In a stmt of a 'do' block:
+        _ <- foldM
+               (\ s (l, os) -> stepIO (l :: Text.Text) s os)
+               emptyWallLifecycleState
+               [("N1", [wallStart]), ("N2", [updateA, ....]), ("N3", [ended])]
+   |
+57 |     _ <- foldM (\s (l,os) -> stepIO (l::Text.Text) s os) emptyWallLifecycleState [("N1",[wallStart]),("N2",[updateA,updateB]),("N3",[ended])]
+   |                                                                                   ^^^^^^^^^^^^^^^^^^
+
+/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/tools/ObserveCurrent.hs:57:90: error:
+    • Couldn't match expected type ‘GHC.IsList.Item b0’
+                  with actual type ‘WallLifecycleOccurrence’
+      The type variable ‘b0’ is ambiguous
+    • In the expression: wallStart
+      In the expression: [wallStart]
+      In the expression: ("N1", [wallStart])
+   |
+57 |     _ <- foldM (\s (l,os) -> stepIO (l::Text.Text) s os) emptyWallLifecycleState [("N1",[wallStart]),("N2",[updateA,updateB]),("N3",[ended])]
+   |                                                                                          ^^^^^^^^^

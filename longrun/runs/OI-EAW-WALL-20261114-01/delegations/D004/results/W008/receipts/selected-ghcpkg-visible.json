@@ -1,0 +1,61 @@
+{
+  "label": "selected-ghcpkg-visible",
+  "at": "2026-11-15T05:11:53.181187+00:00",
+  "argv": [
+    "/nix/.stack/programs/x86_64-linux/ghc-tinfo6-9.4.8/bin/ghc-pkg",
+    "--package-db",
+    "/nix/.stack/snapshots/x86_64-linux/8febf378dbd330a73b2a5cccfd1978b0b432f8b18bd6be55f68ff265812cd09f/9.4.8/pkgdb",
+    "--package-db",
+    "/dwdhome/fy/BASE_E6_2/edh-universe/.stack-work/install/x86_64-linux/8febf378dbd330a73b2a5cccfd1978b0b432f8b18bd6be55f68ff265812cd09f/9.4.8/pkgdb",
+    "list",
+    "--simple-output"
+  ],
+  "cwd": "/dwdhome/fy/BASE_E6_2",
+  "input_scope": "两个setup-config精确pkgdb只读；不枚举361snapshot子目录",
+  "expected_writes": [
+    "W008日志"
+  ],
+  "timeout_seconds": 60,
+  "stop_method": "private process group TERM then KILL after 5s on timeout or stdout/stderr >5GiB; no automatic retry",
+  "output_paths": [
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/logs/selected-ghcpkg-visible.stdout",
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/logs/selected-ghcpkg-visible.stderr"
+  ],
+  "env_overrides": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "TMPDIR": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/tmp",
+    "TMP": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/tmp",
+    "TEMP": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/tmp",
+    "XDG_CACHE_HOME": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/cache",
+    "GIT_OPTIONAL_LOCKS": "0"
+  },
+  "lock": {
+    "at": "2026-11-15T05:11:53.183293+00:00",
+    "pid": 255320,
+    "startticks": "49586940",
+    "inode": 14866078,
+    "competition_errno": 11
+  },
+  "ended_at": "2026-11-15T05:11:53.913702+00:00",
+  "exit_code": 0,
+  "elapsed_seconds": 0.7069691329961643,
+  "stop_reason": null,
+  "stdout": {
+    "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/logs/selected-ghcpkg-visible.stdout",
+    "bytes": 4709,
+    "sha256": "770a5e1f7ad3bd1b5fd551dd2e8f4fa7cfda731efed7186b8ac972a55336fba3",
+    "mtime_ns": 1794719513843556137,
+    "mtime_ns_decimal": "1794719513843556137",
+    "inode": 14866974,
+    "dev": 83
+  },
+  "stderr": {
+    "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/logs/selected-ghcpkg-visible.stderr",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "mtime_ns": 1794719513233196194,
+    "mtime_ns_decimal": "1794719513233196194",
+    "inode": 14865113,
+    "dev": 83
+  }
+}

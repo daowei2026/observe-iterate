@@ -1,0 +1,61 @@
+diff --git a/frpExample/STCalendar.py b/frpExample/STCalendar.py
+index bb67cfb..fa8edcd 100644
+--- a/frpExample/STCalendar.py
++++ b/frpExample/STCalendar.py
+@@ -8,21 +8,35 @@ __all__ = [
+ 
+ # 把贴近转折的adt结果转成DataFrame
+ # 不能在此处合并，否则因为两个df长度不一致，为了填充nan值会强制把int类型转换为float类型
++def _scaleTurnValueADT2DF(value, prefix):
++    columns = [
++        f'{prefix}.x',
++        f'{prefix}.y',
++        f'{prefix}.xConfirm',
++        f'{prefix}.yConfirm',
++    ]
++    if len(value.ts) == 0:
++        # 零 occurrence 是正常业务结果。底层此时是 EmptyDbaStruct，
++        # 没有 actual2D/confirm2D 字段；仍应返回合同完整的空表。
++        return pd.DataFrame(columns=columns, index=value.ts).astype({
++            columns[0]: 'int64',
++            columns[1]: 'float64',
++            columns[2]: 'int64',
++            columns[3]: 'float64',
++        })
++
++    dba_value = value.value.root_seq
++    return pd.DataFrame({
++        columns[0]: dba_value['actual2D']['x'],
++        columns[1]: dba_value['actual2D']['y'],
++        columns[2]: dba_value['confirm2D']['x'],
++        columns[3]: dba_value['confirm2D']['y'],
++    }, index=value.ts)
++
++
+ def scaleTurnADT2DF(self):
+-    dbav1 = self.value1.value.root_seq
+-    dbav2 = self.value2.value.root_seq
+-    df1 = pd.DataFrame({
+-        'value1.x': dbav1['actual2D']['x'],
+-        'value1.y': dbav1['actual2D']['y'],
+-        'value1.xConfirm': dbav1['confirm2D']['x'],
+-        'value1.yConfirm': dbav1['confirm2D']['y'],
+-    }, index=self.value1.ts)
+-    df2 = pd.DataFrame({
+-        'value2.x': dbav2['actual2D']['x'],
+-        'value2.y': dbav2['actual2D']['y'],
+-        'value2.xConfirm': dbav2['confirm2D']['x'],
+-        'value2.yConfirm': dbav2['confirm2D']['y'],
+-    }, index=self.value2.ts)
++    df1 = _scaleTurnValueADT2DF(self.value1, 'value1')
++    df2 = _scaleTurnValueADT2DF(self.value2, 'value2')
+ #     dfs = [df1, df2]
+ #     return pd.concat(dfs, axis=1, join="outer")
+     return {"value1":df1,"value2":df2}
+@@ -127,4 +141,4 @@ class FiltedScaleTurnCalendar(FrpMixIn, AbstractParamFao):
+         df1 = dfs["value1"]
+         df2 = dfs["value2"]
+         df = pd.concat([df1,df2], axis=1, join="inner")
+-        return df
+\ No newline at end of file
++        return df

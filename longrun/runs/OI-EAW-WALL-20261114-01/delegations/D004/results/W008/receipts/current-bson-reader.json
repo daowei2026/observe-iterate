@@ -1,0 +1,55 @@
+{
+  "label": "current-bson-reader",
+  "at": "2026-11-15T05:18:45.671262+00:00",
+  "argv": [
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/build/read-current-bson"
+  ],
+  "cwd": "/dwdhome/fy/BASE_E6_2",
+  "input_scope": "仅4个既有normal typedoccurrences内存ToBSON/FromBSON",
+  "expected_writes": [
+    "W008日志/receipt；reader程序不写文件"
+  ],
+  "timeout_seconds": 30,
+  "stop_method": "private process group TERM then KILL after 5s on timeout or stdout/stderr >5GiB; no automatic retry",
+  "output_paths": [
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/logs/current-bson-reader.stdout",
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/logs/current-bson-reader.stderr"
+  ],
+  "env_overrides": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "TMPDIR": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/tmp",
+    "TMP": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/tmp",
+    "TEMP": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/tmp",
+    "XDG_CACHE_HOME": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/cache",
+    "GIT_OPTIONAL_LOCKS": "0"
+  },
+  "lock": {
+    "at": "2026-11-15T05:18:45.673317+00:00",
+    "pid": 255320,
+    "startticks": "49586940",
+    "inode": 14866078,
+    "competition_errno": 11
+  },
+  "ended_at": "2026-11-15T05:18:46.034433+00:00",
+  "exit_code": 0,
+  "elapsed_seconds": 0.3402250809594989,
+  "stop_reason": null,
+  "stdout": {
+    "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/logs/current-bson-reader.stdout",
+    "bytes": 5081,
+    "sha256": "bac5469af2f9db5c5fb5e5194dfab3df838d493356c5c76bb829fd390417597b",
+    "mtime_ns": 1794719925945149610,
+    "mtime_ns_decimal": "1794719925945149610",
+    "inode": 14867614,
+    "dev": 83
+  },
+  "stderr": {
+    "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/logs/current-bson-reader.stderr",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "mtime_ns": 1794719925838474152,
+    "mtime_ns_decimal": "1794719925838474152",
+    "inode": 14867379,
+    "dev": 83
+  }
+}

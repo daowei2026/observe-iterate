@@ -1,0 +1,66 @@
+{
+  "label": "tis-current-reader-file-locations",
+  "at": "2026-11-15T05:11:53.962893+00:00",
+  "argv": [
+    "rg",
+    "--files",
+    "-g",
+    "*Eaw*",
+    "-g",
+    "*P1*",
+    "-g",
+    "*FrpDba*",
+    "-g",
+    "dbaw.py",
+    "-g",
+    "AGENTS.md"
+  ],
+  "cwd": "/dwdhome/fy/BASE_E6_2/mquant/tis",
+  "input_scope": "仅已指明TIS仓库文件名索引，匹配Wall feature/wrapper/reader，不读大数据",
+  "expected_writes": [
+    "W008日志"
+  ],
+  "timeout_seconds": 60,
+  "stop_method": "private process group TERM then KILL after 5s on timeout or stdout/stderr >5GiB; no automatic retry",
+  "output_paths": [
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/logs/tis-current-reader-file-locations.stdout",
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/logs/tis-current-reader-file-locations.stderr"
+  ],
+  "env_overrides": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "TMPDIR": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/tmp",
+    "TMP": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/tmp",
+    "TEMP": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/tmp",
+    "XDG_CACHE_HOME": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/cache",
+    "GIT_OPTIONAL_LOCKS": "0"
+  },
+  "lock": {
+    "at": "2026-11-15T05:11:53.965068+00:00",
+    "pid": 255320,
+    "startticks": "49586940",
+    "inode": 14866078,
+    "competition_errno": 11
+  },
+  "ended_at": "2026-11-15T05:11:54.126820+00:00",
+  "exit_code": 0,
+  "elapsed_seconds": 0.14636720396811143,
+  "stop_reason": null,
+  "stdout": {
+    "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/logs/tis-current-reader-file-locations.stdout",
+    "bytes": 57,
+    "sha256": "fc89bd15bd79ff6284f08dec2d1d8b0e946c7728961f51dba69911cf38e50bd4",
+    "mtime_ns": 1794719514067011214,
+    "mtime_ns_decimal": "1794719514067011214",
+    "inode": 14866975,
+    "dev": 83
+  },
+  "stderr": {
+    "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/logs/tis-current-reader-file-locations.stderr",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "mtime_ns": 1794719514007371009,
+    "mtime_ns_decimal": "1794719514007371009",
+    "inode": 14865114,
+    "dev": 83
+  }
+}

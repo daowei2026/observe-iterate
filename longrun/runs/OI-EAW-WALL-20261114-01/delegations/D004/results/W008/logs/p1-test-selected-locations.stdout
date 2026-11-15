@@ -1,0 +1,64 @@
+13:import Frp.Apt.Bson (FromBSON (fromBSON), ToBSON (toBSON))
+32:  wallLifecycleMustBeProductSpecificAndIdempotent
+33:  wallLifecycleMustKeepBidAndAskWallsIndependent
+34:  wallLifecycleTransitionTableMustBeComplete
+285:  _ <- requireRight "wall receipt" (validateReceiptKind "wall_lifecycle" wallReceipt)
+286:  _ <- requireRight "build receipt" (validateReceiptKind "build_activity" buildReceipt)
+300:  _ <- requireRight "thin receipt without marker" =<< readThinProductReceipt temporaryPath "wall_lifecycle"
+306:  _ <- requireRight "known exact Wall" (validateDependentWallIdentity localNo wallCatalog)
+308:  _ <- requireRight "matching upstream receipt" (validateExactUpstreamReceipt "wall_lifecycle" buildReceipt wallReceipt)
+314:  _ <- requireRight "matching Attack product receipts" (validateAttackProductReceiptSet attackReceipt formationReceipt barrierReceipt)
+360:  occurrence <- requireRight "complete Wall numeric row" (decodeWallNumericRow wallReceipt "wall__999" row)
+361:  sameOccurrence <- requireRight "transport-split Wall numeric row" (decodeWallNumericRow wallReceipt "wall__999__occ0001" row)
+365:  compactOccurrence <- requireRight "compact Wall numeric row" (decodeWallNumericRow wallReceipt "wall__stream" compactRow)
+366:  compactSplit <- requireRight "transport-split compact Wall numeric row" (decodeWallNumericRow wallReceipt "wall__stream__occ0001" compactRow)
+433:  occurrence <- requireRight "typed F4" (decodeDirectedLargeDealNumericRow f4Receipt "buy" row)
+434:  transportSplit <- requireRight "typed F4 transport split" (decodeDirectedLargeDealNumericRow f4Receipt "buy__occ0001" row)
+448:    requireRight
+455:wallLifecycleMustBeProductSpecificAndIdempotent :: IO ()
+456:wallLifecycleMustBeProductSpecificAndIdempotent = do
+457:  (state, published) <- requireRight "Wall start" (applyWallOccurrenceBatch emptyWallLifecycleState [wallStart])
+459:  (sameState, duplicatePublications) <- requireRight "Wall duplicate" (applyWallOccurrenceBatch state [wallStart])
+464:wallLifecycleMustKeepBidAndAskWallsIndependent :: IO ()
+465:wallLifecycleMustKeepBidAndAskWallsIndependent = do
+467:    requireRight
+497:    requireRight
+503:wallLifecycleTransitionTableMustBeComplete :: IO ()
+504:wallLifecycleTransitionTableMustBeComplete = do
+520:      ended = wallChange "wall-occurrence-5" 14 (Spine.WallEnded (Spine.WallEndReason "producer-end"))
+527:  (endedState, publications) <- requireRight "complete Wall transition table" (applyWallOccurrenceBatch emptyWallLifecycleState lifecycle)
+531:  (presentState, _) <- requireRight "Wall present state" (applyWallOccurrenceBatch emptyWallLifecycleState [wallStart])
+534:  (dormantState, _) <- requireRight "Wall dormant state" (applyWallOccurrenceBatch presentState [becameDormant])
+581:  (_, builds) <- requireRight "Build with exact Wall catalog" (applyBuildFrame (emptyBuildActivityState wallCatalog) [buildStart])
+584:  (_, absorbs) <- requireRight "Absorb with exact Wall catalog" (applyAbsorbFrame (emptyAbsorbInteractionState wallCatalog) [absorbStart])
+586:  _ <- requireRight "Attack with exact Wall catalog" (applyAttackFrame (emptyAttackSegmentBookState wallCatalog) [] [formation] [])
+624:  (buildState, buildPublications) <- requireRight "complete Build transition table" (applyBuildFrame (emptyBuildActivityState wallCatalog) buildLifecycle)
+628:  (twoWallBuildState, _) <- requireRight "Build start with two valid Walls" (applyBuildFrame (emptyBuildActivityState twoWallCatalog) [buildStart])
+630:  (sameBuildState, duplicateBuildPublications) <- requireRight "Build exact duplicate" (applyBuildFrame buildState [buildStart])
+682:  (absorbState, absorbPublications) <- requireRight "complete Absorb transition table" (applyAbsorbFrame (emptyAbsorbInteractionState wallCatalog) absorbLifecycle)
+686:  (twoWallAbsorbState, _) <- requireRight "Absorb start with two valid Walls" (applyAbsorbFrame (emptyAbsorbInteractionState twoWallCatalog) [absorbStart])
+688:  (sameAbsorbState, duplicateAbsorbPublications) <- requireRight "Absorb exact duplicate" (applyAbsorbFrame absorbState [absorbStart])
+696:  (forward, _) <- requireRight "forward" (applyAttackFrame (emptyAttackSegmentBookState wallCatalog) [] [formation, second] [])
+697:  (reversed, _) <- requireRight "reversed" (applyAttackFrame (emptyAttackSegmentBookState wallCatalog) [] [second, formation] [])
+706:    requireRight
+730:  (_, wallPublished) <- requireRight "Wall remains clean after rejected batch" (applyWallOccurrenceBatch emptyWallLifecycleState [wallStart])
+731:  (_, buildPublished) <- requireRight "Build remains clean after rejected batch" (applyBuildFrame (emptyBuildActivityState wallCatalog) [buildStart])
+732:  (_, absorbPublished) <- requireRight "Absorb remains clean after rejected batch" (applyAbsorbFrame (emptyAbsorbInteractionState wallCatalog) [absorbStart])
+733:  _ <- requireRight "Attack remains clean after rejected batch" (applyAttackFrame (emptyAttackSegmentBookState wallCatalog) [] [formation] [])
+791:    requireRight
+794:  snapshot <- requireRight "P2 Attack run-level method snapshot" (attackFormationMethodSnapshotFromReceipt attackReceipt)
+826:  tacticalOnly <- requireRight "P2 tactical-only AttackSegment fixture" (decodeAttackSegmentNumericRow attackReceipt wallCatalog "segment__stream" tacticalOnlyRow qualifiedRows (take 1 qualificationHitRows))
+875:  interval <- requireRight "P2 FormationEvidence interval fixture" (decodeAttackFormationNumericRow attackReceipt wallCatalog ("formation__" <> Text.pack (show localNo) <> "__ask") formationRow)
+905:    requireRight
+938:          requireRight
+960:  barrier <- requireRight "P2 formal barrier fixture" (decodeWallBarrierNumericRow attackReceipt wallCatalog ("barrier__" <> Text.pack (show localNo) <> "__ask") barrierRow)
+961:  unless (Spine.wallAttackBarrierKind (barrierOccurrencePayload barrier) == Spine.WallEndedBarrier) $ fail "P2 fixture 没有读取 formal Wall.End barrier"
+975:  milestone <- requireRight "P2 Absorb milestone fixture" (decodeAbsorbNumericRow absorbReceipt wallCatalog "absorb__9" milestoneRow)
+976:  resolved <- requireRight "P2 Absorb resolved fixture" (decodeAbsorbNumericRow absorbReceipt wallCatalog "absorb__9" resolvedRow)
+986:    requireRight
+990:    requireRight
+1019:requireRight :: (Show error) => String -> Either error value -> IO value
+1020:requireRight label = either (fail . ((label <> ": ") <>) . show) pure
+1026:requireBsonRoundTrip :: (Eq value, ToBSON value, FromBSON value) => String -> value -> IO ()
+1028:  let document = toBSON value
+1033:  let rendered = Text.pack (show (toBSON value))

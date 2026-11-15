@@ -1,0 +1,43 @@
+{
+  "label": "base-post-frp_core-status",
+  "at": "2026-11-15T05:21:36.246427+00:00",
+  "argv": [
+    "git",
+    "--no-optional-locks",
+    "-c",
+    "core.fsmonitor=false",
+    "-c",
+    "gc.auto=0",
+    "-C",
+    "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp-core",
+    "status",
+    "--porcelain=v1",
+    "-uno"
+  ],
+  "cwd": "/dwdhome/fy/BASE_E6_2",
+  "input_scope": "三个既指定repo最终同范围核验；不扫描其他BASE或untracked",
+  "expected_writes": [
+    "W008日志/receipt"
+  ],
+  "timeout_seconds": 120,
+  "stop_method": "private process group TERM then KILL after 5s on timeout or stdout/stderr >5GiB; no automatic retry",
+  "output_paths": [
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/logs/base-post-frp_core-status.stdout",
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/logs/base-post-frp_core-status.stderr"
+  ],
+  "env_overrides": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "TMPDIR": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/tmp",
+    "TMP": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/tmp",
+    "TEMP": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/tmp",
+    "XDG_CACHE_HOME": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/cache",
+    "GIT_OPTIONAL_LOCKS": "0"
+  },
+  "lock": {
+    "at": "2026-11-15T05:21:36.248468+00:00",
+    "pid": 255320,
+    "startticks": "49586940",
+    "inode": 14866078,
+    "competition_errno": 11
+  }
+}

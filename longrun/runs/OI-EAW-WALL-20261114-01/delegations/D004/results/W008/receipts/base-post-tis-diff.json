@@ -1,0 +1,66 @@
+{
+  "label": "base-post-tis-diff",
+  "at": "2026-11-15T05:21:37.595780+00:00",
+  "argv": [
+    "git",
+    "--no-optional-locks",
+    "-c",
+    "core.fsmonitor=false",
+    "-c",
+    "gc.auto=0",
+    "-C",
+    "/dwdhome/fy/BASE_E6_2/mquant/tis",
+    "diff",
+    "--no-ext-diff",
+    "--no-textconv",
+    "--binary"
+  ],
+  "cwd": "/dwdhome/fy/BASE_E6_2",
+  "input_scope": "三个既指定repo最终同范围核验；不扫描其他BASE或untracked",
+  "expected_writes": [
+    "W008日志/receipt"
+  ],
+  "timeout_seconds": 120,
+  "stop_method": "private process group TERM then KILL after 5s on timeout or stdout/stderr >5GiB; no automatic retry",
+  "output_paths": [
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/logs/base-post-tis-diff.stdout",
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/logs/base-post-tis-diff.stderr"
+  ],
+  "env_overrides": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "TMPDIR": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/tmp",
+    "TMP": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/tmp",
+    "TEMP": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/tmp",
+    "XDG_CACHE_HOME": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/cache",
+    "GIT_OPTIONAL_LOCKS": "0"
+  },
+  "lock": {
+    "at": "2026-11-15T05:21:37.597820+00:00",
+    "pid": 255320,
+    "startticks": "49586940",
+    "inode": 14866078,
+    "competition_errno": 11
+  },
+  "ended_at": "2026-11-15T05:21:37.697858+00:00",
+  "exit_code": 0,
+  "elapsed_seconds": 0.08804747503018007,
+  "stop_reason": null,
+  "stdout": {
+    "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/logs/base-post-tis-diff.stdout",
+    "bytes": 2347,
+    "sha256": "e608e9b92f638e468af322ab4bcc0378256db2ecd6555ec665197ad3ac2cee8f",
+    "mtime_ns": 1794720097673527646,
+    "mtime_ns_decimal": "1794720097673527646",
+    "inode": 14867866,
+    "dev": 83
+  },
+  "stderr": {
+    "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/logs/base-post-tis-diff.stderr",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "mtime_ns": 1794720097639084398,
+    "mtime_ns_decimal": "1794720097639084398",
+    "inode": 14868486,
+    "dev": 83
+  }
+}

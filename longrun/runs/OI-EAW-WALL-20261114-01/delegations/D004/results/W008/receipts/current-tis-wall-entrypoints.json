@@ -1,0 +1,58 @@
+{
+  "label": "current-tis-wall-entrypoints",
+  "at": "2026-11-15T05:15:16.454207+00:00",
+  "argv": [
+    "rg",
+    "-n",
+    "EawP1WallLifecycleFrp|wall_occurrences|wall_current_view|wall_diagnostics|FrpDbaDao|OnlyRead|Cache",
+    "frp/EawBattleP.py"
+  ],
+  "cwd": "/dwdhome/fy/BASE_E6_2/mquant/tis",
+  "input_scope": "一个既知TIS feature文件，核current产品定义与reader调用，不执行真实市场计算",
+  "expected_writes": [
+    "W008日志"
+  ],
+  "timeout_seconds": 60,
+  "stop_method": "private process group TERM then KILL after 5s on timeout or stdout/stderr >5GiB; no automatic retry",
+  "output_paths": [
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/logs/current-tis-wall-entrypoints.stdout",
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/logs/current-tis-wall-entrypoints.stderr"
+  ],
+  "env_overrides": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "TMPDIR": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/tmp",
+    "TMP": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/tmp",
+    "TEMP": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/tmp",
+    "XDG_CACHE_HOME": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/cache",
+    "GIT_OPTIONAL_LOCKS": "0"
+  },
+  "lock": {
+    "at": "2026-11-15T05:15:16.456617+00:00",
+    "pid": 255320,
+    "startticks": "49586940",
+    "inode": 14866078,
+    "competition_errno": 11
+  },
+  "ended_at": "2026-11-15T05:15:16.701628+00:00",
+  "exit_code": 0,
+  "elapsed_seconds": 0.20816294598625973,
+  "stop_reason": null,
+  "stdout": {
+    "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/logs/current-tis-wall-entrypoints.stdout",
+    "bytes": 554,
+    "sha256": "780f2a67fde42f00ea599996eae57d87c20c1ab4b1bb41301976407e05c479e8",
+    "mtime_ns": 1794719716586791872,
+    "mtime_ns_decimal": "1794719716586791872",
+    "inode": 14864747,
+    "dev": 83
+  },
+  "stderr": {
+    "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/logs/current-tis-wall-entrypoints.stderr",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "mtime_ns": 1794719716544793899,
+    "mtime_ns_decimal": "1794719716544793899",
+    "inode": 14866614,
+    "dev": 83
+  }
+}

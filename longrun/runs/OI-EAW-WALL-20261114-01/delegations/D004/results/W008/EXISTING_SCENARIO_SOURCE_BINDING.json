@@ -1,0 +1,58 @@
+{
+  "file": {
+    "path": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/test/Frp/Instance/ISL/Eaw/P1/P1EndToEndSpec.hs",
+    "bytes": 52536,
+    "sha256": "2c43f06be591d4bff3f91a23d963299b9eba36dfb59a2ac7bb2bf2fcef80542d",
+    "mtime_ns": 1794658364241408719,
+    "mtime_ns_decimal": "1794658364241408719",
+    "inode": 14771457,
+    "dev": 83
+  },
+  "executed_existing_test_expression_count": 2,
+  "mode": "W008 small selector/expression harness, not execution of whole smoke main or new Cabal target",
+  "exact_excerpts": [
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/test/Frp/Instance/ISL/Eaw/P1/P1EndToEndSpec.hs",
+      "lines_1based": [
+        118,
+        139
+      ],
+      "exact_text": "  ProductReceipt\n    \"wall_lifecycle\"\n    \"WallAssembler:wall-params-A\"\n    \"wall-params-A\"\n    scope\n    (object [])\n    (object [])\n    []\n    Nothing\n    \"wall_lifecycle-v1.6.1\"\n    \"wall-code-A\"\n    \"/artifact/wall-A\"\n    \"success\"\n    Nothing\n\nasUpstream :: ProductReceipt -> DirectUpstreamArtifact\nasUpstream receipt =\n  DirectUpstreamArtifact\n    (receiptProductKind receipt)\n    (receiptFeatureInstance receipt)\n    (receiptParameterSetId receipt)\n    (receiptArtifactLocation receipt)\n"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/test/Frp/Instance/ISL/Eaw/P1/P1EndToEndSpec.hs",
+      "lines_1based": [
+        251,
+        281
+      ],
+      "exact_text": "runIdentity :: FeatureRunIdentity\nrunIdentity = featureRunIdentityFromFaoContext wallReceipt\n\nwallIdentity :: WallIdentity\nwallIdentity = WallIdentity localNo\n\nwallCatalog :: WallIdentityCatalog\nwallCatalog = formWallIdentityCatalog [localNo]\n\notherWallIdentity :: WallIdentity\notherWallIdentity = WallIdentity (localNo + 1)\n\ntwoWallCatalog :: WallIdentityCatalog\ntwoWallCatalog = formWallIdentityCatalog [localNo, localNo + 1]\n\nmeasuredBand :: Measurement Spine.WallBand\nmeasuredBand = Measured (Spine.WallBand (Spine.Price 99) (Spine.Price 101) (Spine.Price 100))\n\nwallStart :: WallLifecycleOccurrence\nwallStart =\n  WallLifecycleOccurrence\n    wallIdentity\n    (OccurrenceRef \"wall-occurrence-1\")\n    (Spine.WallLifecycleEvent (wallRefOf wallIdentity) (InstrumentSymbol \"rb\") BidWall 10 (Spine.WallStarted measuredBand Spine.WallAlive) Spine.WallLifecycleAvailable)\n\naskWallStart :: WallLifecycleOccurrence\naskWallStart =\n  WallLifecycleOccurrence\n    otherWallIdentity\n    (OccurrenceRef \"ask-wall-occurrence-1\")\n    (Spine.WallLifecycleEvent (wallRefOf otherWallIdentity) (InstrumentSymbol \"rb\") AskWall 10 (Spine.WallStarted measuredBand Spine.WallAlive) Spine.WallLifecycleAvailable)\n"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/test/Frp/Instance/ISL/Eaw/P1/P1EndToEndSpec.hs",
+      "lines_1based": [
+        455,
+        462
+      ],
+      "exact_text": "wallLifecycleMustBeProductSpecificAndIdempotent :: IO ()\nwallLifecycleMustBeProductSpecificAndIdempotent = do\n  (state, published) <- requireRight \"Wall start\" (applyWallOccurrenceBatch emptyWallLifecycleState [wallStart])\n  unless (published == [wallStart]) $ fail \"Wall state 与 public occurrence 没有原子推进\"\n  (sameState, duplicatePublications) <- requireRight \"Wall duplicate\" (applyWallOccurrenceBatch state [wallStart])\n  unless (sameState == state && null duplicatePublications) $ fail \"相同 Wall occurrence 重放必须幂等且不得重复公开\"\n  let conflict = wallStart {wallOccurrenceIdentity = otherWallIdentity}\n  requireLeft \"conflicting duplicate\" (applyWallOccurrenceBatch state [conflict])\n"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/test/Frp/Instance/ISL/Eaw/P1/P1EndToEndSpec.hs",
+      "lines_1based": [
+        503,
+        538
+      ],
+      "exact_text": "wallLifecycleTransitionTableMustBeComplete :: IO ()\nwallLifecycleTransitionTableMustBeComplete = do\n  let wallChange ref occurredAt change =\n        wallStart\n          { wallOccurrenceRef = OccurrenceRef ref,\n            wallOccurrencePayload =\n              Spine.WallLifecycleEvent\n                (wallRefOf wallIdentity)\n                (InstrumentSymbol \"rb\")\n                BidWall\n                occurredAt\n                change\n                Spine.WallLifecycleAvailable\n          }\n      bandUpdated = wallChange \"wall-occurrence-2\" 11 (Spine.WallBandUpdated measuredBand Spine.WallAlive)\n      becameDormant = wallChange \"wall-occurrence-3\" 12 (Spine.WallPresenceChanged measuredBand Spine.WallDormant)\n      becamePresent = wallChange \"wall-occurrence-4\" 13 (Spine.WallPresenceChanged measuredBand Spine.WallAlive)\n      ended = wallChange \"wall-occurrence-5\" 14 (Spine.WallEnded (Spine.WallEndReason \"producer-end\"))\n      lifecycle = [wallStart, bandUpdated, becameDormant, becamePresent, ended]\n      startedDormant = wallChange \"wall-occurrence-invalid-start\" 10 (Spine.WallStarted measuredBand Spine.WallDormant)\n      samePresent = wallChange \"wall-occurrence-invalid-same-present\" 11 (Spine.WallPresenceChanged measuredBand Spine.WallAlive)\n      bandChangesPresence = wallChange \"wall-occurrence-invalid-band-presence\" 11 (Spine.WallBandUpdated measuredBand Spine.WallDormant)\n      sameDormant = wallChange \"wall-occurrence-invalid-same-dormant\" 13 (Spine.WallPresenceChanged measuredBand Spine.WallDormant)\n      dormantBandChangesPresence = wallChange \"wall-occurrence-invalid-dormant-band\" 13 (Spine.WallBandUpdated measuredBand Spine.WallAlive)\n  (endedState, publications) <- requireRight \"complete Wall transition table\" (applyWallOccurrenceBatch emptyWallLifecycleState lifecycle)\n  unless (publications == lifecycle) $ fail \"Wall transition table 没有逐 occurrence 原子公开\"\n  requireLeft \"Wall cannot start Dormant\" (applyWallOccurrenceBatch emptyWallLifecycleState [startedDormant])\n  requireLeft \"Wall update before start\" (applyWallOccurrenceBatch emptyWallLifecycleState [bandUpdated])\n  (presentState, _) <- requireRight \"Wall present state\" (applyWallOccurrenceBatch emptyWallLifecycleState [wallStart])\n  requireLeft \"Wall same-state Present change\" (applyWallOccurrenceBatch presentState [samePresent])\n  requireLeft \"Wall band update cannot change presence\" (applyWallOccurrenceBatch presentState [bandChangesPresence])\n  (dormantState, _) <- requireRight \"Wall dormant state\" (applyWallOccurrenceBatch presentState [becameDormant])\n  requireLeft \"Wall same-state Dormant change\" (applyWallOccurrenceBatch dormantState [sameDormant])\n  requireLeft \"Wall dormant band update cannot change presence\" (applyWallOccurrenceBatch dormantState [dormantBandChangesPresence])\n  requireLeft \"Wall update after end\" (applyWallOccurrenceBatch endedState [bandUpdated {wallOccurrenceRef = OccurrenceRef \"wall-occurrence-6\"}])\n  mapM_ (uncurry requireBsonRoundTrip) (zip [\"Wall start\", \"Wall band update\", \"Wall dormant\", \"Wall present\", \"Wall end\"] lifecycle)\n"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/test/Frp/Instance/ISL/Eaw/P1/P1EndToEndSpec.hs",
+      "lines_1based": [
+        1019,
+        1034
+      ],
+      "exact_text": "requireRight :: (Show error) => String -> Either error value -> IO value\nrequireRight label = either (fail . ((label <> \": \") <>) . show) pure\n\nrequireLeft :: String -> Either error value -> IO ()\nrequireLeft _ (Left _) = pure ()\nrequireLeft label (Right _) = fail (label <> \" unexpectedly accepted\")\n\nrequireBsonRoundTrip :: (Eq value, ToBSON value, FromBSON value) => String -> value -> IO ()\nrequireBsonRoundTrip label value =\n  let document = toBSON value\n   in unless (fromBSON document == Just value) $ fail (label <> \" BSON round-trip failed: \" <> show document)\n\nrequireCompactBson :: (ToBSON value) => String -> [Text.Text] -> value -> IO ()\nrequireCompactBson label forbidden value = do\n  let rendered = Text.pack (show (toBSON value))\n  unless (\"compact-local-v2\" `Text.isInfixOf` rendered) $\n"
+    }
+  ],
+  "cross_duplicate": "exact existing wallStart repeated in next reducer call; current source result recorded, original assertion retained",
+  "after_end": "same existing update expression/ref6; narrowed setup Start→BandUpdate→End removes Dormant/restore; no new extra scenario",
+  "expectations": "WORKING_NOT_FROZEN; no professional SUPPORTS/COUNTERS"
+}

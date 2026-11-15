@@ -1,0 +1,32 @@
+diff --git a/src/Frp/Instance/BussinessUtils.hs b/src/Frp/Instance/BussinessUtils.hs
+index 123a567..3c3d0b3 100644
+--- a/src/Frp/Instance/BussinessUtils.hs
++++ b/src/Frp/Instance/BussinessUtils.hs
+@@ -68,6 +68,7 @@ import Data.Map qualified as Map
+ import Data.Vector qualified as V
+ import Data.Time
+ import Data.Default (Default)
++import System.Environment (lookupEnv)
+ -- * 统一时间轴Tick数据
+ 
+ -- ** 类型声明
+@@ -467,7 +468,11 @@ readSymbolAffiliatedCalendars filePath = do
+ 
+ -- | 获得各个品种合理的日历
+ getAllAffiliatedCalendars :: (MonadIO m) => m (M.Map Sym (S.Set CalendarName))
+-getAllAffiliatedCalendars = liftIO $ readSymbolAffiliatedCalendars "/m3varI/var/L1_data/sof/unit/affiliated_calendar_no_night.csv"
++getAllAffiliatedCalendars = liftIO $ do
++  -- 允许运行环境指定当前数据源的日历归属文件。
++  calendarCsv <- maybe "/m3varI/var/L1_data/sof/unit/affiliated_calendar_no_night.csv" id
++    <$> lookupEnv "MQUANT_AFFILIATED_CALENDAR_CSV"
++  readSymbolAffiliatedCalendars calendarCsv
+ 
+ -- | 当前品种的合理日历
+ currentSymbolCalendars :: FaoModel (S.Set CalendarName)
+@@ -479,4 +484,4 @@ currentSymbolCalendars = do
+ getSymbolAffiliatedCalendars :: (Fao f) => f -> FaoModel (M.Map Sym (S.Set CalendarName))
+ getSymbolAffiliatedCalendars f = do
+     symbols <- getSymbols f
+-    M.filterWithKey (\k _ -> k `S.member` S.fromList symbols) <$> getAllAffiliatedCalendars
+\ No newline at end of file
++    M.filterWithKey (\k _ -> k `S.member` S.fromList symbols) <$> getAllAffiliatedCalendars

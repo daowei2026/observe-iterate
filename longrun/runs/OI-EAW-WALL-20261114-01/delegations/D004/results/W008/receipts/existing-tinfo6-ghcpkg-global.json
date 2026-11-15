@@ -1,0 +1,57 @@
+{
+  "label": "existing-tinfo6-ghcpkg-global",
+  "at": "2026-11-15T05:11:02.105283+00:00",
+  "argv": [
+    "/nix/.stack/programs/x86_64-linux/ghc-tinfo6-9.4.8/bin/ghc-pkg",
+    "list",
+    "--simple-output"
+  ],
+  "cwd": "/dwdhome/fy/BASE_E6_2",
+  "input_scope": "已存在同版本GHC global pkgdb只读",
+  "expected_writes": [
+    "W008日志"
+  ],
+  "timeout_seconds": 30,
+  "stop_method": "private process group TERM then KILL after 5s on timeout or stdout/stderr >5GiB; no automatic retry",
+  "output_paths": [
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/logs/existing-tinfo6-ghcpkg-global.stdout",
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/logs/existing-tinfo6-ghcpkg-global.stderr"
+  ],
+  "env_overrides": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "TMPDIR": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/tmp",
+    "TMP": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/tmp",
+    "TEMP": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/tmp",
+    "XDG_CACHE_HOME": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/cache",
+    "GIT_OPTIONAL_LOCKS": "0"
+  },
+  "lock": {
+    "at": "2026-11-15T05:11:02.107428+00:00",
+    "pid": 255320,
+    "startticks": "49586940",
+    "inode": 14866078,
+    "competition_errno": 11
+  },
+  "ended_at": "2026-11-15T05:11:04.421403+00:00",
+  "exit_code": 0,
+  "elapsed_seconds": 2.29453359200852,
+  "stop_reason": null,
+  "stdout": {
+    "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/logs/existing-tinfo6-ghcpkg-global.stdout",
+    "bytes": 580,
+    "sha256": "c113c8e35133eaf7a6d47ae4ca640a1bce70b9b2892952408858fd50dde7625e",
+    "mtime_ns": 1794719464351840265,
+    "mtime_ns_decimal": "1794719464351840265",
+    "inode": 14865107,
+    "dev": 83
+  },
+  "stderr": {
+    "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/logs/existing-tinfo6-ghcpkg-global.stderr",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "mtime_ns": 1794719462161115427,
+    "mtime_ns_decimal": "1794719462161115427",
+    "inode": 14865009,
+    "dev": 83
+  }
+}

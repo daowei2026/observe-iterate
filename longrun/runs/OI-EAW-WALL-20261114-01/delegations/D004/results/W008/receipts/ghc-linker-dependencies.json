@@ -1,0 +1,56 @@
+{
+  "label": "ghc-linker-dependencies",
+  "at": "2026-11-15T05:10:24.656535+00:00",
+  "argv": [
+    "ldd",
+    "/nix/.ghcup/ghc/9.4.8/lib/ghc-9.4.8/bin/ghc-9.4.8"
+  ],
+  "cwd": "/dwdhome/fy/BASE_E6_2",
+  "input_scope": "仅现有GHC ELF依赖查询，不安装依赖",
+  "expected_writes": [
+    "W008日志"
+  ],
+  "timeout_seconds": 30,
+  "stop_method": "private process group TERM then KILL after 5s on timeout or stdout/stderr >5GiB; no automatic retry",
+  "output_paths": [
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/logs/ghc-linker-dependencies.stdout",
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/logs/ghc-linker-dependencies.stderr"
+  ],
+  "env_overrides": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "TMPDIR": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/tmp",
+    "TMP": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/tmp",
+    "TEMP": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/tmp",
+    "XDG_CACHE_HOME": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/cache",
+    "GIT_OPTIONAL_LOCKS": "0"
+  },
+  "lock": {
+    "at": "2026-11-15T05:10:24.658575+00:00",
+    "pid": 255320,
+    "startticks": "49586940",
+    "inode": 14866078,
+    "competition_errno": 11
+  },
+  "ended_at": "2026-11-15T05:10:24.891040+00:00",
+  "exit_code": 0,
+  "elapsed_seconds": 0.203093618969433,
+  "stop_reason": null,
+  "stdout": {
+    "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/logs/ghc-linker-dependencies.stdout",
+    "bytes": 5371,
+    "sha256": "35716f6dd2671f0e0b7f29ead1e7d58738097d4dc546b4f3ad22210f9131a0e0",
+    "mtime_ns": 1794719424853846983,
+    "mtime_ns_decimal": "1794719424853846983",
+    "inode": 14865007,
+    "dev": 83
+  },
+  "stderr": {
+    "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/logs/ghc-linker-dependencies.stderr",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "mtime_ns": 1794719424715356440,
+    "mtime_ns_decimal": "1794719424715356440",
+    "inode": 14866008,
+    "dev": 83
+  }
+}
