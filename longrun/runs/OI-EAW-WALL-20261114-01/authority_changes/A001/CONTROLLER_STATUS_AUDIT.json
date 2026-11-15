@@ -1,0 +1,68 @@
+{
+  "record_kind": "controller factual reconciliation for Owner A001 management review; not a Worker Return or professional acceptance",
+  "run_id": "OI-EAW-WALL-20261114-01",
+  "recorded_at": "2026-11-15T04:00:46.772991+00:00",
+  "C0015": {
+    "actual_call_count_total": 15,
+    "action_history": [
+      "NOT_SENT",
+      "IN_FLIGHT",
+      "COMPLETED"
+    ],
+    "return_ref": "daowei2026/observe-iterate@946fa7931bf25b88c04c11b3a58cbcb3590841c5:longrun/runs/OI-EAW-WALL-20261114-01/calls/C0015/PRO_RETURN.json",
+    "remote_reread_original_confirmed": true,
+    "original_E1": true,
+    "formal_return_phone_collection_closed": true,
+    "scope": "C0015历史接受W006限域事实并签发W007；未作父任务完成决定"
+  },
+  "pause": {
+    "manual_pause_record": "OWNER-PAUSE-verification.json; scheduler rev144 stopped; same root Goal paused createdAt1794660644; cancelled token5df1b717455c41e0a7be2ab9223ee55a timer inactive",
+    "now": "Owner原消息明确恢复同Run管理和对账；原Goal已active，scheduler145active，未创建新Goal/Run；旧W007不恢复或派发"
+  },
+  "W007": {
+    "action_history": [
+      "NOT_SENT",
+      "IN_FLIGHT"
+    ],
+    "actually_dispatched": true,
+    "physical_worker_thread": "01a1da55-5881-7590-94a1-0661f0236977",
+    "physical_turn": "01a1dd15-f35a-7892-bca9-6de6721263b5",
+    "unique_started_at": "2026-11-15T02:42:45.760143Z",
+    "client_message_id": "OI-EAW-WALL-20261114-01-W007-FIRST-DISPATCH-01",
+    "current_turn_status": "completed",
+    "completed_at": "2026-11-15T03:17:08.140Z",
+    "current_thread_status": {
+      "type": "notLoaded"
+    },
+    "current_goal": {
+      "goal": null
+    },
+    "current_queue": {
+      "data": [],
+      "nextCursor": null
+    },
+    "resume_start_steer_sent_this_change": false,
+    "outcome": "STOP",
+    "stop_code": "STOP_R0_B_GIT_DEV_NULL_O_RDWR_EACCES",
+    "existing_local_originals_count": 85,
+    "existing_local_originals_bytes": 2075599,
+    "all85_named_originals_sha256_independently_verified": true,
+    "local_stage_report_ref": "daowei2026/observe-iterate@db7cc8a0c7337641017aef1b9fc980a23959dbfd:longrun/runs/OI-EAW-WALL-20261114-01/authority_changes/A001/W007_LOCAL_STAGE_REPORT.md",
+    "report_sha256": "1a2a57d6b7a53e2a695d25a66327fe1140070011e4ed5367b1d4e90e3d0c8666",
+    "formal_return_created": false,
+    "all85_publication_or_formal_Return_generator_dispatched": false,
+    "local_execution_facts": "carry-forward/fresh/evaluator PASS，唯一R0-A1 exit0、完整probe/FIOCLEX/组合锁证明PASS。R0-B首个git cat-file内部O_RDWR打开/dev/null EACCES，Git128/driver1，无retry；两个closure均未实际评估。R0-C/八EP/所有场景未进入。",
+    "observed_effects": "现有85文件2,075,599bytes为真实已发生新增写入；Worker fulltrace报告限定7072行、15成功write/24872bytes根内、unknown0，32具名输入不变。主控核85原件hash一致；不外推全BASE/HOME零副作用或业务PASS。",
+    "reservation_lock": {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/.D003-writer.lock",
+      "inode": 14806399,
+      "competition": "HELD",
+      "keeper_pid": 251010,
+      "keeper_exists": true,
+      "keeper_startticks": "48763578"
+    },
+    "reservation_note": "锁仍保留，无执行中Worker，不因保留锁自行恢复W007；待manager有权收束与E1接续决定后按真实终态释放。"
+  },
+  "history": "D001/D002已有合格限域成果及全部旧引用保留；D003仍IN_FLIGHT，父任务/三个父Q未宣布完成。原manager全景仅C0008版，不冒充包含C0015/W007的新全景。",
+  "requested_decision": "仅Owner要求的管理纠偏：D003与旧工程前置必要性、W007合法停止/替代/收束、保留专业成果、更新完成全景及原E1按新方法实际后继。主控不预判专业路线。"
+}
