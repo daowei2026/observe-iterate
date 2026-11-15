@@ -1,0 +1,59 @@
+{
+  "record_kind": "Owner-authenticated incremental effective-authority record; not replacement RUN_BINDING",
+  "run_id": "OI-EAW-WALL-20261114-01",
+  "change_id": "A001",
+  "recorded_at": "2026-11-15T03:59:58.426027+00:00",
+  "binding_ref": "daowei2026/observe-iterate@1e00424349ce8a5d72c9fccf74585d18630b62b8:longrun/runs/OI-EAW-WALL-20261114-01/RUN_BINDING.json",
+  "original_binding_sha256": "2dc9e25124f9bf08c967e2b50b723014bb680cf57a24bd9841854692c24957cc",
+  "owner_change_ref": "daowei2026/observe-iterate@33c7a222687186c1e1c8c685993a341513820d8d:longrun/runs/OI-EAW-WALL-20261114-01/authority_changes/A001/OWNER_CHANGE.md",
+  "owner_change_sha256": "8ee5b5016892d84e076a377c54cc85765905f72df8a372a5f42bf969e9392f4c",
+  "owner_message_id": "01a1dd55-aa53-73a1-aa7a-ba748fb5cd6d",
+  "owner_message_client_id": "cf83684d-9c52-4bde-9651-d4fc4021b133",
+  "not_new_GO": true,
+  "history_unchanged": true,
+  "effective_from": "Owner message for prospective new professional work; first new invocation C0016",
+  "business_commit": "dc18a7251b8d433bd8c16ccd0f9cbdf230b1819c",
+  "controller_commit": "becfbcbc7eec3e4fc6a44cd0b0a7a934ec666ff8",
+  "grant_additions": [
+    {
+      "operation": "wall-observation-work",
+      "execution_context": "linux:/dwdhome/fy/BASE_E6_2",
+      "allowed_writes": [
+        "/dwdhome/fy/BASE_E6_2"
+      ],
+      "authority_quote": "operation=wall-observation-work execution_context=linux:/dwdhome/fy/BASE_E6_2 allowed_writes=/dwdhome/fy/BASE_E6_2"
+    }
+  ],
+  "prior_grants_retained": [
+    {
+      "operation": "wall-observation-work",
+      "execution_context": "linux:/dwdhome/fy/BASE_E6_2",
+      "allowed_writes": [
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01"
+      ],
+      "authority_quote": "operation=wall-observation-work execution_context=linux:/dwdhome/fy/BASE_E6_2 allowed_writes=/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01"
+    },
+    {
+      "operation": "run-record-publish",
+      "execution_context": "github:daowei2026/observe-iterate:runs/OI-EAW-WALL-20261114-01",
+      "allowed_writes": [
+        "longrun/runs/OI-EAW-WALL-20261114-01"
+      ],
+      "authority_quote": "operation=run-record-publish execution_context=github:daowei2026/observe-iterate:runs/OI-EAW-WALL-20261114-01 allowed_writes=longrun/runs/OI-EAW-WALL-20261114-01"
+    }
+  ],
+  "constraints": [
+    "仅本Run必要本地观察工作",
+    "小范围修改前核已有差异，不覆盖他人未提交修改",
+    "禁止破坏性Git、覆盖现役成果、无关修改或向正式源码分支推送",
+    "优先直接复用BASE现有源码/数据/构建环境/工具",
+    "不新增独立源码副本、Landlock/seccomp、全局零外写或clean closure前置",
+    "W007不恢复不派发；先原manager决定，再原E1正式接续"
+  ],
+  "mechanical_validation": {
+    "original_binding": "继续以原Binding原文及原GO通过采用版Gate，不改写旧Binding或授予旧W新权限",
+    "current_C0016": "仅manager管理审查，使用原Run发布grant；原版validate-invocation与reconcile-actions仍必须通过",
+    "future_new_D_W": "新签D/W须引用此A001与真实Owner source，机械核生效grant、Owner/D双重子集及新单写者/物理端；不能拿旧Binding grant或Gate PASS冒充新授权覆盖",
+    "upstream_limit": "dc18a长程Gate/Schema未定义独立amendment解析动作。本记录保存真实增量及生效边界；未来新增BASE根写工单须补显式增量机械核验，不能默默修改旧Binding或跳过原有身份/Return检查。"
+  }
+}
