@@ -1,0 +1,68 @@
+{
+  "status": "NOT_ATTEMPTED_STATIC_PREPARATION_STOP",
+  "WRITE_CONFINEMENT_PASS": false,
+  "R0_A1_attempts": 0,
+  "parent_child_runtime_instantiated": false,
+  "read_only_stdin_wiring_exercised_in_W005": false,
+  "inherited_FD_probe_exercised": false,
+  "NNP_installs": 0,
+  "Landlock_installs": 0,
+  "seccomp_installs": 0,
+  "FIOCLEX_actual_kernel_result_W005": null,
+  "F_GETFD_CLOEXEC_evidence": null,
+  "nine_probes": [
+    {
+      "number": 1,
+      "name": "inside create/write/rename/remove",
+      "status": "NOT_RUN"
+    },
+    {
+      "number": 2,
+      "name": "OUTSIDE create/write deny",
+      "status": "NOT_RUN"
+    },
+    {
+      "number": 3,
+      "name": "SHARED create deny",
+      "status": "NOT_RUN"
+    },
+    {
+      "number": 4,
+      "name": "HOME/CODEX read allowed create deny",
+      "status": "NOT_RUN"
+    },
+    {
+      "number": 5,
+      "name": "child/grandchild inheritance",
+      "status": "NOT_RUN"
+    },
+    {
+      "number": 6,
+      "name": "symlink escape deny",
+      "status": "NOT_RUN"
+    },
+    {
+      "number": 7,
+      "name": "inherited writable FD closed and holder intact",
+      "status": "NOT_RUN"
+    },
+    {
+      "number": 8,
+      "name": "socket/connect deny",
+      "status": "NOT_RUN"
+    },
+    {
+      "number": 9,
+      "name": "full trace covers all probes",
+      "status": "NOT_RUN"
+    }
+  ],
+  "controller_sentinel_receipt_preserved": "CONTROLLER_SENTINEL_PRECONFIRMATION.json",
+  "negative_targets_pre_and_post_absent": true,
+  "actual_HOME": "/home/dw",
+  "actual_CODEX_HOME": "/home/dw/.codex",
+  "HOME_CODEX_reset": false,
+  "new_failure": "STOP_SECCOMP_STATIC_PREPARATION_ASSERTION",
+  "W004_facts_preserved_not_reexecuted": "W004 ABI6/NNP/Landlock/seccomp installed; second Python FIOCLEX EPERM before probe body. Those historical successes do not constitute W005 enforcement.",
+  "confinement_or_global_zero_write_PASS_claimed": false
+}

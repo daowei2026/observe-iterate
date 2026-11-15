@@ -1,0 +1,146 @@
+{
+  "schema": "local-worker-stage-handoff/v1",
+  "run_id": "OI-EAW-WALL-20261114-01",
+  "work_order_id": "W005",
+  "worker": "codex:OI-EAW-WALL-20261114-01:worker:W1",
+  "return_to": "chatgpt:OI-EAW-WALL-20261114-01:executor:E1",
+  "outcome": "STOP",
+  "gate": "PREFLIGHT_STOP",
+  "stop_code": "STOP_SECCOMP_STATIC_PREPARATION_ASSERTION",
+  "missing": [
+    "静态准备脚本错误地要求旧trace中所有FIOCLEX均EPERM，遇到安装前成功记录后AssertionError/exit1；依新失败即停，未修复或重试。",
+    "W005 runtime/launcher/BPF尚未物化；唯一request delta的逐instruction比较未执行。",
+    "纯BPF evaluator未进入，arch/x32/FIOCLEX/FIONCLEX/arbitrary/high32/socket/ordinary/jumpbounds与非ioctl等价均未获验收PASS。",
+    "R0-A1实际尝试0；NNP/Landlock/seccomp当前安装与FIOCLEX成功及F_GETFD_CLOEXEC证据均无。",
+    "九项kernel probe及child/grandchild、read-only stdin/inherited FD接线均未在W005执行。",
+    "没有W005完整kernel trace，无法证明成功descriptor write路径完备、confinement或全局零外写；未把shell路径审阅/历史trace代替实测。",
+    "R0-B未进入；E与B候选均未评估，没有唯一兼容完整offline closure、package DB/transitive IDs/rebuild set，也不宣称二者均失败。",
+    "8个exact FRP Git对象因前置停止未读取；没有源码调查、staging或exact-base工程实现。",
+    "R0-C未进入；disk/RSS/wall/files四个非空预测上界、同closure可比依据及持续monitor/kill回执缺失。",
+    "四PASS均未成立，条件八EP包未建设；六项NOT_ATTEMPTED、一项SHARED-03 UNSATISFIED、旧SCENARIO-04仅继承PARTIAL，当前新增SATISFIED=0。",
+    "snapshot/accessor、DTO/schema、target、exact error/transaction synthetic records、patch/commit、fixture9/18/22、compile-only/serialization均未产生；不造空条件产物。",
+    "实际证据尚未由主控出版，准确GitHub result_ref/manifest refs待真实commit回传；本Worker无GitHub写授权。",
+    "正式longrun-worker-return/v2尚未生成；须证据先出版、同原W1同W005取得真refs后生成并仅回原E1，再由主控出版worker_results/W005/WORKER_RETURN.json。",
+    "专业接受、action eligibility、G-RUN/H3、父Q和父任务完成仍归E1/manager，Worker未作决定。"
+  ],
+  "deliverable_mapping": [
+    {
+      "deliverable_literal": "WORKER_EXECUTION_REPORT.md with exact FIOCLEX static-policy check, Phase0 recovery and conditional EP outcome",
+      "local_files": [
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W005/artifacts/WORKER_EXECUTION_REPORT.md"
+      ],
+      "status": "LOCAL_STOP_EVIDENCE",
+      "note": "只交真实已发生状态，不以停止报告冒充成功工程证明。"
+    },
+    {
+      "deliverable_literal": "W005_BINDING.json with original W1 physical-chat reuse, fresh owner/thread/model/effort/cwd/no-writer/new-lock, unchanged HOME/CODEX_HOME and independent W005 root",
+      "local_files": [
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W005/artifacts/W005_BINDING.json"
+      ],
+      "status": "LOCAL_STOP_EVIDENCE",
+      "note": "只交真实已发生状态，不以停止报告冒充成功工程证明。"
+    },
+    {
+      "deliverable_literal": "CONTROLLER_SENTINEL_PRECONFIRMATION.json preserving the controller read-only absence receipt for /D003/.W005-deny-outside-C0013-b6e58ef8",
+      "local_files": [
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W005/artifacts/CONTROLLER_SENTINEL_PRECONFIRMATION.json"
+      ],
+      "status": "LOCAL_STOP_EVIDENCE",
+      "note": "只交真实已发生状态，不以停止报告冒充成功工程证明。"
+    },
+    {
+      "deliverable_literal": "SECCOMP_IOCTL_FILTER_DELTA.json proving a single verified FIOCLEX request exception while all other ioctl requests remain denied",
+      "local_files": [
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W005/artifacts/SECCOMP_IOCTL_FILTER_DELTA.json",
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W005/artifacts/FIOCLEX_LOCAL_CONSTANT_VERIFICATION.json"
+      ],
+      "status": "LOCAL_STOP_EVIDENCE",
+      "note": "只交真实已发生状态，不以停止报告冒充成功工程证明。"
+    },
+    {
+      "deliverable_literal": "SECCOMP_FILTER_STATIC_EVALUATION.json covering arch, x32, FIOCLEX, FIONCLEX, arbitrary ioctl, existing denied and ordinary allowed syscall cases",
+      "local_files": [
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W005/artifacts/SECCOMP_FILTER_STATIC_EVALUATION.json"
+      ],
+      "status": "LOCAL_STOP_EVIDENCE",
+      "note": "只交真实已发生状态，不以停止报告冒充成功工程证明。"
+    },
+    {
+      "deliverable_literal": "WRITE_CONFINEMENT_REPORT.json and FULL_WRITE_TRACE_REVIEW.json proving or accurately failing kernel enforcement, nine probes and path-complete writes",
+      "local_files": [
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W005/artifacts/WRITE_CONFINEMENT_REPORT.json",
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W005/artifacts/FULL_WRITE_TRACE_REVIEW.json"
+      ],
+      "status": "LOCAL_STOP_EVIDENCE",
+      "note": "只交真实已发生状态，不以停止报告冒充成功工程证明。"
+    },
+    {
+      "deliverable_literal": "OFFLINE_CLOSURE_REPORT.json selecting exactly one compatible complete offline closure or stopping",
+      "local_files": [
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W005/artifacts/OFFLINE_CLOSURE_REPORT.json"
+      ],
+      "status": "LOCAL_STOP_EVIDENCE",
+      "note": "只交真实已发生状态，不以停止报告冒充成功工程证明。"
+    },
+    {
+      "deliverable_literal": "RESOURCE_BUDGET_REPORT.json with non-null evidence-backed disk/RSS/wall/file bounds and verified continuous monitors or stopping",
+      "local_files": [
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W005/artifacts/RESOURCE_BUDGET_REPORT.json"
+      ],
+      "status": "LOCAL_STOP_EVIDENCE",
+      "note": "只交真实已发生状态，不以停止报告冒充成功工程证明。"
+    },
+    {
+      "deliverable_literal": "PHASE0_RECOVERY_VERDICT.json with four independent PASS requirements and exact gate/stop routing",
+      "local_files": [
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W005/artifacts/PHASE0_RECOVERY_VERDICT.json"
+      ],
+      "status": "LOCAL_STOP_EVIDENCE",
+      "note": "只交真实已发生状态，不以停止报告冒充成功工程证明。"
+    },
+    {
+      "deliverable_literal": "COMMAND_LOG.jsonl, WRITE_SURFACE_AUDIT.json, EP_ACCEPTANCE_MATRIX.md, PUBLICATION_MANIFEST.json and HASHES.sha256",
+      "local_files": [
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W005/artifacts/COMMAND_LOG.jsonl",
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W005/artifacts/WRITE_SURFACE_AUDIT.json",
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W005/artifacts/EP_ACCEPTANCE_MATRIX.md",
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W005/artifacts/PUBLICATION_MANIFEST.json",
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W005/artifacts/HASHES.sha256"
+      ],
+      "status": "LOCAL_STOP_EVIDENCE",
+      "note": "只交真实已发生状态，不以停止报告冒充成功工程证明。"
+    },
+    {
+      "deliverable_literal": "If and only if all four Phase0 requirements pass: exact-base staged eight-EP package, reviewable patch/manifest, complete unexecuted 9/18/22 fixture, permitted compile-only/synthetic-serialization reports, and NOT_UPSTREAM_PUBLISHED local commit report if actually created",
+      "local_files": [],
+      "status": "NOT_ATTEMPTED_FOUR_PASS_NOT_MET",
+      "note": "条件Gate未满足，不造空条件文件。"
+    },
+    {
+      "deliverable_literal": "ENGINEERING_STOP_REPORT.md for any STOP without fake empty conditional artifacts",
+      "local_files": [
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W005/artifacts/ENGINEERING_STOP_REPORT.md"
+      ],
+      "status": "LOCAL_STOP_EVIDENCE",
+      "note": "原件与索引封存见外层FREEZE_RECEIPT。"
+    },
+    {
+      "deliverable_literal": "V2 WORKER_RETURN.json returning only to executor E1",
+      "local_files": [],
+      "status": "PENDING_TRUE_PUBLISHED_REFS_THEN_SAME_W1_FORMAL_RETURN",
+      "note": "正式Return由真实出版refs接续，不引用未来自身。"
+    }
+  ],
+  "true_github_commit": null,
+  "result_ref": null,
+  "formal_WORKER_RETURN_created": false,
+  "publication_target_root": "longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/",
+  "formal_return_later_target": "longrun/runs/OI-EAW-WALL-20261114-01/worker_results/W005/WORKER_RETURN.json",
+  "next_steps": [
+    "主控逐字出版全部冻结原件并远端核验bytes/hash。",
+    "主控回传真实commit/ref/hash到同原W1同W005。",
+    "Worker仅在final-return新写正式v2 Return/validation，仅回原E1；主控出版。",
+    "E1/manager执行其余合同Gate和专业接受决定。"
+  ],
+  "local_goal_completion_scope": "仅本W本地STOP调查与原件交付；不是W/D3/父任务完成。"
+}

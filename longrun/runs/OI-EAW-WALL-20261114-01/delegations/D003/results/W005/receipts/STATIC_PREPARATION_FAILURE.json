@@ -1,0 +1,52 @@
+{
+  "status": "FAILED_STOP_NO_RETRY",
+  "stop_code": "STOP_SECCOMP_STATIC_PREPARATION_ASSERTION",
+  "attempts": 1,
+  "native_command_record": {
+    "session_source": "/home/dw/.codex/sessions/2026/11/14/rollout-2026-11-14T21-53-08-01a1da55-5881-7590-94a1-0661f0236977.jsonl",
+    "session_line": 1664,
+    "timestamp": "2026-11-14T23:49:02.511Z",
+    "turn_id": "01a1dc6f-c611-7ba1-8301-f0bef1f0eef0",
+    "item": {
+      "type": "CommandExecution",
+      "id": "exec-9065186f-4b0d-405c-9382-6e42cb70bdf0",
+      "process_id": "54171",
+      "command": [
+        "/bin/bash",
+        "-lc",
+        "PYTHONDONTWRITEBYTECODE=1 TMPDIR=/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W005/tmp /usr/bin/python3.12 -I -S -B /dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W005/tools/prepare_static.py"
+      ],
+      "cwd": "file:///dwdhome/fy/BASE_E6_2",
+      "parsed_cmd": [
+        {
+          "type": "unknown",
+          "cmd": "PYTHONDONTWRITEBYTECODE=1 TMPDIR=/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W005/tmp /usr/bin/python3.12 -I -S -B /dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W005/tools/prepare_static.py"
+        }
+      ],
+      "source": "unified_exec_startup",
+      "status": "failed",
+      "aggregated_output": "Traceback (most recent call last):\n  File \"/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W005/tools/prepare_static.py\", line 32, in <module>\n    assert trace_lines and all('EPERM' in x['text'] for x in trace_lines)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+      "exit_code": 1,
+      "duration": {
+        "secs": 0,
+        "nanos": 36057548
+      }
+    }
+  },
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\n  File \"/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W005/tools/prepare_static.py\", line 32, in <module>\n    assert trace_lines and all('EPERM' in x['text'] for x in trace_lines)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+  "stdout_stderr_attribution": "该命令唯一输出为Python traceback；原生完整aggregated_output一并保留。",
+  "runtime_created": false,
+  "launcher_created": false,
+  "BPF_evaluator_entered": false,
+  "kernel_policy_installed": false,
+  "R0_A1_attempts": 0,
+  "preparer_source": {
+    "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W005/tools/prepare_static.py",
+    "bytes": 10786,
+    "sha256": "6d9168b2358c84d03c16281c77dc3921e7c165cf9f4de5d81ceba3c59a05a4af",
+    "mtime_ns": 1794700142242479550,
+    "inode": 14838446,
+    "dev": 83
+  }
+}

@@ -1,0 +1,262 @@
+{
+  "record_type": "W004_WRITE_CONFINEMENT_REPORT",
+  "utc": "2026-11-14T22:26:47.339624+00:00",
+  "outcome": "STOP",
+  "status": "RECOVERY_STOP_WRITE_CONFINEMENT",
+  "specific_stop": "PROBE_BOOTSTRAP_IOCTL_FIOCLEX_EPERM",
+  "R0_A0_static_review": "STATIC_WIRING_REVIEW_PASS",
+  "actual_parent_stdin": {
+    "opened_path": "/dev/null",
+    "F_GETFL_raw": 32768,
+    "access_mode": "O_RDONLY",
+    "parent_fd": 6,
+    "parent_pid": 244045,
+    "opened_at": "2026-11-14T22:21:28.004784+00:00",
+    "child_pid": 244046,
+    "parent_close_timestamp": "2026-11-14T22:21:28.006602+00:00",
+    "parent_close_result": "CLOSED_OWN_COPY_SUCCESS"
+  },
+  "actual_launcher_stdio": [
+    {
+      "fd": 0,
+      "path": "/dev/null",
+      "flags": 32768,
+      "access_mode": 0,
+      "writable": false,
+      "inode": 5,
+      "nlink": 1
+    },
+    {
+      "fd": 1,
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/logs/r0a1.stdout",
+      "flags": 32769,
+      "access_mode": 1,
+      "writable": true,
+      "inode": 14829532,
+      "nlink": 1
+    },
+    {
+      "fd": 2,
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/logs/r0a1.stderr",
+      "flags": 32769,
+      "access_mode": 1,
+      "writable": true,
+      "inode": 14830520,
+      "nlink": 1
+    }
+  ],
+  "parent_child_readonly_stdin_wiring_pass": true,
+  "controller_sentinel_preconfirmation_pass": true,
+  "sentinel_preconfirmation": {
+    "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/artifacts/CONTROLLER_SENTINEL_PRECONFIRMATION.json",
+    "bytes": 656,
+    "sha256": "d56b0541daeb37e39978b88ecafbc8fa3e562f882b46d8042b3ad669b3e5bc4a",
+    "mtime_ns": 1794694774233371359,
+    "inode": 14830613,
+    "dev": 83
+  },
+  "kernel_policy_setup_calls_success": true,
+  "ABI_observed": 6,
+  "kernel_calls": [
+    {
+      "operation": "landlock_create_ruleset_VERSION",
+      "return": 6,
+      "errno": 0
+    },
+    {
+      "operation": "prctl_PR_SET_NO_NEW_PRIVS",
+      "return": 0,
+      "errno": 0
+    },
+    {
+      "operation": "landlock_create_ruleset",
+      "return": 3,
+      "errno": 0
+    },
+    {
+      "operation": "landlock_add_rule_PATH_BENEATH_only_WORK_ROOT",
+      "return": 0,
+      "errno": 0
+    },
+    {
+      "operation": "landlock_restrict_self",
+      "return": 0,
+      "errno": 0
+    },
+    {
+      "operation": "prctl_PR_SET_SECCOMP_FILTER",
+      "return": 0,
+      "errno": 0
+    }
+  ],
+  "policy_rights": {
+    "WRITE_FILE": 2,
+    "REMOVE_DIR": 16,
+    "REMOVE_FILE": 32,
+    "MAKE_CHAR": 64,
+    "MAKE_DIR": 128,
+    "MAKE_REG": 256,
+    "MAKE_SOCK": 512,
+    "MAKE_FIFO": 1024,
+    "MAKE_BLOCK": 2048,
+    "MAKE_SYM": 4096,
+    "REFER": 8192,
+    "TRUNCATE": 16384,
+    "IOCTL_DEV": 32768
+  },
+  "only_write_allow_root": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004",
+  "filesystem_write_exceptions": [],
+  "seccomp_denied_syscalls": {
+    "socket": 41,
+    "connect": 42,
+    "accept": 43,
+    "sendto": 44,
+    "recvfrom": 45,
+    "sendmsg": 46,
+    "recvmsg": 47,
+    "shutdown": 48,
+    "bind": 49,
+    "listen": 50,
+    "getsockname": 51,
+    "getpeername": 52,
+    "socketpair": 53,
+    "setsockopt": 54,
+    "getsockopt": 55,
+    "accept4": 288,
+    "recvmmsg": 299,
+    "sendmmsg": 307,
+    "ioctl": 16,
+    "chmod": 90,
+    "fchmod": 91,
+    "chown": 92,
+    "fchown": 93,
+    "lchown": 94,
+    "utime": 132,
+    "utimes": 235,
+    "futimesat": 261,
+    "utimensat": 280,
+    "fchmodat": 268,
+    "fchmodat2": 452,
+    "fchownat": 260,
+    "setxattr": 188,
+    "lsetxattr": 189,
+    "fsetxattr": 190,
+    "removexattr": 197,
+    "lremovexattr": 198,
+    "fremovexattr": 199,
+    "mount": 165,
+    "umount2": 166,
+    "pivot_root": 155,
+    "chroot": 161,
+    "open_by_handle_at": 304,
+    "ptrace": 101,
+    "process_vm_writev": 311,
+    "io_uring_setup": 425,
+    "io_uring_enter": 426,
+    "io_uring_register": 427,
+    "acct": 163,
+    "quotactl": 179,
+    "swapon": 167,
+    "swapoff": 168,
+    "reboot": 169,
+    "sethostname": 170,
+    "setdomainname": 171,
+    "sync": 162
+  },
+  "inherited_FDs_closed": [
+    {
+      "fd": 3,
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/.D003-writer.lock",
+      "flags": 163842,
+      "writable": true,
+      "closed_before_restrict_and_exec": true
+    }
+  ],
+  "launcher_receipt": {
+    "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/receipts/r0a1-launcher.json",
+    "bytes": 4462,
+    "sha256": "9491a0396c332d0e6703186b01450977e38e1230af7d78d53d50732e57939c2b",
+    "mtime_ns": 1794694888558624754,
+    "inode": 14828748,
+    "dev": 83
+  },
+  "single_attempt": {
+    "count": 1,
+    "started_at": "2026-11-14T22:21:27.970491+00:00",
+    "completed_at": "2026-11-14T22:21:28.799738+00:00",
+    "elapsed_seconds": 0.8291986740077846,
+    "exit_code": 2,
+    "timeout": false,
+    "parent_Popen_child_strace_pid": 244046,
+    "tracee_launcher_then_interpreter_pid": 244050,
+    "probe_script_body_entered": false,
+    "child_grandchild_spawned": 0,
+    "automatic_retry_or_parameter_change": false
+  },
+  "actual_failure": {
+    "trace": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/trace/r0a1.244050",
+    "line": 1509,
+    "syscall": "ioctl",
+    "raw": "1794694888.704672 ioctl(3</dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/tools/confinement_probe.py>, FIOCLEX) = -1 EPERM (Operation not permitted)",
+    "return_text": "-1 EPERM (Operation not permitted)"
+  },
+  "cause_zh": "候选seccomp按syscall号整体拒绝ioctl(16)，已安装后Python脚本fopen所用FIOCLEX ioctl返回EPERM。脚本O_RDONLY open/read可成功，probe主体未运行。保留该兼容性停止点，不调整policy到成功。",
+  "not_a_Landlock_ABI_right_or_create_add_restrict_failure": true,
+  "probes": [
+    {
+      "index": 1,
+      "requirement": "inside-root create/write/rename/remove",
+      "status": "NOT_EXECUTED_PROBE_SCRIPT_BOOTSTRAP_FAILURE"
+    },
+    {
+      "index": 2,
+      "requirement": "OUTSIDE create/write kernel denial and no file",
+      "status": "NOT_EXECUTED_PROBE_SCRIPT_BOOTSTRAP_FAILURE"
+    },
+    {
+      "index": 3,
+      "requirement": "SHARED new-file open denied",
+      "status": "NOT_EXECUTED_PROBE_SCRIPT_BOOTSTRAP_FAILURE"
+    },
+    {
+      "index": 4,
+      "requirement": "HOME/CODEX unchanged, readable and new-create denied",
+      "status": "NOT_EXECUTED_PROBE_SCRIPT_BOOTSTRAP_FAILURE"
+    },
+    {
+      "index": 5,
+      "requirement": "child/grandchild inherit restriction",
+      "status": "NOT_EXECUTED_PROBE_SCRIPT_BOOTSTRAP_FAILURE"
+    },
+    {
+      "index": 6,
+      "requirement": "symlink escape denial",
+      "status": "NOT_EXECUTED_PROBE_SCRIPT_BOOTSTRAP_FAILURE"
+    },
+    {
+      "index": 7,
+      "requirement": "preopened writable FD closed and holder intact",
+      "status": "LAUNCHER_FD_CLOSE_AND_PARENT_POST_LOCK_CHECK_VERIFIED_ONLY",
+      "detail": "独立O_RDWR锁FD3在1180行关闭；父runtime结束后的guard仍同inode竞争EAGAIN。probe内fstat EBADF和子孙继承未执行。"
+    },
+    {
+      "index": 8,
+      "requirement": "network socket/connect denial or equivalent offline",
+      "status": "NOT_EXECUTED_PROBE_SCRIPT_BOOTSTRAP_FAILURE"
+    },
+    {
+      "index": 9,
+      "requirement": "full trace for all required probes",
+      "status": "NOT_EXECUTED_PROBE_SCRIPT_BOOTSTRAP_FAILURE",
+      "detail": "本次实际launcher/第二Python启动被全trace覆盖；probe主体未执行，不能算九项probe全PASS。"
+    }
+  ],
+  "WRITE_CONFINEMENT_PASS": false,
+  "actual_successful_write_scope": "本trace仅两个成功write，4462字节launcher receipt和166字节stderr，均在W004。",
+  "outside_successful_writes_observed_in_trace": 0,
+  "global_or_future_zero_outside_writes_proven": false,
+  "R0_B_C_or_EP_entered": false,
+  "HOME": "/home/dw",
+  "CODEX_HOME": "/home/dw/.codex",
+  "HOME_or_CODEX_HOME_reset": false
+}

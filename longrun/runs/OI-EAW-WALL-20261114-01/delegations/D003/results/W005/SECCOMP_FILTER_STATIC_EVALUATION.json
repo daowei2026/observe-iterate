@@ -1,0 +1,62 @@
+{
+  "status": "NOT_RUN_BLOCKED_BY_PREPARATION_ASSERTION",
+  "stop_code": "STOP_SECCOMP_STATIC_PREPARATION_ASSERTION",
+  "preparer_attempts": 1,
+  "evaluator_attempts": 0,
+  "mandatory_cases": [
+    {
+      "case": "x86_64 ioctl(FIOCLEX)",
+      "status": "NOT_RUN",
+      "actual_result": null
+    },
+    {
+      "case": "x86_64 ioctl(FIONCLEX)",
+      "status": "NOT_RUN",
+      "actual_result": null
+    },
+    {
+      "case": "arbitrary ioctl",
+      "status": "NOT_RUN",
+      "actual_result": null
+    },
+    {
+      "case": "request upper32!=0",
+      "status": "NOT_RUN",
+      "actual_result": null
+    },
+    {
+      "case": "existing denied socket",
+      "status": "NOT_RUN",
+      "actual_result": null
+    },
+    {
+      "case": "ordinary allowed syscall",
+      "status": "NOT_RUN",
+      "actual_result": null
+    },
+    {
+      "case": "x32 syscall bit",
+      "status": "NOT_RUN",
+      "actual_result": null
+    },
+    {
+      "case": "wrong arch",
+      "status": "NOT_RUN",
+      "actual_result": null
+    },
+    {
+      "case": "jump bounds / no unintended fallthrough",
+      "status": "NOT_RUN",
+      "actual_result": null
+    },
+    {
+      "case": "non-ioctl legacy policy equivalence",
+      "status": "NOT_RUN",
+      "actual_result": null
+    }
+  ],
+  "program_installed": false,
+  "static_PASS": false,
+  "failure_receipt": "receipts/STATIC_PREPARATION_FAILURE.json",
+  "no_retry": true
+}

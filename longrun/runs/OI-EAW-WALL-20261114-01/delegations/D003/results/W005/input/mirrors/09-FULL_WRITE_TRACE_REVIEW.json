@@ -1,0 +1,314 @@
+{
+  "record_type": "W004_FULL_WRITE_TRACE_REVIEW",
+  "utc": "2026-11-14T22:26:47.339624+00:00",
+  "status": "COMPLETE_FOR_SINGLE_POLICY_INSTALLED_BOOTSTRAP_FAILURE",
+  "scope": "唯一PID244050：launcher execve、policy安装、同PID execve新Python、脚本fopen bootstrap失败至exit2。未执行probe脚本主体，未fork child/grandchild；父控制面/原生平台不在此trace内。",
+  "trace_configuration": {
+    "absolute_tool": "/usr/bin/strace",
+    "flags": [
+      "--kill-on-exit",
+      "-ff",
+      "-yy",
+      "-ttt",
+      "-s128",
+      "-e trace=all"
+    ],
+    "raw_read_payloads": "read/pread/readv/recv payload不复制，syscall仍完整覆盖；write-family保持FD/path/return解码。",
+    "displayed_buffer_limit": "-s128仅截显示字节缓冲，不截FD/path、返回写字节数或syscall列表。"
+  },
+  "trace_files": [
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/trace/r0a1.244050",
+      "bytes": 187074,
+      "sha256": "b2bcd39ff8886fa65815107bd95f333abef1bcb0a1ea69bb20010abc24b2c959",
+      "mtime_ns": 1794694888743118001,
+      "inode": 14830521,
+      "dev": 83,
+      "lines": 1518,
+      "normal_terminal_exit": 2
+    }
+  ],
+  "histogram": {
+    "execve": 2,
+    "brk": 28,
+    "mmap": 123,
+    "access": 2,
+    "openat": 121,
+    "fstat": 172,
+    "close": 110,
+    "readlinkat": 2,
+    "read": 145,
+    "munmap": 17,
+    "mprotect": 27,
+    "pread64": 4,
+    "arch_prctl": 2,
+    "set_tid_address": 2,
+    "set_robust_list": 2,
+    "rseq": 2,
+    "prlimit64": 2,
+    "getrandom": 4,
+    "uname": 3,
+    "shmget": 4,
+    "shmat": 2,
+    "futex": 19,
+    "gettid": 2,
+    "readlink": 6,
+    "newfstatat": 331,
+    "lseek": 132,
+    "getdents64": 22,
+    "fcntl": 13,
+    "ioctl": 75,
+    "rt_sigaction": 131,
+    "landlock_create_ruleset": 2,
+    "prctl": 2,
+    "landlock_add_rule": 1,
+    "landlock_restrict_self": 1,
+    "write": 2,
+    "shmdt": 1,
+    "exit_group": 1
+  },
+  "unparsed_records": [],
+  "successful_descriptor_writes": [
+    {
+      "trace": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/trace/r0a1.244050",
+      "line": 1196,
+      "syscall": "write",
+      "raw": "1794694888.560997 write(3</dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/receipts/r0a1-launcher.json>, \"{\\n  \\\"record_type\\\": \\\"W004_LANDLOCK_AND_SECCOMP_LAUNCHER\\\",\\n  \\\"utc\\\": \\\"2026-11-14T22:21:28.517981+00:00\\\",\\n  \\\"root\\\": \\\"/dwdhome/fy/BAS\"..., 4462) = 4462",
+      "return_text": "4462",
+      "destination": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/receipts/r0a1-launcher.json",
+      "actual_return_bytes": 4462,
+      "inside_WORK_ROOT": true
+    },
+    {
+      "trace": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/trace/r0a1.244050",
+      "line": 1511,
+      "syscall": "write",
+      "raw": "1794694888.705331 write(2</dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/logs/r0a1.stderr>, \"/usr/bin/python3.12: can't open file '/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/tools/confinement_probe.p\"..., 166) = 166",
+      "return_text": "166",
+      "destination": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/logs/r0a1.stderr",
+      "actual_return_bytes": 166,
+      "inside_WORK_ROOT": true
+    }
+  ],
+  "successful_descriptor_write_count": 2,
+  "successful_descriptor_write_bytes": 4628,
+  "successful_outside_descriptor_writes_in_this_trace": 0,
+  "unknown_write_paths": [],
+  "successful_writable_or_creating_opens": [
+    {
+      "trace": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/trace/r0a1.244050",
+      "line": 1191,
+      "syscall": "openat",
+      "raw": "1794694888.541606 openat(AT_FDCWD</dwdhome/fy/BASE_E6_2>, \"/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/receipts/r0a1-launcher.json\", O_WRONLY|O_CREAT|O_TRUNC|O_CLOEXEC, 0666) = 3</dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/receipts/r0a1-launcher.json>",
+      "return_text": "3</dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/receipts/r0a1-launcher.json>",
+      "destination": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/receipts/r0a1-launcher.json",
+      "inside_WORK_ROOT": true
+    }
+  ],
+  "other_file_mutation_calls": [],
+  "shared_maps": [
+    {
+      "trace": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/trace/r0a1.244050",
+      "line": 112,
+      "syscall": "mmap",
+      "raw": "1794694888.067047 mmap(NULL, 27028, PROT_READ, MAP_SHARED, 4</usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache>, 0) = 0x76faff8e3000",
+      "return_text": "0x76faff8e3000",
+      "success": true,
+      "writable": false
+    },
+    {
+      "trace": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/trace/r0a1.244050",
+      "line": 1309,
+      "syscall": "mmap",
+      "raw": "1794694888.620751 mmap(NULL, 27028, PROT_READ, MAP_SHARED, 3</usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache>, 0) = 0x7f50b30ee000",
+      "return_text": "0x7f50b30ee000",
+      "success": true,
+      "writable": false
+    }
+  ],
+  "SysV_IPC_calls": [
+    {
+      "trace": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/trace/r0a1.244050",
+      "line": 93,
+      "syscall": "shmget",
+      "raw": "1794694888.060979 shmget(0xa5723213, 16384, IPC_CREAT|IPC_EXCL|0666) = -1 EEXIST (File exists)",
+      "return_text": "-1 EEXIST (File exists)",
+      "success": false
+    },
+    {
+      "trace": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/trace/r0a1.244050",
+      "line": 94,
+      "syscall": "shmget",
+      "raw": "1794694888.061217 shmget(0xa5723213, 16384, 000) = 0",
+      "return_text": "0",
+      "success": true
+    },
+    {
+      "trace": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/trace/r0a1.244050",
+      "line": 95,
+      "syscall": "shmat",
+      "raw": "1794694888.061464 shmat(0, NULL, SHM_RDONLY) = 0x76faff8ea000",
+      "return_text": "0x76faff8ea000",
+      "success": true
+    },
+    {
+      "trace": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/trace/r0a1.244050",
+      "line": 1290,
+      "syscall": "shmget",
+      "raw": "1794694888.614682 shmget(0xa5723213, 16384, IPC_CREAT|IPC_EXCL|0666) = -1 EEXIST (File exists)",
+      "return_text": "-1 EEXIST (File exists)",
+      "success": false
+    },
+    {
+      "trace": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/trace/r0a1.244050",
+      "line": 1291,
+      "syscall": "shmget",
+      "raw": "1794694888.614927 shmget(0xa5723213, 16384, 000) = 0",
+      "return_text": "0",
+      "success": true
+    },
+    {
+      "trace": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/trace/r0a1.244050",
+      "line": 1292,
+      "syscall": "shmat",
+      "raw": "1794694888.615163 shmat(0, NULL, SHM_RDONLY) = 0x7f50b30f5000",
+      "return_text": "0x7f50b30f5000",
+      "success": true
+    },
+    {
+      "trace": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/trace/r0a1.244050",
+      "line": 1516,
+      "syscall": "shmdt",
+      "raw": "1794694888.711309 shmdt(0x7f50b30f5000) = 0",
+      "return_text": "0",
+      "success": true
+    }
+  ],
+  "SysV_IPC_note": "两次启动的IPC_CREAT|IPC_EXCL均EEXIST；取得既有shmid0后SHM_RDONLY attach。未见成功新IPC对象或writable shared mapping。",
+  "all_execve_events": [
+    {
+      "trace": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/trace/r0a1.244050",
+      "line": 1,
+      "syscall": "execve",
+      "raw": "1794694888.030848 execve(\"/usr/bin/python3.12\", [\"/usr/bin/python3.12\", \"-I\", \"-S\", \"-B\", \"/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/tools/landlock_launcher.py\", \"--root\", \"/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004\", \"--report\", \"/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/receipts/r0a1-launcher.json\", \"--blocked-inherited-fd\", \"3\", \"--task-tmp\", \"/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/tmp\", \"--task-cache\", \"/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/cache\", \"--task-config\", \"/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/config\", \"--\", \"/usr/bin/python3.12\", \"-I\", \"-S\", \"-B\", \"/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/tools/confinement_probe.py\", \"--root\", \"/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004\", \"--blocked-fd\", \"3\"], 0x7ffe7fd80c20 /* 50 vars */) = 0",
+      "return_text": "0"
+    },
+    {
+      "trace": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/trace/r0a1.244050",
+      "line": 1198,
+      "syscall": "execve",
+      "raw": "1794694888.579362 execve(\"/usr/bin/python3.12\", [\"/usr/bin/python3.12\", \"-I\", \"-S\", \"-B\", \"/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/tools/confinement_probe.py\", \"--root\", \"/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004\", \"--blocked-fd\", \"3\"], 0x76fafe86d550 /* 50 vars */) = 0",
+      "return_text": "0"
+    }
+  ],
+  "post_policy_ioctl_EPERM": [
+    {
+      "trace": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/trace/r0a1.244050",
+      "line": 1193,
+      "syscall": "ioctl",
+      "raw": "1794694888.559896 ioctl(3</dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/receipts/r0a1-launcher.json>, TCGETS, 0x7ffc436dc350) = -1 EPERM (Operation not permitted)",
+      "return_text": "-1 EPERM (Operation not permitted)"
+    },
+    {
+      "trace": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/trace/r0a1.244050",
+      "line": 1362,
+      "syscall": "ioctl",
+      "raw": "1794694888.655546 ioctl(3</usr/lib/python3.12/encodings/__pycache__/__init__.cpython-312.pyc>, TCGETS, 0x7ffef00ce9c0) = -1 EPERM (Operation not permitted)",
+      "return_text": "-1 EPERM (Operation not permitted)"
+    },
+    {
+      "trace": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/trace/r0a1.244050",
+      "line": 1381,
+      "syscall": "ioctl",
+      "raw": "1794694888.664028 ioctl(3</usr/lib/python3.12/encodings/__pycache__/aliases.cpython-312.pyc>, TCGETS, 0x7ffef00cdf40) = -1 EPERM (Operation not permitted)",
+      "return_text": "-1 EPERM (Operation not permitted)"
+    },
+    {
+      "trace": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/trace/r0a1.244050",
+      "line": 1394,
+      "syscall": "ioctl",
+      "raw": "1794694888.669218 ioctl(3</usr/lib/python3.12/encodings/__pycache__/utf_8.cpython-312.pyc>, TCGETS, 0x7ffef00cea50) = -1 EPERM (Operation not permitted)",
+      "return_text": "-1 EPERM (Operation not permitted)"
+    },
+    {
+      "trace": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/trace/r0a1.244050",
+      "line": 1470,
+      "syscall": "ioctl",
+      "raw": "1794694888.691158 ioctl(0</dev/null<char 1:3>>, TCGETS, 0x7ffef00cf140) = -1 EPERM (Operation not permitted)",
+      "return_text": "-1 EPERM (Operation not permitted)"
+    },
+    {
+      "trace": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/trace/r0a1.244050",
+      "line": 1472,
+      "syscall": "ioctl",
+      "raw": "1794694888.691819 ioctl(0</dev/null<char 1:3>>, TCGETS, 0x7ffef00cf3d0) = -1 EPERM (Operation not permitted)",
+      "return_text": "-1 EPERM (Operation not permitted)"
+    },
+    {
+      "trace": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/trace/r0a1.244050",
+      "line": 1475,
+      "syscall": "ioctl",
+      "raw": "1794694888.692857 ioctl(1</dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/logs/r0a1.stdout>, TCGETS, 0x7ffef00cf140) = -1 EPERM (Operation not permitted)",
+      "return_text": "-1 EPERM (Operation not permitted)"
+    },
+    {
+      "trace": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/trace/r0a1.244050",
+      "line": 1478,
+      "syscall": "ioctl",
+      "raw": "1794694888.693857 ioctl(1</dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/logs/r0a1.stdout>, TCGETS, 0x7ffef00cf3d0) = -1 EPERM (Operation not permitted)",
+      "return_text": "-1 EPERM (Operation not permitted)"
+    },
+    {
+      "trace": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/trace/r0a1.244050",
+      "line": 1482,
+      "syscall": "ioctl",
+      "raw": "1794694888.695190 ioctl(2</dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/logs/r0a1.stderr>, TCGETS, 0x7ffef00cf140) = -1 EPERM (Operation not permitted)",
+      "return_text": "-1 EPERM (Operation not permitted)"
+    },
+    {
+      "trace": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/trace/r0a1.244050",
+      "line": 1485,
+      "syscall": "ioctl",
+      "raw": "1794694888.696172 ioctl(2</dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/logs/r0a1.stderr>, TCGETS, 0x7ffef00cf3d0) = -1 EPERM (Operation not permitted)",
+      "return_text": "-1 EPERM (Operation not permitted)"
+    },
+    {
+      "trace": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/trace/r0a1.244050",
+      "line": 1490,
+      "syscall": "ioctl",
+      "raw": "1794694888.698139 ioctl(3</dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/tools/confinement_probe.py>, TCGETS, 0x7ffef00cf090) = -1 EPERM (Operation not permitted)",
+      "return_text": "-1 EPERM (Operation not permitted)"
+    },
+    {
+      "trace": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/trace/r0a1.244050",
+      "line": 1509,
+      "syscall": "ioctl",
+      "raw": "1794694888.704672 ioctl(3</dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/tools/confinement_probe.py>, FIOCLEX) = -1 EPERM (Operation not permitted)",
+      "return_text": "-1 EPERM (Operation not permitted)"
+    }
+  ],
+  "fatal_script_bootstrap_ioctl": {
+    "trace": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/trace/r0a1.244050",
+    "line": 1509,
+    "syscall": "ioctl",
+    "raw": "1794694888.704672 ioctl(3</dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/tools/confinement_probe.py>, FIOCLEX) = -1 EPERM (Operation not permitted)",
+    "return_text": "-1 EPERM (Operation not permitted)"
+  },
+  "proc_comm_events": [],
+  "proc_comm_status": "NO_OPEN_OR_WRITE_OBSERVED",
+  "kernel_setup_trace_lines": {
+    "ABI": 1182,
+    "NNP": 1183,
+    "create": 1184,
+    "add": 1186,
+    "restrict": 1187,
+    "seccomp": 1190,
+    "own_contending_lock_FD_close": 1180,
+    "next_Python_execve": 1198
+  },
+  "script_read_correction": "openat(script,O_RDONLY)在1508行成功；1509行ioctl(FIOCLEX)返回EPERM；先前O_CLOEXEC路径还成功读取5069字节用于启动。不能把报错简化为Landlock拒绝openat或脚本不可读。",
+  "no_global_or_future_zero_external_write_claim": true,
+  "WRITE_CONFINEMENT_PASS": false,
+  "mprotect_write_upgrade_or_msync_observed": false,
+  "memory_write_scope_note": "所有实际MAP_SHARED文件映射均PROT_READ；无mprotect PROT_WRITE升级或msync调用，匿名/private mapping不计文件写。"
+}
