@@ -1,0 +1,135 @@
+{
+  "at": "2026-11-15T01:21:38.884904+00:00",
+  "attempt": 1,
+  "only_attempt_marker": true,
+  "P0_P3_all_PASS": true,
+  "argv": [
+    "/usr/bin/strace",
+    "--kill-on-exit",
+    "-ff",
+    "-yy",
+    "-ttt",
+    "-s",
+    "128",
+    "-e",
+    "trace=all",
+    "-e",
+    "raw=read,pread64,readv,preadv,preadv2,recvfrom,recvmsg,recvmmsg",
+    "-o",
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/trace/r0a1",
+    "/usr/bin/python3.12",
+    "-I",
+    "-S",
+    "-B",
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/tools/landlock_launcher.py",
+    "--root",
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006",
+    "--report",
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/receipts/r0a1-launcher.json",
+    "--blocked-inherited-fd",
+    "3",
+    "--task-tmp",
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/tmp",
+    "--task-cache",
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/cache",
+    "--task-config",
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/config",
+    "--",
+    "/usr/bin/python3.12",
+    "-I",
+    "-S",
+    "-B",
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/tools/confinement_probe.py",
+    "--root",
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006",
+    "--blocked-inherited-fd",
+    "3"
+  ],
+  "tool_facts": [
+    {
+      "path": "/usr/bin/python3.12",
+      "bytes": 8020928,
+      "sha256": "c2c20b4745d447551221ec3d4e70f92c270c4609fe3df34fc52ea6dd46e92273",
+      "mtime_ns": 1769115462000000000,
+      "mtime_ns_exact": "1769115462000000000",
+      "inode": 2492563,
+      "dev": 2050
+    },
+    {
+      "path": "/usr/bin/strace",
+      "bytes": 2087432,
+      "sha256": "28f957c227012de0b18d1bd7fff2d396cb693ea60ed8013be68de071e84b5001",
+      "mtime_ns": 1713432762000000000,
+      "mtime_ns_exact": "1713432762000000000",
+      "inode": 2491758,
+      "dev": 2050
+    }
+  ],
+  "launcher": {
+    "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/tools/landlock_launcher.py",
+    "bytes": 7271,
+    "sha256": "c23802ada35609a6f77aa67774f9845b7eb22f65aa5732f081cc9cd1173b1931",
+    "mtime_ns": 1794705524679807466,
+    "mtime_ns_exact": "1794705524679807466",
+    "inode": 14845178,
+    "dev": 83
+  },
+  "runtime": {
+    "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/tools/runtime.py",
+    "bytes": 2257,
+    "sha256": "6c4828a6230e354c20015299ef79dc8a82a694376f30b579a6b1b5f0f82f3488",
+    "mtime_ns": 1794705508387164992,
+    "mtime_ns_exact": "1794705508387164992",
+    "inode": 14846513,
+    "dev": 83
+  },
+  "probe": {
+    "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/tools/confinement_probe.py",
+    "bytes": 6590,
+    "sha256": "2092921789f29e309d59f26a54ecdedfea2eed2d87db6e5e34bfd82c4899b151",
+    "mtime_ns": 1794705667083878783,
+    "mtime_ns_exact": "1794705667083878783",
+    "inode": 14846273,
+    "dev": 83
+  },
+  "negative_readonly_prechecks": [
+    {
+      "label": "OUTSIDE",
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/.W006-deny-outside-C0014-259834ad",
+      "absent": true,
+      "errno": 2,
+      "readonly": true
+    },
+    {
+      "label": "SHARED",
+      "path": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/.W006-deny-shared-C0014-259834ad",
+      "absent": true,
+      "errno": 2,
+      "readonly": true
+    },
+    {
+      "label": "HOME",
+      "path": "/home/dw/.W006-deny-home-C0014-259834ad",
+      "absent": true,
+      "errno": 2,
+      "readonly": true
+    },
+    {
+      "label": "CODEX_HOME",
+      "path": "/home/dw/.codex/.W006-deny-codex-C0014-259834ad",
+      "absent": true,
+      "errno": 2,
+      "readonly": true
+    },
+    {
+      "label": "SYMLINK_TARGET",
+      "path": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/.W006-deny-symlink-C0014-259834ad",
+      "absent": true,
+      "errno": 2,
+      "readonly": true
+    }
+  ],
+  "independent_writable_lock_fd": 3,
+  "holder_lock_untouched": true,
+  "read_payloads_raw_to_avoid_exporting_private_contents": true
+}

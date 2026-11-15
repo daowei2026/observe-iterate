@@ -1,0 +1,816 @@
+{
+  "phase": "P3",
+  "status": "PASS",
+  "at": "2026-11-15T01:18:54.390872+00:00",
+  "evaluator_source": {
+    "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/tools/p3_evaluate.py",
+    "bytes": 4516,
+    "sha256": "d329791409421da215aca15137f80b8713877a3a4d464d790674508530a3ba3d",
+    "mtime_ns": 1794705508436057045,
+    "mtime_ns_exact": "1794705508436057045",
+    "inode": 14845249,
+    "dev": 83
+  },
+  "candidate_launcher": {
+    "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/tools/landlock_launcher.py",
+    "bytes": 7271,
+    "sha256": "c23802ada35609a6f77aa67774f9845b7eb22f65aa5732f081cc9cd1173b1931",
+    "mtime_ns": 1794705524679807466,
+    "mtime_ns_exact": "1794705524679807466",
+    "inode": 14845178,
+    "dev": 83
+  },
+  "program_artifact": {
+    "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/SECCOMP_CANDIDATE_PROGRAM.json",
+    "bytes": 13648,
+    "sha256": "fb71a48c2d297535da1ca2483361bf704aa07a6be0b2660e2ad5d3831897d9fe",
+    "mtime_ns": 1794705524803862581,
+    "mtime_ns_exact": "1794705524803862581",
+    "inode": 14846514,
+    "dev": 83
+  },
+  "mandatory_and_extra_cases": [
+    {
+      "name": "FIOCLEX",
+      "nr": 16,
+      "arch": "0xc000003e",
+      "args": [
+        7,
+        21585,
+        0,
+        0,
+        0,
+        0
+      ],
+      "expected": "0x7fff0000",
+      "actual": "0x7fff0000",
+      "PASS": true,
+      "instruction_path": [
+        0,
+        1,
+        3,
+        4,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    },
+    {
+      "name": "FIONCLEX",
+      "nr": 16,
+      "arch": "0xc000003e",
+      "args": [
+        7,
+        21584,
+        0,
+        0,
+        0,
+        0
+      ],
+      "expected": "0x50001",
+      "actual": "0x50001",
+      "PASS": true,
+      "instruction_path": [
+        0,
+        1,
+        3,
+        4,
+        6,
+        7,
+        8,
+        9,
+        10,
+        12
+      ]
+    },
+    {
+      "name": "arbitrary_ioctl",
+      "nr": 16,
+      "arch": "0xc000003e",
+      "args": [
+        7,
+        4660,
+        0,
+        0,
+        0,
+        0
+      ],
+      "expected": "0x50001",
+      "actual": "0x50001",
+      "PASS": true,
+      "instruction_path": [
+        0,
+        1,
+        3,
+        4,
+        6,
+        7,
+        8,
+        9,
+        10,
+        12
+      ]
+    },
+    {
+      "name": "request_high32_same_low",
+      "nr": 16,
+      "arch": "0xc000003e",
+      "args": [
+        7,
+        4294988881,
+        0,
+        0,
+        0,
+        0
+      ],
+      "expected": "0x50001",
+      "actual": "0x50001",
+      "PASS": true,
+      "instruction_path": [
+        0,
+        1,
+        3,
+        4,
+        6,
+        7,
+        8,
+        12
+      ]
+    },
+    {
+      "name": "request_high32_only",
+      "nr": 16,
+      "arch": "0xc000003e",
+      "args": [
+        7,
+        4294967296,
+        0,
+        0,
+        0,
+        0
+      ],
+      "expected": "0x50001",
+      "actual": "0x50001",
+      "PASS": true,
+      "instruction_path": [
+        0,
+        1,
+        3,
+        4,
+        6,
+        7,
+        8,
+        12
+      ]
+    },
+    {
+      "name": "socket",
+      "nr": 41,
+      "arch": "0xc000003e",
+      "args": [
+        2,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "expected": "0x50001",
+      "actual": "0x50001",
+      "PASS": true,
+      "instruction_path": [
+        0,
+        1,
+        3,
+        4,
+        6,
+        13,
+        14
+      ]
+    },
+    {
+      "name": "ordinary_read",
+      "nr": 0,
+      "arch": "0xc000003e",
+      "args": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "expected": "0x7fff0000",
+      "actual": "0x7fff0000",
+      "PASS": true,
+      "instruction_path": [
+        0,
+        1,
+        3,
+        4,
+        6,
+        13,
+        15,
+        17,
+        19,
+        21,
+        23,
+        25,
+        27,
+        29,
+        31,
+        33,
+        35,
+        37,
+        39,
+        41,
+        43,
+        45,
+        47,
+        49,
+        51,
+        53,
+        55,
+        57,
+        59,
+        61,
+        63,
+        65,
+        67,
+        69,
+        71,
+        73,
+        75,
+        77,
+        79,
+        81,
+        83,
+        85,
+        87,
+        89,
+        91,
+        93,
+        95,
+        97,
+        99,
+        101,
+        103,
+        105,
+        107,
+        109,
+        111,
+        113,
+        115,
+        117,
+        119,
+        121,
+        125
+      ]
+    },
+    {
+      "name": "x32_FIOCLEX",
+      "nr": 1073741840,
+      "arch": "0xc000003e",
+      "args": [
+        7,
+        21585,
+        0,
+        0,
+        0,
+        0
+      ],
+      "expected": "0x50001",
+      "actual": "0x50001",
+      "PASS": true,
+      "instruction_path": [
+        0,
+        1,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "name": "wrong_arch",
+      "nr": 16,
+      "arch": "0x40000003",
+      "args": [
+        7,
+        21585,
+        0,
+        0,
+        0,
+        0
+      ],
+      "expected": "0x80000000",
+      "actual": "0x80000000",
+      "PASS": true,
+      "instruction_path": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "name": "PR_SET_NAME",
+      "nr": 157,
+      "arch": "0xc000003e",
+      "args": [
+        15,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "expected": "0x50001",
+      "actual": "0x50001",
+      "PASS": true,
+      "instruction_path": [
+        0,
+        1,
+        3,
+        4,
+        6,
+        13,
+        15,
+        17,
+        19,
+        21,
+        23,
+        25,
+        27,
+        29,
+        31,
+        33,
+        35,
+        37,
+        39,
+        41,
+        43,
+        45,
+        47,
+        49,
+        51,
+        53,
+        55,
+        57,
+        59,
+        61,
+        63,
+        65,
+        67,
+        69,
+        71,
+        73,
+        75,
+        77,
+        79,
+        81,
+        83,
+        85,
+        87,
+        89,
+        91,
+        93,
+        95,
+        97,
+        99,
+        101,
+        103,
+        105,
+        107,
+        109,
+        111,
+        113,
+        115,
+        117,
+        119,
+        121,
+        122,
+        123,
+        124
+      ]
+    },
+    {
+      "name": "other_prctl",
+      "nr": 157,
+      "arch": "0xc000003e",
+      "args": [
+        38,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "expected": "0x7fff0000",
+      "actual": "0x7fff0000",
+      "PASS": true,
+      "instruction_path": [
+        0,
+        1,
+        3,
+        4,
+        6,
+        13,
+        15,
+        17,
+        19,
+        21,
+        23,
+        25,
+        27,
+        29,
+        31,
+        33,
+        35,
+        37,
+        39,
+        41,
+        43,
+        45,
+        47,
+        49,
+        51,
+        53,
+        55,
+        57,
+        59,
+        61,
+        63,
+        65,
+        67,
+        69,
+        71,
+        73,
+        75,
+        77,
+        79,
+        81,
+        83,
+        85,
+        87,
+        89,
+        91,
+        93,
+        95,
+        97,
+        99,
+        101,
+        103,
+        105,
+        107,
+        109,
+        111,
+        113,
+        115,
+        117,
+        119,
+        121,
+        122,
+        123,
+        125
+      ]
+    }
+  ],
+  "candidate_jump_targets": [
+    {
+      "pc": 1,
+      "true_target": 3,
+      "false_target": 2
+    },
+    {
+      "pc": 4,
+      "true_target": 5,
+      "false_target": 6
+    },
+    {
+      "pc": 6,
+      "true_target": 7,
+      "false_target": 13
+    },
+    {
+      "pc": 8,
+      "true_target": 9,
+      "false_target": 12
+    },
+    {
+      "pc": 10,
+      "true_target": 11,
+      "false_target": 12
+    },
+    {
+      "pc": 13,
+      "true_target": 14,
+      "false_target": 15
+    },
+    {
+      "pc": 15,
+      "true_target": 16,
+      "false_target": 17
+    },
+    {
+      "pc": 17,
+      "true_target": 18,
+      "false_target": 19
+    },
+    {
+      "pc": 19,
+      "true_target": 20,
+      "false_target": 21
+    },
+    {
+      "pc": 21,
+      "true_target": 22,
+      "false_target": 23
+    },
+    {
+      "pc": 23,
+      "true_target": 24,
+      "false_target": 25
+    },
+    {
+      "pc": 25,
+      "true_target": 26,
+      "false_target": 27
+    },
+    {
+      "pc": 27,
+      "true_target": 28,
+      "false_target": 29
+    },
+    {
+      "pc": 29,
+      "true_target": 30,
+      "false_target": 31
+    },
+    {
+      "pc": 31,
+      "true_target": 32,
+      "false_target": 33
+    },
+    {
+      "pc": 33,
+      "true_target": 34,
+      "false_target": 35
+    },
+    {
+      "pc": 35,
+      "true_target": 36,
+      "false_target": 37
+    },
+    {
+      "pc": 37,
+      "true_target": 38,
+      "false_target": 39
+    },
+    {
+      "pc": 39,
+      "true_target": 40,
+      "false_target": 41
+    },
+    {
+      "pc": 41,
+      "true_target": 42,
+      "false_target": 43
+    },
+    {
+      "pc": 43,
+      "true_target": 44,
+      "false_target": 45
+    },
+    {
+      "pc": 45,
+      "true_target": 46,
+      "false_target": 47
+    },
+    {
+      "pc": 47,
+      "true_target": 48,
+      "false_target": 49
+    },
+    {
+      "pc": 49,
+      "true_target": 50,
+      "false_target": 51
+    },
+    {
+      "pc": 51,
+      "true_target": 52,
+      "false_target": 53
+    },
+    {
+      "pc": 53,
+      "true_target": 54,
+      "false_target": 55
+    },
+    {
+      "pc": 55,
+      "true_target": 56,
+      "false_target": 57
+    },
+    {
+      "pc": 57,
+      "true_target": 58,
+      "false_target": 59
+    },
+    {
+      "pc": 59,
+      "true_target": 60,
+      "false_target": 61
+    },
+    {
+      "pc": 61,
+      "true_target": 62,
+      "false_target": 63
+    },
+    {
+      "pc": 63,
+      "true_target": 64,
+      "false_target": 65
+    },
+    {
+      "pc": 65,
+      "true_target": 66,
+      "false_target": 67
+    },
+    {
+      "pc": 67,
+      "true_target": 68,
+      "false_target": 69
+    },
+    {
+      "pc": 69,
+      "true_target": 70,
+      "false_target": 71
+    },
+    {
+      "pc": 71,
+      "true_target": 72,
+      "false_target": 73
+    },
+    {
+      "pc": 73,
+      "true_target": 74,
+      "false_target": 75
+    },
+    {
+      "pc": 75,
+      "true_target": 76,
+      "false_target": 77
+    },
+    {
+      "pc": 77,
+      "true_target": 78,
+      "false_target": 79
+    },
+    {
+      "pc": 79,
+      "true_target": 80,
+      "false_target": 81
+    },
+    {
+      "pc": 81,
+      "true_target": 82,
+      "false_target": 83
+    },
+    {
+      "pc": 83,
+      "true_target": 84,
+      "false_target": 85
+    },
+    {
+      "pc": 85,
+      "true_target": 86,
+      "false_target": 87
+    },
+    {
+      "pc": 87,
+      "true_target": 88,
+      "false_target": 89
+    },
+    {
+      "pc": 89,
+      "true_target": 90,
+      "false_target": 91
+    },
+    {
+      "pc": 91,
+      "true_target": 92,
+      "false_target": 93
+    },
+    {
+      "pc": 93,
+      "true_target": 94,
+      "false_target": 95
+    },
+    {
+      "pc": 95,
+      "true_target": 96,
+      "false_target": 97
+    },
+    {
+      "pc": 97,
+      "true_target": 98,
+      "false_target": 99
+    },
+    {
+      "pc": 99,
+      "true_target": 100,
+      "false_target": 101
+    },
+    {
+      "pc": 101,
+      "true_target": 102,
+      "false_target": 103
+    },
+    {
+      "pc": 103,
+      "true_target": 104,
+      "false_target": 105
+    },
+    {
+      "pc": 105,
+      "true_target": 106,
+      "false_target": 107
+    },
+    {
+      "pc": 107,
+      "true_target": 108,
+      "false_target": 109
+    },
+    {
+      "pc": 109,
+      "true_target": 110,
+      "false_target": 111
+    },
+    {
+      "pc": 111,
+      "true_target": 112,
+      "false_target": 113
+    },
+    {
+      "pc": 113,
+      "true_target": 114,
+      "false_target": 115
+    },
+    {
+      "pc": 115,
+      "true_target": 116,
+      "false_target": 117
+    },
+    {
+      "pc": 117,
+      "true_target": 118,
+      "false_target": 119
+    },
+    {
+      "pc": 119,
+      "true_target": 120,
+      "false_target": 121
+    },
+    {
+      "pc": 121,
+      "true_target": 122,
+      "false_target": 125
+    },
+    {
+      "pc": 123,
+      "true_target": 124,
+      "false_target": 125
+    }
+  ],
+  "all_jumps_in_bounds": true,
+  "all_paths_explicit_terminal_action": true,
+  "no_unintended_fallthrough": true,
+  "non_ioctl_semantics_equivalent_to_baseline": true,
+  "only_verified_FIOCLEX_produces_expected_difference": true,
+  "semantic_comparison_cases": 24240,
+  "expected_FIOCLEX_differences": 4,
+  "comparison_domain": {
+    "syscall_numbers": "0..600 plus 0x3fffffff/0x40000000/0x40000010/0x7fffffff/0xffffffff",
+    "architectures": [
+      "x86_64",
+      "wrong_i386"
+    ],
+    "args0_options": [
+      0,
+      15,
+      38,
+      4294967311
+    ],
+    "requests": [
+      0,
+      21585,
+      21584,
+      4294988881,
+      18446744073709551615
+    ]
+  },
+  "kernel_filter_install": false,
+  "probe_execution": false
+}

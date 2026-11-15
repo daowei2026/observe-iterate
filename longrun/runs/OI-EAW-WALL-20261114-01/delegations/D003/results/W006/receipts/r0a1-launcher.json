@@ -1,0 +1,177 @@
+{
+  "record_type": "W006_LANDLOCK_AND_SECCOMP_LAUNCHER",
+  "utc": "2026-11-15T01:21:39.483059+00:00",
+  "root": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006",
+  "root_realpath": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006",
+  "script_sha256": "c23802ada35609a6f77aa67774f9845b7eb22f65aa5732f081cc9cd1173b1931",
+  "HOME": "/home/dw",
+  "CODEX_HOME": "/home/dw/.codex",
+  "HOME_or_CODEX_HOME_reset": false,
+  "explicit_task_directories": {
+    "tmp": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/tmp",
+    "cache": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/cache",
+    "config": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/config"
+  },
+  "filesystem_write_exceptions": [],
+  "calls": [
+    {
+      "operation": "landlock_create_ruleset_VERSION",
+      "return": 6,
+      "errno": 0
+    },
+    {
+      "operation": "prctl_PR_SET_NO_NEW_PRIVS",
+      "return": 0,
+      "errno": 0
+    },
+    {
+      "operation": "landlock_create_ruleset",
+      "return": 3,
+      "errno": 0
+    },
+    {
+      "operation": "landlock_add_rule_PATH_BENEATH_only_WORK_ROOT",
+      "return": 0,
+      "errno": 0
+    },
+    {
+      "operation": "landlock_restrict_self",
+      "return": 0,
+      "errno": 0
+    },
+    {
+      "operation": "prctl_PR_SET_SECCOMP_FILTER",
+      "return": 0,
+      "errno": 0
+    }
+  ],
+  "command": [
+    "/usr/bin/python3.12",
+    "-I",
+    "-S",
+    "-B",
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/tools/confinement_probe.py",
+    "--root",
+    "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006",
+    "--blocked-inherited-fd",
+    "3"
+  ],
+  "stdio_fds": [
+    {
+      "fd": 0,
+      "path": "/dev/null",
+      "flags": 32768,
+      "access_mode": 0,
+      "writable": false,
+      "inode": 5,
+      "nlink": 1
+    },
+    {
+      "fd": 1,
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/logs/r0a1.stdout",
+      "flags": 32769,
+      "access_mode": 1,
+      "writable": true,
+      "inode": 14846985,
+      "nlink": 1
+    },
+    {
+      "fd": 2,
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/logs/r0a1.stderr",
+      "flags": 32769,
+      "access_mode": 1,
+      "writable": true,
+      "inode": 14846739,
+      "nlink": 1
+    }
+  ],
+  "inherited_nonstdio_fds_closed": [
+    {
+      "fd": 3,
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/.D003-writer.lock",
+      "flags": 163842,
+      "writable": true,
+      "closed_before_restrict_and_exec": true
+    }
+  ],
+  "abi": 6,
+  "handled_filesystem_rights": {
+    "WRITE_FILE": 2,
+    "REMOVE_DIR": 16,
+    "REMOVE_FILE": 32,
+    "MAKE_CHAR": 64,
+    "MAKE_DIR": 128,
+    "MAKE_REG": 256,
+    "MAKE_SOCK": 512,
+    "MAKE_FIFO": 1024,
+    "MAKE_BLOCK": 2048,
+    "MAKE_SYM": 4096,
+    "REFER": 8192,
+    "TRUNCATE": 16384,
+    "IOCTL_DEV": 32768
+  },
+  "handled_access_fs": 65522,
+  "seccomp_denied_syscalls": {
+    "socket": 41,
+    "connect": 42,
+    "accept": 43,
+    "sendto": 44,
+    "recvfrom": 45,
+    "sendmsg": 46,
+    "recvmsg": 47,
+    "shutdown": 48,
+    "bind": 49,
+    "listen": 50,
+    "getsockname": 51,
+    "getpeername": 52,
+    "socketpair": 53,
+    "setsockopt": 54,
+    "getsockopt": 55,
+    "accept4": 288,
+    "recvmmsg": 299,
+    "sendmmsg": 307,
+    "ioctl": 16,
+    "chmod": 90,
+    "fchmod": 91,
+    "chown": 92,
+    "fchown": 93,
+    "lchown": 94,
+    "utime": 132,
+    "utimes": 235,
+    "futimesat": 261,
+    "utimensat": 280,
+    "fchmodat": 268,
+    "fchmodat2": 452,
+    "fchownat": 260,
+    "setxattr": 188,
+    "lsetxattr": 189,
+    "fsetxattr": 190,
+    "removexattr": 197,
+    "lremovexattr": 198,
+    "fremovexattr": 199,
+    "mount": 165,
+    "umount2": 166,
+    "pivot_root": 155,
+    "chroot": 161,
+    "open_by_handle_at": 304,
+    "ptrace": 101,
+    "process_vm_writev": 311,
+    "io_uring_setup": 425,
+    "io_uring_enter": 426,
+    "io_uring_register": 427,
+    "acct": 163,
+    "quotactl": 179,
+    "swapon": 167,
+    "swapoff": 168,
+    "reboot": 169,
+    "sethostname": 170,
+    "setdomainname": 171,
+    "sync": 162
+  },
+  "seccomp_denied_prctl_options": [
+    "PR_SET_NAME"
+  ],
+  "network_policy": "Landlock TCP bind/connect denied plus seccomp all socket/connect/send/recv calls denied; no inherited nonstdio fd survives",
+  "global_reads_permitted_by_landlock": true,
+  "status": "KERNEL_POLICY_INSTALLED_BEFORE_EXEC"
+}

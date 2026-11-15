@@ -1,0 +1,62 @@
+{
+  "status": "LOCAL_DEFINITIONS_AGREE_STATIC_PREPARER_STOPPED",
+  "symbol": "FIOCLEX",
+  "integer_decimal": 21585,
+  "integer_hex": "0x5451",
+  "architecture": "x86_64",
+  "endianness": "little",
+  "sources": [
+    {
+      "path": "/usr/lib/python3.12/lib-dynload/termios.cpython-312-x86_64-linux-gnu.so",
+      "bytes": 35520,
+      "sha256": "55ffef895bf8c58ceed9885eea306ef3ab20a922172dcb1ff0cf523e911ed643",
+      "mtime_ns": 1769115462000000000,
+      "inode": 2492791,
+      "dev": 2050,
+      "module": "termios",
+      "value": 21585
+    },
+    {
+      "path": "/usr/include/asm-generic/ioctls.h",
+      "bytes": 3987,
+      "sha256": "456d8d175500bae6f73a66a023a71044f9cb077ab17531a7bf8df1509cc8dae3",
+      "mtime_ns": 1767974871000000000,
+      "inode": 2898341,
+      "dev": 2050,
+      "value": 21585,
+      "definition": "#define FIOCLEX 0x5451"
+    },
+    {
+      "path": "/usr/include/x86_64-linux-gnu/asm/ioctls.h",
+      "bytes": 32,
+      "sha256": "857d11a8415a18e7a6ccf23640cf9bddf245a5f90c43b3014d08d3ae19faf952",
+      "mtime_ns": 1767974871000000000,
+      "inode": 2922505,
+      "dev": 2050,
+      "include": "<asm-generic/ioctls.h>"
+    }
+  ],
+  "FIONCLEX": 21584,
+  "local_definitions_agree": true,
+  "historical_trace_source": {
+    "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/trace/r0a1.244050",
+    "bytes": 187074,
+    "sha256": "b2bcd39ff8886fa65815107bd95f333abef1bcb0a1ea69bb20010abc24b2c959",
+    "mtime_ns": 1794694888743118001,
+    "inode": 14830521,
+    "dev": 83
+  },
+  "historical_trace_matches": [
+    {
+      "line": 312,
+      "text": "1794694888.153303 ioctl(4</dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/tools/landlock_launcher.py>, FIOCLEX) = 0"
+    },
+    {
+      "line": 1509,
+      "text": "1794694888.704672 ioctl(3</dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/tools/confinement_probe.py>, FIOCLEX) = -1 EPERM (Operation not permitted)"
+    }
+  ],
+  "preparation_failure": "错误的all(EPERM)断言把安装前成功调用与安装后拒绝调用混在一起。定义本身一致；不是发现另一个FIOCLEX常量。",
+  "verification_scope": "只读常量与既有trace；不是当前W005 kernel FIOCLEX结果。",
+  "preparer_not_fixed_or_rerun": true
+}

@@ -1,0 +1,47 @@
+{
+  "role": "main",
+  "pid": 248966,
+  "ppid": 248962,
+  "root": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006",
+  "status": "FAILED_STOP",
+  "checks": [
+    {
+      "name": "inherited_writable_lock_fd_closed",
+      "PASS": true,
+      "fd": 3,
+      "errno": 9
+    },
+    {
+      "name": "actual_HOME_CODEX_preserved",
+      "PASS": true,
+      "HOME": "/home/dw",
+      "CODEX_HOME": "/home/dw/.codex"
+    },
+    {
+      "name": "stdin_readonly",
+      "PASS": true,
+      "path": "/dev/null"
+    },
+    {
+      "name": "stdio_1_inside_single_link_regular",
+      "PASS": true,
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/logs/r0a1.stdout"
+    },
+    {
+      "name": "stdio_2_inside_single_link_regular",
+      "PASS": true,
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/logs/r0a1.stderr"
+    },
+    {
+      "name": "NNP_and_seccomp_inherited",
+      "PASS": true,
+      "NoNewPrivs": "1",
+      "Seccomp": "2"
+    }
+  ],
+  "error": {
+    "type": "PermissionError",
+    "text": "[Errno 13] Permission denied: '/proc/248632/fdinfo/3'",
+    "traceback": "Traceback (most recent call last):\n  File \"/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/tools/confinement_probe.py\", line 41, in <module>\n    info=Path('/proc/'+str(holder['holder_pid'])+'/fdinfo/'+str(holder['fd'])).read_text()\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.12/pathlib.py\", line 1029, in read_text\n    with self.open(mode='r', encoding=encoding, errors=errors) as f:\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.12/pathlib.py\", line 1015, in open\n    return io.open(self, mode, buffering, encoding, errors, newline)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nPermissionError: [Errno 13] Permission denied: '/proc/248632/fdinfo/3'\n"
+  }
+}

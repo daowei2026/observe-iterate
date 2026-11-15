@@ -1,0 +1,207 @@
+{
+  "phase": "P4",
+  "status": "STOP_PROBE_HOLDER_FDINFO_READ_EACCES",
+  "WRITE_CONFINEMENT_PASS": false,
+  "attempts": 1,
+  "kernel_abi": 6,
+  "kernel_install_calls": [
+    {
+      "operation": "landlock_create_ruleset_VERSION",
+      "return": 6,
+      "errno": 0
+    },
+    {
+      "operation": "prctl_PR_SET_NO_NEW_PRIVS",
+      "return": 0,
+      "errno": 0
+    },
+    {
+      "operation": "landlock_create_ruleset",
+      "return": 3,
+      "errno": 0
+    },
+    {
+      "operation": "landlock_add_rule_PATH_BENEATH_only_WORK_ROOT",
+      "return": 0,
+      "errno": 0
+    },
+    {
+      "operation": "landlock_restrict_self",
+      "return": 0,
+      "errno": 0
+    },
+    {
+      "operation": "prctl_PR_SET_SECCOMP_FILTER",
+      "return": 0,
+      "errno": 0
+    }
+  ],
+  "handled_filesystem_rights": {
+    "WRITE_FILE": 2,
+    "REMOVE_DIR": 16,
+    "REMOVE_FILE": 32,
+    "MAKE_CHAR": 64,
+    "MAKE_DIR": 128,
+    "MAKE_REG": 256,
+    "MAKE_SOCK": 512,
+    "MAKE_FIFO": 1024,
+    "MAKE_BLOCK": 2048,
+    "MAKE_SYM": 4096,
+    "REFER": 8192,
+    "TRUNCATE": 16384,
+    "IOCTL_DEV": 32768
+  },
+  "handled_access_fs": 65522,
+  "only_write_allow_root": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006",
+  "second_Python_bootstrap_success": true,
+  "post_policy_FIOCLEX_return": 0,
+  "explicit_F_GETFD_CLOEXEC_effect_test": "NOT_REACHED",
+  "probe_body_entered": true,
+  "passed_probe_checks": [
+    {
+      "name": "inherited_writable_lock_fd_closed",
+      "PASS": true,
+      "fd": 3,
+      "errno": 9
+    },
+    {
+      "name": "actual_HOME_CODEX_preserved",
+      "PASS": true,
+      "HOME": "/home/dw",
+      "CODEX_HOME": "/home/dw/.codex"
+    },
+    {
+      "name": "stdin_readonly",
+      "PASS": true,
+      "path": "/dev/null"
+    },
+    {
+      "name": "stdio_1_inside_single_link_regular",
+      "PASS": true,
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/logs/r0a1.stdout"
+    },
+    {
+      "name": "stdio_2_inside_single_link_regular",
+      "PASS": true,
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/logs/r0a1.stderr"
+    },
+    {
+      "name": "NNP_and_seccomp_inherited",
+      "PASS": true,
+      "NoNewPrivs": "1",
+      "Seccomp": "2"
+    }
+  ],
+  "probe_failure": {
+    "type": "PermissionError",
+    "text": "[Errno 13] Permission denied: '/proc/248632/fdinfo/3'",
+    "traceback": "Traceback (most recent call last):\n  File \"/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/tools/confinement_probe.py\", line 41, in <module>\n    info=Path('/proc/'+str(holder['holder_pid'])+'/fdinfo/'+str(holder['fd'])).read_text()\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.12/pathlib.py\", line 1029, in read_text\n    with self.open(mode='r', encoding=encoding, errors=errors) as f:\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.12/pathlib.py\", line 1015, in open\n    return io.open(self, mode, buffering, encoding, errors, newline)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nPermissionError: [Errno 13] Permission denied: '/proc/248632/fdinfo/3'\n"
+  },
+  "exact_trace_failure": {
+    "line": 2240,
+    "text": "1794705700.005553 openat(AT_FDCWD</dwdhome/fy/BASE_E6_2>, \"/proc/248632/fdinfo/3\", O_RDONLY|O_CLOEXEC) = -1 EACCES (Permission denied)"
+  },
+  "failure_layer_attribution": "受限probe只读openat主控holder /proc fdinfo返回EACCES；本工单未进一步区分具体procfs/LSM机制，不称kernel不支持或FIOCLEX失败。",
+  "parent_readonly_stdin": {
+    "path": "/dev/null",
+    "parent_pid": 248960,
+    "parent_fd": 6,
+    "F_GETFL": 32768,
+    "access_mode": "O_RDONLY",
+    "opened_at": "2026-11-15T01:21:38.974250+00:00",
+    "child_pid": 248962,
+    "own_parent_copy_closed_at": "2026-11-15T01:21:38.976078+00:00",
+    "close_result": "SUCCESS"
+  },
+  "launcher_stdio_and_inherited_FD": {
+    "stdio": [
+      {
+        "fd": 0,
+        "path": "/dev/null",
+        "flags": 32768,
+        "access_mode": 0,
+        "writable": false,
+        "inode": 5,
+        "nlink": 1
+      },
+      {
+        "fd": 1,
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/logs/r0a1.stdout",
+        "flags": 32769,
+        "access_mode": 1,
+        "writable": true,
+        "inode": 14846985,
+        "nlink": 1
+      },
+      {
+        "fd": 2,
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/logs/r0a1.stderr",
+        "flags": 32769,
+        "access_mode": 1,
+        "writable": true,
+        "inode": 14846739,
+        "nlink": 1
+      }
+    ],
+    "closed_nonstdio": [
+      {
+        "fd": 3,
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/.D003-writer.lock",
+        "flags": 163842,
+        "writable": true,
+        "closed_before_restrict_and_exec": true
+      }
+    ]
+  },
+  "holder_lock_independently_intact_outside_restricted_child": {
+    "at": "2026-11-15T01:28:04.439699+00:00",
+    "holder_pid": 248632,
+    "startticks": "48206357",
+    "inode": 14806399,
+    "fdinfo": "pos:\t0\nflags:\t02500002\nmnt_id:\t4061\nino:\t14806399\nlock:\t1: FLOCK  ADVISORY  WRITE 248632 00:53:14806399 0 EOF\n",
+    "same_inode_independent_competition_errno": 11,
+    "only_own_contender_closed": true,
+    "holder_untouched": true
+  },
+  "nine_probe_status": [
+    {
+      "name": "inside create/write/rename/remove",
+      "status": "NOT_REACHED"
+    },
+    {
+      "name": "OUTSIDE create/write denial",
+      "status": "NOT_REACHED"
+    },
+    {
+      "name": "SHARED create denial",
+      "status": "NOT_REACHED"
+    },
+    {
+      "name": "actual HOME/CODEX read allowed new create denied",
+      "status": "ENV_VALUES_PASS_CREATE_READ_PROBES_NOT_REACHED"
+    },
+    {
+      "name": "child/grandchild inheritance",
+      "status": "NOT_REACHED"
+    },
+    {
+      "name": "symlink escape denial",
+      "status": "NOT_REACHED"
+    },
+    {
+      "name": "inherited writable FD closed + holder lock",
+      "status": "INHERITED_FD_CLOSED_PASS_PARENT_HOLDER_PASS_CHILD_HOLDER_READ_EACCES"
+    },
+    {
+      "name": "network socket/connect denial",
+      "status": "NOT_REACHED"
+    },
+    {
+      "name": "full trace path mapping",
+      "status": "COMPLETE_FAILED_CHAIN_SCOPE_ONLY"
+    }
+  ],
+  "policy_or_probe_modified_after_attempt": false,
+  "retry_count": 0,
+  "global_zero_outside_writes_PASS": false
+}

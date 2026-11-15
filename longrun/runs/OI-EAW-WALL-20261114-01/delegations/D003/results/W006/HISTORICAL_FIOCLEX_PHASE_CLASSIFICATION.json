@@ -1,0 +1,43 @@
+{
+  "phase": "P0",
+  "status": "PASS",
+  "at": "2026-11-15T01:15:57.650785+00:00",
+  "source": {
+    "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/trace/r0a1.244050",
+    "bytes": 187074,
+    "sha256": "b2bcd39ff8886fa65815107bd95f333abef1bcb0a1ea69bb20010abc24b2c959",
+    "mtime_ns": 1794694888743118001,
+    "mtime_ns_exact": "1794694888743118001",
+    "inode": 14830521,
+    "dev": 83
+  },
+  "pre_policy": {
+    "line": 312,
+    "exact_text": "1794694888.153303 ioctl(4</dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/tools/landlock_launcher.py>, FIOCLEX) = 0",
+    "classification": "HISTORICAL_PRE_POLICY_SUCCESS"
+  },
+  "policy_install": {
+    "line": 1190,
+    "text": "1794694888.538732 prctl(PR_SET_SECCOMP, SECCOMP_MODE_FILTER, {len=121, filter=0x1bbe1f60}) = 0"
+  },
+  "post_policy": {
+    "line": 1509,
+    "exact_text": "1794694888.704672 ioctl(3</dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/tools/confinement_probe.py>, FIOCLEX) = -1 EPERM (Operation not permitted)",
+    "classification": "HISTORICAL_POST_POLICY_DENIAL"
+  },
+  "all_historical_FIOCLEX_rows": [
+    {
+      "line": 312,
+      "exact_text": "1794694888.153303 ioctl(4</dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/tools/landlock_launcher.py>, FIOCLEX) = 0",
+      "classification": "HISTORICAL_PRE_POLICY_SUCCESS"
+    },
+    {
+      "line": 1509,
+      "exact_text": "1794694888.704672 ioctl(3</dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W004/tools/confinement_probe.py>, FIOCLEX) = -1 EPERM (Operation not permitted)",
+      "classification": "HISTORICAL_POST_POLICY_DENIAL"
+    }
+  ],
+  "results_not_required_to_be_identical": true,
+  "universal_denial_assertion_used": false,
+  "current_W006_kernel_result": false
+}

@@ -1,0 +1,661 @@
+{
+  "status": "PATH_COMPLETE_FOR_SINGLE_FAILED_TRACE_ONLY",
+  "at": "2026-11-15T01:28:04.316704+00:00",
+  "scope": "完整审阅这一失败链，非整个W/后继/global zero writes证明。",
+  "trace_files": [
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/trace/r0a1.248966",
+      "bytes": 283348,
+      "sha256": "f03fdd32f65a06a9973da446c20b352e955cd4c4167380c8d19953e79f84fbf8",
+      "mtime_ns": 1794705700111511961,
+      "mtime_ns_exact": "1794705700111511961",
+      "inode": 14844830,
+      "dev": 83
+    }
+  ],
+  "trace_lines": 2290,
+  "syscall_counts": {
+    "execve": 2,
+    "mmap": 156,
+    "access": 2,
+    "openat": 184,
+    "fstat": 282,
+    "close": 172,
+    "readlinkat": 2,
+    "read": 251,
+    "munmap": 20,
+    "mprotect": 34,
+    "pread64": 4,
+    "arch_prctl": 2,
+    "set_tid_address": 2,
+    "set_robust_list": 2,
+    "rseq": 2,
+    "prlimit64": 2,
+    "getrandom": 4,
+    "uname": 3,
+    "shmget": 4,
+    "shmat": 2,
+    "futex": 19,
+    "readlink": 9,
+    "newfstatat": 543,
+    "lseek": 224,
+    "getdents64": 34,
+    "fcntl": 13,
+    "ioctl": 126,
+    "rt_sigaction": 131,
+    "landlock_create_ruleset": 2,
+    "prctl": 2,
+    "landlock_add_rule": 1,
+    "landlock_restrict_self": 1,
+    "write": 3,
+    "shmdt": 1
+  },
+  "unparsed_noncall_rows": [
+    {
+      "line": 2,
+      "text": "1794705699.003910 brk(NULL)             = 0x31ec7000"
+    },
+    {
+      "line": 85,
+      "text": "1794705699.029940 brk(NULL)             = 0x31ec7000"
+    },
+    {
+      "line": 86,
+      "text": "1794705699.030159 brk(0x31ee8000)       = 0x31ee8000"
+    },
+    {
+      "line": 116,
+      "text": "1794705699.040847 gettid()              = 248966"
+    },
+    {
+      "line": 120,
+      "text": "1794705699.045263 brk(0x31f09000)       = 0x31f09000"
+    },
+    {
+      "line": 121,
+      "text": "1794705699.051761 brk(0x31f2a000)       = 0x31f2a000"
+    },
+    {
+      "line": 138,
+      "text": "1794705699.061936 brk(0x31f4b000)       = 0x31f4b000"
+    },
+    {
+      "line": 191,
+      "text": "1794705699.084540 brk(0x31f71000)       = 0x31f71000"
+    },
+    {
+      "line": 320,
+      "text": "1794705699.126440 brk(0x31f92000)       = 0x31f92000"
+    },
+    {
+      "line": 321,
+      "text": "1794705699.128004 brk(0x31fb5000)       = 0x31fb5000"
+    },
+    {
+      "line": 322,
+      "text": "1794705699.129671 brk(0x31fd7000)       = 0x31fd7000"
+    },
+    {
+      "line": 323,
+      "text": "1794705699.131039 brk(0x31ff8000)       = 0x31ff8000"
+    },
+    {
+      "line": 324,
+      "text": "1794705699.132688 brk(0x32020000)       = 0x32020000"
+    },
+    {
+      "line": 327,
+      "text": "1794705699.136679 brk(0x32041000)       = 0x32041000"
+    },
+    {
+      "line": 485,
+      "text": "1794705699.209398 brk(0x32079000)       = 0x32079000"
+    },
+    {
+      "line": 587,
+      "text": "1794705699.256991 brk(0x3209a000)       = 0x3209a000"
+    },
+    {
+      "line": 796,
+      "text": "1794705699.340682 brk(0x320bb000)       = 0x320bb000"
+    },
+    {
+      "line": 820,
+      "text": "1794705699.350289 brk(0x320eb000)       = 0x320eb000"
+    },
+    {
+      "line": 936,
+      "text": "1794705699.402220 brk(0x3210e000)       = 0x3210e000"
+    },
+    {
+      "line": 968,
+      "text": "1794705699.419669 brk(0x32138000)       = 0x32138000"
+    },
+    {
+      "line": 972,
+      "text": "1794705699.421261 brk(0x3216b000)       = 0x3216b000"
+    },
+    {
+      "line": 1136,
+      "text": "1794705699.487157 brk(0x3226b000)       = 0x3226b000"
+    },
+    {
+      "line": 1181,
+      "text": "1794705699.503287 fcntl(4, F_GETFL)     = -1 EBADF (Bad file descriptor)"
+    },
+    {
+      "line": 1199,
+      "text": "1794705699.560391 brk(NULL)             = 0x7634000"
+    },
+    {
+      "line": 1282,
+      "text": "1794705699.586316 brk(NULL)             = 0x7634000"
+    },
+    {
+      "line": 1283,
+      "text": "1794705699.586599 brk(0x7655000)        = 0x7655000"
+    },
+    {
+      "line": 1313,
+      "text": "1794705699.596590 gettid()              = 248966"
+    },
+    {
+      "line": 1317,
+      "text": "1794705699.602382 brk(0x7676000)        = 0x7676000"
+    },
+    {
+      "line": 1318,
+      "text": "1794705699.608025 brk(0x7697000)        = 0x7697000"
+    },
+    {
+      "line": 1335,
+      "text": "1794705699.618854 brk(0x76b8000)        = 0x76b8000"
+    },
+    {
+      "line": 1388,
+      "text": "1794705699.640437 brk(0x76da000)        = 0x76da000"
+    },
+    {
+      "line": 1517,
+      "text": "1794705699.684822 brk(0x76fb000)        = 0x76fb000"
+    },
+    {
+      "line": 1518,
+      "text": "1794705699.686201 brk(0x771c000)        = 0x771c000"
+    },
+    {
+      "line": 1519,
+      "text": "1794705699.687842 brk(0x773f000)        = 0x773f000"
+    },
+    {
+      "line": 1520,
+      "text": "1794705699.689350 brk(0x7763000)        = 0x7763000"
+    },
+    {
+      "line": 1523,
+      "text": "1794705699.692861 brk(0x7786000)        = 0x7786000"
+    },
+    {
+      "line": 1678,
+      "text": "1794705699.766539 brk(0x77af000)        = 0x77af000"
+    },
+    {
+      "line": 1761,
+      "text": "1794705699.800850 brk(0x77d8000)        = 0x77d8000"
+    },
+    {
+      "line": 1811,
+      "text": "1794705699.830264 brk(0x77f9000)        = 0x77f9000"
+    },
+    {
+      "line": 1916,
+      "text": "1794705699.874815 brk(0x781d000)        = 0x781d000"
+    },
+    {
+      "line": 2058,
+      "text": "1794705699.934417 brk(0x7841000)        = 0x7841000"
+    },
+    {
+      "line": 2087,
+      "text": "1794705699.948374 brk(0x7866000)        = 0x7866000"
+    },
+    {
+      "line": 2153,
+      "text": "1794705699.972776 brk(0x788e000)        = 0x788e000"
+    },
+    {
+      "line": 2192,
+      "text": "1794705699.989021 getpid()              = 248966"
+    },
+    {
+      "line": 2193,
+      "text": "1794705699.989286 getppid()             = 248962"
+    },
+    {
+      "line": 2198,
+      "text": "1794705699.991012 brk(0x798e000)        = 0x798e000"
+    },
+    {
+      "line": 2278,
+      "text": "1794705700.052774 brk(0x79af000)        = 0x79af000"
+    },
+    {
+      "line": 2289,
+      "text": "1794705700.104653 exit_group(1)         = ?"
+    },
+    {
+      "line": 2290,
+      "text": "1794705700.124764 +++ exited with 1 +++"
+    }
+  ],
+  "unknown_syscall_names": [],
+  "policy_install_line": 1190,
+  "successful_descriptor_writes": [
+    {
+      "line": 1196,
+      "syscall": "write",
+      "text": "1794705699.521538 write(3</dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/receipts/r0a1-launcher.json>, \"{\\n  \\\"record_type\\\": \\\"W006_LANDLOCK_AND_SECCOMP_LAUNCHER\\\",\\n  \\\"utc\\\": \\\"2026-11-15T01:21:39.483059+00:00\\\",\\n  \\\"root\\\": \\\"/dwdhome/fy/BAS\"..., 4472) = 4472",
+      "bytes_returned": 4472,
+      "target_path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/receipts/r0a1-launcher.json",
+      "inside_root": true
+    },
+    {
+      "line": 2281,
+      "syscall": "write",
+      "text": "1794705700.054001 write(3</dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/receipts/probe-main.json>, \"{\\n  \\\"role\\\": \\\"main\\\",\\n  \\\"pid\\\": 248966,\\n  \\\"ppid\\\": 248962,\\n  \\\"root\\\": \\\"/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W0\"..., 1977) = 1977",
+      "bytes_returned": 1977,
+      "target_path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/receipts/probe-main.json",
+      "inside_root": true
+    },
+    {
+      "line": 2283,
+      "syscall": "write",
+      "text": "1794705700.085436 write(1</dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/logs/r0a1.stdout>, \"{\\\"role\\\": \\\"main\\\", \\\"status\\\": \\\"FAILED_STOP\\\", \\\"report\\\": \\\"/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/receipts/p\"..., 145) = 145",
+      "bytes_returned": 145,
+      "target_path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/logs/r0a1.stdout",
+      "inside_root": true
+    }
+  ],
+  "successful_descriptor_write_count": 3,
+  "successful_descriptor_write_bytes": 6594,
+  "successful_write_open_rows": [
+    {
+      "line": 1191,
+      "text": "1794705699.509804 openat(AT_FDCWD</dwdhome/fy/BASE_E6_2>, \"/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/receipts/r0a1-launcher.json\", O_WRONLY|O_CREAT|O_TRUNC|O_CLOEXEC, 0666) = 3</dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/receipts/r0a1-launcher.json>",
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/receipts/r0a1-launcher.json"
+    },
+    {
+      "line": 2275,
+      "text": "1794705700.026640 openat(AT_FDCWD</dwdhome/fy/BASE_E6_2>, \"/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/receipts/probe-main.json\", O_WRONLY|O_CREAT|O_EXCL|O_CLOEXEC, 0666) = 3</dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/receipts/probe-main.json>",
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/receipts/probe-main.json"
+    }
+  ],
+  "successful_outside_file_writes_in_this_trace": 0,
+  "unknown_write_paths_in_this_trace": 0,
+  "other_path_mutation_calls": [],
+  "shared_writable_file_mmaps": [],
+  "proc_comm_open_or_write_rows": [],
+  "current_trace_pre_and_post_policy_FIOCLEX_rows": [
+    {
+      "line": 312,
+      "text": "1794705699.122877 ioctl(4</dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/tools/landlock_launcher.py>, FIOCLEX) = 0",
+      "post_policy": false
+    },
+    {
+      "line": 1508,
+      "text": "1794705699.680977 ioctl(3</dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/tools/confinement_probe.py>, FIOCLEX) = 0",
+      "post_policy": true
+    }
+  ],
+  "post_policy_denied_other_ioctls": {
+    "counts": {
+      "TCGETS": 58,
+      "TIOCGWINSZ": 4
+    },
+    "rows": [
+      {
+        "line": 1193,
+        "text": "1794705699.520458 ioctl(3</dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/receipts/r0a1-launcher.json>, TCGETS, 0x7ffda9de3510) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 1362,
+        "text": "1794705699.629594 ioctl(3</usr/lib/python3.12/encodings/__pycache__/__init__.cpython-312.pyc>, TCGETS, 0x7ffe5f5fefa0) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 1381,
+        "text": "1794705699.637984 ioctl(3</usr/lib/python3.12/encodings/__pycache__/aliases.cpython-312.pyc>, TCGETS, 0x7ffe5f5fe520) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 1394,
+        "text": "1794705699.643344 ioctl(3</usr/lib/python3.12/encodings/__pycache__/utf_8.cpython-312.pyc>, TCGETS, 0x7ffe5f5ff030) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 1469,
+        "text": "1794705699.667588 ioctl(0</dev/null<char 1:3>>, TCGETS, 0x7ffe5f5ff720) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 1471,
+        "text": "1794705699.668225 ioctl(0</dev/null<char 1:3>>, TCGETS, 0x7ffe5f5ff9b0) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 1474,
+        "text": "1794705699.669242 ioctl(1</dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/logs/r0a1.stdout>, TCGETS, 0x7ffe5f5ff720) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 1477,
+        "text": "1794705699.670213 ioctl(1</dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/logs/r0a1.stdout>, TCGETS, 0x7ffe5f5ff9b0) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 1481,
+        "text": "1794705699.671598 ioctl(2</dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/logs/r0a1.stderr>, TCGETS, 0x7ffe5f5ff720) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 1484,
+        "text": "1794705699.672591 ioctl(2</dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/logs/r0a1.stderr>, TCGETS, 0x7ffe5f5ff9b0) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 1489,
+        "text": "1794705699.674541 ioctl(3</dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/tools/confinement_probe.py>, TCGETS, 0x7ffe5f5ff670) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 1510,
+        "text": "1794705699.681595 ioctl(3</dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/tools/confinement_probe.py>, TCGETS, 0x7ffe5f5ffda0) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 1529,
+        "text": "1794705699.695861 ioctl(3</usr/lib/python3.12/__pycache__/pathlib.cpython-312.pyc>, TCGETS, 0x7ffe5f5ff370) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 1541,
+        "text": "1794705699.701031 ioctl(3</usr/lib/python3.12/__pycache__/fnmatch.cpython-312.pyc>, TCGETS, 0x7ffe5f5fed00) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 1556,
+        "text": "1794705699.710216 ioctl(3</usr/lib/python3.12/re/__pycache__/__init__.cpython-312.pyc>, TCGETS, 0x7ffe5f5fe690) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 1568,
+        "text": "1794705699.714687 ioctl(3</usr/lib/python3.12/__pycache__/enum.cpython-312.pyc>, TCGETS, 0x7ffe5f5fe020) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 1580,
+        "text": "1794705699.720009 ioctl(3</usr/lib/python3.12/__pycache__/types.cpython-312.pyc>, TCGETS, 0x7ffe5f5fd9b0) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 1592,
+        "text": "1794705699.725012 ioctl(3</usr/lib/python3.12/__pycache__/operator.cpython-312.pyc>, TCGETS, 0x7ffe5f5fd9b0) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 1604,
+        "text": "1794705699.730071 ioctl(3</usr/lib/python3.12/__pycache__/functools.cpython-312.pyc>, TCGETS, 0x7ffe5f5fd9b0) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 1619,
+        "text": "1794705699.735856 ioctl(3</usr/lib/python3.12/collections/__pycache__/__init__.cpython-312.pyc>, TCGETS, 0x7ffe5f5fd340) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 1631,
+        "text": "1794705699.742991 ioctl(3</usr/lib/python3.12/__pycache__/keyword.cpython-312.pyc>, TCGETS, 0x7ffe5f5fccd0) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 1643,
+        "text": "1794705699.748321 ioctl(3</usr/lib/python3.12/__pycache__/reprlib.cpython-312.pyc>, TCGETS, 0x7ffe5f5fccd0) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 1662,
+        "text": "1794705699.760381 ioctl(3</usr/lib/python3.12/re/__pycache__/_compiler.cpython-312.pyc>, TCGETS, 0x7ffe5f5fdbb0) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 1674,
+        "text": "1794705699.765283 ioctl(3</usr/lib/python3.12/re/__pycache__/_parser.cpython-312.pyc>, TCGETS, 0x7ffe5f5fd0d0) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 1687,
+        "text": "1794705699.770541 ioctl(3</usr/lib/python3.12/re/__pycache__/_constants.cpython-312.pyc>, TCGETS, 0x7ffe5f5fca60) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 1699,
+        "text": "1794705699.776599 ioctl(3</usr/lib/python3.12/re/__pycache__/_casefix.cpython-312.pyc>, TCGETS, 0x7ffe5f5fd540) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 1711,
+        "text": "1794705699.781850 ioctl(3</usr/lib/python3.12/__pycache__/copyreg.cpython-312.pyc>, TCGETS, 0x7ffe5f5fe020) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 1723,
+        "text": "1794705699.786922 ioctl(3</usr/lib/python3.12/__pycache__/warnings.cpython-312.pyc>, TCGETS, 0x7ffe5f5fed00) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 1738,
+        "text": "1794705699.792912 ioctl(3</usr/lib/python3.12/urllib/__pycache__/__init__.cpython-312.pyc>, TCGETS, 0x7ffe5f5fe890) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 1757,
+        "text": "1794705699.799581 ioctl(3</usr/lib/python3.12/urllib/__pycache__/parse.cpython-312.pyc>, TCGETS, 0x7ffe5f5fed00) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 1770,
+        "text": "1794705699.805384 ioctl(3</usr/lib/python3.12/__pycache__/ipaddress.cpython-312.pyc>, TCGETS, 0x7ffe5f5fe690) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 1804,
+        "text": "1794705699.827528 ioctl(3</usr/lib/python3.12/__pycache__/argparse.cpython-312.pyc>, TCGETS, 0x7ffe5f5ff370) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 1817,
+        "text": "1794705699.833735 ioctl(3</usr/lib/python3.12/__pycache__/gettext.cpython-312.pyc>, TCGETS, 0x7ffe5f5fed00) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 1832,
+        "text": "1794705699.842342 ioctl(3</usr/lib/python3.12/ctypes/__pycache__/__init__.cpython-312.pyc>, TCGETS, 0x7ffe5f5ff370) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 1870,
+        "text": "1794705699.856396 ioctl(3</usr/lib/python3.12/__pycache__/struct.cpython-312.pyc>, TCGETS, 0x7ffe5f5fed00) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 1889,
+        "text": "1794705699.864610 ioctl(3</usr/lib/python3.12/ctypes/__pycache__/_endian.cpython-312.pyc>, TCGETS, 0x7ffe5f5fed00) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 1904,
+        "text": "1794705699.870593 ioctl(3</usr/lib/python3.12/json/__pycache__/__init__.cpython-312.pyc>, TCGETS, 0x7ffe5f5ff370) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 1924,
+        "text": "1794705699.877557 ioctl(3</usr/lib/python3.12/json/__pycache__/decoder.cpython-312.pyc>, TCGETS, 0x7ffe5f5fed00) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 1936,
+        "text": "1794705699.881899 ioctl(3</usr/lib/python3.12/json/__pycache__/scanner.cpython-312.pyc>, TCGETS, 0x7ffe5f5fe220) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 1960,
+        "text": "1794705699.891529 ioctl(3</usr/lib/python3.12/json/__pycache__/encoder.cpython-312.pyc>, TCGETS, 0x7ffe5f5fed00) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 1972,
+        "text": "1794705699.896439 ioctl(3</usr/lib/python3.12/__pycache__/traceback.cpython-312.pyc>, TCGETS, 0x7ffe5f5ff370) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 1991,
+        "text": "1794705699.903991 ioctl(3</usr/lib/python3.12/collections/__pycache__/abc.cpython-312.pyc>, TCGETS, 0x7ffe5f5fed00) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 2003,
+        "text": "1794705699.908677 ioctl(3</usr/lib/python3.12/__pycache__/linecache.cpython-312.pyc>, TCGETS, 0x7ffe5f5fed00) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 2015,
+        "text": "1794705699.912804 ioctl(3</usr/lib/python3.12/__pycache__/tokenize.cpython-312.pyc>, TCGETS, 0x7ffe5f5fe690) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 2027,
+        "text": "1794705699.917455 ioctl(3</usr/lib/python3.12/__pycache__/token.cpython-312.pyc>, TCGETS, 0x7ffe5f5fe020) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 2039,
+        "text": "1794705699.923833 ioctl(3</usr/lib/python3.12/__pycache__/textwrap.cpython-312.pyc>, TCGETS, 0x7ffe5f5fed00) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 2051,
+        "text": "1794705699.930207 ioctl(3</usr/lib/python3.12/__pycache__/contextlib.cpython-312.pyc>, TCGETS, 0x7ffe5f5fed00) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 2064,
+        "text": "1794705699.937682 ioctl(3</usr/lib/python3.12/__pycache__/locale.cpython-312.pyc>, TCGETS, 0x7ffe5f5ff050) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 2083,
+        "text": "1794705699.947130 ioctl(3</usr/lib/python3.12/__pycache__/shutil.cpython-312.pyc>, TCGETS, 0x7ffe5f5fed30) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 2096,
+        "text": "1794705699.952686 ioctl(3</usr/lib/python3.12/__pycache__/bz2.cpython-312.pyc>, TCGETS, 0x7ffe5f5fe6c0) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 2108,
+        "text": "1794705699.957000 ioctl(3</usr/lib/python3.12/__pycache__/_compression.cpython-312.pyc>, TCGETS, 0x7ffe5f5fe050) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 2146,
+        "text": "1794705699.970815 ioctl(3</usr/lib/python3.12/__pycache__/lzma.cpython-312.pyc>, TCGETS, 0x7ffe5f5fe6c0) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 2180,
+        "text": "1794705699.983624 ioctl(1</dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/logs/r0a1.stdout>, TIOCGWINSZ, 0x7ffe5f5ff488) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 2181,
+        "text": "1794705699.984366 ioctl(1</dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/logs/r0a1.stdout>, TIOCGWINSZ, 0x7ffe5f5ff808) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 2182,
+        "text": "1794705699.984829 ioctl(1</dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/logs/r0a1.stdout>, TIOCGWINSZ, 0x7ffe5f5ff808) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 2183,
+        "text": "1794705699.985266 ioctl(1</dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/logs/r0a1.stdout>, TIOCGWINSZ, 0x7ffe5f5ff808) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 2197,
+        "text": "1794705699.990710 ioctl(3</dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/W006_BINDING.json>, TCGETS, 0x7ffe5f5ff8a0) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 2233,
+        "text": "1794705700.003061 ioctl(3</proc/248966/status>, TCGETS, 0x7ffe5f5ff900) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 2244,
+        "text": "1794705700.007483 ioctl(3</dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/tools/confinement_probe.py>, TCGETS, 0x7ffe5f5ff350) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 2252,
+        "text": "1794705700.010414 ioctl(3</usr/lib/python3.12/pathlib.py>, TCGETS, 0x7ffe5f5ff5e0) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 2268,
+        "text": "1794705700.016361 ioctl(3</usr/lib/python3.12/__pycache__/ast.cpython-312.pyc>, TCGETS, 0x7ffe5f5ff120) = -1 EPERM (Operation not permitted)"
+      },
+      {
+        "line": 2277,
+        "text": "1794705700.052413 ioctl(3</dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/receipts/probe-main.json>, TCGETS, 0x7ffe5f5ff900) = -1 EPERM (Operation not permitted)"
+      }
+    ],
+    "scope": "TCGETS/TIOCGWINSZ按其余ioctl默认拒绝，解释器继续进入probe；不扩大allowlist，也不将其写成主停止因。"
+  },
+  "post_policy_F_GETFD_rows": [
+    {
+      "line": 1360,
+      "text": "1794705699.628921 fcntl(3</usr/lib/python3.12/encodings/__pycache__/__init__.cpython-312.pyc>, F_GETFD) = 0x1 (flags FD_CLOEXEC)"
+    },
+    {
+      "line": 1467,
+      "text": "1794705699.666905 fcntl(0</dev/null<char 1:3>>, F_GETFD) = 0"
+    },
+    {
+      "line": 1472,
+      "text": "1794705699.668558 fcntl(1</dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/logs/r0a1.stdout>, F_GETFD) = 0"
+    },
+    {
+      "line": 1479,
+      "text": "1794705699.670930 fcntl(2</dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/logs/r0a1.stderr>, F_GETFD) = 0"
+    }
+  ],
+  "explicit_test_FIOCLEX_F_GETFD_pair_reached": false,
+  "exact_failure_open": {
+    "line": 2240,
+    "text": "1794705700.005553 openat(AT_FDCWD</dwdhome/fy/BASE_E6_2>, \"/proc/248632/fdinfo/3\", O_RDONLY|O_CLOEXEC) = -1 EACCES (Permission denied)"
+  },
+  "IPC_rows": [
+    {
+      "line": 93,
+      "timestamp": "1794705699.032307",
+      "syscall": "shmget",
+      "args": "0xa5723213, 16384, IPC_CREAT|IPC_EXCL|0666",
+      "return": "-1 EEXIST (File exists)",
+      "text": "1794705699.032307 shmget(0xa5723213, 16384, IPC_CREAT|IPC_EXCL|0666) = -1 EEXIST (File exists)",
+      "post_policy": false
+    },
+    {
+      "line": 94,
+      "timestamp": "1794705699.032560",
+      "syscall": "shmget",
+      "args": "0xa5723213, 16384, 000",
+      "return": "0",
+      "text": "1794705699.032560 shmget(0xa5723213, 16384, 000) = 0",
+      "post_policy": false
+    },
+    {
+      "line": 95,
+      "timestamp": "1794705699.033288",
+      "syscall": "shmat",
+      "args": "0, NULL, SHM_RDONLY",
+      "return": "0x7da73493d000",
+      "text": "1794705699.033288 shmat(0, NULL, SHM_RDONLY) = 0x7da73493d000",
+      "post_policy": false
+    },
+    {
+      "line": 1290,
+      "timestamp": "1794705699.588778",
+      "syscall": "shmget",
+      "args": "0xa5723213, 16384, IPC_CREAT|IPC_EXCL|0666",
+      "return": "-1 EEXIST (File exists)",
+      "text": "1794705699.588778 shmget(0xa5723213, 16384, IPC_CREAT|IPC_EXCL|0666) = -1 EEXIST (File exists)",
+      "post_policy": true
+    },
+    {
+      "line": 1291,
+      "timestamp": "1794705699.589010",
+      "syscall": "shmget",
+      "args": "0xa5723213, 16384, 000",
+      "return": "0",
+      "text": "1794705699.589010 shmget(0xa5723213, 16384, 000) = 0",
+      "post_policy": true
+    },
+    {
+      "line": 1292,
+      "timestamp": "1794705699.589249",
+      "syscall": "shmat",
+      "args": "0, NULL, SHM_RDONLY",
+      "return": "0x7c8be0486000",
+      "text": "1794705699.589249 shmat(0, NULL, SHM_RDONLY) = 0x7c8be0486000",
+      "post_policy": true
+    },
+    {
+      "line": 2288,
+      "timestamp": "1794705700.104262",
+      "syscall": "shmdt",
+      "args": "0x7c8be0486000",
+      "return": "0",
+      "text": "1794705700.104262 shmdt(0x7c8be0486000) = 0",
+      "post_policy": true
+    }
+  ],
+  "IPC_scope_note": "trace中IPC_CREAT|IPC_EXCL均EEXIST，随后既有segment lookup和SHM_RDONLY attach；只记录实际调用，不作为文件写或全局可用性PASS。",
+  "trace_target_processes": 1,
+  "trace_target_execve_count": 2,
+  "probe_child_grandchild_count": 0,
+  "global_zero_outside_writes_PASS": false,
+  "current_trace_payload_reads_raw": true
+}

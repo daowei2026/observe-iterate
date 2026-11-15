@@ -1,0 +1,59 @@
+{
+  "phase": "P1",
+  "status": "PASS",
+  "at": "2026-11-15T01:16:04.768956+00:00",
+  "architecture": "x86_64",
+  "endianness": "little",
+  "symbols": {
+    "FIOCLEX": {
+      "decimal": 21585,
+      "hex": "0x5451"
+    },
+    "FIONCLEX": {
+      "decimal": 21584,
+      "hex": "0x5450"
+    }
+  },
+  "local_sources": [
+    {
+      "path": "/usr/lib/python3.12/lib-dynload/termios.cpython-312-x86_64-linux-gnu.so",
+      "bytes": 35520,
+      "sha256": "55ffef895bf8c58ceed9885eea306ef3ab20a922172dcb1ff0cf523e911ed643",
+      "mtime_ns": 1769115462000000000,
+      "mtime_ns_exact": "1769115462000000000",
+      "inode": 2492791,
+      "dev": 2050,
+      "module": "termios",
+      "values": {
+        "FIOCLEX": 21585,
+        "FIONCLEX": 21584
+      }
+    },
+    {
+      "path": "/usr/include/asm-generic/ioctls.h",
+      "bytes": 3987,
+      "sha256": "456d8d175500bae6f73a66a023a71044f9cb077ab17531a7bf8df1509cc8dae3",
+      "mtime_ns": 1767974871000000000,
+      "mtime_ns_exact": "1767974871000000000",
+      "inode": 2898341,
+      "dev": 2050,
+      "definitions": {
+        "FIOCLEX": "#define FIOCLEX\t\t0x5451",
+        "FIONCLEX": "#define FIONCLEX\t0x5450"
+      }
+    },
+    {
+      "path": "/usr/include/x86_64-linux-gnu/asm/ioctls.h",
+      "bytes": 32,
+      "sha256": "857d11a8415a18e7a6ccf23640cf9bddf245a5f90c43b3014d08d3ae19faf952",
+      "mtime_ns": 1767974871000000000,
+      "mtime_ns_exact": "1767974871000000000",
+      "inode": 2922505,
+      "dev": 2050,
+      "includes": "<asm-generic/ioctls.h>"
+    }
+  ],
+  "local_definitions_agree": true,
+  "expected_0x5451_is_reference_only": true,
+  "kernel_or_filter_install": false
+}

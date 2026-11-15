@@ -1,0 +1,339 @@
+{
+  "schema": "longrun-worker-return/v2",
+  "run_id": "OI-EAW-WALL-20261114-01",
+  "work_order_id": "W005",
+  "order_ref": "daowei2026/observe-iterate@bf5a28e7afe8ef87280d3c37fd40b81c5f5ea804:longrun/runs/OI-EAW-WALL-20261114-01/work_orders/W005/ORDER.json",
+  "worker": "codex:OI-EAW-WALL-20261114-01:worker:W1",
+  "return_to": "chatgpt:OI-EAW-WALL-20261114-01:executor:E1",
+  "outcome": "STOP",
+  "result_ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/WORKER_EXECUTION_REPORT.md",
+  "missing": [
+    "STOP_SECCOMP_STATIC_PREPARATION_ASSERTION：静态准备脚本错误地要求旧trace中所有FIOCLEX均EPERM，遇到安装前成功记录后AssertionError/exit1；依新失败即停，未修复或重试。 本机termios/header已一致核实FIOCLEX=0x5451；此次不是静态case运行失败、新kernel/ioctl实测失败或kernel不支持。",
+    "W005 runtime/launcher/BPF尚未物化；唯一request delta的逐instruction比较未执行。",
+    "纯BPF evaluator未进入，arch/x32/FIOCLEX/FIONCLEX/arbitrary/high32/socket/ordinary/jumpbounds与非ioctl等价均未获验收PASS。",
+    "R0-A1实际尝试0；NNP/Landlock/seccomp当前安装与FIOCLEX成功及F_GETFD_CLOEXEC证据均无。",
+    "九项kernel probe及child/grandchild、read-only stdin/inherited FD接线均未在W005执行。",
+    "没有W005完整kernel trace，无法证明成功descriptor write路径完备、confinement或全局零外写；未把shell路径审阅/历史trace代替实测。",
+    "R0-B未进入；E与B候选均未评估，没有唯一兼容完整offline closure、package DB/transitive IDs/rebuild set，也不宣称二者均失败。",
+    "8个exact FRP Git对象因前置停止未读取；没有源码调查、staging或exact-base工程实现。",
+    "R0-C未进入；disk/RSS/wall/files四个非空预测上界、同closure可比依据及持续monitor/kill回执缺失。",
+    "四PASS均未成立，条件八EP包未建设；六项NOT_ATTEMPTED、一项SHARED-03 UNSATISFIED、旧SCENARIO-04仅继承PARTIAL，当前新增SATISFIED=0。",
+    "snapshot/accessor、DTO/schema、target、exact error/transaction synthetic records、patch/commit、fixture9/18/22、compile-only/serialization均未产生；不造空条件产物。",
+    "67份证据已经真实出版至commit 10e9433477db333ed5d7bf7ac4a1feee508dce44且逐字/Gitblob/hash核验完成，证据出版缺口已解决；正式Return本阶段已本地生成，但主控仍需逐字出版至longrun/runs/OI-EAW-WALL-20261114-01/worker_results/W005/WORKER_RETURN.json，取得真实Return ref及独立Worker receipt后执行完整Gate。ORDER逐字标签“V2 WORKER_RETURN.json returning only to executor E1”尚无可列的自身出版ref；不造future/self ref。",
+    "专业接受、action eligibility、G-RUN/H3、父Q和父任务完成仍归E1/manager，Worker未作决定。"
+  ],
+  "manifest": {
+    "COMMAND_LOG.jsonl": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/COMMAND_LOG.jsonl",
+      "sha256": "6158f40e2bc9f91deb60b20de6a16a3381641f6763ae99b2805885e128d2d786"
+    },
+    "CONTROLLER_SENTINEL_PRECONFIRMATION.json": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/CONTROLLER_SENTINEL_PRECONFIRMATION.json",
+      "sha256": "7dbc0b5d02b8fe11e9a5a0cf17cbef6b3f8cdba8b9a3c160d1515a1bdd899f2f"
+    },
+    "ENGINEERING_STOP_REPORT.md": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/ENGINEERING_STOP_REPORT.md",
+      "sha256": "8bfb80218cc99bf50157442a95ab047997b3223982f1ac2bc54a05e9d6721023"
+    },
+    "EP_ACCEPTANCE_MATRIX.md": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/EP_ACCEPTANCE_MATRIX.md",
+      "sha256": "86a7c40fe1412fee2da57e8037b392a7b9c3f7eb8ad6b1e60ebf72299253769a"
+    },
+    "FIOCLEX_LOCAL_CONSTANT_VERIFICATION.json": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/FIOCLEX_LOCAL_CONSTANT_VERIFICATION.json",
+      "sha256": "93a2a7fc8aefd8b096e04ffeab23f6d54ce53965a26722a55b9d4488ce624b05"
+    },
+    "FULL_WRITE_TRACE_REVIEW.json": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/FULL_WRITE_TRACE_REVIEW.json",
+      "sha256": "82a5e0c0f1244c09cd4491cb3ece65c7b3fe9f1ff11e5cee9197658547783698"
+    },
+    "HASHES.sha256": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/HASHES.sha256",
+      "sha256": "bf9f055ccd9bae51fb24d19afc42f162ee730c9f16a3fc70f58cdcbd7e8c8abe"
+    },
+    "LOCAL_STAGE_HANDOFF.json": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/LOCAL_STAGE_HANDOFF.json",
+      "sha256": "43d4241ef710b1d3f0075a0323980cff2956dca52edf454ef410263fff8af7cc"
+    },
+    "LOCAL_VALIDATION.json": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/LOCAL_VALIDATION.json",
+      "sha256": "c7bcdc0ec6ffd512ca84700068588f6db058584d25422e00562bb64c9a33a727"
+    },
+    "OFFLINE_CLOSURE_REPORT.json": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/OFFLINE_CLOSURE_REPORT.json",
+      "sha256": "7e3a055945e0a2e24af305f7dabbfa94ae0d3a0e805e0c855187a641d8020d37"
+    },
+    "PHASE0_RECOVERY_VERDICT.json": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/PHASE0_RECOVERY_VERDICT.json",
+      "sha256": "de741fdb7f6c675677a251a306f056c4081362f0177f9b2155b40a1280aedb5b"
+    },
+    "PUBLICATION_MANIFEST.json": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/PUBLICATION_MANIFEST.json",
+      "sha256": "f2385f5ec72e8ba6595f7126dd08d1f27d028555192ee9aa8161d74834a2abe4"
+    },
+    "RESOURCE_BUDGET_REPORT.json": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/RESOURCE_BUDGET_REPORT.json",
+      "sha256": "3a6ef6ddef3ae86ecf11f4536ffb771bbba94f95a7629c1146a78e012b4d9365"
+    },
+    "SECCOMP_FILTER_STATIC_EVALUATION.json": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/SECCOMP_FILTER_STATIC_EVALUATION.json",
+      "sha256": "0328c4579dd39f94e5384368cff52aa83073c2ae2322f1bd772141dcb89dd612"
+    },
+    "SECCOMP_IOCTL_FILTER_DELTA.json": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/SECCOMP_IOCTL_FILTER_DELTA.json",
+      "sha256": "11c3ba928f339c6ef3040832b9479ac6a992909ef4cd649c5e274353cf794b0b"
+    },
+    "W005_BINDING.json": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/W005_BINDING.json",
+      "sha256": "669ffbb2650b4d61270f87b013fc3c050b488f69a0608dd2ea1bdc0c819c3abc"
+    },
+    "WORKER_EXECUTION_REPORT.md": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/WORKER_EXECUTION_REPORT.md",
+      "sha256": "c6e7627d7cd3f10a9261eb3719fe0a762eef77117bed4332ed93bbf0f0f84dff"
+    },
+    "WRITE_CONFINEMENT_REPORT.json": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/WRITE_CONFINEMENT_REPORT.json",
+      "sha256": "c69138dea06af08df17b05b27b4a6ba2a1ed28e96f5d54c9a7543bb65048ea43"
+    },
+    "WRITE_SURFACE_AUDIT.json": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/WRITE_SURFACE_AUDIT.json",
+      "sha256": "bdbec773d752d916d40528a0415248ac4ce20e4406f95635d8d6311bfb0dc301"
+    },
+    "audit/ARCHIVE_STAGE_RECEIPT.json": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/audit/ARCHIVE_STAGE_RECEIPT.json",
+      "sha256": "8a219a747a6bba9a7f014697e2ee7acae90715cfc689945a27402b5c27ce2fa9"
+    },
+    "audit/INPUT_IMMUTABILITY_CHECK.json": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/audit/INPUT_IMMUTABILITY_CHECK.json",
+      "sha256": "af15d6595dc34d1d6002c9eef25d1aecf4e580eef70f8d42118c6da18f547449"
+    },
+    "audit/NATIVE_COMMAND_COMPLETIONS.jsonl": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/audit/NATIVE_COMMAND_COMPLETIONS.jsonl",
+      "sha256": "ee7a004783bdad7b8919b7865d9e82af1b361a05d8daf26ee7ba336a0fa44340"
+    },
+    "audit/NATIVE_FILE_CHANGES.jsonl": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/audit/NATIVE_FILE_CHANGES.jsonl",
+      "sha256": "8ec5528df90c1f098e2ccae4bfee47ea8ee331ff57f0d859c3ca9d60c3c6ee25"
+    },
+    "audit/NEGATIVE_TARGET_POSTCHECK.json": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/audit/NEGATIVE_TARGET_POSTCHECK.json",
+      "sha256": "d6f02a022ce5b45caa39b511e7bbfec057ec8e0b81bd5a11a27387de479b05a1"
+    },
+    "input/C0013-remote-calls--C0013--PRO_RETURN.json": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/input/C0013-remote-calls--C0013--PRO_RETURN.json",
+      "sha256": "43d04785b34b1fd1f0879d7b7e1609df0bceca08f789bd2e9acb0c772527f951"
+    },
+    "input/C0013-remote-delegations--D003--results--D003_EXECUTOR_PROGRESS_C0013.md": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/input/C0013-remote-delegations--D003--results--D003_EXECUTOR_PROGRESS_C0013.md",
+      "sha256": "ad6d99558f15716573ec6f09fad80d124f25583e23761cbf016b0c8d0864b711"
+    },
+    "input/C0013-remote-work_orders--W005--ORDER.json": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/input/C0013-remote-work_orders--W005--ORDER.json",
+      "sha256": "a0359de1293c791bf5855d2baff50b279b36060a8d27967a16d52cb50c8f5810"
+    },
+    "input/C0013-remote-work_orders--W005--ORDER.md": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/input/C0013-remote-work_orders--W005--ORDER.md",
+      "sha256": "2efc69a9060dc6d550eb969ebfcd34610c1f96760c47b2806319af3fe5850eea"
+    },
+    "input/CONTROLLER_SENTINEL_PRECONFIRMATION-W005.json": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/input/CONTROLLER_SENTINEL_PRECONFIRMATION-W005.json",
+      "sha256": "7dbc0b5d02b8fe11e9a5a0cf17cbef6b3f8cdba8b9a3c160d1515a1bdd899f2f"
+    },
+    "input/VERIFIED_INPUTS.json": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/input/VERIFIED_INPUTS.json",
+      "sha256": "9470c4e204215230b5421cfaa0971661cde69e6f488387ecd306c11603e07824"
+    },
+    "input/W005-final-pre-dispatch-context.json": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/input/W005-final-pre-dispatch-context.json",
+      "sha256": "5696476fdd0f7c6f4dbf4339d04ae15c11a1c15fbdf94c3a974ff5ed630fcf4b"
+    },
+    "input/W005-input-mirror-index.json": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/input/W005-input-mirror-index.json",
+      "sha256": "e3c81af3a8eff6e5efca9d288e4225f9fa875552a41f77ba0c0c17886f46ebde"
+    },
+    "input/W005-lock-competition-proof.json": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/input/W005-lock-competition-proof.json",
+      "sha256": "f50e28ce8356230098af93fd5196e9d31e2b83e09df53bfd3d7f757777cdd718"
+    },
+    "input/W005-start-receipt.json": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/input/W005-start-receipt.json",
+      "sha256": "574cb7fb126dd20e636252049936a39b74e6a0887007797a514fbb262462c86e"
+    },
+    "input/W005-startup-review.json": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/input/W005-startup-review.json",
+      "sha256": "dbaa1d77d6917fbd03705f4b4189546ed727237f5ac508502c608d37d0f663aa"
+    },
+    "input/W005-worker-loaded-context.json": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/input/W005-worker-loaded-context.json",
+      "sha256": "d054e3cea70f940bb08e532022626eeb1dc67e496a9eb2f374d57425243fcfa9"
+    },
+    "input/W005-worker-pre-dispatch-state.json": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/input/W005-worker-pre-dispatch-state.json",
+      "sha256": "dc10ca4a9c5c2f65df9c04493eb59e3fa59546e79eb68bbb9e9cb54013052a2d"
+    },
+    "input/WORKER_TASK-W005.md": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/input/WORKER_TASK-W005.md",
+      "sha256": "0cc6d0a55603978822feb80811cfc7eda9945f1620710b525326eb8029398db8"
+    },
+    "input/mirrors/00-FULL_ASSIGNMENT-C0013.md": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/input/mirrors/00-FULL_ASSIGNMENT-C0013.md",
+      "sha256": "aabcd9bca1fe255d9192c2b37ad69a876c7a11956ca69b5750acf3c72b0fb5e9"
+    },
+    "input/mirrors/01-INVOCATION-C0013.json": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/input/mirrors/01-INVOCATION-C0013.json",
+      "sha256": "80550be237777479fd1310e32df362f3eb387b639777514c16e376cc7a5a0bcc"
+    },
+    "input/mirrors/02-C0008-remote-delegations--D003--DELEGATION.json": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/input/mirrors/02-C0008-remote-delegations--D003--DELEGATION.json",
+      "sha256": "4f544748a95dee05021c41b232081b1724680fc68bd20065e1157d0176f046fa"
+    },
+    "input/mirrors/03-C0008-remote-delegations--D003--DELEGATION.md": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/input/mirrors/03-C0008-remote-delegations--D003--DELEGATION.md",
+      "sha256": "6bae2b9f61794574fa4206ba9e10e32bf36ae0e8cf5a315f9fda0e183c6d23aa"
+    },
+    "input/mirrors/04-WORKER_RETURN.json": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/input/mirrors/04-WORKER_RETURN.json",
+      "sha256": "4956ed103a66203e4a947f86807d4c44d2e94d2b2f59229be6a16361e30f56ea"
+    },
+    "input/mirrors/05-WORKER_EXECUTION_REPORT.md": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/input/mirrors/05-WORKER_EXECUTION_REPORT.md",
+      "sha256": "fe9fcab560df1cdb792d77996beb2c69754534a1cd91a864e2154ef5bfb5da6b"
+    },
+    "input/mirrors/06-ENGINEERING_STOP_REPORT.md": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/input/mirrors/06-ENGINEERING_STOP_REPORT.md",
+      "sha256": "3f01a70c414cdb877bf1fe0dcea37db10ad020581a07832b277994e41a8e5e24"
+    },
+    "input/mirrors/07-PHASE0_RECOVERY_VERDICT.json": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/input/mirrors/07-PHASE0_RECOVERY_VERDICT.json",
+      "sha256": "0981d2b4b97592110e87613a5b8452ac8c85fb60bdea8beacd2af44971e5e23a"
+    },
+    "input/mirrors/08-WRITE_CONFINEMENT_REPORT.json": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/input/mirrors/08-WRITE_CONFINEMENT_REPORT.json",
+      "sha256": "f0bbc7e7331142dbaee5bbd9b7aaf778675f10b1c2d4293c02dd2c0ded852e51"
+    },
+    "input/mirrors/09-FULL_WRITE_TRACE_REVIEW.json": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/input/mirrors/09-FULL_WRITE_TRACE_REVIEW.json",
+      "sha256": "fb29e6e1d7e7ec65153070f79a3bf9614a536b4a4b9972f8a651b27b03e87924"
+    },
+    "input/mirrors/10-PARENT_LAUNCHER_WIRING_DELTA.json": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/input/mirrors/10-PARENT_LAUNCHER_WIRING_DELTA.json",
+      "sha256": "6b9cdc6c3d834a524caf52865887c4e770800fa134ed6a6be3720fa1b9a96222"
+    },
+    "input/mirrors/11-W004_BINDING.json": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/input/mirrors/11-W004_BINDING.json",
+      "sha256": "4a71a31b4648b48241f34d674d8c2bca1dbbae982c902095a228b37775d8a42b"
+    },
+    "input/mirrors/12-OFFLINE_CLOSURE_REPORT.json": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/input/mirrors/12-OFFLINE_CLOSURE_REPORT.json",
+      "sha256": "761df1b865c83befc20f19ce226bd8427018ea14b3daa6b6bd234e0041aae72e"
+    },
+    "input/mirrors/13-RESOURCE_BUDGET_REPORT.json": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/input/mirrors/13-RESOURCE_BUDGET_REPORT.json",
+      "sha256": "0480255d7d571c86b13318861abce3d158aa7b55fa78c48953dab7e473e7e0cc"
+    },
+    "input/mirrors/14-EP_ACCEPTANCE_MATRIX.md": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/input/mirrors/14-EP_ACCEPTANCE_MATRIX.md",
+      "sha256": "039ff2c077bdee3a6ef96000d207e613298dff9425d41bb0d27ebd1bf7913556"
+    },
+    "input/mirrors/15-runtime.py": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/input/mirrors/15-runtime.py",
+      "sha256": "8e1d234ff2f5b6167e0b9a0fe94d292a138039e3608954639cb96c57c92b0eac"
+    },
+    "input/mirrors/16-landlock_launcher.py": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/input/mirrors/16-landlock_launcher.py",
+      "sha256": "8f12bc66a0318f5394193331c07bf1cdd583711c232b6f1ab180ebae549c7002"
+    },
+    "input/mirrors/17-r0a1.244050": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/input/mirrors/17-r0a1.244050",
+      "sha256": "b2bcd39ff8886fa65815107bd95f333abef1bcb0a1ea69bb20010abc24b2c959"
+    },
+    "input/mirrors/18-C0013-remote-delegations--D003--results--D003_W004_PROFESSIONAL_REVIEW_C0013.md": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/input/mirrors/18-C0013-remote-delegations--D003--results--D003_W004_PROFESSIONAL_REVIEW_C0013.md",
+      "sha256": "9bd9696725c838ad96d630bd73c2d57860b4597211b13d50ac65206f3c8c86c0"
+    },
+    "input/mirrors/19-C0013-remote-delegations--D003--results--EP_ACCEPTANCE_MATRIX_C0013.md": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/input/mirrors/19-C0013-remote-delegations--D003--results--EP_ACCEPTANCE_MATRIX_C0013.md",
+      "sha256": "c687260a11ac3a03855118f5454ae3a78498e11a1b368120bb1f2bfb5d7f00aa"
+    },
+    "input/mirrors/20-C0013-remote-delegations--D003--results--W005_SUCCESSOR_DECISION_C0013.md": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/input/mirrors/20-C0013-remote-delegations--D003--results--W005_SUCCESSOR_DECISION_C0013.md",
+      "sha256": "2be4f8a9b75bab864b1b695b71c53f91fbf73663596fb2fd9e4686d42486fcab"
+    },
+    "input/mirrors/21-C0006-remote-ADDITIONAL_ENGINEERING_PRECONDITION.md": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/input/mirrors/21-C0006-remote-ADDITIONAL_ENGINEERING_PRECONDITION.md",
+      "sha256": "775a1941d2086dcac718f5aa1d8dcb60524bbfdc3222ea71a8a04f5112f87718"
+    },
+    "input/mirrors/22-C0006-remote-CONTROLLED_SCENARIO_ACTION_DESIGN.md": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/input/mirrors/22-C0006-remote-CONTROLLED_SCENARIO_ACTION_DESIGN.md",
+      "sha256": "cd522ce16fd47888d927700119cd6bf36721414a7d2a8f302e73cec84efd9dea"
+    },
+    "input/validate-order-W005.json": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/input/validate-order-W005.json",
+      "sha256": "393f4a4b5a6a832a3a4fb38d49d5830dff63dee889096d0dc18040bdff03ba9f"
+    },
+    "receipts/STATIC_PREPARATION_FAILURE.json": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/receipts/STATIC_PREPARATION_FAILURE.json",
+      "sha256": "607dee24fb42fceeece00d17a8b9b28874bf6486386970dd5379deb739ee9097"
+    },
+    "tools/archive_stop.py": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/tools/archive_stop.py",
+      "sha256": "48970ba83ee223b3160fabfc89fce6b3a9a28fecdb80e09cd61272ecaf8d417d"
+    },
+    "tools/prepare_static.py": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/tools/prepare_static.py",
+      "sha256": "6d9168b2358c84d03c16281c77dc3921e7c165cf9f4de5d81ceba3c59a05a4af"
+    },
+    "tools/seal_local_stage.py": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/tools/seal_local_stage.py",
+      "sha256": "b36085c798a49fa93991aa39449cba9aec579c0064e3e303ba0bfec4a09829f1"
+    },
+    "FREEZE_RECEIPT.json": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/FREEZE_RECEIPT.json",
+      "sha256": "c8437e05755506d44682affe46bd981e56079d20797e9b5be7f075b0d928acb1"
+    },
+    "WORKER_EXECUTION_REPORT.md with exact FIOCLEX static-policy check, Phase0 recovery and conditional EP outcome": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/WORKER_EXECUTION_REPORT.md",
+      "sha256": "c6e7627d7cd3f10a9261eb3719fe0a762eef77117bed4332ed93bbf0f0f84dff"
+    },
+    "W005_BINDING.json with original W1 physical-chat reuse, fresh owner/thread/model/effort/cwd/no-writer/new-lock, unchanged HOME/CODEX_HOME and independent W005 root": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/W005_BINDING.json",
+      "sha256": "669ffbb2650b4d61270f87b013fc3c050b488f69a0608dd2ea1bdc0c819c3abc"
+    },
+    "CONTROLLER_SENTINEL_PRECONFIRMATION.json preserving the controller read-only absence receipt for /D003/.W005-deny-outside-C0013-b6e58ef8": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/CONTROLLER_SENTINEL_PRECONFIRMATION.json",
+      "sha256": "7dbc0b5d02b8fe11e9a5a0cf17cbef6b3f8cdba8b9a3c160d1515a1bdd899f2f"
+    },
+    "SECCOMP_IOCTL_FILTER_DELTA.json proving a single verified FIOCLEX request exception while all other ioctl requests remain denied": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/SECCOMP_IOCTL_FILTER_DELTA.json",
+      "sha256": "11c3ba928f339c6ef3040832b9479ac6a992909ef4cd649c5e274353cf794b0b"
+    },
+    "SECCOMP_FILTER_STATIC_EVALUATION.json covering arch, x32, FIOCLEX, FIONCLEX, arbitrary ioctl, existing denied and ordinary allowed syscall cases": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/SECCOMP_FILTER_STATIC_EVALUATION.json",
+      "sha256": "0328c4579dd39f94e5384368cff52aa83073c2ae2322f1bd772141dcb89dd612"
+    },
+    "WRITE_CONFINEMENT_REPORT.json and FULL_WRITE_TRACE_REVIEW.json proving or accurately failing kernel enforcement, nine probes and path-complete writes": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/WRITE_CONFINEMENT_REPORT.json",
+      "sha256": "c69138dea06af08df17b05b27b4a6ba2a1ed28e96f5d54c9a7543bb65048ea43"
+    },
+    "OFFLINE_CLOSURE_REPORT.json selecting exactly one compatible complete offline closure or stopping": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/OFFLINE_CLOSURE_REPORT.json",
+      "sha256": "7e3a055945e0a2e24af305f7dabbfa94ae0d3a0e805e0c855187a641d8020d37"
+    },
+    "RESOURCE_BUDGET_REPORT.json with non-null evidence-backed disk/RSS/wall/file bounds and verified continuous monitors or stopping": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/RESOURCE_BUDGET_REPORT.json",
+      "sha256": "3a6ef6ddef3ae86ecf11f4536ffb771bbba94f95a7629c1146a78e012b4d9365"
+    },
+    "PHASE0_RECOVERY_VERDICT.json with four independent PASS requirements and exact gate/stop routing": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/PHASE0_RECOVERY_VERDICT.json",
+      "sha256": "de741fdb7f6c675677a251a306f056c4081362f0177f9b2155b40a1280aedb5b"
+    },
+    "COMMAND_LOG.jsonl, WRITE_SURFACE_AUDIT.json, EP_ACCEPTANCE_MATRIX.md, PUBLICATION_MANIFEST.json and HASHES.sha256": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/COMMAND_LOG.jsonl",
+      "sha256": "6158f40e2bc9f91deb60b20de6a16a3381641f6763ae99b2805885e128d2d786"
+    },
+    "ENGINEERING_STOP_REPORT.md for any STOP without fake empty conditional artifacts": {
+      "ref": "daowei2026/observe-iterate@10e9433477db333ed5d7bf7ac4a1feee508dce44:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W005/ENGINEERING_STOP_REPORT.md",
+      "sha256": "8bfb80218cc99bf50157442a95ab047997b3223982f1ac2bc54a05e9d6721023"
+    }
+  }
+}

@@ -1,0 +1,170 @@
+{
+  "schema": "local-worker-stage-handoff/v1",
+  "run_id": "OI-EAW-WALL-20261114-01",
+  "work_order_id": "W006",
+  "worker": "codex:OI-EAW-WALL-20261114-01:worker:W1",
+  "return_to": "chatgpt:OI-EAW-WALL-20261114-01:executor:E1",
+  "outcome": "STOP",
+  "gate": "PREFLIGHT_STOP",
+  "stop_code": "STOP_PROBE_HOLDER_FDINFO_READ_EACCES",
+  "missing": [
+    "唯一R0-A1在受限probe只读openat /proc/248632/fdinfo/3返回EACCES/PermissionError，exit1；未改guard/policy/probe重试；具体procfs/LSM机制未在本W另行调查。",
+    "bootstrap FIOCLEX实际成功，但inside descriptor清FD_CLOEXEC→FIOCLEX→F_GETFD效果测试未达；其他descriptor的F_GETFD不能冒充该配对证明。",
+    "inside create/write/rename/remove完整positive probe未达；失败回执写入根内不替代该完整probe。",
+    "OUTSIDE/SHARED/HOME/CODEX新文件创建、只读目录打开与symlink escape的实际kernel negative probes未达；具名lstat不存在不是kernel拒绝PASS。",
+    "child/grandchild未生成，restriction继承未测；inherited writable FD关闭已实证，holder锁在父侧独立复核完整，但受限子域holder只读复核失败。",
+    "socket/connect实际negative probe未达；静态socket拒绝与filter安装不替代当前网络probe。",
+    "完整2290行失败链已审阅，3次成功write/6594bytes均根内，failed-chain outside file writes0/unknown paths0；不能外推全任务、后继或global zero writes/confinement PASS。",
+    "R0-B未进入，E/B两个closure候选均未评估，不称二者均失败；缺唯一兼容offline resolver/compiler/packageDB/transitive IDs/rebuild set与missing deps空证明。",
+    "8个exact FRP Git对象仅保留已核映射，本W因前置停止未读；无exact-base源码调查、staging或patch。",
+    "R0-C未进入，disk/RSS/wall/files预测上界、同closure可比测量与continuous monitors/kill receipt未证；1.277822秒失败命令及45秒timeout不构成预算PASS。",
+    "四PASS未成立，条件八EP与snapshot/DTO/target/error/transaction、9/18/22 fixture、compile-only/synthetic serialization/local commit均未实施，不造空条件成果。",
+    "具名26输入收尾一致和任务写路径审阅有限域，未扫描全BASE/HOME/CODEX或验证其全局零新增写。",
+    "全部本地证据尚待主控逐字出版至W006成果路径，真实commit/result_ref/manifest refs待回传；Worker无GitHub写授权，不造future/self ref。",
+    "正式v2 WORKER_RETURN须主控出版证据并回传真实refs后，由同原W1同W006仅在final-return生成；主控再出版worker_results/W006/WORKER_RETURN.json，仅回原E1。",
+    "专业接受、action eligibility、G-RUN/H3、父Q和父任务完成仍归E1/manager，Worker未作决定。"
+  ],
+  "deliverable_mapping": [
+    {
+      "deliverable_literal": "WORKER_EXECUTION_REPORT.md with layered P0-P4 preparation, Phase0 recovery and conditional EP outcome",
+      "local_files": [
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/WORKER_EXECUTION_REPORT.md"
+      ],
+      "status": "LOCAL_FACTUAL_STOP_PACKAGE",
+      "note": "真实报告/成功子事实/未完成缺口；不把证明式标签当作实质PASS。"
+    },
+    {
+      "deliverable_literal": "W006_BINDING.json with original W1 physical-chat reuse, fresh owner/thread/model/effort/cwd/no-writer/new-lock, unchanged HOME/CODEX_HOME and independent W006 root",
+      "local_files": [
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/W006_BINDING.json"
+      ],
+      "status": "LOCAL_FACTUAL_STOP_PACKAGE",
+      "note": "真实报告/成功子事实/未完成缺口；不把证明式标签当作实质PASS。"
+    },
+    {
+      "deliverable_literal": "CONTROLLER_SENTINEL_PRECONFIRMATION.json preserving the controller read-only absence receipt for /D003/.W006-deny-outside-C0014-259834ad",
+      "local_files": [
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/CONTROLLER_SENTINEL_PRECONFIRMATION.json"
+      ],
+      "status": "LOCAL_FACTUAL_STOP_PACKAGE",
+      "note": "真实报告/成功子事实/未完成缺口；不把证明式标签当作实质PASS。"
+    },
+    {
+      "deliverable_literal": "HISTORICAL_FIOCLEX_PHASE_CLASSIFICATION.json preserving W004 pre-policy success and post-policy EPERM as separate historical facts",
+      "local_files": [
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/HISTORICAL_FIOCLEX_PHASE_CLASSIFICATION.json"
+      ],
+      "status": "LOCAL_FACTUAL_STOP_PACKAGE",
+      "note": "真实报告/成功子事实/未完成缺口；不把证明式标签当作实质PASS。"
+    },
+    {
+      "deliverable_literal": "FIOCLEX_LOCAL_CONSTANT_VERIFICATION.json and SECCOMP_DATA_LAYOUT_VERIFICATION.json from independent local sources",
+      "local_files": [
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/FIOCLEX_LOCAL_CONSTANT_VERIFICATION.json",
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/SECCOMP_DATA_LAYOUT_VERIFICATION.json"
+      ],
+      "status": "LOCAL_FACTUAL_STOP_PACKAGE",
+      "note": "真实报告/成功子事实/未完成缺口；不把证明式标签当作实质PASS。"
+    },
+    {
+      "deliverable_literal": "PARENT_RUNTIME_BINDING_DELTA.json proving fresh W006 root/lock values and no W004/W005 hard-coded binding",
+      "local_files": [
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/PARENT_RUNTIME_BINDING_DELTA.json"
+      ],
+      "status": "LOCAL_FACTUAL_STOP_PACKAGE",
+      "note": "真实报告/成功子事实/未完成缺口；不把证明式标签当作实质PASS。"
+    },
+    {
+      "deliverable_literal": "SECCOMP_IOCTL_FILTER_DELTA.json proving the single verified FIOCLEX request exception and all other ioctl denial",
+      "local_files": [
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/SECCOMP_IOCTL_FILTER_DELTA.json"
+      ],
+      "status": "LOCAL_FACTUAL_STOP_PACKAGE",
+      "note": "真实报告/成功子事实/未完成缺口；不把证明式标签当作实质PASS。"
+    },
+    {
+      "deliverable_literal": "SECCOMP_FILTER_STATIC_EVALUATION.json covering arch/x32/FIOCLEX/FIONCLEX/arbitrary/high32/socket/read/prctl/jump/equivalence cases before kernel execution",
+      "local_files": [
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/SECCOMP_FILTER_STATIC_EVALUATION.json"
+      ],
+      "status": "LOCAL_FACTUAL_STOP_PACKAGE",
+      "note": "真实报告/成功子事实/未完成缺口；不把证明式标签当作实质PASS。"
+    },
+    {
+      "deliverable_literal": "WRITE_CONFINEMENT_REPORT.json and FULL_WRITE_TRACE_REVIEW.json proving or accurately failing current kernel enforcement, probes and path-complete writes",
+      "local_files": [
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/WRITE_CONFINEMENT_REPORT.json",
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/FULL_WRITE_TRACE_REVIEW.json"
+      ],
+      "status": "LOCAL_FACTUAL_STOP_PACKAGE",
+      "note": "真实报告/成功子事实/未完成缺口；不把证明式标签当作实质PASS。"
+    },
+    {
+      "deliverable_literal": "OFFLINE_CLOSURE_REPORT.json selecting exactly one compatible complete offline closure or stopping",
+      "local_files": [
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/OFFLINE_CLOSURE_REPORT.json"
+      ],
+      "status": "LOCAL_FACTUAL_STOP_PACKAGE",
+      "note": "真实报告/成功子事实/未完成缺口；不把证明式标签当作实质PASS。"
+    },
+    {
+      "deliverable_literal": "RESOURCE_BUDGET_REPORT.json with non-null evidence-backed disk/RSS/wall/file bounds and verified continuous monitors or stopping",
+      "local_files": [
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/RESOURCE_BUDGET_REPORT.json"
+      ],
+      "status": "LOCAL_FACTUAL_STOP_PACKAGE",
+      "note": "真实报告/成功子事实/未完成缺口；不把证明式标签当作实质PASS。"
+    },
+    {
+      "deliverable_literal": "PHASE0_RECOVERY_VERDICT.json with four independent PASS requirements and exact gate/stop routing",
+      "local_files": [
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/PHASE0_RECOVERY_VERDICT.json"
+      ],
+      "status": "LOCAL_FACTUAL_STOP_PACKAGE",
+      "note": "真实报告/成功子事实/未完成缺口；不把证明式标签当作实质PASS。"
+    },
+    {
+      "deliverable_literal": "COMMAND_LOG.jsonl, WRITE_SURFACE_AUDIT.json, EP_ACCEPTANCE_MATRIX.md, PUBLICATION_MANIFEST.json and HASHES.sha256",
+      "local_files": [
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/COMMAND_LOG.jsonl",
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/WRITE_SURFACE_AUDIT.json",
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/EP_ACCEPTANCE_MATRIX.md",
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/PUBLICATION_MANIFEST.json",
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/HASHES.sha256"
+      ],
+      "status": "LOCAL_FACTUAL_STOP_PACKAGE",
+      "note": "真实报告/成功子事实/未完成缺口；不把证明式标签当作实质PASS。"
+    },
+    {
+      "deliverable_literal": "If and only if all four Phase0 requirements pass: exact-base staged eight-EP package, reviewable patch/manifest, complete unexecuted 9/18/22 fixture, permitted compile-only/synthetic-serialization reports, and NOT_UPSTREAM_PUBLISHED local commit report if actually created",
+      "local_files": [],
+      "status": "CONDITIONAL_NOT_ENTERED",
+      "note": "无四PASS，不造空条件产物。"
+    },
+    {
+      "deliverable_literal": "ENGINEERING_STOP_REPORT.md for any STOP without fake empty conditional artifacts",
+      "local_files": [
+        "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/ENGINEERING_STOP_REPORT.md"
+      ],
+      "status": "LOCAL_FACTUAL_STOP_PACKAGE",
+      "note": "真实报告/成功子事实/未完成缺口；不把证明式标签当作实质PASS。"
+    },
+    {
+      "deliverable_literal": "V2 WORKER_RETURN.json returning only to executor E1",
+      "local_files": [],
+      "status": "PENDING_TRUE_PUBLISHED_REFS_THEN_FORMAL_RETURN",
+      "note": "未来自身尚无ref，不伪造。"
+    }
+  ],
+  "publication_target_root": "longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W006/",
+  "real_publication_commit": null,
+  "result_ref": null,
+  "formal_Return_created": false,
+  "formal_Return_later_target": "longrun/runs/OI-EAW-WALL-20261114-01/worker_results/W006/WORKER_RETURN.json",
+  "next_steps": [
+    "主控逐字出版冻结原件并远端核bytes/hash/Gitblob。",
+    "主控回传准确真实refs/hash到同原W1同W006。",
+    "本Worker仅final-return新写v2 Return/validation，主控出版，仅回原E1。",
+    "E1/manager决定专业接受与后继，本地Goal不代表W/D/父任务完成。"
+  ]
+}
