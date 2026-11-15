@@ -1,0 +1,502 @@
+{
+  "schema": "w008-return-validation/v1",
+  "at": "2026-11-15T06:22:30.477464+00:00",
+  "purpose": "仅本阶段正式Return本地校验，不是主控独立worker_receipt/最终Gate",
+  "schema_validation": "PASS_Draft202012Validator_actual_readback",
+  "schema_source": {
+    "path": "/dwdhome/fy/cgpterm/artifacts/oi-eaw-wall/OI-EAW-WALL-20261114-01/adopted-business-dc18a/longrun/contracts/longrun_schema_v2.json",
+    "bytes": 11508,
+    "sha256": "32c1e2409ff4936a87d688848736bb9af71fe0415d338ba66dd031e3149243d3",
+    "git_blob_sha": "5f809153b48907de5a3357e6017d7fac031f655b",
+    "mtime_ns_decimal": "1794714819659419697",
+    "inode": 14859702,
+    "dev": 83
+  },
+  "identity_order_route": "PASS_W008_ORIGINAL_W1_RETURN_ONLY_E1",
+  "physical_context": {
+    "turn_id": "01a1ddd4-64b5-7672-a214-f8d8eb8aeef4",
+    "root_turn_id": "01a1ddd4-64b5-7672-a214-f8d8eb8aeef4",
+    "disabled_plugin_ids": [],
+    "cwd": "/dwdhome/fy/BASE_E6_2",
+    "approval_policy": "never",
+    "approvals_reviewer": "auto_review",
+    "sandbox_policy": {
+      "type": "danger-full-access"
+    },
+    "permission_profile": {
+      "type": "disabled"
+    },
+    "model": "gpt-6.1-sol",
+    "comp_hash": "3000",
+    "collaboration_mode": {
+      "mode": "default",
+      "settings": {
+        "model": "gpt-6.1-sol",
+        "reasoning_effort": "max",
+        "developer_instructions": null
+      }
+    },
+    "multi_agent_version": "v2",
+    "realtime_active": false,
+    "effort": "max",
+    "summary": "none"
+  },
+  "lock_before": {
+    "at": "2026-11-15T06:22:25.850909+00:00",
+    "holder_pid": 255320,
+    "startticks": "49586940",
+    "inode": 14866078,
+    "dev": 83,
+    "fd": 3,
+    "session": 17409,
+    "fdinfo": "pos:\t0\nflags:\t02500002\nmnt_id:\t4061\nino:\t14866078\nlock:\t1: FLOCK  ADVISORY  WRITE 255320 00:53:14866078 0 EOF\n",
+    "independent_same_inode_competition_errno": 11,
+    "holder_not_replaced_or_released": true,
+    "owner_pid": 2890,
+    "owner_startticks": "20139",
+    "owner_uid": 501,
+    "HOME": "/home/dw",
+    "CODEX_HOME": "/home/dw/.codex",
+    "actual_cwd": "/dwdhome/fy/BASE_E6_2",
+    "PYTHONDONTWRITEBYTECODE": true
+  },
+  "lock_after": {
+    "at": "2026-11-15T06:22:30.477921+00:00",
+    "holder_pid": 255320,
+    "startticks": "49586940",
+    "inode": 14866078,
+    "dev": 83,
+    "fd": 3,
+    "session": 17409,
+    "fdinfo": "pos:\t0\nflags:\t02500002\nmnt_id:\t4061\nino:\t14866078\nlock:\t1: FLOCK  ADVISORY  WRITE 255320 00:53:14866078 0 EOF\n",
+    "independent_same_inode_competition_errno": 11,
+    "holder_not_replaced_or_released": true,
+    "owner_pid": 2890,
+    "owner_startticks": "20139",
+    "owner_uid": 501,
+    "HOME": "/home/dw",
+    "CODEX_HOME": "/home/dw/.codex",
+    "actual_cwd": "/dwdhome/fy/BASE_E6_2",
+    "PYTHONDONTWRITEBYTECODE": true
+  },
+  "return_file": {
+    "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/final-return/WORKER_RETURN.json",
+    "bytes": 123348,
+    "sha256": "801682a129c9786aff4a6e61953a67b08328cb590d5f01e5b83ff29bd4e7c3f3",
+    "git_blob_sha": "02533fd35ea14ce68a0a77ada6c3ed78191ef7d0",
+    "mtime_ns_decimal": "1794723748982193778",
+    "inode": 14873744,
+    "dev": 83
+  },
+  "outcome": "PARTIAL",
+  "material_status": "PARTIAL_WITH_LIMITS",
+  "result_ref": "daowei2026/observe-iterate@e7d079f42bd7bd7434d63373799348d79df22696:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D004/results/W008/WORKER_EXECUTION_REPORT.md",
+  "manifest_entries_exact_ref_and_sha256_only": true,
+  "manifest_count": 362,
+  "missing": [
+    "[M-PRODUCTION-RUNTIME] material_status=PARTIAL_WITH_LIMITS；已运行current纯reducer与occurrence BSON adapter；未执行FaoModel/maintainWallLifecycle事件引擎、dumpWallOutputs、物理O/C/D或FRP Dynamic提交，不能称production runtime PASS。",
+    "[M-NATIVE-DBA-READER] 当前DBA产品未物化；指定dbaw.py的118类中无Wall/P1 wrapper。只核现成reader源码/命名空间，未导入完整production设置或运行FrpDbaDao.loadWith；四条ToBSON/FromBSON内存读回不等于native physical reader或Batch/D roundtrip。",
+    "[M-PRODUCTION-TUPLE-TIME] 人工typed输入rb/BidWall/local999/UTI10,11,12,14；SHFE-night仅existing test label，未加载日历，无生产参数/receipt/canonical FeatureRunIdentity/market epoch/actual-confirm-known时间。",
+    "[M-D-EVENT-CORRELATION] 取得exact reducer Left+identity；未运行D事件通道、ingress decode与诊断合并，不能把无Left等同D有效空，也无实际D时序identity对账。",
+    "[M-CACHED-DEPENDENCY-PROVENANCE] 9个相关production模块从liveBASE编译，既有frp-core/其他依赖与BussinessUtils缓存ABI只读复用；未证明这些缓存全部由当前dirty checkout生成。",
+    "[M-COVERAGE] normal3call/4input加最多2既有表达式；after-End setup省略Dormant/restore，原after-End update UTI低于End，未单独隔离late policy；未执行整套existing smoke assertion，也未验证其他terminal/transaction/UTI/自然频率。",
+    "[M-PROFESSIONAL-QUALIFICATION] 预期WORKING/未冻结。专业材料接受、必要性/正式comparison、父Q/H3/G-RUN和D003最终关闭均仍由E1/manager决定，不以本W事实自动完成。",
+    "[LIMIT-BINARY-RAW-REF] 46个binary原始字节已由真实归档覆盖，原件出版缺口已解决；它们仅为archive-member，没有raw路径ref。V2 ref/sha256不能内嵌member定位，本manifest引用BINARY_TRANSPORT_MANIFEST及51分卷真实文件各自hash，不把原binary hash配给archive ref，不宣称raw直接出版。",
+    "[M-FORMAL-RETURN-PUBLICATION] 本正式Return已在W008/final-return本地生成并作schema/身份/证据映射校验；自身远端出版、控制方独立worker_receipt/有效Owner-D Gate及route尚待主控实际执行。当前没有自身commit/ref，不引用自身或未来validation；本地校验不替代专业接受、W/D/父业务完成。"
+  ],
+  "retained_original_substantive_missing_count": 7,
+  "resolved_missing": [
+    {
+      "old_id": "M-EVIDENCE-PUBLICATION",
+      "status": "RESOLVED_BYTE_PRESERVING_PUBLICATION",
+      "evidence_commit": "e7d079f42bd7bd7434d63373799348d79df22696",
+      "controller_commit": "0b741493bd1a5b845905f9b46e7de4a381075507"
+    },
+    {
+      "old_id": "M-FORMAL-RETURN",
+      "local_generation": "RESOLVED_THIS_STAGE",
+      "remote_publication": "STILL_PENDING_AS_M_FORMAL_RETURN_PUBLICATION"
+    }
+  ],
+  "publication_verification": {
+    "at": "2026-11-15T06:22:28.920918+00:00",
+    "evidence_commit": "e7d079f42bd7bd7434d63373799348d79df22696",
+    "controller_commit": "0b741493bd1a5b845905f9b46e7de4a381075507",
+    "direct_originals": 308,
+    "binary_archive_members": 46,
+    "binary_member_original_bytes": 136352984,
+    "archive_parts": 51,
+    "published_evidence_entries": 360,
+    "additional_controller_entries": 2,
+    "formal_manifest_entries": 362,
+    "local_archive": {
+      "path": "/dwdhome/fy/cgpterm/artifacts/oi-eaw-wall/OI-EAW-WALL-20261114-01/W008-transport/binary-originals.tar.gz",
+      "bytes": 26554478,
+      "sha256": "f9bcb47831eef187370c4f6eb411ad01eee1cf545aeb75eceb8bd047c2006941",
+      "git_blob_sha": "48d01c69bfdda50eabcc83bb51383ecf6ae2b25c",
+      "mtime_ns_decimal": "1794721896379238081",
+      "inode": 14868855,
+      "dev": 83
+    },
+    "all_originals_byte_preserved": true,
+    "remote_verification_author": "控制方真实逐路径readback；本阶段W1核本地原件与运输映射，没有重新向GitHub读取或写入",
+    "controller_proof_basis": "308原始文本及1运输manifest远端UTF8字符串逐字相等且Gitblob一致；51分卷远端base64规范化后与本地base64完全相等且Gitblob一致；本地分卷连接的压缩包SHA与逐成员46原bytes/SHA已验证，故远端分卷重建同46原bytes。未伪称46个raw目标路径有直接ref。",
+    "compare_endpoint_observed_files": 300,
+    "compare_limit": "compare端点300项不能独立当360全量证明；采用回执列明的逐路径UTF8/base64及exact subtree范围",
+    "raw_binary_refs_created": 0,
+    "v2_member_representation": "用运输manifest和51分卷各自真实ref及各自文件SHA；binary原hash只保留原件/member映射，不与archive ref混配"
+  },
+  "frozen_originals_before": {
+    "at": "2026-11-15T06:22:28.574405+00:00",
+    "original_count": 354,
+    "original_bytes": 141179547,
+    "all_named_bytes_SHA256_gitblob_match": true,
+    "metadata_353_from_freeze_plus_receipt_self_from_native_terminal": true,
+    "current_inventory_digest_SHA256": "abfa3dd26b42b9955520002f0a2f9454031fb03e76d4358c33926fe31de64df2",
+    "mismatches": [],
+    "scope": "仅354具名原件；final-return明确排除；不重新调查、编译或读取业务大数据",
+    "original_freeze_sha256": "79917e6605f45b1e5798d4b475064a395790b5f244589902fe6afb98b5b05902",
+    "old_seal_native_terminal": {
+      "id": "exec-f2110bbc-19da-4017-ac00-ba582c0f67ed",
+      "exit_code": 0,
+      "status": "completed",
+      "completed_at_ms": 1794720797647
+    }
+  },
+  "frozen_originals_after": {
+    "at": "2026-11-15T06:22:30.475760+00:00",
+    "original_count": 354,
+    "original_bytes": 141179547,
+    "all_named_bytes_SHA256_gitblob_match": true,
+    "metadata_353_from_freeze_plus_receipt_self_from_native_terminal": true,
+    "current_inventory_digest_SHA256": "abfa3dd26b42b9955520002f0a2f9454031fb03e76d4358c33926fe31de64df2",
+    "mismatches": [],
+    "scope": "仅354具名原件；final-return明确排除；不重新调查、编译或读取业务大数据",
+    "original_freeze_sha256": "79917e6605f45b1e5798d4b475064a395790b5f244589902fe6afb98b5b05902",
+    "old_seal_native_terminal": {
+      "id": "exec-f2110bbc-19da-4017-ac00-ba582c0f67ed",
+      "exit_code": 0,
+      "status": "completed",
+      "completed_at_ms": 1794720797647
+    }
+  },
+  "readonly_input_checks": [
+    {
+      "path": "/dwdhome/fy/cgpterm/artifacts/oi-eaw-wall/OI-EAW-WALL-20261114-01/WORKER_TASK-W008-RETURN-ONLY.md",
+      "bytes": 6305,
+      "sha256": "f4f2a72728e51a2eef29756c21500c6a8e3c27dad287fb29d3e8afbb296e572b",
+      "git_blob_sha": "4b857ed2f8e7cfe3f2a1e3b7ad7941b4b6a270aa",
+      "mtime_ns_decimal": "1794722943784231902",
+      "inode": 14872020,
+      "dev": 83
+    },
+    {
+      "path": "/dwdhome/fy/cgpterm/artifacts/oi-eaw-wall/OI-EAW-WALL-20261114-01/C0017-pin-ORDER.md",
+      "bytes": 14744,
+      "sha256": "148f5bd0b017cfbb5a298d9d413547ac5c11d4874479be20f94f029667322353",
+      "git_blob_sha": "ae59f2cdd554096c123d18f3c98b1f7f5f4f71ad",
+      "mtime_ns_decimal": "1794718195357977534",
+      "inode": 14863571,
+      "dev": 83
+    },
+    {
+      "path": "/dwdhome/fy/cgpterm/artifacts/oi-eaw-wall/OI-EAW-WALL-20261114-01/C0017-pin-ORDER.json",
+      "bytes": 5898,
+      "sha256": "4073eec0d7eb6736bb4a403c2eaaae626db462d02d2c873162701b5c60f81ca5",
+      "git_blob_sha": "91f9b263d39688ea0e292696fcbf20e4d1e2017f",
+      "mtime_ns_decimal": "1794718195118151659",
+      "inode": 14863814,
+      "dev": 83
+    },
+    {
+      "path": "/dwdhome/fy/cgpterm/artifacts/oi-eaw-wall/OI-EAW-WALL-20261114-01/C0017-pin-PRO_RETURN.json",
+      "bytes": 1238,
+      "sha256": "dc8e7584f3a8a89bf2d43da4821dff17147635d603b5833c5abf9743cb57f8cb",
+      "git_blob_sha": "3d724fa97db042c8d2efe7fa98d80e9a7292dc51",
+      "mtime_ns_decimal": "1794718196577066995",
+      "inode": 14864821,
+      "dev": 83
+    },
+    {
+      "path": "/dwdhome/fy/cgpterm/artifacts/oi-eaw-wall/OI-EAW-WALL-20261114-01/W008-published-refs.json",
+      "bytes": 577593,
+      "sha256": "188005f3ceada3b66bb2e3ec04e7f0da1d0bc7f9897bb71525750e7c2082face",
+      "git_blob_sha": "cfa546498ff3bc257a525fe4e2d01cb1f0273a2b",
+      "mtime_ns_decimal": "1794723077387435727",
+      "inode": 14870205,
+      "dev": 83
+    },
+    {
+      "path": "/dwdhome/fy/cgpterm/artifacts/oi-eaw-wall/OI-EAW-WALL-20261114-01/W008-published-evidence-index.json",
+      "bytes": 116795,
+      "sha256": "49e139d9c68ad2984e4777771728c30b94f98753f8bd31cd01ee7ebc22b35156",
+      "git_blob_sha": "91d6a1b413eed2939b99f89fa2f2bd57cb32329b",
+      "mtime_ns_decimal": "1794722825246110252",
+      "inode": 14871019,
+      "dev": 83
+    },
+    {
+      "path": "/dwdhome/fy/cgpterm/artifacts/oi-eaw-wall/OI-EAW-WALL-20261114-01/W008-remote-publication-verification.json",
+      "bytes": 1364,
+      "sha256": "60c77e584ecd420cdbb08c91e87aab10fe71d7dad2564a3b1058b5a6e28c6840",
+      "git_blob_sha": "22064923286b90710cc1c3654fec090966ca01dd",
+      "mtime_ns_decimal": "1794722704046162468",
+      "inode": 14871991,
+      "dev": 83
+    },
+    {
+      "path": "/dwdhome/fy/cgpterm/artifacts/oi-eaw-wall/OI-EAW-WALL-20261114-01/W008-local-final-native.json",
+      "bytes": 6141,
+      "sha256": "281a5f3a1de7431eb14272553ce78554b4a89d5dedef1939b54a7445db1bfdb1",
+      "git_blob_sha": "e9916fefde3c19692481f6e1a2415679dcaa1f15",
+      "mtime_ns_decimal": "1794721795701715728",
+      "inode": 14869958,
+      "dev": 83
+    },
+    {
+      "path": "/dwdhome/fy/cgpterm/artifacts/oi-eaw-wall/OI-EAW-WALL-20261114-01/adopted-business-dc18a/longrun/contracts/longrun_schema_v2.json",
+      "bytes": 11508,
+      "sha256": "32c1e2409ff4936a87d688848736bb9af71fe0415d338ba66dd031e3149243d3",
+      "git_blob_sha": "5f809153b48907de5a3357e6017d7fac031f655b",
+      "mtime_ns_decimal": "1794714819659419697",
+      "inode": 14859702,
+      "dev": 83
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/artifacts/LOCAL_STAGE_HANDOFF.json",
+      "bytes": 10314,
+      "sha256": "de6de6554f090676f48aec3cbbd31f282220a05a9d14f2b49afa0b860d52ca23",
+      "git_blob_sha": "29a68277ce47f26f2a4cc814ab5d7b9aea858555",
+      "mtime_ns_decimal": "1794720432621033297",
+      "inode": 14868042,
+      "dev": 83
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/artifacts/CURRENT_MATERIAL_MANIFEST.json",
+      "bytes": 9032,
+      "sha256": "ab8fe73397bcb32999afce94c840e4c5f77641d8c67960ca75fb1fa403176252",
+      "git_blob_sha": "bd3a0304f49dc44667891a241b3080515924a809",
+      "mtime_ns_decimal": "1794720432476448675",
+      "inode": 14868258,
+      "dev": 83
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/artifacts/FREEZE_RECEIPT.json",
+      "bytes": 235898,
+      "sha256": "79917e6605f45b1e5798d4b475064a395790b5f244589902fe6afb98b5b05902",
+      "git_blob_sha": "21273aa1cb079ebe3ddb5ebdf78a0fed3bd1ff7d",
+      "mtime_ns_decimal": "1794720796566527319",
+      "inode": 14868412,
+      "dev": 83
+    }
+  ],
+  "ORDER_deliverable_mapping": [
+    {
+      "index_0based": 0,
+      "order_literal": "WORKER_EXECUTION_REPORT.md with independent closeout and direct-material lane outcomes",
+      "published_evidence": [
+        {
+          "local_original": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/artifacts/WORKER_EXECUTION_REPORT.md",
+          "ref": "daowei2026/observe-iterate@e7d079f42bd7bd7434d63373799348d79df22696:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D004/results/W008/WORKER_EXECUTION_REPORT.md",
+          "sha256": "8c3fb9a360fbac3f56e37900873874dc71a60c6c77623f9ad8e4bd5e8508cf09"
+        }
+      ],
+      "status": "PUBLISHED_FACTS_WITH_SUBSTANTIVE_LIMITS_RETAINED"
+    },
+    {
+      "index_0based": 1,
+      "order_literal": "W008_BINDING.json with original W1 physical-chat reuse, fresh owner/thread/model/effort/cwd/no-writer/new D004 lock and A001 grant",
+      "published_evidence": [
+        {
+          "local_original": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/artifacts/W008_BINDING.json",
+          "ref": "daowei2026/observe-iterate@e7d079f42bd7bd7434d63373799348d79df22696:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D004/results/W008/W008_BINDING.json",
+          "sha256": "17ebe3691adc666d56d6dad207de125802c33167806d20f5a6259890ffba2fe6"
+        }
+      ],
+      "status": "PUBLISHED_FACTS_WITH_SUBSTANTIVE_LIMITS_RETAINED"
+    },
+    {
+      "index_0based": 2,
+      "order_literal": "W007_CLOSEOUT_EXECUTION_FACTS.md and W007_EVIDENCE_RETENTION_MANIFEST.json without creating a W007 Return",
+      "published_evidence": [
+        {
+          "local_original": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/artifacts/W007_CLOSEOUT_EXECUTION_FACTS.md",
+          "ref": "daowei2026/observe-iterate@e7d079f42bd7bd7434d63373799348d79df22696:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D004/results/W008/W007_CLOSEOUT_EXECUTION_FACTS.md",
+          "sha256": "57a97660e50dd7d682b2f5c27b5ce5fb91aeb98ddbe94eafd474c0014415f3e0"
+        },
+        {
+          "local_original": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/artifacts/W007_EVIDENCE_RETENTION_MANIFEST.json",
+          "ref": "daowei2026/observe-iterate@e7d079f42bd7bd7434d63373799348d79df22696:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D004/results/W008/W007_EVIDENCE_RETENTION_MANIFEST.json",
+          "sha256": "a9d62b8ddde5bbc86064a906b99435b6d1b0f39653f19a132b40ebb6f5ca4649"
+        }
+      ],
+      "status": "PUBLISHED_FACTS_WITH_SUBSTANTIVE_LIMITS_RETAINED"
+    },
+    {
+      "index_0based": 3,
+      "order_literal": "Controller-authentic W007_LOCK_RELEASE_PRE.json, W007_LOCK_RELEASE_POST.json and D004_W008_LOCK_BINDING.json",
+      "published_evidence": [
+        {
+          "local_original": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/input/W007_LOCK_RELEASE_PRE.json",
+          "ref": "daowei2026/observe-iterate@e7d079f42bd7bd7434d63373799348d79df22696:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D004/results/W008/input/W007_LOCK_RELEASE_PRE.json",
+          "sha256": "82f78fb30477d95985aeade163a116aa2410c9c9b6d5d7c5364e264e273cc9f2"
+        },
+        {
+          "local_original": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/input/W007_LOCK_RELEASE_POST.json",
+          "ref": "daowei2026/observe-iterate@e7d079f42bd7bd7434d63373799348d79df22696:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D004/results/W008/input/W007_LOCK_RELEASE_POST.json",
+          "sha256": "78f9992c50748e70de6e9997832f113c817b03d40bf4ece9819c1fae3ee7396b"
+        },
+        {
+          "local_original": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/input/D004_W008_LOCK_BINDING.json",
+          "ref": "daowei2026/observe-iterate@e7d079f42bd7bd7434d63373799348d79df22696:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D004/results/W008/input/D004_W008_LOCK_BINDING.json",
+          "sha256": "cbd23e1c74063bf00de856e152a75b8a8cc72a6200569648fcd151715baae3d5"
+        }
+      ],
+      "status": "PUBLISHED_FACTS_WITH_SUBSTANTIVE_LIMITS_RETAINED"
+    },
+    {
+      "index_0based": 4,
+      "order_literal": "BASE_ASSET_INVENTORY.json and CURRENT_PROCESSING_SKELETON.md bound to the live BASE state",
+      "published_evidence": [
+        {
+          "local_original": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/artifacts/BASE_ASSET_INVENTORY.json",
+          "ref": "daowei2026/observe-iterate@e7d079f42bd7bd7434d63373799348d79df22696:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D004/results/W008/BASE_ASSET_INVENTORY.json",
+          "sha256": "6172be6ffeb2ae069c69b1c188357156d0e061e6491234113785cefa496c3d36"
+        },
+        {
+          "local_original": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/artifacts/CURRENT_PROCESSING_SKELETON.md",
+          "ref": "daowei2026/observe-iterate@e7d079f42bd7bd7434d63373799348d79df22696:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D004/results/W008/CURRENT_PROCESSING_SKELETON.md",
+          "sha256": "9cf18e4ec6bf42ed936d91b8026c91855bb710a0242caa4bedb35b111fc3e3c1"
+        }
+      ],
+      "status": "PUBLISHED_FACTS_WITH_SUBSTANTIVE_LIMITS_RETAINED"
+    },
+    {
+      "index_0based": 5,
+      "order_literal": "MATERIAL_REQUIREMENTS_AND_SELECTION.md using required/conditional/optional/not-prepared categories for each parent question",
+      "published_evidence": [
+        {
+          "local_original": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/artifacts/MATERIAL_REQUIREMENTS_AND_SELECTION.md",
+          "ref": "daowei2026/observe-iterate@e7d079f42bd7bd7434d63373799348d79df22696:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D004/results/W008/MATERIAL_REQUIREMENTS_AND_SELECTION.md",
+          "sha256": "6c5838bcf5927a8265e84580952b773050fe05b2bbcf613e8898d5ab5a9a9d7e"
+        }
+      ],
+      "status": "PUBLISHED_FACTS_WITH_SUBSTANTIVE_LIMITS_RETAINED"
+    },
+    {
+      "index_0based": 6,
+      "order_literal": "CURRENT_MATERIAL_EXECUTION_REPORT.md with exact commands, cwd, versions, bindings, inputs, outputs, exits, elapsed time, bytes and side effects",
+      "published_evidence": [
+        {
+          "local_original": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/artifacts/CURRENT_MATERIAL_EXECUTION_REPORT.md",
+          "ref": "daowei2026/observe-iterate@e7d079f42bd7bd7434d63373799348d79df22696:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D004/results/W008/CURRENT_MATERIAL_EXECUTION_REPORT.md",
+          "sha256": "1e44b0d98e93346d403183309098c08f1621de449e895067703b956ef86f311f"
+        },
+        {
+          "local_original": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/logs/COMMAND_EXECUTIONS.jsonl",
+          "ref": "daowei2026/observe-iterate@e7d079f42bd7bd7434d63373799348d79df22696:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D004/results/W008/logs/COMMAND_EXECUTIONS.jsonl",
+          "sha256": "38f05459b415e6f64be623bb3a0e2761ec3aa66054ecff656d542b8dca5d3db6"
+        }
+      ],
+      "status": "PUBLISHED_FACTS_WITH_SUBSTANTIVE_LIMITS_RETAINED"
+    },
+    {
+      "index_0based": 7,
+      "order_literal": "CURRENT_MATERIAL_REVIEW.md and CURRENT_MATERIAL_MANIFEST.json with a truthful DATA_READY, PARTIAL_WITH_LIMITS or BLOCKED label",
+      "published_evidence": [
+        {
+          "local_original": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/artifacts/CURRENT_MATERIAL_REVIEW.md",
+          "ref": "daowei2026/observe-iterate@e7d079f42bd7bd7434d63373799348d79df22696:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D004/results/W008/CURRENT_MATERIAL_REVIEW.md",
+          "sha256": "0cc1dd986180121cf8a1530e8761267a5a9df97a41da439fb6d34be0f96b8d8d"
+        },
+        {
+          "local_original": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/artifacts/CURRENT_MATERIAL_MANIFEST.json",
+          "ref": "daowei2026/observe-iterate@e7d079f42bd7bd7434d63373799348d79df22696:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D004/results/W008/CURRENT_MATERIAL_MANIFEST.json",
+          "sha256": "ab8fe73397bcb32999afce94c840e4c5f77641d8c67960ca75fb1fa403176252"
+        }
+      ],
+      "status": "PUBLISHED_FACTS_WITH_SUBSTANTIVE_LIMITS_RETAINED"
+    },
+    {
+      "index_0based": 8,
+      "order_literal": "Actual narrow current normal-chain, reader and at most two existing high-discrimination scenario materials when obtainable without source edits",
+      "published_evidence": [
+        {
+          "local_original": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/materials/CURRENT_NORMAL_CHAIN.jsonl",
+          "ref": "daowei2026/observe-iterate@e7d079f42bd7bd7434d63373799348d79df22696:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D004/results/W008/materials/CURRENT_NORMAL_CHAIN.jsonl",
+          "sha256": "f75e30f153c4aa171219090cfc7b0d897ff058e6a177a15005ebed8d46fa617f"
+        },
+        {
+          "local_original": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/materials/CURRENT_NORMAL_RECONCILIATION.json",
+          "ref": "daowei2026/observe-iterate@e7d079f42bd7bd7434d63373799348d79df22696:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D004/results/W008/materials/CURRENT_NORMAL_RECONCILIATION.json",
+          "sha256": "e3e0fc7a38f9d4517f67662199b2bf9fd446bdb1f2617a1d754f589aff1e8785"
+        },
+        {
+          "local_original": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/materials/CURRENT_BSON_READER.jsonl",
+          "ref": "daowei2026/observe-iterate@e7d079f42bd7bd7434d63373799348d79df22696:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D004/results/W008/materials/CURRENT_BSON_READER.jsonl",
+          "sha256": "bac5469af2f9db5c5fb5e5194dfab3df838d493356c5c76bb829fd390417597b"
+        },
+        {
+          "local_original": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/materials/EXISTING_CROSS_FIRING_DUPLICATE.jsonl",
+          "ref": "daowei2026/observe-iterate@e7d079f42bd7bd7434d63373799348d79df22696:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D004/results/W008/materials/EXISTING_CROSS_FIRING_DUPLICATE.jsonl",
+          "sha256": "1d3849f0029638611456fdc049a0ad3ca3951fa12dcfd1eb6acfa6ffc4a08517"
+        },
+        {
+          "local_original": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/materials/EXISTING_AFTER_END_UPDATE.jsonl",
+          "ref": "daowei2026/observe-iterate@e7d079f42bd7bd7434d63373799348d79df22696:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D004/results/W008/materials/EXISTING_AFTER_END_UPDATE.jsonl",
+          "sha256": "ac04b55f3b2d5e821ffaec1fcd2fe91736379e20936bc53c657e140aaf4d99a0"
+        }
+      ],
+      "status": "PUBLISHED_FACTS_WITH_SUBSTANTIVE_LIMITS_RETAINED"
+    },
+    {
+      "index_0based": 9,
+      "order_literal": "BASE_SIDE_EFFECTS_AND_DIFF_REPORT.json, COMMAND_LOG.jsonl, PUBLICATION_MANIFEST.json and HASHES.sha256",
+      "published_evidence": [
+        {
+          "local_original": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/artifacts/BASE_SIDE_EFFECTS_AND_DIFF_REPORT.json",
+          "ref": "daowei2026/observe-iterate@e7d079f42bd7bd7434d63373799348d79df22696:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D004/results/W008/BASE_SIDE_EFFECTS_AND_DIFF_REPORT.json",
+          "sha256": "f2432fd90208b10a971bb4f69c5e111df53d84e5dd61bc67215b2343a8c7877f"
+        },
+        {
+          "local_original": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/artifacts/COMMAND_LOG.jsonl",
+          "ref": "daowei2026/observe-iterate@e7d079f42bd7bd7434d63373799348d79df22696:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D004/results/W008/COMMAND_LOG.jsonl",
+          "sha256": "83efce893b43e82a3aeb276c35070be160d6e57f43a6257bbaf601c933a65bd9"
+        },
+        {
+          "local_original": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/artifacts/PUBLICATION_MANIFEST.json",
+          "ref": "daowei2026/observe-iterate@e7d079f42bd7bd7434d63373799348d79df22696:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D004/results/W008/PUBLICATION_MANIFEST.json",
+          "sha256": "a1dd69590b88a09911db9182ddfef8405e79e368d1c81aca3b36f11de6bace82"
+        },
+        {
+          "local_original": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/artifacts/HASHES.sha256",
+          "ref": "daowei2026/observe-iterate@e7d079f42bd7bd7434d63373799348d79df22696:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D004/results/W008/HASHES.sha256",
+          "sha256": "3c66daba5399c718a9037c075750f0d7d7634e0a408a29929d39169d9ab29d3f"
+        }
+      ],
+      "status": "PUBLISHED_FACTS_WITH_SUBSTANTIVE_LIMITS_RETAINED"
+    },
+    {
+      "index_0based": 10,
+      "order_literal": "BASE_CHANGE_CANDIDATE.md only if a small existing-source change is the sole blocker; do not implement it in W008",
+      "published_evidence": [],
+      "status": "CONDITIONAL_NOT_TRIGGERED_NO_EXISTING_SOURCE_CHANGE"
+    },
+    {
+      "index_0based": 11,
+      "order_literal": "V2 WORKER_RETURN.json returning only to executor E1",
+      "published_evidence": [],
+      "status": "FORMAL_RETURN_LOCAL_GENERATED_PENDING_CONTROLLER_PUBLICATION",
+      "local_return": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D004/W008/final-return/WORKER_RETURN.json",
+      "own_ref": null,
+      "reason": "正式Return不作为自身manifest证据；不能为完成机械映射捏造self/future ref"
+    }
+  ],
+  "archive_member_limit_is_not_missing_original_bytes": true,
+  "future_or_self_refs_created": 0,
+  "investigation_material_compile_scenario_policy_reruns_this_phase": 0,
+  "old_W007_restored_or_Return_generated": false,
+  "GitHub_or_other_chat_writes": 0,
+  "earlier_readonly_validation_failure": "运输originals中FREEZE自身行未带mtime_ns_decimal，首次只读检查KeyError停止；353metadata从freeze、receipt自身metadata从真实旧封存native exit0补核，未改原件",
+  "terminal_boundary": "生成命令进行中时的校验；本阶段seal会在该命令真实终态后补命令日志及冻结；不预填自身exit0"
+}
