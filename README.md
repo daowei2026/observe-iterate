@@ -1,15 +1,15 @@
 # 观察—分析业务控制面三层 Workflow（候选 V0.1）
 
-**本分支用途**：先梳理完整业务任务（L0）、两条专业工作流（L1）、阶段内节点（L2）以及必要 Gate，再通过审查材料记录仍未闭合的控制问题。这是待确认的设计资料，**不代表已编写控制程序或完成真实业务试跑**。
+**本分支用途**：L0 管完整任务及两条专业 Workflow 衔接；**材料准备 L1 已恢复为原专业 Skill 0～7 步的唯一正文**；R 与管理 I/O、Gate、完成全景仍保留独立文档。原先为 M 新设的 S0～S5 执行链、独立 S2/M05 和统一 G-RUN 门槛均不再适用。控制程序和真实长程 Run 的采纳须另核，不因本分支更新而自动改变历史 Run。
 
 ## 目录与阅读顺序
 
 | 目录 | 内容 | 性质 |
 |---|---|---|
 | [control/01 · L0 完整业务任务](control/01_L0_完整业务任务与双向衔接.md) | 材料准备 ↔ 合理性分析、总输入/输出、补证与任务收束 | 控制流程主体 |
-| [control/02 · L1 材料准备](control/02_L1_观察材料准备流程.md) | S0～S5 阶段输入输出、运行与核验 | 控制流程主体 |
+| [control/02 · 材料准备专业方法正文](control/02_L1_观察材料准备流程.md) | **原上位 Skill 的完整执行步骤 0～7**：调查→处理骨架→材料取舍→方法→最小落地→真实取数→核验→交接 | **M 唯一专业执行来源** |
 | [control/03 · L1 合理性分析](control/03_L1_合理性分析流程.md) | R0～R5、预期冻结、对照、诊断与标定循环 | 控制流程主体 |
-| [control/04 · L2 工作节点](control/04_L2_节点输入输出登记表.md) | M01～M09、R01～R13 的输入输出与后继 | 控制流程主体 |
+| [control/04 · L2 工作成果 I/O](control/04_L2_节点输入输出登记表.md) | R 的原候选 I/O；Mxx 仅历史成果定位、不再构成执行步骤，M05/S2 取消 | 管理接续参考，不能覆盖 M 专业正文 |
 | [control/05 · 三级 Gate](control/05_三级Gate及后继路由.md) | L0/L1/L2 Gate、阻断与定向返修 | 控制流程主体 |
 | [control/06 · 业务完成全景](control/06_业务完成全景与更新协议.md) | 节点→阶段→M/R→业务问题→父任务的当前完成情况、更新触发、阻断与恢复 | **跨三层共用控制机制（候选）** |
 | [review/06 · 缺环审查](review/06_接口对齐与缺环审查.md) | 逐边对齐、潜在失效与尚未确认规则 | **审查记录**，不是已生效流程 |
@@ -24,7 +24,8 @@
 
 | 类别 | 入口 | 作用与保留理由 |
 |---|---|---|
-| **上位候选 Skill** | [观察材料规划与准备 SKILL](skills/observation-material-preparation/SKILL.md) | 按业务问题规划材料、选择方法、实际取数、核验和交接；专业步骤保留 |
+| **M 专业正文唯一来源** | [control/02 · 观察材料规划与准备](control/02_L1_观察材料准备流程.md) | **从原 Skill 完整迁入 0～7 步**；只修迁移后的相对链接，不另增步骤 |
+| **兼容 Skill 入口** | [observation-material-preparation/SKILL.md](skills/observation-material-preparation/SKILL.md) | 仅索引到 control/02 及技术参考/模板，**不再重复专业正文** |
 | **执行技术参考** | [CAEGraph 真实取数与核验](skills/observation-material-preparation/references/CAEGraph执行取数与验证.md) | 构图/视窗/源值等不同数据阶段、执行接口和质量验证；不是具体候选观察方法 |
 | **任务产物模板** | [观察材料准备任务单](skills/observation-material-preparation/templates/观察材料准备任务单.md) | 记录业务处理阶段、材料必要性、取数、缺口与交接；保留 |
 | **候选方法组索引** | [S1～S4、E1～E4 方法索引](skills/observation-method-candidates/README.md) | 唯一的触发条件、跨用例对应关系及成熟度目录；从上位 Skill 的 references 移出 |
@@ -32,9 +33,9 @@
 | **EAW 候选 Skill 初稿** | [EAW CAEGraph 候选](skills/observation-method-candidates/EAW_CAEGraph观察准备Skill候选_原图落地与复用边界_20261112.md) | E1/E3 新候选及 E2/E4 对 S3/S4 的复用核查；同样是候选 Skill 研究稿 |
 | **合理性分析** | [四个合理性分析 Skill](skills/reasonableness-analysis/README.md) | 已迁入的四个专业 Skill 及协作协议，本轮不改动 |
 
-**不再保留**：观察材料准备文件夹的重复导航 `README.md`（本表承担导航）；原来 `examples/` 的两用例示范（未经充分验证，不能用作稳定规范）；原来 `reference-cases/` 的“案例附件”分类（两份材料已归入候选 Skill）；原上位 Skill 的方法索引旧副本（现由候选组 README 唯一维护）。
+**旧观察准备文件夹的保留理由**：`skills/observation-material-preparation/SKILL.md` 仅是**兼容调用入口**，指向 control/02，不再复制专业步骤；同目录 `references/CAEGraph执行取数与验证.md` 和 `templates/观察材料准备任务单.md` 是仍有实际用途的技术参考与成果模板。整体删除会损失依赖文件及现有 Pro/主控的 SKILL 路径。此前已经删除的 examples/、reference-cases/ 和重复导航 README 保持不恢复。
 
-**性质边界**：高频、EAW 两份稿原文都明确是初版候选、未证明跨真实用例稳定复用，不能因重新归档就冒充正式可直接执行的独立 `SKILL.md`。保留原稿的研究和来源信息，必要的改动仅用于修复本分支相对链接。当前上位 Skill 仍通过索引选用方法，不要求拆开已有完整 CAEGraph 重做。
+**性质边界**：高频、EAW 两份稿原文都明确是初版候选、未证明跨真实用例稳定复用，不能因重新归档就冒充正式可直接执行的独立 `SKILL.md`。保留原稿的研究和来源信息，必要的改动仅用于修复本分支相对链接。当前 control/02 专业正文仍通过索引选用方法，不要求拆开已有完整 CAEGraph 重做。
 
 技术上仍可能需要引用 `viewer`、`uplot` 等外部源码或手册；它们是外部技术依赖，不是旧版观察材料 Skill 的地址。本分支内的专业资料互相引用均转为本地相对路径。
 
@@ -48,7 +49,7 @@
 
 ## 来源与状态
 
-- 【S-M】[观察材料准备 Skill](skills/observation-material-preparation/SKILL.md)，原件 Git Blob `bd8698014ddf0feda273804ace336494ecba04b9`；[任务单](skills/observation-material-preparation/templates/观察材料准备任务单.md)，原件 `b571063fdd91e8b0818d64d25a403db037995580`。
+- 【S-M】[原 Skill 0～7 步专业正文现址](control/02_L1_观察材料准备流程.md)，本次从旧 [Skill 入口](skills/observation-material-preparation/SKILL.md) 原专业正文原样迁移（仅三条相对链接调整）；[任务单](skills/observation-material-preparation/templates/观察材料准备任务单.md)，原件 `b571063fdd91e8b0818d64d25a403db037995580`。
 - 【S-R】[合理性分析 Skill README](skills/reasonableness-analysis/README.md)，原件 Git Blob `8bd8c861317f4a66d3002b56eb0e9eee6f17b243`，四个 Skill 的原生状态和产物不由控制面改写。
 - 【P】以往控制面落地计划提出的阶段/Gate 候选，**不是本分支外部文件的运行依赖**。
 - 【N】本分支新增的三层控制逻辑、输入输出、交接和 Gate 候选；尚需确认与具体业务路径验证。

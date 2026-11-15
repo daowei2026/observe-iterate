@@ -5,8 +5,8 @@
 本分支根 [README](../README.md) 与 `control/`、`review/` 明确：L0/L1/L2 仍为候选控制设计，专业 Skill 的方法不在控制面重写。**当真实 Owner GO 选用本轮“管理 Pro 执行控制面”模式时**，由 manager 在试运行范围内亲自完成所有业务管理判断、Gate、定向返修、补证、收束和业务完成全景维护；executor 继续承担实际专业工作，主控继续只负责机械身份/发送/回交/核验及保存。试运行的管理决定不是已有生产级受保护 Gate/权限服务。
 
 - L0：单份 `BusinessTaskInput`（业务目的、对象、已知约束和未定边界）/ `ParentTaskOutcome`，M ↔ R 与 AdditionalEvidenceRequest 的原点恢复；完成深度及允许未决可随任务合法查明，不强制起步另填第二份 `TaskBoundary`。
-- L1：材料准备 `S0～S5`；合理性分析 `R0～R5`，仅管理视图，不是固定调用次数。
-- L2：`M01…`/`R01…` 的 I/O；`MaterialRequirement`、`WorkItem`、`ExecutionAction` 三种实体不应混同。
+- L1：**观察材料准备直接采用 [control/02](../control/02_L1_观察材料准备流程.md) 的原 Skill 0～7 步**；R 仍按其 Skill 与候选 `R0～R5` 视图组织，不把二者改写成相同形式。旧 M 的 S0～S5 以及独立 S2 已取消。
+- L2：旧 `Mxx` 仅为历史成果/I-O 定位标签（原 M05 已退役），不构成必经专业节点；`Rxx` 目前维持原候选 I/O；`MaterialRequirement`、`WorkItem`、`ExecutionAction` 仍不应混同。
 - 运行层：`run_id`、`delegation_id`、`work_order_id`、`call_id` 是通信/任务执行身份，不替代 `question_id`、`analysis_round_id`、`expectation_version`、`material_id`。
 
 ## 2. D/W 可携带但不改写的业务封面
@@ -16,8 +16,8 @@
 ```yaml
 parent_task_id: ...
 question_id: ...
-stage_view: S3                 # 管理视图
-control_nodes: [M06, M07]     # 可多节点，非固定一一派单
+professional_step: 5         # M：原 Skill 0～7 步；此处例为实际取数
+legacy_control_nodes: [M06, M07] # 仅在追溯旧成果时填写，不是新任务必须执行的节点
 work_item_id: ...
 input_refs: [...]
 input_versions: {code: ..., data: ..., parameter: ..., expectation: ...}
@@ -35,7 +35,7 @@ continuation_target: ...
 V2 机械门禁只回答：谁派给谁、来源是否已存在、精确版本是否一致、Owner 操作授权是否覆盖、回执与动作账本是否相符、是否已经派发或正在等待。不回答：
 
 - `H0/H1/H2/H3` 是否业务上通过；
-- `G-PLAN / G-RUN / G-MATERIAL` 和 `G-EXPECTATION-FREEZE / G-COMPARISON / G-DIAGNOSIS / G-CALIBRATION` 的专业充分性；
+- 原 Skill 步骤 0～7 是否取得了真实足够的材料；历史 `G-PLAN/G-RUN/G-MATERIAL` 不是必须分阶段单独通过的门禁。R 的 `G-EXPECTATION-FREEZE / G-COMPARISON / G-DIAGNOSIS / G-CALIBRATION` 等专业判断仍按 R 适用工作处理；
 - `SUPPORTS/COUNTERS/MISSING/AMBIGUOUS/NOT_APPLICABLE/PENDING` 哪种是专业好坏；
 - M 交接的 `PLAN_READY/DATA_READY/PARTIAL_WITH_LIMITS/BLOCKED` 和真实限制，不自动证明 R 当前消费者所需输入已满足；R03/R05 依实际工作分别检查探索样本或正式对照的输入。**H1 不再分成材料准备的两条正式出口。**
 
@@ -50,13 +50,15 @@ V2 机械门禁只回答：谁派给谁、来源是否已存在、精确版本�
 
 ## 5. 专业指南怎样进入具体 D（不新增 Schema）
 
-manager 首轮实际完整任务应包含已锁定 [manager 指南](professional/PRO_MANAGER_GUIDE.md) 和业务问题/控制来源；executor 的 D 应引用同版 [executor 指南](professional/PRO_EXECUTOR_GUIDE.md)，并按本次 D 明确引用 [材料准备 Skill](../skills/observation-material-preparation/SKILL.md) 或 [合理性分析 Skills](../skills/reasonableness-analysis/README.md) 的真正适用部分。
+manager 首轮实际完整任务应包含已锁定 [manager 指南](professional/PRO_MANAGER_GUIDE.md) 和业务问题/控制来源；executor 的 D 应引用同版 [executor 指南](professional/PRO_EXECUTOR_GUIDE.md)，并按本次 D 明确引用 [材料准备唯一专业正文](../control/02_L1_观察材料准备流程.md) 或 [合理性分析 Skills](../skills/reasonableness-analysis/README.md) 的真正适用部分。
 
 D 的 `DELEGATION.md` 使用 `question_id`、节点范围、输入版本/材料与结果消费者定义**业务工作**；`DELEGATION.json` 仍遵从已有 V2 的 D 身份与授权字段，专业指南不能给机读 Schema 增加私有必填项。不同 D 可以共用一个专业执行人，但不得把跨 D、跨问题的结果混为一次完成。
 
 ## 6. 接入后续实现的条件
 
 只有在业务控制面确定实际 Gate 规则后，才能将其转成受版本管理的具体规则/程序或专门专业判断任务。调用确定性程序的**选择依据**须来自明确路由规则/已接受的专业决定，不能让主控依据工具名称自行判断。程序结果须有 action_id、真实输出引用、版本、失败/未知状态；主控维护可信执行账本。专业执行人的方法可单独在 Skill 中定义，不进入本文件。
+
+**材料准备方法来源修订**：旧的 S0～S5 为过去控制方案，不再指挥新工作。专业负责人和执行 Pro 应直接使用 `control/02` 原步骤 0～7，并对具体业务目的和材料实际可得性判断；不能因历史 `M05/S2/G-RUN` 未通过就先造隔离工程。机械的 C/D/W 身份核验仍属 V2 协议，不等于独立专业阶段。
 
 ## 7. 本次试运行的业务决定和完成全景如何回交
 

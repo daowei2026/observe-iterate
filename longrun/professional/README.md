@@ -9,11 +9,11 @@
 | 专业负责人 Pro（manager） | [PRO_MANAGER_GUIDE.md](PRO_MANAGER_GUIDE.md) | 试运行 GO 授权后执行完整业务控制面：Gate、异常与补证、五级完成全景持久更新、M↔R 接续及逐问题收束；不当作消息转发员 |
 | 专业执行人 Pro（executor） | [PRO_EXECUTOR_GUIDE.md](PRO_EXECUTOR_GUIDE.md) | 根据当前 D，使用**已有**观察材料准备 Skill 或合理性分析 Skills 进行实际专业工作；必要时签 W 并审查 Worker 实物，完整回交专业成果 |
 
-**一次实际专业调用不等于一个 S/R 阶段、一个 M/R 节点或一个业务材料要求。** manager 负责组织 D，executor 可以在授权的一个 D 内跨若干相邻工作步骤、调用零个或多个 W，均要清楚表明实际成果。
+**一次专业调用不等于一个原 Skill 步骤、R 阶段或业务材料要求。M 不再另有 S0～S5 阶段或独立 M05。** manager 负责组织 D，executor 可以在授权的一个 D 内跨若干相邻工作步骤、调用零个或多个 W，均要清楚表明实际成果。
 
 ## 必须仍以原业务源为准
 
-- [观察材料准备 Skill](../../skills/observation-material-preparation/SKILL.md)：从业务骨架规划输入/关键中间阶段/输出，选择必要材料、真实取数和核验、分四类状态交付。
+- [观察材料准备唯一方法正文](../../control/02_L1_观察材料准备流程.md)：完整原 Skill 0～7 步，业务骨架、材料取舍、方法、真实取数和核验、分四类状态交付；[旧 SKILL.md](../../skills/observation-material-preparation/SKILL.md) 仅作兼容入口和两份技术资料导航。
 - [合理性分析 Skills README](../../skills/reasonableness-analysis/README.md)：最小预期与探索、冻结后正式对照、值得才诊断、可调才标定、必要的结果反馈；四个各自的 Skill 是专业方法原件。
 - [L0 完整业务任务](../../control/01_L0_完整业务任务与双向衔接.md)、[L1-M](../../control/02_L1_观察材料准备流程.md)、[L1-R](../../control/03_L1_合理性分析流程.md)、[L2 I/O](../../control/04_L2_节点输入输出登记表.md)、[Gate](../../control/05_三级Gate及后继路由.md)、[完成全景](../../control/06_业务完成全景与更新协议.md)：业务控制逻辑均为候选设计；本 Run 的真实 GO 采用 manager 执行模式后，manager 可作试运行决定，**不是部署生产级强制 Gate**。
 - [审查与未决](../../review/06_接口对齐与缺环审查.md)、[运行路径走查](../../review/07_待确认的控制判断与运行路径.md)：尚缺真实任务范围、用途资格、补证退出、重复复验身份及正式 Gate 接受等决定。
