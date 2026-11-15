@@ -9,7 +9,7 @@
 | 专业负责人 Pro（manager） | [PRO_MANAGER_GUIDE.md](PRO_MANAGER_GUIDE.md) | 试运行 GO 授权后执行完整业务控制面：Gate、异常与补证、五级完成全景持久更新、M↔R 接续及逐问题收束；不当作消息转发员 |
 | 专业执行人 Pro（executor） | [PRO_EXECUTOR_GUIDE.md](PRO_EXECUTOR_GUIDE.md) | 根据当前 D，使用**已有**观察材料准备 Skill 或合理性分析 Skills 进行实际专业工作；必要时签 W 并审查 Worker 实物，完整回交专业成果 |
 
-**一次专业调用不等于一个原 Skill 步骤、R 阶段或业务材料要求。M 不再另有 S0～S5 阶段或独立 M05。** manager 负责组织 D，executor 可以在授权的一个 D 内跨若干相邻工作步骤、调用零个或多个 W，均要清楚表明实际成果。
+**一次专业调用不等于一个原 Skill 步骤、R 阶段或业务材料要求。M 不再另有 S0～S5 阶段或独立 M05。** manager 按 Control 的输入输出依赖组织 D，executor 可在一个 D 内跨相邻步骤并调用零个或多个 W；**跨步骤不等于允许绕过未被接受的实质上游判断**，回交和验收仍须对应各步骤实际成果。
 
 ## 必须仍以原业务源为准
 
