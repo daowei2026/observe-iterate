@@ -1,0 +1,1449 @@
+{
+  "schema": "w006-formal-return-local-validation/v1",
+  "at": "2026-11-15T01:51:02.534737+00:00",
+  "stage": "W006_FORMAL_RETURN_ONLY",
+  "status": "LOCAL_RETURN_VALIDATION_PASS",
+  "outcome": "STOP",
+  "stop_code": "STOP_PROBE_HOLDER_FDINFO_READ_EACCES",
+  "schema_validation": {
+    "contract": "/dwdhome/fy/cgpterm/artifacts/oi-eaw-wall/OI-EAW-WALL-20261114-01/observe-iterate/longrun/contracts/longrun_schema_v2.json",
+    "sha256": "32c1e2409ff4936a87d688848736bb9af71fe0415d338ba66dd031e3149243d3",
+    "validator": "jsonschema.Draft202012Validator",
+    "same_worker_return_subschema_as_official_gate": "#/$defs/worker_return",
+    "order_subschema": "#/$defs/order",
+    "order_and_return_valid": true
+  },
+  "identity": {
+    "run_id": "OI-EAW-WALL-20261114-01",
+    "work_order_id": "W006",
+    "worker": "codex:OI-EAW-WALL-20261114-01:worker:W1",
+    "return_to": "chatgpt:OI-EAW-WALL-20261114-01:executor:E1",
+    "order_ref": "daowei2026/observe-iterate@050e7050a615709eadd10e811a75ad5a128db533:longrun/runs/OI-EAW-WALL-20261114-01/work_orders/W006/ORDER.json"
+  },
+  "current_context": {
+    "turn_id": "01a1dcdb-b8ae-7980-8112-3ed42ea4aa43",
+    "cwd": "/dwdhome/fy/BASE_E6_2",
+    "model": "gpt-6.1-sol",
+    "effort": "max"
+  },
+  "physical_thread_id": "01a1da55-5881-7590-94a1-0661f0236977",
+  "HOME": "/home/dw",
+  "CODEX_HOME": "/home/dw/.codex",
+  "HOME_CODEX_reset": false,
+  "only_business_write_root": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/final-return",
+  "lock_start": {
+    "at": "2026-11-15T01:51:01.827805+00:00",
+    "holder_pid": 248632,
+    "startticks": "48206357",
+    "inode": 14806399,
+    "dev": 83,
+    "fd": 3,
+    "session_as_dispatched": 91789,
+    "fdinfo": "pos:\t0\nflags:\t02500002\nmnt_id:\t4061\nino:\t14806399\nlock:\t1: FLOCK  ADVISORY  WRITE 248632 00:53:14806399 0 EOF\n",
+    "same_inode_independent_competition_errno": 11,
+    "only_own_contender_closed": true,
+    "holder_untouched": true,
+    "scope": "普通已授权Return执行器核验；不是受限probe重跑。"
+  },
+  "lock_end": {
+    "at": "2026-11-15T01:51:02.525805+00:00",
+    "holder_pid": 248632,
+    "startticks": "48206357",
+    "inode": 14806399,
+    "dev": 83,
+    "fd": 3,
+    "session_as_dispatched": 91789,
+    "fdinfo": "pos:\t0\nflags:\t02500002\nmnt_id:\t4061\nino:\t14806399\nlock:\t1: FLOCK  ADVISORY  WRITE 248632 00:53:14806399 0 EOF\n",
+    "same_inode_independent_competition_errno": 11,
+    "only_own_contender_closed": true,
+    "holder_untouched": true,
+    "scope": "普通已授权Return执行器核验；不是受限probe重跑。"
+  },
+  "publication_receipt": {
+    "path": "/dwdhome/fy/cgpterm/artifacts/oi-eaw-wall/OI-EAW-WALL-20261114-01/W006-published-refs.json",
+    "bytes": 94142,
+    "sha256": "48441450735964443ab6aaefaa6dc3f43dae8dff0afc65b67b72e164d5303873",
+    "commit": "e9f4e0c569caa2939f3c5bfc2f882df6842f915f",
+    "result_ref": "daowei2026/observe-iterate@e9f4e0c569caa2939f3c5bfc2f882df6842f915f:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W006/WORKER_EXECUTION_REPORT.md",
+    "controller_remote_equality_claims_verified_as_recorded": true,
+    "worker_network_retrieval_performed": false
+  },
+  "result_ref": "daowei2026/observe-iterate@e9f4e0c569caa2939f3c5bfc2f882df6842f915f:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W006/WORKER_EXECUTION_REPORT.md",
+  "report_sha256": "1332b77c97b889a0f77bec34977e56222565f229ce80613c200ebe225cc8b2b2",
+  "manifest_validation": {
+    "entries": 107,
+    "distinct_published_refs": 93,
+    "canonical_published_evidence_entries": 93,
+    "applicable_literal_aliases": 14,
+    "all_values_exactly_ref_and_sha256": true,
+    "all_refs_from_actual_publication_receipt": true,
+    "all_local_bytes_sha256_git_blobs_match_receipt": true,
+    "no_self_future_or_unperformed_conditional_refs": true,
+    "literal_manifest_keys_uncovered": [
+      "If and only if all four Phase0 requirements pass: exact-base staged eight-EP package, reviewable patch/manifest, complete unexecuted 9/18/22 fixture, permitted compile-only/synthetic-serialization reports, and NOT_UPSTREAM_PUBLISHED local commit report if actually created",
+      "V2 WORKER_RETURN.json returning only to executor E1"
+    ],
+    "STOP_missing_explains_uncovered_literals": true,
+    "deliverable_literal_coverage": [
+      {
+        "deliverable_literal": "WORKER_EXECUTION_REPORT.md with layered P0-P4 preparation, Phase0 recovery and conditional EP outcome",
+        "literal_manifest_alias_present": true,
+        "associated_actual_evidence": [
+          {
+            "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/WORKER_EXECUTION_REPORT.md",
+            "ref": "daowei2026/observe-iterate@e9f4e0c569caa2939f3c5bfc2f882df6842f915f:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W006/WORKER_EXECUTION_REPORT.md",
+            "sha256": "1332b77c97b889a0f77bec34977e56222565f229ce80613c200ebe225cc8b2b2"
+          }
+        ],
+        "substantive_status": "真实STOP证据/成功子事实；标签覆盖不是专业或业务PASS。"
+      },
+      {
+        "deliverable_literal": "W006_BINDING.json with original W1 physical-chat reuse, fresh owner/thread/model/effort/cwd/no-writer/new-lock, unchanged HOME/CODEX_HOME and independent W006 root",
+        "literal_manifest_alias_present": true,
+        "associated_actual_evidence": [
+          {
+            "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/W006_BINDING.json",
+            "ref": "daowei2026/observe-iterate@e9f4e0c569caa2939f3c5bfc2f882df6842f915f:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W006/W006_BINDING.json",
+            "sha256": "6548cf1ff37cae19b2f87f6297a35d4030e2c22be147dee6f702bebc80c313a7"
+          }
+        ],
+        "substantive_status": "真实STOP证据/成功子事实；标签覆盖不是专业或业务PASS。"
+      },
+      {
+        "deliverable_literal": "CONTROLLER_SENTINEL_PRECONFIRMATION.json preserving the controller read-only absence receipt for /D003/.W006-deny-outside-C0014-259834ad",
+        "literal_manifest_alias_present": true,
+        "associated_actual_evidence": [
+          {
+            "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/CONTROLLER_SENTINEL_PRECONFIRMATION.json",
+            "ref": "daowei2026/observe-iterate@e9f4e0c569caa2939f3c5bfc2f882df6842f915f:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W006/CONTROLLER_SENTINEL_PRECONFIRMATION.json",
+            "sha256": "65b582f61d9a426f5dd860351ca81645a9bdbd54033fde9bb498c03de119aeac"
+          }
+        ],
+        "substantive_status": "真实STOP证据/成功子事实；标签覆盖不是专业或业务PASS。"
+      },
+      {
+        "deliverable_literal": "HISTORICAL_FIOCLEX_PHASE_CLASSIFICATION.json preserving W004 pre-policy success and post-policy EPERM as separate historical facts",
+        "literal_manifest_alias_present": true,
+        "associated_actual_evidence": [
+          {
+            "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/HISTORICAL_FIOCLEX_PHASE_CLASSIFICATION.json",
+            "ref": "daowei2026/observe-iterate@e9f4e0c569caa2939f3c5bfc2f882df6842f915f:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W006/HISTORICAL_FIOCLEX_PHASE_CLASSIFICATION.json",
+            "sha256": "d4d29f78701746d8de4d128b82864d468d8f6c40adcf4f258e9f431e9784763f"
+          }
+        ],
+        "substantive_status": "真实STOP证据/成功子事实；标签覆盖不是专业或业务PASS。"
+      },
+      {
+        "deliverable_literal": "FIOCLEX_LOCAL_CONSTANT_VERIFICATION.json and SECCOMP_DATA_LAYOUT_VERIFICATION.json from independent local sources",
+        "literal_manifest_alias_present": true,
+        "associated_actual_evidence": [
+          {
+            "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/FIOCLEX_LOCAL_CONSTANT_VERIFICATION.json",
+            "ref": "daowei2026/observe-iterate@e9f4e0c569caa2939f3c5bfc2f882df6842f915f:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W006/FIOCLEX_LOCAL_CONSTANT_VERIFICATION.json",
+            "sha256": "81b0b408a6405172da83b3939cfac3fd465a8e857db2a4edc9bd0f4e6137e62c"
+          },
+          {
+            "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/SECCOMP_DATA_LAYOUT_VERIFICATION.json",
+            "ref": "daowei2026/observe-iterate@e9f4e0c569caa2939f3c5bfc2f882df6842f915f:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W006/SECCOMP_DATA_LAYOUT_VERIFICATION.json",
+            "sha256": "f387d7e642d15662b9d68f391b151e4b960e9efd20ab4b1fb49ea092cd6e2a8d"
+          }
+        ],
+        "substantive_status": "真实STOP证据/成功子事实；标签覆盖不是专业或业务PASS。"
+      },
+      {
+        "deliverable_literal": "PARENT_RUNTIME_BINDING_DELTA.json proving fresh W006 root/lock values and no W004/W005 hard-coded binding",
+        "literal_manifest_alias_present": true,
+        "associated_actual_evidence": [
+          {
+            "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/PARENT_RUNTIME_BINDING_DELTA.json",
+            "ref": "daowei2026/observe-iterate@e9f4e0c569caa2939f3c5bfc2f882df6842f915f:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W006/PARENT_RUNTIME_BINDING_DELTA.json",
+            "sha256": "4eb5a2b38bc9da16ef5a57f3eb86a70c6da05a9b2c3afb42a24efcd2d22afb39"
+          }
+        ],
+        "substantive_status": "真实STOP证据/成功子事实；标签覆盖不是专业或业务PASS。"
+      },
+      {
+        "deliverable_literal": "SECCOMP_IOCTL_FILTER_DELTA.json proving the single verified FIOCLEX request exception and all other ioctl denial",
+        "literal_manifest_alias_present": true,
+        "associated_actual_evidence": [
+          {
+            "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/SECCOMP_IOCTL_FILTER_DELTA.json",
+            "ref": "daowei2026/observe-iterate@e9f4e0c569caa2939f3c5bfc2f882df6842f915f:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W006/SECCOMP_IOCTL_FILTER_DELTA.json",
+            "sha256": "cddef8e23936833733ae037c692790b4b299fe7c79fbc0e2a042d8f2d201fe47"
+          }
+        ],
+        "substantive_status": "真实STOP证据/成功子事实；标签覆盖不是专业或业务PASS。"
+      },
+      {
+        "deliverable_literal": "SECCOMP_FILTER_STATIC_EVALUATION.json covering arch/x32/FIOCLEX/FIONCLEX/arbitrary/high32/socket/read/prctl/jump/equivalence cases before kernel execution",
+        "literal_manifest_alias_present": true,
+        "associated_actual_evidence": [
+          {
+            "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/SECCOMP_FILTER_STATIC_EVALUATION.json",
+            "ref": "daowei2026/observe-iterate@e9f4e0c569caa2939f3c5bfc2f882df6842f915f:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W006/SECCOMP_FILTER_STATIC_EVALUATION.json",
+            "sha256": "10f5da149894807c16aaf9b98a454cb7bfccb145567eaea6c817c38a679690a3"
+          }
+        ],
+        "substantive_status": "真实STOP证据/成功子事实；标签覆盖不是专业或业务PASS。"
+      },
+      {
+        "deliverable_literal": "WRITE_CONFINEMENT_REPORT.json and FULL_WRITE_TRACE_REVIEW.json proving or accurately failing current kernel enforcement, probes and path-complete writes",
+        "literal_manifest_alias_present": true,
+        "associated_actual_evidence": [
+          {
+            "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/WRITE_CONFINEMENT_REPORT.json",
+            "ref": "daowei2026/observe-iterate@e9f4e0c569caa2939f3c5bfc2f882df6842f915f:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W006/WRITE_CONFINEMENT_REPORT.json",
+            "sha256": "b3215750ea10db12edb91a84b163dd4e2d5bdd504eea8294b98bf79b0140cd72"
+          },
+          {
+            "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/FULL_WRITE_TRACE_REVIEW.json",
+            "ref": "daowei2026/observe-iterate@e9f4e0c569caa2939f3c5bfc2f882df6842f915f:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W006/FULL_WRITE_TRACE_REVIEW.json",
+            "sha256": "316eb53c220d3f0c56bb556313e886d1f940638496f178fefe2fd5cc211b34b8"
+          }
+        ],
+        "substantive_status": "真实STOP证据/成功子事实；标签覆盖不是专业或业务PASS。"
+      },
+      {
+        "deliverable_literal": "OFFLINE_CLOSURE_REPORT.json selecting exactly one compatible complete offline closure or stopping",
+        "literal_manifest_alias_present": true,
+        "associated_actual_evidence": [
+          {
+            "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/OFFLINE_CLOSURE_REPORT.json",
+            "ref": "daowei2026/observe-iterate@e9f4e0c569caa2939f3c5bfc2f882df6842f915f:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W006/OFFLINE_CLOSURE_REPORT.json",
+            "sha256": "a6c95e8da4632a4eff41ce807c8599935a2d122083eba10b451f871644000af5"
+          }
+        ],
+        "substantive_status": "真实STOP证据/成功子事实；标签覆盖不是专业或业务PASS。"
+      },
+      {
+        "deliverable_literal": "RESOURCE_BUDGET_REPORT.json with non-null evidence-backed disk/RSS/wall/file bounds and verified continuous monitors or stopping",
+        "literal_manifest_alias_present": true,
+        "associated_actual_evidence": [
+          {
+            "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/RESOURCE_BUDGET_REPORT.json",
+            "ref": "daowei2026/observe-iterate@e9f4e0c569caa2939f3c5bfc2f882df6842f915f:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W006/RESOURCE_BUDGET_REPORT.json",
+            "sha256": "c2efcd5f8a979841887238569edf768c9d5cdfc8f015f2b0630e7bd7c14f688e"
+          }
+        ],
+        "substantive_status": "真实STOP证据/成功子事实；标签覆盖不是专业或业务PASS。"
+      },
+      {
+        "deliverable_literal": "PHASE0_RECOVERY_VERDICT.json with four independent PASS requirements and exact gate/stop routing",
+        "literal_manifest_alias_present": true,
+        "associated_actual_evidence": [
+          {
+            "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/PHASE0_RECOVERY_VERDICT.json",
+            "ref": "daowei2026/observe-iterate@e9f4e0c569caa2939f3c5bfc2f882df6842f915f:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W006/PHASE0_RECOVERY_VERDICT.json",
+            "sha256": "a1731f7f81c3fecb42deaef65c789adf3226b38a614467af19018b88af1fb4c2"
+          }
+        ],
+        "substantive_status": "真实STOP证据/成功子事实；标签覆盖不是专业或业务PASS。"
+      },
+      {
+        "deliverable_literal": "COMMAND_LOG.jsonl, WRITE_SURFACE_AUDIT.json, EP_ACCEPTANCE_MATRIX.md, PUBLICATION_MANIFEST.json and HASHES.sha256",
+        "literal_manifest_alias_present": true,
+        "associated_actual_evidence": [
+          {
+            "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/COMMAND_LOG.jsonl",
+            "ref": "daowei2026/observe-iterate@e9f4e0c569caa2939f3c5bfc2f882df6842f915f:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W006/COMMAND_LOG.jsonl",
+            "sha256": "723fa427c64a73f28736281520557654ca52ff1acb5724fa22ba95d97c483197"
+          },
+          {
+            "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/WRITE_SURFACE_AUDIT.json",
+            "ref": "daowei2026/observe-iterate@e9f4e0c569caa2939f3c5bfc2f882df6842f915f:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W006/WRITE_SURFACE_AUDIT.json",
+            "sha256": "d8659b0eb6558c668979909830eb1b1815f73fc7d9b729e1e768fd9348d8675f"
+          },
+          {
+            "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/EP_ACCEPTANCE_MATRIX.md",
+            "ref": "daowei2026/observe-iterate@e9f4e0c569caa2939f3c5bfc2f882df6842f915f:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W006/EP_ACCEPTANCE_MATRIX.md",
+            "sha256": "ce9282478dfbb0c809de45ec240899005a95701ac4cde94654a2d9ce13403c5d"
+          },
+          {
+            "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/PUBLICATION_MANIFEST.json",
+            "ref": "daowei2026/observe-iterate@e9f4e0c569caa2939f3c5bfc2f882df6842f915f:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W006/PUBLICATION_MANIFEST.json",
+            "sha256": "4554ef1ef696a8670ab316ec5233fb04bd87e57e49bef3f615570db6caba344e"
+          },
+          {
+            "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/HASHES.sha256",
+            "ref": "daowei2026/observe-iterate@e9f4e0c569caa2939f3c5bfc2f882df6842f915f:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W006/HASHES.sha256",
+            "sha256": "6efa77d4670af93d9e3c49ee19e1dd714fba9f652d0af2396fc0b8eb24f61a22"
+          }
+        ],
+        "substantive_status": "真实STOP证据/成功子事实；标签覆盖不是专业或业务PASS。"
+      },
+      {
+        "deliverable_literal": "If and only if all four Phase0 requirements pass: exact-base staged eight-EP package, reviewable patch/manifest, complete unexecuted 9/18/22 fixture, permitted compile-only/synthetic-serialization reports, and NOT_UPSTREAM_PUBLISHED local commit report if actually created",
+        "literal_manifest_alias_present": false,
+        "associated_actual_evidence": [],
+        "explanation": "四项Phase0 PASS未成立，条件八EP未进入，保持无条件成果文件。"
+      },
+      {
+        "deliverable_literal": "ENGINEERING_STOP_REPORT.md for any STOP without fake empty conditional artifacts",
+        "literal_manifest_alias_present": true,
+        "associated_actual_evidence": [
+          {
+            "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/ENGINEERING_STOP_REPORT.md",
+            "ref": "daowei2026/observe-iterate@e9f4e0c569caa2939f3c5bfc2f882df6842f915f:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W006/ENGINEERING_STOP_REPORT.md",
+            "sha256": "8bcbb5193e21e1ad48d5f3507aec6e38dbc66f6c258466df044a0e453a84250a"
+          }
+        ],
+        "substantive_status": "真实STOP证据/成功子事实；标签覆盖不是专业或业务PASS。"
+      },
+      {
+        "deliverable_literal": "V2 WORKER_RETURN.json returning only to executor E1",
+        "literal_manifest_alias_present": false,
+        "associated_actual_evidence": [],
+        "explanation": "本阶段本地正式Return已生成；自身尚未出版，不能伪造self/future ref或把它列入自身manifest。"
+      }
+    ]
+  },
+  "missing_count": 14,
+  "missing": [
+    "STOP_PROBE_HOLDER_FDINFO_READ_EACCES：P0-P3及kernel policy/bootstrap/FIOCLEX成功事实保留；唯一R0-A1在受限probe只读openat /proc/248632/fdinfo/3返回EACCES/PermissionError，exit1；未改guard/policy/probe重试；具体procfs/LSM机制未在本W另行调查。",
+    "bootstrap FIOCLEX实际成功，但inside descriptor清FD_CLOEXEC→FIOCLEX→F_GETFD效果测试未达；其他descriptor的F_GETFD不能冒充该配对证明。",
+    "inside create/write/rename/remove完整positive probe未达；失败回执写入根内不替代该完整probe。",
+    "OUTSIDE/SHARED/HOME/CODEX新文件创建、只读目录打开与symlink escape的实际kernel negative probes未达；具名lstat不存在不是kernel拒绝PASS。",
+    "child/grandchild未生成，restriction继承未测；inherited writable FD关闭已实证，holder锁在父侧独立复核完整，但受限子域holder只读复核失败。",
+    "socket/connect实际negative probe未达；静态socket拒绝与filter安装不替代当前网络probe。",
+    "完整2290行失败链已审阅，3次成功write/6594bytes均根内，failed-chain outside file writes0/unknown paths0；不能外推全任务、后继或global zero writes/confinement PASS。",
+    "R0-B未进入，E/B两个closure候选均未评估，不称二者均失败；缺唯一兼容offline resolver/compiler/packageDB/transitive IDs/rebuild set与missing deps空证明。",
+    "8个exact FRP Git对象仅保留已核映射，本W因前置停止未读；无exact-base源码调查、staging或patch。",
+    "R0-C未进入，disk/RSS/wall/files预测上界、同closure可比测量与continuous monitors/kill receipt未证；1.277822秒失败命令及45秒timeout不构成预算PASS。",
+    "四PASS未成立，条件八EP与snapshot/DTO/target/error/transaction、9/18/22 fixture、compile-only/synthetic serialization/local commit均未实施，不造空条件成果。",
+    "具名26输入收尾一致和任务写路径审阅有限域，未扫描全BASE/HOME/CODEX或验证其全局零新增写。",
+    "93份原证据已真实出版并逐项核验，证据出版缺口已解决；本阶段正式v2 WORKER_RETURN已本地生成并只回原E1。其自身与本阶段验证/命令日志/生成器/资格原件仍待主控逐字出版至worker_results/W006/，新Return实际ref、独立receipt及完整Gate尚未产生；ORDER标签“V2 WORKER_RETURN.json returning only to executor E1”不以未来或自身ref填入本Return manifest。",
+    "专业接受、action eligibility、G-RUN/H3、父Q和父任务完成仍归E1/manager，Worker未作决定。"
+  ],
+  "state_updates": {
+    "old_handoff_preserved": true,
+    "old_evidence_publication_gap_resolved": true,
+    "local_formal_return_generation_gap_resolved": true,
+    "this_new_return_publication_and_independent_receipt_pending": true
+  },
+  "formal_generator_correction": {
+    "failed_native_command_id": "exec-87871bfe-f720-48db-b2d7-ff6531924ee9",
+    "failed_exit_code": 1,
+    "initial_generator_bytes": 26771,
+    "initial_generator_sha256": "f1ec616a0ae90f6c66ae9ee963ab1887a35552791c275ae2a8c6c41f21223589",
+    "cause": "原生命令cwd实际采用file:///dwdhome/fy/BASE_E6_2；初版日志归档器错误地要求原字段直接等于POSIX路径。实际进程cwd始终BASE。",
+    "correction": "日志保留原字段并解析file URI后比较；保留该失败命令完整输出及exit1，未排除失败记录。",
+    "previously_generated_return_reused_byte_identical": true,
+    "return_bytes": 38928,
+    "return_sha256": "a168c4e3cade10303f53b0b91705b53a33729615d87125e189a454f59075f283",
+    "P0_P4_or_any_engineering_code_changed_or_rerun": false
+  },
+  "frozen_evidence_facts_preserved": {
+    "preparation_stages": {
+      "P0": "PASS",
+      "P1": "PASS",
+      "P2": "PASS",
+      "P3": "PASS",
+      "P4": "STOP_HOLDER_FDINFO_OPEN_EACCES"
+    },
+    "P3_cases": 11,
+    "P3_semantic_comparisons": 24240,
+    "P3_jumps": 61,
+    "P3_actual_success_preserved": true,
+    "kernel_ABI": 6,
+    "kernel_install_calls": [
+      {
+        "operation": "landlock_create_ruleset_VERSION",
+        "return": 6,
+        "errno": 0
+      },
+      {
+        "operation": "prctl_PR_SET_NO_NEW_PRIVS",
+        "return": 0,
+        "errno": 0
+      },
+      {
+        "operation": "landlock_create_ruleset",
+        "return": 3,
+        "errno": 0
+      },
+      {
+        "operation": "landlock_add_rule_PATH_BENEATH_only_WORK_ROOT",
+        "return": 0,
+        "errno": 0
+      },
+      {
+        "operation": "landlock_restrict_self",
+        "return": 0,
+        "errno": 0
+      },
+      {
+        "operation": "prctl_PR_SET_SECCOMP_FILTER",
+        "return": 0,
+        "errno": 0
+      }
+    ],
+    "seccomp_instruction_count_as_frozen": 126,
+    "bootstrap_and_post_policy_FIOCLEX_succeeded": [
+      {
+        "line": 1508,
+        "text": "1794705699.680977 ioctl(3</dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/tools/confinement_probe.py>, FIOCLEX) = 0",
+        "post_policy": true
+      }
+    ],
+    "probe_six_prior_checks_passed": [
+      {
+        "name": "inherited_writable_lock_fd_closed",
+        "PASS": true,
+        "fd": 3,
+        "errno": 9
+      },
+      {
+        "name": "actual_HOME_CODEX_preserved",
+        "PASS": true,
+        "HOME": "/home/dw",
+        "CODEX_HOME": "/home/dw/.codex"
+      },
+      {
+        "name": "stdin_readonly",
+        "PASS": true,
+        "path": "/dev/null"
+      },
+      {
+        "name": "stdio_1_inside_single_link_regular",
+        "PASS": true,
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/logs/r0a1.stdout"
+      },
+      {
+        "name": "stdio_2_inside_single_link_regular",
+        "PASS": true,
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/logs/r0a1.stderr"
+      },
+      {
+        "name": "NNP_and_seccomp_inherited",
+        "PASS": true,
+        "NoNewPrivs": "1",
+        "Seccomp": "2"
+      }
+    ],
+    "unique_R0_A1": {
+      "started_at": "2026-11-15T01:21:38.944026+00:00",
+      "completed_at": "2026-11-15T01:21:40.221839+00:00",
+      "elapsed_seconds": 1.2778220539912581,
+      "exit_code": 1,
+      "timed_out": false
+    },
+    "readonly_holder_open_failure": {
+      "line": 2240,
+      "text": "1794705700.005553 openat(AT_FDCWD</dwdhome/fy/BASE_E6_2>, \"/proc/248632/fdinfo/3\", O_RDONLY|O_CLOEXEC) = -1 EACCES (Permission denied)"
+    },
+    "failure_type": "PermissionError/EACCES",
+    "concrete_procfs_LSM_cause_investigated": false,
+    "kernel_unsupported_static_failure_or_FIOCLEX_failure_claimed": false,
+    "parent_unconfined_lock_recheck_does_not_erase_restricted_child_failure": true,
+    "same_inside_FD_clear_FIOCLEX_GETFD_effect_test_reached": false,
+    "full_inside_positive_negative_child_grand_symlink_socket_connect_probes_reached": false,
+    "failed_chain_only_trace": {
+      "lines": 2290,
+      "successful_writes": 3,
+      "bytes": 6594,
+      "outside_file_writes": 0,
+      "unknown_write_paths": 0
+    },
+    "global_zero_writes_or_confinement_PASS_claimed": false,
+    "R0_B_C_entered": false,
+    "both_closure_candidates_assessed_or_failed_claimed": false,
+    "four_budget_bounds_continuous_monitors_and_eight_EP_completed": false,
+    "all_scenario_normal_current_material_runs": 0,
+    "original26_named_input_check_is_not_global_BASE_HOME_scan": true
+  },
+  "frozen_originals_before": {
+    "file_count": 93,
+    "bytes": 1805193,
+    "bytes_sha256_git_blob_mtime_ns_inode_dev_unchanged": true,
+    "HASHES_entries_verified": 91,
+    "freeze_metadata_entries_verified": 92,
+    "scope": "仅W006原93份具名文件，排除本阶段final-return；不是全BASE/HOME扫描。"
+  },
+  "frozen_originals_after": {
+    "file_count": 93,
+    "bytes": 1805193,
+    "bytes_sha256_git_blob_mtime_ns_inode_dev_unchanged": true,
+    "HASHES_entries_verified": 91,
+    "freeze_metadata_entries_verified": 92,
+    "scope": "仅W006原93份具名文件，排除本阶段final-return；不是全BASE/HOME扫描。",
+    "observations": [
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/COMMAND_LOG.jsonl",
+        "bytes": 281838,
+        "sha256": "723fa427c64a73f28736281520557654ca52ff1acb5724fa22ba95d97c483197",
+        "mtime_ns": 1794706242778094332,
+        "mtime_ns_exact": "1794706242778094332",
+        "inode": 14847263,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/CONTROLLER_SENTINEL_PRECONFIRMATION.json",
+        "bytes": 609,
+        "sha256": "65b582f61d9a426f5dd860351ca81645a9bdbd54033fde9bb498c03de119aeac",
+        "mtime_ns": 1794705272443594239,
+        "mtime_ns_exact": "1794705272443594239",
+        "inode": 14846116,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/ENGINEERING_STOP_REPORT.md",
+        "bytes": 1090,
+        "sha256": "8bcbb5193e21e1ad48d5f3507aec6e38dbc66f6c258466df044a0e453a84250a",
+        "mtime_ns": 1794706085022656269,
+        "mtime_ns_exact": "1794706085022656269",
+        "inode": 14845283,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/EP_ACCEPTANCE_MATRIX.md",
+        "bytes": 1220,
+        "sha256": "ce9282478dfbb0c809de45ec240899005a95701ac4cde94654a2d9ce13403c5d",
+        "mtime_ns": 1794706084911718509,
+        "mtime_ns_exact": "1794706084911718509",
+        "inode": 14847006,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/FIOCLEX_KERNEL_OBSERVATION.json",
+        "bytes": 1577,
+        "sha256": "4904756a48ea99850831a5251649dd333fae4e47451785080d102c9237110b0b",
+        "mtime_ns": 1794706084354174263,
+        "mtime_ns_exact": "1794706084354174263",
+        "inode": 14847377,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/FIOCLEX_LOCAL_CONSTANT_VERIFICATION.json",
+        "bytes": 1654,
+        "sha256": "81b0b408a6405172da83b3939cfac3fd465a8e857db2a4edc9bd0f4e6137e62c",
+        "mtime_ns": 1794705364758030740,
+        "mtime_ns_exact": "1794705364758030740",
+        "inode": 14844137,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/FULL_WRITE_TRACE_REVIEW.json",
+        "bytes": 26227,
+        "sha256": "316eb53c220d3f0c56bb556313e886d1f940638496f178fefe2fd5cc211b34b8",
+        "mtime_ns": 1794706084315028126,
+        "mtime_ns_exact": "1794706084315028126",
+        "inode": 14847004,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/HASHES.sha256",
+        "bytes": 9617,
+        "sha256": "6efa77d4670af93d9e3c49ee19e1dd714fba9f652d0af2396fc0b8eb24f61a22",
+        "mtime_ns": 1794706243571772311,
+        "mtime_ns_exact": "1794706243571772311",
+        "inode": 14847019,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/HISTORICAL_FIOCLEX_PHASE_CLASSIFICATION.json",
+        "bytes": 1800,
+        "sha256": "d4d29f78701746d8de4d128b82864d468d8f6c40adcf4f258e9f431e9784763f",
+        "mtime_ns": 1794705357641477825,
+        "mtime_ns_exact": "1794705357641477825",
+        "inode": 14845426,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/LOCAL_STAGE_HANDOFF.json",
+        "bytes": 11314,
+        "sha256": "b99bb1e9b6ba8d7b9c7580875580d26f86e47a649c5a7bfa452f5caab864a52a",
+        "mtime_ns": 1794706085097196526,
+        "mtime_ns_exact": "1794706085097196526",
+        "inode": 14847378,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/LOCAL_VALIDATION.json",
+        "bytes": 9263,
+        "sha256": "81916bc13d6dfeaf1ff0bf6b631a90a38cbd8fd7222655bb9047bf2b99e43fbe",
+        "mtime_ns": 1794706243339971287,
+        "mtime_ns_exact": "1794706243339971287",
+        "inode": 14847264,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/OFFLINE_CLOSURE_REPORT.json",
+        "bytes": 589,
+        "sha256": "a6c95e8da4632a4eff41ce807c8599935a2d122083eba10b451f871644000af5",
+        "mtime_ns": 1794706084507069504,
+        "mtime_ns_exact": "1794706084507069504",
+        "inode": 14846893,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/PARENT_RUNTIME_BINDING_DELTA.json",
+        "bytes": 5183,
+        "sha256": "4eb5a2b38bc9da16ef5a57f3eb86a70c6da05a9b2c3afb42a24efcd2d22afb39",
+        "mtime_ns": 1794705524869167077,
+        "mtime_ns_exact": "1794705524869167077",
+        "inode": 14845776,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/PHASE0_RECOVERY_VERDICT.json",
+        "bytes": 776,
+        "sha256": "a1731f7f81c3fecb42deaef65c789adf3226b38a614467af19018b88af1fb4c2",
+        "mtime_ns": 1794706084594501028,
+        "mtime_ns_exact": "1794706084594501028",
+        "inode": 14844850,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/PUBLICATION_MANIFEST.json",
+        "bytes": 61610,
+        "sha256": "4554ef1ef696a8670ab316ec5233fb04bd87e57e49bef3f615570db6caba344e",
+        "mtime_ns": 1794706243464676534,
+        "mtime_ns_exact": "1794706243464676534",
+        "inode": 14846565,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/R0_A1_EXECUTION_RECEIPT.json",
+        "bytes": 3031,
+        "sha256": "6d6b651876d8ab0707ef6dde09b0734af4b56fb5d18c30c4bb71ba5dcb1103fd",
+        "mtime_ns": 1794705700418711376,
+        "mtime_ns_exact": "1794705700418711376",
+        "inode": 14843608,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/RESOURCE_BUDGET_REPORT.json",
+        "bytes": 1486,
+        "sha256": "c2efcd5f8a979841887238569edf768c9d5cdfc8f015f2b0630e7bd7c14f688e",
+        "mtime_ns": 1794706084529043621,
+        "mtime_ns_exact": "1794706084529043621",
+        "inode": 14845547,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/SECCOMP_CANDIDATE_PROGRAM.json",
+        "bytes": 13648,
+        "sha256": "fb71a48c2d297535da1ca2483361bf704aa07a6be0b2660e2ad5d3831897d9fe",
+        "mtime_ns": 1794705524803862581,
+        "mtime_ns_exact": "1794705524803862581",
+        "inode": 14846514,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/SECCOMP_DATA_LAYOUT_VERIFICATION.json",
+        "bytes": 1272,
+        "sha256": "f387d7e642d15662b9d68f391b151e4b960e9efd20ab4b1fb49ea092cd6e2a8d",
+        "mtime_ns": 1794705367033015036,
+        "mtime_ns_exact": "1794705367033015036",
+        "inode": 14843601,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/SECCOMP_FILTER_STATIC_EVALUATION.json",
+        "bytes": 13008,
+        "sha256": "10f5da149894807c16aaf9b98a454cb7bfccb145567eaea6c817c38a679690a3",
+        "mtime_ns": 1794705534392578158,
+        "mtime_ns_exact": "1794705534392578158",
+        "inode": 14846138,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/SECCOMP_IOCTL_FILTER_DELTA.json",
+        "bytes": 45067,
+        "sha256": "cddef8e23936833733ae037c692790b4b299fe7c79fbc0e2a042d8f2d201fe47",
+        "mtime_ns": 1794705524912137568,
+        "mtime_ns_exact": "1794705524912137568",
+        "inode": 14846515,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/W006_BINDING.json",
+        "bytes": 3994,
+        "sha256": "6548cf1ff37cae19b2f87f6297a35d4030e2c22be147dee6f702bebc80c313a7",
+        "mtime_ns": 1794705272519642550,
+        "mtime_ns_exact": "1794705272519642550",
+        "inode": 14843735,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/WORKER_EXECUTION_REPORT.md",
+        "bytes": 6314,
+        "sha256": "1332b77c97b889a0f77bec34977e56222565f229ce80613c200ebe225cc8b2b2",
+        "mtime_ns": 1794706084945774740,
+        "mtime_ns_exact": "1794706084945774740",
+        "inode": 14844670,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/WRITE_CONFINEMENT_REPORT.json",
+        "bytes": 6499,
+        "sha256": "b3215750ea10db12edb91a84b163dd4e2d5bdd504eea8294b98bf79b0140cd72",
+        "mtime_ns": 1794706084423541703,
+        "mtime_ns_exact": "1794706084423541703",
+        "inode": 14845546,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/WRITE_SURFACE_AUDIT.json",
+        "bytes": 39761,
+        "sha256": "d8659b0eb6558c668979909830eb1b1815f73fc7d9b729e1e768fd9348d8675f",
+        "mtime_ns": 1794706243207871388,
+        "mtime_ns_exact": "1794706243207871388",
+        "inode": 14846190,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/audit/ARCHIVE_RESULT_RECEIPT.json",
+        "bytes": 1545,
+        "sha256": "1ba057e3b91c4657e135b02a21ca971c4b19d4d78d67bc698b76530c406bce9f",
+        "mtime_ns": 1794706085179475877,
+        "mtime_ns_exact": "1794706085179475877",
+        "inode": 14845285,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/audit/INPUT_IMMUTABILITY_CHECK.json",
+        "bytes": 41351,
+        "sha256": "927988175e4aa4053c3f342a9506af03a72705ed8d7418362e25616964b09d0c",
+        "mtime_ns": 1794706084760309098,
+        "mtime_ns_exact": "1794706084760309098",
+        "inode": 14846049,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/audit/NATIVE_COMMAND_COMPLETIONS.jsonl",
+        "bytes": 196407,
+        "sha256": "4f9832e189910f8e29738f0e38db88eb0d5993c1b84c891892b385c13621c064",
+        "mtime_ns": 1794706242636527175,
+        "mtime_ns_exact": "1794706242636527175",
+        "inode": 14848004,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/audit/NATIVE_FILE_CHANGES.jsonl",
+        "bytes": 81250,
+        "sha256": "23dac2514ff0fca306bad4c7c9b66d469da3d45cd65dbeb61209412a40f46a2f",
+        "mtime_ns": 1794706242698606899,
+        "mtime_ns_exact": "1794706242698606899",
+        "inode": 14847018,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/audit/NEGATIVE_TARGET_POSTCHECK.json",
+        "bytes": 1102,
+        "sha256": "8b87a72968eb8e7db7b28b0f011618ed0c7d6ac380dfea339b913fb1dce70ad2",
+        "mtime_ns": 1794706084829004339,
+        "mtime_ns_exact": "1794706084829004339",
+        "inode": 14846894,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/audit/SEAL_INPUT_AND_CODE_IMMUTABILITY.json",
+        "bytes": 23112,
+        "sha256": "ba9a74388d8bb956a4397574df7dfa04675071ef54fb5edd9710ff56c50d3364",
+        "mtime_ns": 1794706242984962949,
+        "mtime_ns_exact": "1794706242984962949",
+        "inode": 14847755,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/input/C0014-remote-calls--C0014--PRO_RETURN.json",
+        "bytes": 1844,
+        "sha256": "cc8571ad0e5c0ae61da3dcfebf48fb7710ae0e8d089af6571ba57378144ab97f",
+        "mtime_ns": 1794705272165714272,
+        "mtime_ns_exact": "1794705272165714272",
+        "inode": 14845414,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/input/C0014-remote-delegations--D003--results--D003_EXECUTOR_PROGRESS_C0014.md",
+        "bytes": 10638,
+        "sha256": "8ed3a0a921fe7fd314a9d58fbc80d70225c177d05c8dc8be35e6f1c48cebb89a",
+        "mtime_ns": 1794705272195900645,
+        "mtime_ns_exact": "1794705272195900645",
+        "inode": 14846346,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/input/C0014-remote-work_orders--W006--ORDER.json",
+        "bytes": 8288,
+        "sha256": "dcf0ac22dc0289af27f5081057af576ddb84c77fcb004ec51360221442bc4822",
+        "mtime_ns": 1794705272132383869,
+        "mtime_ns_exact": "1794705272132383869",
+        "inode": 14846487,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/input/C0014-remote-work_orders--W006--ORDER.md",
+        "bytes": 19304,
+        "sha256": "49c988c5d9031229a6d4327f066055e136219f13190b8628608fbd3a5f7ce7f3",
+        "mtime_ns": 1794705272103174877,
+        "mtime_ns_exact": "1794705272103174877",
+        "inode": 14843734,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/input/CONTROLLER_SENTINEL_PRECONFIRMATION-W006.json",
+        "bytes": 609,
+        "sha256": "65b582f61d9a426f5dd860351ca81645a9bdbd54033fde9bb498c03de119aeac",
+        "mtime_ns": 1794705272253421420,
+        "mtime_ns_exact": "1794705272253421420",
+        "inode": 14846489,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/input/VERIFIED_INPUTS.json",
+        "bytes": 42484,
+        "sha256": "e01776ffacda329903f26ca278fa55c3ebd0100ff8f85dcfb680bb01f2c3911b",
+        "mtime_ns": 1794705272475417644,
+        "mtime_ns_exact": "1794705272475417644",
+        "inode": 14845236,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/input/W006-final-pre-dispatch-context.json",
+        "bytes": 5086,
+        "sha256": "8b7923a6a7046e5ef597546f8dec70e02c9aea71a8f9e24c7b95006922157d49",
+        "mtime_ns": 1794705272343512615,
+        "mtime_ns_exact": "1794705272343512615",
+        "inode": 14846601,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/input/W006-input-mirror-index.json",
+        "bytes": 16959,
+        "sha256": "5b61043eb0aa9e98e00287632a1bafcef351710fcad6f22f8952092a3909173b",
+        "mtime_ns": 1794705272226321347,
+        "mtime_ns_exact": "1794705272226321347",
+        "inode": 14843812,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/input/W006-lock-competition-proof.json",
+        "bytes": 943,
+        "sha256": "fca88e9a4a7da40814d6c12a5f95dcc10c8d4658b9b36c7601aa12aa6b522808",
+        "mtime_ns": 1794705272295940470,
+        "mtime_ns_exact": "1794705272295940470",
+        "inode": 14845233,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/input/W006-lock-holder.json",
+        "bytes": 575,
+        "sha256": "fd3f151a5319d936d92866a64ca28efd3a44f10ef7be4c22cba7c35a66d4e715",
+        "mtime_ns": 1794705272270522276,
+        "mtime_ns_exact": "1794705272270522276",
+        "inode": 14845623,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/input/W006-start-receipt.json",
+        "bytes": 424,
+        "sha256": "82f44e656c9fdf866566d65a858355f09eb75945f497b92670f93fb068846af5",
+        "mtime_ns": 1794705272393539109,
+        "mtime_ns_exact": "1794705272393539109",
+        "inode": 14845235,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/input/W006-worker-loaded-context.json",
+        "bytes": 5213,
+        "sha256": "2ec7b204c8269d6fe94045f6e0957cbad5650ad3a44eefe4ea8f4fffb01689b6",
+        "mtime_ns": 1794705272318568836,
+        "mtime_ns_exact": "1794705272318568836",
+        "inode": 14846115,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/input/W006-worker-pre-dispatch-state.json",
+        "bytes": 9928,
+        "sha256": "f6d7aec30fa086ea43e02bf2d5a8bbe9563b1e2c302ecfcfc7e9364052f96a7f",
+        "mtime_ns": 1794705272369174963,
+        "mtime_ns_exact": "1794705272369174963",
+        "inode": 14845234,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/input/WORKER_TASK-W006.md",
+        "bytes": 7117,
+        "sha256": "0ced124a17365b9c0a83298a8fe817015ab9ffc8bed10d7ad4dd525db3ffada4",
+        "mtime_ns": 1794705272073134538,
+        "mtime_ns_exact": "1794705272073134538",
+        "inode": 14846345,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/input/mirrors/00-FULL_ASSIGNMENT-C0014.md",
+        "bytes": 11735,
+        "sha256": "f1092cebdef4bb64a042375d26629ff1c67f46447cbabc09f22e57e090c49e8e",
+        "mtime_ns": 1794705271306721799,
+        "mtime_ns_exact": "1794705271306721799",
+        "inode": 14845165,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/input/mirrors/01-INVOCATION-C0014.json",
+        "bytes": 4952,
+        "sha256": "2f63b6071e1b7c71519d90744e12a1b9f4b3180f396586530202d1e92d94f2d2",
+        "mtime_ns": 1794705271329538568,
+        "mtime_ns_exact": "1794705271329538568",
+        "inode": 14846246,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/input/mirrors/02-C0008-remote-delegations--D003--DELEGATION.json",
+        "bytes": 3282,
+        "sha256": "4f544748a95dee05021c41b232081b1724680fc68bd20065e1157d0176f046fa",
+        "mtime_ns": 1794705271354610342,
+        "mtime_ns_exact": "1794705271354610342",
+        "inode": 14846247,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/input/mirrors/03-C0008-remote-delegations--D003--DELEGATION.md",
+        "bytes": 19158,
+        "sha256": "6bae2b9f61794574fa4206ba9e10e32bf36ae0e8cf5a315f9fda0e183c6d23aa",
+        "mtime_ns": 1794705271381249114,
+        "mtime_ns_exact": "1794705271381249114",
+        "inode": 14844777,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/input/mirrors/04-WORKER_RETURN.json",
+        "bytes": 29441,
+        "sha256": "5c9223daf2c5c1ccfa05641a6b5924f82a0fcbae76a956ae8ad2fcdb74ff9005",
+        "mtime_ns": 1794705271408477771,
+        "mtime_ns_exact": "1794705271408477771",
+        "inode": 14845873,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/input/mirrors/05-WORKER_EXECUTION_REPORT.md",
+        "bytes": 4212,
+        "sha256": "c6e7627d7cd3f10a9261eb3719fe0a762eef77117bed4332ed93bbf0f0f84dff",
+        "mtime_ns": 1794705271436270714,
+        "mtime_ns_exact": "1794705271436270714",
+        "inode": 14846248,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/input/mirrors/06-ENGINEERING_STOP_REPORT.md",
+        "bytes": 1036,
+        "sha256": "8bfb80218cc99bf50157442a95ab047997b3223982f1ac2bc54a05e9d6721023",
+        "mtime_ns": 1794705271461069775,
+        "mtime_ns_exact": "1794705271461069775",
+        "inode": 14845232,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/input/mirrors/07-FIOCLEX_LOCAL_CONSTANT_VERIFICATION.json",
+        "bytes": 2283,
+        "sha256": "93a2a7fc8aefd8b096e04ffeab23f6d54ce53965a26722a55b9d4488ce624b05",
+        "mtime_ns": 1794705271490264156,
+        "mtime_ns_exact": "1794705271490264156",
+        "inode": 14845409,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/input/mirrors/08-SECCOMP_IOCTL_FILTER_DELTA.json",
+        "bytes": 1457,
+        "sha256": "11c3ba928f339c6ef3040832b9479ac6a992909ef4cd649c5e274353cf794b0b",
+        "mtime_ns": 1794705271523907583,
+        "mtime_ns_exact": "1794705271523907583",
+        "inode": 14844499,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/input/mirrors/09-SECCOMP_FILTER_STATIC_EVALUATION.json",
+        "bytes": 1419,
+        "sha256": "0328c4579dd39f94e5384368cff52aa83073c2ae2322f1bd772141dcb89dd612",
+        "mtime_ns": 1794705271554139200,
+        "mtime_ns_exact": "1794705271554139200",
+        "inode": 14845503,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/input/mirrors/10-STATIC_PREPARATION_FAILURE.json",
+        "bytes": 2660,
+        "sha256": "607dee24fb42fceeece00d17a8b9b28874bf6486386970dd5379deb739ee9097",
+        "mtime_ns": 1794705271583031763,
+        "mtime_ns_exact": "1794705271583031763",
+        "inode": 14845761,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/input/mirrors/11-prepare_static.py",
+        "bytes": 10786,
+        "sha256": "6d9168b2358c84d03c16281c77dc3921e7c165cf9f4de5d81ceba3c59a05a4af",
+        "mtime_ns": 1794705271613198383,
+        "mtime_ns_exact": "1794705271613198383",
+        "inode": 14846344,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/input/mirrors/12-PHASE0_RECOVERY_VERDICT.json",
+        "bytes": 775,
+        "sha256": "de741fdb7f6c675677a251a306f056c4081362f0177f9b2155b40a1280aedb5b",
+        "mtime_ns": 1794705271642273112,
+        "mtime_ns_exact": "1794705271642273112",
+        "inode": 14843733,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/input/mirrors/13-WRITE_CONFINEMENT_REPORT.json",
+        "bytes": 1916,
+        "sha256": "c69138dea06af08df17b05b27b4a6ba2a1ed28e96f5d54c9a7543bb65048ea43",
+        "mtime_ns": 1794705271672956630,
+        "mtime_ns_exact": "1794705271672956630",
+        "inode": 14846486,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/input/mirrors/14-OFFLINE_CLOSURE_REPORT.json",
+        "bytes": 821,
+        "sha256": "7e3a055945e0a2e24af305f7dabbfa94ae0d3a0e805e0c855187a641d8020d37",
+        "mtime_ns": 1794705271701045417,
+        "mtime_ns_exact": "1794705271701045417",
+        "inode": 14845410,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/input/mirrors/15-RESOURCE_BUDGET_REPORT.json",
+        "bytes": 1347,
+        "sha256": "3a6ef6ddef3ae86ecf11f4536ffb771bbba94f95a7629c1146a78e012b4d9365",
+        "mtime_ns": 1794705271726096864,
+        "mtime_ns_exact": "1794705271726096864",
+        "inode": 14844778,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/input/mirrors/16-EP_ACCEPTANCE_MATRIX.md",
+        "bytes": 1349,
+        "sha256": "86a7c40fe1412fee2da57e8037b392a7b9c3f7eb8ad6b1e60ebf72299253769a",
+        "mtime_ns": 1794705271751207625,
+        "mtime_ns_exact": "1794705271751207625",
+        "inode": 14845411,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/input/mirrors/17-W005_BINDING.json",
+        "bytes": 3715,
+        "sha256": "669ffbb2650b4d61270f87b013fc3c050b488f69a0608dd2ea1bdc0c819c3abc",
+        "mtime_ns": 1794705271776392350,
+        "mtime_ns_exact": "1794705271776392350",
+        "inode": 14844128,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/input/mirrors/18-runtime.py",
+        "bytes": 3301,
+        "sha256": "8e1d234ff2f5b6167e0b9a0fe94d292a138039e3608954639cb96c57c92b0eac",
+        "mtime_ns": 1794705271801433537,
+        "mtime_ns_exact": "1794705271801433537",
+        "inode": 14845412,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/input/mirrors/19-landlock_launcher.py",
+        "bytes": 7124,
+        "sha256": "8f12bc66a0318f5394193331c07bf1cdd583711c232b6f1ab180ebae549c7002",
+        "mtime_ns": 1794705271827088481,
+        "mtime_ns_exact": "1794705271827088481",
+        "inode": 14846114,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/input/mirrors/20-r0a1.244050",
+        "bytes": 187074,
+        "sha256": "b2bcd39ff8886fa65815107bd95f333abef1bcb0a1ea69bb20010abc24b2c959",
+        "mtime_ns": 1794705271878269657,
+        "mtime_ns_exact": "1794705271878269657",
+        "inode": 14845874,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/input/mirrors/21-C0014-remote-delegations--D003--results--D003_W005_PROFESSIONAL_REVIEW_C0014.md",
+        "bytes": 10726,
+        "sha256": "56880f53e871ca74a9938178dc87222eb0089e898ecea3bac68c5dbcb851bb26",
+        "mtime_ns": 1794705271929067006,
+        "mtime_ns_exact": "1794705271929067006",
+        "inode": 14844779,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/input/mirrors/22-C0014-remote-delegations--D003--results--EP_ACCEPTANCE_MATRIX_C0014.md",
+        "bytes": 4381,
+        "sha256": "f5d4475f3214f9496e44c5511167ac8c8253844ed42013ddd4cc0a5564930460",
+        "mtime_ns": 1794705271961053414,
+        "mtime_ns_exact": "1794705271961053414",
+        "inode": 14845504,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/input/mirrors/23-C0014-remote-delegations--D003--results--W006_SUCCESSOR_DECISION_C0014.md",
+        "bytes": 7358,
+        "sha256": "2ffb2e8a5fcbc3cc259291f24bb7ed4ee74670864041be8f403ccc96e042f257",
+        "mtime_ns": 1794705271987059455,
+        "mtime_ns_exact": "1794705271987059455",
+        "inode": 14845413,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/input/mirrors/24-C0006-remote-ADDITIONAL_ENGINEERING_PRECONDITION.md",
+        "bytes": 14218,
+        "sha256": "775a1941d2086dcac718f5aa1d8dcb60524bbfdc3222ea71a8a04f5112f87718",
+        "mtime_ns": 1794705272016437953,
+        "mtime_ns_exact": "1794705272016437953",
+        "inode": 14844500,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/input/mirrors/25-C0006-remote-CONTROLLED_SCENARIO_ACTION_DESIGN.md",
+        "bytes": 15106,
+        "sha256": "cd522ce16fd47888d927700119cd6bf36721414a7d2a8f302e73cec84efd9dea",
+        "mtime_ns": 1794705272044414429,
+        "mtime_ns_exact": "1794705272044414429",
+        "inode": 14845875,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/input/validate-order-W006.json",
+        "bytes": 229,
+        "sha256": "1712a521e4524023bd72b949291e1c478894088bca0c9cc1250f282fbd78ad16",
+        "mtime_ns": 1794705272418459176,
+        "mtime_ns_exact": "1794705272418459176",
+        "inode": 14846347,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/logs/COMMAND_LOG.jsonl",
+        "bytes": 2410,
+        "sha256": "0116d8522a01ed54e53472952081a8795876f23e0bf1649bb11270935e66e320",
+        "mtime_ns": 1794705700278562864,
+        "mtime_ns_exact": "1794705700278562864",
+        "inode": 14847232,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/logs/r0a1.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "mtime_ns": 1794705698926170768,
+        "mtime_ns_exact": "1794705698926170768",
+        "inode": 14846739,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/logs/r0a1.stdout",
+        "bytes": 145,
+        "sha256": "98e87481faf1628347b7b8699ab445587a5063e22d49cc2268ef9acd0a8c719a",
+        "mtime_ns": 1794705700071709443,
+        "mtime_ns_exact": "1794705700071709443",
+        "inode": 14846985,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/receipts/R0_A1_ATTEMPT.json",
+        "bytes": 4147,
+        "sha256": "2460e1950cdaf5f647de63573e8c6b5612867f700316bdda3145d059406e4f97",
+        "mtime_ns": 1794705698881422618,
+        "mtime_ns_exact": "1794705698881422618",
+        "inode": 14844647,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/receipts/probe-main.json",
+        "bytes": 1977,
+        "sha256": "826af5841ebec0d5af57191831c8a2d24d7515b3835bcd1af657ba032f1005aa",
+        "mtime_ns": 1794705700016434157,
+        "mtime_ns_exact": "1794705700016434157",
+        "inode": 14846740,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/receipts/r0a1-execution.json",
+        "bytes": 2702,
+        "sha256": "ea6127ecda527f5f5cd7bb5f42a81a370e068d1ab86fd149d022a49091563e79",
+        "mtime_ns": 1794705700370849203,
+        "mtime_ns_exact": "1794705700370849203",
+        "inode": 14845904,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/receipts/r0a1-launcher.json",
+        "bytes": 4472,
+        "sha256": "0769b01d709d4065d79bf0bb796f27f2394128b6de674ed8ef1aa8c37b8e6043",
+        "mtime_ns": 1794705699484189315,
+        "mtime_ns_exact": "1794705699484189315",
+        "inode": 14845267,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/receipts/r0a1-parent-stdin.json",
+        "bytes": 287,
+        "sha256": "8120c987d804b9c763c47e033cff8ab0e2fc1fac253c7e04cc7ecffef058f1a2",
+        "mtime_ns": 1794705698952448845,
+        "mtime_ns_exact": "1794705698952448845",
+        "inode": 14843607,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/tools/archive_result.py",
+        "bytes": 28017,
+        "sha256": "da95dc3e3ad98df0f58e09a4cbb64047cc70f81716f462b6ff4edcec1fb9184e",
+        "mtime_ns": 1794706084012004554,
+        "mtime_ns_exact": "1794706084012004554",
+        "inode": 14846653,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/tools/common.py",
+        "bytes": 2054,
+        "sha256": "0ea5af47459c569e0488bcdb86e79f29fc34d29a8aab2b62274a5c000d3cf365",
+        "mtime_ns": 1794705349534551312,
+        "mtime_ns_exact": "1794705349534551312",
+        "inode": 14843358,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/tools/confinement_probe.py",
+        "bytes": 6590,
+        "sha256": "2092921789f29e309d59f26a54ecdedfea2eed2d87db6e5e34bfd82c4899b151",
+        "mtime_ns": 1794705667083878783,
+        "mtime_ns_exact": "1794705667083878783",
+        "inode": 14846273,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/tools/landlock_launcher.py",
+        "bytes": 7271,
+        "sha256": "c23802ada35609a6f77aa67774f9845b7eb22f65aa5732f081cc9cd1173b1931",
+        "mtime_ns": 1794705524679807466,
+        "mtime_ns_exact": "1794705524679807466",
+        "inode": 14845178,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/tools/p0_history.py",
+        "bytes": 1867,
+        "sha256": "f7047ee30f31589ef7d6303d6a32bc15cf25c490fb32c111ae07fd381bc11483",
+        "mtime_ns": 1794705349565831422,
+        "mtime_ns_exact": "1794705349565831422",
+        "inode": 14845422,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/tools/p1_constants_layout.py",
+        "bytes": 2888,
+        "sha256": "2efbbbe5040d96395302821a70d9d4e7698ed83f7b80dc32e69b30b1e876ede6",
+        "mtime_ns": 1794705349587708029,
+        "mtime_ns_exact": "1794705349587708029",
+        "inode": 14845240,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/tools/p2_generate.py",
+        "bytes": 6208,
+        "sha256": "061dc0791a1ba026165334ceff66fd687b79e410fce1ffb4bee416ca34d7d187",
+        "mtime_ns": 1794705508414324792,
+        "mtime_ns_exact": "1794705508414324792",
+        "inode": 14846012,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/tools/p3_evaluate.py",
+        "bytes": 4516,
+        "sha256": "d329791409421da215aca15137f80b8713877a3a4d464d790674508530a3ba3d",
+        "mtime_ns": 1794705508436057045,
+        "mtime_ns_exact": "1794705508436057045",
+        "inode": 14845249,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/tools/p4_single_attempt.py",
+        "bytes": 3584,
+        "sha256": "f3ec17e4321c44dbd93c1e98ca8b95914aac71c193d3bab43bdd27052da8d06b",
+        "mtime_ns": 1794705667110358237,
+        "mtime_ns_exact": "1794705667110358237",
+        "inode": 14845640,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/tools/runtime.py",
+        "bytes": 2257,
+        "sha256": "6c4828a6230e354c20015299ef79dc8a82a694376f30b579a6b1b5f0f82f3488",
+        "mtime_ns": 1794705508387164992,
+        "mtime_ns_exact": "1794705508387164992",
+        "inode": 14846513,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/tools/seal_local_stage.py",
+        "bytes": 14269,
+        "sha256": "c23a3e7400e56726bae94352637b0d02919e86b224426bdbc73bb2112e8ec6d7",
+        "mtime_ns": 1794706217336583360,
+        "mtime_ns_exact": "1794706217336583360",
+        "inode": 14847139,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/trace/r0a1.248966",
+        "bytes": 283348,
+        "sha256": "f03fdd32f65a06a9973da446c20b352e955cd4c4167380c8d19953e79f84fbf8",
+        "mtime_ns": 1794705700111511961,
+        "mtime_ns_exact": "1794705700111511961",
+        "inode": 14844830,
+        "dev": 83
+      },
+      {
+        "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/artifacts/FREEZE_RECEIPT.json",
+        "bytes": 51697,
+        "sha256": "d4c9c2c805bdea9d4398a086fc993e73dc134ae6fb19ffd16ba4ab611b5379f7",
+        "mtime_ns": 1794706243785932809,
+        "mtime_ns_exact": "1794706243785932809",
+        "inode": 14846906,
+        "dev": 83
+      }
+    ]
+  },
+  "old93_before_after_identical": true,
+  "readonly_contracts": [
+    {
+      "path": "/dwdhome/fy/cgpterm/artifacts/oi-eaw-wall/OI-EAW-WALL-20261114-01/C0014-remote-work_orders--W006--ORDER.md",
+      "bytes": 19304,
+      "sha256": "49c988c5d9031229a6d4327f066055e136219f13190b8628608fbd3a5f7ce7f3",
+      "frozen_identical_input": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/input/C0014-remote-work_orders--W006--ORDER.md",
+      "published_ref": "daowei2026/observe-iterate@e9f4e0c569caa2939f3c5bfc2f882df6842f915f:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W006/input/C0014-remote-work_orders--W006--ORDER.md"
+    },
+    {
+      "path": "/dwdhome/fy/cgpterm/artifacts/oi-eaw-wall/OI-EAW-WALL-20261114-01/C0014-remote-work_orders--W006--ORDER.json",
+      "bytes": 8288,
+      "sha256": "dcf0ac22dc0289af27f5081057af576ddb84c77fcb004ec51360221442bc4822",
+      "frozen_identical_input": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/input/C0014-remote-work_orders--W006--ORDER.json",
+      "published_ref": "daowei2026/observe-iterate@e9f4e0c569caa2939f3c5bfc2f882df6842f915f:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W006/input/C0014-remote-work_orders--W006--ORDER.json"
+    },
+    {
+      "path": "/dwdhome/fy/cgpterm/artifacts/oi-eaw-wall/OI-EAW-WALL-20261114-01/C0014-remote-calls--C0014--PRO_RETURN.json",
+      "bytes": 1844,
+      "sha256": "cc8571ad0e5c0ae61da3dcfebf48fb7710ae0e8d089af6571ba57378144ab97f",
+      "frozen_identical_input": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/input/C0014-remote-calls--C0014--PRO_RETURN.json",
+      "published_ref": "daowei2026/observe-iterate@e9f4e0c569caa2939f3c5bfc2f882df6842f915f:longrun/runs/OI-EAW-WALL-20261114-01/delegations/D003/results/W006/input/C0014-remote-calls--C0014--PRO_RETURN.json"
+    },
+    {
+      "path": "/dwdhome/fy/cgpterm/artifacts/oi-eaw-wall/OI-EAW-WALL-20261114-01/observe-iterate/longrun/contracts/LONGRUN_PROTOCOL_V2.md",
+      "bytes": 12200,
+      "sha256": "86ad342ca0aef9f28449dd9ec9168bba465f60a4ef552634b553573491a38c39"
+    },
+    {
+      "path": "/dwdhome/fy/cgpterm/artifacts/oi-eaw-wall/OI-EAW-WALL-20261114-01/observe-iterate/longrun/contracts/longrun_schema_v2.json",
+      "bytes": 11508,
+      "sha256": "32c1e2409ff4936a87d688848736bb9af71fe0415d338ba66dd031e3149243d3"
+    },
+    {
+      "path": "/dwdhome/fy/cgpterm/artifacts/oi-eaw-wall/OI-EAW-WALL-20261114-01/observe-iterate/longrun/tools/longrun_gate.py",
+      "bytes": 15110,
+      "sha256": "0bb6bdceadcb52f7697b52de2b3356664a9d381570f791e62d6d2b3ae2d8d680"
+    }
+  ],
+  "command_log": {
+    "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/final-return/COMMAND_LOG.jsonl",
+    "sha256": "77e18b258e2055c3a9575e577d6b663a592d4c6a35bdc16263c439e02db4bfae",
+    "bytes": 291431,
+    "record_type": "phase_command_log_scope",
+    "at": "2026-11-15T01:51:02.317140+00:00",
+    "stage": "W006_FORMAL_RETURN_ONLY",
+    "source": "/home/dw/.codex/sessions/2026/11/14/rollout-2026-11-14T21-53-08-01a1da55-5881-7590-94a1-0661f0236977.jsonl",
+    "thread_id": "01a1da55-5881-7590-94a1-0661f0236977",
+    "turn_id": "01a1dcdb-b8ae-7980-8112-3ed42ea4aa43",
+    "native_completed_commands": 15,
+    "native_file_changes": 2,
+    "failed_formal_generator_commands_preserved": [
+      {
+        "id": "exec-87871bfe-f720-48db-b2d7-ff6531924ee9",
+        "exit_code": 1
+      }
+    ],
+    "exact_native_command_argv_outputs_exit_duration_preserved": true,
+    "reasoning_and_other_turns_exported": false,
+    "scope": "本阶段截至冻结时的全部原生命令完成事件及FileChange；当前生成器在尾项如实记运行中。"
+  },
+  "new_local_files_except_this_validation": [
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/final-return/COMMAND_LOG.jsonl",
+      "bytes": 291431,
+      "sha256": "77e18b258e2055c3a9575e577d6b663a592d4c6a35bdc16263c439e02db4bfae",
+      "mtime_ns": 1794707462353174020,
+      "mtime_ns_exact": "1794707462353174020",
+      "inode": 14849668,
+      "dev": 83
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/final-return/FINALIZE_PREFLIGHT.json",
+      "bytes": 82661,
+      "sha256": "8bb58fee4cffd07b18e78de7cf9b4cc2e06025af56260fd1d3fc24784d87f386",
+      "mtime_ns": 1794707118946678344,
+      "mtime_ns_exact": "1794707118946678344",
+      "inode": 14848480,
+      "dev": 83
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/final-return/WORKER_RETURN.json",
+      "bytes": 38928,
+      "sha256": "a168c4e3cade10303f53b0b91705b53a33729615d87125e189a454f59075f283",
+      "mtime_ns": 1794707370910409934,
+      "mtime_ns_exact": "1794707370910409934",
+      "inode": 14847482,
+      "dev": 83
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/final-return/generate_worker_return.py",
+      "bytes": 28943,
+      "sha256": "5d86f808489d79f57f3c0a5806c0853025132f28bc3df2a7a6723da7bd747739",
+      "mtime_ns": 1794707443123424670,
+      "mtime_ns_exact": "1794707443123424670",
+      "inode": 14847091,
+      "dev": 83
+    }
+  ],
+  "publication_handoff": {
+    "publisher": "主控逐字运输；Worker无GitHub写授权",
+    "targets": [
+      {
+        "local_path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/final-return/COMMAND_LOG.jsonl",
+        "publication_target": "longrun/runs/OI-EAW-WALL-20261114-01/worker_results/W006/COMMAND_LOG.jsonl",
+        "actual_ref": null
+      },
+      {
+        "local_path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/final-return/FINALIZE_PREFLIGHT.json",
+        "publication_target": "longrun/runs/OI-EAW-WALL-20261114-01/worker_results/W006/FINALIZE_PREFLIGHT.json",
+        "actual_ref": null
+      },
+      {
+        "local_path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/final-return/WORKER_RETURN.json",
+        "publication_target": "longrun/runs/OI-EAW-WALL-20261114-01/worker_results/W006/WORKER_RETURN.json",
+        "actual_ref": null
+      },
+      {
+        "local_path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/final-return/WORKER_RETURN_VALIDATION.json",
+        "publication_target": "longrun/runs/OI-EAW-WALL-20261114-01/worker_results/W006/WORKER_RETURN_VALIDATION.json",
+        "actual_ref": null
+      },
+      {
+        "local_path": "/dwdhome/fy/BASE_E6_2/.oi-runs/OI-EAW-WALL-20261114-01/D003/W006/final-return/generate_worker_return.py",
+        "publication_target": "longrun/runs/OI-EAW-WALL-20261114-01/worker_results/W006/generate_worker_return.py",
+        "actual_ref": null
+      }
+    ],
+    "self_hash_note": "本validation自身hash只在真实执行器末尾交付，不嵌自hash；新正式Return及其他新增文件无未来ref。"
+  },
+  "full_gate": {
+    "status": "PENDING_ACTUAL_RETURN_PUBLICATION_AND_INDEPENDENT_RECEIPT",
+    "executed_here": false,
+    "pass_claimed": false,
+    "reason": "完整Gate须主控提供真实新worker_return_ref、独立receipt及账本；本阶段仅schema/身份/运输事实验证，不伪造Gate输入。"
+  },
+  "professional_acceptance_action_eligibility_G_RUN_H3_parent_Q_or_parent_completion_decided": false,
+  "engineering_P0_P4_revisions_retries_build_tests_runs_performed_this_stage": 0,
+  "network_GitHub_or_other_chat_writes_performed": 0,
+  "local_goal_completion_scope": "仅本地正式Return与验证交付结束；不代表W006、专业接受或父任务完成。"
+}
