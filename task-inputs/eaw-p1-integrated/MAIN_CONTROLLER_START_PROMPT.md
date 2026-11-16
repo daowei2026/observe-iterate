@@ -14,20 +14,20 @@
 - 业务目标：EAW P1 相互关联的特征**作为一个整体**开展真实观察材料准备及业务合理性分析；不是仅针对 `EawP1WallLifecycleFrp`。正式纳入的 Feature/实际场景和能回答的问题，由专业 Pro 根据本 Run 的原始需求/设计与脚本真实数据定向核定，不强行把没有证据的产品归入本轮。
 - 设计预期：**直接阅读** [《01.04.01 EAW叙事一个小范围完整的部分-preL0细节》§1.1.2「墙的基本思想」](https://github.com/daowei2026/feature-refinement-implementation-agent-evolution/blob/8d58ddd3392a3e67ef5ba44adf2c4cd0c9077f9f/candidate_gold_cases/eaw/preL0_source_materials_20261102/%E5%8E%9F%E6%96%87%E5%BF%AB%E7%85%A7/mquant/ssot/eaw/01.04.01%20EAW%E5%8F%99%E4%BA%8B%E4%B8%80%E4%B8%AA%E5%B0%8F%E8%8C%83%E5%9B%B4%E5%AE%8C%E6%95%B4%E7%9A%84%E9%83%A8%E5%88%86-preL0%E7%BB%86%E8%8A%82.md#112-%E5%A2%99%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3)，并按专业 Skill 查其适用与 P1 其它产品的原设计来源。**不要让 AI 重写一段并冒充 Owner 正式设计预期**。
 - 需求/工程：`daowei2026/feature-refinement-implementation-agent-evolution@8d58ddd3392a3e67ef5ba44adf2c4cd0c9077f9f:candidate_gold_cases/eaw/taskpacks_and_checkpoints/`；原业务资料同仓 `candidate_gold_cases/eaw/preL0_source_materials_20261102/`。
-- 本次业务输入：`daowei2026/observe-iterate@f48beffe5057ac77154c636d04674a81cbd33aad:task-inputs/eaw-p1-integrated/README.md`；脚本、数据文件及共享路径清单：`daowei2026/observe-iterate@a360361011ece1bdfd253878a31e6a779cf98e8f:task-inputs/eaw-p1-integrated/CAEGRAPH_INPUT_MANIFEST.md`。脚本 ZIP 原件：`daowei2026/observe-iterate@e4909b2e57d6e6122979ae0c4e57fb946b18e2d3:task-inputs/eaw-p1-integrated/caegraph-scripts.zip`；Git blob=`43d4ab1b370a3803fbd159b5e11e8dd64a6b7ee4`；SHA-256=`5eaf500616316ef7764cd30eb7467f2db3a6c85e45aa3b4f958becbc7818e8eb`。**直接使用完整原始 ZIP 解压**；仓库中同级展开的 `caegraph-review/` 目录暂缺 `caegraph_definitions.py`，不能作为完整可运行副本。首次在 Worker 运行现场下载/暂存仍须核 ZIP 哈希。
+- 本次业务输入：`daowei2026/observe-iterate@3e3b258c2aac6b4f949dffce69886ef23180ff3f:task-inputs/eaw-p1-integrated/README.md`；源码/数据文件及共享路径清单：`daowei2026/observe-iterate@3e3b258c2aac6b4f949dffce69886ef23180ff3f:task-inputs/eaw-p1-integrated/CAEGRAPH_INPUT_MANIFEST.md`。**CAEGraph 原始脚本已直接入库，禁止再用脚本 ZIP 作为交付入口**：`daowei2026/observe-iterate@0082ae1e79aaa7ca0a15cadf2a89d799aa6c7fa6:task-inputs/eaw-p1-integrated/caegraph-review/` 下的 `caegraph_definitions.py`、`snapshot_data.py`、`run.py`、`README.md` 四个普通文件；已按原上传文件逐一核对字节数及来源哈希。主控/Worker 应直接读取这些仓库源码文件，并在 Worker 实际运行环境检查依赖。
 - Owner 的现成真实数据文件名：**`caegraph-data-30tick.zip`**（在 Owner 所说的 Sources 中）。本任务会话已经取得原始附件并核对 16,654,307 字节、SHA-256=`73e7c5f289d7b25f08f11cffda7315ad2dad3f8c323715425afdd485e15c4233`、ZIP CRC、`data/manifest.json`（12 条 evidence_features、442 项资产，涉及 Wall/Build/Attack/Absorb/方向大成交等图证据）。**这些不是 cgpterm 或 Linux Worker 已经收到该文件的证明**；主控仍须核真实 Project/Sources 文件访问、转存及 Worker 实际取得的哈希和业务用途。
 
 ## 2. 本 Run 的现成图和数据特例
 
 - 本轮**不重新研究 CAEGraph 绘图设计、图层组织或开发另一套画图方法**。优先用 Owner 提供的现成脚本及已生成的真实数据，核验质量、身份、处理阶段后，**按已有 M/R 控制面尽快交给合理性分析**。
-- `caegraph-scripts.zip` 包内是 `caegraph-review/caegraph_definitions.py`、`snapshot_data.py`、`run.py`、`README.md`；数据 `caegraph-data-30tick.zip` 应解压出并列 `caegraph-review/data/`。优先不重算上游；运行入口及依赖按脚本 README。
+- **脚本在 GitHub 中直接是四个原始文件**：`task-inputs/eaw-p1-integrated/caegraph-review/`。另行从 Owner Sources 实际取得 **`caegraph-data-30tick.zip` 数据包**，将其中 `data/` 放在运行目录 `caegraph-review/data/`，或使用 `--data-dir` 指向正确数据目录。优先不重算上游；执行入口、运行环境及依赖按已入库原始 `README.md` 核实（其中提及的原始脚本 ZIP 只属于上传来源说明，本 Run 交付无需它）。
 - 该脚本和实际数据包的元信息覆盖钢铁板块 `rb/hc/i` 的长期、30min/1min/5s 和 30 个 Tick 图，现有 `manifest.json` 具名 Wall/Build/Attack/Absorb/方向大成交的绘图证据；**仍不能仅凭图证据推出已覆盖 EAW P1 全部正式输出、完整处理链或业务预期适用性**。由专业 Pro 核数据字段/时间/输出阶段是否满足本轮设计预期；如有缺口，只具名登记并执行合法的最小补证。**不得未经 Owner 允许改变 EAW P1 业务目标**。
 - 本轮可跳过完整入口/已有图资产重新盘点；对已提供脚本和数据形成的合格成果无需机械重做设计工作。仍须由有权专业 Pro 对影响后继的取舍、材料实际质量、预期冻结和正式证据对照按既有 Skill/Control 接受，不把略过记作专业步骤已完成，也不把人工构造输入当成正式真实市场证据。
 
 ## 3. 采用来源和角色
 
 - 主控 Skill：`daowei2026/cgpterm@034da33b774d7e3db50fcdda219a64d4ed0281be:.agents/skills/observe-iterate-longrun-v2-controller/SKILL.md`。本 Run 按该提交的多 Run 主控接线使用。
-- 业务 Control、长程 V2 协议、观察材料准备与合理性分析 Skills：`daowei2026/observe-iterate@7e240b650b6ba6274b0263e34f5b0616a9a8ff1c` 中 `control/01～06`、`longrun/contracts/LONGRUN_PROTOCOL_V2.md`、`longrun/contracts/MULTI_RUN_CONTROLLER.md`、`skills/` 及 `longrun/professional/`。所有 D/W 使用该 Run 正式 GO 采用的精确版本，不因其他 Run 后续更新自动变化。
+- 业务 Control、长程 V2 协议、观察材料准备与合理性分析 Skills：`daowei2026/observe-iterate@3e3b258c2aac6b4f949dffce69886ef23180ff3f` 中 `control/01～06`、`longrun/contracts/LONGRUN_PROTOCOL_V2.md`、`longrun/contracts/MULTI_RUN_CONTROLLER.md`、`skills/` 及 `longrun/professional/`。所有 D/W 使用该 Run 正式 GO 采用的精确版本，不因其他 Run 后续更新自动变化。
 - 管理 Pro 与执行 Pro：ChatGPT Project **`细节叙事生成_金标`**，相互独立的角色聊天，推理档位 **`Pro`**；不提前探测或擅改模型名称。
 - Owner 授权主控为**本新 Run**在该 Project 中合法新建/绑定各角色的独立 manager/executor ChatGPT 聊天，并为本 Run 在指定 Linux 工作区新建/绑定专用 Worker 线程；须按现有物理聊天/线程 Skill 实际检查和回执，不复制旧 Run 的会话身份，也不以逻辑角色字符串代替实际绑定。
 - Worker：本 Run 专用 Linux Worker，目标配置 **`GPT-6.1 Sol Max`**，实际物理 thread 与授权在首次使用时核实。
@@ -56,6 +56,6 @@ operation=run-record-publish execution_context=github:daowei2026/observe-iterate
 
 本次是**新的 Run GO**，不是恢复 `OI-EAW-WALL-20261116-01`。主控先核全局 Registry 和旧 Run 的 BASE 占用、真实身份未重复、上述采用来源与写权限、两端共享目录/数据通道实际能力；依采用 V2 协议创建该 Run 独立 `OWNER_START.md`、`RUN_BINDING.json`、`RUN_RESOURCE_BINDING.json` 和 Registry，然后派本 Run manager Pro，后续按原控制面专业推进，不要求另跑测试 Run。
 
-如 GitHub 脚本 ZIP 在当前实际通道或 Sources 数据 ZIP 暂不能取得，不假报已取得；可继续合法的独立文档级工作，把具体缺项、受影响工作和最小恢复条件记录到本 Run，而不是伪造 `DATA_READY`。本 Run 普通专业步骤、Gate 和补证不逐项向 Owner 求批准。
+如 GitHub 中某份原始脚本文件在当前实际通道不可读取，或 Sources 数据 ZIP 暂不能取得，不假报已取得；可继续合法的独立文档级工作，把具体缺项、受影响工作和最小恢复条件记录到本 Run，而不是伪造 `DATA_READY`。本 Run 普通专业步骤、Gate 和补证不逐项向 Owner 求批准。
 
-首次回报只需说明：新 Run 是否已实际注册与派发、准确 commit/路径、Windows↔Linux 共享验证结果、CAEGraph 脚本和数据 ZIP 是否可实际读取、当前受阻项及准确下一合法动作。不要把 GO 发布、手机消息送达、Worker 真运行和专业验收混成一项完成事实。
+首次回报只需说明：新 Run 是否已实际注册与派发、准确 commit/路径、Windows↔Linux 共享验证结果、**GitHub 四份原始 CAEGraph 脚本文件**和 **Sources 的数据 ZIP** 是否可在执行现场读取、当前受阻项及准确下一合法动作。不要把 GO 发布、手机消息送达、Worker 真运行和专业验收混成一项完成事实。
