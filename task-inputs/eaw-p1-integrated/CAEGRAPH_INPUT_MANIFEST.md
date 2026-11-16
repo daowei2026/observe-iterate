@@ -1,17 +1,17 @@
-# CAEGraph 脚本包 / 数据包输入清单（2026-11-16）
+# CAEGraph 原始脚本 / 数据包输入清单（2026-11-16）
 
-> 状态：Owner 已向当前任务上传 `caegraph-scripts.zip`；本清单经逐项打开 ZIP 与 Python AST 检查形成。**脚本 ZIP 原件现已准确提交到 GitHub**，路径为 `daowei2026/observe-iterate@e4909b2e57d6e6122979ae0c4e57fb946b18e2d3:task-inputs/eaw-p1-integrated/caegraph-scripts.zip`，Git blob 为 `43d4ab1b370a3803fbd159b5e11e8dd64a6b7ee4`（31,319 字节）。已回读仓库树确认文件与 blob SHA。**不等于数据包已实际可读、脚本已经在 Linux 执行、或专业节点已完成**。
+> 状态：Owner 通过 `caegraph-scripts.zip` 提供源文件；**已将其解压为 4 个原始源文件逐一提交到 GitHub**：`daowei2026/observe-iterate@0082ae1e79aaa7ca0a15cadf2a89d799aa6c7fa6:task-inputs/eaw-p1-integrated/caegraph-review/`。**当前分支不保留该脚本 ZIP**。已回读核对四文件原始字节大小。真实数据 ZIP 没有并入本目录，也不代表脚本在 Linux 执行成功或专业节点完成。
 
 ## Owner 给定来源
 
-- 脚本附件原文件名：`caegraph-scripts.zip`。
+- Owner 原始上传附件名：`caegraph-scripts.zip`（仅用于来源追溯，**实际交付为解压后的 4 个普通文件，不提交脚本压缩包**）。
 - 脚本附件 SHA-256：`5eaf500616316ef7764cd30eb7467f2db3a6c85e45aa3b4f958becbc7818e8eb`（31,319 字节）。
 - 已有数据：Owner 指定在 Sources 中的 `caegraph-data-30tick.zip`。**已在本次 ChatGPT 任务附件中取得并逐项检查原件**：16,654,307 字节；SHA-256=`73e7c5f289d7b25f08f11cffda7315ad2dad3f8c323715425afdd485e15c4233`；ZIP CRC 全项通过；共 446 个成员，其中 442 个 `*.csv.gz`、`data/manifest.json`、`timespans.csv`、`included_tick_nodes.csv`、`calendar.npz`。`data/manifest.json` 有 442 项 assets、12 条 `evidence_features`，`data_scope` 为 overview=1、big_30m=6、mid_1m=18、small_5s=54、tick=30，涉及 `rb/hc/i` 以及 `wall_events/wall_segments`、`build_events`、`attack_segments`、`absorb_events`、`f4_tactical/f4_structural` 等图证据字段。**这只证明本任务附件确实存在、归档完整且结构内容可读取，不证明 cgpterm 主控/原执行 Pro/指定 Linux Worker 已经获得物理文件，也不证明数据实例已经通过专业验证。** 正式派发时仍由主控核准确 Project Sources 访问/附件转存和共享写面，Worker 对其实际取得的文件重复核哈希、确认源及用途。
 - 图/数据输入包内自述源：附件里的 `caegraph-review/README.md`；完整源文件应该保留为实际可读取的代码，而非从本说明重写。
 
-## 脚本目录（已从 ZIP 核实）
+## GitHub 原始脚本目录（由上传 ZIP 逐项核验）
 
-| 路径（解压后） | 字节数 | SHA-256 |
+| GitHub 文件位置（`task-inputs/eaw-p1-integrated/` 下） | 字节数 | SHA-256 |
 | --- | ---: | --- |
 | `caegraph-review/caegraph_definitions.py` | 91955 | `acd395a48ea27de380233b78188f8bb9e0f69f83492fe2a7f8cc4e3acb0f6e39` |
 | `caegraph-review/snapshot_data.py` | 5361 | `edbe17b148927c702a97e0af8dea9e0a272dfffe28486413c55e3489074da6e0` |
@@ -20,9 +20,9 @@
 
 三个 Python 文件的语法树解析通过，**没有在真实 mquant 或市场数据环境执行**。
 
-**独立展开目录现状**：GitHub 同级的 `caegraph-review/` 已有 `README.md`、`run.py`、`snapshot_data.py`，但缺少 `caegraph_definitions.py`。这不影响原始 ZIP 内四文件齐全；**应将 ZIP 原件作为可运行脚本的完整交付**，不能直接把该不完整的仓库目录当作已可执行副本。
+**独立原始文件提交现状：**`caegraph-review/` 的 `caegraph_definitions.py`、`snapshot_data.py`、`run.py`、`README.md` 均已提交并回读；**应直接以这些已入库源码为脚本入口**，不再获取脚本 ZIP 解压。附带的独立数据文件仍须从 Owner 的 Sources 实际取得并放到 `data/` 或用 `--data-dir` 指向它。
 
-脚本/数据两个 ZIP 的预期合并目录：
+原始脚本和单独数据 ZIP 解压后形成的预期运行目录：
 ```text
 caegraph-review/
   caegraph_definitions.py
@@ -63,4 +63,4 @@ Owner 指定的共享根：
 
 ## 继续条件
 
-本文件记录了已入库脚本 ZIP 的**精确 Git 内容**、Owner 的数据文件名和建议路径。新 Run 正式 GO 已可引用该脚本原件及本次附件已核的真实数据文件身份；仍须核实 cgpterm / Pro / Worker 对数据 ZIP 的真实读取能力、工作区/跨端共享与授权，并登记独立 run_id/精确采用版本。**不以尚未实际读取数据 ZIP 的状态冒充 DATA_READY**。
+本文件记录了已入库的 4 个 **原始脚本/说明文件**、Owner 数据 ZIP 的已核文件身份与推荐的跨端路径。新 Run GO 可引用 `daowei2026/observe-iterate@0082ae1e79aaa7ca0a15cadf2a89d799aa6c7fa6:task-inputs/eaw-p1-integrated/caegraph-review/`，无需脚本 ZIP；仍须核实 cgpterm / Pro / Worker 对数据 ZIP 的真实读取能力、工作区/跨端共享与授权，并登记独立 run_id/精确采用版本。**不以尚未在 Worker 现场读取并被专业接收的数据冒充 DATA_READY**。
