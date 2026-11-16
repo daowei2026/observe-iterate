@@ -1,6 +1,6 @@
 # EAW P1 整体观察与合理性分析｜全新 Run 业务输入准备
 
-> 状态：**待补 CAEGraph 脚本/真实数据引用；尚非 OWNER GO，也未启动或注册新 Run**。整理日期：2026-11-16。本文件只整理本次 Owner 已明确的**任务输入及例外**，不改写 L0/L1/L2、原专业 Skill、V2 长程运行协议或其他 Run 的业务进度。正式启动时须以实际 Git commit 锁定本文件及采用的各项来源。
+> 状态：**4 份 CAEGraph 原始脚本/说明已提交，数据已知但跨端实际取得与业务验收待核；尚非 OWNER GO，也未启动或注册新 Run**。整理日期：2026-11-16。本文件只整理本次 Owner 已明确的**任务输入及例外**，不改写 L0/L1/L2、原专业 Skill、V2 长程运行协议或其他 Run 的业务进度。正式启动时须以实际 Git commit 锁定本文件及采用的各项来源。
 
 ## 一、本次业务目标与范围
 
@@ -28,10 +28,10 @@
 
 ## 四、此次特殊输入及直接后继
 
-**Owner 已提供并完成提交的 CAEGraph 脚本**：[`caegraph-scripts.zip`](https://github.com/daowei2026/observe-iterate/blob/e4909b2e57d6e6122979ae0c4e57fb946b18e2d3/task-inputs/eaw-p1-integrated/caegraph-scripts.zip)，原始 ZIP SHA-256=`5eaf500616316ef7764cd30eb7467f2db3a6c85e45aa3b4f958becbc7818e8eb`。其 4 个代码/说明文件、脚本入口和原样 hash 见同目录 [`CAEGRAPH_INPUT_MANIFEST.md`](CAEGRAPH_INPUT_MANIFEST.md)。Owner 已给出**数据文件名** `caegraph-data-30tick.zip`（据称位于 Sources）；本次任务附件中已读取并验证原 ZIP（16,654,307 字节，SHA-256=`73e7c5f289d7b25f08f11cffda7315ad2dad3f8c323715425afdd485e15c4233`，成员 CRC 通过），具体结构及 P1 关联图证据见 [`CAEGRAPH_INPUT_MANIFEST.md`](CAEGRAPH_INPUT_MANIFEST.md)。但 **cgpterm、Pro 和 Linux Worker 的真实文件取得、业务实例绑定和专业验收仍未完成**，不得假报已在运行现场可用或已取得 `DATA_READY`。
+**Owner 已提供并完成提交的 CAEGraph 原始脚本（直接源文件，不使用 ZIP 交付）**：`daowei2026/observe-iterate@0082ae1e79aaa7ca0a15cadf2a89d799aa6c7fa6:task-inputs/eaw-p1-integrated/caegraph-review/`，包含 `caegraph_definitions.py`、`snapshot_data.py`、`run.py`、`README.md`，各文件 SHA-256 与入口见 [`CAEGRAPH_INPUT_MANIFEST.md`](CAEGRAPH_INPUT_MANIFEST.md)。源脚本已入库且通过静态语法核验，不代表 Worker 现场运行成功。Owner 已给出**数据文件名** `caegraph-data-30tick.zip`（据称位于 Sources）；本次任务附件中已读取并验证原 ZIP（16,654,307 字节，SHA-256=`73e7c5f289d7b25f08f11cffda7315ad2dad3f8c323715425afdd485e15c4233`，成员 CRC 通过），具体结构及 P1 关联图证据见 [`CAEGRAPH_INPUT_MANIFEST.md`](CAEGRAPH_INPUT_MANIFEST.md)。但 **cgpterm、Pro 和 Linux Worker 的真实文件取得、业务实例绑定和专业验收仍未完成**，不得假报已在运行现场可用或已取得 `DATA_READY`。
 
 - 本 Run **不重新设计 CAEGraph 画图方案**，不将完成图形布局、显示方式、浏览器交互或建立新的绘图 Skill 作为取数与合理性分析的前置。
-- 脚本提供后，以 **Owner 指定的现成 CAEGraph 脚本**作为取数入口：如配套真实数据已经足以满足相应专业消费者的要求，直接消费和核验；缺必需数据时，按已授权入口运行现成脚本或作最小定向补取。不能因为原通用步骤表存在就机械重做已经由现成脚本/数据提供的画图方案设计。
+- 以**已入库的 Owner 原始 CAEGraph 脚本**作为取数入口：如配套真实数据已经足以满足相应专业消费者的要求，直接消费和核验；缺必需数据时，按已授权入口运行现成脚本或作最小定向补取。不能因为原通用步骤表存在就机械重做已经由现成脚本/数据提供的画图方案设计。
 - 专业人员仍须确认所拿到的确为实际市场数据及适用版本、对象、参数、日历、时间和数据阶段。源业务结果、CAEGraph 构图结果、窗口显示结果不能不加区分；**不以人工构造的受控输入替代本次正式市场观察证据**。
 - 入口和已有图的**完整重复盘点**不作为本次启动前置，缺必要事实时定向核查。原 M→R 的真实材料质量/使用资格和正式预期冻结条件仍有效；若输入已经具备，应按既有控制面和 Skill **直接安排具备输入资格的后继**。
 - 原合理性分析范围不因本例外而被更改；必须由专业 Pro 依现有 Reasonableness Analysis Skill 作业务对照、诊断及必要时标定，不由 CAEGraph 或主控机械判断业务合理性。
@@ -48,7 +48,7 @@
 
 | 输入 | 当前状态 |
 | --- | --- |
-| CAEGraph 脚本原件（仓库、commit、路径、执行入口） | **已提交** `observe-iterate@e4909b2e57d6e6122979ae0c4e57fb946b18e2d3:task-inputs/eaw-p1-integrated/caegraph-scripts.zip`；静态核检通过，现役运行未验证 |
+| CAEGraph 脚本原件（仓库、commit、路径、执行入口） | **已提交四份原始文件**：`observe-iterate@0082ae1e79aaa7ca0a15cadf2a89d799aa6c7fa6:task-inputs/eaw-p1-integrated/caegraph-review/`，未提交脚本 ZIP；静态核验通过，现役运行未验证 |
 | 已有数据原件（真实产物路径、对象、时间/日历、参数和数据阶段） | 本任务附件已实际验证 `caegraph-data-30tick.zip` 的字节、SHA 和 `manifest.json`；**主控/Pro/Worker 现场取得、同实例绑定和专业用途验收待实际接线** |
 | 脚本实际覆盖的 P1 Feature/产品与本轮观察范围 | 已验证 `manifest.json` 包含 Wall、Build、Attack、Absorb、方向大成交的图证据，`rb/hc/i`、30 Tick；**不等于完整 P1 六产品及业务期望已被专业验收** |
 | 新 Run 正式身份、GO、采用来源锁、权限、实际写面 | 尚未 GO，不预填为已授权 |
