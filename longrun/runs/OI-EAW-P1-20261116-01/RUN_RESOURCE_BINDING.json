@@ -1,0 +1,27 @@
+{
+  "schema": "observe-iterate-run-resource/v1",
+  "template_only": false,
+  "run_id": "OI-EAW-P1-20261116-01",
+  "owner_go_ref": "daowei2026/observe-iterate@6a2d0abd34d44fd20fe7119035a8227e6b019625:longrun/runs/OI-EAW-P1-20261116-01/OWNER_START.md",
+  "owner_declared_linux_workspace": "/dwdhome/fy/BASE_E6_2",
+  "worker_host": "linux",
+  "verified_realpath": "/dwdhome/fy/BASE_E6_2",
+  "verified_on_worker_host": true,
+  "verification_evidence_ref": "daowei2026/observe-iterate@930af5649eee428a2d9630de6d420c216055780d:longrun/runs/OI-EAW-P1-20261116-01/controller/LINUX_RESOURCE_VERIFICATION.md",
+  "actual_worker_thread_binding_ref": null,
+  "adopted_source_refs": [
+    "daowei2026/observe-iterate@7e240b650b6ba6274b0263e34f5b0616a9a8ff1c:longrun/contracts/LONGRUN_PROTOCOL_V2.md",
+    "daowei2026/observe-iterate@7e240b650b6ba6274b0263e34f5b0616a9a8ff1c:longrun/contracts/MULTI_RUN_CONTROLLER.md",
+    "daowei2026/observe-iterate@7e240b650b6ba6274b0263e34f5b0616a9a8ff1c:longrun/professional/PRO_MANAGER_GUIDE.md",
+    "daowei2026/observe-iterate@7e240b650b6ba6274b0263e34f5b0616a9a8ff1c:longrun/professional/PRO_EXECUTOR_GUIDE.md",
+    "daowei2026/cgpterm@034da33b774d7e3db50fcdda219a64d4ed0281be:.agents/skills/observe-iterate-longrun-v2-controller/SKILL.md",
+    "daowei2026/observe-iterate@f48beffe5057ac77154c636d04674a81cbd33aad:task-inputs/eaw-p1-integrated/README.md",
+    "daowei2026/observe-iterate@a360361011ece1bdfd253878a31e6a779cf98e8f:task-inputs/eaw-p1-integrated/CAEGRAPH_INPUT_MANIFEST.md"
+  ],
+  "external_write_targets": [
+    "github:daowei2026/observe-iterate:runs/OI-EAW-P1-20261116-01:longrun/runs/OI-EAW-P1-20261116-01",
+    "github:daowei2026/observe-iterate:runs/OI-EAW-P1-20261116-01:longrun/controller/RUN_REGISTRY.json",
+    "windows:H:\\fy\\BASE_E6_2\\.runtime\\observe-iterate\\OI-EAW-P1-20261116-01\\handoff\\"
+  ],
+  "notes": "Owner明确允许新Run接管BASE、旧两个Run保持暂停。准确原文见 daowei2026/observe-iterate@930af5649eee428a2d9630de6d420c216055780d:longrun/runs/OI-EAW-P1-20261116-01/controller/OWNER_WORKSPACE_TAKEOVER.md。Windows↔Linux同一相对路径75字节probe双向读取与SHA通过；见本提交controller/SHARED_PATH_VERIFICATION.md。Worker物理线程首W前绑定；当前无Pro实际调用。数据ZIP仅Sources可见，尚未取得Linux原件，不记DATA_READY。"
+}
