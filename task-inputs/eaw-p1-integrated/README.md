@@ -28,7 +28,7 @@
 
 ## 四、此次特殊输入及直接后继
 
-**Owner 已提供并完成提交的 CAEGraph 脚本**：[`caegraph-scripts.zip`](https://github.com/daowei2026/observe-iterate/blob/e4909b2e57d6e6122979ae0c4e57fb946b18e2d3/task-inputs/eaw-p1-integrated/caegraph-scripts.zip)，原始 ZIP SHA-256=`5eaf500616316ef7764cd30eb7467f2db3a6c85e45aa3b4f958becbc7818e8eb`。其 4 个代码/说明文件、脚本入口和原样 hash 见同目录 [`CAEGRAPH_INPUT_MANIFEST.md`](CAEGRAPH_INPUT_MANIFEST.md)。Owner 已给出**数据文件名** `caegraph-data-30tick.zip`（据称位于 Sources），但其精确来源位置、字节和业务实例绑定尚未实际取得；不得假称已经下载或验收。
+**Owner 已提供并完成提交的 CAEGraph 脚本**：[`caegraph-scripts.zip`](https://github.com/daowei2026/observe-iterate/blob/e4909b2e57d6e6122979ae0c4e57fb946b18e2d3/task-inputs/eaw-p1-integrated/caegraph-scripts.zip)，原始 ZIP SHA-256=`5eaf500616316ef7764cd30eb7467f2db3a6c85e45aa3b4f958becbc7818e8eb`。其 4 个代码/说明文件、脚本入口和原样 hash 见同目录 [`CAEGRAPH_INPUT_MANIFEST.md`](CAEGRAPH_INPUT_MANIFEST.md)。Owner 已给出**数据文件名** `caegraph-data-30tick.zip`（据称位于 Sources）；本次任务附件中已读取并验证原 ZIP（16,654,307 字节，SHA-256=`73e7c5f289d7b25f08f11cffda7315ad2dad3f8c323715425afdd485e15c4233`，成员 CRC 通过），具体结构及 P1 关联图证据见 [`CAEGRAPH_INPUT_MANIFEST.md`](CAEGRAPH_INPUT_MANIFEST.md)。但 **cgpterm、Pro 和 Linux Worker 的真实文件取得、业务实例绑定和专业验收仍未完成**，不得假报已在运行现场可用或已取得 `DATA_READY`。
 
 - 本 Run **不重新设计 CAEGraph 画图方案**，不将完成图形布局、显示方式、浏览器交互或建立新的绘图 Skill 作为取数与合理性分析的前置。
 - 脚本提供后，以 **Owner 指定的现成 CAEGraph 脚本**作为取数入口：如配套真实数据已经足以满足相应专业消费者的要求，直接消费和核验；缺必需数据时，按已授权入口运行现成脚本或作最小定向补取。不能因为原通用步骤表存在就机械重做已经由现成脚本/数据提供的画图方案设计。
@@ -49,8 +49,8 @@
 | 输入 | 当前状态 |
 | --- | --- |
 | CAEGraph 脚本原件（仓库、commit、路径、执行入口） | **已提交** `observe-iterate@e4909b2e57d6e6122979ae0c4e57fb946b18e2d3:task-inputs/eaw-p1-integrated/caegraph-scripts.zip`；静态核检通过，现役运行未验证 |
-| 已有数据原件（真实产物路径、对象、时间/日历、参数和数据阶段） | 文件名已知：`caegraph-data-30tick.zip`（Sources）；真实文件取得/manifest/数据实例验证待实际接线 |
-| 脚本实际覆盖的 P1 Feature/产品与本轮观察范围 | 待脚本核实 |
+| 已有数据原件（真实产物路径、对象、时间/日历、参数和数据阶段） | 本任务附件已实际验证 `caegraph-data-30tick.zip` 的字节、SHA 和 `manifest.json`；**主控/Pro/Worker 现场取得、同实例绑定和专业用途验收待实际接线** |
+| 脚本实际覆盖的 P1 Feature/产品与本轮观察范围 | 已验证 `manifest.json` 包含 Wall、Build、Attack、Absorb、方向大成交的图证据，`rb/hc/i`、30 Tick；**不等于完整 P1 六产品及业务期望已被专业验收** |
 | 新 Run 正式身份、GO、采用来源锁、权限、实际写面 | 尚未 GO，不预填为已授权 |
 
 ## 五、多 Run 资源及运行环境输入
