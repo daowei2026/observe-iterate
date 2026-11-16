@@ -15,11 +15,11 @@
 输入：真实 GO 原文及其精确来源、business_case_id/work_id/run_id、采用源版本、Owner Linux 绝对工作区和已授权操作范围。
 
 动作：
-1. 检查真实 GO，不拿模板或旧聊天补权限；检查 run_id 与可信 Run 索引/原件不存在冲突，同一业务 case 可有多个不同 run_id。
-2. 将 owner_workspace_path 加入候选注册表，运行 validate-registry；路径相同、父子嵌套或错误 exact ref 立即阻断。
-3. 在实际 Linux Worker 主机运行 check-workspaces --on-worker-host，核目录存在、realpath 重叠、基础访问权限；再通过现有 Worker 设施核实际 thread cwd、仓库分支、写面和 Owner grants。此检查不能替代 Worker 身份或权限。
-4. 写入 RUN_BINDING.json 和 RUN_RESOURCE_BINDING.json 并回读准确 commit；更新真实受控 Registry 指向这些来源。条件更新失败就重新读取事实并对账，禁止盲目覆盖索引。
-5. 注册已验证后，才按原 V2 的 validate-binding/validate-invocation 准备该 Run 的 manager C0001；实际发送仍走现有手机/ChatGPT 发送设施。
+1. 检查真实 GO，不拿模板或旧聊天补权限；检查 run_id 与可信 Run 索引、历史原件是否冲突。同一业务 case 可有多个不同 run_id。
+2. **先核路径、后引用新原件**：把拟用 Owner 路径与当前已登记未结束 Run 的工作区做路径及父子包含比较；在实际 Linux Worker 主机核 proposed path 和现存工作区的目录、realpath、基础权限。不能先要求校验一条尚不存在的 Git exact ref。
+3. 核准后发布本 Run 的 RUN_BINDING.json、RUN_RESOURCE_BINDING.json；资源绑定必须记录 Owner 实际给的路径与 Linux 核验凭据。回读 GitHub 准确 commit、路径与真实 grants；尚未发任何 C 时也不得伪称消息已送达。
+4. 用这些**已经存在的精确提交引用**构造候选 Registry；运行 validate-registry；在实际 Linux 主机上用同一候选 Registry 运行 check-workspaces --on-worker-host，确保不同 Run 不同工作区且不通过符号链接重合。再次核 Worker 实际 cwd、仓库/分支、共享远端写面与授权。
+5. 采用受保护/条件 Git 更新发布 Registry 并回读；若发生并发更新，重新读取已核实 facts 再对账重试，不能盲目覆盖。完成注册后才进入待派状态，并按原 V2 的 validate-binding/validate-invocation 准备 manager C0001，实际发送仍走现有运输设施。
 
 输出：已核实 Run 索引及资源绑定；如未满足，输出待核实项，绝不伪造已绑定聊天或已完成发送。
 

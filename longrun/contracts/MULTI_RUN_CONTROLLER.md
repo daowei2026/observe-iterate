@@ -36,7 +36,7 @@
 ## 4. 文件边界和唯一可信事实
 
 - 单 Run 正式原件继续在 longrun/runs/<run_id>/ 内，结构不变；增加每 Run 的 RUN_RESOURCE_BINDING.json（操作现场与来源记录）。
-- 全局 RUN_REGISTRY.json 只记录 Run→真实 Binding、资源、采用协议及 Owner 工作区路径的索引，提供寻址/交叉检查；不得在其中复制专业 Gate/TaskProgress 当作新权威。
+- 全局 RUN_REGISTRY.json 只记录 Run→真实 Binding、资源、采用协议及 Owner 工作区路径的索引，提供寻址/交叉检查；不得在其中复制专业 Gate/TaskProgress 当作新权威。每个 runs[run_id] 条目固定包含 run_id、work_id、business_case_id、binding_ref、resource_binding_ref、owner_workspace_path、adopted_protocol_ref；其中三个 ref 均为实际存在的精确 Git 引用，路径分别指向所属 Run 的 RUN_BINDING.json、RUN_RESOURCE_BINDING.json 和所采用 LONGRUN_PROTOCOL_V2.md。该 Registry 是可重建的索引，不自动保存全部原始回执。
 - 单 Run action ledger、物理发送回执和本次被接收的管理决定才是下一动作依据；索引若与已验证事实不一致，标记过时，先修复/重建，不用索引覆盖原始记录。
 - RUN_REGISTRY 的空文件只代表尚无从本索引合法登记的 Run，不代表全仓或其他分支历史 Run 不存在。真实 GO 首次接收前必须对已有可信索引及远端实际 Run 身份做交叉核查。
 - 采用的协议、业务控制面、管理/执行 Pro 指南与专业 Skill 均使用 owner/repo@40位commit:path。源版本和运行记录的后续 Git commit 是不同的身份；普通提交不自动升级既有 Run。
@@ -44,7 +44,7 @@
 
 ## 5. Run 注册与接续的强制顺序
 
-新 Run：核真实 GO → 核 run_id 不重复 → 核采用来源 → 核资源路径与其他活跃 Run 不重叠 → 在 Linux 现场核目录和权限 → 生成单 Run Binding、资源记录与可信发送账本 → 更新 Registry 索引 → 开始按 V2 发送首个管理 Pro C。没有真实 GO 或资源未核实，不得假称 Run 已可派 Worker；只在相应动作上阻断。
+新 Run：核真实 GO → 核 run_id 不重复 → 核采用来源 → 先核 Owner 提供的路径与现役 Run 工作区不重叠 → 在 Linux 现场核目录/realpath/权限 → **先发布**单 Run Binding、资源记录并取得准确不可变 commit → 将这些实际存在的精确引用写入候选 Registry 并执行结构和 Linux 主机核查 → 以条件写入正式采用索引 → 开始按 V2 发送首个管理 Pro C。不能让 Registry 预先引用未发布的绑定原件；没有真实 GO 或资源未核实，不得假称 Run 已可派 Worker。
 
 每次唤起主控：
 1. 从可信执行账本/原物理通道收集新回执和 UNKNOWN 动作；不得先依 Registry 推断已经送达。
