@@ -28,7 +28,7 @@
 
 ## 四、此次特殊输入及直接后继
 
-**Owner 已说明**：CAEGraph 画图/运行脚本已由别处准备，真实数据也可直接提供；相关脚本与数据的**精确路径、提交及实例绑定尚未提供给本次准备稿**，以后补充。
+**Owner 已提供并完成提交的 CAEGraph 脚本**：[`caegraph-scripts.zip`](https://github.com/daowei2026/observe-iterate/blob/e4909b2e57d6e6122979ae0c4e57fb946b18e2d3/task-inputs/eaw-p1-integrated/caegraph-scripts.zip)，原始 ZIP SHA-256=`5eaf500616316ef7764cd30eb7467f2db3a6c85e45aa3b4f958becbc7818e8eb`。其 4 个代码/说明文件、脚本入口和原样 hash 见同目录 [`CAEGRAPH_INPUT_MANIFEST.md`](CAEGRAPH_INPUT_MANIFEST.md)。Owner 已给出**数据文件名** `caegraph-data-30tick.zip`（据称位于 Sources），但其精确来源位置、字节和业务实例绑定尚未实际取得；不得假称已经下载或验收。
 
 - 本 Run **不重新设计 CAEGraph 画图方案**，不将完成图形布局、显示方式、浏览器交互或建立新的绘图 Skill 作为取数与合理性分析的前置。
 - 脚本提供后，以 **Owner 指定的现成 CAEGraph 脚本**作为取数入口：如配套真实数据已经足以满足相应专业消费者的要求，直接消费和核验；缺必需数据时，按已授权入口运行现成脚本或作最小定向补取。不能因为原通用步骤表存在就机械重做已经由现成脚本/数据提供的画图方案设计。
@@ -48,8 +48,8 @@
 
 | 输入 | 当前状态 |
 | --- | --- |
-| CAEGraph 脚本原件（仓库、commit、路径、执行入口） | 待 Owner 提供 |
-| 已有数据原件（真实产物路径、对象、时间/日历、参数和数据阶段） | 待 Owner 提供 |
+| CAEGraph 脚本原件（仓库、commit、路径、执行入口） | **已提交** `observe-iterate@e4909b2e57d6e6122979ae0c4e57fb946b18e2d3:task-inputs/eaw-p1-integrated/caegraph-scripts.zip`；静态核检通过，现役运行未验证 |
+| 已有数据原件（真实产物路径、对象、时间/日历、参数和数据阶段） | 文件名已知：`caegraph-data-30tick.zip`（Sources）；真实文件取得/manifest/数据实例验证待实际接线 |
 | 脚本实际覆盖的 P1 Feature/产品与本轮观察范围 | 待脚本核实 |
 | 新 Run 正式身份、GO、采用来源锁、权限、实际写面 | 尚未 GO，不预填为已授权 |
 
@@ -57,6 +57,7 @@
 
 - **Owner 指定的本次 Linux 工作区：`/dwdhome/fy/BASE_E6_2`。** 这是待新 GO 采用的路径，不是本次已核实的独占/可运行凭证。
 - 按 [MULTI_RUN_CONTROLLER.md](../../longrun/contracts/MULTI_RUN_CONTROLLER.md)，同一时刻活跃的不同 `run_id` 需要不同且不重叠的工作区。旧 Wall Run 也曾绑定该 BASE；**启动新 Run 前主控必须核实它已经释放该路径，若仍被另一活跃 Run 占用，不得在该路径并行派 Worker**。不擅自替 Owner 改用其它路径。
+- **MCP Server ↔ Linux 共享根候选映射**：Windows `H:\fy` ↔ Linux `/dwdhome/fy`（Owner 提供，**未做物理双端验证**）。本 Run 建议使用 **BASE 内部**的交换目录：Linux `/dwdhome/fy/BASE_E6_2/.runtime/observe-iterate/OI-EAW-P1-20261116-01/handoff/` ↔ Windows `H:\fy\BASE_E6_2\.runtime\observe-iterate\OI-EAW-P1-20261116-01\handoff\`。主控应在首次传输前核共享挂载和文件 SHA，按 Run 授权处理 Windows 写面，不把同名目录视为已映射。
 - 专业 Pro 使用 ChatGPT Project `细节叙事生成_金标`，推理档位 `Pro`；Worker 目标配置仍为已指定的 `GPT-6.1 Sol Max`，实际物理端绑定/可用性按本 Run 正式 GO 和主控规则检查。
 - 真实 GO 须按 [OWNER_GO 模板](../../longrun/templates/OWNER_GO.md) 确定每 Run 独立身份、精确控制面/主控 Skill 引用、Linux/仓库写入授权和与其它 Run 共享目标的单写者条件。本准备稿**不代替 GO、不创建 Binding/Registry、不派发 C/D/W**。
 
