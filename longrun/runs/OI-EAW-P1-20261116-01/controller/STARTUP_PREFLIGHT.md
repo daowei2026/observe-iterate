@@ -31,7 +31,7 @@ Owner 指定 `/dwdhome/fy/BASE_E6_2`，实际目录存在，realpath 为该路�
 
 - 固定原始脚本 ZIP 已在主控本机读取：31,319 字节；SHA-256 `5eaf500616316ef7764cd30eb7467f2db3a6c85e45aa3b4f958becbc7818e8eb`；ZIP CRC 通过，四成员及各自 SHA 与输入清单一致。Worker 尚未取得，脚本未在本 Run 执行。
 - 准备聊天后来补齐的原始文件目录 `daowei2026/observe-iterate@036f24f4a4b7ca898280d8ed58cbf9c0b3634744:task-inputs/eaw-p1-integrated/caegraph-review/` 中四文件均与原 ZIP 成员逐字一致。本次不重新提交脚本 ZIP，不以该补充核对静默升级锁定的 GO/专业方法。
-- 数据 `caegraph-data-30tick.zip` 尚未在主控或 Worker 取得。输入给定身份为 16,654,307 字节、SHA-256 `73e7c5f289d7b25f08f11cffda7315ad2dad3f8c323715425afdd485e15c4233`；这些是待核预期，不是本 Run 已收到的证据。Sources 访问查证正在独立受控 episode 中进行，结果另记。
+- 数据 `caegraph-data-30tick.zip` 尚未在主控或 Worker 取得。输入给定身份为 16,654,307 字节、SHA-256 `73e7c5f289d7b25f08f11cffda7315ad2dad3f8c323715425afdd485e15c4233`；这些是待核预期，不是本 Run 已收到的证据。Sources 查证已完成：准确 Project 中可见 1 个准确同名、类型为“压缩文件”的条目；点选一次及延时复核未打开预览，三点菜单仅显示“删除文件”、没有可视下载入口。未点击删除或重复下载。手机普通 Download 顶层未见同名文件；没有取得手机或 Linux 文件，实际字节/哈希仍未知。列表存在不代表已读取数据正文。
 - Windows H:\fy ↔ Linux /dwdhome/fy 的候选映射尚未双向读取和核 SHA；因工作区接管未明，尚未向建议 handoff 目录写测试文件。
 - 正式 MCP 的共享网络准入已完成，Recent 与准确 Project 的列表均实际可读；控制已释放，回执留在 gitignored 可信运行记录。未检查或改变模型名称与推理档位，未发送专业消息。
 
@@ -40,3 +40,9 @@ Owner 指定 `/dwdhome/fy/BASE_E6_2`，实际目录存在，realpath 为该路�
 继续完成独立的 Sources 查证及文档准备。工作区接管关系明确后，在授权独立 handoff 目录验证两端共享，按真实字节核输入；再发布 Binding/资源绑定、核候选 Registry 并条件更新，随后准备、核验和实际派发首次 manager 调用。数据暂不可得时只局部登记，manager 可在原权限内组织有条件的独立文档级专业工作。
 
 普通步骤、专业取舍、Gate 和补证由本 Run manager 依原 Control 负责；本预检不预先记 DATA_READY、业务接受或任务完成。
+
+## 本次预检收束
+
+网络准入与 Sources 两个零继承 episode 均已终态并释放真实控制，累计 20 次正式 MCP 调用，业务消息 Send=0、IME 输入=0，pending/unknown=0。手机当前停在 Sources 的目标文件菜单，只有删除项；未点击删除。后续 episode 必须从新鲜界面安全关闭该菜单再导航。
+
+当前只等待 Owner 的工作区接管决定。两个旧 Run 继续保持原有暂停；本新 Run 不安排定时检查、自动唤醒或专业调用。获得接管决定后先复核占用与共享通道，再完成正式注册并派 manager；数据暂不可取得可以准确保留缺项，由 manager 组织合法的独立文档级工作。
