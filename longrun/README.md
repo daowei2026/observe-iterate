@@ -1,6 +1,6 @@
 # 观察—迭代通用长程协作层 · V2 候选实现
 
-> 位置：`daowei2026/observe-iterate` 的 `docs/observe-iterate-control-plane-3layer-v0.1-20261114` 分支。此层是跨角色通信/交付/运行事实协议，不是 L0/L1/L2 业务控制面的替代品。**已提供离线机械校验与用例，不代表已经接通主控、手机/ChatGPT/Codex 物理通道或完整自动运行。**
+> 位置：`daowei2026/observe-iterate`；本多 Run 改造分支从 `docs/observe-iterate-control-plane-3layer-v0.1-20261114` 派生。此层是跨角色通信/交付/运行事实协议，不是 L0/L1/L2 业务控制面的替代品。**已提供离线机械校验与用例，不代表已经接通主控、手机/ChatGPT/Codex 物理通道或完整自动运行。**
 
 ## 1. 用途与边界
 
@@ -27,10 +27,17 @@ Owner GO
 | 文件 | 作用 |
 |---|---|
 | [contracts/LONGRUN_PROTOCOL_V2.md](contracts/LONGRUN_PROTOCOL_V2.md) | 运行身份、合法路径、委派/交付、授权、失败与接续规范 |
+| [contracts/MULTI_RUN_CONTROLLER.md](contracts/MULTI_RUN_CONTROLLER.md) | 多 Run 的身份隔离、Owner 预备独立 Linux 工作区、版本锁定与主控职责（候选） |
+| [controller/CONTROLLER_OPERATIONS.md](controller/CONTROLLER_OPERATIONS.md) | 注册、交错调度、回收、恢复的具体主控动作（待 cgpterm 接入） |
+| [controller/RUN_REGISTRY.json](controller/RUN_REGISTRY.json) | 空索引初稿；不是历史 Run 清单或业务完成事实 |
+| [controller/CGPTERM_ADOPTION_PENDING.md](controller/CGPTERM_ADOPTION_PENDING.md) | 现役 cgpterm 主控 Skill 的后续改造清单，本轮不修改它 |
+| [templates/RUN_RESOURCE_BINDING.example.json](templates/RUN_RESOURCE_BINDING.example.json) | 单 Run Linux 工作区/版本等资源绑定模板，不构成 Owner GO |
 | [contracts/longrun_schema_v2.json](contracts/longrun_schema_v2.json) | Binding、委派、工单、各类 Return 与动作历史的机器字段合同 |
 | [CONTROL_PLANE_ADAPTER.md](CONTROL_PLANE_ADAPTER.md) | 与本分支候选 L0/L1/L2、Gate、补证和 Skill 的接合位置，不偷定专业规则 |
 | [professional/README.md](professional/README.md) | 专业角色使用入口：负责人管完整任务和专业交付接收；执行人按原观察/合理性分析 Skill 承担实质工作 |
 | [tools/longrun_gate.py](tools/longrun_gate.py) | **只读、无副作用**的离线身份、工单、回交、状态链校验；不发送、不写账本 |
+| [tools/multi_run_check.py](tools/multi_run_check.py) | 多 Run 注册表、工作区唯一性和目标 Linux realpath 只读检查 |
+| [tests/test_multi_run_check.py](tests/test_multi_run_check.py) | 多 Run 路径重叠、版本引用、身份冲突等合成用例 |
 | [tests/test_longrun_gate.py](tests/test_longrun_gate.py) | 可运行的正/反向离线夹具，无法证明真实通道接通 |
 | [templates/OWNER_GO.md](templates/OWNER_GO.md) | 新 Run 的最小 GO 信息与明确授权 |
 | [templates/TASK_PROGRESS.md](templates/TASK_PROGRESS.md) | 管理 Pro 在真实 Run 持续维护的五级业务完成全景模板；运行期实际文件按 Run 生成 |
@@ -79,3 +86,17 @@ python longrun/tools/longrun_gate.py reconcile-actions snapshot.json
 - 本分支 `control/`、`review/` 明说三层业务 Gate 和部分完成/限域政策尚待确认，`professional/` 的角色分工也为待验证适配，不预先固定这些判定结果。
 - cgpterm 已提交专门的 V2 主控 Skill，但物理收发、持久动作账本、并发独占锁、GitHub 远端证据读取、专业角色指南的实际派发和恢复对账 **尚未与 V2 完成联调**。
 - 当前仅是**运行合同 + 机器校验首版**，不是“立刻可自主运行整条观察—分析长程任务”的验收结论。
+
+## 7. 多 Run 首版：Owner 预先准备不同 Linux 工作区
+
+当启动第二个及以上的 Run 时，主控按 [多 Run 合同](contracts/MULTI_RUN_CONTROLLER.md) 管理多个独立 Run；每个 Run 的管理 Pro、专业工作、业务完成全景与 C/D/W 仍沿用原流程。**Owner 先准备工作区，在 GO 中逐 Run 指明绝对 Linux 路径**；主控不建、不复用同一个工作区；派 Worker 前在真实目标主机验证目录存在与 realpath 不重叠。外部远端共享写入目标仍按原 V2 真实授权和单写者前提处理。
+
+索引文件当前只有空 bootstrap，绝不表明历史没有活跃 Run。新 Run 的 RUN_RESOURCE_BINDING.json 只在真实 GO/可复核的 Linux 证据之后生成。跨 Run 检查见：
+
+~~~bash
+python longrun/tools/multi_run_check.py validate-registry longrun/controller/RUN_REGISTRY.json
+# 只能在实际 Linux Worker 主机执行以下物理目录检查
+python longrun/tools/multi_run_check.py check-workspaces longrun/controller/RUN_REGISTRY.json --on-worker-host
+~~~
+
+**本轮仍不改 cgpterm**。现役 Skill 的固定 BASE 路径与单 Run 流程需要之后单独接入新合同；因此完成本文档及单元测试不等于物理多 Run 执行已打通。

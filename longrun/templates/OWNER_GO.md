@@ -3,6 +3,7 @@
 ## 目标与边界
 
 - `work_id`：
+- `business_case_id`（用例稳定标识；如无独立标识，可明确与 work_id 相同）：
 - `run_id`（本次全新、不得复用历史 Run）：
 - `BusinessTaskInput`：当前实际已知的业务目的、对象、问题、现有资料线索及精确来源；未知项如实列为待查：
 - **已明确**的本轮范围/允许深度/预算/不可做事项/停止与完成条件（没有明确的写“待明确”，不是另设启动前必须填满的 TaskBoundary）：
@@ -31,10 +32,21 @@
 
 - 专业负责人 Pro、专业执行人 Pro：均使用 ChatGPT Project **`细节叙事生成_金标`**；各自独立角色聊天，目标推理档位 **`Pro`**。
 - Pro 的模型：**本轮未指定、不检查**。实际派发遵守当时通用发送端必要的配置核验，不在本模板猜测型号。
-- Worker：在 Linux BASE 工作区 **`/dwdhome/fy/BASE_E6_2`** 下创建/绑定本 Run 的有权 Codex Worker 聊天。
+- Worker（旧单 Run 参考）：此前指定 Linux BASE 工作区为 **`/dwdhome/fy/BASE_E6_2`**。**多 Run 首版新增约束：每个 run_id 的 Linux 工作区由 Owner 提前准备，并在本次真实 GO 明确给出独立绝对路径；不得把上述旧参考路径自动套用到多个 Run。**
 - Worker 模型/推理配置：用户原始指定 **`GPT-6.1 Sol Max`**（按字面可表达为 `GPT-6.1 Sol` + `Max`；**本轮不探测可用性**）。
 - 若 Owner 后续重新指定项目、路径或档位，以新的真实指令为准；不同 Run 不自动继承。物理 Project/ChatGPT 聊天、Codex threadId、实际目录和配置在真实启动时记录到可信运行映射；不能因为模板包含上述信息就认定已创建。
 - **工作区路径不是写权限**：真正执行 W 仍须受下列独立的 `operation / execution_context / allowed_writes / authority_quote` 授权及共享目标单写者检查约束。
+
+## 本 Run Linux 工作区（多 Run 时必须由 Owner 明确给出）
+
+- `owner_declared_linux_workspace`：<本 Run 已准备的绝对 Linux 路径，不填其他 Run 的工作区>。
+- 当前工作区是否已由 Owner 准备：<是/否；未准备则不得派出依赖此路径的 Worker 动作>。
+- 对应仓库、分支及实际输出/写入位置：<明确现行使用范围，真实权限仍以下面的 grants 为准>。
+- 多 Run 关系：<新的 run_id，若与旧用例/旧 Run 有关联，给出准确引用；不要沿用旧 Run 运行状态>。
+
+主控负责在真实目标 Linux 主机上核实目录存在、realpath 与其他活跃 Run 不重叠、权限和 Worker 实际 cwd，再写入 `runs/<run_id>/RUN_RESOURCE_BINDING.json`。这不是主控自动创建工作区的授权。
+
+**兼容性提示**：`cgpterm@becfbcbc...` 当前主控 Skill 尚固定旧 BASE 路径，本轮不修改。采用非旧路径的新多 Run GO，在现役 cgpterm 适配之前不得宣称已经可以按新路径执行 Worker；详见 [后续接入清单](../controller/CGPTERM_ADOPTION_PENDING.md)。
 
 ## 本 Run 一次性覆盖常规工程操作（V2 仍须可校验的 Owner 原文）
 

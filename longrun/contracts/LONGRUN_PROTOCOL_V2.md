@@ -113,3 +113,11 @@ BLOCKED → COMPLETED（只在原动作证据已查清时）
 ## 10. V2 机械程序的真实能力
 
 `longrun/tools/longrun_gate.py` 是只读校验/路由建议程序；它**不是**远端消息通道、GitHub 仓库读取器、持久动作账本、锁管理器、自动控制面和完整专业任务引擎。使用时需把真实 GO 文本、合法 Binding、D、W、Pro/Worker Return 和独立验实回执作为可信快照输入。模型自述的 `true` 或假造的 snapshot 不能当可信外部事实。实际发送、状态写入、强制独占和跨仓 Skill 更新仍需在后续联调完成。
+
+## 11. 多 Run 采用接口（在本 Run 已有 V2 语义之上增量扩展）
+
+当主控同时管理多个 Run 时，采用 [MULTI_RUN_CONTROLLER](MULTI_RUN_CONTROLLER.md)。C/D/W 仍独立按各自 run_id 的 V2 合同验证；同名 C0001/D001/W001 在不同 Run 可同时存在。主控在发送/回收前必须先选定正确的单 Run Binding 与真实物理回执，不将其他 Run 的完成、Gate、Owner grants 或资源资格借用到当前 Run。
+
+首版每个 run_id 的 Linux 工作区由 Owner 在准备真实 GO 时先行准备并给出绝对路径；不同 Run 必须不同工作区，须实际核 realpath 以及路径不重叠。不得让主控临时建立工作区或用旧 BASE 默认路径替代。共享 Git 分支/数据库等写面仍按现有授权和实际单写者要求核实，必要时仅阻断对应动作。Run 采用的业务/专业来源版本独立锁定，不随其他 Run 或公共 Skill 修改自动改变。
+
+本仓的多 Run 文件/只读检查程序尚未接线到仍在使用的 cgpterm 主控 Skill；文档发布不等于主控已支持并行物理派发。
