@@ -1,0 +1,123 @@
+26:    wallOccurrenceToStorage,
+28:    wallCurrentToStorage,
+44:    wallDiagnosticsToStorage,
+77:data P1WallOccurrenceStorage = P1WallOccurrenceStorage
+94:data P1WallCurrentStorage = P1WallCurrentStorage
+273:data P1DiagnosticStorage = P1DiagnosticStorage
+286:wallOccurrenceToStorage :: WallLifecycleOccurrence -> P1WallOccurrenceStorage
+287:wallOccurrenceToStorage occurrence =
+329:wallCurrentToStorage :: WallCurrentView -> P1WallCurrentStorage
+330:wallCurrentToStorage current =
+1264:wallDiagnosticsToStorage :: P1ProductDiagnostics WallLifecycleError -> [P1DiagnosticStorage]
+1265:wallDiagnosticsToStorage = diagnosticsToStorage wallErrorToStorage
+import Frp.Instance.ISL.Eaw.P1.WallLifecycle (WallLifecycleError (..))
+import GHC.Generics (Generic)
+
+-- | WallLifecycleChange 与 Measurement WallBand 均按显式 tag 展开。
+-- tag 决定哪些值有效；未使用的基础字段只占物理占位，不产生业务默认值。
+-- FeatureRunIdentity、artifact、WallRef 和 symbol 均由同一产品输入的薄 receipt
+-- 唯一决定，不在每条 occurrence 中重复数百字节的运行级文本。
+data P1WallOccurrenceStorage = P1WallOccurrenceStorage
+  { p1WallOccurrenceLocalNo :: Int64,
+    p1WallOccurrenceRef :: Text,
+    p1WallLifecycleSide :: Text,
+    p1WallLifecycleOccurredAt :: Int,
+    p1WallLifecycleChangeKind :: Text,
+    p1WallBandMeasurementKind :: Text,
+    p1WallBandMeasurementReason :: Text,
+    p1WallBandLow :: Double,
+    p1WallBandHigh :: Double,
+    p1WallCore :: Double,
+    p1WallPresence :: Text,
+    p1WallEndReason :: Text,
+    p1WallLifecycleAvailability :: Text
+  }
+  deriving (Eq, Show, Generic, ToBSON, FromBSON)
+
+data P1WallCurrentStorage = P1WallCurrentStorage
+  { p1WallCurrentLocalNo :: Int64,
+    p1WallCurrentState :: Text
+  }
+  deriving (Eq, Show, Generic, ToBSON, FromBSON)
+
+data P1DoubleMeasurementStorage = P1DoubleMeasurementStorage
+  { p1DoubleMeasurementKind :: Text,
+    p1DoubleMeasurementValue :: Double,
+    p1DoubleMeasurementReason :: Text
+  }
+  deriving (Eq, Show, Generic, ToBSON, FromBSON)
+
+data P1IntMeasurementStorage = P1IntMeasurementStorage
+  { p1IntMeasurementKind :: Text,
+    p1IntMeasurementValue :: Int,
+    p1IntMeasurementReason :: Text
+  }
+  deriving (Eq, Show, Generic, ToBSON, FromBSON)
+
+data P1BuildOccurrenceStorage = P1BuildOccurrenceStorage
+  { p1BuildOccurrenceLocalNo :: Int64,
+    p1BuildOccurrenceWallLocalNo :: Int64,
+    p1BuildOccurrenceRef :: Text,
+    p1BuildOccurredAt :: Int,
+    p1BuildChangeKind :: Text,
+    p1BuildMilestone :: Text,
+    p1BuildMilestoneValueKind :: Text,
+    p1BuildMilestoneRatio :: Double,
+    p1BuildMilestoneBucket :: Text,
+    p1BuildStopReason :: Text,
+    p1BuildCumulativeAdditionProxy :: P1DoubleMeasurementStorage,
+    p1BuildSameBandContinuity :: P1DoubleMeasurementStorage,
+    p1BuildAvailability :: Text
+  }
+  deriving (Eq, Show, Generic, ToBSON, FromBSON)
+
+data P1BuildCurrentStorage = P1BuildCurrentStorage
+  { p1BuildCurrentLocalNo :: Int64,
+    p1BuildCurrentWallLocalNo :: Int64,
+    p1BuildCurrentState :: Text,
+    p1BuildCurrentMilestoneCount :: Int
+  }
+  deriving (Eq, Show, Generic, ToBSON, FromBSON)
+
+data P1LaneGradeStorage = P1LaneGradeStorage
+  { p1LaneGradeKind :: Text,
+    p1LaneGradeValue :: Int
+  }
+  deriving (Eq, Show, Generic, ToBSON, FromBSON)
+
+data P1QualificationHitStorage = P1QualificationHitStorage
+  { p1QualificationStreamOrdinal :: Int,
+    p1QualificationFamilyCode :: Int,
+    p1QualificationFamily :: Text,
+    p1QualificationGrade :: Int
+  }
+  deriving (Eq, Show, Generic, ToBSON, FromBSON)
+
+data P1IntListMeasurementStorage = P1IntListMeasurementStorage
+  { p1IntListMeasurementKind :: Text,
+    -- frp-core 的通用 DBA writer 不能把 [Int] 作为嵌套 bits field
+    -- 写到 BaseStorePath；使用其已有的 [Text] 专用物理表示，无损保留 UTI。
+    p1IntListMeasurementValues :: [Text],
+    p1IntListMeasurementReason :: Text
+  }
+  deriving (Eq, Show, Generic, ToBSON, FromBSON)
+
+data P1AttackSegmentStorage = P1AttackSegmentStorage
+  { p1AttackLocalNo :: Int64,
+    p1AttackWallLocalNo :: Int64,
+    p1AttackOccurrenceRef :: Text,
+25:        return os.path.join(self.full_dir, "fields.json")
+37:        gfull_dir = self.feat.gfull_dir
+38:        if gfull_dir is not None:
+39:            res = self.loadWith(gfull_dir)
+41:            res = self.loadWith(self.full_dir)
+44:    def loadWith(self,full_dir):
+45:        fields_path = os.path.join(full_dir, "fields.json")
+54:                ts = DbaUtil.read_field_ts(full_dir, key=key)
+58:                    data[field] = DbaUtil.read_ndarray(
+59:                        full_dir, f"{key}.{field}", fld.dtype
+64:        ts = DbaUtil.read_field_ts(full_dir)
+68:            data[field] = DbaUtil.read_ndarray(full_dir, field, fld.dtype)
+72:    def dump(self, res: Dict[str, pd.DataFrame], full_dir, tar_name, **kwargs):
+80:        extra = self.feat.backup_full_dirs
+88:                DbaUtil.dump(df, full_dir, rflds)

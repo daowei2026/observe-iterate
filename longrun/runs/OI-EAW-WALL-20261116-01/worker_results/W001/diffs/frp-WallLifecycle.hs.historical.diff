@@ -1,0 +1,79 @@
+--- cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/WallLifecycle.hs
++++ /dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/WallLifecycle.hs
+@@ -15,6 +15,7 @@
+ import Control.Monad (foldM)
+ import Data.Map.Strict (Map)
+ import Data.Map.Strict qualified as Map
++import Data.Set qualified as Set
+ import Frp.Apt (FrpDynamic, FrpEvent)
+ import Frp.CEP.Class (CEPS (..))
+ import Frp.Core (FaoModel)
+@@ -37,13 +38,12 @@
+ 
+ data WallLifecycleState = WallLifecycleState
+   { wallLedger :: OccurrenceLedger OccurrenceRef,
+-    wallViews :: Map WallIdentity WallCurrentView,
+-    wallCurrentUpdateBatch :: Map WallIdentity WallCurrentView
++    wallViews :: Map WallIdentity WallCurrentView
+   }
+   deriving (Eq, Ord, Show, Generic)
+ 
+ emptyWallLifecycleState :: WallLifecycleState
+-emptyWallLifecycleState = WallLifecycleState emptyOccurrenceLedger Map.empty Map.empty
++emptyWallLifecycleState = WallLifecycleState emptyOccurrenceLedger Map.empty
+ 
+ validateWallTransition :: WallIdentity -> Maybe WallCurrentView -> Spine.WallLifecycleChange -> Either WallLifecycleError WallBusinessState
+ validateWallTransition identity before change = case (before, change) of
+@@ -76,24 +76,12 @@
+       let before = Map.lookup identity (wallViews state)
+       afterState <- validateWallTransition identity before change
+       let current = WallCurrentView identity afterState occurrence
+-          nextViews =
+-            case afterState of
+-              WallEndedState -> Map.delete identity (wallViews state)
+-              _ -> Map.insert identity current (wallViews state)
+-          next =
+-            state
+-              { wallLedger = nextLedger,
+-                wallViews = nextViews,
+-                wallCurrentUpdateBatch = Map.insert identity current (wallCurrentUpdateBatch state)
+-              }
++          next = state {wallLedger = nextLedger, wallViews = Map.insert identity current (wallViews state)}
+       Right (next, Just occurrence)
+ 
+ applyWallOccurrenceBatch :: WallLifecycleState -> [WallLifecycleOccurrence] -> Either WallLifecycleError (WallLifecycleState, [WallLifecycleOccurrence])
+ applyWallOccurrenceBatch initial occurrences = do
+-  -- occurrence_ref 的唯一性由已提交 artifact 保证；运行态只检查当前
+-  -- firing，不能再永久镜像全年 occurrence fingerprint。
+-  let firingState = initial {wallLedger = emptyOccurrenceLedger, wallCurrentUpdateBatch = Map.empty}
+-  (next, publishedReversed) <- foldM step (firingState, []) occurrences
++  (next, publishedReversed) <- foldM step (initial, []) occurrences
+   pure (next, reverse publishedReversed)
+   where
+     step (state, published) occurrence = do
+@@ -117,8 +105,14 @@
+   Left err -> txn {wallTxnResult = Just (Left err)}
+   Right (next, published) -> WallTxn next (Just (Right published))
+ 
+-wallCurrentUpdatesFor :: WallLifecycleState -> [WallCurrentView]
+-wallCurrentUpdatesFor = Map.elems . wallCurrentUpdateBatch
++wallCurrentUpdatesFor :: WallLifecycleState -> [WallLifecycleOccurrence] -> [WallCurrentView]
++wallCurrentUpdatesFor state occurrences =
++  [ current
++    | identity <- Set.toAscList changedIdentities,
++      Just current <- [Map.lookup identity (wallViews state)]
++  ]
++  where
++    changedIdentities = Set.fromList (fmap wallOccurrenceIdentity occurrences)
+ 
+ data WallLifecycleP = WallLifecycleP
+ 
+@@ -142,7 +136,7 @@
+         { wallLifecycleOccurrences = snd <$> acceptedTransactions,
+           wallLifecycleCurrent = current,
+           wallLifecycleCurrentUpdates =
+-            (\(txn, _published) -> wallCurrentUpdatesFor (wallTxnState txn))
++            (\(txn, published) -> wallCurrentUpdatesFor (wallTxnState txn) published)
+               <$> acceptedTransactions,
+           wallLifecycleDiagnostics =
+             (\err -> P1ProductDiagnostics [] [err])

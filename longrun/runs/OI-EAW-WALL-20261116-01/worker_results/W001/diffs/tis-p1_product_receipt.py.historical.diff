@@ -1,0 +1,37 @@
+--- ef887396e0a06d6e75be47efee0f1985ad7988a3:hf/prel0/p1_product_receipt.py
++++ /dwdhome/fy/BASE_E6_2/mquant/tis/hf/prel0/p1_product_receipt.py
+@@ -31,16 +31,6 @@
+         "attack_formation_evidence",
+         "wall_relation_barrier",
+         "absorb_interaction",
+-    }
+-)
+-
+-PRODUCT_SCHEMA_VERSIONS = {
+-    product_kind: f"{product_kind}-v1.6.1" for product_kind in PRODUCT_KINDS
+-}
+-PRODUCT_SCHEMA_VERSIONS.update(
+-    {
+-        "attack_segment": "attack_segment-v1.6.2",
+-        "attack_formation_evidence": "attack_formation_evidence-v1.6.2",
+     }
+ )
+ 
+@@ -295,7 +285,7 @@
+         ),
+         "direct_upstream_artifacts": upstreams,
+         "method_snapshot_fingerprint": method_snapshot_fingerprint,
+-        "schema_version": PRODUCT_SCHEMA_VERSIONS[product_kind],
++        "schema_version": f"{product_kind}-v1.6.1",
+         "code_version": str(code_fingerprint),
+         "artifact_location": str(artifact_path),
+         "status": "success",
+@@ -313,8 +303,6 @@
+         raise P1ReceiptError(f"thin receipt 字段不合法: missing={missing}, extra={extra}")
+     if value["product_kind"] not in PRODUCT_KINDS:
+         raise P1ReceiptError("thin receipt product_kind 非法")
+-    if value["schema_version"] != PRODUCT_SCHEMA_VERSIONS[value["product_kind"]]:
+-        raise P1ReceiptError("thin receipt schema_version 与产品合同不一致")
+     if expected_kind is not None and value["product_kind"] != expected_kind:
+         raise P1ReceiptError(
+             f"上游产品不匹配: {value['product_kind']} != {expected_kind}"

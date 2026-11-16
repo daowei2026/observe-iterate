@@ -1,0 +1,306 @@
+
+    def load_iset(self, stk_tlist):
+        return load_iset(self.__ctx.sof_tlist_dir, stk_tlist)
+
+    @property    
+    def block_dir(self): return os.path.join(self.sof_dir,"block")
+
+    @classmethod
+    def all_sof(cls):
+        return {k: v["sof_label"] for k,v in sof_contexts.__dict__.items()}
+
+    def gen_root_dir(self, store_dir, name):
+        xs = [store_dir, self.sof_category, self.sof_name, name]
+        return "/".join(xs)
+
+    def upgrade(self, **kwargs):
+        sof_name = kwargs.get("sof_name", self.sof_name)
+        stk_tlist = kwargs.get("stk_tlist", self.stk_tlist)
+        startDay = kwargs.get("startDay", self.startDay)
+        endDay = kwargs.get("endDay", self.endDay)
+        opt_blks = kwargs.get("opt_blks", self.opt_blks)
+        full_period = kwargs.get("full_period", self.full_period)
+        return Sof(sof_name, stk_tlist, startDay, endDay,opt_blks=opt_blks,full_period=full_period)
+
+    def tsa_of(self, calendar_name):
+        dba_path = f"{self.sof_dir}/../calendar/{calendar_name}"
+        natural_dba = DbArray(dba_path, "natural_tsa", "M8[ns]")
+        linear_dba = DbArray(dba_path, "linear_tsa", "i8")
+        return {"natural_tsa": natural_dba.ndarray, "linear_tsa": linear_dba.ndarray}
+
+    
+def load_sof(**kwargs):
+    """兼容老版sof调用"""
+    return Sof(**kwargs)
+        return self._fqn
+
+
+class CurrTradeSet(AbsContextManager):
+    """
+    Manager for current iset in context
+
+    """
+
+    __slots__ = "_sof", "_dsl", "_engine", "_arena", "_depth"
+
+    DSL_DEFAULTS = {
+        "freq": Freq("1d"),  # sampling freq, main trading freq as well
+        "pos_chgr": PosChgr(),  # position changer
+        "budgeter": Budgeter(),  # budgeter
+    }
+
+    def __init__(self, sof, dsl_override: Optional[dict] = None, trade_engine=None):
+        self._sof = sof
+        self._dsl = {**self.DSL_DEFAULTS}
+        if dsl_override is not None:
+            self._dsl.update(dsl_override)
+        self._engine = trade_engine
+        self._arena = None
+        self._depth = 0
+
+    def __enter__(self):
+        stack = self.get_stack()
+        if self._depth > 0:
+            assert self in stack, "depth corrupted ?!"
+            assert self._arena is not None, "on stack but no arena ?!"
+        else:
+            assert self not in stack, "depth corrupted ?!"
+            assert self._arena is None, "dirty arena ?!"
+            self._arena = {}
+            stack.append(self)
+
+        self._depth += 1
+        return self._dsl, self._arena
+
+    def _cmexit_before(self, stack, exc_type, exc_val, exc_tb):
+        assert self in stack, "stack corrupted ?!"
+        self._depth -= 1
+        if self._depth > 0:
+            assert self._arena is not None, "depth corrupted ?!"
+        else:
+            assert stack[-1] is self, "stack corrupted ?!"
+            self._arena = None
+
+    # stack = []
+
+    # def __enter__(self):
+    #     stack = __class__.stack
+    #     if self._depth > 0:
+    #         assert self in stack, "depth corrupted ?!"
+    #         assert self._arena is not None, "on stack but no arena ?!"
+21:    "ACCESS_READ",
+37:ACCESS_READ = mmap.ACCESS_READ
+109:class DbArray:
+118:        access: int = mmap.ACCESS_READ,
+136:            with open(
+137:                data_file_path, "rb" if access == mmap.ACCESS_READ else "r+b"
+167:                fd = os.open(data_file_path, os.O_RDWR | os.O_CREAT | os.O_EXCL, mode=0o644)
+196:        fd = os.open(data_file_path, os.O_RDONLY)
+202:        if self.access == mmap.ACCESS_READ:
+rg: m3core: No such file or directory (os error 2)
+"""
+Runtime data structures and routines
+
+"""
+__all__ = [
+    "dtype",
+    "float64",
+    "f8",
+    "float32",
+    "f4",
+    "int64",
+    "i8",
+    "int32",
+    "i4",
+    "int8",
+    "byte",
+    "intp",
+    "u8",
+    "yesno",
+    "DbArray",
+    "ACCESS_READ",
+    "ACCESS_WRITE",
+    "ACCESS_COPY",
+]
+
+import asyncio
+from typing import *
+
+import os.path
+import mmap
+import numpy as np
+
+from ..log import *
+
+logger = get_logger(__name__)
+
+ACCESS_READ = mmap.ACCESS_READ
+ACCESS_WRITE = mmap.ACCESS_WRITE
+ACCESS_COPY = mmap.ACCESS_COPY
+
+
+class dtype:
+    __slots__ = ("repr", "dt")
+
+    def __init__(self, repr_: str, dt: Optional[np.dtype] = None):
+        self.repr = repr_
+        if dt is None:
+            self.dt = np.dtype(repr_)
+        else:
+            self.dt = dt
+
+    def __repr__(self):
+        return self.repr
+
+
+# align with builtin dtypes of hasdim
+# fmt: off
+float64 = dtype("float64") ; f8   = float64
+float32 = dtype("float32") ; f4   = float32
+int64   = dtype("int64")   ; i8   = int64
+int32   = dtype("int32")   ; i4   = int32
+int8    = dtype("int8")    ; byte = int8
+intp    = dtype("intp")
+yesno   = dtype('yesno', np.dtype("bool"))
+u8 = dtype("u8")
+# fmt: on
+
+
+DbArrayHeaderDtype = np.dtype(
+    [
+        # version of array layout
+        ("layout_version", "i4"),
+        # a.k.a. padded header size
+        ("data_offset", "i4"),
+        # padded item size
+        ("item_size", "i4"),
+        # alignment required for an item
+        ("item_align", "i4"),
+        # number of valid items in the array, to be read/written on-the-fly
+        # rest of the file content should be considered pre-allocated capacity
+        ("data_length", "i8"),
+    ],
+    align=True,
+)
+
+# a disk file for array is always mmaped from beginning, data following the
+# header. align the header so start of data is aligned with at least 512
+# bits for possible SIMD performance improvement or even compliance
+DbArrayHeaderAlign = 64
+
+# so 40 bytes is unused in the head as far
+DbArrayHeaderSize = DbArrayHeaderDtype.itemsize
+assert DbArrayHeaderSize == 24, "C struct layout rules changed?"
+
+
+def dbArrayHeaderV0(dtype_: dtype):
+    dt = dtype_.dt
+    hdr = np.ndarray(1, dtype=DbArrayHeaderDtype)
+    hdr[0] = (
+        0,
+        DbArrayHeaderAlign * (1 + DbArrayHeaderSize // DbArrayHeaderAlign),
+        dt.itemsize,
+        dt.alignment,
+        0,
+    )
+    return hdr
+
+
+class DbArray:
+    __slots__ = "data_dir", "data_path", "dtype", "mm", "hdr", "shape", "access"
+
+    def __init__(
+        self,
+        data_dir: str,
+        data_path: str,
+        dtype_: dtype = float64,
+        shape: Optional[Tuple[int, ...]] = None,
+        access: int = mmap.ACCESS_READ,
+    ):
+        if isinstance(dtype_, str):
+            dtype_ = dtype(dtype_)
+        assert isinstance(dtype_, dtype)
+
+        self.data_dir = data_dir
+        self.data_path = data_path
+        self.dtype = dtype_
+        self.access = access
+
+        data_file_path = os.path.join(data_dir, f'{data_path}.dba')
+        dt = dtype_.dt
+
+        if shape is None:
+            # load existing array file, use header and file length to
+            # calculate shape, assuming 1d
+
+        if fdtype == "datetime64[ns]":
+            return DateTimeField
+        return None
+
+    def fit_df(self, df: pd.DataFrame):
+        return df
+
+    def __repr__(self):
+        return f"DateTimeField"
+
+
+DateTimeField = _DateTimeField()
+
+
+class AdtEventField(NormalField):
+
+    FDTYPE_PREFIX = "adt"
+
+    # def is_event_field(self):
+    #     return True
+    
+    def is_adt_field(self):
+        return True
+    
+    def __init__(self,dtype = None):
+        self.dtype = dtype
+
+    @classmethod
+    def from_str(cls, fdtype: str):
+        xs = fdtype.split("@")
+        if len(xs) == 2 and xs[0] == cls.FDTYPE_PREFIX:
+            return cls(xs[1])
+        return None
+
+    @property
+    def adt_class(self):
+        """ 结构化对象类 """
+        return eval2(self.dtype)
+
+    def __repr__(self):
+        return f"{type(self).__name__}({self.dtype})"
+
+
+class EventField(NormalField):
+    """
+    事件型字段
+    """
+
+    __slots__ = ("dtype", "default_val", "dropna", "drop0")
+
+    RULES = {
+        "f8": "f8",
+        "f4": "f4",
+        "float64": "f8",
+        "Double": "f8",
+        "float32": "f4",
+        "i8": "i8",
+        "Int": "i8",
+        "i1": "i1",
+        "int8": "i1",
+        "int64": "i8",
+    }
+
+    FDTYPE_PREFIX = "event"
+
+    @classmethod
+-rwxr-xr-x 1 dw nogroup 89618768 Oct 17 23:04 edh-universe/bin/ts
+edh-universe/bin/ts: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0, BuildID[sha1]=ec75e5e1bd08043268391fa3fc072230c65d70ed, stripped
+/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp
+37c790c0f456fe3022bb00609219d3e92a5c2f9b
+raw_log_bytes=63540

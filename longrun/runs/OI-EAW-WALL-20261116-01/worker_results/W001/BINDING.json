@@ -1,0 +1,1131 @@
+{
+  "started_at_utc": "2026-11-16T05:34:24.394765+00:00",
+  "context": {
+    "sof_name": "TA_updto20240229_DBA",
+    "startDay": "2020-12-01",
+    "endDay": "2021-02-22",
+    "symbol": "rb",
+    "calendar": "night_end_at_2300"
+  },
+  "expression": "EawP1WallLifecycleFrp()",
+  "feature_execution_attempted": false,
+  "bindings": {
+    "feature": {
+      "declared_class": "EawP1WallLifecycleFrp",
+      "class_file": "/dwdhome/fy/BASE_E6_2/mquant/tis/frp/EawBattleP.py",
+      "class_file_realpath": "/dwdhome/fy/BASE_E6_2/mquant/tis/frp/EawBattleP.py",
+      "runtime_type": "Proxy(EawP1WallLifecycleFrp)",
+      "ppdict": {
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).parameter_set_id": "wall-default",
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).qt_freq": "1d",
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).qt_n": 30,
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).qt_quantile": 0.997,
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).w_depth_ref_ticks": 1200,
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).large_quote_ratio_min": 1.0,
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).allow_zero_qt_fallback": false,
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).thick_vs_hi_ratio": 1.0,
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).thin_vs_mid_ratio": 0.7,
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).allow_thin_brick": false,
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).p_wall_ticks": 1,
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).t_wall_ticks": 6,
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).near_band_ticks": null,
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).far_band_ticks": null,
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).connect_max_core_dist_ticks": null,
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).connect_gap_max_ticks": null,
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).support_buffer_keep_ticks": null,
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).thin_eval_window_ticks": null,
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).band_update_min_shift_ticks": null,
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).dormant_no_presence_ticks": null,
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).dormant_far_ticks": null,
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).end_far_hold_ticks": null,
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).end_far_ticks": null,
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).break_after_no_presence_ticks": null,
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).wall_dead_timeout_ticks": null,
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).allow_brick_join_dormant": true,
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).thin_contact_min_hits": 3,
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).thin_contact_frac_end": 0.6
+      },
+      "ppid": "EawP1WallLifecycleFrp_3e1a70e7283bbbb3324b34c0b8abfb11b5b0f25b",
+      "ggjson": "{\"__tag__\":\"EawP1WallLifecycleFrp\",\"wallLifecycleInput\":{\"__tag__\":\"WallOccurrenceFao\",\"wallOccurrenceSource\":{\"__tag__\":\"WallAssembler\",\"allow_brick_join_dormant\":true,\"allow_thin_brick\":false,\"allow_zero_qt_fallback\":false,\"band_update_min_shift_ticks\":null,\"break_after_no_presence_ticks\":null,\"connect_gap_max_ticks\":null,\"connect_max_core_dist_ticks\":null,\"dormant_far_ticks\":null,\"dormant_no_presence_ticks\":null,\"end_far_hold_ticks\":null,\"end_far_ticks\":null,\"far_band_ticks\":null,\"large_quote_ratio_min\":1,\"near_band_ticks\":null,\"p_wall_ticks\":1,\"parameter_set_id\":\"wall-default\",\"qt_freq\":\"1d\",\"qt_n\":30,\"qt_quantile\":0.997,\"support_buffer_keep_ticks\":null,\"t_wall_ticks\":6,\"thick_vs_hi_ratio\":1,\"thin_contact_frac_end\":0.6,\"thin_contact_min_hits\":3,\"thin_eval_window_ticks\":null,\"thin_vs_mid_ratio\":0.7,\"w_depth_ref_ticks\":1200,\"wall_dead_timeout_ticks\":null}}}",
+      "full_dir": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/EawP1WallLifecycleFrp/1/c/b/0/c/1/4/44aea11813b85d33becc06242f43621b6/rb.night_end_at_2300",
+      "gfull_dir": null,
+      "cal_type": "CalType.Cache"
+    },
+    "input": {
+      "declared_class": "WallOccurrenceFao",
+      "class_file": "/dwdhome/fy/BASE_E6_2/mquant/tis/frp/EawBattleP.py",
+      "class_file_realpath": "/dwdhome/fy/BASE_E6_2/mquant/tis/frp/EawBattleP.py",
+      "runtime_type": "Proxy(WallOccurrenceFao)",
+      "ppdict": {
+        "wallOccurrenceSource(WallAssembler).parameter_set_id": "wall-default",
+        "wallOccurrenceSource(WallAssembler).qt_freq": "1d",
+        "wallOccurrenceSource(WallAssembler).qt_n": 30,
+        "wallOccurrenceSource(WallAssembler).qt_quantile": 0.997,
+        "wallOccurrenceSource(WallAssembler).w_depth_ref_ticks": 1200,
+        "wallOccurrenceSource(WallAssembler).large_quote_ratio_min": 1.0,
+        "wallOccurrenceSource(WallAssembler).allow_zero_qt_fallback": false,
+        "wallOccurrenceSource(WallAssembler).thick_vs_hi_ratio": 1.0,
+        "wallOccurrenceSource(WallAssembler).thin_vs_mid_ratio": 0.7,
+        "wallOccurrenceSource(WallAssembler).allow_thin_brick": false,
+        "wallOccurrenceSource(WallAssembler).p_wall_ticks": 1,
+        "wallOccurrenceSource(WallAssembler).t_wall_ticks": 6,
+        "wallOccurrenceSource(WallAssembler).near_band_ticks": null,
+        "wallOccurrenceSource(WallAssembler).far_band_ticks": null,
+        "wallOccurrenceSource(WallAssembler).connect_max_core_dist_ticks": null,
+        "wallOccurrenceSource(WallAssembler).connect_gap_max_ticks": null,
+        "wallOccurrenceSource(WallAssembler).support_buffer_keep_ticks": null,
+        "wallOccurrenceSource(WallAssembler).thin_eval_window_ticks": null,
+        "wallOccurrenceSource(WallAssembler).band_update_min_shift_ticks": null,
+        "wallOccurrenceSource(WallAssembler).dormant_no_presence_ticks": null,
+        "wallOccurrenceSource(WallAssembler).dormant_far_ticks": null,
+        "wallOccurrenceSource(WallAssembler).end_far_hold_ticks": null,
+        "wallOccurrenceSource(WallAssembler).end_far_ticks": null,
+        "wallOccurrenceSource(WallAssembler).break_after_no_presence_ticks": null,
+        "wallOccurrenceSource(WallAssembler).wall_dead_timeout_ticks": null,
+        "wallOccurrenceSource(WallAssembler).allow_brick_join_dormant": true,
+        "wallOccurrenceSource(WallAssembler).thin_contact_min_hits": 3,
+        "wallOccurrenceSource(WallAssembler).thin_contact_frac_end": 0.6
+      },
+      "ppid": "WallOccurrenceFao_3576d93bfbb7265981be6256bf85639b5e89bf7b",
+      "ggjson": "{\"__tag__\":\"WallOccurrenceFao\",\"wallOccurrenceSource\":{\"__tag__\":\"WallAssembler\",\"allow_brick_join_dormant\":true,\"allow_thin_brick\":false,\"allow_zero_qt_fallback\":false,\"band_update_min_shift_ticks\":null,\"break_after_no_presence_ticks\":null,\"connect_gap_max_ticks\":null,\"connect_max_core_dist_ticks\":null,\"dormant_far_ticks\":null,\"dormant_no_presence_ticks\":null,\"end_far_hold_ticks\":null,\"end_far_ticks\":null,\"far_band_ticks\":null,\"large_quote_ratio_min\":1,\"near_band_ticks\":null,\"p_wall_ticks\":1,\"parameter_set_id\":\"wall-default\",\"qt_freq\":\"1d\",\"qt_n\":30,\"qt_quantile\":0.997,\"support_buffer_keep_ticks\":null,\"t_wall_ticks\":6,\"thick_vs_hi_ratio\":1,\"thin_contact_frac_end\":0.6,\"thin_contact_min_hits\":3,\"thin_eval_window_ticks\":null,\"thin_vs_mid_ratio\":0.7,\"w_depth_ref_ticks\":1200,\"wall_dead_timeout_ticks\":null}}",
+      "full_dir": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallOccurrenceFao/d/a/7/f/f/8/7/58ee959cdd92d9f8d06b8e619bcfc1299/rb.night_end_at_2300",
+      "gfull_dir": null,
+      "cal_type": "CalType.OnlyRead"
+    },
+    "source": {
+      "declared_class": "WallAssembler",
+      "class_file": "/dwdhome/fy/BASE_E6_2/mquant/tis/hf/prel0/wall_assembler.py",
+      "class_file_realpath": "/dwdhome/fy/BASE_E6_2/mquant/tis/hf/prel0/wall_assembler.py",
+      "runtime_type": "Proxy(WallAssembler)",
+      "ppdict": {
+        "parameter_set_id": "wall-default",
+        "qt_freq": "1d",
+        "qt_n": 30,
+        "qt_quantile": 0.997,
+        "w_depth_ref_ticks": 1200,
+        "large_quote_ratio_min": 1.0,
+        "allow_zero_qt_fallback": false,
+        "thick_vs_hi_ratio": 1.0,
+        "thin_vs_mid_ratio": 0.7,
+        "allow_thin_brick": false,
+        "p_wall_ticks": 1,
+        "t_wall_ticks": 6,
+        "near_band_ticks": null,
+        "far_band_ticks": null,
+        "connect_max_core_dist_ticks": null,
+        "connect_gap_max_ticks": null,
+        "support_buffer_keep_ticks": null,
+        "thin_eval_window_ticks": null,
+        "band_update_min_shift_ticks": null,
+        "dormant_no_presence_ticks": null,
+        "dormant_far_ticks": null,
+        "end_far_hold_ticks": null,
+        "end_far_ticks": null,
+        "break_after_no_presence_ticks": null,
+        "wall_dead_timeout_ticks": null,
+        "allow_brick_join_dormant": true,
+        "thin_contact_min_hits": 3,
+        "thin_contact_frac_end": 0.6
+      },
+      "ppid": "WallAssembler_f32460448c4bde6d0a683cfc262808694c9f0a75",
+      "ggjson": "{\"__tag__\":\"WallAssembler\",\"allow_brick_join_dormant\":true,\"allow_thin_brick\":false,\"allow_zero_qt_fallback\":false,\"band_update_min_shift_ticks\":null,\"break_after_no_presence_ticks\":null,\"connect_gap_max_ticks\":null,\"connect_max_core_dist_ticks\":null,\"dormant_far_ticks\":null,\"dormant_no_presence_ticks\":null,\"end_far_hold_ticks\":null,\"end_far_ticks\":null,\"far_band_ticks\":null,\"large_quote_ratio_min\":1,\"near_band_ticks\":null,\"p_wall_ticks\":1,\"parameter_set_id\":\"wall-default\",\"qt_freq\":\"1d\",\"qt_n\":30,\"qt_quantile\":0.997,\"support_buffer_keep_ticks\":null,\"t_wall_ticks\":6,\"thick_vs_hi_ratio\":1,\"thin_contact_frac_end\":0.6,\"thin_contact_min_hits\":3,\"thin_eval_window_ticks\":null,\"thin_vs_mid_ratio\":0.7,\"w_depth_ref_ticks\":1200,\"wall_dead_timeout_ticks\":null}",
+      "full_dir": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300",
+      "gfull_dir": null,
+      "cal_type": "CalType.Cache"
+    }
+  },
+  "artifact_checks": {
+    "feature": {
+      "full_dir": {
+        "directory": {
+          "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/EawP1WallLifecycleFrp/1/c/b/0/c/1/4/44aea11813b85d33becc06242f43621b6/rb.night_end_at_2300",
+          "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/EawP1WallLifecycleFrp/1/c/b/0/c/1/4/44aea11813b85d33becc06242f43621b6/rb.night_end_at_2300",
+          "exists": true,
+          "size": 9,
+          "mtime_ns": 1787465291267210275,
+          "inode": 72730319
+        },
+        "fields.json": {
+          "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/EawP1WallLifecycleFrp/1/c/b/0/c/1/4/44aea11813b85d33becc06242f43621b6/rb.night_end_at_2300/fields.json",
+          "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/EawP1WallLifecycleFrp/1/c/b/0/c/1/4/44aea11813b85d33becc06242f43621b6/rb.night_end_at_2300/fields.json",
+          "exists": true,
+          "size": 166,
+          "mtime_ns": 1787465291266792948,
+          "inode": 72730410,
+          "sha256": "3c538ca68d248f22776ee6698a94546464c2cd9ab6836efa2ecbca95c1ff2b46",
+          "content": {
+            "wall_current_view": "adt@MulWrap_P1WallCurrentStorage",
+            "wall_diagnostics": "adt@MulWrap_P1DiagnosticStorage",
+            "wall_occurrences": "adt@MulWrap_P1WallOccurrenceStorage"
+          }
+        },
+        "p1_receipts/wall_lifecycle.json": {
+          "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/EawP1WallLifecycleFrp/1/c/b/0/c/1/4/44aea11813b85d33becc06242f43621b6/rb.night_end_at_2300/p1_receipts/wall_lifecycle.json",
+          "exists": false
+        },
+        "direct_entries": [
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/EawP1WallLifecycleFrp/1/c/b/0/c/1/4/44aea11813b85d33becc06242f43621b6/rb.night_end_at_2300/fields.json",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/EawP1WallLifecycleFrp/1/c/b/0/c/1/4/44aea11813b85d33becc06242f43621b6/rb.night_end_at_2300/fields.json",
+            "exists": true,
+            "size": 166,
+            "mtime_ns": 1787465291266792948,
+            "inode": 72730410
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/EawP1WallLifecycleFrp/1/c/b/0/c/1/4/44aea11813b85d33becc06242f43621b6/rb.night_end_at_2300/wall_current_view",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/EawP1WallLifecycleFrp/1/c/b/0/c/1/4/44aea11813b85d33becc06242f43621b6/rb.night_end_at_2300/wall_current_view",
+            "exists": true,
+            "size": 7,
+            "mtime_ns": 1787465288370897486,
+            "inode": 72730320
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/EawP1WallLifecycleFrp/1/c/b/0/c/1/4/44aea11813b85d33becc06242f43621b6/rb.night_end_at_2300/wall_current_view.__ts__.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/EawP1WallLifecycleFrp/1/c/b/0/c/1/4/44aea11813b85d33becc06242f43621b6/rb.night_end_at_2300/wall_current_view.__ts__.dba",
+            "exists": true,
+            "size": 118928,
+            "mtime_ns": 1787465288488094711,
+            "inode": 72730409
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/EawP1WallLifecycleFrp/1/c/b/0/c/1/4/44aea11813b85d33becc06242f43621b6/rb.night_end_at_2300/wall_diagnostics",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/EawP1WallLifecycleFrp/1/c/b/0/c/1/4/44aea11813b85d33becc06242f43621b6/rb.night_end_at_2300/wall_diagnostics",
+            "exists": true,
+            "size": 7,
+            "mtime_ns": 1787465288521737492,
+            "inode": 72730328
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/EawP1WallLifecycleFrp/1/c/b/0/c/1/4/44aea11813b85d33becc06242f43621b6/rb.night_end_at_2300/wall_diagnostics.__ts__.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/EawP1WallLifecycleFrp/1/c/b/0/c/1/4/44aea11813b85d33becc06242f43621b6/rb.night_end_at_2300/wall_diagnostics.__ts__.dba",
+            "exists": true,
+            "size": 2688,
+            "mtime_ns": 1787465288557801525,
+            "inode": 72730516
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/EawP1WallLifecycleFrp/1/c/b/0/c/1/4/44aea11813b85d33becc06242f43621b6/rb.night_end_at_2300/wall_occurrences",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/EawP1WallLifecycleFrp/1/c/b/0/c/1/4/44aea11813b85d33becc06242f43621b6/rb.night_end_at_2300/wall_occurrences",
+            "exists": true,
+            "size": 7,
+            "mtime_ns": 1787465290483569757,
+            "inode": 72730650
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/EawP1WallLifecycleFrp/1/c/b/0/c/1/4/44aea11813b85d33becc06242f43621b6/rb.night_end_at_2300/wall_occurrences.__ts__.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/EawP1WallLifecycleFrp/1/c/b/0/c/1/4/44aea11813b85d33becc06242f43621b6/rb.night_end_at_2300/wall_occurrences.__ts__.dba",
+            "exists": true,
+            "size": 118928,
+            "mtime_ns": 1787465291263770170,
+            "inode": 72730534
+          }
+        ],
+        "direct_entries_total": 7,
+        "direct_entries_truncated": false
+      }
+    },
+    "input": {
+      "full_dir": {
+        "directory": {
+          "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallOccurrenceFao/d/a/7/f/f/8/7/58ee959cdd92d9f8d06b8e619bcfc1299/rb.night_end_at_2300",
+          "exists": false
+        },
+        "fields.json": {
+          "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallOccurrenceFao/d/a/7/f/f/8/7/58ee959cdd92d9f8d06b8e619bcfc1299/rb.night_end_at_2300/fields.json",
+          "exists": false
+        },
+        "p1_receipts/wall_lifecycle.json": {
+          "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallOccurrenceFao/d/a/7/f/f/8/7/58ee959cdd92d9f8d06b8e619bcfc1299/rb.night_end_at_2300/p1_receipts/wall_lifecycle.json",
+          "exists": false
+        }
+      }
+    },
+    "source": {
+      "full_dir": {
+        "directory": {
+          "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300",
+          "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300",
+          "exists": true,
+          "size": 79,
+          "mtime_ns": 1787404509025550865,
+          "inode": 72728312
+        },
+        "fields.json": {
+          "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/fields.json",
+          "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/fields.json",
+          "exists": true,
+          "size": 1638,
+          "mtime_ns": 1787404508871737172,
+          "inode": 72728861,
+          "sha256": "8485e5f0a651ae992c96cbd49d0172fd7fa48492ee65652c7475ba5c4ddf6474",
+          "content": {
+            "wall__stream": {
+              "availability_code": "i1",
+              "band_hi": "f8",
+              "band_lo": "f8",
+              "chunk_end_ts": "datetime64[ns]",
+              "chunk_id": "int64",
+              "core_price": "f8",
+              "event_type_code": "int64",
+              "occurrence_ordinal": "int64",
+              "reason_code": "f8",
+              "side_code": "int64",
+              "status_code": "int64",
+              "ts": "datetime64[ns]",
+              "uti": "int64",
+              "wall_id": "int64"
+            },
+            "wall__stream__occ0001": {
+              "availability_code": "i1",
+              "band_hi": "f8",
+              "band_lo": "f8",
+              "chunk_end_ts": "datetime64[ns]",
+              "chunk_id": "int64",
+              "core_price": "f8",
+              "event_type_code": "int64",
+              "occurrence_ordinal": "int64",
+              "reason_code": "f8",
+              "side_code": "int64",
+              "status_code": "int64",
+              "ts": "datetime64[ns]",
+              "uti": "int64",
+              "wall_id": "int64"
+            },
+            "wall__stream__occ0002": {
+              "availability_code": "i1",
+              "band_hi": "f8",
+              "band_lo": "f8",
+              "chunk_end_ts": "datetime64[ns]",
+              "chunk_id": "int64",
+              "core_price": "f8",
+              "event_type_code": "int64",
+              "occurrence_ordinal": "int64",
+              "reason_code": "f8",
+              "side_code": "int64",
+              "status_code": "int64",
+              "ts": "datetime64[ns]",
+              "uti": "int64",
+              "wall_id": "int64"
+            },
+            "wall_assembler_sparse_events": {
+              "availability_code": "i1",
+              "band_hi": "f8",
+              "band_lo": "f8",
+              "chunk_end_ts": "datetime64[ns]",
+              "chunk_id": "int64",
+              "core_price": "f8",
+              "event_type_code": "int64",
+              "reason_code": "f8",
+              "side_code": "int64",
+              "status_code": "int64",
+              "ts": "datetime64[ns]",
+              "uti": "int64",
+              "wall_id": "int64"
+            },
+            "wall_assembler_state_trace": {
+              "chunk_id": "int64",
+              "ts": "datetime64[ns]",
+              "uti": "int64",
+              "wall_band_hi_ask": "f8",
+              "wall_band_hi_bid": "f8",
+              "wall_band_lo_ask": "f8",
+              "wall_band_lo_bid": "f8",
+              "wall_core_price_ask": "f8",
+              "wall_core_price_bid": "f8",
+              "wall_id_ask": "int64",
+              "wall_id_bid": "int64",
+              "wall_side_code_ask": "i1",
+              "wall_side_code_bid": "i1",
+              "wall_status_code_ask": "i1",
+              "wall_status_code_bid": "i1"
+            }
+          }
+        },
+        "p1_receipts/wall_lifecycle.json": {
+          "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/p1_receipts/wall_lifecycle.json",
+          "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/p1_receipts/wall_lifecycle.json",
+          "exists": true,
+          "size": 1836,
+          "mtime_ns": 1787404509028099776,
+          "inode": 72727601,
+          "sha256": "ae664248843639fe222821c481baf145d82a32f27a2373dc7c8a631c6a8a9a4e",
+          "content": {
+            "actual_business_parameters": {
+              "allow_brick_join_dormant": true,
+              "band_update_min_shift_ticks": 1,
+              "break_after_no_presence_ticks": 3,
+              "connect_gap_max_ticks": 3,
+              "connect_max_core_dist_ticks": 1,
+              "dormant_far_ticks": 2,
+              "dormant_no_presence_ticks": 3,
+              "end_far_hold_ticks": 3,
+              "end_far_ticks": 2,
+              "far_band_ticks": 2,
+              "near_band_ticks": 1,
+              "p_wall_ticks": 1,
+              "support_buffer_keep_ticks": 6,
+              "t_wall_ticks": 6,
+              "thin_contact_frac_end": 0.6,
+              "thin_contact_min_hits": 3,
+              "thin_eval_window_ticks": 3,
+              "wall_dead_timeout_ticks": 12
+            },
+            "artifact_location": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300",
+            "code_version": "git:61988a3723ebadc861b4e94284254275be843255+source-sha256:47c09eb4ac84034ab9140be79249c338e266fa2b922ce1c14c021a3857b771f6",
+            "direct_upstream_artifacts": [],
+            "error": null,
+            "feature_instance": "WallAssembler:wall-default",
+            "method_snapshot_fingerprint": null,
+            "parameter_set_id": "wall-default",
+            "producer_private_parameters": {
+              "allow_thin_brick": false,
+              "allow_zero_qt_fallback": false,
+              "eps_vol": 1e-12,
+              "large_quote_ratio_min": 1.0,
+              "qt_freq": "1d",
+              "qt_n": 30,
+              "qt_quantile": 0.997,
+              "thick_vs_hi_ratio": 1.0,
+              "thin_vs_mid_ratio": 0.7,
+              "w_depth_ref_ticks": 1200
+            },
+            "product_kind": "wall_lifecycle",
+            "schema_version": "wall_lifecycle-v1.6.1",
+            "source_scope": {
+              "calendar_or_session": "night_end_at_2300",
+              "market_source_cut": "market:rb:night_end_at_2300:time:2020-12-01T09:00:00.500000..2021-02-22T23:00:00",
+              "target": "rb",
+              "time_range": "time:2020-12-01T09:00:00.500000..2021-02-22T23:00:00"
+            },
+            "status": "success"
+          }
+        },
+        "direct_entries": [
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/fields.json",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/fields.json",
+            "exists": true,
+            "size": 1638,
+            "mtime_ns": 1787404508871737172,
+            "inode": 72728861
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/p1_receipts",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/p1_receipts",
+            "exists": true,
+            "size": 3,
+            "mtime_ns": 1787404509028610734,
+            "inode": 72728750
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream.__ts__.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream.__ts__.dba",
+            "exists": true,
+            "size": 121904,
+            "mtime_ns": 1787404508631715729,
+            "inode": 72729151
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream.availability_code.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream.availability_code.dba",
+            "exists": true,
+            "size": 15294,
+            "mtime_ns": 1787404508622252102,
+            "inode": 72728971
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream.band_hi.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream.band_hi.dba",
+            "exists": true,
+            "size": 121904,
+            "mtime_ns": 1787404508586535529,
+            "inode": 72728970
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream.band_lo.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream.band_lo.dba",
+            "exists": true,
+            "size": 121904,
+            "mtime_ns": 1787404508579034516,
+            "inode": 72727593
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream.chunk_end_ts.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream.chunk_end_ts.dba",
+            "exists": true,
+            "size": 121904,
+            "mtime_ns": 1787404508542687815,
+            "inode": 72727592
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream.chunk_id.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream.chunk_id.dba",
+            "exists": true,
+            "size": 121904,
+            "mtime_ns": 1787404508535239237,
+            "inode": 72728968
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream.core_price.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream.core_price.dba",
+            "exists": true,
+            "size": 121904,
+            "mtime_ns": 1787404508571839878,
+            "inode": 72728483
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream.event_type_code.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream.event_type_code.dba",
+            "exists": true,
+            "size": 121904,
+            "mtime_ns": 1787404508602662671,
+            "inode": 72729150
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream.occurrence_ordinal.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream.occurrence_ordinal.dba",
+            "exists": true,
+            "size": 121904,
+            "mtime_ns": 1787404508629773899,
+            "inode": 72728854
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream.reason_code.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream.reason_code.dba",
+            "exists": true,
+            "size": 121904,
+            "mtime_ns": 1787404508616203680,
+            "inode": 72727594
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream.side_code.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream.side_code.dba",
+            "exists": true,
+            "size": 121904,
+            "mtime_ns": 1787404508609909363,
+            "inode": 72728484
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream.status_code.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream.status_code.dba",
+            "exists": true,
+            "size": 121904,
+            "mtime_ns": 1787404508595177049,
+            "inode": 72728853
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream.ts.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream.ts.dba",
+            "exists": true,
+            "size": 121904,
+            "mtime_ns": 1787404508557463450,
+            "inode": 72728852
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream.uti.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream.uti.dba",
+            "exists": true,
+            "size": 121904,
+            "mtime_ns": 1787404508549965721,
+            "inode": 72728969
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream.wall_id.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream.wall_id.dba",
+            "exists": true,
+            "size": 121904,
+            "mtime_ns": 1787404508564623211,
+            "inode": 72729149
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0001.__ts__.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0001.__ts__.dba",
+            "exists": true,
+            "size": 9224,
+            "mtime_ns": 1787404508697351595,
+            "inode": 72729154
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0001.availability_code.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0001.availability_code.dba",
+            "exists": true,
+            "size": 1209,
+            "mtime_ns": 1787404508692580823,
+            "inode": 72728975
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0001.band_hi.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0001.band_hi.dba",
+            "exists": true,
+            "size": 9224,
+            "mtime_ns": 1787404508670837161,
+            "inode": 72728974
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0001.band_lo.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0001.band_lo.dba",
+            "exists": true,
+            "size": 9224,
+            "mtime_ns": 1787404508666513235,
+            "inode": 72727596
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0001.chunk_end_ts.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0001.chunk_end_ts.dba",
+            "exists": true,
+            "size": 9224,
+            "mtime_ns": 1787404508645209257,
+            "inode": 72727595
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0001.chunk_id.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0001.chunk_id.dba",
+            "exists": true,
+            "size": 9224,
+            "mtime_ns": 1787404508640832887,
+            "inode": 72728972
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0001.core_price.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0001.core_price.dba",
+            "exists": true,
+            "size": 9224,
+            "mtime_ns": 1787404508662421624,
+            "inode": 72728485
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0001.event_type_code.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0001.event_type_code.dba",
+            "exists": true,
+            "size": 9224,
+            "mtime_ns": 1787404508679483231,
+            "inode": 72729153
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0001.occurrence_ordinal.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0001.occurrence_ordinal.dba",
+            "exists": true,
+            "size": 9224,
+            "mtime_ns": 1787404508696738822,
+            "inode": 72728857
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0001.reason_code.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0001.reason_code.dba",
+            "exists": true,
+            "size": 9224,
+            "mtime_ns": 1787404508687789017,
+            "inode": 72727597
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0001.side_code.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0001.side_code.dba",
+            "exists": true,
+            "size": 9224,
+            "mtime_ns": 1787404508683696178,
+            "inode": 72728486
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0001.status_code.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0001.status_code.dba",
+            "exists": true,
+            "size": 9224,
+            "mtime_ns": 1787404508675187280,
+            "inode": 72728856
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0001.ts.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0001.ts.dba",
+            "exists": true,
+            "size": 9224,
+            "mtime_ns": 1787404508653723672,
+            "inode": 72728855
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0001.uti.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0001.uti.dba",
+            "exists": true,
+            "size": 9224,
+            "mtime_ns": 1787404508649460248,
+            "inode": 72728973
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0001.wall_id.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0001.wall_id.dba",
+            "exists": true,
+            "size": 9224,
+            "mtime_ns": 1787404508658262718,
+            "inode": 72729152
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0002.__ts__.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0002.__ts__.dba",
+            "exists": true,
+            "size": 312,
+            "mtime_ns": 1787404508763031902,
+            "inode": 72729157
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0002.availability_code.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0002.availability_code.dba",
+            "exists": true,
+            "size": 95,
+            "mtime_ns": 1787404508758681489,
+            "inode": 72728979
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0002.band_hi.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0002.band_hi.dba",
+            "exists": true,
+            "size": 312,
+            "mtime_ns": 1787404508739063958,
+            "inode": 72728978
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0002.band_lo.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0002.band_lo.dba",
+            "exists": true,
+            "size": 312,
+            "mtime_ns": 1787404508735145649,
+            "inode": 72727599
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0002.chunk_end_ts.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0002.chunk_end_ts.dba",
+            "exists": true,
+            "size": 312,
+            "mtime_ns": 1787404508710150392,
+            "inode": 72727598
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0002.chunk_id.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0002.chunk_id.dba",
+            "exists": true,
+            "size": 312,
+            "mtime_ns": 1787404508706299711,
+            "inode": 72728976
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0002.core_price.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0002.core_price.dba",
+            "exists": true,
+            "size": 312,
+            "mtime_ns": 1787404508731339835,
+            "inode": 72728487
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0002.event_type_code.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0002.event_type_code.dba",
+            "exists": true,
+            "size": 312,
+            "mtime_ns": 1787404508746879549,
+            "inode": 72729156
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0002.occurrence_ordinal.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0002.occurrence_ordinal.dba",
+            "exists": true,
+            "size": 312,
+            "mtime_ns": 1787404508762565535,
+            "inode": 72728860
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0002.reason_code.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0002.reason_code.dba",
+            "exists": true,
+            "size": 312,
+            "mtime_ns": 1787404508754728396,
+            "inode": 72727600
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0002.side_code.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0002.side_code.dba",
+            "exists": true,
+            "size": 312,
+            "mtime_ns": 1787404508750745007,
+            "inode": 72728488
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0002.status_code.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0002.status_code.dba",
+            "exists": true,
+            "size": 312,
+            "mtime_ns": 1787404508742997267,
+            "inode": 72728859
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0002.ts.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0002.ts.dba",
+            "exists": true,
+            "size": 312,
+            "mtime_ns": 1787404508717802067,
+            "inode": 72728858
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0002.uti.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0002.uti.dba",
+            "exists": true,
+            "size": 312,
+            "mtime_ns": 1787404508713962399,
+            "inode": 72728977
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0002.wall_id.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0002.wall_id.dba",
+            "exists": true,
+            "size": 312,
+            "mtime_ns": 1787404508721564376,
+            "inode": 72729155
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_sparse_events.__ts__.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_sparse_events.__ts__.dba",
+            "exists": true,
+            "size": 131312,
+            "mtime_ns": 1787404508515763628,
+            "inode": 72728967
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_sparse_events.availability_code.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_sparse_events.availability_code.dba",
+            "exists": true,
+            "size": 16470,
+            "mtime_ns": 1787404508513751749,
+            "inode": 72727591
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_sparse_events.band_hi.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_sparse_events.band_hi.dba",
+            "exists": true,
+            "size": 131312,
+            "mtime_ns": 1787404508475860297,
+            "inode": 72727590
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_sparse_events.band_lo.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_sparse_events.band_lo.dba",
+            "exists": true,
+            "size": 131312,
+            "mtime_ns": 1787404508467708311,
+            "inode": 72728850
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_sparse_events.chunk_end_ts.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_sparse_events.chunk_end_ts.dba",
+            "exists": true,
+            "size": 131312,
+            "mtime_ns": 1787404508422799951,
+            "inode": 72728849
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_sparse_events.chunk_id.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_sparse_events.chunk_id.dba",
+            "exists": true,
+            "size": 131312,
+            "mtime_ns": 1787404508406677548,
+            "inode": 72727588
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_sparse_events.core_price.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_sparse_events.core_price.dba",
+            "exists": true,
+            "size": 131312,
+            "mtime_ns": 1787404508459736548,
+            "inode": 72728481
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_sparse_events.event_type_code.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_sparse_events.event_type_code.dba",
+            "exists": true,
+            "size": 131312,
+            "mtime_ns": 1787404508492056864,
+            "inode": 72728966
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_sparse_events.reason_code.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_sparse_events.reason_code.dba",
+            "exists": true,
+            "size": 131312,
+            "mtime_ns": 1787404508507019232,
+            "inode": 72728851
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_sparse_events.side_code.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_sparse_events.side_code.dba",
+            "exists": true,
+            "size": 131312,
+            "mtime_ns": 1787404508500351456,
+            "inode": 72728482
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_sparse_events.status_code.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_sparse_events.status_code.dba",
+            "exists": true,
+            "size": 131312,
+            "mtime_ns": 1787404508483922665,
+            "inode": 72729148
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_sparse_events.ts.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_sparse_events.ts.dba",
+            "exists": true,
+            "size": 131312,
+            "mtime_ns": 1787404508443907333,
+            "inode": 72729147
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_sparse_events.uti.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_sparse_events.uti.dba",
+            "exists": true,
+            "size": 131312,
+            "mtime_ns": 1787404508435147184,
+            "inode": 72727589
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_sparse_events.wall_id.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_sparse_events.wall_id.dba",
+            "exists": true,
+            "size": 131312,
+            "mtime_ns": 1787404508451939521,
+            "inode": 72728965
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_state_trace.__ts__.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_state_trace.__ts__.dba",
+            "exists": true,
+            "size": 17654464,
+            "mtime_ns": 1787404508812857307,
+            "inode": 72728745
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_state_trace.chunk_id.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_state_trace.chunk_id.dba",
+            "exists": true,
+            "size": 17654464,
+            "mtime_ns": 1787404508866672045,
+            "inode": 72728313
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_state_trace.ts.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_state_trace.ts.dba",
+            "exists": true,
+            "size": 17654464,
+            "mtime_ns": 1787404506995652313,
+            "inode": 72728314
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_state_trace.uti.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_state_trace.uti.dba",
+            "exists": true,
+            "size": 17654464,
+            "mtime_ns": 1787404506845630999,
+            "inode": 72729143
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_state_trace.wall_band_hi_ask.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_state_trace.wall_band_hi_ask.dba",
+            "exists": true,
+            "size": 17654464,
+            "mtime_ns": 1787404508225891687,
+            "inode": 72728319
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_state_trace.wall_band_hi_bid.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_state_trace.wall_band_hi_bid.dba",
+            "exists": true,
+            "size": 17654464,
+            "mtime_ns": 1787404507538712393,
+            "inode": 72728747
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_state_trace.wall_band_lo_ask.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_state_trace.wall_band_lo_ask.dba",
+            "exists": true,
+            "size": 17654464,
+            "mtime_ns": 1787404508075857367,
+            "inode": 72728749
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_state_trace.wall_band_lo_bid.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_state_trace.wall_band_lo_bid.dba",
+            "exists": true,
+            "size": 17654464,
+            "mtime_ns": 1787404507365720800,
+            "inode": 72728316
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_state_trace.wall_core_price_ask.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_state_trace.wall_core_price_ask.dba",
+            "exists": true,
+            "size": 17654464,
+            "mtime_ns": 1787404508386190289,
+            "inode": 72729146
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_state_trace.wall_core_price_bid.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_state_trace.wall_core_price_bid.dba",
+            "exists": true,
+            "size": 17654464,
+            "mtime_ns": 1787404507688823208,
+            "inode": 72728748
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_state_trace.wall_id_ask.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_state_trace.wall_id_ask.dba",
+            "exists": true,
+            "size": 17654464,
+            "mtime_ns": 1787404507888134485,
+            "inode": 72728317
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_state_trace.wall_id_bid.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_state_trace.wall_id_bid.dba",
+            "exists": true,
+            "size": 17654464,
+            "mtime_ns": 1787404507146851713,
+            "inode": 72728746
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_state_trace.wall_side_code_ask.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_state_trace.wall_side_code_ask.dba",
+            "exists": true,
+            "size": 2206864,
+            "mtime_ns": 1787404507906439667,
+            "inode": 72729145
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_state_trace.wall_side_code_bid.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_state_trace.wall_side_code_bid.dba",
+            "exists": true,
+            "size": 2206864,
+            "mtime_ns": 1787404507201061615,
+            "inode": 72728315
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_state_trace.wall_status_code_ask.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_state_trace.wall_status_code_ask.dba",
+            "exists": true,
+            "size": 2206864,
+            "mtime_ns": 1787404507925245634,
+            "inode": 72728318
+          },
+          {
+            "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_state_trace.wall_status_code_bid.dba",
+            "realpath": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_state_trace.wall_status_code_bid.dba",
+            "exists": true,
+            "size": 2206864,
+            "mtime_ns": 1787404507214998516,
+            "inode": 72729144
+          }
+        ],
+        "direct_entries_total": 77,
+        "direct_entries_truncated": false
+      }
+    }
+  },
+  "loaded_modules": {
+    "m3sof": {
+      "file": "/dwdhome/fy/BASE_E6_2/m3sof/__init__.py",
+      "realpath": "/dwdhome/fy/BASE_E6_2/m3sof/__init__.py"
+    },
+    "m3tt": {
+      "file": "/dwdhome/fy/BASE_E6_2/m3tt/__init__.py",
+      "realpath": "/dwdhome/fy/BASE_E6_2/m3tt/__init__.py"
+    },
+    "mquant.frame": {
+      "file": "/dwdhome/fy/BASE_E6_2/mquant/frame/__init__.py",
+      "realpath": "/dwdhome/fy/BASE_E6_2/mquant/frame/__init__.py"
+    },
+    "mquant.frame.lang.frp": {
+      "file": "/dwdhome/fy/BASE_E6_2/mquant/frame/lang/frp/__init__.py",
+      "realpath": "/dwdhome/fy/BASE_E6_2/mquant/frame/lang/frp/__init__.py"
+    },
+    "mquant.frame.lang.frp.base": {
+      "file": "/dwdhome/fy/BASE_E6_2/mquant/frame/lang/frp/base.py",
+      "realpath": "/dwdhome/fy/BASE_E6_2/mquant/frame/lang/frp/base.py"
+    },
+    "mquant.frame.lang.frp.tis": {
+      "file": "/dwdhome/fy/BASE_E6_2/mquant/frame/lang/frp/tis.py",
+      "realpath": "/dwdhome/fy/BASE_E6_2/mquant/frame/lang/frp/tis.py"
+    },
+    "mquant.frame.lang.internal.dao.frp": {
+      "file": "/dwdhome/fy/BASE_E6_2/mquant/frame/lang/internal/dao/frp/__init__.py",
+      "realpath": "/dwdhome/fy/BASE_E6_2/mquant/frame/lang/internal/dao/frp/__init__.py"
+    },
+    "mquant.frame.lang.internal.dao.frp.dba": {
+      "file": "/dwdhome/fy/BASE_E6_2/mquant/frame/lang/internal/dao/frp/dba.py",
+      "realpath": "/dwdhome/fy/BASE_E6_2/mquant/frame/lang/internal/dao/frp/dba.py"
+    },
+    "mquant.quant": {
+      "file": "/dwdhome/fy/BASE_E6_2/mquant/quant/__init__.py",
+      "realpath": "/dwdhome/fy/BASE_E6_2/mquant/quant/__init__.py"
+    },
+    "mquant.tis.frp.EawBattleP": {
+      "file": "/dwdhome/fy/BASE_E6_2/mquant/tis/frp/EawBattleP.py",
+      "realpath": "/dwdhome/fy/BASE_E6_2/mquant/tis/frp/EawBattleP.py"
+    },
+    "mquant.tis.hf.prel0.p1_dba_export": {
+      "file": "/dwdhome/fy/BASE_E6_2/mquant/tis/hf/prel0/p1_dba_export.py",
+      "realpath": "/dwdhome/fy/BASE_E6_2/mquant/tis/hf/prel0/p1_dba_export.py"
+    },
+    "mquant.tis.hf.prel0.tick_quote_context": {
+      "file": "/dwdhome/fy/BASE_E6_2/mquant/tis/hf/prel0/tick_quote_context.py",
+      "realpath": "/dwdhome/fy/BASE_E6_2/mquant/tis/hf/prel0/tick_quote_context.py"
+    },
+    "mquant.tis.hf.prel0.tick_quote_context_core": {
+      "file": "/dwdhome/fy/BASE_E6_2/mquant/tis/hf/prel0/tick_quote_context_core.py",
+      "realpath": "/dwdhome/fy/BASE_E6_2/mquant/tis/hf/prel0/tick_quote_context_core.py"
+    },
+    "mquant.tis.hf.prel0.wall_assembler": {
+      "file": "/dwdhome/fy/BASE_E6_2/mquant/tis/hf/prel0/wall_assembler.py",
+      "realpath": "/dwdhome/fy/BASE_E6_2/mquant/tis/hf/prel0/wall_assembler.py"
+    },
+    "mquant.tis.hf.prel0.wall_assembler_core": {
+      "file": "/dwdhome/fy/BASE_E6_2/mquant/tis/hf/prel0/wall_assembler_core.py",
+      "realpath": "/dwdhome/fy/BASE_E6_2/mquant/tis/hf/prel0/wall_assembler_core.py"
+    },
+    "pydim": {
+      "file": "/dwdhome/fy/BASE_E6_2/pydim/__init__.py",
+      "realpath": "/dwdhome/fy/BASE_E6_2/pydim/__init__.py"
+    },
+    "pydim.dim.dbas": {
+      "file": "/dwdhome/fy/BASE_E6_2/pydim/dim/dbas.py",
+      "realpath": "/dwdhome/fy/BASE_E6_2/pydim/dim/dbas.py"
+    },
+    "pydim.dim.rt": {
+      "file": "/dwdhome/fy/BASE_E6_2/pydim/dim/rt.py",
+      "realpath": "/dwdhome/fy/BASE_E6_2/pydim/dim/rt.py"
+    }
+  },
+  "audit": [
+    {
+      "event": "subprocess.Popen",
+      "command": [
+        "uname",
+        "-p"
+      ],
+      "decision": "ALLOWED_READONLY"
+    }
+  ],
+  "lease": {
+    "checked_at_utc": "2026-11-16T05:34:24.395071+00:00",
+    "pid": 296712,
+    "state": "S",
+    "start_ticks": 58333981,
+    "inode": 13765718,
+    "competing_flock": "REFUSED",
+    "errno": 11,
+    "kernel_locks": [
+      "20: FLOCK  ADVISORY  WRITE 296712 00:53:13765718 0 EOF"
+    ]
+  },
+  "context_api": "m3sof.load_sof; OptContext source defaults black/[]/None retained",
+  "binding_succeeded": true,
+  "resolved_commands": {
+    "epm": "/usr/local/bin/epm",
+    "ts": null,
+    "python": "/m3c3/Linux/apps/anaconda3/bin/python"
+  },
+  "elapsed_seconds": 35.472442
+}

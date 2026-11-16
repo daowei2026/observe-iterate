@@ -1,0 +1,194 @@
+class StraApp:
+    """
+    StraEnv 其他扩展
+    1、获取以及检查所有特征类等
+    2、清楚类实例以及运行时环境等缓存
+    """
+
+    class_cache: Dict[str, "FaoCacheMeta"] = {}
+
+    @classmethod
+    def clear_cache(cls):
+        # 清除特征类实例缓存
+        for each in cls.class_cache.values():
+            each.clear_instance()
+        # 清除运行时缓存
+        FaoResultManager.clear_cache()
+
+    @classmethod
+    def push_class(cls, v):
+        """保存特征类"""
+        cls.class_cache[v.__name__] = v
+
+    @classmethod
+    def load_class(cls):
+        """加载所有特征类"""
+        return cls.class_cache
+
+    @classmethod
+    def get_class(cls, name: str, reget=True):
+        c = cls.class_cache.get(name, None)
+        if c is None and reget:
+            name = name.split("@")[0]  # ATR@"Test" 有可能为该格式
+            c = cls.class_cache.get(name, None)
+            if c is None and reget:
+                # 可能是函数特征，在不改变原有基础上，再查询一次
+                name = FuncUtil.hump(name)
+                c = cls.get_class(name, reget=False)
+        return c
+
+    @classmethod
+    def check_class(cls, name):
+        if settings.MQUANT_ON_CHECK:
+            return cls.get_class(name, reget=False)
+        return None
+
+
+class KwMeta(type):
+    """初始化类关键字列表"""
+
+    KEY_WORDS = set()  # set
+
+    def __new__(cls, name, bases, attrs):
+        res = type.__new__(cls, name, bases, attrs)
+        res.KEY_WORDS = res.KEY_WORDS.union(dir(res))
+        return res
+    
+
+class FaoCacheMeta(KwMeta):
+    """缓存实例Meta"""
+
+    instance_cache = None
+    cls_doc = object
+
+    def __new__(cls, name, bases, attrs):
+        res = super().__new__(cls, name, bases, attrs)
+        res.instance_cache = GeneralCache()
+        StraApp.push_class(res)
+        return res
+        df = df.replace(np.NaN, 0)
+        return df.where(df != df.shift()).dropna()
+
+    def __repr__(self):
+        return f"StatusBoolEventField"
+
+
+StatusBoolEventField = _StatusBoolEventField()
+
+
+class StoreFields:
+    """兼容旧版调用习惯"""
+
+    FloatField = FloatField
+    IntField = IntField
+
+    BoolEventField = BoolEventField
+    NanEventField = NanEventField
+    Nan0EventField = Nan0EventField
+
+    StatusEventField = StatusEventField
+    StatusBoolEventField = StatusBoolEventField
+
+
+class DbaUtil:
+    """ dba 读写工具类 """
+
+    @classmethod
+    def dbarray(
+        cls, full_dir, file_name, dt=f8, shape=None, access=mmap.ACCESS_READ
+    ) -> DbArray:
+        bwrite = access == mmap.ACCESS_WRITE
+        if bwrite:
+            file_path = f"{full_dir}/{file_name}.dba"
+
+            temp_file_name = f"{file_name}_{uuid.uuid1()}"
+import Frp.Instance.ISL.Eaw.P1.AttackSegmentBook
+import Frp.Instance.ISL.Eaw.P1.BuildActivity
+import Frp.Instance.ISL.Eaw.P1.Products
+import Frp.Instance.ISL.Eaw.P1.PublicStorage
+import Frp.Instance.ISL.Eaw.P1.WallLifecycle
+import Frp.Instance.ISLTC.AdtStorage (MulWrap (..))
+import Reflex (foldDyn, mergeWith)
+
+-- P1 writer 的现有 DBA 只要求 BSON 实例。实例留在产品 writer 内，避免让
+-- 共享接口脊柱反向承担 P1 的物理持久化责任；序列化对象仍是唯一 canonical
+from typing import *
+from ....core import *
+from ..base import AbsFao
+
+__all__ = ["AbstractFileDao", "AbstractFaoDao"]
+
+
+class AbstractFileDao(LoggingMixIn):
+    """数据存取对象接口"""
+
+    def is_exist_data(self) -> bool:
+        # 是否保存了数据
+        raise NotImplementedError
+
+    def __init__(self, feat: AbsFao):
+        self.feat = feat
+        self._init_attrs()
+
+    def _init_attrs(self):
+        pass
+
+    def __getattr__(self, key):
+        """没有的属性，则使用目标对象的属性"""
+        return getattr(self.feat, key)
+
+    def load(self, refresh=True):
+        """加载结果"""
+        pass
+
+    def dump(self, *args, **kwargs):
+        """保存结果"""
+        pass
+
+    @property
+    def full_dir(self):
+        return self.feat.full_dir
+
+    @property
+    def freq(self):
+        return self.feat.freq
+
+    @property
+    def file_name(self):
+        return self.feat.file_name or self.freq
+
+
+class AbstractFaoDao(AbstractFileDao):
+
+    def _init_attrs(self):
+        self.__tar_fields = {}
+
+    @property
+    def freq(self):
+        return self.feat.freq or "@"
+
+    @property
+    def tar_fields(self) -> dict:
+        # 同一特征不同目标对象字段可能不同
+        key = self.feat.tar_name
+        res = self.__tar_fields.get(key, None)
+        if res is None:
+            res = self.load_fields()
+            self.__tar_fields[key] = res
+        return res
+
+    def load_fields(self):
+        # 加载字段信息
+        raise NotImplementedError
+
+    def is_exist_data(self) -> bool:
+        # 是否保存了数据
+        raise NotImplementedError
+
+    def load(self, refresh=False):
+        """读取数据"""
+        raise NotImplementedError
+
+    def dump(self, *args, **kwargs):
+        """保存结果"""
+        raise NotImplementedError

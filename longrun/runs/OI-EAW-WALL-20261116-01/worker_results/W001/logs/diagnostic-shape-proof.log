@@ -1,0 +1,162 @@
+-- | 四个产品共用的物理诊断行。业务错误仍由各 DSU 的具名 sum type 定义；
+-- 这里只把 constructor 和参数拆成 DBA 可保存的基础字段。诊断数量本来就应
+-- 很少，因此不牺牲信息来追求列数最少。
+data P1DiagnosticStorage = P1DiagnosticStorage
+  { p1DiagnosticSource :: Text,
+    p1DiagnosticKind :: Text,
+    p1DiagnosticText1 :: Text,
+    p1DiagnosticText2 :: Text,
+    p1DiagnosticText3 :: Text,
+    p1DiagnosticDouble1 :: Double,
+    p1DiagnosticInt1 :: Int64,
+    p1DiagnosticInt2 :: Int64,
+    p1DiagnosticInt3 :: Int64
+  }
+  deriving (Eq, Show, Generic, ToBSON, FromBSON)
+
+wallOccurrenceToStorage :: WallLifecycleOccurrence -> P1WallOccurrenceStorage
+diagnosticsFromStorage stateFromStorage rows = do
+  let ingressRows = filter ((== "ingress") . p1DiagnosticSource) rows
+      stateRows = filter ((== "state") . p1DiagnosticSource) rows
+      unknownSources = filter (\row -> p1DiagnosticSource row /= "ingress" && p1DiagnosticSource row /= "state") rows
+  case unknownSources of
+    row : _ -> Left ("unknown P1 diagnostic source: " <> p1DiagnosticSource row)
+    [] ->
+      P1ProductDiagnostics
+        <$> traverse ingressErrorFromStorage ingressRows
+        <*> traverse stateFromStorage stateRows
+
+ingressErrorToStorage :: P1IngressError -> P1DiagnosticStorage
+ingressErrorToStorage value = case value of
+  MissingNumericField field -> (base "MissingNumericField") {p1DiagnosticText1 = field}
+  NonFiniteNumericField field number -> (base "NonFiniteNumericField") {p1DiagnosticText1 = field, p1DiagnosticDouble1 = number}
+  NonIntegralNumericField field number -> (base "NonIntegralNumericField") {p1DiagnosticText1 = field, p1DiagnosticDouble1 = number}
+  InvalidResultKey key -> (base "InvalidResultKey") {p1DiagnosticText1 = key}
+  UnknownNumericCode field code -> (base "UnknownNumericCode") {p1DiagnosticText1 = field, p1DiagnosticInt1 = fromIntegral code}
+  InvalidNumericDomain field detail -> (base "InvalidNumericDomain") {p1DiagnosticText1 = field, p1DiagnosticText2 = detail}
+  QualifiedUtiCountMismatch expected actual -> (base "QualifiedUtiCountMismatch") {p1DiagnosticInt1 = fromIntegral expected, p1DiagnosticInt2 = fromIntegral actual}
+  MissingExactUpstream product -> (base "MissingExactUpstream") {p1DiagnosticText1 = product}
+  ExactUpstreamMismatch product -> (base "ExactUpstreamMismatch") {p1DiagnosticText1 = product}
+  MissingAttackMethodSnapshot -> base "MissingAttackMethodSnapshot"
+  AttackProductReceiptMismatch detail -> (base "AttackProductReceiptMismatch") {p1DiagnosticText1 = detail}
+  MissingWallLocalNo localNo -> (base "MissingWallLocalNo") {p1DiagnosticInt1 = localNo}
+  ReceiptSourceScopeMismatch detail -> (base "ReceiptSourceScopeMismatch") {p1DiagnosticText1 = detail}
+  where
+    base = emptyDiagnostic "ingress"
+
+ingressErrorFromStorage :: P1DiagnosticStorage -> Either Text P1IngressError
+ingressErrorFromStorage stored = case p1DiagnosticKind stored of
+  "MissingNumericField" -> Right (MissingNumericField (p1DiagnosticText1 stored))
+  "NonFiniteNumericField" -> Right (NonFiniteNumericField (p1DiagnosticText1 stored) (p1DiagnosticDouble1 stored))
+  "NonIntegralNumericField" -> Right (NonIntegralNumericField (p1DiagnosticText1 stored) (p1DiagnosticDouble1 stored))
+  "InvalidResultKey" -> Right (InvalidResultKey (p1DiagnosticText1 stored))
+  "UnknownNumericCode" -> Right (UnknownNumericCode (p1DiagnosticText1 stored) (fromIntegral (p1DiagnosticInt1 stored)))
+  "InvalidNumericDomain" -> Right (InvalidNumericDomain (p1DiagnosticText1 stored) (p1DiagnosticText2 stored))
+  "QualifiedUtiCountMismatch" -> Right (QualifiedUtiCountMismatch (fromIntegral (p1DiagnosticInt1 stored)) (fromIntegral (p1DiagnosticInt2 stored)))
+  "MissingExactUpstream" -> Right (MissingExactUpstream (p1DiagnosticText1 stored))
+  "ExactUpstreamMismatch" -> Right (ExactUpstreamMismatch (p1DiagnosticText1 stored))
+  "MissingAttackMethodSnapshot" -> Right MissingAttackMethodSnapshot
+  "AttackProductReceiptMismatch" -> Right (AttackProductReceiptMismatch (p1DiagnosticText1 stored))
+  "MissingWallLocalNo" -> Right (MissingWallLocalNo (p1DiagnosticInt1 stored))
+  "ReceiptSourceScopeMismatch" -> Right (ReceiptSourceScopeMismatch (p1DiagnosticText1 stored))
+  kind -> Left ("unknown P1 ingress diagnostic kind: " <> kind)
+
+wallDiagnosticsToStorage :: P1ProductDiagnostics WallLifecycleError -> [P1DiagnosticStorage]
+wallDiagnosticsToStorage = diagnosticsToStorage wallErrorToStorage
+
+wallDiagnosticsFromStorage :: FeatureRunIdentity -> [P1DiagnosticStorage] -> Either Text (P1ProductDiagnostics WallLifecycleError)
+wallDiagnosticsFromStorage wallRun = diagnosticsFromStorage (wallErrorFromStorage wallRun)
+
+wallErrorToStorage :: WallLifecycleError -> P1DiagnosticStorage
+wallErrorToStorage value = case value of
+  WallOccurrenceRefConflict (OccurrenceRef ref) -> (base "WallOccurrenceRefConflict") {p1DiagnosticText1 = ref}
+  WallStartedTwice identity -> withWall "WallStartedTwice" identity
+  WallMustStartPresent identity -> withWall "WallMustStartPresent" identity
+  WallUpdateBeforeStart identity -> withWall "WallUpdateBeforeStart" identity
+            pd.api.types.is_numeric_dtype(frame[column].dtype)
+            or pd.api.types.is_datetime64_any_dtype(frame[column].dtype)
+            or pd.api.types.is_timedelta64_dtype(frame[column].dtype)
+            or pd.api.types.is_bool_dtype(frame[column].dtype)
+        )
+    ]
+    if bad:
+        raise P1ReceiptError(f"{key} 含 DBA 不支持的对象字段: {bad}")
+    return frame
+
+
+def _split_same_time_rows(rows, base_key):
+    """不改业务时间；仅在 result-key 维度分开同拍物理 occurrence。"""
+    if rows.index.is_unique:
+        return {base_key: require_dba_frame(base_key, rows.copy())}
+    # 现有平台 DBA 整数字段只支持 int8/int64；这里是物理分流序号，
+    # 直接使用 int64，避免同拍多 occurrence 首次出现时才在 dump 阶段失败。
+    ordinals = rows.groupby(level=0, sort=False).cumcount().astype("int64")
+    streams = {}
+    for ordinal in sorted(set(int(value) for value in ordinals.values)):
+        selected = rows.loc[ordinals == ordinal].copy()
+        selected["occurrence_ordinal"] = np.int64(ordinal)
+        key = base_key if ordinal == 0 else f"{base_key}__occ{ordinal:04d}"
+        streams[key] = require_dba_frame(key, selected)
+    return streams
+
+
+def object_keyed_streams(frame, *, prefix, local_no_column):
+    """按 run-local number 切业务对象流；同拍多 occurrence 不改写时间。"""
+    if local_no_column not in frame.columns:
+        if frame.shape[0] == 0:
+            return {}
+        raise P1ReceiptError(f"{prefix} 缺 local number: {local_no_column}")
+    streams = {}
+    for local_no, rows in frame.groupby(local_no_column, sort=False):
+        local_no = int(local_no)
+        if local_no < 0:
+            raise P1ReceiptError(f"{prefix} local number 不得为负")
+        for key, value in _split_same_time_rows(
+            rows, f"{prefix}__{local_no}"
+        ).items():
+            if key in streams:
+                raise P1ReceiptError(f"重复 DBA result key: {key}")
+            streams[key] = value
+    return streams
+
+    if hasattr(value, "item"):
+        return value.item()
+    if isinstance(value, pd.Timestamp):
+        return value.isoformat()
+    if isinstance(value, Path):
+        return str(value)
+    return value
+
+
+def canonical_json(value):
+    return json.dumps(
+        _json_value(value), sort_keys=True, ensure_ascii=False, separators=(",", ":")
+    )
+
+
+def fingerprint(value):
+    """非权威完整性摘要；不得作为产品或 occurrence 的业务身份。"""
+    return hashlib.sha256(canonical_json(value).encode("utf-8")).hexdigest()
+
+
+def feature_code_fingerprint(*objects):
+    """返回 repo commit 与完整 producer 源文件共同形成的实现版本。"""
+    if not objects:
+        raise P1ReceiptError("code_version 必须绑定至少一个 producer 源文件")
+    paths = []
+    for value in objects:
+        if isinstance(value, (str, os.PathLike, Path)):
+            path = Path(value)
+        else:
+            source_file = inspect.getsourcefile(value)
+            if source_file is None:
+                raise P1ReceiptError(f"无法定位 producer 源文件: {value!r}")
+            path = Path(source_file)
+        path = path.resolve()
+        if not path.is_file():
+            raise P1ReceiptError(f"producer 源文件不存在: {path}")
+        paths.append(path)
+
+    roots = set()
+    for path in paths:
+        process = subprocess.run(

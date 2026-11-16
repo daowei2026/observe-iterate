@@ -1,0 +1,16 @@
+--- /dwdhome/fy/BASE_E6_2/run-python.sh
++++ /dwdhome/fy/BASE_E6_2/.runtime/observe-iterate/OI-EAW-WALL-20261116-01/D001/W001/run-python-readonly.sh
+@@ -1,10 +1,10 @@
+ #!/usr/bin/env bash
+ # 使用本工作区的 Python 环境，并兼容当前主机的 TLS 动态库。
+ set -eo pipefail
+-workspace_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
++workspace_dir="/dwdhome/fy/BASE_E6_2"
+ cd -- "$workspace_dir"
+-mkdir -p "$workspace_dir/.migration/records"
+-source "$workspace_dir/m3rc" 2> "$workspace_dir/.migration/records/m3rc.log"
++mkdir -p "/dwdhome/fy/BASE_E6_2/.runtime/observe-iterate/OI-EAW-WALL-20261116-01/D001/W001/logs"
++source "$workspace_dir/m3rc" 2> "/dwdhome/fy/BASE_E6_2/.runtime/observe-iterate/OI-EAW-WALL-20261116-01/D001/W001/logs/m3rc.log"
+ 
+ # 旧 beacon 无法解析时，按到 Gogs 的内网路由确定本机服务地址。
+ if [[ -z "${M3HOST:-}" ]]; then

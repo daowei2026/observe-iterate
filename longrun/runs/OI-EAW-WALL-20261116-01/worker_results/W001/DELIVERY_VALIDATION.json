@@ -1,0 +1,44 @@
+{
+  "checked_at_utc": "2026-11-16T05:46:31.756169+00:00",
+  "lease": {
+    "checked_at_utc": "2026-11-16T05:46:31.708825+00:00",
+    "pid": 296712,
+    "state": "S",
+    "start_ticks": 58333981,
+    "inode": 13765718,
+    "competing_flock": "REFUSED",
+    "errno": 11,
+    "kernel_locks": [
+      "22: FLOCK  ADVISORY  WRITE 296712 00:53:13765718 0 EOF"
+    ]
+  },
+  "checks": [
+    {
+      "stream": "wall_occurrences",
+      "samples": 3,
+      "outer": 14858,
+      "inner": 15809,
+      "passed": true
+    },
+    {
+      "stream": "wall_current_view",
+      "samples": 3,
+      "outer": 14858,
+      "inner": 15208,
+      "passed": true
+    },
+    {
+      "stream": "wall_diagnostics",
+      "samples": 3,
+      "outer": 328,
+      "inner": 328,
+      "passed": true
+    }
+  ],
+  "input_hashes_match": true,
+  "source_sample_matches": 3,
+  "facts_required_fields_present": true,
+  "related_unchanged": true,
+  "passed": true,
+  "scope": "artifact/metadata consistency only; no business acceptance"
+}

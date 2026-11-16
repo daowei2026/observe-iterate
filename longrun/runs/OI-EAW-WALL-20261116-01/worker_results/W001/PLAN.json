@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "project": {
+    "id": "oi-eaw-wall-20261116-01",
+    "title": "W001 现役事实核查"
+  },
+  "task": {
+    "id": "w001",
+    "title": "EawP1WallLifecycleFrp 有界只读调查",
+    "completion_gate": "实际事实与具名缺项形成报告、FACTS、日志和哈希；两阶段发布或准确交主控代发；不等于E1接受",
+    "monitoring": {
+      "scope": "general"
+    }
+  },
+  "phases": [
+    {
+      "id": "investigation",
+      "title": "现役调查与回交",
+      "steps": [
+        {
+          "id": "binding",
+          "title": "查明运行链和实际绑定",
+          "acceptance": "相关来源、加载路径、实例与元信息有证据或准确异常",
+          "weight": 3
+        },
+        {
+          "id": "readback",
+          "title": "证明只读路径并回读小样本",
+          "acceptance": "三路及source有真实读取事实或具名限制；无补算",
+          "weight": 3
+        },
+        {
+          "id": "delivery",
+          "title": "形成真实交付与Return",
+          "acceptance": "报告、FACTS、命令、哈希和真实发布ref/代发限制齐全",
+          "weight": 2
+        }
+      ]
+    }
+  ]
+}

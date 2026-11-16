@@ -1,0 +1,102 @@
+--- cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1.hs
++++ /dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1.hs
+@@ -54,6 +54,8 @@
+ where
+ 
+ import Data.Aeson (FromJSON, ToJSON)
++import Control.Monad (unless)
++import Data.Text qualified as Text
+ import Frp.Apt (FrpEvent, StructJSON (..))
+ import Frp.Core
+ import Frp.Instance.ISL.Eaw.P1.AbsorbInteraction
+@@ -61,6 +63,7 @@
+ import Frp.Instance.ISL.Eaw.P1.BuildActivity
+ import Frp.Instance.ISL.Eaw.P1.DirectedLargeDeal
+ import Frp.Instance.ISL.Eaw.P1.FaoIngress
++import Frp.Instance.ISL.Eaw.P1.Internal.UpstreamReference (validateAttackProductReceiptSet, validateExactUpstreamReceipt)
+ import Frp.Instance.ISL.Eaw.P1.Products
+ import Frp.Instance.ISL.Eaw.P1.Publication
+ import Frp.Instance.ISL.Eaw.P1.WallLifecycle
+@@ -96,19 +99,19 @@
+ 
+ instance FaoMeta EawP1WallLifecycleFrp where
+   propTarType = const $ pure (CalendarTarType SymbolType)
+-  propCalType = const Cal
++  propCalType = const Cache
+ 
+ instance FaoMeta EawP1BuildActivityFrp where
+   propTarType = const $ pure (CalendarTarType SymbolType)
+-  propCalType = const Cal
++  propCalType = const Cache
+ 
+ instance FaoMeta EawP1AttackSegmentBookFrp where
+   propTarType = const $ pure (CalendarTarType SymbolType)
+-  propCalType = const Cal
++  propCalType = const Cache
+ 
+ instance FaoMeta EawP1AbsorbInteractionFrp where
+   propTarType = const $ pure (CalendarTarType SymbolType)
+-  propCalType = const Cal
++  propCalType = const Cache
+ 
+ mergeIngressDiagnostics :: [FrpEvent [P1IngressError]] -> FrpEvent (P1ProductDiagnostics productError) -> FrpEvent (P1ProductDiagnostics productError)
+ mergeIngressDiagnostics ingress stateDiagnostics =
+@@ -176,20 +179,58 @@
+ 
+ instance Fao EawP1WallLifecycleFrp where
+   type FaoResult EawP1WallLifecycleFrp = WallLifecycleOutputs
++  load feature = do
++    receipt <- loadProductReceiptFrom (wallOccurrenceSource (wallLifecycleInput feature)) "wall_lifecycle"
++    loadWallOutputs feature (featureRunIdentityFromFaoContext receipt)
+   dump = dumpWallOutputs
+   doImpl = doWallLifecycleFrp
+ 
+ instance Fao EawP1BuildActivityFrp where
+   type FaoResult EawP1BuildActivityFrp = BuildActivityOutputs
++  load feature = do
++    let source = buildActivityInput feature
++    receipt <- loadProductReceiptFrom (buildOccurrenceSource source) "build_activity"
++    wallReceipt <- loadProductReceiptFrom (buildWallSource source) "wall_lifecycle"
++    loadBuildOutputs feature (featureRunIdentityFromFaoContext receipt) (featureRunIdentityFromFaoContext wallReceipt)
+   dump = dumpBuildOutputs
+   doImpl = doBuildActivityFrp
+ 
+ instance Fao EawP1AttackSegmentBookFrp where
+   type FaoResult EawP1AttackSegmentBookFrp = AttackSegmentBookOutputs
++  load feature = do
++    let segment = attackSegmentInput feature
++        formation = attackFormationInput feature
++        barrier = attackBarrierInput feature
++    segmentReceipt <- loadProductReceiptFrom (attackSegmentSource segment) "attack_segment"
++    formationReceipt <- loadProductReceiptFrom (formationEvidenceSource formation) "attack_formation_evidence"
++    barrierReceipt <- loadProductReceiptFrom (wallBarrierSource barrier) "wall_relation_barrier"
++    either (error . show) pure (validateAttackProductReceiptSet segmentReceipt formationReceipt barrierReceipt)
++    segmentWallReceipt <- loadProductReceiptFrom (attackSegmentWallSource segment) "wall_lifecycle"
++    formationWallReceipt <- loadProductReceiptFrom (formationEvidenceWallSource formation) "wall_lifecycle"
++    barrierWallReceipt <- loadProductReceiptFrom (wallBarrierWallSource barrier) "wall_lifecycle"
++    unless
++      (segmentWallReceipt == formationWallReceipt && segmentWallReceipt == barrierWallReceipt)
++      (error "Attack 三个输入没有指向同一个 exact Wall artifact")
++    _ <- either (error . show) pure (validateExactUpstreamReceipt "wall_lifecycle" segmentReceipt segmentWallReceipt)
++    _ <- either (error . show) pure (validateExactUpstreamReceipt "wall_lifecycle" formationReceipt formationWallReceipt)
++    _ <- either (error . show) pure (validateExactUpstreamReceipt "wall_lifecycle" barrierReceipt barrierWallReceipt)
++    methodSnapshot <- either (error . Text.unpack) pure (attackFormationMethodSnapshotFromReceipt segmentReceipt)
++    loadAttackOutputs
++      feature
++      (featureRunIdentityFromFaoContext segmentReceipt)
++      (featureRunIdentityFromFaoContext formationReceipt)
++      (featureRunIdentityFromFaoContext barrierReceipt)
++      (featureRunIdentityFromFaoContext segmentWallReceipt)
++      methodSnapshot
+   dump = dumpAttackOutputs
+   doImpl = doAttackSegmentBookFrp
+ 
+ instance Fao EawP1AbsorbInteractionFrp where
+   type FaoResult EawP1AbsorbInteractionFrp = AbsorbInteractionOutputs
++  load feature = do
++    let source = absorbInteractionInput feature
++    receipt <- loadProductReceiptFrom (absorbOccurrenceSource source) "absorb_interaction"
++    wallReceipt <- loadProductReceiptFrom (absorbWallSource source) "wall_lifecycle"
++    loadAbsorbOutputs feature (featureRunIdentityFromFaoContext receipt) (featureRunIdentityFromFaoContext wallReceipt)
+   dump = dumpAbsorbOutputs
+   doImpl = doAbsorbInteractionFrp

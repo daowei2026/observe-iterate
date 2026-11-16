@@ -1,0 +1,612 @@
+import pandas as pd
+import os
+from pydim.dim import *
+from .....lib3 import *
+from .....core import *
+from ..util import *
+
+
+__all__ = ["FrpDbaDao", "FrpExtraDbaDao"]
+
+
+class FrpDbaDao(AbstractFaoDao):
+    """
+    Author: King
+    Since : 2025-04-02 15:53
+    Desc  :
+        - Frp 特征 dba 存取对象
+        - 不保存数据,由 haskell 端保存
+    """
+
+    def dump(self, *args, **kwargs):
+        # 这里不保存，在 haskell 端保存
+        raise NotImplementedError
+    
+    @property
+    def file_path(self):
+        """字段文件路径"""
+        return os.path.join(self.full_dir, "fields.json")
+
+    def is_exist_data(self):
+        """是否保存了结果"""
+        return os.path.isfile(self.file_path)
+    
+    def load_fields(self):
+        """字段信息单独保存到了一个文件中"""
+        ds: dict = JsonUtil.load2(self.file_path)
+        res = dict()
+        for k, v in ds.items():
+            res[k] = NormalField.from_str(v)
+        return DictField(res)
+
+    @property
+    def gfull_dir(self):    
+        return self.feat.gfull_dir
+
+    def load(self, refresh=False):
+        res = None
+        gfull_dir = self.gfull_dir
+        if gfull_dir is not None:
+            res = self.loadWith(gfull_dir)
+        if res is None:
+            res = self.loadWith(self.full_dir)
+        return res
+    
+    def loadWith(self, full_dir):
+        fields_path = os.path.join(full_dir, "fields.json")
+        if not os.path.isfile(fields_path):
+            return None
+        
+        ds: dict = JsonUtil.load2(fields_path)
+        tar_fields = dict()
+        for k, v in ds.items():
+            tar_fields[k] = NormalField.from_str(v)
+        tar_fields = DictField(tar_fields)
+    
+        res = {}
+        tfields = tar_fields
+        for field, fld in tfields.items():
+            if field.startswith("price."):
+                continue
+
+            pname = f"price.{field}"
+            pfld = tfields.get(pname)
+
+            fdata = None
+            if fld.is_adt_field():
+                fdata = {
+                    "value": DbaStore(os.path.join(full_dir, field), fld.adt_class),
+                    "ts": DbaUtil.read_field_ts(full_dir, field, True),
+                }
+                if pfld:
+                    fdata[pname] = DbaUtil.read_ndarray(full_dir, pname, pfld.dtype)
+
+            elif isinstance(fld, NormalField):
+                ts = DbaUtil.read_field_ts(full_dir, field, True)
+
+                data = {field: DbaUtil.read_ndarray(full_dir, field, fld.dtype)}
+                if pfld:
+                    data[pname] = DbaUtil.read_ndarray(full_dir, pname, pfld.dtype)
+
+                fdata = pd.DataFrame(index=ts, data=data, copy=False)
+            else:
+                raise Exception(f"{field} no support field type: {fld}")
+
+            res[field] = fdata
+
+        return Ndict(res)
+
+
+class FrpExtraDbaDao(FrpDbaDao):
+    """
+    Author: King
+    Since : 2025-02-20 15:53
+    Desc  :
+        - 获取 Frp 保存的中间特征数据
+    """
+
+    @property
+    def full_dir(self):
+        return os.path.join(self.feat.full_dir, "extra")
+
+    @property
+    def gfull_dir(self):
+        path = self.feat.gfull_dir
+        if path is None:
+            return None
+        return os.path.join(path, "extra")class FrpMixIn(JsonParamPathMixIn):
+    """
+    Author: King
+    Since : 2023-01-05 10:31
+    Desc  :
+       - Frp 混入类
+    """
+
+    @property
+    def that(self) -> AbsFao:
+        return self
+
+    def hold_cal_type(self):
+        return CalType.Cache
+
+    @property
+    def Dao(self):
+        return FrpDbaDao(self)
+
+    def to_df(self):
+        """ 没有 adt 数据时的默认 to_df 实现"""
+        dfs = list(self.that.F.values())
+        if len(dfs) == 1:
+            return dfs[0]
+        return pd.concat(dfs, axis=1, join="outer")
+    
+    def to_dfs(self):
+        return self.that.F
+
+    def doFrpTarget(self) -> dict:
+        """优化目标"""
+        return self.that.tar_type.doFrpTarget()
+        
+    def doFrpUpSource(self) -> Union[List[FaoType],Dict]:
+        """Frp 特征需要保存的上游特征数据源, 默认 params 中的 Fao 类型"""
+        return list(self.that.P.values())
+
+    def doFrpTaskParam(self,run_ups=True,enable_extra=False) -> FrpTaskParam:
+        """Frp 程序运行需要的相关数据
+        Params:
+            run_ups: True 表示需要运行上游特征，确保数据保存到 dba
+            enable_extra: 是否开启保存中间事件数据, 一般在优化器优化时不开启，单独运行则开启
+        """
+        that = self.that
+
+        if run_ups and that.prop_on_run_ups:
+            self._run_ups()
+
+        with CurrFrpEnv():
+            return FrpTaskParam(
+                name=that.alias,
+                params=that.for_json(),
+                sof=that.sof,
+                enable_extra=enable_extra,
+            )
+
+    def _run_ups(self):
+        ups = self.doFrpUpSource()
+        if isinstance(ups,dict):
+            ups = list(ups.values())
+        if ups:
+            for v in ups:
+                if isinstance(v, FaoType):
+                    self._run_up(v)
+
+    def _run_up(self, up: FaoType):
+        """运行上游特征"""
+        ttype = self.that.tar_type
+        if ttype.isBlockSet():  # 板块集特征
+            # 上游特征是板块特征， children 一定是板块集，则需要对每个板块运行
+            if up.tar_type.isNormalBlock():
+                for blk in ttype.children():
+                    with CurrIndustry(blk):
+                        up.run()
+                return
+
+class CurrFrpEnv(AbsContextManager):
+    """ 
+    传入 Haskell 端对应 PyAny 的 json 需要 TarType
+    """
+
+    __slots__ = ()
+
+    @classmethod
+    def is_frp_env(cls):
+        curr = cls.get(required=False)
+        return curr is not None
+
+    def __repr__(self):
+        return f"{type(self).__name__}()"
+
+
+class TarType(abc.ABC):
+    """目标类型"""
+
+    def doFrpTarget(self):
+        """
+        Frp 需要的 Target 格式
+        """
+        if isinstance(self, SymTarType):
+            return dict(__tag__="Symbol", sym=CurrSymbol.sym(True))
+
+        if isinstance(self, CalendarTarType):
+            return dict(__tag__="CalendarTarget", calendar=CurrCalendar.name(True), target=self._tar_type.doFrpTarget())
+
+        if isinstance(self, UnKnownBlockTarType):
+            self = CurrIndustry.tar_type()
+
+        if self.isAskBlock():
+            return dict(
+                __tag__="AskBlock", blk_expr=self.blk_expr, sym=CurrSymbol.sym(True)
+            )
+
+        if self.isNormalBlock():
+            return dict(__tag__="FixedBlock", blk_expr=self.blk_expr)
+
+        if isinstance(self, BlockSetTarType):
+            return dict(__tag__="BlockSet", blks=[each.blk_expr for each in self.blk_exprs])
+        
+        if isinstance(self, FuncTarType):
+            return dict(__tag__="FuncTarget")
+        
+        raise Exception(f"doFrpTarget unsupport tar_type: {self}")
+
+    def for_json(self):
+        """ 
+        frp json 支持的 json 
+        名称上不统一
+        """
+        if isinstance(self, SymTarType):
+            return dict(__tag__="SymbolType")
+        
+        if isinstance(self, UnKnownBlockTarType):
+            return dict(__tag__="UnknownBlockType")
+
+        if isinstance(self,BlockSetTarType):
+            return dict(__tag__="BlockSetType",contents=[each.blk_expr for each in self.blk_exprs])
+
+        if isinstance(self,BlockTarType):
+            return dict(__tag__="BlockType",contents=self.blk_expr)
+        
+        if isinstance(self,FuncTarType):
+            return dict(__tag__="FuncTarType")
+        
+        if isinstance(self,CalendarTarType):
+            return dict(__tag__="CalendarTarType",contents=self._tar_type.for_json())
+        
+        raise Exception(f"TarType for_json unsupport tar_type: {self}")
+
+    @property
+    def tsa_how(self) -> str:
+        """多品种时间轴合并逻辑: 'outer' 并集, 'inner' 交集"""
+        return "outer"
+
+    @property
+    def sof(self) -> Sof:
+        return CurrTradeSet.sof(True)
+    
+    @abc.abstractmethod
+    def tar_name(self) -> str:
+        """目标名称"""
+
+    def tar_name_no_calendar(self) -> str:
+        """没有日历的目标名称"""
+            if "freq" in params: params["freq"] = params.pop("freq")
+
+            # 设置为默认参数结构
+            cls.cls_field_params = Ndict({k: v if isinstance(v,ParamField) else ParamField(val=v) for k,v in Ndict(params).items()})
+
+            cls.cls_params = Ndict({k: v.val for k,v in cls.cls_field_params.items()})
+            cls.cls_free_params = free_params
+        
+    def __call__(cls, *args, **kwargs):
+        #通过特征类创建代理,如 ROC(rocN = 2),一定是初始化，即不是在旧特征上面更新
+        if cls is _Nothing:
+            return cls.create_instance()
+        return Proxy(cls, None,*args, **kwargs)   
+        #return cls.create_instance(None,*args,**kwargs)
+    
+    def create_instance(cls,lazy_obj = None,*args,**kwargs):
+        # 通过 create_instance 创建真正的实例
+        cls._init_cls_attrs()
+        p = cls._full_params_stru(lazy_obj,*args, **kwargs)
+
+        param_key = None
+        if isinstance(p,tuple):
+            param_key,p = p
+
+        #ukey = FaoUtil.ppid(cls.__name__,lazy_obj,args,kwargs)
+        ukey = FaoUtil.ppid(cls.__name__,param_key,p)
+
+        return cls.cache_instance(FaoMeta, ukey,p,param_key = param_key,input_params = (lazy_obj,args,kwargs))
+     
+    def _full_params_stru(cls, lazy_obj = None,*args, **kwargs):
+        """完整的参数结构,不包括重指向"""
+        # if lazy_obj is not None:
+        #     return cls._update_params_stru(lazy_obj.P0,dict(*args,**kwargs))
+
+        _an = len(args)
+        key = None
+        arg = None
+
+        if _an == 0:
+            pass
+        elif _an == 1:
+            cls.param[k] = v
+
+    def __init__(self, params: dict,param_key:str = None,input_params:tuple = None):
+        self._init_attrs()            # 初始基础属性 
+        self._update_pattrs(params)   # 更新参数
+        self._run_reparam()           # 重指向;版本稳定后暂时删除了 reparm 检查接口
+        self._refresh_freq()          # 刷新频率
+        self._init_sub_attrs()
+
+        self.__param_key = param_key
+        self.__input_params = input_params
+        self.__run_type = CalType.Any
+
+    @property
+    def param_key(self):
+        """ 默认参数的key 如: ATR("test"), param_key = "test", 需通过 setup_param 或 Meta.param 定义 """
+        return self.__param_key
+
+    @property
+    def input_params(self):
+        """ 传入的参数"""
+        return self.__input_params
+
+    def _init_sub_attrs(self):
+        # 子类可以初始化一些私有属性
+        pass
+
+    # ====== 重指向 ======
+    def _reparam(self):
+        """重新设置参数指向, __setattr__ 功能一般在此体现"""
+        pass
+    
+    def _run_reparam(self):
+        """执行父类_reparams"""
+        for t in self.do_mro():
+            s = super(t, self)
+            if hasattr(s, "_reparam"):
+                s._reparam()
+        self._reparam()
+
+    def updateWithAble(self,params:Union[dict,"FaoType"],fname:str = None,ables:list = None,on_pable:bool = None):
+        """ 
+        本特征作为其他特征的上游特征参数时，修改本特征
+        Params:
+            params(dict): 参数
+            fname: 特征名称,可能没有
+    def askF(self) -> Ndict:
+        return self.ask(self.sof) if self.ask_match() else self.F
+    
+    # ====== execute =====
+    def _impl(self) -> dict:
+        """实现特征逻辑，返回字典结果"""
+        raise NotImplementedError(self.__class__.__name__)
+
+    def _execute(self):
+        """执行目标对象特征逻辑"""
+        self.run_type = StraEnv.rcal_type(self)
+      
+        # 缓存中获取结果，如果没有则 执行 _impl
+        res = FaoResultManager.pull(self)
+        if res is None:
+            # 执行运行前操作
+            self._run_before()
+
+            # 执行自身特征
+            res = self._run_own()
+
+            # 设置特征字段
+            self._update_fattrs(res)
+
+            # 执行运行后操作
+            self._run_after()
+
+            # 保存到缓存中
+            FaoResultManager.push(self,res)
+        else:
+            # 设置特征字段
+            self._update_fattrs(res)
+
+        return self
+
+    def _run_before(self):
+        """运行逻辑前,子类重实现"""
+        pass
+
+    def _run_after(self):
+        pass
+
+    def _run_ups(self):
+        """更新上游特征"""
+        if self.prop_on_run_ups:
+            for k, v in self.P.items():
+                if isinstance(v, FaoType):
+                    self._run_up(v)
+
+    def _run_up(self, up:FaoType):
+        """执行上游特征"""
+        up.run()
+
+    def _run_own(self):
+        """运行自身特征,返回Tensor字典"""
+        res = {}
+        # 不读取msb，重新计算
+        rtype = self.run_type
+        if rtype.is_cal:
+            res = self._run_with(write=False, read=False)
+        # 只读
+        elif rtype.is_only_read:
+            res = self._run_with(write=False, read=True)
+        # 先读取msb，如果没有重新计算并保存
+        elif rtype.is_cache:
+            res = self._run_with(write=True, read=True)
+        # 重新计算并保存
+        else:
+            res = self._run_with(write=True, read=False)
+        
+        return Ndict.create(res)
+
+    def _run_with(self, write=False, read=False):
+        if read:
+            res = self.load()
+            if res is not None:
+                return res
+            if not write:
+                raise RuntimeError(f"⚠ {type(self).__name__} only-read,but the {self.full_dir!r} stored data file was not found")
+
+        if self.prop_on_run_ups: 
+            self._run_ups()
+
+        res = self._impl()
+
+        assert res is not None,f"{type(self).__name__} impl result is None"
+
+        if not isinstance(res,dict):
+            res = Ndict(value=res)
+
+        if write:
+            # 默认都保存到文件 TODO
+            mkdirs(self.full_dir)
+            self.dump(res,full_dir = self.full_dir,tar_name = self.tar_name,sof = self.sof)
+        return res
+
+    @property
+    def Dao(self):
+        """ 特征结果数据读写对象 """
+        return None
+    
+    def load(self):
+        """读取数据"""
+        dao = self.Dao
+        if dao:
+            return dao.load()
+        return None
+
+    def dump(self, res,full_dir,tar_name,**kwargs):
+        """保存数据"""
+        dao = self.Dao
+        if dao:
+            return dao.dump(res,full_dir,tar_name,**kwargs)
+        return None
+
+    # ====== db path ======
+
+    @property
+    def env_store_dir(self): 
+        """ 根据环境决定的 根路径"""
+        from ..general import CurrStoreEnv
+        return CurrStoreEnv.replace(self,self.prop_store_dir)
+
+    @property
+    def root_dir(self): 
+        """ 根路径，与特征无关"""
+        return self.sof.gen_root_dir(self.env_store_dir,settings.DEFAULT_STORE_NAME)
+
+    @property
+    def app_dir(self):
+        xs = [self.root_dir, settings.ENV]
+        if self.prop_on_date_range : 
+            sof = self.sof
+            key = opt_date_range(sof.startDay,sof.endDay).key
+            if key: xs.append(key)
+        return os.path.join(*xs)
+
+    @property
+    def feat_dir(self):
+        """特征路径，不包含参数"""
+        return os.path.join(self.app_dir, self.alias)
+    
+    @property
+    def param_dir(self):
+        """参数路径"""
+        return os.path.join(self.feat_dir, self.param_path) 
+    
+    @property
+    def full_dir(self) -> str:
+        """转码后的特征全路径(主)"""
+        assert self.tar_name, f"{type(self).__name__} tar_name is None"
+        return os.path.join(self.param_dir, self.tar_name)
+
+    @property
+    def backup_full_dirs(self) -> List[str]:
+        xs = self.prop_bakup_store_dirs
+        if not xs:
+            return [] 
+        
+        tar_name = self.tar_name    
+        assert tar_name, f"{type(self).__name__} tar_name is None"
+        
+        sof = self.sof
+        def go(each):
+            xs = [sof.gen_root_dir(each,settings.DEFAULT_STORE_NAME), settings.ENV]
+            if self.prop_on_date_range : 
+                key = opt_date_range(sof.startDay,sof.endDay).key
+                if key: xs.append(key)
+            xs = xs + [self.alias,self.param_path,tar_name]
+            return os.path.join(*xs)
+
+        return [go(each) for each in xs]
+
+    @property
+    def gfull_dir(self):
+        """ 获取优先查询起止日期范围路径  """
+        full_period = self.sof.full_period
+        if not full_period:
+            return None
+
+        xs = [self.root_dir, settings.ENV]
+        key = opt_date_range(full_period["startDay"],full_period["endDay"]).key
+        if key: xs.append(key)
+
+        tar_name = self.tar_name    
+        assert tar_name, f"{type(self).__name__} tar_name is None"
+from .internal import *
+
+__all__ = [
+    "SymbolFaoMixIn",
+    "GeneralSymbolFao",
+    "BaseSymbolDFFao",
+    "KLine",
+]
+
+
+class SymbolFaoMixIn:
+    """
+    Author: King
+    Since : 2022-01-25 17:27
+    Desc  : 单品种特征混入类
+    """
+
+    @property
+    def tar_type(self):
+        """目标类型 使用了日历名称的单品种"""
+        return CalendarTarType(SymTarType())
+
+
+class GeneralSymbolFao(SymbolFaoMixIn, AbstractParamFao):
+    """
+    Author: King
+    Since : 2023-09-25 17:33
+    Desc  : 通用单品种特征
+    """
+
+    __abstract_fao__ = True
+
+
+class BaseSymbolDFFao(DataFrameMixIn, GeneralSymbolFao):
+    """
+    Author: King
+    Since : 2023-09-25 17:27
+    Desc  : 单品种 DataFrame 特征基类
+    """
+
+    __abstract_fao__ = True
+
+
+class KLine(BaseSymbolDFFao):
+    """
+    Author: King
+    Since : 2022-01-25 17:28
+    Desc  :
+        - K线特征
+    Params:
+       freq: 频率
+    """
+
+    params = lambda: {
+        "freq": "30m",
+    }
+
+    def _impl(self):
+        return dict(value=self.kdata.df)

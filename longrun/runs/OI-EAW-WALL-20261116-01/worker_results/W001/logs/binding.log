@@ -1,0 +1,46 @@
+{
+  "started_at_utc": "2026-11-16T05:29:13.251889+00:00",
+  "context": {
+    "sof_name": "TA_updto20240229_DBA",
+    "startDay": "2020-12-01",
+    "endDay": "2021-02-22",
+    "symbol": "rb",
+    "calendar": "night_end_at_2300"
+  },
+  "expression": "EawP1WallLifecycleFrp()",
+  "feature_execution_attempted": false,
+  "bindings": {},
+  "audit": [
+    {
+      "event": "open",
+      "path": "/dev/null",
+      "decision": "DENIED_WRITE"
+    },
+    {
+      "event": "open",
+      "path": "/dev/null",
+      "decision": "DENIED_WRITE"
+    }
+  ],
+  "lease": {
+    "checked_at_utc": "2026-11-16T05:29:13.252170+00:00",
+    "pid": 296712,
+    "state": "S",
+    "start_ticks": 58333981,
+    "inode": 13765718,
+    "competing_flock": "REFUSED",
+    "errno": 11,
+    "kernel_locks": [
+      "19: FLOCK  ADVISORY  WRITE 296712 00:53:13765718 0 EOF"
+    ]
+  },
+  "binding_succeeded": false,
+  "traceback": "Traceback (most recent call last):\n  File \"/dwdhome/fy/BASE_E6_2/.runtime/observe-iterate/OI-EAW-WALL-20261116-01/D001/W001/bind_metadata.py\", line 69, in <module>\n    from mquant.tis.frp.EawBattleP import EawP1WallLifecycleFrp, WallOccurrenceFao\n  File \"/dwdhome/fy/BASE_E6_2/mquant/tis/__init__.py\", line 75, in <module>\n    from .abc import *\n  File \"/dwdhome/fy/BASE_E6_2/mquant/tis/abc/__init__.py\", line 9, in <module>\n    from .customize import *\n  File \"/dwdhome/fy/BASE_E6_2/mquant/tis/abc/customize.py\", line 1, in <module>\n    from ..lib3 import *\n  File \"/dwdhome/fy/BASE_E6_2/mquant/tis/lib3.py\", line 6, in <module>\n    from ..quant import *\n  File \"/dwdhome/fy/BASE_E6_2/mquant/quant/__init__.py\", line 82, in <module>\n    from .flow import *\n  File \"/dwdhome/fy/BASE_E6_2/mquant/quant/flow/__init__.py\", line 15, in <module>\n    from .core import *\n  File \"/dwdhome/fy/BASE_E6_2/mquant/quant/flow/core.py\", line 5, in <module>\n    from airflow import DAG\n  File \"<frozen importlib._bootstrap>\", line 1075, in _handle_fromlist\n  File \"/m3c3/py-prod/airflow/__init__.py\", line 82, in __getattr__\n    val = getter(__import__(path))\n  File \"/m3c3/py-prod/airflow/models/__init__.py\", line 22, in <module>\n    from airflow.models.baseoperator import BaseOperator, BaseOperatorLink\n  File \"/m3c3/py-prod/airflow/models/baseoperator.py\", line 77, in <module>\n    from airflow.models.taskinstance import TaskInstance, clear_task_instances\n  File \"/m3c3/py-prod/airflow/models/taskinstance.py\", line 53, in <module>\n    import dill\n  File \"/m3c3/Linux/apps/anaconda3/lib/python3.10/site-packages/dill/__init__.py\", line 26, in <module>\n    from ._dill import (\n  File \"/m3c3/Linux/apps/anaconda3/lib/python3.10/site-packages/dill/_dill.py\", line 163, in <module>\n    BufferedRandomType = get_file_type('r+b', buffering=-1)\n  File \"/m3c3/Linux/apps/anaconda3/lib/python3.10/site-packages/dill/_dill.py\", line 156, in get_file_type\n    f = open(os.devnull, *args, **kwargs)\n  File \"/dwdhome/fy/BASE_E6_2/.runtime/observe-iterate/OI-EAW-WALL-20261116-01/D001/W001/support.py\", line 66, in audit\n    raise PermissionError('W001 prohibits write outside output: %s' % p)\nPermissionError: W001 prohibits write outside output: /dev/null\n",
+  "resolved_commands": {
+    "epm": "/usr/local/bin/epm",
+    "ts": null,
+    "python": "/m3c3/Linux/apps/anaconda3/bin/python"
+  },
+  "elapsed_seconds": 22.728839
+}
+REPORT: /dwdhome/fy/BASE_E6_2/.runtime/observe-iterate/OI-EAW-WALL-20261116-01/D001/W001/BINDING.json

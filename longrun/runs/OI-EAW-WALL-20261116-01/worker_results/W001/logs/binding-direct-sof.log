@@ -1,0 +1,168 @@
+{
+  "started_at_utc": "2026-11-16T05:34:24.394765+00:00",
+  "context": {
+    "sof_name": "TA_updto20240229_DBA",
+    "startDay": "2020-12-01",
+    "endDay": "2021-02-22",
+    "symbol": "rb",
+    "calendar": "night_end_at_2300"
+  },
+  "expression": "EawP1WallLifecycleFrp()",
+  "feature_execution_attempted": false,
+  "bindings": {
+    "feature": {
+      "declared_class": "EawP1WallLifecycleFrp",
+      "class_file": "/dwdhome/fy/BASE_E6_2/mquant/tis/frp/EawBattleP.py",
+      "class_file_realpath": "/dwdhome/fy/BASE_E6_2/mquant/tis/frp/EawBattleP.py",
+      "runtime_type": "Proxy(EawP1WallLifecycleFrp)",
+      "ppdict": {
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).parameter_set_id": "wall-default",
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).qt_freq": "1d",
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).qt_n": 30,
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).qt_quantile": 0.997,
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).w_depth_ref_ticks": 1200,
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).large_quote_ratio_min": 1.0,
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).allow_zero_qt_fallback": false,
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).thick_vs_hi_ratio": 1.0,
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).thin_vs_mid_ratio": 0.7,
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).allow_thin_brick": false,
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).p_wall_ticks": 1,
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).t_wall_ticks": 6,
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).near_band_ticks": null,
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).far_band_ticks": null,
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).connect_max_core_dist_ticks": null,
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).connect_gap_max_ticks": null,
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).support_buffer_keep_ticks": null,
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).thin_eval_window_ticks": null,
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).band_update_min_shift_ticks": null,
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).dormant_no_presence_ticks": null,
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).dormant_far_ticks": null,
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).end_far_hold_ticks": null,
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).end_far_ticks": null,
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).break_after_no_presence_ticks": null,
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).wall_dead_timeout_ticks": null,
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).allow_brick_join_dormant": true,
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).thin_contact_min_hits": 3,
+        "wallLifecycleInput(WallOccurrenceFao).wallOccurrenceSource(WallAssembler).thin_contact_frac_end": 0.6
+      },
+      "ppid": "EawP1WallLifecycleFrp_3e1a70e7283bbbb3324b34c0b8abfb11b5b0f25b",
+      "ggjson": "{\"__tag__\":\"EawP1WallLifecycleFrp\",\"wallLifecycleInput\":{\"__tag__\":\"WallOccurrenceFao\",\"wallOccurrenceSource\":{\"__tag__\":\"WallAssembler\",\"allow_brick_join_dormant\":true,\"allow_thin_brick\":false,\"allow_zero_qt_fallback\":false,\"band_update_min_shift_ticks\":null,\"break_after_no_presence_ticks\":null,\"connect_gap_max_ticks\":null,\"connect_max_core_dist_ticks\":null,\"dormant_far_ticks\":null,\"dormant_no_presence_ticks\":null,\"end_far_hold_ticks\":null,\"end_far_ticks\":null,\"far_band_ticks\":null,\"large_quote_ratio_min\":1,\"near_band_ticks\":null,\"p_wall_ticks\":1,\"parameter_set_id\":\"wall-default\",\"qt_freq\":\"1d\",\"qt_n\":30,\"qt_quantile\":0.997,\"support_buffer_keep_ticks\":null,\"t_wall_ticks\":6,\"thick_vs_hi_ratio\":1,\"thin_contact_frac_end\":0.6,\"thin_contact_min_hits\":3,\"thin_eval_window_ticks\":null,\"thin_vs_mid_ratio\":0.7,\"w_depth_ref_ticks\":1200,\"wall_dead_timeout_ticks\":null}}}",
+      "full_dir": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/EawP1WallLifecycleFrp/1/c/b/0/c/1/4/44aea11813b85d33becc06242f43621b6/rb.night_end_at_2300",
+      "gfull_dir": null,
+      "cal_type": "CalType.Cache"
+    },
+    "input": {
+      "declared_class": "WallOccurrenceFao",
+      "class_file": "/dwdhome/fy/BASE_E6_2/mquant/tis/frp/EawBattleP.py",
+      "class_file_realpath": "/dwdhome/fy/BASE_E6_2/mquant/tis/frp/EawBattleP.py",
+      "runtime_type": "Proxy(WallOccurrenceFao)",
+      "ppdict": {
+        "wallOccurrenceSource(WallAssembler).parameter_set_id": "wall-default",
+        "wallOccurrenceSource(WallAssembler).qt_freq": "1d",
+        "wallOccurrenceSource(WallAssembler).qt_n": 30,
+        "wallOccurrenceSource(WallAssembler).qt_quantile": 0.997,
+        "wallOccurrenceSource(WallAssembler).w_depth_ref_ticks": 1200,
+        "wallOccurrenceSource(WallAssembler).large_quote_ratio_min": 1.0,
+        "wallOccurrenceSource(WallAssembler).allow_zero_qt_fallback": false,
+        "wallOccurrenceSource(WallAssembler).thick_vs_hi_ratio": 1.0,
+        "wallOccurrenceSource(WallAssembler).thin_vs_mid_ratio": 0.7,
+        "wallOccurrenceSource(WallAssembler).allow_thin_brick": false,
+        "wallOccurrenceSource(WallAssembler).p_wall_ticks": 1,
+        "wallOccurrenceSource(WallAssembler).t_wall_ticks": 6,
+        "wallOccurrenceSource(WallAssembler).near_band_ticks": null,
+        "wallOccurrenceSource(WallAssembler).far_band_ticks": null,
+        "wallOccurrenceSource(WallAssembler).connect_max_core_dist_ticks": null,
+        "wallOccurrenceSource(WallAssembler).connect_gap_max_ticks": null,
+        "wallOccurrenceSource(WallAssembler).support_buffer_keep_ticks": null,
+        "wallOccurrenceSource(WallAssembler).thin_eval_window_ticks": null,
+        "wallOccurrenceSource(WallAssembler).band_update_min_shift_ticks": null,
+        "wallOccurrenceSource(WallAssembler).dormant_no_presence_ticks": null,
+        "wallOccurrenceSource(WallAssembler).dormant_far_ticks": null,
+        "wallOccurrenceSource(WallAssembler).end_far_hold_ticks": null,
+        "wallOccurrenceSource(WallAssembler).end_far_ticks": null,
+        "wallOccurrenceSource(WallAssembler).break_after_no_presence_ticks": null,
+        "wallOccurrenceSource(WallAssembler).wall_dead_timeout_ticks": null,
+        "wallOccurrenceSource(WallAssembler).allow_brick_join_dormant": true,
+        "wallOccurrenceSource(WallAssembler).thin_contact_min_hits": 3,
+        "wallOccurrenceSource(WallAssembler).thin_contact_frac_end": 0.6
+      },
+      "ppid": "WallOccurrenceFao_3576d93bfbb7265981be6256bf85639b5e89bf7b",
+      "ggjson": "{\"__tag__\":\"WallOccurrenceFao\",\"wallOccurrenceSource\":{\"__tag__\":\"WallAssembler\",\"allow_brick_join_dormant\":true,\"allow_thin_brick\":false,\"allow_zero_qt_fallback\":false,\"band_update_min_shift_ticks\":null,\"break_after_no_presence_ticks\":null,\"connect_gap_max_ticks\":null,\"connect_max_core_dist_ticks\":null,\"dormant_far_ticks\":null,\"dormant_no_presence_ticks\":null,\"end_far_hold_ticks\":null,\"end_far_ticks\":null,\"far_band_ticks\":null,\"large_quote_ratio_min\":1,\"near_band_ticks\":null,\"p_wall_ticks\":1,\"parameter_set_id\":\"wall-default\",\"qt_freq\":\"1d\",\"qt_n\":30,\"qt_quantile\":0.997,\"support_buffer_keep_ticks\":null,\"t_wall_ticks\":6,\"thick_vs_hi_ratio\":1,\"thin_contact_frac_end\":0.6,\"thin_contact_min_hits\":3,\"thin_eval_window_ticks\":null,\"thin_vs_mid_ratio\":0.7,\"w_depth_ref_ticks\":1200,\"wall_dead_timeout_ticks\":null}}",
+      "full_dir": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallOccurrenceFao/d/a/7/f/f/8/7/58ee959cdd92d9f8d06b8e619bcfc1299/rb.night_end_at_2300",
+      "gfull_dir": null,
+      "cal_type": "CalType.OnlyRead"
+    },
+    "source": {
+      "declared_class": "WallAssembler",
+      "class_file": "/dwdhome/fy/BASE_E6_2/mquant/tis/hf/prel0/wall_assembler.py",
+      "class_file_realpath": "/dwdhome/fy/BASE_E6_2/mquant/tis/hf/prel0/wall_assembler.py",
+      "runtime_type": "Proxy(WallAssembler)",
+      "ppdict": {
+        "parameter_set_id": "wall-default",
+        "qt_freq": "1d",
+        "qt_n": 30,
+        "qt_quantile": 0.997,
+        "w_depth_ref_ticks": 1200,
+        "large_quote_ratio_min": 1.0,
+        "allow_zero_qt_fallback": false,
+        "thick_vs_hi_ratio": 1.0,
+        "thin_vs_mid_ratio": 0.7,
+        "allow_thin_brick": false,
+        "p_wall_ticks": 1,
+        "t_wall_ticks": 6,
+        "near_band_ticks": null,
+        "far_band_ticks": null,
+        "connect_max_core_dist_ticks": null,
+        "connect_gap_max_ticks": null,
+        "support_buffer_keep_ticks": null,
+        "thin_eval_window_ticks": null,
+        "band_update_min_shift_ticks": null,
+        "dormant_no_presence_ticks": null,
+        "dormant_far_ticks": null,
+        "end_far_hold_ticks": null,
+        "end_far_ticks": null,
+        "break_after_no_presence_ticks": null,
+        "wall_dead_timeout_ticks": null,
+        "allow_brick_join_dormant": true,
+        "thin_contact_min_hits": 3,
+        "thin_contact_frac_end": 0.6
+      },
+      "ppid": "WallAssembler_f32460448c4bde6d0a683cfc262808694c9f0a75",
+      "ggjson": "{\"__tag__\":\"WallAssembler\",\"allow_brick_join_dormant\":true,\"allow_thin_brick\":false,\"allow_zero_qt_fallback\":false,\"band_update_min_shift_ticks\":null,\"break_after_no_presence_ticks\":null,\"connect_gap_max_ticks\":null,\"connect_max_core_dist_ticks\":null,\"dormant_far_ticks\":null,\"dormant_no_presence_ticks\":null,\"end_far_hold_ticks\":null,\"end_far_ticks\":null,\"far_band_ticks\":null,\"large_quote_ratio_min\":1,\"near_band_ticks\":null,\"p_wall_ticks\":1,\"parameter_set_id\":\"wall-default\",\"qt_freq\":\"1d\",\"qt_n\":30,\"qt_quantile\":0.997,\"support_buffer_keep_ticks\":null,\"t_wall_ticks\":6,\"thick_vs_hi_ratio\":1,\"thin_contact_frac_end\":0.6,\"thin_contact_min_hits\":3,\"thin_eval_window_ticks\":null,\"thin_vs_mid_ratio\":0.7,\"w_depth_ref_ticks\":1200,\"wall_dead_timeout_ticks\":null}",
+      "full_dir": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300",
+      "gfull_dir": null,
+      "cal_type": "CalType.Cache"
+    }
+  },
+  "audit": [
+    {
+      "event": "subprocess.Popen",
+      "command": [
+        "uname",
+        "-p"
+      ],
+      "decision": "ALLOWED_READONLY"
+    }
+  ],
+  "lease": {
+    "checked_at_utc": "2026-11-16T05:34:24.395071+00:00",
+    "pid": 296712,
+    "state": "S",
+    "start_ticks": 58333981,
+    "inode": 13765718,
+    "competing_flock": "REFUSED",
+    "errno": 11,
+    "kernel_locks": [
+      "20: FLOCK  ADVISORY  WRITE 296712 00:53:13765718 0 EOF"
+    ]
+  },
+  "context_api": "m3sof.load_sof; OptContext source defaults black/[]/None retained",
+  "binding_succeeded": true,
+  "resolved_commands": {
+    "epm": "/usr/local/bin/epm",
+    "ts": null,
+    "python": "/m3c3/Linux/apps/anaconda3/bin/python"
+  },
+  "elapsed_seconds": 35.472442
+}
+REPORT: /dwdhome/fy/BASE_E6_2/.runtime/observe-iterate/OI-EAW-WALL-20261116-01/D001/W001/BINDING.json

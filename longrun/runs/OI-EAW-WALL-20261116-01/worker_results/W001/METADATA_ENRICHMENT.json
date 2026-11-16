@@ -1,0 +1,586 @@
+{
+  "checked_at_utc": "2026-11-16T05:40:43.714812+00:00",
+  "lease": {
+    "checked_at_utc": "2026-11-16T05:40:43.652949+00:00",
+    "pid": 296712,
+    "state": "S",
+    "start_ticks": 58333981,
+    "inode": 13765718,
+    "competing_flock": "REFUSED",
+    "errno": 11,
+    "kernel_locks": [
+      "22: FLOCK  ADVISORY  WRITE 296712 00:53:13765718 0 EOF"
+    ]
+  },
+  "receipt_location_matches_current_source": true,
+  "parameter_comparisons": [
+    {
+      "key": "allow_brick_join_dormant",
+      "receipt_group": "actual_business_parameters",
+      "receipt_value": true,
+      "current_raw_default": true,
+      "comparison": "equal"
+    },
+    {
+      "key": "band_update_min_shift_ticks",
+      "receipt_group": "actual_business_parameters",
+      "receipt_value": 1,
+      "current_raw_default": null,
+      "comparison": "receipt-only resolved value; not recomputed"
+    },
+    {
+      "key": "break_after_no_presence_ticks",
+      "receipt_group": "actual_business_parameters",
+      "receipt_value": 3,
+      "current_raw_default": null,
+      "comparison": "receipt-only resolved value; not recomputed"
+    },
+    {
+      "key": "connect_gap_max_ticks",
+      "receipt_group": "actual_business_parameters",
+      "receipt_value": 3,
+      "current_raw_default": null,
+      "comparison": "receipt-only resolved value; not recomputed"
+    },
+    {
+      "key": "connect_max_core_dist_ticks",
+      "receipt_group": "actual_business_parameters",
+      "receipt_value": 1,
+      "current_raw_default": null,
+      "comparison": "receipt-only resolved value; not recomputed"
+    },
+    {
+      "key": "dormant_far_ticks",
+      "receipt_group": "actual_business_parameters",
+      "receipt_value": 2,
+      "current_raw_default": null,
+      "comparison": "receipt-only resolved value; not recomputed"
+    },
+    {
+      "key": "dormant_no_presence_ticks",
+      "receipt_group": "actual_business_parameters",
+      "receipt_value": 3,
+      "current_raw_default": null,
+      "comparison": "receipt-only resolved value; not recomputed"
+    },
+    {
+      "key": "end_far_hold_ticks",
+      "receipt_group": "actual_business_parameters",
+      "receipt_value": 3,
+      "current_raw_default": null,
+      "comparison": "receipt-only resolved value; not recomputed"
+    },
+    {
+      "key": "end_far_ticks",
+      "receipt_group": "actual_business_parameters",
+      "receipt_value": 2,
+      "current_raw_default": null,
+      "comparison": "receipt-only resolved value; not recomputed"
+    },
+    {
+      "key": "far_band_ticks",
+      "receipt_group": "actual_business_parameters",
+      "receipt_value": 2,
+      "current_raw_default": null,
+      "comparison": "receipt-only resolved value; not recomputed"
+    },
+    {
+      "key": "near_band_ticks",
+      "receipt_group": "actual_business_parameters",
+      "receipt_value": 1,
+      "current_raw_default": null,
+      "comparison": "receipt-only resolved value; not recomputed"
+    },
+    {
+      "key": "p_wall_ticks",
+      "receipt_group": "actual_business_parameters",
+      "receipt_value": 1,
+      "current_raw_default": 1,
+      "comparison": "equal"
+    },
+    {
+      "key": "support_buffer_keep_ticks",
+      "receipt_group": "actual_business_parameters",
+      "receipt_value": 6,
+      "current_raw_default": null,
+      "comparison": "receipt-only resolved value; not recomputed"
+    },
+    {
+      "key": "t_wall_ticks",
+      "receipt_group": "actual_business_parameters",
+      "receipt_value": 6,
+      "current_raw_default": 6,
+      "comparison": "equal"
+    },
+    {
+      "key": "thin_contact_frac_end",
+      "receipt_group": "actual_business_parameters",
+      "receipt_value": 0.6,
+      "current_raw_default": 0.6,
+      "comparison": "equal"
+    },
+    {
+      "key": "thin_contact_min_hits",
+      "receipt_group": "actual_business_parameters",
+      "receipt_value": 3,
+      "current_raw_default": 3,
+      "comparison": "equal"
+    },
+    {
+      "key": "thin_eval_window_ticks",
+      "receipt_group": "actual_business_parameters",
+      "receipt_value": 3,
+      "current_raw_default": null,
+      "comparison": "receipt-only resolved value; not recomputed"
+    },
+    {
+      "key": "wall_dead_timeout_ticks",
+      "receipt_group": "actual_business_parameters",
+      "receipt_value": 12,
+      "current_raw_default": null,
+      "comparison": "receipt-only resolved value; not recomputed"
+    },
+    {
+      "key": "allow_thin_brick",
+      "receipt_group": "producer_private_parameters",
+      "receipt_value": false,
+      "current_raw_default": false,
+      "comparison": "equal"
+    },
+    {
+      "key": "allow_zero_qt_fallback",
+      "receipt_group": "producer_private_parameters",
+      "receipt_value": false,
+      "current_raw_default": false,
+      "comparison": "equal"
+    },
+    {
+      "key": "eps_vol",
+      "receipt_group": "producer_private_parameters",
+      "receipt_value": 1e-12,
+      "current_raw_default": null,
+      "comparison": "receipt-only resolved value; not recomputed"
+    },
+    {
+      "key": "large_quote_ratio_min",
+      "receipt_group": "producer_private_parameters",
+      "receipt_value": 1.0,
+      "current_raw_default": 1.0,
+      "comparison": "equal"
+    },
+    {
+      "key": "qt_freq",
+      "receipt_group": "producer_private_parameters",
+      "receipt_value": "1d",
+      "current_raw_default": "1d",
+      "comparison": "equal"
+    },
+    {
+      "key": "qt_n",
+      "receipt_group": "producer_private_parameters",
+      "receipt_value": 30,
+      "current_raw_default": 30,
+      "comparison": "equal"
+    },
+    {
+      "key": "qt_quantile",
+      "receipt_group": "producer_private_parameters",
+      "receipt_value": 0.997,
+      "current_raw_default": 0.997,
+      "comparison": "equal"
+    },
+    {
+      "key": "thick_vs_hi_ratio",
+      "receipt_group": "producer_private_parameters",
+      "receipt_value": 1.0,
+      "current_raw_default": 1.0,
+      "comparison": "equal"
+    },
+    {
+      "key": "thin_vs_mid_ratio",
+      "receipt_group": "producer_private_parameters",
+      "receipt_value": 0.7,
+      "current_raw_default": 0.7,
+      "comparison": "equal"
+    },
+    {
+      "key": "w_depth_ref_ticks",
+      "receipt_group": "producer_private_parameters",
+      "receipt_value": 1200,
+      "current_raw_default": 1200,
+      "comparison": "equal"
+    }
+  ],
+  "current_two_file_producer_source_digest": "47c09eb4ac84034ab9140be79249c338e266fa2b922ce1c14c021a3857b771f6",
+  "source_digest_matches_receipt": true,
+  "receipt_code_version": "git:61988a3723ebadc861b4e94284254275be843255+source-sha256:47c09eb4ac84034ab9140be79249c338e266fa2b922ce1c14c021a3857b771f6",
+  "source_headers": {
+    "wall__stream": {
+      "ts": {
+        "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream.ts.dba",
+        "exists": true,
+        "layout_version": 0,
+        "data_offset": 64,
+        "item_size": 8,
+        "alignment": 8,
+        "valid_count": 15230,
+        "size": 121904,
+        "mtime_ns": 1787404508557463450,
+        "first_last_raw": [
+          1610615050000000000,
+          1614034515000000000
+        ],
+        "dtype": "datetime64[ns]",
+        "unchanged_after_read": true
+      },
+      "uti": {
+        "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream.uti.dba",
+        "exists": true,
+        "layout_version": 0,
+        "data_offset": 64,
+        "item_size": 8,
+        "alignment": 8,
+        "valid_count": 15230,
+        "size": 121904,
+        "mtime_ns": 1787404508549965721,
+        "first_last_raw": [
+          72335299,
+          73272029
+        ],
+        "dtype": "int64",
+        "unchanged_after_read": true
+      },
+      "chunk_id": {
+        "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream.chunk_id.dba",
+        "exists": true,
+        "layout_version": 0,
+        "data_offset": 64,
+        "item_size": 8,
+        "alignment": 8,
+        "valid_count": 15230,
+        "size": 121904,
+        "mtime_ns": 1787404508535239237,
+        "first_last_raw": [
+          31,
+          54
+        ],
+        "dtype": "int64",
+        "unchanged_after_read": true
+      }
+    },
+    "wall__stream__occ0001": {
+      "ts": {
+        "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0001.ts.dba",
+        "exists": true,
+        "layout_version": 0,
+        "data_offset": 64,
+        "item_size": 8,
+        "alignment": 8,
+        "valid_count": 1145,
+        "size": 9224,
+        "mtime_ns": 1787404508653723672,
+        "first_last_raw": [
+          1610615416500000000,
+          1614033464500000000
+        ],
+        "dtype": "datetime64[ns]",
+        "unchanged_after_read": true
+      },
+      "uti": {
+        "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0001.uti.dba",
+        "exists": true,
+        "layout_version": 0,
+        "data_offset": 64,
+        "item_size": 8,
+        "alignment": 8,
+        "valid_count": 1145,
+        "size": 9224,
+        "mtime_ns": 1787404508649460248,
+        "first_last_raw": [
+          72336032,
+          73269928
+        ],
+        "dtype": "int64",
+        "unchanged_after_read": true
+      },
+      "chunk_id": {
+        "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0001.chunk_id.dba",
+        "exists": true,
+        "layout_version": 0,
+        "data_offset": 64,
+        "item_size": 8,
+        "alignment": 8,
+        "valid_count": 1145,
+        "size": 9224,
+        "mtime_ns": 1787404508640832887,
+        "first_last_raw": [
+          31,
+          54
+        ],
+        "dtype": "int64",
+        "unchanged_after_read": true
+      }
+    },
+    "wall__stream__occ0002": {
+      "ts": {
+        "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0002.ts.dba",
+        "exists": true,
+        "layout_version": 0,
+        "data_offset": 64,
+        "item_size": 8,
+        "alignment": 8,
+        "valid_count": 31,
+        "size": 312,
+        "mtime_ns": 1787404508717802067,
+        "first_last_raw": [
+          1610617242000000000,
+          1613733296500000000
+        ],
+        "dtype": "datetime64[ns]",
+        "unchanged_after_read": true
+      },
+      "uti": {
+        "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0002.uti.dba",
+        "exists": true,
+        "layout_version": 0,
+        "data_offset": 64,
+        "item_size": 8,
+        "alignment": 8,
+        "valid_count": 31,
+        "size": 312,
+        "mtime_ns": 1787404508713962399,
+        "first_last_raw": [
+          72339683,
+          73204192
+        ],
+        "dtype": "int64",
+        "unchanged_after_read": true
+      },
+      "chunk_id": {
+        "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall__stream__occ0002.chunk_id.dba",
+        "exists": true,
+        "layout_version": 0,
+        "data_offset": 64,
+        "item_size": 8,
+        "alignment": 8,
+        "valid_count": 31,
+        "size": 312,
+        "mtime_ns": 1787404508706299711,
+        "first_last_raw": [
+          31,
+          52
+        ],
+        "dtype": "int64",
+        "unchanged_after_read": true
+      }
+    },
+    "wall_assembler_sparse_events": {
+      "ts": {
+        "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_sparse_events.ts.dba",
+        "exists": true,
+        "layout_version": 0,
+        "data_offset": 64,
+        "item_size": 8,
+        "alignment": 8,
+        "valid_count": 16406,
+        "size": 131312,
+        "mtime_ns": 1787404508443907333,
+        "first_last_raw": [
+          1610615050000000000,
+          1614034515000000000
+        ],
+        "dtype": "datetime64[ns]",
+        "unchanged_after_read": true
+      },
+      "uti": {
+        "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_sparse_events.uti.dba",
+        "exists": true,
+        "layout_version": 0,
+        "data_offset": 64,
+        "item_size": 8,
+        "alignment": 8,
+        "valid_count": 16406,
+        "size": 131312,
+        "mtime_ns": 1787404508435147184,
+        "first_last_raw": [
+          72335299,
+          73272029
+        ],
+        "dtype": "int64",
+        "unchanged_after_read": true
+      },
+      "chunk_id": {
+        "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_sparse_events.chunk_id.dba",
+        "exists": true,
+        "layout_version": 0,
+        "data_offset": 64,
+        "item_size": 8,
+        "alignment": 8,
+        "valid_count": 16406,
+        "size": 131312,
+        "mtime_ns": 1787404508406677548,
+        "first_last_raw": [
+          31,
+          54
+        ],
+        "dtype": "int64",
+        "unchanged_after_read": true
+      }
+    },
+    "wall_assembler_state_trace": {
+      "ts": {
+        "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_state_trace.ts.dba",
+        "exists": true,
+        "layout_version": 0,
+        "data_offset": 64,
+        "item_size": 8,
+        "alignment": 8,
+        "valid_count": 2206800,
+        "size": 17654464,
+        "mtime_ns": 1787404506995652313,
+        "first_last_raw": [
+          1606813200500000000,
+          1614034800000000000
+        ],
+        "dtype": "datetime64[ns]",
+        "unchanged_after_read": true
+      },
+      "uti": {
+        "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_state_trace.uti.dba",
+        "exists": true,
+        "layout_version": 0,
+        "data_offset": 64,
+        "item_size": 8,
+        "alignment": 8,
+        "valid_count": 2206800,
+        "size": 17654464,
+        "mtime_ns": 1787404506845630999,
+        "first_last_raw": [
+          71065800,
+          73272599
+        ],
+        "dtype": "int64",
+        "unchanged_after_read": true
+      },
+      "chunk_id": {
+        "path": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2020-12-01 21:00:00~2021-02-22 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300/wall_assembler_state_trace.chunk_id.dba",
+        "exists": true,
+        "layout_version": 0,
+        "data_offset": 64,
+        "item_size": 8,
+        "alignment": 8,
+        "valid_count": 2206800,
+        "size": 17654464,
+        "mtime_ns": 1787404508866672045,
+        "first_last_raw": [
+          0,
+          54
+        ],
+        "dtype": "int64",
+        "unchanged_after_read": true
+      }
+    }
+  },
+  "additional_sources": [
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/PublicStorage.hs",
+      "realpath": "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/PublicStorage.hs",
+      "size": 80126,
+      "mtime_ns": 1794658362777367967,
+      "sha256": "fb7e03cce8dc94060bd5895d2e13898dda60d6a27878acabe54b949cee89710f",
+      "repository_info": [
+        "/dwdhome/fy/BASE_E6_2/edh-universe/frp/frp",
+        "37c790c0f456fe3022bb00609219d3e92a5c2f9b"
+      ],
+      "repository_error": null,
+      "related_status": ""
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/mquant/frame/core/app/proxy.py",
+      "realpath": "/dwdhome/fy/BASE_E6_2/mquant/frame/core/app/proxy.py",
+      "size": 6114,
+      "mtime_ns": 1731313316316491000,
+      "sha256": "47e300b333f3dbd9e9dda27ef9d29b31f8466c49657c3c18c925574e318ec677",
+      "repository_info": [
+        "/dwdhome/fy/BASE_E6_2/mquant/frame",
+        "4d0ff8f2640e07a8b9ff066c48114f451fca6cfe"
+      ],
+      "repository_error": null,
+      "related_status": ""
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/mquant/frame/core/base/share.py",
+      "realpath": "/dwdhome/fy/BASE_E6_2/mquant/frame/core/base/share.py",
+      "size": 6112,
+      "mtime_ns": 1702356743048894000,
+      "sha256": "bceba3779e03a693c4e1e0ab26a1a3c2560e60b96ff9ccf9827f8be88de8111b",
+      "repository_info": [
+        "/dwdhome/fy/BASE_E6_2/mquant/frame",
+        "4d0ff8f2640e07a8b9ff066c48114f451fca6cfe"
+      ],
+      "repository_error": null,
+      "related_status": ""
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/mquant/frame/core/base/internal/dict.py",
+      "realpath": "/dwdhome/fy/BASE_E6_2/mquant/frame/core/base/internal/dict.py",
+      "size": 24603,
+      "mtime_ns": 1737885978554032000,
+      "sha256": "36147a8ca4ed9c17e152ecd5a2b8bd2b68bda0460a04e26b17908e9924ddc9fb",
+      "repository_info": [
+        "/dwdhome/fy/BASE_E6_2/mquant/frame",
+        "4d0ff8f2640e07a8b9ff066c48114f451fca6cfe"
+      ],
+      "repository_error": null,
+      "related_status": ""
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/m3sof/settings/sof/TA_updto20240229_DBA.py",
+      "realpath": "/dwdhome/fy/BASE_E6_2/m3sof/settings/sof/TA_updto20240229_DBA.py",
+      "size": 1563,
+      "mtime_ns": 1775731912976179597,
+      "sha256": "9fbefaf49cc14c3a4b79395a31ca82977cac9471b45a619142ef8b8ed2e71700",
+      "repository_info": [
+        "/dwdhome/fy/BASE_E6_2/m3sof",
+        "f2d5b316b2d323c6344778f22561d56d258d252b"
+      ],
+      "repository_error": null,
+      "related_status": ""
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/mquant/frame/core/base/json.py",
+      "realpath": "/dwdhome/fy/BASE_E6_2/mquant/frame/core/base/json.py",
+      "size": 4790,
+      "mtime_ns": 1717647101605727000,
+      "sha256": "52bbc640df491c16d41e2b3d32074cd6eea96d71d0f1b3369053b3a271e00de4",
+      "repository_info": [
+        "/dwdhome/fy/BASE_E6_2/mquant/frame",
+        "4d0ff8f2640e07a8b9ff066c48114f451fca6cfe"
+      ],
+      "repository_error": null,
+      "related_status": ""
+    },
+    {
+      "path": "/usr/local/bin/epm",
+      "realpath": "/usr/local/bin/epm",
+      "size": 37368,
+      "mtime_ns": 1770191196190561236,
+      "sha256": "92a3a29cae7c1e6a46c5d6853bc56dba90472714117faf1192293f6844ee270a",
+      "repository_info": [],
+      "repository_error": "fatal: not a git repository (or any of the parent directories): .git"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/mquant/worker/adt/dbaw.py",
+      "realpath": "/dwdhome/fy/BASE_E6_2/mquant/worker/adt/dbaw.py",
+      "size": 362498,
+      "mtime_ns": 1794753088311874517,
+      "sha256": "e9af247a05be7a62485a9bb5f870ae93fc5d35ffb55e025e1d3ad4d947825869",
+      "repository_info": [
+        "/dwdhome/fy/BASE_E6_2/mquant/worker",
+        "da0475a9c7fa769c2db8c803a5376ff2cdf09e0d"
+      ],
+      "repository_error": null,
+      "related_status": " M adt/dbaw.py\n"
+    }
+  ]
+}

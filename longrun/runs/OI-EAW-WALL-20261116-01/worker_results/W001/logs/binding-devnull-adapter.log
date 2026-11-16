@@ -1,0 +1,64 @@
+{
+  "started_at_utc": "2026-11-16T05:30:36.751053+00:00",
+  "context": {
+    "sof_name": "TA_updto20240229_DBA",
+    "startDay": "2020-12-01",
+    "endDay": "2021-02-22",
+    "symbol": "rb",
+    "calendar": "night_end_at_2300"
+  },
+  "expression": "EawP1WallLifecycleFrp()",
+  "feature_execution_attempted": false,
+  "bindings": {},
+  "audit": [
+    {
+      "event": "subprocess.Popen",
+      "command": [
+        "uname",
+        "-p"
+      ],
+      "decision": "ALLOWED_READONLY"
+    },
+    {
+      "event": "open",
+      "path": "/tmp/kjgeqzl5",
+      "decision": "DENIED_WRITE"
+    },
+    {
+      "event": "open",
+      "path": "/var/tmp/5vcfw35m",
+      "decision": "DENIED_WRITE"
+    },
+    {
+      "event": "open",
+      "path": "/usr/tmp/5pvftecj",
+      "decision": "DENIED_WRITE"
+    },
+    {
+      "event": "open",
+      "path": "/dwdhome/fy/BASE_E6_2/upljuu72",
+      "decision": "DENIED_WRITE"
+    }
+  ],
+  "lease": {
+    "checked_at_utc": "2026-11-16T05:30:36.751370+00:00",
+    "pid": 296712,
+    "state": "S",
+    "start_ticks": 58333981,
+    "inode": 13765718,
+    "competing_flock": "REFUSED",
+    "errno": 11,
+    "kernel_locks": [
+      "20: FLOCK  ADVISORY  WRITE 296712 00:53:13765718 0 EOF"
+    ]
+  },
+  "binding_succeeded": false,
+  "traceback": "Traceback (most recent call last):\n  File \"/dwdhome/fy/BASE_E6_2/.runtime/observe-iterate/OI-EAW-WALL-20261116-01/D001/W001/bind_metadata.py\", line 69, in <module>\n    from mquant.tis.frp.EawBattleP import EawP1WallLifecycleFrp, WallOccurrenceFao\n  File \"/dwdhome/fy/BASE_E6_2/mquant/tis/__init__.py\", line 75, in <module>\n    from .abc import *\n  File \"/dwdhome/fy/BASE_E6_2/mquant/tis/abc/__init__.py\", line 9, in <module>\n    from .customize import *\n  File \"/dwdhome/fy/BASE_E6_2/mquant/tis/abc/customize.py\", line 1, in <module>\n    from ..lib3 import *\n  File \"/dwdhome/fy/BASE_E6_2/mquant/tis/lib3.py\", line 6, in <module>\n    from ..quant import *\n  File \"/dwdhome/fy/BASE_E6_2/mquant/quant/__init__.py\", line 82, in <module>\n    from .flow import *\n  File \"/dwdhome/fy/BASE_E6_2/mquant/quant/flow/__init__.py\", line 15, in <module>\n    from .core import *\n  File \"/dwdhome/fy/BASE_E6_2/mquant/quant/flow/core.py\", line 5, in <module>\n    from airflow import DAG\n  File \"<frozen importlib._bootstrap>\", line 1075, in _handle_fromlist\n  File \"/m3c3/py-prod/airflow/__init__.py\", line 82, in __getattr__\n    val = getter(__import__(path))\n  File \"/m3c3/py-prod/airflow/models/__init__.py\", line 22, in <module>\n    from airflow.models.baseoperator import BaseOperator, BaseOperatorLink\n  File \"/m3c3/py-prod/airflow/models/baseoperator.py\", line 77, in <module>\n    from airflow.models.taskinstance import TaskInstance, clear_task_instances\n  File \"/m3c3/py-prod/airflow/models/taskinstance.py\", line 53, in <module>\n    import dill\n  File \"/m3c3/Linux/apps/anaconda3/lib/python3.10/site-packages/dill/__init__.py\", line 33, in <module>\n    from .session import (\n  File \"/m3c3/Linux/apps/anaconda3/lib/python3.10/site-packages/dill/session.py\", line 36, in <module>\n    TEMPDIR = pathlib.PurePath(tempfile.gettempdir())\n  File \"/m3c3/Linux/apps/anaconda3/lib/python3.10/tempfile.py\", line 299, in gettempdir\n    return _os.fsdecode(_gettempdir())\n  File \"/m3c3/Linux/apps/anaconda3/lib/python3.10/tempfile.py\", line 292, in _gettempdir\n    tempdir = _get_default_tempdir()\n  File \"/m3c3/Linux/apps/anaconda3/lib/python3.10/tempfile.py\", line 223, in _get_default_tempdir\n    raise FileNotFoundError(_errno.ENOENT,\nFileNotFoundError: [Errno 2] No usable temporary directory found in ['/tmp', '/var/tmp', '/usr/tmp', '/dwdhome/fy/BASE_E6_2']\n",
+  "resolved_commands": {
+    "epm": "/usr/local/bin/epm",
+    "ts": null,
+    "python": "/m3c3/Linux/apps/anaconda3/bin/python"
+  },
+  "elapsed_seconds": 20.847018
+}
+REPORT: /dwdhome/fy/BASE_E6_2/.runtime/observe-iterate/OI-EAW-WALL-20261116-01/D001/W001/BINDING.json

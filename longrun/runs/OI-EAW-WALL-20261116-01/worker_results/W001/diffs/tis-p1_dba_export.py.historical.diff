@@ -1,0 +1,40 @@
+--- ef887396e0a06d6e75be47efee0f1985ad7988a3:hf/prel0/p1_dba_export.py
++++ /dwdhome/fy/BASE_E6_2/mquant/tis/hf/prel0/p1_dba_export.py
+@@ -314,11 +314,7 @@
+             raise P1ReceiptError("无 segment 主行时不得写出 segment 明细")
+         return {}
+ 
+-    segment_required = {
+-        "segment_id",
+-        "attack_segment_attempt_local_id",
+-        "occurrence_utis_count",
+-    }
++    segment_required = {"segment_id", "occurrence_utis_count"}
+     qualified_required = {"segment_id", "ordinal", "qualified_uti"}
+     hit_required = {
+         "segment_id",
+@@ -338,24 +334,10 @@
+     qualified = qualified_utis.copy()
+     hits = qualification_hits.copy()
+     main["segment_id"] = main["segment_id"].astype(np.int64, copy=False)
+-    main["attack_segment_attempt_local_id"] = main[
+-        "attack_segment_attempt_local_id"
+-    ].astype(np.int64, copy=False)
+     qualified["segment_id"] = qualified["segment_id"].astype(np.int64, copy=False)
+     hits["segment_id"] = hits["segment_id"].astype(np.int64, copy=False)
+     if (main["segment_id"] <= 0).any() or main["segment_id"].duplicated().any():
+         raise P1ReceiptError("segment_id 必须为正且主行内唯一")
+-    if (
+-        (main["attack_segment_attempt_local_id"] <= 0).any()
+-        or main["attack_segment_attempt_local_id"].duplicated().any()
+-        or not np.array_equal(
+-            main["attack_segment_attempt_local_id"].values,
+-            main["segment_id"].values,
+-        )
+-    ):
+-        raise P1ReceiptError(
+-            "AttackSegment attempt identity 必须为正、唯一且等于 producer-local segment_id"
+-        )
+ 
+     main_by_id = {int(row.segment_id): row for row in main.itertuples()}
+     main_time_by_id = {

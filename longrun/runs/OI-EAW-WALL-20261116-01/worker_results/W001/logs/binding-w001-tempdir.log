@@ -1,0 +1,44 @@
+{
+  "started_at_utc": "2026-11-16T05:31:51.700803+00:00",
+  "context": {
+    "sof_name": "TA_updto20240229_DBA",
+    "startDay": "2020-12-01",
+    "endDay": "2021-02-22",
+    "symbol": "rb",
+    "calendar": "night_end_at_2300"
+  },
+  "expression": "EawP1WallLifecycleFrp()",
+  "feature_execution_attempted": false,
+  "bindings": {},
+  "audit": [
+    {
+      "event": "subprocess.Popen",
+      "command": [
+        "uname",
+        "-p"
+      ],
+      "decision": "ALLOWED_READONLY"
+    }
+  ],
+  "lease": {
+    "checked_at_utc": "2026-11-16T05:31:51.701082+00:00",
+    "pid": 296712,
+    "state": "S",
+    "start_ticks": 58333981,
+    "inode": 13765718,
+    "competing_flock": "REFUSED",
+    "errno": 11,
+    "kernel_locks": [
+      "20: FLOCK  ADVISORY  WRITE 296712 00:53:13765718 0 EOF"
+    ]
+  },
+  "binding_succeeded": false,
+  "traceback": "Traceback (most recent call last):\n  File \"/dwdhome/fy/BASE_E6_2/.runtime/observe-iterate/OI-EAW-WALL-20261116-01/D001/W001/bind_metadata.py\", line 76, in <module>\n    with CurrTradeSet(context.sof), CurrSymbol(cfg['symbol']), CurrCalendar(cfg['calendar']):\n  File \"/dwdhome/fy/BASE_E6_2/mquant/frame/core/app/proxy.py\", line 87, in __getattribute__\n    return getattr(self.lazy_target, key)\n  File \"/dwdhome/fy/BASE_E6_2/mquant/frame/core/app/proxy.py\", line 74, in __getattribute__\n    return super().__getattribute__(key)\n  File \"/dwdhome/fy/BASE_E6_2/mquant/frame/core/app/proxy.py\", line 44, in lazy_target\n    target = cls.create_instance(obj, *args, **kwargs)\n  File \"/dwdhome/fy/BASE_E6_2/mquant/frame/lang/internal/base.py\", line 1253, in create_instance\n    p = cls._full_params_stru(lazy_obj,*args, **kwargs)\n  File \"/dwdhome/fy/BASE_E6_2/mquant/frame/lang/internal/base.py\", line 1310, in _full_params_stru\n    return key,cls._update_params_stru(params, upt_params)\n  File \"/dwdhome/fy/BASE_E6_2/mquant/frame/lang/internal/base.py\", line 1392, in _update_params_stru\n    pparams = PPShare(cls,params)\n  File \"/dwdhome/fy/BASE_E6_2/mquant/frame/core/base/share.py\", line 63, in __init__\n    params = Ndict(_params)\n  File \"/dwdhome/fy/BASE_E6_2/mquant/frame/core/base/internal/dict.py\", line 178, in __init__\n    self._unfold(args[0],res)\n  File \"/dwdhome/fy/BASE_E6_2/mquant/frame/core/base/internal/dict.py\", line 196, in _unfold\n    for key, value in gen:\nValueError: too many values to unpack (expected 2)\n",
+  "resolved_commands": {
+    "epm": "/usr/local/bin/epm",
+    "ts": null,
+    "python": "/m3c3/Linux/apps/anaconda3/bin/python"
+  },
+  "elapsed_seconds": 34.204059
+}
+REPORT: /dwdhome/fy/BASE_E6_2/.runtime/observe-iterate/OI-EAW-WALL-20261116-01/D001/W001/BINDING.json

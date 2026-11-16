@@ -1,0 +1,313 @@
+--- ef887396e0a06d6e75be47efee0f1985ad7988a3:frp/EawBattleP.py
++++ /dwdhome/fy/BASE_E6_2/mquant/tis/frp/EawBattleP.py
+@@ -1,4 +1,4 @@
+-"""EAW P1 typed ingress 与 P2 八项主产品、三条成员流的正式 Python Fao 包装。"""
++"""EAW P1 typed ingress 与 P2 八项公共产品的正式 Python Fao 包装。"""
+ 
+ from __future__ import annotations
+ 
+@@ -404,7 +404,7 @@
+ 
+ 
+ class EawBattleP(FrpAdtDfMixIn, BaseSymbolFrpFao):
+-    """半秒 Tick 经正式 P1 typed products 到 P2 公共产品的 Fao。"""
++    """半秒 Tick 经正式 P1 typed products 到 P2 八项公共产品的 Fao。"""
+ 
+     params = _default_p2_params
+ 
+@@ -430,10 +430,7 @@
+         return [wall, build, attack, absorb]
+ 
+     def to_df(self):
+-        raise TypeError(
+-            "EawBattleP has eight primary products and three membership "
+-            "streams; use to_dfs()"
+-        )
++        raise TypeError("EawBattleP has eight canonical products; use to_dfs()")
+ 
+     def to_dfs(self):
+         return {
+@@ -445,9 +442,6 @@
+             "BP-12": self._battle_summary_df(),
+             "BP-13": self._battle_window_df(),
+             "BP-22": self._defense_activity_df(),
+-            "battle_attack_membership": self._battle_attack_membership_df(),
+-            "battle_attack_role": self._battle_attack_role_df(),
+-            "defense_activity_source_membership": self._defense_activity_source_membership_df(),
+         }
+ 
+     def _event_df(self, event, fields, depth):
+@@ -595,15 +589,6 @@
+             "direction": "p2OpenedDirection",
+             "business_anchor_uti": "p2OpenedBusinessAnchorUti",
+             "confirmed_at_uti": "p2OpenedConfirmedAtUti",
+-            "chain_start_segment_ref": "p2OpenedChainStartSegmentRef",
+-            "qualifying_left_segment_ref": "p2OpenedQualifyingLeftSegmentRef",
+-            "qualifying_right_segment_ref": "p2OpenedQualifyingRightSegmentRef",
+-            "chain_start_materiality_ref": "p2OpenedChainStartMaterialityRef",
+-            "left_materiality_ref": "p2OpenedLeftMaterialityRef",
+-            "right_materiality_ref": "p2OpenedRightMaterialityRef",
+-            "pair_continuity_ref": "p2OpenedPairContinuityRef",
+-            "observed_segment_count": "p2OpenedObservedSegmentCount",
+-            "forming_support_at_commit": "p2OpenedFormingSupportAtCommit",
+             "commitment_result": "p2OpenedCommitmentResult",
+             "probe_support": "p2OpenedProbeSupport",
+             "forming_support": "p2OpenedFormingSupport",
+@@ -617,6 +602,9 @@
+         return self._attach_opened_lists(event, prefix, base)
+ 
+     def _attach_opened_lists(self, event, prefix, base):
++        segments = self._event_df(
++            event, {"value": prefix + "p2OpenedSourceSegmentRefs"}, 3
++        )
+         reasons = self._event_df(
+             event, {"value": prefix + "p2OpenedCommitmentReasons"}, 3
+         )
+@@ -669,6 +657,11 @@
+                 column,
+                 _parent_groups(rows, lambda row, f=evidence_fields: _record(row, f)),
+             )
++        _attach(
++            base,
++            "source_segment_refs",
++            _parent_groups(segments, lambda row: _clean(row["value"])),
++        )
+         return _attach(
+             base,
+             "commitment_reasons",
+@@ -770,13 +763,7 @@
+ 
+     def _battle_scope_df(self):
+         prefix = "mul."
+-        optional_columns = (
+-            "closed_at_uti",
+-            "close_reason",
+-            "terminated_business_end_uti",
+-            "terminated_confirmed_at_uti",
+-            "termination_reason",
+-        )
++        optional_columns = ("closed_at_uti", "close_reason")
+         fields = {
+             "observation_scope_ref": "p2ObservationScopeRef",
+             "battle_ref": "p2ObservationBattleRef",
+@@ -787,9 +774,6 @@
+             "bounds_state": "p2ObservationBoundsState",
+             "closed_at_uti": "p2ObservationClosedAtUti",
+             "close_reason": "p2ObservationCloseReason",
+-            "terminated_business_end_uti": "p2ObservationTerminatedBusinessEndUti",
+-            "terminated_confirmed_at_uti": "p2ObservationTerminatedConfirmedAtUti",
+-            "termination_reason": "p2ObservationTerminationReason",
+             "scope_kind": "p2ObservationScopeKind",
+         }
+         return _restore_optionals(
+@@ -810,12 +794,7 @@
+         event, prefix = "BP-12", "mul."
+         optional_columns = (
+             "fate_anchor_ref",
+-            "time_start_uti",
+             "time_end_uti",
+-            "termination_confirmed_at_uti",
+-            "termination_reason",
+-            "first_attack_segment_ref",
+-            "latest_attack_segment_ref",
+             "defense_activities_unavailable_reason",
+             "normalized_position",
+             "normalized_position_unavailable_reason",
+@@ -831,15 +810,9 @@
+             "time_bounds_state": "p2BattleTimeBoundsState",
+             "time_start_uti": "p2BattleTimeStartUti",
+             "time_end_uti": "p2BattleTimeEndUti",
+-            "termination_confirmed_at_uti": "p2BattleTerminationConfirmedAtUti",
+-            "termination_reason": "p2BattleTerminationReason",
+             "wall_ref": "p2BattleWallRef",
+             "direction": "p2BattleDirection",
+             "lifecycle_state": "p2BattleLifecycleState",
+-            "attack_segment_count": "p2BattleAttackSegmentCount",
+-            "first_attack_segment_ref": "p2BattleFirstAttackSegmentRef",
+-            "latest_attack_segment_ref": "p2BattleLatestAttackSegmentRef",
+-            "attack_membership_set_ref": "p2BattleAttackMembershipSetRef",
+             "defense_activities_measurement_state": "p2BattleDefenseActivitiesMeasurementState",
+             "defense_activities_unavailable_reason": "p2BattleDefenseActivitiesUnavailableReason",
+             "normalized_position_measurement_state": "p2BattleNormalizedPositionMeasurementState",
+@@ -863,25 +836,23 @@
+             2,
+         )
+         _restore_optionals(base, optional_columns)
+-        values = self._event_df(
+-            event, {"value": prefix + "p2BattleDefenseActivityRefs"}, 3
+-        )
+-        _attach(
+-            base,
+-            "defense_activity_refs",
+-            _parent_groups(values, lambda row: _clean(row["value"])),
+-        )
++        for column, path in (
++            ("attack_segment_refs", "p2BattleAttackSegmentRefs"),
++            ("defense_activity_refs", "p2BattleDefenseActivityRefs"),
++        ):
++            values = self._event_df(
++                event, {"value": prefix + path}, 3
++            )
++            _attach(
++                base,
++                column,
++                _parent_groups(values, lambda row: _clean(row["value"])),
++            )
+         return base
+ 
+     def _battle_window_df(self):
+         prefix = "mul."
+-        optional_columns = (
+-            "start_uti",
+-            "end_uti",
+-            "terminated_confirmed_at_uti",
+-            "termination_reason",
+-            "final_reason",
+-        )
++        optional_columns = ("end_uti", "final_reason")
+         fields = {
+             "window_set_ref": "p2WindowSetRef",
+             "battle_ref": "p2WindowBattleRef",
+@@ -889,8 +860,6 @@
+             "bounds_state": "p2WindowBoundsState",
+             "start_uti": "p2WindowStartUti",
+             "end_uti": "p2WindowEndUti",
+-            "terminated_confirmed_at_uti": "p2WindowTerminatedConfirmedAtUti",
+-            "termination_reason": "p2WindowTerminationReason",
+             "window_state": "p2WindowState",
+             "final_reason": "p2WindowFinalReason",
+             "scope_kind": "p2WindowScopeKind",
+@@ -919,12 +888,6 @@
+             "p2DefenseActivityStartUti",
+             "p2DefenseActivityEndUti",
+             "p2DefenseActivityClosedAtUti",
+-            "p2DefenseActivitySourceCount",
+-            "p2DefenseActivityFirstSourceRefKind",
+-            "p2DefenseActivityFirstSourceRef",
+-            "p2DefenseActivityLatestSourceRefKind",
+-            "p2DefenseActivityLatestSourceRef",
+-            "p2DefenseActivityMembershipSetRef",
+             "p2DefenseMeasurementsState",
+             "p2DefenseMeasurementsUnavailableReason",
+             "p2DefenseDurationTicks",
+@@ -977,26 +940,15 @@
+             "p2DefenseAbsorbEventCount",
+             "p2DefenseAbsorbEventCountUnavailableReason",
+         }
+-        column_overrides = {
+-            "p2DefenseActivitySourceCount": "source_count",
+-            "p2DefenseActivityFirstSourceRefKind": "first_source_ref_kind",
+-            "p2DefenseActivityFirstSourceRef": "first_source_ref",
+-            "p2DefenseActivityLatestSourceRefKind": "latest_source_ref_kind",
+-            "p2DefenseActivityLatestSourceRef": "latest_source_ref",
+-            "p2DefenseActivityMembershipSetRef": "membership_set_ref",
+-        }
+         columns = tuple(
+-            column_overrides.get(
+-                name,
+-                name.removeprefix("p2Defense")
+-                .replace("Activity", "activity_")
+-                .replace("Measurements", "measurements_")
+-                .replace("Measurement", "measurement_")
+-                .replace("Unavailable", "unavailable_")
+-                .replace("Present", "present_")
+-                .replace("Event", "event_")
+-                .lower(),
+-            )
++            name.removeprefix("p2Defense")
++            .replace("Activity", "activity_")
++            .replace("Measurements", "measurements_")
++            .replace("Measurement", "measurement_")
++            .replace("Unavailable", "unavailable_")
++            .replace("Present", "present_")
++            .replace("Event", "event_")
++            .lower()
+             for name in storage_fields
+         )
+         field_paths = {
+@@ -1017,49 +969,43 @@
+         kinds = self._event_df(
+             event, {"value": prefix + "p2DefenseActivityKinds"}, 3
+         )
+-        return _attach(
++        source_fields = (
++            "source_ref_kind",
++            "source_ref",
++            "source_kind",
++            "source_time_kind",
++            "source_time_start_uti",
++            "source_time_end_uti",
++            "source_role",
++            "source_availability",
++        )
++        source_optional = ("source_time_end_uti",)
++        source_storage = (
++            "p2DefenseSourceRefKind",
++            "p2DefenseSourceRef",
++            "p2DefenseSourceKind",
++            "p2DefenseSourceTimeKind",
++            "p2DefenseSourceTimeStartUti",
++            "p2DefenseSourceTimeEndUti",
++            "p2DefenseSourceRole",
++            "p2DefenseSourceAvailability",
++        )
++        source_paths = {
++            name: prefix + "p2DefenseActivitySourceUses." + storage
++            for name, storage in zip(source_fields, source_storage)
++        }
++        sources = self._event_df(
++            event,
++            _with_optional_paths(source_paths, source_optional),
++            3,
++        )
++        _attach(
+             base,
+             "activity_kinds",
+             _parent_groups(kinds, lambda row: _clean(row["value"])),
+         )
+-
+-    def _battle_attack_membership_df(self):
+-        return self._event_df(
+-            "BP-12__attack_membership",
+-            {
+-                "membership_set_ref": "mul.p2BattleMembershipSetRef",
+-                "battle_ref": "mul.p2BattleMembershipBattleRef",
+-                "attack_segment_ref": "mul.p2BattleMembershipSegmentRef",
+-                "business_start_uti": "mul.p2BattleMembershipBusinessStartUti",
+-                "business_end_uti": "mul.p2BattleMembershipBusinessEndUti",
+-                "accepted_at_uti": "mul.p2BattleMembershipAcceptedAtUti",
+-            },
+-            2,
+-        )
+-
+-    def _battle_attack_role_df(self):
+-        return self._event_df(
+-            "BP-12__attack_role",
+-            {
+-                "battle_ref": "mul.p2BattleRoleBattleRef",
+-                "attack_segment_ref": "mul.p2BattleRoleSegmentRef",
+-                "role": "mul.p2BattleRoleKind",
+-                "assigned_at_uti": "mul.p2BattleRoleAssignedAtUti",
+-                "evidence_ref": "mul.p2BattleRoleEvidenceRef",
+-            },
+-            2,
+-        )
+-
+-    def _defense_activity_source_membership_df(self):
+-        return self._event_df(
+-            "BP-22__source_membership",
+-            {
+-                "defense_activity_ref": "mul.p2DefenseMembershipActivityRef",
+-                "battle_ref": "mul.p2DefenseMembershipBattleRef",
+-                "source_ref_kind": "mul.p2DefenseMembershipSourceRefKind",
+-                "source_ref": "mul.p2DefenseMembershipSourceRef",
+-                "source_kind": "mul.p2DefenseMembershipKind",
+-                "accepted_at_uti": "mul.p2DefenseMembershipAcceptedAtUti",
+-            },
+-            2,
+-        )
++        return _attach(
++            base,
++            "source_uses",
++            _parent_groups(sources, lambda row: _record(row, source_fields)),
++        )

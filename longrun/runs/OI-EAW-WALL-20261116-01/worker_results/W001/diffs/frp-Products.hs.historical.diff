@@ -1,0 +1,323 @@
+--- cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/Products.hs
++++ /dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Products.hs
+@@ -4,14 +4,15 @@
+ -- | EAW P1 v1.6.1 产品特定身份、薄 receipt、occurrence 与 current view。
+ --
+ -- 本模块不定义 P1 总产品、跨运行 stable identity、revision/source-correction
+--- 或 publication trace。FeatureRunIdentity 只属于一次 Fao/receipt 运行上下文；
+--- occurrence 与 DSU 内只保存 producer 给出的无损局部编号。
++-- 或 publication trace。正式身份始终是结构化 FeatureRunIdentity 加 producer
++-- 给出的无损局部编号。
+ module Frp.Instance.ISL.Eaw.P1.Products
+   ( SourceScope (..),
+     DirectUpstreamArtifact (..),
+     ProductReceipt (..),
+     FeatureRunIdentity (..),
+     featureRunIdentityFromFaoContext,
++    featureRunIdentityText,
+     validateReceiptKind,
+     exactUpstreamArtifacts,
+     receiptBusinessParameterText,
+@@ -29,12 +30,10 @@
+     WallIdentity (..),
+     BuildActivityIdentity (..),
+     AttackSegmentIdentity (..),
+-    AttackSegmentAttemptIdentity (..),
+     AbsorbInteractionIdentity (..),
+     wallRefOf,
+     buildRefOf,
+     attackSegmentRefOf,
+-    attackSegmentAttemptRefOf,
+     absorbRefOf,
+     WallLifecycleOccurrence (..),
+     BuildActivityOccurrence (..),
+@@ -54,7 +53,11 @@
+     AttackSegmentBookCurrentView,
+     emptyAttackSegmentBookCurrentView,
+     attackCurrentSegments,
++    attackCurrentFormations,
++    attackCurrentBarriers,
+     recordFormedAttackSegment,
++    appendAttackFormationEvidence,
++    appendWallAttackBarrier,
+     AbsorbCurrentView (..),
+   )
+ where
+@@ -241,6 +244,9 @@
+           codeVersion = receiptCodeVersion receipt
+         }
+ 
++featureRunIdentityText :: FeatureRunIdentity -> Text
++featureRunIdentityText = TextEncoding.decodeUtf8 . BL.toStrict . encode
++
+ knownProductKinds :: Set Text
+ knownProductKinds =
+   Set.fromList
+@@ -269,7 +275,7 @@
+ validateReceiptKind expected receipt
+   | expected `Set.notMember` knownProductKinds = Left "unknown P1 product kind"
+   | receiptProductKind receipt /= expected = Left "P1 thin receipt product kind mismatch"
+-  | receiptSchemaVersion receipt /= expectedSchemaVersion expected = Left "P1 thin receipt schema version mismatch"
++  | receiptSchemaVersion receipt /= expected <> "-v1.6.1" = Left "P1 thin receipt schema version mismatch"
+   | receiptStatus receipt /= "success" = Left "P1 thin receipt is not successful"
+   | any Text.null requiredText = Left "P1 thin receipt contains an empty required field"
+   | actualKinds /= expectedUpstreamKinds expected = Left "P1 thin receipt direct upstream products mismatch"
+@@ -292,11 +298,6 @@
+         receiptArtifactLocation receipt
+       ]
+     actualKinds = Set.fromList (fmap upstreamProductKind (receiptDirectUpstreamArtifacts receipt))
+-
+-expectedSchemaVersion :: Text -> Text
+-expectedSchemaVersion "attack_segment" = "attack_segment-v1.6.2"
+-expectedSchemaVersion "attack_formation_evidence" = "attack_formation_evidence-v1.6.2"
+-expectedSchemaVersion productKind = productKind <> "-v1.6.1"
+ 
+ exactUpstreamArtifacts :: Text -> ProductReceipt -> [DirectUpstreamArtifact]
+ exactUpstreamArtifacts kind = filter ((== kind) . upstreamProductKind) . receiptDirectUpstreamArtifacts
+@@ -369,6 +370,7 @@
+ 
+ data F4QualificationHit = F4QualificationHit
+   { qualificationStreamOrdinal :: Int,
++    qualificationStreamIdentity :: FeatureRunIdentity,
+     qualificationFamilyCode :: Int,
+     qualificationFamily :: Text,
+     qualificationGrade :: Int
+@@ -388,7 +390,7 @@
+   = AcceptedMaterialEvidence
+   | OrdinaryGapBreakEvidence
+   | SameUtiOrderUnresolvedEvidence
+-  | ObservedNoAcceptedAttackIntervalEvidence
++  | GapIntervalSummaryEvidence
+   | AvailabilityIntervalSummaryEvidence
+   | CapabilityUnavailableEvidence
+   deriving (Eq, Ord, Show, Enum, Bounded, Generic)
+@@ -440,28 +442,27 @@
+ newtype OccurrenceRef = OccurrenceRef {unOccurrenceRef :: Text}
+   deriving (Eq, Ord, Show, Generic)
+ 
+-newtype WallIdentity = WallIdentity
+-  { wallIdentityLocalNo :: Int64
+-  }
+-  deriving (Eq, Ord, Show, Generic)
+-
+-newtype BuildActivityIdentity = BuildActivityIdentity
+-  { buildIdentityLocalNo :: Int64
+-  }
+-  deriving (Eq, Ord, Show, Generic)
+-
+-newtype AttackSegmentIdentity = AttackSegmentIdentity
+-  { attackIdentityLocalNo :: Int64
+-  }
+-  deriving (Eq, Ord, Show, Generic)
+-
+-newtype AttackSegmentAttemptIdentity = AttackSegmentAttemptIdentity
+-  { attackAttemptLocalNo :: Int64
+-  }
+-  deriving (Eq, Ord, Show, Generic)
+-
+-newtype AbsorbInteractionIdentity = AbsorbInteractionIdentity
+-  { absorbIdentityLocalNo :: Int64
++data WallIdentity = WallIdentity
++  { wallIdentityFeatureRun :: FeatureRunIdentity,
++    wallIdentityLocalNo :: Int64
++  }
++  deriving (Eq, Ord, Show, Generic)
++
++data BuildActivityIdentity = BuildActivityIdentity
++  { buildIdentityFeatureRun :: FeatureRunIdentity,
++    buildIdentityLocalNo :: Int64
++  }
++  deriving (Eq, Ord, Show, Generic)
++
++data AttackSegmentIdentity = AttackSegmentIdentity
++  { attackIdentityFeatureRun :: FeatureRunIdentity,
++    attackIdentityLocalNo :: Int64
++  }
++  deriving (Eq, Ord, Show, Generic)
++
++data AbsorbInteractionIdentity = AbsorbInteractionIdentity
++  { absorbIdentityFeatureRun :: FeatureRunIdentity,
++    absorbIdentityLocalNo :: Int64
+   }
+   deriving (Eq, Ord, Show, Generic)
+ 
+@@ -469,22 +470,20 @@
+ localText = Text.pack . show
+ 
+ wallRefOf :: WallIdentity -> WallRef
+-wallRefOf (WallIdentity localNo) = WallRef ("wall:" <> localText localNo)
++wallRefOf (WallIdentity runIdentity localNo) = WallRef ("wall:" <> featureRunIdentityText runIdentity <> ":" <> localText localNo)
+ 
+ buildRefOf :: BuildActivityIdentity -> BuildRef
+-buildRefOf (BuildActivityIdentity localNo) = BuildRef ("build:" <> localText localNo)
++buildRefOf (BuildActivityIdentity runIdentity localNo) = BuildRef ("build:" <> featureRunIdentityText runIdentity <> ":" <> localText localNo)
+ 
+ attackSegmentRefOf :: AttackSegmentIdentity -> AttackSegmentRef
+-attackSegmentRefOf (AttackSegmentIdentity localNo) = AttackSegmentRef ("attack-segment:" <> localText localNo)
+-
+-attackSegmentAttemptRefOf :: AttackSegmentAttemptIdentity -> AttackSegmentAttemptRef
+-attackSegmentAttemptRefOf (AttackSegmentAttemptIdentity localNo) = AttackSegmentAttemptRef ("attack-segment-attempt:" <> localText localNo)
++attackSegmentRefOf (AttackSegmentIdentity runIdentity localNo) = AttackSegmentRef ("attack-segment:" <> featureRunIdentityText runIdentity <> ":" <> localText localNo)
+ 
+ absorbRefOf :: AbsorbInteractionIdentity -> AbsorbRef
+-absorbRefOf (AbsorbInteractionIdentity localNo) = AbsorbRef ("absorb:" <> localText localNo)
++absorbRefOf (AbsorbInteractionIdentity runIdentity localNo) = AbsorbRef ("absorb:" <> featureRunIdentityText runIdentity <> ":" <> localText localNo)
+ 
+ data WallLifecycleOccurrence = WallLifecycleOccurrence
+   { wallOccurrenceIdentity :: WallIdentity,
++    wallOccurrenceArtifactRef :: Text,
+     wallOccurrenceRef :: OccurrenceRef,
+     wallOccurrencePayload :: Spine.WallLifecycleEvent
+   }
+@@ -493,6 +492,7 @@
+ data BuildActivityOccurrence = BuildActivityOccurrence
+   { buildOccurrenceIdentity :: BuildActivityIdentity,
+     buildOccurrenceWallIdentity :: WallIdentity,
++    buildOccurrenceArtifactRef :: Text,
+     buildOccurrenceRef :: OccurrenceRef,
+     buildOccurrencePayload :: Spine.BuildActivityEvent
+   }
+@@ -500,12 +500,11 @@
+ 
+ data AttackFormationMaterialOccurrence = AttackFormationMaterialOccurrence
+   { formationOccurrenceWallIdentity :: WallIdentity,
++    formationOccurrenceArtifactRef :: Text,
+     formationOccurrenceRef :: OccurrenceRef,
+-    formationOccurrenceAttemptRef :: Maybe AttackSegmentAttemptRef,
+     formationOccurrenceKind :: FormationEvidenceKind,
+     formationOccurrenceStartUti :: TickUTI,
+     formationOccurrenceEndUti :: TickUTI,
+-    formationOccurrenceAvailableAt :: TickUTI,
+     formationOccurrenceAvailability :: FormationEvidenceAvailability,
+     formationOccurrenceReason :: Maybe Text,
+     formationOccurrencePayload :: Spine.AttackFormationMaterial
+@@ -515,7 +514,9 @@
+ data AttackSegmentAtWall = AttackSegmentAtWall
+   { attackOccurrenceIdentity :: AttackSegmentIdentity,
+     attackOccurrenceWallIdentity :: WallIdentity,
++    attackOccurrenceArtifactRef :: Text,
+     attackOccurrenceRef :: OccurrenceRef,
++    attackOccurrenceMethodSnapshot :: AttackFormationMethodSnapshot,
+     attackOccurrenceQualificationHits :: [F4QualificationHit],
+     attackOccurrenceAvailability :: AttackSegmentAvailability,
+     attackOccurrenceUnavailableReason :: Maybe Text,
+@@ -525,6 +526,7 @@
+ 
+ data WallAttackBarrierOccurrence = WallAttackBarrierOccurrence
+   { barrierOccurrenceWallIdentity :: WallIdentity,
++    barrierOccurrenceArtifactRef :: Text,
+     barrierOccurrenceRef :: OccurrenceRef,
+     barrierOccurrencePayload :: Spine.WallAttackBarrier
+   }
+@@ -533,6 +535,7 @@
+ data AbsorbInteractionOccurrence = AbsorbInteractionOccurrence
+   { absorbOccurrenceIdentity :: AbsorbInteractionIdentity,
+     absorbOccurrenceWallIdentity :: WallIdentity,
++    absorbOccurrenceArtifactRef :: Text,
+     absorbOccurrenceRef :: OccurrenceRef,
+     absorbOccurrenceKind :: AbsorbOccurrenceKind,
+     absorbOccurrenceMilestoneLevel :: Maybe Double,
+@@ -542,7 +545,9 @@
+   deriving (Eq, Ord, Show, Generic)
+ 
+ data DirectedLargeDealOccurrence = DirectedLargeDealOccurrence
+-  { largeDealOccurrenceLocalNo :: Int64,
++  { largeDealOccurrenceRunIdentity :: FeatureRunIdentity,
++    largeDealOccurrenceLocalNo :: Int64,
++    largeDealOccurrenceArtifactRef :: Text,
+     largeDealOccurrenceRef :: OccurrenceRef,
+     largeDealQualificationFamily :: Text,
+     largeDealQualificationGrade :: Int,
+@@ -550,22 +555,26 @@
+   }
+   deriving (Eq, Ord, Show, Generic)
+ 
+--- | exact upstream receipt 在流级别冻结 producer run；逐 occurrence 的业务
+--- 身份只保留 run 内 local wall_id。旧 fixture 可精确枚举，正式紧凑流只记录
+--- receipt 已验证，不再把运行身份复制进每条 occurrence，也不重读整段 Wall 历史。
++-- | Wall 的 result key 只是物理流名，业务身份来自同一次 producer run
++-- 与行内 wall_id。旧的逐对象 fixture 仍可使用精确枚举目录；正式紧凑流
++-- 使用 run namespace，避免把每堵墙错误提升成一个 result key。
+ data WallIdentityCatalog = WallIdentityCatalog
+-  { wallIdentityNamespaceValidated :: Bool,
++  { wallIdentityNamespace :: Maybe FeatureRunIdentity,
+     wallIdentities :: Set WallIdentity
+   }
+   deriving (Eq, Ord, Show, Generic)
+ 
+ emptyWallIdentityCatalog :: WallIdentityCatalog
+-emptyWallIdentityCatalog = WallIdentityCatalog False Set.empty
++emptyWallIdentityCatalog = WallIdentityCatalog Nothing Set.empty
+ 
+ containsWallIdentity :: WallIdentity -> WallIdentityCatalog -> Bool
+ containsWallIdentity identity catalog =
+   Set.member identity (wallIdentities catalog)
+-    || (wallIdentityNamespaceValidated catalog && wallIdentityLocalNo identity > 0)
++    || case wallIdentityNamespace catalog of
++      Just runIdentity ->
++        wallIdentityFeatureRun identity == runIdentity
++          && wallIdentityLocalNo identity > 0
++      Nothing -> False
+ 
+ data WallBusinessState = WallPresent | WallDormantState | WallEndedState deriving (Eq, Ord, Show, Generic)
+ 
+@@ -591,20 +600,31 @@
+ 
+ -- | 贴墙攻势段簿的当前业务投影。
+ --
+--- 已形成段按业务身份寻址。FormationEvidence 与 formal Barrier 由各自的
+--- append-only occurrence writer 保存，不复制进 current view。
+-newtype AttackSegmentBookCurrentView = AttackSegmentBookCurrentView
+-  { attackCurrentSegmentIndex :: Map AttackSegmentIdentity AttackSegmentAtWall
++-- 已形成段按业务身份寻址；FormationEvidence 与 formal Barrier 的
++-- append-only 历史按 occurrence 引用保存为有序索引。这样仍可完整、稳定地
++-- 投影历史，但每次追加不再复制并重排此前全部历史。
++data AttackSegmentBookCurrentView = AttackSegmentBookCurrentView
++  { attackCurrentSegmentIndex :: Map AttackSegmentIdentity AttackSegmentAtWall,
++    attackFormationHistoryByRef :: Map OccurrenceRef AttackFormationMaterialOccurrence,
++    attackBarrierHistoryByRef :: Map OccurrenceRef WallAttackBarrierOccurrence
+   }
+   deriving (Eq, Ord, Show, Generic)
+ 
+ -- | 空的贴墙攻势段簿当前投影。
+ emptyAttackSegmentBookCurrentView :: AttackSegmentBookCurrentView
+-emptyAttackSegmentBookCurrentView = AttackSegmentBookCurrentView Map.empty
++emptyAttackSegmentBookCurrentView = AttackSegmentBookCurrentView Map.empty Map.empty Map.empty
+ 
+ -- | 返回全部已形成段；Map key 是正式 AttackSegment 业务身份。
+ attackCurrentSegments :: AttackSegmentBookCurrentView -> Map AttackSegmentIdentity AttackSegmentAtWall
+ attackCurrentSegments = attackCurrentSegmentIndex
++
++-- | 按 occurrence 引用稳定排序，投影完整 FormationEvidence history。
++attackCurrentFormations :: AttackSegmentBookCurrentView -> [AttackFormationMaterialOccurrence]
++attackCurrentFormations = Map.elems . attackFormationHistoryByRef
++
++-- | 按 occurrence 引用稳定排序，投影完整 formal Barrier history。
++attackCurrentBarriers :: AttackSegmentBookCurrentView -> [WallAttackBarrierOccurrence]
++attackCurrentBarriers = Map.elems . attackBarrierHistoryByRef
+ 
+ -- | 把一个 producer 已完整形成的 AttackSegment 登记进段簿当前投影。
+ recordFormedAttackSegment :: AttackSegmentAtWall -> AttackSegmentBookCurrentView -> AttackSegmentBookCurrentView
+@@ -614,6 +634,22 @@
+         Map.insert (attackOccurrenceIdentity segment) segment (attackCurrentSegmentIndex current)
+     }
+ 
++-- | 追加一条 FormationEvidence；调用方已完成 occurrence-ref 幂等校验。
++appendAttackFormationEvidence :: AttackFormationMaterialOccurrence -> AttackSegmentBookCurrentView -> AttackSegmentBookCurrentView
++appendAttackFormationEvidence occurrence current =
++  current
++    { attackFormationHistoryByRef =
++        Map.insert (formationOccurrenceRef occurrence) occurrence (attackFormationHistoryByRef current)
++    }
++
++-- | 追加一条 formal Barrier；调用方已完成 occurrence-ref 幂等校验。
++appendWallAttackBarrier :: WallAttackBarrierOccurrence -> AttackSegmentBookCurrentView -> AttackSegmentBookCurrentView
++appendWallAttackBarrier occurrence current =
++  current
++    { attackBarrierHistoryByRef =
++        Map.insert (barrierOccurrenceRef occurrence) occurrence (attackBarrierHistoryByRef current)
++    }
++
+ data AbsorbCurrentView = AbsorbCurrentView
+   { absorbCurrentIdentity :: AbsorbInteractionIdentity,
+     absorbCurrentWallIdentity :: WallIdentity,

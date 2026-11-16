@@ -1,0 +1,71 @@
+        "input_source_scope" .= sourceScopeRef value,
+        "artifact_location" .= artifactRef value,
+        "schema_version" .= schemaVersion value,
+        "code_version" .= codeVersion value
+      ]
+
+instance FromJSON FeatureRunIdentity where
+  parseJSON = withObject "FeatureRunIdentity" $ \o ->
+    FeatureRunIdentity
+      <$> o .: "feature_symbol"
+      <*> o .: "parameter_set_id"
+      <*> o .: "target"
+      <*> o .: "calendar_or_session"
+      <*> o .: "time_range"
+      <*> o .: "input_source_scope"
+      <*> o .: "artifact_location"
+      <*> o .: "schema_version"
+      <*> o .: "code_version"
+
+sourceScopeText :: SourceScope -> Text
+sourceScopeText = TextEncoding.decodeUtf8 . BL.toStrict . encode
+
+featureRunIdentityFromFaoContext :: ProductReceipt -> FeatureRunIdentity
+featureRunIdentityFromFaoContext receipt =
+  let scope = receiptSourceScope receipt
+   in FeatureRunIdentity
+        { featureClassName = receiptFeatureInstance receipt,
+          parameterSetId = receiptParameterSetId receipt,
+          targetRef = sourceTarget scope,
+          calendarRef = sourceCalendarOrSession scope,
+          timeRangeRef = sourceTimeRange scope,
+          sourceScopeRef = sourceScopeText scope,
+          artifactRef = receiptArtifactLocation receipt,
+          schemaVersion = receiptSchemaVersion receipt,
+          codeVersion = receiptCodeVersion receipt
+        }
+
+featureRunIdentityText :: FeatureRunIdentity -> Text
+featureRunIdentityText = TextEncoding.decodeUtf8 . BL.toStrict . encode
+
+knownProductKinds :: Set Text
+knownProductKinds =
+  Set.fromList
+    [ "wall_lifecycle",
+      "directed_large_deal_stream",
+      "build_activity",
+      "attack_segment",
+      "attack_formation_evidence",
+      "wall_relation_barrier",
+      "absorb_interaction"
+    ]
+1091:class MulWrap_P1WallCurrentStorage(DbaStruct):
+4932:class P1WallCurrentStorage(DbaStruct):
+5317:class P1DiagnosticStorage(DbaStruct):
+5611:class P1WallOccurrenceStorage(DbaStruct):
+5649:class SeqOf_P1WallOccurrenceStorage(DbaStruct):
+5731:class MulWrap_P1WallOccurrenceStorage(DbaStruct):
+6143:class MulWrap_P1DiagnosticStorage(DbaStruct):
+Stack has not been tested with GHC versions above 8.10, and using 9.4.8, this may fail
+Stack has not been tested with Cabal versions above 3.2, but version 3.8.1.0 was found, this may fail
+WARNING: Ignoring reflex's bounds on primitive (>=0.5 && <0.8); using primitive-0.8.0.0.
+Reason: allow-newer enabled.
+hgeometry-combinatorial> configure (lib)
+hgeometry-combinatorial> Configuring hgeometry-combinatorial-0.15...
+edh                    > configure (lib + exe)
+edh                    > Configuring edh-0.3.0.0...
+Prelude.chr: bad argument: 3537146759
+
+Prelude.chr: bad argument: 3151811289
+/dwdhome/fy/BASE_E6_2/mquant/worker
+da0475a9c7fa769c2db8c803a5376ff2cdf09e0d

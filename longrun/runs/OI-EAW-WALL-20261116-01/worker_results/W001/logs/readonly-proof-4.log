@@ -1,0 +1,379 @@
+__all__ = [
+    "DbaStore",
+    "DbaStruct",
+]
+
+from collections import *
+
+import numpy as np
+from numba import njit
+
+from .rt import *
+
+
+def _load_Text(pa, aa, vin: int):
+    i_next = aa[vin]
+    i_start = aa[vin - 1] if vin > 0 else 0
+    if i_next <= i_start:
+        return ""
+    bs = pa[i_start:i_next].tobytes()
+    return bs.decode("utf-8")
+
+
+class DbaStore:
+
+    def __init__(self, root_dir: str, root_struct: type):
+        self.root_dir = root_dir
+        self.seq_reg = {}
+        self.root_seq = self.arm_seq("", root_struct)
+
+        try:
+            self.Text_payload = DbArray(root_dir, "Text$Data.Text/payload", byte)
+            self.Text_anchor = DbArray(root_dir, "Text$Data.Text/anchor", intp)
+        except:
+            pass
+
+        try:
+            self.TextList_payload = DbArray(root_dir, "[Text]$Data.Text/payload", byte)
+            self.TextList_anchor = DbArray(root_dir, "[Text]$Data.Text/anchor", intp)
+            self.TextList_anchor1 = DbArray(root_dir, "[Text]$Data.Text/anchor1", intp)
+        except:
+            pass
+
+    def load_Text(self, vin: int):
+        return _load_Text(self.Text_payload.ndarray, self.Text_anchor.ndarray, vin)
+
+    def load_TextList(self, vin: int):
+        a1a = self.TextList_anchor1.ndarray
+        i_next = a1a[vin]
+        i_start = a1a[vin - 1] if vin > 0 else 0
+        if i_next <= i_start:
+            return []
+        pa = self.TextList_payload.ndarray
+        aa = self.TextList_anchor.ndarray
+        return [_load_Text(pa, aa, i) for i in range(i_start, i_next)]
+
+    def __repr__(self) -> str:
+        return f"DbaStore({self.root_dir!r}, {type(self.root_seq)!r})"
+
+    def __len__(self):
+        return self.root_seq.count()
+
+    def __iter__(self):
+        return iter(self.root_seq)
+
+    def arm_seq(self, sp: str, struct: type):
+        adt_seq = self.seq_reg.get(sp, None)
+        if adt_seq:
+            return adt_seq
+        adt_seq = struct()
+        try:
+            adt_seq.__store__ = self
+            adt_seq.__arm_store__(self, sp)
+        except FileNotFoundError as e:
+            print(f"FileNotFoundError: {e}")
+            adt_seq = EmptyDbaStruct()
+        self.seq_reg[sp] = adt_seq
+        return adt_seq
+
+    def __getitem__(self, k: str):
+        return self.root_seq[k]
+
+    def get(self, k: str, default):
+        try:
+            return self.__getitem__(k)
+        except KeyError:
+            return default
+
+
+class DbaStruct:
+
+    __slots__ = ("__store__",)
+
+    __adt__ = namedtuple("Void", [])
+
+    def __arm_store__(self, store: DbaStore, sp: str):
+        pass
+
+    def count(self) -> int:
+        raise NotImplementedError
+
+    def load(self, vin: int) -> __adt__:
+        raise NotImplementedError
+
+    def __len__(self):
+        return self.count()
+
+    def __iter__(self):
+        for vin in range(self.count()):
+            yield self.load(vin)
+
+    def __repr__(self) -> str:
+        adt = self.__adt__
+        try:
+            if adt.__origin__ is list:
+                edt = adt.__args__[0]
+                return "SeqOf[" + edt.__doc__ + "]"
+        except AttributeError:
+            pass
+        return adt.__doc__
+
+    def __getitem__(self, k: str):
+        return _VecFieldGetter(self)[k]
+
+
+@njit(nogil=True)
+def _varlenseq_idxs(aa, in_idxs, in_ridxs):
+    assert in_idxs.ndim == in_ridxs.ndim - 1 == 1
+    assert in_idxs.shape == in_ridxs.shape[1:]
+
+    cap = in_idxs.size * 5
+    idxs = np.empty(cap, np.intp)
+    ridxs = np.empty((in_ridxs.shape[0] + 1, cap), np.intp)
+    cnt = 0
+    for ii in range(in_idxs.size):
+        ai = in_idxs[ii]
+        i_end = aa[ai]
+        i_start = 0 if ai < 1 else aa[ai - 1]
+
+        if cnt + i_end - i_start > cap:
+            cap = int(cap * 1.5)
+            old_idxs, old_ridxs = idxs, ridxs
+            idxs = np.empty(cap, np.intp)
+            ridxs = np.empty((in_ridxs.shape[0] + 1, cap), np.intp)
+            idxs[:cnt] = old_idxs[:cnt]
+            ridxs[:, :cnt] = old_ridxs[:, :cnt]
+            old_idxs, old_ridxs = None, None
+
+        for i in range(i_start, i_end):
+            idxs[cnt] = i
+            ridxs[-1, cnt] = i - i_start
+            ridxs[:-1, cnt] = in_ridxs[:, ii]
+            cnt += 1
+
+    return idxs[:cnt].copy(), ridxs[:, :cnt].copy()
+
+
+class _VecFieldGetter:
+    __slots__ = ("seq", "idxs", "ridxs")
+
+    def __init__(self, seq, idxs=None, ridxs=None):
+        self.seq = seq
+        self.idxs = idxs
+        if ridxs is not None:
+            assert idxs is not None and ridxs.shape[1:] == idxs.shape
+            self.ridxs = ridxs
+        else:
+            ridxs = np.arange(seq.count())
+            if idxs is None:
+                self.ridxs = ridxs[np.newaxis, :]
+            else:
+                assert idxs.ndim == 1
+                self.ridxs = ridxs[np.newaxis, idxs]
+
+    def __repr__(self) -> str:
+        return repr(self.seq) + "[???]"
+        return None
+
+
+class NormalField(FaoField):
+    """ 普通字段类型"""
+    dtype: str = None
+
+    # 默认值
+    default_val = None
+
+    def redtype(self):
+        return "f8"
+
+    # 默认值
+    def default(self):
+        return self.default_val
+
+    def fit_dictfield(self, df: pd.DataFrame):
+        """所有字段都使用相同的字段类型"""
+        return DictField({name: self for name in df.columns})
+
+    def exist_state_field(self):
+        """是否存在状态型字段"""
+        return self.is_state_field()
+
+    def exist_event_field(self):
+        return self.is_event_field()
+
+    # 是否事件型字段
+    def is_event_field(self):
+        return False
+    
+    # 是否 adt 型字段
+    def is_adt_field(self):
+        return False
+
+    # 是否Bool型字段
+    def is_bool_field(self):
+        return False
+
+    # 是否 状态 型字段
+    def is_state_field(self):
+        return False
+
+    # 过时函数
+    def is_status_field(self):
+        return self.is_state_field()
+
+    # 填充 状态型
+    def is_fill_state_field(self):
+        return False
+
+    def fit_df(self, df: pd.DataFrame) -> pd.DataFrame:
+        # 根据字段类型解析字段
+        raise NotImplementedError(self.__class__.__name__)
+
+    FDTYPE_PREFIX = None
+
+    def to_fdtype(self):
+        """ 字段数据类型 """
+        if self.FDTYPE_PREFIX is None:
+            return self.dtype
+        return f"{self.FDTYPE_PREFIX}@{self.dtype}"
+    
+    @classmethod
+    def from_str(cls, fdtype: str):
+        fld = EventField.from_str(fdtype)
+        if fld is not None:
+            return fld
+        
+        fld = _BoolEventField.from_str(fdtype)
+        if fld is not None:
+            return fld
+        
+        fld = _NanEventField.from_str(fdtype)
+        if fld is not None:
+            return fld
+        
+        fld = _Nan0EventField.from_str(fdtype)
+        if fld is not None:
+            return fld
+        
+        fld = _StatusEventField.from_str(fdtype)
+        if fld is not None:
+            return fld
+        
+        fld = _StatusBoolEventField.from_str(fdtype)
+        if fld is not None:
+            return fld
+
+        fld = _FloatField.from_str(fdtype)
+        if fld is not None:
+            return fld
+        
+        fld = _IntField.from_str(fdtype)
+        if fld is not None:
+            return fld
+        
+        fld = _DateTimeField.from_str(fdtype)
+        if fld is not None:
+            return fld
+        
+        fld = AdtEventField.from_str(fdtype)
+        if fld is not None:
+            return fld
+
+        raise Exception(f"Unknown fdtype {fdtype}")
+
+    def __repr__(self):
+        return f"{type(self).__name__}()"
+
+    def __call__(self, *args, **kwargs):
+        return self.__class__(*args, **kwargs)
+
+
+class _DataFrameField(FaoField):
+            temp_file_name = f"{file_name}_{uuid.uuid1()}"
+            temp_path = f"{full_dir}/{temp_file_name}.dba"
+
+            res = DbArray(full_dir, temp_file_name, dt, shape, access=access)
+            
+            if hasattr(res,"flush"):
+                res.flush()
+
+            os.rename(temp_path, file_path)
+            return res
+        return DbArray(full_dir, file_name, dt, shape, access=access)
+
+    @classmethod
+    def read_ndarray(cls, full_dir,file_name, dt=f8):
+        return cls.dbarray(
+            full_dir,file_name, dt, shape=None, access=mmap.ACCESS_READ
+        ).ndarray
+
+    @classmethod
+    def write_array(cls, full_dir,file_name, dt=f8, shape=None) -> "DbArray":
+        return cls.dbarray(
+            full_dir, file_name, dt, shape, access=mmap.ACCESS_WRITE
+        )
+
+    @classmethod
+    def read_field_ts(cls, full_dir,field:str=None,is_event:bool=False,key:str = None):
+        """ 读取字段时间轴 
+        key 不为None，表示两层，如 Datarame 型特征
+        """
+        tsPath = None
+        if is_event:
+            tsPath = f"{key}.{field}.{TS_PATH_NAME}" if key else f"{field}.{TS_PATH_NAME}"
+        else:
+            tsPath = f"{key}.{TS_PATH_NAME}" if key else TS_PATH_NAME
+        return DbaUtil.read_ndarray(full_dir, tsPath, "M8[ns]")
+
+    @classmethod
+    def dump(cls, df:pd.DataFrame, full_dir:str, flds: DictField):
+        """
+        Author: King
+        Since : 2024-08-26 15:53
+        Desc  :
+            - 事件型字段一个字段保存一个时间轴
+            - 所有Bar型字段保存一个时间周期
+        """
+        hasBar = False
+        for field, fld in flds.items():
+            ds = fld.fit_df(df[field])
+            n = ds.shape[0]
+
+            val = cls.write_array(full_dir, field, fld.dtype, n)
+m3sof/core/sof.py:441:    def gen_root_dir(self, store_dir, name):
+m3sof/core/sof.py:461:def load_sof(**kwargs):
+m3tt/lang/ctx.py:183:class CurrTradeSet(AbsContextManager):
+drwxr-xr-x 14 dw nogroup 23 Oct 17 22:00 edh-universe
+drwxr-xr-x  8 dw nogroup  8 Aug  7  2025 edh-universe/frp
+.
+..
+.roo
+.stack-work
+.stack_install.log
+.vscode
+LocalHaskellDocs.command
+avoid-cabal.project
+bin
+cabal.project
+deps
+document
+e-wrks
+fis
+fourmolu.yaml
+frp
+hsite3
+mpds
+nb
+open_haddock
+other
+stack.yaml
+stack.yaml.lock
+.
+..
+.vscode
+frp
+frp-core
+frp-poc
+hspy
+trade-poc
+rg: mquant/frame/core/base/pp*.py: IO error for operation on mquant/frame/core/base/pp*.py: No such file or directory (os error 2)

@@ -1,0 +1,423 @@
+--- cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/Publication.hs
++++ /dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/Publication.hs
+@@ -1,7 +1,6 @@
+-{-# LANGUAGE DeriveAnyClass #-}
+-{-# LANGUAGE DeriveGeneric #-}
+ {-# LANGUAGE FlexibleContexts #-}
+ {-# LANGUAGE FlexibleInstances #-}
++{-# LANGUAGE TypeApplications #-}
+ {-# LANGUAGE UndecidableInstances #-}
+ 
+ -- | P1 产品 DSU 的正式 writer。
+@@ -10,27 +9,36 @@
+ -- transaction 中的 0..N 条 occurrence 或本次变化的 current state；业务字段
+ -- 仍由产品 ADT 逐字段进入现有 DBA，不经 @show@ 文本化，也不形成 P1 总表。
+ module Frp.Instance.ISL.Eaw.P1.Publication
+-  ( dumpWallOutputs,
++  ( loadWallOutputs,
++    loadBuildOutputs,
++    loadAttackOutputs,
++    loadAbsorbOutputs,
++    dumpWallOutputs,
+     dumpBuildOutputs,
+     dumpAttackOutputs,
+     dumpAbsorbOutputs,
+   )
+ where
+ 
++import Data.List (foldl')
+ import Data.List.NonEmpty (NonEmpty (..))
++import Data.Map.Strict (Map)
++import Data.Map.Strict qualified as Map
+ import Data.Text qualified as Text
+ import Database.MongoDB (Val, (=:))
+ import Database.MongoDB qualified as BSON
+ import Frp.Apt.Bson (FromBSON (..), ToBSON (..))
+-import Frp.Core (Fao, FaoModel, dumpAdtEvent', withEventDump)
++import Frp.Core (Fao, FaoModel, HasHisBack, dumpAdtEvent', loadAdtEvent', withEventDump, withEventLoad)
+ import Frp.Instance.ISL.Eaw.Interface.Common
+ import Frp.Instance.ISL.Eaw.Interface.PreL0 qualified as Spine
+ import Frp.Instance.ISL.Eaw.P1.AbsorbInteraction
+ import Frp.Instance.ISL.Eaw.P1.AttackSegmentBook
+ import Frp.Instance.ISL.Eaw.P1.BuildActivity
+ import Frp.Instance.ISL.Eaw.P1.Products
++import Frp.Instance.ISL.Eaw.P1.PublicStorage
+ import Frp.Instance.ISL.Eaw.P1.WallLifecycle
+-import GHC.Generics (Generic)
++import Frp.Instance.ISLTC.AdtStorage (MulWrap (..))
++import Reflex (foldDyn, mergeWith)
+ 
+ -- P1 writer 的现有 DBA 只要求 BSON 实例。实例留在产品 writer 内，避免让
+ -- 共享接口脊柱反向承担 P1 的物理持久化责任；序列化对象仍是唯一 canonical
+@@ -78,10 +86,6 @@
+ instance ToBSON AttackSegmentRef
+ 
+ instance FromBSON AttackSegmentRef
+-
+-instance ToBSON AttackSegmentAttemptRef
+-
+-instance FromBSON AttackSegmentAttemptRef
+ 
+ instance ToBSON AbsorbRef
+ 
+@@ -273,11 +277,6 @@
+           "reason" =: reason,
+           "source" =: source
+         ]
+-      Spine.ObservedNoAcceptedAttackInterval reason source ->
+-        [ "_co" =: ("ObservedNoAcceptedAttackInterval" :: String),
+-          "reason" =: reason,
+-          "source" =: source
+-        ]
+       Spine.FormalFormationBarrier barrier reason ->
+         [ "_co" =: ("FormalFormationBarrier" :: String),
+           "barrier" =: barrier,
+@@ -303,10 +302,6 @@
+         Spine.MethodLocalGapBreak
+           <$> BSON.lookup "reason" document
+           <*> BSON.lookup "source" document
+-      "ObservedNoAcceptedAttackInterval" ->
+-        Spine.ObservedNoAcceptedAttackInterval
+-          <$> BSON.lookup "reason" document
+-          <*> BSON.lookup "source" document
+       "FormalFormationBarrier" ->
+         Spine.FormalFormationBarrier
+           <$> BSON.lookup "barrier" document
+@@ -495,22 +490,9 @@
+ 
+ instance FromBSON AbsorbOccurrenceKind
+ 
+--- 2026-08-25 物理合同断点。旧 occurrence ref 曾内嵌 artifact path／完整
+--- FeatureRunIdentity；新格式只允许 compact local ref，并用显式 schema 标记
+--- 令旧 BSON 缓存无法被当前 decoder 静默复用。这里不提供双轨 decoder。
+-instance ToBSON OccurrenceRef where
+-  toBSON (OccurrenceRef ref) =
+-    [ "_p1_occurrence_ref_schema" =: ("compact-local-v2" :: String),
+-      "value" =: Text.unpack ref
+-    ]
+-
+-instance FromBSON OccurrenceRef where
+-  fromBSON document = do
+-    schema <- BSON.lookup "_p1_occurrence_ref_schema" document :: Maybe String
+-    value <- BSON.lookup "value" document :: Maybe String
+-    if schema == "compact-local-v2"
+-      then Just (OccurrenceRef (Text.pack value))
+-      else Nothing
++instance ToBSON OccurrenceRef
++
++instance FromBSON OccurrenceRef
+ 
+ instance ToBSON WallIdentity
+ 
+@@ -524,10 +506,6 @@
+ 
+ instance FromBSON AttackSegmentIdentity
+ 
+-instance ToBSON AttackSegmentAttemptIdentity
+-
+-instance FromBSON AttackSegmentAttemptIdentity
+-
+ instance ToBSON AbsorbInteractionIdentity
+ 
+ instance FromBSON AbsorbInteractionIdentity
+@@ -607,102 +585,216 @@
+ instance ToBSON AbsorbInteractionError
+ 
+ instance FromBSON AbsorbInteractionError
+-
+-newtype WallOccurrenceBatch = WallOccurrenceBatch
+-  { wallOccurrences :: [WallLifecycleOccurrence]
+-  }
+-  deriving (Eq, Show, Generic, ToBSON, FromBSON)
+-
+-newtype WallCurrentBatch = WallCurrentBatch
+-  { wallCurrentViews :: [WallCurrentView]
+-  }
+-  deriving (Eq, Show, Generic, ToBSON, FromBSON)
+-
+-newtype WallDiagnostic = WallDiagnostic
+-  { wallDiagnosticError :: P1ProductDiagnostics WallLifecycleError
+-  }
+-  deriving (Eq, Show, Generic, ToBSON, FromBSON)
+-
+-newtype BuildOccurrenceBatch = BuildOccurrenceBatch
+-  { buildOccurrences :: [BuildActivityOccurrence]
+-  }
+-  deriving (Eq, Show, Generic, ToBSON, FromBSON)
+-
+-newtype BuildCurrentBatch = BuildCurrentBatch
+-  { buildCurrentViews :: [BuildCurrentView]
+-  }
+-  deriving (Eq, Show, Generic, ToBSON, FromBSON)
+-
+-newtype BuildDiagnostic = BuildDiagnostic
+-  { buildDiagnosticError :: P1ProductDiagnostics BuildActivityError
+-  }
+-  deriving (Eq, Show, Generic, ToBSON, FromBSON)
+-
+-newtype AttackSegmentBatch = AttackSegmentBatch
+-  { attackSegments :: [AttackSegmentAtWall]
+-  }
+-  deriving (Eq, Show, Generic, ToBSON, FromBSON)
+-
+-newtype FormationEvidenceBatch = FormationEvidenceBatch
+-  { formationEvidenceOccurrences :: [AttackFormationMaterialOccurrence]
+-  }
+-  deriving (Eq, Show, Generic, ToBSON, FromBSON)
+-
+-newtype WallBarrierBatch = WallBarrierBatch
+-  { wallBarrierOccurrences :: [WallAttackBarrierOccurrence]
+-  }
+-  deriving (Eq, Show, Generic, ToBSON, FromBSON)
+-
+-newtype AttackDiagnostic = AttackDiagnostic
+-  { attackDiagnosticError :: P1ProductDiagnostics AttackSegmentBookError
+-  }
+-  deriving (Eq, Show, Generic, ToBSON, FromBSON)
+-
+-newtype AttackCurrentBatch = AttackCurrentBatch
+-  { publishedAttackSegments :: [AttackSegmentAtWall]
+-  }
+-  deriving (Eq, Show, Generic, ToBSON, FromBSON)
+-
+-newtype AbsorbOccurrenceBatch = AbsorbOccurrenceBatch
+-  { absorbOccurrences :: [AbsorbInteractionOccurrence]
+-  }
+-  deriving (Eq, Show, Generic, ToBSON, FromBSON)
+-
+-newtype AbsorbCurrentBatch = AbsorbCurrentBatch
+-  { absorbCurrentViews :: [AbsorbCurrentView]
+-  }
+-  deriving (Eq, Show, Generic, ToBSON, FromBSON)
+-
+-newtype AbsorbDiagnostic = AbsorbDiagnostic
+-  { absorbDiagnosticError :: P1ProductDiagnostics AbsorbInteractionError
+-  }
+-  deriving (Eq, Show, Generic, ToBSON, FromBSON)
+ 
+ -- current_view 是按业务身份追加的最新状态更新表，不是每次更新都复制截至
+ -- 当时的全局快照。完整 current Map 仍由各 DSU 的 Dynamic 提供给 FRP 消费者。
+ 
++decodeStorageList :: String -> (stored -> Either Text.Text value) -> [stored] -> [value]
++decodeStorageList field decode = fmap requireDecoded
++  where
++    requireDecoded stored =
++      case decode stored of
++        Right value -> value
++        Left reason ->
++          error
++            ( "invalid P1 physical storage in "
++                <> field
++                <> ": "
++                <> Text.unpack reason
++            )
++
++decodeStorageValue :: String -> (stored -> Either Text.Text value) -> stored -> value
++decodeStorageValue field decode stored =
++  case decode stored of
++    Right value -> value
++    Left reason ->
++      error
++        ( "invalid P1 physical storage in "
++            <> field
++            <> ": "
++            <> Text.unpack reason
++        )
++
++applyCurrentUpdates :: (Ord key) => (view -> key) -> [view] -> Map key view -> Map key view
++applyCurrentUpdates keyOf updates current =
++  foldl' (\views view -> Map.insert (keyOf view) view views) current updates
++
++data WallLoadedPart
++  = WallLoadedOccurrences [WallLifecycleOccurrence]
++  | WallLoadedCurrent [P1WallCurrentStorage]
++
++data BuildLoadedPart
++  = BuildLoadedOccurrences [BuildActivityOccurrence]
++  | BuildLoadedCurrent [P1BuildCurrentStorage]
++
++data AbsorbLoadedPart
++  = AbsorbLoadedOccurrences [AbsorbInteractionOccurrence]
++  | AbsorbLoadedCurrent [P1AbsorbCurrentStorage]
++
++decodeWallCurrentParts :: FeatureRunIdentity -> [WallLoadedPart] -> [WallCurrentView]
++decodeWallCurrentParts runIdentity parts =
++  case (concat [values | WallLoadedOccurrences values <- parts], concat [values | WallLoadedCurrent values <- parts]) of
++    ([], []) -> []
++    ([], _) -> error "invalid P1 physical storage: wall_current_view has no same-UTI wall_occurrences"
++    (_, []) -> error "invalid P1 physical storage: wall_occurrences has no same-UTI wall_current_view"
++    (occurrences, storedCurrent) ->
++      let occurrenceByIdentity =
++            foldl'
++              (\values occurrence -> Map.insert (wallOccurrenceIdentity occurrence) occurrence values)
++              Map.empty
++              occurrences
++       in decodeStorageList
++            "wall_current_view"
++            (wallCurrentFromStorage runIdentity occurrenceByIdentity)
++            storedCurrent
++
++decodeBuildCurrentParts :: FeatureRunIdentity -> FeatureRunIdentity -> [BuildLoadedPart] -> [BuildCurrentView]
++decodeBuildCurrentParts buildRun wallRun parts =
++  case (concat [values | BuildLoadedOccurrences values <- parts], concat [values | BuildLoadedCurrent values <- parts]) of
++    ([], []) -> []
++    ([], _) -> error "invalid P1 physical storage: build_current_view has no same-UTI build_occurrences"
++    (_, []) -> error "invalid P1 physical storage: build_occurrences has no same-UTI build_current_view"
++    (occurrences, storedCurrent) ->
++      let occurrenceByIdentity =
++            foldl'
++              (\values occurrence -> Map.insert (buildOccurrenceIdentity occurrence) occurrence values)
++              Map.empty
++              occurrences
++       in decodeStorageList
++            "build_current_view"
++            (buildCurrentFromStorage buildRun wallRun occurrenceByIdentity)
++            storedCurrent
++
++decodeAbsorbCurrentParts :: FeatureRunIdentity -> FeatureRunIdentity -> [AbsorbLoadedPart] -> [AbsorbCurrentView]
++decodeAbsorbCurrentParts absorbRun wallRun parts =
++  case (concat [values | AbsorbLoadedOccurrences values <- parts], concat [values | AbsorbLoadedCurrent values <- parts]) of
++    ([], []) -> []
++    ([], _) -> error "invalid P1 physical storage: absorb_current_view has no same-UTI absorb_occurrences"
++    (_, []) -> error "invalid P1 physical storage: absorb_occurrences has no same-UTI absorb_current_view"
++    (occurrences, storedCurrent) ->
++      let occurrenceByIdentity =
++            foldl'
++              (\values occurrence -> Map.insert (absorbOccurrenceIdentity occurrence) occurrence values)
++              Map.empty
++              occurrences
++       in decodeStorageList
++            "absorb_current_view"
++            (absorbCurrentFromStorage absorbRun wallRun occurrenceByIdentity)
++            storedCurrent
++
++loadWallOutputs :: (Fao owner, HasHisBack) => owner -> FeatureRunIdentity -> FaoModel (Maybe WallLifecycleOutputs)
++loadWallOutputs owner runIdentity = withEventLoad owner $ do
++  occurrences <- fmap (decodeStorageList "wall_occurrences" (wallOccurrenceFromStorage runIdentity) . mul) <$> loadAdtEvent' @(MulWrap P1WallOccurrenceStorage) "wall_occurrences"
++  storedCurrent <- fmap mul <$> loadAdtEvent' @(MulWrap P1WallCurrentStorage) "wall_current_view"
++  let currentUpdates =
++        decodeWallCurrentParts runIdentity
++          <$> mergeWith
++            (<>)
++            [ (\values -> [WallLoadedOccurrences values]) <$> occurrences,
++              (\values -> [WallLoadedCurrent values]) <$> storedCurrent
++            ]
++  diagnostics <- fmap (decodeStorageValue "wall_diagnostics" (wallDiagnosticsFromStorage runIdentity) . mul) <$> loadAdtEvent' @(MulWrap P1DiagnosticStorage) "wall_diagnostics"
++  current <- foldDyn (applyCurrentUpdates wallCurrentIdentity) Map.empty currentUpdates
++  pure
++    WallLifecycleOutputs
++      { wallLifecycleOccurrences = occurrences,
++        wallLifecycleCurrent = current,
++        wallLifecycleCurrentUpdates = currentUpdates,
++        wallLifecycleDiagnostics = diagnostics
++      }
++
++loadBuildOutputs :: (Fao owner, HasHisBack) => owner -> FeatureRunIdentity -> FeatureRunIdentity -> FaoModel (Maybe BuildActivityOutputs)
++loadBuildOutputs owner buildRun wallRun = withEventLoad owner $ do
++  occurrences <- fmap (decodeStorageList "build_occurrences" (buildOccurrenceFromStorage buildRun wallRun) . mul) <$> loadAdtEvent' @(MulWrap P1BuildOccurrenceStorage) "build_occurrences"
++  storedCurrent <- fmap mul <$> loadAdtEvent' @(MulWrap P1BuildCurrentStorage) "build_current_view"
++  let currentUpdates =
++        decodeBuildCurrentParts buildRun wallRun
++          <$> mergeWith
++            (<>)
++            [ (\values -> [BuildLoadedOccurrences values]) <$> occurrences,
++              (\values -> [BuildLoadedCurrent values]) <$> storedCurrent
++            ]
++  diagnostics <- fmap (decodeStorageValue "build_diagnostics" (buildDiagnosticsFromStorage buildRun wallRun) . mul) <$> loadAdtEvent' @(MulWrap P1DiagnosticStorage) "build_diagnostics"
++  current <- foldDyn (applyCurrentUpdates buildCurrentIdentity) Map.empty currentUpdates
++  pure
++    BuildActivityOutputs
++      { buildActivityOccurrences = occurrences,
++        buildActivityCurrent = current,
++        buildActivityCurrentUpdates = currentUpdates,
++        buildActivityDiagnostics = diagnostics
++      }
++
++loadAttackOutputs :: (Fao owner, HasHisBack) => owner -> FeatureRunIdentity -> FeatureRunIdentity -> FeatureRunIdentity -> FeatureRunIdentity -> AttackFormationMethodSnapshot -> FaoModel (Maybe AttackSegmentBookOutputs)
++loadAttackOutputs owner attackRun formationRun barrierRun wallRun methodSnapshot = withEventLoad owner $ do
++  segments <- fmap (decodeStorageList "attack_segments" (attackSegmentFromStorage attackRun wallRun methodSnapshot) . mul) <$> loadAdtEvent' @(MulWrap P1AttackSegmentStorage) "attack_segments"
++  formations <- fmap (decodeStorageList "formation_evidence" (formationEvidenceFromStorage formationRun wallRun) . mul) <$> loadAdtEvent' @(MulWrap P1FormationEvidenceStorage) "formation_evidence"
++  barriers <- fmap (decodeStorageList "wall_attack_barriers" (wallBarrierFromStorage barrierRun wallRun) . mul) <$> loadAdtEvent' @(MulWrap P1WallBarrierStorage) "wall_attack_barriers"
++  currentSegments <- fmap (decodeStorageList "attack_segment_book_current_view" (attackSegmentFromStorage attackRun wallRun methodSnapshot) . mul) <$> loadAdtEvent' @(MulWrap P1AttackSegmentStorage) "attack_segment_book_current_view"
++  diagnostics <- fmap (decodeStorageValue "attack_diagnostics" (attackDiagnosticsFromStorage attackRun wallRun) . mul) <$> loadAdtEvent' @(MulWrap P1DiagnosticStorage) "attack_diagnostics"
++  let currentChanges =
++        mergeWith
++          (<>)
++          [ fmap recordFormedAttackSegment <$> currentSegments,
++            fmap appendAttackFormationEvidence <$> formations,
++            fmap appendWallAttackBarrier <$> barriers
++          ]
++  current <-
++    foldDyn
++      (\changes state -> foldl' (flip ($)) state changes)
++      emptyAttackSegmentBookCurrentView
++      currentChanges
++  pure
++    AttackSegmentBookOutputs
++      { attackSegmentsAtWall = segments,
++        attackFormationMaterials = formations,
++        wallAttackBarriers = barriers,
++        attackSegmentBookCurrent = current,
++        attackSegmentBookDiagnostics = diagnostics
++      }
++
++loadAbsorbOutputs :: (Fao owner, HasHisBack) => owner -> FeatureRunIdentity -> FeatureRunIdentity -> FaoModel (Maybe AbsorbInteractionOutputs)
++loadAbsorbOutputs owner absorbRun wallRun = withEventLoad owner $ do
++  occurrences <- fmap (decodeStorageList "absorb_occurrences" (absorbOccurrenceFromStorage absorbRun wallRun) . mul) <$> loadAdtEvent' @(MulWrap P1AbsorbOccurrenceStorage) "absorb_occurrences"
++  storedCurrent <- fmap mul <$> loadAdtEvent' @(MulWrap P1AbsorbCurrentStorage) "absorb_current_view"
++  let currentUpdates =
++        decodeAbsorbCurrentParts absorbRun wallRun
++          <$> mergeWith
++            (<>)
++            [ (\values -> [AbsorbLoadedOccurrences values]) <$> occurrences,
++              (\values -> [AbsorbLoadedCurrent values]) <$> storedCurrent
++            ]
++  diagnostics <- fmap (decodeStorageValue "absorb_diagnostics" (absorbDiagnosticsFromStorage absorbRun wallRun) . mul) <$> loadAdtEvent' @(MulWrap P1DiagnosticStorage) "absorb_diagnostics"
++  current <- foldDyn (applyCurrentUpdates absorbCurrentIdentity) Map.empty currentUpdates
++  pure
++    AbsorbInteractionOutputs
++      { absorbInteractionOccurrences = occurrences,
++        absorbInteractionCurrent = current,
++        absorbInteractionCurrentUpdates = currentUpdates,
++        absorbInteractionDiagnostics = diagnostics
++      }
++
+ dumpWallOutputs :: (Fao owner) => owner -> WallLifecycleOutputs -> FaoModel ()
+ dumpWallOutputs owner outputs = withEventDump owner $ do
+-  dumpAdtEvent' "wall_occurrences" (WallOccurrenceBatch <$> wallLifecycleOccurrences outputs)
+-  dumpAdtEvent' "wall_current_view" (WallCurrentBatch <$> wallLifecycleCurrentUpdates outputs)
+-  dumpAdtEvent' "wall_diagnostics" (WallDiagnostic <$> wallLifecycleDiagnostics outputs)
++  dumpAdtEvent' "wall_occurrences" (MulWrap . fmap wallOccurrenceToStorage <$> wallLifecycleOccurrences outputs)
++  dumpAdtEvent' "wall_current_view" (MulWrap . fmap wallCurrentToStorage <$> wallLifecycleCurrentUpdates outputs)
++  dumpAdtEvent' "wall_diagnostics" (MulWrap . wallDiagnosticsToStorage <$> wallLifecycleDiagnostics outputs)
+ 
+ dumpBuildOutputs :: (Fao owner) => owner -> BuildActivityOutputs -> FaoModel ()
+ dumpBuildOutputs owner outputs = withEventDump owner $ do
+-  dumpAdtEvent' "build_occurrences" (BuildOccurrenceBatch <$> buildActivityOccurrences outputs)
+-  dumpAdtEvent' "build_current_view" (BuildCurrentBatch <$> buildActivityCurrentUpdates outputs)
+-  dumpAdtEvent' "build_diagnostics" (BuildDiagnostic <$> buildActivityDiagnostics outputs)
++  dumpAdtEvent' "build_occurrences" (MulWrap . fmap buildOccurrenceToStorage <$> buildActivityOccurrences outputs)
++  dumpAdtEvent' "build_current_view" (MulWrap . fmap buildCurrentToStorage <$> buildActivityCurrentUpdates outputs)
++  dumpAdtEvent' "build_diagnostics" (MulWrap . buildDiagnosticsToStorage <$> buildActivityDiagnostics outputs)
+ 
+ dumpAttackOutputs :: (Fao owner) => owner -> AttackSegmentBookOutputs -> FaoModel ()
+ dumpAttackOutputs owner outputs = withEventDump owner $ do
+-  dumpAdtEvent' "attack_segments" (AttackSegmentBatch <$> attackSegmentsAtWall outputs)
+-  dumpAdtEvent' "formation_evidence" (FormationEvidenceBatch <$> attackFormationMaterials outputs)
+-  dumpAdtEvent' "wall_attack_barriers" (WallBarrierBatch <$> wallAttackBarriers outputs)
+-  dumpAdtEvent' "attack_segment_book_current_view" (AttackCurrentBatch <$> attackSegmentsAtWall outputs)
+-  dumpAdtEvent' "attack_diagnostics" (AttackDiagnostic <$> attackSegmentBookDiagnostics outputs)
++  dumpAdtEvent' "attack_segments" (MulWrap . fmap attackSegmentToStorage <$> attackSegmentsAtWall outputs)
++  dumpAdtEvent' "formation_evidence" (MulWrap . fmap formationEvidenceToStorage <$> attackFormationMaterials outputs)
++  dumpAdtEvent' "wall_attack_barriers" (MulWrap . fmap wallBarrierToStorage <$> wallAttackBarriers outputs)
++  dumpAdtEvent' "attack_segment_book_current_view" (MulWrap . fmap attackSegmentToStorage <$> attackSegmentsAtWall outputs)
++  dumpAdtEvent' "attack_diagnostics" (MulWrap . attackDiagnosticsToStorage <$> attackSegmentBookDiagnostics outputs)
+ 
+ dumpAbsorbOutputs :: (Fao owner) => owner -> AbsorbInteractionOutputs -> FaoModel ()
+ dumpAbsorbOutputs owner outputs = withEventDump owner $ do
+-  dumpAdtEvent' "absorb_occurrences" (AbsorbOccurrenceBatch <$> absorbInteractionOccurrences outputs)
+-  dumpAdtEvent' "absorb_current_view" (AbsorbCurrentBatch <$> absorbInteractionCurrentUpdates outputs)
+-  dumpAdtEvent' "absorb_diagnostics" (AbsorbDiagnostic <$> absorbInteractionDiagnostics outputs)
++  dumpAdtEvent' "absorb_occurrences" (MulWrap . fmap absorbOccurrenceToStorage <$> absorbInteractionOccurrences outputs)
++  dumpAdtEvent' "absorb_current_view" (MulWrap . fmap absorbCurrentToStorage <$> absorbInteractionCurrentUpdates outputs)
++  dumpAdtEvent' "absorb_diagnostics" (MulWrap . absorbDiagnosticsToStorage <$> absorbInteractionDiagnostics outputs)

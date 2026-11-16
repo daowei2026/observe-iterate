@@ -1,0 +1,181 @@
+--- ef887396e0a06d6e75be47efee0f1985ad7988a3:hf/prel0/tick_quote_context.py
++++ /dwdhome/fy/BASE_E6_2/mquant/tis/hf/prel0/tick_quote_context.py
+@@ -19,10 +19,10 @@
+ 
+ import numpy as np
+ import pandas as pd
+-import re
+ 
+ from mquant.tis.t0.gen.cc import SubContinuousContract
+ 
++from ..mc import trading_days
+ from ..qt import VolQuant
+ from .tick_quote_context_core import DEFAULT_EPS_VOL
+ from .tick_quote_context_core import compute_depth_baseline_chunk
+@@ -145,113 +145,6 @@
+ }
+ 
+ 
+-_NS_PER_HOUR = 60 * 60 * 1_000_000_000
+-_DAY_SESSION_EARLIEST_HOUR = 6
+-_DAY_SESSION_LATEST_HOUR = 12
+-_NIGHT_SESSION_EARLIEST_HOUR = 18
+-
+-
+-def _calendar_trading_day_boundaries(calendar_period_starts):
+-    """从平台 calendar period 还原交易日及其 canonical 起点。"""
+-    period_starts = pd.DatetimeIndex(pd.to_datetime(calendar_period_starts))
+-    if period_starts.empty:
+-        return ()
+-    if not period_starts.is_monotonic_increasing:
+-        raise ValueError("calendar period 起点未按时间递增")
+-
+-    natural_days = period_starts.normalize()
+-    time_of_day_ns = period_starts.asi8 - natural_days.asi8
+-    day_session_candidates = np.flatnonzero(
+-        (
+-            time_of_day_ns
+-            >= _DAY_SESSION_EARLIEST_HOUR * _NS_PER_HOUR
+-        )
+-        & (
+-            time_of_day_ns
+-            < _DAY_SESSION_LATEST_HOUR * _NS_PER_HOUR
+-        )
+-    )
+-    if day_session_candidates.size == 0:
+-        raise ValueError("calendar 中没有可识别的日盘开盘 period")
+-
+-    candidate_days = natural_days.take(day_session_candidates)
+-    first_on_day = np.r_[
+-        True,
+-        candidate_days.asi8[1:] != candidate_days.asi8[:-1],
+-    ]
+-    day_session_opens = day_session_candidates[first_on_day]
+-
+-    boundaries = []
+-    previous_day_open = None
+-    for day_open in day_session_opens:
+-        boundary = int(day_open)
+-        if previous_day_open is not None:
+-            between = np.arange(previous_day_open + 1, day_open, dtype=np.int64)
+-            night_periods = between[
+-                time_of_day_ns[between]
+-                >= _NIGHT_SESSION_EARLIEST_HOUR * _NS_PER_HOUR
+-            ]
+-            if night_periods.size > 0:
+-                boundary = int(night_periods[0])
+-        boundaries.append(
+-            (
+-                pd.Timestamp(natural_days[day_open]),
+-                pd.Timestamp(period_starts[boundary]),
+-            )
+-        )
+-        previous_day_open = int(day_open)
+-    return tuple(boundaries)
+-
+-
+-def _trading_day_chunk_plan_from_boundaries(index, boundaries):
+-    """把 canonical 交易日边界映射为无缝、轻量的 DataFrame 行区间。"""
+-    index = pd.DatetimeIndex(index)
+-    if index.empty:
+-        return []
+-    boundaries = tuple(boundaries)
+-    if not boundaries:
+-        raise ValueError("交易日历没有覆盖 SubContinuousContract 输入")
+-
+-    plan = []
+-    for position, (trade_day, boundary) in enumerate(boundaries):
+-        next_boundary = (
+-            boundaries[position + 1][1]
+-            if position + 1 < len(boundaries)
+-            else None
+-        )
+-        start = int(index.searchsorted(pd.Timestamp(boundary), side="left"))
+-        stop = (
+-            int(index.searchsorted(pd.Timestamp(next_boundary), side="left"))
+-            if next_boundary is not None
+-            else int(index.shape[0])
+-        )
+-        if stop <= start or start >= int(index.shape[0]):
+-            continue
+-        plan.append(
+-            (
+-                len(plan),
+-                pd.Timestamp(trade_day),
+-                max(0, start),
+-                min(int(index.shape[0]), stop),
+-            )
+-        )
+-
+-    if not plan:
+-        raise ValueError("交易日历没有覆盖 SubContinuousContract 输入")
+-    expected_start = 0
+-    for _chunk_id, trade_day, start, stop in plan:
+-        if start != expected_start:
+-            raise ValueError(
+-                f"交易日历在 {trade_day} 前不连续: {expected_start} != {start}"
+-            )
+-        expected_start = stop
+-    if expected_start != int(index.shape[0]):
+-        raise ValueError(
+-            f"交易日历未覆盖完整输入: {expected_start} != {index.shape[0]}"
+-        )
+-    return plan
+-
+-
+ class TickQuoteContextWrapperSupport(TradingDayChunkProgressSupport):
+     """F0/F1/F2 三个正式包装特征共用的接线支持混入。"""
+ 
+@@ -324,26 +217,33 @@
+             index=index,
+         )
+ 
+-    def _calendar_period_starts(self):
+-        """读取 `SubContinuousContract` 所用 calendar 的 period 起点。"""
+-        from m3bdp.lib.rddata import read_calendar_info_from_dba
+-
+-        sof = CurrTradeSet.sof(True)
+-        calendar_name = CurrCalendar.name(True)
+-        symbol = re.sub(r"\d+", "", CurrSymbol.sym(True))
+-        calendar_key = symbol if calendar_name == "@" else calendar_name
+-        calendar = read_calendar_info_from_dba(sof.ori_dir, calendar_key)
+-        return pd.to_datetime(
+-            calendar.ndarray["naiveDate"][: calendar.vlen],
+-            unit="ns",
+-        )
+-
+     def _trading_day_chunk_plan(self, cc_df):
+-        """按连续合约自身 calendar 生成轻量、无缝的交易日行区间。"""
+-        boundaries = _calendar_trading_day_boundaries(
+-            self._calendar_period_starts()
+-        )
+-        return _trading_day_chunk_plan_from_boundaries(cc_df.index, boundaries)
++        """只保留轻量行区间；不提前创建并常驻所有交易日 DataFrame。"""
++        index = cc_df.index
++        plan = []
++        chunk_id = 0
++        for trade_day, _contract, duration in trading_days():
++            start = int(index.searchsorted(pd.Timestamp(duration.start), side="left"))
++            stop = int(index.searchsorted(pd.Timestamp(duration.stop), side="right"))
++            if stop <= start:
++                continue
++            plan.append((chunk_id, pd.Timestamp(trade_day), start, stop))
++            chunk_id += 1
++        if cc_df.shape[0] > 0:
++            if not plan:
++                raise ValueError("交易日区间没有覆盖 SubContinuousContract 输入")
++            expected_start = 0
++            for _chunk_id, trade_day, start, stop in plan:
++                if start != expected_start:
++                    raise ValueError(
++                        f"交易日区间在 {trade_day} 前不连续: {expected_start} != {start}"
++                    )
++                expected_start = stop
++            if expected_start != int(cc_df.shape[0]):
++                raise ValueError(
++                    f"交易日区间未覆盖完整输入: {expected_start} != {cc_df.shape[0]}"
++                )
++        return plan
+ 
+     def _iter_trading_day_chunks(self, cc_df, plan=None):
+         """按轻量位置计划逐块取得 mmap-backed 输入切片。"""

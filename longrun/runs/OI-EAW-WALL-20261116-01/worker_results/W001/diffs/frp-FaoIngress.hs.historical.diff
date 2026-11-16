@@ -1,0 +1,589 @@
+--- cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs
++++ /dwdhome/fy/BASE_E6_2/edh-universe/frp/frp/src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs
+@@ -72,12 +72,12 @@
+ import Control.Monad (forM, forM_, unless, when)
+ import Control.Monad.IO.Class (liftIO)
+ import Control.Monad.Trans.Class (lift)
++import Data.Char (isDigit)
+ import Data.Aeson
+-import Data.Char (isDigit)
+ import Data.Convertible (convert)
++import Data.Int (Int64)
+ import Data.Either (partitionEithers)
+ import Data.Functor ((<&>))
+-import Data.Int (Int64)
+ import Data.List (sortOn)
+ import Data.List.NonEmpty (NonEmpty (..))
+ import Data.Map.Strict (Map)
+@@ -100,7 +100,7 @@
+ import GHC.Generics (Generic)
+ import Reflex (fmapMaybe, mergeMap, mergeWith, never)
+ import System.Directory (doesFileExist)
+-import System.FilePath (normalise, (<.>), (</>))
++import System.FilePath ((<.>), (</>), normalise)
+ 
+ {-# ANN module ("HLint: ignore Redundant bracket" :: String) #-}
+ 
+@@ -206,9 +206,9 @@
+   fields <- maybe (error ("P1 packed occurrence fields.json is missing: " <> fullDir)) pure metadata
+   let selected =
+         Map.mapMaybe
+-          ( \case
+-              FDtypeMapJson nested -> Just nested
+-              FDtypeTextJson _ -> Nothing
++          (\case
++             FDtypeMapJson nested -> Just nested
++             FDtypeTextJson _ -> Nothing
+           )
+           (Map.filterWithKey (\key _ -> any (`Text.isPrefixOf` key) prefixes) fields)
+   when (Map.null selected) $
+@@ -479,21 +479,28 @@
+       pure $ do
+         keyLocalNo <- parseObjectTransportKey "wall" resultKey
+         VS.foldl'
+-          ( \acc raw -> do
+-              localNumbers <- acc
+-              localNo <- fromIntegral <$> integerValue "wall_id" raw >>= positiveLocalNo "wall_id"
+-              case keyLocalNo of
+-                Just expected
+-                  | expected /= localNo ->
+-                      Left (InvalidNumericDomain "wall_id" "row local number does not match legacy result key")
+-                _ -> Right (Set.insert localNo localNumbers)
++          (\acc raw -> do
++             localNumbers <- acc
++             localNo <- fromIntegral <$> integerValue "wall_id" raw >>= positiveLocalNo "wall_id"
++             case keyLocalNo of
++               Just expected
++                 | expected /= localNo ->
++                     Left (InvalidNumericDomain "wall_id" "row local number does not match legacy result key")
++               _ -> Right (Set.insert localNo localNumbers)
+           )
+           (Right Set.empty)
+           values
+ 
+ loadWallIdentityCatalogWithReceipt :: ProductReceipt -> PyAny -> FaoModel WallIdentityCatalog
+-loadWallIdentityCatalogWithReceipt _receipt _source =
+-  pure formWallIdentityNamespace
++loadWallIdentityCatalogWithReceipt receipt source = do
++  (fullDir, groups) <- loadPackedProductMetadata source ["wall__"]
++  decoded <- liftIO (traverse (loadWallLocalNumbersFromGroup fullDir) (Map.toList groups))
++  localNumbers <- either (error . show) pure (Set.unions <$> sequence decoded)
++  pure
++    ( formWallIdentityCatalog
++        (featureRunIdentityFromFaoContext receipt)
++        (Set.toList localNumbers)
++    )
+ 
+ parseRelationKey :: Text -> Text -> Either P1IngressError (Int64, Text)
+ parseRelationKey prefix resultKey =
+@@ -547,16 +554,30 @@
+ aggressorDirection 2 = Right AggressiveBuy
+ aggressorDirection code = Left (UnknownNumericCode "side_code" code)
+ 
+-occurrenceRefFor :: Text -> Int64 -> Int -> Int64 -> OccurrenceRef
+-occurrenceRefFor productKind localNo uti discriminator =
++occurrenceRefFor :: ProductReceipt -> Text -> Int -> Int64 -> OccurrenceRef
++occurrenceRefFor receipt resultKey uti discriminator =
+   OccurrenceRef
+-    ( productKind
++    ( receiptArtifactLocation receipt
+         <> ":"
+-        <> Text.pack (show localNo)
++        <> transportBaseResultKey resultKey
+         <> ":"
+         <> Text.pack (show uti)
+         <> ":"
+         <> Text.pack (show discriminator)
++    )
++
++occurrenceRefForObject :: ProductReceipt -> Text -> Int -> Int64 -> Int64 -> OccurrenceRef
++occurrenceRefForObject receipt resultKey uti localNo eventCode =
++  OccurrenceRef
++    ( receiptArtifactLocation receipt
++        <> ":"
++        <> transportBaseResultKey resultKey
++        <> ":"
++        <> Text.pack (show uti)
++        <> ":"
++        <> Text.pack (show localNo)
++        <> ":"
++        <> Text.pack (show eventCode)
+     )
+ 
+ -- | `__occNNNN` 只解决 DBA 同拍物理装箱，不得进入业务 same/new。
+@@ -567,8 +588,7 @@
+       | Just digits <- Text.stripPrefix "occ" ordinal,
+         not (Text.null digits),
+         Text.all isDigit digits,
+-        not (null rest) ->
+-          Text.intercalate "__" (reverse rest)
++        not (null rest) -> Text.intercalate "__" (reverse rest)
+     _ -> resultKey
+ 
+ instrumentFrom :: ProductReceipt -> InstrumentSymbol
+@@ -613,7 +633,7 @@
+           5 -> Right (Spine.WallBandUpdated band presence)
+           6 -> Right (Spine.WallPresenceChanged band presence)
+           code -> Left (UnknownNumericCode "event_type_code" code)
+-  let identity = WallIdentity localNo
++  let identity = WallIdentity (featureRunIdentityFromFaoContext receipt) localNo
+       payload =
+         Spine.WallLifecycleEvent
+           (wallRefOf identity)
+@@ -622,7 +642,7 @@
+           occurredAt
+           change
+           availability
+-  pure (WallLifecycleOccurrence identity (occurrenceRefFor "wall" localNo occurredAt (fromIntegral eventCode)) payload)
++  pure (WallLifecycleOccurrence identity (receiptArtifactLocation receipt) (occurrenceRefForObject receipt resultKey occurredAt localNo (fromIntegral eventCode)) payload)
+ 
+ buildAvailability :: NumericRow -> Either P1IngressError Spine.BuildAvailability
+ buildAvailability row =
+@@ -634,8 +654,8 @@
+     5 -> Right Spine.BuildCalculationUnavailable
+     code -> Left (UnknownNumericCode "availability_code" code)
+ 
+-decodeBuildNumericRow :: ProductReceipt -> WallIdentityCatalog -> Text -> NumericRow -> Either P1IngressError BuildActivityOccurrence
+-decodeBuildNumericRow _receipt wallCatalog resultKey row = do
++decodeBuildNumericRow :: ProductReceipt -> FeatureRunIdentity -> WallIdentityCatalog -> Text -> NumericRow -> Either P1IngressError BuildActivityOccurrence
++decodeBuildNumericRow receipt wallRunIdentity wallCatalog resultKey row = do
+   localNo <- objectLocalNoFromRow "build" "build_id" resultKey row
+   wallLocalNo <- int64 "wall_local_no" row
+   occurredAt <- integer "uti" row
+@@ -659,10 +679,10 @@
+       Right (Spine.BuildReachedMilestone (Spine.BuildMilestone (Text.pack (show level))) (Spine.BuildMilestoneRatio milestone) measurements)
+     10 -> Right (Spine.BuildStopped (Spine.BuildStopReason "producer-stop") measurements)
+     code -> Left (UnknownNumericCode "event_type_code" code)
+-  wallIdentity <- validateDependentWallIdentity wallLocalNo wallCatalog
+-  let identity = BuildActivityIdentity localNo
++  wallIdentity <- validateDependentWallIdentity wallRunIdentity wallLocalNo wallCatalog
++  let identity = BuildActivityIdentity (featureRunIdentityFromFaoContext receipt) localNo
+       payload = Spine.BuildActivityEvent (buildRefOf identity) (wallRefOf wallIdentity) occurredAt change availability
+-  pure (BuildActivityOccurrence identity wallIdentity (occurrenceRefFor "build" localNo occurredAt (fromIntegral eventCode)) payload)
++  pure (BuildActivityOccurrence identity wallIdentity (receiptArtifactLocation receipt) (occurrenceRefForObject receipt resultKey occurredAt localNo (fromIntegral eventCode)) payload)
+ 
+ attackLanes :: Int -> Either P1IngressError Spine.AttackLaneQualification
+ attackLanes 1 = Right Spine.TacticalLaneOnly
+@@ -675,15 +695,13 @@
+   decoded <- traverse decodeRow rows
+   let ordered = sortOn fst decoded
+       ordinals = fmap fst ordered
+-  unless
+-    (ordinals == [0 .. length ordinals - 1])
++  unless (ordinals == [0 .. length ordinals - 1])
+     (Left (InvalidNumericDomain "qualified_uti.ordinal" "must start at zero and be contiguous"))
+   pure (fmap snd ordered)
+   where
+     decodeRow row = do
+       owner <- int64 "segment_id" row
+-      unless
+-        (owner == segmentId)
++      unless (owner == segmentId)
+         (Left (InvalidNumericDomain "qualified_uti.segment_id" "does not match the segment main row"))
+       (,) <$> integer "ordinal" row <*> integer "qualified_uti" row
+ 
+@@ -692,28 +710,26 @@
+   decoded <- traverse decodeRow rows
+   let ordered = sortOn fst decoded
+       ordinals = fmap fst ordered
+-  unless
+-    (ordinals == [0 .. length ordinals - 1])
++  unless (ordinals == [0 .. length ordinals - 1])
+     (Left (InvalidNumericDomain "qualification_hit.ordinal" "must start at zero and be contiguous"))
+   pure (fmap snd ordered)
+   where
+     decodeRow row = do
+       owner <- int64 "segment_id" row
+-      unless
+-        (owner == segmentId)
++      unless (owner == segmentId)
+         (Left (InvalidNumericDomain "qualification_hit.segment_id" "does not match the segment main row"))
+       ordinal <- integer "ordinal" row
+       streamOrdinal <- integer "selected_stream_ordinal" row
+       familyCode <- integer "qualification_family_code" row
+       gradeValue <- integer "grade" row
+-      _ <- case drop streamOrdinal (selectedF4Streams snapshot) of
+-        _value : _ -> Right ()
++      streamIdentity <- case drop streamOrdinal (selectedF4Streams snapshot) of
++        value : _ -> Right value
+         [] -> Left (InvalidNumericDomain "selected_stream_ordinal" "selected F4 stream ordinal is out of range")
+       let family = case familyCode of
+             1 -> "tactical"
+             2 -> "structural"
+             _ -> "family-code-" <> Text.pack (show familyCode)
+-      pure (ordinal, F4QualificationHit streamOrdinal familyCode family gradeValue)
++      pure (ordinal, F4QualificationHit streamOrdinal streamIdentity familyCode family gradeValue)
+ 
+ attackSegmentAvailability :: Int -> Either P1IngressError (AttackSegmentAvailability, Maybe Text)
+ attackSegmentAvailability 1 = Right (AttackSegmentAvailable, Nothing)
+@@ -757,19 +773,13 @@
+       (Spine.TacticalAndStructuralLanes, 2) -> True
+       _ -> False
+ 
+-decodeAttackSegmentNumericRow :: ProductReceipt -> WallIdentityCatalog -> Text -> NumericRow -> [NumericRow] -> [NumericRow] -> Either P1IngressError AttackSegmentAtWall
+-decodeAttackSegmentNumericRow receipt wallCatalog resultKey row qualifiedRows qualificationHitRows = do
+-  unless
+-    (transportBaseResultKey resultKey == "segment__stream")
++decodeAttackSegmentNumericRow :: ProductReceipt -> FeatureRunIdentity -> WallIdentityCatalog -> Text -> NumericRow -> [NumericRow] -> [NumericRow] -> Either P1IngressError AttackSegmentAtWall
++decodeAttackSegmentNumericRow receipt wallRunIdentity wallCatalog resultKey row qualifiedRows qualificationHitRows = do
++  unless (transportBaseResultKey resultKey == "segment__stream")
+     (Left (InvalidResultKey resultKey))
+   localNo <- int64 "segment_id" row
+-  when
+-    (localNo <= 0)
++  when (localNo <= 0)
+     (Left (InvalidNumericDomain "segment_id" "must be a positive producer-run local number"))
+-  attemptLocalNo <- int64 "attack_segment_attempt_local_id" row
+-  when
+-    (attemptLocalNo <= 0 || attemptLocalNo /= localNo)
+-    (Left (InvalidNumericDomain "attack_segment_attempt_local_id" "must be positive and equal to segment_id"))
+   wallLocalNo <- int64 "wall_local_no" row
+   sideCode <- integer "side_code" row
+   side <- wallSide sideCode
+@@ -828,13 +838,11 @@
+   when
+     (maxGrade /= maximum (map qualificationGrade qualificationHits))
+     (Left (InvalidNumericDomain "max_grade" "diagnostic max_grade does not equal the maximum preserved lane qualification grade"))
+-  wallIdentity <- validateDependentWallIdentity wallLocalNo wallCatalog
+-  let identity = AttackSegmentIdentity localNo
+-      attemptIdentity = AttackSegmentAttemptIdentity attemptLocalNo
++  wallIdentity <- validateDependentWallIdentity wallRunIdentity wallLocalNo wallCatalog
++  let identity = AttackSegmentIdentity (featureRunIdentityFromFaoContext receipt) localNo
+       payload =
+         Spine.AttackSegmentAtWall
+           (attackSegmentRefOf identity)
+-          (attackSegmentAttemptRefOf attemptIdentity)
+           (instrumentFrom receipt)
+           (wallRefOf wallIdentity)
+           side
+@@ -854,7 +862,9 @@
+     ( AttackSegmentAtWall
+         identity
+         wallIdentity
+-        (occurrenceRefFor "attack-segment" localNo closedAt 5)
++        (receiptArtifactLocation receipt)
++        (occurrenceRefFor receipt ("segment__" <> Text.pack (show localNo)) closedAt 5)
++        methodSnapshot
+         qualificationHits
+         availability
+         unavailableReason
+@@ -884,7 +894,7 @@
+ formationEvidenceKind 2 5 = Right SameUtiOrderUnresolvedEvidence
+ formationEvidenceKind 2 _ = Right CapabilityUnavailableEvidence
+ formationEvidenceKind 3 _ = Right OrdinaryGapBreakEvidence
+-formationEvidenceKind 4 _ = Right ObservedNoAcceptedAttackIntervalEvidence
++formationEvidenceKind 4 _ = Right GapIntervalSummaryEvidence
+ formationEvidenceKind 5 _ = Right AvailabilityIntervalSummaryEvidence
+ formationEvidenceKind 6 _ = Right CapabilityUnavailableEvidence
+ formationEvidenceKind code _ = Left (UnknownNumericCode "body_kind_code" code)
+@@ -895,7 +905,7 @@
+ formationReasonText 2 3 _ = Just "wall_switch_without_formal_barrier_source"
+ formationReasonText 2 4 _ = Just "side_switch_without_formal_barrier_source"
+ formationReasonText 3 _ _ = Just "ordinary_gap"
+-formationReasonText 4 _ _ = Just "observed_no_accepted_attack_interval"
++formationReasonText 4 _ _ = Just "valid_no_activity_gap_interval"
+ formationReasonText 5 _ 2 = Just "source_missing_interval"
+ formationReasonText 5 _ 3 = Just "stale_interval"
+ formationReasonText 5 _ 4 = Just "session_invalid_interval"
+@@ -920,8 +930,8 @@
+   unless (occurredAt == end) (Left (InvalidNumericDomain "formation_interval" "occurrence UTI must equal interval end"))
+   Right (start, end)
+ 
+-decodeAttackFormationNumericRow :: ProductReceipt -> WallIdentityCatalog -> Text -> NumericRow -> Either P1IngressError AttackFormationMaterialOccurrence
+-decodeAttackFormationNumericRow receipt wallCatalog resultKey row = do
++decodeAttackFormationNumericRow :: ProductReceipt -> FeatureRunIdentity -> WallIdentityCatalog -> Text -> NumericRow -> Either P1IngressError AttackFormationMaterialOccurrence
++decodeAttackFormationNumericRow receipt wallRunIdentity wallCatalog resultKey row = do
+   (wallLocalNo, directionName) <- relationReferenceFromRow "formation" resultKey row
+   direction <- case directionName of
+     "bid" -> Right AggressiveSell
+@@ -933,67 +943,48 @@
+   handoffAvailability <- formationEvidenceAvailability availabilityCode
+   sourceLocal <- int64 "source_material_local_ref" row
+   localNo <- int64 "formation_local_id" row
+-  attemptLocalNo <- int64 "attack_segment_attempt_local_id" row
+-  availableAt <- integer "available_at_uti" row
+   reasonCode <- integer "reason_code" row
+   bodyCode <- integer "body_kind_code" row
+   evidenceKind <- formationEvidenceKind bodyCode availabilityCode
+   (intervalStart, intervalEnd) <- formationInterval bodyCode occurredAt row
+-  when
+-    (availableAt < intervalEnd)
+-    (Left (InvalidNumericDomain "available_at_uti" "must not precede the business interval end"))
+-  let attemptRequired =
+-        bodyCode == 1
+-          || bodyCode == 3
+-          || (bodyCode == 2 && (reasonCode == 3 || reasonCode == 4))
+-  when
+-    (attemptRequired && attemptLocalNo <= 0)
+-    (Left (InvalidNumericDomain "attack_segment_attempt_local_id" "this FormationEvidence must name its AttackSegment attempt"))
+-  when
+-    (not attemptRequired && attemptLocalNo /= 0)
+-    (Left (InvalidNumericDomain "attack_segment_attempt_local_id" "this FormationEvidence must not claim an AttackSegment attempt"))
+-  wallIdentity <- validateDependentWallIdentity wallLocalNo wallCatalog
+-  let attemptRef =
+-        if attemptLocalNo > 0
+-          then Just (attackSegmentAttemptRefOf (AttackSegmentAttemptIdentity attemptLocalNo))
+-          else Nothing
+-      sourceRef = SourceMaterialRef ("p1-formation-source:" <> Text.pack (show sourceLocal))
++  wallIdentity <- validateDependentWallIdentity wallRunIdentity wallLocalNo wallCatalog
++  let runText = featureRunIdentityText (featureRunIdentityFromFaoContext receipt)
++      sourceRef = SourceMaterialRef ("p1-formation-source:" <> runText <> ":" <> Text.pack (show sourceLocal))
+       reasonText = formationReasonText bodyCode reasonCode availabilityCode
+       reason = Spine.AttackFormationReason (fromMaybe ("producer-reason-code-" <> Text.pack (show reasonCode)) reasonText)
+   body <- case bodyCode of
+-    1 -> Right (Spine.AcceptedFormationMaterial (Spine.FormationLargeDealSource (LargeDealEventRef ("f4:" <> Text.pack (show sourceLocal)))))
++    1 -> Right (Spine.AcceptedFormationMaterial (Spine.FormationLargeDealSource (LargeDealEventRef ("f4:" <> runText <> ":" <> Text.pack (show sourceLocal)))))
+     2 -> Right (Spine.UnresolvedFormationMaterial reason (Just sourceRef))
+     3 -> Right (Spine.MethodLocalGapBreak reason (Just sourceRef))
+-    4 -> Right (Spine.ObservedNoAcceptedAttackInterval (Spine.AttackFormationReason "observed-no-accepted-attack-interval") (Just sourceRef))
++    4 -> Right (Spine.ExcludedFormationMaterial (Spine.AttackFormationReason "valid-no-activity-interval") (Just sourceRef))
+     5 -> Right (Spine.ExcludedFormationMaterial reason (Just sourceRef))
+     6 -> Right (Spine.ExcludedFormationMaterial reason (Just sourceRef))
+     code -> Left (UnknownNumericCode "body_kind_code" code)
+   let material =
+         Spine.AttackFormationMaterial
+-          (AttackFormationScopeRef ("attack-formation:" <> Text.pack (show wallLocalNo)))
++          (AttackFormationScopeRef ("attack-formation:" <> featureRunIdentityText wallRunIdentity <> ":" <> Text.pack (show wallLocalNo)))
+           (wallRefOf wallIdentity)
+           (instrumentFrom receipt)
+           direction
+           occurredAt
+           availability
+           body
+-      ref = occurrenceRefFor "attack-formation" localNo occurredAt (fromIntegral bodyCode)
++      ref = occurrenceRefFor receipt resultKey occurredAt localNo
+   pure
+     ( AttackFormationMaterialOccurrence
+         wallIdentity
++        (receiptArtifactLocation receipt)
+         ref
+-        attemptRef
+         evidenceKind
+         intervalStart
+         intervalEnd
+-        availableAt
+         handoffAvailability
+         reasonText
+         material
+     )
+ 
+-decodeWallBarrierNumericRow :: ProductReceipt -> WallIdentityCatalog -> Text -> NumericRow -> Either P1IngressError WallAttackBarrierOccurrence
+-decodeWallBarrierNumericRow _receipt wallCatalog resultKey row = do
++decodeWallBarrierNumericRow :: ProductReceipt -> FeatureRunIdentity -> WallIdentityCatalog -> Text -> NumericRow -> Either P1IngressError WallAttackBarrierOccurrence
++decodeWallBarrierNumericRow receipt wallRunIdentity wallCatalog resultKey row = do
+   (wallLocalNo, directionName) <- relationReferenceFromRow "barrier" resultKey row
+   direction <- case directionName of
+     "bid" -> Right AggressiveSell
+@@ -1006,18 +997,19 @@
+     integer "barrier_kind_code" row >>= \case
+       1 -> Right Spine.WallEndedBarrier
+       code -> Left (InvalidNumericDomain "barrier_kind_code" ("current producer has no formal source contract for code " <> Text.pack (show code)))
+-  wallIdentity <- validateDependentWallIdentity wallLocalNo wallCatalog
+-  let ref = occurrenceRefFor "wall-attack-barrier" localNo occurredAt 1
++  wallIdentity <- validateDependentWallIdentity wallRunIdentity wallLocalNo wallCatalog
++  let runText = featureRunIdentityText (featureRunIdentityFromFaoContext receipt)
++      ref = occurrenceRefFor receipt resultKey occurredAt localNo
+       payload =
+         Spine.WallAttackBarrier
+-          (BarrierRef ("barrier:" <> Text.pack (show localNo)))
+-          (AttackFormationScopeRef ("attack-formation:" <> Text.pack (show wallLocalNo)))
++          (BarrierRef ("barrier:" <> runText <> ":" <> Text.pack (show localNo)))
++          (AttackFormationScopeRef ("attack-formation:" <> featureRunIdentityText wallRunIdentity <> ":" <> Text.pack (show wallLocalNo)))
+           (wallRefOf wallIdentity)
+           direction
+           occurredAt
+           kind
+-          (SourceMaterialRef ("p1-barrier-source:" <> Text.pack (show sourceLocal)))
+-  pure (WallAttackBarrierOccurrence wallIdentity ref payload)
++          (SourceMaterialRef ("p1-barrier-source:" <> runText <> ":" <> Text.pack (show sourceLocal)))
++  pure (WallAttackBarrierOccurrence wallIdentity (receiptArtifactLocation receipt) ref payload)
+ 
+ absorbAvailability :: NumericRow -> Either P1IngressError Spine.AbsorbAvailability
+ absorbAvailability row =
+@@ -1028,8 +1020,8 @@
+     5 -> Right Spine.AbsorbCalculationUnavailable
+     code -> Left (UnknownNumericCode "availability_code" code)
+ 
+-decodeAbsorbNumericRow :: ProductReceipt -> WallIdentityCatalog -> Text -> NumericRow -> Either P1IngressError AbsorbInteractionOccurrence
+-decodeAbsorbNumericRow _receipt wallCatalog resultKey row = do
++decodeAbsorbNumericRow :: ProductReceipt -> FeatureRunIdentity -> WallIdentityCatalog -> Text -> NumericRow -> Either P1IngressError AbsorbInteractionOccurrence
++decodeAbsorbNumericRow receipt wallRunIdentity wallCatalog resultKey row = do
+   localNo <- objectLocalNoFromRow "absorb" "track_id" resultKey row
+   wallLocalNo <- int64 "wall_local_no" row
+   occurredAt <- integer "uti" row
+@@ -1055,14 +1047,15 @@
+         code -> Left (UnknownNumericCode "resolved_type_code" code)
+       Right (Spine.AbsorbInteractionResolved (Spine.AbsorbResolution reason) measurements, AbsorbResolvedOccurrence, Nothing, Just reason)
+     code -> Left (UnknownNumericCode "event_type_code" code)
+-  wallIdentity <- validateDependentWallIdentity wallLocalNo wallCatalog
+-  let identity = AbsorbInteractionIdentity localNo
++  wallIdentity <- validateDependentWallIdentity wallRunIdentity wallLocalNo wallCatalog
++  let identity = AbsorbInteractionIdentity (featureRunIdentityFromFaoContext receipt) localNo
+       payload = Spine.AbsorbInteractionEvent (absorbRefOf identity) (wallRefOf wallIdentity) occurredAt change availability
+   pure
+     ( AbsorbInteractionOccurrence
+         identity
+         wallIdentity
+-        (occurrenceRefFor "absorb" localNo occurredAt (fromIntegral eventCode))
++        (receiptArtifactLocation receipt)
++        (occurrenceRefForObject receipt resultKey occurredAt localNo (fromIntegral eventCode))
+         occurrenceKind
+         milestoneLevel
+         resolvedReason
+@@ -1098,7 +1091,7 @@
+         | family == "tactical" = Spine.LargeDealLaneQualification lanes measuredGrade unavailableGrade
+         | family == "structural" = Spine.LargeDealLaneQualification lanes unavailableGrade measuredGrade
+         | otherwise = Spine.LargeDealLaneQualification lanes unavailableGrade unavailableGrade
+-      ref = occurrenceRefFor "f4" localNo occurredAt (fromIntegral familyCode)
++      ref = occurrenceRefFor receipt resultKey occurredAt localNo
+       payload =
+         Spine.DirectedLargeDealEvent
+           (LargeDealEventRef (unOccurrenceRef ref))
+@@ -1108,9 +1101,9 @@
+           laneGrades
+           (Spine.Quantity volume)
+           (Spine.Amount amount)
+-          (MethodRef ("f4-method:" <> family))
++          (MethodRef ("f4-method:" <> receiptParameterSetId receipt <> ":" <> family))
+           Spine.DirectedLargeDealAvailable
+-  pure (DirectedLargeDealOccurrence localNo ref family selectedGrade payload)
++  pure (DirectedLargeDealOccurrence (featureRunIdentityFromFaoContext receipt) localNo (receiptArtifactLocation receipt) ref family selectedGrade payload)
+ 
+ data AttackSegmentTransportKind
+   = AttackSegmentMainRow
+@@ -1128,8 +1121,8 @@
+ 
+ type AttackSegmentTransportBucket = ([(Text, NumericRow)], [NumericRow], [NumericRow])
+ 
+-decodeAttackSegmentTransportBatch :: ProductReceipt -> WallIdentityCatalog -> [(Text, NumericRow)] -> [Either P1IngressError AttackSegmentAtWall]
+-decodeAttackSegmentTransportBatch receipt wallCatalog transportRows =
++decodeAttackSegmentTransportBatch :: ProductReceipt -> FeatureRunIdentity -> WallIdentityCatalog -> [(Text, NumericRow)] -> [Either P1IngressError AttackSegmentAtWall]
++decodeAttackSegmentTransportBatch receipt wallRunIdentity wallCatalog transportRows =
+   case partitionEithers (fmap classify transportRows) of
+     (errors@(_ : _), _) -> fmap Left errors
+     ([], classified) -> fmap decodeBucket (Map.toAscList (foldr addRow Map.empty classified))
+@@ -1138,8 +1131,7 @@
+     classify (resultKey, row) = do
+       kind <- maybe (Left (InvalidResultKey resultKey)) Right (attackSegmentTransportKind resultKey)
+       segmentId <- int64 "segment_id" row
+-      when
+-        (segmentId <= 0)
++      when (segmentId <= 0)
+         (Left (InvalidNumericDomain "segment_id" "must be a positive producer-run local number"))
+       pure (segmentId, kind, resultKey, row)
+ 
+@@ -1160,6 +1152,7 @@
+     decodeBucket (_segmentId, ([(resultKey, row)], qualifiedRows, qualificationHitRows)) =
+       decodeAttackSegmentNumericRow
+         receipt
++        wallRunIdentity
+         wallCatalog
+         resultKey
+         row
+@@ -1178,8 +1171,8 @@
+             ("segment " <> Text.pack (show segmentId) <> " has multiple main rows in one occurrence batch")
+         )
+ 
+-decodeAttackSegmentStreamsWithDiagnostics :: ProductReceipt -> WallIdentityCatalog -> GenericFaoResult -> P1DecodedIngress AttackSegmentAtWall
+-decodeAttackSegmentStreamsWithDiagnostics receipt wallCatalog generic =
++decodeAttackSegmentStreamsWithDiagnostics :: ProductReceipt -> FeatureRunIdentity -> WallIdentityCatalog -> GenericFaoResult -> P1DecodedIngress AttackSegmentAtWall
++decodeAttackSegmentStreamsWithDiagnostics receipt wallRunIdentity wallCatalog generic =
+   let groups =
+         [ (key, fields)
+           | (key, fields) <- Map.toList (groupResultKeyFields generic),
+@@ -1191,7 +1184,7 @@
+         ]
+       decoded = case streams of
+         [] -> never
+-        _ -> decodeAttackSegmentTransportBatch receipt wallCatalog <$> mergeWith (<>) streams
++        _ -> decodeAttackSegmentTransportBatch receipt wallRunIdentity wallCatalog <$> mergeWith (<>) streams
+       accepted = fst . partitionIngressBatch
+       rejected = snd . partitionIngressBatch
+    in P1DecodedIngress
+@@ -1237,16 +1230,17 @@
+ 
+ decodePackedAttackRowsWithDiagnostics ::
+   ProductReceipt ->
++  FeatureRunIdentity ->
+   WallIdentityCatalog ->
+   FrpEvent [(Text, NumericRow)] ->
+   P1DecodedIngress AttackSegmentAtWall
+-decodePackedAttackRowsWithDiagnostics receipt wallCatalog rows =
++decodePackedAttackRowsWithDiagnostics receipt wallRunIdentity wallCatalog rows =
+   P1DecodedIngress
+     { ingressOccurrences = fmapMaybe (fst . partitionIngressBatch) decoded,
+       ingressDiagnostics = fmapMaybe (snd . partitionIngressBatch) decoded
+     }
+   where
+-    decoded = decodeAttackSegmentTransportBatch receipt wallCatalog <$> rows
++    decoded = decodeAttackSegmentTransportBatch receipt wallRunIdentity wallCatalog <$> rows
+ 
+ toWallLifecycleIngress :: ProductReceipt -> GenericFaoResult -> FaoModel (P1DecodedIngress WallLifecycleOccurrence)
+ toWallLifecycleIngress receipt generic = pure (decodeGroupsWithDiagnostics "wall__" (decodeWallNumericRow receipt) generic)
+@@ -1255,25 +1249,27 @@
+ toWallLifecycleOccurrences receipt generic = ingressOccurrences <$> toWallLifecycleIngress receipt generic
+ 
+ wallIdentityCatalogFromArtifact :: ProductReceipt -> GenericFaoResult -> Either P1IngressError WallIdentityCatalog
+-wallIdentityCatalogFromArtifact _wallReceipt generic = do
++wallIdentityCatalogFromArtifact wallReceipt generic = do
+   localNumbers <- traverse (parseObjectKey "wall") wallKeys
+-  pure (formWallIdentityCatalog (Set.toList (Set.fromList localNumbers)))
++  pure (formWallIdentityCatalog (featureRunIdentityFromFaoContext wallReceipt) (Set.toList (Set.fromList localNumbers)))
+   where
+     wallKeys = filter ("wall__" `Text.isPrefixOf`) (Map.keys (groupResultKeyFields generic))
+ 
+-dependentWallContext :: ProductReceipt -> ProductReceipt -> GenericFaoResult -> Either P1IngressError WallIdentityCatalog
++dependentWallContext :: ProductReceipt -> ProductReceipt -> GenericFaoResult -> Either P1IngressError (FeatureRunIdentity, WallIdentityCatalog)
+ dependentWallContext dependent wallReceipt wallGeneric = do
+-  _ <- validateExactUpstreamReceipt "wall_lifecycle" dependent wallReceipt
+-  wallIdentityCatalogFromArtifact wallReceipt wallGeneric
+-
+-loadPackedDependentWallContext :: ProductReceipt -> ProductReceipt -> PyAny -> FaoModel WallIdentityCatalog
++  wallIdentity <- validateExactUpstreamReceipt "wall_lifecycle" dependent wallReceipt
++  catalog <- wallIdentityCatalogFromArtifact wallReceipt wallGeneric
++  pure (wallIdentity, catalog)
++
++loadPackedDependentWallContext :: ProductReceipt -> ProductReceipt -> PyAny -> FaoModel (FeatureRunIdentity, WallIdentityCatalog)
+ loadPackedDependentWallContext dependent wallReceipt wallSource = do
+-  _ <-
++  wallIdentity <-
+     either
+       (error . show)
+       pure
+       (validateExactUpstreamReceipt "wall_lifecycle" dependent wallReceipt)
+-  loadWallIdentityCatalogWithReceipt wallReceipt wallSource
++  catalog <- loadWallIdentityCatalogWithReceipt wallReceipt wallSource
++  pure (wallIdentity, catalog)
+ 
+ loadWallIdentityCatalogFrom :: PyAny -> FaoModel WallIdentityCatalog
+ loadWallIdentityCatalogFrom source = do
+@@ -1282,40 +1278,40 @@
+ 
+ toBuildActivityIngress :: ProductReceipt -> ProductReceipt -> GenericFaoResult -> GenericFaoResult -> FaoModel (P1DecodedIngress BuildActivityOccurrence)
+ toBuildActivityIngress receipt wallReceipt generic wallGeneric = do
+-  catalog <- either (error . show) pure (dependentWallContext receipt wallReceipt wallGeneric)
+-  pure (decodeGroupsWithDiagnostics "build__" (decodeBuildNumericRow receipt catalog) generic)
++  (wallIdentity, catalog) <- either (error . show) pure (dependentWallContext receipt wallReceipt wallGeneric)
++  pure (decodeGroupsWithDiagnostics "build__" (decodeBuildNumericRow receipt wallIdentity catalog) generic)
+ 
+ toBuildActivityOccurrences :: ProductReceipt -> ProductReceipt -> GenericFaoResult -> GenericFaoResult -> FaoModel (FrpEvent [BuildActivityOccurrence])
+ toBuildActivityOccurrences receipt wallReceipt generic wallGeneric = ingressOccurrences <$> toBuildActivityIngress receipt wallReceipt generic wallGeneric
+ 
+ toAttackSegmentIngress :: ProductReceipt -> ProductReceipt -> GenericFaoResult -> GenericFaoResult -> FaoModel (P1DecodedIngress AttackSegmentAtWall)
+ toAttackSegmentIngress receipt wallReceipt generic wallGeneric = do
+-  catalog <- either (error . show) pure (dependentWallContext receipt wallReceipt wallGeneric)
+-  pure (decodeAttackSegmentStreamsWithDiagnostics receipt catalog generic)
++  (wallIdentity, catalog) <- either (error . show) pure (dependentWallContext receipt wallReceipt wallGeneric)
++  pure (decodeAttackSegmentStreamsWithDiagnostics receipt wallIdentity catalog generic)
+ 
+ toAttackSegmentOccurrences :: ProductReceipt -> ProductReceipt -> GenericFaoResult -> GenericFaoResult -> FaoModel (FrpEvent [AttackSegmentAtWall])
+ toAttackSegmentOccurrences receipt wallReceipt generic wallGeneric = ingressOccurrences <$> toAttackSegmentIngress receipt wallReceipt generic wallGeneric
+ 
+ toFormationEvidenceIngress :: ProductReceipt -> ProductReceipt -> GenericFaoResult -> GenericFaoResult -> FaoModel (P1DecodedIngress AttackFormationMaterialOccurrence)
+ toFormationEvidenceIngress receipt wallReceipt generic wallGeneric = do
+-  catalog <- either (error . show) pure (dependentWallContext receipt wallReceipt wallGeneric)
+-  pure (decodeGroupsWithDiagnostics "formation__" (decodeAttackFormationNumericRow receipt catalog) generic)
++  (wallIdentity, catalog) <- either (error . show) pure (dependentWallContext receipt wallReceipt wallGeneric)
++  pure (decodeGroupsWithDiagnostics "formation__" (decodeAttackFormationNumericRow receipt wallIdentity catalog) generic)
+ 
+ toFormationEvidenceOccurrences :: ProductReceipt -> ProductReceipt -> Generic
