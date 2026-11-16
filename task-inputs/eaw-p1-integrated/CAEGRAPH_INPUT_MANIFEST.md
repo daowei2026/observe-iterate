@@ -1,6 +1,6 @@
 # CAEGraph 脚本包 / 数据包输入清单（2026-11-16）
 
-> 状态：Owner 已向当前任务上传 `caegraph-scripts.zip`；本清单经逐项打开 ZIP 与 Python AST 检查形成。**ZIP 原件尚未通过本次 GitHub 写入接口发布到仓库**，不能把本清单当作脚本已入库、数据已可读或完成专业节点的证明。实际启动前须确认脚本原件可在新 Run 使用的 GitHub/Pro/Worker 物理通道取得。
+> 状态：Owner 已向当前任务上传 `caegraph-scripts.zip`；本清单经逐项打开 ZIP 与 Python AST 检查形成。**脚本 ZIP 原件现已准确提交到 GitHub**，路径为 `daowei2026/observe-iterate@e4909b2e57d6e6122979ae0c4e57fb946b18e2d3:task-inputs/eaw-p1-integrated/caegraph-scripts.zip`，Git blob 为 `43d4ab1b370a3803fbd159b5e11e8dd64a6b7ee4`（31,319 字节）。已回读仓库树确认文件与 blob SHA。**不等于数据包已实际可读、脚本已经在 Linux 执行、或专业节点已完成**。
 
 ## Owner 给定来源
 
@@ -61,4 +61,4 @@ Owner 指定的共享根：
 
 ## 继续条件
 
-本文件只记录真实已收到的脚本结构、Owner 的数据文件名和建议路径。新 Run 正式 GO 还需要实际脚本字节位置、数据 ZIP 的真实读取能力和授权、独立 run_id/操作写面/精确采用版本；**不以缺少原始数据 ZIP 的当前状态冒充 DATA_READY**。
+本文件记录了已入库脚本 ZIP 的**精确 Git 内容**、Owner 的数据文件名和建议路径。新 Run 正式 GO 已可引用该脚本原件；仍须核实数据 ZIP 的真实读取能力、工作区/跨端共享与授权，并登记独立 run_id/精确采用版本。**不以尚未实际读取数据 ZIP 的状态冒充 DATA_READY**。
