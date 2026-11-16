@@ -6,7 +6,7 @@
 
 - 脚本附件原文件名：`caegraph-scripts.zip`。
 - 脚本附件 SHA-256：`5eaf500616316ef7764cd30eb7467f2db3a6c85e45aa3b4f958becbc7818e8eb`（31,319 字节）。
-- 已有数据：Owner 指定在 Sources 中的 `caegraph-data-30tick.zip`；**当前未收到可核实际物理文件或 SHA-256**，绝不假报下载/解压/数据验证成功。须由主控在准确目标 Project 核对、转存到本 Run 所授权的共享区并由 Worker 读到，或者使用可信的同一数据文件直接作为可读输入。
+- 已有数据：Owner 指定在 Sources 中的 `caegraph-data-30tick.zip`。**已在本次 ChatGPT 任务附件中取得并逐项检查原件**：16,654,307 字节；SHA-256=`73e7c5f289d7b25f08f11cffda7315ad2dad3f8c323715425afdd485e15c4233`；ZIP CRC 全项通过；共 446 个成员，其中 442 个 `*.csv.gz`、`data/manifest.json`、`timespans.csv`、`included_tick_nodes.csv`、`calendar.npz`。`data/manifest.json` 有 442 项 assets、12 条 `evidence_features`，`data_scope` 为 overview=1、big_30m=6、mid_1m=18、small_5s=54、tick=30，涉及 `rb/hc/i` 以及 `wall_events/wall_segments`、`build_events`、`attack_segments`、`absorb_events`、`f4_tactical/f4_structural` 等图证据字段。**这只证明本任务附件确实存在、归档完整且结构内容可读取，不证明 cgpterm 主控/原执行 Pro/指定 Linux Worker 已经获得物理文件，也不证明数据实例已经通过专业验证。** 正式派发时仍由主控核准确 Project Sources 访问/附件转存和共享写面，Worker 对其实际取得的文件重复核哈希、确认源及用途。
 - 图/数据输入包内自述源：附件里的 `caegraph-review/README.md`；完整源文件应该保留为实际可读取的代码，而非从本说明重写。
 
 ## 脚本目录（已从 ZIP 核实）
@@ -19,6 +19,8 @@
 | `caegraph-review/README.md` | 3358 | `4b8129b9ff8d7d864af991b00532d7b2ea37860a60ec6ca6d509981a34e75ce1` |
 
 三个 Python 文件的语法树解析通过，**没有在真实 mquant 或市场数据环境执行**。
+
+**独立展开目录现状**：GitHub 同级的 `caegraph-review/` 已有 `README.md`、`run.py`、`snapshot_data.py`，但缺少 `caegraph_definitions.py`。这不影响原始 ZIP 内四文件齐全；**应将 ZIP 原件作为可运行脚本的完整交付**，不能直接把该不完整的仓库目录当作已可执行副本。
 
 脚本/数据两个 ZIP 的预期合并目录：
 ```text
@@ -43,7 +45,7 @@ caegraph-review/
 - `python run.py --data-dir /path/to/data`：数据解压目录可以另置。
 - mquant/uplot/frame/quant、m3tt、Bokeh、pandas、numpy 由实际环境提供；包内没有这些依赖源码。
 
-**重要范围核查：**脚本 README 说的是钢铁板块 `rb/hc/i`、1 个日线长期概览、6 组 30min/1min/5s 组合、30 个 Tick 窗口。源码不自动证明本文件及数据包提供了 EAW P1 全部 Feature 的观察输出；正式新 Run 应在收到数据包 `manifest.json` 后准确核定其 `evidence_features`、实际对象和业务问题，不因项目名称推定 P1 适用性，也不擅自改掉 Owner 指定的 EAW P1 目标。
+**重要范围核查：**脚本 README 说的是钢铁板块 `rb/hc/i`、1 个日线长期概览、6 组 30min/1min/5s 组合、30 个 Tick 窗口。源码不自动证明本文件及数据包提供了 EAW P1 全部 Feature 的观察输出；新 Run 的专业 Pro 应以已读取的 `manifest.json` 核对其 `evidence_features` 与原需求，并在 Linux 实际文件取得后准确核定这些图证据对本轮业务问题的适用性，不因项目名称推定 P1 适用性，也不擅自改掉 Owner 指定的 EAW P1 目标。
 
 ## 两端路径与暂定交付方式
 
@@ -61,4 +63,4 @@ Owner 指定的共享根：
 
 ## 继续条件
 
-本文件记录了已入库脚本 ZIP 的**精确 Git 内容**、Owner 的数据文件名和建议路径。新 Run 正式 GO 已可引用该脚本原件；仍须核实数据 ZIP 的真实读取能力、工作区/跨端共享与授权，并登记独立 run_id/精确采用版本。**不以尚未实际读取数据 ZIP 的状态冒充 DATA_READY**。
+本文件记录了已入库脚本 ZIP 的**精确 Git 内容**、Owner 的数据文件名和建议路径。新 Run 正式 GO 已可引用该脚本原件及本次附件已核的真实数据文件身份；仍须核实 cgpterm / Pro / Worker 对数据 ZIP 的真实读取能力、工作区/跨端共享与授权，并登记独立 run_id/精确采用版本。**不以尚未实际读取数据 ZIP 的状态冒充 DATA_READY**。
