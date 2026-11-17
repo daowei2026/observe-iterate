@@ -1,0 +1,322 @@
+schema: oi-eaw-p1-d002-r2-preflight/v1
+run_id: OI-EAW-P1-20261116-01
+call_id: C0006
+delegation_id: D002
+origin_analysis_round_id: AR-P1-001
+frozen_expectation_set_id: FZ-EAW-P1-AR-P1-001
+formal_comparison_performed: false
+gate_decision: NOT_MADE_BY_E1
+actual_evidence_ref: daowei2026/observe-iterate@242a60e2d2b0b3320a753f1db6f5c7c6282051d6:longrun/runs/OI-EAW-P1-20261116-01/calls/C0006/D002_EVIDENCE_AUDIT.json
+
+status_semantics:
+  ELIGIBLE: Required evidence is valid, meaning-clear and fit for the named formal-R2 purpose.
+  PARTIAL: Some evidence is usable, but one or more required layers remain incomplete.
+  PROVEN_UNAVAILABLE: The named formal evidence is absent in the frozen source after bounded investigation and no authority-preserving derivation can replace it.
+  BLOCKED: Access, permission or an unauthorized high-impact action prevents bounded determination.
+
+global_preflight:
+  validity: PARTIAL
+  business_meaning_clarity: PARTIAL
+  purpose_suitability_for_integrated_formal_r2: PROVEN_UNAVAILABLE
+  blocker_count: 0
+  reason: >-
+    Frozen data are authentic and readable, but common provenance, run-scoped typed identity,
+    complete availability, corrected Attack, canonical F4 and three direct products are absent.
+  non_interpretation: This is an input-qualification result, not a business SUPPORTS/COUNTERS result.
+
+product_preflight:
+  - product: Wall
+    validity: PARTIAL
+    business_meaning_clarity: PARTIAL
+    purpose_suitability: PARTIAL
+    status: PARTIAL
+    actual_evidence: [wall_events, wall_segments, current Wall producer and typed contracts]
+    remaining_limitation: No frozen receipt, source_run_ref, complete reason/time contract or missingness/availability.
+  - product: Build
+    validity: PARTIAL
+    business_meaning_clarity: PARTIAL
+    purpose_suitability: PARTIAL
+    status: PARTIAL
+    actual_evidence: [build_events, current Build producer and typed contracts]
+    remaining_limitation: No frozen receipt, actual parameters, complete milestone identity or stop semantics.
+  - product: AttackSegment
+    validity: PARTIAL
+    business_meaning_clarity: PARTIAL
+    purpose_suitability: PROVEN_UNAVAILABLE
+    status: PROVEN_UNAVAILABLE
+    actual_evidence: [attack_segments, current Attack producer and typed contracts]
+    remaining_limitation: No closed_at; 10115 mixed endpoint timestamp bindings; no corrected authoritative export.
+  - product: Absorb
+    validity: PARTIAL
+    business_meaning_clarity: PARTIAL
+    purpose_suitability: PARTIAL
+    status: PARTIAL
+    actual_evidence: [absorb_events, current Absorb producer and typed contracts]
+    remaining_limitation: No frozen receipt or milestone level; resolve-only and zero-wall rows require a product-level distinction.
+  - product: F4
+    validity: PARTIAL
+    business_meaning_clarity: PARTIAL
+    purpose_suitability: PROVEN_UNAVAILABLE
+    status: PROVEN_UNAVAILABLE
+    actual_evidence: [f4_tactical, f4_structural, review-only union audit]
+    remaining_limitation: No canonical producer union, occurrence_ref/source_run_ref or complete availability/threshold receipt.
+  - product: AttackFormationEvidence
+    validity: PROVEN_UNAVAILABLE
+    business_meaning_clarity: PROVEN_UNAVAILABLE
+    purpose_suitability: PROVEN_UNAVAILABLE
+    status: PROVEN_UNAVAILABLE
+    actual_evidence: [current producer and typed contract only]
+    remaining_limitation: No frozen direct table or receipt.
+  - product: WallRelationBarrier
+    validity: PROVEN_UNAVAILABLE
+    business_meaning_clarity: PROVEN_UNAVAILABLE
+    purpose_suitability: PROVEN_UNAVAILABLE
+    status: PROVEN_UNAVAILABLE
+    actual_evidence: [current producer and typed contract only]
+    remaining_limitation: No frozen direct table or receipt.
+  - product: F3
+    validity: PROVEN_UNAVAILABLE
+    business_meaning_clarity: PROVEN_UNAVAILABLE
+    purpose_suitability: PROVEN_UNAVAILABLE
+    status: PROVEN_UNAVAILABLE
+    actual_evidence: [current transient Build-input behavior only]
+    remaining_limitation: Current producer declares dense_active_flow_artifact=false; no frozen direct product.
+
+expectation_preflight:
+  - expectation_id: E-OWN-WALL-001
+    expectation_version: v1
+    product: Wall
+    required_evidence: Wall identity/lifecycle rows, input capability declaration and producer binding.
+    validity: PARTIAL
+    business_meaning_clarity: PARTIAL
+    purpose_suitability_for_formal_r2: PARTIAL
+    status: PARTIAL
+    remaining_limitation: Frozen producer provenance, typed run identity and full availability are absent.
+  - expectation_id: E-OWN-WALL-002
+    expectation_version: v1
+    product: Wall
+    required_evidence: Ordered lifecycle, stable identity, state/band/reason/time.
+    validity: PARTIAL
+    business_meaning_clarity: PARTIAL
+    purpose_suitability_for_formal_r2: PARTIAL
+    status: PARTIAL
+    remaining_limitation: Lifecycle shape exists, but reason/time/run identity and missingness contract are incomplete.
+  - expectation_id: E-OWN-WALL-003
+    expectation_version: v1
+    product: P1-boundary
+    required_evidence: Typed ports, producer/consumer authority and product receipts.
+    validity: PARTIAL
+    business_meaning_clarity: PARTIAL
+    purpose_suitability_for_formal_r2: PARTIAL
+    status: PARTIAL
+    remaining_limitation: Current ports exist, but frozen frames have no receipts binding them to typed products.
+  - expectation_id: E-OWN-WALL-004
+    expectation_version: v1
+    product: Wall-vs-Attack-F3-F4
+    required_evidence: Producer dependency graph and decoupling evidence.
+    validity: PARTIAL
+    business_meaning_clarity: PARTIAL
+    purpose_suitability_for_formal_r2: PARTIAL
+    status: PARTIAL
+    remaining_limitation: Separate tables/current producers exist, but no frozen manifest/dependency graph/direct-product bundle exists.
+  - expectation_id: E-BIZ-P1-001
+    expectation_version: v1
+    product: Wall-Build-Attack-Absorb
+    required_evidence: source_run_ref, typed refs, cross-product joins and decoupling cases.
+    validity: PARTIAL
+    business_meaning_clarity: PARTIAL
+    purpose_suitability_for_formal_r2: PARTIAL
+    status: PARTIAL
+    remaining_limitation: Local joins are possible; run-scoped typed identity cannot be instantiated from frozen source.
+  - expectation_id: E-BIZ-P1-002
+    expectation_version: v1
+    product: Build
+    required_evidence: Lifecycle, milestone level/threshold, stop reason and parameters.
+    validity: PARTIAL
+    business_meaning_clarity: PARTIAL
+    purpose_suitability_for_formal_r2: PARTIAL
+    status: PARTIAL
+    remaining_limitation: Lifecycle rows exist; frozen receipt/parameters and complete milestone/stop semantics are absent.
+  - expectation_id: E-BIZ-P1-003
+    expectation_version: v1
+    product: AttackSegment
+    required_evidence: Corrected complete occurrence, business_end, closed_at, availability and method receipt.
+    validity: PARTIAL
+    business_meaning_clarity: PARTIAL
+    purpose_suitability_for_formal_r2: PROVEN_UNAVAILABLE
+    status: PROVEN_UNAVAILABLE
+    remaining_limitation: Frozen source lacks closed_at and has 10115 mixed timestamp bindings; no corrected authoritative export exists.
+  - expectation_id: E-BIZ-P1-004
+    expectation_version: v1
+    product: Absorb
+    required_evidence: Typed interaction identity, wall identity, milestone level and start/resolve semantics.
+    validity: PARTIAL
+    business_meaning_clarity: PARTIAL
+    purpose_suitability_for_formal_r2: PARTIAL
+    status: PARTIAL
+    remaining_limitation: Frozen rows omit level/provenance and include resolve-only and zero-wall cases.
+  - expectation_id: E-BIZ-P1-005
+    expectation_version: v1
+    product: FormationEvidence-and-Barrier
+    required_evidence: Direct products, capability/availability and source occurrence refs.
+    validity: PROVEN_UNAVAILABLE
+    business_meaning_clarity: PROVEN_UNAVAILABLE
+    purpose_suitability_for_formal_r2: PROVEN_UNAVAILABLE
+    status: PROVEN_UNAVAILABLE
+    remaining_limitation: Neither frozen direct product nor receipt exists.
+  - expectation_id: E-BIZ-P1-006
+    expectation_version: v1
+    product: F3-F4
+    required_evidence: Direct F3 dense stream, availability states and sparse F4 provenance.
+    validity: PROVEN_UNAVAILABLE
+    business_meaning_clarity: PROVEN_UNAVAILABLE
+    purpose_suitability_for_formal_r2: PROVEN_UNAVAILABLE
+    status: PROVEN_UNAVAILABLE
+    remaining_limitation: F3 is transient and unpersisted; frozen F4 is per-family source lanes without complete provenance/availability.
+  - expectation_id: E-BIZ-P1-007
+    expectation_version: v1
+    product: F4
+    required_evidence: Canonical union occurrence with lane_mask and both grades.
+    validity: PROVEN_UNAVAILABLE
+    business_meaning_clarity: PROVEN_UNAVAILABLE
+    purpose_suitability_for_formal_r2: PROVEN_UNAVAILABLE
+    status: PROVEN_UNAVAILABLE
+    remaining_limitation: Only independent lane tables and Attack-local merge exist; review-only union is not producer output.
+  - expectation_id: E-BIZ-P1-008
+    expectation_version: v1
+    product: identity-replay-correction
+    required_evidence: P1RunManifest, source_run_ref, typed refs and replay/correction policy.
+    validity: PROVEN_UNAVAILABLE
+    business_meaning_clarity: PROVEN_UNAVAILABLE
+    purpose_suitability_for_formal_r2: PROVEN_UNAVAILABLE
+    status: PROVEN_UNAVAILABLE
+    remaining_limitation: Frozen source has no run manifest, revision/correction state or replay fixture.
+
+scenario_preflight:
+  - scenario_id: S-WALL-001
+    products: [Wall]
+    status: PARTIAL
+    validity: PARTIAL
+    business_meaning_clarity: PARTIAL
+    purpose_suitability_for_formal_r2: PARTIAL
+    remaining_limitation: A lifecycle is explorable, but run-scoped typed identity and complete time/reason contracts are absent.
+  - scenario_id: S-DECOUPLE-002
+    products: [Wall, Build, AttackSegment, Absorb]
+    status: PARTIAL
+    validity: PARTIAL
+    business_meaning_clarity: PARTIAL
+    purpose_suitability_for_formal_r2: PARTIAL
+    remaining_limitation: Local joins exist; complete Attack and run-scoped identity do not.
+  - scenario_id: S-SWITCH-003
+    products: [Wall, WallRelationBarrier]
+    status: PARTIAL
+    validity: PARTIAL
+    business_meaning_clarity: PARTIAL
+    purpose_suitability_for_formal_r2: PARTIAL
+    remaining_limitation: Wall migration rows are visible, but formal Barrier is unavailable.
+  - scenario_id: S-DIRECTION-004
+    products: [WallRelationBarrier, Wall, F4]
+    status: PROVEN_UNAVAILABLE
+    validity: PROVEN_UNAVAILABLE
+    business_meaning_clarity: PROVEN_UNAVAILABLE
+    purpose_suitability_for_formal_r2: PROVEN_UNAVAILABLE
+    remaining_limitation: Formal direction/switch Barrier and canonical F4 are unavailable.
+  - scenario_id: S-DORMANT-005
+    products: [Wall, WallRelationBarrier]
+    status: PARTIAL
+    validity: PARTIAL
+    business_meaning_clarity: PARTIAL
+    purpose_suitability_for_formal_r2: PARTIAL
+    remaining_limitation: Dormant rows exist; direct Barrier evidence is unavailable.
+  - scenario_id: S-ATTACK-006
+    products: [AttackSegment]
+    status: PROVEN_UNAVAILABLE
+    validity: PARTIAL
+    business_meaning_clarity: PARTIAL
+    purpose_suitability_for_formal_r2: PROVEN_UNAVAILABLE
+    remaining_limitation: business_end and closed_at cannot be formally compared from frozen export.
+  - scenario_id: S-F4-007
+    products: [F4]
+    status: PROVEN_UNAVAILABLE
+    validity: PARTIAL
+    business_meaning_clarity: PARTIAL
+    purpose_suitability_for_formal_r2: PROVEN_UNAVAILABLE
+    remaining_limitation: Canonical two-lane occurrence is unavailable.
+  - scenario_id: S-F3F4-008
+    products: [F3, F4]
+    status: PROVEN_UNAVAILABLE
+    validity: PROVEN_UNAVAILABLE
+    business_meaning_clarity: PROVEN_UNAVAILABLE
+    purpose_suitability_for_formal_r2: PROVEN_UNAVAILABLE
+    remaining_limitation: Direct F3 artifact and canonical F4 are unavailable.
+  - scenario_id: S-MISSING-009
+    products: [P1RunManifest, availability]
+    status: PROVEN_UNAVAILABLE
+    validity: PROVEN_UNAVAILABLE
+    business_meaning_clarity: PROVEN_UNAVAILABLE
+    purpose_suitability_for_formal_r2: PROVEN_UNAVAILABLE
+    remaining_limitation: Only availability_code=1 rows exist; valid-empty/missing/history/Pending cannot be distinguished.
+  - scenario_id: S-GRAPH-010
+    products: [graph-bindings, product-contracts]
+    status: ELIGIBLE
+    validity: ELIGIBLE
+    business_meaning_clarity: ELIGIBLE
+    purpose_suitability_for_formal_r2: ELIGIBLE
+    remaining_limitation: >-
+      Eligibility is limited to the material-method anti-gold that glyphs/views are not product contracts;
+      it is not a business-effect judgment and does not unlock integrated R2.
+  - scenario_id: S-SCOPE-011
+    products: [object-universe, timespans, selection-policy]
+    status: PARTIAL
+    validity: PARTIAL
+    business_meaning_clarity: PARTIAL
+    purpose_suitability_for_formal_r2: PARTIAL
+    remaining_limitation: Universe/time windows are known; business selection and representativeness rationale are absent.
+  - scenario_id: S-REPLAY-012
+    products: [P1RunManifest, typed-refs, replay-fixture]
+    status: PROVEN_UNAVAILABLE
+    validity: PROVEN_UNAVAILABLE
+    business_meaning_clarity: PROVEN_UNAVAILABLE
+    purpose_suitability_for_formal_r2: PROVEN_UNAVAILABLE
+    remaining_limitation: No run identity, revision or replay/correction fixture exists.
+  - scenario_id: S-ABSORB-013
+    products: [Absorb-milestone-identity]
+    status: PARTIAL
+    validity: PARTIAL
+    business_meaning_clarity: PARTIAL
+    purpose_suitability_for_formal_r2: PARTIAL
+    remaining_limitation: Multiplicity is observed and current code explains threshold emission, but frozen level identity is missing.
+  - scenario_id: S-TIME-014
+    products: [TimeBasisContract, Attack-corrected-export]
+    status: PROVEN_UNAVAILABLE
+    validity: PARTIAL
+    business_meaning_clarity: PARTIAL
+    purpose_suitability_for_formal_r2: PROVEN_UNAVAILABLE
+    remaining_limitation: Frozen Attack time contract is inconsistent and no corrected authoritative export exists.
+
+evidence_dependency_rules:
+  - rule: window_evidence and source frame are the same evidence lineage
+    action: do not double count
+  - rule: wall_segments are rendering intervals derived from Wall lifecycle
+    action: do not count as independent lifecycle evidence
+  - rule: tactical and structural F4 overlap refers to the same half-second material
+    action: do not count as two occurrences
+  - rule: review-only union is derived from the two lane tables
+    action: not an independent source and not a product
+  - rule: current TIS/FRP contracts are implementation evidence unbound to the frozen ZIP
+    action: do not use them to assert frozen-run parameters or outputs
+
+formal_r2_unlock_minimum:
+  - authoritative frozen-run receipt/manifest binding source scope, code/config/parameters and product artifacts
+  - complete availability/missingness representation for the selected product scope
+  - corrected complete AttackSegment export with business_end and closed_at
+  - canonical F4 product if E-BIZ-P1-007 remains in formal comparison scope
+  - direct FormationEvidence/Barrier/F3 artifacts or an explicit manager-approved MISSING/PROVEN_UNAVAILABLE formal-comparison plan
+  - Absorb export carrying milestone level and valid typed Wall/interaction identity, or a scope rule excluding pre-interaction quote-track terminations
+
+non_claims:
+  - no formal SUPPORTS or COUNTERS
+  - no H2 or G-COMPARISON decision
+  - no FrozenExpectationSet v1 modification
+  - no product reasonable/unreasonable judgment
+  - no parent task completion declaration
