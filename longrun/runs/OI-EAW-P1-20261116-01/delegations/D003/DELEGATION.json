@@ -1,0 +1,46 @@
+{
+  "schema": "longrun-delegation/v2",
+  "run_id": "OI-EAW-P1-20261116-01",
+  "delegation_id": "D003",
+  "issuer_call_id": "C0007",
+  "issuer": "chatgpt:OI-EAW-P1-20261116-01:manager",
+  "recipient": "chatgpt:OI-EAW-P1-20261116-01:executor:E1",
+  "return_to": "chatgpt:OI-EAW-P1-20261116-01:manager",
+  "task_ref": "daowei2026/observe-iterate@9fdddb8d4c1e660faf00b52f9f67d0b3fb74864e:longrun/runs/OI-EAW-P1-20261116-01/delegations/D003/DELEGATION.md",
+  "business_context_ref": "daowei2026/observe-iterate@22861d672b0ead9a78c75faa4111b4985af6cd89:longrun/runs/OI-EAW-P1-20261116-01/business_control/decisions/MD-0003.md",
+  "input_refs": [
+    "daowei2026/observe-iterate@6a2d0abd34d44fd20fe7119035a8227e6b019625:longrun/runs/OI-EAW-P1-20261116-01/OWNER_START.md",
+    "daowei2026/observe-iterate@1a04ea440f395026491036d405d82e653a5fecbd:longrun/runs/OI-EAW-P1-20261116-01/RUN_BINDING.json",
+    "daowei2026/observe-iterate@c88c4836269e8412e88e9ea6e7e871c0ad44f96e:longrun/runs/OI-EAW-P1-20261116-01/business_control/frozen_expectations/FZ-EAW-P1-AR-P1-001.yaml",
+    "daowei2026/observe-iterate@0fff57bcc2cb85907586704a67389c038cf5ffa3:longrun/runs/OI-EAW-P1-20261116-01/calls/C0003/D001_EXPECTATION_REGISTER.yaml",
+    "daowei2026/observe-iterate@3d3b3b9c568f9b17037b747fc1ca44a76f847ddf:longrun/runs/OI-EAW-P1-20261116-01/calls/C0003/EXECUTOR_REPORT.md",
+    "daowei2026/observe-iterate@624dd0dfb2deed97bf57c573ccbd63f9f636b6d7:longrun/runs/OI-EAW-P1-20261116-01/calls/C0003/D001_DATA_AUDIT.json",
+    "daowei2026/observe-iterate@03515f51c397650f11a1df4c01f8f623ec5d9479:longrun/runs/OI-EAW-P1-20261116-01/calls/C0006/D002_EVIDENCE_RETURN.md",
+    "daowei2026/observe-iterate@242a60e2d2b0b3320a753f1db6f5c7c6282051d6:longrun/runs/OI-EAW-P1-20261116-01/calls/C0006/D002_EVIDENCE_AUDIT.json",
+    "daowei2026/observe-iterate@750084b1d4bf177d0bb71e743655ab95b3b81ee2:longrun/runs/OI-EAW-P1-20261116-01/calls/C0006/D002_R2_PREFLIGHT.yaml",
+    "daowei2026/observe-iterate@6bc4808db0fbb631f5a345dcfb55e6087f0013bf:longrun/runs/OI-EAW-P1-20261116-01/calls/C0006/D002_REVIEW_ONLY_AUDIT_BUNDLE.zip",
+    "daowei2026/observe-iterate@df0fa015e6b9b7e6d1174b308c1519ddcca2fd8b:longrun/runs/OI-EAW-P1-20261116-01/calls/C0007/MANAGER_REPORT.md",
+    "daowei2026/observe-iterate@22861d672b0ead9a78c75faa4111b4985af6cd89:longrun/runs/OI-EAW-P1-20261116-01/business_control/decisions/MD-0003.md",
+    "daowei2026/observe-iterate@7e240b650b6ba6274b0263e34f5b0616a9a8ff1c:control/03_L1_合理性分析流程.md",
+    "daowei2026/observe-iterate@7e240b650b6ba6274b0263e34f5b0616a9a8ff1c:control/04_L2_节点输入输出登记表.md",
+    "daowei2026/observe-iterate@7e240b650b6ba6274b0263e34f5b0616a9a8ff1c:control/05_三级Gate及后继路由.md",
+    "daowei2026/observe-iterate@7e240b650b6ba6274b0263e34f5b0616a9a8ff1c:skills/reasonableness-analysis/business-evidence-comparison/SKILL.md",
+    "daowei2026/observe-iterate@7e240b650b6ba6274b0263e34f5b0616a9a8ff1c:longrun/professional/PRO_EXECUTOR_GUIDE.md"
+  ],
+  "expected_outputs": [
+    "D003_EVIDENCE_COMPARISON.md：冻结 v1 下的完整专业证据对照报告，覆盖八产品、12 条预期和 14 个场景",
+    "D003_EVIDENCE_COMPARISON.yaml：机器可读统一包，包含三层 InputAssessment、12 个 expectation_packages、14 个 scenario_effect_table 条目、product_result_summary、EvidenceInducedCandidates、DiscrepancyQueue 和 question_boundary_summary",
+    "对每项证据使用 SUPPORTS/COUNTERS/MISSING/AMBIGUOUS/NOT_APPLICABLE/PENDING，且 PROVEN_UNAVAILABLE 输入不得自动改写为 COUNTERS",
+    "每个 COUNTERS（如有）必须排除数据、身份、时间、导出阶段和实现缺陷解释；每个 MISSING/AMBIGUOUS 必须给出准确缺项和解除条件",
+    "如使用 Worker，提供正式 W、WORKER_RETURN 与 executor 专业接受意见；预期可零 W 完成",
+    "符合 V2 的 executor PRO_RETURN；不得自行宣布 G-COMPARISON、R3/R5 或父任务完成"
+  ],
+  "permitted_operations": [
+    "eaw-p1-observation-work",
+    "run-record-publish"
+  ],
+  "allowed_writes": [
+    "/dwdhome/fy/BASE_E6_2",
+    "longrun/runs/OI-EAW-P1-20261116-01"
+  ]
+}
