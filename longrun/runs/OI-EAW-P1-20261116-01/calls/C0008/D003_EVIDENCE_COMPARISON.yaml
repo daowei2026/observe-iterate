@@ -1,0 +1,616 @@
+schema: oi-eaw-p1-d003-evidence-comparison/v1
+run_id: OI-EAW-P1-20261116-01
+call_id: C0008
+invocation_token: 9cc095198c21939058b83f439ce0be62
+delegation_id: D003
+executor: chatgpt:OI-EAW-P1-20261116-01:executor:E1
+return_to: chatgpt:OI-EAW-P1-20261116-01:manager
+work_item_id: WI-D003-P1-FORMAL-COMPARISON
+stage_instance_id: R-P1-COMPARISON-001
+analysis_round_id: AR-P1-001
+frozen_expectation_set_id: FZ-EAW-P1-AR-P1-001
+formal_comparison_performed: true
+gate_decision: NOT_MADE_BY_E1
+
+scope:
+  products: [Wall, Build, AttackSegment, Absorb, AttackFormationEvidence, WallRelationBarrier, F3, F4]
+  expectation_count: 12
+  scenario_count: 14
+  d001_or_d002_rework: false
+  new_data_or_product_generation: false
+  source_modification: false
+  r3_or_r4_performed: false
+
+source_refs:
+  assignment: daowei2026/observe-iterate@5ebd3ef97e61c87156db46c2dd698897ff5d499f:longrun/runs/OI-EAW-P1-20261116-01/calls/C0008/FULL_ASSIGNMENT.md
+  invocation: daowei2026/observe-iterate@e82e5dc1726d626b62910c33266df86c48ff4c72:longrun/runs/OI-EAW-P1-20261116-01/calls/C0008/INVOCATION.json
+  delegation: daowei2026/observe-iterate@d336668f16932c4f97b460bebd037840f9256713:longrun/runs/OI-EAW-P1-20261116-01/delegations/D003/DELEGATION.json
+  frozen_set: daowei2026/observe-iterate@c88c4836269e8412e88e9ea6e7e871c0ad44f96e:longrun/runs/OI-EAW-P1-20261116-01/business_control/frozen_expectations/FZ-EAW-P1-AR-P1-001.yaml
+  expectation_register: daowei2026/observe-iterate@0fff57bcc2cb85907586704a67389c038cf5ffa3:longrun/runs/OI-EAW-P1-20261116-01/calls/C0003/D001_EXPECTATION_REGISTER.yaml
+  d001_report: daowei2026/observe-iterate@3d3b3b9c568f9b17037b747fc1ca44a76f847ddf:longrun/runs/OI-EAW-P1-20261116-01/calls/C0003/EXECUTOR_REPORT.md
+  d001_audit: daowei2026/observe-iterate@624dd0dfb2deed97bf57c573ccbd63f9f636b6d7:longrun/runs/OI-EAW-P1-20261116-01/calls/C0003/D001_DATA_AUDIT.json
+  d002_report: daowei2026/observe-iterate@03515f51c397650f11a1df4c01f8f623ec5d9479:longrun/runs/OI-EAW-P1-20261116-01/calls/C0006/D002_EVIDENCE_RETURN.md
+  d002_audit: daowei2026/observe-iterate@242a60e2d2b0b3320a753f1db6f5c7c6282051d6:longrun/runs/OI-EAW-P1-20261116-01/calls/C0006/D002_EVIDENCE_AUDIT.json
+  d002_preflight: daowei2026/observe-iterate@750084b1d4bf177d0bb71e743655ab95b3b81ee2:longrun/runs/OI-EAW-P1-20261116-01/calls/C0006/D002_R2_PREFLIGHT.yaml
+  d002_review_bundle: daowei2026/observe-iterate@6bc4808db0fbb631f5a345dcfb55e6087f0013bf:longrun/runs/OI-EAW-P1-20261116-01/calls/C0006/D002_REVIEW_ONLY_AUDIT_BUNDLE.zip
+  manager_report: daowei2026/observe-iterate@df0fa015e6b9b7e6d1174b308c1519ddcca2fd8b:longrun/runs/OI-EAW-P1-20261116-01/calls/C0007/MANAGER_REPORT.md
+  manager_decision: daowei2026/observe-iterate@22861d672b0ead9a78c75faa4111b4985af6cd89:longrun/runs/OI-EAW-P1-20261116-01/business_control/decisions/MD-0003.md
+
+status_semantics:
+  SUPPORTS: 适用条件成立，证据有效、含义明确且适合当前目的，并与冻结命题一致。
+  COUNTERS: 排除数据、身份、时间、导出阶段和实现缺陷后，合格证据仍与命题冲突。
+  MISSING: 当前冻结源中，判断所需正式产品、字段、时间、版本或样本不可得。
+  AMBIGUOUS: 真实证据存在多个仍合理且当前无法区分的解释。
+  NOT_APPLICABLE: 场景不满足冻结命题的适用条件。
+  PENDING: 过程或 confirmTime 尚未完成。
+
+finding_layers:
+  ARTIFACT_CONFORMANCE: frozen export 的字段、时间、identity、availability 合同。
+  MATERIAL_METHOD: 图、窗口、派生视图是否适合承担证据。
+  BUSINESS_REASONABLENESS: 合格正式产品行为是否支持或反驳冻结业务预期。
+
+data_binding:
+  project_source: caegraph-data-30tick.zip
+  bytes: 16654307
+  sha256: 73e7c5f289d7b25f08f11cffda7315ad2dad3f8c323715425afdd485e15c4233
+  zip_crc: ALL_PASS
+  symbols: [rb, hc, i]
+  block: blk@steel
+  calendar: night_end_at_2300
+  calendar_half_second_slots: 103316400
+  calendar_range: ['2013-01-04 09:00:00.500', '2024-02-29 15:00:00']
+  window_scope: 6x30m, 18x1m, 54x5s, 30 Tick windows with raw snapshots; 148 Tick locators total
+
+time_basis:
+  known: frozen UTI calendar and stored timestamps
+  missing:
+    - timezone
+    - session-policy version
+    - same-timestamp ordering
+    - authoritative producer TimeBasisContract
+    - complete actual/confirm/close fields
+  attack_specific: mixed start/end timestamp binding; closed_at absent
+
+parameter_and_version:
+  status: MISSING
+  finding: No frozen receipt binds producer code, config, actual parameters or market input cut to the ZIP; current TIS/FRP defaults are not frozen-run facts.
+
+comparison_summary:
+  expectation_status_counts: {SUPPORTS: 2, AMBIGUOUS: 4, MISSING: 6, COUNTERS: 0, NOT_APPLICABLE: 0, PENDING: 0}
+  scenario_status_counts: {SUPPORTS: 3, AMBIGUOUS: 4, MISSING: 7, COUNTERS: 0, NOT_APPLICABLE: 0, PENDING: 0}
+  business_discrepancy_count: 0
+  bounded_formal_comparison: COMPLETED
+  integrated_eight_product_business_effect: NOT_AVAILABLE
+
+input_assessment:
+  DataValidityFinding:
+    status: PARTIAL
+    confirmed:
+      - ZIP identity, bytes, SHA-256 and CRC match.
+      - Manifest, calendar, object universe, timespans and main tables are readable.
+      - Wall/Build lifecycle and deterministic Attack/F4/Absorb audit facts are reproducible.
+    limitations:
+      - Attack has 10115 mixed endpoint timestamp bindings and no closed_at.
+      - F4 is source lanes only; direct Formation/Barrier/F3 products are absent.
+      - Absorb lacks milestone level and has resolve-only/zero-Wall ambiguity.
+      - No P1RunManifest, source_run_ref, typed refs or complete availability.
+  InputMeaningFinding:
+    status: PARTIAL
+    clear:
+      - local Wall and Build lifecycle shapes
+      - same-symbol local dependent Wall joins
+      - graph/window/display stages
+      - F4 overlap and Absorb multiplicity facts
+    unclear_or_unavailable:
+      - frozen producer dependency and run-scoped typed identity
+      - Attack business_end versus closed_at
+      - Absorb quote-track versus formal interaction boundary
+      - canonical F4, direct Formation/Barrier/F3 and missingness semantics
+  PurposeSuitabilityFinding:
+    bounded_formal_R06: SUITABLE_WITH_PRODUCT_AND_PURPOSE_LIMITS
+    integrated_eight_product_business_effect: NOT_SUITABLE
+    suitable_for:
+      - bounded Wall lifecycle support
+      - formal MISSING and AMBIGUOUS results
+      - material-method anti-golds and applicability boundaries
+      - artifact-conformance findings
+    not_suitable_for:
+      - full frozen producer-to-FRP boundary
+      - Attack/F4/Formation/Barrier/F3 business effects
+      - replay/correction and complete missingness
+      - market-wide or representative-sample generalization
+
+evidence_dependency_rules:
+  - window_evidence and source frame are one lineage; do not double count.
+  - wall_segments are rendering intervals derived from Wall lifecycle; do not count independently.
+  - tactical/structural F4 overlap is the same half-second material; do not count as two occurrences.
+  - review-only F4 union is derived, non-independent and NOT_CANONICAL_PRODUCT.
+  - current TIS/FRP contracts are unbound implementation evidence, not frozen-run support.
+  - local IDs are symbol/package scoped and are not cross-run typed identity.
+
+expectation_packages:
+  - expectation_id: E-OWN-WALL-001
+    expectation_version: v1
+    origin: OWNER_EXPLICIT
+    judgment: SUPPORTS
+    evidence_items:
+      - evidence_id: EV-WALL-IDENTITY-001
+        scenario_ids: [S-WALL-001, S-GRAPH-010]
+        product: Wall
+        finding_layer: BUSINESS_REASONABLENESS
+        source_refs: [d001_audit, d001_report]
+        location: package-wide Wall lifecycle and source/display stage
+        actual_time: aggregate; exact scene UTI not required
+        confirm_time: MISSING_IN_FROZEN_EXPORT
+        validity: VALID_WITHIN_FROZEN_PACKAGE
+        business_meaning: CLEAR_FOR_LOCAL_LIFECYCLE
+        purpose_suitability: SUITABLE_FOR_LOCAL_IDENTITY
+        formal_status: SUPPORTS
+        observation: 45698 lifecycle rows contain 18182 Start, 18182 End, 8452 StateChange and 882 BandUpdate rows; every supplied local wall_id has one Start and one End. wall_segments/window views are separately derived.
+        interpretation: Wall is represented as a persistent local lifecycle object, not a per-tick object or display line.
+        alternative_explanations: [Derived export does not establish global typed identity or exact producer rules.]
+        data_quality: ZIP/table audit accepted; local numeric IDs are symbol/package scoped.
+        applicability_boundary: rb/hc/i and supplied windows only.
+      - evidence_id: EV-WALL-RUN-IDENTITY-002
+        scenario_ids: [S-REPLAY-012]
+        product: Wall
+        finding_layer: ARTIFACT_CONFORMANCE
+        source_refs: [d002_audit, d002_preflight]
+        location: frozen provenance and identity fields
+        actual_time: MISSING
+        confirm_time: MISSING
+        validity: PROVEN_UNAVAILABLE
+        business_meaning: NOT_ESTABLISHED
+        purpose_suitability: NOT_SUITABLE_FOR_GLOBAL_IDENTITY
+        formal_status: MISSING
+        observation: P1RunManifest, source_run_ref, frozen receipt and globally typed Wall ref are absent.
+        interpretation: Local support cannot be generalized to cross-run canonical identity.
+        alternative_explanations: []
+        data_quality: Bounded investigation exhausted the frozen source.
+        applicability_boundary: Does not negate local lifecycle support.
+        unlock_condition: Authoritative frozen-run receipt and typed Wall identity.
+    judgment_rationale: Core identity is supported locally; global typed/run identity remains missing.
+    confidence: HIGH_WITHIN_BOUNDARY
+    next_action: No E1 action; broader scope requires a new receipt-bound product.
+
+  - expectation_id: E-OWN-WALL-002
+    expectation_version: v1
+    origin: OWNER_EXPLICIT
+    judgment: SUPPORTS
+    evidence_items:
+      - evidence_id: EV-WALL-LIFECYCLE-001
+        scenario_ids: [S-WALL-001, S-DORMANT-005]
+        product: Wall
+        finding_layer: BUSINESS_REASONABLENESS
+        source_refs: [d001_report, d001_audit]
+        location: tick_000023 / i / wall_id=57427; package-wide Wall table
+        actual_time: within UTI 78266099..78266819; exact event UTIs not carried in accepted report
+        confirm_time: MISSING_IN_FROZEN_EXPORT
+        validity: VALID_WITHIN_SCENE_AND_PACKAGE
+        business_meaning: CLEAR_FOR_LOCAL_STATE_CONTINUITY
+        purpose_suitability: SUITABLE_FOR_LOCAL_LIFECYCLE
+        formal_status: SUPPORTS
+        observation: wall_id=57427 follows Start -> Dormant -> End; package-wide each local wall_id has one Start and one End.
+        interpretation: Dormant is an intermediate state on one local identity rather than an implicit End/new Wall.
+        alternative_explanations: [No direct Barrier stream exists, so downstream Barrier behavior is not established.]
+        data_quality: Source-table locator accepted; graph view not counted independently.
+        applicability_boundary: Local lifecycle shape only; complete reason/confirm-time contract excluded.
+      - evidence_id: EV-WALL-REASON-TIME-002
+        scenario_ids: [S-TIME-014]
+        product: Wall
+        finding_layer: ARTIFACT_CONFORMANCE
+        source_refs: [d001_audit, d002_audit]
+        location: Wall reason/time contract
+        actual_time: PARTIAL
+        confirm_time: MISSING
+        validity: PARTIAL
+        business_meaning: PARTIAL
+        purpose_suitability: NOT_SUITABLE_FOR_COMPLETE_REASON_TIME_AUDIT
+        formal_status: MISSING
+        observation: Complete reason vocabulary, source_run_ref and actual/confirm/close contract are unavailable.
+        interpretation: Lifecycle shape is testable; complete termination semantics are not.
+        alternative_explanations: []
+        data_quality: No evidence that missing/technical states are encoded as End; absence is not support.
+        applicability_boundary: Missing fields do not counter lifecycle continuity.
+        unlock_condition: Complete frozen Wall product with reasons and TimeBasisContract.
+    judgment_rationale: Start/intermediate/End continuity and the Dormant scene support the lifecycle proposition; complete reason/time semantics remain missing.
+    confidence: HIGH_FOR_LOCAL_LIFECYCLE
+    next_action: No R3 discrepancy.
+
+  - expectation_id: E-OWN-WALL-003
+    expectation_version: v1
+    origin: OWNER_EXPLICIT
+    judgment: MISSING
+    evidence_items:
+      - evidence_id: EV-P1-BOUNDARY-001
+        scenario_ids: [S-GRAPH-010, S-REPLAY-012]
+        product: P1-boundary
+        finding_layer: ARTIFACT_CONFORMANCE
+        source_refs: [d001_report, d002_audit, d002_preflight]
+        location: frozen receipts/typed ports plus graph stages
+        actual_time: MISSING
+        confirm_time: MISSING
+        validity: PROVEN_UNAVAILABLE_FOR_FROZEN_BOUNDARY
+        business_meaning: Current contracts clear but unbound to frozen run
+        purpose_suitability: NOT_SUITABLE_TO_PROVE_FROZEN_PRODUCER_CONSUMER_PATH
+        formal_status: MISSING
+        observation: Graph stages are distinguishable and cannot replace products; current typed ports exist, but no frozen receipt/trace binds them to the ZIP.
+        interpretation: The material-method anti-gold is supported, while the frozen pre-L0-to-FRP contract is not testable.
+        alternative_explanations: [Frozen package may predate or differ from current implementation.]
+        data_quality: Current implementation is explicitly UNBOUND_TO_FROZEN_PROJECT_SOURCE.
+        applicability_boundary: No judgment on whether frozen FRP rebuilt or consumed products.
+        unlock_condition: Frozen product receipt and typed ingress/output trace.
+    judgment_rationale: A graph cannot substitute for a product, but the actual frozen producer/consumer boundary is missing.
+    confidence: HIGH_FOR_MISSING_STATUS
+    next_action: Do not route to R3 as a business discrepancy.
+
+  - expectation_id: E-OWN-WALL-004
+    expectation_version: v1
+    origin: OWNER_EXPLICIT
+    judgment: AMBIGUOUS
+    evidence_items:
+      - evidence_id: EV-WALL-DECOUPLING-001
+        scenario_ids: [S-DECOUPLE-002]
+        product: Wall/Attack/F3/F4
+        finding_layer: BUSINESS_REASONABLENESS
+        source_refs: [d001_audit, d002_audit]
+        location: separate frozen tables and same-symbol local references
+        actual_time: PACKAGE_LOCAL_UTI
+        confirm_time: MISSING
+        validity: VALID_FOR_EXPORT_RELATION
+        business_meaning: PARTIAL
+        purpose_suitability: PARTIAL
+        formal_status: AMBIGUOUS
+        observation: Wall, Attack and F4-lane materials are separate; every nonzero Build/Attack/Absorb wall_local_no maps to a same-symbol Wall. Direct F3 is absent.
+        interpretation: Artifacts are consistent with Wall/downstream decoupling, but table separation cannot prove producer dependency.
+        alternative_explanations: [Hidden upstream coupling may still exist.]
+        data_quality: No frozen dependency graph, receipt or actual parameters.
+        applicability_boundary: Export-level association only.
+        unlock_condition: Frozen producer dependency graph and decoupling fixture.
+    judgment_rationale: Local refs and separate artifacts are consistent with decoupling, but hidden coupling remains a live alternative.
+    confidence: MEDIUM
+    next_action: No R3 queue; ambiguity is explained by missing provenance.
+
+  - expectation_id: E-BIZ-P1-001
+    expectation_version: v1
+    origin: BUSINESS_INFERRED_RUN_LOCAL
+    judgment: AMBIGUOUS
+    evidence_items:
+      - evidence_id: EV-CANONICAL-WALL-REUSE-001
+        scenario_ids: [S-DECOUPLE-002, S-REPLAY-012]
+        product: Wall/Build/AttackSegment/Absorb
+        finding_layer: BUSINESS_REASONABLENESS
+        source_refs: [d001_audit, d001_report, d002_audit]
+        location: same-symbol dependent refs and product lifecycle schemas
+        actual_time: PACKAGE_LOCAL_UTI
+        confirm_time: MISSING
+        validity: VALID_WITHIN_LOCAL_SCOPE
+        business_meaning: CLEAR_FOR_LOCAL_REUSE; INCOMPLETE_FOR_CANONICAL_IDENTITY
+        purpose_suitability: PARTIAL
+        formal_status: AMBIGUOUS
+        observation: All nonzero dependent refs resolve to a local Wall; product schemas and lifecycle counts differ. source_run_ref and typed refs are absent.
+        interpretation: Local reuse is supported, but canonical run-scoped identity and independent optionality cannot be established.
+        alternative_explanations: [Export filtering or hidden coupling can explain different row counts.]
+        data_quality: Local IDs are symbol/package scoped.
+        applicability_boundary: Same-symbol, same-package joins only.
+        unlock_condition: Typed refs, P1RunManifest and complete availability.
+    judgment_rationale: Local Wall reuse is real; canonical identity and optionality remain unresolved.
+    confidence: MEDIUM
+    next_action: Do not diagnose as a business deviation.
+
+  - expectation_id: E-BIZ-P1-002
+    expectation_version: v1
+    origin: BUSINESS_INFERRED_RUN_LOCAL
+    judgment: AMBIGUOUS
+    evidence_items:
+      - evidence_id: EV-BUILD-LIFECYCLE-001
+        scenario_ids: [S-DECOUPLE-002]
+        product: Build
+        finding_layer: BUSINESS_REASONABLENESS
+        source_refs: [d001_audit, d001_report]
+        location: package-wide Build table
+        actual_time: AGGREGATE
+        confirm_time: MISSING
+        validity: VALID
+        business_meaning: CLEAR_FOR_EVENT_SHAPE
+        purpose_suitability: SUITABLE_FOR_LIFECYCLE_SHAPE
+        formal_status: SUPPORTS
+        observation: 131219 rows contain 43035 Start, 45149 Milestone and 43035 Stop rows; every build_id has one Start and one Stop.
+        interpretation: Start -> Milestone* -> Stop artifact shape is supported.
+        alternative_explanations: []
+        data_quality: No exact full-row duplicates.
+        applicability_boundary: Shape only.
+      - evidence_id: EV-BUILD-CONTRACT-002
+        scenario_ids: [S-DECOUPLE-002, S-TIME-014]
+        product: Build
+        finding_layer: ARTIFACT_CONFORMANCE
+        source_refs: [d001_audit, d002_audit]
+        location: milestone identity, Stop reason and parameters
+        actual_time: PARTIAL
+        confirm_time: MISSING
+        validity: PARTIAL
+        business_meaning: INCOMPLETE
+        purpose_suitability: NOT_SUITABLE_FOR_FULL_BUILD_SEMANTICS
+        formal_status: MISSING
+        observation: Complete milestone level/threshold, Stop reason, typed refs and frozen parameters are absent.
+        interpretation: Row counts or styles cannot establish threshold identity or business Stop.
+        alternative_explanations: []
+        data_quality: Current defaults are not frozen-run facts.
+        applicability_boundary: No threshold or producer-reasonableness judgment.
+        unlock_condition: Receipt-bound complete Build occurrence contract.
+    judgment_rationale: Lifecycle shape is supported, but the contract-required milestone/Stop/parameter semantics are missing.
+    confidence: MEDIUM
+    next_action: No R3 item.
+
+  - expectation_id: E-BIZ-P1-003
+    expectation_version: v1
+    origin: BUSINESS_INFERRED_RUN_LOCAL
+    judgment: MISSING
+    evidence_items:
+      - evidence_id: EV-ATTACK-COMPLETE-001
+        scenario_ids: [S-ATTACK-006, S-TIME-014]
+        product: AttackSegment
+        finding_layer: ARTIFACT_CONFORMANCE
+        source_refs: [d002_audit, d002_report, d002_review_bundle]
+        location: 17856 frozen Attack rows and missing corrected product
+        actual_time: start_uti/business_end_uti fields present; binding mixed
+        confirm_time: closed_at missing
+        validity: PARTIAL
+        business_meaning: AMBIGUOUS_ENDPOINT_BINDING
+        purpose_suitability: NOT_SUITABLE_FOR_COMPLETE_OCCURRENCE_EFFECT
+        formal_status: MISSING
+        observation: 10115 rows bind stored business_end_ts to start_uti while plot_uti=uti=business_end_uti; 10110 offsets are -0.5s and five i offsets are -21600.5s. No corrected export, frozen receipt, closed_at or authoritative TimeBasisContract exists.
+        interpretation: Existing artifact has a conformance defect; the product required for business comparison is unavailable.
+        alternative_explanations: [An exclusive-end-like export convention is plausible, but exact frozen producer/config attribution is unavailable.]
+        data_quality: Deterministic audit reproducible; classified as artifact conformance, not business COUNTERS.
+        applicability_boundary: No business_end-versus-closed_at effect judgment.
+        unlock_condition: Corrected authoritative Attack export and receipt.
+    judgment_rationale: Required complete occurrence is absent; mixed endpoint artifact must not be converted into COUNTERS.
+    confidence: HIGH_FOR_MISSING_STATUS
+    next_action: No R3 diagnosis from current source.
+
+  - expectation_id: E-BIZ-P1-004
+    expectation_version: v1
+    origin: BUSINESS_INFERRED_RUN_LOCAL
+    judgment: AMBIGUOUS
+    evidence_items:
+      - evidence_id: EV-ABSORB-IDENTITY-001
+        scenario_ids: [S-ABSORB-013, S-DECOUPLE-002, S-MISSING-009]
+        product: Absorb
+        finding_layer: BUSINESS_REASONABLENESS
+        source_refs: [d001_audit, d002_audit, d002_review_bundle]
+        location: 106429 rows; tick_000023/i/track_id=454496/UTI=78266204
+        actual_time: UTI 78266204 example; package aggregate elsewhere
+        confirm_time: MISSING
+        validity: VALID_FOR_OBSERVED_MULTIPLICITY
+        business_meaning: AMBIGUOUS_WITHOUT_LEVEL_AND_TYPED_IDENTITY
+        purpose_suitability: NOT_SUITABLE_FOR_INDEPENDENT_EVENT_COUNT
+        formal_status: AMBIGUOUS
+        observation: 31281 Started, 38333 Milestone and 36815 Resolved rows; 25821 same-track/same-UTI multi-milestone rows; 5534 resolve-only tracks; 63 zero-Wall rows across 30 tracks.
+        interpretation: A lifecycle-like stream exists, but rows may represent distinct thresholds or export multiplicity; resolve-only may be quote-track termination or incomplete interaction.
+        alternative_explanations: [Current core supplies plausible per-level and quote-track mechanisms, but is unbound to the frozen run.]
+        data_quality: Counts are reproducible; frozen milestone level and run-scoped typed identity are absent.
+        applicability_boundary: Do not multi-count, assume observed Start, or treat zero-Wall rows as formally bound.
+        unlock_condition: Receipt-bound Absorb product with milestone level and typed refs, or explicit scope rule.
+    judgment_rationale: Real lifecycle/multiplicity evidence admits multiple unresolved product interpretations.
+    confidence: HIGH_FOR_AMBIGUITY
+    next_action: Retain EIC-D002-002; no R3 queue.
+
+  - expectation_id: E-BIZ-P1-005
+    expectation_version: v1
+    origin: BUSINESS_INFERRED_RUN_LOCAL
+    judgment: MISSING
+    evidence_items:
+      - evidence_id: EV-FORMATION-BARRIER-001
+        scenario_ids: [S-SWITCH-003, S-DIRECTION-004, S-DORMANT-005, S-GRAPH-010]
+        product: AttackFormationEvidence/WallRelationBarrier
+        finding_layer: ARTIFACT_CONFORMANCE
+        source_refs: [d002_audit, d002_preflight, d001_report]
+        location: frozen product inventory and graph views
+        actual_time: MISSING
+        confirm_time: MISSING
+        validity: PROVEN_UNAVAILABLE_FOR_DIRECT_PRODUCTS
+        business_meaning: NOT_ESTABLISHED
+        purpose_suitability: NOT_SUITABLE_FOR_PRODUCT_BEHAVIOR
+        formal_status: MISSING
+        observation: Neither direct product nor receipt exists. Graph adjacency, display gaps, migration glyphs and table order are not source occurrences.
+        interpretation: The anti-substitution method rule is supported, but product separation cannot be tested.
+        alternative_explanations: []
+        data_quality: Current contracts are explanatory only and unbound.
+        applicability_boundary: No frozen Formation/Barrier business judgment.
+        unlock_condition: Direct products with source refs, type and order semantics.
+    judgment_rationale: Required direct products are absent; graph material cannot replace them.
+    confidence: HIGH_FOR_MISSING_STATUS
+    next_action: Future requirement/implementation candidate only.
+
+  - expectation_id: E-BIZ-P1-006
+    expectation_version: v1
+    origin: BUSINESS_INFERRED_RUN_LOCAL
+    judgment: MISSING
+    evidence_items:
+      - evidence_id: EV-F3-F4-BOUNDARY-001
+        scenario_ids: [S-F3F4-008, S-MISSING-009]
+        product: F3/F4
+        finding_layer: ARTIFACT_CONFORMANCE
+        source_refs: [d002_audit, d002_preflight, d001_audit]
+        location: frozen product inventory and availability fields
+        actual_time: MISSING_FOR_F3; per-UTI source rows for F4 lanes
+        confirm_time: MISSING
+        validity: PROVEN_UNAVAILABLE_FOR_FORMAL_BOUNDARY
+        business_meaning: NOT_ESTABLISHED
+        purpose_suitability: NOT_SUITABLE
+        formal_status: MISSING
+        observation: Frozen source has no direct F3 artifact; current path is transient-only. F4 is two per-family lanes, not canonical sparse output. Sparse rows expose availability_code=1 only.
+        interpretation: Dense measurement, sparse qualification and valid-no-activity/missing distinctions cannot be compared.
+        alternative_explanations: []
+        data_quality: Legacy Thick/Dense/Fight and lane rows are prohibited substitutes.
+        applicability_boundary: Anti-substitution facts only.
+        unlock_condition: Direct F3, canonical F4 and complete availability contract.
+    judgment_rationale: All formal inputs needed for the F3/F4 boundary are missing.
+    confidence: HIGH_FOR_MISSING_STATUS
+    next_action: No R3.
+
+  - expectation_id: E-BIZ-P1-007
+    expectation_version: v1
+    origin: BUSINESS_INFERRED_RUN_LOCAL
+    judgment: MISSING
+    evidence_items:
+      - evidence_id: EV-F4-UNION-001
+        scenario_ids: [S-F4-007]
+        product: F4
+        finding_layer: MATERIAL_METHOD
+        source_refs: [d002_audit, d002_review_bundle]
+        location: tactical/structural source lanes
+        actual_time: per-UTI source rows
+        confirm_time: MISSING
+        validity: VALID_FOR_OVERLAP_FACT
+        business_meaning: CLEAR_FOR_ANTI_DOUBLE_COUNTING
+        purpose_suitability: PARTIAL
+        formal_status: SUPPORTS
+        observation: 127713 tactical and 37846 structural rows; all structural keys overlap; amount/volume-proxy/time agree; 25116 overlap grades differ.
+        interpretation: Naive concat double-counts and both grades must be retained.
+        alternative_explanations: []
+        data_quality: Review-only union digest is reproducible and explicitly NOT_CANONICAL_PRODUCT.
+        applicability_boundary: Supports the requirement, not product existence or compliance.
+      - evidence_id: EV-F4-CANONICAL-002
+        scenario_ids: [S-F4-007, S-REPLAY-012]
+        product: F4
+        finding_layer: ARTIFACT_CONFORMANCE
+        source_refs: [d002_audit, d002_preflight]
+        location: canonical public F4 product
+        actual_time: MISSING
+        confirm_time: MISSING
+        validity: PROVEN_UNAVAILABLE
+        business_meaning: NOT_ESTABLISHED
+        purpose_suitability: NOT_SUITABLE_FOR_PRODUCT_JUDGMENT
+        formal_status: MISSING
+        observation: No producer-authoritative union, occurrence_ref/source_run_ref, lane_mask+two-grades output, receipt or complete availability exists.
+        interpretation: Attack-local merge and review-only union are not canonical producer outputs.
+        alternative_explanations: []
+        data_quality: Per-family lanes are source material only.
+        applicability_boundary: No claim that frozen producer concatenated or dropped a grade.
+        unlock_condition: Canonical F4 producer export and receipt.
+    judgment_rationale: Overlap supports anti-double-counting, while the product whose behavior must be judged is absent.
+    confidence: HIGH_FOR_MISSING_AND_ANTI_GOLD
+    next_action: Retain EIC-D002-003; no R3.
+
+  - expectation_id: E-BIZ-P1-008
+    expectation_version: v1
+    origin: BUSINESS_INFERRED_RUN_LOCAL
+    judgment: MISSING
+    evidence_items:
+      - evidence_id: EV-REPLAY-001
+        scenario_ids: [S-REPLAY-012]
+        product: All P1 products
+        finding_layer: ARTIFACT_CONFORMANCE
+        source_refs: [d002_audit, d002_preflight, d001_audit]
+        location: run manifest, typed refs and replay/correction fixtures
+        actual_time: MISSING
+        confirm_time: MISSING
+        validity: PROVEN_UNAVAILABLE
+        business_meaning: NOT_ESTABLISHED
+        purpose_suitability: NOT_SUITABLE_FOR_REPLAY
+        formal_status: MISSING
+        observation: No P1RunManifest, source_run_ref, typed occurrence/product refs, revision ledger, correction state or replay fixture exists.
+        interpretation: Deterministic replay, atomic replacement and cross-run mixing cannot be evaluated.
+        alternative_explanations: []
+        data_quality: ZIP SHA identifies the package, not the producer run.
+        applicability_boundary: No claim that local IDs are actually nondeterministic.
+        unlock_condition: Authoritative replay/correction Case Package.
+    judgment_rationale: Every required replay/identity input is absent after bounded investigation.
+    confidence: HIGH_FOR_MISSING_STATUS
+    next_action: Future new evidence round only.
+
+scenario_effect_table:
+  - {scenario_id: S-WALL-001, title: one Wall lifecycle, products: [Wall], applicable: true, status: SUPPORTS, layer: BUSINESS_REASONABLENESS, evidence_refs: [EV-WALL-LIFECYCLE-001], answered: 'wall_id=57427 keeps one local identity through Start, Dormant and End; package-wide local IDs have one Start and one End.', not_answered: 'global typed identity, complete reasons and confirm/close time', dependency: 'wall_segments/window views are not independent evidence', next_action: 'bounded support only'}
+  - {scenario_id: S-DECOUPLE-002, title: shared Wall with independent dependent products, products: [Wall, Build, AttackSegment, Absorb], applicable: true, status: AMBIGUOUS, layer: BUSINESS_REASONABLENESS, evidence_refs: [EV-CANONICAL-WALL-REUSE-001], answered: 'nonzero same-symbol dependent refs resolve locally and product shapes differ', not_answered: 'run-scoped canonical identity, optionality and hidden coupling', dependency: 'local IDs cannot become cross-run refs', next_action: 'typed refs and availability would unlock'}
+  - {scenario_id: S-SWITCH-003, title: same-side Wall migration and canonical switch, products: [Wall, WallRelationBarrier], applicable: true, status: AMBIGUOUS, layer: BUSINESS_REASONABLENESS, evidence_refs: [EV-FORMATION-BARRIER-001], answered: 'wall_id=57428 ends for same-side migration and 57429 starts at UTI 78266350 as a separate local identity', not_answered: 'formal switch/Barrier occurrence', dependency: 'graph adjacency/table order are not Barrier evidence', next_action: 'direct Barrier required'}
+  - {scenario_id: S-DIRECTION-004, title: direction switch and formal Barrier, products: [WallRelationBarrier, Wall, F4], applicable: true, status: MISSING, layer: ARTIFACT_CONFORMANCE, evidence_refs: [EV-FORMATION-BARRIER-001, EV-F4-CANONICAL-002], answered: 'no authoritative direction/switch Barrier or canonical F4 is available', not_answered: 'Barrier kind/source/order and direction-switch behavior', dependency: 'color/+1ns/leftmost/table order prohibited', next_action: 'direct products required'}
+  - {scenario_id: S-DORMANT-005, title: Dormant is not a Barrier, products: [Wall, WallRelationBarrier], applicable: true, status: AMBIGUOUS, layer: BUSINESS_REASONABLENESS, evidence_refs: [EV-WALL-LIFECYCLE-001, EV-FORMATION-BARRIER-001], answered: 'Dormant remains the same local Wall before End', not_answered: 'whether a formal Barrier was emitted at Dormant', dependency: 'Wall state row is not Barrier evidence', next_action: 'direct Barrier required'}
+  - {scenario_id: S-ATTACK-006, title: Attack business_end versus closed_at, products: [AttackSegment], applicable: true, status: MISSING, layer: ARTIFACT_CONFORMANCE, evidence_refs: [EV-ATTACK-COMPLETE-001], answered: 'frozen artifact has mixed endpoint binding and no closed_at', not_answered: 'business effect/correctness of end versus close', dependency: 'artifact defect is not COUNTERS', next_action: 'corrected authoritative export required'}
+  - {scenario_id: S-F4-007, title: tactical/structural same-UTI canonical union, products: [F4], applicable: true, status: MISSING, layer: ARTIFACT_CONFORMANCE, evidence_refs: [EV-F4-UNION-001, EV-F4-CANONICAL-002], answered: '37846 overlap keys show concat double-counts; 25116 grade differences require both labels', not_answered: 'whether canonical producer occurrence exists and conforms', dependency: 'review-only union is same lineage and non-product', next_action: 'canonical export required'}
+  - {scenario_id: S-F3F4-008, title: F3 dense and F4 sparse boundary, products: [F3, F4], applicable: true, status: MISSING, layer: ARTIFACT_CONFORMANCE, evidence_refs: [EV-F3-F4-BOUNDARY-001], answered: 'direct F3 and canonical F4 are unavailable; current F3 is transient-only', not_answered: 'dense availability and sparse qualification traceability', dependency: 'legacy Thick and lanes cannot substitute', next_action: 'direct products required'}
+  - {scenario_id: S-MISSING-009, title: event versus valid empty/missing/history/Pending, products: [All P1], applicable: true, status: MISSING, layer: ARTIFACT_CONFORMANCE, evidence_refs: [EV-F3-F4-BOUNDARY-001, EV-REPLAY-001], answered: 'only availability_code=1 rows are observed', not_answered: 'ValidEmpty, SourceMissing, Stale, SessionInvalid, CalculationUnavailable, InsufficientHistory and Pending', dependency: 'no row is not a business negative', next_action: 'complete availability manifest required'}
+  - {scenario_id: S-GRAPH-010, title: graph evidence exists but product contract is incomplete, products: [All graph-bound products], applicable: true, status: SUPPORTS, layer: MATERIAL_METHOD, evidence_refs: [EV-WALL-IDENTITY-001, EV-P1-BOUNDARY-001, EV-FORMATION-BARRIER-001], answered: 'source frames, windows, display segments and glyphs are distinct stages; graph locates scenes but cannot create product authority', not_answered: 'no business effect follows from graph alone', dependency: 'same-lineage views de-duplicated', next_action: 'method anti-gold only'}
+  - {scenario_id: S-SCOPE-011, title: rb/hc/i multiscale and 30 Tick scope, products: [DataBinding], applicable: true, status: SUPPORTS, layer: MATERIAL_METHOD, evidence_refs: [EV-WALL-IDENTITY-001], answered: 'scope is rb/hc/i, 6x30m, 18x1m, 54x5s and 30 raw Tick windows; 118 other Tick nodes are locator-only', not_answered: 'selection rationale and representativeness', dependency: 'known scope and missing rationale are separate', next_action: 'apply boundary to every finding'}
+  - {scenario_id: S-REPLAY-012, title: deterministic identity and replay, products: [All P1], applicable: true, status: MISSING, layer: ARTIFACT_CONFORMANCE, evidence_refs: [EV-REPLAY-001], answered: 'no run identity, typed refs, revision ledger or replay/correction fixture exists', not_answered: 'deterministic replay, atomic replacement and cross-run mixing', dependency: 'ZIP SHA is not source_run_ref', next_action: 'new authoritative Case Package required'}
+  - {scenario_id: S-ABSORB-013, title: multiple milestones at one UTI, products: [Absorb], applicable: true, status: AMBIGUOUS, layer: BUSINESS_REASONABLENESS, evidence_refs: [EV-ABSORB-IDENTITY-001], answered: 'same-track/same-UTI multiplicity is real and current core offers one possible multi-threshold mechanism', not_answered: 'frozen threshold level versus export multiplicity', dependency: 'occurrence_ordinal is not threshold identity', next_action: 'do not multi-count; level/receipt required'}
+  - {scenario_id: S-TIME-014, title: UTI and timestamp binding consistency, products: [AttackSegment, other P1], applicable: true, status: MISSING, layer: ARTIFACT_CONFORMANCE, evidence_refs: [EV-ATTACK-COMPLETE-001, EV-WALL-REASON-TIME-002], answered: 'Attack has mixed endpoint convention and five session-gap magnifications', not_answered: 'authoritative TimeBasisContract and exact effect comparison', dependency: 'timestamp defect is not business COUNTERS', next_action: 'corrected product and TimeBasisContract required'}
+
+evidence_induced_candidates:
+  - candidate_id: EIC-D002-001
+    status: CANDIDATE_ONLY
+    statement: Attack exports need explicit inclusive/exclusive endpoint and session-boundary TimeBasisContract; business_end and closed_at must not be rebound to one graph timestamp.
+    source_refs: [d002_audit, d002_report]
+    relationship_to_frozen_v1: NOT_INCLUDED_NOT_USED_AS_TESTED_EXPECTATION
+    future_validation: New frozen version plus authoritative corrected Attack product.
+  - candidate_id: EIC-D002-002
+    status: CANDIDATE_ONLY
+    statement: QuoteTrackResolvedWithoutInteraction should be distinguished from AbsorbInteractionResolved.
+    source_refs: [d002_audit, d002_report]
+    relationship_to_frozen_v1: NOT_INCLUDED_NOT_USED_AS_TESTED_EXPECTATION
+    future_validation: Receipt-bound Absorb product with explicit boundary cases.
+  - candidate_id: EIC-D002-003
+    status: CANDIDATE_ONLY
+    statement: A public F4 occurrence carrying both lane labels needs explicit producer authority, not Attack-local merge or review-only union.
+    source_refs: [d002_audit, d002_report]
+    relationship_to_frozen_v1: NOT_INCLUDED_NOT_USED_AS_TESTED_EXPECTATION
+    future_validation: New canonical F4 contract and frozen output.
+
+discrepancy_queue:
+  status: EMPTY
+  items: []
+  rationale:
+    - No qualified COUNTERS remains after separating artifact conformance, material method and missing products.
+    - Attack mixed timing is an artifact-conformance defect.
+    - F4/Formation/Barrier/F3 are product-evidence gaps.
+    - Build/Absorb unresolved points depend on missing identity/semantics and are not diagnosis-ready business deviations.
+    - Bounded Wall evidence supports rather than counters the frozen expectations.
+  recommended_route: Manager may consider R2-to-R5 if G-COMPARISON accepts this package; no R3 item is recommended from current evidence.
+
+product_result_summary:
+  - {product: Wall, primary_status: SUPPORTS, answered: 'local lifecycle identity, Start/intermediate/End continuity, display/source separation', unresolved: 'run-scoped typed identity, complete reason/time/availability and producer provenance'}
+  - {product: Build, primary_status: AMBIGUOUS, answered: 'Start/Milestone/Stop shape and local Wall joins', unresolved: 'milestone level/threshold, Stop reason, parameters and typed identity'}
+  - {product: AttackSegment, primary_status: MISSING, answered: 'artifact columns and reproducible mixed endpoint defect', unresolved: 'corrected complete product, closed_at, TimeBasisContract and receipt'}
+  - {product: Absorb, primary_status: AMBIGUOUS, answered: 'lifecycle-like rows, multiplicity, resolve-only and zero-Wall facts', unresolved: 'milestone level, quote-track versus interaction boundary and typed identity'}
+  - {product: AttackFormationEvidence, primary_status: MISSING, answered: 'frozen direct product is absent; latent substitution prohibited', unresolved: 'all formal product behavior'}
+  - {product: WallRelationBarrier, primary_status: MISSING, answered: 'frozen direct product absent; graph/migration cannot substitute', unresolved: 'Barrier type/source/order and business effects'}
+  - {product: F3, primary_status: MISSING, answered: 'no frozen direct artifact; current path transient-only', unresolved: 'dense measurement, availability/capability and FRP boundary'}
+  - {product: F4, primary_status: MISSING, answered: 'source-lane overlap and anti-double-counting requirement', unresolved: 'canonical occurrence, typed identity, both grades/lane_mask and availability'}
+
+question_boundary_summary:
+  answered:
+    - Within the supplied package, Wall is a persistent local lifecycle object rather than a per-tick/glyph object.
+    - Dormant is an intermediate state on the accepted Wall identity before End.
+    - Build has a Start/Milestone*/Stop artifact shape.
+    - All nonzero same-symbol dependent Wall refs resolve locally.
+    - Graph/window/display artifacts cannot replace formal product contracts.
+    - Attack timing, F4 overlap, Absorb multiplicity and product-availability limitations are precisely established.
+    - All conclusions are limited to rb/hc/i and supplied selected windows.
+  answered_only_with_limits:
+    - Canonical Wall reuse is supported locally but not with run-scoped typed identity.
+    - Build and Absorb lifecycle meanings are only partially resolvable.
+    - Same-side switch and Dormant scenes answer Wall identity but not formal Barrier behavior.
+  unanswered_due_to_missing:
+    - Frozen producer-to-FRP product boundary.
+    - Complete Attack business_end/closed_at behavior.
+    - Canonical F4 product behavior.
+    - FormationEvidence, WallRelationBarrier and F3 product behavior.
+    - Complete availability/missingness.
+    - Replay, revision, correction and cross-run identity.
+  formal_business_counter_found: false
+
+worker_usage:
+  worker_orders_issued: 0
+  worker_returns_accepted: 0
+  linux_writes: 0
+  reason: All fixed sources and accepted Project Source facts were directly available; no new data production was needed.
+
+non_claims:
+  - No G-COMPARISON decision.
+  - No H3 or parent-task completion.
+  - No R3 diagnosis or R4 calibration.
+  - No modification to FrozenExpectationSet v1.
+  - No source code or upstream product modification.
+  - No product is globally declared reasonable or unreasonable.
+  - No current implementation commit is asserted to have produced the frozen ZIP.
