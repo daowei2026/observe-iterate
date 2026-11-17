@@ -1,0 +1,610 @@
+schema: oi-eaw-p1-expectation-register/v1
+run_id: OI-EAW-P1-20261116-01
+call_id: C0003
+delegation_id: D001
+analysis_round: AR-P1-001
+status: WORKING
+formal_comparison_performed: false
+business_intent_statement:
+  intent: >-
+    核定现有 CAEGraph 脚本与 Project Source 数据对 EAW P1 八类候选产品的真实覆盖，
+    把 Owner 原始设计、业务推导和实现事实分别转成可证伪的最小预期与场景，
+    为后续正式合理性分析准备输入，而不在本轮作 SUPPORTS/COUNTERS 或业务 Gate。
+  judgment_targets:
+    - Wall
+    - Build
+    - AttackSegment
+    - Absorb
+    - AttackFormationEvidence
+    - WallRelationBarrier
+    - F3
+    - F4
+  object_scope: [rb, hc, i]
+  scale_scope: [1d, 30m, 1m, 5s, half_second_tick]
+  current_material_state: PARTIAL_WITH_LIMITS
+  non_goals:
+    - formal R2 comparison
+    - R3 diagnosis
+    - R4 calibration
+    - P2/P3/P4 analysis
+    - source modification or upstream recomputation
+    - final strategy or allocation action
+authority_notice:
+  owner_design:
+    source: >-
+      daowei2026/feature-refinement-implementation-agent-evolution@8d58ddd3392a3e67ef5ba44adf2c4cd0c9077f9f:
+      candidate_gold_cases/eaw/preL0_source_materials_20261102/原文快照/mquant/ssot/eaw/
+      01.04.01 EAW叙事一个小范围完整的部分-preL0细节.md §1.1.1/§1.1.2
+    authority: OWNER_EXPLICIT for high-level Wall intent
+  candidate_taskpack:
+    source: >-
+      daowei2026/feature-refinement-implementation-agent-evolution@8d58ddd3392a3e67ef5ba44adf2c4cd0c9077f9f:
+      candidate_gold_cases/eaw/taskpacks_and_checkpoints/p1/
+      EAW_P1_EXISTING_PREL0_BASE_PRODUCTS_AND_SPARSE_OCCURRENCE_V0_6_20260813/
+    authority: replacement_requirement_candidate_for_owner_review
+    included_does_not_mean_owner_accepted: true
+  implementation_material:
+    source: Project Source caegraph-data-30tick.zip and fixed CAEGraph scripts
+    authority: IMPLEMENTATION_DERIVED facts only
+expectations:
+  - expectation_id: E-OWN-WALL-001
+    version: v1
+    status: WORKING
+    origin: OWNER_EXPLICIT
+    judgment_target: Wall business identity
+    statement: >-
+      在半秒聚合、L1 一档盘口和成交的受限视角下，Wall 应是随时间逐步确认的流动性认知对象，
+      不是某个 tick 上单次大挂单或一条显示线。
+    applicable_conditions:
+      - supplied data capability is limited to half-second aggregate plus L1 and trades
+      - judging Wall semantics rather than a plotting primitive
+    non_applicable_conditions:
+      - full L2/L3 order-book reconstruction claims
+    rationale: Owner §1.1.1/§1.1.2
+    falsifier_or_counterevidence:
+      - product identity is recreated independently at every row or frame
+      - no persistent identity can connect lifecycle changes
+      - Wall existence is determined solely by an Attack/dense signal
+    evidence_needed:
+      - ordered Wall lifecycle occurrences
+      - stable Wall identity
+      - input capability declaration
+      - producer rules and parameters
+    known_unknowns:
+      - current package lacks source_run_ref and globally typed Wall ref
+    confidence: high_for_owner_intent
+    owner_decision_required: false
+  - expectation_id: E-OWN-WALL-002
+    version: v1
+    status: WORKING
+    origin: OWNER_EXPLICIT
+    judgment_target: Wall lifecycle
+    statement: >-
+      Wall 应至少能够表达起点、重要中间变化和明确终点；Dormant、BandUpdate、Alive/Dormant 切换等变化
+      不应在没有结束依据时静默换成新 Wall。
+    applicable_conditions:
+      - one Wall life is observable in the source products
+    falsifier_or_counterevidence:
+      - only Start or only End exists
+      - state/band changes have no identity continuity
+      - diagnostic or missing data is encoded as Wall.End
+    evidence_needed:
+      - wall_ref and ordered lifecycle occurrences
+      - state, band and reason payload
+      - actual and confirmation/close timing
+    known_unknowns:
+      - reason vocabulary is incomplete in current graph package
+    confidence: high_for_owner_intent
+    owner_decision_required: false
+  - expectation_id: E-OWN-WALL-003
+    version: v1
+    status: WORKING
+    origin: OWNER_EXPLICIT
+    judgment_target: pre-L0 to FRP boundary
+    statement: >-
+      pre-L0 应把半秒流压缩为少量关键 occurrence，并携带 FRP 上层叙事所需字段；
+      FRP 消费正式产品，不重新从 dense rows、内部 atoms 或图元裁 Wall/Segment/F4。
+    applicable_conditions:
+      - crossing P1 producer to FRP consumer boundary
+    falsifier_or_counterevidence:
+      - FRP reconstructs Wall from L1 rows
+      - Haskell rebuilds AttackSegment from atoms
+      - P3 or FRP re-unions F4 with a second threshold system
+    evidence_needed:
+      - typed product ports
+      - producer/consumer authority
+      - identity and payload contracts
+    known_unknowns:
+      - current package is plotting/export evidence rather than typed-port proof
+    confidence: high_for_owner_intent
+    owner_decision_required: false
+  - expectation_id: E-OWN-WALL-004
+    version: v1
+    status: WORKING
+    origin: OWNER_EXPLICIT
+    judgment_target: Wall versus Attack/dense definition
+    statement: >-
+      Wall 与 Attack/dense 的定义解耦：Wall 由盘口、大挂单与成交形成；Attack/F3/F4 可以与某堵 Wall 关联，
+      但不能反向充当 Wall 存在或生命周期的唯一判据。
+    applicable_conditions:
+      - comparing Wall, Attack, F3 and F4 producers
+    falsifier_or_counterevidence:
+      - Wall starts or ends only because an Attack event appears or disappears
+      - absence of F4 is interpreted as no Wall
+    evidence_needed:
+      - producer dependency graph
+      - common typed Wall refs
+      - decoupling scenarios
+    known_unknowns:
+      - current package contains separate tables but no complete producer graph/version manifest
+    confidence: high_for_owner_intent
+    owner_decision_required: false
+  - expectation_id: E-BIZ-P1-001
+    version: v1
+    status: WORKING
+    origin: BUSINESS_INFERRED
+    judgment_target: canonical Wall reuse across P1 products
+    statement: >-
+      Build、AttackSegment 与 Absorb 应引用同一 canonical Wall，但保留独立产品身份、生命周期和发生条件；
+      同一 Wall 上允许部分产品存在而另一些不存在。
+    applicable_conditions:
+      - manager adopts V0.6 candidate taskpack as this Run's comparison basis
+    falsifier_or_counterevidence:
+      - downstream products independently recreate different formal Walls
+      - missing one product is used to deny the Wall
+      - all product lifecycles are forced to start/end together
+    evidence_needed:
+      - source_run_ref
+      - typed wall_ref and product refs
+      - cross-product joins
+      - decoupling cases
+    known_unknowns:
+      - current rows use local IDs and omit source_run_ref
+    confidence: medium
+    owner_decision_required: true
+  - expectation_id: E-BIZ-P1-002
+    version: v1
+    status: WORKING
+    origin: BUSINESS_INFERRED
+    judgment_target: Build lifecycle
+    statement: >-
+      Build 是 Start→Milestone*→Stop 的独立积累/加固过程；Milestone 阈值身份和 Stop 原因必须可审计，
+      不能只靠行数或绘图样式推断业务阶段。
+    applicable_conditions:
+      - Build is included in the formal R2 scope
+    falsifier_or_counterevidence:
+      - new Build is silently created for every milestone
+      - processing error is represented as Stop
+      - repeated rows cannot be assigned to one threshold identity
+    evidence_needed:
+      - build_ref, wall_ref, milestone level/threshold, reason, times, parameters
+    known_unknowns:
+      - current package lacks typed refs, run manifest and complete stop reason
+    confidence: medium
+    owner_decision_required: true
+  - expectation_id: E-BIZ-P1-003
+    version: v1
+    status: WORKING
+    origin: BUSINESS_INFERRED
+    judgment_target: AttackSegment complete occurrence
+    statement: >-
+      一条 AttackSegment occurrence 应由 P1 producer 完整形成，并区分 business_end 与 closed_at；
+      lane union、count/volume/amount、wall relation、completeness 和 technical truncation 必须在产品合同中可追溯。
+    applicable_conditions:
+      - AttackSegment is included in formal comparison
+    falsifier_or_counterevidence:
+      - business_end and closed_at are silently conflated
+      - row timestamp sometimes binds to start and sometimes end without a contract
+      - Haskell rebuilds segments from internal atoms
+      - double-lane hits are double-counted
+    evidence_needed:
+      - corrected complete occurrence export
+      - TimeBasisContract
+      - completeness/closure reason
+      - producer parameters and refs
+    known_unknowns:
+      - current table has no closed_at and 10115/17856 rows show timestamp binding mismatch
+    confidence: medium
+    owner_decision_required: true
+  - expectation_id: E-BIZ-P1-004
+    version: v1
+    status: WORKING
+    origin: BUSINESS_INFERRED
+    judgment_target: Absorb lifecycle and milestone identity
+    statement: >-
+      Absorb 应表达 Started→Milestone*→Resolved 的 interaction identity；同 UTI 多阈值越过时，
+      每个 milestone 必须有 level/threshold identity，或明确为一条合并 occurrence，不能只凭 occurrence_ordinal 计数。
+    applicable_conditions:
+      - Absorb is included in formal comparison
+    falsifier_or_counterevidence:
+      - multiple equivalent rows are automatically counted as independent business events
+      - resolve-only tracks are assumed to have an observed Start
+      - wall_local_no=0 rows are silently treated as formally bound interactions
+    evidence_needed:
+      - typed interaction_ref and wall_ref
+      - milestone level/threshold
+      - start/resolve reason and times
+      - run capability declaration
+    known_unknowns:
+      - 5534 resolve-only tracks and 25821 business-equivalent repeated milestone rows require producer explanation
+    confidence: medium
+    owner_decision_required: true
+  - expectation_id: E-BIZ-P1-005
+    version: v1
+    status: WORKING
+    origin: BUSINESS_INFERRED
+    judgment_target: FormationEvidence and formal Barrier
+    statement: >-
+      FormationEvidence、method-local gap、formal Barrier 与 technical/data gap 必须分开；
+      Wall.End 可形成 formal Barrier，Dormant、普通 BandUpdate、missing/stale、technical close 不自动形成 Barrier。
+    applicable_conditions:
+      - manager adopts candidate taskpack semantics for this Run
+    falsifier_or_counterevidence:
+      - method-local gap is published as formal Barrier
+      - Dormant is treated as Wall.End
+      - graph adjacency or display gap creates a Barrier without a source occurrence
+      - same-UTI order is decided by table order
+    evidence_needed:
+      - direct FormationEvidence stream
+      - direct Barrier stream
+      - source occurrence refs
+      - barrier type and order-unresolved support
+    known_unknowns:
+      - neither direct product exists in the package
+    confidence: medium
+    owner_decision_required: true
+  - expectation_id: E-BIZ-P1-006
+    version: v1
+    status: WORKING
+    origin: BUSINESS_INFERRED
+    judgment_target: F3 dense versus F4 sparse boundary
+    statement: >-
+      F3 是 per-symbol/per-UTI dense measurement，availability 语义必须完整；F4 是 canonical sparse occurrence。
+      valid_no_activity 不能冒充 missing，F3 不能按每 symbol×UTI 直接灌入生产 FRP occurrence。
+    applicable_conditions:
+      - F3/F4 are included in R2
+    falsifier_or_counterevidence:
+      - legacy Thick/Dense table is renamed as complete F3 without the measurement contract
+      - every F3 row is emitted as a sparse FRP event
+      - missing is filled with zero
+    evidence_needed:
+      - direct F3 export
+      - availability states
+      - pressure capability/reference
+      - P1RunManifest
+    known_unknowns:
+      - current package has no direct F3 contract export
+    confidence: medium
+    owner_decision_required: true
+  - expectation_id: E-BIZ-P1-007
+    version: v1
+    status: WORKING
+    origin: BUSINESS_INFERRED
+    judgment_target: canonical F4 union
+    statement: >-
+      同 symbol、direction、UTI 的 tactical/structural lane 命中应 canonical union 为一条 F4 occurrence，
+      保留 lane_mask 与两个 grade；不得 concat 成两条，也不得只留 max grade。
+    applicable_conditions:
+      - F4 is included in formal comparison
+    falsifier_or_counterevidence:
+      - overlapping lane rows are counted twice
+      - only one grade survives
+      - P3 re-applies an independent threshold/union policy
+    evidence_needed:
+      - canonical F4 output
+      - occurrence_ref/source_run_ref
+      - lane_mask and both grades
+      - threshold/context audit and availability
+    known_unknowns:
+      - current lane tables overlap on 37846 keys and are not a canonical output
+    confidence: medium
+    owner_decision_required: true
+  - expectation_id: E-BIZ-P1-008
+    version: v1
+    status: WORKING
+    origin: BUSINESS_INFERRED
+    judgment_target: identity, replay and correction
+    statement: >-
+      同一冻结输入、范围和参数完整 replay 应产生确定一致的 run-local typed refs；不同 source_run 产品不得静默混用。
+      source correction 至少以新 source_run 整体替换旧 run，不能无痕覆盖。
+    applicable_conditions:
+      - formal R2 or replay comparison
+    falsifier_or_counterevidence:
+      - row number/callback order becomes business identity
+      - local IDs are reused across symbols or runs without scope
+      - corrected and old rows are mixed
+    evidence_needed:
+      - P1RunManifest
+      - source_run_ref
+      - typed occurrence/product refs
+      - replay fixture and correction policy
+    known_unknowns:
+      - current package has no run manifest or typed refs
+    confidence: medium
+    owner_decision_required: true
+  - expectation_id: E-IMP-DATA-001
+    version: v1
+    status: WORKING
+    origin: IMPLEMENTATION_DERIVED
+    judgment_target: package data stage
+    statement: >-
+      当前 evidence/frame 表是已落盘的派生产品/绘图绑定结果；window_evidence 是图窗裁剪视图；
+      wall_segments 是显示区间。图例、线段和图元不等于完整产品 occurrence。
+    applicable_conditions:
+      - interpreting current CAEGraph package
+    falsifier_or_counterevidence:
+      - fixed source shows a typed canonical export that the audit failed to read
+    evidence_needed:
+      - manifest assets
+      - snapshot_data read path
+      - caegraph_definitions plot binding
+    known_unknowns: []
+    confidence: high_for_implementation_fact
+    owner_decision_required: false
+  - expectation_id: E-IMP-DATA-002
+    version: v1
+    status: WORKING
+    origin: IMPLEMENTATION_DERIVED
+    judgment_target: graph execution path
+    statement: >-
+      run.py 可列出 overview/multiscale/tick 图窗，--check 构造图但不生成 HTML；snapshot_data 只读随包 CSV/NPZ，
+      不访问原 Aidata run 或重算上游。
+    applicable_conditions:
+      - fixed script version e490/036
+    falsifier_or_counterevidence:
+      - script source contains an upstream recompute or original-run access path
+    evidence_needed:
+      - static source inspection
+      - optional dependency-complete --check
+    known_unknowns:
+      - current session lacks mquant/m3tt, so --check was not executed
+    confidence: high_for_static_contract
+    owner_decision_required: false
+  - expectation_id: E-IMP-DATA-003
+    version: v1
+    status: WORKING
+    origin: IMPLEMENTATION_DERIVED
+    judgment_target: supplied product-table availability
+    statement: >-
+      Wall、Build、AttackSegment、Absorb 和 F4 lane source tables 存在；FormationEvidence、Barrier、F3 direct product tables 不存在；
+      current sparse tables only expose availability_code=1.
+    applicable_conditions:
+      - this exact Project Source SHA
+    falsifier_or_counterevidence:
+      - additional manifest assets or direct products are supplied under the same frozen source identity
+    evidence_needed:
+      - manifest and all asset keys
+    known_unknowns: []
+    confidence: high_for_implementation_fact
+    owner_decision_required: false
+  - expectation_id: E-IMP-DATA-004
+    version: v1
+    status: WORKING
+    origin: IMPLEMENTATION_DERIVED
+    judgment_target: sample and time coverage
+    statement: >-
+      当前包仅覆盖钢铁 rb/hc/i；组合页为 6×30m、18×1m、54×5s，Tick 只带前 30 个窗，
+      其余 118 个 Tick 节点只有定位窗；该选择不是全市场或随机代表性证明。
+    applicable_conditions:
+      - interpreting scope and applicability of current material
+    falsifier_or_counterevidence:
+      - explicit selection rationale and broader source are supplied
+    evidence_needed:
+      - manifest, timespans, included_tick_nodes and selection policy
+    known_unknowns:
+      - selection rationale for the six big windows and thirty tick windows is not in the package
+    confidence: high_for_implementation_fact
+    owner_decision_required: false
+input_suitability_assessment:
+  validity:
+    status: PARTIAL_WITH_LIMITS
+    confirmed:
+      - data ZIP size, SHA-256 and CRC match fixed identity
+      - 446 members, 442 assets and 12 evidence features are readable
+      - calendar, timespans, object universe and table columns are readable
+      - main tables have no exact full-row duplicates
+    limitations:
+      - Attack timestamp binding is inconsistent and closed_at is absent
+      - Absorb has resolve-only tracks, repeated business-equivalent milestone rows and a few wall_local_no=0 rows
+      - no source_run_ref, typed product refs or P1RunManifest
+      - no direct FormationEvidence, Barrier or F3 product export
+      - F4 is two lane-source tables, not canonical union
+  business_reasonableness:
+    status: EXPLORABLE_NOT_FORMALLY_JUDGED
+    usable_for:
+      - lifecycle and field-shape exploration
+      - locating Wall/Build/Attack/Absorb/F4-lane scenes
+      - testing anti-golds about graph versus product semantics
+    not_yet_usable_for:
+      - proving producer rules are business-correct
+      - exact Attack time comparison
+      - complete eight-product reasonable/unreasonable judgment
+  purpose_suitability:
+    status: PARTIAL_WITH_LIMITS
+    suitable_now:
+      - R0/R1 fact preparation
+      - R03 exploratory sample selection
+      - manager H1 decision for a limited material handoff
+    unsuitable_now:
+      - integrated formal R2 across all eight products
+      - replay/identity judgment
+      - missingness/Pending/valid-empty comparison
+      - formal F3/F4 or Barrier/Formation comparison
+scenario_expectation_set:
+  - scenario_id: S-WALL-001
+    title: one Wall lifecycle
+    expected_behavior: Start, state/band changes and End remain one Wall identity; Dormant does not equal End.
+    anti_gold: each row becomes a new Wall, or a graph segment is treated as the source occurrence.
+    required_products: [Wall]
+    current_material: EXPLORABLE
+    exploratory_locator: tick_000023 / i / wall_id=57427
+  - scenario_id: S-DECOUPLE-002
+    title: Build, Attack and Absorb linked to one canonical Wall but independently optional
+    expected_behavior: shared wall_ref, independent product refs/lifecycles; one product may be absent without denying the Wall.
+    anti_gold: downstream independently reconstructs Wall or all products are forced to co-start/co-end.
+    required_products: [Wall, Build, AttackSegment, Absorb]
+    current_material: EXPLORABLE_WITH_LOCAL_IDS_ONLY
+    exploratory_locator: tick_000023 / i / multiple walls join all four local tables
+  - scenario_id: S-SWITCH-003
+    title: same-side Wall migration and canonical switch
+    expected_behavior: old Wall End and new Wall Start keep separate identities; switch/barrier semantics require a source product.
+    anti_gold: core-price update is silently merged into one Wall, or a formal Barrier is invented from graph adjacency.
+    required_products: [Wall, WallRelationBarrier]
+    current_material: WALL_ROWS_PRESENT_BARRIER_MISSING
+    exploratory_locator: tick_000023 / i / wall_id=57428 -> 57429 at UTI 78266350
+  - scenario_id: S-DIRECTION-004
+    title: direction switch and formal Barrier
+    expected_behavior: direction switch requires explicit source occurrence and typed barrier kind; same-UTI unresolved order remains unresolved.
+    anti_gold: color change, table order, +1ns or leftmost arrival establishes business order.
+    required_products: [WallRelationBarrier, Wall, F4]
+    current_material: MISSING_DIRECT_BARRIER
+  - scenario_id: S-DORMANT-005
+    title: Dormant is not a Barrier
+    expected_behavior: Wall may become Dormant while identity remains; only formal End/reset/cut as defined can produce Barrier.
+    anti_gold: Dormant immediately closes downstream context.
+    required_products: [Wall, WallRelationBarrier]
+    current_material: WALL_DORMANT_ROWS_PRESENT_BARRIER_MISSING
+  - scenario_id: S-ATTACK-006
+    title: Attack business_end versus closed_at
+    expected_behavior: business_end is the last business occurrence; closed_at is producer confirmation/flush time and may be later.
+    anti_gold: one timestamp field silently serves both meanings or start/end binding varies by row.
+    required_products: [AttackSegment]
+    current_material: NOT_FORMALLY_TESTABLE
+    exploratory_locator: i includes session-boundary timestamp offsets of -21600.5 seconds
+  - scenario_id: S-F4-007
+    title: tactical/structural same-UTI canonical union
+    expected_behavior: one canonical F4 occurrence preserves lane_mask and both grades without double counting.
+    anti_gold: concatenate two lane tables or keep only max grade.
+    required_products: [F4]
+    current_material: SOURCE_LANES_ONLY
+  - scenario_id: S-F3F4-008
+    title: F3 dense and F4 sparse boundary
+    expected_behavior: F3 may have valid values without an F4 occurrence; F4 is sparse and traceable to qualification; F3 rows do not become production FRP events.
+    anti_gold: legacy Thick substitutes for F3 or every dense row is emitted as sparse occurrence.
+    required_products: [F3, F4]
+    current_material: F3_MISSING_F4_SOURCE_LANES_ONLY
+  - scenario_id: S-MISSING-009
+    title: event, valid empty, missing, insufficient history and Pending
+    expected_behavior: each has distinct explicit representation and no-event is not automatically a counterexample.
+    anti_gold: availability_code=1 rows are used to infer all absent rows are business negatives.
+    required_products: [P1RunManifest, availability states]
+    current_material: NOT_COVERED
+  - scenario_id: S-GRAPH-010
+    title: graph evidence exists but product contract is incomplete
+    expected_behavior: graph locates a scene; formal judgment still uses product refs, fields, times and source stages.
+    anti_gold: one line segment proves a complete AttackSegment; two colored F4 glyphs prove canonical union.
+    required_products: [product contracts, source exports, graph bindings]
+    current_material: DIRECTLY_APPLICABLE_ANTI_GOLD
+  - scenario_id: S-SCOPE-011
+    title: rb/hc/i, multiscale and 30 Tick scope
+    expected_behavior: conclusions are limited to the supplied object/time selection and cannot be generalized to all commodities or all windows without selection rationale.
+    anti_gold: treating tick_000001..000030 as random representative sample.
+    required_products: [object universe, timespans, selection policy]
+    current_material: OBJECT_AND_TIME_SCOPE_KNOWN_SELECTION_POLICY_MISSING
+  - scenario_id: S-REPLAY-012
+    title: deterministic identity and replay
+    expected_behavior: same frozen source/range/params yields same run-local refs; corrected source produces a new source_run and atomically replaces old output.
+    anti_gold: row number or callback order is used as cross-run identity.
+    required_products: [P1RunManifest, source_run_ref, typed refs, replay fixture]
+    current_material: MISSING
+  - scenario_id: S-ABSORB-013
+    title: multiple milestones at one UTI
+    expected_behavior: each threshold crossing has a milestone identity or the producer emits one explicitly aggregated occurrence.
+    anti_gold: occurrence_ordinal alone turns equivalent payload rows into independent business evidence.
+    required_products: [Absorb milestone identity]
+    current_material: AMBIGUOUS
+    exploratory_locator: tick_000023 / i / track_id=454496 / UTI=78266204
+  - scenario_id: S-TIME-014
+    title: UTI and timestamp binding consistency
+    expected_behavior: each product declares actual/business/confirm/close time and session-boundary conversion is stable.
+    anti_gold: a single ts column changes between start/end meaning or session boundary offsets remain unexplained.
+    required_products: [TimeBasisContract, corrected Attack export]
+    current_material: WALL_BUILD_ABSORB_F4_CONSISTENT_ATTACK_INCONSISTENT
+frozen_expectation_recommendation:
+  candidate_set_id: FZ-CAND-EAW-P1-AR-P1-001
+  gate_status: NOT_DECIDED_BY_E1
+  recommend_freeze_now_if_manager_accepts:
+    - E-OWN-WALL-001
+    - E-OWN-WALL-002
+    - E-OWN-WALL-003
+    - E-OWN-WALL-004
+  recommend_freeze_conditionally:
+    expectation_ids:
+      - E-BIZ-P1-001
+      - E-BIZ-P1-002
+      - E-BIZ-P1-003
+      - E-BIZ-P1-004
+      - E-BIZ-P1-005
+      - E-BIZ-P1-006
+      - E-BIZ-P1-007
+      - E-BIZ-P1-008
+    condition: >-
+      manager explicitly adopts the V0.6 candidate taskpack as this Run's working comparison contract,
+      without claiming permanent Owner acceptance.
+  do_not_freeze_as_business_expectations:
+    - E-IMP-DATA-001
+    - E-IMP-DATA-002
+    - E-IMP-DATA-003
+    - E-IMP-DATA-004
+  reason: implementation-derived items are DataBinding facts, not business oughts.
+formal_r2_minimum_inputs:
+  - manager-accepted FrozenExpectationSet with exact version
+  - selected product scope for the first comparison round
+  - source_run_ref and P1RunManifest or an equivalent complete DataBinding
+  - typed product and occurrence refs
+  - corrected complete AttackSegment export with business_end and closed_at
+  - canonical F4 union export if F4 is in scope
+  - direct FormationEvidence/Barrier/F3 exports if those products are in scope
+  - explicit availability/missingness states
+  - time basis, parameter and code/config versions
+  - source-position locators and evidence preflight
+open_questions:
+  - id: OQ-01
+    question: Will this Run adopt V0.6 candidate taskpack as the formal R2 comparison contract, or only as a requirements candidate?
+    owner: manager/business control
+    impact: decides whether E-BIZ-P1-* may be frozen.
+  - id: OQ-02
+    question: What is the first formal R2 product scope: Wall only, Wall/Build/Attack/Absorb/F4, or all eight products?
+    owner: manager
+    impact: determines minimum additional evidence.
+  - id: OQ-03
+    question: Which code/config/parameter/source snapshot produced this data package?
+    owner: material provider
+    impact: no formal DataBinding or P1RunManifest currently exists.
+  - id: OQ-04
+    question: Why does Attack ts/business_end_ts bind to start_uti for many rows and show five six-hour session-boundary offsets for i?
+    owner: producer/material provider
+    impact: blocks exact Attack time comparison.
+  - id: OQ-05
+    question: Do repeated Absorb milestone payload rows represent distinct threshold levels, duplicated rendering rows, or another producer rule?
+    owner: producer/material provider
+    impact: blocks milestone-event counting.
+  - id: OQ-06
+    question: What selection rule produced the six 30m windows and first thirty Tick windows?
+    owner: material provider
+    impact: limits claims about representativeness.
+additional_evidence_requests:
+  - request_id: AER-P1-001
+    item: P1RunManifest and exact DataBinding/provenance
+    distinguishes: material reproducibility versus anonymous plotting snapshot
+    blocks: formal R2 for every product
+  - request_id: AER-P1-002
+    item: corrected complete AttackSegment occurrence export with business_end, closed_at and closure/completeness reason
+    distinguishes: business lifetime versus plotting timestamp ambiguity
+    blocks: Attack formal comparison
+  - request_id: AER-P1-003
+    item: canonical F4 union export with occurrence_ref, lane_mask and both grades
+    distinguishes: source lanes versus formal sparse occurrence
+    blocks: F4 formal comparison
+  - request_id: AER-P1-004
+    item: direct FormationEvidence, Barrier and F3 exports with capability/availability declarations
+    distinguishes: missing product from latent source fields
+    blocks: those three products only
+  - request_id: AER-P1-005
+    item: Absorb milestone threshold/level identity and explanation of resolve-only tracks
+    distinguishes: real multiple milestones from duplicated rows
+    blocks: Absorb milestone-count judgments
+  - request_id: AER-P1-006
+    item: optional dependency-complete run.py --check report
+    distinguishes: static graph contract from current environment renderability
+    blocks: only claims about full Bokeh construction, not the data-level handoff
