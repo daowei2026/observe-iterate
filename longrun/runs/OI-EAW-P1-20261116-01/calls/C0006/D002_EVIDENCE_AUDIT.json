@@ -1,0 +1,216 @@
+{
+  "schema": "oi-eaw-p1-d002-evidence-audit/v1",
+  "run_id": "OI-EAW-P1-20261116-01",
+  "call_id": "C0006",
+  "delegation_id": "D002",
+  "executor": "chatgpt:OI-EAW-P1-20261116-01:executor:E1",
+  "invocation_token": "a06b1534c843bf7965c26d5861017c68",
+  "origin_analysis_round_id": "AR-P1-001",
+  "frozen_expectation_set_id": "FZ-EAW-P1-AR-P1-001",
+  "scope": {
+    "professional_scope": "AER-P1-001..005 plus EvidencePreflight only",
+    "formal_supports_or_counters_performed": false,
+    "d001_repeated": false,
+    "business_gate_declared": false,
+    "upstream_recompute_performed": false,
+    "business_source_modified": false
+  },
+  "source_refs": {
+    "assignment": "daowei2026/observe-iterate@1389bcd7161ba4774bf84d6506c28d259eb378e8:longrun/runs/OI-EAW-P1-20261116-01/calls/C0006/FULL_ASSIGNMENT.md",
+    "invocation": "daowei2026/observe-iterate@b0b1c78a8b4a9891a491ab40164e4fc96c9b9081:longrun/runs/OI-EAW-P1-20261116-01/calls/C0006/INVOCATION.json",
+    "delegation": "daowei2026/observe-iterate@735faad98c6d26d8ff233faf4ff67a9f7a2d8489:longrun/runs/OI-EAW-P1-20261116-01/delegations/D002/DELEGATION.json",
+    "manager_decision": "daowei2026/observe-iterate@0e5387bbac5f09b3e0da63a407943b88f101a36a:longrun/runs/OI-EAW-P1-20261116-01/business_control/decisions/MD-0002.md",
+    "frozen_expectations": "daowei2026/observe-iterate@c88c4836269e8412e88e9ea6e7e871c0ad44f96e:longrun/runs/OI-EAW-P1-20261116-01/business_control/frozen_expectations/FZ-EAW-P1-AR-P1-001.yaml",
+    "d001_report": "daowei2026/observe-iterate@3d3b3b9c568f9b17037b747fc1ca44a76f847ddf:longrun/runs/OI-EAW-P1-20261116-01/calls/C0003/EXECUTOR_REPORT.md",
+    "d001_audit": "daowei2026/observe-iterate@624dd0dfb2deed97bf57c573ccbd63f9f636b6d7:longrun/runs/OI-EAW-P1-20261116-01/calls/C0003/D001_DATA_AUDIT.json",
+    "d001_expectations": "daowei2026/observe-iterate@0fff57bcc2cb85907586704a67389c038cf5ffa3:longrun/runs/OI-EAW-P1-20261116-01/calls/C0003/D001_EXPECTATION_REGISTER.yaml"
+  },
+  "frozen_project_source": {
+    "basename": "caegraph-data-30tick.zip",
+    "bytes": 16654307,
+    "sha256": "73e7c5f289d7b25f08f11cffda7315ad2dad3f8c323715425afdd485e15c4233",
+    "zip_member_count": 446,
+    "zip_crc": "ALL_PASS",
+    "manifest_sha256": "e49e8989a26ba7e7c0aab8d416431ff3d1722aa189b741d28a268381781bc4d2",
+    "symbols": ["rb", "hc", "i"],
+    "block": "blk@steel",
+    "calendar_name": "night_end_at_2300",
+    "calendar_half_second_slots": 103316400,
+    "calendar_compressed_segments": 10219,
+    "calendar_first": "2013-01-04 09:00:00.500",
+    "calendar_last": "2024-02-29 15:00:00",
+    "manifest_assets": 442,
+    "manifest_evidence_features": 12,
+    "microstructure_source_key": "9be1111ea7a79a9e604f49e65f24a6c0fa019f8f",
+    "source_key_semantics": "CAEGraph feature identity hash from PPID/repr, not source_run_ref"
+  },
+  "current_implementation_evidence": {
+    "status": "UNBOUND_TO_FROZEN_PROJECT_SOURCE",
+    "warning": "These commits prove current producer/typed-ingress contracts only. No frozen-package receipt binds them to the ZIP; current defaults are not asserted as frozen-run parameters.",
+    "tis_commit": "10010b89f8fc79a91affd26f985b6d9bf2d33c6c",
+    "frp_commit": "37c790c0f456fe3022bb00609219d3e92a5c2f9b",
+    "tis_receipt": "daowei2026/tis@10010b89f8fc79a91affd26f985b6d9bf2d33c6c:hf/prel0/p1_product_receipt.py",
+    "tis_export": "daowei2026/tis@10010b89f8fc79a91affd26f985b6d9bf2d33c6c:hf/prel0/p1_dba_export.py",
+    "tis_attack": "daowei2026/tis@10010b89f8fc79a91affd26f985b6d9bf2d33c6c:hf/prel0/attack_flow_assembler.py",
+    "tis_attack_core": "daowei2026/tis@10010b89f8fc79a91affd26f985b6d9bf2d33c6c:hf/prel0/attack_flow_assembler_core.py",
+    "tis_absorb": "daowei2026/tis@10010b89f8fc79a91affd26f985b6d9bf2d33c6c:hf/prel0/absorb_assembler.py",
+    "tis_absorb_core": "daowei2026/tis@10010b89f8fc79a91affd26f985b6d9bf2d33c6c:hf/prel0/absorb_assembler_core.py",
+    "tis_build": "daowei2026/tis@10010b89f8fc79a91affd26f985b6d9bf2d33c6c:hf/prel0/build_assembler.py",
+    "tis_f4": "daowei2026/tis@10010b89f8fc79a91affd26f985b6d9bf2d33c6c:hf/prel0/pressure_big_deal.py",
+    "frp_products": "daowei2026/frp@37c790c0f456fe3022bb00609219d3e92a5c2f9b:src/Frp/Instance/ISL/Eaw/P1/Products.hs",
+    "frp_ingress": "daowei2026/frp@37c790c0f456fe3022bb00609219d3e92a5c2f9b:src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+    "frp_upstream_ref": "daowei2026/frp@37c790c0f456fe3022bb00609219d3e92a5c2f9b:src/Frp/Instance/ISL/Eaw/P1/Internal/UpstreamReference.hs"
+  },
+  "aer_results": [
+    {
+      "aer_id": "AER-P1-001",
+      "title": "共同 provenance、DataBinding 和 availability",
+      "overall_status": "PARTIAL",
+      "findings": [
+        {"item": "source_run_or_run_id", "status": "PROVEN_UNAVAILABLE", "fact": "Frozen ZIP contains no run manifest, thin receipt, commit marker, source_run_ref, revision ledger or original-run pointer. The CAEGraph package does not read the original run."},
+        {"item": "producer_code_config_parameters_input_version", "status": "PROVEN_UNAVAILABLE", "fact": "No frozen-package receipt binds producer commit, config, actual parameters or market input cut. Current TIS/FRP commits are implementation evidence only."},
+        {"item": "object_universe_calendar_session_time_axis", "status": "PARTIAL", "fact": "rb/hc/i, blk@steel, night_end_at_2300, exact half-second UTI calendar and timestamps are obtained; timezone, session-policy version, same-timestamp ordering and producer TimeBasisContract are absent."},
+        {"item": "source_run_ref", "status": "PROVEN_UNAVAILABLE", "fact": "An authoritative source_run_ref cannot be constructed without inventing provenance. ZIP SHA is package identity, not producer-run identity."},
+        {"item": "typed_identity", "status": "PARTIAL", "fact": "Current FRP defines FeatureRunIdentity plus product-local numbers and typed occurrence refs, but frozen receipts needed to instantiate them are absent."},
+        {"item": "availability_missingness", "status": "PARTIAL", "fact": "Rows expose availability_code=1 only. No run-level ValidEmpty, SourceMissing, Stale, SessionInvalid, CalculationUnavailable, InsufficientHistory or Pending representation exists."},
+        {"item": "window_selection", "status": "PARTIAL", "fact": "Six 30m windows and 30 Tick windows are enumerated. Tick packaging uses tick_000001..tick_000030 (first 24 under big_000001, next 6 under big_000002), but no business/representativeness rationale is supplied; the six-big-window selection rule is absent."}
+      ],
+      "affected_products": ["Wall", "Build", "AttackSegment", "Absorb", "F4", "AttackFormationEvidence", "WallRelationBarrier", "F3"],
+      "affected_scenarios": ["S-SCOPE-011", "S-REPLAY-012", "S-MISSING-009", "S-TIME-014"]
+    },
+    {
+      "aer_id": "AER-P1-002",
+      "title": "AttackSegment complete occurrence 与时间合同",
+      "overall_status": "PARTIAL",
+      "findings": [
+        {"item": "producer_export_path", "status": "PARTIAL", "fact": "Current path is AttackFlowAssembler -> compact P1 export -> thin receipts -> FRP typed ingress, but no receipt binds it to the frozen ZIP."},
+        {"item": "frozen_columns", "status": "OBTAINED", "fact": "17,856 rows carry start_uti, business_end_uti, business_end_ts, plot_uti/uti/ts, segment_id, wall_local_no, lane_mask, aggregates, close_reason_code and availability_code; closed_at_uti/closed_at_ts are absent."},
+        {"item": "timestamp_binding_mismatch", "status": "OBTAINED", "fact": "10,115/17,856 rows bind stored business_end_ts to start_uti while plot_uti=uti=business_end_uti. rb=1,938/3,915; hc=1,161/2,573; i=7,016/11,368."},
+        {"item": "session_boundary_offset", "status": "OBTAINED", "fact": "Five i one-tick rows start at 15:00 and end at the next 21:00:00.5 calendar slot; retaining the start timestamp produces exactly -21,600.5 seconds. All other mismatches are -0.5 seconds."},
+        {"item": "root_cause_scope", "status": "PARTIAL", "fact": "Frozen data prove mixed endpoint binding/exclusive-end-like convention. Exact producer/config attribution is unavailable without frozen provenance."},
+        {"item": "complete_truncation_closure", "status": "PARTIAL", "fact": "Frozen rows expose close reason codes 1/4/5 and availability=1 only. Current implementation separates business_end, closed_at and Available/TechnicalTruncated/Unavailable, but the frozen export omits that complete contract."},
+        {"item": "corrected_complete_export", "status": "PROVEN_UNAVAILABLE", "fact": "No corrected authoritative Attack export or producer receipt for this frozen run exists. Producing one requires an authorized producer export/rerun outside D002."}
+      ],
+      "review_only_metrics": {
+        "rows": 17856,
+        "mismatch_rows": 10115,
+        "mismatch_by_symbol": {"rb": 1938, "hc": 1161, "i": 7016},
+        "delta_seconds_histogram": {"-0.5": 10110, "-21600.5": 5, "0.0": 7741},
+        "closed_at_field_present": false,
+        "session_boundary_segment_ids_i": [219484, 222860, 224434, 225743, 232513]
+      },
+      "affected_products": ["AttackSegment"],
+      "affected_scenarios": ["S-ATTACK-006", "S-TIME-014", "S-GRAPH-010"]
+    },
+    {
+      "aer_id": "AER-P1-003",
+      "title": "canonical F4 union",
+      "overall_status": "PARTIAL",
+      "findings": [
+        {"item": "frozen_lane_tables", "status": "OBTAINED", "fact": "Tactical has 127,713 rows; structural has 37,846 rows. Structural keys are a subset of tactical keys; neither lane has duplicate (symbol,uti,side_code) keys."},
+        {"item": "overlap_consistency", "status": "OBTAINED", "fact": "All 37,846 overlaps agree on amount, directional-hit-volume proxy and timestamp. Grades differ on 25,116 overlaps, so both labels must be retained."},
+        {"item": "canonical_public_union", "status": "PROVEN_UNAVAILABLE", "fact": "Frozen package has no authoritative canonical union table, receipt, occurrence_ref, source_run_ref, lane_mask-plus-two-grades output. Current TIS merges union_keep_labels only locally at Attack input and preserves public per-family artifacts."},
+        {"item": "identity_availability", "status": "PARTIAL", "fact": "Frozen lane rows have symbol/direction/UTI and per-family grade but no authoritative occurrence_ref, source_run_ref, dense availability/capability or threshold receipt."},
+        {"item": "review_only_union", "status": "OBTAINED", "fact": "A deterministic audit-only union over (symbol,uti,side_code) yields 127,713 keys and digest d3535a41cbea4cc34c28c50d0cc0a6183dba3f3da4aecac0673241d9bf2927ca. It is NOT_CANONICAL_PRODUCT."}
+      ],
+      "review_only_metrics": {
+        "tactical_rows": 127713,
+        "structural_rows": 37846,
+        "overlap_keys": 37846,
+        "review_only_union_keys": 127713,
+        "overlap_grade_diff": 25116,
+        "canonical_jsonl_digest_sha256": "d3535a41cbea4cc34c28c50d0cc0a6183dba3f3da4aecac0673241d9bf2927ca",
+        "status": "NOT_CANONICAL_PRODUCT"
+      },
+      "affected_products": ["F4", "AttackSegment"],
+      "affected_scenarios": ["S-F4-007", "S-F3F4-008", "S-GRAPH-010"]
+    },
+    {
+      "aer_id": "AER-P1-004",
+      "title": "FormationEvidence、Barrier、F3 direct products",
+      "overall_status": "PARTIAL",
+      "products": [
+        {"product": "AttackFormationEvidence", "current_producer_and_typed_port": "OBTAINED", "frozen_run_direct_product": "PROVEN_UNAVAILABLE", "fact": "Current AttackFlowAssembler and FRP ingress define formal FormationEvidence, including compact gap/availability/capability material. Frozen ZIP has no table or receipt."},
+        {"product": "WallRelationBarrier", "current_producer_and_typed_port": "OBTAINED", "frozen_run_direct_product": "PROVEN_UNAVAILABLE", "fact": "Current producer emits formal barrier only from Wall.End; wall/side-switch close reasons remain unsupported formation material. Frozen ZIP has no barrier table or receipt."},
+        {"product": "F3", "current_producer_and_typed_port": "PROVEN_UNAVAILABLE", "frozen_run_direct_product": "PROVEN_UNAVAILABLE", "fact": "Current Build computes active-flow pressure transiently in bounded trading-day chunks and advertises dense_active_flow_artifact=false. F3 is not a receipt product and frozen ZIP has no direct F3 artifact."}
+      ],
+      "latent_substitution_prohibited": [
+        "Attack/F4 latent rows are not FormationEvidence",
+        "Wall migration glyphs or close reasons are not formal Barrier",
+        "legacy Thick/Dense/Fight evidence is not direct F3"
+      ],
+      "affected_scenarios": ["S-SWITCH-003", "S-DIRECTION-004", "S-DORMANT-005", "S-F3F4-008", "S-MISSING-009"]
+    },
+    {
+      "aer_id": "AER-P1-005",
+      "title": "Absorb milestone 与 identity",
+      "overall_status": "PARTIAL",
+      "findings": [
+        {"item": "lifecycle_rows", "status": "OBTAINED", "fact": "106,429 rows: 31,281 Started, 38,333 Milestone and 36,815 Resolved."},
+        {"item": "same_uti_multiple_milestones", "status": "PARTIAL", "fact": "25,821 milestone rows belong to same-track/same-UTI groups of size 2 or 3. Current core emits separate threshold events at one tick, but frozen package drops level and is not receipt-bound to current defaults."},
+        {"item": "occurrence_ordinal", "status": "OBTAINED", "fact": "It is a same-time physical stream-splitting ordinal preserving row multiplicity, not business threshold or occurrence identity."},
+        {"item": "resolve_only_tracks", "status": "PARTIAL", "fact": "5,534 tracks resolve without Started and have no milestone rows. Current core can create a quote track before any hit, emit Started only on first hit, then resolve by breakthrough/timeout. These are consistent with quote-track termination without observed Absorb interaction start; exact frozen-run attribution remains unbound."},
+        {"item": "wall_local_no_zero", "status": "PARTIAL", "fact": "63 rows across 30 symbol-local tracks have wall_local_no=0. Current core leaves active_wall_id=0 when no exact active Wall can bind, while current FRP typed ingress rejects missing/zero dependent Wall identity."},
+        {"item": "typed_refs_reason_time_capability", "status": "PARTIAL", "fact": "Current code defines FeatureRunIdentity+track local number, typed Wall identity, milestone level, resolved reason and availability. Frozen package lacks receipt/source-run identity and milestone level; availability is code 1 only."}
+      ],
+      "review_only_metrics": {
+        "rows": 106429,
+        "started_rows": 31281,
+        "milestone_rows": 38333,
+        "resolved_rows": 36815,
+        "same_uti_multi_milestone_rows": 25821,
+        "resolve_only_tracks": 5534,
+        "resolve_only_reason_histogram": {"breakthrough": 71, "blocked_timeout": 5463},
+        "wall_local_no_zero_rows": 63,
+        "wall_local_no_zero_tracks": 30,
+        "milestone_level_field_present": false
+      },
+      "affected_products": ["Absorb"],
+      "affected_scenarios": ["S-ABSORB-013", "S-DECOUPLE-002", "S-MISSING-009", "S-REPLAY-012"]
+    }
+  ],
+  "review_only_artifact": {
+    "status": "NOT_CANONICAL_PRODUCT",
+    "repo_ref": "daowei2026/observe-iterate@6bc4808db0fbb631f5a345dcfb55e6087f0013bf:longrun/runs/OI-EAW-P1-20261116-01/calls/C0006/D002_REVIEW_ONLY_AUDIT_BUNDLE.zip",
+    "bundle_sha256": "22665104288415e597e6bbc652231a8fb3db922955cdd00edb016997726cad23",
+    "members": {
+      "D002_REVIEW_ONLY_AUDIT.py": "d110c9c48054bb1eb9401b0083ac1841d414dc4f7b8d1b943fc617590fe343af",
+      "D002_REVIEW_ONLY_DERIVATIONS.json": "b2140e2ff91bcf392bd5bd6b6bf8e99389e1ce3ea52053ff650762b790ba39d6"
+    },
+    "command": "python D002_REVIEW_ONLY_AUDIT.py caegraph-data-30tick.zip D002_REVIEW_ONLY_DERIVATIONS.json",
+    "input_sha256": "73e7c5f289d7b25f08f11cffda7315ad2dad3f8c323715425afdd485e15c4233",
+    "non_claims": ["not a producer export", "not a source_run manifest", "not a corrected Attack product", "not a canonical F4 product", "not formal SUPPORTS/COUNTERS"]
+  },
+  "product_preflight_summary": {
+    "formal_r2_eligible_product_count": 0,
+    "products": {
+      "Wall": "PARTIAL",
+      "Build": "PARTIAL",
+      "AttackSegment": "PROVEN_UNAVAILABLE",
+      "Absorb": "PARTIAL",
+      "F4": "PROVEN_UNAVAILABLE",
+      "AttackFormationEvidence": "PROVEN_UNAVAILABLE",
+      "WallRelationBarrier": "PROVEN_UNAVAILABLE",
+      "F3": "PROVEN_UNAVAILABLE"
+    },
+    "interpretation": "These are formal-R2 input qualification states, not reasonable/unreasonable business judgments."
+  },
+  "evidence_induced_candidates": [
+    {"candidate_id": "EIC-D002-001", "status": "CANDIDATE_ONLY", "statement": "Attack exports need explicit inclusive/exclusive endpoint and session-boundary TimeBasisContract; business_end and closed_at must not be rebound to one graph timestamp."},
+    {"candidate_id": "EIC-D002-002", "status": "CANDIDATE_ONLY", "statement": "QuoteTrackResolvedWithoutInteraction should be distinguished from AbsorbInteractionResolved in producer/public product semantics."},
+    {"candidate_id": "EIC-D002-003", "status": "CANDIDATE_ONLY", "statement": "If downstream requires one public F4 occurrence carrying both lane labels, it needs explicit producer authority rather than Attack-local merge or review-only union."}
+  ],
+  "worker_usage": {
+    "worker_orders_issued": 0,
+    "worker_returns_accepted": 0,
+    "reason": "Frozen Project Source and fixed GitHub sources were directly accessible; no Linux-only operation or source modification was needed."
+  },
+  "non_claims": [
+    "No formal SUPPORTS or COUNTERS judgment",
+    "No H2 or G-COMPARISON decision",
+    "No modification to FrozenExpectationSet v1",
+    "No product declared reasonable or unreasonable",
+    "No producer authority created by review-only derivations",
+    "No parent-task completion declaration"
+  ]
+}
