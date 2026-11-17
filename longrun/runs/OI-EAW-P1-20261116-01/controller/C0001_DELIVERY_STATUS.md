@@ -2,28 +2,31 @@
 
 记录性质：主控物理派发事实，不构成专业 Return、Gate 或业务完成决定。
 
-- 候选调用：`C0001`；状态 **NOT_SENT**；实际专业模型调用 **0**，Worker 派单 **0**。
-- 唯一 token：`11145d02d7954b318f4d0cd99c39598f`；未换号、未创建 C0002。
+## 当前结果：已实际提交
+
+**原 C0001 已在实际 Pro 档位发送并确认 committed。**
+
+- 原 `call_id=C0001`、token `11145d02d7954b318f4d0cd99c39598f`、Run、角色身份及冻结任务正文保持；未重新注册、未生成替代调用。
+- 目标 Project：**细节叙事生成_金标**，本 Run 首次独立 manager 聊天。
+- 发送前新鲜推理面板实际显示 **Pro推理强度**，最右档；取证时间 **2026-11-17 11:15:39.083 +08:00**。未检查或指定模型名称。
+- 冻结传输正文 UTF-8 **668 字节**、UTF-16 **496 单元**、SHA-256 `9a5ef04c06a6a83fab9fe629cb3f0fccd37648a57afb3726ae9483281796a8de`。IME 输入后 full coverage、sha256/utf-8/normalization=none、字节数/UTF-16 长度及 hash 全部相同，无正文变换。
+- 正文输入 **1 次**；Send **1 次**；没有重发。
+- Send 实际动作开始 **2026-11-17 11:17:11.821 +08:00**；明确提交证据时间 **11:17:15.728 +08:00**：精确本轮 `[OI-EAW-P1-20261116-01-C0001]` 用户消息、正在思考和 STOP 同时可见，无发送中、等待、离线、重试或发送错误标记。
+- 实际专业模型调用 **1**，Worker 派单 **0**。当前仅确认模型正在思考，尚未捕获首答或消费专业 Return。
+
+## 原件引用不变
+
 - 完整任务：`daowei2026/observe-iterate@985f3579d8c77ef9c2179ee4437345376c422e8b:longrun/runs/OI-EAW-P1-20261116-01/calls/C0001/FULL_ASSIGNMENT.md`。
 - Invocation：`daowei2026/observe-iterate@d7a813b8bae5e016cefffeecef593c5d9848d71d:longrun/runs/OI-EAW-P1-20261116-01/calls/C0001/INVOCATION.json`。
-- 冻结发送正文：UTF-8 668 字节、UTF-16 496 单元、SHA-256 `9a5ef04c06a6a83fab9fe629cb3f0fccd37648a57afb3726ae9483281796a8de`；原件等于传输正文，保留末尾 LF。
+- 运行期补充：`daowei2026/observe-iterate@8ca76fd660af5b2ecbe27f5e345b8a4e9bf339ca:longrun/runs/OI-EAW-P1-20261116-01/controller/OWNER_RUNTIME_INSTRUCTION_20261117.md`。
+- 最新 Pro 要求：`daowei2026/observe-iterate@290018eb71ab410d206129c474d601b4ff543ce4:longrun/runs/OI-EAW-P1-20261116-01/controller/OWNER_RUNTIME_INSTRUCTION_20261117_PRO_UPDATE.md`。本次按实际 Pro 验收，未用先前“极高5/5”替代最新目标。
 
-## 实际目标与受阻事实
+## 数据责任及准确后继
 
-Owner 要求在 Project **细节叙事生成_金标** 创建本 Run 独立 manager，推理档位 **Pro**。精确 Project 和首次空 composer 已现场确认，但没有持久化的 manager 聊天 ID/标题，不能把逻辑身份视为已物理绑定。
+Owner 已明确：Project Sources 中的 `caegraph-data-30tick.zip` 由 manager/executor 按真实专业工作需要读取和使用；主控首次派发前无需下载或转存。主控未下载不构成 C0001 的派发阻断，也不冒称已验证专业端实际可读。若专业执行确证所需数据不可获得，再按实际缺口安排后继。
 
-三次有界、各自零继承的手机 episode 均在输入前终止：
+本轮已进入原 manager 回复等待。下次本聊天观察时间 **2026-11-17 11:27:15.728 +08:00**；远端完成仍需原 C0001 标记关联与真实 GitHub 交付证据，不能把其它提交视为专业完成。首答完成后，先按既定独立 episode 改名/核定位，再消费真实 V2 Return 并依 manager 合法决定接续。
 
-1. 当前推理面板显示“极高推理强度”，初始停在第 4/5 档，未能确认 Pro。
-2. 实际点击第 5/5 最右档后，界面仍显示“极高推理强度”；没有可确认的 Pro 标签。
-3. 正式 MCP 随包新版操作说明给出 `+ → 智能 → 级别标签 → Pro`，但当前新鲜现场菜单实际是“拍照／照片／文件／插件／深入思考”，最后一项已勾选，没有“智能”或 Pro。现场版本号未由 App UI 核实，不把说明版本推作实际版本；也不把入口差异误报为 MCP 工具失效。
+**消息送达不是业务完成。** 当前没有 manager 的业务完成决定；本 Run 业务继续，两个旧 Run 的暂停保持。
 
-上述三次均 **IME 正文输入 0、Send 0**。最终空 composer 已由 full coverage、零字节/零 UTF-16 单元及空串 SHA-256 证实。没有正在生成、UNKNOWN Send 或未决工具调用；全部 executor 已结束并释放控制。未通过改模型、降档、试验消息、更新 App 或替代聊天绕过 Owner 的 Pro 要求。
-
-## 准确下一合法动作
-
-当前阻断是**实际发送端的 Pro 配置不可确认**，不是数据缺项造成的发送阻断。需先在同一有权 Project 的实际 composer 确认 Pro。然后由新零继承 executor 继续这个相同的冻结 C0001，输入后完整核对长度与 SHA，再实际 Send 一次并核承诺。若共享网络准入已过期，先依法重新核验；不将这份准备记录计为实际调用，不新建 C0002，不重复发送。
-
-数据 ZIP 暂未取得仍单独保留为材料缺项；Pro 一旦合法可用，可依原完整任务决定独立文档级工作，不由主控预做专业判断。本 Run 业务未完成。
-
-记录更新时间：2026-11-16T16:44:36.614753+00:00。
+记录更新时间：2026-11-17T03:21:34.604412+00:00。

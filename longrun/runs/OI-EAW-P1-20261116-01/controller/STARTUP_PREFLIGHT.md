@@ -4,7 +4,7 @@
 
 ## 注册与派发
 
-本 Run **已正式注册，首次 manager 尚未实际派发**。准确原件：
+本 Run **已正式注册，原 C0001 已在实际 Pro 档位发送并确认 committed**。准确原件：
 
 | 原件 | 已发布并远端回读的精确引用 |
 |---|---|
@@ -15,7 +15,7 @@
 | 首次完整任务 | `daowei2026/observe-iterate@985f3579d8c77ef9c2179ee4437345376c422e8b:longrun/runs/OI-EAW-P1-20261116-01/calls/C0001/FULL_ASSIGNMENT.md` |
 | 候选 Invocation | `daowei2026/observe-iterate@d7a813b8bae5e016cefffeecef593c5d9848d71d:longrun/runs/OI-EAW-P1-20261116-01/calls/C0001/INVOCATION.json` |
 
-Binding schema 核验通过，结果仅 `STRUCTURE_VALID_ONLY`；多 Run 核验另通过实际 Linux 路径检查，其结果不替代锁、Send 或专业验收。可信全局索引已加入本 Run，旧条目保持。C0001 是唯一未发送候选，实际专业调用 **0**、Worker 派单 **0**。派发受阻与准确后继见同目录 `C0001_DELIVERY_STATUS.md`。
+Binding schema 核验通过，结果仅 `STRUCTURE_VALID_ONLY`；多 Run 核验另通过实际 Linux 路径检查，其结果不替代锁、Send 或专业验收。可信全局索引已加入本 Run，旧条目保持。原 C0001 已完成一次真实发送，实际专业调用 **1**、Worker 派单 **0**。实际 Pro、全文 hash、提交时间和回复等待事实见同目录 `C0001_DELIVERY_STATUS.md`。
 
 ## 固定采用来源
 
@@ -49,8 +49,10 @@ Owner 已原文确认：“允许新 Run 接管 BASE_E6_2，旧 Run 保持暂停
 
 ## 当前收束与后继
 
-首次管理发送因指定 **Pro** 无法在实际 composer 确认而局部受阻；已执行三次有界核验且均零正文输入、零 Send。包括网络、Sources、共享和这三次派发前核验在内，累计 46 次正式手机 MCP 调用均已终态，控制均已释放，没有本 Run pending/UNKNOWN Send，也没有活跃专业生成。
+原 C0001 已于 **2026-11-17 11:17:15.728 +08:00** 取得明确提交证据，当前实际 **Pro推理强度** 已在输入前核实。正文 full hash 和长度完全匹配，输入和 Send 各一次；当前模型正在思考，尚未消费首答/专业 Return，没有 UNKNOWN Send。
 
-准确后继是先使指定 Project 实际可确认 Pro，再由新零继承 executor 继续相同冻结 C0001；不擅改档位，不换调用号，不把准备或 GO 发布记作已派发。数据缺项单独保留，能否推进文档级工作仍由 manager 合法接管后决定。当前仅注册和准备完成，**业务未完成**。
+Owner 的运行期补充明确：数据 ZIP 在指定 Project Sources，由管理/执行 Pro 按专业需要读取和使用；首次派发无需主控先下载，不能把主控尚未下载记作派发阻断，也不把 Sources 条目等同专业端已验证可读。最新 Owner 又要求按当前实际可选 Pro 档位，本次已满足。准确运行期原件与真实派发证据见 `C0001_DELIVERY_STATUS.md`。
 
-记录更新时间：2026-11-16T16:44:36.614753+00:00。
+下次本轮观察时点 **2026-11-17 11:27:15.728 +08:00**，同时依原标记及真实远端完成关联处理交付。首答完成后按既有规则核名，再消费 V2 Return，后继由 manager 的实际业务判断决定。当前仅注册、首次消息送达及回复等待成立，**业务尚未完成**。
+
+记录更新时间：2026-11-17T03:21:34.604412+00:00。
