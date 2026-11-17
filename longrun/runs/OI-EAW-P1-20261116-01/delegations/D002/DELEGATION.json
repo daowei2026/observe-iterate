@@ -1,0 +1,44 @@
+{
+  "schema": "longrun-delegation/v2",
+  "run_id": "OI-EAW-P1-20261116-01",
+  "delegation_id": "D002",
+  "issuer_call_id": "C0005",
+  "issuer": "chatgpt:OI-EAW-P1-20261116-01:manager",
+  "recipient": "chatgpt:OI-EAW-P1-20261116-01:executor:E1",
+  "return_to": "chatgpt:OI-EAW-P1-20261116-01:manager",
+  "task_ref": "daowei2026/observe-iterate@a2b99e898381d76037cf0168d388f61c16e5dabd:longrun/runs/OI-EAW-P1-20261116-01/delegations/D002/DELEGATION.md",
+  "business_context_ref": "daowei2026/observe-iterate@0e5387bbac5f09b3e0da63a407943b88f101a36a:longrun/runs/OI-EAW-P1-20261116-01/business_control/decisions/MD-0002.md",
+  "input_refs": [
+    "daowei2026/observe-iterate@6a2d0abd34d44fd20fe7119035a8227e6b019625:longrun/runs/OI-EAW-P1-20261116-01/OWNER_START.md",
+    "daowei2026/observe-iterate@1a04ea440f395026491036d405d82e653a5fecbd:longrun/runs/OI-EAW-P1-20261116-01/RUN_BINDING.json",
+    "daowei2026/observe-iterate@1a04ea440f395026491036d405d82e653a5fecbd:longrun/runs/OI-EAW-P1-20261116-01/RUN_RESOURCE_BINDING.json",
+    "daowei2026/observe-iterate@e03fdd881209a1d4ae3e45c7a1e777e9d6a9b880:longrun/runs/OI-EAW-P1-20261116-01/delegations/D001/DELEGATION.json",
+    "daowei2026/observe-iterate@3d3b3b9c568f9b17037b747fc1ca44a76f847ddf:longrun/runs/OI-EAW-P1-20261116-01/calls/C0003/EXECUTOR_REPORT.md",
+    "daowei2026/observe-iterate@624dd0dfb2deed97bf57c573ccbd63f9f636b6d7:longrun/runs/OI-EAW-P1-20261116-01/calls/C0003/D001_DATA_AUDIT.json",
+    "daowei2026/observe-iterate@0fff57bcc2cb85907586704a67389c038cf5ffa3:longrun/runs/OI-EAW-P1-20261116-01/calls/C0003/D001_EXPECTATION_REGISTER.yaml",
+    "daowei2026/observe-iterate@21e2640a3574c2911592f8e9fcf24b3e97e42452:longrun/runs/OI-EAW-P1-20261116-01/calls/C0005/MANAGER_REPORT.md",
+    "daowei2026/observe-iterate@c88c4836269e8412e88e9ea6e7e871c0ad44f96e:longrun/runs/OI-EAW-P1-20261116-01/business_control/frozen_expectations/FZ-EAW-P1-AR-P1-001.yaml",
+    "daowei2026/observe-iterate@0e5387bbac5f09b3e0da63a407943b88f101a36a:longrun/runs/OI-EAW-P1-20261116-01/business_control/decisions/MD-0002.md",
+    "daowei2026/observe-iterate@7e240b650b6ba6274b0263e34f5b0616a9a8ff1c:control/02_L1_观察材料准备流程.md",
+    "daowei2026/observe-iterate@7e240b650b6ba6274b0263e34f5b0616a9a8ff1c:control/03_L1_合理性分析流程.md",
+    "daowei2026/observe-iterate@7e240b650b6ba6274b0263e34f5b0616a9a8ff1c:control/05_三级Gate及后继路由.md",
+    "daowei2026/observe-iterate@7e240b650b6ba6274b0263e34f5b0616a9a8ff1c:skills/reasonableness-analysis/business-evidence-comparison/SKILL.md",
+    "daowei2026/observe-iterate@7e240b650b6ba6274b0263e34f5b0616a9a8ff1c:longrun/professional/PRO_EXECUTOR_GUIDE.md"
+  ],
+  "expected_outputs": [
+    "D002_EVIDENCE_RETURN.md：逐项处理 AER-P1-001 至 AER-P1-005，并返回 OBTAINED/PARTIAL/PROVEN_UNAVAILABLE/BLOCKED、调查范围、固定来源与影响",
+    "D002_EVIDENCE_AUDIT.json：机器可读 provenance、版本、identity/time/availability、产品映射和结果状态",
+    "D002_R2_PREFLIGHT.yaml：逐 frozen expectation/scenario 的 validity、business meaning、purpose suitability 与 ELIGIBLE/PARTIAL/PROVEN_UNAVAILABLE/BLOCKED",
+    "如生成 review-only 派生审计材料，提供输入、命令、哈希并标记 NOT_CANONICAL_PRODUCT",
+    "如使用 Worker，提供正式 W、WORKER_RETURN 与 executor 专业接受意见",
+    "符合 V2 的 executor PRO_RETURN；不得执行正式 SUPPORTS/COUNTERS"
+  ],
+  "permitted_operations": [
+    "eaw-p1-observation-work",
+    "run-record-publish"
+  ],
+  "allowed_writes": [
+    "/dwdhome/fy/BASE_E6_2",
+    "longrun/runs/OI-EAW-P1-20261116-01"
+  ]
+}
