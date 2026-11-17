@@ -1,0 +1,251 @@
+{
+  "schema": "oi-eaw-p1-d001-data-audit/v1",
+  "run_id": "OI-EAW-P1-20261116-01",
+  "call_id": "C0003",
+  "delegation_id": "D001",
+  "executor": "chatgpt:OI-EAW-P1-20261116-01:executor:E1",
+  "invocation_token": "9a2574ceaaf2792e1373b387fb825d24",
+  "scope": "M steps 1-7 and R0/R1 fact preparation only; no formal R2 SUPPORTS/COUNTERS",
+  "project_source_audit": {
+    "source_name": "caegraph-data-30tick.zip",
+    "actual_path_in_executor_session": "/mnt/data/caegraph-data-30tick.zip",
+    "expected_bytes": 16654307,
+    "actual_bytes": 16654307,
+    "expected_sha256": "73e7c5f289d7b25f08f11cffda7315ad2dad3f8c323715425afdd485e15c4233",
+    "actual_sha256": "73e7c5f289d7b25f08f11cffda7315ad2dad3f8c323715425afdd485e15c4233",
+    "zip_member_count": 446,
+    "zip_crc": "ALL_PASS",
+    "independently_verified_by_e1": true
+  },
+  "script_package_audit": {
+    "source_ref": "daowei2026/observe-iterate@e4909b2e57d6e6122979ae0c4e57fb946b18e2d3:task-inputs/eaw-p1-integrated/caegraph-scripts.zip",
+    "bytes": 31319,
+    "sha256": "5eaf500616316ef7764cd30eb7467f2db3a6c85e45aa3b4f958becbc7818e8eb",
+    "members": [
+      "caegraph-review/caegraph_definitions.py",
+      "caegraph-review/snapshot_data.py",
+      "caegraph-review/run.py",
+      "caegraph-review/README.md"
+    ],
+    "expanded_source_ref": "daowei2026/observe-iterate@036f24f4a4b7ca898280d8ed58cbf9c0b3634744:task-inputs/eaw-p1-integrated/caegraph-review/",
+    "statically_read": [
+      "caegraph_definitions.py",
+      "snapshot_data.py",
+      "run.py",
+      "README.md"
+    ],
+    "runtime_dependency_probe": {
+      "bokeh": "AVAILABLE",
+      "pandas": "AVAILABLE",
+      "numpy": "AVAILABLE",
+      "mquant": "MISSING_IN_CURRENT_SESSION",
+      "m3tt": "MISSING_IN_CURRENT_SESSION"
+    },
+    "run_py_check": "NOT_RUN_DUE_TO_MISSING_MQUANT_AND_M3TT",
+    "interpretation": "静态源码与真实表可完成本 D 的数据层核定；未声称完整 Bokeh 构造已运行。"
+  },
+  "manifest": {
+    "manifest_asset_count": 442,
+    "evidence_feature_count": 12,
+    "symbols": ["rb", "hc", "i"],
+    "block": "blk@steel",
+    "calendar_name": "night_end_at_2300",
+    "data_scope": {
+      "overview_daily_pages": 1,
+      "big_30m_nodes": 6,
+      "mid_1m_nodes": 18,
+      "small_5s_nodes": 54,
+      "tick_windows_with_raw_tick_snapshot": 30
+    },
+    "timespans_csv_rows": 226,
+    "timespans_by_kind": {
+      "big": 6,
+      "mid": 18,
+      "small": 54,
+      "tick_all_locators": 148
+    },
+    "tick_scope_note": "timespans 保留 148 个 Tick 定位框，但只有 tick_000001 至 tick_000030 携带随包 Tick 行情。"
+  },
+  "calendar": {
+    "half_second_slot_count": 103316400,
+    "compressed_contiguous_segments": 10219,
+    "first_timestamp": "2013-01-04 09:00:00.500",
+    "last_timestamp": "2024-02-29 15:00:00",
+    "stage": "calendar.npz compressed half-second ranges expanded by snapshot_data.py"
+  },
+  "kline_ranges": {
+    "1d": "2013-02-20..2024-02-28",
+    "30m": "2021-08-04..2022-03-29",
+    "1m": "2021-08-06..2022-03-08",
+    "5s": "2021-08-06..2022-03-07"
+  },
+  "evidence_table_rows": {
+    "wall_events": {"rb": 16007, "hc": 11562, "i": 18129, "total": 45698},
+    "wall_segments_display": {"rb": 2383, "hc": 1713, "i": 3332, "total": 7428},
+    "build_events": {"rb": 29994, "hc": 17403, "i": 83822, "total": 131219},
+    "attack_segments": {"rb": 3915, "hc": 2573, "i": 11368, "total": 17856},
+    "absorb_events": {"rb": 24575, "hc": 19593, "i": 62261, "total": 106429},
+    "f4_tactical_lane": {"rb": 47558, "hc": 40730, "i": 39425, "total": 127713},
+    "f4_structural_lane": {"rb": 14049, "hc": 12199, "i": 11598, "total": 37846},
+    "grand_total_including_display_segments_and_two_f4_lanes": 474189,
+    "exact_full_row_duplicates_in_main_tables": 0
+  },
+  "lifecycle_audit": {
+    "wall": {
+      "start": 18182,
+      "end": 18182,
+      "state_change": 8452,
+      "band_update": 882,
+      "identity_check": "every wall_id has exactly one start and one end in the supplied tables",
+      "limitations": [
+        "local numeric wall_id rather than typed product_ref",
+        "no source_run_ref",
+        "no trading_day field",
+        "reason vocabulary is narrower than the candidate contract"
+      ]
+    },
+    "build": {
+      "start": 43035,
+      "milestone": 45149,
+      "stop": 43035,
+      "identity_check": "every build_id has exactly one start and one stop",
+      "limitations": ["no source_run_ref", "no trading_day", "stop reason not present as a complete contract field"]
+    },
+    "absorb": {
+      "started": 31281,
+      "milestone_rows": 38333,
+      "resolved_rows": 36815,
+      "tracks_with_resolve_but_no_start": {"rb": 1855, "hc": 2154, "i": 1525, "total": 5534},
+      "business_equivalent_repeated_milestone_rows_excluding_ordinal_and_style": {
+        "rb": {"rows": 4462, "groups": 1858},
+        "hc": {"rows": 2366, "groups": 981},
+        "i": {"rows": 18993, "groups": 8343},
+        "total_rows": 25821
+      },
+      "wall_local_no_zero": {
+        "rb": {"rows": 20, "tracks": 8},
+        "hc": {"rows": 30, "tracks": 18},
+        "i": {"rows": 13, "tracks": 4}
+      },
+      "exploratory_duplicate_example": "tick_000023 / i / track_id=454496 / UTI=78266204 contains three business-equivalent milestone payload rows with occurrence_ordinal 0,1,2 before resolution",
+      "interpretation": "row identity is not yet sufficient to decide whether repeated rows are distinct threshold milestones or rendering duplication"
+    }
+  },
+  "cross_product_reference_audit": {
+    "result": "all nonzero Build/Attack/Absorb wall_local_no values map to a Wall row within the same symbol",
+    "remaining_limit": "same numeric ID across symbols or source runs is not a global product identity"
+  },
+  "attack_time_audit": {
+    "rows_total": 17856,
+    "all_rows_uti_equals_plot_uti_equals_business_end_uti": true,
+    "timestamp_binding_mismatch": {
+      "rb": {"mismatch_rows": 1938, "total_rows": 3915},
+      "hc": {"mismatch_rows": 1161, "total_rows": 2573},
+      "i": {"mismatch_rows": 7016, "total_rows": 11368},
+      "total_mismatch_rows": 10115
+    },
+    "typical_offset_seconds": -0.5,
+    "session_boundary_outliers": {
+      "symbol": "i",
+      "rows": 5,
+      "offset_seconds": -21600.5
+    },
+    "closed_at_field": "ABSENT",
+    "formal_comparison_eligibility": "INELIGIBLE_UNTIL_CORRECTED_EXPORT_AND_TIME_BASIS_ARE_PROVIDED",
+    "note": "This is a material-quality finding, not a business COUNTERS judgment."
+  },
+  "f4_lane_union_audit": {
+    "structural_keys_subset_of_tactical_keys": true,
+    "by_symbol": {
+      "rb": {"tactical": 47558, "structural": 14049, "overlap": 14049, "union": 47558, "grade_diff_on_overlap": 9234},
+      "hc": {"tactical": 40730, "structural": 12199, "overlap": 12199, "union": 40730, "grade_diff_on_overlap": 8106},
+      "i": {"tactical": 39425, "structural": 11598, "overlap": 11598, "union": 39425, "grade_diff_on_overlap": 7776}
+    },
+    "naive_concat_duplicate_occurrence_keys": 37846,
+    "common_measurements_on_overlap": "amount, directional hit volume proxy, price and timestamp agree",
+    "stage_interpretation": "the two files are source lane tables, not the canonical unioned DirectedBigDeal occurrence stream"
+  },
+  "availability_audit": {
+    "wall_build_attack_absorb_availability_code_values_observed": [1],
+    "covered_states": ["valid rows"],
+    "not_covered": ["valid_no_activity", "source_missing", "stale", "session_invalid", "calculation_unavailable", "insufficient_history", "pending"],
+    "consequence": "absence of rows cannot be interpreted as a business negative or valid empty without a run manifest and availability contract"
+  },
+  "product_coverage": [
+    {
+      "product": "Wall",
+      "authority": "P1 Wall producer in candidate contract; candidate package is not permanent Owner acceptance",
+      "current_evidence": "direct lifecycle rows plus display interval rows",
+      "status": "PARTIAL_DIRECT",
+      "missing_or_ambiguous": ["source_run_ref", "typed wall_ref", "trading_day", "full reason/capability declaration"]
+    },
+    {
+      "product": "Build",
+      "current_evidence": "direct Start/Milestone/Stop rows linked by local wall/build IDs",
+      "status": "PARTIAL_DIRECT",
+      "missing_or_ambiguous": ["source_run_ref", "typed refs", "trading_day", "stop reason"]
+    },
+    {
+      "product": "AttackSegment",
+      "current_evidence": "one row per supplied segment-like record",
+      "status": "PARTIAL_DIRECT_TIME_AMBIGUOUS",
+      "missing_or_ambiguous": ["closed_at", "business completeness", "source_run_ref", "typed refs", "separate tactical/structural grades", "several candidate-contract aggregates", "consistent timestamp binding"]
+    },
+    {
+      "product": "Absorb",
+      "current_evidence": "direct lifecycle-like rows",
+      "status": "PARTIAL_DIRECT_IDENTITY_AMBIGUOUS",
+      "missing_or_ambiguous": ["source_run_ref", "typed refs", "resolve-only tracks", "meaning of repeated milestone payloads", "unbound wall_local_no=0 rows"]
+    },
+    {
+      "product": "AttackFormationEvidence",
+      "current_evidence": "no dedicated formal table; some qualified-hit material may be latent in Attack/F4 lane data",
+      "status": "MISSING_DIRECT_PRODUCT",
+      "missing_or_ambiguous": ["QualifiedWallAttackOccurrence", "MethodLocalGapBreak", "AvailabilityGap", "TechnicalCloseDiagnostic", "capability declarations"]
+    },
+    {
+      "product": "WallRelationBarrier",
+      "current_evidence": "no dedicated formal barrier occurrence table",
+      "status": "MISSING_DIRECT_PRODUCT",
+      "missing_or_ambiguous": ["barrier_ref", "barrier_kind", "source occurrence ref", "old/new wall or direction", "order_unresolved representation"]
+    },
+    {
+      "product": "F3",
+      "current_evidence": "legacy Thick/Dense/Fight evidence exists, but no direct F3 dense measurement contract export",
+      "status": "MISSING_DIRECT_PRODUCT",
+      "missing_or_ambiguous": ["per-symbol/per-UTI directional measurements", "availability states", "pressure capability/reference", "run parameters"]
+    },
+    {
+      "product": "F4",
+      "current_evidence": "tactical and structural source-lane tables",
+      "status": "SOURCE_LANES_ONLY_NOT_CANONICAL",
+      "missing_or_ambiguous": ["single canonical occurrence_ref", "source_run_ref", "lane_mask", "both grades in one row", "producer threshold/context audit", "availability"]
+    }
+  ],
+  "exploratory_window": {
+    "window": "tick_000023",
+    "parent": "small_000009",
+    "uti_range": [78266099, 78266819],
+    "timestamp_range": ["2021-08-18 21:02:30", "2021-08-18 21:08:30"],
+    "symbols": ["rb", "hc", "i"],
+    "i_row_counts": {"wall": 35, "build": 103, "attack": 17, "absorb": 80, "f4_tactical": 30, "f4_structural": 14},
+    "locators": [
+      "i wall_id=57427: Start -> Dormant -> End with linked Build/Attack/Absorb rows",
+      "i wall_id=57428 End reason same-side migration and wall_id=57429 Start at UTI 78266350",
+      "i track_id=454496 repeated milestone example at UTI 78266204"
+    ],
+    "epistemic_status": "EXPLORATORY_ONLY_NOT_SUPPORTS_OR_COUNTERS"
+  },
+  "material_state": "PARTIAL_WITH_LIMITS",
+  "worker_usage": {
+    "worker_orders_issued": 0,
+    "reason": "Project Source raw data and fixed GitHub sources were directly readable; no Linux-only action was necessary."
+  },
+  "non_claims": [
+    "no formal R2 evidence judgment",
+    "no manager H1 or G-EXPECTATION-FREEZE decision",
+    "no P1 product is declared reasonable or unreasonable",
+    "no upstream recomputation",
+    "no source modification"
+  ]
+}
