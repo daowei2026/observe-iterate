@@ -1,0 +1,144 @@
+schema: oi-frozen-expectation-set/v1
+run_id: OI-EAW-P1-20261116-01
+set_id: FZ-EAW-P1-AR-P1-001
+analysis_round_origin: AR-P1-001
+accepted_by_call: C0005
+status: FROZEN_FOR_COMPARISON
+frozen_at_role: chatgpt:OI-EAW-P1-20261116-01:manager
+source_register_ref: >-
+  daowei2026/observe-iterate@0fff57bcc2cb85907586704a67389c038cf5ffa3:
+  longrun/runs/OI-EAW-P1-20261116-01/calls/C0003/D001_EXPECTATION_REGISTER.yaml
+source_professional_report_ref: >-
+  daowei2026/observe-iterate@3d3b3b9c568f9b17037b747fc1ca44a76f847ddf:
+  longrun/runs/OI-EAW-P1-20261116-01/calls/C0003/EXECUTOR_REPORT.md
+manager_review_ref: >-
+  daowei2026/observe-iterate@21e2640a3574c2911592f8e9fcf24b3e97e42452:
+  longrun/runs/OI-EAW-P1-20261116-01/calls/C0005/MANAGER_REPORT.md
+
+comparison_contract:
+  permanent_owner_acceptance: false
+  run_local_adoption: true
+  basis_ref: >-
+    daowei2026/feature-refinement-implementation-agent-evolution@8d58ddd3392a3e67ef5ba44adf2c4cd0c9077f9f:
+    candidate_gold_cases/eaw/taskpacks_and_checkpoints/p1/
+    EAW_P1_EXISTING_PREL0_BASE_PRODUCTS_AND_SPARSE_OCCURRENCE_V0_6_20260813/
+  authority_status: replacement_requirement_candidate_for_owner_review
+  included_does_not_mean_owner_accepted: true
+  purpose: >-
+    为本 Run 八类 P1 候选产品提供可证伪、可绑定证据、可形成 MISSING/AMBIGUOUS/
+    SUPPORTS/COUNTERS 等正式结果的共同工作比较合同；不修改永久 Owner 需求。
+
+frozen_expectations:
+  owner_explicit:
+    - E-OWN-WALL-001
+    - E-OWN-WALL-002
+    - E-OWN-WALL-003
+    - E-OWN-WALL-004
+  run_local_business_inferred:
+    - E-BIZ-P1-001
+    - E-BIZ-P1-002
+    - E-BIZ-P1-003
+    - E-BIZ-P1-004
+    - E-BIZ-P1-005
+    - E-BIZ-P1-006
+    - E-BIZ-P1-007
+    - E-BIZ-P1-008
+  text_and_conditions_are_defined_by: source_register_ref
+  content_modification_at_freeze: none
+
+not_frozen_as_business_expectations:
+  - E-IMP-DATA-001
+  - E-IMP-DATA-002
+  - E-IMP-DATA-003
+  - E-IMP-DATA-004
+not_frozen_reason: >-
+  以上项目是当前固定 Project Source 和脚本的 DataBinding/实现事实，可被正式对照引用，
+  但不属于业务应然命题。
+
+evidence_seen_before_freeze:
+  - ref: >-
+      daowei2026/observe-iterate@624dd0dfb2deed97bf57c573ccbd63f9f636b6d7:
+      longrun/runs/OI-EAW-P1-20261116-01/calls/C0003/D001_DATA_AUDIT.json
+    facts:
+      - exact Project Source bytes, SHA-256, ZIP CRC, manifest and asset counts
+      - Wall/Build/Attack/Absorb/F4-lane row shapes and counts
+      - FormationEvidence, WallRelationBarrier and F3 direct products absent from the supplied package
+      - Attack timestamp binding mismatch on 10115 of 17856 rows and closed_at absent
+      - F4 structural keys are a subset of tactical keys; naive concat duplicates 37846 keys
+      - Absorb resolve-only tracks and business-equivalent repeated milestone rows
+      - availability_code observed only as 1
+  - ref: >-
+      daowei2026/observe-iterate@3d3b3b9c568f9b17037b747fc1ca44a76f847ddf:
+      longrun/runs/OI-EAW-P1-20261116-01/calls/C0003/EXECUTOR_REPORT.md
+    facts:
+      - tick_000023 exploratory locators
+      - local-ID-only joins and missing source_run_ref/typed refs
+      - rb/hc/i and selected-window scope limits
+      - graph/display stages are not source product authority
+  - note: >-
+      上述事实已在冻结前被看见；它们只能用于记录已知未知和适用范围，不能在正式 R2 时
+      反向修改本冻结版命题以迎合证据。
+
+scenario_set_ref: >-
+  daowei2026/observe-iterate@0fff57bcc2cb85907586704a67389c038cf5ffa3:
+  longrun/runs/OI-EAW-P1-20261116-01/calls/C0003/D001_EXPECTATION_REGISTER.yaml#scenario_expectation_set
+scenario_ids:
+  - S-WALL-001
+  - S-DECOUPLE-002
+  - S-SWITCH-003
+  - S-DIRECTION-004
+  - S-DORMANT-005
+  - S-ATTACK-006
+  - S-F4-007
+  - S-F3F4-008
+  - S-MISSING-009
+  - S-GRAPH-010
+  - S-SCOPE-011
+  - S-REPLAY-012
+  - S-ABSORB-013
+  - S-TIME-014
+
+comparison_scope:
+  overall_products:
+    - Wall
+    - Build
+    - AttackSegment
+    - Absorb
+    - AttackFormationEvidence
+    - WallRelationBarrier
+    - F3
+    - F4
+  planned_waves:
+    integrated_core:
+      - Wall
+      - Build
+      - AttackSegment
+      - Absorb
+      - F4
+    direct_product_availability:
+      - AttackFormationEvidence
+      - WallRelationBarrier
+      - F3
+  wave_note: >-
+    分波只组织依赖，不删除任何产品。Direct product 经有界调查仍不可得时，允许后续按
+    MISSING/PROVEN_UNAVAILABLE 限域交付，不得用图层或 latent 字段冒充正式产品。
+
+formal_comparison_gate:
+  status: NOT_ELIGIBLE_NOT_STARTED
+  blocking_inputs:
+    - P1RunManifest or equivalent complete provenance/DataBinding
+    - source_run_ref and typed product/occurrence references
+    - explicit availability/missingness states
+    - corrected complete AttackSegment and TimeBasisContract
+    - canonical F4 union if F4 is compared
+    - direct FormationEvidence/Barrier/F3 or evidenced unavailability
+    - Absorb milestone identity and resolve-only explanation
+
+change_policy:
+  immutable_for_this_version: true
+  new_evidence_may_update_results_not_expectations: true
+  expectation_change_requires:
+    - new candidate expectation set
+    - explicit source and rationale
+    - new manager freeze decision
+  no_silent_overwrite: true
