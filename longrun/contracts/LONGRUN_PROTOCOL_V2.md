@@ -1,16 +1,16 @@
 # 长程任务通用协作协议 · V2（首版）
 
-> 本协议只规范跨角色**运行机制**。`observe-iterate` 分支的 L0/L1/L2 控制面及两个专业 Skill 的业务判断仍保有自己的权威。当前 V2 是可做离线机械核验的候选合同，未经真实主控通道/状态/权限联调，不可宣称已具备自主长期运行能力。
+> 本协议只规范跨角色**运行机制**。`observe-iterate` 中已采用的 Workflow 与具体专业 Skill 定义业务工作，长程协议不取代其专业方法或完成条件。当前 V2 是可做离线机械核验的候选合同，未经真实主控通道/状态/权限联调，不可宣称已具备自主长期运行能力。
 
 ## 1. 角色与责任不可混淆
 
 - **Owner**：提供当前业务目标、对象和**已经明确的**范围/约束（统一归入 `BusinessTaskInput`）、真实 GO 和具体操作权限。分析深度/完成边界有未知项时允许在授权范围内先做有界调查；但未经合法确定不得扩范围、开展超授权动作或宣布整项完成。真正业务取舍与新授权仍返回 Owner。
 - **主控 Codex**：持有**可信** Run 事实账本和物理聊天/线程映射；送达、监控、回交、去重/对账、按规则调用确定性检查；不决定专业业务正确性、不根据结果措辞擅自扩展任务。
-- **专业负责人 Pro（manager）**：持续持有父业务任务专业责任；按当前问题/依赖安排具名专业 D，检查对应专业成果和被消费范围，形成继续、补证、限定交付、请求 Owner 等候选后继。专业操作见 [manager 候选指南](../professional/PRO_MANAGER_GUIDE.md)；正式业务 Gate/完成资格仍来自已获批准的控制规则，而非其自述。
-- **专业执行人 Pro（executor）**：只在正式 D 授权范围内**依据仓库现有材料准备/合理性分析 Skill 实际开展专业工作**；可零 W 自行完成，也可按需要签 W 给 Worker；先专业审查 Worker 结果，再将原生业务成果、未决与适用范围交回原 manager。专业操作见 [executor 候选指南](../professional/PRO_EXECUTOR_GUIDE.md)。
-- **Worker Codex**：按 W 中明确的已授权操作和现场执行，交付事实、未完成项和证据；不替代专业 Pro 判断。
+- **多层 Workflow 运行协调 Chat（V2 `manager`）**：维护整个任务的当前状态与版本依赖，按已采用 Workflow 调用、等待、接续或回流 Skill 工作，按需安排多个执行 Chat。不增加业务预期、专业方法、执行约束、Worker 结果处理规则或额外专业 Gate。见 [运行协调 Chat 指南](../professional/PRO_MANAGER_GUIDE.md)。
+- **Skill 执行 Chat（V2 `executor`）**：不预设固定专业职位；每次依据正式 D 所指的 Skill 原始文件完成专业工作与 Skill 内部流程。Worker 的使用、专业消费和结果表达均由具体 Skill 决定，调用与返回路由仍按 V2。见 [Skill 执行 Chat 指南](../professional/PRO_EXECUTOR_GUIDE.md)。
+- **Worker Codex**：按 W 中明确的已授权操作和现场执行，交付事实、未完成项和证据；不替代 Skill 执行 Chat 的专业判断。
 
-本版**固定 manager→executor→worker** 两个委派层级，不支持通用任意深度代理树。多位 executor/worker 可绑定，主控不能为方便让一个 Worker 绕过原执行人直接“专业回交” manager。未来是否允许 manager 直接签 W 另行设计，不从旧版默认迁入。
+本版保留 `manager→executor→worker` 的 V2 通信与回交路径，不增加任意代理树或新的专业层级。每 Run 可按需绑定多个 `executor`，但各自的任务、版本、Worker 结果和实际聊天身份不能混淆；Worker 回原签发 `executor`，不能绕过对应 Skill 执行 Chat。
 
 ## 2. 身份：不能用业务阶段代替运行实体
 
@@ -37,7 +37,7 @@ Owner GO → RUN_BINDING
 → manager 消费后决定后继 / 请求 Owner / 申请任务收束
 ```
 
-专业执行人**零 W**时可直接提交 D 结果；有多 W 时要按每张 W 的独立结果分别收束。不能把“某 Worker 工单完成”当作 D 已专业接受，也不能把“某 D 完成”当作 L0 父任务已完成。
+Skill 执行 Chat **零 W**时可直接提交 D 结果；有多 W 时按对应 Skill 与 V2 回执关系接续。不能把“某 Worker 工单完成”当作 D 已专业接受，也不能把“某 D 完成”当作 L0 父任务已完成。
 
 **Git 版本引用无循环约束**：先发布 D，再发布引用 D 的 manager return；先发布 W，再发布引用 W 的 executor return；D/W 只记录 `issuer_call_id`，不倒向引用尚不存在的 return commit。GitHub 正式跨端来源统一用 `owner/repo@40位commit:path`；不得依赖 moving branch、文件标题或 chat 摘要代替原件。
 
@@ -62,7 +62,7 @@ longrun/runs/<run_id>/
 
 ## 5. GO、授权、现场与审计
 
-Owner 的 `grants` 必须精确包含 `operation`、`execution_context`、`allowed_writes` 和从 Owner 真正授权原文逐字取得的 `authority_quote`；专业 D 可以再收窄 `permitted_operations`/`allowed_writes`，但不能扩权。Worker W 的操作、现场和写面须同时落在 Owner grant 和 D 限制内。读者应核对现场实际路径/仓库/分支，而不是把字符串相等当成操作沙箱。
+Owner 的 `grants` 必须精确包含 `operation`、`execution_context`、`allowed_writes` 和从 Owner 真正授权原文逐字取得的 `authority_quote`；D/W 机读权限必须属于真实授权范围，不能扩权。Worker W 的操作、现场和写面须通过 Owner grant 与 D/W 的既有机械授权校验。**这是主控的运行权限验证，不是运行协调 Chat 自拟的专业执行约束。**读者应核对现场实际路径/仓库/分支，而不是把字符串相等当成操作沙箱。
 
 主控须在派 W 前独立验证实际工作区单写者；校验脚本返回 `PASS` 不等于自动获得锁、真正发出消息、实际 Run 成功或 Git 仓库写权限。
 
@@ -88,27 +88,27 @@ BLOCKED → COMPLETED（只在原动作证据已查清时）
 
 ## 7. 结果消费、局部阻断及最终收束
 
-- **Worker Return**：`EXECUTED / PARTIAL / STOP / FAILED` 只说明操作端结果；未交付项和真实证据必须列明；返回原 executor，由其决定专业接受。
-- **Executor Return**：汇总当前 D 的专业结果/已验证 W、未解决问题、续作、请求上层；`REPORTED_COMPLETE` 只代表此 D 范围的专业报告完整，不代表父任务完成。
-- **Manager Return**：汇总已接受的 D、自己完成的专业工作、后继 D/续作/Owner 请求，父任务完成资格由**本轮已经合法明确的完成范围与已确认 Gate**给出；禁止主控凭 Return 标志宣布。
+- **Worker Return**：`EXECUTED / PARTIAL / STOP / FAILED` 是操作端的既有机器状态；真实结果必须返回原 `executor`，其**专业消费完全按被执行的 Skill**。本协议不增设 Worker 返回后的专业处理步骤。
+- **Executor Return**：按对应 Skill 的原生输出表达本 D 实际专业结果，并通过 V2 回交引用；`REPORTED_COMPLETE` 是 D 的机器回交状态，不直接等同于 Skill 专业完成或父任务完成。
+- **Manager Return**：登记已核实的 Skill 工作回交、当前 Workflow 状态、下一项 D/续作或具名 Owner 问题；依据**原 Skill 的专业结果、既定 Workflow 和 Owner 明确的任务边界**判断是否还有后继。运行协调 Chat 不代替 Skill 提供独立业务验收，也不能单凭 Return 标记宣布父任务完成。
 - 某 D/W 因确切缺前置而受阻，只阻断依赖它的工作；已满足独立前置的其他委派可继续。确认没有合法后继时可有据停止，但“停止”不等于“成功完成”。
 
 ## 8. 与控制面、Skill 和确定性程序的接口
 
-当前分支的 `control/` 与 `review/` 中 `H0/H1/H2/H3`、`G-*`、`Mxx/Rxx`、`AdditionalEvidenceRequest` 的规则由业务控制面维护。本协议不把 `DATA_READY`、`COUNTERS`、`PROVEN_UNAVAILABLE` 误译成机械“专业 PASS/FAIL”。
+实际采用的 Workflow 与 Skill 规定业务节点、条件及专业结果。运行协调 Chat 只根据**已采用**的阶段输入输出和真实返回安排后继，不新增另一套专业 Gate；专业状态（如 `DATA_READY`、`COUNTERS`、`PROVEN_UNAVAILABLE`）不翻译成机械 `PASS/FAIL`。合理性分析仍以其后续实际采用的版本为准。
 
 确定性程序只能在**明确、可追溯的行动选择规则或专业决定**允许后调用；脚本维护事实并回交输出，不决定专业争议。何时启动某种专业分析、是否需标定和能否有界收束，不属于主控自由判断。
 
-## 9. 试运行控制面交给管理 Pro（本次 GO 明确采用时生效）
+## 9. 多层 Workflow 运行协调与整体状态
 
-这是 V2 运输协议与当前业务控制面的一种**试运行采用模式**，不是更改机器 Schema 或把主控变为业务决策者：
+本版只采用**多层 Workflow 运行协调 Chat + 按需多个 Skill 执行 Chat**的分工，不保留另一套“管理 Pro 全面负责业务控制面”的运行方式：
 
-- 当真实 Owner GO 明确采用时，manager 对该 Run 的 L0/L1/L2 业务控制点、Gate、返回/返修、材料补证、业务全景维护、阶段/问题完成判断拥有**试运行业务管理决定权**。已明确的业务目标不因执行发现新问题而被无痕改写。
-- 在正常管理活动中不设置每节点、每 Gate 的 Owner 再批准流程。Owner 定期查看运行记录即可；只有实际工具能力/访问权限不足、与明确禁令冲突、或重大业务目标取舍确需 Owner 决策时，形成**具名**问题。不能以 Pro 当前没想好一个实现细节为由无限等待。
-- 管理 Pro 的业务决定应记录为真实 `business_control/decisions/<decision_id>.md`，并据已核实工作/Gate/回执刷新 `business_control/TASK_PROGRESS.md`。生产者为 manager，主控负责在 GO 指定 GitHub 路径原样保存、验证准确 commit 和精确来源；若 manager 已经有真实写入工具，可自行提交，主控核其提交。模板见 [MANAGEMENT_DECISION](../templates/MANAGEMENT_DECISION.md) 和 [TASK_PROGRESS](../templates/TASK_PROGRESS.md)。
-- 管理决定和进度材料可由专业报告 `result_ref` 等已有引用承载，**不增加第二种 `PRO_RETURN`**。主控不可擅自计算新业务 Gate 或修改 manager 文字，只根据已核实的具体后继继续派 C/D/W。历史接受与当前失效范围应能同时在全景中查询。
-- 本协议 §5 的 `grants` 用于实际 Worker 工具动作的 `operation/execution_context/allowed_writes` 机械核对，**不等于每项业务管理判断需要 Owner 签字**。在初始 GO 内可以一次性声明本 Run 可能使用的常规操作类别与工作区/写面，具体机器记录必须被真实 Owner 原文覆盖，不能让 Pro 或主控假造 `authority_quote`。没有真实工具写权限或共享写面冲突时仍不可强行执行。
-- 此模式的“接受”是**本次试运行的业务接续依据**，不能声称已经部署受保护的生产 Gate/自动状态库；初次真实 Run 自然检验物理派发和回交，**不要求另开专门测试 Run**。
+- 协调 Chat 持有 Owner 已明确的任务输入、已采用的 Workflow、Skill 及其真实成果引用；沿既定依赖调用下一 Skill、接续原工作或按已规定的返回路径处理，不自行补充专业任务内容。
+- Skill 执行 Chat 负责其 Skill 的专业分析、内部流程、原生输出、完成判断及该 Skill 规定的 Worker 使用与结果处理；专业工作允许多次 C 接续同一 D。
+- 协调 Chat 不承担默认独立专业 Gate，只核对任务/输入版本、真实工作状态及既定后继使用资格；必要的专业判断仍由 Skill 执行 Chat 完成，未定义的 Owner 业务取舍须明确提出。
+- 运行协调 Chat 依 [TASK_PROGRESS](../templates/TASK_PROGRESS.md) 持续维护整体任务及工作项、执行 Chat、版本/依赖、在途与恢复状态。它由真实工作产物和可信消息/工单事实派生，不是另一份独立权威账本。
+- 运行记录中使用现有 `business_control/TASK_PROGRESS.md` 与必要的具名接续引用；普通推进不要求额外创建 `MANAGEMENT_DECISION`、Gate 决定或新的机器字段。主控负责保存、回读与真实权限核验；它不能代替任何 Chat 编写专业结论。
+- Owner 的操作授权与工作区、模型、身份、消息送达和 W 工单校验继续依本协议与真实 GO 执行，不因取消独立专业 Gate 而放宽。
 
 ## 10. V2 机械程序的真实能力
 
