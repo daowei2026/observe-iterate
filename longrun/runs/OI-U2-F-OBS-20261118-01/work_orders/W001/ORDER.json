@@ -1,0 +1,35 @@
+{
+  "schema": "longrun-order/v2",
+  "run_id": "OI-U2-F-OBS-20261118-01",
+  "work_order_id": "W001",
+  "delegation_ref": "daowei2026/observe-iterate@f274f532e199392fa1f28b009a8e7d45fc6134e7:longrun/runs/OI-U2-F-OBS-20261118-01/delegations/D005/DELEGATION.json",
+  "issuer_call_id": "C0012",
+  "issuer": "chatgpt:OI-U2-F-OBS-20261118-01:executor:E1",
+  "worker": "codex:OI-U2-F-OBS-20261118-01:worker:W1",
+  "return_to": "chatgpt:OI-U2-F-OBS-20261118-01:executor:E1",
+  "instructions_ref": "daowei2026/observe-iterate@cfc1fabc0f910434743cea514ea28f674a35dcd0:longrun/runs/OI-U2-F-OBS-20261118-01/work_orders/W001/ORDER.md",
+  "input_refs": [
+    "daowei2026/observe-iterate@942bb61c2453a44cc258da8c2832d89687c52aa0:longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/E/E1_EXECUTION_AND_REVIEW_BASELINE.md",
+    "daowei2026/observe-iterate@f4f0e4b276b1118b779473c1fbe462bc7a64b358:longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/D/u2_f_caegraph_definition.py",
+    "daowei2026/observe-iterate@e35945aec93d90e4dbb045bc3c35dc5153661aa4:longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/D/CAEGRAPH_DEFINITION_INTEGRATION.md",
+    "daowei2026/observe-iterate@56eef30b28c928255329f77798fb46b9adbbc71a:longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/C/caegraph_display_preview.html",
+    "daowei2026/observe-iterate@508d494c964d5dabeaa1e7ea17bef908f749e9c8:longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/C/caegraph_display.py",
+    "daowei2026/observe-iterate@74ed0b11552f73b03e55e3e324f8325889730b52:longrun/runs/OI-U2-F-OBS-20261118-01/OWNER_START.md",
+    "daowei2026/observe-iterate@b6fcc3dd824b6e28fffd5b8d464989289dd4d97d:longrun/runs/OI-U2-F-OBS-20261118-01/RUN_RESOURCE_BINDING.json"
+  ],
+  "deliverables": [
+    "W1 minimal factual result with status, final script, candidate HTML, run log, git diff and current blocker",
+    "Candidate CAEGraph HTML or the first real blocking runtime error",
+    "definition_run_report.json and the actual process exit code",
+    "Mechanical repair diff or an explicit no-change statement",
+    "longrun-worker-return/v2 returned to the issuing executor E1"
+  ],
+  "grant": {
+    "operation": "caegraph_run_and_repair",
+    "execution_context": "/dwdhome/fy/BASE_E6_2_copy",
+    "allowed_writes": [
+      "/dwdhome/fy/BASE_E6_2_copy/**"
+    ],
+    "authority_quote": "Owner original grant: operation=caegraph_run_and_repair; execution_context=/BASE_E6_2_copy; allowed_writes=/BASE_E6_2_copy/**. Owner path amendment: 将本 Run 路径更正为 /dwdhome/fy/BASE_E6_2_copy"
+  }
+}
