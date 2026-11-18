@@ -2075,3 +2075,396 @@ V 只有一类正式 Validity Occurrence，它不重新计算行情，而是保�
 
 这份合同已经可以作为进一步精确制定 F/Q/V 取数清单的基础。但就实际取数而言，仍需要把上游全部 ScaleTurn、逐根 KLine 与现有 F/Q/V 正式多表关联起来；目前并没有因为梳理完成合同，就等于这些输入材料已经全部取得。
 
+
+## 第 4 轮
+
+### 问：
+
+by: 樊月；原对话时间未提供。
+
+```
+CandidateBody里面的这么多字段，都是属于最终的结果，没有就哪些是中间数据，哪些是最终结果吗。你现在你没有一次性给一下这些东西的中文注释，我也看不太明白哪个是哪个。
+```
+
+### 回答：
+
+思考了 32s
+
+`CandidateBody`**&#x20;里的字段性质确实不同。它们虽然都被保存为正式输出，但不代表每个字段都是 F 最终想给出的业务判断。**
+
+我前面混淆了两个概念：
+
+- **是否属于正式输出**：`CandidateBody` 的 12 个字段全部属于正式 `CandidateOccurrence` 的正文。
+- **在业务处理过程中承担什么角色**：有的是候选形成的结果，有的是中间计算的判断依据，有的是输入事实，还有的是观察范围及状态。
+
+第二个区别才是你现在真正需要的。
+
+下面严格按照源码原来的 12 个字段、原来的顺序，一次性补齐中文注释。
+
+## **一、CandidateBody 原始结构及全部中文注释**
+```lua
+data CandidateBody = CandidateBody
+  {
+    -- 1. 候选成员
+    -- 当前候选组由哪些转折组成。
+    -- 每个成员包含具体 Turn 及其成员状态。
+    -- 既有最终选择的成员，也保留成员的原始转折事实。
+    candidateMembers :: [(GroupTurn, MemberStatus)]
+
+    -- 2. 成员之间的两两判断依据
+    -- 保存每一对成员的时间、方向、类型、弯折判断。
+    -- 这是形成候选时产生的中间判断结果，
+    -- 但被保留下来，作为正式输出的解释依据。
+  , candidatePairs :: [PairBasis]
+
+    -- 3. 候选形成依据的综合结论
+    -- Supported：形成依据得到支持
+    -- Incomplete：必要依据不完整
+    -- Contradicted：存在明确反证
+    -- 这是根据成员与Pair判断得到的核心业务结果。
+  , candidateBasis :: LocalBasis
+
+    -- 4. 候选的备选关系状态
+    -- Unambiguous：当前没有未解决的重叠备选关系
+    -- UnresolvedOverlap：存在未解决的重叠关系
+    -- 这是比较多个候选后形成的关系判断结果。
+  , candidateAlternatives :: AlternativeResolution
+
+    -- 5. 候选当前的形成观察状态
+    -- Open：尚未关闭
+    -- ClosedSupported：关闭且形成依据得到支持
+    -- ClosedInsufficient：关闭但依据不足
+    -- Withdrawn：撤回
+    -- Subsumed：被更大候选包含
+    -- EndedByScope：观察范围结束
+    -- 这是当前候选生命周期的业务状态。
+  , candidateObservation :: ObservationState
+
+    -- 6. 形成所需的观察域是否不完整
+    -- 来自输入对象的覆盖完整性判断。
+    -- 用于说明当前候选判断的前提条件。
+    -- 不是候选本身是否成立的最终结论。
+  , candidateDomainIncomplete :: Bool
+
+    -- 7. 当前形成观察锚点
+    -- 根据合法成员Clock确定的当前观察起点。
+    -- 属于观察时间边界，不是候选发表时间。
+  , candidateAnchor :: Double
+
+    -- 8. 当前形成观察截止位置
+    -- 依据锚点和方法期限计算，并受原有期限约束。
+    -- 属于观察时间边界。
+  , candidateDeadline :: Double
+
+    -- 9. 当前允许修订的截止位置
+    -- 限制候选最晚可以修订到哪里。
+    -- 属于修订责任边界。
+  , candidateRevisionEnd :: Double
+
+    -- 10. 形成观察是否已经关闭
+    -- 根据观察进展及已有关闭状态确定。
+    -- 是生命周期状态，不等于形成依据已得到支持。
+  , candidateClosed :: Bool
+
+    -- 11. 与当前候选存在重叠关系的其他候选
+    -- 保存其他候选的Life标识。
+    -- 是候选之间的关系判断结果。
+  , candidateOverlaps :: [Text]
+
+    -- 12. 包含当前候选的其他候选
+    -- 保存满足包含条件的更大候选的Life标识。
+    -- 是候选之间的关系判断结果。
+  , candidateCoveredBy :: [Text]
+  }
+```
+
+这份结构保持了源码原来的全部字段和顺序，没有重新组织。
+
+源码：[GroupCandidateTypes.hs](https://github.com/daowei2026/frp/blob/67711c492da909ed0f044f357beb278abf7fc71c/src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateTypes.hs?utm_source=chatgpt.com)
+
+## **二、逐个字段区分：中间数据还是业务结果？**
+
+这里的“性质”是根据实际计算和使用方式做出的分析，不是源码另有一套正式分类。
+
+|   |
+| - |
+
+字段
+
+|   |
+| - |
+
+业务性质
+
+|   |
+| - |
+
+是否属于核心业务结果
+
+|   |
+| - |
+
+`candidateMembers` 候选成员
+
+|   |
+| - |
+
+**候选组成结果**，同时保存原 Turn 事实及成员状态
+
+|   |
+| - |
+
+是
+
+|   |
+| - |
+
+`candidatePairs` 两两判断依据
+
+|   |
+| - |
+
+**中间判断结果的正式保留**，用于解释为什么形成候选
+
+|   |
+| - |
+
+不是最终综合结论
+
+|   |
+| - |
+
+`candidateBasis` 形成依据结论
+
+|   |
+| - |
+
+**核心判断结果**，由 Pair 等依据综合得到
+
+|   |
+| - |
+
+是
+
+|   |
+| - |
+
+`candidateAlternatives` 备选关系状态
+
+|   |
+| - |
+
+**候选间关系判断结果**
+
+|   |
+| - |
+
+是，属于关系层面的结果
+
+|   |
+| - |
+
+`candidateObservation` 形成观察状态
+
+|   |
+| - |
+
+**当前业务生命周期结果**
+
+|   |
+| - |
+
+是
+
+|   |
+| - |
+
+`candidateDomainIncomplete` 观察域不完整
+
+|   |
+| - |
+
+**输入覆盖条件的汇总信息**
+
+|   |
+| - |
+
+不是
+
+|   |
+| - |
+
+`candidateAnchor` 观察锚点
+
+|   |
+| - |
+
+**计算得到的业务时间边界**
+
+|   |
+| - |
+
+不是判断结论
+
+|   |
+| - |
+
+`candidateDeadline` 观察截止
+
+|   |
+| - |
+
+**计算得到的业务时间边界**
+
+|   |
+| - |
+
+不是判断结论
+
+|   |
+| - |
+
+`candidateRevisionEnd` 修订截止
+
+|   |
+| - |
+
+**计算得到的修订责任边界**
+
+|   |
+| - |
+
+不是判断结论
+
+|   |
+| - |
+
+`candidateClosed` 是否关闭
+
+|   |
+| - |
+
+**当前生命周期状态**
+
+|   |
+| - |
+
+是状态结果，但不是形成依据结论
+
+|   |
+| - |
+
+`candidateOverlaps` 重叠候选
+
+|   |
+| - |
+
+**候选之间的关系判断结果**
+
+|   |
+| - |
+
+是
+
+|   |
+| - |
+
+`candidateCoveredBy` 包含关系
+
+|   |
+| - |
+
+**候选之间的关系判断结果**
+
+|   |
+| - |
+
+是
+
+这里有两个特别容易混淆的地方。
+
+### **1.&#x20;**`candidatePairs`**&#x20;是中间计算结果，但已经正式输出**
+
+F 内部的处理关系是：
+```
+各品种输入转折
+       ↓
+FormationMaterial
+当前可参与判断的转折材料
+       ↓
+PairView
+转折之间的两两相容判断
+       ↓
+CandidateState
+候选组成、形成结论、当前状态
+       ↓
+CandidateOccurrence
+正式发表的候选观点
+```
+
+其中 `PairView` 是内部处理对象，**并没有把整个&#x20;**`PairView`**&#x20;原样输出**。
+
+但它里面与当前候选相关的 Pair 判断，被提取进了：
+
+`candidateBody.candidatePairs`
+
+所以它既是计算过程中的中间判断，又是正式输出中保留的解释依据。
+
+这两个说法不矛盾。
+
+### **2.&#x20;**`candidateMembers`**&#x20;不只是原始输入数据**
+
+每个成员的 `GroupTurn` 确实包含从上游来的转折事实，但**哪些 Turn 被组合成当前候选**，本身就是 F 的业务处理结果。
+
+因此不能简单地说 `candidateMembers` 是输入数据副本。
+
+它实际上同时包含：
+
+- 被选入当前候选的成员组合——业务结果；
+- 每个成员的具体 Turn 事实——结果所依赖的材料；
+- 每个成员当前的 `MemberStatus`——根据 Pair 关系得出的成员判断。
+
+## **三、F 到底最终要表达什么？**
+
+从这个业务特征的目的来看，核心是回答三个问题：
+
+**第一，哪些转折形成了一个候选？**
+
+对应 `candidateMembers`。
+
+**第二，这个候选的形成依据是什么结论？**
+
+对应 `candidateBasis`，由 `candidatePairs` 等提供依据。
+
+**第三，这个候选目前处于什么状态，与其他候选是什么关系？**
+
+对应 `candidateObservation`、`candidateClosed`、`candidateAlternatives`、`candidateOverlaps`、`candidateCoveredBy`。
+
+其他字段主要帮助限定判断成立的条件、期限和可修订范围。
+
+这里的“最终”是指**本次已经正式发表的业务观点**，并不是说它以后不能再有 Revision。
+
+## **四、这对观察数据准备的影响**
+
+最需要注意的是，不能只观察 `candidateBasis`，然后把其他字段都当成不重要的中间信息。
+
+例如，假设某个候选的输出是：
+```ini
+candidateMembers      = [rb-A, hc-B]
+candidateBasis        = Supported
+candidateObservation  = Open
+candidateClosed       = False
+candidateOverlaps     = [另一个候选的Life]
+```
+
+这里真正需要观察的不是一个简单的 `Supported`。
+
+我们还需要理解：
+
+- 为什么 rb-A、hc-B 组成候选？需要回看 `candidatePairs`；
+- 为什么已经 Supported，却仍然 Open？需要看观察期限和事件发生时间；
+- 为什么还有另一个重叠候选？需要看两个候选的成员和关系判断。
+
+**因此，我现在认为，准备 F 的观察材料时，应该以&#x20;**`CandidateOccurrence`**&#x20;作为观察对象，同时区分“业务结果”“结果依据”“输入事实”“时间及状态约束”。不需要把每个字段画成独立事件，但也不能因为某个字段来自中间计算，就从观察材料中删掉它。**
+
+这才是沿着实际结构理解 F 的输出，而不是重新发明一套字段结构。
