@@ -21,7 +21,7 @@ description: 当需要为给定特征实例准备并实际取得 CAEGraph 观察
 | B 观察位置准备 | [observation-position-preparation](observation-position-preparation/SKILL.md) | 普通场景的当前默认位置，或高频 1d→30m→1m→5s→tick 多尺度位置路径 |
 | C 展示方式准备 | [caegraph-display-preparation](caegraph-display-preparation/SKILL.md) | C1 待展示信息；C2 展示预期、复杂点循环和唯一预期 HTML；C3 位置与实例可注入展示代码及注入合同 |
 | D CAEGraph 定义集成 | [caegraph-definition-integration](caegraph-definition-integration/SKILL.md) | 充分理解锁定 CAEGraph 仓库后，把外层输入和 A／B／C 产物一次性集成为完整定义；拿得准的 B／C 确定性缺项可直接纠正并留痕 |
-| E CAEGraph 执行／运行 | [caegraph-execution](caegraph-execution/SKILL.md) | E 专业判断、W1 运行修复、核图、W2 正式取数、最终脚本／HTML／图数据和核对结果 |
+| E CAEGraph 执行／运行 | [caegraph-execution](caegraph-execution/SKILL.md) | E 专业判断、W1 快速运行反馈、核图、W2 定向取数、最终脚本／HTML／图数据和核对结果 |
 
 ## 3. 文件阅读规则
 
@@ -42,7 +42,7 @@ IO_SPEC.md
 
 - **B**：方法沉淀还不足，`WORKFLOW.md` 只记录当前普通默认和高频多尺度两种用法，不冒充成熟通用 Workflow；
 - **D**：只有一个集成动作，不设置 `WORKFLOW.md`，直接读取 `SKILL.md + IO_SPEC.md`；
-- **E**：专业 `WORKFLOW.md` 只写专业业务节点；Worker 派单另读 [WORKER_DELEGATION.md](caegraph-execution/WORKER_DELEGATION.md)及 W1／W2 两份工单模板。
+- **E**：专业 `WORKFLOW.md` 只写专业业务节点；Worker 操作另读 [WORKER_DELEGATION.md](caegraph-execution/WORKER_DELEGATION.md)及 W1／W2 两张短执行卡。
 
 专业判断方法不是独立的平行流程；它写在真正使用该判断的步骤下。篇幅较大的跨步骤方法进入 `references/`。
 
@@ -103,29 +103,35 @@ D 发现 B／C 缺项或错误时：
 
 D 不得无痕改写上游产物。
 
-## 8. E 的专业 Workflow 与 Worker 派单
+## 8. E：两张短执行卡，先拿真实反馈
 
 E 的专业 Workflow 只写：
 
 ```text
-建立基准
-→ 消费候选运行事实并分类问题
+建立最小运行基准
+→ 消费 W1 真实结果并分类问题
 → 核对最终脚本和最终图
-→ 接受图并形成正式取数准入
-→ 消费正式数据事实并核对图与数据
+→ 明确本次正式取数清单
+→ 消费 W2 数据并作必要核对
 → 交付
 ```
 
-Worker 操作另用两份独立工单：
+Worker 操作使用：
 
-- [W1 运行与有限修复模板](caegraph-execution/RUN_REPAIR_ORDER_TEMPLATE.md)
-- [W2 正式取图数据模板](caegraph-execution/DATA_EXPORT_ORDER_TEMPLATE.md)
+- [W1｜运行 CAEGraph 短执行卡](caegraph-execution/RUN_REPAIR_ORDER_TEMPLATE.md)
+- [W2｜导出已接受图数据短执行卡](caegraph-execution/DATA_EXPORT_ORDER_TEMPLATE.md)
 
-二者的触发和回交关系见 [Worker 派单合同](caegraph-execution/WORKER_DELEGATION.md)。W2 只能在 E 已接受最终图并形成正式取数准入后签发，不能与 W1 合并成一张提前授权正式取数的工单。
+二者的触发和回交关系见 [Worker 派单合同](caegraph-execution/WORKER_DELEGATION.md)。W2 仍只能在 E 接受最终图以后启动，但两张卡都采用“**最少填写、先做实事、异常再展开**”：
+
+- 通用工单已经管理的身份、授权和工作区不重复填写；
+- W1 先运行，优先返回 HTML 或首个阻断；
+- W2 只导出明确列出的数据，不默认导出所有阶段；
+- 日志和 `git diff` 优先承载事实；
+- 哈希、全量血缘、完整环境快照和详细缺失说明只在本轮确实需要时补充。
 
 ## 9. 总体完成边界
 
 - A～D 完成但尚未实际运行，只能是 `PLAN_READY`。
-- E 必须先通过 W1 或同版本可复用实物取得候选图，由 E 对照 D／C2 完成专业核图；核图接受后再签 W2 正式取得图数据。
+- E 必须先通过 W1 或同版本可复用实物取得候选图，由 E 对照 D／C2 完成专业核图；核图接受后再用 W2 正式取得本轮需要的图数据。
 - 最终脚本、HTML 和数据必须来自同一有效版本和运行。
 - 材料准备阶段只交付图、数据、来源、核对和限制，不代替合理性分析宣布特征合理或不合理。
