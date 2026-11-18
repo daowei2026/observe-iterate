@@ -13,7 +13,7 @@ Worker 结果必须先回 executor。executor 不能只把工单或 Worker 文�
 ## 2. 第一次拿到 D
 
 1. 核对 `question_id`、业务目标、本次 A～E 或 R 范围、已接受上游产物和当前版本。
-2. M 任务读取 [外层 Workflow](../../control/02_L1_观察材料准备流程.md)和被委派阶段的真实文件：通常是 `SKILL.md / WORKFLOW.md / IO_SPEC.md`；D 只有 `SKILL.md + IO_SPEC.md`；E 还必须读取 `WORKER_DELEGATION.md` 与两份工单模板。R 任务读取 [R Skills README](../../skills/reasonableness-analysis/README.md)及实际需要的 Skill。
+2. M 任务读取 [外层 Workflow](../../control/02_L1_观察材料准备流程.md)和被委派阶段真实文件：通常是 `SKILL.md / WORKFLOW.md / IO_SPEC.md`；D 只有 `SKILL.md + IO_SPEC.md`；E 还必须读取 `WORKER_DELEGATION.md` 与两份工单模板。R 任务读取 [R Skills README](../../skills/reasonableness-analysis/README.md)及实际需要的 Skill。
 3. 核实特征名称、代码版本、特征实例以及可复用的同版本阶段产物。
 4. 区分专业判断、确定性文件处理和需要 Worker 的真实执行；缺写权限不自动等于有权交 Worker。
 5. 明确本 D 可交付什么、哪些问题必须回 manager、哪些结果只可限域使用。
@@ -39,33 +39,55 @@ Worker 结果必须先回 executor。executor 不能只把工单或 Worker 文�
 
 ## 5. M-C｜展示方式准备
 
-读取 [C Skill](../../skills/observation-material-preparation/caegraph-display-preparation/SKILL.md)。必须形成：
+读取 [C Skill](../../skills/observation-material-preparation/caegraph-display-preparation/SKILL.md)、[C Workflow](../../skills/observation-material-preparation/caegraph-display-preparation/WORKFLOW.md)和 [C 字段合同](../../skills/observation-material-preparation/caegraph-display-preparation/IO_SPEC.md)。
 
-- 待展示信息清单；
-- 展示预期和复杂点循环处理记录；
-- 位置与实例可注入的 CAEGraph 展示代码；
-- 特征实例／Feature／数据入口的注入合同；
-- 可打开的预期展示 HTML；
-- CAEGraph 能力缺口及最低替代方式。
+C 固定分成：
 
-C 可以只读检查外层真实特征实例的数据形状，或临时用它生成预期 HTML；但不能把该实例固化为最终运行绑定。C 的正式代码必须保留实例注入接口，真正绑定在 D 完成。
+```text
+C1：列出待展示信息
+C2：形成并迭代展示预期
+    C2A：直接阅读锁定版本 CAEGraph 使用手册
+    C2B：形成第一版展示预期和第一版 HTML
+    C2C：从当前 HTML 列出复杂展示点
+    C2D：循环核实现有能力，并同步更新预期和 HTML
+C3：整理可注入展示代码
+    C3A：整理位置、实例和字段可注入的代码
+    C3B：核对代码与 C2 当前预期
+```
 
-C 不关心 B 最终有多少真实位置。先保证输入和业务主输出可读，再按需要加入中间处理结果。
+必须形成：
+
+- C1 待展示信息清单；
+- C2 当前展示预期和唯一预期 HTML；
+- C2 复杂点循环记录和真实能力缺口；
+- C3 位置、实例和字段可注入的 CAEGraph 代码；
+- D 所需的实例／Feature／数据入口、位置和字段注入合同。
+
+C2A 直接读取锁定版本原手册，不依赖本仓二手速查。C2B 的第一版预期就必须生成 HTML；C2D 每轮直接更新同一份预期和 HTML，没有单独的“固化预期”或“再次生成 HTML”步骤。
+
+C 可以只读检查外层真实特征实例的数据形状，或临时用它生成预期 HTML；但不能把该实例固化为最终运行绑定。C3 正式代码必须保留实例注入接口，真正绑定在 D 完成。
 
 ## 6. M-D｜CAEGraph 定义集成
 
 读取 [D Skill](../../skills/observation-material-preparation/caegraph-definition-integration/SKILL.md)、[D 字段合同](../../skills/observation-material-preparation/caegraph-definition-integration/IO_SPEC.md)和 [CAEGraph 仓库结构与定义集成参考](../../skills/observation-material-preparation/references/CAEGraph仓库结构与定义集成参考.md)。
 
-D 当前是一个单一专业动作，不另读 `WORKFLOW.md`，也不拆成多个管理节点。executor 必须：
+D 是一个单一专业动作，不另读 `WORKFLOW.md`，也不拆成多个管理节点。executor 必须：
 
 - 理解锁定版本 uplot／CAEGraph 仓库中本次使用的导出、配置、布局、绘图、`PlotCtx`、Feature→CDS、数据树和动态／前端路径；
 - 根据外层输入和 A／B／C 产物，正式绑定外层特征实例；
 - 绑定真实 Feature／数据入口、品种、时间、多尺度位置和 A 字段；
-- 保持 C 的展示预期和可注入代码结构；
+- 保持 C2 当前展示预期和 C3 代码的展示语义；
 - 形成可直接交 E 运行的完整 Python CAEGraph 定义／脚本初稿；
-- 记录仓库理解、集成差异、定义级检查和待 E 确认项。
+- 记录仓库理解、上游问题处理、集成差异、定义级检查和待 E 确认项。
 
-D 不派 Worker，不把文字方案或代码片段当完整定义，不修改 B 位置和 C 展示语义，不把 C 的预览实例当成最终实例。
+### D 发现 B／C 缺项时
+
+- 修法唯一、证据清楚、不改变 B 位置选择或 C2 展示预期时，可直接纠正并记录修改前后和依据；
+- 需要重新选位置、改变展示预期、存在多个合理方案或拿不准时，返回 B／C；
+- A 的事件、字段、位置或引用关系不清时返回 A；
+- 不得在最终代码中无痕修正上游问题。
+
+D 不派 Worker，也不把文字方案或代码片段当完整定义。
 
 ## 7. M-E｜CAEGraph 执行／运行
 
@@ -78,31 +100,31 @@ D 不派 Worker，不把文字方案或代码片段当完整定义，不修改 B
 - [W2 正式取数模板](../../skills/observation-material-preparation/caegraph-execution/DATA_EXPORT_ORDER_TEMPLATE.md)
 - [执行与取数技术参考](../../skills/observation-material-preparation/references/CAEGraph执行取数与验证.md)
 
-### 7.1 E 自己承担的专业业务流程
+### 7.1 E 自己承担的专业 Workflow
 
-executor 自己负责：
+专业 Workflow 中不写“派发 W1／W2”为业务判断节点。executor 自己负责：
 
 ```text
-建立执行与核图基准
-→ 消费 Worker 回报并判断问题性质
-→ 返回 B／C／D 或接受候选最终结果
-→ 与 D 核对最终脚本
-→ 与 C 展示预期／HTML 核对最终图
-→ 形成正式取数准入
-→ 核对正式数据包与最终图
-→ 交付
+E1 建立执行与核图基准
+→ E2 消费候选运行事实并判断问题性质
+→ E3 与 D 核对最终脚本、与 C2 核对最终图
+→ E4 形成正式取数准入
+→ E5 消费正式数据事实并核对图与数据
+→ E6 交付
 ```
 
 不能把这些专业判断写进工单让 Worker 代替完成。
 
-### 7.2 两张独立 Worker 工单
+### 7.2 Worker 派单单独处理
 
-真实操作分成两张工单：
+[Worker 派单合同](../../skills/observation-material-preparation/caegraph-execution/WORKER_DELEGATION.md) 将专业产物映射到操作工单：
 
-1. **W1｜运行与有限修复**：运行 D 定义，进行授权内机械修复，返回候选脚本、候选 HTML、日志、patch 和未决问题；
-2. **W2｜正式取图数据**：只有 E 已接受最终图并形成正式取数准入后才签发，绑定最终脚本／HTML／运行，导出正式数据、manifest、映射和哈希。
+| 专业位置 | 工单 | 回哪个节点消费 |
+|---|---|---|
+| E1 基准已形成 | W1 运行与有限修复 | E2 |
+| E4 正式取数准入已形成 | W2 正式取图数据 | E5 |
 
-不得在 W1 开始时用一张统一工单同时授权 W2。W1 和 W2 均须符合通用 V2 `WORKER_ORDER`，阶段模板只补充专业字段。
+两张工单分别使用独立模板；不得在 W1 开始时用一张统一工单同时授权 W2。
 
 ### 7.3 Worker 可改和不可改
 
@@ -112,7 +134,7 @@ W1 必须返回 executor：
 
 - 更换品种、时间、多尺度位置或特征实例；
 - 删除／增加业务字段；
-- 改变主附图、图元、事件位置表达、标准化或交互；
+- 改变 C2 的主附图、图元、事件位置表达、标准化或交互；
 - 另算一个值替代特征输出；
 - 无法判断是 B、C 还是 D 问题。
 
@@ -122,8 +144,8 @@ W2 不允许修改已经接受的脚本、图、位置、字段和展示语义�
 
 W1 回报后，executor 仍须：
 
-1. 与 D 核对最终脚本：实例、品种、时间、字段、面板、图元、转换和 patch 是否在权限内；
-2. 与 C 展示预期／HTML 核对最终图：面板结构、主附图、事件位置、多品种组织、图例／hover 和必要中间结果；
+1. 与 D 核对最终脚本：实例、品种、时间、字段、面板、图元、转换、D 上游纠正和 patch 是否正确；
+2. 与 C2 当前展示预期／HTML 核对最终图；
 3. 若位置问题回 B、展示问题回 C、集成问题回 D；不能由 Worker 静默修正；
 4. 只有最终图被接受后，才形成正式取数准入并签 W2；
 5. W2 回报后，核对最终脚本、HTML 和数据来自同一有效版本／运行，图层到数据源、品种、时间、身份、数据阶段和缺失语义一致。
