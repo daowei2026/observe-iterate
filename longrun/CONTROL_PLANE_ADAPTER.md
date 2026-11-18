@@ -1,128 +1,37 @@
-# 与本分支三层业务控制面的接入合同（候选）
+# 既定 Workflow / Skill 与长程 V2 的接入关系
 
-## 1. 不同层的权威边界
+此文件只说明**专业工作如何进入 V2 的 C/D/W 和整体状态**；不重新定义观察方法、合理性分析方法、专业完成标准或额外 Gate。
 
-本分支根 [README](../README.md)、`control/` 和 `skills/` 规定：
+## 1. 来源及职责
 
-- **L0**：完整业务任务、M↔R、补证回原问题和父任务收束；
-- **L1-M**：采用 [control/02](../control/02_L1_观察材料准备流程.md) 的 A～E 外层 Workflow；各阶段专业方法见 [五个阶段 Skill](../skills/observation-material-preparation/SKILL.md)；
-- **L1-R**：按合理性分析 Skills 及候选 R0～R5 管理视图组织；
-- **L2**：记录 A～E／R 节点的实际 I/O 和消费资格，不按内部步骤机械派工；
-- **运行层**：`run_id`、`delegation_id`、`work_order_id`、`call_id` 是通信身份，不替代 `question_id`、阶段实例、预期版本和材料身份。
+- **整体 Workflow**：由本 Run 实际采用的业务仓流程提供。当前观察材料准备见 [control/02](../control/02_L1_观察材料准备流程.md)：A → (B、C) → D → E，E 按对应 Skill 的真实结论返回受影响阶段。
+- **专业 Skill**：当前 M 的五个 Skill 见 [观察材料准备总入口](../skills/observation-material-preparation/SKILL.md)，各自的 `SKILL.md / WORKFLOW.md / IO_SPEC.md` 和 Reference 是专业执行依据。合理性分析按本 Run 实际采用的版本处理，不在这里固定 R0～R5。
+- **多层 Workflow 运行协调 Chat（V2 `manager`）**：依据已有输入、真实 Skill 回交、阶段依赖及其版本推进、等待、回流，并维护 [当前完成全景](templates/TASK_PROGRESS.md)。
+- **Skill 执行 Chat（V2 `executor`）**：执行本次指定 Skill；专业输出、完成条件、何时需要 Worker、如何消费 Worker 返回均依据该 Skill。
+- **主控 Codex**：处理真实身份/授权、发送、回执、去重、消息回流、GitHub 保存和运行事实核验，不自行形成专业结论。
 
-真实 Owner GO 选择“manager 执行控制面”时，manager 在试运行范围内作业务 Gate、返修、补证、收束和完成全景维护；executor 承担实际专业工作；主控只负责机械身份、发送、回交、核验和保存。该模式不是生产级受保护 Gate 服务。
+## 2. C/D/W 与专业工作的关系
 
-历史旧结构只用于追溯既有 Run，不指挥新工作。
+- `C` 是一次真实模型调用；`D` 是具名 Skill 工作委派；`W` 是 Skill 执行 Chat 在该 Skill 确有需要且获 Owner 权限覆盖时派出的真实操作工单。三种身份不是 A/B/C/D/E 业务阶段，也不是 Skill 内部步骤。
+- 一项 D **默认对应一个 Skill 工作**，可以通过多个 C 继续，直到其 Skill 原生流程实际完成或有据报告无法继续。无需为每个内部步骤单独创建 D。
+- D 的正文按 [Skill 工作委派模板](templates/PRO_DELEGATION.md) 传递工作身份、Skill 版本、已接受上游输入/成果、返回对象；**不自行增加执行约束、专业方法、业务预期、Worker 返回处理说明或另一套完成条件**。Owner 的真实操作权限由 V2 机器授权机制独立核验。
+- 同一个执行 Chat 可以在不同工作中运行不同 Skill，也可以按实际依赖增加多个执行 Chat。A 完成后 B/C 可以并行，D 只能消费当前有效的 A/B/C 结果；并行工作须具有独立身份与可核对的产物版本。
+- 某 Skill 的内部步骤、循环和 Worker 处理由该 Skill 自己负责。E 当前的实际运行/取数仍按 [E Skill](../skills/observation-material-preparation/caegraph-execution/SKILL.md) 与其 Worker 合同进行，V2 只保证 W 返回原签发的 executor，不另设专业处理法。
 
-## 2. D/W 可携带但不改写的业务封面
-
-一张专业委派或 Worker 工单可通过 `business_context_ref` 指向业务原件或最小封面：
-
-```yaml
-parent_task_id: ...
-question_id: ...
-material_stage: A | B | C | D | E
-stage_instance_id: ...
-work_item_id: ...
-feature_name: ...
-feature_code_version: ...
-feature_instance_ref: ...
-input_refs: [...]
-input_versions: {code: ..., data: ..., display: ..., definition: ..., expectation: ...}
-required_input_scope: ...
-expected_outputs: [...]
-completion_condition: ...
-possible_outcomes: [...]
-continuation_target: ...
-```
-
-封面不要求每个字段、图层或内部步骤另写一张表。一份专业 D 可以覆盖具备前置条件的相邻工作；但 D 阶段本身是一个单一集成动作，不能虚构 D1～D8。E 中 W1、W2 必须是不同的 Worker 工单身份，不能混成“一次 Worker run”。
-
-## 3. Gate 与任务回交分开
-
-V2 机械门禁只回答：身份、来源、版本、Owner 授权、回执、动作账本和派发顺序。它不回答：
-
-- A～E 的专业产物是否合格；
-- C1 是否列全待展示信息；C2 当前预期和唯一 HTML 是否已处理复杂点；C3 是否正确保留注入接口；
-- D 是否真正理解锁定 CAEGraph 仓库并完成正式实例绑定；D 直接纠正 B／C 是否有唯一依据且未改变业务选择；
-- 最终图是否符合 D 定义和 C2 当前展示预期／HTML；
-- 是否已经形成 W2 的正式取数准入；
-- W2 数据是否与最终图一致；
-- R 的冻结、对照、诊断、标定是否业务上通过；
-- `SUPPORTS/COUNTERS/...` 哪种是“好”；
-- `PLAN_READY/DATA_READY/PARTIAL_WITH_LIMITS/BLOCKED` 是否满足当前消费者。
-
-这些由 manager／executor 按当前 Control 和 Skill 处理。主控不能自己推断业务结论，也不能把 `UNKNOWN` 当 `PASS`。
-
-## 4. M-A～E 与 Worker 接入
+## 3. 结果回流和整体状态
 
 ```text
-A occurrence 理解
-    → B 观察位置
-    → C1 待展示信息
-      → C2 当前展示预期、复杂点循环和唯一预期 HTML
-      → C3 可注入展示代码
-外层输入 + A + B + C1/C2/C3 + CAEGraph仓库
-    → D 单一集成动作：正式绑定实例／位置／字段，处理有界确定性上游缺项
-D + C2当前预期/HTML + 特征实例 + 环境/授权
-    → E1 执行与核图基准
-E1 → W1 运行与有限修复 → E2/E3 专业评价和核图
-E3 接受最终图 → E4 正式取数准入
-E4 → W2 正式图数据导出 → E5 图与数据一致性判断 → E6 交付
+Skill 执行 Chat 依 Skill 产生专业结果
+  → V2 验证真实回交并送原 Workflow 运行协调 Chat
+  → 运行协调 Chat 依据既定依赖和实际有效版本确定续作／后继／回流
+  → 更新 TASK_PROGRESS 当前任务全景
+  → 主控核验并保存真实来源和下一 C/D/W
 ```
 
-- C2B 第一版展示预期就必须生成 HTML；C2D 每轮同步更新预期和同一份 HTML；C3 不再另造第二份预期 HTML；
-- C 可以只读使用外层实例或临时预览，但 C3 代码必须保留实例、位置和字段注入接口；
-- D 没有内部 Workflow，不派 Worker；executor 亲自完成仓库理解和完整定义集成；
-- D 只有在修法唯一、不引入新业务选择、不改变 B 位置或 C2 展示语义且完整留痕时，才可直接纠正 B／C 小缺项；否则返回原阶段；
-- E 的专业 Workflow 由 executor 自己执行，不能写进工单让 Worker 代替；
-- E 专业 `WORKFLOW.md` 不把派单写成业务节点；E1 产物映射到 W1，E4 产物映射到 W2；
-- W1 只运行 D 定义、处理授权内机械修复并返回候选脚本／HTML／日志／patch；
-- Worker W1 结果先回 executor；位置问题返回 B，展示问题返回 C，集成绑定问题返回 D；
-- executor 用 D／C2 完成专业核图并正式接受后，才可形成取数准入；
-- W2 是独立工单，只导出已接受图的数据，不得修改脚本、位置、字段或展示语义；
-- 脚本、HTML、W2 数据和专业核对必须绑定同一有效版本／运行。
+运行协调 Chat不需要为正常的 Skill 推进再签独立专业 Gate 或专业管理决定。Skill 的专业完成由对应 Skill 执行 Chat 按原生合同判断；协调 Chat 负责准确记录有哪些工作与结果、哪些依赖已满足、哪些仍需继续或等待。
 
-实际 W1／W2 的专业字段分别采用：
+状态视图维护工作项、阶段/Workflow、业务问题、父任务之间的当前关系，并标记版本失效、未完成、在途、阻断和原工作接续入口。**全景只引用已核实的真实成果/回执，不新增状态系统或机器字段**。某项 W 完成不等于专业 Skill 完成；某项 D 完成不等于父任务完成。
 
-- `skills/observation-material-preparation/caegraph-execution/RUN_REPAIR_ORDER_TEMPLATE.md`
-- `skills/observation-material-preparation/caegraph-execution/DATA_EXPORT_ORDER_TEMPLATE.md`
+## 4. 机械安全与采用边界
 
-同时继续满足通用 `longrun/templates/WORKER_ORDER.md` 和 V2 Schema；阶段模板不能给机器协议偷偷增加未批准必填字段。
-
-## 5. 补证、重复比较与任务结束
-
-- `AdditionalEvidenceRequest` 指向原 `question_id`、阶段／工作实例和原分析上下文；结果返回同一消费者。
-- 实例复验 `INSTANCE_REVALIDATION` 保留唯一比较工作身份、原始业务窗口、新旧版本与用途，避免 R2/R4 重复发起。
-- `PARTIAL / PROVEN_UNAVAILABLE / BLOCKED` 只关闭或限制对应范围；父任务是否可有界结束仍按当前完成合同判断。
-- 任一 W1／W2 STOP 不是 E、M 或父任务的 STOP；其他独立合法工作可以继续。
-- C2 当前预期／HTML、D 完整定义、E1 基准或 E4 正式取数准入变化时，旧下游结果保留历史但不能无痕复用。
-
-## 6. 专业指南怎样进入具体 D
-
-manager 首轮任务引用同版 [manager 指南](professional/PRO_MANAGER_GUIDE.md)；executor 的专业 D 引用同版 [executor 指南](professional/PRO_EXECUTOR_GUIDE.md)，并精确引用本次所需 A～E 阶段 Skill 或 R Skill。
-
-`DELEGATION.md` 保存业务语义；`DELEGATION.json` 保持 V2 现有身份和授权字段。不同专业 D 可以共用一个 executor，但不得把跨 D、跨问题结果混成一次完成。
-
-E 的 W1／W2 仍各自使用正式 `ORDER.md/ORDER.json`；不能只把阶段模板当成已派发工单。
-
-## 7. 业务决定和完成全景如何回交
-
-```text
-executor 专业结果／W1-W2事实／业务证据
-  → manager 作 Gate、返修、补证、后继或收束决定
-  → manager 生成 MANAGEMENT_DECISION + TASK_PROGRESS 更新
-  → manager 有写入工具则提交，否则主控原样保存
-  → 主控回读真实提交与合法后继，再派下一 C/D/W
-```
-
-运行期位置：
-
-- `longrun/runs/<run_id>/business_control/decisions/<decision_id>.md`；
-- `longrun/runs/<run_id>/business_control/TASK_PROGRESS.md`。
-
-全景反映工作实例、M-A～E／R 阶段、两条 Workflow、逐问题状态、父任务完成条件和下一合法动作。至少区分：C1／C2／C3、D 上游纠正、E1 基准、W1、E2／E3 图核对、E4 准入、W2、E5 一致性；不能等最后才汇总，也不能从聊天散文自行生成专业决定。
-
-## 8. 当前验证边界
-
-Owner 可直接安排真实任务，不要求另建专项测试 Run。但首次 manager→executor→worker→executor→manager 中，仍须真实核实物理线程、工具权限、共享写面、身份、阶段产物、W1／W2 回流和全景保存；跳过专项测试不等于已经联调通过。
+Owner GO 与 V2 原有 `grants`、物理聊天绑定、Worker 实际工作区/单写者校验、动作回执、`UNKNOWN` 对账及版本锁继续有效；不得将“运行协调 Chat 不制定执行约束”误解为可以绕过真正的权限校验。业务仓的新提交不自动升级已经采用固定版本的 Run。
