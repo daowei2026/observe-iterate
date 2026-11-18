@@ -1,0 +1,48 @@
+<!doctype html><html><head><meta charset="utf-8"><title>C2 first CAEGraph display preview</title><style>
+:root{--bg:#f7f9fc;--card:#fff;--ink:#1c2633;--muted:#667085;--grid:#d9e1ec}
+body{margin:0;background:var(--bg);font:14px/1.45 Arial,sans-serif;color:var(--ink)}
+.wrap{max-width:1280px;margin:18px auto;padding:0 16px 28px}h1{font-size:23px;margin:0 0 8px}
+.note{background:#eef5ff;border-left:5px solid #1565c0;padding:10px 12px;margin:10px 0}
+.warn{background:#fff8e1;border-left:5px solid #f9a825;padding:9px 12px;margin:10px 0}
+.bad{background:#ffebee;border-left:5px solid #c62828;padding:9px 12px;margin:10px 0}
+.controls{display:flex;gap:14px;flex-wrap:wrap;padding:8px 0;color:#344054}
+.card{background:var(--card);border:1px solid #dce3ed;border-radius:8px;margin:10px 0;padding:8px 10px;box-shadow:0 2px 7px #102a4312}
+.card h2{font-size:15px;margin:0 0 4px}svg{width:100%;height:auto;display:block}
+.grid{stroke:var(--grid);stroke-width:1}.axis{fill:var(--muted);font-size:11px}.line{fill:none;stroke-width:2}
+.member{stroke-width:2;fill-opacity:.55}.link{fill:none;stroke-width:2;opacity:.5}.raw{fill:#616161;opacity:.22}
+.revision{stroke-width:2;fill-opacity:.68}.required{stroke-width:2;fill-opacity:.52}
+.crosshair{stroke:#455a64;stroke-width:1;stroke-dasharray:3 3;opacity:0;pointer-events:none}
+#tip{position:fixed;display:none;pointer-events:none;z-index:10;max-width:480px;background:#101828;color:#fff;padding:7px 9px;border-radius:5px;font-size:12px;white-space:pre-line;box-shadow:0 3px 14px #0006}
+code{background:#eef2f6;padding:1px 4px;border-radius:3px}
+</style></head><body><div class="wrap"><h1>C2 first preview — deliberately minimal</h1><div class="note"><b>Synthetic preview only.</b> This first version tests a shared-time-axis overview and candidate occurrences before complex-point correction.</div><p>The price lines below are display-normalized; raw values remain conceptually separate.</p><div id="plots"></div><div class="bad"><b>C2C result:</b> V1 is not accepted. It hides member actual/confirmation/known, candidate-member identity and Required pair evidence; normalized price also risks being mistaken for a business value.</div></div><div id="tip"></div><script>
+const NS='http://www.w3.org/2000/svg',W=1180,H=220,L=72,R=24,T=22,B=36,N=30;
+const plots=document.querySelector('#plots'),tip=document.querySelector('#tip');
+const colors={rb:'#1565c0',hc:'#6a1b9a',i:'#00838f'};
+const basis={Supported:'#2e7d32',Incomplete:'#f9a825',Contradicted:'#c62828'};
+const obsY={Open:0,ClosedSupported:1,ClosedInsufficient:2,Withdrawn:3,Subsumed:4,EndedByScope:5};
+const coordY={Bend:0,TurnType:1,Direction:2,Time:3};
+const verdictColor={CoordinateSupports:'#2e7d32',CoordinateUnresolved:'#f9a825',CoordinateVeto:'#c62828'};
+const members=[
+['rb','L-A','R-1','Supported','Open',4,6,8,'FirstRound','DirectionUp','SourceTroughTurn'],['hc','L-A','R-1','Supported','Open',5,7,8,'FirstRound','DirectionUp','SourceTroughTurn'],
+['rb','L-A','R-2','Supported','ClosedSupported',4,6,12,'FirstRound','DirectionUp','SourceTroughTurn'],['hc','L-A','R-2','Supported','ClosedSupported',5,7,12,'FirstRound','DirectionUp','SourceTroughTurn'],['i','L-A','R-2','Supported','ClosedSupported',6,8,12,'SecondRound','DirectionUp','SourceTroughTurn'],
+['rb','L-B','R-1','Incomplete','Open',17,19,20,'SecondRound','DirectionDown','SourcePeakTurn'],['i','L-B','R-1','Incomplete','Open',18,19,20,'FirstRound','DirectionDown','SourcePeakTurn'],
+['rb','L-B','R-2','Contradicted','Withdrawn',17,19,25,'SecondRound','DirectionDown','SourcePeakTurn'],['i','L-B','R-2','Contradicted','Withdrawn',18,20,25,'FirstRound','DirectionDown','SourcePeakTurn']
+].map(a=>({symbol:a[0],life:a[1],revision:a[2],basis:a[3],observation:a[4],actual:a[5],confirmation:a[6],known:a[7],round:a[8],direction:a[9],turn_type:a[10]}));
+const revisions=[
+{known:8,life:'L-A',revision:'R-1',previous:'—',basis:'Supported',observation:'Open',members:'rb,hc',coverage:'complete',closed:false,alternative:'Unambiguous',anchor:14100,deadline:14700,revision_end:15420,overlaps:'—',covered_by:'—'},
+{known:12,life:'L-A',revision:'R-2',previous:'R-1',basis:'Supported',observation:'ClosedSupported',members:'rb,hc,i',coverage:'complete',closed:true,alternative:'Unambiguous',anchor:14100,deadline:14700,revision_end:15420,overlaps:'L-C',covered_by:'—'},
+{known:20,life:'L-B',revision:'R-1',previous:'—',basis:'Incomplete',observation:'Open',members:'rb,i',coverage:'incomplete',closed:false,alternative:'UnresolvedOverlap',anchor:25500,deadline:26100,revision_end:26820,overlaps:'L-D',covered_by:'L-D'},
+{known:25,life:'L-B',revision:'R-2',previous:'R-1',basis:'Contradicted',observation:'Withdrawn',members:'rb,i',coverage:'complete',closed:true,alternative:'Unambiguous',anchor:25500,deadline:26100,revision_end:26820,overlaps:'L-D',covered_by:'L-D'}];
+const timeLabel=i=>{let d=new Date(Date.UTC(2021,2,15,9,0+i*5));return d.toISOString().slice(0,16).replace('T',' ')};
+const price=(s,i)=>s==='rb'?4650+9*Math.sin(i/3)+.28*i:s==='hc'?4920+11*Math.cos(i/4)-.13*i:1030+5*Math.sin(i/2.6)+.16*i;
+const E=(tag,a={},txt='')=>{let e=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);if(txt)e.textContent=txt;return e};
+const x=i=>L+i*(W-L-R)/(N-1),fmt=o=>Object.entries(o).map(([k,v])=>`${k}: ${v}`).join('\n');
+function card(title){let c=document.createElement('div');c.className='card';let h=document.createElement('h2');h.textContent=title;c.append(h);let s=E('svg',{viewBox:`0 0 ${W} ${H}`,class:'plot'});c.append(s);plots.append(c);return s}
+function axes(s,min,max,labels=null){for(let j=0;j<=4;j++){let yy=T+j*(H-T-B)/4;s.append(E('line',{x1:L,x2:W-R,y1:yy,y2:yy,class:'grid'}));let v=max-j*(max-min)/4;s.append(E('text',{x:4,y:yy+4,class:'axis'},labels?labels[Math.round(v)]??'':v.toFixed(2)))}for(let j=0;j<=6;j++){let xx=L+j*(W-L-R)/6,i=Math.round(j*(N-1)/6);s.append(E('line',{x1:xx,x2:xx,y1:T,y2:H-B,class:'grid'}));s.append(E('text',{x:xx-34,y:H-12,class:'axis'},timeLabel(i).slice(5)))}s.append(E('line',{x1:0,x2:0,y1:T,y2:H-B,class:'crosshair'}))}
+function hover(el,text){el.dataset.tip=text;el.onmouseenter=e=>{tip.textContent=e.currentTarget.dataset.tip;tip.style.display='block'};el.onmousemove=e=>{tip.style.left=e.clientX+13+'px';tip.style.top=e.clientY+13+'px'};el.onmouseleave=()=>tip.style.display='none'}
+function cursor(s){s.onmousemove=e=>{let r=s.getBoundingClientRect(),xx=(e.clientX-r.left)/r.width*W;document.querySelectorAll('.crosshair').forEach(q=>{q.setAttribute('x1',xx);q.setAttribute('x2',xx);q.style.opacity=.45})};s.onmouseleave=()=>document.querySelectorAll('.crosshair').forEach(q=>q.style.opacity=0)}
+function mark(s,cx,cy,r,color,cls,text,shape='circle'){let e=shape==='diamond'?E('rect',{x:cx-r*.75,y:cy-r*.75,width:r*1.5,height:r*1.5,transform:`rotate(45 ${cx} ${cy})`}):shape==='triangle'?E('path',{d:`M${cx},${cy-r} L${cx-r},${cy+r} L${cx+r},${cy+r} Z`}):shape==='x'?E('path',{d:`M${cx-r},${cy-r}L${cx+r},${cy+r}M${cx+r},${cy-r}L${cx-r},${cy+r}`,fill:'none'}):E('circle',{cx,cy,r});e.setAttribute('class',cls);e.setAttribute('stroke',color);e.setAttribute('fill',color);s.append(e);hover(e,text);return e}
+
+let s=card('V1 | normalized 5m close overview');for(let j=0;j<=4;j++)s.append(E('line',{x1:L,x2:W-R,y1:T+j*(H-T-B)/4,y2:T+j*(H-T-B)/4,class:'grid'}));for(const sym of ['rb','hc','i']){let b=price(sym,0),v=[...Array(N)].map((_,i)=>price(sym,i)/b),sy=y=>T+(1.02-y)*(H-T-B)/.04,e=E('path',{d:v.map((y,i)=>`${i?'L':'M'}${x(i)},${sy(y)}`).join(' '),stroke:colors[sym],class:'line'});s.append(e);hover(e,`${sym} display ratio; raw values intentionally omitted in V1 overview`)}
+s=card('V1 | candidate occurrences at groupKnownFrom');let sy=y=>T+(5.5-y)*(H-T-B)/6;for(const r of revisions)mark(s,x(r.known),sy(obsY[r.observation]),7,basis[r.basis],'revision',fmt(r));
+</script></body></html>
