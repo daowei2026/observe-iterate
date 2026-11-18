@@ -1,72 +1,92 @@
 # 观察—迭代通用长程协作层 · V2 候选实现
 
-> 位置：`daowei2026/observe-iterate`；本多 Run 改造分支从 `docs/observe-iterate-control-plane-3layer-v0.1-20261114` 派生。此层是跨角色通信/交付/运行事实协议，不是 L0/L1/L2 业务控制面的替代品。**已提供离线机械校验与用例，不代表已经接通主控、手机/ChatGPT/Codex 物理通道或完整自动运行。**
+> 位置：`daowei2026/observe-iterate`。此层是跨角色通信、交付和运行事实协议，不替代 L0/L1/L2 业务控制面。已提供离线机械校验与用例，不代表主控、手机／ChatGPT／Codex 物理通道或完整自动运行已经接通。
 
 ## 1. 用途与边界
 
-Owner 给目标和允许边界；主控 Codex 实际派发、监控、回交、维护运行事实，不作专业结论；专业负责人 Pro 保有父业务任务的专业责任；专业执行人 Pro 承接明确的专业子任务，可以直接产出专业结果，也可以正式签 Worker 工单；Worker Codex 按其工单实施可核对的操作，结果先回签单的专业执行人。专业执行人再将已判断/未决交回原专业负责人。**负责人如何组织和接收工作、执行人怎样按既有专业 Skill 工作，见本目录 [professional/](professional/README.md) 两份候选角色指南。** 原 Skill 本身仍是专业方法权威，候选角色适配不构成正式 Gate 或权限授权。
+Owner 给目标和允许边界；主控 Codex 实际派发、监控、回交并维护运行事实，不作专业结论；专业负责人 Pro 持有父业务任务的管理责任；专业执行人 Pro 承接具名专业 D，可以自己完成，也可以在权限内签 Worker W；Worker 结果先回签单 executor，再由 executor 完成专业核对并回 manager。
 
 ```text
 Owner GO
-  │
-  ▼
-主控 Codex（收发/门禁/对账，非专业决策）
-  ├─ 专业负责人 Pro
-  │     └─ D：专业委派 → 专业执行人 Pro
-  │                              ├─ 自己完成专业工作
-  │                              └─ W：工单 → Worker Codex
-  │                                         └─ Worker Return → 原专业执行人
-  │                              └─ 专业回交 → 原专业负责人
-  └─ 必要时调用已授权、规则确定的校验程序
+  ↓
+主控 Codex（机械收发／门禁／对账）
+  └─ manager
+       └─ D → executor
+              ├─ 自己完成专业工作
+              └─ W → Worker
+                     └─ Worker Return → 原 executor
+              └─ 专业回交 → 原 manager
 ```
 
-这里 `D`（专业委派）、`W`（操作工单）、`C`（实际模型调用）与业务工作身份、材料要求不同。**材料准备直接遵循 [control/02 原 Skill 0～7 步](../control/02_L1_观察材料准备流程.md)**，旧 `S0～S5`/`Mxx` 仅用于历史成果定位，`M05/S2` 已取消；R 的候选阶段/节点另按其现行专业来源。一个实际专业调用可涵盖多个真实工作步骤，不因不同编号增加派单。
+D、W、C 是运行身份，不等于业务阶段、材料要求或问题身份。
+
+材料准备采用当前 [A～E 外层 Workflow](../control/02_L1_观察材料准备流程.md)：
+
+```text
+A 特征事件级 occurrence 理解
+    → B 观察位置准备
+    → C 展示方式准备
+A + B + C
+    → D CAEGraph 定义集成
+    → E CAEGraph 执行／运行
+```
+
+每个阶段的专业方法与字段见 [观察材料准备总入口](../skills/observation-material-preparation/SKILL.md)。历史旧“0～7 步”、S0～S5、Mxx 只用于既有成果追溯；R 按其现行 Skill 和管理视图组织。一次专业调用可以覆盖多个具备前置条件的内部步骤，但不能绕过尚未接受的上游产物。
 
 ## 2. 文件地图
 
 | 文件 | 作用 |
 |---|---|
-| [contracts/LONGRUN_PROTOCOL_V2.md](contracts/LONGRUN_PROTOCOL_V2.md) | 运行身份、合法路径、委派/交付、授权、失败与接续规范 |
-| [contracts/MULTI_RUN_CONTROLLER.md](contracts/MULTI_RUN_CONTROLLER.md) | 多 Run 的身份隔离、Owner 预备独立 Linux 工作区、版本锁定与主控职责（候选） |
-| [controller/CONTROLLER_OPERATIONS.md](controller/CONTROLLER_OPERATIONS.md) | 注册、交错调度、回收、恢复的具体主控动作（待 cgpterm 接入） |
-| [controller/RUN_REGISTRY.json](controller/RUN_REGISTRY.json) | 空索引初稿；不是历史 Run 清单或业务完成事实 |
-| [controller/CGPTERM_ADOPTION_PENDING.md](controller/CGPTERM_ADOPTION_PENDING.md) | 现役 cgpterm 主控 Skill 的后续改造清单，本轮不修改它 |
-| [templates/RUN_RESOURCE_BINDING.example.json](templates/RUN_RESOURCE_BINDING.example.json) | 单 Run Linux 工作区/版本等资源绑定模板，不构成 Owner GO |
-| [contracts/longrun_schema_v2.json](contracts/longrun_schema_v2.json) | Binding、委派、工单、各类 Return 与动作历史的机器字段合同 |
-| [CONTROL_PLANE_ADAPTER.md](CONTROL_PLANE_ADAPTER.md) | 与本分支候选 L0/L1/L2、Gate、补证和 Skill 的接合位置，不偷定专业规则 |
-| [professional/README.md](professional/README.md) | 专业角色使用入口：负责人管完整任务和专业交付接收；执行人按原观察/合理性分析 Skill 承担实质工作 |
-| [tools/longrun_gate.py](tools/longrun_gate.py) | **只读、无副作用**的离线身份、工单、回交、状态链校验；不发送、不写账本 |
-| [tools/multi_run_check.py](tools/multi_run_check.py) | 多 Run 注册表、工作区唯一性和目标 Linux realpath 只读检查 |
-| [tests/test_multi_run_check.py](tests/test_multi_run_check.py) | 多 Run 路径重叠、版本引用、身份冲突等合成用例 |
-| [tests/test_longrun_gate.py](tests/test_longrun_gate.py) | 可运行的正/反向离线夹具，无法证明真实通道接通 |
-| [templates/OWNER_GO.md](templates/OWNER_GO.md) | 新 Run 的最小 GO 信息与明确授权 |
-| [templates/TASK_PROGRESS.md](templates/TASK_PROGRESS.md) | 管理 Pro 在真实 Run 持续维护的五级业务完成全景模板；运行期实际文件按 Run 生成 |
-| [templates/MANAGEMENT_DECISION.md](templates/MANAGEMENT_DECISION.md) | 管理 Pro 的 Gate、返修、补证和后继业务决定原件模板 |
-| [templates/PRO_DELEGATION.md](templates/PRO_DELEGATION.md) | 专业负责人签发的 D 专业委派正文 |
-| [templates/WORKER_ORDER.md](templates/WORKER_ORDER.md) | 专业执行人签发的 W 工单正文 |
-| [MIGRATION_FROM_FPA.md](MIGRATION_FROM_FPA.md) | 旧特征生产 longrun 的保留/不迁入/改变清单 |
+| [contracts/LONGRUN_PROTOCOL_V2.md](contracts/LONGRUN_PROTOCOL_V2.md) | 运行身份、合法路径、委派／交付、授权、失败与接续 |
+| [contracts/MULTI_RUN_CONTROLLER.md](contracts/MULTI_RUN_CONTROLLER.md) | 多 Run 身份隔离、独立 Linux 工作区和版本锁定 |
+| [controller/CONTROLLER_OPERATIONS.md](controller/CONTROLLER_OPERATIONS.md) | 注册、调度、回收和恢复动作 |
+| [controller/RUN_REGISTRY.json](controller/RUN_REGISTRY.json) | 空索引初稿，不是历史 Run 清单 |
+| [controller/CGPTERM_ADOPTION_PENDING.md](controller/CGPTERM_ADOPTION_PENDING.md) | cgpterm 后续接入清单 |
+| [contracts/longrun_schema_v2.json](contracts/longrun_schema_v2.json) | Binding、D/W、Return 和动作历史的机器合同 |
+| [CONTROL_PLANE_ADAPTER.md](CONTROL_PLANE_ADAPTER.md) | 与当前 L0/L1/L2、A～E、Gate 和补证的接入合同 |
+| [professional/README.md](professional/README.md) | manager／executor 专业角色入口 |
+| [tools/longrun_gate.py](tools/longrun_gate.py) | 无副作用的离线身份、工单、回交和状态链校验 |
+| [tools/multi_run_check.py](tools/multi_run_check.py) | 多 Run 注册表和工作区只读检查 |
+| [templates/OWNER_GO.md](templates/OWNER_GO.md) | 新 Run 最小 GO 和授权 |
+| [templates/TASK_PROGRESS.md](templates/TASK_PROGRESS.md) | A～E／R 到父任务的运行期完成全景模板 |
+| [templates/MANAGEMENT_DECISION.md](templates/MANAGEMENT_DECISION.md) | manager 的 Gate、返修、补证和后继决定模板 |
+| [templates/PRO_DELEGATION.md](templates/PRO_DELEGATION.md) | manager 签发的 D 正文模板 |
+| [templates/WORKER_ORDER.md](templates/WORKER_ORDER.md) | executor 签发的 W 工单模板 |
+| [MIGRATION_FROM_FPA.md](MIGRATION_FROM_FPA.md) | 旧 FPA longrun 的迁移边界 |
 
-**不迁入旧 FPA 的 `PRO_MANAGER_GUIDE.md`、`WORKER_EXECUTION_GUIDE.md`、特征生产专属 GO 模板、Runner 字段和历史 `runs/`；新版 `professional/` 是基于本仓观察—分析源重新组织的候选指南，非旧指南副本。** 历史 Run 原封保存在 `feature-production-agent/longrun/runs/`，不能标成新版实例；新版 `runs/<run_id>/` 只在真实 GO 发生后建立。
+新版 `professional/` 是基于本仓当前观察—分析源重新组织的候选指南，不是旧指南副本。历史 Run 原封保留，不能标成新版实例。
 
-## 3. 运行次序（不等于软件已打通）
+## 3. 运行次序
 
-1. Owner 发布真实 GO、专业材料入口和操作权限；主控检查身份、现役聊天/线程、可信账本与可用工作区，登记 `RUN_BINDING.json`。
-2. 主控把正式任务及同版本 [专业负责人指南](professional/PRO_MANAGER_GUIDE.md) 作为来源交给绑定的 manager；其根据真实问题及材料、R 分析依赖签发具名专业委派 D，主控核身份/来源/授权后送执行人。
-3. D 的执行人根据 [专业执行人指南](professional/PRO_EXECUTOR_GUIDE.md) 读取本次有权的材料准备或合理性分析 Skill，并**亲自承担专业分析**；能直接完成时零 W 回交；确需执行工具时签 W，主控检查 W 与 D、授权、去重、实际工作区独占后送 Worker。
-4. Worker 发布结果和实物证据；主控用可信实际回执核实、交还签单专业执行人。专业执行人检查、形成专业结果，再回原专业负责人。
-5. 专业负责人消费结果后执行本次业务 Gate、决定新委派/返修/补证/继续/有据结束；**同轮提交具体业务决定与受影响的五级完成全景更新**。若 Pro 不能直接写 GitHub，主控按其原文保存并回读；主控不替 Pro 作专业决定，也不从 Return `COMPLETE` 推断父任务完成。
+1. Owner 发布真实 GO、专业材料入口和操作权限；主控检查身份、通道、账本与工作区，登记 `RUN_BINDING.json`。
+2. 主控把同版本 manager 指南和业务源交给 manager；manager 只签具名 D，并写明已接受输入、适用阶段、专业产物和后继。
+3. executor 根据同版本 executor 指南读取被委派的 A～E 或 R Skill，亲自承担专业工作；确需工具时签 W。
+4. Worker 发布结果和证据；主控核实后交回原 executor。executor 按 Skill 接受、限域、返修或回流，再回 manager。
+5. manager 消费结果，作 Gate、返修、补证、继续或结束决定，并更新 `MANAGEMENT_DECISION` 和 `TASK_PROGRESS`。主控只保存和回读，不替 manager 作专业决定。
 
-状态未知/发送是否成功不明时，**先核实原物理通道和账本，不能重发**。专业阻断与确定性缺字段应分流，不强制全 Run 暂停。完整条件在协议中。
+状态未知或发送是否成功不明时先对账，不能重发。局部专业阻断不强制全 Run 停止。
 
-## 4. 本次优先采用管理 Pro 执行控制面的试运行模式
+## 4. A～E 在长程角色中的关键边界
 
-当 Owner 的真实 GO 选定此模式时，不等待业务控制程序，manager 承担 L0/L1/L2 的业务 Gate、工作安排、返修、补证、任务收束和 [control/06](../control/06_业务完成全景与更新协议.md) 的全部管理判断。**普通工作和 Gate 不逐项向 Owner 请示；** 实际 Worker 工具权限仍通过 V2 一次性 GO 的真实 `grants` 和运行环境核验。
+- A～D 主要由 executor 依据 Skill 完成专业分析和定义；是否需要 Worker 取决于具体授权和工具需求。
+- D 只形成完整 CAEGraph 定义，不派 Worker。
+- E 内由 executor 签 W。Worker 只修权限内确定性问题，不能选择观察位置、改变展示语义或另算特征值。
+- Worker 结果先回 executor；executor 用 D 核对最终脚本、用 C 预期 HTML 核对最终图。
+- 最终图接受后才正式取得 CAEGraph 图数据，并检查图与数据一致性。
+- 只有脚本或 HTML 不能形成 `DATA_READY`。
 
-Run 内当前业务完成全景约定位置为 `longrun/runs/<run_id>/business_control/TASK_PROGRESS.md`，管理决定为 `.../decisions/<decision_id>.md`。每次 manager 获得新的可核实节点/阶段/Gate 结果后，将全景增量变化与决定在同轮回交，主控只负责按原文持久化并核实际 commit。历史接受与当前需要重验的成果分别保存；没有新事实不需要反复重写进度。**业务完成全景不是 `long-task-status` 的运行心跳，也不是新的独立权威数据库**。详细接线见 [CONTROL_PLANE_ADAPTER](CONTROL_PLANE_ADAPTER.md) 和 [manager 指南](professional/PRO_MANAGER_GUIDE.md)。
+## 5. 管理 Pro 试运行模式
 
-具体特征输入尚未就绪时，不为此虚构业务 Run；Owner 随后用实际任务自然检验跨角色收发与 Worker 往返，不另强制设立专门测试 Run。首次真实调用仍必须满足主控的物理绑定、精确引用与回执核验，不能声称已经联调通过。
+真实 GO 选定该模式时，manager 承担 L0/L1/L2 的业务 Gate、工作安排、返修、补证、收束和 [完成全景](../control/06_业务完成全景与更新协议.md) 管理判断。普通工作和 Gate 不逐项向 Owner 请示；实际 Worker 工具权限仍按 V2 `grants` 和环境核验。
 
-## 5. 快速离线校验
+运行期位置：
+
+- `longrun/runs/<run_id>/business_control/TASK_PROGRESS.md`；
+- `longrun/runs/<run_id>/business_control/decisions/<decision_id>.md`。
+
+完成全景不是运行心跳，也不是新的独立权威数据库；它只投影真实阶段产物、Worker 记录、Gate 和业务决定。
+
+## 6. 快速离线校验
 
 ```bash
 python -m unittest discover -s longrun/tests -v
@@ -79,24 +99,22 @@ python longrun/tools/longrun_gate.py route-return snapshot.json
 python longrun/tools/longrun_gate.py reconcile-actions snapshot.json
 ```
 
-`snapshot.json` 是主控**独立获取且已核实**的文件/回执/账本只读快照，不是被派发者自述的事实，也不是自动从 GitHub 单方文件形成的权威状态。校验脚本不连接 GitHub、不验证签名/真实聊天、不取得锁；这些必须由主控及真实工具另行实施，不能拿离线 PASS 当派发许可证。
+`snapshot.json` 必须是主控独立取得并核实的文件／回执／账本快照。离线 PASS 不能替代真实发送、锁、权限或专业 Gate。
 
-## 6. 当前未完成 / 禁止冒充
+## 7. 当前未完成／禁止冒充
 
-- 本分支 `control/`、`review/` 明说三层业务 Gate 和部分完成/限域政策尚待确认，`professional/` 的角色分工也为待验证适配，不预先固定这些判定结果。
-- cgpterm 已提交专门的 V2 主控 Skill，但物理收发、持久动作账本、并发独占锁、GitHub 远端证据读取、专业角色指南的实际派发和恢复对账 **尚未与 V2 完成联调**。
-- 当前仅是**运行合同 + 机器校验首版**，不是“立刻可自主运行整条观察—分析长程任务”的验收结论。
+- A～E 新 Workflow、三层 Gate 和角色映射仍需真实任务验证；
+- cgpterm 物理收发、持久账本、并发独占锁、GitHub 远端证据读取和恢复对账尚未完成联调；
+- 当前是运行合同和机械校验首版，不是可自主运行整条观察—分析任务的验收结论；
+- 跳过专项测试 Run 不等于联调完成，首次真实调用仍须核实物理绑定、引用和回执。
 
-## 7. 多 Run 首版：Owner 预先准备不同 Linux 工作区
+## 8. 多 Run 首版
 
-当启动第二个及以上的 Run 时，主控按 [多 Run 合同](contracts/MULTI_RUN_CONTROLLER.md) 管理多个独立 Run；每个 Run 的管理 Pro、专业工作、业务完成全景与 C/D/W 仍沿用原流程。**Owner 先准备工作区，在 GO 中逐 Run 指明绝对 Linux 路径**；主控不建、不复用同一个工作区；派 Worker 前在真实目标主机验证目录存在与 realpath 不重叠。外部远端共享写入目标仍按原 V2 真实授权和单写者前提处理。
+Owner 预先为不同 Run 准备独立 Linux 工作区，并在 GO 中逐 Run 给出绝对路径；主控不创建、不复用同一工作区。派 Worker 前在真实目标主机检查目录存在与 realpath 不重叠。每个 Run 的 A～E／R、manager、executor、Worker 和完成全景均独立。
 
-索引文件当前只有空 bootstrap，绝不表明历史没有活跃 Run。新 Run 的 RUN_RESOURCE_BINDING.json 只在真实 GO/可复核的 Linux 证据之后生成。跨 Run 检查见：
-
-~~~bash
+```bash
 python longrun/tools/multi_run_check.py validate-registry longrun/controller/RUN_REGISTRY.json
-# 只能在实际 Linux Worker 主机执行以下物理目录检查
 python longrun/tools/multi_run_check.py check-workspaces longrun/controller/RUN_REGISTRY.json --on-worker-host
-~~~
+```
 
-**本轮仍不改 cgpterm**。现役 Skill 的固定 BASE 路径与单 Run 流程需要之后单独接入新合同；因此完成本文档及单元测试不等于物理多 Run 执行已打通。
+现役 cgpterm 的固定 BASE 路径与单 Run 流程仍需后续接入；本文档和单元测试完成不等于物理多 Run 已打通。
