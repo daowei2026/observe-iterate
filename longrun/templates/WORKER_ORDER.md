@@ -1,4 +1,4 @@
-# W 操作工单正文（由专业执行人 Pro 签发）
+# W 操作工单正文（由运行本次 Skill 的执行 Chat 签发）
 
 - `run_id / work_order_id / parent_delegation_id`：
 - `issuer`（签单 executor）及 `issuer_call_id`：
@@ -12,4 +12,4 @@
 - 幂等/重跑条件、当前在途动作身份：
 - 工单与 Owner、D 的对应引用（精确 GitHub commit）：
 
-Worker 只负责按单执行和事实回交；不能因技术上可执行而推断专业判断已授权，不能让 `ORDER.md` 替代已经发布的 `ORDER.json`。
+本模板只提供 V2 W 的通用操作身份与授权字段；**何时发 W、要求何种专业事实、如何消费 Worker 返回，完全由本次 Skill 决定**。Worker 按实际工单执行并事实回报；`ORDER.md` 不替代已发布的 `ORDER.json`。
