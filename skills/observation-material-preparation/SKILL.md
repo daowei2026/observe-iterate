@@ -19,8 +19,8 @@ description: 当需要为给定特征实例准备并实际取得 CAEGraph 观察
 |---|---|---|
 | A 特征事件级 occurrence 理解 | [feature-occurrence-understanding](feature-occurrence-understanding/SKILL.md) | 事件级 occurrence、事件发生位置、业务主输出／中间处理结果及处理关系 |
 | B 观察位置准备 | [observation-position-preparation](observation-position-preparation/SKILL.md) | 普通场景的当前默认位置，或高频 1d→30m→1m→5s→tick 多尺度位置路径 |
-| C 展示方式准备 | [caegraph-display-preparation](caegraph-display-preparation/SKILL.md) | 待展示信息、展示预期、复杂点处理、位置与实例可注入展示代码、实例注入合同和预期 HTML |
-| D CAEGraph 定义集成 | [caegraph-definition-integration](caegraph-definition-integration/SKILL.md) | 充分理解锁定 CAEGraph 仓库后，把外层输入和 A／B／C 产物一次性集成为完整定义 |
+| C 展示方式准备 | [caegraph-display-preparation](caegraph-display-preparation/SKILL.md) | C1 待展示信息；C2 展示预期、复杂点循环和唯一预期 HTML；C3 位置与实例可注入展示代码及注入合同 |
+| D CAEGraph 定义集成 | [caegraph-definition-integration](caegraph-definition-integration/SKILL.md) | 充分理解锁定 CAEGraph 仓库后，把外层输入和 A／B／C 产物一次性集成为完整定义；拿得准的 B／C 确定性缺项可直接纠正并留痕 |
 | E CAEGraph 执行／运行 | [caegraph-execution](caegraph-execution/SKILL.md) | E 专业判断、W1 运行修复、核图、W2 正式取数、最终脚本／HTML／图数据和核对结果 |
 
 ## 3. 文件阅读规则
@@ -42,9 +42,9 @@ IO_SPEC.md
 
 - **B**：方法沉淀还不足，`WORKFLOW.md` 只记录当前普通默认和高频多尺度两种用法，不冒充成熟通用 Workflow；
 - **D**：只有一个集成动作，不设置 `WORKFLOW.md`，直接读取 `SKILL.md + IO_SPEC.md`；
-- **E**：除 `WORKFLOW.md + IO_SPEC.md` 外，还必须读取 [Worker 派单合同](caegraph-execution/WORKER_DELEGATION.md)以及 W1／W2 两份工单模板。
+- **E**：专业 `WORKFLOW.md` 只写专业业务节点；Worker 派单另读 [WORKER_DELEGATION.md](caegraph-execution/WORKER_DELEGATION.md)及 W1／W2 两份工单模板。
 
-专业判断方法不是一份独立的平行流程；它写在真正使用该判断的步骤下。篇幅较大的跨步骤方法进入 `references/`。
+专业判断方法不是独立的平行流程；它写在真正使用该判断的步骤下。篇幅较大的跨步骤方法进入 `references/`。
 
 ## 4. 外层输入与专业知识的边界
 
@@ -59,13 +59,22 @@ IO_SPEC.md
 特征实例的职责边界为：
 
 ```text
-C：只读理解或临时预览，正式代码保留实例注入接口
+C：只读理解或临时预览；C3 正式代码保留实例注入接口
 D：把外层真实特征实例正式绑定进完整定义
 ```
 
-## 5. 保留的技术参考
+## 5. CAEGraph 资料
 
-- [CAEGraph 展示能力与构建速查](references/CAEGraph展示能力与构建速查.md)
+### C 直接读取原使用手册
+
+C 不再维护本仓二手“展示能力速查”。C2A 直接阅读锁定版本原件：
+
+- [`daowei2026/uplot@e6.2/CAEGraph使用手册.md`](https://github.com/daowei2026/uplot/blob/e6.2/CAEGraph使用手册.md)
+
+复杂展示点若不能仅靠手册判断，再查锁定版本对应类、参数、示例和源码。
+
+### 其他保留资料
+
 - [CAEGraph 仓库结构与定义集成参考](references/CAEGraph仓库结构与定义集成参考.md)
 - [CAEGraph 执行、核图与取数参考](references/CAEGraph执行取数与验证.md)
 - [高频多尺度观察位置参考](observation-position-preparation/MULTISCALE_POSITION_REFERENCE.md)
@@ -74,18 +83,49 @@ D：把外层真实特征实例正式绑定进完整定义
 
 候选方法稿不是 A～E 的固定必经步骤。需要时由对应阶段 Skill 按适用条件引用。
 
-## 6. E 的两类 Worker 工单
+## 6. C 的三部分
 
-E 的专业 Workflow 与 Worker 操作分开：
+```text
+C1：列出待展示信息
+C2：理解 CAEGraph，直接形成第一版展示预期和 HTML；复杂点循环中同步更新预期和同一份 HTML
+C3：把 C2 当前实现整理成位置、实例和字段可注入的 CAEGraph 代码
+```
+
+C2 循环结束时的当前 HTML 就是唯一预期 HTML；C3 不再另造第二份预期 HTML。若 C3 整理代码时必须改变展示预期，应返回 C2 同步更新预期与 HTML。
+
+## 7. D 的直接纠正边界
+
+D 发现 B／C 缺项或错误时：
+
+- 修法唯一、证据清楚、不改变 B 的位置选择或 C2 展示语义时，可以直接纠正并记录修改前后和依据；
+- 需要重新选择位置、改变展示预期、存在多个合理方案或涉及业务判断时，必须返回 B／C；
+- A 的事件、字段或关系事实不清时返回 A。
+
+D 不得无痕改写上游产物。
+
+## 8. E 的专业 Workflow 与 Worker 派单
+
+E 的专业 Workflow 只写：
+
+```text
+建立基准
+→ 消费候选运行事实并分类问题
+→ 核对最终脚本和最终图
+→ 接受图并形成正式取数准入
+→ 消费正式数据事实并核对图与数据
+→ 交付
+```
+
+Worker 操作另用两份独立工单：
 
 - [W1 运行与有限修复模板](caegraph-execution/RUN_REPAIR_ORDER_TEMPLATE.md)
 - [W2 正式取图数据模板](caegraph-execution/DATA_EXPORT_ORDER_TEMPLATE.md)
 
-W2 只能在 E 已接受最终图并形成正式取数准入后签发，不能与 W1 合并为一张提前授权正式取数的工单。
+二者的触发和回交关系见 [Worker 派单合同](caegraph-execution/WORKER_DELEGATION.md)。W2 只能在 E 已接受最终图并形成正式取数准入后签发，不能与 W1 合并成一张提前授权正式取数的工单。
 
-## 7. 总体完成边界
+## 9. 总体完成边界
 
 - A～D 完成但尚未实际运行，只能是 `PLAN_READY`。
-- E 必须先通过 W1 取得候选图，由 E 对照 D／C 完成专业核图；核图接受后再签 W2 正式取得图数据。
+- E 必须先通过 W1 或同版本可复用实物取得候选图，由 E 对照 D／C2 完成专业核图；核图接受后再签 W2 正式取得图数据。
 - 最终脚本、HTML 和数据必须来自同一有效版本和运行。
 - 材料准备阶段只交付图、数据、来源、核对和限制，不代替合理性分析宣布特征合理或不合理。
