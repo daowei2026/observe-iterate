@@ -18,14 +18,14 @@ description: 当需要为给定特征实例准备并实际取得 CAEGraph 观察
 | 阶段 | Skill | 主要成果 |
 |---|---|---|
 | A 特征事件级 occurrence 理解 | [feature-occurrence-understanding](feature-occurrence-understanding/SKILL.md) | 事件级 occurrence、事件发生位置、业务主输出／中间处理结果及处理关系 |
-| B 观察位置准备 | [observation-position-preparation](observation-position-preparation/SKILL.md) | 最终 CAEGraph 使用的品种和时间；多层位置接口待 Owner 方法补齐 |
-| C 展示方式准备 | [caegraph-display-preparation](caegraph-display-preparation/SKILL.md) | 展示方式定义和预期展示 HTML |
-| D CAEGraph 定义集成 | [caegraph-definition-integration](caegraph-definition-integration/SKILL.md) | 已绑定真实实例、字段、品种和时间的完整 CAEGraph 定义 |
+| B 观察位置准备 | [observation-position-preparation](observation-position-preparation/SKILL.md) | 普通场景的当前默认位置，或高频 1d→30m→1m→5s→tick 多尺度位置路径 |
+| C 展示方式准备 | [caegraph-display-preparation](caegraph-display-preparation/SKILL.md) | 待展示信息、展示预期、复杂点处理、位置独立展示代码和预期 HTML |
+| D CAEGraph 定义集成 | [caegraph-definition-integration](caegraph-definition-integration/SKILL.md) | 将 C 代码绑定真实实例、字段、品种和时间后的完整 CAEGraph 定义 |
 | E CAEGraph 执行／运行 | [caegraph-execution](caegraph-execution/SKILL.md) | 最终脚本、最终 HTML、图数据、运行与核对结果 |
 
 ## 3. 文件阅读规则
 
-每个阶段目录均采用：
+每个阶段目录通常采用：
 
 ```text
 SKILL.md
@@ -38,7 +38,9 @@ IO_SPEC.md
     字段级输入输出
 ```
 
-专业判断方法不是一份独立的平行流程；它写在 `WORKFLOW.md` 中真正使用该判断的步骤下。篇幅较大的跨步骤方法才进入 `references/`。
+B 当前是例外：方法沉淀还不足，`WORKFLOW.md` 只记录当前普通默认和高频多尺度两种用法，不冒充成熟通用 Workflow。
+
+专业判断方法不是一份独立的平行流程；它写在 `WORKFLOW.md` 中真正使用该判断的步骤下。篇幅较大的跨步骤方法进入 `references/`。
 
 ## 4. 外层输入与专业知识的边界
 
@@ -48,11 +50,13 @@ IO_SPEC.md
 - 特征代码版本；
 - 特征实例。
 
-这些是本次用例信息。Occurrence 分析方法、位置选择方法、主附图规则、CAEGraph 能力和 Worker 修改权限属于 Skill／Reference 中的专业知识，不要求每次运行重新填写，也不得与本次品种、时间等用例事实混在一起。
+这些是本次用例信息。Occurrence 分析方法、普通位置默认、高频多尺度位置层级、主附图规则、CAEGraph 能力和 Worker 修改权限属于 Skill／Reference 中的专业知识，不要求每次运行重新填写，也不得与本次品种、时间等用例事实混在一起。
 
 ## 5. 保留的技术参考
 
+- [CAEGraph 展示能力与构建速查](references/CAEGraph展示能力与构建速查.md)
 - [CAEGraph 执行、核图与取数参考](references/CAEGraph执行取数与验证.md)
+- [高频多尺度观察位置参考](observation-position-preparation/MULTISCALE_POSITION_REFERENCE.md)
 - [观察材料准备任务记录模板](templates/观察材料准备任务单.md)
 - [候选观察方法索引](../observation-method-candidates/README.md)
 
