@@ -101,7 +101,7 @@ BLOCKED → COMPLETED（只在原动作证据已查清时）
 
 ## 9. 多层 Workflow 运行协调与整体状态
 
-本版只采用**多层 Workflow 运行协调 Chat + 按需多个 Skill 执行 Chat**的分工，不保留另一套“管理 Pro 全面负责业务控制面”的运行方式：
+本版只采用**多层 Workflow 运行协调 Chat + 按需多个 Skill 执行 Chat**的职责分工：
 
 - 协调 Chat 持有 Owner 已明确的任务输入、已采用的 Workflow、Skill 及其真实成果引用；沿既定依赖调用下一 Skill、接续原工作或按已规定的返回路径处理，不自行补充专业任务内容。
 - Skill 执行 Chat 负责其 Skill 的专业分析、内部流程、原生输出、完成判断及该 Skill 规定的 Worker 使用与结果处理；专业工作允许多次 C 接续同一 D。
