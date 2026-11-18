@@ -2,89 +2,104 @@
 
 ## 1. 不同层的权威边界
 
-本分支根 [README](../README.md) 与 `control/`、`review/` 明确：L0/L1/L2 仍为候选控制设计，专业 Skill 的方法不在控制面重写。**当真实 Owner GO 选用本轮“管理 Pro 执行控制面”模式时**，由 manager 在试运行范围内亲自完成所有业务管理判断、Gate、定向返修、补证、收束和业务完成全景维护；executor 继续承担实际专业工作，主控继续只负责机械身份/发送/回交/核验及保存。试运行的管理决定不是已有生产级受保护 Gate/权限服务。
+本分支根 [README](../README.md)、`control/` 和 `skills/` 规定：
 
-- L0：单份 `BusinessTaskInput`（业务目的、对象、已知约束和未定边界）/ `ParentTaskOutcome`，M ↔ R 与 AdditionalEvidenceRequest 的原点恢复；完成深度及允许未决可随任务合法查明，不强制起步另填第二份 `TaskBoundary`。
-- L1：**观察材料准备直接采用 [control/02](../control/02_L1_观察材料准备流程.md) 的原 Skill 0～7 步**；R 仍按其 Skill 与候选 `R0～R5` 视图组织，不把二者改写成相同形式。旧 M 的 S0～S5 以及独立 S2 已取消。
-- L2：旧 `Mxx` 仅为历史成果/I-O 定位标签（原 M05 已退役），不构成必经专业节点；`Rxx` 目前维持原候选 I/O；`MaterialRequirement`、`WorkItem`、`ExecutionAction` 仍不应混同。
-- 运行层：`run_id`、`delegation_id`、`work_order_id`、`call_id` 是通信/任务执行身份，不替代 `question_id`、`analysis_round_id`、`expectation_version`、`material_id`。
+- **L0**：完整业务任务、M↔R、补证回原问题和父任务收束；
+- **L1-M**：采用 [control/02](../control/02_L1_观察材料准备流程.md) 的 A～E 外层 Workflow；各阶段专业方法见 [五个阶段 Skill](../skills/observation-material-preparation/SKILL.md)；
+- **L1-R**：按合理性分析 Skills 及候选 R0～R5 管理视图组织；
+- **L2**：记录 A～E／R 节点的实际 I/O 和消费资格，不按内部步骤机械派工；
+- **运行层**：`run_id`、`delegation_id`、`work_order_id`、`call_id` 是通信身份，不替代 `question_id`、阶段实例、预期版本和材料身份。
+
+真实 Owner GO 选择“manager 执行控制面”时，manager 在试运行范围内作业务 Gate、返修、补证、收束和完成全景维护；executor 承担实际专业工作；主控只负责机械身份、发送、回交、核验和保存。该模式不是生产级受保护 Gate 服务。
+
+历史旧“0～7 步”、S0～S5、M05/S2 或 `G-PLAN/G-RUN/G-MATERIAL` 只用于追溯既有 Run，不指挥新工作。
 
 ## 2. D/W 可携带但不改写的业务封面
 
-一张专业委派或 Worker 工单在实际使用时，可通过 `business_context_ref` 指向业务原生材料或最小封面（精确提交引用），建议封面保存：
+一张专业委派或 Worker 工单可通过 `business_context_ref` 指向业务原件或最小封面：
 
 ```yaml
 parent_task_id: ...
 question_id: ...
-professional_step: 5         # M：原 Skill 0～7 步；此处例为实际取数
-legacy_control_nodes: [M06, M07] # 仅在追溯旧成果时填写，不是新任务必须执行的节点
+material_stage: A | B | C | D | E   # M 任务适用
+stage_instance_id: ...
 work_item_id: ...
+feature_name: ...                    # M 外层输入适用
+feature_code_version: ...
+feature_instance_ref: ...
 input_refs: [...]
-input_versions: {code: ..., data: ..., parameter: ..., expectation: ...}
-required_input_scope: ...     # 对象、时间、用途、就绪等级
+input_versions: {code: ..., data: ..., display: ..., definition: ..., expectation: ...}
+required_input_scope: ...
 expected_outputs: [...]
 completion_condition: ...
 possible_outcomes: [...]
 continuation_target: ...
 ```
 
-这个封面不要求每份材料再写一张表。单一真实数据加工可以满足多项 `MaterialRequirement`；复验必须保留被消费的对应身份和资格。
+封面不要求每个字段、图层或内部步骤另写一张表。一份 D 可以覆盖具备前置条件的相邻工作；一份 E Worker run 可以产出多个技术文件，但不能替代 executor 的专业核对。
 
 ## 3. Gate 与任务回交分开
 
-V2 机械门禁只回答：谁派给谁、来源是否已存在、精确版本是否一致、Owner 操作授权是否覆盖、回执与动作账本是否相符、是否已经派发或正在等待。不回答：
+V2 机械门禁只回答：身份、来源、版本、Owner 授权、回执、动作账本和派发顺序。它不回答：
 
-- `H0/H1/H2/H3` 是否业务上通过；
-- 原 Skill 步骤 0～7 是否取得了真实足够的材料；历史 `G-PLAN/G-RUN/G-MATERIAL` 不是必须分阶段单独通过的门禁。R 的 `G-EXPECTATION-FREEZE / G-COMPARISON / G-DIAGNOSIS / G-CALIBRATION` 等专业判断仍按 R 适用工作处理；
-- `SUPPORTS/COUNTERS/MISSING/AMBIGUOUS/NOT_APPLICABLE/PENDING` 哪种是专业好坏；
-- M 交接的 `PLAN_READY/DATA_READY/PARTIAL_WITH_LIMITS/BLOCKED` 和真实限制，不自动证明 R 当前消费者所需输入已满足；R03/R05 依实际工作分别检查探索样本或正式对照的输入。**H1 不再分成材料准备的两条正式出口。**
+- A～E 的专业产物是否合格；
+- 最终图是否符合 D 定义和 C 预期 HTML；
+- 是否已经允许正式取图数据；
+- R 的冻结、对照、诊断、标定是否业务上通过；
+- `SUPPORTS/COUNTERS/...` 哪种是“好”；
+- `PLAN_READY/DATA_READY/PARTIAL_WITH_LIMITS/BLOCKED` 是否满足当前消费者。
 
-试运行期间，对尚未程序化或尚需专业判断的控制点，**交 manager 按真实证据作出具名业务决定**，包含通过/返修/限域/补证/等待/收束及合理后继；主控不能自己推断业务结论，也不能把 `UNKNOWN` 当 `PASS`。D01、D04/D05、D10、D12、D13/D15 等在试运行中由 manager 逐案处理并记录哪些判据仍待迭代，而不是要求 Owner 每次补批。
+这些由 manager／executor 按当前 Control 和 Skill 处理。主控不能自己推断业务结论，也不能把 `UNKNOWN` 当 `PASS`。
 
-## 4. 补证、重复比较与任务结束
-
-- `AdditionalEvidenceRequest` 须指向原 `question_id`、`work_item_id`、原分析上下文/预期版本；冻结前允许记录 `not_frozen`；结果返回**同一原始消费者**，不可自动用在新预期版本。
-- 实例复验 `INSTANCE_REVALIDATION` 要有唯一 `comparison_work_item_id`、原始业务窗口、新旧版本与用途，以避免 R2/R4 重复发起。
-- `PARTIAL / PROVEN_UNAVAILABLE / BLOCKED` 只关闭/限制对应工作；是否允许有界未决，须符合本轮**已经合法明确的完成范围**，不能因执行层完成就宣布 `ParentTaskOutcome` 合格。
-- 任一子工单 STOP 不是父专业任务的 STOP；某局部无后继也不代表其他独立问题不能继续。
-
-## 5. 专业指南怎样进入具体 D（不新增 Schema）
-
-manager 首轮实际完整任务应包含已锁定 [manager 指南](professional/PRO_MANAGER_GUIDE.md) 和业务问题/控制来源；executor 的 D 应引用同版 [executor 指南](professional/PRO_EXECUTOR_GUIDE.md)，并按本次 D 明确引用 [材料准备唯一专业正文](../control/02_L1_观察材料准备流程.md) 或 [合理性分析 Skills](../skills/reasonableness-analysis/README.md) 的真正适用部分。
-
-D 的 `DELEGATION.md` 使用 `question_id`、节点范围、输入版本/材料与结果消费者定义**业务工作**；`DELEGATION.json` 仍遵从已有 V2 的 D 身份与授权字段，专业指南不能给机读 Schema 增加私有必填项。不同 D 可以共用一个专业执行人，但不得把跨 D、跨问题的结果混为一次完成。
-
-## 6. 接入后续实现的条件
-
-只有在业务控制面确定实际 Gate 规则后，才能将其转成受版本管理的具体规则/程序或专门专业判断任务。调用确定性程序的**选择依据**须来自明确路由规则/已接受的专业决定，不能让主控依据工具名称自行判断。程序结果须有 action_id、真实输出引用、版本、失败/未知状态；主控维护可信执行账本。专业执行人的方法可单独在 Skill 中定义，不进入本文件。
-
-**材料准备方法来源修订**：旧的 S0～S5 为过去控制方案，不再指挥新工作。专业负责人和执行 Pro 应直接使用 `control/02` 原步骤 0～7，并对具体业务目的和材料实际可得性判断；不能因历史 `M05/S2/G-RUN` 未通过就先造隔离工程。机械的 C/D/W 身份核验仍属 V2 协议，不等于独立专业阶段。
-
-## 7. 本次试运行的业务决定和完成全景如何回交
-
-**正式启动时采用本协议，仍须有真实 Owner GO 和准确 GitHub 写入位置**。没有业务控制程序也能运行：manager 负责业务决定，主控负责把决定及引用的原始证据作为可查实物保存并据此组织下一次派发。
+## 4. M-A～E 与 Worker 接入
 
 ```text
-专业执行结果、Worker事实、原业务证据
-  → executor 依 D 回 manager
-  → manager 执行本次业务 Gate、选择准确的下一节点/补证/返修/结束
-  → manager 同轮生成 MANAGEMENT_DECISION + 受影响的 TASK_PROGRESS 更新
-  → 若 manager 有真实 GitHub 写入工具：自行提交并报精确 SHA/path
-    否则主控将 manager 完整原文逐字保存，不增加专业判断
-  → 主控回读已发布原件、真实回执和合法后继，再派发下一 C/D/W
+A occurrence 理解
+    → B 观察位置
+    → C 展示方式
+A + B + C
+    → D 完整 CAEGraph 定义
+D + C + 特征实例
+    → E 派 Worker、运行、核图、正式取数和一致性检查
 ```
 
-实际运行中采用的相对路径（最终 Run 的 repository/branch 以 GO 为准）：
+- D 不派 Worker；
+- E 的 Worker 工单必须引用 D 定义版本、特征实例、品种、时间和修改权限；
+- Worker 的结果先回 executor；
+- 位置问题返回 B，展示问题返回 C，集成绑定问题返回 D；
+- 最终图通过 D/C 核对后，才正式取得 CAEGraph 图数据；
+- 脚本、HTML、数据和核对必须绑定同一有效版本／运行。
 
-- `longrun/runs/<run_id>/business_control/decisions/<decision_id>.md`：管理 Pro Gate、范围及后继的不可无痕改写记录；模板 [MANAGEMENT_DECISION](templates/MANAGEMENT_DECISION.md)。
-- `longrun/runs/<run_id>/business_control/TASK_PROGRESS.md`：当前五级业务完成全景的查询视图；模板 [TASK_PROGRESS](templates/TASK_PROGRESS.md)；历史快照由 Git 历史保留。
+## 5. 补证、重复比较与任务结束
 
-全景至少反映工作实例、S/R 阶段实例、M/R 两条线、逐问题状态、父任务完成条件及下一合法动作；**首次 GO 后就建立真实的初始化全景**，并在合法新事实、Gate、交接、补证、版本失效、恢复时更新受影响部分。不能等最后才汇总，也不为每条普通聊天另设一次 Pro 轮次。
+- `AdditionalEvidenceRequest` 指向原 `question_id`、阶段／工作实例和原分析上下文；结果返回同一消费者。
+- 实例复验 `INSTANCE_REVALIDATION` 保留唯一比较工作身份、原始业务窗口、新旧版本与用途，避免 R2/R4 重复发起。
+- `PARTIAL / PROVEN_UNAVAILABLE / BLOCKED` 只关闭或限制对应范围；父任务是否可有界结束仍按当前完成合同判断。
+- 任一 Worker STOP 不是 E、M 或父任务的 STOP；其他独立合法工作可以继续。
 
-`PRO_RETURN.json` 与 D/W 继续使用 V2 原 Schema，不在机器 Return 中塞未经批准的新必需字段。可由现有 `result_ref`、`continuation_ref` 和已发布的报告/决定/全景来源记录业务信息；遵守“先发布被引用原件、再发布引用它的 Return”的 Git 版本顺序，不能自我引用尚不存在的 commit。
+## 6. 专业指南怎样进入具体 D
 
-真实操作许可区别于业务管理委托：**业务 Gate、补证、正常返修不再向 Owner 逐项申请**；仅当实际工具的环境/写入权限不支持、与 Owner 已明确禁令冲突或确需改变已确认目的时，形成具体阻断与选择。V2 `grants` 仍按 GO 原文和实际执行权限做机械核验；不得伪造 Owner 的 `authority_quote`，不改动全局手机与 Worker 传输 Skill。
+manager 首轮任务引用同版 [manager 指南](professional/PRO_MANAGER_GUIDE.md)；executor 的 D 引用同版 [executor 指南](professional/PRO_EXECUTOR_GUIDE.md)，并精确引用本次所需 A～E 阶段 Skill 或 R Skill。
 
-## 8. 无专门测试 Run 时的真实业务验证边界
+`DELEGATION.md` 保存业务语义；`DELEGATION.json` 保持 V2 现有身份和授权字段。不同 D 可以共用一个 executor，但不得把跨 D、跨问题结果混成一次完成。
 
-Owner 将直接安排一项真实任务启动。主控在该任务实际发生的首次 manager→executor→manager（以及首次真实 Worker W）中自然核验 C/D/W、回执、全景保存和恢复；**不再把另开一个测试 Run 设为前置要求**。实际物理线程、共享写面和身份校验仍须在首次使用时真实核实，不能因跳过专门测试就虚称已经联调通过。
+## 7. 业务决定和完成全景如何回交
+
+```text
+executor 专业结果／Worker事实／业务证据
+  → manager 作 Gate、返修、补证、后继或收束决定
+  → manager 生成 MANAGEMENT_DECISION + TASK_PROGRESS 更新
+  → manager 有写入工具则提交，否则主控原样保存
+  → 主控回读真实提交与合法后继，再派下一 C/D/W
+```
+
+运行期位置：
+
+- `longrun/runs/<run_id>/business_control/decisions/<decision_id>.md`；
+- `longrun/runs/<run_id>/business_control/TASK_PROGRESS.md`。
+
+全景反映工作实例、M-A～E／R 阶段、两条 Workflow、逐问题状态、父任务完成条件和下一合法动作。不能等最后才汇总，也不能从聊天散文自行生成专业决定。
+
+## 8. 当前验证边界
+
+Owner 可直接安排真实任务，不要求另建专项测试 Run。但首次 manager→executor→worker→executor→manager 中，仍须真实核实物理线程、工具权限、共享写面、身份、阶段产物、Worker 回流和全景保存；跳过专项测试不等于已经联调通过。
