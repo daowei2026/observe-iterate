@@ -13,7 +13,7 @@ Worker 结果必须先回 executor。executor 不能只把工单或 Worker 文�
 ## 2. 第一次拿到 D
 
 1. 核对 `question_id`、业务目标、本次 A～E 或 R 范围、已接受上游产物和当前版本。
-2. M 任务读取 [外层 Workflow](../../control/02_L1_观察材料准备流程.md)和被委派阶段真实文件：通常是 `SKILL.md / WORKFLOW.md / IO_SPEC.md`；D 只有 `SKILL.md + IO_SPEC.md`；E 还必须读取 `WORKER_DELEGATION.md` 与两份工单模板。R 任务读取 [R Skills README](../../skills/reasonableness-analysis/README.md)及实际需要的 Skill。
+2. M 任务读取 [外层 Workflow](../../control/02_L1_观察材料准备流程.md)和被委派阶段真实文件：通常是 `SKILL.md / WORKFLOW.md / IO_SPEC.md`；D 只有 `SKILL.md + IO_SPEC.md`；E 还必须读取 `WORKER_DELEGATION.md` 与两张短执行卡。R 任务读取 [R Skills README](../../skills/reasonableness-analysis/README.md)及实际需要的 Skill。
 3. 核实特征名称、代码版本、特征实例以及可复用的同版本阶段产物。
 4. 区分专业判断、确定性文件处理和需要 Worker 的真实执行；缺写权限不自动等于有权交 Worker。
 5. 明确本 D 可交付什么、哪些问题必须回 manager、哪些结果只可限域使用。
@@ -55,37 +55,19 @@ C3：整理可注入展示代码
     C3B：核对代码与 C2 当前预期
 ```
 
-必须形成：
-
-- C1 待展示信息清单；
-- C2 当前展示预期和唯一预期 HTML；
-- C2 复杂点循环记录和真实能力缺口；
-- C3 位置、实例和字段可注入的 CAEGraph 代码；
-- D 所需的实例／Feature／数据入口、位置和字段注入合同。
-
-C2A 直接读取锁定版本原手册，不依赖本仓二手速查。C2B 的第一版预期就必须生成 HTML；C2D 每轮直接更新同一份预期和 HTML，没有单独的“固化预期”或“再次生成 HTML”步骤。
-
-C 可以只读检查外层真实特征实例的数据形状，或临时用它生成预期 HTML；但不能把该实例固化为最终运行绑定。C3 正式代码必须保留实例注入接口，真正绑定在 D 完成。
+必须形成 C1 待展示信息、C2 当前展示预期和唯一预期 HTML、复杂点处理、C3 可注入代码以及 D 所需注入合同。C 可以只读使用外层真实实例或临时生成预期 HTML，但不能把该实例固化为最终运行绑定。
 
 ## 6. M-D｜CAEGraph 定义集成
 
 读取 [D Skill](../../skills/observation-material-preparation/caegraph-definition-integration/SKILL.md)、[D 字段合同](../../skills/observation-material-preparation/caegraph-definition-integration/IO_SPEC.md)和 [CAEGraph 仓库结构与定义集成参考](../../skills/observation-material-preparation/references/CAEGraph仓库结构与定义集成参考.md)。
 
-D 是一个单一专业动作，不另读 `WORKFLOW.md`，也不拆成多个管理节点。executor 必须：
+D 是一个单一专业动作。executor 必须理解锁定版本仓库中本次使用的导出、配置、布局、绘图、`PlotCtx`、Feature→CDS、数据树和动态／前端路径，并根据外层输入和 A／B／C 正式绑定实例、数据入口、位置和字段，形成可直接交 E 运行的完整 Python 定义。
 
-- 理解锁定版本 uplot／CAEGraph 仓库中本次使用的导出、配置、布局、绘图、`PlotCtx`、Feature→CDS、数据树和动态／前端路径；
-- 根据外层输入和 A／B／C 产物，正式绑定外层特征实例；
-- 绑定真实 Feature／数据入口、品种、时间、多尺度位置和 A 字段；
-- 保持 C2 当前展示预期和 C3 代码的展示语义；
-- 形成可直接交 E 运行的完整 Python CAEGraph 定义／脚本初稿；
-- 记录仓库理解、上游问题处理、集成差异、定义级检查和待 E 确认项。
+D 发现 B／C 缺项时：
 
-### D 发现 B／C 缺项时
-
-- 修法唯一、证据清楚、不改变 B 位置选择或 C2 展示预期时，可直接纠正并记录修改前后和依据；
+- 修法唯一、证据清楚、不改变 B 位置或 C2 展示预期时，可以直接纠正并留痕；
 - 需要重新选位置、改变展示预期、存在多个合理方案或拿不准时，返回 B／C；
-- A 的事件、字段、位置或引用关系不清时返回 A；
-- 不得在最终代码中无痕修正上游问题。
+- A 的事件、字段、位置或引用关系不清时返回 A。
 
 D 不派 Worker，也不把文字方案或代码片段当完整定义。
 
@@ -96,78 +78,105 @@ D 不派 Worker，也不把文字方案或代码片段当完整定义。
 - [E Skill](../../skills/observation-material-preparation/caegraph-execution/SKILL.md)
 - [E 专业 Workflow](../../skills/observation-material-preparation/caegraph-execution/WORKFLOW.md)
 - [Worker 派单合同](../../skills/observation-material-preparation/caegraph-execution/WORKER_DELEGATION.md)
-- [W1 运行／修复模板](../../skills/observation-material-preparation/caegraph-execution/RUN_REPAIR_ORDER_TEMPLATE.md)
-- [W2 正式取数模板](../../skills/observation-material-preparation/caegraph-execution/DATA_EXPORT_ORDER_TEMPLATE.md)
+- [W1 短执行卡](../../skills/observation-material-preparation/caegraph-execution/RUN_REPAIR_ORDER_TEMPLATE.md)
+- [W2 短执行卡](../../skills/observation-material-preparation/caegraph-execution/DATA_EXPORT_ORDER_TEMPLATE.md)
 - [执行与取数技术参考](../../skills/observation-material-preparation/references/CAEGraph执行取数与验证.md)
 
-### 7.1 E 自己承担的专业 Workflow
+### 7.1 结果优先
 
-专业 Workflow 中不写“派发 W1／W2”为业务判断节点。executor 自己负责：
+E 的 Worker 操作默认遵循：
 
 ```text
-E1 建立执行与核图基准
-→ E2 消费候选运行事实并判断问题性质
-→ E3 与 D 核对最终脚本、与 C2 核对最终图
-→ E4 形成正式取数准入
-→ E5 消费正式数据事实并核对图与数据
-→ E6 交付
+最少填写
+→ 先真实运行／导出
+→ 先回 HTML、真实错误或数据文件
+→ 只有实际触发时才补环境、血缘、哈希和详细说明
+```
+
+通用 Worker 工单已经包含的身份、授权、工作区和回交信息，不在阶段卡中重复抄写。
+
+### 7.2 E 自己承担的专业 Workflow
+
+executor 自己负责：
+
+```text
+建立最小运行基准
+→ 消费 W1 真实结果并分类问题
+→ 与 D 核对最终脚本、与 C2 核对最终图
+→ 明确本次正式取数清单
+→ 消费 W2 数据并作必要核对
+→ 交付
 ```
 
 不能把这些专业判断写进工单让 Worker 代替完成。
 
-### 7.2 Worker 派单单独处理
+### 7.3 两张短执行卡
 
-[Worker 派单合同](../../skills/observation-material-preparation/caegraph-execution/WORKER_DELEGATION.md) 将专业产物映射到操作工单：
-
-| 专业位置 | 工单 | 回哪个节点消费 |
+| 专业位置 | 短执行卡 | Worker 首要结果 |
 |---|---|---|
-| E1 基准已形成 | W1 运行与有限修复 | E2 |
-| E4 正式取数准入已形成 | W2 正式取图数据 | E5 |
+| E1 最小基准已形成 | W1 运行 CAEGraph | 可打开 HTML，或首个真实阻断错误 |
+| E4 已接受最终图并列出取数清单 | W2 导出已接受图的数据 | 明确列出的数据文件及最小映射 |
 
-两张工单分别使用独立模板；不得在 W1 开始时用一张统一工单同时授权 W2。
+W1 和 W2 仍是两个授权时点，但不是两套审计工程。不得在 W1 开始时提前授权正式取数。
 
-### 7.3 Worker 可改和不可改
+### 7.4 W1 边界
 
-W1 可在授权内直接修复：语法、导入、路径、确定 API 差异、明确类型转换、输出目录和不改变业务语义的机械错误。
+W1 可以直接修复语法、import、路径、锁定版本已确认的 API 差异、明确类型和输出接线问题。
 
-W1 必须返回 executor：
+必须回 executor：
 
-- 更换品种、时间、多尺度位置或特征实例；
-- 删除／增加业务字段；
+- 更换品种、时间、多尺度位置或实例；
+- 删除、增加、替换业务字段；
 - 改变 C2 的主附图、图元、事件位置表达、标准化或交互；
-- 另算一个值替代特征输出；
-- 无法判断是 B、C 还是 D 问题。
+- 另算近似值代替特征输出；
+- 正确修法不唯一或无法判断语义影响。
 
-W2 不允许修改已经接受的脚本、图、位置、字段和展示语义；如果必须修改才能导出，应停止并使当前取数准入失效。
+W1 最小回报只有：状态、最终脚本、候选 HTML、日志、`git diff` 和当前阻断。环境版本、详细 patch 解释等只在确实影响结果时增加。
 
-### 7.4 E 的专业核对
+### 7.5 W2 边界
 
-W1 回报后，executor 仍须：
+W2 只导出 E4 明确列出的图层／对象和数据阶段，不默认导出 source、postprocessed、construction_snapshot、viewport_final 的全部组合，也不先建设通用导出框架。
 
-1. 与 D 核对最终脚本：实例、品种、时间、字段、面板、图元、转换、D 上游纠正和 patch 是否正确；
+W2 最小回报只有：状态、数据文件、`图层／对象 → 文件 → 数据阶段 → 行数`、未取得项和日志。
+
+只有实际需要时才增加：
+
+- Renderer／CDS／源表全量血缘；
+- `viewport_final`；
+- 原值／显示值详细关系；
+- 完整缺失语义；
+- 文件哈希和环境快照。
+
+W2 不允许修改已接受脚本、图、位置、字段和展示语义；必须修改才能继续时，停止并使当前取数准入失效。
+
+### 7.6 E 的专业核对
+
+executor 必须：
+
+1. 与 D 核对最终脚本；
 2. 与 C2 当前展示预期／HTML 核对最终图；
-3. 若位置问题回 B、展示问题回 C、集成问题回 D；不能由 Worker 静默修正；
-4. 只有最终图被接受后，才形成正式取数准入并签 W2；
-5. W2 回报后，核对最终脚本、HTML 和数据来自同一有效版本／运行，图层到数据源、品种、时间、身份、数据阶段和缺失语义一致。
+3. 位置问题回 B、展示问题回 C、集成问题回 D；
+4. 只有最终图被接受后，才启动 W2；
+5. 按本轮用途核对 W2 文件是否对应已接受图、数据阶段、品种、时间和完整性。
 
-只有脚本跑通或只有 HTML，不能交 `DATA_READY`。
+只有脚本跑通、只有 HTML，或者 W2 文件未经必要核对，都不能交 `DATA_READY`。
 
 ## 8. M 的专业回交
 
-按 D 涉及阶段逐项回交：
+按实际阶段回交：
 
 ```text
 已接受的上游输入和版本
 实际执行的内部步骤或单一动作
-阶段原生产物及字段级引用
-专业判断及其证据
-W1／W2 工单、Worker 回报和 patch（E 如适用）
+阶段原生产物及引用
+专业判断及证据
+W1／W2 的最小回报和必要补充（E 如适用）
 当前可消费范围
 未完成、受阻或需返回的阶段
 准确后继
 ```
 
-最终 M 交付应包含 A～D 当前有效引用、最终脚本、最终 HTML、正式图数据、专业核对和限制。材料准备不宣布特征合理或不合理。
+最终 M 交付应包含 A～D 当前有效引用、最终脚本、最终 HTML、本轮需要的正式图数据、专业核对和限制。材料准备不宣布特征合理或不合理。
 
 ## 9. R｜合理性分析
 
@@ -193,9 +202,9 @@ R 任务仍按四个专业 Skill 选择实际需要的能力：
 ## 11. 禁止事项
 
 - 不用“已读懂任务”冒充专业产物；
-- 不把写 Worker 工单当专业执行；
+- 不把写 Worker 工单或补齐模板当成主要专业工作；
 - 不自行增加 manager 未授权的问题；
-- 不跳过阶段消费者需要的上游结果；
+- 不跳过消费者需要的上游结果；
 - 不让 Worker 决定业务上该看什么、怎么画、图是否通过或什么参数合理；
 - 不把 `PLAN_READY`、语法检查、W1 运行成功或预览冒充 `DATA_READY`。
 
