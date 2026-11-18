@@ -26,12 +26,15 @@ Owner GO
 A 特征事件级 occurrence 理解
     → B 观察位置准备
     → C 展示方式准备
+        C1 待展示信息
+        C2 当前展示预期、复杂点循环和唯一预期 HTML
+        C3 可注入展示代码
 外层输入 + A + B + C + CAEGraph仓库
     → D CAEGraph 定义集成（单一动作）
     → E CAEGraph 执行／运行
 ```
 
-每个阶段的专业方法与字段见 [观察材料准备总入口](../skills/observation-material-preparation/SKILL.md)。历史旧“0～7 步”、S0～S5、Mxx 只用于既有成果追溯；R 按其现行 Skill 和管理视图组织。一次专业调用可以覆盖多个具备前置条件的内部步骤，但不能绕过尚未接受的上游产物。
+每个阶段的专业方法与字段见 [观察材料准备总入口](../skills/observation-material-preparation/SKILL.md)。历史旧结构只用于既有成果追溯；R 按其现行 Skill 和管理视图组织。一次专业调用可以覆盖多个具备前置条件的内部步骤，但不能绕过尚未接受的上游产物。
 
 ## 2. 文件地图
 
@@ -75,14 +78,19 @@ E 的阶段专业模板位于：
 
 ## 4. A～E 在长程角色中的关键边界
 
-- A、B、C 由 executor 依据 Skill 形成专业产物；C 可只读使用实例，但正式代码必须保留实例注入接口。
-- D 是一个单一专业动作：executor 亲自理解锁定 CAEGraph 仓库并把外层真实实例、A 字段、B 位置注入 C 代码；D 不设内部 Workflow，也不派 Worker。
-- E 的专业 Workflow 与 Worker 操作分开：executor 自己建立基准、判断问题、核图、形成取数准入和核对数据。
-- **W1**：运行 D 定义并做授权内机械修复，返回候选脚本、候选 HTML、日志和 patch；W1 成功不等于图通过。
-- executor 用 D 核对最终脚本、用 C 展示预期／HTML 核对最终图；位置／展示／绑定问题分别返回 B／C／D。
-- **W2**：只有最终图被接受后才能签发，正式导出图数据；不得修改已接受脚本、位置、字段或展示语义。
+- **C**：
+  - C2B 第一版展示预期就生成第一版 HTML；
+  - C2D 在复杂点循环中同步更新同一份预期和 HTML；
+  - C2 循环结束时的当前 HTML 是唯一预期 HTML；
+  - C3 只把当前实现整理成位置、实例和字段可注入代码，不另造第二份 HTML。
+- **D**：是一个单一专业动作。executor 亲自理解锁定 CAEGraph 仓库，并把外层真实实例、A 字段、B 位置注入 C3 代码；D 不设内部 Workflow，也不派 Worker。
+- D 发现 B／C 缺项时，只有修法唯一、不改变 B 位置或 C2 展示语义且完整留痕，才可直接纠正；否则返回 A／B／C。
+- **E 专业 Workflow**：executor 自己建立基准、消费候选运行事实、判断问题、核图、形成取数准入、核对正式数据和交付；派单不作为专业 Workflow 中的业务判断节点。
+- **W1**：由 E1 基准触发，运行 D 定义并做授权内机械修复，返回候选脚本、候选 HTML、日志和 patch；W1 成功不等于图通过。
+- executor 在 E2／E3 用 D 核对最终脚本、用 C2 当前展示预期／HTML 核对最终图；位置／展示／绑定问题分别返回 B／C／D。
+- **W2**：只有 E3 接受最终图、E4 形成正式取数准入后才能签发；正式导出图数据，不得修改已接受脚本、位置、字段或展示语义。
 - W1、W2 均须使用通用 W 工单身份和权限；两份阶段模板不能替代正式 `ORDER.md/ORDER.json`。
-- 只有脚本或 HTML、只有 W1 成功、只有 W2 文件而无一致性核对，都不能形成 `DATA_READY`。
+- 只有脚本或 HTML、只有 W1 成功、只有 W2 文件而无 E5 一致性核对，都不能形成 `DATA_READY`。
 
 ## 5. 管理 Pro 试运行模式
 
@@ -93,7 +101,7 @@ E 的阶段专业模板位于：
 - `longrun/runs/<run_id>/business_control/TASK_PROGRESS.md`；
 - `longrun/runs/<run_id>/business_control/decisions/<decision_id>.md`。
 
-完成全景不是运行心跳，也不是新的独立权威数据库；它只投影真实阶段产物、W1／W2、Gate 和业务决定。
+完成全景不是运行心跳，也不是新的独立权威数据库；它只投影真实阶段产物、D 上游纠正、W1／W2、Gate 和业务决定。
 
 ## 6. 快速离线校验
 
@@ -112,7 +120,7 @@ python longrun/tools/longrun_gate.py reconcile-actions snapshot.json
 
 ## 7. 当前未完成／禁止冒充
 
-- A～E 新 Workflow、D 单一集成动作、E W1／W2 拆分、三层 Gate 和角色映射仍需真实任务验证；
+- A～E 新 Workflow、C1／C2／C3、D 单一集成与有界直接纠正、E 专业 Workflow／W1／W2 分离、三层 Gate 和角色映射仍需真实任务验证；
 - cgpterm 物理收发、持久账本、并发独占锁、GitHub 远端证据读取和恢复对账尚未完成联调；
 - 当前是运行合同和机械校验首版，不是可自主运行整条观察—分析任务的验收结论；
 - 跳过专项测试 Run 不等于联调完成，首次真实调用仍须核实物理绑定、引用和回执。
