@@ -1,6 +1,6 @@
 # 观察—分析业务控制面三层 Workflow（候选 V0.1）
 
-**本分支用途**：L0 管完整任务及材料准备／合理性分析两条专业 Workflow 的衔接；材料准备 L1 采用 A～E 外层 Workflow，并由五个阶段 Skill 分别定义内部专业 Workflow；R 与管理 I/O、Gate、完成全景仍保留独立文档。控制程序和真实长程 Run 的采纳须另核，不因本分支更新自动改写历史 Run。
+**本分支用途**：L0 管完整任务及材料准备／合理性分析两条专业 Workflow 的衔接；材料准备 L1 采用 A～E 外层 Workflow，并由五个阶段 Skill 分别定义内部专业工作；R 与管理 I/O、Gate、完成全景仍保留独立文档。控制程序和真实长程 Run 的采纳须另核，不因本分支更新自动改写历史 Run。
 
 ## 目录与阅读顺序
 
@@ -36,7 +36,7 @@ B + C + A
     → 最终脚本、HTML、图数据和核对结果
 ```
 
-A～E 各阶段都有独立专业 Skill 和内部 Workflow。外层文件不复制 Worker 派单、核图、取数等 E 内部细节。
+A～E 各阶段都有独立专业 Skill。B 当前只沉淀了普通默认和高频多尺度两种经验性用法，不冒充成熟通用 Workflow；外层文件不复制 Worker 派单、核图、取数等 E 内部细节。
 
 ### 总入口与阶段 Skill
 
@@ -44,12 +44,12 @@ A～E 各阶段都有独立专业 Skill 和内部 Workflow。外层文件不复�
 |---|---|---|
 | **M 总入口** | [observation-material-preparation/SKILL.md](skills/observation-material-preparation/SKILL.md) | 索引外层 Workflow、五个阶段 Skill、技术参考和模板 |
 | **A occurrence 理解** | [feature-occurrence-understanding](skills/observation-material-preparation/feature-occurrence-understanding/SKILL.md) | 输入／输出事件级 occurrence、各事件发生位置、业务主输出／中间处理结果、处理关系 |
-| **B 观察位置** | [observation-position-preparation](skills/observation-material-preparation/observation-position-preparation/SKILL.md) | 选择实际品种和时间；多层位置等待 Owner 专门方法补齐 |
-| **C 展示方式** | [caegraph-display-preparation](skills/observation-material-preparation/caegraph-display-preparation/SKILL.md) | 不绑定最终位置的展示定义和预期展示 HTML |
-| **D 定义集成** | [caegraph-definition-integration](skills/observation-material-preparation/caegraph-definition-integration/SKILL.md) | 绑定真实实例、字段、品种和时间，形成可直接运行的完整 Python 定义 |
+| **B 观察位置** | [observation-position-preparation](skills/observation-material-preparation/observation-position-preparation/SKILL.md) | 普通特征沿用固定 SOF，默认钢铁板块和 2021-01-01～2022-12-31；高频特征复用 1d→30m→1m→5s→tick 位置层级 |
+| **C 展示方式** | [caegraph-display-preparation](skills/observation-material-preparation/caegraph-display-preparation/SKILL.md) | 先理解 CAEGraph，再形成展示预期；复杂点循环求解；最后产出位置独立代码和预期展示 HTML |
+| **D 定义集成** | [caegraph-definition-integration](skills/observation-material-preparation/caegraph-definition-integration/SKILL.md) | 将 C 代码绑定真实实例、字段、普通或多尺度位置，形成可直接运行的完整 Python 定义 |
 | **E 执行／运行** | [caegraph-execution](skills/observation-material-preparation/caegraph-execution/SKILL.md) | 派 Worker、有限修复、回流、与 D/C 核对图、核图后正式取数据 |
 
-每个阶段目录固定为：
+每个阶段目录通常采用：
 
 ```text
 SKILL.md
@@ -60,12 +60,14 @@ IO_SPEC.md
     字段级输入输出
 ```
 
-专业判断方法不是另一条平行流程；它写在真正使用该判断的内部步骤下。跨多个步骤且篇幅很大的方法才进入 Reference。
+B 当前例外：`WORKFLOW.md` 只记录当前两种用法，不构造没有实际意义的 B1、B2。专业判断方法不是另一条平行流程；它写在真正使用该判断的内部步骤下。跨多个步骤且篇幅很大的方法才进入 Reference。
 
 ## 技术参考、模板和候选方法
 
 | 类别 | 入口 | 作用与边界 |
 |---|---|---|
+| **C 展示能力参考** | [CAEGraph 展示能力与构建速查](skills/observation-material-preparation/references/CAEGraph展示能力与构建速查.md) | 从锁定版本手册提取构建链、布局类、绘图类和使用／能力缺口区分；不替代原手册 |
+| **B 高频位置参考** | [高频多尺度观察位置参考](skills/observation-material-preparation/observation-position-preparation/MULTISCALE_POSITION_REFERENCE.md) | 只复用既有脚本的 1d→30m→1m→5s→tick 位置层级和父子关系，不复用图内容 |
 | **E 技术参考** | [CAEGraph 执行、核图与取数](skills/observation-material-preparation/references/CAEGraph执行取数与验证.md) | 构图／视窗／源值等数据阶段、最终图核对、核图后正式取数和一致性验证 |
 | **任务记录模板** | [观察材料准备任务记录](skills/observation-material-preparation/templates/观察材料准备任务单.md) | 汇总 A～E 产物和最终交付；字段细节仍以各 `IO_SPEC.md` 为准 |
 | **候选方法组索引** | [S1～S4、E1～E4 方法索引](skills/observation-method-candidates/README.md) | 候选观察方法的触发条件、跨用例对应关系和成熟度；不是固定必经流程 |
@@ -77,9 +79,10 @@ IO_SPEC.md
 
 ## A～E 的关键边界
 
-- A 的“事件发生位置”说明每类 Event 自己在哪里发生以及 occurrence 携带哪些位置；B 的“观察位置”选择最终图要看的真实品种和时间，二者不能混同。
-- C 不关心 B 最终有多少位置；C 以一个适合设计的局部位置形成展示方式和预期 HTML。
-- D 只做完整 CAEGraph 定义集成，不派 Worker。
+- A 的“事件发生位置”说明每类 Event 自己在哪里发生以及 occurrence 携带哪些位置；B 的“观察位置”给最终图提供普通默认位置或高频多尺度位置，二者不能混同。
+- B 当前是经验性用法，不从 occurrence 中强行挑选所谓“典型案例”；高频参考只借位置层级，不借图层和展示逻辑。
+- C 先理解 CAEGraph，再形成展示预期；复杂点允许循环处理；最后才写位置独立代码和预期 HTML。
+- D 只把 C 代码与 A 的真实字段、B 的真实位置和外层特征实例集成，不派 Worker。
 - E 内部派 Worker；确定性错误可在权限内修复，位置／展示／绑定问题分别返回 B／C／D。
 - E 必须先用 D 核对最终脚本、用 C 预期 HTML 核对最终图；图被接受后才正式导出图数据。
 - `PLAN_READY` 不能冒充 `DATA_READY`。语法检查、静态定义、少量预览和未核对 HTML 都不等于真实观察材料已完成。
