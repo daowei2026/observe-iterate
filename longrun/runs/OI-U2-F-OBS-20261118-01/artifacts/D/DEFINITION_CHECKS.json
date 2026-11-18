@@ -1,0 +1,82 @@
+{
+  "schema": "caegraph-definition-checks/v1",
+  "run_id": "OI-U2-F-OBS-20261118-01",
+  "call_id": "C0010",
+  "delegation_id": "D004",
+  "definition_id": "OI-U2-F-OBS-20261118-01-D-CAEGRAPH-V1",
+  "definition_ref": "daowei2026/observe-iterate@f4f0e4b276b1118b779473c1fbe462bc7a64b358:longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/D/u2_f_caegraph_definition.py",
+  "checks": [
+    {
+      "id": "DCHK-01",
+      "name": "python_syntax",
+      "result": "PASS",
+      "evidence": "The complete definition parsed and compiled as Python source during D definition-level validation.",
+      "runtime_required": false
+    },
+    {
+      "id": "DCHK-02",
+      "name": "locked_uplot_import_surface",
+      "result": "PASS",
+      "evidence": "The definition imports CAEGraph, PlotSet, PerSymFigs, AllSymsFig, KPriceLine, BaseFigSet, BasePlotter, PlotDataFolder and PlotDataNode from mquant.uplot, matching the locked repository __init__.py export surface.",
+      "runtime_required": false
+    },
+    {
+      "id": "DCHK-03",
+      "name": "outer_feature_binding",
+      "result": "PASS",
+      "evidence": "The script enters CurrSof(TA_updto20240229_DBA, steel) and CurrCalendar(night_end_at_2300), calls the locked make_features parameters, and selects only the returned f as candidate_feature.",
+      "runtime_required": false
+    },
+    {
+      "id": "DCHK-04",
+      "name": "no_f_producer_rerun",
+      "result": "PASS",
+      "evidence": "The definition checks the exact F full_dir/fields.json and has no direct f.rerun(...) call. Missing stored output produces a named FileNotFoundError instead of a producer run.",
+      "runtime_required": false
+    },
+    {
+      "id": "DCHK-05",
+      "name": "b_position_binding",
+      "result": "PASS",
+      "evidence": "B-POS-001 is bound in executable constants and PlotSet: symbols rb/hc/i, calendar night_end_at_2300, 5m price feature, 2021-01-01 through 2022-12-31, and candidate x field groupKnownFrom.",
+      "runtime_required": false
+    },
+    {
+      "id": "DCHK-06",
+      "name": "a_field_binding",
+      "result": "PASS",
+      "evidence": "Candidate Life/Revision/previous, groupKnownFrom, member actual/confirmation/memberKnownFrom/price/status, Required verdict/gap/veto/distance, overlap/covered-by and candidate clock-window values are retained in prepared tables, glyphs or hover.",
+      "runtime_required": false
+    },
+    {
+      "id": "DCHK-07",
+      "name": "c2_display_contract",
+      "result": "PASS",
+      "evidence": "The definition keeps the accepted per-symbol original-price/member-evidence panels, candidate revision panel at groupKnownFrom and Required audit panel. It adds only the endpoint glyphs already required by C2 and does not change the reading semantics.",
+      "runtime_required": false
+    },
+    {
+      "id": "DCHK-08",
+      "name": "nonmonotonic_uti_handling",
+      "result": "PASS",
+      "evidence": "Member and revision-link tables use explicit interval masks before ColumnDataSource construction rather than the monotonic static PlotCtx.feat_data UTI slicing path.",
+      "runtime_required": false
+    },
+    {
+      "id": "DCHK-09",
+      "name": "plot_data_export_path",
+      "result": "PASS",
+      "evidence": "The E execution path writes a standalone Bokeh HTML, prepared display tables, PlotDataFolder/PlotDataNode CDS tables and a machine-readable run report.",
+      "runtime_required": false
+    },
+    {
+      "id": "DCHK-10",
+      "name": "real_platform_execution",
+      "result": "NOT_RUN_IN_D",
+      "evidence": "Importing the locked m3/mquant/uplot environment, reading the exact stored F product, laying out Bokeh, exporting HTML and inspecting PlotDataTree are deliberately left to E in /dwdhome/fy/BASE_E6_2_copy.",
+      "runtime_required": true
+    }
+  ],
+  "blocking_definition_issue": null,
+  "worker_used": false
+}
