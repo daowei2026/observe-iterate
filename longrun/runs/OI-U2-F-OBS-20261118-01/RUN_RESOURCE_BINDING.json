@@ -1,0 +1,33 @@
+{
+  "schema": "observe-iterate-run-resource/v1",
+  "run_id": "OI-U2-F-OBS-20261118-01",
+  "owner_go_ref": "daowei2026/observe-iterate@74ed0b11552f73b03e55e3e324f8325889730b52:longrun/runs/OI-U2-F-OBS-20261118-01/OWNER_START.md",
+  "owner_declared_linux_workspace": "/dwdhome/fy/BASE_E6_2_copy",
+  "worker_host": "dw-VMware-Virtual-Platform",
+  "verified_realpath": "/dwdhome/fy/BASE_E6_2_copy",
+  "verified_on_worker_host": true,
+  "verification_evidence_ref": "local gitignored WORKSPACE_PRECHECK_AFTER_AMENDMENT.json, checked 2026-11-18T14:10:02.902151+00:00",
+  "actual_worker_thread_binding_ref": null,
+  "adopted_source_refs": [
+    "daowei2026/cgpterm@5461c6e51e73d011028afd8b41a0c5c340541df5:.agents/skills/observe-iterate-longrun-v2-controller/SKILL.md",
+    "daowei2026/observe-iterate@f7e8ff43fabfa11b499e2ce9e62dbc46b1b8b288:longrun/contracts/LONGRUN_PROTOCOL_V2.md",
+    "daowei2026/observe-iterate@f7e8ff43fabfa11b499e2ce9e62dbc46b1b8b288:task-inputs/u2-fqv-observation/F_OBSERVATION_RUN_INPUT.md"
+  ],
+  "external_write_targets": [
+    {
+      "execution_context": "daowei2026/observe-iterate@runs/OI-U2-F-OBS-20261118-01",
+      "allowed_writes": [
+        "longrun/runs/OI-U2-F-OBS-20261118-01/**"
+      ],
+      "single_writer": "root controller prepares exact writes; all Pro commits are reconciled against pre-send head; no concurrent same-branch write authorized"
+    },
+    {
+      "execution_context": "daowei2026/observe-iterate@feat/observe-iterate-multirun-controller-v1-20261116",
+      "allowed_writes": [
+        "longrun/controller/RUN_REGISTRY.json"
+      ],
+      "single_writer": "conditional expected_sha ref update; re-read and merge if head changes"
+    }
+  ],
+  "notes": "Owner corrected the original /BASE_E6_2_copy to /dwdhome/fy/BASE_E6_2_copy. Original grant quotations remain verbatim in Binding; corrected physical scope is governed by OWNER_PATH_AMENDMENT.md. At first W, validate effective amended scopes, actual Worker model/effort/cwd and all shared write targets. No physical Worker or Chat yet; no C/D/W sent. Root paths do not overlap known prior Run /dwdhome/fy/BASE_E6_2. Symlink feature-production-agent is not a grant to write its external target."
+}
