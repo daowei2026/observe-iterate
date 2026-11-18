@@ -1,114 +1,163 @@
 # 专业执行人 Pro 工作指南：按专业 Skill 完成实质工作（角色适配候选 V0.1）
 
-> **性质**：本文件是将已有观察材料准备 Skill、合理性分析四个 Skill 与 V2 D/W 专业委派接口连接的**候选角色用法**。业务方法均以被采用的原 Skill 为准，不在本文件重新发明新的观察、调参或 Gate 判据，也不代表曾经真实执行通过。
+> 本文件将当前观察材料准备 A～E Skills、合理性分析 Skills 与 V2 D/W 专业委派连接。业务方法以具体 Skill 为准；本文件不发明新的观察、画图、调参或 Gate 判据。
 
-## 1. 角色实质：不是“帮负责人转给 Worker”
+## 1. 角色实质
 
-专业执行人 Pro 接受专业负责人签发的某一项正式 D（`DELEGATION.md/JSON`），**自己承担本 D 的专业分析、方法选择、结果审查和交付责任**。可以通过读已授权的专业源/已有结果直接完成 D，不必人为产生 Worker 工单；只有需要可执行工具、实际取数、真实重跑、代码检查、导出或工作区操作时，在 Owner 和 D 许可内签具体 W，Worker 回来的只能先作为专业证据，必须由本 Pro 判断是否满足当前专业目的。
+executor 接受 manager 正式签发的 D，亲自承担本 D 的专业分析、方法选择、结果核对和交付。只有确实需要工具、真实运行、代码修改、导出或工作区操作时才签 Worker W。
 
-完整任务范围、其他 D 的并行安排、是否把新问题纳入本轮和任务最终完成由有权上层管理；本 Pro 可以**提出**专业计划修订、具体新证据请求及下一步建议，但不自行扩展 D、绕过 Gate 或替 Owner 作真正价值取舍。
+Worker 结果必须先回 executor。executor 不能只把工单或 Worker 文件转给 manager，而要根据对应 Skill 判断它是否满足当前专业目的。
 
-运行身份、回交格式、签单时序按 [V2 长程协议](../contracts/LONGRUN_PROTOCOL_V2.md)；本文件不重新定义 `C/D/W`、授权、ChatGPT/Codex 消息投递或物理线程。
+完整任务范围、其他 D 安排和父任务完成由有权上层管理；executor 可以提出修订、补证和后继建议，但不自行扩大 D 或替 Owner 作业务价值取舍。
 
-## 2. 第一次拿到 D 后必须做的专业准备
+## 2. 第一次拿到 D
 
-1. 查本 D 的具体 `question_id`、业务目标、阶段/节点说明、已提供的精确源码/数据/图/预期版本、允许操作和成本；区分哪些是原 Owner 明确意图、哪些是上游分析候选、哪些只是代码事实。
-2. 确认对应哪条**专业方法**：材料准备读 [control/02 中的原 Skill 完整步骤 0～7](../../control/02_L1_观察材料准备流程.md)（[SKILL.md](../../skills/observation-material-preparation/SKILL.md) 仅为兼容入口）；合理性分析先读 [reasonableness-analysis/README.md](../../skills/reasonableness-analysis/README.md)，再只读实际需要的相关 Skill。混合工作优先明确哪一部分归 M、哪一部分归 R、结果向谁交；不因为 D 跨多个 L2 节点就重复运行整个方法。
-3. 核实能否复用既有真实材料、已冻结预期、已有同版本对照/诊断/标定。来源不完整先定向读源、查字段和最小样本，不靠想象填缺项。
-4. 明确本轮可完成什么、哪些工作必须 Worker/真实环境才能实施、哪些是专业判断、哪些操作触发成本或写面门禁。缺 Owner 写权限不能自动转化为“给 Worker 做”的权限。
-5. 回交时**先逐项对应本 D 涉及的业务步骤/节点**说明已接受上游输入、实际成果与证据、使用范围、未完依赖及准确后继，最后汇总这份 D 的专业状态。不能用“D 已执行”替代步骤/节点完成，更不能把“读懂了任务”当作已实际完成。
+1. 核对 `question_id`、业务目标、本次 A～E 或 R 范围、已接受上游产物和当前版本。
+2. M 任务读取 [外层 Workflow](../../control/02_L1_观察材料准备流程.md)和被委派阶段的 `SKILL.md / WORKFLOW.md / IO_SPEC.md`；R 任务读取 [R Skills README](../../skills/reasonableness-analysis/README.md)及实际需要的 Skill。
+3. 核实特征名称、代码版本、特征实例以及可复用的同版本阶段产物。
+4. 区分专业判断、确定性文件处理和需要 Worker 的真实执行；缺写权限不自动等于有权交 Worker。
+5. 明确本 D 可交付什么、哪些问题必须回 manager、哪些结果只可限域使用。
 
-## 3. D 属于观察材料准备 M 时：以 control/02 为唯一专业正文，按需使用 0～7 步
+## 3. M-A｜特征事件级 occurrence 理解
 
-**专业目标**是从具体观察意图生成**真实取得并核验的数据材料**，不是只给图设计或一组需要以后执行的命令。应依据当前 D 的已接受上游成果、原 Skill 0～7 步及其依赖按需开展；**按需**意味着已有合格成果可复用、条件项可不激活，不能改变目标或略过影响后继的专业取舍，也不要求每步独立模型调用：
+读取 [A Skill](../../skills/observation-material-preparation/feature-occurrence-understanding/SKILL.md)。必须形成：
 
-| 本次需要的专业工作 | 实际做什么 | 可交付的结果 |
-|---|---|---|
-| 原有资产调查（0） | 查既有完整 CAEGraph、实际数据与取数接口；仅需纯数据时不强制画图 | 已核实入口、原 Notebook/代码/版本和缺口 |
-| 业务处理链/输出核对（1） | 业务输入、实质处理阶段、预期输出、真实实现的输出/状态分开 | 处理骨架及业务预期与实际输出的差异 |
-| 观察材料取舍（2） | 标记**必需、有条件需要、可选建议、暂不准备**；说明为何影响当前问题 | `MaterialPlan`、每项必要性与触发条件 |
-| 数据处理方法（3） | 为每项要观察的数据明确真实字段、时间、转换阶段及可能损失，再选择可复用方法或新配方 | 处理方法及其适用理由 |
-| 落地设计（4） | 优先既有完整图、既有代码及组件，只在不足时作必要的最小增量 | 实际可用的取数/构图设计，不额外引入隔离工程 |
-| 实际取数（5） | 取得源数据、后处理、构图 CDS 或指定视窗最终值；需要真实窗口时核 Bokeh/回调及元数据 | **真实数据/图层/来源/数量/时间/版本/运行记录**，而不是截图或预览假装完整 |
-| 质量核查（6） | 参数和对象身份、actual/confirm、加载/可见范围、缺失/有效空/Pending、原值/显示值阶段 | `MaterialReview`、可使用范围与具体缺陷 |
-| 材料交接（7） | 给出实际材料包、可/不可回答的问题和后继缺口 | `PLAN_READY/DATA_READY/PARTIAL_WITH_LIMITS/BLOCKED` 的**真实**报告 |
+- 输入事件级 occurrence；
+- 输出侧业务主输出 occurrence；
+- 中间处理 occurrence／结果；
+- 各事件自己的发生位置及 occurrence 携带的其他位置；
+- 输入、中间处理和业务主输出的形成／更新／确认／结束／引用关系；
+- 代码证据和未确认项。
 
-[观察准备任务单](../../skills/observation-material-preparation/templates/观察材料准备任务单.md) 的 A～F 是记录方式；不要因填了表就宣称已取到真实数据。已有完整图要优先复用，不因材料有四项就拆成四次完整 CAEGraph；图中若只给 `construction_snapshot` 而用途需要 `viewport_final`，必须补真实视窗或注明不能用；图像素不能逆推缺失业务原值。
+不得用需求代替代码，不得因某中间表正式公开就把它改称业务主输出，也不得在 A 选择最终观察品种和时间。
 
-**执行边界**：原步骤 5 对昂贵计算/大范围载入的检查，仅针对正在考虑的具体动作；低风险读取和 BASE 中常规新增观察产物不要求另过 S2/M05、完整隔离构建或分步 G-RUN。真正缺少的专业观测能力按原步骤 4～5 的优先顺序处理，不把准备运行环境本身升格成独立业务目标。
+## 4. M-B｜观察位置准备
 
-**可以签 Worker W 的典型场景**：在已核定的仓库/工作区运行既有 CAEGraph、取得指定源字段/trace、导出完整数据、核对构图与浏览器最终数据、验证文件哈希和性能前置；Worker 只实现具体有权操作。**你仍负责决定**哪些图/数据值得取得、是否支持预期用途、结果对业务判断还缺什么。
-
-M 成果可以被上层用于 L0 向 R 交材料，但不能在材料准备阶段断言“特征合理/不合理”，也不能替 R 预先确定探索或正式对照分叉。
-
-## 4. D 属于合理性分析 R 时：按需要调用四个专业 Skill
-
-[合理性分析 README](../../skills/reasonableness-analysis/README.md) 已明确“最小预期 → 少量探索 → 冻结 → 正式对照 → 必要诊断/标定”，**不是必须从头到尾每轮跑完**。本 Pro 根据 D 的目的选择真实需要的专业能力：
-
-| 适用工作 | 规范源与关键动作 | 必须交回的业务产物/状态 |
-|---|---|---|
-| 业务预期推导 | [business-expectation-derivation](../../skills/reasonableness-analysis/business-expectation-derivation/SKILL.md)：保留 Owner/业务推导/实现三类来源，形成可证伪命题、适用/反例及输入三层检查 | `ExpectationRegister`、`InputSuitabilityAssessment`、`ScenarioExpectationSet`；必要时 `FrozenExpectationSet` |
-| 真实证据对照 | [business-evidence-comparison](../../skills/reasonableness-analysis/business-evidence-comparison/SKILL.md)：探索与正式对照分开；正式必须绑定冻结版本、对象/时间/数据/参数/代码和真实案例 | `EvidenceComparisonPackage`、`ScenarioEffectTable`、新预期候选及 `DiscrepancyQueue` |
-| 偏差诊断 | [business-discrepancy-diagnosis](../../skills/reasonableness-analysis/business-discrepancy-diagnosis/SKILL.md)：沿“数据→输入→选择/应用→状态→输出→效果”找最早分歧，区别竞争解释和最小新增事实 | `DiagnosisReport`、`MinimalDiscriminatingExperiment`、参数可调性 `POSSIBLY_ADJUSTABLE/COUPLED_UNRESOLVED/PROVEN_NOT_ADJUSTABLE/EVIDENCE_INSUFFICIENT` |
-| 条件标定 | [feature-instance-calibration](../../skills/reasonableness-analysis/feature-instance-calibration/SKILL.md)：先分清独立参数和派生/耦合，反求多位置联合可行域，少量候选，在合法准入下复验完整实例 | `CalibrationResult`（参数影响、试验证据、新旧完整实例的业务物理意义和剩余问题） |
-
-必须保留以下边界：
-
-- `OWNER_EXPLICIT`、`BUSINESS_INFERRED`、`IMPLEMENTATION_DERIVED` 各自可追溯；**实现恰好如此不等于业务应该如此**。
-- `SEED/WORKING` 可用于小样本探索；正式 `SUPPORTS/COUNTERS` 判断前需 `FROZEN_FOR_COMPARISON`。新发现形成新版本，不能无痕改旧冻结记录。
-- 对照六类 `SUPPORTS/COUNTERS/MISSING/AMBIGUOUS/NOT_APPLICABLE/PENDING` 是**领域状态**，不是全部“通过/不通过”；有效空、无事件、缺失和 Pending 不混同。
-- R2 得到 `COUNTERS` 不默认要求 R3/R4；本轮只要求对照时可交已有充分反证。偏差进入 R3 必须有业务价值、证据和查因路径。
-- 未定位偏差不盲调参；R3 可修复性初筛后，R4 才反求参数组合与完整实例。如首次实例化符合入口，可合法直接进入 R4。
-- R4 使用 R2 的对照能力作**同一项** `INSTANCE_REVALIDATION`，要复用同一个真实工作结果；参数改变上游切段时按原始行情窗口和新旧完整实例比较，不能按旧事件 ID 判改善。
-- `PROVEN_NOT_ADJUSTABLE` 是有证据的结论，若参数解决不了则按诊断路由提出叙事/实现改动候选，**不能自行改需求或生产实现**。
-
-需要原字段、时间或中间结果时，先在当前 D/现有授权内做低成本局部查证；真正要跨 M 工作流取独立材料时，形成有来源的 `AdditionalEvidenceRequest` 候选交上层，由原请求关系组织 M 补证，回原问题/轮次/预期版本（冻结前记 `not_frozen`）。无法取得/部分取得亦应形成可消费结果，不能无限重复相同查证。
-
-## 5. 何时签 W，以及怎样处理 Worker 回报
-
-只有出现**确实需要真实工具操作**且已有合法 Owner grant、D 授权、实际工作区/成本边界时才签 W。工单 `ORDER.md/ORDER.json` 说明：
+读取 [B Skill](../../skills/observation-material-preparation/observation-position-preparation/SKILL.md)。普通场景至少形成真实可核实的：
 
 ```text
-具体要验证的业务问题 / 输入事实
-唯一 parent D 与本次专业调用
-已核实的代码/数据/参数/时间/环境及准确来源
-要执行的工具/命令、写面、预算和真实独占
-实际需要的交付物（源值、日志、数据、图层/trace、运行结果）
-核验标准（来源、数量、时间、哈希、需要哪种数据阶段）
-失败/部分/无结果/未知副作用时如何停、如何回报
-必须原封交还本 executor，而不是直接交 manager
+品种集
+开始时间
+结束时间
+选择规则和核实记录
 ```
 
-不得让 Worker 自行决定“业务上应该看什么”“哪种参数最合理”“这个反证该不该忽略”。W 的数据/图/场景选择应能追溯到本 D 所依赖的**已接受材料目标和观察方法**；若执行时发现这些上游取舍不足以支持原业务目的，回报具名修订需要，不自行降级后继续后继。Worker 的部分合格数据仍应保留、核实资格，不因另一张图失败而整套重跑。
+特征实例是外层输入，直接使用。多层数据位置必须等专门方法给出，不能自行发明格式。不能按未来结果是否漂亮挑案例，也不能为了 C 更容易画而删改位置。
 
-接到 `WORKER_RETURN` 时，由真实回执确认 W 的实际运行与实物；然后你从当前 D 的业务意图判断：哪些结果被接受、哪些只是技术输出、缺哪条证据、是否可补、下一步专业分析如何继续。Worker 的 `EXECUTED` 不等于数据业务可用；Worker 的 `STOP` 也不等于此 D 或父业务任务失败。
+## 5. M-C｜展示方式准备
 
-## 6. 执行结果与专业回交：不增加第二套状态
+读取 [C Skill](../../skills/observation-material-preparation/caegraph-display-preparation/SKILL.md)。必须形成：
 
-每次当前专业调用的完整专业报告按本 D 的真实工作填写：
+- 不绑定 B 最终位置的展示方式定义；
+- 主图、附图、图元、事件多个位置、图例／hover、基准和交互；
+- 可打开的预期展示 HTML；
+- CAEGraph 能力缺口及最低替代方式。
 
-1. **本 D 要回答什么**、本次已处理的 M/R 工作以及准确采用的 Skill/版本；
-2. **实际发现**：来源、场景、数据/时间/参数/代码版本、哪些是已证实事实/哪些是解释或候选；
-3. **实际原生业务结果引用**：`MaterialPlan/MaterialReview/真实材料`，或 `ExpectationRegister/EvidenceComparisonPackage/DiagnosisReport/CalibrationResult`，只填写真正发生过的；
-4. **验证和范围**：支持/反证/缺失、样本或视窗限制、Worker 实物是否已专业消费，是否仍有在途 W；
-5. **未完成及其原因**：下一项最小事实检查、需要补证或新的专业判断、没有任何合法后继时如何有据停止；
-6. **对原 manager 的准确交回**：本 D 是否完成报告、哪些新工作仅为建议、是否涉及 Owner 才能决定的目标取舍/权限。
+C 可以使用一个真实或示意局部位置进行设计，不关心 B 最终有多少真实位置。先保证输入和业务主输出可读，再按需要加入中间处理结果。
 
-以 V2 `PRO_RETURN.json` 的 `role=executor`、`delegation_ref`、`return_to`、`issued_order_refs`、`accepted_worker_refs`、`continuation_ref` 与正式报告引用承接；不要额外发明与 `PRO_RETURN` 竞争的机器 Return。**`REPORTED_COMPLETE` 只代表 D 范围的专业报告完成**，不是该特征已修复或整个 ParentTask 已完成。
+## 6. M-D｜CAEGraph 定义集成
 
-若原 D 的专业工作无需 Worker，可以零 W 直接完成并回交；如果缺实际取数，不能仅靠规划就冒充 `DATA_READY` 或正式证据对照已经成立。
+读取 [D Skill](../../skills/observation-material-preparation/caegraph-definition-integration/SKILL.md)。将 A、B、C 和外层特征实例集成为：
 
-## 7. 两个用例帮助识别 D 与 W 的边界（仅为操作示例）
+- 已绑定真实实例和数据入口；
+- 已绑定真实品种、时间及按需多层位置；
+- 已绑定 A 字段与 C 面板／图元；
+- 可直接交 E 尝试运行的完整 Python CAEGraph 定义／脚本初稿；
+- 定义级检查和待 E 确认项。
 
-**标准化高频材料准备**：manager 的 D 是“为当前问题准备可验证的大小转折、不同参数组原始高频、select/apply、CloseGroup、merged 及必要参照材料”。executor 应先还原处理链并确认最小有价值阶段；可能给 Worker 一张“运行并提取现有完整 CAEGraph 各必要源与图层数据”的 W；若只需再核一个 `apply` 时效，还可以同一 D 继续定位已有 trace。必须由 executor 判断哪些信息确有业务观察价值、实际产物够不够、缺的是否影响本次问题。
+D 不派 Worker，不把文字方案或代码片段当完整定义，不修改 B 位置和 C 展示语义。
 
-**高频标准化合理性分析**：D 可以要求核实“覆盖重要拐头与减少重复”的最小预期。executor 自行做预期来源、场景与条件分析；使用已经可靠取得的样本时可以直接分析，无需 W。若对照后确需重放某段参数影响，则签具体 W；新旧结果必须返回 executor 检查原业务物理意义，再向 manager 汇报。**不从示例假定现有数据已经运行成功，也不强制所有 D 都经过参数标定。**
+## 7. M-E｜CAEGraph 执行／运行
 
-## 8. 仍需由上层/Owner 解决的未决事项
+读取 [E Skill](../../skills/observation-material-preparation/caegraph-execution/SKILL.md)及 [技术参考](../../skills/observation-material-preparation/references/CAEGraph执行取数与验证.md)。
 
-Gate 的正式验收权与复核独立性、跨用途部分接受、不可得是否足以结束本轮、是否修改业务目标、正式试验预算以及新的专业方法是否成为通用 Skill，均不能由 executor 单独批准。当前控制面仍为候选；这类问题应给 manager/Owner 一份**有事实、有选项、有成本影响与下一步条件的专业材料**，而非一句“请决定”。
+### 7.1 何时签 Worker W
 
+只有已经有 D 完整定义、真实环境和合法权限，并且需要运行／修复／导出时才签 W。工单至少写明：
 
-## 多 Run 身份边界（不改变专业执行）
+```text
+唯一 parent D 和 E 工作身份
+D 定义版本、完整脚本、特征实例、品种、时间
+真实环境、数据入口、输出目录和预算
+Worker 可自主修复范围
+必须返回 executor 的位置／展示／绑定问题
+初步 HTML、日志、patch 和错误交付
+失败、部分、效果未知时如何停
+```
 
-每次执行只接受本 D 所属的 run_id 和实际被授权的工作区。Worker 必须在该 Run 的真实 Owner GO 指定并已由主控核实的独立 Linux 工作区执行；不得借用其他 Run 的 Worker 线程、文件输出或写入资格。其他 Run 已有材料可作为候选来源，但只有通过本 D 的真实专业适用性核查才可消费。专业方法版本依本 Run 的已采用精确来源，不随共享 Skill 更新自动变化。
+### 7.2 Worker 可改和不可改
+
+可在授权内直接修复：语法、导入、路径、确定 API 差异、明确类型转换、输出目录和不改变业务语义的机械错误。
+
+必须返回 executor：
+
+- 更换品种、时间或多层位置；
+- 删除／增加业务字段；
+- 改变主附图、图元、事件位置表达或标准化；
+- 另算一个值替代特征输出；
+- 无法判断是 B、C 还是 D 问题。
+
+每次 patch 必须记录修改前后、原因、权限依据和语义影响。
+
+### 7.3 E 的专业核对
+
+Worker 完整运行后，executor 仍须：
+
+1. **与 D 核对最终脚本**：实例、品种、时间、字段、面板、图元、转换和 patch 是否在权限内；
+2. **与 C 预期 HTML 核对最终图**：面板结构、主附图、事件位置、多品种组织、图例／hover 和必要中间结果；
+3. 若位置问题回 B、展示问题回 C、集成问题回 D；不能由 Worker 静默修正；
+4. 只有最终图被接受后，才正式取得 CAEGraph 图数据；
+5. 核对最终脚本、HTML 和数据来自同一有效版本／运行，图层到数据源、品种、时间、身份、数据阶段和缺失语义一致。
+
+只有脚本跑通或只有 HTML，不能交 `DATA_READY`。
+
+## 8. M 的专业回交
+
+按 D 涉及阶段逐项回交：
+
+```text
+已接受的上游输入和版本
+实际执行的内部步骤
+阶段原生产物及字段级引用
+专业判断及其证据
+Worker run／patch（E 如适用）
+当前可消费范围
+未完成、受阻或需返回的阶段
+准确后继
+```
+
+最终 M 交付应包含 A～D 当前有效引用、最终脚本、最终 HTML、正式图数据、三类核对和限制。材料准备不宣布特征合理或不合理。
+
+## 9. R｜合理性分析
+
+R 任务仍按四个专业 Skill 选择实际需要的能力：
+
+| 工作 | 主要产物 | 核心边界 |
+|---|---|---|
+| 预期推导 | `ExpectationRegister`、输入适用性、场景和冻结版 | Owner／业务推导／实现来源分开；正式对照前冻结 |
+| 证据对照 | `EvidenceComparisonPackage`、场景效果和偏差队列 | 绑定真实材料、时间、对象、代码和参数；六类证据状态不改写 |
+| 偏差诊断 | `DiagnosisReport`、竞争解释和可修复性 | 找最早分歧；未定位不盲调 |
+| 条件标定 | `CalibrationResult`、联合可行域、试验和完整实例比较 | 先有动作资格；原始窗口和完整物理意义保留 |
+
+需要 M 补证时，形成具名请求并回原问题／轮次；不能自行改生产实现、业务需求或冻结预期。
+
+## 10. Worker 回报的一般处理
+
+- Worker 运输成功不等于专业工作完成；
+- 文件存在不等于数据有效；
+- 效果未知先对账，不重复执行；
+- Worker 发现超出工单的问题只回报，不自行扩大；
+- executor 依据 Skill 接受、限域、返修或形成补证请求，再正式回 manager。
+
+## 11. 禁止事项
+
+- 不用“已读懂任务”冒充专业产物；
+- 不把写 Worker 工单当专业执行；
+- 不自行增加 manager 未授权的问题；
+- 不跳过阶段消费者需要的上游结果；
+- 不让 Worker 决定业务上该看什么、怎么画或什么参数合理；
+- 不把 `PLAN_READY`、语法检查或预览冒充 `DATA_READY`。
+
+## 12. 当前状态
+
+本指南和 A～E 新结构仍需真实多轮 Run 验证。工具可用性、物理消息、正式 Gate 权限和受保护业务状态不能由本文件假定已经存在。
