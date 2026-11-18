@@ -8,7 +8,7 @@
 |---|---|---|
 | [L0 完整任务](../../control/01_L0_完整业务任务与双向衔接.md) | M→R、R→M 补证、逐问题收束 | 候选控制设计 |
 | [L1-M A～E](../../control/02_L1_观察材料准备流程.md) | 材料准备外层阶段、阶段 I/O 和回流 | 外层 Workflow 权威来源 |
-| [M 五个阶段 Skill](../../skills/observation-material-preparation/SKILL.md) | 各阶段内部 Workflow、专业判断和字段级 I/O | manager 不得改写专业方法 |
+| [M 五个阶段 Skill](../../skills/observation-material-preparation/SKILL.md) | A／B／C／E 的内部 Workflow、D 的单一集成动作、各阶段字段 I/O 和 E Worker 派单合同 | manager 不得改写专业方法 |
 | [L1-R](../../control/03_L1_合理性分析流程.md)及 [R Skills](../../skills/reasonableness-analysis/README.md) | 预期、对照、诊断、标定和交付 | 不改写原生状态 |
 | [L2 I/O](../../control/04_L2_节点输入输出登记表.md) | 阶段／节点的消费资格 | 不等于每项独立调用 |
 | [Gate](../../control/05_三级Gate及后继路由.md) | WorkQuality、UseEligibility、ActionEligibility、TaskCompletion | 不是生产级自动服务 |
@@ -46,7 +46,7 @@ manager 不从聊天记忆写第二套“最新事实”，也不把历史旧“
 已经接受的上游产物及其版本
 本次为何要做、由哪个下游消费
 外层特征名称、代码版本、特征实例（M 任务）
-应读取的具体 Skill / WORKFLOW / IO_SPEC
+应读取的具体专业文件：通常是 SKILL / WORKFLOW / IO_SPEC；D 为 SKILL + IO_SPEC；E 另含 Worker 派单合同与两份模板
 要求形成的阶段原生产物与最低核对
 允许的局部查证、Worker 操作、预算和停止条件
 成功、部分、缺口、不可得、失败时分别返回什么
@@ -60,17 +60,20 @@ manager 不从聊天记忆写第二套“最新事实”，也不把历史旧“
 | 阶段 | manager 应确认的输入 | executor 必须形成的成果 | manager 接收／后继 |
 |---|---|---|---|
 | **A occurrence 理解** | 三项外层输入和真实代码来源 | 事件级 occurrence、各事件发生位置、业务主输出／中间结果、处理关系 | 能供 B/C/D 消费则接受；核心事实不明返回 A |
-| **B 观察位置** | A 产物、特征实例和真实索引／查询能力 | 品种集、时间范围、选择规则；多层位置按专门方法 | 合格进入 D；位置问题返回 B |
-| **C 展示方式** | A 产物、按需实例、CAEGraph 能力资料 | 展示方式定义和预期 HTML | 合格进入 D；展示／能力问题返回 C |
-| **D 定义集成** | A/B/C 和特征实例 | 绑定真实实例、字段、品种、时间的完整 Python 定义及检查 | 合格进入 E；D 不派 Worker |
-| **E 执行／运行** | D 完整定义、C 预期 HTML、实例和运行条件 | 最终脚本、HTML、正式图数据、Worker patch、D/C 核对和图数据一致性 | `DATA_READY` 才可完整交 R；部分／阻塞按真实范围交接 |
+| **B 观察位置** | A 产物、特征实例和任务明确位置（如有） | 当前经验性普通位置或高频多尺度位置路径 | 合格进入 D；位置问题返回 B |
+| **C 展示方式** | A 产物、只读按需使用实例、CAEGraph 能力资料 | 展示预期、复杂点处理、位置与实例可注入代码、实例注入合同和预期 HTML | 合格进入 D；展示／能力问题返回 C |
+| **D 定义集成** | 外层输入、A/B/C、锁定 CAEGraph 仓库 | 仓库理解记录和绑定真实实例、字段、位置的完整 Python 定义 | 合格进入 E；D 是单一动作且不派 Worker |
+| **E 执行／运行** | D 完整定义、C 展示预期／HTML、实例、环境和授权 | E 专业判断；W1 运行／patch；最终图核对；W2 正式图数据；一致性核对 | `DATA_READY` 才可完整交 R；部分／阻塞按真实范围交接 |
 
 ### E 的管理边界
 
-- Worker 由 executor 在 E 内根据授权签发和接收，不由 manager 直接替 executor 指挥技术修复。
-- E 发现品种／时间问题回 B，展示问题回 C，字段／绑定问题回 D；manager 接收专业判断后组织准确后继。
-- 最终图没有先通过 D/C 两类核对时，不能批准正式取图数据或宣称 `DATA_READY`。
-- manager 核对 E 是否完成专业合同，但不亲自重新设计图或修改脚本。
+- E 的专业 Workflow 与 Worker 操作委派必须分开：executor 自己判断，Worker 按工单运行和导出。
+- **W1** 只负责运行 D 定义、权限内机械修复及候选脚本／HTML／日志／patch；
+- manager 不把 W1 成功直接当成图已接受，也不批准提前正式取数；
+- executor 用 D／C 完成专业核图并形成正式取数准入后，才可签发独立 **W2**；
+- **W2** 只导出已接受图的正式数据，不得修改脚本、位置、字段或展示语义；
+- E 发现品种／时间问题回 B，展示问题回 C，字段／绑定问题回 D；manager 接收专业判断后组织准确后继；
+- manager 核对 E 是否完成专业合同，但不亲自重新设计图、修改脚本或替 executor 判断 Worker patch。
 
 ## 6. 合理性分析 R 的安排与接收
 
@@ -110,7 +113,8 @@ manager 每次接收结果至少区分：
 特别记录：
 
 - A/B/C/D 是否只是候选还是已接受；
-- E 是否已运行、核图、允许正式取数、数据一致性完成；
+- D 是否完成当前定义所需 CAEGraph 仓库理解和真实实例绑定；
+- E 的 W1 是否已运行、图是否已由 E 接受、W2 是否已签发、正式数据是否通过一致性核对；
 - `PLAN_READY` 与 `DATA_READY` 的差别；
 - Worker patch 是否改变业务语义；
 - 哪些版本变化使下游失效。
@@ -122,7 +126,8 @@ manager 每次接收结果至少区分：
 - 不把 manager 写的任务说明当作新的专业 Skill；
 - 不自行决定特征应该表现成什么样；
 - 不让 executor／Worker 在一份 D 中把未接受的上游判断当作通过；
-- 不因 Worker 运行成功就接受 E；
+- 不因 W1 运行成功就接受 E；
+- 不在最终图接受前批准 W2；
 - 不以部分交付缩小其他必需范围；
 - 不重复派发没有新事实的同一复核。
 
