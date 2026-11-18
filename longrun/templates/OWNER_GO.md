@@ -11,29 +11,28 @@
 - 采用的专业 Skill / 控制面来源（仓库、提交、路径）：
 - 任务结果期望及 Owner 接收方式：
 
-## 试运行方式：管理 Pro 负责全部业务控制面（随本 Run GO 生效）
+## 本 Run 的两类 Chat 工作方式
 
-- **本轮运行方式**：不等待业务控制程序。管理 Pro 按本次采用的 `control/01～06` 执行 L0/L1/L2 的工作组织、Gate、未通过后的返修和补证、M↔R 接续、逐节点/阶段/问题验收、五级完成全景更新以及恢复/完成判断。
-- **自主推进、Owner 定期查看**：普通专业调查、取数、画图、核验、诊断、合理性分析、工作安排、Gate 通过/不通过及局部返修，在本 Run 已确定的目标/运行环境和可用工具内直接由管理 Pro 组织，不需每项再向 Owner 请求批准。新产生一个工作节点不等于“扩大操作权限”。
-- **界限是实际执行能力，不是增加管理审批**：如工具确实没有目标仓库/目录写权限、资源由其他 Run 独占、违反 Owner 已明确禁令或必须改变已确认的业务目标，则记录具体问题及可继续的其他工作；不能自行伪造权限或转到未授权的新位置。除真正无法执行的情形外，不要以预设的“可能超权限”为由反复打断 Owner。
-- **运行期业务决定和完成全景**：按 [CONTROL_PLANE_ADAPTER](../CONTROL_PLANE_ADAPTER.md) 由管理 Pro 产出，若 Pro 无 GitHub 写入工具，由主控按原文保存；使用 `longrun/runs/<run_id>/business_control/decisions/<decision_id>.md` 和 `.../TASK_PROGRESS.md`，模板分别见 [MANAGEMENT_DECISION](MANAGEMENT_DECISION.md)、[TASK_PROGRESS](TASK_PROGRESS.md)。**这不代表已有自动状态投影程序或生产级强制 Gate。**
-- **本次业务输入尚在准备时**：可以先完成协议/环境接线检查，但没有真实 GO 与特征任务来源，不创建实际业务 Run；业务输入确定后统一锁定 commit 和授权，不为当前尚未知的特征场景编造执行任务。
+- **多层 Workflow 运行协调 Chat**（V2 身份 `manager`）：维护整个任务的当前状态及版本依赖；依据已采用 Workflow 调用、等待、接续和回流具体 Skill 工作；按需增加 Skill 执行 Chat。不自行添加执行约束、专业方法、业务预期、Worker 处理办法或专业验收条件，也不额外担任独立专业 Gate。
+- **Skill 执行 Chat**（V2 身份 `executor`）：根据本次指定 Skill 的原始文件实际完成专业工作及其内部 Workflow；专业结果、完成条件及 Worker 使用与返回处理全部以该 Skill 为准。
+- **状态与恢复**：继续以 `longrun/runs/<run_id>/business_control/TASK_PROGRESS.md` 记录当前整体任务及阶段工作、版本、在途和合法后继；主控据真实产物和回执保存、核实，不编造专业决定。不另设状态数据库。
+- **派发单位**：默认一个 D 对应一项 Skill 工作；同一 Skill 可跨多个 C 接续。观察材料准备 A 后 B/C 可在有效输入和物理身份可用时按需并行，不强制每个 Skill 单独建 Chat。
+- **运行限制**：Owner 授权和 V2 机器执行权限由主控单独校验，协调 Chat 不增设专业执行约束。没有真实 GO 与特征来源时，只可准备运行接线，不创建实际业务 Run。
 
 ## 运行角色
 
 - 主控逻辑身份与物理端绑定方式：
-- 专业负责人 Pro 逻辑身份与物理聊天绑定方式：
-- 允许参与的专业执行人 Pro 身份范围：
+- 多层 Workflow 运行协调 Chat（V2 manager）逻辑身份与物理聊天绑定方式：
+- 允许参与的 Skill 执行 Chat（V2 executor）身份范围及按需增加方式：
 - 允许参与的 Worker Codex 身份范围：
 
-## 本项目已指定的执行目标（2026-11-14；填写正式 GO 时核对是否仍适用）
+## 本项目执行目标（正式 GO 时确认适用配置）
 
 以下是用户本次对**未来长程执行环境**的指定，写在模板里用于避免实际派发时猜 Project/Worker 工作区；**不是已经发布的 Run GO，也不是证明项目、聊天、Linux 目录或模型已经验收**。
 
-- 专业负责人 Pro、专业执行人 Pro：均使用 ChatGPT Project **`细节叙事生成_金标`**；各自独立角色聊天，目标推理档位 **`Pro`**。
-- Pro 的模型：**本轮未指定、不检查**。实际派发遵守当时通用发送端必要的配置核验，不在本模板猜测型号。
-- Worker（旧单 Run 参考）：此前指定 Linux BASE 工作区为 **`/dwdhome/fy/BASE_E6_2`**。**多 Run 首版新增约束：每个 run_id 的 Linux 工作区由 Owner 提前准备，并在本次真实 GO 明确给出独立绝对路径；不得把上述旧参考路径自动套用到多个 Run。**
-- Worker 模型/推理配置：用户原始指定 **`GPT-6.1 Sol Max`**（按字面可表达为 `GPT-6.1 Sol` + `Max`；**本轮不探测可用性**）。
+- 多层 Workflow 运行协调 Chat、Skill 执行 Chat：均使用 ChatGPT Project **`细节叙事生成_金标`**；各自独立角色聊天，当前指定的目标模型为 **`GPT-5.6 Sol`**，推理档位为 **`Pro`**。是否已经实际选中，须由每次发送前的现有操作 Skill 验证；模板本身不证明设置成功。
+- Worker：每个 `run_id` 的 Linux 工作区由 Owner 提前准备，并在本次真实 GO 中指定独立绝对路径；不从其他 Run 或示例路径推断。
+- Worker 目标模型/推理配置：**`GPT-6.1 Sol Max`**；实际可用性与现场配置仍需在真实派发前核验。
 - 若 Owner 后续重新指定项目、路径或档位，以新的真实指令为准；不同 Run 不自动继承。物理 Project/ChatGPT 聊天、Codex threadId、实际目录和配置在真实启动时记录到可信运行映射；不能因为模板包含上述信息就认定已创建。
 - **工作区路径不是写权限**：真正执行 W 仍须受下列独立的 `operation / execution_context / allowed_writes / authority_quote` 授权及共享目标单写者检查约束。
 
@@ -46,13 +45,11 @@
 
 主控负责在真实目标 Linux 主机上核实目录存在、realpath 与其他活跃 Run 不重叠、权限和 Worker 实际 cwd，再写入 `runs/<run_id>/RUN_RESOURCE_BINDING.json`。这不是主控自动创建工作区的授权。
 
-**兼容性提示**：`cgpterm@becfbcbc...` 当前主控 Skill 尚固定旧 BASE 路径，本轮不修改。采用非旧路径的新多 Run GO，在现役 cgpterm 适配之前不得宣称已经可以按新路径执行 Worker；详见 [后续接入清单](../controller/CGPTERM_ADOPTION_PENDING.md)。
-
 ## 本 Run 一次性覆盖常规工程操作（V2 仍须可校验的 Owner 原文）
 
-这部分只用于**真实工具派发**，与管理 Pro 自主决定业务 Gate 是两回事。Owner 可在启动 GO 里**一次性覆盖本次业务通常需要的操作类别和写入位置**；主控据此为 V2 Binding 编制一个或多个可核对的 `grants`，随后各 D/W 在覆盖范围内自主执行，不再每条工单都向 Owner 要授权。
+这部分仅用于**真实工具派发的机器权限校验**，不是由运行协调 Chat 自拟的专业执行约束。Owner 可在启动 GO 里**一次性覆盖本次业务通常需要的操作类别和写入位置**；主控据此为 V2 Binding 编制一个或多个可核对的 `grants`，随后各 D/W 在覆盖范围内自主执行，不再每条工单都向 Owner 要授权。
 
-现有 V2 Schema 与 `longrun_gate.py` 对 `operation`、`execution_context`、`allowed_writes` 采取精确值匹配，所以**以下字段需要在启动 GO 中有真实、准确的 Owner 原文**。可以按操作类别共用一条授权，不是为每个具体文件/每次取数申请一次。不能把模板示例、Pro 的解释或主控猜测当作实际 `authority_quote`：
+现有 V2 Schema 与 `longrun_gate.py` 对 `operation`、`execution_context`、`allowed_writes` 采取精确值匹配，所以**以下字段需要在启动 GO 中有真实、准确的 Owner 原文**。可以按操作类别共用一条授权，不是为每个具体文件/每次取数申请一次。不能把模板示例、任何 Chat 的解释或主控猜测当作实际 `authority_quote`：
 
 对本 Run 需要覆盖的**操作类别**填写（不是每次动作重复）：
 
@@ -63,7 +60,7 @@ allowed_writes=<明确允许写入仓库/分支/路径>
 authority_quote=<包含以上三个值的 Owner 原文>
 ```
 
-**使用原则**：既有工具实际允许、且属于 GO 一次性涵盖的工作，Pro 可以直接安排而不再次请求人工批准。若单项真实动作不属于任何已登记的操作类别，先检查现有授权是否已经包含等价操作；不能因字段命名不同就无故中断，也不能通过伪造 `authority_quote` 绕过 V2 校验。确实缺少实际访问权限时只阻断该动作，具体说明缺什么；其他合法工作继续。
+**使用原则**：既有工具实际允许、且属于 GO 一次性涵盖的操作，按 V2 直接派发而不再次请求人工批准。若单项真实动作不属于任何已登记的操作类别，先检查现有授权是否已经包含等价操作；不能因字段命名不同就无故中断，也不能通过伪造 `authority_quote` 绕过 V2 校验。确实缺少实际访问权限时只阻断该动作，具体说明缺什么；其他合法工作继续。
 
 ## 真实发布
 
