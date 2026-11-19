@@ -113,7 +113,7 @@ owner_request_ref=OR001
 
 Git 历史继续保留被拒绝的原 C0016 Return：
 
-`daowei2026/observe-iterate@616497e3b3eb6f04f3218ea7ceea0e32b9:longrun/runs/OI-U2-F-OBS-20261118-01/calls/C0016/PRO_RETURN.json`
+`daowei2026/observe-iterate@616497e3b3eb6f231c6b04f3218ea7ceea0e32b9:longrun/runs/OI-U2-F-OBS-20261118-01/calls/C0016/PRO_RETURN.json`
 
 协议消费时应采用同路径的当前补正原件：
 
