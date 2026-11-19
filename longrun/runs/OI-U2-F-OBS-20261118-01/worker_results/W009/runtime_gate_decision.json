@@ -1,0 +1,149 @@
+{
+  "format": "local-worker-runtime-gate-decision/v2",
+  "run_id": "OI-U2-F-OBS-20261118-01",
+  "work_order_id": "W009",
+  "parent_delegation_id": "D006",
+  "work_item_id": "OI-U2-F-OBS-20261118-01-WI-E-R1",
+  "stage_instance_id": "OI-U2-F-OBS-20261118-01-M-E-R1",
+  "worker": "codex:OI-U2-F-OBS-20261118-01:worker:W1",
+  "return_to": "chatgpt:OI-U2-F-OBS-20261118-01:executor:E2",
+  "order_ref": "daowei2026/observe-iterate@320425cd9892294409135acea5657f6fdacf2b17:longrun/runs/OI-U2-F-OBS-20261118-01/work_orders/W009/ORDER.json",
+  "fact_state": "BLOCKED",
+  "proposed_outcome": "STOP",
+  "candidate": "/dwdhome/fy/BASE_E6_2_copy/.runtime/fqv-rb-hc-i-20261117",
+  "existing_entry": {
+    "status": "PASS",
+    "type": "candidate-existing generic Python launcher",
+    "candidate_launcher": "/dwdhome/fy/BASE_E6_2_copy/.runtime/fqv-rb-hc-i-20261117/run_in_runtime.py",
+    "reference_shell_launcher": "/dwdhome/fy/BASE_E6_2_copy/.runtime/fqv-rb-hc-i-20261117/fqv.sh",
+    "workspace_python_entry_configuration": "/dwdhome/fy/BASE_E6_2_copy/run-python.sh",
+    "planned_python": "/m3c3/Linux/apps/anaconda3/bin/python",
+    "new_launcher_created": false,
+    "candidate_launcher_declared_effects": [
+      "M3WORKS=candidate/runtime",
+      "PATH=candidate/runtime/edh-universe/bin + existing PATH",
+      "sys.path.insert(0, candidate/runtime)",
+      "runpy.run_path(its script argument)"
+    ],
+    "process_environment_basis": "仅采用现有run-python.sh和run_in_runtime.py已声明的进程设置；不发明第二套TIS路径。",
+    "write_scope_handling": "现有run-python.sh会写工作区.migration/records/m3rc.log；本W不调用其带日志副作用的shell，而按工单第5节允许应用其已声明进程环境，所有日志重定向W009。不改该文件，不创建替代wrapper/activation/launcher。",
+    "codex_target_dependency_seen_in_read_entry_chain": false,
+    "candidate_entry_executed_yet": true,
+    "execution_scope": "一次无业务动作origin probe；未运行D或fqv.sh的read/rerun/inspect动作。"
+  },
+  "gates": {
+    "5_existing_entry": "PASS",
+    "6.1_TIS_four_files_locked_bytes": "PASS",
+    "6.2_required_TIS_modules_candidate_local": "PASS",
+    "6.3_candidate_FRP_provenance": "PASS",
+    "7_actual_all_mquant_origin_probe": "FAIL",
+    "8_original_D_execution": "NOT_RUN"
+  },
+  "total_admission": "FAIL",
+  "first_failure": {
+    "classification": "DEDICATED_RUNTIME_MIXED_MQUANT_ORIGINS",
+    "reason": "至少一个实际加载mquant模块的来源不在同一候选mquant根",
+    "first_outside_module": "mquant"
+  },
+  "origin_probe_attempt_count": 1,
+  "origin_probe_exit_code": 1,
+  "probe_requested_module_imports_succeeded": 13,
+  "loaded_mquant_module_count": 260,
+  "outside_candidate_mquant_modules": 165,
+  "first_outside_examples": [
+    {
+      "module": "mquant",
+      "file": "/dwdhome/fy/BASE_E6_2_copy/.runtime/fqv-rb-hc-i-20261117/runtime/mquant/__init__.py",
+      "path": [
+        "/dwdhome/fy/BASE_E6_2_copy/.runtime/fqv-rb-hc-i-20261117/runtime/mquant"
+      ],
+      "spec_origin": "/dwdhome/fy/BASE_E6_2_copy/.runtime/fqv-rb-hc-i-20261117/runtime/mquant/__init__.py",
+      "all_paths_within_candidate_mquant": false,
+      "resolved_file": "/dwdhome/fy/BASE_E6_2_copy/mquant/__init__.py",
+      "resolved_path": [
+        "/dwdhome/fy/BASE_E6_2_copy/.runtime/fqv-rb-hc-i-20261117/runtime/mquant"
+      ]
+    },
+    {
+      "module": "mquant.apt",
+      "file": "/dwdhome/fy/BASE_E6_2_copy/.runtime/fqv-rb-hc-i-20261117/runtime/mquant/apt/__init__.py",
+      "path": [
+        "/dwdhome/fy/BASE_E6_2_copy/.runtime/fqv-rb-hc-i-20261117/runtime/mquant/apt"
+      ],
+      "spec_origin": "/dwdhome/fy/BASE_E6_2_copy/.runtime/fqv-rb-hc-i-20261117/runtime/mquant/apt/__init__.py",
+      "all_paths_within_candidate_mquant": false,
+      "resolved_file": "/dwdhome/fy/BASE_E6_2_copy/mquant/apt/__init__.py",
+      "resolved_path": [
+        "/dwdhome/fy/BASE_E6_2_copy/mquant/apt"
+      ]
+    },
+    {
+      "module": "mquant.apt.data",
+      "file": "/dwdhome/fy/BASE_E6_2_copy/.runtime/fqv-rb-hc-i-20261117/runtime/mquant/apt/data/__init__.py",
+      "path": [
+        "/dwdhome/fy/BASE_E6_2_copy/.runtime/fqv-rb-hc-i-20261117/runtime/mquant/apt/data"
+      ],
+      "spec_origin": "/dwdhome/fy/BASE_E6_2_copy/.runtime/fqv-rb-hc-i-20261117/runtime/mquant/apt/data/__init__.py",
+      "all_paths_within_candidate_mquant": false,
+      "resolved_file": "/dwdhome/fy/BASE_E6_2_copy/mquant/apt/data/__init__.py",
+      "resolved_path": [
+        "/dwdhome/fy/BASE_E6_2_copy/mquant/apt/data"
+      ]
+    }
+  ],
+  "probe_sys_path_unchanged": true,
+  "probe_explicit_path_changes": false,
+  "codex_link_followed": false,
+  "codex_target_in_executable_or_sys_path": [],
+  "codex_existence_used_as_fail_reason": false,
+  "source_checks": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W009/candidate_locked_source_checks.json",
+  "full_probe_origins": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W009/dedicated_runtime_provenance.json",
+  "D_attempt_count": 0,
+  "D_exit_code": null,
+  "candidate_html": null,
+  "definition_run_report": null,
+  "D_run_log": null,
+  "actual_modification": "无（候选、平台、D/C3和旧Run均未修改）",
+  "F_constructed": false,
+  "fields_json_checked": false,
+  "F_product_absence_inferred": false,
+  "producer_called": false,
+  "Q_V_product_data_read": false,
+  "W2_started": false,
+  "DATA_READY": false,
+  "D006_E_business_completed": false,
+  "reference_D": {
+    "path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W001/source/observe-iterate/longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/D/u2_f_caegraph_definition.py",
+    "ref": "daowei2026/observe-iterate@f4f0e4b276b1118b779473c1fbe462bc7a64b358:longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/D/u2_f_caegraph_definition.py",
+    "order_declared_sha256": "92ab234df976469c6deb85052251b81633d79994440dccca199120672072433f",
+    "conditional_hash_check_this_W": "NOT_RUN",
+    "executed_this_W": false
+  },
+  "existing_entry_application": "只按现有run-python.sh和候选run_in_runtime.py已声明的进程设置执行一次origin probe；未调用fqv.sh的read/rerun/inspect动作。run-python.sh本身会写.migration日志，本W未调用其shell，将声明的进程设置应用于当前命令，日志/cache均在W009；未创建替代launcher。",
+  "new_wrapper_activation_or_launcher_created": false,
+  "origin_probe_source_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W009/origin_probe.py",
+  "origin_probe_source_role": "原单第7节要求的无业务动作origin采集程序，不提供环境接线或launcher功能。",
+  "candidate_or_platform_source_modified": false,
+  "second_runtime_searched": false,
+  "environment_built_or_version_switched": false,
+  "package_files_copied_or_generated": false,
+  "old_W_history_changed": false,
+  "remote_records_written": false,
+  "grant": {
+    "operation": "caegraph_run_and_repair",
+    "execution_context": "/dwdhome/fy/BASE_E6_2_copy",
+    "allowed_writes": [
+      "/dwdhome/fy/BASE_E6_2_copy/**",
+      "/dev/shm/sem.*"
+    ],
+    "authority_quote": "Owner 预先选择指令原文：碰到需要我处理的问题，先选第一项\n适用请求：OR001；被选择的第一项：A. 确认首选 sem.* 机读补正；\noperation=caegraph_run_and_repair\nexecution_context=/dwdhome/fy/BASE_E6_2_copy\nallowed_writes=/dwdhome/fy/BASE_E6_2_copy/**,/dev/shm/sem.*\n`/dev/shm` 只允许本 Run 的 CAEGraph 运行进程及其子进程为 Python multiprocessing 临时创建和删除 POSIX semaphore 对象 `sem.*`；不得写任意共享内存 payload、不得使用 sudo、不得建立 mount 绕过、不得 patch 平台源码、不得调用 F producer、不得读取 Q/V、不得据此启动正式数据导出。"
+  },
+  "persistent_write_root": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W009",
+  "missing": [
+    "第7关origin probe失败：260个已加载mquant模块中165个实际来源解析到候选mquant根外，分类DEDICATED_RUNTIME_MIXED_MQUANT_ORIGINS，不能证明单一候选运行来源",
+    "候选入口、TIS四目标字节、候选TIS所需包路径及FRP元数据锁定声明已通过；整体import closure仍未准入，未修补候选或拼接来源",
+    "D未启动（0次/无退出码）；未进入第8.1重新核原D/C3 hash的条件分支，也未执行原D",
+    "F未构造，fields.json未检查；候选HTML、definition_run_report、prepared_tables和plot_data均未生成",
+    "E3图接受、E4/W2准入和D006/E业务完成均未发生"
+  ]
+}
