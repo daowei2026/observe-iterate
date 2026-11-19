@@ -1,0 +1,160 @@
+{
+  "format": "local-worker-facts/v2",
+  "run_id": "OI-U2-F-OBS-20261118-01",
+  "work_order_id": "W007",
+  "parent_delegation_id": "D006",
+  "work_item_id": "OI-U2-F-OBS-20261118-01-WI-E-R1",
+  "stage_instance_id": "OI-U2-F-OBS-20261118-01-M-E-R1",
+  "worker": "codex:OI-U2-F-OBS-20261118-01:worker:W1",
+  "return_to": "chatgpt:OI-U2-F-OBS-20261118-01:executor:E2",
+  "order_ref": "daowei2026/observe-iterate@1ec2229ce44a92407e603e3a617a96616c5cde3c:longrun/runs/OI-U2-F-OBS-20261118-01/work_orders/W007/ORDER.json",
+  "fact_state": "BLOCKED",
+  "proposed_outcome": "STOP",
+  "normal_entry": "FAIL",
+  "failed_clauses": [
+    "2_constructor_importable_without_path_changes",
+    "3_constructor_and_wrappers_same_complete_TIS_worktree",
+    "4_TIS_HEAD_exact_and_four_files_unmodified",
+    "5_FRP_fixed_source_HEAD_exact",
+    "6_no_install_build_package_generation_or_platform_change_needed"
+  ],
+  "classifications": [
+    "LOCKED_TIS_NORMAL_PACKAGE_ABSENT",
+    "ACTIVE_TIS_VERSION_MISMATCH",
+    "ACTIVE_TIS_WORKTREE_DIRTY_OR_INCOMPLETE",
+    "LOCKED_FRP_SOURCE_VERSION_MISMATCH"
+  ],
+  "current_python": {
+    "executable": "/m3c3/Linux/apps/anaconda3/bin/python",
+    "version": "3.10.13 (main, Sep 11 2023, 13:44:35) [GCC 11.2.0]"
+  },
+  "active_TIS": {
+    "root": "/dwdhome/fy/BASE_E6_2_copy/mquant/tis",
+    "git_root": "/dwdhome/fy/BASE_E6_2_copy/mquant/tis",
+    "HEAD": "10010b89f8fc79a91affd26f985b6d9bf2d33c6c",
+    "origin": "https://gogs.dw/mquant/tis.git",
+    "four_files": [
+      {
+        "relative_path": "frp/fqv_kline_example.py",
+        "exists": false,
+        "tracked": false,
+        "status_porcelain": "",
+        "status_exit_code": 0
+      },
+      {
+        "relative_path": "frp/CommonPriceTurnGroupCandidates.py",
+        "exists": false,
+        "tracked": false,
+        "status_porcelain": "",
+        "status_exit_code": 0
+      },
+      {
+        "relative_path": "frp/PostTurnGroupDirectionalOrganization.py",
+        "exists": false,
+        "tracked": false,
+        "status_porcelain": "",
+        "status_exit_code": 0
+      },
+      {
+        "relative_path": "frp/CommonTurnGroupValidity.py",
+        "exists": false,
+        "tracked": false,
+        "status_porcelain": "",
+        "status_exit_code": 0
+      }
+    ],
+    "limited_status_clean": true,
+    "locked_commit_local": true,
+    "diff_exit_code": 1
+  },
+  "FRP_source": {
+    "root": "/dwdhome/fy/BASE_E6_2_copy/edh-universe/frp/frp",
+    "HEAD": "37c790c0f456fe3022bb00609219d3e92a5c2f9b",
+    "origin": "https://gogs.dw/frp/frp",
+    "locked_commit_local": true,
+    "locked_is_HEAD_ancestor": false,
+    "target_file_diff_exit_code": 1
+  },
+  "exact_name_search": {
+    "attempt_count": 1,
+    "complete": true,
+    "elapsed_seconds": 1.7627660559955984,
+    "hits": [
+      {
+        "path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/fqv-rb-hc-i-20261117/runtime/mquant/tis/frp/fqv_kline_example.py",
+        "git_root": "/dwdhome/fy",
+        "head": "0cb55e4726c7af711fa790f848c2fec88db6b949",
+        "single_complete_mquant_package_structure": true,
+        "structure_note": "仅路径/包边界结构核对，不作为语义或版本准入替代",
+        "matches_active_tis_root": false,
+        "complete_single_normal_locked_mquant_package": "NOT_PROVEN",
+        "normal_entry_adopted": false,
+        "reason": "只有包边界结构存在；该命中不属于当前活跃TIS Git工作树，未证明完整单一且锁定的正常包。未导入、执行、复制或接线。"
+      }
+    ]
+  },
+  "original_scripts": [
+    {
+      "label": "D",
+      "path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W001/source/observe-iterate/longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/D/u2_f_caegraph_definition.py",
+      "ref": "daowei2026/observe-iterate@f4f0e4b276b1118b779473c1fbe462bc7a64b358:longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/D/u2_f_caegraph_definition.py",
+      "bytes": 29462,
+      "sha256": "92ab234df976469c6deb85052251b81633d79994440dccca199120672072433f",
+      "executed_this_W": false,
+      "modified_this_W": false
+    },
+    {
+      "label": "C3",
+      "path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W001/source/observe-iterate/longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/C/caegraph_display.py",
+      "ref": "daowei2026/observe-iterate@508d494c964d5dabeaa1e7ea17bef908f749e9c8:longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/C/caegraph_display.py",
+      "bytes": 20820,
+      "sha256": "798042296f88ff5747a0248a81902953550fe39e4fa18337e8fdcfe9557877b7",
+      "executed_this_W": false,
+      "modified_this_W": false
+    }
+  ],
+  "D_attempt_count": 0,
+  "D_exit_code": null,
+  "D_run_log": null,
+  "candidate_html": null,
+  "definition_run_report": null,
+  "prepared_tables": null,
+  "plot_data": null,
+  "repair_diff": null,
+  "business_source_changes": false,
+  "F_constructed": false,
+  "fields_json_checked": false,
+  "F_product_absence_inferred": false,
+  "producer_called": false,
+  "Q_V_product_data_read": false,
+  "W2_started": false,
+  "DATA_READY": false,
+  "D006_E_business_completed": false,
+  "probe_exit_code": 0,
+  "probe_exit_code_meaning": "0仅表示来源核对脚本正常完成，不是D退出码或正常入口PASS。",
+  "worker_changed_import_paths": false,
+  "environment_built_or_package_materialized": false,
+  "version_switched": false,
+  "overlay_created": false,
+  "git_fetch_pull_checkout_or_other_mutation": false,
+  "old_W_history_changed": false,
+  "remote_records_written": false,
+  "grant": {
+    "operation": "caegraph_run_and_repair",
+    "execution_context": "/dwdhome/fy/BASE_E6_2_copy",
+    "allowed_writes": [
+      "/dwdhome/fy/BASE_E6_2_copy/**",
+      "/dev/shm/sem.*"
+    ],
+    "authority_quote": "Owner 预先选择指令原文：碰到需要我处理的问题，先选第一项\n适用请求：OR001；被选择的第一项：A. 确认首选 sem.* 机读补正；\noperation=caegraph_run_and_repair\nexecution_context=/dwdhome/fy/BASE_E6_2_copy\nallowed_writes=/dwdhome/fy/BASE_E6_2_copy/**,/dev/shm/sem.*\n`/dev/shm` 只允许本 Run 的 CAEGraph 运行进程及其子进程为 Python multiprocessing 临时创建和删除 POSIX semaphore 对象 `sem.*`；不得写任意共享内存 payload、不得使用 sudo、不得建立 mount 绕过、不得 patch 平台源码、不得调用 F producer、不得读取 Q/V、不得据此启动正式数据导出。"
+  },
+  "persistent_write_root": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W007",
+  "minimal_deliverables_only": true,
+  "missing": [
+    "正常入口第2/3/4/5/6条未通过：活跃构造模块及F/Q/V wrapper的find_spec均未找到，未证明单一完整锁定正常包",
+    "活跃TIS HEAD=10010b89f8fc79a91affd26f985b6d9bf2d33c6c，非锁定2f460d663d821cf2ba25555eda13e78b697d0767；四个目标文件不存在且未tracked，与锁定文件diff exit1",
+    "FRP固定源码HEAD=37c790c0f456fe3022bb00609219d3e92a5c2f9b，非锁定67711c492da909ed0f044f357beb278abf7fc71c；锁定提交非当前HEAD祖先，目标F文件diff exit1",
+    "准入失败，D未启动（0次/无退出码），F未构造、fields.json未检查，未生成候选HTML或definition_run_report",
+    "E3图接受、E4/W2准入及D006/E业务完成均未发生"
+  ]
+}

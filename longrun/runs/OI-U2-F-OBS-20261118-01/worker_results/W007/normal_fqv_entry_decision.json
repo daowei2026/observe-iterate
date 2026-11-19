@@ -1,0 +1,563 @@
+{
+  "run_id": "OI-U2-F-OBS-20261118-01",
+  "work_order_id": "W007",
+  "parent_delegation_id": "D006",
+  "worker": "codex:OI-U2-F-OBS-20261118-01:worker:W1",
+  "return_to": "chatgpt:OI-U2-F-OBS-20261118-01:executor:E2",
+  "status": "BLOCKED",
+  "normal_entry": "FAIL",
+  "criteria": {
+    "1_current_normal_module_origins_clear": true,
+    "2_constructor_importable_without_path_changes": false,
+    "3_constructor_and_wrappers_same_complete_TIS_worktree": false,
+    "4_TIS_HEAD_exact_and_four_files_unmodified": false,
+    "5_FRP_fixed_source_HEAD_exact": false,
+    "6_no_install_build_package_generation_or_platform_change_needed": false,
+    "7_no_old_Run_TIS_staging_used": true
+  },
+  "failed_clauses": [
+    "2_constructor_importable_without_path_changes",
+    "3_constructor_and_wrappers_same_complete_TIS_worktree",
+    "4_TIS_HEAD_exact_and_four_files_unmodified",
+    "5_FRP_fixed_source_HEAD_exact",
+    "6_no_install_build_package_generation_or_platform_change_needed"
+  ],
+  "classifications": [
+    "LOCKED_TIS_NORMAL_PACKAGE_ABSENT",
+    "ACTIVE_TIS_VERSION_MISMATCH",
+    "ACTIVE_TIS_WORKTREE_DIRTY_OR_INCOMPLETE",
+    "LOCKED_FRP_SOURCE_VERSION_MISMATCH"
+  ],
+  "active_TIS": {
+    "path": "/dwdhome/fy/BASE_E6_2_copy/mquant/tis",
+    "realpath": "/dwdhome/fy/BASE_E6_2_copy/mquant/tis",
+    "exists": true,
+    "git_root": "/dwdhome/fy/BASE_E6_2_copy/mquant/tis",
+    "head": "10010b89f8fc79a91affd26f985b6d9bf2d33c6c",
+    "origin_url": "https://gogs.dw/mquant/tis.git",
+    "is_git_worktree": true,
+    "locked_commit": "2f460d663d821cf2ba25555eda13e78b697d0767",
+    "HEAD_equals_locked": false,
+    "files": [
+      {
+        "relative_path": "frp/fqv_kline_example.py",
+        "exists": false,
+        "tracked": false,
+        "status_porcelain": "",
+        "status_exit_code": 0
+      },
+      {
+        "relative_path": "frp/CommonPriceTurnGroupCandidates.py",
+        "exists": false,
+        "tracked": false,
+        "status_porcelain": "",
+        "status_exit_code": 0
+      },
+      {
+        "relative_path": "frp/PostTurnGroupDirectionalOrganization.py",
+        "exists": false,
+        "tracked": false,
+        "status_porcelain": "",
+        "status_exit_code": 0
+      },
+      {
+        "relative_path": "frp/CommonTurnGroupValidity.py",
+        "exists": false,
+        "tracked": false,
+        "status_porcelain": "",
+        "status_exit_code": 0
+      }
+    ],
+    "limited_status_porcelain": {
+      "argv": [
+        "git",
+        "-c",
+        "protocol.allow=never",
+        "-C",
+        "/dwdhome/fy/BASE_E6_2_copy/mquant/tis",
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all",
+        "--",
+        "frp/fqv_kline_example.py",
+        "frp/CommonPriceTurnGroupCandidates.py",
+        "frp/PostTurnGroupDirectionalOrganization.py",
+        "frp/CommonTurnGroupValidity.py"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "locked_commit_available_locally": true,
+    "four_file_diff_against_locked": {
+      "argv": [
+        "git",
+        "-c",
+        "protocol.allow=never",
+        "-C",
+        "/dwdhome/fy/BASE_E6_2_copy/mquant/tis",
+        "diff",
+        "--quiet",
+        "2f460d663d821cf2ba25555eda13e78b697d0767",
+        "--",
+        "frp/fqv_kline_example.py",
+        "frp/CommonPriceTurnGroupCandidates.py",
+        "frp/PostTurnGroupDirectionalOrganization.py",
+        "frp/CommonTurnGroupValidity.py"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": ""
+    }
+  },
+  "exact_name_search": {
+    "scope": "/dwdhome/fy/BASE_E6_2_copy",
+    "argv": [
+      "rg",
+      "--files",
+      "--hidden",
+      "--no-ignore",
+      "--glob",
+      "fqv_kline_example.py",
+      "--glob",
+      "!observe-iterate-runs/**",
+      "--glob",
+      "!**/.git/**",
+      "--glob",
+      "!**/__pycache__/**",
+      "."
+    ],
+    "attempt_count": 1,
+    "timeout_seconds": 30,
+    "follow_symlinks": false,
+    "excluded": [
+      "observe-iterate-runs/**",
+      "**/.git/**",
+      "**/__pycache__/**",
+      "其他工作区及/run下路径（未遍历，未跟随symlink）"
+    ],
+    "hits": [
+      {
+        "path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/fqv-rb-hc-i-20261117/runtime/mquant/tis/frp/fqv_kline_example.py",
+        "git_root": "/dwdhome/fy",
+        "head": "0cb55e4726c7af711fa790f848c2fec88db6b949",
+        "single_complete_mquant_package_structure": true,
+        "structure_note": "仅路径/包边界结构核对，不作为语义或版本准入替代",
+        "matches_active_tis_root": false,
+        "complete_single_normal_locked_mquant_package": "NOT_PROVEN",
+        "normal_entry_adopted": false,
+        "reason": "只有包边界结构存在；该命中不属于当前活跃TIS Git工作树，未证明完整单一且锁定的正常包。未导入、执行、复制或接线。"
+      }
+    ],
+    "exit_code": 0,
+    "stderr": "",
+    "complete": true,
+    "elapsed_seconds": 1.7627660559955984
+  },
+  "FRP_Haskell_source": {
+    "path": "/dwdhome/fy/BASE_E6_2_copy/edh-universe/frp/frp",
+    "realpath": "/dwdhome/fy/BASE_E6_2_copy/edh-universe/frp/frp",
+    "exists": true,
+    "git_root": "/dwdhome/fy/BASE_E6_2_copy/edh-universe/frp/frp",
+    "head": "37c790c0f456fe3022bb00609219d3e92a5c2f9b",
+    "origin_url": "https://gogs.dw/frp/frp",
+    "is_git_worktree": true,
+    "locked_commit": "67711c492da909ed0f044f357beb278abf7fc71c",
+    "HEAD_equals_locked": false,
+    "used_as_Python_import": false,
+    "locked_commit_available_locally": true,
+    "locked_is_HEAD_ancestor": false,
+    "target_F_worktree_diff_against_locked": {
+      "argv": [
+        "git",
+        "-c",
+        "protocol.allow=never",
+        "-C",
+        "/dwdhome/fy/BASE_E6_2_copy/edh-universe/frp/frp",
+        "diff",
+        "--quiet",
+        "67711c492da909ed0f044f357beb278abf7fc71c",
+        "--",
+        "src/Frp/Instance/ISL/Opportunity/CommonPriceTurnGroupCandidates.hs"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": ""
+    }
+  },
+  "D_attempt_count": 0,
+  "D_exit_code": null,
+  "candidate_html": null,
+  "definition_run_report": null,
+  "repair_diff": null,
+  "runtime_provenance": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W007/current_runtime_provenance.json",
+  "git_readonly_commands": [
+    {
+      "argv": [
+        "git",
+        "-c",
+        "protocol.allow=never",
+        "-C",
+        "/dwdhome/fy/BASE_E6_2_copy/mquant/tis",
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "exit_code": 0,
+      "stdout": "/dwdhome/fy/BASE_E6_2_copy/mquant/tis\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "protocol.allow=never",
+        "-C",
+        "/dwdhome/fy/BASE_E6_2_copy/mquant/tis",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "stdout": "10010b89f8fc79a91affd26f985b6d9bf2d33c6c\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "protocol.allow=never",
+        "-C",
+        "/dwdhome/fy/BASE_E6_2_copy/mquant/tis",
+        "remote",
+        "get-url",
+        "origin"
+      ],
+      "exit_code": 0,
+      "stdout": "https://gogs.dw/mquant/tis.git\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "protocol.allow=never",
+        "-C",
+        "/dwdhome/fy/BASE_E6_2_copy/mquant/tis",
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all",
+        "--",
+        "frp/fqv_kline_example.py",
+        "frp/CommonPriceTurnGroupCandidates.py",
+        "frp/PostTurnGroupDirectionalOrganization.py",
+        "frp/CommonTurnGroupValidity.py"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "protocol.allow=never",
+        "-C",
+        "/dwdhome/fy/BASE_E6_2_copy/mquant/tis",
+        "ls-files",
+        "--error-unmatch",
+        "--",
+        "frp/fqv_kline_example.py"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "error: pathspec 'frp/fqv_kline_example.py' did not match any file(s) known to git\nDid you forget to 'git add'?\n"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "protocol.allow=never",
+        "-C",
+        "/dwdhome/fy/BASE_E6_2_copy/mquant/tis",
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all",
+        "--",
+        "frp/fqv_kline_example.py"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "protocol.allow=never",
+        "-C",
+        "/dwdhome/fy/BASE_E6_2_copy/mquant/tis",
+        "ls-files",
+        "--error-unmatch",
+        "--",
+        "frp/CommonPriceTurnGroupCandidates.py"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "error: pathspec 'frp/CommonPriceTurnGroupCandidates.py' did not match any file(s) known to git\nDid you forget to 'git add'?\n"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "protocol.allow=never",
+        "-C",
+        "/dwdhome/fy/BASE_E6_2_copy/mquant/tis",
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all",
+        "--",
+        "frp/CommonPriceTurnGroupCandidates.py"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "protocol.allow=never",
+        "-C",
+        "/dwdhome/fy/BASE_E6_2_copy/mquant/tis",
+        "ls-files",
+        "--error-unmatch",
+        "--",
+        "frp/PostTurnGroupDirectionalOrganization.py"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "error: pathspec 'frp/PostTurnGroupDirectionalOrganization.py' did not match any file(s) known to git\nDid you forget to 'git add'?\n"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "protocol.allow=never",
+        "-C",
+        "/dwdhome/fy/BASE_E6_2_copy/mquant/tis",
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all",
+        "--",
+        "frp/PostTurnGroupDirectionalOrganization.py"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "protocol.allow=never",
+        "-C",
+        "/dwdhome/fy/BASE_E6_2_copy/mquant/tis",
+        "ls-files",
+        "--error-unmatch",
+        "--",
+        "frp/CommonTurnGroupValidity.py"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "error: pathspec 'frp/CommonTurnGroupValidity.py' did not match any file(s) known to git\nDid you forget to 'git add'?\n"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "protocol.allow=never",
+        "-C",
+        "/dwdhome/fy/BASE_E6_2_copy/mquant/tis",
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all",
+        "--",
+        "frp/CommonTurnGroupValidity.py"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "protocol.allow=never",
+        "-C",
+        "/dwdhome/fy/BASE_E6_2_copy/mquant/tis",
+        "cat-file",
+        "-e",
+        "2f460d663d821cf2ba25555eda13e78b697d0767^{commit}"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "protocol.allow=never",
+        "-C",
+        "/dwdhome/fy/BASE_E6_2_copy/mquant/tis",
+        "diff",
+        "--quiet",
+        "2f460d663d821cf2ba25555eda13e78b697d0767",
+        "--",
+        "frp/fqv_kline_example.py",
+        "frp/CommonPriceTurnGroupCandidates.py",
+        "frp/PostTurnGroupDirectionalOrganization.py",
+        "frp/CommonTurnGroupValidity.py"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "protocol.allow=never",
+        "-C",
+        "/dwdhome/fy/BASE_E6_2_copy/.runtime/fqv-rb-hc-i-20261117/runtime/mquant/tis/frp",
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "exit_code": 0,
+      "stdout": "/dwdhome/fy\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "protocol.allow=never",
+        "-C",
+        "/dwdhome/fy/BASE_E6_2_copy/.runtime/fqv-rb-hc-i-20261117/runtime/mquant/tis/frp",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "stdout": "0cb55e4726c7af711fa790f848c2fec88db6b949\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "protocol.allow=never",
+        "-C",
+        "/dwdhome/fy/BASE_E6_2_copy/.runtime/fqv-rb-hc-i-20261117/runtime/mquant/tis/frp",
+        "remote",
+        "get-url",
+        "origin"
+      ],
+      "exit_code": 0,
+      "stdout": "https://gogs.dw/mquant/uplot.git\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "protocol.allow=never",
+        "-C",
+        "/dwdhome/fy/BASE_E6_2_copy/edh-universe/frp/frp",
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "exit_code": 0,
+      "stdout": "/dwdhome/fy/BASE_E6_2_copy/edh-universe/frp/frp\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "protocol.allow=never",
+        "-C",
+        "/dwdhome/fy/BASE_E6_2_copy/edh-universe/frp/frp",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "stdout": "37c790c0f456fe3022bb00609219d3e92a5c2f9b\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "protocol.allow=never",
+        "-C",
+        "/dwdhome/fy/BASE_E6_2_copy/edh-universe/frp/frp",
+        "remote",
+        "get-url",
+        "origin"
+      ],
+      "exit_code": 0,
+      "stdout": "https://gogs.dw/frp/frp\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "protocol.allow=never",
+        "-C",
+        "/dwdhome/fy/BASE_E6_2_copy/edh-universe/frp/frp",
+        "cat-file",
+        "-e",
+        "67711c492da909ed0f044f357beb278abf7fc71c^{commit}"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "protocol.allow=never",
+        "-C",
+        "/dwdhome/fy/BASE_E6_2_copy/edh-universe/frp/frp",
+        "merge-base",
+        "--is-ancestor",
+        "67711c492da909ed0f044f357beb278abf7fc71c",
+        "HEAD"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "protocol.allow=never",
+        "-C",
+        "/dwdhome/fy/BASE_E6_2_copy/edh-universe/frp/frp",
+        "diff",
+        "--quiet",
+        "67711c492da909ed0f044f357beb278abf7fc71c",
+        "--",
+        "src/Frp/Instance/ISL/Opportunity/CommonPriceTurnGroupCandidates.hs"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "completed_at": "2026-11-19T17:32:45.873421+00:00",
+  "no_environment_construction_or_version_switch": true,
+  "D006_E_business_completed": false
+}

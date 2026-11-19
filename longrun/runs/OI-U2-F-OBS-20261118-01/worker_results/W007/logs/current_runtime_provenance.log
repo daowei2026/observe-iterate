@@ -1,0 +1,63 @@
+CURRENT_RUNTIME_PROVENANCE_RECORDED {"module_imports": {"mquant": true, "mquant.frame": true, "mquant.tis": true, "mquant.tis.frp": true}, "find_specs": {"mquant.tis.frp.fqv_kline_example": {"found": false, "origin": null, "submodule_search_locations": null}, "mquant.tis.frp.CommonPriceTurnGroupCandidates": {"found": false, "origin": null, "submodule_search_locations": null}, "mquant.tis.frp.PostTurnGroupDirectionalOrganization": {"found": false, "origin": null, "submodule_search_locations": null}, "mquant.tis.frp.CommonTurnGroupValidity": {"found": false, "origin": null, "submodule_search_locations": null}}}
+{
+  "status": "BLOCKED",
+  "normal_entry": "FAIL",
+  "failed_clauses": [
+    "2_constructor_importable_without_path_changes",
+    "3_constructor_and_wrappers_same_complete_TIS_worktree",
+    "4_TIS_HEAD_exact_and_four_files_unmodified",
+    "5_FRP_fixed_source_HEAD_exact",
+    "6_no_install_build_package_generation_or_platform_change_needed"
+  ],
+  "classifications": [
+    "LOCKED_TIS_NORMAL_PACKAGE_ABSENT",
+    "ACTIVE_TIS_VERSION_MISMATCH",
+    "ACTIVE_TIS_WORKTREE_DIRTY_OR_INCOMPLETE",
+    "LOCKED_FRP_SOURCE_VERSION_MISMATCH"
+  ],
+  "active_TIS_head": "10010b89f8fc79a91affd26f985b6d9bf2d33c6c",
+  "TIS_file_facts": [
+    {
+      "relative_path": "frp/fqv_kline_example.py",
+      "exists": false,
+      "tracked": false,
+      "status_porcelain": "",
+      "status_exit_code": 0
+    },
+    {
+      "relative_path": "frp/CommonPriceTurnGroupCandidates.py",
+      "exists": false,
+      "tracked": false,
+      "status_porcelain": "",
+      "status_exit_code": 0
+    },
+    {
+      "relative_path": "frp/PostTurnGroupDirectionalOrganization.py",
+      "exists": false,
+      "tracked": false,
+      "status_porcelain": "",
+      "status_exit_code": 0
+    },
+    {
+      "relative_path": "frp/CommonTurnGroupValidity.py",
+      "exists": false,
+      "tracked": false,
+      "status_porcelain": "",
+      "status_exit_code": 0
+    }
+  ],
+  "search_complete": true,
+  "search_hits": [
+    {
+      "path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/fqv-rb-hc-i-20261117/runtime/mquant/tis/frp/fqv_kline_example.py",
+      "git_root": "/dwdhome/fy",
+      "head": "0cb55e4726c7af711fa790f848c2fec88db6b949",
+      "single_complete_mquant_package_structure": true,
+      "structure_note": "仅路径/包边界结构核对，不作为语义或版本准入替代",
+      "matches_active_tis_root": false
+    }
+  ],
+  "FRP_head": "37c790c0f456fe3022bb00609219d3e92a5c2f9b",
+  "D_attempt_count": 0,
+  "D_exit_code": null
+}
