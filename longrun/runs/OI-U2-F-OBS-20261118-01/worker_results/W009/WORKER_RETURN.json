@@ -1,0 +1,63 @@
+{
+  "schema": "longrun-worker-return/v2",
+  "run_id": "OI-U2-F-OBS-20261118-01",
+  "work_order_id": "W009",
+  "order_ref": "daowei2026/observe-iterate@320425cd9892294409135acea5657f6fdacf2b17:longrun/runs/OI-U2-F-OBS-20261118-01/work_orders/W009/ORDER.json",
+  "worker": "codex:OI-U2-F-OBS-20261118-01:worker:W1",
+  "return_to": "chatgpt:OI-U2-F-OBS-20261118-01:executor:E2",
+  "outcome": "STOP",
+  "result_ref": "daowei2026/observe-iterate@89d766facf9956e754f7cdab19073d5a79bd167b:longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W009/FACT_REPORT.md",
+  "missing": [
+    "第7关origin probe失败：260个已加载mquant模块中165个实际来源解析到候选mquant根外，分类DEDICATED_RUNTIME_MIXED_MQUANT_ORIGINS，不能证明单一候选运行来源",
+    "候选入口、TIS四目标字节、候选TIS所需包路径及FRP元数据锁定声明已通过；整体import closure仍未准入，未修补候选或拼接来源",
+    "D未启动（0次/无退出码）；未进入第8.1重新核原D/C3 hash的条件分支，也未执行原D",
+    "F未构造，fields.json未检查；候选HTML、definition_run_report、prepared_tables和plot_data均未生成",
+    "E3图接受、E4/W2准入和D006/E业务完成均未发生"
+  ],
+  "manifest": {
+    "FACT_REPORT.md": {
+      "ref": "daowei2026/observe-iterate@89d766facf9956e754f7cdab19073d5a79bd167b:longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W009/FACT_REPORT.md",
+      "sha256": "0f1b39aca7b92d17a84c68979b154b5297bd00aa2c90e9310973a9181cff1473"
+    },
+    "candidate_entry_and_provenance.json": {
+      "ref": "daowei2026/observe-iterate@89d766facf9956e754f7cdab19073d5a79bd167b:longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W009/candidate_entry_and_provenance.json",
+      "sha256": "9adb6f1e1c1d13074b2eb3f593c5fd940f4e6366b740376ba4b95cfb86a8a402"
+    },
+    "candidate_locked_source_checks.json": {
+      "ref": "daowei2026/observe-iterate@89d766facf9956e754f7cdab19073d5a79bd167b:longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W009/candidate_locked_source_checks.json",
+      "sha256": "978ff9278c43a4bdffc8e478c2120283bd2a4169ef0e893a1ec2d945ff4dc804"
+    },
+    "dedicated_runtime_provenance.json": {
+      "ref": "daowei2026/observe-iterate@89d766facf9956e754f7cdab19073d5a79bd167b:longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W009/dedicated_runtime_provenance.json",
+      "sha256": "235419741c0ba9b2acfc81452d647825d287f503c71c2a086c6057325107b221"
+    },
+    "runtime_gate_decision.json": {
+      "ref": "daowei2026/observe-iterate@89d766facf9956e754f7cdab19073d5a79bd167b:longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W009/runtime_gate_decision.json",
+      "sha256": "34d9ca1cf959ce6fde131e29ac5f341bddfa4e4e8f1fb4faa4bdac5d1e7010ae"
+    },
+    "execution_receipt.json": {
+      "ref": "daowei2026/observe-iterate@89d766facf9956e754f7cdab19073d5a79bd167b:longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W009/execution_receipt.json",
+      "sha256": "464aaedc052413dfbdff2d44f595642455b69d5a95de0cbbaa704e477eed644c"
+    },
+    "origin_probe.py": {
+      "ref": "daowei2026/observe-iterate@89d766facf9956e754f7cdab19073d5a79bd167b:longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W009/origin_probe.py",
+      "sha256": "bb9818e91804260cc8975ae34fbe7722d3ecfb8044dfd5e48f147cbee30535d9"
+    },
+    "logs/origin_probe.dispatch.json": {
+      "ref": "daowei2026/observe-iterate@89d766facf9956e754f7cdab19073d5a79bd167b:longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W009/logs/origin_probe.dispatch.json",
+      "sha256": "3539630885be3bf1f700d3a6aed06baa58ad796db7b33e83b67844fddee2f2e5"
+    },
+    "logs/dedicated_runtime_probe.log": {
+      "ref": "daowei2026/observe-iterate@89d766facf9956e754f7cdab19073d5a79bd167b:longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W009/logs/dedicated_runtime_probe.log",
+      "sha256": "c37df0d2e884edec51b384b9fad90d983a128b85d550505315ddce46617b3368"
+    },
+    "logs/dedicated_runtime_probe.exit_code": {
+      "ref": "daowei2026/observe-iterate@89d766facf9956e754f7cdab19073d5a79bd167b:longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W009/logs/dedicated_runtime_probe.exit_code",
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    "logs/existing_entry_environment.log": {
+      "ref": "daowei2026/observe-iterate@89d766facf9956e754f7cdab19073d5a79bd167b:longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W009/logs/existing_entry_environment.log",
+      "sha256": "9fc0e3d980f29db3fc69c5259e2e0c152c5cd5224a8942c948ad6340895e9067"
+    }
+  }
+}
