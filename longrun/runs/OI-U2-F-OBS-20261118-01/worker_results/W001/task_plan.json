@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "project": {
+    "id": "oi-u2-f-obs-20261118-01",
+    "title": "F 观察 Run W001"
+  },
+  "task": {
+    "id": "w001",
+    "title": "W001 固定源码运行与事实回交",
+    "owner": "codex:OI-U2-F-OBS-20261118-01:worker:W1",
+    "monitoring": {
+      "scope": "general"
+    },
+    "completion_gate": "完成固定源码真实执行，或保存首个真实阻断；证据原样运输后签认具有真实 Git refs 的 worker_return。"
+  },
+  "phases": [
+    {
+      "id": "execution",
+      "title": "执行与事实证据",
+      "steps": [
+        {
+          "id": "source-stage",
+          "title": "固定 D 提交源码",
+          "acceptance": "detached HEAD 精确为 f4f0e4b276b1118b779473c1fbe462bc7a64b358，D/C3 存在，source_stage_report 保存结果；失败则保存真实获取阻断。",
+          "weight": 1
+        },
+        {
+          "id": "run-and-record",
+          "title": "运行并记录首个真实结果",
+          "acceptance": "保存实际命令、日志、退出码、diff 和 HTML/report 是否产生，或记录源码获取阻断导致未启动。",
+          "weight": 1
+        },
+        {
+          "id": "local-evidence",
+          "title": "本地证据包",
+          "acceptance": "完整最小事实报告与证据清单存在，路径、长度和 SHA-256 可核对。",
+          "weight": 1
+        },
+        {
+          "id": "return-signoff",
+          "title": "真实 refs 回交签认",
+          "acceptance": "主控运输实际证据后提供真实 refs，并完成 schema 原始 worker_return 签认。",
+          "weight": 1
+        }
+      ]
+    }
+  ]
+}

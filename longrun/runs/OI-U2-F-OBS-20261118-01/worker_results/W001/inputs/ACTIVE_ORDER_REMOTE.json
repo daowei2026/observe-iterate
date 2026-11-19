@@ -1,0 +1,41 @@
+{
+  "schema": "longrun-order/v2",
+  "run_id": "OI-U2-F-OBS-20261118-01",
+  "work_order_id": "W001",
+  "delegation_ref": "daowei2026/observe-iterate@f274f532e199392fa1f28b009a8e7d45fc6134e7:longrun/runs/OI-U2-F-OBS-20261118-01/delegations/D005/DELEGATION.json",
+  "issuer_call_id": "C0013",
+  "issuer": "chatgpt:OI-U2-F-OBS-20261118-01:executor:E1",
+  "worker": "codex:OI-U2-F-OBS-20261118-01:worker:W1",
+  "return_to": "chatgpt:OI-U2-F-OBS-20261118-01:executor:E1",
+  "instructions_ref": "daowei2026/observe-iterate@973c0da06c28b0ce7f343205858d9002f97667c9:longrun/runs/OI-U2-F-OBS-20261118-01/work_orders/W001/ORDER.md",
+  "input_refs": [
+    "daowei2026/observe-iterate@1a4d2e455a1175f1c20226fa9873c587c697021d:longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/E/E1_EXECUTION_AND_REVIEW_BASELINE_C0013.md",
+    "daowei2026/observe-iterate@f4f0e4b276b1118b779473c1fbe462bc7a64b358:longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/D/u2_f_caegraph_definition.py",
+    "daowei2026/observe-iterate@e35945aec93d90e4dbb045bc3c35dc5153661aa4:longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/D/CAEGRAPH_DEFINITION_INTEGRATION.md",
+    "daowei2026/observe-iterate@56eef30b28c928255329f77798fb46b9adbbc71a:longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/C/caegraph_display_preview.html",
+    "daowei2026/observe-iterate@508d494c964d5dabeaa1e7ea17bef908f749e9c8:longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/C/caegraph_display.py",
+    "daowei2026/observe-iterate@c47a984fb060182d691cc71e983a7bc55e9ce5a2:longrun/runs/OI-U2-F-OBS-20261118-01/OWNER_AUTHORITY_AMENDMENT_20261119.md",
+    "daowei2026/observe-iterate@4d2eb6058babf47db130a6b7f5ed6e7c9d48cbda:longrun/runs/OI-U2-F-OBS-20261118-01/RUN_BINDING.json",
+    "daowei2026/observe-iterate@4d2eb6058babf47db130a6b7f5ed6e7c9d48cbda:longrun/runs/OI-U2-F-OBS-20261118-01/RUN_RESOURCE_BINDING.json",
+    "daowei2026/observe-iterate@c47a984fb060182d691cc71e983a7bc55e9ce5a2:longrun/runs/OI-U2-F-OBS-20261118-01/worker_bindings/W1.json",
+    "daowei2026/observe-iterate@5f639c77190a3dd220bc96c06a24726d970f8515:longrun/runs/OI-U2-F-OBS-20261118-01/calls/C0012/PRO_RETURN.json",
+    "daowei2026/observe-iterate@cfc1fabc0f910434743cea514ea28f674a35dcd0:longrun/runs/OI-U2-F-OBS-20261118-01/work_orders/W001/ORDER.md",
+    "daowei2026/observe-iterate@17840c4dbc8493636ce75d07859ceecb31d885e7:longrun/runs/OI-U2-F-OBS-20261118-01/work_orders/W001/ORDER.json"
+  ],
+  "deliverables": [
+    "source_stage_report.json proving the run-local detached source root and exact D commit",
+    "W1 factual result with status, final script, candidate HTML, run log, exit code, diff and current blocker",
+    "Candidate CAEGraph HTML or the first real blocking runtime error",
+    "definition_run_report.json when produced by the D script",
+    "Mechanical repair diff or an explicit no-change statement",
+    "longrun-worker-return/v2 returned to the issuing executor E1 and referencing this active W001 order"
+  ],
+  "grant": {
+    "operation": "caegraph_run_and_repair",
+    "execution_context": "/dwdhome/fy/BASE_E6_2_copy",
+    "allowed_writes": [
+      "/dwdhome/fy/BASE_E6_2_copy/**"
+    ],
+    "authority_quote": "operation=caegraph_run_and_repair\nexecution_context=/dwdhome/fy/BASE_E6_2_copy\nallowed_writes=/dwdhome/fy/BASE_E6_2_copy/**"
+  }
+}

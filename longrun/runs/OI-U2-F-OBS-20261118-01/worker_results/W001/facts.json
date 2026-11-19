@@ -1,0 +1,53 @@
+{
+  "run_id": "OI-U2-F-OBS-20261118-01",
+  "work_order_id": "W001",
+  "order_ref": "daowei2026/observe-iterate@74562f258d93fdea8db0ab334fb0ebb23f1cfb99:longrun/runs/OI-U2-F-OBS-20261118-01/work_orders/W001/ORDER.json",
+  "worker": "codex:OI-U2-F-OBS-20261118-01:worker:W1",
+  "return_to": "chatgpt:OI-U2-F-OBS-20261118-01:executor:E1",
+  "factual_status": "BLOCKED",
+  "proposed_worker_outcome_after_transport": "STOP",
+  "source_stage_report": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W001/source_stage_report.json",
+  "source_root": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W001/source/observe-iterate",
+  "head": "f4f0e4b276b1118b779473c1fbe462bc7a64b358",
+  "final_script": {
+    "path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W001/source/observe-iterate/longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/D/u2_f_caegraph_definition.py",
+    "ref": "daowei2026/observe-iterate@f4f0e4b276b1118b779473c1fbe462bc7a64b358:longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/D/u2_f_caegraph_definition.py",
+    "bytes": 29462,
+    "sha256": "92ab234df976469c6deb85052251b81633d79994440dccca199120672072433f",
+    "modified": false
+  },
+  "candidate_html": null,
+  "definition_run_report": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W001/output/u2_f_caegraph/definition_run_report.json",
+  "run_log": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W001/logs/w1_run.log",
+  "run_exit_code": 1,
+  "run_elapsed_seconds": 12.225031648995355,
+  "run_duration_precision": "exact",
+  "preparation_and_recovery_duration_precision": "unknown",
+  "business_attempt_count": 1,
+  "separate_diagnostic": "one stdlib SemLock probe; no D/F/Q/V execution",
+  "repair_diff": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W001/repair.diff",
+  "repair_diff_bytes": 0,
+  "source_changed": false,
+  "first_blocker": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W001/first_blocker.json",
+  "f_instance_constructed": false,
+  "fields_json_existence": "NOT_CHECKED",
+  "f_rerun_called": false,
+  "q_or_v_read": false,
+  "producer_called": false,
+  "prepared_tables": null,
+  "plot_data": null,
+  "remote_push_performed": false,
+  "formal_worker_return_signed": false,
+  "transport_state": "AWAITING_CONTROLLER_PUBLICATION_AND_EXACT_REFS",
+  "missing": [
+    "候选 u2_f_caegraph.html 未生成",
+    "精确 F 实例与 fields.json 存在性未检查：导入阶段已停止",
+    "prepared_tables 与 plot_data 未生成",
+    "E2/E3 专业核图、图接受及 E4/W2 正式取数未执行"
+  ],
+  "known_execution_deviations": [
+    "Used a local wrapper for the existing run-python.sh environment to keep its .migration logs outside the execution path.",
+    "Worker added a kernel Landlock write boundary. The fatal SemLock error is a result under that condition; it is not a demonstrated unguarded-product failure.",
+    "An early AGENTS filename search accidentally included /dwdhome/fy, returning sibling paths. It was stopped; no sibling Run file body or phone ledger was read and no sibling file was modified."
+  ]
+}

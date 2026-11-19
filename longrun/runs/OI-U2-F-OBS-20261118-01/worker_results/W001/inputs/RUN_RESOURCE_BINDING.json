@@ -1,0 +1,33 @@
+{
+  "schema": "observe-iterate-run-resource/v1",
+  "run_id": "OI-U2-F-OBS-20261118-01",
+  "owner_go_ref": "daowei2026/observe-iterate@74ed0b11552f73b03e55e3e324f8325889730b52:longrun/runs/OI-U2-F-OBS-20261118-01/OWNER_START.md",
+  "owner_declared_linux_workspace": "/dwdhome/fy/BASE_E6_2_copy",
+  "worker_host": "dw-VMware-Virtual-Platform",
+  "verified_realpath": "/dwdhome/fy/BASE_E6_2_copy",
+  "verified_on_worker_host": true,
+  "verification_evidence_ref": "daowei2026/observe-iterate@c47a984fb060182d691cc71e983a7bc55e9ce5a2:longrun/runs/OI-U2-F-OBS-20261118-01/worker_bindings/W1.json",
+  "actual_worker_thread_binding_ref": "daowei2026/observe-iterate@c47a984fb060182d691cc71e983a7bc55e9ce5a2:longrun/runs/OI-U2-F-OBS-20261118-01/worker_bindings/W1.json",
+  "adopted_source_refs": [
+    "daowei2026/cgpterm@5461c6e51e73d011028afd8b41a0c5c340541df5:.agents/skills/observe-iterate-longrun-v2-controller/SKILL.md",
+    "daowei2026/observe-iterate@f7e8ff43fabfa11b499e2ce9e62dbc46b1b8b288:longrun/contracts/LONGRUN_PROTOCOL_V2.md",
+    "daowei2026/observe-iterate@f7e8ff43fabfa11b499e2ce9e62dbc46b1b8b288:task-inputs/u2-fqv-observation/F_OBSERVATION_RUN_INPUT.md"
+  ],
+  "external_write_targets": [
+    {
+      "execution_context": "daowei2026/observe-iterate@runs/OI-U2-F-OBS-20261118-01",
+      "allowed_writes": [
+        "longrun/runs/OI-U2-F-OBS-20261118-01/**"
+      ],
+      "single_writer": "root controller prepares exact writes; all Pro commits are reconciled against pre-send head; no concurrent same-branch write authorized"
+    },
+    {
+      "execution_context": "daowei2026/observe-iterate@feat/observe-iterate-multirun-controller-v1-20261116",
+      "allowed_writes": [
+        "longrun/controller/RUN_REGISTRY.json"
+      ],
+      "single_writer": "conditional expected_sha ref update; re-read and merge if head changes"
+    }
+  ],
+  "notes": "Owner已在本轮确认机读授权补正，原GO、路径更正、原Binding及C0001—C0012历史均保留。确认原件为 daowei2026/observe-iterate@c47a984fb060182d691cc71e983a7bc55e9ce5a2:longrun/runs/OI-U2-F-OBS-20261118-01/OWNER_AUTHORITY_AMENDMENT_20261119.md。专用Worker的实际模型gpt-6.1-sol、reasoning_effort=max及cwd=/dwdhome/fy/BASE_E6_2_copy已经独立回读；W001尚未派发。A—D完成，E按原D005续作，专业采用版本不变。feature-production-agent symlink的外部目标不在写授权中。每次W实际派发前重核当时Worker配置、在途状态和共享写面单写者。Q依Owner最新指令不推进。"
+}

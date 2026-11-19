@@ -1,0 +1,19 @@
+DIAGNOSTIC_ONLY: stdlib multiprocessing.Lock; D and F are not loaded
+Traceback (most recent call last):
+  File "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W001/diagnostics/boundary_probe.py", line 44, in <module>
+    runpy.run_path(str(target),run_name='__main__')
+  File "/m3c3/Linux/apps/anaconda3/lib/python3.10/runpy.py", line 289, in run_path
+    return _run_module_code(code, init_globals, run_name,
+  File "/m3c3/Linux/apps/anaconda3/lib/python3.10/runpy.py", line 96, in _run_module_code
+    _run_code(code, mod_globals, init_globals,
+  File "/m3c3/Linux/apps/anaconda3/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W001/diagnostics/semlock_probe.py", line 3, in <module>
+    multiprocessing.Lock()
+  File "/m3c3/Linux/apps/anaconda3/lib/python3.10/multiprocessing/context.py", line 68, in Lock
+    return Lock(ctx=self.get_context())
+  File "/m3c3/Linux/apps/anaconda3/lib/python3.10/multiprocessing/synchronize.py", line 162, in __init__
+    SemLock.__init__(self, SEMAPHORE, 1, 1, ctx=ctx)
+  File "/m3c3/Linux/apps/anaconda3/lib/python3.10/multiprocessing/synchronize.py", line 57, in __init__
+    sl = self._semlock = _multiprocessing.SemLock(
+PermissionError: [Errno 13] Permission denied
