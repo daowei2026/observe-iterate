@@ -1,0 +1,46 @@
+{
+  "schema": "longrun-order/v2",
+  "run_id": "OI-U2-F-OBS-20261118-01",
+  "work_order_id": "W003",
+  "delegation_ref": "daowei2026/observe-iterate@7b2353915a15ecf29bc39eaaa0ea7f1f5be3dee8:longrun/runs/OI-U2-F-OBS-20261118-01/delegations/D005/DELEGATION.json",
+  "issuer_call_id": "C0019",
+  "issuer": "chatgpt:OI-U2-F-OBS-20261118-01:executor:E1",
+  "worker": "codex:OI-U2-F-OBS-20261118-01:worker:W1",
+  "return_to": "chatgpt:OI-U2-F-OBS-20261118-01:executor:E1",
+  "instructions_ref": "daowei2026/observe-iterate@2ca58580f2d3334a7f9218deb4d254c8ec0a81c8:longrun/runs/OI-U2-F-OBS-20261118-01/work_orders/W003/ORDER.md",
+  "input_refs": [
+    "daowei2026/observe-iterate@7881b0694af2166ea9d0d041938e36454085843b:longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/E/E2_OR001_RESOLUTION_AND_W003_BASELINE.md",
+    "daowei2026/observe-iterate@7256830d9f7aae47668dcf7c16e0424db7866726:longrun/runs/OI-U2-F-OBS-20261118-01/calls/C0018/PRO_RETURN.json",
+    "daowei2026/observe-iterate@97864d02d19ee3ddfa0a9750589d9f75047aa5a9:longrun/runs/OI-U2-F-OBS-20261118-01/calls/C0018/MANAGER_REPORT.md",
+    "daowei2026/observe-iterate@7b2353915a15ecf29bc39eaaa0ea7f1f5be3dee8:longrun/runs/OI-U2-F-OBS-20261118-01/delegations/D005/DELEGATION.json",
+    "daowei2026/observe-iterate@51bb129c486c2654286fb9d990c18865c3d847ab:longrun/runs/OI-U2-F-OBS-20261118-01/delegations/D005/DELEGATION.md",
+    "daowei2026/observe-iterate@1e6392ad185c9be31367f0001f82e83aa53ad14e:longrun/runs/OI-U2-F-OBS-20261118-01/OWNER_OR001_FIRST_OPTION_ADOPTION_20261119.md",
+    "daowei2026/observe-iterate@ec2c6c495327c885b02424714bd88d8d67dbceaa:longrun/runs/OI-U2-F-OBS-20261118-01/RUN_BINDING.json",
+    "daowei2026/observe-iterate@ec2c6c495327c885b02424714bd88d8d67dbceaa:longrun/runs/OI-U2-F-OBS-20261118-01/RUN_RESOURCE_BINDING.json",
+    "daowei2026/observe-iterate@c47a984fb060182d691cc71e983a7bc55e9ce5a2:longrun/runs/OI-U2-F-OBS-20261118-01/worker_bindings/W1.json",
+    "daowei2026/observe-iterate@7beda1b54e7777b5b4f86ef6174376570e4c8b1a:longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W001/WORKER_RETURN.json",
+    "daowei2026/observe-iterate@08f9944755ac4ba8786249edb25ea4f5b5cab555:longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W002/WORKER_RETURN.json",
+    "daowei2026/observe-iterate@56ecda308a8ef02ec9848d44ff7bae78c0a56118:longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/E/E2_W002_RESULT_CLASSIFICATION.md",
+    "daowei2026/observe-iterate@f4f0e4b276b1118b779473c1fbe462bc7a64b358:longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/D/u2_f_caegraph_definition.py",
+    "daowei2026/observe-iterate@508d494c964d5dabeaa1e7ea17bef908f749e9c8:longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/C/caegraph_display.py",
+    "daowei2026/observe-iterate@56eef30b28c928255329f77798fb46b9adbbc71a:longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/C/caegraph_display_preview.html"
+  ],
+  "deliverables": [
+    "W003 source_stage_report.json proving detached HEAD f4f0e4b276b1118b779473c1fbe462bc7a64b358",
+    "One direct D execution through the normal BASE_E6_2_copy platform entry without Landlock, unshare, mount, sudo or platform patch",
+    "Candidate u2_f_caegraph.html or the first real blocking error",
+    "Complete run log, D attempt count, actual D exit code and definition_run_report.json when produced",
+    "Mechanical repair diff or an explicit no-change statement",
+    "Read-only before and after metadata snapshots for /dev/shm/sem.* plus any attributable residue note",
+    "longrun-worker-return/v2 returned to the issuing executor E1"
+  ],
+  "grant": {
+    "operation": "caegraph_run_and_repair",
+    "execution_context": "/dwdhome/fy/BASE_E6_2_copy",
+    "allowed_writes": [
+      "/dwdhome/fy/BASE_E6_2_copy/**",
+      "/dev/shm/sem.*"
+    ],
+    "authority_quote": "Owner 预先选择指令原文：碰到需要我处理的问题，先选第一项\n适用请求：OR001；被选择的第一项：A. 确认首选 sem.* 机读补正；\noperation=caegraph_run_and_repair\nexecution_context=/dwdhome/fy/BASE_E6_2_copy\nallowed_writes=/dwdhome/fy/BASE_E6_2_copy/**,/dev/shm/sem.*\n`/dev/shm` 只允许本 Run 的 CAEGraph 运行进程及其子进程为 Python multiprocessing 临时创建和删除 POSIX semaphore 对象 `sem.*`；不得写任意共享内存 payload、不得使用 sudo、不得建立 mount 绕过、不得 patch 平台源码、不得调用 F producer、不得读取 Q/V、不得据此启动正式数据导出。"
+  }
+}

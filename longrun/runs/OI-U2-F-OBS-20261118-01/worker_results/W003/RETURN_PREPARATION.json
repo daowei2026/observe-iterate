@@ -1,0 +1,41 @@
+{
+  "preparation_format": "local-only; not a schema-valid formal Worker Return",
+  "state": "AWAITING_TRANSPORT_PUBLICATION",
+  "target_schema_ref": "daowei2026/observe-iterate@f7e8ff43fabfa11b499e2ce9e62dbc46b1b8b288:longrun/contracts/longrun_schema_v2.json",
+  "target_definition": "#/$defs/worker_return",
+  "fixed_fields": {
+    "schema": "longrun-worker-return/v2",
+    "run_id": "OI-U2-F-OBS-20261118-01",
+    "work_order_id": "W003",
+    "order_ref": "daowei2026/observe-iterate@dd919cca7df1203f7962888b4ecf8b7d24048c43:longrun/runs/OI-U2-F-OBS-20261118-01/work_orders/W003/ORDER.json",
+    "worker": "codex:OI-U2-F-OBS-20261118-01:worker:W1",
+    "return_to": "chatgpt:OI-U2-F-OBS-20261118-01:executor:E1",
+    "outcome": "STOP",
+    "missing": [
+      "运行时声明的 mquant.tis.frp.fqv_kline_example 构造模块无法导入；尚未确认语义一致的既有替代路径",
+      "F 未构造，精确 fields.json 存在性与真实 F 表未检查",
+      "候选 u2_f_caegraph.html 未生成；definition_run_report.json 已生成但 completed=false",
+      "prepared_tables 与 plot_data 未生成",
+      "E3 核图接受与正式数据导出准入尚未发生"
+    ]
+  },
+  "existing_manifest_entries": {
+    "final_script": {
+      "ref": "daowei2026/observe-iterate@f4f0e4b276b1118b779473c1fbe462bc7a64b358:longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/D/u2_f_caegraph_definition.py",
+      "sha256": "92ab234df976469c6deb85052251b81633d79994440dccca199120672072433f"
+    },
+    "c3_script": {
+      "ref": "daowei2026/observe-iterate@508d494c964d5dabeaa1e7ea17bef908f749e9c8:longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/C/caegraph_display.py",
+      "sha256": "798042296f88ff5747a0248a81902953550fe39e4fa18337e8fdcfe9557877b7"
+    }
+  },
+  "awaiting_fields": [
+    "result_ref",
+    "manifest entries for newly published evidence"
+  ],
+  "result_local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W003/FACT_REPORT.md",
+  "parent_delegation_id": "D005",
+  "delegation_ref": "daowei2026/observe-iterate@7b2353915a15ecf29bc39eaaa0ea7f1f5be3dee8:longrun/runs/OI-U2-F-OBS-20261118-01/delegations/D005/DELEGATION.json",
+  "publication_authority": "主控运输原样证据，Worker 不推送 source checkout。",
+  "next_action": "接收真实 ref/hash 映射后核验并签认同一 W003；不重跑 D、producer 或诊断。"
+}

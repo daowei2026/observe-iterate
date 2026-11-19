@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "project": {
+    "id": "oi-u2-f-obs-20261118-01",
+    "title": "F 观察 Run W003"
+  },
+  "task": {
+    "id": "w003",
+    "title": "W003 正常平台入口直接运行 D 并回交真实结果",
+    "owner": "codex:OI-U2-F-OBS-20261118-01:worker:W1",
+    "monitoring": {
+      "scope": "general"
+    },
+    "completion_gate": "固定 D 源码与当前授权；直接运行 D，保存 HTML 或首个真实阻断、日志、退出码及 semaphore 前后事实；主控发布后签认真实 refs 的 W003 worker_return。"
+  },
+  "phases": [
+    {
+      "id": "execution",
+      "title": "直接运行与事实回交",
+      "steps": [
+        {
+          "id": "source-stage",
+          "title": "固定 D 源码与新授权",
+          "acceptance": "独立 detached checkout 精确固定 f4f0e4b276b1118b779473c1fbe462bc7a64b358，D/C3 存在，W003 grant 与当前 Binding 一致；或保存实际 staging 阻断。",
+          "weight": 1
+        },
+        {
+          "id": "direct-run",
+          "title": "正常入口真实运行 D",
+          "acceptance": "保存首次直接 D 运行的实际命令、attempt、日志、退出码及 /dev/shm/sem.* 前后元数据，明确实际 HTML 或首个阻断。",
+          "weight": 1
+        },
+        {
+          "id": "local-evidence",
+          "title": "完整事实证据运输包",
+          "acceptance": "最小事实报告、源码 diff/status、真实输出和完整正文运输包逐项回读并校验 SHA-256。",
+          "weight": 1
+        },
+        {
+          "id": "return-signoff",
+          "title": "真实 refs 签认回交",
+          "acceptance": "主控发布后给出真实 ref/hash 映射，经核验完成同一 W003 原始 worker_return schema 正式签认。",
+          "weight": 1
+        }
+      ]
+    }
+  ]
+}
