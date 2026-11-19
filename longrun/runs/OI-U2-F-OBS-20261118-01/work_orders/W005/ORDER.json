@@ -1,0 +1,52 @@
+{
+  "schema": "longrun-order/v2",
+  "run_id": "OI-U2-F-OBS-20261118-01",
+  "work_order_id": "W005",
+  "delegation_ref": "daowei2026/observe-iterate@7b2353915a15ecf29bc39eaaa0ea7f1f5be3dee8:longrun/runs/OI-U2-F-OBS-20261118-01/delegations/D005/DELEGATION.json",
+  "issuer_call_id": "C0021",
+  "issuer": "chatgpt:OI-U2-F-OBS-20261118-01:executor:E1",
+  "worker": "codex:OI-U2-F-OBS-20261118-01:worker:W1",
+  "return_to": "chatgpt:OI-U2-F-OBS-20261118-01:executor:E1",
+  "instructions_ref": "daowei2026/observe-iterate@59205aa6c62349fdbf48ee841e9e7289d5f96ce6:longrun/runs/OI-U2-F-OBS-20261118-01/work_orders/W005/ORDER.md",
+  "input_refs": [
+    "daowei2026/observe-iterate@43ff94cc90313b324cadbc4eba80fa5ec0eb2a3b:longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/E/E2_W004_RESULT_CLASSIFICATION_AND_W005_BASELINE.md",
+    "daowei2026/observe-iterate@4fa846f81971100af6a7c16251ed011971100068:longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/WORKER_RETURN.json",
+    "daowei2026/observe-iterate@feb62ad895d3f60a6075b65384a2605bc49d50d0:longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/FACT_REPORT.md",
+    "daowei2026/observe-iterate@feb62ad895d3f60a6075b65384a2605bc49d50d0:longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/first_blocker.json",
+    "daowei2026/observe-iterate@feb62ad895d3f60a6075b65384a2605bc49d50d0:longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/module_overlay_report.json",
+    "daowei2026/observe-iterate@feb62ad895d3f60a6075b65384a2605bc49d50d0:longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/diagnostics/locked_tis_t1_path_check.json",
+    "daowei2026/observe-iterate@7b2353915a15ecf29bc39eaaa0ea7f1f5be3dee8:longrun/runs/OI-U2-F-OBS-20261118-01/delegations/D005/DELEGATION.json",
+    "daowei2026/observe-iterate@51bb129c486c2654286fb9d990c18865c3d847ab:longrun/runs/OI-U2-F-OBS-20261118-01/delegations/D005/DELEGATION.md",
+    "daowei2026/observe-iterate@ec2c6c495327c885b02424714bd88d8d67dbceaa:longrun/runs/OI-U2-F-OBS-20261118-01/RUN_BINDING.json",
+    "daowei2026/observe-iterate@ec2c6c495327c885b02424714bd88d8d67dbceaa:longrun/runs/OI-U2-F-OBS-20261118-01/RUN_RESOURCE_BINDING.json",
+    "daowei2026/observe-iterate@c47a984fb060182d691cc71e983a7bc55e9ce5a2:longrun/runs/OI-U2-F-OBS-20261118-01/worker_bindings/W1.json",
+    "daowei2026/observe-iterate@f4f0e4b276b1118b779473c1fbe462bc7a64b358:longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/D/u2_f_caegraph_definition.py",
+    "daowei2026/observe-iterate@508d494c964d5dabeaa1e7ea17bef908f749e9c8:longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/C/caegraph_display.py",
+    "daowei2026/observe-iterate@56eef30b28c928255329f77798fb46b9adbbc71a:longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/C/caegraph_display_preview.html",
+    "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767:README.md",
+    "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767:seed_inits.py",
+    "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767:pretty-exports.py",
+    "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767:frp/fqv_kline_example.py",
+    "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767:frp/CommonPriceTurnGroupCandidates.py",
+    "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767:blk/gen.py"
+  ],
+  "deliverables": [
+    "Detached observe-iterate source report at f4f0e4b276b1118b779473c1fbe462bc7a64b358",
+    "Detached TIS source report at 2f460d663d821cf2ba25555eda13e78b697d0767",
+    "Complete locked-TIS package materialization report for seed_inits.py plus pretty-exports.py and generated init manifest",
+    "layered_tis_report.json proving locked-source modules and runtime-base t0/t1/t2/t3 origins with no third source",
+    "One execution of the original D script through the layered package wrapper, with candidate HTML or the first real blocker",
+    "Complete log, D attempt count, D exit code, definition_run_report.json and semaphore endpoint snapshots",
+    "Explicit D/C3/TIS tracked-business-source no-change statement or a bounded mechanical diff",
+    "longrun-worker-return/v2 returned to the issuing executor E1"
+  ],
+  "grant": {
+    "operation": "caegraph_run_and_repair",
+    "execution_context": "/dwdhome/fy/BASE_E6_2_copy",
+    "allowed_writes": [
+      "/dwdhome/fy/BASE_E6_2_copy/**",
+      "/dev/shm/sem.*"
+    ],
+    "authority_quote": "Owner 预先选择指令原文：碰到需要我处理的问题，先选第一项\n适用请求：OR001；被选择的第一项：A. 确认首选 sem.* 机读补正；\noperation=caegraph_run_and_repair\nexecution_context=/dwdhome/fy/BASE_E6_2_copy\nallowed_writes=/dwdhome/fy/BASE_E6_2_copy/**,/dev/shm/sem.*\n`/dev/shm` 只允许本 Run 的 CAEGraph 运行进程及其子进程为 Python multiprocessing 临时创建和删除 POSIX semaphore 对象 `sem.*`；不得写任意共享内存 payload、不得使用 sudo、不得建立 mount 绕过、不得 patch 平台源码、不得调用 F producer、不得读取 Q/V、不得据此启动正式数据导出。"
+  }
+}
