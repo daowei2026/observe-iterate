@@ -12,7 +12,7 @@
 - `sender`：`chatgpt:OI-U2-F-OBS-20261118-01:executor:E1`
 - `return_to`：`chatgpt:OI-U2-F-OBS-20261118-01:manager`
 - 原 D005：`daowei2026/observe-iterate@f274f532e199392fa1f28b009a8e7d45fc6134e7:longrun/runs/OI-U2-F-OBS-20261118-01/delegations/D005/DELEGATION.json`
-- 本次 Invocation：`daowei2026/observe-iterate@runs/OI-U2-F-OBS-20261118-01:longrun/runs/OI-U2-F-OBS-20261118-01/calls/C0017/INVOCATION.json`
+- 本次 Invocation：`daowei2026/observe-iterate@5bfe7eb87ef61c7142b6b8f560fc9606ec793492:longrun/runs/OI-U2-F-OBS-20261118-01/calls/C0017/INVOCATION.json`
 - 本次 token：`9759a7d8bcfd4e75aeccd6bd3ab1de0c`
 
 本次只修复 C0016 Return 的 V2 机读枚举，不形成新专业结论，不新建 D，不签发 Worker 工单，不重新消费 Worker Return，不重跑 A～E，也不启动 Q/V。
@@ -113,7 +113,7 @@ owner_request_ref=OR001
 
 Git 历史继续保留被拒绝的原 C0016 Return：
 
-`daowei2026/observe-iterate@616497e3b3eb6f231c6b04f3218ea7ceea0e32b9:longrun/runs/OI-U2-F-OBS-20261118-01/calls/C0016/PRO_RETURN.json`
+`daowei2026/observe-iterate@616497e3b3eb6f04f3218ea7ceea0e32b9:longrun/runs/OI-U2-F-OBS-20261118-01/calls/C0016/PRO_RETURN.json`
 
 协议消费时应采用同路径的当前补正原件：
 
