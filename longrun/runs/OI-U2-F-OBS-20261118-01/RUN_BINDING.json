@@ -32,9 +32,10 @@
       "operation": "caegraph_run_and_repair",
       "execution_context": "/dwdhome/fy/BASE_E6_2_copy",
       "allowed_writes": [
-        "/dwdhome/fy/BASE_E6_2_copy/**"
+        "/dwdhome/fy/BASE_E6_2_copy/**",
+        "/dev/shm/sem.*"
       ],
-      "authority_quote": "operation=caegraph_run_and_repair\nexecution_context=/dwdhome/fy/BASE_E6_2_copy\nallowed_writes=/dwdhome/fy/BASE_E6_2_copy/**"
+      "authority_quote": "Owner 预先选择指令原文：碰到需要我处理的问题，先选第一项\n适用请求：OR001；被选择的第一项：A. 确认首选 sem.* 机读补正；\noperation=caegraph_run_and_repair\nexecution_context=/dwdhome/fy/BASE_E6_2_copy\nallowed_writes=/dwdhome/fy/BASE_E6_2_copy/**,/dev/shm/sem.*\n`/dev/shm` 只允许本 Run 的 CAEGraph 运行进程及其子进程为 Python multiprocessing 临时创建和删除 POSIX semaphore 对象 `sem.*`；不得写任意共享内存 payload、不得使用 sudo、不得建立 mount 绕过、不得 patch 平台源码、不得调用 F producer、不得读取 Q/V、不得据此启动正式数据导出。"
     },
     {
       "operation": "caegraph_data_export",

@@ -27,7 +27,15 @@
         "longrun/controller/RUN_REGISTRY.json"
       ],
       "single_writer": "conditional expected_sha ref update; re-read and merge if head changes"
+    },
+    {
+      "execution_context": "/dwdhome/fy/BASE_E6_2_copy",
+      "allowed_writes": [
+        "/dev/shm/sem.*"
+      ],
+      "single_writer": "仅本Run当前获准CAEGraph运行进程树自己临时创建和删除的POSIX semaphore对象；每次工单仍核实际Worker、进程归属与共享写面，不声称整台宿主/dev/shm独占。",
+      "authority_adoption_ref": "daowei2026/observe-iterate@1e6392ad185c9be31367f0001f82e83aa53ad14e:longrun/runs/OI-U2-F-OBS-20261118-01/OWNER_OR001_FIRST_OPTION_ADOPTION_20261119.md"
     }
   ],
-  "notes": "Owner已在本轮确认机读授权补正，原GO、路径更正、原Binding及C0001—C0012历史均保留。确认原件为 daowei2026/observe-iterate@c47a984fb060182d691cc71e983a7bc55e9ce5a2:longrun/runs/OI-U2-F-OBS-20261118-01/OWNER_AUTHORITY_AMENDMENT_20261119.md。专用Worker的实际模型gpt-6.1-sol、reasoning_effort=max及cwd=/dwdhome/fy/BASE_E6_2_copy已经独立回读；W001尚未派发。A—D完成，E按原D005续作，专业采用版本不变。feature-production-agent symlink的外部目标不在写授权中。每次W实际派发前重核当时Worker配置、在途状态和共享写面单写者。Q依Owner最新指令不推进。"
+  "notes": "Owner原GO和已确认路径补正保留；主控按Owner既有“碰到需要我处理的问题，先选第一项”采用原E1 OR001的A项，来源映射为 daowei2026/observe-iterate@1e6392ad185c9be31367f0001f82e83aa53ad14e:longrun/runs/OI-U2-F-OBS-20261118-01/OWNER_OR001_FIRST_OPTION_ADOPTION_20261119.md。仅caegraph_run_and_repair增加/dev/shm/sem.*临时创建/删除权限及OR001逐字限制；正式数据导出grant不变。实际目录及Worker绑定沿原已核事实；W001/W002已完成STOP并保留，不代表E完成。后续W需原E1签发并重新核物理配置、cwd、在途与单写者；还需原manager同步D005机读授权包络。Q Owner hold，V未启动。"
 }
