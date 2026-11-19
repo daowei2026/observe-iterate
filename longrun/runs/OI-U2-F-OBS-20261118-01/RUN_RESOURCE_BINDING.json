@@ -9,7 +9,7 @@
   "verification_evidence_ref": "daowei2026/observe-iterate@c47a984fb060182d691cc71e983a7bc55e9ce5a2:longrun/runs/OI-U2-F-OBS-20261118-01/worker_bindings/W1.json",
   "actual_worker_thread_binding_ref": "daowei2026/observe-iterate@c47a984fb060182d691cc71e983a7bc55e9ce5a2:longrun/runs/OI-U2-F-OBS-20261118-01/worker_bindings/W1.json",
   "adopted_source_refs": [
-    "daowei2026/cgpterm@5461c6e51e73d011028afd8b41a0c5c340541df5:.agents/skills/observe-iterate-longrun-v2-controller/SKILL.md",
+    "daowei2026/cgpterm@d4ba9f8711f5d20633f789cacfe41c1aa8ba686a:.agents/skills/observe-iterate-longrun-v2-controller/SKILL.md",
     "daowei2026/observe-iterate@f7e8ff43fabfa11b499e2ce9e62dbc46b1b8b288:longrun/contracts/LONGRUN_PROTOCOL_V2.md",
     "daowei2026/observe-iterate@f7e8ff43fabfa11b499e2ce9e62dbc46b1b8b288:task-inputs/u2-fqv-observation/F_OBSERVATION_RUN_INPUT.md"
   ],
@@ -37,5 +37,5 @@
       "authority_adoption_ref": "daowei2026/observe-iterate@1e6392ad185c9be31367f0001f82e83aa53ad14e:longrun/runs/OI-U2-F-OBS-20261118-01/OWNER_OR001_FIRST_OPTION_ADOPTION_20261119.md"
     }
   ],
-  "notes": "Owner原GO和已确认路径补正保留；主控按Owner既有“碰到需要我处理的问题，先选第一项”采用原E1 OR001的A项，来源映射为 daowei2026/observe-iterate@1e6392ad185c9be31367f0001f82e83aa53ad14e:longrun/runs/OI-U2-F-OBS-20261118-01/OWNER_OR001_FIRST_OPTION_ADOPTION_20261119.md。仅caegraph_run_and_repair增加/dev/shm/sem.*临时创建/删除权限及OR001逐字限制；正式数据导出grant不变。实际目录及Worker绑定沿原已核事实；W001/W002已完成STOP并保留，不代表E完成。后续W需原E1签发并重新核物理配置、cwd、在途与单写者；还需原manager同步D005机读授权包络。Q Owner hold，V未启动。"
+  "notes": "Owner于2026-11-19明确改变本Run后续主控规程为cgpterm@d4ba9f8711f5d20633f789cacfe41c1aa8ba686a；原业务Workflow/Skills/输入f7不变，路径和grants不变。旧采用与旧Binding/resource@ec2c6c495327c885b02424714bd88d8d67dbceaa及全部历史保留，详同目录OWNER_E_RESTART_20261119.md、E_RESTART_CONTROLLER_ADOPTION.json与E_RESTART_OLD_CHAIN_CLOSURE.json。W005实际未发送并被Owner替代；D005非完成。已预留独立逻辑executor:E2供原manager新签E委派，物理Chat尚未创建。新W须由新E委派的executor原生签发，不自动续用D005/W005；复用本Run既有Worker物理绑定，按新主控最小检查派发。sem.*仅原允许的进程树临时对象，正式导出grant和专业准入边界均未扩大。Q/V不启动。"
 }
