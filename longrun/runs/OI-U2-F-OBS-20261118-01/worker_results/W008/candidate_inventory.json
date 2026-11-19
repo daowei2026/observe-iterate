@@ -1,0 +1,59 @@
+{
+  "candidate": "/dwdhome/fy/BASE_E6_2_copy/.runtime/fqv-rb-hc-i-20261117",
+  "candidate_realpath": "/dwdhome/fy/BASE_E6_2_copy/.runtime/fqv-rb-hc-i-20261117",
+  "scope": "只读固定候选的指定路径与三层以内元数据/入口文件名；不跟随symlink，不查第二runtime",
+  "required_paths": [
+    {
+      "path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/fqv-rb-hc-i-20261117",
+      "lexists": true,
+      "is_symlink": false,
+      "is_directory": true
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/fqv-rb-hc-i-20261117/runtime",
+      "lexists": true,
+      "is_symlink": false,
+      "is_directory": true
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/fqv-rb-hc-i-20261117/runtime/mquant",
+      "lexists": true,
+      "is_symlink": false,
+      "is_directory": true
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/fqv-rb-hc-i-20261117/runtime/mquant/tis",
+      "lexists": true,
+      "is_symlink": false,
+      "is_directory": true
+    }
+  ],
+  "selected_metadata_and_entry_files": [
+    {
+      "path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/fqv-rb-hc-i-20261117/provenance.json",
+      "relative_path": "provenance.json",
+      "type": "regular_file",
+      "bytes": 1217,
+      "executable": false
+    }
+  ],
+  "symlinks": [
+    {
+      "path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/fqv-rb-hc-i-20261117/runtime/.codex",
+      "relative_path": "runtime/.codex",
+      "link_target": "/dwdhome/fy/BASE_E6_2_copy/.codex",
+      "resolved_target": "/dwdhome/fy/BASE_E6_2_copy/.codex",
+      "external": true
+    }
+  ],
+  "max_depth": 3,
+  "bounded_listing_complete": false,
+  "first_failure": {
+    "clause": "5.1",
+    "classification": "DEDICATED_RUNTIME_EXTERNAL_SOURCE_LEAK",
+    "path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/fqv-rb-hc-i-20261117/runtime/.codex",
+    "reason": "三层有界检查遇到候选根外symlink；立即停止，不跟随、不继续探测。"
+  },
+  "started_at": "2026-11-19T18:16:50.137851+00:00",
+  "finished_at": "2026-11-19T18:16:50.164858+00:00"
+}
