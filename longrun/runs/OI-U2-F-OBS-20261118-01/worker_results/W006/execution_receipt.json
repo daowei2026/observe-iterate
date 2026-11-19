@@ -1,0 +1,49 @@
+{
+  "run_id": "OI-U2-F-OBS-20261118-01",
+  "work_order_id": "W006",
+  "parent_delegation_id": "D006",
+  "worker": "codex:OI-U2-F-OBS-20261118-01:worker:W1",
+  "return_to": "chatgpt:OI-U2-F-OBS-20261118-01:executor:E2",
+  "order_ref": "daowei2026/observe-iterate@ce230480cdbaf0133e3d719e3750c42f52664134:longrun/runs/OI-U2-F-OBS-20261118-01/work_orders/W006/ORDER.json",
+  "argv": [
+    "python",
+    "longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/D/u2_f_caegraph_definition.py",
+    "--output-dir",
+    "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W006/output/u2_f_caegraph"
+  ],
+  "cwd": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W001/source/observe-iterate",
+  "python_entry": "/usr/bin/python",
+  "started_at": "2026-11-19T16:46:45.095366+00:00",
+  "D_attempt_count": 2,
+  "D_exit_code": 1,
+  "first_run_current_environment": true,
+  "environment_changes": "首轮仅禁写pyc与run-local cache；入口补正仅source当前工作区m3rc及同一cache接线。未叠加另一套TIS，未采用旧W overlay、M3HOST/TLS/代理/依赖附加方案。",
+  "ended_at": "2026-11-19T16:48:20.364720+00:00",
+  "elapsed_seconds": 0.42304282798431814,
+  "phase": "FY_ENTRY_RUN_RETURNED",
+  "attempts": [
+    {
+      "attempt": 1,
+      "python_entry": "/usr/bin/python",
+      "python_version": "Python 3.12.3",
+      "started_at": "2026-11-19T16:46:45.095366+00:00",
+      "ended_at": "2026-11-19T16:46:45.588001+00:00",
+      "D_exit_code": 1,
+      "log": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W006/logs/w006_run.log",
+      "first_error": "ModuleNotFoundError: No module named 'numpy'"
+    },
+    {
+      "attempt": 2,
+      "python_entry": "/m3c3/Linux/apps/anaconda3/bin/python",
+      "python_version": "Python 3.10.13",
+      "started_at": "2026-11-19T16:48:02.649321073Z",
+      "ended_at": "2026-11-19T16:48:20.364720+00:00",
+      "D_exit_code": 1,
+      "launcher_exit_code": 1,
+      "elapsed_seconds": 19.733198397094384,
+      "log": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W006/logs/w006_run_fy_entry.log",
+      "configuration": "/dwdhome/fy/BASE_E6_2_copy/m3rc"
+    }
+  ],
+  "final_python_entry": "/m3c3/Linux/apps/anaconda3/bin/python"
+}

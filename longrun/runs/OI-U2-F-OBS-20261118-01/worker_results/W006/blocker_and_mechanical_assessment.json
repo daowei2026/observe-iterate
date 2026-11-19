@@ -1,0 +1,20 @@
+{
+  "first_raw_attempt_error": "ModuleNotFoundError: No module named 'numpy'",
+  "current_FY_blocker": "ModuleNotFoundError: No module named 'mquant.tis.frp.fqv_kline_example'",
+  "allowed_minimal_import_probe": {
+    "attempt_count": 1,
+    "exit_code": 1,
+    "module_file": null,
+    "missing_module": "mquant.tis.frp.fqv_kline_example",
+    "loaded_parent_files": {
+      "mquant": "/dwdhome/fy/BASE_E6_2_copy/mquant/__init__.py",
+      "mquant.tis": "/dwdhome/fy/BASE_E6_2_copy/mquant/tis/__init__.py",
+      "mquant.tis.frp": "/dwdhome/fy/BASE_E6_2_copy/mquant/tis/frp/__init__.py"
+    }
+  },
+  "D_C3_only_unique_mechanical_fix_available": false,
+  "reason": "现有FY正式Python已可进入D main，但当前mquant.tis.frp无法提供工单锁定构造模块；改变D/C3的import无法凭现有证据保证同一构造语义，补装/overlay/混用或切换版本均被禁止。按工单6/7停止回E2。",
+  "haskell_HEAD_difference": "只按工单记录实际路径与HEAD差异，不据此证明Python失败原因、源码内容有误或F产品缺失。",
+  "D_C3_repair_attempt_count": 0,
+  "D_run_after_probe_count": 0
+}

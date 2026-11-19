@@ -1,0 +1,20 @@
+{
+  "requested_module": "mquant.tis.frp.fqv_kline_example",
+  "attempt_count": 1,
+  "python_executable": "/m3c3/Linux/apps/anaconda3/bin/python",
+  "python_version": "3.10.13 (main, Sep 11 2023, 13:44:35) [GCC 11.2.0]",
+  "started_at": "2026-11-19T16:49:27.290890+00:00",
+  "import_succeeded": false,
+  "module_file": null,
+  "first_missing_module": "mquant.tis.frp.fqv_kline_example",
+  "scope": "只导入工单指定构造模块一次，记录__file__或异常缺失模块；不运行make_features或平台业务/producer，不枚举其他路径。",
+  "error_type": "ModuleNotFoundError",
+  "error": "No module named 'mquant.tis.frp.fqv_kline_example'",
+  "traceback": "Traceback (most recent call last):\n  File \"/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W006/minimal_constructor_import.py\", line 6, in <module>\n    m=importlib.import_module(report['requested_module']);report['import_succeeded']=True;report['module_file']=getattr(m,'__file__',None)\n  File \"/m3c3/Linux/apps/anaconda3/lib/python3.10/importlib/__init__.py\", line 126, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n  File \"<frozen importlib._bootstrap>\", line 1050, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1027, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1004, in _find_and_load_unlocked\nModuleNotFoundError: No module named 'mquant.tis.frp.fqv_kline_example'\n",
+  "loaded_parent_files": {
+    "mquant": "/dwdhome/fy/BASE_E6_2_copy/mquant/__init__.py",
+    "mquant.tis": "/dwdhome/fy/BASE_E6_2_copy/mquant/tis/__init__.py",
+    "mquant.tis.frp": "/dwdhome/fy/BASE_E6_2_copy/mquant/tis/frp/__init__.py"
+  },
+  "finished_at": "2026-11-19T16:49:42.394514+00:00"
+}
