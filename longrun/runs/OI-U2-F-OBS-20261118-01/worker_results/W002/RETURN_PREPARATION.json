@@ -1,0 +1,41 @@
+{
+  "preparation_format": "local-only; not a schema-valid formal Worker Return",
+  "state": "AWAITING_TRANSPORT_PUBLICATION",
+  "target_schema_ref": "daowei2026/observe-iterate@f7e8ff43fabfa11b499e2ce9e62dbc46b1b8b288:longrun/contracts/longrun_schema_v2.json",
+  "target_definition": "#/$defs/worker_return",
+  "fixed_fields": {
+    "schema": "longrun-worker-return/v2",
+    "run_id": "OI-U2-F-OBS-20261118-01",
+    "work_order_id": "W002",
+    "order_ref": "daowei2026/observe-iterate@2bdc0b96259b9c2a895113328b9ccc1172f09e6e:longrun/runs/OI-U2-F-OBS-20261118-01/work_orders/W002/ORDER.json",
+    "worker": "codex:OI-U2-F-OBS-20261118-01:worker:W1",
+    "return_to": "chatgpt:OI-U2-F-OBS-20261118-01:executor:E1",
+    "outcome": "STOP",
+    "missing": [
+      "私有 user/mount namespace 未能完成：/proc/self/uid_map 写入被拒绝",
+      "namespace-local /dev/shm backing、findmnt、mountinfo 与 alias probe 尚未验证",
+      "SemLock probe 未启动：必须先通过私有 shm 包络",
+      "D 未启动；精确 F 实例及 fields.json 存在性未检查",
+      "候选 HTML、definition_run_report.json、prepared_tables 与 plot_data 均未生成",
+      "E3 核图接受与正式取数准入尚未发生"
+    ]
+  },
+  "existing_manifest_entries": {
+    "final_script": {
+      "ref": "daowei2026/observe-iterate@f4f0e4b276b1118b779473c1fbe462bc7a64b358:longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/D/u2_f_caegraph_definition.py",
+      "sha256": "92ab234df976469c6deb85052251b81633d79994440dccca199120672072433f"
+    },
+    "c3_script": {
+      "ref": "daowei2026/observe-iterate@508d494c964d5dabeaa1e7ea17bef908f749e9c8:longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/C/caegraph_display.py",
+      "sha256": "798042296f88ff5747a0248a81902953550fe39e4fa18337e8fdcfe9557877b7"
+    }
+  },
+  "awaiting_fields": [
+    "result_ref",
+    "manifest entries for newly published evidence"
+  ],
+  "result_local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W002/FACT_REPORT.md",
+  "parent_delegation_id": "D005",
+  "publication_authority": "Controller transports exact evidence; Worker does not push the source checkout.",
+  "next_action": "Receive actual published refs, verify hashes, then sign this W002 worker_return; do not rerun namespace, SemLock probe, D or producer."
+}

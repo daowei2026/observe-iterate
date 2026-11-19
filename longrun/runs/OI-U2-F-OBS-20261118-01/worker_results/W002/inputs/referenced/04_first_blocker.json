@@ -1,0 +1,27 @@
+{
+  "run_id": "OI-U2-F-OBS-20261118-01",
+  "work_order_id": "W001",
+  "factual_status": "BLOCKED",
+  "proposed_worker_outcome_after_transport": "STOP",
+  "primary_exception": "PermissionError",
+  "primary_error": "[Errno 13] Permission denied",
+  "primary_stage": "D.main import mquant.frame, before make_features and fields.json guard",
+  "import_side_effect_source": "/dwdhome/fy/BASE_E6_2_copy/mquant/apt/tool/misc.py:144",
+  "import_side_effect": "ProcessPoolExecutor(max_workers=os.getpid() - 2)",
+  "primary_traceback": "Traceback (most recent call last):\n  File \"/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W001/source/observe-iterate/longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/D/u2_f_caegraph_definition.py\", line 676, in main\n    from mquant.frame import CurrCalendar, CurrSof, KLine\n  File \"/dwdhome/fy/BASE_E6_2_copy/mquant/frame/__init__.py\", line 61, in <module>\n    from .core import *\n  File \"/dwdhome/fy/BASE_E6_2_copy/mquant/frame/core/__init__.py\", line 35, in <module>\n    from .app import *\n  File \"/dwdhome/fy/BASE_E6_2_copy/mquant/frame/core/app/__init__.py\", line 20, in <module>\n    from .env import *\n  File \"/dwdhome/fy/BASE_E6_2_copy/mquant/frame/core/app/env.py\", line 4, in <module>\n    from ...lib3 import CurrTradeSet, FuncUtil, AbsContextManager\n  File \"/dwdhome/fy/BASE_E6_2_copy/mquant/frame/lib3.py\", line 16, in <module>\n    from mquant.apt import *\n  File \"/dwdhome/fy/BASE_E6_2_copy/mquant/apt/__init__.py\", line 22, in <module>\n    from .tool import *\n  File \"/dwdhome/fy/BASE_E6_2_copy/mquant/apt/tool/__init__.py\", line 41, in <module>\n    from .misc import *\n  File \"/dwdhome/fy/BASE_E6_2_copy/mquant/apt/tool/misc.py\", line 144, in <module>\n    executor = ProcessPoolExecutor(max_workers=os.getpid() - 2)\n  File \"/m3c3/Linux/apps/anaconda3/lib/python3.10/concurrent/futures/process.py\", line 662, in __init__\n    self._call_queue = _SafeQueue(\n  File \"/m3c3/Linux/apps/anaconda3/lib/python3.10/concurrent/futures/process.py\", line 168, in __init__\n    super().__init__(max_size, ctx=ctx)\n  File \"/m3c3/Linux/apps/anaconda3/lib/python3.10/multiprocessing/queues.py\", line 43, in __init__\n    self._rlock = ctx.Lock()\n  File \"/m3c3/Linux/apps/anaconda3/lib/python3.10/multiprocessing/context.py\", line 68, in Lock\n    return Lock(ctx=self.get_context())\n  File \"/m3c3/Linux/apps/anaconda3/lib/python3.10/multiprocessing/synchronize.py\", line 162, in __init__\n    SemLock.__init__(self, SEMAPHORE, 1, 1, ctx=ctx)\n  File \"/m3c3/Linux/apps/anaconda3/lib/python3.10/multiprocessing/synchronize.py\", line 57, in __init__\n    sl = self._semlock = _multiprocessing.SemLock(\nPermissionError: [Errno 13] Permission denied\n",
+  "actual_execution_condition": "kernel Landlock: writes only under W001; reads retain existing access",
+  "diagnostic": {
+    "scope": "stdlib multiprocessing.Lock only; D/F/Q/V not loaded",
+    "blocked_path": "/dev/shm/sem.HZDYg7",
+    "syscall": "406658 openat(AT_FDCWD, \"/dev/shm/sem.HZDYg7\", O_RDWR|O_CREAT|O_EXCL|O_NOFOLLOW|O_CLOEXEC, 0600) = -1 EACCES (Permission denied)",
+    "primary_run_exact_ipc_filename": "not traced; diagnostic filename must not be attributed to primary run",
+    "log": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W001/logs/semlock_probe.log",
+    "trace": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W001/logs/semlock_probe.strace"
+  },
+  "interpretation": "The observed D run failed under the Worker-added strict W001 write boundary. A separate stdlib diagnostic shows the same SemLock operation needs /dev/shm IPC file creation. This is not proof of failure in the unguarded original environment or of missing F data.",
+  "stop_basis": "W001 narrows writes to RUN_ROOT; changing external IPC access or import behavior is returned to E1 rather than selected by Worker.",
+  "repair_applied": false,
+  "producer_invoked": false,
+  "f_instance_constructed": false,
+  "fields_json_existence": "NOT_CHECKED"
+}

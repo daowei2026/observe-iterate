@@ -1,0 +1,515 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Observe Iterate Longrun V2 Transport Contracts",
+  "description": "机械字段与身份模型；任何 schema 通过都不证明 Owner 授权、物理送达和专业业务通过。",
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+    },
+    "text": {
+      "type": "string",
+      "minLength": 1
+    },
+    "ref": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+@[a-f0-9]{40}:[^\\s:#]+$"
+    },
+    "refs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ref"
+      },
+      "uniqueItems": true
+    },
+    "texts": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "optionalRef": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ref"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "grant": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "operation",
+        "execution_context",
+        "allowed_writes",
+        "authority_quote"
+      ],
+      "properties": {
+        "operation": {
+          "type": "string",
+          "minLength": 1
+        },
+        "execution_context": {
+          "type": "string",
+          "minLength": 1
+        },
+        "allowed_writes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 0
+        },
+        "authority_quote": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "run_id",
+        "work_id",
+        "owner_go_ref",
+        "coordinator",
+        "manager",
+        "executors",
+        "workers",
+        "grants"
+      ],
+      "properties": {
+        "schema": {
+          "const": "longrun-binding/v2"
+        },
+        "run_id": {
+          "$ref": "#/$defs/id"
+        },
+        "work_id": {
+          "$ref": "#/$defs/id"
+        },
+        "owner_go_ref": {
+          "$ref": "#/$defs/ref"
+        },
+        "coordinator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "manager": {
+          "type": "string",
+          "minLength": 1
+        },
+        "executors": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "workers": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "grants": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/grant"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "invocation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "run_id",
+        "call_id",
+        "recipient",
+        "token",
+        "assignment_ref",
+        "origin_ref",
+        "source_refs"
+      ],
+      "properties": {
+        "schema": {
+          "const": "longrun-invocation/v2"
+        },
+        "run_id": {
+          "$ref": "#/$defs/id"
+        },
+        "call_id": {
+          "type": "string",
+          "pattern": "^C[0-9]{4,}$"
+        },
+        "recipient": {
+          "type": "string",
+          "minLength": 1
+        },
+        "token": {
+          "$ref": "#/$defs/id"
+        },
+        "assignment_ref": {
+          "$ref": "#/$defs/ref"
+        },
+        "origin_ref": {
+          "$ref": "#/$defs/optionalRef"
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ref"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "delegation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "run_id",
+        "delegation_id",
+        "issuer_call_id",
+        "issuer",
+        "recipient",
+        "return_to",
+        "task_ref",
+        "business_context_ref",
+        "input_refs",
+        "expected_outputs",
+        "permitted_operations",
+        "allowed_writes"
+      ],
+      "properties": {
+        "schema": {
+          "const": "longrun-delegation/v2"
+        },
+        "run_id": {
+          "$ref": "#/$defs/id"
+        },
+        "delegation_id": {
+          "type": "string",
+          "pattern": "^D[0-9]{3,}$"
+        },
+        "issuer_call_id": {
+          "type": "string",
+          "pattern": "^C[0-9]{4,}$"
+        },
+        "issuer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "recipient": {
+          "type": "string",
+          "minLength": 1
+        },
+        "return_to": {
+          "type": "string",
+          "minLength": 1
+        },
+        "task_ref": {
+          "$ref": "#/$defs/ref"
+        },
+        "business_context_ref": {
+          "$ref": "#/$defs/optionalRef"
+        },
+        "input_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ref"
+          },
+          "uniqueItems": true
+        },
+        "expected_outputs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "permitted_operations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "allowed_writes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "order": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "run_id",
+        "work_order_id",
+        "delegation_ref",
+        "issuer_call_id",
+        "issuer",
+        "worker",
+        "return_to",
+        "instructions_ref",
+        "input_refs",
+        "deliverables",
+        "grant"
+      ],
+      "properties": {
+        "schema": {
+          "const": "longrun-order/v2"
+        },
+        "run_id": {
+          "$ref": "#/$defs/id"
+        },
+        "work_order_id": {
+          "type": "string",
+          "pattern": "^W[0-9]{3,}$"
+        },
+        "delegation_ref": {
+          "$ref": "#/$defs/ref"
+        },
+        "issuer_call_id": {
+          "type": "string",
+          "pattern": "^C[0-9]{4,}$"
+        },
+        "issuer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "worker": {
+          "type": "string",
+          "minLength": 1
+        },
+        "return_to": {
+          "type": "string",
+          "minLength": 1
+        },
+        "instructions_ref": {
+          "$ref": "#/$defs/ref"
+        },
+        "input_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ref"
+          },
+          "uniqueItems": true
+        },
+        "deliverables": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "grant": {
+          "$ref": "#/$defs/grant"
+        }
+      }
+    },
+    "professional_return": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "run_id",
+        "call_id",
+        "role",
+        "sender",
+        "delegation_ref",
+        "return_to",
+        "result_ref",
+        "issued_delegation_refs",
+        "issued_order_refs",
+        "accepted_worker_refs",
+        "professional_state",
+        "remaining_scope_ref",
+        "continuation_ref",
+        "owner_request_ref"
+      ],
+      "properties": {
+        "schema": {
+          "const": "longrun-professional-return/v2"
+        },
+        "run_id": {
+          "$ref": "#/$defs/id"
+        },
+        "call_id": {
+          "type": "string",
+          "pattern": "^C[0-9]{4,}$"
+        },
+        "role": {
+          "enum": [
+            "manager",
+            "executor"
+          ]
+        },
+        "sender": {
+          "type": "string",
+          "minLength": 1
+        },
+        "delegation_ref": {
+          "$ref": "#/$defs/optionalRef"
+        },
+        "return_to": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "result_ref": {
+          "$ref": "#/$defs/ref"
+        },
+        "issued_delegation_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ref"
+          },
+          "uniqueItems": true
+        },
+        "issued_order_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ref"
+          },
+          "uniqueItems": true
+        },
+        "accepted_worker_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ref"
+          },
+          "uniqueItems": true
+        },
+        "professional_state": {
+          "enum": [
+            "IN_PROGRESS",
+            "WAITING_OWNER",
+            "REPORTED_COMPLETE"
+          ]
+        },
+        "remaining_scope_ref": {
+          "$ref": "#/$defs/optionalRef"
+        },
+        "continuation_ref": {
+          "$ref": "#/$defs/optionalRef"
+        },
+        "owner_request_ref": {
+          "$ref": "#/$defs/optionalRef"
+        }
+      }
+    },
+    "worker_return": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "run_id",
+        "work_order_id",
+        "order_ref",
+        "worker",
+        "return_to",
+        "outcome",
+        "result_ref",
+        "missing",
+        "manifest"
+      ],
+      "properties": {
+        "schema": {
+          "const": "longrun-worker-return/v2"
+        },
+        "run_id": {
+          "$ref": "#/$defs/id"
+        },
+        "work_order_id": {
+          "type": "string",
+          "pattern": "^W[0-9]{3,}$"
+        },
+        "order_ref": {
+          "$ref": "#/$defs/ref"
+        },
+        "worker": {
+          "type": "string",
+          "minLength": 1
+        },
+        "return_to": {
+          "type": "string",
+          "minLength": 1
+        },
+        "outcome": {
+          "enum": [
+            "EXECUTED",
+            "PARTIAL",
+            "STOP",
+            "FAILED"
+          ]
+        },
+        "result_ref": {
+          "$ref": "#/$defs/ref"
+        },
+        "missing": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "manifest": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "ref",
+              "sha256"
+            ],
+            "properties": {
+              "ref": {
+                "$ref": "#/$defs/ref"
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
