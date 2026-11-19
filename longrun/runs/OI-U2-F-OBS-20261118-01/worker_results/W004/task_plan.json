@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "project": {
+    "id": "oi-u2-f-obs-20261118-01",
+    "title": "D005/E W004 运行与事实回交"
+  },
+  "task": {
+    "id": "oi-u2-f-obs-20261118-01-w004",
+    "title": "W004 锁定TIS namespace接线与原D运行",
+    "type": "engineering",
+    "owner": "codex:OI-U2-F-OBS-20261118-01:worker:W1",
+    "monitoring": {
+      "scope": "general"
+    },
+    "completion_gate": "W004真实事实与证据发布且原E1消费正式Return；不代表D005/E业务成功。"
+  },
+  "phases": [
+    {
+      "id": "execute",
+      "title": "执行工单",
+      "steps": [
+        {
+          "id": "sources",
+          "title": "核验授权并staging两个锁定source",
+          "acceptance": "两个提交detached并存在所需原件；否则记录首个真实阻断。",
+          "weight": 2
+        },
+        {
+          "id": "episode",
+          "title": "package boundary、overlay及原D一次运行",
+          "acceptance": "保留生成init清单、origin检查和一次D运行结果或前置阻断，未改变业务源。",
+          "weight": 3
+        }
+      ]
+    },
+    {
+      "id": "return",
+      "title": "事实证据与原E1回交",
+      "steps": [
+        {
+          "id": "transport",
+          "title": "封存事实和完整运输材料",
+          "acceptance": "完整正文与本地路径、字节数、SHA-256清单一致。",
+          "weight": 2
+        },
+        {
+          "id": "return-signoff",
+          "title": "真实已发布引用与正式Return签认",
+          "acceptance": "发布引用可核验，正式Return通过原schema并供原E1消费。",
+          "weight": 1
+        }
+      ]
+    }
+  ]
+}

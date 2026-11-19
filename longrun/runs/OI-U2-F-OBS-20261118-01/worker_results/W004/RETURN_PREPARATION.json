@@ -1,0 +1,36 @@
+{
+  "format": "local-worker-return-preparation/v2",
+  "is_formal_worker_return": false,
+  "reason": "本轮新事实/日志/证据尚待主控原样发布并提供真实精确Git refs；本地路径不替代schema ref，不伪造未来commit。",
+  "target_schema_ref": "daowei2026/observe-iterate@f7e8ff43fabfa11b499e2ce9e62dbc46b1b8b288:longrun/contracts/longrun_schema_v2.json",
+  "fixed_fields": {
+    "schema": "longrun-worker-return/v2",
+    "run_id": "OI-U2-F-OBS-20261118-01",
+    "work_order_id": "W004",
+    "order_ref": "daowei2026/observe-iterate@1ce39d12f160c624916e7e370692915f3b4af6d3:longrun/runs/OI-U2-F-OBS-20261118-01/work_orders/W004/ORDER.json",
+    "worker": "codex:OI-U2-F-OBS-20261118-01:worker:W1",
+    "return_to": "chatgpt:OI-U2-F-OBS-20261118-01:executor:E1",
+    "outcome": "STOP",
+    "missing": [
+      "锁定TIS overlay在CurrSof上下文加载时无法导入mquant.tis.t1；本工单未混入旧runtime TIS或修改业务源码/平台",
+      "make_features未调用，F未构造，精确fields.json存在性与真实F表未检查",
+      "候选u2_f_caegraph.html未生成；definition_run_report.json已生成但completed=false",
+      "prepared_tables与plot_data未生成",
+      "E3核图接受与E4正式数据导出准入尚未发生；D005/E业务未完成"
+    ]
+  },
+  "result_local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/FACT_REPORT.md",
+  "result_ref": null,
+  "pending_manifest": "MANIFEST.local.json与TRANSPORT_PAYLOAD.json完整列出本地正文、bytes和SHA-256；正式manifest需以真实发布ref填充并按原worker_return schema仅保留ref/sha256。",
+  "facts": {
+    "state": "BLOCKED",
+    "D_attempt_count": 1,
+    "D_exit_code": 1,
+    "seeder_exit_code": 0,
+    "origin_checks_passed": 7,
+    "candidate_html": null,
+    "definition_report_completed": false,
+    "business_completed": false
+  },
+  "return_signoff_next_action": "主控发布实际材料并给真实映射后，在同一W004下核验并生成WORKER_RETURN.json；此阶段不重跑D/producer/诊断。"
+}

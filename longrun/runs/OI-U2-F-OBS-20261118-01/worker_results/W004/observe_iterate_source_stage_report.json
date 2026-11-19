@@ -1,0 +1,99 @@
+{
+  "run_id": "OI-U2-F-OBS-20261118-01",
+  "work_order_id": "W004",
+  "repository": "observe_iterate",
+  "remote_url": "https://github.com/daowei2026/observe-iterate.git",
+  "requested_commit": "f4f0e4b276b1118b779473c1fbe462bc7a64b358",
+  "actual_head": "f4f0e4b276b1118b779473c1fbe462bc7a64b358",
+  "source_root": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/source/observe-iterate",
+  "created_or_reused": "created",
+  "started_at": "2026-11-19T08:22:04.064758+00:00",
+  "steps": [
+    {
+      "argv": [
+        "git",
+        "init",
+        "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/source/observe-iterate"
+      ],
+      "started_at": "2026-11-19T08:22:04.101984+00:00",
+      "ended_at": "2026-11-19T08:22:04.934614+00:00",
+      "elapsed_seconds": 0.832629923010245,
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/source/observe-iterate",
+        "remote",
+        "add",
+        "origin",
+        "https://github.com/daowei2026/observe-iterate.git"
+      ],
+      "started_at": "2026-11-19T08:22:04.934746+00:00",
+      "ended_at": "2026-11-19T08:22:05.050620+00:00",
+      "elapsed_seconds": 0.11588689510244876,
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/source/observe-iterate",
+        "-c",
+        "protocol.version=2",
+        "fetch",
+        "--filter=blob:none",
+        "--no-tags",
+        "origin",
+        "refs/heads/runs/OI-U2-F-OBS-20261118-01:refs/remotes/origin/run"
+      ],
+      "started_at": "2026-11-19T08:22:05.050743+00:00",
+      "ended_at": "2026-11-19T08:22:08.391103+00:00",
+      "elapsed_seconds": 3.340379722067155,
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/source/observe-iterate",
+        "checkout",
+        "--detach",
+        "f4f0e4b276b1118b779473c1fbe462bc7a64b358"
+      ],
+      "started_at": "2026-11-19T08:22:08.391258+00:00",
+      "ended_at": "2026-11-19T08:22:15.916427+00:00",
+      "elapsed_seconds": 7.525189238949679,
+      "exit_code": 0
+    }
+  ],
+  "files": [
+    {
+      "relative_path": "longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/D/u2_f_caegraph_definition.py",
+      "path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/source/observe-iterate/longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/D/u2_f_caegraph_definition.py",
+      "exists": true,
+      "bytes": 29462,
+      "sha256": "92ab234df976469c6deb85052251b81633d79994440dccca199120672072433f"
+    },
+    {
+      "relative_path": "longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/C/caegraph_display.py",
+      "path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/source/observe-iterate/longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/C/caegraph_display.py",
+      "exists": true,
+      "bytes": 20820,
+      "sha256": "798042296f88ff5747a0248a81902953550fe39e4fa18337e8fdcfe9557877b7"
+    },
+    {
+      "relative_path": "longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/C/caegraph_display_preview.html",
+      "path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/source/observe-iterate/longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/C/caegraph_display_preview.html",
+      "exists": true,
+      "bytes": 11178,
+      "sha256": "2adf73b1d68031ba209e3553064e8417848460d334d2dac31f795afeaf21df7d"
+    }
+  ],
+  "status": "SUCCESS",
+  "detached_head": true,
+  "verification_passed": true,
+  "initial_git_status_clean": true,
+  "ended_at": "2026-11-19T08:22:16.214976+00:00"
+}

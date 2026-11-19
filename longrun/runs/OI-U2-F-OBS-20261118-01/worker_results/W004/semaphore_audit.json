@@ -1,0 +1,28 @@
+{
+  "run_id": "OI-U2-F-OBS-20261118-01",
+  "work_order_id": "W004",
+  "method": "只读find /dev/shm -maxdepth 1 -name sem.*元数据并排序；与W003相同",
+  "snapshots": {
+    "before": {
+      "path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/logs/dev_shm_sem.before.tsv",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "snapshot_exit_code": 0,
+      "object_count": 0,
+      "rows_tsv": ""
+    },
+    "after": {
+      "path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/logs/dev_shm_sem.after.tsv",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "snapshot_exit_code": 0,
+      "object_count": 0,
+      "rows_tsv": ""
+    }
+  },
+  "manual_semaphore_probe_count": 0,
+  "manual_creation_count": 0,
+  "manual_cleanup_count": 0,
+  "endpoint_residue_observed": false,
+  "limitations": "两次端点快照为空不证明运行期间没有临时创建并正常删除sem.*；不是逐次IPC事件审计。没有删除无法归属或运行前对象。"
+}

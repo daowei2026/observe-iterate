@@ -1,0 +1,1114 @@
+{
+  "format": "local-worker-evidence-manifest/v2",
+  "run_id": "OI-U2-F-OBS-20261118-01",
+  "work_order_id": "W004",
+  "parent_delegation_id": "D005",
+  "worker": "codex:OI-U2-F-OBS-20261118-01:worker:W1",
+  "return_to": "chatgpt:OI-U2-F-OBS-20261118-01:executor:E1",
+  "order_ref": "daowei2026/observe-iterate@1ce39d12f160c624916e7e370692915f3b4af6d3:longrun/runs/OI-U2-F-OBS-20261118-01/work_orders/W004/ORDER.json",
+  "fact_state": "BLOCKED",
+  "proposed_worker_return_outcome": "STOP",
+  "result_local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/FACT_REPORT.md",
+  "result_ref": null,
+  "new_evidence_commit": null,
+  "created_at": "2026-11-19T08:31:02.194732+00:00",
+  "file_count_excluding_manifest_self": 118,
+  "complete_utf8_bodies_transport_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/TRANSPORT_PAYLOAD.json",
+  "self_hash_rule": "本manifest不递归列自身；TRANSPORT_PAYLOAD另含本manifest完整正文和hash。SHA256SUMS另含transport payload的hash，不递归列SHA256SUMS自身。",
+  "missing": [
+    "锁定TIS overlay在CurrSof上下文加载时无法导入mquant.tis.t1；本工单未混入旧runtime TIS或修改业务源码/平台",
+    "make_features未调用，F未构造，精确fields.json存在性与真实F表未检查",
+    "候选u2_f_caegraph.html未生成；definition_run_report.json已生成但completed=false",
+    "prepared_tables与plot_data未生成",
+    "E3核图接受与E4正式数据导出准入尚未发生；D005/E业务未完成"
+  ],
+  "absent_outputs": [
+    {
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/output/u2_f_caegraph/u2_f_caegraph.html",
+      "exists": false
+    },
+    {
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/output/u2_f_caegraph/prepared_tables",
+      "exists": false
+    },
+    {
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/output/u2_f_caegraph/plot_data",
+      "exists": false
+    }
+  ],
+  "present_incomplete_report": {
+    "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/output/u2_f_caegraph/definition_run_report.json",
+    "completed": false
+  },
+  "excluded_runtime_material": [
+    "source checkout .git数据库与非声明源码（源码版本由原精确commit保留）",
+    "cache目录",
+    "artifacts/task-status实时events/snapshot与logs/task_status_cli.log",
+    "TRANSPORT_PAYLOAD与SHA256SUMS递归自身",
+    "未来尚不存在的正式WORKER_RETURN.json"
+  ],
+  "files": [
+    {
+      "relative_path": "FACT_REPORT.md",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/FACT_REPORT.md",
+      "bytes": 11024,
+      "sha256": "ea0624933fc206a1978bc4d05e6ba2dfea3a43e4fded76743dafc0ab28fbd447",
+      "git_blob_sha1": "5fe43effceb887e03cdd149bdfb74643edd3889f",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/FACT_REPORT.md"
+    },
+    {
+      "relative_path": "RETURN_PREPARATION.json",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/RETURN_PREPARATION.json",
+      "bytes": 2083,
+      "sha256": "dc17a0fed99f534bfc793474388e3e2ab2f9e5d67c05b96b513fc327fec4d2ae",
+      "git_blob_sha1": "7be1cb91b4f532977515c88aa86f2320624e747a",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/RETURN_PREPARATION.json"
+    },
+    {
+      "relative_path": "actual_changes.json",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/actual_changes.json",
+      "bytes": 7276,
+      "sha256": "f6ab3406b58ab16cddb31b7abd9ef8f5da55382a1e3930298971802de56af996",
+      "git_blob_sha1": "f0853cdfe2c5eebeb65ab2838b8a872d7efcaacf",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/actual_changes.json"
+    },
+    {
+      "relative_path": "authority_validation.json",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/authority_validation.json",
+      "bytes": 1732,
+      "sha256": "e72d8f5b702c59e70732d3dcb47638b8399f95726f7a58ecfec621761e8f996a",
+      "git_blob_sha1": "1d9277bb0e52325efc4eaf8324715d6c5e523fb7",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/authority_validation.json"
+    },
+    {
+      "relative_path": "build_evidence.py",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/build_evidence.py",
+      "bytes": 20778,
+      "sha256": "91ec25af67e585e87ea3d0748a7b0af14194a0db9ec71af1f4b95d416f1c4b12",
+      "git_blob_sha1": "0ff20341d86b623801346ada76dd6f04190d5b7e",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/build_evidence.py"
+    },
+    {
+      "relative_path": "create_transport.py",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/create_transport.py",
+      "bytes": 8055,
+      "sha256": "f47c9b407a72ad30ea42b9540bff8ef67a1ef7986eda2c84b0f07a8d150c5ed8",
+      "git_blob_sha1": "c16f438c4045739a7f1a0f21d41a09942bac2914",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/create_transport.py"
+    },
+    {
+      "relative_path": "diagnostics/locked_tis_t1_path_check.json",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/diagnostics/locked_tis_t1_path_check.json",
+      "bytes": 625,
+      "sha256": "f0d7b038d56e9231b6734325b0c380a813fb722e925b8874719e26d9878cb348",
+      "git_blob_sha1": "af30eb4d2b05a30d814f0a51b07024541960129f",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/diagnostics/locked_tis_t1_path_check.json"
+    },
+    {
+      "relative_path": "diagnostics/tis_inits.after.json",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/diagnostics/tis_inits.after.json",
+      "bytes": 4643,
+      "sha256": "ba76969a52b7ce03535f73256eae7acfe9aac487419b8be4d959d1e23ef5e616",
+      "git_blob_sha1": "b51388515a07a1fa143aa79017ceb2c70199da05",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/diagnostics/tis_inits.after.json"
+    },
+    {
+      "relative_path": "diagnostics/tis_inits.before.json",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/diagnostics/tis_inits.before.json",
+      "bytes": 3,
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+      "git_blob_sha1": "0967ef424bce6791893e9a57bb952f80fd536e93",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/diagnostics/tis_inits.before.json"
+    },
+    {
+      "relative_path": "evidence_checks.json",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/evidence_checks.json",
+      "bytes": 722,
+      "sha256": "8fd06da797ad48322d605a8a69da0bc8e6304eb0764b8129e3954def6ae6b436",
+      "git_blob_sha1": "4a54362309430af7720eec8a0f29f9d4369e27ac",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/evidence_checks.json"
+    },
+    {
+      "relative_path": "execution_receipt.json",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/execution_receipt.json",
+      "bytes": 941,
+      "sha256": "6d981ea572e383b6cfa6169e14facfc3fb9108bbfad8e4dbda24cfd516e51874",
+      "git_blob_sha1": "f12d52310d215d7be292cc338681934f051bb137",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/execution_receipt.json"
+    },
+    {
+      "relative_path": "facts.json",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/facts.json",
+      "bytes": 10290,
+      "sha256": "06410c1d6ffbb6a27f89a8b66744d9364cbaaf1d4577ded39dca187ef6851ebe",
+      "git_blob_sha1": "91d21f5863e5a3448372cc67f9e002700c0e16d5",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/facts.json"
+    },
+    {
+      "relative_path": "first_blocker.json",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/first_blocker.json",
+      "bytes": 3987,
+      "sha256": "914429d44d97dd62ca0f965efacebfdabe18d3211a7bc3fced8b97630de7caf5",
+      "git_blob_sha1": "e2a0bc2475de8a6f6db0cc9941ab2ced7660ccc7",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/first_blocker.json"
+    },
+    {
+      "relative_path": "inputs/04_DELEGATION.json",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/inputs/04_DELEGATION.json",
+      "bytes": 8018,
+      "sha256": "91e1147affe0b3eba14e442730fd026bb3fb924753b8fd13db6fbe3153923d85",
+      "git_blob_sha1": "17f1934e202dedeef9830634386591a94c0ef304",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/inputs/04_DELEGATION.json"
+    },
+    {
+      "relative_path": "inputs/05_DELEGATION.md",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/inputs/05_DELEGATION.md",
+      "bytes": 12990,
+      "sha256": "f2a2ff4fd1d656df39d5eb89009b62162fab1d2711e155faac3ddb76ef122cbe",
+      "git_blob_sha1": "9b5d0a50bd5bbd9ed1b3f60aa014a069a60344d0",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/inputs/05_DELEGATION.md"
+    },
+    {
+      "relative_path": "inputs/07_RUN_BINDING.json",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/inputs/07_RUN_BINDING.json",
+      "bytes": 2624,
+      "sha256": "b1fceebb2c150b295708d143196deb12164158d8ddcbef1171f2cbb7d4163412",
+      "git_blob_sha1": "3d36f6eaefd9a21d8285df5ffb0c1b6b2c099906",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/inputs/07_RUN_BINDING.json"
+    },
+    {
+      "relative_path": "inputs/08_RUN_RESOURCE_BINDING.json",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/inputs/08_RUN_RESOURCE_BINDING.json",
+      "bytes": 3099,
+      "sha256": "6748d93947f0826fccd590151b70d3b341357e11841fdacb4bd2e65593276c15",
+      "git_blob_sha1": "e6ed8b377eaff4aa9cd664d9a27f788e09a37318",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/inputs/08_RUN_RESOURCE_BINDING.json"
+    },
+    {
+      "relative_path": "inputs/09_W1.json",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/inputs/09_W1.json",
+      "bytes": 1574,
+      "sha256": "743ee26a721fdb3cc3d2baae6908b7d50d144fc36a69ff522d2072d5934cc7e8",
+      "git_blob_sha1": "17283cdb44f5a487caf18ff85626295b2b015810",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/inputs/09_W1.json"
+    },
+    {
+      "relative_path": "inputs/C0020_BASELINE.md",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/inputs/C0020_BASELINE.md",
+      "bytes": 9190,
+      "sha256": "607c90be1adf82c11790966d36503c130835755445c71133fae702758464e660",
+      "git_blob_sha1": "92fde3fd10514576512ac9b47cbbaebf120cb37f",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/inputs/C0020_BASELINE.md"
+    },
+    {
+      "relative_path": "inputs/C0020_PRO_RETURN.json",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/inputs/C0020_PRO_RETURN.json",
+      "bytes": 1347,
+      "sha256": "61fe6486c8a5cbc1db4d16d9ca2074efdae9c5e15d36223e1a83abec0a17afa4",
+      "git_blob_sha1": "0346f58e739054d2e0870a696e5d35e83b16655b",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/inputs/C0020_PRO_RETURN.json"
+    },
+    {
+      "relative_path": "inputs/C0020_REPORT.md",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/inputs/C0020_REPORT.md",
+      "bytes": 9378,
+      "sha256": "2afdfeeef12db98c2a880918201ec6a3ed067258581b833a36bb6836442ee055",
+      "git_blob_sha1": "bd01d0850bab3a86b73b02c111b5369686dd6bf4",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/inputs/C0020_REPORT.md"
+    },
+    {
+      "relative_path": "inputs/LONGRUN_PROTOCOL_V2.md",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/inputs/LONGRUN_PROTOCOL_V2.md",
+      "bytes": 12895,
+      "sha256": "8392cf4315855b46b8ba4c61d50763d7dd5296c7fdb10802c87dc7282aa8fc86",
+      "git_blob_sha1": "b0610aa7aa8a0c9ecfae63c50652201c7f9da78e",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/inputs/LONGRUN_PROTOCOL_V2.md"
+    },
+    {
+      "relative_path": "inputs/ORDER.json",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/inputs/ORDER.json",
+      "bytes": 4846,
+      "sha256": "8ece8d4f4b0dc45a8a8bb52f19bfe0f7caddc7c0cc3428ee00ceb9d7b0150145",
+      "git_blob_sha1": "9009d07b8250d705e59a9e134b3e599e0719b422",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/inputs/ORDER.json"
+    },
+    {
+      "relative_path": "inputs/ORDER.md",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/inputs/ORDER.md",
+      "bytes": 14690,
+      "sha256": "78af7e5de7336cd56d5740c5199451ed207b376982e8acb25b64d913e76be6f8",
+      "git_blob_sha1": "ecb187c854709b8558e3c08214b0585ad84374a7",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/inputs/ORDER.md"
+    },
+    {
+      "relative_path": "inputs/W003_FACT_REPORT.md",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/inputs/W003_FACT_REPORT.md",
+      "bytes": 6416,
+      "sha256": "bef0522539022c1c684ba73b966ad7ca6b58ab733d8b009983e715290a950737",
+      "git_blob_sha1": "1aaf9c9d6e1d8f04b925bca9b600a071021e3171",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/inputs/W003_FACT_REPORT.md"
+    },
+    {
+      "relative_path": "inputs/W003_WORKER_RETURN.json",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/inputs/W003_WORKER_RETURN.json",
+      "bytes": 23069,
+      "sha256": "c465067110fe2cf22c27f55ad3d28061d9ded86325a249beb1e531d824e0818b",
+      "git_blob_sha1": "53160287ea7b05a4aad08914d641e4a3323c1d92",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/inputs/W003_WORKER_RETURN.json"
+    },
+    {
+      "relative_path": "inputs/W003_definition_run_report.json",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/inputs/W003_definition_run_report.json",
+      "bytes": 3070,
+      "sha256": "b0cc4b7f2dd3222bb0617628c0a57697cc39945f0f00a9fc7a92d7b942fde2bc",
+      "git_blob_sha1": "2d3189d5a5123834cd8cccf8a0229415b3f8dc73",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/inputs/W003_definition_run_report.json"
+    },
+    {
+      "relative_path": "inputs/W003_module_path_check.json",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/inputs/W003_module_path_check.json",
+      "bytes": 2119,
+      "sha256": "c2e889bc270fae29a89b362108b533e8b74870faf45e7b66e33d4bae5c8feabf",
+      "git_blob_sha1": "81d46d6d52c28088b6e66396c540f4cfcac5490a",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/inputs/W003_module_path_check.json"
+    },
+    {
+      "relative_path": "inputs/W003_run_w003.sh",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/inputs/W003_run_w003.sh",
+      "bytes": 2465,
+      "sha256": "f1569374a449c199c00d44832a6d4e66386c8af53a15eae85b1707f1e30f28bd",
+      "git_blob_sha1": "ab06e7b05751895f37e1e5980db4fd2796b1c44c",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/inputs/W003_run_w003.sh"
+    },
+    {
+      "relative_path": "inputs/input_manifest.json",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/inputs/input_manifest.json",
+      "bytes": 8644,
+      "sha256": "d80ed85e2e431b3f86b84742844635a3438bb406e2b1b59c0e5af26e31b30b6c",
+      "git_blob_sha1": "bc3d8150eb501231638384d0183d97a3690f6469",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/inputs/input_manifest.json"
+    },
+    {
+      "relative_path": "inputs/longrun_schema_v2.json",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/inputs/longrun_schema_v2.json",
+      "bytes": 11508,
+      "sha256": "32c1e2409ff4936a87d688848736bb9af71fe0415d338ba66dd031e3149243d3",
+      "git_blob_sha1": "5f809153b48907de5a3357e6017d7fac031f655b",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/inputs/longrun_schema_v2.json"
+    },
+    {
+      "relative_path": "logs/D_dispatch.json",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/logs/D_dispatch.json",
+      "bytes": 569,
+      "sha256": "9fe4c326c9ace452cfb208b9c32d58ebcb90542729397076167d671102c6fccd",
+      "git_blob_sha1": "45b95391b4f924ced75e0f66a0ff8d74a48b7944",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/logs/D_dispatch.json"
+    },
+    {
+      "relative_path": "logs/dev_shm_sem.after.exit_code",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/logs/dev_shm_sem.after.exit_code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "git_blob_sha1": "573541ac9702dd3969c9bc859d2b91ec1f7e6e56",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/logs/dev_shm_sem.after.exit_code"
+    },
+    {
+      "relative_path": "logs/dev_shm_sem.after.stderr",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/logs/dev_shm_sem.after.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/logs/dev_shm_sem.after.stderr"
+    },
+    {
+      "relative_path": "logs/dev_shm_sem.after.tsv",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/logs/dev_shm_sem.after.tsv",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/logs/dev_shm_sem.after.tsv"
+    },
+    {
+      "relative_path": "logs/dev_shm_sem.before.exit_code",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/logs/dev_shm_sem.before.exit_code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "git_blob_sha1": "573541ac9702dd3969c9bc859d2b91ec1f7e6e56",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/logs/dev_shm_sem.before.exit_code"
+    },
+    {
+      "relative_path": "logs/dev_shm_sem.before.stderr",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/logs/dev_shm_sem.before.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/logs/dev_shm_sem.before.stderr"
+    },
+    {
+      "relative_path": "logs/dev_shm_sem.before.tsv",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/logs/dev_shm_sem.before.tsv",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/logs/dev_shm_sem.before.tsv"
+    },
+    {
+      "relative_path": "logs/observe_iterate_initial_git_status.txt",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/logs/observe_iterate_initial_git_status.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/logs/observe_iterate_initial_git_status.txt"
+    },
+    {
+      "relative_path": "logs/observe_iterate_source_stage.exit_code",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/logs/observe_iterate_source_stage.exit_code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "git_blob_sha1": "573541ac9702dd3969c9bc859d2b91ec1f7e6e56",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/logs/observe_iterate_source_stage.exit_code"
+    },
+    {
+      "relative_path": "logs/observe_iterate_source_stage.log",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/logs/observe_iterate_source_stage.log",
+      "bytes": 1708,
+      "sha256": "ca5f86c117b68b218c244f0f6e7d47c198ab39860b30fdd1d5ba2a39590e7323",
+      "git_blob_sha1": "6469255e9aaa5be614bf47081871104832c10692",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/logs/observe_iterate_source_stage.log"
+    },
+    {
+      "relative_path": "logs/python_entry.txt",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/logs/python_entry.txt",
+      "bytes": 38,
+      "sha256": "a24d3198f5784c533db0decb631bede94c422bc9256872b9a3c6318af86b189d",
+      "git_blob_sha1": "a4af8ef46bc365a37f4fa54ec1f741f5ca0c818c",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/logs/python_entry.txt"
+    },
+    {
+      "relative_path": "logs/python_version.txt",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/logs/python_version.txt",
+      "bytes": 15,
+      "sha256": "22121edae8bfb73b8536486bf81955ed5507b4ff6f3352ef1967dbcf3de00079",
+      "git_blob_sha1": "d3bb0d4a63f0a62ee8b27d1efd346f1d38bd4414",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/logs/python_version.txt"
+    },
+    {
+      "relative_path": "logs/tis_after_seed_git_status.txt",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/logs/tis_after_seed_git_status.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/logs/tis_after_seed_git_status.txt"
+    },
+    {
+      "relative_path": "logs/tis_initial_git_status.txt",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/logs/tis_initial_git_status.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/logs/tis_initial_git_status.txt"
+    },
+    {
+      "relative_path": "logs/tis_seed_environment.log",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/logs/tis_seed_environment.log",
+      "bytes": 168,
+      "sha256": "9fc0e3d980f29db3fc69c5259e2e0c152c5cd5224a8942c948ad6340895e9067",
+      "git_blob_sha1": "64b16e70872d0566f3a7f0a1245e0c61af892975",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/logs/tis_seed_environment.log"
+    },
+    {
+      "relative_path": "logs/tis_seed_inits.dispatch.json",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/logs/tis_seed_inits.dispatch.json",
+      "bytes": 371,
+      "sha256": "363e9ca71fc61dc0b98169c0ab79e4b95338b90a66a4d108b418b510068470c4",
+      "git_blob_sha1": "89bffca8accc20ce76c7d303d97d9de92a70af90",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/logs/tis_seed_inits.dispatch.json"
+    },
+    {
+      "relative_path": "logs/tis_seed_inits.exit_code",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/logs/tis_seed_inits.exit_code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "git_blob_sha1": "573541ac9702dd3969c9bc859d2b91ec1f7e6e56",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/logs/tis_seed_inits.exit_code"
+    },
+    {
+      "relative_path": "logs/tis_seed_inits.started_at",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/logs/tis_seed_inits.started_at",
+      "bytes": 31,
+      "sha256": "3dcb2d644820e0b328fa034f5dd44dcb0524fe68ec35a86f1e52deaa14c69a7c",
+      "git_blob_sha1": "8a89623d28e1bfafdcafd406b79555db389f6a5f",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/logs/tis_seed_inits.started_at"
+    },
+    {
+      "relative_path": "logs/tis_seed_inits.stderr.log",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/logs/tis_seed_inits.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/logs/tis_seed_inits.stderr.log"
+    },
+    {
+      "relative_path": "logs/tis_seed_inits.stdout.log",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/logs/tis_seed_inits.stdout.log",
+      "bytes": 743,
+      "sha256": "43963b80cdbd308983367529eef28713a0f4317d4b5d06c0dc6602c04abe1efa",
+      "git_blob_sha1": "34c38e8a91e71fd015162fd5916a84f5da1e8217",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/logs/tis_seed_inits.stdout.log"
+    },
+    {
+      "relative_path": "logs/tis_seed_python_entry.txt",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/logs/tis_seed_python_entry.txt",
+      "bytes": 38,
+      "sha256": "a24d3198f5784c533db0decb631bede94c422bc9256872b9a3c6318af86b189d",
+      "git_blob_sha1": "a4af8ef46bc365a37f4fa54ec1f741f5ca0c818c",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/logs/tis_seed_python_entry.txt"
+    },
+    {
+      "relative_path": "logs/tis_seed_python_version.txt",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/logs/tis_seed_python_version.txt",
+      "bytes": 15,
+      "sha256": "22121edae8bfb73b8536486bf81955ed5507b4ff6f3352ef1967dbcf3de00079",
+      "git_blob_sha1": "d3bb0d4a63f0a62ee8b27d1efd346f1d38bd4414",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/logs/tis_seed_python_version.txt"
+    },
+    {
+      "relative_path": "logs/tis_source_stage.exit_code",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/logs/tis_source_stage.exit_code",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "git_blob_sha1": "573541ac9702dd3969c9bc859d2b91ec1f7e6e56",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/logs/tis_source_stage.exit_code"
+    },
+    {
+      "relative_path": "logs/tis_source_stage.log",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/logs/tis_source_stage.log",
+      "bytes": 1552,
+      "sha256": "fea75d0dd914d9ea1796cf6f205bde416e0c8db0874573cd9c83ae2bc2884fc2",
+      "git_blob_sha1": "098dcbdc0a854574a8f95bede269fe2aa859a3f9",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/logs/tis_source_stage.log"
+    },
+    {
+      "relative_path": "logs/w004_environment.log",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/logs/w004_environment.log",
+      "bytes": 168,
+      "sha256": "9fc0e3d980f29db3fc69c5259e2e0c152c5cd5224a8942c948ad6340895e9067",
+      "git_blob_sha1": "64b16e70872d0566f3a7f0a1245e0c61af892975",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/logs/w004_environment.log"
+    },
+    {
+      "relative_path": "logs/w004_run.argv.txt",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/logs/w004_run.argv.txt",
+      "bytes": 109,
+      "sha256": "dc48333e06d607171d7d6a302ba4bed8e18e4bcb7ef89613651a49b6375a4114",
+      "git_blob_sha1": "b85a4528dce289026dfb8ab5701938e7b9252eb3",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/logs/w004_run.argv.txt"
+    },
+    {
+      "relative_path": "logs/w004_run.attempt_count",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/logs/w004_run.attempt_count",
+      "bytes": 2,
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "git_blob_sha1": "d00491fd7e5bb6fa28c517a0bb32b8b506539d4d",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/logs/w004_run.attempt_count"
+    },
+    {
+      "relative_path": "logs/w004_run.cwd.txt",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/logs/w004_run.cwd.txt",
+      "bytes": 100,
+      "sha256": "3af1f910fd824458d42c35cc1991e40e285193477f983cfdb234f698ba1466ed",
+      "git_blob_sha1": "470eeb830acebf007c9f49c66bf82e34cb443cca",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/logs/w004_run.cwd.txt"
+    },
+    {
+      "relative_path": "logs/w004_run.exit_code",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/logs/w004_run.exit_code",
+      "bytes": 2,
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "git_blob_sha1": "d00491fd7e5bb6fa28c517a0bb32b8b506539d4d",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/logs/w004_run.exit_code"
+    },
+    {
+      "relative_path": "logs/w004_run.finished_at",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/logs/w004_run.finished_at",
+      "bytes": 31,
+      "sha256": "4ba2769a7e7d9684a60914f1f69f04d8f0a36262a54e5ef25a4b36625ae32261",
+      "git_blob_sha1": "5cd0ecdb42e3ff9d44cae0885280b79720e75117",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/logs/w004_run.finished_at"
+    },
+    {
+      "relative_path": "logs/w004_run.log",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/logs/w004_run.log",
+      "bytes": 2784,
+      "sha256": "45b15ceaab3e4a98148fadc4ca9eefee7d82ce3a391883896c31ddb255e5a419",
+      "git_blob_sha1": "4a2b2ab0f27f3b57294a041ac36d46cc6f18051c",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/logs/w004_run.log"
+    },
+    {
+      "relative_path": "logs/w004_run.started_at",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/logs/w004_run.started_at",
+      "bytes": 31,
+      "sha256": "d03ba2550bb09dfb2ac9c9d8a9278eb1e24a0c74c9f158136a6b65174a91dee0",
+      "git_blob_sha1": "de91d050a51935c1d113761790f1f486d28d319d",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/logs/w004_run.started_at"
+    },
+    {
+      "relative_path": "materialize_tis.py",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/materialize_tis.py",
+      "bytes": 3361,
+      "sha256": "0fbe4a932be5093bee23aa645e6370b3df8c515ceb6fe3d7bff209c1a961da9e",
+      "git_blob_sha1": "90a20d0198166944da197d721ea097f973a329fd",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/materialize_tis.py"
+    },
+    {
+      "relative_path": "module_overlay_report.json",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/module_overlay_report.json",
+      "bytes": 2759,
+      "sha256": "da51f90eb275500878feed17abaf3c88f29467ab5fa4fd375cb6a08d7e32a16f",
+      "git_blob_sha1": "4827c8fae50e7eaa41def11cfaca330c7e485af6",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/module_overlay_report.json"
+    },
+    {
+      "relative_path": "observe_iterate_final.diff",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/observe_iterate_final.diff",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/observe_iterate_final.diff"
+    },
+    {
+      "relative_path": "observe_iterate_final_git_status.txt",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/observe_iterate_final_git_status.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/observe_iterate_final_git_status.txt"
+    },
+    {
+      "relative_path": "observe_iterate_final_head.txt",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/observe_iterate_final_head.txt",
+      "bytes": 41,
+      "sha256": "716a6782eb9aff9128e7165c735afa729a6d8190fdfbed80fc99d19f7b2a6d36",
+      "git_blob_sha1": "502954b67193d65dbaa3de9e67d2382e16bd82be",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/observe_iterate_final_head.txt"
+    },
+    {
+      "relative_path": "observe_iterate_source_stage_report.json",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/observe_iterate_source_stage_report.json",
+      "bytes": 3825,
+      "sha256": "58c433a06c01cf341db20233a1cb7b86d97d541a0015f3cd962c7e657849f1c5",
+      "git_blob_sha1": "4f5bd00890b67bbc3229a7f5cd17b57861f4c4b2",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/observe_iterate_source_stage_report.json"
+    },
+    {
+      "relative_path": "output/u2_f_caegraph/definition_run_report.json",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/output/u2_f_caegraph/definition_run_report.json",
+      "bytes": 5745,
+      "sha256": "f64266fdccb9b4e0e4ff2a60932d9f9199f151a365ae23b5a07c0fae5e5166bc",
+      "git_blob_sha1": "9ab13c2037a707f3a27ef2e6b5b0b590311afb17",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/output/u2_f_caegraph/definition_run_report.json"
+    },
+    {
+      "relative_path": "repair.diff",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/repair.diff",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/repair.diff"
+    },
+    {
+      "relative_path": "run_d_with_locked_tis.py",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/run_d_with_locked_tis.py",
+      "bytes": 3128,
+      "sha256": "ed41811979b745614b8119cec385333dfde6ebdc8d061194b6019f2be1bec484",
+      "git_blob_sha1": "46c3a4f08b4bb1757a0b2b97271eee6e3cbb3512",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/run_d_with_locked_tis.py"
+    },
+    {
+      "relative_path": "run_w004.sh",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/run_w004.sh",
+      "bytes": 1477,
+      "sha256": "11006d48510de22030fe1b304a5ea6208eecc4a77c6c8671ed34c2adba71509a",
+      "git_blob_sha1": "cb1bb8adf413067157ea1d0292e839b4e733d399",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/run_w004.sh"
+    },
+    {
+      "relative_path": "seed_tis.sh",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/seed_tis.sh",
+      "bytes": 484,
+      "sha256": "3e3a24c7b52398783be53a5bf43f8fd2bb2ae8675fca78c7189dc77e021e909d",
+      "git_blob_sha1": "e7edaf4ee27088a232fe81be6592561ca5acf190",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/seed_tis.sh"
+    },
+    {
+      "relative_path": "semaphore_audit.json",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/semaphore_audit.json",
+      "bytes": 1145,
+      "sha256": "1bde7f702e740a98212054ce6ef4a05b6bbcad5b928ad207bcd85a25beff4ae9",
+      "git_blob_sha1": "c7326e7564a804d84da29bf550175e539836c4c2",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/semaphore_audit.json"
+    },
+    {
+      "relative_path": "source/mquant/tis/.exportignore",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/source/mquant/tis/.exportignore",
+      "bytes": 4,
+      "sha256": "fa427f1988239f411451afc026856cb3fdfe6f050a8b26a300ae5aa9de9b4f94",
+      "git_blob_sha1": "85299dd483e6ebe7887a77c0128f8f80ee2356d5",
+      "existing_ref": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767:.exportignore",
+      "suggested_publication_path": null
+    },
+    {
+      "relative_path": "source/mquant/tis/README.md",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/source/mquant/tis/README.md",
+      "bytes": 3244,
+      "sha256": "858a4d6905989cc7c16f6577403a9cea692397ed1f8c36352756a758e5c5c76a",
+      "git_blob_sha1": "13e09ecb7346bc4ac165f2d356e10c67f7df3152",
+      "existing_ref": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767:README.md",
+      "suggested_publication_path": null
+    },
+    {
+      "relative_path": "source/mquant/tis/__init__.py",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/source/mquant/tis/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/source/mquant/tis/__init__.py"
+    },
+    {
+      "relative_path": "source/mquant/tis/abc/__init__.py",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/source/mquant/tis/abc/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/source/mquant/tis/abc/__init__.py"
+    },
+    {
+      "relative_path": "source/mquant/tis/blk/__init__.py",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/source/mquant/tis/blk/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/source/mquant/tis/blk/__init__.py"
+    },
+    {
+      "relative_path": "source/mquant/tis/blk/gen.py",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/source/mquant/tis/blk/gen.py",
+      "bytes": 17370,
+      "sha256": "75a71ce3bbd7b1779516a97a07007b3061916b1e530dd7259d28b6ce01ce6c1f",
+      "git_blob_sha1": "53e221d575313aa4a8b35bb63b8be2f9616e734e",
+      "existing_ref": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767:blk/gen.py",
+      "suggested_publication_path": null
+    },
+    {
+      "relative_path": "source/mquant/tis/calc/__init__.py",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/source/mquant/tis/calc/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/source/mquant/tis/calc/__init__.py"
+    },
+    {
+      "relative_path": "source/mquant/tis/calendar/__init__.py",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/source/mquant/tis/calendar/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/source/mquant/tis/calendar/__init__.py"
+    },
+    {
+      "relative_path": "source/mquant/tis/docs/__init__.py",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/source/mquant/tis/docs/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/source/mquant/tis/docs/__init__.py"
+    },
+    {
+      "relative_path": "source/mquant/tis/frp/CommonPriceTurnGroupCandidates.py",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/source/mquant/tis/frp/CommonPriceTurnGroupCandidates.py",
+      "bytes": 13507,
+      "sha256": "aa25c3bbbf61c23bd0c6f5e37a843bb608784b1511d38980d2b2b97a635d5c5d",
+      "git_blob_sha1": "75bdf386b1408cc29aaab068cdcc074f04516539",
+      "existing_ref": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767:frp/CommonPriceTurnGroupCandidates.py",
+      "suggested_publication_path": null
+    },
+    {
+      "relative_path": "source/mquant/tis/frp/CommonTurnGroupValidity.py",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/source/mquant/tis/frp/CommonTurnGroupValidity.py",
+      "bytes": 11992,
+      "sha256": "6b2809785e344c54ab027337034f3e3916de265c32a0423f78a8892bcf544ce1",
+      "git_blob_sha1": "6419738d73278a8ccf3e25848999242af5f7802f",
+      "existing_ref": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767:frp/CommonTurnGroupValidity.py",
+      "suggested_publication_path": null
+    },
+    {
+      "relative_path": "source/mquant/tis/frp/PostTurnGroupDirectionalOrganization.py",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/source/mquant/tis/frp/PostTurnGroupDirectionalOrganization.py",
+      "bytes": 11283,
+      "sha256": "869033b2e9f257749dd5f4167ff39495b1c382470760a9cd5af21c170689537b",
+      "git_blob_sha1": "2c39e7d35a7b53f9019d12dcaeacbcd5180330d3",
+      "existing_ref": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767:frp/PostTurnGroupDirectionalOrganization.py",
+      "suggested_publication_path": null
+    },
+    {
+      "relative_path": "source/mquant/tis/frp/__init__.py",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/source/mquant/tis/frp/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/source/mquant/tis/frp/__init__.py"
+    },
+    {
+      "relative_path": "source/mquant/tis/frp/fqv_kline_example.py",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/source/mquant/tis/frp/fqv_kline_example.py",
+      "bytes": 4834,
+      "sha256": "0f912c8be7fbd7f2607d93cce9d3974e872f56f6457350cc0db7825d6884b5c5",
+      "git_blob_sha1": "e52642ddd026a66aa1bb79fdb7d7634798325893",
+      "existing_ref": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767:frp/fqv_kline_example.py",
+      "suggested_publication_path": null
+    },
+    {
+      "relative_path": "source/mquant/tis/frpExample/STCalendar.py",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/source/mquant/tis/frpExample/STCalendar.py",
+      "bytes": 5772,
+      "sha256": "154b0a2db91f06f52dd0282badfea414acb8e6dbeb52257e297c4cd8aaf0fee1",
+      "git_blob_sha1": "bb67cfb1c2382ec1c0b4c23e8918ea01268f173c",
+      "existing_ref": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767:frpExample/STCalendar.py",
+      "suggested_publication_path": null
+    },
+    {
+      "relative_path": "source/mquant/tis/frpExample/ScaleTurn.py",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/source/mquant/tis/frpExample/ScaleTurn.py",
+      "bytes": 3537,
+      "sha256": "f8a4d9f62e68c5be50279de016000432dc99dd0302876f81e571f7cd2f02acc0",
+      "git_blob_sha1": "75da6780326722d03a8593727e98e6bacf66cb35",
+      "existing_ref": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767:frpExample/ScaleTurn.py",
+      "suggested_publication_path": null
+    },
+    {
+      "relative_path": "source/mquant/tis/frpExample/Wave.py",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/source/mquant/tis/frpExample/Wave.py",
+      "bytes": 12019,
+      "sha256": "73fd8336645be820504aa10c96f49ea4e48db3f2823ebea5164ecc7960a58a80",
+      "git_blob_sha1": "540cc539fb037191223b57ab54f3caf808970cbc",
+      "existing_ref": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767:frpExample/Wave.py",
+      "suggested_publication_path": null
+    },
+    {
+      "relative_path": "source/mquant/tis/frpExample/__init__.py",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/source/mquant/tis/frpExample/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/source/mquant/tis/frpExample/__init__.py"
+    },
+    {
+      "relative_path": "source/mquant/tis/hf/__init__.py",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/source/mquant/tis/hf/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/source/mquant/tis/hf/__init__.py"
+    },
+    {
+      "relative_path": "source/mquant/tis/hf/prel0/__init__.py",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/source/mquant/tis/hf/prel0/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/source/mquant/tis/hf/prel0/__init__.py"
+    },
+    {
+      "relative_path": "source/mquant/tis/proof/__init__.py",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/source/mquant/tis/proof/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/source/mquant/tis/proof/__init__.py"
+    },
+    {
+      "relative_path": "source/mquant/tis/proof/p1/__init__.py",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/source/mquant/tis/proof/p1/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/source/mquant/tis/proof/p1/__init__.py"
+    },
+    {
+      "relative_path": "source/mquant/tis/seed_inits.py",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/source/mquant/tis/seed_inits.py",
+      "bytes": 2403,
+      "sha256": "77a7b4988da620f40e22dfbe6cfd579a93885def89ab3f0ac2f20299cdfbf3d4",
+      "git_blob_sha1": "b513b0aad40f748ac6595e31a0dc2b8fb7ea09e2",
+      "existing_ref": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767:seed_inits.py",
+      "suggested_publication_path": null
+    },
+    {
+      "relative_path": "source/mquant/tis/t0/__init__.py",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/source/mquant/tis/t0/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/source/mquant/tis/t0/__init__.py"
+    },
+    {
+      "relative_path": "source/mquant/tis/t0/gen/__init__.py",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/source/mquant/tis/t0/gen/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/source/mquant/tis/t0/gen/__init__.py"
+    },
+    {
+      "relative_path": "source/mquant/tis/test/__init__.py",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/source/mquant/tis/test/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/source/mquant/tis/test/__init__.py"
+    },
+    {
+      "relative_path": "source/mquant/tis/test/integration/__init__.py",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/source/mquant/tis/test/integration/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/source/mquant/tis/test/integration/__init__.py"
+    },
+    {
+      "relative_path": "source/mquant/tis/test/integration/fixtures/__init__.py",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/source/mquant/tis/test/integration/fixtures/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/source/mquant/tis/test/integration/fixtures/__init__.py"
+    },
+    {
+      "relative_path": "source/mquant/tis/tests/__init__.py",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/source/mquant/tis/tests/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/source/mquant/tis/tests/__init__.py"
+    },
+    {
+      "relative_path": "source/observe-iterate/longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/C/caegraph_display.py",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/source/observe-iterate/longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/C/caegraph_display.py",
+      "bytes": 20820,
+      "sha256": "798042296f88ff5747a0248a81902953550fe39e4fa18337e8fdcfe9557877b7",
+      "git_blob_sha1": "ab2990c3f1d6d3462993492e894ba0ec57a5b00d",
+      "existing_ref": "daowei2026/observe-iterate@508d494c964d5dabeaa1e7ea17bef908f749e9c8:longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/C/caegraph_display.py",
+      "suggested_publication_path": null
+    },
+    {
+      "relative_path": "source/observe-iterate/longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/C/caegraph_display_preview.html",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/source/observe-iterate/longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/C/caegraph_display_preview.html",
+      "bytes": 11178,
+      "sha256": "2adf73b1d68031ba209e3553064e8417848460d334d2dac31f795afeaf21df7d",
+      "git_blob_sha1": "59c5f40331d659aab1f173d07c18cf10341f2567",
+      "existing_ref": "daowei2026/observe-iterate@56eef30b28c928255329f77798fb46b9adbbc71a:longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/C/caegraph_display_preview.html",
+      "suggested_publication_path": null
+    },
+    {
+      "relative_path": "source/observe-iterate/longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/D/u2_f_caegraph_definition.py",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/source/observe-iterate/longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/D/u2_f_caegraph_definition.py",
+      "bytes": 29462,
+      "sha256": "92ab234df976469c6deb85052251b81633d79994440dccca199120672072433f",
+      "git_blob_sha1": "b8a0e71d623237eeb17d9db208e8e494c3f9a29d",
+      "existing_ref": "daowei2026/observe-iterate@f4f0e4b276b1118b779473c1fbe462bc7a64b358:longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/D/u2_f_caegraph_definition.py",
+      "suggested_publication_path": null
+    },
+    {
+      "relative_path": "source_final_verification.json",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/source_final_verification.json",
+      "bytes": 5820,
+      "sha256": "db81d6b00e176631a3797fc814e064b682992d64aafceeecd2dbb32a2e2c97d6",
+      "git_blob_sha1": "fef49ea2cee4d704d0a261b9c01d8850f782b9df",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/source_final_verification.json"
+    },
+    {
+      "relative_path": "source_stage_report.json",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/source_stage_report.json",
+      "bytes": 1195,
+      "sha256": "eb2bffafd916548ffb23b4b85ac6f29dcd17aa0265fa60c02adcb4a88a9930c3",
+      "git_blob_sha1": "2922ee77819511759f0cfa7afabe8c76161a938a",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/source_stage_report.json"
+    },
+    {
+      "relative_path": "stage_sources.py",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/stage_sources.py",
+      "bytes": 4049,
+      "sha256": "6692baedf32791b03f9631f5590bde892b22dfca36ee481986007c73b7046790",
+      "git_blob_sha1": "113bdc8dc2bbea18472b331238b15e1927616e09",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/stage_sources.py"
+    },
+    {
+      "relative_path": "task_plan.json",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/task_plan.json",
+      "bytes": 1678,
+      "sha256": "4cd322967ce6e9abbe1fbab36f6ccfddcb29c4cb6eef2797540e783793fe1252",
+      "git_blob_sha1": "aa1e9b39bc0040f0adcb282fb5f7b9f1042c971d",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/task_plan.json"
+    },
+    {
+      "relative_path": "tis_business_source.diff",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/tis_business_source.diff",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/tis_business_source.diff"
+    },
+    {
+      "relative_path": "tis_final.diff",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/tis_final.diff",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/tis_final.diff"
+    },
+    {
+      "relative_path": "tis_final_git_status.txt",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/tis_final_git_status.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/tis_final_git_status.txt"
+    },
+    {
+      "relative_path": "tis_final_head.txt",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/tis_final_head.txt",
+      "bytes": 41,
+      "sha256": "57e2431fbbe142d91a3476f3956c221efcdc646fb1091e723ad27ef5ee1825c3",
+      "git_blob_sha1": "08ed0b333f0a2a7f368b84a7c988934b11007c12",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/tis_final_head.txt"
+    },
+    {
+      "relative_path": "tis_generated_inits.json",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/tis_generated_inits.json",
+      "bytes": 6083,
+      "sha256": "385a8eb880c178423c735ad6c106215500fc2f595976105e64abfc88ccfe1c11",
+      "git_blob_sha1": "5ae6380d331da4e381a757cb5daa0aad7731db17",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/tis_generated_inits.json"
+    },
+    {
+      "relative_path": "tis_source_stage_report.json",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/tis_source_stage_report.json",
+      "bytes": 5400,
+      "sha256": "f0bf64697d5834e2c60dfa367e47a33704175d5578120f2b1e52bc2d8c181a1d",
+      "git_blob_sha1": "3382af0246193c9cb3324629d370a0f0306a684d",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/tis_source_stage_report.json"
+    },
+    {
+      "relative_path": "w004_environment.sh",
+      "local_path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/w004_environment.sh",
+      "bytes": 966,
+      "sha256": "b852499290355fd5e16368118e69c98e6003d51850eedc51fc9085cb786a36d9",
+      "git_blob_sha1": "a5ccf55426fddae831f1c0778ea92337a275f655",
+      "existing_ref": null,
+      "suggested_publication_path": "longrun/runs/OI-U2-F-OBS-20261118-01/worker_results/W004/w004_environment.sh"
+    }
+  ]
+}

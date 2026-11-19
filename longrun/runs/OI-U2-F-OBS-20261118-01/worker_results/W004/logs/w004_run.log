@@ -1,0 +1,63 @@
+{
+  "definition_id": "OI-U2-F-OBS-20261118-01-D-CAEGRAPH-V1",
+  "run_id": "OI-U2-F-OBS-20261118-01",
+  "position_id": "OI-U2-F-OBS-20261118-01-B-POS-001",
+  "source_refs": {
+    "feature_input": "daowei2026/observe-iterate@f7e8ff43fabfa11b499e2ce9e62dbc46b1b8b288:task-inputs/u2-fqv-observation/F_OBSERVATION_RUN_INPUT.md",
+    "feature_constructor": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767:frp/fqv_kline_example.py",
+    "feature_python": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767:frp/CommonPriceTurnGroupCandidates.py",
+    "feature_haskell": "daowei2026/frp@67711c492da909ed0f044f357beb278abf7fc71c:src/Frp/Instance/ISL/Opportunity/CommonPriceTurnGroupCandidates.hs",
+    "artifact_a": "daowei2026/observe-iterate@823b56a018c0f49e1632885db484ff2e1e64d6b8:longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/A/FEATURE_OCCURRENCE_UNDERSTANDING.md",
+    "artifact_b": "daowei2026/observe-iterate@6f1ee9eb4595254845d3b228a146ad68cabc64e0:longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/B/OBSERVATION_POSITION_PREPARATION.md",
+    "artifact_c": "daowei2026/observe-iterate@bcb94cc298d0a20049a2a52fdf7fe577137e7bde:longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/C/CAEGRAPH_DISPLAY_PREPARATION.md",
+    "c3_code": "daowei2026/observe-iterate@508d494c964d5dabeaa1e7ea17bef908f749e9c8:longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/C/caegraph_display.py",
+    "c2_html": "daowei2026/observe-iterate@56eef30b28c928255329f77798fb46b9adbbc71a:longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/C/caegraph_display_preview.html",
+    "uplot": "daowei2026/uplot@0a4fcd54059782572a3f7e82fad041121e8c65ad"
+  },
+  "binding": {
+    "sof_name": "TA_updto20240229_DBA",
+    "block_context": "steel",
+    "symbols": [
+      "rb",
+      "hc",
+      "i"
+    ],
+    "calendar_name": "night_end_at_2300",
+    "frequency": "5m",
+    "timespans": [
+      [
+        "2021-01-01",
+        "2022-12-31",
+        "OI-U2-F-OBS-20261118-01-B-POS-001"
+      ]
+    ],
+    "candidate_position_field": "groupKnownFrom"
+  },
+  "feature_params": {
+    "freq": "5m",
+    "symbols": [
+      "rb",
+      "hc",
+      "i"
+    ],
+    "delta": 600,
+    "direction": "DirectionUp",
+    "retrace_pct": 0.5,
+    "check_retrace_pct": 0.5,
+    "membership_line": 0.5,
+    "spec_term": "M",
+    "distance_times": 100,
+    "x_step_times": 0.1,
+    "overlap": 0.2,
+    "source_core_multiples": 30
+  },
+  "producer_policy": {
+    "candidate_rerun": false,
+    "read_existing_fields_only": true,
+    "raw_turn_overlay": "not_injected; candidate member evidence remains"
+  },
+  "completed": false,
+  "error_type": "ModuleNotFoundError",
+  "error": "No module named 'mquant.tis.t1'"
+}
+REPORT: /dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/output/u2_f_caegraph/definition_run_report.json

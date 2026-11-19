@@ -1,0 +1,168 @@
+{
+  "run_id": "OI-U2-F-OBS-20261118-01",
+  "work_order_id": "W004",
+  "parent_delegation_id": "D005",
+  "worker": "codex:OI-U2-F-OBS-20261118-01:worker:W1",
+  "return_to": "chatgpt:OI-U2-F-OBS-20261118-01:executor:E1",
+  "order_ref": "daowei2026/observe-iterate@1ce39d12f160c624916e7e370692915f3b4af6d3:longrun/runs/OI-U2-F-OBS-20261118-01/work_orders/W004/ORDER.json",
+  "fact_state": "BLOCKED",
+  "proposed_worker_return_outcome": "STOP",
+  "operation": "caegraph_run_and_repair",
+  "execution_context": "/dwdhome/fy/BASE_E6_2_copy",
+  "persistent_write_root": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004",
+  "source_staging": {
+    "observe_iterate": {
+      "commit": "f4f0e4b276b1118b779473c1fbe462bc7a64b358",
+      "detached": true,
+      "status": "SUCCESS"
+    },
+    "tis": {
+      "commit": "2f460d663d821cf2ba25555eda13e78b697d0767",
+      "detached": true,
+      "status": "SUCCESS",
+      "direct_SHA_fetch_accepted": true,
+      "unlocked_fallback_used": false
+    }
+  },
+  "tis_package_materialization": {
+    "attempt_count": 1,
+    "exit_code": 0,
+    "generated_empty_init_count": 18,
+    "tracked_source_diff_bytes": 0,
+    "pretty_exports_executed": false
+  },
+  "module_overlay": {
+    "ok": true,
+    "preloaded_tis_modules": [],
+    "origin_check_count": 7,
+    "origins_all_locked_checkout": true,
+    "wrapper": {
+      "path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/run_d_with_locked_tis.py",
+      "bytes": 3128,
+      "sha256": "ed41811979b745614b8119cec385333dfde6ebdc8d061194b6019f2be1bec484"
+    },
+    "report": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/module_overlay_report.json",
+    "scope": "七个指定模块find_spec origin核验；不声称已经穷尽后续所有TIS依赖。"
+  },
+  "runtime": {
+    "python_entry": "/m3c3/Linux/apps/anaconda3/bin/python",
+    "python_version": "Python 3.10.13",
+    "cwd": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/source/observe-iterate",
+    "environment_source": "W003已验证M3HOST/NO_PROXY/PYTHONPATH/TLS接线，W004 cache重定向",
+    "wrapper_attempt_count": 1,
+    "wrapper_exit_code": 1,
+    "D_attempt_count": 1,
+    "D_exit_code": 1,
+    "D_exit_code_basis": "D在同一Python进程中由runpy执行；未改D的main因completed=false返回1，SystemExit(1)经wrapper原样传播；shell保存该Python进程exit1。",
+    "wrapper_started_at": "2026-11-19T08:25:24.598042438Z",
+    "D_dispatch_started_at": "2026-11-19T08:25:24.864441+00:00",
+    "finished_at": "2026-11-19T08:25:40.362410547Z",
+    "log": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/logs/w004_run.log",
+    "environment_log": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/logs/w004_environment.log",
+    "nif2_DNS_message": "environment日志保留；沿用W003 fallback后已成功进入overlay和D，不是本次最终阻断。",
+    "Landlock_used": false,
+    "namespace_attempt_count": 0,
+    "mount_used": false,
+    "sudo_used": false,
+    "platform_patched": false,
+    "independent_SemLock_probe_count": 0
+  },
+  "source_final_verification": {
+    "D_modified": false,
+    "C3_modified": false,
+    "TIS_business_source_modified": false,
+    "repair_diff_bytes": 0,
+    "repositories": {
+      "observe_iterate": {
+        "head": "f4f0e4b276b1118b779473c1fbe462bc7a64b358",
+        "diff_bytes": 0,
+        "git_status_bytes": 0,
+        "tracked_business_source_modified": false
+      },
+      "tis": {
+        "head": "2f460d663d821cf2ba25555eda13e78b697d0767",
+        "diff_bytes": 0,
+        "git_status_bytes": 0,
+        "tracked_business_source_modified": false
+      }
+    },
+    "report": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/source_final_verification.json"
+  },
+  "first_blocker": {
+    "run_id": "OI-U2-F-OBS-20261118-01",
+    "work_order_id": "W004",
+    "state": "BLOCKED",
+    "error_type": "ModuleNotFoundError",
+    "error": "No module named 'mquant.tis.t1'",
+    "traceback": "Traceback (most recent call last):\n  File \"/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/source/observe-iterate/longrun/runs/OI-U2-F-OBS-20261118-01/artifacts/D/u2_f_caegraph_definition.py\", line 679, in main\n    with CurrSof(sof_name=SOF_NAME, stk_tlist=BLOCK_CONTEXT), CurrCalendar(\n  File \"/dwdhome/fy/BASE_E6_2_copy/mquant/frame/core/app/env.py\", line 217, in __init__\n    sof = load_sof(**kwargs)\n  File \"/dwdhome/fy/BASE_E6_2_copy/m3sof/core/sof.py\", line 463, in load_sof\n    return Sof(**kwargs)\n  File \"/dwdhome/fy/BASE_E6_2_copy/m3sof/core/sof.py\", line 183, in __call__\n    return cls.new_instance(*args,**kwargs)\n  File \"/dwdhome/fy/BASE_E6_2_copy/m3sof/core/sof.py\", line 177, in new_instance\n    _value = super(SofMeta,cls).__call__(*args,**kwargs)\n  File \"/dwdhome/fy/BASE_E6_2_copy/m3sof/core/sof.py\", line 391, in __init__\n    self.load_context()\n  File \"/dwdhome/fy/BASE_E6_2_copy/m3sof/core/sof.py\", line 415, in load_context\n    raise e\n  File \"/dwdhome/fy/BASE_E6_2_copy/m3sof/core/sof.py\", line 412, in load_context\n    self.__dict__.update(SofContext().lib3)\n  File \"/dwdhome/fy/BASE_E6_2_copy/m3sof/core/sof.py\", line 344, in lib3\n    lib3 = importlib.import_module(\"m3sof.settings.lib3\")\n  File \"/m3c3/Linux/apps/anaconda3/lib/python3.10/importlib/__init__.py\", line 126, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n  File \"<frozen importlib._bootstrap>\", line 1050, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1027, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1006, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 688, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 883, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 241, in _call_with_frames_removed\n  File \"/dwdhome/fy/BASE_E6_2_copy/m3sof/settings/lib3.py\", line 22, in <module>\n    from mquant.worker.beat import *\n  File \"/dwdhome/fy/BASE_E6_2_copy/mquant/worker/__init__.py\", line 133, in <module>\n    from .example import *\n  File \"/dwdhome/fy/BASE_E6_2_copy/mquant/worker/example/__init__.py\", line 14, in <module>\n    from .cae import *\n  File \"/dwdhome/fy/BASE_E6_2_copy/mquant/worker/example/cae/__init__.py\", line 12, in <module>\n    from .live import *\n  File \"/dwdhome/fy/BASE_E6_2_copy/mquant/worker/example/cae/live.py\", line 1, in <module>\n    from ...lib3 import *\n  File \"/dwdhome/fy/BASE_E6_2_copy/mquant/worker/lib3.py\", line 7, in <module>\n    from ..uplot import *\n  File \"/dwdhome/fy/BASE_E6_2_copy/mquant/uplot/__init__.py\", line 41, in <module>\n    from .multiscale import *\n  File \"/dwdhome/fy/BASE_E6_2_copy/mquant/uplot/multiscale.py\", line 28, in <module>\n    from mquant.tis.blk.gen import *\n  File \"/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/source/mquant/tis/blk/gen.py\", line 5, in <module>\n    from ..t1 import *\nModuleNotFoundError: No module named 'mquant.tis.t1'\n",
+    "occurrence": "D main line 679进入CurrSof时，平台SOF上下文加载uplot.multiscale，继而导入锁定TIS blk/gen.py line 5的from ..t1 import *",
+    "stage": "CurrSof construction before make_features call",
+    "constructor_import_succeeded": true,
+    "make_features_called": false,
+    "F_constructed": false,
+    "fields_json_checked": false,
+    "stop_rule": "首次明确阻断；不从旧runtime TIS拼装混合模块，不修改业务源码/平台，不作无界搜索或重试。",
+    "limited_static_check": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/diagnostics/locked_tis_t1_path_check.json",
+    "repair_attempt_count_after_blocker": 0,
+    "additional_D_attempt_count": 0
+  },
+  "products": {
+    "candidate_html": null,
+    "definition_run_report": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/output/u2_f_caegraph/definition_run_report.json",
+    "definition_run_report_completed": false,
+    "prepared_tables": null,
+    "plot_data": null,
+    "C2_preview_is_input_only": true,
+    "make_features_called": false,
+    "F_constructed": false,
+    "exact_F_fields_json_checked": false,
+    "exact_F_product_absence_inferred": false,
+    "F_rerun_called": false,
+    "full_history_producer_called": false,
+    "Q_V_product_data_read": false,
+    "E3_graph_acceptance": false,
+    "E4_formal_export_admission": false,
+    "formal_export_order": null,
+    "DATA_READY": false,
+    "D005_E_business_completed": false
+  },
+  "semaphore": {
+    "run_id": "OI-U2-F-OBS-20261118-01",
+    "work_order_id": "W004",
+    "method": "只读find /dev/shm -maxdepth 1 -name sem.*元数据并排序；与W003相同",
+    "snapshots": {
+      "before": {
+        "path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/logs/dev_shm_sem.before.tsv",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "snapshot_exit_code": 0,
+        "object_count": 0,
+        "rows_tsv": ""
+      },
+      "after": {
+        "path": "/dwdhome/fy/BASE_E6_2_copy/observe-iterate-runs/OI-U2-F-OBS-20261118-01/W004/logs/dev_shm_sem.after.tsv",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "snapshot_exit_code": 0,
+        "object_count": 0,
+        "rows_tsv": ""
+      }
+    },
+    "manual_semaphore_probe_count": 0,
+    "manual_creation_count": 0,
+    "manual_cleanup_count": 0,
+    "endpoint_residue_observed": false,
+    "limitations": "两次端点快照为空不证明运行期间没有临时创建并正常删除sem.*；不是逐次IPC事件审计。没有删除无法归属或运行前对象。"
+  },
+  "history_preserved": [
+    "W001",
+    "W002",
+    "W003"
+  ],
+  "source_checkout_pushed": false,
+  "remote_records_written": false,
+  "goal_created": false,
+  "wakeup_created": false,
+  "new_executor_created": false,
+  "additional_live_audit": "无额外平台诊断执行；仅按首个缺失模块检查锁定checkout两个直接路径和Git树条目。"
+}

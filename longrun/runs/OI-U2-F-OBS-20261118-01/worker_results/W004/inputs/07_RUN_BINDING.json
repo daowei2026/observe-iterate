@@ -1,0 +1,49 @@
+{
+  "schema": "longrun-binding/v2",
+  "run_id": "OI-U2-F-OBS-20261118-01",
+  "work_id": "OI-U2-F-OBS",
+  "owner_go_ref": "daowei2026/observe-iterate@74ed0b11552f73b03e55e3e324f8325889730b52:longrun/runs/OI-U2-F-OBS-20261118-01/OWNER_START.md",
+  "coordinator": "codex:OI-U2-F-OBS-20261118-01:controller",
+  "manager": "chatgpt:OI-U2-F-OBS-20261118-01:manager",
+  "executors": [
+    "chatgpt:OI-U2-F-OBS-20261118-01:executor:E1"
+  ],
+  "workers": [
+    "codex:OI-U2-F-OBS-20261118-01:worker:W1"
+  ],
+  "grants": [
+    {
+      "operation": "run_record_write",
+      "execution_context": "daowei2026/observe-iterate@runs/OI-U2-F-OBS-20261118-01",
+      "allowed_writes": [
+        "longrun/runs/OI-U2-F-OBS-20261118-01/**"
+      ],
+      "authority_quote": "operation=run_record_write\nexecution_context=daowei2026/observe-iterate@runs/OI-U2-F-OBS-20261118-01\nallowed_writes=longrun/runs/OI-U2-F-OBS-20261118-01/**"
+    },
+    {
+      "operation": "run_registry_update",
+      "execution_context": "daowei2026/observe-iterate@feat/observe-iterate-multirun-controller-v1-20261116",
+      "allowed_writes": [
+        "longrun/controller/RUN_REGISTRY.json"
+      ],
+      "authority_quote": "operation=run_registry_update\nexecution_context=daowei2026/observe-iterate@feat/observe-iterate-multirun-controller-v1-20261116\nallowed_writes=longrun/controller/RUN_REGISTRY.json"
+    },
+    {
+      "operation": "caegraph_run_and_repair",
+      "execution_context": "/dwdhome/fy/BASE_E6_2_copy",
+      "allowed_writes": [
+        "/dwdhome/fy/BASE_E6_2_copy/**",
+        "/dev/shm/sem.*"
+      ],
+      "authority_quote": "Owner 预先选择指令原文：碰到需要我处理的问题，先选第一项\n适用请求：OR001；被选择的第一项：A. 确认首选 sem.* 机读补正；\noperation=caegraph_run_and_repair\nexecution_context=/dwdhome/fy/BASE_E6_2_copy\nallowed_writes=/dwdhome/fy/BASE_E6_2_copy/**,/dev/shm/sem.*\n`/dev/shm` 只允许本 Run 的 CAEGraph 运行进程及其子进程为 Python multiprocessing 临时创建和删除 POSIX semaphore 对象 `sem.*`；不得写任意共享内存 payload、不得使用 sudo、不得建立 mount 绕过、不得 patch 平台源码、不得调用 F producer、不得读取 Q/V、不得据此启动正式数据导出。"
+    },
+    {
+      "operation": "caegraph_data_export",
+      "execution_context": "/dwdhome/fy/BASE_E6_2_copy",
+      "allowed_writes": [
+        "/dwdhome/fy/BASE_E6_2_copy/**"
+      ],
+      "authority_quote": "operation=caegraph_data_export\nexecution_context=/dwdhome/fy/BASE_E6_2_copy\nallowed_writes=/dwdhome/fy/BASE_E6_2_copy/**"
+    }
+  ]
+}

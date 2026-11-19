@@ -1,0 +1,32 @@
+{
+  "schema": "observe-iterate-worker-binding-evidence/v1",
+  "run_id": "OI-U2-F-OBS-20261118-01",
+  "worker": "codex:OI-U2-F-OBS-20261118-01:worker:W1",
+  "verification": "REAL_THREAD_CONFIG_AND_CWD_READBACK",
+  "worker_host": "dw-VMware-Virtual-Platform",
+  "execution_context": "/dwdhome/fy/BASE_E6_2_copy",
+  "verified_realpath": "/dwdhome/fy/BASE_E6_2_copy",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "max",
+  "readback_thread_idle": true,
+  "last_binding_turn_state": "completed",
+  "business_order_dispatched": false,
+  "worker_goal_created": false,
+  "verified_at": "2026-11-19T03:03:57.614481+00:00",
+  "evidence_files": [
+    {
+      "local_gitignored_filename": "WORKER_EXECUTION_CONFIG_VERIFIED.json",
+      "sha256": "190db93e35f273fe72479d35b5b946376e9e411be79a67a51a4b904c3f3dc953"
+    },
+    {
+      "local_gitignored_filename": "WORKER_CWD_BIND_THREAD_READBACK.json",
+      "sha256": "5b2e8d985e20cacff5568bff7a14d7a6257610cde663aee5ec1c73961e340603"
+    },
+    {
+      "local_gitignored_filename": "WORKSPACE_AND_WORKER_AFTER_OWNER_CONFIRMATION.json",
+      "sha256": "ec722f1b21a61cf4455cbbe4a1e8841c25c9e07305588602c11dfe0098d223aa"
+    }
+  ],
+  "physical_identity_note": "实际线程、owner进程和连接绑定保留在本Run gitignored artifacts/worker-execution-dispatch-binding.json；此记录不存设备连接信息。",
+  "notes": "Owner已明确授权新建专用Worker Chat；实际cwd已通过现有执行器turn/start绑定并独立回读。此为物理绑定证据，W001尚未发送或执行；派发前继续核当时状态。"
+}
