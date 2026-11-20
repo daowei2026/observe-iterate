@@ -1,0 +1,1458 @@
+{
+  "schema": "feature-occurrence-understanding/v1",
+  "run_id": "OI-U2-V-OBS-20261120-01",
+  "work_id": "OI-U2-V-OBS",
+  "business_case_id": "U2-FQV-V",
+  "work_item_id": "OI-U2-V-OBS-20261120-01-WI-A",
+  "stage_instance_id": "OI-U2-V-OBS-20261120-01-M-A",
+  "delegation_id": "D001",
+  "producer": "chatgpt:OI-U2-V-OBS-20261120-01:executor:E1",
+  "stage_status": "COMPLETE",
+  "feature": {
+    "name": "CommonTurnGroupValidityFrp",
+    "business_name": "V｜共同转折组的局部成立判断",
+    "haskell_version": "daowei2026/frp@67711c492da909ed0f044f357beb278abf7fc71c",
+    "python_version": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767",
+    "method": "ClosedFormationLocalValidity",
+    "result_layout": "common_turn_group_validity.core.v2",
+    "instance": {
+      "dataset": "TA_updto20240229_DBA",
+      "block": "steel",
+      "calendar": "night_end_at_2300",
+      "objects": [
+        "rb",
+        "hc",
+        "i"
+      ],
+      "scale": "5m",
+      "direction": "DirectionUp",
+      "construction": "make_features(...) 的第三项 v；由 CommonTurnGroupValidityFrp.from_organization(q) 构造",
+      "necessary_upstream": [
+        "PostTurnGroupDirectionalOrganizationFrp（Q，准确已存正式输入）",
+        "CommonPriceTurnGroupCandidatesFrp（F，经 Q/F 准确接线提供形成观点）"
+      ]
+    }
+  },
+  "scope": {
+    "included": [
+      "当前 V 实例对已存 F/Q 正式观点及 Q 责任结束的真实事件输入合同",
+      "V 的中间合并、按题状态、分类、修订、错误通道、正式发行与公开读取边界",
+      "每类事件自己的 firing／发表位置及 payload 中携带的 actual、confirmation、known、Clock 和责任界",
+      "V Life/Revision/Previous、F candidate Life、Q exact 和成员身份之间的映射"
+    ],
+    "excluded": [
+      "运行或重算 V/F/Q",
+      "选择观察品种、日期或 occurrence",
+      "设计 CAEGraph 或展示方案",
+      "把 F/Q 历史阶段产物计为 V 的 A 产物",
+      "B～E、合理性分析、S/U2/U3、参数标定、收益判断和资金配置"
+    ]
+  },
+  "sources": [
+    {
+      "source_id": "S01",
+      "ref": "daowei2026/observe-iterate@f7e8ff43fabfa11b499e2ce9e62dbc46b1b8b288:skills/observation-material-preparation/feature-occurrence-understanding/SKILL.md",
+      "entry": "A Skill",
+      "responsibility": "阶段边界、业务主输出判断与完成条件",
+      "verified": true
+    },
+    {
+      "source_id": "S02",
+      "ref": "daowei2026/observe-iterate@f7e8ff43fabfa11b499e2ce9e62dbc46b1b8b288:skills/observation-material-preparation/feature-occurrence-understanding/WORKFLOW.md",
+      "entry": "A1-A7",
+      "responsibility": "事件、位置、业务角色与处理关系的核对流程",
+      "verified": true
+    },
+    {
+      "source_id": "S03",
+      "ref": "daowei2026/observe-iterate@f7e8ff43fabfa11b499e2ce9e62dbc46b1b8b288:skills/observation-material-preparation/feature-occurrence-understanding/IO_SPEC.md",
+      "entry": "字段级 I/O",
+      "responsibility": "本机读产物字段合同",
+      "verified": true
+    },
+    {
+      "source_id": "S04",
+      "ref": "daowei2026/observe-iterate@3efb2719a66a2fcc1bb86f33b7b0a2258f9bfbf7:task-inputs/u2-fqv-observation/V_OBSERVATION_RUN_INPUT.md",
+      "entry": "V run input",
+      "responsibility": "业务范围、实例选择和 F/Q 必要上游边界",
+      "verified": true
+    },
+    {
+      "source_id": "S05",
+      "ref": "daowei2026/observe-iterate@f7e8ff43fabfa11b499e2ce9e62dbc46b1b8b288:task-inputs/u2-fqv-observation/实例运行脚本.py",
+      "entry": "V 实例断言与公开读取",
+      "responsibility": "实例参数、第三项 v 和正式主表／明细读取入口",
+      "verified": true
+    },
+    {
+      "source_id": "S06",
+      "ref": "daowei2026/observe-iterate@f7e8ff43fabfa11b499e2ce9e62dbc46b1b8b288:task-inputs/u2-fqv-observation/无二义性需求和实现文件.md",
+      "entry": "V 观察取材索引",
+      "responsibility": "现行 F→Q→V 输入关系、状态含义和时间口径索引",
+      "verified": true
+    },
+    {
+      "source_id": "S07",
+      "ref": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767:frp/fqv_kline_example.py",
+      "entry": "make_features",
+      "responsibility": "F→Q→V 准确实例构造链",
+      "verified": true
+    },
+    {
+      "source_id": "S08",
+      "ref": "daowei2026/feature-refinement-implementation-agent-evolution@2d3f56a7944c44b2a1c441c15eebf9659835136b:agent_evolution/pilot_cases/network-dynamic-ceps-factory-u2-u3/configurations/fqv-kline-rb-hc-i.json",
+      "entry": "fqv-kline-rb-hc-i",
+      "responsibility": "完整展开实例参数和上下文",
+      "verified": true
+    },
+    {
+      "source_id": "S09",
+      "ref": "daowei2026/frp@67711c492da909ed0f044f357beb278abf7fc71c:src/Frp/Instance/ISL/Opportunity/CommonTurnGroupValidity.hs",
+      "entry": "V 主实现",
+      "responsibility": "已存 F/Q 读取、输入合并、CEPS 调用、发行和存储出口",
+      "verified": true
+    },
+    {
+      "source_id": "S10",
+      "ref": "daowei2026/frp@67711c492da909ed0f044f357beb278abf7fc71c:src/Frp/Instance/ISL/Opportunity/U2/GroupValidityTypes.hs",
+      "entry": "V 类型",
+      "responsibility": "ValidityInput、ValidityOccurrence、ValidityStatement、成员、原因、状态和错误通道",
+      "verified": true
+    },
+    {
+      "source_id": "S11",
+      "ref": "daowei2026/frp@67711c492da909ed0f044f357beb278abf7fc71c:src/Frp/Instance/ISL/Opportunity/U2/GroupValidityInputs.hs",
+      "entry": "F/Q→V 投影",
+      "responsibility": "已存 F/Q 正式字段到 V 足用输入的无重算投影",
+      "verified": true
+    },
+    {
+      "source_id": "S12",
+      "ref": "daowei2026/frp@67711c492da909ed0f044f357beb278abf7fc71c:src/Frp/Instance/ISL/Opportunity/U2/GroupValidityProcess.hs",
+      "entry": "V 状态与修订",
+      "responsibility": "同拍安装、按题结算、身份检查、发行条件、错误隔离和责任结束",
+      "verified": true
+    },
+    {
+      "source_id": "S13",
+      "ref": "daowei2026/frp@67711c492da909ed0f044f357beb278abf7fc71c:src/Frp/Instance/ISL/Opportunity/U2/GroupValidityEvaluation.hs",
+      "entry": "V 分类",
+      "responsibility": "ClosedFormationLocalValidity 优先级、声明投影和业务变化比较",
+      "verified": true
+    },
+    {
+      "source_id": "S14",
+      "ref": "daowei2026/frp@67711c492da909ed0f044f357beb278abf7fc71c:src/Frp/Instance/ISL/Opportunity/U2/GroupValidityStorage.hs",
+      "entry": "V 正式存储",
+      "responsibility": "定义、occurrence、成员、原因和业务码的物理表示",
+      "verified": true
+    },
+    {
+      "source_id": "S15",
+      "ref": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767:frp/CommonTurnGroupValidity.py",
+      "entry": "V Python 包装",
+      "responsibility": "from_organization、主表／明细、exact 和 As-Of 读取",
+      "verified": true
+    },
+    {
+      "source_id": "S16",
+      "ref": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767:frp/_U2GroupValidityFields.py",
+      "entry": "V 公开字段",
+      "responsibility": "core.v2 主表、成员、原因和嵌套表声明",
+      "verified": true
+    },
+    {
+      "source_id": "S17",
+      "ref": "daowei2026/frp@67711c492da909ed0f044f357beb278abf7fc71c:src/Frp/Instance/ISL/Opportunity/PostTurnGroupDirectionalOrganization.hs",
+      "entry": "Q 主实现",
+      "responsibility": "V 必要 Q 正常存储事件、原 Tick 和责任结束来源",
+      "verified": true
+    },
+    {
+      "source_id": "S18",
+      "ref": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767:frp/PostTurnGroupDirectionalOrganization.py",
+      "entry": "Q Python 包装",
+      "responsibility": "Q exact/As-Of、状态枚举和正式成员读取",
+      "verified": true
+    },
+    {
+      "source_id": "S19",
+      "ref": "daowei2026/frp@67711c492da909ed0f044f357beb278abf7fc71c:src/Frp/Instance/ISL/Opportunity/CommonPriceTurnGroupCandidates.hs",
+      "entry": "F 主实现",
+      "responsibility": "V 必要 F 正常存储事件和原 Tick 来源",
+      "verified": true
+    },
+    {
+      "source_id": "S20",
+      "ref": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767:frp/CommonPriceTurnGroupCandidates.py",
+      "entry": "F Python 包装",
+      "responsibility": "F exact/As-Of、候选状态和成员读取",
+      "verified": true
+    }
+  ],
+  "event_catalog": [
+    {
+      "event_id": "E-IN-01",
+      "name": "F 正式候选更新事件",
+      "code_name": "FrpEvent (Tick [GroupCandidatesRecord]) → ValidityFormation updates",
+      "direction": "input",
+      "output_role": null,
+      "carrier": "Event/Tick；一次 firing 可携带 definitions 和多个 F candidate occurrences",
+      "occurrence_meaning": "V 收到 F 对一个或多个 candidate Life 的当前准确形成观点；V 只投影形成依据、成员锚、闭合/观察状态等足用字段，不重算 F 两两相容或几何。",
+      "own_position": "已存 F Event 的外层 Tick 原时间；经 formationInput 原样保留。",
+      "carried_positions": [
+        "validityFKnown",
+        "各成员 turn.actual",
+        "turn.confirmation",
+        "turn.known",
+        "turn.clock.coordinate/known",
+        "F candidate 的准确 Life/Revision/Previous"
+      ],
+      "scope": "同一实例对象域 rb/hc/i；每个 ValidityFormation 对应一个 F candidate Life 的准确 revision",
+      "identity": [
+        "validityFReference.life",
+        "validityFReference.revision",
+        "有序完整成员 TurnKey"
+      ],
+      "revision": [
+        "validityFPrevious",
+        "同 F Life 的知识非回退与成员锚不变约束"
+      ],
+      "payload": [
+        {
+          "field": "validityFReference",
+          "meaning": "实际采用的 F candidate exact",
+          "type": "ExactRef",
+          "missing": false,
+          "position": false
+        },
+        {
+          "field": "validityFPrevious",
+          "meaning": "上一 F exact",
+          "type": "Maybe ExactRef",
+          "missing": true,
+          "missing_meaning": "该 F Life 首版或存储未给前驱",
+          "position": false
+        },
+        {
+          "field": "validityFKnown",
+          "meaning": "F 观点知识位置",
+          "type": "Int64",
+          "missing": false,
+          "position": true
+        },
+        {
+          "field": "validityFMembers",
+          "meaning": "全部有序成员及所用转折小值",
+          "type": "[ValidityTurn]",
+          "missing": false,
+          "position": false
+        },
+        {
+          "field": "validityFPairs",
+          "meaning": "F 已裁定逐对 Required 坐标依据",
+          "type": "[ValidityPair]",
+          "missing": false,
+          "position": false
+        },
+        {
+          "field": "validityFBasis",
+          "meaning": "Supported / Incomplete / Contradicted",
+          "type": "LocalBasis",
+          "missing": false,
+          "position": false
+        },
+        {
+          "field": "validityFClosed",
+          "meaning": "形成观察是否真实关闭",
+          "type": "Bool",
+          "missing": false,
+          "position": false
+        },
+        {
+          "field": "validityFObservation",
+          "meaning": "F 观察状态",
+          "type": "ObservationState",
+          "missing": false,
+          "position": false
+        },
+        {
+          "field": "validityFOverlap",
+          "meaning": "存在 unresolved overlap/overlap 事实",
+          "type": "Bool",
+          "missing": false,
+          "position": false
+        },
+        {
+          "field": "validityFDomainIncomplete",
+          "meaning": "形成域覆盖不足",
+          "type": "Bool",
+          "missing": false,
+          "position": false
+        },
+        {
+          "field": "validityFSubsumedBy",
+          "meaning": "被包含候选 Life",
+          "type": "[Text]",
+          "missing": false,
+          "missing_meaning": "合法空：无包含关系",
+          "position": false
+        }
+      ],
+      "produced_at": "CommonTurnGroupValidityEvents 从已存 F core.v2 读取并由 readValidityFormations 投影",
+      "consumed_at": "ValidityInput.validityFormationUpdates → CommonTurnGroupValidity",
+      "public_read": "F 自身由 CommonPriceTurnGroupCandidatesFrp 公开；V 不把 F 表当作 V 输出",
+      "evidence": [
+        "S09",
+        "S11",
+        "S12",
+        "S19",
+        "S20"
+      ],
+      "unconfirmed": []
+    },
+    {
+      "event_id": "E-IN-02",
+      "name": "Q 正式方向组织更新事件",
+      "code_name": "FrpEvent (Tick [DirectionalOrganizationRecord]) → ValidityOrganization updates",
+      "direction": "input",
+      "output_role": null,
+      "carrier": "Event/Tick；一次 firing 可携带 definitions、多个 Q occurrences 和 duty ends",
+      "occurrence_meaning": "V 收到 Q 对准确 F candidate Life 的当前方向组织观点；V 消费 Q 已裁定的资格、观察、适用性、全成员小值和责任边界，不重算 Q 六量或路径。",
+      "own_position": "已存 Q Event 的外层 Tick 原时间；经 organizationInput 原样保留。",
+      "carried_positions": [
+        "validityQKnown",
+        "asked/used/successor turn.actual/confirmation/known/clock",
+        "validityThrough",
+        "validityMissingRange",
+        "original/current anchor/deadline/revisionEnd"
+      ],
+      "scope": "一个 F candidate Life × 本实例显式 DirectionUp 的 Q 问题",
+      "identity": [
+        "validityQReference.life",
+        "validityQReference.revision",
+        "validityQFormation exact",
+        "有序完整 asked-member TurnKey"
+      ],
+      "revision": [
+        "validityQPrevious",
+        "同 Q 题知识非回退与成员锚不变约束"
+      ],
+      "payload": [
+        {
+          "field": "validityQReference",
+          "meaning": "实际 Q exact",
+          "type": "ExactRef",
+          "missing": false,
+          "position": false
+        },
+        {
+          "field": "validityQPrevious",
+          "meaning": "上一 Q exact",
+          "type": "Maybe ExactRef",
+          "missing": true,
+          "missing_meaning": "该 Q Life 首版或存储未给前驱",
+          "position": false
+        },
+        {
+          "field": "validityQKnown",
+          "meaning": "Q 观点知识位置",
+          "type": "Int64",
+          "missing": false,
+          "position": true
+        },
+        {
+          "field": "validityQFormation",
+          "meaning": "Q 准确引用的 F candidate exact",
+          "type": "ExactRef",
+          "missing": false,
+          "position": false
+        },
+        {
+          "field": "validityQMembers",
+          "meaning": "全部原序成员及 asked/used/successor、成员结论和必要缺件",
+          "type": "[ValidityMember]",
+          "missing": false,
+          "position": false
+        },
+        {
+          "field": "validityQQualification",
+          "meaning": "Q 组资格",
+          "type": "GroupQualification",
+          "missing": false,
+          "position": false
+        },
+        {
+          "field": "validityQObservation",
+          "meaning": "Q 观察收口状态",
+          "type": "MotionObservation",
+          "missing": false,
+          "position": false
+        },
+        {
+          "field": "validityQApplicability",
+          "meaning": "Q 主语适用性",
+          "type": "MotionApplicability",
+          "missing": false,
+          "position": false
+        },
+        {
+          "field": "validityQOriginalBounds",
+          "meaning": "原 anchor/deadline/revisionEnd",
+          "type": "(Double,Double,Double)",
+          "missing": false,
+          "position": true
+        },
+        {
+          "field": "validityQBounds",
+          "meaning": "收紧后的 anchor/deadline/revisionEnd",
+          "type": "(Double,Double,Double)",
+          "missing": false,
+          "position": true
+        }
+      ],
+      "produced_at": "CommonTurnGroupValidityEvents 从已存 Q core.v2 读取并由 readValidityOrganizations 投影",
+      "consumed_at": "ValidityInput.validityOrganizationUpdates → CommonTurnGroupValidity",
+      "public_read": "Q 自身由 PostTurnGroupDirectionalOrganizationFrp 公开；V 只保存其足用投影和准确引用",
+      "evidence": [
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S17",
+        "S18"
+      ],
+      "unconfirmed": []
+    },
+    {
+      "event_id": "E-IN-03",
+      "name": "Q 责任结束输入 occurrence",
+      "code_name": "ValidityDutyEnd reconstructed from organizationDutyEnds",
+      "direction": "input",
+      "output_role": null,
+      "carrier": "Q 正式存储 Event payload 内嵌套；同一 Q firing 可多题结束",
+      "occurrence_meaning": "Q 对一道方向问题的真实责任结束；准确引用最后成功 Q，给出结束原因和结束知识位置。V 不按自己的时钟猜结束。",
+      "own_position": "承载该 duty-end 的 Q 外层 Tick 原时间。",
+      "carried_positions": [
+        "validityEndKnown",
+        "最后 Q 中各成员实际/确认/知识位置",
+        "最后 Q 的责任边界"
+      ],
+      "scope": "一个 DirectionalKey（F candidate Life）",
+      "identity": [
+        "validityEndQuestion",
+        "validityEndLastQ"
+      ],
+      "revision": [
+        "同题重复结束必须正文完全一致，否则为输入错误"
+      ],
+      "payload": [
+        {
+          "field": "validityEndQuestion",
+          "meaning": "被结束的 Q 题／F candidate Life",
+          "type": "DirectionalKey",
+          "missing": false,
+          "position": false
+        },
+        {
+          "field": "validityEndLastQ",
+          "meaning": "真实最后 Q exact",
+          "type": "ExactRef",
+          "missing": false,
+          "position": false
+        },
+        {
+          "field": "validityEndCause",
+          "meaning": "DirectionalRevisionDutyEnded / DirectionalScopeEnded",
+          "type": "DirectionalDutyEndReason",
+          "missing": false,
+          "position": false
+        },
+        {
+          "field": "validityEndKnown",
+          "meaning": "责任结束知识位置",
+          "type": "Int64",
+          "missing": false,
+          "position": true
+        }
+      ],
+      "produced_at": "Q organizationDutyEnds；readValidityOrganizations 同时恢复最后 Q update 与 ValidityDutyEnd",
+      "consumed_at": "ValidityInput.validityDutyEnds → ActiveValidity.activeEnd",
+      "public_read": "Q 的 duty-end 表；V 中不会另造独立 V duty-end 类型",
+      "evidence": [
+        "S10",
+        "S11",
+        "S12",
+        "S17",
+        "S18"
+      ],
+      "unconfirmed": []
+    },
+    {
+      "event_id": "E-MID-01",
+      "name": "V 合并输入事件",
+      "code_name": "FrpEvent (Tick ValidityInput)",
+      "direction": "internal",
+      "output_role": "中间处理事件",
+      "carrier": "Event/Tick",
+      "occurrence_meaning": "同一 firing 到达的 F updates、Q updates 与 Q duty ends 被合并成一次 V 真实输入；来源列表保持正式发生顺序。",
+      "own_position": "单一来源时沿其原 Tick；同一 firing 同时有 F/Q 时使用两者 Tick 的 max。",
+      "carried_positions": [
+        "全部 F/Q/end 知识位置与上游成员位置"
+      ],
+      "scope": "一次 firing 中受影响的多个 DirectionalKey",
+      "identity": [
+        "按每项 change 的 F candidate Life 归题"
+      ],
+      "revision": [
+        "不新建业务 Life；仅是输入 envelope"
+      ],
+      "payload": [
+        {
+          "field": "validityFormationUpdates",
+          "meaning": "本拍 F 足用观点变化",
+          "type": "[ValidityFormation]",
+          "missing": false,
+          "missing_meaning": "合法空：本拍无 F change",
+          "position": false
+        },
+        {
+          "field": "validityOrganizationUpdates",
+          "meaning": "本拍 Q 足用观点变化",
+          "type": "[ValidityOrganization]",
+          "missing": false,
+          "missing_meaning": "合法空：本拍无 Q change",
+          "position": false
+        },
+        {
+          "field": "validityDutyEnds",
+          "meaning": "本拍 Q 责任结束",
+          "type": "[ValidityDutyEnd]",
+          "missing": false,
+          "missing_meaning": "合法空：本拍无结束",
+          "position": false
+        }
+      ],
+      "produced_at": "CommonTurnGroupValidityEvents.formationInput / organizationInput / mergeWith join",
+      "consumed_at": "processEvents (CommonTurnGroupValidity ClosedFormationLocalValidity DirectionUp)",
+      "public_read": "无独立公开表",
+      "evidence": [
+        "S09",
+        "S10",
+        "S11",
+        "S12"
+      ],
+      "unconfirmed": []
+    },
+    {
+      "event_id": "E-MID-02",
+      "name": "V 处理结果事件",
+      "code_name": "FrpEvent (Tick ValidityProcessingResult)",
+      "direction": "internal",
+      "output_role": "中间处理事件",
+      "carrier": "Event/Tick；每个 ValidityInput firing 都产生一次",
+      "occurrence_meaning": "一次输入安装和按题结算的结果；可同时携带多个成功 V occurrences 与多个独立输入错误。空 rows 不等于 Invalid、Pending 或结束。",
+      "own_position": "与触发 ValidityInput 相同的外层 Tick。",
+      "carried_positions": [
+        "每个成功 occurrence 的 validityKnown",
+        "每个错误对应题 key"
+      ],
+      "scope": "一次 firing 的全部受影响题",
+      "identity": [
+        "success rows 各自有 V exact；error 由 DirectionalKey 标识"
+      ],
+      "revision": [
+        "处理结果 envelope 本身无业务 revision"
+      ],
+      "payload": [
+        {
+          "field": "processedValidityRows",
+          "meaning": "本拍成功决定且发生业务变化的 V occurrences",
+          "type": "[ValidityOccurrence]",
+          "missing": false,
+          "missing_meaning": "合法空：无可发行变化",
+          "position": false
+        },
+        {
+          "field": "validityInputErrors",
+          "meaning": "独立输入合同错误",
+          "type": "[ValidityInputError]",
+          "missing": false,
+          "missing_meaning": "合法空：无输入错误",
+          "position": false
+        }
+      ],
+      "produced_at": "CommonTurnGroupValidity.processEvents / advanceValidity",
+      "consumed_at": "publishGroupValidity",
+      "public_read": "错误仅诊断输出；不进入 V 市场状态表",
+      "evidence": [
+        "S09",
+        "S10",
+        "S12"
+      ],
+      "unconfirmed": []
+    },
+    {
+      "event_id": "B-OUT-01",
+      "name": "V 局部成立观点 occurrence",
+      "code_name": "ValidityOccurrence",
+      "direction": "output",
+      "output_role": "业务主输出",
+      "carrier": "ValidityProcessingResult 与正式 GroupValidityRecord 内嵌套；一次外层 firing 可携带多个题",
+      "occurrence_meaning": "对同一准确 F candidate Life、当前 DirectionUp 问题的一版 V 正式局部成立观点。它组合当前合法 F/Q 观点，给出 V 主结果、成员、原因、责任边界和可选结束原因。",
+      "own_position": "触发本次业务声明变化的 F/Q/end 输入原 Tick；publishGroupValidity 沿该 atTickTs 发行。",
+      "carried_positions": [
+        "validityKnown（参与事实的 knowledge 最大值，含前版单调约束）",
+        "成员 asked/used/successor actual/confirmation/known/clock",
+        "validityObservedThrough 与 missing actual range",
+        "Q original/current anchor/deadline/revisionEnd"
+      ],
+      "scope": "一个 F candidate Life × DirectionUp；组级主语，成员至少两个",
+      "identity": [
+        "validityReference = CommonTurnGroupValidity/Validity/Life/Revision",
+        "validityQuestion = F candidate Life",
+        "validityDirection"
+      ],
+      "revision": [
+        "首版建立 V Life；后续沿同 V Life 产生新 Revision",
+        "validityPrevious 精确引用上一已发行 V",
+        "Q exact 单独变化但正式声明不变时不发行新 V"
+      ],
+      "payload": [
+        {
+          "field": "validityReference",
+          "meaning": "V 自身准确 Life/Revision",
+          "type": "ExactRef",
+          "missing": false,
+          "position": false
+        },
+        {
+          "field": "validityPrevious",
+          "meaning": "上一已发行 V exact",
+          "type": "Maybe ExactRef",
+          "missing": true,
+          "missing_meaning": "该 V Life 首版",
+          "position": false
+        },
+        {
+          "field": "validityQuestion",
+          "meaning": "所判断的 F candidate Life",
+          "type": "DirectionalKey",
+          "missing": false,
+          "position": false
+        },
+        {
+          "field": "validityDirection",
+          "meaning": "显式问题方向；本实例 DirectionUp",
+          "type": "TurnDirection",
+          "missing": false,
+          "position": false
+        },
+        {
+          "field": "validityQ",
+          "meaning": "本次实际采用的 Q exact",
+          "type": "ExactRef",
+          "missing": false,
+          "position": false
+        },
+        {
+          "field": "validityKnown",
+          "meaning": "本观点参与事实的最大知识位置",
+          "type": "Int64",
+          "missing": false,
+          "position": true
+        },
+        {
+          "field": "validityStatement",
+          "meaning": "正式 V 业务声明",
+          "type": "ValidityStatement",
+          "missing": false,
+          "position": false
+        }
+      ],
+      "produced_at": "makeValidityStatement → issueValidityView；仅在 validityStatementChanged 为真时",
+      "consumed_at": "storeValidityOccurrence / Python occurrences 与明细表 / 后继 B-C-D-E",
+      "public_read": "to_df('occurrences')、to_dfs、read_exact、read_at_knowledge、validity_overlay",
+      "evidence": [
+        "S10",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16"
+      ],
+      "unconfirmed": []
+    },
+    {
+      "event_id": "E-OUT-01",
+      "name": "V 正式存储发布事件",
+      "code_name": "FrpEvent (Tick [GroupValidityRecord])",
+      "direction": "output",
+      "output_role": "正式发布 envelope",
+      "carrier": "Event/Tick",
+      "occurrence_meaning": "把本拍已决定 V occurrences 编码为 core.v2 正式记录；首次处理 firing 还会保存一次固定 definition，即使当拍没有业务 occurrence。",
+      "own_position": "沿 ValidityProcessingResult 的外层 Tick 原时间。",
+      "carried_positions": [
+        "内部 V occurrence 的全部位置",
+        "definition 无业务 occurrence 位置"
+      ],
+      "scope": "一次 publication firing 可含一个 GroupValidityRecord，内部含 0..n V occurrences",
+      "identity": [
+        "envelope 无业务 Life；内部 occurrence 保持各自 exact"
+      ],
+      "revision": [
+        "definition 只首次保存；业务 occurrence 保留 previous 链"
+      ],
+      "payload": [
+        {
+          "field": "validityDefinitions",
+          "meaning": "固定 V 方法和准确 Q 上游定义",
+          "type": "[ValidityDefinitionRecord]",
+          "missing": false,
+          "missing_meaning": "除首次外合法空",
+          "position": false
+        },
+        {
+          "field": "validityOccurrences",
+          "meaning": "本拍正式 V occurrence 记录",
+          "type": "[ValidityOccurrenceRecord]",
+          "missing": false,
+          "missing_meaning": "首次可合法空；后续无变化则整个发布事件不发生",
+          "position": false
+        }
+      ],
+      "produced_at": "publishGroupValidity",
+      "consumed_at": "writeGroupValidity / load / Python CoreReadSession",
+      "public_read": "CommonTurnGroupValidityFrp.to_df/to_dfs/read_exact/read_at_knowledge",
+      "evidence": [
+        "S09",
+        "S14",
+        "S15",
+        "S16"
+      ],
+      "unconfirmed": []
+    }
+  ],
+  "non_event_records": [
+    {
+      "record_id": "R-MID-01",
+      "name": "每题当前 V 组合状态",
+      "code_name": "ActiveValidity / CurrentValidityState",
+      "role": "中间 working-state",
+      "meaning": "按 F candidate Life 保存当前 F、当前 Q、Q 责任结束和最后已发行 V；另一侧尚未到达时合法持有，不猜缺席观点。",
+      "position": "无独立发表位置；由每次 ValidityInput firing 更新。",
+      "identity": [
+        "DirectionalKey = F candidate Life"
+      ],
+      "evidence": [
+        "S10",
+        "S12"
+      ]
+    },
+    {
+      "record_id": "R-MID-02",
+      "name": "V 正式声明正文",
+      "code_name": "ValidityStatement",
+      "role": "业务主输出 occurrence 的嵌套核心",
+      "meaning": "承诺主结果、F 形成轴、Q 资格/观察/适用性、完整成员、原因、边界和结束原因；不是第二个独立 Event。",
+      "position": "随 B-OUT-01 发表；内部携带多个上游位置。",
+      "identity": [
+        "由所属 ValidityOccurrence exact 识别"
+      ],
+      "evidence": [
+        "S10",
+        "S13",
+        "S14"
+      ]
+    },
+    {
+      "record_id": "R-DETAIL-01",
+      "name": "V 成员明细",
+      "code_name": "ValidityMember / ValidityMemberRecord",
+      "role": "业务主输出的嵌套 payload／公开明细",
+      "meaning": "每个原序成员的 asked/used/successor、成员结论、完成状态、必要量缺件、观察边界、缺件范围和负/零推进解释。",
+      "position": "没有独立 firing；随所属 V occurrence 发表。",
+      "identity": [
+        "V exact + validityObject",
+        "asked TurnKey"
+      ],
+      "evidence": [
+        "S10",
+        "S14",
+        "S16"
+      ]
+    },
+    {
+      "record_id": "R-DETAIL-02",
+      "name": "V 原因明细",
+      "code_name": "ValidityReason / ValidityReasonRecord",
+      "role": "业务主输出的嵌套 payload／公开明细",
+      "meaning": "定位 FormationMissing、FormationVeto、MemberCondition、FormationObservationOpen、RequiredFormationMissing 或 CandidateWithdrawn；不是独立市场事件。",
+      "position": "没有独立 firing；随所属 V occurrence 发表。",
+      "identity": [
+        "V exact + reason list position / referenced pair or member"
+      ],
+      "evidence": [
+        "S10",
+        "S13",
+        "S14",
+        "S16"
+      ]
+    },
+    {
+      "record_id": "R-DIAG-01",
+      "name": "V 输入错误",
+      "code_name": "ValidityInputError",
+      "role": "独立工程诊断结果",
+      "meaning": "某题的身份、知识、成员、引用或边界合同错误；失败题不安装半份状态，且错误不得伪装成 Pending、Invalid 或市场反证。",
+      "position": "随 E-MID-02 的当前 input firing 可见。",
+      "identity": [
+        "validityErrorQuestion"
+      ],
+      "evidence": [
+        "S10",
+        "S12"
+      ]
+    },
+    {
+      "record_id": "R-META-01",
+      "name": "V 固定定义",
+      "code_name": "ValidityDefinitionRecord",
+      "role": "元数据",
+      "meaning": "固定保存 ClosedFormationLocalValidity 方法和准确 Q 上游定义；首次发布一次，不是业务 occurrence。",
+      "position": "首次 E-OUT-01 publication firing。",
+      "identity": [
+        "固定方法定义 + Q upstream definition"
+      ],
+      "evidence": [
+        "S09",
+        "S14",
+        "S16"
+      ]
+    },
+    {
+      "record_id": "R-WRAP-01",
+      "name": "V 结果布局包装",
+      "code_name": "GroupValidityResult = CurrentValidityRecords | LegacyValidityRecords",
+      "role": "存读包装",
+      "meaning": "区分当前 core.v2 与显式旧 v1 只读历史；不增加业务事件。",
+      "position": "随实际加载/执行结果载体。",
+      "identity": [
+        "result_layout"
+      ],
+      "evidence": [
+        "S09",
+        "S15"
+      ]
+    }
+  ],
+  "processing_relations": [
+    {
+      "relation_id": "P01",
+      "upstream": [
+        "E-IN-01"
+      ],
+      "downstream": [
+        "E-MID-01"
+      ],
+      "relation_type": "投影/形成",
+      "condition": "每个已存 F firing 通过 readValidityFormations 只投影 V 足用字段；definitions 不形成 formation update。",
+      "identity_mapping": "F candidate Life/Revision → ValidityFormation exact",
+      "position_mapping": "外层 F Tick 保留；成员实际/确认/知识位置进入 payload",
+      "evidence": [
+        "S09",
+        "S11"
+      ],
+      "unconfirmed": []
+    },
+    {
+      "relation_id": "P02",
+      "upstream": [
+        "E-IN-02"
+      ],
+      "downstream": [
+        "E-MID-01"
+      ],
+      "relation_type": "投影/形成",
+      "condition": "每个已存 Q firing 通过 readValidityOrganizations 投影 organization updates；不重跑 Q。",
+      "identity_mapping": "Q exact + F exact + 有序成员锚",
+      "position_mapping": "外层 Q Tick 保留；成员和责任边界进入 payload",
+      "evidence": [
+        "S09",
+        "S11"
+      ],
+      "unconfirmed": []
+    },
+    {
+      "relation_id": "P03",
+      "upstream": [
+        "E-IN-03"
+      ],
+      "downstream": [
+        "E-MID-01"
+      ],
+      "relation_type": "投影/结束",
+      "condition": "Q duty-end 同时恢复最后 Q update 和 ValidityDutyEnd；结束知识不得早于最后 Q。",
+      "identity_mapping": "DirectionalKey + last Q exact",
+      "position_mapping": "Q 外层 Tick；duty-end known 进入 payload",
+      "evidence": [
+        "S11"
+      ],
+      "unconfirmed": []
+    },
+    {
+      "relation_id": "P04",
+      "upstream": [
+        "E-IN-01",
+        "E-IN-02",
+        "E-IN-03"
+      ],
+      "downstream": [
+        "E-MID-01"
+      ],
+      "relation_type": "合并",
+      "condition": "同一 firing 的 F/Q 输入合并；单来源 firing 也独立触发。",
+      "identity_mapping": "各 change 按 F candidate Life 分题",
+      "position_mapping": "同拍采用 max source Tick；所有来源位置保留",
+      "evidence": [
+        "S09"
+      ],
+      "unconfirmed": []
+    },
+    {
+      "relation_id": "P05",
+      "upstream": [
+        "E-MID-01"
+      ],
+      "downstream": [
+        "R-MID-01"
+      ],
+      "relation_type": "更新",
+      "condition": "一个输入即一次真实 firing；每题先安装本拍全部 F/Q/end changes，再共同结算一次，不发行技术中间态。",
+      "identity_mapping": "DirectionalKey = F candidate Life",
+      "position_mapping": "状态无独立位置；更新发生于当前 input Tick",
+      "evidence": [
+        "S12"
+      ],
+      "unconfirmed": []
+    },
+    {
+      "relation_id": "P06",
+      "upstream": [
+        "R-MID-01"
+      ],
+      "downstream": [
+        "B-OUT-01"
+      ],
+      "relation_type": "形成/修订",
+      "condition": "只有当前题同时具备合法 F 与 Q 时形成声明；首次建立 V Life，后续正式声明变化时沿同 Life 发行新 Revision 并指向 previous。",
+      "identity_mapping": "F candidate Life + DirectionUp → 一条 V Life；Revision 链",
+      "position_mapping": "V publication 沿当前触发 input Tick；validityKnown 为参与事实知识最大值",
+      "evidence": [
+        "S12",
+        "S13"
+      ],
+      "unconfirmed": []
+    },
+    {
+      "relation_id": "P07",
+      "upstream": [
+        "E-IN-01",
+        "E-IN-02"
+      ],
+      "downstream": [
+        "R-MID-02"
+      ],
+      "relation_type": "分类",
+      "condition": "按 applicability/conflict/Q rejected/F contradicted/F incomplete/F open/Q completed/Q working/otherwise 的固定优先级决定 GroupValidity 与 reasons。",
+      "identity_mapping": "采用当前 F exact 与当前 Q exact",
+      "position_mapping": "只消费上游已知字段；不重算 actual 几何或 Q 六量",
+      "evidence": [
+        "S13"
+      ],
+      "unconfirmed": []
+    },
+    {
+      "relation_id": "P08",
+      "upstream": [
+        "E-IN-03",
+        "R-MID-01"
+      ],
+      "downstream": [
+        "B-OUT-01"
+      ],
+      "relation_type": "结束/修订",
+      "condition": "真实 Q duty end 写入 statementEnd；该轴变化促成一版 V 修订，随后该题 ActiveValidity 被移除。",
+      "identity_mapping": "closing V revision 仍属于原 V Life",
+      "position_mapping": "结束 input Tick 为发表位置；payload 带 end cause/known",
+      "evidence": [
+        "S12",
+        "S13"
+      ],
+      "unconfirmed": []
+    },
+    {
+      "relation_id": "P09",
+      "upstream": [
+        "E-IN-02",
+        "R-MID-01"
+      ],
+      "downstream": [
+        "B-OUT-01"
+      ],
+      "relation_type": "引用/静默",
+      "condition": "Q exact 单独变化但正式声明承诺字段未变化时，不产生新 V occurrence；已发行 V 仍保留当时 Q exact，不静默改写。",
+      "identity_mapping": "active Q 可更新，issued V exact 不变",
+      "position_mapping": "没有新 occurrence；不能解释为失败或结束",
+      "evidence": [
+        "S12",
+        "S13"
+      ],
+      "unconfirmed": []
+    },
+    {
+      "relation_id": "P10",
+      "upstream": [
+        "E-MID-01"
+      ],
+      "downstream": [
+        "R-DIAG-01"
+      ],
+      "relation_type": "诊断",
+      "condition": "某题输入合同错误写独立 error channel；该题不安装半份状态，同拍其他成功题仍可发行。",
+      "identity_mapping": "error question = DirectionalKey",
+      "position_mapping": "随当前 processing Tick；不进入市场分类",
+      "evidence": [
+        "S10",
+        "S12"
+      ],
+      "unconfirmed": []
+    },
+    {
+      "relation_id": "P11",
+      "upstream": [
+        "B-OUT-01"
+      ],
+      "downstream": [
+        "E-OUT-01"
+      ],
+      "relation_type": "发行/存储",
+      "condition": "storeValidityOccurrence 将正式 V occurrence 编码进 core.v2；成员与原因保持嵌套身份。",
+      "identity_mapping": "V exact/previous 保持",
+      "position_mapping": "沿 processing Tick 原时间发布",
+      "evidence": [
+        "S09",
+        "S14"
+      ],
+      "unconfirmed": []
+    },
+    {
+      "relation_id": "P12",
+      "upstream": [
+        "E-MID-02"
+      ],
+      "downstream": [
+        "E-OUT-01"
+      ],
+      "relation_type": "元数据首发",
+      "condition": "第一次 processing firing 即使没有 V occurrence 也保存 definition-only record；后续 rows 为空则不发布。",
+      "identity_mapping": "definition 不建立 V Life",
+      "position_mapping": "首次 processing Tick；不是业务 occurrence",
+      "evidence": [
+        "S09"
+      ],
+      "unconfirmed": []
+    }
+  ],
+  "classification_priority": [
+    {
+      "priority": 1,
+      "condition": "resolveValidityApplicability(f,q)",
+      "result": "SubjectNotApplicable",
+      "reasons": [
+        "CandidateWithdrawn",
+        "memberReasons"
+      ],
+      "note": "真实锚撤回，或 F Withdrawn 且没有当前形成反证/独立运动判断。"
+    },
+    {
+      "priority": 2,
+      "condition": "Q=QualificationConflict 且任一成员 RequiredMotionConflict",
+      "result": "ValidityConflict",
+      "reasons": [
+        "memberReasons",
+        "必要时 RequiredFormationMissing",
+        "formationReasons"
+      ],
+      "note": "真实必需运动冲突。"
+    },
+    {
+      "priority": 3,
+      "condition": "Q=QualificationRejected",
+      "result": "Invalid",
+      "reasons": [
+        "memberReasons",
+        "必要时 CandidateWithdrawn"
+      ],
+      "note": "沿 Q 已裁定方向反证。"
+    },
+    {
+      "priority": 4,
+      "condition": "F basis=Contradicted",
+      "result": "Invalid",
+      "reasons": [
+        "formationReasons",
+        "必要时 CandidateWithdrawn"
+      ],
+      "note": "形成依据被反证。"
+    },
+    {
+      "priority": 5,
+      "condition": "F basis=Incomplete",
+      "result": "Pending",
+      "reasons": [
+        "RequiredFormationMissing",
+        "formationReasons",
+        "memberReasons"
+      ],
+      "note": "必需形成材料不足。"
+    },
+    {
+      "priority": 6,
+      "condition": "F closed=False",
+      "result": "Pending",
+      "reasons": [
+        "FormationObservationOpen",
+        "memberReasons"
+      ],
+      "note": "形成观察尚未正式关闭。"
+    },
+    {
+      "priority": 7,
+      "condition": "Q=QualifiedCompleted",
+      "result": "AcceptedCompleted",
+      "reasons": [],
+      "note": "F 已满足且关闭，Q 全成员支持并完成。"
+    },
+    {
+      "priority": 8,
+      "condition": "Q=QualifiedWorking",
+      "result": "AcceptedWorking",
+      "reasons": [],
+      "note": "F 已满足且关闭，Q 当前支持但仍在运动责任中。"
+    },
+    {
+      "priority": 9,
+      "condition": "otherwise",
+      "result": "Pending",
+      "reasons": [
+        "memberReasons"
+      ],
+      "note": "其他未决状态。"
+    }
+  ],
+  "position_summary": [
+    {
+      "item": "F 输入 Event 自身位置",
+      "meaning": "已存 F 外层 Tick 原时间；不是成员 Turn actual。",
+      "evidence": [
+        "S09",
+        "S11"
+      ]
+    },
+    {
+      "item": "Q 输入 Event 自身位置",
+      "meaning": "已存 Q 外层 Tick 原时间；不是成员 Turn actual 或 Q known。",
+      "evidence": [
+        "S09",
+        "S11"
+      ]
+    },
+    {
+      "item": "V 合并输入位置",
+      "meaning": "单路沿原 Tick；同一 firing 合并时取来源 Tick 的 max。",
+      "evidence": [
+        "S09"
+      ]
+    },
+    {
+      "item": "V 业务 occurrence 发表位置",
+      "meaning": "触发正式声明变化的输入原 Tick；publishGroupValidity 原样使用 atTickTs。",
+      "evidence": [
+        "S09",
+        "S12"
+      ]
+    },
+    {
+      "item": "V knowledge 位置",
+      "meaning": "validityKnown 是当前 F known、Q known、可选 end known 与前版 V known 的最大值，用于业务知识闭包和单调性；不等同于成员 actual。",
+      "evidence": [
+        "S10",
+        "S12"
+      ]
+    },
+    {
+      "item": "成员 actual",
+      "meaning": "asked/used/successor Turn 的真实发生位置；V 只携带准确小值，不创造新的价格 actual。",
+      "evidence": [
+        "S10",
+        "S11",
+        "S14"
+      ]
+    },
+    {
+      "item": "成员 confirmation",
+      "meaning": "每个 Turn 的原确认时间；必须不晚于所属 F/Q known。",
+      "evidence": [
+        "S10",
+        "S12",
+        "S14"
+      ]
+    },
+    {
+      "item": "成员 known",
+      "meaning": "每个 Turn 原知识时间；必须不晚于所属 F/Q known。",
+      "evidence": [
+        "S10",
+        "S12",
+        "S14"
+      ]
+    },
+    {
+      "item": "Clock",
+      "meaning": "可选 FormationClock.coordinate 与 clockKnown；缺席保持未知，不补造。",
+      "evidence": [
+        "S10",
+        "S11",
+        "S14"
+      ]
+    },
+    {
+      "item": "责任边界",
+      "meaning": "Q original/current anchor、deadline、revisionEnd 和成员 observedThrough；是观察/责任位置，不是 V occurrence 的单一 actual。",
+      "evidence": [
+        "S10",
+        "S11",
+        "S14"
+      ]
+    },
+    {
+      "item": "missing range",
+      "meaning": "成员实际缺件包络 (actualFrom, actualThrough)；空表示没有记录该缺件包络，不等于 QuantityKnown。",
+      "evidence": [
+        "S10",
+        "S11",
+        "S14"
+      ]
+    },
+    {
+      "item": "Q duty-end",
+      "meaning": "endKnown 是结束知识位置；V 输出中 statementEnd 只保存结束原因，V validityKnown 吸收 endKnown。",
+      "evidence": [
+        "S10",
+        "S12",
+        "S14"
+      ]
+    }
+  ],
+  "business_main_output_trace": [
+    {
+      "output": "B-OUT-01 V 局部成立观点 occurrence",
+      "trace": [
+        "已存 F Event → readValidityFormations → ValidityFormation",
+        "已存 Q Event → readValidityOrganizations → ValidityOrganization；duty-end 另投影为 ValidityDutyEnd",
+        "同一 firing 合并为 ValidityInput",
+        "按 F candidate Life 安装当前 F/Q/end；完整成员锚和知识边界校验",
+        "同时具备 F 与 Q 后 makeValidityStatement 按 ClosedFormationLocalValidity 优先级分类",
+        "validityStatementChanged=True 时 issueValidityView 建立/修订 V exact 与 previous",
+        "publishGroupValidity 沿触发原 Tick 编码 core.v2",
+        "Python to_df/to_dfs/read_exact/read_at_knowledge 公开读取"
+      ],
+      "evidence": [
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16"
+      ]
+    }
+  ],
+  "input_destinations": [
+    {
+      "input": "E-IN-01 F 更新",
+      "possible_destinations": [
+        "若缺 Q：只更新 ActiveValidity，暂无 V occurrence",
+        "若 F/Q 完整且声明变化：形成或修订 V occurrence",
+        "若 F exact 或业务形成轴改变：通常触发声明变化",
+        "若合同错误：进入 ValidityInputError，失败题不安装"
+      ]
+    },
+    {
+      "input": "E-IN-02 Q 更新",
+      "possible_destinations": [
+        "若缺 F：只更新 ActiveValidity，暂无 V occurrence",
+        "若 F/Q 完整且声明变化：形成或修订 V occurrence",
+        "若仅 Q exact 改变、承诺字段不变：无新 V occurrence",
+        "若合同错误：进入 ValidityInputError"
+      ]
+    },
+    {
+      "input": "E-IN-03 Q duty end",
+      "possible_destinations": [
+        "安装真实 end，并验证 last Q / known",
+        "F/Q 完整时形成带 statementEnd 的 closing V revision",
+        "结算后移除 ActiveValidity 责任",
+        "缺另一侧时先合法持有 end，待能组合时再结算"
+      ]
+    },
+    {
+      "input": "空 business rows",
+      "possible_destinations": [
+        "可能仅表示另一侧未到达、声明未变化或当前输入只有定义/无业务 update",
+        "第一次 processing firing 仍可能发布 definition-only storage record",
+        "不得解释为 Invalid、Pending、SubjectNotApplicable 或结束"
+      ]
+    }
+  ],
+  "missing_semantics": [
+    {
+      "field_or_case": "validityPrevious=None",
+      "meaning": "该 V Life 首个已发行 occurrence。"
+    },
+    {
+      "field_or_case": "validitySuccessor=None",
+      "meaning": "没有已存真实后继 Turn；不是用观察期限伪造完成。"
+    },
+    {
+      "field_or_case": "validityTurnDirection/Type=None",
+      "meaning": "Q 窄记录没有保存该正文且无法按 exact 从 F 补足；保持未知。"
+    },
+    {
+      "field_or_case": "validityTurnClock=None",
+      "meaning": "没有已存合法 Clock；不补造。"
+    },
+    {
+      "field_or_case": "validityUnavailable=[]",
+      "meaning": "没有记录必要量缺件；不等于成员一定支持，仍结合 verdict/completion。"
+    },
+    {
+      "field_or_case": "validityMissingRange=None",
+      "meaning": "没有记录缺件实际包络；不等于 QuantityKnown。"
+    },
+    {
+      "field_or_case": "validityProgress=None",
+      "meaning": "非负向/零推进解释场景或没有该小值；真实 0 若存在应为 Just 0。"
+    },
+    {
+      "field_or_case": "statementReasons=[]",
+      "meaning": "当前 AcceptedWorking/AcceptedCompleted 的正常无原因列表；不是没有业务声明。"
+    },
+    {
+      "field_or_case": "processedValidityRows=[]",
+      "meaning": "本拍没有新 V 正式声明变化；不是失败、无效或结束。"
+    },
+    {
+      "field_or_case": "validityInputErrors=[]",
+      "meaning": "本拍没有输入合同错误。"
+    },
+    {
+      "field_or_case": "validityOccurrences=[] in first stored record",
+      "meaning": "合法 definition-only 首发；不是 V 市场 occurrence。"
+    },
+    {
+      "field_or_case": "no outer V publication after later empty rows",
+      "meaning": "后续没有正式业务变化；静默保持已有 V。"
+    }
+  ],
+  "public_products": {
+    "primary": "occurrences",
+    "details": [
+      "occurrences_validityMembers",
+      "occurrences_validityReasons",
+      "以及由 _U2GroupValidityFields.py 展开的 previous、containments、dutyEnd、成员 Turn/Clock/Order/缺件等嵌套表"
+    ],
+    "interfaces": [
+      "CommonTurnGroupValidityFrp.to_df(product='occurrences')",
+      "CommonTurnGroupValidityFrp.to_dfs(products=None)",
+      "CommonTurnGroupValidityFrp.validity_overlay()",
+      "CommonTurnGroupValidityFrp.read_exact(reference, products=None)",
+      "CommonTurnGroupValidityFrp.read_at_knowledge(life, as_of, products=None)"
+    ],
+    "boundary": "公开拆表只是同一 V occurrence 的物理展开；成员、原因、definition 和 envelope 均不因此成为独立业务 occurrence。"
+  },
+  "unconfirmed_items": {
+    "blocking": [],
+    "non_blocking": [
+      "本阶段没有运行实例，因此不声称当前现场已有多少行 V occurrence、各结果枚举的实际分布或具体发生日期；这些属于后继观察材料阶段。",
+      "代码只承诺 V publication 沿触发输入原 Tick，并单独保存 validityKnown；未把两者数值强制等同，本产物也不作等同解释。"
+    ]
+  },
+  "completion": {
+    "stage_result": "完整",
+    "checks": [
+      {
+        "condition": "输入事件、输出事件和中间处理结果已按业务角色区分",
+        "status": "PASS",
+        "evidence": [
+          "event_catalog",
+          "non_event_records"
+        ]
+      },
+      {
+        "condition": "每类事件自身发生位置与携带位置已说明",
+        "status": "PASS",
+        "evidence": [
+          "event_catalog",
+          "position_summary"
+        ]
+      },
+      {
+        "condition": "业务主输出形成/更新/结束关系可追溯到代码",
+        "status": "PASS",
+        "evidence": [
+          "processing_relations",
+          "business_main_output_trace",
+          "classification_priority"
+        ]
+      },
+      {
+        "condition": "未把公开保存或拆表内容误判为业务主输出",
+        "status": "PASS",
+        "evidence": [
+          "non_event_records",
+          "public_products"
+        ]
+      },
+      {
+        "condition": "主输出可向上追溯必要输入",
+        "status": "PASS",
+        "evidence": [
+          "business_main_output_trace"
+        ]
+      },
+      {
+        "condition": "输入可向下说明可能去向与静默语义",
+        "status": "PASS",
+        "evidence": [
+          "input_destinations",
+          "missing_semantics"
+        ]
+      },
+      {
+        "condition": "未确认项未写成确定事实",
+        "status": "PASS",
+        "evidence": [
+          "unconfirmed_items"
+        ]
+      }
+    ],
+    "worker": {
+      "required": false,
+      "issued_orders": [],
+      "reason": "A Skill 只需锁定源码和实例进行代码事实还原；精确主实现、类型、存储和公开读取接口足以完成，且本阶段不运行特征。"
+    }
+  }
+}
