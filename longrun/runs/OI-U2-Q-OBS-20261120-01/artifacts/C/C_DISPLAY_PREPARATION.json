@@ -1,0 +1,171 @@
+{
+  "schema": "caegraph-display-preparation/v1",
+  "run_id": "OI-U2-Q-OBS-20261120-01",
+  "work_id": "OI-U2-Q-OBS",
+  "business_case_id": "U2-FQV-Q",
+  "work_item_id": "OI-U2-Q-OBS-20261120-01-WI-C",
+  "stage_instance_id": "OI-U2-Q-OBS-20261120-01-M-C",
+  "delegation_id": "D003",
+  "producer": "chatgpt:OI-U2-Q-OBS-20261120-01:executor:E1",
+  "stage_status": "COMPLETE",
+  "feature": "PostTurnGroupDirectionalOrganizationFrp",
+  "inputs": {
+    "a_human_ref": "daowei2026/observe-iterate@bf50bbe5c9447cb992af547e3f5f95f7465cae88:longrun/runs/OI-U2-Q-OBS-20261120-01/artifacts/A/FEATURE_OCCURRENCE_UNDERSTANDING.md",
+    "a_machine_ref": "daowei2026/observe-iterate@61677f11bcdc41225d1df2615ca267f27e05a12f:longrun/runs/OI-U2-Q-OBS-20261120-01/artifacts/A/FEATURE_OCCURRENCE_UNDERSTANDING.json",
+    "b_human_ref": "daowei2026/observe-iterate@98fd297509d1d8f521711d78414995d0aa0a2965:longrun/runs/OI-U2-Q-OBS-20261120-01/artifacts/B/OBSERVATION_POSITION_PREPARATION.md",
+    "b_machine_ref": "daowei2026/observe-iterate@1214b9580f9a8b455d5df7524335e614058f2a69:longrun/runs/OI-U2-Q-OBS-20261120-01/artifacts/B/OBSERVATION_POSITION_PREPARATION.json",
+    "uplot_manual_ref": "daowei2026/uplot@0a4fcd54059782572a3f7e82fad041121e8c65ad:CAEGraph使用手册.md",
+    "q_wrapper_ref": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767:frp/PostTurnGroupDirectionalOrganization.py",
+    "q_fields_ref": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767:frp/_U2DirectionalOrganizationFields.py"
+  },
+  "c1": {
+    "artifact_ref": "daowei2026/observe-iterate@781865309218623fecb355a2c6bb826de08cf735:longrun/runs/OI-U2-Q-OBS-20261120-01/artifacts/C/C1_DISPLAY_INFORMATION.json",
+    "displayed_primary": [
+      "multi-object price and Calendar context",
+      "F candidate exact input",
+      "Q DirectionalOccurrence revision chain",
+      "group qualification/observation/applicability",
+      "member asked/used/successor/endpoint and motion facts",
+      "six quantities with availability",
+      "explicit DirectionalDutyEnd"
+    ],
+    "conditional_or_metadata": [
+      "source frame progress/known/ended/patch summary",
+      "subscription bounds and closed state",
+      "fixed definition metadata"
+    ],
+    "not_separate_business_events": [
+      "DirectionalFrame",
+      "DirectionalBatch",
+      "DirectionalOrganizationRecord envelope",
+      "member table rows"
+    ]
+  },
+  "c2": {
+    "prototype_ref": "daowei2026/observe-iterate@5a1ecd7efaa4c176b262a0104fd2d87f79f6e4f3:longrun/runs/OI-U2-Q-OBS-20261120-01/artifacts/C/q_caegraph_preview.py",
+    "first_html_ref": "daowei2026/observe-iterate@36f88213832fe1ea90b29cecd47c0825e50ddf34:longrun/runs/OI-U2-Q-OBS-20261120-01/artifacts/C/C2_EXPECTED_V0_1.html",
+    "current_html_ref": "daowei2026/observe-iterate@85b41da60713f7ed2824b104bff614478c0f9371:longrun/runs/OI-U2-Q-OBS-20261120-01/artifacts/C/C2_EXPECTED.html",
+    "preview_data": "deterministic schematic data; not a real Q run and not evidence about any market interval",
+    "panels": [
+      {
+        "panel": "P1",
+        "name": "multi-symbol 5m price overview",
+        "display": "ratio display derivative plus member positions",
+        "semantic_guard": "raw prices remain in per-symbol detail; ratio is not raw evidence"
+      },
+      {
+        "panel": "P2",
+        "name": "F candidate → Q revision → explicit duty end",
+        "display": "candidate, Q Life/Revision/Previous chain, explicit end",
+        "semantic_guard": "duty end does not create a Q revision"
+      },
+      {
+        "panel": "P3",
+        "name": "Q group state",
+        "display": "qualification, observation, applicability per emitted Q revision",
+        "semantic_guard": "visual carry between revisions is not a synthetic occurrence"
+      },
+      {
+        "panel": "P4",
+        "name": "per-member motion and quantity audit",
+        "display": "raw price; asked/used/successor/endpoint; verdict/completion/basis/path; six quantity lanes",
+        "semantic_guard": "different quantity units do not share one numeric axis; missing values preserve availability"
+      },
+      {
+        "panel": "P5",
+        "name": "exact identity/reference audit",
+        "display": "Q/F refs, Previous, publication/known and explicit end semantics",
+        "semantic_guard": "table projection does not change event identity"
+      }
+    ],
+    "iterations": [
+      {
+        "version": "v0.1",
+        "result": "first openable HTML established the shared time axis, multi-symbol context, lifecycle lane, state table and member cards",
+        "identified_gaps": [
+          "Previous links were not visible",
+          "member positions were not overlaid on price",
+          "missing quantity availability was not prominent",
+          "exact refs and end semantics needed a dedicated audit surface"
+        ]
+      },
+      {
+        "version": "v0.2 current",
+        "result": "added revision links, explicit end marker, member positions, missingness warning, exact audit and visibility toggles",
+        "blocking_gaps": []
+      }
+    ]
+  },
+  "c2_capability_review": {
+    "checked_sources": [
+      "daowei2026/uplot@0a4fcd54059782572a3f7e82fad041121e8c65ad:CAEGraph使用手册.md",
+      "daowei2026/uplot@0a4fcd54059782572a3f7e82fad041121e8c65ad:utlv2.py",
+      "daowei2026/uplot@0a4fcd54059782572a3f7e82fad041121e8c65ad:utkv2.py",
+      "daowei2026/uplot@0a4fcd54059782572a3f7e82fad041121e8c65ad:pfw.py",
+      "daowei2026/uplot@0a4fcd54059782572a3f7e82fad041121e8c65ad:__init__.py"
+    ],
+    "direct_reuse": [
+      "CAEGraph",
+      "PlotSet",
+      "AllSymsMainFig",
+      "AllSymsFig",
+      "PerSymFigSet",
+      "MainFig",
+      "SubFig",
+      "KPriceLine",
+      "shared x-range",
+      "legend hide",
+      "BasePlotter extension point"
+    ],
+    "resolved_limits": [
+      {
+        "limit": "built-in generic hover is too narrow for Q identity/reference/missingness",
+        "resolution": "thin custom BasePlotter classes using Bokeh glyphs and HoverTool"
+      },
+      {
+        "limit": "no verified ready-made revision-chain business plot",
+        "resolution": "segment and point glyphs preserve the real Previous relation"
+      },
+      {
+        "limit": "nested public tables cannot safely be plotted as independent rows",
+        "resolution": "D adapter forms canonical frames with parent/child coordinates and identities"
+      }
+    ],
+    "unresolved_core_capability_gaps": []
+  },
+  "c3": {
+    "code_ref": "daowei2026/observe-iterate@435c2ed129ba7596b9d5a102bc0d8bf6104729ba:longrun/runs/OI-U2-Q-OBS-20261120-01/artifacts/C/q_caegraph_injectable.py",
+    "contract_ref": "daowei2026/observe-iterate@747ce755d95e9354dd13209c41ba053d219febe1:longrun/runs/OI-U2-Q-OBS-20261120-01/artifacts/C/C3_INJECTION_CONTRACT.md",
+    "injection_points": [
+      "real outer q_feature",
+      "price_feature",
+      "frame_adapter",
+      "field_binding",
+      "SOF/block/calendar/objects/timespans"
+    ],
+    "hardcoded_b_position": false,
+    "hardcoded_q_instance": false,
+    "python_syntax_checked": true,
+    "static_injection_checks_passed": true,
+    "target_runtime_executed": false,
+    "target_runtime_boundary": "D binds the real instance/fields/position; E performs the real run and output verification"
+  },
+  "worker": {
+    "required": false,
+    "issued_orders": [],
+    "accepted_results": [],
+    "reason": "C could complete the display contract, HTML expectations and injectable code from locked sources without Linux data or feature execution."
+  },
+  "completion": {
+    "c1_information_list_complete": true,
+    "first_html_published": true,
+    "current_html_published": true,
+    "iteration_recorded": true,
+    "current_prototype_published": true,
+    "injectable_caegraph_code_published": true,
+    "c2_c3_semantic_match_checked": true,
+    "b_position_left_for_d": true,
+    "blocking_unknowns": false,
+    "stage_result": "完整"
+  }
+}
