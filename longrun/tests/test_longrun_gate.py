@@ -173,6 +173,71 @@ class LongrunV2Tests(unittest.TestCase):
         self.c["completed_worker_refs"] = {"W001": ref("different/WORKER_RETURN.json")}
         self.block("validate-worker-return")
 
+    def codex_direct_fixture(self):
+        c = fixture()
+        codex = "codex:" + RUN + ":executor:E1"
+        c["binding"]["executors"] = [codex]
+        c["binding"]["workers"] = []
+        c["delegation"]["recipient"] = codex
+        c["executor_invocation"]["recipient"] = codex
+        c["executor_return"]["sender"] = codex
+        c["executor_return"].update(issued_order_refs=[], professional_state="REPORTED_COMPLETE",
+                                    remaining_scope_ref=None)
+        c["executor_receipt"]["recipient"] = codex
+        c["physical_bindings"] = {M: "manager-chat", codex: "new-e-session-id"}
+        c["invocation"] = c["executor_invocation"]
+        c["invocation_ref"] = c["executor_invocation_ref"]
+        c["call_index"] = {"C0002": c["executor_invocation_ref"]}
+        c["verified_origin_refs"] = [c["executor_invocation"]["origin_ref"]]
+        c["actions"][RUN + "/C0002"] = ["NOT_SENT"]
+        c["owner_workspace_path"] = "/tmp/run-one"
+        c["codex_executor_receipt"] = {
+            "run_id": RUN, "thread_id": "new-e-session-id",
+            "cwd": "/tmp/run-one", "realpath": "/tmp/run-one",
+            "model": "gpt-6.1-sol", "effort": "max"
+        }
+        c["expected_codex_model"] = "gpt-6.1-sol"
+        c["expected_codex_effort"] = "max"
+        c["workspace_exclusive_verified"] = True
+        grant = copy.deepcopy(c["binding"]["grants"][0])
+        grant["execution_context"] = "/tmp/run-one"
+        grant["authority_quote"] = "operation=read-test execution_context=/tmp/run-one allowed_writes=repo/path"
+        c["binding"]["grants"] = [grant]
+        c["owner_go_text"] = grant["authority_quote"]
+        c["executor_direct_grants"] = [copy.deepcopy(grant)]
+        return c
+
+    def test_codex_direct_executor_zero_worker_and_return(self):
+        c = self.codex_direct_fixture()
+        self.assertEqual(check("validate-binding", c)["run_id"], RUN)
+        self.assertEqual(check("validate-invocation", c)["recipient"], c["delegation"]["recipient"])
+        self.assertEqual(check("validate-executor-execution", c)["allowed_operations"], ["read-test"])
+        self.assertEqual(check("validate-executor-return", c)["return_to"], M)
+        c["result_kind"] = "executor"
+        self.assertEqual(check("route-return", c)["recipient"], M)
+
+    def test_codex_direct_executor_requires_binding_and_real_authority(self):
+        c = self.codex_direct_fixture()
+        c["executor_direct_grants"][0]["allowed_writes"] = ["unapproved/path"]
+        with self.assertRaises(ValueError):
+            check("validate-executor-execution", c)
+        c = self.codex_direct_fixture()
+        c["codex_executor_receipt"]["cwd"] = "/other-run"
+        with self.assertRaises(ValueError):
+            check("validate-executor-execution", c)
+        c = self.codex_direct_fixture()
+        c["workspace_exclusive_verified"] = False
+        with self.assertRaises(ValueError):
+            check("validate-executor-execution", c)
+        c = self.codex_direct_fixture()
+        c["codex_executor_receipt"]["thread_id"] = "old-worker-session"
+        with self.assertRaises(ValueError):
+            check("validate-executor-execution", c)
+        c = self.codex_direct_fixture()
+        c["codex_executor_receipt"]["model"] = "other-model"
+        with self.assertRaises(ValueError):
+            check("validate-executor-execution", c)
+
     def test_direct_executor_completion_needs_no_worker(self):
         e = self.c["executor_return"]
         e.update(issued_order_refs=[], professional_state="REPORTED_COMPLETE",
