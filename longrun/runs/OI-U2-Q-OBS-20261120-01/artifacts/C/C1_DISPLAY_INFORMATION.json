@@ -1,0 +1,143 @@
+{
+  "schema": "caegraph-display-information/v1",
+  "run_id": "OI-U2-Q-OBS-20261120-01",
+  "work_item_id": "OI-U2-Q-OBS-20261120-01-WI-C",
+  "stage_instance_id": "OI-U2-Q-OBS-20261120-01-M-C",
+  "delegation_id": "D003",
+  "feature": "PostTurnGroupDirectionalOrganizationFrp",
+  "a_source_refs": [
+    "daowei2026/observe-iterate@bf50bbe5c9447cb992af547e3f5f95f7465cae88:longrun/runs/OI-U2-Q-OBS-20261120-01/artifacts/A/FEATURE_OCCURRENCE_UNDERSTANDING.md",
+    "daowei2026/observe-iterate@61677f11bcdc41225d1df2615ca267f27e05a12f:longrun/runs/OI-U2-Q-OBS-20261120-01/artifacts/A/FEATURE_OCCURRENCE_UNDERSTANDING.json"
+  ],
+  "items": [
+    {
+      "information_id": "C1-01",
+      "a_source_id": "E-IN-03",
+      "name": "对象原价与 Calendar 样本",
+      "business_role": "input",
+      "display_decision": "yes",
+      "reason": "成员方向运动必须回到 rb/hc/i 的价格路径和时间位置核对；多品种价格也是读取后续 Q 观点的共同背景。",
+      "confirmed_positions": ["sampleActual", "sampleKnown", "sampleClock", "samplePosition"],
+      "identity_or_refs": ["object"],
+      "raw_values": ["samplePrice", "sampleClock"],
+      "main_output_relation": "原价与 Calendar 样本参与形成成员 endpoint、through、materialKnown、六量及其 availability。"
+    },
+    {
+      "information_id": "C1-02",
+      "a_source_id": "E-IN-02",
+      "name": "F candidate occurrence",
+      "business_role": "necessary_upstream_input",
+      "display_decision": "yes",
+      "reason": "Q 的问题身份、成员集合和准确上游版本来自 F candidate；必须能够从 Q revision 追到准确 candidate。",
+      "confirmed_positions": ["candidateKnown", "member turn actual", "member turn confirmation", "member turn known", "anchor", "deadline", "revisionEnd"],
+      "identity_or_refs": ["candidateReference.life", "candidateReference.revision", "candidatePrevious"],
+      "raw_values": ["members", "participation", "observation", "domainIncomplete", "currentClosed"],
+      "main_output_relation": "一个 F candidate Life 固定映射一道 Q 问题；每版 Q 保存准确 candidateReference。"
+    },
+    {
+      "information_id": "C1-03",
+      "a_source_id": "E-IN-01",
+      "name": "方向形成 source frame",
+      "business_role": "input",
+      "display_decision": "conditional",
+      "reason": "完整 source frame 字段过多，不机械生成独立面板；只在生命周期/审计 hover 中保留 progress、known、ended、patch/coverage 摘要，用于解释收紧、修订和 scope end。",
+      "confirmed_positions": ["progress", "known", "turn actual", "turn confirmation", "turn known"],
+      "identity_or_refs": ["TurnKey/ExactRef", "source firing order"],
+      "raw_values": ["turns", "patches", "ended", "coverage"],
+      "main_output_relation": "驱动 subscription 收紧、成员依据修订、观察阶段变化和真实责任结束。"
+    },
+    {
+      "information_id": "C1-04",
+      "a_source_id": "R-MID-02",
+      "name": "方向问题订阅状态",
+      "business_role": "necessary_intermediate",
+      "display_decision": "conditional",
+      "reason": "不把内部状态转移伪装成独立事件；在 Q 状态轨和 hover 中保留原始/当前 anchor、deadline、revisionEnd 及 closed 状态。",
+      "confirmed_positions": ["originalMotionAnchor", "originalMotionDeadline", "originalMotionRevisionEnd", "motionAnchor", "motionDeadline", "motionRevisionEnd"],
+      "identity_or_refs": ["DirectionalKey = F candidate Life", "subscribedCandidate exact"],
+      "raw_values": ["motionObservationClosed", "subscriptionMemberClocks"],
+      "main_output_relation": "界定 Q 的观察责任、修订责任和退休条件。"
+    },
+    {
+      "information_id": "C1-05",
+      "a_source_id": "R-MID-03",
+      "name": "成员方向运动快照",
+      "business_role": "necessary_intermediate_and_main_output_payload",
+      "display_decision": "yes",
+      "reason": "成员 asked/used/successor/endpoint、verdict、completion、basis、path 与六量是理解组资格和 Q revision 的直接事实。",
+      "confirmed_positions": ["asked turn actual/confirmation/known", "used turn actual/confirmation/known", "successor actual/confirmation/known", "endpoint actual/known/clock", "through", "materialKnown", "missingRange"],
+      "identity_or_refs": ["Q Life + member object", "asked/used/successor exact refs"],
+      "raw_values": ["completion", "verdict", "basis", "pathComplete", "ProgressP", "AmplitudeA", "DurationD", "PathLengthL", "EfficiencyE", "CounterC", "quantityAvailability"],
+      "main_output_relation": "全部成员快照共同构成一版 DirectionalOccurrence；成员行不是独立业务 occurrence。"
+    },
+    {
+      "information_id": "C1-06",
+      "a_source_id": "B-OUT-01",
+      "name": "Q 方向组织观点 occurrence",
+      "business_role": "business_main_output",
+      "display_decision": "yes",
+      "reason": "这是 Q 的核心业务输出，必须沿时间显示 Q Life/Revision/Previous、准确 F 引用、组级状态和全成员事实。",
+      "confirmed_positions": ["publication firing", "directionalKnown", "original/current anchor", "original/current deadline", "original/current revisionEnd"],
+      "identity_or_refs": ["directionalReference.life", "directionalReference.revision", "directionalPrevious", "candidateReference"],
+      "raw_values": ["directionalObservation", "directionalApplicability", "directionalQualification", "directionalMembers"],
+      "main_output_relation": "当前 DirectionalView 相对最后已发行观点变化时形成下一 Q revision。"
+    },
+    {
+      "information_id": "C1-07",
+      "a_source_id": "B-OUT-02",
+      "name": "Q 方向观察责任结束 occurrence",
+      "business_role": "business_main_output_lifecycle_end",
+      "display_decision": "yes",
+      "reason": "无新 Q 不表示结束；必须把显式 DirectionalDutyEnd 单独画出并追到最后成功 Q。",
+      "confirmed_positions": ["duty publication firing", "dutyKnown", "dutyProgress"],
+      "identity_or_refs": ["dutyQuestion", "dutyLastSuccessful.directionalReference"],
+      "raw_values": ["dutyEndReason"],
+      "main_output_relation": "结束一个已发行 Q Life 的当前责任，但不创建新 Q revision。"
+    },
+    {
+      "information_id": "C1-08",
+      "a_source_id": "E-MID-01",
+      "name": "DirectionalFrame",
+      "business_role": "intermediate_input_alignment",
+      "display_decision": "no_separate_panel",
+      "reason": "它只对齐三类输入，不建立业务 Life；其输入事实已在价格、F candidate 和审计表达中可追溯。",
+      "confirmed_positions": ["outer firing and carried positions"],
+      "identity_or_refs": ["no independent business identity"],
+      "raw_values": ["directionalSourceFrame", "directionalSamples", "directionalCandidates"],
+      "main_output_relation": "进入 subscription、motion、publication。"
+    },
+    {
+      "information_id": "C1-09",
+      "a_source_id": "E-MID-04",
+      "name": "DirectionalBatch",
+      "business_role": "intermediate_publication_batch",
+      "display_decision": "no_separate_panel",
+      "reason": "批次没有独立业务身份；同拍多个 Q revision/duty end 通过各自标记和精确身份表达。",
+      "confirmed_positions": ["batch firing"],
+      "identity_or_refs": ["no independent business Life"],
+      "raw_values": ["batchOccurrences", "batchEnds"],
+      "main_output_relation": "把本 firing 的观点和结束送入正式存储。"
+    },
+    {
+      "information_id": "C1-10",
+      "a_source_id": "E-OUT-01",
+      "name": "DirectionalOrganizationRecord envelope 与 definition",
+      "business_role": "publication_envelope_and_metadata",
+      "display_decision": "conditional_metadata",
+      "reason": "envelope/definition 不是业务 occurrence；definition 在页面标题/审计元数据中显示方法、方向、Δ、12Δ/6Δ/2，envelope 不单独造事件。",
+      "confirmed_positions": ["envelope firing"],
+      "identity_or_refs": ["definition exact refs", "record-contained Q/duty identities"],
+      "raw_values": ["direction", "delta", "observationMultiples", "revisionMultiples", "minimumMembers", "bindings"],
+      "main_output_relation": "固定方法元数据和正式存储载体，不改变业务事件边界。"
+    }
+  ],
+  "invariants": [
+    "DirectionalOccurrence is a whole-group viewpoint; member rows are nested payload, not independent events.",
+    "DirectionalDutyEnd is explicit and separate; absence of a new Q occurrence is not an end.",
+    "Publication, directionalKnown, member actual/confirmation/known, endpoint and Calendar positions remain distinct.",
+    "F and Q identities remain distinct and connected by candidateReference.",
+    "Missing quantity values retain availability semantics and are never converted to zero.",
+    "Definition, batch and storage envelope are not promoted to business occurrences."
+  ],
+  "stage_decision": "complete"
+}
