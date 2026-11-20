@@ -1,0 +1,36 @@
+{
+  "schema": "caegraph-definition-checks/v1",
+  "run_id": "OI-U2-Q-OBS-20261120-01",
+  "delegation_id": "D004",
+  "definition_id": "Q-CAEGRAPH-D004-v1",
+  "modules": [
+    {"file":"q_caegraph_common.py","ref":"daowei2026/observe-iterate@3dc03ecfea52d38fa7ce965d17710f0ebb7b4021:longrun/runs/OI-U2-Q-OBS-20261120-01/artifacts/D/q_caegraph_common.py","sha256":"e19cafdac17f5e3e4465355dc952f4a0c1e9fd589ae219e81c85c37eecd42e2c","bytes":14725},
+    {"file":"q_caegraph_adapter_support.py","ref":"daowei2026/observe-iterate@cf6a5d496f6b3bfafdadcbd7f11f30a5a182b158:longrun/runs/OI-U2-Q-OBS-20261120-01/artifacts/D/q_caegraph_adapter_support.py","sha256":"ac831b9ae89ca14abf8540bcba4423de7429d45b23f8ecc0f43fed484be9b635","bytes":11328},
+    {"file":"q_caegraph_adapter_members.py","ref":"daowei2026/observe-iterate@0fcb881f99c4035dc81de154f34d86e6994b1227:longrun/runs/OI-U2-Q-OBS-20261120-01/artifacts/D/q_caegraph_adapter_members.py","sha256":"0fc64745db2531d574f536aebcaac7a3e013f8dd972de821b6586fed74a38349","bytes":7121},
+    {"file":"q_caegraph_adapter.py","ref":"daowei2026/observe-iterate@dcdf9949f1297f854dbd852f75a9f39ef268b72b:longrun/runs/OI-U2-Q-OBS-20261120-01/artifacts/D/q_caegraph_adapter.py","sha256":"cafd6106b31cca4fceb551ec2b25aaee699086043abfdd84cbcd95606951fc4c","bytes":11963},
+    {"file":"q_caegraph_plotters_base.py","ref":"daowei2026/observe-iterate@eac1cb3342ff92961bf8055ac4c04042b94aeed4:longrun/runs/OI-U2-Q-OBS-20261120-01/artifacts/D/q_caegraph_plotters_base.py","sha256":"04ea6d345576f74eb38adc6b51c14c2ec72448275832e8420bff4366810e06a8","bytes":7527},
+    {"file":"q_caegraph_plotters_member.py","ref":"daowei2026/observe-iterate@23fcb47fff8494df138445fc5ee705fe43a36764:longrun/runs/OI-U2-Q-OBS-20261120-01/artifacts/D/q_caegraph_plotters_member.py","sha256":"53de928c4ac4ee6ed660bd01f54b6b05e072c0e27de28d25f61a4d0aea87d3c5","bytes":8938},
+    {"file":"q_caegraph_plotters_build.py","ref":"daowei2026/observe-iterate@6ffa0e4b6ebb394f61fcb52277f7c27c69fd35b9:longrun/runs/OI-U2-Q-OBS-20261120-01/artifacts/D/q_caegraph_plotters_build.py","sha256":"57f8b421fb721ba69c9274214e758e5b70b8506016dc91c36c9075c732faed4d","bytes":7212},
+    {"file":"q_caegraph_plotters.py","ref":"daowei2026/observe-iterate@af96601fe525f2e6059ae3bd976b3b19de3060e7:longrun/runs/OI-U2-Q-OBS-20261120-01/artifacts/D/q_caegraph_plotters.py","sha256":"87b56d7973533e044fd30a3208c058f42da4eae16a01b8eb139660d44f3770c0","bytes":258},
+    {"file":"q_caegraph_definition.py","ref":"daowei2026/observe-iterate@9e03c89211ec4665763e1f609b37483c80c72930:longrun/runs/OI-U2-Q-OBS-20261120-01/artifacts/D/q_caegraph_definition.py","sha256":"c429bbc1dd2b0c63c5ef3d2b9c7406644e3c921690dee3da19bbbbeb723e1dea","bytes":8355}
+  ],
+  "checks": [
+    {"id":"CHK-01","item":"Python syntax","result":"PASS","evidence":"python -m py_compile q_caegraph_*.py"},
+    {"id":"CHK-02","item":"AST parse","result":"PASS","evidence":"all nine modules parsed by Python compiler"},
+    {"id":"CHK-03","item":"lightweight module import and empty canonical-frame contract","result":"PASS","evidence":"stubbed locked imports; imported all modules; QDisplayFrames.validate accepted a valid empty result"},
+    {"id":"CHK-04","item":"exact instance binding","result":"PASS","evidence":"make_features exact params; only second item q; raw KLine(freq='5m') for price"},
+    {"id":"CHK-05","item":"B position binding","result":"PASS","evidence":"TA_updto20240229_DBA/steel/night_end_at_2300/rb,hc,i and inclusive 2021-01-01..2022-12-31 PlotSet timespan"},
+    {"id":"CHK-06","item":"A field binding","result":"PASS","evidence":"formal F candidate, Q exact/Previous, group states, all member positions, six quantities with availability, explicit duty end"},
+    {"id":"CHK-07","item":"C2 semantic preservation","result":"PASS","evidence":"P1 ratio+raw, P2 lifecycle, P3 group state, P4 member geometry/audit, P5 exact reference audit"},
+    {"id":"CHK-08","item":"PlotData tree exposure","result":"PASS","evidence":"all custom CDS use ctx.add_cds; KPriceLine uses locked uplot path"},
+    {"id":"CHK-09","item":"silent rerun prevention","result":"PASS","evidence":"default read; rerun requires both --mode rerun and --allow-full-period-rerun; F then Q only; V excluded"},
+    {"id":"CHK-10","item":"placeholder scan","result":"PASS","evidence":"no TODO/FIXME/NotImplemented or unresolved injection placeholder"},
+    {"id":"CHK-11","item":"target mquant/tis/uplot import and real data execution","result":"NOT_RUN","evidence":"D does not run final graph; E must execute in /dwdhome/fy/BASE_E6_2_copy"},
+    {"id":"CHK-12","item":"real HTML and PlotData output","result":"NOT_RUN","evidence":"expected outputs are reserved under artifacts/E and are produced only by E"}
+  ],
+  "expected_e_command": "cd <run checkout>/longrun/runs/OI-U2-Q-OBS-20261120-01/artifacts/D && python q_caegraph_definition.py --mode read",
+  "expected_html": "longrun/runs/OI-U2-Q-OBS-20261120-01/artifacts/E/Q_CAEGRAPH.html",
+  "expected_data_dir": "longrun/runs/OI-U2-Q-OBS-20261120-01/artifacts/E/Q_CAEGRAPH_DATA",
+  "definition_level_result": "PASS",
+  "e_runtime_result": "NOT_RUN"
+}
