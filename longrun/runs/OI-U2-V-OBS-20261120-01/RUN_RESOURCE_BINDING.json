@@ -1,0 +1,33 @@
+{
+  "schema": "observe-iterate-run-resource/v1",
+  "run_id": "OI-U2-V-OBS-20261120-01",
+  "owner_go_ref": "daowei2026/observe-iterate@14610d4e6dbcf1af5ea024754f9da6eb5a901e8c:longrun/runs/OI-U2-V-OBS-20261120-01/OWNER_START.md",
+  "owner_declared_linux_workspace": "/dwdhome/fy/BASE_E6_2_copy",
+  "worker_host": "dw-VMware-Virtual-Platform",
+  "verified_realpath": "/dwdhome/fy/BASE_E6_2_copy",
+  "verified_on_worker_host": true,
+  "verification_evidence_ref": "daowei2026/observe-iterate@14610d4e6dbcf1af5ea024754f9da6eb5a901e8c:longrun/runs/OI-U2-V-OBS-20261120-01/WORKSPACE_PREFLIGHT.public.json",
+  "actual_worker_thread_binding_ref": null,
+  "adopted_source_refs": [
+    "daowei2026/cgpterm@d4ba9f8711f5d20633f789cacfe41c1aa8ba686a:.agents/skills/observe-iterate-longrun-v2-controller/SKILL.md",
+    "daowei2026/observe-iterate@f7e8ff43fabfa11b499e2ce9e62dbc46b1b8b288:longrun/contracts/LONGRUN_PROTOCOL_V2.md",
+    "daowei2026/observe-iterate@3efb2719a66a2fcc1bb86f33b7b0a2258f9bfbf7:task-inputs/u2-fqv-observation/V_OBSERVATION_RUN_INPUT.md"
+  ],
+  "external_write_targets": [
+    {
+      "execution_context": "daowei2026/observe-iterate@runs/OI-U2-V-OBS-20261120-01",
+      "allowed_writes": [
+        "longrun/runs/OI-U2-V-OBS-20261120-01/**"
+      ],
+      "single_writer": "本Run动作账本；Run分支一项条件写入，Registry expected_sha条件更新。首次W前另核准确Worker/cwd和共享写面。"
+    },
+    {
+      "execution_context": "daowei2026/observe-iterate@feat/observe-iterate-multirun-controller-v1-20261116",
+      "allowed_writes": [
+        "longrun/controller/RUN_REGISTRY.json"
+      ],
+      "single_writer": "本Run动作账本；Run分支一项条件写入，Registry expected_sha条件更新。首次W前另核准确Worker/cwd和共享写面。"
+    }
+  ],
+  "notes": "Owner在Q暂停期间明确移交该目录给V独占。Q未完成，原Binding和Registry@40630e6d97ec28d2b519edf3ddea268527c760ee以及暂停恢复入口保留；Q不得自动恢复，恢复前须再次取得资源。本Run仅v，f/q必要上游。E Skill执行Chat按Owner新指令交Codex，原E专业Skill完整不改。尚无V物理Worker，首张合法W前才创建专用Worker。不继承F环境或uplot版本例外。"
+}
