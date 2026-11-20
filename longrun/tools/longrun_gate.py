@@ -15,7 +15,8 @@ SCHEMA = json.loads(
     (Path(__file__).resolve().parents[1] / "contracts/longrun_schema_v2.json").read_text("utf-8")
 )
 ACTIONS = (
-    "validate-binding", "validate-invocation", "validate-delegation", "validate-order",\n    "validate-executor-execution",
+    "validate-binding", "validate-invocation", "validate-delegation", "validate-order",
+    "validate-executor-execution",
     "validate-worker-return", "validate-executor-return", "validate-manager-return",
     "route-return", "reconcile-actions",
 )
