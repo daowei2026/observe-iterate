@@ -13,4 +13,4 @@
 
 现有 C/D/W、V2 Return、Worker 回原签发 executor 的通信路由及版本锁不变；本次不新增 Schema、自动 Gate 或状态引擎。
 
-**新版 E 执行环境**：E 默认为本 Run 独立 Codex executor；A～D 默认 ChatGPT executor。两者使用相同的 D/C/专业 Return 路由。E 零 W 时依真实操作与图/数据专业交付，不靠 W 回执判完成；旧 Run 按原采用版本。\n
+**新版 E 执行环境**：E 默认为本 Run 独立 Codex executor；A～D 默认 ChatGPT executor。两者使用相同的 D/C/专业 Return 路由。E 零 W 时依真实操作与图/数据专业交付，不靠 W 回执判完成；旧 Run 按原采用版本。
