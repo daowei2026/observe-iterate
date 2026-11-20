@@ -1,0 +1,667 @@
+{
+  "schema": "feature-occurrence-understanding/v1",
+  "run_id": "OI-U2-Q-OBS-20261120-01",
+  "work_id": "OI-U2-Q-OBS",
+  "business_case_id": "U2-FQV-Q",
+  "work_item_id": "OI-U2-Q-OBS-20261120-01-WI-A",
+  "stage_instance_id": "OI-U2-Q-OBS-20261120-01-M-A",
+  "delegation_id": "D001",
+  "producer": "chatgpt:OI-U2-Q-OBS-20261120-01:executor:E1",
+  "stage_status": "COMPLETE",
+  "feature": {
+    "name": "PostTurnGroupDirectionalOrganizationFrp",
+    "business_name": "Q｜转折后成员组的方向组织",
+    "haskell_version": "daowei2026/frp@67711c492da909ed0f044f357beb278abf7fc71c",
+    "python_version": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767",
+    "instance": {
+      "dataset": "TA_updto20240229_DBA",
+      "block": "steel",
+      "calendar": "night_end_at_2300",
+      "objects": ["rb", "hc", "i"],
+      "scale": "5m",
+      "direction": "up",
+      "common_directional_motion_delta": 600.0,
+      "source_core_multiples": 30.0,
+      "construction": "make_features(...) 的第二项 q；由 PostTurnGroupDirectionalOrganizationFrp.from_formation(f, ...) 析构",
+      "necessary_upstream": "CommonPriceTurnGroupCandidatesFrp（F，仅作为 Q 的必要输入来源）"
+    }
+  },
+  "scope": {
+    "included": [
+      "当前 Q 实例的直接输入 Event、嵌套业务 occurrence、业务主输出、生命周期收口和中间处理结果",
+      "每类事件自己的发表位置及 payload 内携带的实际、已知、确认、端点和进展位置",
+      "F→Q 的必要上游关系、Q 自身 Life/Revision/Previous 关系及公开读取关系"
+    ],
+    "excluded": [
+      "运行特征",
+      "选择观察品种或时间",
+      "设计 CAEGraph 或展示方案",
+      "把 F 的阶段交付计为 Q 的阶段交付",
+      "V、合理性分析、参数标定、收益或资金判断"
+    ]
+  },
+  "sources": [
+    {
+      "source_id": "S01",
+      "ref": "daowei2026/observe-iterate@f7e8ff43fabfa11b499e2ce9e62dbc46b1b8b288:skills/observation-material-preparation/feature-occurrence-understanding/SKILL.md",
+      "entry": "A Skill",
+      "responsibility": "阶段边界、主输出判断与完成条件",
+      "verified": true
+    },
+    {
+      "source_id": "S02",
+      "ref": "daowei2026/observe-iterate@f7e8ff43fabfa11b499e2ce9e62dbc46b1b8b288:skills/observation-material-preparation/feature-occurrence-understanding/WORKFLOW.md",
+      "entry": "A1-A7",
+      "responsibility": "事件、位置、业务角色与关系的核对流程",
+      "verified": true
+    },
+    {
+      "source_id": "S03",
+      "ref": "daowei2026/observe-iterate@f7e8ff43fabfa11b499e2ce9e62dbc46b1b8b288:skills/observation-material-preparation/feature-occurrence-understanding/IO_SPEC.md",
+      "entry": "字段级 I/O",
+      "responsibility": "本机读产物字段合同",
+      "verified": true
+    },
+    {
+      "source_id": "S04",
+      "ref": "daowei2026/observe-iterate@3efb2719a66a2fcc1bb86f33b7b0a2258f9bfbf7:task-inputs/u2-fqv-observation/Q_OBSERVATION_RUN_INPUT.md",
+      "entry": "Q run input",
+      "responsibility": "业务范围与实例定位",
+      "verified": true
+    },
+    {
+      "source_id": "S05",
+      "ref": "daowei2026/observe-iterate@f7e8ff43fabfa11b499e2ce9e62dbc46b1b8b288:task-inputs/u2-fqv-observation/实例运行脚本.py",
+      "entry": "q 实例断言与公开读取",
+      "responsibility": "实例类型、对象范围和读取入口",
+      "verified": true
+    },
+    {
+      "source_id": "S06",
+      "ref": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767:frp/fqv_kline_example.py",
+      "entry": "make_features",
+      "responsibility": "F→Q 构造链",
+      "verified": true
+    },
+    {
+      "source_id": "S07",
+      "ref": "daowei2026/feature-refinement-implementation-agent-evolution@2d3f56a7944c44b2a1c441c15eebf9659835136b:agent_evolution/pilot_cases/network-dynamic-ceps-factory-u2-u3/configurations/fqv-kline-rb-hc-i.json",
+      "entry": "fqv-kline-rb-hc-i",
+      "responsibility": "展开实例参数",
+      "verified": true
+    },
+    {
+      "source_id": "S08",
+      "ref": "daowei2026/frp@67711c492da909ed0f044f357beb278abf7fc71c:src/Frp/Instance/ISL/Opportunity/PostTurnGroupDirectionalOrganization.hs",
+      "entry": "directionalOrganizationFrpWithBridge / buildDirectionalOrganization",
+      "responsibility": "Q 主 FRP 管线、Event 边界和存储出口",
+      "verified": true
+    },
+    {
+      "source_id": "S09",
+      "ref": "daowei2026/frp@67711c492da909ed0f044f357beb278abf7fc71c:src/Frp/Instance/ISL/Opportunity/U2/DirectionalOrganizationTypes.hs",
+      "entry": "DirectionalFrame / DirectionalOccurrence / DirectionalDutyEnd / DirectionalBatch",
+      "responsibility": "Q occurrence 与中间状态类型",
+      "verified": true
+    },
+    {
+      "source_id": "S10",
+      "ref": "daowei2026/frp@67711c492da909ed0f044f357beb278abf7fc71c:src/Frp/Instance/ISL/Opportunity/U2/DirectionalOrganizationSubscription.hs",
+      "entry": "subscription update",
+      "responsibility": "F Life 订阅、成员身份和观察界",
+      "verified": true
+    },
+    {
+      "source_id": "S11",
+      "ref": "daowei2026/frp@67711c492da909ed0f044f357beb278abf7fc71c:src/Frp/Instance/ISL/Opportunity/U2/DirectionalOrganizationMotion.hs",
+      "entry": "member motion update",
+      "responsibility": "原价/Calendar 到成员运动快照与六量",
+      "verified": true
+    },
+    {
+      "source_id": "S12",
+      "ref": "daowei2026/frp@67711c492da909ed0f044f357beb278abf7fc71c:src/Frp/Instance/ISL/Opportunity/U2/DirectionalOrganizationPublication.hs",
+      "entry": "publication / issue",
+      "responsibility": "Q Life/Revision、变化发行、资格与责任收口",
+      "verified": true
+    },
+    {
+      "source_id": "S13",
+      "ref": "daowei2026/frp@67711c492da909ed0f044f357beb278abf7fc71c:src/Frp/Instance/ISL/Opportunity/U2/DirectionalOrganizationStorage.hs",
+      "entry": "DirectionalOrganizationRecord",
+      "responsibility": "定义、Q occurrence、成员和 duty end 的正式物理表示",
+      "verified": true
+    },
+    {
+      "source_id": "S14",
+      "ref": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767:frp/PostTurnGroupDirectionalOrganization.py",
+      "entry": "from_formation / read_exact / read_at_knowledge / to_df / to_dfs",
+      "responsibility": "Python 构造、准确修订与 As-Of 公开读取",
+      "verified": true
+    },
+    {
+      "source_id": "S15",
+      "ref": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767:frp/_U2DirectionalOrganizationFields.py",
+      "entry": "canonical tables and fields",
+      "responsibility": "公开表字段与别名",
+      "verified": true
+    },
+    {
+      "source_id": "S16",
+      "ref": "daowei2026/frp@67711c492da909ed0f044f357beb278abf7fc71c:src/Frp/Instance/ISL/Opportunity/CommonPriceTurnGroupCandidates.hs",
+      "entry": "F store/read bridge",
+      "responsibility": "Q 必要上游 F 的公开候选来源",
+      "verified": true
+    },
+    {
+      "source_id": "S17",
+      "ref": "daowei2026/frp@67711c492da909ed0f044f357beb278abf7fc71c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateTypes.hs",
+      "entry": "CandidateOccurrence",
+      "responsibility": "F candidate Life/Revision、成员和观察语义",
+      "verified": true
+    },
+    {
+      "source_id": "S18",
+      "ref": "daowei2026/frp@67711c492da909ed0f044f357beb278abf7fc71c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateMaterial.hs",
+      "entry": "FormationFrame / source material",
+      "responsibility": "直接 source frame 与 Turn/Patch/coverage 事实",
+      "verified": true
+    },
+    {
+      "source_id": "S19",
+      "ref": "daowei2026/frp@67711c492da909ed0f044f357beb278abf7fc71c:src/Frp/Instance/ISL/Opportunity/U2/DirectionalFormationReader.hs",
+      "entry": "readDirectionalFormationEvents",
+      "responsibility": "F 存储记录到 Q 候选 occurrence 的还原",
+      "verified": true
+    }
+  ],
+  "event_catalog": [
+    {
+      "event_id": "E-IN-01",
+      "name": "方向形成 source frame 事件",
+      "code_name": "FrpEvent (Tick FormationFrame)",
+      "direction": "input",
+      "output_role": null,
+      "carrier": "Event/Tick",
+      "occurrence_meaning": "一次已接受的 F 源材料 frame；给出当前 Calendar 进展、知识前沿、Turn/修订补丁、范围结束与覆盖事实。",
+      "own_position": "外层 Tick 的当前输入 firing；frame 内另带 progress 与 known。",
+      "carried_positions": ["FormationFrame.progress", "FormationFrame.known", "各 GroupTurn.actual/confirmation/known", "patch 的实际与知识位置"],
+      "scope": "rb/hc/i 的同一 F source world",
+      "identity": ["TurnKey/ExactRef", "source frame 顺序"],
+      "revision": ["patch/retract/scope-end 语义"],
+      "payload": [
+        {"field": "progress", "meaning": "Calendar 开放坐标进展", "type": "Double", "missing": false, "position": true},
+        {"field": "known", "meaning": "该 frame 的知识前沿", "type": "Int64", "missing": false, "position": true},
+        {"field": "turns", "meaning": "当前新 Turn 材料", "type": "[GroupTurn]", "missing": false, "position": false},
+        {"field": "patches", "meaning": "既有 Turn 的修订/撤回等补丁", "type": "[FormationPatch]", "missing": false, "position": false},
+        {"field": "ended", "meaning": "源范围是否结束", "type": "Bool", "missing": false, "position": false},
+        {"field": "coverage", "meaning": "当前 source coverage", "type": "source-defined", "missing": false, "position": false}
+      ],
+      "produced_at": "F source pipeline / GroupCandidateMaterial",
+      "consumed_at": "PostTurnGroupDirectionalOrganization.buildDirectionalInputEvents",
+      "public_read": "不作为 Q 独立公开表；其事实进入 Q 定义、订阅、成员和收口",
+      "evidence": ["S08", "S09", "S18"],
+      "unconfirmed": []
+    },
+    {
+      "event_id": "E-IN-02",
+      "name": "F 候选 occurrence 事件",
+      "code_name": "CandidateOccurrence event reconstructed by readDirectionalFormationEvents",
+      "direction": "input",
+      "output_role": null,
+      "carrier": "Event；同一 firing 可含多个 CandidateOccurrence",
+      "occurrence_meaning": "F 对一个组候选 Life 的新建或准确修订；一次 occurrence 给出当前成员、关系依据、观察状态和准确候选修订。",
+      "own_position": "F 存储/读取 firing 的外层时点；业务知识位置为 candidateKnown。",
+      "carried_positions": ["candidateKnown", "各 member turn.actual", "turn.confirmation", "turn.known", "anchor/deadline/revisionEnd"],
+      "scope": "一个 F candidate group；成员至少两个且对象身份唯一",
+      "identity": ["candidateReference.life", "candidateReference.revision"],
+      "revision": ["candidatePrevious", "同一 Life 的 Revision 链"],
+      "payload": [
+        {"field": "candidateReference", "meaning": "F 候选准确 Life/Revision", "type": "ExactRef", "missing": false, "position": false},
+        {"field": "candidatePrevious", "meaning": "上一准确候选修订", "type": "Maybe ExactRef", "missing": true, "missing_meaning": "该 Life 的首个候选 occurrence", "position": false},
+        {"field": "candidateKnown", "meaning": "该候选修订可知时点", "type": "Int64", "missing": false, "position": true},
+        {"field": "members", "meaning": "候选中的对象与准确 Turn", "type": "[CandidateMember/GroupTurn]", "missing": false, "position": false},
+        {"field": "basis/relations", "meaning": "支持、重叠、区间与形成依据", "type": "candidate-body fields", "missing": false, "position": false},
+        {"field": "participation", "meaning": "候选参与状态", "type": "CandidateParticipation", "missing": false, "position": false},
+        {"field": "observation", "meaning": "候选观察状态", "type": "CandidateObservation", "missing": false, "position": false},
+        {"field": "domainIncomplete/currentClosed", "meaning": "领域不完整与当前闭合状态", "type": "Bool/status", "missing": false, "position": false},
+        {"field": "anchor/deadline/revisionEnd", "meaning": "候选本身的 Calendar 界", "type": "Double", "missing": false, "position": true}
+      ],
+      "produced_at": "CommonPriceTurnGroupCandidates + DirectionalFormationReader",
+      "consumed_at": "DirectionalOrganizationSubscription",
+      "public_read": "F 自己可读；在 Q 中仅保留 candidate exact 引用与必要成员材料",
+      "evidence": ["S16", "S17", "S19"],
+      "unconfirmed": []
+    },
+    {
+      "event_id": "E-IN-03",
+      "name": "对象原价与 Calendar 样本事件",
+      "code_name": "FrpEvent (Tick [(Text, MotionSample)])",
+      "direction": "input",
+      "output_role": null,
+      "carrier": "Event/Tick",
+      "occurrence_meaning": "同一正常输入 firing 下，rb/hc/i 各对象可用的原价与独立 Calendar 事实；缺价与缺 Clock 分开表达且不前填。",
+      "own_position": "外层 Tick firing；同拍样本必须属于同一输入世界。",
+      "carried_positions": ["sampleActual", "sampleKnown", "sampleClock.groupClockValue/groupClockKnown", "samplePosition"],
+      "scope": "对象 Map/list；本实例为 rb/hc/i",
+      "identity": ["object Text", "sampleActual/position"],
+      "revision": ["sampleKnown 允许后到更正进入后续 Q 修订"],
+      "payload": [
+        {"field": "sampleActual", "meaning": "原材料实际位置", "type": "Int64", "missing": false, "position": true},
+        {"field": "sampleKnown", "meaning": "该材料可知时点", "type": "Int64", "missing": false, "position": true},
+        {"field": "samplePrice", "meaning": "有限原价", "type": "Maybe Double", "missing": true, "missing_meaning": "缺价；不是 0，也不前填", "position": false},
+        {"field": "sampleClock", "meaning": "独立 Calendar 事实", "type": "Maybe FormationClock", "missing": true, "missing_meaning": "缺 Calendar；与缺价独立", "position": true},
+        {"field": "samplePosition", "meaning": "原采样格位置，用于连续覆盖", "type": "Maybe Double", "missing": true, "missing_meaning": "无可用格位置", "position": true}
+      ],
+      "produced_at": "各对象 Kline/price input binding",
+      "consumed_at": "DirectionalOrganizationMotion",
+      "public_read": "不作为 Q 独立公开表；形成成员 endpoint、through、quantity 与 data status",
+      "evidence": ["S06", "S08", "S09", "S11"],
+      "unconfirmed": []
+    },
+    {
+      "event_id": "E-MID-01",
+      "name": "Q 同拍方向输入事件",
+      "code_name": "DirectionalFrame / directionalInputEvents",
+      "direction": "output",
+      "output_role": "intermediate",
+      "carrier": "内部 Event/Tick",
+      "occurrence_meaning": "将同一 firing 的 source frame、对象样本和已决定的 F candidate occurrences 对齐后形成 Q 的一次完整输入。",
+      "own_position": "继承当前合并输入 Tick 的 firing。",
+      "carried_positions": ["source frame progress/known", "样本 actual/known/clock", "candidate known 与成员 Turn 位置"],
+      "scope": "本次 Q universe 的同拍输入",
+      "identity": ["外层 firing + 各内层业务身份"],
+      "revision": ["不建立独立业务 Life；只传递输入内各自 revision"],
+      "payload": [
+        {"field": "directionalSourceFrame", "meaning": "当前 source frame", "type": "FormationFrame", "missing": false, "position": false},
+        {"field": "directionalSamples", "meaning": "同拍对象样本", "type": "[(Text, MotionSample)]", "missing": false, "position": false},
+        {"field": "directionalCandidates", "meaning": "同拍 F candidate occurrences", "type": "[CandidateOccurrence]", "missing": false, "position": false}
+      ],
+      "produced_at": "buildDirectionalInputEvents",
+      "consumed_at": "subscription → motion → publication",
+      "public_read": null,
+      "evidence": ["S08", "S09"],
+      "unconfirmed": []
+    },
+    {
+      "event_id": "R-MID-02",
+      "name": "方向问题订阅更新结果",
+      "code_name": "SubscriptionState / DirectionalSubscription",
+      "direction": "output",
+      "output_role": "intermediate",
+      "carrier": "同一 Q firing 内的状态转移结果；不是独立业务 Event",
+      "occurrence_meaning": "为每个 F candidate Life 建立或修订一个方向观察问题，固定成员身份并维护原始/收紧后的观察界与退出状态。",
+      "own_position": "无独立发表位置；由 E-MID-01 的当前 firing 更新。",
+      "carried_positions": ["originalMotionAnchor/deadline/revisionEnd", "motionAnchor/deadline/revisionEnd", "成员 Clock"],
+      "scope": "每个 F candidate Life 一个 DirectionalKey",
+      "identity": ["DirectionalKey = F candidate Life"],
+      "revision": ["subscribedCandidate 的准确 F revision；同一 Life 的成员集合不得变换身份"],
+      "payload": [
+        {"field": "subscribedCandidate", "meaning": "当前准确 F 候选", "type": "CandidateOccurrence", "missing": false, "position": false},
+        {"field": "originalMotionAnchor/deadline/revisionEnd", "meaning": "原题固定观察界", "type": "Double", "missing": false, "position": true},
+        {"field": "motionAnchor/deadline/revisionEnd", "meaning": "按合法 Clock 只可收紧的当前界", "type": "Double", "missing": false, "position": true},
+        {"field": "motionObservationClosed", "meaning": "到期后不重开", "type": "Bool", "missing": false, "position": false},
+        {"field": "subscriptionMemberClocks", "meaning": "各成员当前 Clock 收紧依据", "type": "Map TurnKey (Maybe FormationClock)", "missing": true, "missing_meaning": "该成员当前缺合法 Clock", "position": true}
+      ],
+      "produced_at": "DirectionalOrganizationSubscription",
+      "consumed_at": "DirectionalOrganizationMotion / Publication",
+      "public_read": "观察界和 candidate exact 进入 Q occurrence；订阅状态本身不单列",
+      "evidence": ["S09", "S10"],
+      "unconfirmed": []
+    },
+    {
+      "event_id": "R-MID-03",
+      "name": "成员方向运动快照",
+      "code_name": "DirectionalMember / DirectionalView",
+      "direction": "output",
+      "output_role": "intermediate",
+      "carrier": "同一 Q firing 内的当前结果；随 Q occurrence 嵌套发表，不是独立 Event",
+      "occurrence_meaning": "对候选每个成员，以其被问 Turn、合法修订 Turn、原价和 Calendar 路径形成当前观察端点、六量、完成状态和方向判词。",
+      "own_position": "无独立 firing；在形成新的 Q 观点时随该 Q occurrence 发表。",
+      "carried_positions": ["asked/used/successor Turn 的 actual/confirmation/known", "endpoint actual/known/clock", "through", "materialKnown", "missingRange"],
+      "scope": "Q candidate 的每个对象成员",
+      "identity": ["Q DirectionalKey + motionObject"],
+      "revision": ["motionBasisCondition 区分原候选依据与源修订依据；快照随 Q revision 更新"],
+      "payload": [
+        {"field": "motionObject", "meaning": "成员对象", "type": "Text", "missing": false, "position": false},
+        {"field": "motionAskedTurn", "meaning": "F 候选明确问的 Turn", "type": "GroupTurn", "missing": false, "position": true},
+        {"field": "motionUsedTurn", "meaning": "合法源修订后实际量测基础", "type": "GroupTurn", "missing": false, "position": true},
+        {"field": "motionSuccessor", "meaning": "真正紧邻后继；存在时表示完成", "type": "Maybe GroupTurn", "missing": true, "missing_meaning": "仍在工作或尚无真实后继", "position": true},
+        {"field": "motionEndpoint", "meaning": "当前实际量测端点", "type": "Maybe MotionSample", "missing": true, "missing_meaning": "端点不可用/尚未形成", "position": true},
+        {"field": "motionCompletion", "meaning": "工作中或已完成", "type": "MotionCompletion", "missing": false, "position": false},
+        {"field": "motionQuantities", "meaning": "Progress/Amplitude/Duration/PathLength/Efficiency/Counter 六量；数值、缺件与不适用分开", "type": "[DirectionalQuantity]", "missing": false, "position": false},
+        {"field": "motionVerdict", "meaning": "支持、反证、冲突、未决或撤回等成员判词", "type": "MemberVerdict", "missing": false, "position": false},
+        {"field": "motionBasisCondition", "meaning": "候选原依据或成员依据已修订", "type": "MemberBasisCondition", "missing": false, "position": false},
+        {"field": "motionPathComplete", "meaning": "当前路径材料是否完整", "type": "Bool", "missing": false, "position": false},
+        {"field": "motionThrough", "meaning": "已观察的开放 Calendar 边界", "type": "Double", "missing": false, "position": true},
+        {"field": "motionMaterialKnown", "meaning": "真正参与量测的材料知识前沿", "type": "Int64", "missing": false, "position": true},
+        {"field": "motionMissingRange", "meaning": "缺件路径的有限实际包络", "type": "Maybe (Int64, Int64)", "missing": true, "missing_meaning": "没有已识别缺件范围", "position": true}
+      ],
+      "produced_at": "DirectionalOrganizationMotion",
+      "consumed_at": "DirectionalOrganizationPublication",
+      "public_read": "Q members 表；成员行是 Q occurrence payload，不是独立业务 occurrence",
+      "evidence": ["S09", "S11", "S13", "S15"],
+      "unconfirmed": []
+    },
+    {
+      "event_id": "E-MID-04",
+      "name": "Q 方向发行批次事件",
+      "code_name": "FrpEvent (Tick DirectionalBatch)",
+      "direction": "output",
+      "output_role": "intermediate",
+      "carrier": "内部 Event/Tick",
+      "occurrence_meaning": "一次 Q firing 中按真实顺序汇总当前输入、所有新 Q occurrences 和所有真实责任收口。",
+      "own_position": "当前合并输入 Tick 的 firing。",
+      "carried_positions": ["batchInput 内全部位置", "各 Q occurrence 的 known 与成员位置", "各 duty end 的 known/progress"],
+      "scope": "当前 firing 的全 Q universe",
+      "identity": ["批次无独立业务 Life；内部 occurrence/end 各自有身份"],
+      "revision": ["不建立批次 revision"],
+      "payload": [
+        {"field": "batchInput", "meaning": "形成本批的 DirectionalFrame", "type": "DirectionalFrame", "missing": false, "position": false},
+        {"field": "batchOccurrences", "meaning": "本批新发行的 Q 观点修订，保留源顺序", "type": "[DirectionalOccurrence]", "missing": false, "position": false},
+        {"field": "batchEnds", "meaning": "本批实际责任结束；无新 Q 也可发生", "type": "[DirectionalDutyEnd]", "missing": false, "position": false}
+      ],
+      "produced_at": "DirectionalOrganizationPublication",
+      "consumed_at": "DirectionalOrganizationStorage",
+      "public_read": null,
+      "evidence": ["S09", "S12"],
+      "unconfirmed": []
+    },
+    {
+      "event_id": "B-OUT-01",
+      "name": "Q 方向组织观点 occurrence",
+      "code_name": "DirectionalOccurrence",
+      "direction": "output",
+      "output_role": "business_main_output",
+      "carrier": "嵌套业务 occurrence；由 E-MID-04/E-OUT-01 的一次 Event occurrence 携带 0..n 个",
+      "occurrence_meaning": "针对一个 F candidate Life，在当前证据下形成或修订的完整方向组织观点：成员运动、组资格、观察阶段和适用性。只有当前窄视图变化才产生新修订。",
+      "own_position": "在当前 Q 输入 firing 被正式发行；业务知识位置为 directionalKnown，不等同于任一成员实际 Turn。",
+      "carried_positions": ["directionalKnown", "F candidate exact 及 candidateKnown", "原/当前 anchor/deadline/revisionEnd", "所有成员 Turn/endpoint/materialKnown/through/missingRange"],
+      "scope": "一个 F candidate Life 对应的一道 Q；全成员至少 2 且对象唯一",
+      "identity": ["directionalReference.life", "directionalReference.revision"],
+      "revision": ["directionalPrevious", "同一 Q Life 的准确 Revision 链", "candidate exact 指明本修订使用的 F 修订"],
+      "payload": [
+        {"field": "directionalReference", "meaning": "Q 自身准确 Life/Revision", "type": "ExactRef", "missing": false, "position": false},
+        {"field": "directionalPrevious", "meaning": "上一准确 Q 修订", "type": "Maybe ExactRef", "missing": true, "missing_meaning": "该 Q Life 的首个观点", "position": false},
+        {"field": "candidateReference", "meaning": "本 Q 修订使用的准确 F 候选", "type": "ExactRef", "missing": false, "position": false},
+        {"field": "directionalKnown", "meaning": "形成该完整观点所需事实的最大知识位置，单调不倒退", "type": "Int64", "missing": false, "position": true},
+        {"field": "original/current anchor/deadline/revisionEnd", "meaning": "原始与只可收紧的观察界", "type": "Double", "missing": false, "position": true},
+        {"field": "directionalObservation", "meaning": "MotionObserving/HorizonReached/MotionScopeEnded", "type": "MotionObservation", "missing": false, "position": false},
+        {"field": "directionalApplicability", "meaning": "SubjectApplicable/SubjectWithdrawn", "type": "MotionApplicability", "missing": false, "position": false},
+        {"field": "directionalQualification", "meaning": "Rejected/Conflict/Pending/QualifiedCompleted/QualifiedWorking", "type": "GroupQualification", "missing": false, "position": false},
+        {"field": "directionalMembers", "meaning": "所有成员的当前 DirectionalMember 快照", "type": "[DirectionalMember]", "missing": false, "position": false},
+        {"field": "derived group observation", "meaning": "方向状态、支持/反证/未决计数和 all-support；公开 wrapper 可展开，未形成额外事件身份", "type": "derived fields", "missing": false, "position": false}
+      ],
+      "produced_at": "DirectionalOrganizationPublication → storeDirectionalOccurrence",
+      "consumed_at": "QStore / Python exact & As-Of readers / 后继观察准备",
+      "public_read": "PostTurnGroupDirectionalOrganization.to_df/to_dfs, read_exact, read_at_knowledge",
+      "evidence": ["S09", "S12", "S13", "S14", "S15"],
+      "unconfirmed": []
+    },
+    {
+      "event_id": "B-OUT-02",
+      "name": "Q 方向观察责任结束 occurrence",
+      "code_name": "DirectionalDutyEnd",
+      "direction": "output",
+      "output_role": "business_main_output_lifecycle_end",
+      "carrier": "嵌套业务 occurrence；可在没有新 Q viewpoint 的 Event firing 中独立出现",
+      "occurrence_meaning": "一个曾成功发行 Q 观点的 Life 不再由当前发行状态负责时，对最后准确 Q 的真实责任收口；它不是伪造的新 Q 修订。",
+      "own_position": "当前 Q 输入 firing；业务结束知识和 Calendar 进展分别由 dutyKnown/dutyProgress 携带。",
+      "carried_positions": ["dutyLastSuccessful 内全部位置", "dutyKnown", "dutyProgress"],
+      "scope": "一个已发行 Q Life",
+      "identity": ["dutyQuestion = 原 F candidate Life", "dutyLastSuccessful.directionalReference"],
+      "revision": ["不创建新的 Q Revision；引用最后成功准确 Q"],
+      "payload": [
+        {"field": "dutyQuestion", "meaning": "原问题键/原候选 Life", "type": "DirectionalKey", "missing": false, "position": false},
+        {"field": "dutyLastSuccessful", "meaning": "最后已成功发行的准确 Q occurrence", "type": "DirectionalOccurrence", "missing": false, "position": false},
+        {"field": "dutyEndReason", "meaning": "DirectionalRevisionDutyEnded 或 DirectionalScopeEnded", "type": "DirectionalDutyEndReason", "missing": false, "position": false},
+        {"field": "dutyKnown", "meaning": "真正责任结束知识位置", "type": "Int64", "missing": false, "position": true},
+        {"field": "dutyProgress", "meaning": "责任结束时的 Calendar 进展", "type": "Double", "missing": false, "position": true}
+      ],
+      "produced_at": "DirectionalOrganizationPublication → storeDirectionalDutyEnd",
+      "consumed_at": "QStore / Python duty_ends table / 后继生命周期观察",
+      "public_read": "PostTurnGroupDirectionalOrganization.to_dfs()['duty_ends']",
+      "evidence": ["S09", "S12", "S13", "S14", "S15"],
+      "unconfirmed": []
+    },
+    {
+      "event_id": "E-OUT-01",
+      "name": "Q 正式存储发布事件",
+      "code_name": "FrpEvent (Tick [DirectionalOrganizationRecord])",
+      "direction": "output",
+      "output_role": "publication_envelope",
+      "carrier": "公开 Event/Tick",
+      "occurrence_meaning": "一次正式发布 envelope；可携带固定定义、0..n 个 Q viewpoint occurrences、0..n 个 duty ends。表拆分不新增事件身份。",
+      "own_position": "继承当前 Q batch/input Tick 的 firing。",
+      "carried_positions": ["definition 无业务发生位置", "B-OUT-01/B-OUT-02 的全部位置"],
+      "scope": "当前 firing 的 Q 正式记录",
+      "identity": ["envelope 无独立业务 Life；内部记录有正式身份"],
+      "revision": ["envelope 无 revision；内部 Q occurrence 保留 revision 链"],
+      "payload": [
+        {"field": "organizationDefinitions", "meaning": "固定方法和对象绑定；只写一次，属于元数据", "type": "[DirectionalDefinitionRecord]", "missing": true, "missing_meaning": "非首次发布", "position": false},
+        {"field": "organizationOccurrences", "meaning": "本 firing 的 Q 观点 occurrence 记录", "type": "[DirectionalOccurrenceRecord]", "missing": true, "missing_meaning": "本 firing 无新观点", "position": false},
+        {"field": "organizationDutyEnds", "meaning": "本 firing 的真实责任收口", "type": "[DirectionalDutyEndRecord]", "missing": true, "missing_meaning": "本 firing 无责任结束", "position": false}
+      ],
+      "produced_at": "directionalOrganizationFrpWithBridge / DirectionalOrganizationStorage",
+      "consumed_at": "QStore persistence and Python wrapper",
+      "public_read": "open_store/read_default/to_df/to_dfs",
+      "evidence": ["S08", "S13", "S14"],
+      "unconfirmed": []
+    }
+  ],
+  "non_event_records": [
+    {
+      "record": "DirectionalDefinitionRecord",
+      "role": "固定配置元数据，不是业务 occurrence",
+      "important_values": {
+        "direction": "up",
+        "delta": 600.0,
+        "observation_multiples": 12,
+        "revision_multiples": 6,
+        "minimum_members": 2,
+        "source_core_multiples": 30.0
+      },
+      "note": "source_core_multiples=30 是源材料保留/锚单位参数；不得与 Q 已定 12Δ 观察责任、6Δ 修订责任和最少 2 成员混同。"
+    },
+    {
+      "record": "DirectionalMemberRecord / public members table row",
+      "role": "B-OUT-01 的嵌套成员快照；公开保存不使其成为独立 Event occurrence"
+    },
+    {
+      "record": "F bridge records returned by directionalOrganizationFrpWithBridge",
+      "role": "必要上游回传/桥接结果，不是 Q 主输出，也不计入 Q A 完成产物"
+    }
+  ],
+  "position_summary": [
+    {
+      "item": "Event firing",
+      "meaning": "当前 source/candidate/price 合并输入或正式发布真正触发的外层 Tick。"
+    },
+    {
+      "item": "actual",
+      "meaning": "Turn、报价或 endpoint 的原实际位置；Q 组本身没有被压成单一 actual 点。"
+    },
+    {
+      "item": "confirmation",
+      "meaning": "Turn 的确认位置；随 GroupTurn 保留。"
+    },
+    {
+      "item": "known",
+      "meaning": "材料或业务观点在何时可知；Q 的 directionalKnown 是形成完整观点所需事实的知识闭包。"
+    },
+    {
+      "item": "Calendar progress/clock",
+      "meaning": "用于 anchor、deadline、revisionEnd、through 和 dutyProgress 的开放坐标；与原 actual/known 不混同。"
+    },
+    {
+      "item": "endpoint",
+      "meaning": "成员运动量测当前真实端点，携带 actual、known、可选 price 和可选 clock。"
+    },
+    {
+      "item": "publication position",
+      "meaning": "Q occurrence 或 duty end 被当前 Event firing 正式发表的位置；不能用成员 Turn actual 替代。"
+    }
+  ],
+  "processing_relations": [
+    {
+      "relation_id": "R01",
+      "upstream": ["E-IN-01", "E-IN-02", "E-IN-03"],
+      "downstream": "E-MID-01",
+      "type": "形成/对齐",
+      "condition": "同一正常输入 firing 被接受；候选与样本保持各自身份和位置",
+      "identity_mapping": "外层 firing 对齐；Turn/Object/Candidate 身份不重写",
+      "position_mapping": "外层 Tick 成为 E-MID-01 firing；内层 actual/known/clock 原样携带",
+      "evidence": ["S08", "S09"],
+      "unconfirmed": []
+    },
+    {
+      "relation_id": "R02",
+      "upstream": ["E-IN-02", "E-IN-01"],
+      "downstream": "R-MID-02",
+      "type": "形成/更新/收紧/退休",
+      "condition": "合法 F candidate Life/Revision 及 source frame 修订、结束或进展到界",
+      "identity_mapping": "一个 F candidate Life 固定映射一个 DirectionalKey；成员对象集合对该 Life 固定",
+      "position_mapping": "candidate 与 member clocks 决定原始和当前观察界；只收紧不延期",
+      "evidence": ["S10"],
+      "unconfirmed": []
+    },
+    {
+      "relation_id": "R03",
+      "upstream": ["R-MID-02", "E-IN-03", "E-IN-01"],
+      "downstream": "R-MID-03",
+      "type": "量测/更新",
+      "condition": "成员存在合法 Turn 依据与当前可用原价/Calendar；缺价、缺 Clock、缺路径显式保留",
+      "identity_mapping": "DirectionalKey + object",
+      "position_mapping": "asked/used Turn 确定起点；原样本确定 endpoint/through/materialKnown/missingRange",
+      "evidence": ["S11"],
+      "unconfirmed": []
+    },
+    {
+      "relation_id": "R04",
+      "upstream": ["R-MID-02", "R-MID-03"],
+      "downstream": "B-OUT-01",
+      "type": "形成/更新",
+      "condition": "当前 DirectionalView 相对该 Life 最后已发行 view 发生变化",
+      "identity_mapping": "同一 DirectionalKey 保持 Q Life，变化产生下一 Q Revision；previous 指向上一准确 Q",
+      "position_mapping": "当前 firing 发表；directionalKnown 取候选、成员材料、端点/Clock及必要 frame 事实的知识上界",
+      "evidence": ["S12"],
+      "unconfirmed": []
+    },
+    {
+      "relation_id": "R05",
+      "upstream": "R-MID-03",
+      "downstream": "B-OUT-01.directionalQualification",
+      "type": "解释/资格",
+      "condition": "按 applicability、成员支持/反证/未决和完成状态确定",
+      "identity_mapping": "不改变 Q Life/Revision，只形成该修订中的组级判断",
+      "position_mapping": "使用成员当前位置事实；资格本身没有另一个 Event 位置",
+      "evidence": ["S12"],
+      "unconfirmed": []
+    },
+    {
+      "relation_id": "R06",
+      "upstream": "E-IN-02",
+      "downstream": "B-OUT-01.candidateReference",
+      "type": "引用",
+      "condition": "Q 修订使用该准确 F candidate",
+      "identity_mapping": "保存完整 F ExactRef，不把 F Life/Revision 冒充 Q Life/Revision",
+      "position_mapping": "F candidateKnown 参与 Q directionalKnown；成员 Turn 位置进入 Q members",
+      "evidence": ["S12", "S13"],
+      "unconfirmed": []
+    },
+    {
+      "relation_id": "R07",
+      "upstream": "B-OUT-01",
+      "downstream": "B-OUT-01",
+      "type": "修订/替代",
+      "condition": "同一 Q Life 的当前 view 变化",
+      "identity_mapping": "Life 不变，Revision 增加，directionalPrevious 指向上一准确修订",
+      "position_mapping": "新修订在新 firing 发表，旧修订原位置与证据不被无痕覆盖",
+      "evidence": ["S12", "S13", "S14"],
+      "unconfirmed": []
+    },
+    {
+      "relation_id": "R08",
+      "upstream": ["B-OUT-01", "R-MID-02", "E-IN-01"],
+      "downstream": "B-OUT-02",
+      "type": "结束",
+      "condition": "一个曾成功发行的 Q Life 不再保留于当前责任集；源范围结束产生 scope end，否则产生 revision duty end",
+      "identity_mapping": "引用最后成功准确 Q；不创建伪造的新 Q revision",
+      "position_mapping": "当前 firing 为收口发表；dutyKnown/dutyProgress 保存真实结束知识与进展",
+      "evidence": ["S12", "S13"],
+      "unconfirmed": []
+    },
+    {
+      "relation_id": "R09",
+      "upstream": ["B-OUT-01", "B-OUT-02", "E-MID-04"],
+      "downstream": "E-OUT-01",
+      "type": "正式发布/存储",
+      "condition": "首次可附定义；其后没有新 Q 且没有 duty end 的空批不伪造业务 occurrence",
+      "identity_mapping": "内部 Q/duty identity 原样保存；envelope 不增加业务身份",
+      "position_mapping": "继承当前 batch Tick；内部位置字段完整保存",
+      "evidence": ["S08", "S13"],
+      "unconfirmed": []
+    },
+    {
+      "relation_id": "R10",
+      "upstream": "E-OUT-01",
+      "downstream": "Python public tables",
+      "type": "公开读取/投影",
+      "condition": "通过 QStore 与 wrapper 读取 definition/occurrences/members/duty_ends",
+      "identity_mapping": "read_exact 使用 Life+Revision；read_at_knowledge 沿 previous 链选择 as-of 可见 tip",
+      "position_mapping": "actual/known/confirm/clock 字段不因 DataFrame 投影改变语义",
+      "evidence": ["S14", "S15"],
+      "unconfirmed": []
+    },
+    {
+      "relation_id": "R11",
+      "upstream": "F bridge output",
+      "downstream": "Q public result",
+      "type": "边界排除",
+      "condition": "directionalOrganizationFrpWithBridge 同时回传 F bridge，仅供组合/核验",
+      "identity_mapping": "F 与 Q 各保留自身 identity",
+      "position_mapping": "不因同函数返回而合并事件位置",
+      "evidence": ["S08", "S16", "S19"],
+      "unconfirmed": []
+    }
+  ],
+  "business_main_output_trace": {
+    "B-OUT-01": ["E-IN-01/E-IN-02/E-IN-03", "E-MID-01", "R-MID-02", "R-MID-03", "DirectionalView change", "B-OUT-01", "E-OUT-01"],
+    "B-OUT-02": ["last successful B-OUT-01", "subscription/source retirement", "B-OUT-02", "E-OUT-01"]
+  },
+  "input_destinations": {
+    "E-IN-01": ["输入对齐", "订阅界收紧/退休", "成员依据修订", "observation/scope end", "duty end"],
+    "E-IN-02": ["创建/修订 DirectionalSubscription", "固定成员问题", "candidate exact 引用", "Q Life 的依据"],
+    "E-IN-03": ["成员路径与 endpoint", "六量与 verdict", "Q 修订的材料知识"]
+  },
+  "absence_semantics": [
+    "某 firing 没有新 Q occurrence 只表示 view 未变化或没有可发行观点，不自动表示失败或结束。",
+    "成员 quantityNumber 缺失由 QuantityAvailability 区分 endpoint/clock/path 缺失与 zero-path 不适用；真实 0 仍为 Just 0。",
+    "samplePrice 缺失与 sampleClock 缺失相互独立，均不前填。",
+    "duty end 是显式 occurrence；不能从无新 Q 推断责任结束。",
+    "members 表为空、公开表未返回或数据不可用不能互相替代。"
+  ],
+  "resolved_ambiguities": [
+    "Q 不是 F 的重命名：Q 对 F candidate 建立自身 Life/Revision 的方向组织观点，保存准确 F candidate 引用。",
+    "成员记录不是独立 Event：它们是一个 Q viewpoint occurrence 的全成员 payload。",
+    "definition 记录不是业务 occurrence：它是固定方法和对象绑定元数据。",
+    "正式保存不决定业务角色：Q occurrence 与 duty end 是业务输出，DirectionalFrame/Subscription/Member snapshot/Batch 是形成过程。",
+    "一个 Q 观点没有单一价格实际点：它关联一组成员 Turn、端点与知识位置；自身正式发生在发布 firing。",
+    "source_core_multiples=30 不替代 Q 固定的 12Δ observation、6Δ revision、minimum-members=2 方法责任。"
+  ],
+  "unconfirmed_items": [],
+  "worker": {
+    "required": false,
+    "reason": "A 阶段所需当前源码、实例构造、类型、存储与公开读取接口均已在精确版本定位并可由代码直接完成判断；不需运行特征或访问 Linux 工作区。"
+  },
+  "completion": {
+    "input_events_distinguished": true,
+    "business_outputs_distinguished": true,
+    "intermediate_results_distinguished": true,
+    "own_and_carried_positions_explained": true,
+    "main_output_traceable": true,
+    "no_public_storage_role_confusion": true,
+    "blocking_unknowns": false,
+    "stage_result": "完整"
+  }
+}
