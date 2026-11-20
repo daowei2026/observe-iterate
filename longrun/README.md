@@ -9,10 +9,10 @@
 | Owner | 提供业务任务、已确定的外层输入和真实运行授权；未定义的业务取舍需明确决定 |
 | 主控 Codex | Run 与物理聊天绑定、C/D/W 发送和回执、权限/工作区校验、去重与恢复 |
 | **多层 Workflow 运行协调 Chat**（V2 `manager`） | 维护统一任务状态和版本依赖；依已定义 Workflow 调用、等待、接续和回流 Skill；按需增设执行 Chat |
-| **Skill 执行 Chat**（V2 `executor`） | 每次依据指定 Skill 的原文及其内部流程实际执行、自检并产生原生结果，不预设永久专业身份 |
+| **Skill executor**（V2 `executor`） | 依 D 指定 Skill 执行、自检及回交；A～D 默认 ChatGPT、E 默认独立 Codex 线程 |
 | Worker Codex | 在已授权 W 范围内执行实际操作，按 V2 回原签发 executor；专业后续依对应 Skill |
 
-V2 仍使用 `manager/executor/worker` 机读身份，不改变 `C` 模型调用、`D` Skill 工作委派、`W` Worker 工单及其 Return 路由。它们均不是专业 Workflow 的阶段。
+V2 仍使用 `manager/executor/worker` 机读身份；`D→Codex executor C→PRO_RETURN→manager` 是 E 的零 W 路径；历史 `D→ChatGPT executor→W` 路径仍兼容。它们均不是专业 Workflow 的阶段。
 
 ```text
 Owner GO → 主控（真实发送和账本）
@@ -37,7 +37,7 @@ A occurrence 理解
                  ┘
 ```
 
-A 先行，B/C 在有效输入下可按需并行，D 汇合，E 按 Skill 自己的内部 Workflow 及 Worker 合同工作。一个 Skill 允许多次 C 继续同一 D；可由一个执行 Chat 顺序工作，或按真实需要增加执行 Chat。Skill 内步骤默认不另立专业 D。
+A 先行，B/C 在有效输入下可按需并行，D 汇合，E 按 Skill 在独立 Codex executor 中连续执行，不强制 W1/W2。一个 Skill 允许多次 C 继续同一 D；可由一个执行 Chat 顺序工作，或按真实需要增加执行 Chat。Skill 内步骤默认不另立专业 D。
 
 合理性分析具体 Workflow 仍在迭代，只按实际 Run 固定采用的专业来源执行，不在长程运行层硬编码 R0～R5。
 
@@ -60,9 +60,9 @@ A 先行，B/C 在有效输入下可按需并行，D 汇合，E 按 Skill 自己
 
 ## 4. 整体状态及接续
 
-运行协调 Chat根据真实上游产物、Worker/Skill Return 和已采用 Workflow，持续维护 `longrun/runs/<run_id>/business_control/TASK_PROGRESS.md`。状态包含整体任务、各 Skill 的工作项、执行 Chat、输入和成果版本、实际完成范围、在途/阻断、历史失效及下一合法动作。**状态视图只投影已有真实事实，不是第二本权威账本。**
+运行协调 Chat根据真实上游产物、Codex executor/历史 Worker 的专业 Return 和已采用 Workflow，持续维护 `longrun/runs/<run_id>/business_control/TASK_PROGRESS.md`。状态包含整体任务、各 Skill 的工作项、执行 Chat、输入和成果版本、实际完成范围、在途/阻断、历史失效及下一合法动作。**状态视图只投影已有真实事实，不是第二本权威账本。**
 
-专业完成、Worker 结果怎么消费、什么时候返回上游，依具体 Skill 的原生结果与现行 Workflow；协调 Chat不额外设置独立专业 Gate。主控仅核真实消息送达、身份、引用、权限、去重与可用的后继，不替任何 Chat 决定专业问题。
+专业完成、实际操作结果怎么消费、什么时候返回上游，依具体 Skill 的原生结果与现行 Workflow；协调 Chat不额外设置独立专业 Gate。主控仅核真实消息送达、身份、引用、权限、去重与可用的后继，不替任何 Chat 决定专业问题。
 
 ## 5. 校验及当前边界
 
@@ -72,6 +72,7 @@ python longrun/tools/longrun_gate.py validate-binding snapshot.json
 python longrun/tools/longrun_gate.py validate-delegation snapshot.json
 python longrun/tools/longrun_gate.py validate-order snapshot.json
 python longrun/tools/longrun_gate.py validate-worker-return snapshot.json
+python longrun/tools/longrun_gate.py validate-executor-execution snapshot.json  # Codex E 直接执行前
 python longrun/tools/longrun_gate.py validate-executor-return snapshot.json
 python longrun/tools/longrun_gate.py route-return snapshot.json
 python longrun/tools/longrun_gate.py reconcile-actions snapshot.json

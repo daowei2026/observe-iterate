@@ -45,7 +45,7 @@ A～E 各阶段都有独立专业 Skill。B 当前只沉淀普通默认和高频
 | **B 观察位置** | [observation-position-preparation](skills/observation-material-preparation/observation-position-preparation/SKILL.md) | 普通特征沿用固定 SOF，默认钢铁板块和 2021-01-01～2022-12-31；高频特征复用 1d→30m→1m→5s→tick 位置层级 |
 | **C 展示方式** | [caegraph-display-preparation](skills/observation-material-preparation/caegraph-display-preparation/SKILL.md) | C1 待展示信息；C2 形成并循环更新展示预期和唯一预期 HTML；C3 整理可注入展示代码 |
 | **D 定义集成** | [caegraph-definition-integration](skills/observation-material-preparation/caegraph-definition-integration/SKILL.md) | 理解锁定 CAEGraph 仓库后，一次性集成外层输入和 A／B／C；确定性上游缺项可直接纠正并留痕 |
-| **E 执行／运行** | [caegraph-execution](skills/observation-material-preparation/caegraph-execution/SKILL.md) | E 自己完成专业判断；W1 运行／有限修复，核图接受后 W2 正式取数 |
+| **E 执行／运行** | [caegraph-execution](skills/observation-material-preparation/caegraph-execution/SKILL.md) | 同一个 Codex executor 完整执行 E1～E6，连续运行/修复、核图并在接受后取数 |
 
 ### 阶段目录结构
 
@@ -64,7 +64,7 @@ IO_SPEC.md
 
 - B 的 `WORKFLOW.md` 只记录当前两种经验性用法；
 - D 不设 `WORKFLOW.md`，只有 `SKILL.md + IO_SPEC.md`；
-- E 的专业 `WORKFLOW.md` 不包含派单节点，另有 [Worker 派单合同](skills/observation-material-preparation/caegraph-execution/WORKER_DELEGATION.md)和 W1／W2 两份模板。
+- E 的 `WORKFLOW.md` 统一安排直接运行、专业核图与接受后正式取数；旧 W1/W2 文件仅供历史 Run 追溯。
 
 ## C 的三部分
 
@@ -95,7 +95,7 @@ C 不维护本仓二手展示速查，而是直接阅读：
 | **D 仓库集成参考** | [CAEGraph 仓库结构与定义集成参考](skills/observation-material-preparation/references/CAEGraph仓库结构与定义集成参考.md) | uplot 仓库文件地图、实例／位置／字段到 PlotCtx、CDS、数据树和动态链的真实集成边界 |
 | **B 高频位置参考** | [高频多尺度观察位置参考](skills/observation-material-preparation/observation-position-preparation/MULTISCALE_POSITION_REFERENCE.md) | 只复用既有脚本的 1d→30m→1m→5s→tick 位置层级和父子关系，不复用图内容 |
 | **E 技术参考** | [CAEGraph 执行、核图与取数](skills/observation-material-preparation/references/CAEGraph执行取数与验证.md) | 构图／视窗／源值等数据阶段、最终图核对、核图后正式取数和一致性验证 |
-| **E Worker 派单** | [Worker 派单合同](skills/observation-material-preparation/caegraph-execution/WORKER_DELEGATION.md) | 将 E 专业产物映射到 W1／W2，避免专业 Workflow 和派单混在一起 |
+| **E 旧 Worker 资料** | [Worker 派单合同](skills/observation-material-preparation/caegraph-execution/WORKER_DELEGATION.md) | 历史 Web executor + W1/W2 参考，不是当前 Codex E 默认路径 |
 | **任务记录模板** | [观察材料准备任务记录](skills/observation-material-preparation/templates/观察材料准备任务单.md) | 汇总 A～E 产物和最终交付；字段细节以各 `IO_SPEC.md` 为准 |
 | **候选方法组索引** | [S1～S4、E1～E4 方法索引](skills/observation-method-candidates/README.md) | 候选观察方法的触发条件、跨用例对应关系和成熟度；不是固定流程 |
 | **合理性分析** | [四个合理性分析 Skill](skills/reasonableness-analysis/README.md) | 预期、对照、诊断、标定的专业方法 |
@@ -106,7 +106,7 @@ C 不维护本仓二手展示速查，而是直接阅读：
 - B 当前是经验性用法，不从 occurrence 中强行挑选“典型案例”；高频参考只借位置层级，不借图层和展示逻辑。
 - C 可只读使用外层特征实例理解数据形状或生成预览 HTML，但 C3 代码必须保留实例注入接口。
 - D 是单一集成动作。修法唯一且不改变位置选择／展示预期时，可直接纠正 B／C 缺项并留痕；拿不准或需要业务选择时返回 B／C。
-- E 的专业 Workflow 与 Worker 派单分开。E1 产物触发 W1，E4 产物触发 W2；W1／W2 使用两份独立模板。
+- E 默认由独立 Codex Skill executor 直接完成 E1～E6；运行、核图与正式取数无需跨 Chat 的 W1/W2 必经派单。
 - E 必须用 D 核对最终脚本、用 C2 当前预期／HTML 核对最终图；图被接受后才形成正式取数准入。
 - `PLAN_READY` 不能冒充 `DATA_READY`。语法检查、静态定义、少量预览和未核对 HTML 都不等于真实观察材料已完成。
 
