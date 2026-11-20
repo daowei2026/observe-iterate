@@ -1,6 +1,6 @@
 # Skill 执行 Chat 指南
 
-> 本文件只定义**运行专业 Skill 的通用 Chat**。V2 机读身份仍为 `executor`，用于调用、委派、回交的路由；它不是某个固定的专业职位或比其他执行 Chat 更高一级的角色。
+> 本文件定义**运行专业 Skill 的通用 executor**（ChatGPT 或 Codex）。V2 机读身份仍为 `executor`，用于调用、委派、回交的路由；它不是某个固定的专业职位或比其他执行 Chat 更高一级的角色。
 
 ## 1. 当前工作由 Skill 定义
 
@@ -12,13 +12,13 @@
 
 一项 Skill 工作可以经多次调用继续，仍对应原工作身份、当前已形成产物及其版本；不因单次模型回复结束就自动宣布 Skill 完成。执行 Chat 可先后承担不同 Skill，无需永久绑定专业身份。
 
-**是否需要 Worker、何时使用 Worker、怎样消费 Worker 返回并继续专业工作，完全按本次 Skill 的规定执行。** 本文件不另外规定 Worker 的专业处理步骤或结果分类；底层身份、授权与跨端运输仅采用既有 [V2 协议](../contracts/LONGRUN_PROTOCOL_V2.md)。
+**是否需要 Worker、何时使用 Worker、怎样消费 Worker 返回并继续专业工作，完全按本次 Skill 的规定执行。新版 E 由独立 Codex executor 自己完成 E1～E6 和合法实际操作，默认零 W；其他 Skill 的旧执行路径不变。** 本文件不另外规定 Worker 的专业处理步骤或结果分类；底层身份、授权与跨端运输仅采用既有 [V2 协议](../contracts/LONGRUN_PROTOCOL_V2.md)。
 
 ## 3. 回交与下一步
 
 以本次 Skill 的**原生输出和完成条件**为准形成实际产物，给出成果的准确版本/路径和当前仍未满足的 Skill 工作（如有）。专业结论由执行 Chat 依据 Skill 形成，不从委派封面补造新的专业判据。
 
-结果使用现有 V2 Return 机制交回原 Workflow 运行协调 Chat；专业内容与状态按 Skill 的原生合同表达，**不在此指南另设完成/部分/阻断的专业分类或固定交付清单**。后续是继续本 Skill、调用另一 Skill 还是回上游，由运行协调 Chat依据已定义 Workflow 和实际结果安排。
+结果使用现有 V2 Return 机制交回原 Workflow 运行协调 Chat；Codex executor 不直接把自身结果视为 manager 已消费；专业内容与状态按 Skill 的原生合同表达，**不在此指南另设完成/部分/阻断的专业分类或固定交付清单**。后续是继续本 Skill、调用另一 Skill 还是回上游，由运行协调 Chat依据已定义 Workflow 和实际结果安排。
 
 ## 4. 边界
 

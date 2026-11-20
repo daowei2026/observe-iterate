@@ -14,7 +14,7 @@
 ## 本 Run 的两类 Chat 工作方式
 
 - **多层 Workflow 运行协调 Chat**（V2 身份 `manager`）：维护整个任务的当前状态及版本依赖；依据已采用 Workflow 调用、等待、接续和回流具体 Skill 工作；按需增加 Skill 执行 Chat。不自行添加执行约束、专业方法、业务预期、Worker 处理办法或专业验收条件，也不额外担任独立专业 Gate。
-- **Skill 执行 Chat**（V2 身份 `executor`）：根据本次指定 Skill 的原始文件实际完成专业工作及其内部 Workflow；专业结果、完成条件及 Worker 使用与返回处理全部以该 Skill 为准。
+- **Skill executor（ChatGPT／Codex）**（V2 身份 `executor`）：根据本次指定 Skill 的原始文件实际完成专业工作及其内部 Workflow；专业结果、完成条件及 Worker 使用与返回处理全部以该 Skill 为准。
 - **状态与恢复**：继续以 `longrun/runs/<run_id>/business_control/TASK_PROGRESS.md` 记录当前整体任务及阶段工作、版本、在途和合法后继；主控据真实产物和回执保存、核实，不编造专业决定。不另设状态数据库。
 - **派发单位**：默认一个 D 对应一项 Skill 工作；同一 Skill 可跨多个 C 接续。观察材料准备 A 后 B/C 可在有效输入和物理身份可用时按需并行，不强制每个 Skill 单独建 Chat。
 - **运行限制**：Owner 授权和 V2 机器执行权限由主控单独校验，协调 Chat 不增设专业执行约束。没有真实 GO 与特征来源时，只可准备运行接线，不创建实际业务 Run。
@@ -23,18 +23,18 @@
 
 - 主控逻辑身份与物理端绑定方式：
 - 多层 Workflow 运行协调 Chat（V2 manager）逻辑身份与物理聊天绑定方式：
-- 允许参与的 Skill 执行 Chat（V2 executor）身份范围及按需增加方式：
+- 允许参与的 Skill executor（V2 executor）身份范围及增加方式：新 Run A～D 默认 ChatGPT，E 默认独立 Codex；主控在首次合法 E D 之前为该 Run 创建新 Codex thread。
 - 允许参与的 Worker Codex 身份范围：
 
 ## 本项目执行目标（正式 GO 时确认适用配置）
 
 以下是用户本次对**未来长程执行环境**的指定，写在模板里用于避免实际派发时猜 Project/Worker 工作区；**不是已经发布的 Run GO，也不是证明项目、聊天、Linux 目录或模型已经验收**。
 
-- 多层 Workflow 运行协调 Chat、Skill 执行 Chat：均使用 ChatGPT Project **`细节叙事生成_金标`**；各自独立角色聊天，当前指定的目标模型为 **`GPT-5.6 Sol`**，推理档位为 **`Pro`**。是否已经实际选中，须由每次发送前的现有操作 Skill 验证；模板本身不证明设置成功。
+- 多层 Workflow 运行协调 Chat与 Web Skill executor：使用 ChatGPT Project **`细节叙事生成_金标`**；各自独立角色聊天，当前指定的目标模型为 **`GPT-5.6 Sol`**，推理档位为 **`Pro`**。是否已经实际选中，须由每次发送前的现有操作 Skill 验证；模板本身不证明设置成功。
 - Worker：每个 `run_id` 的 Linux 工作区由 Owner 提前准备，并在本次真实 GO 中指定独立绝对路径；不从其他 Run 或示例路径推断。
 - Worker 目标模型/推理配置：**`GPT-6.1 Sol Max`**；实际可用性与现场配置仍需在真实派发前核验。
 - 若 Owner 后续重新指定项目、路径或档位，以新的真实指令为准；不同 Run 不自动继承。物理 Project/ChatGPT 聊天、Codex threadId、实际目录和配置在真实启动时记录到可信运行映射；不能因为模板包含上述信息就认定已创建。
-- **工作区路径不是写权限**：真正执行 W 仍须受下列独立的 `operation / execution_context / allowed_writes / authority_quote` 授权及共享目标单写者检查约束。
+- **Codex E executor**：使用 Owner 已指定和准备的独立 Linux 工作区，模型/强度按本 Run 的正式配置（当前默认目标 GPT-6.1 Sol / Max）。新 Run 首次合法 E 前创建新 thread，同一 Run 恢复时复用原 thread，不借其他 Run 的 session。\n- **工作区路径不是写权限**：真正执行 W 仍须受下列独立的 `operation / execution_context / allowed_writes / authority_quote` 授权及共享目标单写者检查约束。
 
 ## 本 Run Linux 工作区（多 Run 时必须由 Owner 明确给出）
 
