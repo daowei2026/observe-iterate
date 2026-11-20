@@ -34,7 +34,8 @@
 - Worker：每个 `run_id` 的 Linux 工作区由 Owner 提前准备，并在本次真实 GO 中指定独立绝对路径；不从其他 Run 或示例路径推断。
 - Worker 目标模型/推理配置：**`GPT-6.1 Sol Max`**；实际可用性与现场配置仍需在真实派发前核验。
 - 若 Owner 后续重新指定项目、路径或档位，以新的真实指令为准；不同 Run 不自动继承。物理 Project/ChatGPT 聊天、Codex threadId、实际目录和配置在真实启动时记录到可信运行映射；不能因为模板包含上述信息就认定已创建。
-- **Codex E executor**：使用 Owner 已指定和准备的独立 Linux 工作区，模型/强度按本 Run 的正式配置（当前默认目标 GPT-6.1 Sol / Max）。新 Run 首次合法 E 前创建新 thread，同一 Run 恢复时复用原 thread，不借其他 Run 的 session。\n- **工作区路径不是写权限**：真正执行 W 仍须受下列独立的 `operation / execution_context / allowed_writes / authority_quote` 授权及共享目标单写者检查约束。
+- **Codex E executor**：使用 Owner 已指定和准备的独立 Linux 工作区，模型/强度按本 Run 的正式配置（当前默认目标 GPT-6.1 Sol / Max）。新 Run 首次合法 E 前创建新 thread，同一 Run 恢复时复用原 thread，不借其他 Run 的 session。
+- **工作区路径不是写权限**：Codex executor 直接执行或旧 Worker W 均须受下列独立的 `operation / execution_context / allowed_writes / authority_quote` 授权及共享目标单写者检查约束。
 
 ## 本 Run Linux 工作区（多 Run 时必须由 Owner 明确给出）
 
