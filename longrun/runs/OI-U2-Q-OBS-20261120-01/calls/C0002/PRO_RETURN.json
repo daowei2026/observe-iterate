@@ -2,49 +2,16 @@
   "schema": "longrun-professional-return/v2",
   "run_id": "OI-U2-Q-OBS-20261120-01",
   "call_id": "C0002",
-  "sender": "chatgpt:OI-U2-Q-OBS-20261120-01:executor:E1",
   "role": "executor",
-  "status": "REPORTED_COMPLETE",
-  "delegation_id": "D001",
+  "sender": "chatgpt:OI-U2-Q-OBS-20261120-01:executor:E1",
   "delegation_ref": "daowei2026/observe-iterate@2944f650baf779308fcc7fa92d20c6b0b4ca0e71:longrun/runs/OI-U2-Q-OBS-20261120-01/delegations/D001/DELEGATION.json",
   "return_to": "chatgpt:OI-U2-Q-OBS-20261120-01:manager",
   "result_ref": "daowei2026/observe-iterate@23aab75c3415fe247e91f78a4079dfc8a80bfa57:longrun/runs/OI-U2-Q-OBS-20261120-01/calls/C0002/PROFESSIONAL_REPORT.md",
-  "artifacts": [
-    {
-      "kind": "feature-occurrence-understanding-markdown",
-      "ref": "daowei2026/observe-iterate@bf50bbe5c9447cb992af547e3f5f95f7465cae88:longrun/runs/OI-U2-Q-OBS-20261120-01/artifacts/A/FEATURE_OCCURRENCE_UNDERSTANDING.md",
-      "description": "A Skill 人读原生产物：Q 输入、主输出、中间结果、位置、修订、结束与处理关系。"
-    },
-    {
-      "kind": "feature-occurrence-understanding-json",
-      "ref": "daowei2026/observe-iterate@61677f11bcdc41225d1df2615ca267f27e05a12f:longrun/runs/OI-U2-Q-OBS-20261120-01/artifacts/A/FEATURE_OCCURRENCE_UNDERSTANDING.json",
-      "description": "A Skill 机读原生产物：来源索引、事件目录、字段、位置、关系、追溯与完成判定。"
-    }
-  ],
-  "completion_evidence": [
-    {
-      "criterion": "输入事件、业务主输出和中间处理结果已按原 Skill 区分",
-      "evidence": "三类直接输入、DirectionalFrame/Subscription/Member/Batch 中间结果、DirectionalOccurrence 主输出和 DirectionalDutyEnd 生命周期主输出均已逐项记录。"
-    },
-    {
-      "criterion": "每类事件自己的发生位置和 occurrence 内携带位置已说明",
-      "evidence": "已分别记录 Event firing、actual、confirmation、known、Calendar clock/progress、endpoint、publication 与 duty end 位置，且未把成员实际点冒充 Q 整体发生点。"
-    },
-    {
-      "criterion": "业务主输出与输入／中间结果的形成、修订和结束关系可追溯",
-      "evidence": "11 条处理关系覆盖输入对齐、订阅、成员量测、视图变化发行、F exact 引用、Q previous 修订链、责任结束、正式存储与 exact/As-Of 读取。"
-    },
-    {
-      "criterion": "没有因公开保存或表拆分误判业务事件",
-      "evidence": "definition 被判为元数据，members 被判为 Q occurrence 嵌套 payload，store record 被判为发布 envelope，F bridge 被排除出 Q 主输出。"
-    },
-    {
-      "criterion": "A 阶段无阻塞未确认项",
-      "evidence": "当前精确版本的实例、主实现、子类型、存储和公开读取均已核实；后继所需事件、位置和关系完整。"
-    }
-  ],
-  "worker_orders": [],
-  "worker_results": [],
-  "next_action": "由 manager 审核 D001 的 A Skill 完成判定及原生产物；若接受，按既定业务 Control 决定 Q 的下一阶段委派。",
-  "errors": []
+  "issued_delegation_refs": [],
+  "issued_order_refs": [],
+  "accepted_worker_refs": [],
+  "professional_state": "REPORTED_COMPLETE",
+  "remaining_scope_ref": null,
+  "continuation_ref": null,
+  "owner_request_ref": null
 }
