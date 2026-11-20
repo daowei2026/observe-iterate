@@ -1,0 +1,124 @@
+{
+  "schema": "observation-position-preparation/v1",
+  "run_id": "OI-U2-Q-OBS-20261120-01",
+  "work_id": "OI-U2-Q-OBS",
+  "business_case_id": "U2-FQV-Q",
+  "work_item_id": "OI-U2-Q-OBS-20261120-01-WI-B",
+  "stage_instance_id": "OI-U2-Q-OBS-20261120-01-M-B",
+  "delegation_id": "D002",
+  "producer": "chatgpt:OI-U2-Q-OBS-20261120-01:executor:E1",
+  "stage_status": "COMPLETE",
+  "position_usage": "普通默认",
+  "feature_instance": {
+    "feature_name": "PostTurnGroupDirectionalOrganizationFrp",
+    "business_name": "Q｜转折后成员组的方向组织",
+    "instance_selection": "调用 make_features(...) 后只取第二项 q",
+    "sof": {
+      "sof_name": "TA_updto20240229_DBA",
+      "block": "steel",
+      "calendar": "night_end_at_2300",
+      "start_day": null,
+      "end_day": null
+    },
+    "frequency": "5m",
+    "objects": [
+      "rb",
+      "hc",
+      "i"
+    ],
+    "direction": "up",
+    "necessary_upstream": "CommonPriceTurnGroupCandidatesFrp（F，仅用于准确构造和运行 Q）",
+    "source_refs": [
+      "daowei2026/observe-iterate@3efb2719a66a2fcc1bb86f33b7b0a2258f9bfbf7:task-inputs/u2-fqv-observation/Q_OBSERVATION_RUN_INPUT.md",
+      "daowei2026/observe-iterate@f7e8ff43fabfa11b499e2ce9e62dbc46b1b8b288:task-inputs/u2-fqv-observation/实例运行脚本.py",
+      "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767:frp/fqv_kline_example.py",
+      "daowei2026/feature-refinement-implementation-agent-evolution@2d3f56a7944c44b2a1c441c15eebf9659835136b:agent_evolution/pilot_cases/network-dynamic-ceps-factory-u2-u3/configurations/fqv-kline-rb-hc-i.json"
+    ]
+  },
+  "input_assessment": {
+    "task_explicit_position_present": false,
+    "task_position_statement_ref": "daowei2026/observe-iterate@3efb2719a66a2fcc1bb86f33b7b0a2258f9bfbf7:task-inputs/u2-fqv-observation/Q_OBSERVATION_RUN_INPUT.md",
+    "a_artifact_refs": [
+      "daowei2026/observe-iterate@bf50bbe5c9447cb992af547e3f5f95f7465cae88:longrun/runs/OI-U2-Q-OBS-20261120-01/artifacts/A/FEATURE_OCCURRENCE_UNDERSTANDING.md",
+      "daowei2026/observe-iterate@61677f11bcdc41225d1df2615ca267f27e05a12f:longrun/runs/OI-U2-Q-OBS-20261120-01/artifacts/A/FEATURE_OCCURRENCE_UNDERSTANDING.json"
+    ],
+    "usage_classification": "普通默认",
+    "classification_reason": [
+      "任务明确声明不额外指定 B 的品种集、时间范围或样例位置。",
+      "当前 Q 是固定 5m K 线实例；本次输入没有 1d→30m→1m→5s→tick 的高频父子位置节点或 timespans 资产。",
+      "B Skill 禁止为普通场景另造典型位置选择算法，因此直接采用当前经验性默认位置。"
+    ],
+    "high_frequency_multiscale_reference_applied": false,
+    "high_frequency_reference_reason": "MULTISCALE_POSITION_REFERENCE 仅适用于已有 1d→30m→1m→5s→tick 层级的高频特征；本实例不具备该层级输入。"
+  },
+  "observation_position": {
+    "sof_refs": [
+      "daowei2026/observe-iterate@f7e8ff43fabfa11b499e2ce9e62dbc46b1b8b288:task-inputs/u2-fqv-observation/实例运行脚本.py",
+      "daowei2026/feature-refinement-implementation-agent-evolution@2d3f56a7944c44b2a1c441c15eebf9659835136b:agent_evolution/pilot_cases/network-dynamic-ceps-factory-u2-u3/configurations/fqv-kline-rb-hc-i.json"
+    ],
+    "commodity_set": {
+      "logical_set": "steel",
+      "effective_instance_objects": [
+        "rb",
+        "hc",
+        "i"
+      ],
+      "scope_note": "采用 B Skill 的默认钢铁板块，但 D 只能绑定当前 Q 实例已固定的 rb/hc/i；B 不扩展对象集合。"
+    },
+    "start_date": "2021-01-01",
+    "end_date": "2022-12-31",
+    "boundary_note": "日期边界的日历与 PlotSet 包含／排除解释由 D 绑定 night_end_at_2300 时确定；B 不修改 SOF 或实例时间配置。",
+    "position_source": "observation-position-preparation B Skill 当前普通默认",
+    "bindable_by_D": true
+  },
+  "applicability_checks": {
+    "source_declared_market_range_start": "2013-01-04 09:05:00",
+    "source_declared_market_range_end": "2024-02-29 15:00:00",
+    "default_interval_within_source_declared_range": true,
+    "runtime_data_read_performed": false,
+    "runtime_data_read_required_by_B": false,
+    "sof_mutated": false,
+    "objects_expanded_beyond_instance": false,
+    "multiscale_path_created": false
+  },
+  "a_alignment": {
+    "business_main_outputs": [
+      "DirectionalOccurrence",
+      "DirectionalDutyEnd"
+    ],
+    "position_distinctions_preserved": [
+      "Q 正式 publication firing",
+      "directionalKnown",
+      "成员 Turn actual／confirmation／known",
+      "endpoint 与 Calendar 位置",
+      "dutyKnown／dutyProgress"
+    ],
+    "binding_rule_for_D": "B 只给出外层品种和日期范围；D/C 不得把日期窗口冒充某个 Q occurrence 的业务发生位置，也不得预选 occurrence。"
+  },
+  "excluded_actions": [
+    "不重新选择或修改 SOF",
+    "不从 A occurrence 中挑选典型样例",
+    "不建立高频多尺度父子位置路径",
+    "不决定主图、附图、图元、布局或样式",
+    "不运行 Q、F 或 V",
+    "不把 F 的历史观察位置或 uplot 例外继承给 Q"
+  ],
+  "limitations": [
+    "钢铁板块与 2021-01-01～2022-12-31 是当前经验性默认，不声称最优或跨用例稳定。",
+    "B 只形成可供 D 绑定的位置合同；实际数据存在性和最终绘图可用性由后继 D/E 按同一实例核对。"
+  ],
+  "worker": {
+    "required": false,
+    "reason": "本阶段只需按明确实例和 B Skill 默认值形成位置合同，不需要访问 Linux、运行特征或读取行情。"
+  },
+  "completion": {
+    "feature_instance_and_sof_traceable": true,
+    "position_usage_selected": true,
+    "commodity_set_resolved": true,
+    "start_and_end_dates_resolved": true,
+    "d_bindable_position_formed": true,
+    "display_content_not_imported": true,
+    "blocking_gaps": false,
+    "stage_result": "完整"
+  }
+}
