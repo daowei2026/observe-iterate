@@ -16,7 +16,7 @@
 - (run_id, call_id)、(run_id, delegation_id)、(run_id, work_order_id)：独立路由键。C0001/D001/W001 可在不同 Run 重复；不同类型的键也不能互换。
 - 业务 question_id/work_item_id/analysis_round_id/expectation_version 等继续只在所属 Run 的业务上下文解释。
 
-每 Run 唯一 `manager` 逻辑身份对应多层 Workflow 运行协调 Chat，并可按需绑定多个 `executor` 身份作为 Skill 执行 Chat。其他角色、授权、物理会话映射、具体成果、行动序列均带 run_id；不得把逻辑身份字符串当成真实 ChatGPT 会话或 Codex thread。
+每 Run 唯一 `manager` 逻辑身份对应多层 Workflow 运行协调 Chat，并可按需绑定多个 `executor` 身份（ChatGPT 或 Codex）。新版 E 默认是本 Run 独立 Codex executor，workers 可为空，不因为零 W 自动形成完成。其他角色、授权、物理会话映射、具体成果、行动序列均带 run_id；不得把逻辑身份字符串当成真实 ChatGPT 会话或 Codex thread。
 
 ## 3. 首版 Linux 工作区规则（2026-11-16 Owner 补充）
 
@@ -65,3 +65,5 @@
 ## 7. 实际接线与版本边界
 
 本合同和只读检查器不等于已完成真实物理通道验证。主控在每次 Run 的首次实际派发中，应核实该 Run 采用的 cgpterm 控制器及其真实发送、回执、工作区和权限；不能仅凭文档或离线检查宣称联调通过。业务方法只来自本 Run 锁定的 Skill，协调 Chat 不增加专业执行限制。
+
+**直接 Codex E 多 Run 补充**：首次合法 E D 派发前，每个新 Run 若没有已绑定的本 Run Codex executor thread，则在其 Owner 指定独立工作区创建新 thread；不能查找并复用其他 Run 的 Worker 或 executor thread。同 Run 中断恢复先核已有 threadId/turn 的真实状态并复用，创建未知先对账而不重复建聊。Codex executor C 与旧 Worker W 的物理路由分开；共享输出和远端写面仍要求实际单写者。

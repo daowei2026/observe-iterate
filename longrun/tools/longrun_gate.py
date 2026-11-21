@@ -16,6 +16,7 @@ SCHEMA = json.loads(
 )
 ACTIONS = (
     "validate-binding", "validate-invocation", "validate-delegation", "validate-order",
+    "validate-executor-execution",
     "validate-worker-return", "validate-executor-return", "validate-manager-return",
     "route-return", "reconcile-actions",
 )
@@ -81,7 +82,7 @@ def binding(c):
     run = b["run_id"]
     exact_path(c["binding_ref"], run, "RUN_BINDING.json")
     require(b["manager"] == "chatgpt:" + run + ":manager", "bad manager logical identity")
-    require(all(re.fullmatch(re.escape("chatgpt:" + run + ":executor:") + r"[A-Za-z0-9._-]+", x)
+    require(all(re.fullmatch(r"(?:chatgpt|codex):" + re.escape(run) + r":executor:[A-Za-z0-9._-]+", x)
                 for x in b["executors"]), "bad executor logical identity")
     require(all(re.fullmatch(re.escape("codex:" + run + ":worker:") + r"[A-Za-z0-9._-]+", x)
                 for x in b["workers"]), "bad Worker logical identity")
@@ -202,6 +203,46 @@ def executor_return(c, b, d):
     return p
 
 
+def codex_executor_execution_preflight(c, b, d):
+    """Trusted-snapshot preflight for direct Codex Skill operations; not an execution lock."""
+    run = b["run_id"]
+    target = d["recipient"]
+    require(target.startswith("codex:" + run + ":executor:"), "not a Codex executor D")
+    i = validated("invocation", c.get("invocation"))
+    require(i["recipient"] == target and i["assignment_ref"] == c["delegation_ref"],
+            "Codex executor invocation not bound to this D")
+    invocation_preflight(c, b)
+    grants = c.get("executor_direct_grants")
+    require(isinstance(grants, list) and grants, "missing direct executor operation grants")
+    owner_path = c.get("owner_workspace_path")
+    require(isinstance(owner_path, str) and owner_path.startswith("/"),
+            "Owner Run workspace realpath unavailable")
+    rec = c.get("codex_executor_receipt", {})
+    bound = c.get("physical_bindings", {}).get(target)
+    require(isinstance(bound, str) and bound and rec.get("thread_id") == bound,
+            "Codex executor thread not independently bound")
+    require(rec.get("run_id") == run and rec.get("cwd") == owner_path
+            and rec.get("realpath") == owner_path,
+            "Codex executor cwd/realpath not verified for this Run")
+    require(rec.get("model") and rec.get("model") == c.get("expected_codex_model")
+            and rec.get("effort") and rec.get("effort") == c.get("expected_codex_effort"),
+            "Codex executor model/effort mismatch or unverified")
+    require(c.get("workspace_available") is True
+            and c.get("workspace_exclusive_verified") is True,
+            "direct executor workspace or external single-writer proof missing")
+    for raw in grants:
+        grant = validated("grant", raw)
+        require(grant["execution_context"] == owner_path,
+                "direct executor grant not bound to Owner workspace")
+        require(grant["operation"] in d["permitted_operations"]
+                and set(grant["allowed_writes"]).issubset(d["allowed_writes"]),
+                "direct Codex E action outside delegation")
+        require(any(grant_covers(g, grant) for g in b["grants"]),
+                "direct Codex E action outside original Owner grant")
+    return {"recipient": target, "thread_id": bound, "allowed_operations":
+            [g["operation"] for g in grants], "status": "PREFLIGHT_ONLY_NOT_LOCK"}
+
+
 def order(c, b, d):
     o = validated("order", c.get("order"))
     require(o["run_id"] == b["run_id"] and o["delegation_ref"] == c["delegation_ref"]
@@ -275,6 +316,8 @@ def check(action, c):
     d = delegation(c, b)
     if action == "validate-delegation":
         return {"delegation_id": d["delegation_id"], "recipient": d["recipient"]}
+    if action == "validate-executor-execution":
+        return codex_executor_execution_preflight(c, b, d)
     if action == "validate-executor-return":
         p = executor_return(c, b, d)
         return {"call_id": p["call_id"], "return_to": d["issuer"],
