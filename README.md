@@ -82,7 +82,7 @@ C 展示方式准备 ─┘
 | **B 观察位置** | [observation-position-preparation](skills/observation-material-preparation/observation-position-preparation/SKILL.md) | 普通 Feature 经验默认位置；高频 Feature 复用 1d→30m→1m→5s→tick 位置层级 |
 | **C 展示方式** | [caegraph-display-preparation](skills/observation-material-preparation/caegraph-display-preparation/SKILL.md) | 根据共享 Package 列待展示信息；形成并迭代展示预期与唯一预期 HTML；整理可注入代码 |
 | **D 定义集成** | [caegraph-definition-integration](skills/observation-material-preparation/caegraph-definition-integration/SKILL.md) | 理解锁定 CAEGraph 仓库后，一次性集成实例、共享字段、B 位置和 C 展示 |
-| **E 执行／运行** | [caegraph-execution](skills/observation-material-preparation/caegraph-execution/SKILL.md) | W1 运行／有限修复，E 专业核图，W2 正式取数，形成同版本图和数据 |
+| **E 执行／运行** | [caegraph-execution](skills/observation-material-preparation/caegraph-execution/SKILL.md) | Codex E executor 同线程完成 E1～E6：运行、合法修复、真实核图、图接受后正式取数，并保持同版本图和数据 |
 
 ### 材料与合理性的边界
 
@@ -172,7 +172,7 @@ C2 结束时的当前 HTML 是唯一预期 HTML；C3 不另生成第二份。
 | D 仓库集成参考 | [CAEGraph 仓库结构与定义集成参考](skills/observation-material-preparation/references/CAEGraph仓库结构与定义集成参考.md) | uplot 调用链和真实集成边界 |
 | B 高频位置参考 | [高频多尺度观察位置参考](skills/observation-material-preparation/observation-position-preparation/MULTISCALE_POSITION_REFERENCE.md) | 只复用位置层级与父子关系 |
 | E 技术参考 | [CAEGraph 执行、核图与取数](skills/observation-material-preparation/references/CAEGraph执行取数与验证.md) | 最终图核对、核图后正式取数和一致性验证 |
-| E Worker 派单 | [Worker 派单合同](skills/observation-material-preparation/caegraph-execution/WORKER_DELEGATION.md) | W1／W2 执行映射 |
+| E 旧版 Worker 派单 | [Worker 派单合同](skills/observation-material-preparation/caegraph-execution/WORKER_DELEGATION.md) | 历史 Web executor + W1/W2 路径参考；新版 E 不以此作为必经前置 |
 | 任务记录模板 | [观察材料准备任务记录](skills/observation-material-preparation/templates/观察材料准备任务单.md) | 历史模板；后续可按真实运行再升级为共享前置+B～E 版本 |
 | 候选方法索引 | [观察候选方法](skills/observation-method-candidates/README.md) | 候选方法，不是固定流程 |
 

@@ -41,7 +41,7 @@ description: 当需要为给定特征实例准备并实际取得 CAEGraph 观察
 | B 观察位置准备 | [observation-position-preparation](observation-position-preparation/SKILL.md) | 普通场景的当前默认位置，或高频 1d→30m→1m→5s→tick 多尺度位置路径 |
 | C 展示方式准备 | [caegraph-display-preparation](caegraph-display-preparation/SKILL.md) | C1 待展示信息；C2 展示预期、复杂点循环和唯一预期 HTML；C3 位置与实例可注入展示代码及注入合同 |
 | D CAEGraph 定义集成 | [caegraph-definition-integration](caegraph-definition-integration/SKILL.md) | 充分理解锁定 CAEGraph 仓库后，把外层输入、共享理解包和 B／C 产物集成为完整定义；拿得准的 B／C 确定性缺项可直接纠正并留痕 |
-| E CAEGraph 执行／运行 | [caegraph-execution](caegraph-execution/SKILL.md) | E 专业判断、W1 快速运行反馈、核图、W2 定向取数、最终脚本／HTML／图数据和核对结果 |
+| E CAEGraph 执行／运行 | [caegraph-execution](caegraph-execution/SKILL.md) | 独立 Codex executor 连续 E1～E6：真实运行/修复、核图接受、图接受后正式取数、同版本图数据与一致性核对 |
 
 ## 4. 文件阅读规则
 
@@ -62,7 +62,7 @@ IO_SPEC.md
 
 - **B**：方法沉淀还不足，`WORKFLOW.md` 只记录普通默认和高频多尺度两种当前用法，不冒充成熟通用 Workflow；
 - **D**：只有一个集成动作，不设置 `WORKFLOW.md`，直接读取 `SKILL.md + IO_SPEC.md`；
-- **E**：专业 `WORKFLOW.md` 只写专业业务节点；Worker 操作另读 [WORKER_DELEGATION.md](caegraph-execution/WORKER_DELEGATION.md)及 W1／W2 两张短执行卡。
+- **E**：新版 [E Skill](caegraph-execution/SKILL.md) 在独立 Codex executor 同线程完成专业判断及直接运行、取数；旧 W1/W2 工单仅供历史 Run 按原版本追溯。
 
 ## 5. 外层输入与专业知识的边界
 
@@ -74,7 +74,7 @@ IO_SPEC.md
 - 与上述三项一致的 `FeatureUnderstandingPackage`；
 - 任务明确指定的品种／时间（如有）。
 
-这些是本次用例事实。位置默认、多尺度层级、展示规则、CAEGraph 仓库理解和 Worker 修改权限属于 Skill／Reference 中的专业知识，不要求每次运行重新填写。
+这些是本次用例事实。位置默认、多尺度层级、展示规则、CAEGraph 仓库理解和 E 工程修复授权边界属于 Skill／Reference 中的专业知识，不要求每次运行重新填写。
 
 特征实例的职责边界：
 
@@ -109,25 +109,22 @@ D 发现 B／C 缺项或错误时：
 
 D 不得无痕改写上游产物。
 
-## 8. E：两张短执行卡，先拿真实反馈
+## 8. E：Codex executor 连续执行，先拿真实反馈
 
-E 的专业 Workflow：
+E 是一项完整专业 Skill，默认在本 Run 独立 Codex executor 线程中直接执行：
 
-```text
-建立最小运行基准
-→ 消费 W1 真实结果并分类问题
-→ 核对最终脚本和最终图
-→ 明确本次正式取数清单
-→ 消费 W2 数据并作必要核对
-→ 交付
-```
+~~~text
+建立最小 D/C2/FeatureUnderstandingPackage 与真实运行入口基准
+→ 运行 D、连续诊断与授权范围内修复
+→ E2 分类并按需返回共享理解／B／C／D
+→ E3 核对并接受最终脚本和真实图
+→ E4 确定正式取数清单（必须在核图接受后）
+→ Codex 直接导出同一已接受运行的图数据
+→ E5 核对一致性
+→ E6 交付
+~~~
 
-Worker 操作使用：
-
-- [W1｜运行 CAEGraph 短执行卡](caegraph-execution/RUN_REPAIR_ORDER_TEMPLATE.md)
-- [W2｜导出已接受图数据短执行卡](caegraph-execution/DATA_EXPORT_ORDER_TEMPLATE.md)
-
-二者的触发和回交关系见 [Worker 派单合同](caegraph-execution/WORKER_DELEGATION.md)。W2 只能在 E 接受最终图以后启动。
+不必为正常工程诊断和取数另签 W1/W2。保留“先做实事，异常再展开”、日志与 diff、真实核图证据、Owner/D 授权及不改变业务语义的边界。
 
 ## 9. 最终交付：`ObservationMaterialPackage`
 
@@ -148,9 +145,9 @@ B／C／D 当前有效产物引用
 ## 10. 总体完成边界
 
 - B～D 完成但 E 尚未实际运行，只能是 `PLAN_READY`；
-- E 必须先通过 W1 或同版本可复用实物取得候选图，核图接受后再用 W2 正式取数；
+- E 必须通过真实运行取得候选图，完成 D/C2 核图接受后才能直接正式取数；
 - 最终脚本、HTML、数据、Feature 版本和参数实例必须一致；
-- `DATA_READY`：最终图通过核对，W2 图数据已取得并通过一致性检查；
+- `DATA_READY`：最终图通过核对，正式图数据已取得并通过 E5 一致性检查；
 - `PARTIAL_WITH_LIMITS`：只完成部分位置、图层或数据，限制已明确；
 - `BLOCKED`：核心图或核心数据无法取得，原因和解除条件已记录。
 
