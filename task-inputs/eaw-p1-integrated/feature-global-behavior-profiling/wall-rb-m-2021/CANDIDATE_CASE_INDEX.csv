@@ -1,0 +1,11 @@
+case_candidate_id,source_finding_or_question_id,symbol,start_time,end_time,object_ids,related_events,selection_reason,required_fields
+CASE-GF001-RB-3527,GF-001,rb,2021-03-24 14:30:15.000,2021-03-24 14:30:21.000,3527,BandUpdate@UTI74165435 ordinal0/1 with different band/core,首个 rb 业务 occurrence ref 冲突代表位置,"wall_id,uti,event_type_code,occurrence_ordinal,band_lo,band_hi,core_price"
+CASE-GF001-M-9878,GF-001,m,2021-06-23 14:18:37.000,2021-06-23 14:18:44.000,9878,BandUpdate@UTI76604840 ordinal0/1 with different band/core,唯一 m 业务 occurrence ref 冲突代表位置,"wall_id,uti,event_type_code,occurrence_ordinal,band_lo,band_hi,core_price"
+CASE-SQ001-RB-2,SQ-001,rb,2021-02-23 09:07:18.000,2021-02-23 09:07:24.000,2,BandUpdate; StateChange(Dormant)+End(thin_contact) same UTI,rb 零时长 Dormant 代表位置,"event order,status,reason,trace status"
+CASE-SQ001-M-2,SQ-001,m,2021-02-23 10:06:10.000,2021-02-23 10:06:16.000,2,Start; StateChange(Dormant)+End(thin_contact) same UTI,m 零时长 Dormant 代表位置,"event order,status,reason,trace status"
+CASE-SQ005-RB-11872,SQ-005,rb,2021-05-10 09:35:24.500,2021-05-10 21:00:01.500,11872,Start; StateChange(Dormant)+End(far_price) after 11377 seconds,全年最长生命周期，跨午间/收盘到夜盘边界,"tick calendar,session boundaries,state trace,events"
+CASE-SQ005-RB-12648,SQ-005,rb,2021-05-14 11:27:38.000,2021-05-14 14:22:53.000,12648,Start; End(thin_contact) after 3315 seconds,第二长生命周期，跨午休,"tick calendar,session boundaries,state trace,events"
+CASE-SQ004-RB-20210818,SQ-004,rb,2021-08-18 00:00:00,2021-08-18 23:59:59.999,,3308 events on calendar date,rb 全年单日事件数最高,"all events,state trace,session labels"
+CASE-SQ004-M-20210813,SQ-004,m,2021-08-13 00:00:00,2021-08-13 23:59:59.999,,1309 events on calendar date,m 全年单日事件数最高,"all events,state trace,session labels"
+CASE-SQ006-RB-11434,SQ-006,rb,2021-05-06 09:05:05.000,2021-05-06 09:05:08.000,11434,Start then End(same_side_relocation) after 0.5 second,rb 最短生命周期代表位置,"candidate price,current core,events,state trace"
+CASE-SQ006-M-530,SQ-006,m,2021-03-01 22:36:10.000,2021-03-01 22:36:14.000,530,Start then End(far_price) after 1 second,m 最短生命周期代表位置,"last price,distance,events,state trace"
