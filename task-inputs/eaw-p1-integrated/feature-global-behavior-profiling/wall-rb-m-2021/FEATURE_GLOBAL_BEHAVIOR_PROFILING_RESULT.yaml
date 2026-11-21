@@ -1,0 +1,308 @@
+FeatureGlobalBehaviorProfilingResult:
+  result_id: FGB-WALL-RB-M-2021-20261121-01
+  feature_ref:
+    feature_name: EAW P1 Wall lifecycle / WallAssembler
+    feature_understanding_package: ../../feature-understanding-result/WALL_FEATURE_UNDERSTANDING_PACKAGE.md
+    producer_baseline: daowei2026/tis@10010b89f8fc79a91affd26f985b6d9bf2d33c6c
+    frp_contract_baseline: daowei2026/frp@37c790c0f456fe3022bb00609219d3e92a5c2f9b
+  run_binding:
+    run_id: wall-rb-m-2021
+    archive_sha256: 52f9032c8808828b54a575c04f5a1f21adb833d7c857d7ee27980023014f9648
+    symbols: [rb, m]
+    requested_range: 2021-01-01..2021-12-31
+    actual_tick_range: 2021-01-04T09:00:00.500000..2021-12-31T15:00:00
+    calendar: night_end_at_2300
+    qt_first_time: 2021-02-22T00:00:00
+    first_wall_events: 2021-02-23
+    feature_instance: WallAssembler:wall-default
+    parameter_set_id: wall-default
+    parameters:
+      p_wall_ticks: 1
+      t_wall_ticks: 6
+      qt_freq: 1d
+      qt_n: 30
+      qt_quantile: 0.997
+  statistics_input_readiness:
+    binding_match:
+      code_version: MATCH
+      parameter_version: MATCH
+      data_scope: CONFIRMED
+    core_object_keys:
+      - symbol + feature_instance + wall_id
+    core_time_keys:
+      - UTI
+      - timestamp
+      - occurrence_ordinal for same-timestamp physical packing
+    available_items:
+      - receipt
+      - wall__stream*
+      - wall_assembler_sparse_events
+      - wall_assembler_state_trace
+      - merged lifecycle event table
+      - trading-day coverage
+      - validation manifests
+    partial_items:
+      - FRP typed outputs were not materialized; typed identity compatibility is checked by contract mapping
+      - no activity-regime stratum is available
+    not_exposed_items:
+      - F0/F1/F2/F6 arrays
+      - F7/F8/F9 values
+      - support/thin/contact rings
+      - far/no-presence counters
+      - pending_breakthrough
+      - chunk summaries/checkpoints/carry
+    data_quality_findings:
+      - All files listed in SHA256SUMS.txt verified.
+      - Native result tables matched their delivered merged forms exactly.
+      - 243 trading days were covered for each symbol.
+      - Band-order differences were only floating-point epsilon; no violation exceeded 1e-9.
+      - m excluded 17 declared all-empty calendar placeholders; valid rows were unchanged.
+    readiness_status: READY
+  global_behavior_profile:
+    profile_id: GBP-WALL-RB-M-2021-01
+    statistics_definitions_ref: STATISTIC_DEFINITIONS.csv
+    candidate_profile:
+      status: NOT_EXPOSED
+      note: Intermediate F0/F1/F2/F6/F7/F8/F9 decisions were not counted because the artifact does not expose them.
+    object_profile:
+      rb:
+        wall_objects: 71686
+        id_range: [1, 71686]
+        contiguous_ids: true
+        one_start_and_one_end_per_object: true
+        incomplete_lifecycles: 0
+      m:
+        wall_objects: 27920
+        id_range: [1, 27920]
+        contiguous_ids: true
+        one_start_and_one_end_per_object: true
+        incomplete_lifecycles: 0
+    event_profile:
+      rb:
+        event_rows: 278800
+        post_qt_ticks: 8746200
+        events_per_million_post_qt_ticks: 31876.700739
+        starts_per_million_post_qt_ticks: 8196.245226
+        counts:
+          Wall.Start.ByBigQuote: 71686
+          Wall.BandUpdate: 113813
+          Wall.StateChange: 21615
+          Wall.End: 71686
+      m:
+        event_rows: 79734
+        post_qt_ticks: 8746187
+        events_per_million_post_qt_ticks: 9116.429823
+        starts_per_million_post_qt_ticks: 3192.248233
+        counts:
+          Wall.Start.ByBigQuote: 27920
+          Wall.BandUpdate: 20056
+          Wall.StateChange: 3838
+          Wall.End: 27920
+    state_occupancy_profile:
+      rb:
+        active_side_tick_ratio: 0.0615841165
+        at_least_one_active_side_tick_ratio: 0.1144284375
+        dormant_entries: 20593
+        zero_duration_dormant: 14915
+        zero_duration_dormant_ratio: 0.7242752392
+        revivals: 1022
+      m:
+        active_side_tick_ratio: 0.0783534013
+        at_least_one_active_side_tick_ratio: 0.1462394984
+        dormant_entries: 3816
+        zero_duration_dormant: 3727
+        zero_duration_dormant_ratio: 0.9766771488
+        revivals: 22
+    transition_profile:
+      legal_transition_violations: 0
+      start_before_create_violations: 0
+      updates_after_end_violations: 0
+      relocation_pairing:
+        rb:
+          relocation_ends: 3964
+          paired_same_uti_new_starts: 3964
+          order_errors: 0
+        m:
+          relocation_ends: 64
+          paired_same_uti_new_starts: 64
+          order_errors: 0
+    lifecycle_profile:
+      rb:
+        median_seconds: 5.0
+        p95_seconds: 20.5
+        mean_seconds: 7.51
+        max_seconds: 11377.0
+        lives_le_6_ticks: 21949
+        lives_le_6_ticks_ratio: 0.3061825182
+      m:
+        median_seconds: 13.0
+        p95_seconds: 88.5
+        mean_seconds: 24.54
+        max_seconds: 575.5
+        lives_le_6_ticks: 4616
+        lives_le_6_ticks_ratio: 0.1653295129
+    reason_profile:
+      rb:
+        far_price: {count: 12201, ratio: 0.1702}
+        thin_contact: {count: 52509, ratio: 0.7325}
+        breakthrough: {count: 0, ratio: 0.0, applicability: NOT_APPLICABLE_UNDER_BOUND_INPUT}
+        timeout: {count: 3012, ratio: 0.0420}
+        same_side_relocation: {count: 3964, ratio: 0.0553}
+      m:
+        far_price: {count: 1008, ratio: 0.0361}
+        thin_contact: {count: 26700, ratio: 0.9563}
+        breakthrough: {count: 0, ratio: 0.0, applicability: NOT_APPLICABLE_UNDER_BOUND_INPUT}
+        timeout: {count: 148, ratio: 0.0053}
+        same_side_relocation: {count: 64, ratio: 0.0023}
+    same_tick_order_profile:
+      rb:
+        multi_event_timestamps: 28078
+        max_events_same_timestamp: 4
+        cross_side_same_timestamp: 9300
+        cross_side_order_errors: 0
+      m:
+        multi_event_timestamps: 5142
+        max_events_same_timestamp: 4
+        cross_side_same_timestamp: 1341
+        cross_side_order_errors: 0
+      frequent_same_object_combinations:
+        statechange_then_end_same_uti:
+          rb: 14941
+          m: 3727
+        bandupdate_then_end_same_uti:
+          rb: 548
+          m: 69
+        bandupdate_then_statechange_same_uti:
+          rb: 517
+          m: 15
+    reference_integrity_profile:
+      physical_ordinal_integrity: PASS
+      duplicate_business_ref_groups_with_different_payload:
+        total: 132
+        rb: 131
+        m: 1
+        affected_objects: 125
+        affected_objects_ratio: 0.001255
+        extra_physical_rows: 132
+        extra_physical_rows_ratio: 0.000368
+        detail_ref: DUPLICATE_BUSINESS_OCCURRENCE_REFS.csv
+    density_profile:
+      summary_ref: PROFILE_SUMMARY.csv
+      stratified_ref: STRATIFIED_EVENT_PROFILE.csv
+      rb_to_m_start_density_ratio: 2.5675
+      rb_to_m_event_density_ratio: 3.4967
+    limits:
+      - No feature intermediate arrays were exposed.
+      - No materialized FRP occurrence/current/diagnostic output was supplied.
+      - Cross-symbol density differences are descriptive and require scenario interpretation.
+  global_finding_candidates:
+    - finding_id: GF-001
+      finding_type: STRUCTURAL_FINDING_CANDIDATE
+      feature_ref: FUP-EAW-WALL-20261120-01
+      run_binding: wall-rb-m-2021
+      reasonableness_unit_ref: Wall occurrence identity and idempotence
+      business_object_ref: WallLifecycleOccurrence / OccurrenceRef
+      observation: >-
+        132 groups contain two BandUpdate rows with the same symbol, wall_id, UTI and event_type_code,
+        but different band/core payloads. Physical occurrence_ordinal distinguishes the rows, while the
+        current typed business OccurrenceRef contract omits ordinal.
+      structural_invariant_ref: >-
+        One business OccurrenceRef must not identify two different payloads within one feature-run namespace.
+      evidence_scope:
+        symbols: [rb, m]
+        period: 2021 post-QT sample
+        detail_ref: DUPLICATE_BUSINESS_OCCURRENCE_REFS.csv
+      repeat_count: 132
+      affected_count: 125
+      affected_ratio: 0.001255
+      representative_locations:
+        - {symbol: rb, wall_id: 3527, timestamp: '2021-03-24 14:30:18.000', uti: 74165435}
+        - {symbol: rb, wall_id: 3893, timestamp: '2021-03-26 11:06:27.000', uti: 74238173}
+        - {symbol: m, wall_id: 9878, timestamp: '2021-06-23 14:18:40.500', uti: 76604840}
+      alternative_non_error_explanations:
+        - A formally adopted identity contract may include physical ordinal or otherwise define the two rows as distinct business occurrences.
+      current_confidence: HIGH
+      next_route: BUSINESS_DISCREPANCY_DIAGNOSIS
+      diagnosis_input_adapter_ref: DIA-GF-001
+  scenario_question_queue:
+    - question_id: SQ-001
+      finding_type: SCENARIO_INTERPRETATION_QUESTION
+      statistical_pattern: Zero-duration Dormant episodes dominate rb (72.43%) and m (97.67%); revivals are 1,022 and 22.
+      why_statistics_cannot_decide: Dormant followed by End in the same UTI is legal in the current implementation order.
+      recommended_visual_evidence: Quote, band, status and End evidence around zero-duration Dormant and revival cases.
+      priority: HIGH
+      next_route: BUSINESS_EXPECTATION_DERIVATION
+    - question_id: SQ-002
+      finding_type: SCENARIO_INTERPRETATION_QUESTION
+      statistical_pattern: rb Start density is 2.57x m and event density is 3.50x m; rb median life is 5s versus m 13s.
+      why_statistics_cannot_decide: Tick size, quote structure and market microstructure can legitimately differ by symbol.
+      recommended_visual_evidence: Matched rb/m windows with price, quote, QT, lifecycle events and state trace.
+      priority: HIGH
+      next_route: BUSINESS_EXPECTATION_DERIVATION
+    - question_id: SQ-003
+      finding_type: SCENARIO_INTERPRETATION_QUESTION
+      statistical_pattern: thin_contact is 73.25% in rb and 95.63% in m; breakthrough is zero in both.
+      why_statistics_cannot_decide: breakthrough is not applicable under the bound default wrapper; other reason frequencies need process interpretation.
+      recommended_visual_evidence: Representative End windows by reason.
+      priority: MEDIUM
+      next_route: BUSINESS_EXPECTATION_DERIVATION
+    - question_id: SQ-004
+      finding_type: SCENARIO_INTERPRETATION_QUESTION
+      statistical_pattern: Material monthly and session density variation; PM is highest-density session for both symbols.
+      why_statistics_cannot_decide: No reliable activity-regime field is exposed, and real market regimes vary.
+      recommended_visual_evidence: Full-day and session-separated views with QT, quote activity, events and state trace.
+      priority: MEDIUM
+      next_route: BUSINESS_EXPECTATION_DERIVATION
+    - question_id: SQ-005
+      finding_type: SCENARIO_INTERPRETATION_QUESTION
+      statistical_pattern: rb maximum life is 11,377s across session boundaries; second is 3,315s across midday; m maximum is 575.5s.
+      why_statistics_cannot_decide: Identity may intentionally carry across physical breaks, but business continuity needs scene review.
+      recommended_visual_evidence: Calendar/session boundary, state carry, price and band path.
+      priority: HIGH
+      next_route: BUSINESS_EXPECTATION_DERIVATION
+    - question_id: SQ-006
+      finding_type: SCENARIO_INTERPRETATION_QUESTION
+      statistical_pattern: 30.62% of rb and 16.53% of m Wall lives are <=6 ticks.
+      why_statistics_cannot_decide: Short life may be legitimate evidence response or over-fragmentation.
+      recommended_visual_evidence: Candidate/core distance and exact End reason around shortest lives.
+      priority: MEDIUM
+      next_route: BUSINESS_EXPECTATION_DERIVATION
+  candidate_case_index_ref: CANDIDATE_CASE_INDEX.csv
+  diagnosis_input_adapters:
+    - adapter_id: DIA-GF-001
+      finding_id: GF-001
+      frozen_expectation:
+        expectation_id: EXP-WALL-OCCURRENCE-REF-CONSISTENCY
+        version: FeatureUnderstandingPackage V0.2.0
+        statement: One business OccurrenceRef must not identify two different payloads in one feature-run namespace.
+        origin: FeatureUnderstandingPackage occurrence identity and FRP occurrence-ledger rules
+        applicable_conditions: Packed Wall rows decoded by the current FaoIngress/WallLifecycle identity contract.
+        falsifier_or_counterevidence: A formally adopted identity contract that includes ordinal or proves the rows are distinct without ref conflict.
+      evidence_comparison_package:
+        comparison_id: ECP-GF-001
+        scenario_id: GLOBAL_PROFILE
+        data_binding: wall-rb-m-2021.zip
+        time_basis: Half-second UTI plus producer timestamp; 2021 post-QT sample.
+        parameter_version: WallAssembler:wall-default; p=1; t=6
+        evidence_items:
+          - 132 groups in DUPLICATE_BUSINESS_OCCURRENCE_REFS.csv
+          - Each group contains different payloads.
+          - Physical ordinal is unique and contiguous.
+          - Current typed ref formula omits ordinal.
+        judgment: STRUCTURAL_FINDING_CANDIDATE; root cause and final business judgment deferred.
+      business_intent_ref: Wall lifecycle identity, idempotence and ordered state updates
+      processing_chain_ref: WallAssembler -> wall__stream* -> WallOccurrenceFao -> WallLifecycle occurrence ledger
+      relevant_code_or_requirement_refs:
+        - FeatureUnderstandingPackage occurrence identity and same-tick rules
+        - TIS p1_dba_export physical ordinal
+        - FRP FaoIngress OccurrenceRef
+        - FRP OccurrenceLedger conflict rule
+      data_binding_and_time_basis: rb/m, night_end_at_2300, 2021-01-04..2021-12-31; Wall events start 2021-02-23.
+  gate:
+    status: DIAGNOSIS_REQUIRED
+    reasons:
+      - GF-001: 132 repeated business occurrence refs identify different BandUpdate payloads under the current typed identity contract.
+    valid_profile_ref: GBP-WALL-RB-M-2021-01
+    next_action: >-
+      Run business-discrepancy-diagnosis for GF-001. If resolution changes producer or identity behavior,
+      rerun the feature and G1-G8; otherwise formally close the finding before scenario review.
