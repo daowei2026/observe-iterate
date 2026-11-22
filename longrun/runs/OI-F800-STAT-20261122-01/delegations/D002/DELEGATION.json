@@ -1,0 +1,50 @@
+{
+  "schema": "longrun-delegation/v2",
+  "run_id": "OI-F800-STAT-20261122-01",
+  "delegation_id": "D002",
+  "issuer_call_id": "C0004",
+  "issuer": "codex:OI-F800-STAT-20261122-01:manager",
+  "recipient": "codex:OI-F800-STAT-20261122-01:executor:E1",
+  "return_to": "codex:OI-F800-STAT-20261122-01:manager",
+  "task_ref": "daowei2026/observe-iterate@87b951bbd15078a2d6353bdd24afe0d8f19c845c:skills/reasonableness-analysis/feature-global-behavior-profiling/SKILL.md",
+  "business_context_ref": "daowei2026/observe-iterate@87b951bbd15078a2d6353bdd24afe0d8f19c845c:task-inputs/wall-f-parallel-closure-20261122/F_BASE_RUN_INPUT.md",
+  "input_refs": [
+    "daowei2026/observe-iterate@81505c8f0d0216be94b68c4a3ae7c10a61c97da0:longrun/runs/OI-F800-STAT-20261122-01/calls/C0004/FULL_ASSIGNMENT.md",
+    "daowei2026/observe-iterate@c81c64d64aaa7d22a6d95459e15345ee3e028ced:longrun/runs/OI-F800-STAT-20261122-01/calls/C0003/PRO_RETURN.json",
+    "daowei2026/observe-iterate@78b684ba6956f4c33a03b9167e846e3b741316a5:longrun/runs/OI-F800-STAT-20261122-01/calls/C0002/EXECUTOR_REPORT.md",
+    "daowei2026/observe-iterate@78b684ba6956f4c33a03b9167e846e3b741316a5:longrun/runs/OI-F800-STAT-20261122-01/professional/D001/FeatureUnderstandingPackage.json",
+    "daowei2026/observe-iterate@78b684ba6956f4c33a03b9167e846e3b741316a5:longrun/runs/OI-F800-STAT-20261122-01/professional/D001/FEATURE_UNDERSTANDING_DELTA.md",
+    "daowei2026/observe-iterate@78b684ba6956f4c33a03b9167e846e3b741316a5:longrun/runs/OI-F800-STAT-20261122-01/professional/D001/INSTANCE_INSPECTION.json",
+    "daowei2026/observe-iterate@78b684ba6956f4c33a03b9167e846e3b741316a5:longrun/runs/OI-F800-STAT-20261122-01/professional/D001/configuration.json",
+    "daowei2026/observe-iterate@78b684ba6956f4c33a03b9167e846e3b741316a5:longrun/runs/OI-F800-STAT-20261122-01/professional/D001/baseline-configuration.json",
+    "daowei2026/observe-iterate@78b684ba6956f4c33a03b9167e846e3b741316a5:longrun/runs/OI-F800-STAT-20261122-01/professional/D001/PUBLIC_TABLE_SCHEMA.json",
+    "daowei2026/observe-iterate@43a13e14129984d6f3a142c6eb64397a43c3ca79:longrun/runs/OI-F800-STAT-20261122-01/OWNER_START.md",
+    "daowei2026/observe-iterate@2665f0cbabff0439fe8d361c2ad545bf922e1792:longrun/runs/OI-F800-STAT-20261122-01/RUN_BINDING.json",
+    "daowei2026/observe-iterate@2665f0cbabff0439fe8d361c2ad545bf922e1792:longrun/runs/OI-F800-STAT-20261122-01/RUN_RESOURCE_BINDING.json",
+    "daowei2026/observe-iterate@87b951bbd15078a2d6353bdd24afe0d8f19c845c:task-inputs/wall-f-parallel-closure-20261122/F_BASE_RUN_INPUT.md",
+    "daowei2026/observe-iterate@87b951bbd15078a2d6353bdd24afe0d8f19c845c:control-v0.3/01_L0_统计驱动的单特征闭环.md",
+    "daowei2026/observe-iterate@87b951bbd15078a2d6353bdd24afe0d8f19c845c:control-v0.3/02_L1_本特征释放与下游依赖.md",
+    "daowei2026/observe-iterate@87b951bbd15078a2d6353bdd24afe0d8f19c845c:control-v0.3/03_L2_节点输入输出与完成状态.md",
+    "daowei2026/observe-iterate@87b951bbd15078a2d6353bdd24afe0d8f19c845c:skills/reasonableness-analysis/STATISTICS_DRIVEN_PRACTICE.md",
+    "daowei2026/observe-iterate@87b951bbd15078a2d6353bdd24afe0d8f19c845c:skills/reasonableness-analysis/feature-global-behavior-profiling/WORKFLOW.md",
+    "daowei2026/observe-iterate@87b951bbd15078a2d6353bdd24afe0d8f19c845c:skills/reasonableness-analysis/feature-global-behavior-profiling/IO_SPEC.md",
+    "daowei2026/observe-iterate@87b951bbd15078a2d6353bdd24afe0d8f19c845c:longrun/CODEX_NATIVE_EXECUTION_PROFILE.md",
+    "daowei2026/observe-iterate@87b951bbd15078a2d6353bdd24afe0d8f19c845c:longrun/contracts/LONGRUN_PROTOCOL_V2.md",
+    "daowei2026/observe-iterate@87b951bbd15078a2d6353bdd24afe0d8f19c845c:longrun/contracts/longrun_schema_v2.json",
+    "daowei2026/observe-iterate@87b951bbd15078a2d6353bdd24afe0d8f19c845c:longrun/professional/PRO_EXECUTOR_GUIDE.md"
+  ],
+  "expected_outputs": [
+    "FeatureRunResultBinding：由已采用 control-v0.3 L0 §3 的正式 X（准确结果复用或锁定全范围生产）形成，专业合同与复用条件按原 Workflow、BusinessTaskInput 及最新 Owner 指令。",
+    "FeatureGlobalBehaviorProfilingResult：X 取得合格结果绑定后紧随执行唯一专业 Skill feature-global-behavior-profiling，输出与完成条件按原 SKILL/WORKFLOW/IO_SPEC 及 STATISTICS_DRIVEN_PRACTICE。",
+    "原生专业报告与 V2 executor PRO_RETURN，回原 manager；Owner 最新要求的七项进度在真实发生时分别报告。"
+  ],
+  "permitted_operations": [
+    "formal_feature_run",
+    "run_result_statistics_analysis_write",
+    "run_record_write"
+  ],
+  "allowed_writes": [
+    "/dwdhome/fy/BASE_E6_2_copy",
+    "longrun/runs/OI-F800-STAT-20261122-01/**"
+  ]
+}
