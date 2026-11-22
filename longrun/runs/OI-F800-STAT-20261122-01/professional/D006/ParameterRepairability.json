@@ -1,0 +1,72 @@
+{
+  "suspected_parameters": [
+    "observation_multiple=800",
+    "delta=600",
+    "固定2Δ=1200",
+    "freq=5m",
+    "units_per_open_minute=120",
+    "units_per_calendar_tick=1",
+    "6Δ等待/修订尾部",
+    "18Δ handoff",
+    "ScaleTurn上游选择参数"
+  ],
+  "parameter_consumers": [
+    {
+      "parameter": "800×600",
+      "definition": "GroupCandidateTypes.hs:groupObservationDuration",
+      "consumers": [
+        "GroupCandidateMaterial.hs:covered/eligible",
+        "GroupCandidateEvolution.hs:formationQuestions/deadline"
+      ],
+      "effect": "改变观察期限和连续覆盖所需长度；不参与报价有效性或CoverageCondition分类"
+    },
+    {
+      "parameter": "delta=600 / hardcoded 2",
+      "definition": "FormationProfile / GroupCandidatePairs.hs:assessPair",
+      "consumers": [
+        "pair temporal distance <= 2*formationDelta"
+      ],
+      "effect": "改变pair资格；不改变缺价事件被发行Observed这一事实"
+    },
+    {
+      "parameter": "freq/Calendar units",
+      "definition": "GroupCandidateKLineInput.hs:klineUTIStep/groupKLineEvents",
+      "consumers": [
+        "源Int64相邻步长600",
+        "报价位置商及Clock"
+      ],
+      "effect": "同频率实际步长精确为600；缺价前中后UTI仍真实相邻，修改步长会错断有限价正常流且不表达缺价区别"
+    },
+    {
+      "parameter": "hardcoded 6,18",
+      "definition": "Material waiting / Evolution revisionEnd / Decisions handoff",
+      "consumers": [
+        "6Δ未知Clock等待",
+        "deadline+6Δ修订尾部",
+        "revisionEnd+18Δ交接"
+      ],
+      "effect": "位于覆盖分类后或平行职责，不能使NaN发行InputMissing"
+    },
+    {
+      "parameter": "ScaleTurn相关参数",
+      "definition": "完整配置sources[*].input.scale_turn",
+      "consumers": [
+        "上游转折/锚点选择"
+      ],
+      "effect": "可改变候选输入和发行人群；正常coverage每拍仍直接取KLine，不能修复丢失价格有效性的信息"
+    }
+  ],
+  "earliest_business_divergence": "GroupCandidateKLineInput.hs:advance把(价格,UTI,位置,Clock)解构为(_,known,_,u)，无条件Observed并更新previous；进入Material前已丢失有效观测与缺价区别。",
+  "feasibility_status": "PROVEN_NOT_ADJUSTABLE",
+  "feasibility_evidence": [
+    "在当前已明确配置能力内，无任何参数控制有限价格检测或失败分类；800、600、2Δ又由Owner固定。",
+    "即使不诉诸固定值约束，两个无Turn流在相同UTI/Clock上仅价格不同（有效值/NaN）也会被当前adapter投影为相同frameCoverage，Material对所有参数收到同样输入，不能同时满足有限价可完整、真实缺价须断开的区别。",
+    "将观察期拉长到超出全部历史会把正常流也标不完整；缩短期使部分窗口不再包含缺口仅改变预期适用位置；改变频率/对象域/日历则改变问题或破坏正常相邻对照。均非修复当前固定实例。",
+    "原生同一800×600重放仅更改缺价分类即使8/8从0变1，且满窗恢复；Material已有能力处理SourceFailure/InputMissing，无需标定。"
+  ],
+  "upstream_dependency": "真实PNV缺口存在；恢复原数据可能消除本样本暴露条件，但不补足adapter对未来缺价的表达能力。未确定数据生成/供应端缺失原因。",
+  "unresolved_constraints": [
+    "修后全图发行、Revision/UUID和下游影响须Owner批准后新版本完整X/G实测；本C不求解新参数或改现有配置。"
+  ],
+  "next_route": "现有合同已明确缺价断开：实现修正角色，先由原manager提交F800-MP-002获Owner明确确认；本案无需参数标定或重定义业务预期。"
+}

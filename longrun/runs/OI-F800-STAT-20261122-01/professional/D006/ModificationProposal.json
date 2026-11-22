@@ -1,0 +1,112 @@
+{
+  "proposal_id": "F800-MP-002",
+  "status": "PROPOSED_NOT_AUTHORIZED_NOT_APPLIED",
+  "finding_id": "F800-GF-002",
+  "problem": "在固定rb/hc/i、5m、night_end_at_2300正常KLine输入的800Δ窗内，实际消费PNV有69个非豁免缺价点；8个已发布观点却为groupCoverageIncomplete=0。条件前件经原始DBA/AtSelf/当前合同核验成立。",
+  "reason_for_new_confirmation": "F800-MP-001仅批准准确UTI相邻修复及复验；此次新增close有效性覆盖分类及其previous重置，超出原批准。",
+  "base": {
+    "frp": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c",
+    "tis": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767",
+    "configuration_sha256": "b72095ff100da926474701b74bff7586a74b9770bc81cadc34c23cfe223e5cb3"
+  },
+  "concrete_change": [
+    "在buildKLineGroupSource.advance保留同拍close价格；validPrice = 非NaN且非Infinity。有效有限close保持现有Observed及准确UTI相邻规则。",
+    "close非有限时为该对象发CoverageInputMissing Nothing Nothing，previous成功邻接状态清空；不把零量本身定义成缺价，不根据有无Turn判断是否观测。",
+    "缺价拍继续沿原有效UTI/Clock推进frame；不填价、不抛弃Calendar时格、不抹除已有Turn/失知状态，不改exactUTI对非法时钟的原处理。",
+    "恢复首个有效close只发行当前成功点，后续真实600步长再累计；不跨缺口回接历史。"
+  ],
+  "reviewable_diff": "F800-MP-002.proposed.diff",
+  "diff_applied": false,
+  "diff_compiled_or_integration_tested": false,
+  "evidence_before_approval": [
+    "DiagnosisReport.json",
+    "ExperimentEvaluation.json",
+    "NATIVE_COVERAGE_CONTROLS.csv",
+    "ParameterRepairability.json"
+  ],
+  "validation_plan": [
+    {
+      "order": 1,
+      "type": "真实adapter分类回归",
+      "cases": [
+        "同UTI轴有限close与NaN/±Infinity的成对输入",
+        "覆盖warm后单缺价/连续缺价",
+        "只有一个固定成员失败",
+        "有限close且volume=0/无Turn仍Observed"
+      ],
+      "acceptance": "必须执行正常KLine→frame分类位置，不能仅手造SourceFailure来代替分类测试；有效Clock仍推进，失败清previous，恢复先点后边。"
+    },
+    {
+      "order": 2,
+      "type": "既有覆盖/几何边界回归",
+      "cases": [
+        "GF001准确UTI相邻/真实步长缺口/冷启动/2Δ不变",
+        "失败/失知/明确不适用、无Turn观察、恢复满800Δ的前/等号边界",
+        "revision尾部/旧r资格与稀疏发行引用完整性"
+      ],
+      "acceptance": "当前规则保持，缺价断开不回退已修GF001；测试失败不得采用。"
+    },
+    {
+      "order": 3,
+      "type": "代码提交与采用",
+      "acceptance": "Owner明确批准后仅在Run授权工作区实施、回归、提交/推送FRP，并记录新code/binary/config/dependency binding；不沿用be57结果冒充新版本。"
+    },
+    {
+      "order": 4,
+      "type": "完整正式X及独立读回",
+      "acceptance": "真实单写者+重型flock，完整rb/hc/i、5m、2021—2023、同SOF/night2300、800/600与2Δ；独立31表OnlyRead/字段哈希/引用及新身份读回。不以子链重放替代正式运行。"
+    },
+    {
+      "order": 5,
+      "type": "原Skill全量G复验",
+      "acceptance": "重跑新版本完整G，复验8位置的对应自然对象和冷启动/GF00122+8控制；量化480基线自然Life/1534Revision/1216发行的真实变化及exact链，不能预设新计数。检查缺价窗flag冲突全量0，并保留场景问题及Q限制。"
+    },
+    {
+      "order": 6,
+      "type": "释放与依赖",
+      "acceptance": "由原manager按原L1消费新X/G/问题处置后签FeatureReleaseGate/适用ReleasePackage；无批准或未通过前保留当前结果与诊断，勿提前释放。"
+    }
+  ],
+  "impact_ref": "ContractAndDependencyImpact.json",
+  "risks_and_limits": [
+    "纯覆盖干预不证明完整修后发行/UUID不变。",
+    "共享适配代码可能影响Q，不能宣称Q/V已验证。",
+    "实际输入缺失供应端成因未修复，本提案只保证缺失不被称作完整。"
+  ],
+  "requested_authorization": "请原manager将此准确提案、diff、影响及验证方案交Owner，明确是否批准该局部修正、回归、提交/推送采用及新完整F X/读回/G；本C未发Owner问题，也未实施。",
+  "finding_ref": "daowei2026/observe-iterate@38e2af72be826a1e98fd7f5d4522c50d218750f3:longrun/runs/OI-F800-STAT-20261122-01/professional/D005/GlobalFindingCandidates.json#F800-GF-002",
+  "current_behavior": "在固定rb/hc/i、5m、night_end_at_2300正常KLine输入的800Δ窗内，实际消费PNV有69个非豁免缺价点；8个已发布观点却为groupCoverageIncomplete=0。条件前件经原始DBA/AtSelf/当前合同核验成立。",
+  "proposed_change": [
+    "在buildKLineGroupSource.advance保留同拍close价格；validPrice = 非NaN且非Infinity。有效有限close保持现有Observed及准确UTI相邻规则。",
+    "close非有限时为该对象发CoverageInputMissing Nothing Nothing，previous成功邻接状态清空；不把零量本身定义成缺价，不根据有无Turn判断是否观测。",
+    "缺价拍继续沿原有效UTI/Clock推进frame；不填价、不抛弃Calendar时格、不抹除已有Turn/失知状态，不改exactUTI对非法时钟的原处理。",
+    "恢复首个有效close只发行当前成功点，后续真实600步长再累计；不跨缺口回接历史。"
+  ],
+  "why_this_stage": "正常KLine适配是进入Material前最早丢弃价格有效性的责任边界；Material已有InputMissing/SourceFailure语义，局部修正可保留准确UTI步长和全部下游字段。",
+  "alternatives": [
+    {
+      "option": "修复正常KLine覆盖分类（本提案）",
+      "preserves": "既有有效观测/缺价断开合同及冻结参数/范围",
+      "cost": "需真实适配回归、代码采用及完整新X/G，发行身份变化须实测"
+    },
+    {
+      "option": "仅修PNV历史数据",
+      "preserves": "可消除此批实际缺价；须另核来源事实及输入版本",
+      "limitation": "不能使adapter识别未来缺价；本C未定位供应端原因，不能擅自补值或采用修数据"
+    },
+    {
+      "option": "标定800/600或改域/Calendar",
+      "limitation": "不表达有限价/缺价区别；改变固定任务或掩盖问题，ParameterRepairability已给不可调证明"
+    },
+    {
+      "option": "重定义coverage只代表时间时格",
+      "limitation": "需另立业务目的/新预期，违背当前冻结缺价合同；非本技术修正提案"
+    }
+  ],
+  "expected_effect": "在同一原始缺价输入和相应自然对象/known，覆盖应不完整；纯子链8/8已支持该预测。正式修后Life/Revision/发行总量及UUID不预设，须完整X/G实测。",
+  "possible_side_effects": "该标记参与候选正文和稀疏发行变化；Revision数量、发行时点和UUID/exact链可能变化，不能从8样本推算全量结果；新运行身份需重新绑定、独立读回。 共享正常适配路径，存在行为影响可能；Q现有另一路数值边界限制继续传递。本Run不运行Q/V、不签Q释放，后续使用前须新依赖版本/语义核对",
+  "files_or_parameters_to_change": [
+    "src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateKLineInput.hs（仅advance价格覆盖分类与previous成功状态）",
+    "新增有必要的真实适配回归；不改正式参数、硬编码常量、PNV、保存schema或业务范围"
+  ]
+}

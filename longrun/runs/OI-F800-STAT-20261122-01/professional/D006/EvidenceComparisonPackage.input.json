@@ -1,0 +1,130 @@
+{
+  "comparison_id": "F800-GF-002-GLOBAL-COMPARE",
+  "scenario_id": "GLOBAL_PROFILE",
+  "data_binding": "FeatureRunResultBinding.json",
+  "time_basis": "原publication与Calendar UTI；120UTI/开放分钟",
+  "parameter_version": "b72095ff100da926474701b74bff7586a74b9770bc81cadc34c23cfe223e5cb3",
+  "evidence_items": [
+    {
+      "kind": "全量正式对照",
+      "ref": "profile/violations_complete_flag_with_input_price_gap.csv",
+      "revision_occurrences": 8,
+      "lives": 5,
+      "ticks": 6
+    },
+    {
+      "kind": "独立801行切片反核",
+      "ref": "MISSING_INPUT_WINDOW_VALIDATION.json",
+      "windows": 24,
+      "missing_ohlc_per_symbol": 69
+    },
+    {
+      "kind": "历史同事实",
+      "ref": "comparison/price_gap_baseline.csv",
+      "old_flag_zero": 8,
+      "meaning": "新识别的既存候选，非已证实新增回归"
+    },
+    {
+      "kind": "最小区分位置",
+      "locations": [
+        {
+          "life": "f82181f4-096a-4bec-bf4a-9289d892377f",
+          "revision": "bd820d7f-2f02-4a10-b614-9b38e198139b",
+          "timestamp": "2023-03-13 22:45:00",
+          "known": "93727799",
+          "symbols": "hc+rb",
+          "required_from": "93247799",
+          "groupCoverageIncomplete": "0",
+          "missing_symbols": "rb+hc+i",
+          "missing_rows_per_symbol": "rb:69;hc:69;i:69",
+          "first_missing": "2023-03-10 21:05:00",
+          "last_missing": "2023-03-13 15:00:00",
+          "source": "完整独立KLine公开表；空OHLC的真实SourceFailure/豁免语义待诊断",
+          "main_output_location": {
+            "symbols": [
+              "hc",
+              "rb"
+            ],
+            "life": "f82181f4-096a-4bec-bf4a-9289d892377f",
+            "revision": "bd820d7f-2f02-4a10-b614-9b38e198139b",
+            "timestamp": "2023-03-13 22:45:00",
+            "known_uti": 93727799,
+            "parent_coordinates": {
+              "timestamp": "2023-03-13 22:45:00",
+              "occurrence": "1058",
+              "record_id": "0",
+              "child_id_2": "0"
+            },
+            "table": "occurrences",
+            "source": "readback/tables/occurrences.csv"
+          }
+        },
+        {
+          "life": "12f22e6f-b20e-444b-9a6a-f52486c1b8e4",
+          "revision": "12962bbe-deeb-44ac-a7b7-27a4b8ac36be",
+          "timestamp": "2023-03-16 09:25:00",
+          "known": "93815399",
+          "symbols": "hc+rb",
+          "required_from": "93335399",
+          "groupCoverageIncomplete": "0",
+          "missing_symbols": "rb+hc+i",
+          "missing_rows_per_symbol": "rb:69;hc:69;i:69",
+          "first_missing": "2023-03-10 21:05:00",
+          "last_missing": "2023-03-13 15:00:00",
+          "source": "完整独立KLine公开表；空OHLC的真实SourceFailure/豁免语义待诊断",
+          "main_output_location": {
+            "symbols": [
+              "hc",
+              "rb"
+            ],
+            "life": "12f22e6f-b20e-444b-9a6a-f52486c1b8e4",
+            "revision": "12962bbe-deeb-44ac-a7b7-27a4b8ac36be",
+            "timestamp": "2023-03-16 09:25:00",
+            "known_uti": 93815399,
+            "parent_coordinates": {
+              "timestamp": "2023-03-16 09:25:00",
+              "occurrence": "1059",
+              "record_id": "0",
+              "child_id_2": "0"
+            },
+            "table": "occurrences",
+            "source": "readback/tables/occurrences.csv"
+          }
+        },
+        {
+          "life": "f82181f4-096a-4bec-bf4a-9289d892377f",
+          "revision": "d644ba9d-1906-48fe-b131-a3ca11fcfdf8",
+          "timestamp": "2023-03-24 23:00:00",
+          "known": "94102199",
+          "symbols": "hc+rb",
+          "required_from": "93622199",
+          "groupCoverageIncomplete": "0",
+          "missing_symbols": "rb+hc+i",
+          "missing_rows_per_symbol": "rb:69;hc:69;i:69",
+          "first_missing": "2023-03-10 21:05:00",
+          "last_missing": "2023-03-13 15:00:00",
+          "source": "完整独立KLine公开表；空OHLC的真实SourceFailure/豁免语义待诊断",
+          "main_output_location": {
+            "symbols": [
+              "hc",
+              "rb"
+            ],
+            "life": "f82181f4-096a-4bec-bf4a-9289d892377f",
+            "revision": "d644ba9d-1906-48fe-b131-a3ca11fcfdf8",
+            "timestamp": "2023-03-24 23:00:00",
+            "known_uti": 94102199,
+            "parent_coordinates": {
+              "timestamp": "2023-03-24 23:00:00",
+              "occurrence": "1063",
+              "record_id": "0",
+              "child_id_2": "0"
+            },
+            "table": "occurrences",
+            "source": "readback/tables/occurrences.csv"
+          }
+        }
+      ]
+    }
+  ],
+  "judgment": "STRUCTURAL_FINDING_CANDIDATE：正式完整标志与同窗公开OHLC空值并存；先核缺值/Calendar/覆盖合同，再定位责任，不在G提前写根因。"
+}

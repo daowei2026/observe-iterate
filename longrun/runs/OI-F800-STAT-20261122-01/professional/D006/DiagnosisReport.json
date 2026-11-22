@@ -1,0 +1,271 @@
+{
+  "diagnosis_id": "F800-DIAG-002",
+  "finding_id": "F800-GF-002",
+  "expectation_id": "F800-INV-COVERAGE-GAP-002",
+  "expectation_version": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c",
+  "discrepancy_statement": "在固定rb/hc/i、5m、night_end_at_2300正常KLine输入的800Δ窗内，实际消费PNV有69个非豁免缺价点；8个已发布观点却为groupCoverageIncomplete=0。条件前件经原始DBA/AtSelf/当前合同核验成立。",
+  "business_impact": "完整覆盖标记对5/480 Life的8/1534观点给出过强保证（1.0417% Life；0.5215% Revision；完整标记1526中占0.5242%）。覆盖使用者可能把含真实缺价的观察窗当完整；未量化Q/V实际业务损失，也未宣称方向/转折正文错误。",
+  "confirmed_facts": [
+    {
+      "fact": "当前D005完整X、独立31表读回、G有效；当前配置800/600、2Δ和精确版本绑定未变",
+      "evidence": [
+        "daowei2026/observe-iterate@38e2af72be826a1e98fd7f5d4522c50d218750f3:longrun/runs/OI-F800-STAT-20261122-01/professional/D005/FeatureRunResultBinding.json",
+        "daowei2026/observe-iterate@38e2af72be826a1e98fd7f5d4522c50d218750f3:longrun/runs/OI-F800-STAT-20261122-01/professional/D005/GlobalProfileGate.json",
+        "INPUT_BINDING.json"
+      ]
+    },
+    {
+      "fact": "GF002观察量8Revision/5Life/6known；每窗801点，三品种各有同一69个close缺值；8/8旧base已存在",
+      "evidence": [
+        "daowei2026/observe-iterate@38e2af72be826a1e98fd7f5d4522c50d218750f3:longrun/runs/OI-F800-STAT-20261122-01/professional/D005/MISSING_INPUT_WINDOW_VALIDATION.json",
+        "daowei2026/observe-iterate@38e2af72be826a1e98fd7f5d4522c50d218750f3:longrun/runs/OI-F800-STAT-20261122-01/professional/D005/comparison/price_gap_baseline.csv",
+        "DIAGNOSED_CASES.csv"
+      ]
+    },
+    {
+      "fact": "当前源PNV明确存NaN位0x7ff8000000000000，非导出临时占位；AtSelf对应69时刻均缺记录，前后值和时间能对上",
+      "evidence": [
+        "PNV_INPUT_PROBE.json",
+        "PNV_GAP_EXCERPT.csv",
+        "BINARY_BOUNDARY_PROBE.json"
+      ]
+    },
+    {
+      "fact": "native读数据与调度未滤NaN；当前正常adapter弃price、恒Observed、恒更新previous",
+      "evidence": [
+        "SOURCE_EVIDENCE.json"
+      ]
+    },
+    {
+      "fact": "当前固定域无不适用豁免；Material已有缺价/失败断开能力",
+      "evidence": [
+        "SOURCE_EVIDENCE.json",
+        "NATIVE_COVERAGE_CONTROLS.csv"
+      ]
+    },
+    {
+      "fact": "原生覆盖子链三模式各1672拍；8/8实际模式=0，两种缺价干预=1；输入恢复后首个完整点94195799",
+      "evidence": [
+        "ExperimentEvaluation.json",
+        "NATIVE_COVERAGE_REPLAY.csv"
+      ]
+    },
+    {
+      "fact": "GF001已在D005新完整结果关闭，D006不修改其判定；本C无正式生产、源采用、Q/V或WALL执行",
+      "evidence": [
+        "daowei2026/observe-iterate@38e2af72be826a1e98fd7f5d4522c50d218750f3:longrun/runs/OI-F800-STAT-20261122-01/professional/D005/FindingDisposition.json",
+        "WORKFLOW_COMPLETION.json"
+      ]
+    }
+  ],
+  "processing_chain": [
+    {
+      "stage": "A 原始PNV/Calendar对齐",
+      "Input": "SOF.pnv_dir/5m/{rb,hc,i}_night_end_at_2300；AtSelf对照",
+      "Rule": "实际文件本就编码NaN；KDataLoader及native loadBitsDba不补值；不能把Calendar存在的时格当有效报价",
+      "State": "69格OHLC全NaN、volume=0；self对应69时刻无记录，前后同值报价存在",
+      "Output": "close=NaN，closeUti/closeTs有效且步长600",
+      "ActualTime": "2023-03-10 21:05至2023-03-13 15:00，UTI93674399..93715199",
+      "ConfirmTime": "文件是本次已冻结SOF历史观测，不为每个缺失记录发明确认时间",
+      "Version": "实际D005同SOF物理文件SHA见PNV_INPUT_PROBE；BINARY_BOUNDARY_PROBE",
+      "PossibleInformationLoss": "消费数据已无价格；其上游为何无记录未定位，不能凭缺失推断市场休市或实际成交情况"
+    },
+    {
+      "stage": "B native载入与事件调度",
+      "Input": "原PNV Bar及closeTs历史轴",
+      "Rule": "Tis.loadKLineEvent→lookupHistoryData→mergeGroupHistoryData→pushAlways；不按价格过滤",
+      "State": "每个有效时间位置被调度；transEBar/close字段原值映射",
+      "Output": "包含NaN close的KLine Tick与同拍有效UTI",
+      "ActualTime": "Bar closeTs原时刻",
+      "ConfirmTime": "KLine同拍closeUti，作为当前known；没有额外确认延迟",
+      "Version": "D005冻结runtime源码/接口和binary指纹，SOURCE_EVIDENCE",
+      "PossibleInformationLoss": "本阶段不修补NaN、不前向填充；不能以CSV行存在单独证明事件，故已核调度实现"
+    },
+    {
+      "stage": "C 正常F KLine适配（最小责任）",
+      "Input": "groupKLineEvents生成(price,exactUTI,position,Clock)",
+      "Rule": "advance弃price；klineForwardCoverage只用Int64 UTI是否相邻，恒CoverageObserved，previous恒更新",
+      "State": "69个缺价时刻仍接600步长相邻边",
+      "Output": "对三个对象连续的Observed覆盖，缺价区别丢失",
+      "ActualTime": "known沿原UTI，Calendar Clock u=UTI",
+      "ConfirmTime": "同拍，不把缺价变成迟到Turn/未来确认",
+      "Version": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:GroupCandidateKLineInput.hs#advance",
+      "PossibleInformationLoss": "实际缺价→成功观测的错误分类；最早可局部修正的业务责任阶段"
+    },
+    {
+      "stage": "D Material覆盖累积",
+      "Input": "三个固定对象的Observed边；域complete=true、coverage=[]",
+      "Rule": "accumulateForwardCoverage连接真实相邻Observed；covered要求from<=u-480000且through>=u，或明确Inapplicable",
+      "State": "输入未带InputMissing/SourceFailure，连续区间跨过缺价；无未知Clock等待",
+      "Output": "materialCoverageIncomplete=False",
+      "ActualTime": "每次当前Calendar进展u",
+      "ConfirmTime": "frameKnown为同拍源UTI",
+      "Version": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:GroupCandidateMaterial.hs#covered/accumulateForwardCoverage",
+      "PossibleInformationLoss": "依据收到的条件按规则执行；已不能从ObjectCoverage恢复被C丢弃的价格有效性"
+    },
+    {
+      "stage": "E 观点/保存/独立读回",
+      "Input": "materialCoverageIncomplete=False",
+      "Rule": "Evolution将Material标记装入candidateDomainIncomplete；Storage编码Bool为0/1，OnlyRead独立导出",
+      "State": "8个已发布Revision/5Life/6时刻均为0；旧base同位置8/8也是0",
+      "Output": "groupCoverageIncomplete=0，DIAGNOSED_CASES精确Life/Revision可追溯",
+      "ActualTime": "使用观点成员的原actual/confirm，不以当前known替代转折actual",
+      "ConfirmTime": "93727799..94102199六个发行known，均在缺口仍处800Δ窗的位置",
+      "Version": "daowei2026/observe-iterate@38e2af72be826a1e98fd7f5d4522c50d218750f3:longrun/runs/OI-F800-STAT-20261122-01/professional/D005/FeatureRunResultBinding.json；daowei2026/observe-iterate@38e2af72be826a1e98fd7f5d4522c50d218750f3:longrun/runs/OI-F800-STAT-20261122-01/professional/D005/profile/violations_complete_flag_with_input_price_gap.csv",
+      "PossibleInformationLoss": "没有读回层反转标记证据；完整候选发行影响未在本C重跑。"
+    }
+  ],
+  "competing_explanations": [
+    {
+      "id": "H1",
+      "explanation": "CSV重建产生空行，真实源价格有效",
+      "prediction": "原PNV相同位置为有限价或导出经过reindex/padding",
+      "check": "物理DBA位值/头部坐标、DataFrame数组和导出比较",
+      "result": "排除：实际消费PNV含NaN，49683行导出同轴同close；self无69位置且边界对照相等"
+    },
+    {
+      "id": "H2",
+      "explanation": "已有Calendar/domain不适用豁免",
+      "prediction": "当前域或正常分支提供这些对象/区间的CoverageInapplicable或既定缺价即豁免规则",
+      "check": "完整配置及实际GroupKLineConfiguration代码分支和覆盖枚举",
+      "result": "排除本固定实例：完整rb/hc/i域无豁免，正常路径只发Observed；Calendar有时格不构成缺价豁免"
+    },
+    {
+      "id": "H3",
+      "explanation": "NaN行在进入F前已被过滤，F只见真实间隙",
+      "prediction": "native历史轴或close映射有有限价筛选；实际仅收到两端事件",
+      "check": "Tis加载、历史调度、Host pushAlways、wrapTickEvent、merge close/UTI",
+      "result": "排除：按每个closeTs发Bar，映射不筛NaN；若真过滤，be57准确步长本可断开，这不是现有路径"
+    },
+    {
+      "id": "H4",
+      "explanation": "覆盖只承诺时间时格存在，不承诺有效观察",
+      "prediction": "存在预先定义且与缺价断开合同可协调的不同coverage含义",
+      "check": "FrozenExpectation原文、Material既有缺价/失知/间隙断开注释及Coverage条件",
+      "result": "排除作为当前合同解释：单有UTI是时间事实，不能取消已冻结缺价条件；未改写原预期"
+    },
+    {
+      "id": "H5",
+      "explanation": "正常KLine适配丢弃缺价信息，恒发行Observed",
+      "prediction": "实际源有NaN但正常分支不检查price；标失败反事实只改分类便使Material断开",
+      "check": "准确源码+1672拍三模式原生函数重放+8项控制",
+      "result": "确认：8/8原观点覆盖标记可复现；两种失败类别均变不完整，恢复满800Δ才完整"
+    },
+    {
+      "id": "H6",
+      "explanation": "be57数值相邻修复引入新回归",
+      "prediction": "同自然Life/known旧base无该flag=0现象",
+      "check": "已有效D005自然对象基线比较8行",
+      "result": "排除：8/8旧base也为0；当前新识别的既存缺陷，不重新打开GF001"
+    }
+  ],
+  "ruled_out_explanations": [
+    "H1",
+    "H2",
+    "H3",
+    "H4",
+    "H6"
+  ],
+  "remaining_explanations": [
+    {
+      "id": "UPSTREAM_ORIGIN",
+      "status": "非根因竞争项，源数据缺失原因仍未定",
+      "detail": "为何self PNV在69时刻没有行情、Calendar PNV生成端何时/为何补NaN，当前未追溯供应端；不影响缺价作为实际输入及adapter错误分类的定位，不提交Owner猜事实。"
+    }
+  ],
+  "discriminating_checks": [
+    "PNV_INPUT_PROBE.json",
+    "BINARY_BOUNDARY_PROBE.json",
+    "SOURCE_EVIDENCE.json",
+    "ExperimentEvaluation.json"
+  ],
+  "current_localization": {
+    "primary_stage": "C 正常KLine→FormationFrame适配",
+    "classification": "ImplementationMismatch",
+    "responsibility": "GroupCandidateKLineInput.hs:buildKLineGroupSource.advance在有效UTI上丢弃价格有效性并恒发CoverageObserved；不是Material不认识失败、读回反转或800数值太大。",
+    "earliest_trigger": "输入A已有缺价；最早合同责任偏差为C把无价格的Calendar时格当成功观测。",
+    "conditional_expectation": "已成立，FrozenExpectation原件未改写",
+    "regression_class": "本轮新识别的既存缺陷，旧base同位置8/8已存在"
+  },
+  "parameter_repairability": {
+    "suspected_parameters": [
+      "observation_multiple=800",
+      "delta=600",
+      "固定2Δ=1200",
+      "freq=5m",
+      "units_per_open_minute=120",
+      "units_per_calendar_tick=1",
+      "6Δ等待/修订尾部",
+      "18Δ handoff",
+      "ScaleTurn上游选择参数"
+    ],
+    "parameter_consumers": [
+      {
+        "parameter": "800×600",
+        "definition": "GroupCandidateTypes.hs:groupObservationDuration",
+        "consumers": [
+          "GroupCandidateMaterial.hs:covered/eligible",
+          "GroupCandidateEvolution.hs:formationQuestions/deadline"
+        ],
+        "effect": "改变观察期限和连续覆盖所需长度；不参与报价有效性或CoverageCondition分类"
+      },
+      {
+        "parameter": "delta=600 / hardcoded 2",
+        "definition": "FormationProfile / GroupCandidatePairs.hs:assessPair",
+        "consumers": [
+          "pair temporal distance <= 2*formationDelta"
+        ],
+        "effect": "改变pair资格；不改变缺价事件被发行Observed这一事实"
+      },
+      {
+        "parameter": "freq/Calendar units",
+        "definition": "GroupCandidateKLineInput.hs:klineUTIStep/groupKLineEvents",
+        "consumers": [
+          "源Int64相邻步长600",
+          "报价位置商及Clock"
+        ],
+        "effect": "同频率实际步长精确为600；缺价前中后UTI仍真实相邻，修改步长会错断有限价正常流且不表达缺价区别"
+      },
+      {
+        "parameter": "hardcoded 6,18",
+        "definition": "Material waiting / Evolution revisionEnd / Decisions handoff",
+        "consumers": [
+          "6Δ未知Clock等待",
+          "deadline+6Δ修订尾部",
+          "revisionEnd+18Δ交接"
+        ],
+        "effect": "位于覆盖分类后或平行职责，不能使NaN发行InputMissing"
+      },
+      {
+        "parameter": "ScaleTurn相关参数",
+        "definition": "完整配置sources[*].input.scale_turn",
+        "consumers": [
+          "上游转折/锚点选择"
+        ],
+        "effect": "可改变候选输入和发行人群；正常coverage每拍仍直接取KLine，不能修复丢失价格有效性的信息"
+      }
+    ],
+    "earliest_business_divergence": "GroupCandidateKLineInput.hs:advance把(价格,UTI,位置,Clock)解构为(_,known,_,u)，无条件Observed并更新previous；进入Material前已丢失有效观测与缺价区别。",
+    "feasibility_status": "PROVEN_NOT_ADJUSTABLE",
+    "feasibility_evidence": [
+      "在当前已明确配置能力内，无任何参数控制有限价格检测或失败分类；800、600、2Δ又由Owner固定。",
+      "即使不诉诸固定值约束，两个无Turn流在相同UTI/Clock上仅价格不同（有效值/NaN）也会被当前adapter投影为相同frameCoverage，Material对所有参数收到同样输入，不能同时满足有限价可完整、真实缺价须断开的区别。",
+      "将观察期拉长到超出全部历史会把正常流也标不完整；缩短期使部分窗口不再包含缺口仅改变预期适用位置；改变频率/对象域/日历则改变问题或破坏正常相邻对照。均非修复当前固定实例。",
+      "原生同一800×600重放仅更改缺价分类即使8/8从0变1，且满窗恢复；Material已有能力处理SourceFailure/InputMissing，无需标定。"
+    ],
+    "upstream_dependency": "真实PNV缺口存在；恢复原数据可能消除本样本暴露条件，但不补足adapter对未来缺价的表达能力。未确定数据生成/供应端缺失原因。",
+    "unresolved_constraints": [
+      "修后全图发行、Revision/UUID和下游影响须Owner批准后新版本完整X/G实测；本C不求解新参数或改现有配置。"
+    ],
+    "next_route": "现有合同已明确缺价断开：实现修正角色，先由原manager提交F800-MP-002获Owner明确确认；本案无需参数标定或重定义业务预期。"
+  },
+  "confidence": {
+    "level": "HIGH",
+    "basis": "物理文件、边界对照、准确入口/调度代码和实际原生Material函数的可区分重放相互印证",
+    "limits": [
+      "未暴露原正式运行的逐拍frame内部轨迹；通过源码和当前库纯函数重放定位，未伪装为正式引擎录制。",
+      "原始缺失供应端成因及正式修后候选/Revision总量尚未确定。"
+    ]
+  },
+  "next_route": "原manager消费本D006；按L0将新F800-MP-002及diff/影响/验证方案提交Owner确认。批准后方可实施、提交/采用新版本并完整X/31表读回/G复验；当前D005原件保持，不提前释放。"
+}

@@ -1,0 +1,1076 @@
+{
+  "call_id": "C0014",
+  "delegation_id": "D006",
+  "finding_id": "F800-GF-002",
+  "expectation_exact": "daowei2026/observe-iterate@38e2af72be826a1e98fd7f5d4522c50d218750f3:longrun/runs/OI-F800-STAT-20261122-01/professional/D005/DiagnosisInputAdapters.json",
+  "expectation_id": "F800-INV-COVERAGE-GAP-002",
+  "condition_not_presupposed": true,
+  "run_binding": {
+    "feature_name": "CommonPriceTurnGroupCandidatesFrp",
+    "code_version": {
+      "frp": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c",
+      "tis": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767"
+    },
+    "parameter_instance_ref": "configuration.json",
+    "parameter_version": "b72095ff100da926474701b74bff7586a74b9770bc81cadc34c23cfe223e5cb3",
+    "run_id": "OI-F800-STAT-20261122-01",
+    "call_id": "C0012",
+    "delegation_id": "D005",
+    "instance_kind": "NEW_FORMAL_PRODUCTION",
+    "data_scope": {
+      "symbols": [
+        "rb",
+        "hc",
+        "i"
+      ],
+      "start_time": "2021-01-01",
+      "end_time": "2023-12-31",
+      "actual_start_time": "2021-01-04 09:05:00",
+      "actual_end_time": "2023-12-29 15:00:00",
+      "freq": "5m",
+      "calendar": "night_end_at_2300",
+      "sessions": [
+        "DAY_CLOCK_09_15",
+        "NIGHT_CLOCK_21_23"
+      ],
+      "sof": "TA_updto20240229_DBA",
+      "stk_tlist": "steel",
+      "input_positions_per_symbol": 49683,
+      "input_symbol_rows": 149049,
+      "per_symbol_validation": "INPUT_SCOPE_VALIDATION.json"
+    },
+    "result_identity": {
+      "full_dir": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D005/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2023-12-31 20:00:00/CommonPriceTurnGroupCandidatesFrp/3/9/a/1/9/2/a/4bbf414e0814726d92d156f2fe9b1f968/func",
+      "layout": "common_price_turn_groups.core.v2",
+      "fields_sha256": "58ff1166df0e4bbdb84f4309b72947ee16de4a075d8992681fd60f46ccfb887c",
+      "original_candidate_dir": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2023-12-31 20:00:00/CommonPriceTurnGroupCandidatesFrp/3/9/a/1/9/2/a/4bbf414e0814726d92d156f2fe9b1f968/func",
+      "original_candidate_fields_present_before": false,
+      "storage_routing": "PLATFORM_STORAGE_BINDING.json",
+      "native_file_manifest": "NATIVE_OUTPUT_MANIFEST.json"
+    },
+    "actual_loading": {
+      "engine": "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-exact-uti-20261122/runtime/edh-universe/bin/ts",
+      "engine_sha256": "f1d312b92744e68e4a617c98c04b07fa9361ab744be79b92963a39024d7060ea",
+      "native_pid": 1884302,
+      "source_binding": "FRP_SOURCE_BINDING.json",
+      "native_process_observation": "NATIVE_PROCESS_OBSERVATION.json",
+      "production_process": "PRODUCTION_PROCESS.json"
+    },
+    "production": {
+      "started_at": "2026-11-22T13:47:13.938364+00:00",
+      "finished_at": "2026-11-22T13:56:13.966657+00:00",
+      "feature_python_pid": 1884046,
+      "native_producer_executed": true,
+      "feature_python_exit_code": 0,
+      "supervisor_exit_code": 0,
+      "actual_flock_probe_exit": 73,
+      "lock_acquired_at": "2026-11-22T13:47:09.829277+00:00",
+      "lock_release_at": "2026-11-22T13:56:15.654557+00:00",
+      "monitor_exception": null
+    },
+    "artifact_refs": [
+      "produced/report.json",
+      "readback/report.json",
+      "UPSTREAM_EXTRACTION.json",
+      "configuration.json",
+      "NATIVE_OUTPUT_MANIFEST.json",
+      "INPUT_SCOPE_VALIDATION.json",
+      "SOURCE_REF_AUDIT.json"
+    ],
+    "run_result_tables": [
+      {
+        "name": "definitions",
+        "rows": 1,
+        "columns": [
+          "definitionMethod_definitionBook",
+          "definitionMethod_definitionKind",
+          "definitionMethod_definitionLife",
+          "definitionMethod_definitionRevision",
+          "definitionContext_definitionBook",
+          "definitionContext_definitionKind",
+          "definitionContext_definitionLife",
+          "definitionContext_definitionRevision",
+          "definitionScale_definitionBook",
+          "definitionScale_definitionKind",
+          "definitionScale_definitionLife",
+          "definitionScale_definitionRevision",
+          "definitionCalendar_definitionBook",
+          "definitionCalendar_definitionKind",
+          "definitionCalendar_definitionLife",
+          "definitionCalendar_definitionRevision",
+          "definitionUniverse_definitionBook",
+          "definitionUniverse_definitionKind",
+          "definitionUniverse_definitionLife",
+          "definitionUniverse_definitionRevision",
+          "definitionDomain",
+          "definitionDelta",
+          "definitionTimeUnit"
+        ],
+        "index_names": [
+          "timestamp",
+          "occurrence",
+          "record_id",
+          "child_id_2"
+        ],
+        "path": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D005/readback/tables/definitions.csv",
+        "sha256": "b0f0d032f3df80249c6d8d7fda32c174cf527f186522a5c17aba332bba699f1c"
+      },
+      {
+        "name": "definitions_definitionObjects",
+        "rows": 3,
+        "columns": [
+          "value"
+        ],
+        "index_names": [
+          "timestamp",
+          "occurrence",
+          "record_id",
+          "child_id_2",
+          "child_id_3"
+        ],
+        "path": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D005/readback/tables/definitions_definitionObjects.csv",
+        "sha256": "4790e64584d992696e1d23ecdfa708b64ecfa17a323668baddae8679f41a089b"
+      },
+      {
+        "name": "definitions_definitionDirections",
+        "rows": 4,
+        "columns": [
+          "compatibilityLeft",
+          "compatibilityRight",
+          "compatibilityResult"
+        ],
+        "index_names": [
+          "timestamp",
+          "occurrence",
+          "record_id",
+          "child_id_2",
+          "child_id_3"
+        ],
+        "path": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D005/readback/tables/definitions_definitionDirections.csv",
+        "sha256": "0271d7b2aea8ddffde67d05d2b29c70b739c8feaa9e2c1728314cd26d6563f95"
+      },
+      {
+        "name": "definitions_definitionTypes",
+        "rows": 4,
+        "columns": [
+          "compatibilityLeft",
+          "compatibilityRight",
+          "compatibilityResult"
+        ],
+        "index_names": [
+          "timestamp",
+          "occurrence",
+          "record_id",
+          "child_id_2",
+          "child_id_3"
+        ],
+        "path": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D005/readback/tables/definitions_definitionTypes.csv",
+        "sha256": "0271d7b2aea8ddffde67d05d2b29c70b739c8feaa9e2c1728314cd26d6563f95"
+      },
+      {
+        "name": "occurrences",
+        "rows": 1534,
+        "columns": [
+          "groupReference_referenceLife_idForm",
+          "groupReference_referenceLife_idHigh",
+          "groupReference_referenceLife_idLow",
+          "groupReference_referenceLife_idText",
+          "groupReference_referenceRevision_idForm",
+          "groupReference_referenceRevision_idHigh",
+          "groupReference_referenceRevision_idLow",
+          "groupReference_referenceRevision_idText",
+          "groupKnownFrom",
+          "groupOriginalAnchor",
+          "groupOriginalDeadline",
+          "groupOriginalRevisionEnd",
+          "groupAnchor",
+          "groupDeadline",
+          "groupRevisionEnd",
+          "groupLocalBasis",
+          "groupAlternative",
+          "groupObservation",
+          "groupCoverageIncomplete",
+          "groupClosed",
+          "groupLocalBasis_name",
+          "groupAlternative_name",
+          "groupObservation_name"
+        ],
+        "index_names": [
+          "timestamp",
+          "occurrence",
+          "record_id",
+          "child_id_2"
+        ],
+        "path": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D005/readback/tables/occurrences.csv",
+        "sha256": "f7f0a492c4e8ff5b5b3b0b20c9274062df104000e5d26ef5145503dbf7ab9591"
+      },
+      {
+        "name": "occurrences_groupPrevious",
+        "rows": 1054,
+        "columns": [
+          "referenceLife_idForm",
+          "referenceLife_idHigh",
+          "referenceLife_idLow",
+          "referenceLife_idText",
+          "referenceRevision_idForm",
+          "referenceRevision_idHigh",
+          "referenceRevision_idLow",
+          "referenceRevision_idText"
+        ],
+        "index_names": [
+          "timestamp",
+          "occurrence",
+          "record_id",
+          "child_id_2",
+          "child_id_3"
+        ],
+        "path": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D005/readback/tables/occurrences_groupPrevious.csv",
+        "sha256": "4eabc77d11c377612d9f8345e213545c5d15564bba9ebb2007316cc5037351c6"
+      },
+      {
+        "name": "occurrences_groupMembers",
+        "rows": 3447,
+        "columns": [
+          "memberObject",
+          "memberTurn_referenceLife_idForm",
+          "memberTurn_referenceLife_idHigh",
+          "memberTurn_referenceLife_idLow",
+          "memberTurn_referenceLife_idText",
+          "memberTurn_referenceRevision_idForm",
+          "memberTurn_referenceRevision_idHigh",
+          "memberTurn_referenceRevision_idLow",
+          "memberTurn_referenceRevision_idText",
+          "memberSource_referenceLife_idForm",
+          "memberSource_referenceLife_idHigh",
+          "memberSource_referenceLife_idLow",
+          "memberSource_referenceLife_idText",
+          "memberSource_referenceRevision_idForm",
+          "memberSource_referenceRevision_idHigh",
+          "memberSource_referenceRevision_idLow",
+          "memberSource_referenceRevision_idText",
+          "memberActual",
+          "memberPrice",
+          "memberConfirmation",
+          "memberKnownFrom",
+          "memberDirection",
+          "memberType",
+          "memberRound",
+          "memberT_pointActual",
+          "memberT_pointPrice",
+          "memberT_pointKnownFrom",
+          "memberC_pointActual",
+          "memberC_pointPrice",
+          "memberC_pointKnownFrom",
+          "memberStatus",
+          "memberRetracted",
+          "memberDirection_name",
+          "memberType_name",
+          "memberRound_name",
+          "memberStatus_name"
+        ],
+        "index_names": [
+          "timestamp",
+          "occurrence",
+          "record_id",
+          "child_id_2",
+          "child_id_3"
+        ],
+        "path": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D005/readback/tables/occurrences_groupMembers.csv",
+        "sha256": "0f2d854c66b77d5cedddec4040bcc338307e97920a46f37e0b4bf6cd56d03c19"
+      },
+      {
+        "name": "occurrences_groupMembers_memberClock",
+        "rows": 3447,
+        "columns": [
+          "clockCoordinate",
+          "clockKnownFrom"
+        ],
+        "index_names": [
+          "timestamp",
+          "occurrence",
+          "record_id",
+          "child_id_2",
+          "child_id_3",
+          "child_id_4"
+        ],
+        "path": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D005/readback/tables/occurrences_groupMembers_memberClock.csv",
+        "sha256": "ab96a92b9f0f0c7a705b8a0741452b347067575d541bb0b2bf6d7db30bd4b8ad"
+      },
+      {
+        "name": "occurrences_groupMembers_memberP",
+        "rows": 3438,
+        "columns": [
+          "pointActual",
+          "pointPrice",
+          "pointKnownFrom"
+        ],
+        "index_names": [
+          "timestamp",
+          "occurrence",
+          "record_id",
+          "child_id_2",
+          "child_id_3",
+          "child_id_4"
+        ],
+        "path": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D005/readback/tables/occurrences_groupMembers_memberP.csv",
+        "sha256": "7925d8eb9790c19d48a7751c41f583e3a20f7606ca6cb2ba4fa20e2dfcf615af"
+      },
+      {
+        "name": "occurrences_groupMembers_memberP_pointClock",
+        "rows": 3438,
+        "columns": [
+          "clockCoordinate",
+          "clockKnownFrom"
+        ],
+        "index_names": [
+          "timestamp",
+          "occurrence",
+          "record_id",
+          "child_id_2",
+          "child_id_3",
+          "child_id_4",
+          "child_id_5"
+        ],
+        "path": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D005/readback/tables/occurrences_groupMembers_memberP_pointClock.csv",
+        "sha256": "52195e742b0454cc166377c80170dc8ebb074218bc68d2988ba9f92192480ec1"
+      },
+      {
+        "name": "occurrences_groupMembers_memberT_pointClock",
+        "rows": 3447,
+        "columns": [
+          "clockCoordinate",
+          "clockKnownFrom"
+        ],
+        "index_names": [
+          "timestamp",
+          "occurrence",
+          "record_id",
+          "child_id_2",
+          "child_id_3",
+          "child_id_4"
+        ],
+        "path": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D005/readback/tables/occurrences_groupMembers_memberT_pointClock.csv",
+        "sha256": "ab96a92b9f0f0c7a705b8a0741452b347067575d541bb0b2bf6d7db30bd4b8ad"
+      },
+      {
+        "name": "occurrences_groupMembers_memberC_pointClock",
+        "rows": 3447,
+        "columns": [
+          "clockCoordinate",
+          "clockKnownFrom"
+        ],
+        "index_names": [
+          "timestamp",
+          "occurrence",
+          "record_id",
+          "child_id_2",
+          "child_id_3",
+          "child_id_4"
+        ],
+        "path": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D005/readback/tables/occurrences_groupMembers_memberC_pointClock.csv",
+        "sha256": "56f864dca42074f37660828f97c9733a5016437af968d478f3a7aa6408cb8469"
+      },
+      {
+        "name": "occurrences_groupRequired",
+        "rows": 2292,
+        "columns": [
+          "pairLeft_referenceLife_idForm",
+          "pairLeft_referenceLife_idHigh",
+          "pairLeft_referenceLife_idLow",
+          "pairLeft_referenceLife_idText",
+          "pairLeft_referenceRevision_idForm",
+          "pairLeft_referenceRevision_idHigh",
+          "pairLeft_referenceRevision_idLow",
+          "pairLeft_referenceRevision_idText",
+          "pairRight_referenceLife_idForm",
+          "pairRight_referenceLife_idHigh",
+          "pairRight_referenceLife_idLow",
+          "pairRight_referenceLife_idText",
+          "pairRight_referenceRevision_idForm",
+          "pairRight_referenceRevision_idHigh",
+          "pairRight_referenceRevision_idLow",
+          "pairRight_referenceRevision_idText",
+          "pairTime_requiredVerdict",
+          "pairTime_requiredGap",
+          "pairTime_requiredVeto",
+          "pairDirection_requiredVerdict",
+          "pairDirection_requiredGap",
+          "pairDirection_requiredVeto",
+          "pairType_requiredVerdict",
+          "pairType_requiredGap",
+          "pairType_requiredVeto",
+          "pairBend_requiredVerdict",
+          "pairBend_requiredGap",
+          "pairBend_requiredVeto",
+          "pairTime_requiredVerdict_name",
+          "pairTime_requiredGap_name",
+          "pairTime_requiredVeto_name",
+          "pairDirection_requiredVerdict_name",
+          "pairDirection_requiredGap_name",
+          "pairDirection_requiredVeto_name",
+          "pairType_requiredVerdict_name",
+          "pairType_requiredGap_name",
+          "pairType_requiredVeto_name",
+          "pairBend_requiredVerdict_name",
+          "pairBend_requiredGap_name",
+          "pairBend_requiredVeto_name"
+        ],
+        "index_names": [
+          "timestamp",
+          "occurrence",
+          "record_id",
+          "child_id_2",
+          "child_id_3"
+        ],
+        "path": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D005/readback/tables/occurrences_groupRequired.csv",
+        "sha256": "776b95c1bf97beb2d3b3219893d91d6c0f08b94d018a7124bc4dcb4de5cce737"
+      },
+      {
+        "name": "occurrences_groupRequired_pairDistance",
+        "rows": 2292,
+        "columns": [
+          "distanceValue"
+        ],
+        "index_names": [
+          "timestamp",
+          "occurrence",
+          "record_id",
+          "child_id_2",
+          "child_id_3",
+          "child_id_4"
+        ],
+        "path": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D005/readback/tables/occurrences_groupRequired_pairDistance.csv",
+        "sha256": "d69871a3437f522e19a8515ee534104213db658e27c687f6133fc9dff12769cf"
+      },
+      {
+        "name": "occurrences_groupOverlaps",
+        "rows": 215,
+        "columns": [
+          "idForm",
+          "idHigh",
+          "idLow",
+          "idText"
+        ],
+        "index_names": [
+          "timestamp",
+          "occurrence",
+          "record_id",
+          "child_id_2",
+          "child_id_3"
+        ],
+        "path": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D005/readback/tables/occurrences_groupOverlaps.csv",
+        "sha256": "bfc351f0153986565353c605a629d2ee37a9fcdf7cee91bb14c3c383ef0269e8"
+      },
+      {
+        "name": "occurrences_groupCoveredBy",
+        "rows": 241,
+        "columns": [
+          "idForm",
+          "idHigh",
+          "idLow",
+          "idText"
+        ],
+        "index_names": [
+          "timestamp",
+          "occurrence",
+          "record_id",
+          "child_id_2",
+          "child_id_3"
+        ],
+        "path": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D005/readback/tables/occurrences_groupCoveredBy.csv",
+        "sha256": "66f14568c3c096fa6226f899fbd4177a6b39d92137eb24ece6c15c023f1c3671"
+      },
+      {
+        "name": "occurrences_groupFormationParticipation",
+        "rows": 1534,
+        "columns": [
+          "participationAdmission_definitionBook",
+          "participationAdmission_definitionKind",
+          "participationAdmission_definitionLife",
+          "participationAdmission_definitionRevision",
+          "participationAdmissionKnown",
+          "participationCandidate_definitionBook",
+          "participationCandidate_definitionKind",
+          "participationCandidate_definitionLife",
+          "participationCandidate_definitionRevision",
+          "participationQuestionAnchor",
+          "participationQuestionDeadline",
+          "participationQuestionRevisionEnd",
+          "participationDeadline",
+          "participationRevisionEnd",
+          "participationHandoffEnd",
+          "participationDecisionMethod",
+          "participationDecisionScope",
+          "participationSubject",
+          "participationHistoryComplete",
+          "participationDutyClosed",
+          "participationInputConflict",
+          "participationDecisionKnown",
+          "participationDecisionMethod_name",
+          "participationDecisionScope_name",
+          "participationSubject_name",
+          "participationHistoryComplete_name",
+          "participationDutyClosed_name"
+        ],
+        "index_names": [
+          "timestamp",
+          "occurrence",
+          "record_id",
+          "child_id_2",
+          "child_id_3"
+        ],
+        "path": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D005/readback/tables/occurrences_groupFormationParticipation.csv",
+        "sha256": "fc69f056e16a0e2dd49e1774dabfe23f85e1976fe7c42442c99219a41e45717d"
+      },
+      {
+        "name": "occurrences_groupFormationParticipation_participationMembers",
+        "rows": 3447,
+        "columns": [
+          "participationObject",
+          "participationTurn_definitionBook",
+          "participationTurn_definitionKind",
+          "participationTurn_definitionLife",
+          "participationTurn_definitionRevision",
+          "participationSource_definitionBook",
+          "participationSource_definitionKind",
+          "participationSource_definitionLife",
+          "participationSource_definitionRevision",
+          "participationActual",
+          "participationConfirmation",
+          "participationMemberKnown"
+        ],
+        "index_names": [
+          "timestamp",
+          "occurrence",
+          "record_id",
+          "child_id_2",
+          "child_id_3",
+          "child_id_4"
+        ],
+        "path": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D005/readback/tables/occurrences_groupFormationParticipation_participationMembers.csv",
+        "sha256": "8a9d5b806b340a8fb13aa3d15136538ed1b832bb03d6ebe7488c38dcfd5e4503"
+      },
+      {
+        "name": "occurrences_groupFormationParticipation_participationSupports",
+        "rows": 0,
+        "columns": [
+          "supportLeft",
+          "supportLeftTurnLife",
+          "supportRight",
+          "supportRightTurnLife",
+          "supportCoordinate",
+          "supportState",
+          "supportReason",
+          "supportRejectedAt_definitionBook",
+          "supportRejectedAt_definitionKind",
+          "supportRejectedAt_definitionLife",
+          "supportRejectedAt_definitionRevision",
+          "supportChangedAt_definitionBook",
+          "supportChangedAt_definitionKind",
+          "supportChangedAt_definitionLife",
+          "supportChangedAt_definitionRevision",
+          "supportKnown",
+          "supportCoordinate_name",
+          "supportState_name",
+          "supportReason_name"
+        ],
+        "index_names": [
+          "timestamp",
+          "occurrence",
+          "record_id",
+          "child_id_2",
+          "child_id_3",
+          "child_id_4"
+        ],
+        "path": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D005/readback/tables/occurrences_groupFormationParticipation_participationSupports.csv",
+        "sha256": "ae663add2c00918d021a15501e49243db9720f556f9522aea3c9b2eda2a6e3f2"
+      },
+      {
+        "name": "occurrences_groupFormationParticipation_participationSupports_supportPreviousFact",
+        "rows": 0,
+        "columns": [
+          "definitionBook",
+          "definitionKind",
+          "definitionLife",
+          "definitionRevision"
+        ],
+        "index_names": [
+          "timestamp",
+          "occurrence",
+          "record_id",
+          "child_id_2",
+          "child_id_3",
+          "child_id_4",
+          "child_id_5"
+        ],
+        "path": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D005/readback/tables/occurrences_groupFormationParticipation_participationSupports_supportPreviousFact.csv",
+        "sha256": "11c67f4c95479eb0885b7e1fc5205b529488d6a0c14fc9711921ad11b5869dbc"
+      },
+      {
+        "name": "occurrences_groupFormationParticipation_participationSupports_supportOperands",
+        "rows": 0,
+        "columns": [
+          "formationOperandMember_participationObject",
+          "formationOperandMember_participationTurn_definitionBook",
+          "formationOperandMember_participationTurn_definitionKind",
+          "formationOperandMember_participationTurn_definitionLife",
+          "formationOperandMember_participationTurn_definitionRevision",
+          "formationOperandMember_participationSource_definitionBook",
+          "formationOperandMember_participationSource_definitionKind",
+          "formationOperandMember_participationSource_definitionLife",
+          "formationOperandMember_participationSource_definitionRevision",
+          "formationOperandMember_participationActual",
+          "formationOperandMember_participationConfirmation",
+          "formationOperandMember_participationMemberKnown",
+          "formationOperandKnown"
+        ],
+        "index_names": [
+          "timestamp",
+          "occurrence",
+          "record_id",
+          "child_id_2",
+          "child_id_3",
+          "child_id_4",
+          "child_id_5"
+        ],
+        "path": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D005/readback/tables/occurrences_groupFormationParticipation_participationSupports_supportOperands.csv",
+        "sha256": "54e191b649858c1ffc58f649e41fe3759bb25490c0a0f214e5e1161f2b9635f1"
+      },
+      {
+        "name": "occurrences_groupFormationParticipation_participationSupports_supportOperands_formationOperandNumber",
+        "rows": 0,
+        "columns": [
+          "formationNumber"
+        ],
+        "index_names": [
+          "timestamp",
+          "occurrence",
+          "record_id",
+          "child_id_2",
+          "child_id_3",
+          "child_id_4",
+          "child_id_5",
+          "child_id_6"
+        ],
+        "path": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D005/readback/tables/occurrences_groupFormationParticipation_participationSupports_supportOperands_formationOperandNumber.csv",
+        "sha256": "a0295ed4f612b73d171ff74cd5158df6ba38ac94fc310b9ada71d4ed1b265421"
+      },
+      {
+        "name": "occurrences_groupFormationParticipation_participationSupports_supportOperands_formationOperandCategory",
+        "rows": 0,
+        "columns": [
+          "formationInteger"
+        ],
+        "index_names": [
+          "timestamp",
+          "occurrence",
+          "record_id",
+          "child_id_2",
+          "child_id_3",
+          "child_id_4",
+          "child_id_5",
+          "child_id_6"
+        ],
+        "path": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D005/readback/tables/occurrences_groupFormationParticipation_participationSupports_supportOperands_formationOperandCategory.csv",
+        "sha256": "28daeff5a186482d9d3b4cbfb028d6270f2841f838e0aaf01edd17246cdd899e"
+      },
+      {
+        "name": "occurrences_groupFormationParticipation_participationSupports_supportOperands_formationOperandPoints",
+        "rows": 0,
+        "columns": [
+          "formationPointActual",
+          "formationPointPrice",
+          "formationPointKnown"
+        ],
+        "index_names": [
+          "timestamp",
+          "occurrence",
+          "record_id",
+          "child_id_2",
+          "child_id_3",
+          "child_id_4",
+          "child_id_5",
+          "child_id_6"
+        ],
+        "path": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D005/readback/tables/occurrences_groupFormationParticipation_participationSupports_supportOperands_formationOperandPoints.csv",
+        "sha256": "407a70630d98f6fb0c7745fd886eaa1c37aa13077651117677027b994f9ac06e"
+      },
+      {
+        "name": "occurrences_groupFormationParticipation_participationSupports_supportOperands_formationOperandPoints_formationPointClock",
+        "rows": 0,
+        "columns": [
+          "formationNumber"
+        ],
+        "index_names": [
+          "timestamp",
+          "occurrence",
+          "record_id",
+          "child_id_2",
+          "child_id_3",
+          "child_id_4",
+          "child_id_5",
+          "child_id_6",
+          "child_id_7"
+        ],
+        "path": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D005/readback/tables/occurrences_groupFormationParticipation_participationSupports_supportOperands_formationOperandPoints_formationPointClock.csv",
+        "sha256": "1a2f1d6a762eb214473c7530faafd0cb7c96dfce41d102d179d90a18af33ebbb"
+      },
+      {
+        "name": "occurrences_groupFormationParticipation_participationSupports_supportOperands_formationOperandPoints_formationPointClockKnown",
+        "rows": 0,
+        "columns": [
+          "formationInteger"
+        ],
+        "index_names": [
+          "timestamp",
+          "occurrence",
+          "record_id",
+          "child_id_2",
+          "child_id_3",
+          "child_id_4",
+          "child_id_5",
+          "child_id_6",
+          "child_id_7"
+        ],
+        "path": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D005/readback/tables/occurrences_groupFormationParticipation_participationSupports_supportOperands_formationOperandPoints_formationPointClockKnown.csv",
+        "sha256": "f0076b8e54dd29422f120b1c1be553bf7cb4365c0458f534dcbe88f0ff0a4027"
+      },
+      {
+        "name": "occurrences_groupFormationParticipation_participationAlternatives",
+        "rows": 241,
+        "columns": [
+          "alternativeOwner_definitionBook",
+          "alternativeOwner_definitionKind",
+          "alternativeOwner_definitionLife",
+          "alternativeOwner_definitionRevision",
+          "alternativeLeft_definitionBook",
+          "alternativeLeft_definitionKind",
+          "alternativeLeft_definitionLife",
+          "alternativeLeft_definitionRevision",
+          "alternativeRight_definitionBook",
+          "alternativeRight_definitionKind",
+          "alternativeRight_definitionLife",
+          "alternativeRight_definitionRevision",
+          "alternativeKind",
+          "alternativeKnown",
+          "alternativeKind_name"
+        ],
+        "index_names": [
+          "timestamp",
+          "occurrence",
+          "record_id",
+          "child_id_2",
+          "child_id_3",
+          "child_id_4"
+        ],
+        "path": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D005/readback/tables/occurrences_groupFormationParticipation_participationAlternatives.csv",
+        "sha256": "b07884246d08515c37cf0153835be6bc7a054b48d0fada99e97cb3d7bf443518"
+      },
+      {
+        "name": "occurrences_groupFormationParticipation_participationAlternatives_alternativeBridge",
+        "rows": 482,
+        "columns": [
+          "participationObject",
+          "participationTurn_definitionBook",
+          "participationTurn_definitionKind",
+          "participationTurn_definitionLife",
+          "participationTurn_definitionRevision",
+          "participationSource_definitionBook",
+          "participationSource_definitionKind",
+          "participationSource_definitionLife",
+          "participationSource_definitionRevision",
+          "participationActual",
+          "participationConfirmation",
+          "participationMemberKnown"
+        ],
+        "index_names": [
+          "timestamp",
+          "occurrence",
+          "record_id",
+          "child_id_2",
+          "child_id_3",
+          "child_id_4",
+          "child_id_5"
+        ],
+        "path": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D005/readback/tables/occurrences_groupFormationParticipation_participationAlternatives_alternativeBridge.csv",
+        "sha256": "d10df6c1c2c09718c72d3035f354904c0653c429f8fe7d44e51727524233bf7a"
+      },
+      {
+        "name": "occurrences_groupFormationParticipation_participationOutsideNotifications",
+        "rows": 0,
+        "columns": [
+          "outsideLeft",
+          "outsideLeftTurnLife",
+          "outsideRight",
+          "outsideRightTurnLife",
+          "outsideCoordinate",
+          "outsideObject",
+          "outsideActual",
+          "outsideKind",
+          "outsideKnown"
+        ],
+        "index_names": [
+          "timestamp",
+          "occurrence",
+          "record_id",
+          "child_id_2",
+          "child_id_3",
+          "child_id_4"
+        ],
+        "path": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D005/readback/tables/occurrences_groupFormationParticipation_participationOutsideNotifications.csv",
+        "sha256": "b249be31360e87bb88684d13a342d2809e19ec5d7972c798b1bbc194b0396f91"
+      },
+      {
+        "name": "occurrences_groupFormationParticipation_participationOutsideNotifications_outsideNumber",
+        "rows": 0,
+        "columns": [
+          "formationNumber"
+        ],
+        "index_names": [
+          "timestamp",
+          "occurrence",
+          "record_id",
+          "child_id_2",
+          "child_id_3",
+          "child_id_4",
+          "child_id_5"
+        ],
+        "path": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D005/readback/tables/occurrences_groupFormationParticipation_participationOutsideNotifications_outsideNumber.csv",
+        "sha256": "888416c531fff3e22e27963bfdf236d0d62a9dda2392fe354c0e6ff8fe0b252f"
+      },
+      {
+        "name": "occurrences_groupFormationParticipation_participationOutsideNotifications_outsideTurn",
+        "rows": 0,
+        "columns": [
+          "definitionBook",
+          "definitionKind",
+          "definitionLife",
+          "definitionRevision"
+        ],
+        "index_names": [
+          "timestamp",
+          "occurrence",
+          "record_id",
+          "child_id_2",
+          "child_id_3",
+          "child_id_4",
+          "child_id_5"
+        ],
+        "path": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D005/readback/tables/occurrences_groupFormationParticipation_participationOutsideNotifications_outsideTurn.csv",
+        "sha256": "11c67f4c95479eb0885b7e1fc5205b529488d6a0c14fc9711921ad11b5869dbc"
+      }
+    ],
+    "readback_validation": {
+      "all_31_tables_equal": true,
+      "independent_process": true,
+      "producer_pid": 1884046,
+      "reader_pid": 1890775,
+      "only_read": true,
+      "primary_api_equal": true,
+      "native_K800_output_windows_verified": true,
+      "tables": [
+        {
+          "table": "definitions",
+          "rows": 1,
+          "sha256": "b0f0d032f3df80249c6d8d7fda32c174cf527f186522a5c17aba332bba699f1c",
+          "identical": true
+        },
+        {
+          "table": "definitions_definitionObjects",
+          "rows": 3,
+          "sha256": "4790e64584d992696e1d23ecdfa708b64ecfa17a323668baddae8679f41a089b",
+          "identical": true
+        },
+        {
+          "table": "definitions_definitionDirections",
+          "rows": 4,
+          "sha256": "0271d7b2aea8ddffde67d05d2b29c70b739c8feaa9e2c1728314cd26d6563f95",
+          "identical": true
+        },
+        {
+          "table": "definitions_definitionTypes",
+          "rows": 4,
+          "sha256": "0271d7b2aea8ddffde67d05d2b29c70b739c8feaa9e2c1728314cd26d6563f95",
+          "identical": true
+        },
+        {
+          "table": "occurrences",
+          "rows": 1534,
+          "sha256": "f7f0a492c4e8ff5b5b3b0b20c9274062df104000e5d26ef5145503dbf7ab9591",
+          "identical": true
+        },
+        {
+          "table": "occurrences_groupPrevious",
+          "rows": 1054,
+          "sha256": "4eabc77d11c377612d9f8345e213545c5d15564bba9ebb2007316cc5037351c6",
+          "identical": true
+        },
+        {
+          "table": "occurrences_groupMembers",
+          "rows": 3447,
+          "sha256": "0f2d854c66b77d5cedddec4040bcc338307e97920a46f37e0b4bf6cd56d03c19",
+          "identical": true
+        },
+        {
+          "table": "occurrences_groupMembers_memberClock",
+          "rows": 3447,
+          "sha256": "ab96a92b9f0f0c7a705b8a0741452b347067575d541bb0b2bf6d7db30bd4b8ad",
+          "identical": true
+        },
+        {
+          "table": "occurrences_groupMembers_memberP",
+          "rows": 3438,
+          "sha256": "7925d8eb9790c19d48a7751c41f583e3a20f7606ca6cb2ba4fa20e2dfcf615af",
+          "identical": true
+        },
+        {
+          "table": "occurrences_groupMembers_memberP_pointClock",
+          "rows": 3438,
+          "sha256": "52195e742b0454cc166377c80170dc8ebb074218bc68d2988ba9f92192480ec1",
+          "identical": true
+        },
+        {
+          "table": "occurrences_groupMembers_memberT_pointClock",
+          "rows": 3447,
+          "sha256": "ab96a92b9f0f0c7a705b8a0741452b347067575d541bb0b2bf6d7db30bd4b8ad",
+          "identical": true
+        },
+        {
+          "table": "occurrences_groupMembers_memberC_pointClock",
+          "rows": 3447,
+          "sha256": "56f864dca42074f37660828f97c9733a5016437af968d478f3a7aa6408cb8469",
+          "identical": true
+        },
+        {
+          "table": "occurrences_groupRequired",
+          "rows": 2292,
+          "sha256": "776b95c1bf97beb2d3b3219893d91d6c0f08b94d018a7124bc4dcb4de5cce737",
+          "identical": true
+        },
+        {
+          "table": "occurrences_groupRequired_pairDistance",
+          "rows": 2292,
+          "sha256": "d69871a3437f522e19a8515ee534104213db658e27c687f6133fc9dff12769cf",
+          "identical": true
+        },
+        {
+          "table": "occurrences_groupOverlaps",
+          "rows": 215,
+          "sha256": "bfc351f0153986565353c605a629d2ee37a9fcdf7cee91bb14c3c383ef0269e8",
+          "identical": true
+        },
+        {
+          "table": "occurrences_groupCoveredBy",
+          "rows": 241,
+          "sha256": "66f14568c3c096fa6226f899fbd4177a6b39d92137eb24ece6c15c023f1c3671",
+          "identical": true
+        },
+        {
+          "table": "occurrences_groupFormationParticipation",
+          "rows": 1534,
+          "sha256": "fc69f056e16a0e2dd49e1774dabfe23f85e1976fe7c42442c99219a41e45717d",
+          "identical": true
+        },
+        {
+          "table": "occurrences_groupFormationParticipation_participationMembers",
+          "rows": 3447,
+          "sha256": "8a9d5b806b340a8fb13aa3d15136538ed1b832bb03d6ebe7488c38dcfd5e4503",
+          "identical": true
+        },
+        {
+          "table": "occurrences_groupFormationParticipation_participationSupports",
+          "rows": 0,
+          "sha256": "ae663add2c00918d021a15501e49243db9720f556f9522aea3c9b2eda2a6e3f2",
+          "identical": true
+        },
+        {
+          "table": "occurrences_groupFormationParticipation_participationSupports_supportPreviousFact",
+          "rows": 0,
+          "sha256": "11c67f4c95479eb0885b7e1fc5205b529488d6a0c14fc9711921ad11b5869dbc",
+          "identical": true
+        },
+        {
+          "table": "occurrences_groupFormationParticipation_participationSupports_supportOperands",
+          "rows": 0,
+          "sha256": "54e191b649858c1ffc58f649e41fe3759bb25490c0a0f214e5e1161f2b9635f1",
+          "identical": true
+        },
+        {
+          "table": "occurrences_groupFormationParticipation_participationSupports_supportOperands_formationOperandNumber",
+          "rows": 0,
+          "sha256": "a0295ed4f612b73d171ff74cd5158df6ba38ac94fc310b9ada71d4ed1b265421",
+          "identical": true
+        },
+        {
+          "table": "occurrences_groupFormationParticipation_participationSupports_supportOperands_formationOperandCategory",
+          "rows": 0,
+          "sha256": "28daeff5a186482d9d3b4cbfb028d6270f2841f838e0aaf01edd17246cdd899e",
+          "identical": true
+        },
+        {
+          "table": "occurrences_groupFormationParticipation_participationSupports_supportOperands_formationOperandPoints",
+          "rows": 0,
+          "sha256": "407a70630d98f6fb0c7745fd886eaa1c37aa13077651117677027b994f9ac06e",
+          "identical": true
+        },
+        {
+          "table": "occurrences_groupFormationParticipation_participationSupports_supportOperands_formationOperandPoints_formationPointClock",
+          "rows": 0,
+          "sha256": "1a2f1d6a762eb214473c7530faafd0cb7c96dfce41d102d179d90a18af33ebbb",
+          "identical": true
+        },
+        {
+          "table": "occurrences_groupFormationParticipation_participationSupports_supportOperands_formationOperandPoints_formationPointClockKnown",
+          "rows": 0,
+          "sha256": "f0076b8e54dd29422f120b1c1be553bf7cb4365c0458f534dcbe88f0ff0a4027",
+          "identical": true
+        },
+        {
+          "table": "occurrences_groupFormationParticipation_participationAlternatives",
+          "rows": 241,
+          "sha256": "b07884246d08515c37cf0153835be6bc7a054b48d0fada99e97cb3d7bf443518",
+          "identical": true
+        },
+        {
+          "table": "occurrences_groupFormationParticipation_participationAlternatives_alternativeBridge",
+          "rows": 482,
+          "sha256": "d10df6c1c2c09718c72d3035f354904c0653c429f8fe7d44e51727524233bf7a",
+          "identical": true
+        },
+        {
+          "table": "occurrences_groupFormationParticipation_participationOutsideNotifications",
+          "rows": 0,
+          "sha256": "b249be31360e87bb88684d13a342d2809e19ec5d7972c798b1bbc194b0396f91",
+          "identical": true
+        },
+        {
+          "table": "occurrences_groupFormationParticipation_participationOutsideNotifications_outsideNumber",
+          "rows": 0,
+          "sha256": "888416c531fff3e22e27963bfdf236d0d62a9dda2392fe354c0e6ff8fe0b252f",
+          "identical": true
+        },
+        {
+          "table": "occurrences_groupFormationParticipation_participationOutsideNotifications_outsideTurn",
+          "rows": 0,
+          "sha256": "11c67f4c95479eb0885b7e1fc5205b529488d6a0c14fc9711921ad11b5869dbc",
+          "identical": true
+        }
+      ]
+    },
+    "known_data_limits": [
+      "公开F是稀疏观点，不含逐Tick内部状态及所有试探/材料计数器",
+      "独立全量上游已读出；首次阻断/近时pair筛查为明确规则参考，不冒充native状态或业务真值",
+      "原始转折按Rct唯一实际位置；含每品种初始化锚点，不宣称覆盖未被Rct暴露的全部原始市场波动",
+      "统计分母含缺价KLine日历行；连续有效价格检查另排除缺价，右删失单列"
+    ],
+    "verified_at": "2026-11-22T13:58:20.201290+00:00"
+  },
+  "prior_x_g_effective": true,
+  "old_GF001_closed_preserved": true,
+  "permitted_operations": [
+    "run_result_statistics_analysis_write",
+    "run_record_write"
+  ],
+  "formal_production_authorized_in_D006": false,
+  "formal_modification_authorized_in_D006": false
+}

@@ -1,0 +1,66 @@
+{
+  "experiment_id": "F800-MDE-002",
+  "expectation_id": "F800-INV-COVERAGE-GAP-002",
+  "finding_id": "F800-GF-002",
+  "question": "公开空OHLC是否实际非豁免缺价，以及最早为何被当完整覆盖？",
+  "ordered_checks": [
+    {
+      "order": 1,
+      "cost": "只读已有8观点/3输入表与旧base，无新生产",
+      "evidence": "daowei2026/observe-iterate@38e2af72be826a1e98fd7f5d4522c50d218750f3:longrun/runs/OI-F800-STAT-20261122-01/professional/D005/MISSING_INPUT_WINDOW_VALIDATION.json",
+      "observation": "69点均在8个801点窗口；8/8旧base也为0"
+    },
+    {
+      "order": 2,
+      "cost": "限定三品种七个已知PNV文件指纹+自日历2字段对照，未搜索数据树",
+      "command": "probe_inputs.py 经D005/run_in_runtime.py执行",
+      "evidence": "PNV_INPUT_PROBE.json",
+      "observation": "三品种实际NaN69、self无69位置；不是CSV重建"
+    },
+    {
+      "order": 3,
+      "cost": "标准库mmap只读头部和12个边界点",
+      "command": "python probe_binary_boundaries.py",
+      "evidence": "BINARY_BOUNDARY_PROBE.json",
+      "observation": "缺失位在原文件，前后self与Calendar有限价相同；排除self时间轴整体错位"
+    },
+    {
+      "order": 4,
+      "cost": "仅16个相关源码文件及实际配置",
+      "command": "capture_source_evidence.py",
+      "evidence": "SOURCE_EVIDENCE.json",
+      "observation": "native事件无过滤；当前adapter弃价；无豁免分支；Material有失败类别"
+    },
+    {
+      "order": 5,
+      "cost": "同当前库三个纯函数模式，各1672拍×3对象；无Feature/引擎/共享生产写入",
+      "command": "stack --stack-yaml <D004 current runtime>/edh-universe/stack.yaml exec -- runghc -package=frp NativeCoverageProbe.hs coverage_probe_input.csv",
+      "evidence": "NATIVE_COVERAGE_REPLAY.csv",
+      "observation": "实际Observed模式复现8个0；SourceFailure和InputMissing干预在8位置均为1，94195799恢复0"
+    },
+    {
+      "order": 6,
+      "cost": "8个有区分性的原生覆盖控制",
+      "command": "同一stack exec runghc -package=frp NativeCoverageControls.hs",
+      "evidence": "NATIVE_COVERAGE_CONTROLS.csv",
+      "observation": "冷启动、无Turn正常全窗、单对象失败/缺价/失知、真实UTI间隙和显式不适用均符合既有合同"
+    }
+  ],
+  "changed_variable": "仅缺价事件的CoverageCondition及其previous成功邻接状态；UTI、Clock、800、600、固定域均相同。",
+  "pre_registered_discrimination": "若真实源有效/既有豁免成立则拒绝GF002；若源缺价且adapter丢弃区别、失败分类使Material按原约束断开则定位adapter。条件预期在D005已冻结，本C不由结果新增阈值。",
+  "result": "后者成立，最小责任阶段已定位；不需要扩大正式统计或盲调参数。",
+  "implementation_boundary": "独立纯覆盖子链重放，不运行buildKLineGroupSource的Reflex图、不生产F候选/UUID，也不声称测得修后完整Revision/Life总量；实际入口弃价与无过滤由准确源码链证明。",
+  "execution_issues": [
+    {
+      "attempt": "input probe 1/2",
+      "result": "失败，DbArray要求自有dtype包装或字符串，numpy类型与numpy.dtype均不适用",
+      "resolution": "查实际DbArray接口后改用f8字符串；失败日志完整保留，第三次退出0"
+    },
+    {
+      "attempt": "ghc-pkg field 1",
+      "result": "多字段命令未逗号分隔而syntax error",
+      "resolution": "改用id,import-dirs,library-dirs，成功记录实际包路径；不改环境/Feature"
+    }
+  ],
+  "evidence": "ExperimentEvaluation.json"
+}

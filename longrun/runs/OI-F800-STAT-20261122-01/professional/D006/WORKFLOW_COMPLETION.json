@@ -1,0 +1,52 @@
+{
+  "skill_ref": "daowei2026/observe-iterate@87b951bbd15078a2d6353bdd24afe0d8f19c845c:skills/reasonableness-analysis/business-discrepancy-diagnosis/SKILL.md",
+  "steps": [
+    {
+      "step_id": "S1",
+      "description": "复述准确偏差及影响",
+      "completed": true
+    },
+    {
+      "step_id": "S2",
+      "description": "逐阶段Input/Rule/State/Output/ActualTime/ConfirmTime/Version/InformationLoss",
+      "completed": true
+    },
+    {
+      "step_id": "S3",
+      "description": "事实和竞争解释分列",
+      "completed": true
+    },
+    {
+      "step_id": "S4",
+      "description": "诊断树及可区分预测",
+      "completed": true
+    },
+    {
+      "step_id": "S5",
+      "description": "只读/源码/对照/小重放的低成本检查",
+      "completed": true
+    },
+    {
+      "step_id": "S6",
+      "description": "最小责任定位及参数能力初筛",
+      "completed": true
+    },
+    {
+      "step_id": "S7",
+      "description": "核原预期适用性：条件前件成立，无需改写冻结版本",
+      "completed": true
+    },
+    {
+      "step_id": "S8",
+      "description": "实现修正/独立MP与适用Owner决策边界路由",
+      "completed": true
+    }
+  ],
+  "native_outputs": [
+    "DiagnosisReport.json",
+    "MinimalDiscriminatingExperiment.json",
+    "RequirementOrImplementationIssue.json"
+  ],
+  "optional_owner_decision": "不适用，见OwnerDecisionApplicability.json",
+  "completion_boundary": "D006诊断工作完成；GF002修复、新X/G、Feature释放与manager消费不属于已完成。"
+}

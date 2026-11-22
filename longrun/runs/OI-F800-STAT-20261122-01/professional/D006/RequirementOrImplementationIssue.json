@@ -1,0 +1,39 @@
+{
+  "issue_id": "F800-ISSUE-002",
+  "finding_id": "F800-GF-002",
+  "diagnosis_id": "F800-DIAG-002",
+  "classification": "ImplementationMismatch",
+  "secondary_classification": {
+    "type": "DataQualityIssue",
+    "scope": "实际消费PNV确实无价格；供应/生成侧原因未定位，不能承诺修好数据即修好adapter"
+  },
+  "excluded_classifications": {
+    "BusinessRuleInsufficiency": "已有缺价断开合同和失败枚举，并非本次新增业务规则",
+    "InputPurposeMismatch": "正常KLine可以用于该固定观察目的，失败须保留为失败",
+    "UnresolvedTradeoff": "没有必须由Owner裁决的目标取舍事实缺口"
+  },
+  "trigger": "normal KLine close为NaN且closeUTI有效/相邻；三对象2023-03-10夜盘至03-13日盘各69行真实样本",
+  "expected": "该对象覆盖断开；恢复首个有效报价后从新成功点累计800Δ，不以时格存在代替观测成功",
+  "actual": "无条件Observed连接跨过缺价，8个真实观点flag=0",
+  "minimal_responsibility": {
+    "primary_stage": "C 正常KLine→FormationFrame适配",
+    "classification": "ImplementationMismatch",
+    "responsibility": "GroupCandidateKLineInput.hs:buildKLineGroupSource.advance在有效UTI上丢弃价格有效性并恒发CoverageObserved；不是Material不认识失败、读回反转或800数值太大。",
+    "earliest_trigger": "输入A已有缺价；最早合同责任偏差为C把无价格的Calendar时格当成功观测。",
+    "conditional_expectation": "已成立，FrozenExpectation原件未改写",
+    "regression_class": "本轮新识别的既存缺陷，旧base同位置8/8已存在"
+  },
+  "parameter_repairability": "PROVEN_NOT_ADJUSTABLE，详见ParameterRepairability.json",
+  "business_impact": "完整覆盖标记对5/480 Life的8/1534观点给出过强保证（1.0417% Life；0.5215% Revision；完整标记1526中占0.5242%）。覆盖使用者可能把含真实缺价的观察窗当完整；未量化Q/V实际业务损失，也未宣称方向/转折正文错误。",
+  "reproduction": [
+    "probe_inputs.py",
+    "probe_binary_boundaries.py",
+    "NativeCoverageProbe.hs",
+    "NativeCoverageControls.hs",
+    "DIAGNOSED_CASES.csv"
+  ],
+  "proposed_resolution": "见F800-MP-002：正常adapter按有限close决定Observed/InputMissing，失败时清previous，Calendar进展照常；正式改变待独立Owner确认。",
+  "fix_applied": false,
+  "approval_from_MP001_does_not_cover_this_change": true,
+  "next_route": "原manager按L0形成Owner修改确认；批准后由实现修正角色实施，保持GF001及精确步长合同。"
+}

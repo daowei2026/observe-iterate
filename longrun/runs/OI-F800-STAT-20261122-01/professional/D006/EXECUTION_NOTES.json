@@ -1,0 +1,32 @@
+{
+  "verified_at": "2026-11-22T15:04:39.435389+00:00",
+  "proposal_diff_base_check_only": true,
+  "proposal_diff_applied": false,
+  "actual_diagnosis_command_exit_codes": {
+    "pnv_probe_final": 0,
+    "binary_boundary_probe": 0,
+    "native_coverage_replay_final": 0,
+    "native_controls": 0,
+    "native_package_binding_final": 0,
+    "source_capture_final": 0,
+    "build_diagnosis_final": 0
+  },
+  "earlier_failures": [
+    {
+      "command": "probe_inputs.py attempts1/2",
+      "exit_code": 1,
+      "reason": "DbArray custom dtype assertion; fixed using string f8",
+      "logs": [
+        "input-probe.attempt1.log",
+        "input-probe.attempt2.log"
+      ]
+    },
+    {
+      "command": "ghc-pkg field frp id import-dirs library-dirs",
+      "exit_code": 1,
+      "reason": "field names must be comma separated; corrected command succeeded",
+      "original_error": "ghc-pkg-9.4.8: command-line syntax error"
+    }
+  ],
+  "native_output_scope": "Only pure library function calls and read-only probes. No actual formal Feature process."
+}

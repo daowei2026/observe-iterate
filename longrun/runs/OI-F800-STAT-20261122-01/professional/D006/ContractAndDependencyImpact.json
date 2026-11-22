@@ -1,0 +1,35 @@
+{
+  "impact_id": "F800-MP-002-IMPACT",
+  "proposal_id": "F800-MP-002",
+  "base_frp": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c",
+  "source_change": "GroupCandidateKLineInput.hs:advance三处，见未应用diff；不改数据/正式配置/对外字段。",
+  "unchanged_intent": [
+    "observation_multiple=800",
+    "delta=600",
+    "2Δ=1200",
+    "Int64源UTI精确相邻步长",
+    "缺口/冷启动/恢复前不得倒灌覆盖",
+    "既有actual/confirm/known职责",
+    "F-only rb/hc/i 5m 2021—2023及同SOF/Calendar"
+  ],
+  "data_contract": {
+    "schema_or_field_change": false,
+    "new_saved_product": false,
+    "new_source_owner": false,
+    "semantic_effect": "groupCoverageIncomplete在真实缺价窗按既有含义更保守；不是字段结构变更。",
+    "identity_effect": "该标记参与候选正文和稀疏发行变化；Revision数量、发行时点和UUID/exact链可能变化，不能从8样本推算全量结果；新运行身份需重新绑定、独立读回。"
+  },
+  "upstream": {
+    "PNV": "保持冻结输入原样；不回填、不重建、不采纳未经确认的数据修复",
+    "ScaleTurn": "不修改其规则或当前配置；候选Turn内容预期不因本局部代码主动改变，但须完整运行对比",
+    "Calendar": "保留有效Clock/UTI进展，不能删除缺价时格以掩盖800Δ观察义务"
+  },
+  "downstream": {
+    "F": "直接改变其正常覆盖输入，需完整复验",
+    "Q": "共享正常适配路径，存在行为影响可能；Q现有另一路数值边界限制继续传递。本Run不运行Q/V、不签Q释放，后续使用前须新依赖版本/语义核对",
+    "V": "通过F/Q证据受影响，未验证实际业务后果",
+    "WALL": "无授权/无改动"
+  },
+  "understanding_update": "若批准并实施，只补当前版本变化、覆盖分类/依赖语义与结果绑定，不重做已接受的完整Feature Understanding。",
+  "validation_plan_ref": "ModificationProposal.json#validation_plan"
+}

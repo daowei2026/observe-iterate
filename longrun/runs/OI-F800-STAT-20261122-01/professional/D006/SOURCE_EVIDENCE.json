@@ -1,0 +1,3574 @@
+{
+  "checked_at": "2026-11-22T15:00:26.476479+00:00",
+  "finding_id": "F800-GF-002",
+  "source_files": [
+    {
+      "role": "normal_kline_adapter",
+      "path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/f-observation-multiple-github-20261122/frp/src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateKLineInput.hs",
+      "sha256": "dd593338264d97e99f371528e54f642a83b9cb5739ebebdba89520559178693b",
+      "version": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c",
+      "excerpts": [
+        {
+          "start": 39,
+          "end": 87,
+          "lines": [
+            {
+              "line": 39,
+              "text": "instance FromJSON GroupKLineInput where"
+            },
+            {
+              "line": 40,
+              "text": "  parseJSON=withObject \"KLine转折输入\" $ \\v->GroupKLineInput"
+            },
+            {
+              "line": 41,
+              "text": "    <$> v .: \"symbol\" <*> v .: \"calendar\" <*> v .: \"scale_turn\" <*> v .: \"freq\""
+            },
+            {
+              "line": 42,
+              "text": ""
+            },
+            {
+              "line": 43,
+              "text": "-- 固定秒/分钟频率换算到源UTI的离散步长。Double单位按其实际值精确解释；"
+            },
+            {
+              "line": 44,
+              "text": "-- 非整数步长、Tick及非固定开放时长的日/周/月不能靠舍入或容差假装相邻。"
+            },
+            {
+              "line": 45,
+              "text": "klineUTIStep :: Freq -> Double -> Double -> Either T.Text Int64"
+            },
+            {
+              "line": 46,
+              "text": "klineUTIStep frequency unitsPerMinute unitsPerTick"
+            },
+            {
+              "line": 47,
+              "text": "  | freq_type frequency `notElem` [SecondFreq,MinuteFreq]"
+            },
+            {
+              "line": 48,
+              "text": "    || freq_interval frequency<=0 || freq_ns frequency<=0="
+            },
+            {
+              "line": 49,
+              "text": "      Left \"KLine coverage requires a positive fixed second/minute frequency\""
+            },
+            {
+              "line": 50,
+              "text": "  | any (\\units->isNaN units || isInfinite units || units<=0) [unitsPerMinute,unitsPerTick]="
+            },
+            {
+              "line": 51,
+              "text": "      Left \"KLine coverage requires finite positive Calendar unit conversions\""
+            },
+            {
+              "line": 52,
+              "text": "  | denominator step/=1 || numerator step<=0 || numerator step>toInteger (maxBound::Int64)="
+            },
+            {
+              "line": 53,
+              "text": "      Left \"KLine frequency/Calendar conversion has no positive exact Int64 UTI step; refusing rounding\""
+            },
+            {
+              "line": 54,
+              "text": "  | otherwise=Right (fromInteger (numerator step))"
+            },
+            {
+              "line": 55,
+              "text": "  where step=fromIntegral (freq_ns frequency)*toRational unitsPerMinute/"
+            },
+            {
+              "line": 56,
+              "text": "          (60000000000*toRational unitsPerTick)"
+            },
+            {
+              "line": 57,
+              "text": ""
+            },
+            {
+              "line": 58,
+              "text": "-- Source只发行当前成功点或一条真实相邻边；大坐标不先做浮点除法。"
+            },
+            {
+              "line": 59,
+              "text": "-- Integer差避免源Int64两端相减溢出，冷启动和真实缺口仍重启覆盖。"
+            },
+            {
+              "line": 60,
+              "text": "klineForwardCoverage :: Int64 -> T.Text -> Maybe (Int64,Double) -> (Int64,Double) -> ObjectCoverage"
+            },
+            {
+              "line": 61,
+              "text": "klineForwardCoverage step object previous (at,u)=ObjectCoverage object CoverageObserved"
+            },
+            {
+              "line": 62,
+              "text": "  (Just (case previous of"
+            },
+            {
+              "line": 63,
+              "text": "    Just (prior,old) | toInteger at-toInteger prior==toInteger step->old"
+            },
+            {
+              "line": 64,
+              "text": "    _->u)) (Just u)"
+            },
+            {
+              "line": 65,
+              "text": ""
+            },
+            {
+              "line": 66,
+              "text": "-- close、closeUti本来就在同一个KLine收盘事件中；时间坐标直接使用原UTI。"
+            },
+            {
+              "line": 67,
+              "text": "groupKLineEvents :: HasHisBack => GroupKLineInput -> EpisodeMarketConfig"
+            },
+            {
+              "line": 68,
+              "text": "  -> FaoModel (FrpEvent (Tick (Double,Int64,Double,Double)))"
+            },
+            {
+              "line": 69,
+              "text": "groupKLineEvents plan market=do"
+            },
+            {
+              "line": 70,
+              "text": "  _<-either (liftIO . fail . T.unpack) pure"
+            },
+            {
+              "line": 71,
+              "text": "    (klineUTIStep (inputFrequency plan) (marketUnitsPerOpenMinute market) (marketUnitsPerCalendarTick market))"
+            },
+            {
+              "line": 72,
+              "text": "  let frequency=inputFrequency plan"
+            },
+            {
+              "line": 73,
+              "text": "      kline=K.KLine frequency"
+            },
+            {
+              "line": 74,
+              "text": "      -- Q报价位置接口保持原换算；覆盖不再依赖这个Double商。"
+            },
+            {
+              "line": 75,
+              "text": "      step=fromIntegral (freq_ns frequency)/1e9/60*marketUnitsPerOpenMinute market"
+            },
+            {
+              "line": 76,
+              "text": "  fields<-doGenericFaoResult kline"
+            },
+            {
+              "line": 77,
+              "text": "  let price=fields M.! \"close\";uti=fields M.! \"closeUti\""
+            },
+            {
+              "line": 78,
+              "text": "      joined=mergeWith combine"
+            },
+            {
+              "line": 79,
+              "text": "        [(\\x->(Just x,Nothing)) <$> price,(\\x->(Nothing,Just x)) <$> uti]"
+            },
+            {
+              "line": 80,
+              "text": "      combine (p,u) (q,v)=(p<|>q,u<|>v)"
+            },
+            {
+              "line": 81,
+              "text": "      row (Just (Tick _ p _),Just (Tick ts u _))=Just (Tick ts"
+            },
+            {
+              "line": 82,
+              "text": "        (p,either (error . show) id (exactUTI u),u/step,marketUnitsPerCalendarTick market*u) Nothing)"
+            },
+            {
+              "line": 83,
+              "text": "      row _=Nothing"
+            },
+            {
+              "line": 84,
+              "text": "  pure (fmapMaybe row joined)"
+            },
+            {
+              "line": 85,
+              "text": ""
+            },
+            {
+              "line": 86,
+              "text": "-- 持有上一轮锚点及其后的Zig类型；引用定位到上游结果行，不另发行Source身份。"
+            },
+            {
+              "line": 87,
+              "text": "buildKLineGroupSource :: HasHisBack => GroupKLineInput -> EpisodeMarketConfig"
+            }
+          ]
+        },
+        {
+          "start": 127,
+          "end": 148,
+          "lines": [
+            {
+              "line": 127,
+              "text": "              :: (Maybe ST.CompleteScaleTurn,Maybe ST.CompleteScaleTurn,"
+            },
+            {
+              "line": 128,
+              "text": "                  Maybe (Double,Int64,Double,Double),Maybe Zig.ZigWithStatusOcc)"
+            },
+            {
+              "line": 129,
+              "text": "            currentTypes=case z of"
+            },
+            {
+              "line": 130,
+              "text": "              Just v->let polarity=case compare (Zig.pivot1 v*Zig.price1 v) 0 of"
+            },
+            {
+              "line": 131,
+              "text": "                            GT->Just True;LT->Just False;EQ->Nothing"
+            },
+            {
+              "line": 132,
+              "text": "                      in M.insertWith (\\_ old->old) (round (Zig.posUTI1 v)) (polarity,known) types"
+            },
+            {
+              "line": 133,
+              "text": "              Nothing->types"
+            },
+            {
+              "line": 134,
+              "text": "            selectedAnchor value=let t=ST.actual value;Point2 at _=t"
+            },
+            {
+              "line": 135,
+              "text": "                                 in (t,snd (currentTypes M.! round at))"
+            },
+            {
+              "line": 136,
+              "text": "            firstTurns=maybe [] (pure . selected currentTypes FirstRound anchor known) a"
+            },
+            {
+              "line": 137,
+              "text": "            nextAnchor=case a of Just v->Just (selectedAnchor v);Nothing->anchor"
+            },
+            {
+              "line": 138,
+              "text": "            secondTurns=maybe [] (pure . selected currentTypes SecondRound nextAnchor known) b"
+            },
+            {
+              "line": 139,
+              "text": "            after=case b of Just v->Just (selectedAnchor v);Nothing->nextAnchor"
+            },
+            {
+              "line": 140,
+              "text": "            coverage=[klineForwardCoverage utiStep object previous (known,u)]"
+            },
+            {
+              "line": 141,
+              "text": "            frame=FormationFrame u known (firstTurns++secondTurns) [] False coverage"
+            },
+            {
+              "line": 142,
+              "text": "            before=Just (known,u)"
+            },
+            {
+              "line": 143,
+              "text": "            retained=case after of"
+            },
+            {
+              "line": 144,
+              "text": "              Just (Point2 at _,_)->M.filterWithKey (\\uti _->uti>=round at) currentTypes"
+            },
+            {
+              "line": 145,
+              "text": "              Nothing->currentTypes"
+            },
+            {
+              "line": 146,
+              "text": "        in (after,before,retained,Just (fmap (const frame) tick))"
+            },
+            {
+              "line": 147,
+              "text": "  result<-foldDyn advance (Nothing,Nothing,M.empty,Nothing) input"
+            },
+            {
+              "line": 148,
+              "text": "  pure (fmapMaybe (\\(_,_,_,row)->row) (updated result))"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "role": "material_coverage",
+      "path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/f-observation-multiple-github-20261122/frp/src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateMaterial.hs",
+      "sha256": "5325ccf2dc8ecd32949f7bb086bd775d197e1547f4922bc94b80bf5cf8feb044",
+      "version": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c",
+      "excerpts": [
+        {
+          "start": 46,
+          "end": 104,
+          "lines": [
+            {
+              "line": 46,
+              "text": "  { currentMaterial :: !FormationMaterial, unknownSince :: !(M.Map TurnKey Double)"
+            },
+            {
+              "line": 47,
+              "text": "  , objectCoverage :: !(M.Map Text ObjectCoverage), materialTotals :: !MaterialTotals }"
+            },
+            {
+              "line": 48,
+              "text": "  deriving (Eq,Show)"
+            },
+            {
+              "line": 49,
+              "text": "emptyMaterialState objects=MaterialState (FormationMaterial M.empty S.empty 0 0 S.empty False True) M.empty"
+            },
+            {
+              "line": 50,
+              "text": "  (M.fromList [(o,ObjectCoverage o CoverageColdStart Nothing Nothing) | o<-objects])"
+            },
+            {
+              "line": 51,
+              "text": "  (MaterialTotals M.empty 0 0 0 0 0 0 0 0)"
+            },
+            {
+              "line": 52,
+              "text": ""
+            },
+            {
+              "line": 53,
+              "text": "advanceMaterial :: GroupMethod -> S.Set TurnKey -> FormationFrame -> MaterialState -> Either Text MaterialState"
+            },
+            {
+              "line": 54,
+              "text": "advanceMaterial method dependent frame old=do"
+            },
+            {
+              "line": 55,
+              "text": "  let before=currentMaterial old;u=frameProgress frame;known=frameKnown frame;delta=groupDelta method;observation=groupObservationDuration method"
+            },
+            {
+              "line": 56,
+              "text": "  unless (finite u && finite delta && delta>0 && finite observation && observation>0 && u>=materialProgress before && known>=materialKnown before)"
+            },
+            {
+              "line": 57,
+              "text": "    (Left \"共同形成Calendar进展／知识回退或配置无效\")"
+            },
+            {
+              "line": 58,
+              "text": "  installed<-foldM (install known) (materialTurns before) (frameTurns frame)"
+            },
+            {
+              "line": 59,
+              "text": "  changed<-foldM (patch known) installed (framePatches frame)"
+            },
+            {
+              "line": 60,
+              "text": "  coverage<-foldM acceptCoverage (objectCoverage old) (frameCoverage frame)"
+            },
+            {
+              "line": 61,
+              "text": "  let waits=M.union (unknownSince old) (M.fromList [(key,u) | (key,t)<-M.toList changed,groupTurnClock t==Nothing])"
+            },
+            {
+              "line": 62,
+              "text": "      eligible t=not (groupTurnRetracted t) && case groupTurnClock t of"
+            },
+            {
+              "line": 63,
+              "text": "        Just c->groupClockKnown c<=known && groupClockValue c+observation>=u"
+            },
+            {
+              "line": 64,
+              "text": "        Nothing->False"
+            },
+            {
+              "line": 65,
+              "text": "      enumerated=M.filter eligible changed"
+            },
+            {
+              "line": 66,
+              "text": "      waiting=M.filterWithKey (\\key t->not (groupTurnRetracted t) && groupTurnClock t==Nothing &&"
+            },
+            {
+              "line": 67,
+              "text": "        maybe False (\\first->u<=first+6*delta) (M.lookup key waits)) changed"
+            },
+            {
+              "line": 68,
+              "text": "      keep=S.unions [M.keysSet enumerated,M.keysSet waiting,dependent]"
+            },
+            {
+              "line": 69,
+              "text": "      retained=M.restrictKeys changed keep"
+            },
+            {
+              "line": 70,
+              "text": "      differences=S.fromList [key | (key,t)<-M.toList retained,M.lookup key (materialTurns before)/=Just t]"
+            },
+            {
+              "line": 71,
+              "text": "        `S.union` (M.keysSet (materialTurns before) `S.difference` M.keysSet retained)"
+            },
+            {
+              "line": 72,
+              "text": "      -- 覆盖按固定域逐对象判断。没有Turn仍可完整；另一对象发生不解除本对象限制。"
+            },
+            {
+              "line": 73,
+              "text": "      covered c=coverageCondition c==CoverageInapplicable ||"
+            },
+            {
+              "line": 74,
+              "text": "        (coverageCondition c==CoverageObserved && case (coverageFrom c,coverageThrough c) of"
+            },
+            {
+              "line": 75,
+              "text": "          (Just first,Just through)->first<=u-observation && through>=u"
+            },
+            {
+              "line": 76,
+              "text": "          _->False)"
+            },
+            {
+              "line": 77,
+              "text": "      incomplete=any (not . covered) (M.elems coverage) || not (M.null waiting)"
+            },
+            {
+              "line": 78,
+              "text": "      result=FormationMaterial retained (M.keysSet enumerated) u known differences (frameEnded frame) incomplete"
+            },
+            {
+              "line": 79,
+              "text": "      totals=materialTotals old"
+            },
+            {
+              "line": 80,
+              "text": "      nextTotals=MaterialTotals"
+            },
+            {
+              "line": 81,
+              "text": "        (M.unionWith (+) (observedTurns totals) (M.fromListWith (+) [(groupTurnObject t,1) | t<-frameTurns frame]))"
+            },
+            {
+              "line": 82,
+              "text": "        (max (peakMaterialTurns totals) (M.size retained)) (max (peakEnumerableTurns totals) (M.size enumerated))"
+            },
+            {
+              "line": 83,
+              "text": "        (max (peakWaitingTurns totals) (M.size waiting))"
+            },
+            {
+              "line": 84,
+              "text": "        (failedCoverageFirings totals+length [() | c<-frameCoverage frame,coverageCondition c==CoverageSourceFailure])"
+            },
+            {
+              "line": 85,
+              "text": "        (acceptedClockRevisions totals+length [() | AcceptedClock{}<-framePatches frame])"
+            },
+            {
+              "line": 86,
+              "text": "        (lateTurnOccurrences totals+length [() | t<-frameTurns frame,"
+            },
+            {
+              "line": 87,
+              "text": "          maybe False (\\c->u>groupClockValue c+observation) (groupTurnClock t)])"
+            },
+            {
+              "line": 88,
+              "text": "        (incompleteDomainFirings totals+if incomplete then 1 else 0)"
+            },
+            {
+              "line": 89,
+              "text": "        (coverageRestorations totals+if materialCoverageIncomplete before && not incomplete then 1 else 0)"
+            },
+            {
+              "line": 90,
+              "text": "  pure (MaterialState result (M.restrictKeys waits (M.keysSet retained)) coverage nextTotals)"
+            },
+            {
+              "line": 91,
+              "text": "  where"
+            },
+            {
+              "line": 92,
+              "text": "    acceptCoverage values value=do"
+            },
+            {
+              "line": 93,
+              "text": "      unless (M.member (coverageObject value) values) (Left \"覆盖对象不在固定声明域\")"
+            },
+            {
+              "line": 94,
+              "text": "      unless (all finite (maybe [] pure (coverageFrom value)++maybe [] pure (coverageThrough value)) &&"
+            },
+            {
+              "line": 95,
+              "text": "        case (coverageFrom value,coverageThrough value) of"
+            },
+            {
+              "line": 96,
+              "text": "          (Just first,Just through)->first<=through && through<=frameProgress frame"
+            },
+            {
+              "line": 97,
+              "text": "          (Nothing,Nothing)->True"
+            },
+            {
+              "line": 98,
+              "text": "          _->False) (Left \"当前覆盖边界非法\")"
+            },
+            {
+              "line": 99,
+              "text": "      -- Source只发行本次成功点/相邻边。F保留当前连续覆盖区间；"
+            },
+            {
+              "line": 100,
+              "text": "      -- 只有同对象两段真实相接才合并，缺价/失知及未观察间隙断开。"
+            },
+            {
+              "line": 101,
+              "text": "      pure (M.insert (coverageObject value)"
+            },
+            {
+              "line": 102,
+              "text": "        (accumulateForwardCoverage (M.lookup (coverageObject value) values) value) values)"
+            },
+            {
+              "line": 103,
+              "text": "    install known turns t=do"
+            },
+            {
+              "line": 104,
+              "text": "      unless (groupTurnKnown t<=known && finite (groupTurnPrice t)) (Left \"Turn未来知识或非法价格\")"
+            }
+          ]
+        },
+        {
+          "start": 126,
+          "end": 141,
+          "lines": [
+            {
+              "line": 126,
+              "text": "  case (previous,coverageFrom value,coverageThrough value) of"
+            },
+            {
+              "line": 127,
+              "text": "    (Just prior,Just first,Just through)"
+            },
+            {
+              "line": 128,
+              "text": "      | coverageObject prior==coverageObject value"
+            },
+            {
+              "line": 129,
+              "text": "      , coverageCondition prior==CoverageObserved && coverageCondition value==CoverageObserved"
+            },
+            {
+              "line": 130,
+              "text": "      , Just oldFirst<-coverageFrom prior,Just oldThrough<-coverageThrough prior"
+            },
+            {
+              "line": 131,
+              "text": "      , first<=oldThrough && through>=oldThrough ->value {coverageFrom=Just (min oldFirst first)}"
+            },
+            {
+              "line": 132,
+              "text": "    _->value"
+            },
+            {
+              "line": 133,
+              "text": ""
+            },
+            {
+              "line": 134,
+              "text": "updateClock object actual value t"
+            },
+            {
+              "line": 135,
+              "text": "  | groupTurnObject t/=object=t"
+            },
+            {
+              "line": 136,
+              "text": "  | otherwise=let g=groupTurnGeometry t"
+            },
+            {
+              "line": 137,
+              "text": "                  point p@(at,price,_) | at==actual=(at,price,toClock <$> value)"
+            },
+            {
+              "line": 138,
+              "text": "                                       | otherwise=p"
+            },
+            {
+              "line": 139,
+              "text": "                  p=point <$> geometryP g;q=point (geometryT g);r=point (geometryC g)"
+            },
+            {
+              "line": 140,
+              "text": "              in t {groupTurnClock=if groupTurnActual t==actual then value else groupTurnClock t,"
+            },
+            {
+              "line": 141,
+              "text": "                groupTurnGeometry=geometryFromKnown (geometryPKnown g) (geometryTKnown g) (geometryCKnown g) p q r}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "role": "coverage_types",
+      "path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/f-observation-multiple-github-20261122/frp/src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateTypes.hs",
+      "sha256": "ad7caf4128392bf334e71bb5f19ad06a0d0f46d2850d80bd97db8824be16bb6d",
+      "version": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c",
+      "excerpts": [
+        {
+          "start": 18,
+          "end": 26,
+          "lines": [
+            {
+              "line": 18,
+              "text": "type PairKey = (TurnKey,TurnKey)"
+            },
+            {
+              "line": 19,
+              "text": "data GroupMethod = CompleteLinkPriceTurns"
+            },
+            {
+              "line": 20,
+              "text": "  { groupDelta :: !Double, groupTimeUnit :: !Text, groupObservationMultiple :: !Double }"
+            },
+            {
+              "line": 21,
+              "text": "  deriving (Eq,Show,Generic)"
+            },
+            {
+              "line": 22,
+              "text": ""
+            },
+            {
+              "line": 23,
+              "text": "-- | First-confirmation observation duty is independent of pair proximity."
+            },
+            {
+              "line": 24,
+              "text": "-- Revision tail and unknown-clock waiting retain their existing six-Delta rules."
+            },
+            {
+              "line": 25,
+              "text": "groupObservationDuration :: GroupMethod -> Double"
+            },
+            {
+              "line": 26,
+              "text": "groupObservationDuration method=groupObservationMultiple method*groupDelta method"
+            }
+          ]
+        },
+        {
+          "start": 103,
+          "end": 104,
+          "lines": [
+            {
+              "line": 103,
+              "text": "  { pairMaterial :: !FormationMaterial, pairBases :: !(Map PairKey PairBasis) }"
+            },
+            {
+              "line": 104,
+              "text": "  deriving (Eq,Show)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "role": "actual_entry",
+      "path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/f-observation-multiple-github-20261122/frp/src/Frp/Instance/ISL/Opportunity/CommonPriceTurnGroupCandidates.hs",
+      "sha256": "d949dd74c8047a74651dbb3a1a8f32d9195fbe02c67807a49c97bb85e862814d",
+      "version": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c",
+      "excerpts": [
+        {
+          "start": 175,
+          "end": 201,
+          "lines": [
+            {
+              "line": 175,
+              "text": "checked :: GroupCandidatesRecord -> GroupCandidatesRecord"
+            },
+            {
+              "line": 176,
+              "text": "checked record=case validateGroupRecord record of"
+            },
+            {
+              "line": 177,
+              "text": "  Left problem->error (T.unpack problem)"
+            },
+            {
+              "line": 178,
+              "text": "  Right x->forceGroupRecord x `seq` x"
+            },
+            {
+              "line": 179,
+              "text": "-- | KLine入口直接调用已有ScaleTurnCalendar；旧来源配置仅保留原存读入口。"
+            },
+            {
+              "line": 180,
+              "text": "buildStoredGroupFormation :: HasHisBack => CommonPriceTurnGroupCandidatesFrp"
+            },
+            {
+              "line": 181,
+              "text": "  -> FaoModel (FrpEvent (Tick [FormationFrame]),FrpEvent (Tick [CandidateOccurrence]))"
+            },
+            {
+              "line": 182,
+              "text": "buildStoredGroupFormation feature=do"
+            },
+            {
+              "line": 183,
+              "text": "  streams<-forM (groupSources feature) $ \\source->"
+            },
+            {
+              "line": 184,
+              "text": "    withSymbol (groupSourceObject source) $ withCalendar (groupSourceCalendar source) $"
+            },
+            {
+              "line": 185,
+              "text": "      case source of"
+            },
+            {
+              "line": 186,
+              "text": "        GroupKLineConfiguration input market->buildKLineGroupSource input market"
+            },
+            {
+              "line": 187,
+              "text": "        GroupSourceConfiguration plan market->buildStoredGroupSource plan market"
+            },
+            {
+              "line": 188,
+              "text": "  let frames=mergeWith (\\a b->Tick (atTickTs a) (atTickValue a++atTickValue b) Nothing)"
+            },
+            {
+              "line": 189,
+              "text": "        [fmap (fmap pure) stream | stream<-streams]"
+            },
+            {
+              "line": 190,
+              "text": "      profile=groupProfile feature"
+            },
+            {
+              "line": 191,
+              "text": "      method=groupFormationMethod feature"
+            },
+            {
+              "line": 192,
+              "text": "  (_,_,occurrences)<-commonTurnFormationCurrent method profile (formationObjects (groupDomain feature)) frames"
+            },
+            {
+              "line": 193,
+              "text": "  pure (frames,occurrences)"
+            },
+            {
+              "line": 194,
+              "text": ""
+            },
+            {
+              "line": 195,
+              "text": "-- | 正常F与Q共用一次Source/C0/F图。额外依赖只保护来源准确Turn小值，"
+            },
+            {
+              "line": 196,
+              "text": "-- 不进入F的6Δ新枚举域；当前值沿Event直接交给消费者。"
+            },
+            {
+              "line": 197,
+              "text": "buildGroupFormation :: CommonPriceTurnGroupCandidatesFrp -> FrpBehavior (S.Set TurnKey)"
+            },
+            {
+              "line": 198,
+              "text": "  -> FaoModel (FrpEvent (Tick [FormationFrame]),FrpEvent (Tick [CandidateOccurrence]))"
+            },
+            {
+              "line": 199,
+              "text": "buildGroupFormation feature additional=do"
+            },
+            {
+              "line": 200,
+              "text": "    (frames,occurrences,_)<-buildGroupFormationWithCoverage feature additional M.empty"
+            },
+            {
+              "line": 201,
+              "text": "    pure (frames,occurrences)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "role": "candidate_propagation",
+      "path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/f-observation-multiple-github-20261122/frp/src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateEvolution.hs",
+      "sha256": "b59dbc4a3e220eb653fff9ba631bd7c1339a3b25d9a76f73d878282a2ddf9b68",
+      "version": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c",
+      "excerpts": [
+        {
+          "start": 97,
+          "end": 103,
+          "lines": [
+            {
+              "line": 97,
+              "text": "    material=pairMaterial view;u=materialProgress material;delta=groupDelta method"
+            },
+            {
+              "line": 98,
+              "text": "    affected=not (S.null (materialChanged material)) || materialScopeEnded material ||"
+            },
+            {
+              "line": 99,
+              "text": "      any (\\row->let b=candidateBody row in"
+            },
+            {
+              "line": 100,
+              "text": "        candidateDomainIncomplete b/=materialCoverageIncomplete material ||"
+            },
+            {
+              "line": 101,
+              "text": "        (not (candidateClosed b) && u>=candidateDeadline b) || u>=candidateRevisionEnd b)"
+            },
+            {
+              "line": 102,
+              "text": "        (M.elems (activeCandidates state))"
+            },
+            {
+              "line": 103,
+              "text": "    -- 旧核心已过原r则本次不接纳修订。没有历史反查、补发或恢复。"
+            }
+          ]
+        },
+        {
+          "start": 127,
+          "end": 143,
+          "lines": [
+            {
+              "line": 127,
+              "text": "                  | otherwise=Incomplete"
+            },
+            {
+              "line": 128,
+              "text": "            currentClocks=mapMaybe (fmap groupClockValue . groupTurnClock) turns"
+            },
+            {
+              "line": 129,
+              "text": "            anchor=if length currentClocks==length turns then minimum currentClocks else maybe (questionAnchor question) (candidateAnchor . candidateBody) old"
+            },
+            {
+              "line": 130,
+              "text": "            deadline=min (maybe (questionDeadline question) (candidateDeadline . candidateBody) old) (anchor+groupObservationDuration method)"
+            },
+            {
+              "line": 131,
+              "text": "            revisionEnd=min (maybe (questionRevisionEnd question) (candidateRevisionEnd . candidateBody) old) (deadline+6*delta)"
+            },
+            {
+              "line": 132,
+              "text": "            closed=maybe False (candidateClosed . candidateBody) old || u>=deadline"
+            },
+            {
+              "line": 133,
+              "text": "            observation | materialScopeEnded material=EndedByScope"
+            },
+            {
+              "line": 134,
+              "text": "                        | local==Contradicted=Withdrawn"
+            },
+            {
+              "line": 135,
+              "text": "                        | closed && local==Supported=ClosedSupported"
+            },
+            {
+              "line": 136,
+              "text": "                        | closed=ClosedInsufficient"
+            },
+            {
+              "line": 137,
+              "text": "                        | otherwise=Open"
+            },
+            {
+              "line": 138,
+              "text": "            memberStatus t=if all (\\other->turnKey other==turnKey t ||"
+            },
+            {
+              "line": 139,
+              "text": "                  maybe False ((==PairPositive) . pairDecision) (M.lookup (pairKey (turnKey t) (turnKey other)) (pairBases view))) turns"
+            },
+            {
+              "line": 140,
+              "text": "              then ConfirmedMember else CandidateMember"
+            },
+            {
+              "line": 141,
+              "text": "        in CandidateBody [(t,memberStatus t) | t<-turns] pairs local Unambiguous observation"
+            },
+            {
+              "line": 142,
+              "text": "            (materialCoverageIncomplete material) anchor deadline revisionEnd closed [] []"
+            },
+            {
+              "line": 143,
+              "text": "    link lives allBodies key body="
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "role": "output_encoding",
+      "path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/f-observation-multiple-github-20261122/frp/src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateStorage.hs",
+      "sha256": "1cd1ac9a2583edcb0c257b4272cd934596a1dbe5d23ea566f6962a73030608bb",
+      "version": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c",
+      "excerpts": [
+        {
+          "start": 48,
+          "end": 86,
+          "lines": [
+            {
+              "line": 48,
+              "text": "  , pairType :: !GroupRequiredRecord,pairBend :: !GroupRequiredRecord }"
+            },
+            {
+              "line": 49,
+              "text": "  deriving (Eq,Show,Generic,NFData,ToBSON,FromBSON)"
+            },
+            {
+              "line": 50,
+              "text": "data GroupOccurrenceRecord = GroupOccurrenceRecord"
+            },
+            {
+              "line": 51,
+              "text": "  { groupReference :: !ThinReference,groupPrevious :: ![ThinReference],groupKnownFrom :: !Int64"
+            },
+            {
+              "line": 52,
+              "text": "  , groupOriginalAnchor :: !Double,groupOriginalDeadline :: !Double,groupOriginalRevisionEnd :: !Double"
+            },
+            {
+              "line": 53,
+              "text": "  , groupAnchor :: !Double,groupDeadline :: !Double,groupRevisionEnd :: !Double"
+            },
+            {
+              "line": 54,
+              "text": "  , groupLocalBasis :: !Int64,groupAlternative :: !Int64,groupObservation :: !Int64"
+            },
+            {
+              "line": 55,
+              "text": "  , groupCoverageIncomplete :: !Int64,groupClosed :: !Int64"
+            },
+            {
+              "line": 56,
+              "text": "  , groupMembers :: ![GroupMemberRecord],groupRequired :: ![GroupPairRecord]"
+            },
+            {
+              "line": 57,
+              "text": "  , groupOverlaps :: ![ThinId],groupCoveredBy :: ![ThinId],groupFormationParticipation :: ![FormationParticipation] }"
+            },
+            {
+              "line": 58,
+              "text": "  deriving (Eq,Show,Generic,NFData,ToBSON,FromBSON)"
+            },
+            {
+              "line": 59,
+              "text": "data GroupCompatibilityRecord = GroupCompatibilityRecord"
+            },
+            {
+              "line": 60,
+              "text": "  { compatibilityLeft :: !Int64,compatibilityRight :: !Int64,compatibilityResult :: !Int64 }"
+            },
+            {
+              "line": 61,
+              "text": "  deriving (Eq,Show,Generic,NFData,ToBSON,FromBSON)"
+            },
+            {
+              "line": 62,
+              "text": "data GroupDefinitionRecord = GroupDefinitionRecord"
+            },
+            {
+              "line": 63,
+              "text": "  { definitionMethod :: !ThinDefinition,definitionContext :: !ThinDefinition"
+            },
+            {
+              "line": 64,
+              "text": "  , definitionScale :: !ThinDefinition,definitionCalendar :: !ThinDefinition"
+            },
+            {
+              "line": 65,
+              "text": "  , definitionUniverse :: !ThinDefinition,definitionDomain :: !Text,definitionObjects :: ![Text]"
+            },
+            {
+              "line": 66,
+              "text": "  , definitionDelta :: !Double,definitionTimeUnit :: !Text"
+            },
+            {
+              "line": 67,
+              "text": "  , definitionDirections :: ![GroupCompatibilityRecord],definitionTypes :: ![GroupCompatibilityRecord] }"
+            },
+            {
+              "line": 68,
+              "text": "  deriving (Eq,Show,Generic,NFData,ToBSON,FromBSON)"
+            },
+            {
+              "line": 69,
+              "text": "data GroupCandidatesRecord = GroupCandidatesRecord"
+            },
+            {
+              "line": 70,
+              "text": "  { groupDefinitions :: ![GroupDefinitionRecord],groupOccurrences :: ![GroupOccurrenceRecord] }"
+            },
+            {
+              "line": 71,
+              "text": "  deriving (Eq,Show,Generic,NFData,ToBSON,FromBSON)"
+            },
+            {
+              "line": 72,
+              "text": "groupCandidatesFormat :: Text"
+            },
+            {
+              "line": 73,
+              "text": "groupCandidatesFormat=\"common_price_turn_groups.core.v2\""
+            },
+            {
+              "line": 74,
+              "text": ""
+            },
+            {
+              "line": 75,
+              "text": "storeGroupOccurrence row ="
+            },
+            {
+              "line": 76,
+              "text": "  let body=candidateBody row;q=candidateQuestion row"
+            },
+            {
+              "line": 77,
+              "text": "  in GroupOccurrenceRecord (Thin.exact (candidateReference row)) (maybe [] (pure . Thin.exact) (candidatePrevious row))"
+            },
+            {
+              "line": 78,
+              "text": "      (candidateKnown row) (questionAnchor q) (questionDeadline q) (questionRevisionEnd q)"
+            },
+            {
+              "line": 79,
+              "text": "      (candidateAnchor body) (candidateDeadline body) (candidateRevisionEnd body)"
+            },
+            {
+              "line": 80,
+              "text": "      (code (candidateBasis body)) (code (candidateAlternatives body)) (code (candidateObservation body))"
+            },
+            {
+              "line": 81,
+              "text": "      (code (candidateDomainIncomplete body)) (code (candidateClosed body))"
+            },
+            {
+              "line": 82,
+              "text": "      (map storeMember (candidateMembers body)) (map storePair (candidatePairs body))"
+            },
+            {
+              "line": 83,
+              "text": "      (map Thin.identifier (candidateOverlaps body)) (map Thin.identifier (candidateCoveredBy body)) (maybe [] pure (candidateParticipation row))"
+            },
+            {
+              "line": 84,
+              "text": "  where"
+            },
+            {
+              "line": 85,
+              "text": "    storeMember (t,status) ="
+            },
+            {
+              "line": 86,
+              "text": "      let g=groupTurnGeometry t"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "role": "downstream_reader",
+      "path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/f-observation-multiple-github-20261122/frp/src/Frp/Instance/ISL/Opportunity/U2/GroupValidityInputs.hs",
+      "sha256": "d069054094d91d0d852ec943845e7f2efbb03e24eacf35aa3377b7d0b2a58096",
+      "version": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c",
+      "excerpts": [
+        {
+          "start": 20,
+          "end": 35,
+          "lines": [
+            {
+              "line": 20,
+              "text": "    formation row=do"
+            },
+            {
+              "line": 21,
+              "text": "      overlap<-boolean (F.groupAlternative row)"
+            },
+            {
+              "line": 22,
+              "text": "      ValidityFormation"
+            },
+            {
+              "line": 23,
+              "text": "        <$> exact \"CommonPriceTurnGroupCandidates\" \"Candidate\" (F.groupReference row)"
+            },
+            {
+              "line": 24,
+              "text": "        <*> (optional (F.groupPrevious row) >>= traverse (exact \"CommonPriceTurnGroupCandidates\" \"Candidate\"))"
+            },
+            {
+              "line": 25,
+              "text": "        <*> pure (F.groupKnownFrom row) <*> mapM member (F.groupMembers row)"
+            },
+            {
+              "line": 26,
+              "text": "        <*> mapM pair (F.groupRequired row) <*> choice [minBound..maxBound] (F.groupLocalBasis row)"
+            },
+            {
+              "line": 27,
+              "text": "        <*> boolean (F.groupClosed row) <*> choice [minBound..maxBound] (F.groupObservation row)"
+            },
+            {
+              "line": 28,
+              "text": "        <*> pure (overlap || not (null (F.groupOverlaps row)))"
+            },
+            {
+              "line": 29,
+              "text": "        <*> boolean (F.groupCoverageIncomplete row) <*> mapM Thin.idValue (F.groupCoveredBy row)"
+            },
+            {
+              "line": 30,
+              "text": "    member row=do"
+            },
+            {
+              "line": 31,
+              "text": "      checkedReference (F.memberTurn row);checkedReference (F.memberSource row)"
+            },
+            {
+              "line": 32,
+              "text": "      ValidityTurn (F.memberTurn row) (F.memberSource row) (F.memberObject row)"
+            },
+            {
+              "line": 33,
+              "text": "        (F.memberActual row) (F.memberPrice row) (F.memberConfirmation row) (F.memberKnownFrom row)"
+            },
+            {
+              "line": 34,
+              "text": "        <$> maybeChoice [minBound..maxBound] (F.memberDirection row)"
+            },
+            {
+              "line": 35,
+              "text": "        <*> maybeChoice [minBound..maxBound] (F.memberType row)"
+            }
+          ]
+        },
+        {
+          "start": 109,
+          "end": 119,
+          "lines": [
+            {
+              "line": 109,
+              "text": "  (groupTurnDirection t) (groupTurnType t) (groupTurnClock t) (groupTurnOriginOrder t) (groupTurnRetracted t)"
+            },
+            {
+              "line": 110,
+              "text": "projectFormation :: CandidateOccurrence -> ValidityFormation"
+            },
+            {
+              "line": 111,
+              "text": "projectFormation row=ValidityFormation (candidateReference row) (candidatePrevious row) (candidateKnown row)"
+            },
+            {
+              "line": 112,
+              "text": "  (map (projectTurn . fst) (candidateMembers body))"
+            },
+            {
+              "line": 113,
+              "text": "  [ValidityPair (Thin.exact (basisLeft p)) (Thin.exact (basisRight p)) [basisTime p,basisDirection p,basisType p,basisBend p] | p<-candidatePairs body]"
+            },
+            {
+              "line": 114,
+              "text": "  (candidateBasis body) (candidateClosed body) (candidateObservation body)"
+            },
+            {
+              "line": 115,
+              "text": "  (candidateAlternatives body==UnresolvedOverlap || not (null (candidateOverlaps body)))"
+            },
+            {
+              "line": 116,
+              "text": "  (candidateDomainIncomplete body) (candidateCoveredBy body)"
+            },
+            {
+              "line": 117,
+              "text": "  where body=candidateBody row"
+            },
+            {
+              "line": 118,
+              "text": "projectOrganization :: Q.DirectionalOccurrence -> ValidityOrganization"
+            },
+            {
+              "line": 119,
+              "text": "projectOrganization row=ValidityOrganization (Q.directionalReference row) (Q.directionalPrevious row) (Q.directionalKnown row)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "role": "pair_consumer",
+      "path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/f-observation-multiple-github-20261122/frp/src/Frp/Instance/ISL/Opportunity/U2/GroupCandidatePairs.hs",
+      "sha256": "d6bac3e6a02ba030d613cbe56e6d6b6606b8cdc8f510e6552b3d2c28360b0d03",
+      "version": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c",
+      "excerpts": [
+        {
+          "start": 26,
+          "end": 49,
+          "lines": [
+            {
+              "line": 26,
+              "text": "assessPair :: FormationProfile -> Integer -> GroupTurn -> GroupTurn -> Either Text PairBasis"
+            },
+            {
+              "line": 27,
+              "text": "assessPair profile known a b=do"
+            },
+            {
+              "line": 28,
+              "text": "  unless (finite (formationDelta profile) && formationDelta profile>0) (Left \"共同转折Δ无效\")"
+            },
+            {
+              "line": 29,
+              "text": "  unless (groupTurnObject a/=groupTurnObject b) (Left \"共同转折pair重复对象\")"
+            },
+            {
+              "line": 30,
+              "text": "  direction<-semantic DirectionUnavailable DirectionOpposed (formationDirectionMatrix profile)"
+            },
+            {
+              "line": 31,
+              "text": "    (groupTurnDirection a) (groupTurnDirection b)"
+            },
+            {
+              "line": 32,
+              "text": "  kind<-semantic TurnTypeUnavailable TurnTypeOpposed (formationTypeMatrix profile)"
+            },
+            {
+              "line": 33,
+              "text": "    (groupTurnType a) (groupTurnType b)"
+            },
+            {
+              "line": 34,
+              "text": "  let distance=do"
+            },
+            {
+              "line": 35,
+              "text": "        x<-groupTurnClock a;y<-groupTurnClock b"
+            },
+            {
+              "line": 36,
+              "text": "        if toInteger (max (groupClockKnown x) (groupClockKnown y))>known then Nothing"
+            },
+            {
+              "line": 37,
+              "text": "          else Just (abs (groupClockValue x-groupClockValue y))"
+            },
+            {
+              "line": 38,
+              "text": "      temporal=maybe (CoordinateUnresolved ActualClockUnavailable)"
+            },
+            {
+              "line": 39,
+              "text": "        (\\d->if d<=2*formationDelta profile then CoordinateSupports else CoordinateVeto ActualDistanceExceeded) distance"
+            },
+            {
+              "line": 40,
+              "text": "      bend=case (selected a,selected b) of"
+            },
+            {
+              "line": 41,
+              "text": "        (Right x,Right y) | x==BendCollinear || y==BendCollinear->CoordinateUnresolved SelectedCollinear"
+            },
+            {
+              "line": 42,
+              "text": "                         | x==y->CoordinateSupports"
+            },
+            {
+              "line": 43,
+              "text": "                         | otherwise->CoordinateVeto SelectedBendOpposed"
+            },
+            {
+              "line": 44,
+              "text": "        (Left gap,_)->CoordinateUnresolved gap"
+            },
+            {
+              "line": 45,
+              "text": "        (_,Left gap)->CoordinateUnresolved gap"
+            },
+            {
+              "line": 46,
+              "text": "      withdrawn=groupTurnRetracted a || groupTurnRetracted b"
+            },
+            {
+              "line": 47,
+              "text": "  pure (PairBasis (groupTurnRef a) (groupTurnRef b) distance"
+            },
+            {
+              "line": 48,
+              "text": "    (if withdrawn then CoordinateVeto SourceTurnWithdrawn else temporal) direction kind bend)"
+            },
+            {
+              "line": 49,
+              "text": "  where"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "role": "revision_handoff",
+      "path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/f-observation-multiple-github-20261122/frp/src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateDecisions.hs",
+      "sha256": "c581c4c4fa32a1c0b0f7067b01fcb74882e8107a426e5c1fcc48a20fa55d87ba",
+      "version": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c",
+      "excerpts": [
+        {
+          "start": 35,
+          "end": 56,
+          "lines": [
+            {
+              "line": 35,
+              "text": "   RejectionBend->concat [[formationPointKnown p]++map formationInteger (formationPointClockKnown p) | p<-points]"
+            },
+            {
+              "line": 36,
+              "text": "   _->[])"
+            },
+            {
+              "line": 37,
+              "text": "  directionCode DirectionUp=0;directionCode DirectionDown=1"
+            },
+            {
+              "line": 38,
+              "text": ""
+            },
+            {
+              "line": 39,
+              "text": "-- 完整当前支撑按有限pair/坐标归约；旧发生由原writer保存。"
+            },
+            {
+              "line": 40,
+              "text": "-- Handoff retains the legacy 18-Delta tail after revision duty. At the default"
+            },
+            {
+              "line": 41,
+              "text": "-- observation=6 this is the original anchor+30Delta; wider observation shifts"
+            },
+            {
+              "line": 42,
+              "text": "-- all three ordered duties without relaxing the storage invariant."
+            },
+            {
+              "line": 43,
+              "text": "resolveFormationDecisionCorrections reference method material question body old="
+            },
+            {
+              "line": 44,
+              "text": " case old >>= candidateParticipation of"
+            },
+            {
+              "line": 45,
+              "text": "  Nothing->FormationParticipation ref (materialKnown material) ref (map (captureParticipationMember . fst) (candidateMembers body))"
+            },
+            {
+              "line": 46,
+              "text": "   (questionAnchor question) (questionDeadline question) (questionRevisionEnd question)"
+            },
+            {
+              "line": 47,
+              "text": "   (candidateDeadline body) (candidateRevisionEnd body) (min (questionRevisionEnd question+18*groupDelta method) (candidateRevisionEnd body+18*groupDelta method))"
+            },
+            {
+              "line": 48,
+              "text": "   (factCode AdmittedCompleteLinkContradictionV1) (factCode WholeCandidateCombination)"
+            },
+            {
+              "line": 49,
+              "text": "   (factCode subject) 1 (factCode closed) [] [] [] 0 (materialKnown material)"
+            },
+            {
+              "line": 50,
+              "text": "  Just before | materialProgress material>participationRevisionEnd before->before {participationCandidate=ref,participationDutyClosed=1,participationDecisionKnown=materialKnown material}"
+            },
+            {
+              "line": 51,
+              "text": "  Just before->before {participationCandidate=ref,participationDeadline=min (participationDeadline before) (candidateDeadline body)"
+            },
+            {
+              "line": 52,
+              "text": "   ,participationRevisionEnd=min (participationRevisionEnd before) (candidateRevisionEnd body)"
+            },
+            {
+              "line": 53,
+              "text": "   ,participationHandoffEnd=min (participationHandoffEnd before) (candidateRevisionEnd body+18*groupDelta method)"
+            },
+            {
+              "line": 54,
+              "text": "   ,participationSubject=factCode subject,participationDutyClosed=factCode closed"
+            },
+            {
+              "line": 55,
+              "text": "   ,participationSupports=supports before,participationDecisionKnown=materialKnown material}"
+            },
+            {
+              "line": 56,
+              "text": " where"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "role": "native_pnv_loader",
+      "path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-exact-uti-20261122/runtime/edh-universe/frp/frp-core/src/Frp/Core/Fao/Tis.hs",
+      "sha256": "9bf3ada933c7ba1a696fe8667ce26f7855cfd2ef5aa1e4f58fd2b63badcc12d6",
+      "version": "D005 actual frozen runtime; local file SHA-256",
+      "excerpts": [
+        {
+          "start": 27,
+          "end": 68,
+          "lines": [
+            {
+              "line": 27,
+              "text": "import Frp.Core.Fao.GMap"
+            },
+            {
+              "line": 28,
+              "text": "import Frp.DbaStore.Class"
+            },
+            {
+              "line": 29,
+              "text": "import GHC.Generics"
+            },
+            {
+              "line": 30,
+              "text": "import System.FilePath"
+            },
+            {
+              "line": 31,
+              "text": "import Text.PrettyPrint.GenericPretty"
+            },
+            {
+              "line": 32,
+              "text": ""
+            },
+            {
+              "line": 33,
+              "text": "-- | 收盘信息(Bar), 收盘时点触发"
+            },
+            {
+              "line": 34,
+              "text": "data Bar = Bar"
+            },
+            {
+              "line": 35,
+              "text": "  { open :: Price,"
+            },
+            {
+              "line": 36,
+              "text": "    high :: Price,"
+            },
+            {
+              "line": 37,
+              "text": "    low :: Price,"
+            },
+            {
+              "line": 38,
+              "text": "    close :: Price,"
+            },
+            {
+              "line": 39,
+              "text": "    openInt :: Double,"
+            },
+            {
+              "line": 40,
+              "text": "    volume :: Double,"
+            },
+            {
+              "line": 41,
+              "text": "    closeUti :: Int"
+            },
+            {
+              "line": 42,
+              "text": "  }"
+            },
+            {
+              "line": 43,
+              "text": "  deriving (Show, Generic, Out)"
+            },
+            {
+              "line": 44,
+              "text": ""
+            },
+            {
+              "line": 45,
+              "text": "-- 实盘 tick 目前通过 json 传入，需要实现  FromJSON"
+            },
+            {
+              "line": 46,
+              "text": "instance FromJSON Bar where"
+            },
+            {
+              "line": 47,
+              "text": "  parseJSON = genericParseJSON defaultOptions -- 不需要 __tag__"
+            },
+            {
+              "line": 48,
+              "text": ""
+            },
+            {
+              "line": 49,
+              "text": "data BarHistoryData = BarHistoryData"
+            },
+            {
+              "line": 50,
+              "text": "  { open :: VS.Vector Price,"
+            },
+            {
+              "line": 51,
+              "text": "    high :: VS.Vector Price,"
+            },
+            {
+              "line": 52,
+              "text": "    low :: VS.Vector Price,"
+            },
+            {
+              "line": 53,
+              "text": "    close :: VS.Vector Price,"
+            },
+            {
+              "line": 54,
+              "text": "    openInt :: VS.Vector Double,"
+            },
+            {
+              "line": 55,
+              "text": "    volume :: VS.Vector Double,"
+            },
+            {
+              "line": 56,
+              "text": "    closeUti :: VS.Vector Int,"
+            },
+            {
+              "line": 57,
+              "text": "    closeTs :: VS.Vector Timestamp"
+            },
+            {
+              "line": 58,
+              "text": "  }"
+            },
+            {
+              "line": 59,
+              "text": ""
+            },
+            {
+              "line": 60,
+              "text": "-- 实现获取历史数据接口"
+            },
+            {
+              "line": 61,
+              "text": "instance HasFrpHistoryTs BarHistoryData where"
+            },
+            {
+              "line": 62,
+              "text": "  atHistoryTs BarHistoryData {..} = closeTs"
+            },
+            {
+              "line": 63,
+              "text": ""
+            },
+            {
+              "line": 64,
+              "text": "instance HasFrpHistoryData BarHistoryData Bar where"
+            },
+            {
+              "line": 65,
+              "text": "  lookupHistoryData BarHistoryData {..} i ="
+            },
+            {
+              "line": 66,
+              "text": "    -- 收盘时点作为触发时间,事件值、事件价格"
+            },
+            {
+              "line": 67,
+              "text": "    (_closeTs, Bar _open _high _low _close _openInt _volume _closeUti, Just _close)"
+            },
+            {
+              "line": 68,
+              "text": "    where"
+            }
+          ]
+        },
+        {
+          "start": 111,
+          "end": 188,
+          "lines": [
+            {
+              "line": 111,
+              "text": "newtype KLine = KLine"
+            },
+            {
+              "line": 112,
+              "text": "  { freq :: Freq"
+            },
+            {
+              "line": 113,
+              "text": "  }"
+            },
+            {
+              "line": 114,
+              "text": "  deriving (Show, Generic)"
+            },
+            {
+              "line": 115,
+              "text": "  deriving (ToJSON, FromJSON) via (StructJSON KLine)"
+            },
+            {
+              "line": 116,
+              "text": ""
+            },
+            {
+              "line": 117,
+              "text": "instance GMapJSON KLine"
+            },
+            {
+              "line": 118,
+              "text": ""
+            },
+            {
+              "line": 119,
+              "text": "instance Default KLine where"
+            },
+            {
+              "line": 120,
+              "text": "  def = KLine \"30m\""
+            },
+            {
+              "line": 121,
+              "text": ""
+            },
+            {
+              "line": 122,
+              "text": "instance FaoMeta KLine where"
+            },
+            {
+              "line": 123,
+              "text": "  propCalType = const OnlyRead"
+            },
+            {
+              "line": 124,
+              "text": "  propTarType = return . const (CalendarTarType SymbolType)"
+            },
+            {
+              "line": 125,
+              "text": ""
+            },
+            {
+              "line": 126,
+              "text": "instance Fao KLine where"
+            },
+            {
+              "line": 127,
+              "text": "  -- 开盘事件和收盘事件"
+            },
+            {
+              "line": 128,
+              "text": "  type FaoResult KLine = (FrpEvent Open, FrpEvent Bar)"
+            },
+            {
+              "line": 129,
+              "text": ""
+            },
+            {
+              "line": 130,
+              "text": "  load :: HasHisBack => KLine -> FaoModel (Maybe (FaoResult KLine))"
+            },
+            {
+              "line": 131,
+              "text": "  load f@KLine {..} = loadKLineEvent f freq"
+            },
+            {
+              "line": 132,
+              "text": ""
+            },
+            {
+              "line": 133,
+              "text": "-- 加载K线事件"
+            },
+            {
+              "line": 134,
+              "text": "loadKLineEvent :: (Fao f, HasHisBack) => f -> Freq -> FaoModel (Maybe (FrpEvent Open, FrpEvent Bar))"
+            },
+            {
+              "line": 135,
+              "text": "loadKLineEvent f _freq = do"
+            },
+            {
+              "line": 136,
+              "text": "  cname <- currentCalendar"
+            },
+            {
+              "line": 137,
+              "text": "  tar_name <- getTarNameNoCalendar f"
+            },
+            {
+              "line": 138,
+              "text": "  pnv_dir <- lift $ view (env'ctx . ctx'sof . sof'pnv_dir)"
+            },
+            {
+              "line": 139,
+              "text": "  let file_path = pnv_dir </> show _freq </> T.unpack tname"
+            },
+            {
+              "line": 140,
+              "text": "        where"
+            },
+            {
+              "line": 141,
+              "text": "          tname = case cname of"
+            },
+            {
+              "line": 142,
+              "text": "            AtSelfCalendar -> tar_name"
+            },
+            {
+              "line": 143,
+              "text": "            _ -> tar_name <> \"_\" <> convert cname"
+            },
+            {
+              "line": 144,
+              "text": ""
+            },
+            {
+              "line": 145,
+              "text": "  ebar <- newAdtFrpEvent4Fao' f \"bar\" def $ do"
+            },
+            {
+              "line": 146,
+              "text": "    -- 默认不回溯"
+            },
+            {
+              "line": 147,
+              "text": "    open <- loadBitsDba @Price $ file_path </> \"open\" <.> \"dba\""
+            },
+            {
+              "line": 148,
+              "text": "    high <- loadBitsDba @Price $ file_path </> \"high\" <.> \"dba\""
+            },
+            {
+              "line": 149,
+              "text": "    low <- loadBitsDba @Price $ file_path </> \"low\" <.> \"dba\""
+            },
+            {
+              "line": 150,
+              "text": "    close <- loadBitsDba @Price $ file_path </> \"close\" <.> \"dba\""
+            },
+            {
+              "line": 151,
+              "text": "    openInt <- loadBitsDba @Double $ file_path </> \"openInt\" <.> \"dba\""
+            },
+            {
+              "line": 152,
+              "text": "    volume <- loadBitsDba @Double $ file_path </> \"volume\" <.> \"dba\""
+            },
+            {
+              "line": 153,
+              "text": "    closeUti <- loadBitsDba @Int $ file_path </> \"closeUti\" <.> \"dba\""
+            },
+            {
+              "line": 154,
+              "text": "    closeTs <- loadBitsDba @Int (file_path </> \"closeTs\" <.> \"dba\") <&> VS.map convert"
+            },
+            {
+              "line": 155,
+              "text": "    return BarHistoryData {..}"
+            },
+            {
+              "line": 156,
+              "text": ""
+            },
+            {
+              "line": 157,
+              "text": "  eopen <- newAdtFrpEvent4Fao' f \"open\" def $ do"
+            },
+            {
+              "line": 158,
+              "text": "    open <- loadBitsDba @Price $ file_path </> \"open\" <.> \"dba\""
+            },
+            {
+              "line": 159,
+              "text": "    openUti <- loadBitsDba @Int $ file_path </> \"openUti\" <.> \"dba\""
+            },
+            {
+              "line": 160,
+              "text": "    openTs <- loadBitsDba @Int (file_path </> \"openTs\" <.> \"dba\") <&> VS.map convert"
+            },
+            {
+              "line": 161,
+              "text": "    return OpenHistoryData {..}"
+            },
+            {
+              "line": 162,
+              "text": "  return $ Just (eopen, ebar)"
+            },
+            {
+              "line": 163,
+              "text": ""
+            },
+            {
+              "line": 164,
+              "text": "-- 实现 KLine 可 Rable"
+            },
+            {
+              "line": 165,
+              "text": "-- 如 KLine 收盘特征可能作为其他特征的可替换的上游特征时"
+            },
+            {
+              "line": 166,
+              "text": "instance FaoRable KLine where"
+            },
+            {
+              "line": 167,
+              "text": "  doGenericFaoResult f = runFaoBack' f >>= transEBar . snd"
+            },
+            {
+              "line": 168,
+              "text": ""
+            },
+            {
+              "line": 169,
+              "text": "transEBar :: FrpEvent Bar -> FaoModel GenericFaoResult"
+            },
+            {
+              "line": 170,
+              "text": "transEBar ebar = do"
+            },
+            {
+              "line": 171,
+              "text": "  eopen <- wrapTickEvent $ fmap #open ebar"
+            },
+            {
+              "line": 172,
+              "text": "  ehigh <- wrapTickEvent $ fmap #high ebar"
+            },
+            {
+              "line": 173,
+              "text": "  elow <- wrapTickEvent $ fmap #low ebar"
+            },
+            {
+              "line": 174,
+              "text": "  eclose <- wrapTickEvent $ fmap #close ebar"
+            },
+            {
+              "line": 175,
+              "text": "  ecloseUti <- wrapTickEvent $ fmap (convert . #closeUti) ebar"
+            },
+            {
+              "line": 176,
+              "text": "  eOpenInt <- wrapTickEvent $ fmap #openInt ebar"
+            },
+            {
+              "line": 177,
+              "text": "  eVolume <- wrapTickEvent $ fmap #volume ebar"
+            },
+            {
+              "line": 178,
+              "text": "  let res ="
+            },
+            {
+              "line": 179,
+              "text": "        Map.fromList"
+            },
+            {
+              "line": 180,
+              "text": "          [ (\"open\", eopen),"
+            },
+            {
+              "line": 181,
+              "text": "            (\"high\", ehigh),"
+            },
+            {
+              "line": 182,
+              "text": "            (\"low\", elow),"
+            },
+            {
+              "line": 183,
+              "text": "            (\"close\", eclose),"
+            },
+            {
+              "line": 184,
+              "text": "            (\"closeUti\", ecloseUti),"
+            },
+            {
+              "line": 185,
+              "text": "            (\"openInt\", eOpenInt),"
+            },
+            {
+              "line": 186,
+              "text": "            (\"volume\", eVolume)"
+            },
+            {
+              "line": 187,
+              "text": "          ]"
+            },
+            {
+              "line": 188,
+              "text": "  return res"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "role": "native_event_schedule",
+      "path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-exact-uti-20261122/runtime/edh-universe/frp/frp-core/src/Frp/Core/Engine/Class.hs",
+      "sha256": "5a2feb729134bd1d8094f85238e42ae1c075ab4fc7e9ed966d58aff3cb7ca3e1",
+      "version": "D005 actual frozen runtime; local file SHA-256",
+      "excerpts": [
+        {
+          "start": 658,
+          "end": 737,
+          "lines": [
+            {
+              "line": 658,
+              "text": "-- | 按事件时间合并分组历史数据"
+            },
+            {
+              "line": 659,
+              "text": "mergeGroupHistoryData :: FieldMap FrpHistoryData -> Truncate -> IO (V.Vector [HistoryTick])"
+            },
+            {
+              "line": 660,
+              "text": "mergeGroupHistoryData !source Truncate {..} = do"
+            },
+            {
+              "line": 661,
+              "text": "  -- 加载数据"
+            },
+            {
+              "line": 662,
+              "text": "  !xs <- mapM _loadHistoryData (Map.toList source)"
+            },
+            {
+              "line": 663,
+              "text": "  let !rsource = catMaybes xs"
+            },
+            {
+              "line": 664,
+              "text": ""
+            },
+            {
+              "line": 665,
+              "text": "  -- 构建和过滤数据"
+            },
+            {
+              "line": 666,
+              "text": "  let !ticks = buildAndFilterTicks rsource"
+            },
+            {
+              "line": 667,
+              "text": "  -- 分组"
+            },
+            {
+              "line": 668,
+              "text": "  return $! groupTicksByTime ticks"
+            },
+            {
+              "line": 669,
+              "text": "  where"
+            },
+            {
+              "line": 670,
+              "text": "    buildAndFilterTicks :: [(EventName, (VS.Vector Timestamp, (Int, Int), FrpEventTriggerRef HistoryTick))] -> V.Vector HistoryTick"
+            },
+            {
+              "line": 671,
+              "text": "    buildAndFilterTicks sources ="
+            },
+            {
+              "line": 672,
+              "text": "      -- 并行处理每个数据源"
+            },
+            {
+              "line": 673,
+              "text": "      V.concat $ parMap rdeepseq processSingleSource sources"
+            },
+            {
+              "line": 674,
+              "text": ""
+            },
+            {
+              "line": 675,
+              "text": "    processSingleSource :: (EventName, (VS.Vector Timestamp, (Int, Int), FrpEventTriggerRef HistoryTick)) -> V.Vector HistoryTick"
+            },
+            {
+              "line": 676,
+              "text": "    processSingleSource (!name, (!fts, !back, !trigger)) ="
+            },
+            {
+              "line": 677,
+              "text": "      let !timestamps = VS.convert fts"
+            },
+            {
+              "line": 678,
+              "text": "          !ticks ="
+            },
+            {
+              "line": 679,
+              "text": "            V.force $"
+            },
+            {
+              "line": 680,
+              "text": "              V.imap"
+            },
+            {
+              "line": 681,
+              "text": "                ( \\i ts ->"
+            },
+            {
+              "line": 682,
+              "text": "                    HistoryTick name i (EventTime ts HistoryQuoteStatus) trigger"
+            },
+            {
+              "line": 683,
+              "text": "                )"
+            },
+            {
+              "line": 684,
+              "text": "                timestamps"
+            },
+            {
+              "line": 685,
+              "text": "       in filterTicks name back ticks"
+            },
+            {
+              "line": 686,
+              "text": ""
+            },
+            {
+              "line": 687,
+              "text": "    filterTicks :: EventName -> (Int, Int) -> V.Vector HistoryTick -> V.Vector HistoryTick"
+            },
+            {
+              "line": 688,
+              "text": "    filterTicks name !back !ticks ="
+            },
+            {
+              "line": 689,
+              "text": "      let !fv ="
+            },
+            {
+              "line": 690,
+              "text": "            case currTs of"
+            },
+            {
+              "line": 691,
+              "text": "              -- 嵌套事件中触发历史事件截取, 过滤掉 <= 最新触发时间的历史数据"
+            },
+            {
+              "line": 692,
+              "text": "              Just _ts ->"
+            },
+            {
+              "line": 693,
+              "text": "                let (!_, !after) = V.partition ((<= _ts) . ts_time . atTickTs) ticks"
+            },
+            {
+              "line": 694,
+              "text": "                 in V.force after"
+            },
+            {
+              "line": 695,
+              "text": "              Nothing -> maybe ticks (filterByStart name ticks back) sdate"
+            },
+            {
+              "line": 696,
+              "text": "       in V.force $ maybe fv (filterByEnd fv) edate"
+            },
+            {
+              "line": 697,
+              "text": ""
+            },
+            {
+              "line": 698,
+              "text": "    filterByStart :: EventName -> V.Vector HistoryTick -> (Int, Int) -> Timestamp -> V.Vector HistoryTick"
+            },
+            {
+              "line": 699,
+              "text": "    filterByStart name !vs (n, d) !s ="
+            },
+            {
+              "line": 700,
+              "text": "      if"
+            },
+            {
+              "line": 701,
+              "text": "        -- 不回溯,获取所有大于等于优化开始时间的数据"
+            },
+            {
+              "line": 702,
+              "text": "        -- 这里是假设数据是升序排列的，才能使用 V.dropWhile， 否则需要排序(TODO)"
+            },
+            {
+              "line": 703,
+              "text": "        | n <= 0 && d <= 0 -> V.force $ V.dropWhile ((< s) . ts_time . atTickTs) vs"
+            },
+            {
+              "line": 704,
+              "text": "        -- 同时设置了回溯Bar和Day,获取回溯多的"
+            },
+            {
+              "line": 705,
+              "text": "        | n > 0 && d > 0 ->"
+            },
+            {
+              "line": 706,
+              "text": "            let ndata = _getData _truncateN"
+            },
+            {
+              "line": 707,
+              "text": "                ddata = _getData _truncateD"
+            },
+            {
+              "line": 708,
+              "text": "                nsize = V.length ndata"
+            },
+            {
+              "line": 709,
+              "text": "                dsize = V.length ddata"
+            },
+            {
+              "line": 710,
+              "text": "             in if nsize > dsize then ndata else ddata"
+            },
+            {
+              "line": 711,
+              "text": "        | d > 0 -> _getData _truncateD"
+            },
+            {
+              "line": 712,
+              "text": "        | otherwise -> _getData _truncateN"
+            },
+            {
+              "line": 713,
+              "text": "      where"
+            },
+            {
+              "line": 714,
+              "text": "        -- 通过优化时间分割为两部分"
+            },
+            {
+              "line": 715,
+              "text": "        (!before, !after) = V.partition ((< s) . ts_time . atTickTs) vs"
+            },
+            {
+              "line": 716,
+              "text": "        _getData tr ="
+            },
+            {
+              "line": 717,
+              "text": "          if not (V.null before)"
+            },
+            {
+              "line": 718,
+              "text": "            then V.force $ tr before V.++ after"
+            },
+            {
+              "line": 719,
+              "text": "            else V.force after"
+            },
+            {
+              "line": 720,
+              "text": ""
+            },
+            {
+              "line": 721,
+              "text": "        -- 向前取 n 个数据"
+            },
+            {
+              "line": 722,
+              "text": "        _truncateN ds = if cha < 0 then trace msg res else res"
+            },
+            {
+              "line": 723,
+              "text": "          where"
+            },
+            {
+              "line": 724,
+              "text": "            res = V.drop (V.length before - n) ds"
+            },
+            {
+              "line": 725,
+              "text": "            cha = V.length res - n"
+            },
+            {
+              "line": 726,
+              "text": "            msg = \"🍋\" ++ T.unpack name ++ \" 需要回溯 \" ++ show n ++ \" 个事件，但是只有 \" ++ show (n + cha) ++ \" 个事件🍋\""
+            },
+            {
+              "line": 727,
+              "text": ""
+            },
+            {
+              "line": 728,
+              "text": "        -- 向前取 n 天数据"
+            },
+            {
+              "line": 729,
+              "text": "        _truncateD ds = if s' < fs then trace msg res else res"
+            },
+            {
+              "line": 730,
+              "text": "          where"
+            },
+            {
+              "line": 731,
+              "text": "            s' = addDays (-(abs d)) s"
+            },
+            {
+              "line": 732,
+              "text": "            fs = ts_time . atTickTs $ V.head ds"
+            },
+            {
+              "line": 733,
+              "text": "            res = V.dropWhile ((< s') . ts_time . atTickTs) ds"
+            },
+            {
+              "line": 734,
+              "text": "            msg = \"🍋\" ++ T.unpack name ++ \" 需要回溯到 \" ++ show s' ++ \", 但是数据开始时间只到 \" ++ show fs ++ \"🍋\""
+            },
+            {
+              "line": 735,
+              "text": ""
+            },
+            {
+              "line": 736,
+              "text": "    filterByEnd :: V.Vector HistoryTick -> Timestamp -> V.Vector HistoryTick"
+            },
+            {
+              "line": 737,
+              "text": "    filterByEnd !vs !e = V.force $ V.takeWhile (\\x -> ts_time (atTickTs x) <= e) vs"
+            }
+          ]
+        },
+        {
+          "start": 865,
+          "end": 881,
+          "lines": [
+            {
+              "line": 865,
+              "text": ""
+            },
+            {
+              "line": 866,
+              "text": "  getFrpSourceRef :: AppModel (IORef FrpSource)"
+            },
+            {
+              "line": 867,
+              "text": "  getFrpSourceRef = view env'frp'source'ref"
+            },
+            {
+              "line": 868,
+              "text": ""
+            },
+            {
+              "line": 869,
+              "text": "  wrapTickEvent :: FrpEvent a -> AppModel (FrpEvent (Tick a))"
+            },
+            {
+              "line": 870,
+              "text": "  wrapTickEvent e = do"
+            },
+            {
+              "line": 871,
+              "text": "    ets <- getTimeLineEvent"
+            },
+            {
+              "line": 872,
+              "text": "    -- 目标事件发生时肯定有主时间轴事件发生"
+            },
+            {
+              "line": 873,
+              "text": "    let go (These _ts _val) = Just $ Tick _ts _val Nothing"
+            },
+            {
+              "line": 874,
+              "text": "        go (This _ts) = Nothing"
+            },
+            {
+              "line": 875,
+              "text": "        go _ = Nothing -- TODO error \"🎃 unsupported event to wrap TimeLineEvent\""
+            },
+            {
+              "line": 876,
+              "text": "    return $ fmapMaybe go $ align ets e"
+            },
+            {
+              "line": 877,
+              "text": ""
+            },
+            {
+              "line": 878,
+              "text": "  isRealTimeMode :: AppModel Bool"
+            },
+            {
+              "line": 879,
+              "text": "  isRealTimeMode = view env'run'mode <&> (== RealTime)"
+            },
+            {
+              "line": 880,
+              "text": ""
+            },
+            {
+              "line": 881,
+              "text": "  getEndEvent :: AppModel (FrpEvent ())"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "role": "native_event_push",
+      "path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-exact-uti-20261122/runtime/edh-universe/frp/frp-core/src/Frp/Core/Engine/Host.hs",
+      "sha256": "e4d85b74360ae228574f283f446f749cffe943865cd5252315b00af63258c611",
+      "version": "D005 actual frozen runtime; local file SHA-256",
+      "excerpts": [
+        {
+          "start": 304,
+          "end": 346,
+          "lines": [
+            {
+              "line": 304,
+              "text": "  forall b a."
+            },
+            {
+              "line": 305,
+              "text": "  (HasFrpHistoryData a b, HasFrpHistoryTs a, Typeable b) =>"
+            },
+            {
+              "line": 306,
+              "text": "  -- 唯一事件名称，如果相同则返回定义过的事件"
+            },
+            {
+              "line": 307,
+              "text": "  EventName ->"
+            },
+            {
+              "line": 308,
+              "text": "  -- 获取事件历史数据函数"
+            },
+            {
+              "line": 309,
+              "text": "  IO a ->"
+            },
+            {
+              "line": 310,
+              "text": "  AppHost (FrpEvent (Tick b))"
+            },
+            {
+              "line": 311,
+              "text": "newFrpHostEvent ename getdata = do"
+            },
+            {
+              "line": 312,
+              "text": "  sourceRef <- view env'frp'source'ref"
+            },
+            {
+              "line": 313,
+              "text": "  source <- liftIO $ readIORef sourceRef"
+            },
+            {
+              "line": 314,
+              "text": "  case Map.lookup ename source of"
+            },
+            {
+              "line": 315,
+              "text": "    Just FrpHistoryData {..} -> do"
+            },
+            {
+              "line": 316,
+              "text": "      case hisd_event of"
+            },
+            {
+              "line": 317,
+              "text": "        (e :: FrpEvent (Tick b')) ->"
+            },
+            {
+              "line": 318,
+              "text": "          case eqT :: Maybe (b :~: b') of"
+            },
+            {
+              "line": 319,
+              "text": "            Just Refl -> return e"
+            },
+            {
+              "line": 320,
+              "text": "            Nothing -> error $ \"newFrpHostEvent type error: \" ++ show ename"
+            },
+            {
+              "line": 321,
+              "text": "    Nothing -> do"
+            },
+            {
+              "line": 322,
+              "text": "      (etri, triRef) <- lift newEventWithTriggerRef"
+            },
+            {
+              "line": 323,
+              "text": ""
+            },
+            {
+              "line": 324,
+              "text": "      -- 创建变量，触发的事件才会写入数据"
+            },
+            {
+              "line": 325,
+              "text": "      dataRef :: IORef (Maybe a) <- liftIO $ newIORef Nothing"
+            },
+            {
+              "line": 326,
+              "text": "      let _push HistoryTick {..} ="
+            },
+            {
+              "line": 327,
+              "text": "            readIORef dataRef >>= \\case"
+            },
+            {
+              "line": 328,
+              "text": "              Nothing -> error $ show ename ++ \" no load history data bug\""
+            },
+            {
+              "line": 329,
+              "text": "              Just a -> do"
+            },
+            {
+              "line": 330,
+              "text": "                let (_ts, _val, _price) = lookupHistoryData a his_data_index"
+            },
+            {
+              "line": 331,
+              "text": "                return $ Tick (convert _ts) _val _price"
+            },
+            {
+              "line": 332,
+              "text": "          eres = pushAlways (liftIO . _push) etri"
+            },
+            {
+              "line": 333,
+              "text": ""
+            },
+            {
+              "line": 334,
+              "text": "      let input ="
+            },
+            {
+              "line": 335,
+              "text": "            FrpHistoryData"
+            },
+            {
+              "line": 336,
+              "text": "              { hisd_data_io = getdata,"
+            },
+            {
+              "line": 337,
+              "text": "                hisd_data_ref = dataRef,"
+            },
+            {
+              "line": 338,
+              "text": "                hisd_trigger_ref = triRef,"
+            },
+            {
+              "line": 339,
+              "text": "                hisd_event = eres,"
+            },
+            {
+              "line": 340,
+              "text": "                hisd_back_number = 0,"
+            },
+            {
+              "line": 341,
+              "text": "                hisd_back_day = 0"
+            },
+            {
+              "line": 342,
+              "text": "              }"
+            },
+            {
+              "line": 343,
+              "text": "      -- 添加历史数据"
+            },
+            {
+              "line": 344,
+              "text": "      let source' = Map.insert ename input source"
+            },
+            {
+              "line": 345,
+              "text": "      liftIO $ writeIORef sourceRef source'"
+            },
+            {
+              "line": 346,
+              "text": "      return eres"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "role": "native_mmap",
+      "path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-exact-uti-20261122/runtime/edh-universe/frp/frp-core/src/Frp/DbaStore/Class.hs",
+      "sha256": "a8749d91ff68085781c5abd233b78f6bd8fe4599497c8b8058ceaff762a688e1",
+      "version": "D005 actual frozen runtime; local file SHA-256",
+      "excerpts": [
+        {
+          "start": 65,
+          "end": 76,
+          "lines": [
+            {
+              "line": 65,
+              "text": "  where"
+            },
+            {
+              "line": 66,
+              "text": "    al = length xs"
+            },
+            {
+              "line": 67,
+              "text": ""
+            },
+            {
+              "line": 68,
+              "text": "loadBitsDba ::"
+            },
+            {
+              "line": 69,
+              "text": "  forall a."
+            },
+            {
+              "line": 70,
+              "text": "  (DbaField a BitsField, Eq a, Storable a, EdhXchg a, Typeable a) =>"
+            },
+            {
+              "line": 71,
+              "text": "  FilePath ->"
+            },
+            {
+              "line": 72,
+              "text": "  IO (VS.Vector a)"
+            },
+            {
+              "line": 73,
+              "text": "loadBitsDba fPath = do"
+            },
+            {
+              "line": 74,
+              "text": "  (hdr, DeviceArray _cap fp) <- mmapDBA @a fPath Nothing False"
+            },
+            {
+              "line": 75,
+              "text": "  al <- fromIntegral <$> readDbArrayLength hdr"
+            },
+            {
+              "line": 76,
+              "text": "  return $ VS.unsafeFromForeignPtr0 fp al"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "role": "python_pnv_loader",
+      "path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-exact-uti-20261122/runtime/mquant/frame/core/data.py",
+      "sha256": "4368ef62bae5a8cd976db301fe5b9e143273f640bff229d899c2ded644b3ad56",
+      "version": "D005 actual frozen runtime; local file SHA-256",
+      "excerpts": [
+        {
+          "start": 24,
+          "end": 115,
+          "lines": [
+            {
+              "line": 24,
+              "text": "    def __call__(cls, sof: Sof, sym: str, freq: str):"
+            },
+            {
+              "line": 25,
+              "text": "        from ..lang import CurrCalendar"
+            },
+            {
+              "line": 26,
+              "text": "        calendar_name = CurrCalendar.name(False)"
+            },
+            {
+              "line": 27,
+              "text": "        key = f\"{cls.__name__}/{sof}/{sym}/{freq}/{calendar_name}\""
+            },
+            {
+              "line": 28,
+              "text": "        return cls.cache_instance(KDataMeta, key, sof, sym, freq, calendar_name)"
+            },
+            {
+              "line": 29,
+              "text": ""
+            },
+            {
+              "line": 30,
+              "text": ""
+            },
+            {
+              "line": 31,
+              "text": "class KDataLoader(LoggingMixIn, metaclass=KDataMeta):"
+            },
+            {
+              "line": 32,
+              "text": "    \"\"\"获取 dba 版本的单品种K线数据(收盘时点K线)\"\"\""
+            },
+            {
+              "line": 33,
+              "text": ""
+            },
+            {
+              "line": 34,
+              "text": "    __slots__ = ["
+            },
+            {
+              "line": 35,
+              "text": "        \"sof\","
+            },
+            {
+              "line": 36,
+              "text": "        \"sym\","
+            },
+            {
+              "line": 37,
+              "text": "        \"freq\","
+            },
+            {
+              "line": 38,
+              "text": "        \"calendar_name\","
+            },
+            {
+              "line": 39,
+              "text": "        \"_df\","
+            },
+            {
+              "line": 40,
+              "text": "    ]"
+            },
+            {
+              "line": 41,
+              "text": ""
+            },
+            {
+              "line": 42,
+              "text": "    def __repr__(self):"
+            },
+            {
+              "line": 43,
+              "text": "        return f\"{type(self).__name__}({self.sof!r},{self.sym!r},{self.freq!r})\""
+            },
+            {
+              "line": 44,
+              "text": ""
+            },
+            {
+              "line": 45,
+              "text": "    def __init__(self, sof: Sof, sym, freq, calendar_name: str = None):"
+            },
+            {
+              "line": 46,
+              "text": "        self.sof = sof"
+            },
+            {
+              "line": 47,
+              "text": "        self.sym = sym"
+            },
+            {
+              "line": 48,
+              "text": "        self.freq = freq"
+            },
+            {
+              "line": 49,
+              "text": "        self.calendar_name = calendar_name "
+            },
+            {
+              "line": 50,
+              "text": ""
+            },
+            {
+              "line": 51,
+              "text": "        self._df = None"
+            },
+            {
+              "line": 52,
+              "text": ""
+            },
+            {
+              "line": 53,
+              "text": "    @property "
+            },
+            {
+              "line": 54,
+              "text": "    def df(self):"
+            },
+            {
+              "line": 55,
+              "text": "        if self._df is None:"
+            },
+            {
+              "line": 56,
+              "text": "            each = opt_date_range(self.sof.startDay, self.sof.endDay)"
+            },
+            {
+              "line": 57,
+              "text": "            # 数据检查"
+            },
+            {
+              "line": 58,
+              "text": "            if settings.ctx.get(\"MQUANT_ON_KDATA_CHECK_MODE\"):"
+            },
+            {
+              "line": 59,
+              "text": "                self._df = self.get_full_df().truncate(before=each.start, after=each.end) # 性能不好"
+            },
+            {
+              "line": 60,
+              "text": "            else:"
+            },
+            {
+              "line": 61,
+              "text": "                self._df = self.get_full_df()[each.start:each.end] # 假设数据没有问题"
+            },
+            {
+              "line": 62,
+              "text": "        return self._df"
+            },
+            {
+              "line": 63,
+              "text": "    "
+            },
+            {
+              "line": 64,
+              "text": "    @property "
+            },
+            {
+              "line": 65,
+              "text": "    def tsa(self):"
+            },
+            {
+              "line": 66,
+              "text": "        return self.df.index.values"
+            },
+            {
+              "line": 67,
+              "text": "    "
+            },
+            {
+              "line": 68,
+              "text": "    @property "
+            },
+            {
+              "line": 69,
+              "text": "    def stsa(self):"
+            },
+            {
+              "line": 70,
+              "text": "        return self.df.openTs.values"
+            },
+            {
+              "line": 71,
+              "text": "    "
+            },
+            {
+              "line": 72,
+              "text": "    @property "
+            },
+            {
+              "line": 73,
+              "text": "    def etsa(self):"
+            },
+            {
+              "line": 74,
+              "text": "        return self.df.closeTs.values"
+            },
+            {
+              "line": 75,
+              "text": ""
+            },
+            {
+              "line": 76,
+              "text": "    def get_full_df(self) -> pd.DataFrame:"
+            },
+            {
+              "line": 77,
+              "text": "        \"\"\"获取日期截取前的全部K线数据\"\"\""
+            },
+            {
+              "line": 78,
+              "text": "        from ..lang import CalendarName"
+            },
+            {
+              "line": 79,
+              "text": "        file_name = self.sym"
+            },
+            {
+              "line": 80,
+              "text": "        if self.calendar_name:"
+            },
+            {
+              "line": 81,
+              "text": "            cname = CalendarName.new(self.calendar_name)"
+            },
+            {
+              "line": 82,
+              "text": "            if cname is not CalendarName.AtSelf:"
+            },
+            {
+              "line": 83,
+              "text": "                file_name = f\"{self.sym}_{self.calendar_name}\""
+            },
+            {
+              "line": 84,
+              "text": ""
+            },
+            {
+              "line": 85,
+              "text": "        full_dir = os.path.join(self.sof.pnv_dir, self.freq, file_name)"
+            },
+            {
+              "line": 86,
+              "text": ""
+            },
+            {
+              "line": 87,
+              "text": "        fields = [\"open\", \"high\", \"low\", \"close\", \"openInt\", \"volume\"]"
+            },
+            {
+              "line": 88,
+              "text": "        res = {name: DbaUtil.read_ndarray(full_dir, name, f8) for name in fields}"
+            },
+            {
+              "line": 89,
+              "text": ""
+            },
+            {
+              "line": 90,
+              "text": "        res[\"openUti\"] = DbaUtil.read_ndarray(full_dir, \"openUti\", i8)"
+            },
+            {
+              "line": 91,
+              "text": "        res[\"closeUti\"] = DbaUtil.read_ndarray(full_dir, \"closeUti\", i8)"
+            },
+            {
+              "line": 92,
+              "text": ""
+            },
+            {
+              "line": 93,
+              "text": "        res[\"openTs\"] = DbaUtil.read_ndarray(full_dir, \"openTs\", \"M8[ns]\")"
+            },
+            {
+              "line": 94,
+              "text": "        res[\"closeTs\"] = DbaUtil.read_ndarray(full_dir, \"closeTs\", \"M8[ns]\")"
+            },
+            {
+              "line": 95,
+              "text": ""
+            },
+            {
+              "line": 96,
+              "text": "        df = pd.DataFrame(index=res[\"closeTs\"], data=res, copy=False)"
+            },
+            {
+              "line": 97,
+              "text": ""
+            },
+            {
+              "line": 98,
+              "text": "        # 数据检查"
+            },
+            {
+              "line": 99,
+              "text": "        mode = settings.ctx.get(\"MQUANT_ON_KDATA_CHECK_MODE\")"
+            },
+            {
+              "line": 100,
+              "text": "        if mode:"
+            },
+            {
+              "line": 101,
+              "text": "            cdf = df[(df.open <= 0) | (df.high <= 0) | (df.low <= 0) | (df.close <= 0)]"
+            },
+            {
+              "line": 102,
+              "text": "            assert ("
+            },
+            {
+              "line": 103,
+              "text": "                cdf.shape[0] == 0"
+            },
+            {
+              "line": 104,
+              "text": "            ), f\"This {self.sym} {self.freq} kdata have error( <=0 ) value\""
+            },
+            {
+              "line": 105,
+              "text": ""
+            },
+            {
+              "line": 106,
+              "text": "            if not df.closeTs.is_unique:"
+            },
+            {
+              "line": 107,
+              "text": "                msg = f\"{self.sym} {self.freq} K线数据存在重复时间段:\\n {df.closeTs[df.closeTs.duplicated()]}\""
+            },
+            {
+              "line": 108,
+              "text": "                if \"raise\" == mode:"
+            },
+            {
+              "line": 109,
+              "text": "                    raise KDataException(msg)"
+            },
+            {
+              "line": 110,
+              "text": "                elif \"warning\" == mode:"
+            },
+            {
+              "line": 111,
+              "text": "                    self.logger.warning(msg)"
+            },
+            {
+              "line": 112,
+              "text": "        return df"
+            },
+            {
+              "line": 113,
+              "text": ""
+            },
+            {
+              "line": 114,
+              "text": "class MulKDataLoader(LoggingMixIn):"
+            },
+            {
+              "line": 115,
+              "text": "    \"\"\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "role": "python_dba_read",
+      "path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-exact-uti-20261122/runtime/mquant/frame/core/store.py",
+      "sha256": "0ef83eac77d73d6188f4f5508a6e58b28b2d583183b82ea080004e0fd120c3d6",
+      "version": "D005 actual frozen runtime; local file SHA-256",
+      "excerpts": [
+        {
+          "start": 768,
+          "end": 784,
+          "lines": [
+            {
+              "line": 768,
+              "text": "            res = DbArray(full_dir, temp_file_name, dt, shape, access=access)"
+            },
+            {
+              "line": 769,
+              "text": "            "
+            },
+            {
+              "line": 770,
+              "text": "            if hasattr(res,\"flush\"):"
+            },
+            {
+              "line": 771,
+              "text": "                res.flush()"
+            },
+            {
+              "line": 772,
+              "text": ""
+            },
+            {
+              "line": 773,
+              "text": "            os.rename(temp_path, file_path)"
+            },
+            {
+              "line": 774,
+              "text": "            return res"
+            },
+            {
+              "line": 775,
+              "text": "        return DbArray(full_dir, file_name, dt, shape, access=access)"
+            },
+            {
+              "line": 776,
+              "text": ""
+            },
+            {
+              "line": 777,
+              "text": "    @classmethod"
+            },
+            {
+              "line": 778,
+              "text": "    def read_ndarray(cls, full_dir,file_name, dt=f8):"
+            },
+            {
+              "line": 779,
+              "text": "        return cls.dbarray("
+            },
+            {
+              "line": 780,
+              "text": "            full_dir,file_name, dt, shape=None, access=mmap.ACCESS_READ"
+            },
+            {
+              "line": 781,
+              "text": "        ).ndarray"
+            },
+            {
+              "line": 782,
+              "text": ""
+            },
+            {
+              "line": 783,
+              "text": "    @classmethod"
+            },
+            {
+              "line": 784,
+              "text": "    def write_array(cls, full_dir,file_name, dt=f8, shape=None) -> \"DbArray\":"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "role": "binary_layout",
+      "path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-exact-uti-20261122/runtime/pydim/dim/rt.py",
+      "sha256": "60d9cae0ffbf577462c6e6ffe7f8fda31d1e6224f48faf82ef8f29104d7296d4",
+      "version": "D005 actual frozen runtime; local file SHA-256",
+      "excerpts": [
+        {
+          "start": 39,
+          "end": 94,
+          "lines": [
+            {
+              "line": 39,
+              "text": "ACCESS_COPY = mmap.ACCESS_COPY"
+            },
+            {
+              "line": 40,
+              "text": ""
+            },
+            {
+              "line": 41,
+              "text": ""
+            },
+            {
+              "line": 42,
+              "text": "class dtype:"
+            },
+            {
+              "line": 43,
+              "text": "    __slots__ = (\"repr\", \"dt\")"
+            },
+            {
+              "line": 44,
+              "text": ""
+            },
+            {
+              "line": 45,
+              "text": "    def __init__(self, repr_: str, dt: Optional[np.dtype] = None):"
+            },
+            {
+              "line": 46,
+              "text": "        self.repr = repr_"
+            },
+            {
+              "line": 47,
+              "text": "        if dt is None:"
+            },
+            {
+              "line": 48,
+              "text": "            self.dt = np.dtype(repr_)"
+            },
+            {
+              "line": 49,
+              "text": "        else:"
+            },
+            {
+              "line": 50,
+              "text": "            self.dt = dt"
+            },
+            {
+              "line": 51,
+              "text": ""
+            },
+            {
+              "line": 52,
+              "text": "    def __repr__(self):"
+            },
+            {
+              "line": 53,
+              "text": "        return self.repr"
+            },
+            {
+              "line": 54,
+              "text": ""
+            },
+            {
+              "line": 55,
+              "text": ""
+            },
+            {
+              "line": 56,
+              "text": "# align with builtin dtypes of hasdim"
+            },
+            {
+              "line": 57,
+              "text": "# fmt: off"
+            },
+            {
+              "line": 58,
+              "text": "float64 = dtype(\"float64\") ; f8   = float64"
+            },
+            {
+              "line": 59,
+              "text": "float32 = dtype(\"float32\") ; f4   = float32"
+            },
+            {
+              "line": 60,
+              "text": "int64   = dtype(\"int64\")   ; i8   = int64"
+            },
+            {
+              "line": 61,
+              "text": "int32   = dtype(\"int32\")   ; i4   = int32"
+            },
+            {
+              "line": 62,
+              "text": "int8    = dtype(\"int8\")    ; byte = int8"
+            },
+            {
+              "line": 63,
+              "text": "intp    = dtype(\"intp\")"
+            },
+            {
+              "line": 64,
+              "text": "yesno   = dtype('yesno', np.dtype(\"bool\"))"
+            },
+            {
+              "line": 65,
+              "text": "u8 = dtype(\"u8\")"
+            },
+            {
+              "line": 66,
+              "text": "# fmt: on"
+            },
+            {
+              "line": 67,
+              "text": ""
+            },
+            {
+              "line": 68,
+              "text": ""
+            },
+            {
+              "line": 69,
+              "text": "DbArrayHeaderDtype = np.dtype("
+            },
+            {
+              "line": 70,
+              "text": "    ["
+            },
+            {
+              "line": 71,
+              "text": "        # version of array layout"
+            },
+            {
+              "line": 72,
+              "text": "        (\"layout_version\", \"i4\"),"
+            },
+            {
+              "line": 73,
+              "text": "        # a.k.a. padded header size"
+            },
+            {
+              "line": 74,
+              "text": "        (\"data_offset\", \"i4\"),"
+            },
+            {
+              "line": 75,
+              "text": "        # padded item size"
+            },
+            {
+              "line": 76,
+              "text": "        (\"item_size\", \"i4\"),"
+            },
+            {
+              "line": 77,
+              "text": "        # alignment required for an item"
+            },
+            {
+              "line": 78,
+              "text": "        (\"item_align\", \"i4\"),"
+            },
+            {
+              "line": 79,
+              "text": "        # number of valid items in the array, to be read/written on-the-fly"
+            },
+            {
+              "line": 80,
+              "text": "        # rest of the file content should be considered pre-allocated capacity"
+            },
+            {
+              "line": 81,
+              "text": "        (\"data_length\", \"i8\"),"
+            },
+            {
+              "line": 82,
+              "text": "    ],"
+            },
+            {
+              "line": 83,
+              "text": "    align=True,"
+            },
+            {
+              "line": 84,
+              "text": ")"
+            },
+            {
+              "line": 85,
+              "text": ""
+            },
+            {
+              "line": 86,
+              "text": "# a disk file for array is always mmaped from beginning, data following the"
+            },
+            {
+              "line": 87,
+              "text": "# header. align the header so start of data is aligned with at least 512"
+            },
+            {
+              "line": 88,
+              "text": "# bits for possible SIMD performance improvement or even compliance"
+            },
+            {
+              "line": 89,
+              "text": "DbArrayHeaderAlign = 64"
+            },
+            {
+              "line": 90,
+              "text": ""
+            },
+            {
+              "line": 91,
+              "text": "# so 40 bytes is unused in the head as far"
+            },
+            {
+              "line": 92,
+              "text": "DbArrayHeaderSize = DbArrayHeaderDtype.itemsize"
+            },
+            {
+              "line": 93,
+              "text": "assert DbArrayHeaderSize == 24, \"C struct layout rules changed?\""
+            },
+            {
+              "line": 94,
+              "text": ""
+            }
+          ]
+        },
+        {
+          "start": 107,
+          "end": 127,
+          "lines": [
+            {
+              "line": 107,
+              "text": ""
+            },
+            {
+              "line": 108,
+              "text": ""
+            },
+            {
+              "line": 109,
+              "text": "class DbArray:"
+            },
+            {
+              "line": 110,
+              "text": "    __slots__ = \"data_dir\", \"data_path\", \"dtype\", \"mm\", \"hdr\", \"shape\", \"access\""
+            },
+            {
+              "line": 111,
+              "text": ""
+            },
+            {
+              "line": 112,
+              "text": "    def __init__("
+            },
+            {
+              "line": 113,
+              "text": "        self,"
+            },
+            {
+              "line": 114,
+              "text": "        data_dir: str,"
+            },
+            {
+              "line": 115,
+              "text": "        data_path: str,"
+            },
+            {
+              "line": 116,
+              "text": "        dtype_: dtype = float64,"
+            },
+            {
+              "line": 117,
+              "text": "        shape: Optional[Tuple[int, ...]] = None,"
+            },
+            {
+              "line": 118,
+              "text": "        access: int = mmap.ACCESS_READ,"
+            },
+            {
+              "line": 119,
+              "text": "    ):"
+            },
+            {
+              "line": 120,
+              "text": "        if isinstance(dtype_, str):"
+            },
+            {
+              "line": 121,
+              "text": "            dtype_ = dtype(dtype_)"
+            },
+            {
+              "line": 122,
+              "text": "        assert isinstance(dtype_, dtype)"
+            },
+            {
+              "line": 123,
+              "text": ""
+            },
+            {
+              "line": 124,
+              "text": "        self.data_dir = data_dir"
+            },
+            {
+              "line": 125,
+              "text": "        self.data_path = data_path"
+            },
+            {
+              "line": 126,
+              "text": "        self.dtype = dtype_"
+            },
+            {
+              "line": 127,
+              "text": "        self.access = access"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "frp_head": "be57d6752c9d43d10f1d670e1d2993bb8153ea7c",
+  "frp_clean": true,
+  "package": "id: frp-0.3.1.0-2EUovwLEKsz48pFoqXvaFS\nimport-dirs: /dwdhome/fy/BASE_E6_2_copy/.runtime/f800-exact-uti-20261122/runtime/edh-universe/.stack-work/install/x86_64-linux/8febf378dbd330a73b2a5cccfd1978b0b432f8b18bd6be55f68ff265812cd09f/9.4.8/lib/x86_64-linux-ghc-9.4.8/frp-0.3.1.0-2EUovwLEKsz48pFoqXvaFS\nlibrary-dirs: /dwdhome/fy/BASE_E6_2_copy/.runtime/f800-exact-uti-20261122/runtime/edh-universe/.stack-work/install/x86_64-linux/8febf378dbd330a73b2a5cccfd1978b0b432f8b18bd6be55f68ff265812cd09f/9.4.8/lib/x86_64-linux-ghc-9.4.8/frp-0.3.1.0-2EUovwLEKsz48pFoqXvaFS\n",
+  "interfaces": [
+    {
+      "path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-exact-uti-20261122/runtime/edh-universe/.stack-work/install/x86_64-linux/8febf378dbd330a73b2a5cccfd1978b0b432f8b18bd6be55f68ff265812cd09f/9.4.8/lib/x86_64-linux-ghc-9.4.8/frp-0.3.1.0-2EUovwLEKsz48pFoqXvaFS/Frp/Instance/ISL/Opportunity/U2/GroupCandidateKLineInput.hi",
+      "bytes": 19397,
+      "sha256": "ecbd3adb7c08c5e8199d6f99aab5284b166ec53202d19bceeb796ed6c805ebde"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-exact-uti-20261122/runtime/edh-universe/.stack-work/install/x86_64-linux/8febf378dbd330a73b2a5cccfd1978b0b432f8b18bd6be55f68ff265812cd09f/9.4.8/lib/x86_64-linux-ghc-9.4.8/frp-0.3.1.0-2EUovwLEKsz48pFoqXvaFS/Frp/Instance/ISL/Opportunity/U2/GroupCandidateMaterial.hi",
+      "bytes": 28233,
+      "sha256": "1feb4a478a1f10f1b0c72b2fb2ed11981ade5de492514bede21c760e452aa63b"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-exact-uti-20261122/runtime/edh-universe/.stack-work/install/x86_64-linux/8febf378dbd330a73b2a5cccfd1978b0b432f8b18bd6be55f68ff265812cd09f/9.4.8/lib/x86_64-linux-ghc-9.4.8/frp-0.3.1.0-2EUovwLEKsz48pFoqXvaFS/Frp/Instance/ISL/Opportunity/U2/GroupCandidateTypes.hi",
+      "bytes": 44564,
+      "sha256": "d5ca52bc7d1232a5ace777cbbdd1a8d09b7f29f4f7819d9aca2a27db91a34c75"
+    }
+  ],
+  "actual_configuration": {
+    "domain": {
+      "calendar": {
+        "book": "CalendarBook",
+        "kind": "CalendarRevision",
+        "life": "night_end_at_2300",
+        "revision": "TA_updto20240229_DBA"
+      },
+      "complete": true,
+      "context": {
+        "book": "U2ContextBook",
+        "kind": "U2ContextRevision",
+        "life": "blk@steel",
+        "revision": "kline-turn-groups-v1"
+      },
+      "coverage": [],
+      "domain": "blk@steel",
+      "intent": "共同价格转折候选组及其形成依据",
+      "objects": [
+        "rb",
+        "hc",
+        "i"
+      ],
+      "scale": {
+        "book": "ScaleConfigurationBook",
+        "kind": "ScaleTurnCalendarFrequency",
+        "life": "5m",
+        "revision": "1"
+      },
+      "universe": {
+        "book": "UniverseBook",
+        "kind": "IndustryUniverse",
+        "life": "blk@steel",
+        "revision": "TA_updto20240229_DBA"
+      }
+    },
+    "profile": {
+      "delta": 600,
+      "directions": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "method": {
+        "book": "CommonTurnGroupMethodBook",
+        "kind": "CompleteLinkPriceTurnsV1",
+        "life": "delta-five-open-minutes",
+        "revision": "1"
+      },
+      "metrics": [],
+      "observation_multiple": 800,
+      "turn_types": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "unit": "CalendarUTITick"
+    },
+    "sources": [
+      {
+        "input_symbol": "rb",
+        "calendar": "night_end_at_2300",
+        "frequency": "5m",
+        "market": {
+          "calendar_position_field": "closeUti",
+          "calendar_stride": 1,
+          "duration_unit": "CalendarUTITick",
+          "normalization": null,
+          "price_comparison": {
+            "kind": "ExactNumericPrice",
+            "method": {
+              "book": "PriceComparisonMethodBook",
+              "kind": "ExactNumericPrice",
+              "life": "exact-native-price",
+              "revision": "1"
+            }
+          },
+          "units_per_calendar_tick": 1,
+          "units_per_open_minute": 120
+        }
+      },
+      {
+        "input_symbol": "hc",
+        "calendar": "night_end_at_2300",
+        "frequency": "5m",
+        "market": {
+          "calendar_position_field": "closeUti",
+          "calendar_stride": 1,
+          "duration_unit": "CalendarUTITick",
+          "normalization": null,
+          "price_comparison": {
+            "kind": "ExactNumericPrice",
+            "method": {
+              "book": "PriceComparisonMethodBook",
+              "kind": "ExactNumericPrice",
+              "life": "exact-native-price",
+              "revision": "1"
+            }
+          },
+          "units_per_calendar_tick": 1,
+          "units_per_open_minute": 120
+        }
+      },
+      {
+        "input_symbol": "i",
+        "calendar": "night_end_at_2300",
+        "frequency": "5m",
+        "market": {
+          "calendar_position_field": "closeUti",
+          "calendar_stride": 1,
+          "duration_unit": "CalendarUTITick",
+          "normalization": null,
+          "price_comparison": {
+            "kind": "ExactNumericPrice",
+            "method": {
+              "book": "PriceComparisonMethodBook",
+              "kind": "ExactNumericPrice",
+              "life": "exact-native-price",
+              "revision": "1"
+            }
+          },
+          "units_per_calendar_tick": 1,
+          "units_per_open_minute": 120
+        }
+      }
+    ]
+  },
+  "native_library_binding": "同D004构建并用于D005的当前runtime安装包；本C仅stack exec runghc调用上述暴露函数，不build、不启动Feature。",
+  "native_ts_sha256": "f1d312b92744e68e4a617c98c04b07fa9361ab744be79b92963a39024d7060ea",
+  "calendar_exemption_check": "当前固定域complete=true、coverage=[]；实际GroupKLineConfiguration分支无CoverageInapplicable输入或基于close缺失的豁免分支。Calendar UTI在69位置真实存在；不从零量推导不适用。"
+}

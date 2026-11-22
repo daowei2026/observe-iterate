@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D005/run_in_runtime.py", line 13, in <module>
+    runpy.run_path(script,run_name='__main__')
+  File "/m3c3/Linux/apps/anaconda3/lib/python3.10/runpy.py", line 289, in run_path
+    return _run_module_code(code, init_globals, run_name,
+  File "/m3c3/Linux/apps/anaconda3/lib/python3.10/runpy.py", line 96, in _run_module_code
+    _run_code(code, mod_globals, init_globals,
+  File "/m3c3/Linux/apps/anaconda3/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "artifacts/OI-F800-STAT-20261122-01/D006/probe_inputs.py", line 73, in <module>
+    if __name__=='__main__':main()
+  File "artifacts/OI-F800-STAT-20261122-01/D006/probe_inputs.py", line 54, in main
+    values=DbaUtil.read_ndarray(str(own),'close',np.float64)
+  File "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-exact-uti-20261122/runtime/mquant/frame/core/store.py", line 779, in read_ndarray
+    return cls.dbarray(
+  File "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-exact-uti-20261122/runtime/mquant/frame/core/store.py", line 775, in dbarray
+    return DbArray(full_dir, file_name, dt, shape, access=access)
+  File "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-exact-uti-20261122/runtime/pydim/dim/rt.py", line 122, in __init__
+    assert isinstance(dtype_, dtype)
+AssertionError

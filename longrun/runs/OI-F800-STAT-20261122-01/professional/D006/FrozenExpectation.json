@@ -1,0 +1,19 @@
+{
+  "expectation_id": "F800-INV-COVERAGE-GAP-002",
+  "version": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c",
+  "statement": "正常KLine固定对象域若在[u-800Δ,u]存在非豁免实际缺价/SourceFailure/失知或真实未观察间隙，覆盖不能标记完整。公开OHLC空值是否满足该前件，必须先核事实与既有合同，不能由G临时定义。",
+  "origin": [
+    "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateMaterial.hs#accumulateForwardCoverage/covered",
+    "CurrentFeatureUnderstandingPackage.json#intermediate_decisions/J4",
+    "daowei2026/observe-iterate@ba74086c56026dbc595af3b66e25334492b3a0b4:longrun/runs/OI-F800-STAT-20261122-01/professional/D004/ContractAndDependencyImpact.json"
+  ],
+  "applicable_conditions": [
+    "本固定rb/hc/i、5m、night_end_at_2300及完整配置",
+    "缺价/失知属于实际Source失败或未观察，且无既定不适用豁免；此条件需先核实"
+  ],
+  "falsifier_or_counterevidence": [
+    "证明公开空值只是重建占位且真实源在各点有有效观测",
+    "提供已存在的Calendar或domain不适用豁免",
+    "提供预先存在且不同的coverage承诺，并解释其与现有缺价断开合同的关系"
+  ]
+}
