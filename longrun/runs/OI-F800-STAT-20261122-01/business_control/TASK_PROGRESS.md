@@ -76,3 +76,7 @@ PARTIAL理解U3内部逐Tick材料/全部试探/首阻断轨迹未公开，U5完
 ## C0020 D009首批发布凭证
 
 已先行发布并从origin逐字节回读D009：`daowei2026/observe-iterate@fca115e5b5d128b08a79f10899d8412f9c8d36c6:longrun/runs/OI-F800-STAT-20261122-01/delegations/D009/DELEGATION.json`；报告：`daowei2026/observe-iterate@fca115e5b5d128b08a79f10899d8412f9c8d36c6:longrun/runs/OI-F800-STAT-20261122-01/calls/C0020/MANAGER_REPORT.md`；释放后继审查：`daowei2026/observe-iterate@fca115e5b5d128b08a79f10899d8412f9c8d36c6:longrun/runs/OI-F800-STAT-20261122-01/calls/C0020/RELEASE_SUCCESSOR_REVIEW.md`。首批9文件Git blob/SHA-256/字节匹配，独立Return仅引用已有提交。有效X/G与finding关闭保持；D009物理派发/开工尚无本C回执，Run仍IN_PROGRESS，未签FeatureReleaseGate/ReleasePackage。
+
+## C0022 D010首批发布凭证
+
+已先行发布并从origin逐字节回读D010：`daowei2026/observe-iterate@a33dc91d08a4e888d08af71b6a1769a0db06ae8a:longrun/runs/OI-F800-STAT-20261122-01/delegations/D010/DELEGATION.json`；报告：`daowei2026/observe-iterate@a33dc91d08a4e888d08af71b6a1769a0db06ae8a:longrun/runs/OI-F800-STAT-20261122-01/calls/C0022/MANAGER_REPORT.md`；手册来源锁：`daowei2026/observe-iterate@a33dc91d08a4e888d08af71b6a1769a0db06ae8a:longrun/runs/OI-F800-STAT-20261122-01/calls/C0022/CAEGRAPH_SOURCE_LOCK.json`。首批9文件Git blob/SHA-256/字节一致，独立Return只引用已有提交。B完整与当前有效U/X/G保持，D010物理派发/专业执行尚无本C回执，Run仍IN_PROGRESS；未签材料DATA_READY或Feature释放。
