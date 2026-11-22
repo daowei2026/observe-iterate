@@ -94,3 +94,7 @@ controller核原E1线程/sol/max/cwd、权限/单写者和状态后派达，签D
 ## C0028 D013首批发布凭证
 
 已先行发布并从origin逐字节回读D013：`daowei2026/observe-iterate@27878713799a4eec011424de528ab7f51d87e7d4:longrun/runs/OI-F800-STAT-20261122-01/delegations/D013/DELEGATION.json`；报告：`daowei2026/observe-iterate@27878713799a4eec011424de528ab7f51d87e7d4:longrun/runs/OI-F800-STAT-20261122-01/calls/C0028/MANAGER_REPORT.md`。首批8文件Git blob/SHA-256/字节匹配，独立Return只引已有提交。D012真实DATA_READY及原E3/E4/E5已消费，D013委派原S1从真实材料选场景/冻结预期；当前有效U/X/G/M与原限制保持。D013物理派达/开工尚无本C回执；Run仍IN_PROGRESS，未签FeatureRelease。
+
+## C0030 D014首批发布凭证
+
+已先行发布并从origin逐字节回读D014：`daowei2026/observe-iterate@226c945f2c94c863b8e0363d0940330a4c7b03fd:longrun/runs/OI-F800-STAT-20261122-01/delegations/D014/DELEGATION.json`；报告：`daowei2026/observe-iterate@226c945f2c94c863b8e0363d0940330a4c7b03fd:longrun/runs/OI-F800-STAT-20261122-01/calls/C0030/MANAGER_REPORT.md`。首批8文件Git blob/SHA-256/字节匹配，独立Return只引已有提交。D013原S1完整冻结v1已消费，D014委派原S2对冻结7案例/7预期作正式过程证据对照；当前有效U/X/G/M/S1、冻结v1与原限制保持。D014物理派达/开工尚无本C回执；Run仍IN_PROGRESS，未签FeatureRelease。
