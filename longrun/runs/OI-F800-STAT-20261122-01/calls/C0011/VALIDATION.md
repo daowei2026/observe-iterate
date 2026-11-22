@@ -1,0 +1,15 @@
+# C0011｜来源、消费及D005核对
+
+52项exact来源已核Git对象与适用工作树字节，packet/FULL_ASSIGNMENT/INVOCATION的C0011、recipient、token和准确提交一致。本次批准原文与packet指定本地原件及FULL_ASSIGNMENT逐字嵌入一致，SHA-256符合原OWNER_DECISION。新Binding和真实授权继续有效，未重复请求已批准范围。
+
+C0010 Return经同版V2 schema校验，sender为本Run原E1、return_to为原manager、delegation_ref对应C0009签发D004，result_ref对应本次准确专业报告。D004原生Return中的#诊断定位保持原文；D005所有机读引用使用whole-file exact ref，不改专业原件或引未来对象。
+
+消费事实交叉一致：ImplementationFixReturn的诊断、真实be57新commit/版本与CodeVersionAdoption、CODE_PUBLICATION_READBACK一致；TIS锁与TIS_PIN_READBACK一致；config字节与D002相同且SHA-256保持；回归27/64项、构建退出0、正式Feature未运行、无新正式结果；ContractAndDependencyImpact给出structural_contract_changed=false、next_node=X；FindingDisposition为FIXED_PENDING_RERUN、closed=false、FeatureReleaseGate=RERUN_REQUIRED。manager只消费这些专业判断，不重做工程或统计。
+
+按原L0 §9登记旧ac X/G对当前版本失效，保留历史结果/原Gate值；D004实施完成只表示其委派职责完成。G同版合同要求当前版本/参数一致，D005同时传原最小理解、D002缺口处置和D004准确版本/结构合同适用性，不忽略版本核对或强制重写完整U。
+
+锁定同版longrun_schema_v2.json校验Binding、C0011 INVOCATION、C0010 Return、D004及D005结构通过。D005 issuer_call_id=C0011，原manager/E1与回交一致，workers=[]；permitted_operations和allowed_writes是新Binding所用三项grants子集，quote可在真实GO/批准原文定位。D005为原Workflow X实际动作加唯一G Skill，不新造Skill、方法或Gate，不扩为代码修改、Q/V或WALL M001。
+
+旧机械gate对CODEX_NATIVE_DIRECT身份的兼容事实沿用C0001真实失败记录：`daowei2026/observe-iterate@092819b56eaf3e08764ed23650c0826c0fdadec1:longrun/runs/OI-F800-STAT-20261122-01/calls/C0001/GATE_BINDING_RESULT.json`。不重复相同检查、不更改真实身份或工具取得虚假PASS。schema/来源/权限子集/Git回读不证明未来物理派发、实际持锁、正式生产或专业通过。
+
+先发布D005/报告/进度并远端回读，再独立发布引用已有exact对象的IN_PROGRESS Return，发布证据随后写D005_PUBLICATION.json及RETURN_VALIDATION.md。本C只完成协调交付，业务Run仍未完成。

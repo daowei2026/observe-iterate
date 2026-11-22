@@ -1,0 +1,15 @@
+# D005｜be57 新版本完整正式 X → 独立读回 → G
+
+issuer_call_id=C0011；manager=`codex:OI-F800-STAT-20261122-01:manager`；recipient=`codex:OI-F800-STAT-20261122-01:executor:E1`；return_to=`codex:OI-F800-STAT-20261122-01:manager`。复用本Run原E1，CODEX_NATIVE_DIRECT，workers=[]。实际派发及原线程前检由controller完成。
+
+本D绑定原Workflow X实际动作与紧随其后的唯一专业Skill：`daowei2026/observe-iterate@87b951bbd15078a2d6353bdd24afe0d8f19c845c:skills/reasonableness-analysis/feature-global-behavior-profiling/SKILL.md`。X沿 `daowei2026/observe-iterate@87b951bbd15078a2d6353bdd24afe0d8f19c845c:control-v0.3/01_L0_统计驱动的单特征闭环.md` §3、§9；G方法、输入、输出和完成条件依JSON所列同版SKILL/WORKFLOW/IO_SPEC及STATISTICS_DRIVEN_PRACTICE。X不是新Skill，本委派不拆写专业步骤或另设Gate。
+
+当前实施回交：`daowei2026/observe-iterate@e6a139f59c56278ee11412b29ea147b552282e15:longrun/runs/OI-F800-STAT-20261122-01/calls/C0010/PRO_RETURN.json`；ImplementationFixReturn：`daowei2026/observe-iterate@ba74086c56026dbc595af3b66e25334492b3a0b4:longrun/runs/OI-F800-STAT-20261122-01/professional/D004/ImplementationFixReturn.json`；准确版本采用：`daowei2026/observe-iterate@ba74086c56026dbc595af3b66e25334492b3a0b4:longrun/runs/OI-F800-STAT-20261122-01/professional/D004/CodeVersionAdoption.json`；后继与范围：`daowei2026/observe-iterate@ba74086c56026dbc595af3b66e25334492b3a0b4:longrun/runs/OI-F800-STAT-20261122-01/professional/D004/RERUN_HANDOFF.json`。当前FRP为 `be57d6752c9d43d10f1d670e1d2993bb8153ea7c`，TIS仍为 `2f460d663d821cf2ba25555eda13e78b697d0767`，完整配置见 `daowei2026/observe-iterate@ba74086c56026dbc595af3b66e25334492b3a0b4:longrun/runs/OI-F800-STAT-20261122-01/professional/D004/configuration.json`，SHA-256=`b72095ff100da926474701b74bff7586a74b9770bc81cadc34c23cfe223e5cb3`。原BusinessTaskInput及历史Owner继续指令中的ac192751代码现为修复前基线；本次后附真实批准与已采用新版本链为当前输入，不能回退加载旧代码。
+
+原E1的 `daowei2026/observe-iterate@ba74086c56026dbc595af3b66e25334492b3a0b4:longrun/runs/OI-F800-STAT-20261122-01/professional/D004/ContractAndDependencyImpact.json` 判断结构合同未变、无需受影响U更新、next_node=X。按原Workflow复用已接收D001最小理解、D002缺口处置及本次准确版本适用性输入；G1仍按原Skill核当前代码/参数/范围与理解适用性，不忽略原Package版本标签或重做完整U。64项局部回归为实施证据，新版本完整X/G尚未完成。
+
+授权绑定 `daowei2026/observe-iterate@8a4139b9250ed78c602f4c54b36a08380b196057:longrun/runs/OI-F800-STAT-20261122-01/owner-decisions/F800-MP-001/OWNER_APPROVAL.original.txt` 与 `daowei2026/observe-iterate@bff656a28bafbd10919e05a01d799c20d0d25fad:longrun/runs/OI-F800-STAT-20261122-01/RUN_BINDING.json`，正式F-only范围和800/600/CalendarUTITick/实际2Δ=1200UTI/method.revision1及同inputs/sources/domain/result_layout保持；具体范围和验证沿原提案、本C FULL_ASSIGNMENT与RERUN_HANDOFF原件。新attempt/store保留D002/D003/D004；RERUN_HANDOFF中的建议路径不是已存在正式结果。旧ac版X/G只留历史对照，不充当当前版本Gate证据。
+
+正式生产前的真实加载、完整配置回读、范围/Calendar/结果/fields与config身份、单写者及实际flock要求沿原输入和RERUN_HANDOFF执行。重型生产适用 `/dwdhome/fy/cgpterm/artifacts/wall-f-closure-20261122/HEAVY_RESOURCE_POLICY.json`，文件存在不等于持锁。manager不替executor进行物理前检或生产。
+
+原finding、新finding及Revision/exact引用/UUID链/数量影响按已批准提案和原G处理；不能把22flag隔离方程或64项回归当正式完整比较。原生报告、FeatureRunResultBinding、FeatureGlobalBehaviorProfilingResult与V2 Return回原manager；后续finding/场景/释放依真实原生Gate继续。F/Q共享影响沿已发布ContractAndDependencyImpact保留，本D不运行Q/V，不扩大到WALL M001或新正式行为修改。
