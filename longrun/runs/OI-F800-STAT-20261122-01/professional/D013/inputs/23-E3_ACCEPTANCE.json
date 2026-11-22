@@ -1,0 +1,48 @@
+{
+  "结果": "接受",
+  "accepted_at": "2026-11-22T20:58:53.113762+00:00",
+  "accepted_run": "RUN_ATTEMPT02.json",
+  "accepted_script": {
+    "entry": "final_script/run_definition.py",
+    "sha256": "3cf17480527c446d07bf6c708bfdc617c54552fc6a444506db9d46b87399c8d0",
+    "package_manifest": "FINAL_SCRIPT_MANIFEST.json",
+    "manifest_sha256": "def51debb2b627b7e75c66d0e60a3a97dd8f6328b3a96ca00763d68e47e09849"
+  },
+  "accepted_html": {
+    "local_path": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/caegraph-E/f800.html",
+    "bytes": 95058652,
+    "sha256": "df4076f642d4d2b2ac7a6f8cc02899d9cf70e20dd8beb313e347e7545279b450"
+  },
+  "D": "daowei2026/observe-iterate@c19db65f5b7e228d1db4be61d06e361c16bafa33:longrun/runs/OI-F800-STAT-20261122-01/professional/D011/CAEGraphDefinitionIntegrationResult.json",
+  "C2": "daowei2026/observe-iterate@ec747f4d460956bd1a91f59d0dcbaba6722ce750:longrun/runs/OI-F800-STAT-20261122-01/professional/D010/C2_CURRENT_EXPECTATION.json",
+  "C2_HTML_sha256": "3a24ab08887ce5d948b229e7d37f63a4f9a669218b47110ad4385f737a7bdded",
+  "与D核对": "真实39f/TIS2f/配置b720、SOF/日历/rb-hc-i/5m/三年B范围及字段入口同D；仅run-local原时间刻度密度修复，21个CDS全量值哈希与原运行一致。",
+  "与C2核对": "亲自查看原价三图/输入known/候选exact修订及明细的全图、局部、选择与hover截图；原价独立/共享时间、实际与几何C和selected-known分离、稀疏点与携带界限、独立状态/完整父子引用均保持。",
+  "实际视觉证据": [
+    "screenshots/actual-full.png",
+    "screenshots/actual-zoom.png",
+    "screenshots/actual-selected.png",
+    "screenshots/actual-hover-viewport.png",
+    "screenshots/actual-tapped.png",
+    "screenshots/expected-full.png"
+  ],
+  "实际图层证据": [
+    "E3_LAYER_CHECK.json",
+    "BROWSER_actual.json",
+    "BROWSER_expected.json",
+    "E3_BROWSER_INTERACTIONS.json",
+    "E3_HOVER_PROBE.json"
+  ],
+  "接受范围": "完整B三年范围内5图、21个CDS；1538主组完整父键，26种子表全部原值/各层child及4种definitions族元数据，含已发行空列表。未接受首版过密轴作为最终图。",
+  "limits": [
+    "原U PARTIAL及NOT_EXPOSED内部逐tick轨迹、失败组合/first blocker/原生coverage区间保持；本图不补造。",
+    "三年总览点密度高，需用缩放与exact选择器阅读个别观点；不从总览视觉重叠合并身份。",
+    "已暴露Rct图层为公开更新行，存在同一actual的多次事件，不等于唯一转折数；selected在T/C/known各图层重复表达同源记录。",
+    "K线每品种69个缺close按原值保留；两个空可选分支底层列缺失提示保留，公开空表/空列表不补零。",
+    "原C3页内标题“C2当前展示预期”原样保留，真实绑定已由caption和HTML文档title明确；既有hover可按工具栏启用。",
+    "精确关系以原值明细表达，未新增全局拓扑或自动跨源高亮；Q/V/WALL及四问题七candidate-only边界不变。"
+  ],
+  "专业回流": [],
+  "formal_data_exported_at_acceptance": false,
+  "workers": []
+}

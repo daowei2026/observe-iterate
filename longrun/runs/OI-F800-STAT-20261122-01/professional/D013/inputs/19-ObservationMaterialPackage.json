@@ -1,0 +1,63 @@
+{
+  "feature_understanding_package_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/CurrentFeatureUnderstandingPackage.json",
+  "feature_ref": {
+    "name": "CommonPriceTurnGroupCandidatesFrp",
+    "frp": "39f02ec4548e68ba8dbd30061afc870546000994",
+    "tis": "2f460d663d821cf2ba25555eda13e78b697d0767",
+    "instance": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/FeatureRunResultBinding.json"
+  },
+  "parameter_version": "b72095ff100da926474701b74bff7586a74b9770bc81cadc34c23cfe223e5cb3",
+  "position_definition_ref": "daowei2026/observe-iterate@4d429ccb310452467b78b09802c48c9adbc47be5:longrun/runs/OI-F800-STAT-20261122-01/professional/D009/OrdinaryPositions.json",
+  "position": {
+    "position_id": "F800-MB-D009-P001",
+    "symbols": [
+      "rb",
+      "hc",
+      "i"
+    ],
+    "start": 72003600,
+    "end": 101813399,
+    "calendar": "night_end_at_2300",
+    "scale": "5m",
+    "width": 1180,
+    "label_freq": "120m"
+  },
+  "display_expectation_ref": "daowei2026/observe-iterate@ec747f4d460956bd1a91f59d0dcbaba6722ce750:longrun/runs/OI-F800-STAT-20261122-01/professional/D010/C2_CURRENT_EXPECTATION.json",
+  "display_expectation_HTML_ref": "daowei2026/observe-iterate@ec747f4d460956bd1a91f59d0dcbaba6722ce750:longrun/runs/OI-F800-STAT-20261122-01/professional/D010/html/current.html",
+  "complete_definition_ref": "daowei2026/observe-iterate@c19db65f5b7e228d1db4be61d06e361c16bafa33:longrun/runs/OI-F800-STAT-20261122-01/professional/D011/CAEGraphDefinitionIntegrationResult.json",
+  "final_script_ref": "final_script/run_definition.py",
+  "final_script_package_manifest": "FINAL_SCRIPT_MANIFEST.json",
+  "final_html_ref": "html/f800.html.gz",
+  "final_html_encoding": "gzip，无损解压后为接受的原HTML",
+  "final_html_local_path": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/caegraph-E/f800.html",
+  "final_html_sha256": "df4076f642d4d2b2ac7a6f8cc02899d9cf70e20dd8beb313e347e7545279b450",
+  "exported_graph_data_ref": "FORMAL_GRAPH_DATA.json",
+  "run_and_worker_records": [
+    "RUN_ATTEMPT01.json",
+    "RUN_ATTEMPT02.json",
+    "ENGINEERING_REPAIRS.json",
+    "ENGINEERING_REPAIR.diff"
+  ],
+  "E3_graph_acceptance": "E3_ACCEPTANCE.json",
+  "E4_export_admission": "E4_ADMISSION.json",
+  "graph_data_consistency_check": "E5_DATA_CHECK.json",
+  "formal_data_stage": "construction_snapshot",
+  "formal_data_files": 21,
+  "actual_figure_count": 5,
+  "actual_revision_rows": 1538,
+  "known_limits": [
+    "原U PARTIAL及NOT_EXPOSED内部逐tick轨迹、失败组合/first blocker/原生coverage区间保持；本图不补造。",
+    "三年总览点密度高，需用缩放与exact选择器阅读个别观点；不从总览视觉重叠合并身份。",
+    "已暴露Rct图层为公开更新行，存在同一actual的多次事件，不等于唯一转折数；selected在T/C/known各图层重复表达同源记录。",
+    "K线每品种69个缺close按原值保留；两个空可选分支底层列缺失提示保留，公开空表/空列表不补零。",
+    "原C3页内标题“C2当前展示预期”原样保留，真实绑定已由caption和HTML文档title明确；既有hover可按工具栏启用。",
+    "精确关系以原值明细表达，未新增全局拓扑或自动跨源高亮；Q/V/WALL及四问题七candidate-only边界不变。"
+  ],
+  "status": "DATA_READY",
+  "unfinished_items": [],
+  "blocked_items": [],
+  "workers": [],
+  "business_expectation_frozen": false,
+  "FeatureReleaseGate_or_ReleasePackage": false,
+  "delivered_at": "2026-11-22T21:01:07.729927+00:00"
+}

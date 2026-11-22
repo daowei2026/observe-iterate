@@ -1,0 +1,26 @@
+{
+  "repairs": [
+    {
+      "repair_id": "E-REPAIR-01",
+      "observed": "真实三年全范围120m刻度过密，刻度线形成黑色条带；局部图与数据正常",
+      "evidence": "attempts/01-screenshots/actual-full.png",
+      "classification": "获准run-local显示工程修复；不改业务语义",
+      "basis": "原C2当前允许依据实际输入的图宽/时间标签频率变化；原E Skill授权不改业务含义的工程处理",
+      "change": "对每个x轴从原刻度/原标签中最多显示约10项；随共享x_range选择可见子集；深缩放沿原120m标签，不改时间值",
+      "unchanged": [
+        "真实实例/配置",
+        "B品种/三年范围/尺度/日历",
+        "字段与数据入口",
+        "原C3 renderer字节",
+        "全部CDS及业务图元",
+        "原时间标签值"
+      ],
+      "upstream_return_required": false,
+      "protected_platform_changed": false,
+      "installed_or_rebuilt": false,
+      "diff": "ENGINEERING_REPAIR.diff",
+      "at": "2026-11-22T20:52:00.308345+00:00"
+    }
+  ],
+  "preparation_issue": "首次内联准备脚本有括号语法错误，解释器在任何修改前拒绝；本文件修正后执行，不属于Feature或CAEGraph运行失败。"
+}

@@ -1,0 +1,42 @@
+{
+  "位置用法": "任务明确指定",
+  "位置定义": [
+    {
+      "position_id": "F800-MB-D009-P001",
+      "SOF 引用": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/FeatureRunResultBinding.json#data_scope",
+      "品种集": [
+        "rb",
+        "hc",
+        "i"
+      ],
+      "开始时间": "2021-01-01",
+      "结束时间": "2023-12-31",
+      "位置来源": "任务明确指定",
+      "采样": "5m",
+      "日历引用": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/FeatureRunResultBinding.json#data_scope/calendar",
+      "缺口与限制": [
+        "开始/结束保留原任务日期粒度，结束边界解释由后续D的日历/PlotSet绑定确定；B未改成新的时间边界。",
+        "原CandidateCaseIndex的点/段及相关对象保持来源身份，尚非图上正式案例；不在B追加典型位置算法或扩窗。",
+        "继承PARTIAL共享理解：内部逐Tick全部轨迹未暴露及800的业务场景解释边界保留；不妨碍本B明确品种/范围。",
+        "Q共享适配影响及其独立数值边界限制仍由原输入传递，本B不运行或放行Q/V。"
+      ]
+    }
+  ],
+  "特征实例与 SOF 引用": {
+    "sof_name": "TA_updto20240229_DBA",
+    "stk_tlist": "steel",
+    "calendar": "night_end_at_2300",
+    "sampling": "5m",
+    "instance_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/FeatureRunResultBinding.json",
+    "sof_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/FeatureRunResultBinding.json#data_scope",
+    "parameter_instance_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/configuration.json",
+    "parameter_version": "b72095ff100da926474701b74bff7586a74b9770bc81cadc34c23cfe223e5cb3",
+    "code_version": {
+      "frp": "daowei2026/frp@39f02ec4548e68ba8dbd30061afc870546000994",
+      "tis": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767"
+    },
+    "full_result_dir": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2023-12-31 20:00:00/CommonPriceTurnGroupCandidatesFrp/3/9/a/1/9/2/a/4bbf414e0814726d92d156f2fe9b1f968/func",
+    "fields_sha256": "58ff1166df0e4bbdb84f4309b72947ee16de4a075d8992681fd60f46ccfb887c"
+  },
+  "FeatureUnderstandingPackage 引用": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/CurrentFeatureUnderstandingPackage.json"
+}

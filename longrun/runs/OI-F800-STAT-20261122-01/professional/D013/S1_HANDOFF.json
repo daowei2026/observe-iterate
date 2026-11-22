@@ -1,0 +1,59 @@
+{
+  "run_id": "OI-F800-STAT-20261122-01",
+  "call_id": "C0029",
+  "delegation_id": "D013",
+  "skill": "daowei2026/observe-iterate@87b951bbd15078a2d6353bdd24afe0d8f19c845c:skills/reasonableness-analysis/business-expectation-derivation/SKILL.md",
+  "completed_scope": "原business-expectation-derivation步骤1—7及原输出合同",
+  "case_set_id": "F800-S1-D013-CS",
+  "case_set_version": 1,
+  "expectation_set_version": 1,
+  "frozen_set_id": "F800-S1-D013-FROZEN",
+  "native_case_and_expectation_status": "FROZEN_FOR_COMPARISON",
+  "cases": 7,
+  "expectations": 7,
+  "case_type_coverage": "CaseTypeCoverage.json",
+  "origin_counts": {
+    "OWNER_EXPLICIT": 1,
+    "BUSINESS_INFERRED": 6
+  },
+  "inputs": {
+    "FeatureUnderstandingPackage": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/CurrentFeatureUnderstandingPackage.json",
+    "CurrentReviewTarget": "daowei2026/observe-iterate@92cec836b1471471bd886a51a66123918ca9b275:longrun/runs/OI-F800-STAT-20261122-01/business_control/TASK_PROGRESS.md",
+    "ObservationMaterialPackage": "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/ObservationMaterialPackage.json"
+  },
+  "output_files": [
+    "ReviewScopeSnapshot.json",
+    "CandidateCasePool.json",
+    "CaseReviewSet.json",
+    "ScenarioExpectationSet.json",
+    "FrozenExpectationSet.json",
+    "ObservationGapRequests.json",
+    "OpenQuestions.json"
+  ],
+  "qualified_for_skill2_case_ids": [
+    "F800-S1-C001",
+    "F800-S1-C002",
+    "F800-S1-C003",
+    "F800-S1-C004",
+    "F800-S1-C005",
+    "F800-S1-C006",
+    "F800-S1-C007"
+  ],
+  "skill2_ref": "daowei2026/observe-iterate@87b951bbd15078a2d6353bdd24afe0d8f19c845c:skills/reasonableness-analysis/business-evidence-comparison/SKILL.md",
+  "evidence_comparison_performed": false,
+  "original_questions_still_open": true,
+  "observation_gap_requests": [],
+  "limitations": [
+    "潜在漏报NO_CASE_FOUND仅限本次有界筛查，不证明三年无漏报。",
+    "误报候选不是已确认缺陷；初始化与长迟到预期需S2正式对照。",
+    "U仍PARTIAL/内部轨迹NOT_EXPOSED；迟到实时价值无Owner业务阈值；未编造Owner接受暂缓。",
+    "当前scope外或缺适用字段不能当设计反证；需要实际未暴露字段时按case具名回M。"
+  ],
+  "uncompleted_S1_items": [],
+  "blocked_items": [],
+  "parent_run_complete": false,
+  "FeatureRelease": false,
+  "next_action": "回原manager消费，按原依赖决定原Skill2；本E1不自行执行后继或作释放判断。",
+  "workers": [],
+  "delivered_at": "2026-11-22T22:07:05.436539+00:00"
+}

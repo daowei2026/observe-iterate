@@ -1,0 +1,437 @@
+{
+  "case_set_id": "F800-S1-D013-CS",
+  "version": 1,
+  "status": "FROZEN_FOR_COMPARISON",
+  "prepared_at": "2026-11-22T22:03:57.896083+00:00",
+  "feature_ref": {
+    "name": "CommonPriceTurnGroupCandidatesFrp",
+    "frp": "39f02ec4548e68ba8dbd30061afc870546000994",
+    "tis": "2f460d663d821cf2ba25555eda13e78b697d0767",
+    "understanding_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/CurrentFeatureUnderstandingPackage.json"
+  },
+  "parameter_version": "b72095ff100da926474701b74bff7586a74b9770bc81cadc34c23cfe223e5cb3",
+  "observation_material_ref": "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/ObservationMaterialPackage.json",
+  "review_target_ref": "daowei2026/observe-iterate@92cec836b1471471bd886a51a66123918ca9b275:longrun/runs/OI-F800-STAT-20261122-01/business_control/TASK_PROGRESS.md",
+  "review_target_section": "CurrentReviewTarget",
+  "cases": [
+    {
+      "case_id": "F800-S1-C001",
+      "status": "FROZEN_FOR_COMPARISON",
+      "case_type": "CLEAR_POSITIVE",
+      "symbol": [
+        "rb",
+        "hc",
+        "i"
+      ],
+      "start_time": "2021-01-04 09:05:00",
+      "end_time": "2021-01-22 13:35:00",
+      "timezone": "Asia/Shanghai",
+      "calendar": "night_end_at_2300",
+      "sampling": "5m",
+      "related_reasonableness_units": [
+        "BO2",
+        "BO3",
+        "J2",
+        "J4",
+        "J5"
+      ],
+      "primary_judgment_target": "共同实际谷点在异步确认/选中后能否保持同一原问题的可解释候选；两成员与三成员关系不能被算作多个独立市场转折。",
+      "selection_basis": "三条真实原价曲线在同一2021-01-06 11:00谷点反弹；已选T/几何C/知识轴可分读，且两成员和三成员exact/覆盖关系可定位，能区分同步实际过程与同步可知。",
+      "raw_market_description": "2021-01-05夜盘高点后，rb/hc/i在2021-01-06 11:00分别到4299、4457、1015后回升。i之后有更多摆动，不能据其摆动数自动要求更多共同组。rb/hc的几何确认到2021-01-07 09:50，i为11:30；selected-known分别09:55和13:35。",
+      "output_presence": "公开选址事实：两成员Life 6dd1661e…首见09:55，三成员Life 8f776a81…首见13:35；同原实际谷点有多个exact观点。此为定位信息，不是S2支持结论。",
+      "required_intermediate_fields": [
+        "KLine.ts/open/high/low/close（保持缺值）",
+        "独立ScaleTurn实际T/几何C/selected-known原事件",
+        "occurrences.groupLocalBasis/Observation/CoverageIncomplete/Closed",
+        "occurrences_groupRequired及_pairDistance",
+        "occurrences_groupFormationParticipation及previous/CoveredBy/Overlaps"
+      ],
+      "source_refs": [
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/ObservationMaterialPackage.json",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/FORMAL_GRAPH_DATA.json",
+        "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/CurrentFeatureUnderstandingPackage.json",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1040.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1168.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1296.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1098.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1226.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1354.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1424.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1438.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1451.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1531.json.gz"
+      ],
+      "candidate_ids": [
+        "INDEX-F800-SQ-001-C2",
+        "INDEX-F800-SQ-003-C2"
+      ],
+      "material_locator": "CaseMaterialIndex.json#F800-S1-C001",
+      "viewport_refs": [
+        "screenshots/jan-common-and-start.png"
+      ],
+      "material_limits": [
+        "U仍PARTIAL；逐tick材料准入、未成组pair全集、首阻断及原生coverage区间NOT_EXPOSED；不从代码补本次运行值。",
+        "K线图元x是显示中点，x_l/x_r为宽度边；原价按ts阅读，actual/confirm/selected-known用独立上游raw原值，不把显示坐标当native actual。",
+        "Life/Revision+完整父坐标定位观点；Rct更新行、T/C/known重复表达、关系和修订不增加独立业务对象或独立证据份数。",
+        "原三品种69缺close、空可选分支和裁剪如实保留；若具体位置缺必要值，S2须MISSING/AMBIGUOUS或回M，不能补零。"
+      ],
+      "selection_is_not_evidence_verdict": true
+    },
+    {
+      "case_id": "F800-S1-C002",
+      "status": "FROZEN_FOR_COMPARISON",
+      "case_type": "CLEAR_NEGATIVE",
+      "symbol": [
+        "rb",
+        "hc",
+        "i"
+      ],
+      "start_time": "2021-01-04 13:35:00",
+      "end_time": "2021-01-22 13:35:00",
+      "timezone": "Asia/Shanghai",
+      "calendar": "night_end_at_2300",
+      "sampling": "5m",
+      "related_reasonableness_units": [
+        "BO2",
+        "BO3",
+        "J2"
+      ],
+      "primary_judgment_target": "i的独立峰点未参加F是否可以是共同对象资格不适用，而不是由低参加率直接认定漏报。",
+      "selection_basis": "i在2021-01-04 21:15有清楚独立峰；rb/hc的当前已选峰在下一夜21:45/21:40，原价和独立上游可对照，能排除“所有i选中都应参加共同组”的竞争解释。",
+      "raw_market_description": "i从984.5附近上涨至2021-01-04 21:15的1034后回落；同段rb/hc并没有在该分钟形成对应的当前已选峰，其后被选峰分别为2021-01-05 21:45的4423和21:40的4572。",
+      "output_presence": "完整公开已发行组成员定位未发现i/value1/72049199；这不是本次运行的native首阻断轨迹，也不等于该时段整体无任何F输出。",
+      "required_intermediate_fields": [
+        "KLine.ts/open/high/low/close（保持缺值）",
+        "ScaleTurn.actual/confirmation/known/raw_known（四者分列）",
+        "revision_source.raw.group + 完整parent + Life/Revision",
+        "occurrences_groupMembers（已发行组公开成员，保留exact）"
+      ],
+      "source_refs": [
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/ObservationMaterialPackage.json",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/FORMAL_GRAPH_DATA.json",
+        "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/CurrentFeatureUnderstandingPackage.json",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1040.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1168.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1296.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1354.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1451.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1098.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1226.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1531.json.gz"
+      ],
+      "candidate_ids": [
+        "INDEX-F800-SQ-001-C1"
+      ],
+      "material_locator": "CaseMaterialIndex.json#F800-S1-C002",
+      "viewport_refs": [
+        "screenshots/jan-isolated-i.png",
+        "screenshots/jan-common-and-start.png"
+      ],
+      "material_limits": [
+        "U仍PARTIAL；逐tick材料准入、未成组pair全集、首阻断及原生coverage区间NOT_EXPOSED；不从代码补本次运行值。",
+        "K线图元x是显示中点，x_l/x_r为宽度边；原价按ts阅读，actual/confirm/selected-known用独立上游raw原值，不把显示坐标当native actual。",
+        "Life/Revision+完整父坐标定位观点；Rct更新行、T/C/known重复表达、关系和修订不增加独立业务对象或独立证据份数。",
+        "原三品种69缺close、空可选分支和裁剪如实保留；若具体位置缺必要值，S2须MISSING/AMBIGUOUS或回M，不能补零。"
+      ],
+      "selection_is_not_evidence_verdict": true
+    },
+    {
+      "case_id": "F800-S1-C003",
+      "status": "FROZEN_FOR_COMPARISON",
+      "case_type": "OUTPUT_FALSE_POSITIVE_CANDIDATE",
+      "symbol": [
+        "rb",
+        "hc",
+        "i"
+      ],
+      "start_time": "2021-01-04 09:05:00",
+      "end_time": "2021-01-19 21:15:00",
+      "timezone": "Asia/Shanghai",
+      "calendar": "night_end_at_2300",
+      "sampling": "5m",
+      "related_reasonableness_units": [
+        "BO1",
+        "BO2",
+        "BO3",
+        "ST1",
+        "J2",
+        "J4"
+      ],
+      "primary_judgment_target": "冷启动共同时间锚点是否被误读为已观察充分的三品种共同转折。",
+      "selection_basis": "三品种首个锚点同在数据左边界09:05，缺左侧价格过程；随后hc下行而rb/i上行。主输出存在使其值得作为误报候选审查，但候选存在不等于其已错误确认。",
+      "raw_market_description": "观察图从2021-01-04首根5m K线开始；该根OHLC提供根内价格，未提供首锚点以前完整的前一尺度转折过程。hc首锚4460后下移，rb4294和i984.5相对几何C上移；单凭同刻首锚不能阅读出完整共同峰/谷。",
+      "output_presence": "选址时原Life caee906a…可定位，首exact为Incomplete/Open，成员方向/类型Unavailable；这些标签仅记录所选输出，不在S1据此关闭误报疑问。",
+      "required_intermediate_fields": [
+        "KLine.ts/open/high/low/close（保持缺值）",
+        "独立ScaleTurn实际T/几何C/selected-known原事件",
+        "occurrences.groupLocalBasis/Observation/CoverageIncomplete/Closed",
+        "occurrences_groupRequired及_pairDistance",
+        "occurrences_groupFormationParticipation及previous/CoveredBy/Overlaps"
+      ],
+      "source_refs": [
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/ObservationMaterialPackage.json",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/FORMAL_GRAPH_DATA.json",
+        "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/CurrentFeatureUnderstandingPackage.json",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1040.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1168.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1296.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1098.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1226.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1354.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1424.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1438.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1451.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1531.json.gz"
+      ],
+      "candidate_ids": [
+        "INDEX-F800-SQ-004-C1"
+      ],
+      "material_locator": "CaseMaterialIndex.json#F800-S1-C003",
+      "viewport_refs": [
+        "screenshots/jan-start-anchor.png",
+        "screenshots/jan-common-and-start.png"
+      ],
+      "material_limits": [
+        "U仍PARTIAL；逐tick材料准入、未成组pair全集、首阻断及原生coverage区间NOT_EXPOSED；不从代码补本次运行值。",
+        "K线图元x是显示中点，x_l/x_r为宽度边；原价按ts阅读，actual/confirm/selected-known用独立上游raw原值，不把显示坐标当native actual。",
+        "Life/Revision+完整父坐标定位观点；Rct更新行、T/C/known重复表达、关系和修订不增加独立业务对象或独立证据份数。",
+        "原三品种69缺close、空可选分支和裁剪如实保留；若具体位置缺必要值，S2须MISSING/AMBIGUOUS或回M，不能补零。"
+      ],
+      "selection_is_not_evidence_verdict": true
+    },
+    {
+      "case_id": "F800-S1-C004",
+      "status": "FROZEN_FOR_COMPARISON",
+      "case_type": "PARAMETER_BOUNDARY",
+      "symbol": [
+        "rb",
+        "i"
+      ],
+      "start_time": "2021-02-09 14:05:00",
+      "end_time": "2021-03-05 10:00:00",
+      "timezone": "Asia/Shanghai",
+      "calendar": "night_end_at_2300",
+      "sampling": "5m",
+      "related_reasonableness_units": [
+        "BO2",
+        "BO3",
+        "J2",
+        "J5"
+      ],
+      "primary_judgment_target": "actual恰2Delta的共同谷点，不能被很长的确认间隔或春节闭市墙钟时长替代判断。",
+      "selection_basis": "rb于2021-02-10 09:50、i于10:00到谷点，相差1200UTI；尺度知识分别到春节后2021-02-18，能分离actual贴近、确认迟到和800观察责任。",
+      "raw_market_description": "rb谷点4340、i谷点1020.5发生于2021-02-10 09:50/10:00，随后均抬升；图中的T到C跨过闭市，不应把墙钟跨春节误读为actual不贴近。",
+      "output_presence": "原Life 7097f790…及其首/到期/责任末三exact可定位；公开成员actual相差1200，source p1531行44/71/72。",
+      "required_intermediate_fields": [
+        "KLine.ts/open/high/low/close（保持缺值）",
+        "独立ScaleTurn实际T/几何C/selected-known原事件",
+        "occurrences.groupLocalBasis/Observation/CoverageIncomplete/Closed",
+        "occurrences_groupRequired及_pairDistance",
+        "occurrences_groupFormationParticipation及previous/CoveredBy/Overlaps"
+      ],
+      "source_refs": [
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/ObservationMaterialPackage.json",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/FORMAL_GRAPH_DATA.json",
+        "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/CurrentFeatureUnderstandingPackage.json",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1040.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1296.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1098.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1354.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1424.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1451.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1531.json.gz"
+      ],
+      "candidate_ids": [
+        "BOUNDARY-IN-1200"
+      ],
+      "material_locator": "CaseMaterialIndex.json#F800-S1-C004",
+      "viewport_refs": [
+        "screenshots/feb-2delta.png",
+        "screenshots/march-boundary-close.png"
+      ],
+      "material_limits": [
+        "U仍PARTIAL；逐tick材料准入、未成组pair全集、首阻断及原生coverage区间NOT_EXPOSED；不从代码补本次运行值。",
+        "K线图元x是显示中点，x_l/x_r为宽度边；原价按ts阅读，actual/confirm/selected-known用独立上游raw原值，不把显示坐标当native actual。",
+        "Life/Revision+完整父坐标定位观点；Rct更新行、T/C/known重复表达、关系和修订不增加独立业务对象或独立证据份数。",
+        "原三品种69缺close、空可选分支和裁剪如实保留；若具体位置缺必要值，S2须MISSING/AMBIGUOUS或回M，不能补零。"
+      ],
+      "selection_is_not_evidence_verdict": true
+    },
+    {
+      "case_id": "F800-S1-C005",
+      "status": "FROZEN_FOR_COMPARISON",
+      "case_type": "PARAMETER_BOUNDARY",
+      "symbol": [
+        "hc",
+        "i"
+      ],
+      "start_time": "2021-02-19 14:50:00",
+      "end_time": "2021-02-23 11:00:00",
+      "timezone": "Asia/Shanghai",
+      "calendar": "night_end_at_2300",
+      "sampling": "5m",
+      "related_reasonableness_units": [
+        "BO2",
+        "BO3",
+        "J2"
+      ],
+      "primary_judgment_target": "800不得把15开放分钟的实际峰点变成2Delta贴近共同组。",
+      "selection_basis": "两个真实已选峰的actual为2021-02-22 09:05与09:20，1800UTI，紧邻当前1200贴近界外，适合与边界内谷点分开审查。",
+      "raw_market_description": "i在2021-02-22 09:05到1133，hc在09:20到4856，随后都下移；相似峰形并不能取消实际15开放分钟的先后差。",
+      "output_presence": "完整公开组成员中未找到同时含这两个Turn的组合；可有各自参加别的组，不得把“此组合无输出”改写成这时刻F全空或nativeTimeVeto已记录。",
+      "required_intermediate_fields": [
+        "KLine.ts/open/high/low/close（保持缺值）",
+        "ScaleTurn.actual/confirmation/known/raw_known（四者分列）",
+        "revision_source.raw.group + 完整parent + Life/Revision",
+        "occurrences_groupMembers（已发行组公开成员，保留exact）"
+      ],
+      "source_refs": [
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/ObservationMaterialPackage.json",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/FORMAL_GRAPH_DATA.json",
+        "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/CurrentFeatureUnderstandingPackage.json",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1168.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1296.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1226.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1354.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1438.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1451.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1531.json.gz"
+      ],
+      "candidate_ids": [
+        "BOUNDARY-OUT-1800"
+      ],
+      "material_locator": "CaseMaterialIndex.json#F800-S1-C005",
+      "viewport_refs": [
+        "screenshots/feb-outside-2delta.png"
+      ],
+      "material_limits": [
+        "U仍PARTIAL；逐tick材料准入、未成组pair全集、首阻断及原生coverage区间NOT_EXPOSED；不从代码补本次运行值。",
+        "K线图元x是显示中点，x_l/x_r为宽度边；原价按ts阅读，actual/confirm/selected-known用独立上游raw原值，不把显示坐标当native actual。",
+        "Life/Revision+完整父坐标定位观点；Rct更新行、T/C/known重复表达、关系和修订不增加独立业务对象或独立证据份数。",
+        "原三品种69缺close、空可选分支和裁剪如实保留；若具体位置缺必要值，S2须MISSING/AMBIGUOUS或回M，不能补零。"
+      ],
+      "selection_is_not_evidence_verdict": true
+    },
+    {
+      "case_id": "F800-S1-C006",
+      "status": "FROZEN_FOR_COMPARISON",
+      "case_type": "OUTPUT_FALSE_POSITIVE_CANDIDATE",
+      "symbol": [
+        "rb",
+        "hc",
+        "i"
+      ],
+      "start_time": "2023-06-29 09:40:00",
+      "end_time": "2023-07-18 10:45:00",
+      "timezone": "Asia/Shanghai",
+      "calendar": "night_end_at_2300",
+      "sampling": "5m",
+      "related_reasonableness_units": [
+        "BO2",
+        "BO3",
+        "J1",
+        "J2",
+        "J5"
+      ],
+      "primary_judgment_target": "最大迟到代表能否作为原共同峰的历史候选解释，而不是被误读为识别当日新的共同峰或当前交易机会。",
+      "selection_basis": "SQ003最大迟到候选在真实图中可读：rb/i原峰同刻，但其间已经反复振荡且知识差异很大；比普通迟到更能区分“晚知道同一旧峰”与“无限延长/新峰拼接”。",
+      "raw_market_description": "rb3758与i822的原峰都在2023-06-30 10:05。此后两条原价经历多次回落/反弹，hc的后续尺度峰在别处；i几何确认2023-07-03 09:25、selected09:30，rb几何确认2023-07-06 23:00、selected2023-07-07 09:05。",
+      "output_presence": "原Life 32457584…在2023-07-07 09:05首发行，actual锚点仍为96674999；后续exact到2023-07-17责任末。此选址事实不等于S1已证明长迟到业务合理。",
+      "required_intermediate_fields": [
+        "KLine.ts/open/high/low/close（保持缺值）",
+        "独立ScaleTurn实际T/几何C/selected-known原事件",
+        "occurrences.groupLocalBasis/Observation/CoverageIncomplete/Closed",
+        "occurrences_groupRequired及_pairDistance",
+        "occurrences_groupFormationParticipation及previous/CoveredBy/Overlaps"
+      ],
+      "source_refs": [
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/ObservationMaterialPackage.json",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/FORMAL_GRAPH_DATA.json",
+        "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/CurrentFeatureUnderstandingPackage.json",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1040.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1168.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1296.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1098.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1354.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1424.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1451.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1531.json.gz"
+      ],
+      "candidate_ids": [
+        "INDEX-F800-SQ-003-C1"
+      ],
+      "material_locator": "CaseMaterialIndex.json#F800-S1-C006",
+      "viewport_refs": [
+        "screenshots/june-july-late.png"
+      ],
+      "material_limits": [
+        "U仍PARTIAL；逐tick材料准入、未成组pair全集、首阻断及原生coverage区间NOT_EXPOSED；不从代码补本次运行值。",
+        "K线图元x是显示中点，x_l/x_r为宽度边；原价按ts阅读，actual/confirm/selected-known用独立上游raw原值，不把显示坐标当native actual。",
+        "Life/Revision+完整父坐标定位观点；Rct更新行、T/C/known重复表达、关系和修订不增加独立业务对象或独立证据份数。",
+        "原三品种69缺close、空可选分支和裁剪如实保留；若具体位置缺必要值，S2须MISSING/AMBIGUOUS或回M，不能补零。"
+      ],
+      "selection_is_not_evidence_verdict": true
+    },
+    {
+      "case_id": "F800-S1-C007",
+      "status": "FROZEN_FOR_COMPARISON",
+      "case_type": "OUTSIDE_CURRENT_COVERAGE",
+      "symbol": [
+        "rb",
+        "hc",
+        "i"
+      ],
+      "start_time": "2022-05-24 14:00:00",
+      "end_time": "2022-05-27 14:00:00",
+      "timezone": "Asia/Shanghai",
+      "calendar": "night_end_at_2300",
+      "sampling": "5m",
+      "related_reasonableness_units": [
+        "BO1",
+        "BO2",
+        "BO3",
+        "J2"
+      ],
+      "primary_judgment_target": "原价同步局部峰不具当前尺度输入资格时，不能直接把F未表达该细粒度过程判为漏报。",
+      "selection_basis": "完全从原始close独立选出的同步局部峰，之后才查selected和F；能反驳仅从既有F输出挑案例的偏差，并划出原价全部峰谷与当前F层输入的边界。",
+      "raw_market_description": "2022-05-25 15:00，rb close4524（high4530）与i close847.5（high849.5）为本次±12根浏览窗的同步局部峰；其后明显回落，窗口里还叠着更早/更大尺度的P/T/C过程。此浏览窗仅排序，不定义Feature新尺度。",
+      "output_presence": "两个该分钟原价峰在当前完整ScaleTurn已选T投影中都没有同刻记录；不是两条合格F输入已被证实丢失。邻近知识时点仍可有指向别处actual的组，不称全时段无F。",
+      "required_intermediate_fields": [
+        "KLine.ts/open/high/low/close（保持缺值）",
+        "独立ScaleTurn实际T/几何C/selected-known原事件"
+      ],
+      "source_refs": [
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/ObservationMaterialPackage.json",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/FORMAL_GRAPH_DATA.json",
+        "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/CurrentFeatureUnderstandingPackage.json",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1040.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1168.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1296.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1098.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1226.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1354.json.gz"
+      ],
+      "candidate_ids": [
+        "RAW-06"
+      ],
+      "material_locator": "CaseMaterialIndex.json#F800-S1-C007",
+      "viewport_refs": [
+        "screenshots/may-raw-independent.png"
+      ],
+      "material_limits": [
+        "U仍PARTIAL；逐tick材料准入、未成组pair全集、首阻断及原生coverage区间NOT_EXPOSED；不从代码补本次运行值。",
+        "K线图元x是显示中点，x_l/x_r为宽度边；原价按ts阅读，actual/confirm/selected-known用独立上游raw原值，不把显示坐标当native actual。",
+        "Life/Revision+完整父坐标定位观点；Rct更新行、T/C/known重复表达、关系和修订不增加独立业务对象或独立证据份数。",
+        "原三品种69缺close、空可选分支和裁剪如实保留；若具体位置缺必要值，S2须MISSING/AMBIGUOUS或回M，不能补零。"
+      ],
+      "selection_is_not_evidence_verdict": true
+    }
+  ],
+  "material_limits": [
+    "U仍PARTIAL；逐tick材料准入、未成组pair全集、首阻断及原生coverage区间NOT_EXPOSED；不从代码补本次运行值。",
+    "K线图元x是显示中点，x_l/x_r为宽度边；原价按ts阅读，actual/confirm/selected-known用独立上游raw原值，不把显示坐标当native actual。",
+    "Life/Revision+完整父坐标定位观点；Rct更新行、T/C/known重复表达、关系和修订不增加独立业务对象或独立证据份数。",
+    "原三品种69缺close、空可选分支和裁剪如实保留；若具体位置缺必要值，S2须MISSING/AMBIGUOUS或回M，不能补零。"
+  ],
+  "frozen_at": "2026-11-22T22:05:51.029133+00:00"
+}
