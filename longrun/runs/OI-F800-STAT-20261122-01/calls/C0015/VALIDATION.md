@@ -1,0 +1,13 @@
+# C0015｜来源、消费及具体确认核对
+
+44项exact来源及适用工作树字节已核。packet、发布FULL_ASSIGNMENT、INVOCATION、C0015、recipient/token匹配；MP-001真实批准原文与指定本地原件及FULL_ASSIGNMENT逐字嵌入一致。本C派工明确MP-002尚未批准，不能将旧Binding中MP-001的行为/代码采用grants扩大。
+
+同版V2 schema已核Binding、C0015 INVOCATION、C0014 executor Return及原D006；原E1回原manager，D归属/报告exact正确，workers及W引用为空。本C仅使用原run_record_write，初始GO quote及授权Run路径相符。controller物理核验以本C发布派工声明为依据，不造receipt。
+
+已亲自读取DiagnosisReport、MinimalDiscriminatingExperiment、ExperimentEvaluation、ParameterRepairability、RequirementOrImplementationIssue、ContractAndDependencyImpact、原提案与1630字节具体diff。原生已确认ImplementationMismatch/未修复、当前参数PROVEN_NOT_ADJUSTABLE；1672拍三模式及8样本/12边界/8控制结果一致，正式Feature未执行。diff SHA-256=`95d05a657e16537da28aaeea89d5d00c1302fc6c6427e801388c4985ac314d9e`，单个正常adapter文件范围与原提案对应，未应用、未编译/集成测试；manager未代做专业验证。
+
+Owner确认包从原提案整理当前行为、具体diff、替代、影响/限制、原六项验证及准确许可范围；原专业文件不改。无第三类业务目标取舍，故无OwnerDecisionPacket；正式修改仍须独立Owner确认，两者分开。D005有效X/G和GF-001关闭保持，无新采用行为故不提前RERUN_REQUIRED。已确认GF-002按原L1对应OPEN_CONFIRMED_DEFECT，无放行/ReleasePackage或自定暂缓。
+
+现有Workflow独立后继资格已审，不撤销正常分析权限、不造新D/方法/Gate。当前无需另派工作，拟Return=WAITING_OWNER、owner_request_ref指向先行发布的具体确认包，D/W/Worker引用为空；Return须在首批发布并回读后独立形成。
+
+原机械gate的CODEX_NATIVE_DIRECT身份兼容失败沿用C0001原始记录：`daowei2026/observe-iterate@092819b56eaf3e08764ed23650c0826c0fdadec1:longrun/runs/OI-F800-STAT-20261122-01/calls/C0001/GATE_BINDING_RESULT.json`。不重复相同检查、不改身份或工具造PASS。来源/schema/Git回读仅证明记录与权限一致性，不代表MP-002批准、施工或释放。最终发布证据由OWNER_REQUEST_PUBLICATION.json及RETURN_VALIDATION.md记录。
