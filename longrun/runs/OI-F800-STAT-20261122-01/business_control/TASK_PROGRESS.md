@@ -99,3 +99,7 @@ Owner真实接受后由原manager按原L1签实际Gate/ReleasePackage；若需�
 ## C0030 D014首批发布凭证
 
 已先行发布并从origin逐字节回读D014：`daowei2026/observe-iterate@226c945f2c94c863b8e0363d0940330a4c7b03fd:longrun/runs/OI-F800-STAT-20261122-01/delegations/D014/DELEGATION.json`；报告：`daowei2026/observe-iterate@226c945f2c94c863b8e0363d0940330a4c7b03fd:longrun/runs/OI-F800-STAT-20261122-01/calls/C0030/MANAGER_REPORT.md`。首批8文件Git blob/SHA-256/字节匹配，独立Return只引已有提交。D013原S1完整冻结v1已消费，D014委派原S2对冻结7案例/7预期作正式过程证据对照；当前有效U/X/G/M/S1、冻结v1与原限制保持。D014物理派达/开工尚无本C回执；Run仍IN_PROGRESS，未签FeatureRelease。
+
+## C0032释放决策首批发布凭证
+
+已先行发布并从origin逐字节回读报告：`daowei2026/observe-iterate@a7fcf8daa03b807876f2d3522dc845021da1fd36:longrun/runs/OI-F800-STAT-20261122-01/calls/C0032/MANAGER_REPORT.md`；具体OwnerDecisionPacket：`daowei2026/observe-iterate@a7fcf8daa03b807876f2d3522dc845021da1fd36:longrun/runs/OI-F800-STAT-20261122-01/calls/C0032/OWNER_REQUEST.md`；候选：`daowei2026/observe-iterate@a7fcf8daa03b807876f2d3522dc845021da1fd36:longrun/runs/OI-F800-STAT-20261122-01/calls/C0032/RELEASE_CANDIDATE.json`；限制输入：`daowei2026/observe-iterate@a7fcf8daa03b807876f2d3522dc845021da1fd36:longrun/runs/OI-F800-STAT-20261122-01/calls/C0032/LIMITATION_DECISION_INPUT.json`。首批10文件Git blob/SHA-256/字节匹配，独立Return只引已有提交。S2公开对照完成已消费，无新D/必做材料重建，冻结v1保持。候选未采用、正式Gate/Package未签，Run WAITING_OWNER等待真实F800-REL-001决定，不虚构Owner接受。
