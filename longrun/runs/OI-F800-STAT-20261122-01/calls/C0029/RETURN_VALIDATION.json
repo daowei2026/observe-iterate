@@ -1,0 +1,75 @@
+{
+  "verified_at": "2026-11-22T22:10:13.614837+00:00",
+  "schema_pass": true,
+  "pro_state_pass": true,
+  "immutable_refs_pass": true,
+  "actual_invocation_delegation_binding_pass": true,
+  "workers_empty": true,
+  "professional_state": "REPORTED_COMPLETE",
+  "result_ref": "daowei2026/observe-iterate@266c34e5d7d75a05677e7969d528090d37cac44e:longrun/runs/OI-F800-STAT-20261122-01/professional/D013/EXECUTOR_REPORT.md",
+  "result_published_before_return": true,
+  "professional_publication": {
+    "commit": "266c34e5d7d75a05677e7969d528090d37cac44e",
+    "verified_at": "2026-11-22T22:09:56.165732+00:00",
+    "method": "GitHub fetch_file exact commit, byte/Git blob equality; git ls-remote",
+    "files": [
+      {
+        "file": "EXECUTOR_REPORT.md",
+        "path": "longrun/runs/OI-F800-STAT-20261122-01/professional/D013/EXECUTOR_REPORT.md",
+        "bytes": 8835,
+        "sha256": "f0b9c52800870a46cfe12161968fa6a368c3177f1938964ea78383fed82abdbc",
+        "remote_git_blob": "80bf0e08921c7ee2842429875bd69918e62d4c0c",
+        "local_git_blob_match": true,
+        "byte_equal": true,
+        "source": "https://github.com/daowei2026/observe-iterate/blob/266c34e5d7d75a05677e7969d528090d37cac44e/longrun/runs/OI-F800-STAT-20261122-01/professional/D013/EXECUTOR_REPORT.md"
+      },
+      {
+        "file": "FrozenExpectationSet.json",
+        "path": "longrun/runs/OI-F800-STAT-20261122-01/professional/D013/FrozenExpectationSet.json",
+        "bytes": 49369,
+        "sha256": "ae54fa64560dbb2e36a87b1913706d096bce00e72b9282abf36b7d6fefce5568",
+        "remote_git_blob": "4b6d3377146f3129c77a8f32db46d887499829e0",
+        "local_git_blob_match": true,
+        "byte_equal": true,
+        "source": "https://github.com/daowei2026/observe-iterate/blob/266c34e5d7d75a05677e7969d528090d37cac44e/longrun/runs/OI-F800-STAT-20261122-01/professional/D013/FrozenExpectationSet.json"
+      },
+      {
+        "file": "CaseTypeCoverage.json",
+        "path": "longrun/runs/OI-F800-STAT-20261122-01/professional/D013/CaseTypeCoverage.json",
+        "bytes": 2056,
+        "sha256": "0d0b77e813cd9254885866778f6e73901c32e3de30977b1e360377e74e087b82",
+        "remote_git_blob": "44a98f3ea97da5cf5eeade9e4b6df248b0e5ec78",
+        "local_git_blob_match": true,
+        "byte_equal": true,
+        "source": "https://github.com/daowei2026/observe-iterate/blob/266c34e5d7d75a05677e7969d528090d37cac44e/longrun/runs/OI-F800-STAT-20261122-01/professional/D013/CaseTypeCoverage.json"
+      },
+      {
+        "file": "PROFESSIONAL_MANIFEST.json",
+        "path": "longrun/runs/OI-F800-STAT-20261122-01/professional/D013/PROFESSIONAL_MANIFEST.json",
+        "bytes": 52785,
+        "sha256": "4b3960e21475f526e8ecae4e766d2927cb1b00b03f378400b231f465193f1903",
+        "remote_git_blob": "9cc7b1bb32a74494e75b65bc0114ccb2be064e9d",
+        "local_git_blob_match": true,
+        "byte_equal": true,
+        "source": "https://github.com/daowei2026/observe-iterate/blob/266c34e5d7d75a05677e7969d528090d37cac44e/longrun/runs/OI-F800-STAT-20261122-01/professional/D013/PROFESSIONAL_MANIFEST.json"
+      }
+    ],
+    "all_byte_equal": true,
+    "branch_clean": true,
+    "remote_head": "266c34e5d7d75a05677e7969d528090d37cac44e"
+  },
+  "published_manifest_files_verified": 130,
+  "frozen_case_count": 7,
+  "frozen_expectation_count": 7,
+  "pinned_gate_ref": "daowei2026/observe-iterate@87b951bbd15078a2d6353bdd24afe0d8f19c845c:longrun/tools/longrun_gate.py",
+  "gate_sha256": "3355372ef1d9cbe3c4440bd6c3908a64827859d59bbdfe6bb9f9624c36aac7a7",
+  "pinned_schema_sha256": "deace56513917795fd16b468f9ea4edf8e7868122687b8fb44cff76ca734a8a2",
+  "return_sha256": "be3c9bef32518c45af5b84b3a19adabd722f5a79155d3aefc17239fddd04110e",
+  "validated_functions": [
+    "validated(binding/delegation/invocation/professional_return)",
+    "pro_state",
+    "object_ref_fields"
+  ],
+  "full_cli_validation": "未运行完整validate-executor-return：该版binding()将manager硬编码为chatgpt，与本Run采用Codex manager不兼容。原gate未修改，未伪造独立controller receipt。",
+  "completion_boundary": "仅D013原S1范围完成：七个真实案例及七条预期v1冻结，六类覆盖明确；潜在漏报NO_CASE_FOUND限有界筛查。当前U/X/G/M复用；没有S2对照、诊断、调参、Feature释放或父Run完成声明。"
+}
