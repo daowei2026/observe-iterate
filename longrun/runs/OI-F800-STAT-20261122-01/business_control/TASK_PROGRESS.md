@@ -63,3 +63,7 @@ D005完整X/G及31表独立读回仍有效；旧D002是历史比较，D005/D006�
 具体MP-002确认包见[OWNER_REQUEST](../calls/C0015/OWNER_REQUEST.md)，独立合法工作审查见[WORKFLOW_SUCCESSOR_REVIEW](../calls/C0015/WORKFLOW_SUCCESSOR_REVIEW.md)。当前无前置齐备且原Workflow要求新派的独立专业后继，issued_delegation_refs=[]；正常隔离分析权限仍保留，不制造工单或等待轮询。
 
 真实Owner批准并采用相应授权后，原manager新签既有FI给原E1，再按原提案回归/提交采用/完整X/31表独立读回/G与释放；调整/暂缓/拒绝按真实决定更新。MP-001不得外延。先发布具体确认包/报告/进度等并远端回读，再独立发布引用已有exact对象的WAITING_OWNER Return；owner_request_ref非空，W/Worker引用为空。manager不代施工或运行Feature，不创建/向其他聊天发消息，不轮询或自动唤醒。
+
+## 本C具体Owner请求发布凭证
+
+已先行发布并从origin逐字节回读：`daowei2026/observe-iterate@2317bd6712e293c1e4c81f696d87192010eb753f:longrun/runs/OI-F800-STAT-20261122-01/calls/C0015/OWNER_REQUEST.md`；报告：`daowei2026/observe-iterate@2317bd6712e293c1e4c81f696d87192010eb753f:longrun/runs/OI-F800-STAT-20261122-01/calls/C0015/MANAGER_REPORT.md`。WAITING_OWNER Return独立引用上述已有exact对象；尚无MP-002批准答复，未签施工D或重复有效X/G。
