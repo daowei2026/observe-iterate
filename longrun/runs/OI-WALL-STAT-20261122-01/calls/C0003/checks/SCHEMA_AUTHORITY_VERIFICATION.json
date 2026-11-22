@@ -1,0 +1,65 @@
+{
+  "checked_at": "2026-11-22T09:25:58.562069+00:00",
+  "schema_ref": "daowei2026/observe-iterate@87b951bbd15078a2d6353bdd24afe0d8f19c845c:longrun/contracts/longrun_schema_v2.json",
+  "schema_results": [
+    {
+      "object": "binding",
+      "result": "PASS"
+    },
+    {
+      "object": "C0003_invocation",
+      "result": "PASS"
+    },
+    {
+      "object": "D002",
+      "result": "PASS"
+    },
+    {
+      "object": "C0002_return",
+      "result": "PASS"
+    }
+  ],
+  "identity_and_authority_result": "PASS_GO_D_SCOPE_ONLY",
+  "grants": [
+    {
+      "operation": "formal_feature_run",
+      "execution_context": "/dwdhome/fy/BASE_E6_2",
+      "allowed_writes": [
+        "/dwdhome/fy/BASE_E6_2"
+      ],
+      "authority_quote_in_original_go": true
+    },
+    {
+      "operation": "run_result_statistics_analysis_write",
+      "execution_context": "/dwdhome/fy/BASE_E6_2",
+      "allowed_writes": [
+        "/dwdhome/fy/BASE_E6_2"
+      ],
+      "authority_quote_in_original_go": true
+    },
+    {
+      "operation": "run_record_write",
+      "execution_context": "daowei2026/observe-iterate@codex/oi-wall-stat-20261122-01",
+      "allowed_writes": [
+        "longrun/runs/OI-WALL-STAT-20261122-01/**"
+      ],
+      "authority_quote_in_original_go": true
+    }
+  ],
+  "authority_interpretation": "原GO自然语言授权及既有operation/Run路径映射；最新Owner要求最小U后自动X/G。",
+  "immutable_input_refs_exist_before_D002": true,
+  "x_is_existing_l0_action_not_new_skill": true,
+  "current_d_skill": "feature-global-behavior-profiling",
+  "consumed_return_state_preserved": "IN_PROGRESS",
+  "consumed_package_state_preserved": "PARTIAL",
+  "d002_json_sha256": "6bf67df455c156a4cd2caca3263771dcde9c7473322f8818d9293f6430f1dea6",
+  "not_established": [
+    "D002已实际送达",
+    "X已开始",
+    "正式代码与输入差异已解除",
+    "生产前检或单写者通过",
+    "结果复用通过",
+    "G已开始",
+    "专业Gate或Release通过"
+  ]
+}
