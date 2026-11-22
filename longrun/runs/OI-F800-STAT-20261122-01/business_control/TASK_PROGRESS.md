@@ -61,3 +61,7 @@ PARTIAL理解U3内部逐Tick材料/全部试探/首阻断轨迹未公开，U5完
 唯一新D009（[JSON](../delegations/D009/DELEGATION.json)、[说明](../delegations/D009/DELEGATION.md)）绑定原M-B `daowei2026/observe-iterate@87b951bbd15078a2d6353bdd24afe0d8f19c845c:skills/observation-material-preparation/observation-position-preparation/SKILL.md`，传当前U/X/G/原问题/候选位置来源和分析/记录权限，不决定图层/选择正式案例或新造方法。controller核原E1真实线程/sol/max/工作区状态后物理派发；B回交后原manager沿既有C/D/E及适用S1/S2依赖继续，待当前ReviewTarget满足后按原L1释放。详细依据见[释放后继审查](../calls/C0020/RELEASE_SUCCESSOR_REVIEW.md)。
 
 先发布本批D/报告/审查/进度并回读，再独立发布引用已有exact对象的IN_PROGRESS Return；owner_request_ref=null，W/Worker为空。本调用账本完成只代表C0020协调交付完成，不是业务完成。不发其他聊天消息、不创建线程、不代专业施工、不设置timer。
+
+## C0020 D009首批发布凭证
+
+已先行发布并从origin逐字节回读D009：`daowei2026/observe-iterate@fca115e5b5d128b08a79f10899d8412f9c8d36c6:longrun/runs/OI-F800-STAT-20261122-01/delegations/D009/DELEGATION.json`；报告：`daowei2026/observe-iterate@fca115e5b5d128b08a79f10899d8412f9c8d36c6:longrun/runs/OI-F800-STAT-20261122-01/calls/C0020/MANAGER_REPORT.md`；释放后继审查：`daowei2026/observe-iterate@fca115e5b5d128b08a79f10899d8412f9c8d36c6:longrun/runs/OI-F800-STAT-20261122-01/calls/C0020/RELEASE_SUCCESSOR_REVIEW.md`。首批9文件Git blob/SHA-256/字节匹配，独立Return仅引用已有提交。有效X/G与finding关闭保持；D009物理派发/开工尚无本C回执，Run仍IN_PROGRESS，未签FeatureReleaseGate/ReleasePackage。
