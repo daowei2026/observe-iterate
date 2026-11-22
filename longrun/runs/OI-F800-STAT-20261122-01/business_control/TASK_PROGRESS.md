@@ -52,6 +52,6 @@ current_acceptance_level: 当前 ReviewTarget 下关闭需处理的明显问题�
 
 ## 本次新增工作与接续
 
-当前后继 D002 / F800-XG-001：见 [DELEGATION](../delegations/D002/DELEGATION.md)。本C先发布 D002、manager报告与进度，再以独立后续提交发布引用已存在 exact 对象的 Return。D001 与全部历史记录保留，不再执行或覆盖上一C工作。
+当前后继 D002 / F800-XG-001：`daowei2026/observe-iterate@d22655642b4e4dd8f9b1371cfce743164c7dbf6d:longrun/runs/OI-F800-STAT-20261122-01/delegations/D002/DELEGATION.json`；已先行推送并从origin回读，待controller派发原E1。本C先发布 D002、manager报告与进度，再以独立后续提交发布引用已存在 exact 对象的 Return。D001 与全部历史记录保留，不再执行或覆盖上一C工作。
 
 下一合法动作是 controller 消费 C0004 Return 并向本 Run 原 E1 派发 D002；manager不创建线程、不发跨聊天消息、不代跑Feature/统计。D002未发送，不预占未来C编号。接续与剩余范围见 [CONTINUATION](../calls/C0004/CONTINUATION.md)、[REMAINING_SCOPE](../calls/C0004/REMAINING_SCOPE.md)。

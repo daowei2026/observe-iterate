@@ -1,0 +1,9 @@
+# C0004｜Return 校验与发布顺序
+
+D002、manager报告及TASK_PROGRESS已先推送，从origin fetch回读得到 `d22655642b4e4dd8f9b1371cfce743164c7dbf6d`，文件字节一致，见D002_PUBLICATION.json。
+
+本C PRO_RETURN按锁定同版 longrun_schema_v2.json 的 professional_return定义校验通过；真实manager与Binding/INVOCATION/D002一致，call_id=C0004；role=manager，delegation_ref=null，return_to=null，issued_order_refs=[]，accepted_worker_refs=[]，owner_request_ref=null。professional_state=IN_PROGRESS，剩余范围/接续均保留。
+
+result_ref、issued_delegation_refs、remaining_scope_ref、continuation_ref全部引用先前已发布提交中的真实对象；已逐项核Git对象存在。D002没有引用未来本Return，不构成循环。消费D001的记录在manager报告中，不伪造Worker回执或新的machine字段。
+
+已知原gate工具兼容限制继续引用本C VALIDATION中的C0001真实输出，未重复旧检查或改身份骗取PASS。以上只验证新记录结构、来源与引用顺序；不证明本C已由controller接收、D002已派发、X/G已执行或Run完成。
