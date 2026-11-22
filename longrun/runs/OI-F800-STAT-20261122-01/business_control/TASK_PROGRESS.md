@@ -61,3 +61,7 @@ D005的480 Life/1534 Revision/1216发行是修复前有效基线，新版本数�
 唯一新委派为D007（[JSON](../delegations/D007/DELEGATION.json)、[说明](../delegations/D007/DELEGATION.md)），采用既有FI工程动作及原ImplementationFixReturn合同，沿原diff/依赖影响/验证方案执行。controller负责核原E1真实线程/sol/max/工作区并物理派发，尚无物理送达/开工/锁证据。原manager消费实施回交后，连续安排受影响理解绑定、新完整X/31表独立读回/G，再按原L1决定释放，无需重复问已批准范围。
 
 本C先发布D/报告/进度并回读，再独立发布引用已有exact对象的IN_PROGRESS Return，owner_request_ref=null、W/Worker引用为空。本调用账本完成仅代表C0016协调交付完成，业务Run仍未完成；不创建线程、不向其他聊天发消息、不设轮询或自动唤醒。
+
+## C0016 D007首批发布凭证
+
+已先行发布并从origin逐字节回读D007：`daowei2026/observe-iterate@714087ecaf03dbed1854a603bd390ad95a166a82:longrun/runs/OI-F800-STAT-20261122-01/delegations/D007/DELEGATION.json`；报告：`daowei2026/observe-iterate@714087ecaf03dbed1854a603bd390ad95a166a82:longrun/runs/OI-F800-STAT-20261122-01/calls/C0016/MANAGER_REPORT.md`。首批8文件Git blob/SHA-256/字节全部匹配，独立Return仅引用该已存在提交，Run仍IN_PROGRESS。D007只代表manager正式签发，controller物理派发与E1施工尚无本C回执；MP002实际批准已消费，无重复Owner问题。
