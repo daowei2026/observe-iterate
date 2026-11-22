@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "project": {
+    "id": "oi-wall-stat-20261122-01",
+    "title": "WALL 本 Run 记录"
+  },
+  "task": {
+    "id": "d002-wall-x-g-current",
+    "title": "D002 WALL 正式结果绑定与全量统计",
+    "type": "engineering",
+    "monitoring": {
+      "scope": "general"
+    },
+    "completion_gate": "准确 X 绑定及 G 原生统计、finding/问题队列、适配包与 Gate 形成并发布，真实 PRO_RETURN 回原 manager；若真实阻断则保留未完成范围。"
+  },
+  "phases": [
+    {
+      "id": "x",
+      "title": "正式结果绑定",
+      "steps": [
+        {
+          "id": "x-preflight",
+          "title": "核准授权及实际代码、参数和资源",
+          "acceptance": "原 D/Skill/Owner 已核，实际加载、默认参数、Calendar、范围、单写者和已有差异有真实证据。",
+          "weight": 2
+        },
+        {
+          "id": "x-result",
+          "title": "合法复用或运行完整正式实例",
+          "acceptance": "rb/m 2021 全年结果身份、完整性、哈希和独立读回一致，形成 FeatureRunResultBinding；新生产须持共享锁。",
+          "weight": 5
+        }
+      ]
+    },
+    {
+      "id": "g",
+      "title": "全量统计与原生Gate",
+      "steps": [
+        {
+          "id": "g-profile",
+          "title": "完成输入就绪及全量分层剖面",
+          "acceptance": "计数单位和分母明确；可读取的对象、事件、状态、生命周期及可靠分层覆盖全部正式结果。",
+          "weight": 5
+        },
+        {
+          "id": "g-gate",
+          "title": "形成疑点、案例、适配包与Gate",
+          "acceptance": "结构疑点与场景问题分开；已知问题复验和剩余限制具名；七项 G 原生输出完整。",
+          "weight": 3
+        },
+        {
+          "id": "publish-return",
+          "title": "发布专业结果并独立回交",
+          "acceptance": "专业产物先推送取得 exact refs，随后独立发布 schema 有效的 C0004 PRO_RETURN，保持零W。",
+          "weight": 1
+        }
+      ]
+    }
+  ]
+}

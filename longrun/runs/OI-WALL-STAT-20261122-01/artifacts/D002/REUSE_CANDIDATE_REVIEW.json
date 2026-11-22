@@ -1,0 +1,49 @@
+{
+  "requested_scope": [
+    "rb",
+    "m",
+    "2021-01-01",
+    "2021-12-31"
+  ],
+  "candidates": [
+    {
+      "kind": "historical-native-instance",
+      "symbol": "rb",
+      "metadata_path": "/dwdhome/fy/BASE_E6_2/.runtime/wall-rb-m-20210101-20211231-20261120/rb/receipt.json",
+      "metadata_sha256": "f07ab80914f8dd9fb3d56ba4911f70969d1911ec47bd9aa43671e1b43203d2dd",
+      "recorded_code": "git:2c5595139cd24c5614aed0aa7f5c3b45d835a824+source-sha256:47c09eb4ac84034ab9140be79249c338e266fa2b922ce1c14c021a3857b771f6",
+      "decision": "REJECT_FORMAL_REUSE",
+      "reason": "receipt 版本不是本轮锁定的 6618d4d；D1/D2/D4 最终修复前结果不可复用。"
+    },
+    {
+      "kind": "final-core-isolated-replay",
+      "symbol": "rb",
+      "metadata_path": "/dwdhome/fy/BASE_E6_2/.runtime/wall-d4-support-reset-20261121/rb/replay_receipt.json",
+      "metadata_sha256": "21bede2714028b50f741ad94a4362529f047f66f7cba7d4302d8f18979352a14",
+      "recorded_commit": "6618d4d147d6ebbe634e61facddf2c9a0b996982",
+      "recorded_mode": "isolated_same_input_replay",
+      "decision": "NOT_QUALIFIED_FOR_FORMAL_REUSE",
+      "reason": "有最终 core 提交和参数线索，但没有证明锁定完整 producer 实际加载、完整实例配置、正式 full_dir、输入处理与本轮一致；不将旧 Run 的重放状态迁为本 Run 正式结果。"
+    },
+    {
+      "kind": "historical-native-instance",
+      "symbol": "m",
+      "metadata_path": "/dwdhome/fy/BASE_E6_2/.runtime/wall-rb-m-20210101-20211231-20261120/m/receipt.json",
+      "metadata_sha256": "4ac5d2855fc0971609b181d43dbaf6ae9effdcdc6ea2aca2a8e3892d4f995fad",
+      "recorded_code": "git:10010b89f8fc79a91affd26f985b6d9bf2d33c6c+source-sha256:3242864cdaf6ee3805ad5a0a0e67364e5e289ea5a6d01dbd3b20b8edf6f13228",
+      "decision": "REJECT_FORMAL_REUSE",
+      "reason": "receipt 版本不是本轮锁定的 6618d4d；D1/D2/D4 最终修复前结果不可复用。"
+    },
+    {
+      "kind": "final-core-isolated-replay",
+      "symbol": "m",
+      "metadata_path": "/dwdhome/fy/BASE_E6_2/.runtime/wall-d4-support-reset-20261121/m/replay_receipt.json",
+      "metadata_sha256": "45d262fa70dd623c32d2e1920adcaf07114673ce5cb334811a4a95c790a0f143",
+      "recorded_commit": "6618d4d147d6ebbe634e61facddf2c9a0b996982",
+      "recorded_mode": "isolated_same_input_replay",
+      "decision": "NOT_QUALIFIED_FOR_FORMAL_REUSE",
+      "reason": "有最终 core 提交和参数线索，但没有证明锁定完整 producer 实际加载、完整实例配置、正式 full_dir、输入处理与本轮一致；不将旧 Run 的重放状态迁为本 Run 正式结果。"
+    }
+  ],
+  "outcome": "尚无满足全部身份和独立读回条件的正式结果；准备按固定实现新生产。"
+}

@@ -1,0 +1,8 @@
+# X/G 运行字段补证（沿用D001，不重写理解包）
+
+- rb的六个实际结果key为wall__stream、wall__stream__occ0001/0002/0003、wall_assembler_sparse_events、wall_assembler_state_trace。独立Dao与导出逐表逐行相等；真实字段、dtype、key和哈希见INDEPENDENT_READBACK及FeatureRunResultBinding。
+- 原生event、trace和receipt只在已验证rb层为AVAILABLE；m没有成功receipt/fields，不能将失败目录当有效结果或把缺失计零。
+- reason_code在非End可为NaN，availability_code在已形成行是1；同拍使用物理ordinal，131组同对象同类型多次BandUpdate保留。
+- 原生WALL最终表仍不暴露F1/F6逐拍资格及完整far历史。新增的未修改组件诊断运行已严格匹配全部正式rb trace/event，物化资格与event checkpoint；它是独立辅助载体，不改原生WALL字段合同。
+- 更新后的StatisticsInputReadiness分别记录原生字段可用性及辅助载体可用性；完整far轨迹仍NOT_EXPOSED，不能将event checkpoint冒充每拍轨迹。
+- 原D001包PARTIAL和C0002 Return IN_PROGRESS均原样保留。本补证只补X/G实际取得事实。

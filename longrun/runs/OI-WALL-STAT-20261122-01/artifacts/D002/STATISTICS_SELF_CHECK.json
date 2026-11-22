@@ -1,0 +1,32 @@
+{
+  "checks": [
+    {
+      "symbol": "rb",
+      "event_month_clock_bin_counts_conserved": true,
+      "state_sample_segment_counts_conserved": true,
+      "packed_sparse_row_counts_match": true,
+      "event_timestamp_and_uti_match_trace": true,
+      "event_rows": 335081,
+      "trace_rows": 9959400,
+      "non_final_identity_events_are_exact_relocation_ends": true,
+      "relocation_old_end_count": 4020,
+      "receipt_effective_and_private_parameters_match": true,
+      "declared_parameter_sha256": "2adb06b4c17426bf6309c7f9d1976485c4ebe838336979c04952a7de20cf9825"
+    }
+  ],
+  "requested_scope_preserved": [
+    "rb",
+    "m"
+  ],
+  "missing_symbol_not_counted_as_zero": [
+    "m"
+  ],
+  "gate_status": "BLOCKED",
+  "diagnostic_result_parity": {
+    "trace_rows": 9959400,
+    "event_rows": 335081,
+    "all_values_equal": true,
+    "F1_F6_Start_counts_conserved": true,
+    "far_end_checkpoint_matches_formal_end_count": true
+  }
+}

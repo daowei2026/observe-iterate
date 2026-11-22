@@ -1,0 +1,326 @@
+{
+  "feature_name": "mquant.tis.hf.prel0.wall_assembler.WallAssembler",
+  "code_version": "daowei2026/tis@6618d4d147d6ebbe634e61facddf2c9a0b996982",
+  "parameter_instance_ref": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/preflight.json",
+  "parameter_version": "wall-default-at-6618d4d",
+  "run_id": "OI-WALL-STAT-20261122-01",
+  "data_scope": {
+    "symbols": [
+      "rb",
+      "m"
+    ],
+    "start_time": "2021-01-01",
+    "end_time": "2021-12-31",
+    "calendar": "night_end_at_2300",
+    "sessions": "正式日历中的输入；自然钟分箱单独声明"
+  },
+  "artifact_refs": [
+    {
+      "symbol": "rb",
+      "full_dir": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/native-cache/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300",
+      "fields_sha256": "aed94a7f539906449a0e385a5f0c57b23faad1abf0aa2d91abbf76ea201c3458",
+      "receipt_sha256": "c04ef15260edbebb713f7891ec48b87c34803a0b42818da3e35691fc6b9ddc94"
+    }
+  ],
+  "run_result_tables": [
+    {
+      "symbol": "rb",
+      "key": "wall__stream",
+      "path": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/tables/wall__stream.parquet",
+      "rows": 317088,
+      "columns": [
+        "availability_code",
+        "band_hi",
+        "band_lo",
+        "chunk_end_ts",
+        "chunk_id",
+        "core_price",
+        "event_type_code",
+        "occurrence_ordinal",
+        "reason_code",
+        "side_code",
+        "status_code",
+        "ts",
+        "uti",
+        "wall_id"
+      ],
+      "dtypes": {
+        "availability_code": "int8",
+        "band_hi": "float64",
+        "band_lo": "float64",
+        "chunk_end_ts": "datetime64[ns]",
+        "chunk_id": "int64",
+        "core_price": "float64",
+        "event_type_code": "int64",
+        "occurrence_ordinal": "int64",
+        "reason_code": "float64",
+        "side_code": "int64",
+        "status_code": "int64",
+        "ts": "datetime64[ns]",
+        "uti": "int64",
+        "wall_id": "int64"
+      },
+      "first_time": "2021-02-23 09:07:08.500000",
+      "last_time": "2021-12-31 14:58:53",
+      "sha256": "899d0646914b7ade56c074b232a7bcb0ec2b83f6caf438ff10ade71259296a48",
+      "bytes": 7554829,
+      "sorted": true
+    },
+    {
+      "symbol": "rb",
+      "key": "wall__stream__occ0001",
+      "path": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/tables/wall__stream__occ0001.parquet",
+      "rows": 17234,
+      "columns": [
+        "availability_code",
+        "band_hi",
+        "band_lo",
+        "chunk_end_ts",
+        "chunk_id",
+        "core_price",
+        "event_type_code",
+        "occurrence_ordinal",
+        "reason_code",
+        "side_code",
+        "status_code",
+        "ts",
+        "uti",
+        "wall_id"
+      ],
+      "dtypes": {
+        "availability_code": "int8",
+        "band_hi": "float64",
+        "band_lo": "float64",
+        "chunk_end_ts": "datetime64[ns]",
+        "chunk_id": "int64",
+        "core_price": "float64",
+        "event_type_code": "int64",
+        "occurrence_ordinal": "int64",
+        "reason_code": "float64",
+        "side_code": "int64",
+        "status_code": "int64",
+        "ts": "datetime64[ns]",
+        "uti": "int64",
+        "wall_id": "int64"
+      },
+      "first_time": "2021-02-23 11:19:48",
+      "last_time": "2021-12-31 14:53:07.500000",
+      "sha256": "c27659c46b61208a9afd3de2c57bcbd57e91b9624fdc48cf3f083673cbcca6e3",
+      "bytes": 585169,
+      "sorted": true
+    },
+    {
+      "symbol": "rb",
+      "key": "wall__stream__occ0002",
+      "path": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/tables/wall__stream__occ0002.parquet",
+      "rows": 737,
+      "columns": [
+        "availability_code",
+        "band_hi",
+        "band_lo",
+        "chunk_end_ts",
+        "chunk_id",
+        "core_price",
+        "event_type_code",
+        "occurrence_ordinal",
+        "reason_code",
+        "side_code",
+        "status_code",
+        "ts",
+        "uti",
+        "wall_id"
+      ],
+      "dtypes": {
+        "availability_code": "int8",
+        "band_hi": "float64",
+        "band_lo": "float64",
+        "chunk_end_ts": "datetime64[ns]",
+        "chunk_id": "int64",
+        "core_price": "float64",
+        "event_type_code": "int64",
+        "occurrence_ordinal": "int64",
+        "reason_code": "float64",
+        "side_code": "int64",
+        "status_code": "int64",
+        "ts": "datetime64[ns]",
+        "uti": "int64",
+        "wall_id": "int64"
+      },
+      "first_time": "2021-02-23 11:19:48.500000",
+      "last_time": "2021-12-30 13:59:03.500000",
+      "sha256": "32a5e27a57cdae273cf227bbcd7becefd2bbdda8f720f52f217b6025da74e3e3",
+      "bytes": 36219,
+      "sorted": true
+    },
+    {
+      "symbol": "rb",
+      "key": "wall__stream__occ0003",
+      "path": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/tables/wall__stream__occ0003.parquet",
+      "rows": 22,
+      "columns": [
+        "availability_code",
+        "band_hi",
+        "band_lo",
+        "chunk_end_ts",
+        "chunk_id",
+        "core_price",
+        "event_type_code",
+        "occurrence_ordinal",
+        "reason_code",
+        "side_code",
+        "status_code",
+        "ts",
+        "uti",
+        "wall_id"
+      ],
+      "dtypes": {
+        "availability_code": "int8",
+        "band_hi": "float64",
+        "band_lo": "float64",
+        "chunk_end_ts": "datetime64[ns]",
+        "chunk_id": "int64",
+        "core_price": "float64",
+        "event_type_code": "int64",
+        "occurrence_ordinal": "int64",
+        "reason_code": "float64",
+        "side_code": "int64",
+        "status_code": "int64",
+        "ts": "datetime64[ns]",
+        "uti": "int64",
+        "wall_id": "int64"
+      },
+      "first_time": "2021-04-19 13:30:08.500000",
+      "last_time": "2021-11-19 14:03:27",
+      "sha256": "2a5837914e4a815842f49621df109574a9460727a88a6d512e3c0430e596823f",
+      "bytes": 10864,
+      "sorted": true
+    },
+    {
+      "symbol": "rb",
+      "key": "wall_assembler_sparse_events",
+      "path": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/tables/wall_assembler_sparse_events.parquet",
+      "rows": 335081,
+      "columns": [
+        "availability_code",
+        "band_hi",
+        "band_lo",
+        "chunk_end_ts",
+        "chunk_id",
+        "core_price",
+        "event_type_code",
+        "reason_code",
+        "side_code",
+        "status_code",
+        "ts",
+        "uti",
+        "wall_id"
+      ],
+      "dtypes": {
+        "availability_code": "int8",
+        "band_hi": "float64",
+        "band_lo": "float64",
+        "chunk_end_ts": "datetime64[ns]",
+        "chunk_id": "int64",
+        "core_price": "float64",
+        "event_type_code": "int64",
+        "reason_code": "float64",
+        "side_code": "int64",
+        "status_code": "int64",
+        "ts": "datetime64[ns]",
+        "uti": "int64",
+        "wall_id": "int64"
+      },
+      "first_time": "2021-02-23 09:07:08.500000",
+      "last_time": "2021-12-31 14:58:53",
+      "sha256": "9af8e8ce41cbdbf55d61c3424752cae34c16aa71a510e5987c4bc952a9419110",
+      "bytes": 7883967,
+      "sorted": true
+    },
+    {
+      "symbol": "rb",
+      "key": "wall_assembler_state_trace",
+      "path": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/tables/wall_assembler_state_trace.parquet",
+      "rows": 9959400,
+      "columns": [
+        "chunk_id",
+        "ts",
+        "uti",
+        "wall_band_hi_ask",
+        "wall_band_hi_bid",
+        "wall_band_lo_ask",
+        "wall_band_lo_bid",
+        "wall_core_price_ask",
+        "wall_core_price_bid",
+        "wall_id_ask",
+        "wall_id_bid",
+        "wall_side_code_ask",
+        "wall_side_code_bid",
+        "wall_status_code_ask",
+        "wall_status_code_bid"
+      ],
+      "dtypes": {
+        "chunk_id": "int64",
+        "ts": "datetime64[ns]",
+        "uti": "int64",
+        "wall_band_hi_ask": "float64",
+        "wall_band_hi_bid": "float64",
+        "wall_band_lo_ask": "float64",
+        "wall_band_lo_bid": "float64",
+        "wall_core_price_ask": "float64",
+        "wall_core_price_bid": "float64",
+        "wall_id_ask": "int64",
+        "wall_id_bid": "int64",
+        "wall_side_code_ask": "int8",
+        "wall_side_code_bid": "int8",
+        "wall_status_code_ask": "int8",
+        "wall_status_code_bid": "int8"
+      },
+      "first_time": "2021-01-04 09:00:00.500000",
+      "last_time": "2021-12-31 15:00:00",
+      "sha256": "e2eab94cbd4c36510045e17c299bf71843133113c2be07696d01498465724114",
+      "bytes": 137893049,
+      "sorted": true
+    }
+  ],
+  "known_data_limits": [
+    "m 的锁定正式入口失败；未把 m 缺失统计成零，也未改变 rb/m 全年请求范围。"
+  ],
+  "verified_symbols": [
+    "rb"
+  ],
+  "missing_symbols": [
+    "m"
+  ],
+  "status": "PARTIAL",
+  "auxiliary_result_bindings": [
+    {
+      "auxiliary_id": "D002-RB-QUAL-CHECKPOINT-01",
+      "mode": "UNMODIFIED_COMPONENT_DIAGNOSTIC_RESULT",
+      "code_version": "daowei2026/tis@6618d4d147d6ebbe634e61facddf2c9a0b996982",
+      "parameter_instance_ref": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/preflight.json",
+      "symbol": "rb",
+      "declared_data_scope": {
+        "sof_name": "TA_updto20240229_DBA",
+        "stk_tlist": "tick_test_all57_takeout_lcNsiNcy",
+        "startDay": "2021-01-01",
+        "endDay": "2021-12-31"
+      },
+      "calendar": "night_end_at_2300",
+      "artifacts": [
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/rb-upstream-checkpoint-replay/qualification-observations.parquet",
+          "sha256": "cd72d66921a0dc64c37d2750c106925c897b85ab88915a2df419c8af9226a9c1",
+          "bytes": 98474996
+        },
+        {
+          "path": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/rb-upstream-checkpoint-replay/event-checkpoints.parquet",
+          "sha256": "782ffe2678f0d59258913a160fef34e94b534c9d3291ede37d61241c5697214e",
+          "bytes": 12249559
+        }
+      ],
+      "all_formal_event_and_trace_values_equal": true,
+      "formal_source_or_output_changed": false,
+      "evidence_role": "真实新增诊断运行载体；原WALL最终表未暴露资格/完整far轨迹的事实保留。"
+    }
+  ]
+}

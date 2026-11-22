@@ -1,0 +1,45 @@
+{
+  "finding_ref": "artifacts/D002/M_FORMAL_FAILURE.json / X-M-INPUT-CALENDAR-GAP",
+  "proposal_id": "MP-WALL-M-INPUT-20261122-01",
+  "status": "PENDING_OWNER_CONFIRMATION",
+  "current_behavior": "锁定默认m全年原生调用失败：ValueError: 交易日区间在 2021-03-12 00:00:00 前不连续: 1792800 != 1792801",
+  "proposed_change": "只在Wall输入包装层采用现有严格空日历占位候选：分时段首个半秒五个报价字段全空、下一半秒报价完整才排除；仍拒绝任何有效行情或其他未覆盖缺口。原始Sof不改写。",
+  "why_this_stage": "阻断在Wall输入分块前，保持core、默认参数、期限和四类事件合同不变；不以放松连续覆盖保护或缩短范围绕过。",
+  "alternatives": [
+    "保持6618d4d原实现和m阻断，等待Owner提供已认可的规范输入处理/版本。",
+    "Owner确认另一个明确的输入合同；本次不自行选用或把诊断候选登记为正式实例。"
+  ],
+  "expected_effect": "三自然日诊断窗124200行中排除1行后分块通过，124199条保留行逐值一致，原frame哈希不变；全年是否仅有历史17条仍待批准后验证。",
+  "possible_side_effects": [
+    "trace不再包含被排除空占位，跨特征须按timestamp/UTI对齐。",
+    "拟排除所有满足严格谓词的分时段空占位，不只触发第一个覆盖错误的行；全年数量及逐值保持必须验证。",
+    "wrapper源指纹和正式代码锁改变，现有rb结果/剖面保留为6618d4d对照；批准并采用后完整重跑rb/m及G。",
+    "source_scope须记录排除时间，不能隐去输入处理差异。",
+    "删除观测拍可能影响按处理拍递推的基线/计数节奏；不能由保留报价逐值相等直接推断所有行为不变，须完整重跑与统计。"
+  ],
+  "validation_plan": [
+    "核全年rb/m输入，仅排除符合三条件的空占位；有效报价和linear_ts逐值一致；原始Sof文件保持。",
+    "保留连续覆盖保护，验证非空/异常缺口仍失败；核完整默认ppdict及派生值未变。",
+    "既有D1/D2/D4回归及输入处理定向检查；不改D3暂缓决定。",
+    "Owner确认正式代码锁后，使用本Run新attempt目录完整运行rb/m2021全年；fields/receipt/config/hash及独立Dao逐行读回。",
+    "重新完成两品种G，复验已知问题并保留NOT_EXPOSED范围；不将本次部分rb剖面升格为新版本完整结论。"
+  ],
+  "files_or_parameters_to_change": [
+    "daowei2026/tis:hf/prel0/wall_assembler.py；无参数/core变更"
+  ],
+  "review_artifacts": {
+    "candidate_diff_local_path": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/proposals/M001/candidate-wall-input-filter.diff",
+    "candidate_diff_sha256": "6d5fa9068a75922406233e884721a76130255a0594136460d0e5242726b98b1b",
+    "diagnostic_report": "M_INPUT_DIAGNOSTIC.json",
+    "uncovered_row": "m-uncovered-rows.csv",
+    "candidate_function_sha256": "d0b2cc1aad83c8ed8a00443daa26277b9b7f43f16120be344559fbf0618803f4"
+  },
+  "adoption_authority_ref": "daowei2026/observe-iterate@8fafd07ff658f519ca000c81fede1ac343f36603:longrun/runs/OI-WALL-STAT-20261122-01/delegations/D002/EXECUTION_AUTHORIZATION.md",
+  "authority_quote": "既有 wrapper 输入处理差异不因本 D 签发而获准采用；HEAD 一致不等于实际加载一致。",
+  "owner_go_ref": "daowei2026/observe-iterate@6ba49120d4b620b48c93c76bc9dcdbafc3bf357c:longrun/runs/OI-WALL-STAT-20261122-01/OWNER_START.md",
+  "owner_question": "是否批准本MP的严格空占位处理，更新正式代码锁，并按原范围完整重跑rb/m及G？",
+  "formal_feature_behavior_modified": false,
+  "candidate_origin": "原工作树历史已有未提交差异，原样保留；本Run仅复制到隔离审阅路径。",
+  "applied_to_this_run_locked_formal_checkout": false,
+  "new_formal_behavior_commit_created": false
+}

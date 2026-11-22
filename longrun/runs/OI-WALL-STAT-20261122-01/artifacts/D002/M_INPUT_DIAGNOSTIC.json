@@ -1,0 +1,38 @@
+{
+  "mode": "DIAGNOSTIC_ONLY",
+  "formal_scope_unchanged": true,
+  "diagnostic_context": {
+    "sof_name": "TA_updto20240229_DBA",
+    "stk_tlist": "tick_test_all57_takeout_lcNsiNcy",
+    "startDay": "2021-03-10",
+    "endDay": "2021-03-12"
+  },
+  "symbol": "m",
+  "calendar": "night_end_at_2300",
+  "formal_feature_called": false,
+  "raw_rows": 124200,
+  "first_time": "2021-03-10 09:00:00.500000",
+  "last_time": "2021-03-12 23:00:00",
+  "all_empty_quote_rows": 1,
+  "uncovered_rows": 1,
+  "uncovered_all_empty": true,
+  "input_value_hash": "d78988901121ec8440c09cdee4bb6e7b44da2f64c781f0f0780990124d34c6d5",
+  "locked_plan": {
+    "status": "FAILED",
+    "error": "交易日区间在 2021-03-12 00:00:00 前不连续: 68400 != 68401"
+  },
+  "candidate_counterfactual": {
+    "status": "DIAGNOSTIC_ONLY",
+    "selected_rows": 124199,
+    "excluded_rows": 1,
+    "retained_values_exact": true,
+    "original_frame_unchanged": true,
+    "candidate_function_sha256": "d0b2cc1aad83c8ed8a00443daa26277b9b7f43f16120be344559fbf0618803f4",
+    "original_working_file_sha256": "30d12e9cae77734dec165ad4ff8bd3a5886aadc5d4e46389379445dd7b47f736",
+    "chunk_plan": {
+      "status": "PASS",
+      "chunks": 4
+    }
+  },
+  "evidence_scope_limit": "仅证明当前三天诊断窗的边界与候选性质；不是全年17行已重验，也不是正式过滤已获授权或生产成功。"
+}

@@ -1,0 +1,397 @@
+{
+  "feature_understanding_ref": "daowei2026/observe-iterate@b6df1743e44ac0447cfa0ec3c6bcbbf0ce8544d3:longrun/runs/OI-WALL-STAT-20261122-01/artifacts/D001/FEATURE_UNDERSTANDING_PACKAGE.md",
+  "status": "PREPARED_BEFORE_G_NO_RESULT_COUNTS",
+  "stratification_plan": [
+    {
+      "stratum_id": "symbol",
+      "dimension": "SYMBOL",
+      "rule": "锁定 rb/m，分别统计",
+      "source_fields": [
+        "symbol binding"
+      ]
+    },
+    {
+      "stratum_id": "side",
+      "dimension": "OTHER",
+      "rule": "side_code: 1=bid,2=ask；trace 使用对应侧后缀",
+      "source_fields": [
+        "side_code",
+        "wall_*_bid",
+        "wall_*_ask"
+      ]
+    },
+    {
+      "stratum_id": "month",
+      "dimension": "PERIOD",
+      "rule": "按原生 timestamp 所属自然月",
+      "source_fields": [
+        "DataFrame index/ts"
+      ]
+    },
+    {
+      "stratum_id": "clock_bin",
+      "dimension": "OTHER",
+      "rule": "原生无时区 timestamp 的自然钟分箱：[06:00,18:00) 与其余时刻；这是明示钟时分箱，不冒充 Calendar 官方 SessionID",
+      "source_fields": [
+        "DataFrame index/ts"
+      ]
+    }
+  ],
+  "statistics_definitions": [
+    {
+      "statistic_id": "EV-01",
+      "name": "四类 occurrence 数量与单位观测拍密度",
+      "business_item_ref": "OC-C1..OC-C4",
+      "count_unit": "事件 occurrence",
+      "object_group_key": "source_result_namespace + symbol + wall_id",
+      "time_basis": "原生 ts + uti",
+      "denominator": "对应 symbol/side 的 trace 样本拍数；按一百万样本拍列出事件密度",
+      "deduplication_rule": "只采用 packed stream 并集，不与 sparse 表重复相加。",
+      "same_tick_rule": "同拍多 occurrence 保留 ordinal；不按 id+uti+type 盲目去重。",
+      "strata": [
+        "symbol",
+        "side",
+        "month",
+        "clock_bin"
+      ],
+      "source_fields": [
+        "event_type_code",
+        "side_code",
+        "wall_id",
+        "uti",
+        "occurrence_ordinal",
+        "trace row count"
+      ]
+    },
+    {
+      "statistic_id": "BO-01",
+      "name": "新建对象数及每对象事件数",
+      "business_item_ref": "BO-C1",
+      "count_unit": "唯一 Wall identity／事件 occurrence",
+      "object_group_key": "source_result_namespace + symbol + wall_id",
+      "time_basis": "Start uti 与各 occurrence uti",
+      "denominator": "同范围唯一对象数；Start occurrence 单列核对",
+      "deduplication_rule": "只采用 packed stream 并集，不与 sparse 表重复相加。",
+      "same_tick_rule": "同拍多 occurrence 保留 ordinal；不按 id+uti+type 盲目去重。",
+      "strata": [
+        "symbol",
+        "side",
+        "month",
+        "clock_bin"
+      ],
+      "source_fields": [
+        "wall_id",
+        "side_code",
+        "event_type_code",
+        "uti"
+      ]
+    },
+    {
+      "statistic_id": "ST-01",
+      "name": "逐拍状态占用",
+      "business_item_ref": "ST-C0..ST-C3",
+      "count_unit": "每侧状态样本拍",
+      "object_group_key": "source_result_namespace + symbol + wall_id",
+      "time_basis": "逐拍 trace uti；不把样本拍数自动改写成自然时间",
+      "denominator": "该 symbol/side 全部 trace 样本拍",
+      "deduplication_rule": "每侧每个 trace 输入拍一次。",
+      "same_tick_rule": "同拍只用该侧末态；不是 occurrence。",
+      "strata": [
+        "symbol",
+        "side",
+        "month",
+        "clock_bin"
+      ],
+      "source_fields": [
+        "wall_status_code_{side}",
+        "wall_id_{side}",
+        "uti"
+      ]
+    },
+    {
+      "statistic_id": "ST-02",
+      "name": "状态转换、状态连续段与恢复",
+      "business_item_ref": "ST-C1..ST-C3",
+      "count_unit": "转换 occurrence／连续状态段",
+      "object_group_key": "source_result_namespace + symbol + wall_id",
+      "time_basis": "事件 ordinal 顺序；trace 另计连续段",
+      "denominator": "相应对象或状态段数，分别明示",
+      "deduplication_rule": "只采用 packed stream 并集，不与 sparse 表重复相加。",
+      "same_tick_rule": "同拍多 occurrence 保留 ordinal；不按 id+uti+type 盲目去重。",
+      "strata": [
+        "symbol",
+        "side",
+        "month",
+        "clock_bin"
+      ],
+      "source_fields": [
+        "status_code",
+        "event_type_code",
+        "wall_id",
+        "uti",
+        "wall_status_code_{side}"
+      ]
+    },
+    {
+      "statistic_id": "LC-01",
+      "name": "完整与截尾生命周期及寿命分布",
+      "business_item_ref": "BO-C1",
+      "count_unit": "Wall 生命周期",
+      "object_group_key": "source_result_namespace + symbol + wall_id",
+      "time_basis": "同身份 Start/End UTI 差；另报原生 timestamp 差",
+      "denominator": "有 Start 的对象；完成与右截尾分别列分母",
+      "deduplication_rule": "只采用 packed stream 并集，不与 sparse 表重复相加。",
+      "same_tick_rule": "同拍多 occurrence 保留 ordinal；不按 id+uti+type 盲目去重。",
+      "strata": [
+        "symbol",
+        "side",
+        "month",
+        "clock_bin"
+      ],
+      "source_fields": [
+        "event_type_code",
+        "wall_id",
+        "uti",
+        "ts"
+      ]
+    },
+    {
+      "statistic_id": "LC-02",
+      "name": "短命、零拍寿命和同位置反复新建",
+      "business_item_ref": "BO-C1",
+      "count_unit": "完整生命周期／相邻同侧 Start 对",
+      "object_group_key": "source_result_namespace + symbol + wall_id",
+      "time_basis": "UTI 差；同位置先按已发布 band_lo/hi/core 的精确相等定义",
+      "denominator": "完整生命周期或同侧相邻 Start 对，按项目明示",
+      "deduplication_rule": "只采用 packed stream 并集，不与 sparse 表重复相加。",
+      "same_tick_rule": "同拍多 occurrence 保留 ordinal；不按 id+uti+type 盲目去重。",
+      "strata": [
+        "symbol",
+        "side",
+        "month",
+        "clock_bin"
+      ],
+      "source_fields": [
+        "wall_id",
+        "uti",
+        "event_type_code",
+        "side_code",
+        "band_lo",
+        "band_hi",
+        "core_price"
+      ]
+    },
+    {
+      "statistic_id": "RS-01",
+      "name": "结束原因数量、比例和可达边界",
+      "business_item_ref": "OC-C4",
+      "count_unit": "End occurrence",
+      "object_group_key": "source_result_namespace + symbol + wall_id",
+      "time_basis": "End uti/ts",
+      "denominator": "同 stratum 的 End occurrence；非 End reason 缺失不计为 reason=0",
+      "deduplication_rule": "只采用 packed stream 并集，不与 sparse 表重复相加。",
+      "same_tick_rule": "同拍多 occurrence 保留 ordinal；不按 id+uti+type 盲目去重。",
+      "strata": [
+        "symbol",
+        "side",
+        "month",
+        "clock_bin"
+      ],
+      "source_fields": [
+        "event_type_code",
+        "reason_code",
+        "side_code",
+        "uti"
+      ]
+    },
+    {
+      "statistic_id": "INV-01",
+      "name": "起终点、身份、终结后更新和非法转换",
+      "business_item_ref": "BO-C1/ST-C1..3",
+      "count_unit": "对象／违反不变量的 occurrence",
+      "object_group_key": "source_result_namespace + symbol + wall_id",
+      "time_basis": "按 ts/uti/ordinal 保留原生顺序",
+      "denominator": "实际适用对象／occurrence；每条 finding 明示",
+      "deduplication_rule": "只采用 packed stream 并集，不与 sparse 表重复相加。",
+      "same_tick_rule": "同拍多 occurrence 保留 ordinal；不按 id+uti+type 盲目去重。",
+      "strata": [
+        "symbol",
+        "side",
+        "month",
+        "clock_bin"
+      ],
+      "source_fields": [
+        "wall_id",
+        "event_type_code",
+        "side_code",
+        "status_code",
+        "uti",
+        "occurrence_ordinal"
+      ]
+    },
+    {
+      "statistic_id": "REG-D1",
+      "name": "最终身份事件几何与 trace 自洽",
+      "business_item_ref": "ID-D1",
+      "count_unit": "可与该拍同身份末态对齐的 occurrence",
+      "object_group_key": "source_result_namespace + symbol + wall_id",
+      "time_basis": "ts+uti；只比较 id 与该侧最终 slot 一致的事件",
+      "denominator": "所有具备同拍同身份 trace 的事件；relocation 旧 End 单列不适用",
+      "deduplication_rule": "只采用 packed stream 并集，不与 sparse 表重复相加。",
+      "same_tick_rule": "同拍多 occurrence 保留 ordinal；不按 id+uti+type 盲目去重。",
+      "strata": [
+        "symbol",
+        "side",
+        "month",
+        "clock_bin"
+      ],
+      "source_fields": [
+        "wall_id",
+        "uti",
+        "side_code",
+        "band_lo",
+        "band_hi",
+        "core_price",
+        "wall_id_{side}",
+        "wall_band_lo_{side}",
+        "wall_band_hi_{side}",
+        "wall_core_price_{side}"
+      ]
+    },
+    {
+      "statistic_id": "REG-D2",
+      "name": "同拍进入 Dormant 与 End 重叠",
+      "business_item_ref": "ID-D2",
+      "count_unit": "同对象同 uti 的事件组",
+      "object_group_key": "source_result_namespace + symbol + wall_id",
+      "time_basis": "同 identity/uti 分组，保持 ordinal",
+      "denominator": "含 End 的对象拍组；恢复 Alive+End 不误计为进入 Dormant+End",
+      "deduplication_rule": "只采用 packed stream 并集，不与 sparse 表重复相加。",
+      "same_tick_rule": "同拍多 occurrence 保留 ordinal；不按 id+uti+type 盲目去重。",
+      "strata": [
+        "symbol",
+        "side",
+        "month",
+        "clock_bin"
+      ],
+      "source_fields": [
+        "event_type_code",
+        "status_code",
+        "wall_id",
+        "uti",
+        "side_code"
+      ]
+    },
+    {
+      "statistic_id": "D3-01",
+      "name": "D3薄触结束后的原位重建可读子模式",
+      "business_item_ref": "OC-C4 -> OC-C1 / Owner暂缓D3",
+      "count_unit": "同侧相邻薄触End/新身份Start对象对",
+      "object_group_key": "source namespace + symbol + side + consecutive lifecycle occurrence pair",
+      "time_basis": "事件uti差与原生timestamp差分别报告",
+      "denominator": "已验证分层全部thin_contact End occurrence，另报满足严格发布几何相等的对数",
+      "deduplication_rule": "同侧顺序流相邻End->Start，保留物理ordinal；两套事件表示不相加",
+      "same_tick_rule": "同拍按ordinal，旧/新身份不同；不把同拍自动判错",
+      "strata": [
+        "symbol",
+        "side"
+      ],
+      "source_fields": [
+        "event_type_code",
+        "reason_code",
+        "wall_id",
+        "side_code",
+        "uti",
+        "band_lo",
+        "band_hi",
+        "core_price"
+      ],
+      "known_limit": "只数已发布band/core精确相等的子模式，未等同全部D3，也未关闭或修改Owner暂缓决定。",
+      "definition_ref": "daowei2026/observe-iterate@87b951bbd15078a2d6353bdd24afe0d8f19c845c:ai_chat/根据统计找不合理点/wall特征，修frp代码.md"
+    },
+    {
+      "statistic_id": "EV-02",
+      "name": "同刻 occurrence 基数与同对象事件顺序",
+      "business_item_ref": "OC-C1..4",
+      "count_unit": "物理timestamp组／对象uti组分别计",
+      "object_group_key": "source namespace + symbol + wall_id + uti",
+      "time_basis": "native timestamp、uti与物理ordinal",
+      "denominator": "对应已发生事件组数",
+      "deduplication_rule": "packed并集；同类型重复occurrence保留",
+      "same_tick_rule": "按全局物理ordinal保留每条，再按对象分组；不引入业务因果优先级",
+      "strata": [
+        "symbol",
+        "side"
+      ],
+      "source_fields": [
+        "wall_id",
+        "uti",
+        "occurrence_ordinal",
+        "event_type_code",
+        "side_code"
+      ]
+    },
+    {
+      "statistic_id": "AUX-QUAL-01",
+      "name": "实际物化诊断载体的上游资格与Wall新建转化",
+      "business_item_ref": "输入观测/ID-C1/BO-C1",
+      "count_unit": "每侧观测资格数；新建身份另外计",
+      "object_group_key": "同一来源namespace、symbol、uti、side；Wall身份另按wall_id",
+      "time_basis": "原生timestamp/uti",
+      "denominator": "原始侧别观测、QT正值观测、F1命中、F6命中分别给出；每项转化用相应上游分母",
+      "deduplication_rule": "每侧每输入拍一次；新Start须匹配F6资格，诊断产物不与正式事件重复相加",
+      "same_tick_rule": "side独立；仅new_start标记对应同拍正式Start",
+      "strata": [
+        "symbol",
+        "side",
+        "month",
+        "clock_bin"
+      ],
+      "source_fields": [
+        "qualification-observations.parquet::{finite_quote,positive_qt,large_quote,thin,wall_brick,new_start}_{bid,ask}"
+      ]
+    },
+    {
+      "statistic_id": "AUX-D4-01",
+      "name": "全部far End occurrence的原生checkpoint检查",
+      "business_item_ref": "ID-D4/OC-C4",
+      "count_unit": "far End occurrence",
+      "object_group_key": "source namespace + symbol + side + wall_id",
+      "time_basis": "checkpoint uti/ts",
+      "denominator": "对应侧所有far_price End occurrence",
+      "deduplication_rule": "每个原生Core End一次；与正式sparse逐行等价",
+      "same_tick_rule": "保持原生occurrence顺序；不是完整逐拍far历史",
+      "strata": [
+        "symbol",
+        "side"
+      ],
+      "source_fields": [
+        "event-checkpoints.parquet::{support_flag,far_run_len,end_reason,side}"
+      ]
+    }
+  ],
+  "not_exposed_items": [
+    {
+      "statistic_id": "CANDIDATE-CONVERSION",
+      "items": [
+        "QT aligned",
+        "F0 baseline",
+        "F1 flag/ratio",
+        "F2 thick/thin",
+        "F6 candidate"
+      ],
+      "status": "NOT_EXPOSED_IN_WALL_RESULT",
+      "handling": "未取得同身份真实上游／诊断物化结果前，不计算资格命中与转化，也不将内部变量当成已统计结果。"
+    },
+    {
+      "statistic_id": "REG-D4-FULL",
+      "items": [
+        "support_flag",
+        "far_run_len",
+        "no_presence_run_len"
+      ],
+      "status": "NOT_EXPOSED_IN_WALL_RESULT",
+      "handling": "固定例回归与全量输出自洽分别报告；前者不能替代逐拍连续 far 全量验证。"
+    }
+  ]
+}

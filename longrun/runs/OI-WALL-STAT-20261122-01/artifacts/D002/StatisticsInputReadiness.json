@@ -1,0 +1,64 @@
+{
+  "binding_match": {
+    "code_version": "MATCH",
+    "parameter_version": "MATCH",
+    "data_scope": "PARTIAL"
+  },
+  "core_object_keys": [
+    "source_result_namespace",
+    "symbol",
+    "wall_id"
+  ],
+  "core_time_keys": [
+    "native timestamp",
+    "uti",
+    "occurrence_ordinal"
+  ],
+  "available_items": [
+    "已验证品种的 sparse/packed lifecycle occurrences、逐拍 trace 与 receipt",
+    "D002-RB-QUAL-CHECKPOINT-01：F1/F6逐拍资格与事件checkpoint，已严格核对全部正式rb事件/trace等价。"
+  ],
+  "partial_items": [
+    "整体 rb/m 范围：m 尚无有效结果"
+  ],
+  "not_exposed_items": [
+    {
+      "statistic_id": "CANDIDATE-CONVERSION",
+      "items": [
+        "QT aligned",
+        "F0 baseline",
+        "F1 flag/ratio",
+        "F2 thick/thin",
+        "F6 candidate"
+      ],
+      "status": "NOT_EXPOSED",
+      "handling": "原WALL最终表仍不暴露；本轮资格计数使用已物化且严格等价的诊断运行结果。",
+      "supplement_status": "AVAILABLE_IN_VERIFIED_DIAGNOSTIC_CARRIER_ONLY",
+      "native_result_context": "WallAssembler最终原生结果；辅助载体状态另列。"
+    },
+    {
+      "statistic_id": "REG-D4-FULL",
+      "items": [
+        "support_flag",
+        "far_run_len",
+        "no_presence_run_len"
+      ],
+      "status": "NOT_EXPOSED",
+      "handling": "可核全部far End的support/计数；不冒称完整逐拍far历史已暴露。",
+      "supplement_status": "AVAILABLE_AT_EVENT_CHECKPOINTS_NOT_FULL_TICK_FAR_HISTORY",
+      "native_result_context": "WallAssembler最终原生结果；辅助载体状态另列。"
+    }
+  ],
+  "data_quality_findings": [
+    "m 的锁定正式入口失败；未把 m 缺失统计成零，也未改变 rb/m 全年请求范围。"
+  ],
+  "readiness_status": "PARTIAL",
+  "verified_symbols": [
+    "rb"
+  ],
+  "statistics_scope_note": "只对同版本且独立读回通过的分层形成剖面；整体请求范围和缺失项保留，未将部分结果作为全量完成。",
+  "binding_match_scope": "verified_symbols_only",
+  "unverified_requested_symbols": [
+    "m"
+  ]
+}

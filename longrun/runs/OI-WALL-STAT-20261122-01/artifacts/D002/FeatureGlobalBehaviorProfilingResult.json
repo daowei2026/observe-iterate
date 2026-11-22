@@ -1,0 +1,2778 @@
+{
+  "FeatureGlobalBehaviorProfilingResult": {
+    "statistics_input_readiness": {
+      "binding_match": {
+        "code_version": "MATCH",
+        "parameter_version": "MATCH",
+        "data_scope": "PARTIAL"
+      },
+      "core_object_keys": [
+        "source_result_namespace",
+        "symbol",
+        "wall_id"
+      ],
+      "core_time_keys": [
+        "native timestamp",
+        "uti",
+        "occurrence_ordinal"
+      ],
+      "available_items": [
+        "已验证品种的 sparse/packed lifecycle occurrences、逐拍 trace 与 receipt",
+        "D002-RB-QUAL-CHECKPOINT-01：F1/F6逐拍资格与事件checkpoint，已严格核对全部正式rb事件/trace等价。"
+      ],
+      "partial_items": [
+        "整体 rb/m 范围：m 尚无有效结果"
+      ],
+      "not_exposed_items": [
+        {
+          "statistic_id": "CANDIDATE-CONVERSION",
+          "items": [
+            "QT aligned",
+            "F0 baseline",
+            "F1 flag/ratio",
+            "F2 thick/thin",
+            "F6 candidate"
+          ],
+          "status": "NOT_EXPOSED",
+          "handling": "原WALL最终表仍不暴露；本轮资格计数使用已物化且严格等价的诊断运行结果。",
+          "supplement_status": "AVAILABLE_IN_VERIFIED_DIAGNOSTIC_CARRIER_ONLY",
+          "native_result_context": "WallAssembler最终原生结果；辅助载体状态另列。"
+        },
+        {
+          "statistic_id": "REG-D4-FULL",
+          "items": [
+            "support_flag",
+            "far_run_len",
+            "no_presence_run_len"
+          ],
+          "status": "NOT_EXPOSED",
+          "handling": "可核全部far End的support/计数；不冒称完整逐拍far历史已暴露。",
+          "supplement_status": "AVAILABLE_AT_EVENT_CHECKPOINTS_NOT_FULL_TICK_FAR_HISTORY",
+          "native_result_context": "WallAssembler最终原生结果；辅助载体状态另列。"
+        }
+      ],
+      "data_quality_findings": [
+        "m 的锁定正式入口失败；未把 m 缺失统计成零，也未改变 rb/m 全年请求范围。"
+      ],
+      "readiness_status": "PARTIAL",
+      "verified_symbols": [
+        "rb"
+      ],
+      "statistics_scope_note": "只对同版本且独立读回通过的分层形成剖面；整体请求范围和缺失项保留，未将部分结果作为全量完成。",
+      "binding_match_scope": "verified_symbols_only",
+      "unverified_requested_symbols": [
+        "m"
+      ]
+    },
+    "global_behavior_profile": {
+      "profile_id": "GBP-WALL-STAT-20261122-D002",
+      "feature_ref": "mquant.tis.hf.prel0.wall_assembler.WallAssembler",
+      "run_binding": {
+        "feature_name": "mquant.tis.hf.prel0.wall_assembler.WallAssembler",
+        "code_version": "daowei2026/tis@6618d4d147d6ebbe634e61facddf2c9a0b996982",
+        "parameter_instance_ref": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/preflight.json",
+        "parameter_version": "wall-default-at-6618d4d",
+        "run_id": "OI-WALL-STAT-20261122-01",
+        "data_scope": {
+          "symbols": [
+            "rb",
+            "m"
+          ],
+          "start_time": "2021-01-01",
+          "end_time": "2021-12-31",
+          "calendar": "night_end_at_2300",
+          "sessions": "正式日历中的输入；自然钟分箱单独声明"
+        },
+        "artifact_refs": [
+          {
+            "symbol": "rb",
+            "full_dir": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/native-cache/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300",
+            "fields_sha256": "aed94a7f539906449a0e385a5f0c57b23faad1abf0aa2d91abbf76ea201c3458",
+            "receipt_sha256": "c04ef15260edbebb713f7891ec48b87c34803a0b42818da3e35691fc6b9ddc94"
+          }
+        ],
+        "run_result_tables": [
+          {
+            "symbol": "rb",
+            "key": "wall__stream",
+            "path": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/tables/wall__stream.parquet",
+            "rows": 317088,
+            "columns": [
+              "availability_code",
+              "band_hi",
+              "band_lo",
+              "chunk_end_ts",
+              "chunk_id",
+              "core_price",
+              "event_type_code",
+              "occurrence_ordinal",
+              "reason_code",
+              "side_code",
+              "status_code",
+              "ts",
+              "uti",
+              "wall_id"
+            ],
+            "dtypes": {
+              "availability_code": "int8",
+              "band_hi": "float64",
+              "band_lo": "float64",
+              "chunk_end_ts": "datetime64[ns]",
+              "chunk_id": "int64",
+              "core_price": "float64",
+              "event_type_code": "int64",
+              "occurrence_ordinal": "int64",
+              "reason_code": "float64",
+              "side_code": "int64",
+              "status_code": "int64",
+              "ts": "datetime64[ns]",
+              "uti": "int64",
+              "wall_id": "int64"
+            },
+            "first_time": "2021-02-23 09:07:08.500000",
+            "last_time": "2021-12-31 14:58:53",
+            "sha256": "899d0646914b7ade56c074b232a7bcb0ec2b83f6caf438ff10ade71259296a48",
+            "bytes": 7554829,
+            "sorted": true
+          },
+          {
+            "symbol": "rb",
+            "key": "wall__stream__occ0001",
+            "path": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/tables/wall__stream__occ0001.parquet",
+            "rows": 17234,
+            "columns": [
+              "availability_code",
+              "band_hi",
+              "band_lo",
+              "chunk_end_ts",
+              "chunk_id",
+              "core_price",
+              "event_type_code",
+              "occurrence_ordinal",
+              "reason_code",
+              "side_code",
+              "status_code",
+              "ts",
+              "uti",
+              "wall_id"
+            ],
+            "dtypes": {
+              "availability_code": "int8",
+              "band_hi": "float64",
+              "band_lo": "float64",
+              "chunk_end_ts": "datetime64[ns]",
+              "chunk_id": "int64",
+              "core_price": "float64",
+              "event_type_code": "int64",
+              "occurrence_ordinal": "int64",
+              "reason_code": "float64",
+              "side_code": "int64",
+              "status_code": "int64",
+              "ts": "datetime64[ns]",
+              "uti": "int64",
+              "wall_id": "int64"
+            },
+            "first_time": "2021-02-23 11:19:48",
+            "last_time": "2021-12-31 14:53:07.500000",
+            "sha256": "c27659c46b61208a9afd3de2c57bcbd57e91b9624fdc48cf3f083673cbcca6e3",
+            "bytes": 585169,
+            "sorted": true
+          },
+          {
+            "symbol": "rb",
+            "key": "wall__stream__occ0002",
+            "path": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/tables/wall__stream__occ0002.parquet",
+            "rows": 737,
+            "columns": [
+              "availability_code",
+              "band_hi",
+              "band_lo",
+              "chunk_end_ts",
+              "chunk_id",
+              "core_price",
+              "event_type_code",
+              "occurrence_ordinal",
+              "reason_code",
+              "side_code",
+              "status_code",
+              "ts",
+              "uti",
+              "wall_id"
+            ],
+            "dtypes": {
+              "availability_code": "int8",
+              "band_hi": "float64",
+              "band_lo": "float64",
+              "chunk_end_ts": "datetime64[ns]",
+              "chunk_id": "int64",
+              "core_price": "float64",
+              "event_type_code": "int64",
+              "occurrence_ordinal": "int64",
+              "reason_code": "float64",
+              "side_code": "int64",
+              "status_code": "int64",
+              "ts": "datetime64[ns]",
+              "uti": "int64",
+              "wall_id": "int64"
+            },
+            "first_time": "2021-02-23 11:19:48.500000",
+            "last_time": "2021-12-30 13:59:03.500000",
+            "sha256": "32a5e27a57cdae273cf227bbcd7becefd2bbdda8f720f52f217b6025da74e3e3",
+            "bytes": 36219,
+            "sorted": true
+          },
+          {
+            "symbol": "rb",
+            "key": "wall__stream__occ0003",
+            "path": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/tables/wall__stream__occ0003.parquet",
+            "rows": 22,
+            "columns": [
+              "availability_code",
+              "band_hi",
+              "band_lo",
+              "chunk_end_ts",
+              "chunk_id",
+              "core_price",
+              "event_type_code",
+              "occurrence_ordinal",
+              "reason_code",
+              "side_code",
+              "status_code",
+              "ts",
+              "uti",
+              "wall_id"
+            ],
+            "dtypes": {
+              "availability_code": "int8",
+              "band_hi": "float64",
+              "band_lo": "float64",
+              "chunk_end_ts": "datetime64[ns]",
+              "chunk_id": "int64",
+              "core_price": "float64",
+              "event_type_code": "int64",
+              "occurrence_ordinal": "int64",
+              "reason_code": "float64",
+              "side_code": "int64",
+              "status_code": "int64",
+              "ts": "datetime64[ns]",
+              "uti": "int64",
+              "wall_id": "int64"
+            },
+            "first_time": "2021-04-19 13:30:08.500000",
+            "last_time": "2021-11-19 14:03:27",
+            "sha256": "2a5837914e4a815842f49621df109574a9460727a88a6d512e3c0430e596823f",
+            "bytes": 10864,
+            "sorted": true
+          },
+          {
+            "symbol": "rb",
+            "key": "wall_assembler_sparse_events",
+            "path": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/tables/wall_assembler_sparse_events.parquet",
+            "rows": 335081,
+            "columns": [
+              "availability_code",
+              "band_hi",
+              "band_lo",
+              "chunk_end_ts",
+              "chunk_id",
+              "core_price",
+              "event_type_code",
+              "reason_code",
+              "side_code",
+              "status_code",
+              "ts",
+              "uti",
+              "wall_id"
+            ],
+            "dtypes": {
+              "availability_code": "int8",
+              "band_hi": "float64",
+              "band_lo": "float64",
+              "chunk_end_ts": "datetime64[ns]",
+              "chunk_id": "int64",
+              "core_price": "float64",
+              "event_type_code": "int64",
+              "reason_code": "float64",
+              "side_code": "int64",
+              "status_code": "int64",
+              "ts": "datetime64[ns]",
+              "uti": "int64",
+              "wall_id": "int64"
+            },
+            "first_time": "2021-02-23 09:07:08.500000",
+            "last_time": "2021-12-31 14:58:53",
+            "sha256": "9af8e8ce41cbdbf55d61c3424752cae34c16aa71a510e5987c4bc952a9419110",
+            "bytes": 7883967,
+            "sorted": true
+          },
+          {
+            "symbol": "rb",
+            "key": "wall_assembler_state_trace",
+            "path": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/tables/wall_assembler_state_trace.parquet",
+            "rows": 9959400,
+            "columns": [
+              "chunk_id",
+              "ts",
+              "uti",
+              "wall_band_hi_ask",
+              "wall_band_hi_bid",
+              "wall_band_lo_ask",
+              "wall_band_lo_bid",
+              "wall_core_price_ask",
+              "wall_core_price_bid",
+              "wall_id_ask",
+              "wall_id_bid",
+              "wall_side_code_ask",
+              "wall_side_code_bid",
+              "wall_status_code_ask",
+              "wall_status_code_bid"
+            ],
+            "dtypes": {
+              "chunk_id": "int64",
+              "ts": "datetime64[ns]",
+              "uti": "int64",
+              "wall_band_hi_ask": "float64",
+              "wall_band_hi_bid": "float64",
+              "wall_band_lo_ask": "float64",
+              "wall_band_lo_bid": "float64",
+              "wall_core_price_ask": "float64",
+              "wall_core_price_bid": "float64",
+              "wall_id_ask": "int64",
+              "wall_id_bid": "int64",
+              "wall_side_code_ask": "int8",
+              "wall_side_code_bid": "int8",
+              "wall_status_code_ask": "int8",
+              "wall_status_code_bid": "int8"
+            },
+            "first_time": "2021-01-04 09:00:00.500000",
+            "last_time": "2021-12-31 15:00:00",
+            "sha256": "e2eab94cbd4c36510045e17c299bf71843133113c2be07696d01498465724114",
+            "bytes": 137893049,
+            "sorted": true
+          }
+        ],
+        "known_data_limits": [
+          "m 的锁定正式入口失败；未把 m 缺失统计成零，也未改变 rb/m 全年请求范围。"
+        ],
+        "verified_symbols": [
+          "rb"
+        ],
+        "missing_symbols": [
+          "m"
+        ],
+        "status": "PARTIAL",
+        "auxiliary_result_bindings": [
+          {
+            "auxiliary_id": "D002-RB-QUAL-CHECKPOINT-01",
+            "mode": "UNMODIFIED_COMPONENT_DIAGNOSTIC_RESULT",
+            "code_version": "daowei2026/tis@6618d4d147d6ebbe634e61facddf2c9a0b996982",
+            "parameter_instance_ref": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/preflight.json",
+            "symbol": "rb",
+            "declared_data_scope": {
+              "sof_name": "TA_updto20240229_DBA",
+              "stk_tlist": "tick_test_all57_takeout_lcNsiNcy",
+              "startDay": "2021-01-01",
+              "endDay": "2021-12-31"
+            },
+            "calendar": "night_end_at_2300",
+            "artifacts": [
+              {
+                "path": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/rb-upstream-checkpoint-replay/qualification-observations.parquet",
+                "sha256": "cd72d66921a0dc64c37d2750c106925c897b85ab88915a2df419c8af9226a9c1",
+                "bytes": 98474996
+              },
+              {
+                "path": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/rb-upstream-checkpoint-replay/event-checkpoints.parquet",
+                "sha256": "782ffe2678f0d59258913a160fef34e94b534c9d3291ede37d61241c5697214e",
+                "bytes": 12249559
+              }
+            ],
+            "all_formal_event_and_trace_values_equal": true,
+            "formal_source_or_output_changed": false,
+            "evidence_role": "真实新增诊断运行载体；原WALL最终表未暴露资格/完整far轨迹的事实保留。"
+          }
+        ]
+      },
+      "statistics_definitions": [
+        {
+          "statistic_id": "EV-01",
+          "name": "四类 occurrence 数量与单位观测拍密度",
+          "business_item_ref": "OC-C1..OC-C4",
+          "count_unit": "事件 occurrence",
+          "object_group_key": "source_result_namespace + symbol + wall_id",
+          "time_basis": "原生 ts + uti",
+          "denominator": "对应 symbol/side 的 trace 样本拍数；按一百万样本拍列出事件密度",
+          "deduplication_rule": "只采用 packed stream 并集，不与 sparse 表重复相加。",
+          "same_tick_rule": "同拍多 occurrence 保留 ordinal；不按 id+uti+type 盲目去重。",
+          "strata": [
+            "symbol",
+            "side",
+            "month",
+            "clock_bin"
+          ],
+          "source_fields": [
+            "event_type_code",
+            "side_code",
+            "wall_id",
+            "uti",
+            "occurrence_ordinal",
+            "trace row count"
+          ]
+        },
+        {
+          "statistic_id": "BO-01",
+          "name": "新建对象数及每对象事件数",
+          "business_item_ref": "BO-C1",
+          "count_unit": "唯一 Wall identity／事件 occurrence",
+          "object_group_key": "source_result_namespace + symbol + wall_id",
+          "time_basis": "Start uti 与各 occurrence uti",
+          "denominator": "同范围唯一对象数；Start occurrence 单列核对",
+          "deduplication_rule": "只采用 packed stream 并集，不与 sparse 表重复相加。",
+          "same_tick_rule": "同拍多 occurrence 保留 ordinal；不按 id+uti+type 盲目去重。",
+          "strata": [
+            "symbol",
+            "side",
+            "month",
+            "clock_bin"
+          ],
+          "source_fields": [
+            "wall_id",
+            "side_code",
+            "event_type_code",
+            "uti"
+          ]
+        },
+        {
+          "statistic_id": "ST-01",
+          "name": "逐拍状态占用",
+          "business_item_ref": "ST-C0..ST-C3",
+          "count_unit": "每侧状态样本拍",
+          "object_group_key": "source_result_namespace + symbol + wall_id",
+          "time_basis": "逐拍 trace uti；不把样本拍数自动改写成自然时间",
+          "denominator": "该 symbol/side 全部 trace 样本拍",
+          "deduplication_rule": "每侧每个 trace 输入拍一次。",
+          "same_tick_rule": "同拍只用该侧末态；不是 occurrence。",
+          "strata": [
+            "symbol",
+            "side",
+            "month",
+            "clock_bin"
+          ],
+          "source_fields": [
+            "wall_status_code_{side}",
+            "wall_id_{side}",
+            "uti"
+          ]
+        },
+        {
+          "statistic_id": "ST-02",
+          "name": "状态转换、状态连续段与恢复",
+          "business_item_ref": "ST-C1..ST-C3",
+          "count_unit": "转换 occurrence／连续状态段",
+          "object_group_key": "source_result_namespace + symbol + wall_id",
+          "time_basis": "事件 ordinal 顺序；trace 另计连续段",
+          "denominator": "相应对象或状态段数，分别明示",
+          "deduplication_rule": "只采用 packed stream 并集，不与 sparse 表重复相加。",
+          "same_tick_rule": "同拍多 occurrence 保留 ordinal；不按 id+uti+type 盲目去重。",
+          "strata": [
+            "symbol",
+            "side",
+            "month",
+            "clock_bin"
+          ],
+          "source_fields": [
+            "status_code",
+            "event_type_code",
+            "wall_id",
+            "uti",
+            "wall_status_code_{side}"
+          ]
+        },
+        {
+          "statistic_id": "LC-01",
+          "name": "完整与截尾生命周期及寿命分布",
+          "business_item_ref": "BO-C1",
+          "count_unit": "Wall 生命周期",
+          "object_group_key": "source_result_namespace + symbol + wall_id",
+          "time_basis": "同身份 Start/End UTI 差；另报原生 timestamp 差",
+          "denominator": "有 Start 的对象；完成与右截尾分别列分母",
+          "deduplication_rule": "只采用 packed stream 并集，不与 sparse 表重复相加。",
+          "same_tick_rule": "同拍多 occurrence 保留 ordinal；不按 id+uti+type 盲目去重。",
+          "strata": [
+            "symbol",
+            "side",
+            "month",
+            "clock_bin"
+          ],
+          "source_fields": [
+            "event_type_code",
+            "wall_id",
+            "uti",
+            "ts"
+          ]
+        },
+        {
+          "statistic_id": "LC-02",
+          "name": "短命、零拍寿命和同位置反复新建",
+          "business_item_ref": "BO-C1",
+          "count_unit": "完整生命周期／相邻同侧 Start 对",
+          "object_group_key": "source_result_namespace + symbol + wall_id",
+          "time_basis": "UTI 差；同位置先按已发布 band_lo/hi/core 的精确相等定义",
+          "denominator": "完整生命周期或同侧相邻 Start 对，按项目明示",
+          "deduplication_rule": "只采用 packed stream 并集，不与 sparse 表重复相加。",
+          "same_tick_rule": "同拍多 occurrence 保留 ordinal；不按 id+uti+type 盲目去重。",
+          "strata": [
+            "symbol",
+            "side",
+            "month",
+            "clock_bin"
+          ],
+          "source_fields": [
+            "wall_id",
+            "uti",
+            "event_type_code",
+            "side_code",
+            "band_lo",
+            "band_hi",
+            "core_price"
+          ]
+        },
+        {
+          "statistic_id": "RS-01",
+          "name": "结束原因数量、比例和可达边界",
+          "business_item_ref": "OC-C4",
+          "count_unit": "End occurrence",
+          "object_group_key": "source_result_namespace + symbol + wall_id",
+          "time_basis": "End uti/ts",
+          "denominator": "同 stratum 的 End occurrence；非 End reason 缺失不计为 reason=0",
+          "deduplication_rule": "只采用 packed stream 并集，不与 sparse 表重复相加。",
+          "same_tick_rule": "同拍多 occurrence 保留 ordinal；不按 id+uti+type 盲目去重。",
+          "strata": [
+            "symbol",
+            "side",
+            "month",
+            "clock_bin"
+          ],
+          "source_fields": [
+            "event_type_code",
+            "reason_code",
+            "side_code",
+            "uti"
+          ]
+        },
+        {
+          "statistic_id": "INV-01",
+          "name": "起终点、身份、终结后更新和非法转换",
+          "business_item_ref": "BO-C1/ST-C1..3",
+          "count_unit": "对象／违反不变量的 occurrence",
+          "object_group_key": "source_result_namespace + symbol + wall_id",
+          "time_basis": "按 ts/uti/ordinal 保留原生顺序",
+          "denominator": "实际适用对象／occurrence；每条 finding 明示",
+          "deduplication_rule": "只采用 packed stream 并集，不与 sparse 表重复相加。",
+          "same_tick_rule": "同拍多 occurrence 保留 ordinal；不按 id+uti+type 盲目去重。",
+          "strata": [
+            "symbol",
+            "side",
+            "month",
+            "clock_bin"
+          ],
+          "source_fields": [
+            "wall_id",
+            "event_type_code",
+            "side_code",
+            "status_code",
+            "uti",
+            "occurrence_ordinal"
+          ]
+        },
+        {
+          "statistic_id": "REG-D1",
+          "name": "最终身份事件几何与 trace 自洽",
+          "business_item_ref": "ID-D1",
+          "count_unit": "可与该拍同身份末态对齐的 occurrence",
+          "object_group_key": "source_result_namespace + symbol + wall_id",
+          "time_basis": "ts+uti；只比较 id 与该侧最终 slot 一致的事件",
+          "denominator": "所有具备同拍同身份 trace 的事件；relocation 旧 End 单列不适用",
+          "deduplication_rule": "只采用 packed stream 并集，不与 sparse 表重复相加。",
+          "same_tick_rule": "同拍多 occurrence 保留 ordinal；不按 id+uti+type 盲目去重。",
+          "strata": [
+            "symbol",
+            "side",
+            "month",
+            "clock_bin"
+          ],
+          "source_fields": [
+            "wall_id",
+            "uti",
+            "side_code",
+            "band_lo",
+            "band_hi",
+            "core_price",
+            "wall_id_{side}",
+            "wall_band_lo_{side}",
+            "wall_band_hi_{side}",
+            "wall_core_price_{side}"
+          ]
+        },
+        {
+          "statistic_id": "REG-D2",
+          "name": "同拍进入 Dormant 与 End 重叠",
+          "business_item_ref": "ID-D2",
+          "count_unit": "同对象同 uti 的事件组",
+          "object_group_key": "source_result_namespace + symbol + wall_id",
+          "time_basis": "同 identity/uti 分组，保持 ordinal",
+          "denominator": "含 End 的对象拍组；恢复 Alive+End 不误计为进入 Dormant+End",
+          "deduplication_rule": "只采用 packed stream 并集，不与 sparse 表重复相加。",
+          "same_tick_rule": "同拍多 occurrence 保留 ordinal；不按 id+uti+type 盲目去重。",
+          "strata": [
+            "symbol",
+            "side",
+            "month",
+            "clock_bin"
+          ],
+          "source_fields": [
+            "event_type_code",
+            "status_code",
+            "wall_id",
+            "uti",
+            "side_code"
+          ]
+        },
+        {
+          "statistic_id": "D3-01",
+          "name": "D3薄触结束后的原位重建可读子模式",
+          "business_item_ref": "OC-C4 -> OC-C1 / Owner暂缓D3",
+          "count_unit": "同侧相邻薄触End/新身份Start对象对",
+          "object_group_key": "source namespace + symbol + side + consecutive lifecycle occurrence pair",
+          "time_basis": "事件uti差与原生timestamp差分别报告",
+          "denominator": "已验证分层全部thin_contact End occurrence，另报满足严格发布几何相等的对数",
+          "deduplication_rule": "同侧顺序流相邻End->Start，保留物理ordinal；两套事件表示不相加",
+          "same_tick_rule": "同拍按ordinal，旧/新身份不同；不把同拍自动判错",
+          "strata": [
+            "symbol",
+            "side"
+          ],
+          "source_fields": [
+            "event_type_code",
+            "reason_code",
+            "wall_id",
+            "side_code",
+            "uti",
+            "band_lo",
+            "band_hi",
+            "core_price"
+          ],
+          "known_limit": "只数已发布band/core精确相等的子模式，未等同全部D3，也未关闭或修改Owner暂缓决定。",
+          "definition_ref": "daowei2026/observe-iterate@87b951bbd15078a2d6353bdd24afe0d8f19c845c:ai_chat/根据统计找不合理点/wall特征，修frp代码.md"
+        },
+        {
+          "statistic_id": "EV-02",
+          "name": "同刻 occurrence 基数与同对象事件顺序",
+          "business_item_ref": "OC-C1..4",
+          "count_unit": "物理timestamp组／对象uti组分别计",
+          "object_group_key": "source namespace + symbol + wall_id + uti",
+          "time_basis": "native timestamp、uti与物理ordinal",
+          "denominator": "对应已发生事件组数",
+          "deduplication_rule": "packed并集；同类型重复occurrence保留",
+          "same_tick_rule": "按全局物理ordinal保留每条，再按对象分组；不引入业务因果优先级",
+          "strata": [
+            "symbol",
+            "side"
+          ],
+          "source_fields": [
+            "wall_id",
+            "uti",
+            "occurrence_ordinal",
+            "event_type_code",
+            "side_code"
+          ]
+        },
+        {
+          "statistic_id": "AUX-QUAL-01",
+          "name": "实际物化诊断载体的上游资格与Wall新建转化",
+          "business_item_ref": "输入观测/ID-C1/BO-C1",
+          "count_unit": "每侧观测资格数；新建身份另外计",
+          "object_group_key": "同一来源namespace、symbol、uti、side；Wall身份另按wall_id",
+          "time_basis": "原生timestamp/uti",
+          "denominator": "原始侧别观测、QT正值观测、F1命中、F6命中分别给出；每项转化用相应上游分母",
+          "deduplication_rule": "每侧每输入拍一次；新Start须匹配F6资格，诊断产物不与正式事件重复相加",
+          "same_tick_rule": "side独立；仅new_start标记对应同拍正式Start",
+          "strata": [
+            "symbol",
+            "side",
+            "month",
+            "clock_bin"
+          ],
+          "source_fields": [
+            "qualification-observations.parquet::{finite_quote,positive_qt,large_quote,thin,wall_brick,new_start}_{bid,ask}"
+          ]
+        },
+        {
+          "statistic_id": "AUX-D4-01",
+          "name": "全部far End occurrence的原生checkpoint检查",
+          "business_item_ref": "ID-D4/OC-C4",
+          "count_unit": "far End occurrence",
+          "object_group_key": "source namespace + symbol + side + wall_id",
+          "time_basis": "checkpoint uti/ts",
+          "denominator": "对应侧所有far_price End occurrence",
+          "deduplication_rule": "每个原生Core End一次；与正式sparse逐行等价",
+          "same_tick_rule": "保持原生occurrence顺序；不是完整逐拍far历史",
+          "strata": [
+            "symbol",
+            "side"
+          ],
+          "source_fields": [
+            "event-checkpoints.parquet::{support_flag,far_run_len,end_reason,side}"
+          ]
+        }
+      ],
+      "candidate_profile": [
+        {
+          "statistic_id": "AUX-QUAL-01",
+          "stratum_id": "rb/bid",
+          "value_or_distribution": {
+            "raw_observations": 9959400,
+            "finite_quote_observations": 9959400,
+            "positive_qt_observations": 8690400,
+            "large_quote_observations": 178751,
+            "wall_brick_observations": 178673,
+            "start_occurrences": 36197,
+            "large_but_thin_observations": 78,
+            "candidate_without_new_start": 142476,
+            "F1_per_positive_QT": {
+              "numerator": 178751,
+              "denominator": 8690400,
+              "ratio": 0.020568788548283163
+            },
+            "F6_per_F1": {
+              "numerator": 178673,
+              "denominator": 178751,
+              "ratio": 0.9995636388048179
+            },
+            "new_Wall_per_F6": {
+              "numerator": 36197,
+              "denominator": 178673,
+              "ratio": 0.20258796796382217
+            }
+          },
+          "sample_size": 9959400,
+          "denominator_value": 9959400,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/rb-upstream-checkpoint-replay/qualification-observations.parquet",
+          "notes": "真实诊断载体。各转化率在value内分别列相应分母；计数单位不混用，未改变正式范围或原WALL表合同。"
+        },
+        {
+          "statistic_id": "AUX-QUAL-01",
+          "stratum_id": "rb/ask",
+          "value_or_distribution": {
+            "raw_observations": 9959400,
+            "finite_quote_observations": 9959400,
+            "positive_qt_observations": 8690400,
+            "large_quote_observations": 168994,
+            "wall_brick_observations": 168560,
+            "start_occurrences": 34698,
+            "large_but_thin_observations": 434,
+            "candidate_without_new_start": 133862,
+            "F1_per_positive_QT": {
+              "numerator": 168994,
+              "denominator": 8690400,
+              "ratio": 0.019446055417472154
+            },
+            "F6_per_F1": {
+              "numerator": 168560,
+              "denominator": 168994,
+              "ratio": 0.9974318614862067
+            },
+            "new_Wall_per_F6": {
+              "numerator": 34698,
+              "denominator": 168560,
+              "ratio": 0.20584954912197437
+            }
+          },
+          "sample_size": 9959400,
+          "denominator_value": 9959400,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/rb-upstream-checkpoint-replay/qualification-observations.parquet",
+          "notes": "真实诊断载体。各转化率在value内分别列相应分母；计数单位不混用，未改变正式范围或原WALL表合同。"
+        }
+      ],
+      "object_profile": [
+        {
+          "statistic_id": "BO-01",
+          "stratum_id": "rb",
+          "value_or_distribution": {
+            "unique_objects": 70895,
+            "start_occurrences": 70895,
+            "objects_with_start": 70895,
+            "objects_with_end": 70895,
+            "right_censored": 0,
+            "events_per_object": {
+              "n": 70895,
+              "min": 2.0,
+              "p25": 2.0,
+              "p50": 4.0,
+              "p90": 9.0,
+              "p95": 12.0,
+              "p99": 17.0,
+              "max": 41.0
+            }
+          },
+          "sample_size": 335081,
+          "denominator_value": 70895,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/wall_events.parquet",
+          "notes": ""
+        }
+      ],
+      "event_profile": [
+        {
+          "statistic_id": "EV-01",
+          "stratum_id": "rb/bid",
+          "value_or_distribution": {
+            "4": 36197,
+            "5": 96361,
+            "6": 3611,
+            "7": 36197
+          },
+          "sample_size": 172366,
+          "denominator_value": 172366,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/wall_events.parquet",
+          "notes": "按packed occurrence并集；同刻ordinal保留，不与sparse重复计数。"
+        },
+        {
+          "statistic_id": "EV-01",
+          "stratum_id": "rb/ask",
+          "value_or_distribution": {
+            "4": 34698,
+            "5": 90101,
+            "6": 3218,
+            "7": 34698
+          },
+          "sample_size": 162715,
+          "denominator_value": 162715,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/wall_events.parquet",
+          "notes": "按packed occurrence并集；同刻ordinal保留，不与sparse重复计数。"
+        }
+      ],
+      "state_occupancy_profile": [
+        {
+          "statistic_id": "ST-01",
+          "stratum_id": "rb/bid",
+          "value_or_distribution": {
+            "0": {
+              "samples": 1269856,
+              "fraction": 0.12750326324879008
+            },
+            "1": {
+              "samples": 554395,
+              "fraction": 0.05566550193786774
+            },
+            "2": {
+              "samples": 4895,
+              "fraction": 0.0004914954716147559
+            },
+            "3": {
+              "samples": 8130254,
+              "fraction": 0.8163397393417274
+            }
+          },
+          "sample_size": 9959400,
+          "denominator_value": 9959400,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/tables/wall_assembler_state_trace.parquet",
+          "notes": "状态样本拍；Ended重复样本不是End事件。"
+        },
+        {
+          "statistic_id": "ST-01",
+          "stratum_id": "rb/ask",
+          "value_or_distribution": {
+            "0": {
+              "samples": 1269971,
+              "fraction": 0.12751481012912425
+            },
+            "1": {
+              "samples": 527943,
+              "fraction": 0.053009518645701546
+            },
+            "2": {
+              "samples": 4254,
+              "fraction": 0.0004271341647087174
+            },
+            "3": {
+              "samples": 8157232,
+              "fraction": 0.8190485370604655
+            }
+          },
+          "sample_size": 9959400,
+          "denominator_value": 9959400,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/tables/wall_assembler_state_trace.parquet",
+          "notes": "状态样本拍；Ended重复样本不是End事件。"
+        }
+      ],
+      "transition_profile": [
+        {
+          "statistic_id": "ST-02",
+          "stratum_id": "rb/bid",
+          "value_or_distribution": {
+            "enter_dormant": 3073,
+            "recover_alive": 538
+          },
+          "sample_size": 3611,
+          "denominator_value": 3611,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/wall_events.parquet",
+          "notes": ""
+        },
+        {
+          "statistic_id": "ST-02",
+          "stratum_id": "rb/bid/state-1",
+          "value_or_distribution": {
+            "continuous_segments": 36735,
+            "sample_run_length": {
+              "n": 36735,
+              "min": 1.0,
+              "p25": 5.0,
+              "p50": 10.0,
+              "p90": 31.0,
+              "p95": 41.0,
+              "p99": 67.0,
+              "max": 22754.0
+            },
+            "uti_span_last_minus_first": {
+              "n": 36735,
+              "min": 0.0,
+              "p25": 4.0,
+              "p50": 9.0,
+              "p90": 30.0,
+              "p95": 40.0,
+              "p99": 66.0,
+              "max": 22753.0
+            },
+            "right_censored": 0
+          },
+          "sample_size": 36735,
+          "denominator_value": 36735,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/profile/rb-bid-state-segments.parquet",
+          "notes": "连续同身份同末态段；样本长度和首末UTI差分别报告，不伪造事件中间状态的逐拍持续。"
+        },
+        {
+          "statistic_id": "ST-02",
+          "stratum_id": "rb/bid/state-2",
+          "value_or_distribution": {
+            "continuous_segments": 3073,
+            "sample_run_length": {
+              "n": 3073,
+              "min": 1.0,
+              "p25": 1.0,
+              "p50": 1.0,
+              "p90": 2.0,
+              "p95": 3.0,
+              "p99": 5.0,
+              "max": 9.0
+            },
+            "uti_span_last_minus_first": {
+              "n": 3073,
+              "min": 0.0,
+              "p25": 0.0,
+              "p50": 0.0,
+              "p90": 1.0,
+              "p95": 2.0,
+              "p99": 4.0,
+              "max": 8.0
+            },
+            "right_censored": 0
+          },
+          "sample_size": 3073,
+          "denominator_value": 3073,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/profile/rb-bid-state-segments.parquet",
+          "notes": "连续同身份同末态段；样本长度和首末UTI差分别报告，不伪造事件中间状态的逐拍持续。"
+        },
+        {
+          "statistic_id": "ST-02",
+          "stratum_id": "rb/ask",
+          "value_or_distribution": {
+            "enter_dormant": 2707,
+            "recover_alive": 511
+          },
+          "sample_size": 3218,
+          "denominator_value": 3218,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/wall_events.parquet",
+          "notes": ""
+        },
+        {
+          "statistic_id": "ST-02",
+          "stratum_id": "rb/ask/state-1",
+          "value_or_distribution": {
+            "continuous_segments": 35209,
+            "sample_run_length": {
+              "n": 35209,
+              "min": 1.0,
+              "p25": 5.0,
+              "p50": 10.0,
+              "p90": 31.0,
+              "p95": 42.0,
+              "p99": 67.0,
+              "max": 6630.0
+            },
+            "uti_span_last_minus_first": {
+              "n": 35209,
+              "min": 0.0,
+              "p25": 4.0,
+              "p50": 9.0,
+              "p90": 30.0,
+              "p95": 41.0,
+              "p99": 66.0,
+              "max": 6629.0
+            },
+            "right_censored": 0
+          },
+          "sample_size": 35209,
+          "denominator_value": 35209,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/profile/rb-ask-state-segments.parquet",
+          "notes": "连续同身份同末态段；样本长度和首末UTI差分别报告，不伪造事件中间状态的逐拍持续。"
+        },
+        {
+          "statistic_id": "ST-02",
+          "stratum_id": "rb/ask/state-2",
+          "value_or_distribution": {
+            "continuous_segments": 2707,
+            "sample_run_length": {
+              "n": 2707,
+              "min": 1.0,
+              "p25": 1.0,
+              "p50": 1.0,
+              "p90": 2.0,
+              "p95": 3.0,
+              "p99": 5.0,
+              "max": 9.0
+            },
+            "uti_span_last_minus_first": {
+              "n": 2707,
+              "min": 0.0,
+              "p25": 0.0,
+              "p50": 0.0,
+              "p90": 1.0,
+              "p95": 2.0,
+              "p99": 4.0,
+              "max": 8.0
+            },
+            "right_censored": 0
+          },
+          "sample_size": 2707,
+          "denominator_value": 2707,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/profile/rb-ask-state-segments.parquet",
+          "notes": "连续同身份同末态段；样本长度和首末UTI差分别报告，不伪造事件中间状态的逐拍持续。"
+        }
+      ],
+      "lifecycle_profile": [
+        {
+          "statistic_id": "LC-01",
+          "stratum_id": "rb/bid",
+          "value_or_distribution": {
+            "complete_lives": 36197,
+            "right_censored": 0,
+            "lifetime_uti": {
+              "n": 36197,
+              "min": 1.0,
+              "p25": 6.0,
+              "p50": 11.0,
+              "p90": 31.0,
+              "p95": 41.0,
+              "p99": 67.0,
+              "max": 22754.0
+            },
+            "wall_clock_seconds": {
+              "n": 36197,
+              "min": 0.5,
+              "p25": 3.0,
+              "p50": 5.5,
+              "p90": 15.5,
+              "p95": 20.5,
+              "p99": 35.0,
+              "max": 208819.5
+            },
+            "zero_uti_lives": 0,
+            "up_to_3_uti": 3411,
+            "up_to_12_uti": 20862
+          },
+          "sample_size": 36197,
+          "denominator_value": 36197,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/profile/rb-lifecycles.parquet",
+          "notes": "UTI差、墙钟时间差和样本拍分别解释。"
+        },
+        {
+          "statistic_id": "LC-01",
+          "stratum_id": "rb/ask",
+          "value_or_distribution": {
+            "complete_lives": 34698,
+            "right_censored": 0,
+            "lifetime_uti": {
+              "n": 34698,
+              "min": 1.0,
+              "p25": 6.0,
+              "p50": 11.0,
+              "p90": 32.0,
+              "p95": 42.0,
+              "p99": 68.0,
+              "max": 6630.0
+            },
+            "wall_clock_seconds": {
+              "n": 34698,
+              "min": 0.5,
+              "p25": 3.0,
+              "p50": 5.5,
+              "p90": 16.0,
+              "p95": 21.5,
+              "p99": 35.5,
+              "max": 208803.5
+            },
+            "zero_uti_lives": 0,
+            "up_to_3_uti": 3304,
+            "up_to_12_uti": 19728
+          },
+          "sample_size": 34698,
+          "denominator_value": 34698,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/profile/rb-lifecycles.parquet",
+          "notes": "UTI差、墙钟时间差和样本拍分别解释。"
+        },
+        {
+          "statistic_id": "LC-02",
+          "stratum_id": "rb",
+          "value_or_distribution": {
+            "strict_same_position_consecutive_start_pairs": 12880
+          },
+          "sample_size": 70895,
+          "denominator_value": 70893,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/profile/rb-same-position-consecutive-starts.parquet",
+          "notes": "同侧相邻Start的已发布band/core精确相等子模式；不是同一身份恢复，也不能仅凭数量判错。"
+        }
+      ],
+      "branch_reachability_profile": [
+        {
+          "statistic_id": "RS-01",
+          "stratum_id": "rb/bid",
+          "value_or_distribution": {
+            "breakthrough_ends": 0,
+            "default_absorb_input": "NOT_WIRED"
+          },
+          "sample_size": 36197,
+          "denominator_value": 36197,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/wall_events.parquet",
+          "notes": "无Absorb接线时零breakthrough不自动形成不可达缺陷。"
+        },
+        {
+          "statistic_id": "RS-01",
+          "stratum_id": "rb/ask",
+          "value_or_distribution": {
+            "breakthrough_ends": 0,
+            "default_absorb_input": "NOT_WIRED"
+          },
+          "sample_size": 34698,
+          "denominator_value": 34698,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/wall_events.parquet",
+          "notes": "无Absorb接线时零breakthrough不自动形成不可达缺陷。"
+        }
+      ],
+      "density_profile": [
+        {
+          "statistic_id": "EV-01",
+          "stratum_id": "rb/bid",
+          "value_or_distribution": {
+            "events_per_million_trace_samples": 17306.865875454347
+          },
+          "sample_size": 172366,
+          "denominator_value": 9959400,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/wall_events.parquet",
+          "notes": ""
+        },
+        {
+          "statistic_id": "EV-01",
+          "stratum_id": "rb/ask",
+          "value_or_distribution": {
+            "events_per_million_trace_samples": 16337.831596280901
+          },
+          "sample_size": 162715,
+          "denominator_value": 9959400,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/wall_events.parquet",
+          "notes": ""
+        }
+      ],
+      "reason_profile": [
+        {
+          "statistic_id": "RS-01",
+          "stratum_id": "rb/bid",
+          "value_or_distribution": {
+            "1": {
+              "count": 5408,
+              "fraction": 0.1494046467939332
+            },
+            "2": {
+              "count": 26946,
+              "fraction": 0.7444263336740614
+            },
+            "3": {
+              "count": 0,
+              "fraction": 0.0
+            },
+            "4": {
+              "count": 1694,
+              "fraction": 0.04679945851866177
+            },
+            "5": {
+              "count": 2149,
+              "fraction": 0.05936956101334365
+            }
+          },
+          "sample_size": 36197,
+          "denominator_value": 36197,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/wall_events.parquet",
+          "notes": ""
+        },
+        {
+          "statistic_id": "RS-01",
+          "stratum_id": "rb/ask",
+          "value_or_distribution": {
+            "1": {
+              "count": 4751,
+              "fraction": 0.136924318404519
+            },
+            "2": {
+              "count": 26578,
+              "fraction": 0.7659807481699233
+            },
+            "3": {
+              "count": 0,
+              "fraction": 0.0
+            },
+            "4": {
+              "count": 1498,
+              "fraction": 0.04317251714796242
+            },
+            "5": {
+              "count": 1871,
+              "fraction": 0.05392241627759525
+            }
+          },
+          "sample_size": 34698,
+          "denominator_value": 34698,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/wall_events.parquet",
+          "notes": ""
+        }
+      ],
+      "reference_integrity_profile": [
+        {
+          "statistic_id": "INV-01",
+          "stratum_id": "rb",
+          "value_or_distribution": {
+            "side_mutating_objects": 0,
+            "explicit_parent_reference": "NOT_APPLICABLE"
+          },
+          "sample_size": 335081,
+          "denominator_value": 70895,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/wall_events.parquet",
+          "notes": ""
+        }
+      ],
+      "same_tick_order_profile": [
+        {
+          "statistic_id": "REG-D1",
+          "stratum_id": "rb/bid",
+          "value_or_distribution": {
+            "applicable_events": 170217,
+            "geometry_conflicts": 0,
+            "non_final_identity_events": 2149
+          },
+          "sample_size": 172366,
+          "denominator_value": 170217,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/wall_events.parquet",
+          "notes": ""
+        },
+        {
+          "statistic_id": "REG-D1",
+          "stratum_id": "rb/ask",
+          "value_or_distribution": {
+            "applicable_events": 160844,
+            "geometry_conflicts": 0,
+            "non_final_identity_events": 1871
+          },
+          "sample_size": 162715,
+          "denominator_value": 160844,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/wall_events.parquet",
+          "notes": ""
+        },
+        {
+          "statistic_id": "REG-D2",
+          "stratum_id": "rb",
+          "value_or_distribution": {
+            "dormant_end_overlap_groups": 0
+          },
+          "sample_size": 335081,
+          "denominator_value": 70895,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/wall_events.parquet",
+          "notes": ""
+        },
+        {
+          "statistic_id": "EV-02",
+          "stratum_id": "rb",
+          "value_or_distribution": {
+            "physical_timestamp_groups": 317088,
+            "physical_multiplicity": {
+              "1": 299854,
+              "2": 16497,
+              "3": 715,
+              "4": 22
+            },
+            "object_uti_groups": 334281,
+            "multiple_object_uti_groups": 800,
+            "multi_event_type_sequences": {
+              "6->5": 669,
+              "5->5": 131
+            },
+            "same_object_uti_type_extra_occurrences": 131
+          },
+          "sample_size": 335081,
+          "denominator_value": 334281,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/wall_events.parquet",
+          "notes": "物理时间组可能含双侧；对象拍组只含同一身份。同类型同拍多次保留，不盲目去重。"
+        },
+        {
+          "statistic_id": "AUX-D4-01",
+          "stratum_id": "rb/bid",
+          "value_or_distribution": {
+            "far_end_occurrences": 5408,
+            "far_end_with_support": 0,
+            "far_end_counter_below_hold": 0
+          },
+          "sample_size": 5408,
+          "denominator_value": 5408,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/rb-upstream-checkpoint-replay/event-checkpoints.parquet",
+          "notes": "原生未修改Core返回的全部far End checkpoint；未声称每拍far计数历史。"
+        },
+        {
+          "statistic_id": "AUX-D4-01",
+          "stratum_id": "rb/ask",
+          "value_or_distribution": {
+            "far_end_occurrences": 4751,
+            "far_end_with_support": 0,
+            "far_end_counter_below_hold": 0
+          },
+          "sample_size": 4751,
+          "denominator_value": 4751,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/rb-upstream-checkpoint-replay/event-checkpoints.parquet",
+          "notes": "原生未修改Core返回的全部far End checkpoint；未声称每拍far计数历史。"
+        }
+      ],
+      "cross_symbol_profile": [
+        {
+          "statistic_id": "EV-01",
+          "stratum_id": "rb",
+          "value_or_distribution": {
+            "event_occurrences": 335081,
+            "unique_objects": 70895,
+            "trace_samples": 9959400
+          },
+          "sample_size": 335081,
+          "denominator_value": 9959400,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/wall_events.parquet",
+          "notes": "只有rb可用，未作rb/m数值比较；对象数、occurrence和输入样本拍保持不同单位。"
+        }
+      ],
+      "cross_period_profile": [
+        {
+          "statistic_id": "EV-01",
+          "stratum_id": "rb/bid/2021-01",
+          "value_or_distribution": {
+            "event_occurrences": 0,
+            "starts": 0,
+            "events_per_million_samples": 0.0
+          },
+          "sample_size": 0,
+          "denominator_value": 828000,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/wall_events.parquet",
+          "notes": ""
+        },
+        {
+          "statistic_id": "EV-01",
+          "stratum_id": "rb/bid/2021-02",
+          "value_or_distribution": {
+            "event_occurrences": 805,
+            "starts": 179,
+            "events_per_million_samples": 1327.0689086712825
+          },
+          "sample_size": 805,
+          "denominator_value": 606600,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/wall_events.parquet",
+          "notes": ""
+        },
+        {
+          "statistic_id": "EV-01",
+          "stratum_id": "rb/bid/2021-03",
+          "value_or_distribution": {
+            "event_occurrences": 10224,
+            "starts": 2024,
+            "events_per_million_samples": 10737.240075614367
+          },
+          "sample_size": 10224,
+          "denominator_value": 952200,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/wall_events.parquet",
+          "notes": ""
+        },
+        {
+          "statistic_id": "EV-01",
+          "stratum_id": "rb/bid/2021-04",
+          "value_or_distribution": {
+            "event_occurrences": 14905,
+            "starts": 3247,
+            "events_per_million_samples": 17731.382345943373
+          },
+          "sample_size": 14905,
+          "denominator_value": 840600,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/wall_events.parquet",
+          "notes": ""
+        },
+        {
+          "statistic_id": "EV-01",
+          "stratum_id": "rb/bid/2021-05",
+          "value_or_distribution": {
+            "event_occurrences": 10568,
+            "starts": 2132,
+            "events_per_million_samples": 14181.42780461621
+          },
+          "sample_size": 10568,
+          "denominator_value": 745200,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/wall_events.parquet",
+          "notes": ""
+        },
+        {
+          "statistic_id": "EV-01",
+          "stratum_id": "rb/bid/2021-06",
+          "value_or_distribution": {
+            "event_occurrences": 14021,
+            "starts": 3172,
+            "events_per_million_samples": 16398.830409356724
+          },
+          "sample_size": 14021,
+          "denominator_value": 855000,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/wall_events.parquet",
+          "notes": ""
+        },
+        {
+          "statistic_id": "EV-01",
+          "stratum_id": "rb/bid/2021-07",
+          "value_or_distribution": {
+            "event_occurrences": 15554,
+            "starts": 3440,
+            "events_per_million_samples": 17077.29468599034
+          },
+          "sample_size": 15554,
+          "denominator_value": 910800,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/wall_events.parquet",
+          "notes": ""
+        },
+        {
+          "statistic_id": "EV-01",
+          "stratum_id": "rb/bid/2021-08",
+          "value_or_distribution": {
+            "event_occurrences": 19482,
+            "starts": 3846,
+            "events_per_million_samples": 21389.986824769432
+          },
+          "sample_size": 19482,
+          "denominator_value": 910800,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/wall_events.parquet",
+          "notes": ""
+        },
+        {
+          "statistic_id": "EV-01",
+          "stratum_id": "rb/bid/2021-09",
+          "value_or_distribution": {
+            "event_occurrences": 24169,
+            "starts": 4734,
+            "events_per_million_samples": 30241.49149149149
+          },
+          "sample_size": 24169,
+          "denominator_value": 799200,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/wall_events.parquet",
+          "notes": ""
+        },
+        {
+          "statistic_id": "EV-01",
+          "stratum_id": "rb/bid/2021-10",
+          "value_or_distribution": {
+            "event_occurrences": 21430,
+            "starts": 4329,
+            "events_per_million_samples": 32352.05314009662
+          },
+          "sample_size": 21430,
+          "denominator_value": 662400,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/wall_events.parquet",
+          "notes": ""
+        },
+        {
+          "statistic_id": "EV-01",
+          "stratum_id": "rb/bid/2021-11",
+          "value_or_distribution": {
+            "event_occurrences": 20885,
+            "starts": 4350,
+            "events_per_million_samples": 22930.390865173475
+          },
+          "sample_size": 20885,
+          "denominator_value": 910800,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/wall_events.parquet",
+          "notes": ""
+        },
+        {
+          "statistic_id": "EV-01",
+          "stratum_id": "rb/bid/2021-12",
+          "value_or_distribution": {
+            "event_occurrences": 20323,
+            "starts": 4744,
+            "events_per_million_samples": 21670.931968436766
+          },
+          "sample_size": 20323,
+          "denominator_value": 937800,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/wall_events.parquet",
+          "notes": ""
+        },
+        {
+          "statistic_id": "EV-01",
+          "stratum_id": "rb/ask/2021-01",
+          "value_or_distribution": {
+            "event_occurrences": 0,
+            "starts": 0,
+            "events_per_million_samples": 0.0
+          },
+          "sample_size": 0,
+          "denominator_value": 828000,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/wall_events.parquet",
+          "notes": ""
+        },
+        {
+          "statistic_id": "EV-01",
+          "stratum_id": "rb/ask/2021-02",
+          "value_or_distribution": {
+            "event_occurrences": 914,
+            "starts": 200,
+            "events_per_million_samples": 1506.7589845037917
+          },
+          "sample_size": 914,
+          "denominator_value": 606600,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/wall_events.parquet",
+          "notes": ""
+        },
+        {
+          "statistic_id": "EV-01",
+          "stratum_id": "rb/ask/2021-03",
+          "value_or_distribution": {
+            "event_occurrences": 10665,
+            "starts": 2182,
+            "events_per_million_samples": 11200.37807183365
+          },
+          "sample_size": 10665,
+          "denominator_value": 952200,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/wall_events.parquet",
+          "notes": ""
+        },
+        {
+          "statistic_id": "EV-01",
+          "stratum_id": "rb/ask/2021-04",
+          "value_or_distribution": {
+            "event_occurrences": 14829,
+            "starts": 3464,
+            "events_per_million_samples": 17640.970735189152
+          },
+          "sample_size": 14829,
+          "denominator_value": 840600,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/wall_events.parquet",
+          "notes": ""
+        },
+        {
+          "statistic_id": "EV-01",
+          "stratum_id": "rb/ask/2021-05",
+          "value_or_distribution": {
+            "event_occurrences": 7777,
+            "starts": 1617,
+            "events_per_million_samples": 10436.12453032743
+          },
+          "sample_size": 7777,
+          "denominator_value": 745200,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/wall_events.parquet",
+          "notes": ""
+        },
+        {
+          "statistic_id": "EV-01",
+          "stratum_id": "rb/ask/2021-06",
+          "value_or_distribution": {
+            "event_occurrences": 13921,
+            "starts": 3206,
+            "events_per_million_samples": 16281.871345029242
+          },
+          "sample_size": 13921,
+          "denominator_value": 855000,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/wall_events.parquet",
+          "notes": ""
+        },
+        {
+          "statistic_id": "EV-01",
+          "stratum_id": "rb/ask/2021-07",
+          "value_or_distribution": {
+            "event_occurrences": 13284,
+            "starts": 3099,
+            "events_per_million_samples": 14584.98023715415
+          },
+          "sample_size": 13284,
+          "denominator_value": 910800,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/wall_events.parquet",
+          "notes": ""
+        },
+        {
+          "statistic_id": "EV-01",
+          "stratum_id": "rb/ask/2021-08",
+          "value_or_distribution": {
+            "event_occurrences": 18156,
+            "starts": 3536,
+            "events_per_million_samples": 19934.123847167324
+          },
+          "sample_size": 18156,
+          "denominator_value": 910800,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/wall_events.parquet",
+          "notes": ""
+        },
+        {
+          "statistic_id": "EV-01",
+          "stratum_id": "rb/ask/2021-09",
+          "value_or_distribution": {
+            "event_occurrences": 23464,
+            "starts": 4748,
+            "events_per_million_samples": 29359.35935935936
+          },
+          "sample_size": 23464,
+          "denominator_value": 799200,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/wall_events.parquet",
+          "notes": ""
+        },
+        {
+          "statistic_id": "EV-01",
+          "stratum_id": "rb/ask/2021-10",
+          "value_or_distribution": {
+            "event_occurrences": 17321,
+            "starts": 3510,
+            "events_per_million_samples": 26148.85265700483
+          },
+          "sample_size": 17321,
+          "denominator_value": 662400,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/wall_events.parquet",
+          "notes": ""
+        },
+        {
+          "statistic_id": "EV-01",
+          "stratum_id": "rb/ask/2021-11",
+          "value_or_distribution": {
+            "event_occurrences": 23127,
+            "starts": 4678,
+            "events_per_million_samples": 25391.963109354416
+          },
+          "sample_size": 23127,
+          "denominator_value": 910800,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/wall_events.parquet",
+          "notes": ""
+        },
+        {
+          "statistic_id": "EV-01",
+          "stratum_id": "rb/ask/2021-12",
+          "value_or_distribution": {
+            "event_occurrences": 19257,
+            "starts": 4458,
+            "events_per_million_samples": 20534.229046705055
+          },
+          "sample_size": 19257,
+          "denominator_value": 937800,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/wall_events.parquet",
+          "notes": ""
+        },
+        {
+          "statistic_id": "AUX-QUAL-01",
+          "stratum_id": "rb/bid/2021-01",
+          "value_or_distribution": {
+            "raw_observations": 828000,
+            "finite_quote_observations": 828000,
+            "positive_qt_observations": 0,
+            "large_quote_observations": 0,
+            "wall_brick_observations": 0,
+            "start_occurrences": 0,
+            "large_but_thin_observations": 0,
+            "candidate_without_new_start": 0,
+            "F1_per_positive_QT": {
+              "numerator": 0,
+              "denominator": 0,
+              "ratio": null
+            },
+            "F6_per_F1": {
+              "numerator": 0,
+              "denominator": 0,
+              "ratio": null
+            },
+            "new_Wall_per_F6": {
+              "numerator": 0,
+              "denominator": 0,
+              "ratio": null
+            }
+          },
+          "sample_size": 828000,
+          "denominator_value": 828000,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/rb-upstream-checkpoint-replay/qualification-observations.parquet",
+          "notes": "真实诊断载体。各转化率在value内分别列相应分母；计数单位不混用，未改变正式范围或原WALL表合同。"
+        },
+        {
+          "statistic_id": "AUX-QUAL-01",
+          "stratum_id": "rb/bid/2021-02",
+          "value_or_distribution": {
+            "raw_observations": 606600,
+            "finite_quote_observations": 606600,
+            "positive_qt_observations": 165600,
+            "large_quote_observations": 1051,
+            "wall_brick_observations": 1051,
+            "start_occurrences": 179,
+            "large_but_thin_observations": 0,
+            "candidate_without_new_start": 872,
+            "F1_per_positive_QT": {
+              "numerator": 1051,
+              "denominator": 165600,
+              "ratio": 0.006346618357487923
+            },
+            "F6_per_F1": {
+              "numerator": 1051,
+              "denominator": 1051,
+              "ratio": 1.0
+            },
+            "new_Wall_per_F6": {
+              "numerator": 179,
+              "denominator": 1051,
+              "ratio": 0.170313986679353
+            }
+          },
+          "sample_size": 606600,
+          "denominator_value": 606600,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/rb-upstream-checkpoint-replay/qualification-observations.parquet",
+          "notes": "真实诊断载体。各转化率在value内分别列相应分母；计数单位不混用，未改变正式范围或原WALL表合同。"
+        },
+        {
+          "statistic_id": "AUX-QUAL-01",
+          "stratum_id": "rb/bid/2021-03",
+          "value_or_distribution": {
+            "raw_observations": 952200,
+            "finite_quote_observations": 952200,
+            "positive_qt_observations": 952200,
+            "large_quote_observations": 11002,
+            "wall_brick_observations": 11002,
+            "start_occurrences": 2024,
+            "large_but_thin_observations": 0,
+            "candidate_without_new_start": 8978,
+            "F1_per_positive_QT": {
+              "numerator": 11002,
+              "denominator": 952200,
+              "ratio": 0.011554295316110061
+            },
+            "F6_per_F1": {
+              "numerator": 11002,
+              "denominator": 11002,
+              "ratio": 1.0
+            },
+            "new_Wall_per_F6": {
+              "numerator": 2024,
+              "denominator": 11002,
+              "ratio": 0.18396655153608435
+            }
+          },
+          "sample_size": 952200,
+          "denominator_value": 952200,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/rb-upstream-checkpoint-replay/qualification-observations.parquet",
+          "notes": "真实诊断载体。各转化率在value内分别列相应分母；计数单位不混用，未改变正式范围或原WALL表合同。"
+        },
+        {
+          "statistic_id": "AUX-QUAL-01",
+          "stratum_id": "rb/bid/2021-04",
+          "value_or_distribution": {
+            "raw_observations": 840600,
+            "finite_quote_observations": 840600,
+            "positive_qt_observations": 840600,
+            "large_quote_observations": 20102,
+            "wall_brick_observations": 20102,
+            "start_occurrences": 3247,
+            "large_but_thin_observations": 0,
+            "candidate_without_new_start": 16855,
+            "F1_per_positive_QT": {
+              "numerator": 20102,
+              "denominator": 840600,
+              "ratio": 0.023913871044492028
+            },
+            "F6_per_F1": {
+              "numerator": 20102,
+              "denominator": 20102,
+              "ratio": 1.0
+            },
+            "new_Wall_per_F6": {
+              "numerator": 3247,
+              "denominator": 20102,
+              "ratio": 0.16152621629688588
+            }
+          },
+          "sample_size": 840600,
+          "denominator_value": 840600,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/rb-upstream-checkpoint-replay/qualification-observations.parquet",
+          "notes": "真实诊断载体。各转化率在value内分别列相应分母；计数单位不混用，未改变正式范围或原WALL表合同。"
+        },
+        {
+          "statistic_id": "AUX-QUAL-01",
+          "stratum_id": "rb/bid/2021-05",
+          "value_or_distribution": {
+            "raw_observations": 745200,
+            "finite_quote_observations": 745200,
+            "positive_qt_observations": 745200,
+            "large_quote_observations": 30609,
+            "wall_brick_observations": 30570,
+            "start_occurrences": 2132,
+            "large_but_thin_observations": 39,
+            "candidate_without_new_start": 28438,
+            "F1_per_positive_QT": {
+              "numerator": 30609,
+              "denominator": 745200,
+              "ratio": 0.04107487922705314
+            },
+            "F6_per_F1": {
+              "numerator": 30570,
+              "denominator": 30609,
+              "ratio": 0.9987258649416838
+            },
+            "new_Wall_per_F6": {
+              "numerator": 2132,
+              "denominator": 30570,
+              "ratio": 0.06974157670919202
+            }
+          },
+          "sample_size": 745200,
+          "denominator_value": 745200,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/rb-upstream-checkpoint-replay/qualification-observations.parquet",
+          "notes": "真实诊断载体。各转化率在value内分别列相应分母；计数单位不混用，未改变正式范围或原WALL表合同。"
+        },
+        {
+          "statistic_id": "AUX-QUAL-01",
+          "stratum_id": "rb/bid/2021-06",
+          "value_or_distribution": {
+            "raw_observations": 855000,
+            "finite_quote_observations": 855000,
+            "positive_qt_observations": 855000,
+            "large_quote_observations": 12804,
+            "wall_brick_observations": 12804,
+            "start_occurrences": 3172,
+            "large_but_thin_observations": 0,
+            "candidate_without_new_start": 9632,
+            "F1_per_positive_QT": {
+              "numerator": 12804,
+              "denominator": 855000,
+              "ratio": 0.014975438596491229
+            },
+            "F6_per_F1": {
+              "numerator": 12804,
+              "denominator": 12804,
+              "ratio": 1.0
+            },
+            "new_Wall_per_F6": {
+              "numerator": 3172,
+              "denominator": 12804,
+              "ratio": 0.24773508278662917
+            }
+          },
+          "sample_size": 855000,
+          "denominator_value": 855000,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/rb-upstream-checkpoint-replay/qualification-observations.parquet",
+          "notes": "真实诊断载体。各转化率在value内分别列相应分母；计数单位不混用，未改变正式范围或原WALL表合同。"
+        },
+        {
+          "statistic_id": "AUX-QUAL-01",
+          "stratum_id": "rb/bid/2021-07",
+          "value_or_distribution": {
+            "raw_observations": 910800,
+            "finite_quote_observations": 910800,
+            "positive_qt_observations": 910800,
+            "large_quote_observations": 15732,
+            "wall_brick_observations": 15732,
+            "start_occurrences": 3440,
+            "large_but_thin_observations": 0,
+            "candidate_without_new_start": 12292,
+            "F1_per_positive_QT": {
+              "numerator": 15732,
+              "denominator": 910800,
+              "ratio": 0.017272727272727273
+            },
+            "F6_per_F1": {
+              "numerator": 15732,
+              "denominator": 15732,
+              "ratio": 1.0
+            },
+            "new_Wall_per_F6": {
+              "numerator": 3440,
+              "denominator": 15732,
+              "ratio": 0.21866259852529876
+            }
+          },
+          "sample_size": 910800,
+          "denominator_value": 910800,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/rb-upstream-checkpoint-replay/qualification-observations.parquet",
+          "notes": "真实诊断载体。各转化率在value内分别列相应分母；计数单位不混用，未改变正式范围或原WALL表合同。"
+        },
+        {
+          "statistic_id": "AUX-QUAL-01",
+          "stratum_id": "rb/bid/2021-08",
+          "value_or_distribution": {
+            "raw_observations": 910800,
+            "finite_quote_observations": 910800,
+            "positive_qt_observations": 910800,
+            "large_quote_observations": 15045,
+            "wall_brick_observations": 15045,
+            "start_occurrences": 3846,
+            "large_but_thin_observations": 0,
+            "candidate_without_new_start": 11199,
+            "F1_per_positive_QT": {
+              "numerator": 15045,
+              "denominator": 910800,
+              "ratio": 0.01651844532279315
+            },
+            "F6_per_F1": {
+              "numerator": 15045,
+              "denominator": 15045,
+              "ratio": 1.0
+            },
+            "new_Wall_per_F6": {
+              "numerator": 3846,
+              "denominator": 15045,
+              "ratio": 0.2556331006979063
+            }
+          },
+          "sample_size": 910800,
+          "denominator_value": 910800,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/rb-upstream-checkpoint-replay/qualification-observations.parquet",
+          "notes": "真实诊断载体。各转化率在value内分别列相应分母；计数单位不混用，未改变正式范围或原WALL表合同。"
+        },
+        {
+          "statistic_id": "AUX-QUAL-01",
+          "stratum_id": "rb/bid/2021-09",
+          "value_or_distribution": {
+            "raw_observations": 799200,
+            "finite_quote_observations": 799200,
+            "positive_qt_observations": 799200,
+            "large_quote_observations": 17230,
+            "wall_brick_observations": 17230,
+            "start_occurrences": 4734,
+            "large_but_thin_observations": 0,
+            "candidate_without_new_start": 12496,
+            "F1_per_positive_QT": {
+              "numerator": 17230,
+              "denominator": 799200,
+              "ratio": 0.021559059059059058
+            },
+            "F6_per_F1": {
+              "numerator": 17230,
+              "denominator": 17230,
+              "ratio": 1.0
+            },
+            "new_Wall_per_F6": {
+              "numerator": 4734,
+              "denominator": 17230,
+              "ratio": 0.2747533372025537
+            }
+          },
+          "sample_size": 799200,
+          "denominator_value": 799200,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/rb-upstream-checkpoint-replay/qualification-observations.parquet",
+          "notes": "真实诊断载体。各转化率在value内分别列相应分母；计数单位不混用，未改变正式范围或原WALL表合同。"
+        },
+        {
+          "statistic_id": "AUX-QUAL-01",
+          "stratum_id": "rb/bid/2021-10",
+          "value_or_distribution": {
+            "raw_observations": 662400,
+            "finite_quote_observations": 662400,
+            "positive_qt_observations": 662400,
+            "large_quote_observations": 12647,
+            "wall_brick_observations": 12647,
+            "start_occurrences": 4329,
+            "large_but_thin_observations": 0,
+            "candidate_without_new_start": 8318,
+            "F1_per_positive_QT": {
+              "numerator": 12647,
+              "denominator": 662400,
+              "ratio": 0.019092693236714975
+            },
+            "F6_per_F1": {
+              "numerator": 12647,
+              "denominator": 12647,
+              "ratio": 1.0
+            },
+            "new_Wall_per_F6": {
+              "numerator": 4329,
+              "denominator": 12647,
+              "ratio": 0.3422946153237922
+            }
+          },
+          "sample_size": 662400,
+          "denominator_value": 662400,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/rb-upstream-checkpoint-replay/qualification-observations.parquet",
+          "notes": "真实诊断载体。各转化率在value内分别列相应分母；计数单位不混用，未改变正式范围或原WALL表合同。"
+        },
+        {
+          "statistic_id": "AUX-QUAL-01",
+          "stratum_id": "rb/bid/2021-11",
+          "value_or_distribution": {
+            "raw_observations": 910800,
+            "finite_quote_observations": 910800,
+            "positive_qt_observations": 910800,
+            "large_quote_observations": 14613,
+            "wall_brick_observations": 14574,
+            "start_occurrences": 4350,
+            "large_but_thin_observations": 39,
+            "candidate_without_new_start": 10224,
+            "F1_per_positive_QT": {
+              "numerator": 14613,
+              "denominator": 910800,
+              "ratio": 0.016044137022397893
+            },
+            "F6_per_F1": {
+              "numerator": 14574,
+              "denominator": 14613,
+              "ratio": 0.997331143502361
+            },
+            "new_Wall_per_F6": {
+              "numerator": 4350,
+              "denominator": 14574,
+              "ratio": 0.2984767393989296
+            }
+          },
+          "sample_size": 910800,
+          "denominator_value": 910800,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/rb-upstream-checkpoint-replay/qualification-observations.parquet",
+          "notes": "真实诊断载体。各转化率在value内分别列相应分母；计数单位不混用，未改变正式范围或原WALL表合同。"
+        },
+        {
+          "statistic_id": "AUX-QUAL-01",
+          "stratum_id": "rb/bid/2021-12",
+          "value_or_distribution": {
+            "raw_observations": 937800,
+            "finite_quote_observations": 937800,
+            "positive_qt_observations": 937800,
+            "large_quote_observations": 27916,
+            "wall_brick_observations": 27916,
+            "start_occurrences": 4744,
+            "large_but_thin_observations": 0,
+            "candidate_without_new_start": 23172,
+            "F1_per_positive_QT": {
+              "numerator": 27916,
+              "denominator": 937800,
+              "ratio": 0.029767541053529536
+            },
+            "F6_per_F1": {
+              "numerator": 27916,
+              "denominator": 27916,
+              "ratio": 1.0
+            },
+            "new_Wall_per_F6": {
+              "numerator": 4744,
+              "denominator": 27916,
+              "ratio": 0.16993838658833643
+            }
+          },
+          "sample_size": 937800,
+          "denominator_value": 937800,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/rb-upstream-checkpoint-replay/qualification-observations.parquet",
+          "notes": "真实诊断载体。各转化率在value内分别列相应分母；计数单位不混用，未改变正式范围或原WALL表合同。"
+        },
+        {
+          "statistic_id": "AUX-QUAL-01",
+          "stratum_id": "rb/ask/2021-01",
+          "value_or_distribution": {
+            "raw_observations": 828000,
+            "finite_quote_observations": 828000,
+            "positive_qt_observations": 0,
+            "large_quote_observations": 0,
+            "wall_brick_observations": 0,
+            "start_occurrences": 0,
+            "large_but_thin_observations": 0,
+            "candidate_without_new_start": 0,
+            "F1_per_positive_QT": {
+              "numerator": 0,
+              "denominator": 0,
+              "ratio": null
+            },
+            "F6_per_F1": {
+              "numerator": 0,
+              "denominator": 0,
+              "ratio": null
+            },
+            "new_Wall_per_F6": {
+              "numerator": 0,
+              "denominator": 0,
+              "ratio": null
+            }
+          },
+          "sample_size": 828000,
+          "denominator_value": 828000,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/rb-upstream-checkpoint-replay/qualification-observations.parquet",
+          "notes": "真实诊断载体。各转化率在value内分别列相应分母；计数单位不混用，未改变正式范围或原WALL表合同。"
+        },
+        {
+          "statistic_id": "AUX-QUAL-01",
+          "stratum_id": "rb/ask/2021-02",
+          "value_or_distribution": {
+            "raw_observations": 606600,
+            "finite_quote_observations": 606600,
+            "positive_qt_observations": 165600,
+            "large_quote_observations": 1096,
+            "wall_brick_observations": 1096,
+            "start_occurrences": 200,
+            "large_but_thin_observations": 0,
+            "candidate_without_new_start": 896,
+            "F1_per_positive_QT": {
+              "numerator": 1096,
+              "denominator": 165600,
+              "ratio": 0.006618357487922705
+            },
+            "F6_per_F1": {
+              "numerator": 1096,
+              "denominator": 1096,
+              "ratio": 1.0
+            },
+            "new_Wall_per_F6": {
+              "numerator": 200,
+              "denominator": 1096,
+              "ratio": 0.18248175182481752
+            }
+          },
+          "sample_size": 606600,
+          "denominator_value": 606600,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/rb-upstream-checkpoint-replay/qualification-observations.parquet",
+          "notes": "真实诊断载体。各转化率在value内分别列相应分母；计数单位不混用，未改变正式范围或原WALL表合同。"
+        },
+        {
+          "statistic_id": "AUX-QUAL-01",
+          "stratum_id": "rb/ask/2021-03",
+          "value_or_distribution": {
+            "raw_observations": 952200,
+            "finite_quote_observations": 952200,
+            "positive_qt_observations": 952200,
+            "large_quote_observations": 12130,
+            "wall_brick_observations": 12128,
+            "start_occurrences": 2182,
+            "large_but_thin_observations": 2,
+            "candidate_without_new_start": 9946,
+            "F1_per_positive_QT": {
+              "numerator": 12130,
+              "denominator": 952200,
+              "ratio": 0.012738920394875026
+            },
+            "F6_per_F1": {
+              "numerator": 12128,
+              "denominator": 12130,
+              "ratio": 0.9998351195383347
+            },
+            "new_Wall_per_F6": {
+              "numerator": 2182,
+              "denominator": 12128,
+              "ratio": 0.17991424802110817
+            }
+          },
+          "sample_size": 952200,
+          "denominator_value": 952200,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/rb-upstream-checkpoint-replay/qualification-observations.parquet",
+          "notes": "真实诊断载体。各转化率在value内分别列相应分母；计数单位不混用，未改变正式范围或原WALL表合同。"
+        },
+        {
+          "statistic_id": "AUX-QUAL-01",
+          "stratum_id": "rb/ask/2021-04",
+          "value_or_distribution": {
+            "raw_observations": 840600,
+            "finite_quote_observations": 840600,
+            "positive_qt_observations": 840600,
+            "large_quote_observations": 24071,
+            "wall_brick_observations": 24071,
+            "start_occurrences": 3464,
+            "large_but_thin_observations": 0,
+            "candidate_without_new_start": 20607,
+            "F1_per_positive_QT": {
+              "numerator": 24071,
+              "denominator": 840600,
+              "ratio": 0.028635498453485606
+            },
+            "F6_per_F1": {
+              "numerator": 24071,
+              "denominator": 24071,
+              "ratio": 1.0
+            },
+            "new_Wall_per_F6": {
+              "numerator": 3464,
+              "denominator": 24071,
+              "ratio": 0.14390760666362012
+            }
+          },
+          "sample_size": 840600,
+          "denominator_value": 840600,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/rb-upstream-checkpoint-replay/qualification-observations.parquet",
+          "notes": "真实诊断载体。各转化率在value内分别列相应分母；计数单位不混用，未改变正式范围或原WALL表合同。"
+        },
+        {
+          "statistic_id": "AUX-QUAL-01",
+          "stratum_id": "rb/ask/2021-05",
+          "value_or_distribution": {
+            "raw_observations": 745200,
+            "finite_quote_observations": 745200,
+            "positive_qt_observations": 745200,
+            "large_quote_observations": 13302,
+            "wall_brick_observations": 13146,
+            "start_occurrences": 1617,
+            "large_but_thin_observations": 156,
+            "candidate_without_new_start": 11529,
+            "F1_per_positive_QT": {
+              "numerator": 13302,
+              "denominator": 745200,
+              "ratio": 0.01785024154589372
+            },
+            "F6_per_F1": {
+              "numerator": 13146,
+              "denominator": 13302,
+              "ratio": 0.9882724402345512
+            },
+            "new_Wall_per_F6": {
+              "numerator": 1617,
+              "denominator": 13146,
+              "ratio": 0.12300319488817892
+            }
+          },
+          "sample_size": 745200,
+          "denominator_value": 745200,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/rb-upstream-checkpoint-replay/qualification-observations.parquet",
+          "notes": "真实诊断载体。各转化率在value内分别列相应分母；计数单位不混用，未改变正式范围或原WALL表合同。"
+        },
+        {
+          "statistic_id": "AUX-QUAL-01",
+          "stratum_id": "rb/ask/2021-06",
+          "value_or_distribution": {
+            "raw_observations": 855000,
+            "finite_quote_observations": 855000,
+            "positive_qt_observations": 855000,
+            "large_quote_observations": 15043,
+            "wall_brick_observations": 15043,
+            "start_occurrences": 3206,
+            "large_but_thin_observations": 0,
+            "candidate_without_new_start": 11837,
+            "F1_per_positive_QT": {
+              "numerator": 15043,
+              "denominator": 855000,
+              "ratio": 0.017594152046783627
+            },
+            "F6_per_F1": {
+              "numerator": 15043,
+              "denominator": 15043,
+              "ratio": 1.0
+            },
+            "new_Wall_per_F6": {
+              "numerator": 3206,
+              "denominator": 15043,
+              "ratio": 0.21312238250349
+            }
+          },
+          "sample_size": 855000,
+          "denominator_value": 855000,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/rb-upstream-checkpoint-replay/qualification-observations.parquet",
+          "notes": "真实诊断载体。各转化率在value内分别列相应分母；计数单位不混用，未改变正式范围或原WALL表合同。"
+        },
+        {
+          "statistic_id": "AUX-QUAL-01",
+          "stratum_id": "rb/ask/2021-07",
+          "value_or_distribution": {
+            "raw_observations": 910800,
+            "finite_quote_observations": 910800,
+            "positive_qt_observations": 910800,
+            "large_quote_observations": 15182,
+            "wall_brick_observations": 15182,
+            "start_occurrences": 3099,
+            "large_but_thin_observations": 0,
+            "candidate_without_new_start": 12083,
+            "F1_per_positive_QT": {
+              "numerator": 15182,
+              "denominator": 910800,
+              "ratio": 0.016668862538427757
+            },
+            "F6_per_F1": {
+              "numerator": 15182,
+              "denominator": 15182,
+              "ratio": 1.0
+            },
+            "new_Wall_per_F6": {
+              "numerator": 3099,
+              "denominator": 15182,
+              "ratio": 0.204123303912528
+            }
+          },
+          "sample_size": 910800,
+          "denominator_value": 910800,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/rb-upstream-checkpoint-replay/qualification-observations.parquet",
+          "notes": "真实诊断载体。各转化率在value内分别列相应分母；计数单位不混用，未改变正式范围或原WALL表合同。"
+        },
+        {
+          "statistic_id": "AUX-QUAL-01",
+          "stratum_id": "rb/ask/2021-08",
+          "value_or_distribution": {
+            "raw_observations": 910800,
+            "finite_quote_observations": 910800,
+            "positive_qt_observations": 910800,
+            "large_quote_observations": 14876,
+            "wall_brick_observations": 14876,
+            "start_occurrences": 3536,
+            "large_but_thin_observations": 0,
+            "candidate_without_new_start": 11340,
+            "F1_per_positive_QT": {
+              "numerator": 14876,
+              "denominator": 910800,
+              "ratio": 0.016332894158981117
+            },
+            "F6_per_F1": {
+              "numerator": 14876,
+              "denominator": 14876,
+              "ratio": 1.0
+            },
+            "new_Wall_per_F6": {
+              "numerator": 3536,
+              "denominator": 14876,
+              "ratio": 0.23769830599623554
+            }
+          },
+          "sample_size": 910800,
+          "denominator_value": 910800,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/rb-upstream-checkpoint-replay/qualification-observations.parquet",
+          "notes": "真实诊断载体。各转化率在value内分别列相应分母；计数单位不混用，未改变正式范围或原WALL表合同。"
+        },
+        {
+          "statistic_id": "AUX-QUAL-01",
+          "stratum_id": "rb/ask/2021-09",
+          "value_or_distribution": {
+            "raw_observations": 799200,
+            "finite_quote_observations": 799200,
+            "positive_qt_observations": 799200,
+            "large_quote_observations": 18677,
+            "wall_brick_observations": 18677,
+            "start_occurrences": 4748,
+            "large_but_thin_observations": 0,
+            "candidate_without_new_start": 13929,
+            "F1_per_positive_QT": {
+              "numerator": 18677,
+              "denominator": 799200,
+              "ratio": 0.02336961961961962
+            },
+            "F6_per_F1": {
+              "numerator": 18677,
+              "denominator": 18677,
+              "ratio": 1.0
+            },
+            "new_Wall_per_F6": {
+              "numerator": 4748,
+              "denominator": 18677,
+              "ratio": 0.2542164159126198
+            }
+          },
+          "sample_size": 799200,
+          "denominator_value": 799200,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/rb-upstream-checkpoint-replay/qualification-observations.parquet",
+          "notes": "真实诊断载体。各转化率在value内分别列相应分母；计数单位不混用，未改变正式范围或原WALL表合同。"
+        },
+        {
+          "statistic_id": "AUX-QUAL-01",
+          "stratum_id": "rb/ask/2021-10",
+          "value_or_distribution": {
+            "raw_observations": 662400,
+            "finite_quote_observations": 662400,
+            "positive_qt_observations": 662400,
+            "large_quote_observations": 11142,
+            "wall_brick_observations": 11079,
+            "start_occurrences": 3510,
+            "large_but_thin_observations": 63,
+            "candidate_without_new_start": 7569,
+            "F1_per_positive_QT": {
+              "numerator": 11142,
+              "denominator": 662400,
+              "ratio": 0.016820652173913042
+            },
+            "F6_per_F1": {
+              "numerator": 11079,
+              "denominator": 11142,
+              "ratio": 0.994345718901454
+            },
+            "new_Wall_per_F6": {
+              "numerator": 3510,
+              "denominator": 11079,
+              "ratio": 0.31681559707554835
+            }
+          },
+          "sample_size": 662400,
+          "denominator_value": 662400,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/rb-upstream-checkpoint-replay/qualification-observations.parquet",
+          "notes": "真实诊断载体。各转化率在value内分别列相应分母；计数单位不混用，未改变正式范围或原WALL表合同。"
+        },
+        {
+          "statistic_id": "AUX-QUAL-01",
+          "stratum_id": "rb/ask/2021-11",
+          "value_or_distribution": {
+            "raw_observations": 910800,
+            "finite_quote_observations": 910800,
+            "positive_qt_observations": 910800,
+            "large_quote_observations": 17320,
+            "wall_brick_observations": 17107,
+            "start_occurrences": 4678,
+            "large_but_thin_observations": 213,
+            "candidate_without_new_start": 12429,
+            "F1_per_positive_QT": {
+              "numerator": 17320,
+              "denominator": 910800,
+              "ratio": 0.01901624945103206
+            },
+            "F6_per_F1": {
+              "numerator": 17107,
+              "denominator": 17320,
+              "ratio": 0.9877020785219399
+            },
+            "new_Wall_per_F6": {
+              "numerator": 4678,
+              "denominator": 17107,
+              "ratio": 0.2734553106915298
+            }
+          },
+          "sample_size": 910800,
+          "denominator_value": 910800,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/rb-upstream-checkpoint-replay/qualification-observations.parquet",
+          "notes": "真实诊断载体。各转化率在value内分别列相应分母；计数单位不混用，未改变正式范围或原WALL表合同。"
+        },
+        {
+          "statistic_id": "AUX-QUAL-01",
+          "stratum_id": "rb/ask/2021-12",
+          "value_or_distribution": {
+            "raw_observations": 937800,
+            "finite_quote_observations": 937800,
+            "positive_qt_observations": 937800,
+            "large_quote_observations": 26155,
+            "wall_brick_observations": 26155,
+            "start_occurrences": 4458,
+            "large_but_thin_observations": 0,
+            "candidate_without_new_start": 21697,
+            "F1_per_positive_QT": {
+              "numerator": 26155,
+              "denominator": 937800,
+              "ratio": 0.02788974194924291
+            },
+            "F6_per_F1": {
+              "numerator": 26155,
+              "denominator": 26155,
+              "ratio": 1.0
+            },
+            "new_Wall_per_F6": {
+              "numerator": 4458,
+              "denominator": 26155,
+              "ratio": 0.17044542152552095
+            }
+          },
+          "sample_size": 937800,
+          "denominator_value": 937800,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/rb-upstream-checkpoint-replay/qualification-observations.parquet",
+          "notes": "真实诊断载体。各转化率在value内分别列相应分母；计数单位不混用，未改变正式范围或原WALL表合同。"
+        }
+      ],
+      "cross_session_profile": [
+        {
+          "statistic_id": "EV-01",
+          "stratum_id": "rb/bid/DAY_CLOCK_BIN",
+          "value_or_distribution": {
+            "event_occurrences": 112424,
+            "events_per_million_samples": 17135.1928059747
+          },
+          "sample_size": 112424,
+          "denominator_value": 6561000,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/wall_events.parquet",
+          "notes": "自然钟分箱代理，不声明官方SessionID。"
+        },
+        {
+          "statistic_id": "EV-01",
+          "stratum_id": "rb/bid/OTHER_CLOCK_BIN",
+          "value_or_distribution": {
+            "event_occurrences": 59942,
+            "events_per_million_samples": 17638.300376647832
+          },
+          "sample_size": 59942,
+          "denominator_value": 3398400,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/wall_events.parquet",
+          "notes": "自然钟分箱代理，不声明官方SessionID。"
+        },
+        {
+          "statistic_id": "EV-01",
+          "stratum_id": "rb/ask/DAY_CLOCK_BIN",
+          "value_or_distribution": {
+            "event_occurrences": 105120,
+            "events_per_million_samples": 16021.947873799725
+          },
+          "sample_size": 105120,
+          "denominator_value": 6561000,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/wall_events.parquet",
+          "notes": "自然钟分箱代理，不声明官方SessionID。"
+        },
+        {
+          "statistic_id": "EV-01",
+          "stratum_id": "rb/ask/OTHER_CLOCK_BIN",
+          "value_or_distribution": {
+            "event_occurrences": 57595,
+            "events_per_million_samples": 16947.681261770245
+          },
+          "sample_size": 57595,
+          "denominator_value": 3398400,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/wall_events.parquet",
+          "notes": "自然钟分箱代理，不声明官方SessionID。"
+        },
+        {
+          "statistic_id": "AUX-QUAL-01",
+          "stratum_id": "rb/bid/DAY_CLOCK_BIN",
+          "value_or_distribution": {
+            "raw_observations": 6561000,
+            "finite_quote_observations": 6561000,
+            "positive_qt_observations": 5724000,
+            "large_quote_observations": 125499,
+            "wall_brick_observations": 125469,
+            "start_occurrences": 23896,
+            "large_but_thin_observations": 30,
+            "candidate_without_new_start": 101573,
+            "F1_per_positive_QT": {
+              "numerator": 125499,
+              "denominator": 5724000,
+              "ratio": 0.021925052410901466
+            },
+            "F6_per_F1": {
+              "numerator": 125469,
+              "denominator": 125499,
+              "ratio": 0.999760954270552
+            },
+            "new_Wall_per_F6": {
+              "numerator": 23896,
+              "denominator": 125469,
+              "ratio": 0.1904534187727646
+            }
+          },
+          "sample_size": 6561000,
+          "denominator_value": 6561000,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/rb-upstream-checkpoint-replay/qualification-observations.parquet",
+          "notes": "真实诊断载体。各转化率在value内分别列相应分母；计数单位不混用，未改变正式范围或原WALL表合同。"
+        },
+        {
+          "statistic_id": "AUX-QUAL-01",
+          "stratum_id": "rb/bid/OTHER_CLOCK_BIN",
+          "value_or_distribution": {
+            "raw_observations": 3398400,
+            "finite_quote_observations": 3398400,
+            "positive_qt_observations": 2966400,
+            "large_quote_observations": 53252,
+            "wall_brick_observations": 53204,
+            "start_occurrences": 12301,
+            "large_but_thin_observations": 48,
+            "candidate_without_new_start": 40903,
+            "F1_per_positive_QT": {
+              "numerator": 53252,
+              "denominator": 2966400,
+              "ratio": 0.0179517259978425
+            },
+            "F6_per_F1": {
+              "numerator": 53204,
+              "denominator": 53252,
+              "ratio": 0.9990986254037407
+            },
+            "new_Wall_per_F6": {
+              "numerator": 12301,
+              "denominator": 53204,
+              "ratio": 0.2312044207202466
+            }
+          },
+          "sample_size": 3398400,
+          "denominator_value": 3398400,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/rb-upstream-checkpoint-replay/qualification-observations.parquet",
+          "notes": "真实诊断载体。各转化率在value内分别列相应分母；计数单位不混用，未改变正式范围或原WALL表合同。"
+        },
+        {
+          "statistic_id": "AUX-QUAL-01",
+          "stratum_id": "rb/ask/DAY_CLOCK_BIN",
+          "value_or_distribution": {
+            "raw_observations": 6561000,
+            "finite_quote_observations": 6561000,
+            "positive_qt_observations": 5724000,
+            "large_quote_observations": 112530,
+            "wall_brick_observations": 112177,
+            "start_occurrences": 22614,
+            "large_but_thin_observations": 353,
+            "candidate_without_new_start": 89563,
+            "F1_per_positive_QT": {
+              "numerator": 112530,
+              "denominator": 5724000,
+              "ratio": 0.019659329140461215
+            },
+            "F6_per_F1": {
+              "numerator": 112177,
+              "denominator": 112530,
+              "ratio": 0.9968630587398916
+            },
+            "new_Wall_per_F6": {
+              "numerator": 22614,
+              "denominator": 112177,
+              "ratio": 0.20159212672829546
+            }
+          },
+          "sample_size": 6561000,
+          "denominator_value": 6561000,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/rb-upstream-checkpoint-replay/qualification-observations.parquet",
+          "notes": "真实诊断载体。各转化率在value内分别列相应分母；计数单位不混用，未改变正式范围或原WALL表合同。"
+        },
+        {
+          "statistic_id": "AUX-QUAL-01",
+          "stratum_id": "rb/ask/OTHER_CLOCK_BIN",
+          "value_or_distribution": {
+            "raw_observations": 3398400,
+            "finite_quote_observations": 3398400,
+            "positive_qt_observations": 2966400,
+            "large_quote_observations": 56464,
+            "wall_brick_observations": 56383,
+            "start_occurrences": 12084,
+            "large_but_thin_observations": 81,
+            "candidate_without_new_start": 44299,
+            "F1_per_positive_QT": {
+              "numerator": 56464,
+              "denominator": 2966400,
+              "ratio": 0.019034519956850054
+            },
+            "F6_per_F1": {
+              "numerator": 56383,
+              "denominator": 56464,
+              "ratio": 0.9985654576367243
+            },
+            "new_Wall_per_F6": {
+              "numerator": 12084,
+              "denominator": 56383,
+              "ratio": 0.21431991912455883
+            }
+          },
+          "sample_size": 3398400,
+          "denominator_value": 3398400,
+          "source_location": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/rb-upstream-checkpoint-replay/qualification-observations.parquet",
+          "notes": "真实诊断载体。各转化率在value内分别列相应分母；计数单位不混用，未改变正式范围或原WALL表合同。"
+        }
+      ],
+      "limits": [
+        "m 的锁定正式入口失败；未把 m 缺失统计成零，也未改变 rb/m 全年请求范围。",
+        "钟时分箱是原生 timestamp 的 [06:00,18:00) 与其余时刻，不冒充官方 SessionID。",
+        "F1/F6及事件checkpoint统计来自单独物化的、与正式rb输出全量等价的未修改组件诊断运行；完整逐拍far历史仍未暴露，m仍无结果。"
+      ],
+      "known_finding_reviews": [
+        {
+          "finding_id": "D3",
+          "status": "DEFERRED_BY_OWNER",
+          "symbol": "rb",
+          "observed_pattern_count": 6847,
+          "gap_uti": {
+            "n": 6847,
+            "min": 1.0,
+            "p25": 2.0,
+            "p50": 6.0,
+            "p90": 118.0,
+            "p95": 254.0,
+            "p99": 966.54,
+            "max": 6813.0
+          },
+          "applicable_thin_ends": 53524,
+          "scope_limit": "严格使用已发布 band/core 相等的可读子模式；缺少thin/support逐拍量，不能等同全部D3或确认业务错误。"
+        },
+        {
+          "finding_id": "D4",
+          "symbol": "rb",
+          "fixed_fixture_regression": "PASS",
+          "full_per_tick_support_far_regression": "NOT_EXPOSED",
+          "status": "VERIFIED_RB_FAR_END_OCCURRENCE_SCOPE",
+          "far_end_occurrence_review": {
+            "bid": {
+              "far_end_occurrences": 5408,
+              "far_end_with_support": 0,
+              "far_end_counter_below_hold": 0
+            },
+            "ask": {
+              "far_end_occurrences": 4751,
+              "far_end_with_support": 0,
+              "far_end_counter_below_hold": 0
+            }
+          },
+          "verified_far_end_occurrences": 10159,
+          "full_requested_scope": "INCOMPLETE_M"
+        }
+      ],
+      "coverage_status": "PARTIAL",
+      "missing_strata": [
+        "m"
+      ]
+    },
+    "global_finding_candidates": [],
+    "scenario_question_queue": [
+      {
+        "question_id": "SQ-RB-LIFETIME",
+        "finding_type": "SCENARIO_INTERPRETATION_QUESTION",
+        "feature_ref": "mquant.tis.hf.prel0.wall_assembler.WallAssembler",
+        "reasonableness_unit_ref": "BO-C1",
+        "statistical_pattern": {
+          "n": 70895,
+          "min": 1.0,
+          "p25": 6.0,
+          "p50": 11.0,
+          "p90": 31.0,
+          "p95": 41.0,
+          "p99": 67.0,
+          "max": 22754.0
+        },
+        "why_statistics_cannot_decide": "寿命与密度本身不足以判断墙是否符合真实市场过程。",
+        "recommended_visual_evidence": "原始盘口、同身份生命周期与band/core；候选不是已冻结正式场景。",
+        "representative_locations": [
+          {
+            "symbol": "rb",
+            "start_time": "2021-05-10 09:35:24.500000",
+            "end_time": "2021-05-10 21:00:01.500000",
+            "wall_id": 11799
+          }
+        ],
+        "priority": "NORMAL",
+        "next_route": "BUSINESS_EXPECTATION_DERIVATION"
+      }
+    ],
+    "candidate_case_index": [
+      {
+        "case_candidate_id": "SQ-RB-LIFETIME-LONGEST",
+        "source_finding_or_question_id": "SQ-RB-LIFETIME",
+        "symbol": "rb",
+        "start_time": "2021-05-10 09:35:24.500000",
+        "end_time": "2021-05-10 21:00:01.500000",
+        "object_ids": [
+          11799
+        ],
+        "related_events": [
+          "Start",
+          "BandUpdate",
+          "End"
+        ],
+        "selection_reason": "最长完整寿命，用于解释真实过程，不能直接判错。",
+        "required_fields": [
+          "quote input",
+          "events",
+          "state_trace"
+        ]
+      }
+    ],
+    "diagnosis_input_adapters": [],
+    "gate": {
+      "status": "BLOCKED",
+      "reasons": [
+        "m 的锁定正式入口失败；未把 m 缺失统计成零，也未改变 rb/m 全年请求范围。"
+      ],
+      "valid_profile_ref": "GlobalBehaviorProfile.json",
+      "next_action": "先由Owner确认m正式输入处理，再按采用版本补全/重跑正式范围与G；现有rb结果保留。"
+    }
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "run_id": "OI-WALL-STAT-20261122-01",
+  "symbol": "rb",
+  "status": "VERIFIED_DIAGNOSTIC_RESULT",
+  "mode": "UNMODIFIED_COMPONENT_DIAGNOSTIC_RESULT",
+  "formal_feature_code_changed": false,
+  "formal_output_contract_changed": false,
+  "formal_feature_called": false,
+  "artifacts": [
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/rb-upstream-checkpoint-replay/qualification-observations.parquet",
+      "sha256": "cd72d66921a0dc64c37d2750c106925c897b85ab88915a2df419c8af9226a9c1",
+      "bytes": 98474996
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/rb-upstream-checkpoint-replay/event-checkpoints.parquet",
+      "sha256": "782ffe2678f0d59258913a160fef34e94b534c9d3291ede37d61241c5697214e",
+      "bytes": 12249559
+    }
+  ],
+  "code_version": "6618d4d147d6ebbe634e61facddf2c9a0b996982",
+  "parameters": {
+    "parameter_set_id": "wall-default",
+    "qt_freq": "1d",
+    "qt_n": 30,
+    "qt_quantile": 0.997,
+    "w_depth_ref_ticks": 1200,
+    "large_quote_ratio_min": 1.0,
+    "allow_zero_qt_fallback": false,
+    "thick_vs_hi_ratio": 1.0,
+    "thin_vs_mid_ratio": 0.7,
+    "allow_thin_brick": false,
+    "p_wall_ticks": 1,
+    "t_wall_ticks": 6,
+    "near_band_ticks": null,
+    "far_band_ticks": null,
+    "connect_max_core_dist_ticks": null,
+    "connect_gap_max_ticks": null,
+    "support_buffer_keep_ticks": null,
+    "thin_eval_window_ticks": null,
+    "band_update_min_shift_ticks": null,
+    "dormant_no_presence_ticks": null,
+    "dormant_far_ticks": null,
+    "end_far_hold_ticks": null,
+    "end_far_ticks": null,
+    "break_after_no_presence_ticks": null,
+    "wall_dead_timeout_ticks": null,
+    "allow_brick_join_dormant": true,
+    "thin_contact_min_hits": 3,
+    "thin_contact_frac_end": 0.6
+  },
+  "data_scope": {
+    "sof_name": "TA_updto20240229_DBA",
+    "stk_tlist": "tick_test_all57_takeout_lcNsiNcy",
+    "startDay": "2021-01-01",
+    "endDay": "2021-12-31"
+  },
+  "calendar": "night_end_at_2300",
+  "trace_rows_equal": 9959400,
+  "sparse_event_rows_equal": 335081,
+  "all_formal_trace_and_event_values_exact": true,
+  "input_values_hash_by_trading_day": "0cf578c7492fc37bd386bc79908962f72ec2e084da00277c92274f198982c7af",
+  "qualification_counts": {
+    "bid": {
+      "raw_observations": 9959400,
+      "finite_quote_observations": 9959400,
+      "positive_qt_observations": 8690400,
+      "large_quote_observations": 178751,
+      "wall_brick_observations": 178673,
+      "large_but_thin_observations": 78,
+      "start_occurrences": 36197,
+      "candidate_without_new_start": 142476
+    },
+    "ask": {
+      "raw_observations": 9959400,
+      "finite_quote_observations": 9959400,
+      "positive_qt_observations": 8690400,
+      "large_quote_observations": 168994,
+      "wall_brick_observations": 168560,
+      "large_but_thin_observations": 434,
+      "start_occurrences": 34698,
+      "candidate_without_new_start": 133862
+    }
+  },
+  "d4_far_end_review": {
+    "bid": {
+      "far_end_occurrences": 5408,
+      "far_end_with_support": 0,
+      "far_end_counter_below_hold": 0
+    },
+    "ask": {
+      "far_end_occurrences": 4751,
+      "far_end_with_support": 0,
+      "far_end_counter_below_hold": 0
+    }
+  },
+  "checkpoint_rows": 335081,
+  "full_per_tick_far_history": "NOT_EXPOSED",
+  "evidence_role": "新增诊断运行载体，不冒充原WALL表中已有这些字段；未修改或替换正式Feature代码/输出。"
+}

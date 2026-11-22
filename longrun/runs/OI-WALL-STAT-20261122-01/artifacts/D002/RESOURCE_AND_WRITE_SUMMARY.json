@@ -1,0 +1,39 @@
+{
+  "held_run": "OI-WALL-STAT-20261122-01",
+  "status": "RELEASED",
+  "acquired_at": "2026-11-22T09:59:04.791824+00:00",
+  "released_at": "2026-11-22T10:05:55.819464+00:00",
+  "flock_proc_lock_evidence_observed": true,
+  "formal_call_same_process": true,
+  "production_process_has_exited": true,
+  "production_children": "正式调用在持锁Python进程同步执行；无另建Worker或生产子进程。Git源码读取是短暂非生产子进程。",
+  "physical_lease_path": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/resource-lease.json",
+  "physical_lease_sha256": "9841c65631ddcb75da735450604e267a69363a08724d944a3230d4d9b0b62012",
+  "pid_policy": "真实PID/fdinfo及原始进程现场保存在gitignored运行证据中。",
+  "single_writer_checks": [
+    {
+      "symbol": "m",
+      "no_conflicting_write_fds_observed": true,
+      "path": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/m/single-writer-check.json",
+      "sha256": "837b028381bfd830ea97498842eb62973c2c92ae36de0788436347f29ed2cbd0",
+      "unique_new_native_dir": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/native-cache/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/m.night_end_at_2300",
+      "backup_full_dirs": []
+    },
+    {
+      "symbol": "rb",
+      "no_conflicting_write_fds_observed": true,
+      "path": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/results/rb/single-writer-check.json",
+      "sha256": "137fe1ac5c55c23d8f6cf21b446d61411e751a5783b6f08f73fb2275375c7b21",
+      "unique_new_native_dir": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/native-cache/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300",
+      "backup_full_dirs": []
+    }
+  ],
+  "auxiliary_replay_lease": {
+    "status": "RELEASED",
+    "acquired_at": "2026-11-22T10:27:32.375044+00:00",
+    "released_at": "2026-11-22T10:30:49.460662+00:00",
+    "lock_record_in_fdinfo_observed": true,
+    "physical_lease_path": "/dwdhome/fy/BASE_E6_2/.runtime/OI-WALL-STAT-20261122-01/rb-upstream-checkpoint-replay/resource-lease.json",
+    "physical_lease_sha256": "3510ce5d8e0ed3ee498a6a03a2c99a26e5d63f2fddec8cb8bf4ce6f27cee43e6"
+  }
+}

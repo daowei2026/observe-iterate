@@ -1,0 +1,30 @@
+[
+  {
+    "question_id": "SQ-RB-LIFETIME",
+    "finding_type": "SCENARIO_INTERPRETATION_QUESTION",
+    "feature_ref": "mquant.tis.hf.prel0.wall_assembler.WallAssembler",
+    "reasonableness_unit_ref": "BO-C1",
+    "statistical_pattern": {
+      "n": 70895,
+      "min": 1.0,
+      "p25": 6.0,
+      "p50": 11.0,
+      "p90": 31.0,
+      "p95": 41.0,
+      "p99": 67.0,
+      "max": 22754.0
+    },
+    "why_statistics_cannot_decide": "寿命与密度本身不足以判断墙是否符合真实市场过程。",
+    "recommended_visual_evidence": "原始盘口、同身份生命周期与band/core；候选不是已冻结正式场景。",
+    "representative_locations": [
+      {
+        "symbol": "rb",
+        "start_time": "2021-05-10 09:35:24.500000",
+        "end_time": "2021-05-10 21:00:01.500000",
+        "wall_id": 11799
+      }
+    ],
+    "priority": "NORMAL",
+    "next_route": "BUSINESS_EXPECTATION_DERIVATION"
+  }
+]
