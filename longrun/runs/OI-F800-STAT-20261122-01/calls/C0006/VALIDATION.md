@@ -1,0 +1,9 @@
+# C0006｜来源、消费与签发核对
+
+packet、FULL_ASSIGNMENT、INVOCATION、C0005 Return及D002专业报告与锁定Git对象逐字节一致；最新Owner继续指令与原件逐字一致。C0005 Return归属D002、原E1与原manager、C0006 origin与token均一致；已读取准确X绑定、G原生产物、Gate、finding与adapter。来源/hash见SOURCE_AUDIT.json。
+
+使用锁定同版 longrun_schema_v2.json 校验Binding、C0006 INVOCATION、C0005 executor Return、D003：结构通过。真实CODEX_NATIVE_DIRECT角色、issuer_call_id与回交一致，workers/issued_order_refs/accepted_worker_refs为空。D003只用原grants子集，各authority_quote仍在初始真实Owner GO原文中；最新Owner要求有效X/G后推进既定诊断。
+
+消费范围：D002新生产及31表独立读回已由原executor确认，正式Python退出0；监控supervisor退出1的事实和未重跑的对账记录原样保留。G1—G8已完成，readiness=PARTIAL、GlobalProfileGate=DIAGNOSIS_REQUIRED。F800-GF-001仍为STRUCTURAL_FINDING_CANDIDATE，D003只绑定原生F800-DA-001，不作manager根因裁决。
+
+D003只引用完整V2合法exact文件引用；专业包内的原生#定位选择符由executor按原文使用，未强改专业原件。原gate兼容问题沿用已发布C0001真实输出（daowei2026/observe-iterate@092819b56eaf3e08764ed23650c0826c0fdadec1:longrun/runs/OI-F800-STAT-20261122-01/calls/C0001/GATE_BINDING_RESULT.json），本C不重复旧检查、不改真实身份或工具骗取PASS。schema/来源检查不证明物理派发、诊断成功或Release。
