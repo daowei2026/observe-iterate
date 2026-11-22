@@ -2,11 +2,11 @@
 
 ## 当前身份与来源
 
-- run_id=OI-F800-STAT-20261122-01；work_id=OI-F800-STAT-20261122；business_case_id=F-STATISTICS-CLOSURE；当前C0028，Run professional_state=IN_PROGRESS，业务未释放。
-- 派工 `daowei2026/observe-iterate@17b5ad0c4fc9633be557d327094246177896a7af:longrun/runs/OI-F800-STAT-20261122-01/calls/C0028/FULL_ASSIGNMENT.md`；INVOCATION `daowei2026/observe-iterate@5ba971b71ced4c83d30399a7c5353940b2298a1e:longrun/runs/OI-F800-STAT-20261122-01/calls/C0028/INVOCATION.json`；已消费C0027/D012 Return `daowei2026/observe-iterate@20e69a4ee57b8bfca7f0805759e441c36f59d271:longrun/runs/OI-F800-STAT-20261122-01/calls/C0027/PRO_RETURN.json` 及报告 `daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/EXECUTOR_REPORT.md`。
+- run_id=OI-F800-STAT-20261122-01；work_id=OI-F800-STAT-20261122；business_case_id=F-STATISTICS-CLOSURE；当前C0030，Run professional_state=IN_PROGRESS，业务未释放。
+- 派工 `daowei2026/observe-iterate@124a87be43486ac870af0ee314151ef3267c422c:longrun/runs/OI-F800-STAT-20261122-01/calls/C0030/FULL_ASSIGNMENT.md`；INVOCATION `daowei2026/observe-iterate@2d2c569ab1d1191b1072e44eeb482853027eb561:longrun/runs/OI-F800-STAT-20261122-01/calls/C0030/INVOCATION.json`；已消费C0029/D013 Return `daowei2026/observe-iterate@cbf748a0d9ca16e466344aa3e1ef452feaf95589:longrun/runs/OI-F800-STAT-20261122-01/calls/C0029/PRO_RETURN.json` 及报告 `daowei2026/observe-iterate@266c34e5d7d75a05677e7969d528090d37cac44e:longrun/runs/OI-F800-STAT-20261122-01/professional/D013/EXECUTOR_REPORT.md`。
 - manager=`codex:OI-F800-STAT-20261122-01:manager`；原独立executor=`codex:OI-F800-STAT-20261122-01:executor:E1`，CODEX_NATIVE_DIRECT，workers=[]。
 - 最新MP002真实批准 `daowei2026/observe-iterate@2fa5c26a739d8d97a733f6a7581092a271724e6e:longrun/runs/OI-F800-STAT-20261122-01/owner-decisions/F800-MP-002/OWNER_APPROVAL.original.txt`；当前Binding `daowei2026/observe-iterate@3dc11a9dbf39e181b3c6a3051419a90e46b92aac:longrun/runs/OI-F800-STAT-20261122-01/RUN_BINDING.json`；本C无新行为修改/Owner请求，WALL M001仍未批准。
-- D008完整新X/G有效，两个finding最新关闭；B/C/D/E完整，D012 ObservationMaterialPackage=DATA_READY已消费。唯一新D013原S1已签，本C尚无物理派达/开工回执。
+- D008完整新X/G有效，两个finding最新关闭，M DATA_READY有效；原S1冻结v1/7案例7预期已消费。唯一新D014原S2已签，本C尚无物理派达/开工回执。
 
 ## CurrentReviewTarget
 
@@ -28,7 +28,7 @@ current_acceptance_level: 按原Workflow、真实场景证据和轻量停止条�
 | 正式Feature进程 | 曾实际运行，包装2050192/native2050491，退出0且锁释放；当前没有新生产；D012两次只读图运行亦已退出0 | 原生产/实际加载/持锁与释放证据有效 |
 | 当前结果目录 | 下列D008/store，39f当前结果 | fields/config/完整范围/Calendar/readback联合绑定 |
 | G是否开始 | G1—G8全部完成有效，GF001/002关闭，新结构反例0，场景问题4 | `daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/GlobalProfileGate.json`=PASS_TO_SCENARIO_REVIEW |
-| 当前阻断/后继 | 无运行/统计/Owner许可阻断；原§7.6适用场景工作继续，M完整DATA_READY，D013接续原S1选场景/冻结预期 | 无RERUN_REQUIRED或已确认缺陷待修，FeatureReleaseGate尚未签 |
+| 当前阻断/后继 | 无运行/统计/Owner许可阻断；原§7.6适用场景工作继续，M完整DATA_READY、S1冻结v1完整，D014接续原S2正式过程对照 | 无RERUN_REQUIRED或已确认缺陷待修，FeatureReleaseGate尚未签 |
 
 ## 当前版本与结果
 
@@ -49,7 +49,7 @@ FRP `39f02ec4548e68ba8dbd30061afc870546000994`，TIS `2f460d663d821cf2ba25555eda
 | 原生复验 | 共38位置通过，27项可支持结构检查无新反例 | `daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/NATIVE_RETEST_API.json`；`daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/FindingDisposition.json` |
 | 新finding/诊断适配 | 两者均空 | 原GlobalFindingCandidates/DiagnosisInputAdapters |
 | 当前GlobalProfileGate | PASS_TO_SCENARIO_REVIEW | 当前39f有效G，不等于Feature已全面合理 |
-| SQ001/SQ003 | 原HIGH场景问题，承接共同转折含义/800长责任与迟到准入意义 | 非CONFIRMED缺陷；材料已DATA_READY，原S1/S2场景工作待进行 |
+| SQ001/SQ003 | 原HIGH场景问题，承接共同转折含义/800长责任与迟到准入意义 | 非CONFIRMED缺陷；S1相应案例已冻结，原S2正式对照待进行；未预判缺陷 |
 | SQ002/SQ004 | 时期/Session描述与初始化/分支适用问题保持原队列 | 不强制穷尽复杂稀有规则 |
 | FeatureReleaseGate/Package | 尚未签发 | 沿C0020已发布RELEASE_SUCCESSOR_REVIEW按原§7.6与L1继续；不新造Gate枚举 |
 | Accepted limitations | 无Owner具体接受暂缓记录 | 不编造DEFERRED_BY_OWNER_SCOPE或据此签PASS_WITH_ACCEPTED_LIMITATIONS |
@@ -64,15 +64,16 @@ PARTIAL理解U3内部逐Tick材料/全部试探/首阻断轨迹未公开，U5完
 | M-C | 完整，唯一C2-v4预期/HTML、C3-v1及注入合同齐备；无未完成项/工具缺口 | `daowei2026/observe-iterate@ec747f4d460956bd1a91f59d0dcbaba6722ce750:longrun/runs/OI-F800-STAT-20261122-01/professional/D010/CAEGraphDisplayPreparationResult.json`；合成预览非E最终图 |
 | M-D | 完整F800-D-v1已消费，无核心缺项/阻塞/具名回流；原10项定义检查通过 | `daowei2026/observe-iterate@c19db65f5b7e228d1db4be61d06e361c16bafa33:longrun/runs/OI-F800-STAT-20261122-01/professional/D011/CAEGraphDefinitionIntegrationResult.json`；完整63项包，未代E构图/取数 |
 | M-E | DATA_READY完整已消费；E3实际接受、E4后正式取数、E5一致，无未完成项/回流 | `daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/ObservationMaterialPackage.json`；完整三年5图/21个construction_snapshot数据源，原限制保留 |
-| 场景/释放 | D013原S1已签，待原E1从真实材料选案例并冻结预期，原S2正式对照未执行 | 沿C0020既有审查及原L1；FeatureReleaseGate/ReleasePackage未签发 |
+| S1 | 完整已消费，F800-S1-D013-FROZEN v1，7案例/7预期；1 Owner明文/6 AI推导，有界漏报NO_CASE_FOUND | `daowei2026/observe-iterate@266c34e5d7d75a05677e7969d528090d37cac44e:longrun/runs/OI-F800-STAT-20261122-01/professional/D013/FrozenExpectationSet.json`；冻结v1及所有限制保留 |
+| S2/释放 | 唯一新D014原S2已签，待原E1对冻结案例正式过程对照，尚无专业对照回交 | 沿C0020既有审查/原L1；FeatureReleaseGate/ReleasePackage未签发 |
 
 ## 本C后继与交付
 
-唯一新D013（[JSON](../delegations/D013/DELEGATION.json)、[说明](../delegations/D013/DELEGATION.md)）绑定原S1 `daowei2026/observe-iterate@87b951bbd15078a2d6353bdd24afe0d8f19c845c:skills/reasonableness-analysis/business-expectation-derivation/SKILL.md`，沿 `daowei2026/observe-iterate@92cec836b1471471bd886a51a66123918ca9b275:longrun/runs/OI-F800-STAT-20261122-01/business_control/TASK_PROGRESS.md` 中CurrentReviewTarget五字段及C0020既有审查，不扩写新目标/方法。输入当前真实DATA_READY材料、已接受最终HTML（SHA-256 `df4076f642d4d2b2ac7a6f8cc02899d9cf70e20dd8beb313e347e7545279b450`）及21份construction_snapshot正式数据、U/G、原问题队列和七candidate-only；由原E1依原Skill选真实场景、冻结可检验过程预期或回交具名材料缺口，manager不代选案例/判误报漏报。
+唯一新D014（[JSON](../delegations/D014/DELEGATION.json)、[说明](../delegations/D014/DELEGATION.md)）采用原S2 `daowei2026/observe-iterate@87b951bbd15078a2d6353bdd24afe0d8f19c845c:skills/reasonableness-analysis/business-evidence-comparison/SKILL.md`，准确绑定S1冻结v1/CaseReviewSet/ScenarioExpectationSet/索引/覆盖、当前U/ReviewTarget/G及DATA_READY真实图与21份construction_snapshot数据。FROZEN SHA-256 `ae54fa64560dbb2e36a87b1913706d096bce00e72b9282abf36b7d6fefce5568`，不重选例、无痕改v1或由manager预写证据结论。原E1按原Skill完成三过程正式对照及材料缺口/新预期/合格诊断疑点分流。
 
-真实M材料已完整消费，C2合成预览只作展示预期；业务场景预期和正式对照仍未完成。原U PARTIAL/未暴露轨迹、材料六项限制、Rct/selected图层口径、缺价和Q边界保持，复杂低发生比率/改法未定规则不强制穷尽，无新Owner等待。有效U/X/G/M不重做；原manager消费S1后按原依赖接原Skill 2/受影响回流，再按既有轻量停止条件及原L1决定释放。
+有效U/X/G/M/S1不重做，原五字段ReviewTarget/C0020审查保持。S1完成不等于正式证据对照或Feature释放；原NO_CASE_FOUND仅有界筛查、误报候选尚未确认、PARTIAL/内部轨迹NOT_EXPOSED、材料六限制/迟到实时价值未知/Q边界继续传递。后续新证据/预期按原合同另立REVISED并留v1/原因；复杂低比例规则不强制穷尽，新的正式行为修改仍须Owner确认。
 
-controller核原E1线程/sol/max/cwd、授权/单写者及真实状态后物理派达，签D不是送达/开工回执。先D/报告/进度发布回读，后独立发布只引已有exact对象的IN_PROGRESS Return；owner_request_ref=null、W/Worker为空。账本completed仅C0028协调交付，不代表Run完成/FeatureRelease；无新线程、其他聊天消息或timer。
+controller核原E1线程/sol/max/cwd、权限/单写者和状态后派达，签D不是物理回执。原manager消费S2后按原Workflow及轻量停止条件/原L1决定实际后继和释放。先首批D/报告/进度发布回读，后独立只引已有exact对象的IN_PROGRESS Return；owner_request_ref=null、零W/Worker，无新线程/其他聊天消息/timer，账本completed仅C0030协调交付。
 
 ## C0020 D009首批发布凭证
 
