@@ -1,12 +1,12 @@
 # TASK_PROGRESS｜F800 统计驱动单 Feature 闭环
 
-## 当前协调身份与采用来源
+## 当前协调身份与来源
 
-- run_id：`OI-F800-STAT-20261122-01`；work_id：`OI-F800-STAT-20261122`；business_case_id：`F-STATISTICS-CLOSURE`。
-- 本次调用：`C0006`；FULL_ASSIGNMENT 与逐字最新 Owner 继续指令：`daowei2026/observe-iterate@e25acf900cca64f24a54ab0d9721b35ddce382e6:longrun/runs/OI-F800-STAT-20261122-01/calls/C0006/FULL_ASSIGNMENT.md`；INVOCATION：`daowei2026/observe-iterate@11033daf6d47d1c31a8310f4e9f503fb7c11ddb7:longrun/runs/OI-F800-STAT-20261122-01/calls/C0006/INVOCATION.json`。
-- 最新已消费回交：`daowei2026/observe-iterate@2754c9595641983e3e2185d122c6dce93868eb47:longrun/runs/OI-F800-STAT-20261122-01/calls/C0005/PRO_RETURN.json`；专业报告：`daowei2026/observe-iterate@3169703e769340200b183dad7675a1d22ecc1850:longrun/runs/OI-F800-STAT-20261122-01/professional/D002/EXECUTOR_REPORT.md`；对应原 D002，C0006原件确认controller已核真实executor turn、模型/强度、token与来源。
-- 原 control-v0.3、CODEX_NATIVE_DIRECT、Owner GO/Binding/grants 与锁定业务输入继续有效。manager=`codex:OI-F800-STAT-20261122-01:manager`；executor=`codex:OI-F800-STAT-20261122-01:executor:E1`，复用本 Run 原 E1；workers=[]。
-- snapshot_status=`current`；Run professional_state=`IN_PROGRESS`，整体业务任务 `incomplete`。D002的REPORTED_COMPLETE只对应本D委派交付，后续专业诊断和释放仍未完成。
+- run_id=`OI-F800-STAT-20261122-01`；work_id=`OI-F800-STAT-20261122`；business_case_id=`F-STATISTICS-CLOSURE`；本次调用`C0008`。
+- 派工与逐字最新Owner继续指令：`daowei2026/observe-iterate@213c5d6e33b3c1651ebcf347f407d32094a282c6:longrun/runs/OI-F800-STAT-20261122-01/calls/C0008/FULL_ASSIGNMENT.md`；INVOCATION：`daowei2026/observe-iterate@cc66536db4b894b594615f01aec0f6579d08ae44:longrun/runs/OI-F800-STAT-20261122-01/calls/C0008/INVOCATION.json`。
+- 已消费最新D003 Return：`daowei2026/observe-iterate@9e014214d9c62b6e69a0610068c49187497cb903:longrun/runs/OI-F800-STAT-20261122-01/calls/C0007/PRO_RETURN.json`；专业报告：`daowei2026/observe-iterate@a99ab37cdcf43759b7f203a1233fe69a7fa733db:longrun/runs/OI-F800-STAT-20261122-01/professional/D003/EXECUTOR_REPORT.md`；原生诊断/问题/提案保持原提交，不被manager改写。
+- 原control-v0.3、CODEX_NATIVE_DIRECT、Owner GO/Binding/grants及锁定业务输入继续有效；manager=`codex:OI-F800-STAT-20261122-01:manager`，executor=`codex:OI-F800-STAT-20261122-01:executor:E1`，复用本Run原E1；workers=[]。
+- snapshot_status=`current`；整体业务任务`incomplete`；Run professional_state=`WAITING_OWNER`，具体阶段为原L0的WAITING_OWNER_MODIFICATION_CONFIRMATION。D003委派已交付，不表示finding修复或Run完成。
 
 ## CurrentReviewTarget
 
@@ -19,50 +19,45 @@ current_acceptance_level: 当前 ReviewTarget 下关闭需处理的明显问题�
 ```
 
 
+
 ## Owner 要求的七项进度
 
-| 项目 | 最新有据状态 | 精确来源或接续 |
+| 项目 | 当前真实状态 | 来源或恢复条件 |
 |---|---|---|
-| D001 是否已完成 | 最小核对已在C0004消费，本次未重做；原生PARTIAL包保留 | D002的D001_GAP_RESOLUTION已登记X/G对U1—U6的处置，原包未改写 |
-| X 是否已开始 | 已开始并完成正式X及准确结果验收 | `daowei2026/observe-iterate@3169703e769340200b183dad7675a1d22ecc1850:longrun/runs/OI-F800-STAT-20261122-01/professional/D002/FeatureRunResultBinding.json` |
-| 复用还是重新生产 | 一次准确实例新生产；已查历史配置不合格，没有采用旧F800或默认6结果 | instance_kind=NEW_FORMAL_PRODUCTION；监控异常后未重复生产 |
-| 正式 Feature 进程是否实际运行 | 真实引擎已运行并结束；Asia/Shanghai 2026-11-22 17:50:06 至 2026-11-22 17:59:03，正式Python退出0 | supervisor收尾退出1已如实对账，生产成功与监控失败分别保留；见PRODUCTION_RECONCILIATION |
-| 当前结果目录 | 已绑定本工作区D002/store中的准确实例，完整路径见下；fields/config hash及31表独立读回齐备 | `daowei2026/observe-iterate@3169703e769340200b183dad7675a1d22ecc1850:longrun/runs/OI-F800-STAT-20261122-01/professional/D002/FeatureRunResultBinding.json` |
-| G 全量统计是否已开始 | 已完成原Skill G1—G8和全部可支持剖面/分层；480候选Life、1546次Revision occurrence | 原生readiness=PARTIAL；GlobalProfileGate=DIAGNOSIS_REQUIRED，具体限制保留 |
-| 当前是否存在阻断 | D002无未完成生产/统计阻断；当前既定专业前置是诊断F800-GF-001 | 本C已签D003给原E1，尚未派发/诊断，不重复有效X/G；不把诊断要求记成生产失败或直接释放 |
+| D001 是否已完成 | 最小核对已由C0004消费，本C不重复；原PARTIAL包及D002缺口处置保留 | 原D001包/D002 D001_GAP_RESOLUTION |
+| X 是否已开始 | 已完成准确正式X和独立读回，本C未新增生产 | `daowei2026/observe-iterate@3169703e769340200b183dad7675a1d22ecc1850:longrun/runs/OI-F800-STAT-20261122-01/professional/D002/FeatureRunResultBinding.json` |
+| 复用还是重新生产 | 当前准确结果来自D002一次新生产；无新版本或候选参数被采用 | 原完整配置/fields身份不变，正式修复未授权 |
+| 正式 Feature 进程是否实际运行 | 原D002真实ts已运行结束、Python退出0；D003及本C均未启动Feature | D002原生产/监控对账记录有效；不因Owner待确认重复生产 |
+| 当前结果目录 | 仍为下列D002/store准确实例；不是修后结果 | 原Binding、配置与31表独立读回保持原版本事实 |
+| G 全量统计是否已开始 | G1—G8已完成，480 Life/1546观点，未重统计 | 原GlobalProfileGate仍DIAGNOSIS_REQUIRED；D003已确认为未修复实现问题 |
+| 当前是否存在阻断 | 无生产/统计事实阻断；正式修复等待F800-MP-001的Owner确认，释放受已确认未修复问题约束 | Owner具体确认项见OWNER_REQUEST；当前未签后继D，无已授权正式修改/提交/推送/采用 |
 
-## 当前正式结果与版本
-
-正式结果 full_dir：
+当前正式full_dir：
 
 `/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D002/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2023-12-31 20:00:00/CommonPriceTurnGroupCandidatesFrp/3/9/a/1/9/2/a/4bbf414e0814726d92d156f2fe9b1f968/func`
 
-- FRP：`ac1927518ad6105f15ffbe37fea45e4be91ba574`；TIS：`2f460d663d821cf2ba25555eda13e78b697d0767`；仅 CommonPriceTurnGroupCandidatesFrp（f）。
-- 完整配置：`daowei2026/observe-iterate@3169703e769340200b183dad7675a1d22ecc1850:longrun/runs/OI-F800-STAT-20261122-01/professional/D002/configuration.json`；SHA-256=`b72095ff100da926474701b74bff7586a74b9770bc81cadc34c23cfe223e5cb3`；observation_multiple=800、delta=600、CalendarUTITick、method.revision=1；2Δ实际贴近保持10开放分钟。
-- fields SHA-256=`58ff1166df0e4bbdb84f4309b72947ee16de4a075d8992681fd60f46ccfb887c`。31张表由独立OnlyRead进程核行数/列/hash，与生产后导出一致；实际引擎消费K800由原生期限输出验证。
-- 正式请求 rb/hc/i、5m、2021-01-01—2023-12-31、night_end_at_2300、TA_updto20240229_DBA、steel；实际各品种49683行，2021-01-04 09:05:00—2023-12-29 15:00:00。输入与结果身份、布局和平台写面见原生Binding，不将旧候选/m3varK目录继续作为当前结果。
+FRP仍为`ac1927518ad6105f15ffbe37fea45e4be91ba574`，TIS仍为`2f460d663d821cf2ba25555eda13e78b697d0767`；配置SHA-256=`b72095ff100da926474701b74bff7586a74b9770bc81cadc34c23cfe223e5cb3`；fields SHA-256=`58ff1166df0e4bbdb84f4309b72947ee16de4a075d8992681fd60f46ccfb887c`。800、delta600、CalendarUTITick、2Δ、method.revision1、rb/hc/i、5m、2021—2023、Calendar/SOF/steel均未改变。
 
-## 闭环节点与当前后继
+## 诊断消费、finding 与提案
 
-| 节点 | 当前有效原生产物/状态 | 后继与未完成范围 |
+| 对象 | 当前有据状态 | 精确来源或下一动作 |
 |---|---|---|
-| U / D001 | 最小理解已消费；原PARTIAL包保持；D002已补X结果、实际加载、上游分母及工作区存储/锁证据 | 内部逐Tick/首阻断未暴露部分保留为G限制，不重新完整U |
-| X / D002 | 已完成新生产、独立读回，FeatureRunResultBinding有效 | 当前版本未改变，不重跑 |
-| G / D002 | G1—G8已完成；GlobalProfileGate=DIAGNOSIS_REQUIRED | 原生readiness=PARTIAL、未暴露内部轨迹等限制保留；待F800-GF-001诊断 |
-| 偏差诊断 / D003 | F800-GF-001为STRUCTURAL_FINDING_CANDIDATE；已有F800-DA-001 | 已签D003 / F800-DIAG-GF001，未实际派发；唯一Skill为business-discrepancy-diagnosis及实践补充 |
-| 修改/参数处理 | 无新的正式行为修改授权或当前已采用变化 | 诊断若建议改变，先ModificationProposal回Owner；确认采用后才按L0传播失效并重跑/重统计 |
-| Release | FeatureReleaseGate尚未形成；UpstreamReleasePackage未签发 | 先消费原生诊断及finding路由，再按L1/L2推进，不以D002完成替代业务释放 |
+| D003 / F800-DIAG-001 | 诊断职责已完成并由C0008消费，根因ImplementationMismatch、LOCATED；正式修复未做 | `daowei2026/observe-iterate@a99ab37cdcf43759b7f203a1233fe69a7fa733db:longrun/runs/OI-F800-STAT-20261122-01/professional/D003/DiagnosisReport.json` |
+| F800-GF-001 | L2状态CONFIRMED，未修复；原生resolution_status=DIAGNOSED_IMPLEMENTATION_MISMATCH_NOT_FIXED，issue=CONFIRMED_NOT_REPAIRED | `daowei2026/observe-iterate@a99ab37cdcf43759b7f203a1233fe69a7fa733db:longrun/runs/OI-F800-STAT-20261122-01/professional/D003/FindingDisposition.json`；不记FIX_IN_PROGRESS或CLOSED |
+| 直接责任点/影响 | 正常KLine连续性Double商差guard误拒真实600UTI边；22/1546观点、12/480 Life、18时刻；原生MEDIUM | 技术结论及区分证据已由executor给出，本C不重做诊断 |
+| 参数可修复性 | PROVEN_NOT_ADJUSTABLE，限当前锁定输入及已暴露参数 | 原生ParameterRepairability；不进入盲目标定或缩改正式范围 |
+| F800-MP-001 | 原具体提案待Owner确认，formal_change_applied=false、formal_patch_prepared=false；原executor历史approval_status不改 | `daowei2026/observe-iterate@a99ab37cdcf43759b7f203a1233fe69a7fa733db:longrun/runs/OI-F800-STAT-20261122-01/professional/D003/ModificationProposal.json`；本C新增具体OWNER_REQUEST，尚无Owner批准回执 |
 
-## Finding 与限制
+## 当前后继、独立工作与释放
 
-| finding_id | 最新观测与范围 | 当前状态 | 已采用路由/当前动作 |
-|---|---|---|---|
-| F800-GF-001 | 连续有效输入条件下groupCoverageIncomplete冲突候选；22/1546观点、12/480 Life、18个发行时刻；2021-08-31至2021-09-15 | CANDIDATE；根因/责任层/业务裁决尚待诊断 | 原生GlobalProfileGate→business-discrepancy-diagnosis；D003已签发待派发，输入F800-DA-001 |
+本C已继续完成具体Owner确认包、原提案影响/验证核对及既定依赖审查，见 [OWNER_REQUEST](../calls/C0008/OWNER_REQUEST.md)、[WORKFLOW_SUCCESSOR_REVIEW](../calls/C0008/WORKFLOW_SUCCESSOR_REVIEW.md)。未签新D/W，未把候选改法当作批准实施。
 
-目前没有由本Run诊断关闭的finding。原生G的4项场景解释问题、候选案例索引和可用性/数据限制保留在D002产物中；不把它们登记为Owner已接受的释放限制。历史覆盖问题未被宣布关闭，当前候选也未由manager升级为已确认缺陷。
+4项场景问题保留；按已采用control/05 §5和business-expectation-derivation §1，正式M/S1/S2需要PASS_TO_SCENARIO_REVIEW，当前条件未满足。D003路由是Owner确认后实现，不是缺少场景才可定位。原L0仍允许其他不冲突分析，但本次既有清单没有前置齐备且需立即派发的新独立专业后继；不由此撤销正常分析权限。
 
-## 本次新增工作与接续
+按现有L1定义记录FeatureReleaseGate=`OPEN_CONFIRMED_DEFECT`，尚无UpstreamReleasePackage；Q/V当前也不属本Run专业范围。没有Owner已接受的具体暂缓限制；未修复问题不得写成释放通过。原X/G仍是当前未修复ac版本的有效结果，尚无行为改变，不提前登记RERUN_REQUIRED。
 
-已消费D002合法Return和原生X/G，保留生产/监控对账、当前有效结果、统计Gate及候选性质；本C未生产、统计、诊断或修改Feature。当前新后继D003：`daowei2026/observe-iterate@a7fc7d76e4950978c04edf2777a049fd28f1b0c6:longrun/runs/OI-F800-STAT-20261122-01/delegations/D003/DELEGATION.json`；已先行发布并从origin回读，待controller派发原E1。先发布D003/报告/进度，再发布引用先前已存在exact refs的本C Return。
+## 本次更新与接续
 
-controller回收C0006后向本Run原E1派发D003；manager不建新线程、不发跨聊天消息、不占用未来C编号。原E1专业回交后由真实新C继续；剩余范围与接续见 [REMAINING_SCOPE](../calls/C0006/REMAINING_SCOPE.md)、[CONTINUATION](../calls/C0006/CONTINUATION.md)。
+先发布本C报告、Owner请求、后继评估、进度及来源核对，再独立发布引用这些已有exact对象的WAITING_OWNER Return；issued_delegation_refs=[]、issued_order_refs=[]、accepted_worker_refs=[]。controller回收后等待真实Owner答复，由合法新C接续；不创建线程、不发跨聊天消息、不轮询、不自动唤醒。
+
+Owner明确批准后，按批准范围签新的正式实施工作，取得实际ImplementationFixReturn，再依合同变化更新受影响U或直接X，随后完整X/G复验；Owner调整、暂缓或拒绝时按真实决定更新，不预写决定或Release通过。详见 [CONTINUATION](../calls/C0008/CONTINUATION.md)、[REMAINING_SCOPE](../calls/C0008/REMAINING_SCOPE.md)。

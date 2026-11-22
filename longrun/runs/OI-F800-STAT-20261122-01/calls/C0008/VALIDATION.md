@@ -1,0 +1,9 @@
+# C0008｜来源、消费与权限核对
+
+packet/FULL_ASSIGNMENT/INVOCATION/C0007 Return/D003报告及原ModificationProposal均按锁定Git对象核对checkout字节；最新Owner原文逐字匹配。D003归属、原E1、原manager、C0008 origin/token和回交一致；锁定同版schema校验Binding、INVOCATION、executor Return及原D003结构通过。来源/hash见SOURCE_AUDIT.json。
+
+消费原生诊断完成、ImplementationMismatch、CONFIRMED_NOT_REPAIRED、有限范围PROVEN_NOT_ADJUSTABLE及尚未实施/准备正式patch的事实。manager只整理原提案/影响/验证及依赖，不重做专业诊断，不改原提案approval_status或专业产物。
+
+本C仅写已授权run_record_write的本Run记录路径，authority_quote仍在原Owner GO逐字存在；未修改Feature、签正式实施D、提交/推送/采用新Feature版本，亦未发跨聊天消息、创建线程或重跑X/G。原gate兼容问题沿用C0001真实输出，不重复已形成旧检查或改身份取PASS。
+
+独立工作核对按既有L0/L1和场景Skill前提，详见WORKFLOW_SUCCESSOR_REVIEW。待Owner确认、已确认未修复、场景资格与下游release分别记录；不是把本C Return或报告发布视作Owner批准或业务完成。
