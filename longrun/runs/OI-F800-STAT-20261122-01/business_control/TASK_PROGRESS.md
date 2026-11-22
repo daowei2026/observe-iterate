@@ -63,6 +63,6 @@ current_acceptance_level: 当前 ReviewTarget 下关闭需处理的明显问题�
 
 ## 本次新增工作与接续
 
-已消费D002合法Return和原生X/G，保留生产/监控对账、当前有效结果、统计Gate及候选性质；本C未生产、统计、诊断或修改Feature。当前新后继D003见 [DELEGATION](../delegations/D003/DELEGATION.md)。先发布D003/报告/进度，再发布引用先前已存在exact refs的本C Return。
+已消费D002合法Return和原生X/G，保留生产/监控对账、当前有效结果、统计Gate及候选性质；本C未生产、统计、诊断或修改Feature。当前新后继D003：`daowei2026/observe-iterate@a7fc7d76e4950978c04edf2777a049fd28f1b0c6:longrun/runs/OI-F800-STAT-20261122-01/delegations/D003/DELEGATION.json`；已先行发布并从origin回读，待controller派发原E1。先发布D003/报告/进度，再发布引用先前已存在exact refs的本C Return。
 
 controller回收C0006后向本Run原E1派发D003；manager不建新线程、不发跨聊天消息、不占用未来C编号。原E1专业回交后由真实新C继续；剩余范围与接续见 [REMAINING_SCOPE](../calls/C0006/REMAINING_SCOPE.md)、[CONTINUATION](../calls/C0006/CONTINUATION.md)。

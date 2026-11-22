@@ -1,0 +1,9 @@
+# C0006｜Return 校验与发布顺序
+
+D003、manager报告及TASK_PROGRESS先提交推送，从origin fetch回读得到 `a7fc7d76e4950978c04edf2777a049fd28f1b0c6`，文件字节一致，见D003_PUBLICATION.json。
+
+本C PRO_RETURN按锁定同版 professional_return定义校验通过；sender与Binding/INVOCATION/D003的真实manager一致，call_id=C0006；role=manager、delegation_ref=null、return_to=null、issued_order_refs=[]、accepted_worker_refs=[]、owner_request_ref=null。professional_state=IN_PROGRESS，保留诊断与后继剩余范围。
+
+result_ref、issued_delegation_refs、remaining_scope_ref、continuation_ref全部引用先前已发布提交的真实对象，已逐项核Git对象存在；D003未倒向引用本Return或未来commit。D002消费事实写在manager报告，未伪造Worker或新的机器接受字段。
+
+已知原gate兼容问题沿用既有真实输出；本C不重复旧检查或改身份取PASS。本次schema/角色/来源/先后引用核对不证明controller已接收本C、D003已派发、finding已诊断或Feature已释放。
