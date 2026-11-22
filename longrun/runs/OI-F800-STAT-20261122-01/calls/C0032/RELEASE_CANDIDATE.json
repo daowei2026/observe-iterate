@@ -1,0 +1,78 @@
+{
+  "candidate_id": "F800-REL-001-CANDIDATE",
+  "run_id": "OI-F800-STAT-20261122-01",
+  "issuer_call_id": "C0032",
+  "adopted": false,
+  "official_FeatureReleaseGate_issued": false,
+  "proposed_feature_release_gate": "PASS_WITH_ACCEPTED_LIMITATIONS",
+  "actual_owner_acceptance_ref": null,
+  "draft_upstream_release_contents": {
+    "release_id": "F800-REL-001",
+    "feature_name": "CommonPriceTurnGroupCandidatesFrp",
+    "code_ref": {
+      "repository": "daowei2026/frp",
+      "commit": "39f02ec4548e68ba8dbd30061afc870546000994",
+      "current_binding_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/FeatureRunResultBinding.json"
+    },
+    "constructor_ref": {
+      "repository": "daowei2026/tis",
+      "commit": "2f460d663d821cf2ba25555eda13e78b697d0767",
+      "path": "frp/fqv_kline_example.py",
+      "symbol": "make_features; returned f only, normal copied profile override800"
+    },
+    "parameter_instance_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/configuration.json",
+    "parameter_version": "b72095ff100da926474701b74bff7586a74b9770bc81cadc34c23cfe223e5cb3",
+    "data_scope": {
+      "symbols": [
+        "rb",
+        "hc",
+        "i"
+      ],
+      "start_time": "2021-01-01",
+      "end_time": "2023-12-31",
+      "actual_start_time": "2021-01-04 09:05:00",
+      "actual_end_time": "2023-12-29 15:00:00",
+      "freq": "5m",
+      "calendar": "night_end_at_2300",
+      "sessions": [
+        "DAY_CLOCK_09_15",
+        "NIGHT_CLOCK_21_23"
+      ],
+      "sof": "TA_updto20240229_DBA",
+      "stk_tlist": "steel",
+      "input_positions_per_symbol": 49683,
+      "input_symbol_rows": 149049,
+      "per_symbol_validation": "INPUT_SCOPE_VALIDATION.json"
+    },
+    "feature_understanding_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/CurrentFeatureUnderstandingPackage.json",
+    "latest_run_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/FeatureRunResultBinding.json",
+    "global_profile_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/GlobalBehaviorProfile.json",
+    "global_profile_gate_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/GlobalProfileGate.json",
+    "scenario_comparison_ref": "daowei2026/observe-iterate@553ff3cf84c10084a9dfea216007ec63efc0aefc:longrun/runs/OI-F800-STAT-20261122-01/professional/D014/EvidenceComparisonPackage.json",
+    "observation_material_ref": "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/ObservationMaterialPackage.json",
+    "frozen_expectations_ref": "daowei2026/observe-iterate@266c34e5d7d75a05677e7969d528090d37cac44e:longrun/runs/OI-F800-STAT-20261122-01/professional/D013/FrozenExpectationSet.json",
+    "accepted_limitations": [],
+    "proposed_limitation_ids": [
+      "F800-LIM-001",
+      "F800-LIM-002",
+      "F800-LIM-003",
+      "F800-LIM-004",
+      "F800-LIM-005"
+    ],
+    "known_output_contract": {
+      "fields_schema_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/PUBLIC_TABLE_SCHEMA.json",
+      "finding_disposition_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/FindingDisposition.json",
+      "identity_time": "完整timestamp/occurrence/record_id/child层级和Life/Revision；actual、C、selected-known、admissionKnown/公开known分列；跨版本UUID无稳定承诺。",
+      "semantics": "共同转折候选及公开状态/有限责任，不直接承诺交易机会；携带a→d/d→r为静态历史责任投影，非as-of回放。",
+      "data_and_material_bounds": "每品种原69缺close保留；空分支/空列表不补零；Rct为更新行，selected多图层不可累加为独立对象；原M六项限制沿材料包传递。",
+      "Q_V_dependency": "只释放F候选包；Q共享适配影响及Q自身数值边界须在自己Run检查，Q/V需各自Owner授权及准确上游ReleasePackage；不在本Run启动/释放Q/V或改WALL。"
+    },
+    "invalidation_conditions": [
+      "正式代码/参数/数据/Calendar/输出合同采用变化，标记本包失效，按实际影响U/X/G；旧结果保留。",
+      "新增本覆盖内清楚业务冲突/输出不一致，按原finding/诊断及Owner修改确认；不自动改正式行为。",
+      "下游需要超出五项边界的用途或证明时，按各revisit_condition恢复对应工作，不将候选当已覆盖。",
+      "新预期/适用条件依新证据REVISED，保留冻结v1和原因。"
+    ]
+  },
+  "adoption_condition": "仅在真实Owner明确接受本decision的限制/影响/返回条件并有exact原件后，原manager才签实际Gate/UpstreamReleasePackage。"
+}

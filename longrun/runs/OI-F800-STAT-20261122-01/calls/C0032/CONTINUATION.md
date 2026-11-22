@@ -1,0 +1,7 @@
+# C0032｜交回controller的接续
+
+Run WAITING_OWNER，当前C已消费原S2完整公开对照，未签新D或实际FeatureReleaseGate。待决F800-REL-001：原L1要求Owner明确接受带限制释放，具体五项影响/返回条件、准确候选和请求已形成。Owner_request_ref由本C独立Return准确指向首批已发布OWNER_REQUEST。
+
+controller向Owner呈交该具体决策，并保留真实答复原文/exact引用；不要以MP002修复批准、6条AI冻结预期或本候选替代Owner接受。真实批准后合法接续原manager，按 `daowei2026/observe-iterate@87b951bbd15078a2d6353bdd24afe0d8f19c845c:control-v0.3/02_L1_本特征释放与下游依赖.md` 形成实际接受记录/Gate/UpstreamReleasePackage；若Owner指定更强证明，按具体case/gap/用途和原Workflow决定必要后继。当前没有给其他聊天发送消息或新建线程的操作，无自行触发/定时唤醒。
+
+三项材料请求仍保持blocks_current_public_comparison=false、mandatory_rebuild_requests=[]；不能自动变成重跑M/Feature。当前39f/参数/全范围XG、M DATA_READY、S1冻结v1和S2均有效。PARTIAL、迟到效用、有界覆盖及Q/WALL边界保留，正式新行为仍需另行Owner确认。先首批发布回读，后独立WAITING_OWNER Return；账本completed仅本C协调交付。

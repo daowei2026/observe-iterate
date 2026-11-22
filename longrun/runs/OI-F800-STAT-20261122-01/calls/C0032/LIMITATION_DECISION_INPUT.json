@@ -1,0 +1,105 @@
+{
+  "decision_id": "F800-REL-001",
+  "run_id": "OI-F800-STAT-20261122-01",
+  "issuer_call_id": "C0032",
+  "proposal_only": true,
+  "actual_owner_acceptance_ref": null,
+  "proposed_gate": "PASS_WITH_ACCEPTED_LIMITATIONS",
+  "owner_decision_scope": "是否允许在保留下述限制/影响/返回条件的范围结束本轮F并释放准确F包；不修改Feature行为，不授Q/V/WALL执行。",
+  "limitations_proposed_for_acceptance": [
+    {
+      "limitation_id": "F800-LIM-001",
+      "source_refs": [
+        "daowei2026/observe-iterate@553ff3cf84c10084a9dfea216007ec63efc0aefc:longrun/runs/OI-F800-STAT-20261122-01/professional/D014/ObservationGapRequests.json"
+      ],
+      "native_gap_id": "F800-S2-G001",
+      "description": "内部逐tick准入、未成组pair与首阻断未暴露",
+      "observed_scope": [
+        "F800-S1-C001",
+        "F800-S1-C002",
+        "F800-S1-C004",
+        "F800-S1-C005",
+        "F800-S1-C006"
+      ],
+      "business_impact": "只能支持公开发行/独立资格时序，不能证明每拍内部无未来知识或定位无组首阻断。",
+      "downstream_impact": "下游不得把无输出直接当特定拒绝原因，也不得据公开known推出全内部as-of保证。",
+      "why_proposed_nonblocking": "原S2 blocks_current_public_comparison=false；对应公开过程对照已完成，不要求额外更强声明。",
+      "revisit_condition": "下游确需内部因果/某具体Turn首阻断，或出现实际时序冲突时，按case/unit取原生材料；NOT_EXPOSED如实保留，需改正式行为时另走Proposal/Owner。",
+      "mandatory_rebuild_now": false,
+      "owner_acceptance_ref": null
+    },
+    {
+      "limitation_id": "F800-LIM-002",
+      "source_refs": [
+        "daowei2026/observe-iterate@553ff3cf84c10084a9dfea216007ec63efc0aefc:longrun/runs/OI-F800-STAT-20261122-01/professional/D014/ObservationGapRequests.json"
+      ],
+      "native_gap_id": "F800-S2-G002",
+      "description": "原生连续coverage区间未暴露",
+      "observed_scope": [
+        "F800-S1-C001",
+        "F800-S1-C003",
+        "F800-S1-C004",
+        "F800-S1-C006"
+      ],
+      "business_impact": "公开coverage状态转换可读，不能据0值宣称全窗每拍已独立验证。",
+      "downstream_impact": "保留coverage及InputMissing语义，不把局部Supported当全域充分。",
+      "why_proposed_nonblocking": "原S2 blocks_current_public_comparison=false；对应公开过程对照已完成，不要求额外更强声明。",
+      "revisit_condition": "下游确需连续区间保证、或出现具体覆盖反例时，按冻结原anchor到r具名回材料准备，不重复全量G。",
+      "mandatory_rebuild_now": false,
+      "owner_acceptance_ref": null
+    },
+    {
+      "limitation_id": "F800-LIM-003",
+      "source_refs": [
+        "daowei2026/observe-iterate@553ff3cf84c10084a9dfea216007ec63efc0aefc:longrun/runs/OI-F800-STAT-20261122-01/professional/D014/ObservationGapRequests.json"
+      ],
+      "native_gap_id": "F800-S2-G003",
+      "description": "初始化完整尺度前史缺失",
+      "observed_scope": [
+        "F800-S1-C003"
+      ],
+      "business_impact": "当前可确认不足被表达且有限关闭，不能确认图外初始化共同转折真值。",
+      "downstream_impact": "初始化Incomplete/ClosedInsufficient不当已证实共同转折，不补造P、方向或类型。",
+      "why_proposed_nonblocking": "原S2 blocks_current_public_comparison=false；对应公开过程对照已完成，不要求额外更强声明。",
+      "revisit_condition": "下游需要使用初始化候选作确定市场事实，或有合法同尺度前史时，补该case的有效前史/known绑定再判断。",
+      "mandatory_rebuild_now": false,
+      "owner_acceptance_ref": null
+    },
+    {
+      "limitation_id": "F800-LIM-004",
+      "source_refs": [
+        "daowei2026/observe-iterate@553ff3cf84c10084a9dfea216007ec63efc0aefc:longrun/runs/OI-F800-STAT-20261122-01/professional/D014/OpenQuestions.json",
+        "daowei2026/observe-iterate@553ff3cf84c10084a9dfea216007ec63efc0aefc:longrun/runs/OI-F800-STAT-20261122-01/professional/D014/EvidenceComparisonPackage.json"
+      ],
+      "description": "长迟到历史候选的实时用途/效用无Owner判据",
+      "observed_scope": [
+        "F800-S1-C006"
+      ],
+      "business_impact": "1665开放分钟迟到的历史表达有界受支持；是否还有实时下游价值为AMBIGUOUS，未据此判错或设新期限。",
+      "downstream_impact": "actual与admissionKnown分开，不能把迟到历史峰当识别当日新同步转折或交易信号；Q/V用途自行验证。",
+      "why_proposed_nonblocking": "本轮找明显问题与公开历史表达可收束，不额外证明800对全部用途最优。",
+      "revisit_condition": "下游明确实时用途/效用/时限，或具体损害证据出现时，先立业务判据，再按原场景/诊断流程处理；正式改变另需Owner。",
+      "mandatory_rebuild_now": false,
+      "owner_acceptance_ref": null
+    },
+    {
+      "limitation_id": "F800-LIM-005",
+      "source_refs": [
+        "daowei2026/observe-iterate@553ff3cf84c10084a9dfea216007ec63efc0aefc:longrun/runs/OI-F800-STAT-20261122-01/professional/D014/ActualCaseCoverage.json",
+        "daowei2026/observe-iterate@266c34e5d7d75a05677e7969d528090d37cac44e:longrun/runs/OI-F800-STAT-20261122-01/professional/D013/CaseTypeCoverage.json",
+        "daowei2026/observe-iterate@553ff3cf84c10084a9dfea216007ec63efc0aefc:longrun/runs/OI-F800-STAT-20261122-01/professional/D014/OpenQuestions.json"
+      ],
+      "description": "有限案例覆盖及原有界NO_CASE_FOUND",
+      "observed_scope": "7个冻结案例；原9处原价候选有界筛查；原SQ001—004边界",
+      "business_impact": "6例主要预期有界支持、C007当前F层不适用，不证明全800充分/最优、所有i未参加位置正确、全量无漏报或稀有分支真值。",
+      "downstream_impact": "按本次统计及具体case范围解释结论，不把19/7/1/3声明数当通过率或把NO_CASE_FOUND当零漏报。",
+      "why_proposed_nonblocking": "当前轻量目标的明确问题已处理，无新合格S3；复杂低比例/改法不明规则不强制穷尽。",
+      "revisit_condition": "新增当前覆盖内清楚反例、Owner新增覆盖/标定目标、或下游依赖更强真值时，按原S1/S2/诊断或标定流程；新预期另立REVISED，保留v1。",
+      "mandatory_rebuild_now": false,
+      "owner_acceptance_ref": null
+    }
+  ],
+  "current_accepted_limitations": [],
+  "original_conditional_material_requests_ref": "daowei2026/observe-iterate@553ff3cf84c10084a9dfea216007ec63efc0aefc:longrun/runs/OI-F800-STAT-20261122-01/professional/D014/ObservationGapRequests.json",
+  "mandatory_rebuild_requests": []
+}
