@@ -1,0 +1,9 @@
+# C0010 Return 核对
+
+原 D004 FI 实施范围已完成。FRP `be57d6752c9d43d10f1d670e1d2993bb8153ea7c` 已真实提交、推送、准确读回并以隔离运行时采用；基线27项/修后64项原生回归通过。完整新X、31表独立读回与G仍是原manager后继；finding为FIXED_PENDING_RERUN，FeatureReleaseGate=RERUN_REQUIRED，不关闭父Run。
+
+专业产物先行提交并推送：`daowei2026/observe-iterate@ba74086c56026dbc595af3b66e25334492b3a0b4:longrun/runs/OI-F800-STAT-20261122-01/professional/D004/EXECUTOR_REPORT.md`。报告、ImplementationFixReturn和CodeVersionAdoption三份对象经GitHub连接器准确提交读回，Git blob与本地一致，见PROFESSIONAL_PUBLICATION_READBACK.json。PRO_RETURN只引用这个已存在提交，不引用未来或自身。
+
+validate_return.py执行未修改的锁定87b951bb版本schema和原生validated/pro_state/object_ref_fields，并核实际C0010 INVOCATION、准确D004、新Binding、原manager/E1、空Worker及已发布结果。Return为REPORTED_COMPLETE，只说明本D的实施职责完成；没有新D/W、续作或Owner请求。
+
+没有运行完整validate-executor-return CLI：该锁定版binding()第84行把manager硬编码成chatgpt，与本Run采用CODEX_NATIVE_DIRECT的Codex manager不兼容。未修改原gate、未冒称完整CLI通过、未伪造独立controller receipt；真实接收/消费由原controller/manager处理。逐项结果见RETURN_VALIDATION.json。
