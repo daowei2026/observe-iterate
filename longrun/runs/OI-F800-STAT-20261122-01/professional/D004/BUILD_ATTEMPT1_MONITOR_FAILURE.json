@@ -1,0 +1,41 @@
+{
+  "prior_status": {
+    "run_id": "OI-F800-STAT-20261122-01",
+    "delegation_id": "D004",
+    "pid": 1817936,
+    "started_at": "2026-11-22T12:19:44.202595+00:00",
+    "formal_feature_run": false,
+    "runtime": "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-exact-uti-20261122/runtime",
+    "completed": false,
+    "baseline_binary_sha256": {
+      "ts": "668cee8c7939caae2a3b01bdb12fb7390a37a92ac7baf8c416ae9204f6e84e58",
+      "dbaw": "991a3fe0100d6ad8be0412e31ac4fbc6e5988b942c5269754176262d01af4ec8",
+      "u2-observation-window-check": "55f119dbc1c433f1ececdc092843bc309e54d98a4b06e4488f103d1d3c349097"
+    },
+    "baseline_source_sha256": "3bb9a8c2ce774e404bfd8bb81a9980053ecb6f7ff16307e7360b25d31706a43c",
+    "lock_acquired_at": "2026-11-22T12:19:52.897631+00:00",
+    "lock_path": "/dwdhome/fy/cgpterm/artifacts/wall-f-closure-20261122/FORMAL_PRODUCTION.lock",
+    "lock_owner_pid": 1817936,
+    "phase": "compiling",
+    "command": [
+      "stack",
+      "--stack-yaml",
+      "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-exact-uti-20261122/runtime/edh-universe/stack.yaml",
+      "build",
+      "frp:exe:dbaw",
+      "frp:exe:u2-observation-window-check",
+      "trade-poc:exe:ts",
+      "--copy-bins",
+      "--ghc-options=-O0",
+      "--ghc-options=-j2",
+      "--jobs=2"
+    ],
+    "build_started_at": "2026-11-22T12:28:56.138373+00:00",
+    "build_pid": 1824386
+  },
+  "monitor_exit_code": 1,
+  "build_exit_code": null,
+  "cause": "ps returned 1 with no child rows; observer treated it as an exception",
+  "previous_build_not_running_at_resume": true,
+  "formal_feature_run": false
+}

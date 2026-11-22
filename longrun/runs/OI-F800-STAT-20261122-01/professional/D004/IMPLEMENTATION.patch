@@ -1,0 +1,210 @@
+diff --git a/src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateKLineInput.hs b/src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateKLineInput.hs
+index a111657..1a1b8da 100644
+--- a/src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateKLineInput.hs
++++ b/src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateKLineInput.hs
+@@ -5,7 +5,9 @@
+ module Frp.Instance.ISL.Opportunity.U2.GroupCandidateKLineInput where
+ 
+ import Control.Applicative ((<|>))
++import Control.Monad.IO.Class (liftIO)
+ import Data.Int (Int64)
++import Data.Ratio (denominator,numerator)
+ import qualified Data.Map.Strict as M
+ import Data.Aeson
+ import qualified Data.Text as T
+@@ -21,6 +23,7 @@ import Frp.Instance.ISL.Opportunity.U2.Source (SourceRound(..))
+ import Frp.Instance.ISL.Opportunity.U2.Types
+ import Frp.Instance.ISL.Opportunity.U2.Episode (CalendarClockValue(..))
+ import Frp.Instance.ISL.Opportunity.U2.EpisodeMaterialReader (EpisodeMarketConfig(..))
++import Frp.Instance.ISL.Opportunity.U2.NativeSource (exactUTI)
+ import Frp.Instance.ISL.Opportunity.U2.BoundedRelations (geometryFromKnown)
+ import Frp.Instance.ISL.Opportunity.U2.GroupCandidateTypes
+ import Frp.Instance.ISL.Opportunity.U2.GroupCandidateMaterial
+@@ -37,12 +40,38 @@ instance FromJSON GroupKLineInput where
+   parseJSON=withObject "KLine转折输入" $ \v->GroupKLineInput
+     <$> v .: "symbol" <*> v .: "calendar" <*> v .: "scale_turn" <*> v .: "freq"
+ 
++-- 固定秒/分钟频率换算到源UTI的离散步长。Double单位按其实际值精确解释；
++-- 非整数步长、Tick及非固定开放时长的日/周/月不能靠舍入或容差假装相邻。
++klineUTIStep :: Freq -> Double -> Double -> Either T.Text Int64
++klineUTIStep frequency unitsPerMinute unitsPerTick
++  | freq_type frequency `notElem` [SecondFreq,MinuteFreq]
++    || freq_interval frequency<=0 || freq_ns frequency<=0=
++      Left "KLine coverage requires a positive fixed second/minute frequency"
++  | any (\units->isNaN units || isInfinite units || units<=0) [unitsPerMinute,unitsPerTick]=
++      Left "KLine coverage requires finite positive Calendar unit conversions"
++  | denominator step/=1 || numerator step<=0 || numerator step>toInteger (maxBound::Int64)=
++      Left "KLine frequency/Calendar conversion has no positive exact Int64 UTI step; refusing rounding"
++  | otherwise=Right (fromInteger (numerator step))
++  where step=fromIntegral (freq_ns frequency)*toRational unitsPerMinute/
++          (60000000000*toRational unitsPerTick)
++
++-- Source只发行当前成功点或一条真实相邻边；大坐标不先做浮点除法。
++-- Integer差避免源Int64两端相减溢出，冷启动和真实缺口仍重启覆盖。
++klineForwardCoverage :: Int64 -> T.Text -> Maybe (Int64,Double) -> (Int64,Double) -> ObjectCoverage
++klineForwardCoverage step object previous (at,u)=ObjectCoverage object CoverageObserved
++  (Just (case previous of
++    Just (prior,old) | toInteger at-toInteger prior==toInteger step->old
++    _->u)) (Just u)
++
+ -- close、closeUti本来就在同一个KLine收盘事件中；时间坐标直接使用原UTI。
+ groupKLineEvents :: HasHisBack => GroupKLineInput -> EpisodeMarketConfig
+   -> FaoModel (FrpEvent (Tick (Double,Int64,Double,Double)))
+ groupKLineEvents plan market=do
++  _<-either (liftIO . fail . T.unpack) pure
++    (klineUTIStep (inputFrequency plan) (marketUnitsPerOpenMinute market) (marketUnitsPerCalendarTick market))
+   let frequency=inputFrequency plan
+       kline=K.KLine frequency
++      -- Q报价位置接口保持原换算；覆盖不再依赖这个Double商。
+       step=fromIntegral (freq_ns frequency)/1e9/60*marketUnitsPerOpenMinute market
+   fields<-doGenericFaoResult kline
+   let price=fields M.! "close";uti=fields M.! "closeUti"
+@@ -50,7 +79,7 @@ groupKLineEvents plan market=do
+         [(\x->(Just x,Nothing)) <$> price,(\x->(Nothing,Just x)) <$> uti]
+       combine (p,u) (q,v)=(p<|>q,u<|>v)
+       row (Just (Tick _ p _),Just (Tick ts u _))=Just (Tick ts
+-        (p,round u,u/step,marketUnitsPerCalendarTick market*u) Nothing)
++        (p,either (error . show) id (exactUTI u),u/step,marketUnitsPerCalendarTick market*u) Nothing)
+       row _=Nothing
+   pure (fmapMaybe row joined)
+ 
+@@ -58,6 +87,8 @@ groupKLineEvents plan market=do
+ buildKLineGroupSource :: HasHisBack => GroupKLineInput -> EpisodeMarketConfig
+   -> FaoModel (FrpEvent (Tick FormationFrame))
+ buildKLineGroupSource plan market=do
++  utiStep<-either (liftIO . fail . T.unpack) pure
++    (klineUTIStep (inputFrequency plan) (marketUnitsPerOpenMinute market) (marketUnitsPerCalendarTick market))
+   let feature=inputScaleTurn plan
+       object=inputSymbol plan
+   root<-getFullDir feature
+@@ -92,7 +123,7 @@ buildKLineGroupSource plan market=do
+         in GroupTurn ref source object actual price confirmed known direction kind roundValue
+              geometry (Just (clock turnKnown actual)) False Nothing
+       advance tick (anchor,previous,types,_)=
+-        let (a,b,Just (_,known,position,u),z)=atTickValue tick
++        let (a,b,Just (_,known,_,u),z)=atTickValue tick
+               :: (Maybe ST.CompleteScaleTurn,Maybe ST.CompleteScaleTurn,
+                   Maybe (Double,Int64,Double,Double),Maybe Zig.ZigWithStatusOcc)
+             currentTypes=case z of
+@@ -106,10 +137,9 @@ buildKLineGroupSource plan market=do
+             nextAnchor=case a of Just v->Just (selectedAnchor v);Nothing->anchor
+             secondTurns=maybe [] (pure . selected currentTypes SecondRound nextAnchor known) b
+             after=case b of Just v->Just (selectedAnchor v);Nothing->nextAnchor
+-            coverage=[ObjectCoverage object CoverageObserved
+-              (Just (case previous of Just (p,old) | position-p==1->old;_->u)) (Just u)]
++            coverage=[klineForwardCoverage utiStep object previous (known,u)]
+             frame=FormationFrame u known (firstTurns++secondTurns) [] False coverage
+-            before=Just (position,u)
++            before=Just (known,u)
+             retained=case after of
+               Just (Point2 at _,_)->M.filterWithKey (\uti _->uti>=round at) currentTypes
+               Nothing->currentTypes
+diff --git a/test/U2ObservationWindowSpecMain.hs b/test/U2ObservationWindowSpecMain.hs
+index 2c37cb6..ca0c1cb 100644
+--- a/test/U2ObservationWindowSpecMain.hs
++++ b/test/U2ObservationWindowSpecMain.hs
+@@ -6,6 +6,7 @@ module Main where
+ import Control.Monad (unless)
+ import Data.Aeson
+ import Data.Aeson.KeyMap qualified as KM
++import Data.Int (Int64)
+ import Data.Map.Strict qualified as M
+ import Data.Set qualified as S
+ import System.Environment (getArgs)
+@@ -14,6 +15,8 @@ import Frp.Core hiding (Open)
+ import Frp.Instance.ISL.Opportunity.CommonPriceTurnGroupCandidates
+ import Frp.Instance.ISL.Opportunity.U2.GroupCandidateTypes
+ import Frp.Instance.ISL.Opportunity.U2.GroupCandidateMaterial
++import Frp.Instance.ISL.Opportunity.U2.GroupCandidateKLineInput (klineUTIStep,klineForwardCoverage)
++import Frp.Instance.ISL.Opportunity.U2.NativeSource (exactUTI)
+ import Frp.Instance.ISL.Opportunity.U2.GroupCandidatePairs
+ import Frp.Instance.ISL.Opportunity.U2.GroupCandidateStorage
+ import Frp.Instance.ISL.Opportunity.U2.FormationParticipationFacts (FormationParticipation(..))
+@@ -41,9 +44,10 @@ turn object at known=GroupTurn (ref object) (ref (object<>"-source")) object (ro
+       (Just (p,100,Just (CalendarClockValue 20 (at-5))))
+       (t,101,Just (CalendarClockValue 20 at)) (c,103,Just (CalendarClockValue 20 (at+5)))
+ 
+-step method u known incoming patches ended material candidates pairs=do
++step=stepWith profile
++stepWith configuredProfile method u known incoming patches ended material candidates pairs=do
+   next<-need (advanceMaterial method (candidateDependencies candidates) (FormationFrame u known incoming patches ended []) material)
+-  view<-need (advancePairView profile (candidateDependencies candidates) (currentMaterial next) pairs)
++  view<-need (advancePairView configuredProfile (candidateDependencies candidates) (currentMaterial next) pairs)
+   (state,issued)<-need=<<advanceCandidates method view candidates
+   _<-need (validateGroupRecord (GroupCandidatesRecord [] (map storeGroupOccurrence issued)))
+   pure (next,state,pairBases view,issued)
+@@ -88,10 +92,74 @@ main=do
+   oldCoverage<-need (advanceMaterial oldMethod S.empty (FormationFrame 40 40 [] [] False coverage) initial)
+   wideCoverage<-need (advanceMaterial wideMethod S.empty (FormationFrame 40 40 [] [] False coverage) initial)
+   check "coverage completeness follows the configured observation domain" (not (materialCoverageIncomplete (currentMaterial oldCoverage)) && materialCoverageIncomplete (currentMaterial wideCoverage))
++  -- 正式输入出现的2^17商坐标边界：旧guard失败，实际生产helper给出的边
++  -- 经原Material入口必须继续保持完整覆盖，而非只测试一条算术等式。
++  rawStep<-need (klineUTIStep "5m" 120 1)
++  let prior=78643199::Int64;now=78643799::Int64
++      rawMethod=CompleteLinkPriceTurns 600 "CalendarUTITick" 800
++      rawInitial=emptyMaterialState ["A"]
++      at=fromIntegral now;before=fromIntegral prior
++      rawFrame u known cs=FormationFrame u known [] [] False cs
++      covered=ObjectCoverage "A" CoverageObserved (Just (before-480000)) (Just before)
++      edge=klineForwardCoverage rawStep "A" (Just (prior,before)) (now,at)
++      oldGuard=(at/600-before/600)==1
++  check "locked 5m Calendar conversion is exactly 600 UTI" (rawStep==600)
++  check "old quotient guard fails at the actual boundary" (not oldGuard)
++  full<-need (advanceMaterial rawMethod S.empty (rawFrame before prior [covered]) rawInitial)
++  across<-need (advanceMaterial rawMethod S.empty (rawFrame at now [edge]) full)
++  check "real boundary edge preserves complete 800Delta material" (coverageFrom edge==Just before &&
++    not (materialCoverageIncomplete (currentMaterial across)))
++  let point=ObjectCoverage "A" CoverageObserved (Just at) (Just at)
++  oldAcross<-need (advanceMaterial rawMethod S.empty (rawFrame at now [point]) full)
++  check "old boundary point reproduces false incomplete material" (materialCoverageIncomplete (currentMaterial oldAcross))
++  mapM_ (\(p,n)->check "ordinary adjacent control stays an edge"
++    (coverageFrom (klineForwardCoverage rawStep "A" (Just (p,fromIntegral p)) (n,fromIntegral n))==Just (fromIntegral p)))
++    [(prior-600,prior),(now,now+600)]
++  let gapAt=prior+1200;gap=klineForwardCoverage rawStep "A" (Just (prior,before)) (gapAt,fromIntegral gapAt)
++  gapped<-need (advanceMaterial rawMethod S.empty (rawFrame (fromIntegral gapAt) gapAt [gap]) full)
++  check "true 1200UTI gap restarts coverage and remains incomplete"
++    (coverageFrom gap==Just (fromIntegral gapAt) && materialCoverageIncomplete (currentMaterial gapped))
++  cold<-need (advanceMaterial rawMethod S.empty
++    (rawFrame at now [klineForwardCoverage rawStep "A" Nothing (now,at)]) rawInitial)
++  check "first successful point preserves cold start" (materialCoverageIncomplete (currentMaterial cold))
++  failed<-need (advanceMaterial rawMethod S.empty
++    (rawFrame at now [ObjectCoverage "A" CoverageSourceFailure Nothing Nothing]) full)
++  resumed<-need (advanceMaterial rawMethod S.empty
++    (rawFrame (at+600) (now+600) [klineForwardCoverage rawStep "A" (Just (now,at)) (now+600,at+600)]) failed)
++  check "source failure cannot be bridged by the next adjacent edge"
++    (failedCoverageFirings (materialTotals failed)==1 && materialCoverageIncomplete (currentMaterial resumed) &&
++      (coverageFrom =<< M.lookup "A" (objectCoverage resumed))==Just at)
++  let fullDomain u=[ObjectCoverage object CoverageObserved (Just (-4000)) (Just u) | object<-["A","B"]]
++  lostClock<-need (advanceMaterial wideMethod S.empty
++    (FormationFrame 60 60 [] [AcceptedClock "A" 0 Nothing 60] False (fullDomain 60)) m)
++  check "unknown Clock remains unenumerated and incomplete despite full price coverage"
++    (materialCoverageIncomplete (currentMaterial lostClock) && not (S.member (turnKey a) (materialEnumerable (currentMaterial lostClock))))
++  restoredClock<-need (advanceMaterial wideMethod S.empty
++    (FormationFrame 61 61 [] [AcceptedClock "A" 0 (Just (FormationClock 0 61)) 61] False (fullDomain 61)) lostClock)
++  check "explicit Clock correction restores only known material"
++    (not (materialCoverageIncomplete (currentMaterial restoredClock)) &&
++      S.member (turnKey a) (materialEnumerable (currentMaterial restoredClock)))
++  check "second frequency has an exact discrete UTI step" (klineUTIStep "1s" 120 1==Right 2)
++  check "fractional units supported when the exact step is integral" (klineUTIStep "2m" 0.5 1==Right 1)
++  check "Calendar clock scaling does not change the raw UTI grid" (klineUTIStep "5m" 60 0.5==Right 600 && klineUTIStep "5m" 240 2==Right 600)
++  mapM_ (\(frequency,units)->check "unsupported conversion is rejected without rounding"
++    (case klineUTIStep frequency units 1 of Left _->True;_->False))
++    [("1m",1.5),("1s",1),("10m",0.1),("0m",120),("-1m",120),
++     ("@",120),("1d",120),("1W",120),("1M",120),("1m",0),("1m",0/0),("1m",1/0),("1m",1e20)]
++  mapM_ (\tickUnits->check "invalid Calendar clock conversion is rejected"
++    (case klineUTIStep "5m" 120 tickUnits of Left _->True;_->False)) [0,-1,0/0,1/0]
++  mapM_ (\value->check "native fractional/nonfinite UTI is rejected without rounding"
++    (case exactUTI value of Left _->True;_->False)) [78643799.5,0/0,1/0,1e20]
++  check "Int64 endpoint subtraction cannot overflow into an adjacent edge"
++    (coverageFrom (klineForwardCoverage 600 "A" (Just (minBound,0)) (maxBound,1))==Just 1)
+   (_,_,_,unchanged)<-step wideMethod 41 41 [] [] False m s p
+   check "ordinary quote does not republish" (null unchanged)
+   (_,_,_,farRows)<-step wideMethod 40 40 [a,turn "B" 11 40] [] False initial emptyCandidateState M.empty
+   check "wide observation does not widen 2Delta actual proximity" (null farRows)
++  let lockedProfile=profile {formationDelta=600,formationTimeUnit="CalendarUTITick"}
++  (_,_,_,at2Delta)<-stepWith lockedProfile rawMethod 2000 2000 [turn "A" 0 2000,turn "B" 1200 2000] [] False initial emptyCandidateState M.empty
++  (_,_,_,beyond2Delta)<-stepWith lockedProfile rawMethod 2000 2000 [turn "A" 0 2000,turn "B" 1201 2000] [] False initial emptyCandidateState M.empty
++  check "locked actual 2Delta admits 1200UTI but rejects 1201UTI" (length at2Delta==1 && null beyond2Delta)
+   let opposed=b {groupTurnDirection=Just DirectionDown}
+   (_,_,_,opposedRows)<-step wideMethod 40 40 [a,opposed] [] False initial emptyCandidateState M.empty
+   check "direction veto remains" (null opposedRows)

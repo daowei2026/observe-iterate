@@ -1,0 +1,28 @@
+PASS omitted profile keeps legacy 6
+PASS explicit profile 800 parsed
+PASS explicit observation survives JSON roundtrip
+PASS legacy serialization omits new field
+PASS wide serialization carries new field
+PASS invalid observation rejected
+PASS invalid observation rejected
+PASS invalid observation rejected
+PASS invalid observation rejected
+PASS invalid observation rejected
+PASS default retains 30/60/150 minute ordered duties
+PASS default still rejects late first confirmation
+PASS wide admits the same late confirmed pair
+PASS wide formal storage preserves ordered handoff duty
+PASS original storage invariant still rejects stale handoff
+PASS independent observation and unchanged revision tail
+PASS clock correction cannot extend original wide deadline
+PASS coverage completeness follows the configured observation domain
+PASS ordinary quote does not republish
+PASS wide observation does not widen 2Delta actual proximity
+PASS direction veto remains
+PASS first confirmation at deadline is consumed then closed
+PASS first confirmation beyond deadline is excluded
+PASS clock closes wide observation without new turn
+PASS revision duty ends and online state retires
+PASS scope end remains distinct
+PASS future knowledge rejected
+ALL OBSERVATION WINDOW CHECKS PASSED

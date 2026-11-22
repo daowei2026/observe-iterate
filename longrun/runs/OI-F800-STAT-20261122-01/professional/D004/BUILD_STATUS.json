@@ -1,0 +1,59 @@
+{
+  "run_id": "OI-F800-STAT-20261122-01",
+  "delegation_id": "D004",
+  "pid": 1825691,
+  "started_at": "2026-11-22T12:30:33.677251+00:00",
+  "formal_feature_run": false,
+  "runtime": "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-exact-uti-20261122/runtime",
+  "completed": true,
+  "attempt": 2,
+  "baseline_binary_sha256": {
+    "ts": "668cee8c7939caae2a3b01bdb12fb7390a37a92ac7baf8c416ae9204f6e84e58",
+    "dbaw": "991a3fe0100d6ad8be0412e31ac4fbc6e5988b942c5269754176262d01af4ec8",
+    "u2-observation-window-check": "55f119dbc1c433f1ececdc092843bc309e54d98a4b06e4488f103d1d3c349097"
+  },
+  "baseline_source_sha256": "3bb9a8c2ce774e404bfd8bb81a9980053ecb6f7ff16307e7360b25d31706a43c",
+  "lock_acquired_at": "2026-11-22T12:30:34.956503+00:00",
+  "lock_path": "/dwdhome/fy/cgpterm/artifacts/wall-f-closure-20261122/FORMAL_PRODUCTION.lock",
+  "lock_owner_pid": 1825691,
+  "phase": "completed",
+  "command": [
+    "stack",
+    "--stack-yaml",
+    "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-exact-uti-20261122/runtime/edh-universe/stack.yaml",
+    "build",
+    "frp:exe:dbaw",
+    "frp:exe:u2-observation-window-check",
+    "trade-poc:exe:ts",
+    "--copy-bins",
+    "--ghc-options=-O0",
+    "--ghc-options=-j2",
+    "--jobs=2"
+  ],
+  "build_started_at": "2026-11-22T12:30:35.223143+00:00",
+  "build_pid": 1825695,
+  "heartbeat_at": "2026-11-22T12:51:56.537575+00:00",
+  "build_children": [
+    "    PID    PPID COMMAND"
+  ],
+  "child_observation_exit_code": 1,
+  "exit_code": 0,
+  "build_finished_at": "2026-11-22T12:52:08.119733+00:00",
+  "baseline_binaries_unchanged": true,
+  "baseline_source_unchanged": true,
+  "binaries": {
+    "ts": {
+      "path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-exact-uti-20261122/runtime/edh-universe/bin/ts",
+      "sha256": "f1d312b92744e68e4a617c98c04b07fa9361ab744be79b92963a39024d7060ea"
+    },
+    "dbaw": {
+      "path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-exact-uti-20261122/runtime/edh-universe/bin/dbaw",
+      "sha256": "991a3fe0100d6ad8be0412e31ac4fbc6e5988b942c5269754176262d01af4ec8"
+    },
+    "u2-observation-window-check": {
+      "path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-exact-uti-20261122/runtime/edh-universe/bin/u2-observation-window-check",
+      "sha256": "effcf4de5f3aa2baf13a131f8144f85fc36834b44465714ee01e09c05431f282"
+    }
+  },
+  "lock_released_at": "2026-11-22T12:52:34.388101+00:00"
+}

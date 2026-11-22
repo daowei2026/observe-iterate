@@ -1,0 +1,48 @@
+{
+  "diagnosis_ref": "daowei2026/observe-iterate@a99ab37cdcf43759b7f203a1233fe69a7fa733db:longrun/runs/OI-F800-STAT-20261122-01/professional/D003/DiagnosisReport.json#F800-DIAG-001",
+  "code_commit": "be57d6752c9d43d10f1d670e1d2993bb8153ea7c",
+  "changed_files": [
+    "src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateKLineInput.hs",
+    "test/U2ObservationWindowSpecMain.hs"
+  ],
+  "changed_behavior": "正常KLine覆盖以精确频率/Calendar换算得到的正整数原始UTI步长判定相邻；previous持有Int64源UTI与覆盖Clock，使用Integer差避免溢出。首次/真实缺口仅给点；Material严格累积、失败、未知Clock、800观察窗和实际2Δ保持。closeUti复用exactUTI，拒绝隐式round；Q报价Double位置接口保持。",
+  "tests": [
+    {
+      "name": "隔离构建",
+      "result": "PASS",
+      "targets": [
+        "frp:exe:dbaw",
+        "frp:exe:u2-observation-window-check",
+        "trade-poc:exe:ts"
+      ],
+      "evidence": "BUILD_STATUS.json + build.log.gz",
+      "exit_code": 0
+    },
+    {
+      "name": "baseline 原生窗口回归",
+      "result": "PASS",
+      "command": [
+        "/dwdhome/fy/BASE_E6_2_copy/.runtime/f-wide-observation-20261122/runtime/edh-universe/bin/u2-observation-window-check",
+        "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D002/preflight/baseline-configuration.json",
+        "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D002/preflight/configuration.json"
+      ],
+      "checks": 27,
+      "exit_code": 0,
+      "evidence": "baseline-window-checks.log"
+    },
+    {
+      "name": "fixed 原生窗口回归",
+      "result": "PASS",
+      "command": [
+        "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-exact-uti-20261122/runtime/edh-universe/bin/u2-observation-window-check",
+        "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D002/preflight/baseline-configuration.json",
+        "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D002/preflight/configuration.json"
+      ],
+      "checks": 64,
+      "exit_code": 0,
+      "evidence": "fixed-window-checks.log"
+    }
+  ],
+  "new_feature_version": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c",
+  "ready_for_feature_rerun": true
+}

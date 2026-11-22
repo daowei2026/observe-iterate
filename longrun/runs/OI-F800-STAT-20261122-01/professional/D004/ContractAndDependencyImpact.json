@@ -1,0 +1,27 @@
+{
+  "structural_contract_changed": false,
+  "affected_understanding_update_required": false,
+  "next_node": "X",
+  "basis": "对象/身份/状态/事件/生命周期/存储字段及完整序列化配置无结构变化；仅纠正覆盖边数值实现及声明离散入口校验。原D001最小理解和D002缺口处置继续可用，不重做完整U。",
+  "unchanged_contract_files": [
+    "CommonPriceTurnGroupCandidates.hs",
+    "U2/GroupCandidateTypes.hs",
+    "U2/GroupCandidateMaterial.hs",
+    "U2/GroupCandidateEvolution.hs",
+    "U2/GroupCandidateStorage.hs",
+    "U2/Formation.hs",
+    "PostTurnGroupDirectionalOrganization.hs",
+    "U2/DirectionalOrganizationMotion.hs"
+  ],
+  "changed_business_values": "覆盖及变化时刻可改变candidate affected/body、Revision密度、exact引用与UUID链；数量必须由新X/G测量，不能从局部回归推定。",
+  "shared_consumer_assessment": {
+    "F": "CommonPriceTurnGroupCandidates.hs:186 消费修后的形成覆盖边",
+    "Q": "PostTurnGroupDirectionalOrganization.hs:224 也调用共享形成适配器；directionalQuoteEvents四元组/Double位置换算保持。",
+    "Q_separate_numeric_boundary": "源码DirectionalOrganizationMotion.hs:195及243另有归一化位置相邻比较；本补丁不修该独立逻辑，未运行Q，不能推定其路径覆盖已修复。此为影响评估和后续依赖限制，不扩大本Run。",
+    "V": "不直接导入适配器；经F→Q→V真实依赖传递影响。",
+    "formal_Q_V_runs": false,
+    "release_effect": "按L1必须消费准确新F释放包；依赖旧F的下游结果应由其所属Run判断STALE_UPSTREAM，当前无新释放包。"
+  },
+  "supported_input_contract": "EXACT_STEP_DESIGN.md",
+  "full_comparison_pending": "完整三年F X、31表独立读回和G；原22位置及全部结构/密度/身份/4项场景问题重新核对。"
+}
