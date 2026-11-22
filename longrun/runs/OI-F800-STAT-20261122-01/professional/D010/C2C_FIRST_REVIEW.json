@@ -1,0 +1,46 @@
+{
+  "review_basis": [
+    "html/first.html",
+    "screenshots/first.png",
+    "BROWSER_v1.json"
+  ],
+  "actually_opened_and_visually_inspected": true,
+  "browser_errors": [],
+  "items": [
+    {
+      "复杂点编号": "CP01",
+      "要保留的业务信息": "同刻/同basis不同Life/Revision必须均可追溯",
+      "当前HTML中的问题": "首版输出CDS有3条，画面只有2个分离点；211200处A-r2/B-r1完全重叠。",
+      "候选表达": "row序号仅显示派生、不移动时间；exact身份/完整父键hover+明细。",
+      "当前状态": "待C2D处理"
+    },
+    {
+      "复杂点编号": "CP02",
+      "要保留的业务信息": "ST1/2/3/4与覆盖分开，携带窗口及冻结admission保留",
+      "当前HTML中的问题": "首版仅1/2编码，无观察/coverage/closed/duty含义，也没有a/d/r界限；无法解释关闭与责任差别。",
+      "候选表达": "发布点+同修订窗口段；表中独立列出basis/obs/coverage/closed/duty，原始字段进exact明细。",
+      "当前状态": "待C2D处理"
+    },
+    {
+      "复杂点编号": "CP03",
+      "要保留的业务信息": "已选turn的实际/几何确认/上游已知属于同记录且可追溯",
+      "当前HTML中的问题": "首版三个位置未连接，known用T价重复点可能误当当时市场价格；默认hover无turn/round/源身份。",
+      "候选表达": "价格只叠实际/几何确认及连接；上游known放前部输入附图，hover保留同记录ID与全部原值。",
+      "当前状态": "待C2D处理"
+    },
+    {
+      "复杂点编号": "CP04",
+      "要保留的业务信息": "previous/Required/成员/替代覆盖/bridge exact及同刻父子键",
+      "当前HTML中的问题": "首版没有这些字段，默认hover只有ts/y；从点无法追到成员或前一观点。",
+      "候选表达": "用既有PlotDataNode/CDS+Bokeh hover/DataTable/Div组合；父前缀完整关联，保留每层child坐标，空列表不补0。",
+      "当前状态": "待C2D处理"
+    },
+    {
+      "复杂点编号": "CP05",
+      "要保留的业务信息": "可见范围与样例完整范围/原始边界不能混淆",
+      "当前HTML中的问题": "首版6条样例仅3条在当前窗口内；后三个关闭/责任修订位于预览结束之后。",
+      "候选表达": "仅扩大合成预览到覆盖全部6条；C3仍由D注入位置，窗口段做明确显示裁剪，raw UTI保留。",
+      "当前状态": "待C2D处理"
+    }
+  ]
+}

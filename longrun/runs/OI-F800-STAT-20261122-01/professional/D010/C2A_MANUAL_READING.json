@@ -1,0 +1,105 @@
+{
+  "手册版本": "daowei2026/uplot@0a4fcd54059782572a3f7e82fad041121e8c65ad:CAEGraph使用手册.md",
+  "亲自直接阅读": true,
+  "远端原件核对": "REMOTE_DISPATCH_READBACK.json",
+  "已读章节": [
+    {
+      "章节": "文档说明/名词定义/相近多品种组合示例",
+      "行": "4–32,87–227"
+    },
+    {
+      "章节": "构建链/CAEGraph/PlotSet",
+      "行": "372–461"
+    },
+    {
+      "章节": "布局快速选择及AllSymsMainFig/AllSymsFig/PerSymFigs/PerSymFigSet/MainFig/SubFig/OneFig",
+      "行": "463–606"
+    },
+    {
+      "章节": "绘图快速选择/KPriceLine",
+      "行": "607–683"
+    },
+    {
+      "章节": "VBar/MulFieldsGlyphs/MulSegPlot/SegsPlot/TextPlot及旧绘图类的限制",
+      "行": "708–1020"
+    },
+    {
+      "章节": "BaseFigSet/BasePlotter及类关系",
+      "行": "1255–1350"
+    }
+  ],
+  "候选布局类": [
+    {
+      "类": "AllSymsMainFig",
+      "判断": "支持多品种同轴；本预期保留原价，量纲不同，不作共同价格轴。"
+    },
+    {
+      "类": "PerSymFigs",
+      "判断": "采用逐品种独立原价纵轴、同一UTI横轴。"
+    },
+    {
+      "类": "PerSymFigSet",
+      "判断": "可选逐品种主附图；本任务核心输出跨品种，集中附图更直接。"
+    },
+    {
+      "类": "SubFig",
+      "判断": "采用共同业务输出及必要输入附图。"
+    }
+  ],
+  "候选绘图类": [
+    {
+      "类": "KPriceLine",
+      "用途": "std_method=None原价"
+    },
+    {
+      "类": "MulFieldsGlyphs",
+      "用途": "多位置点、离散稀疏修订"
+    },
+    {
+      "类": "MulSegPlot/SegsPlot",
+      "用途": "同记录端点/携带界限，须核实裁剪"
+    },
+    {
+      "类": "TextPlot/VBarPlot",
+      "用途": "标签/离散量；无必要不造额外面板"
+    },
+    {
+      "类": "OneToGroupPointPlot",
+      "用途": "手册无实际可用例，不能仅凭类名承诺避碰/精确引用交互"
+    }
+  ],
+  "补查源码": [
+    {
+      "文件": "utlv2.py",
+      "行": "54–62,621–808,854–1000,1244–1597",
+      "核实": "实际API参数、currTarget多品种字符串要求、K线及点/段数据生成、PlotSet/CAEGraph的上下文/布局"
+    },
+    {
+      "文件": "utkv2.py",
+      "行": "44–225,290–330",
+      "核实": "共享x_range、独立figure、图例click_policy=hide"
+    },
+    {
+      "文件": "pfw.py",
+      "行": "172–320,468–590,730–897",
+      "核实": "时间转换、数据裁剪、默认hover只有时间和值、LiveUpdater/只读provider入口"
+    }
+  ],
+  "已确认能力": [
+    "原价K线与点/段组合",
+    "PerSymFigs+SubFig共享同一x_range",
+    "图例显隐与缩放",
+    "只读DataFrame provider，不运行真实Feature"
+  ],
+  "尚未核实能力": [],
+  "未修改uplot": true,
+  "C2A时待核实能力": [
+    "复杂同刻多修订身份/字段明细交互，需在C2C/D实际预览后核实",
+    "边界裁剪与原始值同时保留，需真实原型验证"
+  ],
+  "后续核实证据": [
+    "C2_COMPLEX_POINT_ROUNDS.json",
+    "BROWSER_v4.json",
+    "CODE_VALIDATION.json"
+  ]
+}

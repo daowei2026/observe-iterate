@@ -1,0 +1,184 @@
+{
+  "当前预期编号版本": "F800-C2-v4",
+  "FeatureUnderstandingPackage引用": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/CurrentFeatureUnderstandingPackage.json",
+  "理解状态": "PARTIAL（原状态保持）",
+  "页面与阅读路径": "各品种原价及实际/确认输入→上游已知轴→跨品种候选exact修订及携带界限→独立状态与全部公开原值明细。",
+  "面板定义": [
+    {
+      "面板编号": "P-PRICE-{symbol}",
+      "角色": "输入/原价主图",
+      "信息": [
+        "C1-01",
+        "C1-02",
+        "C1-03"
+      ],
+      "时间轴": "同一交易日历UTI；实际/几何确认取已确认各字段",
+      "纵轴": "各品种独立原价，不标准化",
+      "顺序": 1,
+      "布局类": "PerSymFigs",
+      "图元": [
+        "KPriceLine",
+        "Rct实际点",
+        "Selected T/C及同记录T→C段"
+      ]
+    },
+    {
+      "面板编号": "P-INPUT-KNOWN",
+      "角色": "前部输入附图",
+      "信息": [
+        "C1-03"
+      ],
+      "时间轴": "ScaleTurn原事件已知轴；不由几何确认推断",
+      "纵轴": "symbol序号+0.15×round；仅显示派生",
+      "顺序": 2,
+      "布局类": "AllSymsFig.persym_plots",
+      "图元": [
+        "MulFieldsGlyphs x marker；原值hover"
+      ]
+    },
+    {
+      "面板编号": "P-OUTPUT",
+      "角色": "业务主输出附图",
+      "信息": [
+        "C1-04",
+        "C1-06",
+        "C1-07"
+      ],
+      "时间轴": "groupKnownFrom稀疏发布；a/d/r为同一修订携带的界限",
+      "纵轴": "稳定修订显示序号，不编码状态",
+      "顺序": 3,
+      "布局类": "AllSymsFig.sym_plots（仅提供合法上下文，全局数据不按首品种过滤）",
+      "图元": [
+        "MulFieldsGlyphs exact发布点",
+        "MulSegPlot a→d/d→r；只裁剪显示"
+      ]
+    },
+    {
+      "面板编号": "P-EXACT-DETAIL",
+      "角色": "身份/独立状态及原值明细",
+      "信息": [
+        "C1-04",
+        "C1-05",
+        "C1-06",
+        "C1-07",
+        "C1-08",
+        "C1-09",
+        "C1-10"
+      ],
+      "时间轴": "跟随所选exact修订，不另定义时间轴",
+      "纵轴": "无",
+      "顺序": 4,
+      "布局类": "既有Bokeh Select/DataTable/Div与原生CDS组合",
+      "图元": [
+        "Life/Revision/完整父坐标",
+        "独立basis/observation/coverage/closed/duty列",
+        "全部已发行子表/非组根metadata原值JSON文字"
+      ]
+    }
+  ],
+  "图元定义": [
+    {
+      "图元编号": "G-K",
+      "来源信息": "C1-01",
+      "横纵轴": "开闭UTI/原始OHLC",
+      "视觉语义": "原价K线",
+      "hover图例": "OHLC/volume/ts；图例可显隐",
+      "显示派生": "无标准化/补NaN"
+    },
+    {
+      "图元编号": "G-TC",
+      "来源信息": [
+        "C1-02",
+        "C1-03"
+      ],
+      "横纵轴": "Rct/Selected实际及C几何位置；各原始价",
+      "视觉语义": "Rct灰x、T蓝圆、C紫菱形、T→C同记录连接",
+      "hover图例": "原值JSON/turn/round/P/T/C/上游事件等实际注入内容",
+      "显示派生": "必要时只对段显示端点裁剪，不改原坐标；历史位置投影非as-of回放"
+    },
+    {
+      "图元编号": "G-SELECTED-KNOWN",
+      "来源信息": "C1-03",
+      "横纵轴": "上游known；symbol+round显示偏移",
+      "视觉语义": "输入被选已知点，不用价格重放",
+      "hover图例": "同一上游记录完整原值，round/turn可追溯",
+      "显示派生": "symbol序号+0.15×round，原值在hover"
+    },
+    {
+      "图元编号": "G-REVISION",
+      "来源信息": [
+        "C1-04",
+        "C1-06"
+      ],
+      "横纵轴": "groupKnownFrom；唯一修订显示行",
+      "视觉语义": "每个完整父坐标一个稀疏点，不连成状态线",
+      "hover图例": "Life/Revision/父键/known/basis/observation/coverage/formationClosed/dutyClosed[]/admission[]/a,d,r",
+      "显示派生": "按known及完整父坐标排序，绝不按UUID排序；同刻不平移时间、不合并"
+    },
+    {
+      "图元编号": "G-WINDOW",
+      "来源信息": "C1-07",
+      "横纵轴": "同修订a→d与d→r；同修订行",
+      "视觉语义": "当前观点携带的窗口，不代表持续材料/状态",
+      "hover图例": "全局无品种前缀；原始及original窗口字段、裁剪标记在exact明细",
+      "显示派生": "只裁剪视区，原始端点不变；不得从几何线段推导coverage区间"
+    },
+    {
+      "图元编号": "G-DETAIL",
+      "来源信息": [
+        "C1-05",
+        "C1-08",
+        "C1-09",
+        "C1-10"
+      ],
+      "横纵轴": "无",
+      "视觉语义": "精确引用/全部公开子行原值，空列表原样",
+      "hover图例": "图点/表/下拉共用同一source，保留所有child层级；关系target的原始exact编码可追溯",
+      "显示派生": "主UUID只解码表示；原始64位数嵌入JSON文本，不用JS数值解析"
+    }
+  ],
+  "基准转换和交互": {
+    "原价": "逐品种独立价格轴，std_method=None，所有其他dynstd_method=False。",
+    "时间": "同一PlotCtx共享x_range；UTI按注入SOF/calendar标成时间。原事件timestamp与payload位置分别保留。",
+    "显示派生": "修订序号、输入symbol/round偏移和线段裁剪；均不改业务字段，原值明细保持。",
+    "交互": [
+      "缩放/平移/重置",
+      "图例显隐",
+      "每图十字线",
+      "原值hover",
+      "点/表/下拉共用exact选择，明细显示完整父子坐标"
+    ],
+    "损失": "未提供全局有向关系拓扑或自动跨多源高亮；精确成员/Previous/Required/替代覆盖/Bridge保留在原值明细，损失一眼连线浏览便利，不损失已发行字段/身份。"
+  },
+  "当前原型代码引用": [
+    "preview.py",
+    "current_impl.py",
+    "archive/current_impl_v4.py"
+  ],
+  "当前预期HTML引用": "html/current.html",
+  "唯一当前HTML": true,
+  "当前HTML_SHA256": "3a24ab08887ce5d948b229e7d37f63a4f9a669218b47110ad4385f737a7bdded",
+  "首版档案": "html/first.html + C2_FIRST_EXPECTATION.json；archive/round1.html/round2.html仅为迭代证据，不是另一个最终预期。",
+  "样例预览绑定": "PREVIEW_BINDING_v4.json；6条修订、所有业务值/身份合成。SOF只提供交易日历。",
+  "当前允许变化": [
+    "D正式绑定B品种/时间/位置或每个多尺度位置",
+    "正式外层instance、reader/context/SOF与字段映射",
+    "真实曲线、点数、坐标范围与字段值/现有原值列",
+    "依据实际输入的图宽/时间标签频率"
+  ],
+  "当前必须保持": [
+    "C1选中信息及NOT_EXPOSED边界",
+    "逐品种原价/输入已知轴/主输出/精确明细阅读路径",
+    "不以actual/几何confirm替代发布known或上游selected known",
+    "独立状态各列，不从closed/Subsumed推断退出活跃",
+    "同刻观点完整父键与每层child坐标，不按known单独合并",
+    "只画稀疏发布与明确标识的携带窗口，不伪造逐tick轨迹",
+    "原值/显示派生/裁剪明确分离，精确ID无损"
+  ],
+  "实际核看证据": [
+    "BROWSER_v4.json",
+    "screenshots/current.png",
+    "screenshots/current-selected.png"
+  ],
+  "当前已接受": "当前范围可接受；未解决工具能力缺口为空，原理解/数据不可暴露限制继续传递。"
+}

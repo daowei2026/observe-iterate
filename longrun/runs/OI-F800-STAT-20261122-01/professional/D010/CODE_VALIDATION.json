@@ -1,0 +1,164 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "check": "required_injection_signature",
+      "pass_": true,
+      "evidence": "(*, instance, reader, context, position, fields, caption)"
+    },
+    {
+      "check": "no_final_instance_sof_result_path_or_B_literal",
+      "pass_": true,
+      "evidence": {
+        "scanned_file": "display_code/caegraph_display.py",
+        "forbidden_literals": [
+          "TA_updto20240229_DBA",
+          "2021-01-01",
+          "2023-12-31",
+          "CommonPriceTurnGroupCandidatesFrp",
+          "result_dir",
+          "loadFeature"
+        ]
+      }
+    },
+    {
+      "check": "uuid_uint64_lossless",
+      "pass_": true,
+      "evidence": {
+        "decoded": "ffffffff-ffff-ffff-ffff-fffffffffffe",
+        "words_as_decimal_text": true
+      }
+    },
+    {
+      "check": "float_identity_rejected",
+      "pass_": true,
+      "evidence": "不从浮点数猜回64位身份"
+    },
+    {
+      "check": "actual_public_schema_shape",
+      "pass_": true,
+      "evidence": {
+        "required_fields": 19,
+        "actual_header_fields": 27,
+        "source": "D008/readback/tables/occurrences.csv（仅首行/表头）"
+      }
+    },
+    {
+      "check": "current_native_identity_codec",
+      "pass_": true,
+      "evidence": {
+        "first_native_life": "caee906a-9759-466f-bf4a-805293f3da5d",
+        "read_only_shape_probe": true,
+        "not_instance_binding": true
+      }
+    },
+    {
+      "check": "instance_position_field_replacement_native_run",
+      "pass_": true,
+      "evidence": {
+        "instance_is_injected_object": true,
+        "single_symbol": "hc",
+        "positions_are_injected_integer_UTI": true,
+        "all_group_role_columns_renamed": true,
+        "native_figures": 3,
+        "native_revision_points": 6
+      }
+    },
+    {
+      "check": "same_tick_exact_records_not_merged",
+      "pass_": true,
+      "evidence": {
+        "same_known": 86463600,
+        "distinct_rows": [
+          1.0,
+          2.0
+        ]
+      }
+    },
+    {
+      "check": "full_parent_children_retained",
+      "pass_": true,
+      "evidence": {
+        "parent_child_id_2": 1,
+        "member_count": 3,
+        "objects": [
+          "hc",
+          "i",
+          "rb"
+        ]
+      }
+    },
+    {
+      "check": "native_price_nan_not_filled",
+      "pass_": true,
+      "evidence": {
+        "native_ohlc_sources": 1,
+        "close_nan_count": 1
+      }
+    },
+    {
+      "check": "display_clipping_preserves_raw",
+      "pass_": true,
+      "evidence": {
+        "raw": [
+          10,
+          30
+        ],
+        "display": [
+          15,
+          25
+        ],
+        "no_business_value_mutation": true
+      }
+    },
+    {
+      "check": "definitions_only_empty_output",
+      "pass_": true,
+      "evidence": {
+        "invented_group_points": 0,
+        "html_generated": false
+      }
+    },
+    {
+      "check": "duplicate_full_parent_rejected",
+      "pass_": true,
+      "evidence": "不以时间/known去重或合并父组"
+    },
+    {
+      "check": "current_html_real_browser",
+      "pass_": true,
+      "evidence": {
+        "plots": 5,
+        "console": [],
+        "external_requests": [],
+        "actual_UI_selection": {
+          "indices": [
+            2
+          ],
+          "chooser": "2"
+        },
+        "output_legend": [
+          "本次携带 a→d",
+          "本次携带 d→r",
+          "Sparse exact revision"
+        ]
+      }
+    },
+    {
+      "check": "current_prototype_C3_byte_equal",
+      "pass_": true,
+      "evidence": {
+        "sha256": "e5d6a235cd23f7e90ebbd8f020768f7e91b81ffd1782fc824362543c0f696ec0",
+        "current_preview_renderer": "archive/current_impl_v4.py",
+        "second_expectation_html_generated": false
+      }
+    }
+  ],
+  "check_count": 15,
+  "sample_models_only": true,
+  "formal_feature_run": false,
+  "final_B_binding": false,
+  "C2_unique_html": "html/current.html",
+  "C3_source_sha256": "e5d6a235cd23f7e90ebbd8f020768f7e91b81ffd1782fc824362543c0f696ec0",
+  "actual_uplot_path": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D010/source/uplot/__init__.py"
+}
