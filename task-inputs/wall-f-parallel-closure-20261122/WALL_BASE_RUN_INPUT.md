@@ -1,6 +1,6 @@
 # WALL 基础 Feature Run 输入
 
-> 状态：等待 Owner 补远端版本和工作区。
+> 状态：远端修复代码版本已锁定；等待执行入口、参数实例、结果复用决定、工作区和真实 GO。
 
 ## 1. 目标 Feature
 
@@ -8,12 +8,27 @@
 business_name: WALL
 feature_type_or_entry: PENDING_OWNER
 code_repository: daowei2026/tis
-code_commit: PENDING_OWNER_FULL_40_CHAR_COMMIT
+remote_branch: codex/wall-output-consistency-20261121
+code_commit: 6618d4d147d6ebbe634e61facddf2c9a0b996982
 constructor_or_execution_entry: PENDING_OWNER
 parameter_instance_ref: PENDING_OWNER
 ```
 
-修复 Chat 中出现的本地短提交和分支仅作为追溯线索，不作为新 Run 版本锁。正式运行只接受 Owner 提供的远端完整 commit。
+正式版本锁是完整提交：
+
+```text
+daowei2026/tis@6618d4d147d6ebbe634e61facddf2c9a0b996982
+```
+
+分支名只用于定位。已核实的修复链为：
+
+```text
+19e6b15ee4a5a58c71bf40902bbc6f6657a16ea2  D1：事件位置与最终 tick 状态同步
+4d06ec211d0a20f2ded80417a3334c78cf4b1a0e  D2：同拍 End 优先于进入 Dormant
+6618d4d147d6ebbe634e61facddf2c9a0b996982  D4：有效支撑恢复时清零连续 far 计数
+```
+
+上述提交证明代码已远端可定位，不替代新 Run 对最终实例、完整统计和回归结果的核验。
 
 ## 2. 候选数据范围
 
@@ -59,7 +74,7 @@ Owner GO 可调整；调整后必须同步更新统计可比性和已知 finding
 优先级：
 
 1. 若 Owner 提供的最终修正版完整结果包与本轮范围完全一致，验证版本、参数、数据、SHA 和读回后可正式复用；
-2. 否则用最终远端 commit 重新运行。
+2. 否则用上述完整提交重新运行。
 
 无论 X 是新跑还是复用，G 都必须对最终修正版重新完整执行。
 
