@@ -58,3 +58,7 @@ D004只用新Binding授权子集实施原提案，回交既有ImplementationFixR
 原4项场景问题保留，按最新GlobalProfileGate和既有场景Workflow准入；本C不重复C0008依赖评估或机械派发场景线。Q/V不属本Run正式专业范围，WALL M001不消费本次批准。
 
 controller核真实物理状态、角色模型gpt-6.1-sol/max及原E1后派发；重型生产遵守既有HEAVY_RESOURCE_POLICY的实际flock和真实单写者。manager本C未读取当前Feature源码、未代施工/生产、未创建或发消息到其他聊天。先发布D004/报告/进度，再独立发布引用已存在exact对象的IN_PROGRESS Return；owner_request_ref=null，W及Worker引用为空。本C发布交回controller后停止，等待合法下一C，不轮询或自动唤醒。
+
+## 本C正式D发布凭证
+
+D004已先行发布并从origin逐字节回读：`daowei2026/observe-iterate@4ac6c4ab456a36c8a7312b93a3b9dbcb8ca787d6:longrun/runs/OI-F800-STAT-20261122-01/delegations/D004/DELEGATION.json`；报告：`daowei2026/observe-iterate@4ac6c4ab456a36c8a7312b93a3b9dbcb8ca787d6:longrun/runs/OI-F800-STAT-20261122-01/calls/C0009/MANAGER_REPORT.md`。实际派发仍由controller核原E1后完成，本C不声称物理送达或施工开工。正式IN_PROGRESS Return独立发布引用上述已有exact对象。
