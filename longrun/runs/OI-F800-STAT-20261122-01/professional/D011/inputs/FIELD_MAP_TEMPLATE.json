@@ -1,0 +1,83 @@
+{
+  "用途": "D正式绑定时核对的字段模板；当前HTML使用独立合成字段映射。模板不绑定实例/SOF/结果路径/位置。",
+  "来源": "D008 PUBLIC_TABLE_SCHEMA与独立读回CSV列名、已接受的上游/scale_turns公开形状。",
+  "fields": {
+    "parents": [
+      "timestamp",
+      "occurrence",
+      "record_id",
+      "child_id_2"
+    ],
+    "groups": {
+      "life": {
+        "form": "groupReference_referenceLife_idForm",
+        "high": "groupReference_referenceLife_idHigh",
+        "low": "groupReference_referenceLife_idLow",
+        "text": "groupReference_referenceLife_idText"
+      },
+      "revision": {
+        "form": "groupReference_referenceRevision_idForm",
+        "high": "groupReference_referenceRevision_idHigh",
+        "low": "groupReference_referenceRevision_idLow",
+        "text": "groupReference_referenceRevision_idText"
+      },
+      "known": "groupKnownFrom",
+      "original_anchor": "groupOriginalAnchor",
+      "original_d": "groupOriginalDeadline",
+      "original_r": "groupOriginalRevisionEnd",
+      "anchor": "groupAnchor",
+      "d": "groupDeadline",
+      "r": "groupRevisionEnd",
+      "basis": "groupLocalBasis_name",
+      "observation": "groupObservation_name",
+      "coverage": "groupCoverageIncomplete",
+      "closed": "groupClosed"
+    },
+    "kline": {
+      "open": "open",
+      "high": "high",
+      "low": "low",
+      "close": "close",
+      "volume": "volume",
+      "openUti": "openUti",
+      "closeUti": "closeUti"
+    },
+    "selected": {
+      "actual": "actual",
+      "confirmation": "confirmation",
+      "known": "known",
+      "price": "price",
+      "cprice": "confirmation_price",
+      "round": "round_display",
+      "turn": "turn_id",
+      "source_round": "round",
+      "t_known": "raw_known"
+    },
+    "raw": {
+      "actual": "posUTI1",
+      "price": "price1",
+      "event_timestamp": "timestamp"
+    },
+    "labels": {},
+    "participation": {
+      "table": "occurrences_groupFormationParticipation",
+      "duty": "participationDutyClosed",
+      "admission": "participationAdmissionKnown",
+      "handoff": "participationHandoffEnd"
+    },
+    "limits": [
+      "当前U为PARTIAL；逐tick材料准入、未成组pair/组合、first blocker、原生coverage区间NOT_EXPOSED。",
+      "仅公开/已物化结果的历史位置投影；未发行revision的tick不能补成连续状态。",
+      "成员子表不是所有未选转折分母。可选子表空不等于0或失败。"
+    ]
+  },
+  "适配说明": [
+    "groups以occurrences公开表为源。_name列是已接受读回的枚举名称；若真实reader只有数值码，映射原码并提供已核实labels，不按字段名猜测。",
+    "UUID Form=1用无损high/low组合，Form=2保留文本；主组不得Form=0。禁止先读成浮点再转回。",
+    "selected需由同参数ScaleTurnCalendar value1/value2原事件轴准备known；不能把几何confirm/T.pointKnownFrom替代selected已知轴。",
+    "canonical selected输入可来自合法只读native reader，或已接受D008上游/规范化公开形状。round_display=0/1只是显示偏移；保留原value1/value2或原round字段。",
+    "当前26列scale_turns为G已保存的公开投影，不能把其中eligible_*_reference/first_block_screen当成原F材料轨迹；所有额外字段只作原值来源标识，不升格。",
+    "raw使用已暴露Rct实际位置/价；不补造未识别市场转折或全分母；其事件timestamp保留。",
+    "PUBLIC_TABLE_SCHEMA之外的source P/T/C、known字段须由D给出真实reader映射和来源；C不签正式数据可用。"
+  ]
+}

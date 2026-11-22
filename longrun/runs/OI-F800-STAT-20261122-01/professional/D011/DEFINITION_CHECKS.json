@@ -1,0 +1,85 @@
+{
+  "definition": "F800-D-v1",
+  "run_id": "OI-F800-STAT-20261122-01",
+  "call_id": "C0025",
+  "started_at": "2026-11-22T20:14:24.743245+00:00",
+  "scope": "D定义级检查",
+  "native_feature_run_calls": 0,
+  "final_graph_built": false,
+  "html_generated": false,
+  "formal_graph_data_extracted": false,
+  "checks": [
+    {
+      "检查项": "完整脚本及C3语法",
+      "结果": "通过",
+      "证据": "compile，不执行构图",
+      "影响": "不阻塞E",
+      "修订目标": "D"
+    },
+    {
+      "检查项": "锁定20个uplot源文件及17个依赖完整性/导入",
+      "结果": "通过",
+      "证据": "bootstrap逐文件SHA-256核对后导入，不构图；UPLOT_SOURCE_SNAPSHOT/DEPENDENCY_BINDING",
+      "影响": "不阻塞E",
+      "修订目标": "D"
+    },
+    {
+      "检查项": "C3-v1准确字节/注入接口/C2-v4语义保留",
+      "结果": "通过",
+      "证据": "SHA e5d6a235…；不运行C3，不复制或重生成预期HTML",
+      "影响": "不阻塞E",
+      "修订目标": "D"
+    },
+    {
+      "检查项": "真实正常构造/序列化配置/准确结果身份",
+      "结果": "通过",
+      "证据": "真实CommonPriceTurnGroupCandidatesFrp构造及doFrpTaskParam(run_ups=False)；FaoType.run强制禁止",
+      "影响": "不阻塞E",
+      "修订目标": "D"
+    },
+    {
+      "检查项": "完整三年B位置及日历含端点进入真实配置",
+      "结果": "通过",
+      "证据": "BOUND_INSTANCE_CHECK.json：原请求日期→native opt_date_range→真实Calendar UTI；未采用数据首末缩短",
+      "影响": "不阻塞E",
+      "修订目标": "D"
+    },
+    {
+      "检查项": "共享Package/完整Schema/身份/状态/父键及字段绑定",
+      "结果": "通过",
+      "证据": "FIELD_BINDING.json对照准确D008 PUBLIC_TABLE_SCHEMA、原C3模板；仅增加无损窗口坐标别名",
+      "影响": "不阻塞E",
+      "修订目标": "D"
+    },
+    {
+      "检查项": "原生Float64窗口→整型UTI无损别名及错误拒绝",
+      "结果": "通过",
+      "证据": "1538行×六坐标的已接受CSV字段兼容性检查；NaN/±Inf/小数/越界拒绝，原列保留",
+      "影响": "不阻塞E",
+      "修订目标": "D"
+    },
+    {
+      "检查项": "selected轮次/已知轴/源定位键及G参考列隔离",
+      "结果": "通过",
+      "证据": "微型接线夹具+准确上游CSV表头；保留value1/value2，round_display仅0/1显示，未运行真实reader",
+      "影响": "不阻塞E",
+      "修订目标": "D"
+    },
+    {
+      "检查项": "真实数据入口/全部子层级/非组根metadata引用",
+      "结果": "通过",
+      "证据": "SOURCE_DATA_BINDING：13个已接受物化源哈希；31表合同，occurrences_*全部交children，其他公开表交metadata",
+      "影响": "不阻塞E",
+      "修订目标": "D"
+    },
+    {
+      "检查项": "无预览实例/日期泄漏、无生产路径、未运行最终图",
+      "结果": "通过",
+      "证据": "AST核只有OnlyRead调用；FaoType.run/CAEGraph.layout在本检查进程强制禁止",
+      "影响": "不阻塞E",
+      "修订目标": "D"
+    }
+  ],
+  "all_passed": true,
+  "finished_at": "2026-11-22T20:14:40.825967+00:00"
+}

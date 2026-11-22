@@ -1,0 +1,66 @@
+{
+  "instance": {
+    "feature_class": "Proxy(CommonPriceTurnGroupCandidatesFrp)",
+    "full_dir": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2023-12-31 20:00:00/CommonPriceTurnGroupCandidatesFrp/3/9/a/1/9/2/a/4bbf414e0814726d92d156f2fe9b1f968/func",
+    "configuration_sha256": "b72095ff100da926474701b74bff7586a74b9770bc81cadc34c23cfe223e5cb3",
+    "constructor_file": "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/mquant/tis/frp/fqv_kline_example.py",
+    "native_run_called": false
+  },
+  "position": {
+    "position_id": "F800-MB-D009-P001",
+    "symbols": [
+      "rb",
+      "hc",
+      "i"
+    ],
+    "start": 72003600,
+    "end": 101813399,
+    "calendar": "night_end_at_2300",
+    "scale": "5m",
+    "width": 1180,
+    "label_freq": "120m"
+  },
+  "boundary": {
+    "requested_start": "2021-01-01",
+    "requested_end": "2023-12-31",
+    "native_sof_start": "2021-01-01 21:00:00",
+    "native_sof_end": "2023-12-31 20:00:00",
+    "first_calendar_label": "2021-01-04T09:00:00.500000000",
+    "last_calendar_label": "2023-12-29T15:00:00.000000000",
+    "inclusive_start_uti": 72003600,
+    "inclusive_end_uti": 101813399,
+    "plotctx_exclusive_stop": 101813400,
+    "source": "mquant.frame.core.app.utils.opt_date_range + pinned PlotCtx inclusive integer UTI",
+    "shortened_to_available_data": false,
+    "multiscale": null
+  },
+  "window_axis_compatibility": {
+    "checked_accepted_source_rows": 1538,
+    "source_sha256": "340f38bcd6249bb11824259f73f00d71c821e05bdd0dcfe2a2975a156a0a37e6",
+    "original_dtypes": {
+      "groupOriginalAnchor": "float64",
+      "groupOriginalDeadline": "float64",
+      "groupOriginalRevisionEnd": "float64",
+      "groupAnchor": "float64",
+      "groupDeadline": "float64",
+      "groupRevisionEnd": "float64"
+    },
+    "aliases_integer": true,
+    "original_columns_unchanged": true,
+    "use": "小范围源字段兼容性检查，不是E原生读回/构图/图数据"
+  },
+  "source_counts": {
+    "public_tables": 31,
+    "group_children": 26,
+    "non_group_tables": 4,
+    "materialized_source_files": 13,
+    "policy": "D核源引用/字节/声明；真实OnlyRead及图层内容待E"
+  },
+  "guards": {
+    "real_feature_run_forbidden": true,
+    "CAEGraph_layout_forbidden": true,
+    "reader_called": false,
+    "C3_called": false,
+    "html_generated": false
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "C3代码编号／版本": "F800-C3-v1",
+  "C3代码准确引用": "daowei2026/observe-iterate@ec747f4d460956bd1a91f59d0dcbaba6722ce750:longrun/runs/OI-F800-STAT-20261122-01/professional/D010/display_code/caegraph_display.py",
+  "C3代码SHA256": "e5d6a235cd23f7e90ebbd8f020768f7e91b81ffd1782fc824362543c0f696ec0",
+  "C2当前展示预期版本": "F800-C2-v4",
+  "C2当前预期HTML": "daowei2026/observe-iterate@ec747f4d460956bd1a91f59d0dcbaba6722ce750:longrun/runs/OI-F800-STAT-20261122-01/professional/D010/html/current.html",
+  "C2当前HTML_SHA256": "3a24ab08887ce5d948b229e7d37f63a4f9a669218b47110ad4385f737a7bdded",
+  "FeatureUnderstandingPackage引用": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/CurrentFeatureUnderstandingPackage.json",
+  "预览实例绑定": "原C2-v4所有业务值/SYN身份和2022短窗只为预期预览；D未导入preview.py或其样例DATA，未生成另一预期HTML。",
+  "正式特征实例绑定": {
+    "ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/FeatureRunResultBinding.json",
+    "code": "definition/f800_definition.py::construct_instance",
+    "check": "BOUND_INSTANCE_CHECK.json",
+    "configuration": "inputs/configuration.json",
+    "instance": {
+      "feature_class": "Proxy(CommonPriceTurnGroupCandidatesFrp)",
+      "full_dir": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2023-12-31 20:00:00/CommonPriceTurnGroupCandidatesFrp/3/9/a/1/9/2/a/4bbf414e0814726d92d156f2fe9b1f968/func",
+      "configuration_sha256": "b72095ff100da926474701b74bff7586a74b9770bc81cadc34c23cfe223e5cb3",
+      "constructor_file": "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/mquant/tis/frp/fqv_kline_example.py",
+      "native_run_called": false
+    }
+  },
+  "Feature／数据入口绑定": {
+    "F": "read_bound_frames(instance,position)→精确目录fields哈希→instance.run(CalType.OnlyRead)→to_dfs全部31表；E时执行，D未调用。",
+    "价格/Rct": "同实例已验收D008 upstream的各symbol_kline/rct.csv，校各原哈希；保留NaN、事件timestamp和open/closeUti；不调用任何上游生产。",
+    "selected": "已接受D008 profile/scale_turns.csv的公开源13列投影，known再与原event timestamp对应Kline.closeUti核对；round显示编码；不把eligible_*_reference/first_block_screen/bend等G分析列升格原生F。",
+    "所有原生子表": "occurrences_*全部传入children，不取首个参与行，不丢更深child，不按known拼接；4张definitions族公开表原样含坐标进入metadata。",
+    "来源": "SOURCE_DATA_BINDING.json"
+  },
+  "普通位置绑定": {
+    "ref": "daowei2026/observe-iterate@4d429ccb310452467b78b09802c48c9adbc47be5:longrun/runs/OI-F800-STAT-20261122-01/professional/D009/OrdinaryPositions.json",
+    "requested_sof": {
+      "sof_name": "TA_updto20240229_DBA",
+      "stk_tlist": "steel",
+      "startDay": "2021-01-01",
+      "endDay": "2023-12-31"
+    },
+    "actual_C3_position": {
+      "position_id": "F800-MB-D009-P001",
+      "symbols": [
+        "rb",
+        "hc",
+        "i"
+      ],
+      "start": 72003600,
+      "end": 101813399,
+      "calendar": "night_end_at_2300",
+      "scale": "5m",
+      "width": 1180,
+      "label_freq": "120m"
+    },
+    "boundary": {
+      "requested_start": "2021-01-01",
+      "requested_end": "2023-12-31",
+      "native_sof_start": "2021-01-01 21:00:00",
+      "native_sof_end": "2023-12-31 20:00:00",
+      "first_calendar_label": "2021-01-04T09:00:00.500000000",
+      "last_calendar_label": "2023-12-29T15:00:00.000000000",
+      "inclusive_start_uti": 72003600,
+      "inclusive_end_uti": 101813399,
+      "plotctx_exclusive_stop": 101813400,
+      "source": "mquant.frame.core.app.utils.opt_date_range + pinned PlotCtx inclusive integer UTI",
+      "shortened_to_available_data": false,
+      "multiscale": null
+    }
+  },
+  "多尺度位置绑定": null,
+  "共享字段绑定": {
+    "file": "FIELD_BINDING.json",
+    "groups": "full parent/Life+Revision无损uint64UUID解码、known、original/current a/d/r、basis/observation/coverage/closed分别进入点/携带窗口/明细。",
+    "children": "所有成员/P/T/C、Required/Distance、Previous/Overlaps/CoveredBy及Participation/Bridge原值按原坐标关联。",
+    "identity": "UUID整型字段保持原生uint64，C3 Python精确解码；原JSON文本不经JS解析；上游简化turn_id不是native exact。",
+    "state": "_name沿TIS2f正常reader ENUMS；原码保留，dutyClosed[]和formationClosed独立。",
+    "limits": "原U PARTIAL；逐tick材料/失败组合/first blocker/coverage区间未暴露；空子表NOT_PUBLISHED语义不改。"
+  },
+  "C3→D代码差异": {
+    "C3_renderer_diff": [],
+    "C3_renderer_byte_equal": true,
+    "new_complete_definition": "definition/f800_definition.py",
+    "new_launcher": "run_definition.py",
+    "new_bound_field_map": "FIELD_BINDING.json",
+    "source_bootstrap": "单进程加载准确0a4快照，17实际依赖哈希锁；不改共享库。",
+    "C2标题": "原C3内页标题仍为F800 · C2当前展示预期；D不无痕改标题，真实绑定和历史投影在caption及HTML文档标题明确。"
+  },
+  "上游确定性纠正": "UPSTREAM_CORRECTIONS.json（D-BIND-01—03）",
+  "是否改变展示语义": "否",
+  "能力缺口处理": "C未解决工具缺口为空；沿已接受原值明细替代全局拓扑/跨源自动高亮；U/数据未暴露边界保留。"
+}

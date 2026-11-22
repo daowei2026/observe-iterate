@@ -1,0 +1,80 @@
+{
+  "上游确定性纠正记录": [
+    {
+      "问题编号": "D-BIND-01",
+      "来源": "B",
+      "原产物位置": "OrdinaryPositions.json位置定义/缺口与限制",
+      "问题说明": "B明确把日期粒度/结束边界解析留给D，需接入PlotSet；不是重新选位置。",
+      "是否能由D确定性纠正": "是",
+      "唯一修正依据": "同一真实F的SOF与frame.opt_date_range既有21:00/20:00规则；准确0a4 PlotCtx整数含端点。right-1取原period内最后一个交易标签，杜绝周末left+1扩入下一期。",
+      "修正前": "2021-01-01—2023-12-31日期标签",
+      "修正后": {
+        "requested_start": "2021-01-01",
+        "requested_end": "2023-12-31",
+        "native_sof_start": "2021-01-01 21:00:00",
+        "native_sof_end": "2023-12-31 20:00:00",
+        "first_calendar_label": "2021-01-04T09:00:00.500000000",
+        "last_calendar_label": "2023-12-29T15:00:00.000000000",
+        "inclusive_start_uti": 72003600,
+        "inclusive_end_uti": 101813399,
+        "plotctx_exclusive_stop": 101813400,
+        "source": "mquant.frame.core.app.utils.opt_date_range + pinned PlotCtx inclusive integer UTI",
+        "shortened_to_available_data": false,
+        "multiscale": null
+      },
+      "是否改变位置选择": "否",
+      "是否改变展示预期／HTML": "否",
+      "是否引入新业务判断": "否",
+      "证据与理由": "同一真实F的SOF与frame.opt_date_range既有21:00/20:00规则；准确0a4 PlotCtx整数含端点。right-1取原period内最后一个交易标签，杜绝周末left+1扩入下一期。；原始字段/上游原件不改，失败条件显式拒绝。",
+      "处理结果": "D直接确定性补齐并继续；不是认定上游业务语义错误",
+      "影响的下游绑定": "OptContext/PlotSet.timespans/C3 position；72003600—101813399"
+    },
+    {
+      "问题编号": "D-BIND-02",
+      "来源": "C3",
+      "原产物位置": "INJECTION_CONTRACT字段UTI检查/FIELD_MAP_TEMPLATE groups",
+      "问题说明": "原native六个a/d/r边界声明float64，C3要求整型UTI，需表示适配。",
+      "是否能由D确定性纠正": "是",
+      "唯一修正依据": "准确PUBLIC_TABLE_SCHEMA的六float64字段+U已确认同一CalendarUTI轴+C3整型合同；1538行六字段兼容性检查通过。非有限/分数/超精度直接拒绝，不四舍五入。",
+      "修正前": "字段模板直接映射groupOriginalAnchor等原float64列",
+      "修正后": "新增__uti_*别名；有限、abs<=2**53、本身为整数且回转相等后转int64；原float64列保留",
+      "是否改变位置选择": "否",
+      "是否改变展示预期／HTML": "否",
+      "是否引入新业务判断": "否",
+      "证据与理由": "准确PUBLIC_TABLE_SCHEMA的六float64字段+U已确认同一CalendarUTI轴+C3整型合同；1538行六字段兼容性检查通过。非有限/分数/超精度直接拒绝，不四舍五入。；原始字段/上游原件不改，失败条件显式拒绝。",
+      "处理结果": "D直接确定性补齐并继续；不是认定上游业务语义错误",
+      "影响的下游绑定": "FIELD_BINDING.groups六轴/C3窗口；定义适配不改Feature存储"
+    },
+    {
+      "问题编号": "D-BIND-03",
+      "来源": "C3",
+      "原产物位置": "FIELD_MAP_TEMPLATE selected.round与原上游规范形状",
+      "问题说明": "模板已明示round_display但外层公开源round为value1/value2，D需接线。",
+      "是否能由D确定性纠正": "是",
+      "唯一修正依据": "准确C2偏移=品种序号+0.15×round与TIS2f FirstRound=0/SecondRound=1；模板已有明确要求，不增新轮次或业务身份。",
+      "修正前": "round=value1/value2，round_display尚未提供",
+      "修正后": "保留原round，新增round_display value1→0/value2→1；turn_id明确为公开源简化定位键",
+      "是否改变位置选择": "否",
+      "是否改变展示预期／HTML": "否",
+      "是否引入新业务判断": "否",
+      "证据与理由": "准确C2偏移=品种序号+0.15×round与TIS2f FirstRound=0/SecondRound=1；模板已有明确要求，不增新轮次或业务身份。；原始字段/上游原件不改，失败条件显式拒绝。",
+      "处理结果": "D直接确定性补齐并继续；不是认定上游业务语义错误",
+      "影响的下游绑定": "input-known偏移/原值hover；member native exact仍在完整children"
+    }
+  ],
+  "原C3源码修改": false,
+  "实际新增绑定": "以上是原D明确承接的机械补齐，不更改B/C原件或C2-v4",
+  "返回共享理解问题": [],
+  "返回B问题": [],
+  "返回C问题": [],
+  "阻塞问题": [],
+  "D本地检查修复": [
+    {
+      "attempt": 1,
+      "问题": "csv.DictReader表头保留UTF-8 BOM，错误认为缺symbol",
+      "处理": "检查器和实际reader明确utf-8-sig；原文件不改",
+      "保留": "attempts/01-*",
+      "业务位置或展示变化": false
+    }
+  ]
+}

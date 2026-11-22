@@ -1,0 +1,52 @@
+{
+  "定义编号与版本": "F800-D-v1",
+  "阶段": "M-D",
+  "阶段状态": "完整",
+  "Python脚本引用": "run_definition.py + definition/f800_definition.py + 逐字C3 definition/caegraph_display.py",
+  "特征名称": "CommonPriceTurnGroupCandidatesFrp",
+  "特征实例引用": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/FeatureRunResultBinding.json",
+  "FeatureUnderstandingPackage／B／C版本": {
+    "U": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/CurrentFeatureUnderstandingPackage.json",
+    "B": "daowei2026/observe-iterate@4d429ccb310452467b78b09802c48c9adbc47be5:longrun/runs/OI-F800-STAT-20261122-01/professional/D009/OrdinaryPositions.json",
+    "C2": "daowei2026/observe-iterate@ec747f4d460956bd1a91f59d0dcbaba6722ce750:longrun/runs/OI-F800-STAT-20261122-01/professional/D010/C2_CURRENT_EXPECTATION.json",
+    "C2_HTML": "daowei2026/observe-iterate@ec747f4d460956bd1a91f59d0dcbaba6722ce750:longrun/runs/OI-F800-STAT-20261122-01/professional/D010/html/current.html",
+    "C3": "daowei2026/observe-iterate@ec747f4d460956bd1a91f59d0dcbaba6722ce750:longrun/runs/OI-F800-STAT-20261122-01/professional/D010/display_code/caegraph_display.py"
+  },
+  "CAEGraph仓库版本": {
+    "repo": "daowei2026/uplot",
+    "commit": "0a4fcd54059782572a3f7e82fad041121e8c65ad",
+    "snapshot": "UPLOT_SOURCE_SNAPSHOT.json"
+  },
+  "数据入口与位置绑定": "DEFINITION_INTEGRATION_RECORD.json、SOURCE_DATA_BINDING.json、BOUND_INSTANCE_CHECK.json",
+  "展示与字段绑定": "FIELD_BINDING.json、原C3-v1；页面/图元/语义沿C2-v4",
+  "上游问题处理记录": "UPSTREAM_CORRECTIONS.json；无未解决的B/C/U具名回流",
+  "C3→D集成差异": "DEFINITION_INTEGRATION_RECORD.json、INTEGRATION_DIFF.md",
+  "CAEGraph仓库理解记录": "REPOSITORY_UNDERSTANDING.json",
+  "预期输出HTML路径": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/caegraph-E/f800.html",
+  "预期HTML当前是否存在": false,
+  "E运行命令": "PYTHONDONTWRITEBYTECODE=1 bash /dwdhome/fy/BASE_E6_2_copy/run-python.sh /dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D011/run_definition.py --output-html /dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/caegraph-E/f800.html",
+  "定义级检查结果": "DEFINITION_CHECKS.json（10项通过；首次BOM检查失败档案保留）",
+  "待E确认项": "E_PENDING.json",
+  "未完成项": [],
+  "阻塞项": [],
+  "完整状态解释": "按原D IO已核仓库调用链，真实实例/完整B位置/共享字段进入完整脚本且检查通过，可直接交E尝试运行；不表示E运行/核图/正式取数已完成。",
+  "继承限制": {
+    "U": "PARTIAL",
+    "内部轨迹": "NOT_EXPOSED",
+    "四问题七候选": "保持，仅candidate-only，D未选正式场景",
+    "Q/V/WALL": "未运行或放行，保留既有Q依赖边界",
+    "X/G": "D008有效成果复用，不重跑",
+    "原C0020审查": "继续引用，不重复形成"
+  },
+  "专业范围声明": {
+    "formal_feature_run": false,
+    "final_graph_built": false,
+    "final_html_generated": false,
+    "formal_graph_data_exported": false,
+    "ObservationMaterialPackage_DATA_READY": false,
+    "scenario_expectation_frozen": false,
+    "FeatureReleaseGate_or_ReleasePackage": false,
+    "workers": []
+  },
+  "prepared_at": "2026-11-22T20:17:12.229922+00:00"
+}

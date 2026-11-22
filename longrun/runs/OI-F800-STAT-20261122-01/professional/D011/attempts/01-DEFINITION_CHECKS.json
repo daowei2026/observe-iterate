@@ -1,0 +1,73 @@
+{
+  "definition": "F800-D-v1",
+  "run_id": "OI-F800-STAT-20261122-01",
+  "call_id": "C0025",
+  "started_at": "2026-11-22T20:13:23.025253+00:00",
+  "scope": "D定义级检查",
+  "native_feature_run_calls": 0,
+  "final_graph_built": false,
+  "html_generated": false,
+  "formal_graph_data_extracted": false,
+  "checks": [
+    {
+      "检查项": "完整脚本及C3语法",
+      "结果": "通过",
+      "证据": "compile，不执行构图",
+      "影响": "不阻塞E",
+      "修订目标": "D"
+    },
+    {
+      "检查项": "锁定20个uplot源文件及17个依赖完整性/导入",
+      "结果": "通过",
+      "证据": "bootstrap逐文件SHA-256核对后导入，不构图；UPLOT_SOURCE_SNAPSHOT/DEPENDENCY_BINDING",
+      "影响": "不阻塞E",
+      "修订目标": "D"
+    },
+    {
+      "检查项": "C3-v1准确字节/注入接口/C2-v4语义保留",
+      "结果": "通过",
+      "证据": "SHA e5d6a235…；不运行C3，不复制或重生成预期HTML",
+      "影响": "不阻塞E",
+      "修订目标": "D"
+    },
+    {
+      "检查项": "真实正常构造/序列化配置/准确结果身份",
+      "结果": "通过",
+      "证据": "真实CommonPriceTurnGroupCandidatesFrp构造及doFrpTaskParam(run_ups=False)；FaoType.run强制禁止",
+      "影响": "不阻塞E",
+      "修订目标": "D"
+    },
+    {
+      "检查项": "完整三年B位置及日历含端点进入真实配置",
+      "结果": "通过",
+      "证据": "BOUND_INSTANCE_CHECK.json：原请求日期→native opt_date_range→真实Calendar UTI；未采用数据首末缩短",
+      "影响": "不阻塞E",
+      "修订目标": "D"
+    },
+    {
+      "检查项": "共享Package/完整Schema/身份/状态/父键及字段绑定",
+      "结果": "通过",
+      "证据": "FIELD_BINDING.json对照准确D008 PUBLIC_TABLE_SCHEMA、原C3模板；仅增加无损窗口坐标别名",
+      "影响": "不阻塞E",
+      "修订目标": "D"
+    },
+    {
+      "检查项": "原生Float64窗口→整型UTI无损别名及错误拒绝",
+      "结果": "通过",
+      "证据": "1538行×六坐标的已接受CSV字段兼容性检查；NaN/±Inf/小数/越界拒绝，原列保留",
+      "影响": "不阻塞E",
+      "修订目标": "D"
+    },
+    {
+      "检查项": "selected轮次/已知轴/源定位键及G参考列隔离",
+      "结果": "不通过",
+      "证据": "微型接线夹具+准确上游CSV表头；保留value1/value2，round_display仅0/1显示，未运行真实reader",
+      "影响": "已接受上游规范形状缺列",
+      "修订目标": "D",
+      "traceback": "Traceback (most recent call last):\n  File \"/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D011/definition_checks.py\", line 21, in check\n    value = action()\n  File \"/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D011/definition_checks.py\", line 159, in selected\n    require(set(d.SELECTED_COLUMNS).issubset(headers), '已接受上游规范形状缺列')\n  File \"/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D011/definition_checks.py\", line 32, in require\n    raise ValueError(message)\nValueError: 已接受上游规范形状缺列\n"
+    }
+  ],
+  "all_passed": false,
+  "error": "Traceback (most recent call last):\n  File \"/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D011/definition_checks.py\", line 160, in main\n    check('selected轮次/已知轴/源定位键及G参考列隔离', selected,\n  File \"/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D011/definition_checks.py\", line 21, in check\n    value = action()\n  File \"/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D011/definition_checks.py\", line 159, in selected\n    require(set(d.SELECTED_COLUMNS).issubset(headers), '已接受上游规范形状缺列')\n  File \"/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D011/definition_checks.py\", line 32, in require\n    raise ValueError(message)\nValueError: 已接受上游规范形状缺列\n",
+  "finished_at": "2026-11-22T20:13:39.721565+00:00"
+}

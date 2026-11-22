@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D011/definition_checks.py", line 160, in main
+    check('selected轮次/已知轴/源定位键及G参考列隔离', selected,
+  File "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D011/definition_checks.py", line 21, in check
+    value = action()
+  File "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D011/definition_checks.py", line 159, in selected
+    require(set(d.SELECTED_COLUMNS).issubset(headers), '已接受上游规范形状缺列')
+  File "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D011/definition_checks.py", line 32, in require
+    raise ValueError(message)
+ValueError: 已接受上游规范形状缺列
+
+{"all_passed": false, "checks": 8, "native_feature_run_calls": 0, "final_graph_built": false, "html_generated": false}

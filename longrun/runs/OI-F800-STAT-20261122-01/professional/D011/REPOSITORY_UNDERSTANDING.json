@@ -1,0 +1,98 @@
+{
+  "仓库与版本": {
+    "repository": "daowei2026/uplot",
+    "commit": "0a4fcd54059782572a3f7e82fad041121e8c65ad",
+    "tree": "b378579c12f78987103b5f5590c58da98dea15cf",
+    "source_snapshot": "source/uplot",
+    "shared_dirty_worktree_modified": false
+  },
+  "已读文件": [
+    {
+      "文件": "__init__.py",
+      "已读范围": "全文",
+      "本次理解": "正式导出CAEGraph/PlotSet、布局、绘图及pdt；OptContext/CurrSymbol实际由utlv2可访问，不从frame误导入",
+      "源码ref": "daowei2026/uplot@0a4fcd54059782572a3f7e82fad041121e8c65ad:__init__.py",
+      "sha256": "fa25d92bcc10d078b0a3c69980e1df1be62dfb5053e236dc9e573f7bcf344429"
+    },
+    {
+      "文件": "CAEGraph使用手册.md",
+      "已读范围": "1–103、372–480、630–850、1255–结束",
+      "本次理解": "本次顶层构建、普通多品种布局、K线/多字段点/段及基础链；具体参数仍以0a4源码为准",
+      "源码ref": "daowei2026/uplot@0a4fcd54059782572a3f7e82fad041121e8c65ad:CAEGraph使用手册.md",
+      "sha256": "f7dd1061a2b170ec4cfb0a508afd737e195e7ec16db269e5655b63dc06591c19"
+    },
+    {
+      "文件": "utlv2.py",
+      "已读范围": "1–62、621–775、854–992、1244–1576",
+      "本次理解": "currTarget、KPriceLine、MulSegPlot、MulFieldsGlyphs、PlotSet、CAEGraph",
+      "源码ref": "daowei2026/uplot@0a4fcd54059782572a3f7e82fad041121e8c65ad:utlv2.py",
+      "sha256": "0e98038f8bb658fc08e5c7c631f7f0ce5855fcd5b289476bfe52d7f1e7742ba0"
+    },
+    {
+      "文件": "utkv2.py",
+      "已读范围": "1–336",
+      "本次理解": "BaseFigSet构造/finish、AllSymsFig、PerSymFigs：共享x_range、独立y_range、legend.hide、fit_y回调",
+      "源码ref": "daowei2026/uplot@0a4fcd54059782572a3f7e82fad041121e8c65ad:utkv2.py",
+      "sha256": "af7fa4042507729e3f6e6ffb198b187c92419d390d3b6a9a083e63a3b3b2d31d"
+    },
+    {
+      "文件": "pfw.py",
+      "已读范围": "1–100、172–360、435–622、759–902",
+      "本次理解": "PlotCtx自然TSA/含结束UTI、截取、DataFrame到CDS、LiveUpdater/只读provider路径",
+      "源码ref": "daowei2026/uplot@0a4fcd54059782572a3f7e82fad041121e8c65ad:pfw.py",
+      "sha256": "001c7d2d120770de4108fc2b791305bc99337be0a1a6eefdad2a469abf5f7707"
+    },
+    {
+      "文件": "pdt.py",
+      "已读范围": "全文",
+      "本次理解": "PlotDataFolder.children、PlotDataNode.cds、数据形状/耗时树",
+      "源码ref": "daowei2026/uplot@0a4fcd54059782572a3f7e82fad041121e8c65ad:pdt.py",
+      "sha256": "56d5b166b389b957983280c030f0603194c2f4847b0413ccf1ed19b2a3310221"
+    },
+    {
+      "文件": "fit_y_range.js",
+      "已读范围": "全文",
+      "本次理解": "原价/输入图的视窗纵轴适配；只读CDS有限值，非价格标准化",
+      "源码ref": "daowei2026/uplot@0a4fcd54059782572a3f7e82fad041121e8c65ad:fit_y_range.js",
+      "sha256": "8d325abe22ad9277729dfb6ed00642bcfdb2fe00d8c2889d151ac931eeb2c27a"
+    }
+  ],
+  "正式导出与导入路径": "CAEGraph/PlotSet/PerSymFigs/AllSymsFig/KPriceLine/MulFieldsGlyphs/MulSegPlot从mquant.uplot正式导出；OptContext/CurrSymbol沿utlv2实际导入链。本D bootstrap在单进程替换package路径到准确20文件快照，不改共享uplot。",
+  "CAEGraph／PlotSet配置链": "build_bound_display→原C3.build_display→CAEGraph(Context=真实OptContext,plotsets=GMap)→layout→produce_widgets→CurrTradeSet(Context.sof)→PlotSet.plot；calendar=night_end_at_2300、blk=[rb,hc,i]、timespans为实际B的含端点UTI。",
+  "布局类源码理解": "PerSymFigs逐品种建立CurrSymbol/CurrSymbolPable和独立原价fig；AllSymsFig.persym_plots在上游known图遍历全部品种；global output用sym_plots首品种只提供合法上下文，gf不按symbol筛选。ctx.x_range由首图建立后供全部fig引用。",
+  "绘图类源码理解": {
+    "KPriceLine": "feat.rerun().to_df→ctx.slice_natural_df；明确openUti/closeUti；保留NaN；std_method=None，避免fallback几何端点。",
+    "MulFieldsGlyphs": "GMap provider、dfkeys、xfields/yfields，timefieldtype=uti→PlotCtx.live_feat_data→CDS scatter；actual、confirmation、selected-known、groupKnownFrom分别绑定。",
+    "MulSegPlot": "同记录T→C及携带a→d/d→r；timefieldtype=uti，dynstd_method=False；原C3仅裁剪显示端点，保留原始坐标。"
+  },
+  "特征实例进入路径": "正常make_features基线F复制profile且只override800→真实CommonPriceTurnGroupCandidatesFrp；完整序列化与full_dir精确相同。reader接收该真实实例，E时只调用instance.run(CalType.OnlyRead)/to_dfs；D未调用。F公开表→C3内存InjectedFrames→绘图器feat。行情/Rct/selected使用同实例已验收物化源，校哈希，非新计算。",
+  "位置进入路径": {
+    "requested_start": "2021-01-01",
+    "requested_end": "2023-12-31",
+    "native_sof_start": "2021-01-01 21:00:00",
+    "native_sof_end": "2023-12-31 20:00:00",
+    "first_calendar_label": "2021-01-04T09:00:00.500000000",
+    "last_calendar_label": "2023-12-29T15:00:00.000000000",
+    "inclusive_start_uti": 72003600,
+    "inclusive_end_uti": 101813399,
+    "plotctx_exclusive_stop": 101813400,
+    "source": "mquant.frame.core.app.utils.opt_date_range + pinned PlotCtx inclusive integer UTI",
+    "shortened_to_available_data": false,
+    "multiscale": null
+  },
+  "数据到CDS路径": "C3.project保留原列并增加展示别名/__original_json；主组完整父键唯一，全部子表完整父前缀关联；InjectedFrames.to_dfs/to_df及rerun只读内存。KPriceLine直接切DF，点/段经PlotCtx.live_feat_data/LiveUpdater驱动同一内存provider，再gen_cols创建CDS并ctx.add_cds。",
+  "构图数据树": "CAEGraph.layout(plot_roots=roots)→PlotDataFolder(plot_name)→plotset/位置folder→布局/品种folder→PlotDataNode。叶持真实CDS；C3 attach在同一cds补原值/身份，点表下拉共用source。E3通过后E4可从build_bound_display返回meta.roots叶cds正式导出；D未构造任何树或数据。",
+  "动态与前端路径": {
+    "DynStd": "本次不启用：K std_method=None，点/段dynstd_method=False；源码已核，不执行dynstd.js。",
+    "fit_y": "BaseFigSet._finish_fig按ctx.y_fits注册fit_y_range.js至共享x_range.start/end；output图关闭fit_y_range，其余原价/输入沿C2。",
+    "控件": "无prange/slider或server参数控件；LiveUpdater只为只读InjectedFrames执行更新；C3既有Bokeh Select/DataTable/Div/CustomJS在独立HTML中联动。",
+    "前端": "选择共享revision_source.selected.indices；JS把raw JSON作为经HTML escape的文字显示，不JSON.parse，不把uint64交JS浮点；图例hide、各图十字线、hover沿原C3。",
+    "多尺度与server": "不适用，B为普通明确三年位置；不使用multiscale/app/bkapp，不补建多尺度路径。"
+  },
+  "真实Feature读取源码": [
+    "TIS2f frp/CommonPriceTurnGroupCandidates.py全文：to_dfs/GroupCandidateReadSession/ENUMS；frp/U2CompactTables.py 67–125：F已有materialized读取；frp/U2CoreResults.py 142–188：_public保留timestamp+occurrence+全部child。",
+    "frame.lang.internal.base.run/_run_own/_run_with：OnlyRead选择write=False/read=True，缺文件直接报错，不转生产；同版已接受D008提供实际API读回证据。",
+    "frame.core.app.utils.opt_date_range、frame.core.data.KDataLoader及quant.core.ctx.OptContext.sof、m3sof.core.sof.tsa_of按实际源码核本次日期/SOF/日历链；17个实际依赖按内容锁。"
+  ],
+  "尚待E运行确认": "E_PENDING.json；本D没有实际调用build_bound_display、原生reader、CAEGraph.layout、浏览器或HTML输出。"
+}

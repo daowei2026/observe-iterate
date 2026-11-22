@@ -1,0 +1,19 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "result": "FAILED",
+      "scope": "定义检查器selected表头",
+      "cause": "UTF-8 BOM保留在csv.DictReader的symbol列名",
+      "repair": "utf-8-sig，reader同样明确编码",
+      "evidence": "attempts/01-*",
+      "C2_or_B_changed": false
+    },
+    {
+      "attempt": 2,
+      "result": "PASS",
+      "checks": 10,
+      "evidence": "DEFINITION_CHECKS.json/DEFINITION_CHECKS.log"
+    }
+  ]
+}
