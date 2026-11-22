@@ -1,0 +1,11 @@
+# C0018｜首批协调记录校验
+
+PASS：本C packet的INVOCATION对象及准确FULL_ASSIGNMENT字节与发布原件一致，Run/C/原manager/token匹配。Owner实际批准与指定本地原件、派工逐字一致，SHA-256 `a9c626ec667171e7f4605b853d360597a471d6bc82002574f938ab4d269058eb`匹配已发布决定；最新Binding覆盖完整F-only新X/G，未重复询问同范围。
+
+PASS：C0017 Return的角色、发送者、原D007归属、回交manager、专业报告ref及REPORTED_COMPLETE对应。ImplementationFixReturn各原生字段齐备，39f与CodeVersionAdoption/理解delta/handoff一致，TIS不变，实际完整配置文件哈希=`b72095ff100da926474701b74bff7586a74b9770bc81cadc34c23cfe223e5cb3`。结构合同未变，GF002 FIXED_PENDING_RERUN且未关闭；构建/真实适配回归通过与未正式X/G的边界一致。这里只消费专业原件及controller前检声明，没有manager独立执行Feature专业检查。
+
+PASS：D008 task_ref为锁定唯一G Skill，X为原Workflow既有动作；输入为准确新版本采用、原生交接和专业原件，不自造方法/Gate。D008、C0017 Return、本C INVOCATION和最新Binding均用锁定版V2 schema校验。全部60项exact来源已解析到存在的Git blob，字节/SHA-256记录于SOURCE_AUDIT。D008只使用formal_feature_run、run_result_statistics_analysis_write、run_record_write的当前Binding操作/执行上下文/写面子集，不含新增行为实施或代码采用权限。
+
+旧机械longrun_gate对真实Codex manager身份不兼容，原C0001实跑退出2、BLOCKED bad manager logical identity的记录保留：`daowei2026/observe-iterate@092819b56eaf3e08764ed23650c0826c0fdadec1:longrun/runs/OI-F800-STAT-20261122-01/calls/C0001/GATE_BINDING_RESULT.json`。不重复同一失败、不改锁定工具/逻辑身份伪造PASS；依已采用CODEX_NATIVE_DIRECT、同版schema与真实角色/来源/授权核验。本检查不代表controller物理派发、本次持flock、新X/G通过或释放。
+
+首批只写D008 JSON/MD、MANAGER_REPORT、REMAINING_SCOPE、CONTINUATION、SOURCE_AUDIT、VALIDATION和TASK_PROGRESS共8文件，均在Run允许记录根。提交前执行diff --check和精确写面核对；推送后fetch逐文件比对Git blob/SHA-256/字节。其成功凭证后发记录于D008_PUBLICATION及Return批次，不在首批预填未来提交。随后独立发布只引用已经存在首批exact对象的IN_PROGRESS Return。当前RERUN_REQUIRED，GF002未关闭，未签放行Gate/ReleasePackage。
