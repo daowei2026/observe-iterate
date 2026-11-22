@@ -50,7 +50,7 @@ FRP仍为`ac1927518ad6105f15ffbe37fea45e4be91ba574`，TIS仍为`2f460d663d821cf2
 
 ## 当前后继、独立工作与释放
 
-本C已继续完成具体Owner确认包、原提案影响/验证核对及既定依赖审查，见 [OWNER_REQUEST](../calls/C0008/OWNER_REQUEST.md)、[WORKFLOW_SUCCESSOR_REVIEW](../calls/C0008/WORKFLOW_SUCCESSOR_REVIEW.md)。未签新D/W，未把候选改法当作批准实施。
+本C已继续完成并先行发布具体Owner确认包、原提案影响/验证核对及既定依赖审查，Owner请求exact ref为 `daowei2026/observe-iterate@b87c235afd5ef548881a7aab397894f5c224abc7:longrun/runs/OI-F800-STAT-20261122-01/calls/C0008/OWNER_REQUEST.md`；已从origin回读。相关记录见 [OWNER_REQUEST](../calls/C0008/OWNER_REQUEST.md)、[WORKFLOW_SUCCESSOR_REVIEW](../calls/C0008/WORKFLOW_SUCCESSOR_REVIEW.md)。未签新D/W，未把候选改法当作批准实施。
 
 4项场景问题保留；按已采用control/05 §5和business-expectation-derivation §1，正式M/S1/S2需要PASS_TO_SCENARIO_REVIEW，当前条件未满足。D003路由是Owner确认后实现，不是缺少场景才可定位。原L0仍允许其他不冲突分析，但本次既有清单没有前置齐备且需立即派发的新独立专业后继；不由此撤销正常分析权限。
 

@@ -1,0 +1,9 @@
+# C0008｜Return 校验与发布顺序
+
+Owner具体确认包、manager报告、后继评估和TASK_PROGRESS已先推送，从origin fetch回读得到 `b87c235afd5ef548881a7aab397894f5c224abc7`，文件字节一致；见OWNER_REQUEST_PUBLICATION.json。
+
+本C PRO_RETURN按锁定同版 professional_return定义校验通过；sender与Binding/INVOCATION的真实Codex manager一致，call_id=C0008，role=manager、delegation_ref=null、return_to=null。professional_state=WAITING_OWNER且owner_request_ref非空，剩余范围和真实Owner答复接续均保留；未签新D，issued_delegation_refs/issued_order_refs/accepted_worker_refs均为空。
+
+result_ref、owner_request_ref、remaining_scope_ref、continuation_ref均引用先前已发布提交中的真实对象，已逐项核Git对象存在。未引用未来本Return，也未修改原proposal approval_status、D003原生产物或任何Feature代码。
+
+原gate兼容问题沿用既有真实输出，未重复旧检查或改身份取PASS。新记录结构/角色/状态/引用核对不证明Owner已送达/批准或Feature修复/释放；当前C0008协调交付与业务Run待Owner确认分别记录。
