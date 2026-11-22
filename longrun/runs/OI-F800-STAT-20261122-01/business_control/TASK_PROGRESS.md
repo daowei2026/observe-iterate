@@ -65,3 +65,7 @@ controller核原E1真实状态/角色模型gpt-6.1-sol/max及本D后派发；由
 manager消费新X/G真实回交后按原生GlobalProfileGate、known/new findings及原L1继续诊断、适用场景、FeatureReleaseGate/UpstreamReleasePackage。原4项场景问题沿最新G复核；Revision/exact引用/UUID链与数量变化由新生产测量，不据22flag方程或64项回归预测。F/Q共享影响及Q另有独立相邻比较的限制按D004原件保留；本Run不运行Q/V，不消费本批准修改WALL M001。
 
 本C未读取当前Feature源码、重跑FI/回归、生产或统计，未创建线程/向其他聊天发消息/签W。先发布D005/报告/进度并回读，再独立发布引用已存在exact对象的IN_PROGRESS Return，owner_request_ref=null，W/Worker引用为空。本C协调交付后停止，等待合法下一C，不轮询或自动唤醒。
+
+## 本C正式D发布凭证
+
+D005已先行发布并从origin逐字节回读：`daowei2026/observe-iterate@2fc881c3faf4ed38679762b53711a02cc3fd7e87:longrun/runs/OI-F800-STAT-20261122-01/delegations/D005/DELEGATION.json`；报告：`daowei2026/observe-iterate@2fc881c3faf4ed38679762b53711a02cc3fd7e87:longrun/runs/OI-F800-STAT-20261122-01/calls/C0011/MANAGER_REPORT.md`。本C正式IN_PROGRESS Return独立引用这些已有exact对象；controller仍须核原E1并实际派发，未据发布宣称正式X/G开工或通过。

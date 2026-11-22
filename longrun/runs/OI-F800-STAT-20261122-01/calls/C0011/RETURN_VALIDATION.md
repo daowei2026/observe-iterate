@@ -1,0 +1,11 @@
+# C0011｜独立Return发布核对
+
+第一批提交 `2fc881c3faf4ed38679762b53711a02cc3fd7e87` 已推送原Run记录分支并重新从origin fetch；FETCH_HEAD与本地HEAD一致。8个首批文件全部按Git对象逐字节回读和SHA-256核对，覆盖D005 JSON/Markdown、报告、剩余范围、接续、进度、来源审计及核对记录。D005_PUBLICATION.json保留准确对象与文件hash。
+
+本C Return按锁定同版V2 schema校验通过。role=manager，sender为本Run原manager，delegation_ref/return_to为空；issued_delegation_refs只有 `daowei2026/observe-iterate@2fc881c3faf4ed38679762b53711a02cc3fd7e87:longrun/runs/OI-F800-STAT-20261122-01/delegations/D005/DELEGATION.json`。D005 issuer_call_id=C0011、issuer/return_to与本C原manager一致。所有非空引用均指向已发布第一批exact对象，无未来、自引用或Return/D循环。
+
+professional_state=IN_PROGRESS，remaining_scope_ref与continuation_ref指向真实未完的新版本完整X/31表独立读回/G及finding/释放后继。owner_request_ref=null，已批准范围不重复请批；issued_order_refs=[]、accepted_worker_refs=[]、workers=[]。D004实施职责完成已消费，当前finding为FIXED_PENDING_RERUN，FeatureReleaseGate=RERUN_REQUIRED；未把局部回归写成正式生产、全量G或释放通过。
+
+第一批报告采用原E1的结构合同不变/可直接X判断，旧ac X/G当前版本资格失效而原件保留。新代码/配置/TIS绑定来源准确；D005仅用原X动作及唯一G Skill和新Binding相应grants子集。原机械gate身份兼容失败保留C0001出处，不改工具/真实身份或重复相同检查取得假PASS。
+
+本Return及发布证明随后独立提交推送，第二批远端回读及clean tracked tree保存于gitignored本C现场发布记录。Git/schema/来源一致性不证明controller物理派发、未来实际持锁或专业通过。仅C0011协调交付scope完成，业务Run仍IN_PROGRESS。
