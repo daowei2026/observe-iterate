@@ -81,3 +81,7 @@ controller核原E1线程/sol/max/工作区与真实状态并物理派发。先�
 ## C0022 D010首批发布凭证
 
 已先行发布并从origin逐字节回读D010：`daowei2026/observe-iterate@a33dc91d08a4e888d08af71b6a1769a0db06ae8a:longrun/runs/OI-F800-STAT-20261122-01/delegations/D010/DELEGATION.json`；报告：`daowei2026/observe-iterate@a33dc91d08a4e888d08af71b6a1769a0db06ae8a:longrun/runs/OI-F800-STAT-20261122-01/calls/C0022/MANAGER_REPORT.md`；手册来源锁：`daowei2026/observe-iterate@a33dc91d08a4e888d08af71b6a1769a0db06ae8a:longrun/runs/OI-F800-STAT-20261122-01/calls/C0022/CAEGRAPH_SOURCE_LOCK.json`。首批9文件Git blob/SHA-256/字节一致，独立Return只引用已有提交。B完整与当前有效U/X/G保持，D010物理派发/专业执行尚无本C回执，Run仍IN_PROGRESS；未签材料DATA_READY或Feature释放。
+
+## C0024 D011首批发布凭证
+
+已先行发布并从origin逐字节回读D011：`daowei2026/observe-iterate@3769b5143aa29ed405e9257b50d500252763ce82:longrun/runs/OI-F800-STAT-20261122-01/delegations/D011/DELEGATION.json`；报告：`daowei2026/observe-iterate@3769b5143aa29ed405e9257b50d500252763ce82:longrun/runs/OI-F800-STAT-20261122-01/calls/C0024/MANAGER_REPORT.md`。首批8文件Git blob/SHA-256/字节匹配，独立Return只引用已有提交。C完整及当前有效U/X/G/B保持，D011物理派发/定义集成尚无本C回执；Run仍IN_PROGRESS，无材料DATA_READY或Feature释放。
