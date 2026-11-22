@@ -1,0 +1,40 @@
+{
+  "run_id": "OI-U2-V-OBS-20261120-01",
+  "status": "OWNER_TERMINATED",
+  "reason_code": "CANCELLED_BY_OWNER",
+  "at": "2026-11-22T08:42:16.460153+00:00",
+  "business_completed": false,
+  "business_acceptance_passed": false,
+  "remaining_scope_disposition": "未完成的业务范围不再继续",
+  "historical_artifacts": "全部保留，不删除、不改写；C0002的REPORTED_COMPLETE仅为历史D自报，未被manager消费",
+  "dispatch_prohibited": [
+    "C",
+    "D",
+    "W",
+    "professional_successor"
+  ],
+  "reconciliation": {
+    "C0001": "COMPLETED历史保留",
+    "C0002": "真实committed；回交e5688dad1991729f6ba36d9fedca64d14061f20b和手机完成证据均保留；投影滞后已对账",
+    "C0003": "NOT_SENT已核原发送账本；仅取消后继，不把已发送C2写成未发生",
+    "D001": "历史executor Return保留；不追补manager专业接受",
+    "actual_workers": [],
+    "actual_W": [],
+    "codex_controller_goal": "paused",
+    "codex_controller_queue": [],
+    "codex_controller_active_turns": 0,
+    "phone_manager": "VOBS-1120-M；原C1完成；无后继发送",
+    "phone_executor": "VOBS-1120-E1；原C2回复完成且已核唯一命名",
+    "planned_wake": "cancelled；取消前已为Owner暂停",
+    "linux_workspace_writers": []
+  },
+  "workspace_release": {
+    "workspace": "/dwdhome/fy/BASE_E6_2_copy",
+    "realpath": "/dwdhome/fy/BASE_E6_2_copy",
+    "status": "RELEASED",
+    "write_side_effects_pending": false,
+    "basis": "V止于A理解资料；无W/Worker或Linux生产派单；旧远端分支head未再移动；当前同用户进程的cwd与打开写文件中无copy工作区命中；例外仅系统会话进程，均非计算任务",
+    "reuse_scope": "新F可取用工作区；V线程、身份和专业完成状态不得复用"
+  },
+  "owner_instruction_sha256": "92a3d105be7a74be23c84e228f982ef07f2123d97213de64e88055275077f1ca"
+}
