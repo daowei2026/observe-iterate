@@ -1,0 +1,688 @@
+{
+  "admission_id": "F800-E4-D012-v1",
+  "exported_at": "2026-11-22T20:59:21.087657+00:00",
+  "accepted_html_sha256": "df4076f642d4d2b2ac7a6f8cc02899d9cf70e20dd8beb313e347e7545279b450",
+  "effective_run": "RUN_ATTEMPT02.json",
+  "data_origin": "E3接受HTML内嵌的同次Bokeh ColumnDataSource序列化；不读取首版、不复算Feature、不重新构图，不从截图反推",
+  "stage": "construction_snapshot",
+  "selected_scope": "本次三年五图全部21个实际CDS；含所需原值明细及全部child坐标",
+  "formal_files": [
+    {
+      "source_id": "p1040",
+      "source_name": null,
+      "renderers": [
+        {
+          "figure_id": "p1002",
+          "figure": "rb · 原价 / 已暴露原始转折与已选T、C",
+          "renderer_id": "p1049",
+          "renderer_name": null,
+          "glyph": "Segment"
+        },
+        {
+          "figure_id": "p1002",
+          "figure": "rb · 原价 / 已暴露原始转折与已选T、C",
+          "renderer_id": "p1060",
+          "renderer_name": null,
+          "glyph": "Segment"
+        },
+        {
+          "figure_id": "p1002",
+          "figure": "rb · 原价 / 已暴露原始转折与已选T、C",
+          "renderer_id": "p1069",
+          "renderer_name": null,
+          "glyph": "Segment"
+        }
+      ],
+      "file": "formal_data/source_p1040.json.gz",
+      "stage": "construction_snapshot",
+      "rows": 49683,
+      "row_unit": "本品种一根5m原价K线；NaN仍计行",
+      "denominator": "本图层在完整B位置的实际构图行；原事件/对象分母须按对应源另读，不跨图层相加",
+      "columns": [
+        "x",
+        "x_l",
+        "x_r",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "ts"
+      ],
+      "data_sha256": "1f601d95a0f6dc3f3b615da473a7e58be81f6ec5aeb7d788bb4c9ec6855851e2",
+      "gzip_sha256": "534c4f2080f59f0f3b7b8117796a29f94f84b1de75e7c99b80b8bdb6860d90fe",
+      "json_sha256": "a9b697e8016363090f53547a89d80e23863e45e34300273208681944cc15768f",
+      "bytes": 857013
+    },
+    {
+      "source_id": "p1072",
+      "source_name": "input:rb:Rct实际（上游已暴露）",
+      "renderers": [
+        {
+          "figure_id": "p1002",
+          "figure": "rb · 原价 / 已暴露原始转折与已选T、C",
+          "renderer_id": "p1081",
+          "renderer_name": "rb - Rct实际（上游已暴露）",
+          "glyph": "Scatter"
+        }
+      ],
+      "file": "formal_data/source_p1072.json.gz",
+      "stage": "construction_snapshot",
+      "rows": 7538,
+      "row_unit": "Rct公开事件投影行；同一actual可有多次更新，不等于唯一原始转折数",
+      "denominator": "本图层在完整B位置的实际构图行；原事件/对象分母须按对应源另读，不跨图层相加",
+      "columns": [
+        "y",
+        "x",
+        "ts",
+        "__prestd_y",
+        "raw"
+      ],
+      "data_sha256": "8b0e2178f8adaf54a3336b0b0ac04844a5ec0a327cbabe03031dc37cf875bb76",
+      "gzip_sha256": "917738d984844e9b89246220f4963b147e6d38d6f566b177aee227410ba91206",
+      "json_sha256": "77badf2fb295849a6b73597c38856f7a3dfd6a9c308791ce09477681571f707d",
+      "bytes": 340042
+    },
+    {
+      "source_id": "p1085",
+      "source_name": null,
+      "renderers": [
+        {
+          "figure_id": "p1002",
+          "figure": "rb · 原价 / 已暴露原始转折与已选T、C",
+          "renderer_id": "p1094",
+          "renderer_name": "同记录 T→C",
+          "glyph": "Segment"
+        }
+      ],
+      "file": "formal_data/source_p1085.json.gz",
+      "stage": "construction_snapshot",
+      "rows": 425,
+      "row_unit": "同一条ScaleTurn记录的T到C显示连接段，按视区裁剪",
+      "denominator": "本图层在完整B位置的实际构图行；原事件/对象分母须按对应源另读，不跨图层相加",
+      "columns": [
+        "y0",
+        "y1",
+        "x0",
+        "x1"
+      ],
+      "data_sha256": "e9da77af5888eb97b9074b3ffbd7670ede4c4b04be6b8f8d632ceaf4150bf6ed",
+      "gzip_sha256": "928021179880193ec03def11653617a168ab046d66b0d34bc4b23f8b626167de",
+      "json_sha256": "30c46598d6ff499f3b69e0246207211a2e6b2ca14cd9e7beb4803de79b0f171e",
+      "bytes": 4973
+    },
+    {
+      "source_id": "p1098",
+      "source_name": "input:rb:Selected T实际",
+      "renderers": [
+        {
+          "figure_id": "p1002",
+          "figure": "rb · 原价 / 已暴露原始转折与已选T、C",
+          "renderer_id": "p1107",
+          "renderer_name": "rb - Selected T实际",
+          "glyph": "Scatter"
+        }
+      ],
+      "file": "formal_data/source_p1098.json.gz",
+      "stage": "construction_snapshot",
+      "rows": 425,
+      "row_unit": "一条公开ScaleTurn选中记录在本T/C/selected-known图层的表达；跨图层不去重计对象",
+      "denominator": "本图层在完整B位置的实际构图行；原事件/对象分母须按对应源另读，不跨图层相加",
+      "columns": [
+        "y",
+        "x",
+        "ts",
+        "__prestd_y",
+        "raw"
+      ],
+      "data_sha256": "b543b675a4b4eb64eb0de548a2b65e207ff28b9174df9d304d5d12b8459e5f71",
+      "gzip_sha256": "b8f03a4ce178f9300151916ae81d16029d8542ae8947d5911a3e72f9a0eb9d5d",
+      "json_sha256": "69a378ebe94467bff73925976bcf3b836cf42ab9a97cc02b676b850afefed75e",
+      "bytes": 54025
+    },
+    {
+      "source_id": "p1111",
+      "source_name": "input:rb:Selected C几何确认",
+      "renderers": [
+        {
+          "figure_id": "p1002",
+          "figure": "rb · 原价 / 已暴露原始转折与已选T、C",
+          "renderer_id": "p1120",
+          "renderer_name": "rb - Selected C几何确认",
+          "glyph": "Scatter"
+        }
+      ],
+      "file": "formal_data/source_p1111.json.gz",
+      "stage": "construction_snapshot",
+      "rows": 425,
+      "row_unit": "一条公开ScaleTurn选中记录在本T/C/selected-known图层的表达；跨图层不去重计对象",
+      "denominator": "本图层在完整B位置的实际构图行；原事件/对象分母须按对应源另读，不跨图层相加",
+      "columns": [
+        "y",
+        "x",
+        "ts",
+        "__prestd_y",
+        "raw"
+      ],
+      "data_sha256": "966898095f8869b841ffbe46051ede95e4945887364c58c0da6fa92b9187caa3",
+      "gzip_sha256": "c6782c1b3af8a326037c58c215c6def919a8605139fa41ce0194fb93cb8fd204",
+      "json_sha256": "2a186e19d90f051ebf51e75ba446026c23bd2b1039861c0024109abd1115476e",
+      "bytes": 53624
+    },
+    {
+      "source_id": "p1168",
+      "source_name": null,
+      "renderers": [
+        {
+          "figure_id": "p1130",
+          "figure": "hc · 原价 / 已暴露原始转折与已选T、C",
+          "renderer_id": "p1177",
+          "renderer_name": null,
+          "glyph": "Segment"
+        },
+        {
+          "figure_id": "p1130",
+          "figure": "hc · 原价 / 已暴露原始转折与已选T、C",
+          "renderer_id": "p1188",
+          "renderer_name": null,
+          "glyph": "Segment"
+        },
+        {
+          "figure_id": "p1130",
+          "figure": "hc · 原价 / 已暴露原始转折与已选T、C",
+          "renderer_id": "p1197",
+          "renderer_name": null,
+          "glyph": "Segment"
+        }
+      ],
+      "file": "formal_data/source_p1168.json.gz",
+      "stage": "construction_snapshot",
+      "rows": 49683,
+      "row_unit": "本品种一根5m原价K线；NaN仍计行",
+      "denominator": "本图层在完整B位置的实际构图行；原事件/对象分母须按对应源另读，不跨图层相加",
+      "columns": [
+        "x",
+        "x_l",
+        "x_r",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "ts"
+      ],
+      "data_sha256": "07572ca0fd9a25f0750d9681316098da1435f50719689ffdb4dc15ef4aaf7c01",
+      "gzip_sha256": "0421f34909f520aa51ae31c8889f9c8c464c7643c6837e68307e2e71b4429166",
+      "json_sha256": "c6b928d0084eb5b2e96cb56f1b3f2a9d0092a4d09ffed4b450c944b8b5045bed",
+      "bytes": 840103
+    },
+    {
+      "source_id": "p1200",
+      "source_name": "input:hc:Rct实际（上游已暴露）",
+      "renderers": [
+        {
+          "figure_id": "p1130",
+          "figure": "hc · 原价 / 已暴露原始转折与已选T、C",
+          "renderer_id": "p1209",
+          "renderer_name": "hc - Rct实际（上游已暴露）",
+          "glyph": "Scatter"
+        }
+      ],
+      "file": "formal_data/source_p1200.json.gz",
+      "stage": "construction_snapshot",
+      "rows": 7478,
+      "row_unit": "Rct公开事件投影行；同一actual可有多次更新，不等于唯一原始转折数",
+      "denominator": "本图层在完整B位置的实际构图行；原事件/对象分母须按对应源另读，不跨图层相加",
+      "columns": [
+        "y",
+        "x",
+        "ts",
+        "__prestd_y",
+        "raw"
+      ],
+      "data_sha256": "c498369a388f4f15ab5917ea78b65101eb8558e0b37720712ef0332c38746cd7",
+      "gzip_sha256": "91c6835dd7a1f6b9c00f1af9bc13a27b232df112d3e5fff566fb8e57d2826837",
+      "json_sha256": "584179993e91b2a9b4bb6d5e0443df301733b0dfce92881d9b9a7c79ef7819a9",
+      "bytes": 339287
+    },
+    {
+      "source_id": "p1213",
+      "source_name": null,
+      "renderers": [
+        {
+          "figure_id": "p1130",
+          "figure": "hc · 原价 / 已暴露原始转折与已选T、C",
+          "renderer_id": "p1222",
+          "renderer_name": "同记录 T→C",
+          "glyph": "Segment"
+        }
+      ],
+      "file": "formal_data/source_p1213.json.gz",
+      "stage": "construction_snapshot",
+      "rows": 430,
+      "row_unit": "同一条ScaleTurn记录的T到C显示连接段，按视区裁剪",
+      "denominator": "本图层在完整B位置的实际构图行；原事件/对象分母须按对应源另读，不跨图层相加",
+      "columns": [
+        "y0",
+        "y1",
+        "x0",
+        "x1"
+      ],
+      "data_sha256": "ee2f577399f68865e43a59798051f931280608ae18a809dc9b3d6c8a6b0d3cc9",
+      "gzip_sha256": "5037407b9849d0e14f6b8c8398bd655dfbf880638eba936ab8596901edff7c32",
+      "json_sha256": "d21cae6f49598fde054eb2ade7c867459adc2925499624781416354cd9ca2d38",
+      "bytes": 4984
+    },
+    {
+      "source_id": "p1226",
+      "source_name": "input:hc:Selected T实际",
+      "renderers": [
+        {
+          "figure_id": "p1130",
+          "figure": "hc · 原价 / 已暴露原始转折与已选T、C",
+          "renderer_id": "p1235",
+          "renderer_name": "hc - Selected T实际",
+          "glyph": "Scatter"
+        }
+      ],
+      "file": "formal_data/source_p1226.json.gz",
+      "stage": "construction_snapshot",
+      "rows": 430,
+      "row_unit": "一条公开ScaleTurn选中记录在本T/C/selected-known图层的表达；跨图层不去重计对象",
+      "denominator": "本图层在完整B位置的实际构图行；原事件/对象分母须按对应源另读，不跨图层相加",
+      "columns": [
+        "y",
+        "x",
+        "ts",
+        "__prestd_y",
+        "raw"
+      ],
+      "data_sha256": "46a25c3a71dd5dd200400412c842aebb0f2b009d3ea25984339cc047cf716765",
+      "gzip_sha256": "be3e93654f5d6f15d143cf54f4cbcbd79e661d597c3d7bc9caba87e990805126",
+      "json_sha256": "03edbd90ac1117a36c0c1e8bbd42b87f942bf37fa6b614de3da90ed5fe0ed934",
+      "bytes": 54508
+    },
+    {
+      "source_id": "p1239",
+      "source_name": "input:hc:Selected C几何确认",
+      "renderers": [
+        {
+          "figure_id": "p1130",
+          "figure": "hc · 原价 / 已暴露原始转折与已选T、C",
+          "renderer_id": "p1248",
+          "renderer_name": "hc - Selected C几何确认",
+          "glyph": "Scatter"
+        }
+      ],
+      "file": "formal_data/source_p1239.json.gz",
+      "stage": "construction_snapshot",
+      "rows": 430,
+      "row_unit": "一条公开ScaleTurn选中记录在本T/C/selected-known图层的表达；跨图层不去重计对象",
+      "denominator": "本图层在完整B位置的实际构图行；原事件/对象分母须按对应源另读，不跨图层相加",
+      "columns": [
+        "y",
+        "x",
+        "ts",
+        "__prestd_y",
+        "raw"
+      ],
+      "data_sha256": "24e4d714f2f33cc49f91312c6f0585aec69bcc554d01584edbf721271fdef3f0",
+      "gzip_sha256": "6c36e6afa0a85f8251fd74aac120469ac622dd36f3984fb5a35918d17c1ba828",
+      "json_sha256": "30618d55c4cbb16a1f4def79daef4d5e6625354c3fefde6f11a46e3acb7b912f",
+      "bytes": 54052
+    },
+    {
+      "source_id": "p1296",
+      "source_name": null,
+      "renderers": [
+        {
+          "figure_id": "p1258",
+          "figure": "i · 原价 / 已暴露原始转折与已选T、C",
+          "renderer_id": "p1305",
+          "renderer_name": null,
+          "glyph": "Segment"
+        },
+        {
+          "figure_id": "p1258",
+          "figure": "i · 原价 / 已暴露原始转折与已选T、C",
+          "renderer_id": "p1316",
+          "renderer_name": null,
+          "glyph": "Segment"
+        },
+        {
+          "figure_id": "p1258",
+          "figure": "i · 原价 / 已暴露原始转折与已选T、C",
+          "renderer_id": "p1325",
+          "renderer_name": null,
+          "glyph": "Segment"
+        }
+      ],
+      "file": "formal_data/source_p1296.json.gz",
+      "stage": "construction_snapshot",
+      "rows": 49683,
+      "row_unit": "本品种一根5m原价K线；NaN仍计行",
+      "denominator": "本图层在完整B位置的实际构图行；原事件/对象分母须按对应源另读，不跨图层相加",
+      "columns": [
+        "x",
+        "x_l",
+        "x_r",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "ts"
+      ],
+      "data_sha256": "5197cf3a8d2d986fa13133a7738fbae207cf552b9ce00ef82a23c483b1cf9720",
+      "gzip_sha256": "63fdbc3a367565b1d680abf9940d3f0ffd14d42a9ecf08d055bd4920d665fa4a",
+      "json_sha256": "fd3d8e7044a9e0ea467f036cc3019ee7729cb237d258c49302dcc2f853843241",
+      "bytes": 806919
+    },
+    {
+      "source_id": "p1328",
+      "source_name": "input:i:Rct实际（上游已暴露）",
+      "renderers": [
+        {
+          "figure_id": "p1258",
+          "figure": "i · 原价 / 已暴露原始转折与已选T、C",
+          "renderer_id": "p1337",
+          "renderer_name": "i - Rct实际（上游已暴露）",
+          "glyph": "Scatter"
+        }
+      ],
+      "file": "formal_data/source_p1328.json.gz",
+      "stage": "construction_snapshot",
+      "rows": 10738,
+      "row_unit": "Rct公开事件投影行；同一actual可有多次更新，不等于唯一原始转折数",
+      "denominator": "本图层在完整B位置的实际构图行；原事件/对象分母须按对应源另读，不跨图层相加",
+      "columns": [
+        "y",
+        "x",
+        "ts",
+        "__prestd_y",
+        "raw"
+      ],
+      "data_sha256": "001cc8071854b38058bf9f16ef995fd6c691ce9b0c2aea32c553d76c24094ad6",
+      "gzip_sha256": "3f44a9d33acedeb2ef3a7a936a478e858c0c15deb069bb55d216f098dedf216a",
+      "json_sha256": "eac1e35ca6b99893fdab3e29adca8d9e506e6d4f912f6cc32f99285b3c764d5b",
+      "bytes": 502363
+    },
+    {
+      "source_id": "p1341",
+      "source_name": null,
+      "renderers": [
+        {
+          "figure_id": "p1258",
+          "figure": "i · 原价 / 已暴露原始转折与已选T、C",
+          "renderer_id": "p1350",
+          "renderer_name": "同记录 T→C",
+          "glyph": "Segment"
+        }
+      ],
+      "file": "formal_data/source_p1341.json.gz",
+      "stage": "construction_snapshot",
+      "rows": 1004,
+      "row_unit": "同一条ScaleTurn记录的T到C显示连接段，按视区裁剪",
+      "denominator": "本图层在完整B位置的实际构图行；原事件/对象分母须按对应源另读，不跨图层相加",
+      "columns": [
+        "y0",
+        "y1",
+        "x0",
+        "x1"
+      ],
+      "data_sha256": "0acd8bc96e63e6c61bedc474786804d9cd678ba0fa5a12acb5db3b819e9575b6",
+      "gzip_sha256": "a6e9e81088d4d726cb024f34bc96b7119ea563d83604fe8e7b1456a82dcff2ae",
+      "json_sha256": "3edefacfb72634ffcff6e3c16627559311108c60f4bb0656e653d2685ba638eb",
+      "bytes": 10280
+    },
+    {
+      "source_id": "p1354",
+      "source_name": "input:i:Selected T实际",
+      "renderers": [
+        {
+          "figure_id": "p1258",
+          "figure": "i · 原价 / 已暴露原始转折与已选T、C",
+          "renderer_id": "p1363",
+          "renderer_name": "i - Selected T实际",
+          "glyph": "Scatter"
+        }
+      ],
+      "file": "formal_data/source_p1354.json.gz",
+      "stage": "construction_snapshot",
+      "rows": 1004,
+      "row_unit": "一条公开ScaleTurn选中记录在本T/C/selected-known图层的表达；跨图层不去重计对象",
+      "denominator": "本图层在完整B位置的实际构图行；原事件/对象分母须按对应源另读，不跨图层相加",
+      "columns": [
+        "y",
+        "x",
+        "ts",
+        "__prestd_y",
+        "raw"
+      ],
+      "data_sha256": "4f2e58e77a815ce0bbed5c5c7fae6c84f52817a8da63cb4f42f52a34f93f1df3",
+      "gzip_sha256": "a184b817744d09158ba2057b8f9168691f0786460d0146ac6e15c27512e1901d",
+      "json_sha256": "18c2dab9caac47b885ea40cc8cb1da3e6e1a8b62784a83cdf6ffb0fc9dc327e8",
+      "bytes": 120013
+    },
+    {
+      "source_id": "p1367",
+      "source_name": "input:i:Selected C几何确认",
+      "renderers": [
+        {
+          "figure_id": "p1258",
+          "figure": "i · 原价 / 已暴露原始转折与已选T、C",
+          "renderer_id": "p1376",
+          "renderer_name": "i - Selected C几何确认",
+          "glyph": "Scatter"
+        }
+      ],
+      "file": "formal_data/source_p1367.json.gz",
+      "stage": "construction_snapshot",
+      "rows": 1004,
+      "row_unit": "一条公开ScaleTurn选中记录在本T/C/selected-known图层的表达；跨图层不去重计对象",
+      "denominator": "本图层在完整B位置的实际构图行；原事件/对象分母须按对应源另读，不跨图层相加",
+      "columns": [
+        "y",
+        "x",
+        "ts",
+        "__prestd_y",
+        "raw"
+      ],
+      "data_sha256": "78b07f980ff0317a5ee4a6bb2fea9d6cb72e404c787a4075f9218aef70346b92",
+      "gzip_sha256": "1a2ead459c2b14add32cf73e964bb893620dda0b9b6b32c2e6ffa744150c7ec3",
+      "json_sha256": "e4bda420520d20d571c740769b1600bcd2207aa585537e42c87e72efb456dc1c",
+      "bytes": 119395
+    },
+    {
+      "source_id": "p1424",
+      "source_name": "input:rb:上游selected已知",
+      "renderers": [
+        {
+          "figure_id": "p1386",
+          "figure": "输入已知轴 · ScaleTurn原事件（行=品种；+0.15×round仅为显示偏移）",
+          "renderer_id": "p1433",
+          "renderer_name": "rb - 上游selected已知",
+          "glyph": "Scatter"
+        }
+      ],
+      "file": "formal_data/source_p1424.json.gz",
+      "stage": "construction_snapshot",
+      "rows": 425,
+      "row_unit": "一条公开ScaleTurn选中记录在本T/C/selected-known图层的表达；跨图层不去重计对象",
+      "denominator": "本图层在完整B位置的实际构图行；原事件/对象分母须按对应源另读，不跨图层相加",
+      "columns": [
+        "y",
+        "x",
+        "ts",
+        "__prestd_y",
+        "raw"
+      ],
+      "data_sha256": "b9cf0fd9d607cc936a7d8429f8447c054c933f00a5d6498d71bdfe01d8d20d65",
+      "gzip_sha256": "6c95199974fc133da80ff58b8052be14260e7bb537b458e57b18530074095a24",
+      "json_sha256": "1ba082310f6742fe238c0a5664628a59074908c062244f8ea224a0c7b32794a7",
+      "bytes": 51263
+    },
+    {
+      "source_id": "p1438",
+      "source_name": "input:hc:上游selected已知",
+      "renderers": [
+        {
+          "figure_id": "p1386",
+          "figure": "输入已知轴 · ScaleTurn原事件（行=品种；+0.15×round仅为显示偏移）",
+          "renderer_id": "p1447",
+          "renderer_name": "hc - 上游selected已知",
+          "glyph": "Scatter"
+        }
+      ],
+      "file": "formal_data/source_p1438.json.gz",
+      "stage": "construction_snapshot",
+      "rows": 430,
+      "row_unit": "一条公开ScaleTurn选中记录在本T/C/selected-known图层的表达；跨图层不去重计对象",
+      "denominator": "本图层在完整B位置的实际构图行；原事件/对象分母须按对应源另读，不跨图层相加",
+      "columns": [
+        "y",
+        "x",
+        "ts",
+        "__prestd_y",
+        "raw"
+      ],
+      "data_sha256": "6f6f5040a6c964e5aea97e4c7239eccd372d503a32dd3207bb79294061a08141",
+      "gzip_sha256": "0bd3d86523cc86fcbccb4cebc7f29a086d1580e44d0b3a4d521bc7567f34d4d6",
+      "json_sha256": "66106fa2c52173f711260cd75dc40ec00d52795421f75077eb3088f89921fac5",
+      "bytes": 51676
+    },
+    {
+      "source_id": "p1451",
+      "source_name": "input:i:上游selected已知",
+      "renderers": [
+        {
+          "figure_id": "p1386",
+          "figure": "输入已知轴 · ScaleTurn原事件（行=品种；+0.15×round仅为显示偏移）",
+          "renderer_id": "p1460",
+          "renderer_name": "i - 上游selected已知",
+          "glyph": "Scatter"
+        }
+      ],
+      "file": "formal_data/source_p1451.json.gz",
+      "stage": "construction_snapshot",
+      "rows": 1004,
+      "row_unit": "一条公开ScaleTurn选中记录在本T/C/selected-known图层的表达；跨图层不去重计对象",
+      "denominator": "本图层在完整B位置的实际构图行；原事件/对象分母须按对应源另读，不跨图层相加",
+      "columns": [
+        "y",
+        "x",
+        "ts",
+        "__prestd_y",
+        "raw"
+      ],
+      "data_sha256": "96ae764ff8b12d656cac80c3b2f922b59830a21bcb2c342447ce8499b203b58e",
+      "gzip_sha256": "e274bd04e2572cb7d7c436681f538133530c9aeae671fa3c877fb0929da309b7",
+      "json_sha256": "9475dcc9bd25a21f79d027a9aa1c7a40070c40177aff9537b09a83a26fcfa5d7",
+      "bytes": 114628
+    },
+    {
+      "source_id": "p1504",
+      "source_name": null,
+      "renderers": [
+        {
+          "figure_id": "p1466",
+          "figure": "候选组 exact修订 · 点=发布，段=本次携带界限（非连续状态轨迹）",
+          "renderer_id": "p1513",
+          "renderer_name": "本次携带 a→d",
+          "glyph": "Segment"
+        }
+      ],
+      "file": "formal_data/source_p1504.json.gz",
+      "stage": "construction_snapshot",
+      "rows": 1538,
+      "row_unit": "一条候选组观点携带的界限显示段，按视区裁剪；不是持续状态或coverage区间",
+      "denominator": "本图层在完整B位置的实际构图行；原事件/对象分母须按对应源另读，不跨图层相加",
+      "columns": [
+        "y0",
+        "y1",
+        "x0",
+        "x1"
+      ],
+      "data_sha256": "184a61b5e4ef8c4eee7a29a9a654c8ee0fefdb01a902a418d3bb94967569f9dc",
+      "gzip_sha256": "8a6f0aec66634a7539e5a33d0a1cc0cc1ac463451618f2a5d277759bd9c99bf6",
+      "json_sha256": "8dcb51d2e0fd879408d7fc82cd7263ff1caa4d0f1f72e319b08fc4f13d8ad7a2",
+      "bytes": 7241
+    },
+    {
+      "source_id": "p1518",
+      "source_name": null,
+      "renderers": [
+        {
+          "figure_id": "p1466",
+          "figure": "候选组 exact修订 · 点=发布，段=本次携带界限（非连续状态轨迹）",
+          "renderer_id": "p1527",
+          "renderer_name": "本次携带 d→r",
+          "glyph": "Segment"
+        }
+      ],
+      "file": "formal_data/source_p1518.json.gz",
+      "stage": "construction_snapshot",
+      "rows": 1537,
+      "row_unit": "一条候选组观点携带的界限显示段，按视区裁剪；不是持续状态或coverage区间",
+      "denominator": "本图层在完整B位置的实际构图行；原事件/对象分母须按对应源另读，不跨图层相加",
+      "columns": [
+        "y0",
+        "y1",
+        "x0",
+        "x1"
+      ],
+      "data_sha256": "e0dda97d98712e50ded9d22f2f377f3044005450b132cbc7a3182e153c54c885",
+      "gzip_sha256": "14b984868dbb0101aff25c0050938686886fd44c20ec08b907421f33c7c76af4",
+      "json_sha256": "5f8b286b6ec8d78843ee00f9e58773f19eab57f13fd98253bd508676f070dfe7",
+      "bytes": 7225
+    },
+    {
+      "source_id": "p1531",
+      "source_name": "revision_source",
+      "renderers": [
+        {
+          "figure_id": "p1466",
+          "figure": "候选组 exact修订 · 点=发布，段=本次携带界限（非连续状态轨迹）",
+          "renderer_id": "p1540",
+          "renderer_name": "rb - Sparse exact revision",
+          "glyph": "Scatter"
+        }
+      ],
+      "file": "formal_data/source_p1531.json.gz",
+      "stage": "construction_snapshot",
+      "rows": 1538,
+      "row_unit": "完整父坐标对应的一条候选组修订发行视图；不是逐tick状态",
+      "denominator": "本图层在完整B位置的实际构图行；原事件/对象分母须按对应源另读，不跨图层相加",
+      "columns": [
+        "y",
+        "x",
+        "ts",
+        "__prestd_y",
+        "seq",
+        "life",
+        "revision",
+        "basis",
+        "observation",
+        "coverage",
+        "closed",
+        "duty",
+        "admission",
+        "handoff",
+        "parent",
+        "known",
+        "a",
+        "d",
+        "r",
+        "raw"
+      ],
+      "data_sha256": "87e1f1aa58c7c2b0e179b471ffa05873c41fed485dc1d52d846125ff023792df",
+      "gzip_sha256": "230574e75de6df1faf4c0619168641dc5eeb6d4cb0b7cc6bd64bd10f8e30e3d2",
+      "json_sha256": "79b444927bfb057a263cd1420428a0466e6cd6e4715bb9b43160f73977f558b5",
+      "bytes": 3206705
+    }
+  ],
+  "unobtained_items": [],
+  "producer_run": false,
+  "rebuild_graph": false,
+  "later_stage": "未选择viewport_final；本图无动态标准化，fit_y/刻度仅改轴或视窗，不改CDS；本轮用途不需另取该阶段。"
+}

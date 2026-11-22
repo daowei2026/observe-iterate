@@ -1,0 +1,63 @@
+{
+  "case_set_id": "F800-S1-D013-CS",
+  "version": 1,
+  "types": [
+    {
+      "case_type": "CLEAR_POSITIVE",
+      "status": "HAS_QUALIFIED_CASE",
+      "case_ids": [
+        "F800-S1-C001"
+      ]
+    },
+    {
+      "case_type": "CLEAR_NEGATIVE",
+      "status": "HAS_QUALIFIED_CASE",
+      "case_ids": [
+        "F800-S1-C002"
+      ]
+    },
+    {
+      "case_type": "OUTPUT_FALSE_POSITIVE_CANDIDATE",
+      "status": "HAS_QUALIFIED_CASE",
+      "case_ids": [
+        "F800-S1-C003",
+        "F800-S1-C006"
+      ]
+    },
+    {
+      "case_type": "PARAMETER_BOUNDARY",
+      "status": "HAS_QUALIFIED_CASE",
+      "case_ids": [
+        "F800-S1-C004",
+        "F800-S1-C005"
+      ]
+    },
+    {
+      "case_type": "OUTSIDE_CURRENT_COVERAGE",
+      "status": "HAS_QUALIFIED_CASE",
+      "case_ids": [
+        "F800-S1-C007"
+      ]
+    },
+    {
+      "case_type": "POTENTIAL_FALSE_NEGATIVE",
+      "status": "NO_CASE_FOUND",
+      "case_ids": [],
+      "considered_candidate_ids": [
+        "RAW-01",
+        "RAW-02",
+        "RAW-03",
+        "RAW-04",
+        "RAW-05",
+        "RAW-06",
+        "RAW-07",
+        "RAW-08",
+        "RAW-09",
+        "INDEX-F800-SQ-001-C1"
+      ],
+      "reason": "先由三品种原价独立提出九处同步局部峰谷，再查当前selected和公开共同组。七处双侧具有同刻selected且能定位共同组；另两处至少一侧无当前同刻selected（RAW-06双侧均无，RAW-09仅i有）。详细浏览RAW-06及i孤立峰，不将无资格/无第二对象改称F漏报。当前没有材料充分且属于本层资格的正式漏报场景。",
+      "scope_limit": "九处是有界浏览初筛，不是全原始转折真值。三年总览/有代表性窗口及数据筛查不证明不存在其他漏报；未公开native枚举首阻断不补造。"
+    }
+  ],
+  "sample_size_reason": "七案例分别区分共同性、孤立上游、初始化不足、2Delta边界内外、长迟到解释和未获尺度资格的原价共同波动；没有固定各类配额，不为凑漏报类型强造案例。"
+}

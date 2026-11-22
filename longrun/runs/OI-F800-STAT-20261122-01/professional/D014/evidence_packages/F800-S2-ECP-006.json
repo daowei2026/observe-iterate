@@ -1,0 +1,424 @@
+{
+  "comparison_id": "F800-S2-ECP-006",
+  "business_intent": "长迟到若仍表达2023-06-30同刻原峰，应以原actual、各自确认/selected和有限原问题准确呈现；不能把7月7日才知道的旧共同峰宣称为7月7日新发生的同步转折，也不能仅因识别迟到或后来振荡就直接判该历史候选为误报。",
+  "expectation_id": "F800-S1-E006",
+  "expectation_version": 1,
+  "expectation_origin": "BUSINESS_INFERRED",
+  "scenario_id": "F800-S1-C006",
+  "frozen_expectation_ref": "daowei2026/observe-iterate@266c34e5d7d75a05677e7969d528090d37cac44e:longrun/runs/OI-F800-STAT-20261122-01/professional/D013/FrozenExpectationSet.json",
+  "frozen_statement_verbatim": "长迟到若仍表达2023-06-30同刻原峰，应以原actual、各自确认/selected和有限原问题准确呈现；不能把7月7日才知道的旧共同峰宣称为7月7日新发生的同步转折，也不能仅因识别迟到或后来振荡就直接判该历史候选为误报。",
+  "data_binding": {
+    "feature_ref": {
+      "name": "CommonPriceTurnGroupCandidatesFrp",
+      "frp": "39f02ec4548e68ba8dbd30061afc870546000994",
+      "tis": "2f460d663d821cf2ba25555eda13e78b697d0767",
+      "understanding_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/CurrentFeatureUnderstandingPackage.json"
+    },
+    "observation_material_ref": "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/ObservationMaterialPackage.json",
+    "accepted_html_sha256": "df4076f642d4d2b2ac7a6f8cc02899d9cf70e20dd8beb313e347e7545279b450",
+    "formal_graph_data": "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/FORMAL_GRAPH_DATA.json",
+    "formal_stage": "construction_snapshot",
+    "case_material_index": "daowei2026/observe-iterate@266c34e5d7d75a05677e7969d528090d37cac44e:longrun/runs/OI-F800-STAT-20261122-01/professional/D013/CaseMaterialIndex.json",
+    "preflight": "ScenarioEvidencePreflight.json",
+    "readback": "case_readback/F800-S1-C006.json"
+  },
+  "time_basis": {
+    "calendar": "night_end_at_2300",
+    "timezone": "Asia/Shanghai",
+    "sampling": "5m",
+    "native_unit": "CalendarUTITick",
+    "ticks_per_open_minute": 120,
+    "delta": 600,
+    "two_delta": 1200,
+    "observation_width": 480000,
+    "revision_tail": 3600,
+    "handoff_tail": 10800,
+    "actual": "原转折所在坐标；不以K线x中点替代",
+    "confirm": "逐条分列几何C与selected-known，另列T点pointKnownFrom",
+    "observed": "本C对construction_snapshot的真实读图/原值读取时间，不伪作运行时as-of观测"
+  },
+  "parameter_version": "b72095ff100da926474701b74bff7586a74b9770bc81cadc34c23cfe223e5cb3",
+  "evidence_items": [
+    {
+      "evidence_id": "F800-S2-C006-P1",
+      "source": [
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1040.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1168.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1296.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/ObservationMaterialPackage.json",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1531.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1098.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1354.json.gz"
+      ],
+      "location": {
+        "case_readback": "case_readback/F800-S1-C006.json",
+        "group_rows": [
+          1468,
+          1478,
+          1479
+        ],
+        "raw_row_intervals": [
+          {
+            "symbol": "rb",
+            "rows": [
+              41044,
+              41951
+            ]
+          },
+          {
+            "symbol": "hc",
+            "rows": [
+              41044,
+              41951
+            ]
+          },
+          {
+            "symbol": "i",
+            "rows": [
+              41044,
+              41951
+            ]
+          }
+        ],
+        "independent_selected_rows": [
+          {
+            "source_id": "p1098",
+            "row": 340
+          },
+          {
+            "source_id": "p1354",
+            "row": 785
+          }
+        ],
+        "section": "raw_market_readback / independent_selected_readback / observed_public_group_process / specific_public_lookups"
+      },
+      "actual_time": [
+        {
+          "symbol": "rb",
+          "native": 96674999,
+          "time": "2023-06-30 10:05:00"
+        },
+        {
+          "symbol": "i",
+          "native": 96674999,
+          "time": "2023-06-30 10:05:00"
+        }
+      ],
+      "confirm_time": [
+        {
+          "symbol": "rb",
+          "geometric": "2023-07-06 23:00:00",
+          "selected_known": "2023-07-07 09:05:00",
+          "point_known": 96685199
+        },
+        {
+          "symbol": "i",
+          "geometric": "2023-07-03 09:25:00",
+          "selected_known": "2023-07-03 09:30:00",
+          "point_known": 96685199
+        }
+      ],
+      "evidence_status": "SUPPORTS",
+      "observation": "两原actual均96674999（June30 10:05），i几何C/known为July3 09:25/09:30，rb为July6 23:00/July7 09:05。首公开row1468在rb selected-known96874799；比原峰晚199800tick=1665开放分钟，但保留原峰而非准入日。公开首版无未来selected提前；内部as-of全轨迹未提供。",
+      "interpretation": "对应冻结原文第1步，仅限明示的可读范围。",
+      "alternative_explanations": [
+        "图中背景邻近对象按真实成员actual排除；局部状态与coverage独立；不以同源图表重复计证。"
+      ],
+      "data_quality": {
+        "versions_match": true,
+        "formal_stage": "construction_snapshot",
+        "missing_close": 0,
+        "duplicates": 0,
+        "full_parent_retained": true,
+        "internal_trajectory_exposed": false
+      }
+    },
+    {
+      "evidence_id": "F800-S2-C006-P2",
+      "source": [
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1040.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1168.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1296.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/ObservationMaterialPackage.json",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1531.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1098.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1354.json.gz"
+      ],
+      "location": {
+        "case_readback": "case_readback/F800-S1-C006.json",
+        "group_rows": [
+          1468,
+          1478,
+          1479
+        ],
+        "raw_row_intervals": [
+          {
+            "symbol": "rb",
+            "rows": [
+              41044,
+              41951
+            ]
+          },
+          {
+            "symbol": "hc",
+            "rows": [
+              41044,
+              41951
+            ]
+          },
+          {
+            "symbol": "i",
+            "rows": [
+              41044,
+              41951
+            ]
+          }
+        ],
+        "independent_selected_rows": [
+          {
+            "source_id": "p1098",
+            "row": 340
+          },
+          {
+            "source_id": "p1354",
+            "row": 785
+          }
+        ],
+        "section": "raw_market_readback / independent_selected_readback / observed_public_group_process / specific_public_lookups"
+      },
+      "actual_time": [
+        {
+          "symbol": "rb",
+          "native": 96674999,
+          "time": "2023-06-30 10:05:00"
+        },
+        {
+          "symbol": "i",
+          "native": 96674999,
+          "time": "2023-06-30 10:05:00"
+        }
+      ],
+      "confirm_time": [
+        {
+          "symbol": "rb",
+          "geometric": "2023-07-06 23:00:00",
+          "selected_known": "2023-07-07 09:05:00",
+          "point_known": 96685199
+        },
+        {
+          "symbol": "i",
+          "geometric": "2023-07-03 09:25:00",
+          "selected_known": "2023-07-03 09:30:00",
+          "point_known": 96685199
+        }
+      ],
+      "evidence_status": "SUPPORTS",
+      "observation": "两成员DirectionDown/SourcePeakTurn，四项Required均CoordinateSupports、distance0；成员仅i/rb，未把hc别处峰拼入。原a/d/r和admissionKnown分别保留；后续previous指向本Life前版，没有用晚知道重锚定。期间价格再触T本身不构成冻结的新否决规则；是否太晚无用缺Owner判据，另列AMBIGUOUS。",
+      "interpretation": "对应冻结原文第2步，仅限明示的可读范围。",
+      "alternative_explanations": [
+        "图中背景邻近对象按真实成员actual排除；局部状态与coverage独立；不以同源图表重复计证。"
+      ],
+      "data_quality": {
+        "versions_match": true,
+        "formal_stage": "construction_snapshot",
+        "missing_close": 0,
+        "duplicates": 0,
+        "full_parent_retained": true,
+        "internal_trajectory_exposed": false
+      }
+    },
+    {
+      "evidence_id": "F800-S2-C006-P3",
+      "source": [
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1040.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1168.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1296.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/ObservationMaterialPackage.json",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1531.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1098.json.gz",
+        "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1354.json.gz"
+      ],
+      "location": {
+        "case_readback": "case_readback/F800-S1-C006.json",
+        "group_rows": [
+          1468,
+          1478,
+          1479
+        ],
+        "raw_row_intervals": [
+          {
+            "symbol": "rb",
+            "rows": [
+              41044,
+              41951
+            ]
+          },
+          {
+            "symbol": "hc",
+            "rows": [
+              41044,
+              41951
+            ]
+          },
+          {
+            "symbol": "i",
+            "rows": [
+              41044,
+              41951
+            ]
+          }
+        ],
+        "independent_selected_rows": [
+          {
+            "source_id": "p1098",
+            "row": 340
+          },
+          {
+            "source_id": "p1354",
+            "row": 785
+          }
+        ],
+        "section": "raw_market_readback / independent_selected_readback / observed_public_group_process / specific_public_lookups"
+      },
+      "actual_time": [
+        {
+          "symbol": "rb",
+          "native": 96674999,
+          "time": "2023-06-30 10:05:00"
+        },
+        {
+          "symbol": "i",
+          "native": 96674999,
+          "time": "2023-06-30 10:05:00"
+        }
+      ],
+      "confirm_time": [
+        {
+          "symbol": "rb",
+          "geometric": "2023-07-06 23:00:00",
+          "selected_known": "2023-07-07 09:05:00",
+          "point_known": 96685199
+        },
+        {
+          "symbol": "i",
+          "geometric": "2023-07-03 09:25:00",
+          "selected_known": "2023-07-03 09:30:00",
+          "point_known": 96685199
+        }
+      ],
+      "evidence_status": "SUPPORTS",
+      "observation": "July17 21:45 groupClosed=1/ClosedSupported，22:15 dutyClosed=1；原a96674999、d97154999、r97158599不变。h97169399是handoffEnd，不是F责任继续到h；静态a→d/d→r载带明确非as-of回放，不能因载带从旧a开始判前视。",
+      "interpretation": "对应冻结原文第3步，仅限明示的可读范围。",
+      "alternative_explanations": [
+        "图中背景邻近对象按真实成员actual排除；局部状态与coverage独立；不以同源图表重复计证。"
+      ],
+      "data_quality": {
+        "versions_match": true,
+        "formal_stage": "construction_snapshot",
+        "missing_close": 0,
+        "duplicates": 0,
+        "full_parent_retained": true,
+        "internal_trajectory_exposed": false
+      }
+    },
+    {
+      "evidence_id": "F800-S2-C006-M1",
+      "source": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/CurrentFeatureUnderstandingPackage.json",
+      "location": "U.unconfirmed_items及本案例公开数据的暴露边界",
+      "actual_time": null,
+      "confirm_time": null,
+      "evidence_status": "MISSING",
+      "observation": "未取得本例内部逐tick准入/保留、未成组pair全枚举/首阻断或原生连续coverage区间。",
+      "interpretation": "不能补足内部运行轨迹、完整as-of或对未建组pair宣称实际TimeVeto；不取消独立坐标与公开发行行为可判部分。",
+      "alternative_explanations": [
+        "公开不合组可与多种内部拒绝/未枚举路径兼容，首阻断不能由结果唯一反推。"
+      ],
+      "data_quality": "NOT_EXPOSED，不是查询空表/0。",
+      "gap_request_refs": [
+        "F800-S2-G001",
+        "F800-S2-G002"
+      ]
+    },
+    {
+      "evidence_id": "F800-S2-C006-A1",
+      "source": "daowei2026/observe-iterate@266c34e5d7d75a05677e7969d528090d37cac44e:longrun/runs/OI-F800-STAT-20261122-01/professional/D013/FrozenExpectationSet.json",
+      "location": "E006.ambiguous_conditions及实际1665开放分钟迟到",
+      "actual_time": "2023-06-30 10:05:00",
+      "confirm_time": "2023-07-07 09:05:00",
+      "evidence_status": "AMBIGUOUS",
+      "observation": "实际共同峰到组合首知识相隔199800tick=1665开放分钟；期间rb曾再触/高于旧峰。",
+      "interpretation": "历史解释准确与下游实时有用性是不同判断；没有Owner效用/最大可用延迟判据，不判必然误报或有用，不新增单调/不再触T否决。",
+      "alternative_explanations": [
+        "可作历史结构说明",
+        "对实时机会可能已过晚；需下游目标/Owner判据才可分辨"
+      ],
+      "data_quality": "价格和时序可得，业务价值判据未确定。"
+    }
+  ],
+  "judgment": {
+    "primary_state": "SUPPORTS",
+    "primary_scope": "支持该历史候选在公开输出中的实际/知识/身份/有限责任表达；不证明延迟输出有交易价值或800整体充分合理。",
+    "maturity": "公开历史表达和终止闭合；下游效用AMBIGUOUS，内部全轨迹MISSING。",
+    "supports": [
+      "F800-S2-C006-P1",
+      "F800-S2-C006-P2",
+      "F800-S2-C006-P3"
+    ],
+    "counters": [],
+    "missing": [
+      "F800-S2-C006-M1"
+    ],
+    "ambiguous": [
+      "F800-S2-C006-A1"
+    ],
+    "not_applicable": [],
+    "pending": [],
+    "score": null,
+    "score_note": "各独立声明分列；无总分，SUPPORTS不吞并缺口/歧义。",
+    "next_route": "RETURN_TO_ORIGINAL_MANAGER_WITH_SCOPE_AND_GAPS"
+  },
+  "applicability_boundary": {
+    "current": "支持该历史候选在公开输出中的实际/知识/身份/有限责任表达；不证明延迟输出有交易价值或800整体充分合理。",
+    "frozen_conditions_verbatim": [
+      "两成员实际峰和具体尺度记录仍是冻结的这两个Turn；知识在当前800有限观察窗内可得，且其他关系适用。"
+    ],
+    "non_applicable_verbatim": [
+      "版本/实例/Calendar不一致。",
+      "原价/独立上游或必要中间字段缺失，无法确认本例所列适用条件。"
+    ],
+    "explicit_non_goals_verbatim": [
+      "不评价交易收益或当前机会；不因后来振荡新增“必须保持单调”的规则；不认定800最优或提出调参。",
+      "不执行Q/V/WALL，不做全量业务真值或Feature释放结论。"
+    ],
+    "material_limits": [
+      "U仍PARTIAL：内部逐tick材料准入/保留、未成组pair全枚举和原生首阻断NOT_EXPOSED。",
+      "原生连续coverage区间未暴露；coverageIncomplete字段只支持本次公开观点所声称的状态，不独立证明每拍覆盖。",
+      "图与正式数据是同源不同视图，不算两份独立证据；独立上游指非从F成员逆推的原上游投影。",
+      "construction_snapshot为静态历史投影，不是完整as-of回放；几何C、T点known和selected-known不能混同。",
+      "判断仅覆盖冻结7例当前版本实例，非全800合理性、全量真值、参数最优性或Feature释放结论。"
+    ]
+  },
+  "confidence": {
+    "public_facts": "高：同版原值与完整父坐标可回读；独立原行情/上游交叉核对",
+    "business_inference": "Owner仅E005为明文；其他六项仍为有出处的业务推导",
+    "unexposed_or_utility": "未形成确定判断，不借公开一致性提升"
+  },
+  "earliest_business_divergence": {
+    "case_id": "F800-S1-C006",
+    "expectation_id": "F800-S1-E006",
+    "unit_ref": null,
+    "time": null,
+    "expected": null,
+    "observed": null,
+    "located": false,
+    "reason": "可读链未见换actual、提前发行或无限延续；内部as-of轨迹缺失且“太晚无价值”没有Owner判据，无法将其定位为第一次业务分歧。",
+    "examined_units": [
+      "BO2",
+      "J2",
+      "J4",
+      "J5"
+    ],
+    "not_located_is_not_a_pass_for_unexposed_stages": true
+  },
+  "next_action": "保留当前范围/成熟度回原manager；缺口交材料路线，当前无合格偏差送S3。"
+}

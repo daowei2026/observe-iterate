@@ -1,0 +1,1022 @@
+{
+  "preflight_id": "F800-S2-D014-PREFLIGHT-v1",
+  "checked_at": "2026-11-22T22:40:25.457377+00:00",
+  "frozen_set_ref": "daowei2026/observe-iterate@266c34e5d7d75a05677e7969d528090d37cac44e:longrun/runs/OI-F800-STAT-20261122-01/professional/D013/FrozenExpectationSet.json",
+  "frozen_sha256": "ae54fa64560dbb2e36a87b1913706d096bce00e72b9282abf36b7d6fefce5568",
+  "feature_ref": {
+    "name": "CommonPriceTurnGroupCandidatesFrp",
+    "frp": "39f02ec4548e68ba8dbd30061afc870546000994",
+    "tis": "2f460d663d821cf2ba25555eda13e78b697d0767",
+    "understanding_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/CurrentFeatureUnderstandingPackage.json"
+  },
+  "parameter_version": "b72095ff100da926474701b74bff7586a74b9770bc81cadc34c23cfe223e5cb3",
+  "observation_material_ref": "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/ObservationMaterialPackage.json",
+  "accepted_html_sha256": "df4076f642d4d2b2ac7a6f8cc02899d9cf70e20dd8beb313e347e7545279b450",
+  "formal_stage": "construction_snapshot",
+  "cases": [
+    {
+      "case_id": "F800-S1-C001",
+      "expectation_id": "F800-S1-E001",
+      "frozen_version": 1,
+      "case_type": "CLEAR_POSITIVE",
+      "symbols": [
+        "rb",
+        "hc",
+        "i"
+      ],
+      "start_time": "2021-01-04 09:05:00",
+      "end_time": "2021-01-22 13:35:00",
+      "parameter_version": "b72095ff100da926474701b74bff7586a74b9770bc81cadc34c23cfe223e5cb3",
+      "versions_match": true,
+      "same_accepted_run": true,
+      "calendar": "night_end_at_2300",
+      "timezone": "Asia/Shanghai",
+      "sampling": "5m",
+      "raw_layers": [
+        {
+          "symbol": "rb",
+          "source_id": "p1040",
+          "source_ref": "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1040.json.gz",
+          "columns": [
+            "close",
+            "high",
+            "low",
+            "open",
+            "ts",
+            "volume",
+            "x",
+            "x_l",
+            "x_r"
+          ],
+          "row_start": 0,
+          "row_end": 993,
+          "rows": 994,
+          "first_time": "2021-01-04 09:05",
+          "last_time": "2021-01-22 13:35",
+          "nonfinite_close": [],
+          "timestamps_strictly_increasing": true,
+          "duplicate_times": 0,
+          "time_basis": "ts=原bar时刻；x为图元中点，绝不作native actual/confirm"
+        },
+        {
+          "symbol": "hc",
+          "source_id": "p1168",
+          "source_ref": "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1168.json.gz",
+          "columns": [
+            "close",
+            "high",
+            "low",
+            "open",
+            "ts",
+            "volume",
+            "x",
+            "x_l",
+            "x_r"
+          ],
+          "row_start": 0,
+          "row_end": 993,
+          "rows": 994,
+          "first_time": "2021-01-04 09:05",
+          "last_time": "2021-01-22 13:35",
+          "nonfinite_close": [],
+          "timestamps_strictly_increasing": true,
+          "duplicate_times": 0,
+          "time_basis": "ts=原bar时刻；x为图元中点，绝不作native actual/confirm"
+        },
+        {
+          "symbol": "i",
+          "source_id": "p1296",
+          "source_ref": "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1296.json.gz",
+          "columns": [
+            "close",
+            "high",
+            "low",
+            "open",
+            "ts",
+            "volume",
+            "x",
+            "x_l",
+            "x_r"
+          ],
+          "row_start": 0,
+          "row_end": 993,
+          "rows": 994,
+          "first_time": "2021-01-04 09:05",
+          "last_time": "2021-01-22 13:35",
+          "nonfinite_close": [],
+          "timestamps_strictly_increasing": true,
+          "duplicate_times": 0,
+          "time_basis": "ts=原bar时刻；x为图元中点，绝不作native actual/confirm"
+        }
+      ],
+      "resolved_independent_turns": [
+        {
+          "turn_id": "rb/value1/72133799",
+          "row_index": 2,
+          "source_id": "p1098",
+          "actual": 72098999,
+          "actual_time": "2021-01-06 11:00:00",
+          "geometric_confirm": 72133799,
+          "geometric_confirm_time": "2021-01-07 09:50:00",
+          "selected_known": 72134399,
+          "selected_known_time": "2021-01-07 09:55:00",
+          "point_known": 72101999
+        },
+        {
+          "turn_id": "hc/value1/72133799",
+          "row_index": 2,
+          "source_id": "p1226",
+          "actual": 72098999,
+          "actual_time": "2021-01-06 11:00:00",
+          "geometric_confirm": 72133799,
+          "geometric_confirm_time": "2021-01-07 09:50:00",
+          "selected_known": 72134399,
+          "selected_known_time": "2021-01-07 09:55:00",
+          "point_known": 72107399
+        },
+        {
+          "turn_id": "i/value1/72143999",
+          "row_index": 4,
+          "source_id": "p1354",
+          "actual": 72098999,
+          "actual_time": "2021-01-06 11:00:00",
+          "geometric_confirm": 72143999,
+          "geometric_confirm_time": "2021-01-07 11:30:00",
+          "selected_known": 72144599,
+          "selected_known_time": "2021-01-07 13:35:00",
+          "point_known": 72103199
+        }
+      ],
+      "resolved_group_exact_rows": [
+        {
+          "row_index": 2,
+          "life": "6dd1661e-678e-48a8-809f-68243658b3b0",
+          "revision": "feaa45de-2b47-4ff5-8e8b-f71ca58da441",
+          "parent": "[\"2021-01-07 09:55:00\", 3, 0, 0]",
+          "timestamp": "2021-01-07 09:55:00"
+        },
+        {
+          "row_index": 3,
+          "life": "8f776a81-a7bc-4c93-965b-0f1534b574c4",
+          "revision": "1d5a120c-6cd5-4350-adb3-1b3869c52b42",
+          "parent": "[\"2021-01-07 13:35:00\", 4, 0, 0]",
+          "timestamp": "2021-01-07 13:35:00"
+        },
+        {
+          "row_index": 4,
+          "life": "6dd1661e-678e-48a8-809f-68243658b3b0",
+          "revision": "e2774439-d0dc-4034-8077-2d6846dbcf1c",
+          "parent": "[\"2021-01-07 13:35:00\", 4, 0, 1]",
+          "timestamp": "2021-01-07 13:35:00"
+        },
+        {
+          "row_index": 10,
+          "life": "8f776a81-a7bc-4c93-965b-0f1534b574c4",
+          "revision": "8e719d72-a055-497b-b715-08eaced4f8d6",
+          "parent": "[\"2021-01-19 14:45:00\", 8, 0, 2]",
+          "timestamp": "2021-01-19 14:45:00"
+        },
+        {
+          "row_index": 11,
+          "life": "6dd1661e-678e-48a8-809f-68243658b3b0",
+          "revision": "85566f59-27b0-4ae7-9d3a-63f48b3b6c64",
+          "parent": "[\"2021-01-19 14:45:00\", 8, 0, 3]",
+          "timestamp": "2021-01-19 14:45:00"
+        },
+        {
+          "row_index": 19,
+          "life": "8f776a81-a7bc-4c93-965b-0f1534b574c4",
+          "revision": "84ba0b51-d29a-4610-895a-4076dbd83e39",
+          "parent": "[\"2021-01-21 22:25:00\", 13, 0, 0]",
+          "timestamp": "2021-01-21 22:25:00"
+        },
+        {
+          "row_index": 20,
+          "life": "6dd1661e-678e-48a8-809f-68243658b3b0",
+          "revision": "dece3c32-4ff8-4d2a-97af-ad8bc51ceb55",
+          "parent": "[\"2021-01-21 22:25:00\", 13, 0, 1]",
+          "timestamp": "2021-01-21 22:25:00"
+        },
+        {
+          "row_index": 21,
+          "life": "8f776a81-a7bc-4c93-965b-0f1534b574c4",
+          "revision": "f8c7b59a-d547-4cbc-a1be-8c938796c38f",
+          "parent": "[\"2021-01-21 22:55:00\", 14, 0, 0]",
+          "timestamp": "2021-01-21 22:55:00"
+        },
+        {
+          "row_index": 22,
+          "life": "6dd1661e-678e-48a8-809f-68243658b3b0",
+          "revision": "b0f42e84-11ef-4413-a3b6-67e58b459c1b",
+          "parent": "[\"2021-01-21 22:55:00\", 14, 0, 1]",
+          "timestamp": "2021-01-21 22:55:00"
+        }
+      ],
+      "stage": "construction_snapshot",
+      "missing_required_input_files": [],
+      "known_unexposed": [
+        "内部逐tick材料/未成组pair/首阻断/原生coverage区间；不由代码补值。"
+      ],
+      "revision_policy": "同Life按知识轴逐exact展开；groupPrevious/parent保留，稀疏未发行拍不是零状态。",
+      "admissible_for_comparison": true,
+      "qualification_note": "可对照可读声明；不充分历史、native缺口及价值歧义仍逐证据单列，不等于所有问题已可判。"
+    },
+    {
+      "case_id": "F800-S1-C002",
+      "expectation_id": "F800-S1-E002",
+      "frozen_version": 1,
+      "case_type": "CLEAR_NEGATIVE",
+      "symbols": [
+        "rb",
+        "hc",
+        "i"
+      ],
+      "start_time": "2021-01-04 13:35:00",
+      "end_time": "2021-01-22 13:35:00",
+      "parameter_version": "b72095ff100da926474701b74bff7586a74b9770bc81cadc34c23cfe223e5cb3",
+      "versions_match": true,
+      "same_accepted_run": true,
+      "calendar": "night_end_at_2300",
+      "timezone": "Asia/Shanghai",
+      "sampling": "5m",
+      "raw_layers": [
+        {
+          "symbol": "rb",
+          "source_id": "p1040",
+          "source_ref": "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1040.json.gz",
+          "columns": [
+            "close",
+            "high",
+            "low",
+            "open",
+            "ts",
+            "volume",
+            "x",
+            "x_l",
+            "x_r"
+          ],
+          "row_start": 27,
+          "row_end": 993,
+          "rows": 967,
+          "first_time": "2021-01-04 13:35",
+          "last_time": "2021-01-22 13:35",
+          "nonfinite_close": [],
+          "timestamps_strictly_increasing": true,
+          "duplicate_times": 0,
+          "time_basis": "ts=原bar时刻；x为图元中点，绝不作native actual/confirm"
+        },
+        {
+          "symbol": "hc",
+          "source_id": "p1168",
+          "source_ref": "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1168.json.gz",
+          "columns": [
+            "close",
+            "high",
+            "low",
+            "open",
+            "ts",
+            "volume",
+            "x",
+            "x_l",
+            "x_r"
+          ],
+          "row_start": 27,
+          "row_end": 993,
+          "rows": 967,
+          "first_time": "2021-01-04 13:35",
+          "last_time": "2021-01-22 13:35",
+          "nonfinite_close": [],
+          "timestamps_strictly_increasing": true,
+          "duplicate_times": 0,
+          "time_basis": "ts=原bar时刻；x为图元中点，绝不作native actual/confirm"
+        },
+        {
+          "symbol": "i",
+          "source_id": "p1296",
+          "source_ref": "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1296.json.gz",
+          "columns": [
+            "close",
+            "high",
+            "low",
+            "open",
+            "ts",
+            "volume",
+            "x",
+            "x_l",
+            "x_r"
+          ],
+          "row_start": 27,
+          "row_end": 993,
+          "rows": 967,
+          "first_time": "2021-01-04 13:35",
+          "last_time": "2021-01-22 13:35",
+          "nonfinite_close": [],
+          "timestamps_strictly_increasing": true,
+          "duplicate_times": 0,
+          "time_basis": "ts=原bar时刻；x为图元中点，绝不作native actual/confirm"
+        }
+      ],
+      "resolved_independent_turns": [
+        {
+          "turn_id": "i/value1/72049199",
+          "row_index": 1,
+          "source_id": "p1354",
+          "actual": 72032399,
+          "actual_time": "2021-01-04 21:15:00",
+          "geometric_confirm": 72049199,
+          "geometric_confirm_time": "2021-01-05 09:35:00",
+          "selected_known": 72049799,
+          "selected_known_time": "2021-01-05 09:40:00",
+          "point_known": 72035999
+        }
+      ],
+      "resolved_group_exact_rows": [],
+      "stage": "construction_snapshot",
+      "missing_required_input_files": [],
+      "known_unexposed": [
+        "内部逐tick材料/未成组pair/首阻断/原生coverage区间；不由代码补值。"
+      ],
+      "revision_policy": "同Life按知识轴逐exact展开；groupPrevious/parent保留，稀疏未发行拍不是零状态。",
+      "admissible_for_comparison": true,
+      "qualification_note": "可对照可读声明；不充分历史、native缺口及价值歧义仍逐证据单列，不等于所有问题已可判。"
+    },
+    {
+      "case_id": "F800-S1-C003",
+      "expectation_id": "F800-S1-E003",
+      "frozen_version": 1,
+      "case_type": "OUTPUT_FALSE_POSITIVE_CANDIDATE",
+      "symbols": [
+        "rb",
+        "hc",
+        "i"
+      ],
+      "start_time": "2021-01-04 09:05:00",
+      "end_time": "2021-01-19 21:15:00",
+      "parameter_version": "b72095ff100da926474701b74bff7586a74b9770bc81cadc34c23cfe223e5cb3",
+      "versions_match": true,
+      "same_accepted_run": true,
+      "calendar": "night_end_at_2300",
+      "timezone": "Asia/Shanghai",
+      "sampling": "5m",
+      "raw_layers": [
+        {
+          "symbol": "rb",
+          "source_id": "p1040",
+          "source_ref": "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1040.json.gz",
+          "columns": [
+            "close",
+            "high",
+            "low",
+            "open",
+            "ts",
+            "volume",
+            "x",
+            "x_l",
+            "x_r"
+          ],
+          "row_start": 0,
+          "row_end": 806,
+          "rows": 807,
+          "first_time": "2021-01-04 09:05",
+          "last_time": "2021-01-19 21:15",
+          "nonfinite_close": [],
+          "timestamps_strictly_increasing": true,
+          "duplicate_times": 0,
+          "time_basis": "ts=原bar时刻；x为图元中点，绝不作native actual/confirm"
+        },
+        {
+          "symbol": "hc",
+          "source_id": "p1168",
+          "source_ref": "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1168.json.gz",
+          "columns": [
+            "close",
+            "high",
+            "low",
+            "open",
+            "ts",
+            "volume",
+            "x",
+            "x_l",
+            "x_r"
+          ],
+          "row_start": 0,
+          "row_end": 806,
+          "rows": 807,
+          "first_time": "2021-01-04 09:05",
+          "last_time": "2021-01-19 21:15",
+          "nonfinite_close": [],
+          "timestamps_strictly_increasing": true,
+          "duplicate_times": 0,
+          "time_basis": "ts=原bar时刻；x为图元中点，绝不作native actual/confirm"
+        },
+        {
+          "symbol": "i",
+          "source_id": "p1296",
+          "source_ref": "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1296.json.gz",
+          "columns": [
+            "close",
+            "high",
+            "low",
+            "open",
+            "ts",
+            "volume",
+            "x",
+            "x_l",
+            "x_r"
+          ],
+          "row_start": 0,
+          "row_end": 806,
+          "rows": 807,
+          "first_time": "2021-01-04 09:05",
+          "last_time": "2021-01-19 21:15",
+          "nonfinite_close": [],
+          "timestamps_strictly_increasing": true,
+          "duplicate_times": 0,
+          "time_basis": "ts=原bar时刻；x为图元中点，绝不作native actual/confirm"
+        }
+      ],
+      "resolved_independent_turns": [
+        {
+          "turn_id": "rb/value1/72010799",
+          "row_index": 0,
+          "source_id": "p1098",
+          "actual": 72004199,
+          "actual_time": "2021-01-04 09:05:00",
+          "geometric_confirm": 72010799,
+          "geometric_confirm_time": "2021-01-04 10:00:00",
+          "selected_known": 72011399,
+          "selected_known_time": "2021-01-04 10:05:00",
+          "point_known": 72011399
+        },
+        {
+          "turn_id": "hc/value1/72007199",
+          "row_index": 0,
+          "source_id": "p1226",
+          "actual": 72004199,
+          "actual_time": "2021-01-04 09:05:00",
+          "geometric_confirm": 72007199,
+          "geometric_confirm_time": "2021-01-04 09:30:00",
+          "selected_known": 72007799,
+          "selected_known_time": "2021-01-04 09:35:00",
+          "point_known": 72007799
+        },
+        {
+          "turn_id": "i/value1/72010799",
+          "row_index": 0,
+          "source_id": "p1354",
+          "actual": 72004199,
+          "actual_time": "2021-01-04 09:05:00",
+          "geometric_confirm": 72010799,
+          "geometric_confirm_time": "2021-01-04 10:00:00",
+          "selected_known": 72011399,
+          "selected_known_time": "2021-01-04 10:05:00",
+          "point_known": 72011399
+        }
+      ],
+      "resolved_group_exact_rows": [
+        {
+          "row_index": 0,
+          "life": "caee906a-9759-466f-bf4a-805293f3da5d",
+          "revision": "f1464ddb-c3b6-4ef9-b768-ec7f50ce1bec",
+          "parent": "[\"2021-01-04 10:05:00\", 1, 0, 0]",
+          "timestamp": "2021-01-04 10:05:00"
+        },
+        {
+          "row_index": 8,
+          "life": "caee906a-9759-466f-bf4a-805293f3da5d",
+          "revision": "20dbe450-759b-4a62-8d81-61ac8d06086c",
+          "parent": "[\"2021-01-19 14:45:00\", 8, 0, 0]",
+          "timestamp": "2021-01-19 14:45:00"
+        },
+        {
+          "row_index": 15,
+          "life": "caee906a-9759-466f-bf4a-805293f3da5d",
+          "revision": "d0a6b3e9-8ef5-43a8-a7d0-ce4a06c2bdac",
+          "parent": "[\"2021-01-19 21:15:00\", 9, 0, 0]",
+          "timestamp": "2021-01-19 21:15:00"
+        }
+      ],
+      "stage": "construction_snapshot",
+      "missing_required_input_files": [],
+      "known_unexposed": [
+        "内部逐tick材料/未成组pair/首阻断/原生coverage区间；不由代码补值。"
+      ],
+      "revision_policy": "同Life按知识轴逐exact展开；groupPrevious/parent保留，稀疏未发行拍不是零状态。",
+      "admissible_for_comparison": true,
+      "qualification_note": "可对照可读声明；不充分历史、native缺口及价值歧义仍逐证据单列，不等于所有问题已可判。"
+    },
+    {
+      "case_id": "F800-S1-C004",
+      "expectation_id": "F800-S1-E004",
+      "frozen_version": 1,
+      "case_type": "PARAMETER_BOUNDARY",
+      "symbols": [
+        "rb",
+        "i"
+      ],
+      "start_time": "2021-02-09 14:05:00",
+      "end_time": "2021-03-05 10:00:00",
+      "parameter_version": "b72095ff100da926474701b74bff7586a74b9770bc81cadc34c23cfe223e5cb3",
+      "versions_match": true,
+      "same_accepted_run": true,
+      "calendar": "night_end_at_2300",
+      "timezone": "Asia/Shanghai",
+      "sampling": "5m",
+      "raw_layers": [
+        {
+          "symbol": "rb",
+          "source_id": "p1040",
+          "source_ref": "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1040.json.gz",
+          "columns": [
+            "close",
+            "high",
+            "low",
+            "open",
+            "ts",
+            "volume",
+            "x",
+            "x_l",
+            "x_r"
+          ],
+          "row_start": 1827,
+          "row_end": 2678,
+          "rows": 852,
+          "first_time": "2021-02-09 14:05",
+          "last_time": "2021-03-05 10:00",
+          "nonfinite_close": [],
+          "timestamps_strictly_increasing": true,
+          "duplicate_times": 0,
+          "time_basis": "ts=原bar时刻；x为图元中点，绝不作native actual/confirm"
+        },
+        {
+          "symbol": "i",
+          "source_id": "p1296",
+          "source_ref": "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1296.json.gz",
+          "columns": [
+            "close",
+            "high",
+            "low",
+            "open",
+            "ts",
+            "volume",
+            "x",
+            "x_l",
+            "x_r"
+          ],
+          "row_start": 1827,
+          "row_end": 2678,
+          "rows": 852,
+          "first_time": "2021-02-09 14:05",
+          "last_time": "2021-03-05 10:00",
+          "nonfinite_close": [],
+          "timestamps_strictly_increasing": true,
+          "duplicate_times": 0,
+          "time_basis": "ts=原bar时刻；x为图元中点，绝不作native actual/confirm"
+        }
+      ],
+      "resolved_independent_turns": [
+        {
+          "turn_id": "rb/value1/73153799",
+          "row_index": 11,
+          "source_id": "p1098",
+          "actual": 73127399,
+          "actual_time": "2021-02-10 09:50:00",
+          "geometric_confirm": 73153799,
+          "geometric_confirm_time": "2021-02-18 09:45:00",
+          "selected_known": 73154399,
+          "selected_known_time": "2021-02-18 09:50:00",
+          "point_known": 73136399
+        },
+        {
+          "turn_id": "i/value1/73148999",
+          "row_index": 30,
+          "source_id": "p1354",
+          "actual": 73128599,
+          "actual_time": "2021-02-10 10:00:00",
+          "geometric_confirm": 73148999,
+          "geometric_confirm_time": "2021-02-18 09:05:00",
+          "selected_known": 73149599,
+          "selected_known_time": "2021-02-18 09:10:00",
+          "point_known": 73130999
+        }
+      ],
+      "resolved_group_exact_rows": [
+        {
+          "row_index": 44,
+          "life": "7097f790-78d4-4458-a2cd-fe0eba59de7d",
+          "revision": "480f3933-cd3d-4649-b7e5-a9caba06711b",
+          "parent": "[\"2021-02-18 09:50:00\", 33, 0, 0]",
+          "timestamp": "2021-02-18 09:50:00"
+        },
+        {
+          "row_index": 71,
+          "life": "7097f790-78d4-4458-a2cd-fe0eba59de7d",
+          "revision": "3ae935f5-424a-4cd9-aa4b-aa827a97da66",
+          "parent": "[\"2021-03-05 09:30:00\", 52, 0, 0]",
+          "timestamp": "2021-03-05 09:30:00"
+        },
+        {
+          "row_index": 72,
+          "life": "7097f790-78d4-4458-a2cd-fe0eba59de7d",
+          "revision": "6df46364-9123-4bf6-8a07-b4e69442ff8d",
+          "parent": "[\"2021-03-05 10:00:00\", 53, 0, 0]",
+          "timestamp": "2021-03-05 10:00:00"
+        }
+      ],
+      "stage": "construction_snapshot",
+      "missing_required_input_files": [],
+      "known_unexposed": [
+        "内部逐tick材料/未成组pair/首阻断/原生coverage区间；不由代码补值。"
+      ],
+      "revision_policy": "同Life按知识轴逐exact展开；groupPrevious/parent保留，稀疏未发行拍不是零状态。",
+      "admissible_for_comparison": true,
+      "qualification_note": "可对照可读声明；不充分历史、native缺口及价值歧义仍逐证据单列，不等于所有问题已可判。"
+    },
+    {
+      "case_id": "F800-S1-C005",
+      "expectation_id": "F800-S1-E005",
+      "frozen_version": 1,
+      "case_type": "PARAMETER_BOUNDARY",
+      "symbols": [
+        "hc",
+        "i"
+      ],
+      "start_time": "2021-02-19 14:50:00",
+      "end_time": "2021-02-23 11:00:00",
+      "parameter_version": "b72095ff100da926474701b74bff7586a74b9770bc81cadc34c23cfe223e5cb3",
+      "versions_match": true,
+      "same_accepted_run": true,
+      "calendar": "night_end_at_2300",
+      "timezone": "Asia/Shanghai",
+      "sampling": "5m",
+      "raw_layers": [
+        {
+          "symbol": "hc",
+          "source_id": "p1168",
+          "source_ref": "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1168.json.gz",
+          "columns": [
+            "close",
+            "high",
+            "low",
+            "open",
+            "ts",
+            "volume",
+            "x",
+            "x_l",
+            "x_r"
+          ],
+          "row_start": 2019,
+          "row_end": 2135,
+          "rows": 117,
+          "first_time": "2021-02-19 14:50",
+          "last_time": "2021-02-23 11:00",
+          "nonfinite_close": [],
+          "timestamps_strictly_increasing": true,
+          "duplicate_times": 0,
+          "time_basis": "ts=原bar时刻；x为图元中点，绝不作native actual/confirm"
+        },
+        {
+          "symbol": "i",
+          "source_id": "p1296",
+          "source_ref": "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1296.json.gz",
+          "columns": [
+            "close",
+            "high",
+            "low",
+            "open",
+            "ts",
+            "volume",
+            "x",
+            "x_l",
+            "x_r"
+          ],
+          "row_start": 2019,
+          "row_end": 2135,
+          "rows": 117,
+          "first_time": "2021-02-19 14:50",
+          "last_time": "2021-02-23 11:00",
+          "nonfinite_close": [],
+          "timestamps_strictly_increasing": true,
+          "duplicate_times": 0,
+          "time_basis": "ts=原bar时刻；x为图元中点，绝不作native actual/confirm"
+        }
+      ],
+      "resolved_independent_turns": [
+        {
+          "turn_id": "hc/value1/73238399",
+          "row_index": 16,
+          "source_id": "p1226",
+          "actual": 73233599,
+          "actual_time": "2021-02-22 09:20:00",
+          "geometric_confirm": 73238399,
+          "geometric_confirm_time": "2021-02-22 10:00:00",
+          "selected_known": 73238999,
+          "selected_known_time": "2021-02-22 10:05:00",
+          "point_known": 73235999
+        },
+        {
+          "turn_id": "i/value1/73232999",
+          "row_index": 35,
+          "source_id": "p1354",
+          "actual": 73231799,
+          "actual_time": "2021-02-22 09:05:00",
+          "geometric_confirm": 73232999,
+          "geometric_confirm_time": "2021-02-22 09:15:00",
+          "selected_known": 73233599,
+          "selected_known_time": "2021-02-22 09:20:00",
+          "point_known": 73233599
+        }
+      ],
+      "resolved_group_exact_rows": [],
+      "stage": "construction_snapshot",
+      "missing_required_input_files": [],
+      "known_unexposed": [
+        "内部逐tick材料/未成组pair/首阻断/原生coverage区间；不由代码补值。"
+      ],
+      "revision_policy": "同Life按知识轴逐exact展开；groupPrevious/parent保留，稀疏未发行拍不是零状态。",
+      "admissible_for_comparison": true,
+      "qualification_note": "可对照可读声明；不充分历史、native缺口及价值歧义仍逐证据单列，不等于所有问题已可判。"
+    },
+    {
+      "case_id": "F800-S1-C006",
+      "expectation_id": "F800-S1-E006",
+      "frozen_version": 1,
+      "case_type": "OUTPUT_FALSE_POSITIVE_CANDIDATE",
+      "symbols": [
+        "rb",
+        "hc",
+        "i"
+      ],
+      "start_time": "2023-06-29 09:40:00",
+      "end_time": "2023-07-18 10:45:00",
+      "parameter_version": "b72095ff100da926474701b74bff7586a74b9770bc81cadc34c23cfe223e5cb3",
+      "versions_match": true,
+      "same_accepted_run": true,
+      "calendar": "night_end_at_2300",
+      "timezone": "Asia/Shanghai",
+      "sampling": "5m",
+      "raw_layers": [
+        {
+          "symbol": "rb",
+          "source_id": "p1040",
+          "source_ref": "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1040.json.gz",
+          "columns": [
+            "close",
+            "high",
+            "low",
+            "open",
+            "ts",
+            "volume",
+            "x",
+            "x_l",
+            "x_r"
+          ],
+          "row_start": 41044,
+          "row_end": 41951,
+          "rows": 908,
+          "first_time": "2023-06-29 09:40",
+          "last_time": "2023-07-18 10:45",
+          "nonfinite_close": [],
+          "timestamps_strictly_increasing": true,
+          "duplicate_times": 0,
+          "time_basis": "ts=原bar时刻；x为图元中点，绝不作native actual/confirm"
+        },
+        {
+          "symbol": "hc",
+          "source_id": "p1168",
+          "source_ref": "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1168.json.gz",
+          "columns": [
+            "close",
+            "high",
+            "low",
+            "open",
+            "ts",
+            "volume",
+            "x",
+            "x_l",
+            "x_r"
+          ],
+          "row_start": 41044,
+          "row_end": 41951,
+          "rows": 908,
+          "first_time": "2023-06-29 09:40",
+          "last_time": "2023-07-18 10:45",
+          "nonfinite_close": [],
+          "timestamps_strictly_increasing": true,
+          "duplicate_times": 0,
+          "time_basis": "ts=原bar时刻；x为图元中点，绝不作native actual/confirm"
+        },
+        {
+          "symbol": "i",
+          "source_id": "p1296",
+          "source_ref": "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1296.json.gz",
+          "columns": [
+            "close",
+            "high",
+            "low",
+            "open",
+            "ts",
+            "volume",
+            "x",
+            "x_l",
+            "x_r"
+          ],
+          "row_start": 41044,
+          "row_end": 41951,
+          "rows": 908,
+          "first_time": "2023-06-29 09:40",
+          "last_time": "2023-07-18 10:45",
+          "nonfinite_close": [],
+          "timestamps_strictly_increasing": true,
+          "duplicate_times": 0,
+          "time_basis": "ts=原bar时刻；x为图元中点，绝不作native actual/confirm"
+        }
+      ],
+      "resolved_independent_turns": [
+        {
+          "turn_id": "rb/value1/96874199",
+          "row_index": 340,
+          "source_id": "p1098",
+          "actual": 96674999,
+          "actual_time": "2023-06-30 10:05:00",
+          "geometric_confirm": 96874199,
+          "geometric_confirm_time": "2023-07-06 23:00:00",
+          "selected_known": 96874799,
+          "selected_known_time": "2023-07-07 09:05:00",
+          "point_known": 96685199
+        },
+        {
+          "turn_id": "i/value1/96711599",
+          "row_index": 785,
+          "source_id": "p1354",
+          "actual": 96674999,
+          "actual_time": "2023-06-30 10:05:00",
+          "geometric_confirm": 96711599,
+          "geometric_confirm_time": "2023-07-03 09:25:00",
+          "selected_known": 96712199,
+          "selected_known_time": "2023-07-03 09:30:00",
+          "point_known": 96685199
+        }
+      ],
+      "resolved_group_exact_rows": [
+        {
+          "row_index": 1468,
+          "life": "32457584-509d-4e7f-a0ea-6f8ac067c66e",
+          "revision": "79ce9878-2ae8-482c-af7f-1d330070cf88",
+          "parent": "[\"2023-07-07 09:05:00\", 1156, 0, 0]",
+          "timestamp": "2023-07-07 09:05:00"
+        },
+        {
+          "row_index": 1478,
+          "life": "32457584-509d-4e7f-a0ea-6f8ac067c66e",
+          "revision": "e1e198d5-8297-4edc-bcb7-ebe439479f13",
+          "parent": "[\"2023-07-17 21:45:00\", 1164, 0, 0]",
+          "timestamp": "2023-07-17 21:45:00"
+        },
+        {
+          "row_index": 1479,
+          "life": "32457584-509d-4e7f-a0ea-6f8ac067c66e",
+          "revision": "fd2696d8-50ff-4ea0-a316-a7481942c37b",
+          "parent": "[\"2023-07-17 22:15:00\", 1165, 0, 0]",
+          "timestamp": "2023-07-17 22:15:00"
+        }
+      ],
+      "stage": "construction_snapshot",
+      "missing_required_input_files": [],
+      "known_unexposed": [
+        "内部逐tick材料/未成组pair/首阻断/原生coverage区间；不由代码补值。"
+      ],
+      "revision_policy": "同Life按知识轴逐exact展开；groupPrevious/parent保留，稀疏未发行拍不是零状态。",
+      "admissible_for_comparison": true,
+      "qualification_note": "可对照可读声明；不充分历史、native缺口及价值歧义仍逐证据单列，不等于所有问题已可判。"
+    },
+    {
+      "case_id": "F800-S1-C007",
+      "expectation_id": "F800-S1-E007",
+      "frozen_version": 1,
+      "case_type": "OUTSIDE_CURRENT_COVERAGE",
+      "symbols": [
+        "rb",
+        "hc",
+        "i"
+      ],
+      "start_time": "2022-05-24 14:00:00",
+      "end_time": "2022-05-27 14:00:00",
+      "parameter_version": "b72095ff100da926474701b74bff7586a74b9770bc81cadc34c23cfe223e5cb3",
+      "versions_match": true,
+      "same_accepted_run": true,
+      "calendar": "night_end_at_2300",
+      "timezone": "Asia/Shanghai",
+      "sampling": "5m",
+      "raw_layers": [
+        {
+          "symbol": "rb",
+          "source_id": "p1040",
+          "source_ref": "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1040.json.gz",
+          "columns": [
+            "close",
+            "high",
+            "low",
+            "open",
+            "ts",
+            "volume",
+            "x",
+            "x_l",
+            "x_r"
+          ],
+          "row_start": 22769,
+          "row_end": 22976,
+          "rows": 208,
+          "first_time": "2022-05-24 14:00",
+          "last_time": "2022-05-27 14:00",
+          "nonfinite_close": [],
+          "timestamps_strictly_increasing": true,
+          "duplicate_times": 0,
+          "time_basis": "ts=原bar时刻；x为图元中点，绝不作native actual/confirm"
+        },
+        {
+          "symbol": "hc",
+          "source_id": "p1168",
+          "source_ref": "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1168.json.gz",
+          "columns": [
+            "close",
+            "high",
+            "low",
+            "open",
+            "ts",
+            "volume",
+            "x",
+            "x_l",
+            "x_r"
+          ],
+          "row_start": 22769,
+          "row_end": 22976,
+          "rows": 208,
+          "first_time": "2022-05-24 14:00",
+          "last_time": "2022-05-27 14:00",
+          "nonfinite_close": [],
+          "timestamps_strictly_increasing": true,
+          "duplicate_times": 0,
+          "time_basis": "ts=原bar时刻；x为图元中点，绝不作native actual/confirm"
+        },
+        {
+          "symbol": "i",
+          "source_id": "p1296",
+          "source_ref": "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1296.json.gz",
+          "columns": [
+            "close",
+            "high",
+            "low",
+            "open",
+            "ts",
+            "volume",
+            "x",
+            "x_l",
+            "x_r"
+          ],
+          "row_start": 22769,
+          "row_end": 22976,
+          "rows": 208,
+          "first_time": "2022-05-24 14:00",
+          "last_time": "2022-05-27 14:00",
+          "nonfinite_close": [],
+          "timestamps_strictly_increasing": true,
+          "duplicate_times": 0,
+          "time_basis": "ts=原bar时刻；x为图元中点，绝不作native actual/confirm"
+        }
+      ],
+      "resolved_independent_turns": [],
+      "resolved_group_exact_rows": [],
+      "stage": "construction_snapshot",
+      "missing_required_input_files": [],
+      "known_unexposed": [
+        "内部逐tick材料/未成组pair/首阻断/原生coverage区间；不由代码补值。"
+      ],
+      "revision_policy": "同Life按知识轴逐exact展开；groupPrevious/parent保留，稀疏未发行拍不是零状态。",
+      "admissible_for_comparison": true,
+      "qualification_note": "可对照可读声明；不充分历史、native缺口及价值歧义仍逐证据单列，不等于所有问题已可判。"
+    }
+  ],
+  "material_limits": [
+    "原U PARTIAL及NOT_EXPOSED内部逐tick轨迹、失败组合/first blocker/原生coverage区间保持；本图不补造。",
+    "三年总览点密度高，需用缩放与exact选择器阅读个别观点；不从总览视觉重叠合并身份。",
+    "已暴露Rct图层为公开更新行，存在同一actual的多次事件，不等于唯一转折数；selected在T/C/known各图层重复表达同源记录。",
+    "K线每品种69个缺close按原值保留；两个空可选分支底层列缺失提示保留，公开空表/空列表不补零。",
+    "原C3页内标题“C2当前展示预期”原样保留，真实绑定已由caption和HTML文档title明确；既有hover可按工具栏启用。",
+    "精确关系以原值明细表达，未新增全局拓扑或自动跨源高亮；Q/V/WALL及四问题七candidate-only边界不变。"
+  ],
+  "understanding_limits": [
+    {
+      "id": "U3",
+      "gap": "内部逐Tick材料/枚举/首次阻断轨迹未公开；独立上游分母与筛查可读取，但不能冒充native轨迹",
+      "impact": "以公开结果与明确参考筛查限域统计，不阻断主要剖面"
+    },
+    {
+      "id": "U5",
+      "gap": "800的完整业务合理性与跨市场场景解释不由本G预先证明",
+      "impact": "原生Gate按最新完整G与finding复验给出；场景问题保留"
+    }
+  ],
+  "frozen_cases_only": true,
+  "workers": []
+}

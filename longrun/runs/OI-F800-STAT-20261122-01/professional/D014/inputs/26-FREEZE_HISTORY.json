@@ -1,0 +1,23 @@
+{
+  "case_set_id": "F800-S1-D013-CS",
+  "version": 1,
+  "events": [
+    {
+      "state": "CANDIDATE",
+      "at": "2026-11-22T21:59:37.800668+00:00",
+      "source": "CandidateCasePool.v1.json"
+    },
+    {
+      "state": "READY_FOR_EXPECTATION",
+      "at": "2026-11-22T22:03:57.896083+00:00",
+      "source": "draft/CaseReviewSet.READY.json",
+      "check": "DRAFT_VALIDATION.json"
+    },
+    {
+      "state": "FROZEN_FOR_COMPARISON",
+      "at": "2026-11-22T22:05:51.029133+00:00",
+      "source": "FrozenExpectationSet.json"
+    }
+  ],
+  "unchanged_input_policy": "原七条candidate-only索引/原问题队列/原HTML及正式21文件均不回写；仅本D候选在真实读取后提升。"
+}

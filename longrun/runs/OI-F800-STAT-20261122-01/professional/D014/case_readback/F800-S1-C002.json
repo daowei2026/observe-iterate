@@ -1,0 +1,777 @@
+{
+  "case_id": "F800-S1-C002",
+  "case_type": "CLEAR_NEGATIVE",
+  "frozen_case_ref": "daowei2026/observe-iterate@266c34e5d7d75a05677e7969d528090d37cac44e:longrun/runs/OI-F800-STAT-20261122-01/professional/D013/CaseReviewSet.json",
+  "case_time": {
+    "start": "2021-01-04 13:35:00",
+    "end": "2021-01-22 13:35:00"
+  },
+  "raw_market_readback": [
+    {
+      "symbol": "rb",
+      "source_id": "p1040",
+      "source_ref": "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1040.json.gz",
+      "row_start": 27,
+      "row_end": 993,
+      "row_count": 967,
+      "actual_bar_rows": [
+        {
+          "row_index": 27,
+          "ts": "2021-01-04 13:35",
+          "open": 4305.0,
+          "high": 4328.0,
+          "low": 4304.0,
+          "close": 4321.0,
+          "volume": 51780.0
+        },
+        {
+          "row_index": 28,
+          "ts": "2021-01-04 13:40",
+          "open": 4321.0,
+          "high": 4322.0,
+          "low": 4315.0,
+          "close": 4321.0,
+          "volume": 21697.0
+        },
+        {
+          "row_index": 33,
+          "ts": "2021-01-04 14:05",
+          "open": 4321.0,
+          "high": 4323.0,
+          "low": 4317.0,
+          "close": 4322.0,
+          "volume": 12933.0
+        },
+        {
+          "row_index": 987,
+          "ts": "2021-01-22 11:05",
+          "open": 4325.0,
+          "high": 4342.0,
+          "low": 4324.0,
+          "close": 4339.0,
+          "volume": 39595.0
+        },
+        {
+          "row_index": 992,
+          "ts": "2021-01-22 11:30",
+          "open": 4328.0,
+          "high": 4336.0,
+          "low": 4327.0,
+          "close": 4331.0,
+          "volume": 12846.0
+        },
+        {
+          "row_index": 993,
+          "ts": "2021-01-22 13:35",
+          "open": 4333.0,
+          "high": 4335.0,
+          "low": 4302.0,
+          "close": 4303.0,
+          "volume": 105428.0
+        }
+      ],
+      "critical_points": [
+        {
+          "label": "2021-01-04 13:35",
+          "at": {
+            "row_index": 27,
+            "ts": "2021-01-04 13:35",
+            "open": 4305.0,
+            "high": 4328.0,
+            "low": 4304.0,
+            "close": 4321.0,
+            "volume": 51780.0
+          },
+          "nearby_bars": [
+            {
+              "row_index": 28,
+              "ts": "2021-01-04 13:40",
+              "open": 4321.0,
+              "high": 4322.0,
+              "low": 4315.0,
+              "close": 4321.0,
+              "volume": 21697.0
+            },
+            {
+              "row_index": 33,
+              "ts": "2021-01-04 14:05",
+              "open": 4321.0,
+              "high": 4323.0,
+              "low": 4317.0,
+              "close": 4322.0,
+              "volume": 12933.0
+            }
+          ],
+          "context_unit": "前后原价bar位置；±6根仅用于还原邻近价格，不是新尺度/业务判据。"
+        },
+        {
+          "label": "2021-01-22 13:35",
+          "at": {
+            "row_index": 993,
+            "ts": "2021-01-22 13:35",
+            "open": 4333.0,
+            "high": 4335.0,
+            "low": 4302.0,
+            "close": 4303.0,
+            "volume": 105428.0
+          },
+          "nearby_bars": [
+            {
+              "row_index": 987,
+              "ts": "2021-01-22 11:05",
+              "open": 4325.0,
+              "high": 4342.0,
+              "low": 4324.0,
+              "close": 4339.0,
+              "volume": 39595.0
+            },
+            {
+              "row_index": 992,
+              "ts": "2021-01-22 11:30",
+              "open": 4328.0,
+              "high": 4336.0,
+              "low": 4327.0,
+              "close": 4331.0,
+              "volume": 12846.0
+            }
+          ],
+          "context_unit": "前后原价bar位置；±6根仅用于还原邻近价格，不是新尺度/业务判据。"
+        }
+      ],
+      "original_price_role": "OHLC/close原值，先读市场过程；不从F输出复述价格。"
+    },
+    {
+      "symbol": "hc",
+      "source_id": "p1168",
+      "source_ref": "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1168.json.gz",
+      "row_start": 27,
+      "row_end": 993,
+      "row_count": 967,
+      "actual_bar_rows": [
+        {
+          "row_index": 27,
+          "ts": "2021-01-04 13:35",
+          "open": 4448.0,
+          "high": 4464.0,
+          "low": 4445.0,
+          "close": 4458.0,
+          "volume": 16970.0
+        },
+        {
+          "row_index": 28,
+          "ts": "2021-01-04 13:40",
+          "open": 4458.0,
+          "high": 4459.0,
+          "low": 4449.0,
+          "close": 4459.0,
+          "volume": 9538.0
+        },
+        {
+          "row_index": 33,
+          "ts": "2021-01-04 14:05",
+          "open": 4465.0,
+          "high": 4469.0,
+          "low": 4461.0,
+          "close": 4469.0,
+          "volume": 5892.0
+        },
+        {
+          "row_index": 987,
+          "ts": "2021-01-22 11:05",
+          "open": 4383.0,
+          "high": 4400.0,
+          "low": 4376.0,
+          "close": 4398.0,
+          "volume": 16669.0
+        },
+        {
+          "row_index": 992,
+          "ts": "2021-01-22 11:30",
+          "open": 4389.0,
+          "high": 4397.0,
+          "low": 4388.0,
+          "close": 4392.0,
+          "volume": 3832.0
+        },
+        {
+          "row_index": 993,
+          "ts": "2021-01-22 13:35",
+          "open": 4396.0,
+          "high": 4396.0,
+          "low": 4369.0,
+          "close": 4369.0,
+          "volume": 19328.0
+        }
+      ],
+      "critical_points": [
+        {
+          "label": "2021-01-04 13:35",
+          "at": {
+            "row_index": 27,
+            "ts": "2021-01-04 13:35",
+            "open": 4448.0,
+            "high": 4464.0,
+            "low": 4445.0,
+            "close": 4458.0,
+            "volume": 16970.0
+          },
+          "nearby_bars": [
+            {
+              "row_index": 28,
+              "ts": "2021-01-04 13:40",
+              "open": 4458.0,
+              "high": 4459.0,
+              "low": 4449.0,
+              "close": 4459.0,
+              "volume": 9538.0
+            },
+            {
+              "row_index": 33,
+              "ts": "2021-01-04 14:05",
+              "open": 4465.0,
+              "high": 4469.0,
+              "low": 4461.0,
+              "close": 4469.0,
+              "volume": 5892.0
+            }
+          ],
+          "context_unit": "前后原价bar位置；±6根仅用于还原邻近价格，不是新尺度/业务判据。"
+        },
+        {
+          "label": "2021-01-22 13:35",
+          "at": {
+            "row_index": 993,
+            "ts": "2021-01-22 13:35",
+            "open": 4396.0,
+            "high": 4396.0,
+            "low": 4369.0,
+            "close": 4369.0,
+            "volume": 19328.0
+          },
+          "nearby_bars": [
+            {
+              "row_index": 987,
+              "ts": "2021-01-22 11:05",
+              "open": 4383.0,
+              "high": 4400.0,
+              "low": 4376.0,
+              "close": 4398.0,
+              "volume": 16669.0
+            },
+            {
+              "row_index": 992,
+              "ts": "2021-01-22 11:30",
+              "open": 4389.0,
+              "high": 4397.0,
+              "low": 4388.0,
+              "close": 4392.0,
+              "volume": 3832.0
+            }
+          ],
+          "context_unit": "前后原价bar位置；±6根仅用于还原邻近价格，不是新尺度/业务判据。"
+        }
+      ],
+      "original_price_role": "OHLC/close原值，先读市场过程；不从F输出复述价格。"
+    },
+    {
+      "symbol": "i",
+      "source_id": "p1296",
+      "source_ref": "daowei2026/observe-iterate@dfbc647030890fc8af80ac04a4d12a734d99f6dc:longrun/runs/OI-F800-STAT-20261122-01/professional/D012/formal_data/source_p1296.json.gz",
+      "row_start": 27,
+      "row_end": 993,
+      "row_count": 967,
+      "actual_bar_rows": [
+        {
+          "row_index": 27,
+          "ts": "2021-01-04 13:35",
+          "open": 993.0,
+          "high": 996.5,
+          "low": 991.5,
+          "close": 996.0,
+          "volume": 8264.0
+        },
+        {
+          "row_index": 28,
+          "ts": "2021-01-04 13:40",
+          "open": 996.0,
+          "high": 996.0,
+          "low": 992.0,
+          "close": 995.0,
+          "volume": 4343.0
+        },
+        {
+          "row_index": 33,
+          "ts": "2021-01-04 14:05",
+          "open": 994.5,
+          "high": 996.0,
+          "low": 993.5,
+          "close": 996.0,
+          "volume": 4599.0
+        },
+        {
+          "row_index": 41,
+          "ts": "2021-01-04 14:45",
+          "open": 1008.5,
+          "high": 1014.0,
+          "low": 1008.5,
+          "close": 1013.5,
+          "volume": 6336.0
+        },
+        {
+          "row_index": 46,
+          "ts": "2021-01-04 21:10",
+          "open": 1025.5,
+          "high": 1032.0,
+          "low": 1025.0,
+          "close": 1029.0,
+          "volume": 21095.0
+        },
+        {
+          "row_index": 47,
+          "ts": "2021-01-04 21:15",
+          "open": 1029.0,
+          "high": 1036.5,
+          "low": 1029.0,
+          "close": 1034.0,
+          "volume": 17241.0
+        },
+        {
+          "row_index": 48,
+          "ts": "2021-01-04 21:20",
+          "open": 1034.5,
+          "high": 1035.5,
+          "low": 1029.5,
+          "close": 1030.0,
+          "volume": 11700.0
+        },
+        {
+          "row_index": 53,
+          "ts": "2021-01-04 21:45",
+          "open": 1025.0,
+          "high": 1029.5,
+          "low": 1022.5,
+          "close": 1029.5,
+          "volume": 6672.0
+        },
+        {
+          "row_index": 69,
+          "ts": "2021-01-05 09:05",
+          "open": 1028.5,
+          "high": 1029.0,
+          "low": 1022.0,
+          "close": 1023.5,
+          "volume": 19015.0
+        },
+        {
+          "row_index": 70,
+          "ts": "2021-01-05 09:10",
+          "open": 1023.5,
+          "high": 1026.5,
+          "low": 1022.0,
+          "close": 1026.0,
+          "volume": 7658.0
+        },
+        {
+          "row_index": 74,
+          "ts": "2021-01-05 09:30",
+          "open": 1024.0,
+          "high": 1026.5,
+          "low": 1023.5,
+          "close": 1024.0,
+          "volume": 5436.0
+        },
+        {
+          "row_index": 75,
+          "ts": "2021-01-05 09:35",
+          "open": 1024.0,
+          "high": 1024.0,
+          "low": 1018.5,
+          "close": 1021.0,
+          "volume": 12101.0
+        },
+        {
+          "row_index": 76,
+          "ts": "2021-01-05 09:40",
+          "open": 1021.0,
+          "high": 1024.0,
+          "low": 1020.0,
+          "close": 1023.5,
+          "volume": 6313.0
+        },
+        {
+          "row_index": 77,
+          "ts": "2021-01-05 09:45",
+          "open": 1023.5,
+          "high": 1027.5,
+          "low": 1022.5,
+          "close": 1024.5,
+          "volume": 5363.0
+        },
+        {
+          "row_index": 81,
+          "ts": "2021-01-05 10:05",
+          "open": 1024.5,
+          "high": 1024.5,
+          "low": 1022.0,
+          "close": 1024.0,
+          "volume": 3014.0
+        },
+        {
+          "row_index": 82,
+          "ts": "2021-01-05 10:10",
+          "open": 1024.0,
+          "high": 1025.5,
+          "low": 1023.5,
+          "close": 1024.0,
+          "volume": 2629.0
+        },
+        {
+          "row_index": 987,
+          "ts": "2021-01-22 11:05",
+          "open": 1051.0,
+          "high": 1058.0,
+          "low": 1050.5,
+          "close": 1056.5,
+          "volume": 8666.0
+        },
+        {
+          "row_index": 992,
+          "ts": "2021-01-22 11:30",
+          "open": 1054.0,
+          "high": 1056.5,
+          "low": 1054.0,
+          "close": 1055.5,
+          "volume": 2934.0
+        },
+        {
+          "row_index": 993,
+          "ts": "2021-01-22 13:35",
+          "open": 1055.5,
+          "high": 1056.0,
+          "low": 1044.0,
+          "close": 1044.0,
+          "volume": 19328.0
+        }
+      ],
+      "critical_points": [
+        {
+          "label": "2021-01-04 13:35",
+          "at": {
+            "row_index": 27,
+            "ts": "2021-01-04 13:35",
+            "open": 993.0,
+            "high": 996.5,
+            "low": 991.5,
+            "close": 996.0,
+            "volume": 8264.0
+          },
+          "nearby_bars": [
+            {
+              "row_index": 28,
+              "ts": "2021-01-04 13:40",
+              "open": 996.0,
+              "high": 996.0,
+              "low": 992.0,
+              "close": 995.0,
+              "volume": 4343.0
+            },
+            {
+              "row_index": 33,
+              "ts": "2021-01-04 14:05",
+              "open": 994.5,
+              "high": 996.0,
+              "low": 993.5,
+              "close": 996.0,
+              "volume": 4599.0
+            }
+          ],
+          "context_unit": "前后原价bar位置；±6根仅用于还原邻近价格，不是新尺度/业务判据。"
+        },
+        {
+          "label": "2021-01-04 21:15",
+          "at": {
+            "row_index": 47,
+            "ts": "2021-01-04 21:15",
+            "open": 1029.0,
+            "high": 1036.5,
+            "low": 1029.0,
+            "close": 1034.0,
+            "volume": 17241.0
+          },
+          "nearby_bars": [
+            {
+              "row_index": 41,
+              "ts": "2021-01-04 14:45",
+              "open": 1008.5,
+              "high": 1014.0,
+              "low": 1008.5,
+              "close": 1013.5,
+              "volume": 6336.0
+            },
+            {
+              "row_index": 46,
+              "ts": "2021-01-04 21:10",
+              "open": 1025.5,
+              "high": 1032.0,
+              "low": 1025.0,
+              "close": 1029.0,
+              "volume": 21095.0
+            },
+            {
+              "row_index": 48,
+              "ts": "2021-01-04 21:20",
+              "open": 1034.5,
+              "high": 1035.5,
+              "low": 1029.5,
+              "close": 1030.0,
+              "volume": 11700.0
+            },
+            {
+              "row_index": 53,
+              "ts": "2021-01-04 21:45",
+              "open": 1025.0,
+              "high": 1029.5,
+              "low": 1022.5,
+              "close": 1029.5,
+              "volume": 6672.0
+            }
+          ],
+          "context_unit": "前后原价bar位置；±6根仅用于还原邻近价格，不是新尺度/业务判据。"
+        },
+        {
+          "label": "2021-01-05 09:35",
+          "at": {
+            "row_index": 75,
+            "ts": "2021-01-05 09:35",
+            "open": 1024.0,
+            "high": 1024.0,
+            "low": 1018.5,
+            "close": 1021.0,
+            "volume": 12101.0
+          },
+          "nearby_bars": [
+            {
+              "row_index": 69,
+              "ts": "2021-01-05 09:05",
+              "open": 1028.5,
+              "high": 1029.0,
+              "low": 1022.0,
+              "close": 1023.5,
+              "volume": 19015.0
+            },
+            {
+              "row_index": 74,
+              "ts": "2021-01-05 09:30",
+              "open": 1024.0,
+              "high": 1026.5,
+              "low": 1023.5,
+              "close": 1024.0,
+              "volume": 5436.0
+            },
+            {
+              "row_index": 76,
+              "ts": "2021-01-05 09:40",
+              "open": 1021.0,
+              "high": 1024.0,
+              "low": 1020.0,
+              "close": 1023.5,
+              "volume": 6313.0
+            },
+            {
+              "row_index": 81,
+              "ts": "2021-01-05 10:05",
+              "open": 1024.5,
+              "high": 1024.5,
+              "low": 1022.0,
+              "close": 1024.0,
+              "volume": 3014.0
+            }
+          ],
+          "context_unit": "前后原价bar位置；±6根仅用于还原邻近价格，不是新尺度/业务判据。"
+        },
+        {
+          "label": "2021-01-05 09:40",
+          "at": {
+            "row_index": 76,
+            "ts": "2021-01-05 09:40",
+            "open": 1021.0,
+            "high": 1024.0,
+            "low": 1020.0,
+            "close": 1023.5,
+            "volume": 6313.0
+          },
+          "nearby_bars": [
+            {
+              "row_index": 70,
+              "ts": "2021-01-05 09:10",
+              "open": 1023.5,
+              "high": 1026.5,
+              "low": 1022.0,
+              "close": 1026.0,
+              "volume": 7658.0
+            },
+            {
+              "row_index": 75,
+              "ts": "2021-01-05 09:35",
+              "open": 1024.0,
+              "high": 1024.0,
+              "low": 1018.5,
+              "close": 1021.0,
+              "volume": 12101.0
+            },
+            {
+              "row_index": 77,
+              "ts": "2021-01-05 09:45",
+              "open": 1023.5,
+              "high": 1027.5,
+              "low": 1022.5,
+              "close": 1024.5,
+              "volume": 5363.0
+            },
+            {
+              "row_index": 82,
+              "ts": "2021-01-05 10:10",
+              "open": 1024.0,
+              "high": 1025.5,
+              "low": 1023.5,
+              "close": 1024.0,
+              "volume": 2629.0
+            }
+          ],
+          "context_unit": "前后原价bar位置；±6根仅用于还原邻近价格，不是新尺度/业务判据。"
+        },
+        {
+          "label": "2021-01-22 13:35",
+          "at": {
+            "row_index": 993,
+            "ts": "2021-01-22 13:35",
+            "open": 1055.5,
+            "high": 1056.0,
+            "low": 1044.0,
+            "close": 1044.0,
+            "volume": 19328.0
+          },
+          "nearby_bars": [
+            {
+              "row_index": 987,
+              "ts": "2021-01-22 11:05",
+              "open": 1051.0,
+              "high": 1058.0,
+              "low": 1050.5,
+              "close": 1056.5,
+              "volume": 8666.0
+            },
+            {
+              "row_index": 992,
+              "ts": "2021-01-22 11:30",
+              "open": 1054.0,
+              "high": 1056.5,
+              "low": 1054.0,
+              "close": 1055.5,
+              "volume": 2934.0
+            }
+          ],
+          "context_unit": "前后原价bar位置；±6根仅用于还原邻近价格，不是新尺度/业务判据。"
+        }
+      ],
+      "original_price_role": "OHLC/close原值，先读市场过程；不从F输出复述价格。"
+    }
+  ],
+  "independent_selected_readback": [
+    {
+      "source_id": "p1354",
+      "row_index": 1,
+      "raw": {
+        "symbol": "i",
+        "round": 0,
+        "source_row": 1,
+        "turn_id": "i/value1/72049199",
+        "actual": 72032399,
+        "confirmation": 72049199,
+        "known": 72049799,
+        "actual_ts": "2021-01-04 21:15:00",
+        "confirmation_ts": "2021-01-05 09:35:00",
+        "known_ts": "2021-01-05 09:40:00",
+        "price": 1034.0,
+        "confirmation_price": 1021.0,
+        "raw_known": 72035999,
+        "round_display": 0,
+        "turn_id_role": "D008公开上游简化定位键；不是native exact UUID",
+        "source_role": "同实例已接受公开投影；几何C与原事件selected-known分离",
+        "__original_json": "{\"symbol\": \"i\", \"round\": \"value1\", \"source_row\": 1, \"turn_id\": \"i/value1/72049199\", \"actual\": 72032399, \"confirmation\": 72049199, \"known\": 72049799, \"actual_ts\": \"2021-01-04 21:15:00\", \"confirmation_ts\": \"2021-01-05 09:35:00\", \"known_ts\": \"2021-01-05 09:40:00\", \"price\": 1034.0, \"confirmation_price\": 1021.0, \"raw_known\": 72035999, \"round_display\": 0, \"turn_id_role\": \"D008公开上游简化定位键；不是native exact UUID\", \"source_role\": \"同实例已接受公开投影；几何C与原事件selected-known分离\"}",
+        "cprice": 1021.0,
+        "turn": "i/value1/72049199",
+        "source_round": "value1",
+        "t_known": 72035999,
+        "lane": 2.0
+      }
+    }
+  ],
+  "observed_public_group_process": [],
+  "specific_public_lookups": [
+    {
+      "kind": "independent_selected_neighbors",
+      "symbol": "rb",
+      "target_turn": "i/value1/72049199",
+      "target_actual": 72032399,
+      "within_1200": [],
+      "nearest": [
+        {
+          "turn_id": "rb/value1/72010799",
+          "actual": 72004199,
+          "actual_ts": "2021-01-04 09:05:00",
+          "known": 72011399,
+          "known_ts": "2021-01-04 10:05:00",
+          "price": 4294.0,
+          "distance_ticks": 28200
+        },
+        {
+          "turn_id": "rb/value1/72097799",
+          "actual": 72077399,
+          "actual_ts": "2021-01-05 21:45:00",
+          "known": 72098399,
+          "known_ts": "2021-01-06 10:55:00",
+          "price": 4423.0,
+          "distance_ticks": 45000
+        }
+      ]
+    },
+    {
+      "kind": "independent_selected_neighbors",
+      "symbol": "hc",
+      "target_turn": "i/value1/72049199",
+      "target_actual": 72032399,
+      "within_1200": [],
+      "nearest": [
+        {
+          "turn_id": "hc/value1/72007199",
+          "actual": 72004199,
+          "actual_ts": "2021-01-04 09:05:00",
+          "known": 72007799,
+          "known_ts": "2021-01-04 09:35:00",
+          "price": 4460.0,
+          "distance_ticks": 28200
+        },
+        {
+          "turn_id": "hc/value1/72098999",
+          "actual": 72076799,
+          "actual_ts": "2021-01-05 21:40:00",
+          "known": 72099599,
+          "known_ts": "2021-01-06 11:05:00",
+          "price": 4572.0,
+          "distance_ticks": 44400
+        }
+      ]
+    },
+    {
+      "kind": "published_group_member_lookup",
+      "target_turn": "i/value1/72049199",
+      "matching_group_rows": [],
+      "scope": "完整1538个已发行组观点；不是native未成组pair轨迹",
+      "native_first_blocker": "NOT_EXPOSED"
+    }
+  ],
+  "read_at": "2026-11-22T22:42:35.158425+00:00",
+  "stage": "construction_snapshot",
+  "semantic_scope": "S2从已接受正式文件读取的案例过程摘录；原正式文件未重导出/复算。"
+}

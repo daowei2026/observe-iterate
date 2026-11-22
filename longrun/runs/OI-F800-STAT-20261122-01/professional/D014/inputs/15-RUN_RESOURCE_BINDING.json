@@ -1,0 +1,26 @@
+{
+  "schema": "observe-iterate-run-resource/v1",
+  "run_id": "OI-F800-STAT-20261122-01",
+  "owner_go_ref": "daowei2026/observe-iterate@43a13e14129984d6f3a142c6eb64397a43c3ca79:longrun/runs/OI-F800-STAT-20261122-01/OWNER_START.md",
+  "owner_declared_linux_workspace": "/dwdhome/fy/BASE_E6_2_copy",
+  "worker_host": "dw-VMware-Virtual-Platform",
+  "verified_realpath": "/dwdhome/fy/BASE_E6_2_copy",
+  "verified_on_worker_host": true,
+  "verification_evidence_ref": "daowei2026/observe-iterate@43a13e14129984d6f3a142c6eb64397a43c3ca79:longrun/runs/OI-F800-STAT-20261122-01/OWNER_START.md",
+  "actual_worker_thread_binding_ref": null,
+  "adopted_source_refs": [
+    "daowei2026/observe-iterate@87b951bbd15078a2d6353bdd24afe0d8f19c845c:longrun/CODEX_NATIVE_EXECUTION_PROFILE.md",
+    "daowei2026/cgpterm@fc966bcf5441701182339c992865504692f3a466:.agents/skills/observe-iterate-longrun-v2-codex-native-controller/SKILL.md",
+    "daowei2026/observe-iterate@87b951bbd15078a2d6353bdd24afe0d8f19c845c:task-inputs/wall-f-parallel-closure-20261122/F_BASE_RUN_INPUT.md"
+  ],
+  "external_write_targets": [
+    {
+      "execution_context": "daowei2026/observe-iterate@codex/oi-f800-stat-20261122-01",
+      "allowed_writes": [
+        "longrun/runs/OI-F800-STAT-20261122-01/**"
+      ],
+      "single_writer": "manager与controller按C调用顺序提交；executor使用独立记录checkout，仅本Run路径。特征/缓存/数据库实际写面由executor先核单写者，未通过不得生产写入。"
+    }
+  ],
+  "notes": "CODEX_NATIVE_DIRECT；workers=[]。物理线程与过程证据仅存gitignored现场账本。工作区路径与另一新Run不重叠。WALL现有trier服务与终端仅是已观察进程，不能因此宣称共享缓存/数据库均可写；executor需在正式X前核对。F工作区由Owner终止V后释放。正式Feature行为修改未获授权。"
+}

@@ -1,0 +1,23 @@
+{
+  "frozen_case_type_coverage_ref": "daowei2026/observe-iterate@266c34e5d7d75a05677e7969d528090d37cac44e:longrun/runs/OI-F800-STAT-20261122-01/professional/D013/CaseTypeCoverage.json",
+  "actually_compared_case_ids": [
+    "F800-S1-C001",
+    "F800-S1-C002",
+    "F800-S1-C003",
+    "F800-S1-C004",
+    "F800-S1-C005",
+    "F800-S1-C006",
+    "F800-S1-C007"
+  ],
+  "actual_types": {
+    "CLEAR_POSITIVE": 1,
+    "CLEAR_NEGATIVE": 1,
+    "OUTPUT_FALSE_POSITIVE_CANDIDATE": 2,
+    "PARAMETER_BOUNDARY": 2,
+    "OUTSIDE_CURRENT_COVERAGE": 1
+  },
+  "potential_false_negative": "S1原有界筛查NO_CASE_FOUND；本C未重新筛选，未形成冻结漏报例，不能据此证明没有漏报。",
+  "output_false_positive": "两个原误报候选均已实际对照；候选标签不预设COUNTERS，初始化不足表达与迟到历史表达分别受有界支持。",
+  "outside_current_coverage": "C007当前F形成层NOT_APPLICABLE，不进入Feature失败队列。",
+  "universal_coverage_claim": false
+}
