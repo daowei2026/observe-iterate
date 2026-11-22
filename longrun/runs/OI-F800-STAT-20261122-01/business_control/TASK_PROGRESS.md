@@ -60,3 +60,7 @@ current_acceptance_level: 按原Workflow消费最新X/G并关闭当前ReviewTarg
 唯一新D008（[JSON](../delegations/D008/DELEGATION.json)、[说明](../delegations/D008/DELEGATION.md)），原X实际动作紧随唯一G Skill `daowei2026/observe-iterate@87b951bbd15078a2d6353bdd24afe0d8f19c845c:skills/reasonableness-analysis/feature-global-behavior-profiling/SKILL.md`。controller核原E1实际线程/sol/max/工作区与状态后物理派发；manager不代查Feature源码、生产或统计，不创建线程、不发其他聊天消息，不签W/Worker。
 
 本C先发布D/报告/进度并远端回读，再独立发布只引用已有exact对象的IN_PROGRESS Return，owner_request_ref=null、W/Worker引用为空；仅本调用协调交付完成，业务Run仍未完成。后继原manager消费真实新X/G，沿finding/场景/原L1释放继续；已批准同范围不重复问，无轮询/timer/自动唤醒。
+
+## C0018 D008首批发布凭证
+
+已先行发布并从origin逐字节回读D008：`daowei2026/observe-iterate@c1b79ff6c6e5b103920ccb2fc9b946ca8dec7eac:longrun/runs/OI-F800-STAT-20261122-01/delegations/D008/DELEGATION.json`；报告：`daowei2026/observe-iterate@c1b79ff6c6e5b103920ccb2fc9b946ca8dec7eac:longrun/runs/OI-F800-STAT-20261122-01/calls/C0018/MANAGER_REPORT.md`。首批8文件Git blob/SHA-256/字节全部匹配，独立Return只引用该已存在提交。Run仍IN_PROGRESS，当前39f完整X/G待执行、RERUN_REQUIRED；D008物理派发/开工尚无本C回执。

@@ -1,0 +1,11 @@
+# C0018｜独立Return校验
+
+首批提交`c1b79ff6c6e5b103920ccb2fc9b946ca8dec7eac`已真实推送到origin `codex/oi-f800-stat-20261122-01`，fetch得到同一准确commit，8个首批文件的Git blob/SHA-256/字节与发布前本地原件全部一致；首批回读时tracked tree干净。凭证见D008_PUBLICATION.json。完成上述回读后才形成本C PRO_RETURN，先发布D/报告/进度、后独立Return的顺序成立。
+
+Return已按锁定版V2 schema校验通过。原manager身份与当前Binding一致，call_id=C0018，result_ref=`daowei2026/observe-iterate@c1b79ff6c6e5b103920ccb2fc9b946ca8dec7eac:longrun/runs/OI-F800-STAT-20261122-01/calls/C0018/MANAGER_REPORT.md`、唯一issued_delegation_refs=`daowei2026/observe-iterate@c1b79ff6c6e5b103920ccb2fc9b946ca8dec7eac:longrun/runs/OI-F800-STAT-20261122-01/delegations/D008/DELEGATION.json`、remaining_scope_ref及continuation_ref全部是已经存在的首批exact对象，逐字节解析成功。professional_state=IN_PROGRESS，owner_request_ref=null，issued_order_refs=[]、accepted_worker_refs=[]；无重复Owner问题或伪造物理派发/W/Worker引用。
+
+本Return只完成C0018协调交付：D007 FI已消费、实际采用FRP39f、GF002仍FIXED_PENDING_RERUN；当前RERUN_REQUIRED，新版本完整F-only X/31表独立OnlyRead/全量G及释放均未完成。旧D005结果/Gate只作历史对照。D008发布不是物理开工、实际持flock或新专业Gate通过证据；无放行FeatureReleaseGate/ReleasePackage。
+
+锁定版完整longrun_gate对Codex manager身份的既有不兼容及C0001原失败证据见首批VALIDATION；不重跑同一失败，不替换真实身份/工具伪造PASS。本次同版schema、准确已发布输入、Owner授权子集、角色/状态及交付顺序检查不冒充该机械Gate或新专业验收。
+
+本批只含PRO_RETURN、D008_PUBLICATION、RETURN_VALIDATION及TASK_PROGRESS的首批准确发布凭证追加；随后独立提交、普通推送、fetch并逐字节回读。最终commit/readback证明保留在gitignored调用运行账本，不在本Return预填未来自身ref。账本completed只代表本C协调交付完成，Run仍IN_PROGRESS；无其他聊天消息、新线程、W或自动唤醒。
