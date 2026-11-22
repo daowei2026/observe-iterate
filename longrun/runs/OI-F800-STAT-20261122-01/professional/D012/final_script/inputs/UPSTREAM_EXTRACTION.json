@@ -1,0 +1,496 @@
+{
+  "started_at": "2026-11-22T17:44:43.821390+00:00",
+  "pid": 2056982,
+  "requested_sof": {
+    "sof_name": "TA_updto20240229_DBA",
+    "stk_tlist": "steel",
+    "startDay": "2021-01-01",
+    "endDay": "2023-12-31",
+    "full_period": null
+  },
+  "completed": true,
+  "producer_executed": false,
+  "features": [
+    {
+      "symbol": "rb",
+      "kind": "kline",
+      "full_dir": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2023-12-31 20:00:00/KLine/e/6/f/d/d/e/0/ef6b31bf6a9acac01ae531c7ca6169c39/rb.night_end_at_2300",
+      "tables": [
+        {
+          "name": "kline",
+          "rows": 49683,
+          "columns": [
+            "open",
+            "high",
+            "low",
+            "close",
+            "openInt",
+            "volume",
+            "openUti",
+            "closeUti",
+            "openTs",
+            "closeTs"
+          ],
+          "first": "2021-01-04 09:05:00",
+          "last": "2023-12-29 15:00:00",
+          "nulls": {
+            "open": 69,
+            "high": 69,
+            "low": 69,
+            "close": 69,
+            "openInt": 69,
+            "volume": 0,
+            "openUti": 0,
+            "closeUti": 0,
+            "openTs": 0,
+            "closeTs": 0
+          },
+          "path": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/upstream/rb_kline.csv",
+          "sha256": "276d23752453726780eba4660052001593953cb58f47ac55f1fc6f233f5d45d8"
+        }
+      ]
+    },
+    {
+      "symbol": "rb",
+      "kind": "zig",
+      "full_dir": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2023-12-31 20:00:00/ZigZag/4/3/a/e/3/4/1/fc73ca7261f8a6d4162b568d68ef97866/rb.night_end_at_2300",
+      "tables": [
+        {
+          "name": "zig",
+          "rows": 49683,
+          "columns": [
+            "swingStatus",
+            "swingPrice",
+            "swingPoivt",
+            "swingPosUTI",
+            "lastPrice",
+            "lastPosUTI",
+            "lastDirection",
+            "uti",
+            "zigUTI",
+            "zigPrice",
+            "lastUptUTI",
+            "lastUptPrice"
+          ],
+          "first": "2021-01-04 09:05:00",
+          "last": "2023-12-29 15:00:00",
+          "nulls": {
+            "swingStatus": 0,
+            "swingPrice": 0,
+            "swingPoivt": 0,
+            "swingPosUTI": 0,
+            "lastPrice": 1,
+            "lastPosUTI": 1,
+            "lastDirection": 0,
+            "uti": 0,
+            "zigUTI": 47126,
+            "zigPrice": 47126,
+            "lastUptUTI": 44702,
+            "lastUptPrice": 44702
+          },
+          "path": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/upstream/rb_zig.csv",
+          "sha256": "6e3b47171105cbf551bbf856e571debe0876f2442e4d509fcc159177a81673a2"
+        }
+      ]
+    },
+    {
+      "symbol": "rb",
+      "kind": "rct",
+      "full_dir": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2023-12-31 20:00:00/RctZigWithStatus/a/c/1/8/a/1/0/c670c763772c3a9ac0dec837be9a7efd4/rb.night_end_at_2300",
+      "tables": [
+        {
+          "name": "rct",
+          "rows": 7538,
+          "columns": [
+            "price0",
+            "pivot0",
+            "posUTI0",
+            "price1",
+            "pivot1",
+            "posUTI1"
+          ],
+          "first": "2021-01-04 10:05:00",
+          "last": "2023-12-29 14:30:00",
+          "nulls": {
+            "price0": 0,
+            "pivot0": 0,
+            "posUTI0": 0,
+            "price1": 0,
+            "pivot1": 0,
+            "posUTI1": 0
+          },
+          "path": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/upstream/rb_rct.csv",
+          "sha256": "71fa195085aa868bf73d5ab42c7fb8f5049effbfcfbb7618286d66223012dab3"
+        }
+      ]
+    },
+    {
+      "symbol": "rb",
+      "kind": "scale",
+      "full_dir": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2023-12-31 20:00:00/ScaleTurnCalendar/5/d/c/a/8/3/d/03a685bc146b1befa80e34582a6de78a2/rb.night_end_at_2300",
+      "tables": [
+        {
+          "name": "scale_value1",
+          "rows": 366,
+          "columns": [
+            "value1.x",
+            "value1.y",
+            "value1.xConfirm",
+            "value1.yConfirm"
+          ],
+          "first": "2021-01-04 10:05:00",
+          "last": "2023-12-21 11:15:00",
+          "nulls": {
+            "value1.x": 0,
+            "value1.y": 0,
+            "value1.xConfirm": 0,
+            "value1.yConfirm": 0
+          },
+          "path": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/upstream/rb_scale_value1.csv",
+          "sha256": "8d699c61208bf541a0c0a43513e1ddd73ca5842ada8a22fe3b8c32e193e989d6"
+        },
+        {
+          "name": "scale_value2",
+          "rows": 59,
+          "columns": [
+            "value2.x",
+            "value2.y",
+            "value2.xConfirm",
+            "value2.yConfirm"
+          ],
+          "first": "2021-01-08 22:05:00",
+          "last": "2023-10-16 10:50:00",
+          "nulls": {
+            "value2.x": 0,
+            "value2.y": 0,
+            "value2.xConfirm": 0,
+            "value2.yConfirm": 0
+          },
+          "path": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/upstream/rb_scale_value2.csv",
+          "sha256": "0a541a5e551879b642f88a4bc0ecf055e472f83756c4f42fa2d7c4edb70234ea"
+        }
+      ]
+    },
+    {
+      "symbol": "hc",
+      "kind": "kline",
+      "full_dir": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2023-12-31 20:00:00/KLine/e/6/f/d/d/e/0/ef6b31bf6a9acac01ae531c7ca6169c39/hc.night_end_at_2300",
+      "tables": [
+        {
+          "name": "kline",
+          "rows": 49683,
+          "columns": [
+            "open",
+            "high",
+            "low",
+            "close",
+            "openInt",
+            "volume",
+            "openUti",
+            "closeUti",
+            "openTs",
+            "closeTs"
+          ],
+          "first": "2021-01-04 09:05:00",
+          "last": "2023-12-29 15:00:00",
+          "nulls": {
+            "open": 69,
+            "high": 69,
+            "low": 69,
+            "close": 69,
+            "openInt": 69,
+            "volume": 0,
+            "openUti": 0,
+            "closeUti": 0,
+            "openTs": 0,
+            "closeTs": 0
+          },
+          "path": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/upstream/hc_kline.csv",
+          "sha256": "3c3ee961963e8460f8235395c184fa0ade7fa0b2f4b5e605e7e1bf13c487430c"
+        }
+      ]
+    },
+    {
+      "symbol": "hc",
+      "kind": "zig",
+      "full_dir": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2023-12-31 20:00:00/ZigZag/4/3/a/e/3/4/1/fc73ca7261f8a6d4162b568d68ef97866/hc.night_end_at_2300",
+      "tables": [
+        {
+          "name": "zig",
+          "rows": 49683,
+          "columns": [
+            "swingStatus",
+            "swingPrice",
+            "swingPoivt",
+            "swingPosUTI",
+            "lastPrice",
+            "lastPosUTI",
+            "lastDirection",
+            "uti",
+            "zigUTI",
+            "zigPrice",
+            "lastUptUTI",
+            "lastUptPrice"
+          ],
+          "first": "2021-01-04 09:05:00",
+          "last": "2023-12-29 15:00:00",
+          "nulls": {
+            "swingStatus": 0,
+            "swingPrice": 0,
+            "swingPoivt": 0,
+            "swingPosUTI": 0,
+            "lastPrice": 1,
+            "lastPosUTI": 1,
+            "lastDirection": 0,
+            "uti": 0,
+            "zigUTI": 47099,
+            "zigPrice": 47099,
+            "lastUptUTI": 44789,
+            "lastUptPrice": 44789
+          },
+          "path": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/upstream/hc_zig.csv",
+          "sha256": "41c42a89fc531a0c27b4fbb49b04f72bade552dd8eb76124d778c57fdb5798a3"
+        }
+      ]
+    },
+    {
+      "symbol": "hc",
+      "kind": "rct",
+      "full_dir": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2023-12-31 20:00:00/RctZigWithStatus/a/c/1/8/a/1/0/c670c763772c3a9ac0dec837be9a7efd4/hc.night_end_at_2300",
+      "tables": [
+        {
+          "name": "rct",
+          "rows": 7478,
+          "columns": [
+            "price0",
+            "pivot0",
+            "posUTI0",
+            "price1",
+            "pivot1",
+            "posUTI1"
+          ],
+          "first": "2021-01-04 09:35:00",
+          "last": "2023-12-29 14:35:00",
+          "nulls": {
+            "price0": 0,
+            "pivot0": 0,
+            "posUTI0": 0,
+            "price1": 0,
+            "pivot1": 0,
+            "posUTI1": 0
+          },
+          "path": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/upstream/hc_rct.csv",
+          "sha256": "255951649e12e740c717a33c92a594183780bf1e9bcca45196aac8eb9ba7c4ef"
+        }
+      ]
+    },
+    {
+      "symbol": "hc",
+      "kind": "scale",
+      "full_dir": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2023-12-31 20:00:00/ScaleTurnCalendar/5/d/c/a/8/3/d/03a685bc146b1befa80e34582a6de78a2/hc.night_end_at_2300",
+      "tables": [
+        {
+          "name": "scale_value1",
+          "rows": 360,
+          "columns": [
+            "value1.x",
+            "value1.y",
+            "value1.xConfirm",
+            "value1.yConfirm"
+          ],
+          "first": "2021-01-04 09:35:00",
+          "last": "2023-12-21 13:50:00",
+          "nulls": {
+            "value1.x": 0,
+            "value1.y": 0,
+            "value1.xConfirm": 0,
+            "value1.yConfirm": 0
+          },
+          "path": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/upstream/hc_scale_value1.csv",
+          "sha256": "559f25e9bdaf47f950b37ec1e2a7f32e9f9f8174d8934963fd78a172aeadbcfa"
+        },
+        {
+          "name": "scale_value2",
+          "rows": 70,
+          "columns": [
+            "value2.x",
+            "value2.y",
+            "value2.xConfirm",
+            "value2.yConfirm"
+          ],
+          "first": "2021-01-12 13:55:00",
+          "last": "2023-12-06 21:50:00",
+          "nulls": {
+            "value2.x": 0,
+            "value2.y": 0,
+            "value2.xConfirm": 0,
+            "value2.yConfirm": 0
+          },
+          "path": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/upstream/hc_scale_value2.csv",
+          "sha256": "b7228cda557d376967cac0c18046045904a6cc77d9444e7e59aa297361af8a9a"
+        }
+      ]
+    },
+    {
+      "symbol": "i",
+      "kind": "kline",
+      "full_dir": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2023-12-31 20:00:00/KLine/e/6/f/d/d/e/0/ef6b31bf6a9acac01ae531c7ca6169c39/i.night_end_at_2300",
+      "tables": [
+        {
+          "name": "kline",
+          "rows": 49683,
+          "columns": [
+            "open",
+            "high",
+            "low",
+            "close",
+            "openInt",
+            "volume",
+            "openUti",
+            "closeUti",
+            "openTs",
+            "closeTs"
+          ],
+          "first": "2021-01-04 09:05:00",
+          "last": "2023-12-29 15:00:00",
+          "nulls": {
+            "open": 69,
+            "high": 69,
+            "low": 69,
+            "close": 69,
+            "openInt": 69,
+            "volume": 0,
+            "openUti": 0,
+            "closeUti": 0,
+            "openTs": 0,
+            "closeTs": 0
+          },
+          "path": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/upstream/i_kline.csv",
+          "sha256": "21444dc6a238d80fb4ed71aa4479ff6ce70bc74ef81efc93e02f2ffc7a71efd9"
+        }
+      ]
+    },
+    {
+      "symbol": "i",
+      "kind": "zig",
+      "full_dir": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2023-12-31 20:00:00/ZigZag/4/3/a/e/3/4/1/fc73ca7261f8a6d4162b568d68ef97866/i.night_end_at_2300",
+      "tables": [
+        {
+          "name": "zig",
+          "rows": 49683,
+          "columns": [
+            "swingStatus",
+            "swingPrice",
+            "swingPoivt",
+            "swingPosUTI",
+            "lastPrice",
+            "lastPosUTI",
+            "lastDirection",
+            "uti",
+            "zigUTI",
+            "zigPrice",
+            "lastUptUTI",
+            "lastUptPrice"
+          ],
+          "first": "2021-01-04 09:05:00",
+          "last": "2023-12-29 15:00:00",
+          "nulls": {
+            "swingStatus": 0,
+            "swingPrice": 0,
+            "swingPoivt": 0,
+            "swingPosUTI": 0,
+            "lastPrice": 1,
+            "lastPosUTI": 1,
+            "lastDirection": 0,
+            "uti": 0,
+            "zigUTI": 44751,
+            "zigPrice": 44751,
+            "lastUptUTI": 43877,
+            "lastUptPrice": 43877
+          },
+          "path": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/upstream/i_zig.csv",
+          "sha256": "9c3d43c8bf7c9a0e01506507ef3c367d957d385d00d47f4c297a34007e5588e7"
+        }
+      ]
+    },
+    {
+      "symbol": "i",
+      "kind": "rct",
+      "full_dir": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2023-12-31 20:00:00/RctZigWithStatus/a/c/1/8/a/1/0/c670c763772c3a9ac0dec837be9a7efd4/i.night_end_at_2300",
+      "tables": [
+        {
+          "name": "rct",
+          "rows": 10738,
+          "columns": [
+            "price0",
+            "pivot0",
+            "posUTI0",
+            "price1",
+            "pivot1",
+            "posUTI1"
+          ],
+          "first": "2021-01-04 10:05:00",
+          "last": "2023-12-29 15:00:00",
+          "nulls": {
+            "price0": 0,
+            "pivot0": 0,
+            "posUTI0": 0,
+            "price1": 0,
+            "pivot1": 0,
+            "posUTI1": 0
+          },
+          "path": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/upstream/i_rct.csv",
+          "sha256": "db9293919ea717beb0d8d218063c01d4f71e87793b012eda99cca832e8ef7088"
+        }
+      ]
+    },
+    {
+      "symbol": "i",
+      "kind": "scale",
+      "full_dir": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2023-12-31 20:00:00/ScaleTurnCalendar/5/d/c/a/8/3/d/03a685bc146b1befa80e34582a6de78a2/i.night_end_at_2300",
+      "tables": [
+        {
+          "name": "scale_value1",
+          "rows": 847,
+          "columns": [
+            "value1.x",
+            "value1.y",
+            "value1.xConfirm",
+            "value1.yConfirm"
+          ],
+          "first": "2021-01-04 10:05:00",
+          "last": "2023-12-25 11:00:00",
+          "nulls": {
+            "value1.x": 0,
+            "value1.y": 0,
+            "value1.xConfirm": 0,
+            "value1.yConfirm": 0
+          },
+          "path": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/upstream/i_scale_value1.csv",
+          "sha256": "7f2b057e754a427013877abca107f0bc88146c74bdd2cffd1b78bff659eb21bc"
+        },
+        {
+          "name": "scale_value2",
+          "rows": 157,
+          "columns": [
+            "value2.x",
+            "value2.y",
+            "value2.xConfirm",
+            "value2.yConfirm"
+          ],
+          "first": "2021-01-08 13:50:00",
+          "last": "2023-12-25 11:00:00",
+          "nulls": {
+            "value2.x": 0,
+            "value2.y": 0,
+            "value2.xConfirm": 0,
+            "value2.yConfirm": 0
+          },
+          "path": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/upstream/i_scale_value2.csv",
+          "sha256": "f96243be2d24c836fd62d470d2ecd8fe10c0a466653094f66fb152fe61bf633f"
+        }
+      ]
+    }
+  ],
+  "finished_at": "2026-11-22T17:45:13.701546+00:00"
+}

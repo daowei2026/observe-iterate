@@ -1,0 +1,7 @@
+# 验证及回交边界
+
+E3亲自核实际图与D/C2，E4在接受后冻结准入并正式导出，E5从实际正式文件逐值核同接受图。`construction_snapshot`直接来自同次已接受HTML嵌入CDS；没有因Python构图进程已退出而重跑Feature或构图。原生PlotDataNode持有的CDS已被该HTML序列化，模型id/renderer/列/行数/数据哈希构成最小映射。轴和viewport不会被冒充为原生业务轨迹。
+
+原87b longrun_gate.py及schema字节保持。完整CLI binding()仍固化ChatGPT manager类型，与本Run既有Codex manager不兼容；沿既有披露，用原validated/pro_state/object_ref_fields核原schema/状态/ref，再核实际I/D/最新Binding/token/权限子集/workers空、先发布准确专业对象和manifest。没有改gate、伪造controller receipt或声称完整CLI通过；具体见本C RETURN_VALIDATION.json。
+
+记录分支以gzip无损保存最终HTML及首版档案、正式CDS文件；授权BASE保留原可打开HTML。HTML_ARCHIVES及专业manifest记录压缩前后哈希；不能把首版过密轴当最终接受图。仅本Run professional/D012和calls/C0027有本次写入。

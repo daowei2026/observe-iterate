@@ -1,0 +1,71 @@
+{
+  "stage_code": "M-B",
+  "run_id": "OI-F800-STAT-20261122-01",
+  "call_id": "C0021",
+  "delegation_id": "D009",
+  "位置用法": "任务明确指定",
+  "普通位置或多尺度位置路径": {
+    "类型": "普通位置",
+    "普通位置": [
+      {
+        "position_id": "F800-MB-D009-P001",
+        "SOF 引用": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/FeatureRunResultBinding.json#data_scope",
+        "品种集": [
+          "rb",
+          "hc",
+          "i"
+        ],
+        "开始时间": "2021-01-01",
+        "结束时间": "2023-12-31",
+        "位置来源": "任务明确指定",
+        "采样": "5m",
+        "日历引用": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/FeatureRunResultBinding.json#data_scope/calendar",
+        "缺口与限制": [
+          "开始/结束保留原任务日期粒度，结束边界解释由后续D的日历/PlotSet绑定确定；B未改成新的时间边界。",
+          "原CandidateCaseIndex的点/段及相关对象保持来源身份，尚非图上正式案例；不在B追加典型位置算法或扩窗。",
+          "继承PARTIAL共享理解：内部逐Tick全部轨迹未暴露及800的业务场景解释边界保留；不妨碍本B明确品种/范围。",
+          "Q共享适配影响及其独立数值边界限制仍由原输入传递，本B不运行或放行Q/V。"
+        ]
+      }
+    ]
+  },
+  "特征实例与 SOF 引用": {
+    "sof_name": "TA_updto20240229_DBA",
+    "stk_tlist": "steel",
+    "calendar": "night_end_at_2300",
+    "sampling": "5m",
+    "instance_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/FeatureRunResultBinding.json",
+    "sof_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/FeatureRunResultBinding.json#data_scope",
+    "parameter_instance_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/configuration.json",
+    "parameter_version": "b72095ff100da926474701b74bff7586a74b9770bc81cadc34c23cfe223e5cb3",
+    "code_version": {
+      "frp": "daowei2026/frp@39f02ec4548e68ba8dbd30061afc870546000994",
+      "tis": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767"
+    },
+    "full_result_dir": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2023-12-31 20:00:00/CommonPriceTurnGroupCandidatesFrp/3/9/a/1/9/2/a/4bbf414e0814726d92d156f2fe9b1f968/func",
+    "fields_sha256": "58ff1166df0e4bbdb84f4309b72947ee16de4a075d8992681fd60f46ccfb887c"
+  },
+  "FeatureUnderstandingPackage 引用": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/CurrentFeatureUnderstandingPackage.json",
+  "来源说明": {
+    "明确任务位置来源": [
+      "daowei2026/observe-iterate@87b951bbd15078a2d6353bdd24afe0d8f19c845c:task-inputs/wall-f-parallel-closure-20261122/F_BASE_RUN_INPUT.md#4",
+      "daowei2026/observe-iterate@fca115e5b5d128b08a79f10899d8412f9c8d36c6:longrun/runs/OI-F800-STAT-20261122-01/delegations/D009/DELEGATION.json",
+      "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/FeatureRunResultBinding.json#data_scope"
+    ],
+    "优先级依据": [
+      "daowei2026/observe-iterate@87b951bbd15078a2d6353bdd24afe0d8f19c845c:skills/observation-material-preparation/observation-position-preparation/SKILL.md#输入概览",
+      "daowei2026/observe-iterate@87b951bbd15078a2d6353bdd24afe0d8f19c845c:skills/observation-material-preparation/observation-position-preparation/WORKFLOW.md#2",
+      "daowei2026/observe-iterate@87b951bbd15078a2d6353bdd24afe0d8f19c845c:skills/observation-material-preparation/observation-position-preparation/IO_SPEC.md#1"
+    ],
+    "默认位置处理": "本任务已经明确rb/hc/i和2021—2023，采用明确输入；不将未指定位置时的2021—2022默认范围覆盖该输入。",
+    "多尺度处理": "本任务位置直接按品种集和起止日期承接；没有生成或要求1d→30m→1m→5s→tick节点链，不启用高频多尺度用法。",
+    "既有候选来源": {
+      "question_queue_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/ScenarioQuestionQueue.json",
+      "candidate_index_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/CandidateCaseIndex.json",
+      "preservation": "四问题和七候选全部保留来源；候选点只作原索引来源和范围对齐，不升级为B选择的新正式案例。",
+      "source_alignment_ref": "PositionSourceAlignment.json"
+    }
+  },
+  "未完成位置": [],
+  "阶段状态": "完整"
+}

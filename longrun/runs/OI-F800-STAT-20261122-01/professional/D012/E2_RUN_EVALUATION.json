@@ -1,0 +1,28 @@
+{
+  "运行结果": "实际成功",
+  "实际命令": [
+    "bash",
+    "/dwdhome/fy/BASE_E6_2_copy/run-python.sh",
+    "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D011/run_definition.py",
+    "--output-html",
+    "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/caegraph-E/f800.html"
+  ],
+  "日志": "RUN_ATTEMPT01.log",
+  "退出状态": 0,
+  "候选HTML": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/caegraph-E/f800.html",
+  "HTML_SHA256": "a040570089b88e22771c06837b2a925f64f58422412a0600c737d5211b6b279a",
+  "最终脚本": "原D011完整包，未修改",
+  "实际修改": "无",
+  "处理过的诊断": {
+    "count": 2,
+    "messages": [
+      "FileNotFoundError: [Errno 2] No such file or directory: '/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2023-12-31 20:00:00/CommonPriceTurnGroupCandidatesFrp/3/9/a/1/9/2/a/4bbf414e0814726d92d156f2fe9b1f968/func/common_price_turn_groups.core.v2/[FormationSupport]/supportCoordinate::Int64.dba'",
+      "FileNotFoundError: [Errno 2] No such file or directory: '/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2023-12-31 20:00:00/CommonPriceTurnGroupCandidatesFrp/3/9/a/1/9/2/a/4bbf414e0814726d92d156f2fe9b1f968/func/common_price_turn_groups.core.v2/[FormationOutsideNotice]/outsideCoordinate::Int64.dba'"
+    ],
+    "classification": "原生reader对零行FormationSupport/FormationOutsideNotice可选分支的底层空列读取提示；完整31表公开合同和行数检查通过，未补零、未重算、保留原日志。"
+  },
+  "当前错误及阻断": [],
+  "专业分类与后继": "候选图，进入E3实际核图；成功生成HTML本身不代表接受",
+  "formal_feature_production": false,
+  "workers": []
+}

@@ -1,0 +1,70 @@
+{
+  "parents": [
+    "timestamp",
+    "occurrence",
+    "record_id",
+    "child_id_2"
+  ],
+  "groups": {
+    "life": {
+      "form": "groupReference_referenceLife_idForm",
+      "high": "groupReference_referenceLife_idHigh",
+      "low": "groupReference_referenceLife_idLow",
+      "text": "groupReference_referenceLife_idText"
+    },
+    "revision": {
+      "form": "groupReference_referenceRevision_idForm",
+      "high": "groupReference_referenceRevision_idHigh",
+      "low": "groupReference_referenceRevision_idLow",
+      "text": "groupReference_referenceRevision_idText"
+    },
+    "known": "groupKnownFrom",
+    "original_anchor": "__uti_groupOriginalAnchor",
+    "original_d": "__uti_groupOriginalDeadline",
+    "original_r": "__uti_groupOriginalRevisionEnd",
+    "anchor": "__uti_groupAnchor",
+    "d": "__uti_groupDeadline",
+    "r": "__uti_groupRevisionEnd",
+    "basis": "groupLocalBasis_name",
+    "observation": "groupObservation_name",
+    "coverage": "groupCoverageIncomplete",
+    "closed": "groupClosed"
+  },
+  "kline": {
+    "open": "open",
+    "high": "high",
+    "low": "low",
+    "close": "close",
+    "volume": "volume",
+    "openUti": "openUti",
+    "closeUti": "closeUti"
+  },
+  "selected": {
+    "actual": "actual",
+    "confirmation": "confirmation",
+    "known": "known",
+    "price": "price",
+    "cprice": "confirmation_price",
+    "round": "round_display",
+    "turn": "turn_id",
+    "source_round": "round",
+    "t_known": "raw_known"
+  },
+  "raw": {
+    "actual": "posUTI1",
+    "price": "price1",
+    "event_timestamp": "timestamp"
+  },
+  "labels": {},
+  "participation": {
+    "table": "occurrences_groupFormationParticipation",
+    "duty": "participationDutyClosed",
+    "admission": "participationAdmissionKnown",
+    "handoff": "participationHandoffEnd"
+  },
+  "limits": [
+    "当前U为PARTIAL；逐tick材料准入、未成组pair/组合、first blocker、原生coverage区间NOT_EXPOSED。",
+    "仅公开/已物化结果的历史位置投影；未发行revision的tick不能补成连续状态。",
+    "成员子表不是所有未选转折分母。可选子表空不等于0或失败。"
+  ]
+}
