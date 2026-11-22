@@ -1,0 +1,17 @@
+# D010｜当前39f实例的M-C展示方式准备
+
+issuer_call_id=C0022；issuer=`codex:OI-F800-STAT-20261122-01:manager`；recipient=`codex:OI-F800-STAT-20261122-01:executor:E1`；return_to=`codex:OI-F800-STAT-20261122-01:manager`。复用独立原E1，CODEX_NATIVE_DIRECT，workers=[]；controller核原线程/sol/max/工作区和实际状态后物理派发。D发布不表示已送达或开始专业工作。
+
+唯一专业Skill `daowei2026/observe-iterate@87b951bbd15078a2d6353bdd24afe0d8f19c845c:skills/observation-material-preparation/caegraph-display-preparation/SKILL.md`，同版WORKFLOW/IO_SPEC见JSON，按 `daowei2026/observe-iterate@87b951bbd15078a2d6353bdd24afe0d8f19c845c:control/02_L1_观察材料准备流程.md` 的C阶段完成原C1/C2/C3；不把各内部步骤改造成新Skill，不由manager另写图形设计、方法或Gate。
+
+原E1的B回交 `daowei2026/observe-iterate@a2470161d8778626dc2ae0f027f5f7000be93c7c:longrun/runs/OI-F800-STAT-20261122-01/calls/C0021/PRO_RETURN.json` 已消费。B完整原件 `daowei2026/observe-iterate@4d429ccb310452467b78b09802c48c9adbc47be5:longrun/runs/OI-F800-STAT-20261122-01/professional/D009/ObservationPositionPreparationResult.json`、`daowei2026/observe-iterate@4d429ccb310452467b78b09802c48c9adbc47be5:longrun/runs/OI-F800-STAT-20261122-01/professional/D009/OrdinaryPositions.json` 及PositionSourceAlignment/INPUT_BINDING保留；位置为任务明确rb/hc/i 5m 2021—2023、TA_updto20240229_DBA/night_end_at_2300/steel，供后续D正式绑定。C不是B位置重选；C3仍按原Skill不固化B最终位置或真实外层实例。
+
+当前共享理解 `daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/CurrentFeatureUnderstandingPackage.json`、只读实例 `daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/FeatureRunResultBinding.json` 及原字段/场景输入见JSON。当前FRP `39f02ec4548e68ba8dbd30061afc870546000994`、TIS `2f460d663d821cf2ba25555eda13e78b697d0767`，配置SHA-256 `b72095ff100da926474701b74bff7586a74b9770bc81cadc34c23cfe223e5cb3`。有效D008 X/G不重跑，原最小U及PARTIAL限制不重做/升格；C只消费已确认语义，真实不清处按原Skill定向回流，不凭字段名补造业务含义。
+
+原Skill要求的`daowei2026/uplot@e6.2/CAEGraph使用手册.md`已解析为精确原件 `daowei2026/uplot@0a4fcd54059782572a3f7e82fad041121e8c65ad:CAEGraph使用手册.md`；当前e6.2分支的GitHub API与只读ls-remote均为`0a4fcd54059782572a3f7e82fad041121e8c65ad`。手册blob `f426390409bd141accf389ff5427850160d7d173`、60101字节、SHA-256 `f7dd1061a2b170ec4cfb0a508afd737e195e7ec16db269e5655b63dc06591c19`，读取来源/锁定证明见本C CAEGRAPH_SOURCE_LOCK。原E1仍须亲自按C2A直接阅读该原件相关章节，必要时查同一准确uplot版本源码，不以本锁定元数据或二手摘要替代阅读；manager没有执行C2A/能力判断。
+
+专业输出、HTML与原型同步迭代、复杂点处理和可注入代码合同全沿原Skill。C2预览可按原Skill使用示意/真实样例或只读实例，须记录预览绑定；不是B全范围最终图或ObservationMaterialPackage DATA_READY。C3不产生另一份展示语义，D/E才做真实实例/位置正式集成、核图与正式取数。原四项场景问题和七个candidate-only来源保留，不从预期图选择正式正反例/冻结预期。
+
+权限仅为最新Binding `daowei2026/observe-iterate@3dc11a9dbf39e181b3c6a3051419a90e46b92aac:longrun/runs/OI-F800-STAT-20261122-01/RUN_BINDING.json`、Owner批准 `daowei2026/observe-iterate@2fa5c26a739d8d97a733f6a7581092a271724e6e:longrun/runs/OI-F800-STAT-20261122-01/owner-decisions/F800-MP-002/OWNER_APPROVAL.original.txt`/`daowei2026/observe-iterate@2fa5c26a739d8d97a733f6a7581092a271724e6e:longrun/runs/OI-F800-STAT-20261122-01/owner-decisions/F800-MP-002/OWNER_AUTHORIZATION.md` 及原GO中的分析/Run记录子集；没有formal_feature_run、Feature行为实施或代码提交采用权限，不自行扩展uplot工具。仅允许分析/预期HTML/原型及记录写入既有授权面。Q共享适配/独立数值边界限制继续传递，不运行/释放Q/V，不改未批准WALL M001；新超提案正式Feature行为仍须新确认。
+
+当前GF001/002在D008已关闭，GlobalProfileGate=PASS_TO_SCENARIO_REVIEW。原C0020释放后继审查 `daowei2026/observe-iterate@fca115e5b5d128b08a79f10899d8412f9c8d36c6:longrun/runs/OI-F800-STAT-20261122-01/calls/C0020/RELEASE_SUCCESSOR_REVIEW.md` 继续有效，本D只推进既有场景材料前置；回原生C结果/阶段状态及V2 Return，原manager据实消费后再签既有D集成/E和适用S1/S2。无新Owner问题，无线程创建、其他聊天消息或W。
