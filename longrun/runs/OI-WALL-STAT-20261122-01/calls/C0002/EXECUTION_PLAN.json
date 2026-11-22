@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "project": {
+    "id": "oi-wall-stat-20261122-01",
+    "title": "WALL 本 Run 记录"
+  },
+  "task": {
+    "id": "d001-wall-u-current",
+    "title": "D001 WALL 当前实现理解核对与回交",
+    "type": "engineering",
+    "monitoring": {
+      "scope": "general"
+    },
+    "completion_gate": "按指定 Skill 形成可追溯 FeatureUnderstandingPackage，专业产物先发布取得 exact refs，再以独立提交发布 C0002 PRO_RETURN。仅代表 D001 自检完成，manager 尚待消费。"
+  },
+  "phases": [
+    {
+      "id": "understanding",
+      "title": "当前理解核对",
+      "steps": [
+        {
+          "id": "verify-inputs",
+          "title": "核准原始委派与输入",
+          "acceptance": "精确 D001、Invocation、Skill、适用补充、GO、Binding 与业务输入已读取并核对来源。",
+          "weight": 1
+        },
+        {
+          "id": "verify-delta",
+          "title": "核对当前锁定实现的受影响事实",
+          "acceptance": "D1/D2/D4、producer 目标边界、参数、输出字段及所需最小计数单位有固定源码证据，未知项已具名。",
+          "weight": 3
+        },
+        {
+          "id": "publish-package",
+          "title": "形成并发布原生理解包",
+          "acceptance": "理解包和自检记录覆盖 Skill 完成条件，专业产物提交推送并以精确引用读回。",
+          "weight": 2
+        },
+        {
+          "id": "return",
+          "title": "独立提交发布专业回交",
+          "acceptance": "C0002 PRO_RETURN 通过原 V2 schema，准确回原 manager，引用已发布专业产物且无 W；独立提交推送成功。",
+          "weight": 1
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "schema": "d001-self-check/v1",
+  "observed_at": "2026-11-22T09:06:13.290285+00:00",
+  "run_id": "OI-WALL-STAT-20261122-01",
+  "call_id": "C0002",
+  "delegation_id": "D001",
+  "schema_ref": "daowei2026/observe-iterate@87b951bbd15078a2d6353bdd24afe0d8f19c845c:longrun/contracts/longrun_schema_v2.json",
+  "schema_sha256": "deace56513917795fd16b468f9ea4edf8e7868122687b8fb44cff76ca734a8a2",
+  "checks": [
+    {
+      "check": "原 V2 binding schema",
+      "passed": true
+    },
+    {
+      "check": "原 V2 invocation schema",
+      "passed": true
+    },
+    {
+      "check": "原 V2 delegation schema",
+      "passed": true
+    },
+    {
+      "check": "原生包字段、YAML 及表内记录引用可解析",
+      "passed": true
+    },
+    {
+      "check": "原 D 权限、接收／回交身份和唯一记录分支",
+      "passed": true
+    },
+    {
+      "check": "28 项默认声明与 BASE 对应实现逐项一致，未运行 Feature",
+      "passed": true
+    },
+    {
+      "check": "已观察的 TIS 源文件与原有工作树修改保持不变",
+      "passed": true
+    },
+    {
+      "check": "Owner、Binding、原 D 和 Invocation 原件未改写",
+      "passed": true
+    }
+  ],
+  "native_completion_criteria": [
+    {
+      "criterion": "当前实例对应实现已定位或明确阻塞",
+      "status": "固定提交与可解析默认实例引用已定位；实际加载绑定缺口 U-C1"
+    },
+    {
+      "criterion": "对象、身份、状态和 occurrence 已区分",
+      "status": "已说明，BO-C1/ST-C0..3/OC-C1..4"
+    },
+    {
+      "criterion": "主输出和中间结果按当前目标分类",
+      "status": "已说明，producer 四类主 occurrence；BASE FRP 目标不替代当前目标"
+    },
+    {
+      "criterion": "形成、更新、确认、结束及引用关系可追溯",
+      "status": "PR-C1..8；没有臆造独立确认事件"
+    },
+    {
+      "criterion": "参数定义、派生和消费关系可支持后继",
+      "status": "28 项默认声明静态核对与 BASE PA-01..31 适用映射"
+    },
+    {
+      "criterion": "结果字段映射与缺失字段具名",
+      "status": "RR-C1..8；实际物化字段 U-C3 待补"
+    },
+    {
+      "criterion": "所有未确认项未写成确定事实",
+      "status": "U-C1..5；运行／结果和 findings 无完成声明"
+    }
+  ],
+  "native_completion_status": "PARTIAL",
+  "professional_state": "IN_PROGRESS",
+  "formal_feature_executed": false,
+  "result_statistics_computed": false,
+  "formal_behavior_changed": false,
+  "issued_orders": [],
+  "manager_has_consumed_return": false,
+  "original_gate_note": "C0001 已保存原 gate 对 codex manager 和授权 quote 的兼容限制；本 C 未宣称该 gate 通过，未修改该工具或原件。",
+  "format_check": {
+    "authored_files_diff_check": "PASS",
+    "raw_evidence_excluded": "longrun/runs/OI-WALL-STAT-20261122-01/calls/C0002/checks/WORKSPACE_PREEXISTING_DIFF.patch",
+    "reason": "原始 git diff 的上下文空行带单个空格，且原输入可含尾空行；保持原证据逐字及其 SHA，不为格式检查改写。",
+    "full_check_original_exit": 2
+  }
+}

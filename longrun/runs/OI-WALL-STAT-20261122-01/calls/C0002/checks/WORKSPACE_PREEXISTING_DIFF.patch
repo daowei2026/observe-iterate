@@ -1,0 +1,131 @@
+diff --git a/frpExample/STCalendar.py b/frpExample/STCalendar.py
+index bb67cfb..fa8edcd 100644
+--- a/frpExample/STCalendar.py
++++ b/frpExample/STCalendar.py
+@@ -8,21 +8,35 @@ __all__ = [
+ 
+ # 把贴近转折的adt结果转成DataFrame
+ # 不能在此处合并，否则因为两个df长度不一致，为了填充nan值会强制把int类型转换为float类型
++def _scaleTurnValueADT2DF(value, prefix):
++    columns = [
++        f'{prefix}.x',
++        f'{prefix}.y',
++        f'{prefix}.xConfirm',
++        f'{prefix}.yConfirm',
++    ]
++    if len(value.ts) == 0:
++        # 零 occurrence 是正常业务结果。底层此时是 EmptyDbaStruct，
++        # 没有 actual2D/confirm2D 字段；仍应返回合同完整的空表。
++        return pd.DataFrame(columns=columns, index=value.ts).astype({
++            columns[0]: 'int64',
++            columns[1]: 'float64',
++            columns[2]: 'int64',
++            columns[3]: 'float64',
++        })
++
++    dba_value = value.value.root_seq
++    return pd.DataFrame({
++        columns[0]: dba_value['actual2D']['x'],
++        columns[1]: dba_value['actual2D']['y'],
++        columns[2]: dba_value['confirm2D']['x'],
++        columns[3]: dba_value['confirm2D']['y'],
++    }, index=value.ts)
++
++
+ def scaleTurnADT2DF(self):
+-    dbav1 = self.value1.value.root_seq
+-    dbav2 = self.value2.value.root_seq
+-    df1 = pd.DataFrame({
+-        'value1.x': dbav1['actual2D']['x'],
+-        'value1.y': dbav1['actual2D']['y'],
+-        'value1.xConfirm': dbav1['confirm2D']['x'],
+-        'value1.yConfirm': dbav1['confirm2D']['y'],
+-    }, index=self.value1.ts)
+-    df2 = pd.DataFrame({
+-        'value2.x': dbav2['actual2D']['x'],
+-        'value2.y': dbav2['actual2D']['y'],
+-        'value2.xConfirm': dbav2['confirm2D']['x'],
+-        'value2.yConfirm': dbav2['confirm2D']['y'],
+-    }, index=self.value2.ts)
++    df1 = _scaleTurnValueADT2DF(self.value1, 'value1')
++    df2 = _scaleTurnValueADT2DF(self.value2, 'value2')
+ #     dfs = [df1, df2]
+ #     return pd.concat(dfs, axis=1, join="outer")
+     return {"value1":df1,"value2":df2}
+@@ -127,4 +141,4 @@ class FiltedScaleTurnCalendar(FrpMixIn, AbstractParamFao):
+         df1 = dfs["value1"]
+         df2 = dfs["value2"]
+         df = pd.concat([df1,df2], axis=1, join="inner")
+-        return df
+\ No newline at end of file
++        return df
+diff --git a/hf/prel0/wall_assembler.py b/hf/prel0/wall_assembler.py
+index 8307064..65cd4be 100644
+--- a/hf/prel0/wall_assembler.py
++++ b/hf/prel0/wall_assembler.py
+@@ -22,6 +22,7 @@ import functools
+ import time
+ 
+ from mquant.tis.t0.gen.attr import minimal_changes_of
++from ..mc import trading_days
+ 
+ from .tick_quote_context import _CHECKPOINT_TYPE_CODE
+ from .tick_quote_context import _EVENT_TYPE_CODE
+@@ -428,6 +429,45 @@ def _wall_lifecycle_receipt_schema():
+     )
+ 
+ 
++def _exclude_empty_calendar_padding(cc_df, trading_day_ranges, logger=None):
++    """排除分时段首个半秒的全空日历占位，不丢弃任何有效行情。"""
++    index = cc_df.index
++    if len(index) == 0:
++        return cc_df
++    quote_columns = ["price", "buy_price1", "buy_vol1", "sell_price1", "sell_vol1"]
++    half_second = pd.Timedelta(milliseconds=500)
++    segment_start = np.r_[True, np.diff(index.asi8) > half_second.value]
++    candidates = np.flatnonzero(segment_start)
++    empty = cc_df.iloc[candidates][quote_columns].isna().all(axis=1).to_numpy()
++    excluded = []
++    for position in candidates[empty]:
++        if (position + 1 < len(index)
++                and index[position + 1] - index[position] == half_second
++                and cc_df.iloc[position + 1][quote_columns].notna().all()):
++            excluded.append(int(position))
++    covered = np.zeros(len(cc_df), dtype=bool)
++    for duration in trading_day_ranges:
++        start = int(index.searchsorted(pd.Timestamp(duration.start), side="left"))
++        stop = int(index.searchsorted(pd.Timestamp(duration.stop), side="right"))
++        covered[start:stop] = True
++    covered[excluded] = True
++    if not covered.all():
++        raise ValueError("交易日区间外存在有效行情或非半秒开盘占位，拒绝丢弃输入")
++    if not excluded:
++        return cc_df
++    keep = np.ones(len(cc_df), dtype=bool)
++    keep[excluded] = False
++    # 仅复制本 Feature 消费的列；原始 DBA、空占位及其时间轴保持原样。
++    selected = cc_df.loc[keep, quote_columns + ["linear_ts"]].copy()
++    timestamps = [stamp.isoformat() for stamp in index[excluded]]
++    selected.attrs.update(cc_df.attrs)
++    cut = source_scope(CurrSymbol.sym(), cc_df, calendar=CurrCalendar.name(True))["market_source_cut"]
++    selected.attrs["market_source_cut"] = cut + "|excluded-empty-calendar-padding:" + ",".join(timestamps)
++    if logger is not None:
++        logger.warning("Wall 输入排除全空半秒日历占位 %d 行: %s", len(timestamps), timestamps)
++    return selected
++
++
+ class WallAssembler(P1DbaExportMixin, DataFrameMixIn, GeneralSymbolFao, WallAssemblerWrapperSupport):
+     """
+     Author: OpenAI Codex
+@@ -709,6 +749,11 @@ class WallAssembler(P1DbaExportMixin, DataFrameMixIn, GeneralSymbolFao, WallAsse
+         thin_contact_frac_end=0.6,
+     )
+ 
++    def _load_cc_df(self):
++        cc_df = super()._load_cc_df()
++        ranges = tuple(duration for _day, _contract, duration in trading_days())
++        return _exclude_empty_calendar_padding(cc_df, ranges, logger=self.logger)
++
+     def _impl(self):
+         sym = CurrSymbol.sym()
+ 
