@@ -1,51 +1,115 @@
 # WALL / F 并行统计闭环｜任务输入
 
-> 状态：`PREPARED_NOT_GO`。WALL 远端修复代码、两条线的正式用例／品种／时间／尺度／工作区已经锁定；F 新参数实例、真实 Run 身份、必要版本绑定和正式授权仍待补齐。未满足真实 GO 条件前不得注册对应 Run。
+> **状态：`PREPARED_RUNTIME_PREFLIGHT_REQUIRED`。** 业务目标、Owner prompt、WALL 修复版本、F 的 FRP 版本与 `observation_multiple=800` 已锁定；尚未发布真实 GO，也未创建物理 Codex 线程。WALL 可在现场预检通过后先启动；F 必须先对账并释放 `/dwdhome/fy/BASE_E6_2_copy`。
 
 ## 1. 目标
 
-并行安排两条基础 Feature 线：
-
 ```text
-WALL 最新修正版
-→ 按 EAW P1、rb/m、2021 全年正式范围运行／严格验证复用
+WALL 最终修正版
+→ rb/m、2021 全年正式实例
 → 重新统计
+→ 复验 D1/D2/D4、量化 D3
 → 继续找明显不合理点
-→ 新修改先回 Owner 确认
 → 当前深度闭环
 
-F 新参数实例
-→ 按 U2/U3 F 用例、rb/hc/i、5m、2021—2023 正式范围运行
-→ 重新统计
+F observation_multiple=800
+→ rb/hc/i、5m、2021—2023 正式实例
+→ 重新统计全部转化和期限影响
 → 继续找明显不合理点
-→ 新修改先回 Owner 确认
 → 当前深度闭环
 ```
 
-两条基础线均形成可释放版本后，再启动各自下游。
+两条基础线都形成可释放版本后，再启动各自下游。
 
-## 2. 文件
+## 2. 首先阅读
+
+[启动就绪检查与来源地图](START_READINESS_AND_SOURCE_MAP.md) 是实际主控的第一入口。它说明：
+
+- 当前哪些内容已经锁定；
+- 哪些仍是现场事实；
+- 每个问题去哪里找原件；
+- WALL 为什么可以先行；
+- F 为什么暂时不能直接占用原工作区；
+- 八项正式启动预检。
+
+## 3. 文件
 
 | 文件 | 用途 |
 |---|---|
-| [OWNER_PROMPT_EXTRACT.md](OWNER_PROMPT_EXTRACT.md) | 从原 Chat、工作群和当前对话提炼的 Owner 原始意图、锁定范围、纠偏和确认边界 |
-| [OWNER_INTENT_AND_RUN_PLAN.md](OWNER_INTENT_AND_RUN_PLAN.md) | 两线并行、当前深度和修改确认路由 |
-| [WALL_BASE_RUN_INPUT.md](WALL_BASE_RUN_INPUT.md) | WALL 基础 Run 输入；已锁定远端修复提交、用例、范围和工作区 |
-| [F_BASE_RUN_INPUT.md](F_BASE_RUN_INPUT.md) | F 基础 Run 输入；已锁定用例、范围和工作区，等待新参数实例 |
-| [KNOWN_FINDINGS.md](KNOWN_FINDINGS.md) | 当前已知问题及新 Run 中的状态要求 |
-| [DOWNSTREAM_DEPENDENCIES.md](DOWNSTREAM_DEPENDENCIES.md) | 联合 Barrier、WALL 下游、F→Q→V |
-| [VERSION_WORKSPACE_LOCKS.md](VERSION_WORKSPACE_LOCKS.md) | 版本、参数、工作区和授权锁 |
+| [START_READINESS_AND_SOURCE_MAP.md](START_READINESS_AND_SOURCE_MAP.md) | 启动判断、来源地图、物理预检和运行顺序 |
+| [OWNER_PROMPT_EXTRACT.md](OWNER_PROMPT_EXTRACT.md) | Owner 历史 prompt、纠偏和优先级的完整提炼 |
+| [OWNER_INPUT_UPDATE_20261122.md](OWNER_INPUT_UPDATE_20261122.md) | 当前新增的 F 分支、800 实例和启动检查要求 |
+| [OWNER_INTENT_AND_RUN_PLAN.md](OWNER_INTENT_AND_RUN_PLAN.md) | 两线并行、当前深度和停止条件 |
+| [WALL_BASE_RUN_INPUT.md](WALL_BASE_RUN_INPUT.md) | WALL 精确版本、默认实例、范围、来源和统计问题 |
+| [F_BASE_RUN_INPUT.md](F_BASE_RUN_INPUT.md) | F 精确版本、800 构造、范围、来源和统计问题 |
+| [KNOWN_FINDINGS.md](KNOWN_FINDINGS.md) | 当前已知 finding 的状态 |
+| [DOWNSTREAM_DEPENDENCIES.md](DOWNSTREAM_DEPENDENCIES.md) | 联合 Barrier、WALL 下游和 F→Q→V |
+| [VERSION_WORKSPACE_LOCKS.md](VERSION_WORKSPACE_LOCKS.md) | 所有版本、工作区、线程和授权锁 |
 
-## 3. Owner 已锁定的正式运行范围
+## 4. 已锁定版本
 
-| 线 | 用例 | 品种 | 正式时间／尺度 | 工作区 |
-|---|---|---|---|---|
-| WALL | EAW P1 integrated / WALL | `rb, m` | `2021-01-01..2021-12-31`，当前正式 tick 输入，bid/ask | `/dwdhome/fy/BASE_E6_2` |
-| F | U2/U3 F-Q-V 用例中的 F | `rb, hc, i` | `2021-01-01..2023-12-31`，5m | `/dwdhome/fy/BASE_E6_2_copy` |
+### WALL
 
-AI 不得自行改变正式用例、品种、时间、尺度或工作区。允许在锁定范围内做局部诊断，但局部结果不能替代正式运行结果。若正式范围不可运行，报告阻断和方案，等待 Owner 决定。
+```text
+daowei2026/tis@6618d4d147d6ebbe634e61facddf2c9a0b996982
+WallAssembler default params
+rb / m
+2021-01-01..2021-12-31
+/dwdhome/fy/BASE_E6_2
+```
 
-## 4. 专业来源
+### F
+
+```text
+daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574
+daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767
+profile.observation_multiple = 800
+rb / hc / i
+5m
+2021-01-01..2023-12-31
+/dwdhome/fy/BASE_E6_2_copy
+```
+
+旧 F `make_features(...)` 入口本身不带 `observation_multiple` 形参；必须按 `F_BASE_RUN_INPUT.md` 的正常参数对象构造 F800，并在运行前回读完整配置。原样执行旧脚本会使用默认 6。
+
+## 5. 运行 profile
+
+两条基础 Run 均采用：
+
+```yaml
+execution_profile: CODEX_NATIVE_DIRECT
+controller_skill: daowei2026/cgpterm@fc966bcf5441701182339c992865504692f3a466:.agents/skills/observe-iterate-longrun-v2-codex-native-controller/SKILL.md
+manager: fresh Codex thread per run
+executor: fresh Codex thread per run
+workers: []
+```
+
+manager 与 executor 是不同线程。manager 只协调，不因同处 Linux 工作区而直接做专业执行。
+
+## 6. 当前具名阻断
+
+### F 工作区冲突
+
+当前 Registry 仍登记：
+
+```text
+OI-U2-V-OBS-20261120-01
+→ /dwdhome/fy/BASE_E6_2_copy
+```
+
+必须先核旧 V Run 是否已经真实结束并释放线程、进程和写面。不能擅自换工作区，也不能直接覆盖。
+
+### 尚未发生的事实
+
+以下尚未发生，不能在准备文档中假报：
+
+- 正式 OWNER GO；
+- 新 Run 的 RUN_BINDING / RUN_RESOURCE_BINDING；
+- Codex manager/executor thread 创建与回读；
+- Linux 工作区实时独占检查；
+- 当前结果包身份和 SHA 核验。
+
+## 7. 专业来源
 
 采用：
 
@@ -53,51 +117,18 @@ AI 不得自行改变正式用例、品种、时间、尺度或工作区。允�
 - `skills/feature-understanding/` 及业务对象判别补充；
 - `feature-global-behavior-profiling`；
 - `business-discrepancy-diagnosis`；
-- 只有本轮确实需要正式标定时才采用 `feature-instance-calibration`；
+- 必要时 `feature-instance-calibration`；
 - `STATISTICS_DRIVEN_PRACTICE.md`。
 
-历史 Chat 是 Owner prompt、思考过程和已知问题来源；当前代码、参数和运行结果仍须精确绑定：
+历史 Chat 是 Owner 思考过程、纠偏和 finding 来源，不替代当前代码、参数和正式运行结果。
 
-- `ai_chat/根据统计找不合理点/WALL 特征：统计线闭环.md`；
-- `ai_chat/根据统计找不合理点/F特征：统计线闭环.md`；
-- `ai_chat/根据统计找不合理点/wall特征，修frp代码.md`。
+## 8. 修改边界
 
-## 5. 已锁定的 WALL 代码版本
+Codex 可以自主运行、统计、分析、写诊断脚本、准备候选 patch 和新旧对照；若要正式改变代码、参数、规则、数据处理或输出合同，必须：
 
 ```text
-branch: codex/wall-output-consistency-20261121
-commit: 6618d4d147d6ebbe634e61facddf2c9a0b996982
+ModificationProposal
+→ Owner 确认
+→ 才正式采用
+→ 重跑和重统计
 ```
-
-该提交包含 D1、D2、D4 的修复链。新 Run 仍须核对实例、参数、数据和最终统计；远端提交存在不等于本特征已经通过释放 Gate。
-
-## 6. 修改确认边界
-
-Codex 可以直接运行、统计、分析、形成复现和修改方案。任何新的正式代码、参数、配置、业务规则、数据处理或范围修改，必须先形成 `ModificationProposal` 并经 Owner 确认；确认后才实施和采用。
-
-此前已经由 Owner 确认并提交的 WALL D1、D2、D4，以及 Owner 后续提供并锁定的 F 新参数实例，属于当前输入，不重复确认。
-
-## 7. Feature 理解复用
-
-Owner 不需要先整理上一次运行的理解材料。执行 AI 从已有 WALL FeatureUnderstandingPackage、归档 Chat、旧运行产物和当前源码出发，只补本轮变化相关的最小差异；不得把“完整重做一遍理解包”设成启动前提。
-
-## 8. 运行 profile
-
-两个基础 Run 均采用：
-
-```yaml
-execution_profile: CODEX_NATIVE_DIRECT
-manager: Codex new thread per run
-executor: Codex new thread per run
-workers: []
-```
-
-WALL、F 使用上表中不同且不重叠的 Linux 工作区。主控按现有多 Run 控制器交错推进。
-
-## 9. 当前仍需补齐
-
-- 两个真实 `run_id` 与正式 GO；
-- WALL 的精确构造／执行入口、参数实例绑定和是否复用已有最终结果包（由锁定 EAW 用例和当前代码解析，不要求 Owner重新整理业务理解）；
-- F 新参数实例的字段、值、配置文件、代码版本和 SHA；
-- WALL 完整下游 Feature 图；
-- 允许提交／推送／写缓存的真实 grants。
