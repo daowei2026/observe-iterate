@@ -1,0 +1,71 @@
+{
+  "checked_at": "2026-11-22T08:51:21.721407+00:00",
+  "run_id": "OI-WALL-STAT-20261122-01",
+  "call_id": "C0001",
+  "schema_ref": "daowei2026/observe-iterate@87b951bbd15078a2d6353bdd24afe0d8f19c845c:longrun/contracts/longrun_schema_v2.json",
+  "schema_results": [
+    {
+      "kind": "binding",
+      "result": "PASS",
+      "errors": []
+    },
+    {
+      "kind": "invocation",
+      "result": "PASS",
+      "errors": []
+    },
+    {
+      "kind": "delegation",
+      "result": "PASS",
+      "errors": []
+    }
+  ],
+  "native_profile_identity_and_current_d_authority": "PASS_MANAGER_SCOPE_ONLY",
+  "manager_identity": "codex:OI-WALL-STAT-20261122-01:manager",
+  "executor_logical_recipient": "codex:OI-WALL-STAT-20261122-01:executor:E1",
+  "executor_physical_thread_exists_at_dispatch": false,
+  "workers": [],
+  "current_d_operations": [
+    "run_record_write"
+  ],
+  "current_d_allowed_writes": [
+    "longrun/runs/OI-WALL-STAT-20261122-01/**"
+  ],
+  "authority_basis": "Owner真实授权原文与派工原件所确认的operation编码/Run路径映射；未按旧工具改写身份或扩大授权。",
+  "quote_rule_compatibility": [
+    {
+      "operation": "formal_feature_run",
+      "authority_quote_in_owner": true,
+      "locked_gate_exact_scope_tokens_missing": [
+        "formal_feature_run",
+        "/dwdhome/fy/BASE_E6_2",
+        "/dwdhome/fy/BASE_E6_2"
+      ]
+    },
+    {
+      "operation": "run_result_statistics_analysis_write",
+      "authority_quote_in_owner": true,
+      "locked_gate_exact_scope_tokens_missing": [
+        "run_result_statistics_analysis_write",
+        "/dwdhome/fy/BASE_E6_2",
+        "/dwdhome/fy/BASE_E6_2"
+      ]
+    },
+    {
+      "operation": "run_record_write",
+      "authority_quote_in_owner": true,
+      "locked_gate_exact_scope_tokens_missing": [
+        "run_record_write",
+        "daowei2026/observe-iterate@codex/oi-wall-stat-20261122-01",
+        "longrun/runs/OI-WALL-STAT-20261122-01/**"
+      ]
+    }
+  ],
+  "not_established": [
+    "controller发送回执",
+    "E1物理线程及模型/推理强度",
+    "Feature实际加载和参数验证",
+    "共享缓存/数据库/结果目录单写者",
+    "任何专业完成状态"
+  ]
+}
