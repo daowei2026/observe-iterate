@@ -27,6 +27,8 @@ F 工作区：与 Registry 中旧 V Run 存在待对账占用
 
 WALL 不需要为了等待 F 而停住。若 `/dwdhome/fy/BASE_E6_2` 现场预检通过，可以先开 WALL；F 在旧 V Run 和 `/dwdhome/fy/BASE_E6_2_copy` 释放后再并行接入。
 
+这里的“并行安排”是两个 Run 可以独立推进，不等于两个完整生产计算必须同一时刻抢共享存储和内存。如果现场证明两个 X 阶段会争用同一原始数据、数据库、缓存或内存，可以保持两个 Run 都有效，但把重型全量生产阶段错峰；另一条线的理解、统计读回或诊断工作仍可继续。不能因为“并行”而制造两个写者。
+
 ## 2. 唯一入口和阅读顺序
 
 实际主控和两个 Run 的 manager 不需要在仓库里自由搜索。按下列顺序读取：
@@ -34,14 +36,15 @@ WALL 不需要为了等待 F 而停住。若 `/dwdhome/fy/BASE_E6_2` 现场预�
 ```text
 1. 本文件
 2. OWNER_PROMPT_EXTRACT.md
-3. OWNER_INTENT_AND_RUN_PLAN.md
-4. WALL_BASE_RUN_INPUT.md 或 F_BASE_RUN_INPUT.md
-5. KNOWN_FINDINGS.md
-6. control-v0.3/README.md
-7. control-v0.3/01_L0_统计驱动的单特征闭环.md
-8. 对应 Skill 与统计实践补充
-9. VERSION_WORKSPACE_LOCKS.md
-10. Codex-native cgpterm controller Skill
+3. OWNER_INPUT_UPDATE_20261122.md
+4. OWNER_INTENT_AND_RUN_PLAN.md
+5. WALL_BASE_RUN_INPUT.md 或 F_BASE_RUN_INPUT.md
+6. KNOWN_FINDINGS.md
+7. control-v0.3/README.md
+8. control-v0.3/01_L0_统计驱动的单特征闭环.md
+9. 对应 Skill 与统计实践补充
+10. VERSION_WORKSPACE_LOCKS.md
+11. Codex-native cgpterm controller Skill
 ```
 
 不要从历史聊天自行拼任务范围；历史 Chat 只在相应输入文件点名的位置作为思考和证据来源。
@@ -52,7 +55,8 @@ WALL 不需要为了等待 F 而停住。若 `/dwdhome/fy/BASE_E6_2` 现场预�
 
 | 需要找什么 | 唯一入口 |
 |---|---|
-| Owner prompt 的提炼与优先级 | `task-inputs/wall-f-parallel-closure-20261122/OWNER_PROMPT_EXTRACT.md` |
+| Owner 历史 prompt 的提炼与优先级 | `task-inputs/wall-f-parallel-closure-20261122/OWNER_PROMPT_EXTRACT.md` |
+| 当前新增的 F 分支、800 实例与启动检查要求 | `OWNER_INPUT_UPDATE_20261122.md` |
 | 两线并行、停止深度、联合 Barrier | `OWNER_INTENT_AND_RUN_PLAN.md` |
 | 当前已知 finding | `KNOWN_FINDINGS.md` |
 | 下游依赖 | `DOWNSTREAM_DEPENDENCIES.md` |
@@ -113,13 +117,15 @@ F FRP@ac192751...
 F TIS@2f460d66...
 ```
 
-### P2｜工作区占用
+### P2｜工作区占用与资源安排
 
 在真实 Linux 主机核：
 
 - `/dwdhome/fy/BASE_E6_2`；
 - `/dwdhome/fy/BASE_E6_2_copy`；
-- realpath、进程、线程、Git 状态、共享输出和缓存。
+- realpath、进程、线程、Git 状态、共享输出和缓存；
+- 磁盘、内存和共享存储 I/O 是否允许两个重型 X 同时运行；
+- 所有会写入的数据库、缓存和结果目录是否只有一个写者。
 
 F 必须先对账 `OI-U2-V-OBS-20261120-01`。旧 V Run 未真实结束时，不得在同一路径启动 F。
 
@@ -198,7 +204,7 @@ GO 必须覆盖：
 → F800 配置回读 → X → G → finding 闭环
 ```
 
-一条线等待 Owner 修改确认时，另一条线继续无冲突工作。
+一条线等待 Owner 修改确认时，另一条线继续无冲突工作。两个 Run 可以同时处于活跃状态，但主控可根据真实资源占用对重型全量生产步骤错峰，不改变各自正式范围和结果。
 
 ## 6. 不应再次询问 Owner 的已知事项
 
