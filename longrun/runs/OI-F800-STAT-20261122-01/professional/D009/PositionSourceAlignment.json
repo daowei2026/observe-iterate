@@ -1,0 +1,294 @@
+{
+  "binding_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/FeatureRunResultBinding.json",
+  "question_queue_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/ScenarioQuestionQueue.json",
+  "candidate_index_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/CandidateCaseIndex.json",
+  "role": "输入来源和范围/坐标对齐，非新增案例选择或业务判断",
+  "questions": [
+    {
+      "question_id": "F800-SQ-001",
+      "priority": "HIGH",
+      "status": "SCENARIO_INTERPRETATION_REMAINS_OPEN"
+    },
+    {
+      "question_id": "F800-SQ-002",
+      "priority": "MEDIUM",
+      "status": "SCENARIO_INTERPRETATION_REMAINS_OPEN"
+    },
+    {
+      "question_id": "F800-SQ-003",
+      "priority": "HIGH",
+      "status": "SCENARIO_INTERPRETATION_REMAINS_OPEN"
+    },
+    {
+      "question_id": "F800-SQ-004",
+      "priority": "MEDIUM",
+      "status": "SCENARIO_INTERPRETATION_REMAINS_OPEN"
+    }
+  ],
+  "candidates": [
+    {
+      "source_candidate_id": "F800-SQ-001-C1",
+      "source_question_id": "F800-SQ-001",
+      "priority": "HIGH",
+      "symbols": [
+        "i"
+      ],
+      "start_time": "2021-01-04 21:15:00",
+      "end_time": "2021-01-05 09:40:00",
+      "original_object_ids": [
+        "i/value1/72049199"
+      ],
+      "source_candidate_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/CandidateCaseIndex.json#F800-SQ-001-C1",
+      "source_question_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/ScenarioQuestionQueue.json#F800-SQ-001",
+      "within_position_id": "F800-MB-D009-P001",
+      "object_scope_match": true,
+      "time_scope_match": true,
+      "location_source_match": true,
+      "checks": [
+        {
+          "kind": "当前上游指定尺度位置及actual/known",
+          "source_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/profile/scale_turns.csv",
+          "turn_id": "i/value1/72049199",
+          "actual_ts": "2021-01-04 21:15:00",
+          "known_ts": "2021-01-05 09:40:00"
+        }
+      ],
+      "remains_candidate_only": true,
+      "not_a_formal_selected_case": true
+    },
+    {
+      "source_candidate_id": "F800-SQ-001-C2",
+      "source_question_id": "F800-SQ-001",
+      "priority": "HIGH",
+      "symbols": [
+        "hc",
+        "i",
+        "rb"
+      ],
+      "start_time": "2021-01-07 13:35:00",
+      "end_time": "2021-01-07 13:35:00",
+      "original_object_ids": [
+        "8f776a81-a7bc-4c93-965b-0f1534b574c4",
+        "1d5a120c-6cd5-4350-adb3-1b3869c52b42"
+      ],
+      "source_candidate_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/CandidateCaseIndex.json#F800-SQ-001-C2",
+      "source_question_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/ScenarioQuestionQueue.json#F800-SQ-001",
+      "within_position_id": "F800-MB-D009-P001",
+      "object_scope_match": true,
+      "time_scope_match": true,
+      "location_source_match": true,
+      "checks": [
+        {
+          "kind": "当前F公开观点坐标与exact",
+          "source_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/readback/tables/occurrences.csv",
+          "parent_coordinates": {
+            "timestamp": "2021-01-07 13:35:00",
+            "occurrence": "4",
+            "record_id": "0",
+            "child_id_2": "0"
+          },
+          "life": "8f776a81-a7bc-4c93-965b-0f1534b574c4",
+          "revision": "1d5a120c-6cd5-4350-adb3-1b3869c52b42",
+          "known_uti": 72144599
+        }
+      ],
+      "remains_candidate_only": true,
+      "not_a_formal_selected_case": true
+    },
+    {
+      "source_candidate_id": "F800-SQ-002-C1",
+      "source_question_id": "F800-SQ-002",
+      "priority": "MEDIUM",
+      "symbols": [
+        "hc",
+        "rb"
+      ],
+      "start_time": "2021-01-06 11:05:00",
+      "end_time": "2021-01-06 11:05:00",
+      "original_object_ids": [
+        "c0a85657-7a15-4de8-9dcb-ab018865f55a",
+        "b572b17b-36da-409f-b171-24a6146b6f70"
+      ],
+      "source_candidate_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/CandidateCaseIndex.json#F800-SQ-002-C1",
+      "source_question_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/ScenarioQuestionQueue.json#F800-SQ-002",
+      "within_position_id": "F800-MB-D009-P001",
+      "object_scope_match": true,
+      "time_scope_match": true,
+      "location_source_match": true,
+      "checks": [
+        {
+          "kind": "当前F公开观点坐标与exact",
+          "source_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/readback/tables/occurrences.csv",
+          "parent_coordinates": {
+            "timestamp": "2021-01-06 11:05:00",
+            "occurrence": "2",
+            "record_id": "0",
+            "child_id_2": "0"
+          },
+          "life": "c0a85657-7a15-4de8-9dcb-ab018865f55a",
+          "revision": "b572b17b-36da-409f-b171-24a6146b6f70",
+          "known_uti": 72099599
+        }
+      ],
+      "remains_candidate_only": true,
+      "not_a_formal_selected_case": true
+    },
+    {
+      "source_candidate_id": "F800-SQ-002-C2",
+      "source_question_id": "F800-SQ-002",
+      "priority": "MEDIUM",
+      "symbols": [
+        "hc",
+        "rb"
+      ],
+      "start_time": "2023-01-03 09:15:00",
+      "end_time": "2023-01-03 09:15:00",
+      "original_object_ids": [
+        "c572e7eb-8331-4437-8376-9e717fad101b",
+        "554a5ee6-58cb-48e8-9765-2c53e6165d90"
+      ],
+      "source_candidate_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/CandidateCaseIndex.json#F800-SQ-002-C2",
+      "source_question_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/ScenarioQuestionQueue.json#F800-SQ-002",
+      "within_position_id": "F800-MB-D009-P001",
+      "object_scope_match": true,
+      "time_scope_match": true,
+      "location_source_match": true,
+      "checks": [
+        {
+          "kind": "当前F公开观点坐标与exact",
+          "source_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/readback/tables/occurrences.csv",
+          "parent_coordinates": {
+            "timestamp": "2023-01-03 09:15:00",
+            "occurrence": "1013",
+            "record_id": "0",
+            "child_id_2": "0"
+          },
+          "life": "c572e7eb-8331-4437-8376-9e717fad101b",
+          "revision": "554a5ee6-58cb-48e8-9765-2c53e6165d90",
+          "known_uti": 91882799
+        }
+      ],
+      "remains_candidate_only": true,
+      "not_a_formal_selected_case": true
+    },
+    {
+      "source_candidate_id": "F800-SQ-003-C1",
+      "source_question_id": "F800-SQ-003",
+      "priority": "HIGH",
+      "symbols": [
+        "i",
+        "rb"
+      ],
+      "start_time": "2023-07-07 09:05:00",
+      "end_time": "2023-07-07 09:05:00",
+      "original_object_ids": [
+        "32457584-509d-4e7f-a0ea-6f8ac067c66e",
+        "79ce9878-2ae8-482c-af7f-1d330070cf88"
+      ],
+      "source_candidate_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/CandidateCaseIndex.json#F800-SQ-003-C1",
+      "source_question_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/ScenarioQuestionQueue.json#F800-SQ-003",
+      "within_position_id": "F800-MB-D009-P001",
+      "object_scope_match": true,
+      "time_scope_match": true,
+      "location_source_match": true,
+      "checks": [
+        {
+          "kind": "当前F公开观点坐标与exact",
+          "source_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/readback/tables/occurrences.csv",
+          "parent_coordinates": {
+            "timestamp": "2023-07-07 09:05:00",
+            "occurrence": "1156",
+            "record_id": "0",
+            "child_id_2": "0"
+          },
+          "life": "32457584-509d-4e7f-a0ea-6f8ac067c66e",
+          "revision": "79ce9878-2ae8-482c-af7f-1d330070cf88",
+          "known_uti": 96874799
+        }
+      ],
+      "remains_candidate_only": true,
+      "not_a_formal_selected_case": true
+    },
+    {
+      "source_candidate_id": "F800-SQ-003-C2",
+      "source_question_id": "F800-SQ-003",
+      "priority": "HIGH",
+      "symbols": [
+        "hc",
+        "rb"
+      ],
+      "start_time": "2021-01-07 13:35:00",
+      "end_time": "2021-01-07 13:35:00",
+      "original_object_ids": [
+        "6dd1661e-678e-48a8-809f-68243658b3b0",
+        "e2774439-d0dc-4034-8077-2d6846dbcf1c"
+      ],
+      "source_candidate_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/CandidateCaseIndex.json#F800-SQ-003-C2",
+      "source_question_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/ScenarioQuestionQueue.json#F800-SQ-003",
+      "within_position_id": "F800-MB-D009-P001",
+      "object_scope_match": true,
+      "time_scope_match": true,
+      "location_source_match": true,
+      "checks": [
+        {
+          "kind": "当前F公开观点坐标与exact",
+          "source_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/readback/tables/occurrences.csv",
+          "parent_coordinates": {
+            "timestamp": "2021-01-07 13:35:00",
+            "occurrence": "4",
+            "record_id": "0",
+            "child_id_2": "1"
+          },
+          "life": "6dd1661e-678e-48a8-809f-68243658b3b0",
+          "revision": "e2774439-d0dc-4034-8077-2d6846dbcf1c",
+          "known_uti": 72144599
+        }
+      ],
+      "remains_candidate_only": true,
+      "not_a_formal_selected_case": true
+    },
+    {
+      "source_candidate_id": "F800-SQ-004-C1",
+      "source_question_id": "F800-SQ-004",
+      "priority": "MEDIUM",
+      "symbols": [
+        "hc",
+        "i",
+        "rb"
+      ],
+      "start_time": "2021-01-04 10:05:00",
+      "end_time": "2021-01-04 10:05:00",
+      "original_object_ids": [
+        "caee906a-9759-466f-bf4a-805293f3da5d",
+        "f1464ddb-c3b6-4ef9-b768-ec7f50ce1bec"
+      ],
+      "source_candidate_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/CandidateCaseIndex.json#F800-SQ-004-C1",
+      "source_question_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/ScenarioQuestionQueue.json#F800-SQ-004",
+      "within_position_id": "F800-MB-D009-P001",
+      "object_scope_match": true,
+      "time_scope_match": true,
+      "location_source_match": true,
+      "checks": [
+        {
+          "kind": "当前F公开观点坐标与exact",
+          "source_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/readback/tables/occurrences.csv",
+          "parent_coordinates": {
+            "timestamp": "2021-01-04 10:05:00",
+            "occurrence": "1",
+            "record_id": "0",
+            "child_id_2": "0"
+          },
+          "life": "caee906a-9759-466f-bf4a-805293f3da5d",
+          "revision": "f1464ddb-c3b6-4ef9-b768-ec7f50ce1bec",
+          "known_uti": 72011399
+        }
+      ],
+      "remains_candidate_only": true,
+      "not_a_formal_selected_case": true
+    }
+  ],
+  "source_candidates": 7,
+  "source_questions": 4,
+  "all_match": true,
+  "same_tick_policy": "同刻不同对象/观点保留原exact与父坐标；未合并候选或修改位置关系。"
+}

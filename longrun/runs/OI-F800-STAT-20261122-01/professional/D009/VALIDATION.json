@@ -1,0 +1,48 @@
+{
+  "completed": true,
+  "verified_at": "2026-11-22T18:21:10.474145+00:00",
+  "stage_code": "M-B",
+  "stage_status": "完整",
+  "checks": [
+    {
+      "item": "原IO阶段最终输出字段",
+      "result": "PASS",
+      "evidence": "ObservationPositionPreparationResult.json"
+    },
+    {
+      "item": "沿明确任务位置、原SOF和当前实例版本；未以默认2021—2022缩短",
+      "result": "PASS",
+      "evidence": "OrdinaryPositions.json; INPUT_BINDING.json"
+    },
+    {
+      "item": "与当前U对象范围及事件位置一致；四问题/七候选原来源对齐",
+      "result": "PASS",
+      "evidence": "PositionSourceAlignment.json"
+    },
+    {
+      "item": "候选只保留来源，不替代图上正式场景选择或冻结预期",
+      "result": "PASS",
+      "evidence": "PositionSourceAlignment.json; 原B Skill定位"
+    },
+    {
+      "item": "D008有效U/X/G及历史原件未更改；本D未重新生产/统计/查Feature语义",
+      "result": "PASS",
+      "evidence": "SOURCE_REF_AUDIT.json; INPUT_BINDING.json"
+    }
+  ],
+  "uncompleted_positions": [],
+  "source_candidates_preserved": 7,
+  "ordinary_positions": 1,
+  "workers": [],
+  "original_io_field_mapping": {
+    "位置用法": "ObservationPositionPreparationResult.json#位置用法",
+    "普通位置或多尺度位置路径": "OrdinaryPositions.json#位置定义",
+    "特征实例与 SOF 引用": "INPUT_BINDING.json#feature_instance",
+    "FeatureUnderstandingPackage 引用": "INPUT_BINDING.json#understanding_ref",
+    "来源说明": "ObservationPositionPreparationResult.json#来源说明",
+    "未完成位置": "ObservationPositionPreparationResult.json#未完成位置",
+    "阶段状态": "ObservationPositionPreparationResult.json#阶段状态"
+  },
+  "completion_boundary": "只完成M-B普通任务明确位置。未形成M-C展示、M-D完整定义、M-E图/正式图数据或ObservationMaterialPackage；未选择正式CaseReviewSet、未冻结预期，未签FeatureReleaseGate/ReleasePackage或启动Q/V/WALL。",
+  "next_route": "原manager消费B后，按既有M-C/M-D/M-E依赖衔接；B可供D绑定不表示C或D已委派或PLAN_READY/DATA_READY。"
+}
