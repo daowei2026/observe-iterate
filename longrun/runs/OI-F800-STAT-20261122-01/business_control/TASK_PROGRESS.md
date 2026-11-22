@@ -32,7 +32,7 @@ current_acceptance_level: 当前 ReviewTarget 下关闭需处理的明显问题�
 | 实例参数 | U2/U3 基线，仅新增 profile.observation_multiple=800；delta=600、unit=CalendarUTITick | 完整序列化配置/差异/full_dir 尚未由本 Run 回读绑定；BusinessTaskInput §2—3 |
 | 数据范围 | rb/hc/i；5m；2021-01-01 至 2023-12-31；night_end_at_2300；TA_updto20240229_DBA；steel | Owner GO 与 BusinessTaskInput §4 |
 | 整体状态 | `incomplete`；professional_state=`IN_PROGRESS` | 当前没有被接受的本 Run U/X/G/诊断/Release 成果 |
-| 当前委派 | D001 / F800-U-001；已由 C0001 签发，待 controller 创建并派发 E1 | [DELEGATION.md](../delegations/D001/DELEGATION.md)；exact ref 由本 C 后发 PRO_RETURN 绑定 |
+| 当前委派 | D001 / F800-U-001；已由 C0001 签发，待 controller 创建并派发 E1 | `daowei2026/observe-iterate@092819b56eaf3e08764ed23650c0826c0fdadec1:longrun/runs/OI-F800-STAT-20261122-01/delegations/D001/DELEGATION.json`；已推送并从 origin fetch 核字节，尚未派发 |
 | 下一合法动作 | controller 回收正式 D001 与本 C Return，核原授权和真实物理设施，创建独立 E1 并派发 D001 | 不由 manager 创建 E1 或发送跨聊天消息 |
 | 工具兼容问题 | 锁定 gate validate-binding 退出2：bad manager logical identity | [VALIDATION.md](../calls/C0001/VALIDATION.md)；原始输出已保留，未改身份或宣称 PASS |
 
@@ -62,4 +62,4 @@ WALL 已采用 D1/D2/D4、D3 暂缓且不阻断，只是 Owner 的另一 Run 输
 
 本次新事实仅为 C0001 输入核对、D001 签发、协调状态建立和原 gate 不兼容实际输出。未读取当前 Feature 源码，未运行 Feature、未统计或诊断，未产生 W 或专业接受状态。
 
-具体剩余范围与下一合法动作见 [REMAINING_SCOPE.md](../calls/C0001/REMAINING_SCOPE.md)、[CONTINUATION.md](../calls/C0001/CONTINUATION.md)。D001 与本 C Return 分先后提交；本轮结束后只等待真实 controller C 接续，不建立轮询或自行发起生产。
+具体剩余范围与下一合法动作见 [REMAINING_SCOPE.md](../calls/C0001/REMAINING_SCOPE.md)、[CONTINUATION.md](../calls/C0001/CONTINUATION.md)。D001 已先行提交推送并回读；本 C Return 在后续提交引用该 exact ref；本轮结束后只等待真实 controller C 接续，不建立轮询或自行发起生产。

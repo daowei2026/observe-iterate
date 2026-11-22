@@ -1,0 +1,20 @@
+{
+  "tool_ref": "daowei2026/observe-iterate@87b951bbd15078a2d6353bdd24afe0d8f19c845c:longrun/tools/longrun_gate.py",
+  "results": [
+    {
+      "action": "validate-delegation",
+      "exit_code": 2,
+      "stdout_path": "GATE_DELEGATION.stdout.txt",
+      "stderr_path": "GATE_DELEGATION.stderr.txt",
+      "observed_result": "BLOCKED: bad manager logical identity"
+    },
+    {
+      "action": "validate-manager-return",
+      "exit_code": 2,
+      "stdout_path": "GATE_MANAGER_RETURN.stdout.txt",
+      "stderr_path": "GATE_MANAGER_RETURN.stderr.txt",
+      "observed_result": "BLOCKED: bad manager logical identity"
+    }
+  ],
+  "note": "两项均实际在原 Binding 身份检查处退出2。snapshot 只含当前已知输入，未设置未来 manager_return_ref，也未伪造独立 manager_receipt。完整 receipt/物理核验由 controller 在发布回收后完成；此输出不构成后续门禁 PASS。"
+}
