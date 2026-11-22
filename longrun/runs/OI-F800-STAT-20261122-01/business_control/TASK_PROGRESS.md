@@ -85,3 +85,7 @@ controller核原E1线程/sol/max/cwd、授权/单写者与真实状态后派达�
 ## C0024 D011首批发布凭证
 
 已先行发布并从origin逐字节回读D011：`daowei2026/observe-iterate@3769b5143aa29ed405e9257b50d500252763ce82:longrun/runs/OI-F800-STAT-20261122-01/delegations/D011/DELEGATION.json`；报告：`daowei2026/observe-iterate@3769b5143aa29ed405e9257b50d500252763ce82:longrun/runs/OI-F800-STAT-20261122-01/calls/C0024/MANAGER_REPORT.md`。首批8文件Git blob/SHA-256/字节匹配，独立Return只引用已有提交。C完整及当前有效U/X/G/B保持，D011物理派发/定义集成尚无本C回执；Run仍IN_PROGRESS，无材料DATA_READY或Feature释放。
+
+## C0026 D012首批发布凭证
+
+已先行发布并从origin逐字节回读D012：`daowei2026/observe-iterate@9430ba037d32125af72d9d55495549c17b412bed:longrun/runs/OI-F800-STAT-20261122-01/delegations/D012/DELEGATION.json`；报告：`daowei2026/observe-iterate@9430ba037d32125af72d9d55495549c17b412bed:longrun/runs/OI-F800-STAT-20261122-01/calls/C0026/MANAGER_REPORT.md`。首批8文件Git blob/SHA-256/字节匹配，独立Return仅引用已有提交。D011完整定义已消费，唯一D012委派原E1按原E Skill连续真实运行/核图/正式取数；当前有效U/X/G/B/C/D保持。D012物理派达/开工尚无本C回执；Run仍IN_PROGRESS，未声称材料DATA_READY或FeatureRelease。
