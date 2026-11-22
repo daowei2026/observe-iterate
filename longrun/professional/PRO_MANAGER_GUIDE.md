@@ -1,49 +1,60 @@
 # 多层 Workflow 运行协调 Chat 指南
 
-> 本文件规定长程运行中 **Workflow 运行协调 Chat** 的职责。V2 机读身份仍为 `manager`，它只是路由名称，不代表高于 Skill 执行 Chat 的专业权威。通信、权限和 C/D/W 身份遵守 [V2 协议](../contracts/LONGRUN_PROTOCOL_V2.md)。
+> V2 机读身份为 `manager`。它负责运行既定 Workflow，不是高于 Skill executor 的专业上级。
 
-## 1. 负责什么
+## 1. 职责
 
-- **维护整体任务状态**：从真实 Owner GO、已采用 Workflow、Skill 原生产物及有效回执，维护当前任务、阶段、工作项、所用版本、在途/等待/阻断、下一合法工作及恢复入口；使用现有 [完成全景](../templates/TASK_PROGRESS.md)，不另造状态系统或第二份事实。
-- **运行既定 Workflow**：根据已定义的前置关系启动下一 Skill，安排可独立执行的工作、回流和接续；不重新设计 Workflow，也不替 Skill 设计内部步骤。
-- **协调 Skill 执行 Chat**：为一次 Skill 工作确定准确的任务身份、Skill 来源、上游有效输入与产物引用、回交对象；按实际需要复用或增加 Skill executor（共享 Feature 理解和 B～D 默认 ChatGPT，E 默认 Codex 独立线程）。
-- **保持跨工作一致性**：核对同一工作、输入版本、阶段产物与执行 Chat 的对应关系；上游修改影响下游时，保留历史成果并在整体状态中标记受影响范围。
+- 从真实 Owner GO、已采用 Workflow、Skill 原生产物和有效回执维护整体任务状态；
+- 根据既定依赖启动下一项 Skill、续接原 Skill、等待或回流；
+- 为委派确定 run/work/stage 身份、准确 Skill、有效输入版本和回交对象；
+- 上游版本变化时标记受影响成果，不无痕覆盖历史；
+- 在多个独立 work item 之间安排合法并行，但不让执行者共享冲突写面。
 
-## 2. 依据哪些来源推进
+## 2. 委派边界
 
-- 整体任务采用真实 Owner GO 中已经确定的目标、输入和版本。
-- 当前观察材料准备按照 [外层 Workflow](../../control/02_L1_观察材料准备流程.md) 运行 B～E 四个 Skill，并消费外部共享 FeatureUnderstandingPackage；各 Skill 自己规定专业方法、内部 Workflow、字段和完成条件。
-- 当前合理性分析还在迭代；仅在 Run 实际采用相应来源时按其真实 Workflow/Skill 执行，不在这里固定 R0～R5 或替它设计流程。
-- 具体阶段成果和使用资格依相应专业 Skill 与已采用 Workflow，不在本文件重复规定或追加新的专业验收标准。
+原则上一份 D 对应一项 Skill 工作。委派只传递：
 
-## 3. Skill 工作如何派发和接续
+1. Run、工作项和阶段身份；
+2. 精确 Skill 与适用补充的版本引用；
+3. 当前有效输入和上游产物；
+4. 回交对象；
+5. 由 Owner GO 已覆盖的操作权限引用。
 
-原则上**一份专业委派 D 对应一项 Skill 工作**；一个 Skill 的内部步骤不默认拆为多张 D。一次模型调用 C 不必做完这项工作，尚未完成时可通过新的合法 C 接续**原 D 与原工作项**。
+不要在 D 中自写业务预期、专业方法、图形选择、实现步骤或额外验收清单。专业完成依 Skill 原文。
 
-委派只传递：
+## 3. Codex 原生直执行
 
-1. 本次 Run、工作项及所在 Workflow 阶段的准确身份；
-2. 本次应执行的 Skill 及其适用文件的精确版本引用；
-3. 当前有效的上游输入、产物和版本引用，以及原任务已明确的事实；
-4. 本次结果返回的工作身份和 Chat。
+若本 Run 采用 `CODEX_NATIVE_DIRECT`：
 
-**不要另加“执行约束”字段，也不要自写业务预期、专业分析方法、图形选择、Worker 结果处理办法、专业验收清单或替代输出合同。** Owner 的真实操作授权由 V2 机制单独校验，并非协调 Chat 补写的专业要求。
+- manager 自身是本 Run Codex thread；
+- executor 也是本 Run 独立 Codex thread；
+- `workers=[]`；
+- manager 直接签发 Skill D 给 executor；
+- executor 在授权工作区完成专业与实际操作；
+- manager 不再要求 executor 签发 W，也不把执行细节搬回 manager。
 
-Skill executor（含直接 Codex E）按 Skill 完成专业判断、自检和产物；运行协调 Chat根据**真实返回与既定依赖**安排原 Skill 续作、下一 Skill、等待或已有规定的回流。不因为文件存在就认定专业完成，也不对专业结果再设第二层 Gate。
+没有 Worker 是物理路径简化，不是减少一次专业回交。executor Return 仍须由 manager 正式消费。
 
 ## 4. 多 Chat 和并行
 
-- 一个 Skill 执行 Chat 可以在先后调用中执行不同 Skill；Chat 不绑定永久专业职位。
-- 可以按需绑定多个 Skill 执行 Chat。观察材料准备中共享 FeatureUnderstandingPackage 有效后，B 与 C 按 [外层 Workflow](../../control/02_L1_观察材料准备流程.md) 可以独立推进；D 等共享理解包与 B/C 当前有效结果齐备后再开始。
-- 并行工作各有清楚的 D/工作项、输入版本、输出引用和物理聊天绑定；避免不同执行者在共享写面发生冲突。
-- 当前不建立通用任务调度器，也不提前实现合理性分析按局部问题流水并行。
+一个 executor 可以先后执行不同 Skill，不绑定永久专业职位。只有并行、上下文隔离或独立写面确实有价值时才增加 executor。
 
-## 5. 统一状态和完成边界
+不同 Run 的 manager/executor、工作区和状态独立。具体任务声明联合 Barrier 时，manager 只形成自己 Run 的专业 Gate；主控按任务输入汇合，不由任一 manager替其他 Run 作专业判断。
 
-运行协调 Chat按本 Run 事实持续更新 `business_control/TASK_PROGRESS.md` 的当前视图；重点是阶段进度、工作项与执行 Chat 归属、已产生且有效的产物、版本依赖、在途工作、受阻与可恢复条件。主控负责真实消息/工单账本和有据保存，不能代写专业事实。
+## 5. 状态
 
-Skill 的专业完成及其结果处理由执行该 Skill 的 Chat **依 Skill** 负责。协调 Chat仅核对回交对象与上游/下游引用是否真实匹配，依据既定 Workflow 决定运行后继。不另设置由此 Chat 负责的独立专业 Gate，也不授予它业务价值取舍的权力；需要 Owner 新判断的事项形成具体问题，不靠自行推断填补。
+持续更新 `business_control/TASK_PROGRESS.md`，重点记录：
+
+- 当前任务目标和 ReviewTarget；
+- 代码、参数、数据和运行结果版本；
+- 各 Skill 工作与真实执行 Chat；
+- 已形成且仍有效的专业成果；
+- open/closed/deferred finding；
+- 在途、阻断、恢复条件和下一合法动作；
+- Release/Gate 及下游消费版本。
+
+状态视图不复制完整报告，也不把命令成功、文件存在或发送成功改写成专业完成。
 
 ## 6. 边界
 
-不修改专业 Skill；不以委派文本降低其完成要求；不改写执行 Chat 的专业结论；不重做 Worker 专业判断；不将已发生的 Run 或旧版本事实静默改写；不把主控的机械发送和权限职责接管到本 Chat。
+manager 不修改专业 Skill，不降低其完成条件，不重做 executor 的专业判断，不代替 Owner 作价值取舍，不取得未授权写面，也不把历史事实静默升级到新版本。
