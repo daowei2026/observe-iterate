@@ -1,0 +1,79 @@
+{
+  "verified_at": "2026-11-22T22:54:27.568313+00:00",
+  "schema_pass": true,
+  "pro_state_pass": true,
+  "immutable_refs_pass": true,
+  "actual_invocation_delegation_binding_pass": true,
+  "workers_empty": true,
+  "professional_state": "REPORTED_COMPLETE",
+  "result_ref": "daowei2026/observe-iterate@553ff3cf84c10084a9dfea216007ec63efc0aefc:longrun/runs/OI-F800-STAT-20261122-01/professional/D014/EXECUTOR_REPORT.md",
+  "result_published_before_return": true,
+  "professional_publication": {
+    "verified_at": "2026-11-22T22:54:17.939865+00:00",
+    "commit": "553ff3cf84c10084a9dfea216007ec63efc0aefc",
+    "remote_head": "553ff3cf84c10084a9dfea216007ec63efc0aefc",
+    "record_branch": "codex/oi-f800-stat-20261122-01",
+    "clean_before_return": true,
+    "verification": "GitHub插件取精确commit文件，逐字节及Git blob SHA比对原提交和本地产物",
+    "files": [
+      {
+        "file": "EXECUTOR_REPORT.md",
+        "path": "longrun/runs/OI-F800-STAT-20261122-01/professional/D014/EXECUTOR_REPORT.md",
+        "commit": "553ff3cf84c10084a9dfea216007ec63efc0aefc",
+        "bytes": 8702,
+        "sha256": "5c843615360c395908d7ddcf96d599b7e2a4d388d273ba619b5e2f8dc4fd5537",
+        "remote_git_blob": "259e3c0d1824e4e4da763b584abe26e41b0e3d2a",
+        "local_git_blob_match": true,
+        "byte_equal": true,
+        "url": "https://github.com/daowei2026/observe-iterate/blob/553ff3cf84c10084a9dfea216007ec63efc0aefc/longrun/runs/OI-F800-STAT-20261122-01/professional/D014/EXECUTOR_REPORT.md"
+      },
+      {
+        "file": "S2_HANDOFF.json",
+        "path": "longrun/runs/OI-F800-STAT-20261122-01/professional/D014/S2_HANDOFF.json",
+        "commit": "553ff3cf84c10084a9dfea216007ec63efc0aefc",
+        "bytes": 1375,
+        "sha256": "19d959e5ccd0efc70a6eb45425bc161b9f23900a1fa4a61f0fb87c2e58b07fb6",
+        "remote_git_blob": "f72fa510c333cfcbe12abe7152af99db76a1a33d",
+        "local_git_blob_match": true,
+        "byte_equal": true,
+        "url": "https://github.com/daowei2026/observe-iterate/blob/553ff3cf84c10084a9dfea216007ec63efc0aefc/longrun/runs/OI-F800-STAT-20261122-01/professional/D014/S2_HANDOFF.json"
+      },
+      {
+        "file": "VALIDATION.json",
+        "path": "longrun/runs/OI-F800-STAT-20261122-01/professional/D014/VALIDATION.json",
+        "commit": "553ff3cf84c10084a9dfea216007ec63efc0aefc",
+        "bytes": 2841,
+        "sha256": "835084d6cb7e6618dd3af3da9aabc6fe98df913877d22f914c56bd2593a997cc",
+        "remote_git_blob": "c3ed58d1f4753929578344ca8c223766532d595a",
+        "local_git_blob_match": true,
+        "byte_equal": true,
+        "url": "https://github.com/daowei2026/observe-iterate/blob/553ff3cf84c10084a9dfea216007ec63efc0aefc/longrun/runs/OI-F800-STAT-20261122-01/professional/D014/VALIDATION.json"
+      },
+      {
+        "file": "PROFESSIONAL_MANIFEST.json",
+        "path": "longrun/runs/OI-F800-STAT-20261122-01/professional/D014/PROFESSIONAL_MANIFEST.json",
+        "commit": "553ff3cf84c10084a9dfea216007ec63efc0aefc",
+        "bytes": 47450,
+        "sha256": "f42a43484b76d76659c9fe6a8f9893021f0ebcdbea0feecfb91850f722b034c5",
+        "remote_git_blob": "cd5c8c926d42d4173b2654a8b6692353ff73448c",
+        "local_git_blob_match": true,
+        "byte_equal": true,
+        "url": "https://github.com/daowei2026/observe-iterate/blob/553ff3cf84c10084a9dfea216007ec63efc0aefc/longrun/runs/OI-F800-STAT-20261122-01/professional/D014/PROFESSIONAL_MANIFEST.json"
+      }
+    ]
+  },
+  "published_manifest_files_verified": 119,
+  "frozen_case_count": 7,
+  "comparison_package_count": 7,
+  "pinned_gate_ref": "daowei2026/observe-iterate@87b951bbd15078a2d6353bdd24afe0d8f19c845c:longrun/tools/longrun_gate.py",
+  "gate_sha256": "3355372ef1d9cbe3c4440bd6c3908a64827859d59bbdfe6bb9f9624c36aac7a7",
+  "pinned_schema_sha256": "deace56513917795fd16b468f9ea4edf8e7868122687b8fb44cff76ca734a8a2",
+  "return_sha256": "247da1698efc5804c1e6b3400944269d7c2136b4088295ffb9ad93cda42fbfce",
+  "validated_functions": [
+    "validated(binding/delegation/invocation/professional_return)",
+    "pro_state",
+    "object_ref_fields"
+  ],
+  "full_cli_validation": "未运行完整validate-executor-return：该版binding()将manager硬编码为chatgpt，与本Run采用Codex manager不兼容。原gate未修改，未伪造独立controller receipt。",
+  "completion_boundary": "仅D014原S2七个冻结案例的三过程与对齐、逐预期判断、首分歧或不可定位原因及后继分流完成。6例有界SUPPORTS、1例当前F层NOT_APPLICABLE；内部/前史缺口和迟到效用歧义保留，无合格S3疑点，不等于全800合理性/FeatureRelease/父Run完成。"
+}
