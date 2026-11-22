@@ -1,0 +1,84 @@
+{
+  "run_id": "OI-F800-STAT-20261122-01",
+  "call_id": "C0005",
+  "delegation_id": "D002",
+  "supervisor_pid": 1712483,
+  "lock_path": "/dwdhome/fy/cgpterm/artifacts/wall-f-closure-20261122/FORMAL_PRODUCTION.lock",
+  "requested_at": "2026-11-22T09:50:02.195498+00:00",
+  "completed": false,
+  "children": [
+    {
+      "pid": 1712546,
+      "executable": "/usr/bin/bash",
+      "cwd": "/dwdhome/fy/BASE_E6_2_copy",
+      "command": "bash run-python.sh .runtime/f-wide-observation-20261122/run_in_runtime.py /dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D002/run_formal.py --mode produce ",
+      "observed_at": "2026-11-22T09:50:03.539704+00:00"
+    },
+    {
+      "pid": 1712560,
+      "executable": "/m3c3/Linux/apps/anaconda3/bin/python3.10",
+      "cwd": "/dwdhome/fy/BASE_E6_2_copy",
+      "command": "python /m3c3/sbin/nif2 dwcc.dw ",
+      "observed_at": "2026-11-22T09:50:03.829563+00:00"
+    },
+    {
+      "pid": 1712569,
+      "executable": "/usr/bin/bash",
+      "cwd": "/dwdhome/fy/BASE_E6_2_copy",
+      "command": "bash run-python.sh .runtime/f-wide-observation-20261122/run_in_runtime.py /dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D002/run_formal.py --mode produce ",
+      "observed_at": "2026-11-22T09:50:05.765647+00:00"
+    },
+    {
+      "pid": 1712769,
+      "executable": "/usr/bin/bash",
+      "cwd": "/dwdhome/fy/BASE_E6_2_copy/.runtime/f-wide-observation-20261122/runtime/edh-universe",
+      "command": "bash /usr/local/bin/epm exec which ts ",
+      "observed_at": "2026-11-22T09:50:21.772767+00:00"
+    },
+    {
+      "pid": 1712771,
+      "executable": "/usr/bin/bash",
+      "cwd": "/dwdhome/fy/BASE_E6_2_copy/.runtime/f-wide-observation-20261122/runtime/edh-universe",
+      "command": "bash /usr/local/bin/epm exec which ts ",
+      "observed_at": "2026-11-22T09:50:21.791768+00:00"
+    },
+    {
+      "pid": 1712764,
+      "executable": "/usr/bin/bash",
+      "cwd": "/dwdhome/fy/BASE_E6_2_copy/.runtime/f-wide-observation-20261122/runtime/edh-universe",
+      "command": "bash /usr/local/bin/epm exec which ts ",
+      "observed_at": "2026-11-22T09:50:21.812725+00:00"
+    },
+    {
+      "pid": 1712793,
+      "executable": "/usr/bin/dash",
+      "cwd": "/dwdhome/fy/BASE_E6_2_copy/.runtime/f-wide-observation-20261122/runtime/edh-universe",
+      "command": "/bin/sh -c epm exec ts --f=./frp/trade-poc/edh_modules/trade/frp/worker/one.edh --jp=/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D002/platform-app/mquant/task/frp/prod/192.168.11.40/20261122/CommonPriceTurnGroupCandidatesFrp.20261122175022!22a4b798-e65a-11f1-82c6-000c29a18d35.json ",
+      "observed_at": "2026-11-22T09:50:22.928404+00:00"
+    },
+    {
+      "pid": 1712794,
+      "executable": "/usr/bin/bash",
+      "cwd": "/dwdhome/fy/BASE_E6_2_copy/.runtime/f-wide-observation-20261122/runtime/edh-universe",
+      "command": "bash /usr/local/bin/epm exec ts --f=./frp/trade-poc/edh_modules/trade/frp/worker/one.edh --jp=/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D002/platform-app/mquant/task/frp/prod/192.168.11.40/20261122/CommonPriceTurnGroupCandidatesFrp.20261122175022!22a4b798-e65a-11f1-82c6-000c29a18d35.json ",
+      "observed_at": "2026-11-22T09:50:22.943756+00:00"
+    }
+  ],
+  "native_process_observed": false,
+  "lock_acquired_at": "2026-11-22T09:50:02.195753+00:00",
+  "lock_inode": 15061041,
+  "kernel_lock_lines": [
+    "34: FLOCK  ADVISORY  WRITE 1712483 00:53:15061041 0 EOF"
+  ],
+  "independent_lock_probe_exit": 73,
+  "python_pid": 1712546,
+  "child_started_at": "2026-11-22T09:50:03.496123+00:00",
+  "command": [
+    "bash",
+    "run-python.sh",
+    ".runtime/f-wide-observation-20261122/run_in_runtime.py",
+    "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D002/run_formal.py",
+    "--mode",
+    "produce"
+  ]
+}

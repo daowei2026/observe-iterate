@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "project": {
+    "id": "oi-f800-stat-20261122-01",
+    "title": "F800统计闭环 Run"
+  },
+  "task": {
+    "id": "oi-f800-stat-20261122-01-d002-e1",
+    "title": "D002 E1：F800正式X与全量G",
+    "monitoring": {
+      "scope": "general"
+    },
+    "completion_gate": "按D002取得准确全范围FeatureRunResultBinding与独立读回，完成原生G1-G8输出及合法PRO_RETURN；不自动代表FeatureRelease或父Run完成"
+  },
+  "phases": [
+    {
+      "id": "xg",
+      "title": "正式X与全量G",
+      "steps": [
+        {
+          "id": "preflight",
+          "title": "核准入口、配置、结果身份及写面",
+          "acceptance": "精确来源/实际加载/原生配置/范围/日历、结果复用资格与资源写面已验实，真实阻断明确登记",
+          "weight": 2
+        },
+        {
+          "id": "production",
+          "title": "取得正式F800实例",
+          "acceptance": "合格复用或持共享锁运行锁定rb/hc/i三年F，保存真实进程与输出证据",
+          "weight": 3
+        },
+        {
+          "id": "readback",
+          "title": "独立读回并绑定结果",
+          "acceptance": "31张公开表独立读回、配置/fields哈希和输入实际首末时点、完整范围已核对",
+          "weight": 2
+        },
+        {
+          "id": "profile",
+          "title": "完成全量统计与结构疑点",
+          "acceptance": "按原Skill G1-G8完成可支持剖面、逐品种/时期/Session比较、finding/问题/案例/诊断适配及Gate",
+          "weight": 4
+        },
+        {
+          "id": "return",
+          "title": "发布专业产物及合法回交",
+          "acceptance": "准确结果和专业输出先发布，PRO_RETURN通过同版schema/pro_state并远端读回",
+          "weight": 1
+        }
+      ]
+    }
+  ]
+}

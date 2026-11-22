@@ -1,0 +1,388 @@
+{
+  "registered_at": "2026-11-22T10:02:45.890102+00:00",
+  "registered_before_profile_execution": true,
+  "statistics_definitions": [
+    {
+      "statistic_id": "ST01",
+      "name": "原始转折总分母",
+      "business_item_ref": "D001.FeatureUnderstandingPackage#business_objects",
+      "count_unit": "原始实际位置",
+      "object_group_key": "(symbol,准确Rct实例,posUTI1)",
+      "time_basis": "actual及首次已知分别保留",
+      "denominator": "全部同范围Rct行可识别实际位置（含每品种1个初始化锚点）",
+      "deduplication_rule": "按object_group_key去重；子表父键保留完整timestamp/occurrence/record_id/child_id_2",
+      "same_tick_rule": "保留occurrence及child坐标；同Life以previous引用核序，UUID本身不可排序",
+      "strata": [
+        "SYMBOL",
+        "YEAR",
+        "SESSION"
+      ],
+      "source_fields": [
+        "posUTI1",
+        "price1",
+        "pivot1",
+        "timestamp"
+      ]
+    },
+    {
+      "statistic_id": "ST02",
+      "name": "指定尺度转折总分母及参与率",
+      "business_item_ref": "D001.FeatureUnderstandingPackage#business_objects",
+      "count_unit": "指定尺度位置",
+      "object_group_key": "(symbol,round,xConfirm)，已验证与actual一一对齐",
+      "time_basis": "value1/value2的selected事件timestamp映射KLine.closeUti；actual=x；confirm=xConfirm",
+      "denominator": "全部同参数ScaleTurnCalendar两轮选中位置；另列初始化锚点",
+      "deduplication_rule": "按object_group_key去重；子表父键保留完整timestamp/occurrence/record_id/child_id_2",
+      "same_tick_rule": "保留occurrence及child坐标；同Life以previous引用核序，UUID本身不可排序",
+      "strata": [
+        "SYMBOL",
+        "YEAR",
+        "SESSION"
+      ],
+      "source_fields": [
+        "value1.x",
+        "value1.xConfirm",
+        "value2.x",
+        "value2.xConfirm",
+        "timestamp",
+        "memberTurn",
+        "memberKnownFrom"
+      ]
+    },
+    {
+      "statistic_id": "ST03",
+      "name": "候选对象与观点",
+      "business_item_ref": "D001.FeatureUnderstandingPackage#business_objects",
+      "count_unit": "Life及Revision occurrence分别计数",
+      "object_group_key": "Life；(Life,Revision)；公开父键",
+      "time_basis": "groupKnownFrom/原publication timestamp",
+      "denominator": "全局去重候选Life或正式Revision occurrence；品种为包含关系层",
+      "deduplication_rule": "按object_group_key去重；子表父键保留完整timestamp/occurrence/record_id/child_id_2",
+      "same_tick_rule": "保留occurrence及child坐标；同Life以previous引用核序，UUID本身不可排序",
+      "strata": [
+        "SYMBOL",
+        "YEAR",
+        "SESSION"
+      ],
+      "source_fields": [
+        "groupReference",
+        "groupKnownFrom",
+        "timestamp",
+        "occurrence",
+        "record_id",
+        "child_id_2"
+      ]
+    },
+    {
+      "statistic_id": "ST04",
+      "name": "发行事件及定义事件",
+      "business_item_ref": "D001.FeatureUnderstandingPackage#business_objects",
+      "count_unit": "外部发行事件",
+      "object_group_key": "(timestamp,occurrence)",
+      "time_basis": "发行timestamp/Calendar UTI",
+      "denominator": "全部5m输入Calendar位置49,683（待X实测核定）；三对象共享轴，不乘3",
+      "deduplication_rule": "按object_group_key去重；子表父键保留完整timestamp/occurrence/record_id/child_id_2",
+      "same_tick_rule": "保留occurrence及child坐标；同Life以previous引用核序，UUID本身不可排序",
+      "strata": [
+        "SYMBOL",
+        "YEAR",
+        "SESSION"
+      ],
+      "source_fields": [
+        "definitions.timestamp",
+        "occurrences.timestamp",
+        "occurrence"
+      ]
+    },
+    {
+      "statistic_id": "ST05",
+      "name": "观点状态占用",
+      "business_item_ref": "D001.FeatureUnderstandingPackage#business_objects",
+      "count_unit": "观点持有开放分钟",
+      "object_group_key": "Life与相邻Revision知识区间",
+      "time_basis": "[当前known,下一known或min(revisionEnd,样本末))，UTI/120",
+      "denominator": "可从已发表观点支持的持有时段；不是内部逐Tick trace",
+      "deduplication_rule": "按object_group_key去重；子表父键保留完整timestamp/occurrence/record_id/child_id_2",
+      "same_tick_rule": "保留occurrence及child坐标；同Life以previous引用核序，UUID本身不可排序",
+      "strata": [
+        "SYMBOL",
+        "YEAR",
+        "SESSION"
+      ],
+      "source_fields": [
+        "groupObservation",
+        "groupKnownFrom",
+        "groupRevisionEnd"
+      ]
+    },
+    {
+      "statistic_id": "ST06",
+      "name": "状态转换",
+      "business_item_ref": "D001.FeatureUnderstandingPackage#business_objects",
+      "count_unit": "同Life相邻观点有向边",
+      "object_group_key": "(Life,previousRevision,currentRevision)",
+      "time_basis": "知识轴保留同刻顺序",
+      "denominator": "各Life的n-1条相邻已发表Revision边",
+      "deduplication_rule": "按object_group_key去重；子表父键保留完整timestamp/occurrence/record_id/child_id_2",
+      "same_tick_rule": "保留occurrence及child坐标；同Life以previous引用核序，UUID本身不可排序",
+      "strata": [
+        "SYMBOL",
+        "YEAR",
+        "SESSION"
+      ],
+      "source_fields": [
+        "groupObservation",
+        "groupPrevious",
+        "groupReference"
+      ]
+    },
+    {
+      "statistic_id": "ST07",
+      "name": "责任跨度与右删失",
+      "business_item_ref": "D001.FeatureUnderstandingPackage#business_objects",
+      "count_unit": "候选Life",
+      "object_group_key": "Life",
+      "time_basis": "首次准入至最后观点、原anchor/deadline/revisionEnd及handoff；120UTI/开放分钟",
+      "denominator": "所有Life；右删失不当作完整结束",
+      "deduplication_rule": "按object_group_key去重；子表父键保留完整timestamp/occurrence/record_id/child_id_2",
+      "same_tick_rule": "保留occurrence及child坐标；同Life以previous引用核序，UUID本身不可排序",
+      "strata": [
+        "SYMBOL",
+        "YEAR",
+        "SESSION"
+      ],
+      "source_fields": [
+        "groupOriginalAnchor",
+        "groupOriginalDeadline",
+        "groupRevisionEnd",
+        "participationHandoffEnd",
+        "participationDutyClosed"
+      ]
+    },
+    {
+      "statistic_id": "ST08",
+      "name": "声明分支可达性",
+      "business_item_ref": "D001.FeatureUnderstandingPackage#business_objects",
+      "count_unit": "Revision观点",
+      "object_group_key": "(Life,Revision)",
+      "time_basis": "当次观点知识轴",
+      "denominator": "全部观点；零次数仅表示当前样本未观察",
+      "deduplication_rule": "按object_group_key去重；子表父键保留完整timestamp/occurrence/record_id/child_id_2",
+      "same_tick_rule": "保留occurrence及child坐标；同Life以previous引用核序，UUID本身不可排序",
+      "strata": [
+        "SYMBOL",
+        "YEAR",
+        "SESSION"
+      ],
+      "source_fields": [
+        "groupLocalBasis",
+        "groupObservation",
+        "groupClosed",
+        "participationDutyClosed"
+      ]
+    },
+    {
+      "statistic_id": "ST09",
+      "name": "Required理由与四坐标",
+      "business_item_ref": "D001.FeatureUnderstandingPackage#business_objects",
+      "count_unit": "观点内Required pair",
+      "object_group_key": "(公开父键,pair child_id_3,coordinate)",
+      "time_basis": "当次观点知识轴",
+      "denominator": "该层Required pair总数；同边跨Revision重复是不同已发表断言",
+      "deduplication_rule": "按object_group_key去重；子表父键保留完整timestamp/occurrence/record_id/child_id_2",
+      "same_tick_rule": "保留occurrence及child坐标；同Life以previous引用核序，UUID本身不可排序",
+      "strata": [
+        "SYMBOL",
+        "YEAR",
+        "SESSION"
+      ],
+      "source_fields": [
+        "pairTime",
+        "pairDirection",
+        "pairType",
+        "pairBend"
+      ]
+    },
+    {
+      "statistic_id": "ST10",
+      "name": "身份与引用完整性",
+      "business_item_ref": "D001.FeatureUnderstandingPackage#business_objects",
+      "count_unit": "引用边或结构检查单位",
+      "object_group_key": "各表完整层级父子坐标、Exact(Life,Revision)",
+      "time_basis": "被引用知识不晚于引用方，previous同刻按准确引用",
+      "denominator": "每检查在STRUCTURAL_CHECKS中登记自己的denominator",
+      "deduplication_rule": "按object_group_key去重；子表父键保留完整timestamp/occurrence/record_id/child_id_2",
+      "same_tick_rule": "保留occurrence及child坐标；同Life以previous引用核序，UUID本身不可排序",
+      "strata": [
+        "SYMBOL",
+        "YEAR",
+        "SESSION"
+      ],
+      "source_fields": [
+        "groupPrevious",
+        "groupOverlaps",
+        "groupCoveredBy",
+        "participationAdmission",
+        "participationCandidate",
+        "participationMembers",
+        "participationAlternatives",
+        "memberTurn",
+        "memberSource"
+      ]
+    },
+    {
+      "statistic_id": "ST11",
+      "name": "同刻多观点",
+      "business_item_ref": "D001.FeatureUnderstandingPackage#business_objects",
+      "count_unit": "(Life,timestamp)组合",
+      "object_group_key": "(Life,timestamp)；保留Revision/occurrence",
+      "time_basis": "同一Calendar拍",
+      "denominator": "所有Life×实际出现时间组合；例外保存previous序",
+      "deduplication_rule": "按object_group_key去重；子表父键保留完整timestamp/occurrence/record_id/child_id_2",
+      "same_tick_rule": "保留occurrence及child坐标；同Life以previous引用核序，UUID本身不可排序",
+      "strata": [
+        "SYMBOL",
+        "YEAR",
+        "SESSION"
+      ],
+      "source_fields": [
+        "timestamp",
+        "occurrence",
+        "groupPrevious",
+        "groupKnownFrom"
+      ]
+    },
+    {
+      "statistic_id": "ST12",
+      "name": "输出密度及活跃责任峰值",
+      "business_item_ref": "D001.FeatureUnderstandingPackage#business_objects",
+      "count_unit": "Revision/Calendar位置、责任内Life",
+      "object_group_key": "Life；输入公共Calendar.closeUti",
+      "time_basis": "责任期[首次known,min(revisionEnd,样本末)]；闭边界同拍保留",
+      "denominator": "各层实际5m输入位置；完整三品种输入行另为149,049，不混做密度分母",
+      "deduplication_rule": "按object_group_key去重；子表父键保留完整timestamp/occurrence/record_id/child_id_2",
+      "same_tick_rule": "保留occurrence及child坐标；同Life以previous引用核序，UUID本身不可排序",
+      "strata": [
+        "SYMBOL",
+        "YEAR",
+        "SESSION"
+      ],
+      "source_fields": [
+        "groupKnownFrom",
+        "groupRevisionEnd",
+        "KLine.closeUti"
+      ]
+    },
+    {
+      "statistic_id": "ST13",
+      "name": "actual/confirm/selected延迟",
+      "business_item_ref": "D001.FeatureUnderstandingPackage#business_objects",
+      "count_unit": "非初始化尺度位置",
+      "object_group_key": "(symbol,round,xConfirm)",
+      "time_basis": "(selected-known - actual)/120；几何confirm与selected分别列",
+      "denominator": "所有非初始化尺度位置；没有独立selected_time列，以原事件轴和adapter映射共同确认",
+      "deduplication_rule": "按object_group_key去重；子表父键保留完整timestamp/occurrence/record_id/child_id_2",
+      "same_tick_rule": "保留occurrence及child坐标；同Life以previous引用核序，UUID本身不可排序",
+      "strata": [
+        "SYMBOL",
+        "YEAR",
+        "SESSION"
+      ],
+      "source_fields": [
+        "x",
+        "xConfirm",
+        "y",
+        "yConfirm",
+        "timestamp",
+        "memberKnownFrom",
+        "memberT_pointKnownFrom"
+      ]
+    },
+    {
+      "statistic_id": "ST14",
+      "name": "近actual跨品种配对参考",
+      "business_item_ref": "D001.FeatureUnderstandingPackage#business_objects",
+      "count_unit": "无向跨品种尺度位置pair",
+      "object_group_key": "排序的两端上游定位键",
+      "time_basis": "actual相距≤1200UTI；首次共同known=max；年龄对比K800/参考K6",
+      "denominator": "全体近actual跨品种pair；排除同symbol，标注初始化和四坐标筛查；不是native计数器或应输出真值",
+      "deduplication_rule": "按object_group_key去重；子表父键保留完整timestamp/occurrence/record_id/child_id_2",
+      "same_tick_rule": "保留occurrence及child坐标；同Life以previous引用核序，UUID本身不可排序",
+      "strata": [
+        "SYMBOL",
+        "YEAR",
+        "SESSION"
+      ],
+      "source_fields": [
+        "ScaleTurnCalendar.value1",
+        "ScaleTurnCalendar.value2",
+        "Rct.pivot1",
+        "KLine.closeUti"
+      ]
+    },
+    {
+      "statistic_id": "ST15",
+      "name": "首阻断位置参考筛查",
+      "business_item_ref": "D001.FeatureUnderstandingPackage#business_objects",
+      "count_unit": "每个尺度位置",
+      "object_group_key": "(symbol,round,xConfirm)",
+      "time_basis": "首次selected知识轴/首次共同pair知识轴",
+      "denominator": "全部尺度位置；先按实际观察到参与，再按独立规则顺序分桶；不是native首次阻断计数",
+      "deduplication_rule": "按object_group_key去重；子表父键保留完整timestamp/occurrence/record_id/child_id_2",
+      "same_tick_rule": "保留occurrence及child坐标；同Life以previous引用核序，UUID本身不可排序",
+      "strata": [
+        "SYMBOL",
+        "YEAR",
+        "SESSION"
+      ],
+      "source_fields": [
+        "ST02",
+        "ST14",
+        "candidate births members"
+      ]
+    },
+    {
+      "statistic_id": "ST16",
+      "name": "覆盖完整标志冲突",
+      "business_item_ref": "D001.FeatureUnderstandingPackage#business_objects",
+      "count_unit": "Revision occurrence及Life",
+      "object_group_key": "(Life,Revision)",
+      "time_basis": "同拍u、[u-480000,u]完整三品种有效连续5m整数UTI",
+      "denominator": "全部观点；另报coverageIncomplete=1子集作为条件分母",
+      "deduplication_rule": "按object_group_key去重；子表父键保留完整timestamp/occurrence/record_id/child_id_2",
+      "same_tick_rule": "保留occurrence及child坐标；同Life以previous引用核序，UUID本身不可排序",
+      "strata": [
+        "SYMBOL",
+        "YEAR",
+        "SESSION"
+      ],
+      "source_fields": [
+        "groupCoverageIncomplete",
+        "KLine.closeUti",
+        "KLine.close",
+        "groupKnownFrom"
+      ]
+    },
+    {
+      "statistic_id": "ST17",
+      "name": "分层比较",
+      "business_item_ref": "D001.FeatureUnderstandingPackage#business_objects",
+      "count_unit": "各层输入、对象、观点、状态、边及Required",
+      "object_group_key": "按层过滤后沿用ST01-ST16键",
+      "time_basis": "知识年/钟点Session/开盘窗口，不混用actual年",
+      "denominator": "层内实际输入Calendar位置、Life、Revision、Pair及持有时间各自标明",
+      "deduplication_rule": "按object_group_key去重；子表父键保留完整timestamp/occurrence/record_id/child_id_2",
+      "same_tick_rule": "保留occurrence及child坐标；同Life以previous引用核序，UUID本身不可排序",
+      "strata": [
+        "SYMBOL",
+        "YEAR",
+        "SESSION",
+        "DIRECTION"
+      ],
+      "source_fields": [
+        "ST01-ST16",
+        "StratificationPlan"
+      ]
+    }
+  ]
+}

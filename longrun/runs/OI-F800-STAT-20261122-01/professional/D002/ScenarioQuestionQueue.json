@@ -1,0 +1,184 @@
+[
+  {
+    "question_id": "F800-SQ-001",
+    "finding_type": "SCENARIO_INTERPRETATION_QUESTION",
+    "feature_ref": "CommonPriceTurnGroupCandidatesFrp",
+    "reasonableness_unit_ref": "daowei2026/observe-iterate@78b684ba6956f4c33a03b9167e846e3b741316a5:longrun/runs/OI-F800-STAT-20261122-01/professional/D001/FeatureUnderstandingPackage.json#business_objects/BO2,BO3",
+    "statistical_pattern": "i有1004个尺度位置，236个参加F（23.51%），rb为324/425（76.24%）、hc315/430（73.26%）；i未参加位置759个无其他品种actual≤2Δ邻点，9个近边被四坐标参考否决。",
+    "why_statistics_cannot_decide": "独立筛查未发现合格非否决边完全不出组；但跨品种同步性是否符合“共同转折”的真实过程需要图上判断，不能把低参与率直接判成漏报。",
+    "recommended_visual_evidence": [
+      "三品种同尺度actual、confirm、selected知识轴与价格图",
+      "未参加i位置及邻域其他对象的真实过程，与已参加i位置对照",
+      "目标包含/排除场景应先冻结；当前未确认任何业务漏报"
+    ],
+    "representative_locations": [
+      {
+        "symbol": "i",
+        "turn_id": "i/value1/72049199",
+        "actual_ts": "2021-01-04 21:15:00",
+        "known_ts": "2021-01-05 09:40:00"
+      },
+      {
+        "life": "f7df0412-4dc4-40fb-954f-bb23fb18c3f7",
+        "revision": "a8212021-bac2-4253-9444-6d5e573c3b66",
+        "timestamp": "2021-01-07 13:35:00",
+        "known_uti": 72144599,
+        "parent_coordinates": {
+          "timestamp": "2021-01-07 13:35:00",
+          "occurrence": "4",
+          "record_id": "0",
+          "child_id_2": "0"
+        },
+        "symbols": [
+          "hc",
+          "i",
+          "rb"
+        ],
+        "table": "occurrences",
+        "source": "readback/tables/occurrences.csv"
+      }
+    ],
+    "priority": "HIGH",
+    "next_route": "BUSINESS_EXPECTATION_DERIVATION"
+  },
+  {
+    "question_id": "F800-SQ-002",
+    "finding_type": "SCENARIO_INTERPRETATION_QUESTION",
+    "feature_ref": "CommonPriceTurnGroupCandidatesFrp",
+    "reasonableness_unit_ref": "daowei2026/observe-iterate@78b684ba6956f4c33a03b9167e846e3b741316a5:longrun/runs/OI-F800-STAT-20261122-01/professional/D001/FeatureUnderstandingPackage.json#business_objects/BO2,BO3",
+    "statistical_pattern": "候选Life按知识年为244→162→74；每1000个输入位置Revision为47.41→31.16→14.74；同期尺度位置929→642→288。日/夜Revision密度30.81/31.71，开盘15分钟窗口50.91。",
+    "why_statistics_cannot_decide": "上游活动自身下降、钟点分布与市场过程可能解释分层差异；统计没有稳定密度真值，也没有因少而直接判错的阈值。",
+    "recommended_visual_evidence": [
+      "2021密集段与2023稀疏段的同参数上游/候选图",
+      "日夜盘与开盘窗口按实际Calendar位置归一化，观察有无同一真实过程反复建组"
+    ],
+    "representative_locations": [
+      {
+        "life": "7ae80d28-ba72-4ba4-82a9-11c3a83ba6e0",
+        "revision": "5fb32859-41b7-4746-bae1-1d3e4f38da6c",
+        "timestamp": "2021-01-06 11:05:00",
+        "known_uti": 72099599,
+        "parent_coordinates": {
+          "timestamp": "2021-01-06 11:05:00",
+          "occurrence": "2",
+          "record_id": "0",
+          "child_id_2": "0"
+        },
+        "symbols": [
+          "hc",
+          "rb"
+        ],
+        "table": "occurrences",
+        "source": "readback/tables/occurrences.csv"
+      },
+      {
+        "life": "75df9201-547f-488e-9b5b-dc4a806ecae8",
+        "revision": "fb5f4d10-0981-43ce-a2c0-955c45b71a5a",
+        "timestamp": "2023-01-03 09:15:00",
+        "known_uti": 91882799,
+        "parent_coordinates": {
+          "timestamp": "2023-01-03 09:15:00",
+          "occurrence": "1015",
+          "record_id": "0",
+          "child_id_2": "0"
+        },
+        "symbols": [
+          "hc",
+          "rb"
+        ],
+        "table": "occurrences",
+        "source": "readback/tables/occurrences.csv"
+      }
+    ],
+    "priority": "MEDIUM",
+    "next_route": "BUSINESS_EXPECTATION_DERIVATION"
+  },
+  {
+    "question_id": "F800-SQ-003",
+    "finding_type": "SCENARIO_INTERPRETATION_QUESTION",
+    "feature_ref": "CommonPriceTurnGroupCandidatesFrp",
+    "reasonableness_unit_ref": "daowei2026/observe-iterate@78b684ba6956f4c33a03b9167e846e3b741316a5:longrun/runs/OI-F800-STAT-20261122-01/professional/D001/FeatureUnderstandingPackage.json#business_objects/BO2,BO3",
+    "statistical_pattern": "全部原观察窗4000开放分钟，修订尾30、交接尾90；首次准入actual年龄中位280、最大1665分钟；责任内峰值36个Life，469/480个组在旧6Δ期限之后才准入。",
+    "why_statistics_cannot_decide": "800使延迟尺度转折有机会参加，但长责任期是否造成不需要的并行候选/迟到解释，不能靠组数增加或覆盖某延迟分位数裁决；K6仅参考筛查，未做第二个正式实例对比。",
+    "recommended_visual_evidence": [
+      "最长准入延迟与常见延迟位置对照的三品种价格、P/T/C、组责任边界",
+      "被支持严格超集覆盖的2/3成员组及共享成员桥",
+      "后续若要标定需先冻结保留、排除与holdout场景，不直接试值"
+    ],
+    "representative_locations": [
+      {
+        "life": "d5b73eb1-91eb-44b5-a427-4a86df6df163",
+        "revision": "8af89938-f2f0-452c-89af-32e4d46498c2",
+        "timestamp": "2023-07-07 09:05:00",
+        "known_uti": 96874799,
+        "parent_coordinates": {
+          "timestamp": "2023-07-07 09:05:00",
+          "occurrence": "1157",
+          "record_id": "0",
+          "child_id_2": "0"
+        },
+        "symbols": [
+          "i",
+          "rb"
+        ],
+        "table": "occurrences",
+        "source": "readback/tables/occurrences.csv"
+      },
+      {
+        "life": "db22b3a7-af0e-4e59-a512-01a2ffaa32e1",
+        "revision": "0d856565-8a67-412a-85bd-d231b5751824",
+        "timestamp": "2021-01-07 13:35:00",
+        "known_uti": 72144599,
+        "parent_coordinates": {
+          "timestamp": "2021-01-07 13:35:00",
+          "occurrence": "4",
+          "record_id": "0",
+          "child_id_2": "1"
+        },
+        "symbols": [
+          "hc",
+          "rb"
+        ],
+        "table": "occurrences",
+        "source": "readback/tables/occurrences.csv"
+      }
+    ],
+    "priority": "HIGH",
+    "next_route": "BUSINESS_EXPECTATION_DERIVATION"
+  },
+  {
+    "question_id": "F800-SQ-004",
+    "finding_type": "SCENARIO_INTERPRETATION_QUESTION",
+    "feature_ref": "CommonPriceTurnGroupCandidatesFrp",
+    "reasonableness_unit_ref": "daowei2026/observe-iterate@78b684ba6956f4c33a03b9167e846e3b741316a5:longrun/runs/OI-F800-STAT-20261122-01/professional/D001/FeatureUnderstandingPackage.json#business_objects/BO2,BO3",
+    "statistical_pattern": "Supported1543、Incomplete3、Contradicted0；Withdrawn/EndedByScope0；3个初始化无方向锚点参加同一个Incomplete Life；所有真实选中位置几何confirm至selected均5开放分钟。",
+    "why_statistics_cannot_decide": "当前正常KLine无修订patch和显式scopeEnded。零分支只是本实例未观察，不能证明分支不可达；初始化锚点是否需要在业务观察中弱化也缺少冻结预期。",
+    "recommended_visual_evidence": [
+      "冷启动三锚点及首次实际峰谷的同图对照",
+      "把样本中无适用输入的分支覆盖限制交给后续验证，不以零次数构造结构错误"
+    ],
+    "representative_locations": [
+      {
+        "life": "499a7846-7731-459b-bd50-3e77440241d5",
+        "revision": "a9974f34-fc6b-4a5a-afe1-df305970198f",
+        "timestamp": "2021-01-04 10:05:00",
+        "known_uti": 72011399,
+        "parent_coordinates": {
+          "timestamp": "2021-01-04 10:05:00",
+          "occurrence": "1",
+          "record_id": "0",
+          "child_id_2": "0"
+        },
+        "symbols": [
+          "hc",
+          "i",
+          "rb"
+        ],
+        "table": "occurrences",
+        "source": "readback/tables/occurrences.csv"
+      }
+    ],
+    "priority": "MEDIUM",
+    "next_route": "BUSINESS_EXPECTATION_DERIVATION"
+  }
+]

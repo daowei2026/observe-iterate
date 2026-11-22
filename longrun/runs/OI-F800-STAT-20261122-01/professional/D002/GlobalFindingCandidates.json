@@ -1,0 +1,122 @@
+[
+  {
+    "finding_id": "F800-GF-001",
+    "finding_type": "STRUCTURAL_FINDING_CANDIDATE",
+    "feature_ref": "CommonPriceTurnGroupCandidatesFrp",
+    "run_binding": "FeatureRunResultBinding.json",
+    "reasonableness_unit_ref": "daowei2026/observe-iterate@78b684ba6956f4c33a03b9167e846e3b741316a5:longrun/runs/OI-F800-STAT-20261122-01/professional/D001/FeatureUnderstandingPackage.json#business_objects/BO3",
+    "business_object_ref": "daowei2026/observe-iterate@78b684ba6956f4c33a03b9167e846e3b741316a5:longrun/runs/OI-F800-STAT-20261122-01/professional/D001/FeatureUnderstandingPackage.json#business_objects/BO3",
+    "observation": "三对象公开KLine在[u-480000,u]均有效且整数UTI连续、正常入口Clock可用时，groupCoverageIncomplete仍为1；22个Revision occurrence、12个Life、18个发行时刻。",
+    "structural_invariant_ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateMaterial.hs#advanceMaterial/covered",
+    "evidence_scope": {
+      "scope": {
+        "symbols": [
+          "rb",
+          "hc",
+          "i"
+        ],
+        "start_time": "2021-01-01",
+        "end_time": "2023-12-31",
+        "actual_start_time": "2021-01-04 09:05:00",
+        "actual_end_time": "2023-12-29 15:00:00",
+        "freq": "5m",
+        "calendar": "night_end_at_2300",
+        "sessions": [
+          "DAY_CLOCK_09_15",
+          "NIGHT_CLOCK_21_23"
+        ],
+        "sof": "TA_updto20240229_DBA",
+        "stk_tlist": "steel",
+        "input_positions_per_symbol": 49683,
+        "input_symbol_rows": 149049,
+        "per_symbol_validation": "INPUT_SCOPE_VALIDATION.json"
+      },
+      "time_range": [
+        "2021-08-31 21:45:00",
+        "2021-09-15 21:25:00"
+      ],
+      "table": "occurrences",
+      "source_fields": [
+        "groupCoverageIncomplete",
+        "groupKnownFrom",
+        "KLine.closeUti",
+        "KLine.close"
+      ],
+      "full_population_occurrences": 1546,
+      "conditional_population_coverage_incomplete": 30,
+      "repeated_publication_ticks": 18,
+      "life_denominator": 480,
+      "affected_lives": 12,
+      "affected_life_ratio": 0.025,
+      "conditional_affected_ratio": 0.7333333333333333
+    },
+    "repeat_count": 22,
+    "affected_count": 22,
+    "affected_ratio": 0.014230271668822769,
+    "representative_locations": [
+      {
+        "life": "3657ca5e-f0c0-42fe-a30f-943fc97a9ecf",
+        "revision": "22df3987-1df8-40d8-b736-02fceed8e239",
+        "timestamp": "2021-08-31 21:45:00",
+        "known_uti": 78643799,
+        "parent_coordinates": {
+          "timestamp": "2021-08-31 21:45:00",
+          "occurrence": "348",
+          "record_id": "0",
+          "child_id_2": "0"
+        },
+        "symbols": [
+          "hc",
+          "i",
+          "rb"
+        ],
+        "table": "occurrences",
+        "source": "readback/tables/occurrences.csv"
+      },
+      {
+        "life": "681ff724-829f-4199-b45b-1152fff41f2c",
+        "revision": "a23a4ea5-415f-43d8-92fb-c378fe23d604",
+        "timestamp": "2021-09-02 14:30:00",
+        "known_uti": 78717599,
+        "parent_coordinates": {
+          "timestamp": "2021-09-02 14:30:00",
+          "occurrence": "349",
+          "record_id": "0",
+          "child_id_2": "0"
+        },
+        "symbols": [
+          "hc",
+          "rb"
+        ],
+        "table": "occurrences",
+        "source": "readback/tables/occurrences.csv"
+      },
+      {
+        "life": "a3fdf21b-b7a1-4c71-9f4d-4e283b7f7c0b",
+        "revision": "c8c9218f-f720-4fa6-80e9-d35bcf396f8b",
+        "timestamp": "2021-08-31 21:45:00",
+        "known_uti": 78643799,
+        "parent_coordinates": {
+          "timestamp": "2021-08-31 21:45:00",
+          "occurrence": "348",
+          "record_id": "0",
+          "child_id_2": "1"
+        },
+        "symbols": [
+          "hc",
+          "rb"
+        ],
+        "table": "occurrences",
+        "source": "readback/tables/occurrences.csv"
+      }
+    ],
+    "alternative_non_error_explanations": [
+      "冷启动/未积累800Δ：另8个coverageIncomplete观点保留为未冲突；本finding的连续区间远早于u-480000，不适用冷启动解释",
+      "真实缺价、Calendar断点或未知Clock：本对照逐品种检查有效价格/整数UTI，正常KLine adapter始终携带Clock；仍交诊断确认端到端语义",
+      "groupCoverageIncomplete承诺的是不同覆盖域：若存在已冻结且不同于当前固定三对象窗口的正式合同，应提供反证；本Skill不改写预期"
+    ],
+    "current_confidence": "HIGH：输入与公开标志重复冲突；只确认值得诊断，尚未确认实现根因或业务裁决",
+    "next_route": "BUSINESS_DISCREPANCY_DIAGNOSIS",
+    "diagnosis_input_adapter_ref": "DiagnosisInputAdapters.json#F800-DA-001"
+  }
+]

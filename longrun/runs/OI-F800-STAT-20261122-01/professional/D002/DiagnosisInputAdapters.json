@@ -1,0 +1,142 @@
+[
+  {
+    "adapter_id": "F800-DA-001",
+    "finding_id": "F800-GF-001",
+    "frozen_expectation": {
+      "expectation_id": "F800-INV-COVERAGE-001",
+      "version": "FRP@ac1927518ad6105f15ffbe37fea45e4be91ba574",
+      "statement": "正常KLine固定rb/hc/i域、无未知Clock且三对象在[u-800Δ,u]有成功连续观测时，不应标记当前观察域不完整。",
+      "origin": [
+        "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateMaterial.hs#covered/incomplete",
+        "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateKLineInput.hs#buildKLineGroupSource",
+        "daowei2026/observe-iterate@78b684ba6956f4c33a03b9167e846e3b741316a5:longrun/runs/OI-F800-STAT-20261122-01/professional/D001/FeatureUnderstandingPackage.json#processing_relations/R2"
+      ],
+      "applicable_conditions": [
+        "本正式参数实例与三对象固定域",
+        "正常KLine入口，无framePatches/未知Clock",
+        "全三对象有效close与整数UTI覆盖整个观察窗；不含冷启动或真实缺口"
+      ],
+      "falsifier_or_counterevidence": [
+        "指出所列窗口内某对象真实未观测/缺价/失知",
+        "提供预先存在、声明不同覆盖域或不同时间语义的有效合同",
+        "证明独立导出与实际生产输入并非同实例"
+      ]
+    },
+    "evidence_comparison_package": {
+      "comparison_id": "F800-GC-001",
+      "scenario_id": "GLOBAL_PROFILE",
+      "data_binding": "FeatureRunResultBinding.json",
+      "time_basis": "Asia/Shanghai原publication与groupKnownFrom；KLine整数closeUti，120UTI/开放分钟；逐个检查[u-480000,u]",
+      "parameter_version": "b72095ff100da926474701b74bff7586a74b9770bc81cadc34c23cfe223e5cb3",
+      "evidence_items": [
+        {
+          "kind": "全量输出",
+          "ref": "profile/violations_coverage_flag_vs_continuous_input.csv",
+          "rows": 22,
+          "lives": 12,
+          "ticks": 18
+        },
+        {
+          "kind": "源输入边界",
+          "ref": "INPUT_SCOPE_VALIDATION.json",
+          "rule": "各品种5m UTI递增600；连续有效close重置断点，不将69个缺价行桥接"
+        },
+        {
+          "kind": "清楚代表",
+          "location": {
+            "life": "3657ca5e-f0c0-42fe-a30f-943fc97a9ecf",
+            "revision": "22df3987-1df8-40d8-b736-02fceed8e239",
+            "timestamp": "2021-08-31 21:45:00",
+            "known_uti": 78643799,
+            "parent_coordinates": {
+              "timestamp": "2021-08-31 21:45:00",
+              "occurrence": "348",
+              "record_id": "0",
+              "child_id_2": "0"
+            },
+            "symbols": [
+              "hc",
+              "i",
+              "rb"
+            ],
+            "table": "occurrences",
+            "source": "readback/tables/occurrences.csv"
+          },
+          "input_continuous_from": {
+            "rb": 72004199,
+            "hc": 72004199,
+            "i": 72004199
+          },
+          "required_from": 78163799,
+          "observed_flag": 1
+        },
+        {
+          "kind": "同Life未冲突对照",
+          "location": {
+            "life": "3657ca5e-f0c0-42fe-a30f-943fc97a9ecf",
+            "revision": "d8c31b84-0d78-492f-b032-0eb3da5d50f4",
+            "timestamp": "2021-08-19 10:00:00",
+            "known_uti": 78287399,
+            "parent_coordinates": {
+              "timestamp": "2021-08-19 10:00:00",
+              "occurrence": "326",
+              "record_id": "0",
+              "child_id_2": "0"
+            },
+            "symbols": [
+              "hc",
+              "i",
+              "rb"
+            ],
+            "table": "occurrences",
+            "source": "readback/tables/occurrences.csv"
+          },
+          "observed_flag": 0
+        },
+        {
+          "kind": "冷启动反例边界",
+          "location": {
+            "life": "499a7846-7731-459b-bd50-3e77440241d5",
+            "revision": "a9974f34-fc6b-4a5a-afe1-df305970198f",
+            "timestamp": "2021-01-04 10:05:00",
+            "known_uti": 72011399,
+            "parent_coordinates": {
+              "timestamp": "2021-01-04 10:05:00",
+              "occurrence": "1",
+              "record_id": "0",
+              "child_id_2": "0"
+            },
+            "symbols": [
+              "hc",
+              "i",
+              "rb"
+            ],
+            "table": "occurrences",
+            "source": "readback/tables/occurrences.csv"
+          },
+          "observed_flag": 1,
+          "interpretation": "输入历史不足800Δ，未列为冲突"
+        }
+      ],
+      "judgment": "STRUCTURAL_CONFLICT_CANDIDATE：当前明确覆盖预期与22个正式观点冲突；根因、责任分类和修复方案均待Skill3"
+    },
+    "business_intent_ref": "daowei2026/observe-iterate@78b684ba6956f4c33a03b9167e846e3b741316a5:longrun/runs/OI-F800-STAT-20261122-01/professional/D001/FeatureUnderstandingPackage.json#business_objects/BO3",
+    "processing_chain_ref": "daowei2026/observe-iterate@78b684ba6956f4c33a03b9167e846e3b741316a5:longrun/runs/OI-F800-STAT-20261122-01/professional/D001/FeatureUnderstandingPackage.json#processing_relations/R2,R3",
+    "relevant_code_or_requirement_refs": [
+      "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateMaterial.hs",
+      "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateKLineInput.hs",
+      "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateEvolution.hs",
+      "daowei2026/observe-iterate@87b951bbd15078a2d6353bdd24afe0d8f19c845c:skills/reasonableness-analysis/STATISTICS_DRIVEN_PRACTICE.md#6,7"
+    ],
+    "data_binding_and_time_basis": {
+      "run_binding": "FeatureRunResultBinding.json",
+      "parameter_version": "b72095ff100da926474701b74bff7586a74b9770bc81cadc34c23cfe223e5cb3",
+      "input_manifest": "UPSTREAM_EXTRACTION.json",
+      "time_basis": "Asia/Shanghai原publication与groupKnownFrom；KLine整数closeUti，120UTI/开放分钟；逐个检查[u-480000,u]",
+      "code_version": {
+        "frp": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574",
+        "tis": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767"
+      }
+    }
+  }
+]

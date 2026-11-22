@@ -1,0 +1,61 @@
+{
+  "strata": [
+    {
+      "stratum_id": "SYMBOL:{rb,hc,i}",
+      "dimension": "SYMBOL",
+      "rule": "上游按symbol；组按groupMembers.memberObject包含关系，跨品种组计入多层；全局Life另去重",
+      "source_fields": [
+        "memberObject",
+        "upstream.symbol"
+      ]
+    },
+    {
+      "stratum_id": "YEAR:{2021,2022,2023}",
+      "dimension": "PERIOD",
+      "rule": "主口径selected/publication知识时间自然年；另列actual年，不能混合",
+      "source_fields": [
+        "timestamp",
+        "actual_ts"
+      ]
+    },
+    {
+      "stratum_id": "MONTH:2021-01..2023-12",
+      "dimension": "PERIOD",
+      "rule": "知识时间自然月",
+      "source_fields": [
+        "timestamp"
+      ]
+    },
+    {
+      "stratum_id": "SESSION:{DAY_CLOCK_09_15,NIGHT_CLOCK_21_23,OTHER_CLOCK}",
+      "dimension": "SESSION",
+      "rule": "按Asia/Shanghai公开timestamp钟点；09:00-15:00为日，21:00-23:00为夜；只使用Calendar实际出现行，不猜交易日归属",
+      "source_fields": [
+        "timestamp",
+        "KLine.closeUti"
+      ]
+    },
+    {
+      "stratum_id": "OPENING:{OPENING_FIRST_15M,OTHER_TRADING_TIME}",
+      "dimension": "SESSION",
+      "rule": "夜盘21:00..21:15、上午09:00..09:15（含端点）；只表示有据可查的钟点窗口",
+      "source_fields": [
+        "timestamp"
+      ]
+    },
+    {
+      "stratum_id": "DIRECTION:{DirectionUp,DirectionDown,Unknown}",
+      "dimension": "OTHER",
+      "rule": "按同参数Rct首次polarity映射方向；Unknown与公开Unavailable同义，初始化单列",
+      "source_fields": [
+        "pivot1",
+        "price1",
+        "memberDirection_name"
+      ]
+    }
+  ],
+  "exclusions": [
+    "无可靠独立环境标签，不假设牛熊或波动状态",
+    "未获授权比较多个正式实例；K6仅相同输入的期限参考筛查，不是第二次生产"
+  ]
+}

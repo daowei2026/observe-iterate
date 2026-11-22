@@ -1,0 +1,60 @@
+{
+  "prior_package": "daowei2026/observe-iterate@78b684ba6956f4c33a03b9167e846e3b741316a5:longrun/runs/OI-F800-STAT-20261122-01/professional/D001/FeatureUnderstandingPackage.json",
+  "prior_package_unchanged": true,
+  "items": [
+    {
+      "id": "U1",
+      "status": "RESOLVED_BY_X",
+      "evidence": [
+        "FeatureRunResultBinding.json",
+        "NATIVE_OUTPUT_MANIFEST.json",
+        "INPUT_SCOPE_VALIDATION.json"
+      ]
+    },
+    {
+      "id": "U2",
+      "status": "RESOLVED_BY_X_ACTUAL_LOADING",
+      "evidence": [
+        "FRP_SOURCE_BINDING.json",
+        "TIS_SOURCE_RECHECK.json",
+        "NATIVE_PROCESS_OBSERVATION.json",
+        "PRODUCTION_RECONCILIATION.json"
+      ],
+      "note": "复用已编译锁定引擎；未重新编译，实际正式进程与完整配置原生消费已验实"
+    },
+    {
+      "id": "U3",
+      "status": "UPSTREAM_DENOMINATORS_RESOLVED_NATIVE_INTERNAL_TRACE_NOT_EXPOSED",
+      "evidence": [
+        "UPSTREAM_EXTRACTION.json",
+        "profile/scale_turns.csv",
+        "StatisticsInputReadiness.json"
+      ]
+    },
+    {
+      "id": "U4",
+      "status": "OLD_RESULT_REJECTED_NEW_EXACT_INSTANCE_PRODUCED",
+      "evidence": [
+        "FeatureRunResultBinding.json"
+      ]
+    },
+    {
+      "id": "U5",
+      "status": "G_COMPLETE_REASONABLENESS_AND_FINDING_OPEN",
+      "evidence": [
+        "GlobalFindingCandidates.json",
+        "ScenarioQuestionQueue.json"
+      ],
+      "note": "K800数量与延迟关系已实测；不等于标定通过，历史覆盖问题未宣布关闭"
+    },
+    {
+      "id": "U6",
+      "status": "RESOLVED_BY_WORKSPACE_PLATFORM_ROUTING_AND_REAL_FLOCK",
+      "evidence": [
+        "PLATFORM_STORAGE_BINDING.json",
+        "PRODUCTION_PROCESS.json",
+        "PRODUCTION_RECONCILIATION.json"
+      ]
+    }
+  ]
+}

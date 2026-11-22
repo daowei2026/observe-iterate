@@ -1,0 +1,25 @@
+{
+  "reconciled_at": "2026-11-22T10:00:45.663891+00:00",
+  "feature_production_completed": true,
+  "feature_python_exit_code": 0,
+  "exit_code_evidence": "监督源码先assert child.returncode==0，随后才在native_process_observed断言失败；真实工具返回traceback已保存",
+  "supervisor_exit_code": 1,
+  "supervisor_failure": "按PID去重漏记shell同PID exec为ts；不是Feature生产失败",
+  "executed_supervisor_sha256": "b79637ab6c3aef363ba2915bc174b2acf7326512601a7ac81c527d866d729c47",
+  "preservation": "executed-v1保留实际运行脚本；supervise_production.py修为按PID+executable观察，未重新运行生产",
+  "feature_started_at": "2026-11-22T09:50:06.055079+00:00",
+  "feature_finished_at": "2026-11-22T09:59:03.227008+00:00",
+  "real_native_pid": 1712794,
+  "actual_native_evidence": "NATIVE_PROCESS_OBSERVATION.json",
+  "actual_native_evidence_sha256": "36688283c0574f5285e424ce43011342dbfaba00e7c8839609f634d366e35ef3",
+  "produced_report_sha256": "102356ebf9eb99c94d8d3e4d04bd545f1669859bed909edcdbd4b46354e1faa7",
+  "fields_sha256": "58ff1166df0e4bbdb84f4309b72947ee16de4a075d8992681fd60f46ccfb887c",
+  "producer_rerun_count": 0,
+  "processes_no_longer_exist": [
+    1712483,
+    1712546,
+    1712794
+  ],
+  "supervisor_lock_absent": true,
+  "lock_release_time": "未捕获精确释放时刻；Feature完成后监督异常展开with关闭fd，当前/proc/locks确认原PID无锁"
+}

@@ -1,0 +1,17 @@
+{
+  "started_at": "2026-11-22T10:01:09.925157+00:00",
+  "pid": 1720725,
+  "requested_sof": {
+    "sof_name": "TA_updto20240229_DBA",
+    "stk_tlist": "steel",
+    "startDay": "2021-01-01",
+    "endDay": "2023-12-31",
+    "full_period": null
+  },
+  "completed": false,
+  "producer_executed": false,
+  "features": [],
+  "error": "[Errno 2] No such file or directory: '/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D002/FeatureRunResultBinding.json'",
+  "traceback": "Traceback (most recent call last):\n  File \"artifacts/OI-F800-STAT-20261122-01/D002/extract_upstream.py\", line 19, in main\n    from mquant.frame import CurrSof, CurrCalendar, KLine, CalType\n  File \"/dwdhome/fy/BASE_E6_2_copy/.runtime/f-wide-observation-20261122/runtime/mquant/frame/__init__.py\", line 61, in <module>\n    from .core import *\n  File \"/dwdhome/fy/BASE_E6_2_copy/.runtime/f-wide-observation-20261122/runtime/mquant/frame/core/__init__.py\", line 35, in <module>\n    from .app import *\n  File \"/dwdhome/fy/BASE_E6_2_copy/.runtime/f-wide-observation-20261122/runtime/mquant/frame/core/app/__init__.py\", line 20, in <module>\n    from .env import *\n  File \"/dwdhome/fy/BASE_E6_2_copy/.runtime/f-wide-observation-20261122/runtime/mquant/frame/core/app/env.py\", line 4, in <module>\n    from ...lib3 import CurrTradeSet, FuncUtil, AbsContextManager\n  File \"/dwdhome/fy/BASE_E6_2_copy/.runtime/f-wide-observation-20261122/runtime/mquant/frame/lib3.py\", line 4, in <module>\n    from m3v import *\n  File \"/m3c3/py-prod/m3v/__init__.py\", line 42, in <module>\n    from .nb import *\n  File \"/m3c3/py-prod/m3v/nb/__init__.py\", line 20, in <module>\n    from .nbenv import *\n  File \"/m3c3/py-prod/m3v/nb/nbenv.py\", line 9, in <module>\n    from IPython.display import HTML, Javascript, clear_output, display\n  File \"/m3c3/Linux/apps/anaconda3/lib/python3.10/site-packages/IPython/__init__.py\", line 55, in <module>\n    from .terminal.embed import embed\n  File \"/m3c3/Linux/apps/anaconda3/lib/python3.10/site-packages/IPython/terminal/embed.py\", line 17, in <module>\n    from IPython.terminal.ipapp import load_default_config\n  File \"/m3c3/Linux/apps/anaconda3/lib/python3.10/site-packages/IPython/terminal/ipapp.py\", line 28, in <module>\n    from IPython.core.magics import (\n  File \"/m3c3/Linux/apps/anaconda3/lib/python3.10/site-packages/IPython/core/magics/__init__.py\", line 21, in <module>\n    from .execution import ExecutionMagics\n  File \"/m3c3/Linux/apps/anaconda3/lib/python3.10/site-packages/IPython/core/magics/execution.py\", line 12, in <module>\n    import cProfile as profile\n  File \"/m3c3/Linux/apps/anaconda3/lib/python3.10/cProfile.py\", line 11, in <module>\n    import profile as _pyprofile\n  File \"/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D002/profile.py\", line 85, in <module>\n    binding = json.loads((ROOT / 'FeatureRunResultBinding.json').read_text())\n  File \"/m3c3/Linux/apps/anaconda3/lib/python3.10/pathlib.py\", line 1134, in read_text\n    with self.open(mode='r', encoding=encoding, errors=errors) as f:\n  File \"/m3c3/Linux/apps/anaconda3/lib/python3.10/pathlib.py\", line 1119, in open\n    return self._accessor.open(self, mode, buffering, encoding, errors,\nFileNotFoundError: [Errno 2] No such file or directory: '/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D002/FeatureRunResultBinding.json'\n",
+  "finished_at": "2026-11-22T10:01:28.114590+00:00"
+}

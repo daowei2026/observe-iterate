@@ -1,0 +1,417 @@
+[
+  {
+    "case_candidate_id": "F800-CC-001",
+    "source_finding_or_question_id": "F800-GF-001",
+    "symbol": [
+      "hc",
+      "i",
+      "rb"
+    ],
+    "start_time": "2021-08-31 21:45:00",
+    "end_time": "2021-08-31 21:45:00",
+    "object_ids": [
+      "3657ca5e-f0c0-42fe-a30f-943fc97a9ecf",
+      "22df3987-1df8-40d8-b736-02fceed8e239"
+    ],
+    "related_events": [
+      {
+        "life": "3657ca5e-f0c0-42fe-a30f-943fc97a9ecf",
+        "revision": "22df3987-1df8-40d8-b736-02fceed8e239",
+        "timestamp": "2021-08-31 21:45:00",
+        "known_uti": 78643799,
+        "parent_coordinates": {
+          "timestamp": "2021-08-31 21:45:00",
+          "occurrence": "348",
+          "record_id": "0",
+          "child_id_2": "0"
+        },
+        "symbols": [
+          "hc",
+          "i",
+          "rb"
+        ],
+        "table": "occurrences",
+        "source": "readback/tables/occurrences.csv"
+      }
+    ],
+    "selection_reason": "清楚三成员夜盘冲突；历史已充分，区分冷启动解释",
+    "required_fields": [
+      "三对象KLine.close/closeUti",
+      "groupReference/groupCoverageIncomplete/groupKnownFrom",
+      "成员actual/confirm/known及准确上游来源",
+      "原观察/修订/交接边界"
+    ],
+    "candidate_only": true,
+    "context_request": "后续依Calendar UTI扩展到至少[u-480000,u]或完整Life，当前不冻结正式场景"
+  },
+  {
+    "case_candidate_id": "F800-CC-002",
+    "source_finding_or_question_id": "F800-GF-001",
+    "symbol": [
+      "hc",
+      "i",
+      "rb"
+    ],
+    "start_time": "2021-08-19 10:00:00",
+    "end_time": "2021-08-19 10:00:00",
+    "object_ids": [
+      "3657ca5e-f0c0-42fe-a30f-943fc97a9ecf",
+      "d8c31b84-0d78-492f-b032-0eb3da5d50f4"
+    ],
+    "related_events": [
+      {
+        "life": "3657ca5e-f0c0-42fe-a30f-943fc97a9ecf",
+        "revision": "d8c31b84-0d78-492f-b032-0eb3da5d50f4",
+        "timestamp": "2021-08-19 10:00:00",
+        "known_uti": 78287399,
+        "parent_coordinates": {
+          "timestamp": "2021-08-19 10:00:00",
+          "occurrence": "326",
+          "record_id": "0",
+          "child_id_2": "0"
+        },
+        "symbols": [
+          "hc",
+          "i",
+          "rb"
+        ],
+        "table": "occurrences",
+        "source": "readback/tables/occurrences.csv"
+      }
+    ],
+    "selection_reason": "同Life此前flag=0，对照组身份与成员不变",
+    "required_fields": [
+      "三对象KLine.close/closeUti",
+      "groupReference/groupCoverageIncomplete/groupKnownFrom",
+      "成员actual/confirm/known及准确上游来源",
+      "原观察/修订/交接边界"
+    ],
+    "candidate_only": true,
+    "context_request": "后续依Calendar UTI扩展到至少[u-480000,u]或完整Life，当前不冻结正式场景"
+  },
+  {
+    "case_candidate_id": "F800-CC-003",
+    "source_finding_or_question_id": "F800-GF-001",
+    "symbol": [
+      "hc",
+      "i",
+      "rb"
+    ],
+    "start_time": "2021-01-04 10:05:00",
+    "end_time": "2021-01-04 10:05:00",
+    "object_ids": [
+      "499a7846-7731-459b-bd50-3e77440241d5",
+      "a9974f34-fc6b-4a5a-afe1-df305970198f"
+    ],
+    "related_events": [
+      {
+        "life": "499a7846-7731-459b-bd50-3e77440241d5",
+        "revision": "a9974f34-fc6b-4a5a-afe1-df305970198f",
+        "timestamp": "2021-01-04 10:05:00",
+        "known_uti": 72011399,
+        "parent_coordinates": {
+          "timestamp": "2021-01-04 10:05:00",
+          "occurrence": "1",
+          "record_id": "0",
+          "child_id_2": "0"
+        },
+        "symbols": [
+          "hc",
+          "i",
+          "rb"
+        ],
+        "table": "occurrences",
+        "source": "readback/tables/occurrences.csv"
+      }
+    ],
+    "selection_reason": "真实历史不足窗口的flag=1对照，防止把所有标志都当冲突",
+    "required_fields": [
+      "三对象KLine.close/closeUti",
+      "groupReference/groupCoverageIncomplete/groupKnownFrom",
+      "成员actual/confirm/known及准确上游来源",
+      "原观察/修订/交接边界"
+    ],
+    "candidate_only": true,
+    "context_request": "后续依Calendar UTI扩展到至少[u-480000,u]或完整Life，当前不冻结正式场景"
+  },
+  {
+    "case_candidate_id": "F800-CC-004",
+    "source_finding_or_question_id": "F800-GF-001",
+    "symbol": [
+      "hc",
+      "rb"
+    ],
+    "start_time": "2021-09-02 14:30:00",
+    "end_time": "2021-09-02 14:30:00",
+    "object_ids": [
+      "681ff724-829f-4199-b45b-1152fff41f2c",
+      "a23a4ea5-415f-43d8-92fb-c378fe23d604"
+    ],
+    "related_events": [
+      {
+        "life": "681ff724-829f-4199-b45b-1152fff41f2c",
+        "revision": "a23a4ea5-415f-43d8-92fb-c378fe23d604",
+        "timestamp": "2021-09-02 14:30:00",
+        "known_uti": 78717599,
+        "parent_coordinates": {
+          "timestamp": "2021-09-02 14:30:00",
+          "occurrence": "349",
+          "record_id": "0",
+          "child_id_2": "0"
+        },
+        "symbols": [
+          "hc",
+          "rb"
+        ],
+        "table": "occurrences",
+        "source": "readback/tables/occurrences.csv"
+      }
+    ],
+    "selection_reason": "同一疑点跨日盘/夜盘，不以单一Session解释",
+    "required_fields": [
+      "三对象KLine.close/closeUti",
+      "groupReference/groupCoverageIncomplete/groupKnownFrom",
+      "成员actual/confirm/known及准确上游来源",
+      "原观察/修订/交接边界"
+    ],
+    "candidate_only": true,
+    "context_request": "后续依Calendar UTI扩展到至少[u-480000,u]或完整Life，当前不冻结正式场景"
+  },
+  {
+    "case_candidate_id": "F800-CC-005",
+    "source_finding_or_question_id": "F800-SQ-001",
+    "symbol": [
+      "hc",
+      "i",
+      "rb"
+    ],
+    "start_time": "2021-01-07 13:35:00",
+    "end_time": "2021-01-07 13:35:00",
+    "object_ids": [
+      "f7df0412-4dc4-40fb-954f-bb23fb18c3f7",
+      "a8212021-bac2-4253-9444-6d5e573c3b66"
+    ],
+    "related_events": [
+      {
+        "life": "f7df0412-4dc4-40fb-954f-bb23fb18c3f7",
+        "revision": "a8212021-bac2-4253-9444-6d5e573c3b66",
+        "timestamp": "2021-01-07 13:35:00",
+        "known_uti": 72144599,
+        "parent_coordinates": {
+          "timestamp": "2021-01-07 13:35:00",
+          "occurrence": "4",
+          "record_id": "0",
+          "child_id_2": "0"
+        },
+        "symbols": [
+          "hc",
+          "i",
+          "rb"
+        ],
+        "table": "occurrences",
+        "source": "readback/tables/occurrences.csv"
+      }
+    ],
+    "selection_reason": "i已参加位置，和独立上游未出组位置比较",
+    "required_fields": [
+      "三对象KLine.close/closeUti",
+      "groupReference/groupCoverageIncomplete/groupKnownFrom",
+      "成员actual/confirm/known及准确上游来源",
+      "原观察/修订/交接边界"
+    ],
+    "candidate_only": true,
+    "context_request": "后续依Calendar UTI扩展到至少[u-480000,u]或完整Life，当前不冻结正式场景"
+  },
+  {
+    "case_candidate_id": "F800-CC-006",
+    "source_finding_or_question_id": "F800-SQ-001",
+    "symbol": [
+      "i"
+    ],
+    "start_time": "2021-01-04 21:15:00",
+    "end_time": "2021-01-05 09:40:00",
+    "object_ids": [
+      "i/value1/72049199"
+    ],
+    "related_events": [],
+    "selection_reason": "从上游选未参加输出位置，不用F成员表反推覆盖；独立参考首阻断为无其他品种2Δ邻点",
+    "required_fields": [
+      "上游三品种尺度位置与真实价格",
+      "actual/confirm/selected知识轴",
+      "2Δ邻域及其他尺度过程"
+    ],
+    "candidate_only": true
+  },
+  {
+    "case_candidate_id": "F800-CC-007",
+    "source_finding_or_question_id": "F800-SQ-002",
+    "symbol": [
+      "hc",
+      "rb"
+    ],
+    "start_time": "2021-01-06 11:05:00",
+    "end_time": "2021-01-06 11:05:00",
+    "object_ids": [
+      "7ae80d28-ba72-4ba4-82a9-11c3a83ba6e0",
+      "5fb32859-41b7-4746-bae1-1d3e4f38da6c"
+    ],
+    "related_events": [
+      {
+        "life": "7ae80d28-ba72-4ba4-82a9-11c3a83ba6e0",
+        "revision": "5fb32859-41b7-4746-bae1-1d3e4f38da6c",
+        "timestamp": "2021-01-06 11:05:00",
+        "known_uti": 72099599,
+        "parent_coordinates": {
+          "timestamp": "2021-01-06 11:05:00",
+          "occurrence": "2",
+          "record_id": "0",
+          "child_id_2": "0"
+        },
+        "symbols": [
+          "hc",
+          "rb"
+        ],
+        "table": "occurrences",
+        "source": "readback/tables/occurrences.csv"
+      }
+    ],
+    "selection_reason": "2021候选相对密集年份代表",
+    "required_fields": [
+      "三对象KLine.close/closeUti",
+      "groupReference/groupCoverageIncomplete/groupKnownFrom",
+      "成员actual/confirm/known及准确上游来源",
+      "原观察/修订/交接边界"
+    ],
+    "candidate_only": true,
+    "context_request": "后续依Calendar UTI扩展到至少[u-480000,u]或完整Life，当前不冻结正式场景"
+  },
+  {
+    "case_candidate_id": "F800-CC-008",
+    "source_finding_or_question_id": "F800-SQ-002",
+    "symbol": [
+      "hc",
+      "rb"
+    ],
+    "start_time": "2023-01-03 09:15:00",
+    "end_time": "2023-01-03 09:15:00",
+    "object_ids": [
+      "75df9201-547f-488e-9b5b-dc4a806ecae8",
+      "fb5f4d10-0981-43ce-a2c0-955c45b71a5a"
+    ],
+    "related_events": [
+      {
+        "life": "75df9201-547f-488e-9b5b-dc4a806ecae8",
+        "revision": "fb5f4d10-0981-43ce-a2c0-955c45b71a5a",
+        "timestamp": "2023-01-03 09:15:00",
+        "known_uti": 91882799,
+        "parent_coordinates": {
+          "timestamp": "2023-01-03 09:15:00",
+          "occurrence": "1015",
+          "record_id": "0",
+          "child_id_2": "0"
+        },
+        "symbols": [
+          "hc",
+          "rb"
+        ],
+        "table": "occurrences",
+        "source": "readback/tables/occurrences.csv"
+      }
+    ],
+    "selection_reason": "2023候选较少年份对照",
+    "required_fields": [
+      "三对象KLine.close/closeUti",
+      "groupReference/groupCoverageIncomplete/groupKnownFrom",
+      "成员actual/confirm/known及准确上游来源",
+      "原观察/修订/交接边界"
+    ],
+    "candidate_only": true,
+    "context_request": "后续依Calendar UTI扩展到至少[u-480000,u]或完整Life，当前不冻结正式场景"
+  },
+  {
+    "case_candidate_id": "F800-CC-009",
+    "source_finding_or_question_id": "F800-SQ-003",
+    "symbol": [
+      "i",
+      "rb"
+    ],
+    "start_time": "2023-07-07 09:05:00",
+    "end_time": "2023-07-07 09:05:00",
+    "object_ids": [
+      "d5b73eb1-91eb-44b5-a427-4a86df6df163",
+      "8af89938-f2f0-452c-89af-32e4d46498c2"
+    ],
+    "related_events": [
+      {
+        "life": "d5b73eb1-91eb-44b5-a427-4a86df6df163",
+        "revision": "8af89938-f2f0-452c-89af-32e4d46498c2",
+        "timestamp": "2023-07-07 09:05:00",
+        "known_uti": 96874799,
+        "parent_coordinates": {
+          "timestamp": "2023-07-07 09:05:00",
+          "occurrence": "1157",
+          "record_id": "0",
+          "child_id_2": "0"
+        },
+        "symbols": [
+          "i",
+          "rb"
+        ],
+        "table": "occurrences",
+        "source": "readback/tables/occurrences.csv"
+      }
+    ],
+    "selection_reason": "本样本最大准入actual年龄1665分钟边界，检验迟到解释",
+    "required_fields": [
+      "三对象KLine.close/closeUti",
+      "groupReference/groupCoverageIncomplete/groupKnownFrom",
+      "成员actual/confirm/known及准确上游来源",
+      "原观察/修订/交接边界"
+    ],
+    "candidate_only": true,
+    "context_request": "后续依Calendar UTI扩展到至少[u-480000,u]或完整Life，当前不冻结正式场景"
+  },
+  {
+    "case_candidate_id": "F800-CC-010",
+    "source_finding_or_question_id": "F800-SQ-003",
+    "symbol": [
+      "hc",
+      "rb"
+    ],
+    "start_time": "2021-01-07 13:35:00",
+    "end_time": "2021-01-07 13:35:00",
+    "object_ids": [
+      "db22b3a7-af0e-4e59-a512-01a2ffaa32e1",
+      "0d856565-8a67-412a-85bd-d231b5751824"
+    ],
+    "related_events": [
+      {
+        "life": "db22b3a7-af0e-4e59-a512-01a2ffaa32e1",
+        "revision": "0d856565-8a67-412a-85bd-d231b5751824",
+        "timestamp": "2021-01-07 13:35:00",
+        "known_uti": 72144599,
+        "parent_coordinates": {
+          "timestamp": "2021-01-07 13:35:00",
+          "occurrence": "4",
+          "record_id": "0",
+          "child_id_2": "1"
+        },
+        "symbols": [
+          "hc",
+          "rb"
+        ],
+        "table": "occurrences",
+        "source": "readback/tables/occurrences.csv"
+      }
+    ],
+    "selection_reason": "Subsumed覆盖并行责任代表；不把覆盖标签当已退出",
+    "required_fields": [
+      "三对象KLine.close/closeUti",
+      "groupReference/groupCoverageIncomplete/groupKnownFrom",
+      "成员actual/confirm/known及准确上游来源",
+      "原观察/修订/交接边界"
+    ],
+    "candidate_only": true,
+    "context_request": "后续依Calendar UTI扩展到至少[u-480000,u]或完整Life，当前不冻结正式场景"
+  }
+]
