@@ -2,11 +2,11 @@
 
 ## 当前身份与来源
 
-- run_id=OI-F800-STAT-20261122-01；work_id=OI-F800-STAT-20261122；business_case_id=F-STATISTICS-CLOSURE；当前C0022，Run professional_state=IN_PROGRESS，业务未释放。
-- 派工 `daowei2026/observe-iterate@227b51539867c1965b7d7ec13df65ddffa09fa10:longrun/runs/OI-F800-STAT-20261122-01/calls/C0022/FULL_ASSIGNMENT.md`；INVOCATION `daowei2026/observe-iterate@2d05e78179a84753b4a1c01bbbc4475d72f73889:longrun/runs/OI-F800-STAT-20261122-01/calls/C0022/INVOCATION.json`；已消费C0021/D009 Return `daowei2026/observe-iterate@a2470161d8778626dc2ae0f027f5f7000be93c7c:longrun/runs/OI-F800-STAT-20261122-01/calls/C0021/PRO_RETURN.json` 及报告 `daowei2026/observe-iterate@4d429ccb310452467b78b09802c48c9adbc47be5:longrun/runs/OI-F800-STAT-20261122-01/professional/D009/EXECUTOR_REPORT.md`。
+- run_id=OI-F800-STAT-20261122-01；work_id=OI-F800-STAT-20261122；business_case_id=F-STATISTICS-CLOSURE；当前C0024，Run professional_state=IN_PROGRESS，业务未释放。
+- 派工 `daowei2026/observe-iterate@3c0e6743a2c97b2c84556f8630e3f156e1a3d48a:longrun/runs/OI-F800-STAT-20261122-01/calls/C0024/FULL_ASSIGNMENT.md`；INVOCATION `daowei2026/observe-iterate@40f8e15be57987ae307e9899d042d59b8e9523fa:longrun/runs/OI-F800-STAT-20261122-01/calls/C0024/INVOCATION.json`；已消费C0023/D010 Return `daowei2026/observe-iterate@eed0ce68b4d098163ce1cd1489599049a7387737:longrun/runs/OI-F800-STAT-20261122-01/calls/C0023/PRO_RETURN.json` 及报告 `daowei2026/observe-iterate@ec747f4d460956bd1a91f59d0dcbaba6722ce750:longrun/runs/OI-F800-STAT-20261122-01/professional/D010/EXECUTOR_REPORT.md`。
 - manager=`codex:OI-F800-STAT-20261122-01:manager`；原独立executor=`codex:OI-F800-STAT-20261122-01:executor:E1`，CODEX_NATIVE_DIRECT，workers=[]。
 - 最新MP002真实批准 `daowei2026/observe-iterate@2fa5c26a739d8d97a733f6a7581092a271724e6e:longrun/runs/OI-F800-STAT-20261122-01/owner-decisions/F800-MP-002/OWNER_APPROVAL.original.txt`；当前Binding `daowei2026/observe-iterate@3dc11a9dbf39e181b3c6a3051419a90e46b92aac:longrun/runs/OI-F800-STAT-20261122-01/RUN_BINDING.json`；本C无新行为修改/Owner请求，WALL M001仍未批准。
-- D008完整新X/G有效，两个finding最新关闭；D009 M-B完整已消费、无未完成位置。唯一新D010 M-C展示准备已签，无物理送达/开工回执。
+- D008完整新X/G有效，两个finding最新关闭；D009 B及D010 C完整已消费。唯一新D011 M-D定义集成已签，无物理送达/开工回执。
 
 ## CurrentReviewTarget
 
@@ -28,7 +28,7 @@ current_acceptance_level: 按原Workflow、真实场景证据和轻量停止条�
 | 正式Feature进程 | 曾实际运行，包装2050192/native2050491，退出0且锁释放；当前没有新生产 | 原生产/实际加载/持锁与释放证据有效 |
 | 当前结果目录 | 下列D008/store，39f当前结果 | fields/config/完整范围/Calendar/readback联合绑定 |
 | G是否开始 | G1—G8全部完成有效，GF001/002关闭，新结构反例0，场景问题4 | `daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/GlobalProfileGate.json`=PASS_TO_SCENARIO_REVIEW |
-| 当前阻断/后继 | 无运行/统计/Owner许可阻断；原§7.6适用场景工作继续，B完整、D010接续C展示准备 | 无RERUN_REQUIRED或已确认缺陷待修，FeatureReleaseGate尚未签 |
+| 当前阻断/后继 | 无运行/统计/Owner许可阻断；原§7.6适用场景工作继续，B/C完整、D011接续D定义集成 | 无RERUN_REQUIRED或已确认缺陷待修，FeatureReleaseGate尚未签 |
 
 ## 当前版本与结果
 
@@ -61,17 +61,18 @@ PARTIAL理解U3内部逐Tick材料/全部试探/首阻断轨迹未公开，U5完
 | 阶段 | 当前真实状态 | 来源/后继 |
 |---|---|---|
 | M-B | 完整、无未完成位置；任务明确rb/hc/i 2021—2023，原SOF/Calendar | `daowei2026/observe-iterate@4d429ccb310452467b78b09802c48c9adbc47be5:longrun/runs/OI-F800-STAT-20261122-01/professional/D009/ObservationPositionPreparationResult.json`；`daowei2026/observe-iterate@4d429ccb310452467b78b09802c48c9adbc47be5:longrun/runs/OI-F800-STAT-20261122-01/professional/D009/OrdinaryPositions.json` |
-| M-C | 唯一新D010已签，原E1尚无本C物理执行回执 | 原C1/C2/C3，不由manager设计展示 |
-| M-D/M-E | 尚未交付完整集成/最终图/正式图数据 | 不将B完整或C预期HTML当DATA_READY |
+| M-C | 完整，唯一C2-v4预期/HTML、C3-v1及注入合同齐备；无未完成项/工具缺口 | `daowei2026/observe-iterate@ec747f4d460956bd1a91f59d0dcbaba6722ce750:longrun/runs/OI-F800-STAT-20261122-01/professional/D010/CAEGraphDisplayPreparationResult.json`；合成预览非E最终图 |
+| M-D | 唯一新D011已签，待controller派原E1正式集成 | 原单一集成Skill，不代E运行/取数 |
+| M-E | 尚未委派/交付最终图与正式图数据 | C合成预期/定义级检查均非DATA_READY |
 | 场景/释放 | 沿已形成C0020审查和原S1/S2/L1继续 | FeatureReleaseGate/ReleasePackage未签发 |
 
 ## 本C后继与交付
 
-唯一新D010（[JSON](../delegations/D010/DELEGATION.json)、[说明](../delegations/D010/DELEGATION.md)）绑定原M-C `daowei2026/observe-iterate@87b951bbd15078a2d6353bdd24afe0d8f19c845c:skills/observation-material-preparation/caegraph-display-preparation/SKILL.md`。原Skill uplot e6.2手册准确输入 `daowei2026/uplot@0a4fcd54059782572a3f7e82fad041121e8c65ad:CAEGraph使用手册.md`；来源锁只核原件身份/版本，E1仍须直接读手册并亲自完成C1/C2/C3。C3不固化B最终位置或外层实例，能力缺口按原Skill如实回流。
+唯一新D011（[JSON](../delegations/D011/DELEGATION.json)、[说明](../delegations/D011/DELEGATION.md)）绑定原M-D `daowei2026/observe-iterate@87b951bbd15078a2d6353bdd24afe0d8f19c845c:skills/observation-material-preparation/caegraph-definition-integration/SKILL.md`，传当前真实实例/U、完整B位置、C1/C2-v4唯一当前HTML、C3-v1代码/注入合同及既有uplot0a4准确锁。仓库理解、真实绑定、唯一确定纠正/回流和定义级检查由原E1按原Skill完成，manager不设计展示或集成实现。
 
-当前U/X/G、原四问题/七候选和完整B继续有效，不重做；C预期HTML非E最终材料，不选择正式案例或提前释放。controller核原E1真实线程/sol/max/工作区状态并物理派发，manager不代专业施工、Feature/统计或展示制作。不发其他聊天消息、不创建线程或W/Worker，无timer。
+当前C2全合成/SYN样例不代表真实F/B绑定或正式场景，15项C检查/浏览器v4通过不代D/E。原manager消费D后再按既有E/适用S1/S2依赖继续，沿原C0020审查和原L1决定释放。有效U/X/G/B/C不重做，PARTIAL/Q/原问题边界保留；无新Owner问题。
 
-先发布D/报告/来源锁/进度并回读，再独立发布引用已存在exact对象的IN_PROGRESS Return；owner_request_ref=null。本调用账本完成仅代表C0022协调交付完成。原C0020[释放后继审查](../calls/C0020/RELEASE_SUCCESSOR_REVIEW.md)继续引用，不重复形成。
+controller核原E1线程/sol/max/工作区与真实状态并物理派发。先发布D/报告/进度并远端回读，再独立发布只引已有exact对象的IN_PROGRESS Return；owner_request_ref=null，W/Worker为空。仅C0024协调交付完成，不等于材料DATA_READY/Feature释放；不创建线程、不向其他聊天发消息、不代专业执行或设置timer。
 
 ## C0020 D009首批发布凭证
 
