@@ -1,0 +1,38 @@
+{
+  "completed": true,
+  "verified_at": "2026-11-22T14:04:30.855229+00:00",
+  "checks": [
+    {
+      "check": "最新X实际加载/配置/范围/锁及31表独立读回",
+      "status": "PASS",
+      "evidence": "FeatureRunResultBinding.json; PRODUCTION_PROCESS.json; NATIVE_OUTPUT_MANIFEST.json"
+    },
+    {
+      "check": "G1当前理解适用绑定与原生字段合同",
+      "status": "PASS",
+      "evidence": "CurrentFeatureUnderstandingPackage.json; StatisticsInputReadiness.json; 18项定义及14类可支持剖面"
+    },
+    {
+      "check": "单位、计数守恒、2Δ及全量分层",
+      "status": "PASS",
+      "evidence": "profile/SUMMARY.json; 27项结构检查；状态边数=Revision数-Life数；完整方向/年/Session/首阻断守恒"
+    },
+    {
+      "check": "同输入完整新旧比较及独立原生Life/AsOf复验",
+      "status": "PASS",
+      "evidence": "VersionComparison.json; comparison/*.csv; NATIVE_RETEST_API.json（原reader沿exact链择观点）"
+    },
+    {
+      "check": "原finding闭环、四项场景问题及G1–G8原生Gate",
+      "status": "PASS",
+      "evidence": "FindingDisposition.json; FeatureGlobalBehaviorProfilingResult.json; WORKFLOW_COMPLETION.json"
+    }
+  ],
+  "workers": [],
+  "formal_feature_source_changes_in_D005": false,
+  "formal_new_instance_count": 1,
+  "additional_formal_instances": 0,
+  "gate": "DIAGNOSIS_REQUIRED",
+  "native_retest_passed": 30,
+  "validation_limit": "本D原生专业职责验收，非manager已消费、父Run已释放或Q/V已通过。"
+}

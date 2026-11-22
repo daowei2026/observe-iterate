@@ -1,0 +1,1088 @@
+{
+  "package_id": "F800-D005-CURRENT-UNDERSTANDING-APPLICABILITY",
+  "feature_ref": {
+    "feature_name": "CommonPriceTurnGroupCandidatesFrp",
+    "code_version": {
+      "frp": "be57d6752c9d43d10f1d670e1d2993bb8153ea7c",
+      "tis": "2f460d663d821cf2ba25555eda13e78b697d0767"
+    },
+    "instance_ref": "configuration.json + INSTANCE_INSPECTION.json；当前配置SHA-256 b72095ff100da926474701b74bff7586a74b9770bc81cadc34c23cfe223e5cb3"
+  },
+  "scope": {
+    "run_id": "OI-F800-STAT-20261122-01",
+    "call_id": "C0012",
+    "delegation_id": "D005",
+    "workers": [],
+    "depth": "复用D001，沿D004结构合同未变判断，只更新当前实现/实例适用绑定；非重做U"
+  },
+  "reuse_basis": [
+    "daowei2026/observe-iterate@78b684ba6956f4c33a03b9167e846e3b741316a5:longrun/runs/OI-F800-STAT-20261122-01/professional/D001/FeatureUnderstandingPackage.json",
+    "daowei2026/observe-iterate@ba74086c56026dbc595af3b66e25334492b3a0b4:longrun/runs/OI-F800-STAT-20261122-01/professional/D004/ContractAndDependencyImpact.json",
+    "daowei2026/observe-iterate@ba74086c56026dbc595af3b66e25334492b3a0b4:longrun/runs/OI-F800-STAT-20261122-01/professional/D004/CodeVersionAdoption.json",
+    "daowei2026/observe-iterate@ba74086c56026dbc595af3b66e25334492b3a0b4:longrun/runs/OI-F800-STAT-20261122-01/professional/D004/RERUN_HANDOFF.json",
+    "daowei2026/observe-iterate@87b951bbd15078a2d6353bdd24afe0d8f19c845c:ai_chat/根据统计找不合理点/F特征：统计线闭环.md",
+    {
+      "path": "/dwdhome/fy/BASE_E6_2_copy/results/f-business-objects-v2-20261121/F_业务对象与属性驱动逻辑_V2.md",
+      "sha256": "2e03bd7bec33897ac2480e229b9671c8f3693ce7380c2565987033ab7466e773",
+      "scope": "已纠正对象口径/旧字段模型，不继承旧运行完成事实"
+    }
+  ],
+  "implementation_sources": [
+    {
+      "id": "S01",
+      "repository_and_version": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c",
+      "file": "src/Frp/Instance/ISL/Opportunity/CommonPriceTurnGroupCandidates.hs",
+      "runtime_path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-exact-uti-20261122/runtime/edh-universe/frp/frp/src/Frp/Instance/ISL/Opportunity/CommonPriceTurnGroupCandidates.hs",
+      "verification": "D005 FRP_SOURCE_BINDING逐文件匹配；D004实际构建hash锁定",
+      "sha256": "d949dd74c8047a74651dbb3a1a8f32d9195fbe02c67807a49c97bb85e862814d",
+      "type_or_entry": "CommonPriceTurnGroupCandidatesFrp / FromJSON / buildStoredGroupFormation / groupCandidatePublication",
+      "responsibility": "Haskell正式FAO、可选K解码、源分派、处理接线及原生发行",
+      "evidence_ref": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/CommonPriceTurnGroupCandidates.hs"
+    },
+    {
+      "id": "S02",
+      "repository_and_version": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c",
+      "file": "src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateTypes.hs",
+      "runtime_path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-exact-uti-20261122/runtime/edh-universe/frp/frp/src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateTypes.hs",
+      "verification": "D005 FRP_SOURCE_BINDING逐文件匹配；D004实际构建hash锁定",
+      "sha256": "ad7caf4128392bf334e71bb5f19ad06a0d0f46d2850d80bd97db8824be16bb6d",
+      "type_or_entry": "GroupMethod / GroupTurn / FormationQuestion / CandidateOccurrence",
+      "responsibility": "对象身份、参数及状态/发生载体定义",
+      "evidence_ref": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateTypes.hs"
+    },
+    {
+      "id": "S03",
+      "repository_and_version": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c",
+      "file": "src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateMaterial.hs",
+      "runtime_path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-exact-uti-20261122/runtime/edh-universe/frp/frp/src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateMaterial.hs",
+      "verification": "D005 FRP_SOURCE_BINDING逐文件匹配；D004实际构建hash锁定",
+      "sha256": "5325ccf2dc8ecd32949f7bb086bd775d197e1547f4922bc94b80bf5cf8feb044",
+      "type_or_entry": "advanceMaterial / accumulateForwardCoverage",
+      "responsibility": "当前材料准入、有限保留、覆盖和未知Clock等待",
+      "evidence_ref": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateMaterial.hs"
+    },
+    {
+      "id": "S04",
+      "repository_and_version": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c",
+      "file": "src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateEvolution.hs",
+      "runtime_path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-exact-uti-20261122/runtime/edh-universe/frp/frp/src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateEvolution.hs",
+      "verification": "D005 FRP_SOURCE_BINDING逐文件匹配；D004实际构建hash锁定",
+      "sha256": "b59dbc4a3e220eb653fff9ba631bd7c1339a3b25d9a76f73d878282a2ddf9b68",
+      "type_or_entry": "formationQuestions / advanceCandidates",
+      "responsibility": "complete-link枚举、Life/Revision、边界与稀疏发行",
+      "evidence_ref": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateEvolution.hs"
+    },
+    {
+      "id": "S05",
+      "repository_and_version": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c",
+      "file": "src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateDecisions.hs",
+      "runtime_path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-exact-uti-20261122/runtime/edh-universe/frp/frp/src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateDecisions.hs",
+      "verification": "D005 FRP_SOURCE_BINDING逐文件匹配；D004实际构建hash锁定",
+      "sha256": "c581c4c4fa32a1c0b0f7067b01fcb74882e8107a426e5c1fcc48a20fa55d87ba",
+      "type_or_entry": "resolveFormationDecisionCorrections / formationDecisionMeaning",
+      "responsibility": "原准入/决定责任、handoff、反证更正和意义比较",
+      "evidence_ref": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateDecisions.hs"
+    },
+    {
+      "id": "S06",
+      "repository_and_version": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c",
+      "file": "src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateSource.hs",
+      "runtime_path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-exact-uti-20261122/runtime/edh-universe/frp/frp/src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateSource.hs",
+      "verification": "D005 FRP_SOURCE_BINDING逐文件匹配；D004实际构建hash锁定",
+      "sha256": "08da6e707de97d1ea7e16a54909c7e6e5e0ef55f8ceec7855da7997ceafef1ee",
+      "type_or_entry": "advanceGroupSource",
+      "responsibility": "另一NativeSource路径的原owner保留；当前KLine实例不使用该Source生产分支",
+      "evidence_ref": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateSource.hs"
+    },
+    {
+      "id": "S07",
+      "repository_and_version": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c",
+      "file": "src/Frp/Instance/ISL/Opportunity/U2/GroupCandidatePairs.hs",
+      "runtime_path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-exact-uti-20261122/runtime/edh-universe/frp/frp/src/Frp/Instance/ISL/Opportunity/U2/GroupCandidatePairs.hs",
+      "verification": "D005 FRP_SOURCE_BINDING逐文件匹配；D004实际构建hash锁定",
+      "sha256": "d6bac3e6a02ba030d613cbe56e6d6b6606b8cdc8f510e6552b3d2c28360b0d03",
+      "type_or_entry": "assessPair / advancePairView",
+      "responsibility": "实际2Δ及方向/类型/几何四项关系",
+      "evidence_ref": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidatePairs.hs"
+    },
+    {
+      "id": "S08",
+      "repository_and_version": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c",
+      "file": "src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateKLineInput.hs",
+      "runtime_path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-exact-uti-20261122/runtime/edh-universe/frp/frp/src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateKLineInput.hs",
+      "verification": "D005 FRP_SOURCE_BINDING逐文件匹配；D004实际构建hash锁定",
+      "sha256": "dd593338264d97e99f371528e54f642a83b9cb5739ebebdba89520559178693b",
+      "type_or_entry": "buildKLineGroupSource / selected / klineUTIStep / klineForwardCoverage",
+      "responsibility": "原始Int64 UTI与频率/Calendar准确步长判相邻；连续覆盖边纠正，P/T/C及对象/输出合同不变",
+      "evidence_ref": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateKLineInput.hs"
+    },
+    {
+      "id": "S09",
+      "repository_and_version": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c",
+      "file": "src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateStorage.hs",
+      "runtime_path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-exact-uti-20261122/runtime/edh-universe/frp/frp/src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateStorage.hs",
+      "verification": "D005 FRP_SOURCE_BINDING逐文件匹配；D004实际构建hash锁定",
+      "sha256": "1cd1ac9a2583edcb0c257b4272cd934596a1dbe5d23ea566f6962a73030608bb",
+      "type_or_entry": "storeGroupOccurrence / validateGroupRecord",
+      "responsibility": "原生core.v2字段与存储合同；不暴露K独立定义字段",
+      "evidence_ref": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateStorage.hs"
+    },
+    {
+      "id": "S10",
+      "repository_and_version": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c",
+      "file": "src/Frp/Instance/ISL/Opportunity/U2/FormationParticipationFacts.hs",
+      "runtime_path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-exact-uti-20261122/runtime/edh-universe/frp/frp/src/Frp/Instance/ISL/Opportunity/U2/FormationParticipationFacts.hs",
+      "verification": "D005 FRP_SOURCE_BINDING逐文件匹配；D004实际构建hash锁定",
+      "sha256": "b8cfd17b602b32351bf6be29b9350e57ecb796d111ddc8b2cd1e3335a9ef2ce5",
+      "type_or_entry": "FormationParticipation",
+      "responsibility": "冻结准入、责任、关系及反证小值类型",
+      "evidence_ref": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/FormationParticipationFacts.hs"
+    },
+    {
+      "id": "S11",
+      "repository_and_version": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767",
+      "file": "frp/fqv_kline_example.py",
+      "runtime_path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/fqv-rb-hc-i-20261117/runtime/mquant/tis/frp/fqv_kline_example.py",
+      "verification": "与锁定Git对象逐字节一致",
+      "sha256": "0f912c8be7fbd7f2607d93cce9d3974e872f56f6457350cc0db7825d6884b5c5",
+      "type_or_entry": "make_features",
+      "responsibility": "锁定正常Python构造，F完整基线、市场与domain设置",
+      "evidence_ref": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767:frp/fqv_kline_example.py"
+    },
+    {
+      "id": "S12",
+      "repository_and_version": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767",
+      "file": "frp/CommonPriceTurnGroupCandidates.py",
+      "runtime_path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/fqv-rb-hc-i-20261117/runtime/mquant/tis/frp/CommonPriceTurnGroupCandidates.py",
+      "verification": "与锁定Git对象逐字节一致",
+      "sha256": "aa25c3bbbf61c23bd0c6f5e37a843bb608784b1511d38980d2b2b97a635d5c5d",
+      "type_or_entry": "CommonPriceTurnGroupCandidatesFrp / GroupCandidateReadSession",
+      "responsibility": "Python参数转译、to_df/to_dfs/exact/as_of公开读取",
+      "evidence_ref": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767:frp/CommonPriceTurnGroupCandidates.py"
+    },
+    {
+      "id": "S13",
+      "repository_and_version": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767",
+      "file": "frp/_U2GroupCandidateFields.py",
+      "runtime_path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/fqv-rb-hc-i-20261117/runtime/mquant/tis/frp/_U2GroupCandidateFields.py",
+      "verification": "与锁定Git对象逐字节一致",
+      "sha256": "fe56d6150188f8cc40937565b32db75a4eddbd31e93b2f063c75e39fdc16dad5",
+      "type_or_entry": "GROUP_TABLES / GROUP_DTYPES",
+      "responsibility": "公开表字段路径、层级和dtype声明",
+      "evidence_ref": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767:frp/_U2GroupCandidateFields.py"
+    },
+    {
+      "id": "S14",
+      "repository_and_version": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767",
+      "file": "frp/_U2CandidateRejectionFields.py",
+      "runtime_path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/fqv-rb-hc-i-20261117/runtime/mquant/tis/frp/_U2CandidateRejectionFields.py",
+      "verification": "与锁定Git对象逐字节一致",
+      "sha256": "d0d24ce9e7ca90781ac747f6953e17c88ac72d68adea6db784969b709046f8a9",
+      "type_or_entry": "FormationParticipation / declare_tables",
+      "responsibility": "core.v2参与、反证、操作数等子表声明",
+      "evidence_ref": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767:frp/_U2CandidateRejectionFields.py"
+    },
+    {
+      "id": "S15",
+      "repository_and_version": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767",
+      "file": "frp/U2CoreResults.py",
+      "runtime_path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/fqv-rb-hc-i-20261117/runtime/mquant/tis/frp/U2CoreResults.py",
+      "verification": "与锁定Git对象逐字节一致",
+      "sha256": "87a167cea8f1fc16275574e3e33d64f3b46a32690b90d6f49cdeba0ebc553d34",
+      "type_or_entry": "CoreReadSession._public",
+      "responsibility": "保留真实timestamp及原occurrence ordinal",
+      "evidence_ref": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767:frp/U2CoreResults.py"
+    },
+    {
+      "id": "S16",
+      "repository_and_version": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767",
+      "file": "frpExample/STCalendar.py",
+      "runtime_path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/fqv-rb-hc-i-20261117/runtime/mquant/tis/frpExample/STCalendar.py",
+      "verification": "与锁定Git对象逐字节一致",
+      "sha256": "154b0a2db91f06f52dd0282badfea414acb8e6dbeb52257e297c4cd8aaf0fee1",
+      "type_or_entry": "ScaleTurnCalendar",
+      "responsibility": "基线两轮尺度转折Python参数声明",
+      "evidence_ref": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767:frpExample/STCalendar.py"
+    }
+  ],
+  "business_objects": [
+    {
+      "id": "BO1",
+      "type": "原始价格转折",
+      "meaning": "行情实际峰谷及其确认过程；作为指定尺度选择的上游",
+      "identity": "品种、准确上游实例及原发生；不可凭F成员表重建全史",
+      "scope": "准确上游实例内",
+      "create_occurrence": "RctZigWithStatus.value；沿用同版归档理解",
+      "update_occurrence": "上游Zig状态/确认；本轮未重新展开全部状态机",
+      "termination_occurrence": "不从F稀疏输出推断上游对象终止",
+      "relations": "可在同一行情位置获得BO2尺度资格",
+      "state_carrier": "上游Zig/Rct发生及状态",
+      "evidence": [
+        "daowei2026/observe-iterate@87b951bbd15078a2d6353bdd24afe0d8f19c845c:ai_chat/根据统计找不合理点/F特征：统计线闭环.md",
+        {
+          "ref": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767:frp/fqv_kline_example.py",
+          "line": 35
+        }
+      ],
+      "unconfirmed": "未暴露全部潜在原始市场转折，当前分母为准确上游Rct/ScaleTurn",
+      "historical_unconfirmed": "本Run未读取全量原始发生",
+      "current_evidence": "UPSTREAM_EXTRACTION.json"
+    },
+    {
+      "id": "BO2",
+      "type": "指定尺度贴近转折",
+      "meaning": "由ScaleTurnCalendar.value1/value2选中的实际位置及P/T/C背景；两轮是同类对象角色",
+      "identity": "turnKey=(object,refLife)；exact携带revision；KLine adapter用结果根/轮次/几何confirm定位上游引用",
+      "scope": "准确源实例与Calendar内，不承诺跨Run UUID稳定",
+      "create_occurrence": "O2上游尺度选中发生",
+      "update_occurrence": "当前材料可接纳合法Clock/Price等修订；正常KLine路径本拍framePatches=[]",
+      "termination_occurrence": "不因材料退出新枚举域而宣称市场位置不存在",
+      "relations": "作为BO3成员，可被多个候选和多次revision引用",
+      "state_carrier": "GroupTurn及selected geometry，F只投影参加过组的成员",
+      "evidence": [
+        {
+          "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateTypes.hs",
+          "line": 28
+        },
+        {
+          "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateKLineInput.hs",
+          "line": 80
+        }
+      ],
+      "unconfirmed": null,
+      "historical_unconfirmed": "全量selected事件轴及actual-confirm-selected延迟待后续取得",
+      "current_evidence": "UPSTREAM_EXTRACTION.json"
+    },
+    {
+      "id": "BO3",
+      "type": "共同价格转折候选组",
+      "meaning": "至少两个不同对象的具体已选转折，在有限原观察问题内提出的complete-link候选解释",
+      "identity": "内部CandidateKey=(FormationQuestion,[TurnKey])；公开候选Book/Kind=CommonPriceTurnGroupCandidates/Candidate，解码Life标识对象、Revision标识观点",
+      "scope": "必须绑定完整参数、SOF、数据范围与结果身份；不跨实例合并随机Life",
+      "create_occurrence": "O4首次出现的Life及冻结participationAdmission",
+      "update_occurrence": "O4同Life正文/决定含义变化的新Revision，groupPrevious接原exact",
+      "termination_occurrence": "u>=revisionEnd或scopeEnded后退出活跃；同拍先处理，正式历史保留",
+      "relations": "成员、四项pair、共享Turn重叠、同当前问题的严格支持超集覆盖",
+      "state_carrier": "CandidateState.activeCandidates；公开groupLocalBasis/Observation/Closed及participationDutyClosed分别表达",
+      "evidence": [
+        {
+          "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateTypes.hs",
+          "line": 67
+        },
+        {
+          "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateEvolution.hs",
+          "line": 63
+        }
+      ],
+      "unconfirmed": null,
+      "historical_unconfirmed": "当前准确实例Life、发生与实际读回均待X",
+      "current_evidence": "FeatureRunResultBinding.json"
+    }
+  ],
+  "states": [
+    {
+      "id": "ST1",
+      "owner": "BO3",
+      "name": "局部形成依据",
+      "values": [
+        "Supported",
+        "Incomplete",
+        "Contradicted"
+      ],
+      "initial": "随首个具体成员组合计算，不强造统一初态",
+      "terminal": false,
+      "transitions": "成员撤回或任一PairVeto为Contradicted；pair齐全且全Positive为Supported；否则Incomplete。按新合法材料重算",
+      "trigger": "Material/pair当前事件",
+      "carrier": "groupLocalBasis；与覆盖、观察结果独立",
+      "evidence": [
+        {
+          "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateEvolution.hs",
+          "line": 125
+        }
+      ]
+    },
+    {
+      "id": "ST2",
+      "owner": "BO3",
+      "name": "观察结果",
+      "values": [
+        "Open",
+        "ClosedSupported",
+        "ClosedInsufficient",
+        "Withdrawn",
+        "Subsumed",
+        "EndedByScope"
+      ],
+      "initial": "可能首次准入就在deadline，故不保证先有Open",
+      "terminal": "标签本身不统一等于退出活跃；scopeEnded强制退出",
+      "transitions": "scope结束优先；其次反证；其次closed与basis；最后支持严格超集可覆写为Subsumed。closed后不得回Open",
+      "trigger": "成员/关系/覆盖变化、deadline/revisionEnd或scopeEnded",
+      "carrier": "groupObservation",
+      "evidence": [
+        {
+          "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateEvolution.hs",
+          "line": 130
+        },
+        {
+          "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateEvolution.hs",
+          "line": 143
+        }
+      ]
+    },
+    {
+      "id": "ST3",
+      "owner": "BO3",
+      "name": "形成观察关闭",
+      "values": [
+        false,
+        true
+      ],
+      "initial": "oldClosed或u>=deadline",
+      "terminal": "True保持；不表示修订责任已关",
+      "transitions": "先接受同拍材料，再由oldClosed或u>=deadline设置True",
+      "trigger": "deadline边界及合法材料",
+      "carrier": "groupClosed",
+      "evidence": [
+        {
+          "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateEvolution.hs",
+          "line": 132
+        }
+      ]
+    },
+    {
+      "id": "ST4",
+      "owner": "BO3",
+      "name": "原F修订责任/活跃态",
+      "values": [
+        "责任开放",
+        "责任关闭/退出活跃"
+      ],
+      "initial": "按u与当前r及scopeEnded判定",
+      "terminal": "退出内部活跃态不删除已发行历史",
+      "transitions": "scopeEnded或u>=r使dutyClosed；u==r接受最后同拍观点；处理后仅u<r且非scopeEnded保留活跃",
+      "trigger": "revisionEnd、scopeEnded及当前事件",
+      "carrier": "participationDutyClosed；CandidateState内部活跃集合不是occurrence",
+      "evidence": [
+        {
+          "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateDecisions.hs",
+          "line": 59
+        },
+        {
+          "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateEvolution.hs",
+          "line": 91
+        }
+      ]
+    }
+  ],
+  "occurrences": [
+    {
+      "id": "O1",
+      "name": "KLine收盘输入",
+      "direction": "输入",
+      "business_role": "行情输入资料",
+      "carrier": "KLine close与closeUti同拍事件",
+      "meaning": "某品种当拍价格与实际Calendar位置齐备",
+      "own_position": "原KLine事件时间",
+      "other_positions": [
+        "closeUti及derived Calendar进展u"
+      ],
+      "identity": "品种、准确KLine实例和原事件坐标",
+      "producer": "KLine",
+      "consumer": "Zig/ScaleTurn与GroupKLineInput",
+      "payload": "close、closeUti；输出F不保存所有原输入",
+      "evidence": [
+        {
+          "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateKLineInput.hs",
+          "line": 40
+        }
+      ],
+      "unconfirmed": null,
+      "historical_unconfirmed": "当前输入首末交易时点未读回",
+      "current_evidence": "FeatureRunResultBinding.json; UPSTREAM_EXTRACTION.json"
+    },
+    {
+      "id": "O2",
+      "name": "ScaleTurnCalendar.value1/value2选中发生",
+      "direction": "输入",
+      "business_role": "上游业务对象发生",
+      "carrier": "FrpEvent CompleteScaleTurn",
+      "meaning": "本拍取得第一轮/第二轮选中转折；可能同拍双发生，包含初始化分支",
+      "own_position": "上游事件真实发表轴/adapter接收拍；不是payload.actual或confirm自动替代",
+      "other_positions": [
+        "actual T",
+        "几何confirm C",
+        "前已选P",
+        "各点known与Clock"
+      ],
+      "identity": "准确源结果根、轮次、引用及对象；GroupTurn exact绑定",
+      "producer": "ScaleTurnCalendar",
+      "consumer": "GroupKLineInput.selected → FormationFrame",
+      "payload": "actual、confirm、processInfo；F投影memberActual/Confirmation/KnownFrom与P/T/C/round",
+      "evidence": [
+        {
+          "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateKLineInput.hs",
+          "line": 80
+        },
+        {
+          "ref": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767:frp/fqv_kline_example.py",
+          "line": 48
+        }
+      ],
+      "unconfirmed": "没有独立selected_time列，已由上游原事件轴保留知识时间",
+      "historical_unconfirmed": "F没有独立selected_time；需保留上游原事件轴",
+      "current_evidence": "FeatureRunResultBinding.json; UPSTREAM_EXTRACTION.json"
+    },
+    {
+      "id": "O3",
+      "name": "F publication/定义发生",
+      "direction": "输出",
+      "business_role": "中间配置/包装",
+      "carrier": "FrpEvent (Tick [GroupCandidatesRecord]) / common_price_turn_groups.core.v2",
+      "meaning": "首拍可只保存groupDefinitions；有多个groupOccurrences时共用原事件",
+      "own_position": "原Tick.atTickTs → 公开timestamp，保留原occurrence ordinal",
+      "other_positions": "payload中的每个成员actual/confirm及groupKnownFrom",
+      "identity": "准确Feature full_dir + timestamp/occurrence/record_id",
+      "producer": "groupCandidatePublication",
+      "consumer": "原生存储及TIS公开读口",
+      "payload": "groupDefinitions[]、groupOccurrences[]",
+      "evidence": [
+        {
+          "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/CommonPriceTurnGroupCandidates.hs",
+          "line": 241
+        }
+      ],
+      "unconfirmed": null,
+      "historical_unconfirmed": "当前实例尚无原生事件轴",
+      "current_evidence": "FeatureRunResultBinding.json; UPSTREAM_EXTRACTION.json"
+    },
+    {
+      "id": "O4",
+      "name": "候选准确版本发生",
+      "direction": "输出",
+      "business_role": "业务主输出",
+      "carrier": "GroupCandidatesRecord.groupOccurrences[]，公开occurrences的一行",
+      "meaning": "首次准入或同组有实际正文/决定含义改变的新观点；关闭/退出同拍可触发同类新版",
+      "own_position": "所附publication事件时间；groupKnownFrom表达本次可知位置",
+      "other_positions": "原/当前anchor/deadline/revisionEnd，成员actual/confirm/known，冻结admissionKnown",
+      "identity": "准确实例+候选Life/Revision；物理父键含timestamp,occurrence,record_id,child_id_2",
+      "revision": "groupPrevious[]准确引用；Revision随机，不能按UUID排序",
+      "producer": "advanceCandidates → storeGroupOccurrence",
+      "consumer": "TIS to_df/to_dfs/read_exact/read_at_knowledge；后续G只在X绑定后消费",
+      "payload": "见PUBLIC_TABLE_SCHEMA.json及MD字段表；主表+成员+Required+关系+参与/反证正文一起解释",
+      "evidence": [
+        {
+          "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateEvolution.hs",
+          "line": 76
+        },
+        {
+          "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateStorage.hs",
+          "line": 75
+        },
+        {
+          "ref": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767:frp/CommonPriceTurnGroupCandidates.py",
+          "line": 91
+        }
+      ],
+      "unconfirmed": null,
+      "historical_unconfirmed": "当前准确实例无fields.json，未取得任何当前发生",
+      "current_evidence": "FeatureRunResultBinding.json; UPSTREAM_EXTRACTION.json"
+    }
+  ],
+  "intermediate_decisions": [
+    {
+      "id": "J1",
+      "name": "材料新枚举资格",
+      "inputs": "retracted、actualClock/known、u、KΔ",
+      "rule": "非撤回且Clock已知，actualClock+KΔ>=u；未知Clock等待仍6Δ；已发行候选依赖另保留",
+      "outputs": "materialEnumerable/retained/waiting",
+      "consumer": "pair和formationQuestions",
+      "persisted": "否，F公开表不保存逐Turn准入/首次阻断",
+      "result_location": "NOT_EXPOSED",
+      "evidence": [
+        {
+          "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateMaterial.hs",
+          "line": 54
+        }
+      ]
+    },
+    {
+      "id": "J2",
+      "name": "四项pair及归约",
+      "inputs": "actualClock差、方向/类型矩阵、各自P/T/C及合法知识",
+      "rule": "actual差<=2Δ；任一veto为PairVeto，四项支持才PairPositive，其余Unresolved",
+      "outputs": "PairBasis/PairDecision",
+      "consumer": "候选complete-link与局部依据、成员资格",
+      "persisted": "部分；被发行组引用的PairBasis/坐标在Required，未建组pair全集不在F表",
+      "result_location": "occurrences_groupRequired及pairDistance",
+      "evidence": [
+        {
+          "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidatePairs.hs",
+          "line": 19
+        }
+      ]
+    },
+    {
+      "id": "J3",
+      "name": "有限新候选枚举",
+      "inputs": "materialEnumerable、PairView、a、u、KΔ",
+      "rule": "u<=a+KΔ；positive和positive+unresolved图各取极大complete-link，至少两不同对象",
+      "outputs": "FormationQuestion与成员组合，随后Life/Revision",
+      "consumer": "advanceCandidates",
+      "persisted": "只有实际发行的候选及成员/Required；枚举失败原因不逐项保存",
+      "result_location": "occurrences及成员；失败NOT_EXPOSED",
+      "evidence": [
+        {
+          "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateEvolution.hs",
+          "line": 45
+        }
+      ]
+    },
+    {
+      "id": "J4",
+      "name": "对象域覆盖",
+      "inputs": "固定对象逐对象coverageFrom/Through与条件、waiting、u、KΔ",
+      "rule": "每对象覆盖[u-KΔ,u]或明确不适用；等待Clock也造成不完整；与localBasis分列",
+      "outputs": "materialCoverageIncomplete/candidateDomainIncomplete",
+      "consumer": "候选正文、是否发行修订",
+      "persisted": "部分；只输出组上的groupCoverageIncomplete，不含所有覆盖区间/首断点",
+      "result_location": "occurrences.groupCoverageIncomplete；原区间NOT_EXPOSED",
+      "evidence": [
+        {
+          "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateMaterial.hs",
+          "line": 72
+        }
+      ]
+    },
+    {
+      "id": "J5",
+      "name": "deadline/r/handoff及稀疏修订",
+      "inputs": "原问题、当前anchor、旧期限、u和scopeEnded、正文/决定含义",
+      "rule": "d=min(oldD,a+KΔ)，r=min(oldR,d+6Δ)，handoff初始min(originalR+18Δ,currentR+18Δ)且后续只收紧；意义不变不发行",
+      "outputs": "closed/dutyClosed、active retention、new revision及previous",
+      "consumer": "正式候选发生与原参与责任",
+      "persisted": "期限和责任状态是；未变化拍没有新发生",
+      "result_location": "occurrences、groupFormationParticipation、groupPrevious",
+      "evidence": [
+        {
+          "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateEvolution.hs",
+          "line": 79
+        },
+        {
+          "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateEvolution.hs",
+          "line": 130
+        },
+        {
+          "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateDecisions.hs",
+          "line": 43
+        }
+      ]
+    }
+  ],
+  "processing_relations": [
+    {
+      "id": "R1",
+      "upstream": "BO1与O1",
+      "downstream": "BO2/O2",
+      "type": "资格形成",
+      "condition": "正常Zig与M尺度选择，继承基线完整参数",
+      "identity_mapping": "可以为同一实际位置的不同资格；不把步骤数当对象数",
+      "position_mapping": "actual先发生，确认/选中知识后来到；第二轮P可来自同拍第一轮T",
+      "information_change": "未选点与全模糊过程不完整进入F输出",
+      "evidence": [
+        {
+          "ref": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767:frp/fqv_kline_example.py",
+          "line": 35
+        },
+        {
+          "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateKLineInput.hs",
+          "line": 103
+        }
+      ]
+    },
+    {
+      "id": "R2",
+      "upstream": "BO2/O2",
+      "downstream": "J1→J2→J3→BO3",
+      "type": "过滤、关系判断、组合形成",
+      "condition": "在当前已知合法材料与有限窗口内；不同对象complete-link",
+      "identity_mapping": "准确Turn映射至多个候选的成员；CandidateKey新建组身份",
+      "position_mapping": "窗口起点来自最早actualClock，不因确认晚到重置",
+      "information_change": "大量上游转折可不建组，F成员表不能替代上游分母",
+      "evidence": [
+        {
+          "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateMaterial.hs",
+          "line": 62
+        },
+        {
+          "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateEvolution.hs",
+          "line": 45
+        }
+      ]
+    },
+    {
+      "id": "R3",
+      "upstream": "BO3+新材料/边界",
+      "downstream": "O4新Revision",
+      "type": "修订、关闭、责任退出",
+      "condition": "正文/决定意义改变；到d/r先接纳本拍，再关闭/保留判定",
+      "identity_mapping": "同Life、previous exact连接；新成员组合可为另一Life",
+      "position_mapping": "groupKnownFrom与publication保留当时知识，不回贴到actual",
+      "information_change": "稀疏发行不保存无变化拍；退出不删除历史",
+      "evidence": [
+        {
+          "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateEvolution.hs",
+          "line": 76
+        },
+        {
+          "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/CommonPriceTurnGroupCandidates.hs",
+          "line": 241
+        }
+      ]
+    },
+    {
+      "id": "R4",
+      "upstream": "多个BO3",
+      "downstream": "组间重叠/被覆盖及关系桥",
+      "type": "引用、覆盖",
+      "condition": "共享准确Turn；同当前a/d/r下更大支持组合严格包含可Subsumed",
+      "identity_mapping": "保留各自Life，关系端点绑定当时exact与共享成员",
+      "position_mapping": "alternativeKnown不得超前于两端",
+      "information_change": "关系不是组数合并；Subsumed不直接退出活跃",
+      "evidence": [
+        {
+          "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateEvolution.hs",
+          "line": 143
+        },
+        {
+          "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateDecisions.hs",
+          "line": 90
+        }
+      ]
+    }
+  ],
+  "parameters": [
+    {
+      "id": "P1",
+      "name": "profile.observation_multiple",
+      "category": "Owner锁定实例参数，新增可选字段",
+      "value": 800,
+      "default_if_omitted": 6,
+      "unit": "无量纲",
+      "derived": "W=KΔ=480000 tick=4000开盘交易分钟",
+      "definition": {
+        "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/CommonPriceTurnGroupCandidates.hs",
+        "line": 114
+      },
+      "consumers": [
+        "材料准入/保留",
+        "新候选原问题",
+        "观察关闭",
+        "覆盖窗口；期限链的起点随之变化"
+      ],
+      "unconfirmed": "已由实际引擎解码与480000UTI原生责任窗验实；800并非标定结论",
+      "historical_unconfirmed": "未验证实际编译引擎解码；不是标定结论"
+    },
+    {
+      "id": "P2",
+      "name": "profile.delta / unit",
+      "category": "基线自由参数/单位",
+      "value": 600,
+      "unit": "CalendarUTITick",
+      "derived": "market.units_per_open_minute=120 → Δ=5交易分钟",
+      "definition": {
+        "ref": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767:frp/fqv_kline_example.py",
+        "line": 78
+      },
+      "consumers": [
+        "pair实际贴近",
+        "观察W",
+        "修订/未知Clock/交接尾"
+      ],
+      "unconfirmed": "Δ不是M尺度或从确认延迟统计推导的值",
+      "historical_unconfirmed": "Δ不是M尺度或从确认延迟统计推导的值"
+    },
+    {
+      "id": "P3",
+      "name": "actual proximity multiple",
+      "category": "现有固定业务常量",
+      "value": 2,
+      "unit": "Δ",
+      "derived": "1200 tick=10交易分钟",
+      "definition": {
+        "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidatePairs.hs",
+        "line": 39
+      },
+      "consumers": [
+        "PairBasis时间支持/否决"
+      ],
+      "unconfirmed": null,
+      "historical_unconfirmed": null
+    },
+    {
+      "id": "P4",
+      "name": "revision tail / unknown-clock wait",
+      "category": "现有固定业务常量，责任分开",
+      "value": 6,
+      "unit": "Δ",
+      "derived": "30交易分钟；初始r=a+806Δ=4030分钟",
+      "definition": {
+        "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateEvolution.hs",
+        "line": 131
+      },
+      "consumers": [
+        "修订终点",
+        "未知Clock最多等待6Δ另见Material:66"
+      ],
+      "unconfirmed": null,
+      "historical_unconfirmed": null
+    },
+    {
+      "id": "P5",
+      "name": "handoff tail after revisionEnd",
+      "category": "现有固定业务常量/派生期限",
+      "value": 18,
+      "unit": "Δ",
+      "derived": "90分钟；初始无收紧时h=a+824Δ=4120分钟",
+      "definition": {
+        "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateDecisions.hs",
+        "line": 43
+      },
+      "consumers": [
+        "participationHandoffEnd；不延长原F修订责任"
+      ],
+      "unconfirmed": "下游Q/V不在本D范围",
+      "historical_unconfirmed": "下游Q/V不在本D范围"
+    },
+    {
+      "id": "P6",
+      "name": "完整基线与观察范围",
+      "category": "实例身份/固定本轮输入",
+      "value": "见configuration.json及INSTANCE_INSPECTION.requested_sof；profile.method.revision=1",
+      "unit": null,
+      "derived": "与锁定U2/U3 F完整序列化相等后，只增加K=800",
+      "definition": {
+        "ref": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767:frp/fqv_kline_example.py",
+        "line": 19
+      },
+      "consumers": [
+        "正常KLine/ScaleTurn构造、domain、矩阵、结果目录身份"
+      ],
+      "unconfirmed": null,
+      "historical_unconfirmed": "正式输入首末交易时点待X"
+    }
+  ],
+  "run_result_field_map": [
+    {
+      "business_item": "BO3",
+      "table": "occurrences",
+      "business_role": "业务主输出",
+      "fields": [
+        "groupKnownFrom",
+        "groupOriginalAnchor",
+        "groupOriginalDeadline",
+        "groupOriginalRevisionEnd",
+        "groupAnchor",
+        "groupDeadline",
+        "groupRevisionEnd",
+        "groupLocalBasis",
+        "groupAlternative",
+        "groupObservation",
+        "groupCoverageIncomplete",
+        "groupClosed"
+      ],
+      "schema_status": "AVAILABLE",
+      "availability": "AVAILABLE",
+      "scope": "D005准确实例31表独立读回已验收；空子表表示本输入未观察到该分支，不补造发生",
+      "object_group_key": "准确实例+decoded Life；成员另用object+Turn exact",
+      "time_key": "timestamp/occurrence及payload实际/确认/可知位置分别使用",
+      "dedup_and_join": "完整父坐标前缀；主组为timestamp,occurrence,record_id,child_id_2；子表保留各层child坐标",
+      "missing_meaning": "表无行不自动表示Invalid；可选子列表空为缺值；期外通知在原F要求为空",
+      "reader": "CommonPriceTurnGroupCandidatesFrp.to_dfs/read_exact/read_at_knowledge",
+      "evidence": [
+        {
+          "ref": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767:frp/CommonPriceTurnGroupCandidates.py",
+          "line": 91
+        },
+        "PUBLIC_TABLE_SCHEMA.json"
+      ],
+      "schema_ref": "PUBLIC_TABLE_SCHEMA.json；完整身份编码、dtype、存储路径及其他子表从该原始声明读取"
+    },
+    {
+      "business_item": "BO2作为BO3成员的投影",
+      "table": "occurrences_groupMembers",
+      "business_role": "中间处理结果",
+      "fields": [
+        "memberObject",
+        "memberActual",
+        "memberConfirmation",
+        "memberKnownFrom",
+        "memberRound",
+        "memberStatus",
+        "memberRetracted",
+        "memberT_pointActual",
+        "memberT_pointKnownFrom",
+        "memberC_pointActual",
+        "memberC_pointKnownFrom"
+      ],
+      "schema_status": "AVAILABLE",
+      "availability": "AVAILABLE",
+      "scope": "D005准确实例31表独立读回已验收；空子表表示本输入未观察到该分支，不补造发生",
+      "object_group_key": "准确实例+decoded Life；成员另用object+Turn exact",
+      "time_key": "timestamp/occurrence及payload实际/确认/可知位置分别使用",
+      "dedup_and_join": "完整父坐标前缀；主组为timestamp,occurrence,record_id,child_id_2；子表保留各层child坐标",
+      "missing_meaning": "表无行不自动表示Invalid；可选子列表空为缺值；期外通知在原F要求为空",
+      "reader": "CommonPriceTurnGroupCandidatesFrp.to_dfs/read_exact/read_at_knowledge",
+      "evidence": [
+        {
+          "ref": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767:frp/CommonPriceTurnGroupCandidates.py",
+          "line": 91
+        },
+        "PUBLIC_TABLE_SCHEMA.json"
+      ],
+      "schema_ref": "PUBLIC_TABLE_SCHEMA.json；完整身份编码、dtype、存储路径及其他子表从该原始声明读取"
+    },
+    {
+      "business_item": "BO3",
+      "table": "occurrences_groupRequired",
+      "business_role": "中间处理结果",
+      "fields": [
+        "pairTime_requiredVerdict",
+        "pairTime_requiredGap",
+        "pairTime_requiredVeto",
+        "pairDirection_requiredVerdict",
+        "pairType_requiredVerdict",
+        "pairBend_requiredVerdict"
+      ],
+      "schema_status": "AVAILABLE",
+      "availability": "AVAILABLE",
+      "scope": "D005准确实例31表独立读回已验收；空子表表示本输入未观察到该分支，不补造发生",
+      "object_group_key": "准确实例+decoded Life；成员另用object+Turn exact",
+      "time_key": "timestamp/occurrence及payload实际/确认/可知位置分别使用",
+      "dedup_and_join": "完整父坐标前缀；主组为timestamp,occurrence,record_id,child_id_2；子表保留各层child坐标",
+      "missing_meaning": "表无行不自动表示Invalid；可选子列表空为缺值；期外通知在原F要求为空",
+      "reader": "CommonPriceTurnGroupCandidatesFrp.to_dfs/read_exact/read_at_knowledge",
+      "evidence": [
+        {
+          "ref": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767:frp/CommonPriceTurnGroupCandidates.py",
+          "line": 91
+        },
+        "PUBLIC_TABLE_SCHEMA.json"
+      ],
+      "schema_ref": "PUBLIC_TABLE_SCHEMA.json；完整身份编码、dtype、存储路径及其他子表从该原始声明读取"
+    },
+    {
+      "business_item": "BO3",
+      "table": "occurrences_groupRequired_pairDistance",
+      "business_role": "中间处理结果",
+      "fields": [
+        "distanceValue"
+      ],
+      "schema_status": "AVAILABLE",
+      "availability": "AVAILABLE",
+      "scope": "D005准确实例31表独立读回已验收；空子表表示本输入未观察到该分支，不补造发生",
+      "object_group_key": "准确实例+decoded Life；成员另用object+Turn exact",
+      "time_key": "timestamp/occurrence及payload实际/确认/可知位置分别使用",
+      "dedup_and_join": "完整父坐标前缀；主组为timestamp,occurrence,record_id,child_id_2；子表保留各层child坐标",
+      "missing_meaning": "表无行不自动表示Invalid；可选子列表空为缺值；期外通知在原F要求为空",
+      "reader": "CommonPriceTurnGroupCandidatesFrp.to_dfs/read_exact/read_at_knowledge",
+      "evidence": [
+        {
+          "ref": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767:frp/CommonPriceTurnGroupCandidates.py",
+          "line": 91
+        },
+        "PUBLIC_TABLE_SCHEMA.json"
+      ],
+      "schema_ref": "PUBLIC_TABLE_SCHEMA.json；完整身份编码、dtype、存储路径及其他子表从该原始声明读取"
+    },
+    {
+      "business_item": "BO3",
+      "table": "occurrences_groupFormationParticipation",
+      "business_role": "中间处理结果",
+      "fields": [
+        "participationAdmissionKnown",
+        "participationQuestionAnchor",
+        "participationQuestionDeadline",
+        "participationQuestionRevisionEnd",
+        "participationDeadline",
+        "participationRevisionEnd",
+        "participationHandoffEnd",
+        "participationDutyClosed",
+        "participationDecisionKnown"
+      ],
+      "schema_status": "AVAILABLE",
+      "availability": "AVAILABLE",
+      "scope": "D005准确实例31表独立读回已验收；空子表表示本输入未观察到该分支，不补造发生",
+      "object_group_key": "准确实例+decoded Life；成员另用object+Turn exact",
+      "time_key": "timestamp/occurrence及payload实际/确认/可知位置分别使用",
+      "dedup_and_join": "完整父坐标前缀；主组为timestamp,occurrence,record_id,child_id_2；子表保留各层child坐标",
+      "missing_meaning": "表无行不自动表示Invalid；可选子列表空为缺值；期外通知在原F要求为空",
+      "reader": "CommonPriceTurnGroupCandidatesFrp.to_dfs/read_exact/read_at_knowledge",
+      "evidence": [
+        {
+          "ref": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767:frp/CommonPriceTurnGroupCandidates.py",
+          "line": 91
+        },
+        "PUBLIC_TABLE_SCHEMA.json"
+      ],
+      "schema_ref": "PUBLIC_TABLE_SCHEMA.json；完整身份编码、dtype、存储路径及其他子表从该原始声明读取"
+    },
+    {
+      "business_item": "逐Turn材料准入与首次阻断",
+      "table": null,
+      "fields": [],
+      "availability": "NOT_EXPOSED",
+      "missing_meaning": "F不保存materialEnumerable/eligible/逐对未成组全集",
+      "evidence": [
+        {
+          "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateStorage.hs",
+          "line": 50
+        }
+      ]
+    },
+    {
+      "business_item": "全量原始及未选转折分母",
+      "table": null,
+      "fields": [],
+      "availability": "NOT_EXPOSED",
+      "missing_meaning": "F只输出参加过候选的成员投影",
+      "evidence": [
+        {
+          "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateStorage.hs",
+          "line": 50
+        }
+      ]
+    },
+    {
+      "business_item": "独立selected_time",
+      "table": null,
+      "fields": [],
+      "availability": "NOT_EXPOSED",
+      "missing_meaning": "需ScaleTurn原事件轴；不能用几何confirm或T.pointKnownFrom替代",
+      "evidence": [
+        {
+          "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateStorage.hs",
+          "line": 50
+        }
+      ]
+    },
+    {
+      "business_item": "独立groupCreateTime",
+      "table": null,
+      "fields": [],
+      "availability": "NOT_EXPOSED",
+      "missing_meaning": "从首个Life发生及冻结admission读取，非单独列",
+      "evidence": [
+        {
+          "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateStorage.hs",
+          "line": 50
+        }
+      ]
+    },
+    {
+      "business_item": "definitions.observation_multiple",
+      "table": null,
+      "fields": [],
+      "availability": "NOT_EXPOSED",
+      "missing_meaning": "未扩正式definitions字段；须保存完整配置和结果身份",
+      "evidence": [
+        {
+          "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateStorage.hs",
+          "line": 50
+        }
+      ]
+    },
+    {
+      "business_item": "配置定义、前版/重叠/覆盖、可选P/Clock、参与成员/反证/操作数/关系桥及保留期外通知",
+      "table": "其余26张公开表，逐表名单和完整字段见PUBLIC_TABLE_SCHEMA.json",
+      "fields": "不重复抄写未改字段；解释和父键见FEATURE_UNDERSTANDING_DELTA.md",
+      "schema_status": "AVAILABLE",
+      "availability": "AVAILABLE",
+      "missing_meaning": "当前准确实例尚无fields；原F期外通知必须为空；可选列表缺值不补零",
+      "reader": "to_dfs/read_exact/read_at_knowledge",
+      "evidence": "PUBLIC_TABLE_SCHEMA.json",
+      "scope": "D005准确实例31表独立读回已验收；空子表表示本输入未观察到该分支，不补造发生"
+    }
+  ],
+  "business_main_outputs": [
+    "O4：共同候选组的准确版本发生，含形成依据与状态；不等于真实机会已经合理"
+  ],
+  "intermediate_processing_results": [
+    "上游选中成员及P/T/C投影",
+    "pair四项Required与距离",
+    "coverage/参与责任/前版/组间关系桥",
+    "反证与更正操作数",
+    "定义及物理Event包装"
+  ],
+  "unconfirmed_items": [
+    {
+      "id": "U3",
+      "gap": "内部逐Tick材料/枚举/首次阻断轨迹未公开；独立上游分母与筛查可读取，但不能冒充native轨迹",
+      "impact": "以公开结果与明确参考筛查限域统计，不阻断主要剖面"
+    },
+    {
+      "id": "U5",
+      "gap": "800的完整业务合理性与跨市场场景解释不由本G预先证明",
+      "impact": "原生Gate按最新完整G与finding复验给出；场景问题保留"
+    }
+  ],
+  "completion_status": "PARTIAL",
+  "completion_statement": "复用D001结构合同，完成新be57最小适用绑定；X字段/加载/全范围及上游分母缺口已由本次真实读回解析，剩余内部未暴露轨迹及业务场景边界不强造。",
+  "artifacts": {
+    "prior_package": "daowei2026/observe-iterate@78b684ba6956f4c33a03b9167e846e3b741316a5:longrun/runs/OI-F800-STAT-20261122-01/professional/D001/FeatureUnderstandingPackage.json",
+    "current_binding": "FeatureRunResultBinding.json",
+    "current_source": "FRP_SOURCE_BINDING.json",
+    "current_applicability": "current_applicability",
+    "public_table_contract": "PUBLIC_TABLE_SCHEMA.json"
+  },
+  "current_applicability": {
+    "original_package_ref": "daowei2026/observe-iterate@78b684ba6956f4c33a03b9167e846e3b741316a5:longrun/runs/OI-F800-STAT-20261122-01/professional/D001/FeatureUnderstandingPackage.json",
+    "original_unchanged": true,
+    "structural_contract_changed": false,
+    "basis_ref": "daowei2026/observe-iterate@ba74086c56026dbc595af3b66e25334492b3a0b4:longrun/runs/OI-F800-STAT-20261122-01/professional/D004/ContractAndDependencyImpact.json",
+    "current_code": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c",
+    "parameter_version": "b72095ff100da926474701b74bff7586a74b9770bc81cadc34c23cfe223e5cb3",
+    "minimal_delta": "覆盖边从归一化Double相邻改为Int64 raw UTI exact step；SourceFailure/cold/unknownClock语义及Q四元组保持。语义合同、统计键和参数未变。",
+    "historical_evidence_policy": "下列复用结构说明中ac版exact/行号作为原始合同来源保留，当前适用性由D004未变文件清单和D005当前源码hash建立；不把旧X/G或旧缺口状态当当前事实。",
+    "gap_resolution_ref": "D001_GAP_RESOLUTION.json",
+    "scope": "F-only rb/hc/i 5m 2021-2023 night_end_at_2300"
+  },
+  "historical_gap_snapshot": [
+    {
+      "id": "U1",
+      "gap": "当前准确F800实例fields.json不存在，31表、数据首末时间及结果hash未验证",
+      "impact": "不允许G消费旧结果冒充本Run正式结果",
+      "next_legal_stage": "X",
+      "evidence": "INSTANCE_INSPECTION.json"
+    },
+    {
+      "id": "U2",
+      "gap": "仅核runtime相关源码与锁定提交一致；未执行FRP编译程序，未做原生解码和实际加载版本验收",
+      "impact": "源码与Python构造证据不能代替正式引擎运行绑定",
+      "next_legal_stage": "X"
+    },
+    {
+      "id": "U3",
+      "gap": "F未公开全上游分母、逐Turn准入、首阻断和独立selected_time",
+      "impact": "后续G须取得准确上游发生及所需处理证据；不能从成员子表反推",
+      "next_legal_stage": "X/G"
+    },
+    {
+      "id": "U4",
+      "gap": "历史F800的method.revision不同；现有结果不能直接绑定当前配置",
+      "impact": "按既定精确复用规则，当前准确实例仍待X取得",
+      "next_legal_stage": "X"
+    },
+    {
+      "id": "U5",
+      "gap": "800合理性、恢复哪些对象及历史覆盖连续性finding均未由本D检验",
+      "impact": "不宣称FeatureReleaseGate或任何finding关闭；不建议新参数/patch",
+      "next_legal_stage": "G/D"
+    },
+    {
+      "id": "U6",
+      "gap": "full_dir解析到/m3varK；本D未核生产写面的真实授权映射、资源独占及可写资格",
+      "impact": "路径不等于写授权；本D没有向该路径写入",
+      "next_legal_stage": "X按既定Owner/资源绑定核实"
+    }
+  ]
+}

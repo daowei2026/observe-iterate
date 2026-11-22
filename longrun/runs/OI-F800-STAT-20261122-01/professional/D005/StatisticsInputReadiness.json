@@ -1,0 +1,90 @@
+{
+  "binding_match": {
+    "code_version": "MATCH",
+    "parameter_version": "MATCH",
+    "data_scope": "CONFIRMED"
+  },
+  "core_object_keys": [
+    "F:解码groupReference.Life与Revision；不跨Run合并随机UUID",
+    "公开父键timestamp/occurrence/record_id/child_id_2",
+    "上游(symbol,round,geometry confirmation)已验证唯一；raw按(symbol,posUTI1)"
+  ],
+  "core_time_keys": [
+    "timestamp=原输入事件知识时间",
+    "groupKnownFrom/memberKnownFrom=知识UTI",
+    "memberActual=actual UTI",
+    "memberConfirmation=几何confirmation UTI",
+    "memberT_pointKnownFrom=raw已知而非selected",
+    "原anchor/deadline/revisionEnd及participationHandoffEnd"
+  ],
+  "available_items": [
+    "31张公开表、完整候选Life/Revision、Required及原因、形成参与、previous/overlap/coveredBy",
+    "rb/hc/i完整同参数KLine、Zig、Rct、ScaleTurnCalendar两轮缓存；可支持全量分母与独立候选",
+    "正常KLine actual/几何confirm/selected知识及成员exact映射",
+    "SYMBOL/知识年/月/钟点日夜盘/开盘窗口分层",
+    "全量候选状态与责任边界、相邻公开观点转换及观点持有期"
+  ],
+  "partial_items": [
+    "候选真实内部状态占用：只提供已发表观点持有区间及5m采样，非逐Tick Dynamic trace",
+    "生命周期：有限观察/修订/交接责任而非市场走势寿命；样本末右删失另列",
+    "上游原始转折分母为Rct可识别实际位置，初始化锚点单列，不表示全部原始市场潜在转折",
+    "首阻断和近actual边：独立输入规则筛查，不是native内部所有尝试/排除计数"
+  ],
+  "not_exposed_items": [
+    "materialTotals所有逐Tick计数器、SourceDisposition等未公开内部变量",
+    "枚举前全部试探组合与完整native perTurn首次阻断轨迹",
+    "独立名为selected_time的字段；以原事件轴和适配器映射确认选中知识",
+    "未到达的Clock修订、撤回、失知等分支的真实适用输入；无可靠牛熊/环境标签"
+  ],
+  "data_quality_findings": [
+    {
+      "symbol": "rb",
+      "rows": 49683,
+      "first": "2021-01-04 09:05:00",
+      "last": "2023-12-29 15:00:00",
+      "missing_close": 69,
+      "uti_step_distribution": {
+        "600": 49682
+      },
+      "duplicate_timestamps": 0,
+      "out_of_order": 0
+    },
+    {
+      "symbol": "hc",
+      "rows": 49683,
+      "first": "2021-01-04 09:05:00",
+      "last": "2023-12-29 15:00:00",
+      "missing_close": 69,
+      "uti_step_distribution": {
+        "600": 49682
+      },
+      "duplicate_timestamps": 0,
+      "out_of_order": 0
+    },
+    {
+      "symbol": "i",
+      "rows": 49683,
+      "first": "2021-01-04 09:05:00",
+      "last": "2023-12-29 15:00:00",
+      "missing_close": 69,
+      "uti_step_distribution": {
+        "600": 49682
+      },
+      "duplicate_timestamps": 0,
+      "out_of_order": 0
+    },
+    "31表独立OnlyRead完整且与生产后读取hash一致；未暴露内部逐Tick trace不冒充已统计结果。可选空分支按真实读表结果记录。"
+  ],
+  "readiness_status": "PARTIAL",
+  "readiness_explanation": "核心代码/实例/Calendar/范围、对象/时间/父子键与完整公开表已可靠；D001结构理解按D004合同不变适用链绑定新be57，保留内部逐Tick/全部试探不暴露的界限。",
+  "binding_ref": "FeatureRunResultBinding.json",
+  "prior_understanding_ref": "daowei2026/observe-iterate@78b684ba6956f4c33a03b9167e846e3b741316a5:longrun/runs/OI-F800-STAT-20261122-01/professional/D001/FeatureUnderstandingPackage.json",
+  "current_understanding_ref": "CurrentFeatureUnderstandingPackage.json",
+  "current_applicability_basis": [
+    "daowei2026/observe-iterate@78b684ba6956f4c33a03b9167e846e3b741316a5:longrun/runs/OI-F800-STAT-20261122-01/professional/D001/FeatureUnderstandingPackage.json",
+    "daowei2026/observe-iterate@ba74086c56026dbc595af3b66e25334492b3a0b4:longrun/runs/OI-F800-STAT-20261122-01/professional/D004/ContractAndDependencyImpact.json",
+    "daowei2026/observe-iterate@ba74086c56026dbc595af3b66e25334492b3a0b4:longrun/runs/OI-F800-STAT-20261122-01/professional/D004/CodeVersionAdoption.json",
+    "daowei2026/observe-iterate@ba74086c56026dbc595af3b66e25334492b3a0b4:longrun/runs/OI-F800-STAT-20261122-01/professional/D004/RERUN_HANDOFF.json"
+  ],
+  "checked_at": "2026-11-22T13:58:21.754837+00:00"
+}

@@ -1,0 +1,23 @@
+{
+  "finding_id": "F800-GF-001",
+  "status": "CLOSED_ON_LATEST_PROFILE",
+  "closed": true,
+  "latest_run": "FeatureRunResultBinding.json",
+  "latest_profile": "GlobalBehaviorProfile.json",
+  "approved_proposal": "F800-MP-001",
+  "adopted_frp": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c",
+  "prior_status": "FIXED_PENDING_RERUN",
+  "prior_exact": "daowei2026/observe-iterate@ba74086c56026dbc595af3b66e25334492b3a0b4:longrun/runs/OI-F800-STAT-20261122-01/professional/D004/FindingDisposition.json",
+  "retest": {
+    "false_flags": 22,
+    "false_flags_passed": 22,
+    "cold_controls": 8,
+    "cold_controls_passed": 8,
+    "full_population_conflicts": 0,
+    "evidence": "comparison/coverage_retest.csv",
+    "version_comparison": "VersionComparison.json",
+    "native_api_retest": "NATIVE_RETEST_API.json"
+  },
+  "closure_basis": "最新完整三年正式F、独立31表读回、全量G，按准确上游同一性复验原22位置与cold对照；不依赖局部回归。",
+  "release_decision": "本D只关闭该finding并给原生GlobalProfileGate；FeatureReleaseGate/下游释放由原manager按CurrentReviewTarget继续。"
+}

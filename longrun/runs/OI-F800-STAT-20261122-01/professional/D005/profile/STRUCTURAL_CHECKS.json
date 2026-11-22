@@ -1,0 +1,358 @@
+[
+  {
+    "check_id": "upstream_time_order",
+    "repeat_count": 0,
+    "denominator": 1859,
+    "affected_ratio": 0.0,
+    "invariant": "actual/几何confirm/首次selected知识保持合法先后",
+    "evidence": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateKLineInput.hs",
+    "examples": []
+  },
+  {
+    "check_id": "upstream_duplicate_actual",
+    "repeat_count": 0,
+    "denominator": 1859,
+    "affected_ratio": 0.0,
+    "invariant": "两轮选择不得把同一原实际位置重复当作不同选中位置",
+    "evidence": "同参数ScaleTurnCalendar公开value1/value2",
+    "examples": []
+  },
+  {
+    "check_id": "member_upstream_exact",
+    "repeat_count": 0,
+    "denominator": 3447,
+    "affected_ratio": 0.0,
+    "invariant": "F成员实际/确认/可知、原始知识与价格方向必须对应准确上游",
+    "evidence": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateKLineInput.hs",
+    "examples": []
+  },
+  {
+    "check_id": "pair_cardinality",
+    "repeat_count": 0,
+    "denominator": 1534,
+    "affected_ratio": 0.0,
+    "invariant": "每组观点必须有n(n-1)/2条Required",
+    "evidence": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateStorage.hs",
+    "examples": []
+  },
+  {
+    "check_id": "distinct_member_symbols",
+    "repeat_count": 0,
+    "denominator": 1534,
+    "affected_ratio": 0.0,
+    "invariant": "每组同一对象至多一个成员",
+    "evidence": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateStorage.hs",
+    "examples": []
+  },
+  {
+    "check_id": "unique_group_exact",
+    "repeat_count": 0,
+    "denominator": 1534,
+    "affected_ratio": 0.0,
+    "invariant": "稀疏正式发行不应重复同一候选exact",
+    "evidence": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateEvolution.hs",
+    "examples": []
+  },
+  {
+    "check_id": "birth_within_800",
+    "repeat_count": 0,
+    "denominator": 480,
+    "affected_ratio": 0.0,
+    "invariant": "首次准入必须在原actual锚点+800Δ以内",
+    "evidence": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateEvolution.hs",
+    "examples": []
+  },
+  {
+    "check_id": "nonexpanding_duty",
+    "repeat_count": 0,
+    "denominator": 480,
+    "affected_ratio": 0.0,
+    "invariant": "同Life的观察、修订和交接责任只能收紧",
+    "evidence": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateDecisions.hs",
+    "examples": []
+  },
+  {
+    "check_id": "original_question_fixed",
+    "repeat_count": 0,
+    "denominator": 480,
+    "affected_ratio": 0.0,
+    "invariant": "原问题三值在同Life固定",
+    "evidence": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateTypes.hs",
+    "examples": []
+  },
+  {
+    "check_id": "knowledge_matches_publication",
+    "repeat_count": 0,
+    "denominator": 1534,
+    "affected_ratio": 0.0,
+    "invariant": "此KLine入口观点知识位置与原事件收盘UTI对齐",
+    "evidence": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateKLineInput.hs",
+    "examples": []
+  },
+  {
+    "check_id": "closed_never_reopens",
+    "repeat_count": 0,
+    "denominator": 480,
+    "affected_ratio": 0.0,
+    "invariant": "形成观察关闭后不重新Open",
+    "evidence": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateEvolution.hs",
+    "examples": []
+  },
+  {
+    "check_id": "no_update_after_duty_close",
+    "repeat_count": 0,
+    "denominator": 480,
+    "affected_ratio": 0.0,
+    "invariant": "当前正常KLine实例无期外更正，责任关闭后不继续原F修订",
+    "evidence": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateEvolution.hs",
+    "examples": []
+  },
+  {
+    "check_id": "previous_reference_integrity",
+    "repeat_count": 0,
+    "denominator": 1054,
+    "affected_ratio": 0.0,
+    "invariant": "previous指向同Life已存在且不超前的准确观点",
+    "evidence": "锁定TIS GroupCandidateReadSession.choose",
+    "examples": []
+  },
+  {
+    "check_id": "occurrences_groupOverlaps_references",
+    "repeat_count": 0,
+    "denominator": 215,
+    "affected_ratio": 0.0,
+    "invariant": "组间Life引用存在于准确结果内",
+    "evidence": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateEvolution.hs",
+    "examples": []
+  },
+  {
+    "check_id": "occurrences_groupCoveredBy_references",
+    "repeat_count": 0,
+    "denominator": 241,
+    "affected_ratio": 0.0,
+    "invariant": "组间Life引用存在于准确结果内",
+    "evidence": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateEvolution.hs",
+    "examples": []
+  },
+  {
+    "check_id": "participation_candidate_admission_integrity",
+    "repeat_count": 0,
+    "denominator": 1534,
+    "affected_ratio": 0.0,
+    "invariant": "当前candidate exact、冻结admission exact与原问题边界必须闭合",
+    "evidence": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateDecisions.hs",
+    "examples": []
+  },
+  {
+    "check_id": "member_source_reference_integrity",
+    "repeat_count": 0,
+    "denominator": 3447,
+    "affected_ratio": 0.0,
+    "invariant": "成员turn及source准确定位同参数ScaleTurn根/轮次/confirm",
+    "evidence": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateKLineInput.hs",
+    "examples": []
+  },
+  {
+    "check_id": "participation_member_integrity",
+    "repeat_count": 0,
+    "denominator": 3447,
+    "affected_ratio": 0.0,
+    "invariant": "参与成员必须对应当前组成员及准确上游实际/确认/知识",
+    "evidence": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateDecisions.hs",
+    "examples": []
+  },
+  {
+    "check_id": "alternative_exact_bridge_integrity",
+    "repeat_count": 0,
+    "denominator": 241,
+    "affected_ratio": 0.0,
+    "invariant": "替代关系三端exact存在且不读取未来；bridge为两组共享转折",
+    "evidence": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateDecisions.hs",
+    "examples": []
+  },
+  {
+    "check_id": "observation_basis_closed_consistency",
+    "repeat_count": 0,
+    "denominator": 1534,
+    "affected_ratio": 0.0,
+    "invariant": "观察状态、局部依据及关闭三轴按声明合法；Subsumed不等于责任终止",
+    "evidence": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateEvolution.hs",
+    "examples": []
+  },
+  {
+    "check_id": "required_coordinate_consistency",
+    "repeat_count": 0,
+    "denominator": 9168,
+    "affected_ratio": 0.0,
+    "invariant": "四项Required与同参数上游合法小值一致",
+    "evidence": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidatePairs.hs",
+    "examples": []
+  },
+  {
+    "check_id": "actual_2delta_limit",
+    "repeat_count": 0,
+    "denominator": 2292,
+    "affected_ratio": 0.0,
+    "invariant": "当前公开候选的actual距离仍不超过2Δ，不能随800扩大",
+    "evidence": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidatePairs.hs",
+    "examples": []
+  },
+  {
+    "check_id": "eligible_pair_not_in_any_candidate",
+    "repeat_count": 0,
+    "denominator": 627,
+    "affected_ratio": 0.0,
+    "invariant": "正常KLine完整已知的非否决边应包含于至少一个极大候选组合；这是独立规则筛查，不是业务真值",
+    "evidence": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateEvolution.hs",
+    "examples": []
+  },
+  {
+    "check_id": "coverage_flag_vs_continuous_input",
+    "repeat_count": 0,
+    "denominator": 1534,
+    "affected_ratio": 0.0,
+    "invariant": "正常KLine路径三对象在[u-800Δ,u]都有有效连续价格和Calendar UTI、且无未知Clock时，不应宣称观察域不完整",
+    "evidence": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateMaterial.hs",
+    "examples": []
+  },
+  {
+    "check_id": "complete_flag_with_input_price_gap",
+    "repeat_count": 8,
+    "denominator": 1526,
+    "affected_ratio": 0.005242463958060288,
+    "invariant": "正常KLine固定域若观察窗内存在非豁免实际缺价/失知或真实间隙，不能标记完整；本对照先定位公开OHLC空行与flag=0，空值是否SourceFailure或正式豁免待诊断",
+    "evidence": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateMaterial.hs#accumulateForwardCoverage/covered",
+    "examples": [
+      {
+        "life": "f82181f4-096a-4bec-bf4a-9289d892377f",
+        "revision": "bd820d7f-2f02-4a10-b614-9b38e198139b",
+        "timestamp": "2023-03-13 22:45:00",
+        "known": 93727799,
+        "symbols": "hc+rb",
+        "required_from": 93247799,
+        "groupCoverageIncomplete": 0,
+        "missing_symbols": "rb+hc+i",
+        "missing_rows_per_symbol": "rb:69;hc:69;i:69",
+        "first_missing": "2023-03-10 21:05:00",
+        "last_missing": "2023-03-13 15:00:00",
+        "source": "完整独立KLine公开表；空OHLC的真实SourceFailure/豁免语义待诊断"
+      },
+      {
+        "life": "12f22e6f-b20e-444b-9a6a-f52486c1b8e4",
+        "revision": "12962bbe-deeb-44ac-a7b7-27a4b8ac36be",
+        "timestamp": "2023-03-16 09:25:00",
+        "known": 93815399,
+        "symbols": "hc+rb",
+        "required_from": 93335399,
+        "groupCoverageIncomplete": 0,
+        "missing_symbols": "rb+hc+i",
+        "missing_rows_per_symbol": "rb:69;hc:69;i:69",
+        "first_missing": "2023-03-10 21:05:00",
+        "last_missing": "2023-03-13 15:00:00",
+        "source": "完整独立KLine公开表；空OHLC的真实SourceFailure/豁免语义待诊断"
+      },
+      {
+        "life": "cdb3a01e-6603-41e8-bcf2-9b97f1c7c33b",
+        "revision": "8bee2b1a-4ba1-4647-92d3-0d49f5c94d2d",
+        "timestamp": "2023-03-16 10:40:00",
+        "known": 93822599,
+        "symbols": "hc+i+rb",
+        "required_from": 93342599,
+        "groupCoverageIncomplete": 0,
+        "missing_symbols": "rb+hc+i",
+        "missing_rows_per_symbol": "rb:69;hc:69;i:69",
+        "first_missing": "2023-03-10 21:05:00",
+        "last_missing": "2023-03-13 15:00:00",
+        "source": "完整独立KLine公开表；空OHLC的真实SourceFailure/豁免语义待诊断"
+      },
+      {
+        "life": "12f22e6f-b20e-444b-9a6a-f52486c1b8e4",
+        "revision": "3f20d7d5-afac-43e7-a340-b825844bce0e",
+        "timestamp": "2023-03-16 10:40:00",
+        "known": 93822599,
+        "symbols": "hc+rb",
+        "required_from": 93342599,
+        "groupCoverageIncomplete": 0,
+        "missing_symbols": "rb+hc+i",
+        "missing_rows_per_symbol": "rb:69;hc:69;i:69",
+        "first_missing": "2023-03-10 21:05:00",
+        "last_missing": "2023-03-13 15:00:00",
+        "source": "完整独立KLine公开表；空OHLC的真实SourceFailure/豁免语义待诊断"
+      },
+      {
+        "life": "3a3ebcba-20c4-4eec-b316-a87acb7ff1c7",
+        "revision": "db6ad76b-e166-4611-97ea-3df86a85ea68",
+        "timestamp": "2023-03-16 10:40:00",
+        "known": 93822599,
+        "symbols": "i+rb",
+        "required_from": 93342599,
+        "groupCoverageIncomplete": 0,
+        "missing_symbols": "rb+hc+i",
+        "missing_rows_per_symbol": "rb:69;hc:69;i:69",
+        "first_missing": "2023-03-10 21:05:00",
+        "last_missing": "2023-03-13 15:00:00",
+        "source": "完整独立KLine公开表；空OHLC的真实SourceFailure/豁免语义待诊断"
+      },
+      {
+        "life": "465f0e49-2a4e-4272-a4ba-1a394475fd1d",
+        "revision": "ac792e4a-3e91-4b0b-8124-cd437238a434",
+        "timestamp": "2023-03-17 10:55:00",
+        "known": 93865799,
+        "symbols": "hc+rb",
+        "required_from": 93385799,
+        "groupCoverageIncomplete": 0,
+        "missing_symbols": "rb+hc+i",
+        "missing_rows_per_symbol": "rb:69;hc:69;i:69",
+        "first_missing": "2023-03-10 21:05:00",
+        "last_missing": "2023-03-13 15:00:00",
+        "source": "完整独立KLine公开表；空OHLC的真实SourceFailure/豁免语义待诊断"
+      },
+      {
+        "life": "f82181f4-096a-4bec-bf4a-9289d892377f",
+        "revision": "ca6358a6-da15-42d4-91bb-95adc658ceb4",
+        "timestamp": "2023-03-24 22:30:00",
+        "known": 94098599,
+        "symbols": "hc+rb",
+        "required_from": 93618599,
+        "groupCoverageIncomplete": 0,
+        "missing_symbols": "rb+hc+i",
+        "missing_rows_per_symbol": "rb:69;hc:69;i:69",
+        "first_missing": "2023-03-10 21:05:00",
+        "last_missing": "2023-03-13 15:00:00",
+        "source": "完整独立KLine公开表；空OHLC的真实SourceFailure/豁免语义待诊断"
+      },
+      {
+        "life": "f82181f4-096a-4bec-bf4a-9289d892377f",
+        "revision": "d644ba9d-1906-48fe-b131-a3ca11fcfdf8",
+        "timestamp": "2023-03-24 23:00:00",
+        "known": 94102199,
+        "symbols": "hc+rb",
+        "required_from": 93622199,
+        "groupCoverageIncomplete": 0,
+        "missing_symbols": "rb+hc+i",
+        "missing_rows_per_symbol": "rb:69;hc:69;i:69",
+        "first_missing": "2023-03-10 21:05:00",
+        "last_missing": "2023-03-13 15:00:00",
+        "source": "完整独立KLine公开表；空OHLC的真实SourceFailure/豁免语义待诊断"
+      }
+    ]
+  },
+  {
+    "check_id": "complete_previous_chain",
+    "repeat_count": 0,
+    "denominator": 1534,
+    "affected_ratio": 0.0,
+    "invariant": "每Life首观点无previous，后续观点恰指向同Life即时前版；顺序按实际坐标，不用UUID排序",
+    "evidence": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateEvolution.hs",
+    "examples": []
+  },
+  {
+    "check_id": "all_group_child_parent_integrity",
+    "repeat_count": 0,
+    "denominator": 32462,
+    "affected_ratio": 0.0,
+    "invariant": "每条正式group子表行必须对应已读取主观点完整父坐标",
+    "evidence": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateStorage.hs",
+    "examples": []
+  }
+]

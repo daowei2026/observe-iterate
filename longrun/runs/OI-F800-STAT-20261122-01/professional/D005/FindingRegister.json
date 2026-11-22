@@ -1,0 +1,88 @@
+[
+  {
+    "finding_id": "F800-GF-001",
+    "observation": "原22次覆盖不完整误报",
+    "business_conflict": "连续有效输入窗口被标不完整",
+    "direct_responsibility_stage": "D003已定位KLine覆盖相邻判断，D004已修复并采用",
+    "confirmed_facts": {
+      "finding_id": "F800-GF-001",
+      "status": "CLOSED_ON_LATEST_PROFILE",
+      "closed": true,
+      "latest_run": "FeatureRunResultBinding.json",
+      "latest_profile": "GlobalBehaviorProfile.json",
+      "approved_proposal": "F800-MP-001",
+      "adopted_frp": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c",
+      "prior_status": "FIXED_PENDING_RERUN",
+      "prior_exact": "daowei2026/observe-iterate@ba74086c56026dbc595af3b66e25334492b3a0b4:longrun/runs/OI-F800-STAT-20261122-01/professional/D004/FindingDisposition.json",
+      "retest": {
+        "false_flags": 22,
+        "false_flags_passed": 22,
+        "cold_controls": 8,
+        "cold_controls_passed": 8,
+        "full_population_conflicts": 0,
+        "evidence": "comparison/coverage_retest.csv",
+        "version_comparison": "VersionComparison.json",
+        "native_api_retest": "NATIVE_RETEST_API.json"
+      },
+      "closure_basis": "最新完整三年正式F、独立31表读回、全量G，按准确上游同一性复验原22位置与cold对照；不依赖局部回归。",
+      "release_decision": "本D只关闭该finding并给原生GlobalProfileGate；FeatureReleaseGate/下游释放由原manager按CurrentReviewTarget继续。"
+    },
+    "competing_explanations": "原诊断已完成；本次完整X/G与原生AsOf复验关闭",
+    "resolution_route": "CLOSED_ON_LATEST_PROFILE",
+    "resolution_status": "CLOSED_ON_LATEST_PROFILE",
+    "cross_effects_to_check": "VersionComparison.json"
+  },
+  {
+    "finding_id": "F800-GF-002",
+    "observation": "8个正式Revision、5个Life、6个发行时刻标记groupCoverageIncomplete=0，但三品种[u-480000,u]观察窗内各有69行OHLC空值且volume=0；缺值范围2023-03-10 21:05至03-13 15:00，观点范围03-13 22:45至03-24 23:00。是否真实SourceFailure或正式Calendar豁免，待原Skill3核实。",
+    "business_conflict": "公开OHLC空值与同窗完整覆盖标志并存；适用语义须先核实",
+    "direct_responsibility_stage": "UNCONFIRMED，交原Skill3核输入事件/Calendar/覆盖链，不在G查根因",
+    "confirmed_facts": {
+      "data_scope": {
+        "symbols": [
+          "rb",
+          "hc",
+          "i"
+        ],
+        "start_time": "2021-01-01",
+        "end_time": "2023-12-31",
+        "actual_start_time": "2021-01-04 09:05:00",
+        "actual_end_time": "2023-12-29 15:00:00",
+        "freq": "5m",
+        "calendar": "night_end_at_2300",
+        "sessions": [
+          "DAY_CLOCK_09_15",
+          "NIGHT_CLOCK_21_23"
+        ],
+        "sof": "TA_updto20240229_DBA",
+        "stk_tlist": "steel",
+        "input_positions_per_symbol": 49683,
+        "input_symbol_rows": 149049,
+        "per_symbol_validation": "INPUT_SCOPE_VALIDATION.json"
+      },
+      "check_id": "complete_flag_with_input_price_gap",
+      "source": "profile/violations_complete_flag_with_input_price_gap.csv",
+      "full_revision_population": 1534,
+      "flag_zero_population": 1526,
+      "affected_lives": 5,
+      "life_denominator": 480,
+      "affected_life_ratio": 0.010416666666666666,
+      "affected_publication_ticks": 6,
+      "ratio_all_revision_occurrences": 0.005215123859191656,
+      "window_validation": "MISSING_INPUT_WINDOW_VALIDATION.json",
+      "baseline_comparison": "comparison/price_gap_baseline.csv",
+      "observation_preexisted_occurrences": 8
+    },
+    "competing_explanations": [
+      "公开表空值可能是重建/占位而非原生price事件真正失败；须核原生输入事件和实际读取合同。",
+      "该69个Calendar位置可能有正式不适用/停市豁免；须提供已存在的Calendar/domain声明，不能在G临时放宽。",
+      "coverage可能只承诺Calendar进展而非有效价格；须与现有Material缺价/失知断开及正常KLine覆盖语义核对。"
+    ],
+    "resolution_route": "BUSINESS_DISCREPANCY_DIAGNOSIS",
+    "resolution_status": "CANDIDATE",
+    "cross_effects_to_check": [
+      "原GF-001独立保持关闭，不借新候选改写旧修复结论",
+      "若后续行为改变须Owner确认并完整X/G失效回环"
+    ]
+  }
+]

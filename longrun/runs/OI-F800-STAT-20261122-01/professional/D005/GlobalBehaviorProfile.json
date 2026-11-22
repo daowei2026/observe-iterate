@@ -1,0 +1,5205 @@
+{
+  "profile_id": "F800-GLOBAL-PROFILE-D005-be57",
+  "feature_ref": "CommonPriceTurnGroupCandidatesFrp",
+  "run_binding": "FeatureRunResultBinding.json",
+  "statistics_definitions": [
+    {
+      "statistic_id": "ST01",
+      "name": "原始转折总分母",
+      "business_item_ref": "CurrentFeatureUnderstandingPackage.json#business_objects",
+      "count_unit": "原始实际位置",
+      "object_group_key": "(symbol,准确Rct实例,posUTI1)",
+      "time_basis": "actual及首次已知分别保留",
+      "denominator": "全部同范围Rct行可识别实际位置（含每品种1个初始化锚点）",
+      "deduplication_rule": "按object_group_key去重；子表父键保留完整timestamp/occurrence/record_id/child_id_2",
+      "same_tick_rule": "保留occurrence及child坐标；同Life以previous引用核序，UUID本身不可排序",
+      "strata": [
+        "SYMBOL",
+        "YEAR",
+        "SESSION"
+      ],
+      "source_fields": [
+        "posUTI1",
+        "price1",
+        "pivot1",
+        "timestamp"
+      ]
+    },
+    {
+      "statistic_id": "ST02",
+      "name": "指定尺度转折总分母及参与率",
+      "business_item_ref": "CurrentFeatureUnderstandingPackage.json#business_objects",
+      "count_unit": "指定尺度位置",
+      "object_group_key": "(symbol,round,xConfirm)，已验证与actual一一对齐",
+      "time_basis": "value1/value2的selected事件timestamp映射KLine.closeUti；actual=x；confirm=xConfirm",
+      "denominator": "全部同参数ScaleTurnCalendar两轮选中位置；另列初始化锚点",
+      "deduplication_rule": "按object_group_key去重；子表父键保留完整timestamp/occurrence/record_id/child_id_2",
+      "same_tick_rule": "保留occurrence及child坐标；同Life以previous引用核序，UUID本身不可排序",
+      "strata": [
+        "SYMBOL",
+        "YEAR",
+        "SESSION"
+      ],
+      "source_fields": [
+        "value1.x",
+        "value1.xConfirm",
+        "value2.x",
+        "value2.xConfirm",
+        "timestamp",
+        "memberTurn",
+        "memberKnownFrom"
+      ]
+    },
+    {
+      "statistic_id": "ST03",
+      "name": "候选对象与观点",
+      "business_item_ref": "CurrentFeatureUnderstandingPackage.json#business_objects",
+      "count_unit": "Life及Revision occurrence分别计数",
+      "object_group_key": "Life；(Life,Revision)；公开父键",
+      "time_basis": "groupKnownFrom/原publication timestamp",
+      "denominator": "全局去重候选Life或正式Revision occurrence；品种为包含关系层",
+      "deduplication_rule": "按object_group_key去重；子表父键保留完整timestamp/occurrence/record_id/child_id_2",
+      "same_tick_rule": "保留occurrence及child坐标；同Life以previous引用核序，UUID本身不可排序",
+      "strata": [
+        "SYMBOL",
+        "YEAR",
+        "SESSION"
+      ],
+      "source_fields": [
+        "groupReference",
+        "groupKnownFrom",
+        "timestamp",
+        "occurrence",
+        "record_id",
+        "child_id_2"
+      ]
+    },
+    {
+      "statistic_id": "ST04",
+      "name": "发行事件及定义事件",
+      "business_item_ref": "CurrentFeatureUnderstandingPackage.json#business_objects",
+      "count_unit": "外部发行事件",
+      "object_group_key": "(timestamp,occurrence)",
+      "time_basis": "发行timestamp/Calendar UTI",
+      "denominator": "全部5m输入Calendar位置49,683（待X实测核定）；三对象共享轴，不乘3",
+      "deduplication_rule": "按object_group_key去重；子表父键保留完整timestamp/occurrence/record_id/child_id_2",
+      "same_tick_rule": "保留occurrence及child坐标；同Life以previous引用核序，UUID本身不可排序",
+      "strata": [
+        "SYMBOL",
+        "YEAR",
+        "SESSION"
+      ],
+      "source_fields": [
+        "definitions.timestamp",
+        "occurrences.timestamp",
+        "occurrence"
+      ]
+    },
+    {
+      "statistic_id": "ST05",
+      "name": "观点状态占用",
+      "business_item_ref": "CurrentFeatureUnderstandingPackage.json#business_objects",
+      "count_unit": "观点持有开放分钟",
+      "object_group_key": "Life与相邻Revision知识区间",
+      "time_basis": "[当前known,下一known或min(revisionEnd,样本末))，UTI/120",
+      "denominator": "可从已发表观点支持的持有时段；不是内部逐Tick trace",
+      "deduplication_rule": "按object_group_key去重；子表父键保留完整timestamp/occurrence/record_id/child_id_2",
+      "same_tick_rule": "保留occurrence及child坐标；同Life以previous引用核序，UUID本身不可排序",
+      "strata": [
+        "SYMBOL",
+        "YEAR",
+        "SESSION"
+      ],
+      "source_fields": [
+        "groupObservation",
+        "groupKnownFrom",
+        "groupRevisionEnd"
+      ]
+    },
+    {
+      "statistic_id": "ST06",
+      "name": "状态转换",
+      "business_item_ref": "CurrentFeatureUnderstandingPackage.json#business_objects",
+      "count_unit": "同Life相邻观点有向边",
+      "object_group_key": "(Life,previousRevision,currentRevision)",
+      "time_basis": "知识轴保留同刻顺序",
+      "denominator": "各Life的n-1条相邻已发表Revision边",
+      "deduplication_rule": "按object_group_key去重；子表父键保留完整timestamp/occurrence/record_id/child_id_2",
+      "same_tick_rule": "保留occurrence及child坐标；同Life以previous引用核序，UUID本身不可排序",
+      "strata": [
+        "SYMBOL",
+        "YEAR",
+        "SESSION"
+      ],
+      "source_fields": [
+        "groupObservation",
+        "groupPrevious",
+        "groupReference"
+      ]
+    },
+    {
+      "statistic_id": "ST07",
+      "name": "责任跨度与右删失",
+      "business_item_ref": "CurrentFeatureUnderstandingPackage.json#business_objects",
+      "count_unit": "候选Life",
+      "object_group_key": "Life",
+      "time_basis": "首次准入至最后观点、原anchor/deadline/revisionEnd及handoff；120UTI/开放分钟",
+      "denominator": "所有Life；右删失不当作完整结束",
+      "deduplication_rule": "按object_group_key去重；子表父键保留完整timestamp/occurrence/record_id/child_id_2",
+      "same_tick_rule": "保留occurrence及child坐标；同Life以previous引用核序，UUID本身不可排序",
+      "strata": [
+        "SYMBOL",
+        "YEAR",
+        "SESSION"
+      ],
+      "source_fields": [
+        "groupOriginalAnchor",
+        "groupOriginalDeadline",
+        "groupRevisionEnd",
+        "participationHandoffEnd",
+        "participationDutyClosed"
+      ]
+    },
+    {
+      "statistic_id": "ST08",
+      "name": "声明分支可达性",
+      "business_item_ref": "CurrentFeatureUnderstandingPackage.json#business_objects",
+      "count_unit": "Revision观点",
+      "object_group_key": "(Life,Revision)",
+      "time_basis": "当次观点知识轴",
+      "denominator": "全部观点；零次数仅表示当前样本未观察",
+      "deduplication_rule": "按object_group_key去重；子表父键保留完整timestamp/occurrence/record_id/child_id_2",
+      "same_tick_rule": "保留occurrence及child坐标；同Life以previous引用核序，UUID本身不可排序",
+      "strata": [
+        "SYMBOL",
+        "YEAR",
+        "SESSION"
+      ],
+      "source_fields": [
+        "groupLocalBasis",
+        "groupObservation",
+        "groupClosed",
+        "participationDutyClosed"
+      ]
+    },
+    {
+      "statistic_id": "ST09",
+      "name": "Required理由与四坐标",
+      "business_item_ref": "CurrentFeatureUnderstandingPackage.json#business_objects",
+      "count_unit": "观点内Required pair",
+      "object_group_key": "(公开父键,pair child_id_3,coordinate)",
+      "time_basis": "当次观点知识轴",
+      "denominator": "该层Required pair总数；同边跨Revision重复是不同已发表断言",
+      "deduplication_rule": "按object_group_key去重；子表父键保留完整timestamp/occurrence/record_id/child_id_2",
+      "same_tick_rule": "保留occurrence及child坐标；同Life以previous引用核序，UUID本身不可排序",
+      "strata": [
+        "SYMBOL",
+        "YEAR",
+        "SESSION"
+      ],
+      "source_fields": [
+        "pairTime",
+        "pairDirection",
+        "pairType",
+        "pairBend"
+      ]
+    },
+    {
+      "statistic_id": "ST10",
+      "name": "身份与引用完整性",
+      "business_item_ref": "CurrentFeatureUnderstandingPackage.json#business_objects",
+      "count_unit": "引用边或结构检查单位",
+      "object_group_key": "各表完整层级父子坐标、Exact(Life,Revision)",
+      "time_basis": "被引用知识不晚于引用方，previous同刻按准确引用",
+      "denominator": "每检查在STRUCTURAL_CHECKS中登记自己的denominator",
+      "deduplication_rule": "按object_group_key去重；子表父键保留完整timestamp/occurrence/record_id/child_id_2",
+      "same_tick_rule": "保留occurrence及child坐标；同Life以previous引用核序，UUID本身不可排序",
+      "strata": [
+        "SYMBOL",
+        "YEAR",
+        "SESSION"
+      ],
+      "source_fields": [
+        "groupPrevious",
+        "groupOverlaps",
+        "groupCoveredBy",
+        "participationAdmission",
+        "participationCandidate",
+        "participationMembers",
+        "participationAlternatives",
+        "memberTurn",
+        "memberSource"
+      ]
+    },
+    {
+      "statistic_id": "ST11",
+      "name": "同刻多观点",
+      "business_item_ref": "CurrentFeatureUnderstandingPackage.json#business_objects",
+      "count_unit": "(Life,timestamp)组合",
+      "object_group_key": "(Life,timestamp)；保留Revision/occurrence",
+      "time_basis": "同一Calendar拍",
+      "denominator": "所有Life×实际出现时间组合；例外保存previous序",
+      "deduplication_rule": "按object_group_key去重；子表父键保留完整timestamp/occurrence/record_id/child_id_2",
+      "same_tick_rule": "保留occurrence及child坐标；同Life以previous引用核序，UUID本身不可排序",
+      "strata": [
+        "SYMBOL",
+        "YEAR",
+        "SESSION"
+      ],
+      "source_fields": [
+        "timestamp",
+        "occurrence",
+        "groupPrevious",
+        "groupKnownFrom"
+      ]
+    },
+    {
+      "statistic_id": "ST12",
+      "name": "输出密度及活跃责任峰值",
+      "business_item_ref": "CurrentFeatureUnderstandingPackage.json#business_objects",
+      "count_unit": "Revision/Calendar位置、责任内Life",
+      "object_group_key": "Life；输入公共Calendar.closeUti",
+      "time_basis": "责任期[首次known,min(revisionEnd,样本末)]；闭边界同拍保留",
+      "denominator": "各层实际5m输入位置；完整三品种输入行另为149,049，不混做密度分母",
+      "deduplication_rule": "按object_group_key去重；子表父键保留完整timestamp/occurrence/record_id/child_id_2",
+      "same_tick_rule": "保留occurrence及child坐标；同Life以previous引用核序，UUID本身不可排序",
+      "strata": [
+        "SYMBOL",
+        "YEAR",
+        "SESSION"
+      ],
+      "source_fields": [
+        "groupKnownFrom",
+        "groupRevisionEnd",
+        "KLine.closeUti"
+      ]
+    },
+    {
+      "statistic_id": "ST13",
+      "name": "actual/confirm/selected延迟",
+      "business_item_ref": "CurrentFeatureUnderstandingPackage.json#business_objects",
+      "count_unit": "非初始化尺度位置",
+      "object_group_key": "(symbol,round,xConfirm)",
+      "time_basis": "(selected-known - actual)/120；几何confirm与selected分别列",
+      "denominator": "所有非初始化尺度位置；没有独立selected_time列，以原事件轴和adapter映射共同确认",
+      "deduplication_rule": "按object_group_key去重；子表父键保留完整timestamp/occurrence/record_id/child_id_2",
+      "same_tick_rule": "保留occurrence及child坐标；同Life以previous引用核序，UUID本身不可排序",
+      "strata": [
+        "SYMBOL",
+        "YEAR",
+        "SESSION"
+      ],
+      "source_fields": [
+        "x",
+        "xConfirm",
+        "y",
+        "yConfirm",
+        "timestamp",
+        "memberKnownFrom",
+        "memberT_pointKnownFrom"
+      ]
+    },
+    {
+      "statistic_id": "ST14",
+      "name": "近actual跨品种配对参考",
+      "business_item_ref": "CurrentFeatureUnderstandingPackage.json#business_objects",
+      "count_unit": "无向跨品种尺度位置pair",
+      "object_group_key": "排序的两端上游定位键",
+      "time_basis": "actual相距≤1200UTI；首次共同known=max；年龄对比K800/参考K6",
+      "denominator": "全体近actual跨品种pair；排除同symbol，标注初始化和四坐标筛查；不是native计数器或应输出真值",
+      "deduplication_rule": "按object_group_key去重；子表父键保留完整timestamp/occurrence/record_id/child_id_2",
+      "same_tick_rule": "保留occurrence及child坐标；同Life以previous引用核序，UUID本身不可排序",
+      "strata": [
+        "SYMBOL",
+        "YEAR",
+        "SESSION"
+      ],
+      "source_fields": [
+        "ScaleTurnCalendar.value1",
+        "ScaleTurnCalendar.value2",
+        "Rct.pivot1",
+        "KLine.closeUti"
+      ]
+    },
+    {
+      "statistic_id": "ST15",
+      "name": "首阻断位置参考筛查",
+      "business_item_ref": "CurrentFeatureUnderstandingPackage.json#business_objects",
+      "count_unit": "每个尺度位置",
+      "object_group_key": "(symbol,round,xConfirm)",
+      "time_basis": "首次selected知识轴/首次共同pair知识轴",
+      "denominator": "全部尺度位置；先按实际观察到参与，再按独立规则顺序分桶；不是native首次阻断计数",
+      "deduplication_rule": "按object_group_key去重；子表父键保留完整timestamp/occurrence/record_id/child_id_2",
+      "same_tick_rule": "保留occurrence及child坐标；同Life以previous引用核序，UUID本身不可排序",
+      "strata": [
+        "SYMBOL",
+        "YEAR",
+        "SESSION"
+      ],
+      "source_fields": [
+        "ST02",
+        "ST14",
+        "candidate births members"
+      ]
+    },
+    {
+      "statistic_id": "ST16",
+      "name": "覆盖标志与完整/缺价输入的双向对照",
+      "business_item_ref": "CurrentFeatureUnderstandingPackage.json#business_objects",
+      "count_unit": "Revision occurrence及Life",
+      "object_group_key": "(Life,Revision)",
+      "time_basis": "同拍u、[u-480000,u]完整三品种有效连续5m整数UTI",
+      "denominator": "每个结构检查独立登记：完整输入但flag=1按全部Revision；flag=0但窗内有公开缺价按flag=0子集，亦另报总Revision/Life比例。缺价语义交诊断。",
+      "deduplication_rule": "按object_group_key去重；子表父键保留完整timestamp/occurrence/record_id/child_id_2",
+      "same_tick_rule": "保留occurrence及child坐标；同Life以previous引用核序，UUID本身不可排序",
+      "strata": [
+        "SYMBOL",
+        "YEAR",
+        "SESSION"
+      ],
+      "source_fields": [
+        "groupCoverageIncomplete",
+        "KLine.closeUti",
+        "KLine.close",
+        "groupKnownFrom"
+      ]
+    },
+    {
+      "statistic_id": "ST17",
+      "name": "分层比较",
+      "business_item_ref": "CurrentFeatureUnderstandingPackage.json#business_objects",
+      "count_unit": "各层输入、对象、观点、状态、边及Required",
+      "object_group_key": "按层过滤后沿用ST01-ST16键",
+      "time_basis": "知识年/钟点Session/开盘窗口，不混用actual年",
+      "denominator": "层内实际输入Calendar位置、Life、Revision、Pair及持有时间各自标明",
+      "deduplication_rule": "按object_group_key去重；子表父键保留完整timestamp/occurrence/record_id/child_id_2",
+      "same_tick_rule": "保留occurrence及child坐标；同Life以previous引用核序，UUID本身不可排序",
+      "strata": [
+        "SYMBOL",
+        "YEAR",
+        "SESSION",
+        "DIRECTION"
+      ],
+      "source_fields": [
+        "ST01-ST16",
+        "StratificationPlan"
+      ]
+    },
+    {
+      "statistic_id": "ST18",
+      "name": "最新完整运行对旧finding及对象/Revision变化复验",
+      "business_item_ref": "CurrentFeatureUnderstandingPackage.json#business_objects/BO3",
+      "count_unit": "自然Life、Revision occurrence、Life×两版publication UTI并集比较点分别列明",
+      "object_group_key": "自然Life=(排序上游symbol/round/confirm成员,原anchor/deadline/revisionEnd)；各版正式exact另保留",
+      "time_basis": "相同Calendar知识轴；新稀疏公开观点在≤u的最后已发表Revision持有，不合成新事件",
+      "denominator": "各版全体Life/Revision；共同Life×publication UTI并集；原22错误flag与8冷启动分别为条件分母",
+      "deduplication_rule": "自然键须唯一；不以跨运行随机UUID相等为条件，不合并正式身份",
+      "same_tick_rule": "同Life原坐标保留；持有值取同拍最后原生观点，分时刻发行次数另比",
+      "strata": [
+        "SYMBOL",
+        "YEAR",
+        "SESSION"
+      ],
+      "source_fields": [
+        "profile/candidate_births.csv",
+        "profile/candidate_revisions.csv",
+        "readback/tables/*.csv",
+        "旧D002同名精确产物",
+        "comparison/coverage_retest.csv"
+      ]
+    }
+  ],
+  "candidate_profile": [
+    {
+      "statistic_id": "ST01",
+      "stratum_id": "ALL",
+      "value_or_distribution": {
+        "raw_positions": 10073,
+        "initial_raw_anchors": 3
+      },
+      "sample_size": 10073,
+      "denominator_value": 10073,
+      "source_location": "profile/raw_turns.csv",
+      "notes": "Rct可识别实际位置，非全部潜在市场转折。"
+    },
+    {
+      "statistic_id": "ST02",
+      "stratum_id": "ALL",
+      "value_or_distribution": {
+        "scale_positions": 1859,
+        "initial_anchors": 3,
+        "noninitial": 1856,
+        "used_positions": 875,
+        "selected_to_used_ratio": 0.4706831629908553,
+        "used_noninitial": 872,
+        "noninitial_used_ratio": 0.4698275862068966
+      },
+      "sample_size": 1859,
+      "denominator_value": 1859,
+      "source_location": "profile/scale_turns.csv; profile/counts_by_symbol.csv",
+      "notes": "成员子表行是跨Revision关系，不能当作上游分母。"
+    },
+    {
+      "statistic_id": "ST14",
+      "stratum_id": "ALL",
+      "value_or_distribution": {
+        "total": 648,
+        "decision_counts": {
+          "Unresolved": 3,
+          "Positive": 624,
+          "Veto": 21
+        },
+        "positive_joint_eligible_800": 624,
+        "positive_joint_eligible_6_reference": 16,
+        "eligible_nonveto_unseen": 0
+      },
+      "sample_size": 648,
+      "denominator_value": 648,
+      "source_location": "profile/near_actual_pair_screen.csv",
+      "notes": "独立候选与规则筛查，不是真值，不冒充native试探计数。"
+    },
+    {
+      "statistic_id": "ST15",
+      "stratum_id": "SYMBOL",
+      "value_or_distribution": [
+        {
+          "symbol": "rb",
+          "stage": "OBSERVED_IN_F800",
+          "count": "324",
+          "denominator": "425",
+          "meaning": "独立规则筛查/观察到的参与，不是未暴露native计数器"
+        },
+        {
+          "symbol": "rb",
+          "stage": "REFERENCE_NO_OTHER_SYMBOL_WITHIN_2DELTA",
+          "count": "101",
+          "denominator": "425",
+          "meaning": "独立规则筛查/观察到的参与，不是未暴露native计数器"
+        },
+        {
+          "symbol": "rb",
+          "stage": "REFERENCE_RELATIONS_VETO",
+          "count": "0",
+          "denominator": "425",
+          "meaning": "独立规则筛查/观察到的参与，不是未暴露native计数器"
+        },
+        {
+          "symbol": "hc",
+          "stage": "OBSERVED_IN_F800",
+          "count": "315",
+          "denominator": "430",
+          "meaning": "独立规则筛查/观察到的参与，不是未暴露native计数器"
+        },
+        {
+          "symbol": "hc",
+          "stage": "REFERENCE_NO_OTHER_SYMBOL_WITHIN_2DELTA",
+          "count": "114",
+          "denominator": "430",
+          "meaning": "独立规则筛查/观察到的参与，不是未暴露native计数器"
+        },
+        {
+          "symbol": "hc",
+          "stage": "REFERENCE_RELATIONS_VETO",
+          "count": "1",
+          "denominator": "430",
+          "meaning": "独立规则筛查/观察到的参与，不是未暴露native计数器"
+        },
+        {
+          "symbol": "i",
+          "stage": "OBSERVED_IN_F800",
+          "count": "236",
+          "denominator": "1004",
+          "meaning": "独立规则筛查/观察到的参与，不是未暴露native计数器"
+        },
+        {
+          "symbol": "i",
+          "stage": "REFERENCE_NO_OTHER_SYMBOL_WITHIN_2DELTA",
+          "count": "759",
+          "denominator": "1004",
+          "meaning": "独立规则筛查/观察到的参与，不是未暴露native计数器"
+        },
+        {
+          "symbol": "i",
+          "stage": "REFERENCE_RELATIONS_VETO",
+          "count": "9",
+          "denominator": "1004",
+          "meaning": "独立规则筛查/观察到的参与，不是未暴露native计数器"
+        }
+      ],
+      "sample_size": 1859,
+      "denominator_value": 1859,
+      "source_location": "profile/first_block_reference_by_symbol.csv",
+      "notes": "实际参加与参考首阻断分别标识。"
+    }
+  ],
+  "object_profile": [
+    {
+      "statistic_id": "ST03",
+      "stratum_id": "ALL",
+      "value_or_distribution": {
+        "candidate_lives": 480,
+        "revision_occurrences": 1534,
+        "member_relations": 3447,
+        "required_pair_assertions": 2292,
+        "peak_responsibility_active_lives": 36
+      },
+      "sample_size": 480,
+      "denominator_value": 480,
+      "source_location": "profile/candidate_births.csv; profile/SUMMARY.json",
+      "notes": ""
+    }
+  ],
+  "event_profile": [
+    {
+      "statistic_id": "ST04",
+      "stratum_id": "ALL",
+      "value_or_distribution": {
+        "publication_events": 1216,
+        "definition_only_publication_events": 1,
+        "candidate_revision_occurrences": 1534,
+        "candidate_publication_events": 1215
+      },
+      "sample_size": 1216,
+      "denominator_value": 49683,
+      "source_location": "readback/report.json; profile/SUMMARY.json",
+      "notes": "发行事件可含多个候选观点；无occurrence不等于失败。"
+    }
+  ],
+  "state_occupancy_profile": [
+    {
+      "statistic_id": "ST05",
+      "stratum_id": "ALL",
+      "value_or_distribution": [
+        {
+          "state": "Open",
+          "revision_count": "486",
+          "held_view_minutes": "1454395.0",
+          "meaning": "相邻已发表观点按知识UTI持有，末段截断于责任终点/样本末；非逐Tick内部Dynamic trace"
+        },
+        {
+          "state": "ClosedSupported",
+          "revision_count": "805",
+          "held_view_minutes": "11940.0",
+          "meaning": "相邻已发表观点按知识UTI持有，末段截断于责任终点/样本末；非逐Tick内部Dynamic trace"
+        },
+        {
+          "state": "ClosedInsufficient",
+          "revision_count": "2",
+          "held_view_minutes": "30.0",
+          "meaning": "相邻已发表观点按知识UTI持有，末段截断于责任终点/样本末；非逐Tick内部Dynamic trace"
+        },
+        {
+          "state": "Withdrawn",
+          "revision_count": "0",
+          "held_view_minutes": "0",
+          "meaning": "相邻已发表观点按知识UTI持有，末段截断于责任终点/样本末；非逐Tick内部Dynamic trace"
+        },
+        {
+          "state": "Subsumed",
+          "revision_count": "241",
+          "held_view_minutes": "295295.0",
+          "meaning": "相邻已发表观点按知识UTI持有，末段截断于责任终点/样本末；非逐Tick内部Dynamic trace"
+        },
+        {
+          "state": "EndedByScope",
+          "revision_count": "0",
+          "held_view_minutes": "0",
+          "meaning": "相邻已发表观点按知识UTI持有，末段截断于责任终点/样本末；非逐Tick内部Dynamic trace"
+        }
+      ],
+      "sample_size": 1534,
+      "denominator_value": 1534,
+      "source_location": "profile/state_occupancy.csv",
+      "notes": "公开观点知识区间持有，非内部逐Tick trace。"
+    }
+  ],
+  "transition_profile": [
+    {
+      "statistic_id": "ST06",
+      "stratum_id": "ALL",
+      "value_or_distribution": [
+        {
+          "from_state": "ClosedInsufficient",
+          "to_state": "ClosedInsufficient",
+          "count": "1",
+          "count_unit": "同Life相邻已发表revision的状态转换"
+        },
+        {
+          "from_state": "ClosedSupported",
+          "to_state": "ClosedSupported",
+          "count": "407",
+          "count_unit": "同Life相邻已发表revision的状态转换"
+        },
+        {
+          "from_state": "Open",
+          "to_state": "ClosedInsufficient",
+          "count": "1",
+          "count_unit": "同Life相邻已发表revision的状态转换"
+        },
+        {
+          "from_state": "Open",
+          "to_state": "ClosedSupported",
+          "count": "398",
+          "count_unit": "同Life相邻已发表revision的状态转换"
+        },
+        {
+          "from_state": "Open",
+          "to_state": "Open",
+          "count": "6",
+          "count_unit": "同Life相邻已发表revision的状态转换"
+        },
+        {
+          "from_state": "Open",
+          "to_state": "Subsumed",
+          "count": "80",
+          "count_unit": "同Life相邻已发表revision的状态转换"
+        },
+        {
+          "from_state": "Subsumed",
+          "to_state": "Subsumed",
+          "count": "161",
+          "count_unit": "同Life相邻已发表revision的状态转换"
+        }
+      ],
+      "sample_size": 1054,
+      "denominator_value": 1054,
+      "source_location": "profile/state_transitions.csv",
+      "notes": "同Life相邻已发表观点；自环可来自关系或责任变化。"
+    }
+  ],
+  "lifecycle_profile": [
+    {
+      "statistic_id": "ST07",
+      "stratum_id": "ALL",
+      "value_or_distribution": {
+        "distributions": [
+          {
+            "measure": "revision_count",
+            "n": "480",
+            "minimum": "1.0",
+            "p25": "3.0",
+            "median": "3.0",
+            "p75": "3.0",
+            "p90": "4.0",
+            "p95": "4.0",
+            "maximum": "5.0"
+          },
+          {
+            "measure": "observation_open_minutes",
+            "n": "480",
+            "minimum": "2335.0",
+            "p25": "3545.0",
+            "median": "3720.0",
+            "p75": "3860.0",
+            "p90": "3920.0",
+            "p95": "3945.25",
+            "maximum": "3990.0"
+          },
+          {
+            "measure": "admission_actual_age_minutes",
+            "n": "480",
+            "minimum": "10.0",
+            "p25": "140.0",
+            "median": "280.0",
+            "p75": "455.0",
+            "p90": "800.0",
+            "p95": "1030.7499999999993",
+            "maximum": "1665.0"
+          },
+          {
+            "measure": "observed_revision_span_minutes",
+            "n": "480",
+            "minimum": "0.0",
+            "p25": "3575.0",
+            "median": "3750.0",
+            "p75": "3890.0",
+            "p90": "3950.0",
+            "p95": "3975.25",
+            "maximum": "4020.0"
+          },
+          {
+            "measure": "original_observation_duty_minutes",
+            "n": "480",
+            "minimum": "4000.0",
+            "p25": "4000.0",
+            "median": "4000.0",
+            "p75": "4000.0",
+            "p90": "4000.0",
+            "p95": "4000.0",
+            "maximum": "4000.0"
+          },
+          {
+            "measure": "revision_tail_minutes",
+            "n": "480",
+            "minimum": "30.0",
+            "p25": "30.0",
+            "median": "30.0",
+            "p75": "30.0",
+            "p90": "30.0",
+            "p95": "30.0",
+            "maximum": "30.0"
+          },
+          {
+            "measure": "handoff_tail_minutes",
+            "n": "480",
+            "minimum": "90.0",
+            "p25": "90.0",
+            "median": "90.0",
+            "p75": "90.0",
+            "p90": "90.0",
+            "p95": "90.0",
+            "maximum": "90.0"
+          }
+        ],
+        "duty_closed_last_lives": 479,
+        "right_censored_lives": 1,
+        "single_revision_lives": 1
+      },
+      "sample_size": 480,
+      "denominator_value": 480,
+      "source_location": "profile/lifecycles.csv; profile/lifecycle_distributions.csv",
+      "notes": "有限形成/修订责任，非市场运动寿命。"
+    },
+    {
+      "statistic_id": "ST13",
+      "stratum_id": "SYMBOL",
+      "value_or_distribution": [
+        {
+          "symbol": "rb",
+          "measure": "actual_to_selected",
+          "unit": "Calendar开放分钟",
+          "n": "424",
+          "minimum": "10.0",
+          "p25": "145.0",
+          "median": "280.0",
+          "p75": "445.0",
+          "p90": "796.9999999999999",
+          "p95": "1041.9999999999993",
+          "maximum": "3285.0"
+        },
+        {
+          "symbol": "rb",
+          "measure": "actual_to_geometry_confirm",
+          "unit": "Calendar开放分钟",
+          "n": "424",
+          "minimum": "5.0",
+          "p25": "140.0",
+          "median": "275.0",
+          "p75": "440.0",
+          "p90": "791.9999999999999",
+          "p95": "1036.9999999999993",
+          "maximum": "3280.0"
+        },
+        {
+          "symbol": "rb",
+          "measure": "geometry_confirm_to_selected",
+          "unit": "Calendar开放分钟",
+          "n": "424",
+          "minimum": "5.0",
+          "p25": "5.0",
+          "median": "5.0",
+          "p75": "5.0",
+          "p90": "5.0",
+          "p95": "5.0",
+          "maximum": "5.0"
+        },
+        {
+          "symbol": "hc",
+          "measure": "actual_to_selected",
+          "unit": "Calendar开放分钟",
+          "n": "429",
+          "minimum": "10.0",
+          "p25": "135.0",
+          "median": "270.0",
+          "p75": "455.0",
+          "p90": "786.0",
+          "p95": "1045.0",
+          "maximum": "3740.0"
+        },
+        {
+          "symbol": "hc",
+          "measure": "actual_to_geometry_confirm",
+          "unit": "Calendar开放分钟",
+          "n": "429",
+          "minimum": "5.0",
+          "p25": "130.0",
+          "median": "265.0",
+          "p75": "450.0",
+          "p90": "781.0",
+          "p95": "1040.0",
+          "maximum": "3735.0"
+        },
+        {
+          "symbol": "hc",
+          "measure": "geometry_confirm_to_selected",
+          "unit": "Calendar开放分钟",
+          "n": "429",
+          "minimum": "5.0",
+          "p25": "5.0",
+          "median": "5.0",
+          "p75": "5.0",
+          "p90": "5.0",
+          "p95": "5.0",
+          "maximum": "5.0"
+        },
+        {
+          "symbol": "i",
+          "measure": "actual_to_selected",
+          "unit": "Calendar开放分钟",
+          "n": "1003",
+          "minimum": "10.0",
+          "p25": "60.0",
+          "median": "110.0",
+          "p75": "205.0",
+          "p90": "329.00000000000034",
+          "p95": "414.4999999999999",
+          "maximum": "1295.0"
+        },
+        {
+          "symbol": "i",
+          "measure": "actual_to_geometry_confirm",
+          "unit": "Calendar开放分钟",
+          "n": "1003",
+          "minimum": "5.0",
+          "p25": "55.0",
+          "median": "105.0",
+          "p75": "200.0",
+          "p90": "324.00000000000034",
+          "p95": "409.4999999999999",
+          "maximum": "1290.0"
+        },
+        {
+          "symbol": "i",
+          "measure": "geometry_confirm_to_selected",
+          "unit": "Calendar开放分钟",
+          "n": "1003",
+          "minimum": "5.0",
+          "p25": "5.0",
+          "median": "5.0",
+          "p75": "5.0",
+          "p90": "5.0",
+          "p95": "5.0",
+          "maximum": "5.0"
+        }
+      ],
+      "sample_size": 1856,
+      "denominator_value": 1856,
+      "source_location": "profile/latency_by_symbol.csv",
+      "notes": "actual/几何confirm/selected知识分开；初始化单列。"
+    }
+  ],
+  "branch_reachability_profile": [
+    {
+      "statistic_id": "ST08",
+      "stratum_id": "ALL",
+      "value_or_distribution": [
+        {
+          "category": "local_basis",
+          "value": "Supported",
+          "count": "1531",
+          "denominator": "1534",
+          "meaning": "样本可达性；零次数不证明逻辑不可达"
+        },
+        {
+          "category": "local_basis",
+          "value": "Incomplete",
+          "count": "3",
+          "denominator": "1534",
+          "meaning": "样本可达性；零次数不证明逻辑不可达"
+        },
+        {
+          "category": "local_basis",
+          "value": "Contradicted",
+          "count": "0",
+          "denominator": "1534",
+          "meaning": "样本可达性；零次数不证明逻辑不可达"
+        },
+        {
+          "category": "observation",
+          "value": "Open",
+          "count": "486",
+          "denominator": "1534",
+          "meaning": "样本可达性；零次数不证明逻辑不可达"
+        },
+        {
+          "category": "observation",
+          "value": "ClosedSupported",
+          "count": "805",
+          "denominator": "1534",
+          "meaning": "样本可达性；零次数不证明逻辑不可达"
+        },
+        {
+          "category": "observation",
+          "value": "ClosedInsufficient",
+          "count": "2",
+          "denominator": "1534",
+          "meaning": "样本可达性；零次数不证明逻辑不可达"
+        },
+        {
+          "category": "observation",
+          "value": "Withdrawn",
+          "count": "0",
+          "denominator": "1534",
+          "meaning": "样本可达性；零次数不证明逻辑不可达"
+        },
+        {
+          "category": "observation",
+          "value": "Subsumed",
+          "count": "241",
+          "denominator": "1534",
+          "meaning": "样本可达性；零次数不证明逻辑不可达"
+        },
+        {
+          "category": "observation",
+          "value": "EndedByScope",
+          "count": "0",
+          "denominator": "1534",
+          "meaning": "样本可达性；零次数不证明逻辑不可达"
+        }
+      ],
+      "sample_size": 1534,
+      "denominator_value": 1534,
+      "source_location": "profile/branch_reachability.csv",
+      "notes": "未发生分支先核有无适用输入；零次数不自动形成不可达finding。"
+    }
+  ],
+  "density_profile": [
+    {
+      "statistic_id": "ST12",
+      "stratum_id": "ALL",
+      "value_or_distribution": {
+        "revisions_per_1000_input_positions": 30.87575226938792,
+        "publication_event_ratio": 0.02447517259424753,
+        "peak_responsibility_active_lives": 36
+      },
+      "sample_size": 1534,
+      "denominator_value": 49683,
+      "source_location": "profile/SUMMARY.json",
+      "notes": "以共享Calendar轴为分母；三对象输入行另列，数量不直接判合理。"
+    }
+  ],
+  "reason_profile": [
+    {
+      "statistic_id": "ST09",
+      "stratum_id": "ALL",
+      "value_or_distribution": [
+        {
+          "coordinate": "Time",
+          "field": "requiredVerdict_name",
+          "value": "CoordinateSupports",
+          "count": "2292",
+          "denominator": "2292"
+        },
+        {
+          "coordinate": "Time",
+          "field": "requiredGap_name",
+          "value": "NoGap",
+          "count": "2292",
+          "denominator": "2292"
+        },
+        {
+          "coordinate": "Time",
+          "field": "requiredVeto_name",
+          "value": "NoVeto",
+          "count": "2292",
+          "denominator": "2292"
+        },
+        {
+          "coordinate": "Direction",
+          "field": "requiredVerdict_name",
+          "value": "CoordinateUnresolved",
+          "count": "9",
+          "denominator": "2292"
+        },
+        {
+          "coordinate": "Direction",
+          "field": "requiredVerdict_name",
+          "value": "CoordinateSupports",
+          "count": "2283",
+          "denominator": "2292"
+        },
+        {
+          "coordinate": "Direction",
+          "field": "requiredGap_name",
+          "value": "DirectionUnavailable",
+          "count": "9",
+          "denominator": "2292"
+        },
+        {
+          "coordinate": "Direction",
+          "field": "requiredGap_name",
+          "value": "NoGap",
+          "count": "2283",
+          "denominator": "2292"
+        },
+        {
+          "coordinate": "Direction",
+          "field": "requiredVeto_name",
+          "value": "NoVeto",
+          "count": "2292",
+          "denominator": "2292"
+        },
+        {
+          "coordinate": "Type",
+          "field": "requiredVerdict_name",
+          "value": "CoordinateUnresolved",
+          "count": "9",
+          "denominator": "2292"
+        },
+        {
+          "coordinate": "Type",
+          "field": "requiredVerdict_name",
+          "value": "CoordinateSupports",
+          "count": "2283",
+          "denominator": "2292"
+        },
+        {
+          "coordinate": "Type",
+          "field": "requiredGap_name",
+          "value": "TurnTypeUnavailable",
+          "count": "9",
+          "denominator": "2292"
+        },
+        {
+          "coordinate": "Type",
+          "field": "requiredGap_name",
+          "value": "NoGap",
+          "count": "2283",
+          "denominator": "2292"
+        },
+        {
+          "coordinate": "Type",
+          "field": "requiredVeto_name",
+          "value": "NoVeto",
+          "count": "2292",
+          "denominator": "2292"
+        },
+        {
+          "coordinate": "Bend",
+          "field": "requiredVerdict_name",
+          "value": "CoordinateUnresolved",
+          "count": "9",
+          "denominator": "2292"
+        },
+        {
+          "coordinate": "Bend",
+          "field": "requiredVerdict_name",
+          "value": "CoordinateSupports",
+          "count": "2283",
+          "denominator": "2292"
+        },
+        {
+          "coordinate": "Bend",
+          "field": "requiredGap_name",
+          "value": "SelectedAnchorUnavailable",
+          "count": "9",
+          "denominator": "2292"
+        },
+        {
+          "coordinate": "Bend",
+          "field": "requiredGap_name",
+          "value": "NoGap",
+          "count": "2283",
+          "denominator": "2292"
+        },
+        {
+          "coordinate": "Bend",
+          "field": "requiredVeto_name",
+          "value": "NoVeto",
+          "count": "2292",
+          "denominator": "2292"
+        }
+      ],
+      "sample_size": 2292,
+      "denominator_value": 2292,
+      "source_location": "profile/required_reasons.csv",
+      "notes": "同pair跨Revision是多次已发表断言。"
+    }
+  ],
+  "reference_integrity_profile": [
+    {
+      "statistic_id": "ST10",
+      "stratum_id": "ALL",
+      "value_or_distribution": {
+        "check_id": "upstream_time_order",
+        "repeat_count": 0,
+        "denominator": 1859,
+        "affected_ratio": 0.0,
+        "invariant": "actual/几何confirm/首次selected知识保持合法先后",
+        "evidence": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateKLineInput.hs",
+        "examples": []
+      },
+      "sample_size": 1859,
+      "denominator_value": 1859,
+      "source_location": "profile/violations_upstream_time_order.csv; profile/STRUCTURAL_CHECKS.json",
+      "notes": "actual/几何confirm/首次selected知识保持合法先后"
+    },
+    {
+      "statistic_id": "ST10",
+      "stratum_id": "ALL",
+      "value_or_distribution": {
+        "check_id": "upstream_duplicate_actual",
+        "repeat_count": 0,
+        "denominator": 1859,
+        "affected_ratio": 0.0,
+        "invariant": "两轮选择不得把同一原实际位置重复当作不同选中位置",
+        "evidence": "同参数ScaleTurnCalendar公开value1/value2",
+        "examples": []
+      },
+      "sample_size": 1859,
+      "denominator_value": 1859,
+      "source_location": "profile/violations_upstream_duplicate_actual.csv; profile/STRUCTURAL_CHECKS.json",
+      "notes": "两轮选择不得把同一原实际位置重复当作不同选中位置"
+    },
+    {
+      "statistic_id": "ST10",
+      "stratum_id": "ALL",
+      "value_or_distribution": {
+        "check_id": "member_upstream_exact",
+        "repeat_count": 0,
+        "denominator": 3447,
+        "affected_ratio": 0.0,
+        "invariant": "F成员实际/确认/可知、原始知识与价格方向必须对应准确上游",
+        "evidence": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateKLineInput.hs",
+        "examples": []
+      },
+      "sample_size": 3447,
+      "denominator_value": 3447,
+      "source_location": "profile/violations_member_upstream_exact.csv; profile/STRUCTURAL_CHECKS.json",
+      "notes": "F成员实际/确认/可知、原始知识与价格方向必须对应准确上游"
+    },
+    {
+      "statistic_id": "ST10",
+      "stratum_id": "ALL",
+      "value_or_distribution": {
+        "check_id": "pair_cardinality",
+        "repeat_count": 0,
+        "denominator": 1534,
+        "affected_ratio": 0.0,
+        "invariant": "每组观点必须有n(n-1)/2条Required",
+        "evidence": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateStorage.hs",
+        "examples": []
+      },
+      "sample_size": 1534,
+      "denominator_value": 1534,
+      "source_location": "profile/violations_pair_cardinality.csv; profile/STRUCTURAL_CHECKS.json",
+      "notes": "每组观点必须有n(n-1)/2条Required"
+    },
+    {
+      "statistic_id": "ST10",
+      "stratum_id": "ALL",
+      "value_or_distribution": {
+        "check_id": "distinct_member_symbols",
+        "repeat_count": 0,
+        "denominator": 1534,
+        "affected_ratio": 0.0,
+        "invariant": "每组同一对象至多一个成员",
+        "evidence": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateStorage.hs",
+        "examples": []
+      },
+      "sample_size": 1534,
+      "denominator_value": 1534,
+      "source_location": "profile/violations_distinct_member_symbols.csv; profile/STRUCTURAL_CHECKS.json",
+      "notes": "每组同一对象至多一个成员"
+    },
+    {
+      "statistic_id": "ST10",
+      "stratum_id": "ALL",
+      "value_or_distribution": {
+        "check_id": "unique_group_exact",
+        "repeat_count": 0,
+        "denominator": 1534,
+        "affected_ratio": 0.0,
+        "invariant": "稀疏正式发行不应重复同一候选exact",
+        "evidence": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateEvolution.hs",
+        "examples": []
+      },
+      "sample_size": 1534,
+      "denominator_value": 1534,
+      "source_location": "profile/violations_unique_group_exact.csv; profile/STRUCTURAL_CHECKS.json",
+      "notes": "稀疏正式发行不应重复同一候选exact"
+    },
+    {
+      "statistic_id": "ST10",
+      "stratum_id": "ALL",
+      "value_or_distribution": {
+        "check_id": "birth_within_800",
+        "repeat_count": 0,
+        "denominator": 480,
+        "affected_ratio": 0.0,
+        "invariant": "首次准入必须在原actual锚点+800Δ以内",
+        "evidence": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateEvolution.hs",
+        "examples": []
+      },
+      "sample_size": 480,
+      "denominator_value": 480,
+      "source_location": "profile/violations_birth_within_800.csv; profile/STRUCTURAL_CHECKS.json",
+      "notes": "首次准入必须在原actual锚点+800Δ以内"
+    },
+    {
+      "statistic_id": "ST10",
+      "stratum_id": "ALL",
+      "value_or_distribution": {
+        "check_id": "nonexpanding_duty",
+        "repeat_count": 0,
+        "denominator": 480,
+        "affected_ratio": 0.0,
+        "invariant": "同Life的观察、修订和交接责任只能收紧",
+        "evidence": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateDecisions.hs",
+        "examples": []
+      },
+      "sample_size": 480,
+      "denominator_value": 480,
+      "source_location": "profile/violations_nonexpanding_duty.csv; profile/STRUCTURAL_CHECKS.json",
+      "notes": "同Life的观察、修订和交接责任只能收紧"
+    },
+    {
+      "statistic_id": "ST10",
+      "stratum_id": "ALL",
+      "value_or_distribution": {
+        "check_id": "original_question_fixed",
+        "repeat_count": 0,
+        "denominator": 480,
+        "affected_ratio": 0.0,
+        "invariant": "原问题三值在同Life固定",
+        "evidence": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateTypes.hs",
+        "examples": []
+      },
+      "sample_size": 480,
+      "denominator_value": 480,
+      "source_location": "profile/violations_original_question_fixed.csv; profile/STRUCTURAL_CHECKS.json",
+      "notes": "原问题三值在同Life固定"
+    },
+    {
+      "statistic_id": "ST10",
+      "stratum_id": "ALL",
+      "value_or_distribution": {
+        "check_id": "knowledge_matches_publication",
+        "repeat_count": 0,
+        "denominator": 1534,
+        "affected_ratio": 0.0,
+        "invariant": "此KLine入口观点知识位置与原事件收盘UTI对齐",
+        "evidence": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateKLineInput.hs",
+        "examples": []
+      },
+      "sample_size": 1534,
+      "denominator_value": 1534,
+      "source_location": "profile/violations_knowledge_matches_publication.csv; profile/STRUCTURAL_CHECKS.json",
+      "notes": "此KLine入口观点知识位置与原事件收盘UTI对齐"
+    },
+    {
+      "statistic_id": "ST10",
+      "stratum_id": "ALL",
+      "value_or_distribution": {
+        "check_id": "closed_never_reopens",
+        "repeat_count": 0,
+        "denominator": 480,
+        "affected_ratio": 0.0,
+        "invariant": "形成观察关闭后不重新Open",
+        "evidence": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateEvolution.hs",
+        "examples": []
+      },
+      "sample_size": 480,
+      "denominator_value": 480,
+      "source_location": "profile/violations_closed_never_reopens.csv; profile/STRUCTURAL_CHECKS.json",
+      "notes": "形成观察关闭后不重新Open"
+    },
+    {
+      "statistic_id": "ST10",
+      "stratum_id": "ALL",
+      "value_or_distribution": {
+        "check_id": "no_update_after_duty_close",
+        "repeat_count": 0,
+        "denominator": 480,
+        "affected_ratio": 0.0,
+        "invariant": "当前正常KLine实例无期外更正，责任关闭后不继续原F修订",
+        "evidence": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateEvolution.hs",
+        "examples": []
+      },
+      "sample_size": 480,
+      "denominator_value": 480,
+      "source_location": "profile/violations_no_update_after_duty_close.csv; profile/STRUCTURAL_CHECKS.json",
+      "notes": "当前正常KLine实例无期外更正，责任关闭后不继续原F修订"
+    },
+    {
+      "statistic_id": "ST10",
+      "stratum_id": "ALL",
+      "value_or_distribution": {
+        "check_id": "previous_reference_integrity",
+        "repeat_count": 0,
+        "denominator": 1054,
+        "affected_ratio": 0.0,
+        "invariant": "previous指向同Life已存在且不超前的准确观点",
+        "evidence": "锁定TIS GroupCandidateReadSession.choose",
+        "examples": []
+      },
+      "sample_size": 1054,
+      "denominator_value": 1054,
+      "source_location": "profile/violations_previous_reference_integrity.csv; profile/STRUCTURAL_CHECKS.json",
+      "notes": "previous指向同Life已存在且不超前的准确观点"
+    },
+    {
+      "statistic_id": "ST10",
+      "stratum_id": "ALL",
+      "value_or_distribution": {
+        "check_id": "occurrences_groupOverlaps_references",
+        "repeat_count": 0,
+        "denominator": 215,
+        "affected_ratio": 0.0,
+        "invariant": "组间Life引用存在于准确结果内",
+        "evidence": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateEvolution.hs",
+        "examples": []
+      },
+      "sample_size": 215,
+      "denominator_value": 215,
+      "source_location": "profile/violations_occurrences_groupOverlaps_references.csv; profile/STRUCTURAL_CHECKS.json",
+      "notes": "组间Life引用存在于准确结果内"
+    },
+    {
+      "statistic_id": "ST10",
+      "stratum_id": "ALL",
+      "value_or_distribution": {
+        "check_id": "occurrences_groupCoveredBy_references",
+        "repeat_count": 0,
+        "denominator": 241,
+        "affected_ratio": 0.0,
+        "invariant": "组间Life引用存在于准确结果内",
+        "evidence": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateEvolution.hs",
+        "examples": []
+      },
+      "sample_size": 241,
+      "denominator_value": 241,
+      "source_location": "profile/violations_occurrences_groupCoveredBy_references.csv; profile/STRUCTURAL_CHECKS.json",
+      "notes": "组间Life引用存在于准确结果内"
+    },
+    {
+      "statistic_id": "ST10",
+      "stratum_id": "ALL",
+      "value_or_distribution": {
+        "check_id": "participation_candidate_admission_integrity",
+        "repeat_count": 0,
+        "denominator": 1534,
+        "affected_ratio": 0.0,
+        "invariant": "当前candidate exact、冻结admission exact与原问题边界必须闭合",
+        "evidence": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateDecisions.hs",
+        "examples": []
+      },
+      "sample_size": 1534,
+      "denominator_value": 1534,
+      "source_location": "profile/violations_participation_candidate_admission_integrity.csv; profile/STRUCTURAL_CHECKS.json",
+      "notes": "当前candidate exact、冻结admission exact与原问题边界必须闭合"
+    },
+    {
+      "statistic_id": "ST10",
+      "stratum_id": "ALL",
+      "value_or_distribution": {
+        "check_id": "member_source_reference_integrity",
+        "repeat_count": 0,
+        "denominator": 3447,
+        "affected_ratio": 0.0,
+        "invariant": "成员turn及source准确定位同参数ScaleTurn根/轮次/confirm",
+        "evidence": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateKLineInput.hs",
+        "examples": []
+      },
+      "sample_size": 3447,
+      "denominator_value": 3447,
+      "source_location": "profile/violations_member_source_reference_integrity.csv; profile/STRUCTURAL_CHECKS.json",
+      "notes": "成员turn及source准确定位同参数ScaleTurn根/轮次/confirm"
+    },
+    {
+      "statistic_id": "ST10",
+      "stratum_id": "ALL",
+      "value_or_distribution": {
+        "check_id": "participation_member_integrity",
+        "repeat_count": 0,
+        "denominator": 3447,
+        "affected_ratio": 0.0,
+        "invariant": "参与成员必须对应当前组成员及准确上游实际/确认/知识",
+        "evidence": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateDecisions.hs",
+        "examples": []
+      },
+      "sample_size": 3447,
+      "denominator_value": 3447,
+      "source_location": "profile/violations_participation_member_integrity.csv; profile/STRUCTURAL_CHECKS.json",
+      "notes": "参与成员必须对应当前组成员及准确上游实际/确认/知识"
+    },
+    {
+      "statistic_id": "ST10",
+      "stratum_id": "ALL",
+      "value_or_distribution": {
+        "check_id": "alternative_exact_bridge_integrity",
+        "repeat_count": 0,
+        "denominator": 241,
+        "affected_ratio": 0.0,
+        "invariant": "替代关系三端exact存在且不读取未来；bridge为两组共享转折",
+        "evidence": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateDecisions.hs",
+        "examples": []
+      },
+      "sample_size": 241,
+      "denominator_value": 241,
+      "source_location": "profile/violations_alternative_exact_bridge_integrity.csv; profile/STRUCTURAL_CHECKS.json",
+      "notes": "替代关系三端exact存在且不读取未来；bridge为两组共享转折"
+    },
+    {
+      "statistic_id": "ST10",
+      "stratum_id": "ALL",
+      "value_or_distribution": {
+        "check_id": "observation_basis_closed_consistency",
+        "repeat_count": 0,
+        "denominator": 1534,
+        "affected_ratio": 0.0,
+        "invariant": "观察状态、局部依据及关闭三轴按声明合法；Subsumed不等于责任终止",
+        "evidence": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateEvolution.hs",
+        "examples": []
+      },
+      "sample_size": 1534,
+      "denominator_value": 1534,
+      "source_location": "profile/violations_observation_basis_closed_consistency.csv; profile/STRUCTURAL_CHECKS.json",
+      "notes": "观察状态、局部依据及关闭三轴按声明合法；Subsumed不等于责任终止"
+    },
+    {
+      "statistic_id": "ST10",
+      "stratum_id": "ALL",
+      "value_or_distribution": {
+        "check_id": "required_coordinate_consistency",
+        "repeat_count": 0,
+        "denominator": 9168,
+        "affected_ratio": 0.0,
+        "invariant": "四项Required与同参数上游合法小值一致",
+        "evidence": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidatePairs.hs",
+        "examples": []
+      },
+      "sample_size": 9168,
+      "denominator_value": 9168,
+      "source_location": "profile/violations_required_coordinate_consistency.csv; profile/STRUCTURAL_CHECKS.json",
+      "notes": "四项Required与同参数上游合法小值一致"
+    },
+    {
+      "statistic_id": "ST10",
+      "stratum_id": "ALL",
+      "value_or_distribution": {
+        "check_id": "actual_2delta_limit",
+        "repeat_count": 0,
+        "denominator": 2292,
+        "affected_ratio": 0.0,
+        "invariant": "当前公开候选的actual距离仍不超过2Δ，不能随800扩大",
+        "evidence": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidatePairs.hs",
+        "examples": []
+      },
+      "sample_size": 2292,
+      "denominator_value": 2292,
+      "source_location": "profile/violations_actual_2delta_limit.csv; profile/STRUCTURAL_CHECKS.json",
+      "notes": "当前公开候选的actual距离仍不超过2Δ，不能随800扩大"
+    },
+    {
+      "statistic_id": "ST10",
+      "stratum_id": "ALL",
+      "value_or_distribution": {
+        "check_id": "eligible_pair_not_in_any_candidate",
+        "repeat_count": 0,
+        "denominator": 627,
+        "affected_ratio": 0.0,
+        "invariant": "正常KLine完整已知的非否决边应包含于至少一个极大候选组合；这是独立规则筛查，不是业务真值",
+        "evidence": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateEvolution.hs",
+        "examples": []
+      },
+      "sample_size": 627,
+      "denominator_value": 627,
+      "source_location": "profile/violations_eligible_pair_not_in_any_candidate.csv; profile/STRUCTURAL_CHECKS.json",
+      "notes": "正常KLine完整已知的非否决边应包含于至少一个极大候选组合；这是独立规则筛查，不是业务真值"
+    },
+    {
+      "statistic_id": "ST16",
+      "stratum_id": "ALL",
+      "value_or_distribution": {
+        "check_id": "coverage_flag_vs_continuous_input",
+        "repeat_count": 0,
+        "denominator": 1534,
+        "affected_ratio": 0.0,
+        "invariant": "正常KLine路径三对象在[u-800Δ,u]都有有效连续价格和Calendar UTI、且无未知Clock时，不应宣称观察域不完整",
+        "evidence": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateMaterial.hs",
+        "examples": []
+      },
+      "sample_size": 1534,
+      "denominator_value": 1534,
+      "source_location": "profile/violations_coverage_flag_vs_continuous_input.csv; profile/STRUCTURAL_CHECKS.json",
+      "notes": "正常KLine路径三对象在[u-800Δ,u]都有有效连续价格和Calendar UTI、且无未知Clock时，不应宣称观察域不完整"
+    },
+    {
+      "statistic_id": "ST16",
+      "stratum_id": "ALL",
+      "value_or_distribution": {
+        "check_id": "complete_flag_with_input_price_gap",
+        "repeat_count": 8,
+        "denominator": 1526,
+        "affected_ratio": 0.005242463958060288,
+        "invariant": "正常KLine固定域若观察窗内存在非豁免实际缺价/失知或真实间隙，不能标记完整；本对照先定位公开OHLC空行与flag=0，空值是否SourceFailure或正式豁免待诊断",
+        "evidence": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateMaterial.hs#accumulateForwardCoverage/covered",
+        "examples": [
+          {
+            "life": "f82181f4-096a-4bec-bf4a-9289d892377f",
+            "revision": "bd820d7f-2f02-4a10-b614-9b38e198139b",
+            "timestamp": "2023-03-13 22:45:00",
+            "known": 93727799,
+            "symbols": "hc+rb",
+            "required_from": 93247799,
+            "groupCoverageIncomplete": 0,
+            "missing_symbols": "rb+hc+i",
+            "missing_rows_per_symbol": "rb:69;hc:69;i:69",
+            "first_missing": "2023-03-10 21:05:00",
+            "last_missing": "2023-03-13 15:00:00",
+            "source": "完整独立KLine公开表；空OHLC的真实SourceFailure/豁免语义待诊断"
+          },
+          {
+            "life": "12f22e6f-b20e-444b-9a6a-f52486c1b8e4",
+            "revision": "12962bbe-deeb-44ac-a7b7-27a4b8ac36be",
+            "timestamp": "2023-03-16 09:25:00",
+            "known": 93815399,
+            "symbols": "hc+rb",
+            "required_from": 93335399,
+            "groupCoverageIncomplete": 0,
+            "missing_symbols": "rb+hc+i",
+            "missing_rows_per_symbol": "rb:69;hc:69;i:69",
+            "first_missing": "2023-03-10 21:05:00",
+            "last_missing": "2023-03-13 15:00:00",
+            "source": "完整独立KLine公开表；空OHLC的真实SourceFailure/豁免语义待诊断"
+          },
+          {
+            "life": "cdb3a01e-6603-41e8-bcf2-9b97f1c7c33b",
+            "revision": "8bee2b1a-4ba1-4647-92d3-0d49f5c94d2d",
+            "timestamp": "2023-03-16 10:40:00",
+            "known": 93822599,
+            "symbols": "hc+i+rb",
+            "required_from": 93342599,
+            "groupCoverageIncomplete": 0,
+            "missing_symbols": "rb+hc+i",
+            "missing_rows_per_symbol": "rb:69;hc:69;i:69",
+            "first_missing": "2023-03-10 21:05:00",
+            "last_missing": "2023-03-13 15:00:00",
+            "source": "完整独立KLine公开表；空OHLC的真实SourceFailure/豁免语义待诊断"
+          },
+          {
+            "life": "12f22e6f-b20e-444b-9a6a-f52486c1b8e4",
+            "revision": "3f20d7d5-afac-43e7-a340-b825844bce0e",
+            "timestamp": "2023-03-16 10:40:00",
+            "known": 93822599,
+            "symbols": "hc+rb",
+            "required_from": 93342599,
+            "groupCoverageIncomplete": 0,
+            "missing_symbols": "rb+hc+i",
+            "missing_rows_per_symbol": "rb:69;hc:69;i:69",
+            "first_missing": "2023-03-10 21:05:00",
+            "last_missing": "2023-03-13 15:00:00",
+            "source": "完整独立KLine公开表；空OHLC的真实SourceFailure/豁免语义待诊断"
+          },
+          {
+            "life": "3a3ebcba-20c4-4eec-b316-a87acb7ff1c7",
+            "revision": "db6ad76b-e166-4611-97ea-3df86a85ea68",
+            "timestamp": "2023-03-16 10:40:00",
+            "known": 93822599,
+            "symbols": "i+rb",
+            "required_from": 93342599,
+            "groupCoverageIncomplete": 0,
+            "missing_symbols": "rb+hc+i",
+            "missing_rows_per_symbol": "rb:69;hc:69;i:69",
+            "first_missing": "2023-03-10 21:05:00",
+            "last_missing": "2023-03-13 15:00:00",
+            "source": "完整独立KLine公开表；空OHLC的真实SourceFailure/豁免语义待诊断"
+          },
+          {
+            "life": "465f0e49-2a4e-4272-a4ba-1a394475fd1d",
+            "revision": "ac792e4a-3e91-4b0b-8124-cd437238a434",
+            "timestamp": "2023-03-17 10:55:00",
+            "known": 93865799,
+            "symbols": "hc+rb",
+            "required_from": 93385799,
+            "groupCoverageIncomplete": 0,
+            "missing_symbols": "rb+hc+i",
+            "missing_rows_per_symbol": "rb:69;hc:69;i:69",
+            "first_missing": "2023-03-10 21:05:00",
+            "last_missing": "2023-03-13 15:00:00",
+            "source": "完整独立KLine公开表；空OHLC的真实SourceFailure/豁免语义待诊断"
+          },
+          {
+            "life": "f82181f4-096a-4bec-bf4a-9289d892377f",
+            "revision": "ca6358a6-da15-42d4-91bb-95adc658ceb4",
+            "timestamp": "2023-03-24 22:30:00",
+            "known": 94098599,
+            "symbols": "hc+rb",
+            "required_from": 93618599,
+            "groupCoverageIncomplete": 0,
+            "missing_symbols": "rb+hc+i",
+            "missing_rows_per_symbol": "rb:69;hc:69;i:69",
+            "first_missing": "2023-03-10 21:05:00",
+            "last_missing": "2023-03-13 15:00:00",
+            "source": "完整独立KLine公开表；空OHLC的真实SourceFailure/豁免语义待诊断"
+          },
+          {
+            "life": "f82181f4-096a-4bec-bf4a-9289d892377f",
+            "revision": "d644ba9d-1906-48fe-b131-a3ca11fcfdf8",
+            "timestamp": "2023-03-24 23:00:00",
+            "known": 94102199,
+            "symbols": "hc+rb",
+            "required_from": 93622199,
+            "groupCoverageIncomplete": 0,
+            "missing_symbols": "rb+hc+i",
+            "missing_rows_per_symbol": "rb:69;hc:69;i:69",
+            "first_missing": "2023-03-10 21:05:00",
+            "last_missing": "2023-03-13 15:00:00",
+            "source": "完整独立KLine公开表；空OHLC的真实SourceFailure/豁免语义待诊断"
+          }
+        ]
+      },
+      "sample_size": 1526,
+      "denominator_value": 1526,
+      "source_location": "profile/violations_complete_flag_with_input_price_gap.csv; profile/STRUCTURAL_CHECKS.json",
+      "notes": "正常KLine固定域若观察窗内存在非豁免实际缺价/失知或真实间隙，不能标记完整；本对照先定位公开OHLC空行与flag=0，空值是否SourceFailure或正式豁免待诊断"
+    },
+    {
+      "statistic_id": "ST10",
+      "stratum_id": "ALL",
+      "value_or_distribution": {
+        "check_id": "complete_previous_chain",
+        "repeat_count": 0,
+        "denominator": 1534,
+        "affected_ratio": 0.0,
+        "invariant": "每Life首观点无previous，后续观点恰指向同Life即时前版；顺序按实际坐标，不用UUID排序",
+        "evidence": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateEvolution.hs",
+        "examples": []
+      },
+      "sample_size": 1534,
+      "denominator_value": 1534,
+      "source_location": "profile/violations_complete_previous_chain.csv; profile/STRUCTURAL_CHECKS.json",
+      "notes": "每Life首观点无previous，后续观点恰指向同Life即时前版；顺序按实际坐标，不用UUID排序"
+    },
+    {
+      "statistic_id": "ST10",
+      "stratum_id": "ALL",
+      "value_or_distribution": {
+        "check_id": "all_group_child_parent_integrity",
+        "repeat_count": 0,
+        "denominator": 32462,
+        "affected_ratio": 0.0,
+        "invariant": "每条正式group子表行必须对应已读取主观点完整父坐标",
+        "evidence": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateStorage.hs",
+        "examples": []
+      },
+      "sample_size": 32462,
+      "denominator_value": 32462,
+      "source_location": "profile/violations_all_group_child_parent_integrity.csv; profile/STRUCTURAL_CHECKS.json",
+      "notes": "每条正式group子表行必须对应已读取主观点完整父坐标"
+    },
+    {
+      "statistic_id": "ST18",
+      "stratum_id": "FULL_VERSION_COMPARISON",
+      "value_or_distribution": {
+        "baseline_frp": "ac1927518ad6105f15ffbe37fea45e4be91ba574",
+        "current_frp": "be57d6752c9d43d10f1d670e1d2993bb8153ea7c",
+        "baseline_exact": "daowei2026/observe-iterate@3169703e769340200b183dad7675a1d22ecc1850:longrun/runs/OI-F800-STAT-20261122-01/professional/D002/",
+        "same_parameter_version": true,
+        "upstream_tables": 15,
+        "upstream_tables_byte_equal": 15,
+        "all_upstream_equal": true,
+        "old_summary": {
+          "candidate_lives": 480,
+          "candidate_revision_occurrences": 1546,
+          "publication_events": 1218,
+          "definition_only_publication_events": 1,
+          "upstream_raw_positions": 10073,
+          "upstream_scale_positions": 1859,
+          "initial_scale_anchors": 3,
+          "used_distinct_scale_positions": 875,
+          "input_5m_positions": 49683,
+          "input_symbol_rows": 149049,
+          "revision_events_per_1000_input_positions": 31.117283577883782,
+          "peak_responsibility_active_lives": 36,
+          "right_censored_lives": 1,
+          "coverage_incomplete_occurrences": 30,
+          "coverage_incomplete_lives": 19,
+          "coverage_conflict_occurrences": 22,
+          "coverage_conflict_lives": 12,
+          "potential_eligible_pairs_unseen": 0,
+          "near_actual_pair_screen_count": 648,
+          "positive_near_pair_screen_count": 624,
+          "positive_near_joint_eligible_800": 624,
+          "positive_near_joint_eligible_6": 16,
+          "candidate_births_after_legacy_6": 469,
+          "warning": "近时pair及准入筛查不是应输出的业务真值；组数增加不能证明800合理"
+        },
+        "new_summary": {
+          "candidate_lives": 480,
+          "candidate_revision_occurrences": 1534,
+          "publication_events": 1216,
+          "definition_only_publication_events": 1,
+          "upstream_raw_positions": 10073,
+          "upstream_scale_positions": 1859,
+          "initial_scale_anchors": 3,
+          "used_distinct_scale_positions": 875,
+          "input_5m_positions": 49683,
+          "input_symbol_rows": 149049,
+          "revision_events_per_1000_input_positions": 30.87575226938792,
+          "peak_responsibility_active_lives": 36,
+          "right_censored_lives": 1,
+          "coverage_incomplete_occurrences": 8,
+          "coverage_incomplete_lives": 7,
+          "coverage_conflict_occurrences": 0,
+          "coverage_conflict_lives": 0,
+          "potential_eligible_pairs_unseen": 0,
+          "near_actual_pair_screen_count": 648,
+          "positive_near_pair_screen_count": 624,
+          "positive_near_joint_eligible_800": 624,
+          "positive_near_joint_eligible_6": 16,
+          "candidate_births_after_legacy_6": 469,
+          "warning": "近时pair及准入筛查不是应输出的业务真值；组数增加不能证明800合理"
+        },
+        "numeric_deltas": {
+          "candidate_lives": 0,
+          "candidate_revision_occurrences": -12,
+          "publication_events": -2,
+          "definition_only_publication_events": 0,
+          "upstream_raw_positions": 0,
+          "upstream_scale_positions": 0,
+          "initial_scale_anchors": 0,
+          "used_distinct_scale_positions": 0,
+          "input_5m_positions": 0,
+          "input_symbol_rows": 0,
+          "revision_events_per_1000_input_positions": -0.2415313084958619,
+          "peak_responsibility_active_lives": 0,
+          "right_censored_lives": 0,
+          "coverage_incomplete_occurrences": -22,
+          "coverage_incomplete_lives": -12,
+          "coverage_conflict_occurrences": -22,
+          "coverage_conflict_lives": -12,
+          "potential_eligible_pairs_unseen": 0,
+          "near_actual_pair_screen_count": 0,
+          "positive_near_pair_screen_count": 0,
+          "positive_near_joint_eligible_800": 0,
+          "positive_near_joint_eligible_6": 0,
+          "candidate_births_after_legacy_6": 0
+        },
+        "old_lives": 480,
+        "new_lives": 480,
+        "matched_lives": 480,
+        "old_only_lives": 0,
+        "new_only_lives": 0,
+        "matched_lives_with_changed_uuid": 480,
+        "old_exact_count": 1546,
+        "new_exact_count": 1534,
+        "common_raw_revision_uuids": 0,
+        "asof_comparison_unit": "共同自然Life × 两版原生publication UTI并集；稀疏新观点按知识轴持有，不生成Feature事件；不是逐Tick状态trace",
+        "native_asof_comparisons": 1546,
+        "native_asof_difference_points": 22,
+        "changed_fields": {
+          "coverage_incomplete": 22
+        },
+        "publication_count_changed_life_uti_points": 12,
+        "all_31_table_comparison": "comparison/all_31_tables.csv",
+        "false_flag_retest_total": 22,
+        "false_flag_retest_passed": 22,
+        "cold_control_total": 8,
+        "cold_control_passed": 8,
+        "newly_identified_price_gap_candidate_occurrences": 8,
+        "price_gap_candidate_preexisted_occurrences": 8,
+        "new_structural_violations": {
+          "complete_flag_with_input_price_gap": 8
+        },
+        "uuid_chain_evidence": [
+          "profile/violations_complete_previous_chain.csv",
+          "profile/violations_previous_reference_integrity.csv",
+          "profile/violations_participation_candidate_admission_integrity.csv",
+          "profile/violations_alternative_exact_bridge_integrity.csv"
+        ],
+        "limitations": [
+          "跨运行UUID无稳定相等合同；自然键只用于本次同输入/参数的对照，不改写正式对象身份",
+          "全31表提供原生行数及hash差异，UUID/exact检查按各版实际链完成；不宣称所有二进制载荷逐字相等",
+          "新完整G独立执行；旧版统计只作历史对照，非当前Gate证据"
+        ]
+      },
+      "sample_size": 1546,
+      "denominator_value": 1546,
+      "source_location": "VersionComparison.json; comparison/*.csv",
+      "notes": "各版UUID链独立核验；跨版自然Life对齐，只用于本次同输入对照。"
+    }
+  ],
+  "same_tick_order_profile": [
+    {
+      "statistic_id": "ST11",
+      "stratum_id": "ALL",
+      "value_or_distribution": {
+        "same_life_same_tick_multiple_views": 0,
+        "previous_edges": 1054,
+        "complete_previous_chain": {
+          "check_id": "complete_previous_chain",
+          "repeat_count": 0,
+          "denominator": 1534,
+          "affected_ratio": 0.0,
+          "invariant": "每Life首观点无previous，后续观点恰指向同Life即时前版；顺序按实际坐标，不用UUID排序",
+          "evidence": "daowei2026/frp@be57d6752c9d43d10f1d670e1d2993bb8153ea7c:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateEvolution.hs",
+          "examples": []
+        }
+      },
+      "sample_size": 1534,
+      "denominator_value": 1534,
+      "source_location": "profile/same_tick_multiple_views.csv; profile/STRUCTURAL_CHECKS.json",
+      "notes": "同拍按实际坐标和previous准确引用，不按UUID大小排序。"
+    }
+  ],
+  "cross_symbol_profile": [
+    {
+      "statistic_id": "ST17",
+      "stratum_id": "SYMBOL:rb",
+      "value_or_distribution": {
+        "summary": {
+          "dimension": "SYMBOL",
+          "stratum_id": "rb",
+          "input_positions": "49683",
+          "birth_lives": "401",
+          "revision_occurrences": "1270",
+          "revisions_per_1000_input_positions": "25.562063482478916",
+          "median_admission_actual_age_minutes": "290.0",
+          "median_observed_revision_span_minutes": "3740.0",
+          "duty_closed_last_lives": "401",
+          "right_censored_lives": "0",
+          "coverage_flagged_occurrences": "7",
+          "coverage_conflict_occurrences": "0",
+          "coverage_conflict_ratio": "0.0",
+          "meaning": "Life及跨度按首次publication层；观点/Required按当次publication层；SYMBOL为包含关系，可重叠"
+        },
+        "states": [
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "rb",
+            "field": "observation",
+            "value": "ClosedInsufficient",
+            "count": "2",
+            "denominator": "1270"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "rb",
+            "field": "observation",
+            "value": "ClosedSupported",
+            "count": "705",
+            "denominator": "1270"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "rb",
+            "field": "observation",
+            "value": "Open",
+            "count": "406",
+            "denominator": "1270"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "rb",
+            "field": "observation",
+            "value": "Subsumed",
+            "count": "157",
+            "denominator": "1270"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "rb",
+            "field": "local_basis",
+            "value": "Incomplete",
+            "count": "3",
+            "denominator": "1270"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "rb",
+            "field": "local_basis",
+            "value": "Supported",
+            "count": "1267",
+            "denominator": "1270"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "rb",
+            "field": "closed",
+            "value": "0",
+            "count": "459",
+            "denominator": "1270"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "rb",
+            "field": "closed",
+            "value": "1",
+            "count": "811",
+            "denominator": "1270"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "rb",
+            "field": "duty_closed",
+            "value": "0",
+            "count": "869",
+            "denominator": "1270"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "rb",
+            "field": "duty_closed",
+            "value": "1",
+            "count": "401",
+            "denominator": "1270"
+          }
+        ],
+        "reasons": [
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "rb",
+            "coordinate": "Time",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateSupports",
+            "count": "2028",
+            "denominator": "2028"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "rb",
+            "coordinate": "Time",
+            "field": "requiredGap_name",
+            "value": "NoGap",
+            "count": "2028",
+            "denominator": "2028"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "rb",
+            "coordinate": "Time",
+            "field": "requiredVeto_name",
+            "value": "NoVeto",
+            "count": "2028",
+            "denominator": "2028"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "rb",
+            "coordinate": "Direction",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateUnresolved",
+            "count": "9",
+            "denominator": "2028"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "rb",
+            "coordinate": "Direction",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateSupports",
+            "count": "2019",
+            "denominator": "2028"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "rb",
+            "coordinate": "Direction",
+            "field": "requiredGap_name",
+            "value": "DirectionUnavailable",
+            "count": "9",
+            "denominator": "2028"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "rb",
+            "coordinate": "Direction",
+            "field": "requiredGap_name",
+            "value": "NoGap",
+            "count": "2019",
+            "denominator": "2028"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "rb",
+            "coordinate": "Direction",
+            "field": "requiredVeto_name",
+            "value": "NoVeto",
+            "count": "2028",
+            "denominator": "2028"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "rb",
+            "coordinate": "Type",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateUnresolved",
+            "count": "9",
+            "denominator": "2028"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "rb",
+            "coordinate": "Type",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateSupports",
+            "count": "2019",
+            "denominator": "2028"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "rb",
+            "coordinate": "Type",
+            "field": "requiredGap_name",
+            "value": "TurnTypeUnavailable",
+            "count": "9",
+            "denominator": "2028"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "rb",
+            "coordinate": "Type",
+            "field": "requiredGap_name",
+            "value": "NoGap",
+            "count": "2019",
+            "denominator": "2028"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "rb",
+            "coordinate": "Type",
+            "field": "requiredVeto_name",
+            "value": "NoVeto",
+            "count": "2028",
+            "denominator": "2028"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "rb",
+            "coordinate": "Bend",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateUnresolved",
+            "count": "9",
+            "denominator": "2028"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "rb",
+            "coordinate": "Bend",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateSupports",
+            "count": "2019",
+            "denominator": "2028"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "rb",
+            "coordinate": "Bend",
+            "field": "requiredGap_name",
+            "value": "SelectedAnchorUnavailable",
+            "count": "9",
+            "denominator": "2028"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "rb",
+            "coordinate": "Bend",
+            "field": "requiredGap_name",
+            "value": "NoGap",
+            "count": "2019",
+            "denominator": "2028"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "rb",
+            "coordinate": "Bend",
+            "field": "requiredVeto_name",
+            "value": "NoVeto",
+            "count": "2028",
+            "denominator": "2028"
+          }
+        ],
+        "sampled_held_views": [
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "rb",
+            "state": "ClosedInsufficient",
+            "held_view_sampled_minutes": "30",
+            "count_meaning": "以公开5m位置对已发表观点持有区间取样×5开放分钟；不作内部逐Tick trace"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "rb",
+            "state": "ClosedSupported",
+            "held_view_sampled_minutes": "10440",
+            "count_meaning": "以公开5m位置对已发表观点持有区间取样×5开放分钟；不作内部逐Tick trace"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "rb",
+            "state": "Open",
+            "held_view_sampled_minutes": "1270070",
+            "count_meaning": "以公开5m位置对已发表观点持有区间取样×5开放分钟；不作内部逐Tick trace"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "rb",
+            "state": "Subsumed",
+            "held_view_sampled_minutes": "190965",
+            "count_meaning": "以公开5m位置对已发表观点持有区间取样×5开放分钟；不作内部逐Tick trace"
+          }
+        ],
+        "upstream_counts": {
+          "symbol": "rb",
+          "raw_turn_positions": "2557",
+          "scale_turn_positions": "425",
+          "initial_scale_anchors": "1",
+          "eligible_800_reference": "425",
+          "eligible_6_reference": "11",
+          "used_scale_turn_positions": "324",
+          "candidate_lives": "401",
+          "candidate_revision_occurrences": "1270",
+          "candidates_born_after_legacy_6_deadline": "392",
+          "used_scale_ratio": "0.7623529411764706",
+          "count_meaning": "含初始化锚点；品种组数跨品种重叠，ALL_DISTINCT为全局去重，occurrence不是组数"
+        }
+      },
+      "sample_size": 1270,
+      "denominator_value": 49683,
+      "source_location": "profile/cross_strata_comparison.csv; profile/cross_strata_states.csv; profile/cross_strata_reasons.csv; profile/cross_strata_held_view_time.csv",
+      "notes": "Life及跨度按创建层，观点按当次知识层；持有时间按实际Calendar位置拆分，SYMBOL包含关系可重叠。"
+    },
+    {
+      "statistic_id": "ST17",
+      "stratum_id": "SYMBOL:hc",
+      "value_or_distribution": {
+        "summary": {
+          "dimension": "SYMBOL",
+          "stratum_id": "hc",
+          "input_positions": "49683",
+          "birth_lives": "375",
+          "revision_occurrences": "1176",
+          "revisions_per_1000_input_positions": "23.67006823259465",
+          "median_admission_actual_age_minutes": "265.0",
+          "median_observed_revision_span_minutes": "3765.0",
+          "duty_closed_last_lives": "374",
+          "right_censored_lives": "1",
+          "coverage_flagged_occurrences": "7",
+          "coverage_conflict_occurrences": "0",
+          "coverage_conflict_ratio": "0.0",
+          "meaning": "Life及跨度按首次publication层；观点/Required按当次publication层；SYMBOL为包含关系，可重叠"
+        },
+        "states": [
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "hc",
+            "field": "observation",
+            "value": "ClosedInsufficient",
+            "count": "2",
+            "denominator": "1176"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "hc",
+            "field": "observation",
+            "value": "ClosedSupported",
+            "count": "674",
+            "denominator": "1176"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "hc",
+            "field": "observation",
+            "value": "Open",
+            "count": "379",
+            "denominator": "1176"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "hc",
+            "field": "observation",
+            "value": "Subsumed",
+            "count": "121",
+            "denominator": "1176"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "hc",
+            "field": "local_basis",
+            "value": "Incomplete",
+            "count": "3",
+            "denominator": "1176"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "hc",
+            "field": "local_basis",
+            "value": "Supported",
+            "count": "1173",
+            "denominator": "1176"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "hc",
+            "field": "closed",
+            "value": "0",
+            "count": "420",
+            "denominator": "1176"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "hc",
+            "field": "closed",
+            "value": "1",
+            "count": "756",
+            "denominator": "1176"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "hc",
+            "field": "duty_closed",
+            "value": "0",
+            "count": "802",
+            "denominator": "1176"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "hc",
+            "field": "duty_closed",
+            "value": "1",
+            "count": "374",
+            "denominator": "1176"
+          }
+        ],
+        "reasons": [
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "hc",
+            "coordinate": "Time",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateSupports",
+            "count": "1934",
+            "denominator": "1934"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "hc",
+            "coordinate": "Time",
+            "field": "requiredGap_name",
+            "value": "NoGap",
+            "count": "1934",
+            "denominator": "1934"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "hc",
+            "coordinate": "Time",
+            "field": "requiredVeto_name",
+            "value": "NoVeto",
+            "count": "1934",
+            "denominator": "1934"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "hc",
+            "coordinate": "Direction",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateUnresolved",
+            "count": "9",
+            "denominator": "1934"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "hc",
+            "coordinate": "Direction",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateSupports",
+            "count": "1925",
+            "denominator": "1934"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "hc",
+            "coordinate": "Direction",
+            "field": "requiredGap_name",
+            "value": "DirectionUnavailable",
+            "count": "9",
+            "denominator": "1934"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "hc",
+            "coordinate": "Direction",
+            "field": "requiredGap_name",
+            "value": "NoGap",
+            "count": "1925",
+            "denominator": "1934"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "hc",
+            "coordinate": "Direction",
+            "field": "requiredVeto_name",
+            "value": "NoVeto",
+            "count": "1934",
+            "denominator": "1934"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "hc",
+            "coordinate": "Type",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateUnresolved",
+            "count": "9",
+            "denominator": "1934"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "hc",
+            "coordinate": "Type",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateSupports",
+            "count": "1925",
+            "denominator": "1934"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "hc",
+            "coordinate": "Type",
+            "field": "requiredGap_name",
+            "value": "TurnTypeUnavailable",
+            "count": "9",
+            "denominator": "1934"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "hc",
+            "coordinate": "Type",
+            "field": "requiredGap_name",
+            "value": "NoGap",
+            "count": "1925",
+            "denominator": "1934"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "hc",
+            "coordinate": "Type",
+            "field": "requiredVeto_name",
+            "value": "NoVeto",
+            "count": "1934",
+            "denominator": "1934"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "hc",
+            "coordinate": "Bend",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateUnresolved",
+            "count": "9",
+            "denominator": "1934"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "hc",
+            "coordinate": "Bend",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateSupports",
+            "count": "1925",
+            "denominator": "1934"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "hc",
+            "coordinate": "Bend",
+            "field": "requiredGap_name",
+            "value": "SelectedAnchorUnavailable",
+            "count": "9",
+            "denominator": "1934"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "hc",
+            "coordinate": "Bend",
+            "field": "requiredGap_name",
+            "value": "NoGap",
+            "count": "1925",
+            "denominator": "1934"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "hc",
+            "coordinate": "Bend",
+            "field": "requiredVeto_name",
+            "value": "NoVeto",
+            "count": "1934",
+            "denominator": "1934"
+          }
+        ],
+        "sampled_held_views": [
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "hc",
+            "state": "ClosedInsufficient",
+            "held_view_sampled_minutes": "30",
+            "count_meaning": "以公开5m位置对已发表观点持有区间取样×5开放分钟；不作内部逐Tick trace"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "hc",
+            "state": "ClosedSupported",
+            "held_view_sampled_minutes": "9990",
+            "count_meaning": "以公开5m位置对已发表观点持有区间取样×5开放分钟；不作内部逐Tick trace"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "hc",
+            "state": "Open",
+            "held_view_sampled_minutes": "1220190",
+            "count_meaning": "以公开5m位置对已发表观点持有区间取样×5开放分钟；不作内部逐Tick trace"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "hc",
+            "state": "Subsumed",
+            "held_view_sampled_minutes": "150240",
+            "count_meaning": "以公开5m位置对已发表观点持有区间取样×5开放分钟；不作内部逐Tick trace"
+          }
+        ],
+        "upstream_counts": {
+          "symbol": "hc",
+          "raw_turn_positions": "2584",
+          "scale_turn_positions": "430",
+          "initial_scale_anchors": "1",
+          "eligible_800_reference": "430",
+          "eligible_6_reference": "10",
+          "used_scale_turn_positions": "315",
+          "candidate_lives": "375",
+          "candidate_revision_occurrences": "1176",
+          "candidates_born_after_legacy_6_deadline": "366",
+          "used_scale_ratio": "0.7325581395348837",
+          "count_meaning": "含初始化锚点；品种组数跨品种重叠，ALL_DISTINCT为全局去重，occurrence不是组数"
+        }
+      },
+      "sample_size": 1176,
+      "denominator_value": 49683,
+      "source_location": "profile/cross_strata_comparison.csv; profile/cross_strata_states.csv; profile/cross_strata_reasons.csv; profile/cross_strata_held_view_time.csv",
+      "notes": "Life及跨度按创建层，观点按当次知识层；持有时间按实际Calendar位置拆分，SYMBOL包含关系可重叠。"
+    },
+    {
+      "statistic_id": "ST17",
+      "stratum_id": "SYMBOL:i",
+      "value_or_distribution": {
+        "summary": {
+          "dimension": "SYMBOL",
+          "stratum_id": "i",
+          "input_positions": "49683",
+          "birth_lives": "310",
+          "revision_occurrences": "1001",
+          "revisions_per_1000_input_positions": "20.147736650363303",
+          "median_admission_actual_age_minutes": "275.0",
+          "median_observed_revision_span_minutes": "3755.0",
+          "duty_closed_last_lives": "309",
+          "right_censored_lives": "1",
+          "coverage_flagged_occurrences": "4",
+          "coverage_conflict_occurrences": "0",
+          "coverage_conflict_ratio": "0.0",
+          "meaning": "Life及跨度按首次publication层；观点/Required按当次publication层；SYMBOL为包含关系，可重叠"
+        },
+        "states": [
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "i",
+            "field": "observation",
+            "value": "ClosedInsufficient",
+            "count": "2",
+            "denominator": "1001"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "i",
+            "field": "observation",
+            "value": "ClosedSupported",
+            "count": "481",
+            "denominator": "1001"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "i",
+            "field": "observation",
+            "value": "Open",
+            "count": "314",
+            "denominator": "1001"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "i",
+            "field": "observation",
+            "value": "Subsumed",
+            "count": "204",
+            "denominator": "1001"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "i",
+            "field": "local_basis",
+            "value": "Incomplete",
+            "count": "3",
+            "denominator": "1001"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "i",
+            "field": "local_basis",
+            "value": "Supported",
+            "count": "998",
+            "denominator": "1001"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "i",
+            "field": "closed",
+            "value": "0",
+            "count": "382",
+            "denominator": "1001"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "i",
+            "field": "closed",
+            "value": "1",
+            "count": "619",
+            "denominator": "1001"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "i",
+            "field": "duty_closed",
+            "value": "0",
+            "count": "692",
+            "denominator": "1001"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "i",
+            "field": "duty_closed",
+            "value": "1",
+            "count": "309",
+            "denominator": "1001"
+          }
+        ],
+        "reasons": [
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "i",
+            "coordinate": "Time",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateSupports",
+            "count": "1759",
+            "denominator": "1759"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "i",
+            "coordinate": "Time",
+            "field": "requiredGap_name",
+            "value": "NoGap",
+            "count": "1759",
+            "denominator": "1759"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "i",
+            "coordinate": "Time",
+            "field": "requiredVeto_name",
+            "value": "NoVeto",
+            "count": "1759",
+            "denominator": "1759"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "i",
+            "coordinate": "Direction",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateUnresolved",
+            "count": "9",
+            "denominator": "1759"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "i",
+            "coordinate": "Direction",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateSupports",
+            "count": "1750",
+            "denominator": "1759"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "i",
+            "coordinate": "Direction",
+            "field": "requiredGap_name",
+            "value": "DirectionUnavailable",
+            "count": "9",
+            "denominator": "1759"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "i",
+            "coordinate": "Direction",
+            "field": "requiredGap_name",
+            "value": "NoGap",
+            "count": "1750",
+            "denominator": "1759"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "i",
+            "coordinate": "Direction",
+            "field": "requiredVeto_name",
+            "value": "NoVeto",
+            "count": "1759",
+            "denominator": "1759"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "i",
+            "coordinate": "Type",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateUnresolved",
+            "count": "9",
+            "denominator": "1759"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "i",
+            "coordinate": "Type",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateSupports",
+            "count": "1750",
+            "denominator": "1759"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "i",
+            "coordinate": "Type",
+            "field": "requiredGap_name",
+            "value": "TurnTypeUnavailable",
+            "count": "9",
+            "denominator": "1759"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "i",
+            "coordinate": "Type",
+            "field": "requiredGap_name",
+            "value": "NoGap",
+            "count": "1750",
+            "denominator": "1759"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "i",
+            "coordinate": "Type",
+            "field": "requiredVeto_name",
+            "value": "NoVeto",
+            "count": "1759",
+            "denominator": "1759"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "i",
+            "coordinate": "Bend",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateUnresolved",
+            "count": "9",
+            "denominator": "1759"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "i",
+            "coordinate": "Bend",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateSupports",
+            "count": "1750",
+            "denominator": "1759"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "i",
+            "coordinate": "Bend",
+            "field": "requiredGap_name",
+            "value": "SelectedAnchorUnavailable",
+            "count": "9",
+            "denominator": "1759"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "i",
+            "coordinate": "Bend",
+            "field": "requiredGap_name",
+            "value": "NoGap",
+            "count": "1750",
+            "denominator": "1759"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "i",
+            "coordinate": "Bend",
+            "field": "requiredVeto_name",
+            "value": "NoVeto",
+            "count": "1759",
+            "denominator": "1759"
+          }
+        ],
+        "sampled_held_views": [
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "i",
+            "state": "ClosedInsufficient",
+            "held_view_sampled_minutes": "30",
+            "count_meaning": "以公开5m位置对已发表观点持有区间取样×5开放分钟；不作内部逐Tick trace"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "i",
+            "state": "ClosedSupported",
+            "held_view_sampled_minutes": "7200",
+            "count_meaning": "以公开5m位置对已发表观点持有区间取样×5开放分钟；不作内部逐Tick trace"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "i",
+            "state": "Open",
+            "held_view_sampled_minutes": "884860",
+            "count_meaning": "以公开5m位置对已发表观点持有区间取样×5开放分钟；不作内部逐Tick trace"
+          },
+          {
+            "dimension": "SYMBOL",
+            "stratum_id": "i",
+            "state": "Subsumed",
+            "held_view_sampled_minutes": "249385",
+            "count_meaning": "以公开5m位置对已发表观点持有区间取样×5开放分钟；不作内部逐Tick trace"
+          }
+        ],
+        "upstream_counts": {
+          "symbol": "i",
+          "raw_turn_positions": "4932",
+          "scale_turn_positions": "1004",
+          "initial_scale_anchors": "1",
+          "eligible_800_reference": "1004",
+          "eligible_6_reference": "70",
+          "used_scale_turn_positions": "236",
+          "candidate_lives": "310",
+          "candidate_revision_occurrences": "1001",
+          "candidates_born_after_legacy_6_deadline": "303",
+          "used_scale_ratio": "0.2350597609561753",
+          "count_meaning": "含初始化锚点；品种组数跨品种重叠，ALL_DISTINCT为全局去重，occurrence不是组数"
+        }
+      },
+      "sample_size": 1001,
+      "denominator_value": 49683,
+      "source_location": "profile/cross_strata_comparison.csv; profile/cross_strata_states.csv; profile/cross_strata_reasons.csv; profile/cross_strata_held_view_time.csv",
+      "notes": "Life及跨度按创建层，观点按当次知识层；持有时间按实际Calendar位置拆分，SYMBOL包含关系可重叠。"
+    },
+    {
+      "statistic_id": "ST17",
+      "stratum_id": "DIRECTION",
+      "value_or_distribution": [
+        {
+          "symbol": "rb",
+          "direction": "DirectionUp",
+          "scale_turn_positions": "203",
+          "used_scale_turn_positions": "157",
+          "candidate_lives": "191",
+          "revision_occurrences": "603",
+          "meaning": "Unknown对应公开Unavailable；初始化锚点不是有效峰谷方向；品种组数为包含关系"
+        },
+        {
+          "symbol": "rb",
+          "direction": "DirectionDown",
+          "scale_turn_positions": "221",
+          "used_scale_turn_positions": "166",
+          "candidate_lives": "209",
+          "revision_occurrences": "664",
+          "meaning": "Unknown对应公开Unavailable；初始化锚点不是有效峰谷方向；品种组数为包含关系"
+        },
+        {
+          "symbol": "rb",
+          "direction": "Unknown",
+          "scale_turn_positions": "1",
+          "used_scale_turn_positions": "1",
+          "candidate_lives": "1",
+          "revision_occurrences": "3",
+          "meaning": "Unknown对应公开Unavailable；初始化锚点不是有效峰谷方向；品种组数为包含关系"
+        },
+        {
+          "symbol": "hc",
+          "direction": "DirectionUp",
+          "scale_turn_positions": "198",
+          "used_scale_turn_positions": "152",
+          "candidate_lives": "183",
+          "revision_occurrences": "574",
+          "meaning": "Unknown对应公开Unavailable；初始化锚点不是有效峰谷方向；品种组数为包含关系"
+        },
+        {
+          "symbol": "hc",
+          "direction": "DirectionDown",
+          "scale_turn_positions": "231",
+          "used_scale_turn_positions": "162",
+          "candidate_lives": "191",
+          "revision_occurrences": "599",
+          "meaning": "Unknown对应公开Unavailable；初始化锚点不是有效峰谷方向；品种组数为包含关系"
+        },
+        {
+          "symbol": "hc",
+          "direction": "Unknown",
+          "scale_turn_positions": "1",
+          "used_scale_turn_positions": "1",
+          "candidate_lives": "1",
+          "revision_occurrences": "3",
+          "meaning": "Unknown对应公开Unavailable；初始化锚点不是有效峰谷方向；品种组数为包含关系"
+        },
+        {
+          "symbol": "i",
+          "direction": "DirectionUp",
+          "scale_turn_positions": "466",
+          "used_scale_turn_positions": "106",
+          "candidate_lives": "147",
+          "revision_occurrences": "479",
+          "meaning": "Unknown对应公开Unavailable；初始化锚点不是有效峰谷方向；品种组数为包含关系"
+        },
+        {
+          "symbol": "i",
+          "direction": "DirectionDown",
+          "scale_turn_positions": "537",
+          "used_scale_turn_positions": "129",
+          "candidate_lives": "162",
+          "revision_occurrences": "519",
+          "meaning": "Unknown对应公开Unavailable；初始化锚点不是有效峰谷方向；品种组数为包含关系"
+        },
+        {
+          "symbol": "i",
+          "direction": "Unknown",
+          "scale_turn_positions": "1",
+          "used_scale_turn_positions": "1",
+          "candidate_lives": "1",
+          "revision_occurrences": "3",
+          "meaning": "Unknown对应公开Unavailable；初始化锚点不是有效峰谷方向；品种组数为包含关系"
+        },
+        {
+          "symbol": "ALL_DISTINCT",
+          "direction": "DirectionUp",
+          "scale_turn_positions": "867",
+          "used_scale_turn_positions": "415",
+          "candidate_lives": "227",
+          "revision_occurrences": "727",
+          "meaning": "Unknown对应公开Unavailable；初始化锚点不是有效峰谷方向；品种组数为包含关系"
+        },
+        {
+          "symbol": "ALL_DISTINCT",
+          "direction": "DirectionDown",
+          "scale_turn_positions": "989",
+          "used_scale_turn_positions": "457",
+          "candidate_lives": "252",
+          "revision_occurrences": "804",
+          "meaning": "Unknown对应公开Unavailable；初始化锚点不是有效峰谷方向；品种组数为包含关系"
+        },
+        {
+          "symbol": "ALL_DISTINCT",
+          "direction": "Unknown",
+          "scale_turn_positions": "3",
+          "used_scale_turn_positions": "3",
+          "candidate_lives": "1",
+          "revision_occurrences": "3",
+          "meaning": "Unknown对应公开Unavailable；初始化锚点不是有效峰谷方向；品种组数为包含关系"
+        }
+      ],
+      "sample_size": 1859,
+      "denominator_value": 1859,
+      "source_location": "profile/counts_by_direction.csv",
+      "notes": "初始化Unknown与公开Unavailable对应。"
+    }
+  ],
+  "cross_period_profile": [
+    {
+      "statistic_id": "ST17",
+      "stratum_id": "YEAR:2021",
+      "value_or_distribution": {
+        "summary": {
+          "dimension": "YEAR",
+          "stratum_id": "2021",
+          "input_positions": "16599",
+          "birth_lives": "244",
+          "revision_occurrences": "775",
+          "revisions_per_1000_input_positions": "46.68955961202482",
+          "median_admission_actual_age_minutes": "187.5",
+          "median_observed_revision_span_minutes": "3842.5",
+          "duty_closed_last_lives": "244",
+          "right_censored_lives": "0",
+          "coverage_flagged_occurrences": "8",
+          "coverage_conflict_occurrences": "0",
+          "coverage_conflict_ratio": "0.0",
+          "meaning": "Life及跨度按首次publication层；观点/Required按当次publication层；SYMBOL为包含关系，可重叠"
+        },
+        "states": [
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2021",
+            "field": "observation",
+            "value": "ClosedInsufficient",
+            "count": "2",
+            "denominator": "775"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2021",
+            "field": "observation",
+            "value": "ClosedSupported",
+            "count": "390",
+            "denominator": "775"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2021",
+            "field": "observation",
+            "value": "Open",
+            "count": "249",
+            "denominator": "775"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2021",
+            "field": "observation",
+            "value": "Subsumed",
+            "count": "134",
+            "denominator": "775"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2021",
+            "field": "local_basis",
+            "value": "Incomplete",
+            "count": "3",
+            "denominator": "775"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2021",
+            "field": "local_basis",
+            "value": "Supported",
+            "count": "772",
+            "denominator": "775"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2021",
+            "field": "closed",
+            "value": "0",
+            "count": "295",
+            "denominator": "775"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2021",
+            "field": "closed",
+            "value": "1",
+            "count": "480",
+            "denominator": "775"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2021",
+            "field": "duty_closed",
+            "value": "0",
+            "count": "538",
+            "denominator": "775"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2021",
+            "field": "duty_closed",
+            "value": "1",
+            "count": "237",
+            "denominator": "775"
+          }
+        ],
+        "reasons": [
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2021",
+            "coordinate": "Time",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateSupports",
+            "count": "1175",
+            "denominator": "1175"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2021",
+            "coordinate": "Time",
+            "field": "requiredGap_name",
+            "value": "NoGap",
+            "count": "1175",
+            "denominator": "1175"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2021",
+            "coordinate": "Time",
+            "field": "requiredVeto_name",
+            "value": "NoVeto",
+            "count": "1175",
+            "denominator": "1175"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2021",
+            "coordinate": "Direction",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateUnresolved",
+            "count": "9",
+            "denominator": "1175"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2021",
+            "coordinate": "Direction",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateSupports",
+            "count": "1166",
+            "denominator": "1175"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2021",
+            "coordinate": "Direction",
+            "field": "requiredGap_name",
+            "value": "DirectionUnavailable",
+            "count": "9",
+            "denominator": "1175"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2021",
+            "coordinate": "Direction",
+            "field": "requiredGap_name",
+            "value": "NoGap",
+            "count": "1166",
+            "denominator": "1175"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2021",
+            "coordinate": "Direction",
+            "field": "requiredVeto_name",
+            "value": "NoVeto",
+            "count": "1175",
+            "denominator": "1175"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2021",
+            "coordinate": "Type",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateUnresolved",
+            "count": "9",
+            "denominator": "1175"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2021",
+            "coordinate": "Type",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateSupports",
+            "count": "1166",
+            "denominator": "1175"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2021",
+            "coordinate": "Type",
+            "field": "requiredGap_name",
+            "value": "TurnTypeUnavailable",
+            "count": "9",
+            "denominator": "1175"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2021",
+            "coordinate": "Type",
+            "field": "requiredGap_name",
+            "value": "NoGap",
+            "count": "1166",
+            "denominator": "1175"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2021",
+            "coordinate": "Type",
+            "field": "requiredVeto_name",
+            "value": "NoVeto",
+            "count": "1175",
+            "denominator": "1175"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2021",
+            "coordinate": "Bend",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateUnresolved",
+            "count": "9",
+            "denominator": "1175"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2021",
+            "coordinate": "Bend",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateSupports",
+            "count": "1166",
+            "denominator": "1175"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2021",
+            "coordinate": "Bend",
+            "field": "requiredGap_name",
+            "value": "SelectedAnchorUnavailable",
+            "count": "9",
+            "denominator": "1175"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2021",
+            "coordinate": "Bend",
+            "field": "requiredGap_name",
+            "value": "NoGap",
+            "count": "1166",
+            "denominator": "1175"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2021",
+            "coordinate": "Bend",
+            "field": "requiredVeto_name",
+            "value": "NoVeto",
+            "count": "1175",
+            "denominator": "1175"
+          }
+        ],
+        "sampled_held_views": [
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2021",
+            "state": "ClosedInsufficient",
+            "held_view_sampled_minutes": "30",
+            "count_meaning": "以公开5m位置对已发表观点持有区间取样×5开放分钟；不作内部逐Tick trace"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2021",
+            "state": "ClosedSupported",
+            "held_view_sampled_minutes": "5760",
+            "count_meaning": "以公开5m位置对已发表观点持有区间取样×5开放分钟；不作内部逐Tick trace"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2021",
+            "state": "Open",
+            "held_view_sampled_minutes": "739360",
+            "count_meaning": "以公开5m位置对已发表观点持有区间取样×5开放分钟；不作内部逐Tick trace"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2021",
+            "state": "Subsumed",
+            "held_view_sampled_minutes": "168000",
+            "count_meaning": "以公开5m位置对已发表观点持有区间取样×5开放分钟；不作内部逐Tick trace"
+          }
+        ],
+        "upstream_counts": [
+          {
+            "symbol": "rb",
+            "year": "2021",
+            "scale_turn_positions": "216",
+            "used_scale_turn_positions": "161",
+            "candidate_lives": "203",
+            "candidate_revision_occurrences": "642",
+            "births_after_legacy_6": "194",
+            "time_basis": "上游按selected知识年，组按首次publication年，版本按当次publication年；不是混用actual年"
+          },
+          {
+            "symbol": "hc",
+            "year": "2021",
+            "scale_turn_positions": "235",
+            "used_scale_turn_positions": "167",
+            "candidate_lives": "199",
+            "candidate_revision_occurrences": "619",
+            "births_after_legacy_6": "190",
+            "time_basis": "上游按selected知识年，组按首次publication年，版本按当次publication年；不是混用actual年"
+          },
+          {
+            "symbol": "i",
+            "year": "2021",
+            "scale_turn_positions": "478",
+            "used_scale_turn_positions": "118",
+            "candidate_lives": "153",
+            "candidate_revision_occurrences": "489",
+            "births_after_legacy_6": "146",
+            "time_basis": "上游按selected知识年，组按首次publication年，版本按当次publication年；不是混用actual年"
+          },
+          {
+            "symbol": "ALL_DISTINCT",
+            "year": "2021",
+            "scale_turn_positions": "929",
+            "used_scale_turn_positions": "446",
+            "candidate_lives": "244",
+            "candidate_revision_occurrences": "775",
+            "births_after_legacy_6": "233",
+            "time_basis": "上游按selected知识年，组按首次publication年，版本按当次publication年；不是混用actual年"
+          }
+        ]
+      },
+      "sample_size": 775,
+      "denominator_value": 16599,
+      "source_location": "profile/cross_strata_comparison.csv; profile/cross_strata_states.csv; profile/cross_strata_reasons.csv; profile/cross_strata_held_view_time.csv",
+      "notes": "Life及跨度按创建层，观点按当次知识层；持有时间按实际Calendar位置拆分，SYMBOL包含关系可重叠。"
+    },
+    {
+      "statistic_id": "ST17",
+      "stratum_id": "YEAR:2022",
+      "value_or_distribution": {
+        "summary": {
+          "dimension": "YEAR",
+          "stratum_id": "2022",
+          "input_positions": "16530",
+          "birth_lives": "162",
+          "revision_occurrences": "515",
+          "revisions_per_1000_input_positions": "31.15547489413188",
+          "median_admission_actual_age_minutes": "340.0",
+          "median_observed_revision_span_minutes": "3690.0",
+          "duty_closed_last_lives": "162",
+          "right_censored_lives": "0",
+          "coverage_flagged_occurrences": "0",
+          "coverage_conflict_occurrences": "0",
+          "coverage_conflict_ratio": "0.0",
+          "meaning": "Life及跨度按首次publication层；观点/Required按当次publication层；SYMBOL为包含关系，可重叠"
+        },
+        "states": [
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2022",
+            "field": "observation",
+            "value": "ClosedSupported",
+            "count": "274",
+            "denominator": "515"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2022",
+            "field": "observation",
+            "value": "Open",
+            "count": "163",
+            "denominator": "515"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2022",
+            "field": "observation",
+            "value": "Subsumed",
+            "count": "78",
+            "denominator": "515"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2022",
+            "field": "local_basis",
+            "value": "Supported",
+            "count": "515",
+            "denominator": "515"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2022",
+            "field": "closed",
+            "value": "0",
+            "count": "189",
+            "denominator": "515"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2022",
+            "field": "closed",
+            "value": "1",
+            "count": "326",
+            "denominator": "515"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2022",
+            "field": "duty_closed",
+            "value": "0",
+            "count": "353",
+            "denominator": "515"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2022",
+            "field": "duty_closed",
+            "value": "1",
+            "count": "162",
+            "denominator": "515"
+          }
+        ],
+        "reasons": [
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2022",
+            "coordinate": "Time",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateSupports",
+            "count": "789",
+            "denominator": "789"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2022",
+            "coordinate": "Time",
+            "field": "requiredGap_name",
+            "value": "NoGap",
+            "count": "789",
+            "denominator": "789"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2022",
+            "coordinate": "Time",
+            "field": "requiredVeto_name",
+            "value": "NoVeto",
+            "count": "789",
+            "denominator": "789"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2022",
+            "coordinate": "Direction",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateSupports",
+            "count": "789",
+            "denominator": "789"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2022",
+            "coordinate": "Direction",
+            "field": "requiredGap_name",
+            "value": "NoGap",
+            "count": "789",
+            "denominator": "789"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2022",
+            "coordinate": "Direction",
+            "field": "requiredVeto_name",
+            "value": "NoVeto",
+            "count": "789",
+            "denominator": "789"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2022",
+            "coordinate": "Type",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateSupports",
+            "count": "789",
+            "denominator": "789"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2022",
+            "coordinate": "Type",
+            "field": "requiredGap_name",
+            "value": "NoGap",
+            "count": "789",
+            "denominator": "789"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2022",
+            "coordinate": "Type",
+            "field": "requiredVeto_name",
+            "value": "NoVeto",
+            "count": "789",
+            "denominator": "789"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2022",
+            "coordinate": "Bend",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateSupports",
+            "count": "789",
+            "denominator": "789"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2022",
+            "coordinate": "Bend",
+            "field": "requiredGap_name",
+            "value": "NoGap",
+            "count": "789",
+            "denominator": "789"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2022",
+            "coordinate": "Bend",
+            "field": "requiredVeto_name",
+            "value": "NoVeto",
+            "count": "789",
+            "denominator": "789"
+          }
+        ],
+        "sampled_held_views": [
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2022",
+            "state": "ClosedSupported",
+            "held_view_sampled_minutes": "4080",
+            "count_meaning": "以公开5m位置对已发表观点持有区间取样×5开放分钟；不作内部逐Tick trace"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2022",
+            "state": "Open",
+            "held_view_sampled_minutes": "493270",
+            "count_meaning": "以公开5m位置对已发表观点持有区间取样×5开放分钟；不作内部逐Tick trace"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2022",
+            "state": "Subsumed",
+            "held_view_sampled_minutes": "94675",
+            "count_meaning": "以公开5m位置对已发表观点持有区间取样×5开放分钟；不作内部逐Tick trace"
+          }
+        ],
+        "upstream_counts": [
+          {
+            "symbol": "rb",
+            "year": "2022",
+            "scale_turn_positions": "139",
+            "used_scale_turn_positions": "116",
+            "candidate_lives": "139",
+            "candidate_revision_occurrences": "431",
+            "births_after_legacy_6": "139",
+            "time_basis": "上游按selected知识年，组按首次publication年，版本按当次publication年；不是混用actual年"
+          },
+          {
+            "symbol": "hc",
+            "year": "2022",
+            "scale_turn_positions": "126",
+            "used_scale_turn_positions": "100",
+            "candidate_lives": "120",
+            "candidate_revision_occurrences": "377",
+            "births_after_legacy_6": "120",
+            "time_basis": "上游按selected知识年，组按首次publication年，版本按当次publication年；不是混用actual年"
+          },
+          {
+            "symbol": "i",
+            "year": "2022",
+            "scale_turn_positions": "377",
+            "used_scale_turn_positions": "84",
+            "candidate_lives": "112",
+            "candidate_revision_occurrences": "359",
+            "births_after_legacy_6": "112",
+            "time_basis": "上游按selected知识年，组按首次publication年，版本按当次publication年；不是混用actual年"
+          },
+          {
+            "symbol": "ALL_DISTINCT",
+            "year": "2022",
+            "scale_turn_positions": "642",
+            "used_scale_turn_positions": "300",
+            "candidate_lives": "162",
+            "candidate_revision_occurrences": "515",
+            "births_after_legacy_6": "162",
+            "time_basis": "上游按selected知识年，组按首次publication年，版本按当次publication年；不是混用actual年"
+          }
+        ]
+      },
+      "sample_size": 515,
+      "denominator_value": 16530,
+      "source_location": "profile/cross_strata_comparison.csv; profile/cross_strata_states.csv; profile/cross_strata_reasons.csv; profile/cross_strata_held_view_time.csv",
+      "notes": "Life及跨度按创建层，观点按当次知识层；持有时间按实际Calendar位置拆分，SYMBOL包含关系可重叠。"
+    },
+    {
+      "statistic_id": "ST17",
+      "stratum_id": "YEAR:2023",
+      "value_or_distribution": {
+        "summary": {
+          "dimension": "YEAR",
+          "stratum_id": "2023",
+          "input_positions": "16554",
+          "birth_lives": "74",
+          "revision_occurrences": "244",
+          "revisions_per_1000_input_positions": "14.739639966171318",
+          "median_admission_actual_age_minutes": "570.0",
+          "median_observed_revision_span_minutes": "3460.0",
+          "duty_closed_last_lives": "73",
+          "right_censored_lives": "1",
+          "coverage_flagged_occurrences": "0",
+          "coverage_conflict_occurrences": "0",
+          "coverage_conflict_ratio": "0.0",
+          "meaning": "Life及跨度按首次publication层；观点/Required按当次publication层；SYMBOL为包含关系，可重叠"
+        },
+        "states": [
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2023",
+            "field": "observation",
+            "value": "ClosedSupported",
+            "count": "141",
+            "denominator": "244"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2023",
+            "field": "observation",
+            "value": "Open",
+            "count": "74",
+            "denominator": "244"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2023",
+            "field": "observation",
+            "value": "Subsumed",
+            "count": "29",
+            "denominator": "244"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2023",
+            "field": "local_basis",
+            "value": "Supported",
+            "count": "244",
+            "denominator": "244"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2023",
+            "field": "closed",
+            "value": "0",
+            "count": "83",
+            "denominator": "244"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2023",
+            "field": "closed",
+            "value": "1",
+            "count": "161",
+            "denominator": "244"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2023",
+            "field": "duty_closed",
+            "value": "0",
+            "count": "164",
+            "denominator": "244"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2023",
+            "field": "duty_closed",
+            "value": "1",
+            "count": "80",
+            "denominator": "244"
+          }
+        ],
+        "reasons": [
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2023",
+            "coordinate": "Time",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateSupports",
+            "count": "328",
+            "denominator": "328"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2023",
+            "coordinate": "Time",
+            "field": "requiredGap_name",
+            "value": "NoGap",
+            "count": "328",
+            "denominator": "328"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2023",
+            "coordinate": "Time",
+            "field": "requiredVeto_name",
+            "value": "NoVeto",
+            "count": "328",
+            "denominator": "328"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2023",
+            "coordinate": "Direction",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateSupports",
+            "count": "328",
+            "denominator": "328"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2023",
+            "coordinate": "Direction",
+            "field": "requiredGap_name",
+            "value": "NoGap",
+            "count": "328",
+            "denominator": "328"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2023",
+            "coordinate": "Direction",
+            "field": "requiredVeto_name",
+            "value": "NoVeto",
+            "count": "328",
+            "denominator": "328"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2023",
+            "coordinate": "Type",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateSupports",
+            "count": "328",
+            "denominator": "328"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2023",
+            "coordinate": "Type",
+            "field": "requiredGap_name",
+            "value": "NoGap",
+            "count": "328",
+            "denominator": "328"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2023",
+            "coordinate": "Type",
+            "field": "requiredVeto_name",
+            "value": "NoVeto",
+            "count": "328",
+            "denominator": "328"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2023",
+            "coordinate": "Bend",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateSupports",
+            "count": "328",
+            "denominator": "328"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2023",
+            "coordinate": "Bend",
+            "field": "requiredGap_name",
+            "value": "NoGap",
+            "count": "328",
+            "denominator": "328"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2023",
+            "coordinate": "Bend",
+            "field": "requiredVeto_name",
+            "value": "NoVeto",
+            "count": "328",
+            "denominator": "328"
+          }
+        ],
+        "sampled_held_views": [
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2023",
+            "state": "ClosedSupported",
+            "held_view_sampled_minutes": "2100",
+            "count_meaning": "以公开5m位置对已发表观点持有区间取样×5开放分钟；不作内部逐Tick trace"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2023",
+            "state": "Open",
+            "held_view_sampled_minutes": "221765",
+            "count_meaning": "以公开5m位置对已发表观点持有区间取样×5开放分钟；不作内部逐Tick trace"
+          },
+          {
+            "dimension": "YEAR",
+            "stratum_id": "2023",
+            "state": "Subsumed",
+            "held_view_sampled_minutes": "32620",
+            "count_meaning": "以公开5m位置对已发表观点持有区间取样×5开放分钟；不作内部逐Tick trace"
+          }
+        ],
+        "upstream_counts": [
+          {
+            "symbol": "rb",
+            "year": "2023",
+            "scale_turn_positions": "70",
+            "used_scale_turn_positions": "47",
+            "candidate_lives": "59",
+            "candidate_revision_occurrences": "197",
+            "births_after_legacy_6": "59",
+            "time_basis": "上游按selected知识年，组按首次publication年，版本按当次publication年；不是混用actual年"
+          },
+          {
+            "symbol": "hc",
+            "year": "2023",
+            "scale_turn_positions": "69",
+            "used_scale_turn_positions": "48",
+            "candidate_lives": "56",
+            "candidate_revision_occurrences": "180",
+            "births_after_legacy_6": "56",
+            "time_basis": "上游按selected知识年，组按首次publication年，版本按当次publication年；不是混用actual年"
+          },
+          {
+            "symbol": "i",
+            "year": "2023",
+            "scale_turn_positions": "149",
+            "used_scale_turn_positions": "34",
+            "candidate_lives": "45",
+            "candidate_revision_occurrences": "153",
+            "births_after_legacy_6": "45",
+            "time_basis": "上游按selected知识年，组按首次publication年，版本按当次publication年；不是混用actual年"
+          },
+          {
+            "symbol": "ALL_DISTINCT",
+            "year": "2023",
+            "scale_turn_positions": "288",
+            "used_scale_turn_positions": "129",
+            "candidate_lives": "74",
+            "candidate_revision_occurrences": "244",
+            "births_after_legacy_6": "74",
+            "time_basis": "上游按selected知识年，组按首次publication年，版本按当次publication年；不是混用actual年"
+          }
+        ]
+      },
+      "sample_size": 244,
+      "denominator_value": 16554,
+      "source_location": "profile/cross_strata_comparison.csv; profile/cross_strata_states.csv; profile/cross_strata_reasons.csv; profile/cross_strata_held_view_time.csv",
+      "notes": "Life及跨度按创建层，观点按当次知识层；持有时间按实际Calendar位置拆分，SYMBOL包含关系可重叠。"
+    },
+    {
+      "statistic_id": "ST17",
+      "stratum_id": "MONTH",
+      "value_or_distribution": [
+        {
+          "month": "2021-01",
+          "candidate_lives": "12",
+          "revision_occurrences": "32"
+        },
+        {
+          "month": "2021-02",
+          "candidate_lives": "14",
+          "revision_occurrences": "33"
+        },
+        {
+          "month": "2021-03",
+          "candidate_lives": "16",
+          "revision_occurrences": "67"
+        },
+        {
+          "month": "2021-04",
+          "candidate_lives": "10",
+          "revision_occurrences": "30"
+        },
+        {
+          "month": "2021-05",
+          "candidate_lives": "40",
+          "revision_occurrences": "91"
+        },
+        {
+          "month": "2021-06",
+          "candidate_lives": "16",
+          "revision_occurrences": "83"
+        },
+        {
+          "month": "2021-07",
+          "candidate_lives": "17",
+          "revision_occurrences": "52"
+        },
+        {
+          "month": "2021-08",
+          "candidate_lives": "16",
+          "revision_occurrences": "58"
+        },
+        {
+          "month": "2021-09",
+          "candidate_lives": "14",
+          "revision_occurrences": "35"
+        },
+        {
+          "month": "2021-10",
+          "candidate_lives": "34",
+          "revision_occurrences": "81"
+        },
+        {
+          "month": "2021-11",
+          "candidate_lives": "42",
+          "revision_occurrences": "157"
+        },
+        {
+          "month": "2021-12",
+          "candidate_lives": "13",
+          "revision_occurrences": "56"
+        },
+        {
+          "month": "2022-01",
+          "candidate_lives": "9",
+          "revision_occurrences": "29"
+        },
+        {
+          "month": "2022-02",
+          "candidate_lives": "9",
+          "revision_occurrences": "29"
+        },
+        {
+          "month": "2022-03",
+          "candidate_lives": "20",
+          "revision_occurrences": "60"
+        },
+        {
+          "month": "2022-04",
+          "candidate_lives": "13",
+          "revision_occurrences": "41"
+        },
+        {
+          "month": "2022-05",
+          "candidate_lives": "12",
+          "revision_occurrences": "50"
+        },
+        {
+          "month": "2022-06",
+          "candidate_lives": "18",
+          "revision_occurrences": "31"
+        },
+        {
+          "month": "2022-07",
+          "candidate_lives": "31",
+          "revision_occurrences": "111"
+        },
+        {
+          "month": "2022-08",
+          "candidate_lives": "12",
+          "revision_occurrences": "48"
+        },
+        {
+          "month": "2022-09",
+          "candidate_lives": "8",
+          "revision_occurrences": "29"
+        },
+        {
+          "month": "2022-10",
+          "candidate_lives": "6",
+          "revision_occurrences": "16"
+        },
+        {
+          "month": "2022-11",
+          "candidate_lives": "9",
+          "revision_occurrences": "35"
+        },
+        {
+          "month": "2022-12",
+          "candidate_lives": "15",
+          "revision_occurrences": "36"
+        },
+        {
+          "month": "2023-01",
+          "candidate_lives": "8",
+          "revision_occurrences": "32"
+        },
+        {
+          "month": "2023-02",
+          "candidate_lives": "5",
+          "revision_occurrences": "18"
+        },
+        {
+          "month": "2023-03",
+          "candidate_lives": "6",
+          "revision_occurrences": "21"
+        },
+        {
+          "month": "2023-04",
+          "candidate_lives": "10",
+          "revision_occurrences": "29"
+        },
+        {
+          "month": "2023-05",
+          "candidate_lives": "13",
+          "revision_occurrences": "37"
+        },
+        {
+          "month": "2023-06",
+          "candidate_lives": "10",
+          "revision_occurrences": "33"
+        },
+        {
+          "month": "2023-07",
+          "candidate_lives": "6",
+          "revision_occurrences": "23"
+        },
+        {
+          "month": "2023-08",
+          "candidate_lives": "5",
+          "revision_occurrences": "16"
+        },
+        {
+          "month": "2023-09",
+          "candidate_lives": "3",
+          "revision_occurrences": "13"
+        },
+        {
+          "month": "2023-10",
+          "candidate_lives": "1",
+          "revision_occurrences": "1"
+        },
+        {
+          "month": "2023-11",
+          "candidate_lives": "4",
+          "revision_occurrences": "8"
+        },
+        {
+          "month": "2023-12",
+          "candidate_lives": "3",
+          "revision_occurrences": "13"
+        }
+      ],
+      "sample_size": 1534,
+      "denominator_value": 49683,
+      "source_location": "profile/counts_by_month.csv",
+      "notes": ""
+    }
+  ],
+  "cross_session_profile": [
+    {
+      "statistic_id": "ST17",
+      "stratum_id": "SESSION:DAY_CLOCK_09_15",
+      "value_or_distribution": {
+        "summary": {
+          "dimension": "SESSION",
+          "stratum_id": "DAY_CLOCK_09_15",
+          "input_positions": "32715",
+          "birth_lives": "301",
+          "revision_occurrences": "1001",
+          "revisions_per_1000_input_positions": "30.5975852055632",
+          "median_admission_actual_age_minutes": "280.0",
+          "median_observed_revision_span_minutes": "3750.0",
+          "duty_closed_last_lives": "300",
+          "right_censored_lives": "1",
+          "coverage_flagged_occurrences": "7",
+          "coverage_conflict_occurrences": "0",
+          "coverage_conflict_ratio": "0.0",
+          "meaning": "Life及跨度按首次publication层；观点/Required按当次publication层；SYMBOL为包含关系，可重叠"
+        },
+        "states": [
+          {
+            "dimension": "SESSION",
+            "stratum_id": "DAY_CLOCK_09_15",
+            "field": "observation",
+            "value": "ClosedInsufficient",
+            "count": "1",
+            "denominator": "1001"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "DAY_CLOCK_09_15",
+            "field": "observation",
+            "value": "ClosedSupported",
+            "count": "529",
+            "denominator": "1001"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "DAY_CLOCK_09_15",
+            "field": "observation",
+            "value": "Open",
+            "count": "306",
+            "denominator": "1001"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "DAY_CLOCK_09_15",
+            "field": "observation",
+            "value": "Subsumed",
+            "count": "165",
+            "denominator": "1001"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "DAY_CLOCK_09_15",
+            "field": "local_basis",
+            "value": "Incomplete",
+            "count": "2",
+            "denominator": "1001"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "DAY_CLOCK_09_15",
+            "field": "local_basis",
+            "value": "Supported",
+            "count": "999",
+            "denominator": "1001"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "DAY_CLOCK_09_15",
+            "field": "closed",
+            "value": "0",
+            "count": "362",
+            "denominator": "1001"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "DAY_CLOCK_09_15",
+            "field": "closed",
+            "value": "1",
+            "count": "639",
+            "denominator": "1001"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "DAY_CLOCK_09_15",
+            "field": "duty_closed",
+            "value": "0",
+            "count": "705",
+            "denominator": "1001"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "DAY_CLOCK_09_15",
+            "field": "duty_closed",
+            "value": "1",
+            "count": "296",
+            "denominator": "1001"
+          }
+        ],
+        "reasons": [
+          {
+            "dimension": "SESSION",
+            "stratum_id": "DAY_CLOCK_09_15",
+            "coordinate": "Time",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateSupports",
+            "count": "1517",
+            "denominator": "1517"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "DAY_CLOCK_09_15",
+            "coordinate": "Time",
+            "field": "requiredGap_name",
+            "value": "NoGap",
+            "count": "1517",
+            "denominator": "1517"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "DAY_CLOCK_09_15",
+            "coordinate": "Time",
+            "field": "requiredVeto_name",
+            "value": "NoVeto",
+            "count": "1517",
+            "denominator": "1517"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "DAY_CLOCK_09_15",
+            "coordinate": "Direction",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateUnresolved",
+            "count": "6",
+            "denominator": "1517"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "DAY_CLOCK_09_15",
+            "coordinate": "Direction",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateSupports",
+            "count": "1511",
+            "denominator": "1517"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "DAY_CLOCK_09_15",
+            "coordinate": "Direction",
+            "field": "requiredGap_name",
+            "value": "DirectionUnavailable",
+            "count": "6",
+            "denominator": "1517"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "DAY_CLOCK_09_15",
+            "coordinate": "Direction",
+            "field": "requiredGap_name",
+            "value": "NoGap",
+            "count": "1511",
+            "denominator": "1517"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "DAY_CLOCK_09_15",
+            "coordinate": "Direction",
+            "field": "requiredVeto_name",
+            "value": "NoVeto",
+            "count": "1517",
+            "denominator": "1517"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "DAY_CLOCK_09_15",
+            "coordinate": "Type",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateUnresolved",
+            "count": "6",
+            "denominator": "1517"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "DAY_CLOCK_09_15",
+            "coordinate": "Type",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateSupports",
+            "count": "1511",
+            "denominator": "1517"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "DAY_CLOCK_09_15",
+            "coordinate": "Type",
+            "field": "requiredGap_name",
+            "value": "TurnTypeUnavailable",
+            "count": "6",
+            "denominator": "1517"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "DAY_CLOCK_09_15",
+            "coordinate": "Type",
+            "field": "requiredGap_name",
+            "value": "NoGap",
+            "count": "1511",
+            "denominator": "1517"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "DAY_CLOCK_09_15",
+            "coordinate": "Type",
+            "field": "requiredVeto_name",
+            "value": "NoVeto",
+            "count": "1517",
+            "denominator": "1517"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "DAY_CLOCK_09_15",
+            "coordinate": "Bend",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateUnresolved",
+            "count": "6",
+            "denominator": "1517"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "DAY_CLOCK_09_15",
+            "coordinate": "Bend",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateSupports",
+            "count": "1511",
+            "denominator": "1517"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "DAY_CLOCK_09_15",
+            "coordinate": "Bend",
+            "field": "requiredGap_name",
+            "value": "SelectedAnchorUnavailable",
+            "count": "6",
+            "denominator": "1517"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "DAY_CLOCK_09_15",
+            "coordinate": "Bend",
+            "field": "requiredGap_name",
+            "value": "NoGap",
+            "count": "1511",
+            "denominator": "1517"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "DAY_CLOCK_09_15",
+            "coordinate": "Bend",
+            "field": "requiredVeto_name",
+            "value": "NoVeto",
+            "count": "1517",
+            "denominator": "1517"
+          }
+        ],
+        "sampled_held_views": [
+          {
+            "dimension": "SESSION",
+            "stratum_id": "DAY_CLOCK_09_15",
+            "state": "ClosedInsufficient",
+            "held_view_sampled_minutes": "20",
+            "count_meaning": "以公开5m位置对已发表观点持有区间取样×5开放分钟；不作内部逐Tick trace"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "DAY_CLOCK_09_15",
+            "state": "ClosedSupported",
+            "held_view_sampled_minutes": "7890",
+            "count_meaning": "以公开5m位置对已发表观点持有区间取样×5开放分钟；不作内部逐Tick trace"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "DAY_CLOCK_09_15",
+            "state": "Open",
+            "held_view_sampled_minutes": "955640",
+            "count_meaning": "以公开5m位置对已发表观点持有区间取样×5开放分钟；不作内部逐Tick trace"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "DAY_CLOCK_09_15",
+            "state": "Subsumed",
+            "held_view_sampled_minutes": "193175",
+            "count_meaning": "以公开5m位置对已发表观点持有区间取样×5开放分钟；不作内部逐Tick trace"
+          }
+        ]
+      },
+      "sample_size": 1001,
+      "denominator_value": 32715,
+      "source_location": "profile/cross_strata_comparison.csv; profile/cross_strata_states.csv; profile/cross_strata_reasons.csv; profile/cross_strata_held_view_time.csv",
+      "notes": "Life及跨度按创建层，观点按当次知识层；持有时间按实际Calendar位置拆分，SYMBOL包含关系可重叠。"
+    },
+    {
+      "statistic_id": "ST17",
+      "stratum_id": "SESSION:NIGHT_CLOCK_21_23",
+      "value_or_distribution": {
+        "summary": {
+          "dimension": "SESSION",
+          "stratum_id": "NIGHT_CLOCK_21_23",
+          "input_positions": "16968",
+          "birth_lives": "179",
+          "revision_occurrences": "533",
+          "revisions_per_1000_input_positions": "31.412069778406412",
+          "median_admission_actual_age_minutes": "280.0",
+          "median_observed_revision_span_minutes": "3750.0",
+          "duty_closed_last_lives": "179",
+          "right_censored_lives": "0",
+          "coverage_flagged_occurrences": "1",
+          "coverage_conflict_occurrences": "0",
+          "coverage_conflict_ratio": "0.0",
+          "meaning": "Life及跨度按首次publication层；观点/Required按当次publication层；SYMBOL为包含关系，可重叠"
+        },
+        "states": [
+          {
+            "dimension": "SESSION",
+            "stratum_id": "NIGHT_CLOCK_21_23",
+            "field": "observation",
+            "value": "ClosedInsufficient",
+            "count": "1",
+            "denominator": "533"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "NIGHT_CLOCK_21_23",
+            "field": "observation",
+            "value": "ClosedSupported",
+            "count": "276",
+            "denominator": "533"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "NIGHT_CLOCK_21_23",
+            "field": "observation",
+            "value": "Open",
+            "count": "180",
+            "denominator": "533"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "NIGHT_CLOCK_21_23",
+            "field": "observation",
+            "value": "Subsumed",
+            "count": "76",
+            "denominator": "533"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "NIGHT_CLOCK_21_23",
+            "field": "local_basis",
+            "value": "Incomplete",
+            "count": "1",
+            "denominator": "533"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "NIGHT_CLOCK_21_23",
+            "field": "local_basis",
+            "value": "Supported",
+            "count": "532",
+            "denominator": "533"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "NIGHT_CLOCK_21_23",
+            "field": "closed",
+            "value": "0",
+            "count": "205",
+            "denominator": "533"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "NIGHT_CLOCK_21_23",
+            "field": "closed",
+            "value": "1",
+            "count": "328",
+            "denominator": "533"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "NIGHT_CLOCK_21_23",
+            "field": "duty_closed",
+            "value": "0",
+            "count": "350",
+            "denominator": "533"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "NIGHT_CLOCK_21_23",
+            "field": "duty_closed",
+            "value": "1",
+            "count": "183",
+            "denominator": "533"
+          }
+        ],
+        "reasons": [
+          {
+            "dimension": "SESSION",
+            "stratum_id": "NIGHT_CLOCK_21_23",
+            "coordinate": "Time",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateSupports",
+            "count": "775",
+            "denominator": "775"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "NIGHT_CLOCK_21_23",
+            "coordinate": "Time",
+            "field": "requiredGap_name",
+            "value": "NoGap",
+            "count": "775",
+            "denominator": "775"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "NIGHT_CLOCK_21_23",
+            "coordinate": "Time",
+            "field": "requiredVeto_name",
+            "value": "NoVeto",
+            "count": "775",
+            "denominator": "775"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "NIGHT_CLOCK_21_23",
+            "coordinate": "Direction",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateSupports",
+            "count": "772",
+            "denominator": "775"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "NIGHT_CLOCK_21_23",
+            "coordinate": "Direction",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateUnresolved",
+            "count": "3",
+            "denominator": "775"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "NIGHT_CLOCK_21_23",
+            "coordinate": "Direction",
+            "field": "requiredGap_name",
+            "value": "NoGap",
+            "count": "772",
+            "denominator": "775"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "NIGHT_CLOCK_21_23",
+            "coordinate": "Direction",
+            "field": "requiredGap_name",
+            "value": "DirectionUnavailable",
+            "count": "3",
+            "denominator": "775"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "NIGHT_CLOCK_21_23",
+            "coordinate": "Direction",
+            "field": "requiredVeto_name",
+            "value": "NoVeto",
+            "count": "775",
+            "denominator": "775"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "NIGHT_CLOCK_21_23",
+            "coordinate": "Type",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateSupports",
+            "count": "772",
+            "denominator": "775"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "NIGHT_CLOCK_21_23",
+            "coordinate": "Type",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateUnresolved",
+            "count": "3",
+            "denominator": "775"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "NIGHT_CLOCK_21_23",
+            "coordinate": "Type",
+            "field": "requiredGap_name",
+            "value": "NoGap",
+            "count": "772",
+            "denominator": "775"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "NIGHT_CLOCK_21_23",
+            "coordinate": "Type",
+            "field": "requiredGap_name",
+            "value": "TurnTypeUnavailable",
+            "count": "3",
+            "denominator": "775"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "NIGHT_CLOCK_21_23",
+            "coordinate": "Type",
+            "field": "requiredVeto_name",
+            "value": "NoVeto",
+            "count": "775",
+            "denominator": "775"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "NIGHT_CLOCK_21_23",
+            "coordinate": "Bend",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateSupports",
+            "count": "772",
+            "denominator": "775"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "NIGHT_CLOCK_21_23",
+            "coordinate": "Bend",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateUnresolved",
+            "count": "3",
+            "denominator": "775"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "NIGHT_CLOCK_21_23",
+            "coordinate": "Bend",
+            "field": "requiredGap_name",
+            "value": "NoGap",
+            "count": "772",
+            "denominator": "775"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "NIGHT_CLOCK_21_23",
+            "coordinate": "Bend",
+            "field": "requiredGap_name",
+            "value": "SelectedAnchorUnavailable",
+            "count": "3",
+            "denominator": "775"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "NIGHT_CLOCK_21_23",
+            "coordinate": "Bend",
+            "field": "requiredVeto_name",
+            "value": "NoVeto",
+            "count": "775",
+            "denominator": "775"
+          }
+        ],
+        "sampled_held_views": [
+          {
+            "dimension": "SESSION",
+            "stratum_id": "NIGHT_CLOCK_21_23",
+            "state": "ClosedInsufficient",
+            "held_view_sampled_minutes": "10",
+            "count_meaning": "以公开5m位置对已发表观点持有区间取样×5开放分钟；不作内部逐Tick trace"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "NIGHT_CLOCK_21_23",
+            "state": "ClosedSupported",
+            "held_view_sampled_minutes": "4050",
+            "count_meaning": "以公开5m位置对已发表观点持有区间取样×5开放分钟；不作内部逐Tick trace"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "NIGHT_CLOCK_21_23",
+            "state": "Open",
+            "held_view_sampled_minutes": "498755",
+            "count_meaning": "以公开5m位置对已发表观点持有区间取样×5开放分钟；不作内部逐Tick trace"
+          },
+          {
+            "dimension": "SESSION",
+            "stratum_id": "NIGHT_CLOCK_21_23",
+            "state": "Subsumed",
+            "held_view_sampled_minutes": "102120",
+            "count_meaning": "以公开5m位置对已发表观点持有区间取样×5开放分钟；不作内部逐Tick trace"
+          }
+        ]
+      },
+      "sample_size": 533,
+      "denominator_value": 16968,
+      "source_location": "profile/cross_strata_comparison.csv; profile/cross_strata_states.csv; profile/cross_strata_reasons.csv; profile/cross_strata_held_view_time.csv",
+      "notes": "Life及跨度按创建层，观点按当次知识层；持有时间按实际Calendar位置拆分，SYMBOL包含关系可重叠。"
+    },
+    {
+      "statistic_id": "ST17",
+      "stratum_id": "OPENING:OPENING_FIRST_15M",
+      "value_or_distribution": {
+        "summary": {
+          "dimension": "OPENING",
+          "stratum_id": "OPENING_FIRST_15M",
+          "input_positions": "4302",
+          "birth_lives": "105",
+          "revision_occurrences": "219",
+          "revisions_per_1000_input_positions": "50.90655509065551",
+          "median_admission_actual_age_minutes": "250.0",
+          "median_observed_revision_span_minutes": "3780.0",
+          "duty_closed_last_lives": "105",
+          "right_censored_lives": "0",
+          "coverage_flagged_occurrences": "0",
+          "coverage_conflict_occurrences": "0",
+          "coverage_conflict_ratio": "0.0",
+          "meaning": "Life及跨度按首次publication层；观点/Required按当次publication层；SYMBOL为包含关系，可重叠"
+        },
+        "states": [
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OPENING_FIRST_15M",
+            "field": "observation",
+            "value": "ClosedInsufficient",
+            "count": "1",
+            "denominator": "219"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OPENING_FIRST_15M",
+            "field": "observation",
+            "value": "ClosedSupported",
+            "count": "84",
+            "denominator": "219"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OPENING_FIRST_15M",
+            "field": "observation",
+            "value": "Open",
+            "count": "105",
+            "denominator": "219"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OPENING_FIRST_15M",
+            "field": "observation",
+            "value": "Subsumed",
+            "count": "29",
+            "denominator": "219"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OPENING_FIRST_15M",
+            "field": "local_basis",
+            "value": "Incomplete",
+            "count": "1",
+            "denominator": "219"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OPENING_FIRST_15M",
+            "field": "local_basis",
+            "value": "Supported",
+            "count": "218",
+            "denominator": "219"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OPENING_FIRST_15M",
+            "field": "closed",
+            "value": "0",
+            "count": "121",
+            "denominator": "219"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OPENING_FIRST_15M",
+            "field": "closed",
+            "value": "1",
+            "count": "98",
+            "denominator": "219"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OPENING_FIRST_15M",
+            "field": "duty_closed",
+            "value": "0",
+            "count": "172",
+            "denominator": "219"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OPENING_FIRST_15M",
+            "field": "duty_closed",
+            "value": "1",
+            "count": "47",
+            "denominator": "219"
+          }
+        ],
+        "reasons": [
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OPENING_FIRST_15M",
+            "coordinate": "Time",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateSupports",
+            "count": "321",
+            "denominator": "321"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OPENING_FIRST_15M",
+            "coordinate": "Time",
+            "field": "requiredGap_name",
+            "value": "NoGap",
+            "count": "321",
+            "denominator": "321"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OPENING_FIRST_15M",
+            "coordinate": "Time",
+            "field": "requiredVeto_name",
+            "value": "NoVeto",
+            "count": "321",
+            "denominator": "321"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OPENING_FIRST_15M",
+            "coordinate": "Direction",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateUnresolved",
+            "count": "3",
+            "denominator": "321"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OPENING_FIRST_15M",
+            "coordinate": "Direction",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateSupports",
+            "count": "318",
+            "denominator": "321"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OPENING_FIRST_15M",
+            "coordinate": "Direction",
+            "field": "requiredGap_name",
+            "value": "DirectionUnavailable",
+            "count": "3",
+            "denominator": "321"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OPENING_FIRST_15M",
+            "coordinate": "Direction",
+            "field": "requiredGap_name",
+            "value": "NoGap",
+            "count": "318",
+            "denominator": "321"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OPENING_FIRST_15M",
+            "coordinate": "Direction",
+            "field": "requiredVeto_name",
+            "value": "NoVeto",
+            "count": "321",
+            "denominator": "321"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OPENING_FIRST_15M",
+            "coordinate": "Type",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateUnresolved",
+            "count": "3",
+            "denominator": "321"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OPENING_FIRST_15M",
+            "coordinate": "Type",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateSupports",
+            "count": "318",
+            "denominator": "321"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OPENING_FIRST_15M",
+            "coordinate": "Type",
+            "field": "requiredGap_name",
+            "value": "TurnTypeUnavailable",
+            "count": "3",
+            "denominator": "321"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OPENING_FIRST_15M",
+            "coordinate": "Type",
+            "field": "requiredGap_name",
+            "value": "NoGap",
+            "count": "318",
+            "denominator": "321"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OPENING_FIRST_15M",
+            "coordinate": "Type",
+            "field": "requiredVeto_name",
+            "value": "NoVeto",
+            "count": "321",
+            "denominator": "321"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OPENING_FIRST_15M",
+            "coordinate": "Bend",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateUnresolved",
+            "count": "3",
+            "denominator": "321"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OPENING_FIRST_15M",
+            "coordinate": "Bend",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateSupports",
+            "count": "318",
+            "denominator": "321"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OPENING_FIRST_15M",
+            "coordinate": "Bend",
+            "field": "requiredGap_name",
+            "value": "SelectedAnchorUnavailable",
+            "count": "3",
+            "denominator": "321"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OPENING_FIRST_15M",
+            "coordinate": "Bend",
+            "field": "requiredGap_name",
+            "value": "NoGap",
+            "count": "318",
+            "denominator": "321"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OPENING_FIRST_15M",
+            "coordinate": "Bend",
+            "field": "requiredVeto_name",
+            "value": "NoVeto",
+            "count": "321",
+            "denominator": "321"
+          }
+        ],
+        "sampled_held_views": [
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OPENING_FIRST_15M",
+            "state": "ClosedInsufficient",
+            "held_view_sampled_minutes": "10",
+            "count_meaning": "以公开5m位置对已发表观点持有区间取样×5开放分钟；不作内部逐Tick trace"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OPENING_FIRST_15M",
+            "state": "ClosedSupported",
+            "held_view_sampled_minutes": "1355",
+            "count_meaning": "以公开5m位置对已发表观点持有区间取样×5开放分钟；不作内部逐Tick trace"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OPENING_FIRST_15M",
+            "state": "Open",
+            "held_view_sampled_minutes": "125905",
+            "count_meaning": "以公开5m位置对已发表观点持有区间取样×5开放分钟；不作内部逐Tick trace"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OPENING_FIRST_15M",
+            "state": "Subsumed",
+            "held_view_sampled_minutes": "25660",
+            "count_meaning": "以公开5m位置对已发表观点持有区间取样×5开放分钟；不作内部逐Tick trace"
+          }
+        ]
+      },
+      "sample_size": 219,
+      "denominator_value": 4302,
+      "source_location": "profile/cross_strata_comparison.csv; profile/cross_strata_states.csv; profile/cross_strata_reasons.csv; profile/cross_strata_held_view_time.csv",
+      "notes": "Life及跨度按创建层，观点按当次知识层；持有时间按实际Calendar位置拆分，SYMBOL包含关系可重叠。"
+    },
+    {
+      "statistic_id": "ST17",
+      "stratum_id": "OPENING:OTHER_TRADING_TIME",
+      "value_or_distribution": {
+        "summary": {
+          "dimension": "OPENING",
+          "stratum_id": "OTHER_TRADING_TIME",
+          "input_positions": "45381",
+          "birth_lives": "375",
+          "revision_occurrences": "1315",
+          "revisions_per_1000_input_positions": "28.976884599281636",
+          "median_admission_actual_age_minutes": "285.0",
+          "median_observed_revision_span_minutes": "3745.0",
+          "duty_closed_last_lives": "374",
+          "right_censored_lives": "1",
+          "coverage_flagged_occurrences": "8",
+          "coverage_conflict_occurrences": "0",
+          "coverage_conflict_ratio": "0.0",
+          "meaning": "Life及跨度按首次publication层；观点/Required按当次publication层；SYMBOL为包含关系，可重叠"
+        },
+        "states": [
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OTHER_TRADING_TIME",
+            "field": "observation",
+            "value": "ClosedInsufficient",
+            "count": "1",
+            "denominator": "1315"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OTHER_TRADING_TIME",
+            "field": "observation",
+            "value": "ClosedSupported",
+            "count": "721",
+            "denominator": "1315"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OTHER_TRADING_TIME",
+            "field": "observation",
+            "value": "Open",
+            "count": "381",
+            "denominator": "1315"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OTHER_TRADING_TIME",
+            "field": "observation",
+            "value": "Subsumed",
+            "count": "212",
+            "denominator": "1315"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OTHER_TRADING_TIME",
+            "field": "local_basis",
+            "value": "Incomplete",
+            "count": "2",
+            "denominator": "1315"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OTHER_TRADING_TIME",
+            "field": "local_basis",
+            "value": "Supported",
+            "count": "1313",
+            "denominator": "1315"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OTHER_TRADING_TIME",
+            "field": "closed",
+            "value": "0",
+            "count": "446",
+            "denominator": "1315"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OTHER_TRADING_TIME",
+            "field": "closed",
+            "value": "1",
+            "count": "869",
+            "denominator": "1315"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OTHER_TRADING_TIME",
+            "field": "duty_closed",
+            "value": "0",
+            "count": "883",
+            "denominator": "1315"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OTHER_TRADING_TIME",
+            "field": "duty_closed",
+            "value": "1",
+            "count": "432",
+            "denominator": "1315"
+          }
+        ],
+        "reasons": [
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OTHER_TRADING_TIME",
+            "coordinate": "Time",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateSupports",
+            "count": "1971",
+            "denominator": "1971"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OTHER_TRADING_TIME",
+            "coordinate": "Time",
+            "field": "requiredGap_name",
+            "value": "NoGap",
+            "count": "1971",
+            "denominator": "1971"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OTHER_TRADING_TIME",
+            "coordinate": "Time",
+            "field": "requiredVeto_name",
+            "value": "NoVeto",
+            "count": "1971",
+            "denominator": "1971"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OTHER_TRADING_TIME",
+            "coordinate": "Direction",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateUnresolved",
+            "count": "6",
+            "denominator": "1971"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OTHER_TRADING_TIME",
+            "coordinate": "Direction",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateSupports",
+            "count": "1965",
+            "denominator": "1971"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OTHER_TRADING_TIME",
+            "coordinate": "Direction",
+            "field": "requiredGap_name",
+            "value": "DirectionUnavailable",
+            "count": "6",
+            "denominator": "1971"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OTHER_TRADING_TIME",
+            "coordinate": "Direction",
+            "field": "requiredGap_name",
+            "value": "NoGap",
+            "count": "1965",
+            "denominator": "1971"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OTHER_TRADING_TIME",
+            "coordinate": "Direction",
+            "field": "requiredVeto_name",
+            "value": "NoVeto",
+            "count": "1971",
+            "denominator": "1971"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OTHER_TRADING_TIME",
+            "coordinate": "Type",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateUnresolved",
+            "count": "6",
+            "denominator": "1971"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OTHER_TRADING_TIME",
+            "coordinate": "Type",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateSupports",
+            "count": "1965",
+            "denominator": "1971"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OTHER_TRADING_TIME",
+            "coordinate": "Type",
+            "field": "requiredGap_name",
+            "value": "TurnTypeUnavailable",
+            "count": "6",
+            "denominator": "1971"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OTHER_TRADING_TIME",
+            "coordinate": "Type",
+            "field": "requiredGap_name",
+            "value": "NoGap",
+            "count": "1965",
+            "denominator": "1971"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OTHER_TRADING_TIME",
+            "coordinate": "Type",
+            "field": "requiredVeto_name",
+            "value": "NoVeto",
+            "count": "1971",
+            "denominator": "1971"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OTHER_TRADING_TIME",
+            "coordinate": "Bend",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateUnresolved",
+            "count": "6",
+            "denominator": "1971"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OTHER_TRADING_TIME",
+            "coordinate": "Bend",
+            "field": "requiredVerdict_name",
+            "value": "CoordinateSupports",
+            "count": "1965",
+            "denominator": "1971"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OTHER_TRADING_TIME",
+            "coordinate": "Bend",
+            "field": "requiredGap_name",
+            "value": "SelectedAnchorUnavailable",
+            "count": "6",
+            "denominator": "1971"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OTHER_TRADING_TIME",
+            "coordinate": "Bend",
+            "field": "requiredGap_name",
+            "value": "NoGap",
+            "count": "1965",
+            "denominator": "1971"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OTHER_TRADING_TIME",
+            "coordinate": "Bend",
+            "field": "requiredVeto_name",
+            "value": "NoVeto",
+            "count": "1971",
+            "denominator": "1971"
+          }
+        ],
+        "sampled_held_views": [
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OTHER_TRADING_TIME",
+            "state": "ClosedInsufficient",
+            "held_view_sampled_minutes": "20",
+            "count_meaning": "以公开5m位置对已发表观点持有区间取样×5开放分钟；不作内部逐Tick trace"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OTHER_TRADING_TIME",
+            "state": "ClosedSupported",
+            "held_view_sampled_minutes": "10585",
+            "count_meaning": "以公开5m位置对已发表观点持有区间取样×5开放分钟；不作内部逐Tick trace"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OTHER_TRADING_TIME",
+            "state": "Open",
+            "held_view_sampled_minutes": "1328490",
+            "count_meaning": "以公开5m位置对已发表观点持有区间取样×5开放分钟；不作内部逐Tick trace"
+          },
+          {
+            "dimension": "OPENING",
+            "stratum_id": "OTHER_TRADING_TIME",
+            "state": "Subsumed",
+            "held_view_sampled_minutes": "269635",
+            "count_meaning": "以公开5m位置对已发表观点持有区间取样×5开放分钟；不作内部逐Tick trace"
+          }
+        ]
+      },
+      "sample_size": 1315,
+      "denominator_value": 45381,
+      "source_location": "profile/cross_strata_comparison.csv; profile/cross_strata_states.csv; profile/cross_strata_reasons.csv; profile/cross_strata_held_view_time.csv",
+      "notes": "Life及跨度按创建层，观点按当次知识层；持有时间按实际Calendar位置拆分，SYMBOL包含关系可重叠。"
+    }
+  ],
+  "limits": [
+    "候选真实内部状态占用：只提供已发表观点持有区间及5m采样，非逐Tick Dynamic trace",
+    "生命周期：有限观察/修订/交接责任而非市场走势寿命；样本末右删失另列",
+    "上游原始转折分母为Rct可识别实际位置，初始化锚点单列，不表示全部原始市场潜在转折",
+    "首阻断和近actual边：独立输入规则筛查，不是native内部所有尝试/排除计数",
+    "materialTotals所有逐Tick计数器、SourceDisposition等未公开内部变量",
+    "枚举前全部试探组合与完整native perTurn首次阻断轨迹",
+    "独立名为selected_time的字段；以原事件轴和适配器映射确认选中知识",
+    "未到达的Clock修订、撤回、失知等分支的真实适用输入；无可靠牛熊/环境标签"
+  ]
+}
