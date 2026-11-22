@@ -1,0 +1,13 @@
+# C0009｜来源、授权与D004核对
+
+42项exact来源均已核Git对象，当前原件逐字节一致。真实批准原文与controller本地原件及FULL_ASSIGNMENT内逐字嵌入一致，字节/字符/hash符合原OWNER_DECISION。旧Binding在原commit保持原件，当前同名工作树文件合法采用新Binding；SOURCE_AUDIT明确记录该版本差异，不把旧Binding当当前权限。
+
+新Binding相对旧版仅新增feature_behavior_implementation、feature_code_commit_push_adopt和更新Owner授权引用；原grants、身份、workers及写面逐项保留，所有authority_quote可在真实初始GO或本次批准原文找到。D004操作及写面是新Binding相应grants的子集，未将批准扩大到WALL M001或Q/V正式生产。D004仅FI实施节点，完整正式X/G沿消费回交后的既定后继继续。
+
+使用锁定同版longrun_schema_v2.json校验新Binding、C0009 INVOCATION、C0008 Return与D004：结构通过。issuer_call_id=C0009，原manager/E1及回交身份一致；workers=[]，无W。D004所有引用均为预先存在的准确Git文件对象，无#fragment或未来Return引用；原生专业包的内部选择符不修改。
+
+既有FI节点及ImplementationFixReturn由同版control-v0.3/03、control/03 §8.1、control/04和control/05原文确定。manager只消费既有专业事实和Owner决定，不做Feature施工、正式生产或修后结论。C0008待确认由真实新批准解除；当前finding仍CONFIRMED，Release为OPEN_CONFIRMED_DEFECT，未假定已修复或已采用新行为。
+
+原gate对CODEX_NATIVE_DIRECT身份的兼容问题及真实失败输出沿用C0001记录：`daowei2026/observe-iterate@092819b56eaf3e08764ed23650c0826c0fdadec1:longrun/runs/OI-F800-STAT-20261122-01/calls/C0001/GATE_BINDING_RESULT.json`。本C不重复相同检查、不改工具或真实身份取得虚假PASS。schema、来源、授权子集与Git回读检查只证明记录一致性，不证明物理派发、持锁、施工或专业通过。
+
+首批D004/报告/进度先提交推送并远端回读，再独立发布本C Return；第二批引用第一批已有exact对象，最终发布结果另由D004_PUBLICATION.json及RETURN_VALIDATION.md记录。
