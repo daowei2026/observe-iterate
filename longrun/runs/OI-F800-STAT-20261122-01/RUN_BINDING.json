@@ -2,7 +2,7 @@
   "schema": "longrun-binding/v2",
   "run_id": "OI-F800-STAT-20261122-01",
   "work_id": "OI-F800-STAT-20261122",
-  "owner_go_ref": "daowei2026/observe-iterate@43a13e14129984d6f3a142c6eb64397a43c3ca79:longrun/runs/OI-F800-STAT-20261122-01/OWNER_START.md",
+  "owner_go_ref": "daowei2026/observe-iterate@8a4139b9250ed78c602f4c54b36a08380b196057:longrun/runs/OI-F800-STAT-20261122-01/owner-decisions/F800-MP-001/OWNER_AUTHORIZATION.md",
   "coordinator": "codex:OI-F800-STAT-20261122-01:controller",
   "manager": "codex:OI-F800-STAT-20261122-01:manager",
   "executors": [
@@ -33,6 +33,22 @@
         "longrun/runs/OI-F800-STAT-20261122-01/**"
       ],
       "authority_quote": "5. 写入并提交本 Run 的 OWNER GO、Binding、资源记录、调用记录、TASK_PROGRESS、专业报告和 ReleasePackage；"
+    },
+    {
+      "operation": "feature_behavior_implementation",
+      "execution_context": "/dwdhome/fy/BASE_E6_2_copy",
+      "allowed_writes": [
+        "/dwdhome/fy/BASE_E6_2_copy"
+      ],
+      "authority_quote": "<send_user_message_question_reply>\n[{\"questionItemId\":\"[\\\"request_user_input_async\\\",\\\"call_72a2db4ad4d14ec99ed5d5098438fd33\\\",0]\",\"question\":\"是否批准 F800-MP-001：以源 UTI 和频率／Calendar 的准确预期步长修复正常 KLine 的相邻判断，保持 observation_multiple=800、delta=600、2Δ 及正式范围不变，实施回归、提交／推送并采用新 FRP 版本，再完整运行 F 的 rb/hc/i、5m、2021—2023，完成 31 表独立读回与 G 复验？本提案针对已确认的 22 次覆盖标记误报；对 Revision 发行、引用及 UUID 链的影响须新生产实测。确认包：https://github.com/daowei2026/observe-iterate/blob/b87c235afd5ef548881a7aab397894f5c224abc7/longrun/runs/OI-F800-STAT-20261122-01/calls/C0008/OWNER_REQUEST.md\",\"answer\":\"批准 F800-MP-001，实施修复并完整复验\"}]\n</send_user_message_question_reply>\n"
+    },
+    {
+      "operation": "feature_code_commit_push_adopt",
+      "execution_context": "daowei2026/frp@codex/f-observation-multiple-20261122",
+      "allowed_writes": [
+        "daowei2026/frp@codex/f-observation-multiple-20261122"
+      ],
+      "authority_quote": "<send_user_message_question_reply>\n[{\"questionItemId\":\"[\\\"request_user_input_async\\\",\\\"call_72a2db4ad4d14ec99ed5d5098438fd33\\\",0]\",\"question\":\"是否批准 F800-MP-001：以源 UTI 和频率／Calendar 的准确预期步长修复正常 KLine 的相邻判断，保持 observation_multiple=800、delta=600、2Δ 及正式范围不变，实施回归、提交／推送并采用新 FRP 版本，再完整运行 F 的 rb/hc/i、5m、2021—2023，完成 31 表独立读回与 G 复验？本提案针对已确认的 22 次覆盖标记误报；对 Revision 发行、引用及 UUID 链的影响须新生产实测。确认包：https://github.com/daowei2026/observe-iterate/blob/b87c235afd5ef548881a7aab397894f5c224abc7/longrun/runs/OI-F800-STAT-20261122-01/calls/C0008/OWNER_REQUEST.md\",\"answer\":\"批准 F800-MP-001，实施修复并完整复验\"}]\n</send_user_message_question_reply>\n"
     }
   ]
 }
