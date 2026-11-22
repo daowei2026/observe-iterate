@@ -1,0 +1,20 @@
+{
+  "expectation_id": "F800-INV-COVERAGE-001",
+  "version": "FRP@ac1927518ad6105f15ffbe37fea45e4be91ba574",
+  "statement": "正常KLine固定rb/hc/i域、无未知Clock且三对象在[u-800Δ,u]有成功连续观测时，不应标记当前观察域不完整。",
+  "origin": [
+    "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateMaterial.hs#covered/incomplete",
+    "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateKLineInput.hs#buildKLineGroupSource",
+    "daowei2026/observe-iterate@78b684ba6956f4c33a03b9167e846e3b741316a5:longrun/runs/OI-F800-STAT-20261122-01/professional/D001/FeatureUnderstandingPackage.json#processing_relations/R2"
+  ],
+  "applicable_conditions": [
+    "本正式参数实例与三对象固定域",
+    "正常KLine入口，无framePatches/未知Clock",
+    "全三对象有效close与整数UTI覆盖整个观察窗；不含冷启动或真实缺口"
+  ],
+  "falsifier_or_counterevidence": [
+    "指出所列窗口内某对象真实未观测/缺价/失知",
+    "提供预先存在、声明不同覆盖域或不同时间语义的有效合同",
+    "证明独立导出与实际生产输入并非同实例"
+  ]
+}

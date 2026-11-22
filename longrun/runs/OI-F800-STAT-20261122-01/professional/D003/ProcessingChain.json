@@ -1,0 +1,86 @@
+[
+  {
+    "stage_id": "P1",
+    "Input": "三品种真实KLine close/closeUti，5m",
+    "Rule": "同一个收盘事件取得价格与UTI；step=5×120=600",
+    "State": "无覆盖历史状态",
+    "Output": "known=round u；position=u/step；进展u=1×rawUTI",
+    "ActualTime": "市场收盘原UTI",
+    "ConfirmTime": "原事件timestamp/known",
+    "Version": {
+      "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateKLineInput.hs",
+      "line_range": "40-55"
+    },
+    "PossibleInformationLoss": "Double除法引入舍入；rawUTI仍恰为整数"
+  },
+  {
+    "stage_id": "P2",
+    "Input": "本次position/u与上一次position/u",
+    "Rule": "只有position-p==1才声明上一原UTI到当前u的相邻边，否则只声明当前点",
+    "State": "previous=(position,u)",
+    "Output": "ObjectCoverage CoverageObserved [old,u]或[u,u]",
+    "ActualTime": "原UTI端点",
+    "ConfirmTime": "同拍已知",
+    "Version": {
+      "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateKLineInput.hs",
+      "line_range": "94-116"
+    },
+    "PossibleInformationLoss": "最早偏差：浮点归一化位置之差不能精确等1，真实相邻边被丢弃"
+  },
+  {
+    "stage_id": "P3",
+    "Input": "各对象本拍窄边、已有累计区间",
+    "Rule": "相接边first<=oldThrough时累计；不相接时从当前片段重启",
+    "State": "objectCoverage Map Text ObjectCoverage",
+    "Output": "覆盖累计起点由72004199重置为78643799",
+    "ActualTime": "当前u轴",
+    "ConfirmTime": "同拍已接受材料",
+    "Version": {
+      "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateMaterial.hs",
+      "line_range": "92-102,122-132"
+    },
+    "PossibleInformationLoss": "按输入正确累计；无法恢复P2没有声明的相邻边，不能在此盲目合并真实缺口"
+  },
+  {
+    "stage_id": "P4",
+    "Input": "固定域累计区间与W=800×600",
+    "Rule": "每对象first<=u-W且through>=u，且无未知Clock等待才完整",
+    "State": "materialCoverageIncomplete",
+    "Output": "假断点起直到u=79123799恢复前，导出缺覆盖",
+    "ActualTime": "[u-480000,u]",
+    "ConfirmTime": "本拍materialKnown",
+    "Version": {
+      "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateMaterial.hs",
+      "line_range": "53-89"
+    },
+    "PossibleInformationLoss": "错误重启需要再等4000开放分钟才累积足够窗口；这是传播而非新的根因"
+  },
+  {
+    "stage_id": "P5",
+    "Input": "当前材料覆盖标志、已有候选/边界",
+    "Rule": "覆盖值变动使affected；body内保存当前materialCoverageIncomplete",
+    "State": "CandidateState、CandidateBody、previous exact",
+    "Output": "新候选Revision及candidateDomainIncomplete",
+    "ActualTime": "组原问题/责任边界不变",
+    "ConfirmTime": "candidateKnown=materialKnown",
+    "Version": {
+      "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateEvolution.hs",
+      "line_range": "63-104,117-142"
+    },
+    "PossibleInformationLoss": "错误材料状态进入正式观点，可能触发额外复评/修订；不是Pending或无输出"
+  },
+  {
+    "stage_id": "P6",
+    "Input": "同次已决定CandidateOccurrence",
+    "Rule": "storeGroupOccurrence直接bool编码；正常薄publication保存；TIS字段直读",
+    "State": "正式历史不删除；当前public父坐标",
+    "Output": "groupCoverageIncomplete=0/1",
+    "ActualTime": "不回贴actual",
+    "ConfirmTime": "原publication timestamp/groupKnownFrom",
+    "Version": {
+      "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateStorage.hs",
+      "line_range": "75-83"
+    },
+    "PossibleInformationLoss": "没有发现reader、字段映射或序列化反转；1,546个公开值与P1-P5覆盖重放全部一致"
+  }
+]

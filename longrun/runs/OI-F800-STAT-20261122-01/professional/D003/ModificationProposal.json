@@ -1,0 +1,54 @@
+{
+  "proposal_id": "F800-MP-001",
+  "finding_ref": "daowei2026/observe-iterate@3169703e769340200b183dad7675a1d22ecc1850:longrun/runs/OI-F800-STAT-20261122-01/professional/D002/GlobalFindingCandidates.json#F800-GF-001",
+  "current_behavior": "原始600UTI连续边经u/step转换后，跨浮点量级边界差值非精确1；P2发行点而非边，P3据此重启覆盖，正式22观点误报。",
+  "proposed_change": "仅在正常KLine适配器用源UTI和该频率/Calendar的准确预期步长判定相邻边，避免对两个已除法归一化Double位置做严格差值相等；保留真实间隙、失知/失败与冷启动边界，不放宽覆盖窗口或2Δ。正式实现对非整数步长须显式校验/设计，不盲目round。",
+  "why_this_stage": "P2是最早丢失真实边的阶段；P3严格合并规则正确，reader直读正确。改后续窗口、强制groupCoverageIncomplete=0或跨缺口合并只掩盖责任点。",
+  "alternatives": [
+    {
+      "option": "保持现状，Owner明确暂缓",
+      "consequence": "保留22个错误观点及后续风险；不得宣布finding已修复"
+    },
+    {
+      "option": "缩短800或调整delta",
+      "consequence": "改变业务责任和材料准入，仍不能消除原始guard假断点；不推荐作为此实现问题修复"
+    },
+    {
+      "option": "给Double商差加入容差",
+      "consequence": "可在数学上避开本位置，但新增容差边界需验证不桥接真实间隙；相比原始UTI精确步长更难审计，不作为当前推荐"
+    }
+  ],
+  "expected_effect": "当前输入的假断点被保留为真实相邻边；隔离方程上22个冲突flag转0且8个冷启动保留。完整修复后的正式观点数和UUID序列须重跑测量，现阶段不承诺。",
+  "possible_side_effects": [
+    "覆盖值与变化时刻改变会影响candidate affected/body比较、Revision发行及组间exact引用；随机ID不能跨Run强行等同",
+    "步长策略需兼容获支持的Calendar单位和频率，真实空洞/Clock失知不能被误合并",
+    "F/Q共享适配器的下游影响应由实施/释放角色评估；本D未运行Q/V"
+  ],
+  "validation_plan": [
+    "实现前确认支持频率/单位的精确离散步长合同；保留本D四对照",
+    "实施后添加/运行有业务意义的数值边界、真实缺口、冷启动、未知Clock及原有观察窗/2Δ回归",
+    "对象/状态/事件合同若变则只更新受影响U；否则直接锁新代码完整X、31表独立读回与G",
+    "按原finding完整22位置及三年覆盖状态复验；新G检查状态、引用、密度及四个场景问题影响；不得用局部算术结果代替正式释放"
+  ],
+  "files_or_parameters_to_change": [
+    {
+      "file": "src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateKLineInput.hs",
+      "scope": "正常KLine覆盖相邻边判定及必要局部状态载荷"
+    },
+    {
+      "file": "适用的现有FRP测试入口（实施D具体确定）",
+      "scope": "保护真实边与真实缺口的回归"
+    }
+  ],
+  "parameter_changes": "本提案不建议改变批准的observation_multiple800、delta600、单位、范围、尺度或method.revision；版本与实例登记由后续批准实施D处理",
+  "diagnostic_support": [
+    "EXPERIMENT_RESULTS.json",
+    "HASKELL_PROBE_VALIDATION.json"
+  ],
+  "approval_status": "NOT_REQUESTED_BY_EXECUTOR_PENDING_MANAGER_SUBMISSION",
+  "formal_patch_prepared": false,
+  "formal_change_applied": false,
+  "authority": "daowei2026/observe-iterate@87b951bbd15078a2d6353bdd24afe0d8f19c845c:control-v0.3/01_L0_统计驱动的单特征闭环.md#7",
+  "authority_quote": "把候选 patch／候选参数提交、推送或登记为本 Run 当前版本",
+  "next_actor": "原manager向Owner提交本具体提案；未经确认不得实施、提交/推送Feature代码或采用为当前正式版本"
+}

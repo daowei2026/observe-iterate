@@ -1,0 +1,177 @@
+{
+  "finding_id": "F800-GF-001",
+  "observation": "在当前锁定三品种连续KLine且无未知Clock条件下，正式22个观点错误标记覆盖不完整；最早偏差是source归一化Double商差严格==1误拒绝真实600UTI相邻边。",
+  "business_conflict": "正常KLine固定rb/hc/i域、无未知Clock且三对象在[u-800Δ,u]有成功连续观测时，不应标记当前观察域不完整。",
+  "direct_responsibility_stage": {
+    "status": "LOCATED",
+    "category": "ImplementationMismatch",
+    "responsibility_layer": "F：输入应用/覆盖状态形成（P2），数值实现误差",
+    "direct_responsibility_stage": "GroupCandidateKLineInput.buildKLineGroupSource.advance.coverage guard",
+    "code_ref": {
+      "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateKLineInput.hs",
+      "line_range": "109-112"
+    },
+    "downstream_propagation": [
+      "P3累计重启",
+      "P4等待800Δ覆盖",
+      "P5候选正文/发行",
+      "P6原样保存读取"
+    ]
+  },
+  "confirmed_facts": [
+    {
+      "id": "F01",
+      "statement": "D002准确版本、完整配置、正式范围、fields身份和独立31表回读继续有效；本D未新生产或替换实例",
+      "evidence": [
+        "daowei2026/observe-iterate@3169703e769340200b183dad7675a1d22ecc1850:longrun/runs/OI-F800-STAT-20261122-01/professional/D002/FeatureRunResultBinding.json",
+        "SOURCE_AUDIT.json"
+      ]
+    },
+    {
+      "id": "F02",
+      "statement": "三品种各49,683个输入，raw closeUti步长全部为600；同实例KLine文件SHA与D002导出一致",
+      "evidence": [
+        "EXPERIMENT_RESULTS.json",
+        "diagnose_coverage.py"
+      ]
+    },
+    {
+      "id": "F03",
+      "statement": "真实断点2021-08-31 21:45：78643199→78643799，整数差600；归一化131071.99833333334→131072.99833333332，Double差0.9999999999854481；三品种同拍各一次假断点",
+      "evidence": [
+        "SOURCE_FALSE_BREAKS.csv",
+        "HASKELL_DOUBLE_GUARD_PROBE.csv"
+      ]
+    },
+    {
+      "id": "F04",
+      "statement": "源代码guard未包含800或delta；因guard失败发行[u,u]，正常累计区间由首输入72004199重启为78643799",
+      "evidence": [
+        "CODE_AUDIT.json",
+        "BOUNDARY_CONTROLS.csv"
+      ]
+    },
+    {
+      "id": "F05",
+      "statement": "锁定覆盖方程重放与全部1546个正式观点flag一致，0差异；本D重放为derived，不冒充原生内部trace",
+      "evidence": [
+        "PUBLISHED_FLAG_RECONCILIATION.csv",
+        "EXPERIMENT_RESULTS.json"
+      ]
+    },
+    {
+      "id": "F06",
+      "statement": "只在隔离方程中用原始整数UTI相邻关系替代浮点商差，恰好将22个冲突观点改为完整，涉及12Life/18时刻；8个冷启动flag保留",
+      "evidence": [
+        "DIAGNOSTIC_COUNTERFACTUAL_AT_PUBLISHED_LOCATIONS.csv",
+        "EXPERIMENT_RESULTS.json"
+      ]
+    },
+    {
+      "id": "F07",
+      "statement": "Haskell真实Double执行确认断点前后正常相邻均通过、真实断点被原guard误拒绝；跳过一根的1200UTI真实缺口在两种判断下都不连续",
+      "evidence": [
+        "HASKELL_DOUBLE_GUARD_PROBE.csv",
+        "HASKELL_PROBE_VALIDATION.json"
+      ]
+    },
+    {
+      "id": "F08",
+      "statement": "假断点后累计窗口于2021-09-16 11:25（u=79123799）才重新满800Δ；22个正式冲突均位于这段传播区间",
+      "evidence": [
+        "COVERAGE_RESTORATIONS.csv",
+        "BOUNDARY_CONTROLS.csv"
+      ]
+    },
+    {
+      "id": "F09",
+      "statement": "正常KLine每个选中Turn总携带Just Clock，framePatches=[]且frameEnded=False；未暴露的内部计数器不作为观测数据",
+      "evidence": [
+        "CODE_AUDIT.json",
+        {
+          "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateKLineInput.hs",
+          "line_range": "77-116"
+        }
+      ]
+    }
+  ],
+  "competing_explanations": [
+    {
+      "id": "A",
+      "hypothesis": "真实输入断点、缺价或夜盘Calendar跳跃",
+      "prediction": "冲突窗口内应有非600UTI步长/缺价/不对齐",
+      "check": "D002逐22窗有效性与本D输入SHA/全轴步长核对；日夜盘样本对照",
+      "outcome": "RULED_OUT_FOR_THIS_FINDING",
+      "evidence": [
+        "SOURCE_FALSE_BREAKS.csv",
+        "daowei2026/observe-iterate@3169703e769340200b183dad7675a1d22ecc1850:longrun/runs/OI-F800-STAT-20261122-01/professional/D002/VALIDATION.json"
+      ]
+    },
+    {
+      "id": "B",
+      "hypothesis": "冷启动未满800Δ",
+      "prediction": "覆盖历史应在u-480000之后",
+      "check": "22窗真实输入起点72004199远早于所需起点；另8个冷启动保持为1",
+      "outcome": "RULED_OUT_FOR_22_NOT_FOR_8_CONTROLS",
+      "evidence": [
+        "BOUNDARY_CONTROLS.csv",
+        "EXPERIMENT_RESULTS.json"
+      ]
+    },
+    {
+      "id": "C",
+      "hypothesis": "代码/参数/实例错绑，或reader把flag反读",
+      "prediction": "绑定或重放的公开值会不一致",
+      "check": "37项准确来源、6个锁定FRP文件与加载runtime字节一致；公开1,546flag与旧方程逐值一致；serializer与字段映射直传",
+      "outcome": "RULED_OUT",
+      "evidence": [
+        "SOURCE_AUDIT.json",
+        "CODE_AUDIT.json",
+        "PUBLISHED_FLAG_RECONCILIATION.csv"
+      ]
+    },
+    {
+      "id": "D",
+      "hypothesis": "未知Clock等待或正式修订导致合理不完整",
+      "prediction": "有失知Clock/patch或Source失败证据",
+      "check": "当前路径每Turn Just Clock、framePatches为空；恢复时刻完全由单一假断点+800Δ预测",
+      "outcome": "RULED_OUT_IN_NORMAL_KLINE_BINDING",
+      "evidence": [
+        "CODE_AUDIT.json",
+        "COVERAGE_RESTORATIONS.csv"
+      ]
+    },
+    {
+      "id": "E",
+      "hypothesis": "浮点归一化商的严格差值判断丢失连续边",
+      "prediction": "整数步长600但Double商差不等1；单点重启应预测所有公开flag与恢复边界",
+      "check": "Python锁定方程重放+真实Haskell四对照+仅替换guard的隔离反事实",
+      "outcome": "CONFIRMED_DIRECT_CAUSE",
+      "evidence": [
+        "EXPERIMENT_RESULTS.json",
+        "HASKELL_DOUBLE_GUARD_PROBE.csv"
+      ]
+    },
+    {
+      "id": "F",
+      "hypothesis": "原被冻结覆盖预期不适用或需业务取舍",
+      "prediction": "应有不同固定域/时间语义的既有合同或有价值冲突",
+      "check": "已冻结适用条件均满足；真实缺口对照不要求放宽覆盖；没有新业务目标或tradeoff",
+      "outcome": "NO_EVIDENCE_REQUIRING_EXPECTATION_REVISION",
+      "evidence": [
+        "daowei2026/observe-iterate@3169703e769340200b183dad7675a1d22ecc1850:longrun/runs/OI-F800-STAT-20261122-01/professional/D002/DiagnosisInputAdapters.json",
+        "HASKELL_DOUBLE_GUARD_PROBE.csv"
+      ]
+    }
+  ],
+  "resolution_route": "Owner确认后实现修正→X/G复验",
+  "resolution_status": "DIAGNOSED_IMPLEMENTATION_MISMATCH_NOT_FIXED",
+  "cross_effects_to_check": [
+    "覆盖值与变化时刻改变会影响candidate affected/body比较、Revision发行及组间exact引用；随机ID不能跨Run强行等同",
+    "步长策略需兼容获支持的Calendar单位和频率，真实空洞/Clock失知不能被误合并",
+    "F/Q共享适配器的下游影响应由实施/释放角色评估；本D未运行Q/V"
+  ],
+  "original_g_profile_unchanged": true,
+  "original_global_gate": "DIAGNOSIS_REQUIRED",
+  "release_statement": "本D诊断完成不代表finding修复、800标定或FeatureRelease。未经批准采用变化，当前D002结果仍是锁定ac版本的有效未修复历史。"
+}

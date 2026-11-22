@@ -1,0 +1,51 @@
+{
+  "issue_id": "F800-ISSUE-001",
+  "finding_ref": "daowei2026/observe-iterate@3169703e769340200b183dad7675a1d22ecc1850:longrun/runs/OI-F800-STAT-20261122-01/professional/D002/GlobalFindingCandidates.json#F800-GF-001",
+  "diagnosis_ref": "DiagnosisReport.json#F800-DIAG-001",
+  "issue_type": "ImplementationMismatch",
+  "status": "CONFIRMED_NOT_REPAIRED",
+  "title": "KLine覆盖连续性用浮点商差严格相等产生假断点",
+  "direct_responsibility": {
+    "status": "LOCATED",
+    "category": "ImplementationMismatch",
+    "responsibility_layer": "F：输入应用/覆盖状态形成（P2），数值实现误差",
+    "direct_responsibility_stage": "GroupCandidateKLineInput.buildKLineGroupSource.advance.coverage guard",
+    "code_ref": {
+      "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateKLineInput.hs",
+      "line_range": "109-112"
+    },
+    "downstream_propagation": [
+      "P3累计重启",
+      "P4等待800Δ覆盖",
+      "P5候选正文/发行",
+      "P6原样保存读取"
+    ]
+  },
+  "reproduction": [
+    "SOURCE_FALSE_BREAKS.csv",
+    "HASKELL_DOUBLE_GUARD_PROBE.csv",
+    "PUBLISHED_FLAG_RECONCILIATION.csv"
+  ],
+  "business_impact": {
+    "affected_occurrences": 22,
+    "occurrence_denominator": 1546,
+    "occurrence_ratio": 0.014230271668822769,
+    "affected_lives": 12,
+    "life_denominator": 480,
+    "affected_life_ratio": 0.025,
+    "affected_publication_ticks": 18,
+    "technical": "正式groupCoverageIncomplete把已有成功连续观测误报为缺覆盖；source错误触发状态变动，影响候选修订正文及其发行条件",
+    "business": "错误削弱候选观察覆盖可信度。无论某下游是否使用该字段，正式载荷与当前覆盖事实应自洽；未证明交易/收益损失，不升级为该类结论",
+    "prioritization": "MEDIUM：可复现正式载荷正确性问题，比例1.423%观点/2.5%Life；应在本轮释放前处理或由Owner明确暂缓",
+    "effect_limit": "未测量完整修复后总观点数、UUID链及下游效应；不承诺只少22个观点或保持全部历史ID"
+  },
+  "scope": "仅当前锁定F800 KLine入口已证明发生；其他入口/品种/尺度不外推为同样发生",
+  "no_behavior_change": true,
+  "required_authorization": "依原L0 §7/Owner指令，正式实施、提交、推送或采用修复前需Owner确认",
+  "acceptance_criteria": [
+    "真实连续600UTI边跨131072归一化边界仍连续",
+    "真实缺口、冷启动、未知Clock/失败不能被桥接",
+    "通过原有窗口/2Δ/责任边界合同回归；800、delta600及基线method.revision1保持批准范围",
+    "Owner确认后，以新准确版本完整三年X及G证明该finding不再发生，并复核额外输出/身份影响"
+  ]
+}

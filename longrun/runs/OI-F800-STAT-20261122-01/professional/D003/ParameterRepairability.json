@@ -1,0 +1,101 @@
+{
+  "suspected_parameters": [
+    "profile.observation_multiple=800",
+    "profile.delta=600",
+    "market.units_per_open_minute=120",
+    "market.units_per_calendar_tick=1",
+    "input.freq=5m",
+    "硬编码连续性==1、未知Clock/revision尾6Δ、handoff尾18Δ"
+  ],
+  "parameter_consumers": [
+    {
+      "parameter": "observation_multiple × delta",
+      "definition": {
+        "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateTypes.hs",
+        "line_range": "19-26"
+      },
+      "consumers": [
+        {
+          "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateMaterial.hs",
+          "line_range": "55,63,75"
+        },
+        {
+          "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateEvolution.hs",
+          "line_range": "130-132"
+        }
+      ],
+      "effect": "控制材料准入和覆盖窗/观察期限；不参与source商差guard"
+    },
+    {
+      "parameter": "freq与units_per_open_minute",
+      "definition": {
+        "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateKLineInput.hs",
+        "line_range": "43-53"
+      },
+      "consumers": [
+        {
+          "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateKLineInput.hs",
+          "line_range": "109-112"
+        }
+      ],
+      "effect": "派生step=600和position；属已锁定输入尺度/Calendar单位，改变会影响上游与实际业务单位，不是允许试调的修复手段"
+    },
+    {
+      "parameter": "units_per_calendar_tick",
+      "definition": {
+        "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateKLineInput.hs",
+        "line_range": "53,77"
+      },
+      "consumers": [
+        {
+          "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateMaterial.hs",
+          "line_range": "55-77"
+        }
+      ],
+      "effect": "进展及Clock换算，不修复position差guard"
+    },
+    {
+      "parameter": "硬编码==1",
+      "definition": {
+        "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateKLineInput.hs",
+        "line_range": "110"
+      },
+      "consumers": [
+        "覆盖相邻窄边判定"
+      ],
+      "effect": "当前没有暴露连续性容差或精确离散步长策略；直接责任点"
+    },
+    {
+      "parameter": "固定6Δ/18Δ",
+      "definition": {
+        "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateMaterial.hs",
+        "line_range": "67"
+      },
+      "consumers": [
+        {
+          "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateEvolution.hs",
+          "line_range": "131"
+        },
+        {
+          "ref": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateDecisions.hs",
+          "line_range": "56-59"
+        }
+      ],
+      "effect": "后续等待/修订/交接；不参与source连续性，不能修复断点"
+    }
+  ],
+  "earliest_business_divergence": "P2：guard失败，把正确[78643199,78643799]边降为[78643799,78643799]点",
+  "feasibility_status": "PROVEN_NOT_ADJUSTABLE",
+  "feasibility_evidence": [
+    "在同一锁定输入、需保留当前业务对象的配置范围内，K/Δ不进入guard，无法改变该假断点",
+    "真实正窗口合同下，断点重启first=u无法覆盖此前窗口；在当前W=480000及保持既有观察对象的窗口范围，first<=u-W为false。用极小W让浮点减法吞掉窗口，或把候选滤空来不发表，都不是原预期的修复",
+    "以屏蔽候选或改变5m、单位、Calendar来避开发表不满足原冻结预期，且越过本轮硬输入",
+    "能力结论只限当前暴露参数；不能扩大为实现不可修复。精确UTI相邻策略在隔离算术中恢复断点，并保留真实缺口"
+  ],
+  "upstream_dependency": "K/Δ同时影响材料与组责任；freq/单位更改会改变上游坐标与业务尺度，本D不修改或试标定",
+  "unresolved_constraints": [
+    "正式实现需对支持的频率/单位验证精确步长策略，对非整数步长、Clock失知、真实间隙明确处理",
+    "修复改变覆盖正文与稀疏Revision序列，必须Owner确认后完整X/G；当前反事实不代替重跑"
+  ],
+  "next_route": "IMPLEMENTATION_CORRECTION_AFTER_OWNER_MODIFICATION_CONFIRMATION"
+}

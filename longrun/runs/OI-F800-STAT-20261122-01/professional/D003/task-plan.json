@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "project": {
+    "id": "oi-f800-stat-20261122-01",
+    "title": "F800统计闭环 Run"
+  },
+  "task": {
+    "id": "oi-f800-stat-20261122-01-d003-e1",
+    "title": "D003 E1：F800-GF-001偏差诊断",
+    "monitoring": {
+      "scope": "general"
+    },
+    "completion_gate": "按锁定Skill完成单个finding的事实定位、区分实验、参数可修复性、原生诊断/问题/修改提案及合法PRO_RETURN；不实施新正式行为或代替Owner确认"
+  },
+  "phases": [
+    {
+      "id": "diagnosis",
+      "title": "单finding诊断与回交",
+      "steps": [
+        {
+          "id": "binding",
+          "title": "核对被冻结预期、准确输入与权限",
+          "acceptance": "准确D003/Skill/Adapter/结果绑定及Owner原文核对，未重复有效U/X/G",
+          "weight": 1
+        },
+        {
+          "id": "localization",
+          "title": "沿处理链做区分性检查并定位",
+          "acceptance": "真实样本与代码检查排除竞争解释，最小责任阶段及反事实边界可复现",
+          "weight": 3
+        },
+        {
+          "id": "diagnosis",
+          "title": "形成原生诊断与修改确认材料",
+          "acceptance": "DiagnosisReport、MinimalDiscriminatingExperiment、Issue、参数能力初筛与适用ModificationProposal齐全，无未经确认的正式改变",
+          "weight": 2
+        },
+        {
+          "id": "return",
+          "title": "发布准确专业结果和合法PRO_RETURN",
+          "acceptance": "先发布专业成果，再引用已有提交回交；同版schema/pro_state与真实身份核验、远端回读均通过",
+          "weight": 1
+        }
+      ]
+    }
+  ]
+}

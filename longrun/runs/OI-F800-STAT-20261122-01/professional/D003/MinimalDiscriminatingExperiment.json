@@ -1,0 +1,106 @@
+{
+  "experiment_id": "F800-MDE-001",
+  "scope": "DIAGNOSTIC_ONLY",
+  "question": "是否确有source连续性判断失真，能否解释完整已发布偏差？",
+  "frozen_inputs": {
+    "code_version": {
+      "frp": "daowei2026/frp@ac1927518ad6105f15ffbe37fea45e4be91ba574",
+      "tis": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767"
+    },
+    "parameter_version": "b72095ff100da926474701b74bff7586a74b9770bc81cadc34c23cfe223e5cb3",
+    "result_ref": "daowei2026/observe-iterate@3169703e769340200b183dad7675a1d22ecc1850:longrun/runs/OI-F800-STAT-20261122-01/professional/D002/FeatureRunResultBinding.json",
+    "frozen_expectation_ref": "daowei2026/observe-iterate@3169703e769340200b183dad7675a1d22ecc1850:longrun/runs/OI-F800-STAT-20261122-01/professional/D002/DiagnosisInputAdapters.json#F800-DA-001",
+    "time_basis": "Asia/Shanghai原publication与groupKnownFrom；KLine整数closeUti，120UTI/开放分钟；逐个检查[u-480000,u]"
+  },
+  "minimum_additional_evidence": "复用已有3×49,683个KLine的UTI列、1,546个已发表flag；只扫描覆盖方程，不重跑FRP或G",
+  "discriminating_predictions": {
+    "floating_cause": "出现raw连续/浮点不连续，重放flag应全吻合",
+    "data_gap_cause": "raw应有缺口；修正纯算术不能保留真实缺口对照"
+  },
+  "procedure": [
+    "核对源字节与输入SHA",
+    "按原guard与accumulateForwardCoverage/covered方程派生覆盖状态",
+    "只对已发表位置对齐flag",
+    "在隔离副本方程中用整数UTI相邻判据",
+    "对真实断点前后及真实1200UTI缺口执行Haskell Double"
+  ],
+  "actual_results": {
+    "diagnostic_only": true,
+    "formal_feature_run": false,
+    "source_behavior_changed": false,
+    "original_binding_unchanged": true,
+    "input_positions_per_symbol": 49683,
+    "input_symbols": [
+      "rb",
+      "hc",
+      "i"
+    ],
+    "frequency_step": 600,
+    "observation_W": 480000,
+    "false_breaks_per_symbol": {
+      "rb": 1,
+      "hc": 1,
+      "i": 1
+    },
+    "false_break_time": "2021-08-31 21:45:00",
+    "false_break_uti": 78643799,
+    "integer_delta": 600,
+    "position_delta": 0.9999999999854481,
+    "coverage_restarts_at": 78643799,
+    "restorations": [
+      {
+        "symbol": "rb",
+        "timestamp": "2021-01-19 14:45:00",
+        "uti": 72484199,
+        "start": 72004199
+      },
+      {
+        "symbol": "rb",
+        "timestamp": "2021-09-16 11:25:00",
+        "uti": 79123799,
+        "start": 78643799
+      },
+      {
+        "symbol": "hc",
+        "timestamp": "2021-01-19 14:45:00",
+        "uti": 72484199,
+        "start": 72004199
+      },
+      {
+        "symbol": "hc",
+        "timestamp": "2021-09-16 11:25:00",
+        "uti": 79123799,
+        "start": 78643799
+      },
+      {
+        "symbol": "i",
+        "timestamp": "2021-01-19 14:45:00",
+        "uti": 72484199,
+        "start": 72004199
+      },
+      {
+        "symbol": "i",
+        "timestamp": "2021-09-16 11:25:00",
+        "uti": 79123799,
+        "start": 78643799
+      }
+    ],
+    "published_occurrences_checked": 1546,
+    "published_flag_matches": 1546,
+    "published_flag_mismatches": 0,
+    "diagnostic_changed_occurrences": 22,
+    "diagnostic_changed_lives": 12,
+    "diagnostic_changed_ticks": 18,
+    "cold_start_flags_preserved": 8,
+    "no_formal_new_result": "反事实仅重放覆盖方程及对齐已有公开位置；未运行完整候选演化，不能作为新正式输出或断言未来总组数/观点数",
+    "native_trace_limit": "native_derived为根据锁定源方程、同实例真实输入的隔离重放；不是未暴露的原生内部trace",
+    "completed_at": "2026-11-22T10:53:39.985074+00:00"
+  },
+  "haskell_results": "HASKELL_PROBE_VALIDATION.json",
+  "interpretation": "单一P2假断点足以解释全体22个finding位置和800Δ后的恢复；竞争解释被当前输入和四对照排除",
+  "limitations": [
+    "不是native内部trace，未声称读到了materialTotals",
+    "未重放完整候选枚举/身份/alternate引用，不据此宣布新正式组数/观点数",
+    "整数诊断判据仅验证锁定5m/120UTI的当前输入，不等于覆盖所有可配置市场/频率的正式修复实现"
+  ]
+}
