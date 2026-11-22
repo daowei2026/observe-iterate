@@ -1,0 +1,38 @@
+{
+  "schema": "longrun-binding/v2",
+  "run_id": "OI-WALL-STAT-20261122-01",
+  "work_id": "OI-WALL-STAT-20261122",
+  "owner_go_ref": "daowei2026/observe-iterate@6ba49120d4b620b48c93c76bc9dcdbafc3bf357c:longrun/runs/OI-WALL-STAT-20261122-01/OWNER_START.md",
+  "coordinator": "codex:OI-WALL-STAT-20261122-01:controller",
+  "manager": "codex:OI-WALL-STAT-20261122-01:manager",
+  "executors": [
+    "codex:OI-WALL-STAT-20261122-01:executor:E1"
+  ],
+  "workers": [],
+  "grants": [
+    {
+      "operation": "formal_feature_run",
+      "execution_context": "/dwdhome/fy/BASE_E6_2",
+      "allowed_writes": [
+        "/dwdhome/fy/BASE_E6_2"
+      ],
+      "authority_quote": "本次授权两条新 Run 分别进行：\n\n1. 读取锁定代码、业务输入、历史产物和已有缓存；\n2. 核实工作区、代码加载、参数实例和结果身份；\n3. 运行正式 Feature；\n4. 写入本 Run 独立的运行结果、统计脚本、日志、图表和分析报告；\n5. 写入并提交本 Run 的 OWNER GO、Binding、资源记录、调用记录、TASK_PROGRESS、专业报告和 ReleasePackage；\n6. 在准确一致时读取和复用已有正式结果。"
+    },
+    {
+      "operation": "run_result_statistics_analysis_write",
+      "execution_context": "/dwdhome/fy/BASE_E6_2",
+      "allowed_writes": [
+        "/dwdhome/fy/BASE_E6_2"
+      ],
+      "authority_quote": "本次授权两条新 Run 分别进行：\n\n1. 读取锁定代码、业务输入、历史产物和已有缓存；\n2. 核实工作区、代码加载、参数实例和结果身份；\n3. 运行正式 Feature；\n4. 写入本 Run 独立的运行结果、统计脚本、日志、图表和分析报告；\n5. 写入并提交本 Run 的 OWNER GO、Binding、资源记录、调用记录、TASK_PROGRESS、专业报告和 ReleasePackage；\n6. 在准确一致时读取和复用已有正式结果。"
+    },
+    {
+      "operation": "run_record_write",
+      "execution_context": "daowei2026/observe-iterate@codex/oi-wall-stat-20261122-01",
+      "allowed_writes": [
+        "longrun/runs/OI-WALL-STAT-20261122-01/**"
+      ],
+      "authority_quote": "5. 写入并提交本 Run 的 OWNER GO、Binding、资源记录、调用记录、TASK_PROGRESS、专业报告和 ReleasePackage；"
+    }
+  ]
+}
