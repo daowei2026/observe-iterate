@@ -1,0 +1,12 @@
+
+/dwdhome/fy/BASE_E6_2_copy/.runtime/f-observation-multiple-github-20261122/frp/test/U2KLineCoverageAdapterSpecMain.hs:58:27: error:
+    Ambiguous occurrence ‘price’
+    It could refer to
+       either the field ‘price’ of record ‘Tick’,
+              imported from ‘Frp.Core’ at /dwdhome/fy/BASE_E6_2_copy/.runtime/f-observation-multiple-github-20261122/frp/test/U2KLineCoverageAdapterSpecMain.hs:22:1-29
+              (and originally defined in ‘Frp.Core.Engine.Base’)
+           or ‘Main.price’,
+              defined at /dwdhome/fy/BASE_E6_2_copy/.runtime/f-observation-multiple-github-20261122/frp/test/U2KLineCoverageAdapterSpecMain.hs:36:1
+   |
+58 |               bars=[let p=price symbol n in K.Bar p p p p 0 0 (uti n) | n<-positions]
+   |                           ^^^^^

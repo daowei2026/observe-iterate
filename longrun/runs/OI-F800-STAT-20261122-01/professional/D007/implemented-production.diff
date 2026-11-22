@@ -1,0 +1,27 @@
+diff --git a/src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateKLineInput.hs b/src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateKLineInput.hs
+index 1a1b8da..4587b8b 100644
+--- a/src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateKLineInput.hs
++++ b/src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateKLineInput.hs
+@@ -123,7 +123,7 @@ buildKLineGroupSource plan market=do
+         in GroupTurn ref source object actual price confirmed known direction kind roundValue
+              geometry (Just (clock turnKnown actual)) False Nothing
+       advance tick (anchor,previous,types,_)=
+-        let (a,b,Just (_,known,_,u),z)=atTickValue tick
++        let (a,b,Just (price,known,_,u),z)=atTickValue tick
+               :: (Maybe ST.CompleteScaleTurn,Maybe ST.CompleteScaleTurn,
+                   Maybe (Double,Int64,Double,Double),Maybe Zig.ZigWithStatusOcc)
+             currentTypes=case z of
+@@ -137,9 +137,11 @@ buildKLineGroupSource plan market=do
+             nextAnchor=case a of Just v->Just (selectedAnchor v);Nothing->anchor
+             secondTurns=maybe [] (pure . selected currentTypes SecondRound nextAnchor known) b
+             after=case b of Just v->Just (selectedAnchor v);Nothing->nextAnchor
+-            coverage=[klineForwardCoverage utiStep object previous (known,u)]
++            validPrice=not (isNaN price || isInfinite price)
++            coverage=[if validPrice then klineForwardCoverage utiStep object previous (known,u)
++              else ObjectCoverage object CoverageInputMissing Nothing Nothing]
+             frame=FormationFrame u known (firstTurns++secondTurns) [] False coverage
+-            before=Just (known,u)
++            before=if validPrice then Just (known,u) else Nothing
+             retained=case after of
+               Just (Point2 at _,_)->M.filterWithKey (\uti _->uti>=round at) currentTypes
+               Nothing->currentTypes

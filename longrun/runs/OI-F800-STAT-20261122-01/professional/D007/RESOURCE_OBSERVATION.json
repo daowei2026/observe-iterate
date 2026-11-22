@@ -1,0 +1,23 @@
+{
+  "observed_at": "2026-11-22T16:56:49.699583+00:00",
+  "run_id": "OI-F800-STAT-20261122-01",
+  "delegation_id": "D007",
+  "phase": "compiling",
+  "supervisor_pid": 2003652,
+  "active_child_pid": 2003653,
+  "build_child_pid_observed_before_tests": 2003653,
+  "process_observation": [
+    "    PID    PPID     ELAPSED STAT COMMAND",
+    "2003652 2003650       20:24 S    python artifacts/OI-F800-STAT-20261122-01/D007/build_and_test.py",
+    "2003653 2003652       20:24 Dl   /nix/.ghcup/bin/stack --stack-yaml /dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/edh-universe/stack.yaml build frp:exe:dbaw frp:exe:u2-observation-window-check frp:exe:u2-kline-coverage-adapter-check trade-poc:exe:ts --copy-bins --ghc-options=-O0 --ghc-options=-j2 --jobs=2"
+  ],
+  "process_observation_exit": 0,
+  "child_observation": [
+    "    PID    PPID     ELAPSED STAT COMMAND"
+  ],
+  "child_observation_exit": 1,
+  "actual_lock_rows": [
+    "2003652 FLOCK WRITE /dwdhome/fy/cgpterm/artifacts/wall-f-closure-20261122/FORMAL_PRODUCTION.lock"
+  ],
+  "formal_feature_run": false
+}

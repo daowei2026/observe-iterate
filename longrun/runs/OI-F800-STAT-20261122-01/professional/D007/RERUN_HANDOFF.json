@@ -1,0 +1,45 @@
+{
+  "workflow_status": "RERUN_REQUIRED",
+  "new_code_commit": "39f02ec4548e68ba8dbd30061afc870546000994",
+  "ready_for_feature_rerun": true,
+  "required_next": "原manager消费FI后，完整新F-only X→31表独立OnlyRead→原Skill全量G；批准覆盖该后继，无需重复请示同范围。",
+  "old_binding": "daowei2026/observe-iterate@38e2af72be826a1e98fd7f5d4522c50d218750f3:longrun/runs/OI-F800-STAT-20261122-01/professional/D005/FeatureRunResultBinding.json",
+  "old_gate": "daowei2026/observe-iterate@38e2af72be826a1e98fd7f5d4522c50d218750f3:longrun/runs/OI-F800-STAT-20261122-01/professional/D005/GlobalProfileGate.json",
+  "old_result_use": "原be57结果/G保留为历史对照，不是新代码当前Gate证据。",
+  "preserve": [
+    "D002—D006原件及旧结果",
+    "GF001旧版本闭环事实",
+    "四项场景问题",
+    "Q独立数值边界限制"
+  ],
+  "scope": {
+    "symbols": [
+      "rb",
+      "hc",
+      "i"
+    ],
+    "freq": "5m",
+    "years": [
+      2021,
+      2022,
+      2023
+    ],
+    "calendar": "night_end_at_2300",
+    "sof": "TA_updto20240229_DBA",
+    "stk_tlist": "steel",
+    "configuration_sha256": "b72095ff100da926474701b74bff7586a74b9770bc81cadc34c23cfe223e5cb3"
+  },
+  "runtime_wrapper": "run_in_runtime.py（指向新runtime）；不得沿用D005旧wrapper冒充新引擎",
+  "new_attempt_required": true,
+  "new_store_required": true,
+  "resource_policy": "HEAVY_RESOURCE_POLICY.json：真实单写者和实际flock；运行前重核code/binary/config/load/Calendar/resultidentity。",
+  "mandatory_retests": [
+    "GF002原8观点按自然对象/known对应及全量缺价窗冲突",
+    "GF001原22位置+8冷启动对照",
+    "全部31表、fields/config身份和引用exact链",
+    "真实Life/Revision/发行/UUID变化，不预设计数"
+  ],
+  "no_new_FeatureReleaseGate": true,
+  "no_new_ReleasePackage": true,
+  "no_Q_V_WALL_execution": true
+}

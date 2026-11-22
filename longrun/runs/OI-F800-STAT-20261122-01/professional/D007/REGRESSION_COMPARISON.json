@@ -1,0 +1,27 @@
+{
+  "completed": true,
+  "actual_adapter_graph": true,
+  "formal_feature_run": false,
+  "upstream_input_kind": "explicit synthetic raw Bars; same exact UTI grid with 69-point NaN pattern plus Infinity/true-gap controls",
+  "baseline": {
+    "frp": "be57d6752c9d43d10f1d670e1d2993bb8153ea7c",
+    "expected_program_exit_code": 1,
+    "frames": 7475,
+    "nan_as_observed": 207
+  },
+  "fixed": {
+    "frp": "39f02ec4548e68ba8dbd30061afc870546000994",
+    "program_exit_code": 0,
+    "checks": 13,
+    "frames": 7475,
+    "nonfinite_as_input_missing": 209
+  },
+  "invariant_axes_equal": true,
+  "restoration_after_nan": {
+    "first_success": 93715799,
+    "first_complete": 94195799,
+    "observation_duration": 480000
+  },
+  "assertions": "真实adapter检查NaN/±Infinity、单对象失败、失败后首点、Clock推进、有限零量/无Turn、真实UTI空洞以及恢复800Delta前/等号边界。",
+  "limit": "上游Bar/空Turn是明确合成输入；未重跑正式F候选、未测新Life/Revision/发行/UUID总量。原8观点的自然对象对应与全量缺价窗冲突由后继完整X/G实测。"
+}

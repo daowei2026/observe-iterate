@@ -1,0 +1,27 @@
+{
+  "proposal_id": "F800-MP-002",
+  "diagnosis_ref": "daowei2026/observe-iterate@46de903caa04be60a5600ef9f416445f5a6366cd:longrun/runs/OI-F800-STAT-20261122-01/professional/D006/DiagnosisReport.json#F800-DIAG-002",
+  "adopted_version": "daowei2026/frp@39f02ec4548e68ba8dbd30061afc870546000994",
+  "production_diff_exact_approved": true,
+  "structure_contract_changed": false,
+  "schema_or_saved_fields_changed": false,
+  "objects_or_identity_contract_changed": false,
+  "behavior_change": "非有限close的正常覆盖分类与previous成功状态；缺价区别在原责任边界保留。",
+  "stable_parameters": [
+    "observation_multiple=800",
+    "delta=600",
+    "CalendarUTITick",
+    "2Delta=1200UTI",
+    "method.revision=1",
+    "inputs/sources/domain/result_layout/schema、PNV、SOF/Calendar及完整F-only范围"
+  ],
+  "affected_understanding": "仅当前代码/运行时绑定与J4覆盖分类事实更新；见CurrentFeatureUnderstandingDelta.json，不重做完整U。",
+  "next_route": "结构合同未变：仅核受影响绑定后直接新X→31表独立读回→原Skill全量G→原L1释放处理。",
+  "identity_effect": "覆盖标记参与候选正文/稀疏发行；Revision/发行时点数量和UUID/exact链须完整新运行实测，不能从13项局部测试预设。",
+  "dependencies": {
+    "Q": "共享正常KLine适配有行为影响可能，Q另一路数值边界限制保留；本Run不运行或释放Q。",
+    "V": "下游证据版本需随未来F/Q发布核对；未验证V。",
+    "WALL": "无改动或授权扩展。"
+  },
+  "formal_run_and_release_not_claimed": true
+}

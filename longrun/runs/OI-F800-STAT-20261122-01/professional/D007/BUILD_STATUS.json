@@ -1,0 +1,113 @@
+{
+  "run_id": "OI-F800-STAT-20261122-01",
+  "delegation_id": "D007",
+  "pid": 2003652,
+  "started_at": "2026-11-22T16:36:25.237359+00:00",
+  "formal_feature_run": false,
+  "completed": true,
+  "runtime": "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime",
+  "tests": [
+    {
+      "name": "real_kline_adapter",
+      "command": [
+        "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/edh-universe/bin/u2-kline-coverage-adapter-check",
+        "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D005/configuration.json",
+        "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D007/adapter-fixture-app",
+        "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D007/fixed-adapter-trace.csv"
+      ],
+      "log": "fixed-adapter-check.log",
+      "started_at": "2026-11-22T16:57:26.431539+00:00",
+      "finished_at": "2026-11-22T16:57:31.642603+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "existing_observation_window",
+      "command": [
+        "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/edh-universe/bin/u2-observation-window-check",
+        "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D002/preflight/baseline-configuration.json",
+        "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D005/configuration.json"
+      ],
+      "log": "fixed-window-checks.log",
+      "started_at": "2026-11-22T16:57:31.666145+00:00",
+      "finished_at": "2026-11-22T16:57:36.862652+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "existing_material_coverage_controls",
+      "command": [
+        "stack",
+        "--stack-yaml",
+        "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/edh-universe/stack.yaml",
+        "exec",
+        "--",
+        "runghc",
+        "-package=frp",
+        "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D006/NativeCoverageControls.hs"
+      ],
+      "log": "fixed-coverage-controls.log",
+      "started_at": "2026-11-22T16:57:36.894203+00:00",
+      "finished_at": "2026-11-22T16:57:47.283564+00:00",
+      "exit_code": 0
+    }
+  ],
+  "lock_acquired_at": "2026-11-22T16:36:25.265447+00:00",
+  "lock_path": "/dwdhome/fy/cgpterm/artifacts/wall-f-closure-20261122/FORMAL_PRODUCTION.lock",
+  "lock_owner_pid": 2003652,
+  "phase": "completed",
+  "build_command": [
+    "stack",
+    "--stack-yaml",
+    "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/edh-universe/stack.yaml",
+    "build",
+    "frp:exe:dbaw",
+    "frp:exe:u2-observation-window-check",
+    "frp:exe:u2-kline-coverage-adapter-check",
+    "trade-poc:exe:ts",
+    "--copy-bins",
+    "--ghc-options=-O0",
+    "--ghc-options=-j2",
+    "--jobs=2"
+  ],
+  "active_command": [
+    "stack",
+    "--stack-yaml",
+    "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/edh-universe/stack.yaml",
+    "exec",
+    "--",
+    "runghc",
+    "-package=frp",
+    "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D006/NativeCoverageControls.hs"
+  ],
+  "active_pid": 2022773,
+  "active_log": "fixed-coverage-controls.log",
+  "heartbeat_at": "2026-11-22T16:57:42.108542+00:00",
+  "active_children": [
+    "    PID    PPID COMMAND"
+  ],
+  "child_observation_exit_code": 1,
+  "build_exit_code": 0,
+  "build_finished_at": "2026-11-22T16:57:26.356244+00:00",
+  "baseline_binaries_unchanged": true,
+  "baseline_source_unchanged": true,
+  "binaries": {
+    "ts": {
+      "path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/edh-universe/bin/ts",
+      "sha256": "4e0e22796bb6b32b6fd9afd1c3b18b5af1eebe1d35df24090fc19585866652f0"
+    },
+    "dbaw": {
+      "path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/edh-universe/bin/dbaw",
+      "sha256": "991a3fe0100d6ad8be0412e31ac4fbc6e5988b942c5269754176262d01af4ec8"
+    },
+    "u2-observation-window-check": {
+      "path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/edh-universe/bin/u2-observation-window-check",
+      "sha256": "38a52177bd72fa1dd13d3562bc99d5d8337a2ec4468a493eb5b35563ace689f2"
+    },
+    "u2-kline-coverage-adapter-check": {
+      "path": "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/edh-universe/bin/u2-kline-coverage-adapter-check",
+      "sha256": "14469f57de3bd56e520805108782cce68779a2ad00fa69197982c81557240bc2"
+    }
+  },
+  "exit_code": 0,
+  "finished_at": "2026-11-22T16:58:16.670594+00:00",
+  "lock_released_at": "2026-11-22T16:58:16.670631+00:00"
+}

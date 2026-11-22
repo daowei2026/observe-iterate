@@ -1,0 +1,82 @@
+{
+  "diagnosis_ref": "daowei2026/observe-iterate@46de903caa04be60a5600ef9f416445f5a6366cd:longrun/runs/OI-F800-STAT-20261122-01/professional/D006/DiagnosisReport.json#F800-DIAG-002",
+  "code_commit": "39f02ec4548e68ba8dbd30061afc870546000994",
+  "changed_files": [
+    "frp.cabal",
+    "src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateKLineInput.hs",
+    "test/U2KLineCoverageAdapterSpecMain.hs"
+  ],
+  "changed_behavior": "按MP002原diff：正常KLine非有限close（NaN/±Infinity）发CoverageInputMissing Nothing Nothing并清previous成功邻接状态；有效UTI/Clock继续推进，恢复首个有限价从当前点开始累计。有限价零量/无Turn仍可Observed，精确UTI步长及800/600/2Delta和既有材料/确认规则不变。",
+  "tests": [
+    {
+      "name": "真实正常KLine适配回归",
+      "result": "PASS",
+      "checks": 13,
+      "exit_code": 0,
+      "input": "合成原始Bar，ScaleTurn/Zig无事件；缓存注入上游结果，实际运行Generic KLine→close/UTI join→buildKLineGroupSource局部advance→Material。不手造CoverageInputMissing或FormationFrame输入。",
+      "observations": {
+        "calendar_firings": 2492,
+        "actual_source_frames": 7475,
+        "nonfinite_input_missing_frames": 209,
+        "nan_frames": 207,
+        "positive_infinity_frames": 1,
+        "negative_infinity_frames": 1
+      },
+      "evidence": [
+        "fixed-adapter-check.log",
+        "fixed-adapter-trace.csv",
+        "REGRESSION_COMPARISON.json"
+      ]
+    },
+    {
+      "name": "旧be57真实适配负对照",
+      "result": "PASS_EXPECTED_FAILURE",
+      "program_exit_code": 1,
+      "expected_failure": true,
+      "observation": "同一测试/Bar流在旧be57实际adapter上到缺价断言失败；207个NaN帧全为Observed且错误完整，修后为InputMissing；不是编译失败冒充反例。",
+      "evidence": [
+        "BASELINE_REGRESSION.json",
+        "baseline-adapter-check.log",
+        "baseline-adapter-trace.csv"
+      ]
+    },
+    {
+      "name": "既有观察窗口与数值/生命周期边界",
+      "result": "PASS",
+      "checks": 64,
+      "exit_code": 0,
+      "scope": "GF001原始UTI边界/600准确相邻/冷启动/真实间隙、未知Clock、800/600/实际2Delta=1200、deadline/r/稀疏发行和引用不变量；不代替下一完整G的22+8逐位置复验。",
+      "evidence": [
+        "fixed-window-checks.log"
+      ]
+    },
+    {
+      "name": "既有Material覆盖控制",
+      "result": "PASS",
+      "checks": 8,
+      "exit_code": 0,
+      "scope": "同新库执行D006既有控制：冷启动、无Turn有效流、单对象SourceFailure/InputMissing/ClockUnknown、真实UTI缺口与明确Inapplicable。",
+      "evidence": [
+        "fixed-coverage-controls.log"
+      ]
+    },
+    {
+      "name": "隔离正式引擎及回归目标构建",
+      "result": "PASS",
+      "exit_code": 0,
+      "targets": [
+        "frp:exe:dbaw",
+        "frp:exe:u2-observation-window-check",
+        "frp:exe:u2-kline-coverage-adapter-check",
+        "trade-poc:exe:ts"
+      ],
+      "evidence": [
+        "BUILD_STATUS.json",
+        "BUILD_INPUT_MANIFEST.json",
+        "build.log.gz"
+      ]
+    }
+  ],
+  "new_feature_version": "daowei2026/frp@39f02ec4548e68ba8dbd30061afc870546000994",
+  "ready_for_feature_rerun": true
+}

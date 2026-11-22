@@ -1,0 +1,65 @@
+PASS omitted profile keeps legacy 6
+PASS explicit profile 800 parsed
+PASS explicit observation survives JSON roundtrip
+PASS legacy serialization omits new field
+PASS wide serialization carries new field
+PASS invalid observation rejected
+PASS invalid observation rejected
+PASS invalid observation rejected
+PASS invalid observation rejected
+PASS invalid observation rejected
+PASS default retains 30/60/150 minute ordered duties
+PASS default still rejects late first confirmation
+PASS wide admits the same late confirmed pair
+PASS wide formal storage preserves ordered handoff duty
+PASS original storage invariant still rejects stale handoff
+PASS independent observation and unchanged revision tail
+PASS clock correction cannot extend original wide deadline
+PASS coverage completeness follows the configured observation domain
+PASS locked 5m Calendar conversion is exactly 600 UTI
+PASS old quotient guard fails at the actual boundary
+PASS real boundary edge preserves complete 800Delta material
+PASS old boundary point reproduces false incomplete material
+PASS ordinary adjacent control stays an edge
+PASS ordinary adjacent control stays an edge
+PASS true 1200UTI gap restarts coverage and remains incomplete
+PASS first successful point preserves cold start
+PASS source failure cannot be bridged by the next adjacent edge
+PASS unknown Clock remains unenumerated and incomplete despite full price coverage
+PASS explicit Clock correction restores only known material
+PASS second frequency has an exact discrete UTI step
+PASS fractional units supported when the exact step is integral
+PASS Calendar clock scaling does not change the raw UTI grid
+PASS unsupported conversion is rejected without rounding
+PASS unsupported conversion is rejected without rounding
+PASS unsupported conversion is rejected without rounding
+PASS unsupported conversion is rejected without rounding
+PASS unsupported conversion is rejected without rounding
+PASS unsupported conversion is rejected without rounding
+PASS unsupported conversion is rejected without rounding
+PASS unsupported conversion is rejected without rounding
+PASS unsupported conversion is rejected without rounding
+PASS unsupported conversion is rejected without rounding
+PASS unsupported conversion is rejected without rounding
+PASS unsupported conversion is rejected without rounding
+PASS unsupported conversion is rejected without rounding
+PASS invalid Calendar clock conversion is rejected
+PASS invalid Calendar clock conversion is rejected
+PASS invalid Calendar clock conversion is rejected
+PASS invalid Calendar clock conversion is rejected
+PASS native fractional/nonfinite UTI is rejected without rounding
+PASS native fractional/nonfinite UTI is rejected without rounding
+PASS native fractional/nonfinite UTI is rejected without rounding
+PASS native fractional/nonfinite UTI is rejected without rounding
+PASS Int64 endpoint subtraction cannot overflow into an adjacent edge
+PASS ordinary quote does not republish
+PASS wide observation does not widen 2Delta actual proximity
+PASS locked actual 2Delta admits 1200UTI but rejects 1201UTI
+PASS direction veto remains
+PASS first confirmation at deadline is consumed then closed
+PASS first confirmation beyond deadline is excluded
+PASS clock closes wide observation without new turn
+PASS revision duty ends and online state retires
+PASS scope end remains distinct
+PASS future knowledge rejected
+ALL OBSERVATION WINDOW CHECKS PASSED
