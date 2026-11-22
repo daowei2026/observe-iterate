@@ -1,0 +1,620 @@
+{
+  "__on_date_range__": true,
+  "__tag__": "CommonPriceTurnGroupCandidatesFrp",
+  "__tar_type__": {
+    "__tag__": "FuncTarType"
+  },
+  "domain": {
+    "calendar": {
+      "book": "CalendarBook",
+      "kind": "CalendarRevision",
+      "life": "night_end_at_2300",
+      "revision": "TA_updto20240229_DBA"
+    },
+    "complete": true,
+    "context": {
+      "book": "U2ContextBook",
+      "kind": "U2ContextRevision",
+      "life": "blk@steel",
+      "revision": "kline-turn-groups-v1"
+    },
+    "coverage": [],
+    "domain": "blk@steel",
+    "intent": "共同价格转折候选组及其形成依据",
+    "objects": [
+      "rb",
+      "hc",
+      "i"
+    ],
+    "scale": {
+      "book": "ScaleConfigurationBook",
+      "kind": "ScaleTurnCalendarFrequency",
+      "life": "5m",
+      "revision": "1"
+    },
+    "universe": {
+      "book": "UniverseBook",
+      "kind": "IndustryUniverse",
+      "life": "blk@steel",
+      "revision": "TA_updto20240229_DBA"
+    }
+  },
+  "profile": {
+    "delta": 600,
+    "directions": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        1
+      ],
+      [
+        1,
+        0,
+        1
+      ],
+      [
+        1,
+        1,
+        0
+      ]
+    ],
+    "method": {
+      "book": "CommonTurnGroupMethodBook",
+      "kind": "CompleteLinkPriceTurnsV1",
+      "life": "delta-five-open-minutes",
+      "revision": "1"
+    },
+    "metrics": [],
+    "observation_multiple": 800,
+    "turn_types": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        1
+      ],
+      [
+        1,
+        0,
+        1
+      ],
+      [
+        1,
+        1,
+        0
+      ]
+    ],
+    "unit": "CalendarUTITick"
+  },
+  "result_layout": "common_price_turn_groups.core.v2",
+  "sources": [
+    {
+      "input": {
+        "calendar": "night_end_at_2300",
+        "freq": "5m",
+        "scale_turn": {
+          "__tag__": "ScaleTurnCalendar",
+          "falter": {
+            "__tag__": "RctZigWithStatus",
+            "zig": {
+              "__tag__": "ZigZag",
+              "featIn": {
+                "__tag__": "Rable",
+                "args": [
+                  "closeUti as uti",
+                  "close as value"
+                ],
+                "tar": {
+                  "__tag__": "KLine",
+                  "freq": "5m"
+                }
+              },
+              "retracePct": 0.5
+            }
+          },
+          "fcheck": {
+            "__tag__": "RctZigWithStatus",
+            "zig": {
+              "__tag__": "ZigZag",
+              "featIn": {
+                "__tag__": "Rable",
+                "args": [
+                  "closeUti as uti",
+                  "close as value"
+                ],
+                "tar": {
+                  "__tag__": "KLine",
+                  "freq": "5m"
+                }
+              },
+              "retracePct": 0.5
+            }
+          },
+          "fisSystem": {
+            "__tag__": "T1FisSystem",
+            "config": {
+              "__tag__": "T1FisSystemConfig",
+              "aggMethod1": "max",
+              "andMethod1": "min",
+              "defuzzMethod1": "centroid",
+              "impMethod1": "min",
+              "orMethod1": "max",
+              "type1": "mamdani",
+              "version1": "2.0"
+            },
+            "inputs": {
+              "__tag__": "GMap",
+              "adistance": {
+                "__tag__": "OneUseGaussmfInOrOutPut",
+                "mfValueFunc": {
+                  "__tag__": "GaussMFs",
+                  "overlap": 0.2
+                },
+                "mf_name": [
+                  "S",
+                  "M",
+                  "L"
+                ],
+                "range": [
+                  0,
+                  10
+                ]
+              }
+            },
+            "name": "T1FIS",
+            "outputs": {
+              "__tag__": "GMap",
+              "closegain": {
+                "__tag__": "OneUseGaussmfInOrOutPut",
+                "mfValueFunc": {
+                  "__tag__": "GaussMFs",
+                  "overlap": 0.2
+                },
+                "mf_name": [
+                  "S",
+                  "M",
+                  "L"
+                ],
+                "range": [
+                  0,
+                  1
+                ]
+              }
+            },
+            "rules": {
+              "__tag__": "OneSetRules",
+              "rules": {
+                "__tag__": "GMap",
+                "f0": {
+                  "__tag__": "IfAll",
+                  "inputs": {
+                    "adistance": "L"
+                  },
+                  "outputs": {
+                    "closegain": "L"
+                  },
+                  "weight": 1
+                },
+                "f1": {
+                  "__tag__": "IfAll",
+                  "inputs": {
+                    "adistance": "M"
+                  },
+                  "outputs": {
+                    "closegain": "M"
+                  },
+                  "weight": 1
+                },
+                "f2": {
+                  "__tag__": "IfAll",
+                  "inputs": {
+                    "adistance": "S"
+                  },
+                  "outputs": {
+                    "closegain": "S"
+                  },
+                  "weight": 1
+                }
+              }
+            }
+          },
+          "specTerm": "M",
+          "stCloseGainController": {
+            "__tag__": "BscCloseGainController",
+            "cgcCombine": {
+              "__tag__": "InputCombineIfClose",
+              "icicLine": 0
+            },
+            "cgcInputs": {
+              "__tag__": "GMap",
+              "f0": {
+                "__tag__": "AdjCloseVerticalDistanceInput",
+                "acvdDisTimes": 100,
+                "acvdLabel": "adistance",
+                "acvdXStepTimes": 0.1
+              }
+            }
+          },
+          "stMembershipLine": 0.5,
+          "stRnd2ChooseTurn": {
+            "__tag__": "ChooseMaxExtraPoint",
+            "cmepOccupy": 0
+          }
+        },
+        "symbol": "rb"
+      },
+      "market": {
+        "calendar_position_field": "closeUti",
+        "calendar_stride": 1,
+        "duration_unit": "CalendarUTITick",
+        "normalization": null,
+        "price_comparison": {
+          "kind": "ExactNumericPrice",
+          "method": {
+            "book": "PriceComparisonMethodBook",
+            "kind": "ExactNumericPrice",
+            "life": "exact-native-price",
+            "revision": "1"
+          }
+        },
+        "units_per_calendar_tick": 1,
+        "units_per_open_minute": 120
+      }
+    },
+    {
+      "input": {
+        "calendar": "night_end_at_2300",
+        "freq": "5m",
+        "scale_turn": {
+          "__tag__": "ScaleTurnCalendar",
+          "falter": {
+            "__tag__": "RctZigWithStatus",
+            "zig": {
+              "__tag__": "ZigZag",
+              "featIn": {
+                "__tag__": "Rable",
+                "args": [
+                  "closeUti as uti",
+                  "close as value"
+                ],
+                "tar": {
+                  "__tag__": "KLine",
+                  "freq": "5m"
+                }
+              },
+              "retracePct": 0.5
+            }
+          },
+          "fcheck": {
+            "__tag__": "RctZigWithStatus",
+            "zig": {
+              "__tag__": "ZigZag",
+              "featIn": {
+                "__tag__": "Rable",
+                "args": [
+                  "closeUti as uti",
+                  "close as value"
+                ],
+                "tar": {
+                  "__tag__": "KLine",
+                  "freq": "5m"
+                }
+              },
+              "retracePct": 0.5
+            }
+          },
+          "fisSystem": {
+            "__tag__": "T1FisSystem",
+            "config": {
+              "__tag__": "T1FisSystemConfig",
+              "aggMethod1": "max",
+              "andMethod1": "min",
+              "defuzzMethod1": "centroid",
+              "impMethod1": "min",
+              "orMethod1": "max",
+              "type1": "mamdani",
+              "version1": "2.0"
+            },
+            "inputs": {
+              "__tag__": "GMap",
+              "adistance": {
+                "__tag__": "OneUseGaussmfInOrOutPut",
+                "mfValueFunc": {
+                  "__tag__": "GaussMFs",
+                  "overlap": 0.2
+                },
+                "mf_name": [
+                  "S",
+                  "M",
+                  "L"
+                ],
+                "range": [
+                  0,
+                  10
+                ]
+              }
+            },
+            "name": "T1FIS",
+            "outputs": {
+              "__tag__": "GMap",
+              "closegain": {
+                "__tag__": "OneUseGaussmfInOrOutPut",
+                "mfValueFunc": {
+                  "__tag__": "GaussMFs",
+                  "overlap": 0.2
+                },
+                "mf_name": [
+                  "S",
+                  "M",
+                  "L"
+                ],
+                "range": [
+                  0,
+                  1
+                ]
+              }
+            },
+            "rules": {
+              "__tag__": "OneSetRules",
+              "rules": {
+                "__tag__": "GMap",
+                "f0": {
+                  "__tag__": "IfAll",
+                  "inputs": {
+                    "adistance": "L"
+                  },
+                  "outputs": {
+                    "closegain": "L"
+                  },
+                  "weight": 1
+                },
+                "f1": {
+                  "__tag__": "IfAll",
+                  "inputs": {
+                    "adistance": "M"
+                  },
+                  "outputs": {
+                    "closegain": "M"
+                  },
+                  "weight": 1
+                },
+                "f2": {
+                  "__tag__": "IfAll",
+                  "inputs": {
+                    "adistance": "S"
+                  },
+                  "outputs": {
+                    "closegain": "S"
+                  },
+                  "weight": 1
+                }
+              }
+            }
+          },
+          "specTerm": "M",
+          "stCloseGainController": {
+            "__tag__": "BscCloseGainController",
+            "cgcCombine": {
+              "__tag__": "InputCombineIfClose",
+              "icicLine": 0
+            },
+            "cgcInputs": {
+              "__tag__": "GMap",
+              "f0": {
+                "__tag__": "AdjCloseVerticalDistanceInput",
+                "acvdDisTimes": 100,
+                "acvdLabel": "adistance",
+                "acvdXStepTimes": 0.1
+              }
+            }
+          },
+          "stMembershipLine": 0.5,
+          "stRnd2ChooseTurn": {
+            "__tag__": "ChooseMaxExtraPoint",
+            "cmepOccupy": 0
+          }
+        },
+        "symbol": "hc"
+      },
+      "market": {
+        "calendar_position_field": "closeUti",
+        "calendar_stride": 1,
+        "duration_unit": "CalendarUTITick",
+        "normalization": null,
+        "price_comparison": {
+          "kind": "ExactNumericPrice",
+          "method": {
+            "book": "PriceComparisonMethodBook",
+            "kind": "ExactNumericPrice",
+            "life": "exact-native-price",
+            "revision": "1"
+          }
+        },
+        "units_per_calendar_tick": 1,
+        "units_per_open_minute": 120
+      }
+    },
+    {
+      "input": {
+        "calendar": "night_end_at_2300",
+        "freq": "5m",
+        "scale_turn": {
+          "__tag__": "ScaleTurnCalendar",
+          "falter": {
+            "__tag__": "RctZigWithStatus",
+            "zig": {
+              "__tag__": "ZigZag",
+              "featIn": {
+                "__tag__": "Rable",
+                "args": [
+                  "closeUti as uti",
+                  "close as value"
+                ],
+                "tar": {
+                  "__tag__": "KLine",
+                  "freq": "5m"
+                }
+              },
+              "retracePct": 0.5
+            }
+          },
+          "fcheck": {
+            "__tag__": "RctZigWithStatus",
+            "zig": {
+              "__tag__": "ZigZag",
+              "featIn": {
+                "__tag__": "Rable",
+                "args": [
+                  "closeUti as uti",
+                  "close as value"
+                ],
+                "tar": {
+                  "__tag__": "KLine",
+                  "freq": "5m"
+                }
+              },
+              "retracePct": 0.5
+            }
+          },
+          "fisSystem": {
+            "__tag__": "T1FisSystem",
+            "config": {
+              "__tag__": "T1FisSystemConfig",
+              "aggMethod1": "max",
+              "andMethod1": "min",
+              "defuzzMethod1": "centroid",
+              "impMethod1": "min",
+              "orMethod1": "max",
+              "type1": "mamdani",
+              "version1": "2.0"
+            },
+            "inputs": {
+              "__tag__": "GMap",
+              "adistance": {
+                "__tag__": "OneUseGaussmfInOrOutPut",
+                "mfValueFunc": {
+                  "__tag__": "GaussMFs",
+                  "overlap": 0.2
+                },
+                "mf_name": [
+                  "S",
+                  "M",
+                  "L"
+                ],
+                "range": [
+                  0,
+                  10
+                ]
+              }
+            },
+            "name": "T1FIS",
+            "outputs": {
+              "__tag__": "GMap",
+              "closegain": {
+                "__tag__": "OneUseGaussmfInOrOutPut",
+                "mfValueFunc": {
+                  "__tag__": "GaussMFs",
+                  "overlap": 0.2
+                },
+                "mf_name": [
+                  "S",
+                  "M",
+                  "L"
+                ],
+                "range": [
+                  0,
+                  1
+                ]
+              }
+            },
+            "rules": {
+              "__tag__": "OneSetRules",
+              "rules": {
+                "__tag__": "GMap",
+                "f0": {
+                  "__tag__": "IfAll",
+                  "inputs": {
+                    "adistance": "L"
+                  },
+                  "outputs": {
+                    "closegain": "L"
+                  },
+                  "weight": 1
+                },
+                "f1": {
+                  "__tag__": "IfAll",
+                  "inputs": {
+                    "adistance": "M"
+                  },
+                  "outputs": {
+                    "closegain": "M"
+                  },
+                  "weight": 1
+                },
+                "f2": {
+                  "__tag__": "IfAll",
+                  "inputs": {
+                    "adistance": "S"
+                  },
+                  "outputs": {
+                    "closegain": "S"
+                  },
+                  "weight": 1
+                }
+              }
+            }
+          },
+          "specTerm": "M",
+          "stCloseGainController": {
+            "__tag__": "BscCloseGainController",
+            "cgcCombine": {
+              "__tag__": "InputCombineIfClose",
+              "icicLine": 0
+            },
+            "cgcInputs": {
+              "__tag__": "GMap",
+              "f0": {
+                "__tag__": "AdjCloseVerticalDistanceInput",
+                "acvdDisTimes": 100,
+                "acvdLabel": "adistance",
+                "acvdXStepTimes": 0.1
+              }
+            }
+          },
+          "stMembershipLine": 0.5,
+          "stRnd2ChooseTurn": {
+            "__tag__": "ChooseMaxExtraPoint",
+            "cmepOccupy": 0
+          }
+        },
+        "symbol": "i"
+      },
+      "market": {
+        "calendar_position_field": "closeUti",
+        "calendar_stride": 1,
+        "duration_unit": "CalendarUTITick",
+        "normalization": null,
+        "price_comparison": {
+          "kind": "ExactNumericPrice",
+          "method": {
+            "book": "PriceComparisonMethodBook",
+            "kind": "ExactNumericPrice",
+            "life": "exact-native-price",
+            "revision": "1"
+          }
+        },
+        "units_per_calendar_tick": 1,
+        "units_per_open_minute": 120
+      }
+    }
+  ]
+}

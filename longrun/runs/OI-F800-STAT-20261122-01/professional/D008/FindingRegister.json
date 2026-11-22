@@ -1,0 +1,76 @@
+[
+  {
+    "finding_id": "F800-GF-001",
+    "observation": "原覆盖标志确认问题",
+    "business_conflict": "覆盖与实际输入责任窗冲突",
+    "direct_responsibility_stage": "原D003/D006定位及D004/D007已批准修复；本D完整复验",
+    "confirmed_facts": {
+      "finding_id": "F800-GF-001",
+      "status": "CLOSED_ON_LATEST_PROFILE",
+      "closed": true,
+      "latest_run": "FeatureRunResultBinding.json",
+      "latest_profile": "GlobalBehaviorProfile.json",
+      "approved_proposal": "F800-MP-001",
+      "adopted_frp": "daowei2026/frp@39f02ec4548e68ba8dbd30061afc870546000994",
+      "prior_status": "CLOSED_ON_D005",
+      "prior_exact": "daowei2026/observe-iterate@38e2af72be826a1e98fd7f5d4522c50d218750f3:longrun/runs/OI-F800-STAT-20261122-01/professional/D005/FindingDisposition.json",
+      "retest": {
+        "original_positions": 22,
+        "passed": 22,
+        "cold_controls": 8,
+        "cold_passed": 8,
+        "full_population_conflicts": 0,
+        "full_population_denominator": 1538,
+        "evidence": "comparison_ac/coverage_retest.csv",
+        "native_api_retest": "NATIVE_RETEST_API.json",
+        "whole_window_validation": null
+      },
+      "closure_basis": "最新39f完整三年正式X、独立31表、完整G和原生Life/AsOf复验；历史基线同输入已核，实际新身份/发行/引用变化另全量比较。",
+      "release_decision": "本D只给原生G与finding复验；FeatureReleaseGate/下游释放由原manager按CurrentReviewTarget继续。"
+    },
+    "competing_explanations": "原诊断已确认，本D不重做根因判断",
+    "resolution_route": "CLOSED_ON_LATEST_PROFILE",
+    "resolution_status": "CLOSED_ON_LATEST_PROFILE",
+    "cross_effects_to_check": [
+      "VersionComparison.json",
+      "InitialVersionComparison.json"
+    ]
+  },
+  {
+    "finding_id": "F800-GF-002",
+    "observation": "原覆盖标志确认问题",
+    "business_conflict": "覆盖与实际输入责任窗冲突",
+    "direct_responsibility_stage": "原D003/D006定位及D004/D007已批准修复；本D完整复验",
+    "confirmed_facts": {
+      "finding_id": "F800-GF-002",
+      "status": "CLOSED_ON_LATEST_PROFILE",
+      "closed": true,
+      "latest_run": "FeatureRunResultBinding.json",
+      "latest_profile": "GlobalBehaviorProfile.json",
+      "approved_proposal": "F800-MP-002",
+      "adopted_frp": "daowei2026/frp@39f02ec4548e68ba8dbd30061afc870546000994",
+      "prior_status": "FIXED_PENDING_RERUN",
+      "prior_exact": "daowei2026/observe-iterate@08f5d8d4bd6982648fc93ce80b9cf843f183c8fd:longrun/runs/OI-F800-STAT-20261122-01/professional/D007/FindingDisposition.json",
+      "retest": {
+        "original_positions": 8,
+        "passed": 8,
+        "cold_controls": 8,
+        "cold_passed": 8,
+        "full_population_conflicts": 0,
+        "full_population_denominator": 1522,
+        "evidence": "comparison/gf002_retest.csv",
+        "native_api_retest": "NATIVE_RETEST_API.json",
+        "whole_window_validation": "MISSING_INPUT_WINDOW_VALIDATION.json"
+      },
+      "closure_basis": "最新39f完整三年正式X、独立31表、完整G和原生Life/AsOf复验；历史基线同输入已核，实际新身份/发行/引用变化另全量比较。",
+      "release_decision": "本D只给原生G与finding复验；FeatureReleaseGate/下游释放由原manager按CurrentReviewTarget继续。"
+    },
+    "competing_explanations": "原诊断已确认，本D不重做根因判断",
+    "resolution_route": "CLOSED_ON_LATEST_PROFILE",
+    "resolution_status": "CLOSED_ON_LATEST_PROFILE",
+    "cross_effects_to_check": [
+      "VersionComparison.json",
+      "InitialVersionComparison.json"
+    ]
+  }
+]

@@ -1,0 +1,62 @@
+{
+  "prior_package": "daowei2026/observe-iterate@78b684ba6956f4c33a03b9167e846e3b741316a5:longrun/runs/OI-F800-STAT-20261122-01/professional/D001/FeatureUnderstandingPackage.json",
+  "prior_package_unchanged": true,
+  "current_applicability": "CurrentFeatureUnderstandingPackage.json",
+  "items": [
+    {
+      "id": "U1",
+      "status": "RESOLVED_BY_LATEST_X",
+      "evidence": [
+        "FeatureRunResultBinding.json",
+        "INPUT_SCOPE_VALIDATION.json",
+        "NATIVE_OUTPUT_MANIFEST.json"
+      ]
+    },
+    {
+      "id": "U2",
+      "status": "RESOLVED_BY_LATEST_ACTUAL_LOADING",
+      "evidence": [
+        "FRP_SOURCE_BINDING.json",
+        "TIS_SOURCE_RECHECK.json",
+        "NATIVE_PROCESS_OBSERVATION.json",
+        "PRODUCTION_PROCESS.json"
+      ]
+    },
+    {
+      "id": "U3",
+      "status": "UPSTREAM_DENOMINATORS_RESOLVED_NATIVE_INTERNAL_TRACE_NOT_EXPOSED",
+      "evidence": [
+        "UPSTREAM_EXTRACTION.json",
+        "StatisticsInputReadiness.json"
+      ]
+    },
+    {
+      "id": "U4",
+      "status": "OLD_CODE_RESULT_HISTORICAL_NEW_EXACT_INSTANCE_PRODUCED",
+      "evidence": [
+        "RESULT_REUSE_ASSESSMENT.json",
+        "FeatureRunResultBinding.json"
+      ]
+    },
+    {
+      "id": "U5",
+      "status": "G_COMPLETE_FINDINGS_RETESTED_SEE_NATIVE_GATE",
+      "evidence": [
+        "FindingDisposition.json",
+        "GlobalFindingCandidates.json",
+        "DiagnosisInputAdapters.json",
+        "GlobalProfileGate.json",
+        "ScenarioQuestionQueue.json"
+      ]
+    },
+    {
+      "id": "U6",
+      "status": "RESOLVED_BY_APPROVED_LOCAL_STORE_AND_REAL_FLOCK",
+      "evidence": [
+        "PLATFORM_STORAGE_BINDING.json",
+        "STORE_WRITER_AUDIT.json",
+        "PRODUCTION_PROCESS.json"
+      ]
+    }
+  ]
+}

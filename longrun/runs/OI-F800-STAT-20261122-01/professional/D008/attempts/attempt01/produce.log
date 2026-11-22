@@ -1,0 +1,440 @@
+FORMAL_F800_PRODUCER_START /dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2023-12-31 20:00:00/CommonPriceTurnGroupCandidatesFrp/3/9/a/1/9/2/a/4bbf414e0814726d92d156f2fe9b1f968/func
+[2026-11-23T01:34:23 2049347](mquant) 📘 save frp task json: /dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/platform-app/mquant/task/frp/prod/192.168.11.40/20261123/CommonPriceTurnGroupCandidatesFrp.20261123013422!f4aa4b96-e69a-11f1-93b1-000c29a18d35.json
+ -INFO- File "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/mquant/frame/lang/frp/base.py", line 281, in dump
+[2026-11-23T01:34:23 2049347](mquant)  ℹ️   >> Managing packages at EPM home [/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime] <<
+ -INFO- File "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/mquant/frame/lang/frp/base.py", line 189, in _impl
+[2026-11-23T01:34:25 2049347](mquant) [2026-11-23T01:34:25.521054386] 🐸 ===== The Frp Engine e6.2.0.6 is getting ready to start running ===== 🐸
+ -INFO- File "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/mquant/frame/lang/frp/base.py", line 189, in _impl
+[2026-11-23T01:34:25 2049347](mquant) 开始优化 CommonPriceTurnGroupCandidatesFrp 参数: {"__on_date_range__":true,"__tag__":"CommonPriceTurnGroupCandidatesFrp","__tar_type__":{"__tag__":"FuncTarType"},"domain":{"calendar":{"book":"CalendarBook","kind":"CalendarRevision","life":"night_end_at_2300","revision":"TA_updto20240229_DBA"},"complete":true,"context":{"book":"U2ContextBook","kind":"U2ContextRevision","life":"blk@steel","revision":"kline-turn-groups-v1"},"coverage":[],"domain":"blk@steel","intent":"\u5171\u540c\u4ef7\u683c\u8f6c\u6298\u5019\u9009\u7ec4\u53ca\u5176\u5f62\u6210\u4f9d\u636e","objects":["rb","hc","i"],"scale":{"book":"ScaleConfigurationBook","kind":"ScaleTurnCalendarFrequency","life":"5m","revision":"1"},"universe":{"book":"UniverseBook","kind":"IndustryUniverse","life":"blk@steel","revision":"TA_updto20240229_DBA"}},"profile":{"delta":600,"directions":[[0,0,0],[0,1,1],[1,0,1],[1,1,0]],"method":{"book":"CommonTurnGroupMethodBook","kind":"CompleteLinkPriceTurnsV1","life":"delta-five-open-minutes","revision":"1"},"metrics":[],"observation_multiple":800,"turn_types":[[0,0,0],[0,1,1],[1,0,1],[1,1,0]],"unit":"CalendarUTITick"},"result_layout":"common_price_turn_groups.core.v2","sources":[{"input":{"calendar":"night_end_at_2300","freq":"5m","scale_turn":{"__tag__":"ScaleTurnCalendar","falter":{"__tag__":"RctZigWithStatus","zig":{"__tag__":"ZigZag","featIn":{"__tag__":"Rable","args":["closeUti as uti","close as value"],"tar":{"__tag__":"KLine","freq":"5m"}},"retracePct":0.5}},"fcheck":{"__tag__":"RctZigWithStatus","zig":{"__tag__":"ZigZag","featIn":{"__tag__":"Rable","args":["closeUti as uti","close as value"],"tar":{"__tag__":"KLine","freq":"5m"}},"retracePct":0.5}},"fisSystem":{"__tag__":"T1FisSystem","config":{"__tag__":"T1FisSystemConfig","aggMethod1":"max","andMethod1":"min","defuzzMethod1":"centroid","impMethod1":"min","orMethod1":"max","type1":"mamdani","version1":"2.0"},"inputs":{"__tag__":"GMap","adistance":{"__tag__":"OneUseGaussmfInOrOutPut","mfValueFunc":{"__tag__":"GaussMFs","overlap":0.2},"mf_name":["S","M","L"],"range":[0,10]}},"name":"T1FIS","outputs":{"__tag__":"GMap","closegain":{"__tag__":"OneUseGaussmfInOrOutPut","mfValueFunc":{"__tag__":"GaussMFs","overlap":0.2},"mf_name":["S","M","L"],"range":[0,1]}},"rules":{"__tag__":"OneSetRules","rules":{"__tag__":"GMap","f0":{"__tag__":"IfAll","inputs":{"adistance":"L"},"outputs":{"closegain":"L"},"weight":1},"f1":{"__tag__":"IfAll","inputs":{"adistance":"M"},"outputs":{"closegain":"M"},"weight":1},"f2":{"__tag__":"IfAll","inputs":{"adistance":"S"},"outputs":{"closegain":"S"},"weight":1}}}},"specTerm":"M","stCloseGainController":{"__tag__":"BscCloseGainController","cgcCombine":{"__tag__":"InputCombineIfClose","icicLine":0},"cgcInputs":{"__tag__":"GMap","f0":{"__tag__":"AdjCloseVerticalDistanceInput","acvdDisTimes":100,"acvdLabel":"adistance","acvdXStepTimes":0.1}}},"stMembershipLine":0.5,"stRnd2ChooseTurn":{"__tag__":"ChooseMaxExtraPoint","cmepOccupy":0}},"symbol":"rb"},"market":{"calendar_position_field":"closeUti","calendar_stride":1,"duration_unit":"CalendarUTITick","normalization":null,"price_comparison":{"kind":"ExactNumericPrice","method":{"book":"PriceComparisonMethodBook","kind":"ExactNumericPrice","life":"exact-native-price","revision":"1"}},"units_per_calendar_tick":1,"units_per_open_minute":120}},{"input":{"calendar":"night_end_at_2300","freq":"5m","scale_turn":{"__tag__":"ScaleTurnCalendar","falter":{"__tag__":"RctZigWithStatus","zig":{"__tag__":"ZigZag","featIn":{"__tag__":"Rable","args":["closeUti as uti","close as value"],"tar":{"__tag__":"KLine","freq":"5m"}},"retracePct":0.5}},"fcheck":{"__tag__":"RctZigWithStatus","zig":{"__tag__":"ZigZag","featIn":{"__tag__":"Rable","args":["closeUti as uti","close as value"],"tar":{"__tag__":"KLine","freq":"5m"}},"retracePct":0.5}},"fisSystem":{"__tag__":"T1FisSystem","config":{"__tag__":"T1FisSystemConfig","aggMethod1":"max","andMethod1":"min","defuzzMethod1":"centroid","impMethod1":"min","orMethod1":"max","type1":"mamdani","version1":"2.0"},"inputs":{"__tag__":"GMap","adistance":{"__tag__":"OneUseGaussmfInOrOutPut","mfValueFunc":{"__tag__":"GaussMFs","overlap":0.2},"mf_name":["S","M","L"],"range":[0,10]}},"name":"T1FIS","outputs":{"__tag__":"GMap","closegain":{"__tag__":"OneUseGaussmfInOrOutPut","mfValueFunc":{"__tag__":"GaussMFs","overlap":0.2},"mf_name":["S","M","L"],"range":[0,1]}},"rules":{"__tag__":"OneSetRules","rules":{"__tag__":"GMap","f0":{"__tag__":"IfAll","inputs":{"adistance":"L"},"outputs":{"closegain":"L"},"weight":1},"f1":{"__tag__":"IfAll","inputs":{"adistance":"M"},"outputs":{"closegain":"M"},"weight":1},"f2":{"__tag__":"IfAll","inputs":{"adistance":"S"},"outputs":{"closegain":"S"},"weight":1}}}},"specTerm":"M","stCloseGainController":{"__tag__":"BscCloseGainController","cgcCombine":{"__tag__":"InputCombineIfClose","icicLine":0},"cgcInputs":{"__tag__":"GMap","f0":{"__tag__":"AdjCloseVerticalDistanceInput","acvdDisTimes":100,"acvdLabel":"adistance","acvdXStepTimes":0.1}}},"stMembershipLine":0.5,"stRnd2ChooseTurn":{"__tag__":"ChooseMaxExtraPoint","cmepOccupy":0}},"symbol":"hc"},"market":{"calendar_position_field":"closeUti","calendar_stride":1,"duration_unit":"CalendarUTITick","normalization":null,"price_comparison":{"kind":"ExactNumericPrice","method":{"book":"PriceComparisonMethodBook","kind":"ExactNumericPrice","life":"exact-native-price","revision":"1"}},"units_per_calendar_tick":1,"units_per_open_minute":120}},{"input":{"calendar":"night_end_at_2300","freq":"5m","scale_turn":{"__tag__":"ScaleTurnCalendar","falter":{"__tag__":"RctZigWithStatus","zig":{"__tag__":"ZigZag","featIn":{"__tag__":"Rable","args":["closeUti as uti","close as value"],"tar":{"__tag__":"KLine","freq":"5m"}},"retracePct":0.5}},"fcheck":{"__tag__":"RctZigWithStatus","zig":{"__tag__":"ZigZag","featIn":{"__tag__":"Rable","args":["closeUti as uti","close as value"],"tar":{"__tag__":"KLine","freq":"5m"}},"retracePct":0.5}},"fisSystem":{"__tag__":"T1FisSystem","config":{"__tag__":"T1FisSystemConfig","aggMethod1":"max","andMethod1":"min","defuzzMethod1":"centroid","impMethod1":"min","orMethod1":"max","type1":"mamdani","version1":"2.0"},"inputs":{"__tag__":"GMap","adistance":{"__tag__":"OneUseGaussmfInOrOutPut","mfValueFunc":{"__tag__":"GaussMFs","overlap":0.2},"mf_name":["S","M","L"],"range":[0,10]}},"name":"T1FIS","outputs":{"__tag__":"GMap","closegain":{"__tag__":"OneUseGaussmfInOrOutPut","mfValueFunc":{"__tag__":"GaussMFs","overlap":0.2},"mf_name":["S","M","L"],"range":[0,1]}},"rules":{"__tag__":"OneSetRules","rules":{"__tag__":"GMap","f0":{"__tag__":"IfAll","inputs":{"adistance":"L"},"outputs":{"closegain":"L"},"weight":1},"f1":{"__tag__":"IfAll","inputs":{"adistance":"M"},"outputs":{"closegain":"M"},"weight":1},"f2":{"__tag__":"IfAll","inputs":{"adistance":"S"},"outputs":{"closegain":"S"},"weight":1}}}},"specTerm":"M","stCloseGainController":{"__tag__":"BscCloseGainController","cgcCombine":{"__tag__":"InputCombineIfClose","icicLine":0},"cgcInputs":{"__tag__":"GMap","f0":{"__tag__":"AdjCloseVerticalDistanceInput","acvdDisTimes":100,"acvdLabel":"adistance","acvdXStepTimes":0.1}}},"stMembershipLine":0.5,"stRnd2ChooseTurn":{"__tag__":"ChooseMaxExtraPoint","cmepOccupy":0}},"symbol":"i"},"market":{"calendar_position_field":"closeUti","calendar_stride":1,"duration_unit":"CalendarUTITick","normalization":null,"price_comparison":{"kind":"ExactNumericPrice","method":{"book":"PriceComparisonMethodBook","kind":"ExactNumericPrice","life":"exact-native-price","revision":"1"}},"units_per_calendar_tick":1,"units_per_open_minute":120}}]}
+ -INFO- File "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/mquant/frame/lang/frp/base.py", line 189, in _impl
+[2026-11-23T01:34:25 2049347](mquant) 开始运行 Frp 回测模型 CommonPriceTurnGroupCandidatesFrp,目标【FuncTarget】
+ -INFO- File "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/mquant/frame/lang/frp/base.py", line 189, in _impl
+[2026-11-23T01:34:25 2049347](mquant) Edh program crashed with an error:
+ -INFO- File "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/mquant/frame/lang/frp/base.py", line 189, in _impl
+[2026-11-23T01:34:25 2049347](mquant) 
+ -INFO- File "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/mquant/frame/lang/frp/base.py", line 189, in _impl
+[2026-11-23T01:34:25 2049347](mquant) /dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/platform-app/mquant/config/prod/store_dir.json: withBinaryFile: does not exist (No such file or directory)
+ -INFO- File "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/mquant/frame/lang/frp/base.py", line 189, in _impl
+[2026-11-23T01:34:25 2049347](mquant) 
+ -INFO- File "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/mquant/frame/lang/frp/base.py", line 189, in _impl
+[2026-11-23T01:34:25 2049347](mquant) 
+ -INFO- File "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/mquant/frame/lang/frp/base.py", line 189, in _impl
+[2026-11-23T01:34:25 2049347](mquant) ScaleTurnCalendar doc format error
+ -ERROR- File "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/mquant/frame/core/base/doc.py", line 110, in from_doc
+[2026-11-23T01:34:25 2049347](mquant) T1FisSystem doc format error
+ -ERROR- File "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/mquant/frame/core/base/doc.py", line 110, in from_doc
+[2026-11-23T01:34:25 2049347](mquant) OneUseGaussmfInOrOutPut doc format error
+ -ERROR- File "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/mquant/frame/core/base/doc.py", line 110, in from_doc
+[2026-11-23T01:34:25 2049347](mquant) GaussMFs doc format error
+ -ERROR- File "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/mquant/frame/core/base/doc.py", line 110, in from_doc
+[2026-11-23T01:34:25 2049347](mquant) OneUseGaussmfInOrOutPut doc format error
+ -ERROR- File "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/mquant/frame/core/base/doc.py", line 110, in from_doc
+[2026-11-23T01:34:25 2049347](mquant) GaussMFs doc format error
+ -ERROR- File "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/mquant/frame/core/base/doc.py", line 110, in from_doc
+[2026-11-23T01:34:25 2049347](mquant) OneSetRules doc format error
+ -ERROR- File "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/mquant/frame/core/base/doc.py", line 110, in from_doc
+[2026-11-23T01:34:25 2049347](mquant) IfAll doc format error
+ -ERROR- File "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/mquant/frame/core/base/doc.py", line 110, in from_doc
+[2026-11-23T01:34:25 2049347](mquant) IfAll doc format error
+ -ERROR- File "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/mquant/frame/core/base/doc.py", line 110, in from_doc
+[2026-11-23T01:34:25 2049347](mquant) IfAll doc format error
+ -ERROR- File "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/mquant/frame/core/base/doc.py", line 110, in from_doc
+[2026-11-23T01:34:25 2049347](mquant) ScaleTurnCalendar doc format error
+ -ERROR- File "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/mquant/frame/core/base/doc.py", line 110, in from_doc
+[2026-11-23T01:34:25 2049347](mquant) T1FisSystem doc format error
+ -ERROR- File "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/mquant/frame/core/base/doc.py", line 110, in from_doc
+[2026-11-23T01:34:25 2049347](mquant) OneUseGaussmfInOrOutPut doc format error
+ -ERROR- File "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/mquant/frame/core/base/doc.py", line 110, in from_doc
+[2026-11-23T01:34:25 2049347](mquant) GaussMFs doc format error
+ -ERROR- File "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/mquant/frame/core/base/doc.py", line 110, in from_doc
+[2026-11-23T01:34:25 2049347](mquant) OneUseGaussmfInOrOutPut doc format error
+ -ERROR- File "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/mquant/frame/core/base/doc.py", line 110, in from_doc
+[2026-11-23T01:34:25 2049347](mquant) GaussMFs doc format error
+ -ERROR- File "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/mquant/frame/core/base/doc.py", line 110, in from_doc
+[2026-11-23T01:34:25 2049347](mquant) OneSetRules doc format error
+ -ERROR- File "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/mquant/frame/core/base/doc.py", line 110, in from_doc
+[2026-11-23T01:34:25 2049347](mquant) IfAll doc format error
+ -ERROR- File "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/mquant/frame/core/base/doc.py", line 110, in from_doc
+[2026-11-23T01:34:25 2049347](mquant) IfAll doc format error
+ -ERROR- File "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/mquant/frame/core/base/doc.py", line 110, in from_doc
+[2026-11-23T01:34:25 2049347](mquant) IfAll doc format error
+ -ERROR- File "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/mquant/frame/core/base/doc.py", line 110, in from_doc
+[2026-11-23T01:34:25 2049347](mquant) ScaleTurnCalendar doc format error
+ -ERROR- File "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/mquant/frame/core/base/doc.py", line 110, in from_doc
+[2026-11-23T01:34:25 2049347](mquant) T1FisSystem doc format error
+ -ERROR- File "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/mquant/frame/core/base/doc.py", line 110, in from_doc
+[2026-11-23T01:34:25 2049347](mquant) OneUseGaussmfInOrOutPut doc format error
+ -ERROR- File "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/mquant/frame/core/base/doc.py", line 110, in from_doc
+[2026-11-23T01:34:25 2049347](mquant) GaussMFs doc format error
+ -ERROR- File "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/mquant/frame/core/base/doc.py", line 110, in from_doc
+[2026-11-23T01:34:25 2049347](mquant) OneUseGaussmfInOrOutPut doc format error
+ -ERROR- File "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/mquant/frame/core/base/doc.py", line 110, in from_doc
+[2026-11-23T01:34:25 2049347](mquant) GaussMFs doc format error
+ -ERROR- File "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/mquant/frame/core/base/doc.py", line 110, in from_doc
+[2026-11-23T01:34:25 2049347](mquant) OneSetRules doc format error
+ -ERROR- File "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/mquant/frame/core/base/doc.py", line 110, in from_doc
+[2026-11-23T01:34:25 2049347](mquant) IfAll doc format error
+ -ERROR- File "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/mquant/frame/core/base/doc.py", line 110, in from_doc
+[2026-11-23T01:34:25 2049347](mquant) IfAll doc format error
+ -ERROR- File "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/mquant/frame/core/base/doc.py", line 110, in from_doc
+[2026-11-23T01:34:25 2049347](mquant) IfAll doc format error
+ -ERROR- File "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/mquant/frame/core/base/doc.py", line 110, in from_doc
+Traceback (most recent call last):
+  File "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/mquant/frame/lang/internal/base.py", line 737, in run
+    return self._execute()
+  File "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/mquant/frame/lang/internal/base.py", line 1659, in _execute
+    res = self._run_own()
+  File "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/mquant/frame/lang/internal/base.py", line 1708, in _run_own
+    res = self._run_with(write=True, read=False)
+  File "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/mquant/frame/lang/internal/base.py", line 1723, in _run_with
+    res = self._impl()
+  File "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/mquant/frame/lang/frp/base.py", line 216, in _impl
+    raise Exception(
+Exception: CommonPriceTurnGroupCandidatesFrp not find save result for func: None
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/run_formal.py", line 122, in main
+    f = f.rerun(2)
+  File "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/mquant/frame/lang/internal/base.py", line 756, in rerun
+    return self.run(cal_type,clear = True)
+  File "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/mquant/frame/lang/internal/base.py", line 740, in run
+    raise Exception(f"{self.ppname}({ppshow(self.ppdict)}) \n{self.param_path}") from e
+Exception: CommonPriceTurnGroupCandidatesFrp({
+  "inputs": [{'input': {'symbol': 'rb', 'calendar': 'night_end_at_2300', 'freq': '5m', 'scale_turn': ScaleTurnCalendar({
+  "stCloseGainController": BscCloseGainController({
+    "cgcInputs": GMap({
+      "f0": AdjCloseVerticalDistanceInput({
+        "acvdLabel": 'adistance',
+        "acvdXStepTimes": 0.1,
+        "acvdDisTimes": 100
+      })
+    }),
+    "cgcCombine": InputCombineIfClose({
+      "icicLine": 0   # 距离阈值
+    })
+  }),
+  "stMembershipLine": 0.5,
+  "stRnd2ChooseTurn": ChooseMaxExtraPoint({
+    "cmepOccupy": 0
+  }),
+  "specTerm": 'M',
+  "falter": RctZigWithStatus({
+    # ZigZag
+    "zig": ZigZag({
+      # 要计算zigzag的特征, 一般是k线收盘价, 要求有uti数据
+      "featIn": KLine({
+        "freq": '5m'
+      }) % ('closeUti as uti', 'close as value'),
+      "retracePct": 0.5   # 反转百分比
+    })
+  }),
+  "fcheck": RctZigWithStatus({
+    # ZigZag
+    "zig": ZigZag({
+      # 要计算zigzag的特征, 一般是k线收盘价, 要求有uti数据
+      "featIn": KLine({
+        "freq": '5m'
+      }) % ('closeUti as uti', 'close as value'),
+      "retracePct": 0.5   # 反转百分比
+    })
+  }),
+  "fisSystem": T1FisSystem({
+    "Name": 'T1FIS',
+    "Config": T1FisSystemConfig({
+      "type1": 'mamdani',
+      "version1": '2.0',
+      "andMethod1": 'min',
+      "orMethod1": 'max',
+      "impMethod1": 'min',
+      "aggMethod1": 'max',
+      "defuzzMethod1": 'centroid'
+    }),
+    "Inputs": GMap({
+      "adistance": OneUseGaussmfInOrOutPut({
+        "range": (0, 10),
+        "mf_name": ['S', 'M', 'L'],
+        "MfValueFunc": GaussMFs({
+          "overlap": 0.2
+        })
+      })
+    }),
+    "Outputs": GMap({
+      "closegain": OneUseGaussmfInOrOutPut({
+        "range": (0, 1),
+        "mf_name": ['S', 'M', 'L'],
+        "MfValueFunc": GaussMFs({
+          "overlap": 0.2
+        })
+      })
+    }),
+    "Rules": OneSetRules({
+      "rules": GMap({
+        "f0": IfAll({
+          "inputs": {
+            "adistance": 'L'
+          },
+          "outputs": {
+            "closegain": 'L'
+          },
+          "weight": 1
+        }),
+        "f1": IfAll({
+          "inputs": {
+            "adistance": 'M'
+          },
+          "outputs": {
+            "closegain": 'M'
+          },
+          "weight": 1
+        }),
+        "f2": IfAll({
+          "inputs": {
+            "adistance": 'S'
+          },
+          "outputs": {
+            "closegain": 'S'
+          },
+          "weight": 1
+        })
+      })
+    })
+  })
+})}, 'market': {'calendar_position_field': 'closeUti', 'calendar_stride': 1, 'duration_unit': 'CalendarUTITick', 'units_per_calendar_tick': 1, 'units_per_open_minute': 120, 'price_comparison': {'kind': 'ExactNumericPrice', 'method': {'book': 'PriceComparisonMethodBook', 'kind': 'ExactNumericPrice', 'life': 'exact-native-price', 'revision': '1'}}, 'normalization': None}}, {'input': {'symbol': 'hc', 'calendar': 'night_end_at_2300', 'freq': '5m', 'scale_turn': ScaleTurnCalendar({
+  "stCloseGainController": BscCloseGainController({
+    "cgcInputs": GMap({
+      "f0": AdjCloseVerticalDistanceInput({
+        "acvdLabel": 'adistance',
+        "acvdXStepTimes": 0.1,
+        "acvdDisTimes": 100
+      })
+    }),
+    "cgcCombine": InputCombineIfClose({
+      "icicLine": 0   # 距离阈值
+    })
+  }),
+  "stMembershipLine": 0.5,
+  "stRnd2ChooseTurn": ChooseMaxExtraPoint({
+    "cmepOccupy": 0
+  }),
+  "specTerm": 'M',
+  "falter": RctZigWithStatus({
+    # ZigZag
+    "zig": ZigZag({
+      # 要计算zigzag的特征, 一般是k线收盘价, 要求有uti数据
+      "featIn": KLine({
+        "freq": '5m'
+      }) % ('closeUti as uti', 'close as value'),
+      "retracePct": 0.5   # 反转百分比
+    })
+  }),
+  "fcheck": RctZigWithStatus({
+    # ZigZag
+    "zig": ZigZag({
+      # 要计算zigzag的特征, 一般是k线收盘价, 要求有uti数据
+      "featIn": KLine({
+        "freq": '5m'
+      }) % ('closeUti as uti', 'close as value'),
+      "retracePct": 0.5   # 反转百分比
+    })
+  }),
+  "fisSystem": T1FisSystem({
+    "Name": 'T1FIS',
+    "Config": T1FisSystemConfig({
+      "type1": 'mamdani',
+      "version1": '2.0',
+      "andMethod1": 'min',
+      "orMethod1": 'max',
+      "impMethod1": 'min',
+      "aggMethod1": 'max',
+      "defuzzMethod1": 'centroid'
+    }),
+    "Inputs": GMap({
+      "adistance": OneUseGaussmfInOrOutPut({
+        "range": (0, 10),
+        "mf_name": ['S', 'M', 'L'],
+        "MfValueFunc": GaussMFs({
+          "overlap": 0.2
+        })
+      })
+    }),
+    "Outputs": GMap({
+      "closegain": OneUseGaussmfInOrOutPut({
+        "range": (0, 1),
+        "mf_name": ['S', 'M', 'L'],
+        "MfValueFunc": GaussMFs({
+          "overlap": 0.2
+        })
+      })
+    }),
+    "Rules": OneSetRules({
+      "rules": GMap({
+        "f0": IfAll({
+          "inputs": {
+            "adistance": 'L'
+          },
+          "outputs": {
+            "closegain": 'L'
+          },
+          "weight": 1
+        }),
+        "f1": IfAll({
+          "inputs": {
+            "adistance": 'M'
+          },
+          "outputs": {
+            "closegain": 'M'
+          },
+          "weight": 1
+        }),
+        "f2": IfAll({
+          "inputs": {
+            "adistance": 'S'
+          },
+          "outputs": {
+            "closegain": 'S'
+          },
+          "weight": 1
+        })
+      })
+    })
+  })
+})}, 'market': {'calendar_position_field': 'closeUti', 'calendar_stride': 1, 'duration_unit': 'CalendarUTITick', 'units_per_calendar_tick': 1, 'units_per_open_minute': 120, 'price_comparison': {'kind': 'ExactNumericPrice', 'method': {'book': 'PriceComparisonMethodBook', 'kind': 'ExactNumericPrice', 'life': 'exact-native-price', 'revision': '1'}}, 'normalization': None}}, {'input': {'symbol': 'i', 'calendar': 'night_end_at_2300', 'freq': '5m', 'scale_turn': ScaleTurnCalendar({
+  "stCloseGainController": BscCloseGainController({
+    "cgcInputs": GMap({
+      "f0": AdjCloseVerticalDistanceInput({
+        "acvdLabel": 'adistance',
+        "acvdXStepTimes": 0.1,
+        "acvdDisTimes": 100
+      })
+    }),
+    "cgcCombine": InputCombineIfClose({
+      "icicLine": 0   # 距离阈值
+    })
+  }),
+  "stMembershipLine": 0.5,
+  "stRnd2ChooseTurn": ChooseMaxExtraPoint({
+    "cmepOccupy": 0
+  }),
+  "specTerm": 'M',
+  "falter": RctZigWithStatus({
+    # ZigZag
+    "zig": ZigZag({
+      # 要计算zigzag的特征, 一般是k线收盘价, 要求有uti数据
+      "featIn": KLine({
+        "freq": '5m'
+      }) % ('closeUti as uti', 'close as value'),
+      "retracePct": 0.5   # 反转百分比
+    })
+  }),
+  "fcheck": RctZigWithStatus({
+    # ZigZag
+    "zig": ZigZag({
+      # 要计算zigzag的特征, 一般是k线收盘价, 要求有uti数据
+      "featIn": KLine({
+        "freq": '5m'
+      }) % ('closeUti as uti', 'close as value'),
+      "retracePct": 0.5   # 反转百分比
+    })
+  }),
+  "fisSystem": T1FisSystem({
+    "Name": 'T1FIS',
+    "Config": T1FisSystemConfig({
+      "type1": 'mamdani',
+      "version1": '2.0',
+      "andMethod1": 'min',
+      "orMethod1": 'max',
+      "impMethod1": 'min',
+      "aggMethod1": 'max',
+      "defuzzMethod1": 'centroid'
+    }),
+    "Inputs": GMap({
+      "adistance": OneUseGaussmfInOrOutPut({
+        "range": (0, 10),
+        "mf_name": ['S', 'M', 'L'],
+        "MfValueFunc": GaussMFs({
+          "overlap": 0.2
+        })
+      })
+    }),
+    "Outputs": GMap({
+      "closegain": OneUseGaussmfInOrOutPut({
+        "range": (0, 1),
+        "mf_name": ['S', 'M', 'L'],
+        "MfValueFunc": GaussMFs({
+          "overlap": 0.2
+        })
+      })
+    }),
+    "Rules": OneSetRules({
+      "rules": GMap({
+        "f0": IfAll({
+          "inputs": {
+            "adistance": 'L'
+          },
+          "outputs": {
+            "closegain": 'L'
+          },
+          "weight": 1
+        }),
+        "f1": IfAll({
+          "inputs": {
+            "adistance": 'M'
+          },
+          "outputs": {
+            "closegain": 'M'
+          },
+          "weight": 1
+        }),
+        "f2": IfAll({
+          "inputs": {
+            "adistance": 'S'
+          },
+          "outputs": {
+            "closegain": 'S'
+          },
+          "weight": 1
+        })
+      })
+    })
+  })
+})}, 'market': {'calendar_position_field': 'closeUti', 'calendar_stride': 1, 'duration_unit': 'CalendarUTITick', 'units_per_calendar_tick': 1, 'units_per_open_minute': 120, 'price_comparison': {'kind': 'ExactNumericPrice', 'method': {'book': 'PriceComparisonMethodBook', 'kind': 'ExactNumericPrice', 'life': 'exact-native-price', 'revision': '1'}}, 'normalization': None}}],
+  "sources": None,
+  "domain.context.book": 'U2ContextBook',
+  "domain.context.kind": 'U2ContextRevision',
+  "domain.context.life": 'blk@steel',
+  "domain.context.revision": 'kline-turn-groups-v1',
+  "domain.scale.book": 'ScaleConfigurationBook',
+  "domain.scale.kind": 'ScaleTurnCalendarFrequency',
+  "domain.scale.life": '5m',
+  "domain.scale.revision": '1',
+  "domain.calendar.book": 'CalendarBook',
+  "domain.calendar.kind": 'CalendarRevision',
+  "domain.calendar.life": 'night_end_at_2300',
+  "domain.calendar.revision": 'TA_updto20240229_DBA',
+  "domain.universe.book": 'UniverseBook',
+  "domain.universe.kind": 'IndustryUniverse',
+  "domain.universe.life": 'blk@steel',
+  "domain.universe.revision": 'TA_updto20240229_DBA',
+  "domain.domain": 'blk@steel',
+  "domain.objects": ['rb', 'hc', 'i'],
+  "domain.complete": True,
+  "domain.coverage": [],
+  "domain.intent": '共同价格转折候选组及其形成依据',
+  "profile.method.book": 'CommonTurnGroupMethodBook',
+  "profile.method.kind": 'CompleteLinkPriceTurnsV1',
+  "profile.method.life": 'delta-five-open-minutes',
+  "profile.method.revision": '1',
+  "profile.delta": 600,
+  "profile.unit": 'CalendarUTITick',
+  "profile.metrics": [],
+  "profile.directions": [[0, 0, 0], [0, 1, 1], [1, 0, 1], [1, 1, 0]],
+  "profile.turn_types": [[0, 0, 0], [0, 1, 1], [1, 0, 1], [1, 1, 0]],
+  "profile.observation_multiple": 800,
+  "result_layout": 'common_price_turn_groups.core.v2',
+}) 
+3/9/a/1/9/2/a/4bbf414e0814726d92d156f2fe9b1f968
+
+{"run_id": "OI-F800-STAT-20261122-01", "call_id": "C0019", "delegation_id": "D008", "mode": "produce", "pid": 2049347, "started_at": "2026-11-22T17:34:09.550092+00:00", "completed": false, "producer_executed": false, "public_read_completed": false, "requested_sof": {"sof_name": "TA_updto20240229_DBA", "stk_tlist": "steel", "startDay": "2021-01-01", "endDay": "2023-12-31", "full_period": null}, "calendar": "night_end_at_2300", "M3WORKS": "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime", "loaded_mquant_file": "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/mquant/__init__.py", "loaded_constructor_file": "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/mquant/tis/frp/fqv_kline_example.py", "loaded_constructor_resolved": "/dwdhome/fy/BASE_E6_2_copy/.runtime/fqv-rb-hc-i-20261117/runtime/mquant/tis/frp/fqv_kline_example.py", "full_dir": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2023-12-31 20:00:00/CommonPriceTurnGroupCandidatesFrp/3/9/a/1/9/2/a/4bbf414e0814726d92d156f2fe9b1f968/func", "baseline_full_dir": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2023-12-31 20:00:00/CommonPriceTurnGroupCandidatesFrp/1/9/6/4/2/1/9/db493befd0182ad904ebba6fdeabecbeb/func", "configuration_sha256": "b72095ff100da926474701b74bff7586a74b9770bc81cadc34c23cfe223e5cb3", "task_envelope_sha256": "0d31ca6cac5dbf72f2c79ff21d815530a03777348bee5f8562dfa2ed142fe6a7", "frp_code_ref": "daowei2026/frp@39f02ec4548e68ba8dbd30061afc870546000994", "tis_code_ref": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767", "engine_executable": "/dwdhome/fy/BASE_E6_2_copy/.runtime/f800-input-missing-20261123/runtime/edh-universe/bin/ts", "engine_sha256": "4e0e22796bb6b32b6fd9afd1c3b18b5af1eebe1d35df24090fc19585866652f0", "fields_existed_before": false, "original_candidate_full_dir": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2023-12-31 20:00:00/CommonPriceTurnGroupCandidatesFrp/3/9/a/1/9/2/a/4bbf414e0814726d92d156f2fe9b1f968/func", "original_candidate_fields_exists": false, "storage_platform_config": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/PLATFORM_STORAGE_BINDING.json", "error_type": "Exception", "error": "CommonPriceTurnGroupCandidatesFrp({\n  \"inputs\": [{'input': {'symbol': 'rb', 'calendar': 'night_end_at_2300', 'freq': '5m', 'scale_turn': ScaleTurnCalendar({\n  \"stCloseGainController\": BscCloseGainController({\n    \"cgcInputs\": GMap({\n      \"f0\": AdjCloseVerticalDistanceInput({\n        \"acvdLabel\": 'adistance',\n        \"acvdXStepTimes\": 0.1,\n        \"acvdDisTimes\": 100\n      })\n    }),\n    \"cgcCombine\": InputCombineIfClose({\n      \"icicLine\": 0   # 距离阈值\n    })\n  }),\n  \"stMembershipLine\": 0.5,\n  \"stRnd2ChooseTurn\": ChooseMaxExtraPoint({\n    \"cmepOccupy\": 0\n  }),\n  \"specTerm\": 'M',\n  \"falter\": RctZigWithStatus({\n    # ZigZag\n    \"zig\": ZigZag({\n      # 要计算zigzag的特征, 一般是k线收盘价, 要求有uti数据\n      \"featIn\": KLine({\n        \"freq\": '5m'\n      }) % ('closeUti as uti', 'close as value'),\n      \"retracePct\": 0.5   # 反转百分比\n    })\n  }),\n  \"fcheck\": RctZigWithStatus({\n    # ZigZag\n    \"zig\": ZigZag({\n      # 要计算zigzag的特征, 一般是k线收盘价, 要求有uti数据\n      \"featIn\": KLine({\n        \"freq\": '5m'\n      }) % ('closeUti as uti', 'close as value'),\n      \"retracePct\": 0.5   # 反转百分比\n    })\n  }),\n  \"fisSystem\": T1FisSystem({\n    \"Name\": 'T1FIS',\n    \"Config\": T1FisSystemConfig({\n      \"type1\": 'mamdani',\n      \"version1\": '2.0',\n      \"andMethod1\": 'min',\n      \"orMethod1\": 'max',\n      \"impMethod1\": 'min',\n      \"aggMethod1\": 'max',\n      \"defuzzMethod1\": 'centroid'\n    }),\n    \"Inputs\": GMap({\n      \"adistance\": OneUseGaussmfInOrOutPut({\n        \"range\": (0, 10),\n        \"mf_name\": ['S', 'M', 'L'],\n        \"MfValueFunc\": GaussMFs({\n          \"overlap\": 0.2\n        })\n      })\n    }),\n    \"Outputs\": GMap({\n      \"closegain\": OneUseGaussmfInOrOutPut({\n        \"range\": (0, 1),\n        \"mf_name\": ['S', 'M', 'L'],\n        \"MfValueFunc\": GaussMFs({\n          \"overlap\": 0.2\n        })\n      })\n    }),\n    \"Rules\": OneSetRules({\n      \"rules\": GMap({\n        \"f0\": IfAll({\n          \"inputs\": {\n            \"adistance\": 'L'\n          },\n          \"outputs\": {\n            \"closegain\": 'L'\n          },\n          \"weight\": 1\n        }),\n        \"f1\": IfAll({\n          \"inputs\": {\n            \"adistance\": 'M'\n          },\n          \"outputs\": {\n            \"closegain\": 'M'\n          },\n          \"weight\": 1\n        }),\n        \"f2\": IfAll({\n          \"inputs\": {\n            \"adistance\": 'S'\n          },\n          \"outputs\": {\n            \"closegain\": 'S'\n          },\n          \"weight\": 1\n        })\n      })\n    })\n  })\n})}, 'market': {'calendar_position_field': 'closeUti', 'calendar_stride': 1, 'duration_unit': 'CalendarUTITick', 'units_per_calendar_tick': 1, 'units_per_open_minute': 120, 'price_comparison': {'kind': 'ExactNumericPrice', 'method': {'book': 'PriceComparisonMethodBook', 'kind': 'ExactNumericPrice', 'life': 'exact-native-price', 'revision': '1'}}, 'normalization': None}}, {'input': {'symbol': 'hc', 'calendar': 'night_end_at_2300', 'freq': '5m', 'scale_turn': ScaleTurnCalendar({\n  \"stCloseGainController\": BscCloseGainController({\n    \"cgcInputs\": GMap({\n      \"f0\": AdjCloseVerticalDistanceInput({\n        \"acvdLabel\": 'adistance',\n        \"acvdXStepTimes\": 0.1,\n        \"acvdDisTimes\": 100\n      })\n    }),\n    \"cgcCombine\": InputCombineIfClose({\n      \"icicLine\": 0   # 距离阈值\n    })\n  }),\n  \"stMembershipLine\": 0.5,\n  \"stRnd2ChooseTurn\": ChooseMaxExtraPoint({\n    \"cmepOccupy\": 0\n  }),\n  \"specTerm\": 'M',\n  \"falter\": RctZigWithStatus({\n    # ZigZag\n    \"zig\": ZigZag({\n      # 要计算zigzag的特征, 一般是k线收盘价, 要求有uti数据\n      \"featIn\": KLine({\n        \"freq\": '5m'\n      }) % ('closeUti as uti', 'close as value'),\n      \"retracePct\": 0.5   # 反转百分比\n    })\n  }),\n  \"fcheck\": RctZigWithStatus({\n    # ZigZag\n    \"zig\": ZigZag({\n      # 要计算zigzag的特征, 一般是k线收盘价, 要求有uti数据\n      \"featIn\": KLine({\n        \"freq\": '5m'\n      }) % ('closeUti as uti', 'close as value'),\n      \"retracePct\": 0.5   # 反转百分比\n    })\n  }),\n  \"fisSystem\": T1FisSystem({\n    \"Name\": 'T1FIS',\n    \"Config\": T1FisSystemConfig({\n      \"type1\": 'mamdani',\n      \"version1\": '2.0',\n      \"andMethod1\": 'min',\n      \"orMethod1\": 'max',\n      \"impMethod1\": 'min',\n      \"aggMethod1\": 'max',\n      \"defuzzMethod1\": 'centroid'\n    }),\n    \"Inputs\": GMap({\n      \"adistance\": OneUseGaussmfInOrOutPut({\n        \"range\": (0, 10),\n        \"mf_name\": ['S', 'M', 'L'],\n        \"MfValueFunc\": GaussMFs({\n          \"overlap\": 0.2\n        })\n      })\n    }),\n    \"Outputs\": GMap({\n      \"closegain\": OneUseGaussmfInOrOutPut({\n        \"range\": (0, 1),\n        \"mf_name\": ['S', 'M', 'L'],\n        \"MfValueFunc\": GaussMFs({\n          \"overlap\": 0.2\n        })\n      })\n    }),\n    \"Rules\": OneSetRules({\n      \"rules\": GMap({\n        \"f0\": IfAll({\n          \"inputs\": {\n            \"adistance\": 'L'\n          },\n          \"outputs\": {\n            \"closegain\": 'L'\n          },\n          \"weight\": 1\n        }),\n        \"f1\": IfAll({\n          \"inputs\": {\n            \"adistance\": 'M'\n          },\n          \"outputs\": {\n            \"closegain\": 'M'\n          },\n          \"weight\": 1\n        }),\n        \"f2\": IfAll({\n          \"inputs\": {\n            \"adistance\": 'S'\n          },\n          \"outputs\": {\n            \"closegain\": 'S'\n          },\n          \"weight\": 1\n        })\n      })\n    })\n  })\n})}, 'market': {'calendar_position_field': 'closeUti', 'calendar_stride': 1, 'duration_unit': 'CalendarUTITick', 'units_per_calendar_tick': 1, 'units_per_open_minute': 120, 'price_comparison': {'kind': 'ExactNumericPrice', 'method': {'book': 'PriceComparisonMethodBook', 'kind': 'ExactNumericPrice', 'life': 'exact-native-price', 'revision': '1'}}, 'normalization': None}}, {'input': {'symbol': 'i', 'calendar': 'night_end_at_2300', 'freq': '5m', 'scale_turn': ScaleTurnCalendar({\n  \"stCloseGainController\": BscCloseGainController({\n    \"cgcInputs\": GMap({\n      \"f0\": AdjCloseVerticalDistanceInput({\n        \"acvdLabel\": 'adistance',\n        \"acvdXStepTimes\": 0.1,\n        \"acvdDisTimes\": 100\n      })\n    }),\n    \"cgcCombine\": InputCombineIfClose({\n      \"icicLine\": 0   # 距离阈值\n    })\n  }),\n  \"stMembershipLine\": 0.5,\n  \"stRnd2ChooseTurn\": ChooseMaxExtraPoint({\n    \"cmepOccupy\": 0\n  }),\n  \"specTerm\": 'M',\n  \"falter\": RctZigWithStatus({\n    # ZigZag\n    \"zig\": ZigZag({\n      # 要计算zigzag的特征, 一般是k线收盘价, 要求有uti数据\n      \"featIn\": KLine({\n        \"freq\": '5m'\n      }) % ('closeUti as uti', 'close as value'),\n      \"retracePct\": 0.5   # 反转百分比\n    })\n  }),\n  \"fcheck\": RctZigWithStatus({\n    # ZigZag\n    \"zig\": ZigZag({\n      # 要计算zigzag的特征, 一般是k线收盘价, 要求有uti数据\n      \"featIn\": KLine({\n        \"freq\": '5m'\n      }) % ('closeUti as uti', 'close as value'),\n      \"retracePct\": 0.5   # 反转百分比\n    })\n  }),\n  \"fisSystem\": T1FisSystem({\n    \"Name\": 'T1FIS',\n    \"Config\": T1FisSystemConfig({\n      \"type1\": 'mamdani',\n      \"version1\": '2.0',\n      \"andMethod1\": 'min',\n      \"orMethod1\": 'max',\n      \"impMethod1\": 'min',\n      \"aggMethod1\": 'max',\n      \"defuzzMethod1\": 'centroid'\n    }),\n    \"Inputs\": GMap({\n      \"adistance\": OneUseGaussmfInOrOutPut({\n        \"range\": (0, 10),\n        \"mf_name\": ['S', 'M', 'L'],\n        \"MfValueFunc\": GaussMFs({\n          \"overlap\": 0.2\n        })\n      })\n    }),\n    \"Outputs\": GMap({\n      \"closegain\": OneUseGaussmfInOrOutPut({\n        \"range\": (0, 1),\n        \"mf_name\": ['S', 'M', 'L'],\n        \"MfValueFunc\": GaussMFs({\n          \"overlap\": 0.2\n        })\n      })\n    }),\n    \"Rules\": OneSetRules({\n      \"rules\": GMap({\n        \"f0\": IfAll({\n          \"inputs\": {\n            \"adistance\": 'L'\n          },\n          \"outputs\": {\n            \"closegain\": 'L'\n          },\n          \"weight\": 1\n        }),\n        \"f1\": IfAll({\n          \"inputs\": {\n            \"adistance\": 'M'\n          },\n          \"outputs\": {\n            \"closegain\": 'M'\n          },\n          \"weight\": 1\n        }),\n        \"f2\": IfAll({\n          \"inputs\": {\n            \"adistance\": 'S'\n          },\n          \"outputs\": {\n            \"closegain\": 'S'\n          },\n          \"weight\": 1\n        })\n      })\n    })\n  })\n})}, 'market': {'calendar_position_field': 'closeUti', 'calendar_stride': 1, 'duration_unit': 'CalendarUTITick', 'units_per_calendar_tick': 1, 'units_per_open_minute': 120, 'price_comparison': {'kind': 'ExactNumericPrice', 'method': {'book': 'PriceComparisonMethodBook', 'kind': 'ExactNumericPrice', 'life': 'exact-native-price', 'revision': '1'}}, 'normalization': None}}],\n  \"sources\": None,\n  \"domain.context.book\": 'U2ContextBook',\n  \"domain.context.kind\": 'U2ContextRevision',\n  \"domain.context.life\": 'blk@steel',\n  \"domain.context.revision\": 'kline-turn-groups-v1',\n  \"domain.scale.book\": 'ScaleConfigurationBook',\n  \"domain.scale.kind\": 'ScaleTurnCalendarFrequency',\n  \"domain.scale.life\": '5m',\n  \"domain.scale.revision\": '1',\n  \"domain.calendar.book\": 'CalendarBook',\n  \"domain.calendar.kind\": 'CalendarRevision',\n  \"domain.calendar.life\": 'night_end_at_2300',\n  \"domain.calendar.revision\": 'TA_updto20240229_DBA',\n  \"domain.universe.book\": 'UniverseBook',\n  \"domain.universe.kind\": 'IndustryUniverse',\n  \"domain.universe.life\": 'blk@steel',\n  \"domain.universe.revision\": 'TA_updto20240229_DBA',\n  \"domain.domain\": 'blk@steel',\n  \"domain.objects\": ['rb', 'hc', 'i'],\n  \"domain.complete\": True,\n  \"domain.coverage\": [],\n  \"domain.intent\": '共同价格转折候选组及其形成依据',\n  \"profile.method.book\": 'CommonTurnGroupMethodBook',\n  \"profile.method.kind\": 'CompleteLinkPriceTurnsV1',\n  \"profile.method.life\": 'delta-five-open-minutes',\n  \"profile.method.revision\": '1',\n  \"profile.delta\": 600,\n  \"profile.unit\": 'CalendarUTITick',\n  \"profile.metrics\": [],\n  \"profile.directions\": [[0, 0, 0], [0, 1, 1], [1, 0, 1], [1, 1, 0]],\n  \"profile.turn_types\": [[0, 0, 0], [0, 1, 1], [1, 0, 1], [1, 1, 0]],\n  \"profile.observation_multiple\": 800,\n  \"result_layout\": 'common_price_turn_groups.core.v2',\n}) \n3/9/a/1/9/2/a/4bbf414e0814726d92d156f2fe9b1f968", "finished_at": "2026-11-22T17:34:25.826708+00:00"}
+TABLE_ROWS {}

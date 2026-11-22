@@ -1,0 +1,9 @@
+# D008 验收与方法边界
+
+新39f完整正式X、31表独立OnlyRead、15表上游、G1—G8及38项原生Life/AsOf复验已由VALIDATION.json及ANALYSIS_EXECUTION.json验收。D001不重做完整U，当前理解仅合入D007已批准delta和当前X绑定。27项全量结构检查无反例，GF001/002在当前剖面复验关闭；原生Gate为PASS_TO_SCENARIO_REVIEW，四项场景解释问题开放。未签FeatureReleaseGate/ReleasePackage或启动Q/V，未改WALL。
+
+成功生产实际持kernel flock并获独立排他探测退出73，真实新ts路径/哈希与源码/构建采用证据匹配；运行后锁释放且原生进程结束。首次尝试缺本地正常平台store_dir.json而退出，无F结果；原件保留并补齐空存储覆盖配置，第二次完整生产成功。生产/读回日志中的可选空子表文件提示保留，31表数据/列及独立hash实际验收通过；未将其隐藏成未发生分支或核心数据成功的替代证据。
+
+锁定87b951版schema/gate原文件不改。Return使用原validated、pro_state、object_ref_fields并补核真实I/D/最新Codex Binding、权限和已发布结果。完整validate-executor-return CLI的binding()硬编码ChatGPT manager，与本Run原生Codex manager不兼容；如前C已采用兼容边界，本C不声称完整CLI通过，不伪造controller物理receipt。最终校验原件在C0019/RETURN_VALIDATION.json。
+
+统计通过与专业REPORTED_COMPLETE仅覆盖本D008当前X/G职责。父Run释放与后继场景/依赖处理由原manager消费回交后依既有Workflow决定。

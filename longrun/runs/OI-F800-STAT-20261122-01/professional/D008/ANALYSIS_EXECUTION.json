@@ -1,0 +1,153 @@
+{
+  "started_at": "2026-11-22T17:44:38.578331+00:00",
+  "supervisor_pid": 2056976,
+  "completed": true,
+  "operations": [
+    {
+      "script": "run_formal",
+      "command": [
+        "bash",
+        "run-python.sh",
+        "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/run_in_runtime.py",
+        "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/run_formal.py",
+        "--mode",
+        "read"
+      ],
+      "pid": 2056978,
+      "started_at": "2026-11-22T17:44:39.035496+00:00",
+      "log": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/run_formal.log",
+      "exit_code": 0,
+      "finished_at": "2026-11-22T17:45:15.091459+00:00"
+    },
+    {
+      "script": "extract_upstream",
+      "command": [
+        "bash",
+        "run-python.sh",
+        "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/run_in_runtime.py",
+        "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/extract_upstream.py"
+      ],
+      "pid": 2056982,
+      "started_at": "2026-11-22T17:44:39.057202+00:00",
+      "log": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/extract_upstream.log",
+      "exit_code": 0,
+      "finished_at": "2026-11-22T17:45:15.129783+00:00"
+    },
+    {
+      "script": "bind_result",
+      "command": [
+        "python3",
+        "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/bind_result.py"
+      ],
+      "pid": 2057430,
+      "started_at": "2026-11-22T17:45:15.517103+00:00",
+      "log": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/bind_result.log",
+      "exit_code": 0,
+      "finished_at": "2026-11-22T17:45:18.539574+00:00"
+    },
+    {
+      "script": "prepare_g_readiness",
+      "command": [
+        "python3",
+        "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/prepare_g_readiness.py"
+      ],
+      "pid": 2057488,
+      "started_at": "2026-11-22T17:45:18.676981+00:00",
+      "log": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/prepare_g_readiness.log",
+      "exit_code": 0,
+      "finished_at": "2026-11-22T17:45:19.224701+00:00"
+    },
+    {
+      "script": "perform_global_profile",
+      "command": [
+        "python3",
+        "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/perform_global_profile.py"
+      ],
+      "pid": 2057489,
+      "started_at": "2026-11-22T17:45:19.329862+00:00",
+      "log": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/perform_global_profile.log",
+      "exit_code": 0,
+      "finished_at": "2026-11-22T17:45:28.549937+00:00"
+    },
+    {
+      "script": "compare_versions",
+      "command": [
+        "python3",
+        "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/compare_versions.py",
+        "D005"
+      ],
+      "pid": 2057616,
+      "started_at": "2026-11-22T17:45:28.604632+00:00",
+      "log": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/compare_versions_be57.log",
+      "exit_code": 0,
+      "finished_at": "2026-11-22T17:45:29.785967+00:00"
+    },
+    {
+      "script": "compare_versions",
+      "command": [
+        "python3",
+        "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/compare_versions.py",
+        "D002"
+      ],
+      "pid": 2057620,
+      "started_at": "2026-11-22T17:45:29.863451+00:00",
+      "log": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/compare_versions_ac.log",
+      "exit_code": 0,
+      "finished_at": "2026-11-22T17:45:30.879899+00:00"
+    },
+    {
+      "script": "validate_missing_windows",
+      "command": [
+        "python3",
+        "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/validate_missing_windows.py"
+      ],
+      "pid": 2057622,
+      "started_at": "2026-11-22T17:45:30.963980+00:00",
+      "log": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/validate_missing_windows.log",
+      "exit_code": 0,
+      "finished_at": "2026-11-22T17:45:32.980502+00:00"
+    },
+    {
+      "script": "verify_native_retest",
+      "command": [
+        "bash",
+        "run-python.sh",
+        "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/run_in_runtime.py",
+        "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/verify_native_retest.py"
+      ],
+      "pid": 2057689,
+      "started_at": "2026-11-22T17:45:33.478218+00:00",
+      "log": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/verify_native_retest.log",
+      "exit_code": 0,
+      "finished_at": "2026-11-22T17:46:05.011656+00:00"
+    },
+    {
+      "script": "build_profile_package",
+      "command": [
+        "python3",
+        "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/build_profile_package.py"
+      ],
+      "pid": 2058020,
+      "started_at": "2026-11-22T17:46:05.416331+00:00",
+      "log": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/build_profile_package.log",
+      "exit_code": 0,
+      "finished_at": "2026-11-22T17:46:06.437357+00:00"
+    },
+    {
+      "script": "validate_delivery",
+      "command": [
+        "python3",
+        "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/validate_delivery.py"
+      ],
+      "pid": 2058078,
+      "started_at": "2026-11-22T17:46:06.477169+00:00",
+      "log": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/validate_delivery.log",
+      "exit_code": 0,
+      "finished_at": "2026-11-22T17:46:07.990453+00:00"
+    }
+  ],
+  "g_workflow_started_at": "2026-11-22T17:45:18.617683+00:00",
+  "global_profile_started_at": "2026-11-22T17:45:19.260766+00:00",
+  "global_profile_finished_at": "2026-11-22T17:46:08.015410+00:00",
+  "finished_at": "2026-11-22T17:46:08.015433+00:00"
+}
