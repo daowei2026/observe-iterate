@@ -66,3 +66,7 @@ controller核原E1真实状态/角色模型gpt-6.1-sol/max后派发D006；只绑
 manager消费真实D006 Return后按原Skill路由续接；若有新正式行为/输入处理修改建议，单独形成ModificationProposal及影响/验证计划回Owner确认。原MP-001批准不外延；只有实际采用新变化才按原L0传播失效并回X/G。4项场景问题、F/Q共享及Q独立数值边界限制继续传递，本Run不运行Q/V、不批准WALL M001。
 
 先发布D006/报告/进度并远端回读，再独立发布引用已有exact对象的IN_PROGRESS Return；owner_request_ref=null，W/Worker引用为空。manager不创建线程、不向其他聊天发消息、不自动唤醒；本C协调交付后交回controller，等待合法下一C。
+
+## 本C正式D发布凭证
+
+D006已先行发布并从origin逐字节回读：`daowei2026/observe-iterate@f076db5afb51cc6b02502007713d7f83be97b9ad:longrun/runs/OI-F800-STAT-20261122-01/delegations/D006/DELEGATION.json`；报告：`daowei2026/observe-iterate@f076db5afb51cc6b02502007713d7f83be97b9ad:longrun/runs/OI-F800-STAT-20261122-01/calls/C0013/MANAGER_REPORT.md`。本C正式IN_PROGRESS Return独立引用上述已有exact对象；controller仍须核原E1并实际派发，本C无D006物理派发或诊断开工回执。
