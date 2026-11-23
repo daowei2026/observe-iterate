@@ -1,0 +1,13 @@
+# C0035｜Return准确引用与发布校验
+
+首批真实发布commit `0f247e6b56bebc93a3d1cbdffb88402068de6cec`，父提交 `239213038d7554a8561fffa824c7d3e4a9d73c6b`，普通推送原Run分支并fetch确认同一commit；9文件字节/Git blob/SHA-256逐件匹配，回读时tracked tree clean。实际凭证见D016_PUBLICATION。本文件、机读Return、发布凭证及TASK_PROGRESS追加记录独立第二批，不预填自己的未来commit。
+
+本C Return通过完整专业控制 `b8c2b513f0b08be6a1fa6782b71bf74a07faff0d` 的V2 schema，保持原字段。role=manager、sender=原manager、delegation_ref/return_to=null、professional_state=IN_PROGRESS、owner_request_ref=null；唯一issued_delegation为首批真实D016，零W/Worker。Return全部4个交付引用均为已存在首批准确Git对象；原生MANAGER_REPORT的result_ref已验证明确完整实际采用commit及本C读取/消费证据，不增改机读字段或伪造E1未来读取回执。
+
+D016的原E1身份、当前原business-discrepancy-diagnosis Skill、准确业务接续及权限子集核同。D015 REPORTED_COMPLETE只按原G补充范围接受，当前发现摘要/结果绑定队列/适配/最终原生结果/Gate齐备；67项直接来源、47项D015原输入及86文件/1,771,865字节的manifest核验沿首批SOURCE_AUDIT。没有重跑Feature/统计、编译、诊断或查看当前Feature实现。
+
+Q选择唯一F-LIFE-PEAK-CONCURRENCY进入D016，先LogicLocalization；仍CANDIDATE+OWNER_RAISED、OWNER_CONCERN、must_assess_before_release=true、logic_localization_ref=null。Gate DIAGNOSIS_REQUIRED、Owner候选最终判断未完成，不以G完成或36数值确认缺陷/根因/修法。有效U/D008三年X/31独立读回/既有G、GF001/002关闭和历史S1/S2保持，不改旧原件。
+
+只传分析/Run记录grants，无新正式行为改变、formal_feature_run、代码采用或参数标定授权；Owner实际不接受REL001，当前不签FeatureReleaseGate/UpstreamReleasePackage、不启动Q/V。最新Campaign指定F独立继续覆盖旧联合Barrier，不推断WALL合理性通过。旧完整gate的原Codex身份不兼容证据及原件保持，本次schema/引用/授权校验不冒充完整旧CLI或F业务Gate PASS。
+
+D发布不是物理送达/开工回执；controller仍核原E1真实线程/sol/max/cwd、授权/单写者和状态后派达。无新Owner问题、其他聊天消息、新线程或timer。第二批发布后再次fetch核父链、本Run写面和12个合并文件内容；账本completed仅本C协调完成，Run维持IN_PROGRESS。

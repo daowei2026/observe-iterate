@@ -114,3 +114,14 @@ controller核原E1真实线程/sol/max/cwd、权限/单写者和状态后派达�
 - 采用记录：`daowei2026/observe-iterate@4bf46f3fbe402915e3272e49a71dc94eac787c15:longrun/runs/OI-F800-STAT-20261122-01/PROFESSIONAL_CONTROL_ADOPTION.json`；原E1须执行前亲读准确新来源，在原生报告记录实际采用完整commit，经原V2 Return的result_ref承载。
 
 本C后批Return仅引用上述已存在首批对象，Run=IN_PROGRESS、owner_request_ref=null。F800-REL-001未接受；当前不Release或启动Q/V，不等旧WALL/F联合Barrier。D015物理送达/开工仍待controller真实前检和回执，manager未代专业施工；不创建后继线程或发送其他聊天消息。
+
+## C0035 D016首批发布凭证
+
+首批commit `0f247e6b56bebc93a3d1cbdffb88402068de6cec`，父提交 `239213038d7554a8561fffa824c7d3e4a9d73c6b`；普通推送原分支并fetch确认同一commit，9文件Git blob/SHA-256/字节逐件核同，回读时tracked tree clean。
+
+- 唯一D016：`daowei2026/observe-iterate@0f247e6b56bebc93a3d1cbdffb88402068de6cec:longrun/runs/OI-F800-STAT-20261122-01/delegations/D016/DELEGATION.json`，单finding原诊断Skill，先LogicLocalization。
+- 原生manager报告：`daowei2026/observe-iterate@0f247e6b56bebc93a3d1cbdffb88402068de6cec:longrun/runs/OI-F800-STAT-20261122-01/calls/C0035/MANAGER_REPORT.md`，明确实际采用完整专业控制 `b8c2b513f0b08be6a1fa6782b71bf74a07faff0d`。
+- G消费/Q选择记录：`daowei2026/observe-iterate@0f247e6b56bebc93a3d1cbdffb88402068de6cec:longrun/runs/OI-F800-STAT-20261122-01/calls/C0035/G_CONSUMPTION_AND_QUEUE_DECISION.json`；D015仅G补充完成被接受，Gate DIAGNOSIS_REQUIRED，选入F-LIFE-PEAK-CONCURRENCY仍CANDIDATE/OWNER_CONCERN，最终判断未完成。
+- 来源/manifest核验：`daowei2026/observe-iterate@0f247e6b56bebc93a3d1cbdffb88402068de6cec:longrun/runs/OI-F800-STAT-20261122-01/calls/C0035/SOURCE_AUDIT.json`；67项直接来源、D015源审计47项和86文件/1,771,865字节清单核同。
+
+本C后批Return只引用已存在首批对象，Run IN_PROGRESS、owner_request_ref=null，零W/Worker；D016物理送达/开工仍待controller真实核验，manager不代施工。Owner候选及必要回流前不Release/Q/V，F独立继续，不等待旧联合Barrier，无其他聊天消息/新线程/timer。
