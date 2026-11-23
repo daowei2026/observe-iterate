@@ -1,0 +1,71 @@
+{
+  "run_id": "OI-ABSORB-STAT-20261123-01",
+  "call_id": "C0001",
+  "professional_control_commit": "b8c2b513f0b08be6a1fa6782b71bf74a07faff0d",
+  "controller_skill_commit": "fc966bcf5441701182339c992865504692f3a466",
+  "validation_scope": "来源、原V2 schema、引用形态及manager签D的身份/权限子集；不替代controller独立验实发送和Return回执",
+  "schema_validation": {
+    "binding": "PASS",
+    "invocation": "PASS",
+    "delegation": "PASS"
+  },
+  "actual_adopted_functions_used": [
+    "validated",
+    "object_ref_fields",
+    "binding"
+  ],
+  "delegation_relationship_subset": "PASS",
+  "owner_authority_quotes_verbatim": "PASS",
+  "delegation_grant_subset": "PASS",
+  "owner_original_sha256": "0a1ff1a69b561d45ae0c22547a62ef0af8eac2187c3ff8817943c62ea97d1ec0",
+  "physical_source_validation": {
+    "daowei2026/observe-iterate@b8c2b513f0b08be6a1fa6782b71bf74a07faff0d:longrun/tools/longrun_gate.py": {
+      "sha256": "3355372ef1d9cbe3c4440bd6c3908a64827859d59bbdfe6bb9f9624c36aac7a7",
+      "physical_source_matches_exact_git_object": true
+    },
+    "daowei2026/observe-iterate@b8c2b513f0b08be6a1fa6782b71bf74a07faff0d:longrun/contracts/longrun_schema_v2.json": {
+      "sha256": "deace56513917795fd16b468f9ea4edf8e7868122687b8fb44cff76ca734a8a2",
+      "physical_source_matches_exact_git_object": true
+    },
+    "daowei2026/observe-iterate@b8c2b513f0b08be6a1fa6782b71bf74a07faff0d:longrun/CODEX_NATIVE_EXECUTION_PROFILE.md": {
+      "sha256": "6201c6d94f782cc895549a551583fe834ae28153062b3a8985529ac37429b215",
+      "physical_source_matches_exact_git_object": true
+    },
+    "daowei2026/cgpterm@fc966bcf5441701182339c992865504692f3a466:.agents/skills/observe-iterate-longrun-v2-codex-native-controller/SKILL.md": {
+      "sha256": "b36d378a4fc0eec19e32476e82d22a859d048806dafe26e1584abfae0dcded26",
+      "physical_source_matches_exact_git_object": true
+    }
+  },
+  "legacy_binding_gate": {
+    "status": "REJECTED",
+    "function": "longrun_gate.binding",
+    "error": "bad manager logical identity",
+    "full_gate_pass_claimed": false
+  },
+  "physical_identity": {
+    "manager_thread_matches_controller_creation_record": true,
+    "executor_E1_physical_creation": "NOT_CREATED_AT_THIS_CALL_INPUT",
+    "workers": [],
+    "physical_ids_retained_in_local_controller_artifacts_only": true
+  },
+  "not_validated": [
+    "controller独立manager Return物理回执",
+    "validate-delegation完整gate",
+    "validate-manager-return完整gate",
+    "validate-executor-execution",
+    "正式写前实际资源单写者及重型flock",
+    "Feature专业完成或Release"
+  ],
+  "publication_scope": "公开记录只含本任务专业引用和已在Owner/Binding公开的运行身份、工作区及写面；实际threadId等物理识别信息仅留本地controller artifacts。",
+  "publication_review_evidence": {
+    "destination": "daowei2026/observe-iterate",
+    "visibility_verified_via_GitHub_metadata": "public",
+    "account_has_repository_push_permission": true,
+    "explicit_publication_authority_ref": "daowei2026/observe-iterate@87e09835f7fdd5569bf36f9567802d8752aa6886:longrun/runs/OI-ABSORB-STAT-20261123-01/calls/C0001/FULL_ASSIGNMENT.md",
+    "authority_quote": "先发布D/报告/进度，再发引用已有exact对象的原生manager Return",
+    "previously_published_owner_blob": "362fa8cf0a669d482787a292291c44dc310416b8",
+    "previously_published_binding_blob": "9d99a18c3d514187861d17c69dcf2f6793df5c1e",
+    "new_physical_thread_ids_in_payload": false,
+    "private_credentials_or_business_data_in_payload": false
+  }
+}
