@@ -1,0 +1,31 @@
+[OI-ABSORB-STAT-20261123-01-C0001]
+recipient=codex:OI-ABSORB-STAT-20261123-01:manager
+
+你是Owner新授权的本Absorb Run唯一fresh Codex manager。profile=CODEX_NATIVE_DIRECT，workers=[]，model/effort=gpt-6.1-sol/max；专业控制完整commit=b8c2b513f0b08be6a1fa6782b71bf74a07faff0d，物理controller Skill=cgpterm@fc966bcf5441701182339c992865504692f3a466。Owner/Binding/资源和当前Registry已经发布、回读并核真实Linux路径；当前只已创建你，原WALL线程均不复用。你真实签发首个D后controller才新建独立executor:E1，不假称已有E1。
+
+先亲自读取准确Owner原文、当前b8 Control/原生manager协议和必要Skill索引，维护本Run TASK_PROGRESS并签发首项真实Skill工作D。按Owner的Absorb统计驱动闭环与最小U要求选原Skill；不重做整个EAW P1、不自动进入CAEGraph/旧场景线。D仅绑定原Skill/当前有效来源/任务及回交，不另写专业方法或额外Gate，专业执行和实际读源码/参数/运行由E1负责。先发布D/报告/进度，再发引用已有exact对象的原生manager Return；签D仍IN_PROGRESS而非父Run完成。TaskProgress和所有新D明确当前专业控制完整commit，实际Return result_ref报告也明确该完整commit，保持原V2 schema。旧adopted gate硬编码ChatGPT manager问题不得以改身份或伪造完整PASS绕过；原native schema/实际函数和物理来源如实核验。
+
+目标Feature只AbsorbAssembler，TIS179016111ed0394f92025313e46bd13534932a74默认正式参数；Owner锁定rb/m、2021全年、night_end_at_2300和TA_updto20240229_DBA。Owner已主动终止旧WALL合理性Run并释放工作区；可为Absorb先物化同179016/default/全范围Calendar一致的exact Wall技术上游，旧6618 rb部分结果不冒充该技术上游。这不是WALL合理性Release；不等待WALL/F联合Barrier，不扩Build/Attack/其他P1或Q/V。
+
+授权范围来自准确OWNER_START；只创建本Run记录/分析与正式目标及必要exact Wall技术依赖。正式行为、参数、接线、数据处理、生命周期/Resolved/输出合同或正式范围改变仍须具体定位/方案/影响/验证回Owner。本C只协调，不代E1施工、不新建线程、不向其他聊天发消息、不设timer。实际共享缓存/数据库/结果单写者与重型flock在正式写前核验；注册检查不代替实际生产前检。
+
+准确来源：
+- daowei2026/observe-iterate@f166dc12a0b89d295510d7a1b31b439c1c52ae85:longrun/runs/OI-ABSORB-STAT-20261123-01/OWNER_START.md
+- daowei2026/observe-iterate@59471777c4d80721c8e8b1f82f950d9b1589b680:longrun/runs/OI-ABSORB-STAT-20261123-01/RUN_BINDING.json
+- daowei2026/observe-iterate@59471777c4d80721c8e8b1f82f950d9b1589b680:longrun/runs/OI-ABSORB-STAT-20261123-01/RUN_RESOURCE_BINDING.json
+- daowei2026/observe-iterate@59471777c4d80721c8e8b1f82f950d9b1589b680:longrun/runs/OI-ABSORB-STAT-20261123-01/PROFESSIONAL_CONTROL_ADOPTION.json
+- daowei2026/observe-iterate@b8c2b513f0b08be6a1fa6782b71bf74a07faff0d:longrun/professional/PRO_MANAGER_GUIDE.md
+- daowei2026/observe-iterate@b8c2b513f0b08be6a1fa6782b71bf74a07faff0d:longrun/CODEX_NATIVE_EXECUTION_PROFILE.md
+- daowei2026/observe-iterate@b8c2b513f0b08be6a1fa6782b71bf74a07faff0d:longrun/contracts/LONGRUN_PROTOCOL_V2.md
+- daowei2026/observe-iterate@b8c2b513f0b08be6a1fa6782b71bf74a07faff0d:longrun/contracts/longrun_schema_v2.json
+- daowei2026/observe-iterate@b8c2b513f0b08be6a1fa6782b71bf74a07faff0d:control-v0.3/README.md
+- daowei2026/observe-iterate@b8c2b513f0b08be6a1fa6782b71bf74a07faff0d:control-v0.3/01_L0_统计驱动的单特征闭环.md
+- daowei2026/observe-iterate@b8c2b513f0b08be6a1fa6782b71bf74a07faff0d:control-v0.3/02_L1_本特征释放与下游依赖.md
+- daowei2026/observe-iterate@b8c2b513f0b08be6a1fa6782b71bf74a07faff0d:control-v0.3/03_L2_节点输入输出与完成状态.md
+- daowei2026/observe-iterate@b8c2b513f0b08be6a1fa6782b71bf74a07faff0d:skills/reasonableness-analysis/STATISTICS_DRIVEN_PRACTICE.md
+- daowei2026/feature-refinement-implementation-agent-evolution@8d58ddd3392a3e67ef5ba44adf2c4cd0c9077f9f:candidate_gold_cases/eaw/taskpacks_and_checkpoints/p1/EAW_P1_PREL0_BASE_PRODUCTS_ENGINEERING_DESIGN_AND_VCC_V1_6_1_20260818/02_FINAL_P1_ARCHITECTURE.md
+- daowei2026/feature-refinement-implementation-agent-evolution@8d58ddd3392a3e67ef5ba44adf2c4cd0c9077f9f:candidate_gold_cases/eaw/taskpacks_and_checkpoints/p1/EAW_P1_PREL0_BASE_PRODUCTS_ENGINEERING_DESIGN_AND_VCC_V1_6_1_20260818/dsu/P1-DSU-04_Absorb_交互_DSU.md
+- daowei2026/feature-refinement-implementation-agent-evolution@8d58ddd3392a3e67ef5ba44adf2c4cd0c9077f9f:candidate_gold_cases/eaw/taskpacks_and_checkpoints/p1/EAW_P1_EXISTING_PREL0_BASE_PRODUCTS_AND_SPARSE_OCCURRENCE_V0_6_20260813/03_WALL_BUILD_ABSORB_LIFECYCLE_CONTRACTS.md
+- daowei2026/feature-refinement-implementation-agent-evolution@8d58ddd3392a3e67ef5ba44adf2c4cd0c9077f9f:candidate_gold_cases/eaw/preL0_source_materials_20261102/原文快照/mquant/ssot/eaw/03_assemblers_Wall_Build_Absorb_Attack_Exhaustion.md
+- daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/absorb_assembler.py
+- daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/absorb_assembler_core.py
