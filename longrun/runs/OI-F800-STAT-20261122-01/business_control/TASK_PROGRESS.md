@@ -2,12 +2,12 @@
 
 ## 当前身份、采用与Owner决策
 
-- run_id=OI-F800-STAT-20261122-01；work_id=OI-F800-STAT-20261122；business_case_id=F-STATISTICS-CLOSURE；当前C0033，Run professional_state=IN_PROGRESS，未释放。
-- 当前完整专业控制commit **`b8c2b513f0b08be6a1fa6782b71bf74a07faff0d`**；前版`87b951bbd15078a2d6353bdd24afe0d8f19c845c`自C0033起保留历史；采用 `daowei2026/observe-iterate@4bf46f3fbe402915e3272e49a71dc94eac787c15:longrun/runs/OI-F800-STAT-20261122-01/PROFESSIONAL_CONTROL_ADOPTION.json`，manager已读取准确新Control/Skill/实践/任务输入，原线程不重建。
+- run_id=OI-F800-STAT-20261122-01；work_id=OI-F800-STAT-20261122；business_case_id=F-STATISTICS-CLOSURE；当前C0035，Run professional_state=IN_PROGRESS，未释放。
+- 当前完整专业控制commit **`b8c2b513f0b08be6a1fa6782b71bf74a07faff0d`**，自C0033起采用，前版87b951仅历史；准确采用 `daowei2026/observe-iterate@4bf46f3fbe402915e3272e49a71dc94eac787c15:longrun/runs/OI-F800-STAT-20261122-01/PROFESSIONAL_CONTROL_ADOPTION.json`。manager本C已读取准确原诊断Skill/Control/实践/接续材料并消费同版D015，原线程不重建。
 - 物理controller Skill=cgpterm@fc966bcf5441701182339c992865504692f3a466；CODEX_NATIVE_DIRECT，manager=`codex:OI-F800-STAT-20261122-01:manager`，原独立executor=`codex:OI-F800-STAT-20261122-01:executor:E1`，sol/max，workers=[]。
-- 派工 `daowei2026/observe-iterate@4bf46f3fbe402915e3272e49a71dc94eac787c15:longrun/runs/OI-F800-STAT-20261122-01/calls/C0033/FULL_ASSIGNMENT.md`；INVOCATION `daowei2026/observe-iterate@7d6fdb01570ed2f41b99366d46c8675c69fa004b:longrun/runs/OI-F800-STAT-20261122-01/calls/C0033/INVOCATION.json`；最新Owner `daowei2026/observe-iterate@4bf46f3fbe402915e3272e49a71dc94eac787c15:longrun/runs/OI-F800-STAT-20261122-01/owner-decisions/CONTINUE-20261123/OWNER_CONTINUE.original.txt`，Campaign `daowei2026/observe-iterate@4bf46f3fbe402915e3272e49a71dc94eac787c15:longrun/runs/OI-F800-STAT-20261122-01/owner-decisions/CONTINUE-20261123/CAMPAIGN_ROUTE.original.txt`；Owner明确不接受F800-REL-001，旧候选/WAITING_OWNER/审查仅历史，不再等待该决策。
-- 最新Binding `daowei2026/observe-iterate@3dc11a9dbf39e181b3c6a3051419a90e46b92aac:longrun/runs/OI-F800-STAT-20261122-01/RUN_BINDING.json`；当前D015只传分析/Run记录grants，历史MP001/MP002不新增权限；新的正式行为/参数/常量/期限/数据处理/输出合同改变仍先具体Proposal/定位/影响/验证回Owner。
-- 最新Campaign指定F独立继续，不等待WALL/F联合Barrier，覆盖新F接续输入末尾旧文字。WALL由Owner终止不等于验收通过；本manager不替其他Run执行操作，F→Q→V顺序不变。
+- 本C派工 `daowei2026/observe-iterate@401707e314ff39a4510b32adafd150881bc393d5:longrun/runs/OI-F800-STAT-20261122-01/calls/C0035/FULL_ASSIGNMENT.md`；调用 `daowei2026/observe-iterate@239213038d7554a8561fffa824c7d3e4a9d73c6b:longrun/runs/OI-F800-STAT-20261122-01/calls/C0035/INVOCATION.json`；消费原E1 `daowei2026/observe-iterate@fa3d050f1680bbf2e502c7c67c70a1b421642f45:longrun/runs/OI-F800-STAT-20261122-01/calls/C0034/PRO_RETURN.json` 及 `daowei2026/observe-iterate@6e9521ffc437a307da7413727f80fc2621994d4f:longrun/runs/OI-F800-STAT-20261122-01/professional/D015/EXECUTOR_REPORT.md`。D015完成仅原G补充范围，不扩大为F Run完成。
+- 最新Owner `daowei2026/observe-iterate@4bf46f3fbe402915e3272e49a71dc94eac787c15:longrun/runs/OI-F800-STAT-20261122-01/owner-decisions/CONTINUE-20261123/OWNER_CONTINUE.original.txt` 不接受F800-REL-001；当前无新Owner请求，旧WAITING_OWNER/候选仅历史。Binding `daowei2026/observe-iterate@3dc11a9dbf39e181b3c6a3051419a90e46b92aac:longrun/runs/OI-F800-STAT-20261122-01/RUN_BINDING.json`，D016只用分析/Run记录grant子集；历史MP001/002不授权新的正式行为改变，必要新改变仍先具体定位/Proposal/影响/验证回Owner。
+- 最新Campaign `daowei2026/observe-iterate@4bf46f3fbe402915e3272e49a71dc94eac787c15:longrun/runs/OI-F800-STAT-20261122-01/owner-decisions/CONTINUE-20261123/CAMPAIGN_ROUTE.original.txt` 指定F独立继续，覆盖接续文件末尾旧WALL/F联合Barrier。WALL由Owner终止不表示验收通过，本manager不管理其他Run；F→Q→V依赖保持。
 
 ## CurrentReviewTarget
 
@@ -22,17 +22,19 @@ owner_raised_candidates:
 required_regression_findings: []
 ```
 
+当前ReviewTarget阶段更新：D015发现pass已完成并由本C消费；当前按Q只选择Owner候选F-LIFE-PEAK-CONCURRENCY，下一项D016先LogicLocalization，最终判断仍未完成。目标/约束不因节点完成变成Release通过。
+
 ## Owner要求的七项进度
 
 | 项目 | 当前真实状态 | 准确来源/后继 |
 |---|---|---|
-| D001 | 最小理解已接收，当前U有效且保留PARTIAL/NOT_EXPOSED边界，不重做完整U | `daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/CurrentFeatureUnderstandingPackage.json` |
-| X是否开始 | 39f完整三年正式X已实际完成，当前不新生产 | `daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/FeatureRunResultBinding.json` |
-| 复用/生产 | D008为真实新生产；本次G补充复用该合法结果 | 原31表独立OnlyRead有效，不用默认F6/ac/be57充当当前结果 |
-| 正式Feature进程 | 历史正式producer/native均结束；本C未启动正式Feature进程 | 原过程/释放证据保留，D015仅分析/记录 |
-| 当前结果目录 | 沿下列D008准确full_dir和配置/fields/日历联合绑定 | 不因新控制采用改变结果身份 |
-| G是否开始 | D008全量G已完成有效；本次指定新G补充D015已签，待原E1实际执行 | 原G不重跑，新发现摘要/队列/Gate尚待回交 |
-| 当前阻断/后继 | Owner明确继续，无新许可等待；先D015 G补充，再Q逐个D先LogicLocalization | Owner并发候选/同轮候选未完成前不得Release |
+| D001 | 当前最小U有效，PARTIAL/NOT_EXPOSED边界保持，不重做理解 | `daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/CurrentFeatureUnderstandingPackage.json` |
+| X是否开始 | 39f三年正式X已完成，当前不新生产 | `daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/FeatureRunResultBinding.json` |
+| 复用/生产 | D008真实新生产；D015复用合法结果完成G补充，D016继续诊断 | 31表独立OnlyRead有效，不用旧ac/be57/F6替代 |
+| 正式Feature进程 | 历史producer/native已结束，本C未启动Feature/统计/编译 | D016仅分析/Run记录授权 |
+| 当前结果目录 | D008 full_dir、配置/fields/日历联合绑定保持 | 见下列当前版本与结果 |
+| G是否开始 | 既有G有效；新补充D015已完成且本C接受 | `daowei2026/observe-iterate@6e9521ffc437a307da7413727f80fc2621994d4f:longrun/runs/OI-F800-STAT-20261122-01/professional/D015/FindingDiscoverySummary.json`；Gate DIAGNOSIS_REQUIRED |
+| 当前阻断/后继 | Owner候选未判断；Q选唯一候选，D016已签待原E1实际执行 | 先LogicLocalization，无新许可等待，不Release |
 
 ## 当前版本与结果
 
@@ -46,25 +48,29 @@ FRP `39f02ec4548e68ba8dbd30061afc870546000994`，TIS `2f460d663d821cf2ba25555eda
 
 ## G发现、finding与Release当前状态
 
-| 对象 | 当前真实状态 | 来源/后继 |
+| 对象 | 当前真实状态 | 准确来源/后继 |
 |---|---|---|
-| 既有D008剖面 | 统计事实/31读回有效，原GlobalProfileGate按当时范围保留 | `daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/GlobalBehaviorProfile.json`；不能替代新控制要求的本次发现pass |
-| 新G补充 | 唯一D015已签，一项原G Skill，尚无本次FindingDiscoverySummary/队列快照回交 | 新b8 Control/Skill/实践和当前接续输入，原E1自主专业判断 |
-| Owner候选 | F-LIFE-PEAK-CONCURRENCY，OWNER_RAISED+CANDIDATE，must_assess_before_release=true，OWNER_CONCERN | [登记原件](../calls/C0033/OWNER_CANDIDATE_REGISTRATION.json)；峰值责任内36仅原报告/Owner关注，未判active/上限/根因 |
-| Current finding / LogicLocalization | 尚未进入本Owner候选D，logic_localization_ref=null | 先发现pass/队列，再逐个D先定位，不提前确认或讨论修改 |
-| GF001/GF002 | CLOSED_ON_LATEST_PROFILE保持 | `daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/FindingDisposition.json`；除非新证据直接推翻，不重诊断 |
-| Accepted limitations | 无本次接受记录，F800-REL-001明确未接受 | 历史材料边界保留，不冒充DEFERRED_BY_OWNER_SCOPE |
-| FeatureReleaseGate / UpstreamReleasePackage | 未签；当前Owner明确禁止在新要求完成前Release | 完成发现pass/Owner候选/同轮高置信候选及必要回流后按新L0/L1继续 |
-| 历史M/S1/S2 | 已交付的原件和冻结v1保持，不重做，也不自动成为新G完成 | 当前V0.3不自动转入旧场景Workflow |
-| Q/V | 未在本Run运行或释放 | 未来Q必须消费最终exact F800 ReleasePackage，不得旧make_features重构F6；V在Q后 |
+| 既有D008剖面 | 原统计/31读回有效，不重做 | `daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/GlobalBehaviorProfile.json` |
+| G / FindingDiscoverySummary | 本次D015发现补充完成；E1报告9业务面，未因首候选停止 | `daowei2026/observe-iterate@6e9521ffc437a307da7413727f80fc2621994d4f:longrun/runs/OI-F800-STAT-20261122-01/professional/D015/FindingDiscoverySummary.json` |
+| CandidateFindingQueue snapshot | F800-D015-CURRENT-RESULT-QUEUE-v1，当前D008结果绑定，1待处理候选 | `daowei2026/observe-iterate@6e9521ffc437a307da7413727f80fc2621994d4f:longrun/runs/OI-F800-STAT-20261122-01/professional/D015/CandidateFindingQueue.json`；后续新证据可新增候选 |
+| 未升级观察/未覆盖范围 | 8观察及返回条件、3处未覆盖边界保留 | `daowei2026/observe-iterate@6e9521ffc437a307da7413727f80fc2621994d4f:longrun/runs/OI-F800-STAT-20261122-01/professional/D015/ObservationsNotPromoted.json`及摘要；不是Owner接受暂缓或全面合理结论 |
+| Owner-raised candidates | F-LIFE-PEAK-CONCURRENCY，OWNER_RAISED+CANDIDATE、OWNER_CONCERN、must_assess_before_release=true，G已PROMOTED进D | `daowei2026/observe-iterate@6e9521ffc437a307da7413727f80fc2621994d4f:longrun/runs/OI-F800-STAT-20261122-01/professional/D015/GlobalFindingCandidates.json`；最终判断未完成 |
+| Current finding / LogicLocalization | 当前F-LIFE-PEAK-CONCURRENCY选入D016；logic_localization_ref=null，无定位回交 | [本C消费/Q记录](../calls/C0035/G_CONSUMPTION_AND_QUEUE_DECISION.json)；按Owner§5先定位全部36Life及责任逻辑 |
+| Open findings | 当前1项Owner候选待诊断；尚无新确认缺陷 | 原队列/适配为输入，D016已签不等于实际开工 |
+| Closed findings | GF001/GF002 CLOSED_ON_LATEST_PROFILE保持，无新直接反证不重诊 | `daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/FindingDisposition.json` |
+| Accepted limitations | 无本次Owner接受记录，F800-REL-001未接受；已有数据限制保留 | 不伪称DEFERRED_BY_OWNER_SCOPE |
+| GlobalProfileGate | DIAGNOSIS_REQUIRED，发现完成、Owner判断未完成 | `daowei2026/observe-iterate@6e9521ffc437a307da7413727f80fc2621994d4f:longrun/runs/OI-F800-STAT-20261122-01/professional/D015/GlobalProfileGate.json`；不要求当前机械重跑Feature |
+| FeatureReleaseGate | 未签 | Owner候选及必要回流未完成前禁止Release |
+| UpstreamReleasePackage | 未形成 | 不启动下游Q/V；未来Q消费最终exact F800 Package |
+| 历史M/S1/S2 | 原件/冻结v1有效保留，不重做或自动进入旧场景线 | 不替代当前D判断 |
 
 ## 本C后继与交付
 
-唯一新D015（[JSON](../delegations/D015/DELEGATION.json)、[说明](../delegations/D015/DELEGATION.md)）绑定 `daowei2026/observe-iterate@b8c2b513f0b08be6a1fa6782b71bf74a07faff0d:skills/reasonableness-analysis/feature-global-behavior-profiling/SKILL.md` 及同版WORKFLOW/IO_SPEC/实践/接续输入。原E1执行前亲读指定新commit原文，原生结果报告明确实际采用 `b8c2b513f0b08be6a1fa6782b71bf74a07faff0d` 及读取来源；V2 Return字段保持原schema，经result_ref承载采用记录。
+唯一新D016（[JSON](../delegations/D016/DELEGATION.json)、[说明](../delegations/D016/DELEGATION.md)）绑定 `daowei2026/observe-iterate@b8c2b513f0b08be6a1fa6782b71bf74a07faff0d:skills/reasonableness-analysis/business-discrepancy-diagnosis/SKILL.md` 与 `daowei2026/observe-iterate@b8c2b513f0b08be6a1fa6782b71bf74a07faff0d:task-inputs/wall-f-parallel-closure-20261122/F_CURRENT_RUN_CONTINUATION.md`。当前完整专业控制 `b8c2b513f0b08be6a1fa6782b71bf74a07faff0d`；原E1执行前亲读准确Control/Skill/实践/接续输入，并在原生报告/result_ref写明完整实际采用commit及来源读取，V2 Return字段保持原schema。
 
-本次输出 FindingDiscoverySummary、当前结果绑定CandidateFindingQueue快照、ObservationsNotPromoted及原G IO；不在首候选处停止其余适用业务面，参考视角不是固定表/阈值/自动判错，队列快照不禁止后续新增证据/候选。manager不代统计/诊断或添加专业方法。Owner并发候选后续D要求按接续输入§5执行，本C不预签D16。
+只诊断当前单finding，先LogicLocalization，再按原Skill完成有证据的后继判断；不预设active/固定上限/历史或800根因，不提前采用修法。两个索引代表不代替Owner要求的全部36Life。D015原不可变原件的manager_consumed=false保留历史，本C消费以准确新记录为准；manager不代统计、诊断或查看当前Feature实现。
 
-controller核原E1真实线程/sol/max/cwd、权限/单写者和状态后物理派达，签D不是送达/开工回执。先D/候选登记/报告/进度发布推送回读，后独立只引已有exact对象的IN_PROGRESS Return；owner_request_ref=null，零W/Worker，无新线程/其他聊天消息/自动唤醒。
+controller核原E1真实线程/sol/max/cwd、权限/单写者和状态后派达，签D不是送达/开工回执。先首批D/消费记录/报告/进度发布回读，后独立只引已有exact对象的IN_PROGRESS Return；owner_request_ref=null，零W/Worker，无新线程/其他聊天消息/timer。原manager消费后继真实Return后才选择B/M/Q或必要具体Owner确认。
 
 ## 历史首批发布凭证说明
 
