@@ -1,0 +1,158 @@
+{
+  "snapshot_id": "F800-D015-CURRENT-RESULT-QUEUE-v1",
+  "created_at": "2026-11-23T16:05:58.441395+00:00",
+  "snapshot_status": "CURRENT_RESULT_TRACEABLE_SNAPSHOT",
+  "run_binding": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/FeatureRunResultBinding.json",
+  "feature_ref": {
+    "frp": "daowei2026/frp@39f02ec4548e68ba8dbd30061afc870546000994",
+    "tis": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767"
+  },
+  "parameter_version": "b72095ff100da926474701b74bff7586a74b9770bc81cadc34c23cfe223e5cb3",
+  "data_scope": {
+    "symbols": [
+      "rb",
+      "hc",
+      "i"
+    ],
+    "start_time": "2021-01-01",
+    "end_time": "2023-12-31",
+    "actual_start_time": "2021-01-04 09:05:00",
+    "actual_end_time": "2023-12-29 15:00:00",
+    "freq": "5m",
+    "calendar": "night_end_at_2300",
+    "sessions": [
+      "DAY_CLOCK_09_15",
+      "NIGHT_CLOCK_21_23"
+    ],
+    "sof": "TA_updto20240229_DBA",
+    "stk_tlist": "steel",
+    "input_positions_per_symbol": 49683,
+    "input_symbol_rows": 149049,
+    "per_symbol_validation": "INPUT_SCOPE_VALIDATION.json"
+  },
+  "full_result_identity": {
+    "full_dir": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-F800-STAT-20261122-01/D008/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2023-12-31 20:00:00/CommonPriceTurnGroupCandidatesFrp/3/9/a/1/9/2/a/4bbf414e0814726d92d156f2fe9b1f968/func",
+    "layout": "common_price_turn_groups.core.v2",
+    "fields_sha256": "58ff1166df0e4bbdb84f4309b72947ee16de4a075d8992681fd60f46ccfb887c",
+    "original_candidate_dir": "/m3varK/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2023-12-31 20:00:00/CommonPriceTurnGroupCandidatesFrp/3/9/a/1/9/2/a/4bbf414e0814726d92d156f2fe9b1f968/func",
+    "original_candidate_fields_present_before": false,
+    "storage_routing": "PLATFORM_STORAGE_BINDING.json",
+    "native_file_manifest": "NATIVE_OUTPUT_MANIFEST.json"
+  },
+  "professional_control_commit": "b8c2b513f0b08be6a1fa6782b71bf74a07faff0d",
+  "source_discovery_summary": "FindingDiscoverySummary.json",
+  "candidates": [
+    {
+      "finding_id": "F-LIFE-PEAK-CONCURRENCY",
+      "finding_type": "HIGH_CONFIDENCE_REASONABLENESS_CANDIDATE",
+      "candidate_origin": "OWNER_RAISED",
+      "status": "CANDIDATE",
+      "feature_ref": {
+        "frp": "daowei2026/frp@39f02ec4548e68ba8dbd30061afc870546000994",
+        "tis": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767"
+      },
+      "run_binding": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/FeatureRunResultBinding.json",
+      "reasonableness_unit_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/CurrentFeatureUnderstandingPackage.json#business_objects/BO3",
+      "business_object_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/CurrentFeatureUnderstandingPackage.json#business_objects/BO3",
+      "observation": "当前正式结果峰值责任内36 Life，连续60个5m采样位置；首次峰27 Open+9 Subsumed且公开duty均开放。",
+      "candidate_basis": "Owner明确要求释放前评估；当前全范围事实支持该并发现象及公开责任开放，值得进入D，而非仅有一个大数。",
+      "why_high_confidence": "对“需要进入责任逻辑和维护语义判断”的置信高：有同结果全轴复核、持续采样、当前公开状态分解和明确Owner业务关切；历史累计211与责任内36分开。三品种下大量并发维护的业务解释需要证据，不能仅用结构检查无冲突替代。",
+      "confidence_limits": [
+        "current_confidence保持OWNER_CONCERN，非确认代码缺陷；36不是预设上限或自动判错阈值。",
+        "60个位置属于一个连续峰值区间，不是60个独立市场失败；公开Open/duty不自动等于业务active/有用。",
+        "峰值有27个不同actual锚点、22个两成员/14个三成员解释，支持多问题并发的竞争解释，尚未排除。",
+        "不预设历史累积/800根因，不在本G讨论修法；D须逐Life对账并定位最早责任逻辑。"
+      ],
+      "contract_or_business_semantics_ref": [
+        "daowei2026/observe-iterate@4bf46f3fbe402915e3272e49a71dc94eac787c15:longrun/runs/OI-F800-STAT-20261122-01/owner-decisions/CONTINUE-20261123/OWNER_CONTINUE.original.txt#四、Owner指定候选",
+        "daowei2026/observe-iterate@b8c2b513f0b08be6a1fa6782b71bf74a07faff0d:task-inputs/wall-f-parallel-closure-20261122/F_CURRENT_RUN_CONTINUATION.md#4.2",
+        "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/CurrentFeatureUnderstandingPackage.json#business_objects/BO3",
+        "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/CurrentFeatureUnderstandingPackage.json#states/ST4"
+      ],
+      "evidence_scope": {
+        "data_scope": {
+          "symbols": [
+            "rb",
+            "hc",
+            "i"
+          ],
+          "start_time": "2021-01-01",
+          "end_time": "2023-12-31",
+          "actual_start_time": "2021-01-04 09:05:00",
+          "actual_end_time": "2023-12-29 15:00:00",
+          "freq": "5m",
+          "calendar": "night_end_at_2300",
+          "sessions": [
+            "DAY_CLOCK_09_15",
+            "NIGHT_CLOCK_21_23"
+          ],
+          "sof": "TA_updto20240229_DBA",
+          "stk_tlist": "steel",
+          "input_positions_per_symbol": 49683,
+          "input_symbol_rows": 149049,
+          "per_symbol_validation": "INPUT_SCOPE_VALIDATION.json"
+        },
+        "source_summary": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/profile/SUMMARY.json",
+        "increment": "ConcurrencyProfile.json",
+        "count_unit": "repeat_count=峰值采样位置；affected_count=首次峰值Life；affected_ratio=峰值采样位置/全Calendar位置，非缺陷率"
+      },
+      "repeat_count": 60,
+      "affected_count": 36,
+      "affected_ratio": 0.001207656542479319,
+      "representative_locations": [
+        {
+          "life": "1d0702bf-731b-43a7-b522-fb516dbedb1e",
+          "revision": "2341901e-1534-46bb-845f-322df8c8adc0",
+          "full_parent": [
+            "2021-10-27 09:10:00",
+            421,
+            0,
+            0
+          ],
+          "source_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/readback/tables/occurrences.csv",
+          "selection_reason": "首次峰值的最早/最晚准入代表，仅供D定位入口，不替代D全36Life对账。"
+        },
+        {
+          "life": "071e98f8-56b5-4146-a4c0-9ccee6d9f466",
+          "revision": "eb204326-2c35-4829-a81b-3ae099ea16a1",
+          "full_parent": [
+            "2021-11-10 14:25:00",
+            475,
+            0,
+            0
+          ],
+          "source_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/readback/tables/occurrences.csv",
+          "selection_reason": "首次峰值的最早/最晚准入代表，仅供D定位入口，不替代D全36Life对账。"
+        }
+      ],
+      "alternative_non_error_explanations": [
+        "不同actual问题和不同Turn组合允许并发，三品种不天然规定Life数上限。",
+        "Subsumed、观察关闭、修订责任开放、历史发表分别有不同语义。",
+        "当前引用统计可能与业务active口径不同；须D确认是否仅需B修正口径。"
+      ],
+      "current_confidence": "OWNER_CONCERN",
+      "statistical_observation_confidence": "HIGH",
+      "defect_conclusion": "UNDETERMINED",
+      "owner_assessment_status": "PROMOTED",
+      "must_assess_before_release": true,
+      "next_route": "BUSINESS_DISCREPANCY_DIAGNOSIS",
+      "diagnosis_input_adapter_ref": "DiagnosisInputAdapters.json#F800-D015-DA-PEAK",
+      "logic_localization_ref": null
+    }
+  ],
+  "priority_order": [
+    "F-LIFE-PEAK-CONCURRENCY"
+  ],
+  "owner_raised_assessment": [
+    {
+      "finding_id": "F-LIFE-PEAK-CONCURRENCY",
+      "status": "CANDIDATE",
+      "assessment_status": "PROMOTED",
+      "must_assess_before_release": true
+    }
+  ],
+  "closed_findings_reused_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/FindingDisposition.json",
+  "new_evidence_may_add_candidates": true,
+  "root_cause_or_fix_preassigned": false,
+  "next_route": "Q_THEN_ONE_FINDING_D_WITH_LOGIC_LOCALIZATION"
+}

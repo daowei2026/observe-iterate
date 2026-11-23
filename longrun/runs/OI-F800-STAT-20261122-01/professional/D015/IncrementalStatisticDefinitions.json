@@ -1,0 +1,97 @@
+{
+  "prior_definitions_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/StatisticDefinitions.json",
+  "definitions": [
+    {
+      "statistic_id": "D015-ST01",
+      "name": "旧责任内口径与边界/公开持有状态分列",
+      "business_item_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/CurrentFeatureUnderstandingPackage.json#business_objects/BO3",
+      "count_unit": "Calendar位置上的Life数",
+      "object_group_key": "准确实例+Life",
+      "time_basis": "D008责任内闭区间[firstKnown,min(r,sampleEnd)]；另列[firstKnown,r)边界后责任投影；最新公开Open不作native active",
+      "denominator": "当前三品种共享49683个5m Calendar位置，不乘3",
+      "deduplication_rule": "Life/exact及完整父坐标各自去重，不合并不同真实成员或不同原问题；UUID不是排序键。",
+      "same_tick_rule": "同拍保留occurrence/record_id/child_id_2及previous；公开持有取同Life该拍最后准确观点。",
+      "strata": [
+        "ALL",
+        "YEAR",
+        "SESSION"
+      ],
+      "source_fields": [
+        "profile/candidate_births.known/revision_end",
+        "candidate_revisions.known/observation/duty_closed",
+        "KLine closeUti/timestamp"
+      ],
+      "notes": "复核Owner引述统计现象并登记可追溯峰值位置/并发分布；不建立可接受上限，不定位原因。"
+    },
+    {
+      "statistic_id": "D015-ST02",
+      "name": "Life身份与成员/原问题的跨版稳定性",
+      "business_item_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/CurrentFeatureUnderstandingPackage.json#business_objects/BO3",
+      "count_unit": "Life及原生Revision比较边",
+      "object_group_key": "Life/完整成员Turn Life集合/原a,d,r",
+      "time_basis": "同Life按公开父坐标和known序",
+      "denominator": "480个Life，1538个Revision；自然身份跨Life查询另列Life分母",
+      "deduplication_rule": "Life/exact及完整父坐标各自去重，不合并不同真实成员或不同原问题；UUID不是排序键。",
+      "same_tick_rule": "同拍保留occurrence/record_id/child_id_2及previous；公开持有取同Life该拍最后准确观点。",
+      "strata": [
+        "ALL",
+        "member_symbol_set"
+      ],
+      "source_fields": [
+        "occurrences.groupReference/originalAnchor/originalDeadline/originalRevisionEnd",
+        "groupMembers.memberTurn_referenceLife",
+        "groupMembers.memberObject"
+      ],
+      "notes": "检查同Life换成员、同一准确成员+原问题重复Life；不同问题/不同Turn不自动相同。"
+    },
+    {
+      "statistic_id": "D015-ST03",
+      "name": "已发行覆盖/重叠关系业务资格",
+      "business_item_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/CurrentFeatureUnderstandingPackage.json#business_objects/BO3",
+      "count_unit": "关系边断言",
+      "object_group_key": "完整父坐标+关系child_id_3",
+      "time_basis": "关系时点已公开的源/目标观点；Known不超前；不恢复内部集合",
+      "denominator": "当前CoveredBy 242条、Overlaps 219条，各自分母",
+      "deduplication_rule": "Life/exact及完整父坐标各自去重，不合并不同真实成员或不同原问题；UUID不是排序键。",
+      "same_tick_rule": "同拍保留occurrence/record_id/child_id_2及previous；公开持有取同Life该拍最后准确观点。",
+      "strata": [
+        "relation_kind",
+        "YEAR"
+      ],
+      "source_fields": [
+        "groupCoveredBy",
+        "groupOverlaps",
+        "groupMembers.memberTurn_referenceLife",
+        "occurrences.anchor/deadline/revisionEnd/localBasis/observation"
+      ],
+      "notes": "覆盖应有同问题的严格支持超集；重叠应共享具体Turn；不是仅检查目标UUID存在。"
+    },
+    {
+      "statistic_id": "D015-ST04",
+      "name": "当前业务链的转化/分层发现复核",
+      "business_item_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/CurrentFeatureUnderstandingPackage.json#business_objects/BO3",
+      "count_unit": "上游位置、pair参考边、Life、publication分别列",
+      "object_group_key": "沿D008各ST定义保持原单位",
+      "time_basis": "原selected/publication知识年/Session；actual年另列",
+      "denominator": "复用10073原上游位置、1859已选、627合资格非否决参考边、480Life、49683Calendar位置，各层分母不互换",
+      "deduplication_rule": "Life/exact及完整父坐标各自去重，不合并不同真实成员或不同原问题；UUID不是排序键。",
+      "same_tick_rule": "同拍保留occurrence/record_id/child_id_2及previous；公开持有取同Life该拍最后准确观点。",
+      "strata": [
+        "SYMBOL",
+        "YEAR",
+        "SESSION",
+        "OPENING"
+      ],
+      "source_fields": [
+        "profile/counts_by_symbol",
+        "profile/first_block_reference_by_symbol",
+        "profile/near_actual_pair_screen",
+        "profile/cross_strata_comparison"
+      ],
+      "notes": "复用原G计数与参考筛查，不重新全量枚举，不当业务真值/未暴露原生首阻断。"
+    }
+  ],
+  "registered_at": "2026-11-23T15:58:32.971002+00:00",
+  "registered_before_incremental_analysis": true,
+  "automatic_error_thresholds": []
+}

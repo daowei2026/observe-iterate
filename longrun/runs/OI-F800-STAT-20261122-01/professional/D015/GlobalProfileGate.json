@@ -1,0 +1,16 @@
+{
+  "status": "DIAGNOSIS_REQUIRED",
+  "reasons": [
+    "当前高置信发现补充及队列快照已完成。",
+    "F-LIFE-PEAK-CONCURRENCY为Owner必评候选，统计现象实核且已PROMOTED进D，最终业务判断未完成。",
+    "当前没有新行为改变；不要求机械重跑三年Feature，不签FeatureRelease。"
+  ],
+  "valid_profile_ref": "GlobalBehaviorProfile.json",
+  "queue_snapshot_ref": "CandidateFindingQueue.json",
+  "source_summary_ref": "FindingDiscoverySummary.json",
+  "run_binding": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/FeatureRunResultBinding.json",
+  "professional_control_commit": "b8c2b513f0b08be6a1fa6782b71bf74a07faff0d",
+  "next_action": "原manager消费本回交后按新Q一次取一个finding签原D，Owner候选先LogicLocalization；再决定B/M/关闭或未决。",
+  "feature_release_allowed": false,
+  "rerun_feature_now": false
+}

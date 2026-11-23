@@ -1,0 +1,54 @@
+{
+  "cases": [
+    {
+      "case_candidate_id": "D015-PEAK-INDEX-001",
+      "source_finding_id": "F-LIFE-PEAK-CONCURRENCY",
+      "symbol": [
+        "rb",
+        "hc",
+        "i"
+      ],
+      "start_time": "2021-11-10 14:25:00",
+      "end_time": "2021-11-11 13:35:00",
+      "object_ids": [
+        "1d0702bf-731b-43a7-b522-fb516dbedb1e",
+        "071e98f8-56b5-4146-a4c0-9ccee6d9f466"
+      ],
+      "related_events": [
+        {
+          "life": "1d0702bf-731b-43a7-b522-fb516dbedb1e",
+          "revision": "2341901e-1534-46bb-845f-322df8c8adc0",
+          "full_parent": [
+            "2021-10-27 09:10:00",
+            421,
+            0,
+            0
+          ],
+          "source_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/readback/tables/occurrences.csv",
+          "selection_reason": "首次峰值的最早/最晚准入代表，仅供D定位入口，不替代D全36Life对账。"
+        },
+        {
+          "life": "071e98f8-56b5-4146-a4c0-9ccee6d9f466",
+          "revision": "eb204326-2c35-4829-a81b-3ae099ea16a1",
+          "full_parent": [
+            "2021-11-10 14:25:00",
+            475,
+            0,
+            0
+          ],
+          "source_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/readback/tables/occurrences.csv",
+          "selection_reason": "首次峰值的最早/最晚准入代表，仅供D定位入口，不替代D全36Life对账。"
+        }
+      ],
+      "selection_reason": "Owner必评峰值的完整采样区间与最早/最晚准入代表定位入口；不是S1场景，D仍需取全部36Life。",
+      "required_fields": [
+        "完整Life/Revision/父坐标",
+        "峰时全部36Life及成员actual/known/age/最新观点/expiry/状态",
+        "create/revision/end/current口径与身份对账",
+        "统计/责任规则与准确源码配置"
+      ],
+      "full_peak_roster_not_substituted_by_representatives": true
+    }
+  ],
+  "automatic_scenario_workflow_started": false
+}
