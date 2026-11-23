@@ -37,7 +37,30 @@ manager 形成 D
 
 本 profile 不签发 `WORKER_ORDER`，也不产生 `WORKER_RETURN`。V2 schema 中 `workers=[]` 和空 `issued_order_refs` 是正常状态。
 
-## 4. manager 边界
+## 4. 三类角色会话的控制版本一致性
+
+一次新启动或合法接续中，以下三类角色必须采用同一个精确 `observe-iterate` commit 作为当前专业控制来源：
+
+```text
+controller／主控会话
+manager 会话
+executor 会话
+```
+
+要求：
+
+1. Owner 启动或接续信息提供完整 commit，不只提供浮动分支名；
+2. controller 在派达时原样保留该 commit；
+3. manager 将该 commit 写入 `TASK_PROGRESS` 和下一项 D；
+4. executor 在执行前读取该 commit 上指定的 Control、Skill、任务输入及补充文件；
+5. Return 中说明实际采用的专业控制 commit；
+6. 若同一 Run 在途期间更新控制仓库，必须有新的明确接续调用，记录旧 commit、新 commit、适用起点和不需重做的既有产物。
+
+更新专业控制 commit 不要求重建已有 manager／executor 线程。只要线程身份和 Run 绑定仍有效，可以在同一 Run 中接续；但不能只更新主控自己的理解，而让 manager 或 executor 继续按旧版 Skill 工作。
+
+cgpterm controller Skill 的 commit 与 `observe-iterate` 专业控制 commit 分开记录：前者决定物理调用方式，后者决定本轮专业 Workflow、Skill 和任务输入。
+
+## 5. manager 边界
 
 manager：
 
@@ -53,7 +76,7 @@ manager 不：
 - 因为没有 Worker 就把执行步骤全部搬进 manager；
 - 自行扩大 Owner 写权限。
 
-## 5. executor 边界
+## 6. executor 边界
 
 executor：
 
@@ -65,7 +88,7 @@ executor：
 
 executor 不需要为了执行 Linux 操作再创建 Worker。若当前操作不在 Owner grant 中，只阻断该动作并报告准确缺口；其他合法专业工作继续。
 
-## 6. 工作区和写面
+## 7. 工作区和写面
 
 每个 run_id 使用 Owner 已准备的独立绝对路径。主控首次派发前核：
 
@@ -77,14 +100,15 @@ executor 不需要为了执行 Linux 操作再创建 Worker。若当前操作不
 
 路径绑定不等于写权限。代码提交、推分支、写数据库、覆盖缓存和发布结果必须被 GO 中的 `operation / execution_context / allowed_writes / authority_quote` 覆盖。
 
-## 7. 多 Run
+## 8. 多 Run
 
 WALL、F 等独立业务线可各自采用本 profile 并行。每条线拥有独立 manager、executor、workspace 和 Gate。汇合条件写在具体任务输入中；主控只核真实 Gate，不建立跨 Run 专业上级。
 
-## 8. 失败与恢复
+## 9. 失败与恢复
 
 - C 发送效果未知：先查原通道，不直接重发；
 - executor 中断：保留原 D、工作项、当前产物和 thread binding，合法续接；
 - 工作区冲突：只阻断受影响 Run 的实际操作；
 - 代码或参数版本改变：按专业控制面传播失效，不由运行层猜测；
+- 专业控制 commit 改变：明确记录采用起点，已有有效产物不机械重做；
 - 需要 Web 专用能力时，作为具名单项例外处理，不把整个 manager/executor 迁回 Web。

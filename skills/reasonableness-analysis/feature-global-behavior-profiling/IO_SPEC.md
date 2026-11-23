@@ -1,10 +1,10 @@
-# 特征全量行为统计与结构疑点发现｜字段级输入输出
+# 特征全量行为统计与高置信不合理现象发现｜字段级输入输出
 
 ## 1. 输入
 
 ### 1.1 `FeatureUnderstandingPackage`
 
-必须来自与本轮运行结果一致的 Feature 代码版本；允许 `PARTIAL`，但缺口不得影响本轮拟统计对象。
+必须来自与本轮运行结果一致的 Feature 代码版本；允许 `PARTIAL`，但缺口不得影响本轮拟统计对象和高置信发现判断。
 
 ### 1.2 `FeatureRunResultBinding`
 
@@ -25,7 +25,16 @@ run_result_tables: []
 known_data_limits: []
 ```
 
-### 1.3 `StratificationPlan`
+### 1.3 `CurrentReviewTarget`
+
+```yaml
+current_goal:
+explicit_non_goals: []
+owner_raised_candidates: []
+required_regression_findings: []
+```
+
+### 1.4 `StratificationPlan`
 
 ```yaml
 strata:
@@ -82,10 +91,12 @@ run_binding:
 statistics_definitions: []
 candidate_profile: []
 object_profile: []
+current_object_profile: []
 event_profile: []
 state_occupancy_profile: []
 transition_profile: []
 lifecycle_profile: []
+conversion_profile: []
 branch_reachability_profile: []
 density_profile: []
 reason_profile: []
@@ -109,17 +120,52 @@ source_location:
 notes:
 ```
 
-### 2.4 `GlobalFindingCandidate`
+### 2.4 `FindingDiscoverySummary`
+
+```yaml
+summary_id:
+feature_ref:
+run_binding:
+business_surfaces_reviewed:
+  - surface:
+    why_applicable:
+    evidence_refs: []
+    candidate_finding_refs: []
+owner_raised_candidates:
+  - finding_id:
+    assessment_status: PENDING | PROMOTED | NOT_PROMOTED | BLOCKED_BY_EVIDENCE
+    evidence_refs: []
+high_confidence_candidate_refs: []
+observations_not_promoted:
+  - observation_id:
+    observation:
+    why_not_promoted:
+    revisit_condition:
+remaining_unreviewed_surfaces:
+  - surface:
+    why_not_reviewed:
+    effect_on_current_gate:
+why_current_discovery_pass_is_sufficient:
+queue_snapshot_id:
+```
+
+该产物不是固定检查表。`business_surfaces_reviewed` 由当前 Feature 的对象、生命周期、输出合同、转化链和 ReviewTarget 推导。
+
+### 2.5 `GlobalFindingCandidate`
 
 ```yaml
 finding_id:
-finding_type: STRUCTURAL_FINDING_CANDIDATE
+finding_type: HIGH_CONFIDENCE_REASONABLENESS_CANDIDATE | STRUCTURAL_FINDING_CANDIDATE
+candidate_origin: EXECUTOR_DISCOVERY | OWNER_RAISED | REGRESSION
 feature_ref:
 run_binding:
 reasonableness_unit_ref:
 business_object_ref:
 observation:
-structural_invariant_ref:
+candidate_basis:
+why_high_confidence:
+confidence_limits:
+contract_or_business_semantics_ref:
 evidence_scope:
 repeat_count:
 affected_count:
@@ -127,30 +173,30 @@ affected_ratio:
 representative_locations: []
 alternative_non_error_explanations: []
 current_confidence:
+must_assess_before_release: true | false
 next_route: BUSINESS_DISCREPANCY_DIAGNOSIS
 diagnosis_input_adapter_ref:
 ```
 
-### 2.5 `ScenarioQuestion`
+`why_high_confidence` 说明为什么该现象已足以进入诊断；它不替代 D 中的责任逻辑定位。Owner 提出的候选可以先以 `current_confidence: OWNER_CONCERN` 登记，执行者仍需核其口径和证据，不能预设根因或最终结论。
+
+### 2.6 `ObservationNotPromoted`
 
 ```yaml
-question_id:
-finding_type: SCENARIO_INTERPRETATION_QUESTION
+observation_id:
 feature_ref:
-reasonableness_unit_ref:
-statistical_pattern:
-why_statistics_cannot_decide:
-recommended_visual_evidence:
-representative_locations: []
-priority:
-next_route: BUSINESS_EXPECTATION_DERIVATION
+run_binding:
+observation:
+evidence_refs: []
+why_not_promoted:
+revisit_condition:
 ```
 
-### 2.6 `CandidateCaseIndex`
+### 2.7 `CandidateCaseIndex`
 
 ```yaml
 case_candidate_id:
-source_finding_or_question_id:
+source_finding_id:
 symbol:
 start_time:
 end_time:
@@ -160,11 +206,9 @@ selection_reason:
 required_fields: []
 ```
 
-该索引不是正式场景集；正式场景仍由后续合理性 Skill 1 从已准备图和图数据中选择并冻结。
+该索引用于 finding 复现和责任逻辑定位，不自动成为场景观察任务。
 
-### 2.7 `DiagnosisInputAdapter`
-
-为保持当前 Skill 3 不变，输出以下兼容字段：
+### 2.8 `DiagnosisInputAdapter`
 
 ```yaml
 adapter_id:
@@ -198,14 +242,16 @@ data_binding_and_time_basis:
 FeatureGlobalBehaviorProfilingResult:
   statistics_input_readiness:
   global_behavior_profile:
+  finding_discovery_summary:
   global_finding_candidates: []
-  scenario_question_queue: []
+  observations_not_promoted: []
   candidate_case_index: []
   diagnosis_input_adapters: []
   gate:
     status: BLOCKED | DIAGNOSIS_REQUIRED | RERUN_REQUIRED | PASS_TO_SCENARIO_REVIEW
     reasons: []
     valid_profile_ref:
+    queue_snapshot_ref:
     next_action:
 ```
 
@@ -219,7 +265,9 @@ FeatureGlobalBehaviorProfilingResult:
 
 ### `DIAGNOSIS_REQUIRED`
 
-存在尚未进入／完成 Skill 3 的结构疑点。
+- 存在尚未进入／完成偏差诊断的高置信候选；
+- Owner 指定且 `must_assess_before_release=true` 的候选尚无判断；
+- 发现工作在第一个候选处提前停止，尚未形成结果绑定的队列快照。
 
 ### `RERUN_REQUIRED`
 
@@ -228,6 +276,8 @@ FeatureGlobalBehaviorProfilingResult:
 ### `PASS_TO_SCENARIO_REVIEW`
 
 - 当前剖面绑定最新运行结果；
-- 已确认的参数／实现／设计问题均已处理并复验，或本轮不存在；
-- 剩余问题只能通过场景解释、真实过程对照或覆盖边界判断；
-- 允许进入观察材料准备及 Skill 1/2。
+- 已形成 `FindingDiscoverySummary` 和队列快照；
+- 已确认问题均已处理并复验，或本轮不存在；
+- Owner 指定候选已有判断；
+- 剩余观察不足以升级或超出当前 ReviewTarget；
+- 不表示 Feature 已被全面证明合理，也不自动启动另一套 Workflow。
