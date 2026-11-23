@@ -126,3 +126,13 @@ FRP `39f02ec4548e68ba8dbd30061afc870546000994`，TIS `2f460d663d821cf2ba25555eda
 - 来源/manifest核验：`daowei2026/observe-iterate@0f247e6b56bebc93a3d1cbdffb88402068de6cec:longrun/runs/OI-F800-STAT-20261122-01/calls/C0035/SOURCE_AUDIT.json`；67项直接来源、D015源审计47项和86文件/1,771,865字节清单核同。
 
 本C后批Return只引用已存在首批对象，Run IN_PROGRESS、owner_request_ref=null，零W/Worker；D016物理送达/开工仍待controller真实核验，manager不代施工。Owner候选及必要回流前不Release/Q/V，F独立继续，不等待旧联合Barrier，无其他聊天消息/新线程/timer。
+
+## C0037 Owner用途取舍首批发布凭证
+
+首批commit `5c60f0cb81b1b3cab47227de0f63961d3235c2f4`，父提交 `a7649e7d52b56a37dae446401c421a27b7a5d8e1`；普通推送原Run分支并fetch确认同一commit，8文件字节/Git blob/SHA-256逐件一致，回读时tracked tree clean。
+
+- Owner问题：`daowei2026/observe-iterate@5c60f0cb81b1b3cab47227de0f63961d3235c2f4:longrun/runs/OI-F800-STAT-20261122-01/calls/C0037/OWNER_REQUEST.md`，含12个已核存在的准确原件链接；具名用途取舍F800-D016-ODP-01尚未选择。
+- 原生manager报告：`daowei2026/observe-iterate@5c60f0cb81b1b3cab47227de0f63961d3235c2f4:longrun/runs/OI-F800-STAT-20261122-01/calls/C0037/MANAGER_REPORT.md`，明确完整实际采用专业控制 `b8c2b513f0b08be6a1fa6782b71bf74a07faff0d`。
+- D016技术消费：`daowei2026/observe-iterate@5c60f0cb81b1b3cab47227de0f63961d3235c2f4:longrun/runs/OI-F800-STAT-20261122-01/calls/C0037/D016_CONSUMPTION_AND_OWNER_HANDOFF.json`；定位 `daowei2026/observe-iterate@d8cfd8fa4bc792aaf4dbe905e9c681a91837e559:longrun/runs/OI-F800-STAT-20261122-01/professional/D016/LogicLocalization.json`、诊断 `daowei2026/observe-iterate@d8cfd8fa4bc792aaf4dbe905e9c681a91837e559:longrun/runs/OI-F800-STAT-20261122-01/professional/D016/DiagnosisReport.json`、原生选项 `daowei2026/observe-iterate@d8cfd8fa4bc792aaf4dbe905e9c681a91837e559:longrun/runs/OI-F800-STAT-20261122-01/professional/D016/OwnerDecisionPacket.json`。
+
+本C后批Return仅引用上述已存在首批对象，Run=WAITING_OWNER、owner_request_ref为准确问题，issued_delegation_refs=[]。finding仍DIAGNOSIS_IN_PROGRESS，不签新执行D、修改许可或Release。两批材料回读后向本Owner提出用途问题，不冒充已答复；无跨聊天消息/新线程/timer。

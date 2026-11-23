@@ -1,0 +1,13 @@
+# C0037｜Return准确引用与发布校验
+
+首批真实commit `5c60f0cb81b1b3cab47227de0f63961d3235c2f4`，父提交 `a7649e7d52b56a37dae446401c421a27b7a5d8e1`，普通推送原Run分支并fetch确认同一commit；8文件字节/Git blob/SHA-256逐件匹配，回读时tracked tree clean。具体Owner问题及12个可点击准确原件入口已发布，凭证见OWNER_REQUEST_PUBLICATION。本文件、Return、发布凭证及TASK_PROGRESS追加记录为第二批，不预填自己的未来commit。
+
+本C Return按完整专业控制 `b8c2b513f0b08be6a1fa6782b71bf74a07faff0d` 的原V2 schema通过，保持15字段；role=manager、sender=原manager、delegation_ref/return_to=null，professional_state=WAITING_OWNER。result_ref的原生报告明确完整实际采用commit；owner_request_ref指向首批已发布OWNER_REQUEST，全部4个交付引用为已存在首批对象。issued_delegation_refs/issued_order_refs/accepted_worker_refs均为空，无新D/Order/Worker，不增加机读字段。
+
+已接受D016技术诊断完成，准确LogicLocalization/DiagnosisReport/Disposition及原生Owner包均已存在；finding仍DIAGNOSIS_IN_PROGRESS，F800-D016-ODP-01用途取舍未定。70项直接来源、71项D016源输入、116清单文件/2,573,310字节核验沿首批SOURCE_AUDIT。原生事实/责任机制与业务合理性分开，不把代码符合、身份不同、技术D完成当finding或F完成，不代专业统计/诊断、编译或检查当前Feature实现。
+
+Owner问题只转交原Skill第三类用途取舍，含A/B、保留/损失、真实支持/反例及完整36项入口；不请求删除若干Life、改变K、泛化修改或Release，也不重新请求REL001。材料和Return两批远端回读后，本C通过Owner输入工具向本Owner提出，实际工具回执另入运行证据；不把资料发布冒充Owner已答复。后续正式行为改变仍需准确方案/影响/验证的具体确认。
+
+有效U/D008正式三年X/31独立读回/既有G/D015发现、GF001/002关闭和历史S1/S2均保持。原schema/gate与C0035 blob一致，旧完整CLI对Codex身份的已知不兼容和C0001真实失败证据保持，不改工具/身份伪造PASS或重复已知失败。本次schema/引用/授权校验不声称完整旧CLI或F业务Gate通过。
+
+第二批将普通推送/fetch核父链、仅本Run写面及11个合并文件的字节/Git blob/SHA-256；账本completed仅本C协调交付。原Run仍WAITING_OWNER，未Release/Package/Q/V，无其他聊天消息、新线程或timer，不承诺自动唤醒。
