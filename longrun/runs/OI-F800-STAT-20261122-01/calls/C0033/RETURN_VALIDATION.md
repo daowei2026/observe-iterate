@@ -1,0 +1,13 @@
+# C0033｜Return准确引用及发布校验
+
+首批真实发布commit为 `8fd13388cf7ea26f1b34ee157fe350b10d24a70e`，父提交 `7d6fdb01570ed2f41b99366d46c8675c69fa004b`，普通推送到本Run原分支并fetch确认同一commit；9文件的Git blob、字节数、SHA-256及本地内容逐一相等，读取时tracked tree clean。实际凭证载于D015_PUBLICATION；本文件、机读Return、发布凭证和TASK_PROGRESS追加记录构成独立第二批，不预填自己的未来commit。
+
+本C Return按完整专业控制 `b8c2b513f0b08be6a1fa6782b71bf74a07faff0d` 的V2 schema校验通过，保留原字段。role=manager、sender为原manager、delegation_ref/return_to=null、professional_state=IN_PROGRESS，唯一issued_delegation为准确已存在的D015，零W/Worker、owner_request_ref=null。result_ref指向首批原生MANAGER_REPORT，已实际验证其中明确完整采用commit和13项新控制/Skill/实践/接续来源读取；没有增加机器字段或伪造E1实际阅读回执。Return全部4个交付引用均为首批已发布Git对象，逐一解析存在。
+
+D015的原E1身份、原G Skill及准确接续输入均核同，43项输入/授权和首批9文件校验延续SOURCE_AUDIT/VALIDATION。仅run_result_statistics_analysis_write/run_record_write，不增加formal_feature_run或新的正式行为变更权限。原有效U/D008正式三年X/31表读回/既有G和GF001/002关闭保持；旧控制与C0032有限释放候选保留历史，最新Owner明确不接受F800-REL-001并指令继续。
+
+F-LIFE-PEAK-CONCURRENCY登记为OWNER_RAISED+CANDIDATE、must_assess_before_release=true、OWNER_CONCERN，logic_localization_ref=null。Owner登记不是专业确认或新的G队列产物；本次发现pass/结果绑定队列及后续逐个D先LogicLocalization尚待原E1执行与真实回交。未签FeatureReleaseGate/UpstreamReleasePackage、未启动Q/V；最新Campaign指定F独立继续覆盖旧联合Barrier。
+
+旧完整longrun_gate.py的Codex manager身份不兼容沿首批记录和C0001真实失败证据保留；新旧schema及工具Git blob相同，本次不重复已知失败或将schema/来源/权限PASS冒充完整旧CLI或新G专业Gate PASS。无新Owner问题、其他聊天消息、新线程或timer。
+
+签D和记录发布不代表物理送达、开工或验收；controller仍须对原E1真实线程/sol/max/cwd、权限、单写者和实际状态前检后派发。第二批发布后将再次fetch、核父链/本Run写面/12个合并文件内容及当前Return schema，账本completed仅表示本C协调完成，Run维持IN_PROGRESS。

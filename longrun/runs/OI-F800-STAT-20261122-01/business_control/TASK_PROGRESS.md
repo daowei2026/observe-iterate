@@ -97,3 +97,14 @@ controller核原E1真实线程/sol/max/cwd、权限/单写者和状态后物理�
 ## C0032释放决策首批发布凭证
 
 已先行发布并从origin逐字节回读报告：`daowei2026/observe-iterate@a7fcf8daa03b807876f2d3522dc845021da1fd36:longrun/runs/OI-F800-STAT-20261122-01/calls/C0032/MANAGER_REPORT.md`；具体OwnerDecisionPacket：`daowei2026/observe-iterate@a7fcf8daa03b807876f2d3522dc845021da1fd36:longrun/runs/OI-F800-STAT-20261122-01/calls/C0032/OWNER_REQUEST.md`；候选：`daowei2026/observe-iterate@a7fcf8daa03b807876f2d3522dc845021da1fd36:longrun/runs/OI-F800-STAT-20261122-01/calls/C0032/RELEASE_CANDIDATE.json`；限制输入：`daowei2026/observe-iterate@a7fcf8daa03b807876f2d3522dc845021da1fd36:longrun/runs/OI-F800-STAT-20261122-01/calls/C0032/LIMITATION_DECISION_INPUT.json`。首批10文件Git blob/SHA-256/字节匹配，独立Return只引已有提交。S2公开对照完成已消费，无新D/必做材料重建，冻结v1保持。候选未采用、正式Gate/Package未签，Run WAITING_OWNER等待真实F800-REL-001决定，不虚构Owner接受。
+
+## C0033 D015首批发布凭证
+
+首批commit `8fd13388cf7ea26f1b34ee157fe350b10d24a70e`，父提交 `7d6fdb01570ed2f41b99366d46c8675c69fa004b`；普通推送原分支、fetch确认同一commit，9文件Git blob/SHA-256/字节逐件一致，回读时tracked tree clean。
+
+- 唯一D015：`daowei2026/observe-iterate@8fd13388cf7ea26f1b34ee157fe350b10d24a70e:longrun/runs/OI-F800-STAT-20261122-01/delegations/D015/DELEGATION.json`。
+- 原生manager报告：`daowei2026/observe-iterate@8fd13388cf7ea26f1b34ee157fe350b10d24a70e:longrun/runs/OI-F800-STAT-20261122-01/calls/C0033/MANAGER_REPORT.md`，明确实际采用完整专业控制 `b8c2b513f0b08be6a1fa6782b71bf74a07faff0d`；43项准确来源及13项新控制读取见 `daowei2026/observe-iterate@8fd13388cf7ea26f1b34ee157fe350b10d24a70e:longrun/runs/OI-F800-STAT-20261122-01/calls/C0033/SOURCE_AUDIT.json`。
+- Owner候选登记：`daowei2026/observe-iterate@8fd13388cf7ea26f1b34ee157fe350b10d24a70e:longrun/runs/OI-F800-STAT-20261122-01/calls/C0033/OWNER_CANDIDATE_REGISTRATION.json`，F-LIFE-PEAK-CONCURRENCY为OWNER_RAISED+CANDIDATE、must_assess_before_release=true，专业判断尚待G后逐个D/先LogicLocalization。
+- 采用记录：`daowei2026/observe-iterate@4bf46f3fbe402915e3272e49a71dc94eac787c15:longrun/runs/OI-F800-STAT-20261122-01/PROFESSIONAL_CONTROL_ADOPTION.json`；原E1须执行前亲读准确新来源，在原生报告记录实际采用完整commit，经原V2 Return的result_ref承载。
+
+本C后批Return仅引用上述已存在首批对象，Run=IN_PROGRESS、owner_request_ref=null。F800-REL-001未接受；当前不Release或启动Q/V，不等旧WALL/F联合Barrier。D015物理送达/开工仍待controller真实前检和回执，manager未代专业施工；不创建后继线程或发送其他聊天消息。
