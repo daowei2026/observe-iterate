@@ -1,0 +1,471 @@
+{
+  "diagnosis_id": "F800-D016-DIAG-01",
+  "expectation_id": "F-LIFE-PEAK-CONCURRENCY-OWNER-CONCERN-v1",
+  "expectation_version": "b8c2b513f0b08be6a1fa6782b71bf74a07faff0d",
+  "professional_control_commit": "b8c2b513f0b08be6a1fa6782b71bf74a07faff0d",
+  "discrepancy_statement": "首次峰36个有界形成问题在责任Map内并存，27Open+9Subsumed，actual年龄140—3735开放分钟；有32Life全部成员已有后续同轮转折，仍未到原修订边界。其业务当前有效性不能从状态名称推定。",
+  "business_impact": "若把责任Map直接当当前有效或独立最大共同转折组，会同时携带较早actual的32组及9覆盖子组，影响当前数量、代表性和下游选择/期限理解。没有Q/V实测，未声称交易损失或下游缺陷；现有历史/修订责任可追溯价值需与当前表示目标区分。",
+  "confirmed_facts": [
+    {
+      "id": "F01",
+      "fact": "当前正式39f/TIS2f460、完整配置SHA b72095ff…；同D00831表与D015队列，71准确输入核验，无新生产。",
+      "evidence": [
+        "INPUT_BINDING.json",
+        "SOURCE_REF_AUDIT.json",
+        "REUSE_EVIDENCE_READBACK.json",
+        "CURRENT_SOURCE_AUDIT.json"
+      ]
+    },
+    {
+      "id": "F02",
+      "fact": "峰值责任36对应2021-11-10 14:25至2021-11-11 13:35连续60个5m位置、同一36Life；采样占用300开放分钟。处理后active源码重建前59位置36，最后r拍35；native current trace未暴露。",
+      "evidence": [
+        "PeakWindowReconciliation.json",
+        "daowei2026/observe-iterate@6e9521ffc437a307da7413727f80fc2621994d4f:longrun/runs/OI-F800-STAT-20261122-01/professional/D015/ConcurrencyProfile.json"
+      ]
+    },
+    {
+      "id": "F03",
+      "fact": "首次峰211create−175DutyClosed=36开放责任；610Revision=211create+399update。前拍210−175=35、608Revision；峰首新增L35并修订L36为Subsumed，净增1Life，不是2Life。",
+      "evidence": [
+        "PeakWindowReconciliation.json",
+        "Peak36RevisionHistory.json"
+      ]
+    },
+    {
+      "id": "F04",
+      "fact": "36个完整成员签名均不同；忽略Turn ref改按symbol+actual+direction仍无相同成员组。27不同anchor，22两成员/14三成员；9为同问题严格子集被14个三成员中的9个覆盖，故不能称36个互相独立的最大解释。",
+      "evidence": [
+        "Peak36LifeDetails.json",
+        "DiscriminatingCheckResults.json"
+      ]
+    },
+    {
+      "id": "F05",
+      "fact": "首次峰36全Supported、86条成员全ConfirmedMember、64对Required的256项全Supports，coverageIncomplete全0。Open=27、Subsumed=9；Open指观察期限未到，不是未确认。",
+      "evidence": [
+        "Peak36LifeDetails.json",
+        "DiscriminatingCheckResults.json"
+      ]
+    },
+    {
+      "id": "F06",
+      "fact": "峰值实际年龄140—3735开放分钟；全部d>a且d=a+480000，r=d+3600，h=r+10800。K800对应4000开放分钟，修订尾30、handoff尾90；不表示4000墙钟分钟。",
+      "evidence": [
+        "Peak36LifeDetails.json",
+        "DiscriminatingCheckResults.json"
+      ]
+    },
+    {
+      "id": "F07",
+      "fact": "32/36的每个成员在峰首前均已有同对象/同轮次、更晚actual且已知的ScaleTurn；这些新Turn不撤回旧Turn。仅按此筛查留下L32/L33/L35/L36；再不展示覆盖子集则剩L32/L35。该投影不是合法结束规则或正式运行。",
+      "evidence": [
+        "Peak36LifeDetails.json",
+        "DiscriminatingCheckResults.json"
+      ]
+    },
+    {
+      "id": "F08",
+      "fact": "全部36Life的118次Revision精确previous/准入/当前引用及原问题固定；所有36最终在各自r拍DutyClosed=1，最后Revision即该拍，以后无Revision。不存在这些Life逾r持续更新的证据。",
+      "evidence": [
+        "Peak36RevisionHistory.json",
+        "Peak36Summary.json"
+      ]
+    },
+    {
+      "id": "F09",
+      "fact": "K800被准入/枚举与观察期限共同消费；wanted含全部prior，retained只看scope及r；Subsumed和后续Turn不是清退条件；h不延长F active。",
+      "evidence": [
+        "LogicLocalization.json"
+      ]
+    },
+    {
+      "id": "F10",
+      "fact": "原36固定a与首次准入时点代入K6：仅L10/L11/L12首次准入门槛可达，33个被排除；峰首余0。不是K6真实重跑，也不能证明调小K是业务修复。",
+      "evidence": [
+        "DiscriminatingCheckResults.json"
+      ]
+    }
+  ],
+  "processing_chain": [
+    {
+      "stage": "A/B input binding",
+      "Input": "当前D008完整KLine/ScaleTurn及锁定配置",
+      "Rule": "rb/hc/i 5m 2021—2023、CalendarUTITick",
+      "State": "同一结果身份",
+      "Output": "准确原生31表",
+      "ActualTime": "memberActual",
+      "ConfirmTime": "memberConfirmation/memberKnownFrom",
+      "Version": "39f02ec4548e68ba8dbd30061afc870546000994",
+      "PossibleInformationLoss": "原始全市场潜在转折不等于Rct/已选分母；本D不重新发现漏报"
+    },
+    {
+      "stage": "C/D source eligibility",
+      "Input": "ScaleTurnCalendar两轮具体Turn",
+      "Rule": "同object不同turnKey可多代并存，已发行依赖单独保留",
+      "State": "有限材料/枚举域",
+      "Output": "FormationMaterial",
+      "ActualTime": "groupTurnClock",
+      "ConfirmTime": "selected known",
+      "Version": "39f02ec4548e68ba8dbd30061afc870546000994",
+      "PossibleInformationLoss": "未发行失败pair无逐tick轨迹；与当前36已发行身份不同"
+    },
+    {
+      "stage": "E pair and question formation",
+      "Input": "当拍有限Turn和pair",
+      "Rule": "四项Required+2Δ实际接近+极大complete-link；按每anchor/成员组成形成问题",
+      "State": "FormationQuestion与CandidateKey",
+      "Output": "不同问题/成员可同时发行不同Life",
+      "ActualTime": "questionAnchor",
+      "ConfirmTime": "materialKnown",
+      "Version": "39f02ec4548e68ba8dbd30061afc870546000994",
+      "PossibleInformationLoss": "没有固定三个symbol对应数量上限；不以score选唯一赢家"
+    },
+    {
+      "stage": "F lifecycle and retention",
+      "Input": "prior与新问题",
+      "Rule": "wanted=prior∪new，same key复用；u<r继续，Subsumed/新Turn不结束",
+      "State": "activeCandidates",
+      "Output": "有限责任内多代问题共存",
+      "ActualTime": "原a固定，当前a可修订",
+      "ConfirmTime": "稀疏Revision已知时点",
+      "Version": "39f02ec4548e68ba8dbd30061afc870546000994",
+      "PossibleInformationLoss": "active命名不能表达行情上仍有效；K共用准入/观察保留"
+    },
+    {
+      "stage": "G public expression/statistics",
+      "Input": "已决定occurrence",
+      "Rule": "稀疏发布；旧G birth优先同刻end的闭区间扫描",
+      "State": "历史观点及责任采样投影",
+      "Output": "峰值36和60个责任采样位置",
+      "ActualTime": "保留payload实际轴",
+      "ConfirmTime": "publication timestamp/known",
+      "Version": "39f02ec4548e68ba8dbd30061afc870546000994",
+      "PossibleInformationLoss": "最后r拍闭区间36，处理后current35；无法用字段名把60位置全称为36 native active"
+    }
+  ],
+  "competing_explanations": [
+    {
+      "id": "E1",
+      "hypothesis": "版本/配置/结果身份错绑或默认F6",
+      "prediction": "输入Git对象/配置/参数生效不一致",
+      "check": "71准确来源、同31表/Calendar、39f源码与实际runtime逐文件一致",
+      "outcome": "RULED_OUT_WITHIN_CURRENT_BINDING",
+      "class_": "A/B"
+    },
+    {
+      "id": "E2",
+      "hypothesis": "把历史211/480累积或publication持有直接当当前36",
+      "prediction": "36中已关责任混入或无效期后的历史进入峰集合",
+      "check": "211=175+36；全36峰首u<r且duty0；全部最终r关",
+      "outcome": "RULED_OUT_AS_SOLE_CAUSE; latest publication history和责任确实不同",
+      "class_": "G"
+    },
+    {
+      "id": "E3",
+      "hypothesis": "同Life Revision拆新Life、重复自然身份或漂移",
+      "prediction": "同完整成员复发、previous/准入/原问题错接",
+      "check": "118链及36签名/实际成员键无冲突；L36同Life修订，L35新增更大成员组",
+      "outcome": "RULED_OUT_FOR_THE_36",
+      "class_": "F"
+    },
+    {
+      "id": "E4",
+      "hypothesis": "只是r端点同刻排序让峰大1",
+      "prediction": "改半开后峰36消失",
+      "check": "前59位置36，最后一个r拍35；D015半开全轴最大仍36",
+      "outcome": "RULED_OUT_AS_EXPLANATION_OF_MAXIMUM; boundary wording distinction confirmed",
+      "class_": "G"
+    },
+    {
+      "id": "E5",
+      "hypothesis": "缺覆盖/未确认材料在等待或handoff一直挂着",
+      "prediction": "Incomplete/unresolved/coverage缺失，或h参与retained",
+      "check": "36Supported、86Confirmed、64pair四项支持，coverage0；r非h被消费",
+      "outcome": "RULED_OUT_AT_FIRST_PEAK",
+      "class_": "C/F"
+    },
+    {
+      "id": "E6",
+      "hypothesis": "有限历史形成问题在共同观察/修订责任期内并存，含被覆盖子集",
+      "prediction": "多actual不同成员题、未到r；Subset标记但不清退；后续Turn不使旧问题失效",
+      "check": "全36/27anchor、9覆盖边、32跨后续同轮Turn、36r闭合均与精确规则一致",
+      "outcome": "SUPPORTED_MECHANISM; explains fact, not automatic business acceptance",
+      "class_": "E/F"
+    },
+    {
+      "id": "E7",
+      "hypothesis": "当前用途应只维护最新波次或最大解释，因此现保留规则不合用",
+      "prediction": "旧波次/被覆盖组即使supported也不应占当前业务集合",
+      "check": "已有实际差异：最大解释显示27，后续Turn投影4，合并2；L35延迟140分钟才完整可知",
+      "outcome": "UNRESOLVED_VALUE_TRADEOFF; 没有被授权冻结的当前性/价值标准，不能由数量或结构自动决定",
+      "class_": "D/H"
+    }
+  ],
+  "ruled_out_explanations": [
+    {
+      "id": "E1",
+      "hypothesis": "版本/配置/结果身份错绑或默认F6",
+      "prediction": "输入Git对象/配置/参数生效不一致",
+      "check": "71准确来源、同31表/Calendar、39f源码与实际runtime逐文件一致",
+      "outcome": "RULED_OUT_WITHIN_CURRENT_BINDING",
+      "class_": "A/B"
+    },
+    {
+      "id": "E2",
+      "hypothesis": "把历史211/480累积或publication持有直接当当前36",
+      "prediction": "36中已关责任混入或无效期后的历史进入峰集合",
+      "check": "211=175+36；全36峰首u<r且duty0；全部最终r关",
+      "outcome": "RULED_OUT_AS_SOLE_CAUSE; latest publication history和责任确实不同",
+      "class_": "G"
+    },
+    {
+      "id": "E3",
+      "hypothesis": "同Life Revision拆新Life、重复自然身份或漂移",
+      "prediction": "同完整成员复发、previous/准入/原问题错接",
+      "check": "118链及36签名/实际成员键无冲突；L36同Life修订，L35新增更大成员组",
+      "outcome": "RULED_OUT_FOR_THE_36",
+      "class_": "F"
+    },
+    {
+      "id": "E4",
+      "hypothesis": "只是r端点同刻排序让峰大1",
+      "prediction": "改半开后峰36消失",
+      "check": "前59位置36，最后一个r拍35；D015半开全轴最大仍36",
+      "outcome": "RULED_OUT_AS_EXPLANATION_OF_MAXIMUM; boundary wording distinction confirmed",
+      "class_": "G"
+    },
+    {
+      "id": "E5",
+      "hypothesis": "缺覆盖/未确认材料在等待或handoff一直挂着",
+      "prediction": "Incomplete/unresolved/coverage缺失，或h参与retained",
+      "check": "36Supported、86Confirmed、64pair四项支持，coverage0；r非h被消费",
+      "outcome": "RULED_OUT_AT_FIRST_PEAK",
+      "class_": "C/F"
+    }
+  ],
+  "remaining_explanations": [
+    {
+      "id": "E6",
+      "hypothesis": "有限历史形成问题在共同观察/修订责任期内并存，含被覆盖子集",
+      "prediction": "多actual不同成员题、未到r；Subset标记但不清退；后续Turn不使旧问题失效",
+      "check": "全36/27anchor、9覆盖边、32跨后续同轮Turn、36r闭合均与精确规则一致",
+      "outcome": "SUPPORTED_MECHANISM; explains fact, not automatic business acceptance",
+      "class_": "E/F"
+    },
+    {
+      "id": "E7",
+      "hypothesis": "当前用途应只维护最新波次或最大解释，因此现保留规则不合用",
+      "prediction": "旧波次/被覆盖组即使supported也不应占当前业务集合",
+      "check": "已有实际差异：最大解释显示27，后续Turn投影4，合并2；L35延迟140分钟才完整可知",
+      "outcome": "UNRESOLVED_VALUE_TRADEOFF; 没有被授权冻结的当前性/价值标准，不能由数量或结构自动决定",
+      "class_": "D/H"
+    }
+  ],
+  "discriminating_checks": [
+    {
+      "check_id": "C1",
+      "status": "EXECUTED",
+      "method": "直接读取已有中间结果",
+      "evidence": [
+        "Peak36LifeDetails.json",
+        "Peak36RevisionHistory.json",
+        "PeakWindowReconciliation.json"
+      ],
+      "result": "全36完整，不以两个代表替代"
+    },
+    {
+      "check_id": "C2",
+      "status": "EXECUTED",
+      "method": "精确源码与实际加载源码比较，沿处理链定位",
+      "evidence": [
+        "CURRENT_SOURCE_AUDIT.json",
+        "LogicLocalization.json"
+      ],
+      "result": "9文件字节一致；枚举/保留责任条件已定位"
+    },
+    {
+      "check_id": "C3",
+      "status": "EXECUTED",
+      "method": "真实Subset/Superset、老波次/新波次、r前/r同刻对照",
+      "evidence": [
+        "DiscriminatingCheckResults.json"
+      ],
+      "result": "9覆盖对、32跨后续Turn、59/1边界差异"
+    },
+    {
+      "check_id": "C4",
+      "status": "EXECUTED_DIAGNOSTIC_ONLY",
+      "method": "固定原36的门槛代数；不重跑/不标定",
+      "evidence": [
+        "DiscriminatingCheckResults.json"
+      ],
+      "result": "K6拒33准入、峰首0，显示缩K会同时改变准入与保留，不能以减数作为成功目标"
+    }
+  ],
+  "current_localization": [
+    {
+      "source_ref": "daowei2026/frp@39f02ec4548e68ba8dbd30061afc870546000994:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateTypes.hs",
+      "line_start": 19,
+      "line_end": 26,
+      "rule": "observationDuration=K*Δ；K并非pair实际接近阈值"
+    },
+    {
+      "source_ref": "daowei2026/frp@39f02ec4548e68ba8dbd30061afc870546000994:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateMaterial.hs",
+      "line_start": 61,
+      "line_end": 78,
+      "rule": "枚举保持actual+KΔ>=u；当前保留域=新枚举∪未知Clock等待∪已发行候选依赖；新Turn本身不撤回旧Turn"
+    },
+    {
+      "source_ref": "daowei2026/frp@39f02ec4548e68ba8dbd30061afc870546000994:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateEvolution.hs",
+      "line_start": 45,
+      "line_end": 59,
+      "rule": "每个合法anchor枚举当拍positive/possible极大complete-link；原问题(a,a+KΔ,a+KΔ+6Δ)，不是每symbol-set一个赢家"
+    },
+    {
+      "source_ref": "daowei2026/frp@39f02ec4548e68ba8dbd30061afc870546000994:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateEvolution.hs",
+      "line_start": 70,
+      "line_end": 113,
+      "rule": "同CandidateKey复用Life；正文/决定含义不变不发Revision；wanted含全部prior；retained只判断not scopeEnded && u<r，不按Supported/Subsumed或有更晚Turn结束"
+    },
+    {
+      "source_ref": "daowei2026/frp@39f02ec4548e68ba8dbd30061afc870546000994:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateEvolution.hs",
+      "line_start": 116,
+      "line_end": 158,
+      "rule": "当前a取成员最小Clock，d/r只能收紧；Supported表局部pair，不表当前行情价值；严格支持超集仅标Subsumed不清退"
+    },
+    {
+      "source_ref": "daowei2026/frp@39f02ec4548e68ba8dbd30061afc870546000994:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateDecisions.hs",
+      "line_start": 43,
+      "line_end": 59,
+      "rule": "participationDutyClosed在u>=r或scopeEnded为1；h≤r+18Δ，h不参与F active retained过滤"
+    },
+    {
+      "source_ref": "daowei2026/frp@39f02ec4548e68ba8dbd30061afc870546000994:src/Frp/Instance/ISL/Opportunity/CommonPriceTurnGroupCandidates.hs",
+      "line_start": 240,
+      "line_end": 275,
+      "rule": "稀疏publication仅包装已决定occurrence；内部current来自activeCandidates；保存历史不是把全部历史放回active"
+    },
+    {
+      "source_ref": "daowei2026/frp@39f02ec4548e68ba8dbd30061afc870546000994:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateKLineInput.hs",
+      "line_start": 111,
+      "line_end": 144,
+      "rule": "当前正常KLine保留准确ScaleTurn身份；retracted=False，framePatches=[]，frameEnded=False，不能假造历史修订/撤回实测"
+    }
+  ],
+  "logic_localization_ref": "LogicLocalization.json",
+  "ImplementationConformance": {
+    "status": "CONFORMS_ON_OBSERVED_36_AND_LOCALIZED_RULES",
+    "confirmed": "观察到的身份、成员、准入、稀疏revision、d/r/h和r闭合符合现有代码；0个当前已确认ImplementationMismatch。",
+    "evidence": [
+      "CURRENT_SOURCE_AUDIT.json",
+      "Peak36Summary.json",
+      "DiscriminatingCheckResults.json"
+    ],
+    "limits": "不宣称所有代码或native逐tick状态全面验证；不从符合性推导业务合理。"
+  },
+  "BusinessReasonableness": {
+    "status": "UNRESOLVED_MAINTENANCE_PURPOSE_TRADEOFF",
+    "judgment": "36不是重复/失控历史泄漏，确实是有限责任内不同形成问题及子解释共存。其作为历史形成问题和修订责任可解释；将36直接作为当前行情中独立有效组则没有依据：9是已覆盖子组，32已跨后续同轮转折。不能逐Life确认全部仍具有当前维护价值，所以不REJECTED_AS_NON_ISSUE。",
+    "positive_evidence": "每组有不同具体转折/原问题和当时完整支持；Subset保留更早可知阶段史，L36于14:10已可知，L35于14:25才加入hc。",
+    "counterevidence": "L01 actual为10-26，峰首已3735开放分钟且成员多次被后续同轮选中转折越过，仍Open；同理32组。最大解释与当前波次不是当前责任Map的筛选标准。",
+    "not_a_proven_defect": "后续转折不反证旧共同峰；已覆盖子集也可能需要原准入修订责任。缺少明确用途取舍，不能判这些保留一定错误或直接删组。",
+    "decision_material": "OwnerDecisionPacket.json"
+  },
+  "parameter_repairability": {
+    "suspected_parameters": [
+      "profile.observation_multiple=800",
+      "profile.delta=600",
+      "hardcoded revision_tail=6Δ",
+      "hardcoded unknown_clock_wait=6Δ",
+      "hardcoded handoff_tail=18Δ",
+      "actual_pair_distance=2Δ"
+    ],
+    "parameter_consumers": [
+      {
+        "source_ref": "daowei2026/frp@39f02ec4548e68ba8dbd30061afc870546000994:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateTypes.hs",
+        "line_start": 19,
+        "line_end": 26,
+        "rule": "observationDuration=K*Δ；K并非pair实际接近阈值"
+      },
+      {
+        "source_ref": "daowei2026/frp@39f02ec4548e68ba8dbd30061afc870546000994:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateMaterial.hs",
+        "line_start": 61,
+        "line_end": 78,
+        "rule": "枚举保持actual+KΔ>=u；当前保留域=新枚举∪未知Clock等待∪已发行候选依赖；新Turn本身不撤回旧Turn"
+      },
+      {
+        "source_ref": "daowei2026/frp@39f02ec4548e68ba8dbd30061afc870546000994:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateEvolution.hs",
+        "line_start": 45,
+        "line_end": 59,
+        "rule": "每个合法anchor枚举当拍positive/possible极大complete-link；原问题(a,a+KΔ,a+KΔ+6Δ)，不是每symbol-set一个赢家"
+      },
+      {
+        "source_ref": "daowei2026/frp@39f02ec4548e68ba8dbd30061afc870546000994:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateEvolution.hs",
+        "line_start": 70,
+        "line_end": 113,
+        "rule": "同CandidateKey复用Life；正文/决定含义不变不发Revision；wanted含全部prior；retained只判断not scopeEnded && u<r，不按Supported/Subsumed或有更晚Turn结束"
+      },
+      {
+        "source_ref": "daowei2026/frp@39f02ec4548e68ba8dbd30061afc870546000994:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateEvolution.hs",
+        "line_start": 116,
+        "line_end": 158,
+        "rule": "当前a取成员最小Clock，d/r只能收紧；Supported表局部pair，不表当前行情价值；严格支持超集仅标Subsumed不清退"
+      },
+      {
+        "source_ref": "daowei2026/frp@39f02ec4548e68ba8dbd30061afc870546000994:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateDecisions.hs",
+        "line_start": 43,
+        "line_end": 59,
+        "rule": "participationDutyClosed在u>=r或scopeEnded为1；h≤r+18Δ，h不参与F active retained过滤"
+      },
+      {
+        "source_ref": "daowei2026/frp@39f02ec4548e68ba8dbd30061afc870546000994:src/Frp/Instance/ISL/Opportunity/CommonPriceTurnGroupCandidates.hs",
+        "line_start": 240,
+        "line_end": 275,
+        "rule": "稀疏publication仅包装已决定occurrence；内部current来自activeCandidates；保存历史不是把全部历史放回active"
+      },
+      {
+        "source_ref": "daowei2026/frp@39f02ec4548e68ba8dbd30061afc870546000994:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateKLineInput.hs",
+        "line_start": 111,
+        "line_end": 144,
+        "rule": "当前正常KLine保留准确ScaleTurn身份；retracted=False，framePatches=[]，frameEnded=False，不能假造历史修订/撤回实测"
+      }
+    ],
+    "earliest_business_divergence": "若目标为当前波次/独立最大解释，差异最早落在多代Turn枚举和prior无当前性筛选地保留至r，而非最终publication。该目标当前尚未冻结为既定验收。",
+    "feasibility_status": "EVIDENCE_INSUFFICIENT",
+    "feasibility_evidence": [
+      "K同时影响准入/枚举和d，r/h随d平移；2Δ独立，缩K不等于只缩维护期。",
+      "固定原36代入K6拒33首次准入，不能以少组就认修复；未证明任意K均无解。",
+      "缺TargetInclusion/Exclusion及有效性目标，不能判断某参数值满足目的或给正式标定结果。"
+    ],
+    "upstream_dependency": "同一K还改变可枚举材料、形成问题/成员组合、Life/Revision和其下游引用；调Δ还改变2Δ和固定尾部；与指定尺度Δ的业务绑定需另审查。",
+    "unresolved_constraints": [
+      "哪些旧波次/被覆盖子组仍必须承担责任；应保留/排除目标未定"
+    ],
+    "next_route": "用途取舍先由原manager交Owner；本D不进入标定。若目标/修改方案明确且获授权，再按M/必要回归→完整X/G。"
+  },
+  "impact_scope": {
+    "current_peak_lives": 36,
+    "peak_revisions_full": 118,
+    "peak_member_rows": 86,
+    "current_result_total_lives": 480,
+    "current_result_revisions": 1538,
+    "affected_scope_if_retention_changes": "Life/Revision生命周期与coverage变化发行、exact引用链、参与决定与handoff消费者；数量影响须新运行实测，不预填",
+    "formal_scope_unchanged": true
+  },
+  "confidence": {
+    "count_and_identity": "HIGH",
+    "localized_mechanism": "HIGH",
+    "native_active": "CODE_BACKED_RECONSTRUCTION_NOT_DIRECT_TRACE",
+    "business_defect": "UNDETERMINED"
+  },
+  "next_route": "原manager消费D；将已定位用途取舍与实际对照交Owner。当前候选保留DIAGNOSIS_IN_PROGRESS；不把统计端点勘误视作关闭，不Release。",
+  "resolution_type": "Q_RETAIN_FINDING_PENDING_SPECIFIC_OWNER_TRADEOFF",
+  "professional_scope_completed": true,
+  "uncompleted_business_scope": [
+    "Owner尚未选择有界历史修订责任与当前有效性表示的用途/规则",
+    "全部36当前维护价值未被证成，不能关闭候选或释放",
+    "没有正式行为变更、M实施或相应新X/G"
+  ],
+  "feature_release_allowed": false
+}

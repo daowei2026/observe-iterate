@@ -1,0 +1,28 @@
+from common import *
+S='daowei2026/frp@'+FRP+':src/Frp/Instance/ISL/Opportunity/'
+def src(file,start,end,rule):return dict(source_ref=S+file,line_start=start,line_end=end,rule=rule)
+responsible=[
+src('U2/GroupCandidateTypes.hs',19,26,'observationDuration=K*Δ；K并非pair实际接近阈值'),
+src('U2/GroupCandidateMaterial.hs',61,78,'枚举保持actual+KΔ>=u；当前保留域=新枚举∪未知Clock等待∪已发行候选依赖；新Turn本身不撤回旧Turn'),
+src('U2/GroupCandidateEvolution.hs',45,59,'每个合法anchor枚举当拍positive/possible极大complete-link；原问题(a,a+KΔ,a+KΔ+6Δ)，不是每symbol-set一个赢家'),
+src('U2/GroupCandidateEvolution.hs',70,113,'同CandidateKey复用Life；正文/决定含义不变不发Revision；wanted含全部prior；retained只判断not scopeEnded && u<r，不按Supported/Subsumed或有更晚Turn结束'),
+src('U2/GroupCandidateEvolution.hs',116,158,'当前a取成员最小Clock，d/r只能收紧；Supported表局部pair，不表当前行情价值；严格支持超集仅标Subsumed不清退'),
+src('U2/GroupCandidateDecisions.hs',43,59,'participationDutyClosed在u>=r或scopeEnded为1；h≤r+18Δ，h不参与F active retained过滤'),
+src('CommonPriceTurnGroupCandidates.hs',240,275,'稀疏publication仅包装已决定occurrence；内部current来自activeCandidates；保存历史不是把全部历史放回active'),
+src('U2/GroupCandidateKLineInput.hs',111,144,'当前正常KLine保留准确ScaleTurn身份；retracted=False，framePatches=[]，frameEnded=False，不能假造历史修订/撤回实测')]
+definitions=[
+dict(name='responsibility_in_scope_D008',meaning='旧G闭区间[firstKnown,min(original r,sampleEnd)]的Life数；包含r拍合法最终处理',evidence=pro_ref('perform_global_profile.py'),location='563-570',equals_business_active=False),
+dict(name='native_activeCandidates',meaning='候选状态Map，成功演化后只留u<current r且非scopeEnded；包括Supported及Subsumed，不要求尚未确认；本D由准确源码+完整原生生命周期重建，非内部trace实测',evidence=S+'U2/GroupCandidateEvolution.hs',location='91-95',equals_business_active=False),
+dict(name='unconfirmed',meaning='当前形成依据Incomplete/成员CandidateMember/Required unresolved；不能把Observation Open当未确认。峰值36全Supported、86成员Confirmed、64pair四项全部Supports',evidence='Peak36LifeDetails.json',equals_business_active=False),
+dict(name='historical_issued',meaning='截至u首次发行的所有Life，包含已DutyClosed历史；首次峰211=175已关+36责任开放',evidence='PeakWindowReconciliation.json',equals_business_active=False),
+dict(name='publication',meaning='实际稀疏事件携带新增Revision；AsOf最新观点可无限查询历史，不能据历史观点存在推断active。首次峰610 Revision=211create+399update',evidence='PeakWindowReconciliation.json',equals_business_active=False),
+dict(name='business_current_effective_or_maintainable',meaning='Owner条件式业务目标；源码的责任Map没有最新波次/行情有效性筛选。结构可区分不充分证明每个Life仍应业务维护；本D不发明该标准',evidence='Owner原文第四、五节',equals_business_active=None)]
+chain=[
+dict(stage='A/B input binding',Input='当前D008完整KLine/ScaleTurn及锁定配置',Rule='rb/hc/i 5m 2021—2023、CalendarUTITick',State='同一结果身份',Output='准确原生31表',ActualTime='memberActual',ConfirmTime='memberConfirmation/memberKnownFrom',Version=FRP,PossibleInformationLoss='原始全市场潜在转折不等于Rct/已选分母；本D不重新发现漏报'),
+dict(stage='C/D source eligibility',Input='ScaleTurnCalendar两轮具体Turn',Rule='同object不同turnKey可多代并存，已发行依赖单独保留',State='有限材料/枚举域',Output='FormationMaterial',ActualTime='groupTurnClock',ConfirmTime='selected known',Version=FRP,PossibleInformationLoss='未发行失败pair无逐tick轨迹；与当前36已发行身份不同'),
+dict(stage='E pair and question formation',Input='当拍有限Turn和pair',Rule='四项Required+2Δ实际接近+极大complete-link；按每anchor/成员组成形成问题',State='FormationQuestion与CandidateKey',Output='不同问题/成员可同时发行不同Life',ActualTime='questionAnchor',ConfirmTime='materialKnown',Version=FRP,PossibleInformationLoss='没有固定三个symbol对应数量上限；不以score选唯一赢家'),
+dict(stage='F lifecycle and retention',Input='prior与新问题',Rule='wanted=prior∪new，same key复用；u<r继续，Subsumed/新Turn不结束',State='activeCandidates',Output='有限责任内多代问题共存',ActualTime='原a固定，当前a可修订',ConfirmTime='稀疏Revision已知时点',Version=FRP,PossibleInformationLoss='active命名不能表达行情上仍有效；K共用准入/观察保留'),
+dict(stage='G public expression/statistics',Input='已决定occurrence',Rule='稀疏发布；旧G birth优先同刻end的闭区间扫描',State='历史观点及责任采样投影',Output='峰值36和60个责任采样位置',ActualTime='保留payload实际轴',ConfirmTime='publication timestamp/known',Version=FRP,PossibleInformationLoss='最后r拍闭区间36，处理后current35；无法用字段名把60位置全称为36 native active')]
+obj=dict(finding_id='F-LIFE-PEAK-CONCURRENCY',professional_control_commit=LOCKED,observed_anomaly='首次峰36个有界形成问题在责任Map内并存，27Open+9Subsumed，actual年龄140—3735开放分钟；有32Life全部成员已有后续同轮转折，仍未到原修订边界。其业务当前有效性不能从状态名称推定。',business_processing_chain=chain,responsible_logic=responsible,source_refs=[x['source_ref'] for x in responsible]+[pro_ref('configuration.json'),pro_ref('FeatureRunResultBinding.json'),pro_ref('perform_global_profile.py'),pro_ref('ConcurrencyProfile.json','D015')],why_this_is_the_responsible_logic='形成多Life的最早机制是有限材料允许多代具体Turn并存并按不同anchor/成员成题；其时间重叠由wanted保留prior及u<r的清退规则产生。K=800同时控制新准入/枚举和观察期限，r=d+6Δ。Subsumed只是标记；后续Turn不触发已发行Life清退。这些条件在36逐Life真实原生结果上得到完整对账。publication和统计位于其后，不能单独造成首次峰内36个真实未关责任。',definitions=definitions,peak_full_roster_ref='Peak36LifeDetails.json',create_revision_end_current_ref='PeakWindowReconciliation.json',excluded_explanations=['错版本/默认F6/跨结果表拼接：准确输入和完整配置核验','把三年480或当时211历史累计误当36：211=175已关闭+36开放','同完整成员重复Life、revision拆Life、身份漂移：36/118精确链无冲突，连忽略Turn ref只按symbol+actual+direction也无相同成员组','逾r不清退造成无界残留：36均在r拍DutyClosed且无后续Revision','handoff18Δ拉长F active：retained只消费r，h只供参与承接；本D不运行Q','仅端点闭区间或仅publication持有造成整个峰36：只影响最后一个采样点，前59位置仍36'],open_questions=['36均具有不同身份/形成问题，但不能由此证明9个覆盖子组及跨后续Turn的32Life仍须作为业务当前有效组维护。','真正未决是是否需要保留全部有界历史形成问题的修订责任，或另表达当前波次/最大解释；Owner没有冻结二者取舍。无需把已查清的字段、源码或数量事实再问Owner。'],localization_status='MECHANISM_LOCALIZED_TO_ENUMERATION_AND_RETENTION_RULES; BUSINESS_DEFECT_NOT_YET_CONFIRMED',boundary='native active为准确源码与公开端点重建；非直接内部逐tick trace。未以K=800单因果宣布错误，未讨论或实施正式M。')
+save('LogicLocalization.json',obj)
+print(json.dumps(dict(logic_localization_created=True,source_rules=len(responsible),definitions=len(definitions),next='diagnosis_and_owner_tradeoff_if_needed'),ensure_ascii=False))

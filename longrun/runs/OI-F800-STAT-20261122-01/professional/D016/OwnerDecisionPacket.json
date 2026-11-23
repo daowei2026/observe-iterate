@@ -1,0 +1,145 @@
+{
+  "decision_id": "F800-D016-ODP-01",
+  "business_question": "F的“当前有维护意义”是否允许全部尚在原d/r内的历史形成问题（含已覆盖子解释）继续承担修订责任；还是需要另外表达仅当前波次/最大解释的业务集合？",
+  "why_data_cannot_decide_alone": "已证明每组是什么、为何保留、何时终止及不同显示规则在真实案例上造成什么差异。后续转折并不撤回旧峰事实，完整Supported也不证明旧峰仍适于当前用途。需要确定保留历史修订责任与当前表示简洁性的价值取舍；不是源码或数量事实缺口。",
+  "option_a": {
+    "description": "以有界形成问题/修订责任作为F当前维护对象；若需行情当前显示另定义清晰投影，保持现有正式行为。",
+    "preserves": [
+      "800窗口对正常迟知共同峰的准入",
+      "子组更早可知的决定与之后超组之间的准确关系",
+      "36个完整原问题及其修订/承接责任"
+    ],
+    "sacrifices": [
+      "该责任Map不能直接视为当前市场最新波次或互相独立的最大解释集合",
+      "当前责任数可高于对象品种数很多"
+    ],
+    "supporting_cases": [
+      "L36 2021-11-10 14:10已有i+rb，L35 14:25才有hc+i+rb；Subset先行信息真实。",
+      "L35 actual 09:50到完整可知14:25为140开放分钟；仅靠恢复短K6会拒绝该真实共同候选。"
+    ],
+    "counter_cases": [
+      "L01 actual10-26到11-10已3735开放分钟、同轮后续Turn已多次可知，仍Open；32组有同类后续Turn事实。",
+      "9个已Subsumed仍计责任，不能解释成9个额外独立最大事件。"
+    ]
+  },
+  "option_b": {
+    "description": "要求F另有明确的行情当前有效性/最大解释表示；先冻结哪些状态保留责任、哪些仅留历史，再形成具体M提案回Owner。",
+    "preserves": [
+      "能够表达业务当前性与责任/历史分离的目标",
+      "降低把旧波次与覆盖子组当当前独立组的风险"
+    ],
+    "sacrifices": [
+      "若直接结束而非只投影，会改变旧准入的修订/承接资格及其下游准确引用",
+      "仅按后续Turn/覆盖删组可能丢失早期或仍需更正的题；现有数据不能替代规则取舍"
+    ],
+    "supporting_cases": [
+      "真实峰36若只显示未CoveredBy组为27；若做“全成员有后续同轮Turn则隐藏”的诊断投影为4，二者结合为2。差异逐Life列明，均不是建议数量上限或合法结束规则。",
+      "L03与L02在同一问题里，后者只新增hc具体Turn；当前最大解释可只展示后者，同时历史保留前者。"
+    ],
+    "counter_cases": [
+      "L36在14:10到14:25尚无L35；不能回填未来Superset抹去当时合法解释。",
+      "忽略旧问题责任不等于已证明旧实际峰无效；正常KLine无撤回，未来合法修订路径的价值无法由这一个峰样本决定。"
+    ]
+  },
+  "common_facts": [
+    {
+      "id": "F01",
+      "fact": "当前正式39f/TIS2f460、完整配置SHA b72095ff…；同D00831表与D015队列，71准确输入核验，无新生产。",
+      "evidence": [
+        "INPUT_BINDING.json",
+        "SOURCE_REF_AUDIT.json",
+        "REUSE_EVIDENCE_READBACK.json",
+        "CURRENT_SOURCE_AUDIT.json"
+      ]
+    },
+    {
+      "id": "F02",
+      "fact": "峰值责任36对应2021-11-10 14:25至2021-11-11 13:35连续60个5m位置、同一36Life；采样占用300开放分钟。处理后active源码重建前59位置36，最后r拍35；native current trace未暴露。",
+      "evidence": [
+        "PeakWindowReconciliation.json",
+        "daowei2026/observe-iterate@6e9521ffc437a307da7413727f80fc2621994d4f:longrun/runs/OI-F800-STAT-20261122-01/professional/D015/ConcurrencyProfile.json"
+      ]
+    },
+    {
+      "id": "F03",
+      "fact": "首次峰211create−175DutyClosed=36开放责任；610Revision=211create+399update。前拍210−175=35、608Revision；峰首新增L35并修订L36为Subsumed，净增1Life，不是2Life。",
+      "evidence": [
+        "PeakWindowReconciliation.json",
+        "Peak36RevisionHistory.json"
+      ]
+    },
+    {
+      "id": "F04",
+      "fact": "36个完整成员签名均不同；忽略Turn ref改按symbol+actual+direction仍无相同成员组。27不同anchor，22两成员/14三成员；9为同问题严格子集被14个三成员中的9个覆盖，故不能称36个互相独立的最大解释。",
+      "evidence": [
+        "Peak36LifeDetails.json",
+        "DiscriminatingCheckResults.json"
+      ]
+    },
+    {
+      "id": "F05",
+      "fact": "首次峰36全Supported、86条成员全ConfirmedMember、64对Required的256项全Supports，coverageIncomplete全0。Open=27、Subsumed=9；Open指观察期限未到，不是未确认。",
+      "evidence": [
+        "Peak36LifeDetails.json",
+        "DiscriminatingCheckResults.json"
+      ]
+    },
+    {
+      "id": "F06",
+      "fact": "峰值实际年龄140—3735开放分钟；全部d>a且d=a+480000，r=d+3600，h=r+10800。K800对应4000开放分钟，修订尾30、handoff尾90；不表示4000墙钟分钟。",
+      "evidence": [
+        "Peak36LifeDetails.json",
+        "DiscriminatingCheckResults.json"
+      ]
+    },
+    {
+      "id": "F07",
+      "fact": "32/36的每个成员在峰首前均已有同对象/同轮次、更晚actual且已知的ScaleTurn；这些新Turn不撤回旧Turn。仅按此筛查留下L32/L33/L35/L36；再不展示覆盖子集则剩L32/L35。该投影不是合法结束规则或正式运行。",
+      "evidence": [
+        "Peak36LifeDetails.json",
+        "DiscriminatingCheckResults.json"
+      ]
+    },
+    {
+      "id": "F08",
+      "fact": "全部36Life的118次Revision精确previous/准入/当前引用及原问题固定；所有36最终在各自r拍DutyClosed=1，最后Revision即该拍，以后无Revision。不存在这些Life逾r持续更新的证据。",
+      "evidence": [
+        "Peak36RevisionHistory.json",
+        "Peak36Summary.json"
+      ]
+    },
+    {
+      "id": "F09",
+      "fact": "K800被准入/枚举与观察期限共同消费；wanted含全部prior，retained只看scope及r；Subsumed和后续Turn不是清退条件；h不延长F active。",
+      "evidence": [
+        "LogicLocalization.json"
+      ]
+    },
+    {
+      "id": "F10",
+      "fact": "原36固定a与首次准入时点代入K6：仅L10/L11/L12首次准入门槛可达，33个被排除；峰首余0。不是K6真实重跑，也不能证明调小K是业务修复。",
+      "evidence": [
+        "DiscriminatingCheckResults.json"
+      ]
+    }
+  ],
+  "uncertain_facts": [
+    "哪类仍Supported的旧波次/覆盖子组应继续承担业务责任；没有冻结当前性或效用判据。",
+    "未直接观测native内部逐tick trace；源码重建前提与完整公开边界已明示，不作为Owner需要解决的实现问题。"
+  ],
+  "implementation_implications": [
+    "A若仅规范统计/展示：走B/G更新精确口径，无须三年Feature重跑；不能未经Owner确认把A当已接受限制。",
+    "B若改变正式生命周期/参数/输出：先按所选语义形成准确diff、责任影响、回归/完整X/G验证方案，再请求具体实施确认；本包不请求泛化修改许可。",
+    "当前没有采用任何选项，不修改K/Δ/2Δ/常量/数据处理/输出合同。"
+  ],
+  "recommended_observation_cases": [
+    "全部36索引及118次Revision",
+    "L01与L35：老波次/新迟知候选",
+    "全部9覆盖对，特别L36→L35时间先后",
+    "L27/L28/L29：共享具体Turn但不同当前问题，不能只按symbol-set去重",
+    "L01的r前、r同刻、r后对账"
+  ],
+  "owner_decision_needed": true,
+  "decision_status": "NOT_REQUESTED_BY_EXECUTOR_OUTSIDE_ORIGINAL_RETURN; MATERIAL_READY_FOR_ORIGINAL_MANAGER",
+  "release_allowed_before_decision": false
+}

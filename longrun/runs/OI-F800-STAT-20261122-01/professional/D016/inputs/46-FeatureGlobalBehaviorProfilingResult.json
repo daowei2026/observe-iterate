@@ -1,0 +1,452 @@
+{
+  "statistics_input_readiness": "StatisticsInputReadiness.json",
+  "global_behavior_profile": "GlobalBehaviorProfile.json",
+  "finding_discovery_summary": "FindingDiscoverySummary.json",
+  "global_finding_candidates": [
+    {
+      "finding_id": "F-LIFE-PEAK-CONCURRENCY",
+      "finding_type": "HIGH_CONFIDENCE_REASONABLENESS_CANDIDATE",
+      "candidate_origin": "OWNER_RAISED",
+      "status": "CANDIDATE",
+      "feature_ref": {
+        "frp": "daowei2026/frp@39f02ec4548e68ba8dbd30061afc870546000994",
+        "tis": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767"
+      },
+      "run_binding": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/FeatureRunResultBinding.json",
+      "reasonableness_unit_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/CurrentFeatureUnderstandingPackage.json#business_objects/BO3",
+      "business_object_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/CurrentFeatureUnderstandingPackage.json#business_objects/BO3",
+      "observation": "当前正式结果峰值责任内36 Life，连续60个5m采样位置；首次峰27 Open+9 Subsumed且公开duty均开放。",
+      "candidate_basis": "Owner明确要求释放前评估；当前全范围事实支持该并发现象及公开责任开放，值得进入D，而非仅有一个大数。",
+      "why_high_confidence": "对“需要进入责任逻辑和维护语义判断”的置信高：有同结果全轴复核、持续采样、当前公开状态分解和明确Owner业务关切；历史累计211与责任内36分开。三品种下大量并发维护的业务解释需要证据，不能仅用结构检查无冲突替代。",
+      "confidence_limits": [
+        "current_confidence保持OWNER_CONCERN，非确认代码缺陷；36不是预设上限或自动判错阈值。",
+        "60个位置属于一个连续峰值区间，不是60个独立市场失败；公开Open/duty不自动等于业务active/有用。",
+        "峰值有27个不同actual锚点、22个两成员/14个三成员解释，支持多问题并发的竞争解释，尚未排除。",
+        "不预设历史累积/800根因，不在本G讨论修法；D须逐Life对账并定位最早责任逻辑。"
+      ],
+      "contract_or_business_semantics_ref": [
+        "daowei2026/observe-iterate@4bf46f3fbe402915e3272e49a71dc94eac787c15:longrun/runs/OI-F800-STAT-20261122-01/owner-decisions/CONTINUE-20261123/OWNER_CONTINUE.original.txt#四、Owner指定候选",
+        "daowei2026/observe-iterate@b8c2b513f0b08be6a1fa6782b71bf74a07faff0d:task-inputs/wall-f-parallel-closure-20261122/F_CURRENT_RUN_CONTINUATION.md#4.2",
+        "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/CurrentFeatureUnderstandingPackage.json#business_objects/BO3",
+        "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/CurrentFeatureUnderstandingPackage.json#states/ST4"
+      ],
+      "evidence_scope": {
+        "data_scope": {
+          "symbols": [
+            "rb",
+            "hc",
+            "i"
+          ],
+          "start_time": "2021-01-01",
+          "end_time": "2023-12-31",
+          "actual_start_time": "2021-01-04 09:05:00",
+          "actual_end_time": "2023-12-29 15:00:00",
+          "freq": "5m",
+          "calendar": "night_end_at_2300",
+          "sessions": [
+            "DAY_CLOCK_09_15",
+            "NIGHT_CLOCK_21_23"
+          ],
+          "sof": "TA_updto20240229_DBA",
+          "stk_tlist": "steel",
+          "input_positions_per_symbol": 49683,
+          "input_symbol_rows": 149049,
+          "per_symbol_validation": "INPUT_SCOPE_VALIDATION.json"
+        },
+        "source_summary": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/profile/SUMMARY.json",
+        "increment": "ConcurrencyProfile.json",
+        "count_unit": "repeat_count=峰值采样位置；affected_count=首次峰值Life；affected_ratio=峰值采样位置/全Calendar位置，非缺陷率"
+      },
+      "repeat_count": 60,
+      "affected_count": 36,
+      "affected_ratio": 0.001207656542479319,
+      "representative_locations": [
+        {
+          "life": "1d0702bf-731b-43a7-b522-fb516dbedb1e",
+          "revision": "2341901e-1534-46bb-845f-322df8c8adc0",
+          "full_parent": [
+            "2021-10-27 09:10:00",
+            421,
+            0,
+            0
+          ],
+          "source_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/readback/tables/occurrences.csv",
+          "selection_reason": "首次峰值的最早/最晚准入代表，仅供D定位入口，不替代D全36Life对账。"
+        },
+        {
+          "life": "071e98f8-56b5-4146-a4c0-9ccee6d9f466",
+          "revision": "eb204326-2c35-4829-a81b-3ae099ea16a1",
+          "full_parent": [
+            "2021-11-10 14:25:00",
+            475,
+            0,
+            0
+          ],
+          "source_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/readback/tables/occurrences.csv",
+          "selection_reason": "首次峰值的最早/最晚准入代表，仅供D定位入口，不替代D全36Life对账。"
+        }
+      ],
+      "alternative_non_error_explanations": [
+        "不同actual问题和不同Turn组合允许并发，三品种不天然规定Life数上限。",
+        "Subsumed、观察关闭、修订责任开放、历史发表分别有不同语义。",
+        "当前引用统计可能与业务active口径不同；须D确认是否仅需B修正口径。"
+      ],
+      "current_confidence": "OWNER_CONCERN",
+      "statistical_observation_confidence": "HIGH",
+      "defect_conclusion": "UNDETERMINED",
+      "owner_assessment_status": "PROMOTED",
+      "must_assess_before_release": true,
+      "next_route": "BUSINESS_DISCREPANCY_DIAGNOSIS",
+      "diagnosis_input_adapter_ref": "DiagnosisInputAdapters.json#F800-D015-DA-PEAK",
+      "logic_localization_ref": null
+    }
+  ],
+  "candidate_finding_queue": "CandidateFindingQueue.json",
+  "observations_not_promoted": [
+    {
+      "observation_id": "D015-O01-SELECTED-CONVERSION",
+      "feature_ref": {
+        "frp": "daowei2026/frp@39f02ec4548e68ba8dbd30061afc870546000994",
+        "tis": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767"
+      },
+      "run_binding": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/FeatureRunResultBinding.json",
+      "observation": "i已选1004、参加236；rb324/425、hc315/430。独立参考筛查中i759无2Δ内其他对象、9关系否决；627合资格非否决参考边未见缺组。",
+      "evidence_refs": [
+        "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/profile/counts_by_symbol.csv",
+        "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/profile/first_block_reference_by_symbol.csv",
+        "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/profile/STRUCTURAL_CHECKS.json"
+      ],
+      "why_not_promoted": "共同对象不承诺每个单品种转折有组；分母和参考筛查可解释当前差异，没有已确认应入而未入的业务反例。参考不是原生首阻断/全市场真值。",
+      "revisit_condition": "新证据给出当前资格成立且应入组的具体原上游对象，或参考筛查适用/绑定被推翻。",
+      "status": "OBSERVATION_NOT_PROMOTED"
+    },
+    {
+      "observation_id": "D015-O02-PERIOD-SESSION-DENSITY",
+      "feature_ref": {
+        "frp": "daowei2026/frp@39f02ec4548e68ba8dbd30061afc870546000994",
+        "tis": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767"
+      },
+      "run_binding": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/FeatureRunResultBinding.json",
+      "observation": "2021/2022/2023首次Life=244/162/74，Revision/千位置=46.69/31.16/14.98；日夜约30.72/31.41，开盘50.91高于其余29.07。",
+      "evidence_refs": [
+        "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/profile/cross_strata_comparison.csv",
+        "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/profile/counts_by_symbol_year.csv"
+      ],
+      "why_not_promoted": "分母为各层真实Calendar位置；上游活动和知识节奏不同，没有数量配额或环境真值，不能将分层差异自动判错。",
+      "revisit_condition": "差异与可靠业务资格/事件缺失或身份冲突联结，形成明确而可复核的业务矛盾。",
+      "status": "OBSERVATION_NOT_PROMOTED"
+    },
+    {
+      "observation_id": "D015-O03-LATE-ADMISSION",
+      "feature_ref": {
+        "frp": "daowei2026/frp@39f02ec4548e68ba8dbd30061afc870546000994",
+        "tis": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767"
+      },
+      "run_binding": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/FeatureRunResultBinding.json",
+      "observation": "469/480 Life首次准入晚于旧6Δ参考，最大准入actual年龄1665开放分钟；800对应4000开放分钟，原责任、修订尾30和handoff尾90分列。",
+      "evidence_refs": [
+        "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/profile/SUMMARY.json",
+        "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/profile/lifecycle_distributions.csv",
+        "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/profile/latency_by_symbol.csv"
+      ],
+      "why_not_promoted": "旧6Δ不是当前业务真值，晚知道不自动否定历史共同峰，也不证明800有用；缺下游效用/可用延迟判据。该观察不关闭并发Owner候选。",
+      "revisit_condition": "Owner给定效用目标或出现已知/实际轴冲突及明确应保留/排除事实时重新评估。",
+      "status": "OBSERVATION_NOT_PROMOTED"
+    },
+    {
+      "observation_id": "D015-O04-RELATION-MULTIPLICITY",
+      "feature_ref": {
+        "frp": "daowei2026/frp@39f02ec4548e68ba8dbd30061afc870546000994",
+        "tis": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767"
+      },
+      "run_binding": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/FeatureRunResultBinding.json",
+      "observation": "全量CoveredBy242、Overlaps219；本补充严格超集/同问题/支持及共享具体Turn检查无冲突。首次峰36含22两成员、14三成员、27个actual锚点。",
+      "evidence_refs": [
+        "IncrementalSemanticChecks.json",
+        "ConcurrencyProfile.json",
+        "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/CurrentFeatureUnderstandingPackage.json#processing_relations/R4"
+      ],
+      "why_not_promoted": "候选组合/责任问题数与独立市场峰谷数不同，结构关系有合法解释，未见同完整自然身份重复；并发业务维护意义仍由F-LIFE-PEAK-CONCURRENCY独立诊断，不因此关闭。",
+      "revisit_condition": "出现同准确身份重复、无共享Turn重叠、非严格超集覆盖或D确认无业务维护意义。",
+      "status": "OBSERVATION_NOT_PROMOTED"
+    },
+    {
+      "observation_id": "D015-O05-LIFECYCLE-AND-SELF-TRANSITIONS",
+      "feature_ref": {
+        "frp": "daowei2026/frp@39f02ec4548e68ba8dbd30061afc870546000994",
+        "tis": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767"
+      },
+      "run_binding": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/FeatureRunResultBinding.json",
+      "observation": "480 Life中479最终duty关闭，1样本末右删失；ClosedSupported→ClosedSupported 407条，Subsumed→Subsumed162条，原G无责任关闭后更新或closed重开。",
+      "evidence_refs": [
+        "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/profile/lifecycles.csv",
+        "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/profile/state_transitions.csv",
+        "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/profile/STRUCTURAL_CHECKS.json"
+      ],
+      "why_not_promoted": "状态标签自环可包含责任/关系/覆盖变化；观察终止不等于修订责任终止。右删失不当未正常结束，不能仅凭标签自环判多余发行。",
+      "revisit_condition": "出现完全无业务正文/决定变化的重复发行证据、终结后更新或样本末以后应结束仍未结束的实际事实。",
+      "status": "OBSERVATION_NOT_PROMOTED"
+    },
+    {
+      "observation_id": "D015-O06-REACHABILITY",
+      "feature_ref": {
+        "frp": "daowei2026/frp@39f02ec4548e68ba8dbd30061afc870546000994",
+        "tis": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767"
+      },
+      "run_binding": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/FeatureRunResultBinding.json",
+      "observation": "Supported1535/1538、Incomplete3；Contradicted/Withdrawn/EndedByScope未在本实例观察。初始不足方向/类型/Bend各9条Required未决，未被零值填充。",
+      "evidence_refs": [
+        "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/profile/branch_reachability.csv",
+        "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/profile/required_reasons.csv",
+        "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/CurrentFeatureUnderstandingPackage.json#occurrences"
+      ],
+      "why_not_promoted": "正常KLine路径没有framePatches/scopeEnded适用输入，零次数不证明分支无用或逻辑不可达。Supported也不等于全窗coverage或业务机会正确。",
+      "revisit_condition": "新的真实适用输入出现但相应分支/理由仍缺失，或不足被无证据提升。",
+      "status": "OBSERVATION_NOT_PROMOTED"
+    },
+    {
+      "observation_id": "D015-O07-PUBLICATION-DENSITY",
+      "feature_ref": {
+        "frp": "daowei2026/frp@39f02ec4548e68ba8dbd30061afc870546000994",
+        "tis": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767"
+      },
+      "run_binding": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/FeatureRunResultBinding.json",
+      "observation": "1538 Revision occurrence、1217 publication（含1定义专用），30.956 Revision/千共享Calendar位置；多组观点可共享一次publication。",
+      "evidence_refs": [
+        "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/profile/SUMMARY.json",
+        "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/FeatureRunResultBinding.json",
+        "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/profile/STRUCTURAL_CHECKS.json"
+      ],
+      "why_not_promoted": "事件包装、Revision和Life是不同计数单位，当前全局密度不是逐Tick发射；27项原结构/引用/顺序检查均0冲突，无正式载体不自洽的新事实。",
+      "revisit_condition": "给出同对象同刻不同载体相互冲突、非法顺序或无意义逐拍发行的准确反例。",
+      "status": "OBSERVATION_NOT_PROMOTED"
+    },
+    {
+      "observation_id": "D015-O08-COVERAGE-REGRESSION",
+      "feature_ref": {
+        "frp": "daowei2026/frp@39f02ec4548e68ba8dbd30061afc870546000994",
+        "tis": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767"
+      },
+      "run_binding": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/FeatureRunResultBinding.json",
+      "observation": "当前coverageIncomplete16观点/12Life；完整标记1522观点；GF001/002在当前正式结果保持CLOSED_ON_LATEST_PROFILE。",
+      "evidence_refs": [
+        "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/FindingDisposition.json",
+        "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/profile/STRUCTURAL_CHECKS.json",
+        "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/GlobalBehaviorProfile.json"
+      ],
+      "why_not_promoted": "当前原G双向缺价/连续输入对照冲突为0；不足标志与局部依据分别表达。没有新证据推翻已批准修复和当前闭环，不重诊旧finding。",
+      "revisit_condition": "新同版结果/原输入证据直接推翻修复后coverage判定或读回绑定。",
+      "status": "OBSERVATION_NOT_PROMOTED"
+    }
+  ],
+  "candidate_case_index": [
+    {
+      "case_candidate_id": "D015-PEAK-INDEX-001",
+      "source_finding_id": "F-LIFE-PEAK-CONCURRENCY",
+      "symbol": [
+        "rb",
+        "hc",
+        "i"
+      ],
+      "start_time": "2021-11-10 14:25:00",
+      "end_time": "2021-11-11 13:35:00",
+      "object_ids": [
+        "1d0702bf-731b-43a7-b522-fb516dbedb1e",
+        "071e98f8-56b5-4146-a4c0-9ccee6d9f466"
+      ],
+      "related_events": [
+        {
+          "life": "1d0702bf-731b-43a7-b522-fb516dbedb1e",
+          "revision": "2341901e-1534-46bb-845f-322df8c8adc0",
+          "full_parent": [
+            "2021-10-27 09:10:00",
+            421,
+            0,
+            0
+          ],
+          "source_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/readback/tables/occurrences.csv",
+          "selection_reason": "首次峰值的最早/最晚准入代表，仅供D定位入口，不替代D全36Life对账。"
+        },
+        {
+          "life": "071e98f8-56b5-4146-a4c0-9ccee6d9f466",
+          "revision": "eb204326-2c35-4829-a81b-3ae099ea16a1",
+          "full_parent": [
+            "2021-11-10 14:25:00",
+            475,
+            0,
+            0
+          ],
+          "source_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/readback/tables/occurrences.csv",
+          "selection_reason": "首次峰值的最早/最晚准入代表，仅供D定位入口，不替代D全36Life对账。"
+        }
+      ],
+      "selection_reason": "Owner必评峰值的完整采样区间与最早/最晚准入代表定位入口；不是S1场景，D仍需取全部36Life。",
+      "required_fields": [
+        "完整Life/Revision/父坐标",
+        "峰时全部36Life及成员actual/known/age/最新观点/expiry/状态",
+        "create/revision/end/current口径与身份对账",
+        "统计/责任规则与准确源码配置"
+      ],
+      "full_peak_roster_not_substituted_by_representatives": true
+    }
+  ],
+  "diagnosis_input_adapters": [
+    {
+      "adapter_id": "F800-D015-DA-PEAK",
+      "finding_id": "F-LIFE-PEAK-CONCURRENCY",
+      "frozen_expectation": {
+        "expectation_id": "F-LIFE-PEAK-CONCURRENCY-OWNER-CONCERN-v1",
+        "version": "b8c2b513f0b08be6a1fa6782b71bf74a07faff0d",
+        "statement": "当前只有 rb、hc、i 三个品种；若这些 Life 表达当前仍有效或仍有业务维护意义的共同转折候选组，36 与该业务语义存在明显冲突风险。",
+        "origin": "OWNER_RAISED",
+        "owner_source_ref": "daowei2026/observe-iterate@4bf46f3fbe402915e3272e49a71dc94eac787c15:longrun/runs/OI-F800-STAT-20261122-01/owner-decisions/CONTINUE-20261123/OWNER_CONTINUE.original.txt",
+        "applicable_conditions": [
+          "只有在36表达仍有效或有维护意义的共同转折候选时，该Owner业务关切成立；先核实际口径。"
+        ],
+        "falsifier_or_counterevidence": [
+          "D证明统计/绑定口径误差并完成B及G更新",
+          "D逐Life证明互不等价且业务上合理，说明各组区别后可REJECTED_AS_NON_ISSUE"
+        ],
+        "boundary": "这里冻结Owner条件式关切；没有发明三品种固定Life数上限。"
+      },
+      "evidence_comparison_package": {
+        "comparison_id": "D015-PEAK-ECP",
+        "scenario_id": "GLOBAL_PROFILE",
+        "business_intent": "当前只有 rb、hc、i 三个品种；若这些 Life 表达当前仍有效或仍有业务维护意义的共同转折候选组，36 与该业务语义存在明显冲突风险。",
+        "expectation_id": "F-LIFE-PEAK-CONCURRENCY-OWNER-CONCERN-v1",
+        "expectation_version": "b8c2b513f0b08be6a1fa6782b71bf74a07faff0d",
+        "data_binding": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/FeatureRunResultBinding.json",
+        "time_basis": {
+          "calendar": "night_end_at_2300",
+          "timezone": "Asia/Shanghai",
+          "sampling": "5m",
+          "unit": "CalendarUTITick",
+          "ticks_per_open_minute": 120,
+          "actual": "原转折坐标",
+          "known": "selected/publication知识轴；原始事件与payload坐标分开",
+          "responsibility": "D008原闭区间[firstKnown,min(revisionEnd,sampleEnd)]",
+          "public_latest": "同Life取<=u的最新原生观点；公开字段持有投影，不是内部active实测",
+          "peak_duration": "60个5m位置的采样占用300开放分钟，非300分钟独立事件或墙钟持续"
+        },
+        "parameter_version": "b72095ff100da926474701b74bff7586a74b9770bc81cadc34c23cfe223e5cb3",
+        "evidence_items": [
+          {
+            "evidence_id": "D015-PEAK-E1",
+            "source": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/profile/SUMMARY.json",
+            "location": "peak_responsibility_active_lives；ST12定义见原StatisticDefinitions",
+            "actual_time": null,
+            "confirm_time": "2021-11-10 14:25:00",
+            "evidence_status": "SUPPORTS",
+            "observation": "已接受D008正式G报告峰值36；本补充以相同责任闭区间在49683个Calendar位置复核为36。",
+            "interpretation": "支持Owner引用的统计现象；旧字段名含active不构成内部active证明。",
+            "alternative_explanations": [
+              "有限责任内的不同历史实际问题可能同时存在",
+              "统计口径与业务有效性需要D核实"
+            ],
+            "data_quality": "当前39f/完整参数/同一D008结果；非旧ac/be57或默认F6。"
+          },
+          {
+            "evidence_id": "D015-PEAK-E2",
+            "source": "ConcurrencyProfile.json",
+            "location": "peak_runs/first_peak_other_metrics/incremental/concurrency_segments.csv",
+            "actual_time": null,
+            "confirm_time": "2021-11-10 14:25:00",
+            "evidence_status": "SUPPORTS",
+            "observation": "2021-11-10 14:25至2021-11-11 13:35，60个采样位置达到36；首次峰值含27 Open、9 Subsumed，36均Supported且公开dutyClosed=0。同期历史累计为211，闭/半开责任投影均36。",
+            "interpretation": "并非只引用三年历史累计总量或一个孤立端点；值得诊断其维护语义。不是36个均应删除的证明。",
+            "alternative_explanations": [
+              "不同原actual问题/不同真实成员组合可产生合法并发",
+              "Subsumed可仍在修订责任内"
+            ],
+            "data_quality": "原Calendar与稀疏公开观点的全范围采样；没有内部逐tick集合。"
+          },
+          {
+            "evidence_id": "D015-PEAK-E3",
+            "source": "IncrementalSemanticChecks.json",
+            "location": "same_life_member_identity_stability/duplicate_natural_candidate_identity",
+            "actual_time": null,
+            "confirm_time": null,
+            "evidence_status": "SUPPORTS",
+            "observation": "480 Life跨1538观点的成员身份稳定；同完整成员身份+原a/d/r的跨Life重复为0；CoveredBy242及Overlaps219语义补查均0冲突。",
+            "interpretation": "当前公开结构没有直接证明重复Life/身份漂移；这不能替代Owner并发业务意义判断或关闭候选。",
+            "alternative_explanations": [
+              "大量互不等价的有限问题可能合法",
+              "不重复仍可能业务维护不合宜；需D核实"
+            ],
+            "data_quality": "完整Turn引用和父坐标，无UUID浮点转换。"
+          },
+          {
+            "evidence_id": "D015-PEAK-E4",
+            "source": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/CurrentFeatureUnderstandingPackage.json",
+            "location": "BO3/ST4/J5及unconfirmed_items",
+            "actual_time": null,
+            "confirm_time": null,
+            "evidence_status": "MISSING",
+            "observation": "公开latest/Open/duty字段不是CandidateState内部active逐tick轨迹；本G没有取完整36Life逐项责任定位。",
+            "interpretation": "D须先LogicLocalization，厘清口径并核峰值全部Life、对账与责任逻辑；当前不确认根因。",
+            "alternative_explanations": [
+              "内部活跃集合与责任投影可能一致或有不同持有语义，不能据名称猜测"
+            ],
+            "data_quality": "公开可读部分充分形成候选，内部事实及最终业务判断未完成。"
+          }
+        ],
+        "judgment": "DIAGNOSIS_REQUIRED：统计观察已确认且Owner必评；业务冲突/根因/处理类型未确定。",
+        "applicability_boundary": "当前39f完整D008结果及本G公开投影；不以数量判错，不替代D。",
+        "confidence": {
+          "statistical_observation": "HIGH",
+          "business_defect": "UNDETERMINED"
+        },
+        "next_action": "先LogicLocalization，再决定M/B/关闭或未决。"
+      },
+      "business_intent_ref": "daowei2026/observe-iterate@4bf46f3fbe402915e3272e49a71dc94eac787c15:longrun/runs/OI-F800-STAT-20261122-01/owner-decisions/CONTINUE-20261123/OWNER_CONTINUE.original.txt",
+      "processing_chain_ref": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/CurrentFeatureUnderstandingPackage.json#processing_relations/R2,R3,R4",
+      "relevant_code_or_requirement_refs": [
+        "daowei2026/observe-iterate@4bf46f3fbe402915e3272e49a71dc94eac787c15:longrun/runs/OI-F800-STAT-20261122-01/owner-decisions/CONTINUE-20261123/OWNER_CONTINUE.original.txt",
+        "daowei2026/observe-iterate@b8c2b513f0b08be6a1fa6782b71bf74a07faff0d:task-inputs/wall-f-parallel-closure-20261122/F_CURRENT_RUN_CONTINUATION.md",
+        "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/FRP_SOURCE_BINDING.json",
+        "daowei2026/frp@39f02ec4548e68ba8dbd30061afc870546000994:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateEvolution.hs",
+        "daowei2026/frp@39f02ec4548e68ba8dbd30061afc870546000994:src/Frp/Instance/ISL/Opportunity/U2/GroupCandidateDecisions.hs"
+      ],
+      "relevant_ref_role": "相关处理链及版本索引，尚未作为责任代码定位；本G未查源码根因。",
+      "data_binding_and_time_basis": {
+        "feature_run_result_binding": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/FeatureRunResultBinding.json",
+        "parameter_version": "b72095ff100da926474701b74bff7586a74b9770bc81cadc34c23cfe223e5cb3",
+        "time_basis": {
+          "calendar": "night_end_at_2300",
+          "timezone": "Asia/Shanghai",
+          "sampling": "5m",
+          "unit": "CalendarUTITick",
+          "ticks_per_open_minute": 120,
+          "actual": "原转折坐标",
+          "known": "selected/publication知识轴；原始事件与payload坐标分开",
+          "responsibility": "D008原闭区间[firstKnown,min(revisionEnd,sampleEnd)]",
+          "public_latest": "同Life取<=u的最新原生观点；公开字段持有投影，不是内部active实测",
+          "peak_duration": "60个5m位置的采样占用300开放分钟，非300分钟独立事件或墙钟持续"
+        },
+        "current_professional_control_commit": "b8c2b513f0b08be6a1fa6782b71bf74a07faff0d",
+        "readiness": "StatisticsInputReadiness.json",
+        "calendar_source": "CALENDAR_SOURCE_READBACK.json"
+      },
+      "required_diagnostic_order": "按Owner第五节/接续输入§5及原D Skill先LogicLocalization；完整36Life及源码责任点留D执行。",
+      "owner_required_D_scope_ref": "daowei2026/observe-iterate@4bf46f3fbe402915e3272e49a71dc94eac787c15:longrun/runs/OI-F800-STAT-20261122-01/owner-decisions/CONTINUE-20261123/OWNER_CONTINUE.original.txt#五、候选进入D后的要求",
+      "diagnosis_performed": false
+    }
+  ],
+  "gate": {
+    "status": "DIAGNOSIS_REQUIRED",
+    "reasons": [
+      "当前高置信发现补充及队列快照已完成。",
+      "F-LIFE-PEAK-CONCURRENCY为Owner必评候选，统计现象实核且已PROMOTED进D，最终业务判断未完成。",
+      "当前没有新行为改变；不要求机械重跑三年Feature，不签FeatureRelease。"
+    ],
+    "valid_profile_ref": "GlobalBehaviorProfile.json",
+    "queue_snapshot_ref": "CandidateFindingQueue.json",
+    "source_summary_ref": "FindingDiscoverySummary.json",
+    "run_binding": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/FeatureRunResultBinding.json",
+    "professional_control_commit": "b8c2b513f0b08be6a1fa6782b71bf74a07faff0d",
+    "next_action": "原manager消费本回交后按新Q一次取一个finding签原D，Owner候选先LogicLocalization；再决定B/M/关闭或未决。",
+    "feature_release_allowed": false,
+    "rerun_feature_now": false
+  },
+  "professional_control_commit": "b8c2b513f0b08be6a1fa6782b71bf74a07faff0d"
+}

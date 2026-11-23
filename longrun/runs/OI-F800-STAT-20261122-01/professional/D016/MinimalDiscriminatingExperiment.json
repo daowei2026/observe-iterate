@@ -1,0 +1,52 @@
+{
+  "experiment_id": "F800-D016-MDE-01",
+  "finding_id": "F-LIFE-PEAK-CONCURRENCY",
+  "scope": "DIAGNOSTIC_ONLY",
+  "executed_checks": [
+    {
+      "check_id": "C1",
+      "status": "EXECUTED",
+      "method": "直接读取已有中间结果",
+      "evidence": [
+        "Peak36LifeDetails.json",
+        "Peak36RevisionHistory.json",
+        "PeakWindowReconciliation.json"
+      ],
+      "result": "全36完整，不以两个代表替代"
+    },
+    {
+      "check_id": "C2",
+      "status": "EXECUTED",
+      "method": "精确源码与实际加载源码比较，沿处理链定位",
+      "evidence": [
+        "CURRENT_SOURCE_AUDIT.json",
+        "LogicLocalization.json"
+      ],
+      "result": "9文件字节一致；枚举/保留责任条件已定位"
+    },
+    {
+      "check_id": "C3",
+      "status": "EXECUTED",
+      "method": "真实Subset/Superset、老波次/新波次、r前/r同刻对照",
+      "evidence": [
+        "DiscriminatingCheckResults.json"
+      ],
+      "result": "9覆盖对、32跨后续Turn、59/1边界差异"
+    },
+    {
+      "check_id": "C4",
+      "status": "EXECUTED_DIAGNOSTIC_ONLY",
+      "method": "固定原36的门槛代数；不重跑/不标定",
+      "evidence": [
+        "DiscriminatingCheckResults.json"
+      ],
+      "result": "K6拒33准入、峰首0，显示缩K会同时改变准入与保留，不能以减数作为成功目标"
+    }
+  ],
+  "source_refs": [
+    "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/FeatureRunResultBinding.json"
+  ],
+  "additional_native_replay_required_now": false,
+  "why_no_full_rerun": "既有原生成员/期限/身份链和精确代码已区分统计误差、重复与有界保留机制。当前剩余是用途取舍；重复三年相同实例不会替Owner选择。",
+  "unresolved_fact_boundary": "native逐tick内部trace未直接暴露，但已用normal-path状态规则和完整闭合观点重建；未将重建冒充实测。若后续外部证据反驳这些前提，才需隔离少量tick实测。"
+}

@@ -1,0 +1,222 @@
+{
+  "summary_id": "F800-D015-FINDING-DISCOVERY-v1",
+  "feature_ref": {
+    "frp": "daowei2026/frp@39f02ec4548e68ba8dbd30061afc870546000994",
+    "tis": "daowei2026/tis@2f460d663d821cf2ba25555eda13e78b697d0767"
+  },
+  "run_binding": "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/FeatureRunResultBinding.json",
+  "professional_control_commit": "b8c2b513f0b08be6a1fa6782b71bf74a07faff0d",
+  "business_surfaces_reviewed": [
+    {
+      "surface": "原行情/上游资格到共同候选的转化",
+      "why_applicable": "F共同对象依赖已选具体Turn，必须使用独立上游分母而非成员关系行数。",
+      "evidence_refs": [
+        "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/GlobalBehaviorProfile.json#candidate_profile",
+        "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/profile/first_block_reference_by_symbol.csv"
+      ],
+      "candidate_finding_refs": [],
+      "observation_refs": [
+        "D015-O01-SELECTED-CONVERSION"
+      ],
+      "assessment_complete": true
+    },
+    {
+      "surface": "候选身份与跨Revision成员连续性",
+      "why_applicable": "BO3身份由原问题及具体Turn集合限定；公开Life与Revision必须分开。",
+      "evidence_refs": [
+        "IncrementalSemanticChecks.json",
+        "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/profile/STRUCTURAL_CHECKS.json"
+      ],
+      "candidate_finding_refs": [],
+      "observation_refs": [],
+      "assessment_complete": true
+    },
+    {
+      "surface": "主输出、publication与正式引用自洽",
+      "why_applicable": "O3包装与O4观点不同单位，同刻ordinal/前版/成员/参与引用必须闭合。",
+      "evidence_refs": [
+        "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/GlobalBehaviorProfile.json#event_profile",
+        "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/profile/STRUCTURAL_CHECKS.json"
+      ],
+      "candidate_finding_refs": [],
+      "observation_refs": [
+        "D015-O07-PUBLICATION-DENSITY"
+      ],
+      "assessment_complete": true
+    },
+    {
+      "surface": "局部依据、coverage与三种责任/终止状态",
+      "why_applicable": "BO3有独立状态轴，有限观察/修订/交接责任不能混作市场寿命。",
+      "evidence_refs": [
+        "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/GlobalBehaviorProfile.json#state_occupancy_profile",
+        "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/profile/lifecycles.csv",
+        "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/FindingDisposition.json"
+      ],
+      "candidate_finding_refs": [],
+      "observation_refs": [
+        "D015-O05-LIFECYCLE-AND-SELF-TRANSITIONS",
+        "D015-O08-COVERAGE-REGRESSION"
+      ],
+      "assessment_complete": true
+    },
+    {
+      "surface": "共享成员、覆盖/重叠及多组解释",
+      "why_applicable": "R4保留各自Life，不能把组合数当独立行情数或默认合并。",
+      "evidence_refs": [
+        "IncrementalSemanticChecks.json",
+        "MemberCombinationStrata.json"
+      ],
+      "candidate_finding_refs": [],
+      "observation_refs": [
+        "D015-O04-RELATION-MULTIPLICITY"
+      ],
+      "assessment_complete": true
+    },
+    {
+      "surface": "actual/几何confirm/selected知识的时间关系",
+      "why_applicable": "F新准入和有限责任依赖分开的实际与知识轴。",
+      "evidence_refs": [
+        "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/profile/latency_by_symbol.csv",
+        "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/GlobalBehaviorProfile.json#lifecycle_profile"
+      ],
+      "candidate_finding_refs": [],
+      "observation_refs": [
+        "D015-O03-LATE-ADMISSION"
+      ],
+      "assessment_complete": true
+    },
+    {
+      "surface": "责任内并发与历史累计/公开状态的口径",
+      "why_applicable": "Owner明确指定并发36；当前责任内计数不是历史累计，亦不能冒充native active。",
+      "evidence_refs": [
+        "ConcurrencyProfile.json",
+        "CALENDAR_SOURCE_READBACK.json"
+      ],
+      "candidate_finding_refs": [
+        "F-LIFE-PEAK-CONCURRENCY"
+      ],
+      "observation_refs": [],
+      "assessment_complete": true
+    },
+    {
+      "surface": "品种/知识年份/Session和开盘分层",
+      "why_applicable": "共同资格与上游节奏可能因品种/时期不同；全局均值不可遮蔽差异。",
+      "evidence_refs": [
+        "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/GlobalBehaviorProfile.json#cross_symbol_profile",
+        "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/profile/cross_strata_comparison.csv",
+        "MemberCombinationStrata.json",
+        "ConcurrencyProfile.json"
+      ],
+      "candidate_finding_refs": [],
+      "observation_refs": [
+        "D015-O01-SELECTED-CONVERSION",
+        "D015-O02-PERIOD-SESSION-DENSITY"
+      ],
+      "assessment_complete": true
+    },
+    {
+      "surface": "理由/分支适用性与未暴露处理环节",
+      "why_applicable": "正常KLine输入域限制分支可见性，不因零次数自动判失败。",
+      "evidence_refs": [
+        "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/profile/branch_reachability.csv",
+        "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/profile/required_reasons.csv",
+        "daowei2026/observe-iterate@d4f9fefaa67f9f22f540fa35a7da79cbbdf831ca:longrun/runs/OI-F800-STAT-20261122-01/professional/D008/CurrentFeatureUnderstandingPackage.json#unconfirmed_items"
+      ],
+      "candidate_finding_refs": [],
+      "observation_refs": [
+        "D015-O06-REACHABILITY"
+      ],
+      "assessment_complete": true
+    }
+  ],
+  "owner_raised_candidates": [
+    {
+      "finding_id": "F-LIFE-PEAK-CONCURRENCY",
+      "assessment_status": "PROMOTED",
+      "current_status": "CANDIDATE",
+      "current_confidence": "OWNER_CONCERN",
+      "must_assess_before_release": true,
+      "evidence_refs": [
+        "ConcurrencyProfile.json",
+        "GlobalFindingCandidates.json"
+      ],
+      "assessment_meaning": "本G已确认统计现象并决定进入D；尚未完成Owner要求的最终判断，不能释放。"
+    }
+  ],
+  "high_confidence_candidate_refs": [
+    "F-LIFE-PEAK-CONCURRENCY"
+  ],
+  "observations_not_promoted": [
+    {
+      "observation_id": "D015-O01-SELECTED-CONVERSION",
+      "observation": "i已选1004、参加236；rb324/425、hc315/430。独立参考筛查中i759无2Δ内其他对象、9关系否决；627合资格非否决参考边未见缺组。",
+      "why_not_promoted": "共同对象不承诺每个单品种转折有组；分母和参考筛查可解释当前差异，没有已确认应入而未入的业务反例。参考不是原生首阻断/全市场真值。",
+      "revisit_condition": "新证据给出当前资格成立且应入组的具体原上游对象，或参考筛查适用/绑定被推翻。"
+    },
+    {
+      "observation_id": "D015-O02-PERIOD-SESSION-DENSITY",
+      "observation": "2021/2022/2023首次Life=244/162/74，Revision/千位置=46.69/31.16/14.98；日夜约30.72/31.41，开盘50.91高于其余29.07。",
+      "why_not_promoted": "分母为各层真实Calendar位置；上游活动和知识节奏不同，没有数量配额或环境真值，不能将分层差异自动判错。",
+      "revisit_condition": "差异与可靠业务资格/事件缺失或身份冲突联结，形成明确而可复核的业务矛盾。"
+    },
+    {
+      "observation_id": "D015-O03-LATE-ADMISSION",
+      "observation": "469/480 Life首次准入晚于旧6Δ参考，最大准入actual年龄1665开放分钟；800对应4000开放分钟，原责任、修订尾30和handoff尾90分列。",
+      "why_not_promoted": "旧6Δ不是当前业务真值，晚知道不自动否定历史共同峰，也不证明800有用；缺下游效用/可用延迟判据。该观察不关闭并发Owner候选。",
+      "revisit_condition": "Owner给定效用目标或出现已知/实际轴冲突及明确应保留/排除事实时重新评估。"
+    },
+    {
+      "observation_id": "D015-O04-RELATION-MULTIPLICITY",
+      "observation": "全量CoveredBy242、Overlaps219；本补充严格超集/同问题/支持及共享具体Turn检查无冲突。首次峰36含22两成员、14三成员、27个actual锚点。",
+      "why_not_promoted": "候选组合/责任问题数与独立市场峰谷数不同，结构关系有合法解释，未见同完整自然身份重复；并发业务维护意义仍由F-LIFE-PEAK-CONCURRENCY独立诊断，不因此关闭。",
+      "revisit_condition": "出现同准确身份重复、无共享Turn重叠、非严格超集覆盖或D确认无业务维护意义。"
+    },
+    {
+      "observation_id": "D015-O05-LIFECYCLE-AND-SELF-TRANSITIONS",
+      "observation": "480 Life中479最终duty关闭，1样本末右删失；ClosedSupported→ClosedSupported 407条，Subsumed→Subsumed162条，原G无责任关闭后更新或closed重开。",
+      "why_not_promoted": "状态标签自环可包含责任/关系/覆盖变化；观察终止不等于修订责任终止。右删失不当未正常结束，不能仅凭标签自环判多余发行。",
+      "revisit_condition": "出现完全无业务正文/决定变化的重复发行证据、终结后更新或样本末以后应结束仍未结束的实际事实。"
+    },
+    {
+      "observation_id": "D015-O06-REACHABILITY",
+      "observation": "Supported1535/1538、Incomplete3；Contradicted/Withdrawn/EndedByScope未在本实例观察。初始不足方向/类型/Bend各9条Required未决，未被零值填充。",
+      "why_not_promoted": "正常KLine路径没有framePatches/scopeEnded适用输入，零次数不证明分支无用或逻辑不可达。Supported也不等于全窗coverage或业务机会正确。",
+      "revisit_condition": "新的真实适用输入出现但相应分支/理由仍缺失，或不足被无证据提升。"
+    },
+    {
+      "observation_id": "D015-O07-PUBLICATION-DENSITY",
+      "observation": "1538 Revision occurrence、1217 publication（含1定义专用），30.956 Revision/千共享Calendar位置；多组观点可共享一次publication。",
+      "why_not_promoted": "事件包装、Revision和Life是不同计数单位，当前全局密度不是逐Tick发射；27项原结构/引用/顺序检查均0冲突，无正式载体不自洽的新事实。",
+      "revisit_condition": "给出同对象同刻不同载体相互冲突、非法顺序或无意义逐拍发行的准确反例。"
+    },
+    {
+      "observation_id": "D015-O08-COVERAGE-REGRESSION",
+      "observation": "当前coverageIncomplete16观点/12Life；完整标记1522观点；GF001/002在当前正式结果保持CLOSED_ON_LATEST_PROFILE。",
+      "why_not_promoted": "当前原G双向缺价/连续输入对照冲突为0；不足标志与局部依据分别表达。没有新证据推翻已批准修复和当前闭环，不重诊旧finding。",
+      "revisit_condition": "新同版结果/原输入证据直接推翻修复后coverage判定或读回绑定。"
+    }
+  ],
+  "remaining_unreviewed_surfaces": [
+    {
+      "surface": "内部每tick active集合、准入/枚举/首阻断及原生连续coverage轨迹",
+      "why_not_reviewed": "当前公开运行结果NOT_EXPOSED；只有明确限域的上游参考筛查和稀疏观点。",
+      "effect_on_current_gate": "不妨碍公开事实发现及形成队列；不能据公开投影直接Release。Owner候选D若仍证据不足须保留未决。"
+    },
+    {
+      "surface": "撤回、Clock修订、scopeEnded等本实例未给适用输入的分支",
+      "why_not_reviewed": "无真实适用输入，不能用代码内变量冒充实测或自行变更生产输入。",
+      "effect_on_current_gate": "保留未覆盖边界，不制造分支不可达finding。"
+    },
+    {
+      "surface": "Rct未暴露的全部原始市场局部转折真值与独立环境状态",
+      "why_not_reviewed": "现有分母不包含全部潜在市场真值，未提供可靠牛熊/活跃环境标签；本D复用指定范围，不扩展另造真值。",
+      "effect_on_current_gate": "不外推全量无漏报或800全面合理；当前高置信发现的边界明确。"
+    }
+  ],
+  "why_current_discovery_pass_is_sufficient": "沿BO1→BO2→J1/J2/J3→BO3→状态/责任→O4/O3及R4关系逐面复用当前有效全量/分层事实，并补并发/成员自然身份/覆盖重叠语义。Owner首候选之后仍完成其余适用业务面评估；无以固定指标表穷尽或自动阈值判错。当前可见材料未支持另一个明确值得升级的冲突；不可见部分如实列明。",
+  "discovery_pass_complete": true,
+  "first_candidate_did_not_stop_discovery": true,
+  "queue_snapshot_id": "F800-D015-CURRENT-RESULT-QUEUE-v1",
+  "no_logic_localization_performed": true,
+  "created_at": "2026-11-23T16:05:58.425391+00:00"
+}
