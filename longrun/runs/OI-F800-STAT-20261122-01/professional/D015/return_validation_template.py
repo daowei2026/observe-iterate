@@ -63,7 +63,10 @@ assert Q['professional_control_commit']==PIN and S['discovery_pass_complete'] an
 assert len(Q['candidates'])==1 and Q['candidates'][0]['finding_id']=='F-LIFE-PEAK-CONCURRENCY'
 assert Q['candidates'][0]['status']=='CANDIDATE' and Q['candidates'][0]['must_assess_before_release']
 adoption=load(RECORD/PREFIX/'PROFESSIONAL_CONTROL_ADOPTION.json')
-assert adoption==packet['professional_control_adoption'] and adoption['professional_control_commit']==PIN
+# packet在已发布采用原件上附带物理来源信息；核原件全部字段，不将附加字段误判为原件漂移。
+assert all(packet['professional_control_adoption'].get(k)==v for k,v in adoption.items())
+assert adoption['professional_control_commit']==PIN
+assert (RECORD/PREFIX/'PROFESSIONAL_CONTROL_ADOPTION.json').read_bytes()==git('show','4bf46f3fbe402915e3272e49a71dc94eac787c15:'+PREFIX+'/PROFESSIONAL_CONTROL_ADOPTION.json')
 sources=load(LOCAL/'SOURCE_REF_AUDIT.json')
 assert sources['count']==47 and sources['all_git_objects_match'] and sources['adopted_snapshot_matches']
 changes=git('diff','--name-only','-z',INITIAL,RESULT).decode().rstrip('\0').split('\0')
