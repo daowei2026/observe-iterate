@@ -1,0 +1,44 @@
+{
+  "schema": "observe-iterate-run-resource/v1",
+  "run_id": "OI-EAW-P1-ATTACK-STAT-20261124-01",
+  "owner_go_ref": "daowei2026/observe-iterate@b912f85368fed916c45603c81aa8ef304bc146b6:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/OWNER_START.md",
+  "owner_declared_linux_workspace": "/dwdhome/fy/BASE_E6_2_copy",
+  "worker_host": "linux",
+  "verified_realpath": "/dwdhome/fy/BASE_E6_2_copy",
+  "verified_on_worker_host": true,
+  "verification_evidence_ref": "daowei2026/observe-iterate@16a40c67ee5c63db853a9f27a8a210a13bb6526b:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/WORKSPACE_VERIFICATION.md",
+  "actual_worker_thread_binding_ref": null,
+  "adopted_source_refs": [
+    "daowei2026/observe-iterate@9877826236e0995e7255e6cbfedc2d1b89dea6da:longrun/contracts/LONGRUN_PROTOCOL_V2.md",
+    "daowei2026/observe-iterate@9877826236e0995e7255e6cbfedc2d1b89dea6da:longrun/CODEX_NATIVE_EXECUTION_PROFILE.md",
+    "daowei2026/observe-iterate@9877826236e0995e7255e6cbfedc2d1b89dea6da:task-inputs/eaw-p1-attack-stat-20261124/ATTACK_RUN_INPUT.md",
+    "daowei2026/cgpterm@815c505c1cc3d965aaafa831d23c4c88368cb70a:.agents/skills/observe-iterate-longrun-v2-codex-native-controller/SKILL.md"
+  ],
+  "external_write_targets": [
+    {
+      "execution_context": "/dwdhome/fy/BASE_E6_2_copy",
+      "allowed_writes": [
+        "/dwdhome/fy/BASE_E6_2_copy"
+      ],
+      "single_writer": "Owner释放信息已与旧F/Q/V写者对账；独立于Build工作区；本Run仅E1生产，共享DB/cache写面沿既有生产互斥逐操作核定。"
+    },
+    {
+      "execution_context": "daowei2026/tis:codex/oi-eaw-p1-attack-fix-20261124-01",
+      "allowed_writes": [
+        "hf/prel0/attack_flow_assembler.py",
+        "hf/prel0/attack_flow_assembler_core.py",
+        "Attack对应测试与专属参数/业务常量"
+      ],
+      "single_writer": "新本地修复分支以179016起步，原保存分支保留；仅E1可按诊断与Owner授权改Attack自身，不写原Wall或Build分支。"
+    },
+    {
+      "execution_context": "daowei2026/observe-iterate:codex/oi-eaw-p1-attack-stat-20261124-01",
+      "allowed_writes": [
+        "longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/",
+        "longrun/controller/RUN_REGISTRY.json"
+      ],
+      "single_writer": "controller/manager/E1按实际C依次条件提交本Run路径，不覆盖Build记录，不force push。"
+    }
+  ],
+  "notes": "CODEX_NATIVE_DIRECT/AUTONOMOUS/workers=[]；准确Wall/F4技术receipts和正式完整参数/读回尚待executor核实，允许合法物化，不代表上游合理性Release。"
+}

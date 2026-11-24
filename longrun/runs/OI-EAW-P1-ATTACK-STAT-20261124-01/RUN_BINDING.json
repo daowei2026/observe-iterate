@@ -1,0 +1,50 @@
+{
+  "schema": "longrun-binding/v2",
+  "run_id": "OI-EAW-P1-ATTACK-STAT-20261124-01",
+  "work_id": "OI-EAW-P1-ATTACK-STAT",
+  "owner_go_ref": "daowei2026/observe-iterate@b912f85368fed916c45603c81aa8ef304bc146b6:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/OWNER_START.md",
+  "coordinator": "codex:OI-EAW-P1-ATTACK-STAT-20261124-01:controller",
+  "manager": "codex:OI-EAW-P1-ATTACK-STAT-20261124-01:manager",
+  "executors": [
+    "codex:OI-EAW-P1-ATTACK-STAT-20261124-01:executor:E1"
+  ],
+  "workers": [],
+  "post_start_owner_policy": "AUTONOMOUS",
+  "grants": [
+    {
+      "operation": "eaw-attack-execute-and-profile",
+      "execution_context": "/dwdhome/fy/BASE_E6_2_copy",
+      "allowed_writes": [
+        "/dwdhome/fy/BASE_E6_2_copy"
+      ],
+      "authority_quote": "operation=eaw-attack-execute-and-profile execution_context=/dwdhome/fy/BASE_E6_2_copy allowed_writes=/dwdhome/fy/BASE_E6_2_copy"
+    },
+    {
+      "operation": "eaw-attack-repair-and-publish",
+      "execution_context": "/dwdhome/fy/BASE_E6_2_copy",
+      "allowed_writes": [
+        "/dwdhome/fy/BASE_E6_2_copy",
+        "daowei2026/tis:codex/oi-eaw-p1-attack-fix-20261124-01",
+        "daowei2026/observe-iterate:codex/oi-eaw-p1-attack-stat-20261124-01"
+      ],
+      "authority_quote": "operation=eaw-attack-repair-and-publish execution_context=/dwdhome/fy/BASE_E6_2_copy allowed_writes=/dwdhome/fy/BASE_E6_2_copy,daowei2026/tis:codex/oi-eaw-p1-attack-fix-20261124-01,daowei2026/observe-iterate:codex/oi-eaw-p1-attack-stat-20261124-01"
+    },
+    {
+      "operation": "eaw-attack-controller-run-records",
+      "execution_context": "github:daowei2026/observe-iterate:codex/oi-eaw-p1-attack-stat-20261124-01",
+      "allowed_writes": [
+        "longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/",
+        "longrun/controller/RUN_REGISTRY.json"
+      ],
+      "authority_quote": "operation=eaw-attack-controller-run-records execution_context=github:daowei2026/observe-iterate:codex/oi-eaw-p1-attack-stat-20261124-01 allowed_writes=longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/,longrun/controller/RUN_REGISTRY.json"
+    },
+    {
+      "operation": "eaw-attack-controller-chat-archive",
+      "execution_context": "github:daowei2026/observe-iterate:feat/statistics-driven-feature-closure-v0.3-20261122",
+      "allowed_writes": [
+        "longrun/controller/chats/"
+      ],
+      "authority_quote": "operation=eaw-attack-controller-chat-archive execution_context=github:daowei2026/observe-iterate:feat/statistics-driven-feature-closure-v0.3-20261122 allowed_writes=longrun/controller/chats/"
+    }
+  ]
+}
