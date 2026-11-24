@@ -1,51 +1,44 @@
 # BUSINESS_PROGRESS｜AttackSegment 统计驱动闭环
 
-## 当前任务与真实业务位置
+## 当前业务位置
 
-目标仍为 EAW P1 AttackFlowAssembler 当前默认实例，在 rb、m 的 2021 全年正式市场范围完成统计驱动闭环。[唯一业务输入](https://github.com/daowei2026/observe-iterate/blob/9877826236e0995e7255e6cbfedc2d1b89dea6da/task-inputs/eaw-p1-attack-stat-20261124/ATTACK_RUN_INPUT.md)、TIS `179016111ed0394f92025313e46bd13534932a74` 和专业控制 `9877826236e0995e7255e6cbfedc2d1b89dea6da` 均不变。
+目标仍为 EAW P1 AttackFlowAssembler 默认实例，在 rb、m 的 2021 全年正式市场范围完成统计驱动闭环。[唯一业务输入](https://github.com/daowei2026/observe-iterate/blob/9877826236e0995e7255e6cbfedc2d1b89dea6da/task-inputs/eaw-p1-attack-stat-20261124/ATTACK_RUN_INPUT.md)、TIS `179016111ed0394f92025313e46bd13534932a74`、专业控制 `9877826236e0995e7255e6cbfedc2d1b89dea6da` 与正式参数、SOF、日历均未改变。
 
-本轮已有 rb 三产品 35 表严格读回资格；m Wall 已在当前原生 m 上下文、源时间轴和 source_scope 下完成 5 表、receipt、PPID 和源码指纹的只读复用核验。m 两组 F4 在真实执行中均失败，m Attack 尚未启动。
+原 E1 已完成本项诊断：当前 m 上游输入轴与交易日分块合同不能共同满足正式 F4 运行。完整 X 仍缺 m 的两组 F4、Attack 三产品及严格读回，后续全量统计与 Feature 释放尚未成立。原 U 保持 PARTIAL，父 Run 保持 IN_PROGRESS。
 
-当前绑定为 `INCOMPLETE_WITH_RECORDED_ENGINEERING_GAP`，`formal_complete=false`、`eligible_for_G=false`。原 U 保持 PARTIAL，完整 rb/m X、G 和 Feature 释放均未完成。当前专业责任尚未诊断，下一项由原 E1 执行已存在的偏差诊断 Skill。
+## 本轮查明了什么
 
-## 当前有效成果与失败边界
+此前 m 交易集遗漏已在真实运行中补正，Wall 也已通过完整复用核验；两组 F4 随后实际遇到同一交易日覆盖错误。[原生诊断](https://github.com/daowei2026/observe-iterate/blob/28e8764aab3ce050b6167ad093bbe087574523d3/longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/professional_results/D003/C0011/DiagnosisReport.md)进一步确认：半秒输入轴保留了 4 个不属于任何原生交易日区间的时段首条空报价行，覆盖检查因此在逐 chunk F4 业务计算前失败。首处为 2021-03-11 21:00:00.500，输入位置 1792800，而下一交易日区间从位置 1792801 开始。
 
-| 对象／材料 | 当前事实与用途 | 入口 |
+E1 的真实数据正反对照支持这一直接因果；当前已暴露业务参数及已核数值常量不能改变该覆盖关系。责任定位限于上游输入适配与分块合同衔接，没有判定某个源数据写入者、F4 业务 core 或具体比较式有错，也未指认必须改哪一个文件。
+
+仅在内存去 4 行后 planner 通过 243 日，仍属诊断对照。原输入 9,959,400 行、去 4 行诊断轴 9,959,396 行与现有 Wall 去 17 行轴 9,959,383 行不可混用；该对照不能证明 F4、Attack 或完整统计成功。m Attack 尚未启动。
+
+## 仍有效的成果与保留材料
+
+| 材料 | 当前用途与边界 | 原件 |
 |---|---|---|
-| 原 U | PARTIAL，核心业务对象、处理链、参数及字段布局可追溯，具名未知与 NOT_EXPOSED 保留 | [原 U 包](https://github.com/daowei2026/observe-iterate/blob/758c77a566672a4514cbff6d3f26236769d17b59/longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/professional_results/D001/FeatureUnderstandingPackage.json) |
-| rb 三产品与技术上游 | 沿 C0007 已核当前结果保留；三产品 35 表经 R01 完整只读重算和按列名全量读回有效，既有元数据未变 | [当前完整绑定](https://github.com/daowei2026/observe-iterate/blob/d3e05b73fd2a6fcc3b3b5d248bdd61f11e8f7a34/longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/professional_results/D002/C0009/FeatureRunResultBinding.json) |
-| m Wall | 本次完整只读复用核验通过，未重产 Wall／rb；当前源轴和 source_scope 已核 | 同一绑定及 [C0009 报告](https://github.com/daowei2026/observe-iterate/blob/d3e05b73fd2a6fcc3b3b5d248bdd61f11e8f7a34/longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0009/EXECUTOR_REPORT.md) |
-| m tactical／structural F4 | 两者均实际执行，在原生交易日 chunk 校验报错；没有完整结果、成功 receipt 或严格读回资格 | 同一绑定及原异常链 |
-| m Attack | 缺少有效 F4，未启动，目标目录不存在 | 同一绑定 |
-| 失败半成品 | 两组目录共 12 个 DBA，677,239,968 字节；仅为被冻结的失败 effects，不是有效 F4 或 G 输入 | [逐文件失败清单](https://github.com/daowei2026/observe-iterate/blob/d3e05b73fd2a6fcc3b3b5d248bdd61f11e8f7a34/longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/professional_results/D002/C0009/evidence/failed_F4_effect_manifest.json) |
+| 原 U | PARTIAL；处理链、对象、参数与具名未知继续保留，未自动升级为完成 | [U 包](https://github.com/daowei2026/observe-iterate/blob/758c77a566672a4514cbff6d3f26236769d17b59/longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/professional_results/D001/FeatureUnderstandingPackage.json) |
+| rb 三产品及技术上游 | 既有三产品 35 表严格读回资格保留，未重新生产 | [现有 X 绑定](https://github.com/daowei2026/observe-iterate/blob/d3e05b73fd2a6fcc3b3b5d248bdd61f11e8f7a34/longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/professional_results/D002/C0009/FeatureRunResultBinding.json) |
+| m Wall | 既有 5 表、receipt、PPID、当前源轴与 source_scope 的完整复用核验资格保留 | 同一 X 绑定 |
+| m 两组 F4 与 Attack | F4 实际失败，无成功 receipt 或完整读回；Attack 未启动，完整 X/G 不具备条件 | [真实 X 回交](https://github.com/daowei2026/observe-iterate/blob/d3e05b73fd2a6fcc3b3b5d248bdd61f11e8f7a34/longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0009/EXECUTOR_REPORT.md) |
+| 失败半成品与历史 | 12 个失败 DBA 共 677,239,968 字节保持失败资格，不可消费或覆盖；E1 记录 652 个既有文件、原 U 及历史原件保持 | [保全核对](https://github.com/daowei2026/observe-iterate/blob/28e8764aab3ce050b6167ad093bbe087574523d3/longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/professional_results/D003/C0011/evidence/preservation_check.json)、[原失败清单](https://github.com/daowei2026/observe-iterate/blob/d3e05b73fd2a6fcc3b3b5d248bdd61f11e8f7a34/longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/professional_results/D002/C0009/evidence/failed_F4_effect_manifest.json) |
+| 本项诊断 | 诊断范围已完成，上游问题及受影响工作仍未解决 | [DiagnosisReport](https://github.com/daowei2026/observe-iterate/blob/28e8764aab3ce050b6167ad093bbe087574523d3/longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/professional_results/D003/C0011/DiagnosisReport.json)、[UpstreamFinding](https://github.com/daowei2026/observe-iterate/blob/28e8764aab3ce050b6167ad093bbe087574523d3/longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/professional_results/D003/C0011/UpstreamFinding.json)、[ScopedBlocker](https://github.com/daowei2026/observe-iterate/blob/28e8764aab3ce050b6167ad093bbe087574523d3/longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/professional_results/D003/C0011/ScopedBlocker.json) |
 
-## 工程错误与纠正过程
+当前 X 绑定仍为 `INCOMPLETE_WITH_RECORDED_ENGINEERING_GAP`，`formal_complete=false / eligible_for_G=false`。诊断完成只改变问题的可解释性和恢复条件，没有产生修复后结果或关闭上游问题。
 
-此前默认 `black` 交易集遗漏 m 的运行上下文问题，已在 A05 真实补正：原生 m 交易集实测 `symbols=['m']`、`index=0`、`trading_unit=10`。因此本次记录的是补正上下文后的真实新失败，不是尚未执行的前检状态。
+## 当前局部阻断与恢复
 
-A05 实际取得同一生产锁并释放。m 两组 F4 均在执行后收到原生错误：
+已形成具名上游问题 `UPSTREAM-M-INPUT-AXIS-01`，影响 m 有效 F4、m Attack 和完整 rb/m X/G。修复涉及本 Run 禁止修改的上游责任面，当前没有合法的新上游绑定；受影响动作停止，其他独立 Run 的工作不受此阻断影响。
 
-`交易日区间在 2021-03-12 00:00:00 前不连续: 1792800 != 1792801`
+恢复依 E1 [原生恢复条件](https://github.com/daowei2026/observe-iterate/blob/28e8764aab3ce050b6167ad093bbe087574523d3/longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/professional_results/D003/C0011/ScopedBlocker.json)：由具相应合法责任面的上游处理方核定统一合同，取得准确代码、参数、SOF、日历、完整范围、源轴、成功 receipts 和完整读回；同时核 Wall/F4 availability 与 Attack 消费轴一致。上游变更时须说明旧绑定的受影响资格，不能以旧成果证明新版本。
 
-调用栈经过 `pressure_big_deal.py` 至 `tick_quote_context.py`。这些是执行证据，尚未证明最早责任逻辑或修法；manager 未据堆栈位置作归因。原 rb 结果、m Wall、640 个既存文件及 A01/A02/A03/R01/A04 历史原件核对未变。产品源码、默认业务参数、市场数据和正式范围均未改。
+条件满足后，按原 Workflow 回原 E1、原 D002 续接缺失的正式工程；先核 effects，采用新真实调用／attempt 和 fresh 写面，保留失败原件，任何共享生产重新实际取得同一原锁。完整 X 有效后才协调 G。
 
-12 个失败 DBA 保留其路径、大小、mtime 和 SHA256；不能覆盖重复 Gen、当成功 receipt 或当作完整结果使用。失败内容也不等于业务行为数量为零。
+本次仅把完成诊断与具名局部阻断正式交回 controller，不签发新委派或任务消息，不改产品、不重跑，不创建 Owner 审批。尚无完整 G、FeatureReleaseGate 或 UpstreamReleasePackage，正式 rb/m 全年范围未缩减，Build 成果未混用。
 
-## 当前问题与后继
+- [真实运行状态、来源与恢复入口](TASK_PROGRESS.md)
+- [本次 manager 报告](../calls/C0012/MANAGER_REPORT.md)
+- [本次剩余范围](../calls/C0012/REMAINING_SCOPE.md)
 
-本次已成立的是工程执行失败及其业务影响：m 缺有效 F4，目标 Attack 无法建立完整正式结果。原因、责任层和合法处理路线仍需专业诊断；当前没有已确认的上游责任结论、DiagnosisReport 或 UpstreamFinding，也没有 G 的正式 finding 队列。
-
-manager 已为原 E1 签发 [D003](../delegations/D003/DELEGATION.md)，调用锁定版本中已有的 `business-discrepancy-diagnosis` Skill，输入为原正式目标、U 处理链、C0009 真实比较／绑定和失败原件。原 D002 仍未完成，签发调用仍为 C0004；D003 是本次已有 Skill 的独立工作，不表示 G 已完成，也不另建实现修改 Skill 或验收 Gate。
-
-诊断若有证据指向禁止修改的上游，原 E1 按原输入／Skill 形成有据 UpstreamFinding、影响与恢复条件；不得越权修改 F4、Wall、公共模块、市场数据或借用其它 Run 的修复结论。当前不为了运输再 Gen 同一失败目标，不缩窗、换品种、绕过检查或覆盖半成品。
-
-## 保留范围、恢复与阅读入口
-
-原 U 的对象／时间语义、NOT_EXPOSED、分支可达性和参考合同差异继续按原件追踪；局部有效 X 不将 U 自动改为 COMPLETE。尚无 G、业务验收、FeatureReleaseGate 或 UpstreamReleasePackage。
-
-下一动作由 controller 核本 C Return／D003 和原权限后，复用原 E1 派达现有诊断 Skill；专业回交原 manager 后，再依原 Workflow 和合法条件协调原 D002 的剩余工程。任何共享写入仍实际取得原锁，探测不代表预约。独立工作继续，Build 的控制版本、业务成果和诊断结论不混用。
-
-- [当前运行状态、历史及恢复](TASK_PROGRESS.md)
-- [本次 manager 报告](../calls/C0010/MANAGER_REPORT.md)
-
-快照：2026-11-24，C0010 已消费真实未完 X 并安排诊断，D003、报告、双进度与 manager Return 已发布并准确回读；实际发行引用见 TASK_PROGRESS。父 Run IN_PROGRESS，诊断尚待原 E1 执行。
+快照：2026-11-24，C0012 已消费原 E1 已完成诊断；父 Run IN_PROGRESS。当前出版阶段：报告、剩余和双进度待发布回读，随后签发原 V2 Return。
