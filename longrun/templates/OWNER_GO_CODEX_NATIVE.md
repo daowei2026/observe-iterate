@@ -67,6 +67,10 @@ authority_quote=<Owner 原文，包含以上值>
 
 初始 GO 应一次覆盖本 Run 正常闭环可能用到的运行 Feature、统计、诊断、修改代码与实例参数／相关规则、必要回归、提交／推送指定分支、运行测试与写结果；但每项必须明确准确动作和写面，不允许笼统授予所有仓库权限。未被 grant 覆盖的动作仅作局部阻断、记录原因与恢复条件，不再产生运行中 Owner 审批或请求。
 
+### 主控 Chat 归档的初始授权（按需采用）
+
+本轮若要求主控聊天自动同步 GitHub，初始 GO 还应明确授权 **controller** 对本业务仓 `longrun/controller/chats/<controller-thread-id>.md` 的增量写入、Git commit 和 push，写面限定指定仓库／分支。主控实际 threadId 由主控在自身 App Server 核验，不需要 Owner 提供或猜测。manager／executor Chat 不导出。缺授权只记录归档欠账，不影响其他合法专业工作。
+
 ## 6. 多 Run 和下游
 
 - 本 Run 所属并行任务：
