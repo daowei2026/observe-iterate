@@ -32,8 +32,8 @@
 | 正式输出 | `attack_segment / attack_formation_evidence / wall_relation_barrier` | 三项为输入所指定产品，尚无本 Run 正式结果 |
 | 数据／日历 | `TA_updto20240229_DBA`；`rb,m`；`2021-01-01..2021-12-31`；`night_end_at_2300` | 尚未形成运行结果身份 |
 | 父 Run | `incomplete / IN_PROGRESS` | C0001 完成不代表父 Run 完成 |
-| 当前 C | C0001，manager 首次协调 | 原 INVOCATION 与 FULL_ASSIGNMENT |
-| 当前 D | D001，首轮 U，issuer_call_id=C0001 | [DELEGATION.json](../delegations/D001/DELEGATION.json)，本提交签发；物理派达未由 manager 验实 |
+| 当前 C | C0001，manager 首次协调已发布 IN_PROGRESS Return | `daowei2026/observe-iterate@9b32c8e9dbc4bd2b1ff87a9b78bd44fb8a9e5211:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0001/PRO_RETURN.json`；待 controller 独立核回收 |
+| 当前 D | D001，首轮 U，issuer_call_id=C0001 | `daowei2026/observe-iterate@e20128bff682c58bc2a66a6c5ed176f78634c476:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/delegations/D001/DELEGATION.json`；已发布并逐字回读，物理派达未由 manager 验实 |
 | 下一合法动作 | controller 核本 C 真实 Return 和 D 范围后，新建独立 E1 并以新 C 派达 D001 | 不预占后继 C 号；不得把 Git 发布当物理送达 |
 
 ## C. 有效节点结果与未完成义务
@@ -61,11 +61,17 @@ D001 权限仅来自上述 Owner／Binding；当前单项工作为 U，机读写
 
 - INVOCATION：`daowei2026/observe-iterate@19d6a1aef4d6e2b06c5eedf3bfa712c273e393cf:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0001/INVOCATION.json`
 - FULL_ASSIGNMENT：`daowei2026/observe-iterate@361c89107b80e5fa2083b153b666c7bbe27d9074:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0001/FULL_ASSIGNMENT.md`
-- 本提交含 [D001 正文](../delegations/D001/DELEGATION.md)、[机读 D](../delegations/D001/DELEGATION.json)、[manager 报告](../calls/C0001/MANAGER_REPORT.md) 和双进度。PRO_RETURN 在其发布回读后另行提交，引用既存准确 commit，避免循环引用。
+- D001 正文：`daowei2026/observe-iterate@e20128bff682c58bc2a66a6c5ed176f78634c476:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/delegations/D001/DELEGATION.md`
+- D001 机读件：`daowei2026/observe-iterate@e20128bff682c58bc2a66a6c5ed176f78634c476:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/delegations/D001/DELEGATION.json`
+- manager 报告：`daowei2026/observe-iterate@e20128bff682c58bc2a66a6c5ed176f78634c476:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0001/MANAGER_REPORT.md`
+- 初次双进度：`daowei2026/observe-iterate@e20128bff682c58bc2a66a6c5ed176f78634c476:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/business_control/BUSINESS_PROGRESS.md`、`daowei2026/observe-iterate@e20128bff682c58bc2a66a6c5ed176f78634c476:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/business_control/TASK_PROGRESS.md`
+- 实际签发的 manager Return：`daowei2026/observe-iterate@9b32c8e9dbc4bd2b1ff87a9b78bd44fb8a9e5211:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0001/PRO_RETURN.json`，`longrun-professional-return/v2 / role=manager / professional_state=IN_PROGRESS`；`return_to=null`、`issued_order_refs=[]`、`accepted_worker_refs=[]`、`owner_request_ref=null`。
+- 已完成发布事实：先以普通条件提交发布 D001／报告／双进度并逐字回读，再以其为 parent 发布 Return 并逐字回读；本快照只补记已发生的发行事实。Return 引用上述较早的准确进度快照，保留历史，未形成循环引用。
+- 以上发行核验不替代 controller 的真实 call/token/receipt 核验，亦不构成 E1 已派达证明。
 - 本 C 未消费任何 executor／worker Return；不存在已验收专业产物。
 - 既有成果复用：仅采用控制原件和已发布工作区核验；未继承旧 F/Q/V 或 Build 的业务成果。
 - 当前明确阻断：无。E1 创建／派达为具名正常后继；未来 receipts 缺口只影响其实际依赖工作。
 - 未由 manager 核实的物理事实：controller 对本 C 的真实 receipt、E1 线程／模型／cwd 和未来 Send 回执。
 - 恢复入口：controller 先核原 C／D／Return、实际线程与动作事实；发送状态 UNKNOWN 时先查原通道和产物，不能猜测重派。
-- BUSINESS_PROGRESS 已同步到本 C 的实际业务位置；下一更新为真实 U 回交或结果变化。
+- BUSINESS_PROGRESS 已同步到本 C 的实际业务位置及实际发行事实；下一更新为真实 U 回交或结果变化。
 - 快照日期：2026-11-24。记录分支仅 `codex/oi-eaw-p1-attack-stat-20261124-01`，Personal 已核连接。
