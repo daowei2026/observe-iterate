@@ -45,4 +45,4 @@
 - [运行状态、准确版本与恢复](TASK_PROGRESS.md)
 - [本次 manager 报告](../calls/C0008/MANAGER_REPORT.md)
 
-快照：2026-11-24，C0008 已消费原 E1 的部分 X；父 Run IN_PROGRESS，当前等待 m 剩余工程合法恢复。
+快照：2026-11-24，C0008 已消费原 E1 的部分 X，本次报告、双进度与 manager Return 已发布并准确回读，实际发行引用见 TASK_PROGRESS。父 Run IN_PROGRESS，当前等待 m 剩余工程合法恢复。

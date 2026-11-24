@@ -50,7 +50,7 @@ C0007 原报告：`daowei2026/observe-iterate@0837509a7200dcffcfced4113cab22ec57
 | C0007／A03 | 实际取得并释放原锁；部分生产成功；rb 读回列顺序断言和 m F4 交易集异常原样保留 | 当前绑定 original_production_feature_results／recorded_errors |
 | C0007／R01 | 取得并释放原锁，只读完整重算与按列名核对 rb 35 表；禁止 dump／数据库／缓存写入，既有 artifact／receipt 元数据不变 | 当前绑定 readback_reconciliation |
 | C0007／A04 | 600 秒窗口未获原锁，runner 已结束，未持锁／未执行补正后的 m 工程 | 当前绑定 continuation_execution／post_execution_check |
-| C0008 | 原 manager 消费 C0007 的有效部分 X 与真实剩余，保留原 D002／E1 | [本 C 报告](../calls/C0008/MANAGER_REPORT.md)，报告及双进度先发布回读，再签发原 v2 IN_PROGRESS Return |
+| C0008 | 原 manager 已消费 C0007 的有效部分 X 与真实剩余，保留原 D002／E1，未签新 D | 报告：`daowei2026/observe-iterate@d085c40dd1880dcba255bc68cdd4f57c71bf00e8:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0008/MANAGER_REPORT.md`；实际 Return：`daowei2026/observe-iterate@e38beb147f5238eeebebb1a9203676c6843573b4:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0008/PRO_RETURN.json`，均已发布并逐字回读 |
 
 A01/A02/A03/R01/A04 的原记录、错误、journal、结果和参数实例均保留；本 C 不改写原产物。完整历史恢复入口仍可追溯上述前次进度快照。本 C 消费 executor Return，`accepted_worker_refs=[]`，无 W 或 Worker Return。
 
@@ -86,6 +86,12 @@ Owner／Binding 和禁止面持续有效：manager 仅协调及发布本 Run 记
 
 BUSINESS_PROGRESS 已同步 rb 有效结果、m Wall 读回、运行上下文遗漏与纠正前检、A04 未执行以及完整 X/G 未满足。当前父 Run IN_PROGRESS。
 
-本 C 报告和双进度先发布并准确回读，再发布 `calls/C0008/PRO_RETURN.json`。原 v2 Return 保持 `role=manager / professional_state=IN_PROGRESS`、`return_to=null`，`issued_delegation_refs=[]`、`issued_order_refs=[]`、`accepted_worker_refs=[]`、`owner_request_ref=null`。remaining_scope 引用已发布进度，continuation 使用上述已存在 C0007 原恢复原件；实际发行引用在回读后补记，避免循环。
+本 C 实际发行事实：
+
+- 报告：`daowei2026/observe-iterate@d085c40dd1880dcba255bc68cdd4f57c71bf00e8:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0008/MANAGER_REPORT.md`；双进度先前快照同 `d085c40dd1880dcba255bc68cdd4f57c71bf00e8` 提交，三个文件均已逐字回读。
+- Return：`daowei2026/observe-iterate@e38beb147f5238eeebebb1a9203676c6843573b4:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0008/PRO_RETURN.json`，以先前提交为 parent，普通条件提交发布并逐字回读。
+- Return 采用原 `longrun-professional-return/v2`，`role=manager / professional_state=IN_PROGRESS`、`return_to=null`，`issued_delegation_refs=[]`、`issued_order_refs=[]`、`accepted_worker_refs=[]`、`owner_request_ref=null`。
+- remaining_scope 引用 `d085c40dd1880dcba255bc68cdd4f57c71bf00e8` 的已存在进度，continuation 保持原 `daowei2026/observe-iterate@0837509a7200dcffcfced4113cab22ec575bdcce:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/professional_results/D002/C0007/REMAINING_SCOPE.md`；本次只补记实际发行事实，避免引用循环。
+- 原 D002 签发仍为 C0004，原 E1 与全部既有尝试保留；没有新增 D、重派生产或改写原生产物。发行核验不表示锁已释放、controller 已核回收、物理派达完成或 m 生产恢复。
 
 快照日期：2026-11-24，C0008；记录分支仅 `codex/oi-eaw-p1-attack-stat-20261124-01`；已核 Personal 连接。
