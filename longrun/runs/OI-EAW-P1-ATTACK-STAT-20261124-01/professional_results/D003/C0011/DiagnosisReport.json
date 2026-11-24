@@ -1,0 +1,375 @@
+{
+  "diagnosis_id": "OI-EAW-P1-ATTACK-STAT-20261124-01-D003-R01",
+  "expectation_id": "ATTACK-X-EXACT-TECHNICAL-UPSTREAM-BINDING",
+  "expectation_version": "Owner/唯一输入@987-20261124，当前诊断输入适配v1",
+  "discrepancy_statement": "锁定m/2021/SOF/Calendar与默认实例下，F4收到的补齐半秒输入有4条五报价全空的时段首行不属于任何native交易日区间；共享覆盖guard在首处拒绝输入，造成两F4正式物化失败和m Attack无有效前置。",
+  "business_impact": {
+    "m_F4_tactical_and_structural": "A05均实际失败，无完整有效结果/receipt/严格读回",
+    "m_Attack": "未启动，不能取得当前三正式产品",
+    "rb_and_m_Wall": "当前既有有效成果保留，不因本异常自动作废或伪造新成功",
+    "formal_X_complete": false,
+    "eligible_for_G": false,
+    "Feature_release_established": false,
+    "conditional_downstream_axis_risk": "Attack也使用共享载入/分块并要求Wall/F4 availability exact axis；当前真实Wall轴9959383行，原输入9959400行，去4行诊断轴9959396行，三者不能混用。未执行m Attack，不把静态约束或反事实当成已发生的Attack运行故障。"
+  },
+  "confirmed_facts": [
+    {
+      "id": "CF01",
+      "fact": "D003签发者C0010，原D002仍由C0004签发；本D只诊断原X异常，未有G finding。",
+      "evidence": [
+        "evidence/source_read_manifest.json",
+        "DiagnosisInputBinding.json"
+      ]
+    },
+    {
+      "id": "CF02",
+      "fact": "当前TIS179016及实际copy加载文件与默认实例PPID/P已核，m交易集包含m、index0、交易单位10；不是继续沿black遗漏m。",
+      "evidence": [
+        "evidence/native_parameter_audit_reviewed.json",
+        "evidence/E01/diagnostic_result.json",
+        "daowei2026/observe-iterate@d3e05b73fd2a6fcc3b3b5d248bdd61f11e8f7a34:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/professional_results/D002/C0009/FeatureRunResultBinding.json"
+      ]
+    },
+    {
+      "id": "CF03",
+      "fact": "真实m输入9959400行、243交易日，索引唯一且单调；17条五报价全空，其中4条不在任何交易日区间内。",
+      "evidence": [
+        "evidence/E01/diagnostic_result.json"
+      ]
+    },
+    {
+      "id": "CF04",
+      "fact": "首个位置1792800是2021-03-11 21:00:00.500的空报价行；下一交易日区间从21:00:01、位置1792801开始。",
+      "evidence": [
+        "evidence/E01/diagnostic_result.json",
+        "evidence/E01/native_trading_day_intervals.json"
+      ]
+    },
+    {
+      "id": "CF05",
+      "fact": "native planner在完整真实输入复现A05同一错误；7行局部3!=4，去掉未覆盖行后6行通过；去普通有效行、保留异常行仍2!=3。",
+      "evidence": [
+        "MinimalDiscriminatingExperiment.json"
+      ]
+    },
+    {
+      "id": "CF06",
+      "fact": "仅内存去4条未覆盖行后planner覆盖243日9959396行，仍保留13条已覆盖空报价行；这不是F4业务运行或正式结果。",
+      "evidence": [
+        "evidence/E01/diagnostic_result.json"
+      ]
+    },
+    {
+      "id": "CF07",
+      "fact": "Wall现有专用逻辑去17行得到9959383行，index摘要与本Run合格m Wall一致；与去4行的诊断轴不同。",
+      "evidence": [
+        "evidence/E01/diagnostic_result.json",
+        "daowei2026/observe-iterate@d3e05b73fd2a6fcc3b3b5d248bdd61f11e8f7a34:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/professional_results/D002/C0009/FeatureRunResultBinding.json"
+      ]
+    },
+    {
+      "id": "CF08",
+      "fact": "loader和planner不读当前Feature业务P；阈值/容差/Attack计算不能改变既定cc.index与trading_days的覆盖关系。",
+      "evidence": [
+        "evidence/native_parameter_audit_reviewed.json",
+        "evidence/source_excerpts.md"
+      ]
+    },
+    {
+      "id": "CF09",
+      "fact": "没有P1/缓存/市场数据写入，652个已有产物前后未变；12失败DBA共677239968字节SHA256与C0009一致；历史及U PARTIAL原件未变。",
+      "evidence": [
+        "evidence/preservation_check.json",
+        "evidence/E01/diagnostic_result.json"
+      ]
+    }
+  ],
+  "processing_chain": [
+    {
+      "stage": "S1",
+      "Input": "原生m报价/预测成交DBA、natural_tsa/linear_tsa、main_contract/m.csv",
+      "Rule": "SubContinuousContract把存储数组按calendar索引直接组合，trading_days按CSV start_ts/end_ts返回区间",
+      "State": "只读存储，不推造业务状态",
+      "Output": "含17条空报价的原生半秒轴与交易日区间两种表示",
+      "ActualTime": "原生naive市场timestamp，保留原坐标",
+      "ConfirmTime": "不适用；不是业务事件确认",
+      "Version": "TIS179016+E01源文件身份/CSV SHA256",
+      "PossibleInformationLoss": "本层未排除空报价；不同边界口径尚未协调"
+    },
+    {
+      "stage": "S2",
+      "Input": "S1连续主力DataFrame",
+      "Rule": "共享_load_cc_df仅按SOF开始/结束日期切片",
+      "State": "当前m交易集/日历/期间已核",
+      "Output": "9959400行cc_df，包括4条区间外空报价行",
+      "ActualTime": "2021-01-04 09:00:00.500至2021-12-31 15:00:00",
+      "ConfirmTime": "不适用",
+      "Version": "tick_quote_context.py:160-166",
+      "PossibleInformationLoss": "没有归一化输入轴；把未覆盖行交给强覆盖检查"
+    },
+    {
+      "stage": "S3",
+      "Input": "S2索引+trading_days区间",
+      "Rule": "searchsorted左右闭端确定位置，要求相邻区间无缝覆盖全部输入",
+      "State": "expected_start从前一stop1792800推进，下一start1792801",
+      "Output": "原生ValueError，尚无逐chunk业务结果",
+      "ActualTime": "首个冲突为2021-03-11 21:00:00.500，对应2021-03-12交易日",
+      "ConfirmTime": "异常检测时间是A05/E01运行wall-clock，不当市场confirm time",
+      "Version": "tick_quote_context.py:220-246 / pressure_big_deal.py:230",
+      "PossibleInformationLoss": "直接拒绝未覆盖输入；未私自丢行情或静默吞行"
+    },
+    {
+      "stage": "S4",
+      "Input": "通过S3后才有逐chunk tape/threshold",
+      "Rule": "阈值对齐、F4业务core、append/finalize/receipt",
+      "State": "本次原S3失败，未到逐chunk计算",
+      "Output": "A05预分配12个DBA，仅失败effects；无成功receipt/完整F4读回",
+      "ActualTime": "没有可用F4 occurrence时间可下结论",
+      "ConfirmTime": "NOT_ESTABLISHED",
+      "Version": "pressure_big_deal.py:235-261；p1_dba_export.py:540-557",
+      "PossibleInformationLoss": "不能把预分配文件当作有效零事件结果"
+    },
+    {
+      "stage": "S5",
+      "Input": "exact Wall和所选F4 receipt/axis/artifacts",
+      "Rule": "Attack按明确依赖和exact axis消费，再计算/导出三产品",
+      "State": "m未启动；rb原有效资格独立保留",
+      "Output": "m三正式产品尚缺",
+      "ActualTime": "未建立m Attack运行结果时间",
+      "ConfirmTime": "NOT_EXPOSED/NOT_ESTABLISHED，不能补造",
+      "Version": "attack_flow_assembler.py:755-798 / 541-572",
+      "PossibleInformationLoss": "不以有效Wall代替缺失F4，不由反事实分块通过推断Attack成功"
+    }
+  ],
+  "competing_explanations": [
+    {
+      "id": "H1",
+      "explanation": "m交易集/代码/实例绑定仍错误",
+      "prediction": "实际symbols/PPID/源码或正式范围不匹配",
+      "checks": [
+        "E01 data_binding",
+        "E02 actual_modules/default_instances"
+      ],
+      "result": "现m上下文正确、源和实例匹配；原A03 black遗漏是已保留历史，与本次A05错误不同",
+      "disposition": "RULED_OUT_FOR_CURRENT_FAILURE"
+    },
+    {
+      "id": "H2",
+      "explanation": "有效行情在区间外、索引乱序/重复是当前报错原因",
+      "prediction": "未覆盖位置有有效报价或索引顺序问题",
+      "checks": [
+        "E01 full_native_m",
+        "E01 minimal_real_boundary_contrast"
+      ],
+      "result": "索引单调唯一；4条未覆盖行都是时段首条、五报价空，hit代理四字段为0；没有区间外有效报价证据。原始写入者/元数据哪方应改变未确认。",
+      "disposition": "VALID_QUOTE_OR_ORDERING_EXPLANATION_RULED_OUT; RAW_PROVENANCE_NOT_ASSIGNED"
+    },
+    {
+      "id": "H3",
+      "explanation": "补齐半秒calendar轴与main_contract交易日区间在空报价开盘边界的合同不兼容",
+      "prediction": "保留特定未覆盖行即失败，移除此行的诊断副本通过；去普通行不能消除；全索引还有同类边界",
+      "checks": [
+        "E01原始/局部正反对照/全年反事实/Wall轴对照"
+      ],
+      "result": "预测全部得到实际数据与原生helper支持；4个未覆盖边界，首个正是原1792800/1792801",
+      "disposition": "CONFIRMED_AT_INTEGRATION_CONTRACT_SCOPE"
+    },
+    {
+      "id": "H4",
+      "explanation": "F4业务阈值/容差或Attack算法造成当前异常",
+      "prediction": "需进入对应消费处或参数会影响覆盖输入",
+      "checks": [
+        "E02参数消费/固定常量审计",
+        "原A05栈与当前代码顺序"
+      ],
+      "result": "当前planner先于core，不读P；Attack尚未启动，不能成为此次上游异常起点",
+      "disposition": "RULED_OUT_FOR_THIS_COVERAGE_FAILURE"
+    },
+    {
+      "id": "H5",
+      "explanation": "旧cache或半成品读回/序列化导致当前覆盖异常",
+      "prediction": "直接只读真实源和planner不应复现，或依赖读取失败产物",
+      "checks": [
+        "E01仅SubContinuousContract Cal/write=False",
+        "E01原生helper复现",
+        "P1 writer源顺序"
+      ],
+      "result": "不读取失败F4结果、不运行P1即可复现；P1预分配发生在plan.execute之前，解释失败effects但不是当前区间差起因",
+      "disposition": "RULED_OUT_AS_CAUSE; PREALLOCATION_IS_RETAINED_EFFECT"
+    }
+  ],
+  "ruled_out_explanations": [
+    "当前m仍不在交易集/当前实例不匹配",
+    "本次异常由区间外有效报价、索引乱序/重复直接引起",
+    "调F4大额门槛或Attack参数可以解决当前覆盖不变量",
+    "旧F4结果或DBA读回是当前planner报错的起点"
+  ],
+  "remaining_explanations": [
+    {
+      "topic": "原始空报价行写入环节及上游最终修复落点",
+      "status": "NOT_ASSIGNED_OUTSIDE_CONFIRMED_DIRECT_CAUSE",
+      "boundary": "没有证据认定市场数据/主力合约元数据本身错误，也未证明应修改guard、loader或producer中某一方。已确认的是当前上游组合合同不兼容，正式修复归有权上游处理方。"
+    }
+  ],
+  "discriminating_checks": [
+    "MinimalDiscriminatingExperiment.json",
+    "evidence/native_parameter_audit_reviewed.json"
+  ],
+  "current_localization": {
+    "status": "CONFIRMED_UPSTREAM_INTEGRATION_CONTRACT_MISMATCH",
+    "earliest_responsibility": "共享输入adapter保留未覆盖半秒行与F4强覆盖分块合同之间的交接",
+    "not_assigned": "未把F4 core、Attack core、源数据写入者或一个具体比较式直接判为缺陷责任方",
+    "scope": "本Run当前版本/实例/真实m全年与已复现的X失败"
+  },
+  "logic_localization_ref": "LogicLocalization.json",
+  "parameter_repairability": {
+    "suspected_parameters": [
+      {
+        "feature": "tactical",
+        "ppid": "DirectedBigDealTick_ecd83d7195757d35f9fa349e9cc810de55ac07ba",
+        "same_as_original_bound_default_instance": true,
+        "actual_parameters": {
+          "parameter_set_id": "tactical-default",
+          "qualification_family": "tactical",
+          "amt_n": 30,
+          "lane_threshold_map": {
+            "tactical": [
+              "0.99",
+              "0.995"
+            ]
+          },
+          "same_best_tol_ticks": 0,
+          "big_deal_ratio_min": 1.0
+        }
+      },
+      {
+        "feature": "structural",
+        "ppid": "DirectedBigDealTick_b7bee7c742968dcbde29e53ca969d381390aabf9",
+        "same_as_original_bound_default_instance": true,
+        "actual_parameters": {
+          "parameter_set_id": "structural-default",
+          "qualification_family": "structural",
+          "amt_n": 30,
+          "lane_threshold_map": {
+            "structural": [
+              "0.997",
+              "0.999"
+            ]
+          },
+          "same_best_tol_ticks": 0,
+          "big_deal_ratio_min": 1.0
+        }
+      }
+    ],
+    "parameter_consumers": [
+      {
+        "parameters": [
+          "parameter_set_id"
+        ],
+        "consumer": "实例寻址/元数据，不改变cc时间轴"
+      },
+      {
+        "parameters": [
+          "qualification_family",
+          "lane_threshold_map"
+        ],
+        "consumer": "pressure_big_deal.py:593-597资格族一致性；179-193 threshold材料及247-250分块后阈值对齐；不改变cc索引"
+      },
+      {
+        "parameters": [
+          "amt_n"
+        ],
+        "consumer": "pressure_big_deal.py:176-193 AmountThreshold材料；与cc索引单独加载"
+      },
+      {
+        "parameters": [
+          "same_best_tol_ticks",
+          "big_deal_ratio_min"
+        ],
+        "consumer": "pressure_big_deal.py:230先分块校验，261以后才进入compute_pressure_big_deal_chunk业务计算"
+      },
+      {
+        "parameters": [
+          "Attack自身参数"
+        ],
+        "consumer": "Attack在755以后先取得Wall/F4；未到Attack业务计算，不能修复上游planner输入合同"
+      }
+    ],
+    "earliest_business_divergence": "进入逐chunk业务计算前，输入轴/分块覆盖不成立；未观察到F4或Attack业务对象误判",
+    "feasibility_status": "PROVEN_NOT_ADJUSTABLE",
+    "feasibility_evidence": "相同cc.index和trading_days决定planner结果，planner/loader不读上述P；所有阈值和数值计算位于已失败覆盖检查之后或与cc独立。",
+    "audited_constants": [
+      {
+        "constraint": "searchsorted(start,left)/searchsorted(stop,right)、expected_start=0、严格start==previous_stop和末尾coverage==len(cc)",
+        "consumer": "tick_quote_context.py:220-246",
+        "effect": "固定输入轴覆盖不变量；没有可调缺口容忍参数"
+      },
+      {
+        "constraint": "trading_days读取原生main_contract/m.csv，cc索引来自指定半秒calendar",
+        "consumer": "hf/mc.py:22-35；t0/gen/cc.py:150-183",
+        "effect": "当前正式SOF/日历/范围为输入绑定，不是可任意调参换范围的业务参数"
+      },
+      {
+        "constraint": "DEFAULT_EPS_VOL=1e-12及uti=linear_ts//500-1",
+        "consumer": "pressure_big_deal_core.py:21及tick_quote_context.py:97-106",
+        "effect": "数值/半秒映射，不参与此次先于core的timestamp区间覆盖检查"
+      }
+    ],
+    "upstream_dependency": "固定SubContinuousContract索引与native trading_days主力合约区间；当前默认参数不控制二者",
+    "unresolved_constraints": [
+      "上游合法责任面需统一输入表示/分块/时轴合同",
+      "去4行的诊断轴不同于现有Wall去17行轴，不能作为生产修法或有效结果",
+      "尚无修复后完整m F4/Attack全年运行及G"
+    ],
+    "next_route": "向原manager交UpstreamFinding和ScopedBlocker；不进入无证据的参数标定"
+  },
+  "ImplementationConformance": "现有loader和覆盖guard按当前代码执行；拒绝未覆盖输入不是一个被证明写错的比较式。",
+  "BusinessReasonableness": "当前正式源表示与F4物化接口不能共同满足本Run exact上游需求，形成有据输入适用性/衔接合同问题；未据此判定F4大额成交业务算法普遍不合理。",
+  "confidence": {
+    "direct_causal_localization": "HIGH：真实全年源、首个真实边界正反对照、四边界覆盖复核、当前代码/实例及参数消费相互支持",
+    "upstream_writer_fault_or_specific_patch": "NOT_CLAIMED",
+    "general_market_behavior_or_full_Feature_acceptance": "NOT_EVALUATED"
+  },
+  "next_route": {
+    "recipient": "codex:OI-EAW-P1-ATTACK-STAT-20261124-01:manager",
+    "native_outputs": [
+      "UpstreamFinding.json",
+      "ScopedBlocker.json"
+    ],
+    "action_scope": "原manager协调合法上游专业处理及原D002恢复；这是诊断回交路由，不是executor签发新D或Owner请求",
+    "D003_further_action": null
+  },
+  "professional_completion": {
+    "diagnosis_scope": "D003对已记录X工程异常的直接因果/最窄责任、参数能力及合法处理路线",
+    "status": "COMPLETE",
+    "remaining_in_D003": [],
+    "unresolved_external_repair_and_formal_run_scope": [
+      "原D002 m上游正式修复/有效输入条件与F4/Attack完整X",
+      "后继G和Feature释放；原U PARTIAL及具名未知保持"
+    ],
+    "not_implied": [
+      "F4已修复",
+      "完整X/G已通过",
+      "Feature已验收"
+    ]
+  },
+  "unchanged_expectation": "沿原GO/唯一输入，不创建新市场预期，不改旧判断或U包。",
+  "autonomous_tradeoff_record": "NOT_APPLICABLE：当前是可由输入/代码区分的合同衔接问题，不是业务目标取舍或参数标定。",
+  "scope_boundaries": {
+    "workers": [],
+    "product_code_changes": false,
+    "upstream_changes": false,
+    "market_data_changes": false,
+    "formal_scope_changes": false,
+    "formal_X_rerun": false,
+    "G_performed": false,
+    "Build_results_consumed": false,
+    "Owner_request_created": false,
+    "FeatureReleaseGate_formed": false
+  },
+  "source_binding": "evidence/source_read_manifest.json",
+  "diagnosis_input_binding": "DiagnosisInputBinding.json",
+  "native_skill_ref": "daowei2026/observe-iterate@9877826236e0995e7255e6cbfedc2d1b89dea6da:skills/reasonableness-analysis/business-discrepancy-diagnosis/SKILL.md",
+  "supplement_ref": "daowei2026/observe-iterate@9877826236e0995e7255e6cbfedc2d1b89dea6da:skills/reasonableness-analysis/STATISTICS_DRIVEN_PRACTICE.md",
+  "completed_at": "2026-11-24T11:10:49.584074+00:00"
+}

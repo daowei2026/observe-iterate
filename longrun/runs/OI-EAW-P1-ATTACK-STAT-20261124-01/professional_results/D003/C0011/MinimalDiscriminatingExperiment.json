@@ -1,0 +1,788 @@
+{
+  "experiment_id": "E01",
+  "diagnosis_id": "OI-EAW-P1-ATTACK-STAT-20261124-01-D003-R01",
+  "qualification": "DIAGNOSTIC_ONLY",
+  "question": "在同一真实m输入及交易日表下，异常由输入轴的特定未覆盖行还是业务参数/输出行为触发？",
+  "input_binding": "DiagnosisInputBinding.json",
+  "runtime": {
+    "started_at": "2026-11-24T11:01:39.979778+00:00",
+    "finished_at": "2026-11-24T11:02:20.530748+00:00",
+    "sys_executable": "/m3c3/Linux/apps/anaconda3/bin/python",
+    "actual_cwd": "/dwdhome/fy/BASE_E6_2_copy"
+  },
+  "selection_rationale": "从原生全年失败中找首个未覆盖位置，保留它和前后各3条真实行；加入保留异常行却删除普通有效行的反对照。同一原生helper、交易集、SOF和日历。再用轻量全索引覆盖检查判断是否仅一次偶发。",
+  "checks": {
+    "full_native_m": {
+      "rows": 9959400,
+      "columns": [
+        "trade_volume",
+        "open_interest",
+        "price",
+        "linear_ts",
+        "buy_price1",
+        "buy_vol1",
+        "sell_price1",
+        "sell_vol1",
+        "buy_order_price",
+        "buy_order_vol",
+        "sell_order_price",
+        "sell_order_vol"
+      ],
+      "first_index": "2021-01-04 09:00:00.500000",
+      "last_index": "2021-12-31 15:00:00",
+      "index_unique": true,
+      "index_monotonic": true,
+      "index_digest": "e9eb5b1e9d7f07dc45cfe619f10c0f3b880f7b5a816a924453dd9be43c779a3d",
+      "nonempty_trading_day_intervals": 243,
+      "all_five_quote_null_count": 17,
+      "outside_interval_count": 4,
+      "outside_interval_rows": [
+        {
+          "position": 1792800,
+          "timestamp": "2021-03-11 21:00:00.500000",
+          "covered_by_native_trading_day": false,
+          "segment_start": true,
+          "all_five_quotes_null": true,
+          "all_market_columns_null": false,
+          "values": {
+            "trade_volume": null,
+            "open_interest": null,
+            "price": null,
+            "linear_ts": 36898200500.0,
+            "buy_price1": null,
+            "buy_vol1": null,
+            "sell_price1": null,
+            "sell_vol1": null,
+            "buy_order_price": 0.0,
+            "buy_order_vol": 0.0,
+            "sell_order_price": 0.0,
+            "sell_order_vol": 0.0
+          }
+        },
+        {
+          "position": 3916800,
+          "timestamp": "2021-05-28 21:00:00.500000",
+          "covered_by_native_trading_day": false,
+          "segment_start": true,
+          "all_five_quotes_null": true,
+          "all_market_columns_null": false,
+          "values": {
+            "trade_volume": null,
+            "open_interest": null,
+            "price": null,
+            "linear_ts": 37960200500.0,
+            "buy_price1": null,
+            "buy_vol1": null,
+            "sell_price1": null,
+            "sell_vol1": null,
+            "buy_order_price": 0.0,
+            "buy_order_vol": 0.0,
+            "sell_order_price": 0.0,
+            "sell_order_vol": 0.0
+          }
+        },
+        {
+          "position": 7200000,
+          "timestamp": "2021-09-22 21:00:00.500000",
+          "covered_by_native_trading_day": false,
+          "segment_start": true,
+          "all_five_quotes_null": true,
+          "all_market_columns_null": false,
+          "values": {
+            "trade_volume": null,
+            "open_interest": null,
+            "price": null,
+            "linear_ts": 39601800500.0,
+            "buy_price1": null,
+            "buy_vol1": null,
+            "sell_price1": null,
+            "sell_vol1": null,
+            "buy_order_price": 0.0,
+            "buy_order_vol": 0.0,
+            "sell_order_price": 0.0,
+            "sell_order_vol": 0.0
+          }
+        },
+        {
+          "position": 8634600,
+          "timestamp": "2021-11-17 21:00:00.500000",
+          "covered_by_native_trading_day": false,
+          "segment_start": true,
+          "all_five_quotes_null": true,
+          "all_market_columns_null": false,
+          "values": {
+            "trade_volume": null,
+            "open_interest": null,
+            "price": null,
+            "linear_ts": 40319100500.0,
+            "buy_price1": null,
+            "buy_vol1": null,
+            "sell_price1": null,
+            "sell_vol1": null,
+            "buy_order_price": 0.0,
+            "buy_order_vol": 0.0,
+            "sell_order_price": 0.0,
+            "sell_order_vol": 0.0
+          }
+        }
+      ],
+      "empty_quote_rows": [
+        {
+          "position": 414000,
+          "timestamp": "2021-01-18 09:00:00.500000",
+          "covered_by_native_trading_day": true,
+          "segment_start": true,
+          "all_five_quotes_null": true,
+          "all_market_columns_null": false,
+          "values": {
+            "trade_volume": null,
+            "open_interest": null,
+            "price": null,
+            "linear_ts": 36208800500.0,
+            "buy_price1": null,
+            "buy_vol1": null,
+            "sell_price1": null,
+            "sell_vol1": null,
+            "buy_order_price": 0.0,
+            "buy_order_vol": 0.0,
+            "sell_order_price": 0.0,
+            "sell_order_vol": 0.0
+          }
+        },
+        {
+          "position": 423000,
+          "timestamp": "2021-01-18 10:30:00.500000",
+          "covered_by_native_trading_day": true,
+          "segment_start": true,
+          "all_five_quotes_null": true,
+          "all_market_columns_null": false,
+          "values": {
+            "trade_volume": null,
+            "open_interest": null,
+            "price": null,
+            "linear_ts": 36213300500.0,
+            "buy_price1": null,
+            "buy_vol1": null,
+            "sell_price1": null,
+            "sell_vol1": null,
+            "buy_order_price": 0.0,
+            "buy_order_vol": 0.0,
+            "sell_order_price": 0.0,
+            "sell_order_vol": 0.0
+          }
+        },
+        {
+          "position": 430200,
+          "timestamp": "2021-01-18 13:30:00.500000",
+          "covered_by_native_trading_day": true,
+          "segment_start": true,
+          "all_five_quotes_null": true,
+          "all_market_columns_null": false,
+          "values": {
+            "trade_volume": null,
+            "open_interest": null,
+            "price": null,
+            "linear_ts": 36216900500.0,
+            "buy_price1": null,
+            "buy_vol1": null,
+            "sell_price1": null,
+            "sell_vol1": null,
+            "buy_order_price": 0.0,
+            "buy_order_vol": 0.0,
+            "sell_order_price": 0.0,
+            "sell_order_vol": 0.0
+          }
+        },
+        {
+          "position": 1092600,
+          "timestamp": "2021-02-09 13:30:00.500000",
+          "covered_by_native_trading_day": true,
+          "segment_start": true,
+          "all_five_quotes_null": true,
+          "all_market_columns_null": false,
+          "values": {
+            "trade_volume": null,
+            "open_interest": null,
+            "price": null,
+            "linear_ts": 36548100500.0,
+            "buy_price1": null,
+            "buy_vol1": null,
+            "sell_price1": null,
+            "sell_vol1": null,
+            "buy_order_price": 0.0,
+            "buy_order_vol": 0.0,
+            "sell_order_price": 0.0,
+            "sell_order_vol": 0.0
+          }
+        },
+        {
+          "position": 1792800,
+          "timestamp": "2021-03-11 21:00:00.500000",
+          "covered_by_native_trading_day": false,
+          "segment_start": true,
+          "all_five_quotes_null": true,
+          "all_market_columns_null": false,
+          "values": {
+            "trade_volume": null,
+            "open_interest": null,
+            "price": null,
+            "linear_ts": 36898200500.0,
+            "buy_price1": null,
+            "buy_vol1": null,
+            "sell_price1": null,
+            "sell_vol1": null,
+            "buy_order_price": 0.0,
+            "buy_order_vol": 0.0,
+            "sell_order_price": 0.0,
+            "sell_order_vol": 0.0
+          }
+        },
+        {
+          "position": 2878200,
+          "timestamp": "2021-04-20 10:30:00.500000",
+          "covered_by_native_trading_day": true,
+          "segment_start": true,
+          "all_five_quotes_null": true,
+          "all_market_columns_null": false,
+          "values": {
+            "trade_volume": null,
+            "open_interest": null,
+            "price": null,
+            "linear_ts": 37440900500.0,
+            "buy_price1": null,
+            "buy_vol1": null,
+            "sell_price1": null,
+            "sell_vol1": null,
+            "buy_order_price": 0.0,
+            "buy_order_vol": 0.0,
+            "sell_order_price": 0.0,
+            "sell_order_vol": 0.0
+          }
+        },
+        {
+          "position": 3009600,
+          "timestamp": "2021-04-23 13:30:00.500000",
+          "covered_by_native_trading_day": true,
+          "segment_start": true,
+          "all_five_quotes_null": true,
+          "all_market_columns_null": false,
+          "values": {
+            "trade_volume": null,
+            "open_interest": null,
+            "price": null,
+            "linear_ts": 37506600500.0,
+            "buy_price1": null,
+            "buy_vol1": null,
+            "sell_price1": null,
+            "sell_vol1": null,
+            "buy_order_price": 0.0,
+            "buy_order_vol": 0.0,
+            "sell_order_price": 0.0,
+            "sell_order_vol": 0.0
+          }
+        },
+        {
+          "position": 3916800,
+          "timestamp": "2021-05-28 21:00:00.500000",
+          "covered_by_native_trading_day": false,
+          "segment_start": true,
+          "all_five_quotes_null": true,
+          "all_market_columns_null": false,
+          "values": {
+            "trade_volume": null,
+            "open_interest": null,
+            "price": null,
+            "linear_ts": 37960200500.0,
+            "buy_price1": null,
+            "buy_vol1": null,
+            "sell_price1": null,
+            "sell_vol1": null,
+            "buy_order_price": 0.0,
+            "buy_order_vol": 0.0,
+            "sell_order_price": 0.0,
+            "sell_order_vol": 0.0
+          }
+        },
+        {
+          "position": 6044400,
+          "timestamp": "2021-08-11 13:30:00.500000",
+          "covered_by_native_trading_day": true,
+          "segment_start": true,
+          "all_five_quotes_null": true,
+          "all_market_columns_null": false,
+          "values": {
+            "trade_volume": null,
+            "open_interest": null,
+            "price": null,
+            "linear_ts": 39024000500.0,
+            "buy_price1": null,
+            "buy_vol1": null,
+            "sell_price1": null,
+            "sell_vol1": null,
+            "buy_order_price": 0.0,
+            "buy_order_vol": 0.0,
+            "sell_order_price": 0.0,
+            "sell_order_vol": 0.0
+          }
+        },
+        {
+          "position": 6120000,
+          "timestamp": "2021-08-13 10:30:00.500000",
+          "covered_by_native_trading_day": true,
+          "segment_start": true,
+          "all_five_quotes_null": true,
+          "all_market_columns_null": false,
+          "values": {
+            "trade_volume": null,
+            "open_interest": null,
+            "price": null,
+            "linear_ts": 39061800500.0,
+            "buy_price1": null,
+            "buy_vol1": null,
+            "sell_price1": null,
+            "sell_vol1": null,
+            "buy_order_price": 0.0,
+            "buy_order_vol": 0.0,
+            "sell_order_price": 0.0,
+            "sell_order_vol": 0.0
+          }
+        },
+        {
+          "position": 6127200,
+          "timestamp": "2021-08-13 13:30:00.500000",
+          "covered_by_native_trading_day": true,
+          "segment_start": true,
+          "all_five_quotes_null": true,
+          "all_market_columns_null": false,
+          "values": {
+            "trade_volume": null,
+            "open_interest": null,
+            "price": null,
+            "linear_ts": 39065400500.0,
+            "buy_price1": null,
+            "buy_vol1": null,
+            "sell_price1": null,
+            "sell_vol1": null,
+            "buy_order_price": 0.0,
+            "buy_order_vol": 0.0,
+            "sell_order_price": 0.0,
+            "sell_order_vol": 0.0
+          }
+        },
+        {
+          "position": 7079400,
+          "timestamp": "2021-09-15 13:30:00.500000",
+          "covered_by_native_trading_day": true,
+          "segment_start": true,
+          "all_five_quotes_null": true,
+          "all_market_columns_null": false,
+          "values": {
+            "trade_volume": null,
+            "open_interest": null,
+            "price": null,
+            "linear_ts": 39541500500.0,
+            "buy_price1": null,
+            "buy_vol1": null,
+            "sell_price1": null,
+            "sell_vol1": null,
+            "buy_order_price": 0.0,
+            "buy_order_vol": 0.0,
+            "sell_order_price": 0.0,
+            "sell_order_vol": 0.0
+          }
+        },
+        {
+          "position": 7200000,
+          "timestamp": "2021-09-22 21:00:00.500000",
+          "covered_by_native_trading_day": false,
+          "segment_start": true,
+          "all_five_quotes_null": true,
+          "all_market_columns_null": false,
+          "values": {
+            "trade_volume": null,
+            "open_interest": null,
+            "price": null,
+            "linear_ts": 39601800500.0,
+            "buy_price1": null,
+            "buy_vol1": null,
+            "sell_price1": null,
+            "sell_vol1": null,
+            "buy_order_price": 0.0,
+            "buy_order_vol": 0.0,
+            "sell_order_price": 0.0,
+            "sell_order_vol": 0.0
+          }
+        },
+        {
+          "position": 7830000,
+          "timestamp": "2021-10-21 10:30:00.500000",
+          "covered_by_native_trading_day": true,
+          "segment_start": true,
+          "all_five_quotes_null": true,
+          "all_market_columns_null": false,
+          "values": {
+            "trade_volume": null,
+            "open_interest": null,
+            "price": null,
+            "linear_ts": 39916800500.0,
+            "buy_price1": null,
+            "buy_vol1": null,
+            "sell_price1": null,
+            "sell_vol1": null,
+            "buy_order_price": 0.0,
+            "buy_order_vol": 0.0,
+            "sell_order_price": 0.0,
+            "sell_order_vol": 0.0
+          }
+        },
+        {
+          "position": 8634600,
+          "timestamp": "2021-11-17 21:00:00.500000",
+          "covered_by_native_trading_day": false,
+          "segment_start": true,
+          "all_five_quotes_null": true,
+          "all_market_columns_null": false,
+          "values": {
+            "trade_volume": null,
+            "open_interest": null,
+            "price": null,
+            "linear_ts": 40319100500.0,
+            "buy_price1": null,
+            "buy_vol1": null,
+            "sell_price1": null,
+            "sell_vol1": null,
+            "buy_order_price": 0.0,
+            "buy_order_vol": 0.0,
+            "sell_order_price": 0.0,
+            "sell_order_vol": 0.0
+          }
+        },
+        {
+          "position": 8823600,
+          "timestamp": "2021-11-24 10:30:00.500000",
+          "covered_by_native_trading_day": true,
+          "segment_start": true,
+          "all_five_quotes_null": true,
+          "all_market_columns_null": false,
+          "values": {
+            "trade_volume": null,
+            "open_interest": null,
+            "price": null,
+            "linear_ts": 40413600500.0,
+            "buy_price1": null,
+            "buy_vol1": null,
+            "sell_price1": null,
+            "sell_vol1": null,
+            "buy_order_price": 0.0,
+            "buy_order_vol": 0.0,
+            "sell_order_price": 0.0,
+            "sell_order_vol": 0.0
+          }
+        },
+        {
+          "position": 8830800,
+          "timestamp": "2021-11-24 13:30:00.500000",
+          "covered_by_native_trading_day": true,
+          "segment_start": true,
+          "all_five_quotes_null": true,
+          "all_market_columns_null": false,
+          "values": {
+            "trade_volume": null,
+            "open_interest": null,
+            "price": null,
+            "linear_ts": 40417200500.0,
+            "buy_price1": null,
+            "buy_vol1": null,
+            "sell_price1": null,
+            "sell_vol1": null,
+            "buy_order_price": 0.0,
+            "buy_order_vol": 0.0,
+            "sell_order_price": 0.0,
+            "sell_order_vol": 0.0
+          }
+        }
+      ],
+      "native_plan": {
+        "status": "ERROR",
+        "type": "ValueError",
+        "message": "交易日区间在 2021-03-12 00:00:00 前不连续: 1792800 != 1792801",
+        "rows": 9959400
+      }
+    },
+    "minimal_real_boundary_contrast": {
+      "selection_reason": "原生全年计划的首个未覆盖行，取其前后各最多3条真实行；同一上下文和原生helper，无人工生成行情",
+      "qualification": "DIAGNOSTIC_ONLY",
+      "rows": [
+        {
+          "position": 1792797,
+          "timestamp": "2021-03-11 14:59:59",
+          "covered_by_native_trading_day": true,
+          "segment_start": false,
+          "all_five_quotes_null": false,
+          "all_market_columns_null": false,
+          "values": {
+            "trade_volume": 44.0,
+            "open_interest": 1107879.0,
+            "price": 3198.0,
+            "linear_ts": 36898199000.0,
+            "buy_price1": 3197.0,
+            "buy_vol1": 424.0,
+            "sell_price1": 3199.0,
+            "sell_vol1": 632.0,
+            "buy_order_price": 3199.0,
+            "buy_order_vol": 9.0,
+            "sell_order_price": 3198.0,
+            "sell_order_vol": -39.0
+          }
+        },
+        {
+          "position": 1792798,
+          "timestamp": "2021-03-11 14:59:59.500000",
+          "covered_by_native_trading_day": true,
+          "segment_start": false,
+          "all_five_quotes_null": false,
+          "all_market_columns_null": false,
+          "values": {
+            "trade_volume": 27.0,
+            "open_interest": 1107869.0,
+            "price": 3198.0,
+            "linear_ts": 36898199500.0,
+            "buy_price1": 3197.0,
+            "buy_vol1": 414.0,
+            "sell_price1": 3198.0,
+            "sell_vol1": 668.0,
+            "buy_order_price": 0.0,
+            "buy_order_vol": 0.0,
+            "sell_order_price": 3197.0,
+            "sell_order_vol": -10.0
+          }
+        },
+        {
+          "position": 1792799,
+          "timestamp": "2021-03-11 15:00:00",
+          "covered_by_native_trading_day": true,
+          "segment_start": false,
+          "all_five_quotes_null": false,
+          "all_market_columns_null": false,
+          "values": {
+            "trade_volume": 0.0,
+            "open_interest": 1107869.0,
+            "price": 3198.0,
+            "linear_ts": 36898200000.0,
+            "buy_price1": 3197.0,
+            "buy_vol1": 413.0,
+            "sell_price1": 3198.0,
+            "sell_vol1": 35.0,
+            "buy_order_price": 3198.0,
+            "buy_order_vol": 633.0,
+            "sell_order_price": 3197.0,
+            "sell_order_vol": -1.0
+          }
+        },
+        {
+          "position": 1792800,
+          "timestamp": "2021-03-11 21:00:00.500000",
+          "covered_by_native_trading_day": false,
+          "segment_start": true,
+          "all_five_quotes_null": true,
+          "all_market_columns_null": false,
+          "values": {
+            "trade_volume": null,
+            "open_interest": null,
+            "price": null,
+            "linear_ts": 36898200500.0,
+            "buy_price1": null,
+            "buy_vol1": null,
+            "sell_price1": null,
+            "sell_vol1": null,
+            "buy_order_price": 0.0,
+            "buy_order_vol": 0.0,
+            "sell_order_price": 0.0,
+            "sell_order_vol": 0.0
+          }
+        },
+        {
+          "position": 1792801,
+          "timestamp": "2021-03-11 21:00:01",
+          "covered_by_native_trading_day": true,
+          "segment_start": false,
+          "all_five_quotes_null": false,
+          "all_market_columns_null": false,
+          "values": {
+            "trade_volume": 764.0,
+            "open_interest": 1106782.0,
+            "price": 3199.0,
+            "linear_ts": 36898201000.0,
+            "buy_price1": 3199.0,
+            "buy_vol1": 221.0,
+            "sell_price1": 3201.0,
+            "sell_vol1": 32.0,
+            "buy_order_price": 0.0,
+            "buy_order_vol": 0.0,
+            "sell_order_price": 0.0,
+            "sell_order_vol": 0.0
+          }
+        },
+        {
+          "position": 1792802,
+          "timestamp": "2021-03-11 21:00:01.500000",
+          "covered_by_native_trading_day": true,
+          "segment_start": false,
+          "all_five_quotes_null": false,
+          "all_market_columns_null": false,
+          "values": {
+            "trade_volume": 336.0,
+            "open_interest": 1106901.0,
+            "price": 3201.0,
+            "linear_ts": 36898201500.0,
+            "buy_price1": 3201.0,
+            "buy_vol1": 53.0,
+            "sell_price1": 3202.0,
+            "sell_vol1": 62.0,
+            "buy_order_price": 3201.0,
+            "buy_order_vol": 32.0,
+            "sell_order_price": 0.0,
+            "sell_order_vol": 0.0
+          }
+        },
+        {
+          "position": 1792803,
+          "timestamp": "2021-03-11 21:00:02",
+          "covered_by_native_trading_day": true,
+          "segment_start": false,
+          "all_five_quotes_null": false,
+          "all_market_columns_null": false,
+          "values": {
+            "trade_volume": 604.0,
+            "open_interest": 1106656.0,
+            "price": 3201.0,
+            "linear_ts": 36898202000.0,
+            "buy_price1": 3200.0,
+            "buy_vol1": 368.0,
+            "sell_price1": 3201.0,
+            "sell_vol1": 10.0,
+            "buy_order_price": 0.0,
+            "buy_order_vol": 0.0,
+            "sell_order_price": 3201.0,
+            "sell_order_vol": -53.0
+          }
+        }
+      ],
+      "adjacent_declared_intervals": [
+        {
+          "trade_day": "2021-03-11 00:00:00",
+          "contract": "m2105",
+          "declared_start": "2021-03-10 21:00:00.500000",
+          "declared_stop": "2021-03-11 15:00:00",
+          "start_pos": 1751400,
+          "stop_pos": 1792800
+        },
+        {
+          "trade_day": "2021-03-12 00:00:00",
+          "contract": "m2105",
+          "declared_start": "2021-03-11 21:00:01",
+          "declared_stop": "2021-03-12 15:00:00",
+          "start_pos": 1792801,
+          "stop_pos": 1834200
+        }
+      ],
+      "original": {
+        "status": "ERROR",
+        "type": "ValueError",
+        "message": "交易日区间在 2021-03-12 00:00:00 前不连续: 3 != 4",
+        "rows": 7
+      },
+      "in_memory_remove_only_uncovered_rows": {
+        "status": "PASS",
+        "chunks": 2,
+        "rows_covered": 6,
+        "rows": 6,
+        "first_chunk_trade_day": "2021-03-11 00:00:00",
+        "last_chunk_trade_day": "2021-03-12 00:00:00"
+      },
+      "negative_control_remove_one_covered_valid_row_keep_uncovered": {
+        "status": "ERROR",
+        "type": "ValueError",
+        "message": "交易日区间在 2021-03-12 00:00:00 前不连续: 2 != 3",
+        "rows": 6
+      },
+      "source_files_or_formal_artifacts_modified": false
+    },
+    "normal_real_rows_control": {
+      "selection_reason": "紧邻首个失败边界之前，同一品种/代码/时间基础的三个已覆盖真实行",
+      "rows": [
+        "2021-03-11 14:59:59",
+        "2021-03-11 14:59:59.500000",
+        "2021-03-11 15:00:00"
+      ],
+      "native_plan": {
+        "status": "PASS",
+        "chunks": 1,
+        "rows_covered": 3,
+        "rows": 3,
+        "first_chunk_trade_day": "2021-03-11 00:00:00",
+        "last_chunk_trade_day": "2021-03-11 00:00:00"
+      }
+    },
+    "full_index_coverage_counterfactual": {
+      "qualification": "DIAGNOSTIC_ONLY",
+      "in_memory_rows_removed": 4,
+      "only_uncovered_all_empty_segment_starts_removed": true,
+      "native_plan": {
+        "status": "PASS",
+        "chunks": 243,
+        "rows_covered": 9959396,
+        "rows": 9959396,
+        "first_chunk_trade_day": "2021-01-04 00:00:00",
+        "last_chunk_trade_day": "2021-12-31 00:00:00"
+      },
+      "not_a_formal_F4_result_or_fix": true,
+      "original_index_digest_after_checks": "e9eb5b1e9d7f07dc45cfe619f10c0f3b880f7b5a816a924453dd9be43c779a3d"
+    },
+    "existing_wall_axis_contrast": {
+      "qualification": "DIAGNOSTIC_ONLY_READONLY_EXISTING_LOGIC",
+      "raw_rows": 9959400,
+      "native_wall_rows": 9959383,
+      "excluded_by_existing_wall_logic": 17,
+      "wall_axis_digest": "10a955b67092a2b54484f455de703929d4d3266d5ae12bb89c4b5ff2f75a6cd3",
+      "same_as_current_Run_qualified_wall_trace": true,
+      "native_plan_on_wall_axis": {
+        "status": "PASS",
+        "chunks": 243,
+        "rows_covered": 9959383,
+        "rows": 9959383,
+        "first_chunk_trade_day": "2021-01-04 00:00:00",
+        "last_chunk_trade_day": "2021-12-31 00:00:00"
+      },
+      "Wall_code_or_results_changed": false
+    },
+    "source_representation_unchanged": {
+      "source_index_same": true,
+      "raw_files_size_mtime_same": true,
+      "main_contract_file_sha256_same": true
+    }
+  },
+  "additional_code_and_parameter_probe": "evidence/native_parameter_audit_reviewed.json",
+  "measurement_units": {
+    "input_rows": "原生calendar半秒索引行，按位置唯一计数，9959400行；不是F4 occurrence或AttackSegment数量",
+    "outside_rows": "没有任何native trading_days区间覆盖的索引行，4/9959400",
+    "empty_quote_rows": "price/buy_price1/buy_vol1/sell_price1/sell_vol1五字段同时空，共17；不等于所有市场字段空，不能称有效零成交",
+    "trading_days": "与本正式输入有非空交集的主力合约交易日区间，243"
+  },
+  "results_scope": "原始全年planner异常精确复现；局部正反对照与全年去4行内存反事实支持直接因果。所有反事实仅用于诊断，没有生成正式F4/Attack或替代全年X/G。",
+  "write_guards": {
+    "AbsFao._run_with": "只允许SubContinuousContract、write=False",
+    "P1DbaExportMixin.dump": "禁止",
+    "P1ChunkedDbaWriter": "禁止",
+    "actual_calls": [
+      {
+        "class": "SubContinuousContract",
+        "write_requested": false,
+        "read_requested": false
+      }
+    ],
+    "shared_production_mutex": "没有生产共享写入，未申请flock；只读原锁身份，不冒称持锁生产。"
+  },
+  "preservation": "evidence/preservation_check.json",
+  "stop_reason": "原异常的最小因果与四个真实同类边界已充分区分；没有必要重跑正式F4或做业务全量统计。"
+}

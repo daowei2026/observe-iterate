@@ -1,0 +1,104 @@
+{
+  "finding_id": "XGAP-M-CHUNK-COVERAGE-01",
+  "finding_source": "D002 A05已记录的X工程异常；不是G finding",
+  "observed_anomaly": "m两组F4均在原生交易日区间覆盖检查处失败，无法取得当前正式上游；m Attack未启动。",
+  "business_processing_chain": [
+    "半秒日历和报价DBA及主力合约交易日区间",
+    "SubContinuousContract直接组合存储轴/值并由共享loader按SOF日期切片",
+    "F4把该轴交给要求全部行被交易日连续覆盖的共享planner",
+    "检查在第一个未覆盖行失败，尚未进入逐chunk F4业务计算",
+    "没有有效F4供Attack消费"
+  ],
+  "responsible_logic": {
+    "localized_scope": "UPSTREAM_INPUT_ADAPTER_AND_TRADING_DAY_PARTITION_CONTRACT",
+    "earliest_incompatible_handoff": "TickQuoteContextWrapperSupport._load_cc_df仅按日期切片，将补齐半秒calendar索引中未被main_contract交易日区间覆盖的空报价行保留在F4输入；随后同一support._trading_day_chunk_plan要求相邻区间在输入位置上无缝覆盖。",
+    "first_causal_row": {
+      "position": 1792800,
+      "timestamp": "2021-03-11 21:00:00.500000",
+      "covered_by_native_trading_day": false,
+      "segment_start": true,
+      "all_five_quotes_null": true,
+      "all_market_columns_null": false,
+      "values": {
+        "trade_volume": null,
+        "open_interest": null,
+        "price": null,
+        "linear_ts": 36898200500.0,
+        "buy_price1": null,
+        "buy_vol1": null,
+        "sell_price1": null,
+        "sell_vol1": null,
+        "buy_order_price": 0.0,
+        "buy_order_vol": 0.0,
+        "sell_order_price": 0.0,
+        "sell_order_vol": 0.0
+      }
+    },
+    "first_incompatible_intervals": [
+      {
+        "trade_day": "2021-03-11 00:00:00",
+        "contract": "m2105",
+        "declared_start": "2021-03-10 21:00:00.500000",
+        "declared_stop": "2021-03-11 15:00:00",
+        "start_pos": 1751400,
+        "stop_pos": 1792800
+      },
+      {
+        "trade_day": "2021-03-12 00:00:00",
+        "contract": "m2105",
+        "declared_start": "2021-03-11 21:00:01",
+        "declared_stop": "2021-03-12 15:00:00",
+        "start_pos": 1792801,
+        "stop_pos": 1834200
+      }
+    ],
+    "actual_rule": "searchsorted(start,left)/searchsorted(stop,right)形成行区间；start必须等于previous stop且最终覆盖len(cc)。前一stop=1792800、下一start=1792801，位置1792800无区间归属。",
+    "causal_result": "固定真实索引和元数据即可复现原异常；局部只去掉该未覆盖行后通过，去掉普通有效行而保留该行仍失败。全年只去掉4个同类未覆盖行，原native planner覆盖243日，原数据不变。"
+  },
+  "source_refs": [
+    {
+      "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:t0/gen/cc.py",
+      "line_start": 131,
+      "line_end": 183
+    },
+    {
+      "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/mc.py",
+      "line_start": 22,
+      "line_end": 35
+    },
+    {
+      "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/tick_quote_context.py",
+      "line_start": 160,
+      "line_end": 166
+    },
+    {
+      "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/tick_quote_context.py",
+      "line_start": 220,
+      "line_end": 246
+    },
+    {
+      "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/pressure_big_deal.py",
+      "line_start": 225,
+      "line_end": 261
+    },
+    {
+      "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/pressure_big_deal.py",
+      "line_start": 590,
+      "line_end": 625
+    }
+  ],
+  "why_this_is_the_responsible_logic": "真实数据/元数据、原生helper和同上下文正反对照把直接因果限定到输入轴与交易日分块的合同衔接；同样错误不需要F4阈值、F4 core、Attack或DBA结果读取即可触发。该逻辑位于本Feature的上游/公共面，不以栈末行直接指认F4 core错误。",
+  "implementation_conformance": "现有loader和覆盖guard按当前代码执行；拒绝未覆盖输入不是一个被证明写错的比较式。",
+  "business_reasonableness": "当前正式源表示与F4物化接口不能共同满足本Run exact上游需求，形成有据输入适用性/衔接合同问题；未据此判定F4大额成交业务算法普遍不合理。",
+  "localization_limits": [
+    "未追溯空报价存储行由哪个数据生成环节写入，未宣布市场数据或main_contract元数据哪一方本身错误。",
+    "在内存去4行只验证planner因果；保留的13条空报价、F4后续业务计算、receipt及Attack后续exact axis均未被证明可用。",
+    "Wall现有逻辑排除17条空报价并保留原坐标，其轴与当前本Run合格Wall trace摘要一致；这不是把Wall专用过滤器转作F4正式修法。"
+  ],
+  "evidence_refs": [
+    "evidence/E01/diagnostic_result.json",
+    "MinimalDiscriminatingExperiment.json",
+    "evidence/native_parameter_audit_reviewed.json",
+    "evidence/source_excerpts.md"
+  ]
+}

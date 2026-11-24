@@ -1,0 +1,167 @@
+{
+  "experiment_id": "E02",
+  "call_id": "C0011",
+  "delegation_id": "D003",
+  "qualification": "DIAGNOSTIC_ONLY_CONSTRUCTION_AND_SOURCE_AUDIT",
+  "checked_at": "2026-11-24T11:07:15.110898+00:00",
+  "status": "PASS",
+  "Feature_run_permitted": false,
+  "actual_modules": [
+    {
+      "module": "mquant.tis.t0.gen.cc",
+      "actual_loaded_file": "/dwdhome/fy/BASE_E6_2_copy/mquant/tis/t0/gen/cc.py",
+      "sha256": "4c641c0d3e504110ca27b500c79fceadf45194b8650370ddc9bbfe2b2e2794e4",
+      "same_copy_snapshot_as_E01": true
+    },
+    {
+      "module": "mquant.tis.hf.mc",
+      "actual_loaded_file": "/dwdhome/fy/BASE_E6_2_copy/mquant/tis/hf/mc.py",
+      "sha256": "f5a4eb04c44bb118651a807c1d465ed9c6e481476a5ebc5b7ef5e5e8d4a4dc5b",
+      "same_copy_snapshot_as_E01": true
+    },
+    {
+      "module": "mquant.tis.hf.prel0.tick_quote_context",
+      "actual_loaded_file": "/dwdhome/fy/BASE_E6_2_copy/mquant/tis/hf/prel0/tick_quote_context.py",
+      "sha256": "cf5041c1e020f0fb12cd893f32adc30b3a6dcc351fb5edcf0d4b7b5c6909d8ec",
+      "same_copy_snapshot_as_E01": true
+    },
+    {
+      "module": "mquant.tis.hf.prel0.pressure_big_deal",
+      "actual_loaded_file": "/dwdhome/fy/BASE_E6_2_copy/mquant/tis/hf/prel0/pressure_big_deal.py",
+      "sha256": "d15e2191c16e400be0d57f9193147d1e78e5beb548e1b353928d22ee7379c537",
+      "same_copy_snapshot_as_E01": true
+    },
+    {
+      "module": "mquant.tis.hf.prel0.wall_assembler",
+      "actual_loaded_file": "/dwdhome/fy/BASE_E6_2_copy/mquant/tis/hf/prel0/wall_assembler.py",
+      "sha256": "58f056bbb4447929237599820c9d1012177c84694e881391223b25163f724bce",
+      "same_copy_snapshot_as_E01": true
+    },
+    {
+      "module": "mquant.tis.hf.prel0.attack_flow_assembler",
+      "actual_loaded_file": "/dwdhome/fy/BASE_E6_2_copy/mquant/tis/hf/prel0/attack_flow_assembler.py",
+      "sha256": "35de2fcbdf91dd23f13e6c990ce8551bb33a675be51c0e3bf8598a3066501581",
+      "same_copy_snapshot_as_E01": true
+    },
+    {
+      "module": "mquant.tis.hf.prel0.p1_dba_export",
+      "actual_loaded_file": "/dwdhome/fy/BASE_E6_2_copy/mquant/tis/hf/prel0/p1_dba_export.py",
+      "sha256": "2cd3f21cfa570f7e716b96a08d745cf40be2221df3d45e9deff9e1d878b38073",
+      "same_copy_snapshot_as_E01": true
+    }
+  ],
+  "default_instances": [
+    {
+      "feature": "wall",
+      "ppid": "WallAssembler_f32460448c4bde6d0a683cfc262808694c9f0a75",
+      "same_as_original_bound_default_instance": true
+    },
+    {
+      "feature": "tactical",
+      "ppid": "DirectedBigDealTick_ecd83d7195757d35f9fa349e9cc810de55ac07ba",
+      "same_as_original_bound_default_instance": true,
+      "actual_parameters": {
+        "parameter_set_id": "tactical-default",
+        "qualification_family": "tactical",
+        "amt_n": 30,
+        "lane_threshold_map": {
+          "tactical": [
+            "0.99",
+            "0.995"
+          ]
+        },
+        "same_best_tol_ticks": 0,
+        "big_deal_ratio_min": 1.0
+      }
+    },
+    {
+      "feature": "structural",
+      "ppid": "DirectedBigDealTick_b7bee7c742968dcbde29e53ca969d381390aabf9",
+      "same_as_original_bound_default_instance": true,
+      "actual_parameters": {
+        "parameter_set_id": "structural-default",
+        "qualification_family": "structural",
+        "amt_n": 30,
+        "lane_threshold_map": {
+          "structural": [
+            "0.997",
+            "0.999"
+          ]
+        },
+        "same_best_tol_ticks": 0,
+        "big_deal_ratio_min": 1.0
+      }
+    },
+    {
+      "feature": "attack",
+      "ppid": "AttackFlowAssembler_700681a3da4b7aedeb84a6066b6ca4af733d4b14",
+      "same_as_original_bound_default_instance": true
+    }
+  ],
+  "native_planner_reads_exposed_Feature_parameters": false,
+  "shared_loader_reads_exposed_Feature_parameters": false,
+  "parameter_consumers": [
+    {
+      "parameters": [
+        "parameter_set_id"
+      ],
+      "consumer": "实例寻址/元数据，不改变cc时间轴"
+    },
+    {
+      "parameters": [
+        "qualification_family",
+        "lane_threshold_map"
+      ],
+      "consumer": "pressure_big_deal.py:593-597资格族一致性；179-193 threshold材料及247-250分块后阈值对齐；不改变cc索引"
+    },
+    {
+      "parameters": [
+        "amt_n"
+      ],
+      "consumer": "pressure_big_deal.py:176-193 AmountThreshold材料；与cc索引单独加载"
+    },
+    {
+      "parameters": [
+        "same_best_tol_ticks",
+        "big_deal_ratio_min"
+      ],
+      "consumer": "pressure_big_deal.py:230先分块校验，261以后才进入compute_pressure_big_deal_chunk业务计算"
+    },
+    {
+      "parameters": [
+        "Attack自身参数"
+      ],
+      "consumer": "Attack在755以后先取得Wall/F4；未到Attack业务计算，不能修复上游planner输入合同"
+    }
+  ],
+  "hardcoded_or_external_constraints": [
+    {
+      "constraint": "searchsorted(start,left)/searchsorted(stop,right)、expected_start=0、严格start==previous_stop和末尾coverage==len(cc)",
+      "consumer": "tick_quote_context.py:220-246",
+      "effect": "固定输入轴覆盖不变量；没有可调缺口容忍参数"
+    },
+    {
+      "constraint": "trading_days读取原生main_contract/m.csv，cc索引来自指定半秒calendar",
+      "consumer": "hf/mc.py:22-35；t0/gen/cc.py:150-183",
+      "effect": "当前正式SOF/日历/范围为输入绑定，不是可任意调参换范围的业务参数"
+    },
+    {
+      "constraint": "DEFAULT_EPS_VOL=1e-12及uti=linear_ts//500-1",
+      "consumer": "pressure_big_deal_core.py:21及tick_quote_context.py:97-106",
+      "effect": "数值/半秒映射，不参与此次先于core的timestamp区间覆盖检查"
+    }
+  ],
+  "parameter_repairability": {
+    "feasibility_status": "PROVEN_NOT_ADJUSTABLE",
+    "scope": "当前正式已暴露的Attack/F4业务参数及已核数值容差常量，针对本次区间覆盖失败",
+    "proof": "相同cc.index和trading_days决定planner结果，planner/loader不读上述P；所有阈值和数值计算位于已失败覆盖检查之后或与cc独立。",
+    "not_claimed": "未声称所有实现方式或上游合同都无解；上游输入适配/元数据/分块合同需要其责任面处理，当前D不修改。"
+  },
+  "source_or_product_changes": false,
+  "formal_X_or_G_performed": false,
+  "source_annotation_review": {
+    "original_audit_preserved": "native_parameter_audit.json",
+    "original_sha256": "b8f59947d2207c66bcec475388308267d6133b7980c55916fdf030175351d47b",
+    "correction": "DEFAULT_EPS_VOL实际定义在pressure_big_deal_core.py:21，原E02人工行号注释24仅为定位笔误；数值、AST检查及结论无变。"
+  }
+}

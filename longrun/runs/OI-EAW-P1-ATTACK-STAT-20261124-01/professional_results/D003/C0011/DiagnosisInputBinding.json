@@ -1,0 +1,53 @@
+{
+  "diagnosis_id": "OI-EAW-P1-ATTACK-STAT-20261124-01-D003-R01",
+  "finding_source_type": "RECORDED_X_ENGINEERING_ANOMALY_NO_G_FINDING",
+  "FrozenExpectation": {
+    "expectation_id": "ATTACK-X-EXACT-TECHNICAL-UPSTREAM-BINDING",
+    "expectation_version": "Owner/唯一输入@987-20261124，当前诊断输入适配v1",
+    "statement": "在锁定实例、rb/m真实市场2021全年、指定SOF与日历下取得实际有效的Wall和所选两组F4及Attack三正式产品，并完成同一性与完整读回；不能以构造、文件存在、局部实验或无成功receipt的半成品充当完成。",
+    "source_refs": [
+      "daowei2026/observe-iterate@9877826236e0995e7255e6cbfedc2d1b89dea6da:task-inputs/eaw-p1-attack-stat-20261124/ATTACK_RUN_INPUT.md",
+      "daowei2026/observe-iterate@b912f85368fed916c45603c81aa8ef304bc146b6:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/OWNER_START.md"
+    ],
+    "not_assumed": "未预设原生异常一定是F4算法缺陷、数据错误或参数问题；没有新市场行为预期、G finding或已完成G。"
+  },
+  "EvidenceComparisonPackage": {
+    "binding_ref": "daowei2026/observe-iterate@d3e05b73fd2a6fcc3b3b5d248bdd61f11e8f7a34:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/professional_results/D002/C0009/FeatureRunResultBinding.json",
+    "actual": "原生m上下文已补正；Wall5表完整复用核验通过；两F4实际Gen均因2021-03-12前1792800!=1792801失败；Attack未启动；12个失败DBA无完整结果资格。",
+    "valid_results_retained": "rb当前三产品与R01完整读回、rb技术上游、m Wall",
+    "original_U_status": "PARTIAL",
+    "original_D002_complete": false
+  },
+  "BusinessIntent": "按原正式目标查明当前X异常的最早责任层和可执行路线；保持Feature边界，不能消费无效上游或把诊断当G。",
+  "ProcessingChain": [
+    "真实市场/半秒日历DBA + 主力合约交易日起止表",
+    "SubContinuousContract当前品种/Calendar读取 + SOF期间切片",
+    "F4当前默认实例的原生交易日chunk plan",
+    "F4阈值对齐/逐chunk业务计算/正式DBA与receipt",
+    "Attack消费同一exact Wall/F4与轴，形成三产品及完整读回"
+  ],
+  "RelevantCodeOrRequirementRefs": [
+    "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:t0/gen/cc.py",
+    "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/mc.py",
+    "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/tick_quote_context.py",
+    "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/pressure_big_deal.py"
+  ],
+  "DataBindingAndTimeBasis": {
+    "symbol": "m",
+    "sof_name": "TA_updto20240229_DBA",
+    "stk_tlist": "m",
+    "requested_start": "2021-01-01",
+    "requested_end": "2021-12-31",
+    "calendar": "night_end_at_2300",
+    "timestamp_basis": "原生natural_tsa时间轴与main_contract开始/结束时刻；不用诊断运行wall-clock替代市场时间",
+    "formal_scope_change": false
+  },
+  "CompetingExplanationsBeforeChecks": [
+    "H1：m交易集/实例/源码/范围仍绑定错误",
+    "H2：真实有效报价落在交易日区间外，或原始市场数据缺损/次序错误",
+    "H3：补齐半秒输入表示与交易日起止的边界口径不兼容，进入强覆盖检查即失败",
+    "H4：F4阈值/业务参数或Attack算法造成当前异常",
+    "H5：旧cache、半成品读取或DBA序列化是此次chunk错误的起点"
+  ],
+  "MinimalChecksPlanned": "只读当前真实m输入及native交易日表；复现原生planner；检查首个未覆盖行及邻行，做同上下文局部正反对照；仅内存诊断性去除未覆盖全空行观察planner；核现有Wall轴与参数消费位置。禁止任何正式结果、cache、源DBA写入；不重做U/X/G。"
+}

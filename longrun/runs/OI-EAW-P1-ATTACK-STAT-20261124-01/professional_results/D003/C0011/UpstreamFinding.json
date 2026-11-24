@@ -1,0 +1,153 @@
+{
+  "upstream_finding_id": "UPSTREAM-M-INPUT-AXIS-01",
+  "finding_id": "XGAP-M-CHUNK-COVERAGE-01",
+  "diagnosis_id": "OI-EAW-P1-ATTACK-STAT-20261124-01-D003-R01",
+  "finding_origin": "RECORDED_X_FAILURE_NOT_G_DISCOVERY",
+  "status": "CONFIRMED_UPSTREAM_INTEGRATION_CONTRACT_BLOCKER",
+  "upstream_scope": "DirectedBigDealTick/F4当前输入适配与共享TickQuoteContext交易日分块合同；涉及SubContinuousContract表示和main_contract交易日起止的衔接，不预定上游哪一个源文件应被修改。",
+  "issue_type": "InputPurposeMismatch",
+  "code_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74",
+  "formal_binding_ref": "daowei2026/observe-iterate@d3e05b73fd2a6fcc3b3b5d248bdd61f11e8f7a34:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/professional_results/D002/C0009/FeatureRunResultBinding.json",
+  "observed_facts": {
+    "native_rows": 9959400,
+    "trading_days": 243,
+    "uncovered_rows": [
+      {
+        "position": 1792800,
+        "timestamp": "2021-03-11 21:00:00.500000",
+        "covered_by_native_trading_day": false,
+        "segment_start": true,
+        "all_five_quotes_null": true,
+        "all_market_columns_null": false,
+        "values": {
+          "trade_volume": null,
+          "open_interest": null,
+          "price": null,
+          "linear_ts": 36898200500.0,
+          "buy_price1": null,
+          "buy_vol1": null,
+          "sell_price1": null,
+          "sell_vol1": null,
+          "buy_order_price": 0.0,
+          "buy_order_vol": 0.0,
+          "sell_order_price": 0.0,
+          "sell_order_vol": 0.0
+        }
+      },
+      {
+        "position": 3916800,
+        "timestamp": "2021-05-28 21:00:00.500000",
+        "covered_by_native_trading_day": false,
+        "segment_start": true,
+        "all_five_quotes_null": true,
+        "all_market_columns_null": false,
+        "values": {
+          "trade_volume": null,
+          "open_interest": null,
+          "price": null,
+          "linear_ts": 37960200500.0,
+          "buy_price1": null,
+          "buy_vol1": null,
+          "sell_price1": null,
+          "sell_vol1": null,
+          "buy_order_price": 0.0,
+          "buy_order_vol": 0.0,
+          "sell_order_price": 0.0,
+          "sell_order_vol": 0.0
+        }
+      },
+      {
+        "position": 7200000,
+        "timestamp": "2021-09-22 21:00:00.500000",
+        "covered_by_native_trading_day": false,
+        "segment_start": true,
+        "all_five_quotes_null": true,
+        "all_market_columns_null": false,
+        "values": {
+          "trade_volume": null,
+          "open_interest": null,
+          "price": null,
+          "linear_ts": 39601800500.0,
+          "buy_price1": null,
+          "buy_vol1": null,
+          "sell_price1": null,
+          "sell_vol1": null,
+          "buy_order_price": 0.0,
+          "buy_order_vol": 0.0,
+          "sell_order_price": 0.0,
+          "sell_order_vol": 0.0
+        }
+      },
+      {
+        "position": 8634600,
+        "timestamp": "2021-11-17 21:00:00.500000",
+        "covered_by_native_trading_day": false,
+        "segment_start": true,
+        "all_five_quotes_null": true,
+        "all_market_columns_null": false,
+        "values": {
+          "trade_volume": null,
+          "open_interest": null,
+          "price": null,
+          "linear_ts": 40319100500.0,
+          "buy_price1": null,
+          "buy_vol1": null,
+          "sell_price1": null,
+          "sell_vol1": null,
+          "buy_order_price": 0.0,
+          "buy_order_vol": 0.0,
+          "sell_order_price": 0.0,
+          "sell_order_vol": 0.0
+        }
+      }
+    ],
+    "five_quote_null_rows": 17,
+    "all_market_fields_null": false,
+    "prediction_hit_fields_at_uncovered_rows": "buy/sell order price/vol为0，linear_ts存在；不能将空报价解释为有效无活动成交。",
+    "first_native_error": {
+      "status": "ERROR",
+      "type": "ValueError",
+      "message": "交易日区间在 2021-03-12 00:00:00 前不连续: 1792800 != 1792801",
+      "rows": 9959400
+    },
+    "in_memory_counterfactual": {
+      "status": "PASS",
+      "chunks": 243,
+      "rows_covered": 9959396,
+      "rows": 9959396,
+      "first_chunk_trade_day": "2021-01-04 00:00:00",
+      "last_chunk_trade_day": "2021-12-31 00:00:00"
+    }
+  },
+  "logic_localization_ref": "LogicLocalization.json",
+  "evidence_refs": [
+    "evidence/E01/diagnostic_result.json",
+    "MinimalDiscriminatingExperiment.json",
+    "evidence/native_parameter_audit_reviewed.json"
+  ],
+  "impact_on_Attack": {
+    "m_F4_tactical_and_structural": "A05均实际失败，无完整有效结果/receipt/严格读回",
+    "m_Attack": "未启动，不能取得当前三正式产品",
+    "rb_and_m_Wall": "当前既有有效成果保留，不因本异常自动作废或伪造新成功",
+    "formal_X_complete": false,
+    "eligible_for_G": false,
+    "Feature_release_established": false,
+    "conditional_downstream_axis_risk": "Attack也使用共享载入/分块并要求Wall/F4 availability exact axis；当前真实Wall轴9959383行，原输入9959400行，去4行诊断轴9959396行，三者不能混用。未执行m Attack，不把静态约束或反事实当成已发生的Attack运行故障。"
+  },
+  "authority_boundary": {
+    "upstream_edit_authorized_in_this_Run": false,
+    "market_data_edit_authorized": false,
+    "formal_scope_change_authorized": false,
+    "no_upstream_or_common_code_modified": true,
+    "Owner_request_created": false
+  },
+  "recovery_conditions": [
+    "由具有相应合法责任面的上游处理方核定并协调源表示/交易日区间/适配分块的统一合同；当前executor不抢改F4、Wall、共同处理器或市场数据。",
+    "取得准确代码/参数/SOF/日历/全范围/source轴及成功receipt/完整读回的可用上游绑定；涉及变更时明确受影响旧绑定的资格，不能用旧结果证明新绑定。",
+    "同时核对Wall、F4 availability和Attack原生cc消费轴的一致性；planner的内存去行通过不等于这些结果已合格。",
+    "原manager依原Workflow协调恢复原D002；以新真实C/attempt和fresh结果写面保留12个失败DBA，任何共享生产重新获取同一路径同inode原flock。",
+    "继续尚缺m F4/Attack正式全年X及完整严格读回，完整X有效后才能进入G；本诊断不签后继或宣布Feature验收。"
+  ],
+  "professional_diagnosis_complete": true,
+  "upstream_repair_or_formal_X_recovery_performed": false
+}
