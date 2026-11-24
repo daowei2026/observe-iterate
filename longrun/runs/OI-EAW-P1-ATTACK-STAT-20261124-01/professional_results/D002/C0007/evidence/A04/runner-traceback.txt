@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-EAW-P1-ATTACK-STAT-20261124-01/D002/C0007/run_formal_x_A04.py", line 71, in <module>
+    fcntl.flock(fd,fcntl.LOCK_EX|fcntl.LOCK_NB)
+BlockingIOError: [Errno 11] Resource temporarily unavailable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-EAW-P1-ATTACK-STAT-20261124-01/D002/C0007/run_formal_x_A04.py", line 74, in <module>
+    if time.monotonic()>=deadline:raise TimeoutError('SHARED_PRODUCTION_LOCK_STILL_HELD_AFTER_600_SECONDS')
+TimeoutError: SHARED_PRODUCTION_LOCK_STILL_HELD_AFTER_600_SECONDS

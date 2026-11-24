@@ -1,0 +1,2011 @@
+{
+  "run_id": "OI-EAW-P1-ATTACK-STAT-20261124-01",
+  "call_id": "C0007",
+  "delegation_id": "D002",
+  "attempt_id": "A03",
+  "scope": "FORMAL_2021_RB_M",
+  "started_at": "2026-11-24T08:56:08.112916+00:00",
+  "lock_path": "/dwdhome/fy/cgpterm/artifacts/wall-f-closure-20261122/FORMAL_PRODUCTION.lock",
+  "lock_acquired": true,
+  "lock_released": true,
+  "feature_execution_started": true,
+  "formal_complete": false,
+  "feature_results": [
+    {
+      "symbol": "rb",
+      "feature": "wall",
+      "constructor_parameters": {
+        "parameter_set_id": "wall-default",
+        "qt_freq": "1d",
+        "qt_n": 30,
+        "qt_quantile": 0.997,
+        "w_depth_ref_ticks": 1200,
+        "large_quote_ratio_min": 1.0,
+        "allow_zero_qt_fallback": false,
+        "thick_vs_hi_ratio": 1.0,
+        "thin_vs_mid_ratio": 0.7,
+        "allow_thin_brick": false,
+        "p_wall_ticks": 1,
+        "t_wall_ticks": 6,
+        "near_band_ticks": null,
+        "far_band_ticks": null,
+        "connect_max_core_dist_ticks": null,
+        "connect_gap_max_ticks": null,
+        "support_buffer_keep_ticks": null,
+        "thin_eval_window_ticks": null,
+        "band_update_min_shift_ticks": null,
+        "dormant_no_presence_ticks": null,
+        "dormant_far_ticks": null,
+        "end_far_hold_ticks": null,
+        "end_far_ticks": null,
+        "break_after_no_presence_ticks": null,
+        "wall_dead_timeout_ticks": null,
+        "allow_brick_join_dormant": true,
+        "thin_contact_min_hits": 3,
+        "thin_contact_frac_end": 0.6
+      },
+      "ppdict": {
+        "parameter_set_id": "wall-default",
+        "qt_freq": "1d",
+        "qt_n": 30,
+        "qt_quantile": 0.997,
+        "w_depth_ref_ticks": 1200,
+        "large_quote_ratio_min": 1.0,
+        "allow_zero_qt_fallback": false,
+        "thick_vs_hi_ratio": 1.0,
+        "thin_vs_mid_ratio": 0.7,
+        "allow_thin_brick": false,
+        "p_wall_ticks": 1,
+        "t_wall_ticks": 6,
+        "near_band_ticks": null,
+        "far_band_ticks": null,
+        "connect_max_core_dist_ticks": null,
+        "connect_gap_max_ticks": null,
+        "support_buffer_keep_ticks": null,
+        "thin_eval_window_ticks": null,
+        "band_update_min_shift_ticks": null,
+        "dormant_no_presence_ticks": null,
+        "dormant_far_ticks": null,
+        "end_far_hold_ticks": null,
+        "end_far_ticks": null,
+        "break_after_no_presence_ticks": null,
+        "wall_dead_timeout_ticks": null,
+        "allow_brick_join_dormant": true,
+        "thin_contact_min_hits": 3,
+        "thin_contact_frac_end": 0.6
+      },
+      "ppid": "WallAssembler_f32460448c4bde6d0a683cfc262808694c9f0a75",
+      "full_dir": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-EAW-P1-ATTACK-STAT-20261124-01/D002/formal-attempt-A03/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300",
+      "expected_code_version": "git:179016111ed0394f92025313e46bd13534932a74+source-sha256:e7e97d1434a558e70abac3ac3cb2e547a01538ffb868969d89a1bb5d888e6e46",
+      "started_at": "2026-11-24T08:56:23.071169+00:00",
+      "status": "EXECUTED_AND_FULL_READBACK_VERIFIED",
+      "feature_elapsed_seconds": 1791.382,
+      "receipts": [
+        {
+          "actual_business_parameters": {
+            "allow_brick_join_dormant": true,
+            "band_update_min_shift_ticks": 1,
+            "break_after_no_presence_ticks": 3,
+            "connect_gap_max_ticks": 3,
+            "connect_max_core_dist_ticks": 1,
+            "dormant_far_ticks": 2,
+            "dormant_no_presence_ticks": 3,
+            "end_far_hold_ticks": 3,
+            "end_far_ticks": 2,
+            "far_band_ticks": 2,
+            "near_band_ticks": 1,
+            "p_wall_ticks": 1,
+            "support_buffer_keep_ticks": 6,
+            "t_wall_ticks": 6,
+            "thin_contact_frac_end": 0.6,
+            "thin_contact_min_hits": 3,
+            "thin_eval_window_ticks": 3,
+            "wall_dead_timeout_ticks": 12
+          },
+          "artifact_location": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-EAW-P1-ATTACK-STAT-20261124-01/D002/formal-attempt-A03/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300",
+          "code_version": "git:179016111ed0394f92025313e46bd13534932a74+source-sha256:e7e97d1434a558e70abac3ac3cb2e547a01538ffb868969d89a1bb5d888e6e46",
+          "direct_upstream_artifacts": [],
+          "error": null,
+          "feature_instance": "WallAssembler:wall-default",
+          "method_snapshot_fingerprint": null,
+          "parameter_set_id": "wall-default",
+          "producer_private_parameters": {
+            "allow_thin_brick": false,
+            "allow_zero_qt_fallback": false,
+            "eps_vol": 1e-12,
+            "large_quote_ratio_min": 1.0,
+            "qt_freq": "1d",
+            "qt_n": 30,
+            "qt_quantile": 0.997,
+            "thick_vs_hi_ratio": 1.0,
+            "thin_vs_mid_ratio": 0.7,
+            "w_depth_ref_ticks": 1200
+          },
+          "product_kind": "wall_lifecycle",
+          "schema_version": "wall_lifecycle-v1.6.1",
+          "source_scope": {
+            "calendar_or_session": "night_end_at_2300",
+            "market_source_cut": "market:rb:night_end_at_2300:time:2021-01-04T09:00:00.500000..2021-12-31T15:00:00",
+            "target": "rb",
+            "time_range": "time:2021-01-04T09:00:00.500000..2021-12-31T15:00:00"
+          },
+          "status": "success"
+        }
+      ],
+      "tables": [
+        {
+          "key": "wall__stream",
+          "rows": 317088,
+          "columns": [
+            "availability_code",
+            "band_hi",
+            "band_lo",
+            "chunk_end_ts",
+            "chunk_id",
+            "core_price",
+            "event_type_code",
+            "occurrence_ordinal",
+            "reason_code",
+            "side_code",
+            "status_code",
+            "ts",
+            "uti",
+            "wall_id"
+          ],
+          "dtypes": {
+            "availability_code": "int8",
+            "band_hi": "float64",
+            "band_lo": "float64",
+            "chunk_end_ts": "datetime64[ns]",
+            "chunk_id": "int64",
+            "core_price": "float64",
+            "event_type_code": "int64",
+            "occurrence_ordinal": "int64",
+            "reason_code": "float64",
+            "side_code": "int64",
+            "status_code": "int64",
+            "ts": "datetime64[ns]",
+            "uti": "int64",
+            "wall_id": "int64"
+          },
+          "first_index": "2021-02-23 09:07:08.500000",
+          "last_index": "2021-12-31 14:58:53",
+          "full_readback_digest": {
+            "__index__": "109546fb0fda30297eb9c09666558579c8c74040382d3a3b325d2de44b9ca907",
+            "availability_code": "45c8e9667d624c186654fc0247e09d367e74c489c869a403ff42006565a77b4e",
+            "band_hi": "0da21e95f4d55810e1f561be6a1732719d7ca57948580e0c8dff52ccc1304717",
+            "band_lo": "5bd1876490f4b747a1a9eac82b3c7f2c3b17545a1cc740b75e688744475ae826",
+            "chunk_end_ts": "3b7e291a04bab2e03fe4b3aa0e496c9ded2c53bb8d68b14be876b095548ad7a7",
+            "chunk_id": "cf828b5c3857d14775f132127c9f8ba633130139b78faf62f376fda3a105cb9a",
+            "core_price": "091499967699b1309f1801329b686d8be2bfd13e00cdc72e0ee9b6647487789f",
+            "event_type_code": "2539b351a7c5e21db24a79357b104307d7c0c60e709b4c38b99c71d2e62ff2a8",
+            "occurrence_ordinal": "634e095c362dea11c4f083ca149b7d6836967961db31dd9fb73353c3d49ffea0",
+            "reason_code": "55d72b7bcf7ea634da3de56b1723a27e6609476bada4a0092105efb6ae3f425b",
+            "side_code": "992f02ae7fbba0a8c42edeb105cbd64c6f52cf5e3fe508043d79085e92dbf00f",
+            "status_code": "1c3a871d432da8a976be98da35a08d1d23c9cf81a1cb8d41f77551527e84557e",
+            "ts": "109546fb0fda30297eb9c09666558579c8c74040382d3a3b325d2de44b9ca907",
+            "uti": "719d130a23f0dd6560cf140ebf37e1af6afb88eaeb5ded81a78b3d38beecc627",
+            "wall_id": "1d3b9d5d08af9edab4703cca1f79c31faa70ff88924d5eebc8201c33ccea53c5"
+          },
+          "matches_returned_result": true
+        },
+        {
+          "key": "wall__stream__occ0001",
+          "rows": 17234,
+          "columns": [
+            "availability_code",
+            "band_hi",
+            "band_lo",
+            "chunk_end_ts",
+            "chunk_id",
+            "core_price",
+            "event_type_code",
+            "occurrence_ordinal",
+            "reason_code",
+            "side_code",
+            "status_code",
+            "ts",
+            "uti",
+            "wall_id"
+          ],
+          "dtypes": {
+            "availability_code": "int8",
+            "band_hi": "float64",
+            "band_lo": "float64",
+            "chunk_end_ts": "datetime64[ns]",
+            "chunk_id": "int64",
+            "core_price": "float64",
+            "event_type_code": "int64",
+            "occurrence_ordinal": "int64",
+            "reason_code": "float64",
+            "side_code": "int64",
+            "status_code": "int64",
+            "ts": "datetime64[ns]",
+            "uti": "int64",
+            "wall_id": "int64"
+          },
+          "first_index": "2021-02-23 11:19:48",
+          "last_index": "2021-12-31 14:53:07.500000",
+          "full_readback_digest": {
+            "__index__": "51f9fafcad1ff1821ebe2c260e576a443660bc56ba272079d94995839537d092",
+            "availability_code": "8f0fcba1104412653f8420e910c4bfc165b09a44a1ba2c460b739a2dcdb769d4",
+            "band_hi": "dab1ec848c8b1428d485dee16cc3720aa38a3324ecaa85b950079a150b16e59f",
+            "band_lo": "13947ae786b0d7ea69f2e79c41ba2c7be130a920df4e457440788f1da63357a2",
+            "chunk_end_ts": "2fe33109d5a3bd71ac931461cbdd19c39ea4b1f511952b170cce507d0f5cbbe9",
+            "chunk_id": "daed6b56153739d6eefc28f7f6e3128bab25f7f3eaa8dcd7fa2ffba9695873a6",
+            "core_price": "d1f761f601f34036357e8e8245af593da3a0eeecef7382d7c58bb2b64448089d",
+            "event_type_code": "7d1571b021d53e6cf18923c24e87c434aad842fb7be198e9df8968e72d56c857",
+            "occurrence_ordinal": "76b60997fad58359db4e9389f72e4a94a203dc2a6500fe4617641e166de182cf",
+            "reason_code": "61f42fe9d9fd17faf7e9fbf198fc4eb2acbdfd365f352ca0a67b6bd73cf5f6ab",
+            "side_code": "c9b65096cea2f0008502a6dde201cfda81c77edbb3fa7c101e39c7a6074134b0",
+            "status_code": "6f935d45c00a3391aa729218777706f996c4aa9feb930dd55023782fba221975",
+            "ts": "51f9fafcad1ff1821ebe2c260e576a443660bc56ba272079d94995839537d092",
+            "uti": "14c18b4de258fe03678b1960e381ef8dcb527e3ca7f508d8fe8f46902b388ef6",
+            "wall_id": "366a3c853d4e2397b345cf5f6828e376e2963d42662a2994812de4a755a2efb8"
+          },
+          "matches_returned_result": true
+        },
+        {
+          "key": "wall__stream__occ0002",
+          "rows": 737,
+          "columns": [
+            "availability_code",
+            "band_hi",
+            "band_lo",
+            "chunk_end_ts",
+            "chunk_id",
+            "core_price",
+            "event_type_code",
+            "occurrence_ordinal",
+            "reason_code",
+            "side_code",
+            "status_code",
+            "ts",
+            "uti",
+            "wall_id"
+          ],
+          "dtypes": {
+            "availability_code": "int8",
+            "band_hi": "float64",
+            "band_lo": "float64",
+            "chunk_end_ts": "datetime64[ns]",
+            "chunk_id": "int64",
+            "core_price": "float64",
+            "event_type_code": "int64",
+            "occurrence_ordinal": "int64",
+            "reason_code": "float64",
+            "side_code": "int64",
+            "status_code": "int64",
+            "ts": "datetime64[ns]",
+            "uti": "int64",
+            "wall_id": "int64"
+          },
+          "first_index": "2021-02-23 11:19:48.500000",
+          "last_index": "2021-12-30 13:59:03.500000",
+          "full_readback_digest": {
+            "__index__": "4c130ecf2efdce1398fe45e8c27b377856231340991f9b48168c9d0caa5b9df7",
+            "availability_code": "64dbbfae28e181f3d28896769de9d15ceb01e58fb8402c7def8073ec53860eb9",
+            "band_hi": "821c8dad6de39a1e8e26c0be38b820a756c36396e3c449aabfcdc90e6b7627f2",
+            "band_lo": "9c06fa716ec1b92439658749f77301d6e89b196e1864b126a2a65a67d0ca85fa",
+            "chunk_end_ts": "23556eabd302989385bb800d251d1c26753bfd0b61df27f57c8d169aa65e53f4",
+            "chunk_id": "755275ec7c539ecae9b8e57cf77564b67b0768b27fafd0c3e72ff076ed967fa5",
+            "core_price": "b32f0cb87927d2676c7bf18005f7a49054a30ed1964f8090c349aa84416f23fa",
+            "event_type_code": "cc2f30671990b1cde5f25daaa6cc88b957a98b6c147dce1558a677466bd3686e",
+            "occurrence_ordinal": "6ca1da144daddfeae46d96c31d6f5ccb884937c041372dffa302805fb9efe0a1",
+            "reason_code": "5a1beb2d4ef2aeef5cecfd8ca083b93394ceb5e31e1ea2bbdebd59852a6079cb",
+            "side_code": "6ca1da144daddfeae46d96c31d6f5ccb884937c041372dffa302805fb9efe0a1",
+            "status_code": "7251870154fce113716a487ff09eb44328fd5c28b4ed281fb58c16a073924ce6",
+            "ts": "4c130ecf2efdce1398fe45e8c27b377856231340991f9b48168c9d0caa5b9df7",
+            "uti": "f7e476cc6f8036ca1740ba27cc295ab545ffda9a7806af1a64cf5b1b1df6cc63",
+            "wall_id": "1f763dcec94408b5393fe97720631cd45e7f69a48aa97251f9be988d10bff7bf"
+          },
+          "matches_returned_result": true
+        },
+        {
+          "key": "wall__stream__occ0003",
+          "rows": 22,
+          "columns": [
+            "availability_code",
+            "band_hi",
+            "band_lo",
+            "chunk_end_ts",
+            "chunk_id",
+            "core_price",
+            "event_type_code",
+            "occurrence_ordinal",
+            "reason_code",
+            "side_code",
+            "status_code",
+            "ts",
+            "uti",
+            "wall_id"
+          ],
+          "dtypes": {
+            "availability_code": "int8",
+            "band_hi": "float64",
+            "band_lo": "float64",
+            "chunk_end_ts": "datetime64[ns]",
+            "chunk_id": "int64",
+            "core_price": "float64",
+            "event_type_code": "int64",
+            "occurrence_ordinal": "int64",
+            "reason_code": "float64",
+            "side_code": "int64",
+            "status_code": "int64",
+            "ts": "datetime64[ns]",
+            "uti": "int64",
+            "wall_id": "int64"
+          },
+          "first_index": "2021-04-19 13:30:08.500000",
+          "last_index": "2021-11-19 14:03:27",
+          "full_readback_digest": {
+            "__index__": "b08179691f4c48c7db3e235d8ae8a8153e818102a6e28d508201256e74648670",
+            "availability_code": "6a4977adfb4ede9cdb9c7abe73be5ac6d92770625d27bbaf369d2003ff6c90da",
+            "band_hi": "686e82ed7547c862c430d90bd41ab903fc510c0b79185cca9cf62d53b1ce67b8",
+            "band_lo": "9850019775ad98f1df1b6b979dd87a35400a9c7f48d40f002d7f148fdd101cbc",
+            "chunk_end_ts": "45b5d4d5bd6602aec73b425cc4277318529041e6e40d96084f7c565e96c69037",
+            "chunk_id": "28fc5695aea99f081055d05da5b8cb233ce49900c930f75d49bd1fb634dc1536",
+            "core_price": "57420d4eef077a3a1de34f72e53cf1f0f1d3f22837461f8db6a93824dd964b0f",
+            "event_type_code": "8cae9e83850081b32c2f397fcd7fd6406292f4215d7c46533b603701bf20c56b",
+            "occurrence_ordinal": "159134184a7bd4818d9b34df1a294f75c912cb4c8bc1c5d50d67120ce4cd22f7",
+            "reason_code": "22808446c0129632ac2f0492af4d677a4e5dec62be0c9f898e10b7ff799d14af",
+            "side_code": "db676942b4fb6db74f13714c2f39f80caf19b3bb94979ce19409df401c9b270d",
+            "status_code": "9aef953c26d330f2b279eebfa28ec95232cf4462308df9b948955469fab4e1e6",
+            "ts": "b08179691f4c48c7db3e235d8ae8a8153e818102a6e28d508201256e74648670",
+            "uti": "05c69bc1a1498fe235b7ea6025870a0faf226844b00817c2e814b81eb5e538eb",
+            "wall_id": "d804c9b6a2dafb1fb077dcf007cdd3bab70bca35fd4365e93c28f60b7dcb5762"
+          },
+          "matches_returned_result": true
+        },
+        {
+          "key": "wall_assembler_sparse_events",
+          "rows": 335081,
+          "columns": [
+            "availability_code",
+            "band_hi",
+            "band_lo",
+            "chunk_end_ts",
+            "chunk_id",
+            "core_price",
+            "event_type_code",
+            "reason_code",
+            "side_code",
+            "status_code",
+            "ts",
+            "uti",
+            "wall_id"
+          ],
+          "dtypes": {
+            "availability_code": "int8",
+            "band_hi": "float64",
+            "band_lo": "float64",
+            "chunk_end_ts": "datetime64[ns]",
+            "chunk_id": "int64",
+            "core_price": "float64",
+            "event_type_code": "int64",
+            "reason_code": "float64",
+            "side_code": "int64",
+            "status_code": "int64",
+            "ts": "datetime64[ns]",
+            "uti": "int64",
+            "wall_id": "int64"
+          },
+          "first_index": "2021-02-23 09:07:08.500000",
+          "last_index": "2021-12-31 14:58:53",
+          "full_readback_digest": {
+            "__index__": "8fe2a68968c1bd4a0ffedc3ab591c8b39860d1d18aa1452205b9e93257d66951",
+            "availability_code": "b2204461e78c22610387e2470cabdaf57e064ea759d579f3cfffe31cdd6864d4",
+            "band_hi": "c8afb1ab9104e2c035d046e46c8988c910fc9e6c120a5a9154de9534705516b2",
+            "band_lo": "217d9478b561502c6b3bb9fbb2c3f3d3e2ace5469e2121feabaa9dd4cf3178e2",
+            "chunk_end_ts": "4e87da1a7c6063cdf259ce5965844ae9bef29b7bcbbfbad7e8451fab81d7d8a0",
+            "chunk_id": "16027bc16fe09200657699ad05b4ae77d9b25319527d58bc694f8391527630d3",
+            "core_price": "189b014e6d7c71d2f1f0c9b23df739b9f4a88bac7f0f2c14f847496d88ffa4ef",
+            "event_type_code": "5e54e5842375e0cf0c764e550b121b54b12e8df9d326caf84846f9b56f06fe25",
+            "reason_code": "4a8d2c3a961c7e2ae9d140ee4c29fcab58668f6e048e4ddb029c45dca1e8fe1d",
+            "side_code": "9b1ddf7f44a5295e167a137e6caed019aa633d9bf188106327d4d96e135c93e3",
+            "status_code": "33939cacd1c3abb54308c642937573dc8db18281339db9bc8c39c471239a4331",
+            "ts": "8fe2a68968c1bd4a0ffedc3ab591c8b39860d1d18aa1452205b9e93257d66951",
+            "uti": "34a5f6952d4d55b0b363c155b1d8fef2f85d2a5eb9315de5854be48bb04dc675",
+            "wall_id": "784f98e5a66f91a2abfc9c93625ca422c56c4eb4cab4c4113cafa9dd02682db3"
+          },
+          "matches_returned_result": true
+        },
+        {
+          "key": "wall_assembler_state_trace",
+          "rows": 9959400,
+          "columns": [
+            "chunk_id",
+            "ts",
+            "uti",
+            "wall_band_hi_ask",
+            "wall_band_hi_bid",
+            "wall_band_lo_ask",
+            "wall_band_lo_bid",
+            "wall_core_price_ask",
+            "wall_core_price_bid",
+            "wall_id_ask",
+            "wall_id_bid",
+            "wall_side_code_ask",
+            "wall_side_code_bid",
+            "wall_status_code_ask",
+            "wall_status_code_bid"
+          ],
+          "dtypes": {
+            "chunk_id": "int64",
+            "ts": "datetime64[ns]",
+            "uti": "int64",
+            "wall_band_hi_ask": "float64",
+            "wall_band_hi_bid": "float64",
+            "wall_band_lo_ask": "float64",
+            "wall_band_lo_bid": "float64",
+            "wall_core_price_ask": "float64",
+            "wall_core_price_bid": "float64",
+            "wall_id_ask": "int64",
+            "wall_id_bid": "int64",
+            "wall_side_code_ask": "int8",
+            "wall_side_code_bid": "int8",
+            "wall_status_code_ask": "int8",
+            "wall_status_code_bid": "int8"
+          },
+          "first_index": "2021-01-04 09:00:00.500000",
+          "last_index": "2021-12-31 15:00:00",
+          "full_readback_digest": {
+            "__index__": "e9eb5b1e9d7f07dc45cfe619f10c0f3b880f7b5a816a924453dd9be43c779a3d",
+            "chunk_id": "ae804c66a5c5009797e57da3cc48fef755bc4dc4406b97e7cea504831db111dd",
+            "ts": "e9eb5b1e9d7f07dc45cfe619f10c0f3b880f7b5a816a924453dd9be43c779a3d",
+            "uti": "a1d4cedaa5093da04763efcb3dc656a1f46ce8de50d1399cc51cb94f074fbf0d",
+            "wall_band_hi_ask": "7b4e283e16c7c5fa9d94480c3d4469325664e0d3221f789c2fa307b71564ec05",
+            "wall_band_hi_bid": "b31d70e37e50de377fea5134ee29ca65c097c4b6ad97b46e080493130fddd72a",
+            "wall_band_lo_ask": "c0e35b6f3852e7fbf0dee611f353b4169f5ca302fd24fe15a56fd64b4d330740",
+            "wall_band_lo_bid": "d1a0995b9f4a341e78fc64a8dcb4b5d5279bc9a66323fb3d4cfa1ebc965fdc40",
+            "wall_core_price_ask": "f224eface0c4c3dd5df3f389e28de4e67543d0fa77cf48f903488dffe9a20cab",
+            "wall_core_price_bid": "b752d570e6890e7538473298228666b68d18ef6f608db1266a8ff0b457a1f553",
+            "wall_id_ask": "600f1d86c1c1c567d7b45500552a52f2dbdee827a0b0edcb5ca9e869a3cd140e",
+            "wall_id_bid": "08317619c6d7a7d9ee82863072375ba56f694cba4e0ac56bda994177ef7d45db",
+            "wall_side_code_ask": "0db77db285c7c7cbaecb452ebf95187e66337233d25f7620a4c7f4a3606ecaf2",
+            "wall_side_code_bid": "88639171076089b30bf7024dfbaddb3aaf28149fad12c89b0ef8419ccab7242b",
+            "wall_status_code_ask": "b6d274ab421552612e8235dd4127d1cbb216954be6b0d2a7114140b05e80183a",
+            "wall_status_code_bid": "ca1a9159ff28d8c22115c890adc5a52fe0890d3edb0b82dd268c68cf32c5947f"
+          },
+          "matches_returned_result": true
+        }
+      ],
+      "finished_at": "2026-11-24T09:26:22.030017+00:00"
+    },
+    {
+      "symbol": "rb",
+      "feature": "tactical",
+      "constructor_parameters": {
+        "parameter_set_id": "tactical-default",
+        "qualification_family": "tactical",
+        "amt_n": 30,
+        "lane_threshold_map": {
+          "tactical": [
+            "0.99",
+            "0.995"
+          ]
+        },
+        "same_best_tol_ticks": 0,
+        "big_deal_ratio_min": 1.0
+      },
+      "ppdict": {
+        "parameter_set_id": "tactical-default",
+        "qualification_family": "tactical",
+        "amt_n": 30,
+        "lane_threshold_map": {
+          "tactical": [
+            "0.99",
+            "0.995"
+          ]
+        },
+        "same_best_tol_ticks": 0,
+        "big_deal_ratio_min": 1.0
+      },
+      "ppid": "DirectedBigDealTick_ecd83d7195757d35f9fa349e9cc810de55ac07ba",
+      "full_dir": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-EAW-P1-ATTACK-STAT-20261124-01/D002/formal-attempt-A03/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/DirectedBigDealTick/2/c/c/5/a/e/c/40baf32977ecb208813b925f04fda5d1a/rb.night_end_at_2300",
+      "expected_code_version": "git:179016111ed0394f92025313e46bd13534932a74+source-sha256:d097e50cfdfa69992ed60ea7e28022c25325a17fa6e1f8f4f060e063058e0fbf",
+      "started_at": "2026-11-24T09:26:22.068810+00:00",
+      "status": "EXECUTED_AND_FULL_READBACK_VERIFIED",
+      "feature_elapsed_seconds": 83.909,
+      "receipts": [
+        {
+          "actual_business_parameters": {
+            "big_deal_ratio_min": 1.0,
+            "lane_threshold_map": {
+              "tactical": [
+                "0.99",
+                "0.995"
+              ]
+            },
+            "qualification_family": "tactical",
+            "same_best_tol_ticks": 0,
+            "trading_unit": 10
+          },
+          "artifact_location": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-EAW-P1-ATTACK-STAT-20261124-01/D002/formal-attempt-A03/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/DirectedBigDealTick/2/c/c/5/a/e/c/40baf32977ecb208813b925f04fda5d1a/rb.night_end_at_2300",
+          "code_version": "git:179016111ed0394f92025313e46bd13534932a74+source-sha256:d097e50cfdfa69992ed60ea7e28022c25325a17fa6e1f8f4f060e063058e0fbf",
+          "direct_upstream_artifacts": [],
+          "error": null,
+          "feature_instance": "DirectedBigDealTick:tactical:tactical-default",
+          "method_snapshot_fingerprint": null,
+          "parameter_set_id": "tactical-default",
+          "producer_private_parameters": {
+            "amt_n": 30,
+            "eps_vol": 1e-12
+          },
+          "product_kind": "directed_large_deal_stream",
+          "schema_version": "directed_large_deal_stream-v1.6.1",
+          "source_scope": {
+            "calendar_or_session": "night_end_at_2300",
+            "market_source_cut": "market:rb:night_end_at_2300:time:2021-01-04T09:00:00.500000..2021-12-31T15:00:00",
+            "target": "rb",
+            "time_range": "time:2021-01-04T09:00:00.500000..2021-12-31T15:00:00"
+          },
+          "status": "success"
+        }
+      ],
+      "tables": [
+        {
+          "key": "buy",
+          "rows": 52961,
+          "columns": [
+            "chunk_end_ts",
+            "chunk_id",
+            "deal_amt",
+            "directional_hit_volume_proxy",
+            "event_type_code",
+            "grade",
+            "lane_code",
+            "producer_local_no",
+            "qualification_code",
+            "qualification_family_code",
+            "quarantine_reason_code",
+            "side_code",
+            "ts",
+            "uti"
+          ],
+          "dtypes": {
+            "chunk_end_ts": "datetime64[ns]",
+            "chunk_id": "int64",
+            "deal_amt": "float64",
+            "directional_hit_volume_proxy": "float64",
+            "event_type_code": "int64",
+            "grade": "int64",
+            "lane_code": "int64",
+            "producer_local_no": "int64",
+            "qualification_code": "int64",
+            "qualification_family_code": "int8",
+            "quarantine_reason_code": "int64",
+            "side_code": "int64",
+            "ts": "datetime64[ns]",
+            "uti": "int64"
+          },
+          "first_index": "2021-01-04 09:00:21.500000",
+          "last_index": "2021-12-31 14:59:51",
+          "full_readback_digest": {
+            "__index__": "e32e4d5e5f2c0f7a879cb7d3e3c4326d3dfc6d3faf02cbbd43fbb05216fbc952",
+            "chunk_end_ts": "5411585facfb1cd229e22fd194ba24105099aba38e534a638d43bf50649f9268",
+            "chunk_id": "b035ee7deb7573df8ea289500c4badb5d0fcb4ae3156df2cdff795d8571d5795",
+            "deal_amt": "acdc3c98220fda32386f79c95ecbbede989394770891366dfab656f2602b111d",
+            "directional_hit_volume_proxy": "e6441bf1d26bbe6f6bcc133a604b1fcd6b73156d1ccd36b50eab65ad838d6224",
+            "event_type_code": "4f441b93462b4c12c737ea6c244809a7593cbabb8b23914a6642fcda7a1d62e1",
+            "grade": "10549dd39e30fc305b51dcf284b4e5d4b4aa95dc1646c7312c63889cecd4b7f4",
+            "lane_code": "4f441b93462b4c12c737ea6c244809a7593cbabb8b23914a6642fcda7a1d62e1",
+            "producer_local_no": "f84cd0c677882eaf2ee51ad439f4424d2c28bc6e21bbd0faf9abfb93ccfa29ad",
+            "qualification_code": "4f441b93462b4c12c737ea6c244809a7593cbabb8b23914a6642fcda7a1d62e1",
+            "qualification_family_code": "8cc2a4501ab5f3b4da0218107bc61581a5ea1450c8fece72284a86fe46d1903a",
+            "quarantine_reason_code": "da78c7714b2683300d286acf8d436c11baf6eeda85933341ece8dc4fb29b8e32",
+            "side_code": "684f54995e0c6ec534c85880082eb76c78a2240750393dca621a155abfb7cce3",
+            "ts": "e32e4d5e5f2c0f7a879cb7d3e3c4326d3dfc6d3faf02cbbd43fbb05216fbc952",
+            "uti": "9f2a2943a611462a3881ddac59612090462a0c69a935a0ff8153c7a7ce072291"
+          },
+          "matches_returned_result": true
+        },
+        {
+          "key": "directed_large_deal_availability_dense",
+          "rows": 9959400,
+          "columns": [
+            "activity_code",
+            "availability_code",
+            "chunk_id",
+            "ts",
+            "uti"
+          ],
+          "dtypes": {
+            "activity_code": "int8",
+            "availability_code": "int8",
+            "chunk_id": "int64",
+            "ts": "datetime64[ns]",
+            "uti": "int64"
+          },
+          "first_index": "2021-01-04 09:00:00.500000",
+          "last_index": "2021-12-31 15:00:00",
+          "full_readback_digest": {
+            "__index__": "e9eb5b1e9d7f07dc45cfe619f10c0f3b880f7b5a816a924453dd9be43c779a3d",
+            "activity_code": "ffa44000666f53404eba58bc1203611f198e66a0e544319217edccad3b6463d4",
+            "availability_code": "88639171076089b30bf7024dfbaddb3aaf28149fad12c89b0ef8419ccab7242b",
+            "chunk_id": "ae804c66a5c5009797e57da3cc48fef755bc4dc4406b97e7cea504831db111dd",
+            "ts": "e9eb5b1e9d7f07dc45cfe619f10c0f3b880f7b5a816a924453dd9be43c779a3d",
+            "uti": "a1d4cedaa5093da04763efcb3dc656a1f46ce8de50d1399cc51cb94f074fbf0d"
+          },
+          "matches_returned_result": true
+        },
+        {
+          "key": "sell",
+          "rows": 52549,
+          "columns": [
+            "chunk_end_ts",
+            "chunk_id",
+            "deal_amt",
+            "directional_hit_volume_proxy",
+            "event_type_code",
+            "grade",
+            "lane_code",
+            "producer_local_no",
+            "qualification_code",
+            "qualification_family_code",
+            "quarantine_reason_code",
+            "side_code",
+            "ts",
+            "uti"
+          ],
+          "dtypes": {
+            "chunk_end_ts": "datetime64[ns]",
+            "chunk_id": "int64",
+            "deal_amt": "float64",
+            "directional_hit_volume_proxy": "float64",
+            "event_type_code": "int64",
+            "grade": "int64",
+            "lane_code": "int64",
+            "producer_local_no": "int64",
+            "qualification_code": "int64",
+            "qualification_family_code": "int8",
+            "quarantine_reason_code": "int64",
+            "side_code": "int64",
+            "ts": "datetime64[ns]",
+            "uti": "int64"
+          },
+          "first_index": "2021-01-04 09:00:32",
+          "last_index": "2021-12-31 14:57:34.500000",
+          "full_readback_digest": {
+            "__index__": "a9219c96a07ef0e0e331b9fe460458f2a9458bb09edc5dd2356a34e688cedeb4",
+            "chunk_end_ts": "c8dfa0237ff1774379d6abfb2809272994089661187972db1a4af46fc81b3e78",
+            "chunk_id": "7ab430e3dffb0f7c243c345426cb3a3ee9b9173d40da565a1f53059783f1f204",
+            "deal_amt": "3e51c0a33e532a04c1b69e96863e8d9066b5bbb41b9c811a4e6c599441bcb423",
+            "directional_hit_volume_proxy": "a21afe759e54298fa07fd717dcc25ff76a9506de103b090b49a6c4ce4f9516ea",
+            "event_type_code": "8dd054aa06580800fc7b5d7acae8c32236ce3267d0416d0afd444269b2b69f63",
+            "grade": "f5cbf34c31ee60862eaeded315cdae35986d901da064554827619d2e8d5c53e2",
+            "lane_code": "8dd054aa06580800fc7b5d7acae8c32236ce3267d0416d0afd444269b2b69f63",
+            "producer_local_no": "2c794f246e7cb4a2a9d711bc559a610779253b0151d2ec7ed7f12e312ec11b86",
+            "qualification_code": "8dd054aa06580800fc7b5d7acae8c32236ce3267d0416d0afd444269b2b69f63",
+            "qualification_family_code": "a50cb4a7ebc40c8e5ac99306155a8853501081a043f3acaf408357ebf75dbcf0",
+            "quarantine_reason_code": "b36050b2d86f6b91bfb3caf87e4c9a3af39c881c01ba8a715e754aff94e81965",
+            "side_code": "8dd054aa06580800fc7b5d7acae8c32236ce3267d0416d0afd444269b2b69f63",
+            "ts": "a9219c96a07ef0e0e331b9fe460458f2a9458bb09edc5dd2356a34e688cedeb4",
+            "uti": "6526c020ebca6b67b246e75a514c1cac4a8a41fdbc073740afae44b3840f7cff"
+          },
+          "matches_returned_result": true
+        }
+      ],
+      "finished_at": "2026-11-24T09:27:48.454862+00:00"
+    },
+    {
+      "symbol": "rb",
+      "feature": "structural",
+      "constructor_parameters": {
+        "parameter_set_id": "structural-default",
+        "qualification_family": "structural",
+        "amt_n": 30,
+        "lane_threshold_map": {
+          "structural": [
+            "0.997",
+            "0.999"
+          ]
+        },
+        "same_best_tol_ticks": 0,
+        "big_deal_ratio_min": 1.0
+      },
+      "ppdict": {
+        "parameter_set_id": "structural-default",
+        "qualification_family": "structural",
+        "amt_n": 30,
+        "lane_threshold_map": {
+          "structural": [
+            "0.997",
+            "0.999"
+          ]
+        },
+        "same_best_tol_ticks": 0,
+        "big_deal_ratio_min": 1.0
+      },
+      "ppid": "DirectedBigDealTick_b7bee7c742968dcbde29e53ca969d381390aabf9",
+      "full_dir": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-EAW-P1-ATTACK-STAT-20261124-01/D002/formal-attempt-A03/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/DirectedBigDealTick/b/6/c/4/7/5/5/3b46f85a5c4f04ea93b227c1dc9d4015b/rb.night_end_at_2300",
+      "expected_code_version": "git:179016111ed0394f92025313e46bd13534932a74+source-sha256:d097e50cfdfa69992ed60ea7e28022c25325a17fa6e1f8f4f060e063058e0fbf",
+      "started_at": "2026-11-24T09:27:48.868549+00:00",
+      "status": "EXECUTED_AND_FULL_READBACK_VERIFIED",
+      "feature_elapsed_seconds": 85.901,
+      "receipts": [
+        {
+          "actual_business_parameters": {
+            "big_deal_ratio_min": 1.0,
+            "lane_threshold_map": {
+              "structural": [
+                "0.997",
+                "0.999"
+              ]
+            },
+            "qualification_family": "structural",
+            "same_best_tol_ticks": 0,
+            "trading_unit": 10
+          },
+          "artifact_location": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-EAW-P1-ATTACK-STAT-20261124-01/D002/formal-attempt-A03/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/DirectedBigDealTick/b/6/c/4/7/5/5/3b46f85a5c4f04ea93b227c1dc9d4015b/rb.night_end_at_2300",
+          "code_version": "git:179016111ed0394f92025313e46bd13534932a74+source-sha256:d097e50cfdfa69992ed60ea7e28022c25325a17fa6e1f8f4f060e063058e0fbf",
+          "direct_upstream_artifacts": [],
+          "error": null,
+          "feature_instance": "DirectedBigDealTick:structural:structural-default",
+          "method_snapshot_fingerprint": null,
+          "parameter_set_id": "structural-default",
+          "producer_private_parameters": {
+            "amt_n": 30,
+            "eps_vol": 1e-12
+          },
+          "product_kind": "directed_large_deal_stream",
+          "schema_version": "directed_large_deal_stream-v1.6.1",
+          "source_scope": {
+            "calendar_or_session": "night_end_at_2300",
+            "market_source_cut": "market:rb:night_end_at_2300:time:2021-01-04T09:00:00.500000..2021-12-31T15:00:00",
+            "target": "rb",
+            "time_range": "time:2021-01-04T09:00:00.500000..2021-12-31T15:00:00"
+          },
+          "status": "success"
+        }
+      ],
+      "tables": [
+        {
+          "key": "buy",
+          "rows": 16026,
+          "columns": [
+            "chunk_end_ts",
+            "chunk_id",
+            "deal_amt",
+            "directional_hit_volume_proxy",
+            "event_type_code",
+            "grade",
+            "lane_code",
+            "producer_local_no",
+            "qualification_code",
+            "qualification_family_code",
+            "quarantine_reason_code",
+            "side_code",
+            "ts",
+            "uti"
+          ],
+          "dtypes": {
+            "chunk_end_ts": "datetime64[ns]",
+            "chunk_id": "int64",
+            "deal_amt": "float64",
+            "directional_hit_volume_proxy": "float64",
+            "event_type_code": "int64",
+            "grade": "int64",
+            "lane_code": "int64",
+            "producer_local_no": "int64",
+            "qualification_code": "int64",
+            "qualification_family_code": "int8",
+            "quarantine_reason_code": "int64",
+            "side_code": "int64",
+            "ts": "datetime64[ns]",
+            "uti": "int64"
+          },
+          "first_index": "2021-01-04 09:00:59",
+          "last_index": "2021-12-31 13:52:02.500000",
+          "full_readback_digest": {
+            "__index__": "dfbcd71fcbb53b55856103ea078586016327d8f4c5db60e988bfecb09600e823",
+            "chunk_end_ts": "c56c424b12f8c02f4ab0612a146693329506e86a22849e5b12696b727712f5bf",
+            "chunk_id": "e5791109d0ffcf2f536da8e67145acfcc1ebfa0a6cdffff1faa1ff225e70d646",
+            "deal_amt": "fd6fea0e12432738b24d47280e2661c6e4742e36d55c793699885a36f976ba25",
+            "directional_hit_volume_proxy": "80c158ab3edebfbc778b00d11f1be35ffbc570c529fc7831c9babce223da6fd9",
+            "event_type_code": "01d5fd524dfdf1a716fbdd8a961ff570cf19d5a12d1b3d9e70586fdaf47e969c",
+            "grade": "90b12fa53e6b70a1916965dbc7b01174bf248c786962ea3c1713ca30c4a3bb93",
+            "lane_code": "fcbeafe048ef726778f78e8cd58ebefd5b51c5da321424e64ea42e890fe6fb28",
+            "producer_local_no": "72bc47fd748773c549aa5073fefb8fe9cbe984038a6a112f1d0ee84fdc326cf7",
+            "qualification_code": "01d5fd524dfdf1a716fbdd8a961ff570cf19d5a12d1b3d9e70586fdaf47e969c",
+            "qualification_family_code": "16507a93399f5c622dff89c33f9b60c583b0a9a6dbfb7b773821bd5844daf3ab",
+            "quarantine_reason_code": "f7af21a7f87c77df9f641adb6d137bf7988aecf5d9e9a8467da2b36b6c58e27e",
+            "side_code": "fcbeafe048ef726778f78e8cd58ebefd5b51c5da321424e64ea42e890fe6fb28",
+            "ts": "dfbcd71fcbb53b55856103ea078586016327d8f4c5db60e988bfecb09600e823",
+            "uti": "2cad9405c3d3c140206c7f09a299a051609dd07afdbaf5a64872f991e3cfd98c"
+          },
+          "matches_returned_result": true
+        },
+        {
+          "key": "directed_large_deal_availability_dense",
+          "rows": 9959400,
+          "columns": [
+            "activity_code",
+            "availability_code",
+            "chunk_id",
+            "ts",
+            "uti"
+          ],
+          "dtypes": {
+            "activity_code": "int8",
+            "availability_code": "int8",
+            "chunk_id": "int64",
+            "ts": "datetime64[ns]",
+            "uti": "int64"
+          },
+          "first_index": "2021-01-04 09:00:00.500000",
+          "last_index": "2021-12-31 15:00:00",
+          "full_readback_digest": {
+            "__index__": "e9eb5b1e9d7f07dc45cfe619f10c0f3b880f7b5a816a924453dd9be43c779a3d",
+            "activity_code": "c9af610f1ad5764ac55200f662375c743532756bc801d24551a549d6d613d80b",
+            "availability_code": "88639171076089b30bf7024dfbaddb3aaf28149fad12c89b0ef8419ccab7242b",
+            "chunk_id": "ae804c66a5c5009797e57da3cc48fef755bc4dc4406b97e7cea504831db111dd",
+            "ts": "e9eb5b1e9d7f07dc45cfe619f10c0f3b880f7b5a816a924453dd9be43c779a3d",
+            "uti": "a1d4cedaa5093da04763efcb3dc656a1f46ce8de50d1399cc51cb94f074fbf0d"
+          },
+          "matches_returned_result": true
+        },
+        {
+          "key": "sell",
+          "rows": 16080,
+          "columns": [
+            "chunk_end_ts",
+            "chunk_id",
+            "deal_amt",
+            "directional_hit_volume_proxy",
+            "event_type_code",
+            "grade",
+            "lane_code",
+            "producer_local_no",
+            "qualification_code",
+            "qualification_family_code",
+            "quarantine_reason_code",
+            "side_code",
+            "ts",
+            "uti"
+          ],
+          "dtypes": {
+            "chunk_end_ts": "datetime64[ns]",
+            "chunk_id": "int64",
+            "deal_amt": "float64",
+            "directional_hit_volume_proxy": "float64",
+            "event_type_code": "int64",
+            "grade": "int64",
+            "lane_code": "int64",
+            "producer_local_no": "int64",
+            "qualification_code": "int64",
+            "qualification_family_code": "int8",
+            "quarantine_reason_code": "int64",
+            "side_code": "int64",
+            "ts": "datetime64[ns]",
+            "uti": "int64"
+          },
+          "first_index": "2021-01-04 09:00:32",
+          "last_index": "2021-12-31 14:57:32",
+          "full_readback_digest": {
+            "__index__": "1db6038f2dc5f5dd3730726d170fc865ceef73ed75657339dcd9dd18ca42a883",
+            "chunk_end_ts": "2bb7317fc1d21e150698aa5a1b4f21b6063d4767569d9bb7f5c7066cf7de7a01",
+            "chunk_id": "ec3278b728240b1210a951e060b0e08319846bdaf1f268fdd8dc6773fd298d70",
+            "deal_amt": "efe6454b0df8f236d4476c07008b035606e6e3ff755640f0f7307276d1cb04cc",
+            "directional_hit_volume_proxy": "6bf0f40a818cee95515723e0f4638ea91973bfc9e51e09c556be9841adaee028",
+            "event_type_code": "eee97012ed1fb8423f5d6158e5c9d5b7c4e8eda714fd751a3fcea7597a3c60d7",
+            "grade": "efa6fdadbf73ea0924399049528d193eadbc1210575e62adf5a561ea2bd4afc2",
+            "lane_code": "d8b1a6278aa79283df7b828ea6cca5726b6324befd9b230ceea41d681262622f",
+            "producer_local_no": "e1ac423df873404502a1ed810cfe428bd555ae2d65701f70be79d0a5fdb2e968",
+            "qualification_code": "eee97012ed1fb8423f5d6158e5c9d5b7c4e8eda714fd751a3fcea7597a3c60d7",
+            "qualification_family_code": "11a2972743579f993d0c66069a52a06038a9e43ef0a648eb27578b36eea1d2f0",
+            "quarantine_reason_code": "ca4ae1a8ed7de83687a02cf7e2f62ab4e32bc697219e48e65348e47a62fad3b9",
+            "side_code": "eee97012ed1fb8423f5d6158e5c9d5b7c4e8eda714fd751a3fcea7597a3c60d7",
+            "ts": "1db6038f2dc5f5dd3730726d170fc865ceef73ed75657339dcd9dd18ca42a883",
+            "uti": "9791e96d520fb192694c9de975f508a97ac14b7f38f57172fcf8f567071a9688"
+          },
+          "matches_returned_result": true
+        }
+      ],
+      "finished_at": "2026-11-24T09:29:17.724840+00:00"
+    },
+    {
+      "symbol": "rb",
+      "feature": "attack",
+      "constructor_parameters": {
+        "parameter_set_id": "attack-default",
+        "wall": {
+          "type": "mquant.frame.core.app.proxy.Proxy(WallAssembler)",
+          "parameters": {
+            "parameter_set_id": "wall-default",
+            "qt_freq": "1d",
+            "qt_n": 30,
+            "qt_quantile": 0.997,
+            "w_depth_ref_ticks": 1200,
+            "large_quote_ratio_min": 1.0,
+            "allow_zero_qt_fallback": false,
+            "thick_vs_hi_ratio": 1.0,
+            "thin_vs_mid_ratio": 0.7,
+            "allow_thin_brick": false,
+            "p_wall_ticks": 1,
+            "t_wall_ticks": 6,
+            "near_band_ticks": null,
+            "far_band_ticks": null,
+            "connect_max_core_dist_ticks": null,
+            "connect_gap_max_ticks": null,
+            "support_buffer_keep_ticks": null,
+            "thin_eval_window_ticks": null,
+            "band_update_min_shift_ticks": null,
+            "dormant_no_presence_ticks": null,
+            "dormant_far_ticks": null,
+            "end_far_hold_ticks": null,
+            "end_far_ticks": null,
+            "break_after_no_presence_ticks": null,
+            "wall_dead_timeout_ticks": null,
+            "allow_brick_join_dormant": true,
+            "thin_contact_min_hits": 3,
+            "thin_contact_frac_end": 0.6
+          }
+        },
+        "directed_large_deal_tactical": {
+          "type": "mquant.frame.core.app.proxy.Proxy(DirectedBigDealTick)",
+          "parameters": {
+            "parameter_set_id": "tactical-default",
+            "qualification_family": "tactical",
+            "amt_n": 30,
+            "lane_threshold_map": {
+              "tactical": [
+                "0.99",
+                "0.995"
+              ]
+            },
+            "same_best_tol_ticks": 0,
+            "big_deal_ratio_min": 1.0
+          }
+        },
+        "directed_large_deal_structural": {
+          "type": "mquant.frame.core.app.proxy.Proxy(DirectedBigDealTick)",
+          "parameters": {
+            "parameter_set_id": "structural-default",
+            "qualification_family": "structural",
+            "amt_n": 30,
+            "lane_threshold_map": {
+              "structural": [
+                "0.997",
+                "0.999"
+              ]
+            },
+            "same_best_tol_ticks": 0,
+            "big_deal_ratio_min": 1.0
+          }
+        },
+        "additional_directed_large_deal_features": [],
+        "p_attack_ticks": 1,
+        "t_gap_attack_ticks": 6,
+        "p_retreat_ticks": null,
+        "lane_merge_policy": "union_keep_labels",
+        "split_on_side_switch": true,
+        "split_on_wall_inactive": true
+      },
+      "ppdict": {
+        "parameter_set_id": "attack-default",
+        "wall(WallAssembler).parameter_set_id": "wall-default",
+        "wall(WallAssembler).qt_freq": "1d",
+        "wall(WallAssembler).qt_n": 30,
+        "wall(WallAssembler).qt_quantile": 0.997,
+        "wall(WallAssembler).w_depth_ref_ticks": 1200,
+        "wall(WallAssembler).large_quote_ratio_min": 1.0,
+        "wall(WallAssembler).allow_zero_qt_fallback": false,
+        "wall(WallAssembler).thick_vs_hi_ratio": 1.0,
+        "wall(WallAssembler).thin_vs_mid_ratio": 0.7,
+        "wall(WallAssembler).allow_thin_brick": false,
+        "wall(WallAssembler).p_wall_ticks": 1,
+        "wall(WallAssembler).t_wall_ticks": 6,
+        "wall(WallAssembler).near_band_ticks": null,
+        "wall(WallAssembler).far_band_ticks": null,
+        "wall(WallAssembler).connect_max_core_dist_ticks": null,
+        "wall(WallAssembler).connect_gap_max_ticks": null,
+        "wall(WallAssembler).support_buffer_keep_ticks": null,
+        "wall(WallAssembler).thin_eval_window_ticks": null,
+        "wall(WallAssembler).band_update_min_shift_ticks": null,
+        "wall(WallAssembler).dormant_no_presence_ticks": null,
+        "wall(WallAssembler).dormant_far_ticks": null,
+        "wall(WallAssembler).end_far_hold_ticks": null,
+        "wall(WallAssembler).end_far_ticks": null,
+        "wall(WallAssembler).break_after_no_presence_ticks": null,
+        "wall(WallAssembler).wall_dead_timeout_ticks": null,
+        "wall(WallAssembler).allow_brick_join_dormant": true,
+        "wall(WallAssembler).thin_contact_min_hits": 3,
+        "wall(WallAssembler).thin_contact_frac_end": 0.6,
+        "directed_large_deal_tactical(DirectedBigDealTick).parameter_set_id": "tactical-default",
+        "directed_large_deal_tactical(DirectedBigDealTick).qualification_family": "tactical",
+        "directed_large_deal_tactical(DirectedBigDealTick).amt_n": 30,
+        "directed_large_deal_tactical(DirectedBigDealTick).lane_threshold_map": {
+          "tactical": [
+            "0.99",
+            "0.995"
+          ]
+        },
+        "directed_large_deal_tactical(DirectedBigDealTick).same_best_tol_ticks": 0,
+        "directed_large_deal_tactical(DirectedBigDealTick).big_deal_ratio_min": 1.0,
+        "directed_large_deal_structural(DirectedBigDealTick).parameter_set_id": "structural-default",
+        "directed_large_deal_structural(DirectedBigDealTick).qualification_family": "structural",
+        "directed_large_deal_structural(DirectedBigDealTick).amt_n": 30,
+        "directed_large_deal_structural(DirectedBigDealTick).lane_threshold_map": {
+          "structural": [
+            "0.997",
+            "0.999"
+          ]
+        },
+        "directed_large_deal_structural(DirectedBigDealTick).same_best_tol_ticks": 0,
+        "directed_large_deal_structural(DirectedBigDealTick).big_deal_ratio_min": 1.0,
+        "additional_directed_large_deal_features": [],
+        "p_attack_ticks": 1,
+        "t_gap_attack_ticks": 6,
+        "p_retreat_ticks": null,
+        "lane_merge_policy": "union_keep_labels",
+        "split_on_side_switch": true,
+        "split_on_wall_inactive": true
+      },
+      "ppid": "AttackFlowAssembler_700681a3da4b7aedeb84a6066b6ca4af733d4b14",
+      "full_dir": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-EAW-P1-ATTACK-STAT-20261124-01/D002/formal-attempt-A03/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/AttackFlowAssembler/0/3/1/4/b/1/9/40e2958cd6ee825fb8395cc584d7d3631/rb.night_end_at_2300",
+      "expected_code_version": "git:179016111ed0394f92025313e46bd13534932a74+source-sha256:abddfdb04e2ba4110013e945b35281ca5f795ecbc58e14d9903cb7d5db58ae9a",
+      "started_at": "2026-11-24T09:29:17.811866+00:00",
+      "status": "EXECUTION_OR_READBACK_FAILED",
+      "feature_elapsed_seconds": 236.724,
+      "receipts": [
+        {
+          "actual_business_parameters": {
+            "lane_merge_policy": "union_keep_labels",
+            "p_attack_ticks": 1,
+            "p_retreat_ticks": 2,
+            "selected_f4_streams": [
+              {
+                "artifact_location": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-EAW-P1-ATTACK-STAT-20261124-01/D002/formal-attempt-A03/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/DirectedBigDealTick/2/c/c/5/a/e/c/40baf32977ecb208813b925f04fda5d1a/rb.night_end_at_2300",
+                "code_version": "git:179016111ed0394f92025313e46bd13534932a74+source-sha256:d097e50cfdfa69992ed60ea7e28022c25325a17fa6e1f8f4f060e063058e0fbf",
+                "feature_instance": "DirectedBigDealTick:tactical:tactical-default",
+                "parameter_set_id": "tactical-default",
+                "schema_version": "directed_large_deal_stream-v1.6.1",
+                "source_scope": {
+                  "calendar_or_session": "night_end_at_2300",
+                  "market_source_cut": "market:rb:night_end_at_2300:time:2021-01-04T09:00:00.500000..2021-12-31T15:00:00",
+                  "target": "rb",
+                  "time_range": "time:2021-01-04T09:00:00.500000..2021-12-31T15:00:00"
+                }
+              },
+              {
+                "artifact_location": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-EAW-P1-ATTACK-STAT-20261124-01/D002/formal-attempt-A03/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/DirectedBigDealTick/b/6/c/4/7/5/5/3b46f85a5c4f04ea93b227c1dc9d4015b/rb.night_end_at_2300",
+                "code_version": "git:179016111ed0394f92025313e46bd13534932a74+source-sha256:d097e50cfdfa69992ed60ea7e28022c25325a17fa6e1f8f4f060e063058e0fbf",
+                "feature_instance": "DirectedBigDealTick:structural:structural-default",
+                "parameter_set_id": "structural-default",
+                "schema_version": "directed_large_deal_stream-v1.6.1",
+                "source_scope": {
+                  "calendar_or_session": "night_end_at_2300",
+                  "market_source_cut": "market:rb:night_end_at_2300:time:2021-01-04T09:00:00.500000..2021-12-31T15:00:00",
+                  "target": "rb",
+                  "time_range": "time:2021-01-04T09:00:00.500000..2021-12-31T15:00:00"
+                }
+              }
+            ],
+            "split_on_side_switch": true,
+            "split_on_wall_inactive": true,
+            "t_gap_attack_ticks": 6
+          },
+          "artifact_location": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-EAW-P1-ATTACK-STAT-20261124-01/D002/formal-attempt-A03/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/AttackFlowAssembler/0/3/1/4/b/1/9/40e2958cd6ee825fb8395cc584d7d3631/rb.night_end_at_2300",
+          "code_version": "git:179016111ed0394f92025313e46bd13534932a74+source-sha256:abddfdb04e2ba4110013e945b35281ca5f795ecbc58e14d9903cb7d5db58ae9a",
+          "direct_upstream_artifacts": [
+            {
+              "artifact_location": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-EAW-P1-ATTACK-STAT-20261124-01/D002/formal-attempt-A03/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300",
+              "code_version": "git:179016111ed0394f92025313e46bd13534932a74+source-sha256:e7e97d1434a558e70abac3ac3cb2e547a01538ffb868969d89a1bb5d888e6e46",
+              "feature_instance": "WallAssembler:wall-default",
+              "parameter_set_id": "wall-default",
+              "product_kind": "wall_lifecycle",
+              "schema_version": "wall_lifecycle-v1.6.1"
+            },
+            {
+              "artifact_location": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-EAW-P1-ATTACK-STAT-20261124-01/D002/formal-attempt-A03/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/DirectedBigDealTick/2/c/c/5/a/e/c/40baf32977ecb208813b925f04fda5d1a/rb.night_end_at_2300",
+              "code_version": "git:179016111ed0394f92025313e46bd13534932a74+source-sha256:d097e50cfdfa69992ed60ea7e28022c25325a17fa6e1f8f4f060e063058e0fbf",
+              "feature_instance": "DirectedBigDealTick:tactical:tactical-default",
+              "parameter_set_id": "tactical-default",
+              "product_kind": "directed_large_deal_stream",
+              "schema_version": "directed_large_deal_stream-v1.6.1"
+            },
+            {
+              "artifact_location": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-EAW-P1-ATTACK-STAT-20261124-01/D002/formal-attempt-A03/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/DirectedBigDealTick/b/6/c/4/7/5/5/3b46f85a5c4f04ea93b227c1dc9d4015b/rb.night_end_at_2300",
+              "code_version": "git:179016111ed0394f92025313e46bd13534932a74+source-sha256:d097e50cfdfa69992ed60ea7e28022c25325a17fa6e1f8f4f060e063058e0fbf",
+              "feature_instance": "DirectedBigDealTick:structural:structural-default",
+              "parameter_set_id": "structural-default",
+              "product_kind": "directed_large_deal_stream",
+              "schema_version": "directed_large_deal_stream-v1.6.1"
+            }
+          ],
+          "error": null,
+          "feature_instance": "AttackFlowAssembler:attack-default",
+          "method_snapshot_fingerprint": "sha256:cf71d7de658d8fc2947f5151d5b368285212f418b389ae634febaf0c37f5ad2e",
+          "parameter_set_id": "attack-default",
+          "producer_private_parameters": {},
+          "product_kind": "attack_segment",
+          "schema_version": "attack_segment-v1.6.1",
+          "source_scope": {
+            "calendar_or_session": "night_end_at_2300",
+            "market_source_cut": "market:rb:night_end_at_2300:time:2021-01-04T09:00:00.500000..2021-12-31T15:00:00",
+            "target": "rb",
+            "time_range": "time:2021-01-04T09:00:00.500000..2021-12-31T15:00:00"
+          },
+          "status": "success"
+        },
+        {
+          "actual_business_parameters": {
+            "lane_merge_policy": "union_keep_labels",
+            "p_attack_ticks": 1,
+            "p_retreat_ticks": 2,
+            "selected_f4_streams": [
+              {
+                "artifact_location": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-EAW-P1-ATTACK-STAT-20261124-01/D002/formal-attempt-A03/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/DirectedBigDealTick/2/c/c/5/a/e/c/40baf32977ecb208813b925f04fda5d1a/rb.night_end_at_2300",
+                "code_version": "git:179016111ed0394f92025313e46bd13534932a74+source-sha256:d097e50cfdfa69992ed60ea7e28022c25325a17fa6e1f8f4f060e063058e0fbf",
+                "feature_instance": "DirectedBigDealTick:tactical:tactical-default",
+                "parameter_set_id": "tactical-default",
+                "schema_version": "directed_large_deal_stream-v1.6.1",
+                "source_scope": {
+                  "calendar_or_session": "night_end_at_2300",
+                  "market_source_cut": "market:rb:night_end_at_2300:time:2021-01-04T09:00:00.500000..2021-12-31T15:00:00",
+                  "target": "rb",
+                  "time_range": "time:2021-01-04T09:00:00.500000..2021-12-31T15:00:00"
+                }
+              },
+              {
+                "artifact_location": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-EAW-P1-ATTACK-STAT-20261124-01/D002/formal-attempt-A03/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/DirectedBigDealTick/b/6/c/4/7/5/5/3b46f85a5c4f04ea93b227c1dc9d4015b/rb.night_end_at_2300",
+                "code_version": "git:179016111ed0394f92025313e46bd13534932a74+source-sha256:d097e50cfdfa69992ed60ea7e28022c25325a17fa6e1f8f4f060e063058e0fbf",
+                "feature_instance": "DirectedBigDealTick:structural:structural-default",
+                "parameter_set_id": "structural-default",
+                "schema_version": "directed_large_deal_stream-v1.6.1",
+                "source_scope": {
+                  "calendar_or_session": "night_end_at_2300",
+                  "market_source_cut": "market:rb:night_end_at_2300:time:2021-01-04T09:00:00.500000..2021-12-31T15:00:00",
+                  "target": "rb",
+                  "time_range": "time:2021-01-04T09:00:00.500000..2021-12-31T15:00:00"
+                }
+              }
+            ],
+            "split_on_side_switch": true,
+            "split_on_wall_inactive": true,
+            "t_gap_attack_ticks": 6
+          },
+          "artifact_location": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-EAW-P1-ATTACK-STAT-20261124-01/D002/formal-attempt-A03/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/AttackFlowAssembler/0/3/1/4/b/1/9/40e2958cd6ee825fb8395cc584d7d3631/rb.night_end_at_2300",
+          "code_version": "git:179016111ed0394f92025313e46bd13534932a74+source-sha256:abddfdb04e2ba4110013e945b35281ca5f795ecbc58e14d9903cb7d5db58ae9a",
+          "direct_upstream_artifacts": [
+            {
+              "artifact_location": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-EAW-P1-ATTACK-STAT-20261124-01/D002/formal-attempt-A03/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300",
+              "code_version": "git:179016111ed0394f92025313e46bd13534932a74+source-sha256:e7e97d1434a558e70abac3ac3cb2e547a01538ffb868969d89a1bb5d888e6e46",
+              "feature_instance": "WallAssembler:wall-default",
+              "parameter_set_id": "wall-default",
+              "product_kind": "wall_lifecycle",
+              "schema_version": "wall_lifecycle-v1.6.1"
+            },
+            {
+              "artifact_location": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-EAW-P1-ATTACK-STAT-20261124-01/D002/formal-attempt-A03/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/DirectedBigDealTick/2/c/c/5/a/e/c/40baf32977ecb208813b925f04fda5d1a/rb.night_end_at_2300",
+              "code_version": "git:179016111ed0394f92025313e46bd13534932a74+source-sha256:d097e50cfdfa69992ed60ea7e28022c25325a17fa6e1f8f4f060e063058e0fbf",
+              "feature_instance": "DirectedBigDealTick:tactical:tactical-default",
+              "parameter_set_id": "tactical-default",
+              "product_kind": "directed_large_deal_stream",
+              "schema_version": "directed_large_deal_stream-v1.6.1"
+            },
+            {
+              "artifact_location": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-EAW-P1-ATTACK-STAT-20261124-01/D002/formal-attempt-A03/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/DirectedBigDealTick/b/6/c/4/7/5/5/3b46f85a5c4f04ea93b227c1dc9d4015b/rb.night_end_at_2300",
+              "code_version": "git:179016111ed0394f92025313e46bd13534932a74+source-sha256:d097e50cfdfa69992ed60ea7e28022c25325a17fa6e1f8f4f060e063058e0fbf",
+              "feature_instance": "DirectedBigDealTick:structural:structural-default",
+              "parameter_set_id": "structural-default",
+              "product_kind": "directed_large_deal_stream",
+              "schema_version": "directed_large_deal_stream-v1.6.1"
+            }
+          ],
+          "error": null,
+          "feature_instance": "AttackFlowAssembler:attack-default",
+          "method_snapshot_fingerprint": "sha256:cf71d7de658d8fc2947f5151d5b368285212f418b389ae634febaf0c37f5ad2e",
+          "parameter_set_id": "attack-default",
+          "producer_private_parameters": {},
+          "product_kind": "attack_formation_evidence",
+          "schema_version": "attack_formation_evidence-v1.6.1",
+          "source_scope": {
+            "calendar_or_session": "night_end_at_2300",
+            "market_source_cut": "market:rb:night_end_at_2300:time:2021-01-04T09:00:00.500000..2021-12-31T15:00:00",
+            "target": "rb",
+            "time_range": "time:2021-01-04T09:00:00.500000..2021-12-31T15:00:00"
+          },
+          "status": "success"
+        },
+        {
+          "actual_business_parameters": {
+            "lane_merge_policy": "union_keep_labels",
+            "p_attack_ticks": 1,
+            "p_retreat_ticks": 2,
+            "selected_f4_streams": [
+              {
+                "artifact_location": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-EAW-P1-ATTACK-STAT-20261124-01/D002/formal-attempt-A03/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/DirectedBigDealTick/2/c/c/5/a/e/c/40baf32977ecb208813b925f04fda5d1a/rb.night_end_at_2300",
+                "code_version": "git:179016111ed0394f92025313e46bd13534932a74+source-sha256:d097e50cfdfa69992ed60ea7e28022c25325a17fa6e1f8f4f060e063058e0fbf",
+                "feature_instance": "DirectedBigDealTick:tactical:tactical-default",
+                "parameter_set_id": "tactical-default",
+                "schema_version": "directed_large_deal_stream-v1.6.1",
+                "source_scope": {
+                  "calendar_or_session": "night_end_at_2300",
+                  "market_source_cut": "market:rb:night_end_at_2300:time:2021-01-04T09:00:00.500000..2021-12-31T15:00:00",
+                  "target": "rb",
+                  "time_range": "time:2021-01-04T09:00:00.500000..2021-12-31T15:00:00"
+                }
+              },
+              {
+                "artifact_location": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-EAW-P1-ATTACK-STAT-20261124-01/D002/formal-attempt-A03/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/DirectedBigDealTick/b/6/c/4/7/5/5/3b46f85a5c4f04ea93b227c1dc9d4015b/rb.night_end_at_2300",
+                "code_version": "git:179016111ed0394f92025313e46bd13534932a74+source-sha256:d097e50cfdfa69992ed60ea7e28022c25325a17fa6e1f8f4f060e063058e0fbf",
+                "feature_instance": "DirectedBigDealTick:structural:structural-default",
+                "parameter_set_id": "structural-default",
+                "schema_version": "directed_large_deal_stream-v1.6.1",
+                "source_scope": {
+                  "calendar_or_session": "night_end_at_2300",
+                  "market_source_cut": "market:rb:night_end_at_2300:time:2021-01-04T09:00:00.500000..2021-12-31T15:00:00",
+                  "target": "rb",
+                  "time_range": "time:2021-01-04T09:00:00.500000..2021-12-31T15:00:00"
+                }
+              }
+            ],
+            "split_on_side_switch": true,
+            "split_on_wall_inactive": true,
+            "t_gap_attack_ticks": 6
+          },
+          "artifact_location": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-EAW-P1-ATTACK-STAT-20261124-01/D002/formal-attempt-A03/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/AttackFlowAssembler/0/3/1/4/b/1/9/40e2958cd6ee825fb8395cc584d7d3631/rb.night_end_at_2300",
+          "code_version": "git:179016111ed0394f92025313e46bd13534932a74+source-sha256:abddfdb04e2ba4110013e945b35281ca5f795ecbc58e14d9903cb7d5db58ae9a",
+          "direct_upstream_artifacts": [
+            {
+              "artifact_location": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-EAW-P1-ATTACK-STAT-20261124-01/D002/formal-attempt-A03/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300",
+              "code_version": "git:179016111ed0394f92025313e46bd13534932a74+source-sha256:e7e97d1434a558e70abac3ac3cb2e547a01538ffb868969d89a1bb5d888e6e46",
+              "feature_instance": "WallAssembler:wall-default",
+              "parameter_set_id": "wall-default",
+              "product_kind": "wall_lifecycle",
+              "schema_version": "wall_lifecycle-v1.6.1"
+            }
+          ],
+          "error": null,
+          "feature_instance": "AttackFlowAssembler:attack-default",
+          "method_snapshot_fingerprint": "sha256:cf71d7de658d8fc2947f5151d5b368285212f418b389ae634febaf0c37f5ad2e",
+          "parameter_set_id": "attack-default",
+          "producer_private_parameters": {},
+          "product_kind": "wall_relation_barrier",
+          "schema_version": "wall_relation_barrier-v1.6.1",
+          "source_scope": {
+            "calendar_or_session": "night_end_at_2300",
+            "market_source_cut": "market:rb:night_end_at_2300:time:2021-01-04T09:00:00.500000..2021-12-31T15:00:00",
+            "target": "rb",
+            "time_range": "time:2021-01-04T09:00:00.500000..2021-12-31T15:00:00"
+          },
+          "status": "success"
+        }
+      ],
+      "tables": [],
+      "finished_at": "2026-11-24T09:33:15.550632+00:00",
+      "exception_chain": [
+        {
+          "type": "AssertionError",
+          "message": ""
+        }
+      ]
+    },
+    {
+      "symbol": "m",
+      "feature": "wall",
+      "constructor_parameters": {
+        "parameter_set_id": "wall-default",
+        "qt_freq": "1d",
+        "qt_n": 30,
+        "qt_quantile": 0.997,
+        "w_depth_ref_ticks": 1200,
+        "large_quote_ratio_min": 1.0,
+        "allow_zero_qt_fallback": false,
+        "thick_vs_hi_ratio": 1.0,
+        "thin_vs_mid_ratio": 0.7,
+        "allow_thin_brick": false,
+        "p_wall_ticks": 1,
+        "t_wall_ticks": 6,
+        "near_band_ticks": null,
+        "far_band_ticks": null,
+        "connect_max_core_dist_ticks": null,
+        "connect_gap_max_ticks": null,
+        "support_buffer_keep_ticks": null,
+        "thin_eval_window_ticks": null,
+        "band_update_min_shift_ticks": null,
+        "dormant_no_presence_ticks": null,
+        "dormant_far_ticks": null,
+        "end_far_hold_ticks": null,
+        "end_far_ticks": null,
+        "break_after_no_presence_ticks": null,
+        "wall_dead_timeout_ticks": null,
+        "allow_brick_join_dormant": true,
+        "thin_contact_min_hits": 3,
+        "thin_contact_frac_end": 0.6
+      },
+      "ppdict": {
+        "parameter_set_id": "wall-default",
+        "qt_freq": "1d",
+        "qt_n": 30,
+        "qt_quantile": 0.997,
+        "w_depth_ref_ticks": 1200,
+        "large_quote_ratio_min": 1.0,
+        "allow_zero_qt_fallback": false,
+        "thick_vs_hi_ratio": 1.0,
+        "thin_vs_mid_ratio": 0.7,
+        "allow_thin_brick": false,
+        "p_wall_ticks": 1,
+        "t_wall_ticks": 6,
+        "near_band_ticks": null,
+        "far_band_ticks": null,
+        "connect_max_core_dist_ticks": null,
+        "connect_gap_max_ticks": null,
+        "support_buffer_keep_ticks": null,
+        "thin_eval_window_ticks": null,
+        "band_update_min_shift_ticks": null,
+        "dormant_no_presence_ticks": null,
+        "dormant_far_ticks": null,
+        "end_far_hold_ticks": null,
+        "end_far_ticks": null,
+        "break_after_no_presence_ticks": null,
+        "wall_dead_timeout_ticks": null,
+        "allow_brick_join_dormant": true,
+        "thin_contact_min_hits": 3,
+        "thin_contact_frac_end": 0.6
+      },
+      "ppid": "WallAssembler_f32460448c4bde6d0a683cfc262808694c9f0a75",
+      "full_dir": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-EAW-P1-ATTACK-STAT-20261124-01/D002/formal-attempt-A03/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/m.night_end_at_2300",
+      "expected_code_version": "git:179016111ed0394f92025313e46bd13534932a74+source-sha256:e7e97d1434a558e70abac3ac3cb2e547a01538ffb868969d89a1bb5d888e6e46",
+      "started_at": "2026-11-24T09:33:15.871949+00:00",
+      "status": "EXECUTED_AND_FULL_READBACK_VERIFIED",
+      "feature_elapsed_seconds": 894.786,
+      "receipts": [
+        {
+          "actual_business_parameters": {
+            "allow_brick_join_dormant": true,
+            "band_update_min_shift_ticks": 1,
+            "break_after_no_presence_ticks": 3,
+            "connect_gap_max_ticks": 3,
+            "connect_max_core_dist_ticks": 1,
+            "dormant_far_ticks": 2,
+            "dormant_no_presence_ticks": 3,
+            "end_far_hold_ticks": 3,
+            "end_far_ticks": 2,
+            "far_band_ticks": 2,
+            "near_band_ticks": 1,
+            "p_wall_ticks": 1,
+            "support_buffer_keep_ticks": 6,
+            "t_wall_ticks": 6,
+            "thin_contact_frac_end": 0.6,
+            "thin_contact_min_hits": 3,
+            "thin_eval_window_ticks": 3,
+            "wall_dead_timeout_ticks": 12
+          },
+          "artifact_location": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-EAW-P1-ATTACK-STAT-20261124-01/D002/formal-attempt-A03/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/m.night_end_at_2300",
+          "code_version": "git:179016111ed0394f92025313e46bd13534932a74+source-sha256:e7e97d1434a558e70abac3ac3cb2e547a01538ffb868969d89a1bb5d888e6e46",
+          "direct_upstream_artifacts": [],
+          "error": null,
+          "feature_instance": "WallAssembler:wall-default",
+          "method_snapshot_fingerprint": null,
+          "parameter_set_id": "wall-default",
+          "producer_private_parameters": {
+            "allow_thin_brick": false,
+            "allow_zero_qt_fallback": false,
+            "eps_vol": 1e-12,
+            "large_quote_ratio_min": 1.0,
+            "qt_freq": "1d",
+            "qt_n": 30,
+            "qt_quantile": 0.997,
+            "thick_vs_hi_ratio": 1.0,
+            "thin_vs_mid_ratio": 0.7,
+            "w_depth_ref_ticks": 1200
+          },
+          "product_kind": "wall_lifecycle",
+          "schema_version": "wall_lifecycle-v1.6.1",
+          "source_scope": {
+            "calendar_or_session": "night_end_at_2300",
+            "market_source_cut": "market:m:night_end_at_2300:time:2021-01-04T09:00:00.500000..2021-12-31T15:00:00|excluded-empty-calendar-padding:2021-01-18T09:00:00.500000,2021-01-18T10:30:00.500000,2021-01-18T13:30:00.500000,2021-02-09T13:30:00.500000,2021-03-11T21:00:00.500000,2021-04-20T10:30:00.500000,2021-04-23T13:30:00.500000,2021-05-28T21:00:00.500000,2021-08-11T13:30:00.500000,2021-08-13T10:30:00.500000,2021-08-13T13:30:00.500000,2021-09-15T13:30:00.500000,2021-09-22T21:00:00.500000,2021-10-21T10:30:00.500000,2021-11-17T21:00:00.500000,2021-11-24T10:30:00.500000,2021-11-24T13:30:00.500000",
+            "target": "m",
+            "time_range": "time:2021-01-04T09:00:00.500000..2021-12-31T15:00:00"
+          },
+          "status": "success"
+        }
+      ],
+      "tables": [
+        {
+          "key": "wall__stream",
+          "rows": 91341,
+          "columns": [
+            "availability_code",
+            "band_hi",
+            "band_lo",
+            "chunk_end_ts",
+            "chunk_id",
+            "core_price",
+            "event_type_code",
+            "occurrence_ordinal",
+            "reason_code",
+            "side_code",
+            "status_code",
+            "ts",
+            "uti",
+            "wall_id"
+          ],
+          "dtypes": {
+            "availability_code": "int8",
+            "band_hi": "float64",
+            "band_lo": "float64",
+            "chunk_end_ts": "datetime64[ns]",
+            "chunk_id": "int64",
+            "core_price": "float64",
+            "event_type_code": "int64",
+            "occurrence_ordinal": "int64",
+            "reason_code": "float64",
+            "side_code": "int64",
+            "status_code": "int64",
+            "ts": "datetime64[ns]",
+            "uti": "int64",
+            "wall_id": "int64"
+          },
+          "first_index": "2021-02-23 09:30:17",
+          "last_index": "2021-12-31 14:56:16",
+          "full_readback_digest": {
+            "__index__": "85db31fb8eb314c514eb09dd97c7f7038bb2f32fa4d604141552ef36e3551695",
+            "availability_code": "7c0604f85e8a7f018220955d717334340321837cb2b352b403b6e7772a7e26d6",
+            "band_hi": "2d0397e7b24579689512e4a209201e13c26acacb77dfef55879f3a6941c9ef08",
+            "band_lo": "c0a2d2a1c74635441c703ce2a77d78b2e17ef39b041f6282b7f51d6b38df6704",
+            "chunk_end_ts": "e6bc4e954eed388228fa37ec6f4505d6bd7b1bb728b1c76871dd2d97fd0d959f",
+            "chunk_id": "2a9e2c79ddcd758cd7b636843b802b829568e89ed631b29ed10364fa11399607",
+            "core_price": "cf6073c4d7308e79c5334c334fdb923e55b95cdb7a759b3c80596daf856be513",
+            "event_type_code": "be2923f1a2899267a4a925777d31ddf007cee19c422c3cfcae6aca1a0c09c67a",
+            "occurrence_ordinal": "8155dccf3b7f751a6e538f32401bf80dab7f5d9aea6b3816ef60e1daea87869d",
+            "reason_code": "eb72d10c5389321e8c50b0b8a5bdec0d11e0bd192386c7d0764336467f5d14e3",
+            "side_code": "1d9381cd7ca5dc1c5699aad76c2376b9693e124adf876502fb203e2747ba7b4e",
+            "status_code": "536d43625092c8b1d781a64c0a00dadefe7b592c1c1cdb1f2b988ed20b979c98",
+            "ts": "85db31fb8eb314c514eb09dd97c7f7038bb2f32fa4d604141552ef36e3551695",
+            "uti": "32f4febcf8a4e7c1164a35b0d749e26ff57087740dc5d768807079fa2c452bdb",
+            "wall_id": "60f9fae0ebd0f2879b47547dd085f79111500eec19e085a662adab71f899410d"
+          },
+          "matches_returned_result": true
+        },
+        {
+          "key": "wall__stream__occ0001",
+          "rows": 1947,
+          "columns": [
+            "availability_code",
+            "band_hi",
+            "band_lo",
+            "chunk_end_ts",
+            "chunk_id",
+            "core_price",
+            "event_type_code",
+            "occurrence_ordinal",
+            "reason_code",
+            "side_code",
+            "status_code",
+            "ts",
+            "uti",
+            "wall_id"
+          ],
+          "dtypes": {
+            "availability_code": "int8",
+            "band_hi": "float64",
+            "band_lo": "float64",
+            "chunk_end_ts": "datetime64[ns]",
+            "chunk_id": "int64",
+            "core_price": "float64",
+            "event_type_code": "int64",
+            "occurrence_ordinal": "int64",
+            "reason_code": "float64",
+            "side_code": "int64",
+            "status_code": "int64",
+            "ts": "datetime64[ns]",
+            "uti": "int64",
+            "wall_id": "int64"
+          },
+          "first_index": "2021-02-23 14:00:09",
+          "last_index": "2021-12-31 14:40:09.500000",
+          "full_readback_digest": {
+            "__index__": "e8378957c826c890c513aee546ed0a10300ebdb1cdede4d18a30dfa0763facb2",
+            "availability_code": "ec4a99d56e850cc2eb84873ae28aefe7ff27208c441a28176c8939470d7b0a4f",
+            "band_hi": "87f82cea4a93b04ca3e2ffc8f505867636fc0dad9d301c8032182ea34af74015",
+            "band_lo": "b54326ba74fad0f725a211964b7c1528639ebc5531185b4ae41c548b84b1c5c3",
+            "chunk_end_ts": "601e4fee2d64e3ec40c491f7539a71740ba611177b18529b979c747ae7a849cb",
+            "chunk_id": "cd0a412c8af2f9deb7e6f823f5664003f2031aee421f497a4ba491416f514ea3",
+            "core_price": "adbc2241c0ee6dded4cbc23d6de435d8af525954dc353d94264501e4bbe0d751",
+            "event_type_code": "a8515ad9898a51c12734b88798e5b653be89454cd1babc1696f6830cadf6156d",
+            "occurrence_ordinal": "1156847b76ffaa9da017961cb589317ef7f045b62afbeaec36bdc084280c2bc9",
+            "reason_code": "d413a37b175c8e2105e5135489f04295eca602dc95cbfa547d74a06bae204571",
+            "side_code": "a511dd77f55fbc0d9ad32274e28d3962971b8bad7cdbd412d51604699de7ec73",
+            "status_code": "fd95dc4ae3bcb3ad7a83fb7dfe8c525522497420146f4784ec6c04e112ccc63d",
+            "ts": "e8378957c826c890c513aee546ed0a10300ebdb1cdede4d18a30dfa0763facb2",
+            "uti": "32d31ba5821ccef53f1dee96a81c870bce2d2b58bd6d4ab94f66d9dd8a1bff3e",
+            "wall_id": "dfba7ba47f29f61bbbd37351e1cc2be414c5b1b5e00363f52f88e794e161ca42"
+          },
+          "matches_returned_result": true
+        },
+        {
+          "key": "wall__stream__occ0002",
+          "rows": 6,
+          "columns": [
+            "availability_code",
+            "band_hi",
+            "band_lo",
+            "chunk_end_ts",
+            "chunk_id",
+            "core_price",
+            "event_type_code",
+            "occurrence_ordinal",
+            "reason_code",
+            "side_code",
+            "status_code",
+            "ts",
+            "uti",
+            "wall_id"
+          ],
+          "dtypes": {
+            "availability_code": "int8",
+            "band_hi": "float64",
+            "band_lo": "float64",
+            "chunk_end_ts": "datetime64[ns]",
+            "chunk_id": "int64",
+            "core_price": "float64",
+            "event_type_code": "int64",
+            "occurrence_ordinal": "int64",
+            "reason_code": "float64",
+            "side_code": "int64",
+            "status_code": "int64",
+            "ts": "datetime64[ns]",
+            "uti": "int64",
+            "wall_id": "int64"
+          },
+          "first_index": "2021-03-08 21:27:14",
+          "last_index": "2021-12-22 22:43:46",
+          "full_readback_digest": {
+            "__index__": "3f94817e3a608be52637145a1c19dff066f27f4e5213ec03b018254a75849c40",
+            "availability_code": "7fad96634e1f3ce1fb2761942b35b54456ef92b1c90eabe6c4b0c4a10599a5d4",
+            "band_hi": "29eea94581c5f8a34fc152f84c60d9a3abe9f3814035d60167c25530f1874b56",
+            "band_lo": "b26bf20ef68aa447857b87d679db91a03330f3d861bd3cfdb9170d83a5adc782",
+            "chunk_end_ts": "73d92e088fa4b37c622a744d87ef9238c023312e93ed3044c9eda353e5294f42",
+            "chunk_id": "25b1683fc515ef6dbb37b033b27186375e76362fb549839ffc2089d8c6f058a7",
+            "core_price": "4d7fa45d1dd8e484f5b148b2ff5c0eec17a29588cb086d345bde00710b167ccd",
+            "event_type_code": "0438df39c705ba04f14c4d6049382330a708111ea2bd719045525d7f640250d3",
+            "occurrence_ordinal": "be501308ed212dde588849fbd133c7426ac34275bc2e01ff922a04b89812c7d8",
+            "reason_code": "4effff3f5b15c210b30f0d619023ea2186164bbc1c8abebe105311dd9cfcd1b6",
+            "side_code": "be501308ed212dde588849fbd133c7426ac34275bc2e01ff922a04b89812c7d8",
+            "status_code": "cd5e26e9d1168a6569d2d73b789abc7ecaeb68f8f9abe0637617a0884873301a",
+            "ts": "3f94817e3a608be52637145a1c19dff066f27f4e5213ec03b018254a75849c40",
+            "uti": "be7d09986767f36884d1af221acea2bd6d1dbb9ffedcc664cb433c616f2cf4a2",
+            "wall_id": "2e1231e71cead302f38369f0872c5e50eb4ee9c4d93e51aee29c3c105476a9c2"
+          },
+          "matches_returned_result": true
+        },
+        {
+          "key": "wall_assembler_sparse_events",
+          "rows": 93294,
+          "columns": [
+            "availability_code",
+            "band_hi",
+            "band_lo",
+            "chunk_end_ts",
+            "chunk_id",
+            "core_price",
+            "event_type_code",
+            "reason_code",
+            "side_code",
+            "status_code",
+            "ts",
+            "uti",
+            "wall_id"
+          ],
+          "dtypes": {
+            "availability_code": "int8",
+            "band_hi": "float64",
+            "band_lo": "float64",
+            "chunk_end_ts": "datetime64[ns]",
+            "chunk_id": "int64",
+            "core_price": "float64",
+            "event_type_code": "int64",
+            "reason_code": "float64",
+            "side_code": "int64",
+            "status_code": "int64",
+            "ts": "datetime64[ns]",
+            "uti": "int64",
+            "wall_id": "int64"
+          },
+          "first_index": "2021-02-23 09:30:17",
+          "last_index": "2021-12-31 14:56:16",
+          "full_readback_digest": {
+            "__index__": "280b9b45903d94e91ef6679cc67b7e2d9cb63be36f42990eadaf8eebe8c207ee",
+            "availability_code": "9e315ac185cbaad834ae2f08a4e1d3e0ec376761e1356a3d1e912964a083c9c3",
+            "band_hi": "abeffc2ae10f78222ba07e17be57c1bde6d48375d76dad6c127bded498e949b8",
+            "band_lo": "a871a1480d63731dfd7e8af659619b0a857eabef4fcf50ef87a1c3759378d22a",
+            "chunk_end_ts": "9c7b8b0977a5d609d68c13e4d4213eff9f25f7919ae41718d077555276764da3",
+            "chunk_id": "cd4c721c4d55c877fdb4b3ddd7009acdc1c3c44313dbcc1d352f3084eeab565d",
+            "core_price": "353f9aa5052fce88b2ad23041f7397d4d9c5d48b7228750f714d5cea44787f8f",
+            "event_type_code": "581c56f5c79c1e81837db077245ac9e2ea2e483d78b3e08d5b2793151242c545",
+            "reason_code": "20dc87f34d844d379711efcfcb8cb122c4b18e7e660b617272e2e344087eecef",
+            "side_code": "1e763832371d03eff4d0c74669632d2298143c9a3a9e7552929255b5097f7981",
+            "status_code": "e114b8bc2af583096fe768d2f2053d25f39a96a04124dabdfe69e0d9e8c991f6",
+            "ts": "280b9b45903d94e91ef6679cc67b7e2d9cb63be36f42990eadaf8eebe8c207ee",
+            "uti": "9ea3b813aec64810883d9c65b9a2084b8d1a3e86b54f9d07dde9aecc59ab508c",
+            "wall_id": "c5e61400e9b3374d3c191bc64e5a842f295b77f4b93d22b2bf6d047c189c4303"
+          },
+          "matches_returned_result": true
+        },
+        {
+          "key": "wall_assembler_state_trace",
+          "rows": 9959383,
+          "columns": [
+            "chunk_id",
+            "ts",
+            "uti",
+            "wall_band_hi_ask",
+            "wall_band_hi_bid",
+            "wall_band_lo_ask",
+            "wall_band_lo_bid",
+            "wall_core_price_ask",
+            "wall_core_price_bid",
+            "wall_id_ask",
+            "wall_id_bid",
+            "wall_side_code_ask",
+            "wall_side_code_bid",
+            "wall_status_code_ask",
+            "wall_status_code_bid"
+          ],
+          "dtypes": {
+            "chunk_id": "int64",
+            "ts": "datetime64[ns]",
+            "uti": "int64",
+            "wall_band_hi_ask": "float64",
+            "wall_band_hi_bid": "float64",
+            "wall_band_lo_ask": "float64",
+            "wall_band_lo_bid": "float64",
+            "wall_core_price_ask": "float64",
+            "wall_core_price_bid": "float64",
+            "wall_id_ask": "int64",
+            "wall_id_bid": "int64",
+            "wall_side_code_ask": "int8",
+            "wall_side_code_bid": "int8",
+            "wall_status_code_ask": "int8",
+            "wall_status_code_bid": "int8"
+          },
+          "first_index": "2021-01-04 09:00:00.500000",
+          "last_index": "2021-12-31 15:00:00",
+          "full_readback_digest": {
+            "__index__": "10a955b67092a2b54484f455de703929d4d3266d5ae12bb89c4b5ff2f75a6cd3",
+            "chunk_id": "eebc13ad2f02fce12bd730e7ea9026152b28a3db4ea0a369f170bb498991dd78",
+            "ts": "10a955b67092a2b54484f455de703929d4d3266d5ae12bb89c4b5ff2f75a6cd3",
+            "uti": "93e756e2231d3e539958fb4e0b21837fd73452b4daf4ea1ded634e54724e572b",
+            "wall_band_hi_ask": "b3fc21bb8038847601f8b1502ce58aac9ca57fd6f33876624a3a109784188921",
+            "wall_band_hi_bid": "aac20996a6d10bb8ea8ce87f3d45db4c80eb6b63eea825615fc0a7fe97b71cb9",
+            "wall_band_lo_ask": "6bf044548bf997d02f2a3768c0ae0b848ae7f93526b1f92f1ba2ded2125aa4a8",
+            "wall_band_lo_bid": "bca7fd64d72101b5e8d2101a38725bf9146fa71f72c913a89398fcb07dcfc930",
+            "wall_core_price_ask": "87b84b45b515f50c3fbb645933aa22d9baca321ef468fe279260c97110bf7bbf",
+            "wall_core_price_bid": "ae9205e2b3f1e79823b85379d321377757885f5e81f7399b98099c46257d9bac",
+            "wall_id_ask": "a0bedf99c09b7bfa9b81b6fde9e2e561d334692e2021c63100791858f02834f6",
+            "wall_id_bid": "75286c70efb560d582ad0b1c7a79159dbd0ecb5c90ac91af87f40acc81ce7d11",
+            "wall_side_code_ask": "40d8cb7b0e619525e66a93f05dcaaf6e663919ffb63e67c56ba9a4964dc9339c",
+            "wall_side_code_bid": "cc7b8bc3aaf55b231fc972125aa9ed871c0626fd751d2786210372d0cea31430",
+            "wall_status_code_ask": "e5a1c007aa4dad1dcc7b33526cf4fdbf69d25ac3ce46cc70bdf156a62b5d9efa",
+            "wall_status_code_bid": "12b876855b1bedba2956a2e6373540950890b37ce64e1476718df2d3340c5ea1"
+          },
+          "matches_returned_result": true
+        }
+      ],
+      "finished_at": "2026-11-24T09:48:17.305376+00:00"
+    },
+    {
+      "symbol": "m",
+      "feature": "tactical",
+      "constructor_parameters": {
+        "parameter_set_id": "tactical-default",
+        "qualification_family": "tactical",
+        "amt_n": 30,
+        "lane_threshold_map": {
+          "tactical": [
+            "0.99",
+            "0.995"
+          ]
+        },
+        "same_best_tol_ticks": 0,
+        "big_deal_ratio_min": 1.0
+      },
+      "ppdict": {
+        "parameter_set_id": "tactical-default",
+        "qualification_family": "tactical",
+        "amt_n": 30,
+        "lane_threshold_map": {
+          "tactical": [
+            "0.99",
+            "0.995"
+          ]
+        },
+        "same_best_tol_ticks": 0,
+        "big_deal_ratio_min": 1.0
+      },
+      "ppid": "DirectedBigDealTick_ecd83d7195757d35f9fa349e9cc810de55ac07ba",
+      "full_dir": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-EAW-P1-ATTACK-STAT-20261124-01/D002/formal-attempt-A03/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/DirectedBigDealTick/2/c/c/5/a/e/c/40baf32977ecb208813b925f04fda5d1a/m.night_end_at_2300",
+      "expected_code_version": "git:179016111ed0394f92025313e46bd13534932a74+source-sha256:d097e50cfdfa69992ed60ea7e28022c25325a17fa6e1f8f4f060e063058e0fbf",
+      "started_at": "2026-11-24T09:48:17.429840+00:00",
+      "status": "EXECUTION_OR_READBACK_FAILED",
+      "finished_at": "2026-11-24T09:48:17.985096+00:00",
+      "exception_chain": [
+        {
+          "type": "Exception",
+          "message": "DirectedBigDealTick({\n  \"parameter_set_id\": 'tactical-default',\n  \"qualification_family\": 'tactical',\n  \"amt_n\": 30,\n  \"lane_threshold_map\": {'tactical': ['0.99', '0.995']},\n  \"same_best_tol_ticks\": 0,\n  \"big_deal_ratio_min\": 1.0,\n}) \n2/c/c/5/a/e/c/40baf32977ecb208813b925f04fda5d1a"
+        },
+        {
+          "type": "ValueError",
+          "message": "'m' is not in list"
+        }
+      ]
+    },
+    {
+      "symbol": "m",
+      "feature": "structural",
+      "constructor_parameters": {
+        "parameter_set_id": "structural-default",
+        "qualification_family": "structural",
+        "amt_n": 30,
+        "lane_threshold_map": {
+          "structural": [
+            "0.997",
+            "0.999"
+          ]
+        },
+        "same_best_tol_ticks": 0,
+        "big_deal_ratio_min": 1.0
+      },
+      "ppdict": {
+        "parameter_set_id": "structural-default",
+        "qualification_family": "structural",
+        "amt_n": 30,
+        "lane_threshold_map": {
+          "structural": [
+            "0.997",
+            "0.999"
+          ]
+        },
+        "same_best_tol_ticks": 0,
+        "big_deal_ratio_min": 1.0
+      },
+      "ppid": "DirectedBigDealTick_b7bee7c742968dcbde29e53ca969d381390aabf9",
+      "full_dir": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-EAW-P1-ATTACK-STAT-20261124-01/D002/formal-attempt-A03/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/DirectedBigDealTick/b/6/c/4/7/5/5/3b46f85a5c4f04ea93b227c1dc9d4015b/m.night_end_at_2300",
+      "expected_code_version": "git:179016111ed0394f92025313e46bd13534932a74+source-sha256:d097e50cfdfa69992ed60ea7e28022c25325a17fa6e1f8f4f060e063058e0fbf",
+      "started_at": "2026-11-24T09:48:18.124772+00:00",
+      "status": "EXECUTION_OR_READBACK_FAILED",
+      "finished_at": "2026-11-24T09:48:18.716227+00:00",
+      "exception_chain": [
+        {
+          "type": "Exception",
+          "message": "DirectedBigDealTick({\n  \"parameter_set_id\": 'structural-default',\n  \"qualification_family\": 'structural',\n  \"amt_n\": 30,\n  \"lane_threshold_map\": {'structural': ['0.997', '0.999']},\n  \"same_best_tol_ticks\": 0,\n  \"big_deal_ratio_min\": 1.0,\n}) \nb/6/c/4/7/5/5/3b46f85a5c4f04ea93b227c1dc9d4015b"
+        },
+        {
+          "type": "ValueError",
+          "message": "'m' is not in list"
+        }
+      ]
+    },
+    {
+      "symbol": "m",
+      "feature": "attack",
+      "constructor_parameters": {
+        "parameter_set_id": "attack-default",
+        "wall": {
+          "type": "mquant.frame.core.app.proxy.Proxy(WallAssembler)",
+          "parameters": {
+            "parameter_set_id": "wall-default",
+            "qt_freq": "1d",
+            "qt_n": 30,
+            "qt_quantile": 0.997,
+            "w_depth_ref_ticks": 1200,
+            "large_quote_ratio_min": 1.0,
+            "allow_zero_qt_fallback": false,
+            "thick_vs_hi_ratio": 1.0,
+            "thin_vs_mid_ratio": 0.7,
+            "allow_thin_brick": false,
+            "p_wall_ticks": 1,
+            "t_wall_ticks": 6,
+            "near_band_ticks": null,
+            "far_band_ticks": null,
+            "connect_max_core_dist_ticks": null,
+            "connect_gap_max_ticks": null,
+            "support_buffer_keep_ticks": null,
+            "thin_eval_window_ticks": null,
+            "band_update_min_shift_ticks": null,
+            "dormant_no_presence_ticks": null,
+            "dormant_far_ticks": null,
+            "end_far_hold_ticks": null,
+            "end_far_ticks": null,
+            "break_after_no_presence_ticks": null,
+            "wall_dead_timeout_ticks": null,
+            "allow_brick_join_dormant": true,
+            "thin_contact_min_hits": 3,
+            "thin_contact_frac_end": 0.6
+          }
+        },
+        "directed_large_deal_tactical": {
+          "type": "mquant.frame.core.app.proxy.Proxy(DirectedBigDealTick)",
+          "parameters": {
+            "parameter_set_id": "tactical-default",
+            "qualification_family": "tactical",
+            "amt_n": 30,
+            "lane_threshold_map": {
+              "tactical": [
+                "0.99",
+                "0.995"
+              ]
+            },
+            "same_best_tol_ticks": 0,
+            "big_deal_ratio_min": 1.0
+          }
+        },
+        "directed_large_deal_structural": {
+          "type": "mquant.frame.core.app.proxy.Proxy(DirectedBigDealTick)",
+          "parameters": {
+            "parameter_set_id": "structural-default",
+            "qualification_family": "structural",
+            "amt_n": 30,
+            "lane_threshold_map": {
+              "structural": [
+                "0.997",
+                "0.999"
+              ]
+            },
+            "same_best_tol_ticks": 0,
+            "big_deal_ratio_min": 1.0
+          }
+        },
+        "additional_directed_large_deal_features": [],
+        "p_attack_ticks": 1,
+        "t_gap_attack_ticks": 6,
+        "p_retreat_ticks": null,
+        "lane_merge_policy": "union_keep_labels",
+        "split_on_side_switch": true,
+        "split_on_wall_inactive": true
+      },
+      "ppdict": {
+        "parameter_set_id": "attack-default",
+        "wall(WallAssembler).parameter_set_id": "wall-default",
+        "wall(WallAssembler).qt_freq": "1d",
+        "wall(WallAssembler).qt_n": 30,
+        "wall(WallAssembler).qt_quantile": 0.997,
+        "wall(WallAssembler).w_depth_ref_ticks": 1200,
+        "wall(WallAssembler).large_quote_ratio_min": 1.0,
+        "wall(WallAssembler).allow_zero_qt_fallback": false,
+        "wall(WallAssembler).thick_vs_hi_ratio": 1.0,
+        "wall(WallAssembler).thin_vs_mid_ratio": 0.7,
+        "wall(WallAssembler).allow_thin_brick": false,
+        "wall(WallAssembler).p_wall_ticks": 1,
+        "wall(WallAssembler).t_wall_ticks": 6,
+        "wall(WallAssembler).near_band_ticks": null,
+        "wall(WallAssembler).far_band_ticks": null,
+        "wall(WallAssembler).connect_max_core_dist_ticks": null,
+        "wall(WallAssembler).connect_gap_max_ticks": null,
+        "wall(WallAssembler).support_buffer_keep_ticks": null,
+        "wall(WallAssembler).thin_eval_window_ticks": null,
+        "wall(WallAssembler).band_update_min_shift_ticks": null,
+        "wall(WallAssembler).dormant_no_presence_ticks": null,
+        "wall(WallAssembler).dormant_far_ticks": null,
+        "wall(WallAssembler).end_far_hold_ticks": null,
+        "wall(WallAssembler).end_far_ticks": null,
+        "wall(WallAssembler).break_after_no_presence_ticks": null,
+        "wall(WallAssembler).wall_dead_timeout_ticks": null,
+        "wall(WallAssembler).allow_brick_join_dormant": true,
+        "wall(WallAssembler).thin_contact_min_hits": 3,
+        "wall(WallAssembler).thin_contact_frac_end": 0.6,
+        "directed_large_deal_tactical(DirectedBigDealTick).parameter_set_id": "tactical-default",
+        "directed_large_deal_tactical(DirectedBigDealTick).qualification_family": "tactical",
+        "directed_large_deal_tactical(DirectedBigDealTick).amt_n": 30,
+        "directed_large_deal_tactical(DirectedBigDealTick).lane_threshold_map": {
+          "tactical": [
+            "0.99",
+            "0.995"
+          ]
+        },
+        "directed_large_deal_tactical(DirectedBigDealTick).same_best_tol_ticks": 0,
+        "directed_large_deal_tactical(DirectedBigDealTick).big_deal_ratio_min": 1.0,
+        "directed_large_deal_structural(DirectedBigDealTick).parameter_set_id": "structural-default",
+        "directed_large_deal_structural(DirectedBigDealTick).qualification_family": "structural",
+        "directed_large_deal_structural(DirectedBigDealTick).amt_n": 30,
+        "directed_large_deal_structural(DirectedBigDealTick).lane_threshold_map": {
+          "structural": [
+            "0.997",
+            "0.999"
+          ]
+        },
+        "directed_large_deal_structural(DirectedBigDealTick).same_best_tol_ticks": 0,
+        "directed_large_deal_structural(DirectedBigDealTick).big_deal_ratio_min": 1.0,
+        "additional_directed_large_deal_features": [],
+        "p_attack_ticks": 1,
+        "t_gap_attack_ticks": 6,
+        "p_retreat_ticks": null,
+        "lane_merge_policy": "union_keep_labels",
+        "split_on_side_switch": true,
+        "split_on_wall_inactive": true
+      },
+      "ppid": "AttackFlowAssembler_700681a3da4b7aedeb84a6066b6ca4af733d4b14",
+      "full_dir": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-EAW-P1-ATTACK-STAT-20261124-01/D002/formal-attempt-A03/store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/AttackFlowAssembler/0/3/1/4/b/1/9/40e2958cd6ee825fb8395cc584d7d3631/m.night_end_at_2300",
+      "expected_code_version": "git:179016111ed0394f92025313e46bd13534932a74+source-sha256:abddfdb04e2ba4110013e945b35281ca5f795ecbc58e14d9903cb7d5db58ae9a",
+      "started_at": "2026-11-24T09:48:18.818246+00:00",
+      "status": "BLOCKED_MISSING_CURRENT_UPSTREAM",
+      "finished_at": "2026-11-24T09:48:18.818582+00:00"
+    }
+  ],
+  "errors": [
+    {
+      "symbol": "rb",
+      "feature": "attack",
+      "exception_chain": [
+        {
+          "type": "AssertionError",
+          "message": ""
+        }
+      ]
+    },
+    {
+      "symbol": "m",
+      "feature": "tactical",
+      "exception_chain": [
+        {
+          "type": "Exception",
+          "message": "DirectedBigDealTick({\n  \"parameter_set_id\": 'tactical-default',\n  \"qualification_family\": 'tactical',\n  \"amt_n\": 30,\n  \"lane_threshold_map\": {'tactical': ['0.99', '0.995']},\n  \"same_best_tol_ticks\": 0,\n  \"big_deal_ratio_min\": 1.0,\n}) \n2/c/c/5/a/e/c/40baf32977ecb208813b925f04fda5d1a"
+        },
+        {
+          "type": "ValueError",
+          "message": "'m' is not in list"
+        }
+      ]
+    },
+    {
+      "symbol": "m",
+      "feature": "structural",
+      "exception_chain": [
+        {
+          "type": "Exception",
+          "message": "DirectedBigDealTick({\n  \"parameter_set_id\": 'structural-default',\n  \"qualification_family\": 'structural',\n  \"amt_n\": 30,\n  \"lane_threshold_map\": {'structural': ['0.997', '0.999']},\n  \"same_best_tol_ticks\": 0,\n  \"big_deal_ratio_min\": 1.0,\n}) \nb/6/c/4/7/5/5/3b46f85a5c4f04ea93b227c1dc9d4015b"
+        },
+        {
+          "type": "ValueError",
+          "message": "'m' is not in list"
+        }
+      ]
+    }
+  ],
+  "store_root": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-EAW-P1-ATTACK-STAT-20261124-01/D002/formal-attempt-A03/store",
+  "sys_executable": "/m3c3/Linux/apps/anaconda3/bin/python",
+  "actual_cwd": "/dwdhome/fy/BASE_E6_2_copy",
+  "invocation_ref": "daowei2026/observe-iterate@127585f808552a18094a873cf7cf9d80b511d186:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0007/INVOCATION.json",
+  "origin_ref": "daowei2026/observe-iterate@0d2137442b76f872f2b38eb4e3cf3d16d98303f2:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0006/PRO_RETURN.json",
+  "lock_identity": {
+    "device": 83,
+    "inode": 15061041,
+    "bytes_before": 0,
+    "sha256_before": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes_after": 0,
+    "sha256_after": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "last_update": "2026-11-24T09:48:19.011378+00:00",
+  "current_stage": "FORMAL_X_INCOMPLETE",
+  "lock_acquired_at": "2026-11-24T08:56:09.294874+00:00",
+  "lock_wait_seconds": 0.0,
+  "actual_module_files": {
+    "mquant.tis.hf.prel0.attack_flow_assembler": "/dwdhome/fy/BASE_E6_2_copy/mquant/tis/hf/prel0/attack_flow_assembler.py",
+    "mquant.tis.hf.prel0.wall_assembler": "/dwdhome/fy/BASE_E6_2_copy/mquant/tis/hf/prel0/wall_assembler.py",
+    "mquant.tis.hf.prel0.pressure_big_deal": "/dwdhome/fy/BASE_E6_2_copy/mquant/tis/hf/prel0/pressure_big_deal.py"
+  },
+  "source_feature_cal_type_overrides": {
+    "SubContinuousContract": "cal",
+    "AmountThreshold": "cal",
+    "VolQuant": "cal"
+  },
+  "expected_code_fingerprints": {
+    "wall": "git:179016111ed0394f92025313e46bd13534932a74+source-sha256:e7e97d1434a558e70abac3ac3cb2e547a01538ffb868969d89a1bb5d888e6e46",
+    "tactical": "git:179016111ed0394f92025313e46bd13534932a74+source-sha256:d097e50cfdfa69992ed60ea7e28022c25325a17fa6e1f8f4f060e063058e0fbf",
+    "structural": "git:179016111ed0394f92025313e46bd13534932a74+source-sha256:d097e50cfdfa69992ed60ea7e28022c25325a17fa6e1f8f4f060e063058e0fbf",
+    "attack": "git:179016111ed0394f92025313e46bd13534932a74+source-sha256:abddfdb04e2ba4110013e945b35281ca5f795ecbc58e14d9903cb7d5db58ae9a"
+  },
+  "symbol": "m",
+  "feature": "attack",
+  "table_count": 5,
+  "error": {
+    "type": "ValueError",
+    "message": "'m' is not in list"
+  },
+  "lock_released_at": "2026-11-24T09:48:19.082995+00:00",
+  "finished_at": "2026-11-24T09:48:19.083154+00:00"
+}

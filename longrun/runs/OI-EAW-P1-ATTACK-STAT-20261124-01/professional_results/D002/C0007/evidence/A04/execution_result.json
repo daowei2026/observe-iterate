@@ -1,0 +1,40 @@
+{
+  "run_id": "OI-EAW-P1-ATTACK-STAT-20261124-01",
+  "call_id": "C0007",
+  "delegation_id": "D002",
+  "attempt_id": "A04",
+  "scope": "M_CONTINUATION_OF_FORMAL_2021_RB_M",
+  "started_at": "2026-11-24T09:54:52.818709+00:00",
+  "lock_path": "/dwdhome/fy/cgpterm/artifacts/wall-f-closure-20261122/FORMAL_PRODUCTION.lock",
+  "lock_acquired": false,
+  "lock_released": false,
+  "feature_execution_started": false,
+  "formal_complete": false,
+  "feature_results": [],
+  "errors": [
+    {
+      "stage": "WAITING_SHARED_PRODUCTION_LOCK",
+      "type": "TimeoutError",
+      "message": "SHARED_PRODUCTION_LOCK_STILL_HELD_AFTER_600_SECONDS"
+    }
+  ],
+  "store_root": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-EAW-P1-ATTACK-STAT-20261124-01/D002/formal-attempt-A03/store",
+  "sys_executable": "/m3c3/Linux/apps/anaconda3/bin/python",
+  "actual_cwd": "/dwdhome/fy/BASE_E6_2_copy",
+  "invocation_ref": "daowei2026/observe-iterate@127585f808552a18094a873cf7cf9d80b511d186:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0007/INVOCATION.json",
+  "origin_ref": "daowei2026/observe-iterate@0d2137442b76f872f2b38eb4e3cf3d16d98303f2:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0006/PRO_RETURN.json",
+  "trade_scope_correction": "显式采用现有原生m交易集；只补正原输入范围遗漏，不改Feature业务参数、源码或市场数据",
+  "preflight_evidence": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-EAW-P1-ATTACK-STAT-20261124-01/D002/C0007/evidence/x_preflight-A04.json",
+  "lock_identity": {
+    "device": 83,
+    "inode": 15061041,
+    "bytes_before": 0,
+    "sha256_before": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "last_update": "2026-11-24T10:04:54.182271+00:00",
+  "current_stage": "RUNNER_STOPPED_WITH_RECORDED_GAP",
+  "lock_wait_seconds": 583.823,
+  "error_type": "TimeoutError",
+  "error_message": "SHARED_PRODUCTION_LOCK_STILL_HELD_AFTER_600_SECONDS",
+  "finished_at": "2026-11-24T10:04:54.238599+00:00"
+}
