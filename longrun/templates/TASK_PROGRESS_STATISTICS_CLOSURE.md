@@ -1,66 +1,67 @@
-# TASK_PROGRESS｜统计驱动 Feature 闭环
+# TASK_PROGRESS｜统计驱动 Feature 闭环（机器状态与恢复）
 
-> 仅在真实 GO 后复制到 `longrun/runs/<run_id>/business_control/TASK_PROGRESS.md`。本模板没有完成事实。
+> 仅在真实 GO 后复制至 `longrun/runs/<run_id>/business_control/TASK_PROGRESS.md`，不表示已有完成事实。
+> **此文件主要服务运行协调、精确版本与合法恢复；人类业务阅读入口是 [BUSINESS_PROGRESS.md](BUSINESS_PROGRESS.md)。**
+> 两文件均由 manager 投影真实成果，不另立专业事实库或重复专业结论。
 
-## A. 身份与来源
+## A. Run 身份、版本和绑定
 
-- `run_id`：
-- `work_id / business_case_id`：
-- Owner GO：
-- 采用 control／Skill／实践补充：
+- `run_id / work_id / business_case_id`：
+- Owner 初始 GO / `CurrentReviewTarget`：
+- 当前采用 control / Skill / 补充的 exact commit：
 - execution profile：
-- manager / executor 物理绑定：
+- manager / executor 逻辑身份与物理绑定：
 - Linux workspace / verified realpath：
 - snapshot status：`current / stale / not_yet_verified`
+- 业务阅读文件：`business_control/BUSINESS_PROGRESS.md`
 
-## B. 当前任务
+## B. 当前正式实例和流程状态
 
-| 项目 | 当前有据状态 | 精确引用／恢复条件 |
+| 项目 | 机器状态／当前版本 | 精确引用／必要的恢复条件 |
 |---|---|---|
-| CurrentReviewTarget | | |
-| 必须完成与明确非目标 | | |
-| Feature 代码 | | |
-| 参数实例 | | |
-| 数据范围与日历 | | |
-| 整体状态 | `incomplete / complete / stopped_with_unmet_requirements` | |
+| Feature 代码／constructor／参数 | | |
+| 数据范围／日历／结果身份 | | |
+| 首轮或后续轮次 | | |
+| 父 Run 整体状态 | `incomplete / complete / stopped_with_unmet_requirements` | |
+| 当前在途 C／D／角色 | | |
 | 下一合法动作 | | |
 
-## C. 闭环节点
+## C. 当前有效节点结果及失效
 
-| 节点 | 当前输入版本 | 状态 | 当前有效产物 | 未完成／失效条件 | 精确引用 |
-|---|---|---|---|---|---|
-| U 共享理解 | | | | | |
-| X 实例运行 | | | | | |
-| G 全量统计 | | | | | |
-| D 偏差诊断 | | | | | |
-| FI 工程修正（适用时） | | | | | |
-| P 参数处理（适用时） | | | | | |
-| Release | | | | | |
+| 节点 | 有效输入版本 | 状态 | 原生结果准确引用 | 待办、失效或继续条件 |
+|---|---|---|---|---|
+| U Feature 理解 | | | | |
+| X 正式运行／读回 | | | | |
+| G 全量统计与发现 | | | | |
+| D 偏差诊断 | | | | |
+| 实际修正与回归（适用时） | | | | |
+| Release | | | | |
 
-## D. Finding Register
+> 节点名称不要求对每次命令、内部检查另建工作项。条件分支不是独立 Skill。
 
-| finding_id | observation | 当前状态 | 直接责任点／路由 | 最新证据 | 下一动作 |
-|---|---|---|---|---|---|
-| | | `CANDIDATE / DIAGNOSIS_IN_PROGRESS / CONFIRMED / FIX_IN_PROGRESS / FIXED_PENDING_RERUN / CLOSED_ON_LATEST_PROFILE / DEFERRED_BY_SCOPE / REJECTED_AS_NON_ISSUE / SUPERSEDED` | | | |
+## D. Finding 索引（不重复业务分析正文）
 
-## E. 已知限制
+| finding_id | 状态 | 责任逻辑／原生产物引用 | 最新回归版本 | 下一合法动作 |
+|---|---|---|---|---|
+| | `CANDIDATE / DIAGNOSIS_IN_PROGRESS / CONFIRMED / FIX_IN_PROGRESS / FIXED_PENDING_RERUN / CLOSED_ON_LATEST_PROFILE / DEFERRED_BY_SCOPE / REJECTED_AS_NON_ISSUE / SUPERSEDED` | | | |
 
-| limitation_id | 初始 ReviewTarget 范围依据 | 业务／下游影响 | 为什么当前不阻断 | 返回条件 | 精确引用 |
-|---|---|---|---|---|---|
-| | | | | | |
+> 完整的「为什么不合理、如何解决、实际业务效果」放在 BUSINESS_PROGRESS，技术原始依据保留在对应 Skill 产物中。
 
-## F. Release
+## E. Release / 依赖 / 已知限制
 
-- `FeatureReleaseGate`：`BLOCKED / OPEN_CONFIRMED_DEFECT / RERUN_REQUIRED / PASS_WITH_ACCEPTED_LIMITATIONS / PASS`
-- 最新运行结果：
-- 最新全量统计：
-- `UpstreamReleasePackage`：
-- 下游消费者：
-- 使 Release 失效的变化：
+- `FeatureReleaseGate`：`BLOCKED / OPEN_CONFIRMED_DEFECT / RERUN_REQUIRED / PASS_WITH_ACCEPTED_LIMITATIONS / PASS` 或未形成
+- 当前 `UpstreamReleasePackage`：
+- 下游依赖／需失效的消费版本：
+- 已知限制原件及是否为初始 ReviewTarget 明确允许的范围外项：
+- 最新有效结果与统计 refs：
 
-## G. 本次更新
+## F. 本次恢复快照与业务视图同步
 
-- 新事实：
-- 受影响节点和历史成果：
-- 保留／复用／重验：
-- 下一 Skill D、原 D 续接或等待条件：
+- 新取得并验证的回交与动作事实：
+- 保留／复用／重验的旧产物：
+- 阻断、UNKNOWN、写面冲突或缺证据的具体范围：
+- 下一 D / 原 D 续接 / 等待条件：
+- BUSINESS_PROGRESS 同步到的业务依据与版本：
+- 本次更新时间：
+
+> 同一业务事实变更应更新两个文件相应视图；业务视图生成或 Git 提交失败时记录待同步，不得据此伪造专业完成，不必停下已授权的独立业务工作。

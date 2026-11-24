@@ -75,7 +75,8 @@ X 和工程修正是受授权的实际动作，不因直接在 Codex 中执行�
 | [templates/OWNER_GO.md](templates/OWNER_GO.md) | 通用历史模板 |
 | [templates/OWNER_GO_CODEX_NATIVE.md](templates/OWNER_GO_CODEX_NATIVE.md) | Codex 原生直执行 GO 模板 |
 | [templates/TASK_PROGRESS.md](templates/TASK_PROGRESS.md) | 通用历史进度模板 |
-| [templates/TASK_PROGRESS_STATISTICS_CLOSURE.md](templates/TASK_PROGRESS_STATISTICS_CLOSURE.md) | 统计闭环的轻量进度模板 |
+| [templates/TASK_PROGRESS_STATISTICS_CLOSURE.md](templates/TASK_PROGRESS_STATISTICS_CLOSURE.md) | 统计闭环机器状态与恢复模板 |
+| [templates/BUSINESS_PROGRESS_STATISTICS_CLOSURE.md](templates/BUSINESS_PROGRESS_STATISTICS_CLOSURE.md) | 统计闭环的业务进展与产出阅读模板 |
 | [CONTROL_PLANE_ADAPTER.md](CONTROL_PLANE_ADAPTER.md) | 专业控制面与运行协议边界 |
 | [controller/CONTROLLER_OPERATIONS.md](controller/CONTROLLER_OPERATIONS.md) | 主控操作 |
 | [tools/longrun_gate.py](tools/longrun_gate.py) | 单 Run 机械检查 |
@@ -83,7 +84,16 @@ X 和工程修正是受授权的实际动作，不因直接在 Codex 中执行�
 
 ## 5. 状态与真实事实
 
-每个 Run 的当前视图保存在：
+每个 Run 有两个用途明确的当前视图。**先看业务，再看运行细节**：
+
+```text
+longrun/runs/<run_id>/business_control/BUSINESS_PROGRESS.md  # 人类业务进展与成果入口
+longrun/runs/<run_id>/business_control/TASK_PROGRESS.md      # 机器状态、精确版本、交接与恢复
+```
+
+历史 Run 可能只拥有 TASK_PROGRESS；不得伪造过去未生成的 BUSINESS_PROGRESS。
+
+运行机器状态保存在：
 
 ```text
 longrun/runs/<run_id>/business_control/TASK_PROGRESS.md

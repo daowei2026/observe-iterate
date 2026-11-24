@@ -75,7 +75,7 @@ cgpterm controller Skill 的 commit 与 `observe-iterate` 专业控制 commit �
 
 manager：
 
-- 维护 TASK_PROGRESS；
+- 维护 TASK_PROGRESS 机器恢复视图；统计闭环新 Run 同时维护 BUSINESS_PROGRESS 人类业务视图；
 - 根据已采用 Workflow 签发一项 Skill 工作；
 - 消费真实 Return；
 - 处理版本失效、等待、汇合和后继；不能决定新的业务目标或提出 Owner 审批节点。

@@ -42,9 +42,11 @@
 
 不同 Run 的 manager/executor、工作区和状态独立。具体任务声明联合 Barrier 时，manager 只形成自己 Run 的专业 Gate；主控按任务输入汇合，不由任一 manager替其他 Run 作专业判断。
 
-## 5. 状态
+## 5. 状态与两类进度视图
 
-持续更新 `business_control/TASK_PROGRESS.md`，重点记录：
+对于采用统计驱动闭环的新 Run，manager 持续维护 `business_control/TASK_PROGRESS.md`（运行技术状态与恢复）及 `business_control/BUSINESS_PROGRESS.md`（业务阅读入口）。业务信息只从已验收的 Skill 原生产物、最新正式运行和统计结果投影，不另设专业验收。
+
+**TASK_PROGRESS（机器）**重点记录：
 
 - 当前任务目标和 ReviewTarget；
 - 代码、参数、数据和运行结果版本；
@@ -53,6 +55,10 @@
 - open/closed/deferred finding；
 - 在途、阻断、恢复条件和下一合法动作；
 - Release/Gate 及下游消费版本。
+
+**BUSINESS_PROGRESS（人类）**重点讲当前业务目标、各轮次进展、发现问题的业务含义与责任逻辑、修改前后真实变化、当前有效产出入口、已知限制和下一项业务工作。尽量少用 C/D/JSON 字段替代业务叙述；技术细节只链接 TASK_PROGRESS 与原结果。
+
+每次重要专业回交、正式行为修改、重新统计、Release 状态变化时，同步维护两个视图。历史 Run 的 TASK_PROGRESS 保留原样；仅新 Run 的模板要求双文件。若业务视图写入失败，标记待同步并可继续不依赖该写入的合法工作。
 
 状态视图不复制完整报告，也不把命令成功、文件存在或发送成功改写成专业完成。
 
