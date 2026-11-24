@@ -1,0 +1,1686 @@
+{
+  "started_at": "2026-11-24T09:32:38.057071+00:00",
+  "scope": "DIAGNOSTIC_ONLY",
+  "formal_production_started": false,
+  "shared_lock_acquired_for_production": false,
+  "write_guard": "AbsFao._run_with(write=True) raises before implementation/load/dump",
+  "symbols": {
+    "rb": {
+      "raw_rows": 9959400,
+      "raw_first": "2021-01-04 09:00:00.500000",
+      "raw_last": "2021-12-31 15:00:00",
+      "canonical_rows": 9959400,
+      "raw_chunk_plan_error": null,
+      "raw_chunks": 243,
+      "canonical_chunks": 243,
+      "canonical_exact_wall_trace_axis": true,
+      "canonical_receipt_source_scope_matches": true,
+      "retained_all_flow_columns": [
+        "trade_volume",
+        "open_interest",
+        "price",
+        "linear_ts",
+        "buy_price1",
+        "buy_vol1",
+        "sell_price1",
+        "sell_vol1",
+        "buy_order_price",
+        "buy_order_vol",
+        "sell_order_price",
+        "sell_order_vol"
+      ],
+      "all_nonempty_quote_rows_retained": true,
+      "all_retained_values_exact": true,
+      "removed_rows": [],
+      "raw_uncovered_positions": [],
+      "trade_day_spans_around_failure": [
+        {
+          "trade_day": "2021-03-11 00:00:00",
+          "contract": "rb2105",
+          "start": 1751400,
+          "stop": 1792800,
+          "duration_start": "2021-03-10 21:00:00.500000",
+          "duration_stop": "2021-03-11 15:00:00"
+        },
+        {
+          "trade_day": "2021-03-12 00:00:00",
+          "contract": "rb2105",
+          "start": 1792800,
+          "stop": 1834200,
+          "duration_start": "2021-03-11 21:00:00.500000",
+          "duration_stop": "2021-03-12 15:00:00"
+        }
+      ],
+      "minimal_checks": [],
+      "canonical_source_scope": {
+        "target": "rb",
+        "calendar_or_session": "night_end_at_2300",
+        "time_range": "time:2021-01-04T09:00:00.500000..2021-12-31T15:00:00",
+        "market_source_cut": "market:rb:night_end_at_2300:time:2021-01-04T09:00:00.500000..2021-12-31T15:00:00"
+      },
+      "source_metadata_unchanged_since_C0004": true,
+      "source_metadata": [
+        {
+          "path": "/m3varI/var/L1_data/tick/calendar/night_end_at_2300/natural_tsa.dba",
+          "realpath": "/m3varI/var/L1_data/calendar/night_end_at_2300/natural_tsa.dba",
+          "size": 826531264,
+          "mtime_ns": 1736221718989582444,
+          "inode": 4131688
+        },
+        {
+          "path": "/m3varI/var/L1_data/tick/calendar/night_end_at_2300/linear_tsa.dba",
+          "realpath": "/m3varI/var/L1_data/calendar/night_end_at_2300/linear_tsa.dba",
+          "size": 826531264,
+          "mtime_ns": 1736221727814496235,
+          "inode": 4131689
+        },
+        {
+          "path": "/m3varI/var/L1_data/tick/sub_continuous_contract/dba/rb_night_end_at_2300/price.dba",
+          "realpath": "/m3varI/var/L1_data/tick/sub_continuous_contract/dba/rb_night_end_at_2300/price.dba",
+          "size": 1280000064,
+          "mtime_ns": 1742024429515456786,
+          "inode": 56261417
+        },
+        {
+          "path": "/m3varI/var/L1_data/tick/sub_continuous_contract/dba/rb_night_end_at_2300/buy_price1.dba",
+          "realpath": "/m3varI/var/L1_data/tick/sub_continuous_contract/dba/rb_night_end_at_2300/buy_price1.dba",
+          "size": 1280000064,
+          "mtime_ns": 1742024430249462373,
+          "inode": 56262280
+        },
+        {
+          "path": "/m3varI/var/L1_data/tick/sub_continuous_contract/dba/rb_night_end_at_2300/buy_vol1.dba",
+          "realpath": "/m3varI/var/L1_data/tick/sub_continuous_contract/dba/rb_night_end_at_2300/buy_vol1.dba",
+          "size": 1280000064,
+          "mtime_ns": 1742024430355789907,
+          "inode": 56261695
+        },
+        {
+          "path": "/m3varI/var/L1_data/tick/sub_continuous_contract/dba/rb_night_end_at_2300/sell_price1.dba",
+          "realpath": "/m3varI/var/L1_data/tick/sub_continuous_contract/dba/rb_night_end_at_2300/sell_price1.dba",
+          "size": 1280000064,
+          "mtime_ns": 1742024430004033119,
+          "inode": 56262406
+        },
+        {
+          "path": "/m3varI/var/L1_data/tick/sub_continuous_contract/dba/rb_night_end_at_2300/sell_vol1.dba",
+          "realpath": "/m3varI/var/L1_data/tick/sub_continuous_contract/dba/rb_night_end_at_2300/sell_vol1.dba",
+          "size": 1280000064,
+          "mtime_ns": 1742024430118325877,
+          "inode": 56261694
+        },
+        {
+          "path": "/m3varI/var/L1_data/tick/sub_continuous_contract/dba/rb_night_end_at_2300/trade_volume.dba",
+          "realpath": "/m3varI/var/L1_data/tick/sub_continuous_contract/dba/rb_night_end_at_2300/trade_volume.dba",
+          "size": 1280000064,
+          "mtime_ns": 1742024429620840207,
+          "inode": 56261327
+        },
+        {
+          "path": "/m3varI/var/L1_data/tick/sub_continuous_contract/dba/rb_night_end_at_2300/buy_order_price.dba",
+          "realpath": "/m3varI/var/L1_data/tick/sub_continuous_contract/dba/rb_night_end_at_2300/buy_order_price.dba",
+          "size": 1280000064,
+          "mtime_ns": 1742024430496074538,
+          "inode": 56260430
+        },
+        {
+          "path": "/m3varI/var/L1_data/tick/sub_continuous_contract/dba/rb_night_end_at_2300/buy_order_vol.dba",
+          "realpath": "/m3varI/var/L1_data/tick/sub_continuous_contract/dba/rb_night_end_at_2300/buy_order_vol.dba",
+          "size": 1280000064,
+          "mtime_ns": 1742024430674776180,
+          "inode": 56261796
+        },
+        {
+          "path": "/m3varI/var/L1_data/tick/sub_continuous_contract/dba/rb_night_end_at_2300/sell_order_price.dba",
+          "realpath": "/m3varI/var/L1_data/tick/sub_continuous_contract/dba/rb_night_end_at_2300/sell_order_price.dba",
+          "size": 1280000064,
+          "mtime_ns": 1742024430828220571,
+          "inode": 56260306
+        },
+        {
+          "path": "/m3varI/var/L1_data/tick/sub_continuous_contract/dba/rb_night_end_at_2300/sell_order_vol.dba",
+          "realpath": "/m3varI/var/L1_data/tick/sub_continuous_contract/dba/rb_night_end_at_2300/sell_order_vol.dba",
+          "size": 1280000064,
+          "mtime_ns": 1742024430939781977,
+          "inode": 56260824
+        }
+      ],
+      "main_contract_csv_sha256": "7177d3011339bf7408cb26e6263099744a3615be2eba31087bb3fa959ac082d0",
+      "default_ppid": "BuildAssembler_954318e844386b1a4967d626990a21e0be640bfd",
+      "default_ppdict": {
+        "parameter_set_id": "build-default",
+        "wall(WallAssembler).parameter_set_id": "wall-default",
+        "wall(WallAssembler).qt_freq": "1d",
+        "wall(WallAssembler).qt_n": 30,
+        "wall(WallAssembler).qt_quantile": 0.997,
+        "wall(WallAssembler).w_depth_ref_ticks": 1200,
+        "wall(WallAssembler).large_quote_ratio_min": 1.0,
+        "wall(WallAssembler).allow_zero_qt_fallback": false,
+        "wall(WallAssembler).thick_vs_hi_ratio": 1.0,
+        "wall(WallAssembler).thin_vs_mid_ratio": 0.7,
+        "wall(WallAssembler).allow_thin_brick": false,
+        "wall(WallAssembler).p_wall_ticks": 1,
+        "wall(WallAssembler).t_wall_ticks": 6,
+        "wall(WallAssembler).near_band_ticks": null,
+        "wall(WallAssembler).far_band_ticks": null,
+        "wall(WallAssembler).connect_max_core_dist_ticks": null,
+        "wall(WallAssembler).connect_gap_max_ticks": null,
+        "wall(WallAssembler).support_buffer_keep_ticks": null,
+        "wall(WallAssembler).thin_eval_window_ticks": null,
+        "wall(WallAssembler).band_update_min_shift_ticks": null,
+        "wall(WallAssembler).dormant_no_presence_ticks": null,
+        "wall(WallAssembler).dormant_far_ticks": null,
+        "wall(WallAssembler).end_far_hold_ticks": null,
+        "wall(WallAssembler).end_far_ticks": null,
+        "wall(WallAssembler).break_after_no_presence_ticks": null,
+        "wall(WallAssembler).wall_dead_timeout_ticks": null,
+        "wall(WallAssembler).allow_brick_join_dormant": true,
+        "wall(WallAssembler).thin_contact_min_hits": 3,
+        "wall(WallAssembler).thin_contact_frac_end": 0.6,
+        "active_flow_same_best_tol_ticks": 0,
+        "t_build_ticks": 6,
+        "reload_start_ratio": 0.5,
+        "reload_stop_ratio": 0.2,
+        "build_start_window_ticks": null,
+        "build_stop_window_ticks": null,
+        "milestone_levels": [
+          0.5,
+          1.0
+        ],
+        "require_best_price_stable": true,
+        "attack_near_band_ticks": 1
+      }
+    },
+    "m": {
+      "raw_rows": 9959400,
+      "raw_first": "2021-01-04 09:00:00.500000",
+      "raw_last": "2021-12-31 15:00:00",
+      "canonical_rows": 9959383,
+      "raw_chunk_plan_error": {
+        "type": "ValueError",
+        "message": "交易日区间在 2021-03-12 00:00:00 前不连续: 1792800 != 1792801"
+      },
+      "raw_chunks": null,
+      "canonical_chunks": 243,
+      "canonical_exact_wall_trace_axis": true,
+      "canonical_receipt_source_scope_matches": true,
+      "retained_all_flow_columns": [
+        "trade_volume",
+        "open_interest",
+        "price",
+        "linear_ts",
+        "buy_price1",
+        "buy_vol1",
+        "sell_price1",
+        "sell_vol1",
+        "buy_order_price",
+        "buy_order_vol",
+        "sell_order_price",
+        "sell_order_vol"
+      ],
+      "all_nonempty_quote_rows_retained": true,
+      "all_retained_values_exact": true,
+      "removed_rows": [
+        {
+          "timestamp": "2021-01-18T09:00:00.500000",
+          "raw_position": 414000,
+          "inside_trading_day_duration": true,
+          "prior_gap_ms": 208800500.0,
+          "row": {
+            "price": null,
+            "buy_price1": null,
+            "buy_vol1": null,
+            "sell_price1": null,
+            "sell_vol1": null,
+            "trade_volume": null,
+            "buy_order_price": 0.0,
+            "buy_order_vol": 0.0,
+            "sell_order_price": 0.0,
+            "sell_order_vol": 0.0,
+            "linear_ts": 36208800500.0
+          },
+          "neighbours": [
+            {
+              "timestamp": "2021-01-15T23:00:00",
+              "price": 3719.0,
+              "buy_price1": 3719.0,
+              "buy_vol1": 165.0,
+              "sell_price1": 3723.0,
+              "sell_vol1": 2.0,
+              "trade_volume": 202.0,
+              "buy_order_price": 3723.0,
+              "buy_order_vol": 1.0,
+              "sell_order_price": 3720.0,
+              "sell_order_vol": -11.0
+            },
+            {
+              "timestamp": "2021-01-18T09:00:00.500000",
+              "price": null,
+              "buy_price1": null,
+              "buy_vol1": null,
+              "sell_price1": null,
+              "sell_vol1": null,
+              "trade_volume": null,
+              "buy_order_price": 0.0,
+              "buy_order_vol": 0.0,
+              "sell_order_price": 0.0,
+              "sell_order_vol": 0.0
+            },
+            {
+              "timestamp": "2021-01-18T09:00:01",
+              "price": 3712.0,
+              "buy_price1": 3710.0,
+              "buy_vol1": 122.0,
+              "sell_price1": 3712.0,
+              "sell_vol1": 20.0,
+              "trade_volume": 1621.0,
+              "buy_order_price": 0.0,
+              "buy_order_vol": 0.0,
+              "sell_order_price": 0.0,
+              "sell_order_vol": 0.0
+            },
+            {
+              "timestamp": "2021-01-18T09:00:01.500000",
+              "price": 3712.0,
+              "buy_price1": 3711.0,
+              "buy_vol1": 7.0,
+              "sell_price1": 3712.0,
+              "sell_vol1": 41.0,
+              "trade_volume": 1518.0,
+              "buy_order_price": 3712.0,
+              "buy_order_vol": 0.0,
+              "sell_order_price": 0.0,
+              "sell_order_vol": 0.0
+            }
+          ]
+        },
+        {
+          "timestamp": "2021-01-18T10:30:00.500000",
+          "raw_position": 423000,
+          "inside_trading_day_duration": true,
+          "prior_gap_ms": 900500.0,
+          "row": {
+            "price": null,
+            "buy_price1": null,
+            "buy_vol1": null,
+            "sell_price1": null,
+            "sell_vol1": null,
+            "trade_volume": null,
+            "buy_order_price": 0.0,
+            "buy_order_vol": 0.0,
+            "sell_order_price": 0.0,
+            "sell_order_vol": 0.0,
+            "linear_ts": 36213300500.0
+          },
+          "neighbours": [
+            {
+              "timestamp": "2021-01-18T10:15:00",
+              "price": 3683.0,
+              "buy_price1": 3682.0,
+              "buy_vol1": 164.0,
+              "sell_price1": 3683.0,
+              "sell_vol1": 761.0,
+              "trade_volume": 60.0,
+              "buy_order_price": 3683.0,
+              "buy_order_vol": 0.0,
+              "sell_order_price": 3682.0,
+              "sell_order_vol": -0.0
+            },
+            {
+              "timestamp": "2021-01-18T10:30:00.500000",
+              "price": null,
+              "buy_price1": null,
+              "buy_vol1": null,
+              "sell_price1": null,
+              "sell_vol1": null,
+              "trade_volume": null,
+              "buy_order_price": 0.0,
+              "buy_order_vol": 0.0,
+              "sell_order_price": 0.0,
+              "sell_order_vol": 0.0
+            },
+            {
+              "timestamp": "2021-01-18T10:30:01",
+              "price": 3683.0,
+              "buy_price1": 3683.0,
+              "buy_vol1": 208.0,
+              "sell_price1": 3684.0,
+              "sell_vol1": 259.0,
+              "trade_volume": 617.0,
+              "buy_order_price": 0.0,
+              "buy_order_vol": 0.0,
+              "sell_order_price": 0.0,
+              "sell_order_vol": 0.0
+            },
+            {
+              "timestamp": "2021-01-18T10:30:01.500000",
+              "price": 3684.0,
+              "buy_price1": 3684.0,
+              "buy_vol1": 508.0,
+              "sell_price1": 3685.0,
+              "sell_vol1": 516.0,
+              "trade_volume": 214.0,
+              "buy_order_price": 3684.0,
+              "buy_order_vol": 259.0,
+              "sell_order_price": 0.0,
+              "sell_order_vol": 0.0
+            }
+          ]
+        },
+        {
+          "timestamp": "2021-01-18T13:30:00.500000",
+          "raw_position": 430200,
+          "inside_trading_day_duration": true,
+          "prior_gap_ms": 7200500.0,
+          "row": {
+            "price": null,
+            "buy_price1": null,
+            "buy_vol1": null,
+            "sell_price1": null,
+            "sell_vol1": null,
+            "trade_volume": null,
+            "buy_order_price": 0.0,
+            "buy_order_vol": 0.0,
+            "sell_order_price": 0.0,
+            "sell_order_vol": 0.0,
+            "linear_ts": 36216900500.0
+          },
+          "neighbours": [
+            {
+              "timestamp": "2021-01-18T11:30:00",
+              "price": 3657.0,
+              "buy_price1": 3657.0,
+              "buy_vol1": 396.0,
+              "sell_price1": 3658.0,
+              "sell_vol1": 5.0,
+              "trade_volume": 3.0,
+              "buy_order_price": 3658.0,
+              "buy_order_vol": 0.0,
+              "sell_order_price": 3657.0,
+              "sell_order_vol": -0.0
+            },
+            {
+              "timestamp": "2021-01-18T13:30:00.500000",
+              "price": null,
+              "buy_price1": null,
+              "buy_vol1": null,
+              "sell_price1": null,
+              "sell_vol1": null,
+              "trade_volume": null,
+              "buy_order_price": 0.0,
+              "buy_order_vol": 0.0,
+              "sell_order_price": 0.0,
+              "sell_order_vol": 0.0
+            },
+            {
+              "timestamp": "2021-01-18T13:30:01",
+              "price": 3659.0,
+              "buy_price1": 3658.0,
+              "buy_vol1": 26.0,
+              "sell_price1": 3659.0,
+              "sell_vol1": 99.0,
+              "trade_volume": 274.0,
+              "buy_order_price": 0.0,
+              "buy_order_vol": 0.0,
+              "sell_order_price": 0.0,
+              "sell_order_vol": 0.0
+            },
+            {
+              "timestamp": "2021-01-18T13:30:01.500000",
+              "price": 3658.0,
+              "buy_price1": 3658.0,
+              "buy_vol1": 331.0,
+              "sell_price1": 3660.0,
+              "sell_vol1": 475.0,
+              "trade_volume": 111.0,
+              "buy_order_price": 3659.0,
+              "buy_order_vol": 99.0,
+              "sell_order_price": 3658.0,
+              "sell_order_vol": -0.0
+            }
+          ]
+        },
+        {
+          "timestamp": "2021-02-09T13:30:00.500000",
+          "raw_position": 1092600,
+          "inside_trading_day_duration": true,
+          "prior_gap_ms": 7200500.0,
+          "row": {
+            "price": null,
+            "buy_price1": null,
+            "buy_vol1": null,
+            "sell_price1": null,
+            "sell_vol1": null,
+            "trade_volume": null,
+            "buy_order_price": 0.0,
+            "buy_order_vol": 0.0,
+            "sell_order_price": 0.0,
+            "sell_order_vol": 0.0,
+            "linear_ts": 36548100500.0
+          },
+          "neighbours": [
+            {
+              "timestamp": "2021-02-09T11:30:00",
+              "price": 3530.0,
+              "buy_price1": 3528.0,
+              "buy_vol1": 312.0,
+              "sell_price1": 3530.0,
+              "sell_vol1": 477.0,
+              "trade_volume": 0.0,
+              "buy_order_price": 3530.0,
+              "buy_order_vol": 0.0,
+              "sell_order_price": 3528.0,
+              "sell_order_vol": -35.0
+            },
+            {
+              "timestamp": "2021-02-09T13:30:00.500000",
+              "price": null,
+              "buy_price1": null,
+              "buy_vol1": null,
+              "sell_price1": null,
+              "sell_vol1": null,
+              "trade_volume": null,
+              "buy_order_price": 0.0,
+              "buy_order_vol": 0.0,
+              "sell_order_price": 0.0,
+              "sell_order_vol": 0.0
+            },
+            {
+              "timestamp": "2021-02-09T13:30:01",
+              "price": 3529.0,
+              "buy_price1": 3529.0,
+              "buy_vol1": 47.0,
+              "sell_price1": 3530.0,
+              "sell_vol1": 247.0,
+              "trade_volume": 121.0,
+              "buy_order_price": 0.0,
+              "buy_order_vol": 0.0,
+              "sell_order_price": 0.0,
+              "sell_order_vol": 0.0
+            },
+            {
+              "timestamp": "2021-02-09T13:30:01.500000",
+              "price": 3530.0,
+              "buy_price1": 3529.0,
+              "buy_vol1": 136.0,
+              "sell_price1": 3530.0,
+              "sell_vol1": 165.0,
+              "trade_volume": 84.0,
+              "buy_order_price": 3530.0,
+              "buy_order_vol": 82.0,
+              "sell_order_price": 3529.0,
+              "sell_order_vol": -0.0
+            }
+          ]
+        },
+        {
+          "timestamp": "2021-03-11T21:00:00.500000",
+          "raw_position": 1792800,
+          "inside_trading_day_duration": false,
+          "prior_gap_ms": 21600500.0,
+          "row": {
+            "price": null,
+            "buy_price1": null,
+            "buy_vol1": null,
+            "sell_price1": null,
+            "sell_vol1": null,
+            "trade_volume": null,
+            "buy_order_price": 0.0,
+            "buy_order_vol": 0.0,
+            "sell_order_price": 0.0,
+            "sell_order_vol": 0.0,
+            "linear_ts": 36898200500.0
+          },
+          "neighbours": [
+            {
+              "timestamp": "2021-03-11T15:00:00",
+              "price": 3198.0,
+              "buy_price1": 3197.0,
+              "buy_vol1": 413.0,
+              "sell_price1": 3198.0,
+              "sell_vol1": 35.0,
+              "trade_volume": 0.0,
+              "buy_order_price": 3198.0,
+              "buy_order_vol": 633.0,
+              "sell_order_price": 3197.0,
+              "sell_order_vol": -1.0
+            },
+            {
+              "timestamp": "2021-03-11T21:00:00.500000",
+              "price": null,
+              "buy_price1": null,
+              "buy_vol1": null,
+              "sell_price1": null,
+              "sell_vol1": null,
+              "trade_volume": null,
+              "buy_order_price": 0.0,
+              "buy_order_vol": 0.0,
+              "sell_order_price": 0.0,
+              "sell_order_vol": 0.0
+            },
+            {
+              "timestamp": "2021-03-11T21:00:01",
+              "price": 3199.0,
+              "buy_price1": 3199.0,
+              "buy_vol1": 221.0,
+              "sell_price1": 3201.0,
+              "sell_vol1": 32.0,
+              "trade_volume": 764.0,
+              "buy_order_price": 0.0,
+              "buy_order_vol": 0.0,
+              "sell_order_price": 0.0,
+              "sell_order_vol": 0.0
+            },
+            {
+              "timestamp": "2021-03-11T21:00:01.500000",
+              "price": 3201.0,
+              "buy_price1": 3201.0,
+              "buy_vol1": 53.0,
+              "sell_price1": 3202.0,
+              "sell_vol1": 62.0,
+              "trade_volume": 336.0,
+              "buy_order_price": 3201.0,
+              "buy_order_vol": 32.0,
+              "sell_order_price": 0.0,
+              "sell_order_vol": 0.0
+            }
+          ]
+        },
+        {
+          "timestamp": "2021-04-20T10:30:00.500000",
+          "raw_position": 2878200,
+          "inside_trading_day_duration": true,
+          "prior_gap_ms": 900500.0,
+          "row": {
+            "price": null,
+            "buy_price1": null,
+            "buy_vol1": null,
+            "sell_price1": null,
+            "sell_vol1": null,
+            "trade_volume": null,
+            "buy_order_price": 0.0,
+            "buy_order_vol": 0.0,
+            "sell_order_price": 0.0,
+            "sell_order_vol": 0.0,
+            "linear_ts": 37440900500.0
+          },
+          "neighbours": [
+            {
+              "timestamp": "2021-04-20T10:15:00",
+              "price": 3582.0,
+              "buy_price1": 3581.0,
+              "buy_vol1": 254.0,
+              "sell_price1": 3582.0,
+              "sell_vol1": 216.0,
+              "trade_volume": 1.0,
+              "buy_order_price": 3582.0,
+              "buy_order_vol": 0.0,
+              "sell_order_price": 3581.0,
+              "sell_order_vol": -0.0
+            },
+            {
+              "timestamp": "2021-04-20T10:30:00.500000",
+              "price": null,
+              "buy_price1": null,
+              "buy_vol1": null,
+              "sell_price1": null,
+              "sell_vol1": null,
+              "trade_volume": null,
+              "buy_order_price": 0.0,
+              "buy_order_vol": 0.0,
+              "sell_order_price": 0.0,
+              "sell_order_vol": 0.0
+            },
+            {
+              "timestamp": "2021-04-20T10:30:01",
+              "price": 3583.0,
+              "buy_price1": 3582.0,
+              "buy_vol1": 36.0,
+              "sell_price1": 3583.0,
+              "sell_vol1": 355.0,
+              "trade_volume": 289.0,
+              "buy_order_price": 0.0,
+              "buy_order_vol": 0.0,
+              "sell_order_price": 0.0,
+              "sell_order_vol": 0.0
+            },
+            {
+              "timestamp": "2021-04-20T10:30:01.500000",
+              "price": 3583.0,
+              "buy_price1": 3583.0,
+              "buy_vol1": 150.0,
+              "sell_price1": 3584.0,
+              "sell_vol1": 277.0,
+              "trade_volume": 701.0,
+              "buy_order_price": 3583.0,
+              "buy_order_vol": 355.0,
+              "sell_order_price": 0.0,
+              "sell_order_vol": 0.0
+            }
+          ]
+        },
+        {
+          "timestamp": "2021-04-23T13:30:00.500000",
+          "raw_position": 3009600,
+          "inside_trading_day_duration": true,
+          "prior_gap_ms": 7200500.0,
+          "row": {
+            "price": null,
+            "buy_price1": null,
+            "buy_vol1": null,
+            "sell_price1": null,
+            "sell_vol1": null,
+            "trade_volume": null,
+            "buy_order_price": 0.0,
+            "buy_order_vol": 0.0,
+            "sell_order_price": 0.0,
+            "sell_order_vol": 0.0,
+            "linear_ts": 37506600500.0
+          },
+          "neighbours": [
+            {
+              "timestamp": "2021-04-23T11:30:00",
+              "price": 3644.0,
+              "buy_price1": 3644.0,
+              "buy_vol1": 117.0,
+              "sell_price1": 3645.0,
+              "sell_vol1": 173.0,
+              "trade_volume": 0.0,
+              "buy_order_price": 3645.0,
+              "buy_order_vol": 21.0,
+              "sell_order_price": 3644.0,
+              "sell_order_vol": -0.0
+            },
+            {
+              "timestamp": "2021-04-23T13:30:00.500000",
+              "price": null,
+              "buy_price1": null,
+              "buy_vol1": null,
+              "sell_price1": null,
+              "sell_vol1": null,
+              "trade_volume": null,
+              "buy_order_price": 0.0,
+              "buy_order_vol": 0.0,
+              "sell_order_price": 0.0,
+              "sell_order_vol": 0.0
+            },
+            {
+              "timestamp": "2021-04-23T13:30:01",
+              "price": 3644.0,
+              "buy_price1": 3643.0,
+              "buy_vol1": 143.0,
+              "sell_price1": 3644.0,
+              "sell_vol1": 33.0,
+              "trade_volume": 104.0,
+              "buy_order_price": 0.0,
+              "buy_order_vol": 0.0,
+              "sell_order_price": 0.0,
+              "sell_order_vol": 0.0
+            },
+            {
+              "timestamp": "2021-04-23T13:30:01.500000",
+              "price": 3643.0,
+              "buy_price1": 3642.0,
+              "buy_vol1": 338.0,
+              "sell_price1": 3643.0,
+              "sell_vol1": 50.0,
+              "trade_volume": 264.0,
+              "buy_order_price": 0.0,
+              "buy_order_vol": 0.0,
+              "sell_order_price": 3643.0,
+              "sell_order_vol": -143.0
+            }
+          ]
+        },
+        {
+          "timestamp": "2021-05-28T21:00:00.500000",
+          "raw_position": 3916800,
+          "inside_trading_day_duration": false,
+          "prior_gap_ms": 21600500.0,
+          "row": {
+            "price": null,
+            "buy_price1": null,
+            "buy_vol1": null,
+            "sell_price1": null,
+            "sell_vol1": null,
+            "trade_volume": null,
+            "buy_order_price": 0.0,
+            "buy_order_vol": 0.0,
+            "sell_order_price": 0.0,
+            "sell_order_vol": 0.0,
+            "linear_ts": 37960200500.0
+          },
+          "neighbours": [
+            {
+              "timestamp": "2021-05-28T15:00:00",
+              "price": 3532.0,
+              "buy_price1": 3532.0,
+              "buy_vol1": 10.0,
+              "sell_price1": 3533.0,
+              "sell_vol1": 279.0,
+              "trade_volume": 21.0,
+              "buy_order_price": 3532.0,
+              "buy_order_vol": 18.0,
+              "sell_order_price": 0.0,
+              "sell_order_vol": 0.0
+            },
+            {
+              "timestamp": "2021-05-28T21:00:00.500000",
+              "price": null,
+              "buy_price1": null,
+              "buy_vol1": null,
+              "sell_price1": null,
+              "sell_vol1": null,
+              "trade_volume": null,
+              "buy_order_price": 0.0,
+              "buy_order_vol": 0.0,
+              "sell_order_price": 0.0,
+              "sell_order_vol": 0.0
+            },
+            {
+              "timestamp": "2021-05-28T21:00:01",
+              "price": 3515.0,
+              "buy_price1": 3512.0,
+              "buy_vol1": 73.0,
+              "sell_price1": 3513.0,
+              "sell_vol1": 7.0,
+              "trade_volume": 1224.0,
+              "buy_order_price": 0.0,
+              "buy_order_vol": 0.0,
+              "sell_order_price": 0.0,
+              "sell_order_vol": 0.0
+            },
+            {
+              "timestamp": "2021-05-28T21:00:01.500000",
+              "price": 3515.0,
+              "buy_price1": 3514.0,
+              "buy_vol1": 136.0,
+              "sell_price1": 3515.0,
+              "sell_vol1": 13.0,
+              "trade_volume": 371.0,
+              "buy_order_price": 3513.0,
+              "buy_order_vol": 7.0,
+              "sell_order_price": 0.0,
+              "sell_order_vol": 0.0
+            }
+          ]
+        },
+        {
+          "timestamp": "2021-08-11T13:30:00.500000",
+          "raw_position": 6044400,
+          "inside_trading_day_duration": true,
+          "prior_gap_ms": 7200500.0,
+          "row": {
+            "price": null,
+            "buy_price1": null,
+            "buy_vol1": null,
+            "sell_price1": null,
+            "sell_vol1": null,
+            "trade_volume": null,
+            "buy_order_price": 0.0,
+            "buy_order_vol": 0.0,
+            "sell_order_price": 0.0,
+            "sell_order_vol": 0.0,
+            "linear_ts": 39024000500.0
+          },
+          "neighbours": [
+            {
+              "timestamp": "2021-08-11T11:30:00",
+              "price": 3580.0,
+              "buy_price1": 3580.0,
+              "buy_vol1": 31.0,
+              "sell_price1": 3581.0,
+              "sell_vol1": 48.0,
+              "trade_volume": 0.0,
+              "buy_order_price": 3581.0,
+              "buy_order_vol": 0.0,
+              "sell_order_price": 3580.0,
+              "sell_order_vol": -281.0
+            },
+            {
+              "timestamp": "2021-08-11T13:30:00.500000",
+              "price": null,
+              "buy_price1": null,
+              "buy_vol1": null,
+              "sell_price1": null,
+              "sell_vol1": null,
+              "trade_volume": null,
+              "buy_order_price": 0.0,
+              "buy_order_vol": 0.0,
+              "sell_order_price": 0.0,
+              "sell_order_vol": 0.0
+            },
+            {
+              "timestamp": "2021-08-11T13:30:01",
+              "price": 3584.0,
+              "buy_price1": 3583.0,
+              "buy_vol1": 61.0,
+              "sell_price1": 3584.0,
+              "sell_vol1": 158.0,
+              "trade_volume": 217.0,
+              "buy_order_price": 0.0,
+              "buy_order_vol": 0.0,
+              "sell_order_price": 0.0,
+              "sell_order_vol": 0.0
+            },
+            {
+              "timestamp": "2021-08-11T13:30:01.500000",
+              "price": 3583.0,
+              "buy_price1": 3583.0,
+              "buy_vol1": 84.0,
+              "sell_price1": 3584.0,
+              "sell_vol1": 129.0,
+              "trade_volume": 235.0,
+              "buy_order_price": 3584.0,
+              "buy_order_vol": 29.0,
+              "sell_order_price": 3583.0,
+              "sell_order_vol": -0.0
+            }
+          ]
+        },
+        {
+          "timestamp": "2021-08-13T10:30:00.500000",
+          "raw_position": 6120000,
+          "inside_trading_day_duration": true,
+          "prior_gap_ms": 900500.0,
+          "row": {
+            "price": null,
+            "buy_price1": null,
+            "buy_vol1": null,
+            "sell_price1": null,
+            "sell_vol1": null,
+            "trade_volume": null,
+            "buy_order_price": 0.0,
+            "buy_order_vol": 0.0,
+            "sell_order_price": 0.0,
+            "sell_order_vol": 0.0,
+            "linear_ts": 39061800500.0
+          },
+          "neighbours": [
+            {
+              "timestamp": "2021-08-13T10:15:00",
+              "price": 3550.0,
+              "buy_price1": 3550.0,
+              "buy_vol1": 381.0,
+              "sell_price1": 3551.0,
+              "sell_vol1": 243.0,
+              "trade_volume": 0.0,
+              "buy_order_price": 3551.0,
+              "buy_order_vol": 41.0,
+              "sell_order_price": 3550.0,
+              "sell_order_vol": -10.0
+            },
+            {
+              "timestamp": "2021-08-13T10:30:00.500000",
+              "price": null,
+              "buy_price1": null,
+              "buy_vol1": null,
+              "sell_price1": null,
+              "sell_vol1": null,
+              "trade_volume": null,
+              "buy_order_price": 0.0,
+              "buy_order_vol": 0.0,
+              "sell_order_price": 0.0,
+              "sell_order_vol": 0.0
+            },
+            {
+              "timestamp": "2021-08-13T10:30:01",
+              "price": 3550.0,
+              "buy_price1": 3550.0,
+              "buy_vol1": 376.0,
+              "sell_price1": 3551.0,
+              "sell_vol1": 260.0,
+              "trade_volume": 103.0,
+              "buy_order_price": 0.0,
+              "buy_order_vol": 0.0,
+              "sell_order_price": 0.0,
+              "sell_order_vol": 0.0
+            },
+            {
+              "timestamp": "2021-08-13T10:30:01.500000",
+              "price": 3550.0,
+              "buy_price1": 3549.0,
+              "buy_vol1": 2330.0,
+              "sell_price1": 3550.0,
+              "sell_vol1": 247.0,
+              "trade_volume": 459.0,
+              "buy_order_price": 0.0,
+              "buy_order_vol": 0.0,
+              "sell_order_price": 3550.0,
+              "sell_order_vol": -376.0
+            }
+          ]
+        },
+        {
+          "timestamp": "2021-08-13T13:30:00.500000",
+          "raw_position": 6127200,
+          "inside_trading_day_duration": true,
+          "prior_gap_ms": 7200500.0,
+          "row": {
+            "price": null,
+            "buy_price1": null,
+            "buy_vol1": null,
+            "sell_price1": null,
+            "sell_vol1": null,
+            "trade_volume": null,
+            "buy_order_price": 0.0,
+            "buy_order_vol": 0.0,
+            "sell_order_price": 0.0,
+            "sell_order_vol": 0.0,
+            "linear_ts": 39065400500.0
+          },
+          "neighbours": [
+            {
+              "timestamp": "2021-08-13T11:30:00",
+              "price": 3560.0,
+              "buy_price1": 3560.0,
+              "buy_vol1": 373.0,
+              "sell_price1": 3561.0,
+              "sell_vol1": 57.0,
+              "trade_volume": 0.0,
+              "buy_order_price": 3561.0,
+              "buy_order_vol": 8.0,
+              "sell_order_price": 3560.0,
+              "sell_order_vol": -0.0
+            },
+            {
+              "timestamp": "2021-08-13T13:30:00.500000",
+              "price": null,
+              "buy_price1": null,
+              "buy_vol1": null,
+              "sell_price1": null,
+              "sell_vol1": null,
+              "trade_volume": null,
+              "buy_order_price": 0.0,
+              "buy_order_vol": 0.0,
+              "sell_order_price": 0.0,
+              "sell_order_vol": 0.0
+            },
+            {
+              "timestamp": "2021-08-13T13:30:01",
+              "price": 3561.0,
+              "buy_price1": 3560.0,
+              "buy_vol1": 389.0,
+              "sell_price1": 3561.0,
+              "sell_vol1": 27.0,
+              "trade_volume": 153.0,
+              "buy_order_price": 0.0,
+              "buy_order_vol": 0.0,
+              "sell_order_price": 0.0,
+              "sell_order_vol": 0.0
+            },
+            {
+              "timestamp": "2021-08-13T13:30:01.500000",
+              "price": 3561.0,
+              "buy_price1": 3560.0,
+              "buy_vol1": 470.0,
+              "sell_price1": 3561.0,
+              "sell_vol1": 255.0,
+              "trade_volume": 342.0,
+              "buy_order_price": 3561.0,
+              "buy_order_vol": 0.0,
+              "sell_order_price": 3560.0,
+              "sell_order_vol": -0.0
+            }
+          ]
+        },
+        {
+          "timestamp": "2021-09-15T13:30:00.500000",
+          "raw_position": 7079400,
+          "inside_trading_day_duration": true,
+          "prior_gap_ms": 7200500.0,
+          "row": {
+            "price": null,
+            "buy_price1": null,
+            "buy_vol1": null,
+            "sell_price1": null,
+            "sell_vol1": null,
+            "trade_volume": null,
+            "buy_order_price": 0.0,
+            "buy_order_vol": 0.0,
+            "sell_order_price": 0.0,
+            "sell_order_vol": 0.0,
+            "linear_ts": 39541500500.0
+          },
+          "neighbours": [
+            {
+              "timestamp": "2021-09-15T11:30:00",
+              "price": 3537.0,
+              "buy_price1": 3536.0,
+              "buy_vol1": 274.0,
+              "sell_price1": 3537.0,
+              "sell_vol1": 371.0,
+              "trade_volume": 0.0,
+              "buy_order_price": 3537.0,
+              "buy_order_vol": 159.0,
+              "sell_order_price": 3536.0,
+              "sell_order_vol": -0.0
+            },
+            {
+              "timestamp": "2021-09-15T13:30:00.500000",
+              "price": null,
+              "buy_price1": null,
+              "buy_vol1": null,
+              "sell_price1": null,
+              "sell_vol1": null,
+              "trade_volume": null,
+              "buy_order_price": 0.0,
+              "buy_order_vol": 0.0,
+              "sell_order_price": 0.0,
+              "sell_order_vol": 0.0
+            },
+            {
+              "timestamp": "2021-09-15T13:30:01",
+              "price": 3536.0,
+              "buy_price1": 3535.0,
+              "buy_vol1": 194.0,
+              "sell_price1": 3536.0,
+              "sell_vol1": 192.0,
+              "trade_volume": 57.0,
+              "buy_order_price": 0.0,
+              "buy_order_vol": 0.0,
+              "sell_order_price": 0.0,
+              "sell_order_vol": 0.0
+            },
+            {
+              "timestamp": "2021-09-15T13:30:01.500000",
+              "price": 3535.0,
+              "buy_price1": 3535.0,
+              "buy_vol1": 400.0,
+              "sell_price1": 3536.0,
+              "sell_vol1": 326.0,
+              "trade_volume": 62.0,
+              "buy_order_price": 3536.0,
+              "buy_order_vol": 0.0,
+              "sell_order_price": 3535.0,
+              "sell_order_vol": -0.0
+            }
+          ]
+        },
+        {
+          "timestamp": "2021-09-22T21:00:00.500000",
+          "raw_position": 7200000,
+          "inside_trading_day_duration": false,
+          "prior_gap_ms": 21600500.0,
+          "row": {
+            "price": null,
+            "buy_price1": null,
+            "buy_vol1": null,
+            "sell_price1": null,
+            "sell_vol1": null,
+            "trade_volume": null,
+            "buy_order_price": 0.0,
+            "buy_order_vol": 0.0,
+            "sell_order_price": 0.0,
+            "sell_order_vol": 0.0,
+            "linear_ts": 39601800500.0
+          },
+          "neighbours": [
+            {
+              "timestamp": "2021-09-22T15:00:00",
+              "price": 3536.0,
+              "buy_price1": 3536.0,
+              "buy_vol1": 274.0,
+              "sell_price1": 3537.0,
+              "sell_vol1": 42.0,
+              "trade_volume": 0.0,
+              "buy_order_price": 3537.0,
+              "buy_order_vol": 42.0,
+              "sell_order_price": 3536.0,
+              "sell_order_vol": -294.0
+            },
+            {
+              "timestamp": "2021-09-22T21:00:00.500000",
+              "price": null,
+              "buy_price1": null,
+              "buy_vol1": null,
+              "sell_price1": null,
+              "sell_vol1": null,
+              "trade_volume": null,
+              "buy_order_price": 0.0,
+              "buy_order_vol": 0.0,
+              "sell_order_price": 0.0,
+              "sell_order_vol": 0.0
+            },
+            {
+              "timestamp": "2021-09-22T21:00:01",
+              "price": 3541.0,
+              "buy_price1": 3540.0,
+              "buy_vol1": 182.0,
+              "sell_price1": 3541.0,
+              "sell_vol1": 74.0,
+              "trade_volume": 476.0,
+              "buy_order_price": 0.0,
+              "buy_order_vol": 0.0,
+              "sell_order_price": 0.0,
+              "sell_order_vol": 0.0
+            },
+            {
+              "timestamp": "2021-09-22T21:00:01.500000",
+              "price": 3541.0,
+              "buy_price1": 3541.0,
+              "buy_vol1": 26.0,
+              "sell_price1": 3542.0,
+              "sell_vol1": 242.0,
+              "trade_volume": 126.0,
+              "buy_order_price": 3541.0,
+              "buy_order_vol": 74.0,
+              "sell_order_price": 0.0,
+              "sell_order_vol": 0.0
+            }
+          ]
+        },
+        {
+          "timestamp": "2021-10-21T10:30:00.500000",
+          "raw_position": 7830000,
+          "inside_trading_day_duration": true,
+          "prior_gap_ms": 900500.0,
+          "row": {
+            "price": null,
+            "buy_price1": null,
+            "buy_vol1": null,
+            "sell_price1": null,
+            "sell_vol1": null,
+            "trade_volume": null,
+            "buy_order_price": 0.0,
+            "buy_order_vol": 0.0,
+            "sell_order_price": 0.0,
+            "sell_order_vol": 0.0,
+            "linear_ts": 39916800500.0
+          },
+          "neighbours": [
+            {
+              "timestamp": "2021-10-21T10:15:00",
+              "price": 3241.0,
+              "buy_price1": 3240.0,
+              "buy_vol1": 222.0,
+              "sell_price1": 3241.0,
+              "sell_vol1": 35.0,
+              "trade_volume": 1.0,
+              "buy_order_price": 3241.0,
+              "buy_order_vol": 1.0,
+              "sell_order_price": 3240.0,
+              "sell_order_vol": -4.0
+            },
+            {
+              "timestamp": "2021-10-21T10:30:00.500000",
+              "price": null,
+              "buy_price1": null,
+              "buy_vol1": null,
+              "sell_price1": null,
+              "sell_vol1": null,
+              "trade_volume": null,
+              "buy_order_price": 0.0,
+              "buy_order_vol": 0.0,
+              "sell_order_price": 0.0,
+              "sell_order_vol": 0.0
+            },
+            {
+              "timestamp": "2021-10-21T10:30:01",
+              "price": 3241.0,
+              "buy_price1": 3240.0,
+              "buy_vol1": 188.0,
+              "sell_price1": 3241.0,
+              "sell_vol1": 69.0,
+              "trade_volume": 31.0,
+              "buy_order_price": 0.0,
+              "buy_order_vol": 0.0,
+              "sell_order_price": 0.0,
+              "sell_order_vol": 0.0
+            },
+            {
+              "timestamp": "2021-10-21T10:30:01.500000",
+              "price": 3241.0,
+              "buy_price1": 3240.0,
+              "buy_vol1": 410.0,
+              "sell_price1": 3241.0,
+              "sell_vol1": 156.0,
+              "trade_volume": 6.0,
+              "buy_order_price": 3241.0,
+              "buy_order_vol": 0.0,
+              "sell_order_price": 3240.0,
+              "sell_order_vol": -0.0
+            }
+          ]
+        },
+        {
+          "timestamp": "2021-11-17T21:00:00.500000",
+          "raw_position": 8634600,
+          "inside_trading_day_duration": false,
+          "prior_gap_ms": 21600500.0,
+          "row": {
+            "price": null,
+            "buy_price1": null,
+            "buy_vol1": null,
+            "sell_price1": null,
+            "sell_vol1": null,
+            "trade_volume": null,
+            "buy_order_price": 0.0,
+            "buy_order_vol": 0.0,
+            "sell_order_price": 0.0,
+            "sell_order_vol": 0.0,
+            "linear_ts": 40319100500.0
+          },
+          "neighbours": [
+            {
+              "timestamp": "2021-11-17T15:00:00",
+              "price": 3188.0,
+              "buy_price1": 3188.0,
+              "buy_vol1": 13.0,
+              "sell_price1": 3189.0,
+              "sell_vol1": 100.0,
+              "trade_volume": 0.0,
+              "buy_order_price": 3189.0,
+              "buy_order_vol": 0.0,
+              "sell_order_price": 3188.0,
+              "sell_order_vol": -0.0
+            },
+            {
+              "timestamp": "2021-11-17T21:00:00.500000",
+              "price": null,
+              "buy_price1": null,
+              "buy_vol1": null,
+              "sell_price1": null,
+              "sell_vol1": null,
+              "trade_volume": null,
+              "buy_order_price": 0.0,
+              "buy_order_vol": 0.0,
+              "sell_order_price": 0.0,
+              "sell_order_vol": 0.0
+            },
+            {
+              "timestamp": "2021-11-17T21:00:01",
+              "price": 3197.0,
+              "buy_price1": 3197.0,
+              "buy_vol1": 95.0,
+              "sell_price1": 3198.0,
+              "sell_vol1": 25.0,
+              "trade_volume": 479.0,
+              "buy_order_price": 0.0,
+              "buy_order_vol": 0.0,
+              "sell_order_price": 0.0,
+              "sell_order_vol": 0.0
+            },
+            {
+              "timestamp": "2021-11-17T21:00:01.500000",
+              "price": 3198.0,
+              "buy_price1": 3198.0,
+              "buy_vol1": 2.0,
+              "sell_price1": 3199.0,
+              "sell_vol1": 78.0,
+              "trade_volume": 554.0,
+              "buy_order_price": 3198.0,
+              "buy_order_vol": 25.0,
+              "sell_order_price": 0.0,
+              "sell_order_vol": 0.0
+            }
+          ]
+        },
+        {
+          "timestamp": "2021-11-24T10:30:00.500000",
+          "raw_position": 8823600,
+          "inside_trading_day_duration": true,
+          "prior_gap_ms": 900500.0,
+          "row": {
+            "price": null,
+            "buy_price1": null,
+            "buy_vol1": null,
+            "sell_price1": null,
+            "sell_vol1": null,
+            "trade_volume": null,
+            "buy_order_price": 0.0,
+            "buy_order_vol": 0.0,
+            "sell_order_price": 0.0,
+            "sell_order_vol": 0.0,
+            "linear_ts": 40413600500.0
+          },
+          "neighbours": [
+            {
+              "timestamp": "2021-11-24T10:15:00",
+              "price": 3093.0,
+              "buy_price1": 3092.0,
+              "buy_vol1": 3.0,
+              "sell_price1": 3093.0,
+              "sell_vol1": 55.0,
+              "trade_volume": 0.0,
+              "buy_order_price": 3093.0,
+              "buy_order_vol": 150.0,
+              "sell_order_price": 3092.0,
+              "sell_order_vol": -3.0
+            },
+            {
+              "timestamp": "2021-11-24T10:30:00.500000",
+              "price": null,
+              "buy_price1": null,
+              "buy_vol1": null,
+              "sell_price1": null,
+              "sell_vol1": null,
+              "trade_volume": null,
+              "buy_order_price": 0.0,
+              "buy_order_vol": 0.0,
+              "sell_order_price": 0.0,
+              "sell_order_vol": 0.0
+            },
+            {
+              "timestamp": "2021-11-24T10:30:01",
+              "price": 3090.0,
+              "buy_price1": 3091.0,
+              "buy_vol1": 10.0,
+              "sell_price1": 3092.0,
+              "sell_vol1": 114.0,
+              "trade_volume": 82.0,
+              "buy_order_price": 0.0,
+              "buy_order_vol": 0.0,
+              "sell_order_price": 0.0,
+              "sell_order_vol": 0.0
+            },
+            {
+              "timestamp": "2021-11-24T10:30:01.500000",
+              "price": 3092.0,
+              "buy_price1": 3091.0,
+              "buy_vol1": 60.0,
+              "sell_price1": 3092.0,
+              "sell_vol1": 176.0,
+              "trade_volume": 91.0,
+              "buy_order_price": 3092.0,
+              "buy_order_vol": 0.0,
+              "sell_order_price": 3091.0,
+              "sell_order_vol": -0.0
+            }
+          ]
+        },
+        {
+          "timestamp": "2021-11-24T13:30:00.500000",
+          "raw_position": 8830800,
+          "inside_trading_day_duration": true,
+          "prior_gap_ms": 7200500.0,
+          "row": {
+            "price": null,
+            "buy_price1": null,
+            "buy_vol1": null,
+            "sell_price1": null,
+            "sell_vol1": null,
+            "trade_volume": null,
+            "buy_order_price": 0.0,
+            "buy_order_vol": 0.0,
+            "sell_order_price": 0.0,
+            "sell_order_vol": 0.0,
+            "linear_ts": 40417200500.0
+          },
+          "neighbours": [
+            {
+              "timestamp": "2021-11-24T11:30:00",
+              "price": 3097.0,
+              "buy_price1": 3096.0,
+              "buy_vol1": 56.0,
+              "sell_price1": 3097.0,
+              "sell_vol1": 214.0,
+              "trade_volume": 0.0,
+              "buy_order_price": 3097.0,
+              "buy_order_vol": 10.0,
+              "sell_order_price": 3096.0,
+              "sell_order_vol": -0.0
+            },
+            {
+              "timestamp": "2021-11-24T13:30:00.500000",
+              "price": null,
+              "buy_price1": null,
+              "buy_vol1": null,
+              "sell_price1": null,
+              "sell_vol1": null,
+              "trade_volume": null,
+              "buy_order_price": 0.0,
+              "buy_order_vol": 0.0,
+              "sell_order_price": 0.0,
+              "sell_order_vol": 0.0
+            },
+            {
+              "timestamp": "2021-11-24T13:30:01",
+              "price": 3096.0,
+              "buy_price1": 3096.0,
+              "buy_vol1": 29.0,
+              "sell_price1": 3097.0,
+              "sell_vol1": 260.0,
+              "trade_volume": 130.0,
+              "buy_order_price": 0.0,
+              "buy_order_vol": 0.0,
+              "sell_order_price": 0.0,
+              "sell_order_vol": 0.0
+            },
+            {
+              "timestamp": "2021-11-24T13:30:01.500000",
+              "price": 3096.0,
+              "buy_price1": 3095.0,
+              "buy_vol1": 301.0,
+              "sell_price1": 3096.0,
+              "sell_vol1": 264.0,
+              "trade_volume": 50.0,
+              "buy_order_price": 0.0,
+              "buy_order_vol": 0.0,
+              "sell_order_price": 3096.0,
+              "sell_order_vol": -29.0
+            }
+          ]
+        }
+      ],
+      "raw_uncovered_positions": [
+        {
+          "position": 1792800,
+          "timestamp": "2021-03-11 21:00:00.500000"
+        },
+        {
+          "position": 3916800,
+          "timestamp": "2021-05-28 21:00:00.500000"
+        },
+        {
+          "position": 7200000,
+          "timestamp": "2021-09-22 21:00:00.500000"
+        },
+        {
+          "position": 8634600,
+          "timestamp": "2021-11-17 21:00:00.500000"
+        }
+      ],
+      "trade_day_spans_around_failure": [
+        {
+          "trade_day": "2021-03-11 00:00:00",
+          "contract": "m2105",
+          "start": 1751400,
+          "stop": 1792800,
+          "duration_start": "2021-03-10 21:00:00.500000",
+          "duration_stop": "2021-03-11 15:00:00"
+        },
+        {
+          "trade_day": "2021-03-12 00:00:00",
+          "contract": "m2105",
+          "start": 1792801,
+          "stop": 1834200,
+          "duration_start": "2021-03-11 21:00:01",
+          "duration_stop": "2021-03-12 15:00:00"
+        }
+      ],
+      "minimal_checks": [
+        {
+          "name": "同一真实局部输入只改变接入轴",
+          "raw_expected_axis_error": {
+            "type": "ValueError",
+            "message": "Wall artifact 未完整覆盖 exact tick axis"
+          },
+          "canonical_expected_axis_passes": true,
+          "raw_axis": [
+            "2021-01-15 23:00:00",
+            "2021-01-18 09:00:00.500000",
+            "2021-01-18 09:00:01"
+          ],
+          "canonical_axis": [
+            "2021-01-15 23:00:00",
+            "2021-01-18 09:00:01"
+          ]
+        }
+      ],
+      "canonical_source_scope": {
+        "target": "m",
+        "calendar_or_session": "night_end_at_2300",
+        "time_range": "time:2021-01-04T09:00:00.500000..2021-12-31T15:00:00",
+        "market_source_cut": "market:m:night_end_at_2300:time:2021-01-04T09:00:00.500000..2021-12-31T15:00:00|excluded-empty-calendar-padding:2021-01-18T09:00:00.500000,2021-01-18T10:30:00.500000,2021-01-18T13:30:00.500000,2021-02-09T13:30:00.500000,2021-03-11T21:00:00.500000,2021-04-20T10:30:00.500000,2021-04-23T13:30:00.500000,2021-05-28T21:00:00.500000,2021-08-11T13:30:00.500000,2021-08-13T10:30:00.500000,2021-08-13T13:30:00.500000,2021-09-15T13:30:00.500000,2021-09-22T21:00:00.500000,2021-10-21T10:30:00.500000,2021-11-17T21:00:00.500000,2021-11-24T10:30:00.500000,2021-11-24T13:30:00.500000"
+      },
+      "source_metadata_unchanged_since_C0004": true,
+      "source_metadata": [
+        {
+          "path": "/m3varI/var/L1_data/tick/calendar/night_end_at_2300/natural_tsa.dba",
+          "realpath": "/m3varI/var/L1_data/calendar/night_end_at_2300/natural_tsa.dba",
+          "size": 826531264,
+          "mtime_ns": 1736221718989582444,
+          "inode": 4131688
+        },
+        {
+          "path": "/m3varI/var/L1_data/tick/calendar/night_end_at_2300/linear_tsa.dba",
+          "realpath": "/m3varI/var/L1_data/calendar/night_end_at_2300/linear_tsa.dba",
+          "size": 826531264,
+          "mtime_ns": 1736221727814496235,
+          "inode": 4131689
+        },
+        {
+          "path": "/m3varI/var/L1_data/tick/sub_continuous_contract/dba/m_night_end_at_2300/price.dba",
+          "realpath": "/m3varI/var/L1_data/tick/sub_continuous_contract/dba/m_night_end_at_2300/price.dba",
+          "size": 1280000064,
+          "mtime_ns": 1742020381061250304,
+          "inode": 56261166
+        },
+        {
+          "path": "/m3varI/var/L1_data/tick/sub_continuous_contract/dba/m_night_end_at_2300/buy_price1.dba",
+          "realpath": "/m3varI/var/L1_data/tick/sub_continuous_contract/dba/m_night_end_at_2300/buy_price1.dba",
+          "size": 1280000064,
+          "mtime_ns": 1742020382970653773,
+          "inode": 56261777
+        },
+        {
+          "path": "/m3varI/var/L1_data/tick/sub_continuous_contract/dba/m_night_end_at_2300/buy_vol1.dba",
+          "realpath": "/m3varI/var/L1_data/tick/sub_continuous_contract/dba/m_night_end_at_2300/buy_vol1.dba",
+          "size": 1280000064,
+          "mtime_ns": 1742020383148526614,
+          "inode": 56260293
+        },
+        {
+          "path": "/m3varI/var/L1_data/tick/sub_continuous_contract/dba/m_night_end_at_2300/sell_price1.dba",
+          "realpath": "/m3varI/var/L1_data/tick/sub_continuous_contract/dba/m_night_end_at_2300/sell_price1.dba",
+          "size": 1280000064,
+          "mtime_ns": 1742020382469440750,
+          "inode": 56261302
+        },
+        {
+          "path": "/m3varI/var/L1_data/tick/sub_continuous_contract/dba/m_night_end_at_2300/sell_vol1.dba",
+          "realpath": "/m3varI/var/L1_data/tick/sub_continuous_contract/dba/m_night_end_at_2300/sell_vol1.dba",
+          "size": 1280000064,
+          "mtime_ns": 1742020382604346184,
+          "inode": 56259315
+        },
+        {
+          "path": "/m3varI/var/L1_data/tick/sub_continuous_contract/dba/m_night_end_at_2300/trade_volume.dba",
+          "realpath": "/m3varI/var/L1_data/tick/sub_continuous_contract/dba/m_night_end_at_2300/trade_volume.dba",
+          "size": 1280000064,
+          "mtime_ns": 1742020381449272934,
+          "inode": 56261167
+        },
+        {
+          "path": "/m3varI/var/L1_data/tick/sub_continuous_contract/dba/m_night_end_at_2300/buy_order_price.dba",
+          "realpath": "/m3varI/var/L1_data/tick/sub_continuous_contract/dba/m_night_end_at_2300/buy_order_price.dba",
+          "size": 1280000064,
+          "mtime_ns": 1742020383422376389,
+          "inode": 56261046
+        },
+        {
+          "path": "/m3varI/var/L1_data/tick/sub_continuous_contract/dba/m_night_end_at_2300/buy_order_vol.dba",
+          "realpath": "/m3varI/var/L1_data/tick/sub_continuous_contract/dba/m_night_end_at_2300/buy_order_vol.dba",
+          "size": 1280000064,
+          "mtime_ns": 1742020383703269046,
+          "inode": 56260181
+        },
+        {
+          "path": "/m3varI/var/L1_data/tick/sub_continuous_contract/dba/m_night_end_at_2300/sell_order_price.dba",
+          "realpath": "/m3varI/var/L1_data/tick/sub_continuous_contract/dba/m_night_end_at_2300/sell_order_price.dba",
+          "size": 1280000064,
+          "mtime_ns": 1742020383848227790,
+          "inode": 56260408
+        },
+        {
+          "path": "/m3varI/var/L1_data/tick/sub_continuous_contract/dba/m_night_end_at_2300/sell_order_vol.dba",
+          "realpath": "/m3varI/var/L1_data/tick/sub_continuous_contract/dba/m_night_end_at_2300/sell_order_vol.dba",
+          "size": 1280000064,
+          "mtime_ns": 1742020384021034671,
+          "inode": 56258256
+        }
+      ],
+      "main_contract_csv_sha256": "fb036b11c8201fb3b9a922a14ac04fe752ee9a9cb38d9c25d9c55cd85a0ca7c9",
+      "default_ppid": "BuildAssembler_954318e844386b1a4967d626990a21e0be640bfd",
+      "default_ppdict": {
+        "parameter_set_id": "build-default",
+        "wall(WallAssembler).parameter_set_id": "wall-default",
+        "wall(WallAssembler).qt_freq": "1d",
+        "wall(WallAssembler).qt_n": 30,
+        "wall(WallAssembler).qt_quantile": 0.997,
+        "wall(WallAssembler).w_depth_ref_ticks": 1200,
+        "wall(WallAssembler).large_quote_ratio_min": 1.0,
+        "wall(WallAssembler).allow_zero_qt_fallback": false,
+        "wall(WallAssembler).thick_vs_hi_ratio": 1.0,
+        "wall(WallAssembler).thin_vs_mid_ratio": 0.7,
+        "wall(WallAssembler).allow_thin_brick": false,
+        "wall(WallAssembler).p_wall_ticks": 1,
+        "wall(WallAssembler).t_wall_ticks": 6,
+        "wall(WallAssembler).near_band_ticks": null,
+        "wall(WallAssembler).far_band_ticks": null,
+        "wall(WallAssembler).connect_max_core_dist_ticks": null,
+        "wall(WallAssembler).connect_gap_max_ticks": null,
+        "wall(WallAssembler).support_buffer_keep_ticks": null,
+        "wall(WallAssembler).thin_eval_window_ticks": null,
+        "wall(WallAssembler).band_update_min_shift_ticks": null,
+        "wall(WallAssembler).dormant_no_presence_ticks": null,
+        "wall(WallAssembler).dormant_far_ticks": null,
+        "wall(WallAssembler).end_far_hold_ticks": null,
+        "wall(WallAssembler).end_far_ticks": null,
+        "wall(WallAssembler).break_after_no_presence_ticks": null,
+        "wall(WallAssembler).wall_dead_timeout_ticks": null,
+        "wall(WallAssembler).allow_brick_join_dormant": true,
+        "wall(WallAssembler).thin_contact_min_hits": 3,
+        "wall(WallAssembler).thin_contact_frac_end": 0.6,
+        "active_flow_same_best_tol_ticks": 0,
+        "t_build_ticks": 6,
+        "reload_start_ratio": 0.5,
+        "reload_stop_ratio": 0.2,
+        "build_start_window_ticks": null,
+        "build_stop_window_ticks": null,
+        "milestone_levels": [
+          0.5,
+          1.0
+        ],
+        "require_best_price_stable": true,
+        "attack_near_band_ticks": 1
+      }
+    }
+  },
+  "finished_at": "2026-11-24T09:34:49.970546+00:00",
+  "feature_calls": [
+    {
+      "feature": "SubContinuousContract",
+      "write": false,
+      "read": false
+    },
+    {
+      "feature": "SubContinuousContract",
+      "write": false,
+      "read": false
+    },
+    {
+      "feature": "SubContinuousContract",
+      "write": false,
+      "read": false
+    },
+    {
+      "feature": "SubContinuousContract",
+      "write": false,
+      "read": false
+    }
+  ],
+  "all_feature_calls_read_only": true,
+  "status": "COMPLETE_DIAGNOSTIC_CHECKS"
+}

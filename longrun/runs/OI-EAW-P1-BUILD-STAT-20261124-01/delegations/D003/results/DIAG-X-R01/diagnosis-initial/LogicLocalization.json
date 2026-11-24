@@ -1,0 +1,56 @@
+{
+  "artifact_type": "LogicLocalization",
+  "localization_id": "OI-EAW-P1-BUILD-STAT-20261124-01:D003:LL-X-INPUT-01",
+  "finding_id": "X-M-BUILD-NO-ARTIFACT-C0004",
+  "source_kind": "真实X运行偏差，不是G finding",
+  "recorded_before_implementation_change_at": "2026-11-24T09:37:05.231717+00:00",
+  "observed_anomaly": "m默认Build没有产物/receipt；在全量原始轴的2021-03-12交易日前出现分块不连续ValueError。",
+  "business_processing_chain": [
+    "SubContinuousContract合法半秒补齐轴",
+    "Wall按现行实现排除因果可识别的时段首条全空占位并记录source cut",
+    "Build._impl沿继承的原始_load_cc_df接入，未采用该exact Wall切面",
+    "分块覆盖检查拒绝4个区间外占位，尚未运行F3或core",
+    "若仅绕过分块，逐tick exact Wall join仍拒绝17个未覆盖点",
+    "无法生成Build occurrence/receipt，完整rb/m X缺m"
+  ],
+  "responsible_logic": {
+    "stage": "Build自身正式输入接入与exact Wall依赖绑定",
+    "entry": "BuildAssembler._impl的cc_df=self._load_cc_df()",
+    "actual_behavior": "Build未覆盖继承的TickQuoteContextWrapperSupport._load_cc_df，直接使用原始补齐轴；当前Wall覆盖同名方法并采用已有canonical切面。",
+    "earliest_divergence": "Build选择消费原始轴时已与其exact Wall输入切面不同；公共分块和exact join只是随后正确拒绝不完整绑定。",
+    "authorized_treatment_surface": [
+      "hf/prel0/build_assembler.py",
+      "直接相关Build输入接入回归测试"
+    ],
+    "not_responsible_for_this_observed_stop": [
+      "尚未执行的F3/Build core门槛和生命周期状态",
+      "正确拒绝未覆盖输入的公共分块检查",
+      "来源未变的Calendar/市场DBA文件"
+    ]
+  },
+  "source_refs": [
+    {
+      "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+      "lines": "104-126,220-244,279-297"
+    },
+    {
+      "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/tick_quote_context.py",
+      "lines": "160-166,217-248"
+    },
+    {
+      "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/wall_assembler.py",
+      "lines": "432-471,756-759"
+    },
+    {
+      "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/p1_dba_export.py",
+      "lines": "470-486"
+    },
+    {
+      "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/p1_product_receipt.py",
+      "lines": "268-272"
+    }
+  ],
+  "why_this_is_the_responsible_logic": "同一真实源/Calendar/默认参数下，rb两轴一致且可分243块；m源及CSV未变，4个未覆盖点均属于17个当前Wall排除点。仅把Build的接入轴换为现行Wall轴并保留原始列值，分块、trace exact覆盖和receipt source_scope同时通过。局部原始axis仍使exact join失败，排除仅是公共分块bug的解释。",
+  "confirmed_data_evidence": "READONLY_DIAGNOSIS_EVIDENCE.json",
+  "scope_limit": "此定位解释实际X停止；不证明Build全生命周期业务合理性，不替代修复后的正式X或G。"
+}

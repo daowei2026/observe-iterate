@@ -1,0 +1,82 @@
+{
+  "artifact_type": "DiagnosisInputs",
+  "diagnosis_id": "OI-EAW-P1-BUILD-STAT-20261124-01:D003:DIAG-X-R01",
+  "expectation_id": "Owner-locked-Build-formal-instance-and-exact-Wall",
+  "expectation_version": "391adcd18bd2da82c13c01710980f41e01c7de25",
+  "FrozenExpectation": {
+    "source_refs": [
+      "daowei2026/observe-iterate@391adcd18bd2da82c13c01710980f41e01c7de25:task-inputs/eaw-p1-build-stat-20261124/BUILD_RUN_INPUT.md",
+      "daowei2026/observe-iterate@9aac8e8b81827015cba4a70bba99e033e82bad92:longrun/runs/OI-EAW-P1-BUILD-STAT-20261124-01/OWNER_START.md",
+      "daowei2026/observe-iterate@391adcd18bd2da82c13c01710980f41e01c7de25:control/01_L0_统计驱动的单特征闭环.md"
+    ],
+    "statement": "在锁定TIS/Build默认实例、SOF/rb,m/2021全年/night_end_at_2300中执行Build，技术消费当前Wall exact产物；形成与代码/参数/数据/上游一致并实际读回的完整正式结果。缺失或运行错误必须显式保留，不能伪造业务Stop或用局部结果替代全年。",
+    "no_new_business_threshold_or_filter_rule": true
+  },
+  "EvidenceComparisonPackage": {
+    "source_ref": "daowei2026/observe-iterate@150858c767c229951bf3fce587e6bb09752364ec:longrun/runs/OI-EAW-P1-BUILD-STAT-20261124-01/delegations/D002/results/X-R01/FeatureRunResultBinding.json",
+    "confirmed_discrepancy": "m没有Build正式产物/receipt，原生交易日分块ValueError；rb同一构造/范围完成。当前未预定原因。",
+    "not_a_formal_G_finding": true
+  },
+  "BusinessIntent": {
+    "statement": "独立物化围绕exact Wall的Build活动；不修改上游业务、原始市场数据或业务范围，不把输入错误冒充生命周期结束。",
+    "original_contracts": "准确业务原件见SOURCE_READ_MANIFEST.json"
+  },
+  "ProcessingChain": [
+    "原始SubContinuousContract与Calendar/主力合约时间区间",
+    "当前Wall输入切面与Wall trace/receipt",
+    "Build输入接入与交易日分块",
+    "exact Wall逐tick join",
+    "transient F3和Build core/carry",
+    "公开packed occurrence streams与Build receipt",
+    "DAO实际读回"
+  ],
+  "RelevantCodeOrRequirementRefs": [
+    "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+    "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/wall_assembler.py",
+    "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/tick_quote_context.py",
+    "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/p1_dba_export.py"
+  ],
+  "DataBindingAndTimeBasis": {
+    "workspace": "/dwdhome/fy/BASE_E6_2",
+    "calendar": "night_end_at_2300",
+    "sof": "TA_updto20240229_DBA",
+    "symbols": [
+      "rb",
+      "m"
+    ],
+    "requested": [
+      "2021-01-01",
+      "2021-12-31"
+    ],
+    "observed_raw_first": "2021-01-04T09:00:00.500000",
+    "observed_raw_last": "2021-12-31T15:00:00",
+    "raw_rows_per_symbol": 9959400,
+    "time_basis": "源自然时间ns与源linear_ts所派生UTI；不重排/重建时间坐标",
+    "comparison_scope": "DIAGNOSTIC_ONLY读检不替代正式X"
+  },
+  "CompetingExplanations": [
+    {
+      "id": "H-DATA",
+      "hypothesis": "源/Calendar或主力合约区间变化、真实有效行情缺失或越界"
+    },
+    {
+      "id": "H-BINDING",
+      "hypothesis": "Build沿原始补齐轴消费，未接入当前Wall的exact输入切面"
+    },
+    {
+      "id": "H-CACHE",
+      "hypothesis": "读了旧Wall artifact或缓存绑定不一致"
+    },
+    {
+      "id": "H-CORE",
+      "hypothesis": "Build业务门槛、F3计算或core状态导致没有正式输出"
+    }
+  ],
+  "planned_discriminating_checks": [
+    "核C0004源元数据/CSV SHA及receipt原件",
+    "同一真实rb/m原始轴与当前Wall规范轴比较分块和exact join",
+    "检查所有差异时间点的quote/成交/预测hit值及其区间归属",
+    "canonical候选轴必须保留所有有效报价、全部F3字段和原值/UTI，且与原Wall trace/receipt完全一致",
+    "正常rb和m无差异邻域为反例，现有非占位错误应继续拒绝"
+  ]
+}

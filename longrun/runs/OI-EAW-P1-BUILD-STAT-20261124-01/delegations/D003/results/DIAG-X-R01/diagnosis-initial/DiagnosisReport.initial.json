@@ -1,0 +1,187 @@
+{
+  "artifact_type": "DiagnosisReport",
+  "diagnosis_id": "OI-EAW-P1-BUILD-STAT-20261124-01:D003:DIAG-X-R01",
+  "expectation_id": "Owner-locked-Build-formal-instance-and-exact-Wall",
+  "expectation_version": "391adcd18bd2da82c13c01710980f41e01c7de25",
+  "native_status": "LOCALIZED",
+  "treatment_status": "PENDING_AUTHORIZED_IMPLEMENTATION_AND_REGRESSION",
+  "formal_X_status": "CURRENT_RB_M_INCOMPLETE",
+  "discrepancy_statement": "锁定179016、build-default、TA_updto20240229_DBA、rb/m全年及night_end_at_2300；rb有正式产物，m在分块前ValueError、无fields/receipt，与完整正式X需求冲突。",
+  "business_impact": "m所有Build活动输出缺失，完整rb/m X不能进入G；失败不可改写为Build.Stop、空成功或已通过。",
+  "confirmed_facts": [
+    "rb raw/canonical均9959400行、243块，值和字段一致",
+    "m raw9959400行，当前Wall canonical9959383行，排17点；源元数据和主力CSV与C0004相同",
+    "17点quote全NaN、trade_volume缺失、buy/sell_order_vol均0；4点在交易日区间外，首为2021-03-11 21:00:00.500000",
+    "原raw分块错误精确复现；canonical轴243块覆盖完整、全部有效quote和F3列原值保留",
+    "canonical轴与本Run原Wall trace和receipt source_scope完全相同；局部raw exact join失败而canonical通过",
+    "所有诊断Feature调用write=False，未占用或写共享生产、未调用其它Feature Run"
+  ],
+  "processing_chain": [
+    {
+      "stage": "源与时间绑定",
+      "Input": "SOF/rb,m/Calendar/主力区间",
+      "Rule": "读取原DBA和固定时间段",
+      "State": "无业务状态",
+      "Output": "原始9959400行",
+      "ActualTime": "源自然时间及linear_ts",
+      "ConfirmTime": "不新增确认时点；接入错误不是业务确认/终结",
+      "Version": "TIS179016/专业控制391adcd",
+      "PossibleInformationLoss": "保留补齐空占位"
+    },
+    {
+      "stage": "Wall输入切面",
+      "Input": "原始quote及交易日区间",
+      "Rule": "现行因果时段首全空占位规则",
+      "State": "当前及过去时间间隔",
+      "Output": "rb原轴/m排17行并记录cut",
+      "ActualTime": "不看下一拍，不改坐标",
+      "ConfirmTime": "不新增确认时点；接入错误不是业务确认/终结",
+      "Version": "TIS179016/专业控制391adcd",
+      "PossibleInformationLoss": "17个无quote/成交量缺失且hit为0的占位不参与Wall"
+    },
+    {
+      "stage": "Build输入接入",
+      "Input": "继承raw _load_cc_df",
+      "Rule": "当前原实现直接选择raw",
+      "State": "尚无Build状态",
+      "Output": "与m Wall轴不一致",
+      "ActualTime": "原自然时间/UTI",
+      "ConfirmTime": "不新增确认时点；接入错误不是业务确认/终结",
+      "Version": "TIS179016/专业控制391adcd",
+      "PossibleInformationLoss": "未承接上游切面而产生不兼容"
+    },
+    {
+      "stage": "分块与exact join",
+      "Input": "Build接入轴和Wall trace",
+      "Rule": "区间完整覆盖、逐tick字段非空",
+      "State": "chunk plan",
+      "Output": "m ValueError，正式产物缺失",
+      "ActualTime": "按固定trading_day区间",
+      "ConfirmTime": "不新增确认时点；接入错误不是业务确认/终结",
+      "Version": "TIS179016/专业控制391adcd",
+      "PossibleInformationLoss": "拒绝而非伪造事件"
+    },
+    {
+      "stage": "transient F3/Build core",
+      "Input": "通过输入后才消费参数/Wall/成交列",
+      "Rule": "既有算法和rolling/carry",
+      "State": "原代码状态机",
+      "Output": "本次m未进入",
+      "ActualTime": "原UTI/ts，无新确认时间",
+      "ConfirmTime": "不新增确认时点；接入错误不是业务确认/终结",
+      "Version": "TIS179016/专业控制391adcd",
+      "PossibleInformationLoss": "本偏差不能归因此处"
+    },
+    {
+      "stage": "公开输出/receipt/DAO",
+      "Input": "成功计算的结果",
+      "Rule": "既有packed lane/receipt/导出",
+      "State": "无新增业务判断",
+      "Output": "m缺结果，rb原6流有效",
+      "ActualTime": "事件ts和产物绑定",
+      "ConfirmTime": "不新增确认时点；接入错误不是业务确认/终结",
+      "Version": "TIS179016/专业控制391adcd",
+      "PossibleInformationLoss": "既有dense/原因字段限制仍在"
+    }
+  ],
+  "competing_explanations": [
+    {
+      "id": "H-DATA",
+      "claim": "源变化/Calendar变化或有效行情越界造成失败",
+      "outcome": "本实例未见源/CSV变化，4个越界点均为当前Wall已识别的无quote占位；不是需要修改源/Calendar的证据"
+    },
+    {
+      "id": "H-BINDING",
+      "claim": "Build自身输入未承接current Wall canonical切面",
+      "outcome": "CONFIRMED；只改变接入轴的真实对照同时消除分块与exact join冲突"
+    },
+    {
+      "id": "H-CACHE",
+      "claim": "旧Wall artifact被误读",
+      "outcome": "原Wall receipt当前git179016/source e7e97、完整canonical轴一致，历史产物未混入"
+    },
+    {
+      "id": "H-CORE",
+      "claim": "Build门槛/F3/core导致失败",
+      "outcome": "停止发生在这些处理之前；不能解释当前异常"
+    }
+  ],
+  "ruled_out_explanations": [
+    "仅调Build窗口/ratio可改变分块覆盖",
+    "仅跳过公共分块检查即能合法生成结果",
+    "必须修改Wall或公共模块才可处理当前Build接入冲突",
+    "原始市场文件在两次读取间发生已观察到的变更"
+  ],
+  "remaining_explanations": [
+    "本定位不排除修复接入后出现其它独立运行或业务问题；必须回归及当前全年X验证"
+  ],
+  "discriminating_checks": [
+    {
+      "check": "真实rb正常反例",
+      "result": "PASS：无排除且原始/规范轴和值相同、243块"
+    },
+    {
+      "check": "真实m同源接入轴对照",
+      "result": "PASS：raw错误精确复现；只改为current Wall轴分243块且source cut一致"
+    },
+    {
+      "check": "局部exact join独立检查",
+      "result": "PASS：原axis缺覆盖，canonical axis通过"
+    },
+    {
+      "check": "逐一审计17个排除点及全部保留行",
+      "result": "PASS：无有效quote丢失、F3所有字段原值保留；4个在区间外"
+    },
+    {
+      "check": "源和旧receipt稳定性",
+      "result": "PASS：源metadata/CSV SHA和原Wall receipt一致"
+    }
+  ],
+  "current_localization": {
+    "stage": "Build自身正式输入接入与exact Wall依赖绑定",
+    "entry": "BuildAssembler._impl的cc_df=self._load_cc_df()",
+    "actual_behavior": "Build未覆盖继承的TickQuoteContextWrapperSupport._load_cc_df，直接使用原始补齐轴；当前Wall覆盖同名方法并采用已有canonical切面。",
+    "earliest_divergence": "Build选择消费原始轴时已与其exact Wall输入切面不同；公共分块和exact join只是随后正确拒绝不完整绑定。",
+    "authorized_treatment_surface": [
+      "hf/prel0/build_assembler.py",
+      "直接相关Build输入接入回归测试"
+    ],
+    "not_responsible_for_this_observed_stop": [
+      "尚未执行的F3/Build core门槛和生命周期状态",
+      "正确拒绝未覆盖输入的公共分块检查",
+      "来源未变的Calendar/市场DBA文件"
+    ]
+  },
+  "logic_localization_ref": "LogicLocalization.json",
+  "parameter_repairability": {
+    "suspected_parameters": [
+      "t_build_ticks",
+      "reload_start_ratio",
+      "reload_stop_ratio",
+      "build_start_window_ticks",
+      "build_stop_window_ticks",
+      "milestone_levels",
+      "require_best_price_stable",
+      "attack_near_band_ticks",
+      "active_flow_same_best_tol_ticks"
+    ],
+    "parameter_consumers": "所有Build算法参数在run_build_assembler_trading_day_chunks的chunk_plan之后用于flow/core；分块函数只读输入index与trading_days区间",
+    "earliest_business_divergence": "Build接入raw而非准确Wall输入切面",
+    "feasibility_status": "PROVEN_NOT_ADJUSTABLE",
+    "feasibility_evidence": "当前已暴露Build参数均不改变输入index/区间/上游source cut；未运行随机参数试值。此结论限当前接入问题和现有参数，不等于实现能力无解。",
+    "upstream_dependency": "current Wall默认输入规范切面；不修改其规则",
+    "unresolved_constraints": [
+      "修复后须保持无有效报价丢失、完整F3列/原值、原UTI/ts与exact source cut",
+      "异常canonical输入必须继续拒绝",
+      "改变实现后需当前rb/m全年X及读回，旧rb不证明新版本"
+    ],
+    "next_route": "Build自身最小输入适配处理、直接回归、原L0更新U/X并真实重跑"
+  },
+  "ImplementationConformance": "现代码按继承raw读取运行，分块/精确覆盖按其合同拒绝；Build与current exact Wall绑定缺少输入切面适配。",
+  "BusinessReasonableness": "当前业务要求围绕准确Wall消费同一输入切面；接入不兼容导致m全部正式输出缺失。该判断仅针对X输入适用性，不替代G合理性检查。",
+  "issue_type": "ImplementationMismatch",
+  "confidence": "HIGH：同源真实反事实接入检查、rb正常反例、m局部exact join及源/receipt稳定性共同支持。",
+  "next_route": "在获准Build自身写面实现最小适配，不改上游/公共模块/Calendar/参数；回归和当前正式X验证。",
+  "no_new_owner_node": true,
+  "workers": []
+}
