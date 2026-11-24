@@ -223,7 +223,7 @@ GlobalProfile          修改后的全量统计
 当 `CurrentReviewTarget` 明确只要求发现并处理明显问题时，可以在以下条件下结束本轮：
 
 - 最新代码和参数已完整运行；
-- 既有确认问题已关闭或由 Owner 明确暂缓；
+- 当前 ReviewTarget 内的已确认问题已经关闭；仅初始 ReviewTarget 明确为不阻断的范围外限制可保留并传递，AI 不得为释放而自行暂缓本轮高置信问题；
 - 已完成当前正式结果上的高置信发现 pass，并形成 `FindingDiscoverySummary` 和候选队列快照；
 - Owner 指定候选已有判断；
 - 最新全量统计没有尚未进入处理的高置信 finding；

@@ -41,11 +41,11 @@
 
 | finding_id | observation | 当前状态 | 直接责任点／路由 | 最新证据 | 下一动作 |
 |---|---|---|---|---|---|
-| | | `CANDIDATE / DIAGNOSIS_IN_PROGRESS / CONFIRMED / FIX_IN_PROGRESS / FIXED_PENDING_RERUN / CLOSED_ON_LATEST_PROFILE / DEFERRED_BY_OWNER_SCOPE / REJECTED_AS_NON_ISSUE / SUPERSEDED` | | | |
+| | | `CANDIDATE / DIAGNOSIS_IN_PROGRESS / CONFIRMED / FIX_IN_PROGRESS / FIXED_PENDING_RERUN / CLOSED_ON_LATEST_PROFILE / DEFERRED_BY_SCOPE / REJECTED_AS_NON_ISSUE / SUPERSEDED` | | | |
 
 ## E. 已知限制
 
-| limitation_id | Owner 暂缓依据 | 业务／下游影响 | 为什么当前不阻断 | 返回条件 | 精确引用 |
+| limitation_id | 初始 ReviewTarget 范围依据 | 业务／下游影响 | 为什么当前不阻断 | 返回条件 | 精确引用 |
 |---|---|---|---|---|---|
 | | | | | | |
 
