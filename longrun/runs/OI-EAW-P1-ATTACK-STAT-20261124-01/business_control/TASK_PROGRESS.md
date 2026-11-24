@@ -99,8 +99,16 @@ Owner 允许的代码修改面仍仅 Attack 两文件、直接测试及专属参
 
 A05 曾实际持有并释放原锁；C0011 无生产共享写入、未申请锁，原锁 device=83/inode=15061041 仅只读核对未变，未探测 holder。路径：`/dwdhome/fy/cgpterm/artifacts/wall-f-closure-20261122/FORMAL_PRODUCTION.lock`。这些历史事实不表示当前锁被预约或可直接运行；恢复共享生产仍需现场重新获取同一路径同 inode 原 flock，不强停他人、不改锁。
 
-本次发行计划：先发布 C0012 报告、剩余范围与双进度并准确回读；再发布原 longrun-professional-return/v2，role=manager／professional_state=IN_PROGRESS，remaining_scope_ref 指向本 C 已发布剩余原件，continuation_ref 指向已存在 C0011 ScopedBlocker。该 continuation 只记录条件恢复来源，不是新委派或要求立即发新 C。issued_delegation_refs=[]、issued_order_refs=[]、accepted_worker_refs=[]、owner_request_ref=null。
+本 C 实际发行与准确回读：
 
-本 C 报告：[MANAGER_REPORT.md](../calls/C0012/MANAGER_REPORT.md)；剩余：[REMAINING_SCOPE.md](../calls/C0012/REMAINING_SCOPE.md)。当前尚待发布回读；实际不可变发行引用在 Return 发布后补记，保持 Git 无循环。
+- 报告：`daowei2026/observe-iterate@37be8b89a4ef407870a77c13478679b067659164:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0012/MANAGER_REPORT.md`。
+- 剩余范围／条件恢复入口：`daowei2026/observe-iterate@37be8b89a4ef407870a77c13478679b067659164:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0012/REMAINING_SCOPE.md`。
+- 上述报告、剩余及双进度的先前快照同属 `37be8b89a4ef407870a77c13478679b067659164`，四文件均已普通条件发布并逐字回读。
+- 原 v2 Return：`daowei2026/observe-iterate@b80379e0bb57634752ce9c70808d8d0fef191a62:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0012/PRO_RETURN.json`，以已存在的先前提交为 parent，普通条件发布且逐字回读一致。
+- Return 保持 longrun-professional-return/v2／role=manager／professional_state=IN_PROGRESS；result_ref 和 remaining_scope_ref 分别指向已存在的上述报告及剩余原件。continuation_ref=`daowei2026/observe-iterate@28e8764aab3ce050b6167ad093bbe087574523d3:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/professional_results/D003/C0011/ScopedBlocker.json`，仅为条件恢复来源，不是新委派或立即发送新 C 的动作。
+- issued_delegation_refs=[]、issued_order_refs=[]、accepted_worker_refs=[]、owner_request_ref=null。D002 issuer 仍 C0004，D003 issuer 仍 C0010；诊断完成／局部阻断／父 Run 未完成分别保留。
+- 本次仅补记已经发生的发行事实，保持 Git 无循环；专业原件、D002／D003、失败 effects 和有效成果没有改写。controller 物理回收仍由其独立核验，发布成功不冒称其已接收或上游条件已满足。
 
-快照：2026-11-24，C0012；父 Run IN_PROGRESS。记录分支仅 codex/oi-eaw-p1-attack-stat-20261124-01；使用已核 Personal 连接。
+本 C 报告：[MANAGER_REPORT.md](../calls/C0012/MANAGER_REPORT.md)；剩余：[REMAINING_SCOPE.md](../calls/C0012/REMAINING_SCOPE.md)。
+
+快照：2026-11-24，C0012；父 Run IN_PROGRESS。记录分支仅 codex/oi-eaw-p1-attack-stat-20261124-01；使用已核 Personal 连接。当前具名动作仅原协议回 controller 保存阻断及条件恢复来源，不新增任务消息。

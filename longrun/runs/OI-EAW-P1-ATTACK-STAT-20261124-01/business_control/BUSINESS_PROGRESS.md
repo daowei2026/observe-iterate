@@ -41,4 +41,4 @@ E1 的真实数据正反对照支持这一直接因果；当前已暴露业务�
 - [本次 manager 报告](../calls/C0012/MANAGER_REPORT.md)
 - [本次剩余范围](../calls/C0012/REMAINING_SCOPE.md)
 
-快照：2026-11-24，C0012 已消费原 E1 已完成诊断；父 Run IN_PROGRESS。当前出版阶段：报告、剩余和双进度待发布回读，随后签发原 V2 Return。
+快照：2026-11-24，C0012 已消费原 E1 已完成诊断；父 Run IN_PROGRESS。报告、剩余、双进度和原 V2 IN_PROGRESS manager Return 已发布并准确回读，实际发行引用见 TASK_PROGRESS；本次无新派工，具名上游恢复条件仍未满足。
