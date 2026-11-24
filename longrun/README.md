@@ -48,17 +48,15 @@ workers = []
 
 ## 3. 当前专业流程
 
-观察材料准备仍依据 `control/02` 和 B～E Skills；共享 Feature 理解有效后，B/C 可按依赖并行，D 汇合，E 运行和取数。
+观察材料准备的 A～E 完整 Workflow 属于**历史 V0.2 控制面**，仅由准确采用该历史 commit 的 Run 使用，不应从当前 `control/02` 寻找已删除的旧文件。
 
-统计驱动闭环可采用 `control-v0.3/`：
+当前统计驱动闭环采用 [control/01_L0_统计驱动的单特征闭环.md](../control/01_L0_统计驱动的单特征闭环.md)：
 
 ```text
-U 共享理解
-→ X 运行最新实例
-→ G 全量统计
-→ D/工程修正/参数处理
-→ 重跑重统计
-→ FeatureReleaseGate
+首轮：U 理解 Feature → X 正式运行 → G 全量统计／发现
+→ 如有待处理 finding：D 诊断，并在初始授权内处理
+→ 发生正式行为或绑定变化时，进入后续轮次更新与验证
+→ 当前目标达到后形成 FeatureReleaseGate／必要的 ReleasePackage
 ```
 
 X 和工程修正是受授权的实际动作，不因直接在 Codex 中执行就成为新的专业 Skill。

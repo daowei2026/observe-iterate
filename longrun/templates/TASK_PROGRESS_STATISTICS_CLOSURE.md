@@ -46,6 +46,8 @@
 | | `CANDIDATE / DIAGNOSIS_IN_PROGRESS / CONFIRMED / FIX_IN_PROGRESS / FIXED_PENDING_RERUN / CLOSED_ON_LATEST_PROFILE / DEFERRED_BY_SCOPE / REJECTED_AS_NON_ISSUE / SUPERSEDED` | | | |
 
 > 完整的「为什么不合理、如何解决、实际业务效果」放在 BUSINESS_PROGRESS，技术原始依据保留在对应 Skill 产物中。
+>
+> `FIXED_PENDING_RERUN` 不能算关闭，必须在修改后的当前正式实例及完整统计验证后，才可进入 `CLOSED_ON_LATEST_PROFILE`。`DEFERRED_BY_SCOPE` 只允许初始 `CurrentReviewTarget` 明确为非阻断范围外问题时使用，不是执行者自行降低完成条件的方式。`OWNER_RAISED` 表示初始任务输入提出的候选来源，不产生运行中的 Owner 审批。
 
 ## E. Release / 依赖 / 已知限制
 

@@ -214,6 +214,24 @@ CompetingExplanations
 未定位：业务预期与输入特征目的可能不匹配
 ```
 
+**责任逻辑定位（`LogicLocalization`）：**
+
+不能只停在“可能是算法问题”或“某个处理阶段有问题”。对已进入正式诊断的 finding，应沿真实业务对象、输入、中间判断、状态转换、时间与输出链，定位**最早使当前不合理表现产生的责任逻辑**，说明该逻辑当前实际做什么、怎样造成观察结果以及与业务预期的具体冲突。责任逻辑可以是源码、业务规则、参数消费、Event 顺序、运行／数据绑定或输出身份约束，不限于某一行代码。
+
+最小记录：
+
+```yaml
+logic_localization:
+  finding_id:
+  observed_anomaly:
+  business_processing_chain:
+  responsible_logic:
+  source_refs:
+  why_this_is_the_responsible_logic:
+```
+
+证据只能定位到处理阶段时，记录已定位的最窄范围和未决点，不猜造函数或根因。正式修正 Feature 行为前，须形成能够支持修改的责任逻辑定位；缺乏依据则继续诊断或有据阻断，不以输出异常直接猜改代码。
+
 **参数可修复性初筛：**
 
 在已经定位的责任阶段，检查当前问题是否值得进入参数标定：
@@ -374,6 +392,7 @@ ruled_out_explanations:
 remaining_explanations:
 discriminating_checks:
 current_localization:
+logic_localization_ref:  # 诊断阶段形成的责任逻辑定位原件，若只能定位部分则说明边界
 parameter_repairability:
   suspected_parameters:
   parameter_consumers:
@@ -387,11 +406,15 @@ confidence:
 next_route:
 ```
 
-### 9.2 `MinimalDiscriminatingExperiment`
+### 9.2 `LogicLocalization`
+
+正式确认责任逻辑时，保存可追溯定位及代码／数据依据；可以是 `DiagnosisReport` 的具名部分或独立被引用的结果，不要求另建 Skill 或 Workflow 节点。
+
+### 9.3 `MinimalDiscriminatingExperiment`
 
 描述最小新增数据、样本、重放或代码检查。
 
-### 9.3 `RequirementOrImplementationIssue`
+### 9.4 `RequirementOrImplementationIssue`
 
 区分：
 
@@ -403,7 +426,7 @@ DataQualityIssue
 UnresolvedTradeoff
 ```
 
-### 9.4 `AutonomousTradeoffRecord`／`ScopedBlocker`
+### 9.5 `AutonomousTradeoffRecord`／`ScopedBlocker`
 
 仅在真实方案取舍或超出初始任务边界时生成，不能成为每个 finding 的额外步骤。
 

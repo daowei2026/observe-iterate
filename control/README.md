@@ -1,75 +1,44 @@
-# 统计驱动的 Feature 闭环与下游释放｜V0.3
+# 统计驱动的单 Feature 闭环｜当前 Control
 
-## 1. 用途
+本目录只有一份现行 Workflow 正文：[01_L0_统计驱动的单特征闭环.md](01_L0_统计驱动的单特征闭环.md)。
 
-V0.3 服务于当前这类工作：
+## 1. 当前任务如何运行
 
 ```text
-先运行一个明确版本的 Feature
-→ 用完整结果发现明显不合理点
-→ 诊断并处理
-→ 用处理后的完整实例重跑、重统计
-→ 当前深度内不再出现新的明显问题
-→ 释放精确上游版本给下游 Feature
+首轮：U 理解 Feature → X 正式运行 → G 全量统计和高置信问题发现
+                                   ↓ 有待处理 finding
+                             D 逐项诊断、必要修正
+                                   ↓ 正式行为／绑定发生变化
+后续轮次：根据影响更新有效成果，取得当前正式运行及全量统计
+                                   ↓ 当前目标已完成
+                    完成判断 → FeatureReleaseGate → 下游
 ```
 
-V0.3 不替代 V0.2 的 CAEGraph、场景选择和过程证据对照；但当前也没有把这些能力接成 V0.3 的自动后继。统计和现有证据不足以判断的问题，先记录未决，不由执行者自行扩展到另一套 Workflow。
+finding 是否待处理属于流程判断，**不是独立的 Q 工作节点**；修正代码／参数、修正绑定以及完成释放也不需要为每类动作另建专业 Skill。轮次不等于 Chat 调用次数或 finding 数，AI 不需要按每个问题重跑一次全量实例。
 
-## 2. 文件
+## 2. 工作与原 Skill
 
-| 文件 | 内容 |
+| 工作 | 专业方法与产出 |
 |---|---|
-| [01_L0_统计驱动的单特征闭环.md](01_L0_统计驱动的单特征闭环.md) | 单 Feature 的主干节点、D 的两类后续处理和通用规则 |
-| [02_L1_本特征释放与下游依赖.md](02_L1_本特征释放与下游依赖.md) | FeatureReleaseGate、已知限制、上游释放包、多 Run 汇合和下游失效 |
-| [03_L2_节点输入输出与完成状态.md](03_L2_节点输入输出与完成状态.md) | 节点 I/O、状态和最小进度视图 |
+| U Feature 理解 | `skills/feature-understanding/SKILL.md` 与业务对象判别补充；形成 `FeatureUnderstandingPackage` |
+| X 正式运行 | 实际工程操作；形成当前实例的 `FeatureRunResultBinding` |
+| G 全量统计／发现 | `feature-global-behavior-profiling` 和 `STATISTICS_DRIVEN_PRACTICE.md`；形成统计、发现与专业 Gate |
+| D 偏差诊断（按需） | `business-discrepancy-diagnosis`；形成诊断及责任逻辑定位 |
+| 参数标定（仅明确需要时） | `feature-instance-calibration` |
 
-专业方法继续来自现有 Skill：
+**Control 只组织工作，不重写 Skill 的内部步骤和专业完成条件。** 具体 Feature 的品种、版本、参数、范围与依赖来自 `task-inputs/` 及初始 GO。
 
-- `skills/feature-understanding/`；
-- `feature-global-behavior-profiling`；
-- `business-discrepancy-diagnosis`；
-- `feature-instance-calibration`（仅在具体任务确有标定目标时）。
+## 3. 完成与运行记录
 
-V0.3 采用以下两份实践补充：
+当前目标的完成、可释放状态、精确上游 `UpstreamReleasePackage`、下游版本失效及边界，统一见 L0 第 4～5 节。多 Run 并行与联合依赖按 `longrun/` 和具体任务输入，不另建专业上级。
 
-- `skills/feature-understanding/BUSINESS_OBJECT_QUALIFICATION_GUIDE.md`；
-- `skills/reasonableness-analysis/STATISTICS_DRIVEN_PRACTICE.md`。
+运行期间，由 manager 维护：
 
-## 3. 减重原则
+- `longrun/runs/<run_id>/business_control/BUSINESS_PROGRESS.md`：业务进展、问题处理及有效成果；
+- `longrun/runs/<run_id>/business_control/TASK_PROGRESS.md`：机器状态、版本、依赖、在途和恢复。
 
-1. **不为运行 Feature 新建 Skill。** 运行是带精确版本和结果绑定的实际动作。
-2. **不为修代码新建 Skill。** 诊断完成后，按最小修改、反例复现、回归和全量新旧比较执行工程修正。
-3. **不为多 Run 新建专业上级。** 各 Run 自己形成专业 Gate；主控只按任务输入中的依赖汇合。
-4. **不把 WALL/F 的字段写进通用 Skill。** 通用 Skill 只规定怎样从对象、时间和处理链推导统计；品种、方向、年份和具体门槛由任务输入给出。
-5. **不预埋尚未接入的流程。** 当前不自动转场景线，不建立 OwnerDecisionPacket，也不在本控制面中设计通用的 AI／Owner 权限边界。
+初始 GO 一次性明确自主迭代权限；运行中不设置 Owner 审批节点。授权之外的操作只阻断受影响部分，不擅自扩大范围。
 
-## 4. 当前完成深度
+## 4. 历史与非目标
 
-每个 Run 必须声明 `CurrentReviewTarget`：
-
-```yaml
-current_goal:
-intended_coverage:
-explicit_non_goals:
-owner_constraints:
-current_acceptance_level:
-```
-
-本控制面允许当前目标只是“发现并关闭明显不合理问题”，不强迫在同一 Run 中完成复杂业务规则重构、全部覆盖证明或最终参数理论。未处理问题必须保留为已知限制，不能改写成不存在。
-
-## 5. 采用方式
-
-Owner GO 至少锁定：
-
-```text
-observe-iterate 精确 commit
-control-v0.3
-适用 Skill 和实践补充
-Feature 代码 commit
-参数实例
-数据范围
-独立 Linux 工作区
-执行 profile
-```
-
-本次 WALL/F 具体输入见 `task-inputs/wall-f-parallel-closure-20261122/`。
+原 V0.2 的观察材料、CAEGraph、真实场景及对照流程保留在 Git 历史；**不作为本 Control 的自动后继**。历史 Run 仍以各自已采用的精确 commit 为准，新分支不追认或改写旧结果。原 `control-v0.3/` 路径属于历史版本；当前从 `control/` 读取。

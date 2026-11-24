@@ -4,8 +4,8 @@
 
 ## 1. 来源及职责
 
-- **整体 Workflow**：由本 Run 实际采用的业务仓流程提供。当前观察材料准备见 [control/02](../control/02_L1_观察材料准备流程.md)：A → (B、C) → D → E，E 按对应 Skill 的真实结论返回受影响阶段。
-- **专业 Skill**：当前 M 的五个 Skill 见 [观察材料准备总入口](../skills/observation-material-preparation/SKILL.md)，各自的 `SKILL.md / WORKFLOW.md / IO_SPEC.md` 和 Reference 是专业执行依据。合理性分析按本 Run 实际采用的版本处理，不在这里固定 R0～R5。
+- **整体 Workflow**：由每个 Run 精确采用的业务仓来源提供。当前统计闭环见 [control/01](../control/01_L0_统计驱动的单特征闭环.md)：首轮 U→X→G，有 finding 时进入 D 和必要修正，随后按影响进入后续轮次。历史 V0.2 的 A→(B、C)→D→E 观察流程仍需从历史采用 commit 读取，不再对应现行 control/02 路径。
+- **专业 Skill**：历史观察材料准备的五个 Skill 见 [观察材料准备总入口](../skills/observation-material-preparation/SKILL.md)，各自的 `SKILL.md / WORKFLOW.md / IO_SPEC.md` 和 Reference 是专业执行依据。合理性分析按本 Run 实际采用的版本处理，不在这里固定 R0～R5。
 - **多层 Workflow 运行协调 Chat（V2 `manager`）**：依据已有输入、真实 Skill 回交、阶段依赖及其版本推进、等待、回流，并维护 [当前完成全景](templates/TASK_PROGRESS.md)。
 - **Skill 执行 Chat（V2 `executor`）**：执行本次指定 Skill；专业输出、完成条件、何时需要 Worker、如何消费 Worker 返回均依据该 Skill。
 - **主控 Codex**：处理真实身份/授权、发送、回执、去重、消息回流、GitHub 保存和运行事实核验，不自行形成专业结论。
@@ -15,8 +15,8 @@
 - `C` 是一次真实模型调用；`D` 是具名 Skill 工作委派；`W` 是 Skill 执行 Chat 在该 Skill 确有需要且获 Owner 权限覆盖时派出的真实操作工单。三种身份不是 A/B/C/D/E 业务阶段，也不是 Skill 内部步骤。
 - 一项 D **默认对应一个 Skill 工作**，可以通过多个 C 继续，直到其 Skill 原生流程实际完成或有据报告无法继续。无需为每个内部步骤单独创建 D。
 - D 的正文按 [Skill 工作委派模板](templates/PRO_DELEGATION.md) 传递工作身份、Skill 版本、已接受上游输入/成果、返回对象；**不自行增加执行约束、专业方法、业务预期、Worker 返回处理说明或另一套完成条件**。Owner 的真实操作权限由 V2 机器授权机制独立核验。
-- 同一个执行 Chat 可以在不同工作中运行不同 Skill，也可以按实际依赖增加多个执行 Chat。A 完成后 B/C 可以并行，D 只能消费当前有效的 A/B/C 结果；并行工作须具有独立身份与可核对的产物版本。
-- 某 Skill 的内部步骤、循环和 Worker 处理由该 Skill 自己负责。E 当前的实际运行/取数仍按 [E Skill](../skills/observation-material-preparation/caegraph-execution/SKILL.md) 与其 Worker 合同进行，V2 只保证 W 返回原签发的 executor，不另设专业处理法。
+- 同一个执行 Chat 可以在不同工作中运行不同 Skill，也可以按实际依赖增加多个执行 Chat。对于实际采用历史观察 Workflow 的 Run，A 完成后 B/C 可以并行，D 只能消费当前有效的 A/B/C 结果；其他 Workflow 依据自身的真实节点、依赖和产物推进，不能默认套用 A～E。并行工作须具有独立身份与可核对的产物版本。
+- 某 Skill 的内部步骤、循环和 Worker 处理由该 Skill 自己负责。历史观察材料准备中 E 的实际运行/取数按 [E Skill](../skills/observation-material-preparation/caegraph-execution/SKILL.md) 与其 Worker 合同进行，V2 只保证 W 返回原签发的 executor，不另设专业处理法。
 
 ## 3. 结果回流和整体状态
 

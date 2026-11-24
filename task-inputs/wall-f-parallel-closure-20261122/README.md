@@ -115,7 +115,7 @@ manager 与 executor 是不同线程。当前接续不要求重建线程，但 c
 
 采用：
 
-- `control-v0.3/`；
+- `control/`（当前分支 V0.3；此前已启动 Run 的 `control-v0.3/` 是其历史采用来源，仍须按原精确 commit 读取）；
 - `skills/feature-understanding/` 及业务对象判别补充；
 - `feature-global-behavior-profiling`；
 - `business-discrepancy-diagnosis`；

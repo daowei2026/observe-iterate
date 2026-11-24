@@ -7,7 +7,7 @@
 | **多层 Workflow 运行协调 Chat**（`manager`） | [PRO_MANAGER_GUIDE.md](PRO_MANAGER_GUIDE.md) | 维护整体任务状态、按既定 Workflow 调用和接续 Skill、管理依赖/版本及按需增加执行 Chat；不自行增加专业判断或额外 Gate |
 | **Skill 执行 Chat**（`executor`） | [PRO_EXECUTOR_GUIDE.md](PRO_EXECUTOR_GUIDE.md) | 每次按被调用 Skill 的完整专业文件实际执行、自检并产生原生结果；不预设固定专业角色 |
 
-当前观察材料准备依据 [A～E 外层 Workflow](../../control/02_L1_观察材料准备流程.md) 和 [五个 Skill](../../skills/observation-material-preparation/SKILL.md)：A 后 B/C 可并行，D 汇合，E 运行、核图和取数。Skill 内部步骤由各自 Skill 管理，不作为默认单独调用单位。合理性分析仍按后续实际采用版本执行，不在本目录预设固定调用序列。
+现行统计闭环的外层工作见 [control/01](../../control/01_L0_统计驱动的单特征闭环.md)：U、X、G 为首轮工作，有待处理 finding 时调用 D；问题处理后由执行者按实际变化进入下一轮。历史观察材料准备的 A～E 流程及 [五个 Skill](../../skills/observation-material-preparation/SKILL.md) 仅按历史精确采用来源使用，不再从当前 control/02 读取。Skill 内部步骤由各自 Skill 管理，不作为默认独立调用单位。
 
 **职责边界**：协调 Chat 只传任务身份、准确 Skill 与输入产物来源、回交对象，不自拟执行约束、专业方法、Worker 结果处理或验收标准；执行 Chat 完成 Skill 自身定义的工作。主控负责 C/D/W 真实发送、回执、去重、工作区和授权校验；Run 状态继续使用既有 `TASK_PROGRESS` 视图与 GitHub 原件。
 
