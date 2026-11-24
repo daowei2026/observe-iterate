@@ -136,3 +136,10 @@ FRP `39f02ec4548e68ba8dbd30061afc870546000994`，TIS `2f460d663d821cf2ba25555eda
 - D016技术消费：`daowei2026/observe-iterate@5c60f0cb81b1b3cab47227de0f63961d3235c2f4:longrun/runs/OI-F800-STAT-20261122-01/calls/C0037/D016_CONSUMPTION_AND_OWNER_HANDOFF.json`；定位 `daowei2026/observe-iterate@d8cfd8fa4bc792aaf4dbe905e9c681a91837e559:longrun/runs/OI-F800-STAT-20261122-01/professional/D016/LogicLocalization.json`、诊断 `daowei2026/observe-iterate@d8cfd8fa4bc792aaf4dbe905e9c681a91837e559:longrun/runs/OI-F800-STAT-20261122-01/professional/D016/DiagnosisReport.json`、原生选项 `daowei2026/observe-iterate@d8cfd8fa4bc792aaf4dbe905e9c681a91837e559:longrun/runs/OI-F800-STAT-20261122-01/professional/D016/OwnerDecisionPacket.json`。
 
 本C后批Return仅引用上述已存在首批对象，Run=WAITING_OWNER、owner_request_ref为准确问题，issued_delegation_refs=[]。finding仍DIAGNOSIS_IN_PROGRESS，不签新执行D、修改许可或Release。两批材料回读后向本Owner提出用途问题，不冒充已答复；无跨聊天消息/新线程/timer。
+
+
+## 2026-11-24 Owner正式释放物理工作区
+
+Owner明确要求正式释放本Run原工作区，并把主TIS/FRP现有未提交改动从各自原分支另切新分支保存。经controller现场核对，原manager/E1 turn已结束、队列为空，无匹配的任务进程，生产锁未持有。原工作区租约撤销，当前资源状态=RELEASED_BY_OWNER；Run执行状态仍OWNER_PAUSED，业务未完成，未签FeatureReleaseGate或UpstreamReleasePackage。D008正式结果、31表独立读回、既有G、GF001/GF002关闭以及Life36未决问题全部保留。
+
+本次源码checkpoint只保存现场已有改动，不采用为新的F正式版本。旧RUN_RESOURCE_BINDING仅作历史依据；CURRENT_RESOURCE_STATUS.json覆盖当前占用状态。未来写入须Owner明确恢复并完成新的资源绑定。不得凭历史Binding自动接续，也不启动Q/V。
