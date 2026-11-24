@@ -82,4 +82,6 @@ parameters: 代码起点当前各 Feature 的默认正式实例；运行前保�
 
 本次三个目标不需要互相的 FeatureReleaseGate；各自的 Release 只由当前本 Feature 的真实证据和当前 ReviewTarget 决定。输出结果及可能修改不可不标版本地跨 Run 混用。历史分析、CAEGraph 数据和归档 Chat 可以作为线索，不能冒充本轮 X/G。
 
-Owner 在第一次 GO 授权的范围内允许 executor 自主定位问题、修改相关代码／参数／业务常量、必要回归、当前正式实例重跑、统计、提交指定 Run 分支。Manager 只依据已采用 Workflow 和 Skill Return 调度，不为正常修正另发 Owner 审批。超出授权的动作只局部阻断并记录依据，不虚构通过。
+Owner 本次明确把**正式修改权限限制为本 Run 所负责的目标 Feature 自身**：Build 只修 Build，Attack 只修 AttackSegment，Absorb 只修 Absorb。允许目标 Feature 自己的源码、默认参数和本 Feature 专属业务常量、测试与自身结果修正；**不允许修改 Wall、F3/F4、市场数据、公共处理器或其他 Feature 的源码、参数、业务规则和输出合同**，也不允许为修自己的问题顺带改这些共享实现。
+
+技术上必须读取或者一次性物化已锁定的 Wall/F4 等上游结果时，允许按原实例运行／读回（不可改其算法和参数）；若诊断确认真实问题位于上游，形成准确 `UpstreamFinding`，记录证据、受影响本 Feature 结果与需未来单独处理的来源，不执行上游修改、不把上游缺陷冒充本 Feature 修复成功。不能在本次任务中自行扩大修改范围。Manager 只依据既定 Workflow 和 Skill Return 协调；超范围动作只局部阻断，不引入运行中 Owner 确认。
