@@ -1,0 +1,32 @@
+{
+  "schema": "observe-iterate-owner-resource-release/v1",
+  "run_id": "OI-F800-STAT-20261122-01",
+  "released_at": "2026-11-24 06:54:47 UTC",
+  "owner_instruction": "正式释放这个工作区。然后如果那个 TIS 仓库和 FRP 仓库有改动的话，你把这个改动在之前的分支上另切一个分支出来提交一下。",
+  "resource_state": "RELEASED_BY_OWNER",
+  "run_execution_state": "OWNER_PAUSED",
+  "business_completed": false,
+  "feature_release_issued": false,
+  "automatic_resume_authorized": false,
+  "previous_resource_binding_ref": "daowei2026/observe-iterate@2665f0cbabff0439fe8d361c2ad545bf922e1792:longrun/runs/OI-F800-STAT-20261122-01/RUN_RESOURCE_BINDING.json",
+  "previous_registry_entry": {
+    "run_id": "OI-F800-STAT-20261122-01",
+    "work_id": "OI-F800-STAT-20261122",
+    "business_case_id": "F-STATISTICS-CLOSURE",
+    "binding_ref": "daowei2026/observe-iterate@3dc11a9dbf39e181b3c6a3051419a90e46b92aac:longrun/runs/OI-F800-STAT-20261122-01/RUN_BINDING.json",
+    "resource_binding_ref": "daowei2026/observe-iterate@2665f0cbabff0439fe8d361c2ad545bf922e1792:longrun/runs/OI-F800-STAT-20261122-01/RUN_RESOURCE_BINDING.json",
+    "owner_workspace_path": "/dwdhome/fy/BASE_E6_2_copy",
+    "adopted_protocol_ref": "daowei2026/observe-iterate@b8c2b513f0b08be6a1fa6782b71bf74a07faff0d:longrun/contracts/LONGRUN_PROTOCOL_V2.md"
+  },
+  "current_write_authority": "REVOKED_FOR_RELEASED_WORKSPACE",
+  "audit_summary": {
+    "role_turns": "COMPLETED",
+    "queued_calls": "NONE",
+    "matched_task_processes": "NONE",
+    "heavy_production_lock": "UNHELD_AT_PROBE",
+    "historical_result_binding": "PRESERVED"
+  },
+  "preserved": "历史输入、调用、Git记录、结果和未决finding全部保留；本次仅释放物理工作区占用，不改变F专业完成状态。",
+  "future_resume_requirement": "Owner明确恢复、重新核实并登记有效工作区资源绑定后，才可恢复任何Run写入。",
+  "release_record_ref": "daowei2026/observe-iterate@b1e5881de49dcdfc736a217e166e7064eecae41c:longrun/runs/OI-F800-STAT-20261122-01/CURRENT_RESOURCE_STATUS.json"
+}
