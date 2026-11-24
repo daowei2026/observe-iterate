@@ -1,0 +1,285 @@
+{
+  "probe_kind": "CONSTRUCTOR_AND_PARAMETER_INTROSPECTION_ONLY",
+  "feature_executed": false,
+  "feature_run_entrypoints_guarded": true,
+  "actual_cwd": "/dwdhome/fy/BASE_E6_2_copy",
+  "sys_executable": "/m3c3/Linux/apps/anaconda3/bin/python",
+  "tis_head": "179016111ed0394f92025313e46bd13534932a74",
+  "module_files": {
+    "attack": "/dwdhome/fy/BASE_E6_2_copy/mquant/tis/hf/prel0/attack_flow_assembler.py",
+    "core": "/dwdhome/fy/BASE_E6_2_copy/mquant/tis/hf/prel0/attack_flow_assembler_core.py",
+    "wall": "/dwdhome/fy/BASE_E6_2_copy/mquant/tis/hf/prel0/wall_assembler.py",
+    "f4": "/dwdhome/fy/BASE_E6_2_copy/mquant/tis/hf/prel0/pressure_big_deal.py"
+  },
+  "instance_type": "mquant.frame.core.app.proxy.Proxy(AttackFlowAssembler)",
+  "parameters": {
+    "parameter_set_id": "attack-default",
+    "wall": {
+      "type": "mquant.frame.core.app.proxy.Proxy(WallAssembler)",
+      "parameters": {
+        "parameter_set_id": "wall-default",
+        "qt_freq": "1d",
+        "qt_n": 30,
+        "qt_quantile": 0.997,
+        "w_depth_ref_ticks": 1200,
+        "large_quote_ratio_min": 1.0,
+        "allow_zero_qt_fallback": false,
+        "thick_vs_hi_ratio": 1.0,
+        "thin_vs_mid_ratio": 0.7,
+        "allow_thin_brick": false,
+        "p_wall_ticks": 1,
+        "t_wall_ticks": 6,
+        "near_band_ticks": null,
+        "far_band_ticks": null,
+        "connect_max_core_dist_ticks": null,
+        "connect_gap_max_ticks": null,
+        "support_buffer_keep_ticks": null,
+        "thin_eval_window_ticks": null,
+        "band_update_min_shift_ticks": null,
+        "dormant_no_presence_ticks": null,
+        "dormant_far_ticks": null,
+        "end_far_hold_ticks": null,
+        "end_far_ticks": null,
+        "break_after_no_presence_ticks": null,
+        "wall_dead_timeout_ticks": null,
+        "allow_brick_join_dormant": true,
+        "thin_contact_min_hits": 3,
+        "thin_contact_frac_end": 0.6
+      }
+    },
+    "directed_large_deal_tactical": {
+      "type": "mquant.frame.core.app.proxy.Proxy(DirectedBigDealTick)",
+      "parameters": {
+        "parameter_set_id": "tactical-default",
+        "qualification_family": "tactical",
+        "amt_n": 30,
+        "lane_threshold_map": {
+          "tactical": [
+            "0.99",
+            "0.995"
+          ]
+        },
+        "same_best_tol_ticks": 0,
+        "big_deal_ratio_min": 1.0
+      }
+    },
+    "directed_large_deal_structural": {
+      "type": "mquant.frame.core.app.proxy.Proxy(DirectedBigDealTick)",
+      "parameters": {
+        "parameter_set_id": "structural-default",
+        "qualification_family": "structural",
+        "amt_n": 30,
+        "lane_threshold_map": {
+          "structural": [
+            "0.997",
+            "0.999"
+          ]
+        },
+        "same_best_tol_ticks": 0,
+        "big_deal_ratio_min": 1.0
+      }
+    },
+    "additional_directed_large_deal_features": [],
+    "p_attack_ticks": 1,
+    "t_gap_attack_ticks": 6,
+    "p_retreat_ticks": null,
+    "lane_merge_policy": "union_keep_labels",
+    "split_on_side_switch": true,
+    "split_on_wall_inactive": true
+  },
+  "ppdict": {
+    "parameter_set_id": "attack-default",
+    "wall(WallAssembler).parameter_set_id": "wall-default",
+    "wall(WallAssembler).qt_freq": "1d",
+    "wall(WallAssembler).qt_n": 30,
+    "wall(WallAssembler).qt_quantile": 0.997,
+    "wall(WallAssembler).w_depth_ref_ticks": 1200,
+    "wall(WallAssembler).large_quote_ratio_min": 1.0,
+    "wall(WallAssembler).allow_zero_qt_fallback": false,
+    "wall(WallAssembler).thick_vs_hi_ratio": 1.0,
+    "wall(WallAssembler).thin_vs_mid_ratio": 0.7,
+    "wall(WallAssembler).allow_thin_brick": false,
+    "wall(WallAssembler).p_wall_ticks": 1,
+    "wall(WallAssembler).t_wall_ticks": 6,
+    "wall(WallAssembler).near_band_ticks": null,
+    "wall(WallAssembler).far_band_ticks": null,
+    "wall(WallAssembler).connect_max_core_dist_ticks": null,
+    "wall(WallAssembler).connect_gap_max_ticks": null,
+    "wall(WallAssembler).support_buffer_keep_ticks": null,
+    "wall(WallAssembler).thin_eval_window_ticks": null,
+    "wall(WallAssembler).band_update_min_shift_ticks": null,
+    "wall(WallAssembler).dormant_no_presence_ticks": null,
+    "wall(WallAssembler).dormant_far_ticks": null,
+    "wall(WallAssembler).end_far_hold_ticks": null,
+    "wall(WallAssembler).end_far_ticks": null,
+    "wall(WallAssembler).break_after_no_presence_ticks": null,
+    "wall(WallAssembler).wall_dead_timeout_ticks": null,
+    "wall(WallAssembler).allow_brick_join_dormant": true,
+    "wall(WallAssembler).thin_contact_min_hits": 3,
+    "wall(WallAssembler).thin_contact_frac_end": 0.6,
+    "directed_large_deal_tactical(DirectedBigDealTick).parameter_set_id": "tactical-default",
+    "directed_large_deal_tactical(DirectedBigDealTick).qualification_family": "tactical",
+    "directed_large_deal_tactical(DirectedBigDealTick).amt_n": 30,
+    "directed_large_deal_tactical(DirectedBigDealTick).lane_threshold_map": {
+      "tactical": [
+        "0.99",
+        "0.995"
+      ]
+    },
+    "directed_large_deal_tactical(DirectedBigDealTick).same_best_tol_ticks": 0,
+    "directed_large_deal_tactical(DirectedBigDealTick).big_deal_ratio_min": 1.0,
+    "directed_large_deal_structural(DirectedBigDealTick).parameter_set_id": "structural-default",
+    "directed_large_deal_structural(DirectedBigDealTick).qualification_family": "structural",
+    "directed_large_deal_structural(DirectedBigDealTick).amt_n": 30,
+    "directed_large_deal_structural(DirectedBigDealTick).lane_threshold_map": {
+      "structural": [
+        "0.997",
+        "0.999"
+      ]
+    },
+    "directed_large_deal_structural(DirectedBigDealTick).same_best_tol_ticks": 0,
+    "directed_large_deal_structural(DirectedBigDealTick).big_deal_ratio_min": 1.0,
+    "additional_directed_large_deal_features": [],
+    "p_attack_ticks": 1,
+    "t_gap_attack_ticks": 6,
+    "p_retreat_ticks": null,
+    "lane_merge_policy": "union_keep_labels",
+    "split_on_side_switch": true,
+    "split_on_wall_inactive": true
+  },
+  "ppid": "AttackFlowAssembler_700681a3da4b7aedeb84a6066b6ca4af733d4b14",
+  "upstream_instances": {
+    "wall": {
+      "type": "mquant.frame.core.app.proxy.Proxy(WallAssembler)",
+      "parameters": {
+        "parameter_set_id": "wall-default",
+        "qt_freq": "1d",
+        "qt_n": 30,
+        "qt_quantile": 0.997,
+        "w_depth_ref_ticks": 1200,
+        "large_quote_ratio_min": 1.0,
+        "allow_zero_qt_fallback": false,
+        "thick_vs_hi_ratio": 1.0,
+        "thin_vs_mid_ratio": 0.7,
+        "allow_thin_brick": false,
+        "p_wall_ticks": 1,
+        "t_wall_ticks": 6,
+        "near_band_ticks": null,
+        "far_band_ticks": null,
+        "connect_max_core_dist_ticks": null,
+        "connect_gap_max_ticks": null,
+        "support_buffer_keep_ticks": null,
+        "thin_eval_window_ticks": null,
+        "band_update_min_shift_ticks": null,
+        "dormant_no_presence_ticks": null,
+        "dormant_far_ticks": null,
+        "end_far_hold_ticks": null,
+        "end_far_ticks": null,
+        "break_after_no_presence_ticks": null,
+        "wall_dead_timeout_ticks": null,
+        "allow_brick_join_dormant": true,
+        "thin_contact_min_hits": 3,
+        "thin_contact_frac_end": 0.6
+      },
+      "ppdict": {
+        "parameter_set_id": "wall-default",
+        "qt_freq": "1d",
+        "qt_n": 30,
+        "qt_quantile": 0.997,
+        "w_depth_ref_ticks": 1200,
+        "large_quote_ratio_min": 1.0,
+        "allow_zero_qt_fallback": false,
+        "thick_vs_hi_ratio": 1.0,
+        "thin_vs_mid_ratio": 0.7,
+        "allow_thin_brick": false,
+        "p_wall_ticks": 1,
+        "t_wall_ticks": 6,
+        "near_band_ticks": null,
+        "far_band_ticks": null,
+        "connect_max_core_dist_ticks": null,
+        "connect_gap_max_ticks": null,
+        "support_buffer_keep_ticks": null,
+        "thin_eval_window_ticks": null,
+        "band_update_min_shift_ticks": null,
+        "dormant_no_presence_ticks": null,
+        "dormant_far_ticks": null,
+        "end_far_hold_ticks": null,
+        "end_far_ticks": null,
+        "break_after_no_presence_ticks": null,
+        "wall_dead_timeout_ticks": null,
+        "allow_brick_join_dormant": true,
+        "thin_contact_min_hits": 3,
+        "thin_contact_frac_end": 0.6
+      },
+      "ppid": "WallAssembler_f32460448c4bde6d0a683cfc262808694c9f0a75"
+    },
+    "tactical": {
+      "type": "mquant.frame.core.app.proxy.Proxy(DirectedBigDealTick)",
+      "parameters": {
+        "parameter_set_id": "tactical-default",
+        "qualification_family": "tactical",
+        "amt_n": 30,
+        "lane_threshold_map": {
+          "tactical": [
+            "0.99",
+            "0.995"
+          ]
+        },
+        "same_best_tol_ticks": 0,
+        "big_deal_ratio_min": 1.0
+      },
+      "ppdict": {
+        "parameter_set_id": "tactical-default",
+        "qualification_family": "tactical",
+        "amt_n": 30,
+        "lane_threshold_map": {
+          "tactical": [
+            "0.99",
+            "0.995"
+          ]
+        },
+        "same_best_tol_ticks": 0,
+        "big_deal_ratio_min": 1.0
+      },
+      "ppid": "DirectedBigDealTick_ecd83d7195757d35f9fa349e9cc810de55ac07ba"
+    },
+    "structural": {
+      "type": "mquant.frame.core.app.proxy.Proxy(DirectedBigDealTick)",
+      "parameters": {
+        "parameter_set_id": "structural-default",
+        "qualification_family": "structural",
+        "amt_n": 30,
+        "lane_threshold_map": {
+          "structural": [
+            "0.997",
+            "0.999"
+          ]
+        },
+        "same_best_tol_ticks": 0,
+        "big_deal_ratio_min": 1.0
+      },
+      "ppdict": {
+        "parameter_set_id": "structural-default",
+        "qualification_family": "structural",
+        "amt_n": 30,
+        "lane_threshold_map": {
+          "structural": [
+            "0.997",
+            "0.999"
+          ]
+        },
+        "same_best_tol_ticks": 0,
+        "big_deal_ratio_min": 1.0
+      },
+      "ppid": "DirectedBigDealTick_b7bee7c742968dcbde29e53ca969d381390aabf9"
+    }
+  },
+  "runtime_receipts": "UNCONFIRMED",
+  "formal_result_readback": "UNCONFIRMED",
+  "module_sha256": {
+    "attack": "35de2fcbdf91dd23f13e6c990ce8551bb33a675be51c0e3bf8598a3066501581",
+    "core": "acf35153c278cd9b253758076a856b722c52f5418df1c99dadd7f6fffea27503",
+    "wall": "58f056bbb4447929237599820c9d1012177c84694e881391223b25163f724bce",
+    "f4": "d15e2191c16e400be0d57f9193147d1e78e5beb548e1b353928d22ee7379c537"
+  }
+}

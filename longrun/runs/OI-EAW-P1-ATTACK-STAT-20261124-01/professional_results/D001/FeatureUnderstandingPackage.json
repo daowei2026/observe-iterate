@@ -1,0 +1,5260 @@
+{
+  "package_id": "OI-EAW-P1-ATTACK-STAT-20261124-01-D001-U-R01",
+  "feature_ref": {
+    "feature_name": "AttackFlowAssembler",
+    "business_name": "AttackSegment｜围绕 exact Wall 的主动成交攻势段",
+    "code_version": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74",
+    "instance_ref": {
+      "constructor": "mquant.tis.hf.prel0.attack_flow_assembler.AttackFlowAssembler()",
+      "parameter_set_id": "attack-default",
+      "constructed_ppid": "AttackFlowAssembler_700681a3da4b7aedeb84a6066b6ca4af733d4b14",
+      "parameter_evidence": "evidence/instance_introspection.json",
+      "binding_level": "已核构造实例与加载模块；尚未建立正式运行绑定"
+    }
+  },
+  "execution_context": {
+    "run_id": "OI-EAW-P1-ATTACK-STAT-20261124-01",
+    "call_id": "C0002",
+    "delegation_id": "D001",
+    "work_item_id": "OI-EAW-P1-ATTACK-STAT-U-R01",
+    "professional_control_commit": "9877826236e0995e7255e6cbfedc2d1b89dea6da",
+    "execution_profile": "CODEX_NATIVE_DIRECT",
+    "workers": [],
+    "workspace": "/dwdhome/fy/BASE_E6_2_copy",
+    "tis_root": "/dwdhome/fy/BASE_E6_2_copy/mquant/tis",
+    "tis_branch": "codex/oi-eaw-p1-attack-fix-20261124-01",
+    "formal_scope_declared": {
+      "sof_name": "TA_updto20240229_DBA",
+      "symbols": [
+        "rb",
+        "m"
+      ],
+      "requested_start_time": "2021-01-01",
+      "requested_end_time": "2021-12-31",
+      "calendar": "night_end_at_2300"
+    },
+    "business_input_ref": "daowei2026/observe-iterate@9877826236e0995e7255e6cbfedc2d1b89dea6da:task-inputs/eaw-p1-attack-stat-20261124/ATTACK_RUN_INPUT.md",
+    "delegation_ref": "daowei2026/observe-iterate@e20128bff682c58bc2a66a6c5ed176f78634c476:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/delegations/D001/DELEGATION.json",
+    "feature_executed": false,
+    "formal_result_binding": null,
+    "business_profile_performed": false,
+    "product_code_modified": false,
+    "build_results_consumed": false
+  },
+  "implementation_sources": [
+    {
+      "source_id": "I01",
+      "repository": "daowei2026/tis",
+      "code_version": "179016111ed0394f92025313e46bd13534932a74",
+      "file_path": "hf/prel0/attack_flow_assembler.py",
+      "entrypoints": [
+        "AttackFlowAssembler.params",
+        "AttackFlowAssembler._impl",
+        "run_attack_flow_assembler_trading_day_chunks",
+        "AttackFlowAssemblerWrapperSupport._frames"
+      ],
+      "source_role": "实例构造、exact上游接线、分块包装、三产品输出",
+      "verification_status": "已核源码与锁定commit一致；模块探针见证据",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 737,
+          "line_end": 906
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 527,
+          "line_end": 734
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 413,
+          "line_end": 513
+        }
+      ]
+    },
+    {
+      "source_id": "I02",
+      "repository": "daowei2026/tis",
+      "code_version": "179016111ed0394f92025313e46bd13534932a74",
+      "file_path": "hf/prel0/attack_flow_assembler_core.py",
+      "entrypoints": [
+        "compute_wall_huge_deal_atom_tape",
+        "compute_attack_flow_segments",
+        "run_attack_flow_assembler_replay"
+      ],
+      "source_role": "贴墙资格、在建段状态、真实闭段与carry",
+      "verification_status": "已核源码与锁定commit一致；模块探针见证据",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 317,
+          "line_end": 462
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 582,
+          "line_end": 745
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 748,
+          "line_end": 1202
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 1224,
+          "line_end": 1311
+        }
+      ]
+    },
+    {
+      "source_id": "I03",
+      "repository": "daowei2026/tis",
+      "code_version": "179016111ed0394f92025313e46bd13534932a74",
+      "file_path": "hf/prel0/p1_dba_export.py",
+      "entrypoints": [
+        "attack_segment_compact_streams",
+        "packed_relation_streams",
+        "P1DbaExportMixin"
+      ],
+      "source_role": "DBA流、同刻多行分流、dump后receipt",
+      "verification_status": "已核源码与锁定commit一致；模块探针见证据",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/p1_dba_export.py",
+          "line_start": 256,
+          "line_end": 393
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/p1_dba_export.py",
+          "line_start": 421,
+          "line_end": 442
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/p1_dba_export.py",
+          "line_start": 509,
+          "line_end": 584
+        }
+      ]
+    },
+    {
+      "source_id": "I04",
+      "repository": "daowei2026/tis",
+      "code_version": "179016111ed0394f92025313e46bd13534932a74",
+      "file_path": "hf/prel0/p1_product_receipt.py",
+      "entrypoints": [
+        "make_product_receipt",
+        "load_p1_product_receipt",
+        "feature_code_fingerprint",
+        "source_scope"
+      ],
+      "source_role": "产品身份、源范围和源文件指纹",
+      "verification_status": "已核源码与锁定commit一致；模块探针见证据",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/p1_product_receipt.py",
+          "line_start": 115,
+          "line_end": 199
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/p1_product_receipt.py",
+          "line_start": 230,
+          "line_end": 345
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/p1_product_receipt.py",
+          "line_start": 348,
+          "line_end": 405
+        }
+      ]
+    },
+    {
+      "source_id": "I05",
+      "repository": "daowei2026/tis",
+      "code_version": "179016111ed0394f92025313e46bd13534932a74",
+      "file_path": "hf/prel0/tick_quote_context.py",
+      "entrypoints": [
+        "TickQuoteContextWrapperSupport._load_cc_df",
+        "_uti_from_linear_ts",
+        "_trading_day_chunk_plan"
+      ],
+      "source_role": "真实市场读取入口、UTI时间尺度和物理分块",
+      "verification_status": "已核源码与锁定commit一致；模块探针见证据",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/tick_quote_context.py",
+          "line_start": 97,
+          "line_end": 106
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/tick_quote_context.py",
+          "line_start": 160,
+          "line_end": 166
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/tick_quote_context.py",
+          "line_start": 220,
+          "line_end": 253
+        }
+      ]
+    },
+    {
+      "source_id": "I06",
+      "repository": "daowei2026/tis",
+      "code_version": "179016111ed0394f92025313e46bd13534932a74",
+      "file_path": "hf/prel0/pressure_big_deal.py",
+      "entrypoints": [
+        "DirectedBigDealTick.params",
+        "DirectedBigDealTick._impl"
+      ],
+      "source_role": "所选技术上游F4；仅核Attack依赖，不独立闭环",
+      "verification_status": "已核源码与锁定commit一致；模块探针见证据",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/pressure_big_deal.py",
+          "line_start": 579,
+          "line_end": 611
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 764,
+          "line_end": 797
+        }
+      ]
+    },
+    {
+      "source_id": "I07",
+      "repository": "daowei2026/tis",
+      "code_version": "179016111ed0394f92025313e46bd13534932a74",
+      "file_path": "hf/prel0/wall_assembler.py",
+      "entrypoints": [
+        "WallAssembler.params",
+        "WallAssembler._load_cc_df"
+      ],
+      "source_role": "exact Wall技术输入；上游合理性没有在本D验收",
+      "verification_status": "已核源码与锁定commit一致；模块探针见证据",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/wall_assembler.py",
+          "line_start": 725,
+          "line_end": 785
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 758,
+          "line_end": 763
+        }
+      ]
+    },
+    {
+      "source_id": "I08",
+      "repository": "daowei2026/tis",
+      "code_version": "179016111ed0394f92025313e46bd13534932a74",
+      "file_path": "frp/EawBattleP.py",
+      "entrypoints": [
+        "AttackSegmentFao",
+        "FormationEvidenceFao",
+        "WallBarrierFao",
+        "EawP1AttackSegmentBookFrp"
+      ],
+      "source_role": "下游Python typed ingress构造参考；未运行FRP",
+      "verification_status": "已核源码与锁定commit一致；模块探针见证据",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:frp/EawBattleP.py",
+          "line_start": 67,
+          "line_end": 130
+        }
+      ]
+    },
+    {
+      "source_id": "I09",
+      "repository": "daowei2026/frp",
+      "code_version": "cac6c912dd65a14acbd591ca57e0afd8ddb4ef13",
+      "file_path": "src/Frp/Instance/ISL/Eaw/P1/AttackSegmentBook.hs",
+      "entrypoints": [
+        "applyAttackFrame",
+        "maintainAttackSegmentBook",
+        "currentAttackSegmentBookView"
+      ],
+      "source_role": "业务合同参考；current view按本次firing投影，非producer在建状态",
+      "verification_status": "已亲读精确远端；非已运行事实",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/AttackSegmentBook.hs",
+          "line_start": 55,
+          "line_end": 139
+        },
+        {
+          "ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/AttackSegmentBook.hs",
+          "line_start": 147,
+          "line_end": 211
+        }
+      ]
+    },
+    {
+      "source_id": "I10",
+      "repository": "daowei2026/frp",
+      "code_version": "cac6c912dd65a14acbd591ca57e0afd8ddb4ef13",
+      "file_path": "src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+      "entrypoints": [
+        "decodeAttackSegmentNumericRow",
+        "decodeAttackFormationNumericRow",
+        "decodeWallBarrierNumericRow"
+      ],
+      "source_role": "typed字段、身份与时间参考；与当前TIS有具名合同差异",
+      "verification_status": "已亲读相关解码段；非已运行事实",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+          "line_start": 760,
+          "line_end": 862
+        },
+        {
+          "ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+          "line_start": 864,
+          "line_end": 1020
+        }
+      ]
+    },
+    {
+      "source_id": "I11",
+      "repository": "mquant/frame本地独立仓库",
+      "code_version": "4d0ff8f2640e07a8b9ff066c48114f451fca6cfe",
+      "file_path": "lang/internal/ext/df.py；lang/internal/base.py；lang/internal/mixin/pp.py",
+      "entrypoints": [
+        "DataFrameMixIn.to_dfs",
+        "DataFrameMixIn.to_df",
+        "AbsFao.F",
+        "AbsFao.load",
+        "AbsFao.run",
+        "PPMixIn.ppdict"
+      ],
+      "source_role": "参数对象与公开读取接口；load读已有文件，run可能计算写入，F只读取已持有结果",
+      "verification_status": "本地源码已读，tracked工作树干净；没有推定该仓库的远端归属",
+      "evidence_refs": [
+        "本地mquant/frame/lang/internal/ext/df.py:10-47",
+        "本地mquant/frame/lang/internal/base.py:425-448,1712-1792",
+        "本地mquant/frame/lang/internal/mixin/pp.py:25-35,64-69,103-124"
+      ]
+    }
+  ],
+  "business_objects": [
+    {
+      "object_id": "B01",
+      "object_type": "exact Wall（引用的上游业务对象）",
+      "business_meaning": "一侧被Wall产品识别、具有local number和状态的墙位；Attack不重识别或修正Wall",
+      "identity_fields": [
+        "exact wall_lifecycle receipt identity",
+        "wall_id / wall_local_no"
+      ],
+      "identity_scope": "限定exact上游artifact和symbol/source scope；数字local no不可跨run直接比较",
+      "create_occurrence": "上游Wall事件；本D仅输入O02",
+      "update_occurrence": "O02及逐Tick wall state trace",
+      "terminate_occurrence": "Wall.End；对Attack闭段另见O04",
+      "relationships": [
+        {
+          "relation": "被B03/B04/B05引用"
+        }
+      ],
+      "state_carrier": "wall_assembler_state_trace，非Attack自己维护的Wall状态",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 544,
+          "line_end": 598
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 620,
+          "line_end": 650
+        }
+      ],
+      "unconfirmed_items": [
+        "本Run有效receipt、完整trace尚未确认；不重建Wall自身状态机"
+      ]
+    },
+    {
+      "object_id": "B02",
+      "object_type": "方向成交半秒材料（输入业务单位）",
+      "business_meaning": "按一侧、一个UTI识别的方向成交代理材料；多个F4资格档位可来自同一材料",
+      "identity_fields": [
+        "UTI",
+        "side_code",
+        "exact selected F4 receipt（资格身份另带family/grade/stream ordinal）"
+      ],
+      "identity_scope": "同symbol/源范围；资格行身份和底层材料身份不同",
+      "create_occurrence": "O01",
+      "update_occurrence": "无持续更新；在D03获得贴墙资格成为O03",
+      "terminate_occurrence": "一次性材料，无独立终止状态",
+      "relationships": [
+        {
+          "relation": "O03给同一材料增加贴墙资格；不是新的一笔真实逐笔交易"
+        }
+      ],
+      "state_carrier": "上游F4 sparse streams及Attack局部atom tape",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 49,
+          "line_end": 91
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 367,
+          "line_end": 441
+        }
+      ],
+      "unconfirmed_items": [
+        "真实市场逐笔身份不在本实现中；不能把半秒次数称逐笔笔数"
+      ]
+    },
+    {
+      "object_id": "B03",
+      "object_type": "AttackSegment@Wall",
+      "business_meaning": "同一exact Wall/方向上由合格贴墙材料串接、并已由producer闭合的攻势段",
+      "identity_fields": [
+        "segment_id",
+        "exact Attack artifact/实例/数据范围",
+        "wall_local_no作为外键"
+      ],
+      "identity_scope": "producer单次source run local；next_segment_id跨物理chunk及两侧递增；重新运行不承诺同数字身份稳定",
+      "create_occurrence": "O03首个合格材料开启内部在建段；O04才正式公布",
+      "update_occurrence": "后继O03更新在建段；形成后的正式行没有revision更新事件",
+      "terminate_occurrence": "O04（gap/wall inactive/retreat/wall或side切换）",
+      "relationships": [
+        {
+          "parent": "B01",
+          "relation": "每段只引用一个Wall；由多条B02形成，qualified UTI明细保留成员位置"
+        }
+      ],
+      "state_carrier": "compute_attack_flow_segments.current / carry；正式formed行不可变",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 748,
+          "line_end": 821
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 1097,
+          "line_end": 1202
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 536,
+          "line_end": 540
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 706,
+          "line_end": 710
+        }
+      ],
+      "unconfirmed_items": [
+        "当前默认下side_switch分支的实际可达性及各闭段原因是否出现未验证；无跨run公开稳定编号证据"
+      ]
+    },
+    {
+      "object_id": "B04",
+      "object_type": "AttackFormationMaterial（形成材料／区间）",
+      "business_meaning": "关于某Wall/方向的已接纳点、未解序材料、ordinary gap、无接纳区间、availability摘要或能力不可观察声明；不是完整攻段",
+      "identity_fields": [
+        "formation_local_id",
+        "exact Attack artifact",
+        "wall_local_no",
+        "side_code"
+      ],
+      "identity_scope": "_frames全结果排序后从1重编号；本次结果内一次性材料身份",
+      "create_occurrence": "O05",
+      "update_occurrence": "无修订；连续区间在发布前可由内部carry扩展",
+      "terminate_occurrence": "单次发布；区间结束点不是Wall或Segment终止",
+      "relationships": [
+        {
+          "reference": "B01；source_material_local_ref按body_kind可能指UTI、segment_id或wall_id"
+        }
+      ],
+      "state_carrier": "formation rows；内部compact/capability interval carry",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 111,
+          "line_end": 287
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 290,
+          "line_end": 410
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 432,
+          "line_end": 457
+        }
+      ],
+      "unconfirmed_items": [
+        "当前TIS没有attempt local id和available_at_uti，不能声称已与参考FRP attempt合同绑定"
+      ]
+    },
+    {
+      "object_id": "B05",
+      "object_type": "WallRelationBarrier（正式关系屏障）",
+      "business_meaning": "从exact Wall.End复制出的正式Wall结束屏障；不是ordinary gap或任意闭段原因",
+      "identity_fields": [
+        "barrier_local_id",
+        "exact Attack artifact",
+        "wall_local_no",
+        "side_code"
+      ],
+      "identity_scope": "_frames全结果排序后从1重编号；不是持续对象",
+      "create_occurrence": "O06",
+      "update_occurrence": "无修订",
+      "terminate_occurrence": "一次性屏障无后续状态",
+      "relationships": [
+        {
+          "reference": "B01；当前source_material_local_ref=wall_id"
+        }
+      ],
+      "state_carrier": "barrier rows",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 395,
+          "line_end": 410
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 445,
+          "line_end": 457
+        }
+      ],
+      "unconfirmed_items": [
+        "默认当前仅kind=1；不把未实现的其他formal reset/cut当已支持"
+      ]
+    }
+  ],
+  "states": [
+    {
+      "state_id": "S01",
+      "object_id": "B03",
+      "state_name": "无在建段：current=None",
+      "business_meaning": "当前侧尚无可续接的攻段；不等于上游无Wall",
+      "is_initial": true,
+      "is_terminal": false,
+      "enter_condition": "初始；O04闭合后；可能紧接同拍新段",
+      "exit_condition": "下一条合格O03开段",
+      "legal_predecessors": [],
+      "legal_successors": [
+        "S02"
+      ],
+      "duration_carrier": "内部变量与carry=None",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 1084,
+          "line_end": 1085
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 1116,
+          "line_end": 1149
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "state_id": "S02",
+      "object_id": "B03",
+      "state_name": "在建段：active=1",
+      "business_meaning": "已接纳至少一个材料，业务末点随合格atom更新",
+      "is_initial": false,
+      "is_terminal": false,
+      "enter_condition": "S01收到O03，分配新segment_id",
+      "exit_condition": "D07闭段；或Wall/side切换闭旧段并开新段",
+      "legal_predecessors": [
+        "S01"
+      ],
+      "legal_successors": [
+        "S03",
+        "S02"
+      ],
+      "duration_carrier": "current与跨chunk _carry_out_state；start/end是首/末材料位置，不是状态采样时长",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 748,
+          "line_end": 810
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 1097,
+          "line_end": 1183
+        }
+      ],
+      "unconfirmed_items": [
+        "完整运行尾部仍active时没有强制O04；不能凭正式表缺行判该段不存在"
+      ]
+    },
+    {
+      "state_id": "S03",
+      "object_id": "B03",
+      "state_name": "已形成段：active=0的发布快照",
+      "business_meaning": "_close_segment复制最终数据，记end_reason和closed_at后正式O04",
+      "is_initial": false,
+      "is_terminal": true,
+      "enter_condition": "D07或Wall/side切换；不是仅chunk_end",
+      "exit_condition": "该身份没有复活或revision；下一材料可创建新身份",
+      "legal_predecessors": [
+        "S02"
+      ],
+      "legal_successors": [],
+      "duration_carrier": "完整正式行；business_end=最后合格材料，closed_at=闭段触发位置",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 813,
+          "line_end": 821
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 1122,
+          "line_end": 1149
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "state_id": "S04",
+      "object_id": "B01",
+      "state_name": "上游Wall状态码：Empty=0/Alive=1/Dormant=2/Ended=3",
+      "business_meaning": "Attack仅以Alive接纳新atom；非Alive StateChange/End作为可选闭段cut",
+      "is_initial": false,
+      "is_terminal": false,
+      "enter_condition": "来自exact Wall trace/event；本D不推定其内部转换",
+      "exit_condition": "来自上游后继trace/event",
+      "legal_predecessors": [],
+      "legal_successors": [],
+      "duration_carrier": "逐Tick上游状态；不是Attack occurrence",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 53,
+          "line_end": 59
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 367,
+          "line_end": 374
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 840,
+          "line_end": 866
+        }
+      ],
+      "unconfirmed_items": [
+        "本D没有验证各码在指定全年实例的实际出现或上游全转换"
+      ]
+    },
+    {
+      "state_id": "S05",
+      "object_id": null,
+      "state_name": "interval carry与qualification_hit_book",
+      "business_meaning": "处理器工作状态，维护跨物理chunk的区间和F4资格引用；非新增业务对象",
+      "is_initial": true,
+      "is_terminal": false,
+      "enter_condition": "空侧字典初始化；按本chunk输入更新",
+      "exit_condition": "区间不连续或finalize发布；hit_book按source run保留",
+      "legal_predecessors": [],
+      "legal_successors": [],
+      "duration_carrier": "wrapper局部内存；不以chunk checkpoint制造业务FormationEvidence",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 111,
+          "line_end": 287
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 395,
+          "line_end": 395
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 536,
+          "line_end": 540
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 658,
+          "line_end": 707
+        }
+      ],
+      "unconfirmed_items": [
+        "正式.F没有该轨迹；未作运行可达性或内存行为统计"
+      ]
+    }
+  ],
+  "occurrences": [
+    {
+      "occurrence_id": "O01",
+      "occurrence_name": "SelectedDirectedLargeDealOccurrence",
+      "direction": "输入事件",
+      "output_business_role": "不适用",
+      "carrier": "所选F4 buy*/sell* sparse DataFrame行；接入时附stream ordinal/family code",
+      "business_meaning": "一次F4资格发生；同材料可能有多grade或多family行",
+      "own_position": "F4行uti及DatetimeIndex",
+      "carried_other_positions": "本载体没有独立confirm/publish时间",
+      "object_scope": "B02及其F4资格",
+      "identity_fields": [
+        "exact F4 receipt",
+        "uti",
+        "side_code",
+        "family",
+        "grade",
+        "stream ordinal"
+      ],
+      "revision_fields": "无revision/previous/supersedes字段",
+      "payload_fields": [
+        {
+          "field_name": "uti",
+          "chinese_meaning": "F4材料发生位置",
+          "data_type": "int64",
+          "unit_or_domain": "半秒UTI",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": true,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 549,
+              "line_end": 552
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 771,
+              "line_end": 789
+            }
+          ]
+        },
+        {
+          "field_name": "side_code",
+          "chinese_meaning": "受打Wall侧：1 bid对应主动卖，2 ask对应主动买",
+          "data_type": "int",
+          "unit_or_domain": "1/2",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 549,
+              "line_end": 552
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 771,
+              "line_end": 789
+            }
+          ]
+        },
+        {
+          "field_name": "qualification_family_code",
+          "chinese_meaning": "由receipt qualification_family映射",
+          "data_type": "int",
+          "unit_or_domain": "1 tactical/2 structural；其他码当前Atom入口拒绝",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 549,
+              "line_end": 552
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 771,
+              "line_end": 789
+            }
+          ]
+        },
+        {
+          "field_name": "grade",
+          "chinese_meaning": "该F4资格档位",
+          "data_type": "int",
+          "unit_or_domain": "上游资格档位；当前数值由真实F4输出决定",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 549,
+              "line_end": 552
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 771,
+              "line_end": 789
+            }
+          ]
+        },
+        {
+          "field_name": "selected_stream_ordinal",
+          "chinese_meaning": "所选F4列表顺序",
+          "data_type": "int64",
+          "unit_or_domain": "默认0 tactical、1 structural",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 549,
+              "line_end": 552
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 771,
+              "line_end": 789
+            }
+          ]
+        },
+        {
+          "field_name": "deal_amt",
+          "chinese_meaning": "该底层半秒材料金额",
+          "data_type": "float64",
+          "unit_or_domain": "沿F4原单位；本D未核市场单位换算",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 549,
+              "line_end": 552
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 771,
+              "line_end": 789
+            }
+          ]
+        },
+        {
+          "field_name": "directional_hit_volume_proxy",
+          "chinese_meaning": "上游方向成交量代理",
+          "data_type": "float64",
+          "unit_or_domain": "半秒代理量",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 549,
+              "line_end": 552
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 771,
+              "line_end": 789
+            }
+          ]
+        },
+        {
+          "field_name": "qualification_code",
+          "chinese_meaning": "上游资格/未解序标记",
+          "data_type": "int",
+          "unit_or_domain": "仅1可候选接纳",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 549,
+              "line_end": 552
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 771,
+              "line_end": 789
+            }
+          ]
+        }
+      ],
+      "producer": "DirectedBigDealTick产品；Attack._impl读取",
+      "consumer": "D02、D03、D04、D11",
+      "public_read_interface": "selected_feature的已有结果.F；本D没有以run加载",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 764,
+          "line_end": 797
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 599,
+          "line_end": 619
+        }
+      ],
+      "unconfirmed_items": [
+        "当前版本正式上游receipt/表未确认；已找到历史候选逐项版本拒用"
+      ]
+    },
+    {
+      "occurrence_id": "O02",
+      "occurrence_name": "ExactWallSparseEvent",
+      "direction": "输入事件",
+      "output_business_role": "不适用",
+      "carrier": "wall_assembler_sparse_events行",
+      "business_meaning": "Wall lifecycle离散输入；所有同侧Wall事件UTI都使该UTI的F4进入unresolved分路；6/7另参与cut",
+      "own_position": "Wall事件uti/DatetimeIndex",
+      "carried_other_positions": "payload状态及Wall身份",
+      "object_scope": "B01",
+      "identity_fields": [
+        "exact Wall receipt",
+        "wall_id",
+        "uti",
+        "event_type_code"
+      ],
+      "revision_fields": "无revision/previous/supersedes字段",
+      "payload_fields": [
+        {
+          "field_name": "wall_id",
+          "chinese_meaning": "上游Wall local no",
+          "data_type": "int64",
+          "unit_or_domain": ">0",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 625,
+              "line_end": 625
+            }
+          ]
+        },
+        {
+          "field_name": "uti",
+          "chinese_meaning": "事件位置",
+          "data_type": "int64",
+          "unit_or_domain": "半秒UTI",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": true,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 626,
+              "line_end": 626
+            }
+          ]
+        },
+        {
+          "field_name": "event_type_code",
+          "chinese_meaning": "事件类型码",
+          "data_type": "int",
+          "unit_or_domain": "6 StateChange；7 End；其余仍进入同刻歧义集合",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 604,
+              "line_end": 629
+            }
+          ]
+        },
+        {
+          "field_name": "status_code",
+          "chinese_meaning": "事件携带上游状态",
+          "data_type": "int",
+          "unit_or_domain": "代码1=Alive，其余映为Inactive",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 629,
+              "line_end": 629
+            }
+          ]
+        },
+        {
+          "field_name": "index",
+          "chinese_meaning": "事件时间戳",
+          "data_type": "DatetimeIndex",
+          "unit_or_domain": "当前市场时钟",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": true,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 627,
+              "line_end": 627
+            }
+          ]
+        }
+      ],
+      "producer": "WallAssembler",
+      "consumer": "D02、D07、O06",
+      "public_read_interface": "wall_result.wall_assembler_sparse_events",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 594,
+          "line_end": 631
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 840,
+          "line_end": 876
+        }
+      ],
+      "unconfirmed_items": [
+        "当前source范围内事件是否齐备待X；没有用时间接近代替正式Wall引用"
+      ]
+    },
+    {
+      "occurrence_id": "O03",
+      "occurrence_name": "QualifiedWallHugeDealAtom（F12局部稀疏材料）",
+      "direction": "输出事件",
+      "output_business_role": "中间处理结果",
+      "carrier": "core返回atom_rows；非正式.F公开表",
+      "business_meaning": "F4材料经exact Wall Alive、方向、价格及贴墙资格后的一次局部材料；qualification=1才参与攻段",
+      "own_position": "该atom的uti/ts",
+      "carried_other_positions": "携带Wall band/core与资格信息",
+      "object_scope": "B02获得贴墙资格；不是独立逐笔交易",
+      "identity_fields": [
+        "uti",
+        "wall_id",
+        "side；限定本次source run"
+      ],
+      "revision_fields": "无revision/previous/supersedes字段",
+      "payload_fields": [
+        {
+          "field_name": "uti",
+          "chinese_meaning": "材料位置",
+          "data_type": "int",
+          "unit_or_domain": "半秒UTI",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": true,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 720,
+              "line_end": 742
+            }
+          ]
+        },
+        {
+          "field_name": "ts",
+          "chinese_meaning": "材料时间",
+          "data_type": "datetime64",
+          "unit_or_domain": "市场时钟",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": true,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 720,
+              "line_end": 742
+            }
+          ]
+        },
+        {
+          "field_name": "wall_id",
+          "chinese_meaning": "对应exact Wall",
+          "data_type": "int",
+          "unit_or_domain": "Wall local no",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 720,
+              "line_end": 742
+            }
+          ]
+        },
+        {
+          "field_name": "side",
+          "chinese_meaning": "受打墙侧",
+          "data_type": "str",
+          "unit_or_domain": "bid/ask",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 720,
+              "line_end": 742
+            }
+          ]
+        },
+        {
+          "field_name": "lane",
+          "chinese_meaning": "合并标识",
+          "data_type": "str",
+          "unit_or_domain": "union",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 720,
+              "line_end": 742
+            }
+          ]
+        },
+        {
+          "field_name": "lane_code",
+          "chinese_meaning": "参与资格族位掩码",
+          "data_type": "int",
+          "unit_or_domain": "1/2/3",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 720,
+              "line_end": 742
+            }
+          ]
+        },
+        {
+          "field_name": "deal_price",
+          "chinese_meaning": "bid取sell_hit_px，ask取buy_hit_px",
+          "data_type": "float",
+          "unit_or_domain": "价格",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 720,
+              "line_end": 742
+            }
+          ]
+        },
+        {
+          "field_name": "deal_amt",
+          "chinese_meaning": "一致性通过后的F4金额",
+          "data_type": "float",
+          "unit_or_domain": "F4原单位",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 720,
+              "line_end": 742
+            }
+          ]
+        },
+        {
+          "field_name": "directional_hit_volume_proxy",
+          "chinese_meaning": "对应方向绝对成交代理量",
+          "data_type": "float",
+          "unit_or_domain": "半秒代理量",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 720,
+              "line_end": 742
+            }
+          ]
+        },
+        {
+          "field_name": "deal_grade",
+          "chinese_meaning": "参与family的最高档位",
+          "data_type": "int",
+          "unit_or_domain": "最大grade",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 720,
+              "line_end": 742
+            }
+          ]
+        },
+        {
+          "field_name": "tactical_grade",
+          "chinese_meaning": "tactical档位",
+          "data_type": "int",
+          "unit_or_domain": "缺lane=-1",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 720,
+              "line_end": 742
+            }
+          ]
+        },
+        {
+          "field_name": "structural_grade",
+          "chinese_meaning": "structural档位",
+          "data_type": "int",
+          "unit_or_domain": "缺lane=-1",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 720,
+              "line_end": 742
+            }
+          ]
+        },
+        {
+          "field_name": "qualification_code",
+          "chinese_meaning": "atom一致性资格",
+          "data_type": "int",
+          "unit_or_domain": "1接纳/2隔离",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 720,
+              "line_end": 742
+            }
+          ]
+        },
+        {
+          "field_name": "quarantine_reason_code",
+          "chinese_meaning": "隔离原因",
+          "data_type": "int",
+          "unit_or_domain": "0无/1不一致",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 720,
+              "line_end": 742
+            }
+          ]
+        },
+        {
+          "field_name": "flag_wall_huge_deal",
+          "chinese_meaning": "可形成段的资格标记",
+          "data_type": "int",
+          "unit_or_domain": "1或0",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 720,
+              "line_end": 742
+            }
+          ]
+        },
+        {
+          "field_name": "dist_deal_to_core_ticks",
+          "chinese_meaning": "成交价到Wall core的绝对距离四舍五入",
+          "data_type": "int",
+          "unit_or_domain": "价格跳数",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 720,
+              "line_end": 742
+            }
+          ]
+        },
+        {
+          "field_name": "band_lo",
+          "chinese_meaning": "携带Wall band下界",
+          "data_type": "float",
+          "unit_or_domain": "价格",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 720,
+              "line_end": 742
+            }
+          ]
+        },
+        {
+          "field_name": "band_hi",
+          "chinese_meaning": "携带Wall band上界",
+          "data_type": "float",
+          "unit_or_domain": "价格",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 720,
+              "line_end": 742
+            }
+          ]
+        },
+        {
+          "field_name": "wall_core_price",
+          "chinese_meaning": "该点exact Wall core",
+          "data_type": "float",
+          "unit_or_domain": "价格",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 720,
+              "line_end": 742
+            }
+          ]
+        },
+        {
+          "field_name": "tick_size",
+          "chinese_meaning": "该chunk使用的最小价格跳动",
+          "data_type": "float",
+          "unit_or_domain": "价格/跳",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 720,
+              "line_end": 742
+            }
+          ]
+        }
+      ],
+      "producer": "_compute_wall_huge_deal_atom_arrays / compute_wall_huge_deal_atom_tape",
+      "consumer": "开启/续接B03；O05 accepted材料",
+      "public_read_interface": "直接helper返回atom_rows；正式Attack.F不导出",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 367,
+          "line_end": 441
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 720,
+          "line_end": 745
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 1077,
+          "line_end": 1079
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 665,
+          "line_end": 698
+        }
+      ],
+      "unconfirmed_items": [
+        "局部atom的dist/price/grade明细没有正式表；不能假定后续G可从.F直接取到"
+      ]
+    },
+    {
+      "occurrence_id": "O04",
+      "occurrence_name": "AttackSegmentFormed / AttackSegment.Emit",
+      "direction": "输出事件",
+      "output_business_role": "业务主输出",
+      "carrier": "segment__stream及其__occNNNN分流；qualified UTI与qualification hit是同次闭段的payload附件",
+      "business_meaning": "一次完整闭段；没有正式的在建段逐点更新流",
+      "own_position": "closed_at_uti / closed_at_ts；所有附件行也在该时刻",
+      "carried_other_positions": "start、business_end、first/last atom；qualified_uti保存各实际材料位置",
+      "object_scope": "单个B03；其全部材料及F4资格引用",
+      "identity_fields": [
+        "exact Attack artifact",
+        "segment_id"
+      ],
+      "revision_fields": "无revision/previous/supersedes字段",
+      "payload_fields": [
+        {
+          "field_name": "segment_id",
+          "chinese_meaning": "producer在本source run内分配的段号",
+          "data_type": "int64",
+          "unit_or_domain": ">0",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 528,
+              "line_end": 567
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 458,
+              "line_end": 490
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 809,
+              "line_end": 815
+            }
+          ]
+        },
+        {
+          "field_name": "active",
+          "chinese_meaning": "发布快照的活跃标记",
+          "data_type": "int",
+          "unit_or_domain": "正式闭段行=0",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 528,
+              "line_end": 567
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 458,
+              "line_end": 490
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 809,
+              "line_end": 815
+            }
+          ]
+        },
+        {
+          "field_name": "wall_local_no",
+          "chinese_meaning": "exact Wall外键，由wall_id改名",
+          "data_type": "int64",
+          "unit_or_domain": ">0",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 528,
+              "line_end": 567
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 458,
+              "line_end": 490
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 809,
+              "line_end": 815
+            }
+          ]
+        },
+        {
+          "field_name": "side_code",
+          "chinese_meaning": "受打墙侧",
+          "data_type": "int",
+          "unit_or_domain": "1 bid/2 ask",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 528,
+              "line_end": 567
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 458,
+              "line_end": 490
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 809,
+              "line_end": 815
+            }
+          ]
+        },
+        {
+          "field_name": "lane_mask",
+          "chinese_meaning": "段内参与family并集",
+          "data_type": "int",
+          "unit_or_domain": "1 tactical/2 structural/3双lane",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 528,
+              "line_end": 567
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 458,
+              "line_end": 490
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 809,
+              "line_end": 815
+            }
+          ]
+        },
+        {
+          "field_name": "start_uti",
+          "chinese_meaning": "首个合格材料位置",
+          "data_type": "int64",
+          "unit_or_domain": "UTI",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": true,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 528,
+              "line_end": 567
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 458,
+              "line_end": 490
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 809,
+              "line_end": 815
+            }
+          ]
+        },
+        {
+          "field_name": "end_uti",
+          "chinese_meaning": "最后一个合格材料位置",
+          "data_type": "int64",
+          "unit_or_domain": "UTI",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": true,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 528,
+              "line_end": 567
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 458,
+              "line_end": 490
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 809,
+              "line_end": 815
+            }
+          ]
+        },
+        {
+          "field_name": "business_end_uti",
+          "chinese_meaning": "end_uti的业务别名",
+          "data_type": "int64",
+          "unit_or_domain": "UTI",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": true,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 528,
+              "line_end": 567
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 458,
+              "line_end": 490
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 809,
+              "line_end": 815
+            }
+          ]
+        },
+        {
+          "field_name": "closed_at_uti",
+          "chinese_meaning": "真实闭段触发位置",
+          "data_type": "int64",
+          "unit_or_domain": "UTI",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": true,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 528,
+              "line_end": 567
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 458,
+              "line_end": 490
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 809,
+              "line_end": 815
+            }
+          ]
+        },
+        {
+          "field_name": "first_atom_uti",
+          "chinese_meaning": "首个材料位置",
+          "data_type": "int64",
+          "unit_or_domain": "UTI",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": true,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 528,
+              "line_end": 567
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 458,
+              "line_end": 490
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 809,
+              "line_end": 815
+            }
+          ]
+        },
+        {
+          "field_name": "last_atom_uti",
+          "chinese_meaning": "最后材料位置",
+          "data_type": "int64",
+          "unit_or_domain": "UTI",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": true,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 528,
+              "line_end": 567
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 458,
+              "line_end": 490
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 809,
+              "line_end": 815
+            }
+          ]
+        },
+        {
+          "field_name": "start_ts",
+          "chinese_meaning": "首材料时间",
+          "data_type": "datetime64",
+          "unit_or_domain": "市场时钟",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": true,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 528,
+              "line_end": 567
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 458,
+              "line_end": 490
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 809,
+              "line_end": 815
+            }
+          ]
+        },
+        {
+          "field_name": "end_ts",
+          "chinese_meaning": "末材料时间",
+          "data_type": "datetime64",
+          "unit_or_domain": "市场时钟",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": true,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 528,
+              "line_end": 567
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 458,
+              "line_end": 490
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 809,
+              "line_end": 815
+            }
+          ]
+        },
+        {
+          "field_name": "business_end_ts",
+          "chinese_meaning": "末材料时间别名",
+          "data_type": "datetime64",
+          "unit_or_domain": "市场时钟",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": true,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 528,
+              "line_end": 567
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 458,
+              "line_end": 490
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 809,
+              "line_end": 815
+            }
+          ]
+        },
+        {
+          "field_name": "closed_at_ts",
+          "chinese_meaning": "真实闭段触发时间",
+          "data_type": "datetime64",
+          "unit_or_domain": "市场时钟",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": true,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 528,
+              "line_end": 567
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 458,
+              "line_end": 490
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 809,
+              "line_end": 815
+            }
+          ]
+        },
+        {
+          "field_name": "atom_count",
+          "chinese_meaning": "接纳的半秒材料次数",
+          "data_type": "int",
+          "unit_or_domain": "不是逐笔成交数",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 528,
+              "line_end": 567
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 458,
+              "line_end": 490
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 809,
+              "line_end": 815
+            }
+          ]
+        },
+        {
+          "field_name": "hit_occurrence_count_v0",
+          "chinese_meaning": "atom_count别名",
+          "data_type": "int",
+          "unit_or_domain": "HalfSecondOccurrenceCountV0",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 528,
+              "line_end": 567
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 458,
+              "line_end": 490
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 809,
+              "line_end": 815
+            }
+          ]
+        },
+        {
+          "field_name": "occurrence_utis_count",
+          "chinese_meaning": "qualified UTI明细长度",
+          "data_type": "int",
+          "unit_or_domain": "成员数量",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": true,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 528,
+              "line_end": 567
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 458,
+              "line_end": 490
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 809,
+              "line_end": 815
+            }
+          ]
+        },
+        {
+          "field_name": "directional_hit_volume_proxy_total_v0",
+          "chinese_meaning": "每个合格材料只累加一次的方向成交量代理",
+          "data_type": "float",
+          "unit_or_domain": "半秒代理量",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 528,
+              "line_end": 567
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 458,
+              "line_end": 490
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 809,
+              "line_end": 815
+            }
+          ]
+        },
+        {
+          "field_name": "amount_total_v0",
+          "chinese_meaning": "每个合格材料只累加一次金额",
+          "data_type": "float",
+          "unit_or_domain": "F4原单位",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 528,
+              "line_end": 567
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 458,
+              "line_end": 490
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 809,
+              "line_end": 815
+            }
+          ]
+        },
+        {
+          "field_name": "vol_tactical_overlap_view",
+          "chinese_meaning": "命中tactical的重叠视图量",
+          "data_type": "float",
+          "unit_or_domain": "不可与structural相加当total",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 528,
+              "line_end": 567
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 458,
+              "line_end": 490
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 809,
+              "line_end": 815
+            }
+          ]
+        },
+        {
+          "field_name": "vol_structural_overlap_view",
+          "chinese_meaning": "命中structural的重叠视图量",
+          "data_type": "float",
+          "unit_or_domain": "可与tactical重叠",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 528,
+              "line_end": 567
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 458,
+              "line_end": 490
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 809,
+              "line_end": 815
+            }
+          ]
+        },
+        {
+          "field_name": "largest_directional_hit_volume_proxy_v0",
+          "chinese_meaning": "最大单材料方向代理量",
+          "data_type": "float",
+          "unit_or_domain": "半秒代理量",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 528,
+              "line_end": 567
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 458,
+              "line_end": 490
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 809,
+              "line_end": 815
+            }
+          ]
+        },
+        {
+          "field_name": "entry_price",
+          "chinese_meaning": "首atom成交价",
+          "data_type": "float",
+          "unit_or_domain": "价格",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 528,
+              "line_end": 567
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 458,
+              "line_end": 490
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 809,
+              "line_end": 815
+            }
+          ]
+        },
+        {
+          "field_name": "exit_price",
+          "chinese_meaning": "末atom成交价；不以闭段触发Tick替换",
+          "data_type": "float",
+          "unit_or_domain": "价格",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 528,
+              "line_end": 567
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 458,
+              "line_end": 490
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 809,
+              "line_end": 815
+            }
+          ]
+        },
+        {
+          "field_name": "min_price",
+          "chinese_meaning": "atom成交价最小值",
+          "data_type": "float",
+          "unit_or_domain": "价格",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 528,
+              "line_end": 567
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 458,
+              "line_end": 490
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 809,
+              "line_end": 815
+            }
+          ]
+        },
+        {
+          "field_name": "max_price",
+          "chinese_meaning": "atom成交价最大值",
+          "data_type": "float",
+          "unit_or_domain": "价格",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 528,
+              "line_end": 567
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 458,
+              "line_end": 490
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 809,
+              "line_end": 815
+            }
+          ]
+        },
+        {
+          "field_name": "net_progress_ticks",
+          "chinese_meaning": "bid向下/ask向上为正的末相对首进展",
+          "data_type": "int",
+          "unit_or_domain": "价格跳数",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 528,
+              "line_end": 567
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 458,
+              "line_end": 490
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 809,
+              "line_end": 815
+            }
+          ]
+        },
+        {
+          "field_name": "max_retreat_from_best_ticks",
+          "chinese_meaning": "已纳入atom及触发retreat处的最大回撤诊断",
+          "data_type": "int",
+          "unit_or_domain": "价格跳数；不等于每Tick完整路径最大回撤",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 528,
+              "line_end": 567
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 458,
+              "line_end": 490
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 809,
+              "line_end": 815
+            }
+          ]
+        },
+        {
+          "field_name": "max_wall_core_shift_ticks",
+          "chinese_meaning": "atom相对首atom Wall core的最大偏移",
+          "data_type": "int",
+          "unit_or_domain": "价格跳数",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 528,
+              "line_end": 567
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 458,
+              "line_end": 490
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 809,
+              "line_end": 815
+            }
+          ]
+        },
+        {
+          "field_name": "max_grade",
+          "chinese_meaning": "段内合格atom最高grade",
+          "data_type": "int",
+          "unit_or_domain": "不能反推每lane档位",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 528,
+              "line_end": 567
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 458,
+              "line_end": 490
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 809,
+              "line_end": 815
+            }
+          ]
+        },
+        {
+          "field_name": "max_dist_deal_to_core_ticks",
+          "chinese_meaning": "atom贴墙距离最大值",
+          "data_type": "int",
+          "unit_or_domain": "价格跳数",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 528,
+              "line_end": 567
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 458,
+              "line_end": 490
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 809,
+              "line_end": 815
+            }
+          ]
+        },
+        {
+          "field_name": "last_dist_deal_to_core_ticks",
+          "chinese_meaning": "末atom贴墙距离",
+          "data_type": "int",
+          "unit_or_domain": "价格跳数",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 528,
+              "line_end": 567
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 458,
+              "line_end": 490
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 809,
+              "line_end": 815
+            }
+          ]
+        },
+        {
+          "field_name": "count_semantics_code",
+          "chinese_meaning": "计数语义标记",
+          "data_type": "int",
+          "unit_or_domain": "当前=1",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 528,
+              "line_end": 567
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 458,
+              "line_end": 490
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 809,
+              "line_end": 815
+            }
+          ]
+        },
+        {
+          "field_name": "volume_semantics_code",
+          "chinese_meaning": "量语义标记",
+          "data_type": "int",
+          "unit_or_domain": "当前=1",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 528,
+              "line_end": 567
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 458,
+              "line_end": 490
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 809,
+              "line_end": 815
+            }
+          ]
+        },
+        {
+          "field_name": "close_reason_code",
+          "chinese_meaning": "真实闭段原因",
+          "data_type": "int",
+          "unit_or_domain": "1 gap/2 wall switch/3 side switch/4 wall inactive/5 retreat",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 528,
+              "line_end": 567
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 458,
+              "line_end": 490
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 809,
+              "line_end": 815
+            }
+          ]
+        },
+        {
+          "field_name": "uti",
+          "chinese_meaning": "发布occurrence位置",
+          "data_type": "int64",
+          "unit_or_domain": "=closed_at_uti",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": true,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 528,
+              "line_end": 567
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 458,
+              "line_end": 490
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 809,
+              "line_end": 815
+            }
+          ]
+        },
+        {
+          "field_name": "ts",
+          "chinese_meaning": "发布occurrence时间",
+          "data_type": "datetime64",
+          "unit_or_domain": "=closed_at_ts",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": true,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 528,
+              "line_end": 567
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 458,
+              "line_end": 490
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 809,
+              "line_end": 815
+            }
+          ]
+        },
+        {
+          "field_name": "change_kind_code",
+          "chinese_meaning": "传输变化码",
+          "data_type": "int",
+          "unit_or_domain": "当前=5",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 528,
+              "line_end": 567
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 458,
+              "line_end": 490
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 809,
+              "line_end": 815
+            }
+          ]
+        },
+        {
+          "field_name": "availability_code",
+          "chinese_meaning": "发布可用性",
+          "data_type": "int",
+          "unit_or_domain": "当前producer写1",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+              "line_start": 528,
+              "line_end": 567
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 458,
+              "line_end": 490
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 809,
+              "line_end": 815
+            }
+          ]
+        }
+      ],
+      "producer": "_close_segment → wrapper._frames → attack_segment_compact_streams",
+      "consumer": "后续X/G、typed AttackSegmentFao；不在本D运行后继",
+      "public_read_interface": ".F / to_dfs()的所有segment__stream*、segment_qualified_uti__stream*、segment_qualification_hit__stream*",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 813,
+          "line_end": 837
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 458,
+          "line_end": 490
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/p1_dba_export.py",
+          "line_start": 308,
+          "line_end": 393
+        }
+      ],
+      "unconfirmed_items": [
+        "没有本Run的合格正式表读回；不能把code字段声明当AVAILABLE运行证据"
+      ]
+    },
+    {
+      "occurrence_id": "O05",
+      "occurrence_name": "AttackFormationMaterialObserved",
+      "direction": "输出事件",
+      "output_business_role": "中间处理结果（独立正式产品）",
+      "carrier": "formation__stream*行",
+      "business_meaning": "形成材料的离散发布；区间行代表一段材料摘要，不是一段Attack，也不是每Tick一条occurrence",
+      "own_position": "点材料自身uti/ts；区间uti/ts=interval_end",
+      "carried_other_positions": "interval_start/end；source ref可能另指UTI/segment/Wall",
+      "object_scope": "B04，可有同刻多条不同材料",
+      "identity_fields": [
+        "exact Attack artifact",
+        "formation_local_id"
+      ],
+      "revision_fields": "无revision/previous/supersedes字段",
+      "payload_fields": [
+        {
+          "field_name": "formation_local_id",
+          "chinese_meaning": "全局排序后材料号",
+          "data_type": "int64",
+          "unit_or_domain": "本结果内>0",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 306,
+              "line_end": 409
+            }
+          ]
+        },
+        {
+          "field_name": "wall_local_no",
+          "chinese_meaning": "Wall外键",
+          "data_type": "int64",
+          "unit_or_domain": "来自当前exact Wall",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 306,
+              "line_end": 409
+            }
+          ]
+        },
+        {
+          "field_name": "side_code",
+          "chinese_meaning": "受打Wall侧",
+          "data_type": "int",
+          "unit_or_domain": "1/2",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 306,
+              "line_end": 409
+            }
+          ]
+        },
+        {
+          "field_name": "uti",
+          "chinese_meaning": "点材料位置或区间末端",
+          "data_type": "int64",
+          "unit_or_domain": "UTI",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": true,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 306,
+              "line_end": 409
+            }
+          ]
+        },
+        {
+          "field_name": "ts",
+          "chinese_meaning": "对应时间",
+          "data_type": "datetime64",
+          "unit_or_domain": "市场时钟",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": true,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 306,
+              "line_end": 409
+            }
+          ]
+        },
+        {
+          "field_name": "interval_start_uti",
+          "chinese_meaning": "区间起点",
+          "data_type": "numeric",
+          "unit_or_domain": "UTI",
+          "nullable": true,
+          "missing_meaning": "点材料无需区间字段；混合DataFrame时可为NaN",
+          "is_position_field": true,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 306,
+              "line_end": 409
+            }
+          ]
+        },
+        {
+          "field_name": "interval_end_uti",
+          "chinese_meaning": "区间终点",
+          "data_type": "numeric",
+          "unit_or_domain": "UTI",
+          "nullable": true,
+          "missing_meaning": "点材料无需区间字段；混合DataFrame时可为NaN",
+          "is_position_field": true,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 306,
+              "line_end": 409
+            }
+          ]
+        },
+        {
+          "field_name": "availability_code",
+          "chinese_meaning": "形成材料可用性",
+          "data_type": "int",
+          "unit_or_domain": "1正常/2缺来源/5同刻未解序/6能力不可观察；interval可携带上游其它码",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 306,
+              "line_end": 409
+            }
+          ]
+        },
+        {
+          "field_name": "body_kind_code",
+          "chinese_meaning": "材料角色",
+          "data_type": "int",
+          "unit_or_domain": "1 accepted/2 unresolved或unsupported/3 gap/4无accepted区间/5 availability区间/6能力声明",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 306,
+              "line_end": 409
+            }
+          ]
+        },
+        {
+          "field_name": "source_material_local_ref",
+          "chinese_meaning": "按body角色解释的来源号",
+          "data_type": "int64",
+          "unit_or_domain": "accepted/unresolved=UTI；gap/switch=segment_id；capability=wall_id；区间=起始UTI",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 306,
+              "line_end": 409
+            }
+          ]
+        },
+        {
+          "field_name": "reason_code",
+          "chinese_meaning": "具名原因码",
+          "data_type": "int",
+          "unit_or_domain": "0 accepted；1 gap；2同刻未解；3 wall switch；4 side switch或无accepted区间；5 availability；6 near-miss不可观察；8 band-shift不可观察",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 306,
+              "line_end": 409
+            }
+          ]
+        },
+        {
+          "field_name": "change_kind_code",
+          "chinese_meaning": "传输变化码",
+          "data_type": "int",
+          "unit_or_domain": "当前=5",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 306,
+              "line_end": 409
+            }
+          ]
+        }
+      ],
+      "producer": "_formation_and_barriers；compact/capability scanner",
+      "consumer": "后续G及FormationEvidenceFao；不进入当前producer的分段核心",
+      "public_read_interface": ".F / to_dfs()的所有formation__stream*",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 111,
+          "line_end": 287
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 290,
+          "line_end": 410
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 432,
+          "line_end": 457
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/p1_dba_export.py",
+          "line_start": 421,
+          "line_end": 442
+        }
+      ],
+      "unconfirmed_items": [
+        "当前没有独立available_at/publish_time；不能把interval_end直接证明为信息最早可得时刻",
+        "没有attack_segment_attempt_local_id；不能从参考合同补填"
+      ]
+    },
+    {
+      "occurrence_id": "O06",
+      "occurrence_name": "WallAttackBarrierObserved（当前仅WallEndedBarrier）",
+      "direction": "输出事件",
+      "output_business_role": "业务主输出（正式关系屏障；与完整段分开）",
+      "carrier": "barrier__stream*行",
+      "business_meaning": "每个exact Wall.End复制一次正式屏障，即使同刻没有完整AttackSegment；ordinary gap不产生屏障",
+      "own_position": "源Wall.End的uti和DatetimeIndex",
+      "carried_other_positions": "source_material_local_ref指Wall id，不另有延迟时间",
+      "object_scope": "B05引用B01",
+      "identity_fields": [
+        "exact Attack artifact",
+        "barrier_local_id"
+      ],
+      "revision_fields": "无revision/previous/supersedes字段",
+      "payload_fields": [
+        {
+          "field_name": "barrier_local_id",
+          "chinese_meaning": "排序后屏障号",
+          "data_type": "int64",
+          "unit_or_domain": "本结果内>0",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 399,
+              "line_end": 407
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 499,
+              "line_end": 501
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 816,
+              "line_end": 818
+            }
+          ]
+        },
+        {
+          "field_name": "wall_local_no",
+          "chinese_meaning": "Wall外键",
+          "data_type": "int64",
+          "unit_or_domain": "exact Wall local no",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 399,
+              "line_end": 407
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 499,
+              "line_end": 501
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 816,
+              "line_end": 818
+            }
+          ]
+        },
+        {
+          "field_name": "side_code",
+          "chinese_meaning": "受打墙侧",
+          "data_type": "int",
+          "unit_or_domain": "1/2",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 399,
+              "line_end": 407
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 499,
+              "line_end": 501
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 816,
+              "line_end": 818
+            }
+          ]
+        },
+        {
+          "field_name": "uti",
+          "chinese_meaning": "源Wall.End位置",
+          "data_type": "int64",
+          "unit_or_domain": "UTI",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": true,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 399,
+              "line_end": 407
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 499,
+              "line_end": 501
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 816,
+              "line_end": 818
+            }
+          ]
+        },
+        {
+          "field_name": "ts",
+          "chinese_meaning": "源Wall.End时间",
+          "data_type": "datetime64",
+          "unit_or_domain": "市场时钟",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": true,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 399,
+              "line_end": 407
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 499,
+              "line_end": 501
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 816,
+              "line_end": 818
+            }
+          ]
+        },
+        {
+          "field_name": "barrier_kind_code",
+          "chinese_meaning": "正式屏障类型",
+          "data_type": "int",
+          "unit_or_domain": "当前=1",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 399,
+              "line_end": 407
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 499,
+              "line_end": 501
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 816,
+              "line_end": 818
+            }
+          ]
+        },
+        {
+          "field_name": "source_material_local_ref",
+          "chinese_meaning": "源Wall号",
+          "data_type": "int64",
+          "unit_or_domain": "=wall_local_no",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 399,
+              "line_end": 407
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 499,
+              "line_end": 501
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 816,
+              "line_end": 818
+            }
+          ]
+        },
+        {
+          "field_name": "change_kind_code",
+          "chinese_meaning": "传输变化码",
+          "data_type": "int",
+          "unit_or_domain": "当前=5",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 399,
+              "line_end": 407
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 499,
+              "line_end": 501
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 816,
+              "line_end": 818
+            }
+          ]
+        },
+        {
+          "field_name": "availability_code",
+          "chinese_meaning": "公开可用性",
+          "data_type": "int",
+          "unit_or_domain": "当前=1",
+          "nullable": false,
+          "missing_meaning": "不适用",
+          "is_position_field": false,
+          "evidence_refs": [
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 399,
+              "line_end": 407
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 499,
+              "line_end": 501
+            },
+            {
+              "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+              "line_start": 816,
+              "line_end": 818
+            }
+          ]
+        }
+      ],
+      "producer": "_formation_and_barriers的event_type_code==7分支",
+      "consumer": "后续G及WallBarrierFao；本D不启动P2",
+      "public_read_interface": ".F / to_dfs()的所有barrier__stream*",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 395,
+          "line_end": 410
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 499,
+          "line_end": 501
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 816,
+          "line_end": 834
+        }
+      ],
+      "unconfirmed_items": [
+        "没有当前有效读回；switch原因、非Alive state change和chunk_end均不能据此升级成额外Barrier"
+      ]
+    }
+  ],
+  "intermediate_decisions": [
+    {
+      "decision_id": "D01",
+      "decision_name": "exact上游和输入轴",
+      "business_role": "限制Attack真正消费的来源",
+      "input_fields_or_state": [
+        "Wall/F4 receipts",
+        "source_scope",
+        "Wall trace",
+        "F4 availability",
+        "cc_df.index"
+      ],
+      "current_rule": "先调用指定上游Feature.run并读取receipt；validate_product_artifact只验证receipt结构及DataFrame类型；选中F4 scope相互相等，造Attack receipt时各直接上游scope须与当前输入相等；dense按exact index重排且不得缺值，sparse按排序UTI取区间",
+      "output_fields_or_state": [
+        "wall/f4输入",
+        "receipt直接上游refs"
+      ],
+      "consumers": "wrapper/core与receipt生成",
+      "persistence_status": "部分",
+      "run_result_location": "receipt；dense/sparse输入；guard失败不是业务空结果",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 755,
+          "line_end": 807
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/p1_dba_export.py",
+          "line_start": 470,
+          "line_end": 506
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/p1_product_receipt.py",
+          "line_start": 268,
+          "line_end": 272
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/p1_product_receipt.py",
+          "line_start": 399,
+          "line_end": 405
+        }
+      ],
+      "unconfirmed_items": [
+        "这些检查代码不等于当前运行已通过，也不完整替代版本/参数/读回同一性核验"
+      ]
+    },
+    {
+      "decision_id": "D02",
+      "decision_name": "同刻歧义与F4资格分路",
+      "business_role": "阻止无法排定顺序的材料进入段",
+      "input_fields_or_state": [
+        "同侧所有Wall事件UTI",
+        "F4 qualification_code"
+      ],
+      "current_rule": "qualification!=1或与任意同侧Wall event同UTI→unresolved_f4；其余qualification==1才accepted_f4。unresolved生成Formation还要求该UTI在axis内且wall_id>0",
+      "output_fields_or_state": [
+        "accepted_f4",
+        "unresolved_f4"
+      ],
+      "consumers": "D03/O05",
+      "persistence_status": "部分",
+      "run_result_location": "Formation body=2 availability=5 reason=2；无完整原F4身份附件",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 604,
+          "line_end": 619
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 322,
+          "line_end": 344
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "decision_id": "D03",
+      "decision_name": "F4同材料合并",
+      "business_role": "使多资格行只形成一次材料量",
+      "input_fields_or_state": [
+        "同uti/side的accepted F4 rows"
+      ],
+      "current_rule": "所有amount和volume以rtol=0/atol=1e-9一致性检查；每family置flag并取最高grade；不跨family重复累加amount。遇到未知family code拒绝",
+      "output_fields_or_state": [
+        "dense family flags/amounts/grades"
+      ],
+      "consumers": "D04",
+      "persistence_status": "部分",
+      "run_result_location": "中间dense不正式导出；段量/掩码/资格明细保留部分结果",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 49,
+          "line_end": 91
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "decision_id": "D04",
+      "decision_name": "贴墙atom资格",
+      "business_role": "建立可开启/续接攻段的材料",
+      "input_fields_or_state": [
+        "wall_id/side/status/core",
+        "opposite hit price",
+        "F4 flags",
+        "p_attack_ticks",
+        "tick_size"
+      ],
+      "current_rule": "wall_id>0；side为bid/ask；require_alive_wall=True；bid用sell_hit_px/vol，ask用buy_hit_px/vol；至少一family命中；deal/core>0；round(abs(deal-core)/tick_size)<=p_attack_ticks。band仅携带，不是此资格的比较界",
+      "output_fields_or_state": [
+        "atom_rows",
+        "qualification/flag/dist"
+      ],
+      "consumers": "B03/O05",
+      "persistence_status": "部分",
+      "run_result_location": "只有accepted形成材料位置及段聚合；完整atom tape NOT_EXPOSED",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 367,
+          "line_end": 441
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 720,
+          "line_end": 742
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "decision_id": "D05",
+      "decision_name": "lane一致性与量去重",
+      "business_role": "保留family重叠而不重复算段总量",
+      "input_fields_or_state": [
+        "tactical/structural amount/grade",
+        "绝对方向量"
+      ],
+      "current_rule": "core双lane金额不一致或双lane时volume为NaN→隔离atom(qualification=2/flag=0/amount=volume=0)；accepted atom一个材料累加一次total；每命中lane另加其overlap view。不可相加两个overlap当total",
+      "output_fields_or_state": [
+        "lane_mask",
+        "amount/volume totals",
+        "overlap views"
+      ],
+      "consumers": "B03/O04",
+      "persistence_status": "部分",
+      "run_result_location": "段聚合可导出；core隔离atom本身无正式tape",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 403,
+          "line_end": 440
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 763,
+          "line_end": 767
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 777,
+          "line_end": 810
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/pressure_big_deal_core.py",
+          "line_start": 51,
+          "line_end": 56
+        }
+      ],
+      "unconfirmed_items": [
+        "wrapper已提前拒绝流间amount/volume不一致，core隔离分支在本实例的实际可达性未验证"
+      ]
+    },
+    {
+      "decision_id": "D06",
+      "decision_name": "续段与身份切换",
+      "business_role": "确定材料加入哪个段",
+      "input_fields_or_state": [
+        "current",
+        "下一合格atom",
+        "Wall/side",
+        "lane_merge_policy"
+      ],
+      "current_rule": "先检查旧段到该atom前的最早close；无旧段即新建并分配id。否则Wall id变化先wall_switch；再按split flag检查side_switch；切换时旧段closed_at=新atom位置，新段另分id；其余append",
+      "output_fields_or_state": [
+        "新/续/闭段状态"
+      ],
+      "consumers": "B03/O04",
+      "persistence_status": "部分",
+      "run_result_location": "正式段与qualified UTI；在建state不正式导出",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 1097,
+          "line_end": 1155
+        }
+      ],
+      "unconfirmed_items": [
+        "wrapper分bid/ask运行；side_switch存在分支不证明实际出现"
+      ]
+    },
+    {
+      "decision_id": "D07",
+      "decision_name": "最早闭段触发",
+      "business_role": "分开业务末点与真实关闭点",
+      "input_fields_or_state": [
+        "Wall.End/非Alive StateChange",
+        "末atom UTI",
+        "tick axis",
+        "retreat候选"
+      ],
+      "current_rule": "在(last_atom_uti, up_to_uti]找wall cut；gap在UTI严格大于last+t_gap的第一个实际Tick；retreat见D08。按最小UTI选cut，同UTI按候选列表wall、gap、retreat顺序稳定取首。atom前扫描的retreat严格排除当前atom UTI；chunk尾另扫描trailing cut",
+      "output_fields_or_state": [
+        "end_reason",
+        "closed_at_uti/ts"
+      ],
+      "consumers": "O04/O05",
+      "persistence_status": "部分",
+      "run_result_location": "close_reason_code、closed_at；未暴露所有竞争候选或逐Tick原因轨迹",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 840,
+          "line_end": 890
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 973,
+          "line_end": 1017
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 1097,
+          "line_end": 1130
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 1157,
+          "line_end": 1183
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "decision_id": "D08",
+      "decision_name": "真实离墙retreat",
+      "business_role": "可在没有新F4材料时关闭段",
+      "input_fields_or_state": [
+        "每Tick last_px",
+        "同一exact Wall id/status/core",
+        "side",
+        "p_retreat_ticks",
+        "tick_size"
+      ],
+      "current_rule": "只检查同Wall且Alive并且price/core有限的Tick；ask反向距离=max(round((core-price)/tick_size),0)，bid=max(round((price-core)/tick_size),0)；严格>阈值才close。另记录相对段内atom最佳价的retreat_from_best；它不是闭段距离定义",
+      "output_fields_or_state": [
+        "retreat cut",
+        "max_retreat_from_best_ticks"
+      ],
+      "consumers": "D07",
+      "persistence_status": "部分",
+      "run_result_location": "闭段原因及聚合；完整Tick扫描不导出",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 893,
+          "line_end": 970
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "decision_id": "D09",
+      "decision_name": "物理chunk carry",
+      "business_role": "避免以技术边界制造业务段/材料",
+      "input_fields_or_state": [
+        "两侧current",
+        "next_segment_id",
+        "interval carry",
+        "qualification_hit_book"
+      ],
+      "current_rule": "段状态/id跨chunk传递；chunk_end不无条件闭段；全范围结束也无额外强制flush段。Formation同key相邻chunk首段合并；interval finalize由最后chunk或trade_day变化决定。carry/checkpoint不制造Formation",
+      "output_fields_or_state": [
+        "跨块在建段",
+        "合并区间",
+        "闭合后段"
+      ],
+      "consumers": "B03/B04",
+      "persistence_status": "否（正式.F）",
+      "run_result_location": "helper返回carry/checkpoints，_impl最终仅三产品流",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 236,
+          "line_end": 281
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 395,
+          "line_end": 395
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 536,
+          "line_end": 540
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 577,
+          "line_end": 579
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 670,
+          "line_end": 707
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 900,
+          "line_end": 906
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 1157,
+          "line_end": 1202
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "decision_id": "D10",
+      "decision_name": "Formation压缩与不可观察能力",
+      "business_role": "解释无accepted材料和能力缺失",
+      "input_fields_or_state": [
+        "Alive wall runs",
+        "F4 availability第一所选流",
+        "accepted atom UTI集合"
+      ],
+      "current_rule": "Alive且本Tick无accepted atom时，availability==1→body4/availability1/reason4；其它→body5/原availability/reason5；同key连续区间压缩。每段Alive Wall区间另输出body6/availability6、reason6 near-miss及reason8 band-shift声明；不再声明retreat不可观察",
+      "output_fields_or_state": [
+        "区间O05"
+      ],
+      "consumers": "后续形成材料消费",
+      "persistence_status": "是（代码声明）",
+      "run_result_location": "formation__stream*；当前运行仍UNCONFIRMED",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 131,
+          "line_end": 219
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 222,
+          "line_end": 271
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 111,
+          "line_end": 235
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 789,
+          "line_end": 795
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "decision_id": "D11",
+      "decision_name": "F4资格来源保留",
+      "business_role": "给完整段保留真正参与的所选流/族/档位",
+      "input_fields_or_state": [
+        "accepted F4的uti/ordinal/family/grade",
+        "segment.occurrence_utis"
+      ],
+      "current_rule": "hit_book[uti]保存资格三元组集合；段闭合时对成员UTI求集合并并排序。qualified UTI附件按材料顺序；hit附件是不同资格三元组，不含每次命中UTI，不应当作材料次数",
+      "output_fields_or_state": [
+        "occurrence_utis",
+        "qualification_hits"
+      ],
+      "consumers": "O04及compact exporter",
+      "persistence_status": "是（代码声明）",
+      "run_result_location": "segment_qualified_uti__stream*及segment_qualification_hit__stream*",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 94,
+          "line_end": 108
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 466,
+          "line_end": 489
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 658,
+          "line_end": 664
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "decision_id": "D12",
+      "decision_name": "发布排序、同刻分流与空运输",
+      "business_role": "保持身份和事件时间",
+      "input_fields_or_state": [
+        "segment/formations/barriers rows"
+      ],
+      "current_rule": "每chunk段按closed_at/Wall/id排序；Formation与Barrier在_frames全结果排序后各从1重编号。DBA同timestamp多行用__occNNNN物理分流并加occurrence_ordinal，不改业务时间。三产品全部为空时仅p1_transport_empty哨兵，无业务occurrence",
+      "output_fields_or_state": [
+        "正式流与物理分流"
+      ],
+      "consumers": "读取接口",
+      "persistence_status": "是（代码声明）",
+      "run_result_location": "segment/formation/barrier__stream*；empty哨兵",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 432,
+          "line_end": 501
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 709,
+          "line_end": 710
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/p1_dba_export.py",
+          "line_start": 256,
+          "line_end": 269
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/p1_dba_export.py",
+          "line_start": 509,
+          "line_end": 519
+        }
+      ],
+      "unconfirmed_items": []
+    }
+  ],
+  "processing_relations": [
+    {
+      "relation_id": "R01",
+      "upstream_items": [
+        "B01",
+        "O01",
+        "D01"
+      ],
+      "downstream_items": [
+        "D02",
+        "D03"
+      ],
+      "relation_type": "引用/过滤",
+      "condition": "先绑定实际所选上游",
+      "identity_mapping": "Wall/F4各有exact receipt，不按同名实例混用",
+      "position_mapping": "dense exact index；sparse取当前chunk UTI范围",
+      "information_changes": "过滤未覆盖/不合格来源，不赋予运行成功",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 755,
+          "line_end": 807
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/p1_dba_export.py",
+          "line_start": 470,
+          "line_end": 506
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "relation_id": "R02",
+      "upstream_items": [
+        "O01",
+        "O02",
+        "D02"
+      ],
+      "downstream_items": [
+        "O03",
+        "O05"
+      ],
+      "relation_type": "过滤/分路",
+      "condition": "同侧Wall事件同UTI或qualification!=1",
+      "identity_mapping": "原材料UTI保留；unresolved不生成段成员",
+      "position_mapping": "不人为排列同刻F4和Wall事件",
+      "information_changes": "同刻歧义进入具名Formation；不推定先后",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 604,
+          "line_end": 619
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 322,
+          "line_end": 344
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "relation_id": "R03",
+      "upstream_items": [
+        "O01",
+        "D03",
+        "D04"
+      ],
+      "downstream_items": [
+        "O03"
+      ],
+      "relation_type": "赋予贴墙资格",
+      "condition": "Wall Alive且方向价格距离通过",
+      "identity_mapping": "底层uti/side材料保持，附exact Wall id及lane并集",
+      "position_mapping": "atom沿原材料时间",
+      "information_changes": "多F4资格行压成一个atom；保留family最高grade",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 49,
+          "line_end": 91
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 367,
+          "line_end": 441
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "relation_id": "R04",
+      "upstream_items": [
+        "O03",
+        "D06"
+      ],
+      "downstream_items": [
+        "B03",
+        "S02"
+      ],
+      "relation_type": "形成/更新",
+      "condition": "首atom开段或后继atom续段",
+      "identity_mapping": "新段号只在start分配，续段不换身份",
+      "position_mapping": "start固定；business end随最新atom更新",
+      "information_changes": "总量一次累加；lane可重叠；min/max为atom路径",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 748,
+          "line_end": 810
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 1132,
+          "line_end": 1155
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "relation_id": "R05",
+      "upstream_items": [
+        "O02",
+        "D07",
+        "D08"
+      ],
+      "downstream_items": [
+        "O04",
+        "S03"
+      ],
+      "relation_type": "结束/确认",
+      "condition": "真实最早cut或Wall/side切换",
+      "identity_mapping": "旧segment_id保留；后续重新贴墙不能复活旧id",
+      "position_mapping": "闭合点可晚于business_end；payload不丢首/末材料",
+      "information_changes": "发布完整快照，非每Tick更新流",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 813,
+          "line_end": 821
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 973,
+          "line_end": 1202
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "relation_id": "R06",
+      "upstream_items": [
+        "O03",
+        "B03",
+        "D11"
+      ],
+      "downstream_items": [
+        "O04"
+      ],
+      "relation_type": "成员/资格引用",
+      "condition": "段闭合后收集全部成员UTI资格",
+      "identity_mapping": "用segment_id+ordinal引用；F4 stream ordinal由所选列表解释",
+      "position_mapping": "附件在closed_at发布，qualified_uti带实际点",
+      "information_changes": "资格三元组求集合；不保留每个资格命中对应UTI",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 94,
+          "line_end": 108
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 466,
+          "line_end": 489
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 658,
+          "line_end": 664
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "relation_id": "R07",
+      "upstream_items": [
+        "O03",
+        "D10",
+        "O04"
+      ],
+      "downstream_items": [
+        "O05"
+      ],
+      "relation_type": "材料化/区间压缩",
+      "condition": "accepted点、无accepted区间、availability或已闭gap/switch",
+      "identity_mapping": "来源号随body角色变化，非全局统一外键",
+      "position_mapping": "区间自身位置为end；点材料沿原时间",
+      "information_changes": "gap仅材料；switch无正式来源则unsupported；capability无段身份",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 306,
+          "line_end": 395
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 131,
+          "line_end": 219
+        }
+      ],
+      "unconfirmed_items": [
+        "当前TIS未提供attempt显式关系；不能把source_material_local_ref统一当segment_id"
+      ]
+    },
+    {
+      "relation_id": "R08",
+      "upstream_items": [
+        "O02"
+      ],
+      "downstream_items": [
+        "O06"
+      ],
+      "relation_type": "引用/正式屏障",
+      "condition": "仅Wall.End event_type_code=7",
+      "identity_mapping": "携带同Wall id",
+      "position_mapping": "复制事件原uti/ts",
+      "information_changes": "不从段结束原因、ordinary gap或checkpoint推造屏障",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 395,
+          "line_end": 410
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "relation_id": "R09",
+      "upstream_items": [
+        "S02",
+        "S05",
+        "D09"
+      ],
+      "downstream_items": [
+        "B03",
+        "B04"
+      ],
+      "relation_type": "跨chunk保持/合并",
+      "condition": "同source run逐chunk处理",
+      "identity_mapping": "段id保持；区间最终重编号；两侧分别carry",
+      "position_mapping": "不以chunk_end创建业务时间",
+      "information_changes": "chunk技术元数据未进入正式.F；最终active段无强制形成行",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 536,
+          "line_end": 540
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 670,
+          "line_end": 734
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 1196,
+          "line_end": 1202
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "relation_id": "R10",
+      "upstream_items": [
+        "O04",
+        "O05",
+        "O06",
+        "D12"
+      ],
+      "downstream_items": [
+        "正式DBA产品流"
+      ],
+      "relation_type": "编码/重排",
+      "condition": "_frames与compact/packed exporter",
+      "identity_mapping": "Wall改名wall_local_no；segment_id仍普通列；local material/barrier号独立",
+      "position_mapping": "同timestamp用流后缀分开，时间不变",
+      "information_changes": "字符串side/end_reason转数值；附表不能误数为额外业务事件",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 432,
+          "line_end": 513
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 809,
+          "line_end": 835
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/p1_dba_export.py",
+          "line_start": 256,
+          "line_end": 393
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/p1_dba_export.py",
+          "line_start": 421,
+          "line_end": 442
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "relation_id": "R11",
+      "upstream_items": [
+        "正式DBA产品流",
+        "receipts"
+      ],
+      "downstream_items": [
+        "FRP typed ingress/段簿参考"
+      ],
+      "relation_type": "下游接纳参考",
+      "condition": "只有合同和exact上游校验满足后才可接纳；本D未运行",
+      "identity_mapping": "typed local身份依赖本次产品上下文；不能宣称跨run稳定",
+      "position_mapping": "段closed_at；Formation own/available_at参考字段有差异",
+      "information_changes": "FRP不重切段；current view实现按当前firing重建，不把旧说明当全年累计Map",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+          "line_start": 760,
+          "line_end": 1020
+        },
+        {
+          "ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/AttackSegmentBook.hs",
+          "line_start": 67,
+          "line_end": 139
+        }
+      ],
+      "unconfirmed_items": [
+        "TIS/FRP schema和字段差异见UQ05；不是已成功接入证据"
+      ]
+    }
+  ],
+  "parameters": [
+    {
+      "parameter_id": "P01",
+      "parameter_name": "parameter_set_id",
+      "parameter_category": "实例身份",
+      "current_or_default_value": "attack-default",
+      "unit": "标识",
+      "derivation": "不是所有参数相同的充分证据",
+      "definition_location": "Attack.params",
+      "consumer_locations": "receipt feature_instance/parameter_set_id",
+      "affected_objects_or_fields": [
+        "运行身份，不另成业务对象"
+      ],
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 738,
+          "line_end": 753
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 858,
+          "line_end": 866
+        }
+      ],
+      "unconfirmed_items": [
+        "探针已核完整P/ppdict/ppid；无当前运行receipt"
+      ]
+    },
+    {
+      "parameter_id": "P02",
+      "parameter_name": "p_attack_ticks",
+      "parameter_category": "自由参数",
+      "current_or_default_value": 1,
+      "unit": "价格跳数",
+      "derivation": "core取int(max(value,0))",
+      "definition_location": "Attack.params",
+      "consumer_locations": "atom到Wall core距离资格",
+      "affected_objects_or_fields": [
+        "O03及其后所有段"
+      ],
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 750,
+          "line_end": 750
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 474,
+          "line_end": 474
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 399,
+          "line_end": 401
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "parameter_id": "P03",
+      "parameter_name": "t_gap_attack_ticks",
+      "parameter_category": "自由参数",
+      "current_or_default_value": 6,
+      "unit": "UTI差；半秒UTI尺度，不是直接数实际行",
+      "derivation": "core取int(max(value,0))；找第一个UTI>last_atom_uti+6的真实Tick",
+      "definition_location": "Attack.params",
+      "consumer_locations": "gap close",
+      "affected_objects_or_fields": [
+        "O04 closed_at/end reason"
+      ],
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 750,
+          "line_end": 750
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 475,
+          "line_end": 475
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 879,
+          "line_end": 890
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/tick_quote_context.py",
+          "line_start": 97,
+          "line_end": 106
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "parameter_id": "P04",
+      "parameter_name": "p_retreat_ticks",
+      "parameter_category": "派生参数",
+      "current_or_default_value": {
+        "constructor": null,
+        "code_derived_effective_default": 2
+      },
+      "unit": "价格跳数",
+      "derivation": "None→2*p_attack_ticks；再int(max(value,0))；当前2为代码推导，不是已运行receipt",
+      "definition_location": "Attack.params / make_attack_flow_params",
+      "consumer_locations": "retreat关闭逻辑与receipt参数快照",
+      "affected_objects_or_fields": [
+        "O04 retreat reason"
+      ],
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 751,
+          "line_end": 751
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 465,
+          "line_end": 485
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 938,
+          "line_end": 970
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 847,
+          "line_end": 879
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "parameter_id": "P05",
+      "parameter_name": "lane_merge_policy",
+      "parameter_category": "固定preset",
+      "current_or_default_value": "union_keep_labels",
+      "unit": "策略",
+      "derivation": "当前append仅支持此字符串",
+      "definition_location": "Attack.params",
+      "consumer_locations": "_append_atom_to_segment",
+      "affected_objects_or_fields": [
+        "段lane并集、重叠视图"
+      ],
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 751,
+          "line_end": 751
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 777,
+          "line_end": 792
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "parameter_id": "P06",
+      "parameter_name": "split_on_side_switch",
+      "parameter_category": "固定preset",
+      "current_or_default_value": true,
+      "unit": "bool",
+      "derivation": "bool正规化",
+      "definition_location": "Attack.params",
+      "consumer_locations": "同Wall但side改变时断旧段",
+      "affected_objects_or_fields": [
+        "O04 close reason3"
+      ],
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 752,
+          "line_end": 752
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 1140,
+          "line_end": 1149
+        }
+      ],
+      "unconfirmed_items": [
+        "当前wrapper分侧；真实可达性未验证"
+      ]
+    },
+    {
+      "parameter_id": "P07",
+      "parameter_name": "split_on_wall_inactive",
+      "parameter_category": "固定preset",
+      "current_or_default_value": true,
+      "unit": "bool",
+      "derivation": "bool正规化",
+      "definition_location": "Attack.params",
+      "consumer_locations": "Wall.End/非Alive StateChange cuts",
+      "affected_objects_or_fields": [
+        "O04 close reason4"
+      ],
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 752,
+          "line_end": 752
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 840,
+          "line_end": 866
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 1081,
+          "line_end": 1081
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 1099,
+          "line_end": 1102
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "parameter_id": "P08",
+      "parameter_name": "wall",
+      "parameter_category": "实例身份／技术上游构造参数组",
+      "current_or_default_value": {
+        "type": "mquant.frame.core.app.proxy.Proxy(WallAssembler)",
+        "parameters": {
+          "parameter_set_id": "wall-default",
+          "qt_freq": "1d",
+          "qt_n": 30,
+          "qt_quantile": 0.997,
+          "w_depth_ref_ticks": 1200,
+          "large_quote_ratio_min": 1.0,
+          "allow_zero_qt_fallback": false,
+          "thick_vs_hi_ratio": 1.0,
+          "thin_vs_mid_ratio": 0.7,
+          "allow_thin_brick": false,
+          "p_wall_ticks": 1,
+          "t_wall_ticks": 6,
+          "near_band_ticks": null,
+          "far_band_ticks": null,
+          "connect_max_core_dist_ticks": null,
+          "connect_gap_max_ticks": null,
+          "support_buffer_keep_ticks": null,
+          "thin_eval_window_ticks": null,
+          "band_update_min_shift_ticks": null,
+          "dormant_no_presence_ticks": null,
+          "dormant_far_ticks": null,
+          "end_far_hold_ticks": null,
+          "end_far_ticks": null,
+          "break_after_no_presence_ticks": null,
+          "wall_dead_timeout_ticks": null,
+          "allow_brick_join_dormant": true,
+          "thin_contact_min_hits": 3,
+          "thin_contact_frac_end": 0.6
+        }
+      },
+      "unit": "见嵌套P；lane阈值是字符串分位数",
+      "derivation": "实际构造P及ppid见证据；上游在执行时还解析派生参数、阈值数据及trading_unit",
+      "definition_location": "Attack.params与对应上游params",
+      "consumer_locations": "先得到exact上游产品；Attack使用其Wall状态/事件或F4资格/金额/量",
+      "affected_objects_or_fields": [
+        "O01/O02及全部正式产品"
+      ],
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 738,
+          "line_end": 749
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/wall_assembler.py",
+          "line_start": 725,
+          "line_end": 785
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 755,
+          "line_end": 797
+        }
+      ],
+      "unconfirmed_items": [
+        "此组保存完整构造参数，不冒充已加载成功；运行有效参数和source scope须与正式receipt核对"
+      ]
+    },
+    {
+      "parameter_id": "P09",
+      "parameter_name": "directed_large_deal_tactical",
+      "parameter_category": "实例身份／技术上游构造参数组",
+      "current_or_default_value": {
+        "type": "mquant.frame.core.app.proxy.Proxy(DirectedBigDealTick)",
+        "parameters": {
+          "parameter_set_id": "tactical-default",
+          "qualification_family": "tactical",
+          "amt_n": 30,
+          "lane_threshold_map": {
+            "tactical": [
+              "0.99",
+              "0.995"
+            ]
+          },
+          "same_best_tol_ticks": 0,
+          "big_deal_ratio_min": 1.0
+        }
+      },
+      "unit": "见嵌套P；lane阈值是字符串分位数",
+      "derivation": "实际构造P及ppid见证据；上游在执行时还解析派生参数、阈值数据及trading_unit",
+      "definition_location": "Attack.params与对应上游params",
+      "consumer_locations": "先得到exact上游产品；Attack使用其Wall状态/事件或F4资格/金额/量",
+      "affected_objects_or_fields": [
+        "O01/O02及全部正式产品"
+      ],
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 738,
+          "line_end": 749
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/pressure_big_deal.py",
+          "line_start": 579,
+          "line_end": 611
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 755,
+          "line_end": 797
+        }
+      ],
+      "unconfirmed_items": [
+        "此组保存完整构造参数，不冒充已加载成功；运行有效参数和source scope须与正式receipt核对"
+      ]
+    },
+    {
+      "parameter_id": "P10",
+      "parameter_name": "directed_large_deal_structural",
+      "parameter_category": "实例身份／技术上游构造参数组",
+      "current_or_default_value": {
+        "type": "mquant.frame.core.app.proxy.Proxy(DirectedBigDealTick)",
+        "parameters": {
+          "parameter_set_id": "structural-default",
+          "qualification_family": "structural",
+          "amt_n": 30,
+          "lane_threshold_map": {
+            "structural": [
+              "0.997",
+              "0.999"
+            ]
+          },
+          "same_best_tol_ticks": 0,
+          "big_deal_ratio_min": 1.0
+        }
+      },
+      "unit": "见嵌套P；lane阈值是字符串分位数",
+      "derivation": "实际构造P及ppid见证据；上游在执行时还解析派生参数、阈值数据及trading_unit",
+      "definition_location": "Attack.params与对应上游params",
+      "consumer_locations": "先得到exact上游产品；Attack使用其Wall状态/事件或F4资格/金额/量",
+      "affected_objects_or_fields": [
+        "O01/O02及全部正式产品"
+      ],
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 738,
+          "line_end": 749
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/pressure_big_deal.py",
+          "line_start": 579,
+          "line_end": 611
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 755,
+          "line_end": 797
+        }
+      ],
+      "unconfirmed_items": [
+        "此组保存完整构造参数，不冒充已加载成功；运行有效参数和source scope须与正式receipt核对"
+      ]
+    },
+    {
+      "parameter_id": "P11",
+      "parameter_name": "additional_directed_large_deal_features",
+      "parameter_category": "实例身份",
+      "current_or_default_value": [],
+      "unit": "有序Feature列表",
+      "derivation": "默认空；接在tactical/structural后，stream ordinal由列表位置确定",
+      "definition_location": "Attack.params",
+      "consumer_locations": "_impl selected_features",
+      "affected_objects_or_fields": [
+        "资格引用及source scope"
+      ],
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 749,
+          "line_end": 749
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 764,
+          "line_end": 790
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "parameter_id": "P12",
+      "parameter_name": "lane_order / require_alive_wall",
+      "parameter_category": "固定preset",
+      "current_or_default_value": {
+        "lane_order": [
+          "tactical",
+          "structural"
+        ],
+        "require_alive_wall": true
+      },
+      "unit": "类别/bool",
+      "derivation": "wrapper未开放独立参数；replay默认lane_order，强制Alive资格",
+      "definition_location": "core replay",
+      "consumer_locations": "atom builder",
+      "affected_objects_or_fields": [
+        "O03资格、lane mask"
+      ],
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 1241,
+          "line_end": 1245
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 1264,
+          "line_end": 1282
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "parameter_id": "P13",
+      "parameter_name": "tick_size",
+      "parameter_category": "外部派生参照量",
+      "current_or_default_value": "minimal_changes_of(CurrSymbol.sym(), chunk_df.index[0])",
+      "unit": "价格/跳",
+      "derivation": "每chunk首时刻按symbol解析；不可从p_attack推定",
+      "definition_location": "wrapper",
+      "consumer_locations": "距离、价格进展和retreat",
+      "affected_objects_or_fields": [
+        "距离字段和O04闭段"
+      ],
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 647,
+          "line_end": 647
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 1073,
+          "line_end": 1075
+        }
+      ],
+      "unconfirmed_items": [
+        "本D未读取真实行情tick size序列或按品种推定值"
+      ]
+    },
+    {
+      "parameter_id": "P14",
+      "parameter_name": "1e-9 / side status codes / UTI conversion",
+      "parameter_category": "工程常量",
+      "current_or_default_value": {
+        "amount_volume_tolerance": 1e-09,
+        "side_codes": {
+          "bid": 1,
+          "ask": 2
+        },
+        "wall_status": {
+          "Empty": 0,
+          "Alive": 1,
+          "Dormant": 2,
+          "Ended": 3
+        },
+        "uti_expression": "linear_ts // 500 - 1"
+      },
+      "unit": "代码约定",
+      "derivation": "数值一致性容差、标签和时钟口径；不是独立市场对象",
+      "definition_location": "wrapper/core/context",
+      "consumer_locations": "D03、D04、D07",
+      "affected_objects_or_fields": [
+        "资格、时间与编码"
+      ],
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 39,
+          "line_end": 47
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 70,
+          "line_end": 85
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 53,
+          "line_end": 62
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/tick_quote_context.py",
+          "line_start": 97,
+          "line_end": 106
+        }
+      ],
+      "unconfirmed_items": []
+    }
+  ],
+  "run_result_field_map": [
+    {
+      "field_map_id": "F01",
+      "business_item_ids": [
+        "B03",
+        "O04"
+      ],
+      "result_carrier": "attack_segment / segment__stream*",
+      "field_names": [
+        "segment_id",
+        "active",
+        "wall_local_no",
+        "side_code",
+        "lane_mask",
+        "start_uti",
+        "end_uti",
+        "business_end_uti",
+        "closed_at_uti",
+        "first_atom_uti",
+        "last_atom_uti",
+        "start_ts",
+        "end_ts",
+        "business_end_ts",
+        "closed_at_ts",
+        "atom_count",
+        "hit_occurrence_count_v0",
+        "occurrence_utis_count",
+        "directional_hit_volume_proxy_total_v0",
+        "amount_total_v0",
+        "vol_tactical_overlap_view",
+        "vol_structural_overlap_view",
+        "largest_directional_hit_volume_proxy_v0",
+        "entry_price",
+        "exit_price",
+        "min_price",
+        "max_price",
+        "net_progress_ticks",
+        "max_retreat_from_best_ticks",
+        "max_wall_core_shift_ticks",
+        "max_grade",
+        "max_dist_deal_to_core_ticks",
+        "last_dist_deal_to_core_ticks",
+        "count_semantics_code",
+        "volume_semantics_code",
+        "close_reason_code",
+        "uti",
+        "ts",
+        "change_kind_code",
+        "availability_code"
+      ],
+      "availability_status": "UNCONFIRMED",
+      "schema_status": "当前实现源码已核",
+      "object_grouping_keys": [
+        "exact receipt/artifact",
+        "segment_id"
+      ],
+      "time_keys": [
+        "DatetimeIndex=closed_at_ts",
+        "uti=closed_at_uti",
+        "start_uti",
+        "business_end_uti"
+      ],
+      "deduplication_or_same_time_rule": "跨所有同刻分流按segment_id合并；主行每id唯一；occurrence_ordinal仅物理分流号",
+      "missing_meaning": "本Run尚无合格正式读回；不能以旧rb表或m缺receipt作为当前行为数量",
+      "read_interface": "已持有结果.F / to_dfs()；已有文件可经load/Dao读；本D未读取正式结果表",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 458,
+          "line_end": 490
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 809,
+          "line_end": 824
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/p1_dba_export.py",
+          "line_start": 308,
+          "line_end": 393
+        }
+      ]
+    },
+    {
+      "field_map_id": "F02",
+      "business_item_ids": [
+        "B03",
+        "O04",
+        "D11"
+      ],
+      "result_carrier": "attack_segment / segment_qualified_uti__stream*",
+      "field_names": [
+        "segment_id",
+        "ordinal",
+        "qualified_uti",
+        "uti",
+        "ts",
+        "occurrence_ordinal（同刻分流时）"
+      ],
+      "availability_status": "UNCONFIRMED",
+      "schema_status": "当前实现源码已核",
+      "object_grouping_keys": [
+        "exact Attack artifact",
+        "segment_id"
+      ],
+      "time_keys": [
+        "附件index=闭段时间",
+        "qualified_uti=实际材料UTI"
+      ],
+      "deduplication_or_same_time_rule": "(segment_id,ordinal)；序号0..count-1且qualified_uti严格递增；不能按index去重或当新段事件",
+      "missing_meaning": "没有明细不能确认完整payload；有效空段产品会没有此流",
+      "read_interface": "同F01，必须汇集全部分流",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 466,
+          "line_end": 475
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/p1_dba_export.py",
+          "line_start": 347,
+          "line_end": 381
+        }
+      ]
+    },
+    {
+      "field_map_id": "F03",
+      "business_item_ids": [
+        "B03",
+        "O04",
+        "D11"
+      ],
+      "result_carrier": "attack_segment / segment_qualification_hit__stream*",
+      "field_names": [
+        "segment_id",
+        "ordinal",
+        "selected_stream_ordinal",
+        "qualification_family_code",
+        "grade",
+        "uti",
+        "ts",
+        "occurrence_ordinal（如有）"
+      ],
+      "availability_status": "UNCONFIRMED",
+      "schema_status": "当前实现源码已核",
+      "object_grouping_keys": [
+        "exact Attack artifact",
+        "segment_id"
+      ],
+      "time_keys": [
+        "index/uti=闭段位置"
+      ],
+      "deduplication_or_same_time_rule": "(segment_id,ordinal)，另核资格三元组；每段该集合非空；不是每次材料命中次数",
+      "missing_meaning": "缺行不是lane absent；需与lane_mask和receipt所选流核对",
+      "read_interface": "同F01；ordinal映射selected_f4_streams列表",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 476,
+          "line_end": 489
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 836,
+          "line_end": 856
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/p1_dba_export.py",
+          "line_start": 364,
+          "line_end": 381
+        }
+      ]
+    },
+    {
+      "field_map_id": "F04",
+      "business_item_ids": [
+        "B04",
+        "O05"
+      ],
+      "result_carrier": "attack_formation_evidence / formation__stream*",
+      "field_names": [
+        "formation_local_id",
+        "wall_local_no",
+        "side_code",
+        "uti",
+        "ts",
+        "interval_start_uti",
+        "interval_end_uti",
+        "availability_code",
+        "body_kind_code",
+        "source_material_local_ref",
+        "reason_code",
+        "change_kind_code"
+      ],
+      "availability_status": "UNCONFIRMED",
+      "schema_status": "当前实现源码已核",
+      "object_grouping_keys": [
+        "exact Attack artifact",
+        "formation_local_id",
+        "wall_local_no",
+        "side_code"
+      ],
+      "time_keys": [
+        "uti/DatetimeIndex",
+        "interval_start_uti",
+        "interval_end_uti"
+      ],
+      "deduplication_or_same_time_rule": "跨分流按formation_local_id识别；同Wall同UTI可有多body/reason；source_material_local_ref须按body解读",
+      "missing_meaning": "点材料区间字段可缺；availability不等于0次发生；需要按角色分别消费",
+      "read_interface": "同F01，读取所有formation分流",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 290,
+          "line_end": 410
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 432,
+          "line_end": 455
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 813,
+          "line_end": 829
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/p1_dba_export.py",
+          "line_start": 421,
+          "line_end": 442
+        }
+      ]
+    },
+    {
+      "field_map_id": "F05",
+      "business_item_ids": [
+        "B05",
+        "O06"
+      ],
+      "result_carrier": "wall_relation_barrier / barrier__stream*",
+      "field_names": [
+        "barrier_local_id",
+        "wall_local_no",
+        "side_code",
+        "uti",
+        "ts",
+        "barrier_kind_code",
+        "source_material_local_ref",
+        "change_kind_code",
+        "availability_code",
+        "occurrence_ordinal（如有）"
+      ],
+      "availability_status": "UNCONFIRMED",
+      "schema_status": "当前实现源码已核",
+      "object_grouping_keys": [
+        "exact Attack artifact",
+        "barrier_local_id"
+      ],
+      "time_keys": [
+        "Wall.End uti/ts"
+      ],
+      "deduplication_or_same_time_rule": "跨分流按barrier_local_id；不以有无同刻Segment约束Barrier存在",
+      "missing_meaning": "无Barrier不自动表示段未闭合；本producer仅支持源Wall.End",
+      "read_interface": "同F01，读取全部barrier分流",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 395,
+          "line_end": 410
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 445,
+          "line_end": 457
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 816,
+          "line_end": 834
+        }
+      ]
+    },
+    {
+      "field_map_id": "F06",
+      "business_item_ids": [
+        "O03",
+        "D04",
+        "D05"
+      ],
+      "result_carrier": "core helper atom_rows",
+      "field_names": [
+        "完整atomfields清单见O03"
+      ],
+      "availability_status": "NOT_EXPOSED",
+      "schema_status": "当前实现源码已核",
+      "object_grouping_keys": [
+        "uti",
+        "wall_id",
+        "side"
+      ],
+      "time_keys": [
+        "atom uti/ts"
+      ],
+      "deduplication_or_same_time_rule": "内部每侧同底层材料合并为一atom",
+      "missing_meaning": "正式.F未导出，不能宣称可做逐atom距离/价格/隔离原因统计",
+      "read_interface": "只在直接helper返回中；不是当前正式结果的公开流",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 720,
+          "line_end": 745
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 900,
+          "line_end": 906
+        }
+      ]
+    },
+    {
+      "field_map_id": "F07",
+      "business_item_ids": [
+        "D09"
+      ],
+      "result_carrier": "attack_flow_assembler_chunk_meta",
+      "field_names": [
+        "chunk_id",
+        "trade_day",
+        "start/end_uti",
+        "start/end_ts",
+        "n_ticks"
+      ],
+      "availability_status": "NOT_EXPOSED",
+      "schema_status": "当前实现源码已核",
+      "object_grouping_keys": [
+        "chunk/side等局部技术键"
+      ],
+      "time_keys": [
+        "chunk端点/闭段位置"
+      ],
+      "deduplication_or_same_time_rule": "这些是技术结果或O04的重复checkpoint，不另计业务occurrence",
+      "missing_meaning": "_frames生成但_impl返回只保留三产品；不能把源码变量当已有正式表",
+      "read_interface": "helper/内部_frames；当前正式.F中无该key",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 420,
+          "line_end": 513
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 900,
+          "line_end": 906
+        }
+      ]
+    },
+    {
+      "field_map_id": "F08",
+      "business_item_ids": [
+        "B03",
+        "S01",
+        "S02",
+        "D09"
+      ],
+      "result_carrier": "attack_flow_assembler_carry_out_state / chunk_end_state",
+      "field_names": [
+        "segment_active_side=0（state为None时）或snapshot字段按side后缀展开"
+      ],
+      "availability_status": "NOT_EXPOSED",
+      "schema_status": "当前实现源码已核",
+      "object_grouping_keys": [
+        "chunk/side等局部技术键"
+      ],
+      "time_keys": [
+        "chunk端点/闭段位置"
+      ],
+      "deduplication_or_same_time_rule": "这些是技术结果或O04的重复checkpoint，不另计业务occurrence",
+      "missing_meaning": "_frames生成但_impl返回只保留三产品；不能把源码变量当已有正式表",
+      "read_interface": "helper/内部_frames；当前正式.F中无该key",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 420,
+          "line_end": 513
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 900,
+          "line_end": 906
+        }
+      ]
+    },
+    {
+      "field_map_id": "F09",
+      "business_item_ids": [
+        "D09"
+      ],
+      "result_carrier": "attack_flow_assembler_chunk_summary",
+      "field_names": [
+        "atom_row_count",
+        "segment_count",
+        "segment_emit_count",
+        "lane_union_segment_count",
+        "max_atoms_per_segment",
+        "max_grade"
+      ],
+      "availability_status": "NOT_EXPOSED",
+      "schema_status": "当前实现源码已核",
+      "object_grouping_keys": [
+        "chunk/side等局部技术键"
+      ],
+      "time_keys": [
+        "chunk端点/闭段位置"
+      ],
+      "deduplication_or_same_time_rule": "这些是技术结果或O04的重复checkpoint，不另计业务occurrence",
+      "missing_meaning": "_frames生成但_impl返回只保留三产品；不能把源码变量当已有正式表",
+      "read_interface": "helper/内部_frames；当前正式.F中无该key",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 420,
+          "line_end": 513
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 900,
+          "line_end": 906
+        }
+      ]
+    },
+    {
+      "field_map_id": "F10",
+      "business_item_ids": [
+        "O04",
+        "D09"
+      ],
+      "result_carrier": "attack_flow_assembler_chunk_checkpoints",
+      "field_names": [
+        "checkpoint_type_code",
+        "uti",
+        "ts",
+        "segment_id等（segment_emission行）"
+      ],
+      "availability_status": "NOT_EXPOSED",
+      "schema_status": "当前实现源码已核",
+      "object_grouping_keys": [
+        "chunk/side等局部技术键"
+      ],
+      "time_keys": [
+        "chunk端点/闭段位置"
+      ],
+      "deduplication_or_same_time_rule": "这些是技术结果或O04的重复checkpoint，不另计业务occurrence",
+      "missing_meaning": "_frames生成但_impl返回只保留三产品；不能把源码变量当已有正式表",
+      "read_interface": "helper/内部_frames；当前正式.F中无该key",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 420,
+          "line_end": 513
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 900,
+          "line_end": 906
+        }
+      ]
+    },
+    {
+      "field_map_id": "F11",
+      "business_item_ids": [
+        "B01",
+        "O02"
+      ],
+      "result_carrier": "技术上游Wall结果",
+      "field_names": [
+        "wall_assembler_state_trace: wall_{id,side_code,status_code,band_lo,band_hi,core_price}_{bid,ask}",
+        "wall_assembler_sparse_events: wall_id,side_code,uti,event_type_code,status_code/index"
+      ],
+      "availability_status": "UNCONFIRMED",
+      "schema_status": "当前实现源码已核",
+      "object_grouping_keys": [
+        "exact Wall receipt",
+        "wall_id/side"
+      ],
+      "time_keys": [
+        "dense index、sparse uti"
+      ],
+      "deduplication_or_same_time_rule": "dense必须exact覆盖；sparse允许同UTI多个事件",
+      "missing_meaning": "当前仅发现不同代码版本候选；未把其trace当有效当前结果",
+      "read_interface": "已持有Wall.F；receipt路径load_p1_product_receipt(wall,wall_lifecycle)",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 544,
+          "line_end": 571
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 594,
+          "line_end": 631
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 758,
+          "line_end": 763
+        }
+      ]
+    },
+    {
+      "field_map_id": "F12",
+      "business_item_ids": [
+        "B02",
+        "O01",
+        "D10"
+      ],
+      "result_carrier": "技术上游选中F4结果",
+      "field_names": [
+        "buy*/sell* sparse: uti,side_code,grade,deal_amt,directional_hit_volume_proxy,qualification_code",
+        "directed_large_deal_availability_dense: availability_code,activity_code"
+      ],
+      "availability_status": "UNCONFIRMED",
+      "schema_status": "当前实现源码已核",
+      "object_grouping_keys": [
+        "exact F4 receipt",
+        "family/selected stream",
+        "uti/side"
+      ],
+      "time_keys": [
+        "sparse uti/index、dense index"
+      ],
+      "deduplication_or_same_time_rule": "同材料可有多资格行；dense interval当前只用第一所选流availability",
+      "missing_meaning": "未核当前范围及实际availability；缺stream不等于零材料",
+      "read_interface": "对应所选F4已有.F；不能仅凭参数名称认作同一artifact",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 549,
+          "line_end": 571
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 771,
+          "line_end": 802
+        }
+      ]
+    },
+    {
+      "field_map_id": "F13",
+      "business_item_ids": [
+        "B03",
+        "B04"
+      ],
+      "result_carrier": "当前TIS未声明的参考FRP字段",
+      "field_names": [
+        "attack_segment_attempt_local_id（Segment及Formation）",
+        "available_at_uti（Formation）"
+      ],
+      "availability_status": "NOT_EXPOSED",
+      "schema_status": "当前实现源码已核",
+      "object_grouping_keys": [
+        "参考attempt identity"
+      ],
+      "time_keys": [
+        "参考available_at_uti"
+      ],
+      "deduplication_or_same_time_rule": "不能从时间或local id自行补成显式合同",
+      "missing_meaning": "这是源码声明差异；不是当前运行读回失败的诊断结论",
+      "read_interface": "当前TIS _frames/_formation_and_barriers没有这些字段",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 290,
+          "line_end": 410
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 458,
+          "line_end": 510
+        },
+        {
+          "ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+          "line_start": 765,
+          "line_end": 780
+        },
+        {
+          "ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+          "line_start": 930,
+          "line_end": 954
+        }
+      ]
+    },
+    {
+      "field_map_id": "F14",
+      "business_item_ids": [
+        "P01",
+        "P08",
+        "P09",
+        "P10"
+      ],
+      "result_carrier": "参数构造探针JSON",
+      "field_names": [
+        "parameters",
+        "ppdict",
+        "ppid",
+        "upstream_instances",
+        "module_files",
+        "module_sha256"
+      ],
+      "availability_status": "AVAILABLE",
+      "schema_status": "参数探针实际回读已核",
+      "object_grouping_keys": [
+        "构造实例ppid；无市场运行身份"
+      ],
+      "time_keys": [],
+      "deduplication_or_same_time_rule": "参数探针证据不替代FeatureRunResultBinding",
+      "missing_meaning": "所有P中的None是未传入覆盖/待执行派生，不是缺市场数据",
+      "read_interface": "evidence/instance_introspection.json",
+      "evidence_refs": [
+        "evidence/instance_introspection.json"
+      ]
+    }
+  ],
+  "business_main_outputs": [
+    {
+      "item_id": "O04",
+      "product": "attack_segment",
+      "reason": "完整攻势段是目标Feature业务主输出；两个附件只是同一完整段的成员/资格payload"
+    },
+    {
+      "item_id": "O06",
+      "product": "wall_relation_barrier",
+      "reason": "当前Feature承诺的正式关系屏障输出，按Wall.End单独识别；不是段或Formation"
+    }
+  ],
+  "intermediate_processing_results": [
+    {
+      "item_id": "O03",
+      "role": "F4材料获得贴墙资格的局部中间稀疏材料；没有正式完整atom tape"
+    },
+    {
+      "item_id": "O05",
+      "product": "attack_formation_evidence",
+      "role": "独立正式产品，但业务作用是形成材料/原因/availability/能力说明，不能升格成完整段"
+    },
+    {
+      "item_id": "F02/F03",
+      "role": "O04 payload成员与资格附件，公开不改变中间角色"
+    },
+    {
+      "item_id": "F07-F10",
+      "role": "技术分块信息、状态和O04派生checkpoint，不是新增业务occurrence"
+    }
+  ],
+  "unconfirmed_items": [
+    {
+      "item_id": "UQ01",
+      "topic": "当前版本正式运行与字段可读性",
+      "confirmed_facts": "已在构造实例解析的12个产品/品种receipt位置逐项查询；发现的7张均为其它git代码版本，另5处无文件；没有接受任何候选结果。具体文件及sha见candidate_receipt_check_summary。这个计数是文件核验，不是业务全量统计。",
+      "missing_evidence": "179016下准确Wall、F4 tactical/structural及三项Attack产品的有效receipt、数据范围和完整公开表读回",
+      "downstream_impact": "可继续X的输入/实例核验及技术物化；不能进入当前正式结果的G，也不能释放Feature",
+      "recovery_condition": "后续合法X取得完全同一性的实际结果与FeatureRunResultBinding后回填字段可用性；本U不运行Feature",
+      "evidence_refs": [
+        "evidence/candidate_receipt_check_summary.json",
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/p1_product_receipt.py",
+          "line_start": 115,
+          "line_end": 166
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 755,
+          "line_end": 906
+        }
+      ]
+    },
+    {
+      "item_id": "UQ02",
+      "topic": "源范围与exact axis",
+      "confirmed_facts": "正式范围按输入声明；当前Wall._load_cc_df额外排除empty calendar padding，Attack使用公共_load_cc_df。旧m Wall候选source cut也含padding排除记录，但其版本不合格。",
+      "missing_evidence": "当前实例真实cc、Wall trace、F4 availability及sparse的完整coverage/source_scope",
+      "downstream_impact": "不能从requested起止日期或文件存在推定实际有效市场范围一致",
+      "recovery_condition": "X按本Run真实输入和exact receipts核定，不改上游数据、Wall或F4实现",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/wall_assembler.py",
+          "line_start": 756,
+          "line_end": 759
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/tick_quote_context.py",
+          "line_start": 160,
+          "line_end": 166
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 561,
+          "line_end": 572
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/p1_product_receipt.py",
+          "line_start": 169,
+          "line_end": 199
+        }
+      ]
+    },
+    {
+      "item_id": "UQ03",
+      "topic": "实际有效参数/上游threshold材料",
+      "confirmed_facts": "构造P、完整ppdict、ppid已实际回读，Attack派生retreat默认2有代码依据；上游部分构造值为None且执行时解析市场参照量。",
+      "missing_evidence": "被当前有效receipt绑定的Wall派生参数、F4 threshold/source scope/trading_unit等运行事实",
+      "downstream_impact": "构造身份可定位实现，不能证明成功执行或复用旧cache",
+      "recovery_condition": "在正式X中将实际参数、receipt、source和表读回关联；保留本次构造证据作为对照",
+      "evidence_refs": [
+        "evidence/instance_introspection.json",
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 847,
+          "line_end": 879
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/pressure_big_deal.py",
+          "line_start": 599,
+          "line_end": 611
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/wall_assembler.py",
+          "line_start": 766,
+          "line_end": 785
+        }
+      ]
+    },
+    {
+      "item_id": "UQ04",
+      "topic": "代码分支实际可达性与末尾在建状态",
+      "confirmed_facts": "core含五种close reason；wrapper按两侧分开回放、跨chunk carry、全范围末尾不强制关闭；NOT_EXPOSED的技术状态不能由空正式行推知。",
+      "missing_evidence": "当前正式实例各分支可达性、未闭尾段及中间状态的实际证据",
+      "downstream_impact": "不能把声明状态/原因码自动视为已发生，也不能计算在建持续时长或逐Tick回撤",
+      "recovery_condition": "当前运行有相应可信状态/过程证据时再确认；没有证据则保留具名未知，U不做实验",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 582,
+          "line_end": 707
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 1097,
+          "line_end": 1202
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 900,
+          "line_end": 906
+        }
+      ]
+    },
+    {
+      "item_id": "UQ05",
+      "topic": "指定FRP参考合同与当前TIS声明不一致",
+      "confirmed_facts": "TIS make_product_receipt当前为所有kind生成-v1.6.1；参考FRP Products.hs对attack_segment/attack_formation_evidence期望-v1.6.2。参考FaoIngress还必读Segment/Formation的attack_segment_attempt_local_id及Formation的available_at_uti，当前TIS没有声明这些字段。",
+      "missing_evidence": "本Run若消费该FRP版本时的正式兼容绑定和真实接纳证据；FRP在任务输入中仅为业务合同参考",
+      "downstream_impact": "U可以说明双方事实；不能把参考typed模型反写成当前TIS字段或宣布已接通FRP/P2；也不据此宣布Feature合理/不合理",
+      "recovery_condition": "沿既定Workflow在确有对应消费任务和证据时处理；本D不改FRP合同、不诊断或修正实现",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/p1_product_receipt.py",
+          "line_start": 277,
+          "line_end": 294
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 290,
+          "line_end": 410
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 458,
+          "line_end": 510
+        },
+        {
+          "ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/Products.hs",
+          "line_start": 296,
+          "line_end": 299
+        },
+        {
+          "ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+          "line_start": 765,
+          "line_end": 780
+        },
+        {
+          "ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+          "line_start": 930,
+          "line_end": 954
+        }
+      ]
+    },
+    {
+      "item_id": "UQ06",
+      "topic": "设计原文与当前实现的位置/状态职责差异",
+      "confirmed_facts": "原始A3说明由FRP串段、chunk内完成并建议reset；当前TIS core形成完整段且wrapper跨chunk carry。P1 DSU文本声称formed set/history，而指定参考AttackSegmentBook.hs applyAttackFrame每个firing重置ledger和current view。",
+      "missing_evidence": "这些来源在本轮业务设计中的最终优先关系及对应运行事实；当前U不制定业务预期",
+      "downstream_impact": "原文意图与实现事实须分别保留，不能相互当作正确性证明；不启动独立FRP流程",
+      "recovery_condition": "后续合理性/诊断如实际采用这些来源，应按其Skill及真实证据处理；U不提出设计变更",
+      "evidence_refs": [
+        "见source_read_manifest中的architecture/dsu/assembler_original精确引用",
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler_core.py",
+          "line_start": 20,
+          "line_end": 22
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 536,
+          "line_end": 540
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 706,
+          "line_end": 707
+        },
+        {
+          "ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/AttackSegmentBook.hs",
+          "line_start": 107,
+          "line_end": 139
+        }
+      ]
+    },
+    {
+      "item_id": "UQ07",
+      "topic": "材料信息最早可得时间",
+      "confirmed_facts": "当前Formation区间行uti取interval_end，区间可到不连续或finalize时才生成/并入结果；点材料无独立available_at/confirm/publish字段。",
+      "missing_evidence": "实际最早信息可得时刻与payload位置的区分；当前TIS未显式记录available_at",
+      "downstream_impact": "可以使用已定义业务位置；不能把interval_end自行解释成当时已公开可用或另造confirm_time",
+      "recovery_condition": "只有新增可信时间证据或适用合同真正提供该字段后才能确认；当前保持NOT_EXPOSED",
+      "evidence_refs": [
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 111,
+          "line_end": 178
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 236,
+          "line_end": 281
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 338,
+          "line_end": 341
+        },
+        {
+          "ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/attack_flow_assembler.py",
+          "line_start": 432,
+          "line_end": 455
+        },
+        {
+          "ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+          "line_start": 909,
+          "line_end": 954
+        }
+      ]
+    }
+  ],
+  "completion_status": "PARTIAL",
+  "completion_reason": "核心实现、三产品、对象身份、状态、occurrence、参数和公开布局均已还原；当前版本正式 receipts/完整结果未确认，结果字段的实际可读性仍有具名缺口。X 可据此继续实例同一性核验及正式运行；G 尚无有效输入。",
+  "business_object_qualification": [
+    {
+      "candidate": "AttackFlowAssembler实例、parameter_set_id、ppid、日历、receipt、DBA表",
+      "classification": "运行/实现/参数绑定",
+      "reason": "不对应新的市场现象"
+    },
+    {
+      "candidate": "lane_mask、max_grade、close_reason_code、availability_code",
+      "classification": "对象属性／可用性／处理码",
+      "reason": "没有独立身份或生命周期"
+    },
+    {
+      "candidate": "距离、阈值、gap计时、qualification_hit_book",
+      "classification": "中间判断／内部处理状态",
+      "reason": "参与形成和引用，不另造业务对象"
+    },
+    {
+      "candidate": "FormationEvidence",
+      "classification": "一次性业务材料；中间处理角色",
+      "reason": "正式产品承诺、具名身份和时间，但不是完整AttackSegment"
+    },
+    {
+      "candidate": "WallRelationBarrier",
+      "classification": "一次性正式关系输出",
+      "reason": "明确引用Wall.End，不是持续关系状态"
+    }
+  ],
+  "counting_granularities": [
+    {
+      "unit": "F4资格行",
+      "identity": "exact F4流+UTI+side+family+grade",
+      "mapping": "同一个底层半秒材料可有多个资格行"
+    },
+    {
+      "unit": "底层半秒方向材料 / accepted atom",
+      "identity": "同source范围的UTI+side；atom另引用Wall",
+      "mapping": "同Tick双lane只计一次total量，lane视图允许重叠；不是逐笔笔数"
+    },
+    {
+      "unit": "唯一AttackSegment / 完整段发生",
+      "identity": "exact Attack artifact+segment_id",
+      "mapping": "每段一主行O04；qualified/hit附件不增加段事件数"
+    },
+    {
+      "unit": "形成材料occurrence",
+      "identity": "exact Attack artifact+formation_local_id",
+      "mapping": "点和区间均一材料；区间长度、材料条数和Attack段数不同"
+    },
+    {
+      "unit": "正式Barrier occurrence",
+      "identity": "exact Attack artifact+barrier_local_id",
+      "mapping": "源Wall.End复制；不等于每次段闭合"
+    },
+    {
+      "unit": "内部状态转换/生命周期",
+      "identity": "段身份及start/append/close处理关系",
+      "mapping": "没有正式逐Tick state轨迹，不能从checkpoint或表行数代算持续时间"
+    }
+  ],
+  "time_semantics": {
+    "UTI": "linear_ts毫秒//500-1；源时钟半秒索引。gap按UTI差而非实际数组行数。",
+    "segment_actual_material_span": "start_uti/start_ts到business_end_uti/business_end_ts；end_*与business_end_*相同；first/last_atom对应首末成员。",
+    "segment_occurrence": "closed_at_uti/ts；输出uti/ts及附件index使用这一关闭位置；不独立捏造observed/confirm时间。",
+    "formation_occurrence": "点材料沿其输入/闭段位置；区间以末端作为自身位置，另带区间始末；最早可得时间未知。",
+    "barrier_occurrence": "沿源Wall.End位置；不是Attack段business_end。",
+    "technical_boundaries": "chunk start/end与carry是物理执行边界；不自动等于业务结束或formal barrier。"
+  },
+  "cross_check": [
+    {
+      "check": "U1来源/实例",
+      "result": "已核exact源码、运行模块路径、构造P/ppdict/ppid；source_read_manifest的九项快照blob与精确远端相等"
+    },
+    {
+      "check": "U2/U4对象与角色",
+      "result": "区分Wall引用、半秒材料、完整段、形成材料、正式屏障；配置/阈值/状态/表不列成对象"
+    },
+    {
+      "check": "U3/U5/U7 occurrence/状态/时间",
+      "result": "输入F4和Wall事件、局部atom、闭合段、Formation、Barrier具名；在建active与已形成快照分开，技术checkpoint不另计业务事件"
+    },
+    {
+      "check": "U6/U8判断与关系",
+      "result": "资格、同刻分路、lane去重、最早cut、retreat、跨块carry、成员引用和DBA编码均有代码依据"
+    },
+    {
+      "check": "U9参数",
+      "result": "自由、派生、preset、实例身份和工程常量分开；实际构造证据与未核运行receipt分开"
+    },
+    {
+      "check": "U9结果字段",
+      "result": "公开布局逐流/逐字段映射；当前结果UNCONFIRMED，内部未导出字段NOT_EXPOSED；历史候选没有升级为AVAILABLE"
+    },
+    {
+      "check": "U10未确认项",
+      "result": "缺receipt/正式结果、实际scope、可达性、信息可得时间和参考合同差异具名；没有实现修正、参数建议或合理性结论"
+    }
+  ]
+}
