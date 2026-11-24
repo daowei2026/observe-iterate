@@ -5,6 +5,8 @@
 - `work_id`：
 - `business_case_id`（用例稳定标识；如无独立标识，可明确与 work_id 相同）：
 - `run_id`（本次全新、不得复用历史 Run）：
+- `post_start_owner_policy: AUTONOMOUS`（新 Run 必填；Owner 仅在启动时给出业务目标与授权）：
+- AI 在本 Run 内可自主决定的修正、参数调整、验证与发布边界：
 - `BusinessTaskInput`：当前实际已知的业务目的、对象、问题、现有资料线索及精确来源；未知项如实列为待查：
 - **已明确**的本轮范围/允许深度/预算/不可做事项/停止与完成条件（没有明确的写“待明确”，不是另设启动前必须填满的 TaskBoundary）：
 - 仅列出 Owner **已明确禁止**的事项或不能改变的业务目标（如无则不为了预设审批点而虚构）：
@@ -33,7 +35,7 @@
 - 多层 Workflow 运行协调 Chat与 Web Skill executor：使用 ChatGPT Project **`细节叙事生成_金标`**；各自独立角色聊天，当前指定的目标模型为 **`GPT-5.6 Sol`**，推理档位为 **`Pro`**。是否已经实际选中，须由每次发送前的现有操作 Skill 验证；模板本身不证明设置成功。
 - Worker：每个 `run_id` 的 Linux 工作区由 Owner 提前准备，并在本次真实 GO 中指定独立绝对路径；不从其他 Run 或示例路径推断。
 - Worker 目标模型/推理配置：**`GPT-6.1 Sol Max`**；实际可用性与现场配置仍需在真实派发前核验。
-- 若 Owner 后续重新指定项目、路径或档位，以新的真实指令为准；不同 Run 不自动继承。物理 Project/ChatGPT 聊天、Codex threadId、实际目录和配置在真实启动时记录到可信运行映射；不能因为模板包含上述信息就认定已创建。
+- 模型、项目、工作区在启动 GO 中一次明确；后续运行不向 Owner 请求更改。超出原 GO 的动作仅记录局部阻断与恢复条件，不自行扩权；不同 Run 不自动继承。物理 Project/ChatGPT 聊天、Codex threadId、实际目录和配置在真实启动时记录到可信运行映射；不能因为模板包含上述信息就认定已创建。
 - **Codex E executor**：使用 Owner 已指定和准备的独立 Linux 工作区，模型/强度按本 Run 的正式配置（当前默认目标 GPT-6.1 Sol / Max）。新 Run 首次合法 E D 后、E C 派发前创建新 thread，同一 Run 恢复时复用原 thread，不借其他 Run 的 session。
 - **工作区路径不是写权限**：Codex executor 直接执行或旧 Worker W 均须受下列独立的 `operation / execution_context / allowed_writes / authority_quote` 授权及共享目标单写者检查约束。
 
@@ -69,4 +71,4 @@ authority_quote=<包含以上三个值的 Owner 原文>
 - 采用提交：
 - 授权生效与取消/修改条件：
 
-主控收到真实 GO 后方可创建 `longrun/runs/<run_id>/`；未填写、未发布或未核实的不启动运行。
+主控收到真实 GO 后方可创建 `longrun/runs/<run_id>/`；未填写、未发布或未核实的不启动运行。开始后不设 Owner 决策或审批节点，常规专业修正由 executor 在初始授权内自主推进。
