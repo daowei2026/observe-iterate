@@ -1,0 +1,91 @@
+{
+  "binding_id": "OI-EAW-P1-ATTACK-STAT-20261124-01-D002-X-R01-A01",
+  "binding_type": "FeatureRunResultBinding",
+  "run_id": "OI-EAW-P1-ATTACK-STAT-20261124-01",
+  "call_id": "C0005",
+  "delegation_id": "D002",
+  "work_item_id": "OI-EAW-P1-ATTACK-STAT-X-R01",
+  "professional_control_commit": "9877826236e0995e7255e6cbfedc2d1b89dea6da",
+  "delegation_ref": "daowei2026/observe-iterate@c9742986ed6fbb7bc2d55bd87cab54de42c7539f:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/delegations/D002/DELEGATION.json",
+  "feature_name": "AttackFlowAssembler",
+  "code_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74",
+  "constructor_ref": "mquant.tis.hf.prel0.attack_flow_assembler.AttackFlowAssembler()",
+  "parameter_instance": "attack-default",
+  "workspace": "/dwdhome/fy/BASE_E6_2_copy",
+  "tis_branch": "codex/oi-eaw-p1-attack-fix-20261124-01",
+  "formal_scope_requested": {
+    "sof_name": "TA_updto20240229_DBA",
+    "symbols": [
+      "rb",
+      "m"
+    ],
+    "requested_start_time": "2021-01-01",
+    "requested_end_time": "2021-12-31",
+    "calendar": "night_end_at_2300"
+  },
+  "feature_understanding_ref": "daowei2026/observe-iterate@758c77a566672a4514cbff6d3f26236769d17b59:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/professional_results/D001/FeatureUnderstandingPackage.json",
+  "feature_understanding_status_retained": "PARTIAL",
+  "binding_status": "NOT_ESTABLISHED_WAITING_SHARED_LOCK",
+  "formal_complete": false,
+  "eligible_for_G": false,
+  "feature_execution_started": false,
+  "execution_started_at": "2026-11-24T08:16:34.896710+00:00",
+  "execution_finished_at": "2026-11-24T08:26:42.759818+00:00",
+  "storage_binding": {
+    "mechanism": "平台TmpStoreEnv仅针对P1DbaExportMixin",
+    "store_root": "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-EAW-P1-ATTACK-STAT-20261124-01/D002/formal-attempt-A01/store",
+    "parameter_changes": false,
+    "product_code_changes": false,
+    "existing_run_outputs_overwritten": false,
+    "backup_write_surfaces": [],
+    "market_source_cache_policy": "CurrCalType将SubContinuousContract/AmountThreshold/VolQuant设为Cal：读取真实源数据并在内存计算，不保存市场基础Feature缓存"
+  },
+  "shared_production_lock": {
+    "path": "/dwdhome/fy/cgpterm/artifacts/wall-f-closure-20261122/FORMAL_PRODUCTION.lock",
+    "identity": {
+      "device": 83,
+      "inode": 15061041,
+      "bytes_before": 0,
+      "sha256_before": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "acquired": false,
+    "acquired_at": null,
+    "released": false,
+    "released_at": null,
+    "last_measured_wait_seconds": 571.86,
+    "wait_measurement_note": "等待值来自runner实际记录；未取得锁时false released表示从未持有，不表示遗留占锁",
+    "post_wait_check": {
+      "at": "2026-11-24T08:26:55.815213+00:00",
+      "path": "/dwdhome/fy/cgpterm/artifacts/wall-f-closure-20261122/FORMAL_PRODUCTION.lock",
+      "content_size": 0,
+      "state": "HELD",
+      "formal_store_exists": false
+    }
+  },
+  "actual_code_fingerprints": {},
+  "per_feature_results": [],
+  "recorded_errors": [
+    {
+      "stage": "WAITING_SHARED_PRODUCTION_LOCK",
+      "type": "TimeoutError",
+      "message": "SHARED_PRODUCTION_LOCK_STILL_HELD_AFTER_600_SECONDS"
+    }
+  ],
+  "actual_upstream_receipts": [],
+  "result_readback_policy": "只有实际持锁执行成功、receipt同版本及同产物位置、全部结果key/列/dtype/index与全数组摘要一致的记录才标已验证；无实际结果不以默认代码或构造证据补齐",
+  "scope_boundaries": {
+    "workers": [],
+    "G_performed": false,
+    "diagnosis_performed": false,
+    "product_fix_performed": false,
+    "TIS_product_commit_or_push": false,
+    "Build_results_consumed": false,
+    "FRP_or_P2_run": false,
+    "FeatureReleaseGate_formed": false
+  },
+  "remaining_items": [
+    "本Run rb/m当前正式Attack完整结果及准确读回尚未全部建立",
+    "对应当前版本exact Wall/F4 receipts与结果的消费同一性尚未全部通过",
+    "U保留缺口不因本次未完成X自动关闭"
+  ]
+}
