@@ -60,6 +60,17 @@ executor 会话
 
 cgpterm controller Skill 的 commit 与 `observe-iterate` 专业控制 commit 分开记录：前者决定物理调用方式，后者决定本轮专业 Workflow、Skill 和任务输入。
 
+## 4.1 启动后无 Owner 审批节点
+
+新 Run 在初始 GO 中一次性明确业务目标、可自主迭代的代码／参数／规则范围、工程写面与提交权限。采用 `AUTONOMOUS` 后：
+
+- 后续专业判断、问题诊断、在授权内修复、必要回归、全量重跑和结果释放，由 executor 的专业 Skill 与既定 Workflow 自主完成；
+- manager 只消费回交、维护依赖和状态、签发已确定的下一项工作；不独立裁定业务方案，也不创建 Owner 确认节点；
+- 主控不为已获授权的常规操作增加逐次审批；
+- 技术资源缺失、证据不足或操作超出初始 GO 时，只记录具体阻断、缺口和恢复条件，继续其他独立工作；不能伪造扩权、自动修改业务目标或向 Owner 发送中途确认请求。
+
+历史 Run 的 GO、Binding 与在途成果保持原样；采用新政策须有可追溯的正式新 Run 或有据的接续采用，不回写历史授权。
+
 ## 5. manager 边界
 
 manager：
@@ -67,7 +78,7 @@ manager：
 - 维护 TASK_PROGRESS；
 - 根据已采用 Workflow 签发一项 Skill 工作；
 - 消费真实 Return；
-- 处理版本失效、等待、汇合和后继。
+- 处理版本失效、等待、汇合和后继；不能决定新的业务目标或提出 Owner 审批节点。
 
 manager 不：
 
@@ -86,7 +97,7 @@ executor：
 - 明确代码、参数、数据、结果和未完成范围；
 - 直接回原 manager。
 
-executor 不需要为了执行 Linux 操作再创建 Worker。若当前操作不在 Owner grant 中，只阻断该动作并报告准确缺口；其他合法专业工作继续。
+executor 不需要为了执行 Linux 操作再创建 Worker。若当前操作不在启动 GO 的 grant 中，只阻断该动作并记录准确缺口及恢复条件，不升级为运行中 Owner 问询；其他合法专业工作继续。
 
 ## 7. 工作区和写面
 

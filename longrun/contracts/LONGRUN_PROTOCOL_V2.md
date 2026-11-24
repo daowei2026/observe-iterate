@@ -4,7 +4,7 @@
 
 ## 1. 角色与责任不可混淆
 
-- **Owner**：提供当前业务目标、对象和**已经明确的**范围/约束（统一归入 `BusinessTaskInput`）、真实 GO 和具体操作权限。分析深度/完成边界有未知项时允许在授权范围内先做有界调查；但未经合法确定不得扩范围、开展超授权动作或宣布整项完成。真正业务取舍与新授权仍返回 Owner。
+- **Owner**：提供当前业务目标、对象和**已经明确的**范围/约束（统一归入 `BusinessTaskInput`）、真实 GO 和具体操作权限。分析深度/完成边界有未知项时允许在授权范围内先做有界调查；但未经合法确定不得扩范围、开展超授权动作或宣布整项完成。新 Run 在初始 GO 一次性明确自主迭代边界。启动后不设 Owner 询问或审批节点；已授权范围内由专业 executor 自主判断与处理，越界的动作有据阻断且不能擅自扩权。
 - **主控 Codex**：持有**可信** Run 事实账本和物理聊天/线程映射；送达、监控、回交、去重/对账、按规则调用确定性检查；不决定专业业务正确性、不根据结果措辞擅自扩展任务。
 - **多层 Workflow 运行协调 Chat（V2 `manager`）**：维护整个任务的当前状态与版本依赖，按已采用 Workflow 调用、等待、接续或回流 Skill 工作，按需安排多个执行 Chat。不增加业务预期、专业方法、执行约束、Worker 结果处理规则或额外专业 Gate。见 [运行协调 Chat 指南](../professional/PRO_MANAGER_GUIDE.md)。
 - **Skill executor（V2 `executor`）**：不预设固定专业职位或唯一产品；按正式 D 所指 Skill 原件完成专业工作与内部流程。共享 Feature 理解及观察材料 B～D 默认 ChatGPT、E 默认 Codex 独立线程；实际以 Owner GO、采用版本和 RUN_BINDING 为准。Codex 直接 E 在授权范围内连续运行并专业回交，通常零 W。见 [Skill 执行 Chat 指南](../professional/PRO_EXECUTOR_GUIDE.md)。
@@ -33,7 +33,7 @@ Owner GO → RUN_BINDING
 → Codex 直接 E 时：首个 C 发送前核 Owner/D 操作授权、该 Run 专属线程、实际工作区和资源单写者；Codex 连续执行 E1～E6、通常零 W
 → executor 发布 EXECUTOR_RETURN（有 W 可接续，零 W 可直接提交本 D）
 → 主控将 D 完成/部分/阻断的专业回交交原 manager（新 C）
-→ manager 消费后决定后继 / 请求 Owner / 申请任务收束
+→ manager 根据真实专业结果和既定 Workflow 安排后继、记录局部阻断或有据收束（不请求 Owner）
 ```
 
 Skill 执行 Chat **零 W**时可直接提交 D 结果；有多 W 时按对应 Skill 与 V2 回执关系接续。不能把“某 Worker 工单完成”当作 D 已专业接受，也不能把“某 D 完成”当作 L0 父任务已完成。
@@ -58,6 +58,12 @@ longrun/runs/<run_id>/
 ```
 
 所有材料按实际执行逐步产生；测试 fixture 不写入 `runs/`。`pro_return` 同时适用于 manager/executor，但 `role`、`sender`、`delegation_ref`、`return_to`、`issued_delegation_refs`、`issued_order_refs` 明确不同。`WORKER_RETURN` 必须回到签发 W 的 executor。专业报告与受机器校验的 Return 分离；某段报告中的自然语言不能代替正式身份引用和发送回执。
+
+## 4.1 新 Run 的自主政策
+
+新 Run 的 `RUN_BINDING.json` 必须设置 `post_start_owner_policy: AUTONOMOUS`（历史 Binding 缺字段仍可读）。`owner_request_ref` 与 `WAITING_OWNER` 仅为旧 Run 回放保留，不得用于采用该政策的新 Run；manager Return 交主控 Workflow 路由。初始 GO 应覆盖允许自主处理的业务修复、参数／常量调整、正式重跑、代码与结果提交等操作及其写面。
+
+任何实际操作仍须同时符合初始 GO 的精确 `grants`、D 委派范围、真实工作区与单写者约束；自主不等于无限授权。遇到越界或无法克服的事实缺口，只阻断受影响工作、记录恢复条件，其他无依赖工作继续。现有历史 Run 不因新政策自动取得额外权限。
 
 ## 5. GO、授权、现场与审计
 
@@ -91,7 +97,7 @@ BLOCKED → COMPLETED（只在原动作证据已查清时）
 
 - **Worker Return**：`EXECUTED / PARTIAL / STOP / FAILED` 是操作端的既有机器状态；真实结果必须返回原 `executor`，其**专业消费完全按被执行的 Skill**。本协议不增设 Worker 返回后的专业处理步骤。
 - **Executor Return**：Codex 直接 E 可零 W 使用同一 `longrun-professional-return/v2`，设置 `role=executor`、`sender=codex:<run_id>:executor:<id>`、`issued_order_refs=[]`、`accepted_worker_refs=[]`；按对应 Skill 的原生输出表达本 D 实际专业结果，并通过 V2 回交引用；`REPORTED_COMPLETE` 是 D 的机器回交状态，不直接等同于 Skill 专业完成或父任务完成。
-- **Manager Return**：登记已核实的 Skill 工作回交、当前 Workflow 状态、下一项 D/续作或具名 Owner 问题；依据**原 Skill 的专业结果、既定 Workflow 和 Owner 明确的任务边界**判断是否还有后继。运行协调 Chat 不代替 Skill 提供独立业务验收，也不能单凭 Return 标记宣布父任务完成。
+- **Manager Return**：登记已核实的 Skill 工作回交、当前 Workflow 状态、下一项 D/续作或具名阻断及恢复条件，不创建 Owner 问题；依据**原 Skill 的专业结果、既定 Workflow 和 Owner 明确的任务边界**判断是否还有后继。运行协调 Chat 不代替 Skill 提供独立业务验收，也不能单凭 Return 标记宣布父任务完成。
 - 某 D/W 因确切缺前置而受阻，只阻断依赖它的工作；已满足独立前置的其他委派可继续。确认没有合法后继时可有据停止，但“停止”不等于“成功完成”。
 
 ## 8. 与控制面、Skill 和确定性程序的接口
@@ -106,7 +112,7 @@ BLOCKED → COMPLETED（只在原动作证据已查清时）
 
 - 协调 Chat 持有 Owner 已明确的任务输入、已采用的 Workflow、Skill 及其真实成果引用；沿既定依赖调用下一 Skill、接续原工作或按已规定的返回路径处理，不自行补充专业任务内容。
 - Skill executor（ChatGPT 或 Codex）负责其 Skill 的专业分析、内部流程、原生输出、完成判断及该 Skill 规定的 Worker 使用与结果处理；专业工作允许多次 C 接续同一 D。
-- 协调 Chat 不承担默认独立专业 Gate，只核对任务/输入版本、真实工作状态及既定后继使用资格；必要的专业判断仍由 Skill 执行 Chat 完成，未定义的 Owner 业务取舍须明确提出。
+- 协调 Chat 不承担默认独立专业 Gate，只核对任务/输入版本、真实工作状态及既定后继使用资格；必要的专业判断仍由 Skill 执行 Chat 在初始业务意图和证据下完成。无法在既定授权和证据内解决的事项记录具体未决与受影响范围，不由 manager 提交运行中 Owner 取舍。
 - 运行协调 Chat 依 [TASK_PROGRESS](../templates/TASK_PROGRESS.md) 持续维护整体任务及工作项、执行 Chat、版本/依赖、在途与恢复状态。它由真实工作产物和可信消息/工单事实派生，不是另一份独立权威账本。
 - 运行记录中使用现有 `business_control/TASK_PROGRESS.md` 与必要的具名接续引用；普通推进不要求额外创建 `MANAGEMENT_DECISION`、Gate 决定或新的机器字段。主控负责保存、回读与真实权限核验；它不能代替任何 Chat 编写专业结论。
 - Owner 的操作授权与工作区、模型、身份、消息送达和 W 工单校验继续依本协议与真实 GO 执行，不因取消独立专业 Gate 而放宽。

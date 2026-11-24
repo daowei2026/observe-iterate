@@ -6,7 +6,7 @@
 
 | 角色 | 作用 |
 |---|---|
-| Owner | 提供业务任务、范围、版本、工作区和真实运行授权 |
+| Owner | 仅在 Run 启动时提供任务、范围、版本、工作区与一次性真实授权；运行中不承担审批或业务裁决 |
 | 主控 | 注册 Run、绑定物理线程、发送／回收 C/D/W、核权限、去重与恢复 |
 | Workflow manager（V2 `manager`） | 维护统一任务状态，按已采用 Workflow 调用 Skill、消费 Return、安排后继 |
 | Skill executor（V2 `executor`） | 阅读并执行具名 Skill，形成原生产物和 Return |
