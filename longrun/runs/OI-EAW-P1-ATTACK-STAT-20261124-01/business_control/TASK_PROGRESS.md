@@ -48,7 +48,7 @@
 | C0004 Return | D002／报告／双进度先发布回读，后以其为 parent 发布 IN_PROGRESS manager Return 并逐字回读 | `daowei2026/observe-iterate@74a46582f44b16b1f7f0890c30314684d211ef3f:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0004/PRO_RETURN.json`；报告：`daowei2026/observe-iterate@c9742986ed6fbb7bc2d55bd87cab54de42c7539f:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0004/MANAGER_REPORT.md` |
 | C0005／D002／A01 | 原 E1 已作有限 X 工程尝试；600 秒窗口未获指定锁，runner 结束，Feature／正式 store 未开始 | Return：`daowei2026/observe-iterate@6610e2df899bb4f68666eacb8a8d33dfb242077c:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0005/PRO_RETURN.json`；报告：`daowei2026/observe-iterate@647871627d9f5f591a23d54c4a2a842b39f05346:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0005/EXECUTOR_REPORT.md`；A01：`daowei2026/observe-iterate@647871627d9f5f591a23d54c4a2a842b39f05346:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/professional_results/D002/FeatureRunResultBinding.json` |
 | C0005 物理核验 | controller 已独立核真实 turn `01a20c98-d46b-7cc2-9969-0aae2dd689c8`、原 payload/token/调用关系、实际 sol/max、协议和 Git 原件 | 依据当前 C0006 FULL_ASSIGNMENT；本 manager 不合成物理 receipt |
-| C0006 | 原 manager 消费有效资源等待回交，保留原工作后继；本 C 不签新 D/W | [本 C 报告](../calls/C0006/MANAGER_REPORT.md)，报告和双进度先发布回读，随后签发原 v2 IN_PROGRESS Return |
+| C0006 | 原 manager 已消费有效资源等待回交，保留原工作后继；未签新 D/W | 报告：`daowei2026/observe-iterate@3d889814348d069a6cffefb6ec38f92c28850b04:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0006/MANAGER_REPORT.md`；实际 IN_PROGRESS Return：`daowei2026/observe-iterate@0d2137442b76f872f2b38eb4e3cf3d16d98303f2:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0006/PRO_RETURN.json`，均已发布并逐字回读 |
 
 本 C 消费的是 executor Return，未借 `accepted_worker_refs` 登记；`workers=[]`，无 W 和 Worker Return。C0005 真实回交不赋予 X/G 完成资格；U 保持 PARTIAL。
 
@@ -100,7 +100,13 @@ C0004 既存发行历史：
 - Return 的 remaining_scope／continuation 均指向已存在的准确原件；`return_to=null`、`issued_order_refs=[]`、`accepted_worker_refs=[]`、`owner_request_ref=null`。
 - C0004 Return 引用 `c9742986ed6fbb7bc2d55bd87cab54de42c7539f` 的先前进度快照；其后的 C0005 实际回交事实见上表。
 
-C0006 报告与双进度先发布并准确回读，再发布本 C `longrun-professional-return/v2`。本 C 保持 `IN_PROGRESS`，`issued_delegation_refs=[]`、`issued_order_refs=[]`、`accepted_worker_refs=[]`、`owner_request_ref=null`；continuation 指向已存在的原 X 未完成范围，不签 D003，不改 D002 或 A01 原件。实际 Return 发行引用在回读后补记。
+C0006 实际发行事实：
+
+- 报告：`daowei2026/observe-iterate@3d889814348d069a6cffefb6ec38f92c28850b04:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0006/MANAGER_REPORT.md`；双进度先前快照同 `3d889814348d069a6cffefb6ec38f92c28850b04` 提交，三个文件均已逐字回读。
+- Return：`daowei2026/observe-iterate@0d2137442b76f872f2b38eb4e3cf3d16d98303f2:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0006/PRO_RETURN.json`，以先前提交为 parent 普通条件发布并逐字回读。
+- Return 使用原 `longrun-professional-return/v2`、`role=manager`、`professional_state=IN_PROGRESS`、`return_to=null`；`issued_delegation_refs=[]`、`issued_order_refs=[]`、`accepted_worker_refs=[]`、`owner_request_ref=null`。
+- continuation 保持原 `daowei2026/observe-iterate@647871627d9f5f591a23d54c4a2a842b39f05346:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/professional_results/D002/REMAINING_SCOPE.md`；remaining_scope 引用 `3d889814348d069a6cffefb6ec38f92c28850b04` 的已存在进度快照。本次只补记实际发行事实，不制造引用循环。
+- 原 D002／E1 保留，未签 D003、未更改 D002 或 A01、未重派生产；本次发布不表示资源已释放、controller 已核回收或生产已恢复。
 
 前次 C0004 双进度快照：`daowei2026/observe-iterate@69ece4ac48016cbfb656297388696a92195a96be:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/business_control/TASK_PROGRESS.md`。
 

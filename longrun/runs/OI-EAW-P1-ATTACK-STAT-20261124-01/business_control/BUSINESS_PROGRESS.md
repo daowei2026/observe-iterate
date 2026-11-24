@@ -49,4 +49,4 @@ Build 按独立 Run 的 391 版控制与其 X 工作继续；本 Run 不消费�
 - [运行状态与准确恢复引用](TASK_PROGRESS.md)
 - [本次 manager 报告](../calls/C0006/MANAGER_REPORT.md)
 
-快照：2026-11-24，C0006 已消费 A01 资源等待回交。父 Run 仍进行中，原 D002／E1 保留，未进入 G；当前回交与准确恢复引用见 TASK_PROGRESS。
+快照：2026-11-24，C0006 已消费 A01 资源等待回交，本次报告、双进度与 manager Return 均已发布并准确回读。父 Run 仍进行中，原 D002／E1 保留，未进入 G；当前等待与准确恢复引用见 TASK_PROGRESS。
