@@ -5,7 +5,7 @@ version: 0.1.0
 status: draft
 ---
 
-# 业务偏差诊断与 Owner 决策材料
+# 业务偏差诊断与自主处理路线
 
 ## 1. 何时使用
 
@@ -16,14 +16,14 @@ status: draft
 - 改动前需要判断真正的问题发生在哪一层；
 - 需要找最小实验区分两个或多个原因；
 - 需要初步判断偏差是否可能由现有参数修复，以决定是继续参数求解还是移交叙事迭代；
-- 需要把真正的业务取舍整理给 Owner。
+- 需要在初始 GO 的业务意图内比较处理方案，并明确无法在证据下消除的限制。
 
 不用于：
 
 - 只列“可能原因清单”而不继续排查；
 - 未确认问题来源就直接调参数；
 - 把所有偏差都归为“需求不清楚”；
-- 替 Owner 决定价值取舍。
+- 擅自改变初始 GO 锁定的业务目标或扩大授权。
 
 ---
 
@@ -72,7 +72,7 @@ DataBindingAndTimeBasis
 |---|---|
 | 缺少数据、字段含义或实现事实 | AI 优先自行查代码、补数据或做最小实验 |
 | 可以通过真实样本、反例和进一步对照判断 | AI 继续分析，并给出有证据的候选结论 |
-| 存在不同的业务目标取舍，无法仅靠数据确定 | 提交 Owner 决定 |
+| 存在不同业务目标的取舍，单靠数据不能唯一确定 | 在初始业务意图内根据支持和反证自主选择可验证方案；若实质上改变目标或越权，记录局部阻断，不请求 Owner |
 
 ### 4.1 第一类：事实缺口
 
@@ -105,7 +105,7 @@ DataBindingAndTimeBasis
 - 宁可多保留避免漏掉，还是更强地去重；
 - 更重视实时性，还是更重视最终准确性。
 
-处理：形成 OwnerDecisionPacket，不替 Owner 选择。
+处理：在初始 GO 允许的业务目的下，用真实案例比较选项，选取可验证且影响范围明确的方案，记录舍弃什么及回退条件。若现有任务目标无法支持任何选项，不擅自重写需求；登记受影响工作的局部阻断，其他合法工作继续。**不得发起运行中 Owner 决策请求。**
 
 ---
 
@@ -243,7 +243,7 @@ CompetingExplanations
 
 - 原预期适用条件不完整；
 - 新场景无法由现有预期覆盖；
-- Owner 目的存在多种合理解释；
+- 初始业务目的存在多种合理解释；
 
 则创建新的候选预期，不修改旧版本。
 
@@ -274,8 +274,11 @@ CompetingExplanations
     → business-evidence-comparison
       或继续 diagnosis
 
-真正需要 Owner 作业务取舍
-    → OwnerDecisionPacket
+取舍仍处于初始任务目标内
+    → AutonomousTradeoffRecord（自主选择并保留比较证据）
+
+需要改变初始任务目标或越过授权
+    → ScopedBlocker（阻断受影响工作，不发送 Owner 请求）
 ```
 
 ---
@@ -330,40 +333,27 @@ CompetingExplanations
 
 ---
 
-## 8. OwnerDecisionPacket
+## 8. AutonomousTradeoffRecord 与 ScopedBlocker
 
-只有真正的业务取舍才提交 Owner。至少包含：
+仅当数据不能唯一决定业务处理方案时使用，不能把日常工程诊断升级成额外决策关口。
+
+在初始业务目标和授权内，AI 自主比较真实样本、业务代价、反例与下游影响，选择能够验证的方案并记录结果：
 
 ```yaml
-decision_id:
+tradeoff_id:
 business_question:
-why_data_cannot_decide_alone:
-option_a:
-  preserves:
-  sacrifices:
-  supporting_cases:
-  counter_cases:
-option_b:
-  preserves:
-  sacrifices:
-  supporting_cases:
-  counter_cases:
+initial_goal_and_scope:
 common_facts:
-uncertain_facts:
-implementation_implications:
-recommended_observation_cases:
-owner_decision_needed:
+options_and_tradeoffs: []
+chosen_option:
+why_preferred:
+supporting_and_counter_cases: []
+verification_plan:
+rollback_condition:
+remaining_uncertainty:
 ```
 
-示例：
-
-```text
-选择紧密组代表事件时：
-A. 优先最大 Dense/Fight
-B. 优先接近目标拐头或更早确认
-```
-
-提交前，AI 应先比较两种规则在哪些真实位置产生不同结果，以及各自保留／损失什么。
+若不存在可在既定任务目标及操作权限内合法实施的选项，记录 `ScopedBlocker`：受影响工作、原因、已验证事实、缺失条件、可以继续的其他工作与恢复条件。保持该部分未完成，不向 Owner 提问，不伪造授权或通过结论。
 
 ---
 
@@ -413,9 +403,9 @@ DataQualityIssue
 UnresolvedTradeoff
 ```
 
-### 9.4 `OwnerDecisionPacket`
+### 9.4 `AutonomousTradeoffRecord`／`ScopedBlocker`
 
-仅在第三类不确定性下生成。
+仅在真实方案取舍或超出初始任务边界时生成，不能成为每个 finding 的额外步骤。
 
 ---
 
@@ -428,6 +418,6 @@ UnresolvedTradeoff
 5. 不把单一异常等同于通用规则失败。
 6. 不用后来证据无痕重写旧预期和旧判断。
 7. 不把 Pending、缺失和真正反证混为一类。
-8. 不替 Owner 决定业务价值取舍。
+8. 依据初始 GO 自主处理允许范围内的业务取舍，不改变未经授权的业务目标；不得在运行中创建 Owner 确认节点。
 9. 不把当前算法限制自动解释为业务世界的限制。
 10. 不在没有业务影响说明时把所有实现差异都升级为高优先级问题。

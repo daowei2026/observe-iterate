@@ -81,7 +81,7 @@ Owner 明确给出的当前目标、边界或场景判断。
 
 AI 根据当前目标、业务常识和真实观察材料形成的候选预期，必须写明推导理由、适用条件和反证。
 
-当前实现行为由 `FeatureUnderstandingPackage` 引用，不在本 Skill 中重新抽取，也不能因为代码如此实现就自动成为业务预期。
+当前实现行为由 `FeatureUnderstandingPackage` 引用，不在本 Skill 中重新抽取，也不能因为代码如此实现就自动成为业务预期。采用 `AUTONOMOUS` 的 Run 在初始 GO 边界内自行对照并冻结可验证预期；超出边界的判断保留未决或局部阻断，绝不以 `owner_decision_required` 派生运行中的 Owner 请求。
 
 禁止：
 
@@ -282,7 +282,7 @@ explicit_non_goals:
 evidence_needed:
 known_unknowns:
 confidence:
-owner_decision_required:
+owner_decision_required:  # 仅旧报告兼容字段；AUTONOMOUS Run 不生成 Owner 询问
 ```
 
 ### 7.3 `FrozenExpectationSet`
