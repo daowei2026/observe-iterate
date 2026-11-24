@@ -238,6 +238,65 @@ class LongrunV2Tests(unittest.TestCase):
         with self.assertRaises(ValueError):
             check("validate-executor-execution", c)
 
+    def autonomous_codex_fixture(self):
+        c = self.codex_direct_fixture()
+        cm = "codex:" + RUN + ":manager"
+        c["binding"]["manager"] = cm
+        c["binding"]["post_start_owner_policy"] = "AUTONOMOUS"
+        c["delegation"]["issuer"] = cm
+        c["delegation"]["return_to"] = cm
+        c["manager_return"]["sender"] = cm
+        c["manager_invocation"]["recipient"] = cm
+        c["manager_receipt"]["recipient"] = cm
+        c["executor_return"]["return_to"] = cm
+        c["physical_bindings"][cm] = c["physical_bindings"].pop(M)
+        return c
+
+    def test_new_run_requires_explicit_autonomous_policy(self):
+        c = fixture()
+        c["mode"] = "new"
+        c["run_index"] = {}
+        c["actual_owner_go_ref"] = c["binding"]["owner_go_ref"]
+        with self.assertRaisesRegex(ValueError, "autonomous post-start policy"):
+            check("validate-binding", c)
+        c["binding"]["post_start_owner_policy"] = "AUTONOMOUS"
+        self.assertEqual(check("validate-binding", c)["run_id"], RUN)
+
+    def test_native_codex_manager_binding_delegation_and_return(self):
+        c = self.autonomous_codex_fixture()
+        cm = c["binding"]["manager"]
+        self.assertEqual(check("validate-binding", c)["run_id"], RUN)
+        self.assertEqual(check("validate-delegation", c)["recipient"], c["delegation"]["recipient"])
+        self.assertEqual(check("validate-manager-return", c)["return_to"],
+                         "CONTROLLER_WORKFLOW_ROUTING")
+        self.assertEqual(check("validate-executor-return", c)["return_to"], cm)
+
+    def test_invalid_manager_identity_still_rejected(self):
+        c = self.autonomous_codex_fixture()
+        c["binding"]["manager"] = "codex:another-run:manager"
+        with self.assertRaisesRegex(ValueError, "bad manager logical identity"):
+            check("validate-binding", c)
+
+    def test_autonomous_manager_and_executor_cannot_wait_for_owner(self):
+        c = self.autonomous_codex_fixture()
+        c["manager_return"]["professional_state"] = "WAITING_OWNER"
+        c["manager_return"]["owner_request_ref"] = ref("owner_requests/P001/REQUEST.md")
+        with self.assertRaisesRegex(ValueError, "Owner checkpoint prohibited"):
+            check("validate-manager-return", c)
+        c = self.autonomous_codex_fixture()
+        c["executor_return"]["professional_state"] = "WAITING_OWNER"
+        c["executor_return"]["remaining_scope_ref"] = c["binding"]["owner_go_ref"]
+        c["executor_return"]["owner_request_ref"] = ref("owner_requests/P001/REQUEST.md")
+        with self.assertRaisesRegex(ValueError, "Owner checkpoint prohibited"):
+            check("validate-executor-return", c)
+
+    def test_historical_binding_retains_legacy_owner_state(self):
+        c = fixture()
+        c["manager_return"]["professional_state"] = "WAITING_OWNER"
+        c["manager_return"]["owner_request_ref"] = ref("owner_requests/P001/REQUEST.md")
+        self.assertEqual(check("validate-manager-return", c)["return_to"],
+                         "PROFESSIONAL_OWNER_DECISION")
+
     def test_direct_executor_completion_needs_no_worker(self):
         e = self.c["executor_return"]
         e.update(issued_order_refs=[], professional_state="REPORTED_COMPLETE",

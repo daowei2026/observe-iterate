@@ -126,6 +126,11 @@
           "uniqueItems": true,
           "minItems": 0
         },
+        "post_start_owner_policy": {
+          "type": "string",
+          "enum": ["AUTONOMOUS"],
+          "description": "New runs: all post-start routing stays within the adopted workflow; no Owner checkpoint. Absent only on historical bindings."
+        },
         "grants": {
           "type": "array",
           "items": {

@@ -81,7 +81,8 @@ def binding(c):
     b = validated("binding", c.get("binding"))
     run = b["run_id"]
     exact_path(c["binding_ref"], run, "RUN_BINDING.json")
-    require(b["manager"] == "chatgpt:" + run + ":manager", "bad manager logical identity")
+    require(re.fullmatch(r"(?:chatgpt|codex):" + re.escape(run) + r":manager", b["manager"]),
+            "bad manager logical identity")
     require(all(re.fullmatch(r"(?:chatgpt|codex):" + re.escape(run) + r":executor:[A-Za-z0-9._-]+", x)
                 for x in b["executors"]), "bad executor logical identity")
     require(all(re.fullmatch(re.escape("codex:" + run + ":worker:") + r"[A-Za-z0-9._-]+", x)
@@ -90,6 +91,8 @@ def binding(c):
     require(len(roles) == len(set(roles)), "role identity collision")
     require(isinstance(c.get("run_index"), dict), "trusted adopted run index missing")
     if c.get("mode") == "new":
+        require(b.get("post_start_owner_policy") == "AUTONOMOUS",
+                "new Run must set autonomous post-start policy in initial GO")
         require(run not in c["run_index"], "new run already registered")
         require(c.get("actual_owner_go_ref") == b["owner_go_ref"], "not original GO")
     else:
@@ -146,7 +149,11 @@ def professional_receipt(c, role, p):
                "calls/" + p["call_id"] + "/PRO_RETURN.json")
 
 
-def pro_state(p):
+def pro_state(p, b):
+    # Old bindings remain readable; new bindings explicitly disallow post-start Owner requests.
+    if b.get("post_start_owner_policy") == "AUTONOMOUS":
+        require(p["professional_state"] != "WAITING_OWNER" and p["owner_request_ref"] is None,
+                "post-start Owner checkpoint prohibited by autonomous Run policy")
     has_followup = bool(p["issued_order_refs"] or p["issued_delegation_refs"]
                         or p["continuation_ref"] or p["owner_request_ref"])
     if p["professional_state"] == "REPORTED_COMPLETE":
@@ -166,7 +173,7 @@ def manager_return(c, b):
             and p["return_to"] is None and not p["issued_order_refs"]
             and not p["accepted_worker_refs"], "invalid manager return")
     professional_receipt(c, "manager", p)
-    pro_state(p)
+    pro_state(p, b)
     return p
 
 
@@ -196,7 +203,7 @@ def executor_return(c, b, d):
             and p["return_to"] == d["issuer"] and not p["issued_delegation_refs"],
             "invalid executor return / wrong parent D")
     professional_receipt(c, "executor", p)
-    pro_state(p)
+    pro_state(p, b)
     verified = set(c.get("verified_worker_return_refs", []))
     require(set(p["accepted_worker_refs"]).issubset(verified),
             "executor accepted an unverified Worker return")
@@ -311,7 +318,10 @@ def check(action, c):
         return invocation_preflight(c, b)
     if action == "validate-manager-return":
         p = manager_return(c, b)
-        return {"return_to": "PROFESSIONAL_OWNER_DECISION", "call_id": p["call_id"],
+        destination = ("CONTROLLER_WORKFLOW_ROUTING"
+                       if b.get("post_start_owner_policy") == "AUTONOMOUS"
+                       else "PROFESSIONAL_OWNER_DECISION")  # historical bindings only
+        return {"return_to": destination, "call_id": p["call_id"],
                 "state": p["professional_state"]}
     d = delegation(c, b)
     if action == "validate-delegation":
