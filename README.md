@@ -1,9 +1,6 @@
 # 观察—分析业务控制面
 
-本仓库同时保留两套可显式采用的控制面：
-
-- `control/`：候选 V0.2，覆盖共享 Feature 理解、全量统计、观察材料和场景合理性全链；
-- `control-v0.3/`：统计驱动的轻量闭环，优先完成“运行最新实例—做全量统计—关闭明显问题—重跑重统计—释放给下游”。
+本分支的现行控制面为 `control/`（V0.3），用于统计驱动的单特征闭环。原 V0.2 控制面保留在 Git 历史中。
 
 历史 Run、历史 Chat 和已经锁定 V0.2 的任务不因 V0.3 出现而自动升级。新 Run 必须在 Owner GO 中锁定实际采用的 commit、控制面、Skill 和任务输入。
 
@@ -11,13 +8,13 @@
 
 | 入口 | 用途 |
 |---|---|
-| [control-v0.3/README.md](control-v0.3/README.md) | 当前统计驱动闭环与下游释放 |
+| [control/README.md](control/README.md) | 当前统计驱动闭环与下游释放 |
 | [task-inputs/wall-f-parallel-closure-20261122/](task-inputs/wall-f-parallel-closure-20261122/README.md) | WALL 与 F 两条线的本次任务输入 |
 | [skills/feature-understanding/SKILL.md](skills/feature-understanding/SKILL.md) | 共享 Feature 对象、状态、事件、中间判断、参数和结果字段理解 |
 | [业务对象判别补充](skills/feature-understanding/BUSINESS_OBJECT_QUALIFICATION_GUIDE.md) | 防止把运行配置、模块和计算步骤误当业务对象 |
 | [skills/reasonableness-analysis/README.md](skills/reasonableness-analysis/README.md) | 合理性 Skill 入口 |
 | [统计驱动实践补充](skills/reasonableness-analysis/STATISTICS_DRIVEN_PRACTICE.md) | 统计选择、抽样、诊断和标定的轻量通用规则 |
-| [control/](control/01_L0_完整业务任务与双向衔接.md) | 原 V0.2 完整控制面 |
+
 | [longrun/](longrun/README.md) | 多 Run、真实派发、独立工作区和 Codex 原生直执行 |
 
 ## V0.3 的取舍
@@ -32,9 +29,9 @@ V0.3 只增加真正影响业务分析质量或运行效率的内容：
 
 本轮明确不新增 Feature 执行 Skill、实现修正 Skill、Campaign schema 或自动调度器。Feature 运行是带版本绑定的实际动作；实现修正沿已有诊断结果进入普通工程修改和回归验证；两条线的并行与汇合由现有多 Run 控制器和本次任务输入完成。
 
-## V0.2 继续独立有效
+## V0.2 历史路径
 
-`control/` 仍保留完整路径：
+原 V0.2 控制面可从历史锁定 commit 读取，完整路径为：
 
 ```text
 FeatureUnderstandingPackage
