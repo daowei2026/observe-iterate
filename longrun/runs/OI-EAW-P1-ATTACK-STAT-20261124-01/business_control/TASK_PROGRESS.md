@@ -1,97 +1,90 @@
 # TASK_PROGRESS｜AttackSegment 机器状态与恢复
 
-## A. Run、采用来源与角色
+## A. Run、来源和角色
 
 - run_id：`OI-EAW-P1-ATTACK-STAT-20261124-01`；work_id：`OI-EAW-P1-ATTACK-STAT`；business_case_id：`EAW-P1-ATTACKSEGMENT`
-- 专业控制统一 commit：`9877826236e0995e7255e6cbfedc2d1b89dea6da`
-- L0：`daowei2026/observe-iterate@9877826236e0995e7255e6cbfedc2d1b89dea6da:control/01_L0_统计驱动的单特征闭环.md`；manager 指南：`daowei2026/observe-iterate@9877826236e0995e7255e6cbfedc2d1b89dea6da:longrun/professional/PRO_MANAGER_GUIDE.md`
-- 协议／profile：`daowei2026/observe-iterate@9877826236e0995e7255e6cbfedc2d1b89dea6da:longrun/contracts/LONGRUN_PROTOCOL_V2.md`；`daowei2026/observe-iterate@9877826236e0995e7255e6cbfedc2d1b89dea6da:longrun/CODEX_NATIVE_EXECUTION_PROFILE.md`
-- 唯一业务输入／ReviewTarget：`daowei2026/observe-iterate@9877826236e0995e7255e6cbfedc2d1b89dea6da:task-inputs/eaw-p1-attack-stat-20261124/ATTACK_RUN_INPUT.md`
+- 专业控制统一 commit：`9877826236e0995e7255e6cbfedc2d1b89dea6da`；controller 版本：`815c505c1cc3d965aaafa831d23c4c88368cb70a`
+- 原 L0：`daowei2026/observe-iterate@9877826236e0995e7255e6cbfedc2d1b89dea6da:control/01_L0_统计驱动的单特征闭环.md`；manager 指南：`daowei2026/observe-iterate@9877826236e0995e7255e6cbfedc2d1b89dea6da:longrun/professional/PRO_MANAGER_GUIDE.md`
+- 当前现有 Skill：`daowei2026/observe-iterate@9877826236e0995e7255e6cbfedc2d1b89dea6da:skills/reasonableness-analysis/business-discrepancy-diagnosis/SKILL.md`；适用补充：`daowei2026/observe-iterate@9877826236e0995e7255e6cbfedc2d1b89dea6da:skills/reasonableness-analysis/STATISTICS_DRIVEN_PRACTICE.md`
+- 唯一业务输入／ReviewTarget：`daowei2026/observe-iterate@9877826236e0995e7255e6cbfedc2d1b89dea6da:task-inputs/eaw-p1-attack-stat-20261124/ATTACK_RUN_INPUT.md`；正式目标仍为完整 rb/m。
 - Owner：`daowei2026/observe-iterate@b912f85368fed916c45603c81aa8ef304bc146b6:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/OWNER_START.md`；Binding：`daowei2026/observe-iterate@723d65a2ca4fbcf691e9a82eb153a21faae18390:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/RUN_BINDING.json`；Resource：`daowei2026/observe-iterate@723d65a2ca4fbcf691e9a82eb153a21faae18390:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/RUN_RESOURCE_BINDING.json`
-- execution_profile：`CODEX_NATIVE_DIRECT`；post_start_owner_policy：`AUTONOMOUS`；`workers=[]`
-- controller 版本仍为 `815c505c1cc3d965aaafa831d23c4c88368cb70a`。
-- 原 manager：`codex:OI-EAW-P1-ATTACK-STAT-20261124-01:manager`；原 E1：`codex:OI-EAW-P1-ATTACK-STAT-20261124-01:executor:E1`；继续复用，物理映射由 controller 持有。
+- profile：`CODEX_NATIVE_DIRECT`；post_start_owner_policy：`AUTONOMOUS`；`workers=[]`
+- manager：`codex:OI-EAW-P1-ATTACK-STAT-20261124-01:manager`；复用原 E1：`codex:OI-EAW-P1-ATTACK-STAT-20261124-01:executor:E1`，物理映射和新 C 派达由 controller 负责。
 - workspace：`/dwdhome/fy/BASE_E6_2_copy`；TIS：`/dwdhome/fy/BASE_E6_2_copy/mquant/tis`。
-- 当前 INVOCATION：`daowei2026/observe-iterate@6c0e83031bf4bab75db33599858ed3dd959782f2:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0008/INVOCATION.json`；FULL_ASSIGNMENT：`daowei2026/observe-iterate@22290b9ea6332fd9e3cac357898a39a2e580fe62:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0008/FULL_ASSIGNMENT.md`。
-- controller 已独立核 C0007 的原 user payload、invocation/token、实际 sol/max、原 D002 回交关系、协议与 Git 原件，依据为上述准确 FULL_ASSIGNMENT；本 manager 不合成物理 receipt。
-- 当前 snapshot：C0008 协调投影 current；X 部分有效、m 剩余工程资源等待。业务入口：[BUSINESS_PROGRESS.md](BUSINESS_PROGRESS.md)。
+- 当前 INVOCATION：`daowei2026/observe-iterate@954d75f884b043cbc163963ef2fea978effbd148:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0010/INVOCATION.json`；FULL_ASSIGNMENT：`daowei2026/observe-iterate@beb0dded73ea5df390a874bdfd3b0af80737dab5:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0010/FULL_ASSIGNMENT.md`。
+- controller 已核 C0009 原 payload/token、实际 sol/max、D002 issuer/return_to 与 executor_return；依据为准确 FULL_ASSIGNMENT，本 manager 不构造物理 receipt。
+- snapshot：C0010 current；原 D002 未完，X 工程缺口待专业诊断。业务入口：[BUSINESS_PROGRESS.md](BUSINESS_PROGRESS.md)。
 
-## B. 当前正式实例与有效 X 范围
+## B. 当前代码、实例与有效结果
 
-| 项目 | 当前事实 | 准确来源 |
+| 项目 | 当前事实 | 来源 |
 |---|---|---|
-| 代码／分支 | TIS `179016111ed0394f92025313e46bd13534932a74`；`codex/oi-eaw-p1-attack-fix-20261124-01`；tracked 产品代码未改 | 当前任务和原生绑定 |
-| constructor／参数 | `mquant.tis.hf.prel0.attack_flow_assembler.AttackFlowAssembler()`／`attack-default`；业务参数未改 | 实际 ppdict/ppid、code fingerprints、receipts 逐对象保存在当前绑定；不以 U 构造身份代替实际运行绑定 |
-| 正式范围 | `TA_updto20240229_DBA`；`rb,m`；`2021-01-01..2021-12-31`；`night_end_at_2300`，未缩小目标 | 唯一输入／当前绑定 |
-| 当前原生绑定 | `INCOMPLETE_WAITING_SHARED_LOCK`；`formal_complete=false`、`eligible_for_G=false` | `daowei2026/observe-iterate@0837509a7200dcffcfced4113cab22ec575bdcce:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/professional_results/D002/C0007/FeatureRunResultBinding.json` |
-| 原生 U | PARTIAL，未重做／未自动关闭具名未知 | `daowei2026/observe-iterate@758c77a566672a4514cbff6d3f26236769d17b59:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/professional_results/D001/FeatureUnderstandingPackage.json`；`daowei2026/observe-iterate@758c77a566672a4514cbff6d3f26236769d17b59:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/professional_results/D001/REMAINING_SCOPE.md` |
-| rb Wall／tactical／structural | 本 Run 当前版本均已生产并完整读回验证 | 当前绑定 per_feature_results／receipts |
-| rb Attack 三产品 | 已生产，R01 只读完整重算及按列名全量读回 35 表有效，artifact manifest 与 receipt／metadata 不变 | 当前绑定 rb attack 及 readback_reconciliation |
-| m Wall | 当前版本 receipt 与 5 表读回已有；补正运行上下文后的只读复核在 A04 未执行 | 当前绑定 m wall、A04 和原报告 |
-| m tactical／structural／Attack | `NOT_RUN_AFTER_TRADE_SCOPE_CORRECTION_WAITING_SHARED_LOCK`；补正后仍未执行，新目标不存在 | 当前绑定与原恢复原件 |
-| 父 Run | `incomplete / IN_PROGRESS` | rb 局部有效不等于完整 rb/m X；当前无 G／诊断／Release |
+| TIS／分支 | `179016111ed0394f92025313e46bd13534932a74`；`codex/oi-eaw-p1-attack-fix-20261124-01`；tracked 产品源码无改 | C0009 完整绑定和当前任务 |
+| Feature／参数 | AttackFlowAssembler()／`attack-default`，Wall／两组 F4 默认业务参数不变 | 逐对象 ppdict/ppid、源码指纹和 receipts 保存在原生绑定 |
+| 正式范围 | `TA_updto20240229_DBA`；`rb,m`；`2021-01-01..2021-12-31`；`night_end_at_2300` | 唯一业务输入，未缩减范围 |
+| 当前绑定 | `INCOMPLETE_WITH_RECORDED_ENGINEERING_GAP`；`formal_complete=false`、`eligible_for_G=false` | `daowei2026/observe-iterate@d3e05b73fd2a6fcc3b3b5d248bdd61f11e8f7a34:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/professional_results/D002/C0009/FeatureRunResultBinding.json` |
+| U | PARTIAL，原具名未知和 NOT_EXPOSED 保留 | `daowei2026/observe-iterate@758c77a566672a4514cbff6d3f26236769d17b59:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/professional_results/D001/FeatureUnderstandingPackage.json`；`daowei2026/observe-iterate@758c77a566672a4514cbff6d3f26236769d17b59:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/professional_results/D001/REMAINING_SCOPE.md` |
+| rb 三产品 | 35 表严格读回资格沿 C0007 保留；其 Wall/tactical/structural 也保留有效资格 | 当前绑定及原 C0007 |
+| m 实际上下文 | `stk_tlist=m`，`symbols=['m']`、`symbol_index=0`、`trading_unit=10`，A05 已实测 | current_call_execution |
+| m Wall | `REUSED_CURRENT_RUN_AND_FULL_READBACK_VERIFIED`；5 表、receipt、PPID、同版本指纹、当前原生轴及 source_scope 全量只读核验通过 | 当前绑定 m wall，未重产 Wall |
+| m 两 F4 | `EXECUTION_OR_READBACK_FAILED`，已真实 Gen，未取得完整有效结果/成功 receipt/严格读回 | 当前绑定异常链及原报告 |
+| m Attack | `BLOCKED_MISSING_CURRENT_UPSTREAM`；本 C0009 未启动，目录不存在 | `current_call_attack_execution_started=false` 及原 effects |
+| 父 Run | `incomplete / IN_PROGRESS` | 完整 X/G、诊断结果及 Release 未形成 |
 
-当前绑定的累计 `feature_execution_started=true`、`attack_feature_execution_started=true` 对应此前已发生的生产；A04 单项仍为 `feature_execution_started=false`。两者作用域分别保留。
+当前绑定累计 `attack_feature_execution_started=true` 只对应历史 rb；C0009 的 m Attack 未启动，作用域分别保留。C0009 原报告：`daowei2026/observe-iterate@d3e05b73fd2a6fcc3b3b5d248bdd61f11e8f7a34:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0009/EXECUTOR_REPORT.md`；有效 Return：`daowei2026/observe-iterate@ebbf7b69a092459f8011cf90a37383ec5fdd5696:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0009/PRO_RETURN.json`。
 
-C0007 原报告：`daowei2026/observe-iterate@0837509a7200dcffcfced4113cab22ec575bdcce:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0007/EXECUTOR_REPORT.md`；有效 Return：`daowei2026/observe-iterate@ab0ce5541a579ebaf2ae63bec698752576c50ae0:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0007/PRO_RETURN.json`。
+## C. 原工作与本次既有 Skill 委派
 
-## C. 原 D002 与真实 C／尝试历史
+- 原 D002：`daowei2026/observe-iterate@c9742986ed6fbb7bc2d55bd87cab54de42c7539f:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/delegations/D002/DELEGATION.json`，`issuer_call_id=C0004`；签发 Return：`daowei2026/observe-iterate@74a46582f44b16b1f7f0890c30314684d211ef3f:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0004/PRO_RETURN.json`。本次不改写原 D002，不把其 X 变更为诊断完成。
+- C0009 原恢复：`daowei2026/observe-iterate@d3e05b73fd2a6fcc3b3b5d248bdd61f11e8f7a34:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/professional_results/D002/C0009/REMAINING_SCOPE.md`，原文明确本 D002 不含诊断或产品修复，需 manager 按原 Workflow 协调校验失败后继。
+- 本 C 签发 D003：`issuer_call_id=C0010`，recipient 为原 E1，回原 manager；[机读件](../delegations/D003/DELEGATION.json)／[正文](../delegations/D003/DELEGATION.md) 本提交发布。
+- D003 使用原 `business-discrepancy-diagnosis` Skill 对已记录 X 工程异常作专业来源／责任核查。其原文第 1 节适用于多种竞争解释和改动前判断问题层，第 3／4 节规定事实缺口由执行者补查；输出／完成条件直接沿 Skill。
+- 诊断输入只引用原正式目标、U 处理链、C0009 实际比较／绑定、失败 effects 和原权限；没有伪造 G profile、候选队列或业务 finding。完整 G 仍未开展，不新增专业 Gate。
+- D003 发布不表示已物理派达或诊断完成；controller 核本 C 真实 Return／D003 后，复用原 E1 发新 C。当前没有 DiagnosisReport、LogicLocalization 或 UpstreamFinding。
 
-原 D002：`daowei2026/observe-iterate@c9742986ed6fbb7bc2d55bd87cab54de42c7539f:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/delegations/D002/DELEGATION.json`，`issuer_call_id=C0004`；签发 Return：`daowei2026/observe-iterate@74a46582f44b16b1f7f0890c30314684d211ef3f:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0004/PRO_RETURN.json`。C0006／C0007 是同一未完成工作的续接，本 C 不更换签发者，不签 D003。
+## D. 真实历史与失败 effects
 
-| 调用／记录 | 已发生事实与效力 | 保留来源 |
+| 调用／尝试 | 已发生事实 | 原件／保留入口 |
 |---|---|---|
-| C0001／D001 | 原 manager 签发 U，父 Run 未完成 | `daowei2026/observe-iterate@e20128bff682c58bc2a66a6c5ed176f78634c476:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/delegations/D001/DELEGATION.json` |
-| C0002／C0003 | U 产物 PARTIAL；C0002 Return 状态冲突保留，C0003 同 E1 定向补正有效回交，不重做 U | 旧 Return：`daowei2026/observe-iterate@5289eab7a18b434d8316f7bc87e7685d81df3370:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0002/PRO_RETURN.json`；补正：`daowei2026/observe-iterate@72f33ce96e78653cfd94ae9fba0579fe50548848:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0003/PRO_RETURN.json` |
-| C0004／D002 | manager 消费有效 U，签发原 L0 X 工程工作 | 上述原 D002 及签发 Return |
-| C0005／A01 | 未得锁，未执行 Feature／创建正式 store；原件逐字节保留 | `daowei2026/observe-iterate@647871627d9f5f591a23d54c4a2a842b39f05346:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/professional_results/D002/FeatureRunResultBinding.json` |
-| C0006 | manager 消费 A01 资源等待，沿原 D002／E1 续接，无新 D | Return：`daowei2026/observe-iterate@0d2137442b76f872f2b38eb4e3cf3d16d98303f2:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0006/PRO_RETURN.json`；当时双进度：`daowei2026/observe-iterate@7cc81c24b94a1adc021e5ac6fc4e92e3e6ab091f:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/business_control/TASK_PROGRESS.md` |
-| C0007／A02 | 取得并释放原锁，任何 Feature 前由运行器配置断言终止，无 store；框架类名匹配作工程纠正，旧脚本／错误保留 | 当前完整绑定 attempt_history 与原报告 |
-| C0007／A03 | 实际取得并释放原锁；部分生产成功；rb 读回列顺序断言和 m F4 交易集异常原样保留 | 当前绑定 original_production_feature_results／recorded_errors |
-| C0007／R01 | 取得并释放原锁，只读完整重算与按列名核对 rb 35 表；禁止 dump／数据库／缓存写入，既有 artifact／receipt 元数据不变 | 当前绑定 readback_reconciliation |
-| C0007／A04 | 600 秒窗口未获原锁，runner 已结束，未持锁／未执行补正后的 m 工程 | 当前绑定 continuation_execution／post_execution_check |
-| C0008 | 原 manager 已消费 C0007 的有效部分 X 与真实剩余，保留原 D002／E1，未签新 D | 报告：`daowei2026/observe-iterate@d085c40dd1880dcba255bc68cdd4f57c71bf00e8:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0008/MANAGER_REPORT.md`；实际 Return：`daowei2026/observe-iterate@e38beb147f5238eeebebb1a9203676c6843573b4:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0008/PRO_RETURN.json`，均已发布并逐字回读 |
+| C0001／D001 | 首轮 U 签发，之后原生 U PARTIAL | `daowei2026/observe-iterate@e20128bff682c58bc2a66a6c5ed176f78634c476:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/delegations/D001/DELEGATION.json` |
+| C0002／C0003 | U 报告和旧机器状态冲突保留；同 E1 C0003 定向补正，不重做 U | `daowei2026/observe-iterate@72f33ce96e78653cfd94ae9fba0579fe50548848:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0003/PRO_RETURN.json`；完整历史见前次进度快照 |
+| C0004／D002 | 签发原 L0 X | 上述原 D002 与 C0004 Return |
+| C0005／A01、C0006 | A01 未获锁、未执行 Feature；manager 资源等待协调，无新 D | `daowei2026/observe-iterate@0d2137442b76f872f2b38eb4e3cf3d16d98303f2:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0006/PRO_RETURN.json` |
+| C0007／A02/A03/R01/A04、C0008 | A02 运行器断言保留；A03 部分生产、R01 rb 35 表有效；A04 未获锁；C0008 沿原 D002 剩余 m 续接 | `daowei2026/observe-iterate@e38beb147f5238eeebebb1a9203676c6843573b4:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0008/PRO_RETURN.json`；当时双进度：`daowei2026/observe-iterate@e71c51aca17a3349bab09bcfed4c3b2c6595eaf8:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/business_control/TASK_PROGRESS.md` |
+| C0009／A05 | 已采用原生 m 上下文，取得原锁后复核 Wall 并真实运行两 F4；两者校验失败，m Attack 未启动 | 当前完整绑定／报告／失败清单 |
+| C0010／D003 | 原 manager 消费真实未完 X，签发既有诊断 Skill，未作专业归因 | [本 C 报告](../calls/C0010/MANAGER_REPORT.md)，待 controller 物理派达 |
 
-A01/A02/A03/R01/A04 的原记录、错误、journal、结果和参数实例均保留；本 C 不改写原产物。完整历史恢复入口仍可追溯上述前次进度快照。本 C 消费 executor Return，`accepted_worker_refs=[]`，无 W 或 Worker Return。
+A05 原始失败为：`交易日区间在 2021-03-12 00:00:00 前不连续: 1792800 != 1792801`。调用栈经过 pressure_big_deal.py 至 tick_quote_context.py。堆栈是执行证据，未证明责任归属；manager 不依据文件名、栈位置或其它 Run 预定原因／修法。
 
-## D. 工程纠正与原未决范围
+失败 effects：`daowei2026/observe-iterate@d3e05b73fd2a6fcc3b3b5d248bdd61f11e8f7a34:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/professional_results/D002/C0009/evidence/failed_F4_effect_manifest.json`。共 12 个 DBA／677,239,968 字节；每个文件的路径、大小、mtime、SHA256 和 `INCOMPLETE_UNVERIFIED_FAILED_F4_EFFECT_DO_NOT_CONSUME_OR_OVERWRITE` 资格均保留。完整读回和成功 F4 receipt 未建立，不作为有效结果或 G 输入，不原路径覆盖重试。
 
-m 的 A03 两组 F4 异常，原 E1 在 X 工程内只读核实为 runner 沿用 `OptContext` 默认 `black` 交易集，实际不含正式输入已有的 m。原生 `m.csv` 仅映射 m，索引及交易单位可读，补正上下文与 fresh 写面前检已完成。Feature 业务参数、市场数据、正式品种／时间／SOF／日历和产品源码均未变。运行上下文补正不是专业 Diagnosis、业务 finding 或上游代码修改许可。
+原 640 个既存产物文件和历史 JSON／发布原件及 U 未变，原 A01/A02/A03/R01/A04/A05、原错误和 journal 均保留。本 C 未重新读取市场结果或修改失败路径。
 
-A04 未获锁，未执行计划中的 m Wall 只读复核或补正后的 F4／Attack；前检成功不能写作这些工程已完成。m Wall 的已有读回事实与其补正上下文后的待复核分别保留。
+## E. 当前未完成范围、权限与恢复
 
-原 U 的 UQ01–UQ07 与 NOT_EXPOSED 按 `daowei2026/observe-iterate@758c77a566672a4514cbff6d3f26236769d17b59:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/professional_results/D001/FeatureUnderstandingPackage.json`、`daowei2026/observe-iterate@758c77a566672a4514cbff6d3f26236769d17b59:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/professional_results/D001/REMAINING_SCOPE.md` 保留：部分运行事实由 C0007 绑定补充，原 U 状态未自动改为 COMPLETE。分支可达性、末尾状态、参考合同／职责差异、信息最早可得时间等没有由本 C 新作判断。
-
-| 节点 | 当前状态 | 原合同后继资格 |
+| 范围 | 当前状态 | 合法后继／恢复来源 |
 |---|---|---|
-| U／D001 | PARTIAL，已消费，原未知保留 | 依原 Skill 和有效运行事实处理相关更新 |
-| X／D002 | rb 部分有效，m 剩余工程等待 | 使用 C0007 最新 continuation 续接原 D002 |
-| G | 未执行，`eligible_for_G=false` | 原 L0 要求当前完整正式结果，rb 局部成果不能替代 |
-| finding／诊断／修正 | 尚无正式 finding、DiagnosisReport 或产品修复 | U 来源差异和运行器纠正未升级为业务结论 |
-| Release | 未形成 FeatureReleaseGate／UpstreamReleasePackage | 沿原 L0 完成条件，无新增 Gate |
+| U | PARTIAL | 按原 Skill 和新的有效事实处理相关更新，未知不自动关闭 |
+| X／D002 | m 无有效 F4，Attack 未启动；完整 rb/m X 未完成 | 原 C0009 剩余及诊断专业回交；未确认合法有效执行条件前，不重复相同失败 Gen |
+| 诊断／D003 | 已签发，待原 E1 专业执行 | 原 Skill 的 DiagnosisReport 及相关原生记录，不预定责任结论 |
+| G | 未执行，`eligible_for_G=false` | 须有当前完整正式结果，不用局部 rb 或失败半成品替代 |
+| UpstreamFinding | 尚未形成 | 若专业证据指向上游，依原输入／Skill 如实记录原因、影响和恢复条件 |
+| 修正／Release | 未发生／未形成 | 原 GO 禁止面和原 L0 完成条件持续有效 |
 
-## E. 当前资源事实与具名恢复路径
+Owner 代码修改授权仅 Attack 自身两文件、直接测试及其专属参数／业务常量；F4、Wall、其它上游、公共模块、市场数据禁止修改。D003 当前仅诊断，机读写面为 copy 工作区与本 Run 记录分支，不扩大为上游修复许可。manager 只协调发布，不跑 X/G、诊断实验或修改工程代码。
 
-仍为同一生产锁 `/dwdhome/fy/cgpterm/artifacts/wall-f-closure-20261122/FORMAL_PRODUCTION.lock`，原记录 inode=`15061041`。A03 与 R01 实际持锁后释放；A04 的 `lock_acquired=false / lock_released=false` 表示其从未持锁。全部本 Run runner 已结束，没有本 Run 遗留占锁。controller 最近核同锁由另一获准生产者持有，依据为 C0008 FULL_ASSIGNMENT；本 manager 不自行操作或复测生产锁。C0006 当时的 Build 持锁状态保留为历史，不当作本次持有者身份。
+正式 rb/m、2021 全年、SOF 与日历不变。不得通过缩窗、换品种、绕过检查、改数据或覆盖半成品取得成功表象；局部诊断证据不能替代正式 X/G。若实际证据指向越权修改，只保留受影响工作的局部阻断和恢复条件，不新增 Owner 业务审批。
 
-当前 continuation：`daowei2026/observe-iterate@0837509a7200dcffcfced4113cab22ec575bdcce:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/professional_results/D002/C0007/REMAINING_SCOPE.md`，替代当前路由中旧的 C0005 恢复指针，旧原件仍保留。
+A05 实际获取并释放原锁：`/dwdhome/fy/cgpterm/artifacts/wall-f-closure-20261122/FORMAL_PRODUCTION.lock`，device=83、inode=15061041。runner／观察器已结束，后检探测获取释放不是预约；没有本 Run 遗留占锁。未来共享写入仍需实际取得同一原锁，由 controller／E1 核现场，不改锁、另造锁或强停他人。当前生产阻断记录为已发生工程校验失败，未继续登记为旧的“未获锁未执行”状态。
 
-下一合法动作由 `codex:OI-EAW-P1-ATTACK-STAT-20261124-01:controller` 核原锁自然释放、A04 终态／未持锁／未执行 m 和新目标状态后，以新的真实 C 在原 E1／copy 工作区续接原 D002 剩余 m 工程；原 E1 使用新 attempt，不能重写 A04，不预占后继编号。完全同一性已核的本 Run 成果保留复用，原恢复范围只针对未完成工程。探测不是预约；持锁条件未变时不重复强启动新的 600 秒生产尝试。
+独立工作继续；Build 的控制版本、业务结果、修复与诊断结论均不迁用。
 
-锁、源工作区、物理权限和实际派达由 controller 独立核实；不强停持有者、不改锁或另造锁、不覆盖旧 Run／旧尝试。当前只影响具体生产写面，独立工作继续。Build 的专业版本、业务结果、角色和完成状态均不混用。
+## F. 当前具名下一动作与发行
 
-Owner／Binding 和禁止面持续有效：manager 仅协调及发布本 Run 记录，不运行 X/G 或改工程代码；E1 仍受原 D002／Owner 的操作写面约束，不越权改 Wall、F4、其它上游、公共模块或市场数据。不新增 Owner、专业 Skill、Q/Gate、Worker 或其它 Feature Run。
+controller 核 C0010 真实 Return、D003 与原权限／现场绑定后，在原 E1 派达现有偏差诊断 Skill；专业原生回交原 manager，再按原 Workflow、原 D002 剩余和真实权限协调。当前没有重复生产、G 或 Feature 验收任务。
 
-## F. 本 C 发布和双视图同步
+BUSINESS_PROGRESS 已同步有效 rb/m Wall、上下文纠正后真实 F4 失败、12 个无效半成品、责任未诊断和本次既有 Skill 后继。报告、D003 和双进度先发布并准确回读，再发布本 C 原 v2 Return。
 
-BUSINESS_PROGRESS 已同步 rb 有效结果、m Wall 读回、运行上下文遗漏与纠正前检、A04 未执行以及完整 X/G 未满足。当前父 Run IN_PROGRESS。
+C0010 Return 保持 `role=manager / IN_PROGRESS`、`return_to=null`，引用已存在 D003、报告和进度；`issued_order_refs=[]`、`accepted_worker_refs=[]`、`owner_request_ref=null`。实际发行引用在回读后补记，避免循环。
 
-本 C 实际发行事实：
-
-- 报告：`daowei2026/observe-iterate@d085c40dd1880dcba255bc68cdd4f57c71bf00e8:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0008/MANAGER_REPORT.md`；双进度先前快照同 `d085c40dd1880dcba255bc68cdd4f57c71bf00e8` 提交，三个文件均已逐字回读。
-- Return：`daowei2026/observe-iterate@e38beb147f5238eeebebb1a9203676c6843573b4:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0008/PRO_RETURN.json`，以先前提交为 parent，普通条件提交发布并逐字回读。
-- Return 采用原 `longrun-professional-return/v2`，`role=manager / professional_state=IN_PROGRESS`、`return_to=null`，`issued_delegation_refs=[]`、`issued_order_refs=[]`、`accepted_worker_refs=[]`、`owner_request_ref=null`。
-- remaining_scope 引用 `d085c40dd1880dcba255bc68cdd4f57c71bf00e8` 的已存在进度，continuation 保持原 `daowei2026/observe-iterate@0837509a7200dcffcfced4113cab22ec575bdcce:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/professional_results/D002/C0007/REMAINING_SCOPE.md`；本次只补记实际发行事实，避免引用循环。
-- 原 D002 签发仍为 C0004，原 E1 与全部既有尝试保留；没有新增 D、重派生产或改写原生产物。发行核验不表示锁已释放、controller 已核回收、物理派达完成或 m 生产恢复。
-
-快照日期：2026-11-24，C0008；记录分支仅 `codex/oi-eaw-p1-attack-stat-20261124-01`；已核 Personal 连接。
+快照：2026-11-24，当前 C0010；父 Run IN_PROGRESS；记录分支仅 `codex/oi-eaw-p1-attack-stat-20261124-01`，已核 Personal 连接。
