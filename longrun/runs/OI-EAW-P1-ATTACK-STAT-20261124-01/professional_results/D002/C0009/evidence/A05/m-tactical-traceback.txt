@@ -1,0 +1,39 @@
+Traceback (most recent call last):
+  File "/dwdhome/fy/BASE_E6_2_copy/mquant/frame/lang/internal/base.py", line 737, in run
+    return self._execute()
+  File "/dwdhome/fy/BASE_E6_2_copy/mquant/frame/lang/internal/base.py", line 1659, in _execute
+    res = self._run_own()
+  File "/dwdhome/fy/BASE_E6_2_copy/mquant/frame/lang/internal/base.py", line 1708, in _run_own
+    res = self._run_with(write=True, read=False)
+  File "/dwdhome/fy/BASE_E6_2_copy/mquant/tis/hf/prel0/p1_dba_export.py", line 526, in _run_with
+    res = super()._run_with(write=write, read=read)
+  File "/dwdhome/fy/BASE_E6_2_copy/mquant/frame/lang/internal/base.py", line 1733, in _run_with
+    self.dump(res,full_dir = self.full_dir,tar_name = self.tar_name,sof = self.sof)
+  File "/dwdhome/fy/BASE_E6_2_copy/mquant/tis/hf/prel0/p1_dba_export.py", line 552, in dump
+    ordinary_frames = plan.execute(writer.append)
+  File "/dwdhome/fy/BASE_E6_2_copy/mquant/tis/hf/prel0/p1_dba_export.py", line 120, in execute
+    frames = self._execute(append_chunk)
+  File "/dwdhome/fy/BASE_E6_2_copy/mquant/tis/hf/prel0/pressure_big_deal.py", line 615, in execute
+    for chunk in _iter_pressure_big_deal_trading_day_chunks(
+  File "/dwdhome/fy/BASE_E6_2_copy/mquant/tis/hf/prel0/pressure_big_deal.py", line 230, in _iter_pressure_big_deal_trading_day_chunks
+    chunk_plan = support._trading_day_chunk_plan(cc_df)
+  File "/dwdhome/fy/BASE_E6_2_copy/mquant/tis/hf/prel0/tick_quote_context.py", line 238, in _trading_day_chunk_plan
+    raise ValueError(
+ValueError: 交易日区间在 2021-03-12 00:00:00 前不连续: 1792800 != 1792801
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/dwdhome/fy/BASE_E6_2_copy/artifacts/OI-EAW-P1-ATTACK-STAT-20261124-01/D002/C0009/run_formal_x_A05.py", line 174, in <module>
+    output=feature.run(CalType.Gen).F
+  File "/dwdhome/fy/BASE_E6_2_copy/mquant/frame/lang/internal/base.py", line 740, in run
+    raise Exception(f"{self.ppname}({ppshow(self.ppdict)}) \n{self.param_path}") from e
+Exception: DirectedBigDealTick({
+  "parameter_set_id": 'tactical-default',
+  "qualification_family": 'tactical',
+  "amt_n": 30,
+  "lane_threshold_map": {'tactical': ['0.99', '0.995']},
+  "same_best_tol_ticks": 0,
+  "big_deal_ratio_min": 1.0,
+}) 
+2/c/c/5/a/e/c/40baf32977ecb208813b925f04fda5d1a

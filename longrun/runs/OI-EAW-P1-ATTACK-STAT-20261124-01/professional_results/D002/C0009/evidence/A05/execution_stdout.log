@@ -1,0 +1,12 @@
+{"at": "2026-11-24T10:32:35.535215+00:00", "stage": "WAITING_SHARED_PRODUCTION_LOCK"}
+{"at": "2026-11-24T10:32:36.269572+00:00", "stage": "SHARED_PRODUCTION_LOCK_ACQUIRED"}
+[2026-11-24T18:33:18 3715753](mquant) Wall 输入排除全空半秒日历占位 17 行: ['2021-01-18T09:00:00.500000', '2021-01-18T10:30:00.500000', '2021-01-18T13:30:00.500000', '2021-02-09T13:30:00.500000', '2021-03-11T21:00:00.500000', '2021-04-20T10:30:00.500000', '2021-04-23T13:30:00.500000', '2021-05-28T21:00:00.500000', '2021-08-11T13:30:00.500000', '2021-08-13T10:30:00.500000', '2021-08-13T13:30:00.500000', '2021-09-15T13:30:00.500000', '2021-09-22T21:00:00.500000', '2021-10-21T10:30:00.500000', '2021-11-17T21:00:00.500000', '2021-11-24T10:30:00.500000', '2021-11-24T13:30:00.500000']
+ -WARNING- File "/dwdhome/fy/BASE_E6_2_copy/mquant/tis/hf/prel0/wall_assembler.py", line 471, in _exclude_empty_calendar_padding
+{"at": "2026-11-24T10:33:18.921721+00:00", "stage": "CURRENT_RUN_WALL_READONLY_REUSE_VERIFIED", "symbol": "m", "feature": "wall", "table_count": 5}
+{"at": "2026-11-24T10:33:18.978893+00:00", "stage": "FEATURE_RUN_STARTED", "symbol": "m", "feature": "tactical"}
+{"at": "2026-11-24T10:33:20.421775+00:00", "stage": "FEATURE_RUN_FAILED", "symbol": "m", "feature": "tactical", "error": {"type": "ValueError", "message": "交易日区间在 2021-03-12 00:00:00 前不连续: 1792800 != 1792801"}}
+{"at": "2026-11-24T10:33:20.534955+00:00", "stage": "FEATURE_RUN_STARTED", "symbol": "m", "feature": "structural"}
+{"at": "2026-11-24T10:33:22.183928+00:00", "stage": "FEATURE_RUN_FAILED", "symbol": "m", "feature": "structural", "error": {"type": "ValueError", "message": "交易日区间在 2021-03-12 00:00:00 前不连续: 1792800 != 1792801"}}
+{"at": "2026-11-24T10:33:22.297695+00:00", "stage": "ATTACK_NOT_RUN_MISSING_UPSTREAM", "symbol": "m", "feature": "attack"}
+{"at": "2026-11-24T10:33:22.429647+00:00", "stage": "FORMAL_X_INCOMPLETE"}
+{"at": "2026-11-24T10:33:22.543977+00:00", "stage": "RUNNER_FINISHED", "formal_complete": false, "lock_released": true}
