@@ -40,6 +40,12 @@
 
 采用统计驱动闭环的新 Run 在 `business_control/BUSINESS_PROGRESS.md` 提供可直接阅读的业务进展和产出；`TASK_PROGRESS.md` 仍是精确版本、在途工作和恢复依据。主控只核实两者由原 manager 依据专业成果投影，不自行形成新的业务结论。业务视图不存在时应标记缺口而非推测完成。
 
+## 2.2 主控 Chat 自身归档
+
+每次实际控制回合中，主控按已采用的 cgpterm Controller Skill 自动尝试将**本主控自身物理线程**的用户/Assistant 可见文本更新到 `longrun/controller/chats/<controller-thread-id>.md`，并只在 Git 目标、分支、初始 GO 操作授权与实际写权限有效时提交、推送。运行层不新增 manager/executor Chat 导出；两者只继续交付 D/Return、专业成果与所需精确引用。
+
+无可核实 Controller thread ID、现有 App Server 响应不完整、目标工作区不存在、写权限不足或推送失败时，记录归档欠账及恢复条件，其他合法动作继续，不将无文件解释为已完成。具体导出、去重和脱敏见 cgpterm `observe-iterate-longrun-v2-controller/references/controller-chat-archive.md`。
+
 ## 3. receive_result（回收）
 
 输入：真实物理端送达及原始消息、准确提交引用、接收动作历史。

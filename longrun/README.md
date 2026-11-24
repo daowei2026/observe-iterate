@@ -103,6 +103,12 @@ longrun/runs/<run_id>/business_control/TASK_PROGRESS.md
 
 不同 Run 的工作区、物理线程、权限、代码版本和结果独立。一个 Run 等待时，其他非冲突 Run 可以继续；不得借用其他 Run 的 executor thread、工作区或授权。
 
+## 5.1 主控 Chat 归档（只导主控）
+
+主控 Chat 的人类沟通记录放在 [controller/chats/](controller/chats/README.md)，按实际 Codex 主控线程身份保存。由 cgpterm Controller Skill 调用现有 App Server 只读能力提取用户／主控可见消息并向本仓受授权分支提交；不会收集 manager、executor 的原始聊天，避免与已有 D/Return/专业报告重复。
+
+归档是帮助人追溯 Owner 输入与主控沟通，不是本 Run 的 `BUSINESS_PROGRESS`，也不能替代专业成果和业务 Gate。尚未看到真实 `<thread-id>.md` 时，应视为尚未确认归档成功。
+
 ## 6. 校验
 
 ```bash
