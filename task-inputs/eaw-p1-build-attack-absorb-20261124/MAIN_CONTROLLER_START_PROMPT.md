@@ -4,7 +4,7 @@
 >
 > 三个独立 Run 共享业务输入和修复后的 Wall 技术上游，但**不能共用同一个可写目录**。这遵守现有多 Run 协议，不改造主控工作模式。
 >
-> 本提示词的 Control 和五份业务输入精确采用 `observe-iterate@127afb17441a7dfd6723c4043dbfdafdc2fab967`。本提示词文件是在该输入版本之后单独提交的 GO 草案；发送时必须保留下面的精确采用版本，不能让浮动 branch HEAD 自动替换。
+> 本提示词的 Control 和五份业务输入精确采用 `observe-iterate@8e76ac7e33bea17ad4ef1792173986a5e123c198`（三个 Feature 仅可修改自身的约束已包含）。本提示词文件是在该输入版本之后单独提交的 GO 草案；发送时必须保留下面的精确采用版本，不能让浮动 branch HEAD 自动替换。
 
 ---
 
@@ -15,7 +15,7 @@
 三类角色（controller／各 Run manager／各 Run executor）共同采用：
 
 ```text
-observe-iterate: daowei2026/observe-iterate@127afb17441a7dfd6723c4043dbfdafdc2fab967
+observe-iterate: daowei2026/observe-iterate@8e76ac7e33bea17ad4ef1792173986a5e123c198
 controller-skill: daowei2026/cgpterm@815c505c1cc3d965aaafa831d23c4c88368cb70a:.agents/skills/observe-iterate-longrun-v2-codex-native-controller/SKILL.md
 business-control: control/01_L0_统计驱动的单特征闭环.md
 common-input: task-inputs/eaw-p1-build-attack-absorb-20261124/COMMON_INPUT.md
@@ -45,9 +45,9 @@ FRP P1 DSU reference: daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13
 
 `work_id` 分别为 `OI-EAW-P1-BUILD-STAT`、`OI-EAW-P1-ATTACK-STAT`、`OI-EAW-P1-ABSORB-STAT`；`business_case_id` 为 `EAW-P1-BUILD`、`EAW-P1-ATTACKSEGMENT`、`EAW-P1-ABSORB`。
 
-上述工作区是本次 GO 选择的**三个精确独立候选路径**，不是我已经核实它们在 Linux 上存在。主控首次注册前必须按 V2 核目录、realpath、实际加载的 TIS 版本、工作树和只读数据挂载；必须检查与旧未结束的 `OI-ABSORB-STAT-20261123-01` 等 Run 是否争用路径／共享 DB。若路径不存在，不自动 mkdir/clone/symlink 或借旧工作区；只将该 Run 保留为待准备，其他具备全部条件的 Run 可继续。
+这里的三个目录应优先是**同一个基础 TIS 仓库的三个轻量 Git worktree**：共用 Git 对象存储、安装环境、只读基础数据及核实后的 Wall artifact，**不需要复制三套完整 TIS 工程和数据**；但各 Run 的实际可写 Git checkout／运行记录必须隔离。上述目录只是待真实 Linux 核实的三个路径，不是已经存在的现场。主控首次注册前必须按 V2 核目录、realpath、实际加载的 TIS 版本、工作树和只读数据挂载；必须检查与旧未结束的 `OI-ABSORB-STAT-20261123-01` 等 Run 是否争用路径／共享 DB。若路径不存在，不自动 mkdir/clone/symlink 或借旧工作区；只将该 Run 保留为待准备，其他具备全部条件的 Run 可继续。
 
-三个 Run 从**同一个已核实** `tis@179016...` 提交创建本 Run 专用开发分支；修正只写自己的 TIS 分支，不直接推送 `codex/wall-output-consistency-20261121`。FRP 代码如需修改，先定位问题与当前任务的直接关系；不改历史 FRP 基线，不跨 Run 覆盖彼此的源码结果。observe-iterate 的运行记录各提交到本 Run 自己的分支，不能让三个 Run 并行修改本任务输入分支。
+三个 Run 从**同一个已核实** `tis@179016...` 提交创建本 Run 专用开发分支；修正只写自己的 TIS 分支，不直接推送 `codex/wall-output-consistency-20261121`。本轮**禁止修改任何上游 Feature 的代码／参数／业务规则**（包括 Wall、F3/F4、FRP 相关上游产品及共用处理模块）；若定位出上游问题只登记具名 finding 和对本 Run 的影响，不能擅改上游，也不得误称当前 Feature 已修复。不改历史 FRP 基线，不跨 Run 覆盖彼此的源码结果。observe-iterate 的运行记录各提交到本 Run 自己的分支，不能让三个 Run 并行修改本任务输入分支。
 
 ## 三、共用 Wall 的前置处理
 
@@ -61,7 +61,7 @@ FRP P1 DSU reference: daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13
 4. TIS 的各目标 `_impl` 仍会调用 `self.P.wall.run()`；主控要核实它们是否只是合法读回，不能把相同 full_dir 的首次创建交给三个并发进程碰运气。共享 DBA、缓存、QT、F4 和结果目录若存在冲突，先按真实写面隔离或让受影响操作串行，不能因为逻辑上无业务依赖就伪称物理写入安全。
 5. 只允许真实市场正式输入，不能用人工构造的受控数据包替代 X/G；临时诊断必须标 `DIAGNOSTIC_ONLY`。
 
-这不把 Wall 的生产或 F4 的独立运行算作三个目标 Feature 的额外完成 Gate。
+这不把 Wall 的生产或 F4 的独立运行算作三个目标 Feature 的额外完成 Gate。允许为绑定既定参数和代码完成必要技术物化，但不允许利用物化过程改变上游 Feature 实现或业务含义。
 
 ## 四、执行 profile 和一次性授权
 
@@ -78,7 +78,7 @@ roles_each_run:
 
 主控依实际 App Server 回读上述模型、强度、身份、cwd、状态与审批沙箱政策；不能因 GO 书面给了工程权限，就把需要人工批准的物理命令虚构成自动批准成功。若现有审批设置使本 Run 无法自主执行常规 Git 提交／运行，必须在实际派达前记录准确技术阻断，不让三个 Run 反复进入未知提交等待。不会在运行过程中向 Owner 询问。
 
-本次我作为 Owner **一次性授权**三个 Run 在各自独立工作区内真实运行、查看源码、统计、定位 finding、改正本 Feature 相关实现、默认实例内必要参数或业务常量、跑回归、正式重跑、形成结果，以及对下列**具名且仅具名的分支**进行普通 commit/push；允许 Build Run 单独生产本批 exact Wall 技术前置。每个直接操作需按 V2 `grants` 与 D 的 `permitted_operations/allowed_writes` 子集机械核验，不授权覆盖其它 Run、改无关代码、force push、删除生产数据或扩大业务对象／时间范围。
+本次我作为 Owner **一次性授权**三个 Run 在各自独立工作区内真实运行、查看源码、统计、定位 finding、**仅修改各自目标 Feature 的专属实现、参数及业务常量**、跑回归、正式重跑、形成结果，以及对下列**具名且仅具名的分支**进行普通 commit/push；允许 Build Run 单独生产本批 exact Wall 技术前置。每个直接操作需按 V2 `grants` 与 D 的 `permitted_operations/allowed_writes` 子集机械核验，**不授权修改 Wall、F3/F4、其他上游 Feature、公共处理器或其业务规则／参数／输出合同**，也不授权覆盖其它 Run、改无关代码、force push、删除生产数据或扩大业务对象／时间范围。
 
 为 V2 `authority_quote`，以下是**本次初始 GO 中 Owner 实际授权原文**，主控按每条原文提取 `operation / execution_context / allowed_writes / authority_quote`；其中 CSV 项按独立 `allowed_writes` 元素登记。不要用自己编造的权限描述代替：
 
