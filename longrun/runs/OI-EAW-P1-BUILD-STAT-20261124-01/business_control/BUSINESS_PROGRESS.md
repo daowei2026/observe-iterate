@@ -1,55 +1,49 @@
 # BUSINESS_PROGRESS｜EAW P1 Build
 
-本次检查 BuildAssembler 围绕 exact Wall 的加固活动及其公开 Start、Milestone、Stop、Wall 引用、状态和 receipt。当前目标、真实市场范围和修改边界沿用正式输入。
+Build 的首轮真实运行已取得部分有效成果：rb 当前默认实例的全年结果已生成，六个公开流均严格读回；m 的 Build 运行失败，没有正式产物或 receipt。完整 rb/m 范围仍未运行完成，尚不能开始本轮完整正式统计，也没有 Build 合理性验收结论。
 
-首轮 Feature 理解已经由原执行者完成，并由原 manager 消费。现在可追溯当前实现、完整默认参数和公开结果合同；尚未执行正式全年运行或全量统计，因此仍不能判断本轮业务合理性是否通过。
+## 当前轮次进展
 
-## 各轮次进展
+| 轮次 | 版本／实例 | 已完成 | 未完成／后继 |
+|---|---|---|---|
+| 首轮 | TIS 179016111ed0394f92025313e46bd13534932a74；build-default | U 已完成并消费；rb 全年结果有效；rb/m 当前 Wall 技术产物已物化和读回 | m Build 缺失；已委派原 E1 按现有偏差诊断 Skill 定位并在授权范围内处理、回归和恢复 X |
 
-| 轮次 | 当前版本／实例 | 已完成工作 | 发现／解决的问题 | 当前产出 |
-|---|---|---|---|---|
-| 首轮 | TIS 179016111ed0394f92025313e46bd13534932a74；build-default 完整参数与 ppid 已取得 | 默认构造、来源、对象／状态／事件、处理关系、参数与结果字段理解已完成并消费；正式运行委派已发布 | 尚无正式统计 finding；未修改代码或参数 | 完整理解包；待执行的 X 委派 |
+正式目标仍为 TA_updto20240229_DBA、rb/m、2021 全年、night_end_at_2300。实际原始输入均为 9,959,400 行；这证明相关输入已读取，不等于两品种 Build 均已成功。
 
-正式市场范围仍是 TA_updto20240229_DBA、rb/m、2021 全年、night_end_at_2300。理解工作没有读取实际市场数据或生产正式结果，请求范围仍需通过 X 运行及读回落实。
+## rb 已取得的有效成果
 
-## 目前已确认的业务与实现事实
+rb 已完成全年 243 块。最初读回检查因列顺序不同误报；执行者随后保留原始失败记录，在同一正式锁下进行全年原生内存重放，按全部列名逐值比较，并独立再次读取全部六个公开流。最终值、索引与事件时间一致；availability 的既有类型拓宽已解释，正式文件未被覆盖。
 
-一轮 Build 是有身份的持续加固过程，引用准确 Wall；Start 建立活动，Milestone 更新同一活动，Stop 结束活动。裸本地编号需要结合来源和品种解释，事件行数、活动数和物理结果流数不是同一个单位。
+rb 的 success receipt、参数、来源范围和对当前 Wall 的准确引用已核。这是当前版本、实例与 rb 范围的正式运行成果，没有被提升为完整 rb/m X 或全量统计通过。
 
-真实默认参数已取得，两个原始 None 窗口在当前实现中派生为 3；这是现有实现事实，没有发生参数调整。当前公开持久化结果是稀疏 build__stream* 事件流，同一拍可有多个事件；内部滚动判断、F10/F11、完整状态轨迹和 checkpoint 并未随之公开。FRP typed 消费仅作源码合同参考，尚未实际运行。
+## m 的真实缺口与下一处理
 
-原业务来源与实现的差异已在理解包分别记录；它们没有被当作已经确认的不合理问题。后续发现与判断仍需要正式结果和原 Skill 的统计／诊断工作。
+m 当前 Wall 已全年物化并读回，但 Build 在交易日分块前抛出“2021-03-12 前不连续：1792800 != 1792801”，没有 Build fields 或 receipt。原始输入比 Wall trace 多 17 行，相应全空报价时点和来源排除记录已发布。
 
-## 已知限制和待核实范围
+目前只确认这些事实，尚未定位最早责任逻辑，也没有确定修法。不能把抛错位置或 17 个时点直接当作责任结论。下一项交原执行者使用既有偏差诊断 Skill，依据真实证据排查；如证据支持 Build 自身处理，则沿初始 GO 自主实施必要修改、测试／回归并恢复正式 X。如果只能越过授权范围处理，则形成有据的上游问题／局部阻断及恢复条件。
 
-| 范围 | 当前认识与业务影响 |
-|---|---|
-| 正式市场与输入轴 | 全年实际数据尚未读取；特定空开盘占位过滤是否使 Wall／Build 输入轴或来源范围不一致，需要 X 据实核对，不能先判断已发生缺陷。 |
-| Wall 技术上游 | 准确 artifact、receipt、状态轨迹和 Build 引用尚未核验；必要物化按原授权进行，不表示旧 WALL 合理性已通过。 |
-| 公开结果与内部过程 | 正式公开流及条件列尚未读回；内部 dense 判断和具体 Stop 分支信息没有公开，后续不能凭稀疏行补造完整过程证据。 |
-| typed 消费 | 尚未执行 FRP，不能把 Python 结果解释为已被 typed 状态机接纳。 |
-| STCalendar 预存修改 | 内容、hash、随导入加载已确认；其作者／来源与正式全链影响仍未知。修改完整保留，未作为 Build 修复。 |
+此前 D002 只委派 X，没有撤销 Owner 对整个 Run 的一次性授权。本次后继已包含原 GO 内的工程权限，无需新增 Owner 审批。代码修改仍限 Build 自身；原 Wall 分支、上游、公共模块、市场数据和 STCalendar 预存修改保持保护。
 
-这些边界没有使 U 的核心理解工作待续，也不构成 Build 已获验收。当前没有正式 finding、诊断结果、修正或修改前后效果可报告。
+## 当前成果入口
 
-## 当前有效业务成果
-
-| 成果 | 状态与用途 | 准确入口 |
+| 成果 | 当前用途与范围 | 入口 |
 |---|---|---|
-| Feature 理解 | COMPLETE，仅 U；原 manager 已消费，可为 X 提供实现／实例事实 | [完整原生包](https://github.com/daowei2026/observe-iterate/blob/6b8122773e04046e154ce1839efe66912bd5b526/longrun/runs/OI-EAW-P1-BUILD-STAT-20261124-01/delegations/D001/results/U1/FeatureUnderstandingPackage.json)／[可读包](https://github.com/daowei2026/observe-iterate/blob/6b8122773e04046e154ce1839efe66912bd5b526/longrun/runs/OI-EAW-P1-BUILD-STAT-20261124-01/delegations/D001/results/U1/FeatureUnderstandingPackage.md) |
-| 正式运行工作 | 既定 X 工程动作已委派给原 E1；尚无运行结果或物理派达回执 | [D002 正文](https://github.com/daowei2026/observe-iterate/blob/df705ec129a532130198cbbfe966e3b4f27acc1f/longrun/runs/OI-EAW-P1-BUILD-STAT-20261124-01/delegations/D002/DELEGATION.md) |
-| 正式运行与读回 | 尚无 FeatureRunResultBinding | 待 X 实际执行 |
-| 全量统计与高置信发现 | 未开始 | 待当前实例的有效完整 X |
-| 诊断、修正和释放 | 尚未形成 | 按真实 finding 和原完成条件推进 |
+| Feature 理解 | COMPLETE，仅 U；继续提供当前实现与实例事实 | [原生理解包](https://github.com/daowei2026/observe-iterate/blob/6b8122773e04046e154ce1839efe66912bd5b526/longrun/runs/OI-EAW-P1-BUILD-STAT-20261124-01/delegations/D001/results/U1/FeatureUnderstandingPackage.json) |
+| 正式运行绑定 | 完整范围 INCOMPLETE；含有效 rb 及 m 错误、准确上游与读回证据 | [FeatureRunResultBinding](https://github.com/daowei2026/observe-iterate/blob/150858c767c229951bf3fce587e6bb09752364ec/longrun/runs/OI-EAW-P1-BUILD-STAT-20261124-01/delegations/D002/results/X-R01/FeatureRunResultBinding.json) |
+| 原 E1 工程报告 | 说明 rb 读回调和、m 缺口及保留边界 | [C0004 报告](https://github.com/daowei2026/observe-iterate/blob/150858c767c229951bf3fce587e6bb09752364ec/longrun/runs/OI-EAW-P1-BUILD-STAT-20261124-01/calls/C0004/EXECUTOR_REPORT.md) |
+| 诊断与授权恢复 | D003 已发布，尚待 controller 向原 E1 派达 | [D003 正文](https://github.com/daowei2026/observe-iterate/blob/a61cd54b559b5991238997970bebf78e6a8e849b/longrun/runs/OI-EAW-P1-BUILD-STAT-20261124-01/delegations/D003/DELEGATION.md) |
+| G／诊断结论／修正效果／Release | 尚未形成 | 待原生产物与有效正式证据 |
 
-下一业务动作是 controller 核本次真实回交后复用原 E1 派达 X。取得与当前实例绑定的完整正式结果并读回后，再沿原 L0 进入 G。没有新增 Owner 节点、运行 Skill 或额外专业 Gate。
+rb 和 rb/m Wall 当前原件、原始错误与调和证据全部保留。若后续行为或绑定改变，其有效性由执行者按原 L0 实际影响评估；旧 rb 结果不能自动证明新版本通过。
 
-Build 保持原 391 专业控制和 /dwdhome/fy/BASE_E6_2，与另一个 Attack Run 的版本、工作区及结果独立；共享生产资源只按原有互斥核对应写动作。
+内部 dense 过程和具体 Stop 原因的公开信息限制、FRP 未执行、STCalendar 来源与全链影响未独立确认均继续保留；Wall 的技术可用不代表 Wall 合理性 Release。
+
+下一步由 controller 核本次真实回交与权限，复用原 E1 派达 D003。取得当前正式实例的完整 X 后再沿 L0 进入 G；Build 与 Attack 继续保持独立版本、工作区和成果，共享生产沿原互斥执行。
 
 Build 整体仍未完成，GlobalProfileGate、FeatureReleaseGate 和 UpstreamReleasePackage 均未形成。
 
-详细版本、原生未知项与恢复入口：[TASK_PROGRESS.md](TASK_PROGRESS.md)；本次消费依据：[C0003 报告](../calls/C0003/MANAGER_REPORT.md)。
+技术版本、状态及恢复入口：[TASK_PROGRESS.md](TASK_PROGRESS.md)；本次协调依据：[C0005 报告](../calls/C0005/MANAGER_REPORT.md)。
 
-唯一正式业务输入：`daowei2026/observe-iterate@391adcd18bd2da82c13c01710980f41e01c7de25:task-inputs/eaw-p1-build-stat-20261124/BUILD_RUN_INPUT.md`；实际专业控制：`391adcd18bd2da82c13c01710980f41e01c7de25`。
+正式输入：`daowei2026/observe-iterate@391adcd18bd2da82c13c01710980f41e01c7de25:task-inputs/eaw-p1-build-stat-20261124/BUILD_RUN_INPUT.md`；实际专业控制：`391adcd18bd2da82c13c01710980f41e01c7de25`。
 
-更新时间：2026-11-24 15:37:07 Asia/Shanghai（07:37:07 UTC）。本次新增事实是 U 已完成并被消费、X 后继已发布；没有正式 X/G 业务结果。
+更新时间：2026-11-24 17:18:45 Asia/Shanghai（09:18:45 UTC）。本次新增事实为 rb 有效结果与 m 缺口已消费、诊断／授权恢复后继已发布。

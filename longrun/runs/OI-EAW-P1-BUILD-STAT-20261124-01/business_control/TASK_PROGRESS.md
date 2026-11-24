@@ -1,83 +1,82 @@
 # TASK_PROGRESS｜EAW P1 Build 统计闭环
 
-> 当前快照：C0003 消费 U 并签发既定 X 后继。业务入口：[BUSINESS_PROGRESS.md](BUSINESS_PROGRESS.md)。父 Run incomplete／IN_PROGRESS。
+> C0005：rb 当前正式结果有效，m Build 缺失，完整 X 未完成；已签 D003 诊断与授权恢复后继。业务入口：[BUSINESS_PROGRESS.md](BUSINESS_PROGRESS.md)。
 
-## A. 身份与采用
+## A. 身份、控制与授权
 
-- run_id / work_id / business_case_id：`OI-EAW-P1-BUILD-STAT-20261124-01` / `OI-EAW-P1-BUILD-STAT` / `EAW-P1-BUILD`。
-- 唯一正式任务／CurrentReviewTarget：`daowei2026/observe-iterate@391adcd18bd2da82c13c01710980f41e01c7de25:task-inputs/eaw-p1-build-stat-20261124/BUILD_RUN_INPUT.md`。
-- 专业 control／Skill／补充 exact commit：`391adcd18bd2da82c13c01710980f41e01c7de25`，仍按本 Run 原采用版本；无专业版本升级。
-- profile：CODEX_NATIVE_DIRECT；policy：AUTONOMOUS；workers=[]。
-- 原 GO 与 Binding：`daowei2026/observe-iterate@d02da8acf777e8eacf0b87d65b21f4b3458a0f5a:longrun/runs/OI-EAW-P1-BUILD-STAT-20261124-01/RUN_BINDING.json`；资源采用：`daowei2026/observe-iterate@d02da8acf777e8eacf0b87d65b21f4b3458a0f5a:longrun/runs/OI-EAW-P1-BUILD-STAT-20261124-01/RUN_RESOURCE_BINDING.json`。
-- manager：`codex:OI-EAW-P1-BUILD-STAT-20261124-01:manager`；原 E1：`codex:OI-EAW-P1-BUILD-STAT-20261124-01:executor:E1`。本 C 原件确认原 E1 已独立创建并执行 C0002，cwd=/dwdhome/fy/BASE_E6_2，实际 sol/max；物理身份与真实回执由 controller 保存。
-- 本 Run workspace / realpath：`/dwdhome/fy/BASE_E6_2`；实际 TIS 根为 `mquant/tis`。后续生产的共享写面前检按原协议执行，当前不声称已取得运行锁。
-- snapshot status：current，限以下有据回交和发布事实；本 C 不借用 Attack 的工作区、版本或结果。
+- run_id / work_id / business_case_id：`OI-EAW-P1-BUILD-STAT-20261124-01` / OI-EAW-P1-BUILD-STAT / EAW-P1-BUILD。
+- 实际专业 control／Skill／补充 commit：`391adcd18bd2da82c13c01710980f41e01c7de25`，仍按原采用版本；controller commit=815c505c1cc3d965aaafa831d23c4c88368cb70a。
+- profile=CODEX_NATIVE_DIRECT；post_start_owner_policy=AUTONOMOUS；workers=[]。
+- 唯一正式任务／ReviewTarget：`daowei2026/observe-iterate@391adcd18bd2da82c13c01710980f41e01c7de25:task-inputs/eaw-p1-build-stat-20261124/BUILD_RUN_INPUT.md`；GO：`daowei2026/observe-iterate@9aac8e8b81827015cba4a70bba99e033e82bad92:longrun/runs/OI-EAW-P1-BUILD-STAT-20261124-01/OWNER_START.md`；Binding：`daowei2026/observe-iterate@d02da8acf777e8eacf0b87d65b21f4b3458a0f5a:longrun/runs/OI-EAW-P1-BUILD-STAT-20261124-01/RUN_BINDING.json`。
+- 原 manager 与原 executor:E1 身份不变，cwd／realpath=/dwdhome/fy/BASE_E6_2；真实物理映射和当前 sol/max／送达由 controller 保存和前检。
+- TIS 根=/dwdhome/fy/BASE_E6_2/mquant/tis；C0004 HEAD=179016111ed0394f92025313e46bd13534932a74，原 Wall 分支未改。
+- D002 的 X 范围不撤销整个 Run 的工程授权；D003 已引用持续原 GO，允许有据 Build 处理、测试、重跑和指定分支普通 commit/push，实际逐动作仍由 controller 核 Owner/D 与真实权限。
+- snapshot status=current，限本次有据回交／发布事实，不声明后继已派达或已占生产锁。
 
-## B. 当前版本与实际工作
+## B. 当前实例与 X 结果
 
-| 项目 | 当前状态／版本 | 准确来源与继续条件 |
+| 项目 | 当前版本／状态 | 精确来源／边界 |
 |---|---|---|
-| TIS 实现 | 179016111ed0394f92025313e46bd13534932a74；原 Wall 分支 | U execution_context／feature_ref；E1 本轮未改代码、切分支或提交 TIS |
-| constructor | mquant.tis.hf.prel0.build_assembler.BuildAssembler() | U 已完成实际默认构造与加载核查，未运行 Feature |
-| 默认实例 | build-default；ppid=BuildAssembler_954318e844386b1a4967d626990a21e0be640bfd | 完整 ppdict 及 nested Wall 见 U 原包；raw None 与 effective window=3 已区分 |
-| nested Wall | WallAssembler_f32460448c4bde6d0a683cfc262808694c9f0a75 | 已核构造／参数；exact artifact、receipt、trace 尚待 X |
-| 正式数据 | TA_updto20240229_DBA；rb,m；2021-01-01 至 2021-12-31；night_end_at_2300 | 仍为请求绑定；实际市场数据／完整范围未读 |
-| 正式结果 | 尚无 FeatureRunResultBinding | U 未运行、未复用旧正式结果；D002 承接 X |
-| 轮次／父任务 | 首轮；incomplete／IN_PROGRESS | 无正式统计、finding 闭环或 Release |
-| 当前调用 | C0003 已真实派达原 manager | 原件：`daowei2026/observe-iterate@08f79d7056819cc13f5afd602de03aacbbd64087:longrun/runs/OI-EAW-P1-BUILD-STAT-20261124-01/calls/C0003/INVOCATION.json` |
-| 已签后继 | D002，issuer_call_id=C0003 | `daowei2026/observe-iterate@df705ec129a532130198cbbfe966e3b4f27acc1f:longrun/runs/OI-EAW-P1-BUILD-STAT-20261124-01/delegations/D002/DELEGATION.json`；原件已发布并回读，尚无 D002 实际投递回执 |
-| 下一合法动作 | controller 核本 C Return／D002 后复用原 E1 派达 | 不新建 E1／Worker，不恢复其它 Run，不增加 Owner 业务节点 |
+| Feature／构造 | BuildAssembler；mquant.tis.hf.prel0.build_assembler.BuildAssembler | 原 U 及 X 加载核查一致，本 C 未改实现 |
+| 参数 | build-default；ppid=BuildAssembler_954318e844386b1a4967d626990a21e0be640bfd；完整 ppdict／有效参数已核 | 原 U 和逐品种 X 绑定；未发生参数调整 |
+| nested Wall | WallAssembler_f32460448c4bde6d0a683cfc262808694c9f0a75 | rb/m 均有当前 Wall 技术原件；不是 Wall 合理性 Release |
+| 请求市场 | TA_updto20240229_DBA；rb,m；2021-01-01 至 2021-12-31；night_end_at_2300 | 实际原始输入各 9,959,400 行，首 2021-01-04 09:00:00.500000，末 2021-12-31 15:00:00 |
+| rb Build | COMPLETE_CURRENT_FORMAL，仅 rb 当前版本／范围 | 全年 243 块、六个公开流全部严格读回；success receipt／exact Wall 引用有效 |
+| m Build | BLOCKED_NO_FORMAL_BUILD_RESULT | ValueError，fields=false、receipt=false；没有正式 Build 结果 |
+| 完整 X | INCOMPLETE | complete_formal_result_for_requested_rb_m=false；eligible_for_full_requested_G=false |
+| 父 Run | incomplete／IN_PROGRESS | 不能以 rb 或 Wall 技术产物代替完整 X/G |
+| 当前后继 | D003，issuer_call_id=C0005，交原 E1 | `daowei2026/observe-iterate@a61cd54b559b5991238997970bebf78e6a8e849b:longrun/runs/OI-EAW-P1-BUILD-STAT-20261124-01/delegations/D003/DELEGATION.json`，已发布并读回；尚无后继投递回执 |
 
-## C. 真实回交、节点结果及依赖
+原生 X：`daowei2026/observe-iterate@150858c767c229951bf3fce587e6bb09752364ec:longrun/runs/OI-EAW-P1-BUILD-STAT-20261124-01/delegations/D002/results/X-R01/FeatureRunResultBinding.json`；原 E1 Return：`daowei2026/observe-iterate@90f03842b316ca08cd0d6a06a7788171d7ff8551:longrun/runs/OI-EAW-P1-BUILD-STAT-20261124-01/calls/C0004/PRO_RETURN.json`。生产原件位于 /dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store；完整路径／receipt／SHA／inventory 依绑定原件，不上传多 GB DBA。
 
-| 节点 | 当前输入／状态 | 原生产物与消费事实 | 未完成范围／既定后继 |
-|---|---|---|---|
-| U | COMPLETE，仅 D001 | `daowei2026/observe-iterate@6b8122773e04046e154ce1839efe66912bd5b526:longrun/runs/OI-EAW-P1-BUILD-STAT-20261124-01/delegations/D001/results/U1/FeatureUnderstandingPackage.json`；C0003 已完整消费，D001 无待续工作 | 不重复 U；全部原生未知项继续保留 |
-| X | D002 已签发／发布；未取得运行结果 | 主要产物依原 L0 为 FeatureRunResultBinding；当前尚无 | 交原 E1；有效完整正式结果后才能进入 G |
-| G | 未开始 | 尚无 GlobalBehaviorProfile／FindingDiscoverySummary／GlobalProfileGate | 在有效 U 与完整 X 下按原 G Skill 执行；本 C 未提前委派 |
-| 偏差诊断 | 尚无 G 的正式候选 | 无 DiagnosisReport | 按真实 finding 与原 L0 分支决定 |
-| 实际修正／回归 | 未发生 | U behavior_changes 为空 | 不把理解差异或未知项改写成已确认缺陷；按真实诊断与授权范围推进 |
-| Release | 未形成 | FeatureReleaseGate／UpstreamReleasePackage 均无 | 不将本 C 或 D001 完成写作 Build 完成 |
+## C. 节点与委派状态
 
-原 E1 Return：`daowei2026/observe-iterate@da4b12b2fef0f52534d07da9be0a42fc3e1545a7:longrun/runs/OI-EAW-P1-BUILD-STAT-20261124-01/calls/C0002/PRO_RETURN.json`；执行报告：`daowei2026/observe-iterate@6b8122773e04046e154ce1839efe66912bd5b526:longrun/runs/OI-EAW-P1-BUILD-STAT-20261124-01/calls/C0002/EXECUTOR_REPORT.md`。controller 已核真实来源／原 validate-executor-return；manager 另据完整 U 原生结果消费，未把 REPORTED_COMPLETE 独立解释为专业／父任务通过。
-
-## D. 原生未确认项与 finding
-
-| 原生项 | 当前事实／限制 | 既定处理范围 |
+| 节点／委派 | 当前状态 | 原生依据与下一合法动作 |
 |---|---|---|
-| UQ-X-SCOPE | rb/m 全年市场数据、实际范围与 Calendar 尚未读取。 | 既定 X 据实取得正式数据及 FeatureRunResultBinding；不将请求范围当成实际覆盖。 |
-| UQ-WALL | 当前正式 Wall artifact／receipt／state trace 尚未核验或物化。 | 按正式输入和原 GO 取得准确技术上游；不形成 Wall 合理性 Release 声明。 |
-| UQ-AXIS | 特定空开盘占位过滤可能使 Wall 与 Build 输入轴／source_scope 不同，是否实际发生未知。 | 留给 X 对账实际输入及错误；不预判为已发生缺陷，不越权修改上游或共享模块。 |
-| UQ-PUBLIC-READ | 公开 build__stream*、条件列、dtype 与 receipt 尚未正式读回。 | 随 X 的实际结果绑定／读回核实，不能凭 U 源码说明提升可用性。 |
-| UQ-DENSE | F10/F11、flow validity、滚动比率、完整 state／checkpoint／summary 未公开。 | 保留 NOT_EXPOSED 边界；后续原 Skill 按所需证据处理，不能用稀疏事件冒充完整 dense 轨迹。 |
-| UQ-REASON | producer 无具体 Stop 分支字段，typed 固定 producer-stop。 | 保留语义信息损失；需要原因时由后续专业工作取得实际过程证据。 |
-| UQ-TYPED | FRP decoder／DSU 只作源码合同参考，未实际执行。 | 不将 Python 产物解释为 FRP 已接纳；仅在初始任务后继确需时按原范围核实际消费。 |
-| UQ-STCAL | STCalendar 既有修改已核内容、hash 和导入；来源与完整运行影响仍未知。 | 完整保留；X 记录实际影响，受影响动作据实局部阻断，不越权修复或归因。 |
+| U／D001 | COMPLETE，原 manager 已于 C0003 消费；本轮继续有效 | `daowei2026/observe-iterate@6b8122773e04046e154ce1839efe66912bd5b526:longrun/runs/OI-EAW-P1-BUILD-STAT-20261124-01/delegations/D001/results/U1/FeatureUnderstandingPackage.json`；没有本 C 行为变化，无需重复 U |
+| X／D002 | IN_PROGRESS；rb 有效、m 缺失，整体未完成 | `daowei2026/observe-iterate@150858c767c229951bf3fce587e6bb09752364ec:longrun/runs/OI-EAW-P1-BUILD-STAT-20261124-01/delegations/D002/results/X-R01/FeatureRunResultBinding.json`；原 C0004 栈／证据／未完成义务保留 |
+| X 缺口诊断及恢复／D003 | 已签发发布，尚无诊断或处理成果 | 原诊断 Skill：`daowei2026/observe-iterate@391adcd18bd2da82c13c01710980f41e01c7de25:skills/reasonableness-analysis/business-discrepancy-diagnosis/SKILL.md`；专业责任与处理由原 E1 承担 |
+| G | 未开始、未签发 | 当前不具备完整请求范围有效 X；无 GlobalProfileGate |
+| 实际修改／回归 | C0004／本 C 未发生；后继在原 GO 内有据执行 | 不猜改；不把 D002 窄写面误作 Owner 撤权 |
+| Release | 未形成 | 无 FeatureReleaseGate／UpstreamReleasePackage；父 Run 未完成 |
 
-这些条目的准确语义及证据均以 U 原包为准；没有把它们全部提升为阻断，也没有从尚未执行 X 推断正式失败。UQ-DENSE／UQ-REASON 是已确认的公开字段限制，后续按原专业工作需要处理。
+D003 是原 Skill 工作及 L0 授权处理，不是新的 Q、修改 Skill、Gate 或 Owner 节点。D002 保持未完成历史，不因新 D 签发而被记为完成。
 
-当前没有 G finding 原生产物，open／closed／deferred 尚未经正式统计评估。没有修复、回归或 FIXED_PENDING_RERUN 记录；没有为了释放而自行接受未关闭问题。
+## D. 事实、未确认项与 finding
 
-## E. 有效性、Release 与独立写面
-
-- 本 D001 没有正式代码／参数／上游修改；U 对当前指定实现及默认实例继续有效，没有因此失效的已接纳 X/G。
-- 当前无正式 X/G 可供下游消费。若实现／实例／数据范围／Wall exact 绑定变化，按原 L0 和原包 invalidations 传播影响，不沿用旧 X/G 证明新版本。
-- STCalendar 工作副本 SHA256=`3001e49a3b812b5281ddca12795e5aa279d5ca09fd510ba0a4cfc330b42c6980`；原修改内容与导入已核，作者／来源和全链影响未证，完整保留。它不是 night_end_at_2300 日历实现。
-- TIS 允许修复分支仍为 codex/oi-eaw-p1-build-fix-20261124-01；本次 D002 仅 X，未委派修复或取得该分支写面。
-- Build／Attack 独立版本和工作区；本 Run 不消费 Attack 的专业结果或授权。实际 DB／cache 共享写动作沿已有生产互斥对账，仅影响对应动作。
-
-## F. 历史、快照与恢复
-
-| 调用／工作 | 已发生事实 | 准确引用 |
+| 范围 | 已有事实 | 待处理／保留边界 |
 |---|---|---|
-| C0001／D001 | 首项 U 委派及 IN_PROGRESS manager Return 已发布 | `daowei2026/observe-iterate@d09fa34637622576b19b567de2173849122a88b8:longrun/runs/OI-EAW-P1-BUILD-STAT-20261124-01/calls/C0001/PRO_RETURN.json` |
-| C0002／D001 | 原 E1 完成 U 并回交；controller 已核，原 manager 于 C0003 消费 | `daowei2026/observe-iterate@da4b12b2fef0f52534d07da9be0a42fc3e1545a7:longrun/runs/OI-EAW-P1-BUILD-STAT-20261124-01/calls/C0002/PRO_RETURN.json` |
-| C0003／D002 | 已消费 U、签发并读回 X 后继 | `daowei2026/observe-iterate@df705ec129a532130198cbbfe966e3b4f27acc1f:longrun/runs/OI-EAW-P1-BUILD-STAT-20261124-01/delegations/D002/DELEGATION.json`；正文 `daowei2026/observe-iterate@df705ec129a532130198cbbfe966e3b4f27acc1f:longrun/runs/OI-EAW-P1-BUILD-STAT-20261124-01/delegations/D002/DELEGATION.md` |
+| rb 初始读回 guard | 因列顺序误报；后续按全部列名逐值比较与独立 DAO 复读通过；既有 availability int8→int64 拓宽 | 初始错误、调和报告与正式文件全部保留，采用最终有效状态 |
+| m 栈 | BuildAssembler._impl → run_build_assembler_trading_day_chunks → support._trading_day_chunk_plan；ValueError 在 2021-03-12 前 1792800 != 1792801 | 抛错位置不是最早责任结论；由 E1 依原 Skill 定位 |
+| m 轴／空报价 | 原始 9,959,400 行，Wall trace 9,959,383 行；17 个全空 quote 时点及 source_scope 排除记录已发布 | 仅是工程观察；未确认因果、修法或应由哪层修改 |
+| UQ-X-SCOPE／PUBLIC-READ | rb 正式结果和六个流已核；m 仍无 Build 结果 | 完整 rb/m X 待恢复，不能进入正式 G |
+| UQ-WALL／AXIS | 当前 rb/m Wall 已物化读回；rb exact Build 引用已核；m Build 无对应结果且两轴不同 | 不声称 m Build exact 绑定已通过；不声称 Wall 合理性 Release |
+| UQ-DENSE／REASON | 公开 dense/state/checkpoint 等和具体 Stop 原因限制未改变 | 未用稀疏行补造完整过程或原因 |
+| UQ-TYPED | FRP decoder／DSU 尚未执行 | 不把 Python 产物当作 typed 已接纳 |
+| UQ-STCAL | 既有修改 hash 与 U 相同、保留原样 | 来源／全链影响未独立确认，不声明零影响 |
 
-原 C0001 双进度保存在 `7c1f8498a245f2344b98761726a907591a3e68d1`，本次更新不抹去历史。当前业务视图同步到 U 原生产物及 D002 已发布事实。
+没有 G 候选队列或已确认专业缺陷。m 的实际运行偏差已交原诊断 Skill；finding 分类／责任／处理状态由原 E1 原生产物给出，manager 未自行归责或关闭。
 
-具名后继是 controller 核本 C Return、D002 与实际执行权限后复用原 E1 派达。发送 UNKNOWN 时按原通道对账，不猜测重派。E1 回交后由原 manager 消费 X 的真实范围和结果，再沿 L0 处理具名未完成项或进入 G。
+## E. 写面、有效性与恢复
 
-报告：[C0003 MANAGER_REPORT](../calls/C0003/MANAGER_REPORT.md)。本 C Return 由报告／双进度先发布后的独立提交给出，只引用既存对象；物理发送／接收仍以 controller 可信账本为准。
+- TIS 允许目标分支：codex/oi-eaw-p1-build-fix-20261124-01，从原 179016 基线起；只覆盖原 GO 的 Build 自身实现、直接相关测试与 Build 参数／业务常量。D003 已列此原授权写面。
+- 原 Wall 分支、Wall／其它上游、公共处理模块、市场数据及无关 FRP 不得越权修改；STCalendar 原有 SHA256=3001e49a3b812b5281ddca12795e5aa279d5ca09fd510ba0a4cfc330b42c6980 保留。
+- rb 当前结果和 rb/m Wall 及所有错误／调和证据保留。后继改变行为或绑定时，E1 按原 L0 实际影响更新 U／X 并重跑；不得用旧 rb 或旧绑定证明新版本通过。
+- 若经专业定位只能越过初始写面处理，按正式输入／Skill 出具有据 UpstreamFinding／ScopedBlocker、影响范围和恢复条件；不扩大范围、不请求 Owner 再批。
+- Build／Attack 工作区、版本和业务产物独立。实际共享生产使用原同一 FORMAL_PRODUCTION.lock；C0004 锁自然释放是历史事实，后继仍由 controller/E1 核单写者并按原互斥执行。
+- 原始市场 DBA 仅核前后元数据稳定；不把它扩称为全量源内容 hash 对照。
 
-更新时间：2026-11-24 15:37:07 Asia/Shanghai（07:37:07 UTC）。
+## F. 回交历史与当前接续
+
+| 调用 | 有据事实 | 入口 |
+|---|---|---|
+| C0001 | D001 U 首次签发 | 原历史保留 |
+| C0002／C0003 | U COMPLETE，原 manager 消费并签 D002 X | `daowei2026/observe-iterate@cc80d1af22ac2845f34f934aec0b9cdc131dada5:longrun/runs/OI-EAW-P1-BUILD-STAT-20261124-01/calls/C0003/PRO_RETURN.json` |
+| C0004 | X IN_PROGRESS，rb 有效、m 失败 | `daowei2026/observe-iterate@90f03842b316ca08cd0d6a06a7788171d7ff8551:longrun/runs/OI-EAW-P1-BUILD-STAT-20261124-01/calls/C0004/PRO_RETURN.json` |
+| C0005 | 已消费真实缺口，签发 D003 并精确回读 | `daowei2026/observe-iterate@a61cd54b559b5991238997970bebf78e6a8e849b:longrun/runs/OI-EAW-P1-BUILD-STAT-20261124-01/delegations/D003/DELEGATION.json`；正文 `daowei2026/observe-iterate@a61cd54b559b5991238997970bebf78e6a8e849b:longrun/runs/OI-EAW-P1-BUILD-STAT-20261124-01/delegations/D003/DELEGATION.md` |
+
+下一合法动作：controller 核本 C 的真实 Return、D003 与 Owner/D／实际权限，复用原 E1 派达，取得专业诊断与授权处理／恢复的真实回交；manager 再消费有效性、未完成范围与 L0 后继。发送 UNKNOWN 按原通道对账，不猜测重派。
+
+BUSINESS_PROGRESS 已同步至 rb 有效成果、m 缺口与 D003 发布事实。报告：[C0005 MANAGER_REPORT](../calls/C0005/MANAGER_REPORT.md)。本 C Return 在报告／双进度先发布后单独提交，只引用既存准确对象。
+
+更新时间：2026-11-24 17:18:45 Asia/Shanghai（09:18:45 UTC）。
