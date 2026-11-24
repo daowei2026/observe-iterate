@@ -1,0 +1,45 @@
+{
+  "schema": "observe-iterate-run-resource/v1",
+  "run_id": "OI-EAW-P1-BUILD-STAT-20261124-01",
+  "owner_go_ref": "daowei2026/observe-iterate@9aac8e8b81827015cba4a70bba99e033e82bad92:longrun/runs/OI-EAW-P1-BUILD-STAT-20261124-01/OWNER_START.md",
+  "owner_declared_linux_workspace": "/dwdhome/fy/BASE_E6_2",
+  "worker_host": "linux",
+  "verified_realpath": "/dwdhome/fy/BASE_E6_2",
+  "verified_on_worker_host": true,
+  "verification_evidence_ref": "daowei2026/observe-iterate@7e6ba82d27090eb42e64a3733ad0d45962cc9de2:longrun/runs/OI-EAW-P1-BUILD-STAT-20261124-01/WORKSPACE_VERIFICATION.md",
+  "actual_worker_thread_binding_ref": null,
+  "adopted_source_refs": [
+    "daowei2026/observe-iterate@391adcd18bd2da82c13c01710980f41e01c7de25:longrun/contracts/LONGRUN_PROTOCOL_V2.md",
+    "daowei2026/observe-iterate@391adcd18bd2da82c13c01710980f41e01c7de25:longrun/CODEX_NATIVE_EXECUTION_PROFILE.md",
+    "daowei2026/observe-iterate@391adcd18bd2da82c13c01710980f41e01c7de25:task-inputs/eaw-p1-build-stat-20261124/BUILD_RUN_INPUT.md",
+    "daowei2026/cgpterm@815c505c1cc3d965aaafa831d23c4c88368cb70a:.agents/skills/observe-iterate-longrun-v2-codex-native-controller/SKILL.md"
+  ],
+  "external_write_targets": [
+    {
+      "execution_context": "/dwdhome/fy/BASE_E6_2",
+      "allowed_writes": [
+        "/dwdhome/fy/BASE_E6_2"
+      ],
+      "single_writer": "旧Absorb已Owner终止并有据释放；当前仅本Build预约；Feature实际生产只由本Run E1在合法C执行并核既有重型互斥及数据/缓存/结果写者。"
+    },
+    {
+      "execution_context": "daowei2026/observe-iterate:codex/oi-eaw-p1-build-stat-20261124-01",
+      "allowed_writes": [
+        "longrun/runs/OI-EAW-P1-BUILD-STAT-20261124-01/",
+        "longrun/controller/RUN_REGISTRY.json"
+      ],
+      "single_writer": "controller与manager/E1按实际C顺序条件提交，只写获准Run路径；同分支变化先对账，不force push。"
+    },
+    {
+      "execution_context": "daowei2026/tis:codex/oi-eaw-p1-build-fix-20261124-01",
+      "allowed_writes": [
+        "hf/prel0/build_assembler.py",
+        "hf/prel0/build_assembler_core.py",
+        "直接相关测试",
+        "Build自身参数与业务常量"
+      ],
+      "single_writer": "仅E1在Owner Build范围内修改和提交；从179016起步，不修改原Wall分支。"
+    }
+  ],
+  "notes": "CODEX_NATIVE_DIRECT；AUTONOMOUS；workers=[]。旧Absorb释放依据fad5c4e4d0e46766b50327a41d7f064436380036。既有STCalendar修改保留待executor核定，不属于Build允许修复范围。exact Wall技术物化可做，不代表Wall合理性Release；正式实例未运行。"
+}
