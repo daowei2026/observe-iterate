@@ -37,7 +37,7 @@
 
 - 原 D002：`daowei2026/observe-iterate@c9742986ed6fbb7bc2d55bd87cab54de42c7539f:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/delegations/D002/DELEGATION.json`，`issuer_call_id=C0004`；签发 Return：`daowei2026/observe-iterate@74a46582f44b16b1f7f0890c30314684d211ef3f:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0004/PRO_RETURN.json`。本次不改写原 D002，不把其 X 变更为诊断完成。
 - C0009 原恢复：`daowei2026/observe-iterate@d3e05b73fd2a6fcc3b3b5d248bdd61f11e8f7a34:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/professional_results/D002/C0009/REMAINING_SCOPE.md`，原文明确本 D002 不含诊断或产品修复，需 manager 按原 Workflow 协调校验失败后继。
-- 本 C 签发 D003：`issuer_call_id=C0010`，recipient 为原 E1，回原 manager；[机读件](../delegations/D003/DELEGATION.json)／[正文](../delegations/D003/DELEGATION.md) 本提交发布。
+- 本 C 已签发 D003：`issuer_call_id=C0010`，recipient 为原 E1，回原 manager；机读件：`daowei2026/observe-iterate@ff042e7c90cf73019616f4a9a5710364a0a4bffe:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/delegations/D003/DELEGATION.json`，正文同 commit，均已发布并逐字回读。
 - D003 使用原 `business-discrepancy-diagnosis` Skill 对已记录 X 工程异常作专业来源／责任核查。其原文第 1 节适用于多种竞争解释和改动前判断问题层，第 3／4 节规定事实缺口由执行者补查；输出／完成条件直接沿 Skill。
 - 诊断输入只引用原正式目标、U 处理链、C0009 实际比较／绑定、失败 effects 和原权限；没有伪造 G profile、候选队列或业务 finding。完整 G 仍未开展，不新增专业 Gate。
 - D003 发布不表示已物理派达或诊断完成；controller 核本 C 真实 Return／D003 后，复用原 E1 发新 C。当前没有 DiagnosisReport、LogicLocalization 或 UpstreamFinding。
@@ -52,7 +52,7 @@
 | C0005／A01、C0006 | A01 未获锁、未执行 Feature；manager 资源等待协调，无新 D | `daowei2026/observe-iterate@0d2137442b76f872f2b38eb4e3cf3d16d98303f2:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0006/PRO_RETURN.json` |
 | C0007／A02/A03/R01/A04、C0008 | A02 运行器断言保留；A03 部分生产、R01 rb 35 表有效；A04 未获锁；C0008 沿原 D002 剩余 m 续接 | `daowei2026/observe-iterate@e38beb147f5238eeebebb1a9203676c6843573b4:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0008/PRO_RETURN.json`；当时双进度：`daowei2026/observe-iterate@e71c51aca17a3349bab09bcfed4c3b2c6595eaf8:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/business_control/TASK_PROGRESS.md` |
 | C0009／A05 | 已采用原生 m 上下文，取得原锁后复核 Wall 并真实运行两 F4；两者校验失败，m Attack 未启动 | 当前完整绑定／报告／失败清单 |
-| C0010／D003 | 原 manager 消费真实未完 X，签发既有诊断 Skill，未作专业归因 | [本 C 报告](../calls/C0010/MANAGER_REPORT.md)，待 controller 物理派达 |
+| C0010／D003 | 原 manager 已消费真实未完 X，签发既有诊断 Skill，未作专业归因 | 报告：`daowei2026/observe-iterate@ff042e7c90cf73019616f4a9a5710364a0a4bffe:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0010/MANAGER_REPORT.md`；实际 Return：`daowei2026/observe-iterate@290fabcdb5d6070ed1dbab49f0485dd8079a3250:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0010/PRO_RETURN.json`；待 controller 核回收与物理派达 |
 
 A05 原始失败为：`交易日区间在 2021-03-12 00:00:00 前不连续: 1792800 != 1792801`。调用栈经过 pressure_big_deal.py 至 tick_quote_context.py。堆栈是执行证据，未证明责任归属；manager 不依据文件名、栈位置或其它 Run 预定原因／修法。
 
@@ -85,6 +85,12 @@ controller 核 C0010 真实 Return、D003 与原权限／现场绑定后，在�
 
 BUSINESS_PROGRESS 已同步有效 rb/m Wall、上下文纠正后真实 F4 失败、12 个无效半成品、责任未诊断和本次既有 Skill 后继。报告、D003 和双进度先发布并准确回读，再发布本 C 原 v2 Return。
 
-C0010 Return 保持 `role=manager / IN_PROGRESS`、`return_to=null`，引用已存在 D003、报告和进度；`issued_order_refs=[]`、`accepted_worker_refs=[]`、`owner_request_ref=null`。实际发行引用在回读后补记，避免循环。
+C0010 实际发行事实：
+
+- D003：`daowei2026/observe-iterate@ff042e7c90cf73019616f4a9a5710364a0a4bffe:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/delegations/D003/DELEGATION.json`；正文、报告和双进度先前快照同 `ff042e7c90cf73019616f4a9a5710364a0a4bffe` 提交，五个文件均已发布并逐字回读。
+- 报告：`daowei2026/observe-iterate@ff042e7c90cf73019616f4a9a5710364a0a4bffe:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0010/MANAGER_REPORT.md`。
+- Return：`daowei2026/observe-iterate@290fabcdb5d6070ed1dbab49f0485dd8079a3250:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0010/PRO_RETURN.json`，以先前提交为 parent，普通条件发布并逐字回读。
+- Return 使用原 `longrun-professional-return/v2`，保持 `role=manager / IN_PROGRESS`、`return_to=null`，issued_delegation_refs 与 continuation 均引用上述既存 D003；remaining_scope 引用先前已存在进度。`issued_order_refs=[]`、`accepted_worker_refs=[]`、`owner_request_ref=null`。
+- 本次只补记真实发行事实，不制造引用循环；原 D002 签发仍为 C0004，C0009/A05 及失败 effects、既有成果原件未改写。发布不表示 controller 已核回收、E1 已物理接收、诊断已执行或 X 已恢复。
 
 快照：2026-11-24，当前 C0010；父 Run IN_PROGRESS；记录分支仅 `codex/oi-eaw-p1-attack-stat-20261124-01`，已核 Personal 连接。

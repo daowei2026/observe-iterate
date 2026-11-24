@@ -48,4 +48,4 @@ manager 已为原 E1 签发 [D003](../delegations/D003/DELEGATION.md)，调用�
 - [当前运行状态、历史及恢复](TASK_PROGRESS.md)
 - [本次 manager 报告](../calls/C0010/MANAGER_REPORT.md)
 
-快照：2026-11-24，C0010 已消费真实未完 X 并安排诊断，父 Run IN_PROGRESS。
+快照：2026-11-24，C0010 已消费真实未完 X 并安排诊断，D003、报告、双进度与 manager Return 已发布并准确回读；实际发行引用见 TASK_PROGRESS。父 Run IN_PROGRESS，诊断尚待原 E1 执行。
