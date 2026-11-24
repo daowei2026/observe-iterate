@@ -1,0 +1,207 @@
+{
+  "inspection_kind": "CONSTRUCTOR_AND_SOURCE_ONLY_NO_FEATURE_EXECUTION",
+  "module": "mquant.tis.hf.prel0.build_assembler",
+  "module_file": "/dwdhome/fy/BASE_E6_2/mquant/tis/hf/prel0/build_assembler.py",
+  "class": "Proxy(BuildAssembler)",
+  "ppdict": {
+    "parameter_set_id": "build-default",
+    "wall(WallAssembler).parameter_set_id": "wall-default",
+    "wall(WallAssembler).qt_freq": "1d",
+    "wall(WallAssembler).qt_n": 30,
+    "wall(WallAssembler).qt_quantile": 0.997,
+    "wall(WallAssembler).w_depth_ref_ticks": 1200,
+    "wall(WallAssembler).large_quote_ratio_min": 1.0,
+    "wall(WallAssembler).allow_zero_qt_fallback": false,
+    "wall(WallAssembler).thick_vs_hi_ratio": 1.0,
+    "wall(WallAssembler).thin_vs_mid_ratio": 0.7,
+    "wall(WallAssembler).allow_thin_brick": false,
+    "wall(WallAssembler).p_wall_ticks": 1,
+    "wall(WallAssembler).t_wall_ticks": 6,
+    "wall(WallAssembler).near_band_ticks": null,
+    "wall(WallAssembler).far_band_ticks": null,
+    "wall(WallAssembler).connect_max_core_dist_ticks": null,
+    "wall(WallAssembler).connect_gap_max_ticks": null,
+    "wall(WallAssembler).support_buffer_keep_ticks": null,
+    "wall(WallAssembler).thin_eval_window_ticks": null,
+    "wall(WallAssembler).band_update_min_shift_ticks": null,
+    "wall(WallAssembler).dormant_no_presence_ticks": null,
+    "wall(WallAssembler).dormant_far_ticks": null,
+    "wall(WallAssembler).end_far_hold_ticks": null,
+    "wall(WallAssembler).end_far_ticks": null,
+    "wall(WallAssembler).break_after_no_presence_ticks": null,
+    "wall(WallAssembler).wall_dead_timeout_ticks": null,
+    "wall(WallAssembler).allow_brick_join_dormant": true,
+    "wall(WallAssembler).thin_contact_min_hits": 3,
+    "wall(WallAssembler).thin_contact_frac_end": 0.6,
+    "active_flow_same_best_tol_ticks": 0,
+    "t_build_ticks": 6,
+    "reload_start_ratio": 0.5,
+    "reload_stop_ratio": 0.2,
+    "build_start_window_ticks": null,
+    "build_stop_window_ticks": null,
+    "milestone_levels": [
+      0.5,
+      1.0
+    ],
+    "require_best_price_stable": true,
+    "attack_near_band_ticks": 1
+  },
+  "ppid": "BuildAssembler_954318e844386b1a4967d626990a21e0be640bfd",
+  "param_path": "1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e",
+  "parameters": {
+    "parameter_set_id": "build-default",
+    "active_flow_same_best_tol_ticks": 0,
+    "t_build_ticks": 6,
+    "reload_start_ratio": 0.5,
+    "reload_stop_ratio": 0.2,
+    "build_start_window_ticks": null,
+    "build_stop_window_ticks": null,
+    "milestone_levels": [
+      0.5,
+      1.0
+    ],
+    "require_best_price_stable": true,
+    "attack_near_band_ticks": 1
+  },
+  "effective_core_parameters": {
+    "t_build_ticks": 6,
+    "reload_start_ratio": 0.5,
+    "reload_stop_ratio": 0.2,
+    "build_start_window_ticks": 3,
+    "build_stop_window_ticks": 3,
+    "milestone_levels": [
+      0.5,
+      1.0
+    ],
+    "require_best_price_stable": true,
+    "attack_near_band_ticks": 1
+  },
+  "wall": {
+    "module": "mquant.frame.core.app.proxy",
+    "class": "Proxy(WallAssembler)",
+    "ppdict": {
+      "parameter_set_id": "wall-default",
+      "qt_freq": "1d",
+      "qt_n": 30,
+      "qt_quantile": 0.997,
+      "w_depth_ref_ticks": 1200,
+      "large_quote_ratio_min": 1.0,
+      "allow_zero_qt_fallback": false,
+      "thick_vs_hi_ratio": 1.0,
+      "thin_vs_mid_ratio": 0.7,
+      "allow_thin_brick": false,
+      "p_wall_ticks": 1,
+      "t_wall_ticks": 6,
+      "near_band_ticks": null,
+      "far_band_ticks": null,
+      "connect_max_core_dist_ticks": null,
+      "connect_gap_max_ticks": null,
+      "support_buffer_keep_ticks": null,
+      "thin_eval_window_ticks": null,
+      "band_update_min_shift_ticks": null,
+      "dormant_no_presence_ticks": null,
+      "dormant_far_ticks": null,
+      "end_far_hold_ticks": null,
+      "end_far_ticks": null,
+      "break_after_no_presence_ticks": null,
+      "wall_dead_timeout_ticks": null,
+      "allow_brick_join_dormant": true,
+      "thin_contact_min_hits": 3,
+      "thin_contact_frac_end": 0.6
+    },
+    "ppid": "WallAssembler_f32460448c4bde6d0a683cfc262808694c9f0a75"
+  },
+  "code_version": "git:179016111ed0394f92025313e46bd13534932a74+source-sha256:924da4d9388a44039df47207d10b0b3b7f740a463c064d20eeae908da817cee1",
+  "stcalendar_loaded_module": "/dwdhome/fy/BASE_E6_2/mquant/tis/frpExample/STCalendar.py",
+  "versions": [
+    {
+      "path": "hf/prel0/build_assembler.py",
+      "sha256": "257e8b987b644afb5e2ef7eea36990eab6b9fd78318573b9d238c3f3d809241f",
+      "git_blob": "e60aeb24a98f76bafa3165297b36a93df83d3ccd",
+      "baseline_blob": "e60aeb24a98f76bafa3165297b36a93df83d3ccd",
+      "matches_baseline": true
+    },
+    {
+      "path": "hf/prel0/build_assembler_core.py",
+      "sha256": "b0be6398750cba20e1060b408a5ad440284d154ab96a864ea62087c45db819c8",
+      "git_blob": "482996d386f590fe3731c973837cc24137cbaff8",
+      "baseline_blob": "482996d386f590fe3731c973837cc24137cbaff8",
+      "matches_baseline": true
+    },
+    {
+      "path": "hf/prel0/wall_assembler.py",
+      "sha256": "58f056bbb4447929237599820c9d1012177c84694e881391223b25163f724bce",
+      "git_blob": "5578bd28c1e21b139fae9a1b3c3443cfb308fbee",
+      "baseline_blob": "5578bd28c1e21b139fae9a1b3c3443cfb308fbee",
+      "matches_baseline": true
+    },
+    {
+      "path": "hf/prel0/wall_assembler_core.py",
+      "sha256": "e69b9ef099399f432b83be9537fa96dd19d9489e92c1436cd5690f52109ffed8",
+      "git_blob": "a1054c393cbdc347a25eb43e58979fa095ad4e7a",
+      "baseline_blob": "a1054c393cbdc347a25eb43e58979fa095ad4e7a",
+      "matches_baseline": true
+    },
+    {
+      "path": "hf/prel0/p1_dba_export.py",
+      "sha256": "2cd3f21cfa570f7e716b96a08d745cf40be2221df3d45e9deff9e1d878b38073",
+      "git_blob": "4ddbe116d5088e964d416fbc6fef9ba1cff54fb4",
+      "baseline_blob": "4ddbe116d5088e964d416fbc6fef9ba1cff54fb4",
+      "matches_baseline": true
+    },
+    {
+      "path": "hf/prel0/p1_product_receipt.py",
+      "sha256": "c5f1ff13a5b390c33a0d43492d1b5cd5178d9d45b386d94a90c0d54bc5e7a17a",
+      "git_blob": "5d921626ec7236234addcd669b248231530c2458",
+      "baseline_blob": "5d921626ec7236234addcd669b248231530c2458",
+      "matches_baseline": true
+    },
+    {
+      "path": "hf/prel0/tick_quote_context.py",
+      "sha256": "cf5041c1e020f0fb12cd893f32adc30b3a6dcc351fb5edcf0d4b7b5c6909d8ec",
+      "git_blob": "f8ea8d4c2986e7b737d2947d34603ea83a2b5802",
+      "baseline_blob": "f8ea8d4c2986e7b737d2947d34603ea83a2b5802",
+      "matches_baseline": true
+    },
+    {
+      "path": "hf/prel0/pressure_big_deal.py",
+      "sha256": "d15e2191c16e400be0d57f9193147d1e78e5beb548e1b353928d22ee7379c537",
+      "git_blob": "35aad71a044865469b28737b5572ae84fd25dab8",
+      "baseline_blob": "35aad71a044865469b28737b5572ae84fd25dab8",
+      "matches_baseline": true
+    },
+    {
+      "path": "hf/prel0/pressure_big_deal_core.py",
+      "sha256": "a246bb99488a1df91bbae1b1e110c89b93dcd43df1f4286574b239be8cc8c31a",
+      "git_blob": "61b0db791a63c33fcd8d811ee44f1d3f2f4b14c6",
+      "baseline_blob": "61b0db791a63c33fcd8d811ee44f1d3f2f4b14c6",
+      "matches_baseline": true
+    },
+    {
+      "path": "frp/EawBattleP.py",
+      "sha256": "5378981abafb8f67a9f55f9bbdfa4d42c0d1a8e74598b8a706187acd051bbad5",
+      "git_blob": "d0ee39e6b10fc347cbc9893aba20589049c0d6a4",
+      "baseline_blob": "d0ee39e6b10fc347cbc9893aba20589049c0d6a4",
+      "matches_baseline": true
+    },
+    {
+      "path": "frpExample/STCalendar.py",
+      "sha256": "3001e49a3b812b5281ddca12795e5aa279d5ca09fd510ba0a4cfc330b42c6980",
+      "git_blob": "fa8edcda48b9ac4a9366154cd8568fcfd44da21e",
+      "baseline_blob": "bb67cfb1c2382ec1c0b4c23e8918ea01268f173c",
+      "matches_baseline": false
+    }
+  ],
+  "formal_scope": {
+    "sof_name": "TA_updto20240229_DBA",
+    "symbols": [
+      "rb",
+      "m"
+    ],
+    "start": "2021-01-01",
+    "end": "2021-12-31",
+    "calendar": "night_end_at_2300",
+    "actual_market_data_read": false,
+    "formal_result_read": false
+  }
+}

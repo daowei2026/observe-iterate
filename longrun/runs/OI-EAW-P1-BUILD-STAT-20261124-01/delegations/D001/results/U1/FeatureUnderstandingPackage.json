@@ -1,0 +1,3893 @@
+{
+  "package_id": "FUP-EAW-P1-BUILD-20261124-D001-U1",
+  "feature_ref": {
+    "feature_name": "BuildAssembler",
+    "business_name": "围绕一堵exact Wall的Build加固活动",
+    "code_version": "179016111ed0394f92025313e46bd13534932a74",
+    "constructor_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+    "constructor": "mquant.tis.hf.prel0.build_assembler.BuildAssembler()",
+    "instance_ref": {
+      "parameter_set_id": "build-default",
+      "ppid": "BuildAssembler_954318e844386b1a4967d626990a21e0be640bfd",
+      "param_path": "1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e",
+      "full_ppdict": {
+        "parameter_set_id": "build-default",
+        "wall(WallAssembler).parameter_set_id": "wall-default",
+        "wall(WallAssembler).qt_freq": "1d",
+        "wall(WallAssembler).qt_n": 30,
+        "wall(WallAssembler).qt_quantile": 0.997,
+        "wall(WallAssembler).w_depth_ref_ticks": 1200,
+        "wall(WallAssembler).large_quote_ratio_min": 1,
+        "wall(WallAssembler).allow_zero_qt_fallback": false,
+        "wall(WallAssembler).thick_vs_hi_ratio": 1,
+        "wall(WallAssembler).thin_vs_mid_ratio": 0.7,
+        "wall(WallAssembler).allow_thin_brick": false,
+        "wall(WallAssembler).p_wall_ticks": 1,
+        "wall(WallAssembler).t_wall_ticks": 6,
+        "wall(WallAssembler).near_band_ticks": null,
+        "wall(WallAssembler).far_band_ticks": null,
+        "wall(WallAssembler).connect_max_core_dist_ticks": null,
+        "wall(WallAssembler).connect_gap_max_ticks": null,
+        "wall(WallAssembler).support_buffer_keep_ticks": null,
+        "wall(WallAssembler).thin_eval_window_ticks": null,
+        "wall(WallAssembler).band_update_min_shift_ticks": null,
+        "wall(WallAssembler).dormant_no_presence_ticks": null,
+        "wall(WallAssembler).dormant_far_ticks": null,
+        "wall(WallAssembler).end_far_hold_ticks": null,
+        "wall(WallAssembler).end_far_ticks": null,
+        "wall(WallAssembler).break_after_no_presence_ticks": null,
+        "wall(WallAssembler).wall_dead_timeout_ticks": null,
+        "wall(WallAssembler).allow_brick_join_dormant": true,
+        "wall(WallAssembler).thin_contact_min_hits": 3,
+        "wall(WallAssembler).thin_contact_frac_end": 0.6,
+        "active_flow_same_best_tol_ticks": 0,
+        "t_build_ticks": 6,
+        "reload_start_ratio": 0.5,
+        "reload_stop_ratio": 0.2,
+        "build_start_window_ticks": null,
+        "build_stop_window_ticks": null,
+        "milestone_levels": [
+          0.5,
+          1
+        ],
+        "require_best_price_stable": true,
+        "attack_near_band_ticks": 1
+      },
+      "nested_wall": {
+        "module": "mquant.frame.core.app.proxy",
+        "class": "Proxy(WallAssembler)",
+        "ppdict": {
+          "parameter_set_id": "wall-default",
+          "qt_freq": "1d",
+          "qt_n": 30,
+          "qt_quantile": 0.997,
+          "w_depth_ref_ticks": 1200,
+          "large_quote_ratio_min": 1,
+          "allow_zero_qt_fallback": false,
+          "thick_vs_hi_ratio": 1,
+          "thin_vs_mid_ratio": 0.7,
+          "allow_thin_brick": false,
+          "p_wall_ticks": 1,
+          "t_wall_ticks": 6,
+          "near_band_ticks": null,
+          "far_band_ticks": null,
+          "connect_max_core_dist_ticks": null,
+          "connect_gap_max_ticks": null,
+          "support_buffer_keep_ticks": null,
+          "thin_eval_window_ticks": null,
+          "band_update_min_shift_ticks": null,
+          "dormant_no_presence_ticks": null,
+          "dormant_far_ticks": null,
+          "end_far_hold_ticks": null,
+          "end_far_ticks": null,
+          "break_after_no_presence_ticks": null,
+          "wall_dead_timeout_ticks": null,
+          "allow_brick_join_dormant": true,
+          "thin_contact_min_hits": 3,
+          "thin_contact_frac_end": 0.6
+        },
+        "ppid": "WallAssembler_f32460448c4bde6d0a683cfc262808694c9f0a75"
+      },
+      "effective_core_parameters": {
+        "t_build_ticks": 6,
+        "reload_start_ratio": 0.5,
+        "reload_stop_ratio": 0.2,
+        "build_start_window_ticks": 3,
+        "build_stop_window_ticks": 3,
+        "milestone_levels": [
+          0.5,
+          1
+        ],
+        "require_best_price_stable": true,
+        "attack_near_band_ticks": 1
+      }
+    },
+    "producer_code_fingerprint": "git:179016111ed0394f92025313e46bd13534932a74+source-sha256:924da4d9388a44039df47207d10b0b3b7f740a463c064d20eeae908da817cee1"
+  },
+  "execution_context": {
+    "run_id": "OI-EAW-P1-BUILD-STAT-20261124-01",
+    "call_id": "C0002",
+    "delegation_id": "D001",
+    "executor": "codex:OI-EAW-P1-BUILD-STAT-20261124-01:executor:E1",
+    "professional_control_commit": "391adcd18bd2da82c13c01710980f41e01c7de25",
+    "delegation_ref": "daowei2026/observe-iterate@089defe5cd73f28525070c95314cf1c217fbd0df:longrun/runs/OI-EAW-P1-BUILD-STAT-20261124-01/delegations/D001/DELEGATION.json",
+    "business_input_ref": "daowei2026/observe-iterate@391adcd18bd2da82c13c01710980f41e01c7de25:task-inputs/eaw-p1-build-stat-20261124/BUILD_RUN_INPUT.md",
+    "workers": [],
+    "work_scope": "仅U；源码阅读、默认构造/参数序列化和文档/接口理解；未执行Feature/Numba replay/统计/诊断/修复。",
+    "workspace": "/dwdhome/fy/BASE_E6_2",
+    "tis_root": "/dwdhome/fy/BASE_E6_2/mquant/tis",
+    "actual_tis_head": "179016111ed0394f92025313e46bd13534932a74",
+    "actual_branch": "codex/wall-output-consistency-20261121",
+    "tis_branch_action": "本D未修改源码、未创建修复分支或提交/推送TIS。",
+    "record_branch": "codex/oi-eaw-p1-build-stat-20261124-01",
+    "runtime_entry": "./run-python.sh -B <本次inspect_instance.py>；平台构造成功；系统python初次因无pandas退出，已改用工作区既有入口。",
+    "framework_head": "mquant/frame@4d0ff8f2640e07a8b9ff066c48114f451fca6cfe（已跟踪文件无修改）"
+  },
+  "market_binding": {
+    "requested": {
+      "sof_name": "TA_updto20240229_DBA",
+      "symbols": [
+        "rb",
+        "m"
+      ],
+      "start": "2021-01-01",
+      "end": "2021-12-31",
+      "calendar": "night_end_at_2300",
+      "actual_market_data_read": false,
+      "formal_result_read": false
+    },
+    "actual_data_scope": "UNCONFIRMED；U未读取市场数据，输入声明不等于实际完整覆盖。",
+    "exact_wall_artifact": "UNCONFIRMED；已定位依赖及receipt校验代码，未读取或物化正式Wall artifact/receipt/state trace。",
+    "formal_build_result": "UNCONFIRMED；未生产或复用任何正式结果；无FeatureRunResultBinding。"
+  },
+  "implementation_sources": [
+    {
+      "source_id": "B",
+      "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+      "responsibility": "当前独立Python producer、默认构造、chunk接线、公开formal_streams与receipt",
+      "verification_status": "VERIFIED_SOURCE_ONLY",
+      "evidence_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py"
+    },
+    {
+      "source_id": "C",
+      "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+      "responsibility": "Numba F10/F11/Build状态机及Python replay序列化",
+      "verification_status": "VERIFIED_SOURCE_ONLY",
+      "evidence_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py"
+    },
+    {
+      "source_id": "E",
+      "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/p1_dba_export.py",
+      "responsibility": "packed DBA同刻分流、数值字段、空哨兵和dump",
+      "verification_status": "VERIFIED_SOURCE_ONLY",
+      "evidence_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/p1_dba_export.py"
+    },
+    {
+      "source_id": "R",
+      "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/p1_product_receipt.py",
+      "responsibility": "thin receipt、参数/来源/代码指纹、直接上游引用",
+      "verification_status": "VERIFIED_SOURCE_ONLY",
+      "evidence_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/p1_product_receipt.py"
+    },
+    {
+      "source_id": "T",
+      "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/tick_quote_context.py",
+      "responsibility": "市场数据读取、UTI换算、交易日chunk和全局事件编码",
+      "verification_status": "VERIFIED_SOURCE_ONLY",
+      "evidence_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/tick_quote_context.py"
+    },
+    {
+      "source_id": "F",
+      "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/pressure_big_deal.py",
+      "responsibility": "块内transient active flow接线；compute_f3=True、compute_f4=False",
+      "verification_status": "VERIFIED_SOURCE_ONLY",
+      "evidence_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/pressure_big_deal.py"
+    },
+    {
+      "source_id": "FC",
+      "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/pressure_big_deal_core.py",
+      "responsibility": "主动方向压力、可用性及same-best列计算",
+      "verification_status": "VERIFIED_SOURCE_ONLY",
+      "evidence_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/pressure_big_deal_core.py"
+    },
+    {
+      "source_id": "W",
+      "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/wall_assembler.py",
+      "responsibility": "exact Wall默认依赖及其输入切面",
+      "verification_status": "VERIFIED_SOURCE_ONLY",
+      "evidence_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/wall_assembler.py"
+    },
+    {
+      "source_id": "P",
+      "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:frp/EawBattleP.py",
+      "responsibility": "Python typed ingress配置、BuildActivity FRP包装",
+      "verification_status": "VERIFIED_SOURCE_ONLY",
+      "evidence_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:frp/EawBattleP.py"
+    },
+    {
+      "source_id": "DSU",
+      "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/BuildActivity.hs",
+      "responsibility": "FRP接纳、当前活跃视图、current updates及diagnostics；仅合同源码参考，未执行",
+      "verification_status": "VERIFIED_SOURCE_ONLY",
+      "evidence_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/BuildActivity.hs"
+    },
+    {
+      "source_id": "PR",
+      "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/Products.hs",
+      "responsibility": "typed身份、FeatureRunIdentity、current类型及Wall namespace",
+      "verification_status": "VERIFIED_SOURCE_ONLY",
+      "evidence_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/Products.hs"
+    },
+    {
+      "source_id": "TY",
+      "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/Interface/PreL0.hs",
+      "responsibility": "typed业务payload和availability类型",
+      "verification_status": "VERIFIED_SOURCE_ONLY",
+      "evidence_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/Interface/PreL0.hs"
+    },
+    {
+      "source_id": "IN",
+      "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+      "responsibility": "DBA数值行至typed Build事件、exact上游接纳接口",
+      "verification_status": "VERIFIED_SOURCE_ONLY",
+      "evidence_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs"
+    },
+    {
+      "source_id": "UP",
+      "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/Internal/UpstreamReference.hs",
+      "responsibility": "exact upstream receipt比较、Wall namespace验证",
+      "verification_status": "VERIFIED_SOURCE_ONLY",
+      "evidence_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/Internal/UpstreamReference.hs"
+    },
+    {
+      "source_id": "LE",
+      "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/Internal/OccurrenceLedger.hs",
+      "responsibility": "当前firing内重复/冲突引用判定",
+      "verification_status": "VERIFIED_SOURCE_ONLY",
+      "evidence_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/Internal/OccurrenceLedger.hs"
+    }
+  ],
+  "business_objects": [
+    {
+      "object_id": "BO-BUILD",
+      "object_type": "Build加固活动",
+      "business_meaning": "一个由Start发起、可有多个Milestone并由Stop结束的持续过程；producer激活时绑定当拍active_wall_id。",
+      "identity_fields": [
+        "build_id（producer）",
+        "build_local_no/BuildActivityIdentity.localNo（typed）"
+      ],
+      "identity_scope": "同一producer source run和symbol内；wrapper跨交易日carry并在bid/ask槽之间传递next_build_id；跨run/不同品种须加exact receipt/FeatureRunIdentity。typed包装本身只存localNo，不能视为跨run全局ID。",
+      "create_occurrence": "O-START",
+      "update_occurrences": [
+        "O-MILESTONE"
+      ],
+      "terminate_occurrence": "O-STOP",
+      "relations": [
+        {
+          "type": "引用",
+          "target": "BO-WALL",
+          "key": "active_wall_id→wall_id→wall_local_no；typed buildOccurrenceWallIdentity"
+        }
+      ],
+      "current_state_carrier": "core active/wall_id/build_id及rolling state；FRP buildViews中仅保留InProgress项。",
+      "counting_units": "唯一Build数按带source/symbol作用域的build_id；event行数、milestone数、state更新数和物理stream数是不同单位。",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+          "lines": "109-110,133-168,201"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+          "lines": "527-586,595-696"
+        },
+        {
+          "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/Products.hs",
+          "lines": "443-475,493-497"
+        },
+        {
+          "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/BuildActivity.hs",
+          "lines": "47-83"
+        }
+      ],
+      "unconfirmed_items": [
+        "正式实例中的Build数量、起止/未结束分布与跨chunk可达情况尚未运行验证。"
+      ]
+    },
+    {
+      "object_id": "BO-WALL",
+      "object_type": "上游Wall（只引用）",
+      "business_meaning": "当前Wall生命周期对象，Build依赖其exact状态轨迹和receipt，自己不创建或重判Wall。",
+      "identity_fields": [
+        "wall_id_bid / wall_id_ask",
+        "wall_local_no",
+        "WallIdentity.localNo"
+      ],
+      "identity_scope": "exact Wall source run/symbol；裸localNo不能跨artifact拼接。",
+      "create_occurrence": "当前Build不消费Wall.Start事件；从Wall状态轨迹读取已存在ID。",
+      "update_occurrences": [],
+      "terminate_occurrence": "Build看到当前status不再Alive或ID不匹配时停止自身活动；不产生Wall.End。",
+      "relations": [
+        {
+          "type": "被引用",
+          "target": "BO-BUILD",
+          "key": "wall_local_no"
+        }
+      ],
+      "current_state_carrier": "wall_assembler_state_trace中wall_{id,side_code,status_code,band_lo,band_hi}_{bid,ask}；此trace是输入状态而非Build input occurrence。",
+      "counting_units": "Wall life与Build life非一一对应；同一Wall可以被后续新Build引用。",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+          "lines": "114-145,220-228"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+          "lines": "525,641-645"
+        },
+        {
+          "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/Internal/UpstreamReference.hs",
+          "lines": "17-45"
+        }
+      ],
+      "unconfirmed_items": [
+        "未取得本正式范围exact Wall receipt/trace；技术依赖可用不代表Wall合理性Release。"
+      ]
+    }
+  ],
+  "object_qualification": [
+    {
+      "candidate": "Build活动",
+      "classification": "业务对象",
+      "reason": "有市场持续过程、身份和Start/更新/Stop。"
+    },
+    {
+      "candidate": "被引用Wall",
+      "classification": "上游业务对象",
+      "reason": "有独立生命周期和exact引用；当前U只理解消费边界。"
+    },
+    {
+      "candidate": "best-price stable / attack / reload / milestone mask",
+      "classification": "属性或关键中间判断",
+      "reason": "参与同一Build形成/更新；不另有业务身份。"
+    },
+    {
+      "candidate": "transient active flow/F10/F11数组",
+      "classification": "中间处理结果",
+      "reason": "当前Build在块内计算消费，不形成另一个独立Feature或业务对象。"
+    },
+    {
+      "candidate": "Calendar / 参数实例 / receipt / chunk / stream / rolling ring",
+      "classification": "绑定、载体或处理状态",
+      "reason": "不是行情业务单位。"
+    }
+  ],
+  "states": [
+    {
+      "state_id": "ST-IDLE",
+      "object_id": "BO-BUILD",
+      "state_name": "core active=0",
+      "meaning": "当前side槽无进行中Build；不等于永久Stopped记录。",
+      "initial": true,
+      "terminal": false,
+      "entry_condition": "make_empty_build_state初始；或should_stop记录事件后重置。",
+      "exit_condition": "wall_alive && attack_flag!=0 && reload_proxy_t>0 && rolling_start_ratio>=reload_start_ratio。",
+      "legal_predecessors": [
+        "初始",
+        "ST-ACTIVE"
+      ],
+      "legal_successors": [
+        "ST-ACTIVE",
+        "ST-IDLE"
+      ],
+      "persistence": "core本拍/跨chunk carry内；Stop后wall_id=0/start_uti=-1/baseline/cum/mask/rings归零，build_id仍保留上一编号。正式.F没有active状态列。",
+      "duration_semantics": "等待下一次Start的处理器状态；不是上一Build延长。",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+          "lines": "204-241,527-586,685-696"
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "state_id": "ST-ACTIVE",
+      "object_id": "BO-BUILD",
+      "state_name": "core active=1",
+      "meaning": "以固定active_wall_id和冻结baseline_vol跟踪当前Build。",
+      "initial": false,
+      "terminal": false,
+      "entry_condition": "Start分配新build_id并冻结best_vol，cum只初始化为当拍reload_proxy。",
+      "exit_condition": "当前Wall非Alive/ID变化，或uti>start_uti且rolling_stop_ratio<reload_stop_ratio。",
+      "legal_predecessors": [
+        "ST-IDLE"
+      ],
+      "legal_successors": [
+        "ST-ACTIVE（Milestone或无新事件）",
+        "ST-IDLE（Stop）"
+      ],
+      "persistence": "每个side一个state；交易日chunk间传递完整carry、ring和上一拍best；不在数据尾自动发Stop。",
+      "duration_semantics": "Start UTI至Stop UTI，未Stop为开放端；UTI为calendar linear_ts//500-1，不直接等价实际墙钟秒数。",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+          "lines": "534-548,588-696,707-715,969-1013"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+          "lines": "109-110,160-168,201"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/tick_quote_context.py",
+          "lines": "97-106"
+        }
+      ],
+      "unconfirmed_items": [
+        "正式范围是否有未Stop活动、跨停市carry情况留待X/G。"
+      ]
+    },
+    {
+      "state_id": "ST-FRP-PROGRESS",
+      "object_id": "BO-BUILD",
+      "state_name": "BuildInProgress",
+      "meaning": "DSU已接纳Start；Milestone使milestoneCount递增且状态保持。",
+      "initial": false,
+      "terminal": false,
+      "entry_condition": "buildViews无该identity且输入BuildStarted。",
+      "exit_condition": "接纳BuildStopped。",
+      "legal_predecessors": [
+        "无current"
+      ],
+      "legal_successors": [
+        "ST-FRP-PROGRESS",
+        "ST-FRP-STOPPED"
+      ],
+      "persistence": "buildViews Map BuildActivityIdentity BuildCurrentView；一次firing最后current更新覆盖同identity前值，但occurrence列表保留所有接纳项。",
+      "duration_semantics": "离散事件驱动current保持；无事件不表示结束。",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/BuildActivity.hs",
+          "lines": "47-83,85-101,123-143"
+        }
+      ],
+      "unconfirmed_items": [
+        "本Run未执行FRP backend。"
+      ]
+    },
+    {
+      "state_id": "ST-FRP-STOPPED",
+      "object_id": "BO-BUILD",
+      "state_name": "BuildStoppedState",
+      "meaning": "Stop接纳时产生终止current update；随后从活跃buildViews删除。",
+      "initial": false,
+      "terminal": true,
+      "entry_condition": "当前存在InProgress且接纳BuildStopped。",
+      "exit_condition": "无普通继续；当前map不保存Stopped墓碑或全历史。",
+      "legal_predecessors": [
+        "ST-FRP-PROGRESS"
+      ],
+      "legal_successors": [],
+      "persistence": "终止项在本firing的buildCurrentUpdateBatch和已接纳occurrence中；不长期留在buildActivityCurrent活跃Map。",
+      "duration_semantics": "终止publication，不是一个持续保持的活跃状态段。",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/BuildActivity.hs",
+          "lines": "59-82,85-91,114-143"
+        }
+      ],
+      "unconfirmed_items": [
+        "contract声称Stopped后不可普通Milestone；当前历史约束实际依赖active map和外部committed artifact，而非永久tombstone。"
+      ]
+    },
+    {
+      "state_id": "ST-WALL-INPUT",
+      "object_id": "BO-WALL",
+      "state_name": "0 Empty / 1 Alive / 2 Dormant / 3 Ended（输入编码）",
+      "meaning": "Build只把status=1且id>0视为wall_alive；其它状态不维持当前Build。",
+      "initial": false,
+      "terminal": false,
+      "entry_condition": "上游Wall trace采样。",
+      "exit_condition": "由上游变化，不由Build决定。",
+      "legal_predecessors": [],
+      "legal_successors": [],
+      "persistence": "上游每tick状态trace；不是Wall lifecycle事件输入。",
+      "duration_semantics": "只能在exact trace中测状态时段；本包不计算。",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+          "lines": "41-47,97-122,525,641-645"
+        }
+      ],
+      "unconfirmed_items": [
+        "不在本U重建整个Wall状态机。"
+      ]
+    }
+  ],
+  "non_occurrence_inputs": [
+    {
+      "input_id": "NI-WALL",
+      "carrier": "wall_assembler_state_trace逐tick状态列",
+      "classification": "当前状态采样",
+      "reason": "Build没有直接订阅Wall.Start/StateChange/End事件。",
+      "evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+          "lines": "114-145,232"
+        }
+      ]
+    },
+    {
+      "input_id": "NI-FLOW",
+      "carrier": "块内active_flow_columns / F10 / F11",
+      "classification": "dense测量/判断",
+      "reason": "即使每tick变化，也没有独立事件身份；用于Start/更新/Stop条件。",
+      "evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+          "lines": "125-159"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+          "lines": "445-470"
+        }
+      ]
+    }
+  ],
+  "occurrences": [
+    {
+      "occurrence_id": "O-START",
+      "name": "Wall.BuildStart / Build.Start",
+      "direction": "输出事件",
+      "business_role": "业务主输出",
+      "carrier": "Numba event buffers→core events list→wrapper sparse DataFrame→packed build__stream*；不是Dynamic当前值",
+      "meaning": "inactive满足当前Wall可接战、attack、当拍reload及start rolling阈值后新建Build。",
+      "own_position": "条件在tick i成立/被处理时，当拍uti[i]与ts[i]；没有额外确认延迟字段。",
+      "other_positions": "core checkpoint携带start_uti，但该字段未进入formal sparse payload。",
+      "object_scope": "单Build，引用一Wall；同tick可有其它Build/多Milestone或Milestone后Stop。",
+      "identity_fields": [
+        "source_run/symbol scope",
+        "build_id",
+        "wall_local_no"
+      ],
+      "revision_fields": "无revision/previous/supersedes；Milestone更新同一对象，不替换历史。",
+      "payload_fields": [
+        {
+          "field": "build_id",
+          "meaning": "活动本地编号",
+          "data_type": "int64",
+          "unit_or_domain": ">0",
+          "nullable": "否",
+          "missing_meaning": "不适用",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+              "lines": "924-947"
+            },
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+              "lines": "163-166,248-257"
+            }
+          ]
+        },
+        {
+          "field": "wall_local_no",
+          "meaning": "固定绑定Wall本地编号；core wall_id在formal artifact中重命名",
+          "data_type": "int64",
+          "unit_or_domain": ">0",
+          "nullable": "否",
+          "missing_meaning": "不适用",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+              "lines": "924-947"
+            },
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+              "lines": "163-166,248-257"
+            }
+          ]
+        },
+        {
+          "field": "uti",
+          "meaning": "当拍业务事件位置",
+          "data_type": "int64",
+          "unit_or_domain": "linear_ts//500-1",
+          "nullable": "否",
+          "missing_meaning": "不适用",
+          "is_position": true,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+              "lines": "924-947"
+            },
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+              "lines": "163-166,248-257"
+            }
+          ]
+        },
+        {
+          "field": "ts / DatetimeIndex",
+          "meaning": "同一事件对应输入tick时间",
+          "data_type": "datetime64[ns]",
+          "unit_or_domain": "输入时间轴",
+          "nullable": "否",
+          "missing_meaning": "不适用",
+          "is_position": true,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+              "lines": "924-947"
+            },
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+              "lines": "163-166,248-257"
+            }
+          ]
+        },
+        {
+          "field": "event_type_code",
+          "meaning": "事件种类；8/9/10",
+          "data_type": "integer",
+          "unit_or_domain": "8 Start / 9 Milestone / 10 Stop",
+          "nullable": "否",
+          "missing_meaning": "不适用",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+              "lines": "924-947"
+            },
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+              "lines": "163-166,248-257"
+            }
+          ]
+        },
+        {
+          "field": "baseline_vol",
+          "meaning": "Start拍冻结的墙侧best volume",
+          "data_type": "float64",
+          "unit_or_domain": "市场量单位（本U未对实际源单位另证）",
+          "nullable": "否",
+          "missing_meaning": "不适用",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+              "lines": "924-947"
+            },
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+              "lines": "163-166,248-257"
+            }
+          ]
+        },
+        {
+          "field": "cum_reload_proxy",
+          "meaning": "Start当前拍起累积reload proxy",
+          "data_type": "float64",
+          "unit_or_domain": "与best volume同计算口径",
+          "nullable": "否",
+          "missing_meaning": "不适用",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+              "lines": "924-947"
+            },
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+              "lines": "163-166,248-257"
+            }
+          ]
+        },
+        {
+          "field": "same_band_continuity_code",
+          "meaning": "producer固定写1",
+          "data_type": "integer",
+          "unit_or_domain": "1",
+          "nullable": "否",
+          "missing_meaning": "固定码，不可解释为已计算连续性比例",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+              "lines": "924-947"
+            },
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+              "lines": "163-166,248-257"
+            }
+          ]
+        },
+        {
+          "field": "wall_slot_side_code",
+          "meaning": "wrapper运行side槽",
+          "data_type": "integer",
+          "unit_or_domain": "1 bid / 2 ask",
+          "nullable": "否",
+          "missing_meaning": "不适用",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+              "lines": "924-947"
+            },
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+              "lines": "163-166,248-257"
+            }
+          ]
+        },
+        {
+          "field": "availability_code",
+          "meaning": "formal producer固定写1",
+          "data_type": "int8，普通dump可拓宽为int64",
+          "unit_or_domain": "1 available",
+          "nullable": "否",
+          "missing_meaning": "不是对所有缺失输入状态的完整证明",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+              "lines": "924-947"
+            },
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+              "lines": "163-166,248-257"
+            }
+          ]
+        }
+      ],
+      "producer": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py / _run_build_assembler_kernel",
+      "consumer": "公开DBA读取；FRP decodeBuildNumericRow及BuildActivityDSU合同消费者（本次未执行）。",
+      "public_read": "Feature完成后从BuildAssembler实例.F的全部build__*结果键合并；本U未读正式结果。",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+          "lines": "527-586"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+          "lines": "906-948"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/tick_quote_context.py",
+          "lines": "128-130"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/p1_dba_export.py",
+          "lines": "256-269,292-305"
+        }
+      ],
+      "unconfirmed_items": [
+        "正式市场实例中该occurrence的存在性与可达性未运行确认。"
+      ]
+    },
+    {
+      "occurrence_id": "O-MILESTONE",
+      "name": "Wall.BuildMilestone / Build.Milestone",
+      "direction": "输出事件",
+      "business_role": "业务主输出",
+      "carrier": "Numba event buffers→core events list→wrapper sparse DataFrame→packed build__stream*；不是Dynamic当前值",
+      "meaning": "已有Build的累计proxy比率首次达到某preset level；可同拍达到多级，每级有独立raw occurrence。",
+      "own_position": "条件在tick i成立/被处理时，当拍uti[i]与ts[i]；没有额外确认延迟字段。",
+      "other_positions": "core checkpoint携带start_uti，但该字段未进入formal sparse payload。",
+      "object_scope": "单Build，引用一Wall；同tick可有其它Build/多Milestone或Milestone后Stop。",
+      "identity_fields": [
+        "source_run/symbol scope",
+        "build_id",
+        "wall_local_no"
+      ],
+      "revision_fields": "无revision/previous/supersedes；Milestone更新同一对象，不替换历史。",
+      "payload_fields": [
+        {
+          "field": "build_id",
+          "meaning": "活动本地编号",
+          "data_type": "int64",
+          "unit_or_domain": ">0",
+          "nullable": "否",
+          "missing_meaning": "不适用",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+              "lines": "924-947"
+            },
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+              "lines": "163-166,248-257"
+            }
+          ]
+        },
+        {
+          "field": "wall_local_no",
+          "meaning": "固定绑定Wall本地编号；core wall_id在formal artifact中重命名",
+          "data_type": "int64",
+          "unit_or_domain": ">0",
+          "nullable": "否",
+          "missing_meaning": "不适用",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+              "lines": "924-947"
+            },
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+              "lines": "163-166,248-257"
+            }
+          ]
+        },
+        {
+          "field": "uti",
+          "meaning": "当拍业务事件位置",
+          "data_type": "int64",
+          "unit_or_domain": "linear_ts//500-1",
+          "nullable": "否",
+          "missing_meaning": "不适用",
+          "is_position": true,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+              "lines": "924-947"
+            },
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+              "lines": "163-166,248-257"
+            }
+          ]
+        },
+        {
+          "field": "ts / DatetimeIndex",
+          "meaning": "同一事件对应输入tick时间",
+          "data_type": "datetime64[ns]",
+          "unit_or_domain": "输入时间轴",
+          "nullable": "否",
+          "missing_meaning": "不适用",
+          "is_position": true,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+              "lines": "924-947"
+            },
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+              "lines": "163-166,248-257"
+            }
+          ]
+        },
+        {
+          "field": "event_type_code",
+          "meaning": "事件种类；8/9/10",
+          "data_type": "integer",
+          "unit_or_domain": "8 Start / 9 Milestone / 10 Stop",
+          "nullable": "否",
+          "missing_meaning": "不适用",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+              "lines": "924-947"
+            },
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+              "lines": "163-166,248-257"
+            }
+          ]
+        },
+        {
+          "field": "baseline_vol",
+          "meaning": "Start拍冻结的墙侧best volume",
+          "data_type": "float64",
+          "unit_or_domain": "市场量单位（本U未对实际源单位另证）",
+          "nullable": "否",
+          "missing_meaning": "不适用",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+              "lines": "924-947"
+            },
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+              "lines": "163-166,248-257"
+            }
+          ]
+        },
+        {
+          "field": "cum_reload_proxy",
+          "meaning": "Start当前拍起累积reload proxy",
+          "data_type": "float64",
+          "unit_or_domain": "与best volume同计算口径",
+          "nullable": "否",
+          "missing_meaning": "不适用",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+              "lines": "924-947"
+            },
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+              "lines": "163-166,248-257"
+            }
+          ]
+        },
+        {
+          "field": "same_band_continuity_code",
+          "meaning": "producer固定写1",
+          "data_type": "integer",
+          "unit_or_domain": "1",
+          "nullable": "否",
+          "missing_meaning": "固定码，不可解释为已计算连续性比例",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+              "lines": "924-947"
+            },
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+              "lines": "163-166,248-257"
+            }
+          ]
+        },
+        {
+          "field": "wall_slot_side_code",
+          "meaning": "wrapper运行side槽",
+          "data_type": "integer",
+          "unit_or_domain": "1 bid / 2 ask",
+          "nullable": "否",
+          "missing_meaning": "不适用",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+              "lines": "924-947"
+            },
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+              "lines": "163-166,248-257"
+            }
+          ]
+        },
+        {
+          "field": "availability_code",
+          "meaning": "formal producer固定写1",
+          "data_type": "int8，普通dump可拓宽为int64",
+          "unit_or_domain": "1 available",
+          "nullable": "否",
+          "missing_meaning": "不是对所有缺失输入状态的完整证明",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+              "lines": "924-947"
+            },
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+              "lines": "163-166,248-257"
+            }
+          ]
+        },
+        {
+          "field": "level",
+          "meaning": "本次命中的preset level",
+          "data_type": "float64",
+          "unit_or_domain": "默认0.5或1.0",
+          "nullable": "否",
+          "missing_meaning": "仅Milestone有值",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+              "lines": "924-947"
+            },
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+              "lines": "163-166,248-257"
+            }
+          ]
+        },
+        {
+          "field": "ratio",
+          "meaning": "本拍累计proxy/baseline；可能超过1",
+          "data_type": "float64",
+          "unit_or_domain": "无上界保证",
+          "nullable": "否",
+          "missing_meaning": "Start/Stop无此payload，混表时为NaN或整列不存在",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+              "lines": "924-947"
+            },
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+              "lines": "163-166,248-257"
+            }
+          ]
+        }
+      ],
+      "producer": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py / _run_build_assembler_kernel",
+      "consumer": "公开DBA读取；FRP decodeBuildNumericRow及BuildActivityDSU合同消费者（本次未执行）。",
+      "public_read": "Feature完成后从BuildAssembler实例.F的全部build__*结果键合并；本U未读正式结果。",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+          "lines": "588-639"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+          "lines": "906-948"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/tick_quote_context.py",
+          "lines": "128-130"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/p1_dba_export.py",
+          "lines": "256-269,292-305"
+        }
+      ],
+      "unconfirmed_items": [
+        "正式市场实例中该occurrence的存在性与可达性未运行确认。"
+      ]
+    },
+    {
+      "occurrence_id": "O-STOP",
+      "name": "Wall.BuildStop / Build.Stop",
+      "direction": "输出事件",
+      "business_role": "业务主输出",
+      "carrier": "Numba event buffers→core events list→wrapper sparse DataFrame→packed build__stream*；不是Dynamic当前值",
+      "meaning": "已有Build因当前Wall非Alive/编号变化或近期reload低于阈值停止。",
+      "own_position": "条件在tick i成立/被处理时，当拍uti[i]与ts[i]；没有额外确认延迟字段。",
+      "other_positions": "core checkpoint携带start_uti，但该字段未进入formal sparse payload。",
+      "object_scope": "单Build，引用一Wall；同tick可有其它Build/多Milestone或Milestone后Stop。",
+      "identity_fields": [
+        "source_run/symbol scope",
+        "build_id",
+        "wall_local_no"
+      ],
+      "revision_fields": "无revision/previous/supersedes；Milestone更新同一对象，不替换历史。",
+      "payload_fields": [
+        {
+          "field": "build_id",
+          "meaning": "活动本地编号",
+          "data_type": "int64",
+          "unit_or_domain": ">0",
+          "nullable": "否",
+          "missing_meaning": "不适用",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+              "lines": "924-947"
+            },
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+              "lines": "163-166,248-257"
+            }
+          ]
+        },
+        {
+          "field": "wall_local_no",
+          "meaning": "固定绑定Wall本地编号；core wall_id在formal artifact中重命名",
+          "data_type": "int64",
+          "unit_or_domain": ">0",
+          "nullable": "否",
+          "missing_meaning": "不适用",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+              "lines": "924-947"
+            },
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+              "lines": "163-166,248-257"
+            }
+          ]
+        },
+        {
+          "field": "uti",
+          "meaning": "当拍业务事件位置",
+          "data_type": "int64",
+          "unit_or_domain": "linear_ts//500-1",
+          "nullable": "否",
+          "missing_meaning": "不适用",
+          "is_position": true,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+              "lines": "924-947"
+            },
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+              "lines": "163-166,248-257"
+            }
+          ]
+        },
+        {
+          "field": "ts / DatetimeIndex",
+          "meaning": "同一事件对应输入tick时间",
+          "data_type": "datetime64[ns]",
+          "unit_or_domain": "输入时间轴",
+          "nullable": "否",
+          "missing_meaning": "不适用",
+          "is_position": true,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+              "lines": "924-947"
+            },
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+              "lines": "163-166,248-257"
+            }
+          ]
+        },
+        {
+          "field": "event_type_code",
+          "meaning": "事件种类；8/9/10",
+          "data_type": "integer",
+          "unit_or_domain": "8 Start / 9 Milestone / 10 Stop",
+          "nullable": "否",
+          "missing_meaning": "不适用",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+              "lines": "924-947"
+            },
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+              "lines": "163-166,248-257"
+            }
+          ]
+        },
+        {
+          "field": "baseline_vol",
+          "meaning": "Start拍冻结的墙侧best volume",
+          "data_type": "float64",
+          "unit_or_domain": "市场量单位（本U未对实际源单位另证）",
+          "nullable": "否",
+          "missing_meaning": "不适用",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+              "lines": "924-947"
+            },
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+              "lines": "163-166,248-257"
+            }
+          ]
+        },
+        {
+          "field": "cum_reload_proxy",
+          "meaning": "Start当前拍起累积reload proxy",
+          "data_type": "float64",
+          "unit_or_domain": "与best volume同计算口径",
+          "nullable": "否",
+          "missing_meaning": "不适用",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+              "lines": "924-947"
+            },
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+              "lines": "163-166,248-257"
+            }
+          ]
+        },
+        {
+          "field": "same_band_continuity_code",
+          "meaning": "producer固定写1",
+          "data_type": "integer",
+          "unit_or_domain": "1",
+          "nullable": "否",
+          "missing_meaning": "固定码，不可解释为已计算连续性比例",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+              "lines": "924-947"
+            },
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+              "lines": "163-166,248-257"
+            }
+          ]
+        },
+        {
+          "field": "wall_slot_side_code",
+          "meaning": "wrapper运行side槽",
+          "data_type": "integer",
+          "unit_or_domain": "1 bid / 2 ask",
+          "nullable": "否",
+          "missing_meaning": "不适用",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+              "lines": "924-947"
+            },
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+              "lines": "163-166,248-257"
+            }
+          ]
+        },
+        {
+          "field": "availability_code",
+          "meaning": "formal producer固定写1",
+          "data_type": "int8，普通dump可拓宽为int64",
+          "unit_or_domain": "1 available",
+          "nullable": "否",
+          "missing_meaning": "不是对所有缺失输入状态的完整证明",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+              "lines": "924-947"
+            },
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+              "lines": "163-166,248-257"
+            }
+          ]
+        }
+      ],
+      "producer": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py / _run_build_assembler_kernel",
+      "consumer": "公开DBA读取；FRP decodeBuildNumericRow及BuildActivityDSU合同消费者（本次未执行）。",
+      "public_read": "Feature完成后从BuildAssembler实例.F的全部build__*结果键合并；本U未读正式结果。",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+          "lines": "641-696"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+          "lines": "906-948"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/tick_quote_context.py",
+          "lines": "128-130"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/p1_dba_export.py",
+          "lines": "256-269,292-305"
+        }
+      ],
+      "unconfirmed_items": [
+        "正式市场实例中该occurrence的存在性与可达性未运行确认。",
+        "未输出具体stop原因码；Stop checkpoint记录的是清空前active=1，不能当post-stop状态。"
+      ]
+    },
+    {
+      "occurrence_id": "I-TICK",
+      "name": "输入市场tick观测",
+      "direction": "输入事件",
+      "business_role": "不适用",
+      "carrier": "SubContinuousContract DataFrame逐行离散观测；非FrpEvent",
+      "meaning": "在输入时间轴上一条可处理行情观测，驱动当前side的state和窗口。",
+      "own_position": "cc_df DatetimeIndex/linear_ts派生UTI",
+      "other_positions": "不强造actual/observed/confirm多套时间。",
+      "object_scope": "当前symbol的该tick",
+      "identity_fields": [
+        "source scope",
+        "symbol",
+        "输入index/uti"
+      ],
+      "revision_fields": "无",
+      "payload_fields": [
+        {
+          "field": "price",
+          "meaning": "最新价",
+          "data_type": "float64",
+          "unit_or_domain": "价格",
+          "nullable": "待核",
+          "missing_meaning": "输入缺失须X核验",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+              "lines": "135-150"
+            },
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/pressure_big_deal.py",
+              "lines": "108-119"
+            }
+          ]
+        },
+        {
+          "field": "buy_price1 / sell_price1",
+          "meaning": "bid/ask best price",
+          "data_type": "float64",
+          "unit_or_domain": "价格",
+          "nullable": "待核",
+          "missing_meaning": "输入缺失须X核验",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+              "lines": "135-150"
+            },
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/pressure_big_deal.py",
+              "lines": "108-119"
+            }
+          ]
+        },
+        {
+          "field": "buy_vol1 / sell_vol1",
+          "meaning": "bid/ask可见量",
+          "data_type": "float64",
+          "unit_or_domain": "源市场量口径",
+          "nullable": "待核",
+          "missing_meaning": "输入缺失须X核验",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+              "lines": "135-150"
+            },
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/pressure_big_deal.py",
+              "lines": "108-119"
+            }
+          ]
+        },
+        {
+          "field": "trade_volume",
+          "meaning": "成交量",
+          "data_type": "float64",
+          "unit_or_domain": "源市场量口径",
+          "nullable": "待核",
+          "missing_meaning": "输入缺失须X核验",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+              "lines": "135-150"
+            },
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/pressure_big_deal.py",
+              "lines": "108-119"
+            }
+          ]
+        },
+        {
+          "field": "buy_order_price / sell_order_price / buy_order_vol / sell_order_vol",
+          "meaning": "方向成交原始输入",
+          "data_type": "float64",
+          "unit_or_domain": "价格/量；hit volume在flow前取绝对值",
+          "nullable": "待核",
+          "missing_meaning": "不把无成交与source missing混写",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+              "lines": "135-150"
+            },
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/pressure_big_deal.py",
+              "lines": "108-119"
+            }
+          ]
+        },
+        {
+          "field": "linear_ts / DatetimeIndex",
+          "meaning": "calendar线性位置与实际timestamp",
+          "data_type": "integer / datetime64[ns]",
+          "unit_or_domain": "毫秒/时间戳",
+          "nullable": "否",
+          "missing_meaning": "不适用",
+          "is_position": true,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+              "lines": "135-150"
+            },
+            {
+              "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/pressure_big_deal.py",
+              "lines": "108-119"
+            }
+          ]
+        }
+      ],
+      "producer": "SubContinuousContract().rerun().F.value（当前生产代码调用点；本U未调用）",
+      "consumer": "chunk/transient flow/F10/F11/Build core",
+      "public_read": "X读取输入与范围时核定；本D仅来源映射。",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/tick_quote_context.py",
+          "lines": "160-166,97-106"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+          "lines": "119-150"
+        }
+      ],
+      "unconfirmed_items": [
+        "实际市场数据范围/完整性/去重及其量单位待X核。"
+      ]
+    },
+    {
+      "occurrence_id": "O-TYPED-START",
+      "name": "BuildStarted",
+      "direction": "输出事件",
+      "business_role": "业务主输出的typed表示；与对应raw occurrence为同一业务变化，禁止重复计数",
+      "representation_of": "O-START",
+      "carrier": "FrpEvent [BuildActivityOccurrence]，本Run未执行",
+      "meaning": "BuildStarted BuildMeasurements",
+      "own_position": "buildActivityOccurredAt由producer uti逐行读入",
+      "other_positions": "无producer start_uti/ratio/baseline的typed字段；source run在流级receipt上下文",
+      "object_scope": "单Build typed identity及其Wall identity",
+      "identity_fields": [
+        "外层exact receipt/FeatureRunIdentity",
+        "BuildActivityIdentity.localNo",
+        "WallIdentity.localNo"
+      ],
+      "revision_fields": "OccurrenceRef格式build:<localNo>:<uti>:<eventCode>；不带milestone level或physical ordinal。",
+      "payload_fields": [
+        {
+          "field": "buildActivityRef",
+          "meaning": "build:<localNo>",
+          "data_type": "BuildRef",
+          "unit_or_domain": "run-local",
+          "nullable": "否",
+          "missing_meaning": "不适用",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/Interface/PreL0.hs",
+              "lines": "218-236"
+            },
+            {
+              "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+              "lines": "637-665"
+            }
+          ]
+        },
+        {
+          "field": "buildActivityWall",
+          "meaning": "wall:<wallLocalNo>",
+          "data_type": "WallRef",
+          "unit_or_domain": "exact namespace下的local ref",
+          "nullable": "否",
+          "missing_meaning": "不适用",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/Interface/PreL0.hs",
+              "lines": "218-236"
+            },
+            {
+              "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+              "lines": "637-665"
+            }
+          ]
+        },
+        {
+          "field": "buildActivityOccurredAt",
+          "meaning": "producer uti",
+          "data_type": "TickUTI",
+          "unit_or_domain": "calendar tick index",
+          "nullable": "否",
+          "missing_meaning": "不适用",
+          "is_position": true,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/Interface/PreL0.hs",
+              "lines": "218-236"
+            },
+            {
+              "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+              "lines": "637-665"
+            }
+          ]
+        },
+        {
+          "field": "buildActivityChange",
+          "meaning": "对应typed change与measurements",
+          "data_type": "BuildActivityChange",
+          "unit_or_domain": "Start/Milestone/Stop",
+          "nullable": "否",
+          "missing_meaning": "不适用",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/Interface/PreL0.hs",
+              "lines": "218-236"
+            },
+            {
+              "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+              "lines": "637-665"
+            }
+          ]
+        },
+        {
+          "field": "buildActivityAvailability",
+          "meaning": "只有Available输入驱动业务状态",
+          "data_type": "BuildAvailability",
+          "unit_or_domain": "其余availability走diagnostic",
+          "nullable": "否",
+          "missing_meaning": "缺失码报错",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/Interface/PreL0.hs",
+              "lines": "218-236"
+            },
+            {
+              "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+              "lines": "637-665"
+            }
+          ]
+        },
+        {
+          "field": "buildCumulativeAdditionProxy",
+          "meaning": "cum_reload_proxy的非负quantity",
+          "data_type": "Measurement Quantity",
+          "unit_or_domain": "producer量口径",
+          "nullable": "否",
+          "missing_meaning": "非法值报diagnostic",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/Interface/PreL0.hs",
+              "lines": "218-236"
+            },
+            {
+              "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+              "lines": "637-665"
+            }
+          ]
+        },
+        {
+          "field": "buildSameBandContinuity",
+          "meaning": "continuity_code=1映射Measured 1",
+          "data_type": "Measurement UnitInterval",
+          "unit_or_domain": "1",
+          "nullable": "否",
+          "missing_meaning": "非1码被拒绝",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/Interface/PreL0.hs",
+              "lines": "218-236"
+            },
+            {
+              "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+              "lines": "637-665"
+            }
+          ]
+        }
+      ],
+      "producer": "decodeBuildNumericRow",
+      "consumer": "applyBuildFrame / maintainBuildActivity",
+      "public_read": "typed ingress和DSU内Event；Python EawP1BuildActivityFrp为typed输入配置，to_df显式拒绝；本任务不自动启动P2/其它Feature。",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+          "lines": "637-665,1387-1393"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:frp/EawBattleP.py",
+          "lines": "34-62,100-108"
+        },
+        {
+          "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/BuildActivity.hs",
+          "lines": "47-101"
+        }
+      ],
+      "unconfirmed_items": [
+        "正式backend未执行；同tick多level的raw occurrence映成相同typed OccurrenceRef的行为仅据源码记录，实际发生和消费影响待有正式证据时核对。"
+      ]
+    },
+    {
+      "occurrence_id": "O-TYPED-MILESTONE",
+      "name": "BuildReachedMilestone",
+      "direction": "输出事件",
+      "business_role": "业务主输出的typed表示；与对应raw occurrence为同一业务变化，禁止重复计数",
+      "representation_of": "O-MILESTONE",
+      "carrier": "FrpEvent [BuildActivityOccurrence]，本Run未执行",
+      "meaning": "BuildReachedMilestone label (BuildMilestoneRatio level) measurements",
+      "own_position": "buildActivityOccurredAt由producer uti逐行读入",
+      "other_positions": "无producer start_uti/ratio/baseline的typed字段；source run在流级receipt上下文",
+      "object_scope": "单Build typed identity及其Wall identity",
+      "identity_fields": [
+        "外层exact receipt/FeatureRunIdentity",
+        "BuildActivityIdentity.localNo",
+        "WallIdentity.localNo"
+      ],
+      "revision_fields": "OccurrenceRef格式build:<localNo>:<uti>:<eventCode>；不带milestone level或physical ordinal。",
+      "payload_fields": [
+        {
+          "field": "buildActivityRef",
+          "meaning": "build:<localNo>",
+          "data_type": "BuildRef",
+          "unit_or_domain": "run-local",
+          "nullable": "否",
+          "missing_meaning": "不适用",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/Interface/PreL0.hs",
+              "lines": "218-236"
+            },
+            {
+              "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+              "lines": "637-665"
+            }
+          ]
+        },
+        {
+          "field": "buildActivityWall",
+          "meaning": "wall:<wallLocalNo>",
+          "data_type": "WallRef",
+          "unit_or_domain": "exact namespace下的local ref",
+          "nullable": "否",
+          "missing_meaning": "不适用",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/Interface/PreL0.hs",
+              "lines": "218-236"
+            },
+            {
+              "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+              "lines": "637-665"
+            }
+          ]
+        },
+        {
+          "field": "buildActivityOccurredAt",
+          "meaning": "producer uti",
+          "data_type": "TickUTI",
+          "unit_or_domain": "calendar tick index",
+          "nullable": "否",
+          "missing_meaning": "不适用",
+          "is_position": true,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/Interface/PreL0.hs",
+              "lines": "218-236"
+            },
+            {
+              "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+              "lines": "637-665"
+            }
+          ]
+        },
+        {
+          "field": "buildActivityChange",
+          "meaning": "对应typed change与measurements",
+          "data_type": "BuildActivityChange",
+          "unit_or_domain": "Start/Milestone/Stop",
+          "nullable": "否",
+          "missing_meaning": "不适用",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/Interface/PreL0.hs",
+              "lines": "218-236"
+            },
+            {
+              "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+              "lines": "637-665"
+            }
+          ]
+        },
+        {
+          "field": "buildActivityAvailability",
+          "meaning": "只有Available输入驱动业务状态",
+          "data_type": "BuildAvailability",
+          "unit_or_domain": "其余availability走diagnostic",
+          "nullable": "否",
+          "missing_meaning": "缺失码报错",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/Interface/PreL0.hs",
+              "lines": "218-236"
+            },
+            {
+              "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+              "lines": "637-665"
+            }
+          ]
+        },
+        {
+          "field": "buildCumulativeAdditionProxy",
+          "meaning": "cum_reload_proxy的非负quantity",
+          "data_type": "Measurement Quantity",
+          "unit_or_domain": "producer量口径",
+          "nullable": "否",
+          "missing_meaning": "非法值报diagnostic",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/Interface/PreL0.hs",
+              "lines": "218-236"
+            },
+            {
+              "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+              "lines": "637-665"
+            }
+          ]
+        },
+        {
+          "field": "buildSameBandContinuity",
+          "meaning": "continuity_code=1映射Measured 1",
+          "data_type": "Measurement UnitInterval",
+          "unit_or_domain": "1",
+          "nullable": "否",
+          "missing_meaning": "非1码被拒绝",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/Interface/PreL0.hs",
+              "lines": "218-236"
+            },
+            {
+              "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+              "lines": "637-665"
+            }
+          ]
+        },
+        {
+          "field": "BuildMilestone / BuildMilestoneRatio",
+          "meaning": "由level形成文字label和单位区间值，未使用producer ratio",
+          "data_type": "Text / UnitInterval",
+          "unit_or_domain": "默认0.5/1.0",
+          "nullable": "否",
+          "missing_meaning": "缺level报错",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/Interface/PreL0.hs",
+              "lines": "218-236"
+            },
+            {
+              "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+              "lines": "637-665"
+            }
+          ]
+        }
+      ],
+      "producer": "decodeBuildNumericRow",
+      "consumer": "applyBuildFrame / maintainBuildActivity",
+      "public_read": "typed ingress和DSU内Event；Python EawP1BuildActivityFrp为typed输入配置，to_df显式拒绝；本任务不自动启动P2/其它Feature。",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+          "lines": "637-665,1387-1393"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:frp/EawBattleP.py",
+          "lines": "34-62,100-108"
+        },
+        {
+          "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/BuildActivity.hs",
+          "lines": "47-101"
+        }
+      ],
+      "unconfirmed_items": [
+        "正式backend未执行；同tick多level的raw occurrence映成相同typed OccurrenceRef的行为仅据源码记录，实际发生和消费影响待有正式证据时核对。"
+      ]
+    },
+    {
+      "occurrence_id": "O-TYPED-STOP",
+      "name": "BuildStopped",
+      "direction": "输出事件",
+      "business_role": "业务主输出的typed表示；与对应raw occurrence为同一业务变化，禁止重复计数",
+      "representation_of": "O-STOP",
+      "carrier": "FrpEvent [BuildActivityOccurrence]，本Run未执行",
+      "meaning": "BuildStopped (BuildStopReason \"producer-stop\") measurements",
+      "own_position": "buildActivityOccurredAt由producer uti逐行读入",
+      "other_positions": "无producer start_uti/ratio/baseline的typed字段；source run在流级receipt上下文",
+      "object_scope": "单Build typed identity及其Wall identity",
+      "identity_fields": [
+        "外层exact receipt/FeatureRunIdentity",
+        "BuildActivityIdentity.localNo",
+        "WallIdentity.localNo"
+      ],
+      "revision_fields": "OccurrenceRef格式build:<localNo>:<uti>:<eventCode>；不带milestone level或physical ordinal。",
+      "payload_fields": [
+        {
+          "field": "buildActivityRef",
+          "meaning": "build:<localNo>",
+          "data_type": "BuildRef",
+          "unit_or_domain": "run-local",
+          "nullable": "否",
+          "missing_meaning": "不适用",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/Interface/PreL0.hs",
+              "lines": "218-236"
+            },
+            {
+              "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+              "lines": "637-665"
+            }
+          ]
+        },
+        {
+          "field": "buildActivityWall",
+          "meaning": "wall:<wallLocalNo>",
+          "data_type": "WallRef",
+          "unit_or_domain": "exact namespace下的local ref",
+          "nullable": "否",
+          "missing_meaning": "不适用",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/Interface/PreL0.hs",
+              "lines": "218-236"
+            },
+            {
+              "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+              "lines": "637-665"
+            }
+          ]
+        },
+        {
+          "field": "buildActivityOccurredAt",
+          "meaning": "producer uti",
+          "data_type": "TickUTI",
+          "unit_or_domain": "calendar tick index",
+          "nullable": "否",
+          "missing_meaning": "不适用",
+          "is_position": true,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/Interface/PreL0.hs",
+              "lines": "218-236"
+            },
+            {
+              "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+              "lines": "637-665"
+            }
+          ]
+        },
+        {
+          "field": "buildActivityChange",
+          "meaning": "对应typed change与measurements",
+          "data_type": "BuildActivityChange",
+          "unit_or_domain": "Start/Milestone/Stop",
+          "nullable": "否",
+          "missing_meaning": "不适用",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/Interface/PreL0.hs",
+              "lines": "218-236"
+            },
+            {
+              "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+              "lines": "637-665"
+            }
+          ]
+        },
+        {
+          "field": "buildActivityAvailability",
+          "meaning": "只有Available输入驱动业务状态",
+          "data_type": "BuildAvailability",
+          "unit_or_domain": "其余availability走diagnostic",
+          "nullable": "否",
+          "missing_meaning": "缺失码报错",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/Interface/PreL0.hs",
+              "lines": "218-236"
+            },
+            {
+              "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+              "lines": "637-665"
+            }
+          ]
+        },
+        {
+          "field": "buildCumulativeAdditionProxy",
+          "meaning": "cum_reload_proxy的非负quantity",
+          "data_type": "Measurement Quantity",
+          "unit_or_domain": "producer量口径",
+          "nullable": "否",
+          "missing_meaning": "非法值报diagnostic",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/Interface/PreL0.hs",
+              "lines": "218-236"
+            },
+            {
+              "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+              "lines": "637-665"
+            }
+          ]
+        },
+        {
+          "field": "buildSameBandContinuity",
+          "meaning": "continuity_code=1映射Measured 1",
+          "data_type": "Measurement UnitInterval",
+          "unit_or_domain": "1",
+          "nullable": "否",
+          "missing_meaning": "非1码被拒绝",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/Interface/PreL0.hs",
+              "lines": "218-236"
+            },
+            {
+              "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+              "lines": "637-665"
+            }
+          ]
+        },
+        {
+          "field": "BuildStopReason",
+          "meaning": "当前decoder固定producer-stop",
+          "data_type": "Text",
+          "unit_or_domain": "producer-stop",
+          "nullable": "否",
+          "missing_meaning": "不代表producer具体终止分支已可读",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/Interface/PreL0.hs",
+              "lines": "218-236"
+            },
+            {
+              "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+              "lines": "637-665"
+            }
+          ]
+        }
+      ],
+      "producer": "decodeBuildNumericRow",
+      "consumer": "applyBuildFrame / maintainBuildActivity",
+      "public_read": "typed ingress和DSU内Event；Python EawP1BuildActivityFrp为typed输入配置，to_df显式拒绝；本任务不自动启动P2/其它Feature。",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+          "lines": "637-665,1387-1393"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:frp/EawBattleP.py",
+          "lines": "34-62,100-108"
+        },
+        {
+          "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/BuildActivity.hs",
+          "lines": "47-101"
+        }
+      ],
+      "unconfirmed_items": [
+        "正式backend未执行；同tick多level的raw occurrence映成相同typed OccurrenceRef的行为仅据源码记录，实际发生和消费影响待有正式证据时核对。"
+      ]
+    },
+    {
+      "occurrence_id": "O-CURRENT",
+      "name": "buildActivityCurrentUpdates",
+      "direction": "输出事件",
+      "business_role": "中间处理结果/正式状态publication，不是新Build life",
+      "carrier": "FrpEvent [BuildCurrentView]",
+      "meaning": "一次成功firing中每identity的最后current更新，Stop更新也在其中。",
+      "own_position": "acceptedTransactions的firing位置；view内last occurrence保留业务UTI",
+      "other_positions": "不提供单独wall-clock publish_time",
+      "object_scope": "批量Build current updates",
+      "identity_fields": [
+        "BuildActivityIdentity",
+        "外层运行上下文"
+      ],
+      "revision_fields": "Map对本firing同identity只保留最后view；occurrence流不因此合并",
+      "payload_fields": [
+        {
+          "field": "buildCurrentIdentity / WallIdentity",
+          "meaning": "主体与引用",
+          "data_type": "typed identity",
+          "unit_or_domain": "run-local",
+          "nullable": "否",
+          "missing_meaning": "不适用",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/Products.hs",
+              "lines": "583-589"
+            }
+          ]
+        },
+        {
+          "field": "buildCurrentState / MilestoneCount / Occurrence",
+          "meaning": "当前状态/累计mile次数/最后occurrence",
+          "data_type": "BuildCurrentView",
+          "unit_or_domain": "BuildInProgress或Stopped",
+          "nullable": "否",
+          "missing_meaning": "无current不等于源缺失",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/Products.hs",
+              "lines": "583-589"
+            }
+          ]
+        }
+      ],
+      "producer": "applyBuildOccurrence/buildCurrentUpdatesFor",
+      "consumer": "typed输出消费者",
+      "public_read": "本Run未物化；不是BuildAssembler.F持久化状态列",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/BuildActivity.hs",
+          "lines": "69-82,97-101,114-143"
+        }
+      ],
+      "unconfirmed_items": [
+        "运行backend持久化与读取不在本D执行范围。"
+      ]
+    },
+    {
+      "occurrence_id": "O-DIAGNOSTIC",
+      "name": "buildActivityDiagnostics",
+      "direction": "输出事件",
+      "business_role": "中间处理结果/错误诊断",
+      "carrier": "FrpEvent (P1ProductDiagnostics BuildActivityError)",
+      "meaning": "非法reference/重复冲突/状态顺序错误等；stepBuild失败保留原state。",
+      "own_position": "输入批次被处理的firing",
+      "other_positions": "错误引用中可含对象ID",
+      "object_scope": "本批次",
+      "identity_fields": [
+        "error内身份（如有）"
+      ],
+      "revision_fields": "不是Build.Stop替代品",
+      "payload_fields": [
+        {
+          "field": "BuildActivityError",
+          "meaning": "RefConflict / UnknownWall / StartedTwice / UpdateBeforeStart / UpdateAfterStop / WallIdentityChanged",
+          "data_type": "sum type",
+          "unit_or_domain": "源码构造器",
+          "nullable": "否",
+          "missing_meaning": "没有诊断事件不证明全部输入有效",
+          "is_position": false,
+          "source_evidence": [
+            {
+              "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/BuildActivity.hs",
+              "lines": "27-34"
+            }
+          ]
+        }
+      ],
+      "producer": "stepBuild / CEPS processEvents",
+      "consumer": "diagnostic读取",
+      "public_read": "FRP输出，非Python formal sparse列",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/BuildActivity.hs",
+          "lines": "27-34,109-112,141-143"
+        }
+      ],
+      "unconfirmed_items": [
+        "未执行FRP，无错误次数结论。"
+      ]
+    }
+  ],
+  "intermediate_decisions": [
+    {
+      "decision_id": "DEC-AXIS",
+      "name": "exact输入与chunk覆盖",
+      "business_role": "确保Build消费其当前tick上对应的Wall状态",
+      "inputs": [
+        "cc_df.index",
+        "wall_state_trace_df",
+        "trading_days durations"
+      ],
+      "rule": "交易日plan必须逐行连续覆盖cc_df；Wall trace按chunk index重排，所需十个side列任一缺失/空值或选段index重复即报错。",
+      "outputs": [
+        "逐chunk对齐Wall列",
+        "输入错误异常"
+      ],
+      "consumer": "side replay",
+      "persisted": "否；仅来源/receipt外部可核",
+      "result_location": "NOT_EXPOSED；Build formal streams没有axis审计列",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/tick_quote_context.py",
+          "lines": "220-246"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/p1_dba_export.py",
+          "lines": "470-486"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+          "lines": "114-124"
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "decision_id": "DEC-FLOW",
+      "name": "块内主动方向pressure",
+      "business_role": "给打墙/补墙提供方向成交量代理",
+      "inputs": [
+        "trade_volume",
+        "abs(buy_order_vol)",
+        "abs(sell_order_vol)",
+        "对应order price和best price",
+        "session_ok"
+      ],
+      "rule": "pressure_bid=trade_vol*sell_hit_vol/max(total_hit,eps)；ask取buy。flow包装把不可用项留为0并输出validity；Build只提取sell/buy_pressure_raw和same-best availability==1。session_ok当前支持默认全1。same-best availability不是same-best hit金额>0的同义语。",
+      "outputs": [
+        "pressure_bid",
+        "pressure_ask",
+        "same_best flags"
+      ],
+      "consumer": "DEC-ATTACK",
+      "persisted": "否",
+      "result_location": "NOT_EXPOSED；transient flow不建立F3 artifact",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/pressure_big_deal.py",
+          "lines": "52-65,108-119,312-343"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/pressure_big_deal_core.py",
+          "lines": "60-108,340-390,462-478,490-565"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+          "lines": "125-150"
+        }
+      ],
+      "unconfirmed_items": [
+        "量单位/真实可用性须X核；Build未持久化flow_validity_code。"
+      ]
+    },
+    {
+      "decision_id": "DEC-ATTACK",
+      "name": "F10 WallAttackTick",
+      "business_role": "Start需要本拍attack资格，reload消费attack_pressure_proxy",
+      "inputs": [
+        "Wall side/status/band",
+        "last/best price",
+        "对应方向pressure",
+        "samebest flag",
+        "tick_size",
+        "near_band_ticks"
+      ],
+      "rule": "side为bid/ask且Wall Alive；best与last到band距离只要一个<=near阈值、pressure>0则attack=1。距离使用round整数tick；tick_size<=0时距离函数返回0。samebest仅随输出，不作为attack门。",
+      "outputs": [
+        "attack_flag",
+        "attack_pressure_proxy",
+        "attack_samebest_flag"
+      ],
+      "consumer": "DEC-RELOAD及DEC-START",
+      "persisted": "否",
+      "result_location": "NOT_EXPOSED；core f10_out不随正式.F返回",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+          "lines": "64-124,445-460"
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "decision_id": "DEC-RELOAD",
+      "name": "F11 WallReloadTick",
+      "business_role": "形成加固量代理",
+      "inputs": [
+        "当前/前一拍墙侧",
+        "当前/前一拍best price/volume",
+        "Wall status",
+        "attack_pressure_proxy"
+      ],
+      "rule": "Alive时visible_delta=best_vol-prev_best_vol；stable要求side相同且best价严格相等。require_best_price_stable=True且不stable则reload=0；否则max(delta,0)+attack_pressure_proxy。块首仅input_seen=1时使用carry上一拍best修正，否则初值0。没有以wall_id相等作为stable条件。",
+      "outputs": [
+        "best_price_stable",
+        "visible_delta",
+        "reload_proxy",
+        "reload_flag"
+      ],
+      "consumer": "start/stop rings和cum",
+      "persisted": "否",
+      "result_location": "NOT_EXPOSED；仅core f11_out",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+          "lines": "127-176,472-488"
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "decision_id": "DEC-START",
+      "name": "Start资格和baseline冻结",
+      "business_role": "从闲置槽形成新Build身份",
+      "inputs": [
+        "active=0",
+        "wall_alive",
+        "attack_flag",
+        "reload_proxy_t",
+        "reload_ring_start",
+        "best_vol_t"
+      ],
+      "rule": "每tick先更新start ring；条件wall Alive且id>0、attack非0、本拍reload>0、reload_sum_start/max(best_vol,1e-12)>=0.5。Start分配next_build_id，固定wall/baseline/start_uti，cum只取当拍reload，不取整个start sum；重置stop ring后放入当拍reload，continue跳过本拍milestone/stop。",
+      "outputs": [
+        "新build_id",
+        "active=1",
+        "baseline_vol",
+        "O-START"
+      ],
+      "consumer": "DEC-CUM/DEC-STOP",
+      "persisted": "部分；仅Start稀疏行的id/baseline/cum公开",
+      "result_location": "UNCONFIRMED（正式结果未读）；start ring/ratio为NOT_EXPOSED",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+          "lines": "510-586"
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "decision_id": "DEC-CUM",
+      "name": "累计与milestone mask",
+      "business_role": "更新同一活动并逐级发布",
+      "inputs": [
+        "active Build",
+        "reload_proxy_t",
+        "start_uti",
+        "baseline_vol",
+        "milestone_levels",
+        "milestone_mask"
+      ],
+      "rule": "在活动分支先更新stop ring；uti>start_uti才累加cum。ratio=cum/max(baseline,eps)，按levels顺序对所有尚未置bit且ratio>=level者发Milestone并置bit；一次tick允许多级；随后再判断Stop。",
+      "outputs": [
+        "cum_reload_proxy",
+        "milestone_mask",
+        "level/ratio",
+        "O-MILESTONE"
+      ],
+      "consumer": "Stop和event序列化",
+      "persisted": "部分；cum及Milestone level/ratio公开，mask不公开",
+      "result_location": "UNCONFIRMED；mask为NOT_EXPOSED",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+          "lines": "588-639"
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "decision_id": "DEC-STOP",
+      "name": "Stop资格和重置",
+      "business_role": "结束当前Build",
+      "inputs": [
+        "wall_alive",
+        "wall_id与active_wall_id",
+        "stop ring",
+        "baseline",
+        "start_uti/uti"
+      ],
+      "rule": "若Wall非Alive（包括Dormant/Empty/Ended）或id不匹配则停止；否则uti>start_uti且reload_sum_stop/max(baseline,eps)<0.2停止。先记录O-STOP和pre-reset快照，再清active/wall/baseline/cum/mask/rings；不在同拍重新Start。",
+      "outputs": [
+        "O-STOP",
+        "ST-IDLE"
+      ],
+      "consumer": "后续tick/chunk carry",
+      "persisted": "部分；Stop行公开，无stop reason分支字段或post-state公开",
+      "result_location": "UNCONFIRMED；reason/状态重置为NOT_EXPOSED",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+          "lines": "641-705"
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "decision_id": "DEC-CARRY",
+      "name": "chunk和side调度",
+      "business_role": "保持同一source run中的对象/窗口连续",
+      "inputs": [
+        "每side完整carry",
+        "共享next_build_id",
+        "交易日chunk"
+      ],
+      "rule": "每块bid整段先执行、ask后执行并传递递增counter；下个chunk沿用各side carry，未重置；只按uti/wall_id/build_id合并事件，同键保持输入list稳定顺序。next_build_id是生产调度编号，不是全球时间排名。",
+      "outputs": [
+        "跨chunk同一活动",
+        "两side无重复本地Build编号"
+      ],
+      "consumer": "core下一块与raw输出",
+      "persisted": "否；最终.F没有carry/summary表",
+      "result_location": "NOT_EXPOSED",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+          "lines": "109-110,119-177,190-203"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+          "lines": "819,992-1013"
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "decision_id": "DEC-PACK",
+      "name": "同刻事件物理分流",
+      "business_role": "在不改业务timestamp的前提下导出所有raw行",
+      "inputs": [
+        "全部side raw events"
+      ],
+      "rule": "wall_id改名wall_local_no；按timestamp group cumcount得到ordinal并拆成build__stream及__occNNNN；仅在存在重复timestamp时加ordinal列。所有流都必须读取；不按Build对象拆流；空结果返回p1_transport_empty。",
+      "outputs": [
+        "build__stream*",
+        "可选occurrence_ordinal",
+        "空哨兵"
+      ],
+      "consumer": "DBA及typed loader",
+      "persisted": "是（实际物化待X）",
+      "result_location": "UNCONFIRMED",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+          "lines": "248-257,305"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/p1_dba_export.py",
+          "lines": "256-269,292-305,509-519"
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "decision_id": "DEC-IDENTITY",
+      "name": "exact上游与typed接纳",
+      "business_role": "限定Build引用作用域及输入可用性",
+      "inputs": [
+        "Build/Wall receipts",
+        "wall_local_no",
+        "availability",
+        "cum",
+        "level",
+        "continuity_code"
+      ],
+      "rule": "Python make_receipt比较source_scope并引用上游关键字段；typed loader比较feature_instance/parameter_set/artifact/schema/code和source_scope，再用已验证namespace接受正Wall localNo（紧凑路径不枚举Wall存在性）。不可用Build行只进diagnostic，不驱动DSU；level须单位区间，continuity码只接受1。",
+      "outputs": [
+        "typed O-START/MILESTONE/STOP或diagnostic"
+      ],
+      "consumer": "applyBuildFrame",
+      "persisted": "typed流；本Run未执行",
+      "result_location": "UNCONFIRMED",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/p1_product_receipt.py",
+          "lines": "225-294,297-345"
+        },
+        {
+          "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+          "lines": "494-496,637-665,1265-1276,1387-1393"
+        },
+        {
+          "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/Internal/UpstreamReference.hs",
+          "lines": "17-45"
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "decision_id": "DEC-FRP-FIRING",
+      "name": "DSU重复/顺序与状态更新",
+      "business_role": "消费producer变化而不重新识别Build",
+      "inputs": [
+        "一firing的typed occurrence list",
+        "当前buildViews",
+        "本firingledger"
+      ],
+      "rule": "每firing清ledger和currentUpdateBatch；重复相同ref/payload幂等，不同payload同ref冲突。foldM逐条处理，错误整批返回Left且stepBuild保留原state；成功publication非空才更新current。活跃map要求Start在前、同Wall；Stop删除活跃项。",
+      "outputs": [
+        "accepted occurrence list",
+        "current/currentUpdates",
+        "state diagnostics"
+      ],
+      "consumer": "FRP后续消费者",
+      "persisted": "当前状态与publication；本Run未执行",
+      "result_location": "UNCONFIRMED",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/BuildActivity.hs",
+          "lines": "47-95,109-143"
+        },
+        {
+          "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/Internal/OccurrenceLedger.hs",
+          "lines": "43-60"
+        }
+      ],
+      "unconfirmed_items": [
+        "typed ref不含Milestone level；正式同刻多级消费情况待有真实证据时验证。"
+      ]
+    }
+  ],
+  "processing_relations": [
+    {
+      "relation_id": "REL-01",
+      "from": "I-TICK",
+      "to": "NI-FLOW",
+      "type": "形成/过滤",
+      "condition": "按交易日有界块，normalize取hit量绝对值",
+      "identity_mapping": "保留symbol/source/time；不新建Build身份",
+      "position_mapping": "每tick原轴→UTI",
+      "information_change": "默认session全1；raw pressure经flow validity输出映射；不物化F3历史",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/pressure_big_deal.py",
+          "lines": "52-103,312-343"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/pressure_big_deal_core.py",
+          "lines": "340-390"
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "relation_id": "REL-02",
+      "from": "NI-WALL",
+      "to": "DEC-AXIS",
+      "type": "exact引用/重排",
+      "condition": "同默认实例Wall.run().F+wall_lifecycle receipt",
+      "identity_mapping": "Wall local ID沿exact artifact消费",
+      "position_mapping": "按chunk index取trace并reindex",
+      "information_change": "缺字段/重复/空覆盖报错，不能补猜Wall",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+          "lines": "220-228,114-124"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/p1_dba_export.py",
+          "lines": "470-486"
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "relation_id": "REL-03",
+      "from": "NI-FLOW + NI-WALL + I-TICK",
+      "to": "DEC-ATTACK → DEC-RELOAD",
+      "type": "形成",
+      "condition": "side Alive、near和pressure等实际规则",
+      "identity_mapping": "判断不拥有独立对象ID",
+      "position_mapping": "当拍，reload还使用前一拍best",
+      "information_change": "pressure和正visible delta合成reload代理；不是实际可见新增挂单的独立真值",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+          "lines": "64-176,445-488"
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "relation_id": "REL-04",
+      "from": "DEC-START",
+      "to": "O-START → BO-BUILD",
+      "type": "形成/固定引用",
+      "condition": "active=0时通过资格",
+      "identity_mapping": "分配build_id并绑定active_wall_id",
+      "position_mapping": "Start本拍UTI；baseline冻结于本拍",
+      "information_change": "start ring此前证据被阈值利用，但cum只初始化当拍reload；无revision",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+          "lines": "510-586"
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "relation_id": "REL-05",
+      "from": "DEC-CUM",
+      "to": "O-MILESTONE → BO-BUILD",
+      "type": "更新",
+      "condition": "尚未发布level且cum ratio达到阈值",
+      "identity_mapping": "保持build_id/active_wall_id",
+      "position_mapping": "后续本拍，一拍可多level",
+      "information_change": "只发尚未置bit的level；无新事件不表示停止",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+          "lines": "588-639"
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "relation_id": "REL-06",
+      "from": "DEC-STOP",
+      "to": "O-STOP → ST-IDLE",
+      "type": "结束",
+      "condition": "Wall不可活跃/ID换或近期reload不足",
+      "identity_mapping": "Stop行仍引用旧active Wall；之后槽wall_id归0，旧build_id保留",
+      "position_mapping": "Milestone判断之后同拍可能Stop",
+      "information_change": "停止分支原因与post-reset状态未进入public row",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+          "lines": "641-705,924-947"
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "relation_id": "REL-07",
+      "from": "core state",
+      "to": "下一chunk core state",
+      "type": "延续",
+      "condition": "wrapper真实carry；不在物理交易日边界重置",
+      "identity_mapping": "保留active build/wall ID；global counter延续",
+      "position_mapping": "上一chunk尾→下一chunk首",
+      "information_change": "ring与last best被复制；state snapshot不含ring全部内容，但私有carry含完整数组",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+          "lines": "160-168,190-203"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+          "lines": "204-241,819,969-1013"
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "relation_id": "REL-08",
+      "from": "O-START/O-MILESTONE/O-STOP",
+      "to": "formal build__stream*",
+      "type": "编码/重排/分流",
+      "condition": "_frames后只选sparse表",
+      "identity_mapping": "build_id保留，wall_id重命名wall_local_no",
+      "position_mapping": "timestamp不变；同拍分配physical ordinal",
+      "information_change": "文本event_type变8/9/10；丢弃其它_frames表；level/ratio列依数据条件存在",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+          "lines": "47-76,163-177,248-257,305"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/p1_dba_export.py",
+          "lines": "256-305"
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "relation_id": "REL-09",
+      "from": "formal build__stream*",
+      "to": "O-TYPED-START/MILESTONE/STOP",
+      "type": "转换/过滤",
+      "condition": "receipt匹配、availability及字段合法",
+      "identity_mapping": "local build/wall ID→typed run-local身份；run scope在外层receipt",
+      "position_mapping": "producer uti→TickUTI",
+      "information_change": "typed不消费baseline或producer ratio；level转单位区间milestone值；stop reason固定；OccurrenceRef未包含level/ordinal",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+          "lines": "550-559,637-665"
+        },
+        {
+          "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/Interface/PreL0.hs",
+          "lines": "218-236"
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "relation_id": "REL-10",
+      "from": "typed occurrences",
+      "to": "O-CURRENT + FRP occurrence stream",
+      "type": "接纳/更新/结束",
+      "condition": "整firing通过applyBuildFrame",
+      "identity_mapping": "同identity current map更新；Stop从active map删去",
+      "position_mapping": "firing time与last occurrence UTI分开",
+      "information_change": "同firing currentUpdates按identity只留最后view，published occurrences保留全部接纳项；ledger只当前firing",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/BuildActivity.hs",
+          "lines": "47-101,109-143"
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "relation_id": "REL-11",
+      "from": "invalid typed input",
+      "to": "O-DIAGNOSTIC",
+      "type": "错误隔离",
+      "condition": "数值/引用解码失败或DSU batch失败",
+      "identity_mapping": "错误可能带local identity，不生成业务结束身份",
+      "position_mapping": "错误处理时firing",
+      "information_change": "不伪造Stop；DSU失败保留原state；具体formal结果尚未执行",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+          "lines": "643-665"
+        },
+        {
+          "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/BuildActivity.hs",
+          "lines": "109-112,141-143"
+        }
+      ],
+      "unconfirmed_items": []
+    }
+  ],
+  "parameters": [
+    {
+      "parameter_id": "PAR-ID",
+      "name": "parameter_set_id",
+      "category": "实例身份",
+      "current_or_default_value": "build-default",
+      "unit": "无",
+      "derivation": "显式默认标识，与完整ppid不同",
+      "definition": "BuildAssembler.params",
+      "consumer": "receipt parameter_set_id / feature_instance",
+      "affected_fields": "source/参数绑定",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+          "lines": "210-218"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/p1_product_receipt.py",
+          "lines": "211-222,277-293"
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "parameter_id": "PAR-WALL",
+      "name": "wall",
+      "category": "嵌套Feature实例",
+      "current_or_default_value": {
+        "module": "mquant.frame.core.app.proxy",
+        "class": "Proxy(WallAssembler)",
+        "ppdict": {
+          "parameter_set_id": "wall-default",
+          "qt_freq": "1d",
+          "qt_n": 30,
+          "qt_quantile": 0.997,
+          "w_depth_ref_ticks": 1200,
+          "large_quote_ratio_min": 1,
+          "allow_zero_qt_fallback": false,
+          "thick_vs_hi_ratio": 1,
+          "thin_vs_mid_ratio": 0.7,
+          "allow_thin_brick": false,
+          "p_wall_ticks": 1,
+          "t_wall_ticks": 6,
+          "near_band_ticks": null,
+          "far_band_ticks": null,
+          "connect_max_core_dist_ticks": null,
+          "connect_gap_max_ticks": null,
+          "support_buffer_keep_ticks": null,
+          "thin_eval_window_ticks": null,
+          "band_update_min_shift_ticks": null,
+          "dormant_no_presence_ticks": null,
+          "dormant_far_ticks": null,
+          "end_far_hold_ticks": null,
+          "end_far_ticks": null,
+          "break_after_no_presence_ticks": null,
+          "wall_dead_timeout_ticks": null,
+          "allow_brick_join_dormant": true,
+          "thin_contact_min_hits": 3,
+          "thin_contact_frac_end": 0.6
+        },
+        "ppid": "WallAssembler_f32460448c4bde6d0a683cfc262808694c9f0a75"
+      },
+      "unit": "无",
+      "derivation": "当前默认WallAssembler()；完整嵌套ppdict见feature_ref.instance_ref",
+      "definition": "BuildAssembler.params",
+      "consumer": "self.P.wall.run().F及load receipt",
+      "affected_fields": "exact Wall上下文",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+          "lines": "210-218"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+          "lines": "223-228"
+        }
+      ],
+      "unconfirmed_items": [
+        "本U没有物化或复用上游artifact。"
+      ]
+    },
+    {
+      "parameter_id": "PAR-FLOW-TOL",
+      "name": "active_flow_same_best_tol_ticks",
+      "category": "自由参数",
+      "current_or_default_value": 0,
+      "unit": "价格tick",
+      "derivation": "tol_px=值*tick_size",
+      "definition": "BuildAssembler.params",
+      "consumer": "F3 same_best hit计算",
+      "affected_fields": "same-best相关列；attack门本身不要求该flag",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+          "lines": "210-218"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/pressure_big_deal_core.py",
+          "lines": "94-106"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+          "lines": "128-150"
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "parameter_id": "PAR-T",
+      "name": "t_build_ticks",
+      "category": "自由参数",
+      "current_or_default_value": 6,
+      "unit": "输入tick",
+      "derivation": "core int(max(t,1))；当前值不再单独作为持续时间阈值",
+      "definition": "BuildAssembler.params / make_build_params",
+      "consumer": "默认start/stop窗口派生",
+      "affected_fields": "rolling窗口",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+          "lines": "210-218"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+          "lines": "179-201"
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "parameter_id": "PAR-START",
+      "name": "reload_start_ratio",
+      "category": "自由参数",
+      "current_or_default_value": 0.5,
+      "unit": "无量纲比例",
+      "derivation": "float转换",
+      "definition": "BuildAssembler.params",
+      "consumer": "start sum/max(best_vol,eps)>=值",
+      "affected_fields": "O-START",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+          "lines": "210-218"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+          "lines": "527-548"
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "parameter_id": "PAR-STOP",
+      "name": "reload_stop_ratio",
+      "category": "自由参数",
+      "current_or_default_value": 0.2,
+      "unit": "无量纲比例",
+      "derivation": "float转换",
+      "definition": "BuildAssembler.params",
+      "consumer": "stop sum/max(baseline,eps)<值",
+      "affected_fields": "O-STOP",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+          "lines": "210-218"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+          "lines": "641-645"
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "parameter_id": "PAR-START-WIN",
+      "name": "build_start_window_ticks",
+      "category": "派生参数",
+      "current_or_default_value": {
+        "raw": null,
+        "effective": 3
+      },
+      "unit": "输入tick",
+      "derivation": "None→max(1,int(t_build_ticks)//2)；显式值int(max(value,1))",
+      "definition": "make_build_params",
+      "consumer": "start ring长度",
+      "affected_fields": "Start判断",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+          "lines": "210-218"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+          "lines": "189-197,213,513-516"
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "parameter_id": "PAR-STOP-WIN",
+      "name": "build_stop_window_ticks",
+      "category": "派生参数",
+      "current_or_default_value": {
+        "raw": null,
+        "effective": 3
+      },
+      "unit": "输入tick",
+      "derivation": "None→max(1,int(t_build_ticks)//2)；显式值int(max(value,1))",
+      "definition": "make_build_params",
+      "consumer": "stop ring长度",
+      "affected_fields": "Stop判断",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+          "lines": "210-218"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+          "lines": "189-197,214,588-591"
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "parameter_id": "PAR-MILE",
+      "name": "milestone_levels",
+      "category": "固定preset（实现可覆写）",
+      "current_or_default_value": [
+        0.5,
+        1
+      ],
+      "unit": "累计proxy/baseline比例",
+      "derivation": "tuple(float(level))，不自动排序/去重",
+      "definition": "BuildAssembler.params / make_build_params",
+      "consumer": "mask bit和逐level循环",
+      "affected_fields": "O-MILESTONE.level/ratio",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+          "lines": "210-218"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+          "lines": "198,595-639"
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "parameter_id": "PAR-STABLE",
+      "name": "require_best_price_stable",
+      "category": "固定preset（实现可覆写）",
+      "current_or_default_value": true,
+      "unit": "bool",
+      "derivation": "bool转换；stable为side相同且best价格严格相等",
+      "definition": "BuildAssembler.params",
+      "consumer": "F11 reload gate",
+      "affected_fields": "reload_proxy及后续Build",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+          "lines": "210-218"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+          "lines": "165-174,481-488"
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "parameter_id": "PAR-NEAR",
+      "name": "attack_near_band_ticks",
+      "category": "自由参数",
+      "current_or_default_value": 1,
+      "unit": "价格tick",
+      "derivation": "int(max(value,0))",
+      "definition": "BuildAssembler.params / make_build_params",
+      "consumer": "F10 best/last到band距离门",
+      "affected_fields": "attack flag/pressure→reload/Start",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+          "lines": "210-218"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+          "lines": "64-122,200"
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "parameter_id": "PAR-BASELINE",
+      "name": "baseline_mode（隐含）",
+      "category": "固定实现规则",
+      "current_or_default_value": "best_vol_at_start",
+      "unit": "可见量",
+      "derivation": "Start当拍best_vol冻结；没有独立baseline_mode参数键",
+      "definition": "core Start赋值",
+      "consumer": "各ratio分母",
+      "affected_fields": "baseline_vol",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+          "lines": "518-540,595,644"
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "parameter_id": "PAR-EPS",
+      "name": "DEFAULT_EPS",
+      "category": "工程安全常量",
+      "current_or_default_value": 1e-12,
+      "unit": "分母量的保护值",
+      "derivation": "max(denominator,eps)",
+      "definition": "build_assembler_core.py",
+      "consumer": "Start/Milestone/Stop ratios",
+      "affected_fields": "阈值比较",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+          "lines": "57,532,595,644"
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "parameter_id": "PAR-FLOW-EPS",
+      "name": "active_flow_eps_vol / DEFAULT_EPS_VOL",
+      "category": "工程安全常量",
+      "current_or_default_value": 1e-12,
+      "unit": "成交量分母保护值",
+      "derivation": "wrapper固定DEFAULT_EPS_VOL；receipt列producer_private_parameters",
+      "definition": "pressure_big_deal_core.py",
+      "consumer": "F3 pressure和validity",
+      "affected_fields": "pressure/reload",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/pressure_big_deal_core.py",
+          "lines": "21,94-108"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+          "lines": "237,287-293"
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "parameter_id": "PAR-TICKSIZE",
+      "name": "tick_size",
+      "category": "运行派生参数",
+      "current_or_default_value": "UNCONFIRMED（市场上下文未读）",
+      "unit": "价格/最小跳动",
+      "derivation": "每chunk取minimal_changes_of(CurrSymbol.sym(),chunk首timestamp)",
+      "definition": "wrapper",
+      "consumer": "F10距离及F3 samebest容忍",
+      "affected_fields": "attack/reload",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+          "lines": "124-130,151"
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "parameter_id": "PAR-UNIT",
+      "name": "trading_unit",
+      "category": "运行派生输入",
+      "current_or_default_value": "UNCONFIRMED",
+      "unit": "合约交易单位",
+      "derivation": "CurrTradeSet.sof().symbols_unit[CurrSymbol.ii()]",
+      "definition": "_impl",
+      "consumer": "传入transient flow；其F4=False路径不用于F3压力公式",
+      "affected_fields": "当前Build没有直接业务常量消费",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+          "lines": "229-233"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/pressure_big_deal.py",
+          "lines": "325-342"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/pressure_big_deal_core.py",
+          "lines": "513-535"
+        }
+      ],
+      "unconfirmed_items": []
+    },
+    {
+      "parameter_id": "PAR-SCOPE",
+      "name": "SOF/symbol/calendar/time",
+      "category": "正式运行绑定",
+      "current_or_default_value": {
+        "sof": "TA_updto20240229_DBA",
+        "symbols": [
+          "rb",
+          "m"
+        ],
+        "requested_start": "2021-01-01",
+        "requested_end": "2021-12-31",
+        "calendar": "night_end_at_2300"
+      },
+      "unit": "日期/品种/calendar",
+      "derivation": "唯一正式输入；不是已测实际数据切面",
+      "definition": "BUILD_RUN_INPUT.md",
+      "consumer": "cc_df裁剪、UTI、chunk、receipt source_scope",
+      "affected_fields": "正式X绑定",
+      "code_evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/tick_quote_context.py",
+          "lines": "160-166,220-246"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/p1_product_receipt.py",
+          "lines": "169-199"
+        }
+      ],
+      "unconfirmed_items": [
+        "实际完整范围须由X读回，不能把本输入转成已运行事实。"
+      ]
+    }
+  ],
+  "run_result_field_map": [
+    {
+      "field_map_id": "RF-ID",
+      "business_item": "BO-BUILD",
+      "result_carrier": "formal build__stream*",
+      "fields": [
+        "build_id"
+      ],
+      "availability": "UNCONFIRMED",
+      "code_exposure": "代码明确公开，正式结果未生产/读回",
+      "object_group_key": "source_scope+symbol+build_id",
+      "time_key": "uti/index",
+      "dedup_same_time": "不能用stream名或行数当对象ID",
+      "missing_meaning": "若空结果只有transport sentinel，无Build发生",
+      "read_interface": "实例.F全部build__*键",
+      "evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+          "lines": "248-257"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/p1_dba_export.py",
+          "lines": "292-305"
+        }
+      ]
+    },
+    {
+      "field_map_id": "RF-WALL",
+      "business_item": "BO-WALL",
+      "result_carrier": "formal build__stream*",
+      "fields": [
+        "wall_local_no",
+        "wall_slot_side_code"
+      ],
+      "availability": "UNCONFIRMED",
+      "code_exposure": "代码明确公开",
+      "object_group_key": "exact_wall receipt+wall_local_no；Build分组另加build_id",
+      "time_key": "uti/index",
+      "dedup_same_time": "同Wall可多Build，side_slot不是独立Wall身份",
+      "missing_meaning": "缺引用字段不允许从邻近时间猜Wall",
+      "read_interface": "同上；上游receipt须另读",
+      "evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+          "lines": "163-166,248-257"
+        },
+        {
+          "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+          "lines": "637-665"
+        }
+      ]
+    },
+    {
+      "field_map_id": "RF-TIME",
+      "business_item": "O-START/O-MILESTONE/O-STOP",
+      "result_carrier": "formal build__stream*",
+      "fields": [
+        "uti",
+        "ts",
+        "DatetimeIndex"
+      ],
+      "availability": "UNCONFIRMED",
+      "code_exposure": "代码明确公开",
+      "object_group_key": "source scope+build_id",
+      "time_key": "producer当前tickuti/timestamp",
+      "dedup_same_time": "收齐所有物理lanes；同uti可有多行，不可drop_duplicates(uti)",
+      "missing_meaning": "无confirm_time/publish_time列；不从字段名补造",
+      "read_interface": "同上",
+      "evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+          "lines": "924-947"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+          "lines": "40-45"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/tick_quote_context.py",
+          "lines": "97-106"
+        }
+      ]
+    },
+    {
+      "field_map_id": "RF-KIND",
+      "business_item": "O-START/O-MILESTONE/O-STOP",
+      "result_carrier": "formal build__stream*",
+      "fields": [
+        "event_type_code"
+      ],
+      "availability": "UNCONFIRMED",
+      "code_exposure": "8/9/10分别对应Start/Milestone/Stop；字符串event_type未留",
+      "object_group_key": "source scope+build_id",
+      "time_key": "uti/index",
+      "dedup_same_time": "区分同拍Milestone与Stop；码不足以区分多level",
+      "missing_meaning": "无事件不等于失效/已停止",
+      "read_interface": "同上",
+      "evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/tick_quote_context.py",
+          "lines": "128-130"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+          "lines": "64-67"
+        }
+      ]
+    },
+    {
+      "field_map_id": "RF-MEASURE",
+      "business_item": "DEC-START/DEC-CUM",
+      "result_carrier": "formal build__stream*",
+      "fields": [
+        "baseline_vol",
+        "cum_reload_proxy",
+        "same_band_continuity_code",
+        "availability_code"
+      ],
+      "availability": "UNCONFIRMED",
+      "code_exposure": "代码明确公开；continuity/availability固定1，非dense证明",
+      "object_group_key": "source scope+build_id",
+      "time_key": "事件uti",
+      "dedup_same_time": "按occurrence保留",
+      "missing_meaning": "非event tick没有连续测量；固定码不补充未测维度",
+      "read_interface": "同上",
+      "evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+          "lines": "924-937"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+          "lines": "252"
+        }
+      ]
+    },
+    {
+      "field_map_id": "RF-MILE",
+      "business_item": "O-MILESTONE",
+      "result_carrier": "formal build__stream*",
+      "fields": [
+        "level",
+        "ratio"
+      ],
+      "availability": "UNCONFIRMED",
+      "code_exposure": "PARTIAL：仅Milestone行有payload；若全程无Milestone整列可不存在",
+      "object_group_key": "source scope+build_id+level",
+      "time_key": "uti/index",
+      "dedup_same_time": "同tick多level必须都保留；可用level细分raw业务变化",
+      "missing_meaning": "Start/Stop对应NaN或无整列，不是ratio=0",
+      "read_interface": "同上",
+      "evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+          "lines": "934-938"
+        }
+      ]
+    },
+    {
+      "field_map_id": "RF-PHYSICAL",
+      "business_item": "DEC-PACK",
+      "result_carrier": "formal build__stream / __occNNNN",
+      "fields": [
+        "occurrence_ordinal（条件列）"
+      ],
+      "availability": "UNCONFIRMED",
+      "code_exposure": "PARTIAL：存在重复timestamp才加；physical lane ordinal不是业务阶段",
+      "object_group_key": "source scope+result_key+row index",
+      "time_key": "DatetimeIndex",
+      "dedup_same_time": "raw可追溯键=artifact+result_key+timestamp；业务分类还需build_id/event_code/level；不直接复用typed ref去重raw",
+      "missing_meaning": "列缺失表示未走重复timestamp分流，不代表丢事件",
+      "read_interface": "枚举.F全部build__*键",
+      "evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/p1_dba_export.py",
+          "lines": "256-269,292-305"
+        }
+      ]
+    },
+    {
+      "field_map_id": "RF-RECEIPT",
+      "business_item": "实例/上游绑定",
+      "result_carrier": "p1_receipts/build_activity.json",
+      "fields": [
+        "feature_instance",
+        "parameter_set_id",
+        "source_scope",
+        "actual_business_parameters",
+        "producer_private_parameters",
+        "direct_upstream_artifacts",
+        "schema_version",
+        "code_version",
+        "artifact_location",
+        "status",
+        "error"
+      ],
+      "availability": "UNCONFIRMED",
+      "code_exposure": "dump成功后写thin receipt；本U未生成/读取正式receipt",
+      "object_group_key": "exact artifact location+完整source_scope/参数/代码",
+      "time_key": "source_scope.time_range",
+      "dedup_same_time": "非事件行；不可算Build数量",
+      "missing_meaning": "没有receipt不能声称正式产品绑定或复用通过",
+      "read_interface": "load_p1_product_receipt(feature_or_dir,'build_activity')",
+      "evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+          "lines": "258-305"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/p1_product_receipt.py",
+          "lines": "230-294,348-386"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/p1_dba_export.py",
+          "lines": "576-583"
+        }
+      ]
+    },
+    {
+      "field_map_id": "RF-SOURCE-RUN",
+      "business_item": "BO-BUILD/BO-WALL身份作用域",
+      "result_carrier": "流级receipt/FeatureRunIdentity",
+      "fields": [
+        "source_run_ref（每row未提供）",
+        "FeatureRunIdentity"
+      ],
+      "availability": "PARTIAL",
+      "code_exposure": "NOT_EXPOSED per row；run/symbol/cal/time/params/code在流级receipt/上下文，不是裸localNo自带",
+      "object_group_key": "完整producer run context+localNo",
+      "time_key": "receipt.time_range/row.uti",
+      "dedup_same_time": "分symbol/source artifact分区；不可跨run合并localNo",
+      "missing_meaning": "raw没有source_run_ref列不自动等同source信息完全不存在",
+      "read_interface": "receipt + 当前调用scope",
+      "evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/p1_product_receipt.py",
+          "lines": "169-199,277-293"
+        },
+        {
+          "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/Products.hs",
+          "lines": "186-224,443-497"
+        }
+      ]
+    },
+    {
+      "field_map_id": "RF-RAW-TABLE",
+      "business_item": "raw event中间载体",
+      "result_carrier": "build_assembler_sparse_events",
+      "fields": [
+        "core event payload / event_type_code"
+      ],
+      "availability": "NOT_EXPOSED",
+      "code_exposure": "_frames内有，但_impl只返回formal_streams",
+      "object_group_key": "source scope+build_id",
+      "time_key": "ts/uti",
+      "dedup_same_time": "raw内可重复timestamp",
+      "missing_meaning": "不在.F结果中；不能按旧文档读这个key",
+      "read_interface": "run_build_assembler_trading_day_chunks和_frames是内部函数；本D未运行",
+      "evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+          "lines": "47-76,248-257,305"
+        }
+      ]
+    },
+    {
+      "field_map_id": "RF-STATE",
+      "business_item": "ST-IDLE/ST-ACTIVE",
+      "result_carrier": "core state / active_build_state_snapshot / build_assembler_{carry_out_state,chunk_end_state}",
+      "fields": [
+        "build_id",
+        "wall_id",
+        "active",
+        "start_uti",
+        "baseline_vol",
+        "cum_reload_proxy",
+        "milestone_mask",
+        "reload_sum_start",
+        "reload_sum_stop",
+        "input_seen",
+        "last_wall_side_code",
+        "last_best_price",
+        "last_best_volume"
+      ],
+      "availability": "NOT_EXPOSED",
+      "code_exposure": "core有snapshot，_frames可构建chunk表；正式_impl不返回",
+      "object_group_key": "source scope+side槽+build_id；inactive残留build_id不能计新life",
+      "time_key": "chunk_end_ts/内部start_uti",
+      "dedup_same_time": "不是连续历史state trace；Stop event snapshot为pre-reset",
+      "missing_meaning": "正式结果缺这些列，不可根据变量存在假定可统计",
+      "read_interface": "内部core return/_frames；现有public .F不可得",
+      "evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+          "lines": "204-241,924-948,969-1013"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+          "lines": "47-76,190-203,305"
+        }
+      ]
+    },
+    {
+      "field_map_id": "RF-RINGS",
+      "business_item": "DEC-START/DEC-STOP/DEC-CARRY",
+      "result_carrier": "私有_carry_out_state",
+      "fields": [
+        "reload_ring_start",
+        "reload_ring_stop",
+        "ring positions"
+      ],
+      "availability": "NOT_EXPOSED",
+      "code_exposure": "core完整carry中有；snapshot也未含ring数组",
+      "object_group_key": "source scope+side槽",
+      "time_key": "处理器当前tick",
+      "dedup_same_time": "私有计算状态，非occurrence",
+      "missing_meaning": "无法从正式结果恢复滚动窗每拍输入",
+      "read_interface": "内部carry；未运行",
+      "evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+          "lines": "204-223,969-1013"
+        }
+      ]
+    },
+    {
+      "field_map_id": "RF-DENSE",
+      "business_item": "DEC-FLOW/DEC-ATTACK/DEC-RELOAD",
+      "result_carrier": "transient active_flow_columns/f10_out/f11_out",
+      "fields": [
+        "flow_validity_code",
+        "pressure_bid/ask",
+        "attack_flag",
+        "attack_pressure_proxy",
+        "attack_samebest_flag",
+        "best_price_stable",
+        "visible_delta",
+        "reload_proxy",
+        "reload_flag"
+      ],
+      "availability": "NOT_EXPOSED",
+      "code_exposure": "core内存或块内测量；wrapper正式返回不含",
+      "object_group_key": "source scope+side+uti",
+      "time_key": "输入uti/index",
+      "dedup_same_time": "逐tick判断不是Build occurrence",
+      "missing_meaning": "不能从稀疏cum差分冒充完整dense测量",
+      "read_interface": "无当前formal .F读取接口",
+      "evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+          "lines": "125-159,248-305"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+          "lines": "867-879,996-1013"
+        }
+      ]
+    },
+    {
+      "field_map_id": "RF-CHECKPOINT",
+      "business_item": "DEC-START/DEC-CUM/DEC-STOP",
+      "result_carrier": "core checkpoints / build_assembler_chunk_checkpoints",
+      "fields": [
+        "checkpoint_type_code",
+        "event_type_code",
+        "uti",
+        "ts",
+        "state snapshot"
+      ],
+      "availability": "NOT_EXPOSED",
+      "code_exposure": "chunk start/end与event emission内部存在，_impl未返回",
+      "object_group_key": "source scope+side_slot+build_id",
+      "time_key": "checkpoint uti",
+      "dedup_same_time": "同拍多个event checkpoint；不是新增业务life",
+      "missing_meaning": "Stop checkpoint active仍1，不可当after-stop；空值不能补state",
+      "read_interface": "内部core/_frames",
+      "evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+          "lines": "333-342,924-948,992-1013"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+          "lines": "59-74,305"
+        }
+      ]
+    },
+    {
+      "field_map_id": "RF-SUMMARY",
+      "business_item": "DEC-CARRY",
+      "result_carrier": "core chunk_summary / build_assembler_chunk_summary",
+      "fields": [
+        "build_start_count",
+        "build_stop_count",
+        "build_milestone_hist（wrapper展平）",
+        "reload_proxy_peak",
+        "cum_reload_proxy_end_bid/ask"
+      ],
+      "availability": "NOT_EXPOSED",
+      "code_exposure": "内部已计算但当前formal返回未带；本U没有计算这些数值",
+      "object_group_key": "source scope+chunk",
+      "time_key": "chunk_end_ts",
+      "dedup_same_time": "summary数量和event/object数不同粒度",
+      "missing_meaning": "旧内部统计字段不能当当前已物化公开表",
+      "read_interface": "内部core/_frames",
+      "evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+          "lines": "994-1012"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+          "lines": "55-58,178-203,305"
+        }
+      ]
+    },
+    {
+      "field_map_id": "RF-STOPREASON",
+      "business_item": "O-STOP",
+      "result_carrier": "producer formal / typed decoder",
+      "fields": [
+        "reason_code/stop_reason",
+        "BuildStopReason"
+      ],
+      "availability": "PARTIAL",
+      "code_exposure": "producer NOT_EXPOSED；typed固定producer-stop；无具体触发分支",
+      "object_group_key": "source scope+build_id",
+      "time_key": "Stop uti",
+      "dedup_same_time": "不能按generic reason区分Wall改变与reload不足",
+      "missing_meaning": "具体业务终止原因不可从public row独立识别",
+      "read_interface": "raw无接口；typed decoder固定字串",
+      "evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+          "lines": "641-684,924-938"
+        },
+        {
+          "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+          "lines": "654-665"
+        }
+      ]
+    },
+    {
+      "field_map_id": "RF-TYPED",
+      "business_item": "typed Build occurrence",
+      "result_carrier": "buildActivityOccurrences",
+      "fields": [
+        "identity",
+        "WallIdentity",
+        "OccurrenceRef",
+        "BuildActivityEvent"
+      ],
+      "availability": "UNCONFIRMED",
+      "code_exposure": "源码类型/decoder已核；本Run未执行backend",
+      "object_group_key": "外层receipt namespace+local identity",
+      "time_key": "TickUTI",
+      "dedup_same_time": "当前typed OccurrenceRef=build/localNo/uti/eventCode；不包括level或ordinal",
+      "missing_meaning": "不能假定raw所有同刻事件在typed后仍一一保留",
+      "read_interface": "BuildOccurrenceFao / buildOccurrenceIngress / maintainBuildActivity",
+      "evidence": [
+        {
+          "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+          "lines": "550-559,637-665,1387-1393"
+        },
+        {
+          "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/BuildActivity.hs",
+          "lines": "47-95"
+        }
+      ]
+    },
+    {
+      "field_map_id": "RF-CURRENT",
+      "business_item": "ST-FRP-PROGRESS/ST-FRP-STOPPED/O-CURRENT",
+      "result_carrier": "buildActivityCurrent / buildActivityCurrentUpdates",
+      "fields": [
+        "BuildCurrentView.identity/wall/state/milestoneCount/lastOccurrence"
+      ],
+      "availability": "UNCONFIRMED",
+      "code_exposure": "typed源码输出；不是BuildAssembler.F，也不能调用EawP1BuildActivityFrp.to_df取得",
+      "object_group_key": "外层namespace+BuildActivityIdentity",
+      "time_key": "Event firing；view中lastOccurrence.uti",
+      "dedup_same_time": "同firing每ID只保留最后current update；Stopped已移出active map",
+      "missing_meaning": "Map缺条目不表示source missing；可能尚未Start或已Stop",
+      "read_interface": "typed接口；本D仅合同参考",
+      "evidence": [
+        {
+          "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/BuildActivity.hs",
+          "lines": "69-101,114-143"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:frp/EawBattleP.py",
+          "lines": "41-51,100-108"
+        }
+      ]
+    },
+    {
+      "field_map_id": "RF-EMPTY",
+      "business_item": "空正式输出",
+      "result_carrier": "p1_transport_empty",
+      "fields": [
+        "empty:int8（零行）"
+      ],
+      "availability": "UNCONFIRMED",
+      "code_exposure": "代码明确空哨兵，非业务事件",
+      "object_group_key": "不适用",
+      "time_key": "空DatetimeIndex",
+      "dedup_same_time": "绝不计为Start/Build或数据已完整证明",
+      "missing_meaning": "可表示零occurrence；不能单凭哨兵证明正式数据范围已成功验证",
+      "read_interface": "ensure_materializable_result / 实例.F",
+      "evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/p1_dba_export.py",
+          "lines": "509-519"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+          "lines": "305"
+        }
+      ]
+    }
+  ],
+  "business_main_outputs": [
+    "O-START",
+    "O-MILESTONE",
+    "O-STOP"
+  ],
+  "intermediate_processing_results": [
+    "NI-FLOW",
+    "DEC-ATTACK",
+    "DEC-RELOAD",
+    "DEC-START",
+    "DEC-CUM",
+    "DEC-STOP",
+    "DEC-IDENTITY",
+    "O-CURRENT",
+    "O-DIAGNOSTIC"
+  ],
+  "unconfirmed_items": [
+    {
+      "id": "UQ-X-SCOPE",
+      "category": "运行前置",
+      "question": "实际rb/m全年市场数据、Calendar、范围与完整性尚未读回。",
+      "required_evidence": "既定X读取实际SOF/symbol/calendar、完整输入范围和正式结果，形成FeatureRunResultBinding。",
+      "affected_downstream": "G不能从本U或构造检查直接开始；U核心模型不受此未知项阻塞。",
+      "owner_node": "既定X，非Owner审批"
+    },
+    {
+      "id": "UQ-WALL",
+      "category": "exact上游",
+      "question": "本Run未核正式Wall artifact/receipt/state trace同版本/参数/范围。",
+      "required_evidence": "X先只读核可复用产物；不满足时在原授权范围内技术物化当前Wall，不改上游；核exact refs和读回。",
+      "affected_downstream": "Build正式X/G；不代表Wall合理性Release。"
+    },
+    {
+      "id": "UQ-AXIS",
+      "category": "代码路径与正式实例待对账",
+      "question": "Wall._load_cc_df在特定全空时段首占位条件下排除行并改market_source_cut；Build继承普通_load_cc_df，要求Wall exact轴覆盖。是否在本正式范围触发该差异未知。",
+      "required_evidence": "X核两者实际输入axis/空占位及source_scope；失败时保留真实局部阻断与原始错误，不能在本U先改Wall或共享模块。",
+      "affected_downstream": "Build输入覆盖与receipt构造；不是已确认为本轮业务finding。",
+      "evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/wall_assembler.py",
+          "lines": "432-471,756-759"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/tick_quote_context.py",
+          "lines": "160-166"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/p1_dba_export.py",
+          "lines": "470-486"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/p1_product_receipt.py",
+          "lines": "269-272"
+        }
+      ]
+    },
+    {
+      "id": "UQ-PUBLIC-READ",
+      "category": "结果可用性",
+      "question": "公开build__stream*各列在正式产品中的实际存在/dtype/值/receipt尚未读回。",
+      "required_evidence": "X读回所有physical lanes和receipt；level/ratio、ordinal按实际条件识别。",
+      "affected_downstream": "对应run_result_field_map的UNCONFIRMED项；正式G须用当前X绑定。"
+    },
+    {
+      "id": "UQ-DENSE",
+      "category": "已确认字段缺口",
+      "question": "当前public result没有F10/F11/flow validity、rolling ratio、完整state trace/checkpoint/summary。",
+      "required_evidence": "后续按原Skill需要具名证据时明确该缺口；不能用公开稀疏行冒充dense全轨迹。",
+      "affected_downstream": "可从公开事件做活动/事件层面理解；需要逐tick形成/终止原因的证据受限。"
+    },
+    {
+      "id": "UQ-REASON",
+      "category": "已确认语义信息损失",
+      "question": "producer未输出具体stop分支，typed固定producer-stop；无法按public row拆分实际Stop原因。",
+      "required_evidence": "若后续问题依赖原因，须取得对应代码/过程证据，不能猜测具体原因。",
+      "affected_downstream": "Stop原因解释和诊断证据面。"
+    },
+    {
+      "id": "UQ-TYPED",
+      "category": "合同消费未执行",
+      "question": "FRP decoder/DSU只做源码参考。多level同刻ref、current终止删除、namespace和batch原子处理未在正式实例读回。",
+      "required_evidence": "只有当前任务后继确实需要typed消费时核实际backend；本D不新启动FRP/其他Feature Run。",
+      "affected_downstream": "不能把Python原始产物当成FRP已执行或accepted publication。"
+    },
+    {
+      "id": "UQ-STCAL",
+      "category": "既有工作区修改",
+      "question": "STCalendar修改的作者/来源Run/批准链不明；已确认内容、hash及随导入加载。",
+      "required_evidence": "保留该文件现状和来源未知；X记录实际加载/影响，如触发受影响动作仅作局部阻断；本Run不越权修复。",
+      "affected_downstream": "正式运行可追溯性；本U不声明全执行链零影响。"
+    }
+  ],
+  "completion_status": "COMPLETE",
+  "completion_interpretation": "U核心对象、状态、事件、参数和公开结果字段边界均已解释；COMPLETE仅指本D的理解工作。X/G/diagnosis/FeatureRelease尚未执行；具名运行期未知项移交既定X/G核实，不伪造本Skill证据。",
+  "original_business_sources": [
+    {
+      "key": "architecture",
+      "source_ref": "daowei2026/feature-refinement-implementation-agent-evolution@8d58ddd3392a3e67ef5ba44adf2c4cd0c9077f9f:candidate_gold_cases/eaw/taskpacks_and_checkpoints/p1/EAW_P1_PREL0_BASE_PRODUCTS_ENGINEERING_DESIGN_AND_VCC_V1_6_1_20260818/02_FINAL_P1_ARCHITECTURE.md",
+      "role": "原始业务来源，和实现分别记录"
+    },
+    {
+      "key": "dsu",
+      "source_ref": "daowei2026/feature-refinement-implementation-agent-evolution@8d58ddd3392a3e67ef5ba44adf2c4cd0c9077f9f:candidate_gold_cases/eaw/taskpacks_and_checkpoints/p1/EAW_P1_PREL0_BASE_PRODUCTS_ENGINEERING_DESIGN_AND_VCC_V1_6_1_20260818/dsu/P1-DSU-02_Build_活动_DSU.md",
+      "role": "原始业务来源，和实现分别记录"
+    },
+    {
+      "key": "lifecycle",
+      "source_ref": "daowei2026/feature-refinement-implementation-agent-evolution@8d58ddd3392a3e67ef5ba44adf2c4cd0c9077f9f:candidate_gold_cases/eaw/taskpacks_and_checkpoints/p1/EAW_P1_EXISTING_PREL0_BASE_PRODUCTS_AND_SPARSE_OCCURRENCE_V0_6_20260813/03_WALL_BUILD_ABSORB_LIFECYCLE_CONTRACTS.md",
+      "role": "原始业务来源，和实现分别记录"
+    },
+    {
+      "key": "original_assembler",
+      "source_ref": "daowei2026/feature-refinement-implementation-agent-evolution@8d58ddd3392a3e67ef5ba44adf2c4cd0c9077f9f:candidate_gold_cases/eaw/preL0_source_materials_20261102/原文快照/mquant/ssot/eaw/03_assemblers_Wall_Build_Absorb_Attack_Exhaustion.md",
+      "role": "原始业务来源，和实现分别记录"
+    },
+    {
+      "key": "frp",
+      "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/BuildActivity.hs",
+      "role": "FRP合同实现参考，未启动独立FRP运行"
+    }
+  ],
+  "business_contract_crosscheck": [
+    {
+      "topic": "活动主语/身份",
+      "business_source": "dsu",
+      "business_statement": "一轮活动围绕exact Wall，身份按FeatureRunIdentity+localNo解释。",
+      "implementation_fact": "producer和typed包装只保存run-local号；actual source run约束在receipt/运行上下文；当前紧凑Wall namespace接受正localNo，不逐Wall枚举。",
+      "evidence": [
+        {
+          "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/Products.hs",
+          "lines": "443-497,552-568"
+        },
+        {
+          "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/Internal/UpstreamReference.hs",
+          "lines": "17-45"
+        }
+      ]
+    },
+    {
+      "topic": "chunk边界",
+      "business_source": "original_assembler",
+      "business_statement": "原始说明推荐硬边界reset。",
+      "implementation_fact": "当前正式wrapper跨交易日carry Build状态、rings、last best及next_build_id；本U不据此判合理性或修改。",
+      "evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+          "lines": "109-110,160-168,190-203"
+        }
+      ]
+    },
+    {
+      "topic": "Start资格",
+      "business_source": "original_assembler",
+      "business_statement": "滚动reload/baseline达到门槛。",
+      "implementation_fact": "当前还要求当拍Wall Alive、attack!=0及reload_proxy_t>0；启动sum包含此前窗口，累计cum从当拍开始。",
+      "evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+          "lines": "510-586"
+        }
+      ]
+    },
+    {
+      "topic": "Stop语义",
+      "business_source": "lifecycle / original_assembler",
+      "business_statement": "一次Build Stop为业务结束；数据/代码/schema错误不冒充Stop；原说明列Wall End与近期补墙不足。",
+      "implementation_fact": "当前任何非Alive状态或Wall ID更换也触发Stop；producer没带具体原因，typed只给producer-stop；错误另走异常/diagnostic。",
+      "evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+          "lines": "641-696"
+        },
+        {
+          "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+          "lines": "643-665"
+        }
+      ]
+    },
+    {
+      "topic": "主输出与审阅状态",
+      "business_source": "original_assembler / dsu",
+      "business_statement": "说明包括状态、摘要、checkpoint与current；DSU承诺occurrence/current/diagnostics。",
+      "implementation_fact": "Python最终仅返回formal稀疏流，内部其它表不返回；FRP状态/current是另一层合同且本次未执行。",
+      "evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+          "lines": "47-76,248-305"
+        },
+        {
+          "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/BuildActivity.hs",
+          "lines": "97-101"
+        }
+      ]
+    },
+    {
+      "topic": "F3与Absorb辅助",
+      "business_source": "architecture / original_assembler",
+      "business_statement": "原架构允许使用F3 artifact，原说明列Absorb.InteractionStarted可作辅助。",
+      "implementation_fact": "当前Build在chunk内compute_transient_active_flow_chunk，不生成F3 artifact、不消费Absorb事件；正式输入明确以当前实现为目标，不扩大其它Feature Run。",
+      "evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler.py",
+          "lines": "125-150,223-245"
+        },
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/pressure_big_deal.py",
+          "lines": "312-343"
+        }
+      ]
+    },
+    {
+      "topic": "Milestone表示",
+      "business_source": "lifecycle / dsu",
+      "business_statement": "一次里程碑为业务变化，非通用Committed。",
+      "implementation_fact": "raw有level+实际ratio；typed把level用作milestone value且未消费ratio；同UTI同Build多level共用相同typed ref discriminator，具体消费影响未有正式市场证据。",
+      "evidence": [
+        {
+          "source_ref": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74:hf/prel0/build_assembler_core.py",
+          "lines": "595-639,934-938"
+        },
+        {
+          "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/FaoIngress.hs",
+          "lines": "550-559,637-665"
+        },
+        {
+          "source_ref": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13:src/Frp/Instance/ISL/Eaw/P1/BuildActivity.hs",
+          "lines": "54-57,85-91"
+        }
+      ]
+    }
+  ],
+  "stcalendar_assessment": {
+    "file": "frpExample/STCalendar.py",
+    "working_blob": "fa8edcda48b9ac4a9366154cd8568fcfd44da21e",
+    "baseline_blob": "bb67cfb1c2382ec1c0b4c23e8918ea01268f173c",
+    "sha256": "3001e49a3b812b5281ddca12795e5aa279d5ca09fd510ba0a4cfc330b42c6980",
+    "origin": "UNCONFIRMED；pre-existing；mtime与last tracked commit不能归因未提交修改。",
+    "observed_change": "新增空occurrence时返回typed空DataFrame的_scaleTurnValueADT2DF；非空保留actual2D/confirm2D读取。",
+    "import_observed": true,
+    "source_path_impact": "模块随mquant.tis包导入，但已读Build/core/Wall/transient flow路径不引用该helper或ScaleTurn对象；不是night_end_at_2300交易日历实现。",
+    "limit": "未执行Build，仅构造导入成功，不能声称正式全链无影响。",
+    "disposition": "完整保留；不覆写、不回退、不提交成Build修复。"
+  },
+  "downstream_usable_scope": {
+    "understanding": "COMPLETE（仅U）",
+    "suggested_existing_successor": "原L0的X正式实例运行；由manager消费后签既定后继。",
+    "safe_interpretation": "本包提供可定位实现、默认参数和公开事件/结果合同；不是正式结果、统计、finding或Release。",
+    "invalidations": [
+      "Build/直接依赖实现或实例参数变化时按影响更新本U事实。",
+      "正式source scope/Wall exact artifact/Calendar变化不能沿用旧X/G绑定。",
+      "当前结果未物化，任何字段存在和业务可达性须按实际X读回，不把本包的源码说明提升成运行证据。"
+    ],
+    "remaining_d001_skill_work": [],
+    "parent_run_remaining": [
+      "X正式实例运行及exact Wall前置核验",
+      "G全量统计与高置信问题发现",
+      "若有finding则原D Skill诊断/授权处理",
+      "最新有效证据下完成判断与必要FeatureRelease"
+    ]
+  },
+  "behavior_changes": {
+    "source_code_changes": [],
+    "parameter_changes": [],
+    "upstream_changes": [],
+    "tis_commits_or_pushes": [],
+    "prior_results_invalidated_by_this_d": "无本D行为/绑定修改导致的失效；未接纳或复用任何历史正式运行结果。"
+  },
+  "completion_evidence": [
+    {
+      "skill_condition": "当前实例对应实现已定位或明确阻塞",
+      "result": "SATISFIED",
+      "evidence": "feature_ref / implementation_sources / INSTANCE_INSPECTION.json；实际源文件、完整ppdict/ppid及嵌套Wall已核。"
+    },
+    {
+      "skill_condition": "业务对象、身份、状态和occurrence已区分",
+      "result": "SATISFIED",
+      "evidence": "business_objects / object_qualification / states / occurrences / non_occurrence_inputs"
+    },
+    {
+      "skill_condition": "主输出与中间结果按业务角色分类",
+      "result": "SATISFIED",
+      "evidence": "business_main_outputs / intermediate_processing_results / occurrence business_role"
+    },
+    {
+      "skill_condition": "形成、更新、确认、结束和引用关系可追溯",
+      "result": "SATISFIED",
+      "evidence": "processing_relations；未强造当前实现不存在的单独确认步骤。"
+    },
+    {
+      "skill_condition": "参数定义、派生及消费已记录",
+      "result": "SATISFIED",
+      "evidence": "parameters及真实INSTANCE_INSPECTION.json；原始None与有效窗口分开。"
+    },
+    {
+      "skill_condition": "运行字段已映射、缺失字段具名",
+      "result": "SATISFIED",
+      "evidence": "run_result_field_map；源码暴露与正式运行实际可用分开，NOT_EXPOSED/UNCONFIRMED准确标注。"
+    },
+    {
+      "skill_condition": "未确认项未写为确定事实",
+      "result": "SATISFIED",
+      "evidence": "unconfirmed_items / market_binding / stcalendar_assessment / downstream_usable_scope；未运行、未统计、未诊断或释放。"
+    }
+  ]
+}
