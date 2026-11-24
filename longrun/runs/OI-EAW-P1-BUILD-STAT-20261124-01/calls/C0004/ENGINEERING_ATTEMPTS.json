@@ -1,0 +1,61 @@
+{
+  "call_id": "C0004",
+  "delegation_id": "D002",
+  "observed_engineering_attempts": [
+    {
+      "attempt": "metadata-01",
+      "scope": "构造/路径前检，未调用Feature",
+      "outcome": "指定锁以只读FD获取独占flock返回EBADF",
+      "correction": "同一路径以r+b打开；无锁内容写入",
+      "evidence": "preflight-context.log"
+    },
+    {
+      "attempt": "metadata-02",
+      "scope": "构造/路径前检，未调用Feature",
+      "outcome": "SubContinuousContract不存在hold_cal_type方法",
+      "correction": "前检读取其prop_cal_type；有override者仍读hold_cal_type",
+      "evidence": "preflight-context-rwfd.log"
+    },
+    {
+      "attempt": "metadata-03",
+      "scope": "构造/路径前检，未调用Feature",
+      "outcome": "SUCCESS；指定flock真实获取/释放，默认shared路径和receipt已读",
+      "evidence": "preflight-context.json"
+    },
+    {
+      "attempt": "production-01",
+      "scope": "构造guard，未读市场或调用Feature",
+      "outcome": "tuple vs JSON list直接比较误报defaults changed",
+      "correction": "仅规范化ppdict序列化比较，实际ppid/参数/源码未变；保留全部原件",
+      "evidence": "attempt01-constructor-check/"
+    },
+    {
+      "attempt": "production-02",
+      "scope": "原L0 X，实际全年输入/Wall依赖/Build",
+      "outcome": "在途；状态以production-events.jsonl和run-manifest.json真实后续记录为准",
+      "evidence": "formal-x-attempt02.log"
+    },
+    {
+      "attempt": "production-02-outcome",
+      "scope": "原L0 X，rb/m全年原始调用",
+      "outcome": "rb Wall/Build已落盘，原读回guard误报；m Wall完成，Build在交易日分块前ValueError、无Build fields/receipt。",
+      "evidence": "run-manifest.json"
+    },
+    {
+      "attempt": "rb-readback-reconciliation",
+      "scope": "原生rb全年内存重放；Wall/VolQuant OnlyRead，Build Cal不落盘",
+      "outcome": "6个公开流按列名对齐后全部值精确一致；唯一dtype差异为availability_code int8到int64；产物SHA/size/mtime不变。",
+      "evidence": "rb-readback-reconciliation.json"
+    },
+    {
+      "attempt": "postcheck",
+      "scope": "禁止Feature运行的独立DAO只读",
+      "outcome": "rb全lane再次读回；rb/m Qt可读；既有共享fields/receipt和TIS/STCalendar保留。",
+      "evidence": "postcheck.json"
+    }
+  ],
+  "tis_changes": [],
+  "parameter_changes": [],
+  "worker_orders": [],
+  "lock_file_content_changes": []
+}

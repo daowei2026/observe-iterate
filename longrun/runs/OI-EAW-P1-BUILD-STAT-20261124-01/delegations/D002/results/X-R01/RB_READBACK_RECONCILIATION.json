@@ -1,0 +1,971 @@
+{
+  "started_at": "2026-11-24T08:43:18.379889+00:00",
+  "purpose": "Independent full-formal-rb recompute in memory to distinguish metadata ordering/widening from value mismatch; no G/repair.",
+  "initial_guard_error": {
+    "exception_type": "AssertionError",
+    "message": "build__stream",
+    "traceback": "Traceback (most recent call last):\n  File \"/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_x.py\", line 159, in <module>\n    assert df.equals(build_frames[key]),key\nAssertionError: build__stream\n"
+  },
+  "artifact_overwritten": false,
+  "status": "COMPLETE_CURRENT_FORMAL",
+  "finished_at": "2026-11-24T08:45:13.910718+00:00",
+  "receipt": {
+    "actual_business_parameters": {
+      "active_flow_same_best_tol_ticks": 0,
+      "attack_near_band_ticks": 1,
+      "build_start_window_ticks": 3,
+      "build_stop_window_ticks": 3,
+      "milestone_levels": [
+        0.5,
+        1.0
+      ],
+      "reload_start_ratio": 0.5,
+      "reload_stop_ratio": 0.2,
+      "require_best_price_stable": true,
+      "t_build_ticks": 6
+    },
+    "artifact_location": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300",
+    "code_version": "git:179016111ed0394f92025313e46bd13534932a74+source-sha256:924da4d9388a44039df47207d10b0b3b7f740a463c064d20eeae908da817cee1",
+    "direct_upstream_artifacts": [
+      {
+        "artifact_location": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/WallAssembler/8/8/5/1/d/6/1/b25bd29dd0d30a972dfabd41edcdf0518/rb.night_end_at_2300",
+        "code_version": "git:179016111ed0394f92025313e46bd13534932a74+source-sha256:e7e97d1434a558e70abac3ac3cb2e547a01538ffb868969d89a1bb5d888e6e46",
+        "feature_instance": "WallAssembler:wall-default",
+        "parameter_set_id": "wall-default",
+        "product_kind": "wall_lifecycle",
+        "schema_version": "wall_lifecycle-v1.6.1"
+      }
+    ],
+    "error": null,
+    "feature_instance": "BuildAssembler:build-default",
+    "method_snapshot_fingerprint": null,
+    "parameter_set_id": "build-default",
+    "producer_private_parameters": {
+      "active_flow_eps_vol": 1e-12
+    },
+    "product_kind": "build_activity",
+    "schema_version": "build_activity-v1.6.1",
+    "source_scope": {
+      "calendar_or_session": "night_end_at_2300",
+      "market_source_cut": "market:rb:night_end_at_2300:time:2021-01-04T09:00:00.500000..2021-12-31T15:00:00",
+      "target": "rb",
+      "time_range": "time:2021-01-04T09:00:00.500000..2021-12-31T15:00:00"
+    },
+    "status": "success"
+  },
+  "readback_inventory": {
+    "build__stream": {
+      "rows": 197837,
+      "columns": {
+        "availability_code": "int64",
+        "baseline_vol": "float64",
+        "build_id": "int64",
+        "cum_reload_proxy": "float64",
+        "event_type_code": "int64",
+        "level": "float64",
+        "occurrence_ordinal": "int64",
+        "ratio": "float64",
+        "same_band_continuity_code": "int64",
+        "ts": "datetime64[ns]",
+        "uti": "int64",
+        "wall_local_no": "int64",
+        "wall_slot_side_code": "int64"
+      },
+      "index_dtype": "datetime64[ns]",
+      "index_unique": true,
+      "index_monotonic": true,
+      "first_index": "2021-02-23 09:07:11",
+      "last_index": "2021-12-31 14:58:53"
+    },
+    "build__stream__occ0001": {
+      "rows": 42949,
+      "columns": {
+        "availability_code": "int64",
+        "baseline_vol": "float64",
+        "build_id": "int64",
+        "cum_reload_proxy": "float64",
+        "event_type_code": "int64",
+        "level": "float64",
+        "occurrence_ordinal": "int64",
+        "ratio": "float64",
+        "same_band_continuity_code": "int64",
+        "ts": "datetime64[ns]",
+        "uti": "int64",
+        "wall_local_no": "int64",
+        "wall_slot_side_code": "int64"
+      },
+      "index_dtype": "datetime64[ns]",
+      "index_unique": true,
+      "index_monotonic": true,
+      "first_index": "2021-02-23 09:07:17.500000",
+      "last_index": "2021-12-31 14:58:50.500000"
+    },
+    "build__stream__occ0002": {
+      "rows": 6564,
+      "columns": {
+        "availability_code": "int64",
+        "baseline_vol": "float64",
+        "build_id": "int64",
+        "cum_reload_proxy": "float64",
+        "event_type_code": "int64",
+        "level": "float64",
+        "occurrence_ordinal": "int64",
+        "ratio": "float64",
+        "same_band_continuity_code": "int64",
+        "ts": "datetime64[ns]",
+        "uti": "int64",
+        "wall_local_no": "int64",
+        "wall_slot_side_code": "int64"
+      },
+      "index_dtype": "datetime64[ns]",
+      "index_unique": true,
+      "index_monotonic": true,
+      "first_index": "2021-02-23 11:19:48",
+      "last_index": "2021-12-31 14:57:24"
+    },
+    "build__stream__occ0003": {
+      "rows": 413,
+      "columns": {
+        "availability_code": "int64",
+        "baseline_vol": "float64",
+        "build_id": "int64",
+        "cum_reload_proxy": "float64",
+        "event_type_code": "int64",
+        "level": "float64",
+        "occurrence_ordinal": "int64",
+        "ratio": "float64",
+        "same_band_continuity_code": "int64",
+        "ts": "datetime64[ns]",
+        "uti": "int64",
+        "wall_local_no": "int64",
+        "wall_slot_side_code": "int64"
+      },
+      "index_dtype": "datetime64[ns]",
+      "index_unique": true,
+      "index_monotonic": true,
+      "first_index": "2021-02-24 14:59:31.500000",
+      "last_index": "2021-12-30 13:59:26.500000"
+    },
+    "build__stream__occ0004": {
+      "rows": 70,
+      "columns": {
+        "availability_code": "int64",
+        "baseline_vol": "float64",
+        "build_id": "int64",
+        "cum_reload_proxy": "float64",
+        "event_type_code": "int64",
+        "level": "float64",
+        "occurrence_ordinal": "int64",
+        "ratio": "float64",
+        "same_band_continuity_code": "int64",
+        "ts": "datetime64[ns]",
+        "uti": "int64",
+        "wall_local_no": "int64",
+        "wall_slot_side_code": "int64"
+      },
+      "index_dtype": "datetime64[ns]",
+      "index_unique": true,
+      "index_monotonic": true,
+      "first_index": "2021-02-25 14:09:18.500000",
+      "last_index": "2021-12-30 13:58:43.500000"
+    },
+    "build__stream__occ0005": {
+      "rows": 4,
+      "columns": {
+        "availability_code": "int64",
+        "baseline_vol": "float64",
+        "build_id": "int64",
+        "cum_reload_proxy": "float64",
+        "event_type_code": "int64",
+        "level": "float64",
+        "occurrence_ordinal": "int64",
+        "ratio": "float64",
+        "same_band_continuity_code": "int64",
+        "ts": "datetime64[ns]",
+        "uti": "int64",
+        "wall_local_no": "int64",
+        "wall_slot_side_code": "int64"
+      },
+      "index_dtype": "datetime64[ns]",
+      "index_unique": true,
+      "index_monotonic": true,
+      "first_index": "2021-04-13 13:32:45.500000",
+      "last_index": "2021-10-21 13:55:07.500000"
+    }
+  },
+  "comparisons": {
+    "build__stream": {
+      "rows": 197837,
+      "column_names_equal": true,
+      "original_column_order_equal": false,
+      "loaded_column_order": [
+        "availability_code",
+        "baseline_vol",
+        "build_id",
+        "cum_reload_proxy",
+        "event_type_code",
+        "level",
+        "occurrence_ordinal",
+        "ratio",
+        "same_band_continuity_code",
+        "ts",
+        "uti",
+        "wall_local_no",
+        "wall_slot_side_code"
+      ],
+      "producer_column_order": [
+        "uti",
+        "ts",
+        "build_id",
+        "wall_local_no",
+        "baseline_vol",
+        "cum_reload_proxy",
+        "same_band_continuity_code",
+        "wall_slot_side_code",
+        "event_type_code",
+        "level",
+        "ratio",
+        "availability_code",
+        "occurrence_ordinal"
+      ],
+      "dtype_differences": {
+        "availability_code": {
+          "producer": "int8",
+          "loaded": "int64"
+        }
+      },
+      "all_values_exact_after_name_alignment": true
+    },
+    "build__stream__occ0001": {
+      "rows": 42949,
+      "column_names_equal": true,
+      "original_column_order_equal": false,
+      "loaded_column_order": [
+        "availability_code",
+        "baseline_vol",
+        "build_id",
+        "cum_reload_proxy",
+        "event_type_code",
+        "level",
+        "occurrence_ordinal",
+        "ratio",
+        "same_band_continuity_code",
+        "ts",
+        "uti",
+        "wall_local_no",
+        "wall_slot_side_code"
+      ],
+      "producer_column_order": [
+        "uti",
+        "ts",
+        "build_id",
+        "wall_local_no",
+        "baseline_vol",
+        "cum_reload_proxy",
+        "same_band_continuity_code",
+        "wall_slot_side_code",
+        "event_type_code",
+        "level",
+        "ratio",
+        "availability_code",
+        "occurrence_ordinal"
+      ],
+      "dtype_differences": {
+        "availability_code": {
+          "producer": "int8",
+          "loaded": "int64"
+        }
+      },
+      "all_values_exact_after_name_alignment": true
+    },
+    "build__stream__occ0002": {
+      "rows": 6564,
+      "column_names_equal": true,
+      "original_column_order_equal": false,
+      "loaded_column_order": [
+        "availability_code",
+        "baseline_vol",
+        "build_id",
+        "cum_reload_proxy",
+        "event_type_code",
+        "level",
+        "occurrence_ordinal",
+        "ratio",
+        "same_band_continuity_code",
+        "ts",
+        "uti",
+        "wall_local_no",
+        "wall_slot_side_code"
+      ],
+      "producer_column_order": [
+        "uti",
+        "ts",
+        "build_id",
+        "wall_local_no",
+        "baseline_vol",
+        "cum_reload_proxy",
+        "same_band_continuity_code",
+        "wall_slot_side_code",
+        "event_type_code",
+        "level",
+        "ratio",
+        "availability_code",
+        "occurrence_ordinal"
+      ],
+      "dtype_differences": {
+        "availability_code": {
+          "producer": "int8",
+          "loaded": "int64"
+        }
+      },
+      "all_values_exact_after_name_alignment": true
+    },
+    "build__stream__occ0003": {
+      "rows": 413,
+      "column_names_equal": true,
+      "original_column_order_equal": false,
+      "loaded_column_order": [
+        "availability_code",
+        "baseline_vol",
+        "build_id",
+        "cum_reload_proxy",
+        "event_type_code",
+        "level",
+        "occurrence_ordinal",
+        "ratio",
+        "same_band_continuity_code",
+        "ts",
+        "uti",
+        "wall_local_no",
+        "wall_slot_side_code"
+      ],
+      "producer_column_order": [
+        "uti",
+        "ts",
+        "build_id",
+        "wall_local_no",
+        "baseline_vol",
+        "cum_reload_proxy",
+        "same_band_continuity_code",
+        "wall_slot_side_code",
+        "event_type_code",
+        "level",
+        "ratio",
+        "availability_code",
+        "occurrence_ordinal"
+      ],
+      "dtype_differences": {
+        "availability_code": {
+          "producer": "int8",
+          "loaded": "int64"
+        }
+      },
+      "all_values_exact_after_name_alignment": true
+    },
+    "build__stream__occ0004": {
+      "rows": 70,
+      "column_names_equal": true,
+      "original_column_order_equal": false,
+      "loaded_column_order": [
+        "availability_code",
+        "baseline_vol",
+        "build_id",
+        "cum_reload_proxy",
+        "event_type_code",
+        "level",
+        "occurrence_ordinal",
+        "ratio",
+        "same_band_continuity_code",
+        "ts",
+        "uti",
+        "wall_local_no",
+        "wall_slot_side_code"
+      ],
+      "producer_column_order": [
+        "uti",
+        "ts",
+        "build_id",
+        "wall_local_no",
+        "baseline_vol",
+        "cum_reload_proxy",
+        "same_band_continuity_code",
+        "wall_slot_side_code",
+        "event_type_code",
+        "level",
+        "ratio",
+        "availability_code",
+        "occurrence_ordinal"
+      ],
+      "dtype_differences": {
+        "availability_code": {
+          "producer": "int8",
+          "loaded": "int64"
+        }
+      },
+      "all_values_exact_after_name_alignment": true
+    },
+    "build__stream__occ0005": {
+      "rows": 4,
+      "column_names_equal": true,
+      "original_column_order_equal": false,
+      "loaded_column_order": [
+        "availability_code",
+        "baseline_vol",
+        "build_id",
+        "cum_reload_proxy",
+        "event_type_code",
+        "level",
+        "occurrence_ordinal",
+        "ratio",
+        "same_band_continuity_code",
+        "ts",
+        "uti",
+        "wall_local_no",
+        "wall_slot_side_code"
+      ],
+      "producer_column_order": [
+        "uti",
+        "ts",
+        "build_id",
+        "wall_local_no",
+        "baseline_vol",
+        "cum_reload_proxy",
+        "same_band_continuity_code",
+        "wall_slot_side_code",
+        "event_type_code",
+        "level",
+        "ratio",
+        "availability_code",
+        "occurrence_ordinal"
+      ],
+      "dtype_differences": {
+        "availability_code": {
+          "producer": "int8",
+          "loaded": "int64"
+        }
+      },
+      "all_values_exact_after_name_alignment": true
+    }
+  },
+  "all_values_exact": true,
+  "artifacts_unchanged": true,
+  "files": [
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream.__ts__.dba",
+      "size": 1582760,
+      "mtime_ns": 1795508650154265784,
+      "sha256": "915f3286907cf8faa3ce0dae7445520f827358003bf7129df7d5b8ecdd7a4b0f"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream.availability_code.dba",
+      "size": 1582760,
+      "mtime_ns": 1795508649318345123,
+      "sha256": "af75fdecf4e99e37ef1644ce869b7a5d2c7289abf1919391bf7ad823845f4e5a"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream.baseline_vol.dba",
+      "size": 1582760,
+      "mtime_ns": 1795508645170296982,
+      "sha256": "af51f8dee289c6f37ecb25883c5504f48d10eda2bf6c778eda9933218f92d1c8"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream.build_id.dba",
+      "size": 1582760,
+      "mtime_ns": 1795508644404863745,
+      "sha256": "adbcef4a82438567432831d7c68eaec5e5c222fec95b67cd7a6719b4fa01be03"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream.cum_reload_proxy.dba",
+      "size": 1582760,
+      "mtime_ns": 1795508645538901337,
+      "sha256": "4e74f743259b0d1ad92572ac56aa12099d142dee64a7ec6ca5ef25ab75b08294"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream.event_type_code.dba",
+      "size": 1582760,
+      "mtime_ns": 1795508647091352393,
+      "sha256": "2a6e0f95619a2b7c4d3c1209bcb27f9ca514809bc22751b89623e9e01b0674ad"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream.level.dba",
+      "size": 1582760,
+      "mtime_ns": 1795508647457869954,
+      "sha256": "3e92045d5cee1d940a3bc57af9687ad24c38f0e2f617adf76d5eb778bee39d40"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream.occurrence_ordinal.dba",
+      "size": 1582760,
+      "mtime_ns": 1795508650003798380,
+      "sha256": "4f6e3d618e230fb6d7bbc73acfa9307d3a7178aa21fd406eca793836528fba27"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream.ratio.dba",
+      "size": 1582760,
+      "mtime_ns": 1795508647834630575,
+      "sha256": "4a045cd5f82801b631a5835af46e6ce43fff37e38ea30bf1e5d67fa4384dcaa2"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream.same_band_continuity_code.dba",
+      "size": 1582760,
+      "mtime_ns": 1795508646198600165,
+      "sha256": "af75fdecf4e99e37ef1644ce869b7a5d2c7289abf1919391bf7ad823845f4e5a"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream.ts.dba",
+      "size": 1582760,
+      "mtime_ns": 1795508643970106159,
+      "sha256": "915f3286907cf8faa3ce0dae7445520f827358003bf7129df7d5b8ecdd7a4b0f"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream.uti.dba",
+      "size": 1582760,
+      "mtime_ns": 1795508643545454965,
+      "sha256": "8635b7df66f6bab833b50a67675fd6fa97c35b87b8677062e5b4769217aa8e53"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream.wall_local_no.dba",
+      "size": 1582760,
+      "mtime_ns": 1795508644797493004,
+      "sha256": "9a039f4ccc495f319691c9c48f1259fcae0a7a5ec36f7c7e74b6534a079d59da"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream.wall_slot_side_code.dba",
+      "size": 1582760,
+      "mtime_ns": 1795508646689827135,
+      "sha256": "a0d6acd5a31a57745ab89e35e043e4f0b6025eec3e9f91f3a807f92841106c4a"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0001.__ts__.dba",
+      "size": 343656,
+      "mtime_ns": 1795508652184371947,
+      "sha256": "266764aae632221d5ab192f4bea8a9c47b1b63080f96392deed7f2739344715d"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0001.availability_code.dba",
+      "size": 343656,
+      "mtime_ns": 1795508651978842335,
+      "sha256": "1976a8545c156ea4850590c35632600fc096b3b1525b0dcf82dd7475238ea35a"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0001.baseline_vol.dba",
+      "size": 343656,
+      "mtime_ns": 1795508650823859695,
+      "sha256": "54c28549246a570696947e22847909b520fe6e1ff212b8aeb5a79d85c3277d7d"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0001.build_id.dba",
+      "size": 343656,
+      "mtime_ns": 1795508650574499919,
+      "sha256": "8e999fc755055e4d668509f6af2498e18ffd06490e9eb4891a1cea68de7a173f"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0001.cum_reload_proxy.dba",
+      "size": 343656,
+      "mtime_ns": 1795508651100717698,
+      "sha256": "6e7896d0d6460b040a6677321a4d4ca66ba9b66e00a94dc6fb65df8ade6fd5bd"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0001.event_type_code.dba",
+      "size": 343656,
+      "mtime_ns": 1795508651571578014,
+      "sha256": "0a0bc03777019610624e6a1b02ceb122c15de581ff238240e32e3be25189d77b"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0001.level.dba",
+      "size": 343656,
+      "mtime_ns": 1795508651724542872,
+      "sha256": "cd5d01a28ba65df67543fe404d37bdead83aade4ca45e7529fd6a235fd84261d"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0001.occurrence_ordinal.dba",
+      "size": 343656,
+      "mtime_ns": 1795508652158844404,
+      "sha256": "1976a8545c156ea4850590c35632600fc096b3b1525b0dcf82dd7475238ea35a"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0001.ratio.dba",
+      "size": 343656,
+      "mtime_ns": 1795508651850452645,
+      "sha256": "2e5bfb9cd4c2a56e728df66d2c33fc33398ab394a3b8c84db1575df388b110c6"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0001.same_band_continuity_code.dba",
+      "size": 343656,
+      "mtime_ns": 1795508651233873707,
+      "sha256": "1976a8545c156ea4850590c35632600fc096b3b1525b0dcf82dd7475238ea35a"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0001.ts.dba",
+      "size": 343656,
+      "mtime_ns": 1795508650451409519,
+      "sha256": "266764aae632221d5ab192f4bea8a9c47b1b63080f96392deed7f2739344715d"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0001.uti.dba",
+      "size": 343656,
+      "mtime_ns": 1795508650328121644,
+      "sha256": "7396b2c675d84587ef6faa02fb5c0f0b8787cd1b91882979864a9a7fba68f342"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0001.wall_local_no.dba",
+      "size": 343656,
+      "mtime_ns": 1795508650693138402,
+      "sha256": "316549f40c418eb2430a5d511b81b3aa4f2f39621016e6fa37a107e5248ea388"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0001.wall_slot_side_code.dba",
+      "size": 343656,
+      "mtime_ns": 1795508651434381717,
+      "sha256": "e118bedebcf613bd3958db56fb40dff6ca0ca5d7e95c4450ca237e8e25111413"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0002.__ts__.dba",
+      "size": 52576,
+      "mtime_ns": 1795508653204811128,
+      "sha256": "69474cfa1665104f14de96dce868544eb459f78e8d7152209cfca6db3d541fba"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0002.availability_code.dba",
+      "size": 52576,
+      "mtime_ns": 1795508653039138633,
+      "sha256": "f75bfef96de019154f8205b4248c97b602d07669031955680dc3e27443696f3f"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0002.baseline_vol.dba",
+      "size": 52576,
+      "mtime_ns": 1795508652539772479,
+      "sha256": "8576cba95a71e58fbb618ab1c892dd72f46dfc016e7b24d728e425532246b1df"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0002.build_id.dba",
+      "size": 52576,
+      "mtime_ns": 1795508652400391987,
+      "sha256": "186cf7881cd9086763020a5a54ad376fd955ef47f755c9f2c9ad9159836a54a5"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0002.cum_reload_proxy.dba",
+      "size": 52576,
+      "mtime_ns": 1795508652612721373,
+      "sha256": "20011ffd10774e2fb5e31ec1133709ff6c2a88f05d64bae1cb77d2d6db676e4a"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0002.event_type_code.dba",
+      "size": 52576,
+      "mtime_ns": 1795508652816943966,
+      "sha256": "eb5087a0db836f143a107b34ad7ee14eb91a5ec76216c085c9ac4d6b8dac2fdd"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0002.level.dba",
+      "size": 52576,
+      "mtime_ns": 1795508652875200823,
+      "sha256": "4695f18e0834963a622dccf37704333bbacb9a5ce9127c1b7ecaae6de07397fd"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0002.occurrence_ordinal.dba",
+      "size": 52576,
+      "mtime_ns": 1795508653124321154,
+      "sha256": "26d22bbd933b1b74979072e2b95d7951cb9292d96a2ad54cac833280f6436080"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0002.ratio.dba",
+      "size": 52576,
+      "mtime_ns": 1795508652965446207,
+      "sha256": "287a4cbbd8f132c986db48de40f56f5cd5b5353d430823b51c0adefc70c86ca6"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0002.same_band_continuity_code.dba",
+      "size": 52576,
+      "mtime_ns": 1795508652688243399,
+      "sha256": "f75bfef96de019154f8205b4248c97b602d07669031955680dc3e27443696f3f"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0002.ts.dba",
+      "size": 52576,
+      "mtime_ns": 1795508652335091248,
+      "sha256": "69474cfa1665104f14de96dce868544eb459f78e8d7152209cfca6db3d541fba"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0002.uti.dba",
+      "size": 52576,
+      "mtime_ns": 1795508652259771909,
+      "sha256": "db81e7f1261297bf4f0326872bcff880aa00edcf5f615b72b25de16f5a4b9e1a"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0002.wall_local_no.dba",
+      "size": 52576,
+      "mtime_ns": 1795508652469465280,
+      "sha256": "ec937e02a6b8f477e9feed3d4de64784f4e04d3396c967c62b2ecd7c37cc6785"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0002.wall_slot_side_code.dba",
+      "size": 52576,
+      "mtime_ns": 1795508652757436411,
+      "sha256": "2997d523c503a5cf9712fe7d0740914bfa219e3261ff71a4b2431726b1f41876"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0003.__ts__.dba",
+      "size": 3368,
+      "mtime_ns": 1795508653795542219,
+      "sha256": "9ce0906100a69fcf01782867f77f383e2c31977e78b085a40ef27c7b6db976ff"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0003.availability_code.dba",
+      "size": 3368,
+      "mtime_ns": 1795508653724764375,
+      "sha256": "1e43f1ffd4795d5baaa20b5284ccc88869a78b323174ec27eb8c85212b619b34"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0003.baseline_vol.dba",
+      "size": 3368,
+      "mtime_ns": 1795508653474891824,
+      "sha256": "74133ccd4d2ff96cfecaa9e4409144d13a7263bfc93e5627dba9642cf0fe5abc"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0003.build_id.dba",
+      "size": 3368,
+      "mtime_ns": 1795508653380179399,
+      "sha256": "df706a5f7f30c8eecbd339c4b789df9934b25d4e67469954e172d2eae4d69e5f"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0003.cum_reload_proxy.dba",
+      "size": 3368,
+      "mtime_ns": 1795508653507150467,
+      "sha256": "960eecde2d3a02b33dfd0323ae6385ec74e0235dfecad63cf567570267874308"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0003.event_type_code.dba",
+      "size": 3368,
+      "mtime_ns": 1795508653615001818,
+      "sha256": "493d395e3d4f71a424a8213958b0ad9f9e70a5952370626efb9402410e5256ff"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0003.level.dba",
+      "size": 3368,
+      "mtime_ns": 1795508653655616452,
+      "sha256": "01520b6b06eb5d6a0b127b316303fc4d91a4da4e24a74cf877ec897f912b14e9"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0003.occurrence_ordinal.dba",
+      "size": 3368,
+      "mtime_ns": 1795508653758354625,
+      "sha256": "eb9e84171940d3eebf0faa97169a8d64f530300663eeb62ac4dcc1dab771aede"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0003.ratio.dba",
+      "size": 3368,
+      "mtime_ns": 1795508653682759285,
+      "sha256": "669e27470ed966afa638cc0a488a071086829170790b6c6d8db9146051dacd85"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0003.same_band_continuity_code.dba",
+      "size": 3368,
+      "mtime_ns": 1795508653541049713,
+      "sha256": "1e43f1ffd4795d5baaa20b5284ccc88869a78b323174ec27eb8c85212b619b34"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0003.ts.dba",
+      "size": 3368,
+      "mtime_ns": 1795508653336471100,
+      "sha256": "9ce0906100a69fcf01782867f77f383e2c31977e78b085a40ef27c7b6db976ff"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0003.uti.dba",
+      "size": 3368,
+      "mtime_ns": 1795508653289371539,
+      "sha256": "d8df3aa3f3d97a36d5593b4f545ed8de13b355d35b7154d288cf13d239773221"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0003.wall_local_no.dba",
+      "size": 3368,
+      "mtime_ns": 1795508653431266211,
+      "sha256": "addf06bd5730f97ec56f8af7399781b6979fc539ea78dd90e11b206ba30beaa3"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0003.wall_slot_side_code.dba",
+      "size": 3368,
+      "mtime_ns": 1795508653580682288,
+      "sha256": "1055063248d604cea0beb7a907be641c34ec27ae285168b506f4c83e5d3e9aad"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0004.__ts__.dba",
+      "size": 624,
+      "mtime_ns": 1795508655115875561,
+      "sha256": "250ae82538257e0f9f3a6b575cf951ed447b384d8d6f626da1c9851a9837734f"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0004.availability_code.dba",
+      "size": 624,
+      "mtime_ns": 1795508654283999281,
+      "sha256": "d064ba2477467e2ff0436f4d5be7da15a1ff85717b7f5ceea43e482bd1370aea"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0004.baseline_vol.dba",
+      "size": 624,
+      "mtime_ns": 1795508654026117672,
+      "sha256": "b28587511482ae67439953992123da44b83c16e24a02b7488ae3b5a3fdaba43d"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0004.build_id.dba",
+      "size": 624,
+      "mtime_ns": 1795508653941249505,
+      "sha256": "c45a1fca8d71491905178034060d68dc557d4410c046f49fa5071bc0e5232326"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0004.cum_reload_proxy.dba",
+      "size": 624,
+      "mtime_ns": 1795508654059662190,
+      "sha256": "7d432b2614c944ff25e50ea2878039395b0a67129dddb5872b7f0b4a268219d1"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0004.event_type_code.dba",
+      "size": 624,
+      "mtime_ns": 1795508654173982531,
+      "sha256": "789eec6dcedb62adf78ee5e8c03883773405817e49d91c42835e7023325a086a"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0004.level.dba",
+      "size": 624,
+      "mtime_ns": 1795508654216717655,
+      "sha256": "ed70493e5fe10b08df930670f3475c01b55727348fd13d2410f0704ea52faa3e"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0004.occurrence_ordinal.dba",
+      "size": 624,
+      "mtime_ns": 1795508654317436669,
+      "sha256": "ed2e80a22c6a51afc56963469c9903f7619659eb733c92422cd14a2fd892b382"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0004.ratio.dba",
+      "size": 624,
+      "mtime_ns": 1795508654250448858,
+      "sha256": "19b4d04107679aec6b7d3d113a044bb86d1569c2659c0c0dcd8bd576fc36aec8"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0004.same_band_continuity_code.dba",
+      "size": 624,
+      "mtime_ns": 1795508654097710590,
+      "sha256": "d064ba2477467e2ff0436f4d5be7da15a1ff85717b7f5ceea43e482bd1370aea"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0004.ts.dba",
+      "size": 624,
+      "mtime_ns": 1795508653898799124,
+      "sha256": "250ae82538257e0f9f3a6b575cf951ed447b384d8d6f626da1c9851a9837734f"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0004.uti.dba",
+      "size": 624,
+      "mtime_ns": 1795508653854788100,
+      "sha256": "dcd8d50577b257f1271b34ec1462c3c8bc1593f64b1092e11bdde698d89f809b"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0004.wall_local_no.dba",
+      "size": 624,
+      "mtime_ns": 1795508653990833661,
+      "sha256": "25941b0785b9f51f7104f2a28b5c2c9c16b5ee8fa8c8a909ce3d052e59da2912"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0004.wall_slot_side_code.dba",
+      "size": 624,
+      "mtime_ns": 1795508654141063806,
+      "sha256": "8e8b341a8283f945be39401599844dda73d84bdc0226a360c047eb04bcd93338"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0005.__ts__.dba",
+      "size": 96,
+      "mtime_ns": 1795508656281546248,
+      "sha256": "ce2ce339ba3b6ffd2000bb450fb225496332280897352b40dd69d4c8b6caf093"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0005.availability_code.dba",
+      "size": 96,
+      "mtime_ns": 1795508656191517140,
+      "sha256": "2440c2dd68e24ce7a8e71191b7332187cca1fba0d5c711e0ab7d18aac7f4c602"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0005.baseline_vol.dba",
+      "size": 96,
+      "mtime_ns": 1795508655315101221,
+      "sha256": "52fb1cab45849f94c542a157b952d3078899761d21dc7015095220037ba69256"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0005.build_id.dba",
+      "size": 96,
+      "mtime_ns": 1795508655253021142,
+      "sha256": "de2a2941ce32dd7b400e45ab75b0aae36d76d4effc0a0006e2cd3682e1cfa9d5"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0005.cum_reload_proxy.dba",
+      "size": 96,
+      "mtime_ns": 1795508655348971842,
+      "sha256": "02afc10e64f29678bc84fc06b210f33402bb4481e2fe1cd3b89011e029c4c0d8"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0005.event_type_code.dba",
+      "size": 96,
+      "mtime_ns": 1795508655465957258,
+      "sha256": "872d7856bf543822ddd4cfb78782d20908d72ee01d84798703288f7e11dae3f7"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0005.level.dba",
+      "size": 96,
+      "mtime_ns": 1795508655509103071,
+      "sha256": "fee0e03e40856af48afb31b00ab38f828aed9a0b274268f9a7da925dcb9733ff"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0005.occurrence_ordinal.dba",
+      "size": 96,
+      "mtime_ns": 1795508656238650718,
+      "sha256": "6eea83287e7a0e15c9480eaee7396581bb97357b355c0c64f9077f4e209ab2a6"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0005.ratio.dba",
+      "size": 96,
+      "mtime_ns": 1795508655921825109,
+      "sha256": "fee0e03e40856af48afb31b00ab38f828aed9a0b274268f9a7da925dcb9733ff"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0005.same_band_continuity_code.dba",
+      "size": 96,
+      "mtime_ns": 1795508655386282538,
+      "sha256": "2440c2dd68e24ce7a8e71191b7332187cca1fba0d5c711e0ab7d18aac7f4c602"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0005.ts.dba",
+      "size": 96,
+      "mtime_ns": 1795508655219850376,
+      "sha256": "ce2ce339ba3b6ffd2000bb450fb225496332280897352b40dd69d4c8b6caf093"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0005.uti.dba",
+      "size": 96,
+      "mtime_ns": 1795508655178272588,
+      "sha256": "0bee1f6b31bb8a343664a9ca5d25cfd0c7603388b6390f8d40ac84702722450b"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0005.wall_local_no.dba",
+      "size": 96,
+      "mtime_ns": 1795508655284306709,
+      "sha256": "d4d45c57e5f41b96de2c8c5147ed7849a486dde0a27f1fe532a7e0c807c3bd6e"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/build__stream__occ0005.wall_slot_side_code.dba",
+      "size": 96,
+      "mtime_ns": 1795508655428323774,
+      "sha256": "99238f7880b1e91d41a2dd6a972c21b4c983416835b6728949465352120a0835"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/fields.json",
+      "size": 1942,
+      "mtime_ns": 1795508656318245025,
+      "sha256": "b871639cd0fac36bcd27ff22169c8b5916d99307bdcffd34aaeda1df0f53935d"
+    },
+    {
+      "path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-build-stat-20261124-01/calls/C0004/formal_store/BaseData/futures/TA_updto20240229_DBA/fao/prod/2021-01-01 21:00:00~2021-12-31 20:00:00/BuildAssembler/1/7/c/0/f/c/0/6de109d4bc808f404108d9de9a315082e/rb.night_end_at_2300/p1_receipts/build_activity.json",
+      "size": 2070,
+      "mtime_ns": 1795508656377295796,
+      "sha256": "c39dceb245e4c1a50a93056dad96f63d316a89c08b5a4f110a4535fed552e2d5"
+    }
+  ],
+  "explanation": "Initial DataFrame.equals compared column order. DBA fields metadata restores columns by name in sorted order; int8 availability is canonically widened to int64 by current P1 exporter. All column values and event timestamps match full native replay exactly."
+}
