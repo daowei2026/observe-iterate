@@ -1,0 +1,15 @@
+# Attack 已真实注册与派达首轮 U
+
+本Run采用9877826236e0995e7255e6cbfedc2d1b89dea6da，TIS源码为179016111ed0394f92025313e46bd13534932a74；CODEX_NATIVE_DIRECT、AUTONOMOUS、workers=[]。
+
+Binding/Resource/Adoption位于723d65a2ca4fbcf691e9a82eb153a21faae18390，Registry已在a7e38ecf57c28b74b2fa135f62baf60de08dd184提交并回读。copy真实目录/代码/模块加载、Owner释放与旧角色/进程对账见WORKSPACE_VERIFICATION.md准确原件。Build保持自己391adcd版本、原工作区、原线程和业务责任，未被本Run迁移或覆盖。
+
+新的manager已在copy工作区创建并回读sol/max，真实C0001完成后，原manager签发D001并提交Return。D001：`daowei2026/observe-iterate@e20128bff682c58bc2a66a6c5ed176f78634c476:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/delegations/D001/DELEGATION.json`。原Return：`daowei2026/observe-iterate@9b32c8e9dbc4bd2b1ff87a9b78bd44fb8a9e5211:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0001/PRO_RETURN.json`。controller已核真实sender/turn/输入token及Git原件，manager Return和D机械检查通过；不以此当专业完成。
+
+不同的新executor:E1已在同一copy工作区创建并回读sol/max；C0002/D001经一次真实turn/start派达，已核实际turn模型/effort和工程读取。实际两个角色均为approval_policy=on-request、sandbox_policy=danger-full-access；未改变物理审批设置。原始线程/回执/输入hash留gitignored artifacts，不在此公开物理标识。
+
+当前为U执行中；没有已完成的FeatureUnderstandingPackage、正式X、G、偏差诊断D或Release。Wall/F4 tactical/structural的exact receipts、完整参数和正式结果仍待executor依原Skill/Workflow核定或按授权物化，不声称上游合理性通过。下一合法动作是消费本E1真实U Return，再回原manager按L0安排X/G。
+
+业务入口：`daowei2026/observe-iterate@0d5ae479b92e55b19e5a88bf1ebc8c4393b6d8f8:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/business_control/BUSINESS_PROGRESS.md`，技术入口同提交TASK_PROGRESS.md。两份文件由manager按其实际C快照维护；本文件补记其后真实物理派达事实。
+
+本主控Chat自身已按锁定归档器从真实App Server生成并普通commit/push至授权归档分支，7ab12d347a9807215506ac63e53192fd4824fd73；GitHub读回blob一致。未导出manager/executor聊天。归档、注册与派达均不等于Feature已运行或完成。
