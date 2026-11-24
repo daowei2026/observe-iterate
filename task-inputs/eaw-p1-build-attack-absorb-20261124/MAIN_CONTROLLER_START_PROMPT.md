@@ -89,9 +89,10 @@ operation=eaw-attack-run-profile execution_context=/dwdhome/fy/EAW_P1_PARALLEL/a
 operation=eaw-attack-repair-and-publish execution_context=/dwdhome/fy/EAW_P1_PARALLEL/attack allowed_writes=/dwdhome/fy/EAW_P1_PARALLEL/attack,daowei2026/tis:codex/oi-eaw-p1-attack-fix-20261124-01,daowei2026/observe-iterate:codex/oi-eaw-p1-attack-stat-20261124-01
 operation=eaw-absorb-run-profile execution_context=/dwdhome/fy/EAW_P1_PARALLEL/absorb allowed_writes=/dwdhome/fy/EAW_P1_PARALLEL/absorb
 operation=eaw-absorb-repair-and-publish execution_context=/dwdhome/fy/EAW_P1_PARALLEL/absorb allowed_writes=/dwdhome/fy/EAW_P1_PARALLEL/absorb,daowei2026/tis:codex/oi-eaw-p1-absorb-fix-20261124-01,daowei2026/observe-iterate:codex/oi-eaw-p1-absorb-stat-20261124-01
+operation=eaw-p1-controller-chat-archive execution_context=github:daowei2026/observe-iterate:feat/statistics-driven-feature-closure-v0.3-20261122 allowed_writes=longrun/controller/chats/
 ```
 
-三线独立管理成果、Finding 和 Release。重要回交时，manager 维护 `business_control/BUSINESS_PROGRESS.md`（业务进展）和 `TASK_PROGRESS.md`（运行状态），并向 GitHub 保存准确引用。主控仅负责 V2 物理调度、真实回执、版本／资源核验和跨 Run 路由；不得改写业务判断，也不自行创造 Owner 审批点。主控自身 Chat 的自动归档按已采用的 cgpterm Skill 及真实初始 Git 权限执行，不导出 manager/executor Chat；归档失败仅形成欠账。
+三线独立管理成果、Finding 和 Release。重要回交时，manager 维护 `business_control/BUSINESS_PROGRESS.md`（业务进展）和 `TASK_PROGRESS.md`（运行状态），并向 GitHub 保存准确引用。主控仅负责 V2 物理调度、真实回执、版本／资源核验和跨 Run 路由；不得改写业务判断，也不自行创造 Owner 审批点。主控自身 Chat 的自动归档按本 GO `eaw-p1-controller-chat-archive` 授权及 cgpterm Skill 执行，仅在实际 Git 工作树、分支、真实线程和推送权限核验通过时，提交到现行控制分支 `longrun/controller/chats/`；它**不是**三个 executor 的直接操作 grant，不得混入它们的 `executor_direct_grants`。不导出 manager/executor Chat；归档失败仅形成欠账，不影响独立专业工作。
 
 ## 五、实际启动、继续及首轮回报
 
