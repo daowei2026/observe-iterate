@@ -113,7 +113,7 @@ requested_start_time: 2021-01-01
 requested_end_time: 2023-12-31
 calendar: night_end_at_2300
 workspace: /dwdhome/fy/BASE_E6_2_copy
-scope_change_policy: OWNER_CONFIRMATION_REQUIRED
+scope_change_policy: FIXED_AT_START  # 不在运行中征询 Owner；越界则局部阻断
 ```
 
 实际首末交易时点由锁定日历决定，但不能据此把正式请求改写成较短年份。局部短窗口只允许用于诊断，不能替代三年正式结果。
