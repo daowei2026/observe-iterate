@@ -42,8 +42,8 @@
 | C0002 旧 Return | `REPORTED_COMPLETE` 与非空 remaining／continuation 冲突；controller 未将其消费为合法后继，保留原件 | `daowei2026/observe-iterate@5289eab7a18b434d8316f7bc87e7685d81df3370:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0002/PRO_RETURN.json`；原报告末段的旧机器状态说明不作为当前有效路由依据 |
 | C0003／原 D001 | 同 E1 定向补正 Return，非重做 U；有效状态为 IN_PROGRESS，原生 U 仍 PARTIAL | `daowei2026/observe-iterate@72f33ce96e78653cfd94ae9fba0579fe50548848:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0003/PRO_RETURN.json` |
 | C0003 物理核验 | controller 已核真实 turn `01a20c88-531a-7821-b4e4-5cc7200b35d8`、token／调用关系及实际 sol/max | 依据 C0004 FULL_ASSIGNMENT；本 manager 不合成独立物理 receipt |
-| C0004／D002 | 原 manager 已消费上述有效回交，签发 X 后继，issuer_call_id=C0004 | [D002 机读件](../delegations/D002/DELEGATION.json)／[正文](../delegations/D002/DELEGATION.md)，本提交发布；待 controller 实际派达 |
-| C0004 Return | 本 D／报告／双进度先发布回读，后另行签发一致的 IN_PROGRESS manager Return | [本 C 报告](../calls/C0004/MANAGER_REPORT.md)；实际 Return 发行事实在读回后同步，避免循环引用 |
+| C0004／D002 | 原 manager 已消费上述有效回交，签发 X 后继，issuer_call_id=C0004 | `daowei2026/observe-iterate@c9742986ed6fbb7bc2d55bd87cab54de42c7539f:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/delegations/D002/DELEGATION.json`；正文同 commit；已发布并逐字回读，待 controller 实际派达 |
+| C0004 Return | D002／报告／双进度先发布回读，后以其为 parent 发布 IN_PROGRESS manager Return 并逐字回读 | `daowei2026/observe-iterate@74a46582f44b16b1f7f0890c30314684d211ef3f:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0004/PRO_RETURN.json`；报告：`daowei2026/observe-iterate@c9742986ed6fbb7bc2d55bd87cab54de42c7539f:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0004/MANAGER_REPORT.md` |
 
 本 C 消费的是 executor Return，未借 `accepted_worker_refs` 登记；`workers=[]`，无 W 和 Worker Return。没有把有效机器回交等同于 U COMPLETE、X 已运行或父任务完成。
 
@@ -82,5 +82,13 @@ Build 独立采用其 391 版控制并在自身 D002/X；不得混用其专业�
 BUSINESS_PROGRESS 已同步到本次实际 U 成果及其业务含义；历史 C0001 进度快照在 `daowei2026/observe-iterate@0d5ae479b92e55b19e5a88bf1ebc8c4393b6d8f8:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/business_control/TASK_PROGRESS.md` 保留。
 
 具名下一动作：`codex:OI-EAW-P1-ATTACK-STAT-20261124-01:controller` 核回收 C0004 Return／D002 和 Owner 范围后，向本 Run 原 E1 派达 X；其专业结果回原 manager，再按有效结果和原 L0 续接。D002 发布不代表已发送、X 已执行或结果已验收。
+
+本 C 实际发行引用：
+
+- D002：`daowei2026/observe-iterate@c9742986ed6fbb7bc2d55bd87cab54de42c7539f:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/delegations/D002/DELEGATION.json`
+- 报告：`daowei2026/observe-iterate@c9742986ed6fbb7bc2d55bd87cab54de42c7539f:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0004/MANAGER_REPORT.md`
+- Return：`daowei2026/observe-iterate@74a46582f44b16b1f7f0890c30314684d211ef3f:longrun/runs/OI-EAW-P1-ATTACK-STAT-20261124-01/calls/C0004/PRO_RETURN.json`，`longrun-professional-return/v2 / role=manager / IN_PROGRESS`。
+- Return 的 remaining_scope／continuation 均指向已存在的准确原件；`return_to=null`、`issued_order_refs=[]`、`accepted_worker_refs=[]`、`owner_request_ref=null`。
+- Return 引用 `c9742986ed6fbb7bc2d55bd87cab54de42c7539f` 的先前进度快照；本次仅补记之后实际发生的发行事实，不改原生产物，不制造 Git 引用循环，也不宣称 controller 已核回收或 E1 已物理接收。
 
 快照日期：2026-11-24；记录分支仅 `codex/oi-eaw-p1-attack-stat-20261124-01`；已核 Personal 连接。

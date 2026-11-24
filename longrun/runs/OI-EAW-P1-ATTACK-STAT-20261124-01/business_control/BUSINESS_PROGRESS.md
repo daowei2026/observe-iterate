@@ -47,4 +47,4 @@ Build 按独立 Run 的 391 版控制与其 X 工作继续；本 Run 不消费�
 - [运行状态与准确恢复引用](TASK_PROGRESS.md)
 - [本次 manager 报告](../calls/C0004/MANAGER_REPORT.md)
 
-快照：2026-11-24，C0004 已消费有效 U 回交并安排 X；父 Run 仍进行中。
+快照：2026-11-24，C0004 已消费有效 U 回交并安排 X，协调委派、报告与回交均已发布并准确回读；具名发行引用见 TASK_PROGRESS。U 保持 PARTIAL，X 待原 E1 实际执行；父 Run 仍进行中。
