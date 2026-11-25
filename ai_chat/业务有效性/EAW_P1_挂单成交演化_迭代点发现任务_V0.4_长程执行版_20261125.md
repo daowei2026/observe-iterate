@@ -39,6 +39,7 @@ EAW（Exhaustion.Absorption_Wall，力竭·吸收墙）的原始意图，是尝�
 | [cyf - 墙定义讨论](https://github.com/daowei2026/feature-refinement-implementation-agent-evolution/blob/main/candidate_gold_cases/eaw/narrative_origins/AIChat/数据驱动涉及的讨论/cyf%20-%20墙定义讨论.md) | Chat 6、8、10–15：对象连续性、可见性、Wall/攻守解耦；Chat 14（L4409–4669）大挂单入口风险；Chat 16–17（L5529–6381）强度变化的取舍及 Build/Absorb 分工；Chat 19（L7226–7629）同价净新增及 L1 边界 |
 | [cyf - Burst Grind 特征设计讨论](https://github.com/daowei2026/feature-refinement-implementation-agent-evolution/blob/main/candidate_gold_cases/eaw/narrative_origins/AIChat/数据驱动涉及的讨论/cyf%20-%20Burst%20Grind特征设计讨论.md) | Chat 3–5（L1052–2222）：小成交遗漏、墙与成交是否能对上、放弃 Dense 的理由；Chat 7–10：候选攻段与 Segmentor 的业务分工 |
 | [01.04.01 EAW 叙事一个小范围完整的部分-preL0细节](https://github.com/daowei2026/feature-refinement-implementation-agent-evolution/blob/8d58ddd3392a3e67ef5ba44adf2c4cd0c9077f9f/candidate_gold_cases/eaw/preL0_source_materials_20261102/原文快照/mquant/ssot/eaw/01.04.01%20EAW叙事一个小范围完整的部分-preL0细节.md) | §1 Wall、Build、Absorb 的业务语义、关键点、触发逻辑及函数；§2 主动成交 Flow/AttackSegment；§3 Exhaustion |
+| [01_base_to_wall_features_F0_F12](https://github.com/daowei2026/feature-refinement-implementation-agent-evolution/blob/8d58ddd3392a3e67ef5ba44adf2c4cd0c9077f9f/candidate_gold_cases/eaw/preL0_source_materials_20261102/原文快照/mquant/ssot/eaw/01_base_to_wall_features_F0_F12.md) | 重点查 F0–F2 的背景量/厚薄/大挂单、F6–F9 的墙砖/支撑/薄触、F10–F12 的攻墙/补墙/贴墙大成交；这些是历史逻辑小特征，不等同当前物化字段 |
 | [03_assemblers_Wall_Build_Absorb_Attack_Exhaustion](https://github.com/daowei2026/feature-refinement-implementation-agent-evolution/blob/8d58ddd3392a3e67ef5ba44adf2c4cd0c9077f9f/candidate_gold_cases/eaw/preL0_source_materials_20261102/原文快照/mquant/ssot/eaw/03_assemblers_Wall_Build_Absorb_Attack_Exhaustion.md) | A0 Wall、A1 Build、A2 Absorb、A3 Attack 的组装逻辑、稀疏事件及审阅材料 |
 | [P2 范围](https://github.com/daowei2026/feature-refinement-implementation-agent-evolution/blob/8d58ddd3392a3e67ef5ba44adf2c4cd0c9077f9f/candidate_gold_cases/eaw/taskpacks_and_checkpoints/p2/EAW_P2_SEGMENTOR_OPENED_FATE_BATTLE_ENGINEERING_AND_VCC_V2_1_1_20260819/00_CURRENT_SCOPE_NON_GOALS_AND_PRESERVED_DECISIONS.md) | 了解 P1 材料后续如何使用；不是本轮 P2 的实现或运行要求 |
 
@@ -78,6 +79,10 @@ EAW（Exhaustion.Absorption_Wall，力竭·吸收墙）的原始意图，是尝�
 | 盘口上下文、F3/F4、挂单跟踪 | [tick_quote_context_core.py](https://github.com/daowei2026/tis/blob/179016111ed0394f92025313e46bd13534932a74/hf/prel0/tick_quote_context_core.py) · [pressure_big_deal_core.py](https://github.com/daowei2026/tis/blob/179016111ed0394f92025313e46bd13534932a74/hf/prel0/pressure_big_deal_core.py) · [track_wall_candidates_core.py](https://github.com/daowei2026/tis/blob/179016111ed0394f92025313e46bd13534932a74/hf/prel0/track_wall_candidates_core.py) |
 | 产品接口、物化及 receipt | [eaw_interface_contract.py](https://github.com/daowei2026/tis/blob/179016111ed0394f92025313e46bd13534932a74/hf/prel0/eaw_interface_contract.py) · [p1_dba_export.py](https://github.com/daowei2026/tis/blob/179016111ed0394f92025313e46bd13534932a74/hf/prel0/p1_dba_export.py) · [p1_product_receipt.py](https://github.com/daowei2026/tis/blob/179016111ed0394f92025313e46bd13534932a74/hf/prel0/p1_product_receipt.py) |
 
+**补充代码索引（按实际调用关系按需追查）**：TIS 同一 [hf/prel0 目录](https://github.com/daowei2026/tis/tree/179016111ed0394f92025313e46bd13534932a74/hf/prel0) 中 `tick_quote_context.py`、`pressure_big_deal.py`、`track_wall_candidates.py` 对应上表各 core 的输入、参数和包装；实际历史量/基线取法要读对应实例，不仅看 core。
+
+FRP [P1 代码目录](https://github.com/daowei2026/frp/tree/cac6c912dd65a14acbd591ca57e0afd8ddb4ef13/src/Frp/Instance/ISL/Eaw/P1) 下的 `WallLifecycle.hs`、`BuildActivity.hs`、`AttackSegmentBook.hs`、`AbsorbInteraction.hs` 对应四个正式产品；`FaoIngress.hs`、`Products.hs`、`Publication.hs`、`PublicStorage.hs` 及 [Interface/PreL0.hs](https://github.com/daowei2026/frp/blob/cac6c912dd65a14acbd591ca57e0afd8ddb4ef13/src/Frp/Instance/ISL/Eaw/Interface/PreL0.hs) 用于核对正式身份、typed occurrence、可消费字段、history/current view 与发布时间。只在需要判断正式输出缺口时深入相应部分；不把内部状态、诊断 trace 或展示派生值当作正式可消费信息，也不假定本批数据运行了这个参考版本。
+
 具体字段/分支、计算量定义或语义发生争议时，读取实际版本的 wrapper、core、默认参数和有关上游计算，必要时检查 FRP 公共投影。不能只读历史 AI 回答或仅看图例。把原设计意图、现行合同、实际实现、展示投影、真实数据事实分别记录；若发现不一致，作为来源差异保留并判断其影响，不能默默选其中一个为真。对于窗口中无法确认版本或拿不到正式属性的部分，继续原始市场研究、交付有价值的候选；但将“已经证实的当前正式设计缺口”保持待证。不继承共同输入所述全年运行范围及修改授权。本任务严格按第 3 节范围取数。
 
 ## 3. 数据及执行范围
@@ -100,11 +105,11 @@ tick_observation_data_path: ""
 
 两轮不是两次取不同的行情数据。**第一轮用本批窗口广泛找线索；第二轮仍使用这同一批窗口，针对已发现的候选进行更深的检索、独立案例复现、定向统计、反例分析和设计定位。** 本次不要求新增其他交易日、品种、全年/全量连续数据，不自行扩大行情范围或启动生产特征重跑。可以在本批范围内使用其已提供的原始数据、正式或展示结果、独立研究计算，读取相应业务文档、代码和可取得的同源版本证据。若需其他行情或补跑生产特征，列为后续建议，不作为本次完成的前置。
 
-在首次深入观察前，按实际清单识别独立过程组（至少检查同品种、交易日、时间区间重叠、相邻窗口中的同一墙/同一攻防过程），给第一轮发现样本与第二轮复现样本留下可区分的索引。尽量在同批数据中预留一部分未用于形成具体候选结论的窗口/过程组，优先跨不同交易日、品种（若数据有这些差异）；不强制固定比例，不能为拆分而损失所有可比样本。全范围程序扫描仍须完成，但用于发现和用于后续检验的具体过程须区分；如果已查看并据以选择了全部样本，则只能称同批追加案例/探索性复现，不得声称严格留出验证。重复、重叠或同一连续市场过程不能冒充独立案例。
+在首次深入观察前，按实际清单识别独立过程组（至少检查同品种、交易日、时间区间重叠、相邻窗口中的同一墙/同一攻防过程），给第一轮发现样本与第二轮复现样本留下可区分的索引。尽量在同批数据中预留一部分未用于形成具体候选结论的窗口/过程组，优先跨不同交易日、品种（若数据有这些差异）；不强制固定比例，不能为拆分而损失所有可比样本。全范围程序扫描仍须完成，通用研究量可对全批计算，但如采用留出复现，首次深入观察、候选假设及筛选/匹配口径的形成不应使用预留过程的细节及后续结果；在第二轮检验前记录该条候选的检索口径和待验证问题。若已查看并据以选择了全部样本，或在复现过程中反复据其结果改变假设，则只能称同批追加案例/探索性复现，不得声称严格留出验证。重复、重叠或同一连续市场过程不能冒充独立案例。
 
 第二轮按每条候选的价值和证据需要，在本批范围内进行更充分的匹配、相似过程批量检索、条件分布及反例核对。若条件允许，可使用全部适格窗口的批量统计与未用过的案例形成较强的有限范围证据。只在窗口实际包含的可观测时间内评价后续走势，不能把窗口边界之后没有数据当作无事件。现有窗口为选择性观察样本，即便全部用完也不能给出全市场发生比例、跨时段稳定性或预测有效性的保证。
 
-保留窗口与产物对应的数据来源、代码、参数、共同 Wall artifact 身份、已取得的字段范围和历史完整性。若某个特征正式历史或关键字段缺失，不能凭展示数据、参考代码或另一个运行版本证明当前表达必然缺失；先给出数据支持的业务发现和有依据的候选迭代点，标记待补证，继续其他线索。需要以后全量连续数据、额外正式产物或不同品种才能完成的认识，作为后续工作建议列出，不阻断本次长程任务。
+保留窗口与产物对应的数据来源、代码、参数、共同 Wall artifact 身份、已取得的字段范围和历史完整性。若某个特征正式历史或关键字段缺失，不能凭展示数据、参考代码或另一个运行版本证明当前表达必然缺失；尤其窗口内没有新 Wall 事件不表示当时没有 Wall，缺失窗口起点状态时须区分无 Wall 与无法判明，不能将截断窗口局部重算冒充原正式历史；先给出数据支持的业务发现和有依据的候选迭代点，标记待补证，继续其他线索。需要以后全量连续数据、额外正式产物或不同品种才能完成的认识，作为后续工作建议列出，不阻断本次长程任务。
 
 ## 4. 共同分析方法：一次扫描、多种研究入口
 
@@ -139,7 +144,7 @@ tick_observation_data_path: ""
 | 完成要求 | 需要留下的证据 |
 | --- | --- |
 | 扫描约定材料中的全部有效窗口及可分析品种、侧别 | 实际清单、总数、已扫描/排除/未处理数，排除或未处理原因；可用范围内不得任意缩小为少量窗口 |
-| 三种检索入口均实际尝试 | 每个入口的有效候选数、与其他入口的重合情况、是否存在 Wall 的分布；不足时核查检索条件与数据边界 |
+| 三种检索入口均实际尝试 | 每个入口的有效候选数、与其他入口的重合情况、Wall 有/无/未知分布；不足时核查检索条件与数据边界 |
 | 形成统一候选研究表 | 可复现的品种、侧别、价位、时间及连续研究量，候选标记与筛选依据 |
 | 处理重复与截断 | 重叠窗口、同一过程反复入选、行情缺失、交易小节边界等的处理及影响 |
 | 保留有区别的候选及反例 | 典型、极端、普通对照及与原先设想不一致的位置，不能只保留支持预想结论的样本 |
