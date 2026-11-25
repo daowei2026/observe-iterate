@@ -17,7 +17,7 @@ Owner 可以用自然语言启动消息、任务书或已有任务输入提供�
 - 采用运行协议、指南和 cgpterm 主控版本：
 - 物理 profile：CODEX_NATIVE_DIRECT 或本 Run 明确的 Web/Codex 角色绑定：
 - manager / executor / 可选 worker：逻辑角色、平台、项目（Web 时）、模型/强度、创建或恢复规则：
-- owner_declared_linux_workspace：Owner 已准备的独立绝对路径；新 Run 不沿用其他 Run 路径。
+- owner_declared_linux_workspace：Owner 已准备且没有其他 Run 占用的绝对路径；已真实释放的常用工作区可复用。
 - 工作区/主机、结果位置、Git 目标仓库和分支、共享写面：
 - 多 Run 关系、依赖、优先级、适用的失效规则（如有）：
 

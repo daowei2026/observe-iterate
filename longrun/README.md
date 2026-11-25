@@ -17,7 +17,7 @@
 - [Codex 原生直执行](CODEX_NATIVE_EXECUTION_PROFILE.md)：manager/executor 均为 Codex；workers=[]。
 - 兼容物理配置：按本 Run 实际绑定的 Web/Codex 角色及可选 Worker 路由；旧 Run 按原采用来源继续。
 - 新 Run 新建独立会话；同 Run 恢复核对并复用原绑定，不借其他 Run 的 thread。
-- 不同 Run 采用独立工作区，远端共享写面仍须核实单写者。
+- 同时占用资源的不同 Run 采用互不重叠的工作区；有据释放后可复用常用工作区，远端共享写面仍须核实单写者。
 
 ## 2. 专业任务接入
 
