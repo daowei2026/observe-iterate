@@ -1,0 +1,86 @@
+{
+  "run_id": "OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01",
+  "call_id": "C0007",
+  "delegation_id": "D004",
+  "step": "S04 B1",
+  "recipient": "codex:OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01:executor:E1",
+  "return_to": "codex:OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01:manager",
+  "physical_session": "01a21355-9066-7852-91f5-677dfd259dc9",
+  "workers": [],
+  "formal_sources": [
+    {
+      "file": "sources/INVOCATION.json",
+      "ref": "daowei2026/observe-iterate@8c03dd8e60e1a341b467debfa2c2d104a394e414:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0007/INVOCATION.json",
+      "git_blob_sha": "11dcc7d77d0be0e8aacb1f5a8634c0b61bfe4d3c"
+    },
+    {
+      "file": "sources/DELEGATION.json",
+      "ref": "daowei2026/observe-iterate@376ebe7df38383e3fec6dfbe8d94bf01575d5787:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/delegations/D004/DELEGATION.json",
+      "git_blob_sha": "1fdf6da4ad4c97db34b121d4daa5a986b4e038fa"
+    },
+    {
+      "file": "sources/DELEGATION.md",
+      "ref": "daowei2026/observe-iterate@376ebe7df38383e3fec6dfbe8d94bf01575d5787:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/delegations/D004/DELEGATION.md",
+      "git_blob_sha": "9b8c5fb7a344e6aa6b86463ea3714b0406a745ad"
+    },
+    {
+      "file": "sources/MANAGER_C0006_PRO_RETURN.json",
+      "ref": "daowei2026/observe-iterate@05f3dd8a217bfd94acfbfad226ebb54d1de6947b:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0006/PRO_RETURN.json",
+      "git_blob_sha": "cbb8fd7eeb1dca2c82b14d9d6b68b61c22deab1e"
+    }
+  ],
+  "task_ref": "daowei2026/observe-iterate@b1bf8025dd49091e71c8814caf36c2e02aced198:ai_chat/业务有效性/EAW_P1_挂单成交演化_迭代点发现任务_V0.4_长程执行版_20261125.md",
+  "task_local_exact": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-business-discovery-20261125-01/calls/C0002/sources/TASK_V0.4.exact.md",
+  "task_sha256": "fa80b5eaf52a03edde167b5e13dc463c5b92c6dbea11a03f420e1c3e11a80089",
+  "adopted_longrun_commit": "b1bf8025dd49091e71c8814caf36c2e02aced198",
+  "controller_commit": "da8dabfdaf9a46d563aab261bef77cb5d72d7782",
+  "owner_go_ref": "daowei2026/observe-iterate@5b645cff6ec45b89c4f8979f9627f5400a0714e3:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/OWNER_START.md",
+  "binding_commit": "bc30c55fff35f81de5102ed43c0e168eb7a8de11",
+  "granularity_commit": "acf2640fa1ff6371f4472447a1325ff6c31c46b8",
+  "upstream_report": "daowei2026/observe-iterate@b9f722c3802b3380081946eb957a2c856f6466f9:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0005/EXECUTOR_REPORT.md",
+  "upstream_return": "daowei2026/observe-iterate@a69270f1bc75528fbce365b60803c6b7acf43ec1:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0005/PRO_RETURN.json",
+  "upstream_root": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-business-discovery-20261125-01/calls/C0005",
+  "prior_S02_root": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-business-discovery-20261125-01/calls/C0002",
+  "data_path": "/home/dw/.codex/visualizations/2026/11/16/01a1e335-cd15-7f72-a7d9-f53c52feb09e/caegraph-delivery-30/caegraph-review/data",
+  "manifest_sha256": "ef2c9e7b6c0666d047cb40b9577aad5a81ea8c4066d38c83a7ab8d4e3e47c7b6",
+  "actual_case_inputs": "report/INPUTS_USED.csv",
+  "selection_inputs": "C0005 scan/CANDIDATES.csv.gz plus C0002 WINDOW_PROCESS_INDEX/FEATURE_AVAILABILITY and discovery quote assets",
+  "selection_manifest": "selection/ANALYSIS_GROUPS_FROZEN.json",
+  "case_use": "report/SAMPLE_USE_CUMULATIVE.json",
+  "reference_only": {
+    "TIS": "daowei2026/tis@179016111ed0394f92025313e46bd13534932a74",
+    "TIS_local": "C0002/sources/tis-reference-179016/build_assembler_core.py and eaw_interface_contract.py, Absorb and related reference code",
+    "FRP": "daowei2026/frp@cac6c912dd65a14acbd591ca57e0afd8ddb4ef13",
+    "FRP_files": [
+      {
+        "file": "sources/frp-reference/BuildActivity.hs",
+        "repo_path": "src/Frp/Instance/ISL/Eaw/P1/BuildActivity.hs",
+        "git_blob_sha": "da97806890d76d66870fbc4d09c764a9f5618293"
+      },
+      {
+        "file": "sources/frp-reference/AbsorbInteraction.hs",
+        "repo_path": "src/Frp/Instance/ISL/Eaw/P1/AbsorbInteraction.hs",
+        "git_blob_sha": "454ad7eedee3b5476cfe74a6336f3122575c0b7a"
+      }
+    ],
+    "contracts": "C0002/sources/BUILD_DSU.md, ABSORB_DSU.md, WALL_DSU.md; exact sources retained in C0002 SOURCE_INDEX.json",
+    "limitation": "none of these reference commits is confirmed as this batch production/FRP version; formal identity/history/params/publication unverified"
+  },
+  "research_code": "research/README.md; all scripts frozen in ARTIFACT_INDEX.json",
+  "plot_environment": "local research/plot-env; isolated, omitted from frozen index; PLOT_REQUIREMENTS.txt retained",
+  "publication": {
+    "repo": "daowei2026/observe-iterate",
+    "branch": "feat/statistics-driven-feature-closure-v0.3-20261122",
+    "link_id": "link_6ab37f74c7288191a52eb23d2ca1e2c8",
+    "method": "Contents API with path-absence/current-blob conditions, current head checks and exact readback",
+    "local_facts": "PUBLICATION_READBACK.json"
+  },
+  "D004_remaining_scope": null,
+  "parent_unexecuted": [
+    "S05",
+    "S06",
+    "S07",
+    "S08",
+    "S09"
+  ]
+}
