@@ -21,3 +21,9 @@ R1 保持问题：相近 r/c/n/时长能否掩盖有业务意义的阶段薄弱�
 19项设计/协议/代码/本C原件exact来源核对通过，29例全可用联合历史已核；参考Build/Absorb内部库存与事件压缩、FRP payload/current及实际批次缺receipt/全历史边界已写入 R1_DESIGN_POSITIONING.md。18个确定性PG两项试查实际保存：4条中途比两端更薄、14条无此额外事实、6条基准已能锁定最低量；集中/阶段差异仍不能由这两项恢复。R1保持研究线索，不确认P1缺口/实现Bug。
 
 实际报告、casebook、源索引与R1_RESULT已写；原始证据和文档/试查核对PASS。下一步冻结本地可核查索引，使用同Personal连接与Contents API，先发布报告支持包再签认/发布C0013 D007零W Return；父Run不记完成。Git head预查仍为本C INVOCATION的fcf41b4fe8910d5c4bee438c3877c7e7a3998b01；尚无本C远端写入。
+
+## D007 专业工作及报告/Return发布完成
+
+222文件/19,235,277字节冻结证据核对PASS；14项正式报告/支持材料在获准分支发布并exact回读，报告bundle commit=314804355a0a1e4458492ee536e67a2553f04452。C0013/D007零W Return已真实发布并exact回读，commit=8d9cba816038491601b5f80b13b2718860fcbc8c；REPORTED_COMPLETE、remaining_scope_ref=null、continuation_ref=null、owner_request_ref=null，无后继委派或Worker。锁定V2 schema/pro_state自检PASS；不冒充controller独立物理回收验证。
+
+本条进度更新是本C最后一次远端写入；exact回读后结束Git写入。交原controller回收真实回复与Return，再由原Manager消费D007。物理回收/Manager消费在实际发生前保持待发生。R1保持研究线索、正式链待证；父Run未完成，本C未执行R2/R3独立闭环或S09。所有专业范围、实际数据、Task/longrun/Owner versions不变。
