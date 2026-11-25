@@ -1,0 +1,105 @@
+{
+  "kind": "professional_artifact_self_check",
+  "checked_at": "2026-11-25T15:51:47.227889+00:00",
+  "passed": true,
+  "checks": [
+    {
+      "name": "all_given_source_file_hashes_unchanged",
+      "passed": true,
+      "evidence": {
+        "files": 2924,
+        "changed": []
+      }
+    },
+    {
+      "name": "manifest_file_rows_and_fields_match",
+      "passed": true,
+      "evidence": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-business-discovery-20261125-01/calls/C0002/audit/MANIFEST_CHECKS.json"
+    },
+    {
+      "name": "all_148_by_3_quote_units_checked",
+      "passed": true,
+      "evidence": 444
+    },
+    {
+      "name": "dedup_conserves_row_count",
+      "passed": true,
+      "evidence": {
+        "raw": 346764,
+        "duplicates": 17844,
+        "unique": 328920
+      }
+    },
+    {
+      "name": "overlapping_market_rows_agree",
+      "passed": true,
+      "evidence": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-business-discovery-20261125-01/calls/C0002/audit/OVERLAP_CONFLICTS.csv"
+    },
+    {
+      "name": "continuity_index_covers_every_valid_side_row",
+      "passed": true,
+      "evidence": {
+        "indexed_rows": {
+          "bid": 343590,
+          "ask": 346763
+        },
+        "valid_rows": {
+          "bid": 343590,
+          "ask": 346763
+        }
+      }
+    },
+    {
+      "name": "no_double_count_inside_continuity_index",
+      "passed": true,
+      "evidence": []
+    },
+    {
+      "name": "discovery_and_reserve_do_not_share_linked_groups",
+      "passed": true,
+      "evidence": {
+        "process_groups": 127,
+        "date_blocks": 23,
+        "windows": 148
+      }
+    },
+    {
+      "name": "every_recorded_dependence_link_keeps_same_allocation",
+      "passed": true,
+      "evidence": 324
+    },
+    {
+      "name": "allocation_tied_to_current_input_hash",
+      "passed": true,
+      "evidence": "2026-11-25T15:43:30.690804+00:00"
+    },
+    {
+      "name": "no_case_hypotheses_or_holdout_cases_used_in_s02",
+      "passed": true,
+      "evidence": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-business-discovery-20261125-01/calls/C0002/audit/CASE_USE_LOG.csv"
+    },
+    {
+      "name": "formal_version_not_silently_substituted",
+      "passed": true,
+      "evidence": {
+        "producer": "unverified",
+        "parameters": "unverified",
+        "wall": "unverified"
+      }
+    },
+    {
+      "name": "all_fetched_originals_match_remote_git_blobs",
+      "passed": true,
+      "evidence": {
+        "count": 12,
+        "mismatch": []
+      }
+    },
+    {
+      "name": "task_exact_sha_matches_delegation",
+      "passed": true,
+      "evidence": "fa80b5eaf52a03edde167b5e13dc463c5b92c6dbea11a03f420e1c3e11a80089"
+    }
+  ],
+  "limits": "只验证专业材料与范围一致性；不代替主控独立物理回执、单写者核验或业务消费。"
+}
