@@ -1,0 +1,36 @@
+{
+  "run_id": "OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01",
+  "work_id": "OI-EAW-P1-BUSINESS-DISCOVERY",
+  "business_case_id": "OI-EAW-P1-BUSINESS-DISCOVERY",
+  "owner_workspace_path": "/dwdhome/fy/BASE_E6_2",
+  "verified_realpath": "/dwdhome/fy/BASE_E6_2",
+  "workspace_exists": true,
+  "workspace_rwx_verified": true,
+  "execution_profile": "CODEX_NATIVE_DIRECT",
+  "roles": {
+    "manager": {
+      "platform": "codex",
+      "model": "gpt-6.1-sol",
+      "effort": "max"
+    },
+    "executor:E1": {
+      "platform": "codex",
+      "model": "gpt-6.1-sol",
+      "effort": "max"
+    }
+  },
+  "workers": [],
+  "adopted_protocol_ref": "daowei2026/observe-iterate@b1bf8025dd49091e71c8814caf36c2e02aced198:longrun/contracts/LONGRUN_PROTOCOL_V2.md",
+  "task_ref": "daowei2026/observe-iterate@b1bf8025dd49091e71c8814caf36c2e02aced198:ai_chat/业务有效性/EAW_P1_挂单成交演化_迭代点发现任务_V0.4_长程执行版_20261125.md",
+  "task_scope": "全文及第8.0节S01～S09；不采用原专业control/、skills/，不另制分析计划",
+  "controller_skill_ref": "daowei2026/cgpterm@da8dabfdaf9a46d563aab261bef77cb5d72d7782:.agents/skills/observe-iterate-longrun-v2-controller/SKILL.md",
+  "prior_occupation_release_ref": "daowei2026/observe-iterate@e51329074a87f13e61d9eaa780c0957470a19be0:longrun/runs/OI-EAW-P1-BUILD-STAT-20261124-01/CURRENT_RESOURCE_STATUS.json",
+  "occupation_verification": "旧Build角色notLoaded、队列空、Goal为空；旧控制器Owner暂停/释放已登记。工作区仅保留mquant-trier-base-e6-2.service，研究写入本Run独立研究目录；不更改平台服务。",
+  "external_writes": [
+    "daowei2026/observe-iterate:feat/statistics-driven-feature-closure-v0.3-20261122:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/",
+    "daowei2026/observe-iterate:feat/statistics-driven-feature-closure-v0.3-20261122:longrun/controller/RUN_REGISTRY.json",
+    "daowei2026/observe-iterate:feat/statistics-driven-feature-closure-v0.3-20261122:longrun/controller/chats/"
+  ],
+  "single_writer": "本Run各实际C串行取得Git写面；Manager与Executor不同时持有写任务。远端使用expected SHA条件写入，不覆盖其他Run。",
+  "professional_sources": "仅Owner指定任务书及其按需引用原件；运行与角色指南均锁定b1bf8025dd49091e71c8814caf36c2e02aced198"
+}

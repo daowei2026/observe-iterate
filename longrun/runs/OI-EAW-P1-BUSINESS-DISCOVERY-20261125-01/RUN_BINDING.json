@@ -1,0 +1,34 @@
+{
+  "schema": "longrun-binding/v2",
+  "run_id": "OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01",
+  "work_id": "OI-EAW-P1-BUSINESS-DISCOVERY",
+  "owner_go_ref": "daowei2026/observe-iterate@5b645cff6ec45b89c4f8979f9627f5400a0714e3:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/OWNER_START.md",
+  "coordinator": "codex:controller:01a2132e-d551-7c81-876f-3c2178b8e8c1",
+  "manager": "codex:OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01:manager",
+  "executors": [
+    "codex:OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01:executor:E1"
+  ],
+  "workers": [],
+  "post_start_owner_policy": "AUTONOMOUS",
+  "grants": [
+    {
+      "operation": "eaw-business-discovery-research-and-publish",
+      "execution_context": "/dwdhome/fy/BASE_E6_2",
+      "allowed_writes": [
+        "/dwdhome/fy/BASE_E6_2",
+        "daowei2026/observe-iterate:feat/statistics-driven-feature-closure-v0.3-20261122:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/"
+      ],
+      "authority_quote": "operation=eaw-business-discovery-research-and-publish execution_context=/dwdhome/fy/BASE_E6_2 allowed_writes=/dwdhome/fy/BASE_E6_2,daowei2026/observe-iterate:feat/statistics-driven-feature-closure-v0.3-20261122:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/"
+    },
+    {
+      "operation": "eaw-business-discovery-controller-records",
+      "execution_context": "github:daowei2026/observe-iterate:feat/statistics-driven-feature-closure-v0.3-20261122",
+      "allowed_writes": [
+        "longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/",
+        "longrun/controller/RUN_REGISTRY.json",
+        "longrun/controller/chats/"
+      ],
+      "authority_quote": "operation=eaw-business-discovery-controller-records execution_context=github:daowei2026/observe-iterate:feat/statistics-driven-feature-closure-v0.3-20261122 allowed_writes=longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/,longrun/controller/RUN_REGISTRY.json,longrun/controller/chats/"
+    }
+  ]
+}
