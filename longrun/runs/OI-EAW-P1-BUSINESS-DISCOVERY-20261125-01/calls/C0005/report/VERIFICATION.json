@@ -1,0 +1,209 @@
+{
+  "status": "PASS",
+  "started_at": "2026-11-25T17:13:03.900440+00:00",
+  "finished_at": "2026-11-25T17:13:42.823538+00:00",
+  "checks": [
+    {
+      "check": "S02_frozen_artifacts_unchanged",
+      "files": 24
+    },
+    {
+      "check": "actual_input_hashes",
+      "files": 2674
+    },
+    {
+      "check": "full_scope_valid_side_rows_partitioned_once",
+      "rows": 654665,
+      "unique_quotes": 328920
+    },
+    {
+      "check": "all_retained_intervals_raw_recomputed",
+      "rows": 261497,
+      "whole_pieces": 190829
+    },
+    {
+      "check": "three_entry_overlap_and_histogram_reconciliation",
+      "populations": 48
+    },
+    {
+      "check": "causal_prior_background_and_display_context",
+      "candidate_rows": 261497,
+      "display_rows": 17863
+    },
+    {
+      "check": "frozen_discovery_reserve_and_use_log",
+      "cells": 444,
+      "deep_observation": 0
+    }
+  ],
+  "counts": {
+    "input_files_rechecked": 2674,
+    "coverage_bid_valid_raw": 343590,
+    "coverage_bid_invalid_raw": 3174,
+    "coverage_ask_valid_raw": 346763,
+    "coverage_ask_invalid_raw": 1,
+    "piece_rows_rb_bid": 109640,
+    "piece_total": 190829,
+    "piece_rows_rb_ask": 109640,
+    "piece_rows_hc_bid": 109640,
+    "piece_rows_hc_ask": 109640,
+    "piece_rows_i_bid": 106466,
+    "piece_rows_i_ask": 109639
+  },
+  "unique_pieces": 190829,
+  "retained_intervals": 261497,
+  "piece_union_masks": {
+    "0": 105793,
+    "1": 10246,
+    "2": 49175,
+    "3": 4903,
+    "4": 11,
+    "6": 18761,
+    "7": 1940
+  },
+  "duration_counts": {
+    "2_to_10s": 33204,
+    "under_2s": 70615,
+    "10_to_30s": 2780,
+    "single_point": 83988,
+    "30s_plus": 242
+  },
+  "boundary_counts": [
+    {
+      "left": "data_boundary",
+      "right": "price_change",
+      "pieces": 6
+    },
+    {
+      "left": "data_gap",
+      "right": "data_gap",
+      "pieces": 1
+    },
+    {
+      "left": "data_gap",
+      "right": "price_change",
+      "pieces": 554
+    },
+    {
+      "left": "data_gap",
+      "right": "session_boundary",
+      "pieces": 7
+    },
+    {
+      "left": "invalid_quote",
+      "right": "price_change",
+      "pieces": 9
+    },
+    {
+      "left": "price_change",
+      "right": "data_boundary",
+      "pieces": 6
+    },
+    {
+      "left": "price_change",
+      "right": "data_gap",
+      "pieces": 561
+    },
+    {
+      "left": "price_change",
+      "right": "invalid_quote",
+      "pieces": 9
+    },
+    {
+      "left": "price_change",
+      "right": "price_change",
+      "pieces": 188911
+    },
+    {
+      "left": "price_change",
+      "right": "session_boundary",
+      "pieces": 379
+    },
+    {
+      "left": "session_boundary",
+      "right": "price_change",
+      "pieces": 386
+    }
+  ],
+  "retained_entry_wall": [
+    {
+      "entry_bit": 1,
+      "wall_state": "display_object_seen",
+      "rows": 1851
+    },
+    {
+      "entry_bit": 1,
+      "wall_state": "unknown",
+      "rows": 30873
+    },
+    {
+      "entry_bit": 2,
+      "wall_state": "display_object_seen",
+      "rows": 1869
+    },
+    {
+      "entry_bit": 2,
+      "wall_state": "unknown",
+      "rows": 135185
+    },
+    {
+      "entry_bit": 4,
+      "wall_state": "display_object_seen",
+      "rows": 731
+    },
+    {
+      "entry_bit": 4,
+      "wall_state": "unknown",
+      "rows": 40620
+    }
+  ],
+  "retained_controls": {
+    "low_quote_proxy_load": 56763,
+    "stable_visible": 19389,
+    "ordinary_under_retrieval_rules": 27618,
+    "deplete_then_recover_shape": 14295,
+    "cumulative_small_quote_losses": 2886,
+    "single_observation_no_balance_interval": 90107
+  },
+  "retained_sample_roles": {
+    "discovery": 165932,
+    "reserved_replication": 95565
+  },
+  "retained_background_status": {
+    "insufficient_prior_rows": 15198,
+    "local_prior_only_not_VolQuant": 246299
+  },
+  "post_horizon_availability_only": [
+    {
+      "horizon_s": 10,
+      "available": false,
+      "rows": 8184
+    },
+    {
+      "horizon_s": 10,
+      "available": true,
+      "rows": 253313
+    },
+    {
+      "horizon_s": 30,
+      "available": false,
+      "rows": 22581
+    },
+    {
+      "horizon_s": 30,
+      "available": true,
+      "rows": 238916
+    },
+    {
+      "horizon_s": 60,
+      "available": false,
+      "rows": 43771
+    },
+    {
+      "horizon_s": 60,
+      "available": true,
+      "rows": 217726
+    }
+  ],
+  "interpretation": "self-verification of actual S03 artifacts, not manager acceptance or physical return validation; no reserved deep observation or S04 business contrast"
+}
