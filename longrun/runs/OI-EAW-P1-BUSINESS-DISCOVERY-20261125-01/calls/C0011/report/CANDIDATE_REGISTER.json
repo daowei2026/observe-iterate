@@ -1,0 +1,186 @@
+{
+  "run_id": "OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01",
+  "call_id": "C0011",
+  "delegation_id": "D006",
+  "scope": "S06 first-round synthesis only",
+  "register_kind": "后继取证项；不等同已确认迭代点",
+  "evidence_items": [
+    {
+      "id": "R1",
+      "title": "当前接触与阶段性可见流动性，端点/累计量不足以恢复的部分",
+      "maturity": "研究线索",
+      "formal_design_gap": "未确认",
+      "confirmed_required_change": false,
+      "priority": 1,
+      "disposition": "建议先独立S07＋S08取证",
+      "origins": [
+        "S04 H1",
+        "S05 B2-L2的存量/活动子问题",
+        "S06 B3最低点、下降集中度、阶段位置"
+      ],
+      "business_question": "当前或再次面对该价位时有多少可见量？一次末量恢复能否掩盖中途薄弱，阶段位置是否改变当时的攻防叙事？",
+      "evidence": [
+        "B1-01 A末139、同价最优复见2",
+        "B1-03 A最低4后末20",
+        "B3-01 r/c/n近似，最低比1.0/.278",
+        "B3-02单次下降占比.421/.954且总成交均83",
+        "B3-03前半C63/2而累计65/67",
+        "B3-06 C均27而中间量55/2"
+      ],
+      "existing_information": [
+        "完整L1轨迹本就可恢复可见量；研究端点摘要的不足不等于P1缺口",
+        "可用P1的历史/事件/属性可能已有部分过程信息；普通区间无展示不证明正式无输出",
+        "同价最优复见属于可见性关系，不能恢复订单身份"
+      ],
+      "counterexamples": [
+        "B1-06保留量更多一侧30秒反而更推进",
+        "B3-01及B3-06短暂极薄后恢复侧30秒推进更少",
+        "B3-02、B3-03随10/30/60秒方向可反转",
+        "S05 B2-06反对高c维持必更阻挡"
+      ],
+      "first_loss": "已证端点/累计研究摘要无法唯一恢复路径；现行正式链第一处信息损失未定位",
+      "why_first": "直接影响当时面对的流动性叙事，核心量可从本批L1取得，较少依赖不可得真实方向成交；有多个形状轴/反例和未深入PG可继续检索",
+      "frozen_followup_question": "在未参与本线索形成的过程组中，接近r/c/n/时长的区间是否仍出现有业务意义的中途薄弱/阶段差异？相容正式联合信息是否已足以恢复？",
+      "retrieval_basis": {
+        "source": "S03统一候选表与有效连续侧段；仅同一Owner批次",
+        "starts_with": "保留原B3标准/放宽标签，优先按r/c/n近似及最低量、最大单次下降占比、前后阶段比检索；接触分支沿同价最优复见关系",
+        "reserve": "优先尚未深入的PG；预留53窗口/50组是否存在足够可比过程待后继实查，不能预先承诺复现数",
+        "adaptation_rule": "先记录具体问题和口径；若据后继结果改口径，标探索性追加而非严格留出验证"
+      },
+      "next_evidence": [
+        "区间→片段→PG→日期块去重和真实检索分母",
+        "与已用PG隔离的复现、普通形态、反例及边界",
+        "当前/中途量、同价复见量和背景/时长/活动匹配质量",
+        "固定10/30/60秒及完整性标记，不据未来挑例",
+        "逐例核正式联合信息可恢复部分与真正不可用部分"
+      ],
+      "S08_minimal_information_to_try_if_valuable": [
+        "以相容时点/价位记录当前可见量与其明确参考量；同价复见另记",
+        "针对端点相同过程试查最低量及其发生位置等1～2项最小信息，不设计完整新算法"
+      ],
+      "decision_rules": [
+        "若已有正式联合字段足以恢复，改判已有信息或上层消费问题，不追加同义P1特征",
+        "若仅有曲线差异而叙事影响很小/反例占主导，降低深入优先级",
+        "缺正式版本/历史只局部限制正式缺口结论，继续可得业务证据，不等待Owner"
+      ],
+      "cost_limit": "本批同源只读证据及独立研究表；不新增行情/生产重跑；与R2共享案例不双算独立复现"
+    },
+    {
+      "id": "R2",
+      "title": "活动基线、同价/近价对象及可知时间的联合解释",
+      "maturity": "研究线索",
+      "formal_design_gap": "未确认，已有联合区别",
+      "confirmed_required_change": false,
+      "priority": 2,
+      "disposition": "R1之后做聚焦S07＋S08；共享对象证据可复用并标依赖",
+      "origins": [
+        "S04 H2",
+        "S05 B2-L2的基线/时间子问题",
+        "S06 B3-05联合对象与阶段属性",
+        "S06阶段分母解释（研究层读数约束）"
+      ],
+      "business_question": "Alive、新Build活动或Absorb结论各在什么对象/价位、参考量和时段上成立？能否据已有联合属性避免把活动量误讲为当前厚度或把近价墙当同价墙？",
+      "evidence": [
+        "B1-05-B Wall60164、当前12、Build baseline5/cum177/ratio35.4并存",
+        "B2-05-B Wall57434，较早Build baseline9/cum71与本段q0=525不同；Absorb在t1后1.5秒才展示阻挡",
+        "B3-05-A Wall61002的q0样本395、Wall展示起量1086、Build baseline476是不同参考量；Absorb replenishment325与本例正向可见变动325相等",
+        "B3-05-B研究价725，Wall58783 band725.5，F4/Attack/Build已有近价关系",
+        "B3-06-B n_second=22/2=11、整体n=22/29，属于研究分母差别"
+      ],
+      "existing_information": [
+        "baseline/cum、较早Absorb/Attack、价带和local wall关系已经提供区别，不能再称P1完全无信息",
+        "参考TIS/FRP合同允许相应活动/对象/事件状态；本批版本、正式身份和发布时间尚未证",
+        "阶段n分母来自S03明确公式，不是生产Bug"
+      ],
+      "counterexamples": [
+        "B3-05两例30秒攻击向均−2，不能凭事件/形状差异宣称价格分辨",
+        "Wall放宽组的对象状态/此前运动并未相同",
+        "展示Resolved或business_end不自动等于当时已发布或对象终结"
+      ],
+      "first_loss": "待定位；先证明已有联合信息可恢复或消费规则有实际歧义，不从展示缺少直接反推正式合同缺失",
+      "why_second": "叙事误读潜在影响具体，但已有字段可解释不少差别，且Wall证据多为放宽匹配；先做有范围的联合恢复比直接新增底层特征更有取证价值",
+      "frozen_followup_question": "在共同对象/价位及明确参考量上，现有正式联合历史/时点能否区分活动、当前存量和后续接触？若不能，第一处不可用信息在哪里？",
+      "next_evidence": [
+        "核same-price、near-band与local ref/正式exact身份关系",
+        "按发生、闭段、发布分别建立信息可知边界；先排除t1后信息倒灌",
+        "用baseline/cum和完整Absorb/Attack历史尝试恢复已有区别",
+        "对恢复不了的信息再区分源材料、入口、属性压缩、边界、上层组合或展示问题"
+      ],
+      "S08_minimal_information_to_try_if_valuable": [
+        "只对已确认有叙事歧义的案例试查参考量/时点的明确标签或当前量关联",
+        "优先使用已有字段；不预设StrengthDown重启、负Build或新对象事件"
+      ],
+      "decision_rules": [
+        "已有正式信息可恢复即标已有信息/上层组合，不能作为P1缺字段提交",
+        "未取得实际P2产物，不宣称已证明P2误读",
+        "相容正式材料缺失时保持待证，不制造实现Bug或无限等待"
+      ],
+      "cost_limit": "聚焦有Wall/近价对象及完整属性的同批过程；与R1共享暴露/依赖账，不另取行情"
+    },
+    {
+      "id": "R3",
+      "title": "真实消耗/净撤减的来源可识别性",
+      "maturity": "研究线索（共同观测约束）",
+      "formal_design_gap": "未确认",
+      "confirmed_required_change": false,
+      "priority": 3,
+      "disposition": "作为R1/R2共同核查；真实补撤单独证明暂不优先投入",
+      "origins": [
+        "S02/S03方向代理审计",
+        "S05 B2-L1",
+        "B3同源C/n与多事件共因限制"
+      ],
+      "business_question": "本批能否把可见减少分成真实成交和撤减，并把正向可见变动解释为净新增？",
+      "evidence": [
+        "165932发现区间C_quote=可见减量，n_quote=正向可见变动/q0",
+        "51373下降区间中低于净下降的C_quote及负n均0，是机械不可识别",
+        "5423区间V小于净下降的条件上界，既定背景补救匹配0",
+        "B2-06-B C20/V4；B2-05-B单半秒525/V15",
+        "B3-05 A/B C401/353大于V176/246"
+      ],
+      "existing_information": [
+        "当前研究表已保留C_source、availability、原始V与代理属性；参考正式合同存在proxy/volume semantics，尚不能证明本批正式缺这些标签",
+        "多种P1事件共用同一代理，不构成独立方向真值"
+      ],
+      "counterexamples": [
+        "零代理不代表无真实成交；高代理不一定高总成交",
+        "若总成交计量/对齐/完整性未核，V也不能直接当真值上界"
+      ],
+      "first_loss": "材料/源估计的可识别性限制已证；不能据参考代码认定现行正式链第一次丢失",
+      "why_third": "问题重要但当前同源L1无法唯一分解；大量重复观察机械恒等式不会增加真实补撤认识，优先支持R1/R2的来源核查",
+      "frozen_followup_question": "现有同源证据能否核定真实成交计量及方向/归属？若不能，哪些结论必须保持代理语义？",
+      "next_evidence": [
+        "在现有同源材料内核producer/计量/时间归属/完整性receipt；若不可取得就明确缺件",
+        "仅在单位可比且对齐完整前提已核实后，使用0≤C_real≤V及净新增上界V−净下降；仍不推订单身份/意图",
+        "核本批正式输出是否已经正确携带proxy与availability语义"
+      ],
+      "S08_minimal_information_to_try_if_valuable": [
+        "首先保留来源、量尺和可得性标签；未取得独立真值不试造“净撤单特征”"
+      ],
+      "decision_rules": [
+        "没有独立真值/有条件计量证据则停止真实分解推断，保留可见活动结论",
+        "当前不能识别不等于产品缺信息、真实撤单不存在或负向信息无价值"
+      ],
+      "cost_limit": "不为此扩大行情、生产重跑或新增Owner检查点；保持局部受限，不阻断其他工作"
+    }
+  ],
+  "maturity_counts": {
+    "研究线索": 3,
+    "候选迭代点": 0,
+    "有充分依据的迭代点": 0,
+    "具有初步改进依据的迭代点": 0
+  },
+  "confirmed_formal_gaps": 0,
+  "confirmed_production_implementation_bugs": 0,
+  "confirmed_required_changes": 0,
+  "common_missing_evidence": [
+    "本批实际producer/FRP版本和相容参数receipt",
+    "exact FeatureRunIdentity/upstream/共同Wall身份",
+    "完整正式history/current及实际发布时间",
+    "独立真实方向成交与总成交计量receipt"
+  ],
+  "priority_not_claimed_as_RnD_priority": true,
+  "S07_S08_executed": false,
+  "manager_next": "原Manager消费D006后按实际项逐条签发合并S07＋S08；无Owner审批节点",
+  "parent_Run_complete": false
+}
