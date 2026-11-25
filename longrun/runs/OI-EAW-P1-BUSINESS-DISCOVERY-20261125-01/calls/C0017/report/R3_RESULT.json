@@ -1,0 +1,75 @@
+{
+  "id": "R3",
+  "title": "真实消耗/净撤减的来源可识别性",
+  "run_id": "OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01",
+  "call_id": "C0017",
+  "delegation_id": "D009",
+  "issuer_call_id": "C0016",
+  "scope": "D009 R3 common observation constraint S07+S08 actually performed",
+  "maturity": "研究线索（共同观测约束）",
+  "formal_design_gap": "未确认",
+  "confirmed_required_change": false,
+  "confirmed_bugs": 0,
+  "sufficient_iteration_points": 0,
+  "preliminary_improvement_iteration_points": 0,
+  "actual_P2_error_proven": false,
+  "source_identifiability_limit_proven": true,
+  "first_actual_formal_loss": "未证；研究源缺独立方向/订单及可认证计量覆盖，参考合同不替代实际链",
+  "existing_information": [
+    "C_source/directional_truth_status/raw V已在研究材料保留",
+    "展示proxy字段和availability_code已有；参考typed入口保留代理/计量语义及availability",
+    "可见量/活动结论有效，但不是独立真实消耗/净撤减"
+  ],
+  "source_scope": {
+    "data_files": 2924,
+    "manifest_assets": 2920,
+    "new_full_batch_identity_scan": false,
+    "reused_discovery_interval_count": 165932,
+    "reused_declining_interval_count": 51373,
+    "reused_conditional_V_less_than_decline": 5423,
+    "certified_true_bounds_applied": 0,
+    "limited_reused_PGs": 4,
+    "quote_rows": 12,
+    "source_files_hashed": 5,
+    "new_deep_extractions": 0,
+    "new_future_price_access": false
+  },
+  "minimal_information": {
+    "performed_new_minimal_information_trial": false,
+    "new_numeric_fields": 0,
+    "new_labels": 0,
+    "new_net_cancellation_feature": false,
+    "reason": "已有C_source、directional_truth_status、raw V、proxy/availability及R2角色/时点足够表达当前限制；新同义标签不能产生缺少的计量receipt/独立方向真值。不强制凑试查。",
+    "actual_work": "4 reused PGs/12 original quote rows and bounded metadata/reference projection audit, not new-feature gain experiment",
+    "actual_P2_experiment": false,
+    "production_or_predictive_gain_verified": false,
+    "sparsification_cost_evaluated": false,
+    "true_bounds_applied": 0,
+    "next_evidence_required": "actual compatible source/feed units/coverage and producer receipt; independent trade direction/order events if true decomposition is pursued"
+  },
+  "S07_outputs": [
+    "S07_EVIDENCE.md",
+    "report/SOURCE_AUDIT.json",
+    "report/REUSED_CONDITIONAL_EVIDENCE.json",
+    "report/RECEIPT_FIELD_CHECK.csv",
+    "report/SUPPLIED_FIELD_COVERAGE.csv",
+    "report/REUSED_CASE_SOURCE_CHECKS.csv",
+    "report/VERIFICATION_EVIDENCE.json"
+  ],
+  "S08_outputs": [
+    "R3_DESIGN_POSITIONING.md",
+    "report/MINIMAL_INFORMATION_DECISION.json"
+  ],
+  "disposition": "停止本批真实补撤分解推断，保留代理/可见活动及来源/量尺/可得性限定，作为R1/R2共同约束；不提出同义P1字段或预设净撤单特征",
+  "stop_basis": "同批来源与参考语义已核，重复同源机械关系无新增真值认识；缺件边界明确，授权不含新feed/生产重跑",
+  "next_design_question": "若未来取得相容source/producer receipt、feed量尺/区间/完整覆盖及独立方向/订单事件，哪些真实净量结论可重新识别；实际合法消费者是否已正确保留proxy/availability/时点限定？",
+  "missing_evidence": [
+    "actual source/producer/FRP code/parameters/receipt/exact identities",
+    "feed unit/single-double convention/exact interval/completeness certification",
+    "independent true trade direction or order events",
+    "complete compatible formal occurrence/current/publication and actual P2 artifacts"
+  ],
+  "R1_R2_impact": "visible/role/time conclusions remain valid; true consumption/net-flow interpretations remain qualified; their formal-chain followup questions not resolved here",
+  "D009_remaining_scope": null,
+  "parent_run_complete": false
+}
