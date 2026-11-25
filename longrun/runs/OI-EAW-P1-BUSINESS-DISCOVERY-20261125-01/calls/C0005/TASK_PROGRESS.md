@@ -1,6 +1,6 @@
 # C0005 / D003 持续进度
 
-当前：S03 专业工作已完成、局部受限已交代；报告发布/零 W 回交进行中。D003 无剩余专业范围，父 Run 的 S04～S09 未执行。
+当前：S03 专业工作及正式报告、零 W Return 发布已完成并 exact 回读；正在结束 Git 写任务并交原 controller 回收。D003 无剩余专业范围，父 Run 的 S04～S09 未执行。
 
 实际完成：读取正式 C0005/D003 和上游冻结索引；扫描 444 窗口×品种、888 侧单元，其中 886 侧可分析、2 侧按全无效排除、未处理 0。328,920 唯一报价，654,665 有效侧行；190,829 完整同价片段和 261,497 个去重研究区间。三入口按片段去重命中 17,089 / 74,779 / 20,712；第三入口为同源报价代理，独立方向真值受限。
 
@@ -10,7 +10,7 @@
 
 局部限制：历史 VolQuant、独立方向成交、实际生产 receipt/参数/共同 Wall artifact、完整 FRP 正式历史及发布时间未核实；无 Wall 展示记未知。连续有效同价片段不跨缺失/休市/换价配平；窗口选择性及片段/区间复用不等于市场典型性或独立复现。发现/预留分配不变，全批仅做通用程序量，未深入观察预留形成假设。
 
-下一步：按实际 head 和路径不存在条件发布报告及索引，exact 回读；然后引用已发布报告签认 C0005 / D003 的 REPORTED_COMPLETE 零 W Return（remaining_scope_ref、continuation_ref=null）。回交后交原 controller 回收、原 Manager 消费并另签 S04。本 C 不继续 S04。
+下一步：结束本 C 的 Git 写任务，交原 controller 回收真实回复及 Return；由原 Manager 消费 D003，另签 S04。本 C 不继续 S04，父 Run 未完成。
 
 ## 历史检查点（后续更正优先）
 
@@ -41,3 +41,7 @@
 
 
 核查通过：report/VERIFICATION.json 为 PASS，实际 2,674 个输入 hash 核对、上游 24 个冻结成果未改；261,497 个保留区间逐条原始重算通过（含全部 190,829 完整片段），48 个入口/分布人口对账一致。报告 EXECUTOR_REPORT.md 已形成。D003 专业剩余为无，S04～S09 未执行。下一步：当前 head 和路径条件发布报告/索引，报告 exact 可读后生成并发布 C0005 零 W Return；完成后交原 controller 回收，再由原 Manager 消费。
++
+
+最终发布事实：报告 bundle=b9f722c3802b3380081946eb957a2c856f6466f9；C0005 PRO_RETURN=a69270f1bc75528fbce365b60803c6b7acf43ec1，均已 exact 回读。Return 为 REPORTED_COMPLETE，仅 D003；issued_delegation_refs/issued_order_refs/accepted_worker_refs=[]，remaining_scope_ref/continuation_ref/owner_request_ref=null。原 C0002/C0003 与旧候选及失败记录保留。Git 使用同一 Personal 连接，经 Contents API 路径不存在/已有 blob 条件写入；逐提交核对 parent，未改本次 INVOCATION。发布详情见本地 PUBLICATION_READBACK.json、publication/READBACK_*.json、RETURN_SELF_CHECK.json。下一步交原 controller 回收，原 Manager 消费并另签 S04；父 Run 未完成。
+
