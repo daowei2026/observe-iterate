@@ -1,0 +1,59 @@
+{
+  "id": "R1",
+  "title": "当前接触与阶段性可见流动性，端点/累计量不足以恢复的部分",
+  "scope": "D007 only; S07+S08 actually performed",
+  "maturity": "研究线索",
+  "maturity_detail": "独立PG复现、条件范围和描述试查已补足；相容正式链第一损失处仍待证",
+  "formal_design_gap": "未确认",
+  "confirmed_required_change": false,
+  "sufficient_iteration_points": 0,
+  "preliminary_improvement_iteration_points": 0,
+  "confirmed_bugs": 0,
+  "existing_information": [
+    "完整L1可恢复当前量、最低点/位置和同价复见量",
+    "R1-P05已有联合展示baseline889恢复一瞬间实际数量；不可重复称P1全无量信息",
+    "参考内部状态含量/min，FRP current保留payload且历史另行publication"
+  ],
+  "proven_loss": "本批端点/累计研究摘要不足以唯一恢复路径；参考实现活动/交互稀疏事件有更窄语义，但本批正式链未证",
+  "S07_outputs": [
+    "S07_EVIDENCE.md",
+    "scan/SCAN_SUMMARY.json",
+    "report/CONDITIONAL_EVIDENCE.json",
+    "scan/RECONTACT_SUMMARY.json",
+    "R1_CASEBOOK.md"
+  ],
+  "S08_outputs": [
+    "R1_DESIGN_POSITIONING.md",
+    "report/MINIMAL_PROBE_SUMMARY.json",
+    "report/MINIMAL_BASELINE.csv",
+    "report/MINIMAL_ENHANCED.csv",
+    "report/P1_ATTRIBUTE_AUDIT.json"
+  ],
+  "deep_cases": 29,
+  "deep_PGs": 29,
+  "deep_date_blocks": 7,
+  "minimal_probe": {
+    "PGs": 18,
+    "date_blocks": 5,
+    "items": [
+      "min_over_q0",
+      "first_min_position_fraction"
+    ],
+    "hidden_dip": 4,
+    "ordinary_without_hidden_dip": 14,
+    "baseline_quantity_already_determined": 6,
+    "cannot_solve": [
+      "concentrated decrease",
+      "early-vs-late depletion when minima both at endpoint"
+    ],
+    "meaning": "descriptive information feasibility only, not production/predictive validation"
+  },
+  "disposition": "R1本D局部受限可交付；先沿已有信息/上层消费需求定位，不提必须新增P1；阶段形状直接改动优先级下调。交Manager消费，不自动执行其他候选。",
+  "missing_evidence": [
+    "actual producer/FRP code/params/receipt/exact identities",
+    "complete formal occurrence/current/publication history",
+    "actual P2 consumption/behavior"
+  ],
+  "D007_remaining_scope": null,
+  "parent_run_complete": false
+}
