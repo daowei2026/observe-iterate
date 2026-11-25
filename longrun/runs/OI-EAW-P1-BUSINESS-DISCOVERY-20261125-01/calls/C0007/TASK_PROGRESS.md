@@ -1,6 +1,6 @@
 # C0007 / D004 持续进度
 
-当前：S04 专业工作已完成，局部限制已保留；正式发布与零 W 回交进行中。D004 无剩余专业范围，S05～S09 未执行，父 Run 未完成。
+当前：S04 专业工作和正式报告、零 W Return 已完成发布并 exact 回读；正在结束 Git 写任务交原 controller 回收。D004 无剩余专业范围，S05～S09 未执行，父 Run 未完成。
 
 实际输入：sources/ 下 exact C0007/D004/C0006 原件、任务书 V0.4 @b1bf8025、C0005 S03冻结候选/展示/范围索引、C0002独立性分配及Owner同批原始数据。S01～S03未重跑。
 
@@ -12,7 +12,11 @@
 
 限制：C_quote与减量同源、原总量方向未知；局部背景非历史VolQuant；同昼夜类未完全控制细时段/波动/长趋势；Wall未知不等于无；producer/参数receipt、共同exact身份、FRP完整history/current/publication未证。已有联合输出可能足以恢复区别，不能据展示缺件判正式缺口。
 
-下一步：按当前head和路径/已有blob条件发布报告、案例册、摘要及索引，exact回读；报告存在后签认 C0007/D004 的 REPORTED_COMPLETE 零W Return（remaining_scope_ref、continuation_ref=null）。然后结束Git写任务交原controller回收、原Manager消费后另签S05。
+下一步：结束本 C Git 写任务，交原 controller 回收真实最终回复和 Return；原 Manager 消费 D004 后另签独立 S05。父 Run 未完成，本 C 不执行 S05。
+
+## 已核实发布事实
++
+最终发布事实：报告及案例册 bundle=3cc71052916ed182f19ba76464c9ad213cc85d0b；C0007 PRO_RETURN=21fc1b948eea406de854fe2e7793af5972c70286。两者均已 exact 回读，INVOCATION 保留。Return 为 REPORTED_COMPLETE，仅 D004；零 W，issued_delegation_refs/issued_order_refs/accepted_worker_refs=[]；remaining_scope_ref/continuation_ref/owner_request_ref=null。旧 C 和既有成果保持原样，图/详细证据的核查入口见103项冻结索引。发布详情另存本地 PUBLICATION_READBACK.json 与 publication/READBACK_*.json。下一步结束本C Git写任务，交原controller回收真实回复与Return，原Manager消费后另签S05；父Run未完成。
 
 ## 历史检查点（后续更正优先）
 
