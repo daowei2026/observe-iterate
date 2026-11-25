@@ -1,6 +1,6 @@
 # C0015／D008：R2 的 S07＋S08 持续进度
 
-最新状态：S07、S08已完成，正在冻结索引并发布。以下保留各阶段实际记录；D008无剩余研究工作，父Run未完成。
+最新状态：S07、S08已完成，报告与C0015零W Return已发布并exact回读；此进度为最后一项写入。以下保留各阶段实际记录；D008无剩余研究工作，父Run未完成。
 
 当前S07进行中，仅R2「活动基线、同价/近价对象及可知时间的联合解释」。本C INVOCATION、D008 JSON/正文和C0014 Manager Return已亲读并exact保存；任务书全文/锁定版本沿用，复核§6.2/6.3、§7及通用executor指南。无新角色/Worker，不执行R3独立闭环或S09。
 
@@ -21,3 +21,10 @@
 四例及全部原始取证见R2_CASEBOOK.md，来源索引27项；8个独立研究脚本已内存编译、43行两版原值一致、来源哈希核对PASS。累计257条使用记录，旧210条逐项保留，累计69次深入提取；43条标签试查不冒充完整深入提取。R1程序暴露沿用，41试查PG已有特定指标，非严格留出。
 
 已核实际分支head=a5343ba09501a14dc86e8289fdbed080a3c1cba4，C0015远端只有原INVOCATION，尚无本C写入。接着按Contents API逐次核head/路径条件写入报告，exact内容/blob/父提交回读；报告先、零W Return后。实际发布事实另存publication/及PUBLICATION_READBACK.json，不预报完成。相容正式版本/receipt/完整publication和P2缺件仅限制证据等级；不执行R3独立闭环或S09。
+
+## 报告与V2回交已发布
+
+报告包commit=8cf263c0b2c2ada6b6916f093d5431c3a966cb82；C0015/D008零W PRO_RETURN commit=2b547220005179117130a5ad75b6e459b866f4e8，两者均已exact回读，内容/blob/提交父链一致。Return的REPORTED_COMPLETE仅针对D008；remaining_scope_ref/continuation_ref/owner_request_ref均null，issued/accepted数组均空。锁定V2 schema+pro_state本地检查PASS；不冒充controller需要真实回收receipt的物理validate-executor-return。
+
+冻结75项，共26,385,676 bytes；ARTIFACT_INDEX.json SHA256=87cc7744a712c6d31f40e6f0cf03061ae2d5cdcf8c900e95005b3714a6e34e5f。本批正式链/真实P2局部待证保留于专业报告；父Run未完成，本D未执行R3独立闭环或S09。此进度作为最后一项Git写入，回读后交原controller回收，再由原Manager消费；最终head和Git无在途写事实见本地publication/RETURN_HANDOFF.json。未代宣controller回收或Manager消费完成。
+
