@@ -1,0 +1,101 @@
+{
+  "run_id": "OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01",
+  "call_id": "C0005",
+  "delegation_id": "D003",
+  "step": "S03",
+  "started_at": "2026-11-25T17:06:41.952472+00:00",
+  "finished_at": "2026-11-25T17:10:53.101772+00:00",
+  "data_path": "/home/dw/.codex/visualizations/2026/11/16/01a1e335-cd15-7f72-a7d9-f53c52feb09e/caegraph-delivery-30/caegraph-review/data",
+  "input_cells": 444,
+  "window_sides": 888,
+  "unprocessed_cells": 0,
+  "whole_cell_exclusions": 2,
+  "counts": {
+    "raw_quote_rows": 346764,
+    "duplicates": 17844,
+    "unique_quote_rows": 328920,
+    "display_reference_rows_with_window_provenance": 17863,
+    "rb.bid.valid_unique_rows": 109640,
+    "rb.bid.spans": 160,
+    "pieces": 190829,
+    "retained_rows": 261497,
+    "retained_mask_2": 85766,
+    "retained_mask_6": 36745,
+    "retained_mask_0": 106164,
+    "retained_mask_1": 18174,
+    "retained_mask_3": 10042,
+    "retained_mask_4": 98,
+    "retained_mask_7": 4501,
+    "rb.ask.valid_unique_rows": 109640,
+    "rb.ask.spans": 160,
+    "retained_mask_5": 7,
+    "hc.bid.valid_unique_rows": 109640,
+    "hc.bid.spans": 160,
+    "hc.ask.valid_unique_rows": 109640,
+    "hc.ask.spans": 160,
+    "i.bid.invalid_unique_rows": 3174,
+    "i.bid.valid_unique_rows": 106466,
+    "i.bid.spans": 163,
+    "i.ask.invalid_unique_rows": 1,
+    "i.ask.valid_unique_rows": 109639,
+    "i.ask.spans": 160,
+    "contiguous_spans": 963
+  },
+  "config": {
+    "version": "s03-v1",
+    "width_seconds": [
+      2,
+      10,
+      30
+    ],
+    "step_seconds": 0.5,
+    "background": {
+      "lookback_seconds": 60,
+      "minimum_prior_rows": 40,
+      "only_prior": true,
+      "scope": "same-symbol same-side continuous-valid supplied-window union; all best prices; not historical VolQuant"
+    },
+    "base": {
+      "large_ratio": 2.0,
+      "large_prior_quantile": 0.95,
+      "change_ratio": 0.3,
+      "load_ratio": 0.5,
+      "retention_min": 0.7
+    },
+    "loose": {
+      "large_ratio": 1.5,
+      "large_prior_quantile": 0.95,
+      "change_ratio": 0.2,
+      "load_ratio": 0.3,
+      "retention_min": 0.6
+    },
+    "strict": {
+      "large_ratio": 3.0,
+      "large_prior_quantile": 0.95,
+      "change_ratio": 0.5,
+      "load_ratio": 1.0,
+      "retention_min": 0.8
+    },
+    "control": {
+      "stable_endpoint_tolerance": 0.1,
+      "stable_range_ratio": 0.2,
+      "low_proxy_ratio": 0.1
+    },
+    "directional_truth": "unavailable; C_quote is supplied quote-loss proxy, not independent directional trades",
+    "selection": "all maximal observed same-price pieces, including singletons; plus strongest interval per piece/width/entry; no future outcome selection",
+    "scan": "every valid row as endpoint; trailing 2/10/30s clipped to piece start; per-width populations may overlap; retained identical intervals deduplicated across widths; whole piece also evaluated",
+    "future": "generic fixed horizons 10/30/60s stored separately; never used by entry/representative selection; no S04 comparisons",
+    "sensitivity": "same retrievals at loose/base/strict; not optimized against future price or reserved cases"
+  },
+  "restrictions": [
+    "C_quote/r/c/n are quote-derived descriptive research metrics; independent directional truth unavailable",
+    "large quote uses causal local prior-window relative background only; formal historical VolQuant unavailable",
+    "display refs are temporal/side context; wall also requires price-band match; exact formal feature identity/history unavailable",
+    "no formal Wall absence truth: missing display is unknown",
+    "all metrics are from selective supplied windows; candidate/piece counts are not market prevalence or independent process counts",
+    "all reserved samples remain generic program scanning only; no detailed case/hypothesis selection",
+    "S04-S09 not executed; post-period measurements not used for retrieval or hypothesis formation"
+  ],
+  "interval_count_note": "per-width interval populations include identical intervals across widths; overlap table is per width; retained table deduplicates interval keys; unique maximal pieces are separate population",
+  "remaining_d_scope": null
+}
