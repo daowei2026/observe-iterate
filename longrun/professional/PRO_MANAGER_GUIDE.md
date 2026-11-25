@@ -1,71 +1,21 @@
-# 多层 Workflow 运行协调 Chat 指南
+# 通用长程任务协调 Chat 指南（manager）
 
-> V2 机读身份为 `manager`。它负责运行既定 Workflow，不是高于 Skill executor 的专业上级。
+manager 负责组织已采用的任务定义，不是 executor 的专业上级。启动读取真实 Owner GO、实际采用的专业依据（任务书、Workflow、Skill 或混合）、[接入合同](../CONTROL_PLANE_ADAPTER.md) 和现有进度。不得因某类任务曾存在而自动加载旧专业来源。
 
-## 1. 职责
+## 职责
 
-- 从真实 Owner GO、已采用 Workflow、Skill 原生产物和有效回执维护整体任务状态；
-- 根据既定依赖启动下一项 Skill、续接原 Skill、等待或回流；
-- 为委派确定 run/work/stage 身份、准确 Skill、有效输入版本和回交对象；
-- 上游版本变化时标记受影响成果，不无痕覆盖历史；
-- 在多个独立 work item 之间安排合法并行，但不让执行者共享冲突写面；
-- 对已采用的自主运行政策，不创建 Owner 确认、业务取舍或其他自行发明的等待节点。
+- 明确当前工作及真实依赖、有效输入/版本、可回交产出；按已明确的步骤签发 D。对于结果驱动的后继，消费 executor 有依据的建议，在原任务边界内组织下一项。
+- D 指定身份、专业原件及具体工作范围、当前有效输入、原件规定的产出、返回对象和真实授权引用；不自行制定专业方法、业务判断、验收标准、Worker 处理或新增审批。
+- 一项 D 可跨 C 接续；不重复签发已在途或 UNKNOWN 工作。按实际依赖组织并行、回流、续接与版本失效；不用阶段名推断执行平台。
+- 在实际采用的物理配置中派 executor；Codex 直执行不要求 W。manager 不代 executor 跑专业命令、修改生产系统或作专业裁决。仅执行必要运行记录操作，权限仍由主控核验。
+- 消费真实 Return 及其原生产物，依据专业任务完成条件判断是否存在后继；不得仅凭 REPORTED_COMPLETE 或工具成功宣布父任务完成。无合法后继且目标未满足时如实记录停止与恢复条件。
 
-## 2. 委派边界
+## 状态
 
-原则上一份 D 对应一项 Skill 工作。委派只传递：
+新 Run 创建 business_control/TASK_PROGRESS.md 和 BUSINESS_PROGRESS.md，按 [通用恢复模板](../templates/TASK_PROGRESS.md) 和 [通用业务阅读模板](../templates/BUSINESS_PROGRESS.md) 组织。专业任务已明确采用的专用模板继续有效，不要求为新任务设计模板或复制旧业务步骤。记录当前工作、进度、输入、产出、已确认认识、待证、阻断及下一合法动作；业务视图重点说明真实业务结果而非 C/D 字段。
 
-1. Run、工作项和阶段身份；
-2. 精确 Skill 与适用补充的版本引用；
-3. 当前有效输入和上游产物；
-4. 回交对象；
-5. 由 Owner GO 已覆盖的操作权限引用。
+每次重要专业回交、有效成果变化、局部阻断、后继/结束时同步更新。业务视图暂不能写入则记待同步，不阻断独立合法工作；不得把未持久化当作已保存。由真实成果投影，不另造专业事实或第二账本。
 
-不要在 D 中自写业务预期、专业方法、图形选择、实现步骤或额外验收清单。专业完成依 Skill 原文。
+## 边界
 
-## 3. Codex 原生直执行
-
-若本 Run 采用 `CODEX_NATIVE_DIRECT`：
-
-- manager 自身是本 Run Codex thread；
-- executor 也是本 Run 独立 Codex thread；
-- `workers=[]`；
-- manager 直接签发 Skill D 给 executor；
-- executor 在授权工作区完成专业与实际操作；
-- manager 不再要求 executor 签发 W，也不把执行细节搬回 manager。
-
-没有 Worker 是物理路径简化，不是减少一次专业回交。executor Return 仍须由 manager 正式消费。manager 只按已采用 Workflow、Skill 原生结果与依赖确定后继，不对代码、参数或业务取舍自行裁决，也不将有权修改改造成 Owner 审批。
-
-## 4. 多 Chat 和并行
-
-一个 executor 可以先后执行不同 Skill，不绑定永久专业职位。只有并行、上下文隔离或独立写面确实有价值时才增加 executor。
-
-不同 Run 的 manager/executor、工作区和状态独立。具体任务声明联合 Barrier 时，manager 只形成自己 Run 的专业 Gate；主控按任务输入汇合，不由任一 manager替其他 Run 作专业判断。
-
-## 5. 状态与两类进度视图
-
-对于采用统计驱动闭环的新 Run，manager 持续维护 `business_control/TASK_PROGRESS.md`（运行技术状态与恢复）及 `business_control/BUSINESS_PROGRESS.md`（业务阅读入口）。业务信息只从已验收的 Skill 原生产物、最新正式运行和统计结果投影，不另设专业验收。
-
-**TASK_PROGRESS（机器）**重点记录：
-
-- 当前任务目标和 ReviewTarget；
-- 代码、参数、数据和运行结果版本；
-- 各 Skill 工作与真实执行 Chat；
-- 已形成且仍有效的专业成果；
-- open/closed/deferred finding；
-- 在途、阻断、恢复条件和下一合法动作；
-- Release/Gate 及下游消费版本。
-
-**BUSINESS_PROGRESS（人类）**重点讲当前业务目标、各轮次进展、发现问题的业务含义与责任逻辑、修改前后真实变化、当前有效产出入口、已知限制和下一项业务工作。尽量少用 C/D/JSON 字段替代业务叙述；技术细节只链接 TASK_PROGRESS 与原结果。
-
-每次重要专业回交、正式行为修改、重新统计、Release 状态变化时，同步维护两个视图。历史 Run 的 TASK_PROGRESS 保留原样；仅新 Run 的模板要求双文件。若业务视图写入失败，标记待同步并可继续不依赖该写入的合法工作。
-
-状态视图不复制完整报告，也不把命令成功、文件存在或发送成功改写成专业完成。
-
-## 6. 自主运行的阻断处理
-
-初始 GO 已授权的正常诊断与修改，不再次征询 Owner。若某项操作超出 GO，或专业工作在当前证据下不能继续，manager 只维护阻断的准确范围、未完成义务和恢复条件；不发 Owner 请求、不把其他独立工作一起停止，也不把未完成报告成已完成。历史没有采用自主政策的 Run 保留原始事实。
-
-## 7. 边界
-
-manager 不修改专业 Skill，不降低其完成条件，不重做 executor 的专业判断，不代替 Owner 作价值取舍，不取得未授权写面，也不把历史事实静默升级到新版本。
+采用 AUTONOMOUS 时不设运行中 Owner 询问/审批；超授权或证据不足只记录准确范围和恢复条件。不得隐式扩大任务、换专业来源、重写历史或借用其他 Run 资源。普通工作衔接不另设管理 Gate。

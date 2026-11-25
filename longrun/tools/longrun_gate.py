@@ -211,7 +211,7 @@ def executor_return(c, b, d):
 
 
 def codex_executor_execution_preflight(c, b, d):
-    """Trusted-snapshot preflight for direct Codex Skill operations; not an execution lock."""
+    """Trusted-snapshot preflight for direct Codex executor operations; not an execution lock."""
     run = b["run_id"]
     target = d["recipient"]
     require(target.startswith("codex:" + run + ":executor:"), "not a Codex executor D")
@@ -243,9 +243,9 @@ def codex_executor_execution_preflight(c, b, d):
                 "direct executor grant not bound to Owner workspace")
         require(grant["operation"] in d["permitted_operations"]
                 and set(grant["allowed_writes"]).issubset(d["allowed_writes"]),
-                "direct Codex E action outside delegation")
+                "direct Codex executor action outside delegation")
         require(any(grant_covers(g, grant) for g in b["grants"]),
-                "direct Codex E action outside original Owner grant")
+                "direct Codex executor action outside original Owner grant")
     return {"recipient": target, "thread_id": bound, "allowed_operations":
             [g["operation"] for g in grants], "status": "PREFLIGHT_ONLY_NOT_LOCK"}
 

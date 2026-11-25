@@ -1,78 +1,43 @@
-# Owner GO（V2 任务启动模板，未填写不构成授权）
+# Owner GO（V2 通用启动模板，未填写不构成授权）
 
-## 目标与边界
+Owner 可以用自然语言启动消息、任务书或已有任务输入提供下列事实；不要求重新制作本模板文件。主控把真实原文、适用来源及已核实运行配置保存到 OWNER_START.md。缺失必要权限或资源不猜测；可查的专业事实由 executor 核实。
 
-- `work_id`：
-- `business_case_id`（用例稳定标识；如无独立标识，可明确与 work_id 相同）：
-- `run_id`（本次全新、不得复用历史 Run）：
-- `post_start_owner_policy: AUTONOMOUS`（新 Run 必填；Owner 仅在启动时给出业务目标与授权）：
-- AI 在本 Run 内可自主决定的修正、参数调整、验证与发布边界：
-- `BusinessTaskInput`：当前实际已知的业务目的、对象、问题、现有资料线索及精确来源；未知项如实列为待查：
-- **已明确**的本轮范围/允许深度/预算/不可做事项/停止与完成条件（没有明确的写“待明确”，不是另设启动前必须填满的 TaskBoundary）：
-- 仅列出 Owner **已明确禁止**的事项或不能改变的业务目标（如无则不为了预设审批点而虚构）：
-- 采用的专业 Skill / 控制面来源（仓库、提交、路径）：
-- 任务结果期望及 Owner 接收方式：
+## 目标、来源与边界
 
-## 本 Run 的两类 Chat 工作方式
+- work_id / business_case_id（无独立标识可用 work_id）/ 全新 run_id：
+- 任务目标、范围、明确非目标、产出、完成/停止条件：
+- 专业任务依据（任务书、Workflow、Skill 或混合；精确引用与适用章节）：
+- 实例输入（数据、对象、代码/参数/版本、可复用结果及待查项，按适用）：
+- 允许自主选择、研究、执行、修改或发布的范围：
+- post_start_owner_policy: AUTONOMOUS（新 Run 必填）
+- 可选：已有专业进度模板；没有则采用通用 TASK_PROGRESS 和 BUSINESS_PROGRESS。
 
-- **多层 Workflow 运行协调 Chat**（V2 身份 `manager`）：维护整个任务的当前状态及版本依赖；依据已采用 Workflow 调用、等待、接续和回流具体 Skill 工作；按需增加 Skill 执行 Chat。不自行添加执行约束、专业方法、业务预期、Worker 处理办法或专业验收条件，也不额外担任独立专业 Gate。
-- **Skill executor（ChatGPT／Codex）**（V2 身份 `executor`）：根据本次指定 Skill 的原始文件实际完成专业工作及其内部 Workflow；专业结果、完成条件及 Worker 使用与返回处理全部以该 Skill 为准。
-- **状态与恢复**：继续以 `longrun/runs/<run_id>/business_control/TASK_PROGRESS.md` 记录当前整体任务及阶段工作、版本、在途和合法后继；主控据真实产物和回执保存、核实，不编造专业决定。不另设状态数据库。
-- **派发单位**：默认一个 D 对应一项 Skill 工作；同一 Skill 可跨多个 C 接续。观察材料准备在共享 FeatureUnderstandingPackage 有效后，B/C 可在输入和物理身份可用时按需并行，不强制每个 Skill 单独建 Chat。
-- **运行限制**：Owner 授权和 V2 机器执行权限由主控单独校验，协调 Chat 不增设专业执行约束。没有真实 GO 与特征来源时，只可准备运行接线，不创建实际业务 Run。
+## 执行配置与资源
 
-## 运行角色
+- 采用运行协议、指南和 cgpterm 主控版本：
+- 物理 profile：CODEX_NATIVE_DIRECT 或本 Run 明确的 Web/Codex 角色绑定：
+- manager / executor / 可选 worker：逻辑角色、平台、项目（Web 时）、模型/强度、创建或恢复规则：
+- owner_declared_linux_workspace：Owner 已准备的独立绝对路径；新 Run 不沿用其他 Run 路径。
+- 工作区/主机、结果位置、Git 目标仓库和分支、共享写面：
+- 多 Run 关系、依赖、优先级、适用的失效规则（如有）：
 
-- 主控逻辑身份与物理端绑定方式：
-- 多层 Workflow 运行协调 Chat（V2 manager）逻辑身份与物理聊天绑定方式：
-- 允许参与的 Skill executor（V2 executor）身份范围及增加方式：新 Run 共享理解及 B～D 默认 ChatGPT，E 默认独立 Codex；主控在首次合法 E D 之前为该 Run 创建新 Codex thread。
-- 允许参与的 Worker Codex 身份范围：
+新 Run 按本次配置创建新会话，恢复核原绑定；不要求 Owner 预先提供新会话 ID。主控在实际主机验证目录、realpath、模型、权限及冲突，物理 ID 由真实设施回读。角色、平台和任务阶段独立。
 
-## 本项目执行目标（正式 GO 时确认适用配置）
+## 一次性真实授权
 
-以下是用户本次对**未来长程执行环境**的指定，写在模板里用于避免实际派发时猜 Project/Worker 工作区；**不是已经发布的 Run GO，也不是证明项目、聊天、Linux 目录或模型已经验收**。
-
-- 多层 Workflow 运行协调 Chat与 Web Skill executor：使用 ChatGPT Project **`细节叙事生成_金标`**；各自独立角色聊天，当前指定的目标模型为 **`GPT-5.6 Sol`**，推理档位为 **`Pro`**。是否已经实际选中，须由每次发送前的现有操作 Skill 验证；模板本身不证明设置成功。
-- Worker：每个 `run_id` 的 Linux 工作区由 Owner 提前准备，并在本次真实 GO 中指定独立绝对路径；不从其他 Run 或示例路径推断。
-- Worker 目标模型/推理配置：**`GPT-6.1 Sol Max`**；实际可用性与现场配置仍需在真实派发前核验。
-- 模型、项目、工作区在启动 GO 中一次明确；后续运行不向 Owner 请求更改。超出原 GO 的动作仅记录局部阻断与恢复条件，不自行扩权；不同 Run 不自动继承。物理 Project/ChatGPT 聊天、Codex threadId、实际目录和配置在真实启动时记录到可信运行映射；不能因为模板包含上述信息就认定已创建。
-- **Codex E executor**：使用 Owner 已指定和准备的独立 Linux 工作区，模型/强度按本 Run 的正式配置（当前默认目标 GPT-6.1 Sol / Max）。新 Run 首次合法 E D 后、E C 派发前创建新 thread，同一 Run 恢复时复用原 thread，不借其他 Run 的 session。
-- **工作区路径不是写权限**：Codex executor 直接执行或旧 Worker W 均须受下列独立的 `operation / execution_context / allowed_writes / authority_quote` 授权及共享目标单写者检查约束。
-
-## 本 Run Linux 工作区（多 Run 时必须由 Owner 明确给出）
-
-- `owner_declared_linux_workspace`：<本 Run 已准备的绝对 Linux 路径，不填其他 Run 的工作区>。
-- 当前工作区是否已由 Owner 准备：<是/否；未准备则不得派出依赖此路径的 Codex executor 或 Worker 动作>。
-- 对应仓库、分支及实际输出/写入位置：<明确现行使用范围，真实权限仍以下面的 grants 为准>。
-- 多 Run 关系：<新的 run_id，若与旧用例/旧 Run 有关联，给出准确引用；不要沿用旧 Run 运行状态>。
-
-主控负责在真实目标 Linux 主机上核实目录存在、realpath 与其他活跃 Run 不重叠、权限和 Worker 实际 cwd，再写入 `runs/<run_id>/RUN_RESOURCE_BINDING.json`。这不是主控自动创建工作区的授权。
-
-## 本 Run 一次性覆盖常规工程操作（V2 仍须可校验的 Owner 原文）
-
-这部分仅用于**真实工具派发的机器权限校验**，不是由运行协调 Chat 自拟的专业执行约束。Owner 可在启动 GO 里**一次性覆盖本次业务通常需要的操作类别和写入位置**；主控据此为 V2 Binding 编制一个或多个可核对的 `grants`，随后各 D/W 在覆盖范围内自主执行，不再每条工单都向 Owner 要授权。
-
-现有 V2 Schema 与 `longrun_gate.py` 对 `operation`、`execution_context`、`allowed_writes` 采取精确值匹配，所以**以下字段需要在启动 GO 中有真实、准确的 Owner 原文**。可以按操作类别共用一条授权，不是为每个具体文件/每次取数申请一次。不能把模板示例、任何 Chat 的解释或主控猜测当作实际 `authority_quote`：
-
-对本 Run 需要覆盖的**操作类别**填写（不是每次动作重复）：
+每项适用操作以可核验的 Owner 原文明确（只读研究不要求生产写权）：
 
 ```text
 operation=<明确动作>
 execution_context=<精确运行仓库/分支/工作区>
-allowed_writes=<明确允许写入仓库/分支/路径>
-authority_quote=<包含以上三个值的 Owner 原文>
+allowed_writes=<明确允许写入的仓库/分支/路径；无写入可为空列表>
+authority_quote=<实际 Owner 原文，包含上述授权值>
 ```
 
-**使用原则**：既有工具实际允许、且属于 GO 一次性涵盖的操作，按 V2 直接派发而不再次请求人工批准。若单项真实动作不属于任何已登记的操作类别，先检查现有授权是否已经包含等价操作；不能因字段命名不同就无故中断，也不能通过伪造 `authority_quote` 绕过 V2 校验。确实缺少实际访问权限时只阻断该动作，具体说明缺什么；其他合法工作继续。
+仅授权本任务实际所需操作及写面。路径不等于权限；模板、AI 总结、旧 Run GO 均不能构成真实授权。主控按原 V2 精确授权校验；未覆盖仅阻断相关操作，不设运行中 Owner 审批。需要主控 Chat 归档时另一次性明确指定分支和 longrun/controller/chats/ 的提交/推送授权，仅归档主控自身可见对话。
 
-## 可选：主控 Chat 归档
+## 发布
 
-若初始任务要求自动保存主控对话，GO 一次性指定 `observe-iterate/longrun/controller/chats/` 在目标分支上的 Git 写入与推送权限；实际主控 threadId 必须由主控在现场核验。只导出主控用户/Assistant 可见消息，不导出 manager/executor 聊天。归档失败不阻断专业流程，也不允许运行中再问 Owner。
-
-## 真实发布
-
-- Owner 实际 GO 消息/原件：
-- 采用提交：
-- 授权生效与取消/修改条件：
-
-主控收到真实 GO 后方可创建 `longrun/runs/<run_id>/`；未填写、未发布或未核实的不启动运行。开始后不设 Owner 决策或审批节点，常规专业修正由 executor 在初始授权内自主推进。
+真实 GO 原件/消息及精确保存引用：
+采用来源版本（运行协议、专业任务定义、物理主控实现分开）：
+授权生效/取消条件：

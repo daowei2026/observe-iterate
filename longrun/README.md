@@ -1,122 +1,70 @@
-# 观察—迭代长程运行协作层 · V2
+# 通用长程运行协作层 · V2
 
-> 本目录负责跨线程的身份、真实通信、回交、状态与恢复；不替代专业 Workflow、Skill 或其完成条件。源码和配置存在，不代表真实线程、工作区和权限已经核验。
+本目录只定义跨线程的真实运行、身份、权限、状态与恢复。专业任务由每次 Run 采用的来源决定；不默认加载本仓 control/、skills/ 或任何业务阶段。任务书本身可以是完整专业依据。文件存在不代表实际线程、授权或自动运行已核验。
 
-## 1. 角色
+## 1. 角色与运行路径
 
-| 角色 | 作用 |
+| 角色 | 职责 |
 |---|---|
-| Owner | 仅在 Run 启动时提供任务、范围、版本、工作区与一次性真实授权；运行中不承担审批或业务裁决 |
-| 主控 | 注册 Run、绑定物理线程、发送／回收 C/D/W、核权限、去重与恢复 |
-| Workflow manager（V2 `manager`） | 维护统一任务状态，按已采用 Workflow 调用 Skill、消费 Return、安排后继 |
-| Skill executor（V2 `executor`） | 阅读并执行具名 Skill，形成原生产物和 Return |
-| Worker（可选） | 仅在采用的执行 profile 和 Skill 明确需要时承担底层操作 |
+| Owner | 初始任务、边界、执行配置及真实授权 |
+| controller | 注册、绑定、传输、核验、对账、保存、调度和恢复 |
+| manager | 依据本 Run 专业任务定义组织具名工作、维护依赖和两类进度，消费真实回交 |
+| executor | 执行具名专业工作、读取实际专业依据、实际产出、自检和回交 |
+| worker（可选） | 按授权 W 执行底层操作，回原 executor |
 
-`manager` 和 `executor` 是路由身份，不代表专业上下级。专业方法来自本 Run 锁定的 Workflow 和 Skill。
+一项 D 是具名专业工作，不要求存在 Skill。一项 D 可跨多个 C 接续，内部小步骤不默认拆 D。专业判断由 executor，工作后继由 manager，主控不参与专业裁决。
 
-## 2. 两种执行 profile
+- [Codex 原生直执行](CODEX_NATIVE_EXECUTION_PROFILE.md)：manager/executor 均为 Codex；workers=[]。
+- 兼容物理配置：按本 Run 实际绑定的 Web/Codex 角色及可选 Worker 路由；旧 Run 按原采用来源继续。
+- 新 Run 新建独立会话；同 Run 恢复核对并复用原绑定，不借其他 Run 的 thread。
+- 不同 Run 采用独立工作区，远端共享写面仍须核实单写者。
 
-### 2.1 兼容 profile
+## 2. 专业任务接入
 
-保留历史 ChatGPT executor + Codex Worker，以及新版 E 的 Codex executor 直执行路径。历史 Run 按当时锁定来源继续。
+统一采用 [CONTROL_PLANE_ADAPTER.md](CONTROL_PLANE_ADAPTER.md)。Owner 的任务书/启动消息或已存在 Workflow + Skill 都可作为专业来源；允许混合，也允许结果驱动的后继。不强制独立计划、专业适配文件或任务类型注册。专业来源、运行协议及物理主控实现分别锁定精确版本，同一 Run 各角色一致。已有专业任务的 control/ 和 skills/ 保持其自身权威，不是运行层默认入口。
 
-### 2.2 `CODEX_NATIVE_DIRECT`
-
-入口：[`CODEX_NATIVE_EXECUTION_PROFILE.md`](CODEX_NATIVE_EXECUTION_PROFILE.md)
-
-适用于 manager 和 executor 都在 Codex、executor 直接使用本 Run Linux 工作区的任务：
-
-```text
-Owner GO
-→ 主控创建本 Run manager Codex thread
-→ manager 签发一项 Skill 的 D
-→ 主控创建／复用本 Run executor Codex thread并派发 C
-→ executor 在授权工作区直接执行
-→ executor Return
-→ manager 消费并安排后继
-```
-
-此 profile 中：
-
-```text
-workers = []
-不签发 W
-不把 Linux 操作搬回 Web Chat
-```
-
-零 Worker 不降低专业完成条件，也不扩大 executor 写权限。
-
-## 3. 当前专业流程
-
-观察材料准备的 A～E 完整 Workflow 属于**历史 V0.2 控制面**，仅由准确采用该历史 commit 的 Run 使用，不应从当前 `control/02` 寻找已删除的旧文件。
-
-当前统计驱动闭环采用 [control/01_L0_统计驱动的单特征闭环.md](../control/01_L0_统计驱动的单特征闭环.md)：
-
-```text
-首轮：U 理解 Feature → X 正式运行 → G 全量统计／发现
-→ 如有待处理 finding：D 诊断，并在初始授权内处理
-→ 发生正式行为或绑定变化时，进入后续轮次更新与验证
-→ 当前目标达到后形成 FeatureReleaseGate／必要的 ReleasePackage
-```
-
-X 和工程修正是受授权的实际动作，不因直接在 Codex 中执行就成为新的专业 Skill。
-
-## 4. 必要文件
+## 3. 运行协议及模板
 
 | 文件 | 作用 |
 |---|---|
-| [contracts/LONGRUN_PROTOCOL_V2.md](contracts/LONGRUN_PROTOCOL_V2.md) | C/D/W 身份、合法回交、权限、失败及恢复 |
-| [contracts/MULTI_RUN_CONTROLLER.md](contracts/MULTI_RUN_CONTROLLER.md) | 多 Run 独立状态、物理资源及版本 |
-| [CODEX_NATIVE_EXECUTION_PROFILE.md](CODEX_NATIVE_EXECUTION_PROFILE.md) | Codex manager/executor 直执行、零 Worker profile |
-| [professional/PRO_MANAGER_GUIDE.md](professional/PRO_MANAGER_GUIDE.md) | manager 职责 |
-| [professional/PRO_EXECUTOR_GUIDE.md](professional/PRO_EXECUTOR_GUIDE.md) | executor 职责 |
-| [templates/OWNER_GO.md](templates/OWNER_GO.md) | 通用历史模板 |
-| [templates/OWNER_GO_CODEX_NATIVE.md](templates/OWNER_GO_CODEX_NATIVE.md) | Codex 原生直执行 GO 模板 |
-| [templates/TASK_PROGRESS.md](templates/TASK_PROGRESS.md) | 通用历史进度模板 |
-| [templates/TASK_PROGRESS_STATISTICS_CLOSURE.md](templates/TASK_PROGRESS_STATISTICS_CLOSURE.md) | 统计闭环机器状态与恢复模板 |
-| [templates/BUSINESS_PROGRESS_STATISTICS_CLOSURE.md](templates/BUSINESS_PROGRESS_STATISTICS_CLOSURE.md) | 统计闭环的业务进展与产出阅读模板 |
-| [CONTROL_PLANE_ADAPTER.md](CONTROL_PLANE_ADAPTER.md) | 专业控制面与运行协议边界 |
-| [controller/CONTROLLER_OPERATIONS.md](controller/CONTROLLER_OPERATIONS.md) | 主控操作 |
-| [tools/longrun_gate.py](tools/longrun_gate.py) | 单 Run 机械检查 |
-| [tools/multi_run_check.py](tools/multi_run_check.py) | 多 Run 工作区和索引检查 |
+| [LONGRUN_PROTOCOL_V2](contracts/LONGRUN_PROTOCOL_V2.md) | C/D/W、授权、真实回交与恢复 |
+| [MULTI_RUN_CONTROLLER](contracts/MULTI_RUN_CONTROLLER.md) | 多 Run 资源、状态及采用版本 |
+| [CODEX_NATIVE_EXECUTION_PROFILE](CODEX_NATIVE_EXECUTION_PROFILE.md) | 物理执行配置 |
+| [PRO_MANAGER_GUIDE](professional/PRO_MANAGER_GUIDE.md) | 通用协调职责 |
+| [PRO_EXECUTOR_GUIDE](professional/PRO_EXECUTOR_GUIDE.md) | 通用专业执行职责 |
+| [OWNER_GO](templates/OWNER_GO.md) / [CODEX_NATIVE](templates/OWNER_GO_CODEX_NATIVE.md) | 通用启动输入与权限 |
+| [PRO_DELEGATION](templates/PRO_DELEGATION.md) | 具名专业工作委派 |
+| [TASK_PROGRESS](templates/TASK_PROGRESS.md) / [BUSINESS_PROGRESS](templates/BUSINESS_PROGRESS.md) | 通用恢复与业务阅读模板 |
+| [CONTROLLER_OPERATIONS](controller/CONTROLLER_OPERATIONS.md) | 主控运行规程 |
+| [longrun_gate.py](tools/longrun_gate.py) / [multi_run_check.py](tools/multi_run_check.py) | 只读机械核验 |
 
-## 5. 状态与真实事实
+专业模板可由本 Run 的任务来源显式指定或已有专业 Workflow 明确引用。如统计闭环的 [TASK_PROGRESS_STATISTICS_CLOSURE](templates/TASK_PROGRESS_STATISTICS_CLOSURE.md) 和 [BUSINESS_PROGRESS_STATISTICS_CLOSURE](templates/BUSINESS_PROGRESS_STATISTICS_CLOSURE.md)，原样保留，不要求其他任务适配。原历史观察模板保存在 [TASK_PROGRESS_OBSERVATION_LEGACY](templates/TASK_PROGRESS_OBSERVATION_LEGACY.md) 及历史 commit 中；旧 Run 不静默升级。
 
-每个 Run 有两个用途明确的当前视图。**先看业务，再看运行细节**：
+## 4. 运行记录
 
-```text
-longrun/runs/<run_id>/business_control/BUSINESS_PROGRESS.md  # 人类业务进展与成果入口
-longrun/runs/<run_id>/business_control/TASK_PROGRESS.md      # 机器状态、精确版本、交接与恢复
+```
+longrun/runs/<run_id>/
+  OWNER_START.md
+  RUN_BINDING.json
+  RUN_RESOURCE_BINDING.json
+  business_control/TASK_PROGRESS.md
+  business_control/BUSINESS_PROGRESS.md
+  calls/
+  delegations/
+  ... 实际产生的记录
 ```
 
-历史 Run 可能只拥有 TASK_PROGRESS；不得伪造过去未生成的 BUSINESS_PROGRESS。
+TASK_PROGRESS 服务技术恢复；BUSINESS_PROGRESS 服务 Owner 阅读。manager 根据真实专业产物更新两种视图，不重做分析。主控验证、保存及路由，不能凭文件存在或自报完成推断实际完成。专业内容依任务原件；仅保存有授权的材料，大体积或敏感数据用可核实引用。主控 Chat 归档仍按 [controller/chats](controller/chats/README.md) 和初始授权执行，仅主控自身可见对话。
 
-运行机器状态保存在：
+## 5. 校验
 
-```text
-longrun/runs/<run_id>/business_control/TASK_PROGRESS.md
-```
-
-它只投影 Owner GO、Skill 原生产物和已核回执，不是第二本专业事实。文件存在、命令成功、结果已上传或 executor 自述完成，均不能替代 Skill 自己的完成条件。
-
-不同 Run 的工作区、物理线程、权限、代码版本和结果独立。一个 Run 等待时，其他非冲突 Run 可以继续；不得借用其他 Run 的 executor thread、工作区或授权。
-
-## 5.1 主控 Chat 归档（只导主控）
-
-主控 Chat 的人类沟通记录放在 [controller/chats/](controller/chats/README.md)，按实际 Codex 主控线程身份保存。由 cgpterm Controller Skill 调用现有 App Server 只读能力提取用户／主控可见消息并向本仓受授权分支提交；不会收集 manager、executor 的原始聊天，避免与已有 D/Return/专业报告重复。
-
-归档是帮助人追溯 Owner 输入与主控沟通，不是本 Run 的 `BUSINESS_PROGRESS`，也不能替代专业成果和业务 Gate。尚未看到真实 `<thread-id>.md` 时，应视为尚未确认归档成功。
-
-## 6. 校验
-
-```bash
+```sh
 python -m unittest discover -s longrun/tests -v
 python longrun/tools/longrun_gate.py validate-binding snapshot.json
 python longrun/tools/longrun_gate.py validate-delegation snapshot.json
 python longrun/tools/longrun_gate.py validate-executor-execution snapshot.json
 python longrun/tools/longrun_gate.py validate-executor-return snapshot.json
 python longrun/tools/longrun_gate.py route-return snapshot.json
-python longrun/tools/multi_run_check.py ...
 ```
 
-离线校验成功不证明物理发送、Linux 目录、模型选择或权限已经真实生效。
+离线校验不证明真实通道、权限、工作区锁或自动唤醒。版本升级不改变历史 GO、专业事实及绑定；兼容性不足须记录明确迁移，不改回公共文件来切换任务。
