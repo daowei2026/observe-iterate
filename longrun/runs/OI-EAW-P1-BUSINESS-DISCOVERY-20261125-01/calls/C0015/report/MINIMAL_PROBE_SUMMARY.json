@@ -1,0 +1,35 @@
+{
+  "at": "2026-11-25T22:47:01.633138+00:00",
+  "selection_at": "2026-11-25T22:34:13.945461+00:00",
+  "selection_sha256": "384ce926c94212f147a1e964157980210e4caf4f32d1e292f428cdf391bab758",
+  "events": 43,
+  "PGs": 43,
+  "date_blocks": 21,
+  "unique_local_Wall_keys": 43,
+  "previously_deep_PGs": 0,
+  "R1_generic_exposed_events": 43,
+  "prior_specific_metric_PGs": 41,
+  "counts": {
+    "outside_Wall_band": 29,
+    "start_baseline_quote_verified": 43,
+    "start_best_outside_Wall_band": 22,
+    "current_q_equals_cumulative": 0,
+    "raw_observed_ratio_differs_level": 42,
+    "later_resolved_display_within10s": 8
+  },
+  "added_labels": {
+    "quantity_role": "cum_reload_proxy=活动累计可见补充代理；baseline_vol=活动起点最佳档量，价位见build_start_best_price；ratio=cum/baseline观测值；level=跨越门槛；current_best_q=切点最佳档显示量，归属按best_price与Wall价带判断",
+    "time_basis": "uti/ts=展示发生锚，L1=该锚快照；只用不晚于cutoff的展示信息回看；formal_publication_by_cutoff未知；后续resolved不能倒用为cutoff事实"
+  },
+  "added_numeric_values": 0,
+  "original_values_changed": 0,
+  "actual_P2_artifacts": 0,
+  "formal_publication_verified": 0,
+  "interpretation": "已有数据的数量角色和时点可明确表达；标签未增加市场信息，不是P1缺字段证明，也不测真实P2误读率/预测收益。后续resolved仅列审计，未进入增强输入。",
+  "limits": [
+    "探索性已暴露同批样本；非严格留出",
+    "仅活动比值>=1且与当前量/价带存在差异的定向条件样本；不可作总体发生率",
+    "raw ratio可反算baseline为恒等关系核对；typed milestone取level时不可如此反算",
+    "未提供正式receipt/完整历史，真实发布可用性仍未知"
+  ]
+}
