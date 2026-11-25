@@ -20,23 +20,23 @@
 
 ## 3. 首版 Linux 工作区规则（2026-11-16 Owner 补充）
 
-**不同 run_id 使用不同 Linux 工作区，工作区由 Owner 在准备任务时先行准备并在各 Run 的真实 GO 中给出绝对路径。**
+**同时占用资源的不同 Run 使用互不重叠的 Linux 工作区。Owner 事先准备并在本次真实 GO 中指定绝对路径；已经实际释放的常用工作区可供新 Run 使用，无需为每次任务另建目录。**
 
 主控不自行创建、克隆、分配、搬迁或选择备用工作区；不得因为当前 cgpterm 旧文档提到 /dwdhome/fy/BASE_E6_2 就把它当成所有新 Run 的默认工作区。一个 Run 的实际 Linux 执行线程应以该 Run 真实 GO 所指定路径为工作现场。
 
 主控注册 Run 时须核：
 1. 真实 GO 提供绝对 Linux 路径，写入 Run 资源绑定；
-2. 与当前未结束的其他 Run 的工作区在路径上不相同、不存在父子包含；
+2. 与其他仍持有资源或占用状态不明的 Run 的工作区在路径上不相同、不存在父子包含；
 3. 在目标 Linux 执行主机上验证目录实际存在、realpath、目录权限，防止软链接指向相同目录；目标执行角色所使用的实际工作目录和真实写权限在首次操作时还要核实；
 4. 仅当该 Run 的真实 Owner grants 和 D/W 写面覆盖具体动作时，才允许执行；
 5. Run 的本地目录互异，并不证明远端 Git 分支、数据库、缓存、共享文件/输出路径互异。若两个 Run 仍写入同一外部目标，应分别核实际单写者或只阻断冲突动作，不因此阻断无冲突的其他 Run。
 
-资源路径只有初始 GO 已明确授权的候选路径才可由主控按事实切换并重新核验。不能在运行中向 Owner 请求新的工作区或擅自改路径。第一版**不实现共享 Linux 工作区的自动锁管理器**；路径冲突只阻断受影响动作并记录恢复条件，其他 Run 继续。
+资源释放与业务完成分开。Owner 已授权释放或原 Run 已有合法释放依据时，核旧线程、在途副作用及待唤醒均不会再占用该工作区，记录真实释放，保留原 Binding、成果和剩余工作。已释放的 Run 即使业务未完成，也不再占用该路径；需要恢复时先重新取得并核验资源，不得自动抢回。未核清的占用不当作已释放。资源路径只有初始 GO 已明确授权的候选路径才可由主控按事实切换并重新核验。不能在运行中向 Owner 请求新的工作区或擅自改路径。第一版**不实现共享 Linux 工作区的自动锁管理器**；路径冲突只阻断受影响动作并记录恢复条件，其他 Run 继续。
 
 ## 4. 文件边界和唯一可信事实
 
 - 单 Run 正式原件继续在 longrun/runs/<run_id>/ 内，结构不变；增加每 Run 的 RUN_RESOURCE_BINDING.json（操作现场与来源记录）。
-- 全局 RUN_REGISTRY.json 只记录 Run→真实 Binding、资源、采用协议及 Owner 工作区路径的索引，提供寻址/交叉检查；不得在其中复制专业成果或 TaskProgress 当作新权威。每个 runs[run_id] 条目固定包含 run_id、work_id、business_case_id、binding_ref、resource_binding_ref、owner_workspace_path、adopted_protocol_ref；其中三个 ref 均为实际存在的精确 Git 引用，路径分别指向所属 Run 的 RUN_BINDING.json、RUN_RESOURCE_BINDING.json 和所采用 LONGRUN_PROTOCOL_V2.md。该 Registry 是可重建的索引，不自动保存全部原始回执。
+- 全局 RUN_REGISTRY.json 是当前资源登记/可接入调度的 Run→真实 Binding、资源、采用协议及 Owner 工作区路径索引，提供寻址/交叉检查；不得在其中复制专业成果或 TaskProgress 当作新权威。每个 runs[run_id] 条目固定包含 run_id、work_id、business_case_id、binding_ref、resource_binding_ref、owner_workspace_path、adopted_protocol_ref；其中三个 ref 均为实际存在的精确 Git 引用，路径分别指向所属 Run 的 RUN_BINDING.json、RUN_RESOURCE_BINDING.json 和所采用 LONGRUN_PROTOCOL_V2.md。该 Registry 是可重建的索引，不自动保存全部原始回执。现有 v1 检查程序将每个 runs 条目视为需独占的资源登记；候选 Registry 应排除已真实释放的登记（仅条件更新索引，不删旧 Run 原件、已采用 Binding 或身份账本）。状态不明且可能冲突的登记不能为通过检查而移除。
 - 单 Run action ledger、物理发送回执、实际任务定义与本 Run 最新有据专业工作状态才是下一动作依据；索引若与已验证事实不一致，标记过时，先修复/重建，不用索引覆盖原始记录。
 - RUN_REGISTRY 的空文件只代表尚无从本索引合法登记的 Run，不代表全仓或其他分支历史 Run 不存在。真实 GO 首次接收前必须对已有可信索引及远端实际 Run 身份做交叉核查。
 - 采用的协议、专业任务来源与两类 Chat 指南 均使用 owner/repo@40位commit:path。源版本和运行记录的后续 Git commit 是不同的身份；普通提交不自动升级既有 Run。

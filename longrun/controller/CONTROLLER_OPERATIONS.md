@@ -8,7 +8,7 @@
 
 跨 Run 索引：controller/RUN_REGISTRY.json。索引不是第二套 Gate 状态库；其参考采用精确 commit，不能把实时业务完成情况机械复制到索引中。
 
-每 Run 的 OWNER_START.md/GO 指定 Linux 工作区路径；该路径由 Owner 提前准备，不由主控自动创建。实际 Codex 执行角色线程应绑到该路径；仍须按当前真实采用的 cgpterm 版本核 Worker 工作区与权限，不从文件记载推断已经支持。
+每 Run 的 OWNER_START.md/GO 指定 Linux 工作区路径；该路径由 Owner 提前准备，不由主控自动创建。实际 Codex 执行角色线程应绑到该路径；仍须按当前真实采用的 cgpterm 版本核实际 Codex 角色的工作区与权限，不从文件记载推断已经支持。
 
 ## 1. register_run（新 Run）
 
@@ -16,9 +16,9 @@
 
 动作：
 1. 检查真实 GO，不拿模板或旧聊天补权限；检查 run_id 与可信 Run 索引、历史原件是否冲突。同一业务 case 可有多个不同 run_id。
-2. **先核路径、后引用新原件**：把拟用 Owner 路径与当前已登记未结束 Run 的工作区做路径及父子包含比较；在实际 Linux 执行主机核 proposed path 和现存工作区的目录、realpath、基础权限。不能先要求校验一条尚不存在的 Git exact ref。
+2. **先核路径、后引用新原件**：把拟用 Owner 路径与仍占用资源或占用不明 Run 的工作区做路径及父子包含比较；在实际 Linux 执行主机核 proposed path 和现存工作区的目录、realpath、基础权限。不能先要求校验一条尚不存在的 Git exact ref。
 3. 核准后发布本 Run 的 RUN_BINDING.json、RUN_RESOURCE_BINDING.json；资源绑定必须记录 Owner 实际给的路径与 Linux 核验凭据。回读 GitHub 准确 commit、路径与真实 grants；尚未发任何 C 时也不得伪称消息已送达。
-4. 用这些**已经存在的精确提交引用**构造候选 Registry；运行 validate-registry；在实际 Linux 主机上用同一候选 Registry 运行 check-workspaces --on-worker-host，确保不同 Run 不同工作区且不通过符号链接重合。再次核执行角色实际 cwd、仓库/分支、共享远端写面与授权。
+4. 用这些**已经存在的精确提交引用**和已核实的资源占用事实构造候选 Registry；按多 Run 合同排除已合法释放的登记，保留原历史记录；运行 validate-registry；在实际 Linux 主机上用同一候选 Registry 运行 check-workspaces --on-worker-host，确保不同 Run 不同工作区且不通过符号链接重合。再次核执行角色实际 cwd、仓库/分支、共享远端写面与授权。
 5. 采用受保护/条件 Git 更新发布 Registry 并回读；若发生并发更新，重新读取已核实 facts 再对账重试，不能盲目覆盖。完成注册后才进入待派状态，并按原 V2 的 validate-binding/validate-invocation 准备 manager C0001，实际发送仍走现有运输设施。
 
 输出：已核实 Run 索引及资源绑定；如未满足，输出待核实项，绝不伪造已绑定聊天或已完成发送。
@@ -32,9 +32,9 @@
 3. 构造候选动作：只使用已发布、受权、真实依赖已满足、且已有正式工作后继或原 D 续接依据的准确下一动作。
 4. 为每一动作核实原 Run 的物理 recipient、发件身份/token、来源提交、预计写面、工作区和其他非 Linux 共享资源。
 5. 有 Owner 明确优先级则按其执行；同优先级按候选入队时间/稳定身份排序。主控不判断哪项分析业务上更重要。
-6. 执行一个具备资格的动作并保存真实发送承诺/回执、效果未知或阻断状态；其余候选保持待办，等待下一合法唤起。不得承诺持续后台自动轮询。
+6. 执行具备资格的动作并保存真实发送承诺/回执、效果未知或阻断状态；在本次合法控制回合内重新评估，仍有可派或可消费动作就继续，不因一次动作完成而人为停下。确实只剩外部等待时，按现有已授权长任务/Goal/计划休眠机制登记下一次有意义的接续；不得承诺没有真实调度支持的后台运行。
 
-这不是一个新的 scheduler 服务；继续复用 cgpterm 已有长任务/运输唤起设施，待后续 Skill 更新真正接线。
+这不是一个新的 scheduler 服务；继续复用 cgpterm 已有长任务/运输唤起设施。正常派发只核本动作实际需要的前置，不将完整离线回归、其他物理 profile 的检查、重复环境审计或可选归档变成启动门槛。
 
 ## 2.1 业务进展阅读入口
 
