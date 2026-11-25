@@ -1,6 +1,6 @@
 # C0011 / D006 / S06 持续进度
 
-当前：S06实际B3、第一轮归并和专业报告已完成；发布回交进行中。不执行S07/S08/S09。继续原E1，workers=[]。
+当前：D006/S06实际研究、归并、正式报告与零W Return均已完成并exact回读，收尾核对/交回controller进行中。不执行S07/S08/S09。继续原E1，workers=[]。
 
 实际输入：sources/中本C INVOCATION、D006 JSON/正文、原Manager C0010 Return已亲自读取；任务书锁定b1bf8025、controller锁定da8dabfd。复用C0005统一候选，C0007 B1及C0009 B2原始案例/报告/代码/索引；原始行情仅Owner同批路径。
 
@@ -23,3 +23,8 @@
 正式报告EXECUTOR_REPORT.md、B3_CASEBOOK.md、FIRST_ROUND_SYNTHESIS.md、S06_SUMMARY.json及来源/累计账/代码已保存。发布前核指定Personal实际head=56e70e410dd92cbf3ba3c8510abd03f4943013d7，C0011目录仅原INVOCATION，blob537dc6f1d4de247167ee2bbcdab9d14457b9a65c。报告/Return路径尚不存在。
 
 下一步：冻结索引并按当前head/路径条件串行发布和exact回读；报告先、C0011/D006零W Return后，完成时REPORTED_COMPLETE且remaining_scope_ref/continuation_ref=null。之后结束Git写入、交controller真实回收和原Manager消费；父Run后继不填成本D剩余。
+
+
+最终发布事实：本地冻结125项、3985223 bytes，索引只读核查PASS。10份正式报告/支持文件逐次经同Personal Contents API创建，核parent并exact回读；报告bundle=0e52ad9a51f2bc3803b2343b4b06daed616e91fa。C0011/D006零W PRO_RETURN commit=60703bf1bbd1b8b0a990fb5e097d60797345aa83，blob=2672b19327ae1feeee4f733c960b4dcb640d9a0d，引用bundle中已存在报告；REPORTED_COMPLETE，remaining_scope_ref/continuation_ref/owner_request_ref均null，下发与Worker数组均空。锁定V2 schema/pro_state自检PASS，未伪造controller物理回执或Manager消费。
+
+收尾：本进度文件按当前blob条件更新后，核最终head、原INVOCATION和Return，结束Git写入。实际运输入口在本地PUBLICATION_READBACK.json及publication/RETURN_HANDOFF.json。交原controller实际回收、原Manager消费并逐项安排S07＋S08；本E1未执行第二轮，父Run未完成。
