@@ -1,0 +1,45 @@
+{
+  "schema": "longrun-delegation/v2",
+  "run_id": "OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01",
+  "delegation_id": "D003",
+  "issuer_call_id": "C0004",
+  "issuer": "codex:OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01:manager",
+  "recipient": "codex:OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01:executor:E1",
+  "return_to": "codex:OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01:manager",
+  "task_ref": "daowei2026/observe-iterate@b1bf8025dd49091e71c8814caf36c2e02aced198:ai_chat/业务有效性/EAW_P1_挂单成交演化_迭代点发现任务_V0.4_长程执行版_20261125.md",
+  "business_context_ref": "daowei2026/observe-iterate@5b645cff6ec45b89c4f8979f9627f5400a0714e3:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/OWNER_START.md",
+  "input_refs": [
+    "daowei2026/observe-iterate@0eec138e576c821cc9f69d65df546c497bb0e74c:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0004/INVOCATION.json",
+    "daowei2026/observe-iterate@99b3e2eedb5079a7f6b77c67332cf1c256612fc7:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0004/FULL_ASSIGNMENT.md",
+    "daowei2026/observe-iterate@1461704384f95ef41bf2147b62ccb97f6c83a253:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0003/PRO_RETURN.json",
+    "daowei2026/observe-iterate@9d4c87f77736e5a92eda33b7655065b698b6b4e9:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/delegations/D002/DELEGATION.json",
+    "daowei2026/observe-iterate@2919b043df8ac5f2aafeebf425b93a25d118ab53:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0002/EXECUTOR_REPORT.md",
+    "daowei2026/observe-iterate@2919b043df8ac5f2aafeebf425b93a25d118ab53:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0002/S01_UNDERSTANDING.md",
+    "daowei2026/observe-iterate@2919b043df8ac5f2aafeebf425b93a25d118ab53:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0002/S02_DATA_AUDIT.md",
+    "daowei2026/observe-iterate@2919b043df8ac5f2aafeebf425b93a25d118ab53:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0002/SOURCE_INDEX.json",
+    "daowei2026/observe-iterate@2919b043df8ac5f2aafeebf425b93a25d118ab53:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0002/ARTIFACT_INDEX.json",
+    "daowei2026/observe-iterate@acf2640fa1ff6371f4472447a1325ff6c31c46b8:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/OWNER_DELEGATION_GRANULARITY.original.md",
+    "daowei2026/observe-iterate@5b645cff6ec45b89c4f8979f9627f5400a0714e3:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/OWNER_START.md",
+    "daowei2026/observe-iterate@bc30c55fff35f81de5102ed43c0e168eb7a8de11:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/RUN_BINDING.json",
+    "daowei2026/observe-iterate@bc30c55fff35f81de5102ed43c0e168eb7a8de11:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/RUN_RESOURCE_BINDING.json",
+    "daowei2026/observe-iterate@b1bf8025dd49091e71c8814caf36c2e02aced198:ai_chat/业务有效性/EAW_P1_挂单成交演化_迭代点发现任务_V0.4_长程执行版_20261125.md",
+    "daowei2026/observe-iterate@b1bf8025dd49091e71c8814caf36c2e02aced198:longrun/README.md",
+    "daowei2026/observe-iterate@b1bf8025dd49091e71c8814caf36c2e02aced198:longrun/contracts/LONGRUN_PROTOCOL_V2.md",
+    "daowei2026/observe-iterate@b1bf8025dd49091e71c8814caf36c2e02aced198:longrun/CONTROL_PLANE_ADAPTER.md",
+    "daowei2026/observe-iterate@b1bf8025dd49091e71c8814caf36c2e02aced198:longrun/CODEX_NATIVE_EXECUTION_PROFILE.md",
+    "daowei2026/observe-iterate@b1bf8025dd49091e71c8814caf36c2e02aced198:longrun/professional/PRO_MANAGER_GUIDE.md",
+    "daowei2026/observe-iterate@b1bf8025dd49091e71c8814caf36c2e02aced198:longrun/professional/PRO_EXECUTOR_GUIDE.md",
+    "daowei2026/cgpterm@da8dabfdaf9a46d563aab261bef77cb5d72d7782:.agents/skills/observe-iterate-longrun-v2-controller/SKILL.md"
+  ],
+  "expected_outputs": [
+    "S03 全范围候选检索：可重放的检索程序、统一候选表、三入口计数/重合/排除说明、全部有效范围扫描记录。→ S04",
+    "运行记录的最低要求：启动时创建一份持续更新的任务进度记录（可命名为 `TASK_PROGRESS.md`，存于本次执行工作区的结果目录）。记录当前步骤、实际输入引用、已完成动作、产出路径、已确认发现、局部限制、待补证、下一步；步骤或候选切换时更新。按实际工作量分批保存候选表、代码、统计和案例证据，避免长程中断后只能看到最后一段聊天。每步状态可用“待开始 / 进行中 / 已完成 / 局部受限”，局部受限要说明是否可继续及已完成部分。恢复时读取已落盘产物，继续当前步骤或尚未完成的候选，不把已写计划当作已完成、也不从头盲目重跑。执行者可自行确定具体研究文件命名和目录布局，不新增多套 Workflow/Skill 或审批节点。"
+  ],
+  "permitted_operations": [
+    "eaw-business-discovery-research-and-publish"
+  ],
+  "allowed_writes": [
+    "/dwdhome/fy/BASE_E6_2",
+    "daowei2026/observe-iterate:feat/statistics-driven-feature-closure-v0.3-20261122:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/"
+  ]
+}
