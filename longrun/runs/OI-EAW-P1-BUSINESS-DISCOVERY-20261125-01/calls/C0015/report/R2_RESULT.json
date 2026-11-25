@@ -1,0 +1,90 @@
+{
+  "id": "R2",
+  "title": "活动基线、同价/近价对象及可知时间的联合解释",
+  "run_id": "OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01",
+  "call_id": "C0015",
+  "delegation_id": "D008",
+  "issuer_call_id": "C0014",
+  "scope": "D008 only; S07+S08 actually performed",
+  "maturity": "研究线索",
+  "maturity_detail": "已有展示/L1联合信息能恢复所检4类区别；参考投影语义已定位，本批正式链第一损失仍待证",
+  "formal_design_gap": "未确认",
+  "confirmed_required_change": false,
+  "sufficient_iteration_points": 0,
+  "preliminary_improvement_iteration_points": 0,
+  "confirmed_bugs": 0,
+  "actual_P2_error_proven": false,
+  "primary_same_core_condition": {
+    "occurrences": 483,
+    "Build_local_activities": 289,
+    "Wall_local_objects": 209,
+    "PGs": 83,
+    "date_blocks": 22
+  },
+  "primary_q_le_quarter": {
+    "occurrences": 219,
+    "Build_local_activities": 134,
+    "Wall_local_objects": 103,
+    "PGs": 59,
+    "date_blocks": 21
+  },
+  "PG_balanced_q_le_quarter": {
+    "hits": 38,
+    "denominator": 83
+  },
+  "existing_information": [
+    "raw baseline/cum/observed ratio与threshold level分开",
+    "Build起点UTI+L1可恢复基线参考价/量，当前量按当前价带关系解释",
+    "cutoff前后展示Absorb/Attack历史分开；正式publication仍未知"
+  ],
+  "reference_projection_findings": [
+    "TIS Build baseline为起点best_vol，不必是Wall同价量；稀疏事件未直接携带起点参考价",
+    "FRP FaoIngress Build milestone读level，不是raw ratio；typed measurements未承接baseline/raw ratio；不能从cum/typed门槛反算真实base"
+  ],
+  "first_actual_formal_loss": "未证；actual producer/FRP版本与相容完整正式历史未取得，不能用参考投影替代",
+  "S07_outputs": [
+    "S07_EVIDENCE.md",
+    "R2_CASEBOOK.md",
+    "report/R2_STATISTICS.json",
+    "report/VERIFICATION_EVIDENCE.json"
+  ],
+  "S08_outputs": [
+    "R2_DESIGN_POSITIONING.md",
+    "report/MINIMAL_PROBE_SUMMARY.json",
+    "report/MINIMAL_PROBE_VERIFICATION.json",
+    "probe/BASELINE_INPUT.csv",
+    "probe/TWO_LABEL_INPUT.csv"
+  ],
+  "deep_cases": 4,
+  "deep_PGs": 4,
+  "deep_date_blocks": 4,
+  "minimal_probe": {
+    "PGs": 43,
+    "date_blocks": 21,
+    "labels": [
+      "quantity_role",
+      "time_basis"
+    ],
+    "added_numeric_values": 0,
+    "original_values_changed": 0,
+    "counts": {
+      "outside_Wall_band": 29,
+      "start_baseline_quote_verified": 43,
+      "start_best_outside_Wall_band": 22,
+      "current_q_equals_cumulative": 0,
+      "raw_observed_ratio_differs_level": 42,
+      "later_resolved_display_within10s": 8
+    },
+    "meaning": "existing information semantic expression only, not actual P2/error-rate/production/predictive validation"
+  },
+  "exposure": "all47 PGs inherited R1 generic exposure;41 probe PGs previous specific metrics; no strict heldout",
+  "disposition": "先按已有信息/上层组合表达要求处理；正式合法接口恢复不了时再决定投影/元数据/关联层改动；本D回Manager，不自动扩展",
+  "next_design_question": "在实际相容receipt与合法消费投影下，能否于切点取得Build起点baseline/参考价、区分观测ratio/level并取得已发布交互历史？不能时哪个确切边界首先阻断恢复？",
+  "missing_evidence": [
+    "actual producer/FRP code/parameters/receipt/exact upstream identities",
+    "compatible complete occurrence/current/publication history",
+    "actual P2 consumption artifacts"
+  ],
+  "D008_remaining_scope": null,
+  "parent_run_complete": false
+}
