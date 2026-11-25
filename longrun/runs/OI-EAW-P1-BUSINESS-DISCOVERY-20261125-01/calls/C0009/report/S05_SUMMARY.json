@@ -1,0 +1,186 @@
+{
+  "run_id": "OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01",
+  "call_id": "C0009",
+  "delegation_id": "D005",
+  "step": "S05 B2",
+  "D005_state": "REPORTED_COMPLETE",
+  "D005_remaining_scope": null,
+  "parent_Run_complete": false,
+  "groups": 6,
+  "cases": 12,
+  "matching": {
+    "all_rows": 261497,
+    "discovery_rows": 165932,
+    "prior_background_unavailable": 3614,
+    "duration_excluded": 88628,
+    "eligible": 57585,
+    "eligible_rb_bid": 10749,
+    "q0_granularity_excluded": 16105,
+    "reserved_rejected_before_metrics": 95565,
+    "eligible_rb_ask": 10962,
+    "eligible_hc_bid": 8086,
+    "eligible_hc_ask": 7864,
+    "eligible_i_bid": 9935,
+    "eligible_i_ask": 9989,
+    "quiet_low_intervals": 3116,
+    "decline_low_intervals": 9203,
+    "decline_high_intervals": 1998,
+    "quiet_high_intervals": 970,
+    "q0_caliper_attempts": 34090,
+    "matched_pairs": 467,
+    "pairs_decline": 269,
+    "pairs_rb_bid": 38,
+    "pairs_both_PG_not_S04_exposed": 216,
+    "pairs_quiet": 198,
+    "pairs_rb_ask": 41,
+    "pairs_hc_bid": 36,
+    "pairs_hc_ask": 27,
+    "pairs_i_bid": 159,
+    "wall_pairs": 22,
+    "pairs_i_ask": 166,
+    "selection_choices_B2-01": 7,
+    "selection_choices_B2-02": 1,
+    "selection_choices_B2-03": 4,
+    "selection_choices_B2-04": 16,
+    "selection_choices_B2-05": 19,
+    "selection_choices_B2-06": 81
+  },
+  "identity": {
+    "discovery_intervals": 165932,
+    "declining_intervals": 51373,
+    "c_below_positive_net_decline": 0,
+    "negative_n_quote": 0,
+    "C_equals_visible_loss": 165932,
+    "n_equals_positive_variation_over_q0": 165932
+  },
+  "raw_volume_bound_remedy": {
+    "discovery": 165932,
+    "declining": 51373,
+    "raw_total_less_than_net_decline": 5423,
+    "matched_supplement_candidates": 0
+  },
+  "conservative_PGs": 12,
+  "date_blocks": 10,
+  "S04_reused_exact_intervals": 0,
+  "S04_exposed_PGs": [
+    "PG018",
+    "PG039"
+  ],
+  "cumulative_selection_metric_intervals": 34,
+  "cumulative_detailed_extractions": 24,
+  "reserved_windows": 53,
+  "reserved_PGs": 50,
+  "reserved_detail_use": 0,
+  "future_paired_available": {
+    "10": 5,
+    "30": 4,
+    "60": 2
+  },
+  "hypotheses": [
+    {
+      "id": "B2-L1",
+      "title": "真实消耗/净撤减叙事中的来源与可识别性",
+      "maturity": "研究线索",
+      "evidence": [
+        "B2-03",
+        "B2-04",
+        "B2-05",
+        "B2-06"
+      ],
+      "business_difference": "相近末量却不同可见减少与增加活动；高同源代理可超过总成交，不能把活动改写为真实消耗",
+      "formal_gap": "待证，未确认；参考合同已含代理/volume semantics等表达，须取得本批相容正式结果",
+      "first_loss": "未定位；参考quote推导说明来源边界，不证明本批现行正式链首次丢失",
+      "needs": [
+        "核原始成交单位、时序、完整性及真实方向归属",
+        "核本批正式producer/FRP版本、receipt、身份、history/current和发布时间",
+        "继续同批中有条件上界与负向信息取证，不能以C_quote机械零结果作缺席证明"
+      ]
+    },
+    {
+      "id": "B2-L2",
+      "title": "把存量、可见活动量和联合P1的时间基准一起解释",
+      "maturity": "研究线索",
+      "evidence": [
+        "B2-01",
+        "B2-02",
+        "B2-04",
+        "B2-05",
+        "B2-06"
+      ],
+      "business_difference": "r≈1不等于盘口安静，下降近似不等于活动近似；Wall/Build/Absorb各有基线与观察时段",
+      "formal_gap": "待证；B2-05-B现有联合属性已能区分，并非完全无表达",
+      "first_loss": "未定位；上层是否已正确消费现有字段待查",
+      "needs": [
+        "核联合属性已可区分哪些业务叙事，防重复建特征",
+        "区分事件发生/闭段/发布时间与量变段t1",
+        "与既有H1/H2关系由后继S06归并，不在S05宣布新底层修改"
+      ]
+    }
+  ],
+  "confirmed_required_formal_design_changes": 0,
+  "research_leads": 2,
+  "candidate_iteration_points": 0,
+  "sufficiently_supported_iteration_points": 0,
+  "preliminary_improvement_supported_points": 0,
+  "limitations": [
+    "C_quote与可见量减量同源；n_quote恒等正向可见变化",
+    "总成交单位/完整性/时间/方向未正式验证",
+    "本批正式producer/FRP版本、身份、参数receipt、完整history/current和发布时间缺失",
+    "Wall展示unknown不是无Wall；展示空表不是正式无事件",
+    "观测窗口有选择性；日期/品种/PG/配对数均不保证独立或市场代表性"
+  ],
+  "verification": {
+    "status": "PASS",
+    "checked_at": "2026-11-25T19:10:59.720678+00:00",
+    "scope": "S05/B2 executor artifact verification only",
+    "selection_frozen_before_post_access": true,
+    "groups": 6,
+    "cases": 12,
+    "unique_conservative_PGs": 12,
+    "date_blocks": 10,
+    "counts": {
+      "proxy_exceeds_total_cases": 4,
+      "available_10": 11,
+      "available_30": 10,
+      "available_60": 8,
+      "full_available_P1_rows": 250,
+      "raw_trace_rows": 1937,
+      "cases": 12,
+      "unavailable_60": 4,
+      "unavailable_30": 2,
+      "unavailable_10": 1
+    },
+    "raw_source_files_verified_including_empty_snapshot_availability": 86,
+    "prior_artifacts": [
+      {
+        "call": "C0002",
+        "frozen_files_unchanged": 24
+      },
+      {
+        "call": "C0005",
+        "frozen_files_unchanged": 33
+      },
+      {
+        "call": "C0007",
+        "frozen_files_unchanged": 103
+      }
+    ],
+    "S04_related_PGs": [
+      "PG018",
+      "PG039"
+    ],
+    "S04_reused_exact_intervals": 0,
+    "within_S05_PG_reuse": 0,
+    "reserved_detail_use": 0,
+    "pair_sensitivity": {
+      "baseline_pairs": 467,
+      "r_difference_at_most_0.03": 248,
+      "q0_ratio_at_most_1.2": 325,
+      "pre10_activity_ratio_at_most_1.5": 293,
+      "note": "nested descriptive counts only; same batch and overlapping alternatives, not second-round validation; selection unchanged"
+    },
+    "plots": "six PNG/PDF formed; all six actually visually inspected, measurement endpoint marker retained; gaps are not filled",
+    "limitation": "local display ordering and source consistency do not verify formal current/history, actual production versions, exact identity or publication timing"
+  },
+  "next_owner": "原Manager消费D005后单独签发S06；E1未执行S06～S09"
+}
