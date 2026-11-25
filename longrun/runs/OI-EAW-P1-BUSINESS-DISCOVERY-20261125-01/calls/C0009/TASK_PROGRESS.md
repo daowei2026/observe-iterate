@@ -1,6 +1,6 @@
 # C0009 / D005 / S05 持续进度
 
-当前状态：S05 实际研究与报告已完成；发布回交进行中。只执行独立 B2。S01～S04 成果复用，父 Run 尚未完成。
+当前状态：D005/S05实际研究、报告及零W Return已完成并exact回读；收尾核对与交回controller进行中。只执行独立 B2。S01～S04 成果复用，父 Run 尚未完成。
 
 实际输入：本目录 sources/INVOCATION.json、DELEGATION.json、DELEGATION.md、MANAGER_C0008_PRO_RETURN.json；任务书锁定 b1bf8025dd49091e71c8814caf36c2e02aced198；C0005 scan/CANDIDATES.csv.gz；C0007 冻结证据、SAMPLE_USE_CUMULATIVE.json。原始行情仅 Owner 同批目录。
 
@@ -26,4 +26,6 @@
 
 发布前已核：指定Personal连接实际head=a93724b327c3a9c0a06b343be3854d2c0d8c4c34；C0009目录仅有原INVOCATION（blob bd7a136363c310e95b1e41cf951dd341ed8e5f19）。报告/Return目标尚不存在。仅本Run获准路径写入，不覆盖INVOC或其他Run。
 
-下一步：冻结本地产物索引，按当前head逐文件条件发布并exact回读；先报告、后C0009/D005零W Return（REPORTED_COMPLETE，remaining_scope_ref=null），之后交controller实际回收、原Manager消费并单独安排S06。S06～S09未执行。
+发布结果：112项本地冻结文件，共3026821 bytes，索引只读核查PASS。8份正式报告/支持文件逐次通过Contents API创建、核parent、exact回读；报告bundle commit=bdee0fa41e0fc7b17e619e45ad2011c8805c8370。C0009/D005 PRO_RETURN commit=915e5ef91aedb20f2b096be84410b58cc8a10459，blob=82a72e3e485cd1ab30b863591d4ebcc2330733b4，引用bundle中的实际报告；零W，REPORTED_COMPLETE，remaining_scope_ref/continuation_ref/owner_request_ref均null，三类下发/消费数组为空。锁定V2 schema及pro_state完成自检PASS；未伪造controller独立物理回执。
+
+下一步：按本进度文件当前blob条件更新远端、核最终head/Return/原INVOCATION后结束Git写入；本地PUBLICATION_READBACK.json和publication/RETURN_HANDOFF.json给真实运输入口。交controller实际回收、原Manager消费并单独安排S06；本E1不执行S06～S09，父Run未完成。
