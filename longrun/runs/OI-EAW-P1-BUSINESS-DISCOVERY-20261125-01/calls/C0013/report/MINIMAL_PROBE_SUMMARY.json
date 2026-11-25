@@ -1,0 +1,76 @@
+{
+  "at": "2026-11-25T21:35:46.317177+00:00",
+  "frozen_selection_ref": "selection/PROBE_INTERVALS_FROZEN.json",
+  "source_problem_ref": "selection/R1_BASIS_FROZEN.json",
+  "probe_scope": "18预留PG，每PG一个完整同价区间，按ID哈希选择；没有按最低量/形状/未来结局选样；同一已选窗口批次，非严格样本外",
+  "minimal_items": [
+    "min_over_q0",
+    "first_min_position_fraction"
+  ],
+  "reference_fields": "q0,t0,t1,side,price already in baseline, not extra trial items",
+  "n": 18,
+  "PGs": 18,
+  "date_blocks": 5,
+  "rows_with_hidden_dip": 4,
+  "baseline_determines_min_quantity": 6,
+  "rows_min_before_end": 5,
+  "ordinary_no_hidden_dip": 14,
+  "field_reconstruction_matches_raw": true,
+  "as_of_rule": "两项均只概括t0..t1已见数据，在t1才作为整段摘要可用；不得提前使用全段最低点。运行中可保留截至当时的新低事件，但未实现或验证生产发布规则",
+  "research_storage_cost": {
+    "piece_records": 18,
+    "added_numeric_cells": 36,
+    "observed_halfsecond_updates": 89,
+    "new_running_min_updates_excluding_initial": 39,
+    "meaning": "片段末两项存储是研究表达成本，不是生产稀疏触发优化或可用性验证"
+  },
+  "known_failures": [
+    {
+      "group_id": "R1-02",
+      "min_over_q0": [
+        0.5190839694656488,
+        0.5254237288135594
+      ],
+      "first_min_position_fraction": [
+        1.0,
+        1.0
+      ],
+      "C_first_fraction": [
+        0.746031746031746,
+        0.03571428571428571
+      ],
+      "max_single_decrease_share": [
+        0.3968253968253968,
+        0.9285714285714286
+      ],
+      "conclusion": "最低量接近且位置同在末端，两项不能回答阶段消退/集中下降差异；试查对该R1子问题不足"
+    },
+    {
+      "group_id": "R1-03",
+      "min_over_q0": [
+        0.3089005235602094,
+        0.29591836734693877
+      ],
+      "first_min_position_fraction": [
+        1.0,
+        1.0
+      ],
+      "C_first_fraction": [
+        0.8787878787878788,
+        0.0
+      ],
+      "max_single_decrease_share": [
+        0.49242424242424243,
+        0.7357142857142858
+      ],
+      "conclusion": "最低量接近且位置同在末端，两项不能回答阶段消退/集中下降差异；试查对该R1子问题不足"
+    }
+  ],
+  "benefit": "从模糊端点/累计摘要中补足曾最低多少和何时，可说明曾中途薄弱/恢复或无额外中途薄弱；这是描述可恢复性演示，未用未来收益评分",
+  "limits": [
+    "raw L1 already supplies the facts; this does not prove formal P1 lacks them",
+    "the two items cannot recover full path or trade/cancel truth, and do not solve concentration/phase differences",
+    "many probes have no extra hidden dip; preserve ordinary processes, do not claim universal benefit",
+    "formal maturity cannot jump to preliminary improvement without compatible formal joint/source verification"
+  ]
+}
