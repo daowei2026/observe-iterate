@@ -1,4 +1,4 @@
-# C0001｜Manager 正式签发报告
+# C0001｜Manager 正式签发报告（已采用 Owner 最新粒度纠正）
 
 - run_id：OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01
 - call_id：C0001
@@ -7,34 +7,42 @@
 - 原始 INVOCATION：daowei2026/observe-iterate@8d057c69afc384af92a2f634b61e3ed29d8aa3fa:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0001/INVOCATION.json
 - FULL_ASSIGNMENT：daowei2026/observe-iterate@2629799314e5b26966d58f9e10caeff52fe724d0:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0001/FULL_ASSIGNMENT.md
 - Owner GO：daowei2026/observe-iterate@5b645cff6ec45b89c4f8979f9627f5400a0714e3:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/OWNER_START.md
+- 最新纠正原件：daowei2026/observe-iterate@acf2640fa1ff6371f4472447a1325ff6c31c46b8:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/OWNER_DELEGATION_GRANULARITY.original.md
 - Binding：daowei2026/observe-iterate@bc30c55fff35f81de5102ed43c0e168eb7a8de11:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/RUN_BINDING.json
 - 资源绑定：daowei2026/observe-iterate@bc30c55fff35f81de5102ed43c0e168eb7a8de11:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/RUN_RESOURCE_BINDING.json
 
-## 实际完成的管理工作
+## 原件读取与实际采用
 
-亲自读取上述正式原件、daowei2026/observe-iterate@b1bf8025dd49091e71c8814caf36c2e02aced198:ai_chat/业务有效性/EAW_P1_挂单成交演化_迭代点发现任务_V0.4_长程执行版_20261125.md 全文及 S01～S09，以及本 Run 指定的通用运行与角色规则。已读取并采用物理主控 Skill daowei2026/cgpterm@da8dabfdaf9a46d563aab261bef77cb5d72d7782:.agents/skills/observe-iterate-longrun-v2-controller/SKILL.md。专业依据和运行规则固定于 observe-iterate@b1bf8025dd49091e71c8814caf36c2e02aced198，未采用原专业 control/、skills/。
+已亲自读取正式 INVOCATION、FULL_ASSIGNMENT、Owner GO、Binding、资源绑定，以及 daowei2026/observe-iterate@b1bf8025dd49091e71c8814caf36c2e02aced198:ai_chat/业务有效性/EAW_P1_挂单成交演化_迭代点发现任务_V0.4_长程执行版_20261125.md 全文及 S01～S09；通用运行和角色规则采用 observe-iterate@b1bf8025dd49091e71c8814caf36c2e02aced198，主控 Skill 采用 daowei2026/cgpterm@da8dabfdaf9a46d563aab261bef77cb5d72d7782:.agents/skills/observe-iterate-longrun-v2-controller/SKILL.md。不采用原专业 control/、skills/，不另制专业分析计划。
 
-签发 D001「EAW P1 同批 Tick 窗口两轮业务迭代点发现」，唯一 recipient=codex:OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01:executor:E1，return_to=codex:OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01:manager；连续 S01～S09 合并为一 D，可跨 C 接续。机读 task_ref 直接指任务书，expected_outputs 从任务书 §8.0、运行记录最低要求及 §8.5 原文取得。D 仅记录 issuer_call_id，不引用未来 Return。
+本 C 期间收到最新 Owner 纠正，已亲自读取 /dwdhome/fy/cgpterm/artifacts/eaw-discovery-controller/OWNER_DELEGATION_GRANULARITY.original.md，并逐字发布到本 Run：daowei2026/observe-iterate@acf2640fa1ff6371f4472447a1325ff6c31c46b8:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/OWNER_DELEGATION_GRANULARITY.original.md。SHA-256=`dbea564e11ea6cd563321a9e40c5b2b98482ad723186ecb2dfffe8412a009815`；已 exact 回读。此纠正优先于旧 C0001/FULL_ASSIGNMENT 和 D001 的粒度解释，原专业任务、授权及版本仍有效。
 
-创建 [技术恢复进度](../../business_control/TASK_PROGRESS.md) 与 [业务阅读进度](../../business_control/BUSINESS_PROGRESS.md)，保持同一真实状态。本报告、双进度和 D001 一并发布，后发 PRO_RETURN 用本次真实提交固定 exact refs。
+## 旧委派历史与本次替代
 
-## 当前事实及剩余范围
+原 D001（daowei2026/observe-iterate@504ecce6b88d1f21b66d158587c5a828ce4b63d2:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/delegations/D001/DELEGATION.json）已在 504ecce6b88d1f21b66d158587c5a828ce4b63d2 发布，覆盖 S01～S09；文件与原提交保持不变。依据 Owner 最新消息，现有 E1 session 已建但尚未发送任何 C，因此旧 D001 未派达、无专业成果需重做；物理状态仍交 controller 对账。原 D001 的全部九步整体委派现在已被替代，不应继续派达。原先拟引用 D001 的 manager Return 尚未发布，本 C 正式 Return 仅签认新 D002。
 
-professional_state=IN_PROGRESS；整体任务 incomplete。当前仅完成原件读取、工作组织和正式签发，尚无 executor 实际派达回执、专业回交、候选研究表、案例或业务发现。S01～S09 均未被 manager 确认为开始或完成。全范围研究和任务书结束条件仍待 E1 实际执行；当前没有据专业回交确认的局部阻断。
+本次签发 D002「业务及特征理解、数据接入与实际版本核查」，仅覆盖 S01＋S02，task_ref 直接指原任务书，expected_outputs 仅取这两步及原持续记录要求，授权没有扩大。D002 取代 D001 当前首项，后续工作按新粒度分别组织，不在本次提前签发没有实际输入的委派。
 
-## 交 controller 的合法后继
+manager 在 S01＋S02 后消费实际成果再单独委派 S03，之后 S04、S05、S06 分别委派；第二轮按每条真实候选合并 S07＋S08，最后单独 S09。业务节点消费和工作组织不增加专业复审、Owner 审批或新分析计划。
 
-核验本 C 的实际 manager 回执及已发布 D001/Return 后，按 RUN_BINDING、RUN_RESOURCE_BINDING 和 CODEX_NATIVE_DIRECT 向本 Run 唯一 E1 实际派达，物理创建/绑定/模型强度及单写者由 controller 核验。manager 不自行建 executor session，不借其他 Run 线程，不向 Owner 索取 ID。专业工作按本 D 从 S01 开始；内部步骤保存产物后直接接续，不新增审批。
+## 当前真实状态与合法后继
 
-Git 写面为初始 GO 授权分支下本 Run 路径，使用指定 Personal 连接、当前 head 条件写入并回读精确提交；本次必要发布结束后将 Git 写任务交回 controller。详细研究产物允许本地保存，后续由真实专业报告给出可核查入口。
+professional_state=IN_PROGRESS；整体 incomplete。当前只有管理原件、纠正采用、D002 与双进度，S01～S09 均未被确认实际开始或完成；没有候选表、案例、专业报告或业务发现。E1 已建 session 不构成研究开始。
 
-## 本次正式产物
+唯一 recipient=codex:OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01:executor:E1，return_to=codex:OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01:manager。继续使用 Owner 提供的 E1 thread=`01a21335-59df-7a63-b7a5-45f4387b7c76`，此 ID 仅供准确绑定；实际绑定、模型/强度、资源单写者和派达由 controller 核验。无需重启 Run 或新建/更换 E1，不向 Owner 索取 ID。
 
-- [DELEGATION.md](../../delegations/D001/DELEGATION.md)
-- [DELEGATION.json](../../delegations/D001/DELEGATION.json)
+controller 收到本 C 的正式 D002 和后发 PRO_RETURN 后，核验真实 manager 回执，明确旧 D001 已被替代，只派达 D002。E1 按原任务完成 S01＋S02 并回原 manager；未完成则续本 D002，不越至尚未委派的 S03。manager 消费此节点实际成果后再安排单独 S03。
+
+## 双进度及发布
+
+- [D002 DELEGATION.md](../../delegations/D002/DELEGATION.md)
+- [D002 DELEGATION.json](../../delegations/D002/DELEGATION.json)
 - [TASK_PROGRESS.md](../../business_control/TASK_PROGRESS.md)
 - [BUSINESS_PROGRESS.md](../../business_control/BUSINESS_PROGRESS.md)
+- [Owner 纠正原件](../../OWNER_DELEGATION_GRANULARITY.original.md)
 
-本报告不是专业研究成果，不宣布研究或父任务完成。
+D002、双进度和本报告先发布并回读，之后 PRO_RETURN 引用真实提交。Git 写面为获准分支内本 Run 路径，使用指定 Personal 连接按当前 head 条件写入；必要发布结束后将写任务交回 controller。详细研究成果后续允许本地保存并给出可核查入口。
 
-更新时间：2026-11-25T15:01:13.038Z
+本报告只交付真实管理工作，不宣布研究或父任务完成。
+
+更新时间：2026-11-25T15:06:46.632Z
