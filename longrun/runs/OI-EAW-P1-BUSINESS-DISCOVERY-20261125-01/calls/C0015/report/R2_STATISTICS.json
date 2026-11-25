@@ -1,0 +1,86 @@
+{
+  "at": "2026-11-25T22:38:48.262652+00:00",
+  "primary_definition": "milestone occurrences with activity cum/baseline>=1, best price equals Wall core, Wall-start quote visible within band. Outside-band best quantity is not Wall inventory and is excluded. No actual formal exact identities implied.",
+  "primary_denominator": {
+    "occurrences": 483,
+    "Build_local_activities": 289,
+    "Wall_local_objects": 209,
+    "PGs": 83,
+    "date_blocks": 22
+  },
+  "primary_q_le_quarter_Wall_start": {
+    "occurrences": 219,
+    "Build_local_activities": 134,
+    "Wall_local_objects": 103,
+    "PGs": 59,
+    "date_blocks": 21
+  },
+  "PG_balanced_denominator": {
+    "occurrences": 83,
+    "Build_local_activities": 83,
+    "Wall_local_objects": 83,
+    "PGs": 83,
+    "date_blocks": 22
+  },
+  "PG_balanced_q_le_quarter": {
+    "occurrences": 38,
+    "Build_local_activities": 38,
+    "Wall_local_objects": 38,
+    "PGs": 38,
+    "date_blocks": 16
+  },
+  "Build_balanced_denominator": {
+    "occurrences": 289,
+    "Build_local_activities": 289,
+    "Wall_local_objects": 209,
+    "PGs": 83,
+    "date_blocks": 22
+  },
+  "Build_balanced_q_le_quarter": {
+    "occurrences": 134,
+    "Build_local_activities": 134,
+    "Wall_local_objects": 103,
+    "PGs": 59,
+    "date_blocks": 21
+  },
+  "build_start_price_known": {
+    "occurrences": 4338,
+    "Build_local_activities": 1385,
+    "Wall_local_objects": 517,
+    "PGs": 103,
+    "date_blocks": 23
+  },
+  "build_start_price_outside_current_Wall_band": {
+    "occurrences": 2049,
+    "Build_local_activities": 612,
+    "Wall_local_objects": 372,
+    "PGs": 93,
+    "date_blocks": 23
+  },
+  "current_same_Wall_price_but_build_start_other_price": {
+    "occurrences": 264,
+    "Build_local_activities": 157,
+    "Wall_local_objects": 131,
+    "PGs": 67,
+    "date_blocks": 22
+  },
+  "raw_milestone_recovery": {
+    "milestone_rows": 1585,
+    "baseline_available_from_observed_ratio": 1585,
+    "threshold_not_observed_ratio": 1579,
+    "equal_ratio_threshold_counterexamples": 6,
+    "formal_scope": "reference FaoIngress decodeBuildNumericRow inspected; actual batch producer/FRP versions unverified"
+  },
+  "attack_display_time_deltas_seconds": {
+    "0.5": 368,
+    "0.0": 285
+  },
+  "semantic_key_multiple_versions": 2,
+  "claim_limits": [
+    "conditional selected windows and repeated event/Wall/PG/date block exposure; not market prevalence",
+    "single event/multiple milestones are not independent attacks; actor/PG sensitivity retained",
+    "R1 full-batch metric/interaction exposure already occurred; four detailed PGs not previously deeply extracted but not unseen data",
+    "prices/futures of different examples are not matched causal/predictive comparison",
+    "event time and display business_end are not publication time; formal availability unverified"
+  ]
+}
