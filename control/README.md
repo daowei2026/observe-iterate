@@ -32,7 +32,7 @@ finding 是否待处理属于流程判断，**不是独立的 Q 工作节点**�
 
 当前目标的完成、可释放状态、精确上游 `UpstreamReleasePackage`、下游版本失效及边界，统一见 L0 第 4～5 节。多 Run 并行与联合依赖按 `longrun/` 和具体任务输入，不另建专业上级。
 
-运行期间，由 manager 维护：
+运行期间，由 manager 按本专业 Workflow 采用的 [统计闭环业务进展模板](../longrun/templates/BUSINESS_PROGRESS_STATISTICS_CLOSURE.md) 与 [统计闭环恢复模板](../longrun/templates/TASK_PROGRESS_STATISTICS_CLOSURE.md) 维护：
 
 - `longrun/runs/<run_id>/business_control/BUSINESS_PROGRESS.md`：业务进展、问题处理及有效成果；
 - `longrun/runs/<run_id>/business_control/TASK_PROGRESS.md`：机器状态、版本、依赖、在途和恢复。

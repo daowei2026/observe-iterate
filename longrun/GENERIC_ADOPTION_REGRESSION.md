@@ -12,4 +12,4 @@
 | 只读研究 | 研究读/写面，不含生产修改 | 不要求生产写权，越权局部阻断 |
 | 历史记录 | 原采用 commit、旧 Binding/D/Return | 可读，不改变历史授权和专业事实 |
 
-机械协议验证运行 `python -m unittest discover -s longrun/tests -v`。真实 App Server 新建/发消息/回收、跨 Run Git 写面和恢复只有在真实 GO 后才能核实；不能由文档或测试替代。旧专业文件与模板不重写。
+机械协议验证运行 `python -m unittest discover -s longrun/tests -v`。真实 App Server 新建/发消息/回收、跨 Run Git 写面和恢复只有在真实 GO 后才能核实；不能由文档或测试替代。旧专业方法与模板不重写；统计闭环专业入口仅显式引用既有专用模板，以保持原阅读要求。新增离线 fixture 检查任务书/Skill 共用委派、任意 executor ID 和只读权限，另仓 mocked 建聊测试检查 manager/executor 及旧入口兼容。

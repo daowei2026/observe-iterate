@@ -271,6 +271,41 @@ class LongrunV2Tests(unittest.TestCase):
                          "CONTROLLER_WORKFLOW_ROUTING")
         self.assertEqual(check("validate-executor-return", c)["return_to"], cm)
 
+    def test_taskbook_and_skill_use_same_delegation_contract(self):
+        c = self.autonomous_codex_fixture()
+        # Both are immutable professional sources; no Skill path required.
+        for path in ("ai_chat/业务有效性/EAW_P1_TASK.md",
+                     "skills/feature-understanding/SKILL.md"):
+            c["delegation"]["task_ref"] = REPO + "@" + SHA + ":" + path
+            self.assertEqual(check("validate-delegation", c)["recipient"],
+                             c["delegation"]["recipient"])
+            self.assertEqual(check("validate-executor-return", c)["return_to"],
+                             c["binding"]["manager"])
+
+    def test_taskbook_read_only_arbitrary_executor_id(self):
+        c = self.autonomous_codex_fixture()
+        original = c["delegation"]["recipient"]
+        recipient = "codex:" + RUN + ":executor:research"
+        c["binding"]["executors"] = [recipient]
+        c["delegation"]["recipient"] = recipient
+        c["delegation"]["task_ref"] = REPO + "@" + SHA + ":research/TASK.md"
+        c["executor_invocation"]["recipient"] = recipient
+        c["executor_return"]["sender"] = recipient
+        c["executor_receipt"]["recipient"] = recipient
+        c["physical_bindings"][recipient] = c["physical_bindings"].pop(original)
+        c["delegation"]["allowed_writes"] = []
+        quote = "operation=read-test execution_context=/tmp/run-one allowed_writes=[]"
+        c["owner_go_text"] = quote
+        for grant in c["binding"]["grants"] + c["executor_direct_grants"]:
+            grant["allowed_writes"] = []
+            grant["authority_quote"] = quote
+        self.assertEqual(check("validate-executor-execution", c)["recipient"], recipient)
+        self.assertEqual(check("validate-executor-return", c)["return_to"],
+                         c["binding"]["manager"])
+        c["executor_direct_grants"][0]["allowed_writes"] = ["production"]
+        with self.assertRaises(ValueError):
+            check("validate-executor-execution", c)
+
     def test_invalid_manager_identity_still_rejected(self):
         c = self.autonomous_codex_fixture()
         c["binding"]["manager"] = "codex:another-run:manager"
