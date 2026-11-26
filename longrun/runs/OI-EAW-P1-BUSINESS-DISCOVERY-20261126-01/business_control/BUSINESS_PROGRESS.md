@@ -1,55 +1,52 @@
-# BUSINESS_PROGRESS｜已有一项有界设计依据，继续业务发现
+# BUSINESS_PROGRESS｜累计两项有界组合需求，继续研究入口取舍
 
-## 一、当前目标与业务结果
+## 一、当前业务结果
 
-继续从原同一批Tick窗口发现值得改变EAW叙事或特征设计的信息，并形成有真实依据的具体设计需求。主要目标仍为**部分达成**，还有具体可执行的研究机会，Run继续。
+本次继续在原同批Tick中寻找能改变EAW叙事或特征设计的业务知识，目标仍为**部分达成**。Manager已亲读并消费D002完整回交，接受它到达有意义节点；还存在具体合法研究机会，Run继续。
 
-原Manager已亲读并消费D001的完整专业报告、结果和证据入口，接受其到达约定有意义回交节点。现在累计有一项**有充分依据的迭代点N1**，范围限定为实际复盘展示/叙事读口的组合设计。未证明P1必须新增字段、FRP实际发布缺陷、真实P2消费错误或生产Bug。
+累计保留两项**有充分依据的迭代点**：N1涉及业务区间、闭合和形成材料可得时间；N2涉及当前可见量、可见状态及历史活动量的时价角色。两项均为有界的已有信息使用或上层组合需求，尚未证明P1必须新增字段、实际FRP/P2错误或生产Bug。N2有同批探索性试查，不等于生产改进或严格留出验证。
 
-## 二、已经实际取得的进展
+## 二、本次实际新增认识
 
-| 工作 | 实际结果 | 对业务工作的意义 |
+| 工作 | 实际结果 | 对业务判断的影响 |
 |---|---|---|
-| 查原数据生成记录并取得同源材料 | 24张TIS产品receipt、18物理实例、五类匹配源码组合、共同Wall关系及原窗口正式稀疏流已取得 | 昨晚“随包缺件”已在本研究范围解除，可对实际版本做联合表达研究 |
-| 展示与正式源连接 | 9537条展示记录均对到正式源，所比原生数值零差异；Attack时间投影规则另核 | 已能区分真实源信息、展示取舍和此前参考版本，不能再笼统沿用actual producer未知 |
-| N1实际过程、反例和范围 | 653条完整时序过程；六例/反例和42个切点试查；278条全程有效同价子范围 | 最后合格大成交与完整攻段确认闭合之间，盘口量及同墙交互仍可能变化 |
-| R2四例恢复 | Build baseline、观测ratio、门槛level及Start均在实际producer正式源中恢复 | 库存/活动、参考价/时点仍须区分，但不再把这些字段说成producer正式缺失 |
-| 后继工作组织 | D002已正式签发，交原E1继续利用实际联合材料研究盘口演化 | 新研究尚未回交；没有预写后继发现或宣布父任务完成 |
+| 核旧R1实际对象身份 | 29例中28例在所核起点/最薄/末点没有当前Wall；唯一same core例存在正式切点量恢复 | 旧真实量变仍成立，但不能继续用于证明“同Wall普遍丢失库存”；不等于入口有错 |
+| 同对象复见研究 | 867次条件复见，345Wall、93PG、23日期关联块；骤薄、增大和近似不变均有真实案例 | 相同业务对象和活动历史不能代替这一次接触的可见流动性条件 |
+| 现有正式量恢复 | 部分Absorb属性可恢复方法余量；P正是等式条件，P零只给上界；离档方法零不是真实旧价库存零 | 不能把所有正式量当库存，也不能反过来说正式信息一概无量信息 |
+| 最小信息试查 | 六PG深入之外18PG/54切点，组合已有L1当前量和可见状态，离档18行保留空值 | 支持N2的有界组合要求；基准是研究旧量读法，不是实际P2误读率 |
 
-## 三、N1：业务末端之后，交互可能继续变化
+N2-01（rb ask5648，2021-09-16）同一Wall从上次接触量1048到复见量1，最近Build基准307却来自5649；N2-04同一对象从1到615，是“复见必耗薄”的反例；N2-06可由正式Absorb属性直接恢复当前542。叙述“仍是原来那堵墙”时，应同时说明这次面对多少可见量、是否可观察、活动基准属于何价何时。
 
-rb、2021-09-30、bid5600的N1-04：最后合格F4原子在09:58:05.5，完整Attack在09闭合。期间同价可见量从1516降至1103；旧Absorb在06.5结束，07已经有新交互开始。将最后大成交端点视为完整攻段已确认，会混淆当时已经知道的过程和事后材料。
+867是选择性窗口中的条件配对数，不能当867个独立攻击或全市场比例。127次明显退薄仅在所测两种当切点恢复方法下没有命中，不证明所有潜在联合推导均不足。后续价格表现混合，原窗口截断保留；不声称稳定预测或因果价值。
 
-实际TIS源已保留业务区间、closed_at、发出时点及Formation的available_at等材料。已证第一处信息损失在本批实际展示投影：Attack时间改写为业务末端，未提供闭合时间和Formation/Barrier读口。因此形成的设计需求是：复盘/叙事读口保留业务区间与信息可得时点，允许按切点查看关联形成材料，让Build/Absorb继续按各自对象与时间表达。现有报告已可作为下一轮设计输入，保留该有界成果。
+## 三、累计成果的去向
 
-653条完整过程覆盖99PG、23日期关联块，其中574条等待期间有同墙Build/Absorb事件；79条没有这两类中途事件，是扩大解释的边界。278条有效同价过程既有减量也有增量，不把等待期一概解释为变薄。六例42切点的“34处过早闭合读法”来自明确的研究基准，不是实际P2误读数。source时点不等于已认证FRP对外发布时间。
-
-以上证据为选择性窗口中的探索性结果。样本有关联、旧材料已暴露，不声称全市场发生率、稳定预测、因果或严格留出。最小试查是附证，不升级为完整生产/消费改进验证。
-
-## 四、旧问题如何更新，接下来做什么
-
-| 问题 | 当前认识 | 后继处理 |
-|---|---|---|
-| 当前量、中途薄弱、恢复与再次接触 | 旧R1已有真实观察和反例，实际联合正式材料刚取得，完整表达能否恢复尚未全部回答 | D002优先用真实对象、相关历史及可知时间实际核对；已有材料足够时据实归已有信息使用或有理由的组合需求，专业上可转其他高价值方向 |
-| R2数量角色与正式消费 | 实际producer四例已恢复；真实FRP消费者读口及publication仍未取得 | 若具体研究需要，再定向查实际链；不拿参考代码或源内可恢复冒充真实消费已证 |
-| R3真实消耗/补撤 | receipt没有带来独立方向、量尺和覆盖认证；真实消耗/净撤减仍为null | 不重复同源代理分解，按真正新增的可识别证据决定后继 |
-| N1设计输入 | 一项有充分依据的展示/叙事组合需求，原报告已给出位置、范围和下一轮问题 | 保留为累计成果，继续业务发现，不以单项发现结束Run |
-
-下一项专业工作由原E1执行，D002正文：daowei2026/observe-iterate@4644ee14551563ec72ebc2808c1f2445305a55ec:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261126-01/delegations/D002/DELEGATION.md。其重点来自原任务的盘口演化与联合表达目标，原三条线索或固定顺序不限定新发现。研究仍只用同批行情；来源、正式产物和相关历史可按问题查读，不增加统一材料包或待审批计划。
-
-## 五、可直接阅读的成果
-
-| 产出 | 准确入口 |
+| 成果/问题 | 当前判断及后继 |
 |---|---|
-| D001完整业务报告及N1设计输入 | daowei2026/observe-iterate@83abc94304fe4f00419848a2010a143946011ca2:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261126-01/calls/C0002/EXECUTOR_REPORT.md |
-| 同源版本、receipt、正式流、案例/反例/图和重放入口 | daowei2026/observe-iterate@77f11f6e5ea4de5ad9e0be1caa3d1312bf4e84c3:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261126-01/calls/C0002/EVIDENCE_INDEX.md |
-| 实际结果与尚未解决问题 | daowei2026/observe-iterate@298f89159fd3e93c453cfa28b815e78d83a589b8:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261126-01/calls/C0002/report/RESULT.json |
-| 冻结研究索引 | daowei2026/observe-iterate@9b40dcf03ee13d4c012b707440859f83b067227f:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261126-01/calls/C0002/ARTIFACT_INDEX.json |
-| 昨晚成果入口，原稿继续保留 | daowei2026/observe-iterate@ff45aab0c8e66e4feb552b2c8a632210d9b58b56:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/RESULTS_INDEX.md |
-| 当前技术恢复状态 | [TASK_PROGRESS.md](TASK_PROGRESS.md) |
+| N1 | 原报告的实际展示投影首损、时钟和Formation读口需求继续保留为设计输入；本次不重计、不重做 |
+| N2 | 按exact Wall、侧、核心价和切点组合当前可见量/可见状态，保留活动基准时价角色；等式/上界/未知条件随需求交接 |
+| 旧28例无当前Wall过程 | 从同Wall库存损失证据中移出，原稿保留；现在可研究其独立叙事价值与实际入口设计取舍，不能直接称漏检 |
+| R3及真实消费者 | 独立真实方向/净撤减、FRP publication与实际P2消费仍未知；更多同源统计不能补真值，按具体依赖补证 |
+| 生产成本与研发优先级 | 未认证；不由复见次数或研究字段试查推导生产事件量/收益 |
 
-本地详细成果根：`/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-business-discovery-20261126-01/calls/C0002/`。原始Chat仅本地只读保存，不公开全文；旧Run成果不覆盖。
+## 四、下一项实际业务工作
 
-本C没有需要Owner帮助的已发生实质问题。生产特征、参数、公共上游和数据库保持只读，不新增行情或重跑生产。controller核验本C真实Return及物理结束后向原E1派达D002；目前尚无D002专业回交。
+D003已签发给本Run原E1：研究无当前Wall真实过程是否有值得保留的业务差异，以及实际大挂单/VolQuant与Wall入口的设计取舍。旧28例和既有候选表提供起点；业务价值、真实对照和现有表达要结合核查，不以无事件或量变本身认定缺陷，也不把研究上限定为28例。
 
-最近更新：2026-11-26 05:17:19 UTC。上版业务视图原件：daowei2026/observe-iterate@6d44d2b04195e46e186154c3beb98f4ed9ffca49:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261126-01/business_control/BUSINESS_PROGRESS.md。
+这是实际对象身份刚核清后出现的可行研究机会；继续相似复见统计的边际价值已低。N1/N2已可作为后续设计输入保留，当前接续继续推进原业务发现。专业方法由E1依原任务自主选择，不新增计划审批。
+
+D003正文：daowei2026/observe-iterate@9614d915bee08e19754f5c3ed63a1b3f290b849c:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261126-01/delegations/D003/DELEGATION.md。尚无该D真实专业回交，controller核本C真实Return和物理结束后向原E1派达。
+
+## 五、成果与恢复入口
+
+- D002完整专业报告：daowei2026/observe-iterate@fb278b545bdfb21311dc8b40a41287436bcaf975:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261126-01/calls/C0004/EXECUTOR_REPORT.md
+- 数值、源行、图、代码与重放：daowei2026/observe-iterate@8daeaa2906a1a138ce204057747358a31ecf62c8:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261126-01/calls/C0004/EVIDENCE_INDEX.md
+- 结果/限制：daowei2026/observe-iterate@de0eeadf6058d9b304b6a80b16746d4ccaffeda6:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261126-01/calls/C0004/report/RESULT.json
+- 候选研究表：daowei2026/observe-iterate@5837a8dc9763d11c26e05491379d43e13dbbf548:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261126-01/calls/C0004/report/CANDIDATE_RESEARCH_TABLE.csv
+- N1设计输入：daowei2026/observe-iterate@83abc94304fe4f00419848a2010a143946011ca2:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261126-01/calls/C0002/EXECUTOR_REPORT.md
+- 昨晚成果原稿：daowei2026/observe-iterate@ff45aab0c8e66e4feb552b2c8a632210d9b58b56:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/RESULTS_INDEX.md
+- 技术恢复：[TASK_PROGRESS.md](TASK_PROGRESS.md)。
+
+详细材料在本Run `calls/C0004/`，C0002和旧Run原件保留。生产特征、参数、公共上游和数据库只读；同批行情范围不变，无新增行情或生产重跑。当前没有需要Owner帮助的已发生实质问题，其他独立合法工作继续。
+
+最近更新：2026-11-26 06:24:45 UTC；上版规范业务视图：daowei2026/observe-iterate@2f5d709855c448ed1d764a927ea5308f6c70d78d:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261126-01/business_control/BUSINESS_PROGRESS.md。
