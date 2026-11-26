@@ -1,0 +1,227 @@
+{
+  "schema": "local-research-verification/v1",
+  "run_id": "OI-EAW-P1-BUSINESS-DISCOVERY-20261126-01",
+  "call_id": "C0004",
+  "at": "2026-11-26T05:57:03.161176+00:00",
+  "passed": true,
+  "checks": [
+    {
+      "name": "C0002 frozen indexed research",
+      "passed": true,
+      "details": {
+        "files": 197,
+        "bytes": 9273984,
+        "mismatches": []
+      }
+    },
+    {
+      "name": "formal copied inputs",
+      "passed": true,
+      "details": 6
+    },
+    {
+      "name": "read-only source metadata unchanged",
+      "passed": true,
+      "details": {
+        "checked_entries": 228,
+        "scope": "size/mtime only; no full dense production hash scan"
+      }
+    },
+    {
+      "name": "old R1 classification",
+      "passed": true,
+      "details": {
+        "cases": 29,
+        "same_core": 1
+      }
+    },
+    {
+      "name": "OLD_WALL_TRACE_CROSSCHECK.csv",
+      "passed": true,
+      "details": {
+        "points": 89,
+        "mismatches": 0
+      }
+    },
+    {
+      "name": "N2_WALL_TRACE_CROSSCHECK.csv",
+      "passed": true,
+      "details": {
+        "points": 18,
+        "mismatches": 0
+      }
+    },
+    {
+      "name": "Absorb source row identity unique",
+      "passed": true,
+      "details": 4526
+    },
+    {
+      "name": "Absorb actual formal values rb",
+      "passed": true,
+      "details": 933
+    },
+    {
+      "name": "Absorb actual formal values hc",
+      "passed": true,
+      "details": 585
+    },
+    {
+      "name": "Absorb actual formal values i",
+      "passed": true,
+      "details": 3008
+    },
+    {
+      "name": "positive formula and visibility split",
+      "passed": true,
+      "details": {
+        "evaluable": 2076,
+        "visible": 1990,
+        "off_best": 86
+      }
+    },
+    {
+      "name": "zero formula is an upper bound",
+      "passed": true,
+      "details": {
+        "evaluable": 2439,
+        "clipped_visible": 179,
+        "independent_truth": false
+      }
+    },
+    {
+      "name": "recontact conditional denominator",
+      "passed": true,
+      "details": {
+        "pairs": 867,
+        "PG": 93,
+        "date_blocks": 23
+      }
+    },
+    {
+      "name": "recontact ratio and categories",
+      "passed": true,
+      "details": {
+        "thin": 127,
+        "large": 66,
+        "ordinary": 448
+      }
+    },
+    {
+      "name": "PG denominator not pair denominator",
+      "passed": true,
+      "details": {
+        "rows": 93
+      }
+    },
+    {
+      "name": "deep contrast structure",
+      "passed": true,
+      "details": {
+        "deep_cases": 6,
+        "PG": 6,
+        "date_blocks": 6
+      }
+    },
+    {
+      "name": "direct original quote and Build baseline N2-01",
+      "passed": true,
+      "details": {
+        "quantity": 1.0,
+        "baseline_price": 5649.0,
+        "baseline_age_seconds": 2.5
+      }
+    },
+    {
+      "name": "direct original quote and Build baseline N2-02",
+      "passed": true,
+      "details": {
+        "quantity": 10.0,
+        "baseline_price": 903.5,
+        "baseline_age_seconds": 0.5
+      }
+    },
+    {
+      "name": "direct original quote and Build baseline N2-03",
+      "passed": true,
+      "details": {
+        "quantity": 31.0,
+        "baseline_price": 5485.0,
+        "baseline_age_seconds": 2.0
+      }
+    },
+    {
+      "name": "direct original quote and Build baseline N2-04",
+      "passed": true,
+      "details": {
+        "quantity": 615.0,
+        "baseline_price": 5350.0,
+        "baseline_age_seconds": 4.5
+      }
+    },
+    {
+      "name": "direct original quote and Build baseline N2-05",
+      "passed": true,
+      "details": {
+        "quantity": 765.0,
+        "baseline_price": 794.5,
+        "baseline_age_seconds": 6.0
+      }
+    },
+    {
+      "name": "direct original quote and Build baseline N2-06",
+      "passed": true,
+      "details": {
+        "quantity": 542.0,
+        "baseline_price": 5629.0,
+        "baseline_age_seconds": 3.5
+      }
+    },
+    {
+      "name": "probe separation and no imputation",
+      "passed": true,
+      "details": {
+        "PG": 18,
+        "rows": 54,
+        "off_best_null": 18
+      }
+    },
+    {
+      "name": "probe against original asset quote, not cached result",
+      "passed": true,
+      "details": {
+        "points": 54,
+        "distinct_original_assets_read": 24
+      }
+    },
+    {
+      "name": "fixed horizon accounting",
+      "passed": true,
+      "details": {
+        "rows": 2601,
+        "complete": 2397,
+        "truncated_or_invalid": 204
+      }
+    },
+    {
+      "name": "N2-04 truncation retained",
+      "passed": true,
+      "details": {
+        "case": "N2-04",
+        "observed_seconds": 12.5
+      }
+    },
+    {
+      "name": "standalone figures",
+      "passed": true,
+      "details": {
+        "visual_inspected": true,
+        "build_reference_role_and_time_labelled": true
+      }
+    }
+  ],
+  "limits": [
+    "只核研究数据与来源一致性，不认证FRP publication、实际P2消费或controller物理回收。",
+    "未对生产dense库全量哈希；读模式与大小/mtime审计见源码及audit。"
+  ]
+}
