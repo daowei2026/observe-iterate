@@ -1,3 +1,23 @@
+# TASK_PROGRESS｜C0002 E1 回交节点
+
+本节为 E1 已实际完成工作的最新视图；原 Manager 尚未消费 C0002。下方 C0001 原文作为历史基线保留，不能用其“尚无专业结果”等旧状态覆盖本节。
+
+- Run：OI-EAW-P1-BUSINESS-DISCOVERY-20261126-01；D001，C0002；executor:E1，return_to=原 Manager。
+- C0002 INVOCATION：daowei2026/observe-iterate@abfc3f5c22ff23d862d73c482e2b95256bd830de:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261126-01/calls/C0002/INVOCATION.json。E1 物理 threadId=01a21621-ae67-7471-9ed7-a47e4415d510。
+- 实际采用来源沿用 ff45aab0c8e66e4feb552b2c8a632210d9b58b56 / controller 0f029333a7fc4b568b5e49a77a5c8ab185baa336；CODEX_NATIVE_DIRECT，workers=[]，AUTONOMOUS；已亲读原件与新版指南。
+- 已完成原数据 Chat 只读追查，取得24张实际TIS receipt、18实例、五类匹配源码组合；共同Wall/直接上游精确核对。原包9537条展示记录均对到正式源，所比数值零差异。
+- 实际研究：653条完整时序过程、278条有效同价子范围、六个真实过程及反例、42切点最小试查；R2四例恢复到正式 occurrence。报告认定有充分依据的迭代点1项，仅限实际复盘展示/叙事读口的组合设计。P1新增字段缺口、实际P2错误、生产Bug均未确认。
+- D001 到达约定有意义回交节点；父任务仍部分达成。FRP实际发布/消费、R1其它轨迹问题及R3独立方向证据仍未决。没有Owner审批前置。
+- 专业报告：daowei2026/observe-iterate@83abc94304fe4f00419848a2010a143946011ca2:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261126-01/calls/C0002/EXECUTOR_REPORT.md
+- 证据索引：daowei2026/observe-iterate@77f11f6e5ea4de5ad9e0be1caa3d1312bf4e84c3:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261126-01/calls/C0002/EVIDENCE_INDEX.md
+- 结果：daowei2026/observe-iterate@298f89159fd3e93c453cfa28b815e78d83a589b8:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261126-01/calls/C0002/report/RESULT.json
+- 本地：/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-business-discovery-20261126-01/calls/C0002/；197份研究原件已冻结，LOCAL_VERIFICATION=PASS。生产特征/参数/上游/数据库只读，无新Tick、无生产重跑、无向其他Chat发消息。
+- 下一合法动作：E1发布本C真实V2 Return并交回Git写任务；controller核物理结束与原件后路由原Manager消费，由Manager统筹N1设计细化或其它有价值接续。此处不预写Manager接受/父任务完成/物理turn结束。
+
+---
+
+## C0001 历史基线（原文保留）
+
 # TASK_PROGRESS｜EAW P1 业务发现接续
 
 ## A. 身份、采用来源及资源
