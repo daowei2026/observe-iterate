@@ -1,0 +1,272 @@
+{
+  "run_id": "OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01",
+  "call_id": "C0020",
+  "delegation_id": "D010",
+  "at": "2026-11-26T00:59:10.407633+00:00",
+  "ordering": "业务影响、证据强度和下一步成本综合排序；不改原ID，不代表已确认研发优先级",
+  "evidence_items": [
+    {
+      "id": "R2",
+      "title": "活动基线、同价/近价对象及可知时间的联合解释",
+      "run_id": "OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01",
+      "maturity": "研究线索",
+      "maturity_detail": "已有展示/L1联合信息能恢复所检4类区别；参考投影语义已定位，本批正式链第一损失仍待证",
+      "formal_design_gap": "未确认",
+      "confirmed_required_change": false,
+      "sufficient_iteration_points": 0,
+      "preliminary_improvement_iteration_points": 0,
+      "confirmed_bugs": 0,
+      "actual_P2_error_proven": false,
+      "primary_same_core_condition": {
+        "occurrences": 483,
+        "Build_local_activities": 289,
+        "Wall_local_objects": 209,
+        "PGs": 83,
+        "date_blocks": 22
+      },
+      "primary_q_le_quarter": {
+        "occurrences": 219,
+        "Build_local_activities": 134,
+        "Wall_local_objects": 103,
+        "PGs": 59,
+        "date_blocks": 21
+      },
+      "PG_balanced_q_le_quarter": {
+        "hits": 38,
+        "denominator": 83
+      },
+      "existing_information": [
+        "raw baseline/cum/observed ratio与threshold level分开",
+        "Build起点UTI+L1可恢复基线参考价/量，当前量按当前价带关系解释",
+        "cutoff前后展示Absorb/Attack历史分开；正式publication仍未知"
+      ],
+      "reference_projection_findings": [
+        "TIS Build baseline为起点best_vol，不必是Wall同价量；稀疏事件未直接携带起点参考价",
+        "FRP FaoIngress Build milestone读level，不是raw ratio；typed measurements未承接baseline/raw ratio；不能从cum/typed门槛反算真实base"
+      ],
+      "first_actual_formal_loss": "未证；actual producer/FRP版本与相容完整正式历史未取得，不能用参考投影替代",
+      "S07_outputs": [
+        "S07_EVIDENCE.md",
+        "R2_CASEBOOK.md",
+        "report/R2_STATISTICS.json",
+        "report/VERIFICATION_EVIDENCE.json"
+      ],
+      "S08_outputs": [
+        "R2_DESIGN_POSITIONING.md",
+        "report/MINIMAL_PROBE_SUMMARY.json",
+        "report/MINIMAL_PROBE_VERIFICATION.json",
+        "probe/BASELINE_INPUT.csv",
+        "probe/TWO_LABEL_INPUT.csv"
+      ],
+      "deep_cases": 4,
+      "deep_PGs": 4,
+      "deep_date_blocks": 4,
+      "minimal_probe": {
+        "PGs": 43,
+        "date_blocks": 21,
+        "labels": [
+          "quantity_role",
+          "time_basis"
+        ],
+        "added_numeric_values": 0,
+        "original_values_changed": 0,
+        "counts": {
+          "outside_Wall_band": 29,
+          "start_baseline_quote_verified": 43,
+          "start_best_outside_Wall_band": 22,
+          "current_q_equals_cumulative": 0,
+          "raw_observed_ratio_differs_level": 42,
+          "later_resolved_display_within10s": 8
+        },
+        "meaning": "existing information semantic expression only, not actual P2/error-rate/production/predictive validation"
+      },
+      "exposure": "all47 PGs inherited R1 generic exposure;41 probe PGs previous specific metrics; no strict heldout",
+      "disposition": "先按已有信息/上层组合表达要求处理；正式合法接口恢复不了时再决定投影/元数据/关联层改动；本D回Manager，不自动扩展",
+      "next_design_question": "在实际相容receipt与合法消费投影下，能否于切点取得Build起点baseline/参考价、区分观测ratio/level并取得已发布交互历史？不能时哪个确切边界首先阻断恢复？",
+      "missing_evidence": [
+        "actual producer/FRP code/parameters/receipt/exact upstream identities",
+        "compatible complete occurrence/current/publication history",
+        "actual P2 consumption artifacts"
+      ],
+      "D008_remaining_scope": null,
+      "parent_run_complete": false,
+      "s09_followup_rank": 1,
+      "upstream_result_ref": "daowei2026/observe-iterate@8cf263c0b2c2ada6b6916f093d5431c3a966cb82:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0015/report/R2_RESULT.json",
+      "upstream_result_local_path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-business-discovery-20261125-01/calls/C0015/report/R2_RESULT.json",
+      "upstream_result_sha256": "9849fa7d748ca56ae6e871edd5d500305846fa05f245b6a7dcbff1d52658928a",
+      "s09_level_changed": false,
+      "professional_S07_S08_handled": true,
+      "s09_followup_kind": "取证建议，不是已批准研发任务或新委派",
+      "evidence_original_call_id": "C0015",
+      "evidence_original_delegation_id": "D008",
+      "evidence_original_issuer_call_id": "C0014",
+      "evidence_original_scope": "D008 only; S07+S08 actually performed",
+      "business_impact": "活动/库存/参考价/切点已知信息容易被混讲；本批已有信息可解释四类区别",
+      "next_cost_and_rank_basis": "同批合法切点联合回放优先；已有数值区别与参考投影位置具体，成本低于扩大行情或改算法"
+    },
+    {
+      "id": "R1",
+      "title": "当前接触与阶段性可见流动性，端点/累计量不足以恢复的部分",
+      "maturity": "研究线索",
+      "maturity_detail": "独立PG复现、条件范围和描述试查已补足；相容正式链第一损失处仍待证",
+      "formal_design_gap": "未确认",
+      "confirmed_required_change": false,
+      "sufficient_iteration_points": 0,
+      "preliminary_improvement_iteration_points": 0,
+      "confirmed_bugs": 0,
+      "existing_information": [
+        "完整L1可恢复当前量、最低点/位置和同价复见量",
+        "R1-P05已有联合展示baseline889恢复一瞬间实际数量；不可重复称P1全无量信息",
+        "参考内部状态含量/min，FRP current保留payload且历史另行publication"
+      ],
+      "proven_loss": "本批端点/累计研究摘要不足以唯一恢复路径；参考实现活动/交互稀疏事件有更窄语义，但本批正式链未证",
+      "S07_outputs": [
+        "S07_EVIDENCE.md",
+        "scan/SCAN_SUMMARY.json",
+        "report/CONDITIONAL_EVIDENCE.json",
+        "scan/RECONTACT_SUMMARY.json",
+        "R1_CASEBOOK.md"
+      ],
+      "S08_outputs": [
+        "R1_DESIGN_POSITIONING.md",
+        "report/MINIMAL_PROBE_SUMMARY.json",
+        "report/MINIMAL_BASELINE.csv",
+        "report/MINIMAL_ENHANCED.csv",
+        "report/P1_ATTRIBUTE_AUDIT.json"
+      ],
+      "deep_cases": 29,
+      "deep_PGs": 29,
+      "deep_date_blocks": 7,
+      "minimal_probe": {
+        "PGs": 18,
+        "date_blocks": 5,
+        "items": [
+          "min_over_q0",
+          "first_min_position_fraction"
+        ],
+        "hidden_dip": 4,
+        "ordinary_without_hidden_dip": 14,
+        "baseline_quantity_already_determined": 6,
+        "cannot_solve": [
+          "concentrated decrease",
+          "early-vs-late depletion when minima both at endpoint"
+        ],
+        "meaning": "descriptive information feasibility only, not production/predictive validation"
+      },
+      "disposition": "R1本D局部受限可交付；先沿已有信息/上层消费需求定位，不提必须新增P1；阶段形状直接改动优先级下调。交Manager消费，不自动执行其他候选。",
+      "missing_evidence": [
+        "actual producer/FRP code/params/receipt/exact identities",
+        "complete formal occurrence/current/publication history",
+        "actual P2 consumption/behavior"
+      ],
+      "D007_remaining_scope": null,
+      "parent_run_complete": false,
+      "s09_followup_rank": 2,
+      "upstream_result_ref": "daowei2026/observe-iterate@314804355a0a1e4458492ee536e67a2553f04452:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0013/report/R1_RESULT.json",
+      "upstream_result_local_path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-business-discovery-20261125-01/calls/C0013/report/R1_RESULT.json",
+      "upstream_result_sha256": "5674c0f437e6909ca5be66f4522ec9783d029c106ec74e21c6c03b593b2b2bf5",
+      "s09_level_changed": false,
+      "professional_S07_S08_handled": true,
+      "s09_followup_kind": "取证建议，不是已批准研发任务或新委派",
+      "evidence_original_scope": "D007 only; S07+S08 actually performed",
+      "business_impact": "当时/复见面对的可见量与阶段叙事；价格分辨证据混合",
+      "next_cost_and_rank_basis": "先合法联合恢复，阶段新增P1/预测型改动下调；关键事件和身份/稀疏成本待相容正式材料",
+      "next_design_question": "实际合法的同版本联合材料能否按价位/切点恢复当前量、最低点/阶段和复见？若不能，第一次不可恢复发生在哪个具体边界，最少关键点能否补足且成本可控？"
+    },
+    {
+      "id": "R3",
+      "title": "真实消耗/净撤减的来源可识别性",
+      "run_id": "OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01",
+      "maturity": "研究线索（共同观测约束）",
+      "formal_design_gap": "未确认",
+      "confirmed_required_change": false,
+      "confirmed_bugs": 0,
+      "sufficient_iteration_points": 0,
+      "preliminary_improvement_iteration_points": 0,
+      "actual_P2_error_proven": false,
+      "source_identifiability_limit_proven": true,
+      "first_actual_formal_loss": "未证；研究源缺独立方向/订单及可认证计量覆盖，参考合同不替代实际链",
+      "existing_information": [
+        "C_source/directional_truth_status/raw V已在研究材料保留",
+        "展示proxy字段和availability_code已有；参考typed入口保留代理/计量语义及availability",
+        "可见量/活动结论有效，但不是独立真实消耗/净撤减"
+      ],
+      "source_scope": {
+        "data_files": 2924,
+        "manifest_assets": 2920,
+        "new_full_batch_identity_scan": false,
+        "reused_discovery_interval_count": 165932,
+        "reused_declining_interval_count": 51373,
+        "reused_conditional_V_less_than_decline": 5423,
+        "certified_true_bounds_applied": 0,
+        "limited_reused_PGs": 4,
+        "quote_rows": 12,
+        "source_files_hashed": 5,
+        "new_deep_extractions": 0,
+        "new_future_price_access": false
+      },
+      "minimal_information": {
+        "performed_new_minimal_information_trial": false,
+        "new_numeric_fields": 0,
+        "new_labels": 0,
+        "new_net_cancellation_feature": false,
+        "reason": "已有C_source、directional_truth_status、raw V、proxy/availability及R2角色/时点足够表达当前限制；新同义标签不能产生缺少的计量receipt/独立方向真值。不强制凑试查。",
+        "actual_work": "4 reused PGs/12 original quote rows and bounded metadata/reference projection audit, not new-feature gain experiment",
+        "actual_P2_experiment": false,
+        "production_or_predictive_gain_verified": false,
+        "sparsification_cost_evaluated": false,
+        "true_bounds_applied": 0,
+        "next_evidence_required": "actual compatible source/feed units/coverage and producer receipt; independent trade direction/order events if true decomposition is pursued"
+      },
+      "S07_outputs": [
+        "S07_EVIDENCE.md",
+        "report/SOURCE_AUDIT.json",
+        "report/REUSED_CONDITIONAL_EVIDENCE.json",
+        "report/RECEIPT_FIELD_CHECK.csv",
+        "report/SUPPLIED_FIELD_COVERAGE.csv",
+        "report/REUSED_CASE_SOURCE_CHECKS.csv",
+        "report/VERIFICATION_EVIDENCE.json"
+      ],
+      "S08_outputs": [
+        "R3_DESIGN_POSITIONING.md",
+        "report/MINIMAL_INFORMATION_DECISION.json"
+      ],
+      "disposition": "停止本批真实补撤分解推断，保留代理/可见活动及来源/量尺/可得性限定，作为R1/R2共同约束；不提出同义P1字段或预设净撤单特征",
+      "stop_basis": "同批来源与参考语义已核，重复同源机械关系无新增真值认识；缺件边界明确，授权不含新feed/生产重跑",
+      "next_design_question": "若未来取得相容source/producer receipt、feed量尺/区间/完整覆盖及独立方向/订单事件，哪些真实净量结论可重新识别；实际合法消费者是否已正确保留proxy/availability/时点限定？",
+      "missing_evidence": [
+        "actual source/producer/FRP code/parameters/receipt/exact identities",
+        "feed unit/single-double convention/exact interval/completeness certification",
+        "independent true trade direction or order events",
+        "complete compatible formal occurrence/current/publication and actual P2 artifacts"
+      ],
+      "R1_R2_impact": "visible/role/time conclusions remain valid; true consumption/net-flow interpretations remain qualified; their formal-chain followup questions not resolved here",
+      "D009_remaining_scope": null,
+      "parent_run_complete": false,
+      "s09_followup_rank": 3,
+      "upstream_result_ref": "daowei2026/observe-iterate@6a0072296dbdaf48f3972db3b974e4c6d417389e:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0017/report/R3_RESULT.json",
+      "upstream_result_local_path": "/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-business-discovery-20261125-01/calls/C0017/report/R3_RESULT.json",
+      "upstream_result_sha256": "e0a898130b8ab0f0fa22f04b22d0c17b09536a9887fc6bb79ac736c7ea741276",
+      "s09_level_changed": false,
+      "professional_S07_S08_handled": true,
+      "s09_followup_kind": "取证建议，不是已批准研发任务或新委派",
+      "evidence_original_call_id": "C0017",
+      "evidence_original_delegation_id": "D009",
+      "evidence_original_issuer_call_id": "C0016",
+      "evidence_original_scope": "D009 R3 common observation constraint S07+S08 actually performed",
+      "business_impact": "所有候选真实消耗/补撤叙事的共同可识别性约束",
+      "next_cost_and_rank_basis": "同源材料重复统计无新增真值；新计量/覆盖及独立方向/订单证据成本最高，当前停止真实分解"
+    }
+  ],
+  "maturity_counts": {
+    "研究线索": 3,
+    "候选迭代点": 0,
+    "有充分依据的迭代点": 0,
+    "具有初步改进依据的迭代点": 0
+  },
+  "confirmed_required_changes": 0,
+  "confirmed_formal_gaps": 0,
+  "confirmed_production_implementation_bugs": 0,
+  "S09_additional_independent_candidate": null,
+  "S09_lookback_disposition": "普通循环活动补充，纳入R1/R2/R3边界；不独立成第四条研发依据"
+}
