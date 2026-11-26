@@ -1,6 +1,6 @@
 # C0020／D010：独立S09持续进度
 
-当前S09专业归并已完成，正式发布待执行。D010正文/JSON、C0020 INVOCATION、Manager C0018 Return及C0019运输替代记录已exact读取并保存。C0019确认未实际发送/未执行专业工作，本C为同D010首次实际执行；不重放旧C或新建角色/Run。
+当前S09专业归并及正式报告/零W Return均已完成发布并exact回读，本文件是最终进度发布项。D010正文/JSON、C0020 INVOCATION、Manager C0018 Return及C0019运输替代记录已exact读取并保存。C0019确认未实际发送/未执行专业工作，本C为同D010首次实际执行；不重放旧C或新建角色/Run。
 
 专业范围仅S09，复用S01～S08实际产物，按任务8.3～8.5核三入口/三组对照/候选逐项取证、图/统计/程序/来源及结束条件。尚未预判本批耗尽或必须停止；若有能增加业务认识的可行工作，按原任务回查并保存。研究执行完成与发现目标达成程度分开，不提高等级，不把局部正式缺件当产品缺陷。
 
@@ -14,4 +14,12 @@
 
 已保存EXECUTOR_REPORT/EVIDENCE_INDEX、候选/最终结果/完成依据、69案例统一索引、278条累计使用账（原261不变）及来源/冻结入口。另准确读取C0018 Manager报告与双进度三个上下文原件，不修改其内容；当前父Run仍待本C真实成果回收和原Manager消费。
 
-发布前已核分支head=ab33f347cd7823d66e0c6425520fabd221df07d2，C0020目录仅原INVOCATION，原件blob=66d590e9a52886f68d3866ef6625a2f4ff1d2cc9。下一步同Personal/获准分支/本Run写面，Contents API逐项按真实head和路径不存在/已有blob条件写入，exact回读报告及零W C0020/D010 Return；细节保存publication/，不把候选提交当发布成功。最后回原controller，交原Manager消费，不代判父Run最终状态。
+发布起点head=ab33f347cd7823d66e0c6425520fabd221df07d2，C0020目录当时仅原INVOCATION，原件blob=66d590e9a52886f68d3866ef6625a2f4ff1d2cc9。始终同Personal/获准分支/本Run写面；Contents API逐项核真实head及路径不存在/已有blob条件，写后核exact内容和单一预期父commit。该API工具不暴露原子expected-head CAS，不虚称使用了原子head CAS。
+
+正式报告及全部支持原件在bundle commit `a64775f0e4a355bfa781c31fdd9c7c3a89411650` 可准确读取：
+
+- `daowei2026/observe-iterate@a64775f0e4a355bfa781c31fdd9c7c3a89411650:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0020/EXECUTOR_REPORT.md`
+- 同commit的`EVIDENCE_INDEX.md`、`SOURCE_INDEX.json`、`ARTIFACT_INDEX.json`、`LOCAL_ARTIFACTS.md`、候选表/完成依据/FINAL_RESULT已exact；冻结77项共2,140,343 bytes，索引SHA-256 `ffc7c6eebe52dc40347ef5fa555ff6193eae0e3c8ccb8f94a29448d611747634`。
+- Return：`daowei2026/observe-iterate@d91ed3c388d8755b39dba7b2a1d0a019d32459e4:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0020/PRO_RETURN.json`，Git blob `5854d600bf34f837e843713df9550c4bac1af5fb`；call C0020、D010、原E1回原Manager，零W、REPORTED_COMPLETE，remaining_scope_ref/continuation_ref/owner_request_ref均null。锁定gate的本地schema/pro_state核查PASS，不冒充controller物理回收验收。
+
+本文件最终发布exact后停止本C全部Git写入；最终head/父链、无在途写与交回事实保存于本地`PUBLICATION_READBACK.json`、`publication/RETURN_HANDOFF.json`。回原controller真实回收后由原Manager消费。未签未来D/Order，不修改Manager双进度，不代判父Run最终完成；主要发现目标部分达成、高等级点0及正式链/来源未决均保留。
