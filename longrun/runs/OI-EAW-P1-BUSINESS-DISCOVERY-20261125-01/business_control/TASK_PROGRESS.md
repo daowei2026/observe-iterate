@@ -17,76 +17,78 @@
 - Binding：daowei2026/observe-iterate@bc30c55fff35f81de5102ed43c0e168eb7a8de11:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/RUN_BINDING.json；资源绑定：daowei2026/observe-iterate@bc30c55fff35f81de5102ed43c0e168eb7a8de11:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/RUN_RESOURCE_BINDING.json。
 - CODEX_NATIVE_DIRECT；manager/executor=gpt-6.1-sol/max；workers=[]；AUTONOMOUS。
 - manager=codex:OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01:manager；当前 thread=01a21333-7425-7920-a31e-4911588c0cb0。
-- E1=codex:OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01:executor:E1；当前真实 thread=`01a21355-9066-7852-91f5-677dfd259dc9`；C0016 正式派达说明双方Sol/max及既有历史已核。旧空预建 ID 已退役，仅保留历史，不作目标。
-- 工作区 / realpath=/dwdhome/fy/BASE_E6_2。E1 C0015 已completed并交回Git写入且无在途写，controller 本 C 原件发布结束后交给manager本Run记录写任务；本 C 必要发布完成后交回controller。
+- E1=codex:OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01:executor:E1；当前真实 thread=`01a21355-9066-7852-91f5-677dfd259dc9`；C0018 正式派达说明双方Sol/max及既有历史已核。旧空预建 ID 已退役，仅保留历史，不作目标。
+- 工作区 / realpath=/dwdhome/fy/BASE_E6_2。E1 C0017 已completed并交回Git写入且无在途写，controller 本 C 原件发布结束后交给manager本Run记录写任务；本 C 必要发布完成后交回controller。
 - grant：operation=eaw-business-discovery-research-and-publish execution_context=/dwdhome/fy/BASE_E6_2 allowed_writes=/dwdhome/fy/BASE_E6_2,daowei2026/observe-iterate:feat/statistics-driven-feature-closure-v0.3-20261122:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/。角色远端仅本Run；Registry和主控Chat由controller负责。
-- 本 C INVOCATION：daowei2026/observe-iterate@9192fe4023ef6b30319e0fa5b540e848232f3db4:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0016/INVOCATION.json；token=eaw-discovery-c0016-manager-d008-r2-consume-20261126。
-- FULL_ASSIGNMENT：daowei2026/observe-iterate@cfb1c04981ebfa6ce9f500a63384febfff490fe8:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0016/FULL_ASSIGNMENT.md
-- snapshot_status=current（C0016消费D008/R2 S07＋S08后的全局视图）。
+- 本 C INVOCATION：daowei2026/observe-iterate@72827b2e06207ac73f93418cdd2c845cc117653b:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0018/INVOCATION.json；token=eaw-discovery-c0018-manager-d009-r3-consume-20261126。
+- FULL_ASSIGNMENT：daowei2026/observe-iterate@4339cd1b04843abd47b1a339718025c6301072dd:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0018/FULL_ASSIGNMENT.md
+- snapshot_status=current（C0018消费D009/R3并组织独立S09后的全局视图）。
 
-## B. 本次真实消费与状态
+## B. 本次真实消费与当前状态
 
-- 有效Return：daowei2026/observe-iterate@2b547220005179117130a5ad75b6e459b866f4e8:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0015/PRO_RETURN.json。C0015、原E1回原manager、D008、零W、REPORTED_COMPLETE，remaining_scope_ref/continuation_ref均null。controller已核真实completed、Git交回无在途写、exact原件/75项冻结大小hash/V2；manager亲自消费，不伪造独立物理回执。
-- 原报告：daowei2026/observe-iterate@8cf263c0b2c2ada6b6916f093d5431c3a966cb82:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0015/EXECUTOR_REPORT.md；S07证据：daowei2026/observe-iterate@8cf263c0b2c2ada6b6916f093d5431c3a966cb82:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0015/S07_EVIDENCE.md；S08定位：daowei2026/observe-iterate@8cf263c0b2c2ada6b6916f093d5431c3a966cb82:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0015/R2_DESIGN_POSITIONING.md；案例册：daowei2026/observe-iterate@8cf263c0b2c2ada6b6916f093d5431c3a966cb82:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0015/R2_CASEBOOK.md；逐项结果：daowei2026/observe-iterate@8cf263c0b2c2ada6b6916f093d5431c3a966cb82:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0015/report/R2_RESULT.json。
-- 条件统计/试查：daowei2026/observe-iterate@8cf263c0b2c2ada6b6916f093d5431c3a966cb82:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0015/report/R2_STATISTICS.json；daowei2026/observe-iterate@8cf263c0b2c2ada6b6916f093d5431c3a966cb82:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0015/report/MINIMAL_PROBE_SUMMARY.json；来源/冻结索引：daowei2026/observe-iterate@8cf263c0b2c2ada6b6916f093d5431c3a966cb82:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0015/SOURCE_INDEX.json；daowei2026/observe-iterate@8cf263c0b2c2ada6b6916f093d5431c3a966cb82:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0015/ARTIFACT_INDEX.json。本批索引用files/path/local_path，75个文件共26,385,676 bytes为原索引及controller核对事实。
-- R2本条定向检索、实际联合属性/参考设计定位、四例和两标签试查、反例/边界已完成；D008最低原生产出满足，无D008剩余。正式链待证限制成熟度，不成为本D剩余或父Run整体阻碍。S01～S06、R1原成果继续有效，不重跑无关工作。
-- D001在实际派达前被Owner最新粒度替代，提交504ecce6b88d1f21b66d158587c5a828ce4b63d2历史保留；C0003仅机器Return/发布补正。原失败/更正、样本暴露、依赖及未决认识不改写。
+- 最新有效Return：daowei2026/observe-iterate@e30dced32c111a891ef1d06bbe2bff4b9cfa1179:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0017/PRO_RETURN.json。C0017、原E1回原manager、D009、零W、REPORTED_COMPLETE，remaining_scope_ref/continuation_ref均null。controller已核真实completed、Git交回无在途写、exact原件/24项冻结大小hash/V2；manager亲自消费，不伪造独立物理回执。
+- 原报告：daowei2026/observe-iterate@6a0072296dbdaf48f3972db3b974e4c6d417389e:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0017/EXECUTOR_REPORT.md；S07证据：daowei2026/observe-iterate@6a0072296dbdaf48f3972db3b974e4c6d417389e:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0017/S07_EVIDENCE.md；S08定位：daowei2026/observe-iterate@6a0072296dbdaf48f3972db3b974e4c6d417389e:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0017/R3_DESIGN_POSITIONING.md；逐项结果：daowei2026/observe-iterate@6a0072296dbdaf48f3972db3b974e4c6d417389e:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0017/report/R3_RESULT.json；来源实查：daowei2026/observe-iterate@6a0072296dbdaf48f3972db3b974e4c6d417389e:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0017/report/SOURCE_AUDIT.json。
+- 不新增试查决定/自检/修正事实：daowei2026/observe-iterate@6a0072296dbdaf48f3972db3b974e4c6d417389e:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0017/report/MINIMAL_INFORMATION_DECISION.json；daowei2026/observe-iterate@6a0072296dbdaf48f3972db3b974e4c6d417389e:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0017/report/VERIFICATION_EVIDENCE.json；daowei2026/observe-iterate@6a0072296dbdaf48f3972db3b974e4c6d417389e:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0017/EXECUTION_NOTES.md；来源/冻结索引：daowei2026/observe-iterate@6a0072296dbdaf48f3972db3b974e4c6d417389e:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0017/SOURCE_INDEX.json；daowei2026/observe-iterate@6a0072296dbdaf48f3972db3b974e4c6d417389e:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0017/ARTIFACT_INDEX.json。索引用files/path/local_path，24项共279,228 bytes为原索引及controller核对事实。
+- R3来源/时间核查、参考语义定位、已有信息判断、不新增试查决定及准确去向已完成，D009原生最低产出满足，无D009剩余。本C完成实际消费。停止真实补撤分解仅是本条专业去向，不代替总体结束依据。
+- S01～S06与R1/R2各条原成果/消费继续有效。D001在实际派达前被Owner粒度纠正替代，提交504ecce6b88d1f21b66d158587c5a828ce4b63d2历史保留；C0003仅机器Return/发布补正。原方法/失败更正、样本暴露、依赖与反例不改写。
 
 | 项目 | 有据状态 |
 | --- | --- |
-| 父Run | incomplete / IN_PROGRESS；S01～S06与R1/R2各条S07＋S08已完成并消费，R3逐项处理及S09未完成 |
-| D008 / R2 | 已完成，由C0016消费；已有信息/组合表达要求及参考投影位置，正式链待证 |
-| 当前D009 | [R3共同来源可识别性S07＋S08](../delegations/D009/DELEGATION.json)，issuer_call_id=C0016；已签发待controller派达同一E1，无本D实际派达或成果 |
-| 当前等级 | R1/R2研究线索、R3研究线索/共同观测约束；正式缺口/必须修改/生产Bug及充分/初步改进依据点均未确认 |
-| 下一合法动作 | controller消费本C真实manager Return后向同一E1派达D009/R3 |
-| 后继业务节点 | manager消费R3真实成果和准确去向后，按原任务与实际新增认识安排后继；S09单独，不增加专业复审/分析计划/Owner审批 |
+| 父Run | incomplete / IN_PROGRESS；S01～S06及R1/R2/R3各条S07＋S08已完成并消费，S09尚未执行 |
+| D009 / R3 | 已完成，由C0018消费；保持研究线索/共同观测约束，停止本批真实补撤分解推断，保留代理/可见活动结论 |
+| 当前D010 | [独立S09总体归并与交付](../delegations/D010/DELEGATION.json)，issuer_call_id=C0018；已签发待controller派达同一E1，无本D实际派达或成果 |
+| 当前证据等级 | R1/R2研究线索、R3研究线索/共同约束；正式缺口/必须修改/生产Bug及充分/初步改进依据点均未确认 |
+| 下一合法动作 | controller消费本C真实manager Return后向同一E1派达D010/S09 |
+| 最终业务节点 | S09按原§8.4/8.5实际归并、核目标达成程度/整体结束依据及未决项，真实回交后manager消费；不预先宣布父Run完成 |
 
-## C. R2原级发现、分母与试查
+## C. R3原级认识与本条停止依据
 
-- R2本条S07＋S08已实际执行，定向扫描17,863条展示来源引用/16,710去重逻辑记录，9,526条可锚定联合事件；11条无有效同侧quote局部排除。主条件为里程碑、cum/baseline≥1、当时最优价等于Wall core且展示段起点量可核，共483里程碑/289 local Build活动/209 local Wall/83PG/22日期块，其中219事件当前同价量≤Wall展示段起点量1/4；每PG一条为38/83、每Build一条134/289。重复里程碑/对象/PG不是独立攻防频率，价带外最优量不当旧墙库存。
-- 原始1,585条里程碑的baseline、cum、观测ratio可一致恢复基线，1,579条ratio与门槛level不同、6条相同。参考FRP FaoIngress的Build milestone读level，typed measurements未承接raw baseline/观测ratio，不能以cum/typed门槛反算真实base。参考TIS基线取活动起点best_vol，起点价可异于Wall；4,338条起点可核事件中2,049条基线起点在Wall价带外。定位的是参考投影语义，不是本批实际正式全链首损或生产错误率。
-- 新增四例/四此前未深入PG/四源日期块，非R2原形成Wall，659行quote、174条同侧P1来源引用。R2-01 Wall展示起量1844、Build基线369/累计1499.8511而当前271；R2-02当前4359量56不属于旧4360墙；R2-03 Absorb阻挡在切点后2秒；R2-04当前728.5量894高于展示起量866、基线却取起点729量48。已有字段/L1能恢复这些区别，普通反例保留；来源引用有重叠，不当独立事件。
-- 43事件/43PG/21日期块试查仅追加quantity_role、time_basis两个字符串，原数值改动0、新数值0。29切点价带外、22基线起点价带外、42观测ratio不等于level，1条相等普通例保留；8个后续Resolved仅入后验审计、不入切点输入。全部继承R1暴露，41试查PG已有特定指标访问；43条语义试查不算43次深入提取。标签解释既有信息，未运行实际P2或证明误读率/生产/预测收益。
-- R2仍为研究线索、正式链待证；已有信息消费/表达要求与需核对的参考投影是最强支持。actual producer/FRP code/参数receipt/exact身份、相容完整occurrence/current/publication及P2实物未取得；正式缺口、必须修改、生产Bug和充分/初步改进依据点均未确认。后继设计问题仍为实际合法投影能否于切点取得基线/参考价、区别ratio/level及已发布历史，不能则哪个确切边界先阻断。
-- 四例固定10/30/60秒可用数4/3/3，R2-03仅27.5秒材料，缺失保留。它们不是匹配预测对照，方向混合不推因果。Attack 653条可锚定记录中368条display UTI比展示ts晚.5秒、285条相同，仅是展示锚差别，不作正式发布延迟或Bug。日期块为源窗口标签，R2-02实际2021-11-02而继承DB20211101，不冒充已核精确交易日。
-- 累计使用保留原210条，现257条、累计69次深入提取；139个上游特定唯一区间ID原样保留，R2四例/43事件使用记录单位不同，不加成186区间。R1全批127PG形态访问含原50预留PG继续有效；R2联合扫描涉及110PG/23日期块且选择前已查看关联Resolved展示。未深入不等同未见，不称未开封或严格留出；保持跨项共享来源和暴露依赖。
+- R3本条S07＋S08已实际完成，保持研究线索（共同观测约束），停止本批真实补撤分解推断、保留代理/可见活动结论。实际核同批2,924文件浅层清单、manifest的2,920资产和已有字段索引；参考薄receipt实际10个必需字段在manifest键/CSV字段无匹配，没有取得本包actual producer/FRP、feed单位/单双边口径/精确区间/完整覆盖或独立方向/订单事件。这限定随包取证能力，不证明外部生产系统无receipt或FRP未运行。
+- 四个已暴露PG仅作12行原始quote、5源文件hash及重叠行回查，不是四次新增深入或独立复现。B2-06-B为16→36→16、C20/V4；B2-05-B整段C706/V417、单半秒减525/V15；普通边界R2-01 C98/V168、R2-04 C6/V62保留。C>V或C≤V均不认证方向真值；t0<UTI≤t1求和、端点q取值和排除起点前V的研究政策已核，内部时间一致不认证原feed完整。
+- 原165,932发现区间、51,373下降区间、5,423个V低于净下降的条件补查均复用、未重跑；不能以机械零命中否认真实撤减。计量/对齐/覆盖前提未认证，本D应用真实上界0次，真实C/净撤减估计均null；不把旧条件区间升格为已认证撤单。净量条件边界也不提供订单身份、撤减总量或意图。
+- 参考CC方向列本为盘口变化预测；参考Absorb接收trade_vol后丢弃、消费累计取hit代理，公开replenishment亦为代理。参考typed Build/Absorb已有proxy/availability，Attack明确为PredictedDirectionalHitVolumePerHalfSecondV0；Available/Measured是产品/计算可得性，不是真实方向认证。已证源观测/研究材料的可识别性限制，本批实际正式链首损仍未证，不据参考代码或展示缺项判正式缺口/生产Bug。
+- 已有C_source、directional_truth_status、raw V、proxy/availability及R2角色/时点标签能表达当前限制；R3未增标签/数值、未造净撤单特征，未强制最小信息试查，也未运行P2/生产收益或稀疏化实验。新增同义信息不能产生缺失receipt/独立真值。正式缺口、必须修改、生产Bug和充分/初步改进依据点均未确认，R1/R2的可见/角色/时点结论有效、正式链后继问题未解决。
+- 累计使用保留旧257条、现261条，139个上游特定唯一区间ID和累计69次深入提取均不变；新增仅4条已暴露来源回查，无新未来价格访问。原预留已发生R1/R2程序及交互暴露，不称未开封/严格留出。元数据family分类及receipt文字/预期11更正为实际10的本C修正已在冻结前记录并核验，不改原始行核或0匹配结论。
 
-R2最强支持为已有信息的消费/表达要求。参考FRP raw→typed Build未承接raw baseline/观测ratio而milestone读level的语义位置已经定位；actual producer/FRP、相容receipt/exact身份和完整正式历史未知，不能由参考投影直接推出实际全链缺口。raw展示与L1已有信息能恢复的区别保留，未取得实际P2不声称误读。标签试查明确角色/时间但未增加市场事实，不升级为初步改进依据。
+R3本条准确去向：停止本批真实补撤分解推断，保留代理/可见活动及来源/量尺/可得性限定，作为R1/R2共同约束；不提出同义P1字段或预设净撤单特征
+停止依据：同批来源与参考语义已核，重复同源机械关系无新增真值认识；缺件边界明确，授权不含新feed/生产重跑
+未来问题：若未来取得相容source/producer receipt、feed量尺/区间/完整覆盖及独立方向/订单事件，哪些真实净量结论可重新识别；实际合法消费者是否已正确保留proxy/availability/时点限定？
 
-R2保留的原生下一轮设计问题：在实际相容receipt与合法消费投影下，能否于切点取得Build起点baseline/参考价、区分观测ratio/level并取得已发布交互历史？不能时哪个确切边界首先阻断恢复？
-这个问题仍待实际相容材料，不自动作为D008剩余、不由D009假定已解决。新来源证据若改变判断须如实记录，不能静默以参考版本代替实际版本。
+已证的是源观测/研究材料缺独立真值的可识别性边界，实际正式链首损未证。参考Available/Measured或字段含proxy不认证本批actual版本/真实方向；以后有Feature receipt也须另核feed量尺/区间/完整覆盖，且不会自动产生独立方向/订单真值。原5,423个条件区间未认证为撤单；真实估计null、上界应用0次不解释成真实现象为0。
 
-## D. R3的合法范围与后继依据
+R1/R2可见过程/角色/时点结论继续有效，当前量/基线参考价、ratio/level、实际合法投影和完整已发布历史的问题未被R3解决。R1的18PG描述试查和R2的43PG语义标签收益/失败边界保留，均不据此升级正式成熟度；旧普通例、时点反例、匹配质量和截断保留。
 
-原归并/逐项清单：daowei2026/observe-iterate@0e52ad9a51f2bc3803b2343b4b06daed616e91fa:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0011/FIRST_ROUND_SYNTHESIS.md；daowei2026/observe-iterate@0e52ad9a51f2bc3803b2343b4b06daed616e91fa:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0011/report/CANDIDATE_REGISTER.json。R3共同来源约束已在R1/R2依赖检查中部分处理，但两条回交明确未独立结案，原安排一直保留去向；本次安排R3仍可处理的来源/计量/时间/完整性/可得性证据及设计定位，形成逐项准确去向。
+## D. 后继独立S09与结束边界
 
-| R项 | 真实认识与本次状态 | 后继 |
-| --- | --- | --- |
-| R1 当前/阶段可见流动性 | D007完成并消费；独立业务证据/两项试查增强，正式首损待证；已有信息消费要求 | 阶段形状直接新增P1/预测型修改优先级下调，原问题/失败边界保留 |
-| R2 基线、对象与可知时间 | D008完成，由C0016消费；参考投影level/ratio有具体定位，实际联合正式链待证 | 先已有信息/上层组合表达，保留合法投影/receipt后继问题 |
-| R3 真实消耗/净撤减来源 | 研究线索/共同观测约束；已核C/n同源限制、R1/R2源缺件复用 | D009仅本条S07＋S08待派，不另开独立真补撤分解，不重复机械恒等计数；据可得证据形成定位/去向 |
-| S09 | 整体归并、证据等级/剩余问题与原§8.4/8.5结束依据 | 待R3真实消费及后继判断，单独委派；未默认整体已结束 |
+D010直接采用锁定原任务S09：核三入口/三组对照/深入项处理，按§8.3～8.5整理分级认识、已有信息/上层消费要求、尚待补证、普通Bug及后续问题；核图/统计/代码/来源可重放，交最终报告和证据索引、解释目标达成程度/剩余问题与整体结束原因。expected_outputs仅取原S09与持续记录原文，无新增专业计划/复审/Owner审批。
 
-D009保持原R3“作为R1/R2共同核查；真实补撤单独证明暂不优先投入”的处理。只在同批可取得材料内作必要源/计量/时间归属/完整性receipt及proxy/availability表达核查；已经核过的准确引用复用，不新增全代码验收或 professional Gate。只有单位可比/对齐完整前提已真实核定才用条件上界；没有独立真值/有条件计量证据则停止真实分解推断，保留可见活动结论，不推订单身份/意图。
+R3停止只限真实补撤分解，不是本批所有研究范围耗尽或目标充分达成的证明。S09依原§8.4核是否仍有可行、能增加业务认识的其他高价值方向；必要回查/回补依原任务处理、方法调整和新增认识留痕。没有充分依据点时不能以文件数/固定案例数或“设计合理”作为唯一停止理由，也不无限扩大到新行情/生产重跑。
 
-按原§7有价值且可行时最小来源/量尺/可得性试查，已有信息足够则承认；缺件标具体限制而非无现象/正式Bug。原问题冻结历史保留，当前原预留已发生R1/R2程序/交互暴露，不称未开封或严格留出。新增线索和继续/停止依据依原任务记录，交manager实际消费，不预设案例数或必须产生研发点。
+仍有本D实质必要工作则如实IN_PROGRESS与剩余/续接；真正满足S09原生产出和结束依据才可报告本D完成。专业完成与父Run最后manager消费/controller归档分开，S09尚无真实成果，本C不预判最终状态。
 
-## E. 主线、累计使用与恢复
+| 逐项结果 | 当前准确处理 |
+| --- | --- |
+| R1 | 独立可见量/阶段证据增强、正式链待证；先已有信息消费，阶段形状直接新增P1/预测型修改优先级下调 |
+| R2 | 数量/对象/时点可由既有信息恢复，参考level/ratio投影位置明确，actual正式链/合法接口待证 |
+| R3 | 源可识别性限制已证，停止本批真实分解；沿已有proxy/availability限定，不造同义字段 |
+| 整体交付 | 待独立S09评价最强可支持认识、目标达成程度、准确设计/未来取证问题及结束依据 |
+
+## E. 主线、使用账与恢复
 
 | 工作项 | 实际成果 | 当前状态 |
 | --- | --- | --- |
-| S01＋S02 / D002 | C0002职责/数据/版本/独立性记录 | 已完成并消费，复用 |
+| S01＋S02 / D002 | C0002职责/数据/版本/独立性记录，24项索引 | 已完成并消费，复用 |
 | S03 / D003 | C0005三入口全有效范围、261,497区间/33项索引 | 已完成并消费，复用 |
-| S04～S06 / D004～D006 | B1/B2/B3各六组，首轮18组36深入区间；C0007/9/11为103/112/125项冻结索引 | 已完成并消费，原匹配/反例/相关性保留 |
+| S04～S06 / D004～D006 | B1/B2/B3各六组，首轮18组36深入区间；C0007/9/11为103/112/125项索引 | 已完成并消费，原质量/相关性/反例保留 |
 | R1 S07＋S08 / D007 | C0013定向扫描、29深入区间、18PG两项试查/222项索引 | 已完成并消费，正式链局部待证 |
-| R2 S07＋S08 / D008 | C0015四例、全批联合来源、43PG标签试查/75项索引 | 已完成，由C0016消费 |
-| R3 S07＋S08 / D009 | 原R3清单及既有共同来源证据 | 已签待派，无本D成果 |
-| S09 | 全部实际成果与整体结束依据 | 未委派，单独接续 |
+| R2 S07＋S08 / D008 | C0015四例、联合来源/参考投影、43PG两标签试查/75项索引 | 已完成并消费，正式链局部待证 |
+| R3 S07＋S08 / D009 | C0017来源核查、4PG/12行复用、0新增深提/0上界应用/24项索引 | 已完成，由C0018消费 |
+| S09 / D010 | S01～S08全部实际成果与原§8.3～8.5 | 已签待派，未执行、无最终报告 |
 
-最新专业根：`/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-business-discovery-20261125-01/calls/C0015/`。R2_CASEBOOK、S07_EVIDENCE、R2_DESIGN_POSITIONING、scan/联合逻辑记录、cases/轨迹/可得同侧属性、probe/原值/两标签/后验审计、研究代码与来源引用由75项索引files/local_path定位；C0013/C0011/C0009/C0007/C0005/C0002原冻结索引继续有效。
+最新根：`/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-business-discovery-20261125-01/calls/C0017/`。24项索引给来源实查、复用行/原始引用、已有语义/不试查决定、修正、自检/代码入口，详见 daowei2026/observe-iterate@6a0072296dbdaf48f3972db3b974e4c6d417389e:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0017/LOCAL_ARTIFACTS.md。C0015/C0013/C0011/C0009/C0007/C0005/C0002原索引继续有效，D010输入含准确旧索引，不逐份重发。
 
-累计样本report/SAMPLE_USE_CUMULATIVE.json为141,850 bytes，SHA-256 78dc169e2b2012284f412c8a05a9adc77d3f56f0dbb916e12dcab09130750a8d。本C只读取必要累计账/自检并保存来源，不重核全部75项或编造附件远端ref。原210条保留、现257条；69次深入提取与43条R2语义试查分开，139个原特定区间ID不加事件记录。R1程序形态127PG/原50预留PG及R2联合110PG/23日期块访问均有记录，不把257条或139区间当独立样本数或全部访问范围。
+累计样本report/SAMPLE_USE_CUMULATIVE.json为144,873 bytes，SHA-256 8c95b0f33f77a1de3b2897999c0c912ed351238445ed260b07f26c0d3df00399。原257条保留、现261条，139个上游特定区间ID与69次深入提取不变；4来源回查不新计深入/独立复现，R2事件试查不加到区间数。程序指标/交互/事件/回查暴露分开，原预留不称未开封或严格留出。本C只读必要累计原件和来源，不重核全部24项，不编造附件远端ref。
 
-本次新增D008/R2真实消费、D009仅R3共同来源可识别性S07＋S08和双进度更新，见[C0016 MANAGER_REPORT](../calls/C0016/MANAGER_REPORT.md)。D/成果先发布并回读，正式Return后固定准确D/成果/剩余范围；本C必要发布后Git写任务交回controller。不新建角色/Run，不重放旧C。
+本次新增D009/R3真实消费、独立D010/S09与双进度更新，见[C0018 MANAGER_REPORT](../calls/C0018/MANAGER_REPORT.md)。D/成果先发布exact回读，Return后固定准确D/成果/剩余范围；本C必要发布后Git写任务交回controller，不重启Run/角色或重放旧C。
 
-更新时间：2026-11-25T23:19:56.703Z
+更新时间：2026-11-26T00:09:55.718Z
