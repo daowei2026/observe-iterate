@@ -26,7 +26,7 @@
 
 ## B. 本次真实消费与当前状态
 
-原Manager已亲自消费D010/S09最终报告、统一证据索引、冻结索引、原生完成依据、最终结果及必要冻结支持件，依据任务§8.4–8.5决定**结束本批授权业务研究，父Run专业工作报告完成，不签D011**。研究执行/交付已完成；主要发现目标**部分达成、未完全达成**。controller真实回收与运行归档仍待其完成，不冒称父Run已物理归档。
+原Manager已亲自消费D010/S09最终报告、统一证据索引、冻结索引、原生完成依据、最终结果及必要冻结支持件，依据任务§8.4–8.5决定**结束本批授权业务研究，父Run专业工作报告完成，不签D011**。研究执行/交付已完成；主要发现目标**部分达成、未完全达成**。controller现已完成真实回收和必要运行记录/索引更新；主控聊天全文归档仍单列欠账，不冒称全文已物理归档。
 
 - E1有效Return：daowei2026/observe-iterate@d91ed3c388d8755b39dba7b2a1d0a019d32459e4:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0020/PRO_RETURN.json。role=executor、原E1回原manager、D010、零W、REPORTED_COMPLETE。原件状态只指D010，本次结束判断另有下面的原生依据。
 - D010：daowei2026/observe-iterate@825306a116a40496aa19bf2ca6da8114ef0d9f2f:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/delegations/D010/DELEGATION.json。C0019未实际送达且合法SUPERSEDED，原件保留；C0020是本D首次实际执行。不重放两者。
@@ -45,7 +45,7 @@
 | D010／S09 | C0020首次执行已完成，由C0021实际消费；本D无剩余 |
 | 证据等级 | 3条研究线索；候选迭代点、充分依据点、初步改进依据点、正式缺口、必须修改、生产Bug均0 |
 | 当前正式后继 | 无D/Order/continuation/Owner请求；不签D011，不存在可具体执行且有明显新增价值的本批必要专业剩余 |
-| 下一运行动作 | controller真实回收本Manager Return、已发布成果和双进度，按主控机制归档；不是研究未完成或专业结束理由 |
+| 下一运行动作 | 本批不再派研究后继；实际回收/成果索引/资源登记已核，主控聊天全文归档按已记录恢复条件补档；不是专业剩余范围 |
 
 ## C. 依据原§8.4–8.5结束，而非由步骤完成推定
 
@@ -93,6 +93,15 @@ D001实际派达前替代的原件与Owner纠正采用事实保留，D002～D010
 
 本地管理根：`/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-business-discovery-20261125-01/calls/C0021/`。报告/结束依据/来源/双进度先发布并exact回读，真实V2 Return随后引用已存在commit；publication回读记录给实际head/原blob/正文匹配。管理调用CLI账只反映本C管理工作，不替代业务认识或controller归档。
 
-当前无需要启动的专业后继。以后在合法取得相容关键材料和实际授权具备时，沿R2→R1→R3问题恢复，不从头盲目重跑、不自动扩大生产边界。controller下一动作是本C真实回收与归档，Registry/主控Chat仍由controller负责；本manager发布结束后交回Git写任务，无在途写事实随最终回交准确记录。
+当前无需要启动的专业后继。以后在合法取得相容关键材料和实际授权具备时，沿R2→R1→R3问题恢复，不从头盲目重跑、不自动扩大生产边界。controller已实际回收本C并更新Registry及成果入口；本manager已交回Git写任务，无在途写。主控全文归档保留单独欠账，见末尾实际回收补记。
 
 更新时间：2026-11-26T01:33:29.503Z
+
+
+## 主控实际回收补记（2026-11-26T01:57:37.352356+00:00）
+
+原主控已实际回收 C0021 最终 Return，核对原 Manager 的准确调用/物理会话/真实 Sol-max 及最终 completed/Git 写任务交回，核 6 份 exact 远端原件、23 个来源文件和 13 个支持原件；Manager Return 通过 V2。所有 C/D 已为 COMPLETED 或有据 SUPERSEDED，无在途或 UNKNOWN 专业动作，无 D011。该补记只更新控制事实，原 Manager/E1 的业务结论、证据等级及条件性取证建议保持原件所载。
+
+[最终成果索引](https://github.com/daowei2026/observe-iterate/blob/4dbac21535f069fdd5c21092438773a286f21420/longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/RESULTS_INDEX.md) 已发布并 exact 回读。主控实际回收记录、资源释放记录及仅移出本 Run 的当前 Registry 更新均已发布并 exact 回读；原 Binding、全部历史成果和本地材料保留。两角色队列空、Goal 为空，当前主控计划唤醒已触发并 ACK，timer 不 active；不再安排本轮研究接续。
+
+本批授权研究及必要运行回收已完成，主要发现目标仍为部分达成。主控聊天全文归档单独保留 ARCHIVE_NOT_COMPLETE：没有已核实独立 observe-iterate Git 工作区，按锁定 Skill 归档卡记录欠账，不猜路径、新建工作区或新增审批。准确目标线程、分支、原因、恢复条件见成果索引中的 CONTROLLER_RECOVERY.json；这不是专业剩余范围或本批结束依据。
