@@ -1,0 +1,182 @@
+{
+  "run_id": "OI-EAW-P1-BUSINESS-DISCOVERY-20261126-01",
+  "call_id": "C0009",
+  "delegation_id": "D005",
+  "executor": "E1",
+  "delegation_status": "REPORTED_COMPLETE",
+  "parent_run_status": "IN_PROGRESS",
+  "parent_completion_not_claimed": true,
+  "main_judgment": "现有同批Tick+正式历史按exact对象/源切点联合足以回答当前L1条件、producer可得阶段与记录总量；具名复盘侧优先按需关联并保留原时钟，未支持P1复制全局dense属性。",
+  "completed_scope": [
+    "具名读口来源/用途/实际投影核查",
+    "真实过程与反例的同对象切点联合试读",
+    "最小信息使用及七种取值策略的实际代价比较",
+    "具体上层设计位置、已有信息能力/不可识别边界与回交选择"
+  ],
+  "readout_source_sha256": "93b55bf9c178c4834b486adb355ddbeb08c61e10c3918ff94a97c28cfbf4e3c5",
+  "producer_source": "沿用D001 receipt git:c747d88a93528fa65cce8f2a6238e1c925bb3b9f+逐源source-sha256；不以readout文件/当前HEAD代替",
+  "scope": {
+    "original_tick_windows": 148,
+    "symbols": [
+      "rb",
+      "hc",
+      "i"
+    ],
+    "selected_processes": 16,
+    "new_named_joint_processes": 12,
+    "reused_bridges": 4,
+    "process_groups": 15,
+    "date_blocks": 12,
+    "object_cut_rows": 465,
+    "specified_query_cuts": 77,
+    "strict_holdout": false
+  },
+  "actual_readout_checks": {
+    "asset_references": 96,
+    "projection_groups": 48,
+    "projection_rows": 1259,
+    "mismatches": 0
+  },
+  "minimal_trial": {
+    "current_state": "当前量与可见原因，按对象/核心价/源cut关联；对象退出与离开最佳价分开",
+    "period_context": "显式[start,cut]及(start,cut]平台记录总量",
+    "existing_context_required": [
+      "exact源实例/对象/侧/核心价",
+      "source_cut",
+      "活动ID/起点/参照价和代理定义",
+      "Formation.available_at与Segment.closed_at/原业务端点"
+    ],
+    "new_production_fields_required_by_this_D": false
+  },
+  "sparsity_results": [
+    {
+      "method": "every_tick",
+      "source_ticks": 465,
+      "stored_rows": 465,
+      "evaluated_cuts": 465,
+      "quantity_state_errors": 0,
+      "visibility_errors": 0,
+      "volume_errors": 0,
+      "max_quantity_abs_error": 0.0,
+      "serialized_payload_bytes": 23914,
+      "stored_fraction": 1.0
+    },
+    {
+      "method": "actual_view_boundary_hold",
+      "source_ticks": 465,
+      "stored_rows": 179,
+      "evaluated_cuts": 465,
+      "quantity_state_errors": 118,
+      "visibility_errors": 37,
+      "volume_errors": 274,
+      "max_quantity_abs_error": 27173.0,
+      "serialized_payload_bytes": 10361,
+      "stored_fraction": 0.3849462365591398
+    },
+    {
+      "method": "same_object_producer_event_hold",
+      "source_ticks": 465,
+      "stored_rows": 174,
+      "evaluated_cuts": 465,
+      "quantity_state_errors": 125,
+      "visibility_errors": 58,
+      "volume_errors": 283,
+      "max_quantity_abs_error": 415.0,
+      "serialized_payload_bytes": 10061,
+      "stored_fraction": 0.3741935483870968
+    },
+    {
+      "method": "every_2_seconds_hold",
+      "source_ticks": 465,
+      "stored_rows": 134,
+      "evaluated_cuts": 465,
+      "quantity_state_errors": 172,
+      "visibility_errors": 63,
+      "volume_errors": 315,
+      "max_quantity_abs_error": 27173.0,
+      "serialized_payload_bytes": 8223,
+      "stored_fraction": 0.28817204301075267
+    },
+    {
+      "method": "quantity_visibility_change",
+      "source_ticks": 465,
+      "stored_rows": 219,
+      "evaluated_cuts": 465,
+      "quantity_state_errors": 0,
+      "visibility_errors": 0,
+      "volume_errors": 238,
+      "max_quantity_abs_error": 0.0,
+      "serialized_payload_bytes": 12747,
+      "stored_fraction": 0.47096774193548385
+    },
+    {
+      "method": "quantity_or_recorded_volume_change",
+      "source_ticks": 465,
+      "stored_rows": 450,
+      "evaluated_cuts": 465,
+      "quantity_state_errors": 0,
+      "visibility_errors": 0,
+      "volume_errors": 0,
+      "max_quantity_abs_error": 0.0,
+      "serialized_payload_bytes": 23252,
+      "stored_fraction": 0.967741935483871
+    },
+    {
+      "method": "on_demand_selected_cuts",
+      "source_ticks": 465,
+      "stored_rows": 77,
+      "evaluated_cuts": 77,
+      "quantity_state_errors": 0,
+      "visibility_errors": 0,
+      "volume_errors": 0,
+      "max_quantity_abs_error": 0.0,
+      "serialized_payload_bytes": 5441,
+      "stored_fraction": 0.16559139784946236
+    }
+  ],
+  "evidence_disposition": {
+    "new_sufficient_independent_iteration_points": 0,
+    "existing_points_refined": [
+      "N1",
+      "N2"
+    ],
+    "not_recounted": "R3/D004同源记录量与代理关系",
+    "maturity": "有界复盘/研究组合的具名最小设计输入；非部署/实际消费者效果验证"
+  },
+  "not_established": [
+    "真实同价消耗/净撤减",
+    "feed单位/覆盖/同步和独立方向归属",
+    "FRP/P2实际发布/消费行为",
+    "生产成本/预测或因果收益"
+  ],
+  "remaining_scope_for_D005": [],
+  "remaining_scope_ref": null,
+  "continuation_ref": null,
+  "parent_remaining_and_impact": [
+    "父任务全局归并/收束由Manager依据既有范围账判断",
+    "未取得实际消费者产物，只限制其行为判断，不阻断研究组合",
+    "真实分解的计量/方向证据仍未认证，真实消耗/净撤保持null"
+  ],
+  "best_successor": "Manager归并N1/N2及本次取舍为设计输入并判断全局收束；没有新的具名问题时不再重复同源量比/代理扩样。",
+  "named_restoration_conditions": [
+    "新的具名实际消费者/正式发布产物带来可核的时点或对象问题",
+    "明确脱离raw且任意切点的离线需求与精度约束",
+    "取得可认证feed计量/覆盖和方向归属，恢复真实分解研究"
+  ],
+  "verification": {
+    "passed": true,
+    "checks": 24,
+    "source_ticks_direct": 465,
+    "query_periods_direct": 77,
+    "selected_phase_checks": 37,
+    "activity_start_checks": 67,
+    "old_frozen_integrity_scope": "实际使用53输入+3个旧冻结入口稳定，未重扫整个旧包"
+  },
+  "evidence_ref": "EVIDENCE_INDEX.md",
+  "source_ref": "SOURCE_INDEX.json",
+  "cases_ref": "cases/CASE_READOUTS.md",
+  "design_ref": "report/DESIGN_DECISIONS.json",
+  "verification_ref": "report/LOCAL_VERIFICATION.json",
+  "authorization": "D005原Owner grant；本地独立研究与获准分支本Run路径；Personal；workers=[]；无生产/数据库修改或源Chat恢复",
+  "return_transport": "必要发布精确回读后生成真实V2 Return；controller负责物理结束与跨Chat路由，不在此预造消费回执"
+}
