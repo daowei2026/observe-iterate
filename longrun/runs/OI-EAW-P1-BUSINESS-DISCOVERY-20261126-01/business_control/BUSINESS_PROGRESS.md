@@ -1,3 +1,23 @@
+# BUSINESS_PROGRESS｜C0002 新增实际业务结果
+
+本节为 E1 已完成工作的最新业务视图，尚待原 Manager 真实消费；以下 C0001 内容是历史基线。
+
+本次已取得24张实际TIS产品receipt及同批正式稀疏源，把昨晚“随包缺件”推进到实际版本、共同Wall和源行核对。原包9537条展示记录与正式源数值相符；R2四例的baseline、ratio、level与Start均能恢复，不能再称其在producer正式输出中缺失。
+
+新增一项有充分依据的组合迭代需求，**仅限本批实际复盘展示/叙事读口**：保留攻段的业务区间与确认闭合时间，并能按切点查看形成材料。653条完整过程覆盖99PG / 23日期关联块，其中574条在业务末端到闭合之间还有同墙Build/Absorb事件；278条保持同一有效最优价，量既可能减少，也可能增加。rb 2021-09-30 bid5600的具体例子显示：最后合格原子后，旧Absorb已结束、新Absorb已开始，但完整Attack仍待3.5秒后闭合。
+
+正式P1已经保留必要时间和形成材料，实际展示投影删去了这些信息；这是复盘和叙事组合应改进的具体位置。本轮未证明P1必须新增字段、实际P2误读或生产Bug。六例与反例、条件分母、源行及最小试查均已保存；不是全市场比例、预测或严格留出验证。
+
+- [C0002 实际报告](https://github.com/daowei2026/observe-iterate/blob/83abc94304fe4f00419848a2010a143946011ca2/longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261126-01/calls/C0002/EXECUTOR_REPORT.md)
+- [C0002 证据及重放入口](https://github.com/daowei2026/observe-iterate/blob/77f11f6e5ea4de5ad9e0be1caa3d1312bf4e84c3/longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261126-01/calls/C0002/EVIDENCE_INDEX.md)
+- 本地详细材料：/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-business-discovery-20261126-01/calls/C0002/。
+
+D001 已到达有意义回交节点，父任务仍部分达成。建议原Manager统筹N1展示/叙事细化；如需判定真实FRP/P2消费，再按具体用途取得实际publication/接口，不作为所有后继的统一前置。R3真实消耗/净撤减继续null。生产及原数据保持只读，旧Run成果保留，无须普通方法/发布再审批。
+
+---
+
+## C0001 历史基线（原文保留）
+
 # BUSINESS_PROGRESS｜EAW P1 业务发现接续
 
 ## 一、当前任务与整体情况
