@@ -1,0 +1,237 @@
+{
+  "schema": "eaw-business-discovery-executor-result/v1",
+  "run_id": "OI-EAW-P1-BUSINESS-DISCOVERY-20261126-01",
+  "call_id": "C0007",
+  "delegation_id": "D004",
+  "sender": "codex:OI-EAW-P1-BUSINESS-DISCOVERY-20261126-01:executor:E1",
+  "return_to": "codex:OI-EAW-P1-BUSINESS-DISCOVERY-20261126-01:manager",
+  "d_assessment": "D004已到达有实质后继选择价值的真实回交节点",
+  "parent_run_assessment": "仍部分达成，待原Manager消费及统筹；不宣称全Run结束",
+  "execution": {
+    "profile": "CODEX_NATIVE_DIRECT",
+    "model": "gpt-6.1-sol",
+    "reasoning_effort": "max",
+    "workers": [],
+    "mode": "AUTONOMOUS"
+  },
+  "owner_hint_adoption": "保留可能；实际采用trade_volume描述平台记录总成交背景，不直接替换同价方向C或认证真实消耗/撤单。",
+  "supersession": "D004唯一现行D；D003从未派达且已被Manager替代，本C未执行D003。",
+  "actual_work": [
+    "亲读本C准确Invocation、D004正文/JSON及Owner恢复原文、新版指南，复用原任务及既有有效成果",
+    "新旧444原始窗口表13列/346764行逐行对齐，888个原始/QT资产取证；原148窗三品种不扩行情",
+    "QT与96个品种交易日日表值及原时间轴核对，参数与实际Wall receipt相容",
+    "旧29例受QT影响的回查，28例原区间均低于QT，不据此立入口漏检",
+    "4526条正式Absorb代理/成交期间研究，4502条C精确核回；1642条track去重，1627条适格",
+    "六PG/五日期块的真实过程、近似数值对照、普通和极端反例；同对象六类历史及F4定向取证",
+    "18PG/13日期块的记录总量试查；源公式F3研究核算，不冒充已物化F3/P2",
+    "原生CC六例与试查162个点的时间及价量精确核回；32项交付核验通过"
+  ],
+  "new_sufficient_independent_iteration_points": 0,
+  "new_preliminary_improvement_independent_iteration_points": 0,
+  "new_iteration_points": [],
+  "business_findings": [
+    {
+      "id": "QT-R1-revision",
+      "maturity": "实际背景与旧推断的有据修订",
+      "conclusion": "28个关键点无当前Wall的旧例，其原区间挂量/QT最大0.864007，不能据此提出大挂单入口漏检。",
+      "design_disposition": "不升级入口改动；低量过程如要新对象需另有业务价值证据",
+      "evidence": "report/OLD_R1_QT_VOLUME.csv"
+    },
+    {
+      "id": "recorded-volume-use",
+      "maturity": "既有信息使用和旧R3实际联合核查；不另计独立新点",
+      "conclusion": "记录总成交可明确不同交互背景；实际联合历史已有差别，现有代理量语义忠实，不证明P1全链无法区分。",
+      "design_disposition": "若具名读口要回答记录成交负荷，按正确期间读取已有总量并保留proxy角色；不造同义字段，不冒充真实净量。",
+      "evidence": [
+        "report/TRADE_CASE_INDEX.json",
+        "report/JOINT_CASE_SUMMARY.csv",
+        "report/ONE_FIELD_RECORDED_VOLUME_PROBE.csv"
+      ]
+    }
+  ],
+  "cumulative_preserved": [
+    {
+      "id": "N1",
+      "source_call": "C0002",
+      "new_this_D": false
+    },
+    {
+      "id": "N2",
+      "source_call": "C0004",
+      "new_this_D": false
+    }
+  ],
+  "source_concordance": {
+    "windows": 148,
+    "window_symbol_tables": 444,
+    "raw_window_rows": 346764,
+    "old_new_compared_columns": [
+      "uti",
+      "timestamp",
+      "trade_volume",
+      "open_interest",
+      "price",
+      "buy_price1",
+      "buy_vol1",
+      "sell_price1",
+      "sell_vol1",
+      "buy_order_price",
+      "buy_order_vol",
+      "sell_order_price",
+      "sell_order_vol"
+    ],
+    "old_new_mismatches": [],
+    "symbol_stats": [
+      {
+        "symbol": "rb",
+        "unique_ticks": 109640,
+        "trading_days": 32,
+        "trading_day_differs_natural_date": 28354,
+        "missing_trade_volume": 0,
+        "negative_trade_volume": 0,
+        "fractional_trade_volume": 0,
+        "zero_trade_volume": 1720,
+        "positive_trade_volume": 107920,
+        "total_volume": 9549965.0,
+        "absolute_order_proxy_total": 4542225.0,
+        "proxy_sum_exceeds_total_ticks": 10108,
+        "proxy_positive_when_total_zero": 397
+      },
+      {
+        "symbol": "hc",
+        "unique_ticks": 109640,
+        "trading_days": 32,
+        "trading_day_differs_natural_date": 28354,
+        "missing_trade_volume": 0,
+        "negative_trade_volume": 0,
+        "fractional_trade_volume": 0,
+        "zero_trade_volume": 13864,
+        "positive_trade_volume": 95776,
+        "total_volume": 2725213.0,
+        "absolute_order_proxy_total": 1522791.0,
+        "proxy_sum_exceeds_total_ticks": 14185,
+        "proxy_positive_when_total_zero": 3409
+      },
+      {
+        "symbol": "i",
+        "unique_ticks": 109640,
+        "trading_days": 32,
+        "trading_day_differs_natural_date": 28354,
+        "missing_trade_volume": 1,
+        "negative_trade_volume": 0,
+        "fractional_trade_volume": 0,
+        "zero_trade_volume": 10718,
+        "positive_trade_volume": 98921,
+        "total_volume": 3552927.0,
+        "absolute_order_proxy_total": 5724216.0,
+        "proxy_sum_exceeds_total_ticks": 22635,
+        "proxy_positive_when_total_zero": 3229
+      }
+    ],
+    "qt_parameters": {
+      "freq": "1d",
+      "n": 30,
+      "quantile": 0.997,
+      "contract_scope": "main_contract"
+    },
+    "qt_daily_selected_rows": 96,
+    "qt_to_raw_UTI_timestamp_exact": true,
+    "qt_matches_supplied_daily_source_on_scope": true,
+    "trade_volume_assessment": "原新快照均为相邻Tick期间总成交，不差分、不与累计盘口代理等同；原新逐行相同，不是新增独立方向真值。"
+  },
+  "trade_constraints": [
+    {
+      "denominator": "formal_occurrences",
+      "total": 4526,
+      "gross_volume_evaluable": 4502,
+      "excluded_path_or_volume": 24,
+      "proxy_exceeds_gross": 1896,
+      "positive_proxy_with_gross_zero": 272,
+      "continuous_same_price_depletion_evaluable": 3029,
+      "positive_unexplained_decline_floor": 1209,
+      "decline_with_after_start_gross_zero": 195
+    },
+    {
+      "denominator": "latest_occurrence_per_track",
+      "total": 1642,
+      "gross_volume_evaluable": 1627,
+      "excluded_path_or_volume": 15,
+      "proxy_exceeds_gross": 518,
+      "positive_proxy_with_gross_zero": 43,
+      "continuous_same_price_depletion_evaluable": 908,
+      "positive_unexplained_decline_floor": 239,
+      "decline_with_after_start_gross_zero": 17
+    }
+  ],
+  "minimal_probe": {
+    "tracks_total": 1642,
+    "gross_evaluable": 1627,
+    "excluded": 15,
+    "qualified_tracks_without_single_owner_window": 0,
+    "actual_proxy_clock_evaluable": 4502,
+    "actual_proxy_clock_matches": 4502,
+    "deep_cases": 6,
+    "deep_PG": 6,
+    "deep_date_blocks": 5,
+    "probe_tracks": 18,
+    "probe_PG": 18,
+    "probe_date_blocks": 13,
+    "probe_positive_proxy_excess": 3,
+    "probe_no_proxy_excess": 15,
+    "probe_zero_total": 0,
+    "probe_F3_sum_equals_total": 7,
+    "added_business_numeric_fields": [
+      "recorded_total_volume_on_matched_proxy_clock"
+    ],
+    "information_source": "已有原始trade_volume按实际track/clock聚合；不是新成交真值，未运行生产F3或P2。",
+    "certified_true_consumption_bounds_applied": 0,
+    "certified_net_cancellations": 0,
+    "limitations": [
+      "同批探索性追加，所有候选已暴露，不是严格留出。",
+      "C≤记录V不认证方向；C>记录V是源内数值不相容提示，不是认证撤单。",
+      "尚未独立认证feed单位/单双边、完整覆盖与交易所时间同步；本D不输出真实净量。",
+      "F3压力求和是源码口径的研究算式，不冒充已取得的持久正式F3。"
+    ]
+  },
+  "native_CC_points": 162,
+  "actual_joint_counterexample_rejected": "T01/T02不是全部联合正式输出相同的对照；Build/Formation/F4均有差别，不据此断言P1缺失。",
+  "certified_true_consumption_bounds_applied": 0,
+  "real_same_price_consumption": null,
+  "real_net_cancellation": null,
+  "prior_R3_dependencies": {
+    "cleared": [
+      "actual producer receipt/匹配源码、共同Wall及相容occurrence已由D001/D002取得",
+      "本D明确了记录总量原生位置与期间口径，并定点核回"
+    ],
+    "still_unresolved": [
+      "feed单位/单双边/完整覆盖与交易所同步认证",
+      "独立真实方向或订单事件",
+      "具名FRP/P2实际publication和消费行为"
+    ]
+  },
+  "unresolved": [
+    {
+      "question": "真实同价消耗/净补撤",
+      "impact": "不能将源内算术差发布为认证真实下界",
+      "attempts": "原新逐行核对、实际producer量义/起点期间核查、原生CC定位及162定点、普通与极端反例",
+      "recovery": "适合原批的计量/覆盖依据及独立方向/订单证据"
+    },
+    {
+      "question": "实际消费者是否已正确使用总成交背景",
+      "impact": "不判实际P2误读或生产缺陷",
+      "attempts": "同源Wall/Build/Absorb/Attack/F4联合历史与临时F3定义已定向核对",
+      "recovery": "先确定具名读口用途，再运输其同批输入关联及原切点publication/消费记录"
+    }
+  ],
+  "recommended_successor": [
+    "消费累计N1/N2作为具体设计输入",
+    "如细化成交叙事，选择具名读口定向核其recorded total/proxy角色与期间；不要全量FRP作为统一前置",
+    "如追低量对象，先论证区别现有大挂单对象的业务价值，不重复由无事件推漏检"
+  ],
+  "remaining_scope_in_D004": null,
+  "owner_help_currently_required": false,
+  "evidence_index": "EVIDENCE_INDEX.md",
+  "artifact_index": "ARTIFACT_INDEX.json",
+  "verification": "report/LOCAL_VERIFICATION.json",
+  "publication_note": "准确Git refs和单写者交回以本C真实PRO_RETURN及publication记录为准，controller负责物理回收。"
+}
