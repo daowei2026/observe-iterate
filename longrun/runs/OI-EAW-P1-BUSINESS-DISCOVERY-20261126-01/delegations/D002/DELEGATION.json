@@ -1,0 +1,43 @@
+{
+  "schema": "longrun-delegation/v2",
+  "run_id": "OI-EAW-P1-BUSINESS-DISCOVERY-20261126-01",
+  "delegation_id": "D002",
+  "issuer_call_id": "C0003",
+  "issuer": "codex:OI-EAW-P1-BUSINESS-DISCOVERY-20261126-01:manager",
+  "recipient": "codex:OI-EAW-P1-BUSINESS-DISCOVERY-20261126-01:executor:E1",
+  "return_to": "codex:OI-EAW-P1-BUSINESS-DISCOVERY-20261126-01:manager",
+  "task_ref": "daowei2026/observe-iterate@ff45aab0c8e66e4feb552b2c8a632210d9b58b56:ai_chat/业务有效性/EAW_P1_挂单成交演化_迭代点发现任务_V0.4_长程执行版_20261125.md",
+  "business_context_ref": "daowei2026/observe-iterate@2f78dedea14fdc05571ace9044086205b81499a7:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261126-01/calls/C0003/FULL_ASSIGNMENT.md",
+  "input_refs": [
+    "daowei2026/observe-iterate@6bcd182071c0aa42db2fb67e1fa8b01c1c90862e:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261126-01/OWNER_START.md",
+    "daowei2026/observe-iterate@eb6a22dfeaa596a73b20617899868ab43a776387:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261126-01/RUN_BINDING.json",
+    "daowei2026/observe-iterate@2c82bc3fd358ea2d68afd470194c479edfea3d79:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261126-01/RUN_RESOURCE_BINDING.json",
+    "daowei2026/observe-iterate@ab71ff3212a819460da7225a05b842bd5b42786a:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261126-01/delegations/D001/DELEGATION.json",
+    "daowei2026/observe-iterate@94cff8965c5ae1aefba0af273d506951efaaa465:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261126-01/calls/C0002/PRO_RETURN.json",
+    "daowei2026/observe-iterate@83abc94304fe4f00419848a2010a143946011ca2:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261126-01/calls/C0002/EXECUTOR_REPORT.md",
+    "daowei2026/observe-iterate@77f11f6e5ea4de5ad9e0be1caa3d1312bf4e84c3:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261126-01/calls/C0002/EVIDENCE_INDEX.md",
+    "daowei2026/observe-iterate@298f89159fd3e93c453cfa28b815e78d83a589b8:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261126-01/calls/C0002/report/RESULT.json",
+    "daowei2026/observe-iterate@9b40dcf03ee13d4c012b707440859f83b067227f:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261126-01/calls/C0002/ARTIFACT_INDEX.json",
+    "daowei2026/observe-iterate@898a323509f5e7dfe36fa8a841b239654661cc1b:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261126-01/calls/C0002/report/LOCAL_VERIFICATION.json",
+    "daowei2026/observe-iterate@314804355a0a1e4458492ee536e67a2553f04452:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0013/R1_DESIGN_POSITIONING.md",
+    "daowei2026/observe-iterate@ff45aab0c8e66e4feb552b2c8a632210d9b58b56:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/RESULTS_INDEX.md",
+    "daowei2026/observe-iterate@ff45aab0c8e66e4feb552b2c8a632210d9b58b56:longrun/contracts/LONGRUN_PROTOCOL_V2.md",
+    "daowei2026/observe-iterate@ff45aab0c8e66e4feb552b2c8a632210d9b58b56:longrun/professional/PRO_EXECUTOR_GUIDE.md",
+    "daowei2026/observe-iterate@ff45aab0c8e66e4feb552b2c8a632210d9b58b56:longrun/professional/TASK_WORK_PRACTICE.md",
+    "daowei2026/observe-iterate@ff45aab0c8e66e4feb552b2c8a632210d9b58b56:longrun/CONTROL_PLANE_ADAPTER.md",
+    "daowei2026/observe-iterate@ff45aab0c8e66e4feb552b2c8a632210d9b58b56:longrun/CODEX_NATIVE_EXECUTION_PROFILE.md",
+    "daowei2026/cgpterm@0f029333a7fc4b568b5e49a77a5c8ab185baa336:.agents/skills/observe-iterate-longrun-v2-controller/SKILL.md"
+  ],
+  "expected_outputs": [
+    "依据原任务书 §§1、5–7、8.3、8.5，交付实际过程与对照、业务认识、已有联合表达、具体设计位置及下一轮需解决的业务问题，区分证据成熟度与结论范围；没有可靠迭代点时如实交付未决。",
+    "依据原任务书 §§3–7、8.5，保存来源/实际版本/参数、案例及复用关系、条件分母、反例与其他解释、必要研究表/代码/统计/图和可重放证据入口；有价值且可行时作最小信息试查，专业细证可留获准本地目录。",
+    "依据原任务书 §8.4 及新版执行指南，回交实际完成、未决和影响、已尝试办法、可行后继或具名恢复条件；真实 V2 PRO_RETURN 回原 Manager，未完成时保留 remaining_scope / continuation。"
+  ],
+  "permitted_operations": [
+    "eaw-business-discovery-research-and-publish"
+  ],
+  "allowed_writes": [
+    "/dwdhome/fy/BASE_E6_2",
+    "daowei2026/observe-iterate:feat/statistics-driven-feature-closure-v0.3-20261122:longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261126-01/"
+  ]
+}
