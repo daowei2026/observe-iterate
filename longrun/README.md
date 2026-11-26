@@ -1,6 +1,6 @@
 # 通用长程运行协作层 · V2
 
-本目录只定义跨线程的真实运行、身份、权限、状态与恢复。专业任务由每次 Run 采用的来源决定；不默认加载本仓 control/、skills/ 或任何业务阶段。任务书本身可以是完整专业依据。文件存在不代表实际线程、授权或自动运行已核验。
+本目录主要定义跨线程的真实运行、身份、权限、状态与恢复，并附按实际需要使用的通用任务工作方法。专业任务由每次 Run 采用的来源决定；不默认加载本仓 control/、skills/ 或任何业务阶段。任务书本身可以是完整专业依据。文件存在不代表实际线程、授权或自动运行已核验。
 
 ## 1. 角色与运行路径
 
@@ -32,6 +32,7 @@
 | [CODEX_NATIVE_EXECUTION_PROFILE](CODEX_NATIVE_EXECUTION_PROFILE.md) | 物理执行配置 |
 | [PRO_MANAGER_GUIDE](professional/PRO_MANAGER_GUIDE.md) | 通用协调职责 |
 | [PRO_EXECUTOR_GUIDE](professional/PRO_EXECUTOR_GUIDE.md) | 通用专业执行职责 |
+| [TASK_WORK_PRACTICE](professional/TASK_WORK_PRACTICE.md) | 按实际问题启用的任务统筹、问题解决及必要反馈方法；正常明确工作不新增步骤 |
 | [OWNER_GO](templates/OWNER_GO.md) / [CODEX_NATIVE](templates/OWNER_GO_CODEX_NATIVE.md) | 通用启动输入与权限 |
 | [PRO_DELEGATION](templates/PRO_DELEGATION.md) | 具名专业工作委派 |
 | [TASK_PROGRESS](templates/TASK_PROGRESS.md) / [BUSINESS_PROGRESS](templates/BUSINESS_PROGRESS.md) | 通用恢复与业务阅读模板 |

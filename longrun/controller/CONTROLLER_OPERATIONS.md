@@ -15,7 +15,7 @@
 输入：真实 GO 原文及其精确来源、business_case_id/work_id/run_id、采用源版本、Owner Linux 绝对工作区和已授权操作范围。
 
 动作：
-1. 检查真实 GO，不拿模板或旧聊天补权限；检查 run_id 与可信 Run 索引、历史原件是否冲突。同一业务 case 可有多个不同 run_id。
+1. 检查真实 GO，不拿模板或旧聊天补权限；检查 run_id 与可信 Run 索引、历史原件是否冲突。同一业务 case 可有多个不同 run_id。若新 GO 承接已结束的业务工作，保存旧成果入口和新 GO 的关系，注册新 Run 并独立核验资源/授权，不修改旧历史或借用旧会话。
 2. **先核路径、后引用新原件**：把拟用 Owner 路径与仍占用资源或占用不明 Run 的工作区做路径及父子包含比较；在实际 Linux 执行主机核 proposed path 和现存工作区的目录、realpath、基础权限。不能先要求校验一条尚不存在的 Git exact ref。
 3. 核准后发布本 Run 的 RUN_BINDING.json、RUN_RESOURCE_BINDING.json；资源绑定必须记录 Owner 实际给的路径与 Linux 核验凭据。回读 GitHub 准确 commit、路径与真实 grants；尚未发任何 C 时也不得伪称消息已送达。
 4. 用这些**已经存在的精确提交引用**和已核实的资源占用事实构造候选 Registry；按多 Run 合同排除已合法释放的登记，保留原历史记录；运行 validate-registry；在实际 Linux 主机上用同一候选 Registry 运行 check-workspaces --on-worker-host，确保不同 Run 不同工作区且不通过符号链接重合。再次核执行角色实际 cwd、仓库/分支、共享远端写面与授权。
@@ -25,7 +25,7 @@
 
 ## 2. controller_cycle（调度一次）
 
-新 Run 采用 `AUTONOMOUS` 后，主控只按初始 GO 已覆盖权限与实际任务定义的真实后继派达；不新增运行中 Owner 确认点。授权不足时阻断对应动作并记录可检查的恢复条件，不将它转成逐次审批请求。
+新 Run 采用 `AUTONOMOUS` 后，主控只按初始 GO 已覆盖权限与实际任务定义的真实后继派达；不新增运行中 Owner 确认点。授权不足时阻断对应动作并记录可检查的恢复条件，不将它转成逐次审批请求。按 V2 §4.1 将确需 Owner 帮助的实质问题从已核 manager 回交定向反馈给 Owner；继续其他合法后继。收到真实补充信息，保存原文及采用/授权关系，向本 Run manager 传达，不替其选择专业方案，不把信息补充默认为扩权。
 
 1. 加载所有未结束 Run 的可信状态（Registry 只是发现路径）；单 Run 未核实来源时标记未知，先对账。
 2. 先接收已到达回执/未知动作核查；原样保留相同消息的幂等消费记录，不重新制造 C/D/W。

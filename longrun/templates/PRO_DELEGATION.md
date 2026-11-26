@@ -7,6 +7,7 @@
 - 其他适用专业来源（Workflow/Skill/任务书按实际采用；可以没有 Skill）：
 - business_context_ref：
 - input_refs：当前有效任务实例、已存在上游产物、版本及限制：
+- 如确有必要：本项对整体任务的作用、需要解决的关键问题、相关信息入口；正常明确工作无需重复说明。
 - expected_outputs：依据任务原件本项应实际产生的成果及完成条件：
 - 本 D 合法操作和写面：引用真实 Owner GO grants；不得自行补充权限。
 - 同一 D 续接时：原 D、当前实际产物、未完成范围与 continuation_ref：
