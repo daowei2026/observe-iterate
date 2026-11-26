@@ -1,0 +1,158 @@
+{
+  "passed": true,
+  "checks_count": 24,
+  "checks": [
+    {
+      "name": "选中原始导出及新QT逐值核回",
+      "passed": true,
+      "evidence": "sources/RAW_QT_SELECTED_READ_AUDIT.json",
+      "detail": {
+        "ticks": 465,
+        "raw_numeric_fields": 11,
+        "qt_fields": 2
+      }
+    },
+    {
+      "name": "全465切点联合量及累计V与原始导出独立核回",
+      "passed": true,
+      "evidence": "report/JOINT_TRACE.csv",
+      "detail": 465
+    },
+    {
+      "name": "全465切点对象与源时钟由独立asof核回",
+      "passed": true,
+      "evidence": "report/JOINT_TRACE.csv",
+      "detail": 465
+    },
+    {
+      "name": "77查询的两种期间均由原始导出直接核和",
+      "passed": true,
+      "evidence": "report/PERIOD_CLOCK_AUDIT.csv",
+      "detail": 77
+    },
+    {
+      "name": "所选Segment可得性与正式available/closed时钟一致",
+      "passed": true,
+      "evidence": "report/CLOCK_AUDIT.csv",
+      "detail": 37
+    },
+    {
+      "name": "活动基线价量由其Start原始切点核回",
+      "passed": true,
+      "evidence": "report/JOINT_CUTS.csv",
+      "detail": 67
+    },
+    {
+      "name": "465研究切点均限原148窗",
+      "passed": true,
+      "evidence": "report/CASE_SELECTION.json",
+      "detail": null
+    },
+    {
+      "name": "12新增具名过程PG互异且排除既有深入与试查PG",
+      "passed": true,
+      "evidence": "report/CASE_SELECTION.json",
+      "detail": null
+    },
+    {
+      "name": "复用与相关性如实保留",
+      "passed": true,
+      "evidence": "report/CASE_SELECTION.json",
+      "detail": null
+    },
+    {
+      "name": "48组1259行纯展示重放与实际导出一致",
+      "passed": true,
+      "evidence": "report/PROJECTION_EXACT_MATCH.csv",
+      "detail": null
+    },
+    {
+      "name": "当前对象核心价可见量仅在正确价位与存续关系下给出",
+      "passed": true,
+      "evidence": "report/JOINT_TRACE.csv",
+      "detail": null
+    },
+    {
+      "name": "离开最佳价与对象结束不混同零",
+      "passed": true,
+      "evidence": "report/JOINT_TRACE.csv",
+      "detail": null
+    },
+    {
+      "name": "活动与Wall参照未取未来源行",
+      "passed": true,
+      "evidence": "report/JOINT_TRACE.csv",
+      "detail": null
+    },
+    {
+      "name": "真实消耗与真实净撤减始终null",
+      "passed": true,
+      "evidence": "report/JOINT_TRACE.csv",
+      "detail": null
+    },
+    {
+      "name": "N1桥接在原切点仍无闭合且可读当前量和两期间V",
+      "passed": true,
+      "evidence": "cases/J13/JOINT_CUTS.csv",
+      "detail": null
+    },
+    {
+      "name": "N2桥接价位和参照角色保留",
+      "passed": true,
+      "evidence": "cases/J14/JOINT_CUTS.csv",
+      "detail": null
+    },
+    {
+      "name": "D004两个反例与真实联合历史相容",
+      "passed": true,
+      "evidence": "report/FOCAL_READOUT.csv",
+      "detail": null
+    },
+    {
+      "name": "精确策略在其声明作答范围内量和V均与原输入一致",
+      "passed": true,
+      "evidence": "report/SPARSITY_SUMMARY.csv",
+      "detail": null
+    },
+    {
+      "name": "按需只对77查询作答，不以465作分母冒称覆盖",
+      "passed": true,
+      "evidence": "report/SPARSITY_SUMMARY.csv",
+      "detail": null
+    },
+    {
+      "name": "数量变化稀疏不能保留所有V变化",
+      "passed": true,
+      "evidence": "report/SPARSITY_SUMMARY.csv",
+      "detail": null
+    },
+    {
+      "name": "精确q与V稀疏行数具实数支持",
+      "passed": true,
+      "evidence": "report/SPARSITY_SUMMARY.csv",
+      "detail": null
+    },
+    {
+      "name": "实际使用冻结输入和三个旧冻结入口hash稳定",
+      "passed": true,
+      "evidence": "SOURCE_INDEX.json",
+      "detail": {
+        "checked": 56,
+        "scope": "只核实际使用输入和入口，不冒称再次扫描644旧冻结文件"
+      }
+    },
+    {
+      "name": "源码真实版本与原导出读口一致",
+      "passed": true,
+      "evidence": "report/READOUT_CONTRACT.json",
+      "detail": null
+    },
+    {
+      "name": "必要图可读取且均含独立PDF",
+      "passed": true,
+      "evidence": "figures/",
+      "detail": null
+    }
+  ],
+  "limitations": "研究输入、时钟、物理价位和取值策略核查；不等于生产部署、FRP/P2消费者行为或独立feed真实性认证"
+}
