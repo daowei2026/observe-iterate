@@ -2,58 +2,58 @@
 
 ## 一、当前进展
 
-S01～S06、R1与R2各条S07＋S08均已完成并消费。R2保持研究线索：已有展示/L1联合可恢复数量角色、基线参考价、同价/近价对象与时点区别；参考投影有明确语义位置，本批正式链第一损失仍待证。正式缺口、必须修改、生产Bug、有充分依据/初步改进依据点均未确认。
+S01～S06及R1/R2/R3各条S07＋S08均已实际完成并消费。R3保持研究线索（共同观测约束），停止本批真实补撤分解推断，保留代理和可见活动结论。当前未确认正式缺口、必须修改、生产Bug或充分/初步改进依据点；R1/R2正式链问题仍待证。
 
-现已签发[D009](../delegations/D009/DELEGATION.md)，仅组织R3共同来源可识别性的S07＋S08，待controller派达同一E1。已核共同来源证据复用，不另开独立真实补撤分解研究。R3真实成果回manager消费后再安排后继，S09仍单独。父Run为IN_PROGRESS。
+已签发[D010](../delegations/D010/DELEGATION.md)，独立执行原任务S09总体归并与交付，待controller派达同一E1。S09尚未执行，父Run为IN_PROGRESS；整体结束依据和目标达成程度待其真实报告评价，不因R3停止而提前认定。
 
-## 二、R2实际成果与新认识
+## 二、R3实际成果与准确去向
 
-定向扫描17,863条来源引用、16,710去重逻辑记录，9,526条可锚定联合事件。主同价条件为里程碑、累计/基线≥1、当时最优价等于Wall core且展示段起点量可核：483事件/289活动/209 local Wall/83PG/22日期块中，219事件当前量≤展示段起点量1/4；每PG一条敏感性38/83。这是所选窗口的条件范围，重复事件不是独立攻防或全市场频率。
+本次核同批2,924文件浅层清单、manifest的2,920资产和已有字段索引。参考薄receipt实际10个必需字段没有在随包manifest键/CSV字段匹配，未取得本包实际producer/FRP、feed单位/区间/完整覆盖和独立方向/订单证据。这个结论只限随包材料，不证明外部生产系统无receipt或FRP没有运行。
 
-| 新案例 | 已有信息能区分什么 |
+四个已暴露PG只作12行原始报价、5源文件hash和重叠行回查：
+
+| 复用例 | 真实数值与限制 |
 | --- | --- |
-| R2-01 活动与存量 | Wall展示起量1844、Build基线369、累计1499.8511，而切点同价量271；活动累计约4倍不等于当前墙厚4倍 |
-| R2-02 对象价位 | 当前4359量56不是旧4360墙当前库存，后者在当时不可见 |
-| R2-03 可知时间 | Absorb“阻挡”在切点后2秒才展示，不能倒用为切点已知事实 |
-| R2-04 普通反例 | 当前728.5量894高于展示起量866，但Build基线取起点729量48；不能把每个活动都解释成库存下降 |
+| B2-06-B | 16→36→16，C20/V4；代理与总V不同，不认证真实成交/撤减 |
+| B2-05-B | 整段C706/V417，单半秒减525/V15；不能凭C>V无条件认证撤单 |
+| R2-01 | C98/V168，普通C≤V同样不认证方向估计 |
+| R2-04 | C6/V62，继续保留未知真方向/订单身份 |
 
-四例来自此前未深入的不同PG、不同local Wall和源日期块，均非R2原形成Wall，但已有R1程序暴露。659行quote、174条P1来源引用不是独立事件计数。固定10/30/60秒可用例数4/3/3，R2-03仅27.5秒，方向混合且非匹配预测对照，缺失保留。日期块为源标签，R2-02实际11月2日而DB标签11月1日，不冒充精确交易日核验。
+研究求和t0<UTI≤t1、端点q和排除起点前成交的政策已核；内部时间一致不等于原feed完整。旧165,932发现区间、51,373下降区间、5,423个V低于净下降的条件补查仅复用。未认证计量/对齐/覆盖前提，真实上界应用0次，真实C/净撤减估计均null；这些不是“真实现象为0”的结论。
 
-关键参考定位：FRP Build milestone读取门槛level，而非raw观测ratio；typed payload未承接raw baseline/观测ratio，不能用累计量/typed门槛反算真实基线。原始1585条里程碑中1579条观测ratio与level不同、6条相同。这是语义区别，不是生产错误率；actual producer/FRP版本未证，不能由参考投影直接宣布实际完整联合链缺口。
+参考CC方向列本为预测代理，参考Absorb消费累计沿同源hit、公开补充量也是代理；参考typed出口已有proxy/availability与明确方向预测语义。Available/Measured说明产品值可计算/有值，不认证真实方向。本批实际正式链首损仍未确定，不把研究源限制或展示缺项包装为P1缺陷。
 
-## 三、两标签试查与证据边界
+已有C_source、directional_truth_status、raw V、proxy/availability和R2角色/时点标签能表达当前限制，因此R3未凑新增标签/数值或“净撤单特征”，也未运行P2或生产收益实验。重复同源机械关系不能补出独立真值，且授权不含新feed或生产重跑，这是本条停止依据。[R3定位](https://github.com/daowei2026/observe-iterate/blob/6a0072296dbdaf48f3972db3b974e4c6d417389e/longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0017/R3_DESIGN_POSITIONING.md)和[逐项结果](https://github.com/daowei2026/observe-iterate/blob/6a0072296dbdaf48f3972db3b974e4c6d417389e/longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0017/report/R3_RESULT.json)给准确出处与去向。
 
-43事件/43PG/21日期块的试查只增加quantity_role和time_basis两个字符串，原数值不改、新数值为0。29个切点最佳价在Wall价带外、22个基线起点价在价带外、42个raw观测ratio不同于level；1个相等普通例保留。8个较晚Resolved仅入后验审计，不进入切点输入。
+## 三、三项认识与未决问题
 
-两标签明确已有量的业务主语、参考价/参考量及发生/切点/未知正式发布边界，没有增加原先缺失的市场事实。未运行真实P2、未测误读率或生产/预测收益，不能据此升级为初步改进依据。试查43PG均继承R1暴露，41PG还曾有特定指标访问，不称未开封或严格留出，也不计作43次深入提取。
+| 项目 | 最强可支持认识 | 仍待什么 |
+| --- | --- | --- |
+| R1 当前/阶段可见流动性 | 独立过程复现、条件范围及两项描述信息的收益/失效边界；先已有信息消费 | 本批相容正式链是否已能恢复，第一损失处未定位 |
+| R2 基线、对象、可知时间 | 既有字段/L1能恢复四类区别，参考level/ratio投影语义明确；两标签解释已有信息 | 实际合法接口能否在切点取得基线/参考价/正确比值与已发布历史 |
+| R3 真实消耗/净撤减来源 | 源可识别性限制已证，停止本批真实分解，proxy/availability限定持续适用 | 相容source/producer receipt、feed计量/覆盖及独立方向/订单证据；实际消费者是否保留限定 |
 
-最强可支持是已有信息的消费/表达要求及需核对的参考投影。actual版本/参数receipt/exact身份、相容完整occurrence/current/publication与实际P2仍缺；展示UTI/闭段不等于正式发布时间。实际合法接口能否在切点取得基线/参考价、区分ratio/level并取得已发布历史，仍是后继设计问题，未被本次完成态解决。[R2定位原件](https://github.com/daowei2026/observe-iterate/blob/8cf263c0b2c2ada6b6916f093d5431c3a966cb82/longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0015/R2_DESIGN_POSITIONING.md)、[机读结果](https://github.com/daowei2026/observe-iterate/blob/8cf263c0b2c2ada6b6916f093d5431c3a966cb82/longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0015/report/R2_RESULT.json)给准确边界。
+三项仍按真实研究线索等级记录；研究摘要或参考投影的压缩不等于本批实际正式链缺口。R3没有关闭R1/R2的正式链后继问题，以后取得Feature receipt也不自动获得独立方向真值。没有实际P2实物，不声称已证明它误读。
 
-## 四、逐项后继与使用状态
+## 四、独立S09要实际完成的工作
 
-| 工作 | 真实状态与去向 |
-| --- | --- |
-| S01～S06 | 三入口及三组对照实际完成，原18组36深入区间和归并继续有效 |
-| R1 / D007 | 已完成并消费；独立可见量/阶段证据与试查，正式链待证，优先已有信息消费 |
-| R2 / D008 | 已完成并由C0016消费；四类区别可恢复、参考投影定位及两标签试查，仍研究线索 |
-| R3 / D009 | 原共同来源约束尚未独立结案；本次只处理可得来源/计量/时间归属/完整性及proxy可用性表达与准确去向，已签待派 |
-| S09 | 待真实后继及原任务整体结束依据，单独委派 |
+S09按原任务核查三入口、三组对照和逐项深入工作，归并最强可支持结论及等级、已有信息/消费要求、准确设计出处、局部不足/普通Bug和未来取证问题，整理可重放报告及证据索引。
 
-R3继续遵守“真实补撤单独证明暂不优先投入”。已经核过的C/n同源、R1/R2局部缺件和已有来源语义复用；没有独立真值/有条件计量证据时停止真实分解推断，保留可见活动结论。不能从当前不可识别推出真实撤单不存在、无业务价值或产品缺字段。可行且有价值时按原任务最小信息试查，已有信息充分则承认，不新增审批或专业复审。
+R3停止仅限真实补撤推断。S09仍须依原§8.4评价是否还有可行、能增加业务认识的本批高价值方向；需要回查/回补则按原任务实际处理并记录。没有充分依据点时如实说明目标达成程度，不拿固定案例数、文件数或“设计合理”作为唯一停止理由，也不扩大到新行情/生产重跑。不新增专业复审、分析计划或Owner审批。
 
-累计使用保留原210条，现257条、69次深入提取；上游139个特定唯一区间ID保留，R2事件/PG记录单位不同，不加成186区间。R1全批形态/交互暴露和R2联合110PG/23日期块访问继续记录，未深入不等于未见。详细账按冻结本地索引可查，不编造附件远端ref。
+## 五、工作量、暴露和成果入口
 
-## 五、成果入口与接续
+第一轮B1/B2/B3各六组，共18组36深入区间，质量差异、跨方向依赖和反例保留。R1后累计深入提取65，R2新增4后为69；R3四条来源回查没有增加深入次数。累计使用保留旧257条、现261条，上游139个特定唯一区间ID不变；事件试查/来源回查的计数单位不当区间数或独立市场过程。原预留已有R1/R2程序及交互暴露，不称未开封或严格留出。
 
 | 入口 | 内容 |
 | --- | --- |
-| [R2报告](https://github.com/daowei2026/observe-iterate/blob/8cf263c0b2c2ada6b6916f093d5431c3a966cb82/longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0015/EXECUTOR_REPORT.md)、[案例册](https://github.com/daowei2026/observe-iterate/blob/8cf263c0b2c2ada6b6916f093d5431c3a966cb82/longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0015/R2_CASEBOOK.md) | 四例真实数值、已有信息、普通/时点/对象反例及限制 |
-| [S07证据](https://github.com/daowei2026/observe-iterate/blob/8cf263c0b2c2ada6b6916f093d5431c3a966cb82/longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0015/S07_EVIDENCE.md)、[S08定位](https://github.com/daowei2026/observe-iterate/blob/8cf263c0b2c2ada6b6916f093d5431c3a966cb82/longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0015/R2_DESIGN_POSITIONING.md) | 条件分母、角色/对象/时点、准确参考出处与正式链待证 |
-| [条件统计](https://github.com/daowei2026/observe-iterate/blob/8cf263c0b2c2ada6b6916f093d5431c3a966cb82/longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0015/report/R2_STATISTICS.json)、[两标签试查](https://github.com/daowei2026/observe-iterate/blob/8cf263c0b2c2ada6b6916f093d5431c3a966cb82/longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0015/report/MINIMAL_PROBE_SUMMARY.json) | 对象/PG敏感性、原值不改的语义试查及失败边界 |
-| [75项冻结索引](https://github.com/daowei2026/observe-iterate/blob/8cf263c0b2c2ada6b6916f093d5431c3a966cb82/longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0015/ARTIFACT_INDEX.json)、[来源索引](https://github.com/daowei2026/observe-iterate/blob/8cf263c0b2c2ada6b6916f093d5431c3a966cb82/longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0015/SOURCE_INDEX.json) | files/local_path准确本地路径、大小/hash及版本界限 |
+| [R3报告](https://github.com/daowei2026/observe-iterate/blob/6a0072296dbdaf48f3972db3b974e4c6d417389e/longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0017/EXECUTOR_REPORT.md)、[S07证据](https://github.com/daowei2026/observe-iterate/blob/6a0072296dbdaf48f3972db3b974e4c6d417389e/longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0017/S07_EVIDENCE.md) | 来源范围、12行复用、条件统计和时间政策的边界 |
+| [S08定位](https://github.com/daowei2026/observe-iterate/blob/6a0072296dbdaf48f3972db3b974e4c6d417389e/longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0017/R3_DESIGN_POSITIONING.md)、[不新增试查的决定](https://github.com/daowei2026/observe-iterate/blob/6a0072296dbdaf48f3972db3b974e4c6d417389e/longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0017/report/MINIMAL_INFORMATION_DECISION.json) | 参考代理语义、已有信息、实际正式链待证和停止依据 |
+| [来源实查](https://github.com/daowei2026/observe-iterate/blob/6a0072296dbdaf48f3972db3b974e4c6d417389e/longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0017/report/SOURCE_AUDIT.json)、[24项冻结索引](https://github.com/daowei2026/observe-iterate/blob/6a0072296dbdaf48f3972db3b974e4c6d417389e/longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0017/ARTIFACT_INDEX.json) | 准确本地路径/大小/hash与随包取证能力 |
+| [来源索引](https://github.com/daowei2026/observe-iterate/blob/6a0072296dbdaf48f3972db3b974e4c6d417389e/longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0017/SOURCE_INDEX.json)、[本地入口](https://github.com/daowei2026/observe-iterate/blob/6a0072296dbdaf48f3972db3b974e4c6d417389e/longrun/runs/OI-EAW-P1-BUSINESS-DISCOVERY-20261125-01/calls/C0017/LOCAL_ARTIFACTS.md) | 版本/代码出处、旧结果依赖与重放入口 |
 
-最新专业根：`/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-business-discovery-20261125-01/calls/C0015/`。旧C0013/C0011/C0009/C0007/C0005/C0002成果复用，详细表/图/代码无需重发。技术恢复见[TASK_PROGRESS](TASK_PROGRESS.md)，本次消费见[C0016报告](../calls/C0016/MANAGER_REPORT.md)。
+最新专业根：`/dwdhome/fy/BASE_E6_2/artifacts/oi-eaw-p1-business-discovery-20261125-01/calls/C0017/`。旧C0015/C0013/C0011/C0009/C0007/C0005/C0002冻结成果继续复用，大表/图/代码无需重发。技术恢复见[TASK_PROGRESS](TASK_PROGRESS.md)，本次消费见[C0018报告](../calls/C0018/MANAGER_REPORT.md)。
 
-controller向同一E1派达D009，manager在R3真实业务节点消费后安排后继。局部正式材料不足不阻断其余可做工作，不预设必须形成研发点或整批已结束；S09单独，不新增分析计划或Owner审批。
+controller向同一E1派达D010/S09；manager待真实最终报告和证据索引回交后消费。S09未执行、父Run未完成。
 
-更新时间：2026-11-25T23:19:56.703Z
+更新时间：2026-11-26T00:09:55.718Z
